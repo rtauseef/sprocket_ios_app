@@ -1,0 +1,7 @@
+node_modules
+screenshots/**
+doc
+.yardoc
+*.swo
+*.swp
+rerun*.txt

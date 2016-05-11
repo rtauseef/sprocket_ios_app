@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGSwipeCoachMarksView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="25Z-7D-xNV"/>
+                <outlet property="contentViewHorizontalCenterLayoutContraint" destination="COQ-wt-vyP" id="YsG-Au-RJn"/>
+                <outlet property="contentViewWidthLayoutContraint" destination="o1g-KL-55n" id="IPz-mY-7fF"/>
+                <outlet property="textLabel" destination="fS2-Rj-k1d" id="iCa-qG-G5R"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ajq-0q-xVH">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view opaque="NO" alpha="0.80000000000000027" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBe-Mm-T1D" userLabel="GreyBackground">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LeftSwipeButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ohq-Ws-44d" userLabel="LeftArrow">
+                            <rect key="frame" x="20" y="275" width="15" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="Ixy-cD-hTZ"/>
+                                <constraint firstAttribute="width" constant="15" id="sBC-P4-dVm"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RightSwipeButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-4Z-MHo" userLabel="RightArrow">
+                            <rect key="frame" x="565" y="275" width="15" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="4G5-8k-1sc"/>
+                                <constraint firstAttribute="width" constant="15" id="KD4-Ht-ltF"/>
+                            </constraints>
+                        </imageView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS2-Rj-k1d" userLabel="SwipeInstructions">
+                            <rect key="frame" x="233" y="267" width="133" height="47"/>
+                            <string key="text">Swipe left and right to
+access your
+social media galleries</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="hW4-4Z-MHo" secondAttribute="centerY" constant="10" id="28o-8o-aON"/>
+                        <constraint firstItem="vBe-Mm-T1D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B8J-Kw-5Nt"/>
+                        <constraint firstAttribute="trailing" secondItem="hW4-4Z-MHo" secondAttribute="trailing" constant="20" id="F7v-4f-r13"/>
+                        <constraint firstItem="Ohq-Ws-44d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="G25-zI-Ydu"/>
+                        <constraint firstAttribute="bottom" secondItem="vBe-Mm-T1D" secondAttribute="bottom" id="GSa-tI-C4B"/>
+                        <constraint firstAttribute="centerY" secondItem="Ohq-Ws-44d" secondAttribute="centerY" constant="9.5" id="aPC-th-qj2"/>
+                        <constraint firstItem="vBe-Mm-T1D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="axa-dE-Op6"/>
+                        <constraint firstAttribute="centerY" secondItem="fS2-Rj-k1d" secondAttribute="centerY" constant="10" id="f6Y-5O-ZN4"/>
+                        <constraint firstAttribute="centerX" secondItem="fS2-Rj-k1d" secondAttribute="centerX" id="hNc-1U-5JV"/>
+                        <constraint firstAttribute="width" constant="600" id="o1g-KL-55n"/>
+                        <constraint firstAttribute="trailing" secondItem="vBe-Mm-T1D" secondAttribute="trailing" id="uMN-I2-v9h"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="ajq-0q-xVH" secondAttribute="top" id="5Cl-gI-vPI"/>
+                <constraint firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="COQ-wt-vyP"/>
+                <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="Hl8-rO-wRD"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="LeftSwipeButton.png" width="30" height="61"/>
+        <image name="RightSwipeButton.png" width="30" height="61"/>
+    </resources>
+</document>

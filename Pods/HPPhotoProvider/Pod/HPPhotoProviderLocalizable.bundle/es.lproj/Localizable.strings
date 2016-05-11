@@ -1,0 +1,117 @@
+﻿/* Number of photos */
+" (%lu photos)" = "﻿ (%lu fotos)";
+
+/* No comment provided by engineer. */
+" (1 photo)" = " (1 foto)";
+
+/* Albums of the specified social network */
+"%@ Albums" = "%@ álbumes";
+
+/* Title of an alert indicates the specified social network login is not longer valid */
+"%@ Authorization" = "%@ autorización";
+
+/* Photos of the specified social network */
+"%@ Photos" = "%@ fotos";
+
+/* Number of posts */
+"%@ posts" = "%@ publicaciones";
+
+/* Number of photos */
+"%lu photos" = "%lu fotos";
+
+/* No comment provided by engineer. */
+"1 photo" = "1 foto";
+
+/* Button caption */
+"Authorize" = "Autorizar";
+
+/* Title of an alert requesting authorization to access the Instagram photos */
+"Authorized Required" = "Autorización requerida";
+
+/* Name of the camera roll app of the device */
+"Camera Roll" = "Rollo de cámara";
+
+/* Button caption */
+"Cancel" = "Cancelar";
+
+/* Message of an alert when is not possible to retrieve the pictures from the specified social network */
+"Could not retrieve the picture from %@" = "No se pudo recuperar la imagen de %@";
+
+/* Title of an alert */
+"Error" = "Error";
+
+/* Option of the search screen of instagram, the user can search hashtags (this option) or photos of other users */
+"Hashtag" = "Hashtag";
+
+/* Message of an alert requesting authorization to access the Instagram photos */
+"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue." = "HP Social Media Snapshots utiliza fotografías de Instagram para crear imágenes asombrosas. Permita que HP Social Media Snapshots acceda a sus fotografías de Instagram para hacer sus pedidos y continuar.";
+
+/* Feed of Instagram */
+"My Feed" = "Mi fuente";
+
+/* Photos of Instagram */
+"My Photos" = "Mis fotos";
+
+/* Message show to the user when there is no internet connection */
+"No Internet Connection" = "Sin conexión a Internet";
+
+/* Message shown when the album is empty in the select photo screen */
+"No Photos Found" = "No se encontraron fotos";
+
+/* Message show to the user when there is no results in the search */
+"No results found" = "No se encontraron resultados";
+
+/* Button caption */
+"OK" = "Aceptar";
+
+/* Title shown when the user tries to access the Photos of the device before the authorization was requested */
+"Photo Access" = "Acceso a fotos";
+
+/* Title of an alert when the user has denied the permission to access the Photos of the device */
+"Photo Access Denied" = "Acceso a fotos denegado";
+
+/* Message of an alert when the application is not authorized to access photo data. */
+"Photo access is restricted on this device. Please check your settings." = "El acceso a fotos está restringido en este dispositivo. Verifique sus ajustes.";
+
+/* Title of an alert when the application is not authorized to access photo data. */
+"Photo Access Restricted" = "Acceso a fotos restringido";
+
+/* Button caption */
+"Retry" = "Reintentar";
+
+/* Title of the search screen for Instagram tags */
+"Search" = "Buscar";
+
+/* Button caption */
+"Settings" = "Configuración";
+
+/* Message shown when the user account is private in the select photo screen */
+"The user account is private." = "La cuenta de usuario es privada.";
+
+/* Message shown when the user tries to access the Photos of the device before the authorization was requested */
+"To select a photo you must first authorize this app to access your photo library." = "Para seleccionar una foto, primero debe autorizar esta aplicación para acceder a la Biblioteca de imágenes.";
+
+/* Option of the search screen of instagram, the user can search hashtags or photos of other users (this option) */
+"Users" = "Usuarios";
+
+/* Message show to the user when there is no internet connection */
+"You appear to be offline" = "Parece estar desconectado";
+
+/* Message of an alert when the user has denied the permission to access the Photos of the device */
+"You have denied photo access. Please enable access in Privacy Settings (Settings -> Privacy -> Photos)." = "No dispone de acceso a las fotos. Active el acceso en Ajustes de privacidad (Ajustes -> Privacidad -> Fotos).";
+
+/* Message of an alert when the user has denied the permission to access the Photos of the device */
+"You have previously denied photo access. Please enable access in Privacy Settings (Settings -> Privacy -> Photos)." = "Anteriormente no disponía de acceso a las fotos. Active el acceso en Ajustes de privacidad (Ajustes -> Privacidad -> Fotos).";
+
+/* Message of an alert indicates the specified social network login is not longer valid */
+"Your %@ login is no longer valid. Please sign in again." = "Su inicio de sesión a %@ ya no es válido. Vuelva a iniciar sesión.";
+
+/* Informs the user that their internet connection is not working */
+"Your internet connection appears to be offline" = "Su conexión a internet parece estar desconectada";
+
+/* Indicates that a user's photo album was deleted */
+"The album was deleted" = "El álbum fue eliminado";
+
+/* Indicates that a user's photo album was deleted */
+"Album deleted" = "Álbum eliminado";
+

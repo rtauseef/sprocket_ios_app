@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FD61A807B543994884861E48DE55D23B88024166",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "54611BD22880AC59932302A22BCC4D181260DB54" : 0,
+    "FD61A807B543994884861E48DE55D23B88024166" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C786E644-DC64-4046-B003-DD7D71C14C15",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "54611BD22880AC59932302A22BCC4D181260DB54" : "hp_photo_print\/",
+    "FD61A807B543994884861E48DE55D23B88024166" : "photogram\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PhotoGram",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PhotoGram.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:IPGPTP\/hp_photo_print.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "54611BD22880AC59932302A22BCC4D181260DB54"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:IPGPTP\/photogram.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FD61A807B543994884861E48DE55D23B88024166"
+    }
+  ]
+}

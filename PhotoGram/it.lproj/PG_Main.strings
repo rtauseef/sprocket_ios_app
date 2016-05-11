@@ -1,0 +1,149 @@
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "0rj-qp-TWE"; */
+"0rj-qp-TWE.normalTitle" = "Accedi";
+
+/* Class = "UILabel"; text = "By authenticating with Instagram, Facebook, or\nFlickr, you also agree with HP’s Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "Collegandoti tramite Instagram, Facebook o
+Flickr, accetti anche le Condizioni di servizio di HP.";
+
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "Collegandoti tramite Instagram accetti anche le Condizioni di Servizio di HP.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "7fa-oG-gkS"; */
+"7fa-oG-gkS.text" = "Titolo";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "8WR-66-byL"; */
+"8WR-66-byL.title" = "Invia";
+
+/* Class = "UILabel"; text = "Send Feedback"; ObjectID = "93f-4f-aru"; */
+"93f-4f-aru.text" = "Contattaci";
+
+/* Class = "UILabel"; text = "Facebook"; ObjectID = "ByT-I7-e2k"; */
+"ByT-I7-e2k.text" = "Facebook";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
+"DG2-Ok-pfm.normalTitle" = "Accedi";
+
+/* Class = "UILabel"; text = "Privacy Statement"; ObjectID = "Ddg-PB-chd"; */
+"Ddg-PB-chd.text" = "Informativa sulla privacy";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "EjE-om-e07"; */
+"EjE-om-e07.title" = "Informazioni su";
+
+/* Class = "UILabel"; text = "Instagram"; ObjectID = "GRY-xD-UPv"; */
+"GRY-xD-UPv.text" = "Instagram";
+
+/* Class = "UILabel"; text = "Hewlett-Packard Development Company, L.P."; ObjectID = "IRp-QK-PAY"; */
+"IRp-QK-PAY.text" = "HP Development Company, L.P.";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "J8w-u5-UoD"; */
+"J8w-u5-UoD.normalTitle" = "Accedi";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "J10-Gj-77T"; */
+"J10-Gj-77T.title" = "Invia";
+
+/* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
+"JEt-SU-tLR.title" = "Rullino fotografico";
+
+/* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
+"MN9-s9-sQn.text" = "Tocca qui per modificare la descrizione";
+
+/* Class = "UILabel"; text = "Camera Roll"; ObjectID = "Mgb-ox-Ayr"; */
+"Mgb-ox-Ayr.text" = "Rullino fotografico";
+
+/* Class = "UILabel"; text = "© 2016"; ObjectID = "P9D-sI-bhx"; */
+"P9D-sI-bhx.text" = "© 2016";
+
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "Collegandoti tramite Flickr accetti anche le Condizioni di Servizio di HP.";
+
+/* Class = "UILabel"; text = "Print Queue"; ObjectID = "QyM-oe-bdD"; */
+"QyM-oe-bdD.text" = "Coda di stampa";
+
+/* Class = "UIButton"; normalTitle = "Camera Roll"; ObjectID = "Qz4-e7-zDJ"; */
+"Qz4-e7-zDJ.normalTitle" = "Rullino fotografico";
+
+/* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
+"R8u-lf-hRh.title" = "Facebook";
+
+/* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
+"TkY-hv-gvt.title" = "Instagram";
+
+/* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
+"U9F-p5-X9c.text" = "Versione 1.0";
+
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "Collegandoti tramite Facebook, accetti anche le Condizioni di Servizio di HP.";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
+"VKP-mJ-ZZt.text" = "Dettaglio";
+
+/* Class = "UILabel"; text = "Facebook"; ObjectID = "Vz4-Tm-rcE"; */
+"Vz4-Tm-rcE.text" = "Facebook";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "W55-OH-zOO"; */
+"W55-OH-zOO.title" = "Invia";
+
+/* Class = "UILabel"; text = "Learn about Mobile Printing"; ObjectID = "XkB-S7-9ou"; */
+"XkB-S7-9ou.text" = "Per saperne di più su Stampa Mobile";
+
+/* Class = "UILabel"; text = "Camera Roll"; ObjectID = "YKG-uQ-oeA"; */
+"YKG-uQ-oeA.text" = "Rullino fotografico";
+
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "Utilizzando Rullino fotografico, accetti anche le Condizioni di Servizio di HP.";
+
+/* Class = "UILabel"; text = "Flickr"; ObjectID = "aH8-J8-fms"; */
+"aH8-J8-fms.text" = "Flickr";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
+"aja-HA-rCS.normalTitle" = "Accedi";
+
+/* Class = "UILabel"; text = "99"; ObjectID = "anQ-7m-MS2"; */
+"anQ-7m-MS2.text" = "99";
+
+/* Class = "UINavigationItem"; title = "Print Instructions"; ObjectID = "bha-Vm-pbm"; */
+"bha-Vm-pbm.title" = "Istruzioni di stampa";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "cvE-Qn-oLS"; */
+"cvE-Qn-oLS.normalTitle" = "Accedi";
+
+/* Class = "UILabel"; text = "Take our Survey"; ObjectID = "d9t-5q-1nR"; */
+"d9t-5q-1nR.text" = "Vai al questionario";
+
+/* Class = "UILabel"; text = "HP Social Media Snapshots"; ObjectID = "d71-za-T7q"; */
+"d71-za-T7q.text" = "HP Social Media Snapshots";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "dcp-jn-Bby"; */
+"dcp-jn-Bby.text" = "Informazioni su";
+
+/* Class = "UILabel"; text = "HP Social Media Snapshots"; ObjectID = "fKs-uV-c3d"; */
+"fKs-uV-c3d.text" = "HP Social Media Snapshots";
+
+/* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
+"ipg-92-MP9.title" = "Seleziona modello";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "jv7-tG-mp8"; */
+"jv7-tG-mp8.normalTitle" = "Accedi";
+
+/* Class = "UILabel"; text = "Select your social media source\nand print your photos"; ObjectID = "krD-fF-9ON"; */
+"krD-fF-9ON.text" = "Seleziona la fonte di social media desiderata
+e stampa le tue foto";
+
+/* Class = "UILabel"; text = "New! Print later with our Print Queue"; ObjectID = "mh8-hT-PMS"; */
+"mh8-hT-PMS.text" = "Nuovo! Stampa in seguito con Coda di stampa";
+
+/* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
+"ncc-Qr-0mC.title" = "Flickr";
+
+/* Class = "UILabel"; text = "HP Social Media Snapshots"; ObjectID = "r8A-4l-TdM"; */
+"r8A-4l-TdM.text" = "HP Social Media Snapshots";
+
+/* Class = "UILabel"; text = "Flickr"; ObjectID = "tOP-DZ-lMX"; */
+"tOP-DZ-lMX.text" = "Flickr";
+
+/* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
+"tmd-Ot-zoO.text" = "Non dimenticare di stampare e condividere il tuo progetto";
+
+/* Class = "UILabel"; text = "Instagram"; ObjectID = "vnO-iJ-4od"; */
+"vnO-iJ-4od.text" = "Instagram";
+

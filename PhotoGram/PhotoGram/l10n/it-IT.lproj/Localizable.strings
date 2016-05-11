@@ -1,0 +1,162 @@
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Errore durante la condivisione dell'elemento.";
+
+/* No comment provided by engineer. */
+"Buy sticker pack" = "Acquista la confezione di adesivi";
+
+/* Generic Cancel from an action. */
+"Cancel" = "Annulla";
+
+/* Checking the login status of the social network */
+"Checking" = "Verifica in corso";
+
+/* No comment provided by engineer. */
+"Choose Location" = "Scegli posizione";
+
+/* No comment provided by engineer. */
+"Custom Location" = "Posizione personalizzata";
+
+/* Option to customize the location */
+"Custom..." = "Personalizza...";
+
+/* No comment provided by engineer. */
+"Done" = "Fatto";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Inserisci testo";
+
+/* No comment provided by engineer. */
+"Error" = "Errore";
+
+/* No comment provided by engineer. */
+"Error loading file from DropBox" = "Errore caricamento file da DropBox";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Errore recupero informazioni utente";
+
+/* Subject of the email send to technical support */
+"Feedback on HP Social Media Snapshots for iOS (Record Locator: %@)" = "Feedback su HP Social Media Snapshots per iOS (Record Locator: @";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "Il file di registro è stato cancellato.";
+
+/* No comment provided by engineer. */
+"My HP Snapshot" = "Mie immagini HP";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Nessuna connessione disponibile";
+
+/* No comment provided by engineer. */
+"No Location" = "Nessuna posizione";
+
+/* No comment provided by engineer. */
+"No, thanks" = "No, grazie.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oops!" = "Attenzione!";
+
+/* No comment provided by engineer. */
+"Oops! Call in the Designers!" = "Attenzione! Contatta i creatori dell'app!";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Collegati ad una fonte di dati.
+Puoi anche utilizzare le foto del tuo dispositivo.";
+
+/* No comment provided by engineer. */
+"Please enter a location for this photo." = "Inserisci un titolo per la foto.";
+
+/* Shows the description of the error */
+"Please retry. 
+
+ If the problem persists contact us and mention this error code: %@" = "Ripristina 
+
+ Se il problema persiste contattaci e indica questo codice di errore: %@";
+
+/* No comment provided by engineer. */
+"Please select a location for this photo." = "Seleziona una posizione per questa foto.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what is lame" = "Esprimi il tuo parere su ciò che ritieni sorprendente o poco convincente.";
+
+/* No comment provided by engineer. */
+"Print Instructions" = "Istruzioni di stampa";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Promemoria";
+
+/* No comment provided by engineer. */
+"Reset" = "Ripristina";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Ripristina Applicazione";
+
+/* No comment provided by engineer. */
+"Retry" = "Riprova";
+
+/* Title of a table view header */
+"SUPPORT:" = "ASSISTENZA:";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Salva in rullino fotografico";
+
+/* Title of the select template screen */
+"Select Template" = "Seleziona modello";
+
+/* No comment provided by engineer. */
+"Session Error" = "Errore sessione";
+
+/* No comment provided by engineer. */
+"Set Location" = "Imposta posizione";
+
+/* No comment provided by engineer. */
+"Sign In" = "Accedi";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Disconnetti";
+
+/* No comment provided by engineer. */
+"Social Media Snapshots error log" = "Registro di errore Social Media Snapshots";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Impossibile segnalare il tuo problema in questo momento. Questo avviene probabilmente perché non vi è nessun account email impostato sul tuo dispositivo mobile.";
+
+/* No comment provided by engineer. */
+"Success" = "Operazione riuscita";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Vai al questionario";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Informaci sulla tua opinione riguardo a %@.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of HP Social Media Snapshots" = "Esprimi il tuo parere su HP Social Media Snapshots";
+
+/* Phrase to make link for terms of service of the landing page */
+"Terms of Service" = "Condizioni di Servizio";
+
+/* The metadata of the template used is incorrect */
+"The format of the following template is bad: %@" = "Il formato del seguente modello non è corretto: %@";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "Il file di registro è allegato a questo messaggio.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Tutte le opzioni precedentemente salvate saranno cancellate.";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Versione %1$@ (%2$@)";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Vuoi scollegarti da %@?";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Nessun account email è configurato sul tuo dispositivo mobile.";
+
+/* No comment provided by engineer. */
+"Your current session is no longer valid. Please log in again." = "La sessione corrente non è più valida. Effettuare nuovamente il login.";
+

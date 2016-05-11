@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>50A773E6-A435-4413-9A83-9665F9472B5A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PhotoGram</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>13F60810-1963-4931-A269-1D9CECBEB415</key>
+		<string>https://github.com/IPGPTP/photogram.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PhotoGram/PhotoGram.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>13F60810-1963-4931-A269-1D9CECBEB415</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/IPGPTP/photogram.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>13F60810-1963-4931-A269-1D9CECBEB415</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>13F60810-1963-4931-A269-1D9CECBEB415</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PhotoGram-Tower</string>
+		</dict>
+	</array>
+</dict>
+</plist>

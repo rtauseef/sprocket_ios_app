@@ -1,0 +1,67 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+#import "PGLogger.h"
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#define MENU_OPENED_NOTIFICATION @"MenuOpenedNotification"
+#define MENU_CLOSED_NOTIFICATION @"MenuClosedNotification"
+#define CHECK_PROVIDER_NOTIFICATION @"CheckProviderNotification"
+#define SHOW_SOCIAL_NETWORK_NOTIFICATION @"ShowSocialNetworkNotification"
+#define ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION @"EnablePageControllerFunctionalityNotification"
+#define DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION @"DisablePageControllerFunctionalityNotification"
+#define SHOW_SWIPE_COACH_MARKS_NOTIFICATION @"ShowSwipeCoachMarksNotification"
+#define HIDE_SWIPE_COACH_MARKS_NOTIFICATION @"HideSwipeCoachMarksNotification"
+
+#define FACEBOOK_DISPLAY_NAME @"Facebook"
+#define FLICKR_DISPLAY_NAME @"Flickr"
+#define INSTAGRAM_DISPLAY_NAME @"Instagram"
+
+#define COACH_MARK_ANIMATION_DURATION 0.4f
+
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+#define IS_IPHONE_4 ([[UIScreen mainScreen] bounds].size.height == 480.0f)
+#define IS_IPHONE_5 ([[UIScreen mainScreen] bounds].size.height == 568.0f)
+#define IS_IPHONE_6 ([[UIScreen mainScreen] bounds].size.height == 667.0f)
+#define IS_IPHONE_6_PLUS ([[UIScreen mainScreen] bounds].size.height == 736.0f)
+
+#define IPHONE_LIST_COLLECTION_VIEW_SIZE ((IS_IPHONE_6 ? IPHONE_6_LIST_COLLECTION_VIEW_SIZE : (IS_IPHONE_6_PLUS ? IPHONE_6_PLUS_LIST_COLLECTION_VIEW_SIZE : IPHONE_4_AND_5_LIST_COLLECTION_VIEW_SIZE)))
+#define IPHONE_4_AND_5_LIST_COLLECTION_VIEW_SIZE CGSizeMake(300, 300)
+#define IPHONE_6_LIST_COLLECTION_VIEW_SIZE CGSizeMake(355, 355)
+#define IPHONE_6_PLUS_LIST_COLLECTION_VIEW_SIZE CGSizeMake(394, 394)
+#define IPAD_LIST_COLLECTION_VIEW_SIZE CGSizeMake(500, 500)
+#define LIST_COLLECTION_VIEW_SIZE (IS_IPHONE ? IPHONE_LIST_COLLECTION_VIEW_SIZE : IPAD_LIST_COLLECTION_VIEW_SIZE)
+
+#define IPHONE_GRID_COLLECTION_VIEW_SIZE ((IS_IPHONE_6 ? IPHONE_6_GRID_COLLECTION_VIEW_SIZE : (IS_IPHONE_6_PLUS ? IPHONE_6_PLUS_GRID_COLLECTION_VIEW_SIZE : IPHONE_4_AND_5_GRID_COLLECTION_VIEW_SIZE)))
+#define IPHONE_4_AND_5_GRID_COLLECTION_VIEW_SIZE CGSizeMake(98, 98)
+#define IPHONE_6_GRID_COLLECTION_VIEW_SIZE CGSizeMake(115, 115)
+#define IPHONE_6_PLUS_GRID_COLLECTION_VIEW_SIZE CGSizeMake(128, 128)
+#define IPAD_GRID_COLLECTION_VIEW_SIZE_PORTRAIT CGSizeMake(183, 183)
+#define IPAD_GRID_COLLECTION_VIEW_SIZE_LANDSCAPE CGSizeMake(196, 196)
+#define IPAD_GRID_COLLECTION_VIEW_SIZE ((IS_PORTRAIT) ? IPAD_GRID_COLLECTION_VIEW_SIZE_PORTRAIT : IPAD_GRID_COLLECTION_VIEW_SIZE_LANDSCAPE)
+#define GRID_COLLECTION_VIEW_SIZE (IS_IPHONE ? IPHONE_GRID_COLLECTION_VIEW_SIZE : IPAD_GRID_COLLECTION_VIEW_SIZE)
+
+#define IS_SPLIT_VIEW_CONTROLLER_IMPLEMENTATION (IS_OS_8_OR_LATER && IS_IPAD)
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define IS_PORTRAIT UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)
+
+// Attempt at permanent fix SVG library cahce setting problem (see SVGKImage.h)
+#ifdef ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
+    #undef ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
+#endif
+#define ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED 0

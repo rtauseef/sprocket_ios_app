@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "HP Snapshots";
+CFBundleDisplayName = "HP Snapshots";
+CFBundleShortVersionString = "1.8";
