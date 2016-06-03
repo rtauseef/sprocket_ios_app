@@ -21,8 +21,8 @@ DerivedData
 .ruby-*
 report*.html
 *.log
-/PhotoGram.xcworkspace/xcshareddata/PhotoGram.xccheckout
-resources-to-copy-*.*/PhotoGram/features/Print_Confirmation.feature~
-/PhotoGram/features/g1
-/PhotoGram/features/Print_Confirmation1.feature
-PhotoGram/PhotoGram.xcodeproj/project.pbxproj.bak
+/Sprocket.xcworkspace/xcshareddata/Sprocket.xccheckout
+resources-to-copy-*.*/Sprocket/features/Print_Confirmation.feature~
+/Sprocket/features/g1
+/Sprocket/features/Print_Confirmation1.feature
+Sprocket/Sprocket.xcodeproj/project.pbxproj.bak
