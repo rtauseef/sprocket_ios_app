@@ -16,37 +16,50 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E34D5056199AB87B006D80E0"
                BuildableName = "SocialMediaSnapshots.app"
-               BlueprintName = "PhotoGram"
-               ReferencedContainer = "container:PhotoGram.xcodeproj">
+               BlueprintName = "Sprocket"
+               ReferencedContainer = "container:Sprocket.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E34D507A199AB87B006D80E0"
+               BuildableName = "SprocketTests.xctest"
+               BlueprintName = "SprocketTests"
+               ReferencedContainer = "container:Sprocket.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E34D5056199AB87B006D80E0"
             BuildableName = "SocialMediaSnapshots.app"
-            BlueprintName = "PhotoGram"
-            ReferencedContainer = "container:PhotoGram.xcodeproj">
+            BlueprintName = "Sprocket"
+            ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "AppStore"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -54,8 +67,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E34D5056199AB87B006D80E0"
             BuildableName = "SocialMediaSnapshots.app"
-            BlueprintName = "PhotoGram"
-            ReferencedContainer = "container:PhotoGram.xcodeproj">
+            BlueprintName = "Sprocket"
+            ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -69,10 +82,10 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "AppStore"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -80,8 +93,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E34D5056199AB87B006D80E0"
             BuildableName = "SocialMediaSnapshots.app"
-            BlueprintName = "PhotoGram"
-            ReferencedContainer = "container:PhotoGram.xcodeproj">
+            BlueprintName = "Sprocket"
+            ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -89,7 +102,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "AppStore"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

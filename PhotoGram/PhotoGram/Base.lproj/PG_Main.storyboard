@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -342,13 +342,13 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="1"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Social Media Snapshots" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKs-uV-c3d">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hpsprocket" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKs-uV-c3d">
                                     <rect key="frame" x="17" y="90" width="232" height="23"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="232" id="ChR-5k-G2O"/>
                                         <constraint firstAttribute="height" constant="23" id="PLt-iH-0XL"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="16"/>
+                                    <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -1118,14 +1118,14 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Social Media Snapshots" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="d71-za-T7q">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hpsprocket" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="d71-za-T7q">
                                 <rect key="frame" x="20" y="182" width="560" height="21"/>
                                 <color key="tintColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9F-p5-X9c">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9F-p5-X9c">
                                 <rect key="frame" x="259" y="213" width="83" height="21"/>
                                 <color key="tintColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1425,12 +1425,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HPSMS_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="xwV-xY-xSm">
-                                <rect key="frame" x="261" y="97" width="79" height="82"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Social Media Snapshots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8A-4l-TdM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hpsprocket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8A-4l-TdM">
                                 <rect key="frame" x="193" y="204" width="215" height="23"/>
-                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1571,6 +1568,9 @@ Flickr, you also agree with HP’s Terms of Service.</string>
                                     </mask>
                                 </variation>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HPLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gYx-ML-V4R">
+                                <rect key="frame" x="259" y="113" width="83" height="83"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1580,9 +1580,6 @@ Flickr, you also agree with HP’s Terms of Service.</string>
                             <constraint firstAttribute="centerY" secondItem="Ttx-CG-jdw" secondAttribute="centerY" constant="-105" id="GjF-L5-V5O"/>
                             <constraint firstAttribute="centerX" secondItem="HRq-id-52p" secondAttribute="centerX" id="IjH-Ej-ISC"/>
                             <constraint firstItem="HRq-id-52p" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="bottom" id="Lva-fv-dkK"/>
-                            <constraint firstItem="r8A-4l-TdM" firstAttribute="top" secondItem="xwV-xY-xSm" secondAttribute="bottom" constant="25" id="MgO-Kv-92w"/>
-                            <constraint firstAttribute="centerX" secondItem="xwV-xY-xSm" secondAttribute="centerX" id="NEk-aN-3oo"/>
-                            <constraint firstItem="xwV-xY-xSm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fLh-NT-hcD" secondAttribute="bottom" priority="800" constant="20" id="NUA-la-dMc"/>
                             <constraint firstAttribute="width" secondItem="HRq-id-52p" secondAttribute="width" id="Ooj-0t-aSd"/>
                             <constraint firstAttribute="centerX" secondItem="r8A-4l-TdM" secondAttribute="centerX" id="SLC-N5-DnV"/>
                             <constraint firstAttribute="centerX" secondItem="krD-fF-9ON" secondAttribute="centerX" id="Uir-iA-nCg"/>
@@ -1701,7 +1698,6 @@ Flickr, you also agree with HP’s Terms of Service.</string>
         <image name="Facebook" width="66" height="66"/>
         <image name="Flickr" width="66" height="66"/>
         <image name="HPLogo.png" width="28" height="28"/>
-        <image name="HPSMS_logo.png" width="79" height="82"/>
         <image name="Instagram" width="66" height="66"/>
         <image name="LoginCameraRoll.png" width="47" height="47"/>
         <image name="LoginFacebook.png" width="47" height="47"/>
@@ -1714,9 +1710,9 @@ Flickr, you also agree with HP’s Terms of Service.</string>
         <image name="Share.png" width="17" height="25"/>
         <image name="TakeSurvey.png" width="28" height="28"/>
         <image name="hp.logo.blue.png" width="52" height="52"/>
-        <image name="logo.blue.png" width="148" height="154"/>
+        <image name="logo.blue.png" width="144" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oaC-oH-lb1"/>
+        <segue reference="pea-8S-scq"/>
     </inferredMetricsTieBreakers>
 </document>
