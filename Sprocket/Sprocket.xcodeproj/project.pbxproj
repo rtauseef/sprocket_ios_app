@@ -725,7 +725,7 @@
 		E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MeasurementArrowUp@2x.png"; path = "Resources/Images/Icons/MeasurementArrowUp@2x.png"; sourceTree = "<group>"; };
 		E3461FB319AFD4610042DF5E /* UITableView+Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Header.h"; sourceTree = "<group>"; };
 		E3461FB419AFD4610042DF5E /* UITableView+Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Header.m"; sourceTree = "<group>"; };
-		E34D5057199AB87B006D80E0 /* SocialMediaSnapshots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMediaSnapshots.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E34D5057199AB87B006D80E0 /* Sprocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sprocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34D505A199AB87B006D80E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E34D505C199AB87B006D80E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E34D505E199AB87B006D80E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1213,7 +1213,7 @@
 		E34D5058199AB87B006D80E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E34D5057199AB87B006D80E0 /* SocialMediaSnapshots.app */,
+				E34D5057199AB87B006D80E0 /* Sprocket.app */,
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
 				E31C481A1A5DB0E500EA9AB1 /* PhotoGram-cal.app */,
 			);
@@ -1791,7 +1791,7 @@
 			);
 			name = Sprocket;
 			productName = PhotoGram;
-			productReference = E34D5057199AB87B006D80E0 /* SocialMediaSnapshots.app */;
+			productReference = E34D5057199AB87B006D80E0 /* Sprocket.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E34D507A199AB87B006D80E0 /* SprocketTests */ = {
@@ -3022,7 +3022,7 @@
 					UIKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
-				PRODUCT_NAME = SocialMediaSnapshots;
+				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -3093,7 +3093,7 @@
 					UIKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
-				PRODUCT_NAME = SocialMediaSnapshots;
+				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
