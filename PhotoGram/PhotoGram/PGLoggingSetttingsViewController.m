@@ -322,7 +322,7 @@ static int kHideSvgMessagesIndex = 6;
             [errorLogData appendData:errorLogFileData];
         }
         [mailViewController addAttachmentData:errorLogData mimeType:@"text/plain" fileName:@"errorLog.txt"];
-        [mailViewController setSubject:NSLocalizedString(@"Social Media Snapshots error log", nil)];
+        [mailViewController setSubject:NSLocalizedString(@"sprocket error log", nil)];
         [mailViewController setMessageBody:NSLocalizedString(@"The logfile is attached to this message.", nil) isHTML:NO];
         
         [self presentViewController:mailViewController animated:YES completion:nil];

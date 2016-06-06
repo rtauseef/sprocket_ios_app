@@ -24,13 +24,7 @@
 		6552DA971A7972BB002D3B48 /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = 6552DA941A7972BB002D3B48 /* normalize.css */; };
 		6552DA991A7972BB002D3B48 /* socialsnaps.webflow.css in Resources */ = {isa = PBXBuildFile; fileRef = 6552DA951A7972BB002D3B48 /* socialsnaps.webflow.css */; };
 		6552DA9B1A7972BB002D3B48 /* webflow.css in Resources */ = {isa = PBXBuildFile; fileRef = 6552DA961A7972BB002D3B48 /* webflow.css */; };
-		6552DAA81A79732C002D3B48 /* 12-quotes.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA01A79732C002D3B48 /* 12-quotes.png */; };
 		6552DAAA1A79732C002D3B48 /* 14-social-email.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA11A79732C002D3B48 /* 14-social-email.png */; };
-		6552DAAC1A79732C002D3B48 /* AppStoreBadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA21A79732C002D3B48 /* AppStoreBadge.png */; };
-		6552DAAE1A79732C002D3B48 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA31A79732C002D3B48 /* Background.png */; };
-		6552DAB01A79732C002D3B48 /* iPhoneHand.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA41A79732C002D3B48 /* iPhoneHand.png */; };
-		6552DAB21A79732C002D3B48 /* MediaBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA51A79732C002D3B48 /* MediaBox.png */; };
-		6552DAB41A79732C002D3B48 /* SampleCards.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA61A79732C002D3B48 /* SampleCards.png */; };
 		6552DAB61A79732C002D3B48 /* SocialSnaps_white_sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAA71A79732C002D3B48 /* SocialSnaps_white_sm.png */; };
 		6552DABB1A797396002D3B48 /* modernizr.js in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAB91A797396002D3B48 /* modernizr.js */; };
 		6552DABD1A797396002D3B48 /* webflow.js in Resources */ = {isa = PBXBuildFile; fileRef = 6552DABA1A797396002D3B48 /* webflow.js */; };
@@ -629,13 +623,7 @@
 		6552DA941A7972BB002D3B48 /* normalize.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = normalize.css; sourceTree = "<group>"; };
 		6552DA951A7972BB002D3B48 /* socialsnaps.webflow.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = socialsnaps.webflow.css; sourceTree = "<group>"; };
 		6552DA961A7972BB002D3B48 /* webflow.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = webflow.css; sourceTree = "<group>"; };
-		6552DAA01A79732C002D3B48 /* 12-quotes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12-quotes.png"; sourceTree = "<group>"; };
 		6552DAA11A79732C002D3B48 /* 14-social-email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14-social-email.png"; sourceTree = "<group>"; };
-		6552DAA21A79732C002D3B48 /* AppStoreBadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppStoreBadge.png; sourceTree = "<group>"; };
-		6552DAA31A79732C002D3B48 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
-		6552DAA41A79732C002D3B48 /* iPhoneHand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneHand.png; sourceTree = "<group>"; };
-		6552DAA51A79732C002D3B48 /* MediaBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MediaBox.png; sourceTree = "<group>"; };
-		6552DAA61A79732C002D3B48 /* SampleCards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SampleCards.png; sourceTree = "<group>"; };
 		6552DAA71A79732C002D3B48 /* SocialSnaps_white_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SocialSnaps_white_sm.png; sourceTree = "<group>"; };
 		6552DAB91A797396002D3B48 /* modernizr.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = modernizr.js; sourceTree = "<group>"; };
 		6552DABA1A797396002D3B48 /* webflow.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = webflow.js; sourceTree = "<group>"; };
@@ -1102,13 +1090,7 @@
 		6552DA9F1A7972FC002D3B48 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				6552DAA01A79732C002D3B48 /* 12-quotes.png */,
 				6552DAA11A79732C002D3B48 /* 14-social-email.png */,
-				6552DAA21A79732C002D3B48 /* AppStoreBadge.png */,
-				6552DAA31A79732C002D3B48 /* Background.png */,
-				6552DAA41A79732C002D3B48 /* iPhoneHand.png */,
-				6552DAA51A79732C002D3B48 /* MediaBox.png */,
-				6552DAA61A79732C002D3B48 /* SampleCards.png */,
 				6552DAA71A79732C002D3B48 /* SocialSnaps_white_sm.png */,
 			);
 			name = images;
@@ -2187,13 +2169,10 @@
 				E39EF28619B648E500AAB884 /* SourceSansPro-Regular.ttf in Resources */,
 				E39EF28819B648E500AAB884 /* SpecialElite.ttf in Resources */,
 				F1DCB82B1B542D6500CA9AAD /* spicyrice-regular.ttf in Resources */,
-				6552DAA81A79732C002D3B48 /* 12-quotes.png in Resources */,
 				6552DAAA1A79732C002D3B48 /* 14-social-email.png in Resources */,
 				92D57EE41CB2DBC700051D79 /* Template16_5x7.hpc in Resources */,
 				E375385919BE57C5009C695F /* About@2x.png in Resources */,
-				6552DAAC1A79732C002D3B48 /* AppStoreBadge.png in Resources */,
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
-				6552DAAE1A79732C002D3B48 /* Background.png in Resources */,
 				E3461F9619AEAC870042DF5E /* BuyNow@2x.png in Resources */,
 				E375384B19BE2B6D009C695F /* CardShadow@2x.png in Resources */,
 				92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */,
@@ -2219,7 +2198,6 @@
 				F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */,
 				E34D50D7199AC363006D80E0 /* IntroBackground@2x.png in Resources */,
 				008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */,
-				6552DAB01A79732C002D3B48 /* iPhoneHand.png in Resources */,
 				E3461F9819AEAC870042DF5E /* LearnMore@2x.png in Resources */,
 				F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */,
 				E3D6815E19A3D12E000D45E0 /* ListViewOff@2x.png in Resources */,
@@ -2233,7 +2211,6 @@
 				E3461FA319AF84A80042DF5E /* MeasurementArrowLeft@2x.png in Resources */,
 				E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */,
 				E3461FA719AF84A80042DF5E /* MeasurementArrowUp@2x.png in Resources */,
-				6552DAB21A79732C002D3B48 /* MediaBox.png in Resources */,
 				E375385D19BE57C5009C695F /* MobilePrinting@2x.png in Resources */,
 				E3D6816219A3D12E000D45E0 /* MyFeedOff@2x.png in Resources */,
 				E3D6816419A3D12E000D45E0 /* MyFeedOn@2x.png in Resources */,
@@ -2243,7 +2220,6 @@
 				E3DB16B119F5604900C0F42B /* PurpleFlower@2x.png in Resources */,
 				E320F8B919C36A7A00BC2AE3 /* retry@2x.png in Resources */,
 				F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */,
-				6552DAB41A79732C002D3B48 /* SampleCards.png in Resources */,
 				E3B123A819DDCCCF00B40FB4 /* SaveToCamera@2x~ipad.png in Resources */,
 				E3B123AA19DDCCCF00B40FB4 /* SaveToCamera@2x~iphone.png in Resources */,
 				E3B62FFE19A50E5800CB80D7 /* Search@2x.png in Resources */,
