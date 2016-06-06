@@ -671,7 +671,7 @@
 		E31BE41E19ED91E1006B78BB /* PGFacebookLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFacebookLandingPageViewController.m; sourceTree = "<group>"; };
 		E31BE42119ED91FA006B78BB /* PGCameraRollLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraRollLandingPageViewController.h; sourceTree = "<group>"; };
 		E31BE42219ED91FA006B78BB /* PGCameraRollLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraRollLandingPageViewController.m; sourceTree = "<group>"; };
-		E31C481A1A5DB0E500EA9AB1 /* PhotoGram-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoGram-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E31C481A1A5DB0E500EA9AB1 /* Sprocket-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprocket-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E320F8B819C36A7A00BC2AE3 /* retry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "retry@2x.png"; path = "Resources/Images/retry@2x.png"; sourceTree = "<group>"; };
 		E33FFFF619D21C0E00D2FDAC /* PGAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAnalyticsManager.h; sourceTree = "<group>"; };
 		E33FFFF719D21C0E00D2FDAC /* PGAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAnalyticsManager.m; sourceTree = "<group>"; };
@@ -1215,7 +1215,7 @@
 			children = (
 				E34D5057199AB87B006D80E0 /* Sprocket.app */,
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
-				E31C481A1A5DB0E500EA9AB1 /* PhotoGram-cal.app */,
+				E31C481A1A5DB0E500EA9AB1 /* Sprocket-cal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1768,7 +1768,7 @@
 			);
 			name = "Sprocket-cal";
 			productName = PhotoGram;
-			productReference = E31C481A1A5DB0E500EA9AB1 /* PhotoGram-cal.app */;
+			productReference = E31C481A1A5DB0E500EA9AB1 /* Sprocket-cal.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E34D5056199AB87B006D80E0 /* Sprocket */ = {
@@ -2812,7 +2812,7 @@
 					UIKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.Sprocket-cal";
-				PRODUCT_NAME = "PhotoGram-cal";
+				PRODUCT_NAME = "Sprocket-cal";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -2874,7 +2874,7 @@
 					UIKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.Sprocket-cal";
-				PRODUCT_NAME = "PhotoGram-cal";
+				PRODUCT_NAME = "Sprocket-cal";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E34D5056199AB87B006D80E0"
-               BuildableName = "SocialMediaSnapshots.app"
+               BuildableName = "Sprocket.app"
                BlueprintName = "Sprocket"
                ReferencedContainer = "container:Sprocket.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E34D5056199AB87B006D80E0"
-            BuildableName = "SocialMediaSnapshots.app"
+            BuildableName = "Sprocket.app"
             BlueprintName = "Sprocket"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E34D5056199AB87B006D80E0"
-            BuildableName = "SocialMediaSnapshots.app"
+            BuildableName = "Sprocket.app"
             BlueprintName = "Sprocket"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
@@ -92,7 +92,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E34D5056199AB87B006D80E0"
-            BuildableName = "SocialMediaSnapshots.app"
+            BuildableName = "Sprocket.app"
             BlueprintName = "Sprocket"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
