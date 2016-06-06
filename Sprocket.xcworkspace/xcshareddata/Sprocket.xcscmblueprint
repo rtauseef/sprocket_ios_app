@@ -10,28 +10,16 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C786E644-DC64-4046-B003-DD7D71C14C15",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "FD61A807B543994884861E48DE55D23B88024166" : "photogram\/",
-    "54611BD22880AC59932302A22BCC4D181260DB54" : "hp_photo_print\/",
     "002654A986428CD1047FC86DD2CA762D9F8814B2" : "sprocket_ios_app\/"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "PhotoGram",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Sprocket",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PhotoGram.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Sprocket.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IPGPTP\/sprocket_ios_app.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "002654A986428CD1047FC86DD2CA762D9F8814B2"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:IPGPTP\/hp_photo_print.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "54611BD22880AC59932302A22BCC4D181260DB54"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:IPGPTP\/photogram.git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FD61A807B543994884861E48DE55D23B88024166"
     }
   ]
 }
