@@ -35,7 +35,7 @@
 "Error retrieving user information." = "Chyba při získávání informací.";
 
 /* Subject of the email send to technical support */
-"Feedback on HP Social Media Snapshots for iOS (Record Locator: %@)" = "Reakce na aplikaci HP Social Media Snapshots pro systém iOS (identifikátor záznamu: %@)";
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Reakce na aplikaci sprocket pro systém iOS (identifikátor záznamu: %@)";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Soubor protokolu byl vymazán.";
@@ -119,7 +119,7 @@ Podle potřeby můžete použít také fotografie z vašeho zařízení.";
 "Sign Out" = "Odhlásit se";
 
 /* No comment provided by engineer. */
-"Social Media Snapshots error log" = "Protokol chyby v aplikaci Social Media Snapshots";
+"sprocket error log" = "Protokol chyby v aplikaci sprocket";
 
 /* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Je nám líto, ale tyto potíže nelze momentálně nahlásit. Pravděpodobně ve svém mobilním zařízení nemáte nastaven žádný e-mailový účet.";
@@ -134,7 +134,7 @@ Podle potřeby můžete použít také fotografie z vašeho zařízení.";
 "Tell us what you think of %@" = "Co si myslíte o %@";
 
 /* No comment provided by engineer. */
-"Tell us what you think of HP Social Media Snapshots" = "Co si myslíte o aplikaci HP Social Media Snapshots";
+"Tell us what you think of sprocket" = "Co si myslíte o aplikaci sprocket";
 
 /* Phrase to make link for terms of service of the landing page */
 "Terms of Service" = "podmínkami služby";

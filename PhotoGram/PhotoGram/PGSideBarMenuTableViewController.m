@@ -573,7 +573,7 @@ typedef enum {
             deviceId = [deviceId substringToIndex:6];
         }
         
-        NSString *subjectLine = NSLocalizedString(@"Feedback on HP Social Media Snapshots for iOS (Record Locator: %@)", @"Subject of the email send to technical support");
+        NSString *subjectLine = NSLocalizedString(@"Feedback on sprocket for iOS (Record Locator: %@)", @"Subject of the email send to technical support");
         subjectLine = [NSString stringWithFormat:subjectLine, deviceId];
 
         MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];

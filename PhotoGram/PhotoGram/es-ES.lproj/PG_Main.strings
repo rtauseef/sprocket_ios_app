@@ -110,14 +110,14 @@ Flickr, también acepta los Términos de servicio de HP.";
 /* Class = "UILabel"; text = "Take our Survey"; ObjectID = "d9t-5q-1nR"; */
 "d9t-5q-1nR.text" = "Completar nuestra encuesta";
 
-/* Class = "UILabel"; text = "HP Social Media Snapshots"; ObjectID = "d71-za-T7q"; */
-"d71-za-T7q.text" = "HP Social Media Snapshots";
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "d71-za-T7q"; */
+"d71-za-T7q.text" = "sprocket";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "dcp-jn-Bby"; */
 "dcp-jn-Bby.text" = "Acerca de";
 
-/* Class = "UILabel"; text = "HP Social Media Snapshots"; ObjectID = "fKs-uV-c3d"; */
-"fKs-uV-c3d.text" = "HP Social Media Snapshots";
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "fKs-uV-c3d"; */
+"fKs-uV-c3d.text" = "sprocket";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
 "ipg-92-MP9.title" = "Seleccionar plantilla";
@@ -135,8 +135,8 @@ e imprima sus fotos";
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
-/* Class = "UILabel"; text = "HP Social Media Snapshots"; ObjectID = "r8A-4l-TdM"; */
-"r8A-4l-TdM.text" = "HP Social Media Snapshots";
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "r8A-4l-TdM"; */
+"r8A-4l-TdM.text" = "sprocket";
 
 /* Class = "UILabel"; text = "Flickr"; ObjectID = "tOP-DZ-lMX"; */
 "tOP-DZ-lMX.text" = "Flickr";

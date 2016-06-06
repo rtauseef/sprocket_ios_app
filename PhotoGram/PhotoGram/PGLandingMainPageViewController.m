@@ -96,7 +96,7 @@
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
     PGSurveyManager *surveyManager = [PGSurveyManager sharedInstance];
-    surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of HP Social Media Snapshots", nil);
+    surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of sprocket", nil);
     surveyManager.delegate = self;
     [surveyManager check];
     
