@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/panini/workspace/sprocket_ios_app/PhotoGram/Sprocket.xcodeproj">
+      location = "group:/Users/panini/workspace/sprocket_ios_app/Sprocket/Sprocket.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
