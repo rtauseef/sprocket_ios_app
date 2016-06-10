@@ -1,11 +1,1 @@
-
-
-#import "SVGElement.h"
-
-#import "ConverterSVGToCALayer.h"
-
-@interface SVGSwitchElement : SVGElement <ConverterSVGToCALayer>
-
-@property (nonatomic, readonly, strong) NodeList * visibleChildNodes;
-
-@end
+../../../SVGKit/Source/DOM classes/Unported or Partial DOM/SVGSwitchElement.h

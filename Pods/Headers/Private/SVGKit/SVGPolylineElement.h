@@ -1,6 +1,1 @@
-#import "BaseClassForAllSVGBasicShapes.h"
-#import "BaseClassForAllSVGBasicShapes_ForSubclasses.h"
-
-@interface SVGPolylineElement : BaseClassForAllSVGBasicShapes { }
-
-@end
+../../../SVGKit/Source/DOM classes/Unported or Partial DOM/SVGPolylineElement.h

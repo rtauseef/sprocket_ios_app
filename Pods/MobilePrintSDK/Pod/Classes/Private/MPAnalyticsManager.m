@@ -65,7 +65,8 @@ NSString * const kMPMetricsTimezoneOffsetSeconds = @"timezone_offset_seconds";
 NSString * const kMPMetricsEventTypeID = @"event_type_id";
 NSString * const kMPMetricsPrintSessionID = @"print_session_id";
 NSString * const kMPMetricsEventCount = @"event_count";
-NSInteger const kMPMetricsEventInitialCount = 1;
+NSInteger  const kMPMetricsEventInitialCountValue = 1;
+NSNumber *       kMPMetricsEventInitialCount;
 
 NSString * const kMPMetricsEventTypePrintInitiated = @"1";
 NSString * const kMPMetricsEventTypePrintCompleted = @"5";
@@ -78,6 +79,7 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
+        kMPMetricsEventInitialCount = [NSNumber numberWithInteger:kMPMetricsEventInitialCountValue];
     });
     
     return sharedManager;
@@ -253,8 +255,13 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
 - (void)sanitizeMetrics:(NSMutableDictionary *)metrics
 {
     NSString *appType = [metrics objectForKey:kMPMetricsAppType];
-        
-    if ([MP sharedInstance].handlePrintMetricsAutomatically  &&  ![appType isEqualToString:kMPMetricsAppTypeHP]) {
+    
+    if (nil == appType && ![MP sharedInstance].handlePrintMetricsAutomatically) {
+        appType = kMPMetricsAppTypeHP;
+        [metrics setObject:appType forKey:kMPMetricsAppType];
+    }
+    
+    if (![appType isEqualToString:kMPMetricsAppTypeHP]) {
         [metrics setObject:kMPMetricsAppTypePartner forKey:kMPMetricsAppType];
         for (NSString *key in [self partnerExcludedMetrics]) {
             [metrics setObject:kMPMetricsNotCollected forKey:key];
@@ -315,25 +322,23 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
 {
     [self sanitizeMetrics:metrics];
 
-    if (nil != [metrics objectForKey:kMPMetricsAppType]) {
-        NSData *bodyData = [self postBodyWithValues:metrics];
-        NSString *bodyLength = [NSString stringWithFormat:@"%ld", (long)[bodyData length]];
-        NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-        [urlRequest setHTTPMethod:@"POST"];
-        [urlRequest setHTTPBody:bodyData];
-        [urlRequest addValue:bodyLength forHTTPHeaderField: @"Content-Length"];
-        [urlRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            [self sendMetricsData:urlRequest];
-        });
-    }
+    NSData *bodyData = [self postBodyWithValues:metrics];
+    NSString *bodyLength = [NSString stringWithFormat:@"%ld", (long)[bodyData length]];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:bodyData];
+    [urlRequest addValue:bodyLength forHTTPHeaderField: @"Content-Length"];
+    [urlRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self sendMetricsData:urlRequest];
+    });
 }
 
 - (NSString *)eventCountForId:(NSString *)eventId
 {
     NSString *key = [NSString stringWithFormat:@"%@_%@", kMPMetricsEventTypeID, eventId];
-    NSNumber *newValue = [NSNumber numberWithInteger:kMPMetricsEventInitialCount];
+    NSNumber *newValue = kMPMetricsEventInitialCount;
     @synchronized(self) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSNumber *currentValue = [defaults objectForKey:key];

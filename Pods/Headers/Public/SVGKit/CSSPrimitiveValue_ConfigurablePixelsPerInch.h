@@ -1,7 +1,1 @@
-#import "CSSPrimitiveValue.h"
-
-@interface CSSPrimitiveValue ()
-
-@property(nonatomic) float pixelsPerInch;
-
-@end
+../../../SVGKit/Source/DOM classes/Core DOM/CSSPrimitiveValue_ConfigurablePixelsPerInch.h
