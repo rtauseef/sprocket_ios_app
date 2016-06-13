@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-               BuildableName = "PhotoGram-cal.app"
+               BuildableName = "Sprocket-cal.app"
                BlueprintName = "Sprocket-cal"
                ReferencedContainer = "container:Sprocket.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-            BuildableName = "PhotoGram-cal.app"
+            BuildableName = "Sprocket-cal.app"
             BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-            BuildableName = "PhotoGram-cal.app"
+            BuildableName = "Sprocket-cal.app"
             BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-            BuildableName = "PhotoGram-cal.app"
+            BuildableName = "Sprocket-cal.app"
             BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
