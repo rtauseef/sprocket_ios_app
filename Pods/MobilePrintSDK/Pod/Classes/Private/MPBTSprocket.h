@@ -40,6 +40,7 @@
 - (void)reflash:(NSData *)reflashData;
 
 + (BOOL)supportedAccessory:(EAAccessory *)accessory;
++ (NSString *)macAddress:(NSData *)data;
 + (NSString *)errorString:(MantaError)error;
 
 @end
@@ -48,10 +49,13 @@
 
 @optional
 - (void)didRefreshMantaInfo:(MPBTSprocket *)manta error:(MantaError)error;
-- (void)didStartSendingPrint:(MPBTSprocket *)manta error:(MantaError)error;
+- (void)didSendPrintData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error;
 - (void)didFinishSendingPrint:(MPBTSprocket *)manta;
 - (void)didStartPrinting:(MPBTSprocket *)manta;
 - (void)didReceiveError:(MPBTSprocket *)manta error:(MantaError)error;
 - (void)didSetAccessoryInfo:(MPBTSprocket *)manta error:(MantaError)error;
+- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error;
+- (void)didFinishSendingDeviceUpgrade:(MPBTSprocket *)manta;
+- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(MantaUpgradeStatus)status;
 
 @end

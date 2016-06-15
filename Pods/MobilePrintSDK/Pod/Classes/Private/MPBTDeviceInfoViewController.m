@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *printModeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *autoExposureSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *autoPowerOffSegmentedControl;
+@property (strong, nonatomic) UIAlertController* alert;
 
 @end
 
@@ -35,6 +36,11 @@
     [super viewDidLoad];
     
     [self setTitle:@"Device Info"];
+    
+    self.alert = [UIAlertController alertControllerWithTitle:@"Upgrade Status"
+                                                     message:@"This is an alert."
+                                              preferredStyle:UIAlertControllerStyleAlert];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,9 +107,9 @@
     self.errorValueLabel.text = [MPBTSprocket errorString:error];
     self.printCountValueLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)sprocket.totalPrintCount];
     self.batteryStatusValueLabel.text = [NSString stringWithFormat:@"%lu%@", (unsigned long)sprocket.batteryStatus, @"%"];
-    self.macAddressValueLabel.text = [NSString stringWithFormat:@"%@", sprocket.macAddress];
-    self.firmwareVersionValueLabel.text = [NSString stringWithFormat:@"0x%lx", (unsigned long)sprocket.firmwareVersion];
-    self.hardwareVersionValueLabel.text = [NSString stringWithFormat:@"0x%lx", (unsigned long)sprocket.hardwareVersion];
+    self.macAddressValueLabel.text = [MPBTSprocket macAddress:sprocket.macAddress];
+    self.firmwareVersionValueLabel.text = [NSString stringWithFormat:@"0x%06x", sprocket.firmwareVersion];
+    self.hardwareVersionValueLabel.text = [NSString stringWithFormat:@"0x%06x", sprocket.hardwareVersion];
     
     self.printModeSegmentedControl.selectedSegmentIndex = sprocket.printMode - 1;
     self.autoExposureSegmentedControl.selectedSegmentIndex = sprocket.autoExposure;
@@ -129,9 +135,11 @@
             NSAssert(FALSE, @"Unrecognized MantaAutoPowerOffInteval: %d", sprocket.powerOffInterval);
             break;
     };
+    
+    [self setTitle:[NSString stringWithFormat:@"%@", sprocket.accessory.name]];
 }
 
-- (void)didStartSendingPrint:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
 {
     
 }
@@ -156,5 +164,37 @@
     
 }
 
+- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
+{
+    self.alert.message = [NSString stringWithFormat:@"Sending upgrade data to device... \n%d%@ complete", percentageComplete, @"%"];
+    if (!(self.alert.isViewLoaded  &&  self.alert.view.window)) {
+        [self presentViewController:self.alert animated:YES completion:nil];
+    }
+}
+
+- (void)didFinishSendingDeviceUpgrade:(MPBTSprocket *)manta
+{
+    self.alert.message = @"Finished sending upgrade data...";
+}
+
+- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(MantaUpgradeStatus)status
+{
+    
+    if (MantaUpgradeStatusStart == status) {
+        self.alert.message = @"Upgrade started";
+    } else {
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {[self.alert dismissViewControllerAnimated:YES completion:nil];}];
+        [self.alert addAction:defaultAction];
+
+        if (MantaUpgradeStatusFinish == status) {
+            self.alert.message = @"Upgrade complete";
+        } else if (MantaUpgradeStatusFail == status){
+            self.alert.message = @"Upgrade failed";
+        } else {
+            self.alert.message = [NSString stringWithFormat:@"Unknown status: %d", status];
+        }
+    }
+}
 
 @end
