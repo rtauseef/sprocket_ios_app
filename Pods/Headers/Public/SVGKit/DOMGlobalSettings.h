@@ -1,1 +1,1 @@
-#define DEBUG_DOM_PARSING 0
+../../../SVGKit/Source/DOM classes/Core DOM/DOMGlobalSettings.h

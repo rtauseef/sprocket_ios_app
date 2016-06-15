@@ -810,7 +810,7 @@
     if (paperSize == MPPaperSize4x5){
         fileName = [NSString stringWithFormat:@"%@_%@", fileName, @"4x5"];
         
-    } else if (paperSize == MPPaperSize4x6) {
+    } else if (paperSize == MPPaperSize4x6  ||  paperSize == MPPaperSize2x3) {
         fileName = [NSString stringWithFormat:@"%@_%@", fileName, @"4x6"];
         
     } else if (paperSize == MPPaperSize5x7) {

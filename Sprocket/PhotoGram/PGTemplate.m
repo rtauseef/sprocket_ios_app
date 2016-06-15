@@ -23,11 +23,13 @@
         
         NSArray *objects = @[ [plistDict objectForKey:@"File Name 4x5"],
                               [plistDict objectForKey:@"File Name 4x6"],
-                              [plistDict objectForKey:@"File Name 5x7"] ];
+                              [plistDict objectForKey:@"File Name 5x7"],
+                              [plistDict objectForKey:@"File Name 4x6"]];
         
         NSArray *keys = @[ [NSNumber numberWithInt:MPPaperSize4x5],
                            [NSNumber numberWithInt:MPPaperSize4x6],
-                           [NSNumber numberWithInt:MPPaperSize5x7] ];
+                           [NSNumber numberWithInt:MPPaperSize5x7],
+                           [NSNumber numberWithInt:MPPaperSize2x3]];
         
         self.fileNames = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
         

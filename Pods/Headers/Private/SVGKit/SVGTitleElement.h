@@ -1,12 +1,1 @@
-//
-//  SVGTitleElement.h
-//  SVGKit
-//
-//  Copyright Matt Rajca 2010-2011. All rights reserved.
-//
-
-#import "SVGElement.h"
-
-@interface SVGTitleElement : SVGElement { }
-
-@end
+../../../SVGKit/Source/DOM classes/Unported or Partial DOM/SVGTitleElement.h

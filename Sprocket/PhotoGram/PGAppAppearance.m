@@ -142,17 +142,13 @@
 {
     [MP sharedInstance].appearance.settings = [PGAppAppearance mpAppearanceSettings];
     
-    [MP sharedInstance].defaultPaper = [[MPPaper alloc] initWithPaperSize:MPPaperSize4x6 paperType:MPPaperTypePhoto];
-    [MP sharedInstance].hideBlackAndWhiteOption = FALSE;
+    [MP sharedInstance].defaultPaper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
+    [MP sharedInstance].useBluetooth = TRUE;
+    [MP sharedInstance].hideBlackAndWhiteOption = TRUE;
     [MP sharedInstance].hidePaperSizeOption = FALSE;
     [MP sharedInstance].hidePaperTypeOption = FALSE;
     
-    [MP sharedInstance].supportedPapers = [self papersWithSizes:@[
-                                                                    [NSNumber numberWithUnsignedInteger:MPPaperSize4x5],
-                                                                    [NSNumber numberWithUnsignedInteger:MPPaperSize4x6],
-                                                                    [NSNumber numberWithUnsignedInteger:MPPaperSize5x7],
-                                                                    [NSNumber numberWithUnsignedInteger:MPPaperSizeLetter],
-                                                                    ]];
+    [MP sharedInstance].supportedPapers = [self papersWithSizes:@[[NSNumber numberWithUnsignedInteger:MPPaperSize2x3]]];
 }
 
 @end

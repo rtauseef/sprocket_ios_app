@@ -1,7 +1,1 @@
-#import <Foundation/Foundation.h>
-
-@interface CSSValue()
-
-- (id)initWithUnitType:(CSSUnitType) t;
-
-@end
+../../../SVGKit/Source/DOM classes/Core DOM/CSSValue_ForSubclasses.h

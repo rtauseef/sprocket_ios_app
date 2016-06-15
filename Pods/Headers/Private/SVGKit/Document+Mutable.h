@@ -1,7 +1,1 @@
-#import "Document.h"
-
-@interface Document ()
-
-@property(nonatomic,retain,readwrite) Element*          documentElement;
-
-@end
+../../../SVGKit/Source/DOM classes/Core DOM/Document+Mutable.h
