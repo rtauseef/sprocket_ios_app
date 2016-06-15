@@ -127,28 +127,11 @@
              };
 }
 
-+ (NSArray *)papersWithSizes:(NSArray *)sizes
-{
-    NSMutableArray *papers = [NSMutableArray array];
-    for (MPPaper *paper in [MPPaper availablePapers]) {
-        if ([sizes containsObject:[NSNumber numberWithUnsignedInteger:paper.paperSize]]) {
-            [papers addObject:paper];
-        }
-    }
-    return papers;
-}
-
 + (void)setPrintOptions
 {
     [MP sharedInstance].appearance.settings = [PGAppAppearance mpAppearanceSettings];
     
-    [MP sharedInstance].defaultPaper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
     [MP sharedInstance].useBluetooth = TRUE;
-    [MP sharedInstance].hideBlackAndWhiteOption = TRUE;
-    [MP sharedInstance].hidePaperSizeOption = FALSE;
-    [MP sharedInstance].hidePaperTypeOption = FALSE;
-    
-    [MP sharedInstance].supportedPapers = [self papersWithSizes:@[[NSNumber numberWithUnsignedInteger:MPPaperSize2x3]]];
 }
 
 @end
