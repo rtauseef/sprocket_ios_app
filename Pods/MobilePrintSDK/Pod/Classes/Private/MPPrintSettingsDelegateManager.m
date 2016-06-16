@@ -94,6 +94,17 @@ NSString * const kMPPrintSummarySeparatorText = @" / ";
     [self.pageSettingsViewController refreshData];
 }
 
+- (UIViewController *)printerPickerControllerParentViewController:(UIPrinterPickerController *)printerPickerController
+{
+    UIViewController *retVal = nil;
+    
+    if( self.pageSettingsViewController.splitViewController.isCollapsed ) {
+        retVal = self.pageSettingsViewController;
+    }
+    
+    return retVal;
+}
+
 #pragma mark - Number of Copies
 
 - (void)setNumCopies:(NSInteger)numCopies
@@ -122,10 +133,7 @@ NSString * const kMPPrintSummarySeparatorText = @" / ";
 - (void)setPaper:(MPPaper *)paper
 {
     _paper = paper;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithInteger:paper.paperSize] forKey:kMPLastPaperSizeSetting];
-    [defaults setObject:[NSNumber numberWithInteger:paper.paperType] forKey:kMPLastPaperTypeSetting];
-    [defaults synchronize];
+    [MPPrintSettingsDelegateManager setLastPaperUsed:paper];
     self.printSettings.paper = paper;
 }
 
@@ -350,6 +358,14 @@ NSString * const kMPPrintSummarySeparatorText = @" / ";
     }
     
     return paper;
+}
+
++ (void)setLastPaperUsed:(MPPaper *)paper
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithInteger:paper.paperSize] forKey:kMPLastPaperSizeSetting];
+    [defaults setObject:[NSNumber numberWithInteger:paper.paperType] forKey:kMPLastPaperTypeSetting];
+    [defaults synchronize];
 }
 
 - (void)savePrinterId:(NSString *)printerId

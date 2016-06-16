@@ -1,5 +1,1 @@
-#import "StyleSheetList.h"
-
-@interface StyleSheetList()
-@property(nonatomic,retain) NSMutableArray* internalArray;
-@end
+../../../SVGKit/Source/DOM classes/Core DOM/StyleSheetList+Mutable.h

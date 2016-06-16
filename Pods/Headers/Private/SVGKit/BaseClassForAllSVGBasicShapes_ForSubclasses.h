@@ -1,7 +1,1 @@
-/**
- Class extension that makes the internal properties readWRITE for subclasses to write to
- */
-
-@interface BaseClassForAllSVGBasicShapes ()
-@property (nonatomic, readwrite) CGPathRef pathForShapeInRelativeCoords;
-@end
+../../../SVGKit/Source/DOM classes/Unported or Partial DOM/BaseClassForAllSVGBasicShapes_ForSubclasses.h

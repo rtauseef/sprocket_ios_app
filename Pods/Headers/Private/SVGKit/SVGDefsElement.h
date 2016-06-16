@@ -1,9 +1,1 @@
-/*
- http://www.w3.org/TR/SVG/struct.html#InterfaceSVGDefsElement
- 
- */
-#import "SVGElement.h"
-
-@interface SVGDefsElement : SVGElement { }
-
-@end
+../../../SVGKit/Source/DOM classes/SVG-DOM/SVGDefsElement.h
