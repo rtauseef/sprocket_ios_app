@@ -4,7 +4,7 @@ source 'https://github.com/IPGPTP/hp_mss_pods.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target "Sprocket" do
-pod 'GoogleAnalytics-iOS-SDK', '3.12'
+pod 'GoogleAnalytics', '3.12'
 pod 'TTTAttributedLabel', '1.10.1'
 pod 'XMLDictionary', '1.4'
 pod 'CocoaLumberjack', '2.2.0'
@@ -14,4 +14,4 @@ pod 'HPPhotoProvider', '0.13.21'
 pod 'ZipArchive', '1.4.0'
 end
 
-xcodeproj 'Sprocket/Sprocket.xcodeproj'
+project 'Sprocket/Sprocket.xcodeproj'
