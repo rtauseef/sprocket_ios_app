@@ -7,7 +7,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target "Sprocket" do
     project 'Sprocket/Sprocket.xcodeproj'
     
-    pod 'GoogleAnalytics', '3.12'
+    pod 'GoogleAnalytics-iOS-SDK', '3.12'
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'XMLDictionary', '1.4'
     pod 'CocoaLumberjack', '2.2.0'
