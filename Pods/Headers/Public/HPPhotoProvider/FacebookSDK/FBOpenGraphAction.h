@@ -1,1 +1,1 @@
-../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Headers/FBOpenGraphAction.h
+../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Versions/A/Headers/FBOpenGraphAction.h

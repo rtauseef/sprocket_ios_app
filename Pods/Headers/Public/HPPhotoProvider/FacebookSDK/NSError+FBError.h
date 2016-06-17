@@ -1,1 +1,1 @@
-../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Headers/NSError+FBError.h
+../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Versions/A/Headers/NSError+FBError.h

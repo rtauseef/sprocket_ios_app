@@ -1,1 +1,1 @@
-../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Headers/FBPhotoParams.h
+../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Versions/A/Headers/FBPhotoParams.h
