@@ -13,7 +13,7 @@ target "Sprocket" do
     pod 'CocoaLumberjack', '2.2.0'
     pod 'SVGKit', git:'https://github.com/SVGKit/SVGKit.git', tag:'2.0.0'
     pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'#branch:'master'
-    pod 'HPPhotoProvider', '0.13.21'
+    pod 'HPPhotoProvider', '0.13.22'
     pod 'ZipArchive', '1.4.0'
 end
 
