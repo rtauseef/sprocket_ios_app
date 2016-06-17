@@ -130,9 +130,9 @@ IN NO EVENT SHALL DAVID CASSERLY OR DEVEDUP LTD BE LIABLE FOR ANY SPECIAL, INDIR
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2015 Google Inc.</string>
+			<string>Copyright 2009 - 2015 Google, Inc. All rights reserved.</string>
 			<key>Title</key>
-			<string>GoogleAnalytics</string>
+			<string>GoogleAnalytics-iOS-SDK</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
