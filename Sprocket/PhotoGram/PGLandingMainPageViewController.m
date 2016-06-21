@@ -23,6 +23,7 @@
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
+#import "PGOverlayCameraViewController.h"
 
 #import <MP.h>
 
@@ -31,6 +32,7 @@
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -172,6 +174,32 @@
     self.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", baseName, imageSuffix]];
 }
 
+- (void)showCamera {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+    picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    picker.showsCameraControls = NO;
+    picker.extendedLayoutIncludesOpaqueBars = NO;
+    
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0); //This slots the preview exactly in the middle of the screen by moving it down 71 points
+    picker.cameraViewTransform = translate;
+    
+    CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
+    picker.cameraViewTransform = scale;
+    
+    // Insert the overlay
+    self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
+    
+    self.cameraOverlay.pickerReference = picker;
+    self.cameraOverlay.view.frame = picker.cameraOverlayView.frame;
+    picker.delegate = self.cameraOverlay;
+    
+    [self presentViewController:picker animated:YES completion:^{
+        picker.cameraOverlayView = self.cameraOverlay.view;
+    }];
+}
+
 - (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -240,6 +268,11 @@
 - (IBAction)flickrTapped:(id)sender
 {
     [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:NO];
+}
+
+- (IBAction)cameraTapped:(id)sender
+{
+    [self showCamera];
 }
 
 #pragma mark - PGSurveyManagerDelegate

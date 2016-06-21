@@ -35,6 +35,9 @@
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65DAD7691B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
+		822ED5281D188C9D00F4EE4B /* PGCameraLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5271D188C9D00F4EE4B /* PGCameraLandingPageViewController.m */; };
+		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
+		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		920746261CB5D1000051CF1D /* Template5_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE51CB2E63600051D79 /* Template5_4x5.hpc */; };
 		920746271CB5D1050051CF1D /* Template5_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE61CB2E63600051D79 /* Template5_4x6.hpc */; };
 		920746281CB5D1090051CF1D /* Template5_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE71CB2E63600051D79 /* Template5_5x7.hpc */; };
@@ -633,6 +636,11 @@
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		822ED5261D188C9D00F4EE4B /* PGCameraLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraLandingPageViewController.h; sourceTree = "<group>"; };
+		822ED5271D188C9D00F4EE4B /* PGCameraLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraLandingPageViewController.m; sourceTree = "<group>"; };
+		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
+		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
+		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
 		92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x5.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x5.hpc; sourceTree = "<group>"; };
 		92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x6.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x6.hpc; sourceTree = "<group>"; };
 		92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_5x7.hpc; path = Resources/Images/Templates/CameraRoll/Template16_5x7.hpc; sourceTree = "<group>"; };
@@ -1551,6 +1559,9 @@
 		E3D6814319A3D02E000D45E0 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */,
+				822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */,
+				822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */,
 				E31BE41119E601F0006B78BB /* PGGesturesView.h */,
 				E31BE41219E601F0006B78BB /* PGGesturesView.m */,
 				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
@@ -1584,6 +1595,8 @@
 				E31BE41E19ED91E1006B78BB /* PGFacebookLandingPageViewController.m */,
 				E31BE42119ED91FA006B78BB /* PGCameraRollLandingPageViewController.h */,
 				E31BE42219ED91FA006B78BB /* PGCameraRollLandingPageViewController.m */,
+				822ED5261D188C9D00F4EE4B /* PGCameraLandingPageViewController.h */,
+				822ED5271D188C9D00F4EE4B /* PGCameraLandingPageViewController.m */,
 				CC3335221A0BEC4800E421AC /* PGFlickrLandingPageViewController.h */,
 				CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */,
 				F18C59241A702DB900DEF77C /* PGLandingMainPageViewController.h */,
@@ -2083,6 +2096,7 @@
 				F17A81771A365D0B008884F9 /* Template1_4x5.svg in Resources */,
 				F17A81781A365D0B008884F9 /* Template1_4x6.svg in Resources */,
 				F17A81791A365D0B008884F9 /* Template1_5x7.svg in Resources */,
+				822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */,
 				E3DB169319F5603600C0F42B /* Template1@2x.png in Resources */,
 				F17A817A1A365D0B008884F9 /* Template2_4x5.svg in Resources */,
 				F17A817B1A365D0B008884F9 /* Template2_4x6.svg in Resources */,
@@ -2531,11 +2545,13 @@
 				E3461F2619AE2F470042DF5E /* UIColor+HexString.m in Sources */,
 				E3461F3219AE30110042DF5E /* SVGKImage+Box.m in Sources */,
 				E3461F1419AE2EFA0042DF5E /* SVGKImage+Fix.m in Sources */,
+				822ED5281D188C9D00F4EE4B /* PGCameraLandingPageViewController.m in Sources */,
 				E3461F2019AE2F220042DF5E /* SVGTextElement+Fix.m in Sources */,
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,
+				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
 				378EA81119A6A17300C72F1A /* PGTemplateSelectorView.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
