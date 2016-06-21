@@ -26,7 +26,7 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont HPNavigationBarTitleFont]}];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor HPBlueColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F]];
     
     [[UISwitch appearance] setOnTintColor:[UIColor HPBlueColor]];
     
@@ -66,30 +66,30 @@
     NSString *lightFont   = @"HPSimplified-Light";
     
     return @{// Background
-             kMPGeneralBackgroundColor:   [UIColor colorWithRed:0xEF/255.0F green:0xEF/255.0F blue:0xF4/255.0F alpha:1.0F],
+             kMPGeneralBackgroundColor:             [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              kMPGeneralBackgroundPrimaryFont:       [UIFont fontWithName:regularFont size:13],
              kMPGeneralBackgroundPrimaryFontColor:  [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              kMPGeneralBackgroundSecondaryFont:     [UIFont fontWithName:lightFont size:12],
              kMPGeneralBackgroundSecondaryFontColor:[UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-             kMPGeneralTableSeparatorColor:         [UIColor colorWithRed:0xC8/255.0F green:0xC7/255.0F blue:0xCC/255.0F alpha:1.0F],
+             kMPGeneralTableSeparatorColor:         [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              
              // Selection Options
-             kMPSelectionOptionsBackgroundColor:         [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
+             kMPSelectionOptionsBackgroundColor:         [UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F],
              kMPSelectionOptionsPrimaryFont:             [UIFont fontWithName:lightFont size:16],
-             kMPSelectionOptionsPrimaryFontColor:        [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+             kMPSelectionOptionsPrimaryFontColor:        [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
              kMPSelectionOptionsSecondaryFont:           [UIFont fontWithName:lightFont size:16],
-             kMPSelectionOptionsSecondaryFontColor:      [UIColor colorWithRed:0x8F/255.0F green:0x8F/255.0F blue:0x95/255.0F alpha:1.0F],
+             kMPSelectionOptionsSecondaryFontColor:      [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
              kMPSelectionOptionsLinkFont:                [UIFont fontWithName:lightFont size:16],
-             kMPSelectionOptionsLinkFontColor:           [UIColor colorWithRed:0x00/255.0F green:0x96/255.0F blue:0xD6/255.0F alpha:1.0F],
+             kMPSelectionOptionsLinkFontColor:           [UIColor colorWithRed:0x255/255.0F green:0x255/255.0F blue:0x255/255.0F alpha:1.0F],
              kMPSelectionOptionsDisclosureIndicatorImage:[UIImage imageNamed:@"MPArrow"],
              kMPSelectionOptionsCheckmarkImage:          [UIImage imageNamed:@"MPCheck"],
              
              // Job Settings
-             kMPJobSettingsBackgroundColor:    [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
+             kMPJobSettingsBackgroundColor:    [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              kMPJobSettingsPrimaryFont:        [UIFont fontWithName:lightFont size:18],
-             kMPJobSettingsPrimaryFontColor:   [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+             kMPJobSettingsPrimaryFontColor:   [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
              kMPJobSettingsSecondaryFont:      [UIFont fontWithName:lightFont size:12],
-             kMPJobSettingsSecondaryFontColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+             kMPJobSettingsSecondaryFontColor: [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
              kMPJobSettingsSelectedPageIcon:   [UIImage imageNamed:@"MPSelected"],
              kMPJobSettingsUnselectedPageIcon: [UIImage imageNamed:@"MPUnselected"],
              kMPJobSettingsSelectedJobIcon:    [UIImage imageNamed:@"MPActiveCircle"],
@@ -97,9 +97,9 @@
              kMPJobSettingsMagnifyingGlassIcon:[UIImage imageNamed:@"MPMagnify"],
              
              // Main Action
-             kMPMainActionBackgroundColor:       [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
-             kMPMainActionLinkFont:              [UIFont fontWithName:regularFont size:18],
-             kMPMainActionActiveLinkFontColor:   [UIColor colorWithRed:0x00/255.0F green:0x96/255.0F blue:0xD6/255.0F alpha:1.0F],
+             kMPMainActionBackgroundColor:       [UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F],
+             kMPMainActionLinkFont:              [UIFont fontWithName:lightFont size:18],
+             kMPMainActionActiveLinkFontColor:   [UIColor colorWithRed:0x255/255.0F green:0x255/255.0F blue:0x255/255.0F alpha:1.0F],
              kMPMainActionInactiveLinkFontColor: [UIColor colorWithRed:0xAA/255.0F green:0xAA/255.0F blue:0xAA/255.0F alpha:1.0F],
              
              // Queue Project Count
