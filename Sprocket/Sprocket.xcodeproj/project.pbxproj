@@ -47,6 +47,7 @@
 		9207462C1CB5D1E50051CF1D /* Template16_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */; };
 		9207462D1CB5D1E80051CF1D /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
 		9207462E1CB5D1EB0051CF1D /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
+		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		92D57EE21CB2DBC700051D79 /* Template16_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */; };
 		92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
 		92D57EE41CB2DBC700051D79 /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
@@ -641,6 +642,8 @@
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
+		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
+		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x5.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x5.hpc; sourceTree = "<group>"; };
 		92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x6.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x6.hpc; sourceTree = "<group>"; };
 		92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_5x7.hpc; path = Resources/Images/Templates/CameraRoll/Template16_5x7.hpc; sourceTree = "<group>"; };
@@ -1112,6 +1115,15 @@
 			name = js;
 			sourceTree = "<group>";
 		};
+		9261D4031D189CE60048E5F8 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */,
+				9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */,
+			);
+			name = Preview;
+			sourceTree = "<group>";
+		};
 		CC5D53A319CCA77C002B0DF3 /* LandingPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1342,6 +1354,7 @@
 				E34D5099199AB98B006D80E0 /* Additions */,
 				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				E3D6816819A3D180000D45E0 /* LandingPage */,
+				9261D4031D189CE60048E5F8 /* Preview */,
 				CCED9C5919F972E700ACC969 /* Select Photos */,
 				CCED9C5B19F97F2300ACC969 /* Select Template */,
 				E33F4C7819ABFBC900040033 /* Share */,
@@ -2573,6 +2586,7 @@
 				378EA81819A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m in Sources */,
 				E3461F3719AE30750042DF5E /* PGLearnMoreView.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
+				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				E375386719BE5D3C009C695F /* PGSideBarMenuTableViewController.m in Sources */,
