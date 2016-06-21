@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */; };
+		26E6FD1A1D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E6FD191D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.m */; };
 		370A21CF19ABA99B00EBDCCE /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A21CE19ABA99B00EBDCCE /* Templates.plist */; };
 		370A21D319ABAF7500EBDCCE /* PGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370A21D219ABAF7500EBDCCE /* PGTemplate.m */; };
 		3731680D1AD4B08900503065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
@@ -595,6 +596,8 @@
 		008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IntroBackground1536x2048@2x.png"; sourceTree = "<group>"; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		26E6FD181D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FixedHeightWhenStatusBarHidden.h"; sourceTree = "<group>"; };
+		26E6FD191D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FixedHeightWhenStatusBarHidden.m"; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		370A21CE19ABA99B00EBDCCE /* Templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Templates.plist; path = Resources/Templates.plist; sourceTree = "<group>"; };
 		370A21D119ABAF7500EBDCCE /* PGTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplate.h; sourceTree = "<group>"; };
@@ -1443,6 +1446,8 @@
 				E34D50CB199ABC29006D80E0 /* UIColor+Style.m */,
 				E3461F2419AE2F470042DF5E /* UIColor+HexString.h */,
 				E3461F2519AE2F470042DF5E /* UIColor+HexString.m */,
+				26E6FD181D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.h */,
+				26E6FD191D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.m */,
 				E3461F2819AE2F870042DF5E /* UIView+Style.h */,
 				E3461F2919AE2F870042DF5E /* UIView+Style.m */,
 				E3461F2C19AE2FBB0042DF5E /* UITextView+Additions.h */,
@@ -2553,6 +2558,7 @@
 				378EA81119A6A17300C72F1A /* PGTemplateSelectorView.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
 				F1DCB7CD1B50641C00CA9AAD /* PGSVGResourceManager.m in Sources */,
+				26E6FD1A1D1911380050E49F /* UINavigationBar+FixedHeightWhenStatusBarHidden.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,

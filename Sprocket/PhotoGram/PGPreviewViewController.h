@@ -10,4 +10,6 @@
 
 @interface PGPreviewViewController : UIViewController
 
+@property (strong, nonatomic) UIImage *selectedPhoto;
+
 @end
