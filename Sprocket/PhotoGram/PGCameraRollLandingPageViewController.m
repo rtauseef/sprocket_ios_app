@@ -13,6 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "PGCameraRollLandingPageViewController.h"
 #import "UIViewController+Trackable.h"
+#import "PGPreviewViewController.h"
 #import "PGSelectTemplateViewController.h"
 #import "PGImagePickerLandscapeSupportController.h"
 #import "PGAnalyticsManager.h"
@@ -118,16 +119,13 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGSelectTemplateViewController *vc = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.selectedPhoto = image;
     
     HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:kCameraRollUserName userId:kCameraRollUserId];
     
-    vc.source = source;
-    vc.selectedPhoto = image;
-    vc.media = media;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:previewViewController animated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 
