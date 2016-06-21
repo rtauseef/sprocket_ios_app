@@ -167,13 +167,13 @@ NSString * const kFlickrUserIdKey = @"userID";
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *vc = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    vc.selectedPhoto = image;
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.selectedPhoto = image;
     
     HPPRFlickrPhotoProvider *provider = [HPPRFlickrPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[self.user objectForKey:kFlickrUserNameKey] userId:[self.user objectForKey:kFlickrUserIdKey]];
     
-    [self presentViewController:vc animated:YES completion:nil];
+    [self presentViewController:previewViewController animated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 
