@@ -97,66 +97,81 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 #pragma mark - Button Handlers
 
-- (IBAction)didTouchDownCameraButton:(id)sender {
+- (IBAction)didTouchDownCameraButton:(id)sender
+{
     [self.cameraButton setHighlighted:YES];
 }
 
-- (IBAction)didTouchUpOutsideCameraButton:(id)sender {
+- (IBAction)didTouchUpOutsideCameraButton:(id)sender
+{
     [self.cameraButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchUpInsideCameraButton:(id)sender {
+- (IBAction)didTouchUpInsideCameraButton:(id)sender
+{
     [self.cameraButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchDownCloseButton:(id)sender {
+- (IBAction)didTouchDownCloseButton:(id)sender
+{
     [self.closeButton setHighlighted:YES];
 }
 
-- (IBAction)didTouchUpOutsideCloseButton:(id)sender {
+- (IBAction)didTouchUpOutsideCloseButton:(id)sender
+{
     [self.closeButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchUpInsideCloseButton:(id)sender {
+- (IBAction)didTouchUpInsideCloseButton:(id)sender
+{
     [self.closeButton setHighlighted:NO];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)didTouchDownEditButton:(id)sender {
+- (IBAction)didTouchDownEditButton:(id)sender
+{
     [self.editButton setHighlighted:YES];
 }
 
-- (IBAction)didTouchUpOutsideEditButton:(id)sender {
+- (IBAction)didTouchUpOutsideEditButton:(id)sender
+{
     [self.editButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchUpInsideEditButton:(id)sender {
+- (IBAction)didTouchUpInsideEditButton:(id)sender
+{
     [self.editButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchDownPrinterButton:(id)sender {
+- (IBAction)didTouchDownPrinterButton:(id)sender
+{
     [self.printerButton setHighlighted:YES];
 }
 
-- (IBAction)didTouchUpOutsidePrinterButton:(id)sender {
+- (IBAction)didTouchUpOutsidePrinterButton:(id)sender
+{
     [self.printerButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchUpInsidePrinterButton:(id)sender {
+- (IBAction)didTouchUpInsidePrinterButton:(id)sender
+{
     [self.printerButton setHighlighted:NO];
     UIViewController *vc = [[MP sharedInstance] printViewControllerWithDelegate:self dataSource:self printItem:self.printItem fromQueue:NO settingsOnly:NO];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (IBAction)didTouchDownShareButton:(id)sender {
+- (IBAction)didTouchDownShareButton:(id)sender
+{
     [self.shareButton setHighlighted:YES];
 }
 
-- (IBAction)didTouchUpOutsideShareButton:(id)sender {
+- (IBAction)didTouchUpOutsideShareButton:(id)sender
+{
     [self.shareButton setHighlighted:NO];
 }
 
-- (IBAction)didTouchUpInsideShareButton:(id)sender {
+- (IBAction)didTouchUpInsideShareButton:(id)sender
+{
     [self.shareButton setHighlighted:NO];
     
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
