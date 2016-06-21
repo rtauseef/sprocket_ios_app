@@ -1049,36 +1049,38 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOE-OE-xsb" userLabel="Top View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-bW-WDq" userLabel="cameraImageButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-bW-WDq" userLabel="cameraAnchor">
                                                 <rect key="frame" x="10" y="11" width="30" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="RqW-Fb-l1i"/>
                                                     <constraint firstAttribute="width" constant="30" id="VhE-nh-Tac"/>
                                                 </constraints>
-                                                <state key="normal" image="previewCamera"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-DF-pcn" userLabel="cameraButton">
                                                 <rect key="frame" x="0.0" y="1" width="50" height="43"/>
+                                                <state key="normal" image="previewCamera"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="cameraButton"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchDownCameraButton:" destination="ixR-2j-aQt" eventType="touchDown" id="374-hz-SdL"/>
                                                     <action selector="didTouchUpInsideCameraButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="W9Y-O8-htv"/>
-                                                    <action selector="didTouchUpOutsideCameraButton:" destination="ixR-2j-aQt" eventType="touchUpOutside" id="fTo-iu-eEV"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMb-Oy-Iid" userLabel="closeImageButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMb-Oy-Iid" userLabel="closeAnchor">
                                                 <rect key="frame" x="572" y="13" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="P8T-7O-WUs"/>
                                                     <constraint firstAttribute="height" constant="18" id="goa-md-afj"/>
                                                 </constraints>
-                                                <state key="normal" image="previewX"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG3-7c-npS" userLabel="closeButton">
                                                 <rect key="frame" x="562" y="3" width="38" height="38"/>
+                                                <state key="normal" image="previewX"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="closeButton"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchDownCloseButton:" destination="ixR-2j-aQt" eventType="touchDown" id="ZLs-b4-tmc"/>
                                                     <action selector="didTouchUpInsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="oAL-hm-9dP"/>
-                                                    <action selector="didTouchUpOutsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpOutside" id="EP0-8n-i7m"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1106,55 +1108,58 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-Sr-Qd8" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="525" width="600" height="75"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-fe-pwH" userLabel="editImageButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-fe-pwH" userLabel="editAnchor">
                                                 <rect key="frame" x="215" y="16" width="43" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="43" id="5aX-nT-SDy"/>
                                                     <constraint firstAttribute="height" constant="43" id="Ok8-rs-9Ty"/>
                                                 </constraints>
-                                                <state key="normal" image="previewEdit"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="editButton">
-                                                <rect key="frame" x="225" y="26" width="23" height="23"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="editButton">
+                                                <rect key="frame" x="205" y="6" width="63" height="63"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="previewEdit"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="editButton"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchDownEditButton:" destination="ixR-2j-aQt" eventType="touchDown" id="bde-60-RSj"/>
                                                     <action selector="didTouchUpInsideEditButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="JNZ-vE-fA4"/>
-                                                    <action selector="didTouchUpOutsideEditButton:" destination="ixR-2j-aQt" eventType="touchUpOutside" id="nWs-yh-FEX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn4-X4-HTM" userLabel="printerImageButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn4-X4-HTM" userLabel="printerAnchor">
                                                 <rect key="frame" x="279" y="16" width="43" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="43" id="Tw7-cy-8Ae"/>
                                                     <constraint firstAttribute="height" constant="43" id="obs-IY-odH"/>
                                                 </constraints>
-                                                <state key="normal" image="previewPrinter"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <rect key="frame" x="289" y="26" width="23" height="23"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
+                                                <rect key="frame" x="269" y="6" width="63" height="63"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="previewPrinter"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchDownPrinterButton:" destination="ixR-2j-aQt" eventType="touchDown" id="ogP-Cb-dwY"/>
                                                     <action selector="didTouchUpInsidePrinterButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="XjU-DN-gTv"/>
-                                                    <action selector="didTouchUpOutsidePrinterButton:" destination="ixR-2j-aQt" eventType="touchUpOutside" id="6ag-Tm-a48"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wr3-E7-Jz8" userLabel="shareImageButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wr3-E7-Jz8" userLabel="shareAnchor">
                                                 <rect key="frame" x="343" y="16" width="43" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="43" id="Pgq-AB-9ck"/>
                                                     <constraint firstAttribute="width" constant="43" id="qqd-Do-wOe"/>
                                                 </constraints>
-                                                <state key="normal" image="previewShare"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
                                                 <rect key="frame" x="333" y="6" width="63" height="63"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="previewShare"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="shareButton"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchDownShareButton:" destination="ixR-2j-aQt" eventType="touchDown" id="XEN-YG-ceZ"/>
                                                     <action selector="didTouchUpInsideShareButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="eL0-16-dk6"/>
-                                                    <action selector="didTouchUpOutsideShareButton:" destination="ixR-2j-aQt" eventType="touchUpOutside" id="EBG-tL-UHV"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1166,19 +1171,19 @@
                                             <constraint firstAttribute="height" constant="75" id="BlW-aW-yWc"/>
                                             <constraint firstItem="pAD-AA-Eej" firstAttribute="centerX" secondItem="wr3-E7-Jz8" secondAttribute="centerX" id="CVC-Rb-xvh"/>
                                             <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerX" secondItem="Swo-Sr-Qd8" secondAttribute="centerX" id="FuG-pQ-KjI"/>
-                                            <constraint firstItem="gvh-fe-pwH" firstAttribute="width" secondItem="iMJ-5T-IcV" secondAttribute="width" constant="20" id="P9V-XT-trg"/>
+                                            <constraint firstItem="iMJ-5T-IcV" firstAttribute="width" secondItem="gvh-fe-pwH" secondAttribute="width" constant="20" id="P9V-XT-trg"/>
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerX" secondItem="iMJ-5T-IcV" secondAttribute="centerX" id="PY9-Ct-5sM"/>
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="iMJ-5T-IcV" secondAttribute="centerY" id="Q7a-6e-k48"/>
-                                            <constraint firstItem="gvh-fe-pwH" firstAttribute="height" secondItem="iMJ-5T-IcV" secondAttribute="height" constant="20" id="QVe-LZ-sEN"/>
+                                            <constraint firstItem="iMJ-5T-IcV" firstAttribute="height" secondItem="gvh-fe-pwH" secondAttribute="height" constant="20" id="QVe-LZ-sEN"/>
                                             <constraint firstItem="wr3-E7-Jz8" firstAttribute="leading" secondItem="Hn4-X4-HTM" secondAttribute="trailing" constant="21" id="WRk-mm-6au"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="height" secondItem="Afb-Xc-wRV" secondAttribute="height" constant="20" id="Xre-AL-fob"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="height" secondItem="Hn4-X4-HTM" secondAttribute="height" constant="20" id="Xre-AL-fob"/>
                                             <constraint firstItem="wr3-E7-Jz8" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ZTd-GT-dGs"/>
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ix1-Fs-fY1"/>
                                             <constraint firstItem="Hn4-X4-HTM" firstAttribute="leading" secondItem="gvh-fe-pwH" secondAttribute="trailing" constant="21" id="oP0-eZ-mIq"/>
                                             <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="op4-i3-eTE"/>
                                             <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="wr3-E7-Jz8" secondAttribute="centerY" id="wJC-mA-2RW"/>
                                             <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="wVW-6r-QAY"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="width" secondItem="Afb-Xc-wRV" secondAttribute="width" constant="20" id="wwO-lh-OiJ"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="width" secondItem="Hn4-X4-HTM" secondAttribute="width" constant="20" id="wwO-lh-OiJ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1207,17 +1212,8 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="cameraActionButton" destination="fRU-DF-pcn" id="7KW-6S-eXw"/>
-                        <outlet property="cameraButton" destination="Aqy-bW-WDq" id="uhf-lm-bXc"/>
-                        <outlet property="closeActionButton" destination="cG3-7c-npS" id="X4H-83-lqg"/>
-                        <outlet property="closeButton" destination="YMb-Oy-Iid" id="b3U-bU-4yO"/>
-                        <outlet property="editActionButton" destination="iMJ-5T-IcV" id="hds-Ek-Mj6"/>
-                        <outlet property="editButton" destination="gvh-fe-pwH" id="DIR-26-9bW"/>
                         <outlet property="imageView" destination="HME-nl-kU0" id="tKg-fB-HIE"/>
-                        <outlet property="printerActionButton" destination="Afb-Xc-wRV" id="odF-TU-lx3"/>
-                        <outlet property="printerButton" destination="Hn4-X4-HTM" id="Pre-vw-daC"/>
-                        <outlet property="shareActionButton" destination="pAD-AA-Eej" id="dgZ-9Q-3Aq"/>
-                        <outlet property="shareButton" destination="wr3-E7-Jz8" id="cTn-5T-4rG"/>
+                        <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfL-7m-DIX" userLabel="First Responder" sceneMemberID="firstResponder"/>

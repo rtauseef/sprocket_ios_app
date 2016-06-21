@@ -30,18 +30,8 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
-@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
-@property (weak, nonatomic) IBOutlet UIButton *printerButton;
-@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) UIPopoverController *popover;
-
-@property (weak, nonatomic) IBOutlet UIButton *cameraActionButton;
-@property (weak, nonatomic) IBOutlet UIButton *closeActionButton;
-@property (weak, nonatomic) IBOutlet UIButton *editActionButton;
-@property (weak, nonatomic) IBOutlet UIButton *printerActionButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareActionButton;
 
 @end
 
@@ -50,13 +40,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.shareActionButton.accessibilityIdentifier = @"ShareButton";
-    self.printerActionButton.accessibilityIdentifier = @"PrintButton";
-    self.editActionButton.accessibilityIdentifier = @"EditButton";
-    self.closeActionButton.accessibilityIdentifier = @"CloseButton";
-    self.cameraActionButton.accessibilityIdentifier = @"CameraButton";
-    self.imageView.accessibilityIdentifier = @"ImageView";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -97,83 +80,27 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 #pragma mark - Button Handlers
 
-- (IBAction)didTouchDownCameraButton:(id)sender
-{
-    [self.cameraButton setHighlighted:YES];
-}
-
-- (IBAction)didTouchUpOutsideCameraButton:(id)sender
-{
-    [self.cameraButton setHighlighted:NO];
-}
-
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
-    [self.cameraButton setHighlighted:NO];
-}
-
-- (IBAction)didTouchDownCloseButton:(id)sender
-{
-    [self.closeButton setHighlighted:YES];
-}
-
-- (IBAction)didTouchUpOutsideCloseButton:(id)sender
-{
-    [self.closeButton setHighlighted:NO];
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    [self.closeButton setHighlighted:NO];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)didTouchDownEditButton:(id)sender
-{
-    [self.editButton setHighlighted:YES];
-}
-
-- (IBAction)didTouchUpOutsideEditButton:(id)sender
-{
-    [self.editButton setHighlighted:NO];
+     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
-    [self.editButton setHighlighted:NO];
-}
-
-- (IBAction)didTouchDownPrinterButton:(id)sender
-{
-    [self.printerButton setHighlighted:YES];
-}
-
-- (IBAction)didTouchUpOutsidePrinterButton:(id)sender
-{
-    [self.printerButton setHighlighted:NO];
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    [self.printerButton setHighlighted:NO];
-    UIViewController *vc = [[MP sharedInstance] printViewControllerWithDelegate:self dataSource:self printItem:self.printItem fromQueue:NO settingsOnly:NO];
-    [self presentViewController:vc animated:YES completion:nil];
-}
-
-- (IBAction)didTouchDownShareButton:(id)sender
-{
-    [self.shareButton setHighlighted:YES];
-}
-
-- (IBAction)didTouchUpOutsideShareButton:(id)sender
-{
-    [self.shareButton setHighlighted:NO];
+    UIViewController *printViewController = [[MP sharedInstance] printViewControllerWithDelegate:self dataSource:self printItem:self.printItem fromQueue:NO settingsOnly:NO];
+    [self presentViewController:printViewController animated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
-    [self.shareButton setHighlighted:NO];
-    
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
     
     MPPrintActivity *printActivity = [[MPPrintActivity alloc] init];
