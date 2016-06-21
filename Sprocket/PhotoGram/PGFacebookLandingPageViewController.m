@@ -21,7 +21,6 @@
 #import "PGAppDelegate.h"
 #import "PGAnalyticsManager.h"
 #import "SWRevealViewController.h"
-#import "PGSelectTemplateViewController.h"
 #import "PGPreviewViewController.h"
 #import "PGSideBarMenuTableViewController.h"
 #import "UIView+Animations.h"
@@ -229,11 +228,7 @@ NSString * const kFacebookUserIdKey = @"id";
     HPPRFacebookPhotoProvider *provider = [HPPRFacebookPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[provider.user objectForKey:kFacebookUserNameKey] userId:[provider.user objectForKey:kFacebookUserIdKey]];
     
-//    vc.source = source;
-//    vc.selectedPhoto = image;
-//    vc.media = media;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 

@@ -19,7 +19,7 @@
 #import "PGFlickrLandingPageViewController.h"
 #import "PGAppDelegate.h"
 #import "PGAnalyticsManager.h"
-#import "PGSelectTemplateViewController.h"
+#import "PGPreviewViewController.h"
 #import "SWRevealViewController.h"
 #import "PGSideBarMenuTableViewController.h"
 #import "UIView+Animations.h"
@@ -167,15 +167,13 @@ NSString * const kFlickrUserIdKey = @"userID";
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGSelectTemplateViewController *vc = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
+    PGPreviewViewController *vc = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    vc.selectedPhoto = image;
     
     HPPRFlickrPhotoProvider *provider = [HPPRFlickrPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[self.user objectForKey:kFlickrUserNameKey] userId:[self.user objectForKey:kFlickrUserIdKey]];
-    vc.source = source;
-    vc.selectedPhoto = image;
-    vc.media = media;
     
-    [self.navigationController pushViewController:vc animated:YES];
+    [self presentViewController:vc animated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 

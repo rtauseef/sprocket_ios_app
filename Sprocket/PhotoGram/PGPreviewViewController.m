@@ -9,7 +9,6 @@
 #import "PGPreviewViewController.h"
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
-#import "UINavigationBar+FixedHeightWhenStatusBarHidden.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -21,15 +20,24 @@
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
 #define kPreviewRetryButtonTitle NSLocalizedString(@"Retry", nil)
 static NSInteger const screenshotErrorAlertViewTag = 100;
-static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachMarks";
 
-@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate>
+@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *printerButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) UIPopoverController *popover;
+
+@property (weak, nonatomic) IBOutlet UIButton *cameraActionButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeActionButton;
+@property (weak, nonatomic) IBOutlet UIButton *editActionButton;
+@property (weak, nonatomic) IBOutlet UIButton *printerActionButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareActionButton;
 
 @end
 
@@ -38,6 +46,13 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.shareActionButton.accessibilityIdentifier = @"ShareButton";
+    self.printerActionButton.accessibilityIdentifier = @"PrintButton";
+    self.editActionButton.accessibilityIdentifier = @"EditButton";
+    self.closeActionButton.accessibilityIdentifier = @"CloseButton";
+    self.cameraActionButton.accessibilityIdentifier = @"CameraButton";
+    self.imageView.accessibilityIdentifier = @"ImageView";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -55,8 +70,6 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
     frame.size.height = 1.5 * self.imageView.frame.size.width;
     self.imageView.frame = frame;
 
-    self.navigationController.navigationBar.fixedHeightWhenStatusBarHidden = YES;
-    self.navigationController.navigationBar.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
@@ -64,7 +77,6 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
@@ -78,21 +90,71 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
     }
     _selectedPhoto = finalImage;
 }
-- (IBAction)didPressCameraButton:(id)sender {
+
+#pragma mark - Button Handlers
+
+- (IBAction)didTouchDownCameraButton:(id)sender {
+    [self.cameraButton setHighlighted:YES];
 }
 
-- (IBAction)didPressCloseButton:(id)sender {
-
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)didTouchUpOutsideCameraButton:(id)sender {
+    [self.cameraButton setHighlighted:NO];
 }
 
-- (IBAction)didPressEditButton:(id)sender {
+- (IBAction)didTouchUpInsideCameraButton:(id)sender {
+    [self.cameraButton setHighlighted:NO];
 }
 
-- (IBAction)didPressPrinterButton:(id)sender {
+- (IBAction)didTouchDownCloseButton:(id)sender {
+    [self.closeButton setHighlighted:YES];
 }
 
-- (IBAction)didPressShareButton:(id)sender {
+- (IBAction)didTouchUpOutsideCloseButton:(id)sender {
+    [self.closeButton setHighlighted:NO];
+}
+
+- (IBAction)didTouchUpInsideCloseButton:(id)sender {
+    [self.closeButton setHighlighted:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)didTouchDownEditButton:(id)sender {
+    [self.editButton setHighlighted:YES];
+}
+
+- (IBAction)didTouchUpOutsideEditButton:(id)sender {
+    [self.editButton setHighlighted:NO];
+}
+
+- (IBAction)didTouchUpInsideEditButton:(id)sender {
+    [self.editButton setHighlighted:NO];
+}
+
+- (IBAction)didTouchDownPrinterButton:(id)sender {
+    [self.printerButton setHighlighted:YES];
+}
+
+- (IBAction)didTouchUpOutsidePrinterButton:(id)sender {
+    [self.printerButton setHighlighted:NO];
+}
+
+- (IBAction)didTouchUpInsidePrinterButton:(id)sender {
+    [self.printerButton setHighlighted:NO];
+    UIViewController *vc = [[MP sharedInstance] printViewControllerWithDelegate:self dataSource:self printItem:self.printItem fromQueue:NO settingsOnly:NO];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)didTouchDownShareButton:(id)sender {
+    [self.shareButton setHighlighted:YES];
+}
+
+- (IBAction)didTouchUpOutsideShareButton:(id)sender {
+    [self.shareButton setHighlighted:NO];
+}
+
+- (IBAction)didTouchUpInsideShareButton:(id)sender {
+    [self.shareButton setHighlighted:NO];
+    
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
     
     MPPrintActivity *printActivity = [[MPPrintActivity alloc] init];
@@ -121,9 +183,9 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
 - (NSDictionary *)extendedMetrics
 {
     return @{
-             //             kMetricsTypeLocationKey:[self locationMetrics],
+//           kMetricsTypeLocationKey:[self locationMetrics],
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-             //             kMetricsTypePhotoPositionKey:[[PGAnalyticsManager sharedManager] photoPositionMetricsWithOffset:self.svgLoader.offset zoom:self.svgLoader.zoom angle:self.svgLoader.angle]
+//           kMetricsTypePhotoPositionKey:[[PGAnalyticsManager sharedManager] photoPositionMetricsWithOffset:self.svgLoader.offset zoom:self.svgLoader.zoom angle:self.svgLoader.angle]
              };
 }
 
@@ -230,22 +292,11 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
                 if (printLaterActivity) {
                     [[MP sharedInstance] presentPrintQueueFromController:weakSelf animated:YES completion:nil];
-                    // The user is using the print queue... suppress intro-to-print-queue coach marks
-                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    [defaults setBool:NO forKey:kSettingShowPrintQCoachMarks];
-                    [defaults synchronize];
                 }
             } else {
                 if (activityType) {
                     [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultCancel];
                 }
-            }
-            
-            // if the user has seen the PrintLater offering, don't give them a coach mark for it in the future
-            if (printLaterActivity) {
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setBool:NO forKey:kSettingShowPrintQCoachMarks];
-                [defaults synchronize];
             }
         };
         
@@ -255,6 +306,24 @@ static NSString * const kSettingShowPrintQCoachMarks = @"SettingShowPrintQCoachM
         
         [self presentViewController:activityViewController animated:YES completion:nil];
     }
+}
+
+#pragma mark - MPPrintDelegate
+
+- (void)didFinishPrintFlow:(UIViewController *)printViewController
+{
+    NSString *offramp = [self.printItem.extra objectForKey:kMetricsOfframpKey];
+    if (offramp) {
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:self.printItem exendedInfo:[self extendedMetrics]];
+    } else {
+        PGLogError(@"Print from client UI missing offramp key in print item");
+    }
+    [printViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)didCancelPrintFlow:(UIViewController *)printViewController
+{
+    [printViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - MPPrintDataSource
