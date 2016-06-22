@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-               BuildableName = "Sprocket-cal.app"
-               BlueprintName = "Sprocket-cal"
+               BlueprintIdentifier = "9384035c49d6bfc4876835ff"
+               BuildableName = "Sprocket.app"
+               BlueprintName = "Sprocket-cal1"
                ReferencedContainer = "container:Sprocket.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-            BuildableName = "Sprocket-cal.app"
-            BlueprintName = "Sprocket-cal"
+            BlueprintIdentifier = "9384035c49d6bfc4876835ff"
+            BuildableName = "Sprocket.app"
+            BlueprintName = "Sprocket-cal1"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-            BuildableName = "Sprocket-cal.app"
-            BlueprintName = "Sprocket-cal"
+            BlueprintIdentifier = "9384035c49d6bfc4876835ff"
+            BuildableName = "Sprocket.app"
+            BlueprintName = "Sprocket-cal1"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E31C470A1A5DB0E500EA9AB1"
-            BuildableName = "Sprocket-cal.app"
-            BlueprintName = "Sprocket-cal"
+            BlueprintIdentifier = "9384035c49d6bfc4876835ff"
+            BuildableName = "Sprocket.app"
+            BlueprintName = "Sprocket-cal1"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
