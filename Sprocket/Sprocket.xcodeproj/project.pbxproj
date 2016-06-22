@@ -37,6 +37,7 @@
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
+		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
 		920746261CB5D1000051CF1D /* Template5_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE51CB2E63600051D79 /* Template5_4x5.hpc */; };
 		920746271CB5D1050051CF1D /* Template5_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE61CB2E63600051D79 /* Template5_4x6.hpc */; };
 		920746281CB5D1090051CF1D /* Template5_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE71CB2E63600051D79 /* Template5_5x7.hpc */; };
@@ -637,6 +638,8 @@
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
+		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
+		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
@@ -1113,6 +1116,8 @@
 		9261D4031D189CE60048E5F8 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
+				82D6C74B1D1B47060030569F /* PGCameraManager.h */,
+				82D6C74C1D1B47060030569F /* PGCameraManager.m */,
 				9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */,
 				9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */,
 			);
@@ -2557,6 +2562,7 @@
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
 				378EA81119A6A17300C72F1A /* PGTemplateSelectorView.m in Sources */,
+				82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
 				F1DCB7CD1B50641C00CA9AAD /* PGSVGResourceManager.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,

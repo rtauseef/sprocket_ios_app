@@ -11,6 +11,7 @@
 //
 
 #import "PGOverlayCameraViewController.h"
+#import "PGPreviewViewController.h"
 
 @interface PGOverlayCameraViewController ()
 
@@ -50,6 +51,22 @@
 - (IBAction)shutterTapped:(id)sender {
     NSLog(@"shutter");
     [self.pickerReference takePicture];
+}
+
+#pragma mark - UIImagePicker Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    UIImage *picture = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
+        picture = [UIImage imageWithCGImage:picture.CGImage scale:picture.scale orientation:UIImageOrientationLeftMirrored];
+    }
+    
+    previewViewController.selectedPhoto = picture;
+    
+    [self presentViewController:previewViewController animated:YES completion:nil];
 }
 
 @end
