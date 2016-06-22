@@ -26,7 +26,7 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont HPNavigationBarTitleFont]}];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F]];
+    [[UINavigationBar appearance] setBarTintColor:[PGAppAppearance navBarColor]];
     
     [[UISwitch appearance] setOnTintColor:[UIColor HPBlueColor]];
     
@@ -74,7 +74,7 @@
              kMPGeneralTableSeparatorColor:         [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              
              // Selection Options
-             kMPSelectionOptionsBackgroundColor:         [UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F],
+             kMPSelectionOptionsBackgroundColor:         [PGAppAppearance navBarColor],
              kMPSelectionOptionsPrimaryFont:             [UIFont fontWithName:lightFont size:16],
              kMPSelectionOptionsPrimaryFontColor:        [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
              kMPSelectionOptionsSecondaryFont:           [UIFont fontWithName:lightFont size:16],
@@ -97,7 +97,7 @@
              kMPJobSettingsMagnifyingGlassIcon:[UIImage imageNamed:@"MPMagnify"],
              
              // Main Action
-             kMPMainActionBackgroundColor:       [UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F],
+             kMPMainActionBackgroundColor:       [PGAppAppearance navBarColor],
              kMPMainActionLinkFont:              [UIFont fontWithName:lightFont size:18],
              kMPMainActionActiveLinkFontColor:   [UIColor colorWithRed:0x255/255.0F green:0x255/255.0F blue:0x255/255.0F alpha:1.0F],
              kMPMainActionInactiveLinkFontColor: [UIColor colorWithRed:0xAA/255.0F green:0xAA/255.0F blue:0xAA/255.0F alpha:1.0F],
@@ -132,6 +132,11 @@
     [MP sharedInstance].appearance.settings = [PGAppAppearance mpAppearanceSettings];
     
     [MP sharedInstance].useBluetooth = TRUE;
+}
+
++ (UIColor *)navBarColor
+{
+    return [UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F];
 }
 
 @end
