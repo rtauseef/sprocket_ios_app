@@ -42,7 +42,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MobilePrintSDK:
-    :commit: 9b20edc765684250e65604c9580f16e60722692e
+    :commit: 62fd6908ba83ca85852f9826b072b7ca15c11ce1
     :git: https://github.com/IPGPTP/ios-print-sdk.git
   SVGKit:
     :git: https://github.com/SVGKit/SVGKit.git
