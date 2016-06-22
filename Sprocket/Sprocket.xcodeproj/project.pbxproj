@@ -934,7 +934,6 @@
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1EE0C6B1D1B3D530087F2D0 /* Sprocket-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprocket-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1EE0C6C1D1B3D540087F2D0 /* Sprocket-cal copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Sprocket-cal copy-Info.plist"; path = "/Users/diego/workspace/sprocket_ios_app/Sprocket/Sprocket-cal copy-Info.plist"; sourceTree = "<absolute>"; };
 		FF60F0BE1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1200,7 +1199,6 @@
 				E34D5059199AB87B006D80E0 /* Frameworks */,
 				E34D5058199AB87B006D80E0 /* Products */,
 				DCDDC5ACC635A15B68D63426 /* Pods */,
-				F1EE0C6C1D1B3D540087F2D0 /* Sprocket-cal copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
