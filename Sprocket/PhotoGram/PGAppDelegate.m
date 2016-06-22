@@ -132,10 +132,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
     
-    MPSupportAction *action1 = [[MPSupportAction alloc] initWithIcon:[UIImage imageNamed:@"LearnMore"] title:NSLocalizedString(@"Print Instructions", nil) viewController:navigationController];
+    MPSupportAction *action1 = [[MPSupportAction alloc] initWithIcon:[UIImage imageNamed:@"Get_Help_Print"] title:NSLocalizedString(@"How To", nil) viewController:navigationController];
     
     // NOTE: This link is not localized, only the english version is available
-    MPSupportAction *action2 = [[MPSupportAction alloc] initWithIcon:[UIImage imageNamed:@"BuyNow"] title:NSLocalizedString(@"Buy sticker pack", nil) url:[NSURL URLWithString:@"http://store.hp.com/webapp/wcs/stores/servlet/us/en/pdp/ink--toner---paper/hp-social-media-snapshots-removable-sticky-photo-paper-25-sht-4-x-5-in"]];
+    MPSupportAction *action2 = [[MPSupportAction alloc] initWithIcon:[UIImage imageNamed:@"Buy_Paper_Print"] title:NSLocalizedString(@"Buy Paper", nil) url:[NSURL URLWithString:@"http://store.hp.com/webapp/wcs/stores/servlet/us/en/pdp/ink--toner---paper/hp-social-media-snapshots-removable-sticky-photo-paper-25-sht-4-x-5-in"]];
     
     [MP sharedInstance].supportActions =  @[action1, action2];
 }

@@ -45,6 +45,8 @@
 		9207462D1CB5D1E80051CF1D /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
 		9207462E1CB5D1EB0051CF1D /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
+		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
+		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
 		92D57EE21CB2DBC700051D79 /* Template16_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */; };
 		92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
 		92D57EE41CB2DBC700051D79 /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
@@ -180,7 +182,6 @@
 		E31C47851A5DB0E500EA9AB1 /* Template2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB167319F5603600C0F42B /* Template2@2x.png */; };
 		E31C47861A5DB0E500EA9AB1 /* Template1_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81561A365D0B008884F9 /* Template1_4x5.svg */; };
 		E31C47871A5DB0E500EA9AB1 /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
-		E31C478A1A5DB0E500EA9AB1 /* BuyNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9419AEAC870042DF5E /* BuyNow@2x.png */; };
 		E31C478B1A5DB0E500EA9AB1 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		E31C478C1A5DB0E500EA9AB1 /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A9199AB9FE006D80E0 /* Pacifico.ttf */; };
 		E31C478D1A5DB0E500EA9AB1 /* TakeSurvey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385819BE57C5009C695F /* TakeSurvey@2x.png */; };
@@ -279,7 +280,6 @@
 		E31C48001A5DB0E500EA9AB1 /* Template3_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A815D1A365D0B008884F9 /* Template3_4x6.svg */; };
 		E31C48011A5DB0E500EA9AB1 /* 71E07BA6EFD3BA86.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB16D319F56B9300C0F42B /* 71E07BA6EFD3BA86.png */; };
 		E31C48031A5DB0E500EA9AB1 /* Template4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB167519F5603600C0F42B /* Template4@2x.png */; };
-		E31C48041A5DB0E500EA9AB1 /* LearnMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9519AEAC870042DF5E /* LearnMore@2x.png */; };
 		E31C48051A5DB0E500EA9AB1 /* MyFeedOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815819A3D12E000D45E0 /* MyFeedOn@2x.png */; };
 		E31C48061A5DB0E500EA9AB1 /* Template13_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A819C1A365D44008884F9 /* Template13_4x6.svg */; };
 		E31C48071A5DB0E500EA9AB1 /* LandingPage-700~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53B019CCA8E9002B0DF3 /* LandingPage-700~iphone.png */; };
@@ -317,8 +317,6 @@
 		E3461F7E19AE43ED0042DF5E /* UIView+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7D19AE43ED0042DF5E /* UIView+Transform.m */; };
 		E3461F8619AE456E0042DF5E /* PGHighQualityTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8519AE456E0042DF5E /* PGHighQualityTextView.m */; };
 		E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8919AE46B00042DF5E /* UIView+Background.m */; };
-		E3461F9619AEAC870042DF5E /* BuyNow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9419AEAC870042DF5E /* BuyNow@2x.png */; };
-		E3461F9819AEAC870042DF5E /* LearnMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9519AEAC870042DF5E /* LearnMore@2x.png */; };
 		E3461FA119AF84A80042DF5E /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
 		E3461FA319AF84A80042DF5E /* MeasurementArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9E19AF84A80042DF5E /* MeasurementArrowLeft@2x.png */; };
 		E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
@@ -636,6 +634,8 @@
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
+		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
+		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
 		92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x5.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x5.hpc; sourceTree = "<group>"; };
 		92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x6.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x6.hpc; sourceTree = "<group>"; };
 		92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_5x7.hpc; path = Resources/Images/Templates/CameraRoll/Template16_5x7.hpc; sourceTree = "<group>"; };
@@ -721,8 +721,6 @@
 		E3461F8519AE456E0042DF5E /* PGHighQualityTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHighQualityTextView.m; sourceTree = "<group>"; };
 		E3461F8819AE46B00042DF5E /* UIView+Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Background.h"; sourceTree = "<group>"; };
 		E3461F8919AE46B00042DF5E /* UIView+Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Background.m"; sourceTree = "<group>"; };
-		E3461F9419AEAC870042DF5E /* BuyNow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BuyNow@2x.png"; path = "Resources/Images/Icons/BuyNow@2x.png"; sourceTree = "<group>"; };
-		E3461F9519AEAC870042DF5E /* LearnMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LearnMore@2x.png"; path = "Resources/Images/Icons/LearnMore@2x.png"; sourceTree = "<group>"; };
 		E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MeasurementArrowDown@2x.png"; path = "Resources/Images/Icons/MeasurementArrowDown@2x.png"; sourceTree = "<group>"; };
 		E3461F9E19AF84A80042DF5E /* MeasurementArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MeasurementArrowLeft@2x.png"; path = "Resources/Images/Icons/MeasurementArrowLeft@2x.png"; sourceTree = "<group>"; };
 		E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MeasurementArrowRight@2x.png"; path = "Resources/Images/Icons/MeasurementArrowRight@2x.png"; sourceTree = "<group>"; };
@@ -1521,6 +1519,8 @@
 		E3D6812419A3B194000D45E0 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */,
+				9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */,
 				F144B28F1A783D8D007CDBBD /* HPSMS_logo@2x.png */,
 				F144B1BC1A70680A007CDBBD /* LoginCameraRoll@2x.png */,
 				F144B1BD1A70680A007CDBBD /* LoginFacebook@2x.png */,
@@ -1541,8 +1541,6 @@
 				E3461F9E19AF84A80042DF5E /* MeasurementArrowLeft@2x.png */,
 				E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */,
 				E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */,
-				E3461F9419AEAC870042DF5E /* BuyNow@2x.png */,
-				E3461F9519AEAC870042DF5E /* LearnMore@2x.png */,
 				E3B123A019DDCCCF00B40FB4 /* Print@2x~ipad.png */,
 				E3B123A119DDCCCF00B40FB4 /* Print@2x~iphone.png */,
 				E3B123A219DDCCCF00B40FB4 /* SaveToCamera@2x~ipad.png */,
@@ -1917,7 +1915,6 @@
 				E31C47861A5DB0E500EA9AB1 /* Template1_4x5.svg in Resources */,
 				E31C47871A5DB0E500EA9AB1 /* Glegoo-Regular.ttf in Resources */,
 				F125381F1AA9097F003CE020 /* greyFlickrLikes.png in Resources */,
-				E31C478A1A5DB0E500EA9AB1 /* BuyNow@2x.png in Resources */,
 				E31C478B1A5DB0E500EA9AB1 /* (null) in Resources */,
 				E31C478C1A5DB0E500EA9AB1 /* Pacifico.ttf in Resources */,
 				E31C478D1A5DB0E500EA9AB1 /* TakeSurvey@2x.png in Resources */,
@@ -2067,7 +2064,6 @@
 				E31C48011A5DB0E500EA9AB1 /* 71E07BA6EFD3BA86.png in Resources */,
 				E31C48031A5DB0E500EA9AB1 /* Template4@2x.png in Resources */,
 				F1DB3DE31B5D650D005716A8 /* Template6_4x6.hpc in Resources */,
-				E31C48041A5DB0E500EA9AB1 /* LearnMore@2x.png in Resources */,
 				E31C48051A5DB0E500EA9AB1 /* MyFeedOn@2x.png in Resources */,
 				E31C48061A5DB0E500EA9AB1 /* Template13_4x6.svg in Resources */,
 				E31C48071A5DB0E500EA9AB1 /* LandingPage-700~iphone.png in Resources */,
@@ -2124,6 +2120,7 @@
 				F17A81901A365D0B008884F9 /* Template9_4x6.svg in Resources */,
 				F17A81911A365D0B008884F9 /* Template9_5x7.svg in Resources */,
 				E3DB16A319F5603600C0F42B /* Template9@2x.png in Resources */,
+				9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */,
 				F17A81921A365D0B008884F9 /* Template10_4x5.svg in Resources */,
 				F17A81931A365D0B008884F9 /* Template10_4x6.svg in Resources */,
 				F17A81941A365D0B008884F9 /* Template10_5x7.svg in Resources */,
@@ -2168,6 +2165,7 @@
 				E34D50AF199AB9FE006D80E0 /* HPSimplified_Bd.ttf in Resources */,
 				E34D50B0199AB9FE006D80E0 /* HPSimplified_BdIt.ttf in Resources */,
 				E34D50B1199AB9FE006D80E0 /* HPSimplified_It.ttf in Resources */,
+				9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */,
 				E34D50B2199AB9FE006D80E0 /* HPSimplified_Lt.ttf in Resources */,
 				E34D50B3199AB9FE006D80E0 /* HPSimplified_LtIt.ttf in Resources */,
 				E34D50B4199AB9FE006D80E0 /* HPSimplified_Rg.ttf in Resources */,
@@ -2184,7 +2182,6 @@
 				92D57EE41CB2DBC700051D79 /* Template16_5x7.hpc in Resources */,
 				E375385919BE57C5009C695F /* About@2x.png in Resources */,
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
-				E3461F9619AEAC870042DF5E /* BuyNow@2x.png in Resources */,
 				E375384B19BE2B6D009C695F /* CardShadow@2x.png in Resources */,
 				92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */,
 				E3DB16AD19F5604900C0F42B /* Circle@2x.png in Resources */,
@@ -2209,7 +2206,6 @@
 				F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */,
 				E34D50D7199AC363006D80E0 /* IntroBackground@2x.png in Resources */,
 				008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */,
-				E3461F9819AEAC870042DF5E /* LearnMore@2x.png in Resources */,
 				F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */,
 				E3D6815E19A3D12E000D45E0 /* ListViewOff@2x.png in Resources */,
 				E3D6816019A3D12E000D45E0 /* ListViewOn@2x.png in Resources */,
