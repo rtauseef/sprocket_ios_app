@@ -13,6 +13,7 @@
 #import "PGPreviewViewController.h"
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
+#import "PGSelectTemplateViewController.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -70,7 +71,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         frame.size.width = desiredWidth;
         
         self.pageContainer.frame = frame;
-        [MPLayout preparePaperView:self.pageView withPaper:[MP sharedInstance].defaultPaper image:_selectedPhoto layout:[self prepareLayout]];
+        [MPLayout preparePaperView:self.pageView withPaper:[MP sharedInstance].defaultPaper image:self.selectedPhoto layout:[self prepareLayout]];
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -108,6 +109,17 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGSelectTemplateViewController *templateViewController = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
+    
+    templateViewController.source = self.source;
+    templateViewController.selectedPhoto = self.selectedPhoto;
+    templateViewController.media = self.media;
+
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:templateViewController];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender

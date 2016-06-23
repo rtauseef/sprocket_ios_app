@@ -13,5 +13,6 @@
 @interface PGAppAppearance : NSObject
 
 + (void)setupAppearance;
++ (UIColor *)navBarColor;
 
 @end
