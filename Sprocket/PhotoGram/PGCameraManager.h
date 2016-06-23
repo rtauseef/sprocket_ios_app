@@ -13,12 +13,14 @@
 #import <Foundation/Foundation.h>
 #import "PGOverlayCameraViewController.h"
 
-@interface PGCameraManager : NSObject
+@interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
 @property (strong, nonatomic) UIImagePickerController *picker;
+@property (weak, nonatomic) UIViewController *viewController;
 
 + (PGCameraManager *)sharedInstance;
-- (void)showCamera:(UIViewController *)viewController;
+- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated;
+- (void)dismissCameraAnimated:(BOOL)animated;
 
 @end

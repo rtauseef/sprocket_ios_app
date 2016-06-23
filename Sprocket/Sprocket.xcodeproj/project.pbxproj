@@ -1116,6 +1116,9 @@
 		9261D4031D189CE60048E5F8 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
+				822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */,
+				822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */,
+				822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */,
 				82D6C74B1D1B47060030569F /* PGCameraManager.h */,
 				82D6C74C1D1B47060030569F /* PGCameraManager.m */,
 				9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */,
@@ -1572,9 +1575,6 @@
 		E3D6814319A3D02E000D45E0 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */,
-				822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */,
-				822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */,
 				E31BE41119E601F0006B78BB /* PGGesturesView.h */,
 				E31BE41219E601F0006B78BB /* PGGesturesView.m */,
 				E3D6810A19A2B2A6000D45E0 /* PGView.h */,

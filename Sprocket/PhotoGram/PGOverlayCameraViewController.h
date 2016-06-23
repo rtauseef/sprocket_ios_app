@@ -12,8 +12,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGOverlayCameraViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PGOverlayCameraViewController : UIViewController
 
-@property (nonatomic, strong) UIImagePickerController *pickerReference;
+@property (nonatomic, weak) UIImagePickerController *pickerReference;
 
 @end

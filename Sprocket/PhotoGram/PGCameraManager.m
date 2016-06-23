@@ -11,6 +11,7 @@
 //
 
 #import "PGCameraManager.h"
+#import "PGPreviewViewController.h"
 
 @implementation PGCameraManager
 
@@ -42,25 +43,50 @@
     self.picker.showsCameraControls = NO;
     self.picker.extendedLayoutIncludesOpaqueBars = NO;
     
-    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0); //This slots the preview exactly in the middle of the screen by moving it down 71 points
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
     self.picker.cameraViewTransform = translate;
     
     CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
     self.picker.cameraViewTransform = scale;
     
-    // Insert the overlay
     self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     
     self.cameraOverlay.pickerReference = self.picker;
     self.cameraOverlay.view.frame = self.picker.cameraOverlayView.frame;
-    self.picker.delegate = self.cameraOverlay;
+    self.picker.delegate = self;
+    self.picker.cameraOverlayView = self.cameraOverlay.view;
 }
 
-- (void)showCamera:(UIViewController *)viewController
+- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated
 {
-    [viewController presentViewController:self.picker animated:YES completion:^{
-        self.picker.cameraOverlayView = self.cameraOverlay.view;
-    }];
+    self.viewController = viewController;
+    
+    if ([viewController isKindOfClass: [PGPreviewViewController class]]) {
+        [self.viewController presentViewController:self.picker animated:animated completion:nil];
+    } else {
+        [self.viewController.navigationController popToViewController:self.picker animated:NO];
+    }
+}
+
+- (void)dismissCameraAnimated:(BOOL)animated {
+    [self.viewController dismissViewControllerAnimated:animated completion:nil];
+}
+
+#pragma mark - UIImagePickerController Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    UIImage *picture = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
+        picture = [UIImage imageWithCGImage:picture.CGImage scale:picture.scale orientation:UIImageOrientationLeftMirrored];
+    }
+    
+    previewViewController.selectedPhoto = picture;
+    
+    [self.picker presentViewController:previewViewController animated:NO completion:nil];
 }
 
 @end

@@ -174,13 +174,6 @@
     self.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", baseName, imageSuffix]];
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    if (navigationController.class == [UIImagePickerController class]) {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    }
-}
-
 - (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -253,7 +246,7 @@
 
 - (IBAction)cameraTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] showCamera:self];
+    [[PGCameraManager sharedInstance] showCamera:self animated:YES];
 }
 
 #pragma mark - PGSurveyManagerDelegate

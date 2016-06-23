@@ -13,6 +13,7 @@
 #import "PGPreviewViewController.h"
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
+#import "PGCameraManager.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -82,11 +83,13 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
+    [[PGCameraManager sharedInstance] showCamera:self animated:NO];
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
