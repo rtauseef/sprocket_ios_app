@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1101,10 +1101,14 @@
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HME-nl-kU0">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVu-BA-tM2" userLabel="Image Container">
                                         <rect key="frame" x="10" y="44" width="580" height="481"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6b-1c-Ji1" userLabel="Page" customClass="MPLayoutPaperView">
+                                        <rect key="frame" x="10" y="44" width="580" height="481"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-Sr-Qd8" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="525" width="600" height="75"/>
                                         <subviews>
@@ -1190,14 +1194,18 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
-                                    <constraint firstItem="Swo-Sr-Qd8" firstAttribute="top" secondItem="HME-nl-kU0" secondAttribute="bottom" id="FT2-RP-MOH"/>
+                                    <constraint firstItem="ZVu-BA-tM2" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="3bz-VL-gnN"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="HcJ-BT-acW"/>
-                                    <constraint firstItem="HME-nl-kU0" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="Lk7-DK-0t6"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZVu-BA-tM2" secondAttribute="trailing" constant="10" id="K4Y-Lt-OLw"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
-                                    <constraint firstItem="HME-nl-kU0" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="fLK-o5-qeY"/>
+                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="height" secondItem="ZVu-BA-tM2" secondAttribute="height" id="PS0-YV-mmh"/>
+                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="centerX" secondItem="ZVu-BA-tM2" secondAttribute="centerX" id="SI1-2f-wzY"/>
+                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="centerY" secondItem="ZVu-BA-tM2" secondAttribute="centerY" id="Syu-rg-p7V"/>
+                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="width" secondItem="ZVu-BA-tM2" secondAttribute="width" id="VNr-b3-MpH"/>
+                                    <constraint firstItem="ZVu-BA-tM2" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="b5D-We-2aV"/>
                                     <constraint firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="bottom" id="pmc-DO-IIl"/>
                                     <constraint firstItem="Swo-Sr-Qd8" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="rjT-eS-1Do"/>
-                                    <constraint firstAttribute="trailing" secondItem="HME-nl-kU0" secondAttribute="trailing" constant="10" id="uhM-aD-fJz"/>
+                                    <constraint firstItem="ZVu-BA-tM2" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="vLr-Sc-l06"/>
                                     <constraint firstAttribute="trailing" secondItem="BOE-OE-xsb" secondAttribute="trailing" id="ykZ-rL-zJI"/>
                                 </constraints>
                             </view>
@@ -1212,8 +1220,12 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="HME-nl-kU0" id="tKg-fB-HIE"/>
+                        <outlet property="bottomView" destination="Swo-Sr-Qd8" id="z90-Vm-q0n"/>
+                        <outlet property="pageContainer" destination="ZVu-BA-tM2" id="SyE-ox-18s"/>
+                        <outlet property="pageView" destination="d6b-1c-Ji1" id="XKm-Wu-duw"/>
+                        <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
                         <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
+                        <outlet property="topView" destination="BOE-OE-xsb" id="g1o-bp-Ach"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfL-7m-DIX" userLabel="First Responder" sceneMemberID="firstResponder"/>

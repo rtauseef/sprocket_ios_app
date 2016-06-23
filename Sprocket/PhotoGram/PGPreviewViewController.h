@@ -11,9 +11,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <HPPRMedia.h>
 
 @interface PGPreviewViewController : UIViewController
 
 @property (strong, nonatomic) UIImage *selectedPhoto;
+@property (strong, nonatomic) NSString *source;
+@property (strong, nonatomic) HPPRMedia *media;
 
 @end
