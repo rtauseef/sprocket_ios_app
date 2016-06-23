@@ -34,6 +34,7 @@
 #import "MPLayoutFactory.h"
 #import "PGSVGResourceManager.h"
 #import "PGExperimentManager.h"
+#import "PGAppAppearance.h"
 
 #define STATUS_BAR_HEIGHT 22.0f
 
@@ -91,6 +92,7 @@ BOOL firstTimeViewedSinceAppStarted = TRUE;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shareButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *printBarButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *printLaterBarButtonItem;
+@property (strong, nonatomic) UIBarButtonItem *cancelBarButtonItem;
 @property (strong, nonatomic) UITextView *currentTextViewInEdition;
 @property (strong, nonatomic) PGTemplate *currentTemplate;
 @property (strong, nonatomic) NSString *path;
@@ -1164,7 +1166,8 @@ BOOL firstTimeViewedSinceAppStarted = TRUE;
 - (void)setNavigationBarEditing:(BOOL)editing
 {
     NSString *title = NSLocalizedString(@"Select Template", @"Title of the select template screen");
-    UIColor *barTintColor = [UIColor HPBlueColor];
+    UIColor *barTintColor = [PGAppAppearance navBarColor];
+;
     BOOL hidesBackButton = NO;
 
     NSMutableArray *icons = [NSMutableArray arrayWithArray:@[ self.shareButtonItem]];
@@ -1173,16 +1176,23 @@ BOOL firstTimeViewedSinceAppStarted = TRUE;
     } else if (IS_OS_8_OR_LATER) {
         [icons addObjectsFromArray:@[ self.printLaterBarButtonItem ]];
     }
+    [self.navigationItem setLeftBarButtonItem:self.cancelBarButtonItem];
 
     if (editing) {
         title = nil;
         barTintColor = [UIColor HPTabBarSelectedColor];
         icons = [NSMutableArray arrayWithArray:@[ self.doneButtonItem ]];
         hidesBackButton = YES;
+        [self.navigationItem.leftBarButtonItem setTintColor:[UIColor clearColor]];
+        [self.navigationItem.leftBarButtonItem setEnabled:NO];
+    } else {
+        [self.navigationItem.leftBarButtonItem setTintColor:self.printBarButtonItem.tintColor];
+        [self.navigationItem.leftBarButtonItem setEnabled:YES];
     }
     
     [self.navigationItem setRightBarButtonItems:icons animated:YES];
     [self.navigationItem setHidesBackButton:hidesBackButton	animated:YES];
+    [self.navigationItem setLeftBarButtonItem:self.cancelBarButtonItem animated:YES];
     
     [UIView animateWithDuration:0.4f
                      animations:^{
@@ -1209,8 +1219,11 @@ BOOL firstTimeViewedSinceAppStarted = TRUE;
                                     target:self
                                     action:@selector(printLaterTapped:)];
     
+    self.cancelBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTapped:)];
+    
     self.printBarButtonItem.accessibilityIdentifier = @"printBarButtonItem";
     self.printLaterBarButtonItem.accessibilityIdentifier = @"printLaterBarButtonItem";
+    self.cancelBarButtonItem.accessibilityIdentifier = @"cancelBarButtonItem";
     
     [self setNavigationBarEditing:NO];
     
@@ -1244,6 +1257,11 @@ BOOL firstTimeViewedSinceAppStarted = TRUE;
         UIViewController *vc = [[MP sharedInstance] printLaterViewControllerWithDelegate:self printLaterJob:self.printLaterJob];
         [self presentViewController:vc animated:YES completion:nil];
     }];
+}
+
+- (void)cancelTapped:(id)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - False front
