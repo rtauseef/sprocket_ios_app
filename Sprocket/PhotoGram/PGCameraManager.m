@@ -13,6 +13,12 @@
 #import "PGCameraManager.h"
 #import "PGPreviewViewController.h"
 
+@interface PGCameraManager ()
+
+    @property (assign, nonatomic) BOOL isCameraOpened;
+
+@end
+
 @implementation PGCameraManager
 
 + (PGCameraManager *)sharedInstance
@@ -36,6 +42,7 @@
 
 - (void)setup
 {
+    self.isCameraOpened = NO;
     self.picker = [[UIImagePickerController alloc] init];
     self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
@@ -61,32 +68,44 @@
 {
     self.viewController = viewController;
     
-    if ([viewController isKindOfClass: [PGPreviewViewController class]]) {
-        [self.viewController presentViewController:self.picker animated:animated completion:nil];
+    if (self.isCameraOpened) {
+        [self.viewController dismissViewControllerAnimated:NO completion:nil];
     } else {
-        [self.viewController.navigationController popToViewController:self.picker animated:NO];
+        [self.viewController presentViewController:self.picker animated:animated completion:nil];
+        self.isCameraOpened = YES;
     }
 }
 
 - (void)dismissCameraAnimated:(BOOL)animated {
-    [self.viewController dismissViewControllerAnimated:animated completion:nil];
+    [self.picker dismissViewControllerAnimated:animated completion:nil];
+    self.isCameraOpened = NO;
 }
 
 #pragma mark - UIImagePickerController Delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     UIImage *picture = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
         picture = [UIImage imageWithCGImage:picture.CGImage scale:picture.scale orientation:UIImageOrientationLeftMirrored];
     }
     
-    previewViewController.selectedPhoto = picture;
-    
-    [self.picker presentViewController:previewViewController animated:NO completion:nil];
+    if ([self.picker.presentingViewController class] == [PGPreviewViewController class]) {
+        PGPreviewViewController *previewViewController = (PGPreviewViewController *)self.picker.presentingViewController;
+        previewViewController.selectedPhoto = picture;
+        
+        [self dismissCameraAnimated:NO];
+    } else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+        previewViewController.selectedPhoto = picture;
+        
+        [self.picker presentViewController:previewViewController animated:NO completion:nil];
+    }
+}
+
+- (void)mirrorImage {
 }
 
 @end

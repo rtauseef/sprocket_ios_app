@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */; };
-		26E6FD1B1D1BDC1C0050E49F /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		370A21CF19ABA99B00EBDCCE /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A21CE19ABA99B00EBDCCE /* Templates.plist */; };
 		370A21D319ABAF7500EBDCCE /* PGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370A21D219ABAF7500EBDCCE /* PGTemplate.m */; };
 		3731680D1AD4B08900503065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
@@ -32,18 +31,12 @@
 		658BAB7E1B8FC016009D8E9D /* CoachMarkNone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
+		821D989D1D1C8A0800F2C1AF /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
+		821D989E1D1C8A2500F2C1AF /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
+		821D98A01D1C8AB700F2C1AF /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
-		920746261CB5D1000051CF1D /* Template5_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE51CB2E63600051D79 /* Template5_4x5.hpc */; };
-		920746271CB5D1050051CF1D /* Template5_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE61CB2E63600051D79 /* Template5_4x6.hpc */; };
-		920746281CB5D1090051CF1D /* Template5_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE71CB2E63600051D79 /* Template5_5x7.hpc */; };
-		920746291CB5D1120051CF1D /* Template7_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EEB1CB304FB00051D79 /* Template7_4x5.hpc */; };
-		9207462A1CB5D1150051CF1D /* Template7_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EEC1CB304FB00051D79 /* Template7_4x6.hpc */; };
-		9207462B1CB5D1190051CF1D /* Template7_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EED1CB304FB00051D79 /* Template7_5x7.hpc */; };
-		9207462C1CB5D1E50051CF1D /* Template16_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */; };
-		9207462D1CB5D1E80051CF1D /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
-		9207462E1CB5D1EB0051CF1D /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -2197,6 +2190,7 @@
 				F1EE0BF61D1B3D530087F2D0 /* Template16_5x7.hpc in Resources */,
 				F1EE0BF71D1B3D530087F2D0 /* About@2x.png in Resources */,
 				F1EE0BF81D1B3D530087F2D0 /* Back@2x.png in Resources */,
+				821D98A01D1C8AB700F2C1AF /* PGOverlayCameraViewController.xib in Resources */,
 				F1EE0BF91D1B3D530087F2D0 /* CardShadow@2x.png in Resources */,
 				F1EE0BFA1D1B3D530087F2D0 /* Template16_4x6.hpc in Resources */,
 				F1EE0BFB1D1B3D530087F2D0 /* Circle@2x.png in Resources */,
@@ -2591,11 +2585,13 @@
 				F1EE0B651D1B3D530087F2D0 /* UIView+Style.m in Sources */,
 				F1EE0B661D1B3D530087F2D0 /* PGSaveToCameraRollActivity.m in Sources */,
 				F1EE0B671D1B3D530087F2D0 /* PGTemplateSelectorView.m in Sources */,
+				821D989E1D1C8A2500F2C1AF /* PGOverlayCameraViewController.m in Sources */,
 				F1EE0B681D1B3D530087F2D0 /* PGCrashlyticsLogger.m in Sources */,
 				F1EE0B691D1B3D530087F2D0 /* PGSVGResourceManager.m in Sources */,
 				F1EE0B6A1D1B3D530087F2D0 /* PGWebViewerViewController.m in Sources */,
 				F1EE0B6B1D1B3D530087F2D0 /* UIFont+Style.m in Sources */,
 				F1EE0B6C1D1B3D530087F2D0 /* UIImageView+MaskImage.m in Sources */,
+				821D989D1D1C8A0800F2C1AF /* PGCameraManager.m in Sources */,
 				F1EE0B6D1D1B3D530087F2D0 /* PGInstagramLandingPageViewController.m in Sources */,
 				F1EE0B6E1D1B3D530087F2D0 /* UIImage+ImageResize.m in Sources */,
 				F1EE0B6F1D1B3D530087F2D0 /* PGLandingMainPageViewController.m in Sources */,

@@ -11,6 +11,7 @@
 //
 
 #import "PGOverlayCameraViewController.h"
+#import "PGCameraManager.h"
 
 @implementation PGOverlayCameraViewController
 
@@ -21,7 +22,7 @@
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [self.pickerReference dismissViewControllerAnimated:YES completion:nil];
+    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES];
 }
 
 - (IBAction)cameraReverseTapped:(id)sender

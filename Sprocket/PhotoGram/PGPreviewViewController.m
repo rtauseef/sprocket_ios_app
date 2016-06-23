@@ -90,6 +90,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
 {
+    self.printItem = nil;
     UIImage *finalImage = selectedPhoto;
     
     if (selectedPhoto.size.width > selectedPhoto.size.height) {
