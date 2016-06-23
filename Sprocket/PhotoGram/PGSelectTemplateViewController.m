@@ -1191,7 +1191,7 @@ BOOL firstTimeViewedSinceAppStarted = TRUE;
     }
     
     [self.navigationItem setRightBarButtonItems:icons animated:YES];
-    //[self.navigationItem setHidesBackButton:hidesBackButton	animated:YES];
+    [self.navigationItem setHidesBackButton:hidesBackButton	animated:YES];
     [self.navigationItem setLeftBarButtonItem:self.cancelBarButtonItem animated:YES];
     
     [UIView animateWithDuration:0.4f
