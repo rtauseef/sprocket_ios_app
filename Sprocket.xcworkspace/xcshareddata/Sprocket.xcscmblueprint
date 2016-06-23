@@ -4,12 +4,12 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "FD61A807B543994884861E48DE55D23B88024166" : 0,
     "54611BD22880AC59932302A22BCC4D181260DB54" : 0,
     "002654A986428CD1047FC86DD2CA762D9F8814B2" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C786E644-DC64-4046-B003-DD7D71C14C15",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "54611BD22880AC59932302A22BCC4D181260DB54" : "ios-print-sdk\/",
     "002654A986428CD1047FC86DD2CA762D9F8814B2" : "sprocket_ios_app\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Sprocket",
@@ -20,6 +20,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IPGPTP\/sprocket_ios_app.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "002654A986428CD1047FC86DD2CA762D9F8814B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IPGPTP\/ios-print-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "54611BD22880AC59932302A22BCC4D181260DB54"
     }
   ]
 }
