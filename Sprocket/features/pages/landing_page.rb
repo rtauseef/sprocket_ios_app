@@ -8,7 +8,7 @@ class LandingScreen < Calabash::IBase
   end
 
   def social_media_logo
-    "view marked:'HPSMS_logo.png'"
+    "view marked:'HPLogo.png'"
   end
 
   def instagram_logo

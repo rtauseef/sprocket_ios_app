@@ -1,0 +1,3 @@
+[submodule "Sprocket/features/common_library"]
+	path = Sprocket/features/common_library
+	url = https://github.com/IPGPTP/hp_mobile_app_common_test.git
