@@ -17,6 +17,7 @@
 #import <MP.h>
 #import <MPPrintItemFactory.h>
 #import <MPLayoutFactory.h>
+#import <MPLayout.h>
 #import <MPPrintActivity.h>
 #import <MPPrintLaterActivity.h>
 
@@ -27,12 +28,16 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 @interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *pageContainer;
+@property (weak, nonatomic) IBOutlet MPLayoutPaperView *pageView;
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
-@property (strong, nonatomic) UIPopoverController *popover;
 
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (strong, nonatomic) UIPopoverController *popover;
 @end
 
 @implementation PGPreviewViewController
@@ -40,23 +45,34 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.printItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
-    if (self.selectedPhoto) {
-        self.printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
-        self.printItem.layout = [self prepareLayout];
+    if (nil == self.printItem) {
+        if (self.selectedPhoto) {
+            self.printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
+            self.printItem.layout = [self prepareLayout];
+        }
         
-        self.imageView.image = [self.printItem previewImageForPaper:[MP sharedInstance].defaultPaper];
+        CGRect frame = self.pageContainer.frame;
+        
+        CGFloat desiredWidth = self.pageContainer.frame.size.width;
+        CGFloat desiredHeight = 1.5 * self.pageContainer.frame.size.width;
+        if (desiredHeight > self.previewView.frame.size.height - (self.topView.frame.size.height + self.bottomView.frame.size.height)) {
+            desiredHeight = self.pageContainer.frame.size.height;
+            desiredWidth = (2.0F * desiredHeight) / 3.0F;
+        }
+        frame.size.height = desiredHeight;
+        frame.size.width = desiredWidth;
+        
+        self.pageContainer.frame = frame;
+        [MPLayout preparePaperView:self.pageView withPaper:[MP sharedInstance].defaultPaper image:_selectedPhoto layout:[self prepareLayout]];
     }
     
-    CGRect frame = self.imageView.frame;
-    frame.size.height = 1.5 * self.imageView.frame.size.width;
-    self.imageView.frame = frame;
-
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
@@ -75,6 +91,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
                                                 scale: 1.0
                                           orientation: UIImageOrientationRight];
     }
+    
     _selectedPhoto = finalImage;
 }
 
@@ -86,7 +103,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
@@ -123,7 +140,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (MPLayout *)prepareLayout
 {
-    return [MPLayoutFactory layoutWithType:[MPLayoutFit layoutType]];
+    return [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
 }
 
 - (NSDictionary *)extendedMetrics
@@ -139,7 +156,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:1];
     
-    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:self.imageView.image];
+    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
     printItem.layout = [self prepareLayout];
     
     [result setValue:printItem forKey:[MP sharedInstance].defaultPaper.sizeTitle];
@@ -276,7 +293,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (void)imageForPaper:(MPPaper *)paper withCompletion:(void (^)(UIImage *))completion
 {
-    UIImage *image = self.imageView.image;
+    UIImage *image = self.selectedPhoto;
     if (completion) {
         completion(image);
     }
