@@ -13,6 +13,7 @@
 #import "PGPreviewViewController.h"
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
+#import "PGCameraManager.h"
 #import "PGSelectTemplateViewController.h"
 
 #import <MP.h>
@@ -89,6 +90,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
 {
+    self.printItem = nil;
     UIImage *finalImage = selectedPhoto;
     
     if (selectedPhoto.size.width > selectedPhoto.size.height) {
@@ -104,10 +106,12 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
+    [[PGCameraManager sharedInstance] showCamera:self animated:NO];
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
+    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

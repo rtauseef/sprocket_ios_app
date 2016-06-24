@@ -1625,8 +1625,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sprocket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8A-4l-TdM">
-                                <rect key="frame" x="193" y="204" width="215" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8A-4l-TdM">
+                                <rect key="frame" x="259" y="202" width="83" height="27"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1768,13 +1768,20 @@ Flickr, you also agree with HP’s Terms of Service.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="HPLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gYx-ML-V4R">
-                                <rect key="frame" x="259" y="113" width="83" height="83"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HPLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gYx-ML-V4R">
+                                <rect key="frame" x="259" y="111" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="6uY-V6-HZW"/>
                                     <constraint firstAttribute="width" constant="83" id="omn-3h-exN"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJF-Uu-U0X">
+                                <rect key="frame" x="273" y="452" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraTapped:" destination="wUV-en-vVL" eventType="touchUpInside" id="VL3-DW-lov"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1783,10 +1790,12 @@ Flickr, you also agree with HP’s Terms of Service.</string>
                             <constraint firstItem="Mbc-15-oGA" firstAttribute="top" secondItem="HRq-id-52p" secondAttribute="bottom" id="Cxt-f1-hZM"/>
                             <constraint firstAttribute="centerY" secondItem="Ttx-CG-jdw" secondAttribute="centerY" constant="-105" id="GjF-L5-V5O"/>
                             <constraint firstAttribute="centerX" secondItem="HRq-id-52p" secondAttribute="centerX" id="IjH-Ej-ISC"/>
+                            <constraint firstItem="qJF-Uu-U0X" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="bottom" id="Iy6-Qa-uab"/>
                             <constraint firstItem="HRq-id-52p" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="bottom" id="Lva-fv-dkK"/>
                             <constraint firstAttribute="width" secondItem="HRq-id-52p" secondAttribute="width" id="Ooj-0t-aSd"/>
                             <constraint firstItem="gYx-ML-V4R" firstAttribute="centerX" secondItem="UAg-RE-rbp" secondAttribute="centerX" id="PNr-76-yBt"/>
                             <constraint firstAttribute="centerX" secondItem="r8A-4l-TdM" secondAttribute="centerX" id="SLC-N5-DnV"/>
+                            <constraint firstItem="qJF-Uu-U0X" firstAttribute="centerX" secondItem="UAg-RE-rbp" secondAttribute="centerX" id="T0Z-Xf-MKb"/>
                             <constraint firstAttribute="centerX" secondItem="krD-fF-9ON" secondAttribute="centerX" id="Uir-iA-nCg"/>
                             <constraint firstAttribute="centerY" secondItem="r8A-4l-TdM" secondAttribute="centerY" constant="85" id="e5N-PK-f6z"/>
                             <constraint firstItem="r8A-4l-TdM" firstAttribute="top" secondItem="gYx-ML-V4R" secondAttribute="bottom" constant="8" id="kx1-sq-rQM"/>

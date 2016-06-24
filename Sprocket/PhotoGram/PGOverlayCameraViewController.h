@@ -10,9 +10,10 @@
 // the license agreement.
 //
 
-
 #import <UIKit/UIKit.h>
 
-@interface ActionViewController : UIViewController
+@interface PGOverlayCameraViewController : UIViewController
+
+@property (nonatomic, weak) UIImagePickerController *pickerReference;
 
 @end
