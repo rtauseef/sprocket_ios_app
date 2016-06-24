@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */; };
-		26E6FD1B1D1BDC1C0050E49F /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		370A21CF19ABA99B00EBDCCE /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A21CE19ABA99B00EBDCCE /* Templates.plist */; };
 		370A21D319ABAF7500EBDCCE /* PGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370A21D219ABAF7500EBDCCE /* PGTemplate.m */; };
 		3731680D1AD4B08900503065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
@@ -35,6 +34,9 @@
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
+		92D073701D1CC08A002611C0 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D0736F1D1CC08A002611C0 /* ActionViewController.m */; };
+		92D073731D1CC08A002611C0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D073711D1CC08A002611C0 /* MainInterface.storyboard */; };
+		92D073771D1CC08A002611C0 /* SprocketPrint.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 92D0736C1D1CC08A002611C0 /* SprocketPrint.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		92D57EE21CB2DBC700051D79 /* Template16_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */; };
 		92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
 		92D57EE41CB2DBC700051D79 /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
@@ -562,6 +564,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		92D073751D1CC08A002611C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92D0736B1D1CC08A002611C0;
+			remoteInfo = SprocketPrint;
+		};
 		E34D5080199AB87B006D80E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -570,6 +579,20 @@
 			remoteInfo = PhotoGram;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		92D0737B1D1CC08A002611C0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				92D073771D1CC08A002611C0 /* SprocketPrint.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IntroBackground1536x2048@2x.png"; sourceTree = "<group>"; };
@@ -618,6 +641,13 @@
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
+		92D073671D1CC05F002611C0 /* Sprocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sprocket.entitlements; sourceTree = SOURCE_ROOT; };
+		92D0736C1D1CC08A002611C0 /* SprocketPrint.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SprocketPrint.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D0736E1D1CC08A002611C0 /* ActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
+		92D0736F1D1CC08A002611C0 /* ActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
+		92D073721D1CC08A002611C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		92D073741D1CC08A002611C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92D0737C1D1CC09E002611C0 /* SprocketPrint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SprocketPrint.entitlements; sourceTree = "<group>"; };
 		92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x5.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x5.hpc; sourceTree = "<group>"; };
 		92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x6.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x6.hpc; sourceTree = "<group>"; };
 		92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_5x7.hpc; path = Resources/Images/Templates/CameraRoll/Template16_5x7.hpc; sourceTree = "<group>"; };
@@ -997,6 +1027,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		92D073691D1CC08A002611C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E34D5054199AB87B006D80E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1098,6 +1135,18 @@
 			name = Preview;
 			sourceTree = "<group>";
 		};
+		92D0736D1D1CC08A002611C0 /* SprocketPrint */ = {
+			isa = PBXGroup;
+			children = (
+				92D0737C1D1CC09E002611C0 /* SprocketPrint.entitlements */,
+				92D0736E1D1CC08A002611C0 /* ActionViewController.h */,
+				92D0736F1D1CC08A002611C0 /* ActionViewController.m */,
+				92D073711D1CC08A002611C0 /* MainInterface.storyboard */,
+				92D073741D1CC08A002611C0 /* Info.plist */,
+			);
+			path = SprocketPrint;
+			sourceTree = "<group>";
+		};
 		CC5D53A319CCA77C002B0DF3 /* LandingPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1197,6 +1246,7 @@
 			children = (
 				E34D5060199AB87B006D80E0 /* Sprocket */,
 				E34D5082199AB87B006D80E0 /* SprocketTests */,
+				92D0736D1D1CC08A002611C0 /* SprocketPrint */,
 				E34D5059199AB87B006D80E0 /* Frameworks */,
 				E34D5058199AB87B006D80E0 /* Products */,
 				DCDDC5ACC635A15B68D63426 /* Pods */,
@@ -1209,6 +1259,7 @@
 				E34D5057199AB87B006D80E0 /* Sprocket.app */,
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
 				F1EE0C6B1D1B3D530087F2D0 /* Sprocket-cal.app */,
+				92D0736C1D1CC08A002611C0 /* SprocketPrint.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1237,6 +1288,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
+				92D073671D1CC05F002611C0 /* Sprocket.entitlements */,
 				E3461EC919AC01010042DF5E /* Libraries */,
 				F134BC2E1AC60517007D892B /* Logging */,
 				E34D5093199AB90A006D80E0 /* Analytics */,
@@ -1744,6 +1796,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		92D0736B1D1CC08A002611C0 /* SprocketPrint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D073781D1CC08A002611C0 /* Build configuration list for PBXNativeTarget "SprocketPrint" */;
+			buildPhases = (
+				92D073681D1CC08A002611C0 /* Sources */,
+				92D073691D1CC08A002611C0 /* Frameworks */,
+				92D0736A1D1CC08A002611C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SprocketPrint;
+			productName = SprocketPrint;
+			productReference = 92D0736C1D1CC08A002611C0 /* SprocketPrint.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E34D5056199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E34D508C199AB87B006D80E0 /* Build configuration list for PBXNativeTarget "Sprocket" */;
@@ -1757,10 +1826,12 @@
 				E387B47719DA23E000ABB167 /* ShellScript */,
 				FF7337C719F71C7900A91B3C /* ShellScript */,
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
+				92D0737B1D1CC08A002611C0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				92D073761D1CC08A002611C0 /* PBXTargetDependency */,
 			);
 			name = Sprocket;
 			productName = PhotoGram;
@@ -1818,8 +1889,21 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = HP;
 				TargetAttributes = {
-					E34D5056199AB87B006D80E0 = {
+					92D0736B1D1CC08A002611C0 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					E34D5056199AB87B006D80E0 = {
+						DevelopmentTeam = UJ5KAZ5V7V;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -1857,11 +1941,20 @@
 				E34D5056199AB87B006D80E0 /* Sprocket */,
 				E34D507A199AB87B006D80E0 /* SprocketTests */,
 				F1EE0B4C1D1B3D530087F2D0 /* Sprocket-cal */,
+				92D0736B1D1CC08A002611C0 /* SprocketPrint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		92D0736A1D1CC08A002611C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D073731D1CC08A002611C0 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E34D5055199AB87B006D80E0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2458,6 +2551,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		92D073681D1CC08A002611C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D073701D1CC08A002611C0 /* ActionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E34D5053199AB87B006D80E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2611,6 +2712,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		92D073761D1CC08A002611C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92D0736B1D1CC08A002611C0 /* SprocketPrint */;
+			targetProxy = 92D073751D1CC08A002611C0 /* PBXContainerItemProxy */;
+		};
 		E34D5081199AB87B006D80E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E34D5056199AB87B006D80E0 /* Sprocket */;
@@ -2657,6 +2763,14 @@
 				FFEEF7F11C4EF6FB000C47D8 /* nl */,
 			);
 			name = terms.html;
+			sourceTree = "<group>";
+		};
+		92D073711D1CC08A002611C0 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92D073721D1CC08A002611C0 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		E34D5063199AB87B006D80E0 /* InfoPlist.strings */ = {
@@ -2746,6 +2860,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		92D073791D1CC08A002611C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = SprocketPrint/SprocketPrint.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SprocketPrint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.SprocketPrint";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		92D0737A1D1CC08A002611C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = SprocketPrint/SprocketPrint.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SprocketPrint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.SprocketPrint";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		E34D508A199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2830,6 +2987,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -2888,7 +3046,7 @@
 					"-framework",
 					UIKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2902,6 +3060,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -2960,7 +3119,7 @@
 					"-framework",
 					UIKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3163,6 +3322,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		92D073781D1CC08A002611C0 /* Build configuration list for PBXNativeTarget "SprocketPrint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D073791D1CC08A002611C0 /* Debug */,
+				92D0737A1D1CC08A002611C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E34D5052199AB87A006D80E0 /* Build configuration list for PBXProject "Sprocket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
