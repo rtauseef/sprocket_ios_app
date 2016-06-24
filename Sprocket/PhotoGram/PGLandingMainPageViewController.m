@@ -23,6 +23,7 @@
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
+#import "PGCameraManager.h"
 
 #import <MP.h>
 
@@ -31,6 +32,7 @@
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -240,6 +242,11 @@
 - (IBAction)flickrTapped:(id)sender
 {
     [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:NO];
+}
+
+- (IBAction)cameraTapped:(id)sender
+{
+    [[PGCameraManager sharedInstance] showCamera:self animated:YES];
 }
 
 #pragma mark - PGSurveyManagerDelegate
