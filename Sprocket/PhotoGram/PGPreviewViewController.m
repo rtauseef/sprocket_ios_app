@@ -15,6 +15,7 @@
 #import "PGAnalyticsManager.h"
 #import "PGCameraManager.h"
 #import "PGSelectTemplateViewController.h"
+#import "PGGesturesView.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -30,8 +31,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 @interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *pageContainer;
-@property (weak, nonatomic) IBOutlet MPLayoutPaperView *pageView;
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
 
@@ -39,6 +38,8 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIView *imageContainer;
+@property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
 @end
 
@@ -60,25 +61,46 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
             self.printItem.layout = [self layout];
         }
         
-        CGRect frame = self.pageContainer.frame;
+        CGRect frame = self.imageContainer.frame;
         
         CGFloat aspectRatioWidth = [self paper].width;
         CGFloat aspectRatioHeight = [self paper].height;
         
-        CGFloat desiredWidth = self.pageContainer.frame.size.width;
-        CGFloat desiredHeight = (aspectRatioHeight / aspectRatioWidth) * self.pageContainer.frame.size.width;
+        CGFloat desiredWidth = self.imageContainer.frame.size.width;
+        CGFloat desiredHeight = (aspectRatioHeight / aspectRatioWidth) * self.imageContainer.frame.size.width;
         if (desiredHeight > self.previewView.frame.size.height - (self.topView.frame.size.height + self.bottomView.frame.size.height)) {
-            desiredHeight = self.pageContainer.frame.size.height;
+            desiredHeight = self.imageContainer.frame.size.height;
             desiredWidth = (aspectRatioWidth / aspectRatioHeight) * desiredHeight;
         }
         frame.size.height = desiredHeight;
         frame.size.width = desiredWidth;
         
-        self.pageContainer.frame = frame;
-        [MPLayout preparePaperView:self.pageView withPaper:[self paper] image:self.selectedPhoto layout:[self layout]];
+        self.imageContainer.frame = frame;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (nil != self.imageView) {
+        [self.imageView removeFromSuperview];
+        self.imageView = nil;
+    }
+    
+    [PGAnalyticsManager sharedManager].trackPhotoPosition = NO;
+    [PGAnalyticsManager sharedManager].photoPanEdited = NO;
+    [PGAnalyticsManager sharedManager].photoZoomEdited = NO;
+    [PGAnalyticsManager sharedManager].photoRotationEdited = NO;
+
+    self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
+    self.imageView.image = self.selectedPhoto;
+    
+    [self.imageContainer addSubview:self.imageView];
+    
+    [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,6 +113,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
 {
     self.printItem = nil;
+
     UIImage *finalImage = selectedPhoto;
     
     if (selectedPhoto.size.width > selectedPhoto.size.height) {
