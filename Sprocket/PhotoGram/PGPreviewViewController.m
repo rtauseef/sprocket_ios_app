@@ -16,6 +16,7 @@
 #import "PGCameraManager.h"
 #import "PGSelectTemplateViewController.h"
 #import "PGGesturesView.h"
+#import "UIView+Background.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -33,6 +34,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
+@property (strong, nonatomic) UIImage *originalImage;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -41,6 +43,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 @property (weak, nonatomic) IBOutlet UIView *imageContainer;
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
+@property (assign, nonatomic) BOOL needNewImageView;
 @end
 
 @implementation PGPreviewViewController
@@ -49,6 +52,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     [super viewDidLoad];
     self.printItem = nil;
+    self.needNewImageView = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,6 +80,8 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         frame.size.width = desiredWidth;
         
         self.imageContainer.frame = frame;
+        
+        self.needNewImageView = YES;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -85,22 +91,28 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     [super viewDidAppear:animated];
     
-    if (nil != self.imageView) {
-        [self.imageView removeFromSuperview];
-        self.imageView = nil;
+    //  The code below produces an imageView in the wrong location inside of viewWillAppear
+    //   ... need to do it here...
+    if (self.needNewImageView) {
+        self.needNewImageView = NO;
+        
+        if (nil != self.imageView) {
+            [self.imageView removeFromSuperview];
+            self.imageView = nil;
+        }
+        
+        [PGAnalyticsManager sharedManager].trackPhotoPosition = NO;
+        [PGAnalyticsManager sharedManager].photoPanEdited = NO;
+        [PGAnalyticsManager sharedManager].photoZoomEdited = NO;
+        [PGAnalyticsManager sharedManager].photoRotationEdited = NO;
+        
+        self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
+        self.imageView.image = self.selectedPhoto;
+        
+        [self.imageContainer addSubview:self.imageView];
+        
+        [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
     }
-    
-    [PGAnalyticsManager sharedManager].trackPhotoPosition = NO;
-    [PGAnalyticsManager sharedManager].photoPanEdited = NO;
-    [PGAnalyticsManager sharedManager].photoZoomEdited = NO;
-    [PGAnalyticsManager sharedManager].photoRotationEdited = NO;
-
-    self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
-    self.imageView.image = self.selectedPhoto;
-    
-    [self.imageContainer addSubview:self.imageView];
-    
-    [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -114,7 +126,8 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     self.printItem = nil;
 
-    UIImage *finalImage = selectedPhoto;
+    self.originalImage = selectedPhoto;
+    UIImage *finalImage = self.originalImage;
     
     if (selectedPhoto.size.width > selectedPhoto.size.height) {
         finalImage = [[UIImage alloc] initWithCGImage: selectedPhoto.CGImage
@@ -146,7 +159,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     PGSelectTemplateViewController *templateViewController = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
     
     templateViewController.source = self.source;
-    templateViewController.selectedPhoto = self.selectedPhoto;
+    templateViewController.selectedPhoto = self.originalImage;
     templateViewController.media = self.media;
 
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:templateViewController];
@@ -341,7 +354,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (void)imageForPaper:(MPPaper *)paper withCompletion:(void (^)(UIImage *))completion
 {
-    UIImage *image = self.selectedPhoto;
+    UIImage *image = [self.imageView screenshotImage];
     if (completion) {
         completion(image);
     }
