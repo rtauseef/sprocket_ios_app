@@ -354,7 +354,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (void)imageForPaper:(MPPaper *)paper withCompletion:(void (^)(UIImage *))completion
 {
-    UIImage *image = [self.imageView screenshotImage];
+    UIImage *image = [self.imageContainer screenshotImage];
     if (completion) {
         completion(image);
     }
