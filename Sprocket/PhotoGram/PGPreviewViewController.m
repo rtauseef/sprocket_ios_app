@@ -108,6 +108,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         
         self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
         self.imageView.image = self.selectedPhoto;
+        self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
         
         [self.imageContainer addSubview:self.imageView];
         
