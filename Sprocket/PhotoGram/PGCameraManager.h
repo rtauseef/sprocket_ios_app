@@ -20,7 +20,7 @@
 @property (weak, nonatomic) UIViewController *viewController;
 
 + (PGCameraManager *)sharedInstance;
-- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated;
+- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 - (void)dismissCameraAnimated:(BOOL)animated;
 
 @end

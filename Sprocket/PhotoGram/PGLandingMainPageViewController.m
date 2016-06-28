@@ -246,7 +246,7 @@
 
 - (IBAction)cameraTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] showCamera:self animated:YES];
+    [[PGCameraManager sharedInstance] showCamera:self animated:YES completion:nil];
 }
 
 #pragma mark - PGSurveyManagerDelegate

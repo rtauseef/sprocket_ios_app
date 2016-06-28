@@ -106,13 +106,15 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
-    [[PGCameraManager sharedInstance] showCamera:self animated:NO];
+    UIViewController *viewController = self.presentingViewController;
+    [self dismissViewControllerAnimated:NO completion:^{
+        [[PGCameraManager sharedInstance] showCamera:viewController animated:NO completion:nil];
+    }];
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
