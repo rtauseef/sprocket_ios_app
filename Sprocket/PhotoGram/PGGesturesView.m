@@ -23,6 +23,7 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, assign) CGFloat totalRotation;
 
 @end
 
@@ -47,6 +48,9 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
         self.scrollView.minimumZoomScale = self.minimumZoomScale;
         self.scrollView.maximumZoomScale = self.maximumZoomScale;
         self.scrollView.clipsToBounds = NO;
+        
+        self.doubleTapBehavior = PGGesturesDoubleTapZoom;
+        self.totalRotation = 0.0F;
         
         [self addSubview:self.scrollView];
         
@@ -133,6 +137,8 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 
 - (void)rotate:(CGFloat)radians
 {
+    self.totalRotation += radians;
+    
     self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, radians);
     float angle = atan2(self.scrollView.transform.b, self.scrollView.transform.a) * 180.0f / M_PI;
     NSString *angleValue = [NSString stringWithFormat:@"%.1f°", angle];
@@ -171,10 +177,17 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 
 - (void)doubleTapRecognized:(UITapGestureRecognizer*)recognizer
 {
-    CGPoint pointInView = [recognizer locationInView:self.imageView];
-    CGFloat zoomScale = (self.scrollView.zoomScale >= self.scrollView.maximumZoomScale) ? self.scrollView.minimumZoomScale : self.scrollView.maximumZoomScale;
+    if (PGGesturesDoubleTapZoom == self.doubleTapBehavior) {
+        CGPoint pointInView = [recognizer locationInView:self.imageView];
+        CGFloat zoomScale = (self.scrollView.zoomScale >= self.scrollView.maximumZoomScale) ? self.scrollView.minimumZoomScale : self.scrollView.maximumZoomScale;
     
-    [self zoom:pointInView zoomScale:zoomScale animated:YES];
+        [self zoom:pointInView zoomScale:zoomScale animated:YES];
+    } else if (PGGesturesDoubleTapReset == self.doubleTapBehavior) {
+        self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
+        self.totalRotation = 0.0F;
+        
+        [self setImage:_image];
+    }
 }
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale
