@@ -42,13 +42,14 @@
 {
     NSMutableDictionary *linkAttributes = [NSMutableDictionary dictionary];
     [linkAttributes setValue:[NSNumber numberWithBool:NO] forKey:(NSString *)kCTUnderlineStyleAttributeName];
-    [linkAttributes setValue:(__bridge id)[[UIColor HPBlueColor] CGColor] forKey:(NSString *)kCTForegroundColorAttributeName];
+    [linkAttributes setValue:(__bridge id)[[UIColor HPLinkColor] CGColor] forKey:(NSString *)kCTForegroundColorAttributeName];
     label.linkAttributes = linkAttributes;
     label.activeLinkAttributes = linkAttributes;
     
     label.enabledTextCheckingTypes = NSTextCheckingTypeLink;
     label.delegate = self;
     label.text = label.text;
+    
     
     [label addLinkToURL:[NSURL URLWithString:@"#"] withRange:range];
 }

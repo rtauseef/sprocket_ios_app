@@ -52,30 +52,9 @@
     
     self.trackableScreenName = @"Main Landing Page";
     
-    self.imageView = [[UIImageView alloc] init];
-    
-    [self.imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    [self.view addSubview:self.imageView];
-    
-    [self.view sendSubviewToBack:self.imageView];
-    
-    NSDictionary *viewsDictionary = @{@"imageView":self.imageView};
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"H:|[imageView]|"
-                               options:NSLayoutFormatDirectionLeadingToTrailing
-                               metrics:nil
-                               views:viewsDictionary]];
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:|[imageView]|"
-                               options:NSLayoutFormatDirectionLeadingToTrailing
-                               metrics:nil
-                               views:viewsDictionary]];
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"Hamburger"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
     [button setShowsTouchWhenHighlighted:YES];
     
     [button setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -92,10 +71,13 @@
                                options:NSLayoutFormatDirectionLeadingToTrailing
                                metrics:nil
                                views:NSDictionaryOfVariableBindings(button)]];
-    
+
+    self.termsLabel.minimumLineHeight = 19.9f;
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
+    
+
     
     PGSurveyManager *surveyManager = [PGSurveyManager sharedInstance];
     surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of sprocket", nil);
@@ -106,6 +88,8 @@
     if (openFromNotification) {
         [[MP sharedInstance] presentPrintQueueFromController:self animated:YES completion:nil];
     }
+    
+    [self addBackgroundGradientToView:self.view];
     
 #ifndef APP_STORE_BUILD
 
@@ -125,8 +109,6 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
-    [self applyBackgroundImageWithBaseName:@"LandingPage"];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
@@ -137,9 +119,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
-{
-    [self applyBackgroundImageWithBaseName:@"LandingPage"];
+#pragma mark - Private Methods
+
+- (void)addBackgroundGradientToView:(UIView *)view {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f/255.0F green:0x1f/255.0F blue:0x1f/255.0F alpha:1] CGColor], (id)[[UIColor colorWithRed:0x38/255.0F green:0x38/255.0F blue:0x38/255.0F alpha:1] CGColor], nil];
+    gradient.startPoint = CGPointMake(0, 1);
+    gradient.endPoint = CGPointMake(1, 0);
+    [view.layer insertSublayer:gradient atIndex:0];
 }
 
 - (NSString *)imageSuffixBasedOnDevice
@@ -166,12 +154,6 @@
     }
     
     return suffix;
-}
-
-- (void)applyBackgroundImageWithBaseName:(NSString *)baseName
-{
-    NSString *imageSuffix = [self imageSuffixBasedOnDevice];
-    self.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%@", baseName, imageSuffix]];
 }
 
 - (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
