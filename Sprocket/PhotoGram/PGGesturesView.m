@@ -15,7 +15,7 @@
 #import "UIImage+imageResize.h"
 #import <Crashlytics/Crashlytics.h>
 
-CGFloat const kMinimumZoomScale = 1.0f;
+CGFloat const kMinimumZoomScale = 0.5f;
 CGFloat const kMaximumZoomScale = 4.0f;
 CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 
@@ -24,6 +24,7 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) CGFloat totalRotation;
+@property (nonatomic, assign) UIViewContentMode imageContentMode;
 
 @end
 
@@ -35,6 +36,8 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     if (self) {
         self.accessibilityIdentifier = @"GestureView";
         
+        self.imageContentMode = UIViewContentModeScaleAspectFill;
+
         self.minimumZoomScale = kMinimumZoomScale;
         self.maximumZoomScale = kMaximumZoomScale;
         
@@ -112,7 +115,6 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
         self.imageView.userInteractionEnabled = YES;
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.scrollView addSubview:self.imageView];
     }
     
@@ -122,15 +124,33 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     self.imageView.transform = transform;
     
     self.imageView.image = image;
+    self.imageView.contentMode = self.imageContentMode;
     
     CGSize imageFinalSize = [image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
-    self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
     
     self.scrollView.minimumZoomScale = scaleFactor * self.minimumZoomScale;
 
-    self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
-    self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
-                                                (imageFinalSize.height - self.scrollView.bounds.size.height) / 2);
+    CGRect imageViewFrame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
+    CGSize contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
+    CGPoint contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
+                                        (imageFinalSize.height - self.scrollView.bounds.size.height) / 2);
+    if (self.imageView.frame.size.width < self.scrollView.bounds.size.width) {
+        contentSize.width = self.scrollView.bounds.size.width;
+        contentOffset.x = 0;//(self.scrollView.bounds.size.width - contentSize.width) / 2;
+        if (PGGesturesDoubleTapReset == self.doubleTapBehavior) {
+            imageViewFrame.origin.x = (self.scrollView.bounds.size.width - imageFinalSize.width) / 2;
+        }
+    }
+    if (self.imageView.frame.size.height < self.scrollView.bounds.size.height) {
+        contentSize.height = self.scrollView.bounds.size.height;
+        contentOffset.y = 0;//(self.scrollView.bounds.size.height - contentSize.height) / 2;
+        if (PGGesturesDoubleTapReset == self.doubleTapBehavior) {
+            imageViewFrame.origin.y = (self.scrollView.bounds.size.height - imageFinalSize.height) / 2;
+        }
+    }
+    self.scrollView.contentSize = contentSize;
+    self.scrollView.contentOffset = contentOffset;
+    self.imageView.frame = imageViewFrame;
 }
 
 #pragma mark - Helpers
@@ -183,6 +203,12 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     
         [self zoom:pointInView zoomScale:zoomScale animated:YES];
     } else if (PGGesturesDoubleTapReset == self.doubleTapBehavior) {
+        if (UIViewContentModeScaleAspectFill == self.imageContentMode) {
+            self.imageContentMode = UIViewContentModeScaleAspectFit;
+        } else {
+            self.imageContentMode = UIViewContentModeScaleAspectFill;
+        }
+        
         [UIView animateWithDuration:0.5F animations:^{
             self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
             self.totalRotation = 0.0F;
