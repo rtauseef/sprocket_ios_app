@@ -11,6 +11,7 @@
 //
 
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <HPPR.h>
 #import "PGCameraRollLandingPageViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGPreviewViewController.h"
@@ -32,6 +33,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 @property (strong, nonatomic) void(^accessCompletion)(BOOL granted);
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) UIImage *selectedPhoto;
 
 @end
@@ -44,6 +46,9 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     
     self.trackableScreenName = @"Camera Roll Landing Page Screen";
     
+    self.containerView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.termsLabel.textColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelColor];
+
     UIImage *buttonImage = [[UIImage imageNamed:@"DefaultButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 4.0f, 0.0f, 4.0f)];
     [self.signInButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     
@@ -102,7 +107,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
         PGSelectTemplateViewController *vc = (PGSelectTemplateViewController *)segue.destinationViewController;
 
         vc.source = [HPPRCameraRollPhotoProvider sharedInstance].name;
-        
+
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:vc

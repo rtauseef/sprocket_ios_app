@@ -58,6 +58,8 @@
     // For now, unzip all .hpc files each time the app starts
     [PGSVGResourceManager unzipAllHpcFiles:TRUE];
 
+    self.window.backgroundColor = [UIColor greenColor];
+    
     return YES;
 }
 

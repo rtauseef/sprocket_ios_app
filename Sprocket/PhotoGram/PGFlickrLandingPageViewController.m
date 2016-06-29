@@ -10,6 +10,7 @@
 // the license agreement.
 //
 
+#import <HPPR.h>
 #import <HPPRFlickrPhotoProvider.h>
 #import <HPPRFlickrLoginProvider.h>
 #import <HPPRSelectPhotoCollectionViewController.h>
@@ -46,6 +47,10 @@ NSString * const kFlickrUserIdKey = @"userID";
     
     self.trackableScreenName = @"Flickr Landing Page Screen";
     
+    self.view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.signInView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.termsLabel.textColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelColor];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCheckProviderNotification:) name:CHECK_PROVIDER_NOTIFICATION object:nil];

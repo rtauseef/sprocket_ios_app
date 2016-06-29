@@ -134,15 +134,17 @@
     NSString *lightFont   = @"HPSimplified-Light";
     
     NSDictionary *settings = @{// Select Photos
-                               kHPPRSelectPhotosTintColor: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
-                               kHPPRSelectPhotosLabelFont: [UIFont fontWithName:regularFont size:12.0f],
-                               kHPPRSelectPhotosLabelColor:[UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
-                               kHPPRSelectPhotosBackgroundColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-                               kHPPRSelectPhotosSegmentButtonFont: [UIFont fontWithName:regularFont size:12.0f],
-                            kHPPRSelectPhotosSegmentButtonTitleColorSelected: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
-                            kHPPRSelectPhotosSegmentButtonTitleColorNormal: [PGAppAppearance navBarColor]
+                               kHPPRTintColor: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                               kHPPRBackgroundColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               kHPPRButtonTitleColorSelected: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                               kHPPRButtonTitleColorNormal: [PGAppAppearance navBarColor],
 
-                              };
+                               kHPPRPrimaryLabelFont: [UIFont fontWithName:lightFont size:16.0f],
+                               kHPPRPrimaryLabelColor: [UIColor whiteColor],
+                               kHPPRSecondaryLabelFont: [UIFont fontWithName:lightFont size:12.0f],
+                               kHPPRSecondaryLabelColor:[UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                               kHPPRTableSeparatorColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               };
     
     return settings;
 }
