@@ -183,10 +183,12 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     
         [self zoom:pointInView zoomScale:zoomScale animated:YES];
     } else if (PGGesturesDoubleTapReset == self.doubleTapBehavior) {
-        self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
-        self.totalRotation = 0.0F;
-        
-        [self setImage:_image];
+        [UIView animateWithDuration:0.5F animations:^{
+            self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
+            self.totalRotation = 0.0F;
+            
+            [self setImage:_image];
+        }];
     }
 }
 
