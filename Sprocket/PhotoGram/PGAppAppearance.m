@@ -11,6 +11,7 @@
 //
 
 #import <MP.h>
+#import <HPPR.h>
 #import "PGAppAppearance.h"
 #import "UIFont+Style.h"
 #import "UIColor+Style.h"
@@ -127,9 +128,29 @@
              };
 }
 
++ (NSDictionary *)hpprAppearanceSettings
+{
+    NSString *regularFont = @"HPSimplified-Regular";
+    NSString *lightFont   = @"HPSimplified-Light";
+    
+    NSDictionary *settings = @{// Select Photos
+                               kHPPRSelectPhotosTintColor: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                               kHPPRSelectPhotosLabelFont: [UIFont fontWithName:regularFont size:12.0f],
+                               kHPPRSelectPhotosLabelColor:[UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                               kHPPRSelectPhotosBackgroundColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               kHPPRSelectPhotosSegmentButtonFont: [UIFont fontWithName:regularFont size:12.0f],
+                            kHPPRSelectPhotosSegmentButtonTitleColorSelected: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                            kHPPRSelectPhotosSegmentButtonTitleColorNormal: [PGAppAppearance navBarColor]
+
+                              };
+    
+    return settings;
+}
+
 + (void)setPrintOptions
 {
     [MP sharedInstance].appearance.settings = [PGAppAppearance mpAppearanceSettings];
+    [HPPR sharedInstance].appearance.settings = [PGAppAppearance hpprAppearanceSettings];
     
     [MP sharedInstance].useBluetooth = TRUE;
 }
