@@ -46,6 +46,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     
     self.trackableScreenName = @"Camera Roll Landing Page Screen";
     
+    self.view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.containerView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.termsLabel.textColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelColor];
 
