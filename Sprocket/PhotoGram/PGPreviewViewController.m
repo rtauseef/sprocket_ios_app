@@ -15,6 +15,8 @@
 #import "PGAnalyticsManager.h"
 #import "PGCameraManager.h"
 #import "PGSelectTemplateViewController.h"
+#import "PGGesturesView.h"
+#import "UIView+Background.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -30,16 +32,18 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 @interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *pageContainer;
-@property (weak, nonatomic) IBOutlet MPLayoutPaperView *pageView;
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
+@property (strong, nonatomic) UIImage *originalImage;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIView *imageContainer;
+@property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
+@property (assign, nonatomic) BOOL needNewImageView;
 @end
 
 @implementation PGPreviewViewController
@@ -48,6 +52,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     [super viewDidLoad];
     self.printItem = nil;
+    self.needNewImageView = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,25 +65,55 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
             self.printItem.layout = [self layout];
         }
         
-        CGRect frame = self.pageContainer.frame;
+        CGRect frame = self.imageContainer.frame;
         
         CGFloat aspectRatioWidth = [self paper].width;
         CGFloat aspectRatioHeight = [self paper].height;
         
-        CGFloat desiredWidth = self.pageContainer.frame.size.width;
-        CGFloat desiredHeight = (aspectRatioHeight / aspectRatioWidth) * self.pageContainer.frame.size.width;
+        CGFloat desiredWidth = self.imageContainer.frame.size.width;
+        CGFloat desiredHeight = (aspectRatioHeight / aspectRatioWidth) * self.imageContainer.frame.size.width;
         if (desiredHeight > self.previewView.frame.size.height - (self.topView.frame.size.height + self.bottomView.frame.size.height)) {
-            desiredHeight = self.pageContainer.frame.size.height;
+            desiredHeight = self.imageContainer.frame.size.height;
             desiredWidth = (aspectRatioWidth / aspectRatioHeight) * desiredHeight;
         }
         frame.size.height = desiredHeight;
         frame.size.width = desiredWidth;
         
-        self.pageContainer.frame = frame;
-        [MPLayout preparePaperView:self.pageView withPaper:[self paper] image:self.selectedPhoto layout:[self layout]];
+        self.imageContainer.frame = frame;
+        
+        self.needNewImageView = YES;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //  The code below produces an imageView in the wrong location inside of viewWillAppear
+    //   ... need to do it here...
+    if (self.needNewImageView) {
+        self.needNewImageView = NO;
+        
+        if (nil != self.imageView) {
+            [self.imageView removeFromSuperview];
+            self.imageView = nil;
+        }
+        
+        [PGAnalyticsManager sharedManager].trackPhotoPosition = NO;
+        [PGAnalyticsManager sharedManager].photoPanEdited = NO;
+        [PGAnalyticsManager sharedManager].photoZoomEdited = NO;
+        [PGAnalyticsManager sharedManager].photoRotationEdited = NO;
+        
+        self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
+        self.imageView.image = self.selectedPhoto;
+        self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
+        
+        [self.imageContainer addSubview:self.imageView];
+        
+        [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -91,7 +126,9 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
 {
     self.printItem = nil;
-    UIImage *finalImage = selectedPhoto;
+
+    self.originalImage = selectedPhoto;
+    UIImage *finalImage = self.originalImage;
     
     if (selectedPhoto.size.width > selectedPhoto.size.height) {
         finalImage = [[UIImage alloc] initWithCGImage: selectedPhoto.CGImage
@@ -106,13 +143,15 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
-    [[PGCameraManager sharedInstance] showCamera:self animated:NO];
+    UIViewController *viewController = self.presentingViewController;
+    [self dismissViewControllerAnimated:NO completion:^{
+        [[PGCameraManager sharedInstance] showCamera:viewController animated:NO completion:nil];
+    }];
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
@@ -123,7 +162,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     PGSelectTemplateViewController *templateViewController = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
     
     templateViewController.source = self.source;
-    templateViewController.selectedPhoto = self.selectedPhoto;
+    templateViewController.selectedPhoto = self.originalImage;
     templateViewController.media = self.media;
 
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:templateViewController];
@@ -318,7 +357,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (void)imageForPaper:(MPPaper *)paper withCompletion:(void (^)(UIImage *))completion
 {
-    UIImage *image = self.selectedPhoto;
+    UIImage *image = [self.imageContainer screenshotImage];
     if (completion) {
         completion(image);
     }

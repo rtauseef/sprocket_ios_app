@@ -1102,11 +1102,7 @@
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVu-BA-tM2" userLabel="Image Container">
-                                        <rect key="frame" x="10" y="44" width="580" height="481"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6b-1c-Ji1" userLabel="Page" customClass="MPLayoutPaperView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-Zq-Jww" userLabel="ImageContainer">
                                         <rect key="frame" x="10" y="44" width="580" height="481"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -1195,18 +1191,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
-                                    <constraint firstItem="ZVu-BA-tM2" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="3bz-VL-gnN"/>
+                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="Grf-Nx-WsQ"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="HcJ-BT-acW"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZVu-BA-tM2" secondAttribute="trailing" constant="10" id="K4Y-Lt-OLw"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
-                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="height" secondItem="ZVu-BA-tM2" secondAttribute="height" id="PS0-YV-mmh"/>
-                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="centerX" secondItem="ZVu-BA-tM2" secondAttribute="centerX" id="SI1-2f-wzY"/>
-                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="centerY" secondItem="ZVu-BA-tM2" secondAttribute="centerY" id="Syu-rg-p7V"/>
-                                    <constraint firstItem="d6b-1c-Ji1" firstAttribute="width" secondItem="ZVu-BA-tM2" secondAttribute="width" id="VNr-b3-MpH"/>
-                                    <constraint firstItem="ZVu-BA-tM2" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="b5D-We-2aV"/>
+                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="UIb-W3-b9g"/>
+                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="VDN-XF-RRJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="2A8-Zq-Jww" secondAttribute="trailing" constant="10" id="XBQ-yT-6KM"/>
                                     <constraint firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="bottom" id="pmc-DO-IIl"/>
                                     <constraint firstItem="Swo-Sr-Qd8" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="rjT-eS-1Do"/>
-                                    <constraint firstItem="ZVu-BA-tM2" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="vLr-Sc-l06"/>
                                     <constraint firstAttribute="trailing" secondItem="BOE-OE-xsb" secondAttribute="trailing" id="ykZ-rL-zJI"/>
                                 </constraints>
                             </view>
@@ -1222,8 +1214,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="Swo-Sr-Qd8" id="z90-Vm-q0n"/>
-                        <outlet property="pageContainer" destination="ZVu-BA-tM2" id="SyE-ox-18s"/>
-                        <outlet property="pageView" destination="d6b-1c-Ji1" id="XKm-Wu-duw"/>
+                        <outlet property="imageContainer" destination="2A8-Zq-Jww" id="qrm-YH-ydp"/>
                         <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
                         <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
                         <outlet property="topView" destination="BOE-OE-xsb" id="g1o-bp-Ach"/>
@@ -1922,6 +1913,23 @@ Flickr, you also agree with HP’s Terms of Service.</string>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Wl-55-Rmv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="a9t-P3-MUh">
+            <objects>
+                <viewController id="2DB-Kf-nbs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uCQ-z7-BGA"/>
+                        <viewControllerLayoutGuide type="bottom" id="9dL-DC-TEE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4c0-ns-haD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lS0-IZ-PAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>

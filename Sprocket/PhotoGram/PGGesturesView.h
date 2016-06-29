@@ -12,6 +12,12 @@
 
 @protocol PGGesturesViewDelegate;
 
+typedef enum
+{
+    PGGesturesDoubleTapZoom,
+    PGGesturesDoubleTapReset
+} PGGesturesDoubleTapBehavior;
+
 @interface PGGesturesView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIImage *image;
@@ -19,6 +25,7 @@
 @property (nonatomic, assign) CGFloat maximumZoomScale;
 @property (nonatomic, assign) BOOL allowGestures;
 @property (nonatomic, weak) id<PGGesturesViewDelegate> delegate;
+@property (nonatomic, assign) PGGesturesDoubleTapBehavior doubleTapBehavior;
 
 - (CGPoint)offset;
 - (CGFloat)zoom;
