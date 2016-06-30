@@ -15,15 +15,18 @@
 #import "UIImage+imageResize.h"
 #import <Crashlytics/Crashlytics.h>
 
-CGFloat const kMinimumZoomScale = 1.0f;
-CGFloat const kMaximumZoomScale = 4.0f;
-CGFloat const kMinimumPressDurationInSeconds = 0.35f;
+static CGFloat const kMinimumZoomScale = 1.0f;
+static CGFloat const kMaximumZoomScale = 4.0f;
+static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
+static CGFloat const kAnimationDuration = 0.3f;
+static CGFloat const kMarginOfError = .01F;
 
 @interface PGGesturesView ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) CGFloat totalRotation;
+@property (nonatomic, assign) UIViewContentMode imageContentMode;
 
 @end
 
@@ -35,6 +38,8 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     if (self) {
         self.accessibilityIdentifier = @"GestureView";
         
+        self.imageContentMode = UIViewContentModeScaleAspectFill;
+
         self.minimumZoomScale = kMinimumZoomScale;
         self.maximumZoomScale = kMaximumZoomScale;
         
@@ -112,7 +117,6 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
         self.imageView.userInteractionEnabled = YES;
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.scrollView addSubview:self.imageView];
     }
     
@@ -122,12 +126,12 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     self.imageView.transform = transform;
     
     self.imageView.image = image;
+    self.imageView.contentMode = self.imageContentMode;
     
     CGSize imageFinalSize = [image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
     self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
     
     self.scrollView.minimumZoomScale = scaleFactor * self.minimumZoomScale;
-
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
     self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
                                                 (imageFinalSize.height - self.scrollView.bounds.size.height) / 2);
@@ -162,6 +166,17 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     [self.scrollView zoomToRect:rectToZoomTo animated:animated];
 }
 
+- (void)adjustContentOffset
+{
+    if (!(self.imageView.frame.size.width > self.scrollView.bounds.size.width + kMarginOfError) &&
+        !(self.imageView.frame.size.height > self.scrollView.bounds.size.height + kMarginOfError)) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.scrollView.contentOffset = CGPointMake((self.imageView.frame.size.width - self.scrollView.bounds.size.width) / 2,
+                                                        (self.imageView.frame.size.height - self.scrollView.bounds.size.height) / 2);
+        }];
+    }
+}
+
 #pragma mark - UIGestureRecognizerDelegate methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -183,10 +198,18 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
     
         [self zoom:pointInView zoomScale:zoomScale animated:YES];
     } else if (PGGesturesDoubleTapReset == self.doubleTapBehavior) {
-        self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
-        self.totalRotation = 0.0F;
+        if (UIViewContentModeScaleAspectFill == self.imageContentMode) {
+            self.imageContentMode = UIViewContentModeScaleAspectFit;
+        } else {
+            self.imageContentMode = UIViewContentModeScaleAspectFill;
+        }
         
-        [self setImage:_image];
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
+            self.totalRotation = 0.0F;
+            
+            [self setImage:_image];
+        }];
     }
 }
 
@@ -233,10 +256,17 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
+    [self adjustContentOffset];
+    
     [Crashlytics setObjectValue:[NSString stringWithFormat:@"%.1f", scale] forKey:@"Scale"];
     if ([PGAnalyticsManager sharedManager].trackPhotoPosition) {
         [PGAnalyticsManager sharedManager].photoZoomEdited = YES;
     }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self adjustContentOffset];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

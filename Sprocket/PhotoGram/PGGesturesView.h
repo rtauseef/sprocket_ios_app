@@ -30,6 +30,7 @@ typedef enum
 - (CGPoint)offset;
 - (CGFloat)zoom;
 - (CGFloat)angle;
+- (void)adjustContentOffset;
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale;
 
