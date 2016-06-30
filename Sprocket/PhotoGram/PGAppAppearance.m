@@ -19,6 +19,9 @@
 
 #undef SHOW_AVAILABLE_FONTS
 
+static NSString *PGAppAppearanceRegularFont = @"HPSimplified-Regular";
+static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
+
 @implementation PGAppAppearance
 
 + (void)setupAppearance
@@ -63,33 +66,30 @@
 
 + (NSDictionary *)mpAppearanceSettings
 {
-    NSString *regularFont = @"HPSimplified-Regular";
-    NSString *lightFont   = @"HPSimplified-Light";
-    
     return @{// Background
              kMPGeneralBackgroundColor:             [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-             kMPGeneralBackgroundPrimaryFont:       [UIFont fontWithName:regularFont size:13],
+             kMPGeneralBackgroundPrimaryFont:       [UIFont fontWithName:PGAppAppearanceRegularFont size:13],
              kMPGeneralBackgroundPrimaryFontColor:  [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-             kMPGeneralBackgroundSecondaryFont:     [UIFont fontWithName:lightFont size:12],
+             kMPGeneralBackgroundSecondaryFont:     [UIFont fontWithName:PGAppAppearanceLightFont size:12],
              kMPGeneralBackgroundSecondaryFontColor:[UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              kMPGeneralTableSeparatorColor:         [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              
              // Selection Options
              kMPSelectionOptionsBackgroundColor:         [PGAppAppearance navBarColor],
-             kMPSelectionOptionsPrimaryFont:             [UIFont fontWithName:lightFont size:16],
+             kMPSelectionOptionsPrimaryFont:             [UIFont fontWithName:PGAppAppearanceLightFont size:16],
              kMPSelectionOptionsPrimaryFontColor:        [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
-             kMPSelectionOptionsSecondaryFont:           [UIFont fontWithName:lightFont size:16],
+             kMPSelectionOptionsSecondaryFont:           [UIFont fontWithName:PGAppAppearanceLightFont size:16],
              kMPSelectionOptionsSecondaryFontColor:      [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
-             kMPSelectionOptionsLinkFont:                [UIFont fontWithName:lightFont size:16],
+             kMPSelectionOptionsLinkFont:                [UIFont fontWithName:PGAppAppearanceLightFont size:16],
              kMPSelectionOptionsLinkFontColor:           [UIColor colorWithRed:0x255/255.0F green:0x255/255.0F blue:0x255/255.0F alpha:1.0F],
              kMPSelectionOptionsDisclosureIndicatorImage:[UIImage imageNamed:@"MPArrow"],
              kMPSelectionOptionsCheckmarkImage:          [UIImage imageNamed:@"MPCheck"],
              
              // Job Settings
              kMPJobSettingsBackgroundColor:    [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-             kMPJobSettingsPrimaryFont:        [UIFont fontWithName:lightFont size:18],
+             kMPJobSettingsPrimaryFont:        [UIFont fontWithName:PGAppAppearanceLightFont size:18],
              kMPJobSettingsPrimaryFontColor:   [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
-             kMPJobSettingsSecondaryFont:      [UIFont fontWithName:lightFont size:12],
+             kMPJobSettingsSecondaryFont:      [UIFont fontWithName:PGAppAppearanceLightFont size:12],
              kMPJobSettingsSecondaryFontColor: [UIColor colorWithRed:0x223/255.0F green:0x224/255.0F blue:0x227/255.0F alpha:1.0F],
              kMPJobSettingsSelectedPageIcon:   [UIImage imageNamed:@"MPSelected"],
              kMPJobSettingsUnselectedPageIcon: [UIImage imageNamed:@"MPUnselected"],
@@ -99,27 +99,27 @@
              
              // Main Action
              kMPMainActionBackgroundColor:       [PGAppAppearance navBarColor],
-             kMPMainActionLinkFont:              [UIFont fontWithName:lightFont size:18],
+             kMPMainActionLinkFont:              [UIFont fontWithName:PGAppAppearanceLightFont size:18],
              kMPMainActionActiveLinkFontColor:   [UIColor colorWithRed:0x255/255.0F green:0x255/255.0F blue:0x255/255.0F alpha:1.0F],
              kMPMainActionInactiveLinkFontColor: [UIColor colorWithRed:0xAA/255.0F green:0xAA/255.0F blue:0xAA/255.0F alpha:1.0F],
              
              // Queue Project Count
-             kMPQueuePrimaryFont:     [UIFont fontWithName:lightFont size:14],
+             kMPQueuePrimaryFont:     [UIFont fontWithName:PGAppAppearanceLightFont size:14],
              kMPQueuePrimaryFontColor:[UIColor colorWithRed:0xFF green:0xFF blue:0xFF alpha:1.0F],
              
              // Form Field
              kMPFormFieldBackgroundColor:  [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
-             kMPFormFieldPrimaryFont:      [UIFont fontWithName:lightFont size:14],
+             kMPFormFieldPrimaryFont:      [UIFont fontWithName:PGAppAppearanceLightFont size:14],
              kMPFormFieldPrimaryFontColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              
              // Overlay
              kMPOverlayBackgroundColor:    [UIColor colorWithRed:0x00/255.0F green:0x00/255.0F blue:0x00/255.0F alpha:1.0F],
              kMPOverlayBackgroundOpacity:  [NSNumber numberWithFloat:.80F],
-             kMPOverlayPrimaryFont:        [UIFont fontWithName:lightFont size:20],
+             kMPOverlayPrimaryFont:        [UIFont fontWithName:PGAppAppearanceLightFont size:20],
              kMPOverlayPrimaryFontColor:   [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
-             kMPOverlaySecondaryFont:      [UIFont fontWithName:lightFont size:10],
+             kMPOverlaySecondaryFont:      [UIFont fontWithName:PGAppAppearanceLightFont size:10],
              kMPOverlaySecondaryFontColor: [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
-             kMPOverlayLinkFont:           [UIFont fontWithName:regularFont size:18],
+             kMPOverlayLinkFont:           [UIFont fontWithName:PGAppAppearanceRegularFont size:18],
              kMPOverlayLinkFontColor:      [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
              
              // Activity
@@ -130,20 +130,22 @@
 
 + (NSDictionary *)hpprAppearanceSettings
 {
-    NSString *regularFont = @"HPSimplified-Regular";
-    NSString *lightFont   = @"HPSimplified-Light";
+    NSDictionary *defaultSettings = [HPPR sharedInstance].appearance.settings;
     
     NSDictionary *settings = @{// Select Photos
-                               kHPPRTintColor: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
-                               kHPPRBackgroundColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               kHPPRBackgroundColor:          [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               kHPPRTintColor:                [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
                                kHPPRButtonTitleColorSelected: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
-                               kHPPRButtonTitleColorNormal: [PGAppAppearance navBarColor],
-
-                               kHPPRPrimaryLabelFont: [UIFont fontWithName:lightFont size:16.0f],
-                               kHPPRPrimaryLabelColor: [UIColor whiteColor],
-                               kHPPRSecondaryLabelFont: [UIFont fontWithName:lightFont size:12.0f],
-                               kHPPRSecondaryLabelColor:[UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
-                               kHPPRTableSeparatorColor: [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               kHPPRButtonTitleColorNormal:   [PGAppAppearance navBarColor],
+                               kHPPRPrimaryLabelFont:         [UIFont fontWithName:PGAppAppearanceLightFont size:16.0f],
+                               kHPPRPrimaryLabelColor:        [UIColor whiteColor],
+                               kHPPRSecondaryLabelFont:       [UIFont fontWithName:PGAppAppearanceLightFont size:12.0f],
+                               kHPPRSecondaryLabelColor:      [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
+                               kHPPRTableSeparatorColor:      [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+                               kHPPRGridViewOnIcon:           [defaultSettings objectForKey:kHPPRGridViewOnIcon],
+                               kHPPRGridViewOffIcon:          [defaultSettings objectForKey:kHPPRGridViewOffIcon],
+                               kHPPRListViewOnIcon:           [defaultSettings objectForKey:kHPPRListViewOnIcon],
+                               kHPPRListViewOffIcon:          [defaultSettings objectForKey:kHPPRListViewOffIcon]
                                };
     
     return settings;
