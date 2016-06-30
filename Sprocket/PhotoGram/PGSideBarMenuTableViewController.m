@@ -29,6 +29,7 @@
 #import "PGSideBarMenuTableViewController.h"
 #import "PGRevealViewController.h"
 #import "PGSurveyManager.h"
+#import "PGAppAppearance.h"
 #import "UIFont+Style.h"
 #import "UIColor+Style.h"
 #import "PGAppDelegate.h"
@@ -130,6 +131,9 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    UIColor *backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    UIColor *navBarColor = [PGAppAppearance navBarColor];
+
     NSMutableArray *cells = [NSMutableArray arrayWithArray:self.cells];
     NSMutableArray *transparentCells = [NSMutableArray arrayWithArray:self.transparentCells];
     
@@ -144,7 +148,7 @@ typedef enum {
         
         [self setupLabel:self.printLaterNumberOfJobsLabel];
         
-        self.printLaterNumberOfJobsLabel.backgroundColor = [UIColor colorWithRed:21.0f / 255.0f green:120.0f / 255.0f blue:190.0f / 255.0f alpha:1.0f];
+        self.printLaterNumberOfJobsLabel.backgroundColor = navBarColor;
         self.printLaterNumberOfJobsLabel.layer.cornerRadius = (self.printLaterNumberOfJobsLabel.frame.size.width / 2);
         self.printLaterNumberOfJobsLabel.layer.masksToBounds = YES;
         
@@ -184,8 +188,8 @@ typedef enum {
     
     self.trackableScreenName = @"Side Bar Menu Screen";
     
-    self.tableView.tableHeaderView.backgroundColor = [UIColor HPBlueColor];
-    self.tableView.tableFooterView.backgroundColor = [UIColor HPBlueColor];
+    self.tableView.tableHeaderView.backgroundColor = navBarColor;
+    self.tableView.tableFooterView.backgroundColor = navBarColor;
     
     UIView *selectionColorView = [[UIView alloc] init];
     selectionColorView.backgroundColor = [UIColor HPTableRowSelectionColor];
@@ -193,12 +197,18 @@ typedef enum {
     for (UITableViewCell *cell in self.cells) {
         [self setupLabel:cell.textLabel];
         [cell setSelectedBackgroundView:selectionColorView];
-        cell.backgroundColor = [UIColor HPBlueColor];
+        cell.backgroundColor = navBarColor;
     }
     
     for (UITableViewCell *transparentCell in self.transparentCells) {
-        transparentCell.backgroundColor = [UIColor HPBlueColor];
+        transparentCell.backgroundColor = navBarColor;
     }
+    
+    self.tableView.tableFooterView.backgroundColor = navBarColor;
+    self.instagramUserView.backgroundColor = backgroundColor;
+    self.facebookUserView.backgroundColor = backgroundColor;
+    self.flickrUserView.backgroundColor = backgroundColor;
+    self.cameraRollView.backgroundColor = backgroundColor;
     
     [self.instagramSignButton setTitle:kCheckingButtonTitle forState:UIControlStateNormal];
     self.instagramSignButton.userInteractionEnabled = NO;

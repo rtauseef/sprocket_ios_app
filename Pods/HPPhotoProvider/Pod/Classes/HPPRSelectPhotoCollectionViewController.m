@@ -20,9 +20,8 @@
 #import "HPPRCacheService.h"
 #import "HPPRSelectPhotoProvider.h"
 #import "HPPRSearchViewController.h"
+#import "HPPRAppearance.h"
 #import "UIView+HPPRAnimation.h"
-#import "UIFont+HPPRStyle.h"
-#import "UIColor+HPPRStyle.h"
 #import "NSBundle+HPPRLocalizable.h"
 
 #define LAYOUT_SEGMENTED_CONTROL_GRID_INDEX 0
@@ -38,6 +37,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 @property (weak, nonatomic) IBOutlet UILabel *userAccountIsPrivateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noPhotosLabel;
 
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet HPPRSegmentedControlView *photoSourceSegmentedControlView;
 @property (weak, nonatomic) IBOutlet HPPRSegmentedControlView *layoutSegmentedControlView;
 @property (weak, nonatomic) IBOutlet HPPRNoInternetConnectionRetryView *noInternetConnectionRetryView;
@@ -65,7 +66,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)initRefreshControl
 {
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl setTintColor:[UIColor HPPRBlueColor]];
+    [self.refreshControl setTintColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTintColor]];
     [self.refreshControl addTarget:self action:@selector(startRefreshing:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:self.refreshControl];
 }
@@ -83,10 +84,16 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     self.collectionView.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.alwaysBounceVertical = YES;
+    self.collectionView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.topView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.backgroundView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     
-    UIFont *labelFont = [UIFont HPPRSimplifiedLightFontWithSize:12.0f];
+    UIFont *labelFont = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont];
+    UIFont *labelColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor];
     self.numPostsLabel.font = labelFont;
+    self.numPostsLabel.textColor = labelColor;
     self.userInfoLabel.font = labelFont;
+    self.userInfoLabel.textColor = labelColor;
     
     [self initForDisplayType];
     
@@ -234,11 +241,13 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     self.layoutSegmentedControlView.delegate = self;
     self.layoutSegmentedControlView.workAsToggleSwitch = YES;
     
-    [self.layoutSegmentedControlView setImage:[UIImage imageNamed:@"HPPRGridViewOn"] forSegmentAtIndex:0 state:UIControlStateSelected];
-    [self.layoutSegmentedControlView setImage:[UIImage imageNamed:@"HPPRGridViewOff"] forSegmentAtIndex:0 state:UIControlStateNormal];
+    UIImage *image = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRGridViewOnIcon];
     
-    [self.layoutSegmentedControlView setImage:[UIImage imageNamed:@"HPPRListViewOn"] forSegmentAtIndex:1 state:UIControlStateSelected];
-    [self.layoutSegmentedControlView setImage:[UIImage imageNamed:@"HPPRListViewOff"] forSegmentAtIndex:1 state:UIControlStateNormal];
+    [self.layoutSegmentedControlView setImage:image forSegmentAtIndex:0 state:UIControlStateSelected];
+    [self.layoutSegmentedControlView setImage:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRGridViewOffIcon] forSegmentAtIndex:0 state:UIControlStateNormal];
+    
+    [self.layoutSegmentedControlView setImage:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRListViewOnIcon] forSegmentAtIndex:1 state:UIControlStateSelected];
+    [self.layoutSegmentedControlView setImage:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRListViewOffIcon] forSegmentAtIndex:1 state:UIControlStateNormal];
 }
 
 #pragma mark - Image request

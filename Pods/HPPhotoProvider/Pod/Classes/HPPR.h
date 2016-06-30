@@ -11,6 +11,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HPPRAppearance.h"
 
 #define HPPR_TRACKABLE_SCREEN_NOTIFICATION @"TrackableScreenNotification"
 #define PROVIDER_STARTUP_NOTIFICATION @"ProviderStartupNotification"
@@ -73,6 +74,7 @@ extern NSString * const kHPPRTrackableScreenNameKey;
 @property (nonatomic, strong) NSString *instagramRedirectURL;
 @property (nonatomic, assign) BOOL immediateLoginAlert;
 @property (nonatomic, assign) BOOL preventHideLoginAlert;
+@property (nonatomic, strong) HPPRAppearance *appearance;
 
 + (HPPR *)sharedInstance;
 

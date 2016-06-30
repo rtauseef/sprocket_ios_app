@@ -13,6 +13,7 @@
 #import "HPPRFacebookPhotoProvider.h"
 #import "HPPRSelectAlbumTableViewCell.h"
 #import "HPPRCacheService.h"
+#import "HPPR.h"
 #import "UIFont+HPPRStyle.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
@@ -31,8 +32,11 @@
 {
     _album = album;
     
-    [self.albumTitleLabelView setFont:[UIFont HPPRSimplifiedRegularFontWithSize:17.0f]];
-    [self.photoCountLabelView setFont:[UIFont HPPRSimplifiedLightFontWithSize:12.0f]];
+    self.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    [self.albumTitleLabelView setFont:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelFont]];
+    [self.albumTitleLabelView setTextColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor]];
+    [self.photoCountLabelView setFont:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont]];
+    [self.photoCountLabelView setTextColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor]];
     
     self.albumTitleLabelView.text = album.name;
     

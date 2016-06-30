@@ -37,6 +37,7 @@
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
+		8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -360,7 +361,6 @@
 		F1EE0B941D1B3D530087F2D0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E387B47819DA247000ABB167 /* Crashlytics.framework */; };
 		F1EE0B951D1B3D530087F2D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D505E199AB87B006D80E0 /* UIKit.framework */; };
 		F1EE0B961D1B3D530087F2D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D505A199AB87B006D80E0 /* Foundation.framework */; };
-		F1EE0B971D1B3D530087F2D0 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		F1EE0B981D1B3D530087F2D0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */; };
 		F1EE0B991D1B3D530087F2D0 /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12b9951de3bbff11258bdeb9 /* calabash.framework */; };
 		F1EE0B9C1D1B3D530087F2D0 /* Template1_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81561A365D0B008884F9 /* Template1_4x5.svg */; };
@@ -581,6 +581,7 @@
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		370A21CE19ABA99B00EBDCCE /* Templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Templates.plist; path = Resources/Templates.plist; sourceTree = "<group>"; };
 		370A21D119ABAF7500EBDCCE /* PGTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplate.h; sourceTree = "<group>"; };
 		370A21D219ABAF7500EBDCCE /* PGTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplate.m; sourceTree = "<group>"; };
@@ -595,7 +596,7 @@
 		378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTemplateSelectorCollectionViewCell.xib; sourceTree = "<group>"; };
 		378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplateSelectorCollectionViewCell.h; sourceTree = "<group>"; };
 		378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplateSelectorCollectionViewCell.m; sourceTree = "<group>"; };
-		4C88E7AF6043EC8183FA07E7 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
+		61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		65334C1D1C472044004E849D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/terms.html; sourceTree = "<group>"; };
 		65334C1F1C47206E004E849D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/terms.html; sourceTree = "<group>"; };
 		65334C201C472074004E849D /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/terms.html; sourceTree = "<group>"; };
@@ -637,7 +638,6 @@
 		92D57EEB1CB304FB00051D79 /* Template7_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_4x5.hpc; path = Resources/Images/Templates/Instagram/Template7_4x5.hpc; sourceTree = "<group>"; };
 		92D57EEC1CB304FB00051D79 /* Template7_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_4x6.hpc; path = Resources/Images/Templates/Instagram/Template7_4x6.hpc; sourceTree = "<group>"; };
 		92D57EED1CB304FB00051D79 /* Template7_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_5x7.hpc; path = Resources/Images/Templates/Instagram/Template7_5x7.hpc; sourceTree = "<group>"; };
-		963DA92F43ECC7141DC1E697 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
@@ -1019,6 +1019,7 @@
 				E34D505F199AB87B006D80E0 /* UIKit.framework in Frameworks */,
 				E34D505B199AB87B006D80E0 /* Foundation.framework in Frameworks */,
 				5109F6575268043E64367DC8 /* libPods-Sprocket.a in Frameworks */,
+				8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,7 +1044,6 @@
 				F1EE0B941D1B3D530087F2D0 /* Crashlytics.framework in Frameworks */,
 				F1EE0B951D1B3D530087F2D0 /* UIKit.framework in Frameworks */,
 				F1EE0B961D1B3D530087F2D0 /* Foundation.framework in Frameworks */,
-				F1EE0B971D1B3D530087F2D0 /* libPods-Sprocket.a in Frameworks */,
 				F1EE0B981D1B3D530087F2D0 /* CFNetwork.framework in Frameworks */,
 				F1EE0B991D1B3D530087F2D0 /* calabash.framework in Frameworks */,
 			);
@@ -1167,8 +1167,8 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				4C88E7AF6043EC8183FA07E7 /* Pods-Sprocket.debug.xcconfig */,
-				963DA92F43ECC7141DC1E697 /* Pods-Sprocket.release.xcconfig */,
+				355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */,
+				61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2847,7 +2847,7 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C88E7AF6043EC8183FA07E7 /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2919,7 +2919,7 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 963DA92F43ECC7141DC1E697 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3031,7 +3031,6 @@
 		};
 		F1EE0C691D1B3D530087F2D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C88E7AF6043EC8183FA07E7 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3107,7 +3106,6 @@
 		};
 		F1EE0C6A1D1B3D530087F2D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 963DA92F43ECC7141DC1E697 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

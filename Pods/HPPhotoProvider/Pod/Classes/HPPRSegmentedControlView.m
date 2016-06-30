@@ -11,6 +11,7 @@
 //
 
 #import "HPPRSegmentedControlView.h"
+#import "HPPR.h"
 #import "UIFont+HPPRStyle.h"
 #import "UIColor+HPPRStyle.h"
 #import "UIImage+HPPRMaskImage.h"
@@ -60,9 +61,10 @@
     [self.segment2 setBackgroundImage:segment2Unselected forState:UIControlStateHighlighted];
     
     for (UIButton *segmentButton in self.segments) {
-        segmentButton.titleLabel.font = [UIFont HPPRSimplifiedRegularFontWithSize:12.0f];
-        [segmentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [segmentButton setTitleColor:[UIColor HPPRBlueColor] forState:UIControlStateNormal];
+        segmentButton.titleLabel.font = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont];
+        [segmentButton setTintColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorSelected]];
+        [segmentButton setTitleColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorSelected] forState:UIControlStateSelected];
+        [segmentButton setTitleColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorNormal] forState:UIControlStateNormal];
     }
 }
 

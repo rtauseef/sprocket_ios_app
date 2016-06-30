@@ -14,6 +14,7 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
+#import <HPPR.h>
 
 #import "PGLandingSelectorPageViewController.h"
 #import "PGInstagramLandingPageViewController.h"
@@ -248,10 +249,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     self.pageControl.numberOfPages = NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS;
     self.pageControl.currentPage = INITIAL_LANDING_PAGE_SELECTED_INDEX;
 
-    self.pageControl.backgroundColor = [UIColor whiteColor];
+    self.pageControl.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
 
-    self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:(0x18 / 255.0f) green:(0x98 / 255.0f) blue:(0xD5 / 255.0f) alpha:0.5f];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:(0x18 / 255.0f) green:(0x98 / 255.0f) blue:(0xD5 / 255.0f) alpha:1.0f];
+    self.pageControl.pageIndicatorTintColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorNormal];
+    self.pageControl.currentPageIndicatorTintColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorSelected];
     
     self.pageControl.accessibilityIdentifier = @"Dot View For Page Navigation";
     self.pageControl.accessibilityValue = @"0";
