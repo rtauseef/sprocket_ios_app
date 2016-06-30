@@ -127,6 +127,15 @@
              };
 }
 
++ (void)addGradientBackgroundToView:(UIView *)view {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f/255.0F green:0x1f/255.0F blue:0x1f/255.0F alpha:1] CGColor], (id)[[UIColor colorWithRed:0x38/255.0F green:0x38/255.0F blue:0x38/255.0F alpha:1] CGColor], nil];
+    gradient.startPoint = CGPointMake(0, 1);
+    gradient.endPoint = CGPointMake(1, 0);
+    [view.layer insertSublayer:gradient atIndex:0];
+}
+
 + (void)setPrintOptions
 {
     [MP sharedInstance].appearance.settings = [PGAppAppearance mpAppearanceSettings];

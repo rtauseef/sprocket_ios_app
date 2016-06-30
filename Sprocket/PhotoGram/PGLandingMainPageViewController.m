@@ -17,6 +17,7 @@
 
 #import "PGLandingMainPageViewController.h"
 #import "PGAppDelegate.h"
+#import "PGAppAppearance.h"
 #import "SWRevealViewController.h"
 #import "PGSideBarMenuTableViewController.h"
 #import "PGLandingSelectorPageViewController.h"
@@ -77,8 +78,6 @@
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
-
-    
     PGSurveyManager *surveyManager = [PGSurveyManager sharedInstance];
     surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of sprocket", nil);
     surveyManager.delegate = self;
@@ -89,7 +88,7 @@
         [[MP sharedInstance] presentPrintQueueFromController:self animated:YES completion:nil];
     }
     
-    [self addBackgroundGradientToView:self.view];
+    [PGAppAppearance addGradientBackgroundToView:self.view];
     
 #ifndef APP_STORE_BUILD
 
@@ -120,15 +119,6 @@
 }
 
 #pragma mark - Private Methods
-
-- (void)addBackgroundGradientToView:(UIView *)view {
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = view.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f/255.0F green:0x1f/255.0F blue:0x1f/255.0F alpha:1] CGColor], (id)[[UIColor colorWithRed:0x38/255.0F green:0x38/255.0F blue:0x38/255.0F alpha:1] CGColor], nil];
-    gradient.startPoint = CGPointMake(0, 1);
-    gradient.endPoint = CGPointMake(1, 0);
-    [view.layer insertSublayer:gradient atIndex:0];
-}
 
 - (NSString *)imageSuffixBasedOnDevice
 {

@@ -50,7 +50,6 @@
     label.delegate = self;
     label.text = label.text;
     
-    
     [label addLinkToURL:[NSURL URLWithString:@"#"] withRange:range];
 }
 
