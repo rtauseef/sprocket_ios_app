@@ -19,6 +19,7 @@ static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kMaximumZoomScale = 4.0f;
 static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 static CGFloat const kAnimationDuration = 0.3f;
+static CGFloat const kMarginOfError = .01F;
 
 @interface PGGesturesView ()
 
@@ -167,8 +168,8 @@ static CGFloat const kAnimationDuration = 0.3f;
 
 - (void)adjustContentOffset
 {
-    if ( !(self.imageView.frame.size.width > self.scrollView.bounds.size.width+.01F) &&
-        !(self.imageView.frame.size.height > self.scrollView.bounds.size.height+.01F)) {
+    if (!(self.imageView.frame.size.width > self.scrollView.bounds.size.width + kMarginOfError) &&
+        !(self.imageView.frame.size.height > self.scrollView.bounds.size.height + kMarginOfError)) {
         [UIView animateWithDuration:kAnimationDuration animations:^{
             self.scrollView.contentOffset = CGPointMake((self.imageView.frame.size.width - self.scrollView.bounds.size.width) / 2,
                                                         (self.imageView.frame.size.height - self.scrollView.bounds.size.height) / 2);

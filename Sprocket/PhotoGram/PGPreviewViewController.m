@@ -16,6 +16,7 @@
 #import "PGCameraManager.h"
 #import "PGSelectTemplateViewController.h"
 #import "PGGesturesView.h"
+#import "PGAppAppearance.h"
 #import "UIView+Background.h"
 
 #import <MP.h>
@@ -53,6 +54,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     [super viewDidLoad];
     self.printItem = nil;
     self.needNewImageView = NO;
+    [PGAppAppearance addGradientBackgroundToView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
