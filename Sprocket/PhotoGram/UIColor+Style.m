@@ -19,6 +19,11 @@
     return [UIColor colorWithRed:0x00/255.0 green:0x96/255.0 blue:0xD6/255.0 alpha:1.0];
 }
 
++ (UIColor *)HPLinkColor
+{
+    return [UIColor colorWithRed:101.0f/255.0 green:192.0f/255.0 blue:231.0f/255.0 alpha:1.0];
+}
+
 + (UIColor *)HPGrayColor
 {
     return [UIColor colorWithRed:0x33/255.0f green:0x33/255.0f blue:0x33/255.0f alpha:1.0f];
