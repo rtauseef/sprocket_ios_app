@@ -44,7 +44,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL needNewImageView;
-@property (assign, nonatomic) BOOL needGradient;
 
 @end
 
@@ -55,7 +54,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     [super viewDidLoad];
     self.printItem = nil;
     self.needNewImageView = NO;
-    self.needGradient = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,17 +83,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         self.imageContainer.frame = frame;
         
         self.needNewImageView = YES;
-    }
-    
-    if (NO) {//self.needGradient) {
-        self.needGradient = NO;
-        
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = self.previewView.bounds;
-        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f green:0x1f blue:0x1f alpha:1.0] CGColor],
-                                                    (id)[[UIColor colorWithRed:0x38 green:0x38 blue:0x38 alpha:1.0] CGColor],
-                                                    nil];
-        [self.previewView.layer insertSublayer:gradient atIndex:0];
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
