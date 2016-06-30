@@ -44,7 +44,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL needNewImageView;
-
 @end
 
 @implementation PGPreviewViewController
@@ -114,6 +113,10 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         [self.imageContainer addSubview:self.imageView];
         
         [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
+    }
+
+    if (self.imageView) {
+        [self.imageView adjustContentOffset];
     }
 }
 
