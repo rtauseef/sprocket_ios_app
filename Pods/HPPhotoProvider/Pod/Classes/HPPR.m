@@ -22,6 +22,7 @@ NSString * const kHPPRTrackableScreenNameKey = @"screen-name";
     static HPPR *sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[HPPR alloc] init];
+        sharedInstance.appearance = [[HPPRAppearance alloc] init];
     });
     return sharedInstance;
 }

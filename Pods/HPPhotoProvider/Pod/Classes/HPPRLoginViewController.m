@@ -40,7 +40,8 @@ float kRetryWidth = 60.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     UINavigationBar *navBar = [self.navigationController navigationBar];
+
+    UINavigationBar *navBar = [self.navigationController navigationBar];
     [navBar setBarTintColor:[UIColor whiteColor]];
     [self.cancelButton setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor HPPRBlueColor], NSFontAttributeName:[UIFont HPPRNavigationBarButtonItemFont]} forState:UIControlStateNormal];
     self.webView.delegate = self;

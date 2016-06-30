@@ -38,9 +38,10 @@ NSString * const kAlbumSelectionScreenName = @"Album Selection Screen";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+    self.tableView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.tableView.separatorColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTableSeparatorColor];
     self.title = [NSString stringWithFormat:HPPRLocalizedString(@"%@ Albums", @"Albums of the specified social network"), self.provider.localizedName];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
@@ -55,7 +56,7 @@ NSString * const kAlbumSelectionScreenName = @"Album Selection Screen";
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.refreshControl = [[UIRefreshControl alloc] init];
-                [self.refreshControl setTintColor:[UIColor HPPRBlueColor]];
+                [self.refreshControl setTintColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTintColor]];
                 [self.refreshControl addTarget:self action:@selector(startRefreshing:) forControlEvents:UIControlEventValueChanged];
                 [self.tableView addSubview:self.refreshControl];
                 

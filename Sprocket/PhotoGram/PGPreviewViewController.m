@@ -16,6 +16,7 @@
 #import "PGCameraManager.h"
 #import "PGSelectTemplateViewController.h"
 #import "PGGesturesView.h"
+#import "PGAppAppearance.h"
 #import "UIView+Background.h"
 
 #import <MP.h>
@@ -53,6 +54,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     [super viewDidLoad];
     self.printItem = nil;
     self.needNewImageView = NO;
+    [PGAppAppearance addGradientBackgroundToView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,11 +82,16 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         frame.size.width = desiredWidth;
         
         self.imageContainer.frame = frame;
+        self.imageContainer.alpha = 0.0F;
         
         self.needNewImageView = YES;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
+    if (self.imageView) {
+        [self.imageView adjustContentOffset];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -110,10 +117,16 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         self.imageView.image = self.selectedPhoto;
         self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
         
+        self.imageView.alpha = 0.0F;
         [self.imageContainer addSubview:self.imageView];
         
         [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
     }
+    
+    [UIView animateWithDuration:0.3F animations:^{
+        self.imageContainer.alpha = 1.0F;
+        self.imageView.alpha = 1.0F;
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

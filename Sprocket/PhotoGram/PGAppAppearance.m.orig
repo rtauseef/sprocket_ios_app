@@ -128,6 +128,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
              };
 }
 
+<<<<<<< HEAD
 + (NSDictionary *)hpprAppearanceSettings
 {
     NSDictionary *defaultSettings = [HPPR sharedInstance].appearance.settings;
@@ -149,8 +150,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
                                };
     
     return settings;
-}
-
+=======
 + (void)addGradientBackgroundToView:(UIView *)view {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = view.bounds;
@@ -158,6 +158,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
     gradient.startPoint = CGPointMake(0, 1);
     gradient.endPoint = CGPointMake(1, 0);
     [view.layer insertSublayer:gradient atIndex:0];
+>>>>>>> master
 }
 
 + (void)setPrintOptions

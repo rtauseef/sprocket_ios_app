@@ -14,5 +14,6 @@
 
 + (void)setupAppearance;
 + (UIColor *)navBarColor;
++ (void)addGradientBackgroundToView:(UIView *)view;
 
 @end
