@@ -85,6 +85,10 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
+    if (self.imageView) {
+        [self.imageView adjustContentOffset];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -113,10 +117,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         [self.imageContainer addSubview:self.imageView];
         
         [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
-    }
-
-    if (self.imageView) {
-        [self.imageView adjustContentOffset];
     }
 }
 
