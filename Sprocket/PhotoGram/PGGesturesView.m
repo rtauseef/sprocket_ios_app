@@ -15,9 +15,10 @@
 #import "UIImage+imageResize.h"
 #import <Crashlytics/Crashlytics.h>
 
-CGFloat const kMinimumZoomScale = 1.0f;
-CGFloat const kMaximumZoomScale = 4.0f;
-CGFloat const kMinimumPressDurationInSeconds = 0.35f;
+static CGFloat const kMinimumZoomScale = 1.0f;
+static CGFloat const kMaximumZoomScale = 4.0f;
+static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
+static CGFloat const kAnimationDuration = 0.3f;
 
 @interface PGGesturesView ()
 
@@ -168,7 +169,7 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 {
     if ( !(self.imageView.frame.size.width > self.scrollView.bounds.size.width+.01F) &&
         !(self.imageView.frame.size.height > self.scrollView.bounds.size.height+.01F)) {
-        [UIView animateWithDuration:0.3F animations:^{
+        [UIView animateWithDuration:kAnimationDuration animations:^{
             self.scrollView.contentOffset = CGPointMake((self.imageView.frame.size.width - self.scrollView.bounds.size.width) / 2,
                                                         (self.imageView.frame.size.height - self.scrollView.bounds.size.height) / 2);
         }];
@@ -202,7 +203,7 @@ CGFloat const kMinimumPressDurationInSeconds = 0.35f;
             self.imageContentMode = UIViewContentModeScaleAspectFill;
         }
         
-        [UIView animateWithDuration:0.3F animations:^{
+        [UIView animateWithDuration:kAnimationDuration animations:^{
             self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
             self.totalRotation = 0.0F;
             
