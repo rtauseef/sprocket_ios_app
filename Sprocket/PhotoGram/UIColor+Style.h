@@ -13,6 +13,7 @@
 @interface UIColor (Style)
 
 + (UIColor *)HPBlueColor;
++ (UIColor *)HPLinkColor;
 + (UIColor *)HPGrayColor;
 + (UIColor *)HPGrayButtonColor;
 + (UIColor *)HPBlueButtonColor;
