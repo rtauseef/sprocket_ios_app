@@ -12,6 +12,7 @@
 
 #import "PGCameraManager.h"
 #import "PGPreviewViewController.h"
+#import "PGLandingMainPageViewController.h"
 
 @interface PGCameraManager ()
 
@@ -56,12 +57,20 @@
     CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
     self.picker.cameraViewTransform = scale;
     
+    self.picker.delegate = self;
+}
+
+- (void)setupCameraOverlay {
     self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     
     self.cameraOverlay.pickerReference = self.picker;
     self.cameraOverlay.view.frame = self.picker.cameraOverlayView.frame;
-    self.picker.delegate = self;
     self.picker.cameraOverlayView = self.cameraOverlay.view;
+}
+
+- (void)setupLandingPageOverlay {
+    self.landingPageOverlay = [[PGLandingMainPageViewController alloc] init];
+    self.picker.cameraOverlayView = self.landingPageOverlay.view;
 }
 
 - (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
@@ -70,7 +79,8 @@
     [self.viewController presentViewController:self.picker animated:animated completion:completion];
 }
 
-- (void)dismissCameraAnimated:(BOOL)animated {
+- (void)dismissCameraAnimated:(BOOL)animated
+{
     [self.picker dismissViewControllerAnimated:animated completion:nil];
 }
 

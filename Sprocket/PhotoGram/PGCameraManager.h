@@ -16,10 +16,15 @@
 @interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
+@property (strong, nonatomic) UIViewController *landingPageOverlay;
 @property (strong, nonatomic) UIImagePickerController *picker;
 @property (weak, nonatomic) UIViewController *viewController;
 
 + (PGCameraManager *)sharedInstance;
+
+- (void)setupCameraOverlay;
+- (void)setupLandingPageOverlay;
+
 - (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 - (void)dismissCameraAnimated:(BOOL)animated;
 
