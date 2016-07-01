@@ -7,6 +7,8 @@
 //
 
 #import "PGMediaNavigation.h"
+#import "PGAppAppearance.h"
+#import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
@@ -49,10 +51,17 @@
 
 - (void)setup
 {
+    self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
+    
     self.providers = [NSArray arrayWithObjects:@"Instagram", @"Facebook", @"Flickr", @"Camera Roll", nil];
-    self.scrollView.spacingBetweenButtons = 10.0f;
-    self.scrollView.notCenterButtonTextColor = [UIColor grayColor];
+    self.scrollView.spacingBetweenButtons = 0.0f;
+    
     self.scrollView.centerButtonTextColor = [UIColor whiteColor];
+    self.scrollView.buttonCenterFont = [UIFont HPNavigationBarTitleFont];
+
+    self.scrollView.notCenterButtonTextColor = [UIColor grayColor];
+    self.scrollView.buttonNotCenterFont = [UIFont HPNavigationBarSubTitleFont];
+    
     [self.scrollView createButtonArrayWithButtonTitles:self.providers andLayoutStyle:SShorizontalLayout];
     self.scrollView.ssRollingButtonScrollViewDelegate = self;
 }
@@ -68,10 +77,10 @@
 }
 
 - (IBAction)didPressFolderButton:(id)sender {
-    if ([UIColor blackColor] == self.navigationView.backgroundColor) {
+    if ([PGAppAppearance navBarColor] == self.navigationView.backgroundColor) {
         self.navigationView.backgroundColor = [UIColor blueColor];
     } else {
-        self.navigationView.backgroundColor = [UIColor blackColor];
+        self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
     }
 }
 

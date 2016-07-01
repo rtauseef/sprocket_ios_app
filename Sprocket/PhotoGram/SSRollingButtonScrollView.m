@@ -83,8 +83,6 @@
 {
     if (_layoutStyle == SShorizontalLayout) {
         self.contentSize = CGSizeMake(5000, self.frame.size.height);
-    } else {
-        self.contentSize = CGSizeMake(self.frame.size.width, 5000);
     }
     
     _buttonContainerView.frame = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);

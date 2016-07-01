@@ -21,20 +21,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yok-mV-6Ve">
-                            <rect key="frame" x="544" y="18" width="44" height="30"/>
+                            <rect key="frame" x="544" y="28" width="44" height="30"/>
                             <state key="normal" title="Folder"/>
                             <connections>
                                 <action selector="didPressFolderButton:" destination="-1" eventType="touchUpInside" id="iDB-ic-oHm"/>
                             </connections>
                         </button>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-fr-Le6" customClass="SSRollingButtonScrollView">
-                            <rect key="frame" x="200" y="0.0" width="200" height="66"/>
+                            <rect key="frame" x="210" y="10" width="180" height="66"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="200" id="oXA-X0-HK2"/>
+                                <constraint firstAttribute="width" constant="180" id="oXA-X0-HK2"/>
                             </constraints>
                         </scrollView>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE">
-                            <rect key="frame" x="12" y="18" width="46" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE">
+                            <rect key="frame" x="12" y="28" width="39" height="30"/>
                             <state key="normal" title="Menu"/>
                             <connections>
                                 <action selector="didPressMenuButton:" destination="-1" eventType="touchUpInside" id="tEr-Dx-Kuv"/>
@@ -43,9 +43,9 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" id="0pr-8O-9Bv"/>
-                        <constraint firstItem="RCP-fr-Le6" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" id="3iT-wp-0vK"/>
-                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" id="4sR-SV-RBf"/>
+                        <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="0pr-8O-9Bv"/>
+                        <constraint firstItem="RCP-fr-Le6" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="3iT-wp-0vK"/>
+                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="4sR-SV-RBf"/>
                         <constraint firstAttribute="trailing" secondItem="Yok-mV-6Ve" secondAttribute="trailing" constant="12" id="CX7-B6-xU8"/>
                         <constraint firstAttribute="height" constant="66" id="FHx-gY-wBY"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="nph-ck-Z3L"/>
