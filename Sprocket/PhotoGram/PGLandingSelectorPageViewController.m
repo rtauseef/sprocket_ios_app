@@ -30,7 +30,7 @@
 
 NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
-@interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, PGMediaNavigationDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) PGMediaNavigation *navigationView;
@@ -217,6 +217,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     if (self.navigationView == nil) {
         self.navigationView = [[PGMediaNavigation alloc] initWithFrame:self.view.frame];
+        self.navigationView.delegate = self;
         self.navigationView.alpha = 0.0f;
         
         [self.view addSubview:self.navigationView];
@@ -226,6 +227,17 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             self.navigationView.alpha = 1.0f;
         } completion:nil];
     }
+}
+
+- (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav
+{
+    PGLandingPageViewController *vc = [self.instagramLandingPageViewController viewControllers][0];
+    [vc.revealViewController revealToggle:self];
+}
+
+- (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav
+{
+    
 }
 
 - (void)hideSwipeCoachMarks:(NSNotification *)notification

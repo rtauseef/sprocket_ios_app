@@ -77,6 +77,11 @@
 }
 
 - (IBAction)didPressFolderButton:(id)sender {
+    
+    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressFolderButton:)]) {
+        [self.delegate mediaNavigationDidPressFolderButton:self];
+    }
+    
     if ([PGAppAppearance navBarColor] == self.navigationView.backgroundColor) {
         self.navigationView.backgroundColor = [UIColor blueColor];
     } else {
@@ -85,6 +90,9 @@
 }
 
 - (IBAction)didPressMenuButton:(id)sender {
+    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressMenuButton:)]) {
+        [self.delegate mediaNavigationDidPressMenuButton:self];
+    }
     // need to pass request for hamburger menu to view controller
     
 //    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
