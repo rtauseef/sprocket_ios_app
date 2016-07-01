@@ -21,6 +21,7 @@
 #import "SWRevealViewController.h"
 #import "PGSideBarMenuTableViewController.h"
 #import "PGSwipeCoachMarksView.h"
+#import "PGMediaNavigation.h"
 
 #define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 4
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
@@ -32,6 +33,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 @interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIView *navigationView;
 @property (nonatomic, strong) PGSwipeCoachMarksView *swipeCoachMarksView;
 @property (nonatomic, strong) UINavigationController *instagramLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *facebookLandingPageViewController;
@@ -186,6 +188,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)showSwipeCoachMarks:(NSNotification *)notification
 {
+    [self showNavigationView];
+
     if( ![self coachMarksHaveBeenShown] ) {
         if (self.swipeCoachMarksView == nil) {
             self.swipeCoachMarksView = [[PGSwipeCoachMarksView alloc] initWithFrame:self.view.frame];
@@ -198,6 +202,21 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
                 self.swipeCoachMarksView.alpha = 1.0f;
             } completion:nil];
         }
+    }
+}
+
+- (void)showNavigationView
+{
+    if (self.navigationView == nil) {
+        self.navigationView = [[PGMediaNavigation alloc] initWithFrame:self.view.frame];
+        self.navigationView.alpha = 0.0f;
+        
+        [self.view addSubview:self.navigationView];
+        [self.view bringSubviewToFront:self.navigationView];
+        
+        [UIView animateWithDuration:COACH_MARK_ANIMATION_DURATION animations:^{
+            self.navigationView.alpha = 1.0f;
+        } completion:nil];
     }
 }
 
