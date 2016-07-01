@@ -30,15 +30,16 @@
 
 NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
-@interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl;
-@property (nonatomic, strong) UIView *navigationView;
+@property (nonatomic, strong) PGMediaNavigation *navigationView;
 @property (nonatomic, strong) PGSwipeCoachMarksView *swipeCoachMarksView;
 @property (nonatomic, strong) UINavigationController *instagramLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *facebookLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *cameraRollLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *flickrLandingPageViewController;
+@property (nonatomic, weak) UIScrollView *scrollView;
 
 @property (nonatomic, assign) NSInteger previousPageControlPosition;
 
@@ -84,6 +85,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [self initPageControl];
     
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
+    
+    for (UIView *v in self.view.subviews) {
+        if ([v isKindOfClass:[UIScrollView class]]) {
+            self.scrollView = (UIScrollView *)v;
+            self.scrollView.delegate = self;
+        }
+    }
 }
 
 - (void)dealloc
@@ -345,6 +353,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
+    NSLog(@"didFinish: %d, previous: %@, complete: %d", finished, previousViewControllers, completed);
+    
     if (!completed) {
         return;
     }
@@ -353,17 +363,37 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     
     if (viewController == self.instagramLandingPageViewController) {
         self.pageControl.currentPage = 0;
+        [self.navigationView selectButton:@"Instagram" animated:YES];
     } else if (viewController == self.facebookLandingPageViewController) {
         self.pageControl.currentPage = 1;
+        [self.navigationView selectButton:@"Facebook" animated:YES];
     } else if (viewController == self.flickrLandingPageViewController) {
         self.pageControl.currentPage = 2;
+        [self.navigationView selectButton:@"Flickr" animated:YES];
     } else if (viewController == self.cameraRollLandingPageViewController) {
         self.pageControl.currentPage = 3;
+        [self.navigationView selectButton:@"Camera Roll" animated:YES];
     }
     
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
     
     self.previousPageControlPosition = self.pageControl.currentPage;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    NSLog(@"WillTransition: %@", pendingViewControllers);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // The scroll view appears to store only 3 screens at a time...
+    //  the current screen, one to the left, and one to the right.
+    //  Thus 33% is always the origin of the current screen
+    CGFloat progress = scrollView.contentOffset.x / scrollView.contentSize.width;    
+    progress -= .33F;
+    
+    [self.navigationView setScrollProgress:scrollView progress:progress forPage:self.pageControl.currentPage];
 }
 
 #pragma mark - UIPageViewControllerDataSource

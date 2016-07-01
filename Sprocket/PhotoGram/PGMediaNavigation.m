@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIView *cameraView;
 @property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
+@property (strong, nonatomic) NSArray *providers;
 
 @end
 
@@ -48,12 +49,22 @@
 
 - (void)setup
 {
-        NSArray *phoneticAlphabet = [NSArray arrayWithObjects:@"Instagram", @"Facebook", @"Flickr", @"Camera Roll", nil];
+    self.providers = [NSArray arrayWithObjects:@"Instagram", @"Facebook", @"Flickr", @"Camera Roll", nil];
     self.scrollView.spacingBetweenButtons = 10.0f;
     self.scrollView.notCenterButtonTextColor = [UIColor grayColor];
     self.scrollView.centerButtonTextColor = [UIColor whiteColor];
-    [self.scrollView createButtonArrayWithButtonTitles:phoneticAlphabet andLayoutStyle:SShorizontalLayout];
+    [self.scrollView createButtonArrayWithButtonTitles:self.providers andLayoutStyle:SShorizontalLayout];
     self.scrollView.ssRollingButtonScrollViewDelegate = self;
+}
+
+-(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page
+{
+    [self.scrollView setScrollProgress:progress onPage:page];
+}
+
+- (void)selectButton:(NSString *)title animated:(BOOL)animated
+{
+    [self.scrollView selectButton:title animated:animated];
 }
 
 - (IBAction)didPressFolderButton:(id)sender {

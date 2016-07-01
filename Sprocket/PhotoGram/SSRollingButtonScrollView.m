@@ -65,7 +65,7 @@
         self.centerButtonTextColor = [UIColor orangeColor];
         self.stopOnCenter = YES;
         self.centerPushedButtons = YES;
-        self.playSound = YES;
+        self.playSound = NO;
         
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
@@ -153,37 +153,6 @@
             }
         }
         
-    } else {
-        
-        while (y <= self.frame.size.height * 2) {
-            
-            for (NSString *buttonTitle in _rollingScrollViewButtonTitles) {
-                
-                UIButton *button = [self createAndConfigureNewButton:buttonTitle];
-                
-                CGSize fittedButtonSize = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.buttonCenterFont}];
-                
-                if (self.fixedButtonWidth < 0) {
-                    buttonWidth = ceilf(fittedButtonSize.width / 2) * 2;
-                } else {
-                    buttonWidth = self.fixedButtonWidth;
-                }
-                
-                if (self.fixedButtonHeight < 0) {
-                    buttonHeight = ceilf(fittedButtonSize.height / 2) * 2;
-                } else {
-                    buttonHeight = self.fixedButtonHeight;
-                }
-                
-                button.frame = CGRectMake(x, y, buttonWidth, buttonHeight);
-                
-                y += buttonHeight + self.spacingBetweenButtons;
-                
-                [button addTarget:self action:@selector(scrollViewButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
-                
-                [_rollingScrollViewButtons addObject:button];
-            }
-        }
     }
     
     [self addSubview:_buttonContainerView];
@@ -230,11 +199,6 @@
         CGFloat maximumVisibleX = CGRectGetMaxX(visibleBounds);
         [self tileButtonsFromMinX:minimumVisibleX toMaxX:maximumVisibleX];
         
-    } else {
-        
-        CGFloat minimumVisibleY = CGRectGetMinY(visibleBounds);
-        CGFloat maximumVisibleY = CGRectGetMaxY(visibleBounds);
-        [self tileButtonsFromMinY:minimumVisibleY toMaxY:maximumVisibleY];
     }
 }
 
@@ -309,14 +273,6 @@
         
         CGPoint targetOffset = CGPointMake(currentOffset.x - distanceFromCenter, 0.0f);
         [self setContentOffset:targetOffset animated:animated];
-        
-    } else {
-        
-        CGPoint currentOffset = self.contentOffset;
-        CGFloat distanceFromCenter = [self buttonDistanceFromCenter:button];
-        
-        CGPoint targetOffset = CGPointMake(0.0f, currentOffset.y - distanceFromCenter);
-        [self setContentOffset:targetOffset animated:animated];
     }
 }
 
@@ -340,26 +296,6 @@
                 button.center = [self convertPoint:center toView:_buttonContainerView];
             }
         }
-        
-    } else {
-        
-        CGPoint currentOffset = [self contentOffset];
-        CGFloat contentHeight = [self contentSize].height;
-        CGFloat centerOffsetY = (contentHeight - [self bounds].size.height) / 2.0;
-        CGFloat distanceFromCenter = fabs(currentOffset.y - centerOffsetY);
-        
-        if (distanceFromCenter > (contentHeight / 4.0))
-        {
-            self.contentOffset = CGPointMake(currentOffset.x, centerOffsetY);
-            
-            // move content by the same amount so it appears to stay still
-            for (UIButton *button in _rollingScrollViewButtons) {
-                CGPoint center = [_buttonContainerView convertPoint:button.center toView:self];
-                center.y += (centerOffsetY - currentOffset.y);
-                button.center = [self convertPoint:center toView:_buttonContainerView];
-            }
-        }
-        
     }
 }
 
@@ -479,100 +415,38 @@
     }
 }
 
-- (CGFloat)placeNewButtonOnBottom:(CGFloat)bottomEdge
+- (void)selectButton:(NSString *)title animated:(BOOL)animated
 {
-    _bottomMostVisibleButtonIndex++;
-    if (_bottomMostVisibleButtonIndex == [_rollingScrollViewButtons count]) {
-        _bottomMostVisibleButtonIndex = 0;
-    }
-    
-    UIButton *button = _rollingScrollViewButtons[_bottomMostVisibleButtonIndex];
-    [_buttonContainerView addSubview:button];
-    [_visibleButtons addObject:button]; // add bottommost label at the end of the array
-    
-    CGRect frame = [button frame];
-    frame.origin.y = bottomEdge;
-    frame.origin.x = ([_buttonContainerView bounds].size.width - frame.size.width) / 2.0f;
-    [button setFrame:frame];
-    return CGRectGetMaxY(frame);
-}
-
-- (CGFloat)placeNewButtonOnTop:(CGFloat)topEdge
-{
-    _topMostVisibleButtonIndex--;
-    if (_topMostVisibleButtonIndex < 0) {
-        _topMostVisibleButtonIndex = [_rollingScrollViewButtons count] - 1;
-    }
-    
-    UIButton *button = _rollingScrollViewButtons[_topMostVisibleButtonIndex];
-    [_buttonContainerView addSubview:button];
-    [_visibleButtons insertObject:button atIndex:0]; // add leftmost label at the beginning of the array
-    
-    CGRect frame = [button frame];
-    frame.origin.y = topEdge - frame.size.height;
-    frame.origin.x = ([_buttonContainerView bounds].size.width - frame.size.width) / 2.0f;
-    [button setFrame:frame];
-    
-    return CGRectGetMinY(frame);
-}
-
-- (void)tileButtonsFromMinY:(CGFloat)minimumVisibleY toMaxY:(CGFloat)maximumVisibleY
-{
-    // the upcoming tiling logic depends on there already being at least one label in the visibleLabels array, so
-    // to kick off the tiling we need to make sure there's at least one label
-    if ([_visibleButtons count] == 0)
-    {
-        _bottomMostVisibleButtonIndex = -1;
-        _topMostVisibleButtonIndex = 0;
-        [self placeNewButtonOnBottom:minimumVisibleY];
-    }
-    
-    // add labels that are missing on right side
-    UIButton *lastButton = [_visibleButtons lastObject];
-    CGFloat bottomEdge = CGRectGetMaxY([lastButton frame]);
-    
-    while (bottomEdge < maximumVisibleY)
-    {
-        bottomEdge += self.spacingBetweenButtons;
-        bottomEdge = [self placeNewButtonOnBottom:bottomEdge];
-    }
-    
-    // add labels that are missing on left side
-    UIButton *firstButton = _visibleButtons[0];
-    CGFloat topEdge = CGRectGetMinY([firstButton frame]);
-    while (topEdge > minimumVisibleY)
-    {
-        topEdge -= self.spacingBetweenButtons;
-        topEdge = [self placeNewButtonOnTop:topEdge];
-    }
-    
-    // remove labels that have fallen off right edge
-    lastButton = [_visibleButtons lastObject];
-    while ([lastButton frame].origin.y > maximumVisibleY)
-    {
-        [lastButton removeFromSuperview];
-        [_visibleButtons removeLastObject];
-        lastButton = [_visibleButtons lastObject];
-        
-        _bottomMostVisibleButtonIndex--;
-        if (_bottomMostVisibleButtonIndex < 0) {
-            _bottomMostVisibleButtonIndex = [_rollingScrollViewButtons count] - 1;
+    for(UIButton *b in _visibleButtons) {
+        if ([b.titleLabel.text isEqualToString:title]) {
+            [self moveButtonToViewCenter:b animated:animated];
+            NSLog(@"Button: %@", b);
         }
     }
+}
+
+- (void)setScrollProgress:(CGFloat)progress onPage:(NSInteger)page
+{
+    UIButton *currentButton = [_visibleButtons objectAtIndex:0];
+    CGPoint offset = self.contentOffset;
+    CGFloat widthPerPage = currentButton.frame.size.width;//self.scrollView.contentSize.width / self.providers.count;
     
-    // remove labels that have fallen off left edge
-    firstButton = _visibleButtons[0];
-    while (CGRectGetMaxY([firstButton frame]) < minimumVisibleY)
-    {
-        [firstButton removeFromSuperview];
-        [_visibleButtons removeObjectAtIndex:0];
-        firstButton = _visibleButtons[0];
-        
-        _topMostVisibleButtonIndex++;
-        if (_topMostVisibleButtonIndex == [_rollingScrollViewButtons count]) {
-            _topMostVisibleButtonIndex = 0;
-        }
+    //offset.x = (page + progress) * widthPerPage;
+    offset.x += (progress * widthPerPage)/25;
+    NSLog(@"Current Button: %@", currentButton);
+    
+    NSLog(@"SliderOffset: %.02f of SliderWidth: %.02f: %.02f%@... newOffset: %.02f",
+          self.contentOffset.x,
+          self.contentSize.width,
+          (self.contentOffset.x / self.contentSize.width)*100,
+          @"%",
+          offset.x);
+    for(UIButton *b in _visibleButtons) {
+        NSLog(@"Button: %@", b);
     }
+    self.contentOffset = offset;
+    
+    //[self scrollViewDidScroll:scrollView];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -583,15 +457,20 @@
         
         if (_layoutStyle == SShorizontalLayout) {
             
+            NSLog(@"OFFSET: %.02f", self.contentOffset.x);
+            
             CGPoint currentOffset = self.contentOffset;
             NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
             NSTimeInterval timeChange = currentTime - _lastTimeCapture;
             CGFloat distanceChange = currentOffset.x - _lastOffset.x;
             _scrollVelocity = distanceChange / timeChange;
             
+            NSLog(@"Velocity: %.02f", _scrollVelocity);
+            
             if (scrollView.decelerating) {
                 if (fabsf(_scrollVelocity) < 150) {
                     [self moveButtonToViewCenter:_currentCenterButton animated:YES];
+                    NSLog(@"Moving to center");
                 }
             }
             _lastOffset = currentOffset;
