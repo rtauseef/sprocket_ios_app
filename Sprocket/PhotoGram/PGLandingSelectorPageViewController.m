@@ -232,6 +232,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav
 {
     PGLandingPageViewController *vc = [self.instagramLandingPageViewController viewControllers][0];
+    if (nil == vc.revealViewController) {
+        vc = [self.flickrLandingPageViewController viewControllers][0];
+    }
+
     [vc.revealViewController revealToggle:self];
 }
 
