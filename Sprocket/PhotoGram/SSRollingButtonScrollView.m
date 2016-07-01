@@ -255,10 +255,6 @@
         CGFloat visibleContentCenterX = self.contentOffset.x + [self bounds].size.width / 2.0f;
         distanceFromCenter = visibleContentCenterX - button.center.x;
         
-    } else {
-        
-        CGFloat visibleContentCenterY = self.contentOffset.y + [self bounds].size.height / 2.0f;
-        distanceFromCenter = visibleContentCenterY - button.center.y;
     }
     
     return distanceFromCenter;
@@ -425,28 +421,42 @@
     }
 }
 
+- (void)transitionBetweenButton:(UIView *)button1 andButton:(UIView *)button2 progress:(CGFloat)progress
+{
+    CGFloat button1Center = button1.frame.origin.x + button1.frame.size.width/2;
+    CGFloat button2Center = button2.frame.origin.x + button2.frame.size.width/2;
+    CGFloat distance = button1Center - button2Center;
+    
+    CGPoint offset = self.contentOffset;
+    offset.x += (progress * distance);
+    self.contentOffset = offset;
+}
+
 - (void)setScrollProgress:(CGFloat)progress onPage:(NSInteger)page
 {
-    UIButton *currentButton = [_visibleButtons objectAtIndex:0];
+    UIView *currentButton = [_visibleButtons objectAtIndex:1];
     CGPoint offset = self.contentOffset;
-    CGFloat widthPerPage = currentButton.frame.size.width;//self.scrollView.contentSize.width / self.providers.count;
     
-    //offset.x = (page + progress) * widthPerPage;
+    UIView *nextButton = [_visibleButtons objectAtIndex:0];
+    if (progress > 0  &&  _visibleButtons.count > 2) {
+        nextButton = [_visibleButtons objectAtIndex:2];
+    }
+    
+    CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10)/2;//currentButton.frame.size.width;
+    
     offset.x += (progress * widthPerPage)/25;
-    NSLog(@"Current Button: %@", currentButton);
-    
-    NSLog(@"SliderOffset: %.02f of SliderWidth: %.02f: %.02f%@... newOffset: %.02f",
-          self.contentOffset.x,
-          self.contentSize.width,
-          (self.contentOffset.x / self.contentSize.width)*100,
-          @"%",
-          offset.x);
+//    NSLog(@"Current Button: %@", currentButton);
+//    
+//    NSLog(@"SliderOffset: %.02f of SliderWidth: %.02f: %.02f%@... newOffset: %.02f",
+//          self.contentOffset.x,
+//          self.contentSize.width,
+//          (self.contentOffset.x / self.contentSize.width)*100,
+//          @"%",
+//          offset.x);
     for(UIButton *b in _visibleButtons) {
-        NSLog(@"Button: %@", b);
+        NSLog(@"%@: %@", b.titleLabel.text, b);
     }
     self.contentOffset = offset;
-    
-    //[self scrollViewDidScroll:scrollView];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -465,12 +475,9 @@
             CGFloat distanceChange = currentOffset.x - _lastOffset.x;
             _scrollVelocity = distanceChange / timeChange;
             
-            NSLog(@"Velocity: %.02f", _scrollVelocity);
-            
             if (scrollView.decelerating) {
                 if (fabsf(_scrollVelocity) < 150) {
                     [self moveButtonToViewCenter:_currentCenterButton animated:YES];
-                    NSLog(@"Moving to center");
                 }
             }
             _lastOffset = currentOffset;
