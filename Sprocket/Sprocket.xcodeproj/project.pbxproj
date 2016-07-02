@@ -2875,7 +2875,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2947,7 +2947,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3059,7 +3059,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3134,7 +3134,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

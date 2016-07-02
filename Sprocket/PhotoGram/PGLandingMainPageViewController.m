@@ -32,16 +32,20 @@
 
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *cameraBackgroundView;
+@property (strong, nonatomic) IBOutlet UIVisualEffectView *blurredView;
 @property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
+@property (strong, nonatomic) IBOutlet UIView *landingButtonsView;
+@property (strong, nonatomic) IBOutlet UIView *cameraButtonsView;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
-@property (weak, nonatomic) IBOutlet UIButton *instagramButton;
-@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-@property (weak, nonatomic) IBOutlet UIButton *flickrButton;
-@property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
+@property (strong, nonatomic) IBOutlet UIButton *hamburgerButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
+@property (strong, nonatomic) IBOutlet UIButton *instagramButton;
+@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+@property (strong, nonatomic) IBOutlet UIButton *flickrButton;
+@property (strong, nonatomic) IBOutlet UIButton *cameraRollButton;
 
 @end
 
@@ -51,28 +55,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.hamburgerButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    
     self.trackableScreenName = @"Main Landing Page";
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
-    [button setShowsTouchWhenHighlighted:YES];
-    
-    [button setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    [self.view addSubview:button];
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"H:|[button(64)]"
-                               options:NSLayoutFormatDirectionLeadingToTrailing
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(button)]];
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:|[button(64)]"
-                               options:NSLayoutFormatDirectionLeadingToTrailing
-                               metrics:nil
-                               views:NSDictionaryOfVariableBindings(button)]];
-
     self.termsLabel.minimumLineHeight = 19.9f;
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
@@ -88,29 +73,26 @@
         [[MP sharedInstance] presentPrintQueueFromController:self animated:YES completion:nil];
     }
     
+    [self.view layoutIfNeeded];
     [PGAppAppearance addGradientBackgroundToView:self.view];
+    [[PGCameraManager sharedInstance] addCameraToView:self.cameraBackgroundView presentedViewController:self];
+    [[PGCameraManager sharedInstance] addCameraButtonsOnView:self.cameraButtonsView];
     
-#ifndef APP_STORE_BUILD
-
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-    lpgr.minimumPressDuration = 2.0f; //seconds
-    lpgr.delaysTouchesBegan = YES;
-    lpgr.delegate = self;
-    [self.view addGestureRecognizer:lpgr];
-
-#endif
-    
+    [self addLongPressGesture];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCameraButtons) name:kPGCameraManagerCameraClosed object:nil];
+    
+    [self hideCameraButtons];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -120,30 +102,16 @@
 
 #pragma mark - Private Methods
 
-- (NSString *)imageSuffixBasedOnDevice
-{
-    NSString *suffix = @"-700";
-    if (IS_IPAD) {
-        if (IS_PORTRAIT) {
-            suffix = @"-700-Portrait";
-        } else {
-            suffix = @"-700-Landscape";
-        }
-    } else if(IS_IPHONE_5) {
-        suffix = @"-700-568h";
-    } else if (IS_IPHONE_6) {
-        suffix = @"-800-667h";
-    } else if (IS_IPHONE_6_PLUS) {
-        if (IS_PORTRAIT) {
-            suffix = @"-800-Portrait-736h";
-        } else {
-            suffix = @"-800-Landscape-736h";
-        }
-    } else {
-        PGLogError(@"Unsupported device");
-    }
-    
-    return suffix;
+- (void)addLongPressGesture {
+    #ifndef APP_STORE_BUILD
+        
+        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+        lpgr.minimumPressDuration = 2.0f; //seconds
+        lpgr.delaysTouchesBegan = YES;
+        lpgr.delegate = self;
+        [self.view addGestureRecognizer:lpgr];
+        
+    #endif
 }
 
 - (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
@@ -218,7 +186,23 @@
 
 - (IBAction)cameraTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] showCamera:self animated:YES completion:nil];
+    [self showCameraButtons];
+}
+
+- (void)showCameraButtons {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.blurredView.alpha = 0;
+        self.landingButtonsView.alpha = 0;
+        self.cameraButtonsView.alpha = 1;
+    } completion:nil];
+}
+
+- (void)hideCameraButtons {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.blurredView.alpha = 1;
+        self.landingButtonsView.alpha = 1;
+        self.cameraButtonsView.alpha = 0;
+    } completion:nil];
 }
 
 #pragma mark - PGSurveyManagerDelegate

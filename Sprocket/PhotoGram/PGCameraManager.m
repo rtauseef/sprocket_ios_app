@@ -14,9 +14,15 @@
 #import "PGPreviewViewController.h"
 #import "PGLandingMainPageViewController.h"
 
+NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
+
 @interface PGCameraManager ()
 
-    @property (assign, nonatomic) BOOL isCameraOpened;
+    @property (weak, nonatomic) UIViewController *viewController;
+    @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
+    @property (strong, nonatomic) UIImagePickerController *picker;
+    @property (strong, nonatomic) AVCaptureSession *session;
+    @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
 
 @end
 
@@ -43,74 +49,166 @@
 
 - (void)setup
 {
-    self.isCameraOpened = NO;
+    self.isCustomCamera = NO;
+    
     self.picker = [[UIImagePickerController alloc] init];
     self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
     self.picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
     self.picker.showsCameraControls = NO;
     self.picker.extendedLayoutIncludesOpaqueBars = NO;
-    
-    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
-    self.picker.cameraViewTransform = translate;
-    
-    CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
-    self.picker.cameraViewTransform = scale;
-    
+    self.picker.cameraViewTransform = [self cameraFullScreenTransform];
     self.picker.delegate = self;
-}
-
-- (void)setupCameraOverlay {
-    self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     
+    self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     self.cameraOverlay.pickerReference = self.picker;
     self.cameraOverlay.view.frame = self.picker.cameraOverlayView.frame;
+    
     self.picker.cameraOverlayView = self.cameraOverlay.view;
 }
 
-- (void)setupLandingPageOverlay {
-    self.landingPageOverlay = [[PGLandingMainPageViewController alloc] init];
-    self.picker.cameraOverlayView = self.landingPageOverlay.view;
+#pragma mark - Private Methods
+
+- (CGAffineTransform)cameraFullScreenTransform {
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
+    CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
+    
+    return scale;
 }
 
-- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
+#pragma mark - Public Methods
+
+- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated
 {
+    self.isCustomCamera = NO;
+    self.cameraOverlay.pickerReference = self.picker;
     self.viewController = viewController;
-    [self.viewController presentViewController:self.picker animated:animated completion:completion];
+    [self.viewController presentViewController:self.picker animated:animated completion:nil];
+}
+
+- (void)addCameraButtonsOnView:(UIView *)view
+{
+    self.cameraOverlay.pickerReference = nil;
+    self.cameraOverlay.view.frame = view.frame;
+    
+    [view addSubview:self.cameraOverlay.view];
 }
 
 - (void)dismissCameraAnimated:(BOOL)animated
 {
     [self.picker dismissViewControllerAnimated:animated completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+}
+
+- (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.selectedPhoto = photo;
+    previewViewController.media = [[HPPRMedia alloc] initWithAttributes:info];
+    previewViewController.source = @"CameraRoll";
+    
+    if (self.viewController.presentingViewController) {
+        [self.viewController.presentingViewController presentViewController:previewViewController animated:NO completion:nil];
+    } else {
+        [self.viewController presentViewController:previewViewController animated:NO completion:nil];
+    }
+}
+
+#pragma mark - Custom Camera Methods
+
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        if ([device position] == position) return device;
+    }
+    return nil;
+}
+
+- (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
+{
+    self.viewController = viewController;
+    
+    self.session = [[AVCaptureSession alloc] init];
+    self.session.sessionPreset = AVCaptureSessionPresetHigh;
+    
+    AVCaptureDevice *device = [self cameraWithPosition:AVCaptureDevicePositionFront];
+    
+    NSError *error = nil;
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    [self.session addInput:input];
+    
+    AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
+    newCaptureVideoPreviewLayer.frame = view.bounds;
+    
+    self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
+    [self.stillImageOutput setOutputSettings:outputSettings];
+    [self.session addOutput:self.stillImageOutput];
+    
+    [view.layer addSublayer:newCaptureVideoPreviewLayer];
+    
+    [self.session startRunning];
+    
+    self.isCustomCamera = YES;
+}
+
+- (void)takePicture {
+    if (self.isCustomCamera) {
+        [self captureNow];
+    } else {
+        [self.picker takePicture];
+    }
+}
+
+- (void)switchCamera {
+//    [self.session beginConfiguration];
+//
+//    [self.session removeInput:frontFacingCameraDeviceInput];
+//    [self.session addInput:backFacingCameraDeviceInput];
+//
+//    [self.session commitConfiguration];
+}
+
+- (void)captureNow {
+    AVCaptureConnection *videoConnection = nil;
+    for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
+        for (AVCaptureInputPort *port in [connection inputPorts]) {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
+                videoConnection = connection;
+                break;
+            }
+        }
+        
+        if (videoConnection) {
+            break;
+        }
+    }
+    
+    __weak PGCameraManager *weakSelf = self;
+    
+    [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer,NSError *error) {
+
+         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+         UIImage *photo = [[UIImage alloc] initWithData:imageData];
+     
+         [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+    }];
 }
 
 #pragma mark - UIImagePickerController Delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    UIImage *picture = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *photo = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     if (picker.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
-        picture = [UIImage imageWithCGImage:picture.CGImage scale:picture.scale orientation:UIImageOrientationLeftMirrored];
+        photo = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
     }
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    previewViewController.selectedPhoto = picture;
-    previewViewController.media = [[HPPRMedia alloc] initWithAttributes:info];
-    previewViewController.source = @"CameraRoll";
-    
-    [self.picker dismissViewControllerAnimated:NO completion:^{
-        if (self.viewController.presentingViewController) {
-            [self.viewController.presentingViewController presentViewController:previewViewController animated:NO completion:nil];
-        } else {
-            [self.viewController presentViewController:previewViewController animated:NO completion:nil];
-        }
-    }];
-    
+    [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
 }
 
-- (void)mirrorImage {
-}
 
 @end

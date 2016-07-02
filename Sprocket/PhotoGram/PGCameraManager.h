@@ -10,22 +10,24 @@
 // the license agreement.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 #import "PGOverlayCameraViewController.h"
 
+extern NSString * const kPGCameraManagerCameraClosed;
+
 @interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
-@property (strong, nonatomic) UIViewController *landingPageOverlay;
-@property (strong, nonatomic) UIImagePickerController *picker;
-@property (weak, nonatomic) UIViewController *viewController;
+@property (assign, nonatomic) BOOL isCustomCamera;
 
 + (PGCameraManager *)sharedInstance;
 
-- (void)setupCameraOverlay;
-- (void)setupLandingPageOverlay;
+- (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController;
+- (void)addCameraButtonsOnView:(UIView *)view;
 
-- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated;
 - (void)dismissCameraAnimated:(BOOL)animated;
+
+- (void)takePicture;
 
 @end

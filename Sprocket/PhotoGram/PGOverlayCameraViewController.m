@@ -17,6 +17,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
@@ -27,19 +28,16 @@
 
 - (IBAction)cameraReverseTapped:(id)sender
 {
-    [UIView transitionWithView:self.pickerReference.view duration:1.0 options:UIViewAnimationOptionAllowAnimatedContent | UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-        if (self.pickerReference.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
-            self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        } else {
-            self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-        }
-        
-    } completion:NULL];
+    if (self.pickerReference.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
+        self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    } else {
+        self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    }
 }
 
 - (IBAction)shutterTapped:(id)sender
 {
-    [self.pickerReference takePicture];
+    [[PGCameraManager sharedInstance] takePicture];
 }
 
 @end

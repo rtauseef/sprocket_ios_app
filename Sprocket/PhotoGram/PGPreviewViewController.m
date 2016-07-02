@@ -158,7 +158,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     UIViewController *viewController = self.presentingViewController;
     [self dismissViewControllerAnimated:NO completion:^{
-        [[PGCameraManager sharedInstance] showCamera:viewController animated:NO completion:nil];
+        [[PGCameraManager sharedInstance] showCamera:viewController animated:NO];
     }];
 }
 
