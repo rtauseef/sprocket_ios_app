@@ -9,15 +9,15 @@ class ShareScreen < Calabash::IBase
   end
 
   def mail
-  "view marked:'Mail'"
+      "label marked:'Mail'"
   end
 
  def print
-   "view marked:'Print'"
+     "label marked:'Print'"
  end
 
   def save_to_camera
-    "view marked:'Save to Camera Roll'"
+      "label marked:'Save to Camera Roll'"
   end
 
   def share_icon
@@ -30,18 +30,10 @@ class ShareScreen < Calabash::IBase
 
   def navigate
     unless current_page?
-      select_template_screen = go_to(SelectTemplateScreen)
+        preview_screen = go_to(PreviewScreen)
       sleep(WAIT_SCREENLOAD)
-      screen_value="Print Queue"
-      if $product_id == screen_value
-            step %{I have disconnected wifi}
-        end
-        sleep(WAIT_SCREENLOAD)
-      touch select_template_screen.share_icon
+        touch preview_screen.share
     end
     await
   end
-
-
-
 end

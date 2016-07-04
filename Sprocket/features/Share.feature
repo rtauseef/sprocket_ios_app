@@ -38,3 +38,19 @@
 		Given I am on the "Share" screen
 		When I cancel the share
 		Then I should see the "Select Template" screen
+        
+    @reset
+    @TA13978
+    Scenario: Verify share menu options
+        Given I am on the "CameraRollAlbums" screen
+        Then I touch Camera Roll Image
+        And I should see the camera roll photos
+        When I touch a photos in Camera Roll photos
+        Then I should see the "Preview" screen
+        Then I tap "share" button
+        Then I should see the "Share" screen
+        Then I should see "Mail" option
+        Then I should see "Print" option
+        Then I should see "Save to Camera Roll" option
+        
+        
