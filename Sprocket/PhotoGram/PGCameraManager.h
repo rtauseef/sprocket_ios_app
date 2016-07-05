@@ -33,4 +33,7 @@ extern NSString * const kPGCameraManagerCameraClosed;
 
 - (void)stopCamera;
 
+- (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure;
+- (void)showCameraPermissionFailedAlert;
+
 @end

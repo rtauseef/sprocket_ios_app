@@ -157,8 +157,12 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
     __weak __typeof(self) weakSelf = self;
-    [self dismissViewControllerAnimated:NO completion:^{
-        [[PGCameraManager sharedInstance] showCamera:weakSelf animated:NO];
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        [weakSelf dismissViewControllerAnimated:NO completion:^{
+            [[PGCameraManager sharedInstance] showCamera:weakSelf animated:NO];
+        }];
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
 }
 

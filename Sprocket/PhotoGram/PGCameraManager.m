@@ -184,7 +184,8 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     self.isCustomCamera = YES;
 }
 
-- (void)takePicture {
+- (void)takePicture
+{
     if (self.isCustomCamera) {
         [self captureNow];
     } else {
@@ -192,7 +193,8 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     }
 }
 
-- (void)switchCamera {
+- (void)switchCamera
+{
     if (self.isCustomCamera) {
         if (self.session) {
             [self.session beginConfiguration];
@@ -230,7 +232,8 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     }
 }
 
-- (void)captureNow {
+- (void)captureNow
+{
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
         for (AVCaptureInputPort *port in [connection inputPorts]) {
@@ -247,7 +250,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     
     __weak PGCameraManager *weakSelf = self;
     
-    [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer,NSError *error) {
+    [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
 
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
@@ -255,6 +258,39 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 
         [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
     }];
+}
+
+- (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
+{
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    if (authStatus == AVAuthorizationStatusAuthorized) {
+        success();
+    } else if (authStatus == AVAuthorizationStatusDenied){
+        failure();
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted){
+                success();
+            } else {
+                failure();
+            }
+        }];
+    }
+}
+
+- (void)showCameraPermissionFailedAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                  message:@"Sprocket does not have access to your camera. To enable access go to iOS Settings > sprocket"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [alert dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [alert addAction:ok];
+    
+    [[self topMostController] presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerController Delegate

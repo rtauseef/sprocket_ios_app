@@ -90,8 +90,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCameraButtons) name:kPGCameraManagerCameraClosed object:nil];
     
-    [[PGCameraManager sharedInstance] addCameraButtonsOnView:self.cameraButtonsView];
-    [[PGCameraManager sharedInstance] addCameraToView:self.cameraBackgroundView presentedViewController:self];
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        [[PGCameraManager sharedInstance] addCameraButtonsOnView:self.cameraButtonsView];
+        [[PGCameraManager sharedInstance] addCameraToView:self.cameraBackgroundView presentedViewController:self];
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+        self.blurredView.alpha = 0;
+        self.cameraBackgroundView.alpha = 0;
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -188,7 +194,13 @@
 
 - (IBAction)cameraTapped:(id)sender
 {
-    [self showCameraButtons];
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        [self showCameraButtons];
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+        self.blurredView.alpha = 0;
+        self.cameraBackgroundView.alpha = 0;
+    }];
 }
 
 - (void)showCameraButtons {
