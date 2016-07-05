@@ -166,11 +166,10 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     [self.stillImageOutput setOutputSettings:outputSettings];
     [self.session addOutput:self.stillImageOutput];
     
+    [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [view.layer addSublayer:newCaptureVideoPreviewLayer];
-    NSLog(@"%@", view.layer);
     
     [self.session startRunning];
-    
     self.isCustomCamera = YES;
 }
 

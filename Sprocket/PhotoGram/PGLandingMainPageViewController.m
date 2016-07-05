@@ -75,7 +75,6 @@
     
     [self.view layoutIfNeeded];
     [PGAppAppearance addGradientBackgroundToView:self.view];
-    [[PGCameraManager sharedInstance] addCameraButtonsOnView:self.cameraButtonsView];
     
     [self addLongPressGesture];
 }
@@ -91,6 +90,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCameraButtons) name:kPGCameraManagerCameraClosed object:nil];
     
+    [[PGCameraManager sharedInstance] addCameraButtonsOnView:self.cameraButtonsView];
     [[PGCameraManager sharedInstance] addCameraToView:self.cameraBackgroundView presentedViewController:self];
 }
 
