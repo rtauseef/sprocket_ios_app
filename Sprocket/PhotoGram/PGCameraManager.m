@@ -13,6 +13,7 @@
 #import "PGCameraManager.h"
 #import "PGPreviewViewController.h"
 #import "PGLandingMainPageViewController.h"
+#import "PGAppDelegate.h"
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 
@@ -78,13 +79,24 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 
 #pragma mark - Public Methods
 
+- (UIViewController*) topMostController
+{
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    return topController;
+}
+
 - (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated
 {
     self.isCustomCamera = NO;
     self.cameraOverlay.pickerReference = self.picker;
     
     self.viewController = viewController;
-    [self.viewController presentViewController:self.picker animated:animated completion:nil];
+    [[self topMostController] presentViewController:self.picker animated:animated completion:nil];
 }
 
 - (void)addCameraButtonsOnView:(UIView *)view
@@ -109,10 +121,12 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     previewViewController.media = [[HPPRMedia alloc] initWithAttributes:info];
     previewViewController.source = @"CameraRoll";
     
-    if (self.viewController.presentingViewController) {
-        [self.viewController.presentingViewController presentViewController:previewViewController animated:NO completion:nil];
-    } else {
+    if (self.isCustomCamera) {
         [self.viewController presentViewController:previewViewController animated:NO completion:nil];
+    } else {
+        [self.picker dismissViewControllerAnimated:NO completion:^{
+            [[self topMostController] presentViewController:previewViewController animated:NO completion:nil];
+        }];
     }
 }
 
