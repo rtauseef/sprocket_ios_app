@@ -53,20 +53,22 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 {
     self.isCustomCamera = NO;
     
-    self.picker = [[UIImagePickerController alloc] init];
-    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-    self.picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-    self.picker.showsCameraControls = NO;
-    self.picker.extendedLayoutIncludesOpaqueBars = NO;
-    self.picker.cameraViewTransform = [self cameraFullScreenTransform];
-    self.picker.delegate = self;
-    
-    self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
-    self.cameraOverlay.pickerReference = self.picker;
-    self.cameraOverlay.view.frame = self.picker.cameraOverlayView.frame;
-    
-    self.picker.cameraOverlayView = self.cameraOverlay.view;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        self.picker = [[UIImagePickerController alloc] init];
+        self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        self.picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        self.picker.showsCameraControls = NO;
+        self.picker.extendedLayoutIncludesOpaqueBars = NO;
+        self.picker.cameraViewTransform = [self cameraFullScreenTransform];
+        self.picker.delegate = self;
+        
+        self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
+        self.cameraOverlay.pickerReference = self.picker;
+        self.cameraOverlay.view.frame = self.picker.cameraOverlayView.frame;
+        
+        self.picker.cameraOverlayView = self.cameraOverlay.view;
+    }
 }
 
 #pragma mark - Private Methods
@@ -262,6 +264,11 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
 {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        failure();
+        return;
+    }
+    
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
     if (authStatus == AVAuthorizationStatusAuthorized) {
