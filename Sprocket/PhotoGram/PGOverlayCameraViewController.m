@@ -28,11 +28,7 @@
 
 - (IBAction)cameraReverseTapped:(id)sender
 {
-    if (self.pickerReference.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
-        self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-    } else {
-        self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-    }
+    [[PGCameraManager sharedInstance] switchCamera];
 }
 
 - (IBAction)shutterTapped:(id)sender

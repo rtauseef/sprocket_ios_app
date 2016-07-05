@@ -24,6 +24,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     @property (strong, nonatomic) UIImagePickerController *picker;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
+    @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
 
 @end
 
@@ -95,6 +96,10 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     self.isCustomCamera = NO;
     self.cameraOverlay.pickerReference = self.picker;
     
+    if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
+        self.picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    }
+    
     self.viewController = viewController;
     [[self topMostController] presentViewController:self.picker animated:animated completion:nil];
 }
@@ -138,9 +143,15 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
 {
+    if (position == AVCaptureDevicePositionUnspecified) {
+        self.lastDeviceCameraPosition = AVCaptureDevicePositionFront;
+    } else {
+        self.lastDeviceCameraPosition = position;
+    }
+    
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
-        if ([device position] == position) return device;
+        if ([device position] == self.lastDeviceCameraPosition) return device;
     }
     return nil;
 }
@@ -152,7 +163,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     self.session = [[AVCaptureSession alloc] init];
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
-    AVCaptureDevice *device = [self cameraWithPosition:AVCaptureDevicePositionFront];
+    AVCaptureDevice *device = [self cameraWithPosition:self.lastDeviceCameraPosition];
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -182,12 +193,41 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 }
 
 - (void)switchCamera {
-//    [self.session beginConfiguration];
-//
-//    [self.session removeInput:frontFacingCameraDeviceInput];
-//    [self.session addInput:backFacingCameraDeviceInput];
-//
-//    [self.session commitConfiguration];
+    if (self.isCustomCamera) {
+        if (self.session) {
+            [self.session beginConfiguration];
+            AVCaptureInput *currentCameraInput = [self.session.inputs objectAtIndex:0];
+            
+            [self.session removeInput:currentCameraInput];
+            
+            AVCaptureDevice *newCamera = nil;
+            
+            if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
+                newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            } else {
+                newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            }
+            
+            NSError *err = nil;
+            AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&err];
+            
+            if (!newVideoInput || err) {
+                NSLog(@"Error creating capture device input: %@", err.localizedDescription);
+            } else {
+                [self.session addInput:newVideoInput];
+            }
+            
+            [self.session commitConfiguration];
+        }
+    } else {
+        if (self.picker.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
+            self.picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+            self.lastDeviceCameraPosition = AVCaptureDevicePositionBack;
+        } else {
+            self.picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            self.lastDeviceCameraPosition = AVCaptureDevicePositionFront;
+        }
+    }
 }
 
 - (void)captureNow {
