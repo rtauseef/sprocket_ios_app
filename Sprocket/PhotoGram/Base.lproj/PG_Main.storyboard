@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="HPSimplified_Lt.ttf">
@@ -1706,12 +1707,12 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="134" y="497" width="333" height="60"/>
+                                        <rect key="frame" x="120" y="497" width="360" height="60"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="UPL-05-74W"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="13"/>
                                         <color key="textColor" red="0.87450980392156863" green="0.8784313725490196" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1723,11 +1724,14 @@
                                 <constraints>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="bottom" constant="50" id="043-CC-FgQ"/>
                                     <constraint firstItem="krD-fF-9ON" firstAttribute="centerY" secondItem="MkG-i6-mOl" secondAttribute="centerY" id="5lv-B2-bUL"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3rx-Fp-iLE" secondAttribute="trailing" constant="20" id="NnR-NK-Nyf"/>
                                     <constraint firstItem="Vwa-ue-pKP" firstAttribute="leading" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="13" id="RCk-UM-VWj"/>
                                     <constraint firstItem="Vwa-ue-pKP" firstAttribute="top" secondItem="MkG-i6-mOl" secondAttribute="top" constant="13" id="Umc-P0-HUi"/>
                                     <constraint firstItem="qJF-Uu-U0X" firstAttribute="top" secondItem="r8A-4l-TdM" secondAttribute="bottom" constant="47" id="aL3-Vw-l38"/>
                                     <constraint firstItem="Ttx-CG-jdw" firstAttribute="top" secondItem="krD-fF-9ON" secondAttribute="bottom" constant="49" id="dOY-SM-BFV"/>
                                     <constraint firstItem="Ttx-CG-jdw" firstAttribute="centerX" secondItem="krD-fF-9ON" secondAttribute="centerX" id="dXR-Uf-AQb"/>
+                                    <constraint firstItem="3rx-Fp-iLE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="20" id="lDO-9b-vGY"/>
+                                    <constraint firstItem="3rx-Fp-iLE" firstAttribute="width" secondItem="MkG-i6-mOl" secondAttribute="width" multiplier="0.6" id="ngo-Nz-PMf"/>
                                     <constraint firstItem="r8A-4l-TdM" firstAttribute="centerX" secondItem="qJF-Uu-U0X" secondAttribute="centerX" id="nqG-Jx-pcp"/>
                                     <constraint firstItem="krD-fF-9ON" firstAttribute="top" secondItem="qJF-Uu-U0X" secondAttribute="bottom" constant="49" id="qJ9-PA-fHf"/>
                                     <constraint firstItem="krD-fF-9ON" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="r46-X4-YGt"/>
