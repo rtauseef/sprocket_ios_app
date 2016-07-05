@@ -29,5 +29,8 @@ extern NSString * const kPGCameraManagerCameraClosed;
 - (void)dismissCameraAnimated:(BOOL)animated;
 
 - (void)takePicture;
+- (void)switchCamera;
+
+- (void)stopCamera;
 
 @end

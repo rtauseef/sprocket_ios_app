@@ -82,6 +82,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 {
     self.isCustomCamera = NO;
     self.cameraOverlay.pickerReference = self.picker;
+    
     self.viewController = viewController;
     [self.viewController presentViewController:self.picker animated:animated completion:nil];
 }
@@ -113,6 +114,10 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     } else {
         [self.viewController presentViewController:previewViewController animated:NO completion:nil];
     }
+}
+
+- (void)stopCamera {
+    [self.session stopRunning];
 }
 
 #pragma mark - Custom Camera Methods
@@ -148,6 +153,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     [self.session addOutput:self.stillImageOutput];
     
     [view.layer addSublayer:newCaptureVideoPreviewLayer];
+    NSLog(@"%@", view.layer);
     
     [self.session startRunning];
     
@@ -190,10 +196,11 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer,NSError *error) {
 
-         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
-         UIImage *photo = [[UIImage alloc] initWithData:imageData];
-     
-         [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+        NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+        UIImage *photo = [[UIImage alloc] initWithData:imageData];
+        photo = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
+
+        [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
     }];
 }
 
@@ -209,6 +216,5 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
 }
-
 
 @end
