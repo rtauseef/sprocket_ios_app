@@ -100,7 +100,7 @@
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             UIActivityIndicatorView *spinner = [self.view addSpinner];
-            spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+            spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
             self.signInView.alpha = 0.0f;
             

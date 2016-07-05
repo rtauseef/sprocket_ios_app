@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *cameraView;
 @property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
 @property (strong, nonatomic) NSArray *providers;
+@property (weak, nonatomic) IBOutlet UIButton *folderButton;
 
 @end
 
@@ -64,11 +65,34 @@
     
     [self.scrollView createButtonArrayWithButtonTitles:self.providers andLayoutStyle:SShorizontalLayout];
     self.scrollView.ssRollingButtonScrollViewDelegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
+}
+
+-(void)showFolderIcon:(BOOL)show
+{
+    self.folderButton.hidden = !show;
+}
+
+-(void)showFolderIcon
+{
+    [self showFolderIcon:YES];
+}
+
+-(void)hideFolderIcon
+{
+    [self showFolderIcon:NO];
 }
 
 -(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page
 {
     [self.scrollView setScrollProgress:progress onPage:page];
+}
+
+-(void)showFolderButton:(BOOL)show
+{
+    self.folderButton.hidden = !show;
 }
 
 - (void)selectButton:(NSString *)title animated:(BOOL)animated

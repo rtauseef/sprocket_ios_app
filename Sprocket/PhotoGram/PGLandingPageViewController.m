@@ -58,6 +58,11 @@
     
 }
 
+- (void)showAlbums
+{
+
+}
+
 - (void)showNoConnectionAvailableAlert
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No Connection Available", nil)

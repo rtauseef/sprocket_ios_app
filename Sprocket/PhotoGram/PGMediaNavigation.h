@@ -17,6 +17,7 @@
 
 -(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page;
 -(void)selectButton:(NSString *)title animated:(BOOL)animated;
+-(void)showFolderButton:(BOOL)show;
 
 @end
 

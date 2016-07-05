@@ -70,7 +70,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 - (void)checkCameraRoll
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
-    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {

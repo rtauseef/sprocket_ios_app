@@ -99,7 +99,7 @@ NSString * const kFlickrUserIdKey = @"userID";
 - (void)checkFlickr
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
-    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
     self.signInView.alpha = 0.0f;
     

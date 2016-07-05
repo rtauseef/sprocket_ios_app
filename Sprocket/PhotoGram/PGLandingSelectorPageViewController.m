@@ -14,6 +14,8 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
+#import <HPPRSelectPhotoCollectionViewController.h>
+#import <HPPRSelectAlbumTableViewController.h>
 #import <HPPR.h>
 
 #import "PGLandingSelectorPageViewController.h"
@@ -30,7 +32,7 @@
 
 NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
-@interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, PGMediaNavigationDelegate>
+@interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, PGMediaNavigationDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) PGMediaNavigation *navigationView;
@@ -229,21 +231,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
-- (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav
-{
-    PGLandingPageViewController *vc = [self.instagramLandingPageViewController viewControllers][0];
-    if (nil == vc.revealViewController) {
-        vc = [self.flickrLandingPageViewController viewControllers][0];
-    }
-
-    [vc.revealViewController revealToggle:self];
-}
-
-- (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav
-{
-    
-}
-
 - (void)hideSwipeCoachMarks:(NSNotification *)notification
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -290,7 +277,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
     
     self.pageControl.numberOfPages = NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS;
-    self.pageControl.currentPage = INITIAL_LANDING_PAGE_SELECTED_INDEX;
+    self.pageControl.currentPage = [self pageForSocialNetwork:self.socialNetwork];
 
     self.pageControl.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
 
@@ -323,6 +310,95 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
+- (UINavigationController *)currentNavigationController
+{
+    UINavigationController *navController = nil;
+    
+    switch (self.pageControl.currentPage) {
+        case 0:
+            navController = self.instagramLandingPageViewController;
+            break;
+            
+        case 1:
+            navController = self.facebookLandingPageViewController;
+            break;
+            
+        case 2:
+            navController = self.flickrLandingPageViewController;
+            break;
+            
+        case 3:
+            navController = self.cameraRollLandingPageViewController;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return navController;
+}
+
+- (NSInteger)pageForSocialNetwork:(NSString *)socialNetwork
+{
+    NSInteger page = 0;
+    
+    if ([socialNetwork isEqualToString:[HPPRInstagramPhotoProvider sharedInstance].name]) {
+        page = 0;
+    } else if ([socialNetwork isEqualToString:[HPPRFacebookPhotoProvider sharedInstance].name]) {
+        page = 1;
+    } else if ([socialNetwork isEqualToString:[HPPRFlickrPhotoProvider sharedInstance].name]) {
+        page = 2;
+    } else if ([socialNetwork isEqualToString:[HPPRCameraRollPhotoProvider sharedInstance].name]) {
+        page = 3;
+    }
+    
+    return page;
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if (navigationController != self.instagramLandingPageViewController  &&
+        [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]]) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
+    }
+}
+
+#pragma mark - PGMediaNavigationDelegate
+
+- (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav
+{
+    PGLandingPageViewController *vc = (PGLandingPageViewController *)([self currentNavigationController].viewControllers[0]);
+    [vc.revealViewController revealToggle:self];
+}
+
+- (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav
+{
+    NSLog(@"LandingSelectorPage: Pressed folder button");
+    
+    UINavigationController *navController = [self currentNavigationController];
+
+    BOOL popped = NO;
+    for (UIViewController *vc in navController.viewControllers) {
+        if ([vc isKindOfClass:[HPPRSelectAlbumTableViewController class]]) {
+            [navController popToViewController:vc animated:YES];
+            popped = YES;
+            break;
+        }
+    }
+    
+    if (!popped) {
+        PGLandingPageViewController *landingPage = (PGLandingPageViewController *)navController.viewControllers[0];
+        [landingPage showAlbums];
+    }
+}
+
 #pragma mark - Getter methods
 
 - (UINavigationController *)instagramLandingPageViewController
@@ -330,6 +406,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (!_instagramLandingPageViewController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         _instagramLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGInstagramLandingPageViewNavigationController"];
+        _instagramLandingPageViewController.delegate = self;
     }
     
     return _instagramLandingPageViewController;
@@ -340,6 +417,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (!_facebookLandingPageViewController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         _facebookLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
+        _facebookLandingPageViewController.delegate = self;
     }
     
     return _facebookLandingPageViewController;
@@ -350,6 +428,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (!_cameraRollLandingPageViewController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         _cameraRollLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGCameraRollLandingPageViewNavigationController"];
+        _cameraRollLandingPageViewController.delegate = self;
     }
     
     return _cameraRollLandingPageViewController;
@@ -360,6 +439,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (!_flickrLandingPageViewController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         _flickrLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFlickrLandingPageViewNavigationController"];
+        _flickrLandingPageViewController.delegate = self;
     }
     
     return _flickrLandingPageViewController;

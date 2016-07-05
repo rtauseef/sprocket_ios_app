@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGMediaNavigation">
             <connections>
                 <outlet property="cameraView" destination="Ixd-bY-Ud5" id="3RV-us-Exo"/>
+                <outlet property="folderButton" destination="Yok-mV-6Ve" id="4NB-55-bi9"/>
                 <outlet property="navigationView" destination="GnL-8B-dhs" id="vId-7B-QuM"/>
                 <outlet property="scrollView" destination="RCP-fr-Le6" id="qV7-19-5WR"/>
             </connections>
@@ -20,22 +21,40 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GnL-8B-dhs" userLabel="NavigationBar">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yok-mV-6Ve">
-                            <rect key="frame" x="544" y="28" width="44" height="30"/>
-                            <state key="normal" title="Folder"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nep-dy-SIh" userLabel="folderAnchor">
+                            <rect key="frame" x="558" y="26" width="30" height="34"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yok-mV-6Ve" userLabel="FolderButton">
+                            <rect key="frame" x="558" y="28" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="cgM-cA-5mm"/>
+                                <constraint firstAttribute="height" constant="30" id="kL0-tV-lpB"/>
+                            </constraints>
+                            <state key="normal" image="folderIcon"/>
                             <connections>
                                 <action selector="didPressFolderButton:" destination="-1" eventType="touchUpInside" id="iDB-ic-oHm"/>
                             </connections>
                         </button>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-fr-Le6" customClass="SSRollingButtonScrollView">
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-fr-Le6" userLabel="ScrollView" customClass="SSRollingButtonScrollView">
                             <rect key="frame" x="210" y="10" width="180" height="66"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="180" id="oXA-X0-HK2"/>
                             </constraints>
                         </scrollView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE">
-                            <rect key="frame" x="12" y="28" width="39" height="30"/>
-                            <state key="normal" title="Menu"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s51-Xd-Lhr" userLabel="HamburgerAnchor">
+                            <rect key="frame" x="12" y="26" width="30" height="34"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE" userLabel="HamburgerButton">
+                            <rect key="frame" x="12" y="28" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="KfK-eo-Nhq"/>
+                                <constraint firstAttribute="height" constant="30" id="NfP-cH-54H"/>
+                            </constraints>
+                            <state key="normal" image="hamburger"/>
                             <connections>
                                 <action selector="didPressMenuButton:" destination="-1" eventType="touchUpInside" id="tEr-Dx-Kuv"/>
                             </connections>
@@ -43,13 +62,17 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="0pr-8O-9Bv"/>
                         <constraint firstItem="RCP-fr-Le6" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="3iT-wp-0vK"/>
-                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="4sR-SV-RBf"/>
-                        <constraint firstAttribute="trailing" secondItem="Yok-mV-6Ve" secondAttribute="trailing" constant="12" id="CX7-B6-xU8"/>
+                        <constraint firstItem="s51-Xd-Lhr" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="9lq-pd-u28"/>
+                        <constraint firstItem="s51-Xd-Lhr" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="Cfj-qy-T1h"/>
                         <constraint firstAttribute="height" constant="66" id="FHx-gY-wBY"/>
-                        <constraint firstItem="AYW-E6-1NE" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="nph-ck-Z3L"/>
+                        <constraint firstItem="AYW-E6-1NE" firstAttribute="centerX" secondItem="s51-Xd-Lhr" secondAttribute="centerX" id="Oun-Nh-uck"/>
+                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerX" secondItem="Nep-dy-SIh" secondAttribute="centerX" id="PnM-9s-1oe"/>
+                        <constraint firstItem="Nep-dy-SIh" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="QZf-FG-iL6"/>
+                        <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="s51-Xd-Lhr" secondAttribute="centerY" id="SPM-pj-RlS"/>
+                        <constraint firstAttribute="trailing" secondItem="Nep-dy-SIh" secondAttribute="trailing" constant="12" id="ZQh-Q7-tOn"/>
                         <constraint firstItem="RCP-fr-Le6" firstAttribute="height" secondItem="GnL-8B-dhs" secondAttribute="height" id="pXd-BW-fTX"/>
+                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerY" secondItem="Nep-dy-SIh" secondAttribute="centerY" id="tEa-W3-0df"/>
                         <constraint firstItem="RCP-fr-Le6" firstAttribute="centerX" secondItem="GnL-8B-dhs" secondAttribute="centerX" id="vld-li-R4V"/>
                     </constraints>
                 </view>
@@ -72,4 +95,8 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="folderIcon" width="20" height="18"/>
+        <image name="hamburger" width="22" height="18"/>
+    </resources>
 </document>
