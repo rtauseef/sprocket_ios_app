@@ -123,11 +123,11 @@ NSString * const kFacebookUserIdKey = @"id";
                     
                     UIViewController *vc = nil;
                     if( forAlbums ) {
-                        vc = (HPPRSelectAlbumTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+                        vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
                         ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
                         ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
                     } else {
-                        vc = (HPPRSelectPhotoCollectionViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+                        vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
                         ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
                         ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
                     }

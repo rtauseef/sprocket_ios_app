@@ -14,6 +14,4 @@
 
 @interface PGFlickrLandingPageViewController : PGLandingPageViewController
 
-- (void)checkFlickr;
-
 @end
