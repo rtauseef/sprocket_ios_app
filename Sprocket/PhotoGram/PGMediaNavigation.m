@@ -8,6 +8,10 @@
 
 #import "PGMediaNavigation.h"
 #import "PGAppAppearance.h"
+#import <HPPRInstagramPhotoProvider.h>
+#import <HPPRFacebookPhotoProvider.h>
+#import <HPPRFlickrPhotoProvider.h>
+#import <HPPRCameraRollPhotoProvider.h>
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 
@@ -54,7 +58,11 @@
 {
     self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
     
-    self.providers = [NSArray arrayWithObjects:@"Instagram", @"Facebook", @"Flickr", @"Camera Roll", nil];
+    self.providers = [NSArray arrayWithObjects:
+                      [HPPRInstagramPhotoProvider sharedInstance].name,
+                      [HPPRFacebookPhotoProvider sharedInstance].name,
+                      [HPPRFlickrPhotoProvider sharedInstance].name,
+                      [HPPRCameraRollPhotoProvider sharedInstance].name, nil];
     self.scrollView.spacingBetweenButtons = 0.0f;
     
     self.scrollView.centerButtonTextColor = [UIColor whiteColor];

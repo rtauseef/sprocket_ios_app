@@ -20,6 +20,9 @@
 
 #import "PGLandingSelectorPageViewController.h"
 #import "PGInstagramLandingPageViewController.h"
+#import "PGFacebookLandingPageViewController.h"
+#import "PGFlickrLandingPageViewController.h"
+#import "PGCameraRollLandingPageViewController.h"
 #import "SWRevealViewController.h"
 #import "PGSideBarMenuTableViewController.h"
 #import "PGSwipeCoachMarksView.h"
@@ -368,6 +371,20 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
     }
+    
+    UIViewController *vc = navigationController.viewControllers[0];
+    NSString *socialNetwork = nil;
+    if ([vc isKindOfClass:[PGInstagramLandingPageViewController class]]) {
+        socialNetwork = [HPPRInstagramPhotoProvider sharedInstance].name;
+    } else if ([vc isKindOfClass:[PGFacebookLandingPageViewController class]]) {
+        socialNetwork = [HPPRFacebookPhotoProvider sharedInstance].name;
+    } else if ([vc isKindOfClass:[PGFlickrLandingPageViewController class]]) {
+        socialNetwork = [HPPRFlickrPhotoProvider sharedInstance].name;
+    } else if ([vc isKindOfClass:[PGCameraRollLandingPageViewController class]]) {
+        socialNetwork = [HPPRCameraRollPhotoProvider sharedInstance].name;
+    }
+
+    [self.navigationView selectButton:socialNetwork animated:YES];
 }
 
 #pragma mark - PGMediaNavigationDelegate
@@ -459,16 +476,16 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     
     if (viewController == self.instagramLandingPageViewController) {
         self.pageControl.currentPage = 0;
-        [self.navigationView selectButton:@"Instagram" animated:YES];
+        [self.navigationView selectButton:[HPPRInstagramPhotoProvider sharedInstance].name animated:YES];
     } else if (viewController == self.facebookLandingPageViewController) {
         self.pageControl.currentPage = 1;
-        [self.navigationView selectButton:@"Facebook" animated:YES];
+        [self.navigationView selectButton:[HPPRFacebookPhotoProvider sharedInstance].name animated:YES];
     } else if (viewController == self.flickrLandingPageViewController) {
         self.pageControl.currentPage = 2;
-        [self.navigationView selectButton:@"Flickr" animated:YES];
+        [self.navigationView selectButton:[HPPRFlickrPhotoProvider sharedInstance].name animated:YES];
     } else if (viewController == self.cameraRollLandingPageViewController) {
         self.pageControl.currentPage = 3;
-        [self.navigationView selectButton:@"Camera Roll" animated:YES];
+        [self.navigationView selectButton:[HPPRCameraRollPhotoProvider sharedInstance].name animated:YES];
     }
     
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
