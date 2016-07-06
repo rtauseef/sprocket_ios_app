@@ -62,6 +62,7 @@
 		CC5D53BA19CCA8E9002B0DF3 /* LandingPage-700-568h~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53B319CCA8E9002B0DF3 /* LandingPage-700-568h~iphone.png */; };
 		CC5D53BE19CCAECA002B0DF3 /* LandingPage-700-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53BC19CCAECA002B0DF3 /* LandingPage-700-Landscape@2x~ipad.png */; };
 		CC5D53C019CCAECA002B0DF3 /* LandingPage-700-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53BD19CCAECA002B0DF3 /* LandingPage-700-Portrait@2x~ipad.png */; };
+		D225832E295EEFB7931FF2B2 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */; };
 		E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630C19C09FE400996E20 /* UIImageView+MaskImage.m */; };
 		E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630F19C0A2EA00996E20 /* UIImage+MaskImage.m */; };
@@ -160,10 +161,6 @@
 		E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810B19A2B2A6000D45E0 /* PGView.m */; };
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
 		E3D6814919A3D11F000D45E0 /* DefaultButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */; };
-		E3D6814B19A3D11F000D45E0 /* FilterButtonLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */; };
-		E3D6814D19A3D11F000D45E0 /* FilterButtonLeftOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */; };
-		E3D6814F19A3D11F000D45E0 /* FilterButtonRightOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */; };
-		E3D6815119A3D11F000D45E0 /* FilterButtonRightOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */; };
 		E3D6815A19A3D12E000D45E0 /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
 		E3D6815C19A3D12E000D45E0 /* GridViewOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815419A3D12E000D45E0 /* GridViewOn@2x.png */; };
 		E3D6815E19A3D12E000D45E0 /* ListViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */; };
@@ -348,7 +345,6 @@
 		F1C0EC031D25DE7F00BADF91 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E387B47819DA247000ABB167 /* Crashlytics.framework */; };
 		F1C0EC041D25DE7F00BADF91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D505E199AB87B006D80E0 /* UIKit.framework */; };
 		F1C0EC051D25DE7F00BADF91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D505A199AB87B006D80E0 /* Foundation.framework */; };
-		F1C0EC061D25DE7F00BADF91 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		F1C0EC071D25DE7F00BADF91 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */; };
 		F1C0EC081D25DE7F00BADF91 /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12b9951de3bbff11258bdeb9 /* calabash.framework */; };
 		F1C0EC0B1D25DE7F00BADF91 /* Template1_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81561A365D0B008884F9 /* Template1_4x5.svg */; };
@@ -454,10 +450,6 @@
 		F1C0EC6F1D25DE7F00BADF91 /* DefaultButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */; };
 		F1C0EC701D25DE7F00BADF91 /* FacebookLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6D7271A02E55B00548421 /* FacebookLogo@2x.png */; };
 		F1C0EC711D25DE7F00BADF91 /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
-		F1C0EC721D25DE7F00BADF91 /* FilterButtonLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */; };
-		F1C0EC731D25DE7F00BADF91 /* FilterButtonLeftOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */; };
-		F1C0EC741D25DE7F00BADF91 /* FilterButtonRightOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */; };
-		F1C0EC751D25DE7F00BADF91 /* FilterButtonRightOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */; };
 		F1C0EC761D25DE7F00BADF91 /* FlickrLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4661E01A11898A0000BC2E /* FlickrLogo@2x.png */; };
 		F1C0EC771D25DE7F00BADF91 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB16AA19F5604900C0F42B /* Green@2x.png */; };
 		F1C0EC781D25DE7F00BADF91 /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
@@ -583,10 +575,10 @@
 
 /* Begin PBXFileReference section */
 		008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IntroBackground1536x2048@2x.png"; sourceTree = "<group>"; };
+		0488BFD163CF321599584226 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		370A21CE19ABA99B00EBDCCE /* Templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Templates.plist; path = Resources/Templates.plist; sourceTree = "<group>"; };
 		370A21D119ABAF7500EBDCCE /* PGTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplate.h; sourceTree = "<group>"; };
 		370A21D219ABAF7500EBDCCE /* PGTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplate.m; sourceTree = "<group>"; };
@@ -601,7 +593,6 @@
 		378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTemplateSelectorCollectionViewCell.xib; sourceTree = "<group>"; };
 		378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplateSelectorCollectionViewCell.h; sourceTree = "<group>"; };
 		378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplateSelectorCollectionViewCell.m; sourceTree = "<group>"; };
-		61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		65334C1D1C472044004E849D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/terms.html; sourceTree = "<group>"; };
 		65334C1F1C47206E004E849D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/terms.html; sourceTree = "<group>"; };
 		65334C201C472074004E849D /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/terms.html; sourceTree = "<group>"; };
@@ -812,10 +803,6 @@
 		E3D6811D19A2DE22000D45E0 /* UIImage+ImageResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResize.h"; sourceTree = "<group>"; };
 		E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResize.m"; sourceTree = "<group>"; };
 		E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DefaultButton@2x.png"; path = "Resources/Images/DefaultButton@2x.png"; sourceTree = "<group>"; };
-		E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonLeftOff@2x.png"; path = "Resources/Images/FilterButtonLeftOff@2x.png"; sourceTree = "<group>"; };
-		E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonLeftOn@2x.png"; path = "Resources/Images/FilterButtonLeftOn@2x.png"; sourceTree = "<group>"; };
-		E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonRightOff@2x.png"; path = "Resources/Images/FilterButtonRightOff@2x.png"; sourceTree = "<group>"; };
-		E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonRightOn@2x.png"; path = "Resources/Images/FilterButtonRightOn@2x.png"; sourceTree = "<group>"; };
 		E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GridViewOff@2x.png"; path = "Resources/Images/Icons/GridViewOff@2x.png"; sourceTree = "<group>"; };
 		E3D6815419A3D12E000D45E0 /* GridViewOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GridViewOn@2x.png"; path = "Resources/Images/Icons/GridViewOn@2x.png"; sourceTree = "<group>"; };
 		E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ListViewOff@2x.png"; path = "Resources/Images/Icons/ListViewOff@2x.png"; sourceTree = "<group>"; };
@@ -955,6 +942,7 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
+		FA8C87F182AB87D7B8842239 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BE1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1030,6 +1018,7 @@
 				E34D505B199AB87B006D80E0 /* Foundation.framework in Frameworks */,
 				5109F6575268043E64367DC8 /* libPods-Sprocket.a in Frameworks */,
 				8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */,
+				D225832E295EEFB7931FF2B2 /* libPods-Sprocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,8 +1043,6 @@
 				F1C0EC031D25DE7F00BADF91 /* Crashlytics.framework in Frameworks */,
 				F1C0EC041D25DE7F00BADF91 /* UIKit.framework in Frameworks */,
 				F1C0EC051D25DE7F00BADF91 /* Foundation.framework in Frameworks */,
-				F1C0EC061D25DE7F00BADF91 /* libPods-Sprocket.a in Frameworks */,
-				F1C0EC061D25DE7F00BADF91 /* libPods-Sprocket.a in Frameworks */,
 				F1C0EC071D25DE7F00BADF91 /* CFNetwork.framework in Frameworks */,
 				F1C0EC081D25DE7F00BADF91 /* calabash.framework in Frameworks */,
 			);
@@ -1179,8 +1166,8 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */,
-				61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */,
+				0488BFD163CF321599584226 /* Pods-Sprocket.debug.xcconfig */,
+				FA8C87F182AB87D7B8842239 /* Pods-Sprocket.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1415,10 +1402,6 @@
 				F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */,
 				658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */,
 				658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */,
-				E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */,
-				E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */,
-				E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */,
-				E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */,
 				E34D50D5199AC363006D80E0 /* IntroBackground@2x.png */,
 				008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */,
 				E375384A19BE2B6D009C695F /* CardShadow@2x.png */,
@@ -2002,10 +1985,6 @@
 				E3D6814919A3D11F000D45E0 /* DefaultButton@2x.png in Resources */,
 				E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */,
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
-				E3D6814B19A3D11F000D45E0 /* FilterButtonLeftOff@2x.png in Resources */,
-				E3D6814D19A3D11F000D45E0 /* FilterButtonLeftOn@2x.png in Resources */,
-				E3D6815119A3D11F000D45E0 /* FilterButtonRightOn@2x.png in Resources */,
-				E3D6814F19A3D11F000D45E0 /* FilterButtonRightOff@2x.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				E3DB16AF19F5604900C0F42B /* Green@2x.png in Resources */,
 				E3D6815A19A3D12E000D45E0 /* GridViewOff@2x.png in Resources */,
@@ -2218,10 +2197,6 @@
 				F1C0EC6F1D25DE7F00BADF91 /* DefaultButton@2x.png in Resources */,
 				F1C0EC701D25DE7F00BADF91 /* FacebookLogo@2x.png in Resources */,
 				F1C0EC711D25DE7F00BADF91 /* FacebookNoPhotoAlbum@2x.png in Resources */,
-				F1C0EC721D25DE7F00BADF91 /* FilterButtonLeftOff@2x.png in Resources */,
-				F1C0EC731D25DE7F00BADF91 /* FilterButtonLeftOn@2x.png in Resources */,
-				F1C0EC741D25DE7F00BADF91 /* FilterButtonRightOn@2x.png in Resources */,
-				F1C0EC751D25DE7F00BADF91 /* FilterButtonRightOff@2x.png in Resources */,
 				F1C0EC761D25DE7F00BADF91 /* FlickrLogo@2x.png in Resources */,
 				F1C0EC771D25DE7F00BADF91 /* Green@2x.png in Resources */,
 				F1C0EC781D25DE7F00BADF91 /* GridViewOff@2x.png in Resources */,
@@ -2868,7 +2843,7 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 0488BFD163CF321599584226 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2940,7 +2915,7 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = FA8C87F182AB87D7B8842239 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3052,7 +3027,6 @@
 		};
 		F1C0ECD91D25DE7F00BADF91 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 355DDDF09464C14E9F36960C /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3128,7 +3102,6 @@
 		};
 		F1C0ECDA1D25DE7F00BADF91 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61AB36D82B144659347A2E39 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

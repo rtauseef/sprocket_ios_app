@@ -414,7 +414,6 @@
     for(UIButton *b in _visibleButtons) {
         if ([b.titleLabel.text isEqualToString:title]) {
             [self moveButtonToViewCenter:b animated:animated];
-            NSLog(@"Button: %@", b);
         }
     }
 }
@@ -443,17 +442,6 @@
     CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10)/2;//currentButton.frame.size.width;
     
     offset.x += (progress * widthPerPage)/25;
-//    NSLog(@"Current Button: %@", currentButton);
-//    
-//    NSLog(@"SliderOffset: %.02f of SliderWidth: %.02f: %.02f%@... newOffset: %.02f",
-//          self.contentOffset.x,
-//          self.contentSize.width,
-//          (self.contentOffset.x / self.contentSize.width)*100,
-//          @"%",
-//          offset.x);
-    for(UIButton *b in _visibleButtons) {
-        NSLog(@"%@: %@", b.titleLabel.text, b);
-    }
     self.contentOffset = offset;
 }
 
@@ -464,9 +452,6 @@
     if (self.stopOnCenter) {
         
         if (_layoutStyle == SShorizontalLayout) {
-            
-            NSLog(@"OFFSET: %.02f", self.contentOffset.x);
-            
             CGPoint currentOffset = self.contentOffset;
             NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
             NSTimeInterval timeChange = currentTime - _lastTimeCapture;
