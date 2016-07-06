@@ -130,7 +130,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
 
 + (NSDictionary *)hpprAppearanceSettings
 {
-    NSDictionary *settings = @{// Select Photos
+    NSDictionary *settings = @{
                                kHPPRBackgroundColor:          [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
                                kHPPRTintColor:                [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
                                kHPPRButtonTitleColorSelected: [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
@@ -143,7 +143,11 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
                                kHPPRGridViewOnIcon:           [UIImage imageNamed:@"gridViewOnIcon"],
                                kHPPRGridViewOffIcon:          [UIImage imageNamed:@"gridViewOffIcon"],
                                kHPPRListViewOnIcon:           [UIImage imageNamed:@"listViewOnIcon"],
-                               kHPPRListViewOffIcon:          [UIImage imageNamed:@"listViewOffIcon"]
+                               kHPPRListViewOffIcon:          [UIImage imageNamed:@"listViewOffIcon"],
+                               kHPPRFilterButtonLeftOnIcon:   [UIImage imageNamed:@"filterButtonLeftOn"],
+                               kHPPRFilterButtonLeftOffIcon:  [UIImage imageNamed:@"filterButtonLeftOff"],
+                               kHPPRFilterButtonRightOnIcon:  [UIImage imageNamed:@"filterButtonRightOn"],
+                               kHPPRFilterButtonRightOffIcon: [UIImage imageNamed:@"filterButtonRightOff"]
                                };
     
     return settings;
