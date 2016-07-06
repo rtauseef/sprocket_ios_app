@@ -158,7 +158,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     [self enableSwipe];
     
-    self.pageControl.hidden = NO;
+    //Not pulling the page control out just yet
+    //self.pageControl.hidden = NO;
 }
 
 - (void)disablePageControllerFunctionalityNotification:(NSNotification *)notification
@@ -291,6 +292,9 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     self.pageControl.accessibilityValue = @"0";
 
     [self.pageControl addTarget:self action:@selector(respondToPageControlTouch) forControlEvents:UIControlEventValueChanged];
+    
+    //Not pulling the page control out just yet
+    self.pageControl.hidden = YES;
 }
 
 - (void)respondToPageControlTouch

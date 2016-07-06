@@ -76,6 +76,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
+    
+    self.cameraView.hidden = YES;
 }
 
 -(void)showFolderIcon:(BOOL)show
@@ -137,7 +139,7 @@
         inNavigationView = YES;
     }
        
-    BOOL inCameraBar = point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
+    BOOL inCameraBar = NO;//point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
     
     return ( inNavigationView || inCameraBar );
 }

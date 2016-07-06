@@ -85,15 +85,19 @@
 
 - (NSString *)headerText
 {
-    NSMutableString *text = [NSMutableString stringWithFormat:@"%@", self.album.name];
+    NSMutableString *text = [NSMutableString stringWithString:@""];
     NSUInteger count = self.album.photoCount;
+    
+    if (nil != self.album.name) {
+        text = [NSMutableString stringWithFormat:@"%@", self.album.name];
+    }
     
     if (1 == count) {
         [text appendString:HPPRLocalizedString(@" (1 photo)", nil)];
     } else if (count > 1) {
         [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)count];
     }
-    
+
     return [NSString stringWithString:text];
 }
 
@@ -150,29 +154,35 @@
 
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {
-    [self call:@"flickr.photosets.getInfo" args:@{@"photoset_id": self.album.objectID} refresh:YES apiOperation:self.albumApiOperation completion:^(NSDictionary *response, NSError *error) {
-        if (error) {
-            NSLog(@"FLICKR ALBUMS ERROR\n%@", error);
-            
-            if ([error.domain isEqualToString:FLICKR_ERROR_DOMAIN] && (error.code == PHOTOSET_NOT_FOUND_ERROR_CODE)) {
-                if (completion) {
-                    completion([HPPRAlbum albumDeletedError]);
+    if (nil != self.album.objectID) {
+        [self call:@"flickr.photosets.getInfo" args:@{@"photoset_id": self.album.objectID} refresh:YES apiOperation:self.albumApiOperation completion:^(NSDictionary *response, NSError *error) {
+            if (error) {
+                NSLog(@"FLICKR ALBUMS ERROR\n%@", error);
+                
+                if ([error.domain isEqualToString:FLICKR_ERROR_DOMAIN] && (error.code == PHOTOSET_NOT_FOUND_ERROR_CODE)) {
+                    if (completion) {
+                        completion([HPPRAlbum albumDeletedError]);
+                    }
+                } else {
+                    if (completion) {
+                        completion(error);
+                    }
                 }
             } else {
+                
+                NSDictionary *photoset = [response objectForKey:@"photoset"];
+                [self.album setAttributes:photoset];
+                
                 if (completion) {
-                    completion(error);
+                    completion(nil);
                 }
             }
-        } else {
-            
-            NSDictionary *photoset = [response objectForKey:@"photoset"];
-            [self.album setAttributes:photoset];
-            
-            if (completion) {
-                completion(nil);
-            }
+        }];
+    } else {
+        if (completion) {
+            completion(nil);
         }
-    }];
+    }
 }
 
 - (void)albumsWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *albums, NSError *error))completion
@@ -192,9 +202,19 @@
             }
         } else {
             NSMutableArray *albums = [NSMutableArray array];
+            
+            HPPRFlickrAlbum *allPhotos = [[HPPRFlickrAlbum alloc] init];
+            allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates that all photos will be displayed");
+            [albums addObject:allPhotos];
+            
             for (NSDictionary *photoset in [[response objectForKey:@"photosets"] objectForKey:@"photoset"]) {
                 [albums addObject:[[HPPRFlickrAlbum alloc] initWithAttributes:photoset]];
             }
+            
+            allPhotos.coverPhotoThumbnailURL = ((HPPRFlickrAlbum *)(albums[albums.count - 1])).coverPhotoThumbnailURL;
+            allPhotos.coverPhotoFullSizeURL = ((HPPRFlickrAlbum *)(albums[albums.count - 1])).coverPhotoFullSizeURL;
+            allPhotos.provider = ((HPPRFlickrAlbum *)(albums[albums.count - 1])).provider;
+
             if (completion) {
                 completion([NSArray arrayWithArray:albums], nil);
             }
@@ -229,7 +249,18 @@
 
 - (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
-    [self call:@"flickr.photosets.getPhotos" args:@{@"photoset_id":albumID, @"page": ((afterID == nil) ? @"1" : afterID), @"per_page":FLICKR_MAX_PER_PAGE, @"extras": @"url_m,url_o,date_taken,geo"} refresh:refresh apiOperation:self.imageApiOperation completion:^(NSDictionary *response, NSError *error) {
+    NSString *call = nil;
+    NSMutableDictionary *args = [[NSMutableDictionary alloc] init];
+    [args addEntriesFromDictionary:@{@"page": ((afterID == nil) ? @"1" : afterID), @"per_page":FLICKR_MAX_PER_PAGE, @"extras": @"url_m,url_o,date_taken,geo"}];
+    if (nil != albumID) {
+        call = @"flickr.photosets.getPhotos";
+        [args setObject:albumID forKey:@"photoset_id"];
+    } else {
+        call = @"flickr.people.getPhotos";
+        [args setObject:@"me" forKey:@"user_id"];
+    }
+    
+    [self call:call args:args refresh:refresh apiOperation:self.imageApiOperation completion:^(NSDictionary *response, NSError *error) {
         if (error) {
             NSLog(@"FLICKR ALBUM ERROR\n%@", error);
             if (completion) {
@@ -237,6 +268,10 @@
             }
         } else {
             NSDictionary *photoSet = [response objectForKey:@"photoset"];
+            if (photoSet == nil) {
+                photoSet = [response objectForKey:@"photos"];
+            }
+            
             self.numberOfPages = [photoSet objectForKey:@"pages"];
             NSInteger currentPage = [[photoSet objectForKey:@"page"] integerValue];
             self.nextPage = [NSString stringWithFormat:@"%ld", (currentPage + 1)];
