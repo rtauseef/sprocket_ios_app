@@ -58,6 +58,10 @@
 	<string>774050882653503</string>
 	<key>FacebookDisplayName</key>
 	<string>sprocket</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>hpgcflickr</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
