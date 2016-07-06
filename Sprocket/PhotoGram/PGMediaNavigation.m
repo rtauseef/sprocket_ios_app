@@ -125,15 +125,18 @@
     if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressMenuButton:)]) {
         [self.delegate mediaNavigationDidPressMenuButton:self];
     }
-    // need to pass request for hamburger menu to view controller
-    
-//    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
 }
 
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // Only accept events for the top and bottom bars
-    BOOL inNavigationView = point.y < self.navigationView.frame.size.height;
+    BOOL inNavigationView = NO;
+    if( point.y < self.navigationView.frame.size.height &&
+        (point.x < self.scrollView.frame.origin.x  ||
+         point.x > self.scrollView.frame.origin.x + self.scrollView.frame.size.width) ) {
+        inNavigationView = YES;
+    }
+       
     BOOL inCameraBar = point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
     
     return ( inNavigationView || inCameraBar );
