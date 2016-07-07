@@ -3074,7 +3074,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3106,6 +3105,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PODS_BUILD_DIR = $BUILD_DIR;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3149,7 +3149,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3181,6 +3180,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PODS_BUILD_DIR = $BUILD_DIR;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3350,7 +3350,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3382,6 +3381,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PODS_BUILD_DIR = $BUILD_DIR;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3551,7 +3551,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3583,6 +3582,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PODS_BUILD_DIR = $BUILD_DIR;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
