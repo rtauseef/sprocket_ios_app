@@ -26,7 +26,7 @@ extern NSString * const kPGCameraManagerCameraClosed;
 - (void)addCameraButtonsOnView:(UIView *)view;
 
 - (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated;
-- (void)dismissCameraAnimated:(BOOL)animated;
+- (void)dismissCameraAnimated:(BOOL)animated completion:(void (^)())completion;
 
 - (void)takePicture;
 - (void)switchCamera;

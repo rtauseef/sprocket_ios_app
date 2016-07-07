@@ -37,6 +37,7 @@
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *landingButtonsView;
 @property (strong, nonatomic) IBOutlet UIView *cameraButtonsView;
+@property (strong, nonatomic) IBOutlet UIView *transitionEffectView;
 
 @property (strong, nonatomic) IBOutlet UIButton *hamburgerButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -90,6 +91,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCameraButtons) name:kPGCameraManagerCameraClosed object:nil];
     
+    self.transitionEffectView.alpha = 1;
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.2
+                        options: UIViewAnimationOptionTransitionCrossDissolve
+                     animations:^{
+                         self.transitionEffectView.alpha = 0;
+                     }
+                     completion:nil];
+    
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:self.cameraButtonsView];
         [[PGCameraManager sharedInstance] addCameraToView:self.cameraBackgroundView presentedViewController:self];
@@ -106,6 +117,7 @@
     
     [self hideCameraButtons];
     [[PGCameraManager sharedInstance] stopCamera];
+    self.transitionEffectView.alpha = 1;
 }
 
 #pragma mark - Private Methods
@@ -216,6 +228,7 @@
         self.blurredView.alpha = 1;
         self.landingButtonsView.alpha = 1;
         self.cameraButtonsView.alpha = 0;
+        self.transitionEffectView.alpha = 0;
     } completion:nil];
 }
 

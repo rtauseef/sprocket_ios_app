@@ -28,7 +28,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 
 @end
 
-@implementation PGCameraManager
+@implementation PGCameraManager	
 
 + (PGCameraManager *)sharedInstance
 {
@@ -103,6 +103,10 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     }
     
     self.viewController = viewController;
+    self.cameraOverlay.transitionEffectView.alpha = 1;
+    
+    self.picker.cameraOverlayView = self.cameraOverlay.view;
+    
     [[self topMostController] presentViewController:self.picker animated:animated completion:nil];
 }
 
@@ -114,10 +118,19 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     [view addSubview:self.cameraOverlay.view];
 }
 
-- (void)dismissCameraAnimated:(BOOL)animated
+- (void)dismissCameraAnimated:(BOOL)animated completion:(void (^)())completion
 {
-    [self.picker dismissViewControllerAnimated:animated completion:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+    if (self.isCustomCamera) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+    } else {
+        [self.picker dismissViewControllerAnimated:animated completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+            
+            if (completion) {
+                completion();
+            }
+        }];
+    }
 }
 
 - (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
@@ -127,11 +140,12 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     previewViewController.selectedPhoto = photo;
     previewViewController.media = [[HPPRMedia alloc] initWithAttributes:info];
     previewViewController.source = @"CameraRoll";
+    previewViewController.transitionEffectView.alpha = 1;
     
     if (self.isCustomCamera) {
         [self.viewController presentViewController:previewViewController animated:NO completion:nil];
     } else {
-        [self.picker dismissViewControllerAnimated:NO completion:^{
+        [self dismissCameraAnimated:NO completion:^{
             [[self topMostController] presentViewController:previewViewController animated:NO completion:nil];
         }];
     }

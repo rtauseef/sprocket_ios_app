@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGOverlayCameraViewController">
             <connections>
+                <outlet property="transitionEffectView" destination="BJW-QH-UdF" id="qdZ-gP-WnO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,10 +49,18 @@
                         <action selector="cameraReverseTapped:" destination="-1" eventType="touchUpInside" id="Srm-MZ-b9B"/>
                     </connections>
                 </button>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-QH-UdF">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <constraints>
+                <constraint firstItem="BJW-QH-UdF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="16x-nJ-btJ"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="C44-gb-l7T"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J0f-lP-GQi"/>
+                <constraint firstAttribute="bottom" secondItem="BJW-QH-UdF" secondAttribute="bottom" id="JZf-r2-PMB"/>
+                <constraint firstItem="BJW-QH-UdF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rwk-wz-iuu"/>
+                <constraint firstAttribute="trailing" secondItem="BJW-QH-UdF" secondAttribute="trailing" id="Ryg-Dp-a3C"/>
                 <constraint firstAttribute="bottom" secondItem="fg2-TL-pwq" secondAttribute="bottom" constant="57" id="VEm-cn-nxs"/>
                 <constraint firstAttribute="trailing" secondItem="cUq-e2-jMp" secondAttribute="trailing" id="av9-rK-Hy7"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kVe-ch-nh1"/>

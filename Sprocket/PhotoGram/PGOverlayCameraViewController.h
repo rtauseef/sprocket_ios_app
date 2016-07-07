@@ -15,5 +15,6 @@
 @interface PGOverlayCameraViewController : UIViewController
 
 @property (nonatomic, weak) UIImagePickerController *pickerReference;
+@property (strong, nonatomic) IBOutlet UIView *transitionEffectView;
 
 @end

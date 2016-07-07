@@ -126,6 +126,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     [UIView animateWithDuration:0.3F animations:^{
         self.imageContainer.alpha = 1.0F;
         self.imageView.alpha = 1.0F;
+        self.transitionEffectView.alpha = 0;
     }];
 }
 
@@ -158,8 +159,12 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 {
     __weak __typeof(self) weakSelf = self;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
-        [weakSelf dismissViewControllerAnimated:NO completion:^{
-            [[PGCameraManager sharedInstance] showCamera:weakSelf animated:NO];
+        [UIView animateWithDuration:0.2F animations:^{
+            weakSelf.transitionEffectView.alpha = 1.0F;
+        } completion:^(BOOL finished) {
+            [weakSelf dismissViewControllerAnimated:NO completion:^{
+                [[PGCameraManager sharedInstance] showCamera:weakSelf animated:NO];
+            }];
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
@@ -168,7 +173,9 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+    }];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender

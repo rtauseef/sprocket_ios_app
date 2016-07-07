@@ -18,5 +18,6 @@
 @property (strong, nonatomic) UIImage *selectedPhoto;
 @property (strong, nonatomic) NSString *source;
 @property (strong, nonatomic) HPPRMedia *media;
+@property (strong, nonatomic) IBOutlet UIView *transitionEffectView;
 
 @end
