@@ -36,6 +36,13 @@
 
 NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
+typedef enum {
+    PGLandingPageViewControlIndexInstagram = 0,
+    PGLandingPageViewControlIndexFacebook = 1,
+    PGLandingPageViewControlIndexFlickr = 2,
+    PGLandingPageViewControlIndexCameraRoll = 3
+} PGLandingPageViewControlIndex;
+
 @interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, PGMediaNavigationDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -323,19 +330,19 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     UINavigationController *navController = nil;
     
     switch (self.pageControl.currentPage) {
-        case 0:
+        case PGLandingPageViewControlIndexInstagram:
             navController = self.instagramLandingPageViewController;
             break;
             
-        case 1:
+        case PGLandingPageViewControlIndexFacebook:
             navController = self.facebookLandingPageViewController;
             break;
             
-        case 2:
+        case PGLandingPageViewControlIndexFlickr:
             navController = self.flickrLandingPageViewController;
             break;
             
-        case 3:
+        case PGLandingPageViewControlIndexCameraRoll:
             navController = self.cameraRollLandingPageViewController;
             break;
             
@@ -348,16 +355,16 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (NSInteger)pageForSocialNetwork:(NSString *)socialNetwork
 {
-    NSInteger page = 0;
+    NSInteger page = PGLandingPageViewControlIndexInstagram;
     
     if ([socialNetwork isEqualToString:[HPPRInstagramPhotoProvider sharedInstance].name]) {
-        page = 0;
+        page = PGLandingPageViewControlIndexInstagram;
     } else if ([socialNetwork isEqualToString:[HPPRFacebookPhotoProvider sharedInstance].name]) {
-        page = 1;
+        page = PGLandingPageViewControlIndexFacebook;
     } else if ([socialNetwork isEqualToString:[HPPRFlickrPhotoProvider sharedInstance].name]) {
-        page = 2;
+        page = PGLandingPageViewControlIndexFlickr;
     } else if ([socialNetwork isEqualToString:[HPPRCameraRollPhotoProvider sharedInstance].name]) {
-        page = 3;
+        page = PGLandingPageViewControlIndexCameraRoll;
     }
     
     return page;
@@ -485,27 +492,22 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     UIViewController *viewController = [pageViewController.viewControllers lastObject];
     
     if (viewController == self.instagramLandingPageViewController) {
-        self.pageControl.currentPage = 0;
+        self.pageControl.currentPage = PGLandingPageViewControlIndexInstagram;
         [self.navigationView selectButton:[HPPRInstagramPhotoProvider sharedInstance].name animated:YES];
     } else if (viewController == self.facebookLandingPageViewController) {
-        self.pageControl.currentPage = 1;
+        self.pageControl.currentPage = PGLandingPageViewControlIndexFacebook;
         [self.navigationView selectButton:[HPPRFacebookPhotoProvider sharedInstance].name animated:YES];
     } else if (viewController == self.flickrLandingPageViewController) {
-        self.pageControl.currentPage = 2;
+        self.pageControl.currentPage = PGLandingPageViewControlIndexFlickr;
         [self.navigationView selectButton:[HPPRFlickrPhotoProvider sharedInstance].name animated:YES];
     } else if (viewController == self.cameraRollLandingPageViewController) {
-        self.pageControl.currentPage = 3;
+        self.pageControl.currentPage = PGLandingPageViewControlIndexCameraRoll;
         [self.navigationView selectButton:[HPPRCameraRollPhotoProvider sharedInstance].name animated:YES];
     }
     
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
     
     self.previousPageControlPosition = self.pageControl.currentPage;
-}
-
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
-{
-    NSLog(@"WillTransition: %@", pendingViewControllers);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

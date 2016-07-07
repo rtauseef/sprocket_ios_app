@@ -60,7 +60,7 @@ NSString * const kFlickrUserIdKey = @"userID";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkFlickr:NO];
+    [self checkFlickrAndAlbums:NO];
 }
 
 - (void)dealloc
@@ -89,19 +89,19 @@ NSString * const kFlickrUserIdKey = @"userID";
     if ([[HPPRFlickrPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self checkFlickr:NO];
+            [self checkFlickrAndAlbums:NO];
         });
     }
 }
 
 - (void)showAlbums
 {
-    [self checkFlickr:YES];
+    [self checkFlickrAndAlbums:YES];
 }
 
 #pragma mark - Utils
 
-- (void)checkFlickr:(BOOL)forAlbums
+- (void)checkFlickrAndAlbums:(BOOL)forAlbums
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -164,7 +164,7 @@ NSString * const kFlickrUserIdKey = @"userID";
     [HPPRFlickrLoginProvider sharedInstance].viewController = self;
     [[HPPRFlickrLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkFlickr:NO];
+            [self checkFlickrAndAlbums:NO];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         }
