@@ -115,7 +115,9 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     self.cameraOverlay.pickerReference = nil;
     self.cameraOverlay.view.frame = view.frame;
     
-    [view addSubview:self.cameraOverlay.view];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [view addSubview:self.cameraOverlay.view];
+    });
 }
 
 - (void)dismissCameraAnimated:(BOOL)animated completion:(void (^)())completion
@@ -193,8 +195,10 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
     [self.stillImageOutput setOutputSettings:outputSettings];
     [self.session addOutput:self.stillImageOutput];
     
-    [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-    [view.layer addSublayer:newCaptureVideoPreviewLayer];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+        [view.layer addSublayer:newCaptureVideoPreviewLayer];
+    });
     
     [self.session startRunning];
     self.isCustomCamera = YES;
