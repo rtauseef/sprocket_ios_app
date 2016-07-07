@@ -27,6 +27,7 @@
 #import "PGSideBarMenuTableViewController.h"
 #import "PGSwipeCoachMarksView.h"
 #import "PGMediaNavigation.h"
+#import "PGCameraManager.h"
 
 #define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 4
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
@@ -418,6 +419,11 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
         PGLandingPageViewController *landingPage = (PGLandingPageViewController *)navController.viewControllers[0];
         [landingPage showAlbums];
     }
+}
+
+- (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav
+{
+    [[PGCameraManager sharedInstance] showCamera:self animated:YES completion:nil];    
 }
 
 #pragma mark - Getter methods

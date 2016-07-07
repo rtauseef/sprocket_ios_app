@@ -76,8 +76,15 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
-    
-    self.cameraView.hidden = YES;
+
+    self.cameraView.backgroundColor = [UIColor clearColor];
+    self.cameraView.alpha = 0.7F;
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.cameraView.bounds;
+    gradient.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor];
+    gradient.startPoint = CGPointMake(0,1);
+    gradient.endPoint = CGPointMake(1, 0);
+    [self.cameraView.layer insertSublayer:gradient atIndex:0];
 }
 
 -(void)showFolderIcon:(BOOL)show
@@ -129,6 +136,12 @@
     }
 }
 
+- (IBAction)didPressCameraButton:(id)sender {
+    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressCameraButton:)]) {
+        [self.delegate mediaNavigationDidPressCameraButton:self];
+    }
+}
+
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // Only accept events for the top and bottom bars
@@ -139,7 +152,7 @@
         inNavigationView = YES;
     }
        
-    BOOL inCameraBar = NO;//point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
+    BOOL inCameraBar = point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
     
     return ( inNavigationView || inCameraBar );
 }
