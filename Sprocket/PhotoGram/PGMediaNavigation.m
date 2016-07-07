@@ -1,9 +1,13 @@
 //
-//  PGMediaNavigation.m
-//  Sprocket
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Susy Snowflake on 6/30/16.
-//  Copyright © 2016 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "PGMediaNavigation.h"
@@ -14,11 +18,12 @@
 #import <HPPRCameraRollPhotoProvider.h>
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
+#import "AlphaGradientView.h"
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
-@property (weak, nonatomic) IBOutlet UIView *cameraView;
+@property (weak, nonatomic) IBOutlet AlphaGradientView *cameraView;
 @property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
 @property (strong, nonatomic) NSArray *providers;
 @property (weak, nonatomic) IBOutlet UIButton *folderButton;
@@ -77,14 +82,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
 
-    self.cameraView.backgroundColor = [UIColor clearColor];
-    self.cameraView.alpha = 0.7F;
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.cameraView.bounds;
-    gradient.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor];
-    gradient.startPoint = CGPointMake(0,1);
-    gradient.endPoint = CGPointMake(1, 0);
-    [self.cameraView.layer insertSublayer:gradient atIndex:0];
+    self.cameraView.direction = GRADIENT_DOWN;
 }
 
 -(void)showFolderIcon:(BOOL)show

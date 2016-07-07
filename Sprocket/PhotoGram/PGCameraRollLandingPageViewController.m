@@ -56,24 +56,24 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkCameraRoll:NO];
+    [self checkCameraRollAndAlbums:NO];
 }
 
 - (IBAction)signInButtonTapped:(id)sender
 {
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkCameraRoll:NO];
+            [self checkCameraRollAndAlbums:NO];
         }
     }];
 }
 
 - (void)showAlbums
 {
-    [self checkCameraRoll:YES];
+    [self checkCameraRollAndAlbums:YES];
 }
 
-- (void)checkCameraRoll:(BOOL)forAlbums
+- (void)checkCameraRollAndAlbums:(BOOL)forAlbums
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
