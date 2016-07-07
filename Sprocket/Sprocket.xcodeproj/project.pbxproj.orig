@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */; };
+<<<<<<< HEAD
 		0096507b6334177b019dd9a7 /* PGWebViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E38E96B419C79FC900EA926A /* PGWebViewerViewController.m */; };
 		0246c8ebc59174a6e4f4bbe5 /* NSURLRequest+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E33FFFFF19D21CD500D2FDAC /* NSURLRequest+Helper.m */; };
 		0261632a99cea5629c3d0b4c /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
@@ -64,6 +65,11 @@
 		34327e668e5532f28bcc0a93 /* PGGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41219E601F0006B78BB /* PGGesturesView.m */; };
 		34d19c0b9410eadda41b76d6 /* Template20_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F12538371AB20F5C003CE020 /* Template20_4x6.svg */; };
 		366346cf677f65b25d7f89a1 /* Template1_5x7.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81581A365D0B008884F9 /* Template1_5x7.svg */; };
+=======
+		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
+		260DCF1B1D2E13B90057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
+		260DCF1D1D2E17D20057BD55 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
+>>>>>>> master
 		370A21CF19ABA99B00EBDCCE /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A21CE19ABA99B00EBDCCE /* Templates.plist */; };
 		370A21D319ABAF7500EBDCCE /* PGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370A21D219ABAF7500EBDCCE /* PGTemplate.m */; };
 		3731680D1AD4B08900503065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
@@ -936,7 +942,7 @@
 		F1A3F9B01AD5EE2800EC0817 /* PGCrashlyticsLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGCrashlyticsLogger.m; path = Logging/PGCrashlyticsLogger.m; sourceTree = "<group>"; };
 		F1B5434019C785B100460701 /* PGRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGRevealViewController.h; sourceTree = "<group>"; };
 		F1B5434119C785B100460701 /* PGRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGRevealViewController.m; sourceTree = "<group>"; };
-		F1C0C2521D2EFF8D00D92819 /* Sprocket-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprocket-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1C0C2521D2EFF8D00D92819 /* Sprocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sprocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DCB7CB1B50641C00CA9AAD /* PGSVGResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSVGResourceManager.h; sourceTree = "<group>"; };
 		F1DCB7CC1B50641C00CA9AAD /* PGSVGResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSVGResourceManager.m; sourceTree = "<group>"; };
 		F1DCB7E91B5065E200CA9AAD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1236,7 +1242,7 @@
 			children = (
 				E34D5057199AB87B006D80E0 /* Sprocket.app */,
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
-				F1C0C2521D2EFF8D00D92819 /* Sprocket-cal.app */,
+				F1C0C2521D2EFF8D00D92819 /* Sprocket.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1795,7 +1801,7 @@
 			);
 			name = "Sprocket-cal";
 			productName = "PhotoGram-cal";
-			productReference = F1C0C2521D2EFF8D00D92819 /* Sprocket-cal.app */;
+			productReference = F1C0C2521D2EFF8D00D92819 /* Sprocket.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E34D5056199AB87B006D80E0 /* Sprocket */ = {
@@ -2790,7 +2796,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2865,8 +2871,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2965,13 +2971,17 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(inherited)",
 				);
+<<<<<<< HEAD
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+=======
+				INFOPLIST_FILE = "Sprocket-cal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+>>>>>>> master
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3003,9 +3013,16 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "e6f0b3d6-0b5d-4301-b175-f8709982d9d4";
+=======
+				PODS_BUILD_DIR = $BUILD_DIR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+>>>>>>> master
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3045,7 +3062,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -3081,7 +3098,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3118,8 +3135,13 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(inherited)",
 				);
+<<<<<<< HEAD
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+=======
+				INFOPLIST_FILE = "Sprocket-cal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+>>>>>>> master
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3152,9 +3174,14 @@
 					"-framework",
 					UIKit,
 				);
+<<<<<<< HEAD
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_NAME = Sprocket;
+=======
 				PODS_BUILD_DIR = $BUILD_DIR;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+>>>>>>> master
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -3191,11 +3218,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3224,9 +3252,8 @@
 					"-framework",
 					UIKit,
 				);
-				PODS_BUILD_DIR = $BUILD_DIR;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -3301,7 +3328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3339,12 +3366,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				New_Setting = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3373,9 +3399,16 @@
 					"-framework",
 					UIKit,
 				);
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "e6f0b3d6-0b5d-4301-b175-f8709982d9d4";
+=======
+				PODS_BUILD_DIR = $BUILD_DIR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+>>>>>>> master
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3427,7 +3460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3465,7 +3498,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3556,7 +3589,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3592,9 +3625,14 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+<<<<<<< HEAD
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_NAME = Sprocket;
+=======
 				PODS_BUILD_DIR = $BUILD_DIR;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+>>>>>>> master
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
