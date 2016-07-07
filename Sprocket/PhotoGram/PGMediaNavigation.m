@@ -14,11 +14,12 @@
 #import <HPPRCameraRollPhotoProvider.h>
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
+#import "AlphaGradientView.h"
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
-@property (weak, nonatomic) IBOutlet UIView *cameraView;
+@property (weak, nonatomic) IBOutlet AlphaGradientView *cameraView;
 @property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
 @property (strong, nonatomic) NSArray *providers;
 @property (weak, nonatomic) IBOutlet UIButton *folderButton;
@@ -77,14 +78,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
 
-    self.cameraView.backgroundColor = [UIColor clearColor];
-    self.cameraView.alpha = 0.7F;
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.cameraView.bounds;
-    gradient.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor];
-    gradient.startPoint = CGPointMake(0,1);
-    gradient.endPoint = CGPointMake(1, 0);
-    [self.cameraView.layer insertSublayer:gradient atIndex:0];
+    self.cameraView.direction = GRADIENT_DOWN;
 }
 
 -(void)showFolderIcon:(BOOL)show
