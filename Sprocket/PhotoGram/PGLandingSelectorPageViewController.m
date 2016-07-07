@@ -430,7 +430,7 @@ typedef enum {
 
 - (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav
 {
-    [[PGCameraManager sharedInstance] showCamera:self animated:YES completion:nil];    
+    [[PGCameraManager sharedInstance] showCamera:self animated:YES];    
 }
 
 #pragma mark - Getter methods

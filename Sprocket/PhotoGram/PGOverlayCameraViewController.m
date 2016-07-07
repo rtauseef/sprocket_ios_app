@@ -17,29 +17,38 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.transitionEffectView.alpha == 1) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.transitionEffectView.alpha = 0;
+        }];
+    }
 }
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES];
+    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES completion:nil];
 }
 
 - (IBAction)cameraReverseTapped:(id)sender
 {
-    [UIView transitionWithView:self.pickerReference.view duration:1.0 options:UIViewAnimationOptionAllowAnimatedContent | UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-        if (self.pickerReference.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
-            self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        } else {
-            self.pickerReference.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-        }
-        
-    } completion:NULL];
+    [[PGCameraManager sharedInstance] switchCamera];
 }
 
 - (IBAction)shutterTapped:(id)sender
 {
-    [self.pickerReference takePicture];
+    [[PGCameraManager sharedInstance] takePicture];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.transitionEffectView.alpha = 1;
+    } completion:nil];
 }
 
 @end
