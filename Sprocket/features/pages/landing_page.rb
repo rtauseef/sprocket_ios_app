@@ -4,29 +4,38 @@ require_relative '../common/base_html_screen'
 class LandingScreen < Calabash::IBase
 
   def trait
-    social_media_logo
+    landing_page_logo
   end
 
-  def social_media_logo
-    "view marked:'HPLogo.png'"
+  def landing_page_logo
+    "view marked:'sprocket'"
+  end
+
+  def hamburger_logo
+    "UIImageView id:'hamburger'"
   end
 
   def instagram_logo
-    "view marked:'LoginInstagram.png'"
+    "UIImageView id:'Instagram'"
   end
 
   def flickr_logo
-    "view marked:'LoginFlickr.png'"
+    "UIImageView id:'Flickr'"
   end
-    def cameraroll_logo
-    "view marked:'LoginCameraRoll.png'"
+
+  def cameraroll_logo
+    "UIImageView id:'CameraRoll'"
   end
-    def facebook_logo
-    "view marked:'LoginFacebook.png'"
+
+  def facebook_logo
+    "UIImageView id:'Facebook'"
   end
+
+=begin
     def username_input= username
     fill_input_field(username.to_s,0)
-  end
+    end
+
 
   def password_input= password
     fill_input_field(password.to_s,1)
@@ -51,11 +60,26 @@ class LandingScreen < Calabash::IBase
   
   def instagram_auth_button
     "webView css:'input' index:1"
+  end
+
+=end
+ def social_source_auth_text
+   query("TTTAttributedLabel label",:text)[0]
+ end
+
+  def terms_of_service_link
+	xcoord = query("TTTAttributedLabel").first["rect"]["center_x"]
+    ycoord = query("TTTAttributedLabel").first["rect"]["center_y"]
+    if get_device_name.to_s.start_with?('iPad')
+           touch(nil, :offset => {:x => xcoord+90.to_i, :y => ycoord+10.to_i})
+    else
+           touch(nil, :offset => {:x => xcoord+70.to_i, :y => ycoord+10.to_i})
     end
-       
+  end
+
   def navigate
-        await
-      end
+    await
+  end
 
 end
 

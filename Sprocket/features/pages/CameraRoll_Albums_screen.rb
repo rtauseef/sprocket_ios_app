@@ -12,7 +12,7 @@ class CameraRollAlbumsScreen < Calabash::IBase
   end
 
   def cameraroll_logo
-    "view marked:'LoginCameraRoll.png'"
+    "UIImageView id:'CameraRoll'"
   end
 
   def cameraroll_first_album

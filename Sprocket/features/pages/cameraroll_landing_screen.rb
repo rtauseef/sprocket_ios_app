@@ -7,22 +7,7 @@ class CameraRollLandingScreen < Calabash::IBase
     social_media_logo
   end
 
-  def social_media_logo
-    "view marked:'HPSMS_logo.png'"
-  end
 
-  def instagram_logo
-    "view marked:'LoginInstagram.png'"
-  end
-
-  def flickr_logo
-    "view marked:'LoginFlickr.png'"
-  end
-    
-    def cameraroll_logo
-    "view marked:'LoginCameraRoll.png'"
-  end
-    
   def navigate
    
      sleep(WAIT_SCREENLOAD)
