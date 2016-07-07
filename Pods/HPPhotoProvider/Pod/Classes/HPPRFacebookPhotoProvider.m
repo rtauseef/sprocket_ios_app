@@ -86,8 +86,12 @@
 
 - (NSString *)headerText
 {
-    NSMutableString *text = [NSMutableString stringWithFormat:@"%@", self.album.name];
+    NSMutableString *text = [NSMutableString stringWithString:@""];
     NSUInteger count = self.album.photoCount;
+    
+    if (nil != self.album.name) {
+        text = [NSMutableString stringWithFormat:@"%@", self.album.name];
+    }
     
     if (1 == count) {
         [text appendString:HPPRLocalizedString(@" (1 photo)", nil)];
@@ -186,9 +190,19 @@
             }
         } else {
             NSMutableArray *facebookAlbums = [NSMutableArray array];
+            
+            HPPRFacebookAlbum *allPhotos = [[HPPRFacebookAlbum alloc] init];
+            allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates all photos will be shown");
+            allPhotos.objectID = nil;
+            
+            [facebookAlbums addObject:allPhotos];
             for (NSDictionary *album in result) {
                 [facebookAlbums addObject:[[HPPRFacebookAlbum alloc] initWithAttributes:album]];
             }
+            
+            allPhotos.coverPhotoID = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).coverPhotoID;
+            allPhotos.provider = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).provider;
+
             if (completion) {
                 completion([NSArray arrayWithArray:facebookAlbums], nil);
             }
@@ -199,7 +213,11 @@
 
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {
-    NSString *request = [NSString stringWithFormat:@"%@", self.album.objectID];
+    NSString *request = @"me/photos/uploaded";
+    if (nil != self.album.objectID) {
+        request = [NSString stringWithFormat:@"%@", self.album.objectID];
+    }
+    
     [self cachedGraphRequest:request withRefresh:YES andPaging:nil andCompletion:^(id result, NSError *error) {
         if (error) {
             if ([error.domain isEqualToString:FACEBOOK_ERROR_DOMAIN] && (error.code == ALBUM_NOT_FOUND_ERROR_CODE)) {
@@ -225,7 +243,12 @@
 
 - (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
-    [self cachedGraphRequest:[NSString stringWithFormat:@"%@/photos", albumID] withRefresh:refresh andPaging:afterID andCompletion:completion];
+    NSString *query = [NSString stringWithFormat:@"%@/photos", albumID];
+    if (nil == albumID) {
+        query = @"me/photos/uploaded";
+    }
+    
+    [self cachedGraphRequest:query withRefresh:refresh andPaging:afterID andCompletion:completion];
 }
 
 - (void)photoByID:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion

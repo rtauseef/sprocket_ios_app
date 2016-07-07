@@ -55,7 +55,12 @@
 
 - (void)showLogin
 {
-    
+    NSLog(@"Need to implement subclass showLogin function");
+}
+
+- (void)showAlbums
+{
+    NSLog(@"Need to implement subclass showAlbums function");
 }
 
 - (void)showNoConnectionAvailableAlert

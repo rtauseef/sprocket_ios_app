@@ -12,6 +12,7 @@
 
 #import "HPPRSegmentedControlView.h"
 #import "HPPR.h"
+#import "HPPRAppearance.h"
 #import "UIFont+HPPRStyle.h"
 #import "UIColor+HPPRStyle.h"
 #import "UIImage+HPPRMaskImage.h"
@@ -42,13 +43,13 @@
 {
     self.segments = @[self.segment1, self.segment2];
     
-    UIImage *segment1Selected = [[UIImage imageNamed:@"HPPRFilterButtonLeftOn"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
+    UIImage *segment1Selected = [[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRFilterButtonLeftOnIcon] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
     
-    UIImage *segment1Unselected = [[UIImage imageNamed:@"HPPRFilterButtonLeftOff"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
+    UIImage *segment1Unselected = [[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRFilterButtonLeftOffIcon] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
     
-    UIImage *segment2Selected = [[UIImage imageNamed:@"HPPRFilterButtonRightOn"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 6.0f)];
+    UIImage *segment2Selected = [[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRFilterButtonRightOnIcon] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 6.0f)];
     
-    UIImage *segment2Unselected = [[UIImage imageNamed:@"HPPRFilterButtonRightOff"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 6.0f)];
+    UIImage *segment2Unselected = [[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRFilterButtonRightOffIcon] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 6.0f)];
     
     self.segment1.selected = YES;
     

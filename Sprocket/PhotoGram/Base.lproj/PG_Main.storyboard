@@ -1950,7 +1950,7 @@
         <image name="previewEdit" width="43" height="43"/>
         <image name="previewPrinter" width="43" height="43"/>
         <image name="previewShare" width="43" height="43"/>
-        <image name="previewX" width="17" height="17"/>
+        <image name="previewX" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pea-8S-scq"/>

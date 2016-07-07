@@ -40,7 +40,9 @@
     
     self.albumTitleLabelView.text = album.name;
     
-    if (1 == album.photoCount) {
+    if (0 == album.photoCount) {
+        self.photoCountLabelView.text = @"";
+    } else if (1 == album.photoCount) {
         self.photoCountLabelView.text = HPPRLocalizedString(@"1 photo", nil);
     } else {
         self.photoCountLabelView.text = [NSString stringWithFormat:HPPRLocalizedString(@"%lu photos", @"Number of photos"), (unsigned long)album.photoCount];
@@ -52,12 +54,14 @@
         self.coverPhotoImageView.image = nil;
         __weak __typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSLog(@"album name: %@, provider: %@", album.name, album.provider);
             [album.provider coverPhotoForAlbum:album withRefresh:NO andCompletion:^(HPPRAlbum *album, UIImage *coverPhoto, NSError *error) {
                 if (error) {
                     NSLog(@"COVER PHOTO ERROR\n%@", error);
                 } else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        if ([_album.objectID isEqualToString:album.objectID]) {
+                        if ([_album.objectID isEqualToString:album.objectID] ||
+                             _album.objectID == album.objectID ) {
                             weakSelf.coverPhotoImageView.image = coverPhoto;
                             [weakSelf setNeedsLayout];
                         }

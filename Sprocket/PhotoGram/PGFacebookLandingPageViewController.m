@@ -61,7 +61,7 @@ NSString * const kFacebookUserIdKey = @"id";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkFacebook];
+    [self checkFacebookAndAlbums:NO];
 }
 
 - (void)dealloc
@@ -89,16 +89,21 @@ NSString * const kFacebookUserIdKey = @"id";
 
     if ([[HPPRFacebookPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        [self checkFacebook];
+        [self checkFacebookAndAlbums:YES];
     }
 }
 
 #pragma mark - Utils
 
-- (void)checkFacebook
+- (void)showAlbums
+{
+    [self checkFacebookAndAlbums:YES];
+}
+
+- (void)checkFacebookAndAlbums:(BOOL)forAlbums
 {
     self.spinner = [self.view addSpinner];
-    self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
     self.signInView.alpha = 0.0f;
     
@@ -116,15 +121,21 @@ NSString * const kFacebookUserIdKey = @"id";
                     provider.user = userInfo;
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
                     
-                    HPPRSelectAlbumTableViewController *vc = (HPPRSelectAlbumTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+                    UIViewController *vc = nil;
+                    if (forAlbums) {
+                        vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+                        ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
+                        ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
+                    } else {
+                        vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+                        ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
+                        ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
+                    }
                     
                     UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
                     
                     vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
                     
-                    vc.delegate = self;
-                    
-                    vc.provider = provider;
                     
                     [self.spinner removeFromSuperview];
 
@@ -208,7 +219,7 @@ NSString * const kFacebookUserIdKey = @"id";
 {
     [[HPPRFacebookLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkFacebook];
+            [self checkFacebookAndAlbums:YES];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         }

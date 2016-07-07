@@ -12,6 +12,8 @@
 
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <HPPR.h>
+#import <HPPRSelectAlbumTableViewController.h>
+#import <HPPRSelectPhotoCollectionViewController.h>
 #import "PGCameraRollLandingPageViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGPreviewViewController.h"
@@ -22,7 +24,6 @@
 #import "HPPRCameraRollPhotoProvider.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIView+Animations.h"
-#import "HPPRSelectAlbumTableViewController.h"
 #import "SWRevealViewController.h"
 
 NSString * const kCameraRollUserName = @"CameraRollUserName";
@@ -55,37 +56,48 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkCameraRoll];
+    [self checkCameraRollAndAlbums:NO];
 }
 
 - (IBAction)signInButtonTapped:(id)sender
 {
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkCameraRoll];
+            [self checkCameraRollAndAlbums:NO];
         }
     }];
 }
 
-- (void)checkCameraRoll
+- (void)showAlbums
+{
+    [self checkCameraRollAndAlbums:YES];
+}
+
+- (void)checkCameraRollAndAlbums:(BOOL)forAlbums
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
-    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
             
-            HPPRSelectAlbumTableViewController *vc = (HPPRSelectAlbumTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+            HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
+            UIViewController *vc = nil;
+            if (forAlbums) {
+                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+                ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
+                ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
+
+            } else {
+                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+                ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
+                ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
+            }
             
             UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
             
             vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
-            
-            vc.delegate = self;
-            
-            HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
-            vc.provider = provider;
             
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [spinner removeFromSuperview];

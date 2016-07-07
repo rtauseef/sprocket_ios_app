@@ -92,7 +92,28 @@ int const kPhotosPerRequest = 50;
     if(reload) {
         self.nextIndex = nil;
     }
+
     
+    if (nil == self.album  ||  nil == self.album.objectID) {
+        [self albumsWithRefresh:NO andCompletion:^(NSArray *albums, NSError *error) {
+            HPPRCameraRollAlbum *allPhotosAlbum = nil;
+            for (HPPRCameraRollAlbum *album in albums) {
+                if (nil == allPhotosAlbum || allPhotosAlbum.photoCount < album.photoCount) {
+                    allPhotosAlbum = album;
+                }
+            }
+            self.album = allPhotosAlbum;
+            [self requestAlbmumImagesWithCompletion:completion andReloadAll:reload];
+        }];
+    } else {
+        [self requestAlbmumImagesWithCompletion:completion andReloadAll:reload];
+    }
+}
+
+#pragma mark - Albums and photos
+
+- (void)requestAlbmumImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
+{
     [self photosForAlbum:self.album.objectID withRefresh:YES andPaging:[self.nextIndex stringValue] andCompletion:^(NSDictionary *photos, NSError *error) {
         NSArray *records = [photos objectForKey:@"data"];
         if (reload) {
@@ -105,11 +126,6 @@ int const kPhotosPerRequest = 50;
         }
     }];
 }
-
-
-
-
-#pragma mark - Albums and photos
 
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {

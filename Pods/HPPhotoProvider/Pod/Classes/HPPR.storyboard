@@ -117,18 +117,28 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading_Image.png" translatesAutoresizingMaskIntoConstraints="NO" id="PAL-Dt-d67" userLabel="LoadingImage">
+                                                    <rect key="frame" x="77" y="77" width="13" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="13" id="Jm3-vz-ugC"/>
+                                                        <constraint firstAttribute="width" constant="13" id="K6X-01-aJN"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Qq5-cy-Obs" firstAttribute="leading" secondItem="89p-yH-8eu" secondAttribute="leading" id="1Ua-3k-SuY"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="PAL-Dt-d67" secondAttribute="trailing" id="6zQ-dL-cql"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="PAL-Dt-d67" secondAttribute="bottom" id="FAH-Gd-bIe"/>
                                             <constraint firstItem="Qq5-cy-Obs" firstAttribute="top" secondItem="89p-yH-8eu" secondAttribute="top" id="TTk-fB-vfh"/>
                                             <constraint firstAttribute="trailing" secondItem="Qq5-cy-Obs" secondAttribute="trailing" id="t53-Tj-RuE"/>
                                             <constraint firstAttribute="bottom" secondItem="Qq5-cy-Obs" secondAttribute="bottom" id="v57-WT-R3k"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Qq5-cy-Obs" id="7ir-Kq-WN4"/>
+                                            <outlet property="loadingImage" destination="PAL-Dt-d67" id="JDN-Xm-Y5v"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -619,6 +629,7 @@
         <image name="HPPRBack" width="25" height="25"/>
         <image name="HPPRBack.png" width="11" height="18"/>
         <image name="HPPRSearch.png" width="21" height="21"/>
+        <image name="Loading_Image.png" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zTR-FW-LIN"/>

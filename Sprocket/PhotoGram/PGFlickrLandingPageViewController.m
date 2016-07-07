@@ -60,7 +60,7 @@ NSString * const kFlickrUserIdKey = @"userID";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkFlickr];
+    [self checkFlickrAndAlbums:NO];
 }
 
 - (void)dealloc
@@ -89,17 +89,22 @@ NSString * const kFlickrUserIdKey = @"userID";
     if ([[HPPRFlickrPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self checkFlickr];
+            [self checkFlickrAndAlbums:NO];
         });
     }
 }
 
+- (void)showAlbums
+{
+    [self checkFlickrAndAlbums:YES];
+}
+
 #pragma mark - Utils
 
-- (void)checkFlickr
+- (void)checkFlickrAndAlbums:(BOOL)forAlbums
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
-    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
     self.signInView.alpha = 0.0f;
     
@@ -109,15 +114,21 @@ NSString * const kFlickrUserIdKey = @"userID";
         if (loggedIn) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
             
-            HPPRSelectAlbumTableViewController *vc = (HPPRSelectAlbumTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+            UIViewController *vc = nil;
+            if (forAlbums) {
+                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
+                ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
+                ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
+            } else {
+                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+                ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
+                ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
+            }
             
             UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
             
             vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
             
-            vc.delegate = self;
-            
-            vc.provider = provider;
             
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [spinner removeFromSuperview];
@@ -153,7 +164,7 @@ NSString * const kFlickrUserIdKey = @"userID";
     [HPPRFlickrLoginProvider sharedInstance].viewController = self;
     [[HPPRFlickrLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkFlickr];
+            [self checkFlickrAndAlbums:NO];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         }
