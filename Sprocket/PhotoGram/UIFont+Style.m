@@ -49,6 +49,11 @@
     return [UIFont HPSimplifiedLightFontWithSize:20.0f];
 }
 
++ (UIFont *)HPNavigationBarSubTitleFont
+{
+    return [UIFont HPSimplifiedLightFontWithSize:18.0f];
+}
+
 + (UIFont *)HPNavigationBarButtonItemFont
 {
     return [UIFont HPSimplifiedLightFontWithSize:16.0f];

@@ -13,10 +13,12 @@
 #import "HPPRSelectPhotoCollectionViewCell.h"
 #import "UIView+HPPRAnimation.h"
 #import "HPPRCacheService.h"
+#import "HPPR.h"
 
 @interface HPPRSelectPhotoCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingImage;
 
 @end
 
@@ -25,7 +27,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.imageView.backgroundColor = [UIColor colorWithRed:0xDB/255.0f  green:0xEA/255.0f  blue:0xF8/255.0f alpha:1.0f];
+    self.imageView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRLoadingCellBackgroundColor];
+    self.loadingImage.hidden = NO;
 }
 
 - (void)setMedia:(HPPRMedia *)media
@@ -56,10 +59,12 @@
     if (image == nil) {
         if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewCellDidFailRetrievingImage:)]) {
             [self.delegate selectPhotoCollectionViewCellDidFailRetrievingImage:self];
+            self.loadingImage.hidden = YES;
         }
     } else {
         dispatch_async(dispatch_get_main_queue(), ^ {
             self.imageView.image = image;
+            self.loadingImage.hidden = YES;
             [self setNeedsLayout];
         });
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */; };
+		260DCF1D1D2E17D20057BD55 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
 		370A21CF19ABA99B00EBDCCE /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A21CE19ABA99B00EBDCCE /* Templates.plist */; };
 		370A21D319ABAF7500EBDCCE /* PGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370A21D219ABAF7500EBDCCE /* PGTemplate.m */; };
 		3731680D1AD4B08900503065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
@@ -38,6 +39,10 @@
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
+		92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
+		92C38D5D1D25EEF300F7CD27 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
+		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
+		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92D57EE21CB2DBC700051D79 /* Template16_4x5.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */; };
 		92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */; };
 		92D57EE41CB2DBC700051D79 /* Template16_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */; };
@@ -156,10 +161,6 @@
 		E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810B19A2B2A6000D45E0 /* PGView.m */; };
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
 		E3D6814919A3D11F000D45E0 /* DefaultButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */; };
-		E3D6814B19A3D11F000D45E0 /* FilterButtonLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */; };
-		E3D6814D19A3D11F000D45E0 /* FilterButtonLeftOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */; };
-		E3D6814F19A3D11F000D45E0 /* FilterButtonRightOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */; };
-		E3D6815119A3D11F000D45E0 /* FilterButtonRightOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */; };
 		E3D6815A19A3D12E000D45E0 /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
 		E3D6815C19A3D12E000D45E0 /* GridViewOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815419A3D12E000D45E0 /* GridViewOn@2x.png */; };
 		E3D6815E19A3D12E000D45E0 /* ListViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */; };
@@ -449,10 +450,6 @@
 		F1C0EC6F1D25DE7F00BADF91 /* DefaultButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */; };
 		F1C0EC701D25DE7F00BADF91 /* FacebookLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6D7271A02E55B00548421 /* FacebookLogo@2x.png */; };
 		F1C0EC711D25DE7F00BADF91 /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
-		F1C0EC721D25DE7F00BADF91 /* FilterButtonLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */; };
-		F1C0EC731D25DE7F00BADF91 /* FilterButtonLeftOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */; };
-		F1C0EC741D25DE7F00BADF91 /* FilterButtonRightOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */; };
-		F1C0EC751D25DE7F00BADF91 /* FilterButtonRightOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */; };
 		F1C0EC761D25DE7F00BADF91 /* FlickrLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4661E01A11898A0000BC2E /* FlickrLogo@2x.png */; };
 		F1C0EC771D25DE7F00BADF91 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB16AA19F5604900C0F42B /* Green@2x.png */; };
 		F1C0EC781D25DE7F00BADF91 /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
@@ -630,6 +627,11 @@
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
+		92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRollingButtonScrollView.h; sourceTree = "<group>"; };
+		92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRollingButtonScrollView.m; sourceTree = "<group>"; };
+		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
+		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
+		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92D57EDF1CB2DBC700051D79 /* Template16_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x5.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x5.hpc; sourceTree = "<group>"; };
 		92D57EE01CB2DBC700051D79 /* Template16_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_4x6.hpc; path = Resources/Images/Templates/CameraRoll/Template16_4x6.hpc; sourceTree = "<group>"; };
 		92D57EE11CB2DBC700051D79 /* Template16_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template16_5x7.hpc; path = Resources/Images/Templates/CameraRoll/Template16_5x7.hpc; sourceTree = "<group>"; };
@@ -805,10 +807,6 @@
 		E3D6811D19A2DE22000D45E0 /* UIImage+ImageResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResize.h"; sourceTree = "<group>"; };
 		E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResize.m"; sourceTree = "<group>"; };
 		E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DefaultButton@2x.png"; path = "Resources/Images/DefaultButton@2x.png"; sourceTree = "<group>"; };
-		E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonLeftOff@2x.png"; path = "Resources/Images/FilterButtonLeftOff@2x.png"; sourceTree = "<group>"; };
-		E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonLeftOn@2x.png"; path = "Resources/Images/FilterButtonLeftOn@2x.png"; sourceTree = "<group>"; };
-		E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonRightOff@2x.png"; path = "Resources/Images/FilterButtonRightOff@2x.png"; sourceTree = "<group>"; };
-		E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FilterButtonRightOn@2x.png"; path = "Resources/Images/FilterButtonRightOn@2x.png"; sourceTree = "<group>"; };
 		E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GridViewOff@2x.png"; path = "Resources/Images/Icons/GridViewOff@2x.png"; sourceTree = "<group>"; };
 		E3D6815419A3D12E000D45E0 /* GridViewOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GridViewOn@2x.png"; path = "Resources/Images/Icons/GridViewOn@2x.png"; sourceTree = "<group>"; };
 		E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ListViewOff@2x.png"; path = "Resources/Images/Icons/ListViewOff@2x.png"; sourceTree = "<group>"; };
@@ -1409,10 +1407,6 @@
 				F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */,
 				658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */,
 				658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */,
-				E3D6814519A3D11F000D45E0 /* FilterButtonLeftOff@2x.png */,
-				E3D6814619A3D11F000D45E0 /* FilterButtonLeftOn@2x.png */,
-				E3D6814719A3D11F000D45E0 /* FilterButtonRightOff@2x.png */,
-				E3D6814819A3D11F000D45E0 /* FilterButtonRightOn@2x.png */,
 				E34D50D5199AC363006D80E0 /* IntroBackground@2x.png */,
 				008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */,
 				E375384A19BE2B6D009C695F /* CardShadow@2x.png */,
@@ -1569,20 +1563,25 @@
 			children = (
 				E31BE41119E601F0006B78BB /* PGGesturesView.h */,
 				E31BE41219E601F0006B78BB /* PGGesturesView.m */,
-				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
-				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
+				92D073851D25ACE8002611C0 /* PGMediaNavigation.h */,
+				92D073861D25ACE8002611C0 /* PGMediaNavigation.m */,
+				92D073891D25AD02002611C0 /* PGMediaNavigation.xib */,
 				E3D6810619A2B249000D45E0 /* PGSegmentedControlView.h */,
 				E3D6810719A2B249000D45E0 /* PGSegmentedControlView.m */,
 				E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */,
-				378EA80F19A6A17300C72F1A /* PGTemplateSelectorView.h */,
-				378EA81019A6A17300C72F1A /* PGTemplateSelectorView.m */,
-				378EA80C19A6A10F00C72F1A /* PGTemplateSelectorView.xib */,
-				378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */,
-				378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */,
-				378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */,
 				F1ECD73F1A608297004B512E /* PGSwipeCoachMarksView.h */,
 				F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */,
 				E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */,
+				378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */,
+				378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */,
+				378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */,
+				378EA80F19A6A17300C72F1A /* PGTemplateSelectorView.h */,
+				378EA81019A6A17300C72F1A /* PGTemplateSelectorView.m */,
+				378EA80C19A6A10F00C72F1A /* PGTemplateSelectorView.xib */,
+				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
+				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
+				92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */,
+				92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1946,6 +1945,7 @@
 				F17A81BA1A365D44008884F9 /* Template15_4x6.svg in Resources */,
 				F17A81BB1A365D44008884F9 /* Template15_5x7.svg in Resources */,
 				E3DB16F019F581A400C0F42B /* Template15@2x.png in Resources */,
+				92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */,
 				E3DB16F219F581A400C0F42B /* Template16@2x.png in Resources */,
 				F125383F1AB20F5C003CE020 /* Template20_4x5.svg in Resources */,
 				F12538411AB20F5C003CE020 /* Template20_4x6.svg in Resources */,
@@ -1990,10 +1990,6 @@
 				E3D6814919A3D11F000D45E0 /* DefaultButton@2x.png in Resources */,
 				E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */,
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
-				E3D6814B19A3D11F000D45E0 /* FilterButtonLeftOff@2x.png in Resources */,
-				E3D6814D19A3D11F000D45E0 /* FilterButtonLeftOn@2x.png in Resources */,
-				E3D6815119A3D11F000D45E0 /* FilterButtonRightOn@2x.png in Resources */,
-				E3D6814F19A3D11F000D45E0 /* FilterButtonRightOff@2x.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				E3DB16AF19F5604900C0F42B /* Green@2x.png in Resources */,
 				E3D6815A19A3D12E000D45E0 /* GridViewOff@2x.png in Resources */,
@@ -2206,10 +2202,6 @@
 				F1C0EC6F1D25DE7F00BADF91 /* DefaultButton@2x.png in Resources */,
 				F1C0EC701D25DE7F00BADF91 /* FacebookLogo@2x.png in Resources */,
 				F1C0EC711D25DE7F00BADF91 /* FacebookNoPhotoAlbum@2x.png in Resources */,
-				F1C0EC721D25DE7F00BADF91 /* FilterButtonLeftOff@2x.png in Resources */,
-				F1C0EC731D25DE7F00BADF91 /* FilterButtonLeftOn@2x.png in Resources */,
-				F1C0EC741D25DE7F00BADF91 /* FilterButtonRightOn@2x.png in Resources */,
-				F1C0EC751D25DE7F00BADF91 /* FilterButtonRightOff@2x.png in Resources */,
 				F1C0EC761D25DE7F00BADF91 /* FlickrLogo@2x.png in Resources */,
 				F1C0EC771D25DE7F00BADF91 /* Green@2x.png in Resources */,
 				F1C0EC781D25DE7F00BADF91 /* GridViewOff@2x.png in Resources */,
@@ -2518,6 +2510,7 @@
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
+				92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
@@ -2527,6 +2520,7 @@
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
+				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				378EA81819A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m in Sources */,
 				E3461F3719AE30750042DF5E /* PGLearnMoreView.m in Sources */,
@@ -2566,6 +2560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C38D5D1D25EEF300F7CD27 /* PGMediaNavigation.m in Sources */,
 				F1C0EBBC1D25DE7F00BADF91 /* PGLearnMoreViewController.m in Sources */,
 				F1C0EBBD1D25DE7F00BADF91 /* PGSVGMetadataLoader.m in Sources */,
 				F1C0EBBE1D25DE7F00BADF91 /* PGImagePickerLandscapeSupportController.m in Sources */,
@@ -2598,6 +2593,7 @@
 				F1C0EBD91D25DE7F00BADF91 /* PGWebViewerViewController.m in Sources */,
 				F1C0EBDA1D25DE7F00BADF91 /* UIFont+Style.m in Sources */,
 				F1C0EBDB1D25DE7F00BADF91 /* UIImageView+MaskImage.m in Sources */,
+				260DCF1D1D2E17D20057BD55 /* SSRollingButtonScrollView.m in Sources */,
 				F1C0EBDC1D25DE7F00BADF91 /* PGInstagramLandingPageViewController.m in Sources */,
 				F1C0EBDD1D25DE7F00BADF91 /* UIImage+ImageResize.m in Sources */,
 				F1C0EBDE1D25DE7F00BADF91 /* PGLandingMainPageViewController.m in Sources */,
@@ -2917,7 +2913,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "86debde6-8de8-41d4-9984-579a93cf4b7f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

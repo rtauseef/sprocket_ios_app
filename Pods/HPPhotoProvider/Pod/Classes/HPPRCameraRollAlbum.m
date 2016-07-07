@@ -13,6 +13,7 @@
 #import "HPPRCameraRollAlbum.h"
 #import "HPPR.h"
 #import "HPPRCameraRollPhotoProvider.h"
+#import "NSBundle+HPPRLocalizable.h"
 
 @implementation HPPRCameraRollAlbum
 
@@ -22,8 +23,8 @@
     
     if (self) {
         self.group = group;
-        self.objectID = [[group valueForProperty:ALAssetsGroupPropertyURL] absoluteString];
         self.provider = [HPPRCameraRollPhotoProvider sharedInstance];
+        self.objectID = [[group valueForProperty:ALAssetsGroupPropertyURL] absoluteString];
         self.name = [group valueForProperty:ALAssetsGroupPropertyName];
         self.photoCount = [group numberOfAssets];
         self.coverPhoto = [UIImage imageWithCGImage:[group posterImage]];

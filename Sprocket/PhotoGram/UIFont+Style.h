@@ -17,6 +17,7 @@
 + (UIFont *)HPSimplifiedBoldFontWithSize:(CGFloat)size;
 + (CGFloat)HPDefaultCardFontSize;
 + (UIFont *)HPNavigationBarTitleFont;
++ (UIFont *)HPNavigationBarSubTitleFont;
 + (UIFont *)HPNavigationBarButtonItemFont;
 + (UIFont *)HPCoachMarkLabelFont;
 + (UIFont *)HPCategoryTitleFont;

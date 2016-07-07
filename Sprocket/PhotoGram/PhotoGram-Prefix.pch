@@ -19,6 +19,8 @@
 #define DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION @"DisablePageControllerFunctionalityNotification"
 #define SHOW_SWIPE_COACH_MARKS_NOTIFICATION @"ShowSwipeCoachMarksNotification"
 #define HIDE_SWIPE_COACH_MARKS_NOTIFICATION @"HideSwipeCoachMarksNotification"
+#define SHOW_ALBUMS_FOLDER_ICON @"ShowAlbumsFolderIcon"
+#define HIDE_ALBUMS_FOLDER_ICON @"HideAlbumsFolderIcon"
 
 #define FACEBOOK_DISPLAY_NAME @"Facebook"
 #define FLICKR_DISPLAY_NAME @"Flickr"

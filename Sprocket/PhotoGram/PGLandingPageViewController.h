@@ -21,5 +21,6 @@
 
 - (void)showLogin;
 - (void)showNoConnectionAvailableAlert;
+- (void)showAlbums;
 
 @end

@@ -101,37 +101,52 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     
     self.provider.imageRequestsCancelled = NO;
     
-    [self.provider refreshAlbumWithCompletion:^(NSError *error) {
-        if (error == nil) {
-            [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
-                if (complete) {
-                    [self finishImageRequestWithRecords:nil];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.spinner stopAnimating];
-                        
-                        [self initRefreshControl];
-                    });
-                }
-            } andReloadAll:YES];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.spinner stopAnimating];
-                
-                [self initRefreshControl];
-                
-                if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_ALBUM_CHANGE_NOTIFICATION object:nil];
+    // These are the "All Photos" cases
+    if (nil == self.provider.album) {
+        [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
+            if (complete) {
+                [self finishImageRequestWithRecords:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.spinner stopAnimating];
                     
-                    [self.deletedAlbumAlertView show];
-                } else {
-                    [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
-                }
-            });
-        }
-    }];
-    
+                    [self initRefreshControl];
+                });
+            }
+        } andReloadAll:YES];
+
+    } else {
+        [self.provider refreshAlbumWithCompletion:^(NSError *error) {
+            if (error == nil) {
+                [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
+                    if (complete) {
+                        [self finishImageRequestWithRecords:nil];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.spinner stopAnimating];
+                            
+                            [self initRefreshControl];
+                        });
+                    }
+                } andReloadAll:YES];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.spinner stopAnimating];
+                    
+                    [self initRefreshControl];
+                    
+                    if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_ALBUM_CHANGE_NOTIFICATION object:nil];
+                        
+                        [self.deletedAlbumAlertView show];
+                    } else {
+                        [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
+                    }
+                });
+            }
+        }];
+    }
+
     self.noInternetConnectionRetryView.delegate = self;
-    
+
     if (self.provider) {
         [self.provider prepareSegmentView:self.photoSourceSegmentedControlView];
     }

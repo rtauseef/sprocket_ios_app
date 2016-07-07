@@ -29,6 +29,11 @@ extern NSString * const kHPPRGridViewOnIcon;
 extern NSString * const kHPPRGridViewOffIcon;
 extern NSString * const kHPPRListViewOnIcon;
 extern NSString * const kHPPRListViewOffIcon;
+extern NSString * const kHPPRFilterButtonLeftOnIcon;
+extern NSString * const kHPPRFilterButtonLeftOffIcon;
+extern NSString * const kHPPRFilterButtonRightOnIcon;
+extern NSString * const kHPPRFilterButtonRightOffIcon;
+extern NSString * const kHPPRLoadingCellBackgroundColor;
 
 @property (strong, nonatomic) NSDictionary *settings;
 

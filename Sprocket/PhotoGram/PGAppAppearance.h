@@ -13,6 +13,7 @@
 @interface PGAppAppearance : NSObject
 
 + (void)setupAppearance;
++ (NSDictionary *)hpprAppearanceSettings;
 + (UIColor *)navBarColor;
 + (void)addGradientBackgroundToView:(UIView *)view;
 
