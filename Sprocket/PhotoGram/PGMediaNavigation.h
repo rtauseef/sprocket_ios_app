@@ -29,5 +29,6 @@
 
 - (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav;
 - (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav;
+- (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav;
 
 @end

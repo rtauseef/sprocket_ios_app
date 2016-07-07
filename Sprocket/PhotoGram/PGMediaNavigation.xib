@@ -76,11 +76,26 @@
                         <constraint firstItem="RCP-fr-Le6" firstAttribute="centerX" secondItem="GnL-8B-dhs" secondAttribute="centerX" id="vld-li-R4V"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="CameraBar">
-                    <rect key="frame" x="0.0" y="534" width="600" height="66"/>
-                    <color key="backgroundColor" red="0.26689042149999997" green="0.043006225740000001" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="CameraBar" customClass="AlphaGradientView">
+                    <rect key="frame" x="0.0" y="530" width="600" height="70"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-FL-dsH" userLabel="CameraButton">
+                            <rect key="frame" x="278" y="13" width="45" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="aBK-kP-dGR"/>
+                                <constraint firstAttribute="height" constant="45" id="ib5-Ah-5YY"/>
+                            </constraints>
+                            <state key="normal" image="cameraLanding"/>
+                            <connections>
+                                <action selector="didPressCameraButton:" destination="-1" eventType="touchUpInside" id="8Fk-Hy-ZnX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="66" id="Y2R-qu-Mnj"/>
+                        <constraint firstItem="qr0-FL-dsH" firstAttribute="centerY" secondItem="Ixd-bY-Ud5" secondAttribute="centerY" id="4jI-6A-3TY"/>
+                        <constraint firstItem="qr0-FL-dsH" firstAttribute="centerX" secondItem="Ixd-bY-Ud5" secondAttribute="centerX" id="ChQ-Cu-tpu"/>
+                        <constraint firstAttribute="height" constant="70" id="Y2R-qu-Mnj"/>
                     </constraints>
                 </view>
             </subviews>
@@ -96,6 +111,7 @@
         </view>
     </objects>
     <resources>
+        <image name="cameraLanding" width="76" height="76"/>
         <image name="folderIcon" width="20" height="18"/>
         <image name="hamburger" width="22" height="18"/>
     </resources>

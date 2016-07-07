@@ -61,7 +61,7 @@ NSString * const kFacebookUserIdKey = @"id";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkFacebook:NO];
+    [self checkFacebookAndAlbums:NO];
 }
 
 - (void)dealloc
@@ -89,7 +89,7 @@ NSString * const kFacebookUserIdKey = @"id";
 
     if ([[HPPRFacebookPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        [self checkFacebook:YES];
+        [self checkFacebookAndAlbums:YES];
     }
 }
 
@@ -97,10 +97,10 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)showAlbums
 {
-    [self checkFacebook:YES];
+    [self checkFacebookAndAlbums:YES];
 }
 
-- (void)checkFacebook:(BOOL)forAlbums
+- (void)checkFacebookAndAlbums:(BOOL)forAlbums
 {
     self.spinner = [self.view addSpinner];
     self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -122,7 +122,7 @@ NSString * const kFacebookUserIdKey = @"id";
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
                     
                     UIViewController *vc = nil;
-                    if( forAlbums ) {
+                    if (forAlbums) {
                         vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
                         ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
                         ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
@@ -219,7 +219,7 @@ NSString * const kFacebookUserIdKey = @"id";
 {
     [[HPPRFacebookLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkFacebook:YES];
+            [self checkFacebookAndAlbums:YES];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         }

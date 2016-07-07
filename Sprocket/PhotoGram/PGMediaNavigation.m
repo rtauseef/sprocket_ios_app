@@ -18,11 +18,12 @@
 #import <HPPRCameraRollPhotoProvider.h>
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
+#import "AlphaGradientView.h"
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
-@property (weak, nonatomic) IBOutlet UIView *cameraView;
+@property (weak, nonatomic) IBOutlet AlphaGradientView *cameraView;
 @property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
 @property (strong, nonatomic) NSArray *providers;
 @property (weak, nonatomic) IBOutlet UIButton *folderButton;
@@ -80,8 +81,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
-    
-    self.cameraView.hidden = YES;
+
+    self.cameraView.direction = GRADIENT_DOWN;
 }
 
 -(void)showFolderIcon:(BOOL)show
@@ -133,6 +134,12 @@
     }
 }
 
+- (IBAction)didPressCameraButton:(id)sender {
+    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressCameraButton:)]) {
+        [self.delegate mediaNavigationDidPressCameraButton:self];
+    }
+}
+
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // Only accept events for the top and bottom bars
@@ -143,7 +150,7 @@
         inNavigationView = YES;
     }
        
-    BOOL inCameraBar = NO;//point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
+    BOOL inCameraBar = point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
     
     return ( inNavigationView || inCameraBar );
 }

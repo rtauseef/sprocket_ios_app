@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		008F5DFD19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */; };
 		260DCF1D1D2E17D20057BD55 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
+		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
+		260DCF1B1D2E13B90057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
 		370A21CF19ABA99B00EBDCCE /* Templates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A21CE19ABA99B00EBDCCE /* Templates.plist */; };
 		370A21D319ABAF7500EBDCCE /* PGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370A21D219ABAF7500EBDCCE /* PGTemplate.m */; };
 		3731680D1AD4B08900503065 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
@@ -579,6 +581,8 @@
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FABFD63E21BFCA8C99B9A2F /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
+		260DCF161D2E0ADD0057BD55 /* AlphaGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientView.h; sourceTree = "<group>"; };
+		260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientView.m; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		370A21CE19ABA99B00EBDCCE /* Templates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Templates.plist; path = Resources/Templates.plist; sourceTree = "<group>"; };
 		370A21D119ABAF7500EBDCCE /* PGTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplate.h; sourceTree = "<group>"; };
@@ -1561,6 +1565,8 @@
 		E3D6814319A3D02E000D45E0 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				260DCF161D2E0ADD0057BD55 /* AlphaGradientView.h */,
+				260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */,
 				E31BE41119E601F0006B78BB /* PGGesturesView.h */,
 				E31BE41219E601F0006B78BB /* PGGesturesView.m */,
 				92D073851D25ACE8002611C0 /* PGMediaNavigation.h */,
@@ -2498,6 +2504,7 @@
 				E3461F2019AE2F220042DF5E /* SVGTextElement+Fix.m in Sources */,
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
+				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
@@ -2598,6 +2605,7 @@
 				F1C0EBDD1D25DE7F00BADF91 /* UIImage+ImageResize.m in Sources */,
 				F1C0EBDE1D25DE7F00BADF91 /* PGLandingMainPageViewController.m in Sources */,
 				F1C0EBDF1D25DE7F00BADF91 /* SWRevealViewController.m in Sources */,
+				260DCF1B1D2E13B90057BD55 /* AlphaGradientView.m in Sources */,
 				F1C0EBE01D25DE7F00BADF91 /* UIColor+Style.m in Sources */,
 				F1C0EBE11D25DE7F00BADF91 /* PGExperimentManager.m in Sources */,
 				F1C0EBE21D25DE7F00BADF91 /* PGAppDelegate.m in Sources */,
