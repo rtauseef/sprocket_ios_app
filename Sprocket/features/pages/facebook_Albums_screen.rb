@@ -14,14 +14,12 @@ class FacebookAlbumsScreen < Calabash::IBase
     def cameraroll_logo
     "view marked:'LoginCameraRoll.png'"
   end
- def cameraroll_first_album
+ def first_album
     "HPPRSelectAlbumTableViewCell index:1"
   end
-
-def cameraroll_button
-    "button marked:'Camera Roll'"
+    def second_photo
+    "collectionViewCell index:1"
   end
-    
  
 
  def navigate
