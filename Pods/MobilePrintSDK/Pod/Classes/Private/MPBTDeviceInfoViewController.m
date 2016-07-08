@@ -96,8 +96,16 @@
     };
 }
 
-- (IBAction)didPressFirmwareUpdate:(id)sender {
-    [[MPBTSprocket sharedInstance] reflash:nil];
+- (IBAction)didPressFirmwareUpdateHP:(id)sender {
+    [[MPBTSprocket sharedInstance] reflash:MPBTSprocketReflashHP];
+}
+
+- (IBAction)didPressFirmwareUpdateV2:(id)sender {
+    [[MPBTSprocket sharedInstance] reflash:MPBTSprocketReflashV2];
+}
+
+- (IBAction)didPressFirmwareUpdateV3:(id)sender {
+    [[MPBTSprocket sharedInstance] reflash:MPBTSprocketReflashV3];
 }
 
 #pragma mark - SprocketDelegate
@@ -156,7 +164,13 @@
 
 - (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error
 {
-    
+    NSLog(@"%s", __FUNCTION__);
+    self.alert.title = @"Error";
+    self.alert.message = [NSString stringWithFormat:@"Error sending print: %@", [MPBTSprocket errorString:error]];
+    [self addActionToBluetoothStatus];
+    if (self.view.window  &&  !(self.alert.isViewLoaded  &&  self.alert.view.window)) {
+        [self presentViewController:self.alert animated:YES completion:nil];
+    }
 }
 
 - (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(MantaError)error
@@ -169,6 +183,10 @@
     self.alert.message = [NSString stringWithFormat:@"Sending upgrade data to device... \n%d%@ complete", percentageComplete, @"%"];
     if (!(self.alert.isViewLoaded  &&  self.alert.view.window)) {
         [self presentViewController:self.alert animated:YES completion:nil];
+    }
+    
+    if (MantaErrorNoError != error) {
+        [self didReceiveError:manta error:error];
     }
 }
 
@@ -194,6 +212,15 @@
         } else {
             self.alert.message = [NSString stringWithFormat:@"Unknown status: %d", status];
         }
+    }
+}
+
+- (void)addActionToBluetoothStatus
+{
+    if (0 == self.alert.actions.count) {
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {[self.alert dismissViewControllerAnimated:YES completion:nil];}];
+        [self.alert addAction:defaultAction];
     }
 }
 

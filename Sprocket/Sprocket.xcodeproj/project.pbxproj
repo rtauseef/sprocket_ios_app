@@ -88,7 +88,6 @@
 		3f9611b247cb11436550cd1d /* socialsnaps.webflow.css in Resources */ = {isa = PBXBuildFile; fileRef = 6552DA951A7972BB002D3B48 /* socialsnaps.webflow.css */; };
 		3fed2da106ea904609d20180 /* sanchez-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1DCB8271B542D6500CA9AAD /* sanchez-regular.ttf */; };
 		4153bd24e7d1aaaaf6307f2b /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
-		43f2980c56df787f96937e8c /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		46fdcc808da5f084edbbe2c0 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
 		47151fdc08db0d73a299f607 /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
 		484b26cc079eaa1b6983d171 /* PGSurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AA023B1AB22CFF002E554F /* PGSurveyManager.m */; };
@@ -225,6 +224,7 @@
 		CC5D53BA19CCA8E9002B0DF3 /* LandingPage-700-568h~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53B319CCA8E9002B0DF3 /* LandingPage-700-568h~iphone.png */; };
 		CC5D53BE19CCAECA002B0DF3 /* LandingPage-700-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53BC19CCAECA002B0DF3 /* LandingPage-700-Landscape@2x~ipad.png */; };
 		CC5D53C019CCAECA002B0DF3 /* LandingPage-700-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53BD19CCAECA002B0DF3 /* LandingPage-700-Portrait@2x~ipad.png */; };
+		DFED555E90C7B73404E0CDEE /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */; };
 		E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630C19C09FE400996E20 /* UIImageView+MaskImage.m */; };
 		E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630F19C0A2EA00996E20 /* UIImage+MaskImage.m */; };
@@ -582,7 +582,6 @@
 		008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IntroBackground1536x2048@2x.png"; sourceTree = "<group>"; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FABFD63E21BFCA8C99B9A2F /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		260DCF161D2E0ADD0057BD55 /* AlphaGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientView.h; sourceTree = "<group>"; };
 		260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientView.m; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -600,6 +599,7 @@
 		378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTemplateSelectorCollectionViewCell.xib; sourceTree = "<group>"; };
 		378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplateSelectorCollectionViewCell.h; sourceTree = "<group>"; };
 		378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplateSelectorCollectionViewCell.m; sourceTree = "<group>"; };
+		4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
 		65334C1D1C472044004E849D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/terms.html; sourceTree = "<group>"; };
 		65334C1F1C47206E004E849D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/terms.html; sourceTree = "<group>"; };
 		65334C201C472074004E849D /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/terms.html; sourceTree = "<group>"; };
@@ -623,12 +623,13 @@
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
-		8B5089FB0614B2A9C1B8C391 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
+		8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
@@ -647,8 +648,7 @@
 		92D57EEB1CB304FB00051D79 /* Template7_4x5.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_4x5.hpc; path = Resources/Images/Templates/Instagram/Template7_4x5.hpc; sourceTree = "<group>"; };
 		92D57EEC1CB304FB00051D79 /* Template7_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_4x6.hpc; path = Resources/Images/Templates/Instagram/Template7_4x6.hpc; sourceTree = "<group>"; };
 		92D57EED1CB304FB00051D79 /* Template7_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_5x7.hpc; path = Resources/Images/Templates/Instagram/Template7_5x7.hpc; sourceTree = "<group>"; };
-		A7451A26B4E517D24C0381E2 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
-		BAFF8913D3F80E87635E4755 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
+		C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
@@ -1028,6 +1028,7 @@
 				5109F6575268043E64367DC8 /* libPods-Sprocket.a in Frameworks */,
 				8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */,
 				FEA1D019F3637F304D84AFE2 /* libPods-Sprocket.a in Frameworks */,
+				DFED555E90C7B73404E0CDEE /* libPods-Sprocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,9 +1053,6 @@
 				f7d82c9229345adb76d33aa1 /* Crashlytics.framework in Frameworks */,
 				328d8281836599456a2c1dcf /* UIKit.framework in Frameworks */,
 				b5c4b84bfc792737c53872f3 /* Foundation.framework in Frameworks */,
-				43f2980c56df787f96937e8c /* libPods-Sprocket.a in Frameworks */,
-				43f2980c56df787f96937e8c /* libPods-Sprocket.a in Frameworks */,
-				43f2980c56df787f96937e8c /* libPods-Sprocket.a in Frameworks */,
 				9082f7786724dcf6b4004cdc /* CFNetwork.framework in Frameworks */,
 				e6c3a872227a304a371c1035 /* calabash.framework in Frameworks */,
 			);
@@ -1178,10 +1176,10 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				BAFF8913D3F80E87635E4755 /* Pods-Sprocket.debug.xcconfig */,
-				8B5089FB0614B2A9C1B8C391 /* Pods-Sprocket.release.xcconfig */,
-				A7451A26B4E517D24C0381E2 /* Pods-Sprocket.testflight.xcconfig */,
-				1FABFD63E21BFCA8C99B9A2F /* Pods-Sprocket.appstore.xcconfig */,
+				C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */,
+				6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */,
+				4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */,
+				8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2785,7 +2783,6 @@
 /* Begin XCBuildConfiguration section */
 		03313c53545bc1918a7fbe5f /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B5089FB0614B2A9C1B8C391 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2861,7 +2858,6 @@
 		};
 		5959ac03ccaa8d9ed43c575e /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FABFD63E21BFCA8C99B9A2F /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2937,7 +2933,6 @@
 		};
 		8029643098907e7699de6804 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7451A26B4E517D24C0381E2 /* Pods-Sprocket.testflight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3091,7 +3086,7 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAFF8913D3F80E87635E4755 /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3163,7 +3158,7 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B5089FB0614B2A9C1B8C391 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3311,7 +3306,7 @@
 		};
 		FF3D09FF1D2C302C0002AB7C /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7451A26B4E517D24C0381E2 /* Pods-Sprocket.testflight.xcconfig */;
+			baseConfigurationReference = 4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3437,7 +3432,7 @@
 		};
 		FF3D0A031D2DAC260002AB7C /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FABFD63E21BFCA8C99B9A2F /* Pods-Sprocket.appstore.xcconfig */;
+			baseConfigurationReference = 8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3527,7 +3522,6 @@
 		};
 		f0e3a66b1c698be945fb3221 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAFF8913D3F80E87635E4755 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
