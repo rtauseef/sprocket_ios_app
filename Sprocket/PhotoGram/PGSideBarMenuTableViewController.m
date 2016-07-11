@@ -42,14 +42,14 @@
 #define SHORT_SCREEN_SIZE_HEADER_HEIGHT 70.0f
 #define SHORT_SCREEN_SIZE_TITLE_LABEL_Y_POSITION 31.0f
 
-#define PRINT_LATER_NUMBER_OF_JOBS_LABEL_X 58.0f
+#define DEVICE_CONNECTIVITY_LABEL_X 58.0f
 #define SIGN_OUT_SPACE 1.0f
 #define CELL_HEIGHT 44.0f
 #define TRANSPARENT_CELL_HEIGHT 10.0f
 
 #define SOCIAL_NETWORK_SEPARATOR_HEIGHT 1.0f
 
-#define PRINT_QUEUE_INDEX 0
+#define DEVICES_INDEX 0
 #define TRANSPARENT_PRINT_QUEUE_INDEX 1
 #define LEARN_ABOUT_MOBILE_PRINTING_INDEX 2
 #define ABOUT_INDEX 4
@@ -104,14 +104,14 @@ NSInteger const kSideBarRightSideBufferWidth = 40; //pixels
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *transparentCells;
-@property (weak, nonatomic) IBOutlet UITableViewCell *printLaterCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *printLaterTransparentCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *devicesCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *devicesTransparentCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *takeOurSurveyCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *takeOurSurveyTransparentCell;
-@property (weak, nonatomic) IBOutlet UILabel *printLaterNumberOfJobsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *printQueueLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *printLaterNumberOfJobsLabelLeadingLayoutConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *devicesLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deviceConnectivityLabelLeadingLayoutConstraint;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *instagramGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *facebookGestureRecognizer;
@@ -138,21 +138,19 @@ typedef enum {
     NSMutableArray *transparentCells = [NSMutableArray arrayWithArray:self.transparentCells];
     
     if (IS_OS_8_OR_LATER) {
-        [cells addObject:self.printLaterCell];
-        [transparentCells addObject:self.printLaterTransparentCell];
+        [cells addObject:self.devicesCell];
+        [transparentCells addObject:self.devicesTransparentCell];
         
         if ([NSLocale isSurveyAvailable] && !IS_IPHONE_4) {
             [cells addObject:self.takeOurSurveyCell];
             [transparentCells addObject:self.takeOurSurveyTransparentCell];
         }
         
-        [self setupLabel:self.printLaterNumberOfJobsLabel];
+        [self setupLabel:self.deviceConnectivityLabel];
         
-        self.printLaterNumberOfJobsLabel.backgroundColor = navBarColor;
-        self.printLaterNumberOfJobsLabel.layer.cornerRadius = (self.printLaterNumberOfJobsLabel.frame.size.width / 2);
-        self.printLaterNumberOfJobsLabel.layer.masksToBounds = YES;
+        self.deviceConnectivityLabel.backgroundColor = navBarColor;
         
-        [self positionPrintLaterNumberOfJobsLabelBasedOnLocalization];
+        [self positionDeviceConnectivityLabelBasedOnLocalization];
         
     } else {
         if ([NSLocale isSurveyAvailable]) {
@@ -223,11 +221,11 @@ typedef enum {
     self.flickrGestureRecognizer.enabled = NO;
 }
 
-- (void)positionPrintLaterNumberOfJobsLabelBasedOnLocalization
+- (void)positionDeviceConnectivityLabelBasedOnLocalization
 {
-    CGSize size = [self.printQueueLabel.text sizeWithAttributes:@{NSFontAttributeName: self.printLaterNumberOfJobsLabel.font}];
+    CGSize size = [self.devicesLabel.text sizeWithAttributes:@{NSFontAttributeName: self.deviceConnectivityLabel.font}];
     
-    self.printLaterNumberOfJobsLabelLeadingLayoutConstraint.constant = PRINT_LATER_NUMBER_OF_JOBS_LABEL_X + size.width  + 10;
+    self.deviceConnectivityLabelLeadingLayoutConstraint.constant = DEVICE_CONNECTIVITY_LABEL_X + size.width  + 30;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -240,12 +238,11 @@ typedef enum {
     [self setTableFooterHeight];
     
     if (IS_OS_8_OR_LATER) {
-        NSInteger numberOfPrintJobs = [[MP sharedInstance] numberOfJobsInQueue];
-        if (numberOfPrintJobs > 0) {
-            self.printLaterNumberOfJobsLabel.text = [NSString stringWithFormat:@"%ld", (long)numberOfPrintJobs];
-            self.printLaterNumberOfJobsLabel.hidden = NO;
+        NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+        if (numberOfPairedSprockets > 0) {
+            self.deviceConnectivityLabel.hidden = NO;
         } else {
-            self.printLaterNumberOfJobsLabel.hidden = YES;
+            self.deviceConnectivityLabel.hidden = YES;
         }
     }
     
@@ -293,7 +290,7 @@ typedef enum {
         return 0.0f;
     }
     
-    if (!IS_OS_8_OR_LATER && ((indexPath.row == PRINT_QUEUE_INDEX) || (indexPath.row == TRANSPARENT_PRINT_QUEUE_INDEX))) {
+    if (!IS_OS_8_OR_LATER && ((indexPath.row == DEVICES_INDEX) || (indexPath.row == TRANSPARENT_PRINT_QUEUE_INDEX))) {
         return 0.0f;
     } else if (IS_OS_8_OR_LATER && IS_IPHONE_4 && ((indexPath.row == TAKE_OUR_SURVEY_INDEX) || (indexPath.row == TAKE_OUR_SURVEY_TRANSPARENT_INDEX))) {
         return 0.0f;
@@ -313,8 +310,8 @@ typedef enum {
     if (indexPath.row == SEND_FEEDBACK_INDEX) {
         [self sendEmail];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    } else if (indexPath.row == PRINT_QUEUE_INDEX) {
-        [[MP sharedInstance] presentPrintQueueFromController:self animated:YES completion:nil];
+    } else if (indexPath.row == DEVICES_INDEX) {
+        [[MP sharedInstance] presentBluetoothDevicesFromController:self animated:YES completion:nil];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }

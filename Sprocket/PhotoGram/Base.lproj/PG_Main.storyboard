@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -569,43 +570,43 @@
                         <sections>
                             <tableViewSection id="hA6-zu-yrQ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="QyM-oe-bdD" imageView="2KN-Ye-HbV" style="IBUITableViewCellStyleDefault" id="r2Y-ba-f7B">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="QyM-oe-bdD" imageView="2KN-Ye-HbV" style="IBUITableViewCellStyleDefault" id="r2Y-ba-f7B" userLabel="Devices Cell">
                                         <rect key="frame" x="0.0" y="140" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r2Y-ba-f7B" id="R1h-jR-sJM">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Print Queue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QyM-oe-bdD">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Devices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QyM-oe-bdD" userLabel="Devices Label">
                                                     <rect key="frame" x="58" y="0.0" width="527" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2">
-                                                    <rect key="frame" x="170" y="11" width="22" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
+                                                    <rect key="frame" x="170" y="11" width="125" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="22" id="GfF-db-fn7"/>
+                                                        <constraint firstAttribute="width" constant="125" id="GfF-db-fn7"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="PrintLaterMenu" id="2KN-Ye-HbV">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="MobilePrinting.png" id="2KN-Ye-HbV">
                                                     <rect key="frame" x="15" y="8" width="28" height="28"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="anQ-7m-MS2" firstAttribute="leading" secondItem="R1h-jR-sJM" secondAttribute="leading" constant="170" id="8bL-Gf-3Vm"/>
+                                                <constraint firstItem="anQ-7m-MS2" firstAttribute="leading" secondItem="R1h-jR-sJM" secondAttribute="leading" constant="170" id="8bL-Gf-3Vm" userLabel="Device Connectivity Label Leading Layout Constraint"/>
                                                 <constraint firstItem="anQ-7m-MS2" firstAttribute="bottom" secondItem="QyM-oe-bdD" secondAttribute="bottom" constant="-11" id="Ayl-6H-8XJ"/>
                                                 <constraint firstItem="anQ-7m-MS2" firstAttribute="top" secondItem="QyM-oe-bdD" secondAttribute="top" constant="11" id="cZg-pB-3v9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.15294118230000001" green="0.64705884459999996" blue="0.85882359740000003" alpha="1" colorSpace="deviceRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="10" id="a6H-eg-Clg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="10" id="a6H-eg-Clg" userLabel="Devices Transparent Cell">
                                         <rect key="frame" x="0.0" y="184" width="600" height="10"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6H-eg-Clg" id="J3j-Ib-FNU">
@@ -784,6 +785,11 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraRollView" destination="5un-p3-2DD" id="sn4-AG-ceo"/>
+                        <outlet property="deviceConnectivityLabel" destination="anQ-7m-MS2" id="Mhn-En-9FT"/>
+                        <outlet property="deviceConnectivityLabelLeadingLayoutConstraint" destination="8bL-Gf-3Vm" id="FLb-5l-eaf"/>
+                        <outlet property="devicesCell" destination="r2Y-ba-f7B" id="ExQ-2k-dXF"/>
+                        <outlet property="devicesLabel" destination="QyM-oe-bdD" id="XiN-WS-jVJ"/>
+                        <outlet property="devicesTransparentCell" destination="a6H-eg-Clg" id="bbs-Ub-0fE"/>
                         <outlet property="facebookBottomLayoutConstraint" destination="9Jf-yM-ryf" id="eAX-eV-8lf"/>
                         <outlet property="facebookGestureRecognizer" destination="daF-eE-buP" id="Vg3-wD-5bR"/>
                         <outlet property="facebookSignButton" destination="jv7-tG-mp8" id="ecC-aK-xEf"/>
@@ -802,11 +808,6 @@
                         <outlet property="instagramUserNameLabel" destination="GRY-xD-UPv" id="qNN-Tq-S3A"/>
                         <outlet property="instagramUserView" destination="PuU-Nc-38b" id="IIm-GK-TLT"/>
                         <outlet property="logoImageView" destination="N4E-BV-ikN" id="HKC-TZ-wJL"/>
-                        <outlet property="printLaterCell" destination="r2Y-ba-f7B" id="Ch9-e2-Uf5"/>
-                        <outlet property="printLaterNumberOfJobsLabel" destination="anQ-7m-MS2" id="gyx-fU-L2P"/>
-                        <outlet property="printLaterNumberOfJobsLabelLeadingLayoutConstraint" destination="8bL-Gf-3Vm" id="O6l-LE-t7j"/>
-                        <outlet property="printLaterTransparentCell" destination="a6H-eg-Clg" id="0tN-bH-n7F"/>
-                        <outlet property="printQueueLabel" destination="QyM-oe-bdD" id="vHx-jE-8X5"/>
                         <outlet property="takeOurSurveyCell" destination="IrH-zb-Qf4" id="hsT-Eh-k9W"/>
                         <outlet property="takeOurSurveyTransparentCell" destination="JNv-Ot-4nH" id="Twz-Oy-cQP"/>
                         <outlet property="titleLabelTopSpaceLayoutContraint" destination="Rgv-SM-ASj" id="2Tn-qS-LO2"/>
@@ -1936,7 +1937,6 @@
         <image name="HPLogo.png" width="28" height="28"/>
         <image name="Instagram" width="43" height="43"/>
         <image name="MobilePrinting.png" width="28" height="28"/>
-        <image name="PrintLaterMenu" width="28" height="28"/>
         <image name="Privacy.png" width="28" height="28"/>
         <image name="SendFeedback.png" width="28" height="28"/>
         <image name="Share.png" width="17" height="25"/>
@@ -1952,6 +1952,6 @@
         <image name="previewX" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pea-8S-scq"/>
+        <segue reference="oaC-oH-lb1"/>
     </inferredMetricsTieBreakers>
 </document>
