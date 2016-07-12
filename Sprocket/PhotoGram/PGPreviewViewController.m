@@ -29,13 +29,16 @@
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
 #define kPreviewRetryButtonTitle NSLocalizedString(@"Retry", nil)
+
 static NSInteger const screenshotErrorAlertViewTag = 100;
+static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 @interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
 @property (strong, nonatomic) UIImage *originalImage;
+@property (strong, nonatomic) IBOutlet UIView *cameraView;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -45,6 +48,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL needNewImageView;
+
 @end
 
 @implementation PGPreviewViewController
@@ -54,17 +58,27 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     [super viewDidLoad];
     self.printItem = nil;
     self.needNewImageView = NO;
-    [PGAppAppearance addGradientBackgroundToView:self.view];
+    
+    [self.view layoutIfNeeded];
+    
+    [PGAppAppearance addGradientBackgroundToView:self.previewView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
+    if ([PGCameraManager sharedInstance].isBackgroundCamera) {
+        self.transitionEffectView.alpha = 1;
+    }
+    
     if (nil == self.printItem) {
         if (self.selectedPhoto) {
             self.printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
             self.printItem.layout = [self layout];
+            self.needNewImageView = YES;
+        } else {
+            [self showCamera];
         }
         
         CGRect frame = self.imageContainer.frame;
@@ -83,8 +97,6 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
         
         self.imageContainer.frame = frame;
         self.imageContainer.alpha = 0.0F;
-        
-        self.needNewImageView = YES;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -92,6 +104,18 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     if (self.imageView) {
         [self.imageView adjustContentOffset];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePreviewAndCamera) name:kPGCameraManagerCameraClosed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoTaken) name:kPGCameraManagerPhotoTaken object:nil];
+    
+    __weak PGPreviewViewController *weakSelf = self;
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraView presentedViewController:self];
+        [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
+        [PGCameraManager sharedInstance].isBackgroundCamera = NO;
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,25 +126,7 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     //   ... need to do it here...
     if (self.needNewImageView) {
         self.needNewImageView = NO;
-        
-        if (nil != self.imageView) {
-            [self.imageView removeFromSuperview];
-            self.imageView = nil;
-        }
-        
-        [PGAnalyticsManager sharedManager].trackPhotoPosition = NO;
-        [PGAnalyticsManager sharedManager].photoPanEdited = NO;
-        [PGAnalyticsManager sharedManager].photoZoomEdited = NO;
-        [PGAnalyticsManager sharedManager].photoRotationEdited = NO;
-        
-        self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
-        self.imageView.image = self.selectedPhoto;
-        self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
-        
-        self.imageView.alpha = 0.0F;
-        [self.imageContainer addSubview:self.imageView];
-        
-        [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
+        [self renderPhoto];
     }
     
     [UIView animateWithDuration:0.3F animations:^{
@@ -133,8 +139,10 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] postNotificationName:ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
@@ -153,29 +161,84 @@ static NSInteger const screenshotErrorAlertViewTag = 100;
     _selectedPhoto = finalImage;
 }
 
-#pragma mark - Button Handlers
+- (void)renderPhoto {
+    if (nil != self.imageView) {
+        [self.imageView removeFromSuperview];
+        self.imageView = nil;
+    }
+    
+    [PGAnalyticsManager sharedManager].trackPhotoPosition = NO;
+    [PGAnalyticsManager sharedManager].photoPanEdited = NO;
+    [PGAnalyticsManager sharedManager].photoZoomEdited = NO;
+    [PGAnalyticsManager sharedManager].photoRotationEdited = NO;
+    
+    self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
+    self.imageView.image = self.selectedPhoto;
+    self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
+    
+    self.imageView.alpha = 0.0F;
+    [self.imageContainer addSubview:self.imageView];
+    
+    [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
+}
 
-- (IBAction)didTouchUpInsideCameraButton:(id)sender
-{
-    __weak __typeof(self) weakSelf = self;
+#pragma mark - Camera Handlers
+
+- (void)closePreviewAndCamera {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+    }];
+}
+
+- (void)hideCamera {
+    [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
+        self.transitionEffectView.alpha = 1;
+    } completion:^(BOOL finished) {
+        self.previewView.alpha = 1;
+        [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
+            self.transitionEffectView.alpha = 0;
+        } completion:nil];
+    }];
+}
+
+- (void)showCamera {
+    __weak PGPreviewViewController *weakSelf = self;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
-        [UIView animateWithDuration:0.2F animations:^{
-            weakSelf.transitionEffectView.alpha = 1.0F;
+        [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
+            weakSelf.transitionEffectView.alpha = 1;
         } completion:^(BOOL finished) {
-            [weakSelf dismissViewControllerAnimated:NO completion:^{
-                [[PGCameraManager sharedInstance] showCamera:weakSelf animated:NO];
-            }];
+            weakSelf.previewView.alpha = 0;
+            [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
+                weakSelf.transitionEffectView.alpha = 0;
+            } completion:nil];
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
 }
 
+- (void)photoTaken {
+    self.media = [PGCameraManager sharedInstance].currentMedia;
+    self.selectedPhoto = [PGCameraManager sharedInstance].currentSelectedPhoto;
+    
+    [self renderPhoto];
+    [self hideCamera];
+    
+    self.imageContainer.alpha = 1.0F;
+    self.imageView.alpha = 1.0F;
+}
+
+
+#pragma mark - Button Handlers
+
+- (IBAction)didTouchUpInsideCameraButton:(id)sender
+{
+    [self showCamera];
+}
+
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
-    }];
+    [self closePreviewAndCamera];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
