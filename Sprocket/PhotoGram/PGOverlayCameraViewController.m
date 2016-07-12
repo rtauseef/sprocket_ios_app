@@ -21,20 +21,9 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if (self.transitionEffectView.alpha == 1) {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.transitionEffectView.alpha = 0;
-        }];
-    }
-}
-
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] dismissCameraAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
 }
 
 - (IBAction)cameraReverseTapped:(id)sender
@@ -45,10 +34,6 @@
 - (IBAction)shutterTapped:(id)sender
 {
     [[PGCameraManager sharedInstance] takePicture];
-    
-    [UIView animateWithDuration:0.1 animations:^{
-        self.transitionEffectView.alpha = 1;
-    } completion:nil];
 }
 
 @end
