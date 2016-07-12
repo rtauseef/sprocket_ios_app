@@ -25,8 +25,8 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>hpsms</string>
-				<string>fb774050882653503</string>
+				<string>hpsprocket</string>
+				<string>fb1784144831820268</string>
 			</array>
 		</dict>
 		<dict>
@@ -55,12 +55,12 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>774050882653503</string>
+	<string>1784144831820268</string>
 	<key>FacebookDisplayName</key>
-	<string>sprocket</string>
+	<string>HP Sprocket</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>hpgcflickr</string>
+		<string>hpsprocket</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
