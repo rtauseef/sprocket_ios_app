@@ -35,7 +35,7 @@ Feature: Verify preview screen from different social media
 
   @reset
   @TA14130
-  Scenario: Verify margins on preview screen for camera roll images
+  Scenario: Verify Double-tap add borders to image on preview screen_camera roll
     Given I am on the "CameraRollAlbums" screen
     Then I touch Camera Roll Image
     And I should see the camera roll photos
@@ -48,7 +48,7 @@ Feature: Verify preview screen from different social media
 
   @reset
   @TA14130
-  Scenario: Verify margins on preview screen for instagram images
+  Scenario: Verify Double-tap add borders to image on preview screen_instagram
     Given I am on the "Preview" screen
     When I double tap on the picture
     Then I should see margins on top and bottom
@@ -57,7 +57,7 @@ Feature: Verify preview screen from different social media
 
   @reset
   @TA14130
-  Scenario: Verify margins on preview screen for Flickr images
+  Scenario: Verify Double-tap add borders to image on preview screen_Flickr
     Given I am on the "FlickrPhoto" screen
     When I touch second photo
     Then I should see the "Preview" screen

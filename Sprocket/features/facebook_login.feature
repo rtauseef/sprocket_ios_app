@@ -21,7 +21,7 @@ Feature: Signin with facebook credentials and verify preview options
         
 
 @fbtest
-  Scenario: Verify margins on preview screen for facebook images
+  Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given  I am on the "Welcome" screen
     Then I touch the next page control
     Then I wait for sometime
