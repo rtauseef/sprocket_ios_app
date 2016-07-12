@@ -1,4 +1,4 @@
-Feature: Select different templates
+Feature: Verify preview screen from different social media
   As a signed in user
   I should be able to navigate to preview screen
 
