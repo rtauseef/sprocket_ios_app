@@ -13,7 +13,7 @@
 #import "HPPR.h"
 #import "NSBundle+HPPRLocalizable.h"
 
-@interface HPPRSelectPhotoProvider ()
+@interface HPPRSelectPhotoProvider () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *images;
 
@@ -69,10 +69,9 @@
 
 - (void)lostAccess
 {
-    [self resetAccess];
-    if ([self.delegate respondsToSelector:@selector(providerLostAccess)]) {
-        [self.delegate providerLostAccess];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [self.lostAccessAlertView show];
+    });
 }
 
 - (void)lostConnection
@@ -121,9 +120,9 @@
 
 - (UIAlertView *)lostAccessAlertView
 {
-    return [[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:HPPRLocalizedString(@"%@ Authorization", @"Title of an alert indicates the specified social network login is not longer valid"), self.name]
-                                       message:[NSString stringWithFormat:HPPRLocalizedString(@"Your %@ login is no longer valid. Please sign in again.", @"Message of an alert indicates the specified social network login is not longer valid"), self.name]
-                                      delegate:nil
+    return [[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:HPPRLocalizedString(@"%@ Access", @"Title of an alert indicates the specified social network login is not longer valid"), self.name]
+                                       message:[NSString stringWithFormat:HPPRLocalizedString(@"There was a problem accessing %@. Please sign in again.", @"Message of an alert indicates the specified social network login is not longer valid"), self.name]
+                                      delegate:self
                              cancelButtonTitle:HPPRLocalizedString(@"OK", nil)
                              otherButtonTitles: nil];
 }
@@ -225,6 +224,16 @@
 - (void)coverPhotoForAlbum:(HPPRAlbum *)album withRefresh:(BOOL)refresh andCompletion:(void (^)(HPPRAlbum *album, UIImage *coverPhoto, NSError *error))completion
 {
     raise(-1);
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self resetAccess];
+    if ([self.delegate respondsToSelector:@selector(providerLostAccess)]) {
+        [self.delegate providerLostAccess];
+    }
 }
 
 @end

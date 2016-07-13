@@ -23,10 +23,13 @@
 - (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion;
 - (void)checkStatusWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion;
 
-- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
+- (BOOL)handleApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+- (BOOL)handleApplication:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 - (void)handleDidBecomeActive;
 
 - (BOOL)connectedToInternet:(void (^)(BOOL loggedIn, NSError *error))completion;
+
+- (NSError *)loginProblemError;
 
 - (void)notifyLogin;
 - (void)notifyLogout;

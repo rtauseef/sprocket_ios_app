@@ -89,7 +89,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     self.backgroundView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     
     UIFont *labelFont = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont];
-    UIFont *labelColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor];
+    UIColor *labelColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor];
     self.numPostsLabel.font = labelFont;
     self.numPostsLabel.textColor = labelColor;
     self.userInfoLabel.font = labelFont;
@@ -170,9 +170,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 {
     if (alertView == self.deletedAlbumAlertView) {
         [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self.provider resetAccess];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -529,6 +526,11 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     _provider.delegate = self;
 }
 
+- (void)providerLostAccess
+{
+    // do nothing
+}
+
 - (void)providerLostConnection
 {
     if (self.provider.showNetworkWarning) {
@@ -543,16 +545,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             }
         });
     }
-}
-
-
-- (void)providerLostAccess
-{
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        UIAlertView *alertView = self.provider.lostAccessAlertView;
-        alertView.delegate = self;
-        [alertView show];
-    });
 }
 
 - (void)providerAccessedPrivateAccount

@@ -38,7 +38,12 @@
     }
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
+- (BOOL)handleApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    return NO;
+}
+
+- (BOOL)handleApplication:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return NO;
 }
@@ -70,6 +75,13 @@
 {
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjects:@[HPPR_ERROR_NO_INTERNET_CONNECTION_DESCRIPTION] forKeys:@[@"description"]];
     NSError * error = [NSError errorWithDomain:HPPR_ERROR_DOMAIN code:HPPR_ERROR_NO_INTERNET_CONNECTION userInfo:userInfo];
+    return error;
+}
+
+- (NSError *)loginProblemError
+{
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjects:@[HPPR_ERROR_LOGIN_PROBLEM_DESCRIPTION] forKeys:@[@"description"]];
+    NSError * error = [NSError errorWithDomain:HPPR_ERROR_DOMAIN code:HPPR_ERROR_LOGIN_PROBLEM userInfo:userInfo];
     return error;
 }
 

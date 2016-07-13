@@ -44,6 +44,8 @@
     
     [self initializePrintPod];
     
+    [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application didFinishLaunchingWithOptions:launchOptions];
+
     // Check if the app was opened by local notification
     UILocalNotification *localNotification = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotification) {
@@ -82,7 +84,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[HPPRFacebookLoginProvider sharedInstance] handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -119,9 +121,9 @@
     }
     
     if ([url.scheme isEqual:@"hpsprocket"]) {
-        return [[HPPRFlickrLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else {
-        return [[HPPRFacebookLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+        return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
 }
 

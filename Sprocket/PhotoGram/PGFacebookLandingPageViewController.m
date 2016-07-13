@@ -10,7 +10,6 @@
 // the license agreement.
 //
 
-#import <FacebookSDK/FacebookSDK.h>
 #import <HPPR.h>
 #import <HPPRFacebookLoginProvider.h>
 #import <HPPRSelectPhotoCollectionViewController.h>
@@ -30,7 +29,7 @@
 NSString * const kFacebookUserNameKey = @"name";
 NSString * const kFacebookUserIdKey = @"id";
 
-@interface PGFacebookLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate>
+@interface PGFacebookLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, HPPRLoginProviderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *signInView;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
@@ -61,7 +60,13 @@ NSString * const kFacebookUserIdKey = @"id";
     
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
-    [self checkFacebookAndAlbums:NO];
+    [HPPRFacebookPhotoProvider sharedInstance].loginProvider.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self checkFacebookAndAlbums:YES];
 }
 
 - (void)dealloc
@@ -115,7 +120,7 @@ NSString * const kFacebookUserIdKey = @"id";
         
         if (loggedIn) {
             
-            [provider userInfoWithRefresh:NO andCompletion:^(NSDictionary<FBGraphUser> *userInfo, NSError *error) {
+            [provider userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
                 
                 if (!error) {
                     provider.user = userInfo;
@@ -147,7 +152,7 @@ NSString * const kFacebookUserIdKey = @"id";
                     // An error occurred, we need to handle the error
                     // See: https://developers.facebook.com/docs/ios/errors
                     
-                    [FBSession.activeSession closeAndClearTokenInformation];
+                    [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
                     
                     [self.spinner removeFromSuperview];
                     
@@ -163,7 +168,7 @@ NSString * const kFacebookUserIdKey = @"id";
         } else if (error) {
             [self.spinner removeFromSuperview];
             [self checkError:error];
-            [FBSession.activeSession closeAndClearTokenInformation];
+            [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
             [self enableSignIn];
             
         } else {
@@ -175,28 +180,8 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)checkError:(NSError *)error
 {
-    NSString *alertTitle;
-    NSString *alertText;
-    if ([FBErrorUtility shouldNotifyUserForError:error] == YES) {
-        alertTitle = NSLocalizedString(@"Error", nil);
-        alertText = [FBErrorUtility userMessageForError:error];
-        [self showMessage:alertText withTitle:alertTitle];
-    } else {
-        if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
-            PGLogInfo(@"User cancelled login");
-        } else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryAuthenticationReopenSession) {
-            alertTitle = NSLocalizedString(@"Session Error", nil);
-            alertText = NSLocalizedString(@"Your current session is no longer valid. Please log in again.", nil);
-            [self showMessage:alertText withTitle:alertTitle];
-        } else if (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code) {
-            [self showNoConnectionAvailableAlert];
-        } else {
-            NSDictionary *errorInformation = [[[error.userInfo objectForKey:@"com.facebook.sdk:ParsedJSONResponseKey"] objectForKey:@"body"] objectForKey:@"error"];
-            alertTitle = NSLocalizedString(@"Session Error", nil);
-            alertText = [NSString stringWithFormat:NSLocalizedString(@"Please retry. \n\n If the problem persists contact us and mention this error code: %@", @"Shows the description of the error"), [errorInformation objectForKey:@"message"]];
-            [self showMessage:alertText withTitle:alertTitle];
-        }
-    }
+    NSLog(@"CHECK ERROR: %@", error);
+    NSLog(@"");
 }
 
 - (void)showMessage:(NSString *)text withTitle:(NSString *)title
@@ -218,9 +203,7 @@ NSString * const kFacebookUserIdKey = @"id";
 - (void)showLogin
 {
     [[HPPRFacebookLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
-        if (loggedIn) {
-            [self checkFacebookAndAlbums:YES];
-        } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
+        if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         }
     }];
@@ -248,6 +231,13 @@ NSString * const kFacebookUserIdKey = @"id";
     
     [self presentViewController:previewViewController animated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
+}
+
+#pragma mark - HPPRLoginProviderDelegate
+
+- (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

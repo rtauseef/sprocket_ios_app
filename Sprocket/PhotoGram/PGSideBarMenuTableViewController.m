@@ -523,19 +523,14 @@ typedef enum {
 
 - (void)setFacebookUserView
 {
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        __weak PGSideBarMenuTableViewController *weakSelf = self;
-        [FBSession openActiveSessionWithReadPermissions:FACEBOOK_PERMISSIONS allowLoginUI:NO completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-            if (state != FBSessionStateClosed) {
-                [weakSelf fetchFacebookData];
-            }
-        }];
-    } else if (FBSession.activeSession.state == FBSessionStateOpen || FBSession.activeSession.state == FBSessionStateOpenTokenExtended) {
-        [self fetchFacebookData];
-    } else {
-        self.facebookUserImageView.image = [UIImage imageNamed:@"Facebook"];
-        self.facebookLogged = NO;
-    }
+    [[HPPRFacebookLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            [self fetchFacebookData];
+        } else {
+            self.facebookUserImageView.image = [UIImage imageNamed:@"Facebook"];
+            self.facebookLogged = NO;
+        }
+    }];
 }
 
 - (void)setFlickrUserView
@@ -556,14 +551,14 @@ typedef enum {
 
 - (void)fetchFacebookData
 {
-    [[HPPRFacebookPhotoProvider sharedInstance] userInfoWithRefresh:NO andCompletion:^(NSDictionary<FBGraphUser> *userInfo, NSError *error) {
+    [[HPPRFacebookPhotoProvider sharedInstance] userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
         __weak PGSideBarMenuTableViewController * weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^ {
             if (error) {
                 weakSelf.facebookLogged = NO;
                 weakSelf.facebookUserImageView.image = [UIImage imageNamed:@"Facebook"];
             } else {
-                NSString *profilePictureUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", [userInfo objectID]];
+                NSString *profilePictureUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square",  [userInfo objectForKey:@"id"]];
                 [weakSelf.facebookUserImageView setMaskImageWithURL:profilePictureUrl];
                 weakSelf.facebookLogged = YES;
             }

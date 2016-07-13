@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "AFHTTPClient.h"
+#import "AFHTTPSessionManager.h"
 
 extern NSString *const kInstagramBaseURLString;
 extern NSString *const kClientId;
@@ -31,7 +31,7 @@ extern NSString *const kAuthenticationEndpoint;
 
 extern NSString *const kUserAccessTokenKey;
 
-@interface HPPRInstagram : AFHTTPClient
+@interface HPPRInstagram : AFHTTPSessionManager
 
 + (HPPRInstagram *)sharedClient;
 

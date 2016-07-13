@@ -10,7 +10,8 @@
 // the license agreement.
 //
 
-#import <FacebookSDK/FacebookSDK.h>
+#import "FBSDKCoreKit/FBSDKCoreKit.h"
+#import "FBSDKLoginKit/FBSDKLoginKit.h"
 #import "HPPRFacebookLoginProvider.h"
 #import "HPPR.h"
 
@@ -35,22 +36,31 @@
         return nil;
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
-    
     return self;
 }
 
 - (void)loginWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion
 {
     if( [self connectedToInternet:completion] ) {
-        if (FBSession.activeSession.state == FBSessionStateOpen || FBSession.activeSession.state == FBSessionStateOpenTokenExtended) {
+        if (nil != [FBSDKAccessToken currentAccessToken]) {
             [self notifyLogin];
             if (completion) {
                 completion(YES, nil);
             }
         } else {
-            [FBSession openActiveSessionWithReadPermissions:FACEBOOK_PERMISSIONS allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-                [self sessionStateChanged:session state:state error:error completion:completion];
+            FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+            loginManager.loginBehavior = FBSDKLoginBehaviorSystemAccount;
+            UIViewController *topViewController = [self topViewController];
+            [loginManager logInWithReadPermissions:FACEBOOK_PERMISSIONS fromViewController:topViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                if (completion) {
+                    if (error) {
+                        completion(NO, error);
+                    } else if (nil == [FBSDKAccessToken currentAccessToken]) {
+                        completion(NO, [self loginProblemError]);
+                    } else {
+                        completion(YES, nil);
+                    }
+                }
             }];
         }
     }
@@ -58,7 +68,8 @@
 
 - (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion
 {
-    [FBSession.activeSession closeAndClearTokenInformation];
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
     [self notifyLogout];
 
     if (completion) {
@@ -69,54 +80,53 @@
 - (void)checkStatusWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion
 {
     if( [self connectedToInternet:completion] ) {
-        FBSessionState state = FBSession.activeSession.state;
-        if (state == FBSessionStateCreatedTokenLoaded) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [FBSession openActiveSessionWithReadPermissions:FACEBOOK_PERMISSIONS allowLoginUI:NO completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                    [self sessionStateChanged:FBSession.activeSession state:status error:error completion:completion];
-                }];
-            });
-        } else if (state == FBSessionStateOpen || state == FBSessionStateOpenTokenExtended) {
-            [self sessionStateChanged:FBSession.activeSession state:state error:nil completion:completion];
-        } else {
-            if (completion) {
-                completion(NO, nil);
-            }
+        if (completion) {
+            BOOL loggedIn = (nil != [FBSDKAccessToken currentAccessToken]);
+            completion(loggedIn, nil);
         }
     }
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
+- (BOOL)handleApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [FBSession.activeSession setStateChangeHandler:nil];
-    
-    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    return YES;
+}
+
+
+- (BOOL)handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation
+{
+    return [[FBSDKApplicationDelegate sharedInstance] application:sourceApplication
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 - (void)handleDidBecomeActive
 {
-    // Handle the user leaving the app while the Facebook login dialog is being shown
-    // For example: when the user presses the iOS "home" button while the login dialog is active
-    [FBAppCall handleDidBecomeActive];
+    [FBSDKAppEvents activateApp];
 }
 
-#pragma mark - Private methods
 
-- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState)state error:(NSError *)error completion:(void (^)(BOOL loggedIn, NSError *error))completion
-{
-    if (!error && (state == FBSessionStateOpen || state == FBSessionStateOpenTokenExtended)){
-        [self notifyLogin];
-        if (completion) {
-            completion(YES, nil);
-        }
+// The following was adapted from: http://stackoverflow.com/questions/6131205/iphone-how-to-find-topmost-view-controller
+
+- (UIViewController*)topViewController {
+    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+}
+
+- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+    } else if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
     } else {
-        if (error) {
-            [FBSession.activeSession closeAndClearTokenInformation];
-            [self notifyLogout];
-        }
-        if (completion) {
-            completion(NO, error);
-        }
+        return rootViewController;
     }
 }
 

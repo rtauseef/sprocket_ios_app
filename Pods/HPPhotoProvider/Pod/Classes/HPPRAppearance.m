@@ -14,25 +14,25 @@
 #import "UIColor+HPPRStyle.h"
 #import "UIFont+HPPRStyle.h"
 
-extern NSString * const kHPPRBackgroundColor = @"kHPPRBackgroundColor";
-extern NSString * const kHPPRTableSeparatorColor = @"kHPPRTableSeparatorColor";
+NSString * const kHPPRBackgroundColor = @"kHPPRBackgroundColor";
+NSString * const kHPPRTableSeparatorColor = @"kHPPRTableSeparatorColor";
 
-extern NSString * const kHPPRTintColor = @"kHPPRTintColor";
-extern NSString * const kHPPRButtonTitleColorSelected = @"kHPPRButtonTitleColorSelected";
-extern NSString * const kHPPRButtonTitleColorNormal = @"kHPPRButtonTitleColorNormal";
-extern NSString * const kHPPRPrimaryLabelFont = @"kHPPRPrimaryLabelFont";
-extern NSString * const kHPPRPrimaryLabelColor = @"kHPPRPrimaryLabelColor";
-extern NSString * const kHPPRSecondaryLabelFont = @"kHPPRSecondaryLabelFont";
-extern NSString * const kHPPRSecondaryLabelColor = @"kHPPRSecondaryLabelColor";
-extern NSString * const kHPPRGridViewOnIcon = @"kHPPRGridViewOnIcon";
-extern NSString * const kHPPRGridViewOffIcon = @"kHPPRGridViewOffIcon";
-extern NSString * const kHPPRListViewOnIcon = @"kHPPRListViewOnIcon";
-extern NSString * const kHPPRListViewOffIcon = @"kHPPRListViewOffIcon";
-extern NSString * const kHPPRFilterButtonLeftOnIcon = @"kHPPRFilterButtonLeftOnIcon";
-extern NSString * const kHPPRFilterButtonLeftOffIcon = @"kHPPRFilterButtonLeftOffIcon";
-extern NSString * const kHPPRFilterButtonRightOnIcon = @"kHPPRFilterButtonRightOnIcon";
-extern NSString * const kHPPRFilterButtonRightOffIcon = @"kHPPRFilterButtonRightOffIcon";
-extern NSString * const kHPPRLoadingCellBackgroundColor = @"kHPPRLoadingCellBackgroundColor";
+NSString * const kHPPRTintColor = @"kHPPRTintColor";
+NSString * const kHPPRButtonTitleColorSelected = @"kHPPRButtonTitleColorSelected";
+NSString * const kHPPRButtonTitleColorNormal = @"kHPPRButtonTitleColorNormal";
+NSString * const kHPPRPrimaryLabelFont = @"kHPPRPrimaryLabelFont";
+NSString * const kHPPRPrimaryLabelColor = @"kHPPRPrimaryLabelColor";
+NSString * const kHPPRSecondaryLabelFont = @"kHPPRSecondaryLabelFont";
+NSString * const kHPPRSecondaryLabelColor = @"kHPPRSecondaryLabelColor";
+NSString * const kHPPRGridViewOnIcon = @"kHPPRGridViewOnIcon";
+NSString * const kHPPRGridViewOffIcon = @"kHPPRGridViewOffIcon";
+NSString * const kHPPRListViewOnIcon = @"kHPPRListViewOnIcon";
+NSString * const kHPPRListViewOffIcon = @"kHPPRListViewOffIcon";
+NSString * const kHPPRFilterButtonLeftOnIcon = @"kHPPRFilterButtonLeftOnIcon";
+NSString * const kHPPRFilterButtonLeftOffIcon = @"kHPPRFilterButtonLeftOffIcon";
+NSString * const kHPPRFilterButtonRightOnIcon = @"kHPPRFilterButtonRightOnIcon";
+NSString * const kHPPRFilterButtonRightOffIcon = @"kHPPRFilterButtonRightOffIcon";
+NSString * const kHPPRLoadingCellBackgroundColor = @"kHPPRLoadingCellBackgroundColor";
 
 @implementation HPPRAppearance
 
@@ -47,9 +47,6 @@ extern NSString * const kHPPRLoadingCellBackgroundColor = @"kHPPRLoadingCellBack
 
 - (NSDictionary *)defaultSettings
 {
-    NSString *regularFont = @"HelveticaNeue";
-    NSString *lightFont   = @"HelveticaNeue-Medium";
-    
     _settings = @{
                   kHPPRBackgroundColor:            [UIColor whiteColor],
                   kHPPRTintColor:                  [UIColor HPPRBlueColor],

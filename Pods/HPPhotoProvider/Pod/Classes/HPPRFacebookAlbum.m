@@ -26,7 +26,10 @@
         self.objectID = [attributes objectForKey:@"id"];
         self.name = [attributes objectForKey:@"name"];
         self.photoCount = [[attributes objectForKey:@"count"] integerValue];
-        self.coverPhotoID = [attributes objectForKey:@"cover_photo"];
+        NSDictionary *coverPhotoInfo = [attributes objectForKey:@"cover_photo"];
+        if (coverPhotoInfo) {
+            self.coverPhotoID = [coverPhotoInfo objectForKey:@"id"];
+        }
     }
     
     return self;
