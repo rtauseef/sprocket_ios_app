@@ -10,29 +10,32 @@ class PreviewScreen < Calabash::IBase
     "view marked:'previewCamera'"
   end
 
-  def cancel 
+  def cancel
     "view marked:'previewX'"
   end
+
   def edit
     "view marked:'previewEdit'"
   end
- def print
+
+  def print
     "view marked:'previewPrinter'"
   end
-    def share
+
+  def share
     "view marked:'previewShare'"
   end
-  
+
   def navigate
     unless current_page?
       select_photo_screen = go_to(HomeScreen)
       sleep(WAIT_SCREENLOAD)
-      end
-      sleep(STEP_PAUSE)
-      touch query("collectionViewCell index:1")
-    await
     end
+    sleep(STEP_PAUSE)
+    touch query("collectionViewCell index:1")
+    await
   end
+end
 
   
 

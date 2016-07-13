@@ -3,7 +3,7 @@ Feature:Photo Share
 
 
   @reset
-  @regression
+  @done
   Scenario: Photo share options
     Given I am on the "Select Template" screen
     When I touch Share icon
@@ -11,7 +11,7 @@ Feature:Photo Share
 
 
   @reset
-  @regression
+  @done
   Scenario:Photo share by mail
     Given I am on the "Share" screen
     When I touch "Mail"
@@ -19,28 +19,28 @@ Feature:Photo Share
 
 
   @reset
-  @regression
+  @done
   Scenario:Photo print
     Given I am on the "Share" screen
     When I touch "Print"
     Then I should see the "Page Settings" screen
 
   @reset
-  @regression
+  @done
   Scenario:Save to Camera Roll
     Given I am on the "Share" screen
     When I touch "Save to Camera Roll"
     Then I should see the "Select Template" screen
 
   @reset
-  @regression
+  @done
   Scenario:Cancel the Share
     Given I am on the "Share" screen
     When I cancel the share
     Then I should see the "Select Template" screen
 
   @reset
-  @TA13978
+  @done
   Scenario: Verify share functionality
     Given I am on the "CameraRollAlbums" screen
     Then I touch Camera Roll Image

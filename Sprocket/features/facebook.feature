@@ -1,29 +1,29 @@
 Feature: Signin with facebook credentials and verify functionality
-  
- @reset
-@fbtest
-@TA14209
+
+  @reset
+  @fbtest
+  @TA14209
   Scenario: Navigate to safari from app
     Given  I am on the "Landing" screen
     Then I tap "Facebook"
     Then I wait for sometime
     Then I should navigate to facebook screen
     Then I touch "Sign in" button
-   Then I wait for sometime
-    
+    Then I wait for sometime
 
-    
-@fbtest
-@TA14209
- Scenario: Login to facebook from safari
-	Given  I am on the safari screen
-	And I fill the form with valid credentials for facebook
-	Then I wait for sometime
+
+
+  @fbtest
+  @TA14209
+  Scenario: Login to facebook from safari
+    Given  I am on the safari screen
+    And I fill the form with valid credentials for facebook
+    Then I wait for sometime
     Then I click ok in confirm dialog
-        
-@fbtest
-@TA14209
-  Scenario: Verify margins on preview screen for facebook images
+
+  @fbtest
+  @TA14209
+  Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given  I am on the "Landing" screen
     Then I tap "Facebook"
     Then I wait for sometime
@@ -40,8 +40,8 @@ Feature: Signin with facebook credentials and verify functionality
     Then I double tap on the picture
     Then I should see the original image without margins
 
-@fbtest
-@TA14209
+  @fbtest
+  @TA14209
   Scenario: Verify facebook photo screen and the buttons present
     Given  I am on the "Landing" screen
     Then I tap "Facebook"
@@ -50,10 +50,10 @@ Feature: Signin with facebook credentials and verify functionality
     Then I should see "Grid mode" button
     Then I should see "List mode" button
     Then I should see "Folder" button
-    
-@fbtest
-@TA14209
-  Scenario: Verify folder icon functionality in facebook 
+
+  @fbtest
+  @TA14209
+  Scenario: Verify folder icon functionality in facebook
     Given  I am on the "Landing" screen
     Then I tap "Facebook"
     Then I wait for sometime
@@ -63,9 +63,9 @@ Feature: Signin with facebook credentials and verify functionality
     Then I wait for sometime
     And I should see "All Photos"
     And I should see other albums
-    
-@fbtest
-@TA14209
+
+  @fbtest
+  @TA14209
   Scenario: Verify list view and grid view for facebook photos
     Given  I am on the "Landing" screen
     Then I tap "Facebook"
@@ -76,6 +76,5 @@ Feature: Signin with facebook credentials and verify functionality
     Then I should see the photos in list view
     When I touch grid mode button
     Then I should see the photos in a grid view
-    
 
-  
+

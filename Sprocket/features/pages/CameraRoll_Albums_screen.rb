@@ -11,17 +11,21 @@ class CameraRollAlbumsScreen < Calabash::IBase
     "navigationBar label  marked:'Camera Roll Albums'"
   end
 
+=begin
   def cameraroll_logo
     "UIImageView id:'CameraRoll'"
   end
+=end
 
   def cameraroll_first_album
     "HPPRSelectAlbumTableViewCell"
   end
 
+=begin
   def cameraroll_button
     "button marked:'Camera Roll'"
   end
+=end
     
     def folder_icon
         "button marked:'folderIcon'"
@@ -46,6 +50,7 @@ def second_photo
   end
   def navigate
     if not current_page?
+=begin
       landing_screen = go_to(LandingScreen)
       wait_for_elements_exist(cameraroll_logo, :timeout => MAX_TIMEOUT)
       touch landing_screen.cameraroll_logo
@@ -57,9 +62,15 @@ def second_photo
         touch("view marked:'Authorize' index:0")
         sleep(WAIT_SCREENLOAD)
         touch folder_icon
-        end
-      await
-    end
-  end
+=end
+      camera_roll_photos_screen = go_to(CameraRollPhotoScreen)
+      sleep(WAIT_SCREENLOAD)
+      wait_for_elements_exist(camera_roll_photos_screen.second_photo,:timeout=>MAX_TIMEOUT)
+      touch folder_icon
 
+    end
+    close_camera_popup
+      await
+  end
+end
 

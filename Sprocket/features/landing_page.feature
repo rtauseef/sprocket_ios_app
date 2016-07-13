@@ -18,7 +18,7 @@ Feature: Verify Welcome screen/Landing Page
 
 
   @reset
-  @TA13957
+  @done
   Scenario: Verify Terms of Service link on Landing Screen
     Given  I am on the "Landing" screen
     Then I should see "sprocket"
@@ -27,8 +27,9 @@ Feature: Verify Welcome screen/Landing Page
     Then I should see the "Sprocket Terms Of Service" screen
     When I touch "Done" button
     Then I should see the "Landing" screen
-    
-    @TA14209
+
+  @reset
+  @done
 Scenario Outline: Open Social Source from  Landing screen
 	Given  I am on the "Landing" screen
 	Then I tap "<Social Source>"
@@ -41,7 +42,8 @@ Scenario Outline: Open Social Source from  Landing screen
   	|Facebook		|
   	|Camera Roll	|
 
- @TA14209
+  @reset
+  @done
 Scenario: Verify Side menu from Landing screen
 	Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
