@@ -116,6 +116,7 @@
 		511cd14361226561566ca3c2 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
 		5206ca653fa17d9c5bfbe283 /* PGSwipeCoachMarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */; };
 		53664681fa38e2661d9af155 /* ListViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */; };
+		549764DBE68DA8A5A98EFD85 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		552cc47e0fe9d78a4e0b2765 /* blackDate.png in Resources */ = {isa = PBXBuildFile; fileRef = F12537EA1AA9097F003CE020 /* blackDate.png */; };
 		55303413f7126afe6c0ccf73 /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
 		560897be54c368efba5700df /* Template4_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81601A365D0B008884F9 /* Template4_4x6.svg */; };
@@ -200,6 +201,10 @@
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
+		92373C5B1D36C55D001EF412 /* HP_protocol_v1.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C571D36C55D001EF412 /* HP_protocol_v1.rbn */; };
+		92373C5C1D36C55D001EF412 /* HP_protocol_v2.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */; };
+		92373C5D1D36C55D001EF412 /* Polaroid_v200.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C591D36C55D001EF412 /* Polaroid_v200.rbn */; };
+		92373C5E1D36C55D001EF412 /* Polaroid_v300.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C5A1D36C55D001EF412 /* Polaroid_v300.rbn */; };
 		92481d283eb2f32390dfd0b4 /* Template15_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81A21A365D44008884F9 /* Template15_4x6.svg */; };
 		929dff50d5f5c11968f622c3 /* PGSelectTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 378EA80319A5707600C72F1A /* PGSelectTemplateViewController.m */; };
 		92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
@@ -520,7 +525,6 @@
 		c9140be84f01f1933e9828a4 /* Template11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB167C19F5603600C0F42B /* Template11@2x.png */; };
 		c9c54121c6c115e3e2e0e142 /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
 		ca6678fc47f21b3e6535b94e /* Template14_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A819E1A365D44008884F9 /* Template14_4x5.svg */; };
-		cbb225a7bbcff411ad7c22ab /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		cc2297a9f234708febbac5e1 /* spicyrice-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1DCB8281B542D6500CA9AAD /* spicyrice-regular.ttf */; };
 		d06885460998aa36630d92b4 /* LoginCameraRoll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F144B1BC1A70680A007CDBBD /* LoginCameraRoll@2x.png */; };
 		d100ef22888d66ee50c4feeb /* Template11_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81741A365D0B008884F9 /* Template11_4x5.svg */; };
@@ -600,7 +604,8 @@
 		378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTemplateSelectorCollectionViewCell.xib; sourceTree = "<group>"; };
 		378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplateSelectorCollectionViewCell.h; sourceTree = "<group>"; };
 		378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplateSelectorCollectionViewCell.m; sourceTree = "<group>"; };
-		4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
+		39F3B89A604F72D81E7FD482 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
+		5AD768D7B03B8BFB31D6A26D /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		65334C1D1C472044004E849D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/terms.html; sourceTree = "<group>"; };
 		65334C1F1C47206E004E849D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/terms.html; sourceTree = "<group>"; };
 		65334C201C472074004E849D /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/terms.html; sourceTree = "<group>"; };
@@ -624,17 +629,19 @@
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
-		6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
-		8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
+		92373C571D36C55D001EF412 /* HP_protocol_v1.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = HP_protocol_v1.rbn; path = Resources/Firmware/HP_protocol_v1.rbn; sourceTree = "<group>"; };
+		92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = HP_protocol_v2.rbn; path = Resources/Firmware/HP_protocol_v2.rbn; sourceTree = "<group>"; };
+		92373C591D36C55D001EF412 /* Polaroid_v200.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = Polaroid_v200.rbn; path = Resources/Firmware/Polaroid_v200.rbn; sourceTree = "<group>"; };
+		92373C5A1D36C55D001EF412 /* Polaroid_v300.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = Polaroid_v300.rbn; path = Resources/Firmware/Polaroid_v300.rbn; sourceTree = "<group>"; };
 		92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRollingButtonScrollView.h; sourceTree = "<group>"; };
 		92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRollingButtonScrollView.m; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
@@ -650,7 +657,7 @@
 		92D57EEC1CB304FB00051D79 /* Template7_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_4x6.hpc; path = Resources/Images/Templates/Instagram/Template7_4x6.hpc; sourceTree = "<group>"; };
 		92D57EED1CB304FB00051D79 /* Template7_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_5x7.hpc; path = Resources/Images/Templates/Instagram/Template7_5x7.hpc; sourceTree = "<group>"; };
 		A83E7A7C1D344A850055DF5E /* Sprocket-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprocket-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
+		CBCFF7C5AF66843C94BD41F3 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
@@ -953,6 +960,7 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
+		F635B9D0620163C0DC947D5D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BE1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1026,10 +1034,6 @@
 				71f7519c0764e5438a66708c /* Crashlytics.framework in Frameworks */,
 				a5ba66c2385ac00b2db787e3 /* UIKit.framework in Frameworks */,
 				459200d577dc905985674931 /* Foundation.framework in Frameworks */,
-				cbb225a7bbcff411ad7c22ab /* libPods-Sprocket.a in Frameworks */,
-				cbb225a7bbcff411ad7c22ab /* libPods-Sprocket.a in Frameworks */,
-				cbb225a7bbcff411ad7c22ab /* libPods-Sprocket.a in Frameworks */,
-				cbb225a7bbcff411ad7c22ab /* libPods-Sprocket.a in Frameworks */,
 				A83E7A7A1D344A850055DF5E /* CFNetwork.framework in Frameworks */,
 				A83E7A7B1D344A850055DF5E /* calabash.framework in Frameworks */,
 			);
@@ -1050,6 +1054,7 @@
 				8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */,
 				FEA1D019F3637F304D84AFE2 /* libPods-Sprocket.a in Frameworks */,
 				DFED555E90C7B73404E0CDEE /* libPods-Sprocket.a in Frameworks */,
+				549764DBE68DA8A5A98EFD85 /* libPods-Sprocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,6 +1116,17 @@
 				6552DABA1A797396002D3B48 /* webflow.js */,
 			);
 			name = js;
+			sourceTree = "<group>";
+		};
+		92373C561D36C53E001EF412 /* Firmware */ = {
+			isa = PBXGroup;
+			children = (
+				92373C571D36C55D001EF412 /* HP_protocol_v1.rbn */,
+				92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */,
+				92373C591D36C55D001EF412 /* Polaroid_v200.rbn */,
+				92373C5A1D36C55D001EF412 /* Polaroid_v300.rbn */,
+			);
+			name = Firmware;
 			sourceTree = "<group>";
 		};
 		9261D4031D189CE60048E5F8 /* Preview */ = {
@@ -1181,10 +1197,10 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */,
-				6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */,
-				4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */,
-				8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */,
+				5AD768D7B03B8BFB31D6A26D /* Pods-Sprocket.debug.xcconfig */,
+				F635B9D0620163C0DC947D5D /* Pods-Sprocket.release.xcconfig */,
+				39F3B89A604F72D81E7FD482 /* Pods-Sprocket.testflight.xcconfig */,
+				CBCFF7C5AF66843C94BD41F3 /* Pods-Sprocket.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1374,6 +1390,7 @@
 		E34D5096199AB945006D80E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92373C561D36C53E001EF412 /* Firmware */,
 				6552DA931A797279002D3B48 /* Terms */,
 				370A21CE19ABA99B00EBDCCE /* Templates.plist */,
 				E34D5097199AB96C006D80E0 /* Fonts */,
@@ -2149,6 +2166,7 @@
 				F17A81B01A365D44008884F9 /* Template12_4x5.svg in Resources */,
 				F17A81B11A365D44008884F9 /* Template12_4x6.svg in Resources */,
 				92D57EE21CB2DBC700051D79 /* Template16_4x5.hpc in Resources */,
+				92373C5D1D36C55D001EF412 /* Polaroid_v200.rbn in Resources */,
 				F17A81B21A365D44008884F9 /* Template12_5x7.svg in Resources */,
 				E3DB16EA19F581A400C0F42B /* Template12@2x.png in Resources */,
 				F17A81B31A365D44008884F9 /* Template13_4x5.svg in Resources */,
@@ -2203,6 +2221,7 @@
 				E375384B19BE2B6D009C695F /* CardShadow@2x.png in Resources */,
 				92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */,
 				E3DB16AD19F5604900C0F42B /* Circle@2x.png in Resources */,
+				92373C5E1D36C55D001EF412 /* Polaroid_v300.rbn in Resources */,
 				F17FBE5419D2334B002A79AC /* CoachMarkDown@2x.png in Resources */,
 				F17FBE5619D2334B002A79AC /* CoachMarkUp@2x.png in Resources */,
 				92D57EF01CB304FB00051D79 /* Template7_5x7.hpc in Resources */,
@@ -2211,9 +2230,11 @@
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				E3DB16AF19F5604900C0F42B /* Green@2x.png in Resources */,
+				92373C5C1D36C55D001EF412 /* HP_protocol_v2.rbn in Resources */,
 				E3D6815A19A3D12E000D45E0 /* GridViewOff@2x.png in Resources */,
 				E3D6815C19A3D12E000D45E0 /* GridViewOn@2x.png in Resources */,
 				E3B62FFC19A50E5800CB80D7 /* Hamburger@2x.png in Resources */,
+				92373C5B1D36C55D001EF412 /* HP_protocol_v1.rbn in Resources */,
 				CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */,
 				E375385B19BE57C5009C695F /* HPLogo@2x.png in Resources */,
 				658BAB7E1B8FC016009D8E9D /* CoachMarkNone@2x.png in Resources */,
@@ -2788,7 +2809,6 @@
 /* Begin XCBuildConfiguration section */
 		01e8c32dd438427593fddef1 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2864,7 +2884,6 @@
 		};
 		70800c03b31f974ccc6e3f22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3018,7 +3037,7 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 5AD768D7B03B8BFB31D6A26D /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3090,7 +3109,7 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6995A05055EA1EE0A4FF14B6 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = F635B9D0620163C0DC947D5D /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3238,7 +3257,7 @@
 		};
 		FF3D09FF1D2C302C0002AB7C /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F968888848223425FBADD79 /* Pods-Sprocket.testflight.xcconfig */;
+			baseConfigurationReference = 39F3B89A604F72D81E7FD482 /* Pods-Sprocket.testflight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3364,7 +3383,7 @@
 		};
 		FF3D0A031D2DAC260002AB7C /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */;
+			baseConfigurationReference = CBCFF7C5AF66843C94BD41F3 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3454,7 +3473,6 @@
 		};
 		c285ca3c6aca0f76f45c3f48 /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A4B648DAE5504E714EAFDC2 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3530,7 +3548,6 @@
 		};
 		f5b664fef088e568abef6f0f /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4B1972A68365310D4D7826D /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
