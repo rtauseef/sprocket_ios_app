@@ -7,12 +7,21 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
       check_element_exists @current_page.edit
     else if element_id == "print"
       check_element_exists @current_page.print
+    else if element_id == "Grid mode"
+      check_element_exists @current_page.grid_mode_check_button
+        else if element_id == "List mode"
+      check_element_exists @current_page.list_mode_button
+        else if element_id == "Folder"
+      check_element_exists @current_page.folder_icon
     else
       check_element_exists @current_page.share
     end
     end
     end
     end
+end
+end
+end
 end
 When(/^I double tap on the picture$/) do
     sleep(WAIT_SCREENLOAD)

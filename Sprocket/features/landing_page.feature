@@ -27,24 +27,23 @@ Feature: Verify Welcome screen/Landing Page
     Then I should see the "Sprocket Terms Of Service" screen
     When I touch "Done" button
     Then I should see the "Landing" screen
+    
+    @TA14209
+Scenario Outline: Open Social Source from  Landing screen
+	Given  I am on the "Landing" screen
+	Then I tap "<Social Source>"
+	Then I should see the "<Social Source>Landing" screen
+    Then I wait for sometime
+	Examples:
+	|Social Source	|
+	|Instagram		|
+  	|Flickr			|
+  	|Facebook		|
+  	|Camera Roll	|
 
-
-
-#	*** Scenarios to Imeplement ****
-#
-#  Scenario: Verify Side menu from Landing screen
-#	Given  I am on the "Landing" screen
-#	Then I tap "Hamburger"
-#	And I see side menu
-#
-#
-#  Scenario Outline: Open Social Source from  Landing screen
-#	Given  I am on the "Landing" screen
-#	Then I tap "<Social Source>"
-#	And I see "<Social Source>" Login screen
-#	Examples:
-#	|Social Source|
-#	|Instagram|
-#  	|Flickr|
-#  	|Facebook|
-#  	|Camera Roll|
+ @TA14209
+Scenario: Verify Side menu from Landing screen
+	Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+	Then I should see the side menu
+ 

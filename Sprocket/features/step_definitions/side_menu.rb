@@ -4,7 +4,7 @@ Given /^Side menu is open$/ do
 end
 
 When /^I touch menu button on navigation bar$/ do
-  touch("button marked:'Hamburger'")
+  touch("UIImageView id:'hamburger'")
   sleep(WAIT_SCREENLOAD)
 end
 
@@ -22,7 +22,7 @@ end
 
 Then /^I should see the side menu$/ do
     sleep(WAIT_SCREENLOAD)
-check_element_exists("view marked:'HP Social Media Snapshots'")
+check_element_exists("view marked:'sprocket'")
 sleep(STEP_PAUSE)
 end
 
