@@ -39,8 +39,12 @@
 {
     NSString *name = [attributes objectForKey:@"name"];
     NSInteger photoCount = [[attributes objectForKey:@"count"] integerValue];
-    NSString *coverPhotoID = [attributes objectForKey:@"cover_photo"];
-    
+    NSDictionary *coverPhotoInfo = [attributes objectForKey:@"cover_photo"];
+    NSString *coverPhotoID = nil;
+    if (coverPhotoInfo) {
+        coverPhotoID = [coverPhotoInfo objectForKey:@"id"];
+    }
+
     if (![self.name isEqualToString:name] ||
         (self.photoCount != photoCount) ||
         ![self.coverPhotoID isEqualToString:coverPhotoID]) {

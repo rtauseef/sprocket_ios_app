@@ -1,6 +1,6 @@
 {
   "name": "HPPhotoProvider",
-  "version": "0.13.28",
+  "version": "0.13.29",
   "summary": "Photo provider for the social networks.",
   "description": "Selection of photo from Facebook, Flickr or Instagram.",
   "homepage": "http://hp.com",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/IPGPTP/hp_photo_provider.git",
-    "tag": "0.13.28"
+    "tag": "0.13.29"
   },
   "platforms": {
     "ios": "7.0"

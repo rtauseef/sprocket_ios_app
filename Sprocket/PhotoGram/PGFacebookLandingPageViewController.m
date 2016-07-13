@@ -61,11 +61,6 @@ NSString * const kFacebookUserIdKey = @"id";
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
     [HPPRFacebookPhotoProvider sharedInstance].loginProvider.delegate = self;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     [self checkFacebookAndAlbums:YES];
 }
 
@@ -203,8 +198,12 @@ NSString * const kFacebookUserIdKey = @"id";
 - (void)showLogin
 {
     [[HPPRFacebookLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
-        if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
+        if (loggedIn && nil == error) {
+            [self checkFacebookAndAlbums:NO];
+        } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
+        } else {
+            NSLog(@"FACEBOOK LOGIN ERROR: %@", error);
         }
     }];
 }
@@ -238,6 +237,7 @@ NSString * const kFacebookUserIdKey = @"id";
 - (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+    [self checkFacebookAndAlbums:NO];
 }
 
 @end
