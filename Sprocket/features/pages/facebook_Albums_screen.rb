@@ -14,6 +14,11 @@ class FacebookAlbumsScreen < Calabash::IBase
     def cameraroll_logo
     "view marked:'LoginCameraRoll.png'"
   end
+    
+    def folder_icon
+    "button marked:'folderIcon'"
+  end
+    
  def first_album
     "HPPRSelectAlbumTableViewCell index:1"
   end
@@ -28,6 +33,7 @@ class FacebookAlbumsScreen < Calabash::IBase
        close_survey
         wait_for_elements_exist(landing_screen.facebook_logo,:timeout=>MAX_TIMEOUT)
        touch landing_screen.facebook_logo
+       touch folder_icon
         end 
      await
 end

@@ -22,6 +22,10 @@ class CameraRollAlbumsScreen < Calabash::IBase
   def cameraroll_button
     "button marked:'Camera Roll'"
   end
+    
+    def folder_icon
+        "button marked:'folderIcon'"
+    end
   
   def list_mode_button
     "button marked:'HPPRListViewOff'"
@@ -51,6 +55,8 @@ def second_photo
         sleep(WAIT_SCREENLOAD)
 		wait_for_elements_exist("view marked:'Authorize' index:0", :timeout => MAX_TIMEOUT)
         touch("view marked:'Authorize' index:0")
+        sleep(WAIT_SCREENLOAD)
+        touch folder_icon
         end
       await
     end
