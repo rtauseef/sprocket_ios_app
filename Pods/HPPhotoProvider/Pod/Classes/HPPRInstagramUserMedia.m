@@ -41,11 +41,11 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[client getAccessToken], @"access_token", nextMaxId, @"max_id",nil];
     NSString *path = [NSString stringWithFormat:endpoint, userId];
     
-    [[HPPRInstagram sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [client GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSMutableArray *mutableRecords = [NSMutableArray array];
         NSArray *data = [responseObject objectForKey:@"data"];
         NSDictionary *pagination = [responseObject objectForKey:@"pagination"];
-
+        
         for (NSDictionary *obj in data) {
             if ([HPPRInstagramMedia isImage:obj]) {
                 HPPRInstagramMedia *media = [[HPPRInstagramMedia alloc] initWithAttributes:obj];
@@ -56,7 +56,7 @@
             NSDictionary *instagramPage = [NSDictionary dictionaryWithObjectsAndKeys:mutableRecords.copy, @"records", pagination, @"pagination", nil];
             completion(instagramPage, nil);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error.localizedDescription);
         if (completion) {
             completion(nil, error);
@@ -78,7 +78,8 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[client getAccessToken], @"access_token",nil];
     NSString *path = [NSString stringWithFormat:kUserMediaRecentEndpoint, userId];
     
-    [[HPPRInstagram sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [client GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray *data = [responseObject objectForKey:@"data"];
         
         UIImage *image = nil;
@@ -94,7 +95,7 @@
         if (completion) {
             completion(image);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error.localizedDescription);
         if (completion) {
             completion(nil);

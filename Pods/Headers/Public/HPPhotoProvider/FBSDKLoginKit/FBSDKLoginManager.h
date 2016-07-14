@@ -1,0 +1,1 @@
+../../../../HPPhotoProvider/Pod/Frameworks/FBSDKLoginKit.framework/Headers/FBSDKLoginManager.h

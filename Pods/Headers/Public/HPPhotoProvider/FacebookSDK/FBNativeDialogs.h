@@ -1,1 +1,0 @@
-../../../../HPPhotoProvider/Frameworks/FacebookSDK.framework/Versions/A/Headers/FBNativeDialogs.h

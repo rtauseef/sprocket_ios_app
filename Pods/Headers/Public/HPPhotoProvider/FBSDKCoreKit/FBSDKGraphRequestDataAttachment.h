@@ -1,0 +1,1 @@
+../../../../HPPhotoProvider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestDataAttachment.h

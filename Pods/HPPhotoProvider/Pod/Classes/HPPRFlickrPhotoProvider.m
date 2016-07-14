@@ -274,7 +274,7 @@
             
             self.numberOfPages = [photoSet objectForKey:@"pages"];
             NSInteger currentPage = [[photoSet objectForKey:@"page"] integerValue];
-            self.nextPage = [NSString stringWithFormat:@"%ld", (currentPage + 1)];
+            self.nextPage = [NSString stringWithFormat:@"%ld", (long)(currentPage + 1)];
             
             NSMutableArray *mutableRecords = [NSMutableArray array];
             for (NSDictionary *photo in [photoSet objectForKey:@"photo"]) {

@@ -31,8 +31,7 @@
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[client getAccessToken], @"access_token", nextMaxId, @"max_id",nil];
         NSString *path = [NSString stringWithFormat:kUserTagMediaSearchEndpoint, tagName];
         
-        [client getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+        [client GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSMutableArray *mutableRecords = [NSMutableArray array];
             NSArray *data = [responseObject objectForKey:@"data"];
             NSDictionary *pagination = [responseObject objectForKey:@"pagination"];
@@ -47,16 +46,14 @@
                 NSDictionary *instagramPage = [NSDictionary dictionaryWithObjectsAndKeys:mutableRecords.copy, @"records", pagination, @"pagination", nil];
                 completion(instagramPage, nil);
             }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error: %@", error.localizedDescription);
             
             if (completion) {
                 completion(nil, error);
             }
-            
         }];
+        
     }
     
 }

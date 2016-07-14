@@ -36,23 +36,18 @@
         NSDictionary *params = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
         NSString *path = kUserTagSearchEndpoint;
         
-        [client getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+        [client GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *tags = [responseObject objectForKey:@"data"];
-            
             if (completion) {
                 completion(tags, nil);
             }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error: %@", error.localizedDescription);
-            
             if (completion) {
                 completion(nil, error);
             }
-            
         }];
+        
     }
 }
 

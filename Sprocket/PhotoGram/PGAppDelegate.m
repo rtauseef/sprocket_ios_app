@@ -38,12 +38,14 @@
     [HPPR sharedInstance].instagramClientId = @"5db5d92b37f44ad89c5b620a2dc7081c";
     [HPPR sharedInstance].instagramRedirectURL = @"http://www8.hp.com/us/en/contact-hp/contact.html";
     
-    [HPPR sharedInstance].flickrAppKey = @"3a1548d1e080969f1d719be81093bb51";
-    [HPPR sharedInstance].flickrAppSecret = @"0007db25be2ff877";
-    [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsms://callback/flickr";
+    [HPPR sharedInstance].flickrAppKey = @"48fe53f214de34251c7833fa1675d4b3";
+    [HPPR sharedInstance].flickrAppSecret = @"8865a1b2f3742370";
+    [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsprocket://callback/flickr";
     
     [self initializePrintPod];
     
+    [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application didFinishLaunchingWithOptions:launchOptions];
+
     // Check if the app was opened by local notification
     UILocalNotification *localNotification = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotification) {
@@ -82,7 +84,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[HPPRFacebookLoginProvider sharedInstance] handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -118,10 +120,10 @@
         return YES;
     }
     
-    if ([url.scheme isEqual:@"hpsms"]) {
-        return [[HPPRFlickrLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+    if ([url.scheme isEqual:@"hpsprocket"]) {
+        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else {
-        return [[HPPRFacebookLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+        return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
 }
 
