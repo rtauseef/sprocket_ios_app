@@ -30,14 +30,12 @@ class ShareScreen < Calabash::IBase
 
   def navigate
     unless current_page?
-      select_template_screen = go_to(SelectTemplateScreen)
-      sleep(WAIT_SCREENLOAD)
-      screen_value="Print Queue"
-      if $product_id == screen_value
-            step %{I have disconnected wifi}
-        end
+        preview_screen = go_to(PreviewScreen)
         sleep(WAIT_SCREENLOAD)
-      touch select_template_screen.share_icon
+        wait_for_elements_exist(preview_screen.share, :timeout => MAX_TIMEOUT)
+        touch preview_screen.share
+        sleep(WAIT_SCREENLOAD)
+      
     end
     await
   end

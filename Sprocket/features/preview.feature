@@ -26,6 +26,7 @@ Feature: Verify preview screen from different social media
     And I should see the camera roll photos
     When I touch a photos in Camera Roll photos
     Then I should see the "Preview" screen
+    And I close the camera pop up
     And I should see "camera" button
     And I should see "close" button
     And I should see "Edit" button

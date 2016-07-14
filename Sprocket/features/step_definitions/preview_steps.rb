@@ -1,4 +1,5 @@
 Then(/^I should see "(.*?)" button$/) do |element_id|
+    sleep(MIN_TIMEOUT)
   if element_id == "camera"
     check_element_exists @current_page.camera
   else

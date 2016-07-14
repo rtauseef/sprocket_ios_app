@@ -7,23 +7,24 @@ class PreviewScreen < Calabash::IBase
   end
 
   def camera
-    "view marked:'previewCamera'"
+         "* id:'cameraButton'"
   end
 
   def cancel
-    "view marked:'previewX'"
+    "button marked:'previewX'"
+      
   end
 
   def edit
-    "view marked:'previewEdit'"
+         "* id:'editButton'"
   end
 
   def print
-    "view marked:'previewPrinter'"
+          "* id:'printButton'"
   end
 
   def share
-    "view marked:'previewShare'"
+         "* id:'shareButton'"
   end
 
   def navigate
@@ -33,7 +34,9 @@ class PreviewScreen < Calabash::IBase
     end
     sleep(STEP_PAUSE)
     touch query("collectionViewCell index:1")
-    await
+    sleep(WAIT_SCREENLOAD)
+      close_camera_popup
+      await
   end
 end
 
