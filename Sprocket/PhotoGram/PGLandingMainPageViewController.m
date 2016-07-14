@@ -115,7 +115,28 @@
 {
     [super viewDidAppear:animated];
     
-    [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
+    static BOOL promptedForReflash = NO;
+    
+    if (!promptedForReflash  &&  [[MP sharedInstance] bluetoothDeviceNeedsReflash]) {
+        
+        promptedForReflash = YES;
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Firmware Upgrade", @"Title for dialog that prompts user to ugrade device firmware")
+                                                                                 message:NSLocalizedString(@"Download the printer firmware upgrade?", @"Body for dialog that prompts user to ugrade device firmware")
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Allows user to decline firmware upgrade without taking any action")
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+        [alertController addAction:dismissAction];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"If pressed (on firmware upgrad dialog), firmware upgrade will begin")
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
+                                                              } ];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

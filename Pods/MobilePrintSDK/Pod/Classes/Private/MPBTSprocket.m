@@ -13,6 +13,7 @@
 #import "MPBTSprocket.h"
 #import "MPBTSessionController.h"
 #import "MPPrintItemImage.h"
+#import "NSBundle+MPLocalizable.h"
 
 const char MANTA_PACKET_LENGTH = 34;
 
@@ -131,11 +132,13 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
     if ([self.protocolString isEqualToString:polaroidProtocol]  ||
         [self.protocolString isEqualToString:hpProtocol]) {
         
-        NSString *myFile = [[NSBundle mainBundle] pathForResource:@"HP_protocol" ofType:@"rbn"];
+        NSString *myFile = [[NSBundle mainBundle] pathForResource:@"HP_protocol_v2" ofType:@"rbn"];
         if (MPBTSprocketReflashV2 == reflashOption) {
             myFile = [[NSBundle mainBundle] pathForResource:@"Polaroid_v200" ofType:@"rbn"];
         } else if (MPBTSprocketReflashV3 == reflashOption) {
             myFile = [[NSBundle mainBundle] pathForResource:@"Polaroid_v300" ofType:@"rbn"];
+        } else if (MPBTSprocketReflashBadHP == reflashOption) {
+            myFile = [[NSBundle mainBundle] pathForResource:@"HP_protocol_v1" ofType:@"rbn"];
         }
         
         self.upgradeData = [NSData dataWithContentsOfFile:myFile];
@@ -144,6 +147,20 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
     } else {
         NSLog(@"No reflash files for non-Polaroid and non-HP devices");
     }
+}
+
++ (NSArray *)pairedSprockets
+{
+    NSArray *accs = [[EAAccessoryManager sharedAccessoryManager] connectedAccessories];
+    NSMutableArray *pairedDevices = [[NSMutableArray alloc] init];
+    
+    for (EAAccessory *accessory in accs) {
+        if ([MPBTSprocket supportedAccessory:accessory]) {
+            [pairedDevices addObject:accessory];
+        }
+    }
+
+    return pairedDevices;
 }
 
 #pragma mark - Getters/Setters
@@ -416,8 +433,8 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
         NSLog(@"\tPayload Classification: %@", [MPBTSprocket dataClassificationString:payload[0]]);
         NSLog(@"\tError: %@\n\n", [MPBTSprocket errorString:payload[1]]);
         
-// TODO: Remove MFI workaround
-if (MantaErrorNoError == payload[1]  ||  MantaErrorBusy == payload[1]) {
+        if (MantaErrorNoError == payload[1]  ||
+            (MantaErrorBusy == payload[1]  &&  MantaDataClassFirmware == payload[0])) {
             if (MantaDataClassImage == payload[0]) {
                 
                 NSAssert( nil != self.imageData, @"No image data");
@@ -609,16 +626,16 @@ if (MantaErrorNoError == payload[1]  ||  MantaErrorBusy == payload[1]) {
     
     switch (interval) {
         case MantaAutoOffThreeMin:
-            intervalString = @"MantaAutoOffThreeMin";
+            intervalString = MPLocalizedString(@"3 minutes", @"The printer will shut off after 3 minutes");
             break;
         case MantaAutoOffFiveMin:
-            intervalString = @"MantaAutoOffFiveMin";
+            intervalString = MPLocalizedString(@"5 minutes", @"The printer will shut off after 5 minutes");
             break;
         case MantaAutoOffTenMin:
-            intervalString = @"MantaAutoOffTenMin";
+            intervalString = MPLocalizedString(@"10 minutes", @"The printer will shut off after 10 minutes");
             break;
         case MantaAutoOffAlwaysOn:
-            intervalString = @"MantaAutoOffAlwaysOn";
+            intervalString = MPLocalizedString(@"Always On", @"The printer will never shut off");
             break;
             
         default:
@@ -701,7 +718,7 @@ if (MantaErrorNoError == payload[1]  ||  MantaErrorBusy == payload[1]) {
     
     switch (error) {
         case MantaErrorNoError:
-            errString = @"MantaErrorNoError";
+            errString = @"None";
             break;
         case MantaErrorBusy:
             errString = @"MantaErrorBusy";
