@@ -11,6 +11,10 @@ class FacebookPhotoScreen < Calabash::IBase
   def select_photo
     "navigationBar label  marked:'Facebook Photos'"
   end
+    
+    def folder_icon
+        "* id:'folderIcon'"
+    end
 
   def all_visible_photos
     query "all collectionViewCell"
@@ -60,8 +64,19 @@ class FacebookPhotoScreen < Calabash::IBase
   def second_photo
     "UIImageView index:4"
   end
+def list_mode_check_button
+    "* id:'listViewOnIcon'"
+  end
 
-
+  def grid_mode_check_button
+    "* id:'gridViewOnIcon'"
+  end
+    def list_mode_button
+    "* id:'listViewOffIcon'"
+  end
+def grid_mode_button
+    "* id:'gridViewOffIcon'"
+  end
   def navigate
 
     if not current_page?

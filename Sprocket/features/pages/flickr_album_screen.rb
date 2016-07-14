@@ -23,6 +23,10 @@ class FlickrAlbumScreen < Calabash::IBase
   def About
     "tableViewCell text:'About'"
   end
+    
+  def folder_icon
+    "button marked:'folderIcon'"
+  end
 
   def Learn_printing
     "tableViewCell text:'Learn about Mobile Printing'"
@@ -81,9 +85,10 @@ class FlickrAlbumScreen < Calabash::IBase
         sleep(STEP_PAUSE)
         touch "webView css:'#auth-allow'"
         sleep(WAIT_SCREENLOAD)
+          touch folder_icon
       end
     end
-
+      
     await
   end
 

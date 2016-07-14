@@ -19,6 +19,13 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
     end
 
   end
+end   
+
+Then(/^I tap "(.*?)"$/) do |social_source|
+  if element_exists("UIImageView id:'#{social_source}'")
+      touch ("UIImageView id:'#{social_source}'")
+  end
+    swipe_coach_marks_view
 end
 
   And(/^I should see social source authentication text$/) do

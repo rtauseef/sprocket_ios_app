@@ -78,6 +78,7 @@ class LandingScreen < Calabash::IBase
   end
 
   def navigate
+      close_camera_popup
     await
   end
 

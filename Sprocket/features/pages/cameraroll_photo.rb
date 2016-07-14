@@ -61,15 +61,32 @@ class CameraRollPhotoScreen < Calabash::IBase
     "UIImageView index:4"
   end
 
+  def cameraroll_button
+    "button marked:'Camera Roll'"
+  end
 
   def navigate
 
     if not current_page?
+=begin
         cameraroll_albm_screen = go_to(CameraRollAlbumsScreen)
         sleep(WAIT_SCREENLOAD)
          wait_for_elements_exist(cameraroll_albm_screen.cameraroll_first_album,:timeout=>MAX_TIMEOUT)
         touch cameraroll_albm_screen.cameraroll_first_album
-         end
+    end
+=end
+    landing_screen = go_to(LandingScreen)
+    wait_for_elements_exist(landing_screen.cameraroll_logo, :timeout => MAX_TIMEOUT)
+    touch landing_screen.cameraroll_logo
+    swipe_coach_marks_view
+    wait_for_elements_exist(cameraroll_button, :timeout => MAX_TIMEOUT)
+    touch cameraroll_button
+    sleep(WAIT_SCREENLOAD)
+    wait_for_elements_exist("view marked:'Authorize' index:0", :timeout => MAX_TIMEOUT)
+    touch("view marked:'Authorize' index:0")
+    sleep(WAIT_SCREENLOAD)
+    end
+    close_camera_popup
     await
   end
 

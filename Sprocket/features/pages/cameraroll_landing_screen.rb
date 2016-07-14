@@ -4,16 +4,21 @@ require_relative '../common/base_html_screen'
 class CameraRollLandingScreen < Calabash::IBase
 
   def trait
-    social_media_logo
+    cameraroll_logo
   end
 
-
+def cameraroll_logo
+    "UIImageView id:'CameraRoll'"
+  end
   def navigate
-   
-     sleep(WAIT_SCREENLOAD)
-	  wait_for_elements_exist(cameraroll_logo,:timeout=>MAX_TIMEOUT)
-      touch cameraroll_logo
-      sleep(WAIT_SCREENLOAD)
+   if not current_page?
+
+        landing_screen = go_to(LandingScreen)
+         wait_for_elements_exist(landing_screen.cameraroll_logo, :timeout => MAX_TIMEOUT)
+        touch landing_screen.cameraroll_logo
+         sleep(STEP_PAUSE)
+        swipe_coach_marks_view
+      end
      swipe_coach_marks_view
 
   end
