@@ -77,6 +77,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)addCameraButtonsOnView:(UIView *)view
 {
+    [view layoutIfNeeded];
+    
     self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     self.cameraOverlay.pickerReference = nil;
     self.cameraOverlay.view.frame = view.frame;
