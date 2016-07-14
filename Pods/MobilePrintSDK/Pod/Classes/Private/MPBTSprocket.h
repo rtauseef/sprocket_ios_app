@@ -21,7 +21,8 @@ typedef enum
 {
     MPBTSprocketReflashV2,
     MPBTSprocketReflashV3,
-    MPBTSprocketReflashHP
+    MPBTSprocketReflashHP,
+    MPBTSprocketReflashBadHP
 } MPBTSprocketReflashOption;
 
 @interface MPBTSprocket : NSObject
@@ -47,9 +48,11 @@ typedef enum
 - (void)print:(MPPrintItem *)printItem numCopies:(NSInteger)numCopies;
 - (void)reflash:(MPBTSprocketReflashOption)reflashOption;
 
++ (NSArray *)pairedSprockets;
 + (BOOL)supportedAccessory:(EAAccessory *)accessory;
 + (NSString *)macAddress:(NSData *)data;
 + (NSString *)errorString:(MantaError)error;
++ (NSString *)autoPowerOffIntervalString:(MantaAutoPowerOffInterval)interval;
 
 @end
 

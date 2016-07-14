@@ -115,6 +115,7 @@
 		511cd14361226561566ca3c2 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
 		5206ca653fa17d9c5bfbe283 /* PGSwipeCoachMarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */; };
 		53664681fa38e2661d9af155 /* ListViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */; };
+		549764DBE68DA8A5A98EFD85 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		552cc47e0fe9d78a4e0b2765 /* blackDate.png in Resources */ = {isa = PBXBuildFile; fileRef = F12537EA1AA9097F003CE020 /* blackDate.png */; };
 		55303413f7126afe6c0ccf73 /* GridViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815319A3D12E000D45E0 /* GridViewOff@2x.png */; };
 		560897be54c368efba5700df /* Template4_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81601A365D0B008884F9 /* Template4_4x6.svg */; };
@@ -199,6 +200,10 @@
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
+		92373C5B1D36C55D001EF412 /* HP_protocol_v1.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C571D36C55D001EF412 /* HP_protocol_v1.rbn */; };
+		92373C5C1D36C55D001EF412 /* HP_protocol_v2.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */; };
+		92373C5D1D36C55D001EF412 /* Polaroid_v200.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C591D36C55D001EF412 /* Polaroid_v200.rbn */; };
+		92373C5E1D36C55D001EF412 /* Polaroid_v300.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C5A1D36C55D001EF412 /* Polaroid_v300.rbn */; };
 		92481d283eb2f32390dfd0b4 /* Template15_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81A21A365D44008884F9 /* Template15_4x6.svg */; };
 		929dff50d5f5c11968f622c3 /* PGSelectTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 378EA80319A5707600C72F1A /* PGSelectTemplateViewController.m */; };
 		92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
@@ -637,6 +642,10 @@
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
+		92373C571D36C55D001EF412 /* HP_protocol_v1.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = HP_protocol_v1.rbn; path = Resources/Firmware/HP_protocol_v1.rbn; sourceTree = "<group>"; };
+		92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = HP_protocol_v2.rbn; path = Resources/Firmware/HP_protocol_v2.rbn; sourceTree = "<group>"; };
+		92373C591D36C55D001EF412 /* Polaroid_v200.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = Polaroid_v200.rbn; path = Resources/Firmware/Polaroid_v200.rbn; sourceTree = "<group>"; };
+		92373C5A1D36C55D001EF412 /* Polaroid_v300.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = Polaroid_v300.rbn; path = Resources/Firmware/Polaroid_v300.rbn; sourceTree = "<group>"; };
 		92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRollingButtonScrollView.h; sourceTree = "<group>"; };
 		92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRollingButtonScrollView.m; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
@@ -955,6 +964,7 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
+		F635B9D0620163C0DC947D5D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BE1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1107,6 +1117,17 @@
 				6552DABA1A797396002D3B48 /* webflow.js */,
 			);
 			name = js;
+			sourceTree = "<group>";
+		};
+		92373C561D36C53E001EF412 /* Firmware */ = {
+			isa = PBXGroup;
+			children = (
+				92373C571D36C55D001EF412 /* HP_protocol_v1.rbn */,
+				92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */,
+				92373C591D36C55D001EF412 /* Polaroid_v200.rbn */,
+				92373C5A1D36C55D001EF412 /* Polaroid_v300.rbn */,
+			);
+			name = Firmware;
 			sourceTree = "<group>";
 		};
 		9261D4031D189CE60048E5F8 /* Preview */ = {
@@ -1375,6 +1396,7 @@
 		E34D5096199AB945006D80E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92373C561D36C53E001EF412 /* Firmware */,
 				6552DA931A797279002D3B48 /* Terms */,
 				370A21CE19ABA99B00EBDCCE /* Templates.plist */,
 				E34D5097199AB96C006D80E0 /* Fonts */,
@@ -2150,6 +2172,7 @@
 				F17A81B01A365D44008884F9 /* Template12_4x5.svg in Resources */,
 				F17A81B11A365D44008884F9 /* Template12_4x6.svg in Resources */,
 				92D57EE21CB2DBC700051D79 /* Template16_4x5.hpc in Resources */,
+				92373C5D1D36C55D001EF412 /* Polaroid_v200.rbn in Resources */,
 				F17A81B21A365D44008884F9 /* Template12_5x7.svg in Resources */,
 				E3DB16EA19F581A400C0F42B /* Template12@2x.png in Resources */,
 				F17A81B31A365D44008884F9 /* Template13_4x5.svg in Resources */,
@@ -2204,6 +2227,7 @@
 				E375384B19BE2B6D009C695F /* CardShadow@2x.png in Resources */,
 				92D57EE31CB2DBC700051D79 /* Template16_4x6.hpc in Resources */,
 				E3DB16AD19F5604900C0F42B /* Circle@2x.png in Resources */,
+				92373C5E1D36C55D001EF412 /* Polaroid_v300.rbn in Resources */,
 				F17FBE5419D2334B002A79AC /* CoachMarkDown@2x.png in Resources */,
 				F17FBE5619D2334B002A79AC /* CoachMarkUp@2x.png in Resources */,
 				92D57EF01CB304FB00051D79 /* Template7_5x7.hpc in Resources */,
@@ -2212,9 +2236,11 @@
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				E3DB16AF19F5604900C0F42B /* Green@2x.png in Resources */,
+				92373C5C1D36C55D001EF412 /* HP_protocol_v2.rbn in Resources */,
 				E3D6815A19A3D12E000D45E0 /* GridViewOff@2x.png in Resources */,
 				E3D6815C19A3D12E000D45E0 /* GridViewOn@2x.png in Resources */,
 				E3B62FFC19A50E5800CB80D7 /* Hamburger@2x.png in Resources */,
+				92373C5B1D36C55D001EF412 /* HP_protocol_v1.rbn in Resources */,
 				CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */,
 				E375385B19BE57C5009C695F /* HPLogo@2x.png in Resources */,
 				658BAB7E1B8FC016009D8E9D /* CoachMarkNone@2x.png in Resources */,
