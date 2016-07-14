@@ -59,8 +59,8 @@
 #define IPAD_GRID_COLLECTION_VIEW_SIZE ((IS_PORTRAIT) ? IPAD_GRID_COLLECTION_VIEW_SIZE_PORTRAIT : IPAD_GRID_COLLECTION_VIEW_SIZE_LANDSCAPE)
 #define GRID_COLLECTION_VIEW_SIZE (IS_IPHONE ? IPHONE_GRID_COLLECTION_VIEW_SIZE : IPAD_GRID_COLLECTION_VIEW_SIZE)
 
-#define IS_PORTRAIT UIDeviceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)
-#define IS_LANDSCAPE UIDeviceOrientationIsLandscape([UIApplication sharedApplication].
+#define IS_PORTRAIT UIDeviceOrientationIsPortrait((UIDeviceOrientation)[UIApplication sharedApplication].statusBarOrientation)
+#define IS_LANDSCAPE UIDeviceOrientationIsLandscape((UIDeviceOrientation)[UIApplication sharedApplication].statusBarOrientation)
 
 @interface HPPR : NSObject
 

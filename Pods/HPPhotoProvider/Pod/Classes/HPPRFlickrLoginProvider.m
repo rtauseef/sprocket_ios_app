@@ -94,7 +94,7 @@
     }
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
+- (BOOL)handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation
 {
     self.finishAuthOperation = [[FlickrKit sharedFlickrKit] completeAuthWithURL:url completion:^(NSString *userName, NSString *userId, NSString *fullName, NSError *error) {
         self.user = nil;

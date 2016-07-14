@@ -4,11 +4,13 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "340BCF6259B16F88A09D9F13E5149EB0C3A9145D" : 0,
     "54611BD22880AC59932302A22BCC4D181260DB54" : 0,
     "002654A986428CD1047FC86DD2CA762D9F8814B2" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C786E644-DC64-4046-B003-DD7D71C14C15",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "340BCF6259B16F88A09D9F13E5149EB0C3A9145D" : "hp_photo_provider\/",
     "54611BD22880AC59932302A22BCC4D181260DB54" : "ios-print-sdk\/",
     "002654A986428CD1047FC86DD2CA762D9F8814B2" : "sprocket_ios_app\/"
   },
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IPGPTP\/sprocket_ios_app.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "002654A986428CD1047FC86DD2CA762D9F8814B2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:IPGPTP\/hp_photo_provider.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "340BCF6259B16F88A09D9F13E5149EB0C3A9145D"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IPGPTP\/ios-print-sdk.git",

@@ -112,7 +112,6 @@
 		4d13f8763413b659180d2c6c /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
 		50a74ce2ee7fee452fb66879 /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		50ff524250afdb2126534f6f /* PGSVGMetadataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F5519AE31B80042DF5E /* PGSVGMetadataLoader.m */; };
-		5109F6575268043E64367DC8 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		511cd14361226561566ca3c2 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
 		5206ca653fa17d9c5bfbe283 /* PGSwipeCoachMarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */; };
 		53664681fa38e2661d9af155 /* ListViewOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815519A3D12E000D45E0 /* ListViewOff@2x.png */; };
@@ -149,6 +148,7 @@
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		6804a86eb196a74f28882ec4 /* whiteFlickrLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = F12537FD1AA9097F003CE020 /* whiteFlickrLikes.png */; };
 		690e0cefabe78a6e42095cf4 /* Template10_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81721A365D0B008884F9 /* Template10_4x6.svg */; };
+		6C925F45D34C511902EE5709 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		6a91b6284c75ced7e227ab76 /* greyFlickrLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = F12537F61AA9097F003CE020 /* greyFlickrLikes.png */; };
 		6c70ba662ade0e97b31a1e06 /* Template2_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A815A1A365D0B008884F9 /* Template2_4x6.svg */; };
 		6cd429adcd9054a832c19160 /* RockSalt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27319B648E500AAB884 /* RockSalt.ttf */; };
@@ -188,7 +188,6 @@
 		85da1959e7c7e0e505c7de15 /* Template7_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = 92D57EEC1CB304FB00051D79 /* Template7_4x6.hpc */; };
 		86d77c2d7b30af12e354c124 /* Template20_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F12538361AB20F5C003CE020 /* Template20_4x5.svg */; };
 		87954cdb31c1ea9033e40532 /* LandingPage-700-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53B119CCA8E9002B0DF3 /* LandingPage-700-Landscape~ipad.png */; };
-		8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		888cf877a178855f5534a761 /* UIImage+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630F19C0A2EA00996E20 /* UIImage+MaskImage.m */; };
 		8915f676299171e017b4f0d5 /* Template15_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81A11A365D44008884F9 /* Template15_4x5.svg */; };
 		8ad93badb52af252eb513375 /* Template14_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A819F1A365D44008884F9 /* Template14_4x6.svg */; };
@@ -239,6 +238,7 @@
 		9ea044a369c03c4f6cb49853 /* PGView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810B19A2B2A6000D45E0 /* PGView.m */; };
 		A83E7A7A1D344A850055DF5E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */; };
 		A83E7A7B1D344A850055DF5E /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12b9951de3bbff11258bdeb9 /* calabash.framework */; };
+		B813D78E8E71511A68E3402B /* libPods-Sprocket-cal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */; };
 		CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
 		CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		CC10808519CA122B00C1553A /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
@@ -250,7 +250,6 @@
 		CC5D53BA19CCA8E9002B0DF3 /* LandingPage-700-568h~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53B319CCA8E9002B0DF3 /* LandingPage-700-568h~iphone.png */; };
 		CC5D53BE19CCAECA002B0DF3 /* LandingPage-700-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53BC19CCAECA002B0DF3 /* LandingPage-700-Landscape@2x~ipad.png */; };
 		CC5D53C019CCAECA002B0DF3 /* LandingPage-700-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5D53BD19CCAECA002B0DF3 /* LandingPage-700-Portrait@2x~ipad.png */; };
-		DFED555E90C7B73404E0CDEE /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */; };
 		E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630C19C09FE400996E20 /* UIImageView+MaskImage.m */; };
 		E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630F19C0A2EA00996E20 /* UIImage+MaskImage.m */; };
@@ -476,7 +475,6 @@
 		F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */; };
 		F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */; };
 		F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */; };
-		FEA1D019F3637F304D84AFE2 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
 		a148d917735810b3c716fbf1 /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
 		a1791d88183e27360cb39afa /* SendFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385719BE57C5009C695F /* SendFeedback@2x.png */; };
@@ -585,6 +583,9 @@
 
 /* Begin PBXFileReference section */
 		008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IntroBackground1536x2048@2x.png"; sourceTree = "<group>"; };
+		03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
+		08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
+		0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket-cal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		260DCF161D2E0ADD0057BD55 /* AlphaGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientView.h; sourceTree = "<group>"; };
@@ -604,8 +605,8 @@
 		378EA81319A6A30800C72F1A /* PGTemplateSelectorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTemplateSelectorCollectionViewCell.xib; sourceTree = "<group>"; };
 		378EA81619A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTemplateSelectorCollectionViewCell.h; sourceTree = "<group>"; };
 		378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTemplateSelectorCollectionViewCell.m; sourceTree = "<group>"; };
-		39F3B89A604F72D81E7FD482 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
-		5AD768D7B03B8BFB31D6A26D /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
+		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
+		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		65334C1D1C472044004E849D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/terms.html; sourceTree = "<group>"; };
 		65334C1F1C47206E004E849D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/terms.html; sourceTree = "<group>"; };
 		65334C201C472074004E849D /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/terms.html; sourceTree = "<group>"; };
@@ -634,6 +635,9 @@
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
+		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
+		85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
+		86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
@@ -657,7 +661,7 @@
 		92D57EEC1CB304FB00051D79 /* Template7_4x6.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_4x6.hpc; path = Resources/Images/Templates/Instagram/Template7_4x6.hpc; sourceTree = "<group>"; };
 		92D57EED1CB304FB00051D79 /* Template7_5x7.hpc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Template7_5x7.hpc; path = Resources/Images/Templates/Instagram/Template7_5x7.hpc; sourceTree = "<group>"; };
 		A83E7A7C1D344A850055DF5E /* Sprocket-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprocket-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBCFF7C5AF66843C94BD41F3 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
+		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
@@ -1036,6 +1040,7 @@
 				459200d577dc905985674931 /* Foundation.framework in Frameworks */,
 				A83E7A7A1D344A850055DF5E /* CFNetwork.framework in Frameworks */,
 				A83E7A7B1D344A850055DF5E /* calabash.framework in Frameworks */,
+				B813D78E8E71511A68E3402B /* libPods-Sprocket-cal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,11 +1055,7 @@
 				E387B47919DA247000ABB167 /* Crashlytics.framework in Frameworks */,
 				E34D505F199AB87B006D80E0 /* UIKit.framework in Frameworks */,
 				E34D505B199AB87B006D80E0 /* Foundation.framework in Frameworks */,
-				5109F6575268043E64367DC8 /* libPods-Sprocket.a in Frameworks */,
-				8839A3E5A2298492CCA95FDB /* libPods-Sprocket.a in Frameworks */,
-				FEA1D019F3637F304D84AFE2 /* libPods-Sprocket.a in Frameworks */,
-				DFED555E90C7B73404E0CDEE /* libPods-Sprocket.a in Frameworks */,
-				549764DBE68DA8A5A98EFD85 /* libPods-Sprocket.a in Frameworks */,
+				6C925F45D34C511902EE5709 /* libPods-Sprocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,10 +1198,14 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				5AD768D7B03B8BFB31D6A26D /* Pods-Sprocket.debug.xcconfig */,
-				F635B9D0620163C0DC947D5D /* Pods-Sprocket.release.xcconfig */,
-				39F3B89A604F72D81E7FD482 /* Pods-Sprocket.testflight.xcconfig */,
-				CBCFF7C5AF66843C94BD41F3 /* Pods-Sprocket.appstore.xcconfig */,
+				85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */,
+				82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */,
+				08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */,
+				03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */,
+				56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */,
+				59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */,
+				86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */,
+				B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1277,6 +1282,7 @@
 				ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */,
 				12b9951de3bbff11258bdeb9 /* calabash.framework */,
 				16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */,
+				0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2462,7 +2468,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		caad9d502809ac1fd4895334 /* ShellScript */ = {
@@ -2503,7 +2509,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2809,6 +2815,7 @@
 /* Begin XCBuildConfiguration section */
 		01e8c32dd438427593fddef1 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2822,20 +2829,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2874,6 +2868,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "e6f0b3d6-0b5d-4301-b175-f8709982d9d4";
@@ -2884,6 +2879,7 @@
 		};
 		70800c03b31f974ccc6e3f22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2897,20 +2893,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2948,7 +2931,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
-				PODS_BUILD_DIR = $BUILD_DIR;
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3037,7 +3020,7 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AD768D7B03B8BFB31D6A26D /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3050,20 +3033,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -3098,7 +3068,7 @@
 					"-framework",
 					UIKit,
 				);
-				PODS_BUILD_DIR = $BUILD_DIR;
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3109,7 +3079,7 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F635B9D0620163C0DC947D5D /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3122,20 +3092,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -3170,7 +3127,7 @@
 					"-framework",
 					UIKit,
 				);
-				PODS_BUILD_DIR = $BUILD_DIR;
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3257,7 +3214,7 @@
 		};
 		FF3D09FF1D2C302C0002AB7C /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39F3B89A604F72D81E7FD482 /* Pods-Sprocket.testflight.xcconfig */;
+			baseConfigurationReference = 08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3270,20 +3227,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -3319,6 +3263,7 @@
 					"-framework",
 					UIKit,
 				);
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "e6f0b3d6-0b5d-4301-b175-f8709982d9d4";
@@ -3383,7 +3328,7 @@
 		};
 		FF3D0A031D2DAC260002AB7C /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBCFF7C5AF66843C94BD41F3 /* Pods-Sprocket.appstore.xcconfig */;
+			baseConfigurationReference = 03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3396,20 +3341,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -3445,6 +3377,7 @@
 					"-framework",
 					UIKit,
 				);
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "ec12c0ad-9688-496b-ae03-a5a1605621be";
@@ -3473,6 +3406,7 @@
 		};
 		c285ca3c6aca0f76f45c3f48 /* AppStore */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3486,20 +3420,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -3538,6 +3459,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "ec12c0ad-9688-496b-ae03-a5a1605621be";
@@ -3548,6 +3470,7 @@
 		};
 		f5b664fef088e568abef6f0f /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3561,20 +3484,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/CocoaLumberjack\"",
-					"\"${PODS_ROOT}/Headers/Public/FlickrKit\"",
-					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics-iOS-SDK\"",
-					"\"${PODS_ROOT}/Headers/Public/HPPhotoPrint\"",
-					"\"${PODS_ROOT}/Headers/Public/SVGKit\"",
-					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
-					"\"${PODS_ROOT}/Headers/Public/XMLDictionary\"",
-					"$(SDKROOT)/usr/include/libz",
-					"$(SDKROOT)/usr/include/libxml2",
-					"$(inherited)",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -3612,7 +3522,7 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
-				PODS_BUILD_DIR = $BUILD_DIR;
+				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.Sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

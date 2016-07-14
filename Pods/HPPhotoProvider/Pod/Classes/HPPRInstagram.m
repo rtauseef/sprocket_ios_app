@@ -10,7 +10,6 @@
 // the license agreement.
 //
 
-#import "AFJSONRequestOperation.h"
 #import "HPPRInstagram.h"
 
 NSString *const kInstagramBaseURLString = @"https://api.instagram.com/v1/";
@@ -34,8 +33,8 @@ NSString *const kUserAccessTokenKey = @"kUserAccessTokenKey";
 {
     self = [super initWithBaseURL:url];
     if (self) {
-        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-        [self setDefaultHeader:@"Accept" value:@"application/json"];
+//        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+//        [self setDefaultHeader:@"Accept" value:@"application/json"];
     }
     
     return self;

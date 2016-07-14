@@ -1,5 +1,19 @@
 PODS:
-  - AFNetworking (1.3.4)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - CocoaLumberjack (2.2.0):
     - CocoaLumberjack/Default (= 2.2.0)
     - CocoaLumberjack/Extensions (= 2.2.0)
@@ -12,8 +26,8 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
-  - HPPhotoProvider (0.13.27):
-    - AFNetworking (~> 1.3.3)
+  - HPPhotoProvider (0.13.29):
+    - AFNetworking
     - FlickrKit
   - MobilePrintSDK (3.0.7)
   - SVGKit (2.x):
@@ -25,7 +39,7 @@ PODS:
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - GoogleAnalytics-iOS-SDK (= 3.12)
-  - HPPhotoProvider (= 0.13.27)
+  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, tag `2.0.0`)
   - TTTAttributedLabel (= 1.10.1)
@@ -33,6 +47,9 @@ DEPENDENCIES:
   - ZipArchive (= 1.4.0)
 
 EXTERNAL SOURCES:
+  HPPhotoProvider:
+    :branch: master
+    :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :branch: bluetooth
     :git: https://github.com/IPGPTP/ios-print-sdk.git
@@ -41,6 +58,9 @@ EXTERNAL SOURCES:
     :tag: 2.0.0
 
 CHECKOUT OPTIONS:
+  HPPhotoProvider:
+    :commit: 5cdea6f85008c1fd185bfb822cc244c296a4ef09
+    :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: 4229377333e5d871b076c4646760216d1e073eab
     :git: https://github.com/IPGPTP/ios-print-sdk.git
@@ -49,17 +69,17 @@ CHECKOUT OPTIONS:
     :tag: 2.0.0
 
 SPEC CHECKSUMS:
-  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
-  HPPhotoProvider: 83504abea74e0c9cebd311c7036d8588f0d198d7
+  HPPhotoProvider: 8fe684321801a90dff5c0a12a6dd10f76dc92ef5
   MobilePrintSDK: e410b55fc418e87052182a6c259bb71423be66ce
   SVGKit: 9c3f82b4405aca2dc4d9f307050ede8a6a92d052
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 5e94f7a1a5a0a473edf154b101a563d0eb660974
+PODFILE CHECKSUM: 52a448ac5f6629f9ee9b81c1e985040f91895c66
 
 COCOAPODS: 1.0.1
