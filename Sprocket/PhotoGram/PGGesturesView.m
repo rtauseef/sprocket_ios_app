@@ -175,6 +175,10 @@ static CGFloat const kMarginOfError = .01F;
                                                         (self.imageView.frame.size.height - self.scrollView.bounds.size.height) / 2);
         }];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(imageEdited:)]) {
+        [self.delegate imageEdited:self];
+    }
 }
 
 #pragma mark - UIGestureRecognizerDelegate methods
