@@ -1,6 +1,6 @@
 {
   "name": "HPPhotoProvider",
-  "version": "0.9.5",
+  "version": "0.13.29",
   "summary": "Photo provider for the social networks.",
   "description": "Selection of photo from Facebook, Flickr or Instagram.",
   "homepage": "http://hp.com",
@@ -10,30 +10,36 @@
   },
   "source": {
     "git": "https://github.com/IPGPTP/hp_photo_provider.git",
-    "tag": "0.9.5"
+    "tag": "0.13.29"
   },
   "platforms": {
     "ios": "7.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/Classes/**/*.{h,m}",
+  "source_files": [
+    "Pod/Classes/**/*.{h,m}",
+    "Pod/Libraries/Reachability/*.{h,m}"
+  ],
   "resources": [
     "Pod/Assets/*.png",
     "Pod/Assets/*.xcassets",
     "Pod/Classes/**/*.xib",
-    "Pod/Classes/*.storyboard"
+    "Pod/Classes/*.storyboard",
+    "Pod/*.bundle"
   ],
-  "frameworks": [
-    "SystemConfiguration",
-    "MobileCoreServices"
+  "vendored_frameworks": [
+    "Pod/Frameworks/FBSDKCoreKit.framework",
+    "Pod/Frameworks/FBSDKLoginKit.framework"
   ],
-  "vendored_frameworks": "Frameworks/FacebookSDK.framework",
   "dependencies": {
     "AFNetworking": [
-      "~> 1.3.3"
+
     ],
     "FlickrKit": [
 
     ]
+  },
+  "xcconfig": {
+    "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES"
   }
 }

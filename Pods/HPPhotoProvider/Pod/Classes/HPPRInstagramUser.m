@@ -12,7 +12,6 @@
 
 #import "HPPRInstagramUser.h"
 #import "HPPRInstagram.h"
-//#import "MCAnalyticsManager.h"
 
 @implementation HPPRInstagramUser
 
@@ -46,31 +45,29 @@ static NSNumber *_following = nil;
             NSDictionary *params = [NSDictionary dictionaryWithObject:[client getAccessToken] forKey:@"access_token"];
             NSString *path = [NSString stringWithFormat:kUserUserProfileEndpoint, userId];
             
-            [client getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                
+            [client GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 NSDictionary *data = [responseObject objectForKey:@"data"];
                 _profilePictureURL = [data objectForKey:@"profile_picture"];
-				_userName = [data objectForKey:@"username"];
-				_userId = [data objectForKey:@"id"];
+                _userName = [data objectForKey:@"username"];
+                _userId = [data objectForKey:@"id"];
                 
                 NSDictionary *counts = [data objectForKey:@"counts"];
-				_posts = [counts objectForKey:@"media"];
-				_followers = [counts objectForKey:@"followed_by"];
+                _posts = [counts objectForKey:@"media"];
+                _followers = [counts objectForKey:@"followed_by"];
                 _following = [counts objectForKey:@"follows"];
-                               
+                
                 if (completion) {
                     completion(_userName, _userId, _profilePictureURL, _posts, _followers, _following);
                 }
-                
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
+
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 NSLog(@"error: %@", error.localizedDescription);
                 
                 if (completion) {
                     completion(nil, nil, nil, nil, nil, nil);
                 }
-                
             }];
+            
         }
     }
 }
@@ -96,23 +93,21 @@ static NSNumber *_following = nil;
         NSDictionary *params = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
         NSString *path = kUserUserSearchEndpoint;
         
-        [client getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+        
+        [client GET:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSArray *users = [responseObject objectForKey:@"data"];
-           
+            
             if (completion) {
                 completion(users, nil);
             }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error: %@", error.localizedDescription);
             
             if (completion) {
                 completion(nil, error);
             }
-            
         }];
+        
     }
 }
 

@@ -14,6 +14,9 @@
 #import "HPPRCameraRollLoginProvider.h"
 #import "NSBundle+HPPRLocalizable.h"
 
+// Needed to suppress iOS 7 check for UIApplicationOpenSettingsURLString
+#pragma GCC diagnostic ignored "-Wtautological-pointer-compare"
+
 int const kCameraRollCancelButtonIndex = 0;
 
 @interface HPPRCameraRollLoginProvider() <UIAlertViewDelegate>

@@ -16,6 +16,7 @@
 #import "HPPRCacheService.h"
 #import "HPPRFacebookAlbum.h"
 #import "NSBundle+HPPRLocalizable.h"
+#import "FBSDKCoreKit/FBSDKCoreKit.h"
 
 #define PAGING_ALL @"All"
 #define FACEBOOK_ERROR_DOMAIN @"com.facebook.sdk"
@@ -50,7 +51,7 @@
         
         [[HPPRFacebookLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
             if (loggedIn) {
-                [self userInfoWithRefresh:YES andCompletion:^(NSDictionary<FBGraphUser> *userInfo, NSError *error) {
+                [self userInfoWithRefresh:YES andCompletion:^(NSDictionary *userInfo, NSError *error) {
                     if (!error) {
                         [self albumsWithRefresh:YES andCompletion:^(NSArray *albums, NSError *error) {
                             if (!error) {
@@ -59,7 +60,6 @@
                                 }
                             }
                         }];
-                        [self landingPagePhotoWithRefresh:YES andCompletion:nil];
                     }
                 }];
             }
@@ -107,29 +107,33 @@
 - (void)retrieveExtraMediaInfo:(HPPRMedia *)media withRefresh:(BOOL)refresh andCompletion:(void (^)(NSError *error))completion
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self likesForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSArray *likes, NSError *error) {
+        
+        [self likesCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalLikes, NSError *error) {
             if (error) {
-                NSLog(@"LIKES ERROR\n%@", error);
-                
+                media.likes = 0;
+                media.comments = 0;
                 if (completion) {
                     completion(error);
                 }
             } else {
-                media.likes = likes.count;
-                
-                [self commentsForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSArray *comments, NSError *error) {
+                media.likes = [totalLikes integerValue];
+                [self commentsCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalComments, NSError *error) {
                     if (error) {
-                        NSLog(@"COMMENTS ERROR\n%@", error);
+                        media.comments = 0;
+                        if (completion) {
+                            completion(error);
+                        }
                     } else {
-                        media.comments = comments.count;
+                        media.comments = [totalComments integerValue];
+                        if (completion) {
+                            completion(nil);
+                        }
                     }
-                    
-                    if (completion) {
-                        completion(error);
-                    }
+
                 }];
             }
         }];
+        
     });
 }
 
@@ -181,7 +185,7 @@
 
 - (void)albumsWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *albums, NSError *error))completion
 {
-    [self cachedGraphRequest:@"me/albums" withRefresh:refresh andPaging:PAGING_ALL andCompletion:^(id result, NSError *error) {
+    [self cachedGraphRequest:@"me/albums" parameters:@{ @"fields":@"count,cover_photo,name" } refresh:refresh paging:PAGING_ALL completion:^(id result, NSError *error) {
         if (error) {
             NSLog(@"FACEBOOK ERROR\n%@", error);
             [self lostAccess];
@@ -217,8 +221,7 @@
     if (nil != self.album.objectID) {
         request = [NSString stringWithFormat:@"%@", self.album.objectID];
     }
-    
-    [self cachedGraphRequest:request withRefresh:YES andPaging:nil andCompletion:^(id result, NSError *error) {
+    [self cachedGraphRequest:request parameters:@{ @"fields":@"count,cover_photo,name" } refresh:YES paging:nil completion:^(id result, NSError *error) {
         if (error) {
             if ([error.domain isEqualToString:FACEBOOK_ERROR_DOMAIN] && (error.code == ALBUM_NOT_FOUND_ERROR_CODE)) {
                 if (completion) {
@@ -244,75 +247,44 @@
 - (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
     NSString *query = [NSString stringWithFormat:@"%@/photos", albumID];
+    NSDictionary *fields = @{@"fields":@"name,created_time,images,place"};
     if (nil == albumID) {
         query = @"me/photos/uploaded";
     }
     
-    [self cachedGraphRequest:query withRefresh:refresh andPaging:afterID andCompletion:completion];
+    // Known FB bug when including 'place' field for system albums:
+    //   https://developers.facebook.com/bugs/885008981626007/
+    //   https://developers.facebook.com/bugs/248507878840304/
+    // May be related to missing 'user_posts' permission scope. Will submit app(s) for review with these scopes -- jbt 7/12/16
+    if (nil == self.album.objectID || [self.album.name isEqualToString:@"Timeline Photos"] || [self.album.name isEqualToString:@"Mobile Uploads"]) {
+        fields = @{@"fields":@"name,created_time,images"};
+    }
+    
+    [self cachedGraphRequest:query parameters:fields refresh:refresh paging:afterID completion:completion];
 }
 
 - (void)photoByID:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion
 {
-    [self cachedGraphRequest:photoID withRefresh:refresh andPaging:nil andCompletion:completion];
+    NSDictionary *fields = @{@"fields":@"name,place,created_time,images"};
+    [self cachedGraphRequest:photoID parameters:fields refresh:refresh paging:nil completion:completion];
 }
 
-- (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary<FBGraphUser> *userInfo, NSError *error))completion
+- (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *userInfo, NSError *error))completion
 {
-    [self cachedGraphRequest:@"me" withRefresh:refresh andPaging:nil andCompletion:completion];
+    [self cachedGraphRequest:@"me" parameters:@{ @"fields":@"name,id" } refresh:refresh paging:nil completion:completion];
 }
 
-- (void)likesForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *likes, NSError * error))completion
+- (void)likesCountForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSNumber *count, NSError * error))completion
 {
-    [self cachedGraphRequest:[NSString stringWithFormat:@"%@/likes", photoID] withRefresh:refresh andPaging:PAGING_ALL andCompletion:completion];
-}
-
-- (void)commentsForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *comments, NSError * error))completion
-{
-    [self cachedGraphRequest:[NSString stringWithFormat:@"%@/comments", photoID] withRefresh:refresh andPaging:PAGING_ALL andCompletion:completion];
-}
-
-- (void)landingPagePhotoWithRefresh:(BOOL)refresh andCompletion:(void (^)(UIImage *photo, NSError *error))completion
-{
-    [self albumsWithRefresh:refresh andCompletion:^(NSArray *albums, NSError *error) {
-        if (!error && [albums count] > 0) {
-            HPPRAlbum * firstAlbum = (HPPRAlbum *)albums[0];
-            [self photosForAlbum:firstAlbum.objectID withRefresh:refresh andPaging:nil andCompletion:^(NSDictionary *photos, NSError *error) {
-                if (error) {
-                    if (completion) {
-                        completion(nil, error);
-                    }
-                } else if ([[photos objectForKey:@"data"] count] > 0) {
-                    NSString *url = [[HPPRFacebookPhotoProvider sharedInstance] urlForLargestPhoto:[photos objectForKey:@"data"][0]];
-                    UIImage * photo = [[HPPRCacheService sharedInstance] imageForUrl:url];
-                    if (completion) {
-                        completion(photo, nil);
-                    }
-                } else {
-                    [self useFallbackLandingPagePhotoWithRefresh:refresh andCompletion:completion];
-                }
-            }];
-        } else {
-            [self useFallbackLandingPagePhotoWithRefresh:refresh andCompletion:completion];
-        }
+    [self cachedGraphRequest:[NSString stringWithFormat:@"%@/likes", photoID] parameters:@{ @"limit":@"0", @"summary":@"total_count", @"fields":@"id" } refresh:refresh paging:nil completion:^(id result, NSError *error) {
+        [self countFromResult:result error:error completion:completion];
     }];
 }
 
-- (void)useFallbackLandingPagePhotoWithRefresh:(BOOL)refresh andCompletion:(void (^)(UIImage *photo, NSError *error))completion
+- (void)commentsCountForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSNumber *count, NSError * error))completion
 {
-    [self userInfoWithRefresh:refresh andCompletion:^(NSDictionary<FBGraphUser> *userInfo, NSError *error) {
-        if (error) {
-            if (completion) {
-                completion(nil, error);
-            }
-        } else {
-            NSString *url = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=1024&height=1024", [userInfo objectID]];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                UIImage *photo = [[HPPRCacheService sharedInstance]imageForUrl:url];
-                if (completion) {
-                    completion(photo, nil);
-                }
-            });
-        }
+    [self cachedGraphRequest:[NSString stringWithFormat:@"%@/comments", photoID] parameters:@{ @"limit":@"0", @"summary":@"total_count", @"fields":@"id" } refresh:refresh paging:nil completion:^(id result, NSError *error) {
+        [self countFromResult:result error:error completion:completion];
     }];
 }
 
@@ -401,15 +373,42 @@
     return largestURL;
 }
 
+- (void)countFromResult:(NSDictionary *)result error:(NSError *)error completion:(void (^)(NSNumber *count, NSError * error))completion
+{
+    if (!completion) {
+        return;
+    }
+    
+    if (error) {
+        completion(nil, error);
+    } else {
+        NSNumber *count = nil;
+        NSDictionary *summary = [result objectForKey:@"summary"];
+        if (summary) {
+            NSString *countValue = [summary objectForKey:@"total_count"];
+            count = [NSNumber numberWithInteger:[countValue integerValue]];
+        }
+        if (count) {
+            completion(count, nil);
+        } else {
+            completion(nil, [NSError errorWithDomain:@"HPPRFacebookPhotoProvider" code:-1 userInfo:@{@"error":@"Unable to retrieve count from result", @"result":result}]);
+        }
+    }
+}
+
 #pragma mark - Private methods
 
-- (void)cachedGraphRequest:(NSString *)query withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(id result, NSError *error))completion
+- (void)cachedGraphRequest:(NSString *)query parameters:(NSDictionary *)parameters refresh:(BOOL)refresh paging:(NSString *)afterID completion:(void (^)(id result, NSError *error))completion
 {
-    NSMutableString *fullQuery = [NSMutableString stringWithString:query];
+    NSMutableDictionary *queryParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    
     if (afterID) {
-        [fullQuery appendFormat:@"?after=%@", afterID];
+        [queryParameters addEntriesFromDictionary:@{@"after":afterID}];
     }
-    id cachedResult = [self retrieveFromCacheWithKey:fullQuery];
+    
+    NSString *cacheKey = [NSString stringWithFormat:@"%@?%@", query, [self parametersString:queryParameters]];
+    
+    id cachedResult = [self retrieveFromCacheWithKey:cacheKey];
     
     if (cachedResult && !refresh) {
         if (completion) {
@@ -419,30 +418,35 @@
         __weak HPPRFacebookPhotoProvider * weakSelf = self;
         if ([afterID isEqual:PAGING_ALL]) {
             NSMutableArray * list = [[NSMutableArray alloc] init];
-            [weakSelf addToList:list query:query withPaging:nil withRefresh:refresh andCompletion:^(NSArray *list, NSError *error) {
+            [weakSelf addToList:list query:query parameters:parameters paging:nil refresh:refresh completion:^(NSArray *list, NSError *error) {
                 if (!error) {
-                    [weakSelf saveToCache:list withKey:fullQuery];
+                    [weakSelf saveToCache:list withKey:cacheKey];
                 }
                 [weakSelf processResult:list withError:error andCompletion:completion];
             }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [FBRequestConnection startWithGraphPath:fullQuery completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                FBSDKGraphRequest *graphRequest = [[FBSDKGraphRequest alloc] initWithGraphPath:query parameters:queryParameters];
+                NSLog(@"\n\nVERSION: %@\nQUERY: %@\nPARAMS: %@\n\n", graphRequest.version, query, queryParameters);
+                [graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                     if (!error) {
-                        [weakSelf saveToCache:result withKey:fullQuery];
+                        [weakSelf saveToCache:result withKey:cacheKey];
+                    } else {
+                        NSLog(@"\n\nERROR:\n\n%@\n\n\n", error);
                     }
                     [weakSelf processResult:result withError:error andCompletion:completion];
                 }];
-            });
+                
+           });
         }
     }
     
 }
 
-- (void)addToList:(NSMutableArray *)itemList query:(NSString *)baseQuery withPaging:(NSString *)afterID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *list, NSError *error))completion
+- (void)addToList:(NSMutableArray *)itemList query:(NSString *)baseQuery parameters:(NSDictionary *)parameters paging:(NSString *)afterID refresh:(BOOL)refresh completion:(void (^)(NSArray *list, NSError *error))completion
 {
     __weak HPPRFacebookPhotoProvider * weakSelf = self;
-    [self cachedGraphRequest:baseQuery withRefresh:refresh andPaging:afterID andCompletion:^(id result, NSError *error) {
+    [self cachedGraphRequest:baseQuery parameters:parameters refresh:refresh paging:afterID completion:^(id result, NSError *error) {
         if(error) {
             if (completion) {
                 completion(nil, error);
@@ -452,7 +456,7 @@
             [itemList addObjectsFromArray:newItems];
             NSString *maxID = [[[result objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
             if(maxID) {
-                [weakSelf addToList:itemList query:baseQuery withPaging:maxID withRefresh:refresh andCompletion:completion];
+                [weakSelf addToList:itemList query:baseQuery parameters:parameters paging:maxID refresh:refresh completion:completion];
             } else {
                 if(completion) {
                     completion([NSArray arrayWithArray:itemList], nil);
@@ -475,12 +479,22 @@
     }
 }
 
+- (NSString *)parametersString:(NSDictionary *)parameters
+{
+    NSMutableArray *pairs = [NSMutableArray array];
+    for (NSString *key in parameters.allKeys) {
+        [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [parameters objectForKey:key]]];
+    }
+    return [pairs componentsJoinedByString:@"&"];
+}
+
 #pragma mark - HPPRLoginProviderDelegate
 
 - (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
 {
     [self clearCache];
 }
+
 
 @end
 

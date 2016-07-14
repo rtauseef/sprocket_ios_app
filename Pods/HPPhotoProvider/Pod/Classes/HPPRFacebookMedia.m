@@ -33,7 +33,7 @@
         self.userName = [[attributes objectForKey:@"from"] objectForKey:@"name"];
         
         HPPRFacebookPhotoProvider * provider = [HPPRFacebookPhotoProvider sharedInstance];
-        self.userProfilePicture = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", [provider.user objectID]];
+        self.userProfilePicture = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", [provider.user objectForKey:@"id"]];
         
         // NOTE: Don't localize this date, it comes from the API always in the same format regardless the language.
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

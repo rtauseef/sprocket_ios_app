@@ -12,19 +12,16 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
 #import "HPPRSelectPhotoProvider.h"
 
 @interface HPPRFacebookPhotoProvider : HPPRSelectPhotoProvider
 
-@property (strong, nonatomic) NSDictionary<FBGraphUser> *user;
+@property (strong, nonatomic) NSDictionary *user;
 
 + (HPPRFacebookPhotoProvider *)sharedInstance;
 
 - (void)photoByID:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion;
-- (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary<FBGraphUser> *userInfo, NSError *error))completion;
-- (void)likesForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *likes, NSError * error))completion;
-- (void)commentsForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *comments, NSError * error))completion;
+- (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *userInfo, NSError *error))completion;
 
 - (NSString *)urlForPhoto:(NSDictionary *)photoInfo withHeight:(NSUInteger)height;
 - (NSString *)urlForSmallestPhoto:(NSDictionary *)photoInfo;
