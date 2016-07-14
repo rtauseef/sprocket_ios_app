@@ -28,6 +28,7 @@
 #import "PGSwipeCoachMarksView.h"
 #import "PGMediaNavigation.h"
 #import "PGCameraManager.h"
+#import "MP.h"
 
 #define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 4
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
