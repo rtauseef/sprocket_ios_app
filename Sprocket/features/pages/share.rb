@@ -20,6 +20,7 @@ class ShareScreen < Calabash::IBase
     "view marked:'Save to Camera Roll'"
   end
 
+=begin
   def share_icon
     "view marked:'Share.png'"
   end
@@ -27,6 +28,7 @@ class ShareScreen < Calabash::IBase
   def print_queue
     "view marked:'Print Queue' index:0"
   end
+=end
 
   def navigate
     unless current_page?
