@@ -25,6 +25,7 @@
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
 #import <MPPrintLaterActivity.h>
+#import <QuartzCore/QuartzCore.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -33,7 +34,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
-@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate>
+@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
@@ -48,6 +49,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL needNewImageView;
+@property (assign, nonatomic) BOOL didChangeProject;
 
 @end
 
@@ -58,6 +60,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [super viewDidLoad];
     self.printItem = nil;
     self.needNewImageView = NO;
+    self.didChangeProject = NO;
     
     [self.view layoutIfNeeded];
     
@@ -113,6 +116,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraView presentedViewController:self];
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
         [PGCameraManager sharedInstance].isBackgroundCamera = NO;
+        
+        [weakSelf.view layoutIfNeeded];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
@@ -175,6 +180,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
     self.imageView.image = self.selectedPhoto;
     self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
+    self.imageView.delegate = self;
     
     self.imageView.alpha = 0.0F;
     [self.imageContainer addSubview:self.imageView];
@@ -228,17 +234,69 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     self.imageView.alpha = 1.0F;
 }
 
+#pragma mark - PGGesture Delegate
+
+- (void)imageEdited:(PGGesturesView *)gesturesView {
+    self.didChangeProject = YES;
+}
+
+- (void)handleLongPress:(PGGesturesView *)gesturesView {
+    
+}
+
 
 #pragma mark - Button Handlers
 
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
-    [self showCamera];
+    if (self.didChangeProject) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+                                                                       message:NSLocalizedString(@"Dismiss your project and go to the camera?", nil) preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self showCamera];
+        }];
+        [alert addAction:okAction];
+        
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self saveToCameraRoll];
+            [self showCamera];
+        }];
+        [alert addAction:saveAction];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self showCamera];
+    }
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    [self closePreviewAndCamera];
+    if (self.didChangeProject) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+                                                                       message:NSLocalizedString(@"Dismiss your project and go to the galleries?", nil) preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self closePreviewAndCamera];
+        }];
+        [alert addAction:okAction];
+        
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self saveToCameraRoll];
+            [self closePreviewAndCamera];
+        }];
+        [alert addAction:saveAction];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self closePreviewAndCamera];
+    }
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
@@ -280,6 +338,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         printActivity.dataSource = self;
         [self presentActivityViewControllerWithActivities:@[printActivity, saveToCameraRollActivity]];
     }
+}
+
+- (void)saveToCameraRoll
+{
+    UIImage *image = [self.imageContainer screenshotImage];
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 }
 
 #pragma mark - Print preparation

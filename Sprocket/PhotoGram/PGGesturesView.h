@@ -39,5 +39,6 @@ typedef enum
 @protocol PGGesturesViewDelegate <NSObject>
 
 - (void)handleLongPress:(PGGesturesView *)gesturesView;
+- (void)imageEdited:(PGGesturesView *)gesturesView;
 
 @end
