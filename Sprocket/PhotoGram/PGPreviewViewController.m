@@ -69,6 +69,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.view layoutIfNeeded];
+    
     [super viewWillAppear:animated];
 
     if ([PGCameraManager sharedInstance].isBackgroundCamera) {
@@ -119,8 +121,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
-    
-    [self.view layoutIfNeeded];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -134,10 +134,13 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [self renderPhoto];
     }
     
+    [self.view layoutIfNeeded];
+    
     [UIView animateWithDuration:0.3F animations:^{
         self.imageContainer.alpha = 1.0F;
         self.imageView.alpha = 1.0F;
         self.transitionEffectView.alpha = 0;
+        [self.view setNeedsLayout];
     }];
     
     [[PGCameraManager sharedInstance] startCamera];
@@ -171,6 +174,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)renderPhoto {
     if (nil != self.imageView) {
+        [self.imageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self.imageView removeFromSuperview];
         self.imageView = nil;
     }
