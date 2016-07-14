@@ -148,6 +148,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] postNotificationName:ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [[PGCameraManager sharedInstance] stopCamera];
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
@@ -217,6 +219,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
                 weakSelf.transitionEffectView.alpha = 0;
             } completion:nil];
+            
+            [self.view setNeedsLayout];
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];

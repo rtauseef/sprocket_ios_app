@@ -105,6 +105,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
+- (void)startCamera {
+    [self.session startRunning];
+}
+
 - (void)stopCamera {
     [self.session stopRunning];
 }

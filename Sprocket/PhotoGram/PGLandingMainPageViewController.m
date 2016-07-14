@@ -127,6 +127,8 @@
         [alertController addAction:okAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
+    
+    [[PGCameraManager sharedInstance] startCamera];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
