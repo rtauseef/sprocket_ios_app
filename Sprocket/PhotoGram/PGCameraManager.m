@@ -132,6 +132,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
 {
+    [view layoutIfNeeded];
+    
     self.viewController = viewController;
     
     self.session = [[AVCaptureSession alloc] init];
@@ -154,7 +156,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     dispatch_async(dispatch_get_main_queue(), ^{
         [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
         [view.layer addSublayer:newCaptureVideoPreviewLayer];
-        [view setNeedsLayout];
     });
     
     [self.session startRunning];

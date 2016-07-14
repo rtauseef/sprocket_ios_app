@@ -116,8 +116,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraView presentedViewController:self];
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
         [PGCameraManager sharedInstance].isBackgroundCamera = NO;
-        
-        [weakSelf.view layoutIfNeeded];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
@@ -139,6 +137,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         self.imageView.alpha = 1.0F;
         self.transitionEffectView.alpha = 0;
     }];
+    
+    [[PGCameraManager sharedInstance] startCamera];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -220,7 +220,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                 weakSelf.transitionEffectView.alpha = 0;
             } completion:nil];
             
-            [self.view setNeedsLayout];
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
@@ -230,6 +229,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)photoTaken {
     self.media = [PGCameraManager sharedInstance].currentMedia;
     self.selectedPhoto = [PGCameraManager sharedInstance].currentSelectedPhoto;
+    
+    self.didChangeProject = NO;
     
     [self renderPhoto];
     [self hideCamera];
