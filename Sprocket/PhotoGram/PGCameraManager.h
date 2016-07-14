@@ -12,25 +12,26 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
+#import "PGPreviewViewController.h"
 #import "PGOverlayCameraViewController.h"
 
 extern NSString * const kPGCameraManagerCameraClosed;
+extern NSString * const kPGCameraManagerPhotoTaken;
 
 @interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (assign, nonatomic) BOOL isCustomCamera;
+@property (assign, nonatomic) BOOL isBackgroundCamera;
+@property (strong, nonatomic) UIImage *currentSelectedPhoto;
+@property (strong, nonatomic) NSString *currentSource;
+@property (strong, nonatomic) HPPRMedia *currentMedia;
 
 + (PGCameraManager *)sharedInstance;
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController;
 - (void)addCameraButtonsOnView:(UIView *)view;
 
-- (void)showCamera:(UIViewController *)viewController animated:(BOOL)animated;
-- (void)dismissCameraAnimated:(BOOL)animated completion:(void (^)())completion;
-
 - (void)takePicture;
 - (void)switchCamera;
-
 - (void)stopCamera;
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure;

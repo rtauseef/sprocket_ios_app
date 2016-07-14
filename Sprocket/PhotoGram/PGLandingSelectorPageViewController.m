@@ -29,6 +29,7 @@
 #import "PGMediaNavigation.h"
 #import "PGCameraManager.h"
 #import "MP.h"
+#import "PGPreviewViewController.h"
 
 #define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 4
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
@@ -431,7 +432,17 @@ typedef enum {
 
 - (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav
 {
-    [[PGCameraManager sharedInstance] showCamera:self animated:YES];    
+    __weak PGLandingSelectorPageViewController *weakSelf = self;
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+        previewViewController.source = @"CameraRoll";
+        previewViewController.transitionEffectView.alpha = 1;
+        
+        [weakSelf presentViewController:previewViewController animated:YES completion:nil];
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+    }];
 }
 
 #pragma mark - Getter methods
