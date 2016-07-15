@@ -81,8 +81,8 @@ def grid_mode_button
 
     if not current_page?
         cameraroll_albm_screen = go_to(FacebookAlbumsScreen)
-        wait_for_elements_exist(cameraroll_albm_screen.cameraroll_first_album,:timeout=>MAX_TIMEOUT)
-        touch cameraroll_albm_screen.cameraroll_first_album
+        wait_for_elements_exist(cameraroll_albm_screen.first_album,:timeout=>MAX_TIMEOUT)
+        touch cameraroll_albm_screen.first_album
         end
     await
   end
