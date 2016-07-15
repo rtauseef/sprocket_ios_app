@@ -316,8 +316,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    UIViewController *printViewController = [[MP sharedInstance] printViewControllerWithDelegate:self dataSource:self printItem:self.printItem fromQueue:NO settingsOnly:NO];
-    [self presentViewController:printViewController animated:YES completion:nil];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
