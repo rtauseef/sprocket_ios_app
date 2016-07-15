@@ -69,6 +69,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.view layoutIfNeeded];
+    
     [super viewWillAppear:animated];
 
     if ([PGCameraManager sharedInstance].isBackgroundCamera) {
@@ -116,8 +118,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraView presentedViewController:self];
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
         [PGCameraManager sharedInstance].isBackgroundCamera = NO;
-        
-        [weakSelf.view layoutIfNeeded];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
@@ -134,20 +134,26 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [self renderPhoto];
     }
     
+    [self.view layoutIfNeeded];
+    
     [UIView animateWithDuration:0.3F animations:^{
         self.imageContainer.alpha = 1.0F;
         self.imageView.alpha = 1.0F;
         self.transitionEffectView.alpha = 0;
+        [self.view setNeedsLayout];
     }];
+    
+    [[PGCameraManager sharedInstance] startCamera];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] postNotificationName:ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [[PGCameraManager sharedInstance] stopCamera];
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto
@@ -168,6 +174,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)renderPhoto {
     if (nil != self.imageView) {
+        [self.imageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self.imageView removeFromSuperview];
         self.imageView = nil;
     }
@@ -217,6 +224,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
                 weakSelf.transitionEffectView.alpha = 0;
             } completion:nil];
+            
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
@@ -226,6 +234,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)photoTaken {
     self.media = [PGCameraManager sharedInstance].currentMedia;
     self.selectedPhoto = [PGCameraManager sharedInstance].currentSelectedPhoto;
+    
+    self.didChangeProject = NO;
     
     [self renderPhoto];
     [self hideCamera];
@@ -301,8 +311,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGSelectTemplateViewController *templateViewController = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
     
