@@ -77,6 +77,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)addCameraButtonsOnView:(UIView *)view
 {
+    [view layoutIfNeeded];
+    
     self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     self.cameraOverlay.pickerReference = nil;
     self.cameraOverlay.view.frame = view.frame;
@@ -105,6 +107,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
+- (void)startCamera {
+    [self.session startRunning];
+}
+
 - (void)stopCamera {
     [self.session stopRunning];
 }
@@ -128,6 +134,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
 {
+    [view layoutIfNeeded];
+    
     self.viewController = viewController;
     
     self.session = [[AVCaptureSession alloc] init];
@@ -150,7 +158,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     dispatch_async(dispatch_get_main_queue(), ^{
         [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
         [view.layer addSublayer:newCaptureVideoPreviewLayer];
-        [view setNeedsLayout];
     });
     
     [self.session startRunning];

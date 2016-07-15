@@ -1079,7 +1079,7 @@
                                                 <rect key="frame" x="562" y="3" width="38" height="38"/>
                                                 <state key="normal" image="previewX"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="closeButton"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="closeButton"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="didTouchUpInsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="oAL-hm-9dP"/>
