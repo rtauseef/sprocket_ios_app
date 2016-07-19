@@ -19,7 +19,9 @@
 #import "MPBTProgressView.h"
 #import <ExternalAccessory/ExternalAccessory.h>
 
-static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetting";
+static NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetting";
+static const NSInteger kMPBTPairedAccessoriesRecentSection = 0;
+static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
 
 @interface MPBTPairedAccessoriesViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -48,7 +50,6 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self setTitle:@"Devices"];
     self.bottomView.backgroundColor = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralBackgroundColor];
     self.tableView.backgroundColor = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralBackgroundColor];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -75,9 +76,6 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
     self.descriptionLabel.textColor = [[MP sharedInstance].appearance.settings objectForKey:kMPSelectionOptionsSecondaryFontColor];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
-    
-    self.image = nil;
-    self.hostController = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -89,6 +87,7 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
         self.topView.hidden = YES;
     }
     
+    [self setTitle];
     [self refreshPairedDevices];
     
     if (0 == self.pairedDevices.count) {
@@ -100,9 +99,19 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
     [super didReceiveMemoryWarning];
 }
 
+- (void)setTitle
+{
+    if (nil == self.image) {
+        [self setTitle:MPLocalizedString(@"Devices",@"Title for screen listing all available sprocket printers")];
+    } else {
+        [self setTitle:MPLocalizedString(@"Select Printer",@"Title for screen listing all available sprocket printers")];
+    }
+}
+
 - (void)setImage:(UIImage *)image
 {
     _image = image;
+    [self setTitle];
     [self refreshPairedDevices];
 }
 
@@ -121,16 +130,16 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesNavigationController"];
+    if ([MPBTPairedAccessoriesViewController class] == [[navigationController topViewController] class]) {
+        MPBTPairedAccessoriesViewController *vc = (MPBTPairedAccessoriesViewController *)[navigationController topViewController];
+        vc.image = image;
+        vc.hostController = hostController;
+        [vc.tableView reloadData];
+    }
+
     [hostController presentViewController:navigationController animated:animated completion:^{
         if (completion) {
             completion();
-        }
-        
-        if ([MPBTPairedAccessoriesViewController class] == [[navigationController topViewController] class]) {
-            MPBTPairedAccessoriesViewController *vc = (MPBTPairedAccessoriesViewController *)[navigationController topViewController];
-            vc.image = image;
-            vc.hostController = hostController;
-            [vc.tableView reloadData];
         }
     }];
 }
@@ -150,7 +159,7 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
     EAAccessory *accessory = (EAAccessory *)[self.pairedDevices objectAtIndex:indexPath.row];
     if ([self numberOfSectionsInTableView:tableView] > 1) {
         
-        if (0 == indexPath.section) {
+        if (kMPBTPairedAccessoriesRecentSection == indexPath.section) {
             accessory = self.recentDevice;
         } else {
             accessory = (EAAccessory *)[self.otherDevices objectAtIndex:indexPath.row];
@@ -181,9 +190,9 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
 {
     NSString *title = @"";
     if ([self numberOfSectionsInTableView:tableView] > 1) {
-        if (0 == section) {
+        if (kMPBTPairedAccessoriesRecentSection == section) {
             title = MPLocalizedString(@"Recent Printer", @"Table heading for the printer that has most recently been printed to");
-        } else if (1 == section) {
+        } else if (kMPBTPairedAccessoriesOtherSection == section) {
             title = MPLocalizedString(@"Other Printers", @"Table heading for list of all available printers, except for the most recently used printer");
         }
     }
@@ -199,7 +208,7 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
     if ([self numberOfSectionsInTableView:tableView] > 1) {
         self.noDevicesView.hidden = YES;
         
-        if (0 == section) {
+        if (kMPBTPairedAccessoriesRecentSection == section) {
             numRows = 1;
         } else {
             numRows = self.otherDevices.count;
@@ -368,12 +377,14 @@ static const NSString *kMPBTLastPrinterNameSetting = @"kMPBTLastPrinterNameSetti
     self.recentDevice = nil;
     self.pairedDevices = [MPBTSprocket pairedSprockets];
     
-    self.recentDevice = [self lastAccessoryUsed];
-    if (self.recentDevice) {
-        for (EAAccessory *acc in self.pairedDevices) {
-            if (![[MPBTSprocket displayNameForAccessory:acc] isEqualToString:[MPBTSprocket displayNameForAccessory:self.recentDevice]]) {
-                [self.otherDevices addObject:acc];
-                break;
+    if (self.image) {
+        self.recentDevice = [self lastAccessoryUsed];
+        if (self.recentDevice) {
+            for (EAAccessory *acc in self.pairedDevices) {
+                if (![[MPBTSprocket displayNameForAccessory:acc] isEqualToString:[MPBTSprocket displayNameForAccessory:self.recentDevice]]) {
+                    [self.otherDevices addObject:acc];
+                    break;
+                }
             }
         }
     }
