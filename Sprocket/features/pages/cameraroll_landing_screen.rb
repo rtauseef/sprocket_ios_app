@@ -8,7 +8,7 @@ class CameraRollLandingScreen < Calabash::IBase
   end
 
 def cameraroll_logo
-    "UIImageView id:'CameraRoll'"
+    "UIButtonLabel marked:'Camera Roll'"
   end
   def navigate
    if not current_page?
