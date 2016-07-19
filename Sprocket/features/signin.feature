@@ -1,11 +1,10 @@
 Feature: Signin to social media
   As a user
-  I want to signin using my social media account
-  So I don't need to go through a signup process
+  I want to signin to social media account from Landing Page
   
   
-@TA14291
 @reset
+@done
 Scenario Outline: Sign in to different Social media accounts from Landing screen
     Given I am on the "Landing" screen
     Then I should see "<social_media>" logo

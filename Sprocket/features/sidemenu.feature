@@ -2,7 +2,7 @@ Feature: Verify Side menu feature
   As a user I want to verify side menu functionality
   
 @reset
-@TA14291
+@regression
 Scenario Outline: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -19,4 +19,5 @@ Scenario Outline: Sign in to different Social media accounts from side menu
       | Flickr       | FlickrSignin     | Flickr Photo     |
       | CameraRoll   | CameraRoll       | CameraRoll Photo |
 
-    
+
+
