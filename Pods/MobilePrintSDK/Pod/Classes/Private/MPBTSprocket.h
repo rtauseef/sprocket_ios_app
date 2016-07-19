@@ -17,14 +17,6 @@
 
 @protocol MPBTSprocketDelegate;
 
-typedef enum
-{
-    MPBTSprocketReflashV2,
-    MPBTSprocketReflashV3,
-    MPBTSprocketReflashHP,
-    MPBTSprocketReflashBadHP
-} MPBTSprocketReflashOption;
-
 @interface MPBTSprocket : NSObject
 
 @property (strong, nonatomic) EAAccessory *accessory;
@@ -45,13 +37,16 @@ typedef enum
 @property (strong, nonatomic, readonly) NSString *displayName;
 
 - (void)refreshInfo;
-- (void)print:(MPPrintItem *)printItem numCopies:(NSInteger)numCopies;
-- (void)reflash:(MPBTSprocketReflashOption)reflashOption;
+- (void)printImage:(UIImage *)image numCopies:(NSInteger)numCopies;
+- (void)printItem:(MPPrintItem *)printItem numCopies:(NSInteger)numCopies;
+- (void)reflash;
 
 + (NSArray *)pairedSprockets;
++ (NSString *)displayNameForAccessory:(EAAccessory *)accessory;
 + (BOOL)supportedAccessory:(EAAccessory *)accessory;
 + (NSString *)macAddress:(NSData *)data;
-+ (NSString *)errorString:(MantaError)error;
++ (NSString *)errorTitle:(MantaError)error;
++ (NSString *)errorDescription:(MantaError)error;
 + (NSString *)autoPowerOffIntervalString:(MantaAutoPowerOffInterval)interval;
 
 @end
