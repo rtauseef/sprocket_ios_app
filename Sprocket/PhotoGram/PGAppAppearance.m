@@ -115,7 +115,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
              // Overlay
              kMPOverlayBackgroundColor:    [UIColor colorWithRed:0x00/255.0F green:0x00/255.0F blue:0x00/255.0F alpha:1.0F],
              kMPOverlayBackgroundOpacity:  [NSNumber numberWithFloat:.80F],
-             kMPOverlayPrimaryFont:        [UIFont fontWithName:PGAppAppearanceLightFont size:20],
+             kMPOverlayPrimaryFont:        [UIFont fontWithName:PGAppAppearanceRegularFont size:15],
              kMPOverlayPrimaryFontColor:   [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
              kMPOverlaySecondaryFont:      [UIFont fontWithName:PGAppAppearanceLightFont size:10],
              kMPOverlaySecondaryFontColor: [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
