@@ -9,7 +9,7 @@ class HomeScreen < Calabash::IBase
   end
 
   def select_photo
-    "navigationBar marked:'Instagram Photos'"
+    "navigationBar label  marked:'Instagram Photos'"
   end
   
   def grid_mode_button
