@@ -14,6 +14,7 @@
 #import "UIFont+Style.h"
 #import "UIViewController+Trackable.h"
 #import "PGLoggingSetttingsViewController.h"
+#import "PGAppAppearance.h"
 
 @interface PGAboutViewController()
 
@@ -41,6 +42,8 @@
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version %@ (%@)", @"Version number and build of the app"), version, build];
+    
+    [PGAppAppearance addGradientBackgroundToView:self.view];
 }
 
 - (IBAction)doneButtonTapped:(id)sender
