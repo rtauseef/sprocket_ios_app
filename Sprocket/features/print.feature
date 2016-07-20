@@ -34,7 +34,7 @@ Scenario: Printer Paired to device but not connected
     Then I should not see the modal screen
     
 @reset
-@TA142901
+@TA14290
 Scenario: Printer Paired to device and connected
     Given I am on the "Preview" screen
     When I tap "Print" button
