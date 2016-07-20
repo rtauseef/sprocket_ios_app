@@ -38,46 +38,37 @@
 #import "UIViewController+Trackable.h"
 #import "NSLocale+Additions.h"
 
-#define LONG_SCREEN_SIZE_HEADER_HEIGHT 140.0f
-#define SHORT_SCREEN_SIZE_HEADER_HEIGHT 70.0f
-#define SHORT_SCREEN_SIZE_TITLE_LABEL_Y_POSITION 31.0f
+#define LONG_SCREEN_SIZE_HEADER_HEIGHT 75.0f
+#define SHORT_SCREEN_SIZE_HEADER_HEIGHT 52.0f
+
+#define CELL_HEIGHT 52.0f
+#define CELL_HEIGHT_SMALL 42.0f
+#define CELL_SOCIAL_HEIGHT_SMALL 40.0f
 
 #define DEVICE_CONNECTIVITY_LABEL_X 58.0f
 #define SIGN_OUT_SPACE 1.0f
-#define CELL_HEIGHT 44.0f
-#define TRANSPARENT_CELL_HEIGHT 10.0f
-
-#define SOCIAL_NETWORK_SEPARATOR_HEIGHT 1.0f
 
 #define DEVICES_INDEX 0
-#define TRANSPARENT_PRINT_QUEUE_INDEX 1
-#define LEARN_ABOUT_MOBILE_PRINTING_INDEX 2
-#define ABOUT_INDEX 4
-#define SEND_FEEDBACK_INDEX 6
-#define TAKE_OUR_SURVEY_INDEX 8
-#define TAKE_OUR_SURVEY_TRANSPARENT_INDEX 9
-#define PRIVACY_STATEMENT_INDEX 10
+#define BUY_PAPER 1
+#define HOW_TO_HELP 2
+#define GIVE_FEEDBACK 3
+#define PRIVACY_STATEMENT_INDEX 4
+#define ABOUT_INDEX 5
 
 #define kSignInButtonTitle NSLocalizedString(@"Sign In", nil)
 #define kSignOutButtonTitle NSLocalizedString(@"Sign Out", nil)
 #define kCheckingButtonTitle NSLocalizedString(@"Checking", @"Checking the login status of the social network")
 
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
-//NSString * const kPrivacyStatementURL = @"http://www8.hp.com/us/%@/privacy/privacy.html";
 NSString * const kTakeOurSurveyURL = @"https://www.surveymonkey.com/s/9C9M96H";
 NSString * const kTakeOurSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
 
-NSInteger const kSideBarRightSideBufferWidth = 40; //pixels
-
 @interface PGSideBarMenuTableViewController () <MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate>
 
-@property (assign, nonatomic) BOOL longHeaderFits;
-
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelTopSpaceLayoutContraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *flickrBottomLayoutConstraint;
 @property (weak, nonatomic) IBOutlet UIView *flickrUserView;
@@ -96,6 +87,7 @@ NSInteger const kSideBarRightSideBufferWidth = 40; //pixels
 @property (weak, nonatomic) IBOutlet UIButton *instagramSignButton;
 @property (weak, nonatomic) IBOutlet UIImageView *instagramUserImageView;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *socialSourcesCellHeight;
 @property (weak, nonatomic) IBOutlet UIView *cameraRollView;
 
 @property (assign, nonatomic, getter = isFlickrLogged) BOOL flickrLogged;
@@ -103,15 +95,11 @@ NSInteger const kSideBarRightSideBufferWidth = 40; //pixels
 @property (assign, nonatomic, getter = isInstagramLogged) BOOL instagramLogged;
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
-@property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *transparentCells;
 @property (weak, nonatomic) IBOutlet UITableViewCell *devicesCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *devicesTransparentCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *takeOurSurveyCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *takeOurSurveyTransparentCell;
-@property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *devicesLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deviceConnectivityLabelLeadingLayoutConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
+@property (strong, nonatomic) IBOutlet UIView *deviceStatusLED;
+@property (strong, nonatomic) IBOutlet UILabel *devicesLabel;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *instagramGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *facebookGestureRecognizer;
@@ -130,83 +118,54 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIColor *backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
-    UIColor *navBarColor = [PGAppAppearance navBarColor];
 
     NSMutableArray *cells = [NSMutableArray arrayWithArray:self.cells];
-    NSMutableArray *transparentCells = [NSMutableArray arrayWithArray:self.transparentCells];
-    
-    if (IS_OS_8_OR_LATER) {
-        [cells addObject:self.devicesCell];
-        [transparentCells addObject:self.devicesTransparentCell];
-        
-        if ([NSLocale isSurveyAvailable] && !IS_IPHONE_4) {
-            [cells addObject:self.takeOurSurveyCell];
-            [transparentCells addObject:self.takeOurSurveyTransparentCell];
-        }
-        
-        [self setupLabel:self.deviceConnectivityLabel];
-        
-        self.deviceConnectivityLabel.backgroundColor = navBarColor;
-        
-        [self positionDeviceConnectivityLabelBasedOnLocalization];
-        
-    } else {
-        if ([NSLocale isSurveyAvailable]) {
-            [cells addObject:self.takeOurSurveyCell];
-            [transparentCells addObject:self.takeOurSurveyTransparentCell];
-        }
-    }
+    [cells addObject:self.devicesCell];
     
     self.cells = cells.copy;
-    self.transparentCells = transparentCells.copy;
-    
-    
-    CGFloat heightWithoutHeader = (self.cells.count * CELL_HEIGHT) + (self.transparentCells.count * TRANSPARENT_CELL_HEIGHT) + [self statusBarHeight] + self.instagramUserView.frame.size.height + SOCIAL_NETWORK_SEPARATOR_HEIGHT + self.facebookUserView.frame.size.height + SOCIAL_NETWORK_SEPARATOR_HEIGHT + self.flickrUserView.frame.size.height + SOCIAL_NETWORK_SEPARATOR_HEIGHT + self.cameraRollView.frame.size.height;
-    
-    
-    if (([[UIScreen mainScreen] bounds].size.height - heightWithoutHeader) > LONG_SCREEN_SIZE_HEADER_HEIGHT) {
-        self.longHeaderFits = YES;
-    } else {
-        self.longHeaderFits = NO;
-    }
-    
-    if (!self.longHeaderFits) {
-        CGRect tableViewHeaderFrame = self.tableView.tableHeaderView.frame;
-        tableViewHeaderFrame.size.height = SHORT_SCREEN_SIZE_HEADER_HEIGHT;
-        self.tableView.tableHeaderView.frame = tableViewHeaderFrame;
-        
-        self.logoImageView.hidden = YES;
-        
-        self.titleLabelTopSpaceLayoutContraint.constant = SHORT_SCREEN_SIZE_TITLE_LABEL_Y_POSITION;
-    }
-    
-    self.tableView.scrollEnabled = NO;
     
     self.trackableScreenName = @"Side Bar Menu Screen";
     
-    self.tableView.tableHeaderView.backgroundColor = navBarColor;
-    self.tableView.tableFooterView.backgroundColor = navBarColor;
+    self.tableView.scrollEnabled = NO;
+    self.tableView.tableHeaderView.backgroundColor = [UIColor clearColor];
+    self.tableView.tableFooterView.backgroundColor = [UIColor clearColor];
+    
+    CGRect headerFrame = self.tableView.tableHeaderView.frame;
+    if (IS_IPHONE_4) {
+        headerFrame.size.height = SHORT_SCREEN_SIZE_HEADER_HEIGHT;
+    } else {
+        headerFrame.size.height = LONG_SCREEN_SIZE_HEADER_HEIGHT;
+    }
+    
+    self.tableView.tableHeaderView.frame = headerFrame;
+    [self.view layoutIfNeeded];
+    
+    UIView *gradientBackgroundView = [[UIView alloc] initWithFrame:self.tableView.bounds];
+    [PGAppAppearance addGradientBackgroundToView:gradientBackgroundView];
+    self.tableView.backgroundView = gradientBackgroundView;
     
     UIView *selectionColorView = [[UIView alloc] init];
     selectionColorView.backgroundColor = [UIColor HPTableRowSelectionColor];
     
     for (UITableViewCell *cell in self.cells) {
-        [self setupLabel:cell.textLabel];
+        if (cell.textLabel) {
+            [self setupLabel:cell.textLabel];
+        }
+        
         [cell setSelectedBackgroundView:selectionColorView];
-        cell.backgroundColor = navBarColor;
+        cell.backgroundColor = [UIColor clearColor];
     }
     
-    for (UITableViewCell *transparentCell in self.transparentCells) {
-        transparentCell.backgroundColor = navBarColor;
+    [self setupSocialItemView:self.instagramUserView];
+    [self setupSocialItemView:self.facebookUserView];
+    [self setupSocialItemView:self.flickrUserView];
+    [self setupSocialItemView:self.cameraRollView];
+    
+    if (IS_IPHONE_4) {
+        self.socialSourcesCellHeight.constant = CELL_SOCIAL_HEIGHT_SMALL;
     }
     
-    self.tableView.tableFooterView.backgroundColor = navBarColor;
-    self.instagramUserView.backgroundColor = backgroundColor;
-    self.facebookUserView.backgroundColor = backgroundColor;
-    self.flickrUserView.backgroundColor = backgroundColor;
-    self.cameraRollView.backgroundColor = backgroundColor;
+    [self.view layoutIfNeeded];
     
     [self.instagramSignButton setTitle:kCheckingButtonTitle forState:UIControlStateNormal];
     self.instagramSignButton.userInteractionEnabled = NO;
@@ -219,13 +178,13 @@ typedef enum {
     [self.flickrSignButton setTitle:kCheckingButtonTitle forState:UIControlStateNormal];
     self.flickrSignButton.userInteractionEnabled = NO;
     self.flickrGestureRecognizer.enabled = NO;
-}
-
-- (void)positionDeviceConnectivityLabelBasedOnLocalization
-{
-    CGSize size = [self.devicesLabel.text sizeWithAttributes:@{NSFontAttributeName: self.deviceConnectivityLabel.font}];
     
-    self.deviceConnectivityLabelLeadingLayoutConstraint.constant = DEVICE_CONNECTIVITY_LABEL_X + size.width  + 30;
+
+    
+    [self setupLabel:self.deviceConnectivityLabel];
+    self.deviceConnectivityLabel.font = [UIFont HPSimplifiedLightFontWithSize:12.0f];
+    
+    [self setupLabel:self.devicesLabel];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -241,8 +200,10 @@ typedef enum {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
         if (numberOfPairedSprockets > 0) {
             self.deviceConnectivityLabel.hidden = NO;
+            self.deviceStatusLED.hidden = NO;
         } else {
             self.deviceConnectivityLabel.hidden = YES;
+            self.deviceStatusLED.hidden = YES;
         }
     }
     
@@ -285,29 +246,16 @@ typedef enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Hide Take our survey for languages other than English (because the survey is not localized)
-    if (![NSLocale isSurveyAvailable] && ((indexPath.row == TAKE_OUR_SURVEY_INDEX) || (indexPath.row == TAKE_OUR_SURVEY_TRANSPARENT_INDEX))) {
-        return 0.0f;
+    if (IS_IPHONE_4) {
+        return CELL_HEIGHT_SMALL;
     }
     
-    if (!IS_OS_8_OR_LATER && ((indexPath.row == DEVICES_INDEX) || (indexPath.row == TRANSPARENT_PRINT_QUEUE_INDEX))) {
-        return 0.0f;
-    } else if (IS_OS_8_OR_LATER && IS_IPHONE_4 && ((indexPath.row == TAKE_OUR_SURVEY_INDEX) || (indexPath.row == TAKE_OUR_SURVEY_TRANSPARENT_INDEX))) {
-        return 0.0f;
-    } else if ([self isTransparentCell:indexPath.row]) {
-        if (!self.longHeaderFits) {
-            return 0.0f;
-        } else {
-            return TRANSPARENT_CELL_HEIGHT;
-        }
-    } else {
-        return CELL_HEIGHT;
-    }
+    return CELL_HEIGHT;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == SEND_FEEDBACK_INDEX) {
+    if (indexPath.row == GIVE_FEEDBACK) {
         [self sendEmail];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if (indexPath.row == DEVICES_INDEX) {
@@ -336,14 +284,6 @@ typedef enum {
         
         webViewerViewController.url = localizablePrivacyStatementURL;
         
-    } else if ([segue.identifier isEqualToString:@"TakeOurSurveySegue"]) {
-        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-        
-        PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-        webViewerViewController.trackableScreenName = @"Take Our Survey Screen";
-        webViewerViewController.url = kTakeOurSurveyURL;
-        webViewerViewController.notifyUrl = kTakeOurSurveyNotifyURL;
-        webViewerViewController.delegate = self;
     }
 }
 
@@ -468,36 +408,38 @@ typedef enum {
 
 #pragma mark - Utils
 
-- (BOOL)isTransparentCell:(NSInteger)cellIndex
-{
-    return (cellIndex% 2 != 0);
-}
-
 - (void)setupLabel:(UILabel *)label
 {
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont HPSimplifiedRegularFontWithSize:14.0f];
+    label.font = [UIFont HPSimplifiedLightFontWithSize:17.0f];
+}
+
+- (void)setupSocialItemView:(UIView *)view
+{
+    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];;
 }
 
 - (void)setTableFooterHeight
 {
     CGFloat tableHeight;
+    CGFloat cellHeight;
     
-    if (IS_OS_8_OR_LATER) {
+    if (IS_PORTRAIT) {
         tableHeight = [[UIScreen mainScreen] bounds].size.height;
     } else {
-        if (IS_PORTRAIT) {
-            tableHeight = [[UIScreen mainScreen] bounds].size.height;
-        }else {
-            tableHeight = [[UIScreen mainScreen] bounds].size.width;
-        }
+        tableHeight = [[UIScreen mainScreen] bounds].size.width;
+    }
+    
+    if (IS_IPHONE_4) {
+        cellHeight = CELL_HEIGHT_SMALL;
+    } else {
+        cellHeight = CELL_HEIGHT;
     }
     
     CGRect footerFrame = self.tableView.tableFooterView.frame;
-    footerFrame.size.height = tableHeight  - (self.tableView.tableHeaderView.frame.size.height + self.cells.count * CELL_HEIGHT);
-    if (self.longHeaderFits) {
-        footerFrame.size.height = footerFrame.size.height - (self.transparentCells.count * TRANSPARENT_CELL_HEIGHT);
-    }
+    
+    footerFrame.size.height = tableHeight  - (self.tableView.tableHeaderView.frame.size.height + self.cells.count * cellHeight);
+
     self.tableView.tableFooterView.frame = footerFrame;
 }
 
