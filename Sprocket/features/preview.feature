@@ -63,3 +63,16 @@ Feature: Verify preview screen from different social media
     Then I should see margins on top and bottom
     Then I double tap on the picture
     Then I should see the original image without margins
+    
+  @reset
+  @TA14130
+  Scenario: Verify pinch in-out and zoom the image on preview screen_instagram
+    Given I am on the "Preview" screen
+    Then I wait for some seconds
+    When I pinch "in" on the picture
+    Then I wait for some seconds
+    Then I should see it in "bigger" size
+    When I pinch "out" on the picture
+    Then I wait for some seconds
+    Then I should see it in "smaller" size
+    #pinch not working correctly for < ios 9

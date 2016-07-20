@@ -53,3 +53,16 @@ Then(/^I should see the original image without margins$/) do
   $post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
   raise "Original Image not found" unless $post_img_frame_width > $curr_img_frame_width && $post_img_frame_height > $curr_img_frame_height
 end
+When(/^I pinch "(.*?)" on the picture$/) do |in_out|
+  $curr_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+  pinch("#{in_out}", { query: "* id:'GestureView'" })
+end
+
+Then(/^I should see it in "(.*?)" size$/) do |size|
+  $post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+  if size == "bigger"
+      raise "Image not zoomed in!" unless $post_img_frame_width > $curr_img_frame_width
+  else
+      raise "Image not zoomed out!" unless $post_img_frame_width < $curr_img_frame_width
+  end
+end
