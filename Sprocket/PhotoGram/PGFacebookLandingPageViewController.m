@@ -162,21 +162,17 @@ NSString * const kFacebookUserIdKey = @"id";
             
         } else if (error) {
             [self.spinner removeFromSuperview];
-            [self checkError:error];
-            [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
-            [self enableSignIn];
-            
+            if (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code) {
+                [self showNoConnectionAvailableAlert];
+            } else {
+                [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
+                [self enableSignIn];
+            }
         } else {
             [self.spinner removeFromSuperview];
             [self enableSignIn];
         }
     }];
-}
-
-- (void)checkError:(NSError *)error
-{
-    NSLog(@"CHECK ERROR: %@", error);
-    NSLog(@"");
 }
 
 - (void)showMessage:(NSString *)text withTitle:(NSString *)title
