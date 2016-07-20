@@ -40,7 +40,7 @@ Scenario Outline: Open Social Source from  Landing screen
 	|Instagram		|
   	|Flickr			|
   	|Facebook		|
-  	|Camera Roll	|
+  	|CameraRoll	    |
 
   @reset
   @done
