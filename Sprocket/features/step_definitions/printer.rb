@@ -3,11 +3,6 @@ Then(/^I should see the message to pair the device with the bluetooth printer$/)
     sleep(STEP_PAUSE)
 end
 
-And(/^I should see the modal screen with the message to connect the printer$/) do
-    check_element_exists @current_page.modal_title
-    sleep(STEP_PAUSE)
-end
-
 And(/^I should see the modal screen title$/) do
     check_element_exists @current_page.modal_title
     sleep(STEP_PAUSE)

@@ -34,10 +34,6 @@ class PreviewScreen < Calabash::IBase
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
   end
-    
-  def message_title
-    "label {text CONTAINS 'Pair your bluetooth printer with this device.'}"
-  end
 
   def navigate
     unless current_page?
