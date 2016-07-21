@@ -9,14 +9,14 @@ Feature: Verify no printer added modal
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "Devices"
-    Then I should see the message to pair the device with the bluetooth printer
-    And I should see the modal screen with the message to connect the printer
     And I should see the modal screen title
     And I should see the modal screen content
     And I should see the button "OK"
     And I should see the button "Settings"
     And I tap the "OK" button
     Then I should not see the modal screen
+    Then I should see the "Device" screen
+    And I should see the message to pair the device with the bluetooth printer
     
 @reset
 @TA14290
@@ -25,7 +25,6 @@ Scenario: Printer Paired to device but not connected
     When I tap "Print" button
     Then I should see the modal screen title
     And I should see the modal screen content
-    And I should see the modal screen with the message to connect the printer
     And I should see the modal screen title
     And I should see the modal screen content
     And I should see the button "OK"
