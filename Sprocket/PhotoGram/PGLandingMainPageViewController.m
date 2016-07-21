@@ -107,11 +107,14 @@
     
     static BOOL promptedForReflash = NO;
     
-    if (!promptedForReflash  &&  [[MP sharedInstance] bluetoothDeviceNeedsReflash]) {
+    NSString *deviceToReflash = [[MP sharedInstance] bluetoothDeviceNeedsReflash];
+    if (!promptedForReflash  &&  nil != deviceToReflash) {
         
         promptedForReflash = YES;
+ 
+        NSString *firmwareUpgradeTitle = NSLocalizedString(@"Firmware Upgrade", @"Title for dialog that prompts user to ugrade device firmware");
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Firmware Upgrade", @"Title for dialog that prompts user to ugrade device firmware")
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@ %@", deviceToReflash, firmwareUpgradeTitle]
                                                                                  message:NSLocalizedString(@"Download the printer firmware upgrade?", @"Body for dialog that prompts user to ugrade device firmware")
                                                                           preferredStyle:UIAlertControllerStyleAlert];
 
