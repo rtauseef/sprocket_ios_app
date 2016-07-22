@@ -603,11 +603,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
-                                                    <rect key="frame" x="124" y="23" width="6" height="6"/>
+                                                    <rect key="frame" x="124" y="21" width="9" height="9"/>
                                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="6" id="Rku-FI-mx2"/>
-                                                        <constraint firstAttribute="width" constant="6" id="ij6-XN-b5f"/>
+                                                        <constraint firstAttribute="height" constant="9" id="Rku-FI-mx2"/>
+                                                        <constraint firstAttribute="width" constant="9" id="ij6-XN-b5f"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -616,7 +616,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
-                                                    <rect key="frame" x="136" y="19" width="125" height="14"/>
+                                                    <rect key="frame" x="139" y="19" width="125" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="GfF-db-fn7"/>
                                                     </constraints>
