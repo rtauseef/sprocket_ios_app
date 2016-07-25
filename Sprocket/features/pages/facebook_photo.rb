@@ -80,9 +80,18 @@ def grid_mode_button
   def navigate
 
     if not current_page?
-        cameraroll_albm_screen = go_to(FacebookAlbumsScreen)
-        wait_for_elements_exist(cameraroll_albm_screen.first_album,:timeout=>MAX_TIMEOUT)
-        touch cameraroll_albm_screen.first_album
+        cameraroll_albm_screen = go_to(FacebookSigninScreen)
+        sleep(WAIT_SCREENLOAD)
+            uia_tap_mark("Email address or phone number")
+            puts "clicked"
+            uia_wait_for_keyboard
+            uia_set_responder_value(VALID_CREDENTIALS_Facebook[:user],0)
+            uia_tap_mark("Facebook password")
+            uia_set_responder_value(VALID_CREDENTIALS_Facebook[:user],1)
+            sleep(STEP_PAUSE)
+            uia_tap_mark("Log In")
+            sleep(WAIT_SCREENLOAD)
+            uia_tap_mark("OK")
         end
     await
   end
