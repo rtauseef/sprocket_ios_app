@@ -25,6 +25,7 @@
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
 #import <MPPrintLaterActivity.h>
+#import <MPBlueToothPrintActivity.h>
 #import <QuartzCore/QuartzCore.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
@@ -330,21 +331,13 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
+
+    MPBlueToothPrintActivity *btPrintActivity = [[MPBlueToothPrintActivity alloc] init];
+    btPrintActivity.image = [self.imageContainer screenshotImage];
+    btPrintActivity.vc = self;
     
-    MPPrintActivity *printActivity = [[MPPrintActivity alloc] init];
-    printActivity.dataSource = self;
-    
-    if (IS_OS_8_OR_LATER && ![[MP sharedInstance] isWifiConnected]) {
-        MPPrintLaterActivity *printLaterActivity = [[MPPrintLaterActivity alloc] init];
-        [self preparePrintJobWithCompletion:^{
-            printLaterActivity.printLaterJob = self.printLaterJob;
-            [self presentActivityViewControllerWithActivities:@[printLaterActivity, saveToCameraRollActivity]];
-        }];
-    } else {
-        MPPrintActivity *printActivity = [[MPPrintActivity alloc] init];
-        printActivity.dataSource = self;
-        [self presentActivityViewControllerWithActivities:@[printActivity, saveToCameraRollActivity]];
-    }
+    [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
+
 }
 
 - (void)saveToCameraRoll

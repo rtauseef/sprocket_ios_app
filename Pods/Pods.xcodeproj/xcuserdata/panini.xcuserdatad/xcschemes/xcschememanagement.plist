@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Sprocket-cal.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Sprocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,6 +62,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0AE5F47DB41A0018E58258C797B48594</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>140DBDDD6E7F16B0530C2B753063A298</key>
 		<dict>
 			<key>primary</key>
@@ -68,11 +78,6 @@
 			<true/>
 		</dict>
 		<key>1621B0A32D4B7DA33B7E1A1B90769CAD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>39EEE806AFC6B58123DC2A988B310BB0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,11 +97,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88848791352974729E428A6354E10B19</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>97E91903DA045FA5C7C65CECC19552C4</key>
 		<dict>
 			<key>primary</key>
@@ -107,17 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B40F74A9998F28395ADF01A238D53D0D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B42E68F8A3AC53740C3F5F4B527D5728</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C02E79882F181ECE19E1B51A77625266</key>
 		<dict>
 			<key>primary</key>
 			<true/>
