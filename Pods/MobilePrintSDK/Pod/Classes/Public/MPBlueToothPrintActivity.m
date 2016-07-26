@@ -45,7 +45,8 @@
 
 - (void)performActivity
 {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.image] animated:YES completion:nil];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self.vc image:self.image animated:YES completion:nil];
+    [self activityDidFinish:YES];
 }
 
 @end

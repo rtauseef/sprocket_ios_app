@@ -13,9 +13,9 @@
 #import <UIKit/UIkit.h>
 #import <Foundation/Foundation.h>
 
-@interface MPBlueToothPrintActivity : MPBlueToothPrintActivity
+@interface MPBlueToothPrintActivity : UIActivity
 
-@property (weak, nonatomic) id<MPPrintDataSource>dataSource;
 @property (weak, nonatomic) UIImage *image;
+@property (weak, nonatomic) UIViewController *vc;
 
 @end
