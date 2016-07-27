@@ -18,7 +18,9 @@
 #import "PGGesturesView.h"
 #import "PGAppAppearance.h"
 #import "UIView+Background.h"
+#import "UIColor+Style.h"
 
+#import <imglyKit/imglyKit.h>
 #import <MP.h>
 #import <MPPrintItemFactory.h>
 #import <MPLayoutFactory.h>
@@ -35,7 +37,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
-@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate>
+@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
@@ -196,6 +198,80 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
 }
 
+- (void)showImgly
+{
+    
+    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:self.imageView.image configuration:[self imglyConfiguration]];
+    [photoController.toolStackItem performChanges:^{
+        photoController.toolStackItem.mainToolbarView = nil;
+    }];
+    IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:[self imglyConfiguration]];
+    toolController.delegate = self;
+    
+    [self presentViewController:toolController animated:NO completion:nil];
+}
+
+- (IMGLYConfiguration *)imglyConfiguration
+{
+    IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
+        [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
+            photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionCrop],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionOrientation],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionFilter],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionAdjust],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionSeparator],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionText],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionSticker],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionFrame],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionSeparator],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionFocus],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionMagic] ];
+            photoEditorBuilder.frameScaleMode = UIViewContentModeScaleAspectFill;
+            photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
+            
+            [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
+                if (action == PhotoEditorActionCrop) {
+                    cell.imageView.image = [UIImage imageNamed:@"HPLogo"];
+                }
+            }];
+        }];
+        
+        [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
+            IMGLYCropRatio *cropRatio2x3 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:2.0/3.0] title:@"2:3" accessibilityLabel:@"2:3 crop ratio" icon:[UIImage imageNamed:@"crop.2x3.png"]];
+            IMGLYCropRatio *cropRatio3x2 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:3.0/2.0] title:@"3:2" accessibilityLabel:@"3:2 crop ratio" icon:[UIImage imageNamed:@"crop.3x2.png"]];
+            cropToolBuilder.allowedCropRatios = @[
+                                                  cropRatio2x3,
+                                                  cropRatio3x2 ];
+        }];
+    }];
+    
+    return configuration;
+}
+
+#pragma mark - IMGLYToolStackControllerDelegate
+
+- (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
+{
+    NSLog(@"IMAGE:  %@", image);
+    self.imageView.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.imageView layoutIfNeeded];
+}
+
+- (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
+{
+    NSLog(@"CANCEL");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController
+{
+    NSLog(@"FAIL");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
@@ -312,6 +388,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    [self showImgly];
+    
+    return;
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGSelectTemplateViewController *templateViewController = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
     

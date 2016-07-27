@@ -178,6 +178,10 @@
 		8171761254a179dc3bcf9778 /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
+		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
+		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8271DCD51D46D05000B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
+		8271DCD61D46D05000B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
 		831759e3db29118ad4a89557 /* modernizr.js in Resources */ = {isa = PBXBuildFile; fileRef = 6552DAB91A797396002D3B48 /* modernizr.js */; };
 		840996ade1d5d5f6d208726f /* Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80719A69E5700C72F1A /* Share@2x.png */; };
@@ -577,6 +581,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8271DCD41D46D03500B21549 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8271DCD71D46D05000B21549 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8271DCD61D46D05000B21549 /* imglyKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F5DFC19C1D29D00F077B4 /* IntroBackground1536x2048@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IntroBackground1536x2048@2x.png"; sourceTree = "<group>"; };
 		03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
@@ -629,6 +658,7 @@
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
+		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
 		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
@@ -1033,6 +1063,7 @@
 				A83E7A7A1D344A850055DF5E /* CFNetwork.framework in Frameworks */,
 				A83E7A7B1D344A850055DF5E /* calabash.framework in Frameworks */,
 				B813D78E8E71511A68E3402B /* libPods-Sprocket-cal.a in Frameworks */,
+				8271DCD51D46D05000B21549 /* imglyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1072,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
+				8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */,
 				F1DCB7EB1B5066B000CA9AAD /* libz.dylib in Frameworks */,
 				E34D505D199AB87B006D80E0 /* CoreGraphics.framework in Frameworks */,
 				FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */,
@@ -1257,6 +1289,7 @@
 		E34D5059199AB87B006D80E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8271DCD11D46D03500B21549 /* imglyKit.framework */,
 				F1DCB7E91B5065E200CA9AAD /* libz.dylib */,
 				E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */,
 				E39CE8D31AA7C05900A2A644 /* DBChooser.framework */,
@@ -1803,6 +1836,8 @@
 				7fd6fd509fa0c2ba15a3dbf3 /* ShellScript */,
 				caad9d502809ac1fd4895334 /* ShellScript */,
 				c40315faa04a39460b1600ed /* [CP] Embed Pods Frameworks */,
+				8271DCD71D46D05000B21549 /* Embed Frameworks */,
+				8271DCD91D46D09000B21549 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1826,6 +1861,8 @@
 				E387B47719DA23E000ABB167 /* ShellScript */,
 				FF7337C719F71C7900A91B3C /* ShellScript */,
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
+				8271DCD41D46D03500B21549 /* Embed Frameworks */,
+				8271DCD81D46D07B00B21549 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2373,6 +2410,32 @@
 			shellPath = /bin/sh;
 			shellScript = "./Crashlytics.framework/run fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed 198e928d3e88e21a17980402bb913b2eb11f42f7037c2d1d9747ec9650502ce6";
 		};
+		8271DCD81D46D07B00B21549 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/imglyKit.framework/strip-framework.sh\"";
+		};
+		8271DCD91D46D09000B21549 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/imglyKit.framework/strip-framework.sh\"";
+		};
 		8C6684B93DE841829B62429B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2807,6 +2870,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2818,6 +2882,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2871,6 +2936,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2882,6 +2948,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3012,6 +3079,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3022,6 +3090,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3071,6 +3140,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3081,6 +3151,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3126,6 +3197,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3148,6 +3220,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3206,6 +3279,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3216,6 +3290,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3262,6 +3337,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3320,6 +3396,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3330,6 +3407,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3376,6 +3454,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3398,6 +3477,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3409,6 +3489,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3462,6 +3543,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3473,6 +3555,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
