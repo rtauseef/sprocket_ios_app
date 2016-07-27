@@ -25,7 +25,7 @@
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
 #import <MPPrintLaterActivity.h>
-#import <MPBlueToothPrintActivity.h>
+#import <MPBTPrintActivity.h>
 #import <QuartzCore/QuartzCore.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
@@ -332,7 +332,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 {
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
 
-    MPBlueToothPrintActivity *btPrintActivity = [[MPBlueToothPrintActivity alloc] init];
+    MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
     btPrintActivity.image = [self.imageContainer screenshotImage];
     btPrintActivity.vc = self;
     
