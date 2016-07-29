@@ -35,7 +35,7 @@ Scenario: Verify side menu options
     |About          |
     
   @reset
-  @TA143811
+  @TA14381
   Scenario: Verify navigation to device screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -65,7 +65,7 @@ Scenario: Verify side menu options
 	Then I should see the side menu
     
     @reset
-  @TA143811
+  @TA14381
   Scenario: Verify closing side menu
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
