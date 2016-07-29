@@ -74,7 +74,10 @@ Then(/^I should see Flickr "(.*?)" button$/) do |text|
     sleep(STEP_PAUSE)
 end
 
-
+When /^I click close button$/ do
+  touch @current_page.close_button
+  sleep(STEP_PAUSE)
+end
 
 
 

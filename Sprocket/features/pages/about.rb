@@ -13,7 +13,9 @@ class AboutScreen < Calabash::IBase
 def build_version
     query("UILabel index:3",:text)[0]
 end
-
+def sprocket_logo
+    "* id:'aboutLogo'"
+end
   def navigate
     unless current_page?
       home_screen = go_to(HomeScreen)
