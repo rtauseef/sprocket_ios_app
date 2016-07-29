@@ -13,7 +13,9 @@ class DeviceScreen < Calabash::IBase
   def message_title
     "label {text CONTAINS 'Pair your bluetooth printer with this device.'}"
   end
-    
+  def close_button
+    "* id:'MPX.png'"
+  end
 
   def navigate
     unless current_page?

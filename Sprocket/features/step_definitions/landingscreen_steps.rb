@@ -11,13 +11,14 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
       else
         if arg=="Camera Roll"
           check_element_exists(@current_page.cameraroll_logo)
-
         else
-          check_element_exists(@current_page.hamburger_logo)
+        if arg=="Sprocket"
+        else
+          check_element_exists(@current_page.sprocket_logo)
         end
       end
     end
-
+end
   end
 end   
 
