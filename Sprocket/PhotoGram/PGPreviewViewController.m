@@ -431,6 +431,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)photoTaken {
     self.media = [PGCameraManager sharedInstance].currentMedia;
     self.selectedPhoto = [PGCameraManager sharedInstance].currentSelectedPhoto;
+    self.printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
+    self.printItem.layout = [self layout];
     
     self.didChangeProject = NO;
     
