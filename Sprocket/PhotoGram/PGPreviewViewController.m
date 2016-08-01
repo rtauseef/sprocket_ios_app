@@ -207,6 +207,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:toolController];
     navigationController.navigationBar.barStyle = UIBarStyleBlack;
     navigationController.navigationBar.translucent = YES;
+    navigationController.navigationBar.barTintColor = [UIColor HPGrayColor];
     
     [self presentViewController:navigationController animated:NO completion:^{
         [self removeBottomToolbar];
@@ -326,12 +327,13 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         [builder configureToolStackController:^(IMGLYToolStackControllerOptionsBuilder * _Nonnull stackBuilder) {
             stackBuilder.useNavigationControllerForNavigationButtons = YES;
+            stackBuilder.mainToolbarBackgroundColor = [UIColor HPGrayColor];
             stackBuilder.secondaryToolbarBackgroundColor = [UIColor clearColor];
         }];
         
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
             photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionOrientation],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionFilter],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionFrame],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionSticker],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionText],
@@ -346,8 +348,24 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             }];
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
-                if (action == PhotoEditorActionCrop) {
-                    cell.imageView.image = [UIImage imageNamed:@"HPLogo"];
+                switch (action) {
+                    case PhotoEditorActionFilter:
+                        cell.imageView.image = [UIImage imageNamed:@"editFilters"];
+                        break;
+                    case PhotoEditorActionFrame:
+                        cell.imageView.image = [UIImage imageNamed:@"editFrame"];
+                        break;
+                    case PhotoEditorActionSticker:
+                        cell.imageView.image = [UIImage imageNamed:@"editSticker"];
+                        break;
+                    case PhotoEditorActionText:
+                        cell.imageView.image = [UIImage imageNamed:@"editText"];
+                        break;
+                    case PhotoEditorActionCrop:
+                        cell.imageView.image = [UIImage imageNamed:@"editCrop"];
+                        break;
+                    default:
+                        break;
                 }
             }];
         }];
