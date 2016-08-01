@@ -208,62 +208,62 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     navigationController.navigationBar.barStyle = UIBarStyleBlack;
     navigationController.navigationBar.translucent = YES;
     
-    [self presentViewController:navigationController animated:NO completion:nil];
+    [self presentViewController:navigationController animated:NO completion:^{
+        [self removeBottomToolbar];
+    }];
     
-    [self removeBottomToolbar];
+    
 }
 
 #pragma mark - Hacking methods to remove IMGLY bottom toolbar
 
 - (void)removeBottomToolbar {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSArray *views = [[[UIApplication sharedApplication] keyWindow] subviews];
-        UIView *transitionView = views[1];
-        UIView *layoutContainerViewOne = transitionView.subviews[0];
-        UIView *controllerWrapperView = layoutContainerViewOne.subviews[0];
-        UIView *view = controllerWrapperView.subviews[0];
-        UIView *layoutContainerView = view.subviews[0];
-        
-        UIView *photoView = layoutContainerView.subviews[1];
-        UIView *scrollView = photoView.subviews[0];
-        UIView *toolsStackView = layoutContainerView.subviews[3];
-        UIView *bottomToolbarView = layoutContainerView.subviews[4];
-        
-        NSLayoutConstraint *photoviewBottom;
-        for (NSLayoutConstraint *constraint in photoView.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeBottom) {
-                photoviewBottom = constraint;
-                break;
-            }
+    NSArray *views = [[[UIApplication sharedApplication] keyWindow] subviews];
+    UIView *transitionView = views[1];
+    UIView *layoutContainerViewOne = transitionView.subviews[0];
+    UIView *controllerWrapperView = layoutContainerViewOne.subviews[0];
+    UIView *view = controllerWrapperView.subviews[0];
+    UIView *layoutContainerView = view.subviews[0];
+    
+    UIView *photoView = layoutContainerView.subviews[1];
+    UIView *scrollView = photoView.subviews[0];
+    UIView *toolsStackView = layoutContainerView.subviews[3];
+    UIView *bottomToolbarView = layoutContainerView.subviews[4];
+    
+    NSLayoutConstraint *photoviewBottom;
+    for (NSLayoutConstraint *constraint in photoView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeBottom) {
+            photoviewBottom = constraint;
+            break;
         }
-        
-        photoviewBottom.constant += bottomToolbarView.frame.size.height;
-        
-        
-        NSLayoutConstraint *viewBottom;
-        for (NSLayoutConstraint *constraint in scrollView.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeBottom) {
-                viewBottom = constraint;
-                break;
-            }
+    }
+    
+    photoviewBottom.constant += bottomToolbarView.frame.size.height;
+    
+    
+    NSLayoutConstraint *viewBottom;
+    for (NSLayoutConstraint *constraint in scrollView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeBottom) {
+            viewBottom = constraint;
+            break;
         }
-        
-        viewBottom.constant += bottomToolbarView.frame.size.height;
-        
-        NSLayoutConstraint *heightConstraint;
-        for (NSLayoutConstraint *constraint in toolsStackView.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeHeight) {
-                heightConstraint = constraint;
-                break;
-            }
+    }
+    
+    viewBottom.constant += bottomToolbarView.frame.size.height;
+    
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint *constraint in toolsStackView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            heightConstraint = constraint;
+            break;
         }
-        
-        heightConstraint.constant -= bottomToolbarView.frame.size.height;
-        
-        [bottomToolbarView removeFromSuperview];
-        [transitionView layoutIfNeeded];
-        [transitionView updateConstraints];
-    });
+    }
+    
+    heightConstraint.constant -= bottomToolbarView.frame.size.height;
+    
+    [bottomToolbarView removeFromSuperview];
+    [transitionView layoutIfNeeded];
+    [transitionView updateConstraints];
 }
 
 - (void)removeActionBottomToolbar {
@@ -331,17 +331,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
             photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionCrop],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionOrientation],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionFilter],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionAdjust],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSeparator],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionText],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSticker],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionFrame],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSeparator],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionFocus],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionMagic] ];
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionSticker],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionText],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionCrop]
+                                                                        ];
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
             
