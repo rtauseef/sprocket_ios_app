@@ -38,7 +38,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
-@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
+@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate, IMGLYStickersDataSourceProtocol>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
@@ -324,6 +324,30 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     });
 }
 
+#pragma mark - IMGLY Stickers
+
+- (void)stickerCount:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
+{
+    if (completionBlock) {
+        completionBlock(1, nil);
+    }
+}
+
+- (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
+{
+    if (completionBlock) {
+        completionBlock([UIImage imageNamed:@"stickerHearts"], nil, nil);
+    }
+}
+
+- (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
+{
+    if (completionBlock) {
+        IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImage:[UIImage imageNamed:@"stickerHearts"] thumbnail:[UIImage imageNamed:@"stickerHearts"] accessibilityText:nil];
+        completionBlock(sticker, nil);
+    }
+}
+
 #pragma mark - IMGLY Configuration
 
 - (IMGLYConfiguration *)imglyConfiguration
@@ -379,6 +403,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                 
                 cell.captionLabel.text = nil;
             }];
+        }];
+        
+        [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
+            stickerBuilder.stickersDataSource = self;
         }];
         
         [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
