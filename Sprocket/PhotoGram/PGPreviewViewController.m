@@ -403,8 +403,18 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
 {
-    NSLog(@"CANCEL");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+                                                                   message:NSLocalizedString(@"Do you want to return to preview and dismiss your edits?", nil) preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:noAction];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alert addAction:yesAction];
+    
+    [toolStackController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController
