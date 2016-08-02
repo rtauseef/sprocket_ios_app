@@ -38,3 +38,40 @@ Scenario: Printer Paired to device and connected
     Given I am on the "Preview" screen
     When I tap "Print" button
     Then I should see the "Preview" screen
+    
+@reset
+@TA14384
+Scenario Outline: Device paired with two printers
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+	Then I should see the side menu
+    Then I touch "Devices"
+    Then I should see the "Device" screen
+    And I should see the list of two printers conneceted
+    Then I tap the "<Printer>"
+    And I check the screen title with the corresponding printer name
+    And I check "Errors" field displays its value
+    And I check "Battery Status" field displays its value
+    And I check "Auto Off" field displays its value
+    And I check "Mac Address" field displays its value
+    And I check "Firmware Version" field displays its value
+    And I check "Hardware Version" field displays its value
+    
+    Examples:
+    | Printer   |
+    | Printer 1 |
+    | Printer 2 |
+    
+@reset
+@TA14384
+Scenario: Verify select Printer screen with two printers paired
+    Given I am on the "Preview" screen
+    When I tap "Print" button
+    Then I should see the "Select Printer" screen
+    And I should see the list of two printers conneceted
+    Then I tap the "Printer 2"
+    Then I should see the "Preview" screen
+    Then I tap "Print" button
+    Then I should see the "Select Printer" screen
+    Then I verify the "Printer 2" is listed in Recent Printer field
+    And I verify the "Printer 1" is listed in Other Printers field
