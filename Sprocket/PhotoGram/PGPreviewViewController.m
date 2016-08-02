@@ -376,6 +376,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                     default:
                         break;
                 }
+                
+                cell.captionLabel.text = nil;
             }];
         }];
         
