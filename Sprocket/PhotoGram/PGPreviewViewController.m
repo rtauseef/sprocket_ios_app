@@ -19,6 +19,7 @@
 #import "PGAppAppearance.h"
 #import "UIView+Background.h"
 #import "UIColor+Style.h"
+#import "UIFont+Style.h"
 
 #import <imglyKit/imglyKit-Swift.h>
 #import <MP.h>
@@ -205,65 +206,70 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     toolController.delegate = self;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:toolController];
-    navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    navigationController.navigationBar.translucent = YES;
+    navigationController.navigationBar.translucent = NO;
+    navigationController.navigationBar.barTintColor = [UIColor HPGrayColor];
     
-    [self presentViewController:navigationController animated:NO completion:nil];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
     
-    [self removeBottomToolbar];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    [self presentViewController:navigationController animated:NO completion:^{
+        [self removeBottomToolbar];
+    }];
+    
+    
 }
 
 #pragma mark - Hacking methods to remove IMGLY bottom toolbar
 
 - (void)removeBottomToolbar {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSArray *views = [[[UIApplication sharedApplication] keyWindow] subviews];
-        UIView *transitionView = views[1];
-        UIView *layoutContainerViewOne = transitionView.subviews[0];
-        UIView *controllerWrapperView = layoutContainerViewOne.subviews[0];
-        UIView *view = controllerWrapperView.subviews[0];
-        UIView *layoutContainerView = view.subviews[0];
-        
-        UIView *photoView = layoutContainerView.subviews[1];
-        UIView *scrollView = photoView.subviews[0];
-        UIView *toolsStackView = layoutContainerView.subviews[3];
-        UIView *bottomToolbarView = layoutContainerView.subviews[4];
-        
-        NSLayoutConstraint *photoviewBottom;
-        for (NSLayoutConstraint *constraint in photoView.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeBottom) {
-                photoviewBottom = constraint;
-                break;
-            }
+    NSArray *views = [[[UIApplication sharedApplication] keyWindow] subviews];
+    UIView *transitionView = views[1];
+    UIView *layoutContainerViewOne = transitionView.subviews[0];
+    UIView *controllerWrapperView = layoutContainerViewOne.subviews[0];
+    UIView *view = controllerWrapperView.subviews[0];
+    UIView *layoutContainerView = view.subviews[0];
+    
+    UIView *photoView = layoutContainerView.subviews[1];
+    UIView *scrollView = photoView.subviews[0];
+    UIView *toolsStackView = layoutContainerView.subviews[3];
+    UIView *bottomToolbarView = layoutContainerView.subviews[4];
+    
+    NSLayoutConstraint *photoviewBottom;
+    for (NSLayoutConstraint *constraint in photoView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeBottom) {
+            photoviewBottom = constraint;
+            break;
         }
-        
-        photoviewBottom.constant += bottomToolbarView.frame.size.height;
-        
-        
-        NSLayoutConstraint *viewBottom;
-        for (NSLayoutConstraint *constraint in scrollView.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeBottom) {
-                viewBottom = constraint;
-                break;
-            }
+    }
+    
+    photoviewBottom.constant += bottomToolbarView.frame.size.height;
+    
+    NSLayoutConstraint *viewBottom;
+    for (NSLayoutConstraint *constraint in scrollView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeBottom) {
+            viewBottom = constraint;
+            break;
         }
-        
-        viewBottom.constant += bottomToolbarView.frame.size.height;
-        
-        NSLayoutConstraint *heightConstraint;
-        for (NSLayoutConstraint *constraint in toolsStackView.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeHeight) {
-                heightConstraint = constraint;
-                break;
-            }
+    }
+    
+    viewBottom.constant += bottomToolbarView.frame.size.height;
+    
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint *constraint in toolsStackView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            heightConstraint = constraint;
+            break;
         }
-        
-        heightConstraint.constant -= bottomToolbarView.frame.size.height;
-        
-        [bottomToolbarView removeFromSuperview];
-        [transitionView layoutIfNeeded];
-        [transitionView updateConstraints];
-    });
+    }
+    
+    heightConstraint.constant -= bottomToolbarView.frame.size.height;
+    
+    [bottomToolbarView removeFromSuperview];
+    [transitionView layoutIfNeeded];
+    [transitionView updateConstraints];
 }
 
 - (void)removeActionBottomToolbar {
@@ -326,34 +332,52 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         [builder configureToolStackController:^(IMGLYToolStackControllerOptionsBuilder * _Nonnull stackBuilder) {
             stackBuilder.useNavigationControllerForNavigationButtons = YES;
+            stackBuilder.mainToolbarBackgroundColor = [UIColor HPGrayColor];
             stackBuilder.secondaryToolbarBackgroundColor = [UIColor clearColor];
         }];
         
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
             photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionCrop],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionOrientation],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionFilter],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionAdjust],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSeparator],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionText],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSticker],
                                                                         [NSNumber numberWithInteger:PhotoEditorActionFrame],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSeparator],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionFocus],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionMagic] ];
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionSticker],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionText],
+                                                                        [NSNumber numberWithInteger:PhotoEditorActionCrop]
+                                                                        ];
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
             
             [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
-                NSLog(@"action");
                 [self removeActionBottomToolbar];
             }];
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
-                if (action == PhotoEditorActionCrop) {
-                    cell.imageView.image = [UIImage imageNamed:@"HPLogo"];
+                switch (action) {
+                    case PhotoEditorActionFilter:
+                        cell.imageView.image = [UIImage imageNamed:@"editFilters"];
+                        cell.accessibilityIdentifier = @"editFilters";
+                        break;
+                    case PhotoEditorActionFrame:
+                        cell.imageView.image = [UIImage imageNamed:@"editFrame"];
+                        cell.accessibilityIdentifier = @"editFrame";
+                        break;
+                    case PhotoEditorActionSticker:
+                        cell.imageView.image = [UIImage imageNamed:@"editSticker"];
+                        cell.accessibilityIdentifier = @"editSticker";
+                        break;
+                    case PhotoEditorActionText:
+                        cell.imageView.image = [UIImage imageNamed:@"editText"];
+                        cell.accessibilityIdentifier = @"editText";
+                        break;
+                    case PhotoEditorActionCrop:
+                        cell.imageView.image = [UIImage imageNamed:@"editCrop"];
+                        cell.accessibilityIdentifier = @"editCrop";
+                        break;
+                    default:
+                        break;
                 }
+                
+                cell.captionLabel.text = nil;
             }];
         }];
         
@@ -381,8 +405,18 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
 {
-    NSLog(@"CANCEL");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+                                                                   message:NSLocalizedString(@"Do you want to return to preview and dismiss your edits?", nil) preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:noAction];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alert addAction:yesAction];
+    
+    [toolStackController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController

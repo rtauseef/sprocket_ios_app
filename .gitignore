@@ -26,3 +26,17 @@ resources-to-copy-*.*/Sprocket/features/Print_Confirmation.feature~
 /Sprocket/features/g1
 /Sprocket/features/Print_Confirmation1.feature
 Sprocket/Sprocket.xcodeproj/project.pbxproj.bak
+
+# fastlane specific
+fastlane/report.xml
+
+# deliver temporary files
+fastlane/Preview.html
+
+# snapshot generated screenshots
+fastlane/screenshots
+
+# scan temporary files
+fastlane/test_output
+
+fastlane/build_output
