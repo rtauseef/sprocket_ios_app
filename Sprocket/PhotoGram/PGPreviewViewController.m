@@ -19,6 +19,7 @@
 #import "PGAppAppearance.h"
 #import "UIView+Background.h"
 #import "UIColor+Style.h"
+#import "UIFont+Style.h"
 
 #import <imglyKit/imglyKit-Swift.h>
 #import <MP.h>
@@ -205,9 +206,14 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     toolController.delegate = self;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:toolController];
-    navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    navigationController.navigationBar.translucent = YES;
+    navigationController.navigationBar.translucent = NO;
     navigationController.navigationBar.barTintColor = [UIColor HPGrayColor];
+    
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
+    
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
     [self presentViewController:navigationController animated:NO completion:^{
         [self removeBottomToolbar];
@@ -240,7 +246,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     }
     
     photoviewBottom.constant += bottomToolbarView.frame.size.height;
-    
     
     NSLayoutConstraint *viewBottom;
     for (NSLayoutConstraint *constraint in scrollView.constraints) {
@@ -343,7 +348,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
             
             [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
-                NSLog(@"action");
                 [self removeActionBottomToolbar];
             }];
             
@@ -351,18 +355,23 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                 switch (action) {
                     case PhotoEditorActionFilter:
                         cell.imageView.image = [UIImage imageNamed:@"editFilters"];
+                        cell.accessibilityIdentifier = @"editFilters";
                         break;
                     case PhotoEditorActionFrame:
                         cell.imageView.image = [UIImage imageNamed:@"editFrame"];
+                        cell.accessibilityIdentifier = @"editFrame";
                         break;
                     case PhotoEditorActionSticker:
                         cell.imageView.image = [UIImage imageNamed:@"editSticker"];
+                        cell.accessibilityIdentifier = @"editSticker";
                         break;
                     case PhotoEditorActionText:
                         cell.imageView.image = [UIImage imageNamed:@"editText"];
+                        cell.accessibilityIdentifier = @"editText";
                         break;
                     case PhotoEditorActionCrop:
                         cell.imageView.image = [UIImage imageNamed:@"editCrop"];
+                        cell.accessibilityIdentifier = @"editCrop";
                         break;
                     default:
                         break;
