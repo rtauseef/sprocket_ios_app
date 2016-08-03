@@ -238,6 +238,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 {
     IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
         
+        builder.contextMenuBackgroundColor = [UIColor HPGrayColor];
+        
         [builder configureToolStackController:^(IMGLYToolStackControllerOptionsBuilder * _Nonnull stackBuilder) {
             stackBuilder.mainToolbarBackgroundColor = [UIColor HPGrayColor];
             stackBuilder.secondaryToolbarBackgroundColor = [UIColor clearColor];
