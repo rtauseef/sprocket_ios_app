@@ -1,19 +1,30 @@
-Feature: Signin with facebook credentials and verify functionality
+Feature: Signin with facebook credentials and verify features 
 
-  
-  @TA14379
-  @reset
-  @done
-  Scenario: Verify Double-tap add borders to image on preview screen_facebook
+ @reset
+ @appium
+ @fbtest
+  Scenario: Signin to Facebook
+    Given I am on the Landing screen
+    Then I should see the "Facebook" Logo
+    When I touch the "Facebook" Logo
+    And I touch signin button
+    And I login to facebook
+
+ @appium
+ @fbtest
+ @ios8
+ @fbtest
+ Scenario: Signin to Facebook
+      Given I login to facebook through safari
+      
+
+@fbtest
+Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Landing" screen
-    And I click on the "Sign in" button
-    Then I should see the "Facebook Signin" screen
-    And I enter valid credentials
-    And I touch login button
-    Then I wait for sometime
+    Then I should see the "Facebook Albums" screen
+    Then I select an album
     Then I should see the "Facebook Photo" screen
     When I touch second photo
     Then I wait for sometime
@@ -25,35 +36,25 @@ Feature: Signin with facebook credentials and verify functionality
     Then I should see the original image without margins
 
 
-  @TA14379
-  @reset
-  @done
+  @fbtest
   Scenario: Verify facebook photo screen and the buttons present
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Landing" screen
-    And I click on the "Sign in" button
-    Then I should see the "Facebook Signin" screen
-    And I enter valid credentials
-    And I touch login button
+    Then I should see the "Facebook Albums" screen
+    Then I select an album
     Then I should see the "Facebook Photo" screen
     Then I should see "Grid mode" button
     Then I should see "List mode" button
     Then I should see "Folder" button
 
-  @done
-  @TA14379
-  @reset
+  @fbtest
   Scenario: Verify folder icon functionality in facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Landing" screen
-    And I click on the "Sign in" button
-    Then I should see the "Facebook Signin" screen
-    And I enter valid credentials
-    And I touch login button
+    Then I should see the "Facebook Albums" screen
+    Then I select an album
     Then I should see the "Facebook Photo" screen
     Then I touch "folderIcon" button
     Then I should see the "Facebook Albums" screen
@@ -61,23 +62,16 @@ Feature: Signin with facebook credentials and verify functionality
     And I should see "All Photos"
     And I should see other albums
 
-  @done
-  @TA14379
-  @reset
+  @fbtest
   Scenario: Verify list view and grid view for facebook photos
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Landing" screen
-    And I click on the "Sign in" button
-    Then I should see the "Facebook Signin" screen
-    And I enter valid credentials
-    And I touch login button
+    Then I should see the "Facebook Albums" screen
+    Then I select an album
     Then I should see the "Facebook Photo" screen
     Then I should see the photos in a grid view
     When I touch list mode button
     Then I should see the photos in list view
     When I touch grid mode button
     Then I should see the photos in a grid view
-
-
