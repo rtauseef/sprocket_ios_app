@@ -34,6 +34,7 @@
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
 #define kPreviewRetryButtonTitle NSLocalizedString(@"Retry", nil)
+#define kImglyColorCellHeightAdjustment 18
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
@@ -297,6 +298,86 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             cropToolBuilder.allowedCropRatios = @[
                                                   cropRatio2x3,
                                                   cropRatio3x2 ];
+        }];
+        
+        // The textField configuration
+        [builder configureTextToolController:^(IMGLYTextToolControllerOptionsBuilder * _Nonnull textToolBuilder) {
+            [textToolBuilder setTitle:@" "];
+            
+            [textToolBuilder setTextFieldConfigurationClosure:^(UITextField * _Nonnull textField) {
+                [textField setKeyboardAppearance:UIKeyboardAppearanceDark];
+                [textField setTextAlignment:NSTextAlignmentCenter];
+                [textField setTintColor:[UIColor whiteColor]];
+            }];
+        }];
+
+        // The initial text font and color modification screen (created after entering text into the textfield
+        [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull textOptionsBuilder) {
+            [textOptionsBuilder setTitle:@" "];
+            
+            [textOptionsBuilder setContextActionConfigurationClosure:^(IMGLYContextMenuAction * _Nonnull menuAction, enum TextContextAction contextAction) {
+
+                // Unfortunately, the image property on menuAction is readOnly... so, we stay with the default icons
+            }];
+            
+            [textOptionsBuilder setActionButtonConfigurationClosure:^(UICollectionViewCell * _Nonnull cell, enum TextAction textAction) {
+        
+                UIImageView *imageView = nil;
+                
+                switch (textAction) {
+                    case TextActionSelectFont:
+                        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imglyIconFont"]];
+                        break;
+                        
+                    case TextActionSelectColor:
+                        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imglyIconColor"]];
+                        break;
+                        
+                    case TextActionSelectBackgroundColor:
+                        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imglyIconBackgroundColor"]];
+                        break;
+                        
+                    default:
+                        break;
+                };
+                
+                if (nil != imageView) {
+                    CGFloat inverseAspectRatio = imageView.image.size.height / imageView.image.size.width;
+                    
+                    [cell.subviews[0] removeFromSuperview];
+                    [cell addSubview:imageView];
+                    
+                    CGRect frame = imageView.frame;
+                    frame.size.width = cell.frame.size.width - 20;
+                    frame.size.height = frame.size.width * inverseAspectRatio;
+                    frame.origin.x = (cell.frame.size.width - frame.size.width)/2;
+                    frame.origin.y = (cell.frame.size.height - frame.size.height)/2;
+                    imageView.frame = frame;
+                }
+            }];
+        }];
+        
+        // The screen for both text color and background color
+        [builder configureTextColorToolController:^(IMGLYTextColorToolControllerOptionsBuilder * _Nonnull textColorToolBuilder) {
+            [textColorToolBuilder setTitle:@" "];
+
+            [textColorToolBuilder setTextColorActionButtonConfigurationClosure:^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull title) {
+                CGRect cellRect = cell.frame;
+                cellRect.size.height = cellRect.size.width + kImglyColorCellHeightAdjustment;
+                cell.frame = cellRect;
+                cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
+                cell.colorView.layer.masksToBounds = YES;
+            }];
+        }];
+        
+        // The screen for text font
+        [builder configureTextFontToolController:^(IMGLYTextFontToolControllerOptionsBuilder * _Nonnull textFontToolBuilder) {
+            [textFontToolBuilder setTitle:@" "];
+           
+            [textFontToolBuilder setActionButtonConfigurationClosure:^(IMGLYLabelCaptionCollectionViewCell * _Nonnull cell, NSString * _Nonnull label) {
+                cell.captionLabel.text = nil;
+            }];
+            
         }];
     }];
     
