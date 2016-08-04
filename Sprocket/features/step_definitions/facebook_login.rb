@@ -61,22 +61,24 @@ Given(/^I login to facebook$/) do
         puts "Logging to facebook via safari!" .blue
     else
       sleep(SLEEP_SCREENLOAD)
-        txt_email="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]"
-        txt_pass= "//UIASecureTextField[@value='Facebook password']"
-        but_login= "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[1]"  
-        but_confirm= "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[2]"
+        txtFBEmail="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]"
+        #txt_pass= "//UIASecureTextField[@value='Facebook password']"
+       txtFBPassword="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]"
+      btnFBLogin= "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[1]"
+        btnFBConfirm= "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[2]"
         wait = Selenium::WebDriver::Wait.new(:timeout => MAX_TIMEOUT) # seconds
-        wait.until { selenium.find_element(:xpath,"#{txt_email}") }
-        selenium.find_element(:xpath,"#{txt_email}").click
-        selenium.find_element(:xpath, "#{txt_email}").send_keys VALID_CREDENTIALS_Facebook[:user]
-        wait.until { selenium.find_element(:xpath, "#{txt_pass}") }
-        selenium.find_element(:xpath, "#{txt_pass}").click
-        selenium.find_element(:xpath, "#{txt_pass}").send_keys VALID_CREDENTIALS_Facebook[:password]
-        wait.until { selenium.find_element(:xpath, "#{but_login}") }
-        selenium.find_element(:xpath, "#{but_login}").click
+        wait.until { selenium.find_element(:xpath,"#{txtFBEmail}") }
+        selenium.find_element(:xpath,"#{txtFBEmail}").click
+        selenium.find_element(:xpath, "#{txtFBEmail}").send_keys VALID_CREDENTIALS_Facebook[:user]
+        wait.until { selenium.find_element(:xpath, "#{txtFBPassword}") }
+        sleep(5)
+        selenium.find_element(:xpath, "#{txtFBPassword}").click
+        selenium.find_element(:xpath, "#{txtFBPassword}").send_keys VALID_CREDENTIALS_Facebook[:password]
+        wait.until { selenium.find_element(:xpath, "#{btnFBLogin}") }
+        selenium.find_element(:xpath, "#{btnFBLogin}").click
         sleep(WAIT_SCREENLOAD)
-        wait.until { selenium.find_element(:xpath, "#{but_confirm}") }
-        selenium.find_element(:xpath, "#{but_confirm}").click
+        wait.until { selenium.find_element(:xpath, "#{btnFBConfirm}") }
+        selenium.find_element(:xpath, "#{btnFBConfirm}").click
         sleep(WAIT_SCREENLOAD)
     end
 end
