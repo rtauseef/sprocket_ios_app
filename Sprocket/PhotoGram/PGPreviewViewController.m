@@ -255,6 +255,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                                                                         ];
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
+            photoEditorBuilder.allowsPreviewImageZoom = NO;
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
                 switch (action) {
