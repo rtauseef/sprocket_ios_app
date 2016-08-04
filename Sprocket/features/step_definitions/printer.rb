@@ -38,11 +38,10 @@ And(/^I should see the list of two printers conneceted$/) do
 end    
 
 Then(/^I tap the Printer$/) do
-    sleep(3)
+    sleep(WAIT_SCREENLOAD)
     printer_name = ENV['printer']
     wait_for_elements_exist("UITableViewCell text:'#{printer_name}'",:timeout=>MAX_TIMEOUT)
     touch("UITableViewCell text:'#{printer_name}'")
-    sleep(3)
     $printer_name = printer_name
 end
 
