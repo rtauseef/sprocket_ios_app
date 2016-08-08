@@ -44,8 +44,6 @@ NSString * const kAlbumSelectionScreenName = @"Album Selection Screen";
     self.tableView.separatorColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTableSeparatorColor];
     self.title = [NSString stringWithFormat:HPPRLocalizedString(@"%@ Albums", @"Albums of the specified social network"), self.provider.localizedName];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    
     self.albums = @[];
     
     if (!self.isRefreshingAlbums) {
@@ -74,6 +72,8 @@ NSString * const kAlbumSelectionScreenName = @"Album Selection Screen";
 {
     [super viewWillAppear:animated];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kAlbumSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
 
