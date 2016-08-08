@@ -20,6 +20,7 @@
 #import "UIView+Background.h"
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
+#import "PGFrameItem.h"
 
 #import <imglyKit/imglyKit-Swift.h>
 #import <MP.h>
@@ -39,7 +40,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
-@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate, IMGLYStickersDataSourceProtocol>
+@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate, IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
@@ -292,6 +293,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             stickerBuilder.stickersDataSource = self;
         }];
         
+        [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull frameToolBuilder) {
+            frameToolBuilder.framesDataSource = self;
+        }];
+        
         [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
             IMGLYCropRatio *cropRatio2x3 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:2.0/3.0] title:@"2:3" accessibilityLabel:@"2:3 crop ratio" icon:[UIImage imageNamed:@"crop.2x3.png"]];
             IMGLYCropRatio *cropRatio3x2 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:3.0/2.0] title:@"3:2" accessibilityLabel:@"3:2 crop ratio" icon:[UIImage imageNamed:@"crop.3x2.png"]];
@@ -414,6 +419,41 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 {
     NSLog(@"FAIL");
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - IMGLYFramesDataSourceProtocol
+
+- (void)frameCount:(float)ratio completionBlock:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
+{
+    if (completionBlock) {
+        completionBlock(15, nil);
+    }
+}
+
+- (void)thumbnailAndLabelAtIndex:(NSInteger)index ratio:(float)ratio completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
+{
+    if (completionBlock) {
+        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        completionBlock(frame.thumbnailImage, frame.accessibilityText, nil);
+    }
+}
+
+- (void)frameAtIndex:(NSInteger)index ratio:(float)ratio completionBlock:(void (^ _Nonnull)(IMGLYFrame * _Nullable, NSError * _Nullable))completionBlock
+{
+    if (completionBlock) {
+        CGFloat ratio = 2.0/3.0;
+        
+        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        IMGLYFrameInfoRecord *info = [[IMGLYFrameInfoRecord alloc] init];
+        
+        info.accessibilityText = frame.accessibilityText;
+        IMGLYFrame *imglyFrame = [[IMGLYFrame alloc] initWithInfo:info];
+        
+        [imglyFrame addImage:frame.frameImage ratio:ratio];
+        [imglyFrame addThumbnail:frame.thumbnailImage ratio:ratio];
+        
+        completionBlock(imglyFrame, nil);
+    }
 }
 
 
