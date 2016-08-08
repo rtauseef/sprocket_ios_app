@@ -75,8 +75,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 {
     [super viewDidLoad];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    
     self.noPhotosLabel.text = HPPRLocalizedString(@"No Photos Found", @"Message shown when the album is empty in the select photo screen");
     self.userAccountIsPrivateLabel.text = HPPRLocalizedString(@"The user account is private.", @"Message shown when the user account is private in the select photo screen");
     
@@ -155,6 +153,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
