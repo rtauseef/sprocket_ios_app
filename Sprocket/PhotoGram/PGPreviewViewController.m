@@ -20,6 +20,7 @@
 #import "UIView+Background.h"
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
+#import "PGFrameItem.h"
 
 #import <imglyKit/imglyKit-Swift.h>
 #import <MP.h>
@@ -425,14 +426,15 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)frameCount:(float)ratio completionBlock:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(1, nil);
+        completionBlock(15, nil);
     }
 }
 
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index ratio:(float)ratio completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock([UIImage imageNamed:@"blue_frame_TN.png"], @"Blue", nil);
+        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        completionBlock(frame.thumbnailImage, frame.accessibilityText, nil);
     }
 }
 
@@ -441,14 +443,16 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     if (completionBlock) {
         CGFloat ratio = 2.0/3.0;
         
+        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
         IMGLYFrameInfoRecord *info = [[IMGLYFrameInfoRecord alloc] init];
-        info.accessibilityText = @"Blue Frame";
-        IMGLYFrame *frame = [[IMGLYFrame alloc] initWithInfo:info];
         
-        [frame addImage:[UIImage imageNamed:@"blue_frame.png"] ratio:ratio];
-        [frame addThumbnail:[UIImage imageNamed:@"blue_frame_TN.png"] ratio:ratio];
+        info.accessibilityText = frame.accessibilityText;
+        IMGLYFrame *imglyFrame = [[IMGLYFrame alloc] initWithInfo:info];
         
-        completionBlock(frame, nil);
+        [imglyFrame addImage:frame.frameImage ratio:ratio];
+        [imglyFrame addThumbnail:frame.thumbnailImage ratio:ratio];
+        
+        completionBlock(imglyFrame, nil);
     }
 }
 
