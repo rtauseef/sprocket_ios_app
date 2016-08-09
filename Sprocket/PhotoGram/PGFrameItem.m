@@ -12,6 +12,8 @@
 
 #import "PGFrameItem.h"
 
+const NSInteger PGFrameItemsCount = 15;
+
 @implementation PGFrameItem
 
 + (PGFrameItem *)frameItemByIndex:(NSInteger)index {
