@@ -47,13 +47,8 @@ Then(/^I tap the "(.*?)"$/) do |printer|
         touch @current_page.printer_2    
     end
     $printer_name = printer
-    puts $printer_name
     sleep(WAIT_SCREENLOAD)
-    printer_name = ENV['printer']
-    wait_for_elements_exist("UITableViewCell text:'#{printer_name}'",:timeout=>MAX_TIMEOUT)
-    touch("UITableViewCell text:'#{printer_name}'")
-    $printer_name = printer_name
-end
+ end
 
 And(/^I check the screen title with the corresponding printer name$/) do
    # title = query("label {text CONTAINS 'HP sprocket'}", :text)[0]
