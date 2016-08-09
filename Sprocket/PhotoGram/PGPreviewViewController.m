@@ -524,7 +524,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
     if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Dismiss Edits", nil)
                                                                        message:NSLocalizedString(@"Dismiss your project and go to the camera?", nil) preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -550,7 +550,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
     if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Dismiss Edits", nil)
                                                                        message:NSLocalizedString(@"Dismiss your project and go to the galleries?", nil) preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
