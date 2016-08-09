@@ -331,6 +331,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                 [textField setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
             }];
         }];
+        
+        [builder configureFilterToolController:^(IMGLYFilterToolControllerOptionsBuilder * _Nonnull filterBuilder) {
+            [filterBuilder setFilterCellConfigurationClosure:^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
+                [cell.captionLabel removeFromSuperview];
+            }];
+        }];
 
         // The initial text font and color modification screen (created after entering text into the textfield
         [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull textOptionsBuilder) {
