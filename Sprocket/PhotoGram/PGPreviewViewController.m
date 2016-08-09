@@ -216,7 +216,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)stickerCount:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(5, nil);
+        completionBlock(PGStickerItemsCount, nil);
     }
 }
 
@@ -429,7 +429,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)frameCount:(float)ratio completionBlock:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(15, nil);
+        completionBlock(PGFrameItemsCount, nil);
     }
 }
 

@@ -12,6 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
+const NSInteger PGFrameItemsCount = 15;
+
 typedef NS_ENUM (NSInteger, PGFrameItems){
     PGFrameItemsBlue,
     PGFrameItemsBlueGradient,

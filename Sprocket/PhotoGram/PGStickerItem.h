@@ -12,6 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
+const NSInteger PGStickerItemsCount = 5;
+
 typedef NS_ENUM (NSInteger, PGStickerItems){
     PGStickerItemsCatGlasses,
     PGStickerItemsCrown,
