@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-const NSInteger PGFrameItemsCount = 15;
+extern const NSInteger PGFrameItemsCount;
 
 typedef NS_ENUM (NSInteger, PGFrameItems){
     PGFrameItemsBlue,

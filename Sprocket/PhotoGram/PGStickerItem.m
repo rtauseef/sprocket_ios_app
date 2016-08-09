@@ -12,6 +12,8 @@
 
 #import "PGStickerItem.h"
 
+const NSInteger PGStickerItemsCount = 5;
+
 @implementation PGStickerItem
 
 + (PGStickerItem *)stickerItemByIndex:(NSInteger)index {
