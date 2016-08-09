@@ -12,33 +12,24 @@
 
 #import <Foundation/Foundation.h>
 
-const NSInteger PGFrameItemsCount = 15;
+const NSInteger PGStickerItemsCount = 5;
 
-typedef NS_ENUM (NSInteger, PGFrameItems){
-    PGFrameItemsBlue,
-    PGFrameItemsBlueGradient,
-    PGFrameItemsBlueWaterColor,
-    PGFrameItemsFloral,
-    PGFrameItemsFloralTwo,
-    PGFrameItemsGradient,
-    PGFrameItemsGreenSprayPaint,
-    PGFrameItemsGreenWaterColor,
-    PGFrameItemsPink,
-    PGFrameItemsPinkSprayPaint,
-    PGFrameItemsPolkadots,
-    PGFrameItemsPurple,
-    PGFrameItemsRed,
-    PGFrameItemsTurquoise,
-    PGFrameItemsWhite,
+typedef NS_ENUM (NSInteger, PGStickerItems){
+    PGStickerItemsCatGlasses,
+    PGStickerItemsCrown,
+    PGStickerItemsHearts,
+    PGStickerItemsOMG,
+    PGStickerItemsStar
 };
 
-@interface PGFrameItem : NSObject
+
+@interface PGStickerItem : NSObject
 
 @property (nonatomic, strong) NSString *accessibilityText;
 @property (nonatomic, strong) NSString *imageName;
 
-+ (PGFrameItem *)frameItemByIndex:(NSInteger)index;
++ (PGStickerItem *)stickerItemByIndex:(NSInteger)index;
 - (UIImage *)thumbnailImage;
-- (UIImage *)frameImage;
+- (UIImage *)stickerImage;
 
 @end
