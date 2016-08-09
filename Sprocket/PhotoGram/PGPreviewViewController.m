@@ -119,7 +119,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.imageView) {
-        [self.imageView adjustContentOffset];
+        if (self.didChangeProject) {
+            [self.imageView adjustContentOffset];
+        } else {
+            [self.imageView adjustContentOffset];
+            self.didChangeProject = NO;
+        }
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePreviewAndCamera) name:kPGCameraManagerCameraClosed object:nil];
@@ -408,6 +413,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     self.imageView.image = self.selectedPhoto;
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.imageView layoutIfNeeded];
+    self.didChangeProject = YES;
 }
 
 - (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
