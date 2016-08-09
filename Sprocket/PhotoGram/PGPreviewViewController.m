@@ -76,6 +76,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    static BOOL firstAppearance = YES;
+    
     [self.view layoutIfNeeded];
     
     [super viewWillAppear:animated];
@@ -92,7 +94,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         } else {
             [self showCamera];
         }
-        
+    }
+    
+    if (firstAppearance) {
+        firstAppearance = NO;
         CGRect frame = self.imageContainer.frame;
         
         CGFloat aspectRatioWidth = [self paper].width;
@@ -204,7 +209,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)showImgly
 {
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:self.imageView.image configuration:[self imglyConfiguration]];
+    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:[self.imageContainer screenshotImage] configuration:[self imglyConfiguration]];
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:[self imglyConfiguration]];
     toolController.delegate = self;
     
@@ -313,9 +318,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [textToolBuilder setTitle:@" "];
             
             [textToolBuilder setTextFieldConfigurationClosure:^(UITextField * _Nonnull textField) {
+                static NSInteger numTextFields = 0;
+                
                 [textField setKeyboardAppearance:UIKeyboardAppearanceDark];
                 [textField setTextAlignment:NSTextAlignmentCenter];
                 [textField setTintColor:[UIColor whiteColor]];
+                [textField setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
             }];
         }];
 
@@ -396,8 +404,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
 {
-    NSLog(@"IMAGE:  %@", image);
-    self.imageView.image = image;
+    self.selectedPhoto = image;
+    self.imageView.image = self.selectedPhoto;
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.imageView layoutIfNeeded];
 }
