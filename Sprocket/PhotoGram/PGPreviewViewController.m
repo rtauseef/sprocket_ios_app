@@ -21,6 +21,7 @@
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
 #import "PGFrameItem.h"
+#import "PGStickerItem.h"
 
 #import <imglyKit/imglyKit-Swift.h>
 #import <MP.h>
@@ -215,22 +216,24 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)stickerCount:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(1, nil);
+        completionBlock(5, nil);
     }
 }
 
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock([UIImage imageNamed:@"stickerHearts"], nil, nil);
+        PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
+        completionBlock(sticker.thumbnailImage, nil, nil);
     }
 }
 
 - (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImage:[UIImage imageNamed:@"stickerHearts"] thumbnail:[UIImage imageNamed:@"stickerHearts"] accessibilityText:nil];
-        completionBlock(sticker, nil);
+        PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
+        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:nil];
+        completionBlock(imglySticker, nil);
     }
 }
 
