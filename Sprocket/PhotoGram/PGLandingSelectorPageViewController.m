@@ -123,6 +123,7 @@ typedef enum {
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [self enableSwipe];
 }
 
@@ -405,6 +406,7 @@ typedef enum {
 
 - (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     PGLandingPageViewController *vc = (PGLandingPageViewController *)([self currentNavigationController].viewControllers[0]);
     [vc.revealViewController revealToggle:self];
 }
