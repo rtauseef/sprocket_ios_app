@@ -59,7 +59,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: a67045b3bd628d38b98138dd9e56b49de72e4528
+    :commit: 1c0cd4cf8b1387b17062c73fcbaba1d50d07f31e
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: ad12b577b5d1aacea82c8f01459bc34f0f427416
