@@ -61,7 +61,7 @@ NSString * const kFacebookUserIdKey = @"id";
     [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     
     [HPPRFacebookPhotoProvider sharedInstance].loginProvider.delegate = self;
-    [self checkFacebookAndAlbums:YES];
+    [self checkFacebookAndAlbums:NO];
 }
 
 - (void)dealloc
@@ -89,7 +89,7 @@ NSString * const kFacebookUserIdKey = @"id";
 
     if ([[HPPRFacebookPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        [self checkFacebookAndAlbums:YES];
+        [self checkFacebookAndAlbums:NO];
     }
 }
 
@@ -135,7 +135,6 @@ NSString * const kFacebookUserIdKey = @"id";
                     UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
                     
                     vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
-                    
                     
                     [self.spinner removeFromSuperview];
 
