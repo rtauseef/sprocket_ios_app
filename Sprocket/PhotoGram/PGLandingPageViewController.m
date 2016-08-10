@@ -15,6 +15,8 @@
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
 
+const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
+
 @interface PGLandingPageViewController () <UIGestureRecognizerDelegate, TTTAttributedLabelDelegate>
 
 @end

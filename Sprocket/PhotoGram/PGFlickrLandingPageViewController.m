@@ -195,4 +195,8 @@ NSString * const kFlickrUserIdKey = @"userID";
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 
+- (UIEdgeInsets)collectionViewContentInset {
+    return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
+}
+
 @end
