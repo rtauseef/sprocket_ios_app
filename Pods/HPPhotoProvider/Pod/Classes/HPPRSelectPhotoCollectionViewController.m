@@ -83,6 +83,11 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    
+    if ([self.delegate respondsToSelector:@selector(collectionViewContentInset)]) {
+        self.collectionView.contentInset = [self.delegate collectionViewContentInset];
+    }
+    
     self.topView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.backgroundView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     

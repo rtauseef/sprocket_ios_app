@@ -15,6 +15,8 @@
 #import <HPPRLoginProvider.h>
 #import <HPPRError.h>
 
+extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
+
 @interface PGLandingPageViewController : UIViewController
 
 - (void)setLinkForLabel:(TTTAttributedLabel *)label range:(NSRange)range;
