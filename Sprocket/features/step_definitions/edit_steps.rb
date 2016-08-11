@@ -32,6 +32,15 @@ Then (/^I select "(.*?)"$/) do |edit_item|
         sleep(STEP_PAUSE)
 end
 
+
+
+And(/^I should see the photo with no frame$/) do
+    post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+    post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
+    raise "Frame Applied!" unless post_img_frame_width = $curr_img_frame_width && post_img_frame_height = $curr_img_frame_height
+end
+
+
 And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     if(edit_item == "frame")
         sleep(STEP_PAUSE)
@@ -42,18 +51,14 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
         if edit_item == "sticker"
             check_element_exists @current_page.selected_sticker
             sleep(STEP_PAUSE)
+    else
+        if edit_item == "text"
+            sleep(STEP_PAUSE)
+            txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
+            raise "Text not present!" unless txtTemplate = $template_text 
         end
     end
-end
-
-And(/^I should see the photo with no frame$/) do
-    post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
-    post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
-    raise "Frame Applied!" unless post_img_frame_width = $curr_img_frame_width && post_img_frame_height = $curr_img_frame_height
-end
-
-And(/^I should see the photo with the entered text$/) do
-    sleep(STEP_PAUSE)
+    end
 end
 
 

@@ -25,19 +25,19 @@ Scenario Outline: Verify Edit screen
     
 @reset
 @TA14417
-Scenario Outline: Verify close button prompts modal
+Scenario Outline: Verify close button for edit screen
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
     When I tap "Close" mark
-    Then I should see the modal screen title
-    Then I should see the modal screen content
-    Then I tap "No" button
-    Then I should see the "Edit" screen
-    Then I tap "Close" mark
-    Then I should see the modal screen title
-    Then I should see the modal screen content
-    Then I tap "Yes" button
+    #Then I should see the modal screen title
+    #Then I should see the modal screen content
+    #Then I tap "No" button
+    #Then I should see the "Edit" screen
+    #Then I tap "Close" mark
+    #Then I should see the modal screen title
+    #Then I should see the modal screen content
+    #Then I tap "Yes" button
     Then I should see the "Preview" screen
     
     Examples:
@@ -54,41 +54,21 @@ Scenario Outline: Verify 'Frame' option
     When I tap "Edit" button
     Then I am on the "Edit" screen
     Then I tap "Frame" button
-    Then I select Frame
+    Then I select "frame"
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     And I should see the photo with the selected frame
     Then I tap "Close" mark
-    Then I should see the modal screen title
-    Then I should see the modal screen content
-    Then I tap "Yes" button
+    #Then I should see the modal screen title
+    #Then I should see the modal screen content
+    #Then I tap "Yes" button
     Then I should see the "Preview" screen
     And I should see the photo with no frame
     
     Examples:
-    | screen_name            |
+    | screen_name        |
     | Preview            |
     | Flickr Preview     |
     | CameraRoll Preview |
     
-  
-@reset
-@TA14417
-Scenario Outline: Verify 'Text' option
-    Given I am on the "<screen_name>" screen
-    When I tap "Edit" button
-    Then I should see the "Edit" screen
-    Then I tap "Text" button
-    And I enter unique text
-    Then I tap "Add text" mark
-    And I tap "Save" mark
-    Then I should see the "Edit" screen
-    Then I tap "Check" mark
-    Then I should see the "Preview" screen
-   # And I should see the photo with the entered text
-
-    Examples:
-    | screen_name            |
-    | Preview            |
-    | Flickr Preview     |
-    | CameraRoll Preview |
+ 
