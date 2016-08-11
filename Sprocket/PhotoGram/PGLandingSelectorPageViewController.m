@@ -97,6 +97,7 @@ typedef enum {
 
     }
     
+    [self showNavigationView];
     [self initPageControl];
     
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
@@ -212,8 +213,6 @@ typedef enum {
 
 - (void)showSwipeCoachMarks:(NSNotification *)notification
 {
-    [self showNavigationView];
-
     if( ![self coachMarksHaveBeenShown] ) {
         if (self.swipeCoachMarksView == nil) {
             self.swipeCoachMarksView = [[PGSwipeCoachMarksView alloc] initWithFrame:self.view.frame];
@@ -234,14 +233,10 @@ typedef enum {
     if (self.navigationView == nil) {
         self.navigationView = [[PGMediaNavigation alloc] initWithFrame:self.view.frame];
         self.navigationView.delegate = self;
-        self.navigationView.alpha = 0.0f;
+        self.navigationView.alpha = 1.0f;
         
         [self.view addSubview:self.navigationView];
         [self.view bringSubviewToFront:self.navigationView];
-        
-        [UIView animateWithDuration:COACH_MARK_ANIMATION_DURATION animations:^{
-            self.navigationView.alpha = 1.0f;
-        } completion:nil];
     }
 }
 

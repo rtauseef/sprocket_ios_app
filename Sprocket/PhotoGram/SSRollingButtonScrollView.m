@@ -431,18 +431,20 @@
 
 - (void)setScrollProgress:(CGFloat)progress onPage:(NSInteger)page
 {
-    UIView *currentButton = [_visibleButtons objectAtIndex:1];
-    CGPoint offset = self.contentOffset;
-    
-    UIView *nextButton = [_visibleButtons objectAtIndex:0];
-    if (progress > 0  &&  _visibleButtons.count > 2) {
-        nextButton = [_visibleButtons objectAtIndex:2];
+    if (_visibleButtons  &&  _visibleButtons.count > 3) {
+        UIView *currentButton = [_visibleButtons objectAtIndex:1];
+        CGPoint offset = self.contentOffset;
+        
+        UIView *nextButton = [_visibleButtons objectAtIndex:0];
+        if (progress > 0  &&  _visibleButtons.count > 2) {
+            nextButton = [_visibleButtons objectAtIndex:2];
+        }
+        
+        CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10)/2;//currentButton.frame.size.width;
+        
+        offset.x += (progress * widthPerPage)/25;
+        self.contentOffset = offset;
     }
-    
-    CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10)/2;//currentButton.frame.size.width;
-    
-    offset.x += (progress * widthPerPage)/25;
-    self.contentOffset = offset;
 }
 
 #pragma mark - UIScrollViewDelegate
