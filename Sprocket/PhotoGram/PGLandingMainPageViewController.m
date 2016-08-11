@@ -184,7 +184,7 @@
     self.instagramButton.userInteractionEnabled = NO;
     self.facebookButton.userInteractionEnabled = NO;
     self.flickrButton.userInteractionEnabled = NO;
-    self.cameraRollButton.userInteractionEnabled = NO;
+    self.cameraRollButton.userInteractionEnabled = NO;    
 }
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
