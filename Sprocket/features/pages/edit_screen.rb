@@ -62,6 +62,10 @@ class EditScreen < Calabash::IBase
         "UIButton marked:'Add text'"
     end
     
+    def selected_sticker
+        "IMGLYStickerImageView"
+    end
+    
 
     def navigate
         unless current_page?

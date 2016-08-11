@@ -27,16 +27,23 @@ When(/^I tap "(.*?)" mark$/) do |mark|
 end
 
 
-Then (/^I select Frame$/) do
-    touch "IMGLYIconCollectionViewCell"
-    sleep(STEP_PAUSE)
+Then (/^I select "(.*?)"$/) do |edit_item|
+        touch "IMGLYIconCollectionViewCell"
+        sleep(STEP_PAUSE)
 end
 
-And(/^I should see the photo with the selected frame$/) do
-    sleep(STEP_PAUSE)
-     post_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
-    post_img_frame_height = query("UIImageView index:0").first["frame"]["height"]
-    raise "Frame Not Applied!" unless post_img_frame_width > $curr_edit_img_frame_width && post_img_frame_height > $curr_edit_img_frame_height
+And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
+    if(edit_item == "frame")
+        sleep(STEP_PAUSE)
+        post_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
+        post_img_frame_height = query("UIImageView index:0").first["frame"]["height"]
+        raise "Frame Not Applied!" unless post_img_frame_width > $curr_edit_img_frame_width && post_img_frame_height > $curr_edit_img_frame_height
+    else
+        if edit_item == "sticker"
+            check_element_exists @current_page.selected_sticker
+            sleep(STEP_PAUSE)
+        end
+    end
 end
 
 And(/^I should see the photo with no frame$/) do
