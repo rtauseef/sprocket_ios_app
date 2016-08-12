@@ -9,6 +9,7 @@ Scenario Outline: Verify 'Sticker' option
     When I tap "Edit" button
     Then I should see the "Edit" screen
     Then I tap "Sticker" button
+    Then I should see the "Sticker Editor" screen
     Then I select "sticker"
     #And I verify blue line indicator is displayed under selected sticker
     Then I tap "Save" mark

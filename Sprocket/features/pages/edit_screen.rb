@@ -66,6 +66,11 @@ class EditScreen < Calabash::IBase
         "IMGLYStickerImageView"
     end
     
+    def selected_frame
+        "* id:'blue_frame'" 
+    end
+
+    
 
     def navigate
         unless current_page?

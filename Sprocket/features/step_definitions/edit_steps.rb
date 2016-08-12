@@ -35,18 +35,20 @@ end
 
 
 And(/^I should see the photo with no frame$/) do
-    post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
-    post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
-    raise "Frame Applied!" unless post_img_frame_width = $curr_img_frame_width && post_img_frame_height = $curr_img_frame_height
+    #post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+    #post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
+   # raise "Frame Applied!" unless post_img_frame_width = $curr_img_frame_width && post_img_frame_height = $curr_img_frame_height
+    check_element_does_not_exist(@current_page.selected_frame)
 end
 
 
 And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     if(edit_item == "frame")
-        sleep(STEP_PAUSE)
-        post_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
-        post_img_frame_height = query("UIImageView index:0").first["frame"]["height"]
-        raise "Frame Not Applied!" unless post_img_frame_width > $curr_edit_img_frame_width && post_img_frame_height > $curr_edit_img_frame_height
+        #sleep(STEP_PAUSE)
+        #post_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
+        #post_img_frame_height = query("UIImageView index:0").first["frame"]["height"]
+        #raise "Frame Not Applied!" unless post_img_frame_width > $curr_edit_img_frame_width && post_img_frame_height > $curr_edit_img_frame_height
+            check_element_exists(@current_page.selected_frame)
     else
         if edit_item == "sticker"
             check_element_exists @current_page.selected_sticker
@@ -61,7 +63,39 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     end
 end
 
+And(/^I verify blue line indicator is displayed under selected frame$/) do 
+   width_indicator = query("UIView index:29").first["frame"]["width"]
+    raise "Blue line indicator not found!" unless width_indicator==64
+end
 
+Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
+    if photo_source == "CameraRoll"
+        macro %Q|I am on the "CameraRoll Preview" screen|
+    else 
+        if photo_source == "Flickr"
+        macro %Q|I am on the "Flickr Preview" screen|
+    else
+        macro %Q|I am on the "Preview" screen|
+        
+    end  
+    end    
+    macro %Q|I tap "Edit" button|
+    macro %Q|I should see the "Edit" screen|
+    if screen_name =="TextEdit"
+        macro %Q|I tap "Text" button|
+        macro %Q|I should see the "TextEdit" screen|
+    else
+        if screen_name =="FrameEditor"
+            macro %Q|I tap "Frame" button|
+            macro %Q|I should see the "FrameEditor" screen|
+            else
+                if screen_name =="StickerEditor"
+                    macro %Q|I tap "Sticker" button|
+                    macro %Q|I should see the "StickerEditor" screen|
+                end
+        end
+    end
+end
 
 
 
