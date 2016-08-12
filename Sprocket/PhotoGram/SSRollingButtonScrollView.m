@@ -9,6 +9,8 @@
 #import "SSRollingButtonScrollView.h"
 #import <AudioToolbox/AudioToolbox.h>
 
+static const NSInteger progressScale = 25;
+
 @implementation SSRollingButtonScrollView
 {
     BOOL _viewsInitialLoad;
@@ -446,9 +448,9 @@
             nextButton = [_visibleButtons objectAtIndex:2];
         }
         
-        CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10)/2;
+        CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10) / 2;
         
-        offset.x += (progress * widthPerPage)/25;
+        offset.x += (progress * widthPerPage) / progressScale;
         self.contentOffset = offset;
     }
 }
