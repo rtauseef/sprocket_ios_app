@@ -56,8 +56,6 @@ typedef enum {
 @property (nonatomic, strong) UINavigationController *flickrLandingPageViewController;
 @property (nonatomic, weak) UIScrollView *scrollView;
 
-@property (nonatomic, assign) NSInteger previousPageControlPosition;
-
 @end
 
 @implementation PGLandingSelectorPageViewController
@@ -79,7 +77,6 @@ typedef enum {
 
     self.dataSource = self;
     self.delegate = self;
-    self.previousPageControlPosition = 0;
     
     self.view.accessibilityIdentifier = @"Landing Page View Controller";
     
@@ -154,10 +151,9 @@ typedef enum {
     
     [self setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
     
+    self.pageControl.currentPage = [self pageForSocialNetwork:socialNetwork];
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
-    
-    self.previousPageControlPosition = self.pageControl.currentPage;
-    
+
     if ([includeLogin boolValue]) {
         if ([viewController.topViewController isKindOfClass:[PGLandingPageViewController class]]) {
             PGLandingPageViewController *landingPageViewController = (PGLandingPageViewController *) viewController.topViewController;
@@ -303,30 +299,10 @@ typedef enum {
     self.pageControl.hidden = YES;
 }
 
-- (void)respondToPageControlTouch
-{
-    if (self.pageControl.currentPage != self.previousPageControlPosition ) {
-        UIViewController *currentViewController = [self.viewControllers objectAtIndex:0];
-        
-        if (self.pageControl.currentPage > self.previousPageControlPosition) {
-            UIViewController *nextViewController = [self pageViewController:self viewControllerAfterViewController:currentViewController];
-            [self setViewControllers:@[nextViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
-        }
-        else {
-            UIViewController *nextViewController = [self pageViewController:self viewControllerBeforeViewController:currentViewController];
-            [self setViewControllers:@[nextViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:NULL];
-        }
-
-        self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
-
-        self.previousPageControlPosition = self.pageControl.currentPage;
-    }
-}
-
 - (UINavigationController *)currentNavigationController
 {
     UINavigationController *navController = nil;
-    
+
     switch (self.pageControl.currentPage) {
         case PGLandingPageViewControlIndexInstagram:
             navController = self.instagramLandingPageViewController;
@@ -515,8 +491,6 @@ typedef enum {
     }
     
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
-    
-    self.previousPageControlPosition = self.pageControl.currentPage;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
