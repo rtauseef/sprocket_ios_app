@@ -18,7 +18,9 @@ class TextEditScreen < Calabash::IBase
     def cancel
         "UIButton marked:'Cancel'"
     end
-    
+    def save
+       "UIButton marked:'Apply changes'" 
+    end
     def navigate
         unless current_page?
             edit_screen = go_to(EditScreen)

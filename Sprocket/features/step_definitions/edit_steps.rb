@@ -82,7 +82,7 @@ Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
     if photo_source == "Preview"
         macro %Q|I am on the "Preview" screen|
     else 
-        if photo_source == "Flickr"
+        if photo_source == "Flickr Preview"
         macro %Q|I am on the "Flickr Preview" screen|
         else
             macro %Q|I am on the "CameraRoll Preview" screen|        

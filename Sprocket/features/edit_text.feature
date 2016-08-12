@@ -29,7 +29,7 @@ Scenario Outline: Verify 'Text' option
 @reset
 @TA14562
 Scenario Outline: Verify 'Text' option
-    Given I am on the "TextEdit" screen for "CameraRoll" 
+    Given I am on the "TextEdit" screen for "<screen_name>" 
     And I enter unique text
     Then I tap "Cancel" mark
     Then I should see the "Edit" screen
@@ -44,7 +44,7 @@ Scenario Outline: Verify 'Text' option
 @reset
 @TA14562
 Scenario Outline: Verify 'Text' option
-    Given I am on the "TextEdit" screen for "CameraRoll" 
+    Given I am on the "TextEdit" screen for "<screen_name>" 
     And I enter unique text
     Then I tap "Add text" mark
     And I should see the photo with the "text"

@@ -24,7 +24,7 @@ Scenario Outline: Verify 'Filter' option
 @reset
 @TA14497
 Scenario Outline: Verify Filter selection option
-    Given I am on the "FilterEditor" screen for "screen_name" 
+    Given I am on the "FilterEditor" screen for "<screen_name>" 
     Then I select "Filter"
     And I verify the filter is selected
     Then I tap "Save" mark
