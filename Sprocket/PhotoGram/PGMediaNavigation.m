@@ -19,6 +19,8 @@
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 #import "AlphaGradientView.h"
+#import "PGSideBarMenuTableViewController.h"
+
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
 
@@ -81,6 +83,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSocialNetwork:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
 
     self.cameraView.direction = GRADIENT_DOWN;
 }
@@ -100,19 +103,26 @@
     [self showFolderIcon:NO];
 }
 
+- (void)selectSocialNetwork:(NSNotification *)notification
+{
+    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
+
+    [self selectButton:socialNetwork animated:YES];
+}
+
 -(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page
 {
     [self.scrollView setScrollProgress:progress onPage:page];
 }
 
--(void)showFolderButton:(BOOL)show
-{
-    self.folderButton.hidden = !show;
-}
-
 - (void)selectButton:(NSString *)title animated:(BOOL)animated
 {
     [self.scrollView selectButton:title animated:animated];
+}
+
+-(void)showFolderButton:(BOOL)show
+{
+    self.folderButton.hidden = !show;
 }
 
 - (IBAction)didPressFolderButton:(id)sender {
