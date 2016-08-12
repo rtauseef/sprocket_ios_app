@@ -21,7 +21,11 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
               if element_id == "Folder"
                 check_element_exists @current_page.folder_icon
               else
-                check_element_exists @current_page.share
+                if element_id == "share"
+                  check_element_exists @current_page.share
+              else
+                  check_element_exists "view marked:'#{element_id}'"
+              end
               end
             end
           end

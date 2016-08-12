@@ -20,6 +20,11 @@ When(/^I tap "(.*?)" mark$/) do |mark|
                 if(mark == "Add text")
                         touch @current_page.add_text
                         #sleep(STEP_PAUSE)
+                else
+                    if(mark == "Cancel")
+                        touch @current_page.cancel
+                        #sleep(STEP_PAUSE)
+                    end
                 end
             end
         end
@@ -28,8 +33,13 @@ end
 
 
 Then (/^I select "(.*?)"$/) do |edit_item|
+    if edit_item == "Filter"
+        touch @current_page.filter_1
+    else
         touch "IMGLYIconCollectionViewCell"
         sleep(STEP_PAUSE)
+    end
+
 end
 
 
@@ -69,15 +79,14 @@ And(/^I verify blue line indicator is displayed under selected frame$/) do
 end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
-    if photo_source == "CameraRoll"
-        macro %Q|I am on the "CameraRoll Preview" screen|
+    if photo_source == "Preview"
+        macro %Q|I am on the "Preview" screen|
     else 
         if photo_source == "Flickr"
         macro %Q|I am on the "Flickr Preview" screen|
-    else
-        macro %Q|I am on the "Preview" screen|
-        
-    end  
+        else
+            macro %Q|I am on the "CameraRoll Preview" screen|        
+        end  
     end    
     macro %Q|I tap "Edit" button|
     macro %Q|I should see the "Edit" screen|
@@ -88,14 +97,23 @@ Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
         if screen_name =="FrameEditor"
             macro %Q|I tap "Frame" button|
             macro %Q|I should see the "FrameEditor" screen|
-            else
-                if screen_name =="StickerEditor"
-                    macro %Q|I tap "Sticker" button|
-                    macro %Q|I should see the "StickerEditor" screen|
-                end
-        end
+		else
+			if screen_name =="StickerEditor"
+				macro %Q|I tap "Sticker" button|
+				macro %Q|I should see the "StickerEditor" screen|
+			else
+				if screen_name =="FilterEditor"
+					macro %Q|I tap "Filter" button|
+					macro %Q|I should see the "FilterEditor" screen|
+				end
+			end
+		end
     end
 end
-
-
-
+Then(/^I should not see the keyboard view$/) do
+  check_element_does_not_exist("UIKBKeyView")
+end
+Then(/^I verify the filter is selected$/) do
+    filter_flag = query("view marked:'K1'", :isSelected)[0]
+    raise "Filter not selected!" unless filter_flag.to_i == 1
+  end
