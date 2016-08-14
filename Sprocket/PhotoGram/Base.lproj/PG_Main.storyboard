@@ -136,11 +136,11 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWA-38-z89" userLabel="Sign In View">
                                 <rect key="frame" x="0.0" y="28" width="600" height="480"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8w-u5-UoD" userLabel="Sign in with Facebook">
-                                        <rect key="frame" x="241" y="337" width="118" height="43"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8w-u5-UoD" userLabel="Sign in with Facebook" customClass="PGSignInButton">
+                                        <rect key="frame" x="243" y="72" width="114" height="114"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="Grp-ee-qJn"/>
-                                            <constraint firstAttribute="width" constant="118" id="d6c-0y-WV2"/>
+                                            <constraint firstAttribute="width" constant="114" id="9au-Vz-AIL"/>
+                                            <constraint firstAttribute="height" constant="114" id="KIO-HS-64f"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="18"/>
                                         <state key="normal" title="Sign in">
@@ -152,42 +152,38 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Facebook, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGC-Wa-Xa2" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="170" y="238" width="260" height="85"/>
+                                        <rect key="frame" x="170" y="318" width="260" height="85"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="85" id="5HR-yw-3OH"/>
-                                            <constraint firstAttribute="width" constant="260" id="qfl-F0-xZy"/>
+                                            <constraint firstAttribute="height" constant="85" id="aPD-bd-FYv"/>
+                                            <constraint firstAttribute="width" constant="260" id="x77-l6-doD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Facebook" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-zR-OE3">
-                                        <rect key="frame" x="267" y="100" width="66" height="66"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="66" id="EpO-HB-rJ2"/>
-                                            <constraint firstAttribute="height" constant="66" id="u9X-RV-KtC"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="UGC-Wa-Xa2" secondAttribute="centerY" constant="-40" id="CYL-3q-jbb"/>
-                                    <constraint firstItem="BHo-zR-OE3" firstAttribute="top" secondItem="XWA-38-z89" secondAttribute="top" constant="100" id="NF5-Rc-t6d"/>
+                                    <constraint firstItem="UGC-Wa-Xa2" firstAttribute="centerX" secondItem="XWA-38-z89" secondAttribute="centerX" id="4gm-dl-rHQ"/>
                                     <constraint firstAttribute="height" constant="480" id="Wz8-D8-07N"/>
-                                    <constraint firstAttribute="bottom" secondItem="J8w-u5-UoD" secondAttribute="bottom" constant="100" id="Y3K-J8-Nay"/>
-                                    <constraint firstAttribute="centerX" secondItem="J8w-u5-UoD" secondAttribute="centerX" id="YRN-bf-wzD"/>
-                                    <constraint firstAttribute="centerX" secondItem="UGC-Wa-Xa2" secondAttribute="centerX" id="itq-0N-wGI"/>
-                                    <constraint firstAttribute="centerX" secondItem="BHo-zR-OE3" secondAttribute="centerX" id="m9n-UO-uA6"/>
+                                    <constraint firstItem="J8w-u5-UoD" firstAttribute="centerX" secondItem="XWA-38-z89" secondAttribute="centerX" id="jQw-ko-yH8"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInFacebook" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-zR-OE3">
+                                <rect key="frame" x="294" y="256" width="12" height="24"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UGC-Wa-Xa2" firstAttribute="top" secondItem="BHo-zR-OE3" secondAttribute="bottom" constant="66" id="FKg-VN-acQ"/>
+                            <constraint firstItem="BHo-zR-OE3" firstAttribute="centerX" secondItem="XWA-38-z89" secondAttribute="centerX" id="KGH-ze-zAR"/>
                             <constraint firstAttribute="trailing" secondItem="XWA-38-z89" secondAttribute="trailing" id="SHl-wM-dhx"/>
                             <constraint firstItem="XWA-38-z89" firstAttribute="leading" secondItem="NCU-IC-IZT" secondAttribute="leading" id="TSK-zX-ICk"/>
                             <constraint firstItem="nEE-bF-PSC" firstAttribute="top" secondItem="XWA-38-z89" secondAttribute="bottom" id="WkH-2l-bAE"/>
+                            <constraint firstItem="BHo-zR-OE3" firstAttribute="top" secondItem="J8w-u5-UoD" secondAttribute="bottom" constant="42" id="YmT-Ha-zE6"/>
                             <constraint firstAttribute="centerY" secondItem="XWA-38-z89" secondAttribute="centerY" id="lro-wh-3jh"/>
                             <constraint firstItem="XWA-38-z89" firstAttribute="leading" secondItem="NCU-IC-IZT" secondAttribute="leadingMargin" constant="-16" id="pdX-66-fve"/>
+                            <constraint firstItem="BHo-zR-OE3" firstAttribute="centerY" secondItem="XWA-38-z89" secondAttribute="centerY" id="rcR-zt-0hR"/>
                             <constraint firstItem="XWA-38-z89" firstAttribute="top" secondItem="NCU-IC-IZT" secondAttribute="top" id="wQW-O0-ZXi"/>
                         </constraints>
                         <variation key="default">
@@ -226,11 +222,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWn-v9-iQb" userLabel="ContainerView">
                                 <rect key="frame" x="0.0" y="28" width="600" height="480"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qz4-e7-zDJ">
-                                        <rect key="frame" x="241" y="337" width="118" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Camera Roll, you also agree to the HP Terms of Service." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-tw-tdj" customClass="PGTermsAttributedLabel">
+                                        <rect key="frame" x="170" y="319" width="260" height="85"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="118" id="XNO-n1-Kkl"/>
-                                            <constraint firstAttribute="height" constant="43" id="o7W-X8-hKH"/>
+                                            <constraint firstAttribute="height" constant="85" id="2EM-vf-Vwo"/>
+                                            <constraint firstAttribute="width" constant="260" id="z6y-Is-bWu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qz4-e7-zDJ" customClass="PGSignInButton">
+                                        <rect key="frame" x="243" y="71" width="114" height="114"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="5AM-GA-Ohv"/>
+                                            <constraint firstAttribute="height" constant="114" id="cP1-Li-CPp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="18"/>
                                         <state key="normal" title="Camera Roll">
@@ -241,39 +246,26 @@
                                             <action selector="signInButtonTapped:" destination="c1H-ZI-R4P" eventType="touchUpInside" id="4Gb-S7-H7G"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraRoll" translatesAutoresizingMaskIntoConstraints="NO" id="swu-B6-Va4">
-                                        <rect key="frame" x="267" y="100" width="66" height="66"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="66" id="SUE-fH-UZS"/>
-                                            <constraint firstAttribute="height" constant="66" id="ag0-ak-fEf"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Camera Roll, you also agree to the HP Terms of Service." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-tw-tdj" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="170" y="238" width="260" height="85"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="260" id="6cV-Yg-hx6"/>
-                                            <constraint firstAttribute="height" constant="85" id="poQ-gb-l2T"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Z1T-tw-tdj" secondAttribute="centerX" id="5UZ-hX-xQx"/>
+                                    <constraint firstItem="Qz4-e7-zDJ" firstAttribute="centerX" secondItem="NWn-v9-iQb" secondAttribute="centerX" id="Dh1-Pb-a9P"/>
                                     <constraint firstAttribute="height" constant="480" id="HdA-Vw-hEY"/>
-                                    <constraint firstAttribute="centerX" secondItem="Qz4-e7-zDJ" secondAttribute="centerX" id="XmW-2u-X6b"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qz4-e7-zDJ" secondAttribute="bottom" constant="100" id="ayn-4w-N7w"/>
-                                    <constraint firstAttribute="centerX" secondItem="swu-B6-Va4" secondAttribute="centerX" id="kL6-rm-ovO"/>
-                                    <constraint firstAttribute="centerY" secondItem="Z1T-tw-tdj" secondAttribute="centerY" constant="-40" id="xk5-y6-lDS"/>
-                                    <constraint firstItem="swu-B6-Va4" firstAttribute="top" secondItem="NWn-v9-iQb" secondAttribute="top" constant="100" id="yM8-dm-6FV"/>
+                                    <constraint firstItem="Z1T-tw-tdj" firstAttribute="centerX" secondItem="NWn-v9-iQb" secondAttribute="centerX" id="hzj-5A-FhJ"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInCameraRoll" translatesAutoresizingMaskIntoConstraints="NO" id="swu-B6-Va4">
+                                <rect key="frame" x="287" y="255" width="26" height="26"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NWn-v9-iQb" secondAttribute="trailing" id="ALA-hj-OfA"/>
+                            <constraint firstItem="swu-B6-Va4" firstAttribute="centerX" secondItem="NWn-v9-iQb" secondAttribute="centerX" id="BN5-Uq-pHY"/>
+                            <constraint firstItem="swu-B6-Va4" firstAttribute="top" secondItem="Qz4-e7-zDJ" secondAttribute="bottom" constant="42" id="Yui-dl-bpH"/>
+                            <constraint firstItem="swu-B6-Va4" firstAttribute="centerY" secondItem="NWn-v9-iQb" secondAttribute="centerY" id="cAx-X1-atv"/>
                             <constraint firstItem="NWn-v9-iQb" firstAttribute="leading" secondItem="Sd6-FL-PjI" secondAttribute="leading" id="krP-Ro-PXB"/>
+                            <constraint firstItem="Z1T-tw-tdj" firstAttribute="top" secondItem="swu-B6-Va4" secondAttribute="bottom" constant="66" id="shO-8N-nMG"/>
                             <constraint firstAttribute="centerY" secondItem="NWn-v9-iQb" secondAttribute="centerY" id="wrf-NA-0gM"/>
                             <constraint firstAttribute="centerX" secondItem="NWn-v9-iQb" secondAttribute="centerX" id="yvB-N4-wT3"/>
                         </constraints>
@@ -1869,6 +1861,8 @@
         <image name="previewPrinter" width="65" height="65"/>
         <image name="previewShare" width="65" height="65"/>
         <image name="previewX" width="27" height="27"/>
+        <image name="signInCameraRoll" width="26" height="26"/>
+        <image name="signInFacebook" width="12" height="24"/>
         <image name="signInFlickr" width="27" height="13"/>
         <image name="signInInstagram" width="26" height="26"/>
     </resources>

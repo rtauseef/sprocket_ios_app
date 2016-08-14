@@ -22,8 +22,9 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.textColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelColor];
-        self.minimumLineHeight = 19.9f;
         self.numberOfLines = 2;
+        self.minimumLineHeight = 19.9f;
+        
         [self setLinkForLabel:self range:[self.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
     }
     return self;

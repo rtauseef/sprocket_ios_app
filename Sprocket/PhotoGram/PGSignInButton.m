@@ -11,6 +11,7 @@
 //
 
 #import "PGSignInButton.h"
+#import "UIFont+Style.h"
 
 @implementation PGSignInButton
 
@@ -18,6 +19,9 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:28];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        
         self.layer.borderWidth = 1.0;
         self.layer.borderColor = [UIColor whiteColor].CGColor;
         self.layer.cornerRadius = self.frame.size.width / 2;
