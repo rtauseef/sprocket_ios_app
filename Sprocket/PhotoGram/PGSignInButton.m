@@ -10,19 +10,19 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <TTTAttributedLabel.h>
-#import <HPPRLoginProvider.h>
-#import <HPPRError.h>
+#import "PGSignInButton.h"
 
-extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
+@implementation PGSignInButton
 
-@interface PGLandingPageViewController : UIViewController <TTTAttributedLabelDelegate>
-
-- (void)setLinkForLabel:(TTTAttributedLabel *)label range:(NSRange)range;
-
-- (void)showLogin;
-- (void)showNoConnectionAvailableAlert;
-- (void)showAlbums;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.layer.borderWidth = 1.0;
+        self.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.layer.cornerRadius = self.frame.size.width / 2;
+    }
+    return self;
+}
 
 @end

@@ -21,12 +21,12 @@
             <string>HPSimplified-Light</string>
             <string>HPSimplified-Light</string>
             <string>HPSimplified-Light</string>
+            <string>HPSimplified-Light</string>
+            <string>HPSimplified-Light</string>
+            <string>HPSimplified-Light</string>
+            <string>HPSimplified-Light</string>
         </mutableArray>
         <mutableArray key="HPSimplified_Rg.ttf">
-            <string>HPSimplified-Regular</string>
-            <string>HPSimplified-Regular</string>
-            <string>HPSimplified-Regular</string>
-            <string>HPSimplified-Regular</string>
             <string>HPSimplified-Regular</string>
             <string>HPSimplified-Regular</string>
             <string>HPSimplified-Regular</string>
@@ -68,14 +68,14 @@
                                             <action selector="signInButtonTapped:" destination="Ah7-2t-0zP" eventType="touchUpInside" id="7my-68-0Fy"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Instagram, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t6-KR-FbJ" customClass="TTTAttributedLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Instagram, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t6-KR-FbJ" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="170" y="238" width="260" height="85"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="bK3-BO-QsE"/>
                                             <constraint firstAttribute="width" constant="260" id="uT9-iU-6P3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instagram" translatesAutoresizingMaskIntoConstraints="NO" id="JdR-el-UxR">
@@ -157,14 +157,14 @@
                                             <action selector="signInButtonTapped:" destination="wmV-fr-7p9" eventType="touchUpInside" id="yXl-p1-IWe"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Facebook, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGC-Wa-Xa2" customClass="TTTAttributedLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Facebook, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGC-Wa-Xa2" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="170" y="238" width="260" height="85"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="5HR-yw-3OH"/>
                                             <constraint firstAttribute="width" constant="260" id="qfl-F0-xZy"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Facebook" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-zR-OE3">
@@ -254,13 +254,13 @@
                                             <constraint firstAttribute="height" constant="66" id="ag0-ak-fEf"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Camera Roll, you also agree to the HP Terms of Service." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-tw-tdj" customClass="TTTAttributedLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Camera Roll, you also agree to the HP Terms of Service." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-tw-tdj" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="170" y="238" width="260" height="85"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="260" id="6cV-Yg-hx6"/>
                                             <constraint firstAttribute="height" constant="85" id="poQ-gb-l2T"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1405,18 +1405,18 @@
                                 <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VJ5-1U-fdc" id="oLe-H7-6Ri">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7fa-oG-gkS">
-                                            <rect key="frame" x="15" y="12" width="32" height="20"/>
+                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VKP-mJ-ZZt">
-                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -1429,7 +1429,7 @@
                                 <rect key="frame" x="0.0" y="66" width="600" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WIV-p8-f2c" id="5lM-KM-kDB">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="163"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="163.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HU6-rf-MYm" userLabel="logLevelPicker">
@@ -1507,13 +1507,13 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9Y-8e-8Qe" userLabel="Sign In View">
                                 <rect key="frame" x="0.0" y="28" width="600" height="480"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DG2-Ok-pfm" userLabel="Sign in with Flickr">
-                                        <rect key="frame" x="241" y="337" width="118" height="43"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DG2-Ok-pfm" userLabel="Sign in with Flickr" customClass="PGSignInButton">
+                                        <rect key="frame" x="243" y="77" width="114" height="114"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="118" id="Gm1-gM-CPt"/>
-                                            <constraint firstAttribute="height" constant="43" id="jy2-Tn-gAT"/>
+                                            <constraint firstAttribute="height" constant="114" id="REh-SO-zCo"/>
+                                            <constraint firstAttribute="width" constant="114" id="u3d-Kn-hXg"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="28"/>
                                         <state key="normal" title="Sign in">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1522,33 +1522,39 @@
                                             <action selector="signInButtonTapped:" destination="pSo-cM-sdy" eventType="touchUpInside" id="FEa-KS-aMJ"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Flickr, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQK-QP-Amd" userLabel="By authenticating with Flickr, you also agree with HP's Terms of Service." customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="170" y="238" width="260" height="85"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="260" id="myz-mj-Jx7"/>
-                                            <constraint firstAttribute="height" constant="85" id="ohH-Tw-DWd"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flickr" translatesAutoresizingMaskIntoConstraints="NO" id="mtM-vG-0Fs">
-                                        <rect key="frame" x="267" y="100" width="66" height="66"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInFlickr" translatesAutoresizingMaskIntoConstraints="NO" id="mtM-vG-0Fs">
+                                        <rect key="frame" x="287" y="233" width="27" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="3lw-MI-oaf"/>
                                             <constraint firstAttribute="width" constant="66" id="a90-DN-jwW"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="3lw-MI-oaf"/>
+                                                <exclude reference="a90-DN-jwW"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Flickr, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQK-QP-Amd" userLabel="By authenticating with Flickr, you also agree with HP's Terms of Service." customClass="PGTermsAttributedLabel">
+                                        <rect key="frame" x="170" y="312" width="260" height="85"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="85" id="3fD-zk-6Al"/>
+                                            <constraint firstAttribute="width" constant="260" id="urq-wP-2FD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="QQK-QP-Amd" secondAttribute="centerY" constant="-40" id="182-Lo-3gf"/>
-                                    <constraint firstAttribute="centerX" secondItem="QQK-QP-Amd" secondAttribute="centerX" id="4ML-Kv-HTe"/>
-                                    <constraint firstAttribute="centerX" secondItem="mtM-vG-0Fs" secondAttribute="centerX" id="iIe-kO-O8y"/>
-                                    <constraint firstAttribute="bottom" secondItem="DG2-Ok-pfm" secondAttribute="bottom" constant="100" id="kdL-R6-fCp"/>
-                                    <constraint firstAttribute="centerX" secondItem="DG2-Ok-pfm" secondAttribute="centerX" id="sWe-WB-RI4"/>
+                                    <constraint firstItem="DG2-Ok-pfm" firstAttribute="centerX" secondItem="L9Y-8e-8Qe" secondAttribute="centerX" id="6rq-ay-ntH"/>
+                                    <constraint firstItem="mtM-vG-0Fs" firstAttribute="centerY" secondItem="L9Y-8e-8Qe" secondAttribute="centerY" id="Fxu-Gj-nE3"/>
+                                    <constraint firstItem="mtM-vG-0Fs" firstAttribute="top" secondItem="DG2-Ok-pfm" secondAttribute="bottom" constant="42" id="IBb-GF-eaQ"/>
+                                    <constraint firstItem="QQK-QP-Amd" firstAttribute="top" secondItem="mtM-vG-0Fs" secondAttribute="bottom" constant="66" id="INe-ix-qNe"/>
+                                    <constraint firstItem="mtM-vG-0Fs" firstAttribute="centerX" secondItem="L9Y-8e-8Qe" secondAttribute="centerX" id="SPk-lO-MAK"/>
+                                    <constraint firstItem="QQK-QP-Amd" firstAttribute="centerX" secondItem="L9Y-8e-8Qe" secondAttribute="centerX" id="Yql-hb-agW"/>
                                     <constraint firstAttribute="height" constant="480" id="suc-Wp-V7h"/>
-                                    <constraint firstItem="mtM-vG-0Fs" firstAttribute="top" secondItem="L9Y-8e-8Qe" secondAttribute="top" constant="100" id="vG2-zc-cix"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1694,7 +1700,7 @@
                                             <constraint firstItem="rfA-TY-ykl" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="top" id="u3L-YS-cyB"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="TTTAttributedLabel">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="120" y="497" width="360" height="60"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1869,6 +1875,7 @@
         <image name="previewPrinter" width="65" height="65"/>
         <image name="previewShare" width="65" height="65"/>
         <image name="previewX" width="27" height="27"/>
+        <image name="signInFlickr" width="27" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pea-8S-scq"/>

@@ -11,18 +11,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TTTAttributedLabel.h>
-#import <HPPRLoginProvider.h>
-#import <HPPRError.h>
 
-extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
-
-@interface PGLandingPageViewController : UIViewController <TTTAttributedLabelDelegate>
-
-- (void)setLinkForLabel:(TTTAttributedLabel *)label range:(NSRange)range;
-
-- (void)showLogin;
-- (void)showNoConnectionAvailableAlert;
-- (void)showAlbums;
+@interface PGSignInButton : UIButton
 
 @end

@@ -14,10 +14,11 @@
 #import "PGWebViewerViewController.h"
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
+#import "PGTermsAttributedLabel.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
-@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, TTTAttributedLabelDelegate>
+@interface PGLandingPageViewController () <UIGestureRecognizerDelegate>
 
 @end
 

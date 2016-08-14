@@ -176,6 +176,10 @@
 		7ee9667b336ea7bde2d73cec /* PGLearnMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7919AE35AC0042DF5E /* PGLearnMoreViewController.m */; };
 		80b14c5d3c5fb3d09d560768 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
 		8171761254a179dc3bcf9778 /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
+		821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
+		821851D51D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
+		821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
+		821851D91D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		823629DA1D593D6C0019F024 /* blue_frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8236299E1D593D6C0019F024 /* blue_frame_TN.png */; };
@@ -819,6 +823,10 @@
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		821851D21D60EC6F001288D9 /* PGSignInButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSignInButton.h; sourceTree = "<group>"; };
+		821851D31D60EC6F001288D9 /* PGSignInButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSignInButton.m; sourceTree = "<group>"; };
+		821851D61D60EF4A001288D9 /* PGTermsAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTermsAttributedLabel.h; sourceTree = "<group>"; };
+		821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTermsAttributedLabel.m; sourceTree = "<group>"; };
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
@@ -1996,6 +2004,10 @@
 		E3D6816819A3D180000D45E0 /* LandingPage */ = {
 			isa = PBXGroup;
 			children = (
+				821851D21D60EC6F001288D9 /* PGSignInButton.h */,
+				821851D31D60EC6F001288D9 /* PGSignInButton.m */,
+				821851D61D60EF4A001288D9 /* PGTermsAttributedLabel.h */,
+				821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */,
 				E31BE41519EC6BB4006B78BB /* PGLandingSelectorPageViewController.h */,
 				E31BE41619EC6BB4006B78BB /* PGLandingSelectorPageViewController.m */,
 				E31BE41919ED8951006B78BB /* PGLandingPageViewController.h */,
@@ -3082,6 +3094,7 @@
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
 				E3461F0E19AE2EE90042DF5E /* Node+Fix.m in Sources */,
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
+				821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */,
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */,
 				82362A591D5959870019F024 /* PGStickerItem.m in Sources */,
@@ -3120,6 +3133,7 @@
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
+				821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */,
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
@@ -3168,6 +3182,7 @@
 				a148d917735810b3c716fbf1 /* PGAboutViewController.m in Sources */,
 				90579f5a777be2444d0328ca /* Node+Fix.m in Sources */,
 				0549fc9dd296750d2d898e19 /* PGSwipeCoachMarksView.m in Sources */,
+				821851D51D60EC6F001288D9 /* PGSignInButton.m in Sources */,
 				72c796502fbfe7f76ec9cd93 /* PGSurveyManager.m in Sources */,
 				5f3882c75bb331ed4ff64abb /* PGRevealViewController.m in Sources */,
 				82362A5A1D5959870019F024 /* PGStickerItem.m in Sources */,
@@ -3206,6 +3221,7 @@
 				0e2469e68a8297dff52d3c97 /* PGAppDelegate.m in Sources */,
 				f70613c7b68de218b16d1c0c /* PGLandingPageViewController.m in Sources */,
 				dff08a220c39df78987677cb /* UIView+Background.m in Sources */,
+				821851D91D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */,
 				c9c54121c6c115e3e2e0e142 /* PGLoggingSetttingsViewController.m in Sources */,
 				741f0790ac4f961456a8df73 /* PGMediaNavigation.m in Sources */,
 				e411e3d70b5bc722a0625ddd /* PGFlickrLandingPageViewController.m in Sources */,
