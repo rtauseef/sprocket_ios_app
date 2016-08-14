@@ -53,11 +53,11 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6P-et-iBN" userLabel="Sign In View">
                                 <rect key="frame" x="0.0" y="28" width="600" height="480"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aja-HA-rCS" userLabel="Sign in with Instagram">
-                                        <rect key="frame" x="241" y="337" width="118" height="43"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aja-HA-rCS" userLabel="Sign in with Instagram" customClass="PGSignInButton">
+                                        <rect key="frame" x="243" y="70.5" width="114" height="114"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="FkX-fN-k0F"/>
-                                            <constraint firstAttribute="width" constant="118" id="jUi-gk-lKi"/>
+                                            <constraint firstAttribute="width" constant="114" id="5zq-Jd-TK0"/>
+                                            <constraint firstAttribute="height" constant="114" id="siC-Fk-qoG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="18"/>
                                         <state key="normal" title="Sign in">
@@ -69,50 +69,44 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Instagram, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t6-KR-FbJ" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="170" y="238" width="260" height="85"/>
+                                        <rect key="frame" x="170" y="318.5" width="260" height="85"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="85" id="bK3-BO-QsE"/>
-                                            <constraint firstAttribute="width" constant="260" id="uT9-iU-6P3"/>
+                                            <constraint firstAttribute="height" constant="85" id="afj-OC-feu"/>
+                                            <constraint firstAttribute="width" constant="260" id="tcJ-2u-N5R"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instagram" translatesAutoresizingMaskIntoConstraints="NO" id="JdR-el-UxR">
-                                        <rect key="frame" x="267" y="100" width="66" height="66"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="66" id="4Jo-k4-lmK"/>
-                                            <constraint firstAttribute="width" constant="66" id="cX2-8D-wvk"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="3t6-KR-FbJ" secondAttribute="centerX" id="6br-Am-mAd"/>
-                                    <constraint firstAttribute="centerY" secondItem="3t6-KR-FbJ" secondAttribute="centerY" constant="-40" id="9qJ-Ur-zkR"/>
-                                    <constraint firstAttribute="bottom" secondItem="aja-HA-rCS" secondAttribute="bottom" constant="100" id="PKW-Vh-tez"/>
+                                    <constraint firstItem="3t6-KR-FbJ" firstAttribute="centerX" secondItem="x6P-et-iBN" secondAttribute="centerX" id="9ms-wI-r0I"/>
+                                    <constraint firstItem="3t6-KR-FbJ" firstAttribute="top" secondItem="aja-HA-rCS" secondAttribute="bottom" constant="121" id="Nlm-VZ-Li1"/>
                                     <constraint firstAttribute="height" constant="480" id="Ti9-Gd-3kt"/>
-                                    <constraint firstAttribute="centerX" secondItem="aja-HA-rCS" secondAttribute="centerX" id="YzZ-vx-Es7"/>
-                                    <constraint firstItem="JdR-el-UxR" firstAttribute="top" secondItem="x6P-et-iBN" secondAttribute="top" constant="100" id="cbk-TD-bzI"/>
-                                    <constraint firstAttribute="centerX" secondItem="JdR-el-UxR" secondAttribute="centerX" id="nDu-y2-gOJ"/>
+                                    <constraint firstItem="aja-HA-rCS" firstAttribute="centerX" secondItem="x6P-et-iBN" secondAttribute="centerX" id="jsF-as-M6o"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Nlm-VZ-Li1"/>
+                                    </mask>
+                                </variation>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInInstagram" translatesAutoresizingMaskIntoConstraints="NO" id="JdR-el-UxR">
+                                <rect key="frame" x="286.5" y="254.5" width="26" height="26"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="x6P-et-iBN" secondAttribute="centerX" id="5xE-qg-fOg"/>
-                            <constraint firstItem="usM-d9-U3u" firstAttribute="top" secondItem="x6P-et-iBN" secondAttribute="bottom" id="ACi-EK-9w1"/>
+                            <constraint firstItem="JdR-el-UxR" firstAttribute="centerX" secondItem="x6P-et-iBN" secondAttribute="centerX" id="9uL-sH-S2e"/>
                             <constraint firstItem="x6P-et-iBN" firstAttribute="leading" secondItem="UcR-5q-1Fo" secondAttribute="leading" id="Hxy-RQ-LGD"/>
                             <constraint firstAttribute="centerY" secondItem="x6P-et-iBN" secondAttribute="centerY" id="JyY-br-sbX"/>
+                            <constraint firstItem="JdR-el-UxR" firstAttribute="centerY" secondItem="x6P-et-iBN" secondAttribute="centerY" id="RM8-bj-3GI"/>
+                            <constraint firstItem="JdR-el-UxR" firstAttribute="top" secondItem="aja-HA-rCS" secondAttribute="bottom" constant="42" id="SQQ-AY-dSR"/>
                             <constraint firstAttribute="trailing" secondItem="x6P-et-iBN" secondAttribute="trailing" id="UFC-kD-HDB"/>
-                            <constraint firstItem="x6P-et-iBN" firstAttribute="top" secondItem="uwW-wl-B8k" secondAttribute="bottom" id="Zxy-JI-qto"/>
+                            <constraint firstItem="3t6-KR-FbJ" firstAttribute="top" secondItem="JdR-el-UxR" secondAttribute="bottom" constant="66" id="ftA-GJ-m2D"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Zxy-JI-qto"/>
-                                <exclude reference="ACi-EK-9w1"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Instagram" id="TkY-hv-gvt"/>
@@ -1876,6 +1870,7 @@
         <image name="previewShare" width="65" height="65"/>
         <image name="previewX" width="27" height="27"/>
         <image name="signInFlickr" width="27" height="13"/>
+        <image name="signInInstagram" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pea-8S-scq"/>
