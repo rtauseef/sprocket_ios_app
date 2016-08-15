@@ -16,10 +16,28 @@ extern const NSInteger PGStickerItemsCount;
 
 typedef NS_ENUM (NSInteger, PGStickerItems){
     PGStickerItemsCatGlasses,
-    PGStickerItemsCrown,
+    PGStickerItemsSunglasses,
     PGStickerItemsHearts,
+    PGStickerItemsXoxo,
+    PGStickerItemsHeartExpress,
+    PGStickerItemsHeartPixel,
+    PGStickerItemsArrow,
+    PGStickerItemsCrown,
+    PGStickerItemsBirthdayHat,
+    PGStickerItemsCatEars,
+    PGStickerItemsStar,
+    PGStickerItemsStars,
+    PGStickerItemsFeather,
+    PGStickerItemsFeather2,
+    PGStickerItemsCloud,
+    PGStickerItemsCupcake,
+    PGStickerItemsIceCreamCone,
+    PGStickerItemsCandy,
+    PGStickerItemsCat,
+    PGStickerItemsBird,
+    PGStickerItemsDiamond,
     PGStickerItemsOMG,
-    PGStickerItemsStar
+    PGStickerItemsLOL
 };
 
 
