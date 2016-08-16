@@ -15,7 +15,7 @@ Scenario Outline: Verify 'Frame' option
     And I should see the photo with the "frame" 
     Then I tap "Close" mark
     Then I should see the "Edit" screen
-    And I should see the photo with no frame
+    And I should see the photo with no "frame"
     
     Examples:
     | screen_name        |

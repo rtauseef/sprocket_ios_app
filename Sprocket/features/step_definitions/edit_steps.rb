@@ -44,20 +44,20 @@ end
 
 
 
-And(/^I should see the photo with no frame$/) do
-    #post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
-    #post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
-   # raise "Frame Applied!" unless post_img_frame_width = $curr_img_frame_width && post_img_frame_height = $curr_img_frame_height
-    check_element_does_not_exist(@current_page.selected_frame)
+And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
+    if(edit_item == "frame") 
+        check_element_does_not_exist(@current_page.selected_frame)
+    else
+        if edit_item == "sticker"
+            check_element_does_not_exist(@current_page.selected_sticker)
+        end
+    end
 end
 
 
 And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     if(edit_item == "frame")
-        #sleep(STEP_PAUSE)
-        #post_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
-        #post_img_frame_height = query("UIImageView index:0").first["frame"]["height"]
-        #raise "Frame Not Applied!" unless post_img_frame_width > $curr_edit_img_frame_width && post_img_frame_height > $curr_edit_img_frame_height
+       
             check_element_exists(@current_page.selected_frame)
     else
         if edit_item == "sticker"

@@ -18,6 +18,10 @@ class StickerEditorScreen < Calabash::IBase
        "UIButton marked:'Apply changes'" 
     end
     
+    def selected_sticker
+        "* id:'catglasses'"
+    end
+    
 
     def navigate
         unless current_page?
