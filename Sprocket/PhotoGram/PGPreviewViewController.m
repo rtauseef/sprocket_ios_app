@@ -302,6 +302,29 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             }];
         }];
         
+        NSArray *photoEffectsArray = [NSArray arrayWithObjects:
+                  [[IMGLYPhotoEffect alloc] initWithIdentifier:@"None" CIFilterName:nil lutURL:nil displayName:@"None" options:nil],
+                  [self imglyFilterByName:@"AD1920"],
+                  [self imglyFilterByName:@"Candy"],
+                  [self imglyFilterByName:@"Lomo"],
+                  [self imglyFilterByName:@"Litho"],
+                  [self imglyFilterByName:@"Quozi"],
+                  [self imglyFilterByName:@"SepiaHigh"],
+                  [self imglyFilterByName:@"Sunset"],
+                  [self imglyFilterByName:@"Twilight"],
+                  [self imglyFilterByName:@"Breeze"],
+                  [self imglyFilterByName:@"Blues"],
+                  [self imglyFilterByName:@"Dynamic"],
+                  [self imglyFilterByName:@"Orchid"],
+                  [self imglyFilterByName:@"Pale"],
+                  [self imglyFilterByName:@"80s"],
+                  [self imglyFilterByName:@"Pro400"],
+                  [self imglyFilterByName:@"Steel"],
+                  [self imglyFilterByName:@"Creamy"],
+                  nil];
+        
+        IMGLYPhotoEffect.allEffects = photoEffectsArray;
+        
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
             stickerBuilder.stickersDataSource = self;
         }];
@@ -409,6 +432,13 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     }];
     
     return configuration;
+}
+
+- (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name {
+    NSBundle *photoEffectBundle = [NSBundle bundleForClass:[IMGLYPhotoEffect self]];
+    NSURL *k2Url = [photoEffectBundle URLForResource:name withExtension:@"png" subdirectory:@"imglyKit.bundle"];
+    
+    return [[IMGLYPhotoEffect alloc] initWithIdentifier:name lutURL:k2Url displayName:name];
 }
 
 #pragma mark - IMGLYToolStackControllerDelegate
