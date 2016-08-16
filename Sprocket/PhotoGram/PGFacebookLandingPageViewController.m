@@ -99,8 +99,6 @@ NSString * const kFacebookUserIdKey = @"id";
 {
     self.spinner = [self.view addSpinner];
     self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-
-    self.signInView.alpha = 0.0f;
     
     HPPRFacebookPhotoProvider *provider = [HPPRFacebookPhotoProvider sharedInstance];
     
@@ -149,7 +147,6 @@ NSString * const kFacebookUserIdKey = @"id";
                     alertText = NSLocalizedString(@"Error retrieving user information.", @"Error retrieving the facebook user information");
                     [self showMessage:alertText withTitle:alertTitle];
                     
-                    [self enableSignIn];
                     return;
                 }
             }];
@@ -160,11 +157,9 @@ NSString * const kFacebookUserIdKey = @"id";
                 [self showNoConnectionAvailableAlert];
             } else {
                 [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
-                [self enableSignIn];
             }
         } else {
             [self.spinner removeFromSuperview];
-            [self enableSignIn];
         }
     }];
 }
@@ -178,12 +173,6 @@ NSString * const kFacebookUserIdKey = @"id";
                       otherButtonTitles:nil] show];
 }
 
-- (void)enableSignIn
-{
-    [UIView animateWithDuration:0.5f animations:^{
-        self.signInView.alpha = 1.0f;
-    } completion:nil];
-}
 
 - (void)showLogin
 {
