@@ -1,3 +1,5 @@
+require 'securerandom'
+
 Then (/^I should see "(.*?)" mark$/) do |mark|
     if(mark == "Close")
         check_element_exists(@current_page.close)
@@ -32,12 +34,17 @@ When(/^I tap "(.*?)" mark$/) do |mark|
 end
 
 
-Then (/^I select "(.*?)"$/) do |edit_item|
-    if edit_item == "Filter"
+Then (/^I select "(.*?)"$/) do |option|
+    if option == "Filter"
         touch @current_page.filter_1
-    else
+    else 
+        if option == "sticker" || option == "frame"
         touch "IMGLYIconCollectionViewCell"
         sleep(STEP_PAUSE)
+    else
+            sleep(2.0)
+            touch query("view marked:'#{option}'")
+    end
     end
 
 end
@@ -117,3 +124,29 @@ Then(/^I verify the filter is selected$/) do
     filter_flag = query("view marked:'K1'", :isSelected)[0]
     raise "Filter not selected!" unless filter_flag.to_i == 1
   end
+
+  Then(/^I should not see the text$/) do
+    sleep(STEP_PAUSE)
+    txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
+    puts txtTemplate
+    raise "Text found!" unless txtTemplate == ""
+end
+
+Then(/^I should see the text with selected "(.*?)"$/) do |option|
+    if option == "Font"
+        font_arr = query("IMGLYTextLabel",:font)[0]
+        font_arr = font_arr.split(" ")
+        font_name = font_arr[3].gsub(';','').gsub('"','')
+        raise "Incorrect font!" unless font_name.to_s == "Avenir-Heavy"
+    else
+        if option == "Color"
+            txtcolor_arr = query("IMGLYTextLabel",:textColor).first
+            raise "Color not applied!" unless txtcolor_arr["red"] < 1 || txtcolor_arr["green"] < 1 || txtcolor_arr["blue"] < 1 
+    else
+        bgcolor_arr = query("IMGLYTextLabel",:backgroundColor).first
+        raise "Color not applied!" unless bgcolor_arr["red"] > 0 || bgcolor_arr["green"] > 0 || bgcolor_arr["blue"] > 0 
+    end
+    end
+end
+
+

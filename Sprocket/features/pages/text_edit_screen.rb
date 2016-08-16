@@ -9,7 +9,9 @@ class TextEditScreen < Calabash::IBase
     def title
         "label marked:'Add text'"
     end
-    
+    def close
+        "UIButton marked:'Discard changes'"
+    end
 
     def add_text
         "UIButton marked:'Add text'"

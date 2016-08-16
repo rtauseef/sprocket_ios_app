@@ -1,6 +1,6 @@
-Feature: Verify Edit screen
+Feature: Verify Text Edit screen
   As a user
-  I want to verify Edit features.
+  I want to verify Edit text features.
 
   
 @reset
@@ -28,7 +28,7 @@ Scenario Outline: Verify 'Text' option
 
 @reset
 @TA14562
-Scenario Outline: Verify 'Text' option
+Scenario Outline: Verify text edit screen navigation
     Given I am on the "TextEdit" screen for "<screen_name>" 
     And I enter unique text
     Then I tap "Cancel" mark
@@ -43,7 +43,7 @@ Scenario Outline: Verify 'Text' option
 
 @reset
 @TA14562
-Scenario Outline: Verify 'Text' option
+Scenario Outline: Verify Text editor screen options
     Given I am on the "TextEdit" screen for "<screen_name>" 
     And I enter unique text
     Then I tap "Add text" mark
@@ -62,4 +62,57 @@ Scenario Outline: Verify 'Text' option
     | Flickr Preview     |
     | CameraRoll Preview |
 
+@reset
+@TA14562
+@DE4168
+Scenario: Verify entered text cancellation
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I tap "Close" mark
+    Then I should see the "Edit" screen
+    And I should not see the text
+
+@reset
+@TA14562
+Scenario: Verify font
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Font" 
+    And I select "Avenir"
+    Then I tap "Save" mark
+    Then I wait for some seconds
+    Then I should see the text with selected "Font"
+
+@reset
+@TA14562
+Scenario: Verify text color
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Color" 
+    And I select "Blue"
+    Then I wait for some seconds
+    Then I tap "Save" mark
+    Then I wait for some seconds
+    Then I should see the text with selected "Color"
+
+@reset
+@TA14562
+@test11
+Scenario: Verify text background
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Backgoround color" 
+    And I select "Gray"
+    Then I wait for some seconds
+    Then I tap "Save" mark
+    Then I wait for some seconds
+    Then I should see the text with selected "Background Color"
     
