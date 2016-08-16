@@ -4,8 +4,12 @@ require_relative '../common/base_html_screen'
 class InstagramLandingScreen < Calabash::IBase
 
 	def trait
-    instagram_logo
+        screen_title
 	end
+    
+    def screen_title
+        "UINavigationItemView label marked:'Instagram'"
+    end
 
 	def instagram_logo
 		"UIImageView marked:'Instagram'"
