@@ -12,22 +12,24 @@
 
 #import <Foundation/Foundation.h>
 
+extern const NSInteger PGFrameItemsCount;
+
 typedef NS_ENUM (NSInteger, PGFrameItems){
-    PGFrameItemsBlue,
-    PGFrameItemsBlueGradient,
+    PGFrameItemsTurquoise,
+    PGFrameItemsPinkSprayPaint,
     PGFrameItemsBlueWaterColor,
+    PGFrameItemsWhite,
+    PGFrameItemsRed,
     PGFrameItemsFloral,
-    PGFrameItemsFloralTwo,
     PGFrameItemsGradient,
     PGFrameItemsGreenSprayPaint,
+    PGFrameItemsPolkadots,
     PGFrameItemsGreenWaterColor,
     PGFrameItemsPink,
-    PGFrameItemsPinkSprayPaint,
-    PGFrameItemsPolkadots,
+    PGFrameItemsBlue,
+    PGFrameItemsFloralTwo,
+    PGFrameItemsBlueGradient,
     PGFrameItemsPurple,
-    PGFrameItemsRed,
-    PGFrameItemsTurquoise,
-    PGFrameItemsWhite,
 };
 
 @interface PGFrameItem : NSObject

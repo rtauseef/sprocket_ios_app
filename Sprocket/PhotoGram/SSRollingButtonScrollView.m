@@ -9,6 +9,8 @@
 #import "SSRollingButtonScrollView.h"
 #import <AudioToolbox/AudioToolbox.h>
 
+static const NSInteger progressScale = 25;
+
 @implementation SSRollingButtonScrollView
 {
     BOOL _viewsInitialLoad;
@@ -35,6 +37,8 @@
     
     CGFloat _width;
     CGFloat _height;
+    
+    NSString *_desiredTitle;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -51,6 +55,7 @@
         _visibleButtons = [NSMutableArray array];
         _buttonContainerView = [[UIView alloc] init];
         _currentCenterButton = [[UIButton alloc] init];
+        _desiredTitle = nil;
         
         self.fixedButtonWidth = -1.0f;
         self.fixedButtonHeight = -1.0f;
@@ -184,6 +189,10 @@
             [self tileContentInVisibleBounds];
             _viewsInitialLoad = NO;
         }
+    }
+    
+    if (_desiredTitle) {
+        [self selectButton:_desiredTitle animated:YES];
     }
 }
 
@@ -411,38 +420,39 @@
 
 - (void)selectButton:(NSString *)title animated:(BOOL)animated
 {
-    for(UIButton *b in _visibleButtons) {
+    BOOL moved = NO;
+    NSInteger buttonCount = _visibleButtons.count;
+    for(NSInteger idx = 0; idx < buttonCount  &&  !moved; idx++) {
+        UIButton *b = _visibleButtons[idx];
         if ([b.titleLabel.text isEqualToString:title]) {
             [self moveButtonToViewCenter:b animated:animated];
+            _desiredTitle = nil;
+            moved = YES;
+        }
+        
+        if (!moved  &&  idx == buttonCount-1) {
+            _desiredTitle = title;
+            [self moveButtonToViewCenter:_visibleButtons[buttonCount-1] animated:animated];
         }
     }
 }
 
-- (void)transitionBetweenButton:(UIView *)button1 andButton:(UIView *)button2 progress:(CGFloat)progress
-{
-    CGFloat button1Center = button1.frame.origin.x + button1.frame.size.width/2;
-    CGFloat button2Center = button2.frame.origin.x + button2.frame.size.width/2;
-    CGFloat distance = button1Center - button2Center;
-    
-    CGPoint offset = self.contentOffset;
-    offset.x += (progress * distance);
-    self.contentOffset = offset;
-}
-
 - (void)setScrollProgress:(CGFloat)progress onPage:(NSInteger)page
 {
-    UIView *currentButton = [_visibleButtons objectAtIndex:1];
-    CGPoint offset = self.contentOffset;
-    
-    UIView *nextButton = [_visibleButtons objectAtIndex:0];
-    if (progress > 0  &&  _visibleButtons.count > 2) {
-        nextButton = [_visibleButtons objectAtIndex:2];
+    if (_visibleButtons  &&  _visibleButtons.count > 3) {
+        UIView *currentButton = [_visibleButtons objectAtIndex:1];
+        CGPoint offset = self.contentOffset;
+        
+        UIView *nextButton = [_visibleButtons objectAtIndex:0];
+        if (progress > 0  &&  _visibleButtons.count > 2) {
+            nextButton = [_visibleButtons objectAtIndex:2];
+        }
+        
+        CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10) / 2;
+        
+        offset.x += (progress * widthPerPage) / progressScale;
+        self.contentOffset = offset;
     }
-    
-    CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10)/2;//currentButton.frame.size.width;
-    
-    offset.x += (progress * widthPerPage)/25;
-    self.contentOffset = offset;
 }
 
 #pragma mark - UIScrollViewDelegate

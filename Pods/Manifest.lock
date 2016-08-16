@@ -29,7 +29,7 @@ PODS:
   - HPPhotoProvider (0.13.30):
     - AFNetworking
     - FlickrKit
-  - MobilePrintSDK (3.0.7)
+  - MobilePrintSDK (3.0.8)
   - SVGKit (2.x):
     - CocoaLumberjack (~> 2.x)
   - TTTAttributedLabel (1.10.1)
@@ -59,10 +59,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: a67045b3bd628d38b98138dd9e56b49de72e4528
+    :commit: 1c0cd4cf8b1387b17062c73fcbaba1d50d07f31e
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 483eab4387ede98553eb9945cae7302c6a176a60
+    :commit: ad12b577b5d1aacea82c8f01459bc34f0f427416
     :git: https://github.com/IPGPTP/ios-print-sdk.git
   SVGKit:
     :git: https://github.com/SVGKit/SVGKit.git
@@ -74,7 +74,7 @@ SPEC CHECKSUMS:
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   HPPhotoProvider: 091f8bc6372eda59da37a7a142d68bcf703cad57
-  MobilePrintSDK: e410b55fc418e87052182a6c259bb71423be66ce
+  MobilePrintSDK: c906b48fd6cd246ce00f35a2d6fb7fe63142ed79
   SVGKit: 9c3f82b4405aca2dc4d9f307050ede8a6a92d052
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724

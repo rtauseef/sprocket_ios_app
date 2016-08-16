@@ -26,5 +26,8 @@
 
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media;
 
+@optional
+- (UIEdgeInsets)collectionViewContentInset;
+
 @end
 

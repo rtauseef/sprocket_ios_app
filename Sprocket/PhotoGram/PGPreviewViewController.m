@@ -21,6 +21,7 @@
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
 #import "PGFrameItem.h"
+#import "PGStickerItem.h"
 
 #import <imglyKit/imglyKit-Swift.h>
 #import <MP.h>
@@ -75,6 +76,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    static BOOL firstAppearance = YES;
+    
     [self.view layoutIfNeeded];
     
     [super viewWillAppear:animated];
@@ -91,7 +94,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         } else {
             [self showCamera];
         }
-        
+    }
+    
+    if (firstAppearance) {
+        firstAppearance = NO;
         CGRect frame = self.imageContainer.frame;
         
         CGFloat aspectRatioWidth = [self paper].width;
@@ -113,7 +119,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.imageView) {
-        [self.imageView adjustContentOffset];
+        if (self.didChangeProject) {
+            [self.imageView adjustContentOffset];
+        } else {
+            [self.imageView adjustContentOffset];
+            self.didChangeProject = NO;
+        }
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePreviewAndCamera) name:kPGCameraManagerCameraClosed object:nil];
@@ -203,7 +214,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)showImgly
 {
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:self.imageView.image configuration:[self imglyConfiguration]];
+    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:[self.imageContainer screenshotImage] configuration:[self imglyConfiguration]];
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:[self imglyConfiguration]];
     toolController.delegate = self;
     
@@ -215,22 +226,24 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)stickerCount:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(1, nil);
+        completionBlock(PGStickerItemsCount, nil);
     }
 }
 
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock([UIImage imageNamed:@"stickerHearts"], nil, nil);
+        PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
+        completionBlock(sticker.thumbnailImage, nil, nil);
     }
 }
 
 - (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImage:[UIImage imageNamed:@"stickerHearts"] thumbnail:[UIImage imageNamed:@"stickerHearts"] accessibilityText:nil];
-        completionBlock(sticker, nil);
+        PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
+        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:nil];
+        completionBlock(imglySticker, nil);
     }
 }
 
@@ -289,6 +302,29 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             }];
         }];
         
+        NSArray *photoEffectsArray = [NSArray arrayWithObjects:
+                  [[IMGLYPhotoEffect alloc] initWithIdentifier:@"None" CIFilterName:nil lutURL:nil displayName:@"None" options:nil],
+                  [self imglyFilterByName:@"AD1920"],
+                  [self imglyFilterByName:@"Candy"],
+                  [self imglyFilterByName:@"Lomo"],
+                  [self imglyFilterByName:@"Litho"],
+                  [self imglyFilterByName:@"Quozi"],
+                  [self imglyFilterByName:@"SepiaHigh"],
+                  [self imglyFilterByName:@"Sunset"],
+                  [self imglyFilterByName:@"Twilight"],
+                  [self imglyFilterByName:@"Breeze"],
+                  [self imglyFilterByName:@"Blues"],
+                  [self imglyFilterByName:@"Dynamic"],
+                  [self imglyFilterByName:@"Orchid"],
+                  [self imglyFilterByName:@"Pale"],
+                  [self imglyFilterByName:@"80s"],
+                  [self imglyFilterByName:@"Pro400"],
+                  [self imglyFilterByName:@"Steel"],
+                  [self imglyFilterByName:@"Creamy"],
+                  nil];
+        
+        IMGLYPhotoEffect.allEffects = photoEffectsArray;
+        
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
             stickerBuilder.stickersDataSource = self;
         }];
@@ -310,9 +346,18 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [textToolBuilder setTitle:@" "];
             
             [textToolBuilder setTextFieldConfigurationClosure:^(UITextField * _Nonnull textField) {
+                static NSInteger numTextFields = 0;
+                
                 [textField setKeyboardAppearance:UIKeyboardAppearanceDark];
                 [textField setTextAlignment:NSTextAlignmentCenter];
                 [textField setTintColor:[UIColor whiteColor]];
+                [textField setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
+            }];
+        }];
+        
+        [builder configureFilterToolController:^(IMGLYFilterToolControllerOptionsBuilder * _Nonnull filterBuilder) {
+            [filterBuilder setFilterCellConfigurationClosure:^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
+                [cell.captionLabel removeFromSuperview];
             }];
         }];
 
@@ -389,30 +434,27 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     return configuration;
 }
 
+- (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name {
+    NSBundle *photoEffectBundle = [NSBundle bundleForClass:[IMGLYPhotoEffect self]];
+    NSURL *k2Url = [photoEffectBundle URLForResource:name withExtension:@"png" subdirectory:@"imglyKit.bundle"];
+    
+    return [[IMGLYPhotoEffect alloc] initWithIdentifier:name lutURL:k2Url displayName:name];
+}
+
 #pragma mark - IMGLYToolStackControllerDelegate
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
 {
-    NSLog(@"IMAGE:  %@", image);
-    self.imageView.image = image;
+    self.selectedPhoto = image;
+    self.imageView.image = self.selectedPhoto;
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.imageView layoutIfNeeded];
+    self.didChangeProject = YES;
 }
 
 - (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
-                                                                   message:NSLocalizedString(@"Do you want to return to preview and dismiss your edits?", nil) preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:noAction];
-    
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alert addAction:yesAction];
-    
-    [toolStackController presentViewController:alert animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController
@@ -426,7 +468,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)frameCount:(float)ratio completionBlock:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(15, nil);
+        completionBlock(PGFrameItemsCount, nil);
     }
 }
 
@@ -524,7 +566,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
     if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Dismiss Edits", nil)
                                                                        message:NSLocalizedString(@"Dismiss your project and go to the camera?", nil) preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -550,7 +592,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
     if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Dismiss Edits", nil)
                                                                        message:NSLocalizedString(@"Dismiss your project and go to the galleries?", nil) preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

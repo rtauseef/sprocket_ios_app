@@ -58,9 +58,7 @@
     [self.hamburgerButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     
     self.trackableScreenName = @"Main Landing Page";
-    self.termsLabel.minimumLineHeight = 19.9f;
-    
-    [self setLinkForLabel:self.termsLabel range:[self.termsLabel.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
+    self.termsLabel.delegate = self;
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
     PGSurveyManager *surveyManager = [PGSurveyManager sharedInstance];
@@ -184,7 +182,7 @@
     self.instagramButton.userInteractionEnabled = NO;
     self.facebookButton.userInteractionEnabled = NO;
     self.flickrButton.userInteractionEnabled = NO;
-    self.cameraRollButton.userInteractionEnabled = NO;
+    self.cameraRollButton.userInteractionEnabled = NO;    
 }
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
