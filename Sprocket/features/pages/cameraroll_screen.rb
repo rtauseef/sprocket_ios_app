@@ -4,13 +4,15 @@ require_relative '../common/base_html_screen'
 class CameraRollScreen < Calabash::IBase
 
 	def trait
-    cameraroll_logo
+    screen_title
 	end
 
 	def cameraroll_logo
 		"UIImageView marked:'CameraRoll'"
   end
-
+def screen_title
+  "UINavigationItemView marked:'Camera Roll Photos'"
+end
 def cameraroll_button
   "button marked:'Camera Roll'"
 end
