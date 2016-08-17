@@ -54,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aja-HA-rCS" userLabel="Sign in with Instagram" customClass="PGSignInButton">
-                                        <rect key="frame" x="243" y="70.5" width="114" height="114"/>
+                                        <rect key="frame" x="243" y="71" width="114" height="114"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="114" id="5zq-Jd-TK0"/>
                                             <constraint firstAttribute="height" constant="114" id="siC-Fk-qoG"/>
@@ -69,7 +69,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Instagram, you also agree with HP’s Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3t6-KR-FbJ" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="170" y="318.5" width="260" height="85"/>
+                                        <rect key="frame" x="170" y="319" width="260" height="85"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="afj-OC-feu"/>
@@ -93,7 +93,7 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInInstagram" translatesAutoresizingMaskIntoConstraints="NO" id="JdR-el-UxR">
-                                <rect key="frame" x="286.5" y="254.5" width="26" height="26"/>
+                                <rect key="frame" x="287" y="255" width="26" height="26"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,7 +133,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWA-38-z89" userLabel="Sign In View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWA-38-z89" userLabel="Sign In View">
                                 <rect key="frame" x="0.0" y="28" width="600" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8w-u5-UoD" userLabel="Sign in with Facebook" customClass="PGSignInButton">
@@ -179,20 +179,10 @@
                             <constraint firstItem="BHo-zR-OE3" firstAttribute="centerX" secondItem="XWA-38-z89" secondAttribute="centerX" id="KGH-ze-zAR"/>
                             <constraint firstAttribute="trailing" secondItem="XWA-38-z89" secondAttribute="trailing" id="SHl-wM-dhx"/>
                             <constraint firstItem="XWA-38-z89" firstAttribute="leading" secondItem="NCU-IC-IZT" secondAttribute="leading" id="TSK-zX-ICk"/>
-                            <constraint firstItem="nEE-bF-PSC" firstAttribute="top" secondItem="XWA-38-z89" secondAttribute="bottom" id="WkH-2l-bAE"/>
                             <constraint firstItem="BHo-zR-OE3" firstAttribute="top" secondItem="J8w-u5-UoD" secondAttribute="bottom" constant="42" id="YmT-Ha-zE6"/>
                             <constraint firstAttribute="centerY" secondItem="XWA-38-z89" secondAttribute="centerY" id="lro-wh-3jh"/>
-                            <constraint firstItem="XWA-38-z89" firstAttribute="leading" secondItem="NCU-IC-IZT" secondAttribute="leadingMargin" constant="-16" id="pdX-66-fve"/>
                             <constraint firstItem="BHo-zR-OE3" firstAttribute="centerY" secondItem="XWA-38-z89" secondAttribute="centerY" id="rcR-zt-0hR"/>
-                            <constraint firstItem="XWA-38-z89" firstAttribute="top" secondItem="NCU-IC-IZT" secondAttribute="top" id="wQW-O0-ZXi"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="pdX-66-fve"/>
-                                <exclude reference="wQW-O0-ZXi"/>
-                                <exclude reference="WkH-2l-bAE"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Facebook" id="R8u-lf-hRh"/>
