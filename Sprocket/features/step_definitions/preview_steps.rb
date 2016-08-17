@@ -6,10 +6,10 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
     if element_id == "cancel"
       check_element_exists @current_page.cancel
     else
-      if element_id == "edit"
+      if element_id == "Edit"
         check_element_exists @current_page.edit
       else
-        if element_id == "print"
+        if element_id == "Print"
           check_element_exists @current_page.print
         else
           if element_id == "Grid mode"
@@ -21,11 +21,15 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
               if element_id == "Folder"
                 check_element_exists @current_page.folder_icon
               else
-                if element_id == "share"
+                if element_id == "Share"
                   check_element_exists @current_page.share
-              else
+                else
+                  if element_id == "close"
+                    check_element_exists @current_page.close
+                  else
                   check_element_exists "view marked:'#{element_id}'"
-              end
+                  end
+                end
               end
             end
           end

@@ -34,8 +34,9 @@ class ShareScreen < Calabash::IBase
     unless current_page?
         preview_screen = go_to(PreviewScreen)
         sleep(WAIT_SCREENLOAD)
-        wait_for_elements_exist(preview_screen.share, :timeout => MAX_TIMEOUT)
-        touch preview_screen.share
+        #wait_for_elements_exist(preview_screen.share, :timeout => MAX_TIMEOUT)
+        #touch preview_screen.share
+        touch  query("* id:'shareButton'")
         sleep(WAIT_SCREENLOAD)
       
     end
