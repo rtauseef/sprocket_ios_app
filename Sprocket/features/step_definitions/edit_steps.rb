@@ -121,7 +121,7 @@ Then(/^I should not see the keyboard view$/) do
   check_element_does_not_exist("UIKBKeyView")
 end
 Then(/^I verify the filter is selected$/) do
-    filter_flag = query("view marked:'K1'", :isSelected)[0]
+    filter_flag = query("view marked:'Candy'", :isSelected)[0]
     raise "Filter not selected!" unless filter_flag.to_i == 1
   end
 

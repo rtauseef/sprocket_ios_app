@@ -16,7 +16,7 @@ class FilterEditorScreen < Calabash::IBase
     end
 
     def filter_1
-        "view marked:'K1'"
+        "view marked:'Candy'"
     end
     def save
        "UIButton marked:'Apply changes'" 
