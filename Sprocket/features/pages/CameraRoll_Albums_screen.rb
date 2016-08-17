@@ -50,19 +50,7 @@ def second_photo
   end
   def navigate
     if not current_page?
-=begin
-      landing_screen = go_to(LandingScreen)
-      wait_for_elements_exist(cameraroll_logo, :timeout => MAX_TIMEOUT)
-      touch landing_screen.cameraroll_logo
-      swipe_coach_marks_view
-        wait_for_elements_exist(cameraroll_button, :timeout => MAX_TIMEOUT)
-        touch cameraroll_button
-        sleep(WAIT_SCREENLOAD)
-		wait_for_elements_exist("view marked:'Authorize' index:0", :timeout => MAX_TIMEOUT)
-        touch("view marked:'Authorize' index:0")
-        sleep(WAIT_SCREENLOAD)
-        touch folder_icon
-=end
+
       camera_roll_photos_screen = go_to(CameraRollPhotoScreen)
       sleep(WAIT_SCREENLOAD)
       wait_for_elements_exist(camera_roll_photos_screen.second_photo,:timeout=>MAX_TIMEOUT)

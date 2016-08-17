@@ -4,11 +4,14 @@ require_relative '../common/base_html_screen'
 class FlickrLandingScreen < Calabash::IBase
 
 	def trait
-    flickr_logo
+    screen_title
 	end
 
 	def flickr_logo
 		"UIImageView marked:'Flickr'"
+  end
+  def screen_title
+  "UINavigationItemView label marked:'Flickr'"
   end
 
 def flickr_sign_in_button

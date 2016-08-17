@@ -37,17 +37,23 @@ And(/^I should see the list of two printers conneceted$/) do
    
 end    
 
-Then(/^I tap the Printer$/) do
+Then(/^I tap the "(.*?)"$/) do |printer|
+    screen_name = "Device"
+    required_page = page_by_name(screen_name)
+    @current_page = required_page
+    if printer == "Printer 1" 
+        touch @current_page.printer_1
+    else
+        touch @current_page.printer_2    
+    end
+    $printer_name = printer
     sleep(WAIT_SCREENLOAD)
-    printer_name = ENV['printer']
-    wait_for_elements_exist("UITableViewCell text:'#{printer_name}'",:timeout=>MAX_TIMEOUT)
-    touch("UITableViewCell text:'#{printer_name}'")
-    $printer_name = printer_name
-end
+ end
 
-And(/^I check the screen title with the corresponding printer name$/) do 
-    title = query("label {text CONTAINS 'HP sprocket'}", :text)[0]
-    raise "wrong title!" unless $printer_name = title 
+And(/^I check the screen title with the corresponding printer name$/) do
+   # title = query("label {text CONTAINS 'HP sprocket'}", :text)[0]
+   title = query("label", :text)[12]
+   raise "wrong title!" unless $printer_name = title 
 end
 
 And(/^I check "(.*?)" field displays its value$/) do |field|
@@ -75,19 +81,13 @@ And(/^I check "(.*?)" field displays its value$/) do |field|
 end
     
 
-Then(/^I verify the selected printer is listed in Recent Printer field$/) do
-    $printer_1 = query("UITableViewCell index:0", :text)[0] 
-    raise "wrong printer!" unless $printer_name = $printer_1
-    
+Then(/^I verify the "(.*?)" is listed in Recent Printer field$/) do |printer|
+    printer1 = query("UITableViewCell index:0", :text)[0] 
+    raise "wrong printer!" unless $printer2 = printer1
 end
 
-Then(/^I verify the second printer is listed in Other Printers field$/) do 
+Then(/^I verify the "(.*?)" is listed in Other Printers field$/) do |printer|
     printer2 = query("UITableViewCell index:1", :text)[0] 
-    if $printer_name = $printer_1
-        raise "wrong printer!" unless $printer2 = printer2
-    else
-        raise "wrong printer!" unless $printer1 = printer2
-    end
-    
+    raise "wrong printer!" unless $printer1 = printer2
 end
 

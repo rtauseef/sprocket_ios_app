@@ -64,6 +64,9 @@ class CameraRollPhotoScreen < Calabash::IBase
   def cameraroll_button
     "button marked:'Camera Roll'"
   end
+  def sign_in_button
+    "PGSignInButton"
+  end
 
   def navigate
 
@@ -79,8 +82,8 @@ class CameraRollPhotoScreen < Calabash::IBase
     wait_for_elements_exist(landing_screen.cameraroll_logo, :timeout => MAX_TIMEOUT)
     touch landing_screen.cameraroll_logo
     swipe_coach_marks_view
-    wait_for_elements_exist(cameraroll_button, :timeout => MAX_TIMEOUT)
-    touch cameraroll_button
+    wait_for_elements_exist(sign_in_button, :timeout => MAX_TIMEOUT)
+    touch sign_in_button
     sleep(WAIT_SCREENLOAD)
     wait_for_elements_exist("view marked:'Authorize' index:0", :timeout => MAX_TIMEOUT)
     touch("view marked:'Authorize' index:0")

@@ -37,7 +37,8 @@ class CameraRollPreviewScreen < Calabash::IBase
         sleep(WAIT_SCREENLOAD)
       close_camera_popup
     end
-
     await
+     $curr_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+    $curr_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
   end
 end
