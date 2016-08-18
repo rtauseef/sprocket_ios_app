@@ -23,7 +23,7 @@ Scenario Outline: Sign in to different Social media accounts from Landing screen
       | Instagram    | Welcome            | Instagram Signin | Home             |
       | Flickr       | Flickr Landing     | FlickrSignin     | Flickr Photo     |
       | CameraRoll   | CameraRoll Landing | CameraRoll       | CameraRoll Photo |
-      | Facebook     | Facebook Landing   | Facebook Signin | Facebook Photo   |
+     # | Facebook     | Facebook Landing   | Facebook Signin | Facebook Photo   |
       
       
 
