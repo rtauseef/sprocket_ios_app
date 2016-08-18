@@ -30,7 +30,7 @@
 
 #define IPHONE_5_HEIGHT 568 // pixels
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *blurredView;
@@ -103,33 +103,37 @@
 {
     [super viewDidAppear:animated];
     
+    [[MP sharedInstance] checkSprocketForFirmwareUpgrade:self];
+    
+    [[PGCameraManager sharedInstance] startCamera];
+}
+
+- (void)didCompareSprocketWithLatestFirmwareVersion:(NSString *)deviceName needsUpgrade:(BOOL)needsUpgrade
+{
     static BOOL promptedForReflash = NO;
     
-    NSString *deviceToReflash = [[MP sharedInstance] bluetoothDeviceNeedsReflash];
-    if (!promptedForReflash  &&  nil != deviceToReflash) {
+    if (!promptedForReflash  &&  needsUpgrade) {
         
         promptedForReflash = YES;
- 
+        
         NSString *firmwareUpgradeTitle = NSLocalizedString(@"Firmware Upgrade", @"Title for dialog that prompts user to ugrade device firmware");
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@ %@", deviceToReflash, firmwareUpgradeTitle]
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@ %@", deviceName, firmwareUpgradeTitle]
                                                                                  message:NSLocalizedString(@"Download the printer firmware upgrade?", @"Body for dialog that prompts user to ugrade device firmware")
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-
+        
         UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Allows user to decline firmware upgrade without taking any action")
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
+                                                                style:UIAlertActionStyleCancel
+                                                              handler:nil];
         [alertController addAction:dismissAction];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"If pressed (on firmware upgrad dialog), firmware upgrade will begin")
-                                                                style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                  [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
-                                                              } ];
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
+                                                         } ];
         [alertController addAction:okAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    
-    [[PGCameraManager sharedInstance] startCamera];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
