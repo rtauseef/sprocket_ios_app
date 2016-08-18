@@ -15,9 +15,9 @@ Feature: Verify preview screen from different social media
     Given I am on the "Preview" screen
     Then I should see "camera" button
     And I should see "cancel" button
-    And I should see "edit" button
-    Then I should see "print" button
-    And I should see "share" button
+    And I should see "Edit" button
+    Then I should see "Print" button
+    And I should see "Share" button
 
   @reset
   @done

@@ -23,8 +23,6 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Albums" screen
-    Then I select an album
     Then I should see the "Facebook Photo" screen
     When I touch second photo
     Then I wait for sometime
@@ -41,8 +39,6 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Albums" screen
-    Then I select an album
     Then I should see the "Facebook Photo" screen
     Then I should see "Grid mode" button
     Then I should see "List mode" button
@@ -53,8 +49,6 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Albums" screen
-    Then I select an album
     Then I should see the "Facebook Photo" screen
     Then I touch "folderIcon" button
     Then I should see the "Facebook Albums" screen
@@ -67,8 +61,6 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
-    Then I should see the "Facebook Albums" screen
-    Then I select an album
     Then I should see the "Facebook Photo" screen
     Then I should see the photos in a grid view
     When I touch list mode button

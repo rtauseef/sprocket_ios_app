@@ -34,7 +34,9 @@ class PreviewScreen < Calabash::IBase
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
   end
-
+  def close
+    "* id:'closeButton'"
+  end
   def navigate
     unless current_page?
       select_photo_screen = go_to(HomeScreen)
