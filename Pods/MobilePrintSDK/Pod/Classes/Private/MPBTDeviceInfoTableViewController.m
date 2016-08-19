@@ -27,17 +27,18 @@ typedef enum
     MPBTDeviceInfoOrderHardwareVersion = 5
 } MPBTDeviceInfoOrder;
 
-@interface MPBTDeviceInfoTableViewController () <MPBTAutoOffTableViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MPBTDeviceInfoTableViewController () <MPBTAutoOffTableViewControllerDelegate, MPBTSprocketDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) MPBTSprocket *sprocket;
-@property (strong, nonatomic) UIAlertController* alert;
 @property (strong, nonatomic) NSString *lastError;
 @property (assign, nonatomic) BOOL hideBackButton;
+@property (strong, nonatomic) UIView *originalHeaderView;
 
 @property (weak, nonatomic) IBOutlet UIButton *fwUpgradeButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) MPBTProgressView *progressView;
 @property (assign, nonatomic) BOOL receivedSprocketInfo;
+@property (assign, nonatomic) BOOL updating;
 
 @end
 
@@ -51,19 +52,14 @@ typedef enum
     self.tableView.delegate = self;
     
     [self setTitle:@" "];
-    self.alert = [UIAlertController alertControllerWithTitle:@"Upgrade Status"
-                                                     message:@"This is an alert."
-                                              preferredStyle:UIAlertControllerStyleAlert];
 
     self.tableView.backgroundColor = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralBackgroundColor];
     self.tableView.tableHeaderView.backgroundColor = self.tableView.backgroundColor;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorColor = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralTableSeparatorColor];
     
-    if (![MPBTProgressView needFirmwareUpdate]) {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0,0,10,10)];
-    }
-
+    self.originalHeaderView = self.tableView.tableHeaderView;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0,0,10,10)];
     
     self.fwUpgradeButton.titleLabel.font = [[MP sharedInstance].appearance.settings objectForKey:kMPSelectionOptionsPrimaryFont];
     self.fwUpgradeButton.titleLabel.textColor = [UIColor colorWithRed:47.0/255.0 green:184.0/255.0 blue:255.0/255.0 alpha:1.0];
@@ -83,6 +79,7 @@ typedef enum
     }
 
     self.lastError = @"";
+    self.updating = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +120,22 @@ typedef enum
     }];
 }
 
+- (void)displayError:(MantaError)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:[MPBTSprocket errorTitle:error]
+                                                                   message:[MPBTSprocket errorDescription:error]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:MPLocalizedString(@"OK", @"Dismisses dialog without taking action")
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         [self didPressCancel];
+                                                     }];
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Button handlers
 
 - (void)didPressCancel
@@ -136,9 +149,11 @@ typedef enum
 }
 
 - (IBAction)didPressFirmwareUpgrade:(id)sender {
-    if (nil == self.progressView) {
+    if (!self.updating) {
+        self.updating = YES;
         self.progressView = [[MPBTProgressView alloc] initWithFrame:self.navigationController.view.frame];
         self.progressView.viewController = self.navigationController;
+        self.progressView.completion = ^{[self didPressCancel];};
         self.progressView.sprocketDelegate = self;
         [self.progressView reflashDevice];
     }
@@ -181,7 +196,6 @@ typedef enum
             case MPBTDeviceInfoOrderError:
                 cell.textLabel.text = MPLocalizedString(@"Errors", @"Title of field displaying latest errors");
                 cell.detailTextLabel.text = self.lastError;
-                NSLog(@"Table... lastError: %@", self.lastError);
                 break;
                 
             case MPBTDeviceInfoOrderBatteryStatus:
@@ -235,15 +249,29 @@ typedef enum
 
 - (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error
 {
-    self.lastError = [MPBTSprocket errorTitle:error];
+    if (MantaErrorNoError == error) {
+        self.lastError = [MPBTSprocket errorTitle:error];
+        
+        [self setTitle:[NSString stringWithFormat:@"%@", sprocket.displayName]];
+        
+        self.receivedSprocketInfo = YES;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    } else {
+        [self displayError:error];
+    }
+}
 
-    [self setTitle:[NSString stringWithFormat:@"%@", sprocket.displayName]];
-    
-    self.receivedSprocketInfo = YES;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+- (void)didCompareWithLatestFirmwareVersion:(MPBTSprocket *)sprocket needsUpgrade:(BOOL)needsUpgrade
+{
+    if (needsUpgrade  &&  [MP sharedInstance].minimumSprocketBatteryLevelForUpgrade < sprocket.batteryStatus) {
+        self.tableView.tableHeaderView = self.originalHeaderView;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }
 }
 
 - (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
@@ -263,12 +291,11 @@ typedef enum
 
 - (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error
 {
-    self.alert.title = [MPBTSprocket errorTitle:error];
-    self.alert.message = [NSString stringWithFormat:@"Error sending device upgrade: %@", [MPBTSprocket errorDescription:error]];
-    [self addActionToBluetoothStatus];
-    if (self.view.window  &&  !(self.alert.isViewLoaded  &&  self.alert.view.window)) {
-        [self presentViewController:self.alert animated:YES completion:nil];
+    self.fwUpgradeButton.enabled = NO;
+    if (!self.updating) {
+        [self displayError:error];
     }
+    self.updating = NO;
 }
 
 - (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(MantaError)error
@@ -279,7 +306,7 @@ typedef enum
 - (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
 {
     if (MantaErrorBusy == error) {
-        NSLog(@"Covering up busy error due to bug in firmware...");
+        MPLogError(@"Covering up busy error due to bug in firmware...");
     } else if (MantaErrorNoError != error) {
         [self didReceiveError:manta error:error];
     }
@@ -291,27 +318,8 @@ typedef enum
 
 - (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(MantaUpgradeStatus)status
 {
-    if (MantaUpgradeStatusStart != status  && MantaUpgradeStatusFinish != status) {
-        if (MantaUpgradeStatusFail == status){
-            self.alert.message = @"Upgrade failed";
-        } else {
-            self.alert.message = [NSString stringWithFormat:@"Unknown status: %d", status];
-        }
-        
-        [self addActionToBluetoothStatus];
-        
-        if (self.view.window  &&  !(self.alert.isViewLoaded  &&  self.alert.view.window)) {
-            [self presentViewController:self.alert animated:YES completion:nil];
-        }
-    }
-}
-
-- (void)addActionToBluetoothStatus
-{
-    if (0 == self.alert.actions.count) {
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {[self.alert dismissViewControllerAnimated:YES completion:nil];}];
-        [self.alert addAction:defaultAction];
+    if (MantaUpgradeStatusStart != status) {
+        self.updating = NO;
     }
 }
 

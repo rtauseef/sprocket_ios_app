@@ -18,9 +18,9 @@
 
 @property (weak, nonatomic) id<MPBTSprocketDelegate> sprocketDelegate;
 @property (weak, nonatomic) UIViewController *viewController;
+@property (nonatomic, copy) void (^completion)(void);
 
 + (CGFloat)animationDuration;
-+ (BOOL)needFirmwareUpdate;
 
 - (void)setProgress:(CGFloat)progress;
 - (void)setStatus:(MantaUpgradeStatus)status;
