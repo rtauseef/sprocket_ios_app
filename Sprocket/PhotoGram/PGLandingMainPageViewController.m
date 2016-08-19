@@ -108,7 +108,7 @@
     [[PGCameraManager sharedInstance] startCamera];
 }
 
-- (void)didCompareSprocketWithLatestFirmwareVersion:(NSString *)deviceName needsUpgrade:(BOOL)needsUpgrade
+- (void)didCompareSprocketWithLatestFirmwareVersion:(NSString *)deviceName batteryLevel:(NSUInteger)batteryLevel needsUpgrade:(BOOL)needsUpgrade
 {
     static BOOL promptedForReflash = NO;
     
@@ -126,7 +126,7 @@
                                                                 style:UIAlertActionStyleCancel
                                                               handler:nil];
         [alertController addAction:dismissAction];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"If pressed (on firmware upgrad dialog), firmware upgrade will begin")
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"If pressed (on firmware upgrade dialog), firmware upgrade will begin")
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
