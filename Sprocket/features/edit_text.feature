@@ -103,7 +103,6 @@ Scenario: Verify text color
 
 @reset
 @TA14562
-@test11
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
