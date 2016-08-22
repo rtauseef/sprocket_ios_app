@@ -116,23 +116,39 @@
         
         promptedForReflash = YES;
         
-        NSString *firmwareUpgradeTitle = NSLocalizedString(@"Firmware Upgrade", @"Title for dialog that prompts user to ugrade device firmware");
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@ %@", deviceName, firmwareUpgradeTitle]
-                                                                                 message:NSLocalizedString(@"Download the printer firmware upgrade?", @"Body for dialog that prompts user to ugrade device firmware")
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Allows user to decline firmware upgrade without taking any action")
-                                                                style:UIAlertActionStyleCancel
-                                                              handler:nil];
-        [alertController addAction:dismissAction];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"If pressed (on firmware upgrade dialog), firmware upgrade will begin")
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
-                                                         } ];
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        NSString *title = NSLocalizedString(@"Printer Firmware Upgrade Available", @"Title for dialog that prompts user to ugrade device firmware");
+        if ([MP sharedInstance].minimumSprocketBatteryLevelForUpgrade < batteryLevel) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                                     message:NSLocalizedString(@"Tap Upgrade to continue.", @"Body for dialog that prompts user to ugrade device firmware")
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Upgrade", @"If pressed (on firmware upgrade dialog), firmware upgrade will begin")
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 [[MP sharedInstance] reflashBluetoothDevice:self.navigationController];
+                                                             } ];
+            [alertController addAction:okAction];
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Allows user to decline firmware upgrade without taking any action")
+                                                                    style:UIAlertActionStyleCancel
+                                                                  handler:nil];
+            [alertController addAction:dismissAction];
+            
+            alertController.preferredAction = okAction;
+            [self presentViewController:alertController animated:YES completion:nil];
+        } else {
+            NSString * body = NSLocalizedString(@"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu.", @"Body for dialog that prompts user to charge their battery and then upgrade their firmware.");
+            body = [body stringByReplacingOccurrencesOfString:@"75" withString:[NSString stringWithFormat:@"%lu", (unsigned long)[MP sharedInstance].minimumSprocketBatteryLevelForUpgrade]];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                                     message:body
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Allows user close dialog")
+                                                                    style:UIAlertActionStyleCancel
+                                                                  handler:nil];
+            [alertController addAction:dismissAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
     }
 }
 
