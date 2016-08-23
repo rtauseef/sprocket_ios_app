@@ -43,23 +43,3 @@ Scenario Outline: Verify image crop
     | Flickr Preview     |
     | CameraRoll Preview |
     
-@reset
-@TA14684
-Scenario Outline: Verify crop area
-    Given I am on the "<screen_name>" screen
-    When I tap "Edit" button
-    Then I am on the "Edit" screen
-    Then I tap "Crop" button
-    Then I should see the "Crop Editor" screen
-    And I select "2:3"
-    And I modify the crop area
-    Then I verify the modified crop area 
-    Then I tap "Close" mark
-    Then I should see the "Edit" screen
-       
-    Examples:
-    | screen_name        |
-    | Preview            |
-    | Flickr Preview     |
-    | CameraRoll Preview |
-    
