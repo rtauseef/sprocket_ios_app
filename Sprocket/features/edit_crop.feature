@@ -4,7 +4,7 @@ Feature: Verify Edit crop feature
 
 @reset
 @TA14684
-Scenario Outline: Verify 'crop' option
+Scenario Outline: Verify crop option
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
     Then I am on the "Edit" screen
