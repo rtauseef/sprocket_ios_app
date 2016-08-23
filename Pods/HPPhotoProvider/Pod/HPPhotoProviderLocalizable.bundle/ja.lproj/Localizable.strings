@@ -1,0 +1,117 @@
+/* Number of photos */
+" (%lu photos)" = " (%luの写真）";
+
+/* No comment provided by engineer. */
+" (1 photo)" = " （1枚の写真）";
+
+/* Albums of the specified social network */
+"%@ Albums" = "%@のアルバム";
+
+/* Title of an alert indicates the specified social network login is not longer valid */
+"%@ Authorization" = "%@の認証";
+
+/* Photos of the specified social network */
+"%@ Photos" = "%@の写真";
+
+/* Number of posts */
+"%@ posts" = "%@の投稿";
+
+/* Number of photos */
+"%lu photos" = "%luの写真";
+
+/* No comment provided by engineer. */
+"1 photo" = "1枚の写真";
+
+/* Button caption */
+"Authorize" = "認証";
+
+/* Title of an alert requesting authorization to access the Instagram photos */
+"Authorized Required" = "認証が必要です";
+
+/* Name of the camera roll app of the device */
+"Camera Roll" = "カメラロール";
+
+/* Button caption */
+"Cancel" = "キャンセル";
+
+/* Message of an alert when is not possible to retrieve the pictures from the specified social network */
+"Could not retrieve the picture from %@" = "%@から写真を検索できませんでした";
+
+/* Title of an alert */
+"Error" = "エラー";
+
+/* Option of the search screen of instagram, the user can search hashtags (this option) or photos of other users */
+"Hashtag" = "ハッシュタグ";
+
+/* Message of an alert requesting authorization to access the Instagram photos */
+"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue." = "HPソーシャルメディアスナップショットは、素晴らしいスナップショットを作成するために、インスタグラムの写真を使用します。 HPソーシャルメディアスナップショットが、お客様のインスタグラムの写真にアクセスすることを許可して、続行してください。";
+
+/* Feed of Instagram */
+"My Feed" = "マイフィード";
+
+/* Photos of Instagram */
+"My Photos" = "マイフォト";
+
+/* Message show to the user when there is no internet connection */
+"No Internet Connection" = "インターネットに接続されていません";
+
+/* Message shown when the album is empty in the select photo screen */
+"No Photos Found" = "写真がありません";
+
+/* Message show to the user when there is no results in the search */
+"No results found" = "結果がありません";
+
+/* Button caption */
+"OK" = "OK";
+
+/* Title shown when the user tries to access the Photos of the device before the authorization was requested */
+"Photo Access" = "写真へのアクセス";
+
+/* Title of an alert when the user has denied the permission to access the Photos of the device */
+"Photo Access Denied" = "写真へのアクセスが拒否されました";
+
+/* Message of an alert when the application is not authorized to access photo data. */
+"Photo access is restricted on this device. Please check your settings." = "写真へのアクセスは、このデバイスでは制限されています。 設定をを確認してください。";
+
+/* Title of an alert when the application is not authorized to access photo data. */
+"Photo Access Restricted" = "写真へのアクセスが制限されました";
+
+/* Button caption */
+"Retry" = "再試行する";
+
+/* Title of the search screen for Instagram tags */
+"Search" = "検索";
+
+/* Button caption */
+"Settings" = "設定";
+
+/* Message shown when the user account is private in the select photo screen */
+"The user account is private." = "ユーザアカウントはプライベートです。";
+
+/* Message shown when the user tries to access the Photos of the device before the authorization was requested */
+"To select a photo you must first authorize this app to access your photo library." = "写真を選択するには、最初に、このアプリケーションがお客様の写真ライブラリにアクセスすることを許可する必要があります。";
+
+/* Option of the search screen of instagram, the user can search hashtags or photos of other users (this option) */
+"Users" = "ユーザ";
+
+/* Message show to the user when there is no internet connection */
+"You appear to be offline" = "オフラインになっているようです";
+
+/* Message of an alert when the user has denied the permission to access the Photos of the device */
+"You have denied photo access. Please enable access in Privacy Settings (Settings -> Privacy -> Photos)." = "お客様の写真へのアクセスは拒否されました。 プライバシー設定で、アクセスを有効にしてください（設定 -> プライバシ -> 写真）。";
+
+/* Message of an alert when the user has denied the permission to access the Photos of the device */
+"You have previously denied photo access. Please enable access in Privacy Settings (Settings -> Privacy -> Photos)." = "お客様は、以前に、写真へのアクセスを拒否しました。 プライバシー設定で、アクセスを有効にしてください（設定 -> プライバシ -> 写真）。";
+
+/* Message of an alert indicates the specified social network login is not longer valid */
+"Your %@ login is no longer valid. Please sign in again." = "お客様の%@ログインは、もはや有効ではありません。 再度サインインしてください。";
+
+/* Informs the user that their internet connection is not working */
+"Your internet connection appears to be offline" = "お客様のインターネット接続はオフラインになっているようです";
+
+/* Indicates that a user's photo album was deleted */
+"The album was deleted" = "アルバムは削除されました";
+
+/* Indicates that a user's photo album was deleted */
+"Album deleted" = "アルバムは削除されました";
+

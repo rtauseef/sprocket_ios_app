@@ -36,7 +36,6 @@
 - (void)applicationDidStart;
 
 - (void)prepareSegmentView:(HPPRSegmentedControlView *)segmentedControlView;
-- (NSUInteger)selectedSegmentIndex;
 - (NSUInteger)replaceImagesWithRecords:(NSArray *)records;
 - (NSUInteger)updateImagesWithRecords:(NSArray *)records;
 

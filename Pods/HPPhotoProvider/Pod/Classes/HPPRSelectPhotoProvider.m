@@ -109,15 +109,6 @@
     return minimum;
 }
 
-- (NSUInteger)selectedSegmentIndex
-{
-    NSUInteger index = -1;
-    if ([self.delegate respondsToSelector:@selector(selectedSegmentIndex)]) {
-        index = [self.delegate selectedSegmentIndex];
-    }
-    return index;
-}
-
 - (UIAlertView *)lostAccessAlertView
 {
     return [[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:HPPRLocalizedString(@"%@ Access", @"Title of an alert indicates the specified social network login is not longer valid"), self.name]
