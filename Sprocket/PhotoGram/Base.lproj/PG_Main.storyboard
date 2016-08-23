@@ -572,13 +572,13 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deviceMenu" translatesAutoresizingMaskIntoConstraints="NO" id="tla-SB-rgn">
                                                     <rect key="frame" x="15" y="7" width="38" height="38"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvr-jY-JqH">
-                                                    <rect key="frame" x="68" y="19" width="45" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvr-jY-JqH">
+                                                    <rect key="frame" x="68" y="19" width="50" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
                                                     <rect key="frame" x="128" y="21" width="9" height="9"/>
                                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -591,7 +591,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ready" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
                                                     <rect key="frame" x="143" y="19" width="125" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="GfF-db-fn7"/>
@@ -1861,6 +1861,6 @@
         <image name="signInInstagram" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pea-8S-scq"/>
+        <segue reference="oaC-oH-lb1"/>
     </inferredMetricsTieBreakers>
 </document>
