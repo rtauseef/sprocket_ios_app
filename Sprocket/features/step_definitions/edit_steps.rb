@@ -158,3 +158,16 @@ Then(/^I should see the "(.*?)" image$/) do |option|
        raise "Image is cropped!" unless post_photo_frame_width == $curr_edit_img_frame_width && post_photo_frame_height == $curr_edit_img_frame_height
     end    
 end
+
+Then(/^I modify the crop area$/) do
+    $curr_bot_lft_crp_x= query("view marked:'Bottom left cropping handle'").first["rect"]["x"]
+    $curr_bot_lft_crp_y= query("view marked:'Bottom left cropping handle'").first["rect"]["y"]
+  swipe :down,query: "view marked:'Bottom left cropping handle'",force: :strong   
+end
+
+Then(/^I verify the modified crop area$/) do
+ post_bot_lft_crp_x= query("view marked:'Bottom left cropping handle'").first["rect"]["x"]
+ post_bot_lft_crp_y= query("view marked:'Bottom left cropping handle'").first["rect"]["y"] 
+ raise "crop area not modified successfully!" unless $curr_bot_lft_crp_x != post_bot_lft_crp_x && $curr_bot_lft_crp_y != post_bot_lft_crp_y
+end
+
