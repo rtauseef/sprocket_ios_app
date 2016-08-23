@@ -108,8 +108,8 @@
         }];
         
         [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
-            IMGLYCropRatio *cropRatio2x3 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:2.0/3.0] title:@"2:3" accessibilityLabel:@"2:3 crop ratio" icon:[UIImage imageNamed:@"crop.2x3.png"]];
-            IMGLYCropRatio *cropRatio3x2 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:3.0/2.0] title:@"3:2" accessibilityLabel:@"3:2 crop ratio" icon:[UIImage imageNamed:@"crop.3x2.png"]];
+            IMGLYCropRatio *cropRatio2x3 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:2.0/3.0] title:@"2:3" accessibilityLabel:@"2:3 crop ratio" icon:[UIImage imageNamed:@"imglyIconCrop2x3"]];
+            IMGLYCropRatio *cropRatio3x2 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:3.0/2.0] title:@"3:2" accessibilityLabel:@"3:2 crop ratio" icon:[UIImage imageNamed:@"imglyIconCrop3x2"]];
             cropToolBuilder.allowedCropRatios = @[
                                                   cropRatio2x3,
                                                   cropRatio3x2 ];

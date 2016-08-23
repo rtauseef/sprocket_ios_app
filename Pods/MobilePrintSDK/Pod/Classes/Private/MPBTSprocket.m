@@ -135,21 +135,21 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
 {
     NSString *path = [MPBTSprocket pathForLatestFirmwareVersion:self.protocolString];
     
-    NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     
-    [[delegateFreeSession dataTaskWithURL: [NSURL URLWithString:path]
-                        completionHandler:^(NSData *data, NSURLResponse *response,
-                                            NSError *error) {
-                            if (data  &&  !error) {
-                                self.upgradeData = data;
-                                [self.session writeData:[self upgradeReadyRequest]];
-                            } else {
-                                MPLogError(@"Error receiving firmware upgrade file: %@", error);
-                                if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
-                                    [self.delegate didChangeDeviceUpgradeStatus:self status:MantaUpgradeStatusDownloadFail];
-                                }
-                            }
-                        }] resume];
+    [[httpSession dataTaskWithURL: [NSURL URLWithString:path]
+                completionHandler:^(NSData *data, NSURLResponse *response,
+                                    NSError *error) {
+                    if (data  &&  !error) {
+                        self.upgradeData = data;
+                        [self.session writeData:[self upgradeReadyRequest]];
+                    } else {
+                        MPLogError(@"Error receiving firmware upgrade file: %@", error);
+                        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
+                            [self.delegate didChangeDeviceUpgradeStatus:self status:MantaUpgradeStatusDownloadFail];
+                        }
+                    }
+                }] resume];
 }
 
 #pragma mark - Getters/Setters
@@ -436,10 +436,14 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
                 [session writeData:self.imageData];
                 
             } else if (MantaDataClassFirmware == payload[0]) {
-                
-                NSAssert( nil != self.upgradeData, @"No upgrade data");
-                MPBTSessionController *session = [MPBTSessionController sharedController];
-                [session writeData:self.upgradeData];
+                if (nil == self.upgradeData) {
+                    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
+                        [self.delegate didChangeDeviceUpgradeStatus:self status:MantaUpgradeStatusDownloadFail];
+                    }
+                } else {
+                    MPBTSessionController *session = [MPBTSessionController sharedController];
+                    [session writeData:self.upgradeData];
+                }
             }
         } else {
             MPLogDebug(@"Error returned in StartOfSendAck: %@", [MPBTSprocket errorTitle:payload[1]]);
@@ -770,7 +774,7 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
             errString = MPLocalizedString(@"Error", @"Message given when sprocket cannot print due to not recognizing data from our app");
             break;
         case MantaErrorNoSession:
-            errString = MPLocalizedString(@"Connection Error", @"Message given when sprocket cannot be reached");
+            errString = MPLocalizedString(@"Sprocket Not Connected", @"Message given when sprocket cannot be reached");
             break;
             
         default:
@@ -797,7 +801,7 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
             errString = MPLocalizedString(@"Clear paper jam and restart the printer by pressing and holding the power button.", @"Message given when sprocket cannot print due to having a paper jam");
             break;
         case MantaErrorPaperEmpty:
-            errString = MPLocalizedString(@"Load paper with the included smartsheet to continue printing.", @"Message given when sprocket cannot print due to having no paper");
+            errString = MPLocalizedString(@"Load paper with the included smartsheet then resend your photo to the printer.", @"Message given when sprocket cannot print due to having no paper");
             break;
         case MantaErrorPaperMismatch:
             errString = MPLocalizedString(@"Use only HP branded ZINK paper. If using the correct paper, try printing again. ", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
@@ -809,13 +813,13 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
             errString = MPLocalizedString(@"Close the cover to proceed.", @"Message given when sprocket cannot print due to the cover being open");
             break;
         case MantaErrorSystemError:
-            errString = MPLocalizedString(@"Due to a system error, restart sprocket to continue printing.", @"Message given when sprocket cannot print due to a system error");
+            errString = MPLocalizedString(@"Due to a system error, restart sprocket then resend your photo to the printer.", @"Message given when sprocket cannot print due to a system error");
             break;
         case MantaErrorBatteryLow:
             errString = MPLocalizedString(@"Connect your sprocket to a power source to continue use.", @"Message given when sprocket cannot print due to having a low battery");
             break;
         case MantaErrorBatteryFault:
-            errString = MPLocalizedString(@"A battery error has occured. Restart Sprocket to continue printing.", @"Message given when sprocket cannot print due to having an error related to the battery.");
+            errString = MPLocalizedString(@"A battery error has occurred. Restart Sprocket then resend your photo to the printer.", @"Message given when sprocket cannot print due to having an error related to the battery.");
             break;
         case MantaErrorHighTemperature:
             errString = MPLocalizedString(@"Printing is diabled until a lower temperature is reached. Wait to send another photo.", @"Message given when sprocket cannot print due to being too hot");
