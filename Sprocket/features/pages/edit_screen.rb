@@ -84,6 +84,7 @@ class EditScreen < Calabash::IBase
          $curr_edit_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
         $curr_edit_img_frame_height = query("UIImageView index:0").first["frame"]["height"]
         
+        
     end
 
 
