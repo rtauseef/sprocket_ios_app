@@ -259,7 +259,7 @@ typedef enum {
         [self sendEmail];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if (indexPath.row == DEVICES_INDEX) {
-        [[MP sharedInstance] presentBluetoothDevicesFromController:self animated:YES completion:nil];
+        [[MP sharedInstance] presentBluetoothDevicesFromController:self.revealViewController animated:YES completion:nil];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
