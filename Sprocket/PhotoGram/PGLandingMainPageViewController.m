@@ -133,7 +133,10 @@
                                                                   handler:nil];
             [alertController addAction:dismissAction];
             
-            alertController.preferredAction = okAction;
+            // Setting the preferred action is only available in iOS9 and later
+            if ([alertController respondsToSelector:@selector(setPreferredAction:)]) {
+                [alertController setPreferredAction:okAction];
+            }
             [self presentViewController:alertController animated:YES completion:nil];
         } else {
             NSString * body = NSLocalizedString(@"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu.", @"Body for dialog that prompts user to charge their battery and then upgrade their firmware.");
