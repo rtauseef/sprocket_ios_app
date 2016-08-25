@@ -519,7 +519,7 @@
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
 		92373C5C1D36C55D001EF412 /* HP_protocol_v2.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */; };
 		92481d283eb2f32390dfd0b4 /* Template15_4x6.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A81A21A365D44008884F9 /* Template15_4x6.svg */; };
-		9254BB4D1D6F7691008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4C1D6F7691008EAF11 /* Sprocket.gif */; };
+		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
 		929dff50d5f5c11968f622c3 /* PGSelectTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 378EA80319A5707600C72F1A /* PGSelectTemplateViewController.m */; };
 		92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
@@ -1146,7 +1146,7 @@
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
 		92373C581D36C55D001EF412 /* HP_protocol_v2.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = HP_protocol_v2.rbn; path = Resources/Firmware/HP_protocol_v2.rbn; sourceTree = "<group>"; };
-		9254BB4C1D6F7691008EAF11 /* Sprocket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sprocket.gif; path = ../../../../Downloads/Sprocket.gif; sourceTree = "<group>"; };
+		9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sprocket.gif; path = Resources/Images/Icons/Sprocket.gif; sourceTree = "<group>"; };
 		92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRollingButtonScrollView.h; sourceTree = "<group>"; };
 		92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRollingButtonScrollView.m; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
@@ -2244,7 +2244,7 @@
 				E375385519BE57C5009C695F /* MobilePrinting@2x.png */,
 				E375385619BE57C5009C695F /* Privacy@2x.png */,
 				E375385719BE57C5009C695F /* SendFeedback@2x.png */,
-				9254BB4C1D6F7691008EAF11 /* Sprocket.gif */,
+				9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */,
 				E375385819BE57C5009C695F /* TakeSurvey@2x.png */,
 				E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */,
 				E3461F9E19AF84A80042DF5E /* MeasurementArrowLeft@2x.png */,
@@ -3022,6 +3022,7 @@
 				821853011D626A96001288D9 /* 4_white_frame.png in Resources */,
 				F17A81931A365D0B008884F9 /* Template10_4x6.svg in Resources */,
 				F17A81941A365D0B008884F9 /* Template10_5x7.svg in Resources */,
+				9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */,
 				E3DB16A519F5603600C0F42B /* Template10@2x.png in Resources */,
 				821852951D625FFB001288D9 /* feather.png in Resources */,
 				F17A81951A365D0B008884F9 /* Template11_4x5.svg in Resources */,
@@ -3054,7 +3055,6 @@
 				821852021D625FBA001288D9 /* candy_TN.png in Resources */,
 				F17A81BB1A365D44008884F9 /* Template15_5x7.svg in Resources */,
 				E3DB16F019F581A400C0F42B /* Template15@2x.png in Resources */,
-				9254BB4D1D6F7691008EAF11 /* Sprocket.gif in Resources */,
 				821852941D625FFB001288D9 /* feather_TN@3x.png in Resources */,
 				92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */,
 				821852901D625FFB001288D9 /* diamond_TN@3x.png in Resources */,
