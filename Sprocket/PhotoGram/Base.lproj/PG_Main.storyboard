@@ -1284,28 +1284,28 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sprocket" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="d71-za-T7q">
-                                <rect key="frame" x="20" y="173" width="560" height="28"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="d71-za-T7q">
+                                <rect key="frame" x="20" y="174" width="560" height="27"/>
                                 <color key="tintColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9F-p5-X9c">
-                                <rect key="frame" x="258" y="259" width="85" height="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9F-p5-X9c">
+                                <rect key="frame" x="262" y="259" width="77" height="19"/>
                                 <color key="tintColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Copyright (c) 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-sI-bhx">
-                                <rect key="frame" x="79" y="442" width="124" height="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-sI-bhx">
+                                <rect key="frame" x="79" y="444" width="111" height="17"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HP Development Company, L.P." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRp-QK-PAY">
-                                <rect key="frame" x="79" y="465" width="214" height="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Development Company, L.P." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRp-QK-PAY">
+                                <rect key="frame" x="79" y="466" width="186" height="17"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1328,6 +1328,12 @@
                                     <action selector="secretMenuButtonTapped:" destination="wjZ-I5-Dzg" eventType="touchUpInside" id="DPW-1F-T6q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U96-pg-uBE" userLabel="Sprockets Button">
+                                <rect key="frame" x="251" y="74" width="98" height="82"/>
+                                <connections>
+                                    <action selector="sprocketsButtonTapped:" destination="wjZ-I5-Dzg" eventType="touchUpInside" id="Awj-0G-LZV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1336,6 +1342,7 @@
                             <constraint firstAttribute="trailing" secondItem="d71-za-T7q" secondAttribute="trailing" constant="20" id="4si-ka-cBW"/>
                             <constraint firstItem="IRp-QK-PAY" firstAttribute="leading" secondItem="1DL-r8-BMK" secondAttribute="trailing" constant="10" id="4tN-IH-rwl"/>
                             <constraint firstItem="eLL-E4-YCd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Cd7-US-VRE" secondAttribute="bottom" constant="30" id="5VJ-Fg-cCU"/>
+                            <constraint firstItem="U96-pg-uBE" firstAttribute="height" secondItem="eLL-E4-YCd" secondAttribute="height" id="6vH-J3-uMP"/>
                             <constraint firstItem="d71-za-T7q" firstAttribute="leading" secondItem="wGD-WH-YNO" secondAttribute="leading" constant="20" id="CGP-9V-hoq"/>
                             <constraint firstItem="P9D-sI-bhx" firstAttribute="leading" secondItem="1DL-r8-BMK" secondAttribute="trailing" constant="10" id="Cfs-hE-tQf"/>
                             <constraint firstItem="636-tB-Oqy" firstAttribute="width" secondItem="1DL-r8-BMK" secondAttribute="width" id="F9b-eX-14g"/>
@@ -1346,11 +1353,14 @@
                             <constraint firstItem="U9F-p5-X9c" firstAttribute="centerY" secondItem="wGD-WH-YNO" secondAttribute="centerY" id="O57-42-cxT"/>
                             <constraint firstAttribute="centerX" secondItem="eLL-E4-YCd" secondAttribute="centerX" id="Opi-GM-5k4"/>
                             <constraint firstItem="1DL-r8-BMK" firstAttribute="leading" secondItem="wGD-WH-YNO" secondAttribute="leading" constant="32" id="QyM-qL-1wi"/>
+                            <constraint firstItem="U96-pg-uBE" firstAttribute="centerY" secondItem="eLL-E4-YCd" secondAttribute="centerY" id="R1v-Ik-KXC"/>
                             <constraint firstItem="U9F-p5-X9c" firstAttribute="top" secondItem="d71-za-T7q" secondAttribute="bottom" constant="58" id="SrT-ws-dhv"/>
                             <constraint firstItem="d71-za-T7q" firstAttribute="top" secondItem="eLL-E4-YCd" secondAttribute="bottom" constant="18" id="UeI-Ie-D2O"/>
+                            <constraint firstItem="U96-pg-uBE" firstAttribute="width" secondItem="eLL-E4-YCd" secondAttribute="width" id="Xjs-p9-dBy"/>
                             <constraint firstItem="Yo7-yz-lEz" firstAttribute="top" secondItem="1DL-r8-BMK" secondAttribute="bottom" constant="53" id="ZpZ-rl-2dg"/>
                             <constraint firstItem="IRp-QK-PAY" firstAttribute="bottom" secondItem="1DL-r8-BMK" secondAttribute="bottom" id="col-FC-F9B"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IRp-QK-PAY" secondAttribute="trailing" constant="20" id="gtb-Hi-CiE"/>
+                            <constraint firstItem="U96-pg-uBE" firstAttribute="centerX" secondItem="eLL-E4-YCd" secondAttribute="centerX" id="w7Q-QL-b0e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="EjE-om-e07">

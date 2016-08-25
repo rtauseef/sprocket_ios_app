@@ -303,11 +303,7 @@ enum MCInstagramDisplayType {
         [HPPRInstagramUserMedia userMediaRecentWithId:self.userId nextMaxId:self.nextPageImagesMaxId completion:completionBlock];
     }
     else {
-        if ( [self selectedSegmentIndex] == PHOTO_SOURCE_SEGMENTED_CONTROL_MY_PHOTOS_INDEX ) {
-            [HPPRInstagramUserMedia userMediaRecentWithId:@"self" nextMaxId:self.nextPageImagesMaxId completion:completionBlock];
-        } else {
-            [HPPRInstagramUserMedia userMediaFeedWithId:@"self" nextMaxId:self.nextPageImagesMaxId completion:completionBlock];
-        }
+        [HPPRInstagramUserMedia userMediaRecentWithId:@"self" nextMaxId:self.nextPageImagesMaxId completion:completionBlock];
     }
 }
 

@@ -14,7 +14,6 @@
 #import "HPPRCameraRollPhotoProvider.h"
 #import "HPPR.h"
 #import "HPPRSelectPhotoCollectionViewCell.h"
-#import "HPPRSegmentedControlView.h"
 #import "HPPRNoInternetConnectionRetryView.h"
 #import "HPPRNoInternetConnectionMessageView.h"
 #import "HPPRCacheService.h"
@@ -38,22 +37,16 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 @property (weak, nonatomic) IBOutlet UILabel *noPhotosLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
-@property (unsafe_unretained, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet HPPRSegmentedControlView *photoSourceSegmentedControlView;
-@property (weak, nonatomic) IBOutlet HPPRSegmentedControlView *layoutSegmentedControlView;
 @property (weak, nonatomic) IBOutlet HPPRNoInternetConnectionRetryView *noInternetConnectionRetryView;
 @property (weak, nonatomic) IBOutlet HPPRNoInternetConnectionMessageView *noInternetConnectionMessageView;
-
-@property (weak, nonatomic) IBOutlet UILabel *numPostsLabel;
-@property (weak, nonatomic) IBOutlet UIView *userInfoView;
-@property (weak, nonatomic) IBOutlet UIImageView *userInfoImageView;
-@property (weak, nonatomic) IBOutlet UILabel *userInfoLabel;
 
 @property (strong, nonatomic) UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) UIAlertView *deletedAlbumAlertView;
 @property (assign, nonatomic, getter = isRequestingImages) BOOL requestingImages;
 @property (assign, nonatomic, getter = isReloadingImages) BOOL reloadingImages;
+
+@property (assign, nonatomic) BOOL showGridView;
 
 @end
 
@@ -88,15 +81,11 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         self.collectionView.contentInset = [self.delegate collectionViewContentInset];
     }
     
-    self.topView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.backgroundView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    self.showGridView = YES;
     
     UIFont *labelFont = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont];
     UIColor *labelColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor];
-    self.numPostsLabel.font = labelFont;
-    self.numPostsLabel.textColor = labelColor;
-    self.userInfoLabel.font = labelFont;
-    self.userInfoLabel.textColor = labelColor;
     
     [self initForDisplayType];
     
@@ -149,10 +138,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }
 
     self.noInternetConnectionRetryView.delegate = self;
-
-    if (self.provider) {
-        [self.provider prepareSegmentView:self.photoSourceSegmentedControlView];
-    }
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer  alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
+    [self.collectionView addGestureRecognizer:pinchRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -225,19 +212,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }];
 }
 
-#pragma mark - Segment Controls and Labels
-
-- (void)updateHeader
-{
-    if (self.provider.headerText != nil && self.provider.headerImage != nil) {
-        self.userInfoView.hidden = NO;
-        self.userInfoLabel.text = self.provider.headerText;
-        self.userInfoImageView.image = self.provider.headerImage;
-    } else if (self.provider.headerText != nil) {
-        self.numPostsLabel.hidden = NO;
-        self.numPostsLabel.text = self.provider.headerText;
-    }
-}
+#pragma mark - Labels
 
 - (void)initForDisplayType
 {
@@ -246,25 +221,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     if (!self.provider.showSearchButton) {
         self.navigationItem.rightBarButtonItem = nil;
     }
-    
-    [self updateHeader];
-    
-    [self initSegmentedControls];
-}
-
-- (void)initSegmentedControls
-{
-    self.photoSourceSegmentedControlView.delegate = self;
-    self.layoutSegmentedControlView.delegate = self;
-    self.layoutSegmentedControlView.workAsToggleSwitch = YES;
-    
-    UIImage *image = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRGridViewOnIcon];
-    
-    [self.layoutSegmentedControlView setImage:image forSegmentAtIndex:0 state:UIControlStateSelected];
-    [self.layoutSegmentedControlView setImage:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRGridViewOffIcon] forSegmentAtIndex:0 state:UIControlStateNormal];
-    
-    [self.layoutSegmentedControlView setImage:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRListViewOnIcon] forSegmentAtIndex:1 state:UIControlStateSelected];
-    [self.layoutSegmentedControlView setImage:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRListViewOffIcon] forSegmentAtIndex:1 state:UIControlStateNormal];
 }
 
 #pragma mark - Image request
@@ -307,7 +263,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         if (nil == records) {
             self.noPhotosLabel.hidden = ([self.provider imageCount] > 0);
             [self.collectionView reloadData];
-            [self updateHeader];
             self.reloadingImages = NO;
         } else {
             if (!self.isReloadingImages) {
@@ -322,7 +277,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
                         [newItemsIndexes addObject:[NSIndexPath indexPathForItem:(idx + originalCount) inSection:0]];
                     }
                     [self.collectionView insertItemsAtIndexPaths:[newItemsIndexes copy]];
-                    [self updateHeader];
                 } completion:nil];
             }
         }
@@ -341,8 +295,9 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 {
     HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     cell.delegate = self;
-    cell.retrieveLowQuality = (self.layoutSegmentedControlView.selectedSegmentIndex == LAYOUT_SEGMENTED_CONTROL_GRID_INDEX) ? YES : NO;
+    cell.retrieveLowQuality = self.showGridView;
     cell.media = [self.provider imageAtIndex:indexPath.row];
+
     return cell;
 }
 
@@ -362,7 +317,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     
     collectionView.userInteractionEnabled = NO;
-    self.photoSourceSegmentedControlView.userInteractionEnabled = NO;
     
     [self.spinner startAnimating];
     
@@ -378,7 +332,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
                         [self selectImage:image andMedia:cell.media];
                         
                         collectionView.userInteractionEnabled = YES;
-                        self.photoSourceSegmentedControlView.userInteractionEnabled = YES;
                     });
                 } else {
                     [self.spinner stopAnimating];
@@ -409,7 +362,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (self.layoutSegmentedControlView.selectedSegmentIndex == LAYOUT_SEGMENTED_CONTROL_GRID_INDEX) ? GRID_COLLECTION_VIEW_SIZE : LIST_COLLECTION_VIEW_SIZE;
+    return (self.showGridView) ? GRID_COLLECTION_VIEW_SIZE : LIST_COLLECTION_VIEW_SIZE;
 }
 
 #pragma mark - Button actions
@@ -425,36 +378,44 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }
 }
 
-#pragma mark - Segmented Control Delegate
+#pragma mark - UIPinchGestureRecognizer
 
-- (void)segmentedControlViewDidChange:(HPPRSegmentedControlView *)segmentedControlView
+- (void)handlePinchToZoom:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (segmentedControlView == self.layoutSegmentedControlView) {
+    static NSIndexPath *indexPath = nil;
+    static const CGFloat pinchChangeThreshold = 1.0F;
+    static NSNumber *lastPinchScale = nil;
+
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan  ||  nil == indexPath) {
+        CGPoint lastPoint = [gestureRecognizer locationInView:self.collectionView];
+        indexPath = [self.collectionView indexPathForItemAtPoint:lastPoint];
+    }
+    
+    BOOL performPinchResponse = NO;
+    UIPinchGestureRecognizer *pinchRecognizer = (UIPinchGestureRecognizer *)gestureRecognizer;
+    if (lastPinchScale) {
+        if (pinchRecognizer.scale > [lastPinchScale floatValue] + pinchChangeThreshold) {
+            if (YES == self.showGridView) {
+                self.showGridView = NO;
+                performPinchResponse = YES;
+            }
+            lastPinchScale = [NSNumber numberWithFloat:pinchRecognizer.scale];
+        } else if (pinchRecognizer.scale < [lastPinchScale floatValue] - pinchChangeThreshold){
+            if (NO == self.showGridView) {
+                self.showGridView = YES;
+                performPinchResponse = YES;
+            }
+            lastPinchScale = [NSNumber numberWithFloat:pinchRecognizer.scale];
+        }
+    } else {
+        lastPinchScale = [NSNumber numberWithFloat:pinchRecognizer.scale];
+    }
+    
+    if (performPinchResponse) {
         [self.collectionView reloadData];
-    } else if (segmentedControlView == self.photoSourceSegmentedControlView) {
-        
-        [self.provider clearImagesWithCompletion:^{
-            dispatch_async(dispatch_get_main_queue(), ^ {
-                [self.collectionView reloadData];
-                self.collectionView.contentOffset = CGPointZero;
-                [self updateHeader];
-                
-                [self.refreshControl endRefreshing];
-                [self.refreshControl removeFromSuperview];
-                [self.spinner startAnimating];
-                
-                [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.spinner stopAnimating];
-                        [self.collectionView addSubview:self.refreshControl];
-                    });
-                    
-                    if (complete) {
-                        [self finishImageRequestWithRecords:nil];
-                    }
-                } andReloadAll:YES];
-            });
-        }];
+        [self.collectionView layoutIfNeeded];
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
+        indexPath = nil;
     }
 }
 
@@ -569,11 +530,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     result *= [self worstCaseNumberOfPhotosPerLine];
     
     return (NSUInteger)result;
-}
-
-- (NSUInteger)selectedSegmentIndex
-{
-    return self.photoSourceSegmentedControlView.selectedSegmentIndex;
 }
 
 #pragma mark - Navigation

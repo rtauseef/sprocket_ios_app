@@ -23,6 +23,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (strong, nonatomic) UIAlertController* alert;
+@property (assign, nonatomic) BOOL performingFileDownload;
 
 @end
 
@@ -91,11 +92,12 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
                                               preferredStyle:UIAlertControllerStyleAlert];
 
     self.completion = nil;
+    self.performingFileDownload = NO;
 }
 
 - (void)reflashDevice
 {
-    self.label.text = MPLocalizedString(@"Downloading Firmware Upgrade", @"Indicates that the firmware upgrade is being loaded onto the printer");
+    self.label.text = MPLocalizedString(@"Downloading Firmware Upgrade", @"Indicates that the firmware upgrade is being downloaded from the internet");
     
     [self.viewController.view addSubview:self];
     [MPBTSprocket sharedInstance].delegate = self;
@@ -146,7 +148,9 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
 }
 
 - (void)becomeActive:(NSNotification *)notification {
-    [self removeFromSuperview];
+    if (!self.performingFileDownload) {
+        [self removeFromSuperview];
+    }
 }
 
 #pragma mark - SprocketDelegate
@@ -222,8 +226,26 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }
 }
 
+- (void)didDownloadDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete
+{
+    self.performingFileDownload = YES;
+    
+    [self setProgress:(((CGFloat)percentageComplete)/100.0F)];
+    
+    if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didDownloadDeviceUpgradeData:percentageComplete:)]) {
+        [self.sprocketDelegate didDownloadDeviceUpgradeData:manta percentageComplete:percentageComplete];
+    }
+}
+
 - (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
 {
+    self.performingFileDownload = NO;
+    
+    NSString *text = MPLocalizedString(@"Sending Data to Printer", @"Indicates that the firmware upgrade is being sent to the printer");
+    if (![text isEqualToString:self.label.text]) {
+        self.label.text = text;
+    }
+
     [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.8F];
     
     if (MantaErrorBusy == error) {
@@ -275,7 +297,9 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
             [self addActionToBluetoothStatus];
             
             if (self.viewController.view.window  &&  !(self.alert.isViewLoaded  &&  self.alert.view.window)) {
-                [self.viewController presentViewController:self.alert animated:YES completion:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.viewController presentViewController:self.alert animated:YES completion:nil];
+                });
             }
         }
     }

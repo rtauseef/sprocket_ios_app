@@ -105,6 +105,7 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *facebookGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *flickrGestureRecognizer;
 
+@property (assign, nonatomic) BOOL presentingChild;
 typedef enum {
     Instagram,
     Facebook,
@@ -211,6 +212,8 @@ typedef enum {
     CGRect frame = self.tableView.frame;
     frame.size.width = self.revealViewController.rearViewRevealWidth;
     self.tableView.frame = frame;
+    
+    self.presentingChild = NO;
 }
 
 #pragma mark - Setter methods
@@ -255,12 +258,16 @@ typedef enum {
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == GIVE_FEEDBACK) {
-        [self sendEmail];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    } else if (indexPath.row == DEVICES_INDEX) {
-        [[MP sharedInstance] presentBluetoothDevicesFromController:self animated:YES completion:nil];
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (!self.presentingChild) {
+        if (indexPath.row == GIVE_FEEDBACK) {
+            [self sendEmail];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        } else if (indexPath.row == DEVICES_INDEX) {
+            [[MP sharedInstance] presentBluetoothDevicesFromController:self.revealViewController animated:YES completion:nil];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        
+        self.presentingChild = YES;
     }
 }
 
