@@ -214,6 +214,14 @@ typedef enum {
     self.tableView.frame = frame;
     
     self.presentingChild = NO;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 #pragma mark - Setter methods
