@@ -14,7 +14,6 @@
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
 #import "PGCameraManager.h"
-#import "PGSelectTemplateViewController.h"
 #import "PGGesturesView.h"
 #import "PGAppAppearance.h"
 #import "UIView+Background.h"
@@ -61,10 +60,9 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.printItem = nil;
     self.needNewImageView = NO;
     self.didChangeProject = NO;
-    self.selectedNewPhoto = NO;
+    self.selectedNewPhoto = YES;
     
     self.imglyManager = [[PGImglyManager alloc] init];
     
@@ -85,7 +83,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         self.transitionEffectView.alpha = 1;
     }
     
-    if (nil == self.printItem || self.selectedNewPhoto) {
+    if (self.selectedNewPhoto) {
         if (self.selectedPhoto) {
             self.needNewImageView = YES;
         } else {
@@ -168,7 +166,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto editOfPreviousPhoto:(BOOL)edited
 {
     self.selectedNewPhoto = YES;
-    self.printItem = nil;
     
     self.originalImage = selectedPhoto;
     UIImage *finalImage = self.originalImage;
@@ -428,7 +425,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     } else {
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:self.printItem.activityItems applicationActivities:applicationActivities];
         
-        [activityViewController setValue:NSLocalizedString(@"My HP Snapshot", nil) forKey:@"subject"];
+        [activityViewController setValue:NSLocalizedString(@"My sprocket print", nil) forKey:@"subject"];
         
         activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,
                                                          UIActivityTypeSaveToCameraRoll,
