@@ -135,7 +135,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = image;
     previewViewController.source = source;
-    previewViewController.media = media;
+    //    previewViewController.media = media;
     
     HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:kCameraRollUserName userId:kCameraRollUserId];
