@@ -14,8 +14,6 @@
 
 @interface PGSaveToCameraRollActivity ()
 
-@property (strong, nonatomic) UIImage *image;
-
 @end
 
 @implementation PGSaveToCameraRollActivity
@@ -39,7 +37,9 @@
 {
     for (id obj in activityItems) {
         if ([obj isKindOfClass:[UIImage class]]) {
-            self.image = obj;
+            if (!self.image) {
+                self.image = obj;
+            }
             return YES;
         }
     }
