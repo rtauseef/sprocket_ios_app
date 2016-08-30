@@ -384,7 +384,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
-
+    saveToCameraRollActivity.image = [self.imageContainer screenshotImage];
+    
     MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
     btPrintActivity.image = [self.imageContainer screenshotImage];
     btPrintActivity.vc = self;
