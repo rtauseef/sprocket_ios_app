@@ -425,7 +425,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     } else {
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:self.printItem.activityItems applicationActivities:applicationActivities];
         
-        [activityViewController setValue:NSLocalizedString(@"My sprocket print", nil) forKey:@"subject"];
+        [activityViewController setValue:NSLocalizedString(@"My HP Snapshot", nil) forKey:@"subject"];
         
         activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,
                                                          UIActivityTypeSaveToCameraRoll,
