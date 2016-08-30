@@ -73,6 +73,8 @@ NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
 NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 
+NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
+
 @synthesize templateName = _templateName;
 
 + (PGAnalyticsManager *)sharedManager

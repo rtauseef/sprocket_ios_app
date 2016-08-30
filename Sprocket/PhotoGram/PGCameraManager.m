@@ -93,10 +93,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = photo;
-//    previewViewController.media = [[HPPRMedia alloc] initWithAttributes:info];
-    previewViewController.source = @"CameraRoll";
+    previewViewController.source = [PGPreviewViewController cameraSource];
     
-//    self.currentMedia = previewViewController.media;
     self.currentSource = previewViewController.source;
     self.currentSelectedPhoto = previewViewController.selectedPhoto;
     

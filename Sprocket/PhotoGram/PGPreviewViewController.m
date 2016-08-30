@@ -69,6 +69,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     
     [self.view layoutIfNeeded];
     
+    [PGAnalyticsManager sharedManager].photoSource = self.source;
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
 }
 
@@ -290,6 +291,14 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     
     self.imageContainer.alpha = 1.0F;
     self.imageView.alpha = 1.0F;
+    
+    self.source = [PGPreviewViewController cameraSource];
+    [PGAnalyticsManager sharedManager].photoSource = self.source;
+}
+
++ (NSString *)cameraSource
+{
+    return @"Camera";
 }
 
 #pragma mark - PGGesture Delegate
@@ -400,9 +409,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (NSDictionary *)extendedMetrics
 {
     return @{
-//           kMetricsTypeLocationKey:[self locationMetrics],
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-//           kMetricsTypePhotoPositionKey:[[PGAnalyticsManager sharedManager] photoPositionMetricsWithOffset:self.svgLoader.offset zoom:self.svgLoader.zoom angle:self.svgLoader.angle]
+             kMPMetricsEmbellishmentKey:[self.imglyManager analyticsString]
              };
 }
 

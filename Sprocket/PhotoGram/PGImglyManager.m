@@ -17,14 +17,103 @@
 
 #define kImglyColorCellHeightAdjustment 18
 
+static const NSString *kCategoryMetricColumn = @"category";
+static const NSString *kNameMetricColumn = @"name";
+static NSString *kMetricCategoryFont = @"Font";
+static NSString *kMetricCategoryText = @"Text";
+static NSString *kMetricCategorySticker = @"Sticker";
+static NSString *kMetricCategoryFilter = @"Filter";
+static NSString *kMetricCategoryFrame = @"Frame";
+
 @interface PGImglyManager() <IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
+
+typedef enum {
+    PGEmbellishmentCategoryFont,
+    PGEmbellishmentCategoryText,
+    PGEmbellishmentCategorySticker,
+    PGEmbellishmentCategoryFilter,
+    PGEmbellishmentCategoryFrame
+} PGEmbellishmentCategory;
+
+@property (strong, nonatomic) NSMutableArray *analytics;
 
 @end
 
 @implementation PGImglyManager
 
+- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = @"";
+    switch (category) {
+        case PGEmbellishmentCategoryFont:
+            strCategory = kMetricCategoryFont;
+            break;
+            
+        case PGEmbellishmentCategoryText:
+            strCategory = kMetricCategoryText;
+            break;
+
+        case PGEmbellishmentCategorySticker:
+            strCategory = kMetricCategorySticker;
+            break;
+
+        case PGEmbellishmentCategoryFilter:
+            strCategory = kMetricCategoryFilter;
+            break;
+
+        case PGEmbellishmentCategoryFrame:
+        {
+            strCategory = kMetricCategoryFrame;
+            NSDictionary *frameObject = nil;
+            for (NSDictionary *metric in self.analytics) {
+                if ([kMetricCategoryFrame isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
+                    frameObject = metric;
+                    break;
+                }
+            }
+            [self.analytics removeObject:frameObject];
+            break;
+        }
+
+        default:
+            strCategory = @"Unknown";
+            break;
+    }
+    
+    NSDictionary *metric = @{kCategoryMetricColumn : strCategory,
+                             kNameMetricColumn     : name};
+    
+    [self.analytics addObject:metric];
+    
+    NSLog(@"Analytics: %@", self.analytics);
+}
+
+- (NSString *)analyticsString
+{
+    NSString *finalMetric = @"";
+    
+    for (NSDictionary *metric in self.analytics) {
+        if (finalMetric.length > 0) {
+            finalMetric = [finalMetric stringByAppendingString:@";"];
+        }
+
+        NSString *metricString = @"";
+        for (NSString *key in [metric allKeys]) {
+            metricString = [metricString stringByAppendingFormat:@", %@:%@", key, [metric objectForKey:key]];
+        }
+        finalMetric = [finalMetric stringByAppendingString:metricString];
+        
+        NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@", "];
+        finalMetric = [finalMetric stringByTrimmingCharactersInSet:set];
+    }
+    
+    return finalMetric;
+}
+
 - (IMGLYConfiguration *)imglyConfiguration
 {
+    self.analytics = [[NSMutableArray alloc] init];
+    
     IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
         
         builder.contextMenuBackgroundColor = [UIColor HPGrayColor];
@@ -105,6 +194,10 @@
         
         [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull frameToolBuilder) {
             frameToolBuilder.framesDataSource = self;
+            frameToolBuilder.selectedFrameClosure = ^(IMGLYFrame *frame) {
+                 [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frame.accessibilityText];
+            };
+            
         }];
         
         [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {

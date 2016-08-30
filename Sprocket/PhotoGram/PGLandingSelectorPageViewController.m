@@ -409,7 +409,7 @@ typedef enum {
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-        previewViewController.source = @"CameraRoll";
+        previewViewController.source = [PGPreviewViewController cameraSource];
         previewViewController.transitionEffectView.alpha = 1;
         
         [weakSelf presentViewController:previewViewController animated:YES completion:nil];
