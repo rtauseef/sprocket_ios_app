@@ -266,6 +266,16 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 
 - (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
 {
+    MPPaper *paper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
+    NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
+    [lastOptionsUsed setValue:paper.typeTitle forKey:kMPPaperTypeId];
+    [lastOptionsUsed setValue:paper.sizeTitle forKey:kMPPaperSizeId];
+    [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.width] forKey:kMPPaperWidthId];
+    [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.height] forKey:kMPPaperHeightId];
+    [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
+    [lastOptionsUsed setValue:[NSNumber numberWithInteger:1] forKey:kMPNumberOfCopies];
+    [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
+
     NSString *result = kEventResultSuccess;
     if ([MPPrintManager printNowOfframp:offramp]) {
         NSString *paperSize = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperSizeId];

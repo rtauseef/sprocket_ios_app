@@ -20,6 +20,7 @@
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
 #import "PGImglyManager.h"
+#import "MPPrintManager.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -437,14 +438,14 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                                                          UIActivityTypePostToVimeo];
         
         __weak __typeof(self) weakSelf = self;
-        activityViewController.completionHandler = ^(NSString *activityType, BOOL completed) {
+        activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *items, NSError *error) {
             
-            BOOL printActivity = [activityType isEqualToString: NSStringFromClass([MPPrintActivity class])];
+            BOOL printActivity = [activityType isEqualToString: NSStringFromClass([MPBTPrintActivity class])];
             
             NSString *offramp = activityType;
             NSDictionary *extendedMetrics = [weakSelf extendedMetrics];
             if (printActivity) {
-                offramp = [weakSelf.printItem.extra objectForKey:kMetricsOfframpKey];
+                offramp = [MPPrintManager printNowOfframp];
             }
             
             if (!offramp) {
