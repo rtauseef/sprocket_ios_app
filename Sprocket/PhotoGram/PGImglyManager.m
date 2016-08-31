@@ -19,6 +19,7 @@
 
 static const NSString *kCategoryMetricColumn = @"category";
 static const NSString *kNameMetricColumn = @"name";
+
 static NSString *kMetricCategoryFont = @"Font";
 static NSString *kMetricCategoryText = @"Text";
 static NSString *kMetricCategorySticker = @"Sticker";
@@ -41,7 +42,7 @@ typedef enum {
 
 @implementation PGImglyManager
 
-- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+- (NSString *) categoryName:(PGEmbellishmentCategory)category
 {
     NSString *strCategory = @"";
     switch (category) {
@@ -52,28 +53,83 @@ typedef enum {
         case PGEmbellishmentCategoryText:
             strCategory = kMetricCategoryText;
             break;
-
+            
         case PGEmbellishmentCategorySticker:
             strCategory = kMetricCategorySticker;
             break;
-
+            
         case PGEmbellishmentCategoryFilter:
             strCategory = kMetricCategoryFilter;
             break;
-
+            
         case PGEmbellishmentCategoryFrame:
-        {
             strCategory = kMetricCategoryFrame;
-            NSDictionary *frameObject = nil;
-            for (NSDictionary *metric in self.analytics) {
-                if ([kMetricCategoryFrame isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
-                    frameObject = metric;
-                    break;
-                }
-            }
-            [self.analytics removeObject:frameObject];
+            break;
+            
+        default:
+            strCategory = @"Unknown";
+            break;
+    }
+    
+    return strCategory;
+}
+
+- (void) removeAnalyticFromCategory:(PGEmbellishmentCategory)category
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    NSDictionary *objectToRemove = nil;
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
+            objectToRemove = metric;
             break;
         }
+    }
+    
+    if (nil != objectToRemove) {
+        [self.analytics removeObject:objectToRemove];
+    }
+}
+
+- (void) removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    NSDictionary *objectToRemove = nil;
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]] &&
+            [name isEqualToString:[metric objectForKey:kNameMetricColumn]]) {
+            objectToRemove = metric;
+            break;
+        }
+    }
+    
+    if (nil != objectToRemove) {
+        [self.analytics removeObject:objectToRemove];
+    }
+}
+
+- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    switch (category) {
+        case PGEmbellishmentCategoryFont:
+            break;
+            
+        case PGEmbellishmentCategoryText:
+            break;
+
+        case PGEmbellishmentCategorySticker:
+            break;
+
+        case PGEmbellishmentCategoryFilter:
+            [self removeAnalyticFromCategory:category];
+            break;
+
+        case PGEmbellishmentCategoryFrame:
+            [self removeAnalyticFromCategory:category];
+            break;
 
         default:
             strCategory = @"Unknown";
@@ -91,6 +147,7 @@ typedef enum {
 - (NSString *)analyticsString
 {
     NSString *finalMetric = @"";
+    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@", "];
     
     for (NSDictionary *metric in self.analytics) {
         if (finalMetric.length > 0) {
@@ -101,10 +158,9 @@ typedef enum {
         for (NSString *key in [metric allKeys]) {
             metricString = [metricString stringByAppendingFormat:@", %@:%@", key, [metric objectForKey:key]];
         }
-        finalMetric = [finalMetric stringByAppendingString:metricString];
+        metricString = [metricString stringByTrimmingCharactersInSet:trimSet];
         
-        NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@", "];
-        finalMetric = [finalMetric stringByTrimmingCharactersInSet:set];
+        finalMetric = [finalMetric stringByAppendingString:metricString];
     }
     
     return finalMetric;
@@ -190,6 +246,14 @@ typedef enum {
         
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
             stickerBuilder.stickersDataSource = self;
+            
+            stickerBuilder.addedStickerClosure = ^(IMGLYSticker *sticker) {
+                [self addEmbellishmentMetric:PGEmbellishmentCategorySticker name:sticker.accessibilityText];
+            };
+            
+            stickerBuilder.removedStickerClosure = ^(IMGLYSticker *sticker) {
+                [self removeEmbellishmentMetric:PGEmbellishmentCategorySticker name:sticker.accessibilityText];
+            };
         }];
         
         [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull frameToolBuilder) {
@@ -197,7 +261,6 @@ typedef enum {
             frameToolBuilder.selectedFrameClosure = ^(IMGLYFrame *frame) {
                  [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frame.accessibilityText];
             };
-            
         }];
         
         [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
@@ -226,6 +289,10 @@ typedef enum {
             [filterBuilder setFilterCellConfigurationClosure:^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
                 [cell.captionLabel removeFromSuperview];
             }];
+            
+            filterBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect *filter) {
+                [self addEmbellishmentMetric:PGEmbellishmentCategoryFilter name:filter.displayName];
+            };
         }];
         
         // The initial text font and color modification screen (created after entering text into the textfield
@@ -295,6 +362,10 @@ typedef enum {
                 cell.captionLabel.text = nil;
             }];
             
+            textFontToolBuilder.textFontActionSelectedClosure = ^(NSString *font) {
+                [self addEmbellishmentMetric:PGEmbellishmentCategoryFont name:font];
+            };
+
         }];
     }];
     
@@ -329,7 +400,7 @@ typedef enum {
 {
     if (completionBlock) {
         PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
-        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:nil];
+        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.imageName];
         completionBlock(imglySticker, nil);
     }
 }
