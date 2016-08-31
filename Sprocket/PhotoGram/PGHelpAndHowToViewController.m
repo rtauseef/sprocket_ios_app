@@ -10,9 +10,21 @@
 // the license agreement.
 //
 
-#import "PGLearnMoreView.h"
+#import "PGHelpAndHowToViewController.h"
+#import "UIViewController+Trackable.h"
+
+@interface PGHelpAndHowToViewController ()
 
 
-@implementation PGLearnMoreView
+@end
+
+@implementation PGHelpAndHowToViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.trackableScreenName = @"Help and How To Screen";
+}
 
 @end

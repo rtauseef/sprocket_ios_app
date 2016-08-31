@@ -173,7 +173,7 @@
 		7cf706580f900cda3f1f4eda /* UITextView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F2D19AE2FBB0042DF5E /* UITextView+Additions.m */; };
 		7d4313a8e1104fbd0f7fb416 /* LoginFlickr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F144B1BE1A70680A007CDBBD /* LoginFlickr@2x.png */; };
 		7e2083c82137773b28a90de1 /* Template4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DB167519F5603600C0F42B /* Template4@2x.png */; };
-		7ee9667b336ea7bde2d73cec /* PGLearnMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7919AE35AC0042DF5E /* PGLearnMoreViewController.m */; };
+		7ee9667b336ea7bde2d73cec /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7919AE35AC0042DF5E /* PGHelpAndHowToViewController.m */; };
 		80b14c5d3c5fb3d09d560768 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
 		8171761254a179dc3bcf9778 /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
 		82006BEC1D64E5CC009D5E3B /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
@@ -587,12 +587,11 @@
 		E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F2919AE2F870042DF5E /* UIView+Style.m */; };
 		E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F2D19AE2FBB0042DF5E /* UITextView+Additions.m */; };
 		E3461F3219AE30110042DF5E /* SVGKImage+Box.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F3119AE30110042DF5E /* SVGKImage+Box.m */; };
-		E3461F3719AE30750042DF5E /* PGLearnMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F3519AE30750042DF5E /* PGLearnMoreView.m */; };
 		E3461F5819AE31B80042DF5E /* PGSVGText.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F4F19AE31B80042DF5E /* PGSVGText.m */; };
 		E3461F5A19AE31B80042DF5E /* PGSVGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F5119AE31B80042DF5E /* PGSVGImage.m */; };
 		E3461F5C19AE31B80042DF5E /* PGSVGLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F5319AE31B80042DF5E /* PGSVGLoader.m */; };
 		E3461F5E19AE31B80042DF5E /* PGSVGMetadataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F5519AE31B80042DF5E /* PGSVGMetadataLoader.m */; };
-		E3461F7A19AE35AC0042DF5E /* PGLearnMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7919AE35AC0042DF5E /* PGLearnMoreViewController.m */; };
+		E3461F7A19AE35AC0042DF5E /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7919AE35AC0042DF5E /* PGHelpAndHowToViewController.m */; };
 		E3461F7E19AE43ED0042DF5E /* UIView+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F7D19AE43ED0042DF5E /* UIView+Transform.m */; };
 		E3461F8619AE456E0042DF5E /* PGHighQualityTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8519AE456E0042DF5E /* PGHighQualityTextView.m */; };
 		E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8919AE46B00042DF5E /* UIView+Background.m */; };
@@ -785,7 +784,6 @@
 		F1DCB8371B54368D00CA9AAD /* Template8_4x6.hpc in Resources */ = {isa = PBXBuildFile; fileRef = F1DCB8311B54368D00CA9AAD /* Template8_4x6.hpc */; };
 		F1DCB8381B54368D00CA9AAD /* Template8_5x7.hpc in Resources */ = {isa = PBXBuildFile; fileRef = F1DCB8321B54368D00CA9AAD /* Template8_5x7.hpc */; };
 		F1DCB8391B543CD800CA9AAD /* PG_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34D506C199AB87B006D80E0 /* PG_Main.storyboard */; };
-		F1DCB83A1B5446DD00CA9AAD /* PGLearnMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B0A1AE6EC1A00A79CA8 /* PGLearnMoreView.xib */; };
 		F1DCB83B1B54471E00CA9AAD /* PGSwipeCoachMarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */; };
 		F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */; };
 		F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */; };
@@ -858,7 +856,6 @@
 		ddf9448fbdc58e0ed2d28be2 /* PGTemplateSelectorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 378EA81719A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m */; };
 		df4e721443a9cd74cafb638c /* SVGKImage+Box.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F3119AE30110042DF5E /* SVGKImage+Box.m */; };
 		dff08a220c39df78987677cb /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8919AE46B00042DF5E /* UIView+Background.m */; };
-		e01ebfab08f7f8bdccee5438 /* PGLearnMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F3519AE30750042DF5E /* PGLearnMoreView.m */; };
 		e044dae931a97f88749ce585 /* Template9_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A816E1A365D0B008884F9 /* Template9_4x5.svg */; };
 		e411e3d70b5bc722a0625ddd /* PGFlickrLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */; };
 		e4f0f02c69f1580d91a09653 /* Jura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26F19B648E500AAB884 /* Jura-Regular.ttf */; };
@@ -868,7 +865,6 @@
 		ea3369ffd9fc5afcdd65ab8e /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39CE8D31AA7C05900A2A644 /* DBChooser.framework */; };
 		ea49efe12693969f66e0b31e /* PGCrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A3F9B01AD5EE2800EC0817 /* PGCrashlyticsLogger.m */; };
 		ec5a814f3eabf2f8183edeec /* Template3_5x7.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A815E1A365D0B008884F9 /* Template3_5x7.svg */; };
-		ed109700dc20dc6a0f77ae80 /* PGLearnMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B0A1AE6EC1A00A79CA8 /* PGLearnMoreView.xib */; };
 		ede4efac7e87c97046b42644 /* socialsnaps.webflow.css in Resources */ = {isa = PBXBuildFile; fileRef = 6552DA951A7972BB002D3B48 /* socialsnaps.webflow.css */; };
 		f241a36e79247b65f1e35a3d /* whiteFacebookLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = F12537FC1AA9097F003CE020 /* whiteFacebookLikes.png */; };
 		f30c8cbde8189470ff0850fe /* Template13_4x5.svg in Resources */ = {isa = PBXBuildFile; fileRef = F17A819B1A365D44008884F9 /* Template13_4x5.svg */; };
@@ -1219,8 +1215,6 @@
 		E3461F2D19AE2FBB0042DF5E /* UITextView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Additions.m"; sourceTree = "<group>"; };
 		E3461F3019AE30110042DF5E /* SVGKImage+Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVGKImage+Box.h"; sourceTree = "<group>"; };
 		E3461F3119AE30110042DF5E /* SVGKImage+Box.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVGKImage+Box.m"; sourceTree = "<group>"; };
-		E3461F3419AE30750042DF5E /* PGLearnMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLearnMoreView.h; sourceTree = "<group>"; };
-		E3461F3519AE30750042DF5E /* PGLearnMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLearnMoreView.m; sourceTree = "<group>"; };
 		E3461F4E19AE31B80042DF5E /* PGSVGText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSVGText.h; sourceTree = "<group>"; };
 		E3461F4F19AE31B80042DF5E /* PGSVGText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSVGText.m; sourceTree = "<group>"; };
 		E3461F5019AE31B80042DF5E /* PGSVGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSVGImage.h; sourceTree = "<group>"; };
@@ -1229,8 +1223,8 @@
 		E3461F5319AE31B80042DF5E /* PGSVGLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSVGLoader.m; sourceTree = "<group>"; };
 		E3461F5419AE31B80042DF5E /* PGSVGMetadataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSVGMetadataLoader.h; sourceTree = "<group>"; };
 		E3461F5519AE31B80042DF5E /* PGSVGMetadataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSVGMetadataLoader.m; sourceTree = "<group>"; };
-		E3461F7819AE35AC0042DF5E /* PGLearnMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLearnMoreViewController.h; sourceTree = "<group>"; };
-		E3461F7919AE35AC0042DF5E /* PGLearnMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLearnMoreViewController.m; sourceTree = "<group>"; };
+		E3461F7819AE35AC0042DF5E /* PGHelpAndHowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHelpAndHowToViewController.h; sourceTree = "<group>"; };
+		E3461F7919AE35AC0042DF5E /* PGHelpAndHowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHelpAndHowToViewController.m; sourceTree = "<group>"; };
 		E3461F7C19AE43ED0042DF5E /* UIView+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Transform.h"; sourceTree = "<group>"; };
 		E3461F7D19AE43ED0042DF5E /* UIView+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Transform.m"; sourceTree = "<group>"; };
 		E3461F8419AE456E0042DF5E /* PGHighQualityTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHighQualityTextView.h; sourceTree = "<group>"; };
@@ -1310,7 +1304,6 @@
 		E3B123A319DDCCCF00B40FB4 /* SaveToCamera@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SaveToCamera@2x~iphone.png"; path = "Resources/Images/Icons/SaveToCamera@2x~iphone.png"; sourceTree = "<group>"; };
 		E3B58B0D1AE6EDA000A79CA8 /* PhotoGram-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info.plist"; sourceTree = "<group>"; };
 		E3B58B111AE7020B00A79CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PGSwipeCoachMarksView.xib; sourceTree = "<group>"; };
-		E3B58B1B1AE7045600A79CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PGLearnMoreView.xib; sourceTree = "<group>"; };
 		E3B58B1D1AE7050600A79CA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PG_Main.storyboard; sourceTree = "<group>"; };
 		E3B62FF619A412E900CB80D7 /* UIView+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animations.h"; sourceTree = "<group>"; };
 		E3B62FF719A412E900CB80D7 /* UIView+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animations.m"; sourceTree = "<group>"; };
@@ -1465,7 +1458,6 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
-		FF60F0BE1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF60F0C11C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
@@ -1474,29 +1466,23 @@
 		FF748DA51C1754CC0070304C /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FF748DA61C1754CC0070304C /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FF748DA71C1754CD0070304C /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
-		FF748DA81C1754CD0070304C /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/PGLearnMoreView.strings"; sourceTree = "<group>"; };
 		FF748DA91C1754DC0070304C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FF748DAA1C1754DC0070304C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF748DAB1C1754DC0070304C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF748DAC1C1754DC0070304C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
-		FF748DAD1C1754DC0070304C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FF748DAE1C1757FA0070304C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FF748DAF1C1757FA0070304C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF748DB01C1757FB0070304C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF748DB11C1757FB0070304C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
-		FF748DB21C1757FB0070304C /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FFE92D1C1C17542C009F5C6F /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FFE92D1D1C17542C009F5C6F /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FFE92D1E1C17542C009F5C6F /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFE92D1F1C17542D009F5C6F /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
-		FFE92D201C17542D009F5C6F /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FFE92D211C175438009F5C6F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FFE92D221C175438009F5C6F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FFE92D231C175438009F5C6F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFE92D241C175439009F5C6F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
-		FFE92D251C175439009F5C6F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FFE92D261C175444009F5C6F /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		FFE92D271C175444009F5C6F /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/PGLearnMoreView.strings"; sourceTree = "<group>"; };
 		FFE92D281C175445009F5C6F /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FFE92D291C175445009F5C6F /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
 		FFE92D2A1C175445009F5C6F /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/PG_Main.strings"; sourceTree = "<group>"; };
@@ -1504,9 +1490,7 @@
 		FFE92D2C1C17544E009F5C6F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FFE92D2D1C17544E009F5C6F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFE92D2E1C17544F009F5C6F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
-		FFE92D2F1C17544F009F5C6F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FFE92D301C175458009F5C6F /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		FFE92D311C175458009F5C6F /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/PGLearnMoreView.strings"; sourceTree = "<group>"; };
 		FFE92D321C175459009F5C6F /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FFE92D331C175459009F5C6F /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
 		FFE92D341C175459009F5C6F /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/PG_Main.strings"; sourceTree = "<group>"; };
@@ -1514,10 +1498,8 @@
 		FFEEF7E71C4EEA07000C47D8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FFEEF7E81C4EEA08000C47D8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFEEF7E91C4EEA08000C47D8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
-		FFEEF7EA1C4EEA08000C47D8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FFEEF7EB1C4EEC7A000C47D8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = it; path = it.lproj/terms.html; sourceTree = "<group>"; };
 		FFEEF7EC1C4EF6ED000C47D8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FFEEF7ED1C4EF6EE000C47D8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/PGLearnMoreView.strings; sourceTree = "<group>"; };
 		FFEEF7EE1C4EF6EF000C47D8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFEEF7EF1C4EF6F0000C47D8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
 		FFEEF7F01C4EF6F1000C47D8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/PG_Main.strings; sourceTree = "<group>"; };
@@ -1896,11 +1878,8 @@
 		E33F4C7819ABFBC900040033 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				E3461F3419AE30750042DF5E /* PGLearnMoreView.h */,
-				E3461F3519AE30750042DF5E /* PGLearnMoreView.m */,
-				E3B58B0A1AE6EC1A00A79CA8 /* PGLearnMoreView.xib */,
-				E3461F7819AE35AC0042DF5E /* PGLearnMoreViewController.h */,
-				E3461F7919AE35AC0042DF5E /* PGLearnMoreViewController.m */,
+				E3461F7819AE35AC0042DF5E /* PGHelpAndHowToViewController.h */,
+				E3461F7919AE35AC0042DF5E /* PGHelpAndHowToViewController.m */,
 				E3461F0819ACDD520042DF5E /* PGSaveToCameraRollActivity.h */,
 				E3461F0919ACDD520042DF5E /* PGSaveToCameraRollActivity.m */,
 			);
@@ -2944,7 +2923,6 @@
 				8218538F1D63E471001288D9 /* sunglasses_TN@2x.png in Resources */,
 				821853921D63E471001288D9 /* xoxo_TN.png in Resources */,
 				40c770fc6eec85019dc028dd /* PG_Main.storyboard in Resources */,
-				ed109700dc20dc6a0f77ae80 /* PGLearnMoreView.xib in Resources */,
 				7ad73d9894ba6e1e78e01283 /* PGSegmentedControlView.xib in Resources */,
 				5206ca653fa17d9c5bfbe283 /* PGSwipeCoachMarksView.xib in Resources */,
 				7a76ce1f389ff1c36f59053d /* PGTemplateSelectorView.xib in Resources */,
@@ -3300,7 +3278,6 @@
 				6552DABD1A797396002D3B48 /* webflow.js in Resources */,
 				65334C1C1C472044004E849D /* terms.html in Resources */,
 				F1DCB8391B543CD800CA9AAD /* PG_Main.storyboard in Resources */,
-				F1DCB83A1B5446DD00CA9AAD /* PGLearnMoreView.xib in Resources */,
 				E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */,
 				F1DCB83B1B54471E00CA9AAD /* PGSwipeCoachMarksView.xib in Resources */,
 				378EA80D19A6A10F00C72F1A /* PGTemplateSelectorView.xib in Resources */,
@@ -3530,7 +3507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3461F7A19AE35AC0042DF5E /* PGLearnMoreViewController.m in Sources */,
+				E3461F7A19AE35AC0042DF5E /* PGHelpAndHowToViewController.m in Sources */,
 				E3461F5E19AE31B80042DF5E /* PGSVGMetadataLoader.m in Sources */,
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
@@ -3581,7 +3558,6 @@
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				378EA81819A6A32C00C72F1A /* PGTemplateSelectorCollectionViewCell.m in Sources */,
-				E3461F3719AE30750042DF5E /* PGLearnMoreView.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
@@ -3619,7 +3595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ee9667b336ea7bde2d73cec /* PGLearnMoreViewController.m in Sources */,
+				7ee9667b336ea7bde2d73cec /* PGHelpAndHowToViewController.m in Sources */,
 				50ff524250afdb2126534f6f /* PGSVGMetadataLoader.m in Sources */,
 				7bbd748a4779e9f4a7b8cfde /* PGImagePickerLandscapeSupportController.m in Sources */,
 				a148d917735810b3c716fbf1 /* PGAboutViewController.m in Sources */,
@@ -3670,7 +3646,6 @@
 				741f0790ac4f961456a8df73 /* PGMediaNavigation.m in Sources */,
 				e411e3d70b5bc722a0625ddd /* PGFlickrLandingPageViewController.m in Sources */,
 				ddf9448fbdc58e0ed2d28be2 /* PGTemplateSelectorCollectionViewCell.m in Sources */,
-				e01ebfab08f7f8bdccee5438 /* PGLearnMoreView.m in Sources */,
 				9ea044a369c03c4f6cb49853 /* PGView.m in Sources */,
 				b30a7a7e1156d171450d8798 /* PGPreviewViewController.m in Sources */,
 				0ce5339cfff727ef56bddd25 /* UIView+Animations.m in Sources */,
@@ -3810,25 +3785,6 @@
 				FFEEF7EF1C4EF6F0000C47D8 /* nl */,
 			);
 			name = PGSwipeCoachMarksView.xib;
-			sourceTree = "<group>";
-		};
-		E3B58B0A1AE6EC1A00A79CA8 /* PGLearnMoreView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3B58B1B1AE7045600A79CA8 /* Base */,
-				FFE92D201C17542D009F5C6F /* cs */,
-				FFE92D251C175439009F5C6F /* de */,
-				FFE92D271C175444009F5C6F /* es-ES */,
-				FFE92D2F1C17544F009F5C6F /* es */,
-				FFE92D311C175458009F5C6F /* fr-CA */,
-				FF748DA81C1754CD0070304C /* pt-PT */,
-				FF748DAD1C1754DC0070304C /* ru */,
-				FF748DB21C1757FB0070304C /* pl */,
-				FF60F0BE1C44356E00E2804F /* fr */,
-				FFEEF7EA1C4EEA08000C47D8 /* it */,
-				FFEEF7ED1C4EF6EE000C47D8 /* nl */,
-			);
-			name = PGLearnMoreView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

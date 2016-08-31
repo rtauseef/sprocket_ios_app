@@ -10,21 +10,8 @@
 // the license agreement.
 //
 
-#import "PGLearnMoreViewController.h"
-#import "UIViewController+Trackable.h"
+#import <UIKit/UIKit.h>
 
-@implementation PGLearnMoreViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.trackableScreenName = @"Print Instructions Screen";
-}
-
-- (IBAction)doneButtonTapped:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+@interface PGHelpAndHowToViewController : UITableViewController
 
 @end
