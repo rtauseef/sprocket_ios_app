@@ -374,6 +374,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
     [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES completion:nil];
+    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
@@ -453,7 +454,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             NSString *offramp = activityType;
             NSDictionary *extendedMetrics = [weakSelf extendedMetrics];
             if (printActivity) {
-                offramp = [MPPrintManager printNowOfframp];
+                offramp = [MPPrintManager printOfframp];
             }
             
             if (!offramp) {
