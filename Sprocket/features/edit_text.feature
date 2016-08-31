@@ -18,11 +18,11 @@ Scenario Outline: Verify 'Text' option
     And I should see the photo with the "text"
     #And I should see the photo with the entered text
     Then I tap "Check" mark
-    Then I should see the "Preview" screen
+    Then I should see the "<screen_name>" screen
    
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
 
@@ -37,7 +37,7 @@ Scenario Outline: Verify text edit screen navigation
    
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview            |
     | Flickr Preview     |
     | CameraRoll Preview |
 
@@ -58,7 +58,7 @@ Scenario Outline: Verify Text editor screen options
        
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview            |
     | Flickr Preview     |
     | CameraRoll Preview |
 

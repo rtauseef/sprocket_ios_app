@@ -19,7 +19,7 @@ Scenario Outline: Verify crop option
           
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
     
@@ -39,7 +39,7 @@ Scenario Outline: Verify image crop
        
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
     

@@ -17,7 +17,7 @@ Scenario Outline: Verify 'Filter' option
    
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview            |
     | Flickr Preview     |
     | CameraRoll Preview |
 
@@ -33,7 +33,7 @@ Scenario Outline: Verify Filter selection option
    
     Examples:
     | screen_name         |
-    | Preview            |
+    | Instagram Preview            |
     | Flickr Preview     |
     | CameraRoll Preview  |
 

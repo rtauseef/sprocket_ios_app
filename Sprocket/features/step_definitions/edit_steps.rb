@@ -81,13 +81,14 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
 end
 
 And(/^I verify blue line indicator is displayed under selected frame$/) do 
-   width_indicator = query("UIView index:29").first["frame"]["width"]
-    raise "Blue line indicator not found!" unless width_indicator==64
+   #width_indicator = query("UIView index:29").first["frame"]["width"]
+   selected_frame_status = query("UIImageView index:0 id:'1_turquoise_frame'")
+    raise "Blue line indicator not found!" unless selected_frame_status != nil
 end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
-    if photo_source == "Preview"
-        macro %Q|I am on the "Preview" screen|
+    if photo_source == "Instagram Preview"
+        macro %Q|I am on the "Instagram Preview" screen|
     else 
         if photo_source == "Flickr Preview"
         macro %Q|I am on the "Flickr Preview" screen|
