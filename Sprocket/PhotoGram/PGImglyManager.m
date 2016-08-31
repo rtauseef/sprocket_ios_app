@@ -421,7 +421,7 @@ typedef enum {
     
     [self.analytics addObject:metric];
     
-    NSLog(@"Analytics: %@", self.analytics);
+    MPLogDebug(@"Embellishment Analytics: %@", self.analytics);
 }
 
 - (NSString *)analyticsString
