@@ -42,130 +42,6 @@ typedef enum {
 
 @implementation PGImglyManager
 
-- (NSString *) categoryName:(PGEmbellishmentCategory)category
-{
-    NSString *strCategory = @"";
-    switch (category) {
-        case PGEmbellishmentCategoryFont:
-            strCategory = kMetricCategoryFont;
-            break;
-            
-        case PGEmbellishmentCategoryText:
-            strCategory = kMetricCategoryText;
-            break;
-            
-        case PGEmbellishmentCategorySticker:
-            strCategory = kMetricCategorySticker;
-            break;
-            
-        case PGEmbellishmentCategoryFilter:
-            strCategory = kMetricCategoryFilter;
-            break;
-            
-        case PGEmbellishmentCategoryFrame:
-            strCategory = kMetricCategoryFrame;
-            break;
-            
-        default:
-            strCategory = @"Unknown";
-            break;
-    }
-    
-    return strCategory;
-}
-
-- (void) removeAnalyticFromCategory:(PGEmbellishmentCategory)category
-{
-    NSString *strCategory = [self categoryName:category];
-    
-    NSDictionary *objectToRemove = nil;
-    for (NSDictionary *metric in self.analytics) {
-        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
-            objectToRemove = metric;
-            break;
-        }
-    }
-    
-    if (nil != objectToRemove) {
-        [self.analytics removeObject:objectToRemove];
-    }
-}
-
-- (void) removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
-{
-    NSString *strCategory = [self categoryName:category];
-    
-    NSDictionary *objectToRemove = nil;
-    for (NSDictionary *metric in self.analytics) {
-        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]] &&
-            [name isEqualToString:[metric objectForKey:kNameMetricColumn]]) {
-            objectToRemove = metric;
-            break;
-        }
-    }
-    
-    if (nil != objectToRemove) {
-        [self.analytics removeObject:objectToRemove];
-    }
-}
-
-- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
-{
-    NSString *strCategory = [self categoryName:category];
-    
-    switch (category) {
-        case PGEmbellishmentCategoryFont:
-            break;
-            
-        case PGEmbellishmentCategoryText:
-            break;
-
-        case PGEmbellishmentCategorySticker:
-            break;
-
-        case PGEmbellishmentCategoryFilter:
-            [self removeAnalyticFromCategory:category];
-            break;
-
-        case PGEmbellishmentCategoryFrame:
-            [self removeAnalyticFromCategory:category];
-            break;
-
-        default:
-            strCategory = @"Unknown";
-            break;
-    }
-    
-    NSDictionary *metric = @{kCategoryMetricColumn : strCategory,
-                             kNameMetricColumn     : name};
-    
-    [self.analytics addObject:metric];
-    
-    NSLog(@"Analytics: %@", self.analytics);
-}
-
-- (NSString *)analyticsString
-{
-    NSString *finalMetric = @"";
-    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@", "];
-    
-    for (NSDictionary *metric in self.analytics) {
-        if (finalMetric.length > 0) {
-            finalMetric = [finalMetric stringByAppendingString:@";"];
-        }
-
-        NSString *metricString = @"";
-        for (NSString *key in [metric allKeys]) {
-            metricString = [metricString stringByAppendingFormat:@", %@:%@", key, [metric objectForKey:key]];
-        }
-        metricString = [metricString stringByTrimmingCharactersInSet:trimSet];
-        
-        finalMetric = [finalMetric stringByAppendingString:metricString];
-    }
-    
-    return finalMetric;
-}
-
 - (IMGLYConfiguration *)imglyConfiguration
 {
     self.analytics = [[NSMutableArray alloc] init];
@@ -339,6 +215,11 @@ typedef enum {
                     imageView.frame = frame;
                 }
             }];
+            
+            textOptionsBuilder.textActionSelectedClosure = ^(TextAction textAction) {
+                // called for selectFont, selectColor, and selectBackgroundColor
+               MPLogDebug(@"text action: %ld", (long)textAction);
+            };
         }];
         
         // The screen for both text color and background color
@@ -363,9 +244,8 @@ typedef enum {
             }];
             
             textFontToolBuilder.textFontActionSelectedClosure = ^(NSString *font) {
-                [self addEmbellishmentMetric:PGEmbellishmentCategoryFont name:font];
+                // Never called :-(
             };
-
         }];
     }];
     
@@ -440,6 +320,130 @@ typedef enum {
     }
 }
 
+#pragma mark - Analytics
 
+- (NSString *) categoryName:(PGEmbellishmentCategory)category
+{
+    NSString *strCategory = @"";
+    switch (category) {
+        case PGEmbellishmentCategoryFont:
+            strCategory = kMetricCategoryFont;
+            break;
+            
+        case PGEmbellishmentCategoryText:
+            strCategory = kMetricCategoryText;
+            break;
+            
+        case PGEmbellishmentCategorySticker:
+            strCategory = kMetricCategorySticker;
+            break;
+            
+        case PGEmbellishmentCategoryFilter:
+            strCategory = kMetricCategoryFilter;
+            break;
+            
+        case PGEmbellishmentCategoryFrame:
+            strCategory = kMetricCategoryFrame;
+            break;
+            
+        default:
+            strCategory = @"Unknown";
+            break;
+    }
+    
+    return strCategory;
+}
+
+- (void) removeEmbellishmentCategory:(PGEmbellishmentCategory)category
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    NSDictionary *objectToRemove = nil;
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
+            objectToRemove = metric;
+            break;
+        }
+    }
+    
+    if (nil != objectToRemove) {
+        [self.analytics removeObject:objectToRemove];
+    }
+}
+
+- (void) removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    NSDictionary *objectToRemove = nil;
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]] &&
+            [name isEqualToString:[metric objectForKey:kNameMetricColumn]]) {
+            objectToRemove = metric;
+            break;
+        }
+    }
+    
+    if (nil != objectToRemove) {
+        [self.analytics removeObject:objectToRemove];
+    }
+}
+
+- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    switch (category) {
+        case PGEmbellishmentCategoryFont:
+            break;
+            
+        case PGEmbellishmentCategoryText:
+            break;
+            
+        case PGEmbellishmentCategorySticker:
+            break;
+            
+        case PGEmbellishmentCategoryFilter:
+            [self removeEmbellishmentCategory:category];
+            break;
+            
+        case PGEmbellishmentCategoryFrame:
+            [self removeEmbellishmentCategory:category];
+            break;
+            
+        default:
+            strCategory = @"Unknown";
+            break;
+    }
+    
+    NSDictionary *metric = @{kCategoryMetricColumn : strCategory,
+                             kNameMetricColumn     : name};
+    
+    [self.analytics addObject:metric];
+    
+    NSLog(@"Analytics: %@", self.analytics);
+}
+
+- (NSString *)analyticsString
+{
+    NSString *finalMetric = @"";
+    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@", "];
+    
+    for (NSDictionary *metric in self.analytics) {
+        if (finalMetric.length > 0) {
+            finalMetric = [finalMetric stringByAppendingString:@";"];
+        }
+        
+        NSString *metricString = @"";
+        for (NSString *key in [metric allKeys]) {
+            metricString = [metricString stringByAppendingFormat:@", %@:%@", key, [metric objectForKey:key]];
+        }
+        metricString = [metricString stringByTrimmingCharactersInSet:trimSet];
+        
+        finalMetric = [finalMetric stringByAppendingString:metricString];
+    }
+    
+    return finalMetric;
+}
 
 @end
