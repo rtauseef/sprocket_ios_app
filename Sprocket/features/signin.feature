@@ -19,12 +19,23 @@ Scenario Outline: Sign in to different Social media accounts from Landing screen
     
     
     Examples:
-      | social_media | welcome            | Sign in          | Photos           |
-      | Instagram    | Welcome            | Instagram Signin | Home             |
-      | Flickr       | Flickr Landing     | FlickrSignin     | Flickr Photo     |
-      | CameraRoll   | CameraRoll Landing | CameraRoll       | CameraRoll Photo |
-     # | Facebook     | Facebook Landing   | Facebook Signin | Facebook Photo   |
+      | social_media | welcome             | Sign in          | Photos           |
+      | Instagram    | Instagram Landing   | Instagram Signin | Instagram Photos |
+      | Flickr       | Flickr Landing      | FlickrSignin     | Flickr Photo     |
+     
+    
       
-      
+@reset
+@done
+@TA14379
+Scenario: Sign in to different Social media accounts from Landing screen
+    Given I am on the "Landing" screen
+    Then I should see "CameraRoll" logo
+    And I click on the "CameraRoll" logo
+    Then I should see the "CameraRoll Landing" screen
+    And I click on the "Sign in" button
+    Then I should see the "CameraRoll Photo" screen
+    
+    
 
     
