@@ -15,6 +15,8 @@
 
 @interface PGImglyManager : NSObject
 
+@property (strong, nonatomic, readonly) NSString *analyticsString;
+
 - (IMGLYConfiguration *)imglyConfiguration;
 - (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name;
 

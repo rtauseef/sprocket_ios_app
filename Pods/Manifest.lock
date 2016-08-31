@@ -62,7 +62,7 @@ CHECKOUT OPTIONS:
     :commit: 5f21636e7e41e6fdcd527fed2a698a65394d9ada
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 2cc6696e62aad9aa9809f660066f1d0bf4684e0b
+    :commit: d22e0e36cbea545ab342dd25802cdb8ea8fc7024
     :git: https://github.com/IPGPTP/ios-print-sdk.git
   SVGKit:
     :git: https://github.com/SVGKit/SVGKit.git
@@ -80,6 +80,6 @@ SPEC CHECKSUMS:
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 96ceb99fd53e9d454d968af7130486ab02f97c86
+PODFILE CHECKSUM: fc19537942a80392552af69ca6c8ad29e05818e2
 
 COCOAPODS: 1.0.1

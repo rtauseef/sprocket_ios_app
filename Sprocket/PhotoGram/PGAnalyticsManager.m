@@ -73,6 +73,8 @@ NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
 NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 
+NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
+
 @synthesize templateName = _templateName;
 
 + (PGAnalyticsManager *)sharedManager
@@ -241,9 +243,9 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
     self.userName = userName;
     self.userId = userId;
     
-    [Crashlytics setObjectValue:socialNetwork forKey:@"Photo Source"];
-    [Crashlytics setObjectValue:userId forKey:@"User ID"];
-    [Crashlytics setObjectValue:userName forKey:@"User Name"];
+    [[Crashlytics sharedInstance] setObjectValue:socialNetwork forKey:@"Photo Source"];
+    [[Crashlytics sharedInstance] setObjectValue:userId forKey:@"User ID"];
+    [[Crashlytics sharedInstance] setObjectValue:userName forKey:@"User Name"];
 }
 
 #pragma mark - WiFi SSID
@@ -266,6 +268,16 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 
 - (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
 {
+    MPPaper *paper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
+    NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
+    [lastOptionsUsed setValue:paper.typeTitle forKey:kMPPaperTypeId];
+    [lastOptionsUsed setValue:paper.sizeTitle forKey:kMPPaperSizeId];
+    [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.width] forKey:kMPPaperWidthId];
+    [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.height] forKey:kMPPaperHeightId];
+    [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
+    [lastOptionsUsed setValue:[NSNumber numberWithInteger:1] forKey:kMPNumberOfCopies];
+    [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
+
     NSString *result = kEventResultSuccess;
     if ([MPPrintManager printNowOfframp:offramp]) {
         NSString *paperSize = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperSizeId];
@@ -310,8 +322,8 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 - (void)postMetrics:(NSString *)offramp object:(NSObject *)object metrics:(NSDictionary *)metrics
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kMPShareCompletedNotification object:object userInfo:metrics];
-    [Crashlytics setObjectValue:offramp forKey:kCrashlyticsOfframpKey];
-    [Crashlytics setObjectValue:[PGAnalyticsManager wifiName] forKey:kCrashlyticsWiFiShareKey];
+    [[Crashlytics sharedInstance] setObjectValue:offramp forKey:kCrashlyticsOfframpKey];
+    [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:kCrashlyticsWiFiShareKey];
     if ([MPPrintManager printingOfframp:offramp]) {
         [self setPrintCrashlytics];
     } else {
@@ -338,7 +350,7 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 {
     @synchronized(self) {
         _templateName = templateName;
-        [Crashlytics setObjectValue:templateName forKey:@"Template Name"];
+        [[Crashlytics sharedInstance] setObjectValue:templateName forKey:@"Template Name"];
     }
 }
 
@@ -352,7 +364,7 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 - (void)setupCrashlytics
 {
     [Crashlytics startWithAPIKey:CRASHLYTICS_KEY];
-    [Crashlytics setObjectValue:[PGAnalyticsManager wifiName] forKey:@"WiFi (app start)"];
+    [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:@"WiFi (app start)"];
     NSArray *keys = @[
                       @"WiFi (share/print)",
                       @"Offramp",
@@ -376,33 +388,33 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
                       ];
 
     for (NSString *key in keys) {
-        [Crashlytics setObjectValue:@"N/A" forKey:key];
+        [[Crashlytics sharedInstance] setObjectValue:@"N/A" forKey:key];
     }
 }
 
 - (void)clearPrintCrashlytics
 {
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Paper Size"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Paper Type"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Number of Copies"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Black and White"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Printer ID"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Printer Name"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Printer Location"];
-    [Crashlytics setObjectValue:kNonPrintingActivity forKey:@"Printer Model"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Paper Size"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Paper Type"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Number of Copies"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Black and White"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Printer ID"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Printer Name"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Printer Location"];
+    [[Crashlytics sharedInstance] setObjectValue:kNonPrintingActivity forKey:@"Printer Model"];
 }
 
 - (void)setPrintCrashlytics
 {
     NSDictionary *options = [MP sharedInstance].lastOptionsUsed;
-    [Crashlytics setObjectValue:[options objectForKey:kMPPaperSizeId] forKey:@"Paper Size"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPPaperTypeId] forKey:@"Paper Type"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPNumberOfCopies] forKey:@"Number of Copies"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPBlackAndWhiteFilterId] forKey:@"Black and White"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPPrinterId] forKey:@"Printer ID"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPPrinterDisplayName] forKey:@"Printer Name"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPPrinterDisplayLocation] forKey:@"Printer Location"];
-    [Crashlytics setObjectValue:[options objectForKey:kMPPrinterMakeAndModel] forKey:@"Printer Model"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPPaperSizeId] forKey:@"Paper Size"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPPaperTypeId] forKey:@"Paper Type"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPNumberOfCopies] forKey:@"Number of Copies"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPBlackAndWhiteFilterId] forKey:@"Black and White"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPPrinterId] forKey:@"Printer ID"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPPrinterDisplayName] forKey:@"Printer Name"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPPrinterDisplayLocation] forKey:@"Printer Location"];
+    [[Crashlytics sharedInstance] setObjectValue:[options objectForKey:kMPPrinterMakeAndModel] forKey:@"Printer Model"];
 }
 
 @end

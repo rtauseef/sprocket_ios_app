@@ -17,7 +17,6 @@
 #import "PGCameraRollLandingPageViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGPreviewViewController.h"
-#import "PGSelectTemplateViewController.h"
 #import "PGImagePickerLandscapeSupportController.h"
 #import "PGAnalyticsManager.h"
 #import "HPPRCameraRollLoginProvider.h"
@@ -90,7 +89,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                 ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
             }
             
-            UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+            UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
             
             vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
             
@@ -107,26 +106,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     }];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"SelectTemplateSegue"]) {
-        PGSelectTemplateViewController *vc = (PGSelectTemplateViewController *)segue.destinationViewController;
-
-        vc.source = [HPPRCameraRollPhotoProvider sharedInstance].name;
-
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"]
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:vc
-                                                                action:@selector(dismissViewController)];
-        [vc.navigationItem setLeftBarButtonItem:item animated:YES];
-        
-        vc.selectedPhoto = self.selectedPhoto;
-    }
-}
-
-
 #pragma mark - HPPRSelectPhotoCollectionViewControllerDelegate
 
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
@@ -135,7 +114,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = image;
     previewViewController.source = source;
-    previewViewController.media = media;
     
     HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:kCameraRollUserName userId:kCameraRollUserId];
