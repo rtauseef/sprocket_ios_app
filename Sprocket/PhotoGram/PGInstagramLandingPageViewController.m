@@ -186,7 +186,6 @@
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = image;
     previewViewController.source = source;
-    //    previewViewController.media = media;
 
     HPPRInstagramPhotoProvider *provider = [HPPRInstagramPhotoProvider sharedInstance];
 

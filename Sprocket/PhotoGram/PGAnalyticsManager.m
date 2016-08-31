@@ -344,7 +344,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self postMetricsWithOfframp:action objects:dictionary exendedInfo:job.extra];
 }
 
-#pragma mark - [Crashlytics sharedInstance]
+#pragma mark - Crashlytics
 
 - (void)setTemplateName:(NSString *)templateName
 {

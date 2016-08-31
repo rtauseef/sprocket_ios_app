@@ -181,7 +181,6 @@ NSString * const kFlickrUserIdKey = @"userID";
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = image;
     previewViewController.source = source;
-//   previewViewController.media = media;
     
     HPPRFlickrPhotoProvider *provider = [HPPRFlickrPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[self.user objectForKey:kFlickrUserNameKey] userId:[self.user objectForKey:kFlickrUserIdKey]];
