@@ -453,7 +453,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             NSString *offramp = activityType;
             NSDictionary *extendedMetrics = [weakSelf extendedMetrics];
             if (printActivity) {
-                offramp = [MPPrintManager printNowOfframp];
+//                offramp = [MPPrintManager printNowOfframp];
             }
             
             if (!offramp) {
