@@ -298,7 +298,6 @@ typedef enum {
         NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
         
         webViewerViewController.url = localizablePrivacyStatementURL;
-        
     }
 }
 
@@ -431,7 +430,7 @@ typedef enum {
 
 - (void)setupSocialItemView:(UIView *)view
 {
-    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];;
+    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
 }
 
 - (void)setTableFooterHeight

@@ -47,6 +47,11 @@ static void * trackableScreenNamePropertyKey = &trackableScreenNamePropertyKey;
     });
 }
 
++ (NSString *)screenNameKey
+{
+    return @"Screen Name";
+}
+
 #pragma mark - Method Swizzling
 
 - (void)trackable_viewWillAppear:(BOOL)animated
@@ -55,7 +60,7 @@ static void * trackableScreenNamePropertyKey = &trackableScreenNamePropertyKey;
     
     if (self.trackableScreenName) {
         [[PGAnalyticsManager sharedManager] trackScreenViewEvent:self.trackableScreenName];
-        [[Crashlytics sharedInstance] setObjectValue:self.trackableScreenName forKey:@"Screen Name"];
+        [[Crashlytics sharedInstance] setObjectValue:self.trackableScreenName forKey:[UIViewController screenNameKey]];
     }
     
     PGLogInfo(@"%@ viewWillAppear", [self class]);

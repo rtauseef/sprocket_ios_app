@@ -13,6 +13,9 @@
 #import "PGCameraManager.h"
 #import "PGLandingMainPageViewController.h"
 #import "PGAppDelegate.h"
+#import "PGAnalyticsManager.h"
+#import "UIViewController+trackable.h"
+#import <Crashlytics/Crashlytics.h>
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -271,6 +274,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
+}
+
+#pragma mark - Metrics
++ (NSString *)trackableScreenName
+{
+    return @"Camera Screen";
+}
+
++ (void)logMetrics
+{
+    NSString *screenName = [PGCameraManager trackableScreenName];
+    [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
+    [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];    
 }
 
 @end

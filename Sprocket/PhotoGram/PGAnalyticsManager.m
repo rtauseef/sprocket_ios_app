@@ -19,10 +19,11 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <MP.h>
 #import <MPPrintManager.h>
+#import <HPPR.h>
 
 #define CRASHLYTICS_KEY @"fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed"
-#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-57331304-1"
-#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-55152005-1"
+#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-81852585-1"
+#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-81852585-2"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -124,6 +125,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
 }
 
 - (void)setupExperiments
@@ -158,6 +160,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)handleTrackableScreenNotification:(NSNotification *)notification
 {
     [self trackScreenViewEvent:[notification.userInfo objectForKey:kMPTrackableScreenNameKey]];
+}
+
+- (void)handleTrackableScreenNotificationHPPR:(NSNotification *)notification
+{
+    [self trackScreenViewEvent:[notification.userInfo objectForKey:kHPPRTrackableScreenNameKey]];
 }
 
 - (void)trackScreenViewEvent:(NSString *)screenName
