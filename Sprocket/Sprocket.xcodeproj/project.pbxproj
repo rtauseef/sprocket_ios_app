@@ -422,6 +422,8 @@
 		82362A5A1D5959870019F024 /* PGStickerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A581D5959870019F024 /* PGStickerItem.m */; };
 		823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */; };
 		823FB33C1D77A4C30022B132 /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */; };
+		8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247843D1D77B3C300A693D0 /* Social.framework */; };
+		8247843F1D77B3CD00A693D0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247843D1D77B3C300A693D0 /* Social.framework */; };
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8271DCD51D46D05000B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
@@ -873,6 +875,7 @@
 		82362A581D5959870019F024 /* PGStickerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGStickerItem.m; sourceTree = "<group>"; };
 		823FB3391D77A4BE0022B132 /* PGHelpAndHowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHelpAndHowToViewController.h; sourceTree = "<group>"; };
 		823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHelpAndHowToViewController.m; sourceTree = "<group>"; };
+		8247843D1D77B3C300A693D0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
@@ -1119,6 +1122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8247843F1D77B3CD00A693D0 /* Social.framework in Frameworks */,
 				ea3369ffd9fc5afcdd65ab8e /* DBChooser.framework in Frameworks */,
 				6f96a3ac5c432ec3c137576b /* libz.dylib in Frameworks */,
 				7b2d24f4b7426767a0272e75 /* CoreGraphics.framework in Frameworks */,
@@ -1137,6 +1141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
 				8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */,
 				F1DCB7EB1B5066B000CA9AAD /* libz.dylib in Frameworks */,
@@ -1495,6 +1500,7 @@
 		E34D5059199AB87B006D80E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8247843D1D77B3C300A693D0 /* Social.framework */,
 				8271DCD11D46D03500B21549 /* imglyKit.framework */,
 				F1DCB7E91B5065E200CA9AAD /* libz.dylib */,
 				E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */,
