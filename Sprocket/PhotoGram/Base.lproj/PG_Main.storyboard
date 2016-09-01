@@ -1270,7 +1270,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" id="upf-7w-hsO"/>
+                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="ViewUserGuideSegue" id="upf-7w-hsO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="mGd-CY-o6r" imageView="8X1-eU-uTV" style="IBUITableViewCellStyleDefault" id="PMz-aF-SGY">
@@ -1342,7 +1342,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" id="EBG-5d-8Dw"/>
+                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="VisitWebsiteSegue" id="EBG-5d-8Dw"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
