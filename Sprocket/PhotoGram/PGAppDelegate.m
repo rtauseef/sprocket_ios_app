@@ -21,8 +21,6 @@
 #import "PGAppAppearance.h"
 #import "PGAnalyticsManager.h"
 #import "PGLogger.h"
-#import "PGBadgeNumberManager.h"
-#import "PGSVGResourceManager.h"
 
 @implementation PGAppDelegate
 
@@ -30,8 +28,6 @@
 {
     // Force the initialization of the analytics manager to start tracking crashes
     [PGAnalyticsManager sharedManager];
-
-    [PGBadgeNumberManager sharedManager];
 
     [PGAppAppearance setupAppearance];
     
@@ -57,9 +53,6 @@
    
     PGLogInfo(@"%@", [NSBundle mainBundle]);
    
-    // For now, unzip all .hpc files each time the app starts
-    [PGSVGResourceManager unzipAllHpcFiles:TRUE];
-
     self.window.backgroundColor = [UIColor greenColor];
     
     return YES;

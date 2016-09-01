@@ -35,6 +35,8 @@ extern NSString * const kMetricsTypeLocationKey;
 extern NSString * const kEventResultSuccess;
 extern NSString * const kEventResultCancel;
 
+extern NSString * const kMPMetricsEmbellishmentKey;
+
 + (PGAnalyticsManager *)sharedManager;
 
 - (void)trackScreenViewEvent:(NSString *)screenName;

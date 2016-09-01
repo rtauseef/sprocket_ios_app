@@ -125,7 +125,7 @@ NSString * const kFacebookUserIdKey = @"id";
                         ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
                     }
                     
-                    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+                    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
                     
                     vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
                     
@@ -202,7 +202,6 @@ NSString * const kFacebookUserIdKey = @"id";
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = image;
     previewViewController.source = source;
-    previewViewController.media = media;
     
     HPPRFacebookPhotoProvider *provider = [HPPRFacebookPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[provider.user objectForKey:kFacebookUserNameKey] userId:[provider.user objectForKey:kFacebookUserIdKey]];

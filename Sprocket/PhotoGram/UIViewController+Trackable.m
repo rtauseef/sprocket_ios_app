@@ -55,7 +55,7 @@ static void * trackableScreenNamePropertyKey = &trackableScreenNamePropertyKey;
     
     if (self.trackableScreenName) {
         [[PGAnalyticsManager sharedManager] trackScreenViewEvent:self.trackableScreenName];
-        [Crashlytics setObjectValue:self.trackableScreenName forKey:@"Screen Name"];
+        [[Crashlytics sharedInstance] setObjectValue:self.trackableScreenName forKey:@"Screen Name"];
     }
     
     PGLogInfo(@"%@ viewWillAppear", [self class]);

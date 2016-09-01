@@ -17,7 +17,26 @@
 
 #define kImglyColorCellHeightAdjustment 18
 
+static const NSString *kCategoryMetricColumn = @"category";
+static const NSString *kNameMetricColumn = @"name";
+
+static NSString *kMetricCategoryFont = @"Font";
+static NSString *kMetricCategoryText = @"Text";
+static NSString *kMetricCategorySticker = @"Sticker";
+static NSString *kMetricCategoryFilter = @"Filter";
+static NSString *kMetricCategoryFrame = @"Frame";
+
 @interface PGImglyManager() <IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
+
+typedef enum {
+    PGEmbellishmentCategoryFont,
+    PGEmbellishmentCategoryText,
+    PGEmbellishmentCategorySticker,
+    PGEmbellishmentCategoryFilter,
+    PGEmbellishmentCategoryFrame
+} PGEmbellishmentCategory;
+
+@property (strong, nonatomic) NSMutableArray *analytics;
 
 @end
 
@@ -25,6 +44,8 @@
 
 - (IMGLYConfiguration *)imglyConfiguration
 {
+    self.analytics = [[NSMutableArray alloc] init];
+    
     IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
         
         builder.contextMenuBackgroundColor = [UIColor HPGrayColor];
@@ -101,10 +122,21 @@
         
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
             stickerBuilder.stickersDataSource = self;
+            
+            stickerBuilder.addedStickerClosure = ^(IMGLYSticker *sticker) {
+                [self addEmbellishmentMetric:PGEmbellishmentCategorySticker name:sticker.accessibilityText];
+            };
+            
+            stickerBuilder.removedStickerClosure = ^(IMGLYSticker *sticker) {
+                [self removeEmbellishmentMetric:PGEmbellishmentCategorySticker name:sticker.accessibilityText];
+            };
         }];
         
         [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull frameToolBuilder) {
             frameToolBuilder.framesDataSource = self;
+            frameToolBuilder.selectedFrameClosure = ^(IMGLYFrame *frame) {
+                 [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frame.accessibilityText];
+            };
         }];
         
         [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
@@ -133,6 +165,10 @@
             [filterBuilder setFilterCellConfigurationClosure:^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
                 [cell.captionLabel removeFromSuperview];
             }];
+            
+            filterBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect *filter) {
+                [self addEmbellishmentMetric:PGEmbellishmentCategoryFilter name:filter.displayName];
+            };
         }];
         
         // The initial text font and color modification screen (created after entering text into the textfield
@@ -179,6 +215,11 @@
                     imageView.frame = frame;
                 }
             }];
+            
+            textOptionsBuilder.textActionSelectedClosure = ^(TextAction textAction) {
+                // called for selectFont, selectColor, and selectBackgroundColor
+               MPLogDebug(@"text action: %ld", (long)textAction);
+            };
         }];
         
         // The screen for both text color and background color
@@ -202,6 +243,9 @@
                 cell.captionLabel.text = nil;
             }];
             
+            textFontToolBuilder.textFontActionSelectedClosure = ^(NSString *font) {
+                // Never called :-(
+            };
         }];
     }];
     
@@ -236,7 +280,7 @@
 {
     if (completionBlock) {
         PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
-        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:nil];
+        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.imageName];
         completionBlock(imglySticker, nil);
     }
 }
@@ -276,6 +320,130 @@
     }
 }
 
+#pragma mark - Analytics
 
+- (NSString *) categoryName:(PGEmbellishmentCategory)category
+{
+    NSString *strCategory = @"";
+    switch (category) {
+        case PGEmbellishmentCategoryFont:
+            strCategory = kMetricCategoryFont;
+            break;
+            
+        case PGEmbellishmentCategoryText:
+            strCategory = kMetricCategoryText;
+            break;
+            
+        case PGEmbellishmentCategorySticker:
+            strCategory = kMetricCategorySticker;
+            break;
+            
+        case PGEmbellishmentCategoryFilter:
+            strCategory = kMetricCategoryFilter;
+            break;
+            
+        case PGEmbellishmentCategoryFrame:
+            strCategory = kMetricCategoryFrame;
+            break;
+            
+        default:
+            strCategory = @"Unknown";
+            break;
+    }
+    
+    return strCategory;
+}
+
+- (void) removeEmbellishmentCategory:(PGEmbellishmentCategory)category
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    NSDictionary *objectToRemove = nil;
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
+            objectToRemove = metric;
+            break;
+        }
+    }
+    
+    if (nil != objectToRemove) {
+        [self.analytics removeObject:objectToRemove];
+    }
+}
+
+- (void) removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    NSDictionary *objectToRemove = nil;
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]] &&
+            [name isEqualToString:[metric objectForKey:kNameMetricColumn]]) {
+            objectToRemove = metric;
+            break;
+        }
+    }
+    
+    if (nil != objectToRemove) {
+        [self.analytics removeObject:objectToRemove];
+    }
+}
+
+- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    NSString *strCategory = [self categoryName:category];
+    
+    switch (category) {
+        case PGEmbellishmentCategoryFont:
+            break;
+            
+        case PGEmbellishmentCategoryText:
+            break;
+            
+        case PGEmbellishmentCategorySticker:
+            break;
+            
+        case PGEmbellishmentCategoryFilter:
+            [self removeEmbellishmentCategory:category];
+            break;
+            
+        case PGEmbellishmentCategoryFrame:
+            [self removeEmbellishmentCategory:category];
+            break;
+            
+        default:
+            strCategory = @"Unknown";
+            break;
+    }
+    
+    NSDictionary *metric = @{kCategoryMetricColumn : strCategory,
+                             kNameMetricColumn     : name};
+    
+    [self.analytics addObject:metric];
+    
+    MPLogDebug(@"Embellishment Analytics: %@", self.analytics);
+}
+
+- (NSString *)analyticsString
+{
+    NSString *finalMetric = @"";
+    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@", "];
+    
+    for (NSDictionary *metric in self.analytics) {
+        if (finalMetric.length > 0) {
+            finalMetric = [finalMetric stringByAppendingString:@";"];
+        }
+        
+        NSString *metricString = @"";
+        for (NSString *key in [metric allKeys]) {
+            metricString = [metricString stringByAppendingFormat:@", %@:%@", key, [metric objectForKey:key]];
+        }
+        metricString = [metricString stringByTrimmingCharactersInSet:trimSet];
+        
+        finalMetric = [finalMetric stringByAppendingString:metricString];
+    }
+    
+    return finalMetric;
+}
 
 @end
