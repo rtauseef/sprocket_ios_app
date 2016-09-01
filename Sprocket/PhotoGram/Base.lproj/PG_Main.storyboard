@@ -636,7 +636,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="TakeOurSurveySegue" id="oaC-oH-lb1"/>
+                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="BuyPaperSegue" id="oaC-oH-lb1"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="XkB-S7-9ou" imageView="R1j-lb-e8T" style="IBUITableViewCellStyleDefault" id="s06-l9-9Fo" userLabel="How To &amp; Help Cell">

@@ -188,10 +188,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
-        if (self.lastDeviceCameraPosition == AVCaptureDevicePositionFront) {
-            photo = [UIImage imageWithCGImage:photo.CGImage scale:photo.scale orientation:UIImageOrientationLeftMirrored];
-        }
-        
         [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
     }];
 }

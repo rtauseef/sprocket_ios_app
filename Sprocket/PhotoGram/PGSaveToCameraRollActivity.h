@@ -14,4 +14,6 @@
 
 @interface PGSaveToCameraRollActivity : UIActivity
 
+@property (strong, nonatomic) UIImage *image;
+
 @end

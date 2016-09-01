@@ -62,6 +62,7 @@
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 NSString * const kTakeOurSurveyURL = @"https://www.surveymonkey.com/s/9C9M96H";
 NSString * const kTakeOurSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
+NSString * const kBuyPaperURL = @"http://store.hp.com/us/en/pdp/hp-zink%C2%AE-sticky-backed-photo-paper-20-sht-2-x-3-in";
 
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
@@ -290,20 +291,23 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
+    PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
+    
     if ([segue.identifier isEqualToString:@"PrivacyStatementSegue"]) {
-        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-        
-        PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
         webViewerViewController.trackableScreenName = @"Privacy Statement Screen";
         NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
         
         webViewerViewController.url = localizablePrivacyStatementURL;
+    } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
+        webViewerViewController.trackableScreenName = @"Buy Paper";
+        webViewerViewController.url = kBuyPaperURL;
     }
 }
 
 #pragma mark - Button action
 
--(void)barButtonCancelPressed:(id)sender
+- (void)barButtonCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
