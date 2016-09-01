@@ -424,6 +424,8 @@
 		823FB33C1D77A4C30022B132 /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */; };
 		8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247843D1D77B3C300A693D0 /* Social.framework */; };
 		8247843F1D77B3CD00A693D0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247843D1D77B3C300A693D0 /* Social.framework */; };
+		824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 824784431D78DAF700A693D0 /* Support_Printers.jpg */; };
+		824784451D78DAF700A693D0 /* Support_Printers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 824784431D78DAF700A693D0 /* Support_Printers.jpg */; };
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8271DCD51D46D05000B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
@@ -876,6 +878,7 @@
 		823FB3391D77A4BE0022B132 /* PGHelpAndHowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHelpAndHowToViewController.h; sourceTree = "<group>"; };
 		823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHelpAndHowToViewController.m; sourceTree = "<group>"; };
 		8247843D1D77B3C300A693D0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		824784431D78DAF700A693D0 /* Support_Printers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Support_Printers.jpg; sourceTree = "<group>"; };
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
@@ -1646,6 +1649,7 @@
 				CC5D53A319CCA77C002B0DF3 /* LandingPage */,
 				E3D6812419A3B194000D45E0 /* Icons */,
 				E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */,
+				824784431D78DAF700A693D0 /* Support_Printers.jpg */,
 				F17FBE5219D2334B002A79AC /* CoachMarkDown@2x.png */,
 				F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */,
 				658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */,
@@ -2138,6 +2142,7 @@
 				821853711D63E471001288D9 /* diamond.png in Resources */,
 				821852591D625FC9001288D9 /* OMG.png in Resources */,
 				8218533D1D63E467001288D9 /* 4_white_frame.png in Resources */,
+				824784451D78DAF700A693D0 /* Support_Printers.jpg in Resources */,
 				8218534E1D63E467001288D9 /* 9_polkadots_frame_TN.png in Resources */,
 				b38d688307d8538759fdfde2 /* Print@2x~iphone.png in Resources */,
 				3f834e92d7a0a51a9b3375c9 /* Privacy@2x.png in Resources */,
@@ -2407,6 +2412,7 @@
 				82362A4D1D59557E0019F024 /* OMG.png in Resources */,
 				6552DAB61A79732C002D3B48 /* SocialSnaps_white_sm.png in Resources */,
 				E375386319BE57C5009C695F /* TakeSurvey@2x.png in Resources */,
+				824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */,
 				CC5D53B619CCA8E9002B0DF3 /* LandingPage-700-Landscape~ipad.png in Resources */,
 				CC5D53B819CCA8E9002B0DF3 /* LandingPage-700-Portrait~ipad.png in Resources */,
 				F144B2991A798BF7007CDBBD /* LandingPage-800-667h@2x.png in Resources */,

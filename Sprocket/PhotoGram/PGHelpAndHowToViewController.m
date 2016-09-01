@@ -35,37 +35,61 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.co
     [super viewDidLoad];
     
     self.trackableScreenName = @"Help and How To Screen";
-    
-    self.twitterComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [self.twitterComposeViewController addImage:[UIImage imageNamed:@"test.jpg"]];
-    
-    __weak typeof(self) weakSelf = self;
-    [self.twitterComposeViewController setCompletionHandler:^(SLComposeViewControllerResult result) {
-        [weakSelf.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1] animated:YES];
-    }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 1) {
-        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-            NSString *tweetText = nil;
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSUInteger printerVersion = 0;
+        NSString *tweetText = nil;
+        NSString *tweetStringURL = nil;
+        NSString *enterText = NSLocalizedString(@"Enter+Text", nil);
+        
+        tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS: %@ \n[%@]", appVersion, enterText];
+        tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", appVersion, enterText];
+        
+        enterText = NSLocalizedString(@"Enter Text", nil);
+        
+        if (IS_OS_8_OR_LATER) {
+            NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
             
-            tweetText = NSLocalizedString(@"@hpsupport #hpsprocket [Emter Text]", nil);
-            
-            if (IS_OS_8_OR_LATER) {
-                NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+            if (numberOfPairedSprockets > 0) {
+                printerVersion = [[MP sharedInstance] printerVersionNumber];
                 
-                if (numberOfPairedSprockets > 0) {
-                    tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket S: %@ P: %@ [Emter Text]", @(1), @(2)];
-                }
+                tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ P:%li \n[%@]", appVersion, printerVersion, enterText];
+                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+P:%li+%%0a%%5B%@%%5D", appVersion, printerVersion, enterText];
             }
+        }
+
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
             
+            self.twitterComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [self.twitterComposeViewController addImage:[UIImage imageNamed:@"Support_Printers.jpg"]];
             [self.twitterComposeViewController setInitialText:tweetText];
             
-            [self presentViewController:self.twitterComposeViewController animated:YES completion:^{
-                
+            __weak typeof(self) weakSelf = self;
+            [self.twitterComposeViewController setCompletionHandler:^(SLComposeViewControllerResult result) {
+                if (result == SLComposeViewControllerResultCancelled) {
+                    [weakSelf.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0] animated:YES];
+                } else {
+                    NSURL *urlApp = [NSURL URLWithString:@"twitter://"];
+                    
+                    if ([[UIApplication sharedApplication] canOpenURL:urlApp]){
+                        [[UIApplication sharedApplication] openURL:urlApp];
+                    } else {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/"]];
+                    }
+                    
+                    [weakSelf.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0] animated:YES];
+                }
             }];
+            
+            [self presentViewController:self.twitterComposeViewController animated:YES completion:nil];
+        } else {
+            NSURL *tweetURL = [NSURL URLWithString:tweetStringURL];
+            [[UIApplication sharedApplication] openURL:tweetURL];
         }
     }
 }
