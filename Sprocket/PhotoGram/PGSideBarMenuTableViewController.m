@@ -300,7 +300,7 @@ typedef enum {
         
         webViewerViewController.url = localizablePrivacyStatementURL;
     } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
-        webViewerViewController.trackableScreenName = @"Buy Paper";
+        webViewerViewController.trackableScreenName = @"Buy Paper Screen";
         webViewerViewController.url = kBuyPaperURL;
     }
 }

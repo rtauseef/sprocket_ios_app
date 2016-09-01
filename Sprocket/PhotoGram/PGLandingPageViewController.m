@@ -87,7 +87,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     PGWebViewerViewController *webViewController = (PGWebViewerViewController *)navigationController.topViewController;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"terms" ofType:@"html"];
     webViewController.url = path;
-    webViewController.trackableScreenName = @"Terms of Service";
+    webViewController.trackableScreenName = @"Terms of Service Screen";
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }
