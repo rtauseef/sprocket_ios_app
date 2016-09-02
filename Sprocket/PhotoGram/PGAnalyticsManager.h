@@ -48,6 +48,9 @@ extern NSString * const kEventDismissEditCancelAction;
 extern NSString * const kEventDismissEditCameraLabel;
 extern NSString * const kEventDismissEditCloseLabel;
 
+extern NSString * const kEventSocialSignInCancelAction;
+extern NSString * const kEventSocialSignInSuccessAction;
+
 extern NSString * const kEventCameraDirectionBackLabel;
 extern NSString * const kEventCameraDirectionSelfieLabel;
 
@@ -59,6 +62,7 @@ extern NSString * const kEventCameraDirectionSelfieLabel;
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device;
 - (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
+- (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;

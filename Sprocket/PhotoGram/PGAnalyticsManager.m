@@ -89,6 +89,9 @@ NSString * const kEventCameraDirectionSwitchAction = @"Switch";
 NSString * const kEventCameraDirectionBackLabel    = @"Back";
 NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
 
+NSString * const kEventSocialSignInCategory      = @"SocialSignIn";
+NSString * const kEventSocialSignInCancelAction  = @"Cancel";
+NSString * const kEventSocialSignInSuccessAction = @"SignIn";
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
@@ -146,6 +149,8 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginCancelNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccessNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil];
 }
 
 - (void)setupExperiments
@@ -187,6 +192,16 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackScreenViewEvent:[notification.userInfo objectForKey:kHPPRTrackableScreenNameKey]];
 }
 
+- (void)handleLoginCancelNotificationHPPR:(NSNotification *)notification
+{
+    [self trackSocialSignInActivity:kEventSocialSignInCancelAction provider:[notification.userInfo objectForKey:kHPPRProviderName]];
+}
+
+- (void)handleLoginSuccessNotificationHPPR:(NSNotification *)notification
+{
+    [self trackSocialSignInActivity:kEventSocialSignInSuccessAction provider:[notification.userInfo objectForKey:kHPPRProviderName]];
+}
+
 - (void)trackScreenViewEvent:(NSString *)screenName
 {
     id tracker = [[GAI sharedInstance] defaultTracker];
@@ -222,6 +237,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackCameraDirectionActivity:(NSString *)direction
 {
     [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider
+{
+    [self trackEvent:kEventSocialSignInCategory action:action label:provider value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**
