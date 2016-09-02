@@ -66,7 +66,7 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
 
-NSString * const kEventShareActivityCategory = @"Fulfillment";
+NSString * const kEventShareActivityCategory = @"Share";
 NSString * const kEventResultSuccess = @"Success";
 NSString * const kEventResultCancel = @"Cancel";
 NSUInteger const kEventDefaultValue = 0;
@@ -343,14 +343,6 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
     [lastOptionsUsed setValue:[NSNumber numberWithInteger:1] forKey:kMPNumberOfCopies];
     [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
-
-    NSString *result = kEventResultSuccess;
-    if ([MPPrintManager printNowOfframp:offramp]) {
-        NSString *paperSize = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperSizeId];
-        NSString *paperType = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperTypeId];
-        result = [NSString stringWithFormat:@"%@ %@", paperSize, paperType];
-    }
-    [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:result];
     
     NSMutableDictionary *metrics = [NSMutableDictionary dictionaryWithObjectsAndKeys:offramp, kMetricsOfframpKey, kMetricsAppTypeHP, kMetricsAppTypeKey, nil];
     [metrics addEntriesFromDictionary:printItem.extra];

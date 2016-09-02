@@ -487,6 +487,9 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             
             if (completed) {
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
+                if (!printActivity) {
+                    [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
+                }
             } else {
                 if (activityType) {
                     [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultCancel];
