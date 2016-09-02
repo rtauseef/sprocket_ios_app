@@ -10,9 +10,8 @@
 // the license agreement.
 //
 
-#import "PGLearnMoreView.h"
+#import <UIKit/UIKit.h>
 
-
-@implementation PGLearnMoreView
+@interface PGHelpAndHowToViewController : UITableViewController
 
 @end
