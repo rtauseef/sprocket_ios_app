@@ -85,8 +85,8 @@ NSString * const kInstagramLoginScreenName = @"Instagram Login Screen";
         handle = NO;
     } else if ([urlString rangeOfString:@"error_reason=user_denied"].location != NSNotFound) {
         [self dismissViewControllerAnimated:YES completion:^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Authorization Required", @"Title of an alert requesting authorization to access the Instagram photos")
-                                                            message:HPPRLocalizedString(@"HP Sprocket uses Instagram photos to create awesome prints. Please allow HP Sprocket to access your Instagram photos in order to continue.", @"Message of an alert requesting authorization to access the Instagram photos")
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Authorized Required", @"Title of an alert requesting authorization to access the Instagram photos")
+                                                            message:HPPRLocalizedString(@"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue.", @"Message of an alert requesting authorization to access the Instagram photos")
                                                            delegate:nil
                                                   cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
                                                   otherButtonTitles:nil];
