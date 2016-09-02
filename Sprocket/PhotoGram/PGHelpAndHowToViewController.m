@@ -45,12 +45,13 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.co
         NSUInteger printerVersion = 0;
         NSString *tweetText = nil;
         NSString *tweetStringURL = nil;
-        NSString *enterText = NSLocalizedString(@"Enter+Text", nil);
+        NSString *enterTextURL = NSLocalizedString(@"Enter+Text", nil);
+        NSString *enterText = NSLocalizedString(@"Enter Text", nil);
         
         tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS: %@ \n[%@]", appVersion, enterText];
-        tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", appVersion, enterText];
+        tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", appVersion, enterTextURL];
         
-        enterText = NSLocalizedString(@"Enter Text", nil);
+        
         
         if (IS_OS_8_OR_LATER) {
             NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
@@ -59,7 +60,7 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.co
                 printerVersion = [[MP sharedInstance] printerVersionNumber];
                 
                 tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ P:%li \n[%@]", appVersion, printerVersion, enterText];
-                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+P:%li+%%0a%%5B%@%%5D", appVersion, printerVersion, enterText];
+                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+P:%li+%%0a%%5B%@%%5D", appVersion, printerVersion, enterTextURL];
             }
         }
 
