@@ -97,11 +97,16 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:vc animated:YES];
             });
-            
+
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                  device:kEventAuthRequestPhotosLabel];
+
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];
             });
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                  device:kEventAuthRequestPhotosLabel];
         }
     }];
 }

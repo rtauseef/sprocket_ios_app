@@ -330,16 +330,23 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self showCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
+                                                                  source:kEventDismissEditCameraLabel];
         }];
         [alert addAction:okAction];
         
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self saveToCameraRoll];
             [self showCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                  source:kEventDismissEditCameraLabel];
         }];
         [alert addAction:saveAction];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCameraLabel];
+        }];
         [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];
@@ -356,16 +363,23 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self closePreviewAndCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
+                                                                  source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:okAction];
         
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self saveToCameraRoll];
             [self closePreviewAndCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                  source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:saveAction];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCloseLabel];
+        }];
         [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];

@@ -71,11 +71,24 @@ NSString * const kEventResultSuccess = @"Success";
 NSString * const kEventResultCancel = @"Cancel";
 NSUInteger const kEventDefaultValue = 0;
 
-NSString * const kEventAuthRequestCategory = @"AuthRequest";
-NSString * const kEventAuthRequestOkAction = @"OK";
-NSString * const kEventAuthRequestDeniedAction = @"DontAllow";
-NSString * const kEventAuthRequestPhotosLabel = @"Photos";
-NSString * const kEventAuthRequestCameraLabel = @"Camera";
+NSString * const kEventAuthRequestCategory      = @"AuthRequest";
+NSString * const kEventAuthRequestOkAction      = @"OK";
+NSString * const kEventAuthRequestDeniedAction  = @"Denied";
+NSString * const kEventAuthRequestPhotosLabel   = @"Photos";
+NSString * const kEventAuthRequestCameraLabel   = @"Camera";
+
+NSString * const kEventDismissEditCategory      = @"DismissEdits";
+NSString * const kEventDismissEditOkAction      = @"OK";
+NSString * const kEventDismissEditSaveAction    = @"Save";
+NSString * const kEventDismissEditCancelAction  = @"Cancel";
+NSString * const kEventDismissEditCameraLabel   = @"Camera";
+NSString * const kEventDismissEditCloseLabel    = @"X";
+
+NSString * const kEventCameraDirectionCategory     = @"CameraDirection";
+NSString * const kEventCameraDirectionSwitchAction = @"Switch";
+NSString * const kEventCameraDirectionBackLabel    = @"Back";
+NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
+
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
@@ -195,6 +208,20 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device
 {
     [self trackEvent:kEventAuthRequestCategory action:action label:device value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source
+{
+    [self trackEvent:kEventDismissEditCategory action:action label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    
+    if ([kEventDismissEditSaveAction isEqualToString:action]) {
+        [self trackEvent:@"SaveProject" action:@"Save" label:@"-" value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    }
+}
+
+- (void)trackCameraDirectionActivity:(NSString *)direction
+{
+    [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**

@@ -204,8 +204,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
         
         NSError *err = nil;
