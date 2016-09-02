@@ -37,12 +37,16 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.co
     self.trackableScreenName = @"Help and How To Screen";
 }
 
+- (IBAction)doneButtonTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 1) {
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-        NSUInteger printerVersion = 0;
+        NSString *printerVersionString = nil;
         NSString *tweetText = nil;
         NSString *tweetStringURL = nil;
         NSString *enterTextURL = NSLocalizedString(@"Enter+Text", nil);
@@ -56,11 +60,15 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.co
         if (IS_OS_8_OR_LATER) {
             NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
             
-            if (numberOfPairedSprockets > 0) {
-                printerVersion = [[MP sharedInstance] printerVersionNumber];
+            if (numberOfPairedSprockets == 1) {
+                NSUInteger printerVersion = [[MP sharedInstance] printerVersionNumber];
+                NSUInteger fw1 = (0xFF0000 & printerVersion) >> 16;
+                NSUInteger fw2 = (0x00FF00 & printerVersion) >>  8;
+                NSUInteger fw3 =  0x0000FF & printerVersion;
+                printerVersionString = [NSString stringWithFormat:@"%li.%li.%li", fw1, fw2, fw3];
                 
-                tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ P:%li \n[%@]", appVersion, printerVersion, enterText];
-                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+P:%li+%%0a%%5B%@%%5D", appVersion, printerVersion, enterTextURL];
+                tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ F:%@ \n[%@]", appVersion, printerVersionString, enterText];
+                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+F:%@+%%0a%%5B%@%%5D", appVersion, printerVersionString, enterTextURL];
             }
         }
 
