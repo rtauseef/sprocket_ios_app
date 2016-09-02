@@ -65,10 +65,17 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
+
 NSString * const kEventShareActivityCategory = @"Fulfillment";
 NSString * const kEventResultSuccess = @"Success";
 NSString * const kEventResultCancel = @"Cancel";
 NSUInteger const kEventDefaultValue = 0;
+
+NSString * const kEventAuthRequestCategory = @"AuthRequest";
+NSString * const kEventAuthRequestOkAction = @"OK";
+NSString * const kEventAuthRequestDeniedAction = @"DontAllow";
+NSString * const kEventAuthRequestPhotosLabel = @"Photos";
+NSString * const kEventAuthRequestCameraLabel = @"Camera";
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
@@ -183,6 +190,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result
 {
     [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device
+{
+    [self trackEvent:kEventAuthRequestCategory action:action label:device value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**

@@ -232,14 +232,22 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     if (authStatus == AVAuthorizationStatusAuthorized) {
         success();
+        [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                              device:kEventAuthRequestCameraLabel];
     } else if (authStatus == AVAuthorizationStatusDenied){
         failure();
+        [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                              device:kEventAuthRequestCameraLabel];
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted){
                 success();
+                [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                      device:kEventAuthRequestCameraLabel];
             } else {
                 failure();
+                [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                      device:kEventAuthRequestCameraLabel];
             }
         }];
     }
