@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy) NSString *trackableScreenName;
 
++ (NSString *)screenNameKey;
+
 @end

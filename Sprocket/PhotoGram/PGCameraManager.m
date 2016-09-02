@@ -13,6 +13,9 @@
 #import "PGCameraManager.h"
 #import "PGLandingMainPageViewController.h"
 #import "PGAppDelegate.h"
+#import "PGAnalyticsManager.h"
+#import "UIViewController+trackable.h"
+#import <Crashlytics/Crashlytics.h>
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -229,14 +232,22 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     if (authStatus == AVAuthorizationStatusAuthorized) {
         success();
+        [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                              device:kEventAuthRequestCameraLabel];
     } else if (authStatus == AVAuthorizationStatusDenied){
         failure();
+        [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                              device:kEventAuthRequestCameraLabel];
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted){
                 success();
+                [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                      device:kEventAuthRequestCameraLabel];
             } else {
                 failure();
+                [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                      device:kEventAuthRequestCameraLabel];
             }
         }];
     }
@@ -267,6 +278,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
+}
+
+#pragma mark - Metrics
++ (NSString *)trackableScreenName
+{
+    return @"Camera Screen";
+}
+
++ (void)logMetrics
+{
+    NSString *screenName = [PGCameraManager trackableScreenName];
+    [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
+    [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];    
 }
 
 @end

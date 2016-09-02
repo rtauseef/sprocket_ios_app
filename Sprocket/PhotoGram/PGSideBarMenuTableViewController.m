@@ -300,7 +300,7 @@ typedef enum {
         
         webViewerViewController.url = localizablePrivacyStatementURL;
     } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
-        webViewerViewController.trackableScreenName = @"Buy Paper";
+        webViewerViewController.trackableScreenName = @"Buy Paper Screen";
         webViewerViewController.url = kBuyPaperURL;
     }
 }
@@ -434,7 +434,7 @@ typedef enum {
 
 - (void)setupSocialItemView:(UIView *)view
 {
-    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];;
+    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
 }
 
 - (void)setTableFooterHeight

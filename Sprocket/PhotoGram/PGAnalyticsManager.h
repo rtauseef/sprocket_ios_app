@@ -37,11 +37,17 @@ extern NSString * const kEventResultCancel;
 
 extern NSString * const kMPMetricsEmbellishmentKey;
 
+extern NSString * const kEventAuthRequestOkAction;
+extern NSString * const kEventAuthRequestDeniedAction;
+extern NSString * const kEventAuthRequestPhotosLabel;
+extern NSString * const kEventAuthRequestCameraLabel;
+
 + (PGAnalyticsManager *)sharedManager;
 
 - (void)trackScreenViewEvent:(NSString *)screenName;
 - (void)trackSelectTemplate:(NSString *)templateName;
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result;
+- (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;

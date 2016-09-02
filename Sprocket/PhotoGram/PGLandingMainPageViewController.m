@@ -25,6 +25,7 @@
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGCameraManager.h"
+#import "PGAnalyticsManager.h"
 
 #import <MP.h>
 
@@ -266,7 +267,9 @@
         self.blurredView.alpha = 0;
         self.landingButtonsView.alpha = 0;
         self.cameraButtonsView.alpha = 1;
-    } completion:nil];
+    } completion:^(BOOL finished){
+        [PGCameraManager logMetrics];
+    }];
 }
 
 - (void)hideCameraButtons {

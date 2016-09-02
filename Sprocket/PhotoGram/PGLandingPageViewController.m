@@ -15,6 +15,7 @@
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
 #import "PGTermsAttributedLabel.h"
+#import "UIViewController+trackable.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
@@ -86,6 +87,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     PGWebViewerViewController *webViewController = (PGWebViewerViewController *)navigationController.topViewController;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"terms" ofType:@"html"];
     webViewController.url = path;
+    webViewController.trackableScreenName = @"Terms of Service Screen";
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }

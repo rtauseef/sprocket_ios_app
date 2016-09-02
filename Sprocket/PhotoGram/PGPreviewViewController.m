@@ -21,6 +21,7 @@
 #import "UIFont+Style.h"
 #import "PGImglyManager.h"
 #import "MPPrintManager.h"
+#import "UIViewController+Trackable.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
@@ -29,6 +30,7 @@
 #import <MPPrintActivity.h>
 #import <MPBTPrintActivity.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Crashlytics/Crashlytics.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -61,6 +63,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.trackableScreenName = @"Preview Screen";
+
     self.needNewImageView = NO;
     self.didChangeProject = NO;
     self.selectedNewPhoto = YES;
@@ -220,7 +224,11 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:self.imglyManager.imglyConfiguration];
     toolController.delegate = self;
     
-    [self presentViewController:toolController animated:NO completion:nil];
+    [self presentViewController:toolController animated:NO completion:^() {
+        NSString *screenName = @"Editor Screen";
+        [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
+        [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];
+    }];
 }
 
 #pragma mark - IMGLYToolStackControllerDelegate
@@ -274,7 +282,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
                 weakSelf.transitionEffectView.alpha = 0;
             } completion:nil];
-            
+            [PGCameraManager logMetrics];
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];

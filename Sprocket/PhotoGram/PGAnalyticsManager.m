@@ -19,10 +19,11 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <MP.h>
 #import <MPPrintManager.h>
+#import <HPPR.h>
 
 #define CRASHLYTICS_KEY @"fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed"
-#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-57331304-1"
-#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-55152005-1"
+#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-81852585-1"
+#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-81852585-2"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -64,10 +65,17 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
+
 NSString * const kEventShareActivityCategory = @"Fulfillment";
 NSString * const kEventResultSuccess = @"Success";
 NSString * const kEventResultCancel = @"Cancel";
 NSUInteger const kEventDefaultValue = 0;
+
+NSString * const kEventAuthRequestCategory = @"AuthRequest";
+NSString * const kEventAuthRequestOkAction = @"OK";
+NSString * const kEventAuthRequestDeniedAction = @"DontAllow";
+NSString * const kEventAuthRequestPhotosLabel = @"Photos";
+NSString * const kEventAuthRequestCameraLabel = @"Camera";
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
@@ -124,6 +132,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
 }
 
 - (void)setupExperiments
@@ -160,6 +169,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackScreenViewEvent:[notification.userInfo objectForKey:kMPTrackableScreenNameKey]];
 }
 
+- (void)handleTrackableScreenNotificationHPPR:(NSNotification *)notification
+{
+    [self trackScreenViewEvent:[notification.userInfo objectForKey:kHPPRTrackableScreenNameKey]];
+}
+
 - (void)trackScreenViewEvent:(NSString *)screenName
 {
     id tracker = [[GAI sharedInstance] defaultTracker];
@@ -176,6 +190,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result
 {
     [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device
+{
+    [self trackEvent:kEventAuthRequestCategory action:action label:device value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**
