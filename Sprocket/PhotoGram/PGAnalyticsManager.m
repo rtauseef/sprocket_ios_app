@@ -93,6 +93,9 @@ NSString * const kEventSocialSignInCategory      = @"SocialSignIn";
 NSString * const kEventSocialSignInCancelAction  = @"Cancel";
 NSString * const kEventSocialSignInSuccessAction = @"SignIn";
 
+NSString * const kEventPhotoCategory     = @"Photo";
+NSString * const kEventPhotoSelectAction = @"Select";
+
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
 NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
@@ -210,11 +213,6 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
-- (void)trackSelectTemplate:(NSString *)templateName
-{
-    [self trackEvent:kEventSelectTemplateCategory action:kEventSelectTemplateAction label:templateName value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
-}
-
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result
 {
     [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
@@ -242,6 +240,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider
 {
     [self trackEvent:kEventSocialSignInCategory action:action label:provider value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackSelectPhoto:(NSString *)source
+{
+    [self trackEvent:kEventPhotoCategory action:kEventPhotoSelectAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**

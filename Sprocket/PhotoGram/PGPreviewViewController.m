@@ -74,6 +74,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [self.view layoutIfNeeded];
     
     [PGAnalyticsManager sharedManager].photoSource = self.source;
+    [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
 }
 
@@ -483,6 +484,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             
             if (!offramp) {
                 PGLogError(@"Missing offramp key for share activity");
+                offramp = @"Unknown";
             }
             
             if (completed) {
