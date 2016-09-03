@@ -54,6 +54,9 @@ extern NSString * const kEventSocialSignInSuccessAction;
 extern NSString * const kEventCameraDirectionBackLabel;
 extern NSString * const kEventCameraDirectionSelfieLabel;
 
+extern NSString * const kEventPrintButtonLabel;
+extern NSString * const kEventPrintShareLabel;
+
 + (PGAnalyticsManager *)sharedManager;
 
 - (void)trackScreenViewEvent:(NSString *)screenName;
@@ -63,6 +66,7 @@ extern NSString * const kEventCameraDirectionSelfieLabel;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
+- (void)trackPrintRequest:(NSString *)source;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;

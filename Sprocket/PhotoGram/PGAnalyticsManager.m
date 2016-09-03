@@ -96,9 +96,18 @@ NSString * const kEventSocialSignInSuccessAction = @"SignIn";
 NSString * const kEventPhotoCategory     = @"Photo";
 NSString * const kEventPhotoSelectAction = @"Select";
 
-NSString * const kEventPrintJobCategory = @"PrintJob";
-NSString * const kEventPrintJobStartedAction = @"Started";
+NSString * const kEventPrintJobCategory        = @"PrintJob";
+NSString * const kEventPrintJobErrorCategory   = @"PrintJobError";
+NSString * const kEventPrintJobStartedAction   = @"Started";
 NSString * const kEventPrintJobCompletedAction = @"Completed";
+
+NSString * const kEventPrintCategory    = @"Print";
+NSString * const kEventPrintAction      = @"Print";
+NSString * const kEventPrintButtonLabel = @"PrintButton";
+NSString * const kEventPrintShareLabel  = @"ShareButton";
+
+NSString * const kEventPrinterNotConnectedCategory = @"kEventPrinterNotConnectedCategory";
+NSString * const kEventPrinterNotConnectedAction = @"kEventPrinterNotConnectedAction";
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
@@ -157,6 +166,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobStartedNotification:) name:kMPBTPrintJobStartedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrinterNotConnectedNotification:) name:kMPBTPrinterNotConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginCancelNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccessNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil];
@@ -223,9 +233,13 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     if (nil == error) {
         [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     } else {
-        error = [error stringByReplacingOccurrencesOfString:@" " withString:@""];
-        [self trackEvent:kEventPrintJobCategory action:error label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+        [self trackEvent:kEventPrintJobErrorCategory action:error label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     }
+}
+
+- (void)handlePrinterNotConnectedNotification:(NSNotification *)notification
+{
+    [self trackEvent:kEventPrinterNotConnectedCategory action:kEventPrinterNotConnectedAction label:[notification.userInfo objectForKey:kMPBTPrinterNotConnectedSourceKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackScreenViewEvent:(NSString *)screenName
@@ -268,6 +282,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackSelectPhoto:(NSString *)source
 {
     [self trackEvent:kEventPhotoCategory action:kEventPhotoSelectAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackPrintRequest:(NSString *)source
+{
+    [self trackEvent:kEventPrintCategory action:kEventPrintAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**
