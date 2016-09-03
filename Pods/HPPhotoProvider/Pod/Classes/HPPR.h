@@ -14,6 +14,9 @@
 #import "HPPRAppearance.h"
 
 #define HPPR_TRACKABLE_SCREEN_NOTIFICATION @"TrackableScreenNotification"
+#define HPPR_PROVIDER_LOGIN_NOTIFICATION @"ProviderLoginNotification"
+#define HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION @"ProviderLoginCancelNotification"
+#define HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION @"ProviderLoginSuccessNotification"
 #define PROVIDER_STARTUP_NOTIFICATION @"ProviderStartupNotification"
 #define HPPR_ALBUM_CHANGE_NOTIFICATION @"AlbumChangeNotification"
 
@@ -65,6 +68,7 @@
 @interface HPPR : NSObject
 
 extern NSString * const kHPPRTrackableScreenNameKey;
+extern NSString * const kHPPRProviderName;
 
 @property (nonatomic, strong) NSString *flickrAppKey;
 @property (nonatomic, strong) NSString *flickrAppSecret;

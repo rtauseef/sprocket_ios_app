@@ -18,6 +18,7 @@
 
 - (void)startLogin;
 - (NSString *)screenName;
+- (NSString *)providerName;
 - (void)cancelLogin;
 - (void)loginError:(NSError *)error;
 - (BOOL)handleURL:(NSURL *)url;
