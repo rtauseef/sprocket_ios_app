@@ -96,6 +96,10 @@ NSString * const kEventSocialSignInSuccessAction = @"SignIn";
 NSString * const kEventPhotoCategory     = @"Photo";
 NSString * const kEventPhotoSelectAction = @"Select";
 
+NSString * const kEventPrintJobCategory = @"PrintJob";
+NSString * const kEventPrintJobStartedAction = @"Started";
+NSString * const kEventPrintJobCompletedAction = @"Completed";
+
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
 NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
@@ -151,6 +155,8 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobStartedNotification:) name:kMPBTPrintJobStartedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginCancelNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccessNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil];
@@ -203,6 +209,23 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)handleLoginSuccessNotificationHPPR:(NSNotification *)notification
 {
     [self trackSocialSignInActivity:kEventSocialSignInSuccessAction provider:[notification.userInfo objectForKey:kHPPRProviderName]];
+}
+
+- (void)handlePrintJobStartedNotification:(NSNotification *)notification
+{
+    [self trackEvent:kEventPrintJobCategory action:kEventPrintJobStartedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)handlePrintJobCompletedNotification:(NSNotification *)notification
+{
+    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
+
+    if (nil == error) {
+        [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    } else {
+        error = [error stringByReplacingOccurrencesOfString:@" " withString:@""];
+        [self trackEvent:kEventPrintJobCategory action:error label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    }
 }
 
 - (void)trackScreenViewEvent:(NSString *)screenName
