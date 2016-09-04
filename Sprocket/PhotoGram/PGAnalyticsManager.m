@@ -106,8 +106,8 @@ NSString * const kEventPrintAction      = @"Print";
 NSString * const kEventPrintButtonLabel = @"PrintButton";
 NSString * const kEventPrintShareLabel  = @"ShareButton";
 
-NSString * const kEventPrinterNotConnectedCategory = @"kEventPrinterNotConnectedCategory";
-NSString * const kEventPrinterNotConnectedAction = @"kEventPrinterNotConnectedAction";
+NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
+NSString * const kEventPrinterNotConnectedAction = @"OK";
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
