@@ -97,18 +97,23 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.co
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-    PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-    
-    if ([segue.identifier isEqualToString:@"ViewUserGuideSegue"]) {
-        webViewerViewController.trackableScreenName = @"View User Guide";
-        webViewerViewController.url = kPGHelpAndHowToViewUserURL;
-    } else if ([segue.identifier isEqualToString:@"VisitWebsiteSegue"]) {
-        webViewerViewController.trackableScreenName = @"Visit Website";
-        webViewerViewController.url = kPGHelpAndHowToVisitWebsiteURL;
-    } else if ([segue.identifier isEqualToString:@"JoinForumSupportSegue"]) {
-        webViewerViewController.trackableScreenName = @"Join Forum Support";
-        webViewerViewController.url = kPGHelpAndHowToJoinForumSupportURL;
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
+        
+        if ([navigationController.topViewController isKindOfClass:[PGWebViewerViewController class]]) {
+            PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
+            
+            if ([segue.identifier isEqualToString:@"ViewUserGuideSegue"]) {
+                webViewerViewController.trackableScreenName = @"View User Guide";
+                webViewerViewController.url = kPGHelpAndHowToViewUserURL;
+            } else if ([segue.identifier isEqualToString:@"VisitWebsiteSegue"]) {
+                webViewerViewController.trackableScreenName = @"Visit Website";
+                webViewerViewController.url = kPGHelpAndHowToVisitWebsiteURL;
+            } else if ([segue.identifier isEqualToString:@"JoinForumSupportSegue"]) {
+                webViewerViewController.trackableScreenName = @"Join Forum Support";
+                webViewerViewController.url = kPGHelpAndHowToJoinForumSupportURL;
+            }
+        }
     }
 }
 
