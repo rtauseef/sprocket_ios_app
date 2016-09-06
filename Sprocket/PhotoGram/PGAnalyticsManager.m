@@ -66,16 +66,48 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
 
-NSString * const kEventShareActivityCategory = @"Fulfillment";
+NSString * const kEventShareActivityCategory = @"Share";
 NSString * const kEventResultSuccess = @"Success";
 NSString * const kEventResultCancel = @"Cancel";
 NSUInteger const kEventDefaultValue = 0;
 
-NSString * const kEventAuthRequestCategory = @"AuthRequest";
-NSString * const kEventAuthRequestOkAction = @"OK";
-NSString * const kEventAuthRequestDeniedAction = @"DontAllow";
-NSString * const kEventAuthRequestPhotosLabel = @"Photos";
-NSString * const kEventAuthRequestCameraLabel = @"Camera";
+NSString * const kEventAuthRequestCategory      = @"AuthRequest";
+NSString * const kEventAuthRequestOkAction      = @"OK";
+NSString * const kEventAuthRequestDeniedAction  = @"Denied";
+NSString * const kEventAuthRequestPhotosLabel   = @"Photos";
+NSString * const kEventAuthRequestCameraLabel   = @"Camera";
+
+NSString * const kEventDismissEditCategory      = @"DismissEdits";
+NSString * const kEventDismissEditOkAction      = @"OK";
+NSString * const kEventDismissEditSaveAction    = @"Save";
+NSString * const kEventDismissEditCancelAction  = @"Cancel";
+NSString * const kEventDismissEditCameraLabel   = @"Camera";
+NSString * const kEventDismissEditCloseLabel    = @"X";
+
+NSString * const kEventCameraDirectionCategory     = @"CameraDirection";
+NSString * const kEventCameraDirectionSwitchAction = @"Switch";
+NSString * const kEventCameraDirectionBackLabel    = @"Back";
+NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
+
+NSString * const kEventSocialSignInCategory      = @"SocialSignIn";
+NSString * const kEventSocialSignInCancelAction  = @"Cancel";
+NSString * const kEventSocialSignInSuccessAction = @"SignIn";
+
+NSString * const kEventPhotoCategory     = @"Photo";
+NSString * const kEventPhotoSelectAction = @"Select";
+
+NSString * const kEventPrintJobCategory        = @"PrintJob";
+NSString * const kEventPrintJobErrorCategory   = @"PrintJobError";
+NSString * const kEventPrintJobStartedAction   = @"Started";
+NSString * const kEventPrintJobCompletedAction = @"Completed";
+
+NSString * const kEventPrintCategory    = @"Print";
+NSString * const kEventPrintAction      = @"Print";
+NSString * const kEventPrintButtonLabel = @"PrintButton";
+NSString * const kEventPrintShareLabel  = @"ShareButton";
+
+NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
+NSString * const kEventPrinterNotConnectedAction = @"OK";
 
 NSUInteger const kPGExperimentPrintIconDimension = 1;
 NSString * const kPGExperimentPrintIconVisible = @"icon visible";
@@ -132,7 +164,12 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobStartedNotification:) name:kMPBTPrintJobStartedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrinterNotConnectedNotification:) name:kMPBTPrinterNotConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginCancelNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccessNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil];
 }
 
 - (void)setupExperiments
@@ -174,17 +211,43 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackScreenViewEvent:[notification.userInfo objectForKey:kHPPRTrackableScreenNameKey]];
 }
 
+- (void)handleLoginCancelNotificationHPPR:(NSNotification *)notification
+{
+    [self trackSocialSignInActivity:kEventSocialSignInCancelAction provider:[notification.userInfo objectForKey:kHPPRProviderName]];
+}
+
+- (void)handleLoginSuccessNotificationHPPR:(NSNotification *)notification
+{
+    [self trackSocialSignInActivity:kEventSocialSignInSuccessAction provider:[notification.userInfo objectForKey:kHPPRProviderName]];
+}
+
+- (void)handlePrintJobStartedNotification:(NSNotification *)notification
+{
+    [self trackEvent:kEventPrintJobCategory action:kEventPrintJobStartedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)handlePrintJobCompletedNotification:(NSNotification *)notification
+{
+    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
+
+    if (nil == error) {
+        [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    } else {
+        [self trackEvent:kEventPrintJobErrorCategory action:error label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    }
+}
+
+- (void)handlePrinterNotConnectedNotification:(NSNotification *)notification
+{
+    [self trackEvent:kEventPrinterNotConnectedCategory action:kEventPrinterNotConnectedAction label:[notification.userInfo objectForKey:kMPBTPrinterNotConnectedSourceKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
 - (void)trackScreenViewEvent:(NSString *)screenName
 {
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:screenName];
     PGLogInfo(@"Google Anayltics Screen View:  %@", screenName);
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-}
-
-- (void)trackSelectTemplate:(NSString *)templateName
-{
-    [self trackEvent:kEventSelectTemplateCategory action:kEventSelectTemplateAction label:templateName value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result
@@ -195,6 +258,35 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device
 {
     [self trackEvent:kEventAuthRequestCategory action:action label:device value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source
+{
+    [self trackEvent:kEventDismissEditCategory action:action label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    
+    if ([kEventDismissEditSaveAction isEqualToString:action]) {
+        [self trackEvent:@"SaveProject" action:@"Save" label:@"-" value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+    }
+}
+
+- (void)trackCameraDirectionActivity:(NSString *)direction
+{
+    [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider
+{
+    [self trackEvent:kEventSocialSignInCategory action:action label:provider value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackSelectPhoto:(NSString *)source
+{
+    [self trackEvent:kEventPhotoCategory action:kEventPhotoSelectAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackPrintRequest:(NSString *)source
+{
+    [self trackEvent:kEventPrintCategory action:kEventPrintAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 /**
@@ -296,14 +388,6 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
     [lastOptionsUsed setValue:[NSNumber numberWithInteger:1] forKey:kMPNumberOfCopies];
     [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
-
-    NSString *result = kEventResultSuccess;
-    if ([MPPrintManager printNowOfframp:offramp]) {
-        NSString *paperSize = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperSizeId];
-        NSString *paperType = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperTypeId];
-        result = [NSString stringWithFormat:@"%@ %@", paperSize, paperType];
-    }
-    [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:result];
     
     NSMutableDictionary *metrics = [NSMutableDictionary dictionaryWithObjectsAndKeys:offramp, kMetricsOfframpKey, kMetricsAppTypeHP, kMetricsAppTypeKey, nil];
     [metrics addEntriesFromDictionary:printItem.extra];

@@ -204,8 +204,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
         
         NSError *err = nil;
@@ -232,12 +234,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     if (authStatus == AVAuthorizationStatusAuthorized) {
         success();
-        [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
-                                                              device:kEventAuthRequestCameraLabel];
     } else if (authStatus == AVAuthorizationStatusDenied){
         failure();
-        [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
-                                                              device:kEventAuthRequestCameraLabel];
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted){

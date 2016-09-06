@@ -291,17 +291,22 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-    PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-    
-    if ([segue.identifier isEqualToString:@"PrivacyStatementSegue"]) {
-        webViewerViewController.trackableScreenName = @"Privacy Statement Screen";
-        NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
         
-        webViewerViewController.url = localizablePrivacyStatementURL;
-    } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
-        webViewerViewController.trackableScreenName = @"Buy Paper Screen";
-        webViewerViewController.url = kBuyPaperURL;
+        if ([navigationController.topViewController isKindOfClass:[PGWebViewerViewController class]]) {
+            PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
+            
+            if ([segue.identifier isEqualToString:@"PrivacyStatementSegue"]) {
+                webViewerViewController.trackableScreenName = @"Privacy Statement Screen";
+                NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
+                
+                webViewerViewController.url = localizablePrivacyStatementURL;
+            } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
+                webViewerViewController.trackableScreenName = @"Buy Paper Screen";
+                webViewerViewController.url = kBuyPaperURL;
+            }
+        }
     }
 }
 

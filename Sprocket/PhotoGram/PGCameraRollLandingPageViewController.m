@@ -58,6 +58,11 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self checkCameraRollAndAlbums:NO];
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                  device:kEventAuthRequestPhotosLabel];
+        } else {
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                  device:kEventAuthRequestPhotosLabel];
         }
     }];
 }
@@ -97,7 +102,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:vc animated:YES];
             });
-            
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];
