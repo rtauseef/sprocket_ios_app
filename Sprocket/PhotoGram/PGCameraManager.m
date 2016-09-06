@@ -121,7 +121,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
 {
     if (position == AVCaptureDevicePositionUnspecified) {
-        self.lastDeviceCameraPosition = AVCaptureDevicePositionFront;
+        self.lastDeviceCameraPosition = AVCaptureDevicePositionBack;
     } else {
         self.lastDeviceCameraPosition = position;
     }
