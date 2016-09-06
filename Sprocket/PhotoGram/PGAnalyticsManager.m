@@ -265,7 +265,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackEvent:kEventDismissEditCategory action:action label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     
     if ([kEventDismissEditSaveAction isEqualToString:action]) {
-        [self trackEvent:@"SaveProject" action:@"Save" label:@"-" value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+        [self trackEvent:@"SaveProject" action:@"Save" label:@"" value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     }
 }
 
