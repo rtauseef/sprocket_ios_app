@@ -32,7 +32,7 @@ class ShareScreen < Calabash::IBase
 
   def navigate
     unless current_page?
-        preview_screen = go_to(PreviewScreen)
+        preview_screen = go_to(InstagramPreviewScreen)
         sleep(WAIT_SCREENLOAD)
         #wait_for_elements_exist(preview_screen.share, :timeout => MAX_TIMEOUT)
         #touch preview_screen.share

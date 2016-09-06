@@ -27,7 +27,7 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     When I touch second photo
     Then I wait for sometime
     And I close the camera pop up
-    Then I should see the "Preview" screen
+    Then I should see the "Facebook Preview" screen
     When I double tap on the picture
     Then I should see margins on top and bottom
     Then I double tap on the picture

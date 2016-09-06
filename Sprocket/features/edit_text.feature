@@ -37,7 +37,7 @@ Scenario Outline: Verify text edit screen navigation
    
     Examples:
     | screen_name        |
-    | Instagram Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
 
@@ -58,7 +58,7 @@ Scenario Outline: Verify Text editor screen options
        
     Examples:
     | screen_name        |
-    | Instagram Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
 

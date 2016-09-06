@@ -5,7 +5,7 @@ Feature:Photo Share
   @reset
   @done
   Scenario: Photo share options
-    Given I am on the "Preview" screen
+    Given I am on the "Instagram Preview" screen
     When I tap "Share" button
     Then I should see the "Share" screen
 
@@ -18,25 +18,20 @@ Feature:Photo Share
     Then I should see the "Mail" screen
 
 
-  @reset
-  Scenario:Photo print
-    Given I am on the "Share" screen
-    When I touch "Print"
-    Then I should see the "Page Settings" screen
-
+  
   @reset
   @done
   Scenario:Save to Camera Roll
     Given I am on the "Share" screen
     When I touch "Save to Camera Roll"
-    Then I should see the "Preview" screen
+    Then I should see the "Instagram Preview" screen
 
   @reset
   @done
   Scenario:Cancel the Share
     Given I am on the "Share" screen
     When I cancel the share
-    Then I should see the "Preview" screen
+    Then I should see the "Instagram Preview" screen
 
   @reset
   @done
@@ -45,7 +40,7 @@ Feature:Photo Share
     Then I touch Camera Roll Image
     And I should see the camera roll photos
     When I touch a photos in Camera Roll photos
-    Then I should see the "Preview" screen
+    Then I should see the "CameraRoll Preview" screen
     And I close the camera pop up
     Then I tap "Share" button
     Then I should see the "Share" screen
