@@ -135,7 +135,11 @@ typedef enum {
         [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull frameToolBuilder) {
             frameToolBuilder.framesDataSource = self;
             frameToolBuilder.selectedFrameClosure = ^(IMGLYFrame *frame) {
-                 [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frame.accessibilityText];
+                NSString *frameName = @"NoFrame";
+                if (nil != frame) {
+                    frameName = frame.accessibilityText;
+                }
+                [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frameName];
             };
         }];
         
