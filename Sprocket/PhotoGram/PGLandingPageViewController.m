@@ -16,10 +16,13 @@
 #import "UIColor+Style.h"
 #import "PGTermsAttributedLabel.h"
 #import "UIViewController+trackable.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
-@interface PGLandingPageViewController () <UIGestureRecognizerDelegate>
+@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, CBCentralManagerDelegate>
+
+@property (strong, nonatomic) CBCentralManager *bluetoothManager;
 
 @end
 
@@ -40,6 +43,8 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     [super viewDidAppear:animated];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SWIPE_COACH_MARKS_NOTIFICATION object:nil];
+    
+    self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{ CBCentralManagerOptionShowPowerAlertKey: [NSNumber numberWithBool:YES] }];
 }
 
 - (void)setLinkForLabel:(TTTAttributedLabel *)label range:(NSRange)range
@@ -97,6 +102,17 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     return NO;
+}
+
+#pragma mark - CBCentralManagerDelegate
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    if (CBCentralManagerStatePoweredOn == central.state) {
+        NSLog(@"BLUETOOTH ON");
+    } else {
+        NSLog(@"BLUETOOTH NOT ON");
+    }
 }
 
 @end
