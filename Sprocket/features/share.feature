@@ -24,7 +24,7 @@ Feature:Photo Share
   Scenario:Save to Camera Roll
     Given I am on the "Share" screen
     When I touch "Save to Camera Roll"
-    Then I should see the "Instagram Preview" screen
+    Then I should see the "CameraRoll Preview" screen
 
   @reset
   @done

@@ -5,7 +5,7 @@ Feature: Verify preview screen from different social media
   @reset
   @done
   Scenario: Navigate to preview screen via instagram
-    Given I am on the "Home" screen
+    Given I am on the "Instagram Photos" screen
     When I touch second photo
     Then I should see the "Instagram Preview" screen
 
