@@ -18,7 +18,6 @@
 #import "HPPRNoInternetConnectionMessageView.h"
 #import "HPPRCacheService.h"
 #import "HPPRSelectPhotoProvider.h"
-#import "HPPRSearchViewController.h"
 #import "HPPRAppearance.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
@@ -28,7 +27,7 @@
 
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
-@interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, HPPRSegmentedControlViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
+@interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -530,16 +529,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     result *= [self worstCaseNumberOfPhotosPerLine];
     
     return (NSUInteger)result;
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([@"SearchSegue"  isEqual: segue.identifier]) {
-        HPPRSearchViewController *vc = [segue destinationViewController];
-        vc.delegate = self.delegate;
-    }
 }
 
 @end

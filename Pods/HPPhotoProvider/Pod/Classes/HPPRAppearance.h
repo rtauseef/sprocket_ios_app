@@ -21,18 +21,8 @@ extern NSString * const kHPPRPrimaryLabelFont;
 extern NSString * const kHPPRPrimaryLabelColor;
 extern NSString * const kHPPRSecondaryLabelFont;
 extern NSString * const kHPPRSecondaryLabelColor;
-
 extern NSString * const kHPPRButtonTitleColorSelected;
 extern NSString * const kHPPRButtonTitleColorNormal;
-
-extern NSString * const kHPPRGridViewOnIcon;
-extern NSString * const kHPPRGridViewOffIcon;
-extern NSString * const kHPPRListViewOnIcon;
-extern NSString * const kHPPRListViewOffIcon;
-extern NSString * const kHPPRFilterButtonLeftOnIcon;
-extern NSString * const kHPPRFilterButtonLeftOffIcon;
-extern NSString * const kHPPRFilterButtonRightOnIcon;
-extern NSString * const kHPPRFilterButtonRightOffIcon;
 extern NSString * const kHPPRLoadingCellBackgroundColor;
 
 @property (strong, nonatomic) NSDictionary *settings;
