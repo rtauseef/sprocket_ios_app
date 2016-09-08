@@ -82,12 +82,9 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (void)attributedLabel:(__unused TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"WebViewerNavigationController"];
-    
-    PGWebViewerViewController *webViewController = (PGWebViewerViewController *)navigationController.topViewController;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"terms" ofType:@"html"];
-    webViewController.url = path;
-    webViewController.trackableScreenName = @"Terms of Service Screen";
+    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGTermsNavigationController"];
+
+    navigationController.topViewController.trackableScreenName = @"Terms of Service Screen";    
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }

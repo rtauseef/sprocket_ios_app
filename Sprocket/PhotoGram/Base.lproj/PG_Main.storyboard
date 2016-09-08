@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kdo-G8-qDR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,8 +29,12 @@
             <string>HPSimplified-Light</string>
             <string>HPSimplified-Light</string>
             <string>HPSimplified-Light</string>
+            <string>HPSimplified-Light</string>
+            <string>HPSimplified-Light</string>
         </mutableArray>
         <mutableArray key="HPSimplified_Rg.ttf">
+            <string>HPSimplified-Regular</string>
+            <string>HPSimplified-Regular</string>
             <string>HPSimplified-Regular</string>
             <string>HPSimplified-Regular</string>
             <string>HPSimplified-Regular</string>
@@ -845,6 +850,113 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvj-Ni-c9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5592" y="2918"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vYV-OD-TuT">
+            <objects>
+                <viewController storyboardIdentifier="PGTermsOfService" id="zid-5C-rwp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bup-Ng-XPB"/>
+                        <viewControllerLayoutGuide type="bottom" id="aGx-Yz-w1I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yfk-gA-d3E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAF-aJ-2pY">
+                                <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuAbout" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-eN-AFi">
+                                        <rect key="frame" x="195" y="41" width="38" height="38"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-7o-mbb">
+                                        <rect key="frame" x="243" y="41" width="113" height="37"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="33"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="1AP-vT-Hov"/>
+                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="centerY" secondItem="mAF-aJ-2pY" secondAttribute="centerY" id="Uk7-Bo-wxJ"/>
+                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="centerX" secondItem="mAF-aJ-2pY" secondAttribute="centerX" id="gHh-vE-mlt"/>
+                                    <constraint firstItem="uVV-eN-AFi" firstAttribute="centerY" secondItem="mAF-aJ-2pY" secondAttribute="centerY" id="hFo-eM-riU"/>
+                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="leading" secondItem="uVV-eN-AFi" secondAttribute="trailing" constant="10" id="lQO-6e-1Tv"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-3v-7vp">
+                                <rect key="frame" x="15" y="231" width="565" height="319"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. 
+
+Use of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.
+
+To print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.
+
+If you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. 
+
+To improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. </mutableString>
+                                <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Sprocket App Terms of Service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-K7-scA">
+                                <rect key="frame" x="20" y="204" width="234" height="19"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2016 HP Development Company, L.P." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-a1-B1F">
+                                <rect key="frame" x="196" y="565" width="207.5" height="15"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="13"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mAF-aJ-2pY" firstAttribute="top" secondItem="bup-Ng-XPB" secondAttribute="bottom" id="D6u-Bv-P02"/>
+                            <constraint firstAttribute="trailing" secondItem="mAF-aJ-2pY" secondAttribute="trailing" id="GSO-eC-hL4"/>
+                            <constraint firstItem="aGx-Yz-w1I" firstAttribute="top" secondItem="TEb-3v-7vp" secondAttribute="bottom" constant="50" id="SKa-9Q-g88"/>
+                            <constraint firstItem="TEb-3v-7vp" firstAttribute="leading" secondItem="Yfk-gA-d3E" secondAttribute="leading" constant="15" id="U8k-Vo-5wg"/>
+                            <constraint firstItem="Gwf-K7-scA" firstAttribute="top" secondItem="mAF-aJ-2pY" secondAttribute="bottom" constant="20" id="Y8G-B1-p0z"/>
+                            <constraint firstItem="Gwf-K7-scA" firstAttribute="leading" secondItem="Yfk-gA-d3E" secondAttribute="leading" constant="20" id="eO1-kj-eVc"/>
+                            <constraint firstItem="mAF-aJ-2pY" firstAttribute="leading" secondItem="Yfk-gA-d3E" secondAttribute="leading" id="fKC-kt-cv2"/>
+                            <constraint firstItem="BBT-a1-B1F" firstAttribute="centerX" secondItem="Yfk-gA-d3E" secondAttribute="centerX" id="naM-Fb-I36"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TEb-3v-7vp" secondAttribute="trailing" id="qhH-X0-cM6"/>
+                            <constraint firstItem="aGx-Yz-w1I" firstAttribute="top" secondItem="BBT-a1-B1F" secondAttribute="bottom" constant="20" id="uf3-jr-zhu"/>
+                            <constraint firstItem="TEb-3v-7vp" firstAttribute="top" secondItem="Gwf-K7-scA" secondAttribute="bottom" constant="8" id="wUW-Ol-Kqj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qaZ-gE-0C4">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="1Gm-FD-YRV">
+                            <connections>
+                                <segue destination="I8G-hw-Lnl" kind="unwind" unwindAction="dismissAnyModel:" id="Wnd-dm-pH1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bD4-Bz-Kqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="I8G-hw-Lnl" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-5997" y="3806"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gr7-FA-59J">
+            <objects>
+                <navigationController storyboardIdentifier="PGTermsNavigationController" id="2uM-2W-Nu8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEO-dW-j4P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zid-5C-rwp" kind="relationship" relationship="rootViewController" id="7Wl-Zc-bnZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ssY-22-LWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6759" y="3806"/>
         </scene>
         <!--Select Template-->
         <scene sceneID="oYa-i2-bNA">
