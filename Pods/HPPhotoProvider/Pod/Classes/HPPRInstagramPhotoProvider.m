@@ -136,39 +136,6 @@ enum MCInstagramDisplayType {
     return image;
 }
 
-- (void)prepareSegmentView:(HPPRSegmentedControlView *)segmentedControlView
-{
-//      if (kStandard != self.displayType) {
-        segmentedControlView.hidden = YES;
-//    } else {
-//        
-//        NSString *photoSourceSegmentedControlViewIndex0Title = HPPRLocalizedString(@"My Photos", @"Photos of Instagram");
-//        
-//        [HPPRInstagramUser userProfileWithId:@"self" completion:^(NSString *userName, NSString *userId, NSString *profilePictureUrl, NSNumber *posts, NSNumber *followers, NSNumber *following) {
-//            dispatch_async(dispatch_get_main_queue(), ^ {
-//                if (profilePictureUrl == nil) {
-//                    [self lostAccess];
-//                    return;
-//                }
-//                [segmentedControlView setMaskedImageUrl:profilePictureUrl forSegmentAtIndex:0 state:UIControlStateNormal];
-//            });
-//        }];
-//        
-//        [segmentedControlView setTitle:photoSourceSegmentedControlViewIndex0Title forSegmentAtIndex:0 state:UIControlStateNormal];
-//        [segmentedControlView setTitle:photoSourceSegmentedControlViewIndex0Title forSegmentAtIndex:0 state:UIControlStateSelected];
-//        
-//        NSString *photoSourceSegmentedControlViewIndex1Title = HPPRLocalizedString(@"My Feed", @"Feed of Instagram");
-//        [segmentedControlView setImage:[UIImage imageNamed:@"HPPRMyFeedOn"] forSegmentAtIndex:1 state:UIControlStateSelected];
-//        [segmentedControlView setImage:[UIImage imageNamed:@"HPPRMyFeedOff"] forSegmentAtIndex:1 state:UIControlStateNormal];
-//        
-//        [segmentedControlView setTitle:photoSourceSegmentedControlViewIndex1Title forSegmentAtIndex:1 state:UIControlStateSelected];
-//        [segmentedControlView setTitle:photoSourceSegmentedControlViewIndex1Title forSegmentAtIndex:1 state:UIControlStateNormal];
-//        
-//        segmentedControlView.hidden = NO;
-//    }
-//    
-}
-
 #pragma mark - Network Access
 
 - (void)setRequestBusy

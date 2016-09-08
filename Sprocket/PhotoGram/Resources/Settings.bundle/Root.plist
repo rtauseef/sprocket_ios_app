@@ -5,42 +5,12 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Show Firmware Upgrade</string>
-			<key>Key</key>
-			<string>SettingShowFirmwareUpgrade</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
 			<key>DefaultValue</key>
 			<true/>
 			<key>Key</key>
 			<string>SettingShowSwipeCoachMarks</string>
 			<key>Title</key>
 			<string>Show Navigation Help</string>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<true/>
-			<key>Key</key>
-			<string>SettingShowEditingCoachMarks</string>
-			<key>Title</key>
-			<string>Show Editing Help</string>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<true/>
-			<key>Key</key>
-			<string>SettingShowPrintQCoachMarks</string>
-			<key>Title</key>
-			<string>Show Print Queue Help</string>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>

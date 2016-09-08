@@ -1,3 +1,12 @@
+/* Title of an alert indicates the specified social network login is not longer valid */
+"%@ Access" = "Acesso a %@";
+
+/* Indicates that all photos will be displayed */
+"All Photos" = "Todos os fotos";
+
+/* Message of an alert indicates the specified social network login is not longer valid */
+"There was a problem accessing %@. Please sign in again." = "Ocorreu um problema com %@. Entre novamente.";
+
 /* Number of photos */
 " (%lu photos)" = " (fotos de %lu)";
 
