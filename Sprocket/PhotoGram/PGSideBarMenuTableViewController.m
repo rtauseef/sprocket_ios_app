@@ -193,6 +193,8 @@ typedef enum {
 {
     [super viewWillAppear:animated];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
     [self setInstagramUserView];
     [self setFacebookUserView];
     [self setFlickrUserView];
@@ -215,7 +217,6 @@ typedef enum {
     self.tableView.frame = frame;
     
     self.presentingChild = NO;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 #pragma mark - Setter methods
@@ -597,25 +598,21 @@ typedef enum {
 
 - (IBAction)cameraRollTapped:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [self showSocialNetwork:[HPPRCameraRollPhotoProvider sharedInstance].name includeLogin:NO];
 }
 
 - (IBAction)facebookTapped:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [self showSocialNetwork:[HPPRFacebookPhotoProvider sharedInstance].name includeLogin:(self.facebookLogged ? NO : YES)];
 }
 
 - (IBAction)instagramTapped:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [self showSocialNetwork:[HPPRInstagramPhotoProvider sharedInstance].name includeLogin:(self.instagramLogged ? NO : YES)];
 }
 
 - (IBAction)flickrTapped:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:(self.flickrLogged ? NO : YES)];
 }
 

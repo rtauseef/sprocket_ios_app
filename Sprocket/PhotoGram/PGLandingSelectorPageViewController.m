@@ -64,6 +64,7 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     
@@ -144,6 +145,8 @@ typedef enum {
 
 - (void)showSocialNetworkNotification:(NSNotification *)notification
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
     NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
     NSNumber *includeLogin = [notification.userInfo objectForKey:kIncludeLoginKey];
     
