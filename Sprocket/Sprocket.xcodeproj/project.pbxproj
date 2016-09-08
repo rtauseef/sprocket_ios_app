@@ -12,24 +12,18 @@
 		0729966986727940fec056fd /* sanchez-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1DCB8271B542D6500CA9AAD /* sanchez-regular.ttf */; };
 		0a4d0b5c4ffb3f46607d63ef /* FacebookLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6D7271A02E55B00548421 /* FacebookLogo@2x.png */; };
 		0b3eb881058d863867733e24 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 373168101AD4B08900503065 /* Localizable.strings */; };
-		0bd62680a9732ffc853547b2 /* CoachMarkNone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */; };
 		0ce5339cfff727ef56bddd25 /* UIView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B62FF719A412E900CB80D7 /* UIView+Animations.m */; };
 		0d05d99f784153973fdbf8d1 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80619A69E5700C72F1A /* Back@2x.png */; };
-		0db38fdeda526cd7204e21a3 /* CoachMarkArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */; };
 		0e2469e68a8297dff52d3c97 /* PGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D506A199AB87B006D80E0 /* PGAppDelegate.m */; };
 		151c1b4023bd7236761d9adb /* HPSimplified_It.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A3199AB9FE006D80E0 /* HPSimplified_It.ttf */; };
-		18c9bbb86965767bd6d256a4 /* CoachMarkDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F17FBE5219D2334B002A79AC /* CoachMarkDown@2x.png */; };
 		1b6a3c044a2a08e93e0c6b4a /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		1fe4be0869f4093926819273 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
-		200f9e0241eef214e6e67e03 /* CoachMarkUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */; };
-		208b48393f6b01a9f31585ef /* MyFeedOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815719A3D12E000D45E0 /* MyFeedOff@2x.png */; };
 		20fe6071e7c571777f9f4631 /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
 		23247bcb1d38746ef374779f /* MobilePrinting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385519BE57C5009C695F /* MobilePrinting@2x.png */; };
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
 		27e75001a5a5f1affb9fc6c3 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		29c82bf3dd8b0e102cf7a433 /* HPSimplified_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A1199AB9FE006D80E0 /* HPSimplified_Bd.ttf */; };
 		2c94809311d106adf4d7a756 /* PGAppAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50D2199AC233006D80E0 /* PGAppAppearance.m */; };
-		2ccfae8905b7323d8fe59210 /* DefaultButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */; };
 		2cfcf36823e8be6f9692e9f0 /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		326c51747eeb8120f476ba3d /* UIView+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F2919AE2F870042DF5E /* UIView+Style.m */; };
 		33be38083f7438a1ef806c6b /* PGCameraRollLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE42219ED91FA006B78BB /* PGCameraRollLandingPageViewController.m */; };
@@ -56,11 +50,8 @@
 		5206ca653fa17d9c5bfbe283 /* PGSwipeCoachMarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */; };
 		58bd1093f11a6969983da6be /* PGFacebookLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41E19ED91E1006B78BB /* PGFacebookLandingPageViewController.m */; };
 		5caa335d853623f580c88fc3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
-		5dc6d7707b01eba6f720350b /* CardShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375384A19BE2B6D009C695F /* CardShadow@2x.png */; };
 		5f3882c75bb331ed4ff64abb /* PGRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5434119C785B100460701 /* PGRevealViewController.m */; };
 		5fef491d51a332de049a6af9 /* Bitter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26C19B648E500AAB884 /* Bitter-Regular.ttf */; };
-		658BAB7C1B8FC016009D8E9D /* CoachMarkArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */; };
-		658BAB7E1B8FC016009D8E9D /* CoachMarkNone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		6C925F45D34C511902EE5709 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
@@ -425,7 +416,6 @@
 		95842abc7265284b07b41d4d /* NSLocale+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */; };
 		98196291801f08c80e94e3b8 /* PGLandingSelectorPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41619EC6BB4006B78BB /* PGLandingSelectorPageViewController.m */; };
 		9b84be6fe7cdc3e193184d69 /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
-		9c84405ddb524e79d9e7fb80 /* MyFeedOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815819A3D12E000D45E0 /* MyFeedOn@2x.png */; };
 		9dbf61518a42538ebdec3452 /* NSURLRequest+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E33FFFFF19D21CD500D2FDAC /* NSURLRequest+Helper.m */; };
 		9ea044a369c03c4f6cb49853 /* PGView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810B19A2B2A6000D45E0 /* PGView.m */; };
 		A83E7A7A1D344A850055DF5E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */; };
@@ -482,7 +472,6 @@
 		E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
 		E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50CB199ABC29006D80E0 /* UIColor+Style.m */; };
 		E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50D2199AC233006D80E0 /* PGAppAppearance.m */; };
-		E375384B19BE2B6D009C695F /* CardShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375384A19BE2B6D009C695F /* CardShadow@2x.png */; };
 		E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E375385019BE4DA5009C695F /* SWRevealViewController.m */; };
 		E375385919BE57C5009C695F /* About@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385319BE57C5009C695F /* About@2x.png */; };
 		E375385B19BE57C5009C695F /* HPLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385419BE57C5009C695F /* HPLogo@2x.png */; };
@@ -512,17 +501,12 @@
 		E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810719A2B249000D45E0 /* PGSegmentedControlView.m */; };
 		E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810B19A2B2A6000D45E0 /* PGView.m */; };
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
-		E3D6814919A3D11F000D45E0 /* DefaultButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */; };
-		E3D6816219A3D12E000D45E0 /* MyFeedOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815719A3D12E000D45E0 /* MyFeedOff@2x.png */; };
-		E3D6816419A3D12E000D45E0 /* MyFeedOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D6815819A3D12E000D45E0 /* MyFeedOn@2x.png */; };
 		E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
 		F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F144B28F1A783D8D007CDBBD /* HPSMS_logo@2x.png */; };
-		F17FBE5419D2334B002A79AC /* CoachMarkDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F17FBE5219D2334B002A79AC /* CoachMarkDown@2x.png */; };
-		F17FBE5619D2334B002A79AC /* CoachMarkUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */; };
 		F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18C59251A702DB900DEF77C /* PGLandingMainPageViewController.m */; };
 		F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A3F9B01AD5EE2800EC0817 /* PGCrashlyticsLogger.m */; };
 		F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5434119C785B100460701 /* PGRevealViewController.m */; };
@@ -624,8 +608,6 @@
 		378EA80719A69E5700C72F1A /* Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Share@2x.png"; path = "Resources/Images/Icons/Share@2x.png"; sourceTree = "<group>"; };
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
-		658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoachMarkArrow@2x.png"; sourceTree = "<group>"; };
-		658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoachMarkNone@2x.png"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -894,7 +876,6 @@
 		E34D50CE199ABDE5006D80E0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E34D50D1199AC233006D80E0 /* PGAppAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAppAppearance.h; sourceTree = "<group>"; };
 		E34D50D2199AC233006D80E0 /* PGAppAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAppAppearance.m; sourceTree = "<group>"; };
-		E375384A19BE2B6D009C695F /* CardShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CardShadow@2x.png"; path = "Resources/Images/CardShadow@2x.png"; sourceTree = "<group>"; };
 		E375384F19BE4DA5009C695F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = Libraries/SWRevealViewController/SWRevealViewController.h; sourceTree = SOURCE_ROOT; };
 		E375385019BE4DA5009C695F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = Libraries/SWRevealViewController/SWRevealViewController.m; sourceTree = SOURCE_ROOT; };
 		E375385319BE57C5009C695F /* About@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "About@2x.png"; path = "Resources/Images/Icons/About@2x.png"; sourceTree = "<group>"; };
@@ -936,9 +917,6 @@
 		E3D6810B19A2B2A6000D45E0 /* PGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGView.m; sourceTree = "<group>"; };
 		E3D6811D19A2DE22000D45E0 /* UIImage+ImageResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageResize.h"; sourceTree = "<group>"; };
 		E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageResize.m"; sourceTree = "<group>"; };
-		E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DefaultButton@2x.png"; path = "Resources/Images/DefaultButton@2x.png"; sourceTree = "<group>"; };
-		E3D6815719A3D12E000D45E0 /* MyFeedOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyFeedOff@2x.png"; path = "Resources/Images/Icons/MyFeedOff@2x.png"; sourceTree = "<group>"; };
-		E3D6815819A3D12E000D45E0 /* MyFeedOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyFeedOn@2x.png"; path = "Resources/Images/Icons/MyFeedOn@2x.png"; sourceTree = "<group>"; };
 		E3DB16CF19F567CA00C0F42B /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
 		E3DB16D019F567CA00C0F42B /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
@@ -952,8 +930,6 @@
 		F134BC451ACAF9E5007D892B /* PGLoggingSetttingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLoggingSetttingsViewController.h; sourceTree = "<group>"; };
 		F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLoggingSetttingsViewController.m; sourceTree = "<group>"; };
 		F144B28F1A783D8D007CDBBD /* HPSMS_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HPSMS_logo@2x.png"; path = "Resources/Images/Icons/HPSMS_logo@2x.png"; sourceTree = "<group>"; };
-		F17FBE5219D2334B002A79AC /* CoachMarkDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoachMarkDown@2x.png"; sourceTree = "<group>"; };
-		F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CoachMarkUp@2x.png"; sourceTree = "<group>"; };
 		F18C59241A702DB900DEF77C /* PGLandingMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingMainPageViewController.h; sourceTree = "<group>"; };
 		F18C59251A702DB900DEF77C /* PGLandingMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingMainPageViewController.m; sourceTree = "<group>"; };
 		F1A3F9AF1AD5EE2800EC0817 /* PGCrashlyticsLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGCrashlyticsLogger.h; path = Logging/PGCrashlyticsLogger.h; sourceTree = "<group>"; };
@@ -1479,13 +1455,7 @@
 				82362A1A1D5955450019F024 /* Stickers */,
 				8236299D1D593D520019F024 /* Frames */,
 				E3D6812419A3B194000D45E0 /* Icons */,
-				E3D6814419A3D11F000D45E0 /* DefaultButton@2x.png */,
 				824784431D78DAF700A693D0 /* Support_Printers.jpg */,
-				F17FBE5219D2334B002A79AC /* CoachMarkDown@2x.png */,
-				F17FBE5319D2334B002A79AC /* CoachMarkUp@2x.png */,
-				658BAB7A1B8FC016009D8E9D /* CoachMarkArrow@2x.png */,
-				658BAB7B1B8FC016009D8E9D /* CoachMarkNone@2x.png */,
-				E375384A19BE2B6D009C695F /* CardShadow@2x.png */,
 				E320F8B819C36A7A00BC2AE3 /* retry@2x.png */,
 				CC10808119CA122B00C1553A /* hp.logo.blue.png */,
 				CC10808219CA122B00C1553A /* logo.blue.png */,
@@ -1579,8 +1549,6 @@
 				378EA80619A69E5700C72F1A /* Back@2x.png */,
 				378EA80719A69E5700C72F1A /* Share@2x.png */,
 				E3B62FFB19A50E5800CB80D7 /* Search@2x.png */,
-				E3D6815719A3D12E000D45E0 /* MyFeedOff@2x.png */,
-				E3D6815819A3D12E000D45E0 /* MyFeedOn@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -1828,7 +1796,6 @@
 				821853831D63E471001288D9 /* icecreamcone_TN@2x.png in Resources */,
 				821853491D63E467001288D9 /* 7_gradient_frame.png in Resources */,
 				8218534A1D63E467001288D9 /* 8_green_spraypaint_frame3_TN.png in Resources */,
-				0db38fdeda526cd7204e21a3 /* CoachMarkArrow@2x.png in Resources */,
 				821852371D625FC9001288D9 /* birthdayHat_TN.png in Resources */,
 				821852491D625FC9001288D9 /* cloud_TN@3x.png in Resources */,
 				8218523A1D625FC9001288D9 /* birthdayHat.png in Resources */,
@@ -1889,13 +1856,9 @@
 				8af9e1e685c387055c2855e1 /* About@2x.png in Resources */,
 				0d05d99f784153973fdbf8d1 /* Back@2x.png in Resources */,
 				821853461D63E467001288D9 /* 7_gradient_frame_TN.png in Resources */,
-				5dc6d7707b01eba6f720350b /* CardShadow@2x.png in Resources */,
 				821853801D63E471001288D9 /* heartPixel_TN@3x.png in Resources */,
 				821852461D625FC9001288D9 /* catears.png in Resources */,
-				18c9bbb86965767bd6d256a4 /* CoachMarkDown@2x.png in Resources */,
 				8218538A1D63E471001288D9 /* stars_TN.png in Resources */,
-				200f9e0241eef214e6e67e03 /* CoachMarkUp@2x.png in Resources */,
-				2ccfae8905b7323d8fe59210 /* DefaultButton@2x.png in Resources */,
 				821853621D63E467001288D9 /* 14_blue_gradient_frame_TN.png in Resources */,
 				821853841D63E471001288D9 /* icecreamcone_TN@3x.png in Resources */,
 				821853731D63E471001288D9 /* feather_TN@2x.png in Resources */,
@@ -1916,7 +1879,6 @@
 				8218535F1D63E467001288D9 /* 13_floral2_frame_TN@2x.png in Resources */,
 				1b6a3c044a2a08e93e0c6b4a /* hp.logo.blue.png in Resources */,
 				e78bdc25406046d5d0ce5ddc /* HPLogo@2x.png in Resources */,
-				0bd62680a9732ffc853547b2 /* CoachMarkNone@2x.png in Resources */,
 				821853571D63E467001288D9 /* 11_pink_frame3_TN@2x.png in Resources */,
 				ac7d2b72bcda5d11ba41c4c2 /* HPSMS_logo@2x.png in Resources */,
 				8218532F1D63E467001288D9 /* 1_turquoise_frame_TN@2x.png in Resources */,
@@ -1937,8 +1899,6 @@
 				4bd697b155f741c2eff7f6a2 /* MeasurementArrowUp@2x.png in Resources */,
 				8218536F1D63E471001288D9 /* diamond_TN@2x.png in Resources */,
 				23247bcb1d38746ef374779f /* MobilePrinting@2x.png in Resources */,
-				208b48393f6b01a9f31585ef /* MyFeedOff@2x.png in Resources */,
-				9c84405ddb524e79d9e7fb80 /* MyFeedOn@2x.png in Resources */,
 				821853741D63E471001288D9 /* feather_TN@3x.png in Resources */,
 				821852411D625FC9001288D9 /* cat_TN@3x.png in Resources */,
 				821853581D63E467001288D9 /* 11_pink_frame3_TN@3x.png in Resources */,
@@ -2046,7 +2006,6 @@
 				821852B01D625FFB001288D9 /* sunglasses_TN@3x.png in Resources */,
 				821852A21D625FFB001288D9 /* icecreamcone_TN.png in Resources */,
 				821852F71D626A96001288D9 /* 2_pink_spraypaint_frame2_TN@2x.png in Resources */,
-				658BAB7C1B8FC016009D8E9D /* CoachMarkArrow@2x.png in Resources */,
 				821852021D625FBA001288D9 /* candy_TN.png in Resources */,
 				821852941D625FFB001288D9 /* feather_TN@3x.png in Resources */,
 				92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */,
@@ -2111,21 +2070,17 @@
 				821852101D625FBA001288D9 /* cloud_TN@3x.png in Resources */,
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
 				821852A11D625FFB001288D9 /* heartPixel.png in Resources */,
-				E375384B19BE2B6D009C695F /* CardShadow@2x.png in Resources */,
 				821852011D625FBA001288D9 /* birthdayHat.png in Resources */,
 				82362A351D59557E0019F024 /* catglasses.png in Resources */,
 				821852AA1D625FFB001288D9 /* stars_TN.png in Resources */,
 				821852FE1D626A96001288D9 /* 4_white_frame_TN.png in Resources */,
 				82362A2F1D59557E0019F024 /* catglasses_TN.png in Resources */,
-				F17FBE5419D2334B002A79AC /* CoachMarkDown@2x.png in Resources */,
-				F17FBE5619D2334B002A79AC /* CoachMarkUp@2x.png in Resources */,
 				821852F31D626A96001288D9 /* 1_turquoise_frame_TN@2x.png in Resources */,
 				821852971D625FFB001288D9 /* feather2_TN@2x.png in Resources */,
 				821852FC1D626A96001288D9 /* 3_blue_watercolor_frame_TN@3x.png in Resources */,
 				821853181D626A96001288D9 /* 10_green_watercolor_frame2_TN@3x.png in Resources */,
 				821852981D625FFB001288D9 /* feather2_TN@3x.png in Resources */,
 				821852A41D625FFB001288D9 /* icecreamcone_TN@3x.png in Resources */,
-				E3D6814919A3D11F000D45E0 /* DefaultButton@2x.png in Resources */,
 				821852991D625FFB001288D9 /* feather2.png in Resources */,
 				E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */,
 				8218520B1D625FBA001288D9 /* catears_TN@2x.png in Resources */,
@@ -2140,7 +2095,6 @@
 				E375385B19BE57C5009C695F /* HPLogo@2x.png in Resources */,
 				8218528A1D625FFB001288D9 /* cupcake_TN.png in Resources */,
 				821852AD1D625FFB001288D9 /* stars.png in Resources */,
-				658BAB7E1B8FC016009D8E9D /* CoachMarkNone@2x.png in Resources */,
 				F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */,
 				821852931D625FFB001288D9 /* feather_TN@2x.png in Resources */,
 				F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */,
@@ -2160,8 +2114,6 @@
 				E3461FA719AF84A80042DF5E /* MeasurementArrowUp@2x.png in Resources */,
 				E375385D19BE57C5009C695F /* MobilePrinting@2x.png in Resources */,
 				821852961D625FFB001288D9 /* feather2_TN.png in Resources */,
-				E3D6816219A3D12E000D45E0 /* MyFeedOff@2x.png in Resources */,
-				E3D6816419A3D12E000D45E0 /* MyFeedOn@2x.png in Resources */,
 				821853001D626A96001288D9 /* 4_white_frame_TN@3x.png in Resources */,
 				821853171D626A96001288D9 /* 10_green_watercolor_frame2_TN@2x.png in Resources */,
 				8218530F1D626A96001288D9 /* 8_green_spraypaint_frame3_TN@2x.png in Resources */,
