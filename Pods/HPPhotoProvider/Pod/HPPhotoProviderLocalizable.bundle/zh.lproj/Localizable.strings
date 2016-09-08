@@ -1,3 +1,12 @@
+/* Title of an alert indicates the specified social network login is not longer valid */
+"%@ Access" = "%@ 访问";
+
+/* Indicates that all photos will be displayed */
+"All Photos" = "所有照片";
+
+/* Message of an alert indicates the specified social network login is not longer valid */
+"There was a problem accessing %@. Please sign in again." = "访问 %@ 时出现问题。 请重新登录。";
+
 /* Number of photos */
 " (%lu photos)" = " （%lu 张照片）";
 

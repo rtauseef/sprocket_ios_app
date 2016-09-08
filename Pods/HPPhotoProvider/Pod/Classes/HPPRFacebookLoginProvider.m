@@ -54,7 +54,7 @@ static NSString * const kFacebookProviderName = @"Facebook";
             loginManager.loginBehavior = FBSDKLoginBehaviorSystemAccount;
             UIViewController *topViewController = [self topViewController];
             [loginManager logInWithReadPermissions:FACEBOOK_PERMISSIONS fromViewController:topViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ Login Screen",[self providerName]] forKey:kHPPRTrackableScreenNameKey]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRTrackableScreenNameKey]];
                 if (completion) {
                     if (error) {
                         completion(NO, error);

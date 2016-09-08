@@ -66,6 +66,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
 
 + (NSDictionary *)mpAppearanceSettings
 {
+    
     return @{// Background
              kMPGeneralBackgroundColor:             [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              kMPGeneralBackgroundPrimaryFont:       [UIFont fontWithName:PGAppAppearanceRegularFont size:13],
@@ -123,7 +124,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
              kMPOverlayLinkFontColor:      [UIColor colorWithRed:0xFF/255.0F green:0xFF/255.0F blue:0xFF/255.0F alpha:1.0F],
              
              // Activity
-             kMPActivityPrintIcon:      [UIImage imageNamed:@"MPPrint"],
+             kMPActivityPrintIcon:      [UIImage imageNamed:@"printActivityIcon"],
              kMPActivityPrintQueueIcon: [UIImage imageNamed:@"MPPrintLater"],
              };
 }
@@ -140,14 +141,6 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
                                kHPPRSecondaryLabelFont:         [UIFont fontWithName:PGAppAppearanceLightFont size:12.0f],
                                kHPPRSecondaryLabelColor:        [UIColor colorWithRed:0xFF/223.0F green:0xFF/224.0F blue:0xFF/227.0F alpha:1.0F],
                                kHPPRTableSeparatorColor:        [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-                               kHPPRGridViewOnIcon:             [UIImage imageNamed:@"gridViewOnIcon"],
-                               kHPPRGridViewOffIcon:            [UIImage imageNamed:@"gridViewOffIcon"],
-                               kHPPRListViewOnIcon:             [UIImage imageNamed:@"listViewOnIcon"],
-                               kHPPRListViewOffIcon:            [UIImage imageNamed:@"listViewOffIcon"],
-                               kHPPRFilterButtonLeftOnIcon:     [UIImage imageNamed:@"filterButtonLeftOn"],
-                               kHPPRFilterButtonLeftOffIcon:    [UIImage imageNamed:@"filterButtonLeftOff"],
-                               kHPPRFilterButtonRightOnIcon:    [UIImage imageNamed:@"filterButtonRightOn"],
-                               kHPPRFilterButtonRightOffIcon:   [UIImage imageNamed:@"filterButtonRightOff"],
                                kHPPRLoadingCellBackgroundColor: [UIColor lightGrayColor]
                                };
     
