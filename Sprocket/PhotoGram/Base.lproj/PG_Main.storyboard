@@ -864,29 +864,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAF-aJ-2pY">
-                                <rect key="frame" x="0.0" y="64" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="140"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuAbout" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-eN-AFi">
-                                        <rect key="frame" x="195" y="41" width="38" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-eN-AFi">
+                                        <rect key="frame" x="152" y="29" width="98" height="82"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-7o-mbb">
-                                        <rect key="frame" x="243" y="41" width="113" height="37"/>
-                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="33"/>
+                                        <rect key="frame" x="265" y="50" width="120" height="40"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="35"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="1AP-vT-Hov"/>
+                                    <constraint firstAttribute="height" constant="140" id="1AP-vT-Hov"/>
                                     <constraint firstItem="WMv-7o-mbb" firstAttribute="centerY" secondItem="mAF-aJ-2pY" secondAttribute="centerY" id="Uk7-Bo-wxJ"/>
-                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="centerX" secondItem="mAF-aJ-2pY" secondAttribute="centerX" id="gHh-vE-mlt"/>
+                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="centerX" secondItem="mAF-aJ-2pY" secondAttribute="centerX" constant="25" id="gHh-vE-mlt"/>
                                     <constraint firstItem="uVV-eN-AFi" firstAttribute="centerY" secondItem="mAF-aJ-2pY" secondAttribute="centerY" id="hFo-eM-riU"/>
-                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="leading" secondItem="uVV-eN-AFi" secondAttribute="trailing" constant="10" id="lQO-6e-1Tv"/>
+                                    <constraint firstItem="WMv-7o-mbb" firstAttribute="leading" secondItem="uVV-eN-AFi" secondAttribute="trailing" constant="15" id="lQO-6e-1Tv"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-3v-7vp">
-                                <rect key="frame" x="15" y="231" width="565" height="319"/>
+                                <rect key="frame" x="15" y="251" width="565" height="299"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <mutableString key="text">While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. 
 
@@ -902,13 +902,13 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Sprocket App Terms of Service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-K7-scA">
-                                <rect key="frame" x="20" y="204" width="234" height="19"/>
+                                <rect key="frame" x="20" y="224" width="234" height="19"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2016 HP Development Company, L.P." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-a1-B1F">
-                                <rect key="frame" x="196" y="565" width="207.5" height="15"/>
+                                <rect key="frame" x="196" y="565" width="208" height="15"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="13"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1629,7 +1629,7 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="66" width="600" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WIV-p8-f2c" id="5lM-KM-kDB">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="163.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="164"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HU6-rf-MYm" userLabel="logLevelPicker">
