@@ -129,7 +129,9 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
                         
                         [self.deletedAlbumAlertView show];
                     } else {
+#ifndef TARGET_IS_EXTENSION
                         [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
+#endif
                     }
                 });
             }
@@ -144,9 +146,9 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+#ifndef TARGET_IS_EXTENSION
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    
+#endif
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
 
@@ -168,9 +170,11 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 {
     if (nil == _deletedAlbumAlertView) {
         NSError *error = [HPPRAlbum albumDeletedError];
-        
+#ifndef TARGET_IS_EXTENSION
         _deletedAlbumAlertView = [[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil];
+#endif
     }
+
     
     return _deletedAlbumAlertView;
 }
@@ -204,7 +208,9 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
                     
                     [self.deletedAlbumAlertView show];
                 } else {
+#ifndef TARGET_IS_EXTENSION
                     [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
+#endif
                 }
             });
         }
@@ -345,12 +351,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)selectImage:(UIImage *)image andMedia:(HPPRMedia *)media
 {
     if (nil == image) {
+#ifndef TARGET_IS_EXTENSION
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Error", @"Title of an alert")
                                                             message:[NSString stringWithFormat:HPPRLocalizedString(@"Could not retrieve the picture from %@", @"Message of an alert when is not possible to retrieve the pictures from the specified social network"), self.provider.name]
                                                            delegate:nil
                                                   cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
                                                   otherButtonTitles:nil];
         [alertView show];
+#endif
     } else {
         if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didSelectImage:source:media:)]) {
             NSString *source = [self.provider.name stringByReplacingOccurrencesOfString:@" " withString:@""];

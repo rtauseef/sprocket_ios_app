@@ -63,6 +63,7 @@ NSString * const kInstagramProviderName = @"Instagram";
 
 - (void)loginError:(NSError *)error
 {
+#ifndef TARGET_IS_EXTENSION
     if (self.retryAlertView == nil) {
         self.retryAlertView = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Error", nil)
                                                          message:error.localizedDescription
@@ -72,6 +73,7 @@ NSString * const kInstagramProviderName = @"Instagram";
     }
     
     [self.retryAlertView show];
+#endif
 }
 
 - (BOOL)handleURL:(NSURL *)url
@@ -92,12 +94,14 @@ NSString * const kInstagramProviderName = @"Instagram";
         [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     } else if ([urlString rangeOfString:@"error_reason=user_denied"].location != NSNotFound) {
         [self dismissViewControllerAnimated:YES completion:^{
+#ifndef TARGET_IS_EXTENSION
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Authorized Required", @"Title of an alert requesting authorization to access the Instagram photos")
                                                             message:HPPRLocalizedString(@"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue.", @"Message of an alert requesting authorization to access the Instagram photos")
                                                            delegate:nil
                                                   cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
                                                   otherButtonTitles:nil];
             [alert show];
+#endif
             
         }];
     }

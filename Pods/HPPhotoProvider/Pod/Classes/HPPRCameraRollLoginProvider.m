@@ -86,6 +86,7 @@ int const kCameraRollCancelButtonIndex = 0;
         }
         return;
     } else {
+#ifndef TARGET_IS_EXTENSION
         dispatch_async(dispatch_get_main_queue(), ^{
             [[[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Photo Access", @"Title shown when the user tries to access the Photos of the device before the authorization was requested")
                                         message:HPPRLocalizedString(@"To select a photo you must first authorize this app to access your photo library.", @"Message shown when the user tries to access the Photos of the device before the authorization was requested")
@@ -93,6 +94,7 @@ int const kCameraRollCancelButtonIndex = 0;
                               cancelButtonTitle:HPPRLocalizedString(@"Cancel", @"Button caption")
                               otherButtonTitles:HPPRLocalizedString(@"Authorize", @"Button caption"), nil] show];
         });
+#endif
     }
 }
 
@@ -113,6 +115,7 @@ int const kCameraRollCancelButtonIndex = 0;
 
 - (void)noAccessWithCaption:(NSString *)caption andMessage:(NSString *)message
 {
+#ifndef TARGET_IS_EXTENSION
     BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
     dispatch_async(dispatch_get_main_queue(), ^{
         if (canOpenSettings) {
@@ -129,15 +132,18 @@ int const kCameraRollCancelButtonIndex = 0;
                               otherButtonTitles:nil] show];
         }
     });
+#endif
 }
 
 - (void)openSettings
 {
+#ifndef TARGET_IS_EXTENSION
     BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
     if (canOpenSettings) {
         NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
         [[UIApplication sharedApplication] openURL:url];
     }
+#endif
 }
 
 #pragma mark - UIAlertViewDelegate

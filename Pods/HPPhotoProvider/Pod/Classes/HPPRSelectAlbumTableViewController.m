@@ -71,8 +71,9 @@ NSString * const kAlbumSelectionScreenName = @"Album Selection Screen";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+#ifndef TARGET_IS_EXTENSION
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+#endif
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kAlbumSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }

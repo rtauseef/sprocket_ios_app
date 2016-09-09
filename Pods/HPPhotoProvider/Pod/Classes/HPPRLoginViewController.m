@@ -93,10 +93,12 @@ float kRetryWidth = 60.0;
 {
     BOOL handle = YES;
     if (![url.scheme isEqual:@"http"] && ![url.scheme isEqual:@"https"]) {
+#ifndef TARGET_IS_EXTENSION
         if ([[UIApplication sharedApplication]canOpenURL:url]) {
             [[UIApplication sharedApplication]openURL:url];
             handle = NO;
         }
+#endif
     }
     return handle;
 }
