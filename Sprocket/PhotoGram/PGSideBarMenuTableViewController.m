@@ -62,7 +62,7 @@
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 NSString * const kTakeOurSurveyURL = @"https://www.surveymonkey.com/s/9C9M96H";
 NSString * const kTakeOurSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
-NSString * const kBuyPaperURL = @"http://store.hp.com/us/en/pdp/hp-zink%C2%AE-sticky-backed-photo-paper-20-sht-2-x-3-in";
+NSString * const kBuyPaperURL = @"http://hpsprocket.com/#supplies";
 
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
@@ -193,6 +193,8 @@ typedef enum {
 {
     [super viewWillAppear:animated];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
     [self setInstagramUserView];
     [self setFacebookUserView];
     [self setFlickrUserView];
@@ -215,14 +217,6 @@ typedef enum {
     self.tableView.frame = frame;
     
     self.presentingChild = NO;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 #pragma mark - Setter methods

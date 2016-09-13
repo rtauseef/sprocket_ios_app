@@ -12,7 +12,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "HPPRMedia.h"
-#import "HPPRSegmentedControlView.h"
 #import "HPPRCachingObject.h"
 #import "HPPRAlbum.h"
 #import "HPPRLoginProvider.h"
@@ -35,7 +34,6 @@
 
 - (void)applicationDidStart;
 
-- (void)prepareSegmentView:(HPPRSegmentedControlView *)segmentedControlView;
 - (NSUInteger)replaceImagesWithRecords:(NSArray *)records;
 - (NSUInteger)updateImagesWithRecords:(NSArray *)records;
 

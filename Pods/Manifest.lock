@@ -26,13 +26,11 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
-  - HPPhotoProvider (0.13.30):
+  - HPPhotoProvider (0.13.31):
     - AFNetworking
     - FlickrKit
   - MobilePrintSDK (3.0.8)
   - TTTAttributedLabel (1.10.1)
-  - XMLDictionary (1.4)
-  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -40,8 +38,6 @@ DEPENDENCIES:
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
-  - XMLDictionary (= 1.4)
-  - ZipArchive (= 1.4.0)
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
@@ -53,7 +49,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 43145b8fab2b12dd7f8ce702279ccf75a9ab07a1
+    :commit: 115f68f528d7682508b3670872825ac0db2ce6ec
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: 1f5dfbc9a86293cfd127579ab067aa13a95eeccf
@@ -64,12 +60,10 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
-  HPPhotoProvider: 091f8bc6372eda59da37a7a142d68bcf703cad57
+  HPPhotoProvider: 3fded17371e1ae535ddbb839360636ea17160d33
   MobilePrintSDK: c906b48fd6cd246ce00f35a2d6fb7fe63142ed79
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
-  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 434a43509413dcfcda25d47ee3b0c8f9f40f2feb
+PODFILE CHECKSUM: 5d56b3a06dd832d77c18abc5a73a465533908062
 
 COCOAPODS: 1.0.1

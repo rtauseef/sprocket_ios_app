@@ -37,4 +37,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:CHECK_PROVIDER_NOTIFICATION object:nil];
 }
 
+- (IBAction)dismissAnyModel:(UIStoryboardSegue *)segue
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
