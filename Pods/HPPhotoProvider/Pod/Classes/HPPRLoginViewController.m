@@ -172,8 +172,8 @@ float kRetryWidth = 60.0;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self hideLoadWarning];
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadWarning];
         [self.spinner removeFromSuperview];
     });
 }
