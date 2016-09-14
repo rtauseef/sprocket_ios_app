@@ -12,6 +12,7 @@
 
 #import "PGMediaNavigation.h"
 #import "PGAppAppearance.h"
+#import <HPPR.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRFlickrPhotoProvider.h>
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
 @property (strong, nonatomic) NSArray *providers;
 @property (weak, nonatomic) IBOutlet UIButton *folderButton;
+@property (assign, nonatomic) BOOL refreshing;
 
 @end
 
@@ -80,10 +82,13 @@
     
     [self.scrollView createButtonArrayWithButtonTitles:self.providers andLayoutStyle:SShorizontalLayout];
     self.scrollView.ssRollingButtonScrollViewDelegate = self;
+    self.refreshing = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSocialNetwork:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoCollectionBeginRefresh:) name:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoCollectionEndRefresh:) name:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
 
     self.cameraView.direction = GRADIENT_DOWN;
 }
@@ -127,6 +132,10 @@
 
 - (IBAction)didPressFolderButton:(id)sender {
     
+    if (self.refreshing) {
+        return;
+    }
+    
     if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressFolderButton:)]) {
         [self.delegate mediaNavigationDidPressFolderButton:self];
     }
@@ -163,6 +172,16 @@
     BOOL inCameraBar = point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
     
     return ( inNavigationView || inCameraBar );
+}
+
+- (void)photoCollectionBeginRefresh:(id)sender
+{
+    self.refreshing = YES;
+}
+
+- (void)photoCollectionEndRefresh:(id)sender
+{
+    self.refreshing = NO;
 }
 
 @end
