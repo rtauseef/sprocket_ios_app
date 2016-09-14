@@ -19,7 +19,7 @@
 
 NSString * const kPGHelpAndHowToViewUserURL = @"https://www.hpsprocket.com/sprocket-userguide.pdf";
 NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/products/printers/";
-NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://h30434.www3.hp.com/t5/Printers/ct-p/InkJet";
+NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
 
 @interface PGHelpAndHowToViewController ()
 
