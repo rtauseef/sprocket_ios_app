@@ -106,7 +106,6 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *facebookGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *flickrGestureRecognizer;
 
-@property (assign, nonatomic) BOOL presentingChild;
 typedef enum {
     Instagram,
     Facebook,
@@ -187,6 +186,11 @@ typedef enum {
     self.deviceConnectivityLabel.font = [UIFont HPSimplifiedLightFontWithSize:12.0f];
     
     [self setupLabel:self.devicesLabel];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(unselectTableViewCell)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -215,8 +219,11 @@ typedef enum {
     CGRect frame = self.tableView.frame;
     frame.size.width = self.revealViewController.rearViewRevealWidth;
     self.tableView.frame = frame;
-    
-    self.presentingChild = NO;
+}
+
+- (void)unselectTableViewCell
+{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - Setter methods
@@ -261,16 +268,27 @@ typedef enum {
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!self.presentingChild) {
-        if (indexPath.row == GIVE_FEEDBACK) {
+    switch (indexPath.row) {
+        case GIVE_FEEDBACK: {
             [self sendEmail];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        } else if (indexPath.row == DEVICES_INDEX) {
+            break;
+        }
+        case DEVICES_INDEX: {
             [[MP sharedInstance] presentBluetoothDevicesFromController:self.revealViewController animated:YES completion:nil];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            break;
         }
-        
-        self.presentingChild = YES;
+        case BUY_PAPER: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kBuyPaperURL]];
+            break;
+        }
+        case PRIVACY_STATEMENT_INDEX: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]]]];
+            break;
+        }
+        default:
+            break;
     }
 }
 
@@ -279,29 +297,6 @@ typedef enum {
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-        
-        if ([navigationController.topViewController isKindOfClass:[PGWebViewerViewController class]]) {
-            PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-            
-            if ([segue.identifier isEqualToString:@"PrivacyStatementSegue"]) {
-                webViewerViewController.trackableScreenName = @"Privacy Statement Screen";
-                NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
-                
-                webViewerViewController.url = localizablePrivacyStatementURL;
-            } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
-                webViewerViewController.trackableScreenName = @"Buy Paper Screen";
-                webViewerViewController.url = kBuyPaperURL;
-            }
-        }
-    }
 }
 
 #pragma mark - Button action
