@@ -17,7 +17,6 @@
 #import "PGCameraRollLandingPageViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGPreviewViewController.h"
-#import "PGSelectTemplateViewController.h"
 #import "PGImagePickerLandscapeSupportController.h"
 #import "PGAnalyticsManager.h"
 #import "HPPRCameraRollLoginProvider.h"
@@ -59,6 +58,11 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self checkCameraRollAndAlbums:NO];
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                  device:kEventAuthRequestPhotosLabel];
+        } else {
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                  device:kEventAuthRequestPhotosLabel];
         }
     }];
 }
@@ -90,7 +94,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                 ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
             }
             
-            UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+            UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
             
             vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
             
@@ -98,7 +102,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:vc animated:YES];
             });
-            
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];
@@ -106,26 +109,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
         }
     }];
 }
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"SelectTemplateSegue"]) {
-        PGSelectTemplateViewController *vc = (PGSelectTemplateViewController *)segue.destinationViewController;
-
-        vc.source = [HPPRCameraRollPhotoProvider sharedInstance].name;
-
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"]
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:vc
-                                                                action:@selector(dismissViewController)];
-        [vc.navigationItem setLeftBarButtonItem:item animated:YES];
-        
-        vc.selectedPhoto = self.selectedPhoto;
-    }
-}
-
 
 #pragma mark - HPPRSelectPhotoCollectionViewControllerDelegate
 
@@ -135,7 +118,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = image;
     previewViewController.source = source;
-    previewViewController.media = media;
     
     HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:kCameraRollUserName userId:kCameraRollUserId];

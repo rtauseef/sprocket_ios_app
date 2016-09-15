@@ -16,6 +16,8 @@
 #import "HPPRFlickrLoginViewController.h"
 #import "HPPRCacheService.h"
 
+static NSString * const kFlickrProviderName = @"Flickr";
+
 @interface HPPRFlickrLoginProvider() <HPPRFlickrLoginViewControllerDelegate>
 
 @property (nonatomic, strong) FKDUNetworkOperation *finishAuthOperation;
@@ -102,6 +104,7 @@
             NSString *url = [[[FlickrKit sharedFlickrKit] buddyIconURLForUser:userId] absoluteString];
             self.user = @{@"userName":userName, @"userID":userId, @"fullName":fullName, @"imageURL":url};
             [self notifyLogin];
+            [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
         }
         
         [self.navigationController dismissViewControllerAnimated:YES completion:^{
@@ -142,6 +145,11 @@
     if (self.completion) {
         self.completion(NO, [NSError errorWithDomain:@"HPPRFlickrLoginProvider" code:-1 userInfo:nil]);
     }
+}
+
+- (NSString *)providerName
+{
+    return kFlickrProviderName;
 }
 
 @end

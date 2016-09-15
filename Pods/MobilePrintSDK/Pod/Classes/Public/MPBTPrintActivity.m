@@ -22,7 +22,7 @@
 
 - (NSString *)activityTitle
 {
-    return MPLocalizedString(@"Print", @"Activity title of the bt print when the share button is tapped");
+    return MPLocalizedString(@"Print to sprocket", @"Bluetooth print button label");
 }
 
 - (UIImage *)_activityImage
@@ -46,7 +46,7 @@
 
 - (void)performActivity
 {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self.vc image:self.image animated:YES completion:nil];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self.vc image:self.image animated:YES printCompletion:nil];
     [self activityDidFinish:YES];
 }
 

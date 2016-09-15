@@ -25,6 +25,7 @@
 #define FLICKR_NO_INTERNET_CONNECTION_ERROR_CODE 200
 
 NSString * const kFlickrLoginScreenName = @"Flickr Login Screen";
+NSString * const kFlickrProviderName = @"Flickr";
 
 @interface HPPRFlickrLoginViewController () <UIWebViewDelegate, UIAlertViewDelegate>
 
@@ -41,6 +42,11 @@ NSString * const kFlickrLoginScreenName = @"Flickr Login Screen";
 - (NSString *)screenName
 {
     return kFlickrLoginScreenName;
+}
+
+- (NSString *)providerName
+{
+    return kFlickrProviderName;
 }
 
 - (void)startLogin

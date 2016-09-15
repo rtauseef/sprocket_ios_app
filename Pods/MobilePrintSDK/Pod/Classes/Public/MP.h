@@ -70,6 +70,46 @@ extern NSString * const kPrintCategoryIdentifier;
 extern NSString * const kMPLibraryVersion;
 
 /*!
+ * @abstract Notifies subscribers that a bluetooth print job was started
+ * @discussion Clients can use this notification to indicate that a print has been started on a bluetooth device
+ */
+extern NSString * const kMPBTPrintJobStartedNotification;
+
+/*!
+ * @abstract Notifies subscribers that a bluetooth print job has completed
+ * @discussion Clients can use this notification to indicate that a print has completed on a bluetooth device
+ */
+extern NSString * const kMPBTPrintJobCompletedNotification;
+
+/*!
+ * @abstract Used to retrieve the printer ID from bluetooth print job notifications
+ * @discussion Clients can use this to retrieve the printer id from a notification's userInfo argument
+ * @seealso kMPBTPrintJobStartedNotification
+ * @seealso kMPBTPrintJobCompletedNotification
+ */
+extern NSString * const kMPBTPrintJobPrinterIdKey;
+
+/*!
+ * @abstract Used to retrieve the print job error from bluetooth print job completion notifications
+ * @discussion Clients can use this to retrieve the error code from a notification's userInfo argument
+ * @seealso kMPBTPrintJobCompletedNotification
+ */
+extern NSString * const kMPBTPrintJobErrorKey;
+
+/*!
+ * @abstract Notifies subscribers that a bluetooth operation could not be completed due to not having a bluetooth printer connected
+ * @discussion Clients can use this notification to indicate that a printer could not be connected
+ */
+extern NSString * const kMPBTPrinterNotConnectedNotification;
+
+/*!
+ * @abstract Used to retrieve the source of a printer not connected notification
+ * @discussion Clients can use this to retrieve the source of a printer not connected notification
+ * @seealso kMPBTPrinterNotConnectedNotification
+ */
+extern NSString * const kMPBTPrinterNotConnectedSourceKey;
+
+/*!
  * @abstract Notifies subscribers that a share action was completed
  * @discussion Clients can use this notification to indicate that the user completed a sharing action. This is useful for collecting and reporting analytics.
  */
@@ -504,6 +544,12 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  */
 - (NSInteger)numberOfPairedSprockets;
 
+/*! 
+ * @abstract Indicates sprocket printer firmware version number
+ * @return The sprocket printer firmware version
+ */
+- (NSString *)printerVersion;
+
 /*!
  * @abstract Displays the list of sprockets paired with the iPhone/iPad
  * @discussion This method prepares an instance of a view controller with the paired sprockets, and displays it modally.
@@ -520,7 +566,7 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @param animated A boolean indicating whether or not to animate the display
  * @param completion A block to call when the display animation is complete
  */
-- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated completion:(void(^)(void))completion;
+- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated printCompletion:(void(^)(void))completion;
 
 /*!
  * @abstract Indicates whether a single sprocket is paired and needs to be reflashed
@@ -534,6 +580,12 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @param viewController The UIViewController to host the reflash progress view
  */
 - (void)reflashBluetoothDevice:(UIViewController *)viewController;
+
+/*!
+ * @abstract Causes a metric value to be obfuscated before it is posted to the server.
+ * @param keyName The key of the value that is to be obfuscated.  Any metric identified by this key will be obfuscated.
+ */
+- (void)obfuscateMetric:(NSString *)keyName;
 
 /*!
  * @abstract Used to access the singleton instance of this class

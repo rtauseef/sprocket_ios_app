@@ -95,11 +95,6 @@
 
 #pragma mark - User interface
 
-- (void)prepareSegmentView:(HPPRSegmentedControlView *)segmentedControlView
-{
-    segmentedControlView.hidden = YES;
-}
-
 - (NSUInteger)imagesPerScreen
 {
     NSUInteger minimum = 0;

@@ -14,12 +14,18 @@
 #import "MPBTSessionController.h"
 #import "MPPrintItemImage.h"
 #import "NSBundle+MPLocalizable.h"
+#import "MP.h"
 
 const char MANTA_PACKET_LENGTH = 34;
 
 static const NSString *kPolaroidProtocol = @"com.polaroid.mobileprinter";
 static const NSString *kHpProtocol = @"com.hp.protocol";
 static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-1.amazonaws.com/sprocket-fw-updates/fw_release.json";
+
+static const NSString *kMPBTFirmwareVersionKey = @"fw_version";
+static const NSString *kMPBTTmdVersionKey = @"tmd_version";
+static const NSString *kMPBTModelNumberKey = @"model_number";
+static const NSString *kMPBTHardwareVersion = @"hw_version";
 
 // Common to all packets
 static const char START_CODE_BYTE_1    = 0x1B;
@@ -95,7 +101,7 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
     self = [super init];
     if (self) {
 
-        self.supportedProtocols = @[kPolaroidProtocol, kHpProtocol/*, @"com.lge.pocketphoto"*/];
+        self.supportedProtocols = @[kHpProtocol/*kPolaroidProtocol, @"com.lge.pocketphoto"*/];
         
         // watch for received data from the accessory
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_sessionDataReceived:) name:MPBTSessionDataReceivedNotification object:nil];
@@ -247,6 +253,23 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 - (NSString *)displayName
 {
     return [MPBTSprocket displayNameForAccessory:self.accessory];
+}
+
+- (NSDictionary *)analytics
+{
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    
+    [dictionary setValue:[MPBTSprocket macAddress:self.macAddress] forKey:kMPPrinterId];
+    [dictionary setValue:[MPBTSprocket displayNameForAccessory:self.accessory] forKey:kMPPrinterDisplayName];
+    [dictionary setValue:[NSString stringWithFormat:@"HP sprocket"] forKey:kMPPrinterMakeAndModel];
+    
+    NSDictionary *customData = @{ kMPBTFirmwareVersionKey : [MPBTSprocket version:self.firmwareVersion],
+                                  kMPBTTmdVersionKey      : [MPBTSprocket version:self.hardwareVersion],
+                                  kMPBTModelNumberKey     : self.accessory.modelNumber,
+                                  kMPBTHardwareVersion    : self.accessory.hardwareRevision };
+    [dictionary setValue:customData forKey:kMPCustomAnalyticsKey];
+    
+    return dictionary;
 }
 
 #pragma mark - Util
@@ -627,6 +650,17 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     }
     
     return string;
+}
+
++ (NSString *)version:(NSUInteger)version
+{
+    NSUInteger fw1, fw2, fw3;
+
+    fw1 = (0xFF0000 & version) >> 16;
+    fw2 = (0x00FF00 & version) >>  8;
+    fw3 =  0x0000FF & version;
+ 
+    return [NSString stringWithFormat:@"%d.%d.%d", fw1, fw2, fw3];
 }
 
 + (BOOL)supportedAccessory:(EAAccessory *)accessory

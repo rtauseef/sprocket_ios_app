@@ -17,6 +17,8 @@
 #import "MP.h"
 #import "NSBundle+MPLocalizable.h"
 
+static NSString * const kDeviceInfoScreenName = @"Device Info Screen";
+
 typedef enum
 {
     MPBTDeviceInfoOrderError           = 0,
@@ -80,6 +82,13 @@ typedef enum
 
     self.lastError = @"";
     self.updating = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMPTrackableScreenNotification object:nil userInfo:[NSDictionary dictionaryWithObject:kDeviceInfoScreenName forKey:kMPTrackableScreenNameKey]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,7 +191,6 @@ typedef enum
 #pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger fw1, fw2, fw3;
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MPBTSprocketDeviceInfoCell"];
     
     if (!cell) {
@@ -210,16 +218,13 @@ typedef enum
                 break;
                 
             case MPBTDeviceInfoOrderMacAddress:
-                cell.textLabel.text = MPLocalizedString(@"Mac Address", @"Title of field displaying the printer's mac address");
+                cell.textLabel.text = MPLocalizedString(@"MAC Address", @"Title of field displaying the printer's mac address");
                 cell.detailTextLabel.text = [MPBTSprocket macAddress:self.sprocket.macAddress];
                 break;
                 
             case MPBTDeviceInfoOrderFirmwareVersion:
-                fw1 = (0xFF0000 & self.sprocket.firmwareVersion) >> 16;
-                fw2 = (0x00FF00 & self.sprocket.firmwareVersion) >>  8;
-                fw3 =  0x0000FF & self.sprocket.firmwareVersion;
                 cell.textLabel.text = MPLocalizedString(@"Firmware Version", @"Title of field displaying the printer's firmware version");
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%d.%d.%d", fw1, fw2, fw3];
+                cell.detailTextLabel.text = [MPBTSprocket version:self.sprocket.firmwareVersion];
                 break;
                 
             case MPBTDeviceInfoOrderHardwareVersion:

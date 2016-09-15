@@ -32,6 +32,13 @@ NSString * const kLaterActionIdentifier = @"LATER_ACTION_IDENTIFIER";
 NSString * const kPrintActionIdentifier = @"PRINT_ACTION_IDENTIFIER";
 NSString * const kPrintCategoryIdentifier = @"PRINT_CATEGORY_IDENTIFIER";
 
+NSString * const kMPBTPrintJobStartedNotification = @"kMPBTPrintJobStartedNotification";
+NSString * const kMPBTPrintJobCompletedNotification = @"kMPBTPrintJobCompletedNotification";
+NSString * const kMPBTPrintJobPrinterIdKey = @"kMPBTPrintJobPrinterIdKey";
+NSString * const kMPBTPrintJobErrorKey = @"kMPBTPrintJobErrorKey";
+NSString * const kMPBTPrinterNotConnectedNotification = @"kMPBTPrinterNotConnectedNotification";
+NSString * const kMPBTPrinterNotConnectedSourceKey = @"kMPBTPrinterNotConnectedSourceKey";
+
 NSString * const kMPShareCompletedNotification = @"kMPShareCompletedNotification";
 
 NSString * const kMPTrackableScreenNotification = @"kMPTrackableScreenNotification";
@@ -282,6 +289,13 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     return [MPBTSprocket pairedSprockets].count;
 }
 
+- (NSString *)printerVersion
+{
+    NSUInteger ver = [[MPBTSprocket sharedInstance] firmwareVersion];
+    
+    return [MPBTSprocket version:ver];
+}
+
 - (void)checkSprocketForFirmwareUpgrade:(id<MPSprocketDelegate>)delegate
 {
     NSString *deviceName = nil;
@@ -322,6 +336,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     }
 }
 
+- (void)obfuscateMetric:(NSString *)keyName
+{
+    [[MPAnalyticsManager sharedManager] obfuscateMetric:keyName];
+}
+
 - (void)presentBluetoothDevicesFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion
 {
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
@@ -334,7 +353,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     }
 }
 
-- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated completion:(void(^)(void))completion
+- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated printCompletion:(void(^)(void))completion
 {
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
     
@@ -347,9 +366,12 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
         progressView.viewController = controller;
         [progressView printToDevice:image];
+        if (completion) {
+            completion();
+        }
         
     } else {
-        [MPBTPairedAccessoriesViewController presentAnimatedForPrint:animated image:image usingController:controller andCompletion:completion];
+        [MPBTPairedAccessoriesViewController presentAnimatedForPrint:animated image:image usingController:controller andPrintCompletion:completion];
     }
 }
 

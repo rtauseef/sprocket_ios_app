@@ -13,6 +13,7 @@
 #import "HPPR.h"
 
 NSString * const kHPPRTrackableScreenNameKey = @"screen-name";
+NSString * const kHPPRProviderName = @"provider";
 
 @implementation HPPR
 

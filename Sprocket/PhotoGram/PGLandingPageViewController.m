@@ -15,6 +15,7 @@
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
 #import "PGTermsAttributedLabel.h"
+#import "UIViewController+trackable.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
@@ -27,7 +28,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (void)viewDidLoad {
     [super viewDidLoad];
        
-    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
     
     self.navigationItem.leftBarButtonItem = hamburgerButtonItem;
     
@@ -81,11 +82,9 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (void)attributedLabel:(__unused TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"WebViewerNavigationController"];
-    
-    PGWebViewerViewController *webViewController = (PGWebViewerViewController *)navigationController.topViewController;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"terms" ofType:@"html"];
-    webViewController.url = path;
+    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGTermsNavigationController"];
+
+    navigationController.topViewController.trackableScreenName = @"Terms of Service Screen";    
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }

@@ -1,3 +1,12 @@
+/* Title of an alert indicates the specified social network login is not longer valid */
+"%@ Access" = "%@へのアクセス";
+
+/* Indicates that all photos will be displayed */
+"All Photos" = "すべての写真";
+
+/* Message of an alert indicates the specified social network login is not longer valid */
+"There was a problem accessing %@. Please sign in again." = "%@へのアクセスに問題がありました。 再度サインインしてください。";
+
 /* Number of photos */
 " (%lu photos)" = " (%luの写真）";
 

@@ -25,6 +25,7 @@
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGCameraManager.h"
+#import "PGAnalyticsManager.h"
 
 #import <MP.h>
 
@@ -81,8 +82,7 @@
 {
     [super viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
@@ -266,7 +266,9 @@
         self.blurredView.alpha = 0;
         self.landingButtonsView.alpha = 0;
         self.cameraButtonsView.alpha = 1;
-    } completion:nil];
+    } completion:^(BOOL finished){
+        [PGCameraManager logMetrics];
+    }];
 }
 
 - (void)hideCameraButtons {

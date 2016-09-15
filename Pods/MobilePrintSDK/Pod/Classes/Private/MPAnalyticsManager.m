@@ -26,6 +26,12 @@
 
 @end
 
+@interface MPAnalyticsManager()
+
+@property NSMutableArray *userSpecifiedObfuscationMetrics;
+
+@end
+
 @implementation MPAnalyticsManager
 
 NSString * const kMPMetricsServer = @"print-metrics-w1.twosmiles.com/api/v1/mobile_app_metrics";
@@ -80,6 +86,7 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
         kMPMetricsEventInitialCount = [NSNumber numberWithInteger:kMPMetricsEventInitialCountValue];
+        sharedManager.userSpecifiedObfuscationMetrics = [[NSMutableArray alloc] init];
     });
     
     return sharedManager;
@@ -234,11 +241,19 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
              ];
 }
 
+- (void)obfuscateMetric:(NSString *)keyName
+{
+    [self.userSpecifiedObfuscationMetrics addObject:keyName];
+}
+
 - (NSArray *)obfuscatedMetrics
 {
-    return @[
-             kMPPrinterId,
-             kMPMetricsWiFiSSID];
+    NSMutableArray *metrics = [[NSMutableArray alloc] initWithArray:@[
+                                                                      kMPPrinterId,
+                                                                      kMPMetricsWiFiSSID]];
+    [metrics addObjectsFromArray:self.userSpecifiedObfuscationMetrics];
+    
+    return metrics;
 }
 
 // The following is adapted from http://stackoverflow.com/questions/2018550/how-do-i-create-an-md5-hash-of-a-string-in-cocoa
@@ -275,8 +290,14 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
     for (NSString *key in [self obfuscatedMetrics]) {
         NSString *value = [metrics objectForKey:key];
         if (value) {
-            NSString *obfsucatedValue = [MPAnalyticsManager obfuscateValue:value];
-            [metrics setObject:obfsucatedValue forKey:key];
+            if ([key isEqualToString:kMPMetricsWiFiSSID]  &&  [value isEqualToString:kMPNoNetwork]) {
+                // do nothing for unpopulated wifi
+            } else if ([key isEqualToString:kMPPrinterId]  &&  [[metrics objectForKey:kMPMetricsProductName] containsString:@"sprocket"]) {
+                // do nothing for the sprocket printer ids
+            } else {
+                NSString *obfsucatedValue = [MPAnalyticsManager obfuscateValue:value];
+                [metrics setObject:obfsucatedValue forKey:key];
+            }
         }
     }
 }
@@ -388,6 +409,7 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
         if (returnDictionary) {
             MPLogInfo(@"MobilePrintSDK METRICS:  Result = %@", returnDictionary);
         } else {
+            // the format of our embellishment metrics produces an error, but the data is logged as expected on the server
             MPLogError(@"MobilePrintSDK METRICS:  Parse Error = %@", error);
             NSString *returnString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
             MPLogInfo(@"MobilePrintSDK METRICS:  Return string = %@", returnString);
@@ -430,7 +452,16 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
     [metrics addEntriesFromDictionary:[self printMetricsForOfframp:[options objectForKey:kMPOfframpKey]]];
     [metrics addEntriesFromDictionary:[self contentOptionsForPrintItem:printItem]];
     
-    NSString *customAnalyticsJson = [self convertCustomAnalyticsToJson:[options objectForKey:kMPCustomAnalyticsKey]];
+    NSDictionary *customAnalyticsFromOfframp = [metrics objectForKey:kMPCustomAnalyticsKey];
+    NSDictionary *customAnalyticsFromOptions = [options objectForKey:kMPCustomAnalyticsKey];
+    NSMutableDictionary *customAnalytics = [[NSMutableDictionary alloc] init];
+    if (customAnalyticsFromOfframp) {
+        [customAnalytics addEntriesFromDictionary:customAnalyticsFromOfframp];
+    }
+    if (customAnalyticsFromOptions) {
+        [customAnalytics addEntriesFromDictionary:customAnalyticsFromOptions];
+    }
+    NSString *customAnalyticsJson = [self convertCustomAnalyticsToJson:customAnalytics];
     NSMutableDictionary *mutableOptions = [options mutableCopy];
     [mutableOptions setObject:customAnalyticsJson forKey:kMPCustomAnalyticsKey];
     [metrics addEntriesFromDictionary:mutableOptions];

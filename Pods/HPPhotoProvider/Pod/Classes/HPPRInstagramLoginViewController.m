@@ -24,6 +24,7 @@
 #define ALERT_VIEW_OK_BUTTON_INDEX 1
 
 NSString * const kInstagramLoginScreenName = @"Instagram Login Screen";
+NSString * const kInstagramProviderName = @"Instagram";
 
 @interface HPPRInstagramLoginViewController () <UIWebViewDelegate, UIAlertViewDelegate>
 
@@ -38,6 +39,11 @@ NSString * const kInstagramLoginScreenName = @"Instagram Login Screen";
 - (NSString *)screenName
 {
     return kInstagramLoginScreenName;
+}
+
+- (NSString *)providerName
+{
+    return kInstagramProviderName;
 }
 
 - (void)startLogin
@@ -83,6 +89,7 @@ NSString * const kInstagramLoginScreenName = @"Instagram Login Screen";
         }
         [self dismissViewControllerAnimated:YES completion:nil];
         handle = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     } else if ([urlString rangeOfString:@"error_reason=user_denied"].location != NSNotFound) {
         [self dismissViewControllerAnimated:YES completion:^{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Authorized Required", @"Title of an alert requesting authorization to access the Instagram photos")

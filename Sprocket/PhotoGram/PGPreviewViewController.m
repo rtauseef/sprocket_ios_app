@@ -14,22 +14,23 @@
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
 #import "PGCameraManager.h"
-#import "PGSelectTemplateViewController.h"
 #import "PGGesturesView.h"
 #import "PGAppAppearance.h"
 #import "UIView+Background.h"
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
 #import "PGImglyManager.h"
+#import "MPPrintManager.h"
+#import "UIViewController+Trackable.h"
 
 #import <MP.h>
 #import <MPPrintItemFactory.h>
 #import <MPLayoutFactory.h>
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
-#import <MPPrintLaterActivity.h>
 #import <MPBTPrintActivity.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Crashlytics/Crashlytics.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -38,10 +39,9 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
-@interface PGPreviewViewController() <MPPrintDataSource, UIPopoverPresentationControllerDelegate, MPPrintDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
-@property (strong, nonatomic) MPPrintLaterJob *printLaterJob;
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
 @property (strong, nonatomic) PGImglyManager *imglyManager;
@@ -55,7 +55,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL needNewImageView;
 @property (assign, nonatomic) BOOL didChangeProject;
-
+@property (assign, nonatomic) BOOL selectedNewPhoto;
 @end
 
 @implementation PGPreviewViewController
@@ -63,14 +63,18 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.printItem = nil;
+    self.trackableScreenName = @"Preview Screen";
+
     self.needNewImageView = NO;
     self.didChangeProject = NO;
+    self.selectedNewPhoto = YES;
     
     self.imglyManager = [[PGImglyManager alloc] init];
     
     [self.view layoutIfNeeded];
     
+    [PGAnalyticsManager sharedManager].photoSource = self.source;
+    [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
 }
 
@@ -86,10 +90,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         self.transitionEffectView.alpha = 1;
     }
     
-    if (nil == self.printItem) {
+    if (self.selectedNewPhoto) {
         if (self.selectedPhoto) {
-            self.printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
-            self.printItem.layout = [self layout];
             self.needNewImageView = YES;
         } else {
             [self showCamera];
@@ -119,12 +121,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.imageView) {
-        if (self.didChangeProject) {
-            [self.imageView adjustContentOffset];
-        } else {
-            [self.imageView adjustContentOffset];
-            self.didChangeProject = NO;
-        }
+        [self.imageView adjustContentOffset];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePreviewAndCamera) name:kPGCameraManagerCameraClosed object:nil];
@@ -173,10 +170,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[PGCameraManager sharedInstance] stopCamera];
 }
 
-- (void)setSelectedPhoto:(UIImage *)selectedPhoto
+- (void)setSelectedPhoto:(UIImage *)selectedPhoto editOfPreviousPhoto:(BOOL)edited
 {
-    self.printItem = nil;
-
+    self.selectedNewPhoto = YES;
+    
     self.originalImage = selectedPhoto;
     UIImage *finalImage = self.originalImage;
     
@@ -187,6 +184,16 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     }
     
     _selectedPhoto = finalImage;
+    
+    if (!edited) {
+        self.printItem = [MPPrintItemFactory printItemWithAsset:_selectedPhoto];
+        self.printItem.layout = [self layout];
+    }
+}
+
+- (void)setSelectedPhoto:(UIImage *)selectedPhoto
+{
+    [self setSelectedPhoto:selectedPhoto editOfPreviousPhoto:NO];
 }
 
 - (void)renderPhoto {
@@ -218,14 +225,18 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:self.imglyManager.imglyConfiguration];
     toolController.delegate = self;
     
-    [self presentViewController:toolController animated:NO completion:nil];
+    [self presentViewController:toolController animated:NO completion:^() {
+        NSString *screenName = @"Editor Screen";
+        [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
+        [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];
+    }];
 }
 
 #pragma mark - IMGLYToolStackControllerDelegate
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
 {
-    self.selectedPhoto = image;
+    [self setSelectedPhoto:image editOfPreviousPhoto:YES];
     self.imageView.image = self.selectedPhoto;
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.imageView layoutIfNeeded];
@@ -239,7 +250,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController
 {
-    NSLog(@"FAIL");
+    MPLogError(@"toolStackControllerDidFail:%@", toolStackController);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -272,7 +283,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
                 weakSelf.transitionEffectView.alpha = 0;
             } completion:nil];
-            
+            [PGCameraManager logMetrics];
         }];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
@@ -280,10 +291,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 }
 
 - (void)photoTaken {
-    self.media = [PGCameraManager sharedInstance].currentMedia;
     self.selectedPhoto = [PGCameraManager sharedInstance].currentSelectedPhoto;
-    self.printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
-    self.printItem.layout = [self layout];
     
     self.didChangeProject = NO;
     
@@ -292,6 +300,14 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     
     self.imageContainer.alpha = 1.0F;
     self.imageView.alpha = 1.0F;
+    
+    self.source = [PGPreviewViewController cameraSource];
+    [PGAnalyticsManager sharedManager].photoSource = self.source;
+}
+
++ (NSString *)cameraSource
+{
+    return @"Camera";
 }
 
 #pragma mark - PGGesture Delegate
@@ -315,16 +331,23 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self showCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
+                                                                  source:kEventDismissEditCameraLabel];
         }];
         [alert addAction:okAction];
         
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self saveToCameraRoll];
             [self showCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                  source:kEventDismissEditCameraLabel];
         }];
         [alert addAction:saveAction];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCameraLabel];
+        }];
         [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];
@@ -341,16 +364,23 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self closePreviewAndCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
+                                                                  source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:okAction];
         
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self saveToCameraRoll];
             [self closePreviewAndCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                  source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:saveAction];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCloseLabel];
+        }];
         [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];
@@ -362,23 +392,14 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
     [self showImgly];
-    
-    return;
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGSelectTemplateViewController *templateViewController = (PGSelectTemplateViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSelectTemplateViewController"];
-    
-    templateViewController.source = self.source;
-    templateViewController.selectedPhoto = self.originalImage;
-    templateViewController.media = self.media;
-
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:templateViewController];
-    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES completion:nil];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:^(){
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
+    }];
+    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
@@ -415,59 +436,9 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (NSDictionary *)extendedMetrics
 {
     return @{
-//           kMetricsTypeLocationKey:[self locationMetrics],
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-//           kMetricsTypePhotoPositionKey:[[PGAnalyticsManager sharedManager] photoPositionMetricsWithOffset:self.svgLoader.offset zoom:self.svgLoader.zoom angle:self.svgLoader.angle]
+             kMPMetricsEmbellishmentKey:[self.imglyManager analyticsString]
              };
-}
-
-- (void)printLaterItemsWithCompletion:(void (^)(NSDictionary *result))completion
-{
-    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:1];
-    
-    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:self.selectedPhoto];
-    printItem.layout = [self layout];
-    
-    [result setValue:printItem forKey:[self paper].sizeTitle];
-    
-    if (completion) {
-        completion(result);
-    }
-}
-
-- (void)preparePrintJobWithCompletion:(void(^)(void))completion
-{
-    NSString *printLaterJobNextAvailableId = [[MP sharedInstance] nextPrintJobId];
-    self.printLaterJob = [[MPPrintLaterJob alloc] init];
-    self.printLaterJob.id = printLaterJobNextAvailableId;
-    self.printLaterJob.date = [NSDate date];
-    self.printLaterJob.extra = [self extendedMetrics];
-    [self printLaterItemsWithCompletion:^(NSDictionary *result) {
-        self.printLaterJob.printItems = result;
-        if (completion) {
-            completion();
-        }
-    }];
-}
-
-- (void)shareItem
-{
-    PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
-    
-    MPPrintActivity *printActivity = [[MPPrintActivity alloc] init];
-    printActivity.dataSource = self;
-    
-    if (IS_OS_8_OR_LATER && ![[MP sharedInstance] isWifiConnected]) {
-        MPPrintLaterActivity *printLaterActivity = [[MPPrintLaterActivity alloc] init];
-        [self preparePrintJobWithCompletion:^{
-            printLaterActivity.printLaterJob = self.printLaterJob;
-            [self presentActivityViewControllerWithActivities:@[printLaterActivity, saveToCameraRollActivity]];
-        }];
-    } else {
-        MPPrintActivity *printActivity = [[MPPrintActivity alloc] init];
-        printActivity.dataSource = self;
-        [self presentActivityViewControllerWithActivities:@[printActivity, saveToCameraRollActivity]];
-    }
 }
 
 - (void)presentActivityViewControllerWithActivities:(NSArray *)applicationActivities
@@ -478,7 +449,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             UIAlertController *errorScreenshotController = [UIAlertController alertControllerWithTitle:kPreviewScreenshotErrorTitle message:kPreviewScreenshotErrorMessage preferredStyle:UIAlertControllerStyleAlert];
             [errorScreenshotController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil]];
             [errorScreenshotController addAction:[UIAlertAction actionWithTitle:kPreviewRetryButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [self shareItem];
+                [self didTouchUpInsideShareButton:nil];
             }]];
             
             [self presentViewController:errorScreenshotController animated:YES completion:nil];
@@ -490,7 +461,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     } else {
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:self.printItem.activityItems applicationActivities:applicationActivities];
         
-        [activityViewController setValue:NSLocalizedString(@"My HP Snapshot", nil) forKey:@"subject"];
+        [activityViewController setValue:NSLocalizedString(@"Check out my HP Sprocket creation", nil) forKey:@"subject"];
         
         activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard,
                                                          UIActivityTypeSaveToCameraRoll,
@@ -502,28 +473,26 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
                                                          UIActivityTypePostToVimeo];
         
         __weak __typeof(self) weakSelf = self;
-        activityViewController.completionHandler = ^(NSString *activityType, BOOL completed) {
+        activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *items, NSError *error) {
             
-            BOOL printActivity = [activityType isEqualToString: NSStringFromClass([MPPrintActivity class])];
-            BOOL printLaterActivity = [activityType isEqualToString: NSStringFromClass([MPPrintLaterActivity class])];
+            BOOL printActivity = [activityType isEqualToString: NSStringFromClass([MPBTPrintActivity class])];
             
             NSString *offramp = activityType;
             NSDictionary *extendedMetrics = [weakSelf extendedMetrics];
             if (printActivity) {
-                offramp = [weakSelf.printItem.extra objectForKey:kMetricsOfframpKey];
-            } else if (printLaterActivity) {
-                offramp = [weakSelf.printLaterJob.extra objectForKey:kMetricsOfframpKey];
-                extendedMetrics = self.printLaterJob.extra;
+                offramp = [MPPrintManager printOfframp];
+                [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintShareLabel];
             }
             
             if (!offramp) {
                 PGLogError(@"Missing offramp key for share activity");
+                offramp = @"Unknown";
             }
             
             if (completed) {
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
-                if (printLaterActivity) {
-                    [[MP sharedInstance] presentPrintQueueFromController:weakSelf animated:YES completion:nil];
+                if (!printActivity) {
+                    [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
                 }
             } else {
                 if (activityType) {
@@ -538,50 +507,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         
         [self presentViewController:activityViewController animated:YES completion:nil];
     }
-}
-
-#pragma mark - MPPrintDelegate
-
-- (void)didFinishPrintFlow:(UIViewController *)printViewController
-{
-    NSString *offramp = [self.printItem.extra objectForKey:kMetricsOfframpKey];
-    if (offramp) {
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:self.printItem exendedInfo:[self extendedMetrics]];
-    } else {
-        PGLogError(@"Print from client UI missing offramp key in print item");
-    }
-    [printViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)didCancelPrintFlow:(UIViewController *)printViewController
-{
-    [printViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - MPPrintDataSource
-
-- (void)imageForPaper:(MPPaper *)paper withCompletion:(void (^)(UIImage *))completion
-{
-    UIImage *image = [self.imageContainer screenshotImage];
-    if (completion) {
-        completion(image);
-    }
-}
-
-- (void)printingItemForPaper:(MPPaper *)paper withCompletion:(void (^)(MPPrintItem *))completion
-{
-    [self imageForPaper:paper withCompletion:^(UIImage *image) {
-        self.printItem = [MPPrintItemFactory printItemWithAsset:image];
-        self.printItem.layout = [self layout];
-        if (completion) {
-            completion(self.printItem);
-        }
-    }];
-}
-
-- (void)previewImageForPaper:(MPPaper *)paper withCompletion:(void (^)(UIImage *))completion
-{
-    [self imageForPaper:paper withCompletion:completion];
 }
 
 #pragma mark - UIPopoverPresentationControllerDelegate

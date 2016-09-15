@@ -13,6 +13,9 @@
 #import "PGCameraManager.h"
 #import "PGLandingMainPageViewController.h"
 #import "PGAppDelegate.h"
+#import "PGAnalyticsManager.h"
+#import "UIViewController+trackable.h"
+#import <Crashlytics/Crashlytics.h>
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -93,10 +96,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.selectedPhoto = photo;
-    previewViewController.media = [[HPPRMedia alloc] initWithAttributes:info];
-    previewViewController.source = @"CameraRoll";
+    previewViewController.source = [PGPreviewViewController cameraSource];
     
-    self.currentMedia = previewViewController.media;
     self.currentSource = previewViewController.source;
     self.currentSelectedPhoto = previewViewController.selectedPhoto;
     
@@ -120,7 +121,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
 {
     if (position == AVCaptureDevicePositionUnspecified) {
-        self.lastDeviceCameraPosition = AVCaptureDevicePositionFront;
+        self.lastDeviceCameraPosition = AVCaptureDevicePositionBack;
     } else {
         self.lastDeviceCameraPosition = position;
     }
@@ -203,8 +204,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
         
         NSError *err = nil;
@@ -237,8 +240,12 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted){
                 success();
+                [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                      device:kEventAuthRequestCameraLabel];
             } else {
                 failure();
+                [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                      device:kEventAuthRequestCameraLabel];
             }
         }];
     }
@@ -269,6 +276,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
+}
+
+#pragma mark - Metrics
++ (NSString *)trackableScreenName
+{
+    return @"Camera Screen";
+}
+
++ (void)logMetrics
+{
+    NSString *screenName = [PGCameraManager trackableScreenName];
+    [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
+    [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];    
 }
 
 @end

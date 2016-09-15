@@ -106,10 +106,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Current location is required to identify when your printer connection is available.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Current location is required to identify when your printer connection is available.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>sanchez-regular.ttf</string>
@@ -134,7 +130,6 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
-		<string>location</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>PG_Main</string>
@@ -153,8 +148,6 @@
 	<key>UISupportedExternalAccessoryProtocols</key>
 	<array>
 		<string>com.hp.protocol</string>
-		<string>com.lge.pocketphoto</string>
-		<string>com.polaroid.mobileprinter</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

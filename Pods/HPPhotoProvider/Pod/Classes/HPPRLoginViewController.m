@@ -72,10 +72,16 @@ float kRetryWidth = 60.0;
     return nil;
 }
 
+- (NSString *)providerName
+{
+    return nil;
+}
+
 - (void)cancelLogin
 {
     [self stopTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
 }
 
 - (void)loginError:(NSError *)error
@@ -166,8 +172,8 @@ float kRetryWidth = 60.0;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self hideLoadWarning];
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadWarning];
         [self.spinner removeFromSuperview];
     });
 }

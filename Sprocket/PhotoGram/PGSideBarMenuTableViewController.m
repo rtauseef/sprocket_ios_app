@@ -62,7 +62,7 @@
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 NSString * const kTakeOurSurveyURL = @"https://www.surveymonkey.com/s/9C9M96H";
 NSString * const kTakeOurSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
-NSString * const kBuyPaperURL = @"http://store.hp.com/us/en/pdp/hp-zink%C2%AE-sticky-backed-photo-paper-20-sht-2-x-3-in";
+NSString * const kBuyPaperURL = @"http://hpsprocket.com/#supplies";
 
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
@@ -193,6 +193,8 @@ typedef enum {
 {
     [super viewWillAppear:animated];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
     [self setInstagramUserView];
     [self setFacebookUserView];
     [self setFlickrUserView];
@@ -215,14 +217,6 @@ typedef enum {
     self.tableView.frame = frame;
     
     self.presentingChild = NO;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 #pragma mark - Setter methods
@@ -291,17 +285,22 @@ typedef enum {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-    PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-    
-    if ([segue.identifier isEqualToString:@"PrivacyStatementSegue"]) {
-        webViewerViewController.trackableScreenName = @"Privacy Statement Screen";
-        NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
         
-        webViewerViewController.url = localizablePrivacyStatementURL;
-    } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
-        webViewerViewController.trackableScreenName = @"Buy Paper";
-        webViewerViewController.url = kBuyPaperURL;
+        if ([navigationController.topViewController isKindOfClass:[PGWebViewerViewController class]]) {
+            PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
+            
+            if ([segue.identifier isEqualToString:@"PrivacyStatementSegue"]) {
+                webViewerViewController.trackableScreenName = @"Privacy Statement Screen";
+                NSString *localizablePrivacyStatementURL = [NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]];
+                
+                webViewerViewController.url = localizablePrivacyStatementURL;
+            } else if ([segue.identifier isEqualToString:@"BuyPaperSegue"]) {
+                webViewerViewController.trackableScreenName = @"Buy Paper Screen";
+                webViewerViewController.url = kBuyPaperURL;
+            }
+        }
     }
 }
 
@@ -434,7 +433,7 @@ typedef enum {
 
 - (void)setupSocialItemView:(UIView *)view
 {
-    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];;
+    view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
 }
 
 - (void)setTableFooterHeight

@@ -64,6 +64,7 @@ typedef enum {
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     
@@ -121,8 +122,8 @@ typedef enum {
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [self enableSwipe];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
 - (UINavigationController *)viewControllerForSocialNetwork:(NSString *)socialNetwork
@@ -144,6 +145,8 @@ typedef enum {
 
 - (void)showSocialNetworkNotification:(NSNotification *)notification
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
     NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
     NSNumber *includeLogin = [notification.userInfo objectForKey:kIncludeLoginKey];
     
@@ -377,7 +380,6 @@ typedef enum {
 
 - (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     PGLandingPageViewController *vc = (PGLandingPageViewController *)([self currentNavigationController].viewControllers[0]);
     [vc.revealViewController revealToggle:self];
 }
@@ -409,7 +411,7 @@ typedef enum {
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-        previewViewController.source = @"CameraRoll";
+        previewViewController.source = [PGPreviewViewController cameraSource];
         previewViewController.transitionEffectView.alpha = 1;
         
         [weakSelf presentViewController:previewViewController animated:YES completion:nil];

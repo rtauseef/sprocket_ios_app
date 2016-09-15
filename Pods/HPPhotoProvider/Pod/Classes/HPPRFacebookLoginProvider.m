@@ -15,6 +15,8 @@
 #import "HPPRFacebookLoginProvider.h"
 #import "HPPR.h"
 
+static NSString * const kFacebookProviderName = @"Facebook";
+
 @implementation HPPRFacebookLoginProvider
 
 #pragma mark - Initialization
@@ -52,13 +54,17 @@
             loginManager.loginBehavior = FBSDKLoginBehaviorSystemAccount;
             UIViewController *topViewController = [self topViewController];
             [loginManager logInWithReadPermissions:FACEBOOK_PERMISSIONS fromViewController:topViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRTrackableScreenNameKey]];
                 if (completion) {
                     if (error) {
                         completion(NO, error);
                     } else if (nil == [FBSDKAccessToken currentAccessToken]) {
                         completion(NO, [self loginProblemError]);
+                        // No token and no error mean the user hit "Done" without logging in
+                        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
                     } else {
                         completion(YES, nil);
+                        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
                     }
                 }
             }];
@@ -128,6 +134,11 @@
     } else {
         return rootViewController;
     }
+}
+
+- (NSString *)providerName
+{
+    return kFacebookProviderName;
 }
 
 @end

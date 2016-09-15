@@ -196,7 +196,7 @@
             NSMutableArray *facebookAlbums = [NSMutableArray array];
             
             HPPRFacebookAlbum *allPhotos = [[HPPRFacebookAlbum alloc] init];
-            allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates all photos will be shown");
+            allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates that all photos will be displayed");
             allPhotos.objectID = nil;
             
             [facebookAlbums addObject:allPhotos];

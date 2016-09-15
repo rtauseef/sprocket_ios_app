@@ -18,7 +18,6 @@
 #import "HPPRNoInternetConnectionMessageView.h"
 #import "HPPRCacheService.h"
 #import "HPPRSelectPhotoProvider.h"
-#import "HPPRSearchViewController.h"
 #import "HPPRAppearance.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
@@ -28,7 +27,7 @@
 
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
-@interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, HPPRSegmentedControlViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
+@interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -180,6 +179,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)startRefreshing:(UIRefreshControl *)refreshControl
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
+
     self.noPhotosLabel.hidden = YES;
     
     [self.provider refreshAlbumWithCompletion:^(NSError *error) {
@@ -190,6 +191,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if ((nil != refreshControl) && refreshControl.refreshing) {
                             [refreshControl endRefreshing];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
                         }
                     });
                 }
@@ -198,6 +200,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ((nil != refreshControl) && refreshControl.refreshing) {
                     [refreshControl endRefreshing];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
                 }
                 
                 if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {
@@ -530,16 +533,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     result *= [self worstCaseNumberOfPhotosPerLine];
     
     return (NSUInteger)result;
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([@"SearchSegue"  isEqual: segue.identifier]) {
-        HPPRSearchViewController *vc = [segue destinationViewController];
-        vc.delegate = self.delegate;
-    }
 }
 
 @end
