@@ -46,7 +46,7 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
     if (indexPath.row == 1) {
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-        NSString *printerVersionString = nil;
+        NSString *fwVersion = nil;
         NSString *tweetText = nil;
         NSString *tweetStringURL = nil;
         NSString *enterTextURL = NSLocalizedString(@"Enter+Text", nil);
@@ -61,14 +61,9 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
             NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
             
             if (numberOfPairedSprockets == 1) {
-                NSUInteger printerVersion = [[MP sharedInstance] printerVersionNumber];
-                NSUInteger fw1 = (0xFF0000 & printerVersion) >> 16;
-                NSUInteger fw2 = (0x00FF00 & printerVersion) >>  8;
-                NSUInteger fw3 =  0x0000FF & printerVersion;
-                printerVersionString = [NSString stringWithFormat:@"%li.%li.%li", fw1, fw2, fw3];
-                
-                tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ F:%@ \n[%@]", appVersion, printerVersionString, enterText];
-                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+F:%@+%%0a%%5B%@%%5D", appVersion, printerVersionString, enterTextURL];
+                fwVersion = [[MP sharedInstance] printerVersion];
+                tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ F:%@ \n[%@]", appVersion, fwVersion, enterText];
+                tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+F:%@+%%0a%%5B%@%%5D", appVersion, fwVersion, enterTextURL];
             }
         }
 
