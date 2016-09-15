@@ -1377,9 +1377,6 @@ printer and app support.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="ViewUserGuideSegue" id="upf-7w-hsO"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="mGd-CY-o6r" imageView="8X1-eU-uTV" style="IBUITableViewCellStyleDefault" id="PMz-aF-SGY">
                                         <rect key="frame" x="0.0" y="144" width="600" height="44"/>
@@ -1424,9 +1421,6 @@ printer and app support.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="JoinForumSupportSegue" id="O6V-Yp-S6U"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="34K-Xv-dA8" imageView="Z7N-HX-kZe" style="IBUITableViewCellStyleDefault" id="MTU-6P-bzL">
                                         <rect key="frame" x="0.0" y="232" width="600" height="44"/>
@@ -1449,9 +1443,6 @@ printer and app support.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="VisitWebsiteSegue" id="EBG-5d-8Dw"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2078,7 +2069,4 @@ printer and app support.</string>
         <image name="signInFlickr" width="27" height="13"/>
         <image name="signInInstagram" width="26" height="26"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="upf-7w-hsO"/>
-    </inferredMetricsTieBreakers>
 </document>
