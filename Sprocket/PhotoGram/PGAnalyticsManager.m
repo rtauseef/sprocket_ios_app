@@ -143,6 +143,9 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     self.userName = kNoPhotoSelected;
     self.userId = kNoPhotoSelected;
     
+    [[MP sharedInstance] obfuscateMetric:kMetricsUserID];
+    [[MP sharedInstance] obfuscateMetric:kMetricsUserName];
+    
     [self setupCrashlytics];
     
     GAI *gai = [GAI sharedInstance];
