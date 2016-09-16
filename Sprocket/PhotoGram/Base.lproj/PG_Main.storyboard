@@ -1206,9 +1206,9 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </constraints>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <rect key="frame" x="269" y="6" width="63" height="63"/>
+                                                <rect key="frame" x="269" y="7" width="63" height="61"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="previewPrinter"/>
+                                                <state key="normal" backgroundImage="previewPrinter"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
                                                 </userDefinedRuntimeAttributes>
@@ -1247,7 +1247,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="iMJ-5T-IcV" secondAttribute="centerY" id="Q7a-6e-k48"/>
                                             <constraint firstItem="iMJ-5T-IcV" firstAttribute="height" secondItem="gvh-fe-pwH" secondAttribute="height" constant="20" id="QVe-LZ-sEN"/>
                                             <constraint firstItem="wr3-E7-Jz8" firstAttribute="leading" secondItem="Hn4-X4-HTM" secondAttribute="trailing" constant="21" id="WRk-mm-6au"/>
-                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="height" secondItem="Hn4-X4-HTM" secondAttribute="height" constant="20" id="Xre-AL-fob"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="height" secondItem="Hn4-X4-HTM" secondAttribute="height" constant="18" id="Xre-AL-fob"/>
                                             <constraint firstItem="wr3-E7-Jz8" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ZTd-GT-dGs"/>
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ix1-Fs-fY1"/>
                                             <constraint firstItem="Hn4-X4-HTM" firstAttribute="leading" secondItem="gvh-fe-pwH" secondAttribute="trailing" constant="21" id="oP0-eZ-mIq"/>
