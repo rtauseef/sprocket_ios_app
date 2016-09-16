@@ -53,7 +53,7 @@
 "Hashtag" = "Hashtag";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue." = "O HP Social Media Snapshots utiliza fotos do Instagram para criar instantâneos incríveis. Permita que o HP Social Media Snapshots acesse suas fotos do Instagram para poder continuar.";
+"%@ uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "O %@ utiliza fotos do Instagram para criar instantâneos incríveis. Permita que o %@ acesse suas fotos do Instagram para poder continuar.";
 
 /* Feed of Instagram */
 "My Feed" = "Meu Feed";
