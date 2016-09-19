@@ -19,6 +19,8 @@
 #define HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION @"ProviderLoginSuccessNotification"
 #define PROVIDER_STARTUP_NOTIFICATION @"ProviderStartupNotification"
 #define HPPR_ALBUM_CHANGE_NOTIFICATION @"AlbumChangeNotification"
+#define HPPR_PHOTO_COLLECTION_BEGIN_REFRESH @"PhotoCollectionBeginRefresh"
+#define HPPR_PHOTO_COLLECTION_END_REFRESH @"PhotoCollectionEndRefresh"
 
 #define FACEBOOK_PERMISSIONS @[@"public_profile", @"user_photos"]
 

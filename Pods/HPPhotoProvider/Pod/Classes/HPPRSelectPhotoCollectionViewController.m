@@ -179,6 +179,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)startRefreshing:(UIRefreshControl *)refreshControl
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
+    
     self.noPhotosLabel.hidden = YES;
     
     [self.provider refreshAlbumWithCompletion:^(NSError *error) {
@@ -189,6 +191,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if ((nil != refreshControl) && refreshControl.refreshing) {
                             [refreshControl endRefreshing];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
                         }
                     });
                 }
@@ -197,6 +200,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ((nil != refreshControl) && refreshControl.refreshing) {
                     [refreshControl endRefreshing];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
                 }
                 
                 if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {

@@ -49,7 +49,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 569fc23fc8b49c7c17594cfac35b8a74bcb8594d
+    :commit: 41b3737dbd0ab7f1e5623af8e67bb0566001721b
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: d4773640da97101384d53c8b804cc4d191dd9cd4
@@ -60,10 +60,10 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
-  HPPhotoProvider: 3fded17371e1ae535ddbb839360636ea17160d33
+  HPPhotoProvider: f507e51bde10a7e51ddc79b40b76552f85c872f3
   MobilePrintSDK: c906b48fd6cd246ce00f35a2d6fb7fe63142ed79
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
 
-PODFILE CHECKSUM: 403144d199d5cf19040f9e203fd896b1750bbcd2
+PODFILE CHECKSUM: ec1d616a015ffb3b8eabfed30d408d29b219890a
 
 COCOAPODS: 1.0.1
