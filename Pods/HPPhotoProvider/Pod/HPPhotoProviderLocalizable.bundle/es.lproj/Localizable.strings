@@ -26,7 +26,7 @@
 "Authorize" = "Autorizar";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
-"Authorized Required" = "Autorización requerida";
+"Authorization Required" = "Autorización requerida";
 
 /* Name of the camera roll app of the device */
 "Camera Roll" = "Rollo de cámara";

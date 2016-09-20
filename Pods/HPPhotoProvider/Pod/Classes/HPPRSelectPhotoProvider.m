@@ -106,15 +106,11 @@
 
 - (UIAlertView *)lostAccessAlertView
 {
-#ifndef TARGET_IS_EXTENSION
     return [[UIAlertView alloc ] initWithTitle:[NSString stringWithFormat:HPPRLocalizedString(@"%@ Access", @"Title of an alert indicates the specified social network login is not longer valid"), self.name]
                                        message:[NSString stringWithFormat:HPPRLocalizedString(@"There was a problem accessing %@. Please sign in again.", @"Message of an alert indicates the specified social network login is not longer valid"), self.name]
                                       delegate:self
                              cancelButtonTitle:HPPRLocalizedString(@"OK", nil)
                              otherButtonTitles: nil];
-#else
-    return nil;
-#endif
 }
 
 #pragma mark - Photo list information

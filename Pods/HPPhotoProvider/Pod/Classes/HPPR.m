@@ -28,24 +28,4 @@ NSString * const kHPPRProviderName = @"provider";
     return sharedInstance;
 }
 
-- (UIViewController *)keyWindowTopMostController
-{
-    
-#ifndef TARGET_IS_EXTENSION
-    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-#else
-    UIViewController *topController = self.extensionController;
-#endif
-    
-    while (topController.presentedViewController) {
-        topController = topController.presentedViewController;
-    }
-    
-    if ([topController isKindOfClass:[UINavigationController class]]) {
-        topController = ((UINavigationController *)topController).topViewController;
-    }
-    
-    return topController;
-}
-
 @end

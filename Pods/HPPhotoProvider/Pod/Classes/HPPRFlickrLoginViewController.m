@@ -93,7 +93,6 @@ NSString * const kFlickrProviderName = @"Flickr";
 
 - (void)showRetryAlertView:(NSError *)error
 {
-#ifndef TARGET_IS_EXTENSION
     if (self.retryAlertView == nil) {
         self.retryAlertView = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Error", nil)
                                                          message:error.localizedDescription
@@ -101,9 +100,8 @@ NSString * const kFlickrProviderName = @"Flickr";
                                                cancelButtonTitle:HPPRLocalizedString(@"Retry", @"Button caption")
                                                otherButtonTitles:HPPRLocalizedString(@"OK", @"Button caption"), nil];
     }
-
+    
     [self.retryAlertView show];
-#endif
 }
 
 - (void)beginFlickrAuth

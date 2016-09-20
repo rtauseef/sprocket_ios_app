@@ -63,7 +63,6 @@ NSString * const kInstagramProviderName = @"Instagram";
 
 - (void)loginError:(NSError *)error
 {
-#ifndef TARGET_IS_EXTENSION
     if (self.retryAlertView == nil) {
         self.retryAlertView = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Error", nil)
                                                          message:error.localizedDescription
@@ -73,7 +72,6 @@ NSString * const kInstagramProviderName = @"Instagram";
     }
     
     [self.retryAlertView show];
-#endif
 }
 
 - (BOOL)handleURL:(NSURL *)url
@@ -94,7 +92,6 @@ NSString * const kInstagramProviderName = @"Instagram";
         [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     } else if ([urlString rangeOfString:@"error_reason=user_denied"].location != NSNotFound) {
         [self dismissViewControllerAnimated:YES completion:^{
-#ifndef TARGET_IS_EXTENSION
             NSString *text = HPPRLocalizedString(@"%@ uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue.", @"Message of an alert requesting authorization to access the Instagram photos");
             NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
             text = [NSString stringWithFormat:text, appName, appName];
@@ -104,7 +101,6 @@ NSString * const kInstagramProviderName = @"Instagram";
                                                   cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
                                                   otherButtonTitles:nil];
             [alert show];
-#endif
             
         }];
     }

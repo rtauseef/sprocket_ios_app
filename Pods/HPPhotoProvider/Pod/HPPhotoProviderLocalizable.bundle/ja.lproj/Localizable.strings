@@ -35,7 +35,7 @@
 "Authorize" = "認証";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
-"Authorized Required" = "認証が必要です";
+"Authorization Required" = "認証が必要です";
 
 /* Name of the camera roll app of the device */
 "Camera Roll" = "カメラロール";
