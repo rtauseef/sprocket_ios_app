@@ -121,7 +121,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.imageView) {
+        // Don't let the adjustContentOffset function effect our didChangeProject value
+        BOOL originalChangProjectVal = self.didChangeProject;
         [self.imageView adjustContentOffset];
+        self.didChangeProject = originalChangProjectVal;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePreviewAndCamera) name:kPGCameraManagerCameraClosed object:nil];
@@ -326,17 +329,24 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideCameraButton:(id)sender
 {
     if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Dismiss Edits", nil)
-                                                                       message:NSLocalizedString(@"Dismiss your project and go to the camera?", nil) preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Save and exit preview?", nil)
+                                                                       message:@""
+                                                                preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCameraLabel];
+        }];
+        [alert addAction:cancelAction];
+
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Don't Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self showCamera];
             [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
                                                                   source:kEventDismissEditCameraLabel];
         }];
         [alert addAction:okAction];
         
-        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [self saveToCameraRoll];
             [self showCamera];
             [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
@@ -344,11 +354,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         }];
         [alert addAction:saveAction];
         
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
-                                                                  source:kEventDismissEditCameraLabel];
-        }];
-        [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];
     } else {
@@ -359,29 +364,30 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
     if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Dismiss Edits", nil)
-                                                                       message:NSLocalizedString(@"Dismiss your project and go to the galleries?", nil) preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Save and exit preview?", nil)
+                                                                       message:@""
+                                                                preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCloseLabel];
+        }];
+        [alert addAction:cancelAction];
+
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Don't Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self closePreviewAndCamera];
             [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
                                                                   source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:okAction];
         
-        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [self saveToCameraRoll];
             [self closePreviewAndCamera];
             [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
                                                                   source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:saveAction];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
-                                                                  source:kEventDismissEditCloseLabel];
-        }];
-        [alert addAction:cancelAction];
         
         [self presentViewController:alert animated:YES completion:nil];
     } else {

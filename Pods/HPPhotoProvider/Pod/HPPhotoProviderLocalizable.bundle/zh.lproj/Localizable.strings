@@ -53,7 +53,7 @@
 "Hashtag" = "主题标签";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue." = "HP Social Media Snapshots 使用 Instagram 照片创建精彩快照。 请允许 HP Social Media Snapshots 访问您的 Instagram 照片以继续下一步操作。";
+"%@ uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "%@ 使用 Instagram 照片创建精彩快照。 请允许 %@ 访问您的 Instagram 照片以继续下一步操作。";
 
 /* Feed of Instagram */
 "My Feed" = "我的馈送";

@@ -180,7 +180,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)startRefreshing:(UIRefreshControl *)refreshControl
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
-
+    
     self.noPhotosLabel.hidden = YES;
     
     [self.provider refreshAlbumWithCompletion:^(NSError *error) {

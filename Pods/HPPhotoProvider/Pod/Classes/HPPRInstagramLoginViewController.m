@@ -92,8 +92,11 @@ NSString * const kInstagramProviderName = @"Instagram";
         [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     } else if ([urlString rangeOfString:@"error_reason=user_denied"].location != NSNotFound) {
         [self dismissViewControllerAnimated:YES completion:^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Authorized Required", @"Title of an alert requesting authorization to access the Instagram photos")
-                                                            message:HPPRLocalizedString(@"HP Social Media Snapshots uses Instagram photos to create awesome snapshots. Please allow HP Social Media Snapshots to access your Instagram photos in order to continue.", @"Message of an alert requesting authorization to access the Instagram photos")
+            NSString *text = HPPRLocalizedString(@"%@ uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue.", @"Message of an alert requesting authorization to access the Instagram photos");
+            NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
+            text = [NSString stringWithFormat:text, appName, appName];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Authorization Required", @"Title of an alert requesting authorization to access the Instagram photos")
+                                                            message:text
                                                            delegate:nil
                                                   cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
                                                   otherButtonTitles:nil];
