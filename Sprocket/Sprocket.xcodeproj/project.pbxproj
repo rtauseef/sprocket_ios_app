@@ -76,6 +76,7 @@
 		8215232A1D82215600C0541C /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821523291D82215600C0541C /* ActionViewController.m */; };
 		8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8215232B1D82215600C0541C /* MainInterface.storyboard */; };
 		821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		82157D071D91EEEF00360D87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34D5075199AB87B006D80E0 /* Images.xcassets */; };
 		821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D51D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
@@ -2057,6 +2058,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */,
+				82157D071D91EEEF00360D87 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
