@@ -14,7 +14,6 @@
 #import "FBSDKLoginKit/FBSDKLoginKit.h"
 #import "HPPRFacebookLoginProvider.h"
 #import "HPPR.h"
-#import "MP.h"
 
 static NSString * const kFacebookProviderName = @"Facebook";
 
@@ -119,7 +118,7 @@ static NSString * const kFacebookProviderName = @"Facebook";
 // The following was adapted from: http://stackoverflow.com/questions/6131205/iphone-how-to-find-topmost-view-controller
 
 - (UIViewController*)topViewController {
-    return [self topViewControllerWithRootViewController:[MP sharedInstance].keyWindowTopMostController];
+    return [self topViewControllerWithRootViewController:[[HPPR sharedInstance] keyWindowTopMostController]];
 }
 
 - (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {

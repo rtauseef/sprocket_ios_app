@@ -81,7 +81,9 @@ extern NSString * const kHPPRProviderName;
 @property (nonatomic, assign) BOOL immediateLoginAlert;
 @property (nonatomic, assign) BOOL preventHideLoginAlert;
 @property (nonatomic, strong) HPPRAppearance *appearance;
+@property (strong, nonatomic) UIViewController *extensionController;
 
 + (HPPR *)sharedInstance;
+- (UIViewController *)keyWindowTopMostController;
 
 @end
