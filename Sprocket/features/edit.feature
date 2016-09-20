@@ -17,8 +17,8 @@ Scenario Outline: Verify Edit screen
     Then I should see "Check" mark
     
     Examples:
-    | screen_name            |
-    | Preview            |
+    | screen_name        |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
     
@@ -38,11 +38,11 @@ Scenario Outline: Verify close button for edit screen
     #Then I should see the modal screen title
     #Then I should see the modal screen content
     #Then I tap "Yes" button
-    Then I should see the "Preview" screen
+    Then I should see the "<screen_name>" screen
     
     Examples:
     | screen_name            |
-    | Preview            |
+    | Instagram Preview            |
     | Flickr Preview     |
     | CameraRoll Preview |
     

@@ -15,7 +15,7 @@ Scenario Outline: Sign in to different Social media accounts from side menu
     Then I should see the "<Photos>" screen
     Examples:
       | social_media | Sign in          | Photos           |
-      | Instagram    | Instagram Signin | Home             |
+      | Instagram    | Instagram Signin | Instagram Photos             |
       | Flickr       | FlickrSignin     | Flickr Photo     |
       | CameraRoll   | CameraRoll       | CameraRoll Photo |
 
@@ -27,7 +27,7 @@ Scenario: Verify side menu options
     When I touch menu button on navigation bar
     Then I should see the side menu
     And I should see the following:
-    |Devices        |
+    |sprocket        |
     |Buy Paper      |
     |How To & Help  |
     |Give Feedback  |
@@ -40,7 +40,7 @@ Scenario: Verify side menu options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    Then I touch "Devices"
+    Then I touch "sprocket"
     And I should see the modal screen title
     And I tap the "OK" button
     Then I am on the "Device" screen

@@ -38,9 +38,9 @@ Scenario Outline: Open Social Source from  Landing screen
 	Examples:
 	|Social Source	|
 	|Instagram		|
-  	|Flickr			|
-  	|Facebook		|
-  	|CameraRoll	    |
+  |Flickr			|
+  |Facebook		|
+  |CameraRoll	    |
 
   @reset
   @done

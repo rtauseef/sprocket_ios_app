@@ -1,6 +1,6 @@
 require 'calabash-cucumber/ibase'
 
-class PreviewScreen < Calabash::IBase
+class InstagramPreviewScreen < Calabash::IBase
 
   def trait
     camera
@@ -39,7 +39,7 @@ class PreviewScreen < Calabash::IBase
   end
   def navigate
     unless current_page?
-      select_photo_screen = go_to(HomeScreen)
+      select_photo_screen = go_to(InstagramPhotosScreen)
       sleep(WAIT_SCREENLOAD)
     end
     sleep(STEP_PAUSE)

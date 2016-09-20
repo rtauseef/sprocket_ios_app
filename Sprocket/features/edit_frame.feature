@@ -19,7 +19,7 @@ Scenario Outline: Verify 'Frame' option
     
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
     
@@ -37,10 +37,10 @@ Scenario Outline: Verify 'Frame' option
     And I should see the photo with the "frame"
     
     Examples:
-    | screen_name|
-    | Instagram  |
-    | Flickr     |
-    | CameraRoll |
+    | screen_name       |
+    | Instagram Preview |
+    | Flickr Preview    |
+    | CameraRoll        |
     
     
     

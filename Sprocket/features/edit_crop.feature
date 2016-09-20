@@ -15,11 +15,11 @@ Scenario Outline: Verify crop option
     And I select "2:3"
     Then I tap "Close" mark
     Then I should see the "Edit" screen
-    And I should see the "uncropeed" image
+    And I should see the "uncropped" image
           
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
     
@@ -39,7 +39,7 @@ Scenario Outline: Verify image crop
        
     Examples:
     | screen_name        |
-    | Preview            |
+    | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
     

@@ -8,7 +8,7 @@ Feature: Verify no printer added modal
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    Then I touch "Devices"
+    Then I touch "sprocket"
     And I should see the modal screen title
     And I should see the modal screen content
     And I should see the button "OK"
@@ -21,7 +21,7 @@ Feature: Verify no printer added modal
 @reset
 @TA14290
 Scenario: Printer Paired to device but not connected
-    Given I am on the "Preview" screen
+    Given I am on the "Instagram Preview" screen
     When I tap "Print" button
     Then I should see the modal screen title
     And I should see the modal screen content
@@ -35,7 +35,7 @@ Scenario: Printer Paired to device but not connected
 @reset
 @TA14290
 Scenario: Printer Paired to device and connected
-    Given I am on the "Preview" screen
+    Given I am on the "Instagram Preview" screen
     When I tap "Print" button
     Then I should see the "Preview" screen
     
@@ -45,7 +45,7 @@ Scenario Outline: Device paired with two printers
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    Then I touch "Devices"
+    Then I touch "sprocket"
     Then I should see the "Device" screen
     And I should see the list of two printers conneceted
     Then I tap the "<Printer>"
@@ -65,7 +65,7 @@ Scenario Outline: Device paired with two printers
 @reset
 @TA14384
 Scenario: Verify select Printer screen with two printers paired
-    Given I am on the "Preview" screen
+    Given I am on the "Instagram Preview" screen
     When I tap "Print" button
     Then I should see the "Select Printer" screen
     And I should see the list of two printers conneceted

@@ -19,7 +19,7 @@ class FrameEditorScreen < Calabash::IBase
     end
     
     def selected_frame
-        "* id:'blue_frame'" 
+        "* id:'1_turquoise_frame'" 
     end
 
     def navigate
