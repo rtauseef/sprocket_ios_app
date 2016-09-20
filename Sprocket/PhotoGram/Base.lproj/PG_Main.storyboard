@@ -644,9 +644,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="BuyPaperSegue" id="oaC-oH-lb1"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="XkB-S7-9ou" imageView="R1j-lb-e8T" style="IBUITableViewCellStyleDefault" id="s06-l9-9Fo" userLabel="How To &amp; Help Cell">
                                         <rect key="frame" x="0.0" y="177" width="600" height="51"/>
@@ -716,9 +713,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="PrivacyStatementSegue" id="j4m-K1-4VB"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="dcp-jn-Bby" imageView="bRL-4d-WPg" style="IBUITableViewCellStyleDefault" id="jla-xB-Gb1" userLabel="About Cell">
                                         <rect key="frame" x="0.0" y="330" width="600" height="51"/>
@@ -888,7 +882,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-3v-7vp">
                                 <rect key="frame" x="15" y="251" width="565" height="299"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. 
+                                <string key="text">While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. 
 
 Use of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.
 
@@ -896,7 +890,7 @@ To print, you’ll need an HP Sprocket Photo Printer. Your mobile device must ha
 
 If you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. 
 
-To improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. </mutableString>
+To improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. </string>
                                 <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1212,9 +1206,9 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </constraints>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <rect key="frame" x="269" y="6" width="63" height="63"/>
+                                                <rect key="frame" x="269" y="7" width="63" height="61"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="previewPrinter"/>
+                                                <state key="normal" backgroundImage="previewPrinter"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
                                                 </userDefinedRuntimeAttributes>
@@ -1253,7 +1247,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="iMJ-5T-IcV" secondAttribute="centerY" id="Q7a-6e-k48"/>
                                             <constraint firstItem="iMJ-5T-IcV" firstAttribute="height" secondItem="gvh-fe-pwH" secondAttribute="height" constant="20" id="QVe-LZ-sEN"/>
                                             <constraint firstItem="wr3-E7-Jz8" firstAttribute="leading" secondItem="Hn4-X4-HTM" secondAttribute="trailing" constant="21" id="WRk-mm-6au"/>
-                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="height" secondItem="Hn4-X4-HTM" secondAttribute="height" constant="20" id="Xre-AL-fob"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="height" secondItem="Hn4-X4-HTM" secondAttribute="height" constant="18" id="Xre-AL-fob"/>
                                             <constraint firstItem="wr3-E7-Jz8" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ZTd-GT-dGs"/>
                                             <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ix1-Fs-fY1"/>
                                             <constraint firstItem="Hn4-X4-HTM" firstAttribute="leading" secondItem="gvh-fe-pwH" secondAttribute="trailing" constant="21" id="oP0-eZ-mIq"/>
@@ -1366,11 +1360,11 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="100" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="6UJ-wx-GHn" id="vtM-Qg-8Gw">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View User Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xdk-mR-STz">
-                                                    <rect key="frame" x="51" y="0.0" width="534" height="43.5"/>
+                                                    <rect key="frame" x="51" y="0.0" width="534" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                                     <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
@@ -1383,19 +1377,16 @@ printer and app support.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="ViewUserGuideSegue" id="upf-7w-hsO"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="mGd-CY-o6r" imageView="8X1-eU-uTV" style="IBUITableViewCellStyleDefault" id="PMz-aF-SGY">
                                         <rect key="frame" x="0.0" y="144" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PMz-aF-SGY" id="AID-dg-dbc">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tweet Support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGd-CY-o6r">
-                                                    <rect key="frame" x="56" y="0.0" width="529" height="43.5"/>
+                                                    <rect key="frame" x="56" y="0.0" width="529" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                                     <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1413,11 +1404,11 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="188" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XS2-Tk-IN1" id="9It-ng-KSj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Join Support Forum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Vs-BF-yHI">
-                                                    <rect key="frame" x="54" y="0.0" width="531" height="43.5"/>
+                                                    <rect key="frame" x="54" y="0.0" width="531" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                                     <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1430,19 +1421,16 @@ printer and app support.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="JoinForumSupportSegue" id="O6V-Yp-S6U"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="34K-Xv-dA8" imageView="Z7N-HX-kZe" style="IBUITableViewCellStyleDefault" id="MTU-6P-bzL">
                                         <rect key="frame" x="0.0" y="232" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MTU-6P-bzL" id="yU5-tl-tqN">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Visit Support Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34K-Xv-dA8">
-                                                    <rect key="frame" x="54" y="0.0" width="531" height="43.5"/>
+                                                    <rect key="frame" x="54" y="0.0" width="531" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                                     <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1455,9 +1443,6 @@ printer and app support.</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="qmP-7A-YZZ" kind="presentation" identifier="VisitWebsiteSegue" id="EBG-5d-8Dw"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1605,18 +1590,18 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VJ5-1U-fdc" id="oLe-H7-6Ri">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7fa-oG-gkS">
-                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="15" y="12" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VKP-mJ-ZZt">
-                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
+                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -1629,7 +1614,7 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="66" width="600" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WIV-p8-f2c" id="5lM-KM-kDB">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="164"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="163"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HU6-rf-MYm" userLabel="logLevelPicker">
@@ -2084,7 +2069,4 @@ printer and app support.</string>
         <image name="signInFlickr" width="27" height="13"/>
         <image name="signInInstagram" width="26" height="26"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="O6V-Yp-S6U"/>
-    </inferredMetricsTieBreakers>
 </document>

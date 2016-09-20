@@ -12,7 +12,6 @@
 		00A39AE4DD2ADD2C7A2EFD686610F06C /* HPPRFacebookPhotoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F226142EACEC391B16D5587A5C8AE667 /* HPPRFacebookPhotoProvider.m */; };
 		01BC5D7532B5BC9A98906174FC98127F /* MPPrintSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B10C9C5ABAF7201462C3CAFF70A45B /* MPPrintSettingsTableViewController.m */; };
 		01F43CB4E8F6B5F51D4066DD57F94DC2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 555F80972F57C758D11B6A96B96C7BB3 /* AFSecurityPolicy.m */; };
-		0208CA0E4653791D7085AE56E0BBC59A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD17723366A0EC8836D1C590EA1213E1 /* Foundation.framework */; };
 		024ECBAF9FE9E5F46A2BC912BF912FE4 /* HPPRSelectAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E3489B13E0E1C3F377B7854D55A139 /* HPPRSelectAlbumTableViewController.m */; };
 		03164AC0DA6BF0844EA98CE0FBEE3F4E /* HPPRFlickrLoginProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 336FF25111FE03359ADF82CE7AF5E7BA /* HPPRFlickrLoginProvider.m */; };
 		03648B66A3DF762F7DD82E921EBE1866 /* FKFlickrStatsGetPhotoReferrers.h in Headers */ = {isa = PBXBuildFile; fileRef = E9772D81D9EEBE7F2D83CD1D98CDF15C /* FKFlickrStatsGetPhotoReferrers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -186,7 +185,7 @@
 		39A98E82D07C05C32451F206C114D5B9 /* UIColor+HPPRStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89B05429F98CD889B6DB386E1CC494 /* UIColor+HPPRStyle.m */; };
 		3A100C0782F48A34FFB28490CFCC1744 /* MPAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 90DDC766BEB9BBDABB90A3887DFFB366 /* MPAppearance.m */; };
 		3A5E423B40D4BC0EE97D4F2B959416AC /* FKFlickrTestEcho.h in Headers */ = {isa = PBXBuildFile; fileRef = 26C5EBEA485F1D72FC6B533DEC9CFCD4 /* FKFlickrTestEcho.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A67A3E8693B87771AEA21865D57B1DE /* Pods-Sprocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B9B40F81E131A93B86C6E9190C5A2 /* Pods-Sprocket-dummy.m */; };
+		3A67A3E8693B87771AEA21865D57B1DE /* Pods-Sprocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8209122A8F3690F22B1461B59540CB6 /* Pods-Sprocket-dummy.m */; };
 		3A7BB77FDA9B284FCAB2BFDCAF06F9AC /* FKFlickrGroupsPoolsGetContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A5FD07CA93AFAA1322D9E6AF95F2775F /* FKFlickrGroupsPoolsGetContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A869AF575E2C639B7DB728C8A147458 /* FKFlickrTestLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 4051B4B7471BD89A2238EBF49572D058 /* FKFlickrTestLogin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA9377F6EACBEFCC8BF91A96731D44F /* FKFlickrPhotosSetContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CACCA5087B2671084201F85B5CE975F /* FKFlickrPhotosSetContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -466,7 +465,7 @@
 		901730C046D139E59D0DE307A1244C5B /* FKFlickrActivityUserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 403FEC7A7177E85BB197D110238A237A /* FKFlickrActivityUserPhotos.m */; };
 		90742D49A56705B2522E1948AC3E4C60 /* FKFlickrStatsGetCollectionStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 740AD5FB6077016C4CFD16B535BC503A /* FKFlickrStatsGetCollectionStats.m */; };
 		9130E5AE19797C37719746BA6A1EFC5A /* MPLegacyPrintItemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A87C5247B35B54618A32034DD7EFF6F /* MPLegacyPrintItemImage.m */; };
-		914B7967ABDD5AED9E25EE209BD63B7B /* Pods-Sprocket-cal-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AD520D5833992C31E753B96B1B8796 /* Pods-Sprocket-cal-dummy.m */; };
+		914B7967ABDD5AED9E25EE209BD63B7B /* Pods-Sprocket-cal-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5082D2A7C01DFED4E303BB25CFBA5EC6 /* Pods-Sprocket-cal-dummy.m */; };
 		9176738E72A5C80F0572539A28CF86CA /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 52440264318BCB2BDD4D65AFD971E208 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		919D57CB2497700BBF2E10A61E878DC2 /* MPLayoutFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = A863DDD81323F0A59F05E2B79EDDD58C /* MPLayoutFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91AD2FFC6772DE872BB7A68E44093723 /* FKFlickrPhotosUploadCheckTickets.m in Sources */ = {isa = PBXBuildFile; fileRef = 1729256B8AE18894A5752D6C5707FBE5 /* FKFlickrPhotosUploadCheckTickets.m */; };
@@ -632,7 +631,6 @@
 		CD52FD2E07F41E7808EA46A63ABE6F4C /* MPPrintLaterHelperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166FA9EB41060A9A85C4F3741A182EB9 /* MPPrintLaterHelperViewController.m */; };
 		CD6C7051171DD3EDC01313162C26C7B6 /* FKFlickrGroupsSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 815AA94E8606BACAA284080D56369C8F /* FKFlickrGroupsSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD6C93A41D0968E5773B64CD3885BD46 /* HPPRCachingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA9463C384223EA70641487017F2313 /* HPPRCachingObject.m */; };
-		CDB80097BEA293B69BE5237418736BA5 /* Pods-Sprocket Print-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C74DD7EE0D7FEEEFA4863F229C32F8B8 /* Pods-Sprocket Print-dummy.m */; };
 		CDC42941067C20A0B955EA0CDCA627C3 /* FKFlickrPhotosGeoSetPerms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E89CC0ED374840FF33D16089F70012B /* FKFlickrPhotosGeoSetPerms.m */; };
 		CDC4C49F7B132DD1CF655A44F7600607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E835872D40517471C60576850BA55A /* CoreGraphics.framework */; };
 		CDC86EFDDB3B7CF2CBE527FA82E047C0 /* UIImage+HPPRResize.h in Headers */ = {isa = PBXBuildFile; fileRef = FC1FBA35A7C7284E6FDB99005C167394 /* UIImage+HPPRResize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -809,13 +807,6 @@
 			remoteGlobalIDString = 140DBDDD6E7F16B0530C2B753063A298;
 			remoteInfo = FlickrKit;
 		};
-		1DBF09F44A3CC35B7E31A99ED1FB15BF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 536C6A98A73173F6B844F745CBF4766F;
-			remoteInfo = CocoaLumberjack;
-		};
 		2345934BB8DDB6534DCBFD5CA6DF421B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -830,13 +821,6 @@
 			remoteGlobalIDString = 0671EB350C06DF3E2377CE69D07711F3;
 			remoteInfo = TTTAttributedLabel;
 		};
-		42CE4B36B991A844F54268338E35D1BF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 97E91903DA045FA5C7C65CECC19552C4;
-			remoteInfo = AFNetworking;
-		};
 		580F204F24E3D7F351FB65EC1C5E73E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -844,21 +828,7 @@
 			remoteGlobalIDString = 0671EB350C06DF3E2377CE69D07711F3;
 			remoteInfo = TTTAttributedLabel;
 		};
-		64DFC9FAD2FEE673A2E30D7EDDACE48B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0A7B4A8C87C4D32B097B5655FC530F5A;
-			remoteInfo = HPPhotoProvider;
-		};
 		691ABDDA8799B67F3D58F2CFCA37489A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0AE5F47DB41A0018E58258C797B48594;
-			remoteInfo = MobilePrintSDK;
-		};
-		83536C652E25DD8CE09E53D2DD856914 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -879,13 +849,6 @@
 			remoteGlobalIDString = 0A7B4A8C87C4D32B097B5655FC530F5A;
 			remoteInfo = HPPhotoProvider;
 		};
-		95EBB37C84F20F306A24B1AC2B6F6435 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 140DBDDD6E7F16B0530C2B753063A298;
-			remoteInfo = FlickrKit;
-		};
 		9CFE95E14DC415897F0D315B7C247FD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -899,13 +862,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 97E91903DA045FA5C7C65CECC19552C4;
 			remoteInfo = AFNetworking;
-		};
-		ABF94096FD0E8822207FE03BF87368E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0671EB350C06DF3E2377CE69D07711F3;
-			remoteInfo = TTTAttributedLabel;
 		};
 		CFD1AC459C6FBCACCF4960485691E4B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -938,6 +894,7 @@
 		00AFF67DEF39F3239D4B6C4C3A6CE940 /* FKFlickrPlacesFindByLatLon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesFindByLatLon.m; path = Classes/Model/Generated/Places/FKFlickrPlacesFindByLatLon.m; sourceTree = "<group>"; };
 		00D434D2D14DB4F728E507236D5C2CAC /* MPPrintSettingsDelegateManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPrintSettingsDelegateManager.m; path = Pod/Classes/Private/MPPrintSettingsDelegateManager.m; sourceTree = "<group>"; };
 		01057606BD6DBC0E599535142684307E /* MPArrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPArrow@2x.png"; path = "Pod/Assets/MPArrow@2x.png"; sourceTree = "<group>"; };
+		0163C614A4C8FDABCFE7F0B756EE4D75 /* libPods-Sprocket-cal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket-cal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		019CC48441D4C2105A6C9EB14E81164C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Pod/Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0203DADF6EA6C1FCBBBB91ABDFA034E5 /* FKFlickrPhotosGeoCorrectLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGeoCorrectLocation.h; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoCorrectLocation.h; sourceTree = "<group>"; };
 		0265BAFC418B4ED1FFCED0FAE1EECC66 /* FKFlickrPlacesResolvePlaceURL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesResolvePlaceURL.m; path = Classes/Model/Generated/Places/FKFlickrPlacesResolvePlaceURL.m; sourceTree = "<group>"; };
@@ -954,7 +911,6 @@
 		061983BC7EA3263B2158B5E81E6FD2FE /* FKDUStreamUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKDUStreamUtil.h; path = Classes/DevedUpKit/FKDUStreamUtil.h; sourceTree = "<group>"; };
 		061C071C0E1D24750D26488C559236CC /* FKFlickrStatsGetCollectionReferrers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrStatsGetCollectionReferrers.h; path = Classes/Model/Generated/Stats/FKFlickrStatsGetCollectionReferrers.h; sourceTree = "<group>"; };
 		062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.xcconfig; sourceTree = "<group>"; };
-		067C47865A08F53D85B089A87506A9D0 /* Pods-Sprocket Print-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sprocket Print-acknowledgements.markdown"; sourceTree = "<group>"; };
 		06D36C6E6BEC5457243A8EBF99CB1C86 /* FKFlickrFavoritesGetPublicList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrFavoritesGetPublicList.h; path = Classes/Model/Generated/Favorites/FKFlickrFavoritesGetPublicList.h; sourceTree = "<group>"; };
 		07560C3EEC2E1DB12C5833066D34B500 /* FKFlickrTagsGetListPhoto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrTagsGetListPhoto.m; path = Classes/Model/Generated/Tags/FKFlickrTagsGetListPhoto.m; sourceTree = "<group>"; };
 		07B8F2A3789F47F23061D053B22276D7 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = GoogleAnalytics/Library/GAIEcommercePromotion.h; sourceTree = "<group>"; };
@@ -965,6 +921,7 @@
 		086ED7A2D861C9FA79D27BC5004E8E52 /* FKFlickrPandaGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPandaGetList.m; path = Classes/Model/Generated/Panda/FKFlickrPandaGetList.m; sourceTree = "<group>"; };
 		08713C1100584152C2752552CCCB3717 /* FKFlickrPhotosGeoBatchCorrectLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGeoBatchCorrectLocation.h; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoBatchCorrectLocation.h; sourceTree = "<group>"; };
 		08B0E4FE56C8E7335778A7DDD0AE513B /* MPDownload@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPDownload@2x.png"; path = "Pod/Assets/MPDownload@2x.png"; sourceTree = "<group>"; };
+		08DCD10B54B0DF23D9D4BE00986BDCCF /* libHPPhotoProvider.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHPPhotoProvider.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		09361F5106AC2304B372E0EC79841957 /* FKFlickrCollectionsGetInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrCollectionsGetInfo.h; path = Classes/Model/Generated/Collections/FKFlickrCollectionsGetInfo.h; sourceTree = "<group>"; };
 		0963CF432F51FF62059322BA5A584D0B /* FKFlickrPeopleFindByUsername.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPeopleFindByUsername.m; path = Classes/Model/Generated/People/FKFlickrPeopleFindByUsername.m; sourceTree = "<group>"; };
 		0986D0B7D3F3D0CA4B33C58FEBEE14C0 /* MPBTSprocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPBTSprocket.m; path = Pod/Classes/Private/MPBTSprocket.m; sourceTree = "<group>"; };
@@ -989,7 +946,6 @@
 		0F556195AD6BBDBB15D2C5BD770EA4D7 /* TAGManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TAGManager.h; path = GoogleTagManager/Library/TAGManager.h; sourceTree = "<group>"; };
 		0F8CEB835A92A2919487ADE06A7C92BF /* FKFlickrMachinetagsGetPredicates.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrMachinetagsGetPredicates.m; path = Classes/Model/Generated/Machinetags/FKFlickrMachinetagsGetPredicates.m; sourceTree = "<group>"; };
 		103E793D51D5FE4C83AE35E0D12281F6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		10AD520D5833992C31E753B96B1B8796 /* Pods-Sprocket-cal-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sprocket-cal-dummy.m"; sourceTree = "<group>"; };
 		10C0F0FCFBEB94A0B9E64F84EE455D20 /* FKFlickrPhotosCommentsAddComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosCommentsAddComment.h; path = Classes/Model/Generated/Photos/Comments/FKFlickrPhotosCommentsAddComment.h; sourceTree = "<group>"; };
 		10C46728E532629DA63FCEE3304D3FF4 /* FKFlickrGroupsDiscussTopicsAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrGroupsDiscussTopicsAdd.h; path = Classes/Model/Generated/Groups/Discuss/Topics/FKFlickrGroupsDiscussTopicsAdd.h; sourceTree = "<group>"; };
 		10D9E51909037D367DAFD4DEDB61F03F /* MPMultiPageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPMultiPageView.m; path = Pod/Classes/Private/MPMultiPageView.m; sourceTree = "<group>"; };
@@ -1037,8 +993,6 @@
 		1C4144238B1B6F22B64295AD106E9577 /* FKFlickrPhotosSetTags.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosSetTags.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosSetTags.m; sourceTree = "<group>"; };
 		1C51FE6C09646BB6A886195B12B6F319 /* FKFlickrPhotosCommentsAddComment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosCommentsAddComment.m; path = Classes/Model/Generated/Photos/Comments/FKFlickrPhotosCommentsAddComment.m; sourceTree = "<group>"; };
 		1C863CCE105B0286A210625EA6C00433 /* FKFlickrPhotosPeopleDelete.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosPeopleDelete.m; path = Classes/Model/Generated/Photos/People/FKFlickrPhotosPeopleDelete.m; sourceTree = "<group>"; };
-		1CB948F530A6B2A1F9EF59FCCDA2B5D5 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CEA6D9E80DB517FD0A597C761654EA0 /* Pods-Sprocket-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-resources.sh"; sourceTree = "<group>"; };
 		1D0D7F374B4C2333DA5F9882F2CCB202 /* FKFlickrGroupsDiscussRepliesEdit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrGroupsDiscussRepliesEdit.h; path = Classes/Model/Generated/Groups/Discuss/Replies/FKFlickrGroupsDiscussRepliesEdit.h; sourceTree = "<group>"; };
 		1DAFE973B11704DC3FDA4E3540F82CA5 /* FKFlickrPeopleFindByEmail.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPeopleFindByEmail.h; path = Classes/Model/Generated/People/FKFlickrPeopleFindByEmail.h; sourceTree = "<group>"; };
 		1DBF2053B655328A75A985CFF5B491C0 /* FKFlickrPhotosGetAllContexts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGetAllContexts.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetAllContexts.h; sourceTree = "<group>"; };
@@ -1059,7 +1013,6 @@
 		22CE628B83C7D102BF9967B1F0AC927C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Classes/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		2328138CD9D4AED3CC559ABBBD63207D /* DDFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = Classes/DDFileLogger.h; sourceTree = "<group>"; };
 		232B7B36A4E7B750860724C2794FA9B7 /* MPPrintLaterActivity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPrintLaterActivity.m; path = Pod/Classes/Public/MPPrintLaterActivity.m; sourceTree = "<group>"; };
-		239E8A0C50641183F086A5787C404AFD /* Pods-Sprocket Print-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket Print-resources.sh"; sourceTree = "<group>"; };
 		23AD226349F43E8BD45740C972173BD7 /* FKFlickrPushSubscribe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPushSubscribe.m; path = Classes/Model/Generated/Push/FKFlickrPushSubscribe.m; sourceTree = "<group>"; };
 		24BEE7A83A03C2D65E3B48A876104D61 /* MPDefaultSettingsManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPDefaultSettingsManager.m; path = Pod/Classes/Public/MPDefaultSettingsManager.m; sourceTree = "<group>"; };
 		24CC5A828505685EB7FA0770DEDED9DA /* FKFlickrPhotosetsRemovePhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsRemovePhotos.h; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsRemovePhotos.h; sourceTree = "<group>"; };
@@ -1068,14 +1021,12 @@
 		264CE3AD3AC8D8D6C1316222F3ED695D /* FKFlickrGroupsPoolsGetContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsPoolsGetContext.m; path = Classes/Model/Generated/Groups/Pools/FKFlickrGroupsPoolsGetContext.m; sourceTree = "<group>"; };
 		26C5EBEA485F1D72FC6B533DEC9CFCD4 /* FKFlickrTestEcho.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrTestEcho.h; path = Classes/Model/Generated/Test/FKFlickrTestEcho.h; sourceTree = "<group>"; };
 		26EDD2E1F537B097E8745CF753BFBFD8 /* FKFlickrAuthOauthGetAccessToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrAuthOauthGetAccessToken.m; path = Classes/Model/Generated/Auth/Oauth/FKFlickrAuthOauthGetAccessToken.m; sourceTree = "<group>"; };
-		275DD0E6E908EB6B939A2DC12A32D361 /* libMobilePrintSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMobilePrintSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		279ECEC44707E6D6332E7E820D361F35 /* MPPrintItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintItem.h; path = Pod/Classes/Public/MPPrintItem.h; sourceTree = "<group>"; };
 		27B2FCF5D20D1854439637E58EB5F843 /* FKFlickrFavoritesAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrFavoritesAdd.h; path = Classes/Model/Generated/Favorites/FKFlickrFavoritesAdd.h; sourceTree = "<group>"; };
 		27EC6CF8E38693BD19126F58B9C0F432 /* FKFlickrPhotosSearch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosSearch.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosSearch.m; sourceTree = "<group>"; };
 		2939AF31CFC7AD579785A27CA859E29B /* DDAssertMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAssertMacros.h; path = Classes/DDAssertMacros.h; sourceTree = "<group>"; };
 		2952DB91690730E55A68B900405E680B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		2A380DBB5EC5EC789C01803D5C1E7484 /* FKFlickrPhotosUploadCheckTickets.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosUploadCheckTickets.h; path = Classes/Model/Generated/Photos/Upload/FKFlickrPhotosUploadCheckTickets.h; sourceTree = "<group>"; };
-		2A44A11595730BE997CC11149E39AD68 /* Pods-Sprocket Print.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket Print.release.xcconfig"; sourceTree = "<group>"; };
 		2AAC325438A24FDA67CE79576AB16B07 /* FKFlickrGroupsDiscussRepliesGetList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrGroupsDiscussRepliesGetList.h; path = Classes/Model/Generated/Groups/Discuss/Replies/FKFlickrGroupsDiscussRepliesGetList.h; sourceTree = "<group>"; };
 		2AD9DE6B39F6605152DD7D7FE6886A62 /* MPLayoutStretch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPLayoutStretch.m; path = Pod/Classes/Public/MPLayoutStretch.m; sourceTree = "<group>"; };
 		2B360940D491FD8CF476A782400B5698 /* NSBundle+MPLocalizable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+MPLocalizable.h"; path = "Pod/Classes/Private/NSBundle+MPLocalizable.h"; sourceTree = "<group>"; };
@@ -1121,7 +1072,6 @@
 		37738B75E071BB3F1DEF75761D6C9125 /* FKFlickrPhotosPeopleGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosPeopleGetList.m; path = Classes/Model/Generated/Photos/People/FKFlickrPhotosPeopleGetList.m; sourceTree = "<group>"; };
 		37A9828E966A6B153F4EB15A3B46CAC7 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		37AE03CB2296272F6CB750DDAB2C77E4 /* MPSupportAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPSupportAction.m; path = Pod/Classes/Public/MPSupportAction.m; sourceTree = "<group>"; };
-		37FB9B0397D8FF46A7EAF7F531F1B678 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
 		384FC4A753A3B6AC8FEEB18FE5A9C351 /* MPPageSettingsSplitViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPageSettingsSplitViewController.h; path = Pod/Classes/Private/MPPageSettingsSplitViewController.h; sourceTree = "<group>"; };
 		38986F27B5788D3724C03BEA4F08B80D /* UIView+HPPRAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+HPPRAnimation.m"; path = "Pod/Classes/Additions/UIView+HPPRAnimation.m"; sourceTree = "<group>"; };
 		38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
@@ -1130,6 +1080,7 @@
 		39BF669ED8A7BF833AAAA3EAD80EA83E /* MPLayoutFit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayoutFit.h; path = Pod/Classes/Public/MPLayoutFit.h; sourceTree = "<group>"; };
 		39E1536983C904EA2C5D992C86727401 /* MPPrintItemPDF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintItemPDF.h; path = Pod/Classes/Private/MPPrintItemPDF.h; sourceTree = "<group>"; };
 		3A729BEE0CA4647B081AAEFBD640283D /* FKFlickrBlogsPostPhoto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrBlogsPostPhoto.m; path = Classes/Model/Generated/Blogs/FKFlickrBlogsPostPhoto.m; sourceTree = "<group>"; };
+		3ACCAC2241B6F695AE061B5306F4C12B /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		3AF9769E9DF977571A8F07102383B78D /* FKFlickrCollectionsGetTree.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrCollectionsGetTree.h; path = Classes/Model/Generated/Collections/FKFlickrCollectionsGetTree.h; sourceTree = "<group>"; };
 		3B0ACE42255679B41969B37CBD7AE257 /* MPMeasurementArrowDown@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPMeasurementArrowDown@2x.png"; path = "Pod/Assets/MPMeasurementArrowDown@2x.png"; sourceTree = "<group>"; };
 		3B119163FBE32C93E558A46B7279A6F9 /* FKFlickrMachinetagsGetNamespaces.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrMachinetagsGetNamespaces.h; path = Classes/Model/Generated/Machinetags/FKFlickrMachinetagsGetNamespaces.h; sourceTree = "<group>"; };
@@ -1174,18 +1125,18 @@
 		436CEA936C1818D8AE342FED69EFD8D9 /* FKFlickrTagsGetListUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrTagsGetListUser.h; path = Classes/Model/Generated/Tags/FKFlickrTagsGetListUser.h; sourceTree = "<group>"; };
 		44740FE7C0B799646C171F31447A3A40 /* MPBTSessionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPBTSessionController.h; path = Pod/Classes/Private/MPBTSessionController.h; sourceTree = "<group>"; };
 		44E97367002D4B2B4CCCADD3A41E9605 /* FKFlickrPeopleGetPublicPhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPeopleGetPublicPhotos.h; path = Classes/Model/Generated/People/FKFlickrPeopleGetPublicPhotos.h; sourceTree = "<group>"; };
+		45E54FFACF320E819760D425EF1B5098 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		460D96A7D4BA380CAFC19D6AE5D32EE9 /* HPPRSelectPhotoCollectionViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRSelectPhotoCollectionViewCell.m; path = Pod/Classes/HPPRSelectPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		478A8CC03FBD1783B88AC1CF97E9CD9F /* MPLayoutPrepStepAdjust.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayoutPrepStepAdjust.h; path = Pod/Classes/Private/MPLayoutPrepStepAdjust.h; sourceTree = "<group>"; };
 		47E5BF27B58042916CF993972CA51F3D /* FKFlickrReflectionGetMethodInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrReflectionGetMethodInfo.m; path = Classes/Model/Generated/Reflection/FKFlickrReflectionGetMethodInfo.m; sourceTree = "<group>"; };
 		484AB5CFFF539A620A82ED31D1D5A80C /* MPPrintActivity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPrintActivity.m; path = Pod/Classes/Public/MPPrintActivity.m; sourceTree = "<group>"; };
 		4859046EED6B158046567AA4FDF4856E /* FKFlickrPhotosLicensesSetLicense.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosLicensesSetLicense.h; path = Classes/Model/Generated/Photos/Licenses/FKFlickrPhotosLicensesSetLicense.h; sourceTree = "<group>"; };
 		4884FEAADB39C2798CC2DFA360380C89 /* FKFlickrPlacesPlacesForContacts.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesPlacesForContacts.m; path = Classes/Model/Generated/Places/FKFlickrPlacesPlacesForContacts.m; sourceTree = "<group>"; };
+		48A6659D54E3B08D1D10BEE9F234DD74 /* Pods-Sprocket-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-frameworks.sh"; sourceTree = "<group>"; };
 		48ECFD160C766E1DFAD5816BF7662B61 /* FKFlickrPhotosPeopleEditCoords.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosPeopleEditCoords.m; path = Classes/Model/Generated/Photos/People/FKFlickrPhotosPeopleEditCoords.m; sourceTree = "<group>"; };
 		49196C95322185EB5ABE5F7F0D257928 /* FKFlickrTagsGetListUserPopular.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrTagsGetListUserPopular.m; path = Classes/Model/Generated/Tags/FKFlickrTagsGetListUserPopular.m; sourceTree = "<group>"; };
-		49586C1C5AF21B9C7D22EBAB306A9296 /* Pods-Sprocket-cal-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-cal-frameworks.sh"; sourceTree = "<group>"; };
 		495BD0916DD7524B8F97C645A8F09917 /* FKUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKUtilities.h; path = Classes/Utilities/FKUtilities.h; sourceTree = "<group>"; };
 		4982B0E64D16EA6FBFC8B948C524F8D1 /* FKFlickrPeopleGetPhotosOf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPeopleGetPhotosOf.m; path = Classes/Model/Generated/People/FKFlickrPeopleGetPhotosOf.m; sourceTree = "<group>"; };
-		498AC41F970141EC6FB81305A0227D50 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
 		49BF3DD4901F12A831E8C042B5F10B8D /* HPPRCameraRollLoginProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRCameraRollLoginProvider.h; path = Pod/Classes/HPPRCameraRollLoginProvider.h; sourceTree = "<group>"; };
 		4A420B336368C4C7888DD1DDFEE351B9 /* FKFlickrTagsGetRelated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrTagsGetRelated.h; path = Classes/Model/Generated/Tags/FKFlickrTagsGetRelated.h; sourceTree = "<group>"; };
 		4A87C5247B35B54618A32034DD7EFF6F /* MPLegacyPrintItemImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPLegacyPrintItemImage.m; path = Pod/Classes/Private/MPLegacyPrintItemImage.m; sourceTree = "<group>"; };
@@ -1213,6 +1164,7 @@
 		500D9644F8B05F4D9C86849153BA89A3 /* FKFlickrPhotosetsCommentsEditComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsCommentsEditComment.h; path = Classes/Model/Generated/Photosets/Comments/FKFlickrPhotosetsCommentsEditComment.h; sourceTree = "<group>"; };
 		5010BA0BA6CF7D701B41D19EA00EF694 /* FKFlickrUrlsLookupGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrUrlsLookupGroup.m; path = Classes/Model/Generated/Urls/FKFlickrUrlsLookupGroup.m; sourceTree = "<group>"; };
 		5067E903DA049E530E24428BB03DB6B3 /* FKFlickrGroupsDiscussRepliesEdit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsDiscussRepliesEdit.m; path = Classes/Model/Generated/Groups/Discuss/Replies/FKFlickrGroupsDiscussRepliesEdit.m; sourceTree = "<group>"; };
+		5082D2A7C01DFED4E303BB25CFBA5EC6 /* Pods-Sprocket-cal-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sprocket-cal-dummy.m"; sourceTree = "<group>"; };
 		50E28C1FD0EE31D301E7A96BDE88FC3E /* FKDUReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKDUReachability.h; path = Classes/Network/FKDUReachability.h; sourceTree = "<group>"; };
 		52440264318BCB2BDD4D65AFD971E208 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
 		526AD7F1812A2B5C4BC0FF4E366495C9 /* FKFlickrGroupsDiscussTopicsGetInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsDiscussTopicsGetInfo.m; path = Classes/Model/Generated/Groups/Discuss/Topics/FKFlickrGroupsDiscussTopicsGetInfo.m; sourceTree = "<group>"; };
@@ -1257,7 +1209,6 @@
 		5DBFE29168847F2271F16D88D574E350 /* MPLayoutAlgorithm.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPLayoutAlgorithm.m; path = Pod/Classes/Public/MPLayoutAlgorithm.m; sourceTree = "<group>"; };
 		5E042F8EAB297EA2D09A9B948F173C2E /* HPPRNoInternetConnectionRetryView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRNoInternetConnectionRetryView.m; path = Pod/Classes/HPPRNoInternetConnectionRetryView.m; sourceTree = "<group>"; };
 		5E048AAB30761EE23E643A027687A068 /* FKFlickrPhotosNotesDelete.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosNotesDelete.m; path = Classes/Model/Generated/Photos/Notes/FKFlickrPhotosNotesDelete.m; sourceTree = "<group>"; };
-		5E1D223C7DE65A6B50CDE411BF119F90 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		5E798F7E3FA2FBCCA63A13CE8103FAC2 /* MPPrint@2x~iphone.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPPrint@2x~iphone.png"; path = "Pod/Assets/MPPrint@2x~iphone.png"; sourceTree = "<group>"; };
 		5E7B6ACDEFC086B25995AB784F6A0FA2 /* MPPageRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPageRange.m; path = Pod/Classes/Public/MPPageRange.m; sourceTree = "<group>"; };
 		5F8761DEB4D1DDF385EA4203DABB6C76 /* HPPRAppearance.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRAppearance.m; path = Pod/Classes/HPPRAppearance.m; sourceTree = "<group>"; };
@@ -1275,7 +1226,7 @@
 		61A170FD80E8753AE15AD88BC9B3F1AA /* MPPrintSettingsTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintSettingsTableViewController.h; path = Pod/Classes/Private/MPPrintSettingsTableViewController.h; sourceTree = "<group>"; };
 		62015092AA8371BB76A5F2A2BC1090F1 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/Library/GAI.h; sourceTree = "<group>"; };
 		6247C35453974A19BE3A639C0C298BE2 /* HPPRInstagramError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRInstagramError.h; path = Pod/Classes/HPPRInstagramError.h; sourceTree = "<group>"; };
-		6291296DB62178141F0013A1FA1DF711 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
+		633FE3ACED4DAF359ECD5F24A7EE8164 /* Pods-Sprocket-cal-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-cal-resources.sh"; sourceTree = "<group>"; };
 		637AE66072E9CA8438B7ACB557D30DF4 /* FKFlickrMachinetagsGetPredicates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrMachinetagsGetPredicates.h; path = Classes/Model/Generated/Machinetags/FKFlickrMachinetagsGetPredicates.h; sourceTree = "<group>"; };
 		646FAD8DE74AF42A91917DB88CD2FF0D /* FKFlickrPlacesPlacesForBoundingBox.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesPlacesForBoundingBox.m; path = Classes/Model/Generated/Places/FKFlickrPlacesPlacesForBoundingBox.m; sourceTree = "<group>"; };
 		64727EF91AAB3901AD58C123257BEE67 /* FKFlickrPhotosGeoRemoveLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGeoRemoveLocation.h; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoRemoveLocation.h; sourceTree = "<group>"; };
@@ -1297,6 +1248,7 @@
 		69852AEE2F14A2D58C250149F942861C /* HPPRInstagramLoginViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRInstagramLoginViewController.m; path = Pod/Classes/HPPRInstagramLoginViewController.m; sourceTree = "<group>"; };
 		6AD464406BF2C164BA6419AFD8921D08 /* MPPrintLaterManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintLaterManager.h; path = Pod/Classes/Private/MPPrintLaterManager.h; sourceTree = "<group>"; };
 		6B8003B1D1D4D1CD9AE89040A3B514C5 /* FKFlickrPhotosSetContentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosSetContentType.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosSetContentType.m; sourceTree = "<group>"; };
+		6CD0AA74E7E89EFCF14389385FF6B288 /* Pods-Sprocket-cal-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sprocket-cal-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6DA9CB334313998B1EC380F15CC28FDE /* FKFlickrFavoritesGetPublicList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrFavoritesGetPublicList.m; path = Classes/Model/Generated/Favorites/FKFlickrFavoritesGetPublicList.m; sourceTree = "<group>"; };
 		6DB7A4D9B52939FC4638320575322D93 /* FKDUNetworkOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKDUNetworkOperation.m; path = Classes/DevedUpKit/FKDUNetworkOperation.m; sourceTree = "<group>"; };
 		6DC0FAEFD644080AC920BFE634E88A20 /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Classes/Extensions/DDMultiFormatter.h; sourceTree = "<group>"; };
@@ -1312,8 +1264,6 @@
 		7018A65E6DB4C181F838506BA81B734F /* HPPhotoProviderLocalizable.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = HPPhotoProviderLocalizable.bundle; path = Pod/HPPhotoProviderLocalizable.bundle; sourceTree = "<group>"; };
 		7088283E34DD51BAC258BA39BF41D8C4 /* TAGContainerOpener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TAGContainerOpener.h; path = GoogleTagManager/Library/TAGContainerOpener.h; sourceTree = "<group>"; };
 		714061FA565CF70AF3CCDEEBE5908932 /* HPPRLoginProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRLoginProvider.m; path = Pod/Classes/HPPRLoginProvider.m; sourceTree = "<group>"; };
-		715F75D13F8ECB221118E94FD7B41544 /* Pods-Sprocket-cal-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-cal-resources.sh"; sourceTree = "<group>"; };
-		7186A2F4CDCDC890F817DADDADAF722B /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		73A7BEB133D2AD142162F10991FD3A68 /* MPPrintJobsActionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintJobsActionView.h; path = Pod/Classes/Private/MPPrintJobsActionView.h; sourceTree = "<group>"; };
 		73A8DC444152D07EFAA1DDB232B3197B /* FKFlickrPhotosGetContactsPhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGetContactsPhotos.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetContactsPhotos.h; sourceTree = "<group>"; };
 		73B6944B31A1A538D250DFEB3EC98A55 /* FlickrKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FlickrKit-dummy.m"; sourceTree = "<group>"; };
@@ -1355,7 +1305,6 @@
 		7E4E49CA1A506EA8AAF4374F6284509B /* MPPrintLaterJob.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintLaterJob.h; path = Pod/Classes/Public/MPPrintLaterJob.h; sourceTree = "<group>"; };
 		7E7D647B5C1E367B32E0F48E5D2DCDFD /* FKFlickrPrefsGetContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPrefsGetContentType.h; path = Classes/Model/Generated/Prefs/FKFlickrPrefsGetContentType.h; sourceTree = "<group>"; };
 		7EE91E87D6F609D58A87C1F6AEEC5415 /* MPInactiveCircle@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPInactiveCircle@2x.png"; path = "Pod/Assets/MPInactiveCircle@2x.png"; sourceTree = "<group>"; };
-		7F5B9B40F81E131A93B86C6E9190C5A2 /* Pods-Sprocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sprocket-dummy.m"; sourceTree = "<group>"; };
 		7FF1BAF1A86BF0AF25C07403F4FC5B1A /* FlickrKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlickrKit.m; path = Classes/FlickrKit/FlickrKit.m; sourceTree = "<group>"; };
 		80057B0AC702AD70FE0C4E00529BDA7F /* FKFlickrPhotosetsReorderPhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsReorderPhotos.h; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsReorderPhotos.h; sourceTree = "<group>"; };
 		802F29A5C5F6D0E09AE8C1971FBE8B82 /* FKFlickrPhotosetsEditPhotos.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosetsEditPhotos.m; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsEditPhotos.m; sourceTree = "<group>"; };
@@ -1368,7 +1317,6 @@
 		8265D2A3E0F15ED412C525F6DE008DB7 /* MPLayoutPrepStepRotate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayoutPrepStepRotate.h; path = Pod/Classes/Private/MPLayoutPrepStepRotate.h; sourceTree = "<group>"; };
 		82A40A70EB131C9E303FCA138BD4CA38 /* FKFlickrPhotosetsCommentsAddComment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsCommentsAddComment.h; path = Classes/Model/Generated/Photosets/Comments/FKFlickrPhotosetsCommentsAddComment.h; sourceTree = "<group>"; };
 		82D024062405EC6937F43D10B84BFB9F /* FKFlickrGroupsJoinRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsJoinRequest.m; path = Classes/Model/Generated/Groups/FKFlickrGroupsJoinRequest.m; sourceTree = "<group>"; };
-		82E216631E76B9DCE65677E495EBD390 /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		8335A8415EF51CC47776A1EEA19B2B43 /* FKFlickrAuthGetFullToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrAuthGetFullToken.h; path = Classes/Model/Generated/Auth/FKFlickrAuthGetFullToken.h; sourceTree = "<group>"; };
 		836CA5F2C214303BE4FA459CE727615F /* MPDashedLineView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPDashedLineView.h; path = Pod/Classes/Private/MPDashedLineView.h; sourceTree = "<group>"; };
 		8373F8887598438C9400014E7FCBDC56 /* FKFlickrCommonsGetInstitutions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrCommonsGetInstitutions.m; path = Classes/Model/Generated/Commons/FKFlickrCommonsGetInstitutions.m; sourceTree = "<group>"; };
@@ -1405,6 +1353,7 @@
 		8D04B349A468A3177003342F3880C82F /* MobilePrintSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MobilePrintSDK-prefix.pch"; sourceTree = "<group>"; };
 		8D200F13571220CE717F11FAD4F9BCA7 /* UIImage+MPResize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MPResize.h"; path = "Pod/Classes/Private/UIImage+MPResize.h"; sourceTree = "<group>"; };
 		8D3D9009903E5AFBB3DED6F4F8F7A8AB /* HPPRSearch@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HPPRSearch@2x.png"; path = "Pod/Assets/HPPRSearch@2x.png"; sourceTree = "<group>"; };
+		8D3EE749C28CAAE37DDA1FE42DF255B5 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DADE4B03814918E92C149C8C3BD4B80 /* HPPRFacebookAlbum.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRFacebookAlbum.m; path = Pod/Classes/HPPRFacebookAlbum.m; sourceTree = "<group>"; };
 		8E047E0F2C2C73655BF678CA3A6FBC6B /* FKFlickrContactsGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrContactsGetList.m; path = Classes/Model/Generated/Contacts/FKFlickrContactsGetList.m; sourceTree = "<group>"; };
 		8E11415974F7290DA1F8C799C6E3EA6A /* HPPRCachingObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRCachingObject.h; path = Pod/Classes/HPPRCachingObject.h; sourceTree = "<group>"; };
@@ -1419,9 +1368,11 @@
 		90995089D0285AA4B30BEC3163598867 /* FKFlickrGroupsDiscussTopicsGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsDiscussTopicsGetList.m; path = Classes/Model/Generated/Groups/Discuss/Topics/FKFlickrGroupsDiscussTopicsGetList.m; sourceTree = "<group>"; };
 		90DDC766BEB9BBDABB90A3887DFFB366 /* MPAppearance.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPAppearance.m; path = Pod/Classes/Public/MPAppearance.m; sourceTree = "<group>"; };
 		91E0E1E179984678E178797D174717BC /* FKFlickrPhotosetsGetInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosetsGetInfo.m; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsGetInfo.m; sourceTree = "<group>"; };
+		91EF8340C9CFE6001067B969E0D47D8C /* libMobilePrintSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMobilePrintSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		921E07C8665C3C22E43D5E621EA177F3 /* FKFlickrPlacesPlacesForTags.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPlacesPlacesForTags.h; path = Classes/Model/Generated/Places/FKFlickrPlacesPlacesForTags.h; sourceTree = "<group>"; };
 		923BB791FD44040EADB871ABE13B7ECF /* HPPRFacebookLoginProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRFacebookLoginProvider.m; path = Pod/Classes/HPPRFacebookLoginProvider.m; sourceTree = "<group>"; };
 		92853800115DE41E05B5725D228AFE9B /* HPPRSelectAlbumTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRSelectAlbumTableViewController.h; path = Pod/Classes/HPPRSelectAlbumTableViewController.h; sourceTree = "<group>"; };
+		92BE80B45864431D8C898FEF65E1C894 /* Pods-Sprocket-cal-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sprocket-cal-acknowledgements.plist"; sourceTree = "<group>"; };
 		92DA4BB35DCB1A270F6C85AC564F2768 /* HPPRRetry@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HPPRRetry@2x.png"; path = "Pod/Assets/HPPRRetry@2x.png"; sourceTree = "<group>"; };
 		931F94BC4BFC459F95174056DD6EF092 /* HPPRFlickrLoginViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRFlickrLoginViewController.h; path = Pod/Classes/HPPRFlickrLoginViewController.h; sourceTree = "<group>"; };
 		93797F7DF61EB5F45E18B45094B52060 /* MPPaper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPaper.m; path = Pod/Classes/Public/MPPaper.m; sourceTree = "<group>"; };
@@ -1438,6 +1389,7 @@
 		95AED1A94599D483C9C5E18AE7B9865F /* FKFlickrPeopleGetUploadStatus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPeopleGetUploadStatus.m; path = Classes/Model/Generated/People/FKFlickrPeopleGetUploadStatus.m; sourceTree = "<group>"; };
 		95F2C3F88EA02E79C789DDFF0CF8F65B /* FKFlickrUrlsGetGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrUrlsGetGroup.m; path = Classes/Model/Generated/Urls/FKFlickrUrlsGetGroup.m; sourceTree = "<group>"; };
 		95F5552396EC56B83521AACAC2510792 /* UIColor+HPPRStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+HPPRStyle.h"; path = "Pod/Classes/Additions/UIColor+HPPRStyle.h"; sourceTree = "<group>"; };
+		966197E4BB618F3843F48B883B21D46E /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9662EE03E12F75389D85E2EB1C717428 /* FKFlickrPhotosGeoGetLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGeoGetLocation.h; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoGetLocation.h; sourceTree = "<group>"; };
 		966E0E04487C1AEA1DB06AFB89782D23 /* FKFlickrPhotosLicensesSetLicense.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosLicensesSetLicense.m; path = Classes/Model/Generated/Photos/Licenses/FKFlickrPhotosLicensesSetLicense.m; sourceTree = "<group>"; };
 		9671BC4391FAF68A446827BC02F08644 /* FKFlickrNetworkOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrNetworkOperation.m; path = Classes/Network/FKFlickrNetworkOperation.m; sourceTree = "<group>"; };
@@ -1464,9 +1416,6 @@
 		9CC18221DD1EDFD40D7A50EEDC41DC7D /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = GoogleAnalytics/Library/GAIEcommerceProduct.h; sourceTree = "<group>"; };
 		9CF16BB1E13D324D3144DC4744DBE60A /* HPPRInstagramUserMedia.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRInstagramUserMedia.m; path = Pod/Classes/HPPRInstagramUserMedia.m; sourceTree = "<group>"; };
 		9CFEA4FEA95854AA69975839EC134527 /* MPLayoutAlgorithmStretch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayoutAlgorithmStretch.h; path = Pod/Classes/Private/MPLayoutAlgorithmStretch.h; sourceTree = "<group>"; };
-		9D518259577DB92DEBB6BBFBBDD8C6A5 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
-		9D77A704852CE6B3D862C76CF5CD4858 /* libHPPhotoProvider.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHPPhotoProvider.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D93AD61164228805F23B8C4FA3F780D /* Pods-Sprocket-cal-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sprocket-cal-acknowledgements.plist"; sourceTree = "<group>"; };
 		9E234A5A23380DCA94C01F3B5715770F /* HPPRLoginProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRLoginProvider.h; path = Pod/Classes/HPPRLoginProvider.h; sourceTree = "<group>"; };
 		9E699BFFBF27C0919A511B99854C270A /* FKFlickrPeopleGetInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPeopleGetInfo.h; path = Classes/Model/Generated/People/FKFlickrPeopleGetInfo.h; sourceTree = "<group>"; };
 		9EACC57F5734A840898A64D33F067FA9 /* FKFlickrPhotosGeoGetPerms.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGeoGetPerms.m; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoGetPerms.m; sourceTree = "<group>"; };
@@ -1485,7 +1434,7 @@
 		A4052F0F29395C6C302A39FC60ECF674 /* UITableView+MPHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+MPHeader.h"; path = "Pod/Classes/Private/UITableView+MPHeader.h"; sourceTree = "<group>"; };
 		A416B69EE9EA3E04DFBF01FA4B705F1E /* FKFlickrTagsGetClusterPhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrTagsGetClusterPhotos.h; path = Classes/Model/Generated/Tags/FKFlickrTagsGetClusterPhotos.h; sourceTree = "<group>"; };
 		A417E4C1374B008DE581514D848C401E /* MPPaperSizeTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPaperSizeTableViewController.h; path = Pod/Classes/Private/MPPaperSizeTableViewController.h; sourceTree = "<group>"; };
-		A439ABB52DE398696FABF4A04E5BA7C8 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
+		A46BB856153389FBEE588D701322D761 /* libTTTAttributedLabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTTAttributedLabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5346C72DF1A92CD6FC2DD9D036DB79F /* FKFlickrPhotosPeopleGetList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosPeopleGetList.h; path = Classes/Model/Generated/Photos/People/FKFlickrPhotosPeopleGetList.h; sourceTree = "<group>"; };
 		A555BE192661FE17A3627C81E6F853DD /* FKFlickrPhotosetsGetInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsGetInfo.h; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsGetInfo.h; sourceTree = "<group>"; };
 		A5774F604A1E387B3BF203E616AF58CC /* FKFlickrGroupsDiscussRepliesGetInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsDiscussRepliesGetInfo.m; path = Classes/Model/Generated/Groups/Discuss/Replies/FKFlickrGroupsDiscussRepliesGetInfo.m; sourceTree = "<group>"; };
@@ -1498,6 +1447,7 @@
 		A8175880AFC8F93087C3CF87C53EA136 /* FKFlickrPhotosDelete.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosDelete.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosDelete.h; sourceTree = "<group>"; };
 		A843C5DCA85E767271CC6EC195F13C8A /* MPUnselected@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPUnselected@2x.png"; path = "Pod/Assets/MPUnselected@2x.png"; sourceTree = "<group>"; };
 		A863DDD81323F0A59F05E2B79EDDD58C /* MPLayoutFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayoutFactory.h; path = Pod/Classes/Public/MPLayoutFactory.h; sourceTree = "<group>"; };
+		A8A19185242F19D67052063F593B1939 /* Pods-Sprocket-cal-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-cal-frameworks.sh"; sourceTree = "<group>"; };
 		A8B7790743A7D2FA8911CA86F1D60A12 /* FKFlickrPhotosetsGetContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsGetContext.h; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsGetContext.h; sourceTree = "<group>"; };
 		A8D9B49449CF488A82370C88EC9F34AE /* FKFlickrPhotosTransformRotate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosTransformRotate.m; path = Classes/Model/Generated/Photos/Transform/FKFlickrPhotosTransformRotate.m; sourceTree = "<group>"; };
 		A99DEAA63B1F18330DAE9810F0AA7C56 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -1510,8 +1460,8 @@
 		AA6F97C3F4CD518B77B0F2D0B22AAB51 /* FKFlickrPushUnsubscribe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPushUnsubscribe.h; path = Classes/Model/Generated/Push/FKFlickrPushUnsubscribe.h; sourceTree = "<group>"; };
 		AA9D18E168BF46A96902DF145BA80602 /* MPLayoutFill.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPLayoutFill.m; path = Pod/Classes/Public/MPLayoutFill.m; sourceTree = "<group>"; };
 		AA9E59237E6861D45969ED97E30E8684 /* FKFlickrAuthOauthGetAccessToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrAuthOauthGetAccessToken.h; path = Classes/Model/Generated/Auth/Oauth/FKFlickrAuthOauthGetAccessToken.h; sourceTree = "<group>"; };
-		AAA65C76065201938DCF60BBFD4566EA /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		AAB33AC525CAC8749A99078815ED097F /* FKFlickrCamerasGetBrands.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrCamerasGetBrands.h; path = Classes/Model/Generated/Cameras/FKFlickrCamerasGetBrands.h; sourceTree = "<group>"; };
+		AAC6B8BF577FB9E6E8114E397809B743 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		AACFAD94D30DFCB566A748DF01593B60 /* UIColor+MPHexString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+MPHexString.h"; path = "Pod/Classes/Private/UIColor+MPHexString.h"; sourceTree = "<group>"; };
 		AAE5A1B4DCFAF411A52B93C6297287B1 /* MPLegacyPageRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLegacyPageRange.h; path = Pod/Classes/Private/MPLegacyPageRange.h; sourceTree = "<group>"; };
 		AAFE7BF84371FD0D4A01E793D275FDF7 /* HPPRNoInternetConnectionMessageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRNoInternetConnectionMessageView.h; path = Pod/Classes/HPPRNoInternetConnectionMessageView.h; sourceTree = "<group>"; };
@@ -1532,13 +1482,11 @@
 		B072389B684DA2F18689CCC05BB00A8B /* FKFlickrPhotosetsSetPrimaryPhoto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosetsSetPrimaryPhoto.m; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsSetPrimaryPhoto.m; sourceTree = "<group>"; };
 		B08F4BCDA1A6106D9B9F970ABC9DC1B3 /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
 		B0E835872D40517471C60576850BA55A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		B1FFB2C6BB74C787A091669CE4ABA5CB /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
 		B25B724ACC5428346C29E1AE36AAD817 /* HPPRSelectPhotoProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRSelectPhotoProvider.m; path = Pod/Classes/HPPRSelectPhotoProvider.m; sourceTree = "<group>"; };
 		B26872CA7F82ACF7E21C1A979A2D8002 /* FKFlickrStatsGetPhotoDomains.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrStatsGetPhotoDomains.m; path = Classes/Model/Generated/Stats/FKFlickrStatsGetPhotoDomains.m; sourceTree = "<group>"; };
 		B286703D3123626F213A99601A61743F /* FKFlickrAuthGetFrob.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrAuthGetFrob.m; path = Classes/Model/Generated/Auth/FKFlickrAuthGetFrob.m; sourceTree = "<group>"; };
 		B49B7C7E62BA86C9FC9898FE58E343E5 /* MPPaper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPaper.h; path = Pod/Classes/Public/MPPaper.h; sourceTree = "<group>"; };
 		B56ED57FD9644FBDE8513ACFF1BF1961 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = GoogleAnalytics/Library/GAITracker.h; sourceTree = "<group>"; };
-		B57B23CAB684EC8C33159FBDD4212783 /* Pods-Sprocket-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sprocket-acknowledgements.plist"; sourceTree = "<group>"; };
 		B5C9393453D5A6EA13AB9CFAE0B2D6D9 /* MPPrintManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPrintManager.m; path = Pod/Classes/Public/MPPrintManager.m; sourceTree = "<group>"; };
 		B5CA8FCFB8DF9340966DE17C9E9167BC /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = GoogleAnalytics/Library/GAITrackedViewController.h; sourceTree = "<group>"; };
 		B5CE57A79ECFF46FE61389232C0FB32F /* FKFlickrPhotosGetFavorites.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGetFavorites.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetFavorites.m; sourceTree = "<group>"; };
@@ -1555,9 +1503,11 @@
 		BA53E05EE5463C6001D9C88D2A6CF348 /* FKFlickrGroupsMembersGetList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrGroupsMembersGetList.h; path = Classes/Model/Generated/Groups/Members/FKFlickrGroupsMembersGetList.h; sourceTree = "<group>"; };
 		BA81DE614EA5C42D28C74FE7030D0779 /* FKFlickrPeopleFindByUsername.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPeopleFindByUsername.h; path = Classes/Model/Generated/People/FKFlickrPeopleFindByUsername.h; sourceTree = "<group>"; };
 		BAB4F43D6F7536970457AAC227CCA91C /* MPLegacyPrintItemPDF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLegacyPrintItemPDF.h; path = Pod/Classes/Private/MPLegacyPrintItemPDF.h; sourceTree = "<group>"; };
+		BAEF0F109F7E2C4315600509ECD4C935 /* Pods-Sprocket-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sprocket-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BAFAD525D7F24DC5C20E39DD94103E8F /* FKFlickrPlacesGetChildrenWithPhotosPublic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPlacesGetChildrenWithPhotosPublic.h; path = Classes/Model/Generated/Places/FKFlickrPlacesGetChildrenWithPhotosPublic.h; sourceTree = "<group>"; };
 		BB3EB7C663BBC6B553AF1B4B8D338F6D /* FKFlickrPeopleGetGroups.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPeopleGetGroups.m; path = Classes/Model/Generated/People/FKFlickrPeopleGetGroups.m; sourceTree = "<group>"; };
 		BB690E1120E010FE8F9C106D9FF71020 /* HPPRInstagramTagMedia.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRInstagramTagMedia.h; path = Pod/Classes/HPPRInstagramTagMedia.h; sourceTree = "<group>"; };
+		BBAE50706E88E60F1F0D1506E2675545 /* libFlickrKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlickrKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF435193F67A93D0B3055A30552B552 /* FKFlickrStatsGetPhotoReferrers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrStatsGetPhotoReferrers.m; path = Classes/Model/Generated/Stats/FKFlickrStatsGetPhotoReferrers.m; sourceTree = "<group>"; };
 		BC2A6217C8F9A0979D9C3EA959F7013C /* FKFlickrPhotosCommentsDeleteComment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosCommentsDeleteComment.m; path = Classes/Model/Generated/Photos/Comments/FKFlickrPhotosCommentsDeleteComment.m; sourceTree = "<group>"; };
 		BCA9463C384223EA70641487017F2313 /* HPPRCachingObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRCachingObject.m; path = Pod/Classes/HPPRCachingObject.m; sourceTree = "<group>"; };
@@ -1574,6 +1524,7 @@
 		BF6B3698D275FF3766FE9812BA9F7472 /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Classes/DDASLLogCapture.m; sourceTree = "<group>"; };
 		BF880DD8EC47461D2004DCEA7C52790C /* MPLayoutPrepStep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayoutPrepStep.h; path = Pod/Classes/Public/MPLayoutPrepStep.h; sourceTree = "<group>"; };
 		BFB43CFB805714709CD6CD85921A253D /* MPBTDeviceInfoTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPBTDeviceInfoTableViewController.h; path = Pod/Classes/Private/MPBTDeviceInfoTableViewController.h; sourceTree = "<group>"; };
+		C016B714245077D00642F720A259372B /* Pods-Sprocket-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-resources.sh"; sourceTree = "<group>"; };
 		C037ABAFD98068F8E178BD6082510157 /* FKFlickrPandaGetList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPandaGetList.h; path = Classes/Model/Generated/Panda/FKFlickrPandaGetList.h; sourceTree = "<group>"; };
 		C0583A2E20C01134E80A8027F113F2D0 /* FKFlickrGalleriesAddPhoto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrGalleriesAddPhoto.h; path = Classes/Model/Generated/Galleries/FKFlickrGalleriesAddPhoto.h; sourceTree = "<group>"; };
 		C07072D3497EDDBF1286D6C148AA8E79 /* FKFlickrPlacesGetInfoByUrl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPlacesGetInfoByUrl.h; path = Classes/Model/Generated/Places/FKFlickrPlacesGetInfoByUrl.h; sourceTree = "<group>"; };
@@ -1584,7 +1535,6 @@
 		C163EB538489B1EE84D432E20BDA0C17 /* HPPRLoginViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRLoginViewController.m; path = Pod/Classes/HPPRLoginViewController.m; sourceTree = "<group>"; };
 		C168D9906F61FF88FFB0E7317B6FB33B /* MPPrintJobsTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintJobsTableViewCell.h; path = Pod/Classes/Private/MPPrintJobsTableViewCell.h; sourceTree = "<group>"; };
 		C1ADE7F6347DE81E913B0ED2AF3A59F7 /* FKFlickrPhotosGetInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGetInfo.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetInfo.m; sourceTree = "<group>"; };
-		C1BF186D1A3D0E2597329B514538AC26 /* Pods-Sprocket-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket-frameworks.sh"; sourceTree = "<group>"; };
 		C1E3489B13E0E1C3F377B7854D55A139 /* HPPRSelectAlbumTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRSelectAlbumTableViewController.m; path = Pod/Classes/HPPRSelectAlbumTableViewController.m; sourceTree = "<group>"; };
 		C255E1FF8CB478BC77E401482397D480 /* FKFlickrPlacesGetShapeHistory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesGetShapeHistory.m; path = Classes/Model/Generated/Places/FKFlickrPlacesGetShapeHistory.m; sourceTree = "<group>"; };
 		C2A487D598C2146921BF51E3ED900C88 /* FKDUBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKDUBlocks.m; path = Classes/DevedUpKit/FKDUBlocks.m; sourceTree = "<group>"; };
@@ -1603,14 +1553,12 @@
 		C64AF5E3C722119B8BAE5DFB3B0C4128 /* FKFlickrPhotosGetContactsPublicPhotos.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGetContactsPublicPhotos.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetContactsPublicPhotos.m; sourceTree = "<group>"; };
 		C66CB02166681A4B91DCEE4BE07F0294 /* HPPRFlickrLoginProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRFlickrLoginProvider.h; path = Pod/Classes/HPPRFlickrLoginProvider.h; sourceTree = "<group>"; };
 		C6B3AE48246F814D2BA24ED0D33F68FC /* FKFlickrPeopleFindByEmail.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPeopleFindByEmail.m; path = Classes/Model/Generated/People/FKFlickrPeopleFindByEmail.m; sourceTree = "<group>"; };
-		C74DD7EE0D7FEEEFA4863F229C32F8B8 /* Pods-Sprocket Print-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sprocket Print-dummy.m"; sourceTree = "<group>"; };
 		C77EA050EF98CC46C7EE273C20ABF9E7 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = GoogleAnalytics/Library/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		C78F3D8138F51A07EE2006FAEB63AD94 /* FKFlickrTagsGetListUserRaw.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrTagsGetListUserRaw.m; path = Classes/Model/Generated/Tags/FKFlickrTagsGetListUserRaw.m; sourceTree = "<group>"; };
 		C92528808F7A0EF3434955CA79BBA386 /* UITableView+MPHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+MPHeader.m"; path = "Pod/Classes/Private/UITableView+MPHeader.m"; sourceTree = "<group>"; };
 		C93CEFA57BD531D8A80D46D6489FA509 /* MPWiFiReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPWiFiReachability.m; path = Pod/Classes/Private/MPWiFiReachability.m; sourceTree = "<group>"; };
 		C956D6CB5F1BDD5A979FD780AA178725 /* FKFlickrPlacesGetPlaceTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPlacesGetPlaceTypes.h; path = Classes/Model/Generated/Places/FKFlickrPlacesGetPlaceTypes.h; sourceTree = "<group>"; };
 		C96601857D497DC8F5D91898846187FB /* FKFlickrPlacesPlacesForUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPlacesPlacesForUser.h; path = Classes/Model/Generated/Places/FKFlickrPlacesPlacesForUser.h; sourceTree = "<group>"; };
-		C97F5B7B547937B048D739912726458E /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B107B43A9C967B9376ED06DD93F88F /* MPPrintLaterHelperViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPrintLaterHelperViewController.h; path = Pod/Classes/Private/MPPrintLaterHelperViewController.h; sourceTree = "<group>"; };
 		C9B673E2934E50BA4BF6EE1A0CF54EFE /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Classes/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
 		C9EFFE813B66B4C9F1246DB8C6EAB410 /* FKFlickrPeopleGetPublicGroups.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPeopleGetPublicGroups.h; path = Classes/Model/Generated/People/FKFlickrPeopleGetPublicGroups.h; sourceTree = "<group>"; };
@@ -1622,11 +1570,10 @@
 		CB19CDB184CA6AA629080F8E318B34B4 /* MPLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLogger.h; path = Pod/Classes/Public/MPLogger.h; sourceTree = "<group>"; };
 		CB46F52FBA39AAA295951DB167BD8CBE /* MPMobilePrintSDKReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPMobilePrintSDKReachability.h; path = Pod/Libraries/Reachability/MPMobilePrintSDKReachability.h; sourceTree = "<group>"; };
 		CB701F27000113A3D3C2CD48EE83F55B /* FKFlickrPhotosetsDelete.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsDelete.h; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsDelete.h; sourceTree = "<group>"; };
-		CBE8E4E60C94371B2D356B5235F9778B /* Pods-Sprocket-cal-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sprocket-cal-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CBF95E7E0537DFDE41F543457EECF768 /* Pods-Sprocket-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sprocket-acknowledgements.plist"; sourceTree = "<group>"; };
 		CC624B31F58CA288FE13D815DA229EA7 /* HPPRMyFeedOn@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HPPRMyFeedOn@2x.png"; path = "Pod/Assets/HPPRMyFeedOn@2x.png"; sourceTree = "<group>"; };
 		CCE4E86F5F2BCE16E63E28D0669CDC20 /* FKFlickrPhotosSetMeta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosSetMeta.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosSetMeta.h; sourceTree = "<group>"; };
 		CD2A2A61B07D1187CD8298412E82F346 /* MPPrintLater@2x~ipad.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPPrintLater@2x~ipad.png"; path = "Pod/Assets/MPPrintLater@2x~ipad.png"; sourceTree = "<group>"; };
-		CD99FC02E08C40FAB2DF302799A6C0A4 /* libFlickrKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlickrKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDC753E478254772C6389C6947F0FB55 /* HPPRSelectAlbumTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRSelectAlbumTableViewCell.h; path = Pod/Classes/HPPRSelectAlbumTableViewCell.h; sourceTree = "<group>"; };
 		CDF4EF86CB993F752F640B10C326E395 /* FKFlickrPrefsGetGeoPerms.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPrefsGetGeoPerms.m; path = Classes/Model/Generated/Prefs/FKFlickrPrefsGetGeoPerms.m; sourceTree = "<group>"; };
 		CE45DF6427969278F40863D4142E778C /* HPPRFacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "HPPRFacebookNoPhotoAlbum@2x.png"; path = "Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
@@ -1647,9 +1594,7 @@
 		D31D2C31395B27FCF14F895E0655AC10 /* HPPRFacebookPhotoProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRFacebookPhotoProvider.h; path = Pod/Classes/HPPRFacebookPhotoProvider.h; sourceTree = "<group>"; };
 		D354517F963A63B140A42A5924EF64F9 /* FKFlickrPhotosGeoSetLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGeoSetLocation.m; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoSetLocation.m; sourceTree = "<group>"; };
 		D3B71E756443CB96C0FCED46E380B560 /* FKFlickrPhotosSetSafetyLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosSetSafetyLevel.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosSetSafetyLevel.h; sourceTree = "<group>"; };
-		D3BD1117B5C0238BEB9A10541B4BD414 /* libTTTAttributedLabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTTTAttributedLabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C9A8F71CEE77D9B8BD4E5CCFC66D89 /* FKFlickrGroupsDiscussRepliesGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsDiscussRepliesGetList.m; path = Classes/Model/Generated/Groups/Discuss/Replies/FKFlickrGroupsDiscussRepliesGetList.m; sourceTree = "<group>"; };
-		D4493A3F717A1926C549D6F1DB613DD5 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		D4E5F0252819A825387CDA535743FEC5 /* MPLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPLogger.m; path = Pod/Classes/Public/MPLogger.m; sourceTree = "<group>"; };
 		D56C1F68390F519D1ECE855FA40DA186 /* FKFlickrPlacesTagsForPlace.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesTagsForPlace.m; path = Classes/Model/Generated/Places/FKFlickrPlacesTagsForPlace.m; sourceTree = "<group>"; };
 		D5E5201BCBCD2B51B07265D4A85810C2 /* FKDUStreamUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKDUStreamUtil.m; path = Classes/DevedUpKit/FKDUStreamUtil.m; sourceTree = "<group>"; };
@@ -1672,7 +1617,6 @@
 		DADF906382E294D2A078814B55C5F437 /* MPSupportAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPSupportAction.h; path = Pod/Classes/Public/MPSupportAction.h; sourceTree = "<group>"; };
 		DB664F56EC1F20D6672B1F077122D9EC /* FKFlickrPhotosetsGetPhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosetsGetPhotos.h; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsGetPhotos.h; sourceTree = "<group>"; };
 		DB6FFB9DAA57D96167B695BCE52F134D /* FKFlickrPhotosGeoGetLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGeoGetLocation.m; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoGetLocation.m; sourceTree = "<group>"; };
-		DB784A57DFADD00FF164328DD4129C06 /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA73615EFE5D4DA4334102090A71FFD /* MPWiFiReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPWiFiReachability.h; path = Pod/Classes/Private/MPWiFiReachability.h; sourceTree = "<group>"; };
 		DBD33FF36D8EC7AA53E184262C38E9F8 /* FKFlickrContactsGetTaggingSuggestions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrContactsGetTaggingSuggestions.h; path = Classes/Model/Generated/Contacts/FKFlickrContactsGetTaggingSuggestions.h; sourceTree = "<group>"; };
 		DBE091B735786CA8E5F6DC6EB6E051EF /* HPPRCameraRollAlbum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRCameraRollAlbum.h; path = Pod/Classes/HPPRCameraRollAlbum.h; sourceTree = "<group>"; };
@@ -1692,9 +1636,9 @@
 		DF60ADCE1D3277D5A21C901B6E6687F8 /* FKFlickrPrefsGetPrivacy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPrefsGetPrivacy.m; path = Classes/Model/Generated/Prefs/FKFlickrPrefsGetPrivacy.m; sourceTree = "<group>"; };
 		DF90128BA4D7D05782845E8944669743 /* FKFlickrFavoritesAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrFavoritesAdd.m; path = Classes/Model/Generated/Favorites/FKFlickrFavoritesAdd.m; sourceTree = "<group>"; };
 		DF90C3E47BE9432CB248E028CCF183E5 /* FKFlickrGroupsBrowse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsBrowse.m; path = Classes/Model/Generated/Groups/FKFlickrGroupsBrowse.m; sourceTree = "<group>"; };
-		E01D422AC63C361CCA6C063808FF84E3 /* Pods-Sprocket Print-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sprocket Print-acknowledgements.plist"; sourceTree = "<group>"; };
 		E061FCBA0F135D489CBE5B34AAF2604D /* MPBTAutoOffTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPBTAutoOffTableViewController.h; path = Pod/Classes/Private/MPBTAutoOffTableViewController.h; sourceTree = "<group>"; };
 		E0C9D7BB76A3FD25C12F1C6CAF30F557 /* MPView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPView.h; path = Pod/Classes/Private/MPView.h; sourceTree = "<group>"; };
+		E0D79F4E2D13444DC07B691E9545F8DA /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F91E4E2B4D5C1C58BDF8ECC34686AC /* HPPRInstagramTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRInstagramTag.h; path = Pod/Classes/HPPRInstagramTag.h; sourceTree = "<group>"; };
 		E14726022A360DD615E6C213AEE4B6A3 /* FKFlickrPhotosetsGetContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosetsGetContext.m; path = Classes/Model/Generated/Photosets/FKFlickrPhotosetsGetContext.m; sourceTree = "<group>"; };
 		E1888B6C26D0F11A28436359A39E4297 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Classes/Extensions/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
@@ -1708,7 +1652,6 @@
 		E277959744A0973D01B1F984E9111BF6 /* FKFlickrTestEcho.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrTestEcho.m; path = Classes/Model/Generated/Test/FKFlickrTestEcho.m; sourceTree = "<group>"; };
 		E2DE2DCF26C1F9E19760C79D6E648460 /* FKFlickrStatsGetPhotoStats.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrStatsGetPhotoStats.h; path = Classes/Model/Generated/Stats/FKFlickrStatsGetPhotoStats.h; sourceTree = "<group>"; };
 		E2FBE42FA7D08E94B092B3B5571E124A /* FKFlickrUrlsGetUserProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrUrlsGetUserProfile.m; path = Classes/Model/Generated/Urls/FKFlickrUrlsGetUserProfile.m; sourceTree = "<group>"; };
-		E2FE19194B0EB475801661DEBD2C7BD9 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E33D810328C1BC2A71583A1DD44F3581 /* FKFlickrPhotosTransformRotate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosTransformRotate.h; path = Classes/Model/Generated/Photos/Transform/FKFlickrPhotosTransformRotate.h; sourceTree = "<group>"; };
 		E3686DC1AE3303D2FBAC5C06A5D3751B /* HPPRInstagramPhotoProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRInstagramPhotoProvider.m; path = Pod/Classes/HPPRInstagramPhotoProvider.m; sourceTree = "<group>"; };
 		E3BD2C3B561414A11DCFB69F72FD073E /* MPPageSettingsTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPPageSettingsTableViewController.h; path = Pod/Classes/Private/MPPageSettingsTableViewController.h; sourceTree = "<group>"; };
@@ -1725,6 +1668,7 @@
 		E664CFD62278484EFFB9AEB0E2B20CBC /* FKFlickrPhotosGetNotInSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGetNotInSet.m; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetNotInSet.m; sourceTree = "<group>"; };
 		E6A6BF33D3077A308C6FF80AAC13F02C /* FKFlickrStatsGetPhotostreamStats.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrStatsGetPhotostreamStats.h; path = Classes/Model/Generated/Stats/FKFlickrStatsGetPhotostreamStats.h; sourceTree = "<group>"; };
 		E7171ECD426477A0CD6E9AA87C3B15DA /* MPBTAutoOffTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPBTAutoOffTableViewController.m; path = Pod/Classes/Private/MPBTAutoOffTableViewController.m; sourceTree = "<group>"; };
+		E83C76C9FE055C450ED6BFB4E5C59AD7 /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
 		E85271FAC5A29EEFC7CF7F425F9291BA /* FKFlickrBlogsGetList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrBlogsGetList.h; path = Classes/Model/Generated/Blogs/FKFlickrBlogsGetList.h; sourceTree = "<group>"; };
 		E862F18B8405877117BB80FCE71CAA2F /* MPAppearance.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPAppearance.h; path = Pod/Classes/Public/MPAppearance.h; sourceTree = "<group>"; };
 		E89C2761DE504B359603192DB770DDF7 /* FKFlickrAuthGetFrob.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrAuthGetFrob.h; path = Classes/Model/Generated/Auth/FKFlickrAuthGetFrob.h; sourceTree = "<group>"; };
@@ -1748,6 +1692,7 @@
 		ECABF7A1890832F1B297F5762879F421 /* FKFlickrPhotosGeoBatchCorrectLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosGeoBatchCorrectLocation.m; path = Classes/Model/Generated/Photos/Geo/FKFlickrPhotosGeoBatchCorrectLocation.m; sourceTree = "<group>"; };
 		ECB0A45D8D8E5904A2EB965632EAE586 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Pod/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		ECCFDFA25DF71D96343F65D40D726876 /* FKFlickrStatsGetPhotostreamReferrers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrStatsGetPhotostreamReferrers.m; path = Classes/Model/Generated/Stats/FKFlickrStatsGetPhotostreamReferrers.m; sourceTree = "<group>"; };
+		ECFAFD496D25A35C7EF3CFE114DCDBCA /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		ED25D4F1CC7C6224AAC8F7FD081AE81F /* MPBTSprocketDefinitions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPBTSprocketDefinitions.h; path = Pod/Classes/Private/MPBTSprocketDefinitions.h; sourceTree = "<group>"; };
 		ED441CD6D0D151D58099961212D4397C /* FKFlickrPhotosetsCommentsGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosetsCommentsGetList.m; path = Classes/Model/Generated/Photosets/Comments/FKFlickrPhotosetsCommentsGetList.m; sourceTree = "<group>"; };
 		EE2C90C5396779591B758E43892B1590 /* FKFlickrPhotosSuggestionsGetList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosSuggestionsGetList.h; path = Classes/Model/Generated/Photos/Suggestions/FKFlickrPhotosSuggestionsGetList.h; sourceTree = "<group>"; };
@@ -1760,13 +1705,13 @@
 		EFAA348C81B454E81E7E19A9CAB2A1A2 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Classes/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		EFF4B42C91C722B6B77333F8B2081873 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		F0CF1CDF0E85B9BF94BDE142DAC8AD7E /* FKFlickrPrefsGetSafetyLevel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPrefsGetSafetyLevel.m; path = Classes/Model/Generated/Prefs/FKFlickrPrefsGetSafetyLevel.m; sourceTree = "<group>"; };
-		F1963F2AE31DD561C580BF3B702C45FC /* libPods-Sprocket-cal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket-cal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C94334887A43EC52DCFD88C1D3316D /* MP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MP.h; path = Pod/Classes/Public/MP.h; sourceTree = "<group>"; };
 		F226142EACEC391B16D5587A5C8AE667 /* HPPRFacebookPhotoProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRFacebookPhotoProvider.m; path = Pod/Classes/HPPRFacebookPhotoProvider.m; sourceTree = "<group>"; };
 		F23B21618F93F529A62AC7A53B7F23D1 /* MPPrintLater@2x~iphone.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPPrintLater@2x~iphone.png"; path = "Pod/Assets/MPPrintLater@2x~iphone.png"; sourceTree = "<group>"; };
 		F26586AA855AEF36D352FC05F41FB6FD /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		F28266C55615264CFA6CBBE09943A2E5 /* FKFlickrPhotosCommentsGetRecentForContacts.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosCommentsGetRecentForContacts.m; path = Classes/Model/Generated/Photos/Comments/FKFlickrPhotosCommentsGetRecentForContacts.m; sourceTree = "<group>"; };
 		F339D6C568F9F236F1E245EC6989FD52 /* HPPRCameraRollMedia.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRCameraRollMedia.m; path = Pod/Classes/HPPRCameraRollMedia.m; sourceTree = "<group>"; };
+		F33DF3738A0E5DA91F86BEA6E4535BE5 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37B7680E5FE3FA333CB8CD9F958BCF4 /* HPPRAlbum.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRAlbum.m; path = Pod/Classes/HPPRAlbum.m; sourceTree = "<group>"; };
 		F45A9ABE6388CF013790D698789941D0 /* FKFlickrActivityUserPhotos.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrActivityUserPhotos.h; path = Classes/Model/Generated/Activity/FKFlickrActivityUserPhotos.h; sourceTree = "<group>"; };
 		F4B10C9C5ABAF7201462C3CAFF70A45B /* MPPrintSettingsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPrintSettingsTableViewController.m; path = Pod/Classes/Private/MPPrintSettingsTableViewController.m; sourceTree = "<group>"; };
@@ -1774,9 +1719,10 @@
 		F5BC91337B8FD5AD2DDC0CBFED6CF540 /* FKFlickrGroupsLeave.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrGroupsLeave.m; path = Classes/Model/Generated/Groups/FKFlickrGroupsLeave.m; sourceTree = "<group>"; };
 		F63BDC30CA47052EB32868F62C85D90C /* FKFlickrStatsGetCSVFiles.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrStatsGetCSVFiles.h; path = Classes/Model/Generated/Stats/FKFlickrStatsGetCSVFiles.h; sourceTree = "<group>"; };
 		F646134ACCECE257A76EEFA1F3E94CB0 /* HPPRNoInternetConnectionMessageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRNoInternetConnectionMessageView.m; path = Pod/Classes/HPPRNoInternetConnectionMessageView.m; sourceTree = "<group>"; };
+		F691D219945F87657DCBC0B2338E0E80 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
+		F8209122A8F3690F22B1461B59540CB6 /* Pods-Sprocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sprocket-dummy.m"; sourceTree = "<group>"; };
 		F829FBA3C28B92581966303F77B2ECCE /* FKFlickrPhotosGetUntagged.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGetUntagged.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetUntagged.h; sourceTree = "<group>"; };
 		F872E28E22D72426D8528708853EBCFA /* HPPRFlickrPhotoProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HPPRFlickrPhotoProvider.h; path = Pod/Classes/HPPRFlickrPhotoProvider.h; sourceTree = "<group>"; };
-		F88C02A65474103973BD416924A24368 /* Pods-Sprocket Print-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sprocket Print-frameworks.sh"; sourceTree = "<group>"; };
 		F8F7549A0C7514B1E9942ACFC8D0F131 /* MPLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLayout.h; path = Pod/Classes/Public/MPLayout.h; sourceTree = "<group>"; };
 		F8FC2C84AF883C66528B12CCFC1A36AE /* NSBundle+MPLocalizable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MPLocalizable.m"; path = "Pod/Classes/Private/NSBundle+MPLocalizable.m"; sourceTree = "<group>"; };
 		F90CD76DF2B139F1E53274A01EC14DBE /* MP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MP.m; path = Pod/Classes/Public/MP.m; sourceTree = "<group>"; };
@@ -1796,7 +1742,6 @@
 		FCADDC8A0BD8FE27D5B1766347C3E9E5 /* FKFlickrPhotosRemoveTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosRemoveTag.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosRemoveTag.h; sourceTree = "<group>"; };
 		FCBD0C9AF48F379566CCA053D98B281F /* FKFlickrPhotosCommentsGetList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPhotosCommentsGetList.m; path = Classes/Model/Generated/Photos/Comments/FKFlickrPhotosCommentsGetList.m; sourceTree = "<group>"; };
 		FD0D0AC8402E466D98EA5F64A9B6D084 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
-		FD15F52CD2C34CE8F19BEA0644504B3A /* Pods-Sprocket-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sprocket-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FD17723366A0EC8836D1C590EA1213E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		FDC38F277CC36DF71D2109426B8140F4 /* FKFlickrPlacesFind.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FKFlickrPlacesFind.m; path = Classes/Model/Generated/Places/FKFlickrPlacesFind.m; sourceTree = "<group>"; };
 		FE364B431D474B851C1FCE6764D386BD /* HPPRFlickrMedia.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRFlickrMedia.m; path = Pod/Classes/HPPRFlickrMedia.m; sourceTree = "<group>"; };
@@ -1806,6 +1751,7 @@
 		FF7996AB15EB36640EB7DEA492CF7276 /* MPPageSettingsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPageSettingsTableViewController.m; path = Pod/Classes/Private/MPPageSettingsTableViewController.m; sourceTree = "<group>"; };
 		FFBC2396033106DCE55284EAA777ABCB /* HPPRFlickrPhotoProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HPPRFlickrPhotoProvider.m; path = Pod/Classes/HPPRFlickrPhotoProvider.m; sourceTree = "<group>"; };
 		FFE74331FE4DCAA784525D9CE3345B79 /* FKFlickrPhotosGetPerms.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FKFlickrPhotosGetPerms.h; path = Classes/Model/Generated/Photos/FKFlickrPhotosGetPerms.h; sourceTree = "<group>"; };
+		FFF342D44C2922ACD468E399DF7F9708 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1839,14 +1785,6 @@
 			files = (
 				92F7C2C3A38EC1E87AC571775221E9C8 /* Foundation.framework in Frameworks */,
 				CC138929CFA119BA0FAF55030A451D0D /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5AD698ADD4CA8D3CCC2213F4A38DE6B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0208CA0E4653791D7085AE56E0BBC59A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1893,23 +1831,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		015B3D0B540C5C2695DA05E72D6C6B33 /* Pods-Sprocket */ = {
-			isa = PBXGroup;
-			children = (
-				FD15F52CD2C34CE8F19BEA0644504B3A /* Pods-Sprocket-acknowledgements.markdown */,
-				B57B23CAB684EC8C33159FBDD4212783 /* Pods-Sprocket-acknowledgements.plist */,
-				7F5B9B40F81E131A93B86C6E9190C5A2 /* Pods-Sprocket-dummy.m */,
-				C1BF186D1A3D0E2597329B514538AC26 /* Pods-Sprocket-frameworks.sh */,
-				1CEA6D9E80DB517FD0A597C761654EA0 /* Pods-Sprocket-resources.sh */,
-				D4493A3F717A1926C549D6F1DB613DD5 /* Pods-Sprocket.appstore.xcconfig */,
-				5E1D223C7DE65A6B50CDE411BF119F90 /* Pods-Sprocket.debug.xcconfig */,
-				6291296DB62178141F0013A1FA1DF711 /* Pods-Sprocket.release.xcconfig */,
-				498AC41F970141EC6FB81305A0227D50 /* Pods-Sprocket.testflight.xcconfig */,
-			);
-			name = "Pods-Sprocket";
-			path = "Target Support Files/Pods-Sprocket";
-			sourceTree = "<group>";
-		};
 		05122A69C8F0A244A461C9C5175D13C5 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1944,6 +1865,23 @@
 			path = "../Target Support Files/TTTAttributedLabel";
 			sourceTree = "<group>";
 		};
+		0A0FF6CAD934CA10BBA2A82CBC928FE4 /* Pods-Sprocket */ = {
+			isa = PBXGroup;
+			children = (
+				BAEF0F109F7E2C4315600509ECD4C935 /* Pods-Sprocket-acknowledgements.markdown */,
+				CBF95E7E0537DFDE41F543457EECF768 /* Pods-Sprocket-acknowledgements.plist */,
+				F8209122A8F3690F22B1461B59540CB6 /* Pods-Sprocket-dummy.m */,
+				48A6659D54E3B08D1D10BEE9F234DD74 /* Pods-Sprocket-frameworks.sh */,
+				C016B714245077D00642F720A259372B /* Pods-Sprocket-resources.sh */,
+				F691D219945F87657DCBC0B2338E0E80 /* Pods-Sprocket.appstore.xcconfig */,
+				AAC6B8BF577FB9E6E8114E397809B743 /* Pods-Sprocket.debug.xcconfig */,
+				45E54FFACF320E819760D425EF1B5098 /* Pods-Sprocket.release.xcconfig */,
+				E83C76C9FE055C450ED6BFB4E5C59AD7 /* Pods-Sprocket.testflight.xcconfig */,
+			);
+			name = "Pods-Sprocket";
+			path = "Target Support Files/Pods-Sprocket";
+			sourceTree = "<group>";
+		};
 		0CB129CE3E3E68EE1487A15099A47DA0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1953,23 +1891,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FlickrKit";
-			sourceTree = "<group>";
-		};
-		13F3AAFA26104D0841CADE10B039B52B /* Pods-Sprocket Print */ = {
-			isa = PBXGroup;
-			children = (
-				067C47865A08F53D85B089A87506A9D0 /* Pods-Sprocket Print-acknowledgements.markdown */,
-				E01D422AC63C361CCA6C063808FF84E3 /* Pods-Sprocket Print-acknowledgements.plist */,
-				C74DD7EE0D7FEEEFA4863F229C32F8B8 /* Pods-Sprocket Print-dummy.m */,
-				F88C02A65474103973BD416924A24368 /* Pods-Sprocket Print-frameworks.sh */,
-				239E8A0C50641183F086A5787C404AFD /* Pods-Sprocket Print-resources.sh */,
-				9D518259577DB92DEBB6BBFBBDD8C6A5 /* Pods-Sprocket Print.appstore.xcconfig */,
-				B1FFB2C6BB74C787A091669CE4ABA5CB /* Pods-Sprocket Print.debug.xcconfig */,
-				2A44A11595730BE997CC11149E39AD68 /* Pods-Sprocket Print.release.xcconfig */,
-				A439ABB52DE398696FABF4A04E5BA7C8 /* Pods-Sprocket Print.testflight.xcconfig */,
-			);
-			name = "Pods-Sprocket Print";
-			path = "Target Support Files/Pods-Sprocket Print";
 			sourceTree = "<group>";
 		};
 		28E64EBCFFD4B2539BA590456893E89C /* Pods */ = {
@@ -2022,6 +1943,23 @@
 				A99DEAA63B1F18330DAE9810F0AA7C56 /* UIWebView+AFNetworking.m */,
 			);
 			name = UIKit;
+			sourceTree = "<group>";
+		};
+		47B7BC29E30C5B7C828143CEF1E2FFC6 /* Pods-Sprocket-cal */ = {
+			isa = PBXGroup;
+			children = (
+				6CD0AA74E7E89EFCF14389385FF6B288 /* Pods-Sprocket-cal-acknowledgements.markdown */,
+				92BE80B45864431D8C898FEF65E1C894 /* Pods-Sprocket-cal-acknowledgements.plist */,
+				5082D2A7C01DFED4E303BB25CFBA5EC6 /* Pods-Sprocket-cal-dummy.m */,
+				A8A19185242F19D67052063F593B1939 /* Pods-Sprocket-cal-frameworks.sh */,
+				633FE3ACED4DAF359ECD5F24A7EE8164 /* Pods-Sprocket-cal-resources.sh */,
+				3ACCAC2241B6F695AE061B5306F4C12B /* Pods-Sprocket-cal.appstore.xcconfig */,
+				E0D79F4E2D13444DC07B691E9545F8DA /* Pods-Sprocket-cal.debug.xcconfig */,
+				ECFAFD496D25A35C7EF3CFE114DCDBCA /* Pods-Sprocket-cal.release.xcconfig */,
+				FFF342D44C2922ACD468E399DF7F9708 /* Pods-Sprocket-cal.testflight.xcconfig */,
+			);
+			name = "Pods-Sprocket-cal";
+			path = "Target Support Files/Pods-Sprocket-cal";
 			sourceTree = "<group>";
 		};
 		4D2EED03E28E1DE805D029DCE8BF79F0 /* Reachability */ = {
@@ -2520,21 +2458,13 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		5E27E342C8071456593CF766D46D3B18 /* Pods-Sprocket-cal */ = {
+		5E74D1B102A76EFC206DE74E4C6B996D /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CBE8E4E60C94371B2D356B5235F9778B /* Pods-Sprocket-cal-acknowledgements.markdown */,
-				9D93AD61164228805F23B8C4FA3F780D /* Pods-Sprocket-cal-acknowledgements.plist */,
-				10AD520D5833992C31E753B96B1B8796 /* Pods-Sprocket-cal-dummy.m */,
-				49586C1C5AF21B9C7D22EBAB306A9296 /* Pods-Sprocket-cal-frameworks.sh */,
-				715F75D13F8ECB221118E94FD7B41544 /* Pods-Sprocket-cal-resources.sh */,
-				82E216631E76B9DCE65677E495EBD390 /* Pods-Sprocket-cal.appstore.xcconfig */,
-				7186A2F4CDCDC890F817DADDADAF722B /* Pods-Sprocket-cal.debug.xcconfig */,
-				AAA65C76065201938DCF60BBFD4566EA /* Pods-Sprocket-cal.release.xcconfig */,
-				37FB9B0397D8FF46A7EAF7F531F1B678 /* Pods-Sprocket-cal.testflight.xcconfig */,
+				0A0FF6CAD934CA10BBA2A82CBC928FE4 /* Pods-Sprocket */,
+				47B7BC29E30C5B7C828143CEF1E2FFC6 /* Pods-Sprocket-cal */,
 			);
-			name = "Pods-Sprocket-cal";
-			path = "Target Support Files/Pods-Sprocket-cal";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		60FEDA3A4D3E12525DBFB7E6561A5F19 /* Serialization */ = {
@@ -2845,19 +2775,9 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				785553737B06AFC3DA711DDEB7D56194 /* Frameworks */,
 				28E64EBCFFD4B2539BA590456893E89C /* Pods */,
-				CE9BD763E4FF9F84A2276B4AEAF123B2 /* Products */,
-				7DEF6195A053E7692288AC15D75AD731 /* Targets Support Files */,
+				A34CEA65E511C53A57DC9FFF8831C4A8 /* Products */,
+				5E74D1B102A76EFC206DE74E4C6B996D /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		7DEF6195A053E7692288AC15D75AD731 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				015B3D0B540C5C2695DA05E72D6C6B33 /* Pods-Sprocket */,
-				13F3AAFA26104D0841CADE10B039B52B /* Pods-Sprocket Print */,
-				5E27E342C8071456593CF766D46D3B18 /* Pods-Sprocket-cal */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		83445487E113FFE846485BE596B9723F /* Resources */ = {
@@ -2907,6 +2827,21 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/HPPhotoProvider";
+			sourceTree = "<group>";
+		};
+		A34CEA65E511C53A57DC9FFF8831C4A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				966197E4BB618F3843F48B883B21D46E /* libAFNetworking.a */,
+				8D3EE749C28CAAE37DDA1FE42DF255B5 /* libCocoaLumberjack.a */,
+				BBAE50706E88E60F1F0D1506E2675545 /* libFlickrKit.a */,
+				08DCD10B54B0DF23D9D4BE00986BDCCF /* libHPPhotoProvider.a */,
+				91EF8340C9CFE6001067B969E0D47D8C /* libMobilePrintSDK.a */,
+				F33DF3738A0E5DA91F86BEA6E4535BE5 /* libPods-Sprocket.a */,
+				0163C614A4C8FDABCFE7F0B756EE4D75 /* libPods-Sprocket-cal.a */,
+				A46BB856153389FBEE588D701322D761 /* libTTTAttributedLabel.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AB327BB543EF26F61DB0CED1C1E1B7C6 /* Core */ = {
@@ -2972,22 +2907,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/CocoaLumberjack";
-			sourceTree = "<group>";
-		};
-		CE9BD763E4FF9F84A2276B4AEAF123B2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E2FE19194B0EB475801661DEBD2C7BD9 /* libAFNetworking.a */,
-				1CB948F530A6B2A1F9EF59FCCDA2B5D5 /* libCocoaLumberjack.a */,
-				CD99FC02E08C40FAB2DF302799A6C0A4 /* libFlickrKit.a */,
-				9D77A704852CE6B3D862C76CF5CD4858 /* libHPPhotoProvider.a */,
-				275DD0E6E908EB6B939A2DC12A32D361 /* libMobilePrintSDK.a */,
-				C97F5B7B547937B048D739912726458E /* libPods-Sprocket.a */,
-				DB784A57DFADD00FF164328DD4129C06 /* libPods-Sprocket Print.a */,
-				F1963F2AE31DD561C580BF3B702C45FC /* libPods-Sprocket-cal.a */,
-				D3BD1117B5C0238BEB9A10541B4BD414 /* libTTTAttributedLabel.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D5F1993B74B4EA7F7522008C563F2E69 /* Extensions */ = {
@@ -3491,7 +3410,7 @@
 			);
 			name = TTTAttributedLabel;
 			productName = TTTAttributedLabel;
-			productReference = D3BD1117B5C0238BEB9A10541B4BD414 /* libTTTAttributedLabel.a */;
+			productReference = A46BB856153389FBEE588D701322D761 /* libTTTAttributedLabel.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		0A7B4A8C87C4D32B097B5655FC530F5A /* HPPhotoProvider */ = {
@@ -3510,7 +3429,7 @@
 			);
 			name = HPPhotoProvider;
 			productName = HPPhotoProvider;
-			productReference = 9D77A704852CE6B3D862C76CF5CD4858 /* libHPPhotoProvider.a */;
+			productReference = 08DCD10B54B0DF23D9D4BE00986BDCCF /* libHPPhotoProvider.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		0AE5F47DB41A0018E58258C797B48594 /* MobilePrintSDK */ = {
@@ -3527,7 +3446,7 @@
 			);
 			name = MobilePrintSDK;
 			productName = MobilePrintSDK;
-			productReference = 275DD0E6E908EB6B939A2DC12A32D361 /* libMobilePrintSDK.a */;
+			productReference = 91EF8340C9CFE6001067B969E0D47D8C /* libMobilePrintSDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		140DBDDD6E7F16B0530C2B753063A298 /* FlickrKit */ = {
@@ -3544,7 +3463,7 @@
 			);
 			name = FlickrKit;
 			productName = FlickrKit;
-			productReference = CD99FC02E08C40FAB2DF302799A6C0A4 /* libFlickrKit.a */;
+			productReference = BBAE50706E88E60F1F0D1506E2675545 /* libFlickrKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		536C6A98A73173F6B844F745CBF4766F /* CocoaLumberjack */ = {
@@ -3561,29 +3480,7 @@
 			);
 			name = CocoaLumberjack;
 			productName = CocoaLumberjack;
-			productReference = 1CB948F530A6B2A1F9EF59FCCDA2B5D5 /* libCocoaLumberjack.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		7483FF59791926D6C40BB86B45A02DC5 /* Pods-Sprocket Print */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D754C3C1D151DCF0EB32B03113BDE174 /* Build configuration list for PBXNativeTarget "Pods-Sprocket Print" */;
-			buildPhases = (
-				06AD4F037347CAE6ABF81234A21082BC /* Sources */,
-				5AD698ADD4CA8D3CCC2213F4A38DE6B3 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F6F8ADE2C902EF2F778F52F6DA9CB6D3 /* PBXTargetDependency */,
-				C93A5343D44155A4709A52B371CBB53B /* PBXTargetDependency */,
-				8CFCC803BEFA12BBDBD2FCCC8BB9D764 /* PBXTargetDependency */,
-				4BBF43907941CC3C48537E80BD0D6863 /* PBXTargetDependency */,
-				5B586D08D3782D1568A5C21CEAD9C269 /* PBXTargetDependency */,
-				4E85758691167858F6DE0623EE5BAC8C /* PBXTargetDependency */,
-			);
-			name = "Pods-Sprocket Print";
-			productName = "Pods-Sprocket Print";
-			productReference = DB784A57DFADD00FF164328DD4129C06 /* libPods-Sprocket Print.a */;
+			productReference = 8D3EE749C28CAAE37DDA1FE42DF255B5 /* libCocoaLumberjack.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		777671110EAACAEF038D84BE0AC0CE27 /* Pods-Sprocket */ = {
@@ -3605,7 +3502,7 @@
 			);
 			name = "Pods-Sprocket";
 			productName = "Pods-Sprocket";
-			productReference = C97F5B7B547937B048D739912726458E /* libPods-Sprocket.a */;
+			productReference = F33DF3738A0E5DA91F86BEA6E4535BE5 /* libPods-Sprocket.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		97E91903DA045FA5C7C65CECC19552C4 /* AFNetworking */ = {
@@ -3622,7 +3519,7 @@
 			);
 			name = AFNetworking;
 			productName = AFNetworking;
-			productReference = E2FE19194B0EB475801661DEBD2C7BD9 /* libAFNetworking.a */;
+			productReference = 966197E4BB618F3843F48B883B21D46E /* libAFNetworking.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		CC0BB82A79F63EF2706DC13092C6C8C4 /* Pods-Sprocket-cal */ = {
@@ -3644,7 +3541,7 @@
 			);
 			name = "Pods-Sprocket-cal";
 			productName = "Pods-Sprocket-cal";
-			productReference = F1963F2AE31DD561C580BF3B702C45FC /* libPods-Sprocket-cal.a */;
+			productReference = 0163C614A4C8FDABCFE7F0B756EE4D75 /* libPods-Sprocket-cal.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -3664,7 +3561,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = CE9BD763E4FF9F84A2276B4AEAF123B2 /* Products */;
+			productRefGroup = A34CEA65E511C53A57DC9FFF8831C4A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -3674,7 +3571,6 @@
 				0A7B4A8C87C4D32B097B5655FC530F5A /* HPPhotoProvider */,
 				0AE5F47DB41A0018E58258C797B48594 /* MobilePrintSDK */,
 				777671110EAACAEF038D84BE0AC0CE27 /* Pods-Sprocket */,
-				7483FF59791926D6C40BB86B45A02DC5 /* Pods-Sprocket Print */,
 				CC0BB82A79F63EF2706DC13092C6C8C4 /* Pods-Sprocket-cal */,
 				0671EB350C06DF3E2377CE69D07711F3 /* TTTAttributedLabel */,
 			);
@@ -3682,14 +3578,6 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		06AD4F037347CAE6ABF81234A21082BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDB80097BEA293B69BE5237418736BA5 /* Pods-Sprocket Print-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		338B4F8082F03C9B85BB6135C8202A16 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4150,29 +4038,11 @@
 			target = 536C6A98A73173F6B844F745CBF4766F /* CocoaLumberjack */;
 			targetProxy = D921D576A771B85A5E556FF40861944C /* PBXContainerItemProxy */;
 		};
-		4BBF43907941CC3C48537E80BD0D6863 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = HPPhotoProvider;
-			target = 0A7B4A8C87C4D32B097B5655FC530F5A /* HPPhotoProvider */;
-			targetProxy = 64DFC9FAD2FEE673A2E30D7EDDACE48B /* PBXContainerItemProxy */;
-		};
-		4E85758691167858F6DE0623EE5BAC8C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TTTAttributedLabel;
-			target = 0671EB350C06DF3E2377CE69D07711F3 /* TTTAttributedLabel */;
-			targetProxy = ABF94096FD0E8822207FE03BF87368E0 /* PBXContainerItemProxy */;
-		};
 		5B4C4E365AB5E2797D96886C5E47F37B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
 			target = 97E91903DA045FA5C7C65CECC19552C4 /* AFNetworking */;
 			targetProxy = E42EC078599CF309A49AB66F5264EECE /* PBXContainerItemProxy */;
-		};
-		5B586D08D3782D1568A5C21CEAD9C269 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MobilePrintSDK;
-			target = 0AE5F47DB41A0018E58258C797B48594 /* MobilePrintSDK */;
-			targetProxy = 83536C652E25DD8CE09E53D2DD856914 /* PBXContainerItemProxy */;
 		};
 		636A75B5304C938C0B56BA11EA6664DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4204,12 +4074,6 @@
 			target = 0AE5F47DB41A0018E58258C797B48594 /* MobilePrintSDK */;
 			targetProxy = 691ABDDA8799B67F3D58F2CFCA37489A /* PBXContainerItemProxy */;
 		};
-		8CFCC803BEFA12BBDBD2FCCC8BB9D764 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FlickrKit;
-			target = 140DBDDD6E7F16B0530C2B753063A298 /* FlickrKit */;
-			targetProxy = 95EBB37C84F20F306A24B1AC2B6F6435 /* PBXContainerItemProxy */;
-		};
 		A88D9DC554B4C043F643B54993789E64 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TTTAttributedLabel;
@@ -4228,41 +4092,108 @@
 			target = 0AE5F47DB41A0018E58258C797B48594 /* MobilePrintSDK */;
 			targetProxy = 8E720DC32FBEA27A3990476D582AFD0C /* PBXContainerItemProxy */;
 		};
-		C93A5343D44155A4709A52B371CBB53B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoaLumberjack;
-			target = 536C6A98A73173F6B844F745CBF4766F /* CocoaLumberjack */;
-			targetProxy = 1DBF09F44A3CC35B7E31A99ED1FB15BF /* PBXContainerItemProxy */;
-		};
 		D5971456C991C2C6859037A889F9AD1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
 			target = 97E91903DA045FA5C7C65CECC19552C4 /* AFNetworking */;
 			targetProxy = A1D4304185503B7C6E7B3BDF4B8114DD /* PBXContainerItemProxy */;
 		};
-		F6F8ADE2C902EF2F778F52F6DA9CB6D3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AFNetworking;
-			target = 97E91903DA045FA5C7C65CECC19552C4 /* AFNetworking */;
-			targetProxy = 42CE4B36B991A844F54268338E35D1BF /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		01668D0020E9E69DCE638F9BFFC6E61D /* TestFlight */ = {
+		04555F53E27D33E403714E7C274D1F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		0F41ED901591026C1EE9D5D48BEF8F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0D79F4E2D13444DC07B691E9545F8DA /* Pods-Sprocket-cal.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		10FC7D2833ECEE4BE3DC92188BC6708F /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F691D219945F87657DCBC0B2338E0E80 /* Pods-Sprocket.appstore.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
+		};
+		13423CAAFCFDD419E50AC2664B9E2257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		14AA93F7C5F6E3368421D63C9E5759FD /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -4273,23 +4204,60 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = TestFlight;
+			name = AppStore;
 		};
-		02B451E2A2F1609A2E72DCA5E757749B /* TestFlight */ = {
+		1613E6DC21492D1A4F303828B237465C /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
+			baseConfigurationReference = 3ACCAC2241B6F695AE061B5306F4C12B /* Pods-Sprocket-cal.appstore.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
+		};
+		187D3FC36005C3499B9536FFABB78556 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E83C76C9FE055C450ED6BFB4E5C59AD7 /* Pods-Sprocket.testflight.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		199AF7191D2B2ACA42412AE30E91CEA5 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -4301,7 +4269,149 @@
 			};
 			name = TestFlight;
 		};
-		08DD68A591D4903048CBABEACF54446A /* TestFlight */ = {
+		1EFDDA9B97CF234927FEF8B6333AF755 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFF342D44C2922ACD468E399DF7F9708 /* Pods-Sprocket-cal.testflight.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		1FBB8D41291AC8F8503E2EBE1E6EBDDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		226D131CA09BC2009AC081E3303C6D3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		24E88D7201EC3B8609A44941F52ECCD4 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_APP_STORE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AppStore;
+		};
+		25A2C9F0C9C895E06DC29A908E3072DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2CCE8E642EB1DC291102F62DD96BF1D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECFAFD496D25A35C7EF3CFE114DCDBCA /* Pods-Sprocket-cal.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3E2F25463708DC569FCF3642FAF4A78F /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -4332,26 +4442,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = TestFlight;
 		};
-		0CA92153929277095FBB32C1E35FF695 /* AppStore */ = {
+		410343A8E643C53EDD5E351ED08BDA3A /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -4364,137 +4469,7 @@
 			};
 			name = AppStore;
 		};
-		0E4F151EC607FD028C489F209B036C3F /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A439ABB52DE398696FABF4A04E5BA7C8 /* Pods-Sprocket Print.testflight.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		18724356D964E43FF2F3D16E89512D5B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		308545D86529B838728E7CE80682B120 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		345F7A04A7DA57AAC7735CA98524920B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		36890F96F7F56EB24657041B0F83790C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A44A11595730BE997CC11149E39AD68 /* Pods-Sprocket Print.release.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		3FA2475660FFC880302AD18E29B2E5FC /* Debug */ = {
+		47BEF9D903506B003EA5C2B249729489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -4529,400 +4504,22 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		5D9FDC3DC2956343028152E51DDDAB62 /* Release */ = {
+		4F30E3C191E042CF79408693FE0DE602 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		615E47DCB1D9F30D9287287E3688CEB4 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		68AFDEE7DBE3854763C8E02BFC897F24 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7186A2F4CDCDC890F817DADDADAF722B /* Pods-Sprocket-cal.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		6B709209E6095872714DECD69A292115 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		71C13C088578AECF5D623D84807A98F1 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		75CEB028FD31E377845C3E9905DD717C /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		811147F59EFCCDBA6FB2405D0CE43906 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E1D223C7DE65A6B50CDE411BF119F90 /* Pods-Sprocket.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		88EB487502015429E1890A3CA9818A1C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		8FDC73A0DD7BCDF944C7831B9E79F099 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1FFB2C6BB74C787A091669CE4ABA5CB /* Pods-Sprocket Print.debug.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		97B0CED5DAF1A30429524C68440C4108 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		A5C4B0C3F6A97D190015F9518836080E /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D518259577DB92DEBB6BBFBBDD8C6A5 /* Pods-Sprocket Print.appstore.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		ADB5D2767D7CBFF17E6F0B4DC7E30790 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		AE69D6FBAF048EBF7A998B0350283703 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B0AD546F3C2E914112F78AE270C15782 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_APP_STORE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = AppStore;
-		};
-		B0F734CCEC2750FA54DA8AD59BC6D237 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -4935,71 +4532,15 @@
 			};
 			name = TestFlight;
 		};
-		B3669EF3E3CF69A757279FCEEFC52EFD /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4493A3F717A1926C549D6F1DB613DD5 /* Pods-Sprocket.appstore.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		B91137FE749AF2E129704CDFEDFB508E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		B9884FF14596618855577B323AE2776B /* AppStore */ = {
+		5411711D56324364F4B18BCDB6BC03EA /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -5012,46 +4553,15 @@
 			};
 			name = AppStore;
 		};
-		BA84E8E4F2CD70A0552B1CB8AD199659 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		BD57B38336FB7E5F04579032850CBD5C /* Release */ = {
+		62CFFEEEA8EAD35D0000606456CC9181 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -5064,47 +4574,17 @@
 			};
 			name = Release;
 		};
-		C3DD07A7EE01C50166A59D4394F6AA80 /* TestFlight */ = {
+		65A43D55A2145F0A87F663B673E7918C /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 498AC41F970141EC6FB81305A0227D50 /* Pods-Sprocket.testflight.xcconfig */;
+			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		C7C25D3E5105DB555A8D0B3E397B2758 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -5113,47 +4593,80 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = AppStore;
 		};
-		CE2B184FE25E47DE57FB971189283779 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37FB9B0397D8FF46A7EAF7F531F1B678 /* Pods-Sprocket-cal.testflight.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		D2B216152CECC9FF0A82518A45E08FA7 /* AppStore */ = {
+		67545C8127F2551E73DA3D2008B3813A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		85C2370A4EF79EEF6F7D8B49AC3637F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		89A7B36D46C3943C85BA6EB6F8B92CAD /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
+		};
+		9A5E1C8BA5F52BE81191793C9E2DC7C8 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */;
+			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -5164,23 +4677,18 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = AppStore;
+			name = TestFlight;
 		};
-		EC810854EE480C7A01F43A8AD8535F51 /* Debug */ = {
+		A7EEC03A9820A6AEEC09F73A85DC2CB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */;
+			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -5192,57 +4700,7 @@
 			};
 			name = Debug;
 		};
-		EE14FB12E70B9526BB0C88DFA49C2BC0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAA65C76065201938DCF60BBFD4566EA /* Pods-Sprocket-cal.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		F1ECE5962FCEFF6BB1DB16287458611B /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82E216631E76B9DCE65677E495EBD390 /* Pods-Sprocket-cal.appstore.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		F325026B55060D3B22BEC0BAB5FA7344 /* Release */ = {
+		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -5273,28 +4731,23 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		F8135C01390FE3570ED1427FB36E6B3B /* Release */ = {
+		AB1151AF554638BC90D416C95F7FB3CB /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E78EBB7FFA0831ED7C03BAAAACD92F0 /* TTTAttributedLabel.xcconfig */;
+			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/TTTAttributedLabel/TTTAttributedLabel-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -5304,21 +4757,59 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Release;
+			name = AppStore;
 		};
-		FDC50D1EB808F2B15797BF578D367A0C /* Release */ = {
+		CD4307CEDC802CE396B1BA59803FCB56 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6291296DB62178141F0013A1FA1DF711 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 062959335F4DB24FE266649FE22511ED /* CocoaLumberjack.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D0E0D866F53455B1A7E34CA0294C81B7 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30ADA5F37FF2AB8FF2653A925416EC5B /* MobilePrintSDK.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		DBCA3100A54C46C396633CE9874654F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45E54FFACF320E819760D425EF1B5098 /* Pods-Sprocket.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -5331,16 +4822,121 @@
 			};
 			name = Release;
 		};
+		DDE7984F889F4043C5AB687D2C6B46F5 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79D780B640A80EF27483B6236F3046D9 /* HPPhotoProvider.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HPPhotoProvider/HPPhotoProvider-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		E1789DC7EAA9468E5DE1AF10F6458FD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38CD1D92EBA6CEE9F85D916DDD89D206 /* AFNetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F2D36E1478D66E926AD63958865291E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAC6B8BF577FB9E6E8114E397809B743 /* Pods-Sprocket.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F6968CDEF197BDCE9F47B8280D04642E /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		FE0598B110A12BB90D15009F211E3F7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68663F1D2DA417FAB4DEA5571C0114C1 /* FlickrKit.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FlickrKit/FlickrKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		06843DD1CB2B814378C203DB48673A78 /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2B216152CECC9FF0A82518A45E08FA7 /* AppStore */,
-				345F7A04A7DA57AAC7735CA98524920B /* Debug */,
-				18724356D964E43FF2F3D16E89512D5B /* Release */,
-				01668D0020E9E69DCE638F9BFFC6E61D /* TestFlight */,
+				14AA93F7C5F6E3368421D63C9E5759FD /* AppStore */,
+				67545C8127F2551E73DA3D2008B3813A /* Debug */,
+				E1789DC7EAA9468E5DE1AF10F6458FD9 /* Release */,
+				9A5E1C8BA5F52BE81191793C9E2DC7C8 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5348,10 +4944,10 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B0AD546F3C2E914112F78AE270C15782 /* AppStore */,
-				3FA2475660FFC880302AD18E29B2E5FC /* Debug */,
-				F325026B55060D3B22BEC0BAB5FA7344 /* Release */,
-				08DD68A591D4903048CBABEACF54446A /* TestFlight */,
+				24E88D7201EC3B8609A44941F52ECCD4 /* AppStore */,
+				47BEF9D903506B003EA5C2B249729489 /* Debug */,
+				AAF678CED40D3499169D10F63CA0719E /* Release */,
+				3E2F25463708DC569FCF3642FAF4A78F /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5359,10 +4955,10 @@
 		36CD8C2532F7DEADA67E1BBCD88C8CE0 /* Build configuration list for PBXNativeTarget "TTTAttributedLabel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B9884FF14596618855577B323AE2776B /* AppStore */,
-				AE69D6FBAF048EBF7A998B0350283703 /* Debug */,
-				F8135C01390FE3570ED1427FB36E6B3B /* Release */,
-				ADB5D2767D7CBFF17E6F0B4DC7E30790 /* TestFlight */,
+				5411711D56324364F4B18BCDB6BC03EA /* AppStore */,
+				A7EEC03A9820A6AEEC09F73A85DC2CB4 /* Debug */,
+				1FBB8D41291AC8F8503E2EBE1E6EBDDE /* Release */,
+				199AF7191D2B2ACA42412AE30E91CEA5 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5370,10 +4966,10 @@
 		630E6DD581101C9CE9AC4D78D620A0DD /* Build configuration list for PBXNativeTarget "MobilePrintSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B709209E6095872714DECD69A292115 /* AppStore */,
-				BA84E8E4F2CD70A0552B1CB8AD199659 /* Debug */,
-				B91137FE749AF2E129704CDFEDFB508E /* Release */,
-				75CEB028FD31E377845C3E9905DD717C /* TestFlight */,
+				AB1151AF554638BC90D416C95F7FB3CB /* AppStore */,
+				226D131CA09BC2009AC081E3303C6D3C /* Debug */,
+				13423CAAFCFDD419E50AC2664B9E2257 /* Release */,
+				D0E0D866F53455B1A7E34CA0294C81B7 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5381,10 +4977,10 @@
 		7150FCF4857622305621FC67BCB7564E /* Build configuration list for PBXNativeTarget "Pods-Sprocket-cal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F1ECE5962FCEFF6BB1DB16287458611B /* AppStore */,
-				68AFDEE7DBE3854763C8E02BFC897F24 /* Debug */,
-				EE14FB12E70B9526BB0C88DFA49C2BC0 /* Release */,
-				CE2B184FE25E47DE57FB971189283779 /* TestFlight */,
+				1613E6DC21492D1A4F303828B237465C /* AppStore */,
+				0F41ED901591026C1EE9D5D48BEF8F54 /* Debug */,
+				2CCE8E642EB1DC291102F62DD96BF1D4 /* Release */,
+				1EFDDA9B97CF234927FEF8B6333AF755 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5392,10 +4988,10 @@
 		7388196C8DDC5590FBFA30777AA49019 /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0CA92153929277095FBB32C1E35FF695 /* AppStore */,
-				EC810854EE480C7A01F43A8AD8535F51 /* Debug */,
-				5D9FDC3DC2956343028152E51DDDAB62 /* Release */,
-				B0F734CCEC2750FA54DA8AD59BC6D237 /* TestFlight */,
+				410343A8E643C53EDD5E351ED08BDA3A /* AppStore */,
+				CD4307CEDC802CE396B1BA59803FCB56 /* Debug */,
+				04555F53E27D33E403714E7C274D1F3A /* Release */,
+				4F30E3C191E042CF79408693FE0DE602 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5403,10 +4999,10 @@
 		785A129B539400657014DDE84FC82485 /* Build configuration list for PBXNativeTarget "Pods-Sprocket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3669EF3E3CF69A757279FCEEFC52EFD /* AppStore */,
-				811147F59EFCCDBA6FB2405D0CE43906 /* Debug */,
-				FDC50D1EB808F2B15797BF578D367A0C /* Release */,
-				C3DD07A7EE01C50166A59D4394F6AA80 /* TestFlight */,
+				10FC7D2833ECEE4BE3DC92188BC6708F /* AppStore */,
+				F2D36E1478D66E926AD63958865291E8 /* Debug */,
+				DBCA3100A54C46C396633CE9874654F4 /* Release */,
+				187D3FC36005C3499B9536FFABB78556 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5414,21 +5010,10 @@
 		864A4987FAA5F7D2C447FF89DDBDE91E /* Build configuration list for PBXNativeTarget "HPPhotoProvider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				71C13C088578AECF5D623D84807A98F1 /* AppStore */,
-				308545D86529B838728E7CE80682B120 /* Debug */,
-				88EB487502015429E1890A3CA9818A1C /* Release */,
-				02B451E2A2F1609A2E72DCA5E757749B /* TestFlight */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D754C3C1D151DCF0EB32B03113BDE174 /* Build configuration list for PBXNativeTarget "Pods-Sprocket Print" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A5C4B0C3F6A97D190015F9518836080E /* AppStore */,
-				8FDC73A0DD7BCDF944C7831B9E79F099 /* Debug */,
-				36890F96F7F56EB24657041B0F83790C /* Release */,
-				0E4F151EC607FD028C489F209B036C3F /* TestFlight */,
+				65A43D55A2145F0A87F663B673E7918C /* AppStore */,
+				25A2C9F0C9C895E06DC29A908E3072DF /* Debug */,
+				85C2370A4EF79EEF6F7D8B49AC3637F6 /* Release */,
+				DDE7984F889F4043C5AB687D2C6B46F5 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5436,10 +5021,10 @@
 		FFE5CCF7A46BBEDDBFAB78F544D28C1A /* Build configuration list for PBXNativeTarget "FlickrKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97B0CED5DAF1A30429524C68440C4108 /* AppStore */,
-				C7C25D3E5105DB555A8D0B3E397B2758 /* Debug */,
-				BD57B38336FB7E5F04579032850CBD5C /* Release */,
-				615E47DCB1D9F30D9287287E3688CEB4 /* TestFlight */,
+				89A7B36D46C3943C85BA6EB6F8B92CAD /* AppStore */,
+				FE0598B110A12BB90D15009F211E3F7F /* Debug */,
+				62CFFEEEA8EAD35D0000606456CC9181 /* Release */,
+				F6968CDEF197BDCE9F47B8280D04642E /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

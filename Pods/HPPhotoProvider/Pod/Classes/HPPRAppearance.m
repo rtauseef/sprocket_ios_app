@@ -14,6 +14,7 @@
 #import "UIColor+HPPRStyle.h"
 #import "UIFont+HPPRStyle.h"
 
+NSString * const kHPPRAppName = @"kHPPRAppName";
 NSString * const kHPPRBackgroundColor = @"kHPPRBackgroundColor";
 NSString * const kHPPRTableSeparatorColor = @"kHPPRTableSeparatorColor";
 
@@ -44,6 +45,7 @@ NSString * const kHPPRLoadingCellBackgroundColor = @"kHPPRLoadingCellBackgroundC
 - (NSDictionary *)defaultSettings
 {
     _settings = @{
+                  kHPPRAppName:                    @"HP Social Media Snapshots",
                   kHPPRBackgroundColor:            [UIColor whiteColor],
                   kHPPRTintColor:                  [UIColor HPPRBlueColor],
                   kHPPRButtonTitleColorSelected:   [UIColor whiteColor],

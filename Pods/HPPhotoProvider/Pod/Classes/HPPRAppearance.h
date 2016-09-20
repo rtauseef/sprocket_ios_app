@@ -14,6 +14,7 @@
 
 @interface HPPRAppearance : NSObject
 
+extern NSString * const kHPPRAppName;
 extern NSString * const kHPPRBackgroundColor;
 extern NSString * const kHPPRTableSeparatorColor;
 extern NSString * const kHPPRTintColor;

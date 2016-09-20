@@ -309,9 +309,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     return [MPBTSprocket pairedSprockets].count;
 }
 
-- (NSUInteger)printerVersionNumber
+- (NSString *)printerVersion
 {
-    return [[MPBTSprocket sharedInstance] firmwareVersion];
+    NSUInteger ver = [[MPBTSprocket sharedInstance] firmwareVersion];
+    
+    return [MPBTSprocket version:ver];
 }
 
 - (void)checkSprocketForFirmwareUpgrade:(id<MPSprocketDelegate>)delegate
@@ -352,6 +354,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         progressView.viewController = viewController;
         [progressView reflashDevice];
     }
+}
+
+- (void)obfuscateMetric:(NSString *)keyName
+{
+    [[MPAnalyticsManager sharedManager] obfuscateMetric:keyName];
 }
 
 - (void)presentBluetoothDevicesFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion
