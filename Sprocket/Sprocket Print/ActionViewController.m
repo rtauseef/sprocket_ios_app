@@ -1,9 +1,13 @@
 //
-//  ActionViewController.m
-//  Sprocket Print
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Ivan Gialorenço on 9/8/16.
-//  Copyright © 2016 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "ActionViewController.h"
@@ -21,17 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Get the item[s] we're handling from the extension context.
-    
-    // For example, look for an image and place it into an image view.
-    // Replace this with something appropriate for the type[s] your extension supports.
     [MP sharedInstance].extensionController = self;
     
     BOOL imageFound = NO;
     for (NSExtensionItem *item in self.extensionContext.inputItems) {
         for (NSItemProvider *itemProvider in item.attachments) {
             if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage]) {
-                // This is an image. We'll load it, then place it in our image view.
                 __weak UIImageView *imageView = self.imageView;
                 [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
                     if(image) {
@@ -47,26 +46,16 @@
         }
         
         if (imageFound) {
-            // We only handle one image, so stop looking for more.
             break;
         }
     }
 }
 
 - (IBAction)printTapped:(id)sender {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:self.imageView.image animated:YES printCompletion:^(){
-//        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
-    }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:self.imageView.image animated:YES printCompletion:nil];
 }
 
 - (IBAction)done {
-    // Return any edited content to the host app.
-    // This template doesn't do anything, so we just echo the passed in items.
     [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems completionHandler:nil];
 }
 
