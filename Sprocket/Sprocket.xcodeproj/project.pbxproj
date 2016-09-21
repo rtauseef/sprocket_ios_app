@@ -77,6 +77,7 @@
 		8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8215232B1D82215600C0541C /* MainInterface.storyboard */; };
 		821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		82157D071D91EEEF00360D87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34D5075199AB87B006D80E0 /* Images.xcassets */; };
+		82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D51D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
@@ -572,6 +573,13 @@
 			remoteGlobalIDString = 821523251D82215600C0541C;
 			remoteInfo = "Sprocket Print";
 		};
+		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 821523251D82215600C0541C;
+			remoteInfo = "Sprocket Print";
+		};
 		E34D5080199AB87B006D80E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -589,6 +597,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82157D0B1D9306A400360D87 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1755,10 +1774,12 @@
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
 				8271DCD41D46D03500B21549 /* Embed Frameworks */,
 				8271DCD81D46D07B00B21549 /* ShellScript */,
+				82157D0B1D9306A400360D87 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
 			);
 			name = Sprocket;
 			productName = PhotoGram;
@@ -2676,6 +2697,11 @@
 			target = 821523251D82215600C0541C /* Sprocket Print */;
 			targetProxy = 8215232F1D82215600C0541C /* PBXContainerItemProxy */;
 		};
+		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 821523251D82215600C0541C /* Sprocket Print */;
+			targetProxy = 82157D091D9306A400360D87 /* PBXContainerItemProxy */;
+		};
 		E34D5081199AB87B006D80E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E34D5056199AB87B006D80E0 /* Sprocket */;
@@ -2919,7 +2945,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
