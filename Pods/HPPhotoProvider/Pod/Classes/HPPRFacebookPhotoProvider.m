@@ -252,14 +252,6 @@
         query = @"me/photos/uploaded";
     }
     
-    // Known FB bug when including 'place' field for system albums:
-    //   https://developers.facebook.com/bugs/885008981626007/
-    //   https://developers.facebook.com/bugs/248507878840304/
-    // May be related to missing 'user_posts' permission scope. Will submit app(s) for review with these scopes -- jbt 7/12/16
-    if (nil == self.album.objectID || [self.album.name isEqualToString:@"Timeline Photos"] || [self.album.name isEqualToString:@"Mobile Uploads"]) {
-        fields = @{@"fields":@"name,created_time,images"};
-    }
-    
     [self cachedGraphRequest:query parameters:fields refresh:refresh paging:afterID completion:completion];
 }
 

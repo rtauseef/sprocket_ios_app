@@ -17,6 +17,12 @@
 
 static NSString * const kFacebookProviderName = @"Facebook";
 
+@interface  HPPRFacebookLoginProvider()
+
+@property (strong, nonatomic) FBSDKLoginManager *loginManager;
+
+@end
+
 @implementation HPPRFacebookLoginProvider
 
 #pragma mark - Initialization
@@ -27,6 +33,8 @@ static NSString * const kFacebookProviderName = @"Facebook";
     static HPPRFacebookLoginProvider *sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[HPPRFacebookLoginProvider alloc] init];
+        sharedInstance.loginManager = [[FBSDKLoginManager alloc] init];
+        sharedInstance.loginManager.loginBehavior = FBSDKLoginBehaviorSystemAccount;
     });
     return sharedInstance;
 }
@@ -50,10 +58,8 @@ static NSString * const kFacebookProviderName = @"Facebook";
                 completion(YES, nil);
             }
         } else {
-            FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-            loginManager.loginBehavior = FBSDKLoginBehaviorSystemAccount;
             UIViewController *topViewController = [self topViewController];
-            [loginManager logInWithReadPermissions:FACEBOOK_PERMISSIONS fromViewController:topViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            [self.loginManager logInWithReadPermissions:FACEBOOK_PERMISSIONS fromViewController:topViewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRTrackableScreenNameKey]];
                 if (completion) {
                     if (error) {
@@ -74,8 +80,7 @@ static NSString * const kFacebookProviderName = @"Facebook";
 
 - (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion
 {
-    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-    [loginManager logOut];
+    [self.loginManager logOut];
     [self notifyLogout];
 
     if (completion) {
