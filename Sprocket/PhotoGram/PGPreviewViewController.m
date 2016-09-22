@@ -31,6 +31,7 @@
 #import <MPBTPrintActivity.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -136,7 +137,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
         [PGCameraManager sharedInstance].isBackgroundCamera = NO;
     } andFailure:^{
-        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
 }
 
@@ -347,10 +347,13 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [alert addAction:okAction];
         
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [self saveToCameraRoll];
-            [self showCamera];
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
-                                                                  source:kEventDismissEditCameraLabel];
+            [self saveToCameraRoll:^(BOOL authorized){
+                if (authorized) {
+                    [self showCamera];
+                    [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                          source:kEventDismissEditCameraLabel];
+                }
+            }];
         }];
         [alert addAction:saveAction];
         
@@ -382,10 +385,13 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [alert addAction:okAction];
         
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [self saveToCameraRoll];
-            [self closePreviewAndCamera];
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
-                                                                  source:kEventDismissEditCloseLabel];
+            [self saveToCameraRoll:^(BOOL authorized){
+                if (authorized) {
+                    [self closePreviewAndCamera];
+                    [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                          source:kEventDismissEditCloseLabel];
+                }
+            }];
         }];
         [alert addAction:saveAction];
         
@@ -421,10 +427,44 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 }
 
-- (void)saveToCameraRoll
+- (void)saveToCameraRoll:(void (^)(BOOL))completion
 {
-    UIImage *image = [self.imageContainer screenshotImage];
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
+    if (ALAuthorizationStatusAuthorized == authorizationStatus) {
+        UIImage *image = [self.imageContainer screenshotImage];
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        
+        if (completion) {
+            completion(YES);
+        }
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Camera Roll Access Required", @"We must be able to use the camera roll on the user's phone")
+                                                                       message:NSLocalizedString(@"Allow sprocket app to access your camera roll.", @"Body of Camera Roll Access Required dialog")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Button for dismissing dialog")
+                                                         style:UIAlertActionStyleCancel
+                                                       handler:^(UIAlertAction * action) {
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+        [alert addAction:cancel];
+        
+        
+        UIAlertAction *settings = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", @"Button for opening the app settings")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * action) {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                                         }];
+        [alert addAction:settings];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        if (completion) {
+            completion(NO);
+        }
+    }
 }
 
 #pragma mark - Print preparation
