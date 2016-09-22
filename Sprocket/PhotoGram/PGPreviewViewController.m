@@ -24,6 +24,7 @@
 #import "UIViewController+Trackable.h"
 
 #import <MP.h>
+#import <HPPR.h>
 #import <MPPrintItemFactory.h>
 #import <MPLayoutFactory.h>
 #import <MPLayout.h>
@@ -438,8 +439,11 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             completion(YES);
         }
     } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Camera Roll Access Required", @"We must be able to use the camera roll on the user's phone")
-                                                                       message:NSLocalizedString(@"Allow sprocket app to access your camera roll.", @"Body of Camera Roll Access Required dialog")
+        NSString *msgText = NSLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
+                                                                       message:[NSString stringWithFormat:msgText, appName]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         
