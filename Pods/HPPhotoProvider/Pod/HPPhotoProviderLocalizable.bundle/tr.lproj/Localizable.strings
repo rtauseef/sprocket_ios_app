@@ -35,7 +35,7 @@
 "Authorize" = "Onay Ver";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
-"Authorized Required" = "Onay Gerekli";
+"Authorization Required" = "Onay Gerekli";
 
 /* Name of the camera roll app of the device */
 "Camera Roll" = "Film Rulosu";

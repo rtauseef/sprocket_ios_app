@@ -35,7 +35,7 @@
 "Authorize" = "授权";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
-"Authorized Required" = "需要授权";
+"Authorization Required" = "需要授权";
 
 /* Name of the camera roll app of the device */
 "Camera Roll" = "胶卷";

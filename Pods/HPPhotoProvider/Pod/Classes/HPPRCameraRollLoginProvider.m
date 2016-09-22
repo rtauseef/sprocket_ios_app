@@ -12,6 +12,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "HPPRCameraRollLoginProvider.h"
+#import "HPPR.h"
 #import "NSBundle+HPPRLocalizable.h"
 
 // Needed to suppress iOS 7 check for UIApplicationOpenSettingsURLString
@@ -75,8 +76,11 @@ int const kCameraRollCancelButtonIndex = 0;
     self.accessCompletion = completion;
     ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
     if (ALAuthorizationStatusDenied == authorizationStatus) {
-        [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Denied", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                       andMessage:HPPRLocalizedString(@"You have previously denied photo access. Please enable access in Privacy Settings (Settings -> Privacy -> Photos).", @"Message of an alert when the user has denied the permission to access the Photos of the device")];
+        NSString *msgText = HPPRLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
+
+        [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
+                       andMessage:[NSString stringWithFormat:msgText, appName]];
     } else if (ALAuthorizationStatusRestricted == authorizationStatus) {
         [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Restricted", @"Title of an alert when the application is not authorized to access photo data.")
                        andMessage:HPPRLocalizedString(@"Photo access is restricted on this device. Please check your settings.", @"Message of an alert when the application is not authorized to access photo data.")];
@@ -106,8 +110,11 @@ int const kCameraRollCancelButtonIndex = 0;
             }
         }
     } failureBlock:^(NSError *error) {
-        [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Denied", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                       andMessage:HPPRLocalizedString(@"You have denied photo access. Please enable access in Privacy Settings (Settings -> Privacy -> Photos).", @"Message of an alert when the user has denied the permission to access the Photos of the device")];
+        NSString *msgText = HPPRLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
+
+        [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
+                       andMessage:[NSString stringWithFormat:msgText, appName]];
     }];
 }
 
@@ -119,7 +126,7 @@ int const kCameraRollCancelButtonIndex = 0;
             [[[UIAlertView alloc] initWithTitle:caption
                                         message:message
                                        delegate:self
-                              cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
+                              cancelButtonTitle:HPPRLocalizedString(@"Cancel", @"Button caption")
                               otherButtonTitles:HPPRLocalizedString(@"Settings", @"Button caption"), nil] show];
         } else {
             [[[UIAlertView alloc] initWithTitle:caption
