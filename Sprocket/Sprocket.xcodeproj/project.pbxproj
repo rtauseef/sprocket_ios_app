@@ -73,6 +73,12 @@
 		8171761254a179dc3bcf9778 /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
 		82006BEC1D64E5CC009D5E3B /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		82006BED1D64E5CC009D5E3B /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
+		82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41219E601F0006B78BB /* PGGesturesView.m */; };
+		82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
+		82017AD31D9461B800364F21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D505E199AB87B006D80E0 /* UIKit.framework */; };
+		82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */; };
+		82017AD91D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */; };
+		82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8919AE46B00042DF5E /* UIView+Background.m */; };
 		8215232A1D82215600C0541C /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821523291D82215600C0541C /* ActionViewController.m */; };
 		8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8215232B1D82215600C0541C /* MainInterface.storyboard */; };
 		821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -656,6 +662,8 @@
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
 		82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImglyManager.m; sourceTree = "<group>"; };
+		82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGGesturesView+Analytics.h"; sourceTree = "<group>"; };
+		82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGGesturesView+Analytics.m"; sourceTree = "<group>"; };
 		821523261D82215600C0541C /* Sprocket Print.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Sprocket Print.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		821523281D82215600C0541C /* ActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
 		821523291D82215600C0541C /* ActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
@@ -1067,6 +1075,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82017AD31D9461B800364F21 /* UIKit.framework in Frameworks */,
 				5EBE80686B7F5CEB2EA0C550 /* libPods-Sprocket Print.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1572,6 +1581,8 @@
 				E3DB16D019F567CA00C0F42B /* NSString+Utils.m */,
 				E30841A01AEECF8E0031FB67 /* NSLocale+Additions.h */,
 				E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */,
+				82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */,
+				82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -2553,6 +2564,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */,
+				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
+				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
 				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2581,6 +2595,7 @@
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
+				82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				82006BEC1D64E5CC009D5E3B /* PGImglyManager.m in Sources */,
 				82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
@@ -2651,6 +2666,7 @@
 				326c51747eeb8120f476ba3d /* UIView+Style.m in Sources */,
 				a6f6eb341ad99fe574e70cdc /* PGOverlayCameraViewController.m in Sources */,
 				451476613dd8f1cc1555af87 /* PGSaveToCameraRollActivity.m in Sources */,
+				82017AD91D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				82006BED1D64E5CC009D5E3B /* PGImglyManager.m in Sources */,
 				20fe6071e7c571777f9f4631 /* PGCameraManager.m in Sources */,
 				ea49efe12693969f66e0b31e /* PGCrashlyticsLogger.m in Sources */,
@@ -2950,7 +2966,13 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -2979,7 +3001,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -3008,7 +3036,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -3037,7 +3071,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",

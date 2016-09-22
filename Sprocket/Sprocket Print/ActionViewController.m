@@ -13,10 +13,13 @@
 #import "ActionViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MP.h>
+#import "PGGesturesView.h"
+#import "UIView+Background.h"
 
 @interface ActionViewController ()
 
-@property(strong,nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) PGGesturesView *imageView;
+@property (strong, nonatomic) IBOutlet UIView *imageContainer;
 
 @end
 
@@ -28,14 +31,15 @@
     [MP sharedInstance].extensionController = self;
     
     BOOL imageFound = NO;
+    
     for (NSExtensionItem *item in self.extensionContext.inputItems) {
         for (NSItemProvider *itemProvider in item.attachments) {
             if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage]) {
-                __weak UIImageView *imageView = self.imageView;
+                __weak ActionViewController *weakSelf = self;
                 [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
-                    if(image) {
+                    if (image) {
                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            [imageView setImage:image];
+                            [weakSelf renderPhoto:image];
                         }];
                     }
                 }];
@@ -51,8 +55,16 @@
     }
 }
 
+- (void)renderPhoto:(UIImage *)photo {
+    self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
+    self.imageView.image = photo;
+    self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
+    
+    [self.imageContainer addSubview:self.imageView];
+}
+
 - (IBAction)printTapped:(id)sender {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:self.imageView.image animated:YES printCompletion:nil];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:nil];
 }
 
 - (IBAction)done {
