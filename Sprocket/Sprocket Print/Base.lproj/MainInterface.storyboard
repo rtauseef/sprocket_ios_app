@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ObA-dk-sSI">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Image-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController title="Image" id="ObA-dk-sSI" customClass="ActionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
+                        <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-RX-BCO" userLabel="Preview View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onK-qA-Org" userLabel="Top View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhj-H6-ozy" userLabel="closeButton">
+                                                <rect key="frame" x="10" y="22" width="27" height="27"/>
+                                                <state key="normal" image="previewX"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="closeButton"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="done" destination="ObA-dk-sSI" eventType="touchUpInside" id="0aU-le-fW1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Yhj-H6-ozy" firstAttribute="centerY" secondItem="onK-qA-Org" secondAttribute="centerY" multiplier="1.25" id="EZD-Iw-LYF"/>
+                                            <constraint firstItem="Yhj-H6-ozy" firstAttribute="leading" secondItem="onK-qA-Org" secondAttribute="leading" constant="10" id="JXA-Iy-zwR"/>
+                                            <constraint firstAttribute="height" constant="56" id="pze-vz-FCe"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcR-YE-OrN" userLabel="ImageContainer">
+                                        <rect key="frame" x="28" y="56" width="265" height="397"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="EcR-YE-OrN" secondAttribute="height" multiplier="2:3" id="LLV-nG-MRK"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KxB-vQ-kqY" userLabel="BottomView">
+                                        <rect key="frame" x="0.0" y="453" width="320" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGY-hR-jSv" userLabel="printerAnchor">
+                                                <rect key="frame" x="139" y="16" width="43" height="43"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="43" id="ESq-AB-Q6p"/>
+                                                    <constraint firstAttribute="height" constant="43" id="boB-1D-oJr"/>
+                                                </constraints>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPD-kO-soS" userLabel="printerButton">
+                                                <rect key="frame" x="129" y="7" width="63" height="61"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" backgroundImage="previewPrinter"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="printTapped:" destination="ObA-dk-sSI" eventType="touchUpInside" id="inG-I8-hqX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="nGY-hR-jSv" firstAttribute="centerY" secondItem="KxB-vQ-kqY" secondAttribute="centerY" id="2Zh-VG-u8e"/>
+                                            <constraint firstItem="nGY-hR-jSv" firstAttribute="centerX" secondItem="XPD-kO-soS" secondAttribute="centerX" id="Rwa-sX-OcC"/>
+                                            <constraint firstItem="XPD-kO-soS" firstAttribute="height" secondItem="nGY-hR-jSv" secondAttribute="height" constant="18" id="Sjp-Pl-Zzq"/>
+                                            <constraint firstItem="nGY-hR-jSv" firstAttribute="centerY" secondItem="XPD-kO-soS" secondAttribute="centerY" id="els-SC-jkF"/>
+                                            <constraint firstAttribute="height" constant="75" id="iLW-cA-kEo"/>
+                                            <constraint firstItem="XPD-kO-soS" firstAttribute="width" secondItem="nGY-hR-jSv" secondAttribute="width" constant="20" id="pcO-0K-e3e"/>
+                                            <constraint firstItem="nGY-hR-jSv" firstAttribute="centerX" secondItem="KxB-vQ-kqY" secondAttribute="centerX" id="uaX-9U-QRl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EcR-YE-OrN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5eV-RX-BCO" secondAttribute="leading" constant="10" id="2d9-gB-MPT"/>
+                                    <constraint firstItem="EcR-YE-OrN" firstAttribute="centerX" secondItem="5eV-RX-BCO" secondAttribute="centerX" id="Ckg-qv-DJB"/>
+                                    <constraint firstAttribute="bottom" secondItem="KxB-vQ-kqY" secondAttribute="bottom" id="Ggg-AK-gqe"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EcR-YE-OrN" secondAttribute="trailing" constant="10" id="Gne-gn-Fha"/>
+                                    <constraint firstItem="onK-qA-Org" firstAttribute="top" secondItem="5eV-RX-BCO" secondAttribute="top" id="Kcg-kv-46A"/>
+                                    <constraint firstAttribute="trailing" secondItem="onK-qA-Org" secondAttribute="trailing" id="QBc-kX-Vuy"/>
+                                    <constraint firstItem="KxB-vQ-kqY" firstAttribute="leading" secondItem="5eV-RX-BCO" secondAttribute="leading" id="Qmq-cP-lnb"/>
+                                    <constraint firstItem="EcR-YE-OrN" firstAttribute="top" secondItem="onK-qA-Org" secondAttribute="bottom" id="RVB-nw-prP"/>
+                                    <constraint firstItem="EcR-YE-OrN" firstAttribute="bottom" secondItem="KxB-vQ-kqY" secondAttribute="top" id="hyo-JG-HQr"/>
+                                    <constraint firstItem="onK-qA-Org" firstAttribute="leading" secondItem="5eV-RX-BCO" secondAttribute="leading" id="hzK-pw-5fE"/>
+                                    <constraint firstAttribute="trailing" secondItem="KxB-vQ-kqY" secondAttribute="trailing" id="i85-hG-IPU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="n38-gi-rB5" firstAttribute="top" secondItem="5eV-RX-BCO" secondAttribute="bottom" id="1kH-V0-ogU"/>
+                            <constraint firstItem="5eV-RX-BCO" firstAttribute="top" secondItem="zMn-AG-sqS" secondAttribute="top" id="WgK-qp-fvT"/>
+                            <constraint firstAttribute="trailing" secondItem="5eV-RX-BCO" secondAttribute="trailing" id="bzb-7X-UDv"/>
+                            <constraint firstItem="5eV-RX-BCO" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="cVN-3t-ffo"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="imageContainer" destination="EcR-YE-OrN" id="1yX-8U-uKg"/>
+                        <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="252" y="-124"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="previewPrinter" width="65" height="65"/>
+        <image name="previewX" width="27" height="27"/>
+    </resources>
+</document>

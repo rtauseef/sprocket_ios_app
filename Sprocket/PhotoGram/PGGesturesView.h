@@ -26,6 +26,8 @@ typedef enum
 @property (nonatomic, assign) BOOL allowGestures;
 @property (nonatomic, weak) id<PGGesturesViewDelegate> delegate;
 @property (nonatomic, assign) PGGesturesDoubleTapBehavior doubleTapBehavior;
+@property (nonatomic, assign) CGFloat totalRotation;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 - (CGPoint)offset;
 - (CGFloat)zoom;

@@ -49,6 +49,7 @@
 		511cd14361226561566ca3c2 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
 		5206ca653fa17d9c5bfbe283 /* PGSwipeCoachMarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */; };
 		58bd1093f11a6969983da6be /* PGFacebookLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41E19ED91E1006B78BB /* PGFacebookLandingPageViewController.m */; };
+		5EBE80686B7F5CEB2EA0C550 /* libPods-Sprocket Print.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */; };
 		5caa335d853623f580c88fc3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
 		5f3882c75bb331ed4ff64abb /* PGRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5434119C785B100460701 /* PGRevealViewController.m */; };
 		5fef491d51a332de049a6af9 /* Bitter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26C19B648E500AAB884 /* Bitter-Regular.ttf */; };
@@ -72,6 +73,17 @@
 		8171761254a179dc3bcf9778 /* MeasurementArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9D19AF84A80042DF5E /* MeasurementArrowDown@2x.png */; };
 		82006BEC1D64E5CC009D5E3B /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		82006BED1D64E5CC009D5E3B /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
+		82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41219E601F0006B78BB /* PGGesturesView.m */; };
+		82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
+		82017AD31D9461B800364F21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E34D505E199AB87B006D80E0 /* UIKit.framework */; };
+		82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */; };
+		82017AD91D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */; };
+		82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8919AE46B00042DF5E /* UIView+Background.m */; };
+		8215232A1D82215600C0541C /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821523291D82215600C0541C /* ActionViewController.m */; };
+		8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8215232B1D82215600C0541C /* MainInterface.storyboard */; };
+		821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		82157D071D91EEEF00360D87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34D5075199AB87B006D80E0 /* Images.xcassets */; };
+		82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D51D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
@@ -560,6 +572,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8215232F1D82215600C0541C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 821523251D82215600C0541C;
+			remoteInfo = "Sprocket Print";
+		};
+		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 821523251D82215600C0541C;
+			remoteInfo = "Sprocket Print";
+		};
 		E34D5080199AB87B006D80E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -570,6 +596,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		821523371D82215600C0541C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82157D0B1D9306A400360D87 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8271DCD41D46D03500B21549 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -606,6 +654,7 @@
 		3731680F1AD4B08900503065 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		378EA80619A69E5700C72F1A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back@2x.png"; path = "Resources/Images/Icons/Back@2x.png"; sourceTree = "<group>"; };
 		378EA80719A69E5700C72F1A /* Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Share@2x.png"; path = "Resources/Images/Icons/Share@2x.png"; sourceTree = "<group>"; };
+		56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.release.xcconfig"; sourceTree = "<group>"; };
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
@@ -613,6 +662,13 @@
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
 		82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImglyManager.m; sourceTree = "<group>"; };
+		82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGGesturesView+Analytics.h"; sourceTree = "<group>"; };
+		82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGGesturesView+Analytics.m"; sourceTree = "<group>"; };
+		821523261D82215600C0541C /* Sprocket Print.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Sprocket Print.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		821523281D82215600C0541C /* ActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
+		821523291D82215600C0541C /* ActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
+		8215232C1D82215600C0541C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8215232E1D82215600C0541C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		821851D21D60EC6F001288D9 /* PGSignInButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSignInButton.h; sourceTree = "<group>"; };
 		821851D31D60EC6F001288D9 /* PGSignInButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSignInButton.m; sourceTree = "<group>"; };
 		821851D61D60EF4A001288D9 /* PGTermsAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTermsAttributedLabel.h; sourceTree = "<group>"; };
@@ -798,6 +854,7 @@
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		A83E7A7C1D344A850055DF5E /* Sprocket-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sprocket-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
+		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
@@ -920,7 +977,9 @@
 		E3DB16CF19F567CA00C0F42B /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
 		E3DB16D019F567CA00C0F42B /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
+		E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
+		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
 		F134BC391AC6067A007D892B /* PGLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLogFormatter.h; path = Logging/PGLogFormatter.h; sourceTree = "<group>"; };
@@ -943,6 +1002,7 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
+		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF60F0C11C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
@@ -1011,6 +1071,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		821523231D82215600C0541C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82017AD31D9461B800364F21 /* UIKit.framework in Frameworks */,
+				5EBE80686B7F5CEB2EA0C550 /* libPods-Sprocket Print.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E34D5054199AB87B006D80E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1041,6 +1110,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		821523271D82215600C0541C /* Sprocket Print */ = {
+			isa = PBXGroup;
+			children = (
+				821523281D82215600C0541C /* ActionViewController.h */,
+				821523291D82215600C0541C /* ActionViewController.m */,
+				8215232B1D82215600C0541C /* MainInterface.storyboard */,
+				8215232E1D82215600C0541C /* Info.plist */,
+			);
+			path = "Sprocket Print";
+			sourceTree = "<group>";
+		};
 		8236299D1D593D520019F024 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
@@ -1265,6 +1345,10 @@
 				59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */,
 				86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */,
 				B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */,
+				FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */,
+				56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */,
+				F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */,
+				BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1293,6 +1377,7 @@
 			children = (
 				E34D5060199AB87B006D80E0 /* Sprocket */,
 				E34D5082199AB87B006D80E0 /* SprocketTests */,
+				821523271D82215600C0541C /* Sprocket Print */,
 				E34D5059199AB87B006D80E0 /* Frameworks */,
 				E34D5058199AB87B006D80E0 /* Products */,
 				DCDDC5ACC635A15B68D63426 /* Pods */,
@@ -1305,6 +1390,7 @@
 				E34D5057199AB87B006D80E0 /* Sprocket.app */,
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
 				A83E7A7C1D344A850055DF5E /* Sprocket-cal.app */,
+				821523261D82215600C0541C /* Sprocket Print.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1329,6 +1415,7 @@
 				12b9951de3bbff11258bdeb9 /* calabash.framework */,
 				16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */,
 				0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */,
+				E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1494,6 +1581,8 @@
 				E3DB16D019F567CA00C0F42B /* NSString+Utils.m */,
 				E30841A01AEECF8E0031FB67 /* NSLocale+Additions.h */,
 				E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */,
+				82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */,
+				82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -1649,15 +1738,37 @@
 				c40315faa04a39460b1600ed /* [CP] Embed Pods Frameworks */,
 				8271DCD71D46D05000B21549 /* Embed Frameworks */,
 				8271DCD91D46D09000B21549 /* ShellScript */,
+				821523371D82215600C0541C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				821523301D82215600C0541C /* PBXTargetDependency */,
 			);
 			name = "Sprocket-cal";
 			productName = "PhotoGram-cal";
 			productReference = A83E7A7C1D344A850055DF5E /* Sprocket-cal.app */;
 			productType = "com.apple.product-type.application";
+		};
+		821523251D82215600C0541C /* Sprocket Print */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 821523361D82215600C0541C /* Build configuration list for PBXNativeTarget "Sprocket Print" */;
+			buildPhases = (
+				502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */,
+				821523221D82215600C0541C /* Sources */,
+				821523231D82215600C0541C /* Frameworks */,
+				821523241D82215600C0541C /* Resources */,
+				301514995743493CE334D576 /* [CP] Embed Pods Frameworks */,
+				8668DB1B1956231E575C5DBA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sprocket Print";
+			productName = "Sprocket Print";
+			productReference = 821523261D82215600C0541C /* Sprocket Print.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		E34D5056199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXNativeTarget;
@@ -1674,10 +1785,12 @@
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
 				8271DCD41D46D03500B21549 /* Embed Frameworks */,
 				8271DCD81D46D07B00B21549 /* ShellScript */,
+				82157D0B1D9306A400360D87 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
 			);
 			name = Sprocket;
 			productName = PhotoGram;
@@ -1712,6 +1825,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = HP;
 				TargetAttributes = {
+					821523251D82215600C0541C = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					E34D5056199AB87B006D80E0 = {
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1751,6 +1867,7 @@
 				E34D5056199AB87B006D80E0 /* Sprocket */,
 				E34D507A199AB87B006D80E0 /* SprocketTests */,
 				30ec29c6730ffeaffe3facda /* Sprocket-cal */,
+				821523251D82215600C0541C /* Sprocket Print */,
 			);
 		};
 /* End PBXProject section */
@@ -1965,6 +2082,15 @@
 				0b3eb881058d863867733e24 /* Localizable.strings in Resources */,
 				511cd14361226561566ca3c2 /* DBChooser.bundle in Resources */,
 				a8b85fa0f979b4cc330f19ea /* Settings.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		821523241D82215600C0541C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */,
+				82157D071D91EEEF00360D87 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2192,6 +2318,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		301514995743493CE334D576 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		50660c1ba0548b1039e1278b /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2260,6 +2416,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/imglyKit.framework/strip-framework.sh\"";
+		};
+		8668DB1B1956231E575C5DBA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		8C6684B93DE841829B62429B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2389,6 +2560,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		821523221D82215600C0541C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */,
+				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
+				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
+				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E34D5053199AB87B006D80E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2413,6 +2595,7 @@
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
+				82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				82006BEC1D64E5CC009D5E3B /* PGImglyManager.m in Sources */,
 				82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
@@ -2483,6 +2666,7 @@
 				326c51747eeb8120f476ba3d /* UIView+Style.m in Sources */,
 				a6f6eb341ad99fe574e70cdc /* PGOverlayCameraViewController.m in Sources */,
 				451476613dd8f1cc1555af87 /* PGSaveToCameraRollActivity.m in Sources */,
+				82017AD91D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				82006BED1D64E5CC009D5E3B /* PGImglyManager.m in Sources */,
 				20fe6071e7c571777f9f4631 /* PGCameraManager.m in Sources */,
 				ea49efe12693969f66e0b31e /* PGCrashlyticsLogger.m in Sources */,
@@ -2524,6 +2708,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		821523301D82215600C0541C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 821523251D82215600C0541C /* Sprocket Print */;
+			targetProxy = 8215232F1D82215600C0541C /* PBXContainerItemProxy */;
+		};
+		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 821523251D82215600C0541C /* Sprocket Print */;
+			targetProxy = 82157D091D9306A400360D87 /* PBXContainerItemProxy */;
+		};
 		E34D5081199AB87B006D80E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E34D5056199AB87B006D80E0 /* Sprocket */;
@@ -2550,6 +2744,14 @@
 			);
 			name = Localizable.strings;
 			path = l10n;
+			sourceTree = "<group>";
+		};
+		8215232B1D82215600C0541C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8215232C1D82215600C0541C /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		E34D5063199AB87B006D80E0 /* InfoPlist.strings */ = {
@@ -2750,6 +2952,145 @@
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		821523321D82215600C0541C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "Sprocket Print/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		821523331D82215600C0541C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "Sprocket Print/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		821523341D82215600C0541C /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "Sprocket Print/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		821523351D82215600C0541C /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "Sprocket Print/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
 		};
 		E34D508A199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3368,6 +3709,17 @@
 				70800c03b31f974ccc6e3f22 /* Release */,
 				01e8c32dd438427593fddef1 /* TestFlight */,
 				c285ca3c6aca0f76f45c3f48 /* AppStore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		821523361D82215600C0541C /* Build configuration list for PBXNativeTarget "Sprocket Print" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				821523321D82215600C0541C /* Debug */,
+				821523331D82215600C0541C /* Release */,
+				821523341D82215600C0541C /* TestFlight */,
+				821523351D82215600C0541C /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
