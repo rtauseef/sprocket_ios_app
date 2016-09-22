@@ -19,7 +19,8 @@ static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kMaximumZoomScale = 4.0f;
 static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 static CGFloat const kAnimationDuration = 0.3f;
-static CGFloat const kMarginOfError = .01F;
+static CGFloat const kMarginOfError = .01f;
+static CGFloat const kSquareImageAllowance = 10.0f;
 
 @interface PGGesturesView ()
 
@@ -121,7 +122,7 @@ static CGFloat const kMarginOfError = .01F;
     }
     
     if (forceContentMode) {
-        if (abs((int)image.size.width - (int)image.size.height) < 10) {
+        if (abs((int)image.size.width - (int)image.size.height) < kSquareImageAllowance) {
             self.imageContentMode = UIViewContentModeScaleAspectFit;
         } else {
             self.imageContentMode = UIViewContentModeScaleAspectFill;
