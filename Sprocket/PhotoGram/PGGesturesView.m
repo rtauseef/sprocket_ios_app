@@ -109,7 +109,7 @@ static CGFloat const kMarginOfError = .01F;
     self.scrollView.maximumZoomScale = maximumZoomScale;
 }
 
-- (void)setImage:(UIImage *)image
+- (void)setImage:(UIImage *)image forceContentMode:(BOOL)forceContentMode
 {
     _image = image;
     
@@ -118,6 +118,14 @@ static CGFloat const kMarginOfError = .01F;
         self.imageView.accessibilityIdentifier = @"GestureImageView";
         self.imageView.userInteractionEnabled = YES;
         [self.scrollView addSubview:self.imageView];
+    }
+    
+    if (forceContentMode) {
+        if (abs((int)image.size.width - (int)image.size.height) < 10) {
+            self.imageContentMode = UIViewContentModeScaleAspectFit;
+        } else {
+            self.imageContentMode = UIViewContentModeScaleAspectFill;
+        }
     }
     
     CGFloat scaleFactor = self.frame.size.width / image.size.width;
@@ -135,6 +143,11 @@ static CGFloat const kMarginOfError = .01F;
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
     self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
                                                 (imageFinalSize.height - self.scrollView.bounds.size.height) / 2);
+}
+
+- (void)setImage:(UIImage *)image
+{
+    [self setImage:image forceContentMode:YES];
 }
 
 #pragma mark - Helpers
@@ -212,7 +225,7 @@ static CGFloat const kMarginOfError = .01F;
             self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
             self.totalRotation = 0.0F;
             
-            [self setImage:_image];
+            [self setImage:_image forceContentMode:NO];
         }];
     }
 }
