@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *imageContainer;
+@property (strong, nonatomic) IBOutlet UIButton *printButton;
 
 @end
 
@@ -29,6 +30,12 @@
     [super viewDidLoad];
     
     [MP sharedInstance].extensionController = self;
+    
+    self.printButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.printButton.layer.borderWidth = 1.0f;
+    self.printButton.layer.cornerRadius = 2.5f;
+    
+    [self addGradientBackgroundToView:self.view];
     
     BOOL imageFound = NO;
     
@@ -53,6 +60,15 @@
             break;
         }
     }
+}
+
+- (void)addGradientBackgroundToView:(UIView *)view {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f/255.0F green:0x1f/255.0F blue:0x1f/255.0F alpha:1] CGColor], (id)[[UIColor colorWithRed:0x38/255.0F green:0x38/255.0F blue:0x38/255.0F alpha:1] CGColor], nil];
+    gradient.startPoint = CGPointMake(0, 1);
+    gradient.endPoint = CGPointMake(1, 0);
+    [view.layer insertSublayer:gradient atIndex:0];
 }
 
 - (void)renderPhoto:(UIImage *)photo {

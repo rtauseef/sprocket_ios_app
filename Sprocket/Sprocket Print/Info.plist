@@ -44,5 +44,14 @@
 		<string>com.lge.pocketphoto</string>
 		<string>com.polaroid.mobileprinter</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HPSimplified_Lt.ttf</string>
+		<string>HPSimplified_Bd.ttf</string>
+		<string>HPSimplified_BdIt.ttf</string>
+		<string>HPSimplified_It.ttf</string>
+		<string>HPSimplified_LtIt.ttf</string>
+		<string>HPSimplified_Rg.ttf</string>
+	</array>
 </dict>
 </plist>
