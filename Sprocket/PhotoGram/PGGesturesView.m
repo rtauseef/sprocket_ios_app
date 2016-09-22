@@ -11,9 +11,7 @@
 //
 
 #import "PGGesturesView.h"
-#import "PGAnalyticsManager.h"
 #import "UIImage+imageResize.h"
-#import <Crashlytics/Crashlytics.h>
 
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kMaximumZoomScale = 4.0f;
@@ -23,62 +21,75 @@ static CGFloat const kMarginOfError = .01F;
 
 @interface PGGesturesView ()
 
-@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, assign) CGFloat totalRotation;
 @property (nonatomic, assign) UIViewContentMode imageContentMode;
 
 @end
 
 @implementation PGGesturesView
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setup];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.accessibilityIdentifier = @"GestureView";
-        
-        self.imageContentMode = UIViewContentModeScaleAspectFill;
-
-        self.minimumZoomScale = kMinimumZoomScale;
-        self.maximumZoomScale = kMaximumZoomScale;
-        
-        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        self.scrollView.accessibilityIdentifier = @"GestureScrollView";
-        self.scrollView.delegate = self;
-        self.scrollView.showsHorizontalScrollIndicator = NO;
-        self.scrollView.showsVerticalScrollIndicator = NO;
-        self.scrollView.alwaysBounceHorizontal = YES;
-        self.scrollView.alwaysBounceVertical = YES;
-        self.scrollView.minimumZoomScale = self.minimumZoomScale;
-        self.scrollView.maximumZoomScale = self.maximumZoomScale;
-        self.scrollView.clipsToBounds = NO;
-        
-        self.doubleTapBehavior = PGGesturesDoubleTapZoom;
-        self.totalRotation = 0.0F;
-        
-        [self addSubview:self.scrollView];
-        
-        self.clipsToBounds = YES;
-        
-        UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
-        doubleTapGesture.numberOfTapsRequired = 2;
-        doubleTapGesture.numberOfTouchesRequired = 1;
-        [self.scrollView addGestureRecognizer:doubleTapGesture];
-        
-        UIRotationGestureRecognizer *rotateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateGestureRecognized:)];
-        rotateGesture.delegate = self;
-        [self.scrollView addGestureRecognizer:rotateGesture];
-        
-        // attach long press gesture to collectionView
-        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-        lpgr.minimumPressDuration = kMinimumPressDurationInSeconds;
-        lpgr.delaysTouchesBegan = YES;
-        lpgr.delegate = self;
-        [self.scrollView addGestureRecognizer:lpgr];
+        [self setup];
     }
     
     return self;
+}
+
+- (void)setup
+{
+    self.accessibilityIdentifier = @"GestureView";
+    
+    self.imageContentMode = UIViewContentModeScaleAspectFill;
+    
+    self.minimumZoomScale = kMinimumZoomScale;
+    self.maximumZoomScale = kMaximumZoomScale;
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    self.scrollView.accessibilityIdentifier = @"GestureScrollView";
+    self.scrollView.delegate = self;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.alwaysBounceHorizontal = YES;
+    self.scrollView.alwaysBounceVertical = YES;
+    self.scrollView.minimumZoomScale = self.minimumZoomScale;
+    self.scrollView.maximumZoomScale = self.maximumZoomScale;
+    self.scrollView.clipsToBounds = NO;
+    
+    self.doubleTapBehavior = PGGesturesDoubleTapZoom;
+    self.totalRotation = 0.0F;
+    
+    [self addSubview:self.scrollView];
+    
+    self.clipsToBounds = YES;
+    
+    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
+    doubleTapGesture.numberOfTapsRequired = 2;
+    doubleTapGesture.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:doubleTapGesture];
+    
+    UIRotationGestureRecognizer *rotateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateGestureRecognized:)];
+    rotateGesture.delegate = self;
+    [self.scrollView addGestureRecognizer:rotateGesture];
+    
+    // attach long press gesture to collectionView
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    lpgr.minimumPressDuration = kMinimumPressDurationInSeconds;
+    lpgr.delaysTouchesBegan = YES;
+    lpgr.delegate = self;
+    [self.scrollView addGestureRecognizer:lpgr];
+
 }
 
 #pragma mark - Getter & Setters
@@ -112,7 +123,7 @@ static CGFloat const kMarginOfError = .01F;
 - (void)setImage:(UIImage *)image
 {
     _image = image;
-    
+
     if (!self.imageView) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
@@ -144,12 +155,6 @@ static CGFloat const kMarginOfError = .01F;
     self.totalRotation += radians;
     
     self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, radians);
-    float angle = atan2(self.scrollView.transform.b, self.scrollView.transform.a) * 180.0f / M_PI;
-    NSString *angleValue = [NSString stringWithFormat:@"%.1f°", angle];
-    [[Crashlytics sharedInstance] setObjectValue:angleValue forKey:@"Rotation"];
-    if ([PGAnalyticsManager sharedManager].trackPhotoPosition) {
-        [PGAnalyticsManager sharedManager].photoRotationEdited = YES;
-    }
 }
 
 - (void)zoom:(CGPoint)pointInView zoomScale:(CGFloat)zoomScale animated:(BOOL)animated
@@ -261,11 +266,6 @@ static CGFloat const kMarginOfError = .01F;
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
     [self adjustContentOffset];
-    
-    [[Crashlytics sharedInstance] setObjectValue:[NSString stringWithFormat:@"%.1f", scale] forKey:@"Scale"];
-    if ([PGAnalyticsManager sharedManager].trackPhotoPosition) {
-        [PGAnalyticsManager sharedManager].photoZoomEdited = YES;
-    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -275,10 +275,7 @@ static CGFloat const kMarginOfError = .01F;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [[Crashlytics sharedInstance] setObjectValue:[NSString stringWithFormat:@"%.1f, %.1f", self.scrollView.contentOffset.x, self.scrollView.contentOffset.y] forKey:@"Offset"];
-    if ([PGAnalyticsManager sharedManager].trackPhotoPosition) {
-        [PGAnalyticsManager sharedManager].photoPanEdited = YES;
-    }
+    
 }
 
 #pragma mark - Photo position

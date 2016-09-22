@@ -14,7 +14,7 @@
 #import "PGSaveToCameraRollActivity.h"
 #import "PGAnalyticsManager.h"
 #import "PGCameraManager.h"
-#import "PGGesturesView.h"
+#import "PGGesturesView+Analytics.h"
 #import "PGAppAppearance.h"
 #import "UIView+Background.h"
 #import "UIColor+Style.h"
