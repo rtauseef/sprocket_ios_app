@@ -79,6 +79,12 @@
 		82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */; };
 		82017AD91D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */; };
 		82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461F8919AE46B00042DF5E /* UIView+Background.m */; };
+		82017ADB1D948AB600364F21 /* HPSimplified_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A1199AB9FE006D80E0 /* HPSimplified_Bd.ttf */; };
+		82017ADC1D948AB600364F21 /* HPSimplified_BdIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A2199AB9FE006D80E0 /* HPSimplified_BdIt.ttf */; };
+		82017ADD1D948AB600364F21 /* HPSimplified_It.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A3199AB9FE006D80E0 /* HPSimplified_It.ttf */; };
+		82017ADE1D948AB600364F21 /* HPSimplified_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A4199AB9FE006D80E0 /* HPSimplified_Lt.ttf */; };
+		82017ADF1D948AB600364F21 /* HPSimplified_LtIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A5199AB9FE006D80E0 /* HPSimplified_LtIt.ttf */; };
+		82017AE01D948AB600364F21 /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		8215232A1D82215600C0541C /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 821523291D82215600C0541C /* ActionViewController.m */; };
 		8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8215232B1D82215600C0541C /* MainInterface.storyboard */; };
 		821523311D82215600C0541C /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -2089,6 +2095,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82017ADB1D948AB600364F21 /* HPSimplified_Bd.ttf in Resources */,
+				82017ADC1D948AB600364F21 /* HPSimplified_BdIt.ttf in Resources */,
+				82017ADD1D948AB600364F21 /* HPSimplified_It.ttf in Resources */,
+				82017ADE1D948AB600364F21 /* HPSimplified_Lt.ttf in Resources */,
+				82017ADF1D948AB600364F21 /* HPSimplified_LtIt.ttf in Resources */,
+				82017AE01D948AB600364F21 /* HPSimplified_Rg.ttf in Resources */,
 				8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */,
 				82157D071D91EEEF00360D87 /* Images.xcassets in Resources */,
 			);

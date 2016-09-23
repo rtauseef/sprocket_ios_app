@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Sprocket</string>
+	<string>Print to sprocket</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -43,6 +43,15 @@
 		<string>com.hp.protocol</string>
 		<string>com.lge.pocketphoto</string>
 		<string>com.polaroid.mobileprinter</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HPSimplified_Lt.ttf</string>
+		<string>HPSimplified_Bd.ttf</string>
+		<string>HPSimplified_BdIt.ttf</string>
+		<string>HPSimplified_It.ttf</string>
+		<string>HPSimplified_LtIt.ttf</string>
+		<string>HPSimplified_Rg.ttf</string>
 	</array>
 </dict>
 </plist>

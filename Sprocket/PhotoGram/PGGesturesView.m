@@ -125,6 +125,11 @@ static CGFloat const kSquareImageAllowance = 10.0f;
 {
     _image = image;
 
+    [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
+}
+
+- (void)adjustScrollAndImageViewWithForceContentMode:(BOOL)forceContentMode
+{
     if (!self.imageView) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
@@ -133,28 +138,33 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     }
     
     if (forceContentMode) {
-        if (abs((int)image.size.width - (int)image.size.height) < kSquareImageAllowance) {
+        if (abs((int)self.image.size.width - (int)self.image.size.height) < kSquareImageAllowance) {
             self.imageContentMode = UIViewContentModeScaleAspectFit;
         } else {
             self.imageContentMode = UIViewContentModeScaleAspectFill;
         }
     }
     
-    CGFloat scaleFactor = self.frame.size.width / image.size.width;
+    CGFloat scaleFactor = self.frame.size.width / self.image.size.width;
     
     CGAffineTransform transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleFactor, scaleFactor);
     self.imageView.transform = transform;
     
-    self.imageView.image = image;
+    self.imageView.image = self.image;
     self.imageView.contentMode = self.imageContentMode;
     
-    CGSize imageFinalSize = [image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
+    CGSize imageFinalSize = [self.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
     self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
     
     self.scrollView.minimumZoomScale = scaleFactor * self.minimumZoomScale;
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
     self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
                                                 (imageFinalSize.height - self.scrollView.bounds.size.height) / 2);
+}
+
+- (void)adjustScrollAndImageView
+{
+    [self adjustScrollAndImageViewWithForceContentMode:YES];
 }
 
 - (void)setImage:(UIImage *)image
