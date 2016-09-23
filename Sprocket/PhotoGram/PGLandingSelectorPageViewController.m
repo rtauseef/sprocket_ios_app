@@ -296,8 +296,6 @@ typedef enum {
     self.pageControl.accessibilityIdentifier = @"Dot View For Page Navigation";
     self.pageControl.accessibilityValue = @"0";
 
-    [self.pageControl addTarget:self action:@selector(respondToPageControlTouch) forControlEvents:UIControlEventValueChanged];
-    
     //Not pulling the page control out just yet
     self.pageControl.hidden = YES;
 }
@@ -386,8 +384,6 @@ typedef enum {
 
 - (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav
 {
-    NSLog(@"LandingSelectorPage: Pressed folder button");
-    
     UINavigationController *navController = [self currentNavigationController];
 
     BOOL popped = NO;

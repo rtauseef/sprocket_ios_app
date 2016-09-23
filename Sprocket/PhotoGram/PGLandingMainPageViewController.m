@@ -93,7 +93,6 @@
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraButtonsView];
         [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraBackgroundView presentedViewController:weakSelf];
     } andFailure:^{
-        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
         self.blurredView.alpha = 0;
         self.cameraBackgroundView.alpha = 0;
     }];

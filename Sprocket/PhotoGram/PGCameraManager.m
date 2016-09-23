@@ -252,16 +252,27 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 }
 
 - (void)showCameraPermissionFailedAlert {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                  message:@"Sprocket does not have access to your camera. To enable access go to iOS Settings > sprocket"
-                                  preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Camera Access Required", @"We must be able to use the camera on the user's phone")
+                                                                   message:NSLocalizedString(@"Allow sprocket app to access your camera.", @"Body of Camera Access Required dialog")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Button for dismissing dialog")
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * action) {
         [alert dismissViewControllerAnimated:YES completion:nil];
     }];
+    [alert addAction:cancel];
     
-    [alert addAction:ok];
     
+    UIAlertAction *settings = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", @"Button for opening the app settings")
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * action) {
+                                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                                     }];
+    [alert addAction:settings];
+
     [[self topMostController] presentViewController:alert animated:YES completion:nil];
 }
 
