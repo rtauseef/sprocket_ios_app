@@ -125,10 +125,10 @@ static CGFloat const kSquareImageAllowance = 10.0f;
 {
     _image = image;
 
-    [self adjustScrollAndImageView];
+    [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
 }
 
-- (void)adjustScrollAndImageView
+- (void)adjustScrollAndImageViewWithForceContentMode:(BOOL)forceContentMode
 {
     if (!self.imageView) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -160,6 +160,11 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
     self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
                                                 (imageFinalSize.height - self.scrollView.bounds.size.height) / 2);
+}
+
+- (void)adjustScrollAndImageView
+{
+    [self adjustScrollAndImageViewWithForceContentMode:YES];
 }
 
 - (void)setImage:(UIImage *)image
