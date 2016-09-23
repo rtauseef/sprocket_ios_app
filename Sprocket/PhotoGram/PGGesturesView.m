@@ -124,6 +124,11 @@ static CGFloat const kMarginOfError = .01F;
 {
     _image = image;
 
+    [self adjustScrollAndImageView];
+}
+
+- (void)adjustScrollAndImageView
+{
     if (!self.imageView) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
@@ -131,15 +136,15 @@ static CGFloat const kMarginOfError = .01F;
         [self.scrollView addSubview:self.imageView];
     }
     
-    CGFloat scaleFactor = self.frame.size.width / image.size.width;
+    CGFloat scaleFactor = self.frame.size.width / self.image.size.width;
     
     CGAffineTransform transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleFactor, scaleFactor);
     self.imageView.transform = transform;
     
-    self.imageView.image = image;
+    self.imageView.image = self.image;
     self.imageView.contentMode = self.imageContentMode;
     
-    CGSize imageFinalSize = [image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
+    CGSize imageFinalSize = [self.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
     self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
     
     self.scrollView.minimumZoomScale = scaleFactor * self.minimumZoomScale;

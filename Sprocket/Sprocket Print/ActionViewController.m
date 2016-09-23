@@ -19,8 +19,11 @@
 @interface ActionViewController ()
 
 @property (strong, nonatomic) PGGesturesView *imageView;
-@property (strong, nonatomic) IBOutlet UIView *imageContainer;
-@property (strong, nonatomic) IBOutlet UIButton *printButton;
+@property (weak, nonatomic) IBOutlet UIView *imageContainer;
+@property (weak, nonatomic) IBOutlet UIButton *printButton;
+
+@property (strong, nonatomic) CAGradientLayer *gradient;
+
 
 @end
 
@@ -62,13 +65,27 @@
     }
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self.imageView.frame = self.imageContainer.bounds;
+        self.imageView.scrollView.frame = self.imageContainer.bounds;
+        [self.imageView adjustScrollAndImageView];
+        self.gradient.frame = self.view.bounds;
+        
+        [self.view layoutIfNeeded];
+    } completion:nil];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
 - (void)addGradientBackgroundToView:(UIView *)view {
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = view.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f/255.0F green:0x1f/255.0F blue:0x1f/255.0F alpha:1] CGColor], (id)[[UIColor colorWithRed:0x38/255.0F green:0x38/255.0F blue:0x38/255.0F alpha:1] CGColor], nil];
-    gradient.startPoint = CGPointMake(0, 1);
-    gradient.endPoint = CGPointMake(1, 0);
-    [view.layer insertSublayer:gradient atIndex:0];
+    self.gradient = [CAGradientLayer layer];
+    self.gradient.frame = view.frame;
+    self.gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0x1f/255.0F green:0x1f/255.0F blue:0x1f/255.0F alpha:1] CGColor], (id)[[UIColor colorWithRed:0x38/255.0F green:0x38/255.0F blue:0x38/255.0F alpha:1] CGColor], nil];
+    self.gradient.startPoint = CGPointMake(0, 1);
+    self.gradient.endPoint = CGPointMake(1, 0);
+    [view.layer insertSublayer:self.gradient atIndex:0];
 }
 
 - (void)renderPhoto:(UIImage *)photo {
