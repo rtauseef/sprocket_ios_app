@@ -79,5 +79,42 @@ When /^I click close button$/ do
   sleep(STEP_PAUSE)
 end
 
-
-
+Then(/^I touch the option "(.*?)"$/) do |option|
+  sleep(WAIT_SCREENLOAD)
+  if selenium.find_elements(:xpath,"//UIAStaticText[@value='#{option}']").size > 0
+    selenium.find_element(:xpath,"//UIAStaticText[@value='#{option}']").click
+  end
+end
+Then(/^I open side menu$/) do
+  sleep(WAIT_SCREENLOAD)
+  selenium.find_element(:xpath,"//UIAApplication[1]/UIAWindow[1]/UIAButton[1]").click
+end
+Given(/^I verify "(.*?)" navigate to the needed webpage$/) do |option|
+  if option == "View User Guide"
+  page_url="http://www.hpsprocket.com/sprocket-userguide.pdf"
+  else 
+    if option == "Tweet Support"
+       page_url="https://twitter.com/intent/tweet?text=@hpsupport+%23hpsprocket%0aS:1.0.1+%0a%5BEnter+Text%5D"
+    else 
+        if option == "Join Support Forum"
+          page_url="https://h30434.www3.hp.com/t5/sprocket/bd-p/sprocket"
+        else
+            if option == "Visit Support Website"
+              page_url="http://support.hp.com/us-en/products/printers/"
+            end
+        end
+    end
+  end
+  path =File.expand_path("../../common_library/support/runme.sh", __FILE__)
+    system(path)
+    sleep(SLEEP_MAX)
+    selenium_new.start_driver
+    sleep(SLEEP_SCREENLOAD)
+    selenium_new.back()
+    sleep(SLEEP_SCREENLOAD)
+    wait = Selenium::WebDriver::Wait.new(:timeout => MAX_TIMEOUT) # seconds
+    sleep(SLEEP_MAX)
+    current_page_url=$driver.driver.current_url
+    raise "Wrong page loaded!" unless current_page_url == page_url
+    sleep(SLEEP_MAX)
+end

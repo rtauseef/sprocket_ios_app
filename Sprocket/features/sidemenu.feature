@@ -72,4 +72,73 @@ Scenario: Verify side menu options
 	Then I should see the side menu
     When I touch menu button on navigation bar
     Then I should see the "Landing" screen 
+
+  @reset
+  @TA15036
+  Scenario: Verify navigation to Help page
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+    Then I should see the side menu
+    Then I touch "How To & Help"
+    And I should see the following:
+    |View User Guide|
+    |Tweet Support|
+    |Join Support Forum|
+    |Visit Support Website|
+
+  @reset
+  @TA15036
+  @appium
+  Scenario: Verify navigation to User Guide
+    Given I am on the Landing screen
+    Then I open side menu
+    Then I touch the option "How To & Help"
+    Then I touch the option "View User Guide"
+
+  @TA15036
+  @appium
+  Scenario: Verify User guide page in browser
+    Given I verify "View User Guide" navigate to the needed webpage
+
+    @reset
+  @TA15036
+  @appium
+  Scenario: Verify navigation to tweet support
+    Given I am on the Landing screen
+    Then I open side menu
+    Then I touch the option "How To & Help"
+    Then I touch the option "Tweet Support"
+
+  @TA15036
+  @appium
+  Scenario: Verify tweet support page in browser
+    Given I verify "Tweet Support" navigate to the needed webpage
+
+     @reset
+  @TA15036
+  @appium
+  Scenario: Verify navigation support forum
+    Given I am on the Landing screen
+    Then I open side menu
+    Then I touch the option "How To & Help"
+    Then I touch the option "Join Support Forum"
+
+  @TA15036
+  @appium
+  Scenario: Verify support forum page in browser
+    Given I verify "Join Support Forum" navigate to the needed webpage
+
+    @reset
+  @TA15036
+  @appium
+  Scenario: Verify navigation to Support Website
+    Given I am on the Landing screen
+    Then I open side menu
+    Then I touch the option "How To & Help"
+    Then I touch the option "Visit Support Website"
+
+  @TA15036
+  @appium
+  Scenario: Verify Support Website page in browser
+    Given I verify "Visit Support Website" navigate to the needed webpage
     
