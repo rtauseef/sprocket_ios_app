@@ -106,6 +106,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Sprocket needs camera access to allow you to take photos and print them.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Sprocket needs Photo Library access to print to your device and save your photos.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>sanchez-regular.ttf</string>
