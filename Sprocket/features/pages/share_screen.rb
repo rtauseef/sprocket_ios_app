@@ -13,7 +13,7 @@ class ShareScreen < Calabash::IBase
   end
 
  def print
-   "view marked:'Print'"
+     "view marked:'Print to sprocket'"
  end
 
   def save_to_camera
