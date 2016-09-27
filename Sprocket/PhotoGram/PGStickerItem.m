@@ -12,7 +12,7 @@
 
 #import "PGStickerItem.h"
 
-const NSInteger PGStickerItemsCount = 23;
+const NSInteger PGStickerItemsCount = 45;
 
 @implementation PGStickerItem
 
@@ -136,6 +136,150 @@ const NSInteger PGStickerItemsCount = 23;
             break;
         }
         
+        default:
+            sticker = [PGStickerItem fallStickerItemByIndex:index];
+            break;
+    }
+    
+    return sticker;
+}
+
++ (PGStickerItem *)fallStickerItemByIndex:(NSInteger)index {
+    PGStickerItem *sticker = [[PGStickerItem alloc] init];
+
+    switch (index) {
+        case PGStickerItemsFallCatWhiskers: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Cat Whiskers Sticker", nil);
+            sticker.imageName = @"catwhiskers";
+            break;
+        }
+            
+        case PGStickerItemsFallDodMask: {
+            sticker.accessibilityText = NSLocalizedString(@"DOD Mask Sticker", nil);
+            sticker.imageName = @"DODmask";
+            break;
+        }
+
+        case PGStickerItemsFallCatEyes: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Cat Eyes Sticker", nil);
+            sticker.imageName = @"cateyes";
+            break;
+        }
+
+        case PGStickerItemsFallJasonMask: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Jason Mask Sticker", nil);
+            sticker.imageName = @"jasonmask";
+            break;
+        }
+
+        case PGStickerItemsFallDodEyes: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall DOD Eyes Sticker", nil);
+            sticker.imageName = @"DODeyes";
+            break;
+        }
+
+        case PGStickerItemsFall3Eyes: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall 3 Eyes Sticker", nil);
+            sticker.imageName = @"threeeyes";
+            break;
+        }
+
+        case PGStickerItemsFallFangs: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Fangs Sticker", nil);
+            sticker.imageName = @"fangs";
+            break;
+        }
+
+        case PGStickerItemsFallEyeball: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Eyeball Sticker", nil);
+            sticker.imageName = @"eyeball";
+            break;
+        }
+
+        case PGStickerItemsFallDevilHorns: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Devil Horns Sticker", nil);
+            sticker.imageName = @"devilhorns";
+            break;
+        }
+
+        case PGStickerItemsFallHalloweenHat: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Halloween Hat Sticker", nil);
+            sticker.imageName = @"HalloweenHat";
+            break;
+        }
+
+        case PGStickerItemsFallSpiderWeb: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Spider Web Sticker", nil);
+            sticker.imageName = @"spiderweb";
+            break;
+        }
+
+        case PGStickerItemsFallMoon: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Moon Sticker", nil);
+            sticker.imageName = @"moon";
+            break;
+        }
+
+        case PGStickerItemsFallMoonFace: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Moon Face Sticker", nil);
+            sticker.imageName = @"moonface";
+            break;
+        }
+
+        case PGStickerItemsFallSkull: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Skull Sticker", nil);
+            sticker.imageName = @"skull";
+            break;
+        }
+
+        case PGStickerItemsFallPumpkin: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Pumpkin Sticker", nil);
+            sticker.imageName = @"pumpkin";
+            break;
+        }
+
+        case PGStickerItemsFallBat: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Bat Sticker", nil);
+            sticker.imageName = @"bat";
+            break;
+        }
+
+        case PGStickerItemsFallGhost: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Ghost Sticker", nil);
+            sticker.imageName = @"ghost";
+            break;
+        }
+
+        case PGStickerItemsFallCandyCorn: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Candy Corn Sticker", nil);
+            sticker.imageName = @"candycorn";
+            break;
+        }
+
+        case PGStickerItemsFallSpider: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Spider Sticker", nil);
+            sticker.imageName = @"spider";
+            break;
+        }
+
+        case PGStickerItemsFallScaryCat: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Scary Cat Sticker", nil);
+            sticker.imageName = @"scarycat";
+            break;
+        }
+
+        case PGStickerItemsFallLeaf3: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Leaf 3 Sticker", nil);
+            sticker.imageName = @"leaf3";
+            break;
+        }
+
+        case PGStickerItemsFallOwl: {
+            sticker.accessibilityText = NSLocalizedString(@"Fall Owl Sticker", nil);
+            sticker.imageName = @"owl";
+            break;
+        }
+
         default:
             break;
     }
