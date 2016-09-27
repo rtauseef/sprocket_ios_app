@@ -14,30 +14,67 @@
 
 extern const NSInteger PGStickerItemsCount;
 
+typedef NS_ENUM (NSInteger, PGStickerItemsFall){
+    PGStickerItemsFallCatWhiskers  = 1,
+    PGStickerItemsFallDodMask      = 2,
+    PGStickerItemsFallCatEyes      = 3,
+    PGStickerItemsFallJasonMask    = 4,
+    PGStickerItemsFallDodEyes      = 5,
+    PGStickerItemsFall3Eyes        = 6,
+    PGStickerItemsFallFangs        = 7,
+    PGStickerItemsFallEyeball      = 8,
+    
+    PGStickerItemsFallDevilHorns   = 10,
+    
+    PGStickerItemsFallHalloweenHat = 18,
+    PGStickerItemsFallSpiderWeb    = 19,
+    PGStickerItemsFallMoon         = 20,
+    PGStickerItemsFallMoonFace     = 21,
+    
+    PGStickerItemsFallSkull        = 24,
+    PGStickerItemsFallPumpkin      = 25,
+    PGStickerItemsFallBat          = 26,
+    PGStickerItemsFallGhost        = 27,
+    PGStickerItemsFallCandyCorn    = 28,
+    PGStickerItemsFallSpider       = 29,
+    PGStickerItemsFallScaryCat     = 30,
+    
+    PGStickerItemsFallLeaf3        = 34,
+    PGStickerItemsFallOwl          = 35,
+};
+
 typedef NS_ENUM (NSInteger, PGStickerItems){
-    PGStickerItemsCatGlasses,
-    PGStickerItemsSunglasses,
-    PGStickerItemsHearts,
-    PGStickerItemsXoxo,
-    PGStickerItemsHeartExpress,
-    PGStickerItemsHeartPixel,
-    PGStickerItemsArrow,
-    PGStickerItemsCrown,
-    PGStickerItemsBirthdayHat,
-    PGStickerItemsCatEars,
-    PGStickerItemsStar,
-    PGStickerItemsStars,
-    PGStickerItemsFeather,
-    PGStickerItemsFeather2,
-    PGStickerItemsCloud,
-    PGStickerItemsCupcake,
-    PGStickerItemsIceCreamCone,
-    PGStickerItemsCandy,
-    PGStickerItemsCat,
-    PGStickerItemsBird,
-    PGStickerItemsDiamond,
-    PGStickerItemsOMG,
-    PGStickerItemsLOL
+    PGStickerItemsCatGlasses   = 0,
+    PGStickerItemsSunglasses   = 42,
+    
+    PGStickerItemsHearts       = 11,
+    PGStickerItemsXoxo         = 12,
+    PGStickerItemsHeartExpress = 13,
+    PGStickerItemsHeartPixel   = 14,
+    PGStickerItemsArrow        = 15,
+    PGStickerItemsCrown        = 16,
+    PGStickerItemsBirthdayHat  = 17,
+    
+    PGStickerItemsCatEars      = 9,
+    
+    PGStickerItemsStar         = 22,
+    PGStickerItemsStars        = 23,
+    
+    PGStickerItemsFeather      = 33,
+    
+    PGStickerItemsFeather2     = 32,
+    
+    PGStickerItemsCloud        = 31,
+    
+    PGStickerItemsCupcake      = 36,
+    PGStickerItemsIceCreamCone = 37,
+    PGStickerItemsCandy        = 38,
+    PGStickerItemsCat          = 39,
+    PGStickerItemsBird         = 40,
+    PGStickerItemsDiamond      = 41,
+    
+    PGStickerItemsOMG          = 43,
+    PGStickerItemsLOL          = 44
 };
 
 
