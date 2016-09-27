@@ -11,6 +11,7 @@
 //
 
 #import "PGSaveToCameraRollActivity.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface PGSaveToCameraRollActivity ()
 
@@ -18,9 +19,14 @@
 
 @implementation PGSaveToCameraRollActivity
 
-- (NSString *)activityType
++ (NSString *)activityType
 {
     return @"PGSaveToCameraRollActivity";
+}
+
+- (NSString *)activityType
+{
+    return [PGSaveToCameraRollActivity activityType];
 }
 
 - (NSString *)activityTitle
@@ -49,8 +55,15 @@
 
 - (void)performActivity
 {
-    UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
-    [self activityDidFinish:YES];
+    BOOL imageSaved = NO;
+    
+    ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
+    if (ALAuthorizationStatusAuthorized == authorizationStatus) {
+        UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
+        imageSaved = YES;
+    }
+    
+    [self activityDidFinish:imageSaved];
 }
 
 @end
