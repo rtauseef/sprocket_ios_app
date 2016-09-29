@@ -18,6 +18,8 @@
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
 
+const NSUInteger kHPPRAlbumThumbnailSize = 150;
+
 @interface HPPRSelectAlbumTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoImageView;
@@ -32,11 +34,12 @@
 {
     _album = album;
     
-    self.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
-    [self.albumTitleLabelView setFont:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelFont]];
-    [self.albumTitleLabelView setTextColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor]];
-    [self.photoCountLabelView setFont:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont]];
-    [self.photoCountLabelView setTextColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor]];
+    [self setupColorsAndFonts];
+    
+    if (album.assetCollection) {
+        [self setAlbumByAssetCollection:album];
+        return;
+    }
     
     self.albumTitleLabelView.text = album.name;
     
@@ -69,6 +72,44 @@
                 }
             }];
         });
+    }
+}
+
+- (void)setupColorsAndFonts
+{
+    self.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    [self.albumTitleLabelView setFont:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRPrimaryLabelFont]];
+    [self.albumTitleLabelView setTextColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor]];
+    [self.photoCountLabelView setFont:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont]];
+    [self.photoCountLabelView setTextColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor]];
+}
+
+- (void)setAlbumByAssetCollection:(HPPRAlbum *)album
+{
+    PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    
+    PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:album.assetCollection options:fetchOptions];
+    PHAsset *asset = [fetchResult lastObject];
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.resizeMode = PHImageRequestOptionsResizeModeExact;
+    
+    CGSize size = CGSizeMake(kHPPRAlbumThumbnailSize, kHPPRAlbumThumbnailSize);
+    
+    __weak __typeof(self) weakSelf = self;
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage *result, NSDictionary *info) {
+        weakSelf.coverPhotoImageView.image = result;
+        [weakSelf setNeedsLayout];
+    }];
+    
+    self.albumTitleLabelView.text = album.assetCollection.localizedTitle;
+    
+    if (0 == album.photoCount) {
+        self.photoCountLabelView.text = @"";
+    } else if (1 == album.photoCount) {
+        self.photoCountLabelView.text = HPPRLocalizedString(@"1 photo", nil);
+    } else {
+        self.photoCountLabelView.text = [NSString stringWithFormat:HPPRLocalizedString(@"%li photos", @"Number of photos"), album.photoCount];
     }
 }
 

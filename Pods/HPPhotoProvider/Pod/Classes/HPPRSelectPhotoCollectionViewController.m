@@ -180,7 +180,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)startRefreshing:(UIRefreshControl *)refreshControl
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
-    
+
     self.noPhotosLabel.hidden = YES;
     
     [self.provider refreshAlbumWithCompletion:^(NSError *error) {
@@ -326,6 +326,24 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     [self.provider retrieveExtraMediaInfo:cell.media withRefresh:NO andCompletion:^(NSError *error) {
         
         if (!self.provider.isImageRequestsCancelled) {
+            
+            if (cell.media.asset) {
+                __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.spinner stopAnimating];
+                    
+                    [cell.media requestImageWithCompletion:^(UIImage *image) {
+                        [weakSelf selectImage:image andMedia:cell.media];
+                    }];
+                    
+                    
+                    collectionView.userInteractionEnabled = YES;
+                });
+                
+                return;
+            }
+            
             // We continue even if we don't get the extra info because of an error
             [[HPPRCacheService sharedInstance] imageForUrl:cell.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
                 if (!self.provider.isImageRequestsCancelled) {

@@ -55,6 +55,10 @@ int const kCacheServiceErrorNoData = 100;
 
 - (void)imageForUrl:(NSString *)url asThumbnail:(BOOL)thumbnail withCompletion:(void(^)(UIImage *image, NSString *url, NSError *error))completion
 {
+    if (!url) {
+        return;
+    }
+    
     NSString *key = thumbnail ? [NSString stringWithFormat:@"%@-%@", url, kCacheServiceThumbnailSuffix] : url;
     UIImage *cacheImage = [self retrieveFromCacheWithKey:key];
     
