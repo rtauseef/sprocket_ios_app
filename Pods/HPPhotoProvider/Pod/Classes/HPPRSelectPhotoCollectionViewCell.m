@@ -14,6 +14,7 @@
 #import "UIView+HPPRAnimation.h"
 #import "HPPRCacheService.h"
 #import "HPPR.h"
+#import "HPPRCameraRollMedia.h"
 
 @interface HPPRSelectPhotoCollectionViewCell ()
 
@@ -36,6 +37,15 @@
     if (media) {
         _media = media;
         self.imageView.image = nil;
+        
+        if (media.asset) {
+            [media requestThumbnailImageWithCompletion:^(UIImage *image) {
+                [self setImage: image];
+            }];
+            
+            return;
+        }
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^ {
             if (self.retrieveLowQuality) {
                 [[HPPRCacheService sharedInstance] imageForUrl:self.media.thumbnailUrl asThumbnail:YES withCompletion:^(UIImage *image, NSString *url, NSError *error) {

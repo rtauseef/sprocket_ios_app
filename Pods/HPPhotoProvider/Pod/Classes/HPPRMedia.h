@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Photos/Photos.h>
 
 @interface HPPRMedia : NSObject
 
@@ -22,6 +23,10 @@
 @property (nonatomic, strong) NSString *userProfilePicture;
 @property (nonatomic, strong) NSString *thumbnailUrl;
 @property (nonatomic, strong) NSString *standardUrl;
+
+@property (nonatomic, strong) PHAsset *asset;
+@property (nonatomic, strong) UIImage *thumbnailImage;
+@property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, assign) NSUInteger likes;
 @property (nonatomic, assign) NSUInteger comments;
@@ -39,5 +44,7 @@
 @property (nonatomic, strong) NSString *shutterSpeed;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
+- (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;
+- (void)requestImageWithCompletion:(void(^)(UIImage *image))completion;
 
 @end

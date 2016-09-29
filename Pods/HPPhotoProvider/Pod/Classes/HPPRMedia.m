@@ -25,6 +25,16 @@
     return nil;
 }
 
+- (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion
+{
+    // Must override in the baseclass
+}
+
+- (void)requestImageWithCompletion:(void(^)(UIImage *image))completion
+{
+    // Must override in the baseclass
+}
+
 - (NSArray *)additionalLocations
 {
     return @[];

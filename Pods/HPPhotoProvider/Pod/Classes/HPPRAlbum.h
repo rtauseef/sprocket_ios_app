@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 #define HP_PHOTO_PROVIDER_DOMAIN @"com.hp.photo-provider-pod"
 #define ALBUM_DOES_NOT_EXISTS      -100
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSUInteger photoCount;
 @property (nonatomic, strong) UIImage *coverPhoto;
+@property (nonatomic, strong) PHAssetCollection *assetCollection;
 
 + (NSError *)albumDeletedError;
 
