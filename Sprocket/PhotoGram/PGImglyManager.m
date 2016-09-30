@@ -155,13 +155,14 @@ typedef enum {
         [builder configureTextToolController:^(IMGLYTextToolControllerOptionsBuilder * _Nonnull textToolBuilder) {
             [textToolBuilder setTitle:@" "];
             
-            [textToolBuilder setTextFieldConfigurationClosure:^(UITextField * _Nonnull textField) {
+            
+            [textToolBuilder setTextViewConfigurationClosure:^(UITextView * _Nonnull textView) {
                 static NSInteger numTextFields = 0;
                 
-                [textField setKeyboardAppearance:UIKeyboardAppearanceDark];
-                [textField setTextAlignment:NSTextAlignmentCenter];
-                [textField setTintColor:[UIColor whiteColor]];
-                [textField setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
+                [textView setKeyboardAppearance:UIKeyboardAppearanceDark];
+                [textView setTextAlignment:NSTextAlignmentCenter];
+                [textView setTintColor:[UIColor whiteColor]];
+                [textView setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
             }];
         }];
         
@@ -265,14 +266,14 @@ typedef enum {
 
 #pragma mark - IMGLY Stickers
 
-- (void)stickerCount:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
+- (void)stickerCountWith:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
         completionBlock(PGStickerItemsCount, nil);
     }
 }
 
-- (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
+- (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
         PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
@@ -280,7 +281,7 @@ typedef enum {
     }
 }
 
-- (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^ _Nonnull)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
+- (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
         PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
@@ -291,14 +292,14 @@ typedef enum {
 
 #pragma mark - IMGLYFramesDataSourceProtocol
 
-- (void)frameCount:(float)ratio completionBlock:(void (^ _Nonnull)(NSInteger, NSError * _Nullable))completionBlock
+- (void)frameCountForRatio:(float)ratio completionBlock:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
         completionBlock(PGFrameItemsCount, nil);
     }
 }
 
-- (void)thumbnailAndLabelAtIndex:(NSInteger)index ratio:(float)ratio completionBlock:(void (^ _Nonnull)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
+- (void)thumbnailAndLabelAtIndex:(NSInteger)index forRatio:(float)ratio completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
         PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
@@ -306,7 +307,7 @@ typedef enum {
     }
 }
 
-- (void)frameAtIndex:(NSInteger)index ratio:(float)ratio completionBlock:(void (^ _Nonnull)(IMGLYFrame * _Nullable, NSError * _Nullable))completionBlock
+- (void)frameAtIndex:(NSInteger)index forRatio:(float)ratio completionBlock:(void (^)(IMGLYFrame * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
         CGFloat ratio = 2.0/3.0;
@@ -317,8 +318,8 @@ typedef enum {
         info.accessibilityText = frame.accessibilityText;
         IMGLYFrame *imglyFrame = [[IMGLYFrame alloc] initWithInfo:info];
         
-        [imglyFrame addImage:frame.frameImage ratio:ratio];
-        [imglyFrame addThumbnail:frame.thumbnailImage ratio:ratio];
+        [imglyFrame addImage:frame.frameImage forRatio:ratio];
+        [imglyFrame addThumbnail:frame.thumbnailImage forRatio:ratio];
         
         completionBlock(imglyFrame, nil);
     }
