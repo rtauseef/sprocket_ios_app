@@ -3585,6 +3585,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3648,6 +3649,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3795,6 +3797,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3920,6 +3923,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
