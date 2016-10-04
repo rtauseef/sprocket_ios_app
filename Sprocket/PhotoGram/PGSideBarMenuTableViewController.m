@@ -139,7 +139,6 @@ typedef enum {
     }
     
     self.tableView.tableHeaderView.frame = headerFrame;
-    [self.view layoutIfNeeded];
     
     UIView *gradientBackgroundView = [[UIView alloc] initWithFrame:self.tableView.bounds];
     [PGAppAppearance addGradientBackgroundToView:gradientBackgroundView];
@@ -165,9 +164,7 @@ typedef enum {
     if (IS_IPHONE_4) {
         self.socialSourcesCellHeight.constant = CELL_SOCIAL_HEIGHT_SMALL;
     }
-    
-    [self.view layoutIfNeeded];
-    
+
     [self.instagramSignButton setTitle:kCheckingButtonTitle forState:UIControlStateNormal];
     self.instagramSignButton.userInteractionEnabled = NO;
     self.instagramGestureRecognizer.enabled = NO;
@@ -180,13 +177,16 @@ typedef enum {
     self.flickrSignButton.userInteractionEnabled = NO;
     self.flickrGestureRecognizer.enabled = NO;
     
+    [self setTableFooterHeight];
 
-    
     [self setupLabel:self.deviceConnectivityLabel];
     self.deviceConnectivityLabel.font = [UIFont HPSimplifiedLightFontWithSize:12.0f];
     
     [self setupLabel:self.devicesLabel];
-    
+
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(unselectTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
@@ -207,8 +207,7 @@ typedef enum {
     [self setInstagramUserView];
     [self setFacebookUserView];
     [self setFlickrUserView];
-    [self setTableFooterHeight];
-    
+
     if (IS_OS_8_OR_LATER) {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
         if (numberOfPairedSprockets > 0) {
@@ -438,24 +437,16 @@ typedef enum {
 
 - (void)setTableFooterHeight
 {
-    CGFloat tableHeight;
-    CGFloat cellHeight;
-    
-    if (IS_PORTRAIT) {
-        tableHeight = [[UIScreen mainScreen] bounds].size.height;
-    } else {
-        tableHeight = [[UIScreen mainScreen] bounds].size.width;
-    }
-    
+    CGFloat tableHeight = [[UIScreen mainScreen] bounds].size.height;
+    CGFloat cellHeight = CELL_HEIGHT;
+
     if (IS_IPHONE_4) {
         cellHeight = CELL_HEIGHT_SMALL;
-    } else {
-        cellHeight = CELL_HEIGHT;
     }
-    
+
     CGRect footerFrame = self.tableView.tableFooterView.frame;
-    
-    footerFrame.size.height = tableHeight  - (self.tableView.tableHeaderView.frame.size.height + self.cells.count * cellHeight);
+
+    footerFrame.size.height = tableHeight - (self.tableView.tableHeaderView.frame.size.height + self.cells.count * cellHeight);
 
     self.tableView.tableFooterView.frame = footerFrame;
 }
