@@ -839,6 +839,7 @@
 		56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.release.xcconfig"; sourceTree = "<group>"; };
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
+		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -1721,6 +1722,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B58B0D1AE6EDA000A79CA8 /* PhotoGram-Info.plist */,
+				652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */,
 				E34D5063199AB87B006D80E0 /* InfoPlist.strings */,
 				E34D5066199AB87B006D80E0 /* main.m */,
 				E34D5068199AB87B006D80E0 /* PhotoGram-Prefix.pch */,
@@ -3218,7 +3220,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -3286,7 +3288,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -4016,7 +4018,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -4084,7 +4086,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
