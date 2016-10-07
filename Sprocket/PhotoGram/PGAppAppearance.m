@@ -69,10 +69,10 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
     
     return @{// Background
              kMPGeneralBackgroundColor:             [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-             kMPGeneralBackgroundPrimaryFont:       [UIFont fontWithName:PGAppAppearanceRegularFont size:13],
-             kMPGeneralBackgroundPrimaryFontColor:  [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
-             kMPGeneralBackgroundSecondaryFont:     [UIFont fontWithName:PGAppAppearanceLightFont size:12],
-             kMPGeneralBackgroundSecondaryFontColor:[UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
+             kMPGeneralBackgroundPrimaryFont:       [UIFont fontWithName:PGAppAppearanceLightFont size:22],
+             kMPGeneralBackgroundPrimaryFontColor:   [UIColor colorWithRed:77.0F/255.0F green:77.0F/255.0F blue:77.0F/255.0F alpha:1.0F],
+             kMPGeneralBackgroundSecondaryFont:     [UIFont fontWithName:PGAppAppearanceRegularFont size:17],
+             kMPGeneralBackgroundSecondaryFontColor:[UIColor colorWithRed:117.0F/255.0F green:118.0F/255.0F blue:120.0F/255.0F alpha:1.0F],
              kMPGeneralTableSeparatorColor:         [UIColor colorWithRed:0x33/255.0F green:0x33/255.0F blue:0x33/255.0F alpha:1.0F],
              
              // Selection Options

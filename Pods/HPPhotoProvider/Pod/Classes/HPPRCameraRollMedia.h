@@ -12,9 +12,10 @@
 
 #import "HPPRMedia.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 @interface HPPRCameraRollMedia : HPPRMedia
 
-- (id)initWithAsset:(ALAsset *)asset;
+- (id)initWithAsset:(PHAsset *)asset;
 
 @end

@@ -16,94 +16,77 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <ImageIO/ImageIO.h>
 
+const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
+
 @implementation HPPRCameraRollMedia
 
-- (id)initWithAsset:(ALAsset *)asset;
+- (id)initWithAsset:(PHAsset *)asset;
 {
     self = [super init];
  
     if (self) {
-        // Uncomment the following in order to see ALL photo info
-        // [self printAllPhotoInfo:asset];
-
-        self.objectID = [[asset valueForProperty:ALAssetPropertyAssetURL] absoluteString];
-        self.thumbnailUrl = [[asset valueForProperty:ALAssetPropertyAssetURL] absoluteString];
-        self.standardUrl = [[asset valueForProperty:ALAssetPropertyAssetURL] absoluteString];
-        self.createdTime = [asset valueForProperty:ALAssetPropertyDate];
-
-        self.location = [asset valueForProperty:ALAssetPropertyLocation];
-
-        ALAssetRepresentation *representation = [asset defaultRepresentation];
-        NSDictionary *imageMetadata = [representation metadata];
-        NSDictionary *exifDictionary = [imageMetadata objectForKey:(NSString *)kCGImagePropertyExifDictionary];
-
-        NSNumber* shutterSpeed = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifShutterSpeedValue];
-        if( shutterSpeed ) {
-            // shutter speed formula: http://www.media.mit.edu/pia/Research/deepview/exif.html
-            self.shutterSpeed = [NSString stringWithFormat:@"1/%.0f", pow(2,[shutterSpeed floatValue])];
-        }
-        
-        NSArray *ISOSpeed = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifISOSpeedRatings];
-        if( ISOSpeed ) {
-            self.isoSpeed = [ISOSpeed objectAtIndex:0];
-        }
+        self.asset = asset;
+        self.location = asset.location;
+        self.createdTime = asset.creationDate;
     }
 
     return self;
 }
 
--(void) printAllPhotoInfo:(ALAsset *)asset {
-    
-    ALAssetRepresentation *representation = [asset defaultRepresentation];
-    NSDictionary *imageMetadata = [representation metadata];
-    
-    NSDictionary *tiffDictionary = [imageMetadata objectForKey:(NSString *)kCGImagePropertyTIFFDictionary];
-    NSString *cameraMake = [tiffDictionary objectForKey:(NSString *)kCGImagePropertyTIFFMake];
-    NSString *cameraModel = [tiffDictionary objectForKey:(NSString *)kCGImagePropertyTIFFModel];
-    NSString *cameraSoftware = [tiffDictionary objectForKey:(NSString *)kCGImagePropertyTIFFSoftware];
-    NSString *photoCopyright = [tiffDictionary objectForKey:(NSString *)kCGImagePropertyTIFFCopyright];
-    
-    
-    NSDictionary *exifDictionary = [imageMetadata objectForKey:(NSString *)kCGImagePropertyExifDictionary];
-    NSString *lensMake = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifLensMake];
-    NSString *lensModel = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifLensModel];
-    NSString *exposureTime = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifExposureTime];
-    NSString *exposureProgram = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifExposureProgram];
-    NSString *dateTime = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifDateTimeOriginal];
-    NSString *apertureValue = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifApertureValue];
-    NSString *focalLength = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifFocalLength];
-    NSString *whiteBalance = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifWhiteBalance];
-    NSString *shutterSpeed = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifShutterSpeedValue];
-    NSArray *ISOSpeed = [exifDictionary objectForKey:(NSString *)kCGImagePropertyExifISOSpeedRatings];
-    
-    NSNumber *photoSize = [imageMetadata objectForKey:(NSString *)kCGImagePropertyFileSize];
-    NSString *photoWidth = [imageMetadata objectForKey:(NSString *)kCGImagePropertyPixelWidth];
-    NSString *photoHeight = [imageMetadata objectForKey:(NSString *)kCGImagePropertyPixelHeight];
-    
-    NSDictionary *gpsDictionary = [imageMetadata objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
-    NSString *gpsLatitude = [gpsDictionary objectForKey:(NSString *)kCGImagePropertyGPSLatitude];
-    NSString *gpsLatitudeRef = [gpsDictionary objectForKey:(NSString *)kCGImagePropertyGPSLatitudeRef];
-    NSString *gpsLongitude = [gpsDictionary objectForKey:(NSString *)kCGImagePropertyGPSLongitude];
-    NSString *gpsLongitudeRef = [gpsDictionary objectForKey:(NSString *)kCGImagePropertyGPSLongitudeRef];
-    
-    NSLog(@"MAKE = %@", cameraMake);
-    NSLog(@"MODEL = %@", cameraModel);
-    NSLog(@"SOFTWARE = %@", cameraSoftware);
-    NSLog(@"COPYRIGHT = %@", photoCopyright);
-    NSLog(@"LENS MAKE = %@", lensMake);
-    NSLog(@"LENS MODEL = %@", lensModel);
-    NSLog(@"EXPOSURE TIME = %@", exposureTime);
-    NSLog(@"EXPOSURE PROGRAM = %@", exposureProgram);
-    NSLog(@"ISO SPEED = %@", ISOSpeed);
-    NSLog(@"DATE & TIME = %@", dateTime);
-    NSLog(@"SHUTTER SPEED = %@", shutterSpeed);
-    NSLog(@"APERTURE VALUE = %@", apertureValue);
-    NSLog(@"FOCAL LENGTH = %@", focalLength);
-    NSLog(@"WHITE BALANCE = %@", whiteBalance);
-    NSLog(@"IMAGE SIZE = %@", photoSize);
-    NSLog(@"IMAGE WIDTH = %@", photoWidth);
-    NSLog(@"IMAGE HEIGHT = %@", photoHeight);
-    NSLog(@"GPS Coordinates: %@ %@ / %@ %@", gpsLatitude, gpsLatitudeRef, gpsLongitude, gpsLongitudeRef);
+- (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion
+{
+    if (!self.thumbnailImage) {
+        PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
+        requestOptions.resizeMode   = PHImageRequestOptionsResizeModeFast;
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+        requestOptions.synchronous = YES;
+        
+        [[PHImageManager defaultManager] requestImageForAsset:self.asset
+                                                   targetSize:CGSizeMake(kHPPRCameraRollMediaThumbnailSize, kHPPRCameraRollMediaThumbnailSize)
+                                                  contentMode:PHImageContentModeAspectFill
+                                                      options:requestOptions
+                                                resultHandler:^void(UIImage *image, NSDictionary *info) {
+                                                    self.thumbnailImage = image;
+                                                    completion(self.thumbnailImage);
+                                                }];
+    } else {
+        completion(self.thumbnailImage);
+    }
+}
+
+- (void)requestImageWithCompletion:(void(^)(UIImage *image))completion
+{
+    if (!self.image) {
+        PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
+        requestOptions.resizeMode   = PHImageRequestOptionsResizeModeNone;
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+        requestOptions.synchronous = YES;
+        
+        [[PHImageManager defaultManager] requestImageForAsset:self.asset
+                                                   targetSize:PHImageManagerMaximumSize
+                                                  contentMode:PHImageContentModeDefault
+                                                      options:requestOptions
+                                                resultHandler:^void(UIImage *image, NSDictionary *info) {
+                                                    self.image = image;
+                                                    completion(self.image);
+                                                }];
+        
+        PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
+        options.networkAccessAllowed = YES;
+        
+        [self.asset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+            CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+            
+            self.isoSpeed = fullImage.properties[@"{Exif}"][@"ISOSpeedRatings"];
+            
+            NSString *shutterSpeed = fullImage.properties[@"{Exif}"][@"ShutterSpeedValue"];
+            
+            // shutter speed formula: http://www.media.mit.edu/pia/Research/deepview/exif.html
+            self.shutterSpeed = [NSString stringWithFormat:@"1/%.0f", pow(2,[shutterSpeed floatValue])];
+        }];
+    } else {
+        completion(self.image);
+    }
 }
 
 @end
