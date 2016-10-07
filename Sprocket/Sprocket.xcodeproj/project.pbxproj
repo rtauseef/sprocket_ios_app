@@ -21,6 +21,94 @@
 		20fe6071e7c571777f9f4631 /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
 		23247bcb1d38746ef374779f /* MobilePrinting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385519BE57C5009C695F /* MobilePrinting@2x.png */; };
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
+		264740591D9A16E60090BA44 /* bat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740011D9A16E60090BA44 /* bat_TN.png */; };
+		2647405A1D9A16E60090BA44 /* bat_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740021D9A16E60090BA44 /* bat_TN@2x.png */; };
+		2647405B1D9A16E60090BA44 /* bat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740031D9A16E60090BA44 /* bat_TN@3x.png */; };
+		2647405C1D9A16E60090BA44 /* bat.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740041D9A16E60090BA44 /* bat.png */; };
+		2647405D1D9A16E60090BA44 /* candycorn_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740051D9A16E60090BA44 /* candycorn_TN.png */; };
+		2647405E1D9A16E60090BA44 /* candycorn_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740061D9A16E60090BA44 /* candycorn_TN@2x.png */; };
+		2647405F1D9A16E60090BA44 /* candycorn_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740071D9A16E60090BA44 /* candycorn_TN@3x.png */; };
+		264740601D9A16E60090BA44 /* candycorn.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740081D9A16E60090BA44 /* candycorn.png */; };
+		264740611D9A16E60090BA44 /* cateyes_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740091D9A16E60090BA44 /* cateyes_TN.png */; };
+		264740621D9A16E60090BA44 /* cateyes_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400A1D9A16E60090BA44 /* cateyes_TN@2x.png */; };
+		264740631D9A16E60090BA44 /* cateyes_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400B1D9A16E60090BA44 /* cateyes_TN@3x.png */; };
+		264740641D9A16E60090BA44 /* cateyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400C1D9A16E60090BA44 /* cateyes.png */; };
+		264740651D9A16E60090BA44 /* catwhiskers_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400D1D9A16E60090BA44 /* catwhiskers_TN.png */; };
+		264740661D9A16E60090BA44 /* catwhiskers_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400E1D9A16E60090BA44 /* catwhiskers_TN@2x.png */; };
+		264740671D9A16E60090BA44 /* catwhiskers_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400F1D9A16E60090BA44 /* catwhiskers_TN@3x.png */; };
+		264740681D9A16E60090BA44 /* catwhiskers.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740101D9A16E60090BA44 /* catwhiskers.png */; };
+		264740691D9A16E60090BA44 /* devilhorns_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740111D9A16E60090BA44 /* devilhorns_TN.png */; };
+		2647406A1D9A16E60090BA44 /* devilhorns_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740121D9A16E60090BA44 /* devilhorns_TN@2x.png */; };
+		2647406B1D9A16E60090BA44 /* devilhorns_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740131D9A16E60090BA44 /* devilhorns_TN@3x.png */; };
+		2647406C1D9A16E60090BA44 /* devilhorns.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740141D9A16E60090BA44 /* devilhorns.png */; };
+		2647406D1D9A16E60090BA44 /* DODeyes_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740151D9A16E60090BA44 /* DODeyes_TN.png */; };
+		2647406E1D9A16E60090BA44 /* DODeyes_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740161D9A16E60090BA44 /* DODeyes_TN@2x.png */; };
+		2647406F1D9A16E60090BA44 /* DODeyes_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740171D9A16E60090BA44 /* DODeyes_TN@3x.png */; };
+		264740701D9A16E60090BA44 /* DODeyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740181D9A16E60090BA44 /* DODeyes.png */; };
+		264740711D9A16E60090BA44 /* DODmask_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740191D9A16E60090BA44 /* DODmask_TN.png */; };
+		264740721D9A16E60090BA44 /* DODmask_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647401A1D9A16E60090BA44 /* DODmask_TN@2x.png */; };
+		264740731D9A16E60090BA44 /* DODmask_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647401B1D9A16E60090BA44 /* DODmask_TN@3x.png */; };
+		264740741D9A16E60090BA44 /* DODmask.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647401C1D9A16E60090BA44 /* DODmask.png */; };
+		264740751D9A16E60090BA44 /* eyeball_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647401D1D9A16E60090BA44 /* eyeball_TN.png */; };
+		264740761D9A16E60090BA44 /* eyeball_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647401E1D9A16E60090BA44 /* eyeball_TN@2x.png */; };
+		264740771D9A16E60090BA44 /* eyeball_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647401F1D9A16E60090BA44 /* eyeball_TN@3x.png */; };
+		264740781D9A16E60090BA44 /* eyeball.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740201D9A16E60090BA44 /* eyeball.png */; };
+		264740791D9A16E60090BA44 /* fangs_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740211D9A16E60090BA44 /* fangs_TN.png */; };
+		2647407A1D9A16E60090BA44 /* fangs_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740221D9A16E60090BA44 /* fangs_TN@2x.png */; };
+		2647407B1D9A16E60090BA44 /* fangs_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740231D9A16E60090BA44 /* fangs_TN@3x.png */; };
+		2647407C1D9A16E60090BA44 /* fangs.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740241D9A16E60090BA44 /* fangs.png */; };
+		2647407D1D9A16E60090BA44 /* ghost_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740251D9A16E60090BA44 /* ghost_TN.png */; };
+		2647407E1D9A16E60090BA44 /* ghost_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740261D9A16E60090BA44 /* ghost_TN@2x.png */; };
+		2647407F1D9A16E60090BA44 /* ghost_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740271D9A16E60090BA44 /* ghost_TN@3x.png */; };
+		264740801D9A16E60090BA44 /* ghost.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740281D9A16E60090BA44 /* ghost.png */; };
+		264740811D9A16E60090BA44 /* HalloweenHat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740291D9A16E60090BA44 /* HalloweenHat_TN.png */; };
+		264740821D9A16E60090BA44 /* HalloweenHat_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402A1D9A16E60090BA44 /* HalloweenHat_TN@2x.png */; };
+		264740831D9A16E60090BA44 /* HalloweenHat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402B1D9A16E60090BA44 /* HalloweenHat_TN@3x.png */; };
+		264740841D9A16E60090BA44 /* HalloweenHat.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402C1D9A16E60090BA44 /* HalloweenHat.png */; };
+		264740851D9A16E60090BA44 /* jasonmask_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402D1D9A16E60090BA44 /* jasonmask_TN.png */; };
+		264740861D9A16E60090BA44 /* jasonmask_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402E1D9A16E60090BA44 /* jasonmask_TN@2x.png */; };
+		264740871D9A16E60090BA44 /* jasonmask_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402F1D9A16E60090BA44 /* jasonmask_TN@3x.png */; };
+		264740881D9A16E60090BA44 /* jasonmask.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740301D9A16E60090BA44 /* jasonmask.png */; };
+		264740891D9A16E60090BA44 /* leaf3_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740311D9A16E60090BA44 /* leaf3_TN.png */; };
+		2647408A1D9A16E60090BA44 /* leaf3_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740321D9A16E60090BA44 /* leaf3_TN@2x.png */; };
+		2647408B1D9A16E60090BA44 /* leaf3_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740331D9A16E60090BA44 /* leaf3_TN@3x.png */; };
+		2647408C1D9A16E60090BA44 /* leaf3.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740341D9A16E60090BA44 /* leaf3.png */; };
+		2647408D1D9A16E60090BA44 /* moon_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740351D9A16E60090BA44 /* moon_TN.png */; };
+		2647408E1D9A16E60090BA44 /* moon_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740361D9A16E60090BA44 /* moon_TN@2x.png */; };
+		2647408F1D9A16E60090BA44 /* moon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740371D9A16E60090BA44 /* moon_TN@3x.png */; };
+		264740901D9A16E60090BA44 /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740381D9A16E60090BA44 /* moon.png */; };
+		264740911D9A16E60090BA44 /* moonface_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740391D9A16E60090BA44 /* moonface_TN.png */; };
+		264740921D9A16E60090BA44 /* moonface_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647403A1D9A16E60090BA44 /* moonface_TN@2x.png */; };
+		264740931D9A16E60090BA44 /* moonface_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647403B1D9A16E60090BA44 /* moonface_TN@3x.png */; };
+		264740941D9A16E60090BA44 /* moonface.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647403C1D9A16E60090BA44 /* moonface.png */; };
+		264740951D9A16E60090BA44 /* owl_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647403D1D9A16E60090BA44 /* owl_TN.png */; };
+		264740961D9A16E60090BA44 /* owl_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647403E1D9A16E60090BA44 /* owl_TN@2x.png */; };
+		264740971D9A16E60090BA44 /* owl_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647403F1D9A16E60090BA44 /* owl_TN@3x.png */; };
+		264740981D9A16E60090BA44 /* owl.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740401D9A16E60090BA44 /* owl.png */; };
+		264740991D9A16E60090BA44 /* pumpkin_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740411D9A16E60090BA44 /* pumpkin_TN.png */; };
+		2647409A1D9A16E60090BA44 /* pumpkin_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740421D9A16E60090BA44 /* pumpkin_TN@2x.png */; };
+		2647409B1D9A16E60090BA44 /* pumpkin_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740431D9A16E60090BA44 /* pumpkin_TN@3x.png */; };
+		2647409C1D9A16E60090BA44 /* pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740441D9A16E60090BA44 /* pumpkin.png */; };
+		2647409D1D9A16E60090BA44 /* scarycat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740451D9A16E60090BA44 /* scarycat_TN.png */; };
+		2647409E1D9A16E60090BA44 /* scarycat_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740461D9A16E60090BA44 /* scarycat_TN@2x.png */; };
+		2647409F1D9A16E60090BA44 /* scarycat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740471D9A16E60090BA44 /* scarycat_TN@3x.png */; };
+		264740A01D9A16E60090BA44 /* scarycat.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740481D9A16E60090BA44 /* scarycat.png */; };
+		264740A11D9A16E60090BA44 /* skull_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740491D9A16E60090BA44 /* skull_TN.png */; };
+		264740A21D9A16E60090BA44 /* skull_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404A1D9A16E60090BA44 /* skull_TN@2x.png */; };
+		264740A31D9A16E60090BA44 /* skull_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404B1D9A16E60090BA44 /* skull_TN@3x.png */; };
+		264740A41D9A16E60090BA44 /* skull.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404C1D9A16E60090BA44 /* skull.png */; };
+		264740A51D9A16E60090BA44 /* spider_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404D1D9A16E60090BA44 /* spider_TN.png */; };
+		264740A61D9A16E60090BA44 /* spider_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404E1D9A16E60090BA44 /* spider_TN@2x.png */; };
+		264740A71D9A16E60090BA44 /* spider_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404F1D9A16E60090BA44 /* spider_TN@3x.png */; };
+		264740A81D9A16E60090BA44 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740501D9A16E60090BA44 /* spider.png */; };
+		264740A91D9A16E60090BA44 /* spiderweb_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740511D9A16E60090BA44 /* spiderweb_TN.png */; };
+		264740AA1D9A16E60090BA44 /* spiderweb_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740521D9A16E60090BA44 /* spiderweb_TN@2x.png */; };
+		264740AB1D9A16E60090BA44 /* spiderweb_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740531D9A16E60090BA44 /* spiderweb_TN@3x.png */; };
+		264740AC1D9A16E60090BA44 /* spiderweb.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740541D9A16E60090BA44 /* spiderweb.png */; };
+		264740AD1D9A16E60090BA44 /* threeeyes_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740551D9A16E60090BA44 /* threeeyes_TN.png */; };
+		264740AE1D9A16E60090BA44 /* threeeyes_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740561D9A16E60090BA44 /* threeeyes_TN@2x.png */; };
+		264740AF1D9A16E60090BA44 /* threeeyes_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740571D9A16E60090BA44 /* threeeyes_TN@3x.png */; };
+		264740B01D9A16E60090BA44 /* threeeyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740581D9A16E60090BA44 /* threeeyes.png */; };
 		27e75001a5a5f1affb9fc6c3 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		29c82bf3dd8b0e102cf7a433 /* HPSimplified_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A1199AB9FE006D80E0 /* HPSimplified_Bd.ttf */; };
 		2c94809311d106adf4d7a756 /* PGAppAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50D2199AC233006D80E0 /* PGAppAppearance.m */; };
@@ -656,6 +744,94 @@
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		260DCF161D2E0ADD0057BD55 /* AlphaGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientView.h; sourceTree = "<group>"; };
 		260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientView.m; sourceTree = "<group>"; };
+		264740011D9A16E60090BA44 /* bat_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bat_TN.png; path = Resources/Images/Stickers/Fall/bat_TN.png; sourceTree = "<group>"; };
+		264740021D9A16E60090BA44 /* bat_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bat_TN@2x.png"; path = "Resources/Images/Stickers/Fall/bat_TN@2x.png"; sourceTree = "<group>"; };
+		264740031D9A16E60090BA44 /* bat_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bat_TN@3x.png"; path = "Resources/Images/Stickers/Fall/bat_TN@3x.png"; sourceTree = "<group>"; };
+		264740041D9A16E60090BA44 /* bat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bat.png; path = Resources/Images/Stickers/Fall/bat.png; sourceTree = "<group>"; };
+		264740051D9A16E60090BA44 /* candycorn_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = candycorn_TN.png; path = Resources/Images/Stickers/Fall/candycorn_TN.png; sourceTree = "<group>"; };
+		264740061D9A16E60090BA44 /* candycorn_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "candycorn_TN@2x.png"; path = "Resources/Images/Stickers/Fall/candycorn_TN@2x.png"; sourceTree = "<group>"; };
+		264740071D9A16E60090BA44 /* candycorn_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "candycorn_TN@3x.png"; path = "Resources/Images/Stickers/Fall/candycorn_TN@3x.png"; sourceTree = "<group>"; };
+		264740081D9A16E60090BA44 /* candycorn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = candycorn.png; path = Resources/Images/Stickers/Fall/candycorn.png; sourceTree = "<group>"; };
+		264740091D9A16E60090BA44 /* cateyes_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cateyes_TN.png; path = Resources/Images/Stickers/Fall/cateyes_TN.png; sourceTree = "<group>"; };
+		2647400A1D9A16E60090BA44 /* cateyes_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cateyes_TN@2x.png"; path = "Resources/Images/Stickers/Fall/cateyes_TN@2x.png"; sourceTree = "<group>"; };
+		2647400B1D9A16E60090BA44 /* cateyes_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cateyes_TN@3x.png"; path = "Resources/Images/Stickers/Fall/cateyes_TN@3x.png"; sourceTree = "<group>"; };
+		2647400C1D9A16E60090BA44 /* cateyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cateyes.png; path = Resources/Images/Stickers/Fall/cateyes.png; sourceTree = "<group>"; };
+		2647400D1D9A16E60090BA44 /* catwhiskers_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = catwhiskers_TN.png; path = Resources/Images/Stickers/Fall/catwhiskers_TN.png; sourceTree = "<group>"; };
+		2647400E1D9A16E60090BA44 /* catwhiskers_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catwhiskers_TN@2x.png"; path = "Resources/Images/Stickers/Fall/catwhiskers_TN@2x.png"; sourceTree = "<group>"; };
+		2647400F1D9A16E60090BA44 /* catwhiskers_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catwhiskers_TN@3x.png"; path = "Resources/Images/Stickers/Fall/catwhiskers_TN@3x.png"; sourceTree = "<group>"; };
+		264740101D9A16E60090BA44 /* catwhiskers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = catwhiskers.png; path = Resources/Images/Stickers/Fall/catwhiskers.png; sourceTree = "<group>"; };
+		264740111D9A16E60090BA44 /* devilhorns_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = devilhorns_TN.png; path = Resources/Images/Stickers/Fall/devilhorns_TN.png; sourceTree = "<group>"; };
+		264740121D9A16E60090BA44 /* devilhorns_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "devilhorns_TN@2x.png"; path = "Resources/Images/Stickers/Fall/devilhorns_TN@2x.png"; sourceTree = "<group>"; };
+		264740131D9A16E60090BA44 /* devilhorns_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "devilhorns_TN@3x.png"; path = "Resources/Images/Stickers/Fall/devilhorns_TN@3x.png"; sourceTree = "<group>"; };
+		264740141D9A16E60090BA44 /* devilhorns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = devilhorns.png; path = Resources/Images/Stickers/Fall/devilhorns.png; sourceTree = "<group>"; };
+		264740151D9A16E60090BA44 /* DODeyes_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DODeyes_TN.png; path = Resources/Images/Stickers/Fall/DODeyes_TN.png; sourceTree = "<group>"; };
+		264740161D9A16E60090BA44 /* DODeyes_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DODeyes_TN@2x.png"; path = "Resources/Images/Stickers/Fall/DODeyes_TN@2x.png"; sourceTree = "<group>"; };
+		264740171D9A16E60090BA44 /* DODeyes_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DODeyes_TN@3x.png"; path = "Resources/Images/Stickers/Fall/DODeyes_TN@3x.png"; sourceTree = "<group>"; };
+		264740181D9A16E60090BA44 /* DODeyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DODeyes.png; path = Resources/Images/Stickers/Fall/DODeyes.png; sourceTree = "<group>"; };
+		264740191D9A16E60090BA44 /* DODmask_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DODmask_TN.png; path = Resources/Images/Stickers/Fall/DODmask_TN.png; sourceTree = "<group>"; };
+		2647401A1D9A16E60090BA44 /* DODmask_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DODmask_TN@2x.png"; path = "Resources/Images/Stickers/Fall/DODmask_TN@2x.png"; sourceTree = "<group>"; };
+		2647401B1D9A16E60090BA44 /* DODmask_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DODmask_TN@3x.png"; path = "Resources/Images/Stickers/Fall/DODmask_TN@3x.png"; sourceTree = "<group>"; };
+		2647401C1D9A16E60090BA44 /* DODmask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DODmask.png; path = Resources/Images/Stickers/Fall/DODmask.png; sourceTree = "<group>"; };
+		2647401D1D9A16E60090BA44 /* eyeball_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eyeball_TN.png; path = Resources/Images/Stickers/Fall/eyeball_TN.png; sourceTree = "<group>"; };
+		2647401E1D9A16E60090BA44 /* eyeball_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "eyeball_TN@2x.png"; path = "Resources/Images/Stickers/Fall/eyeball_TN@2x.png"; sourceTree = "<group>"; };
+		2647401F1D9A16E60090BA44 /* eyeball_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "eyeball_TN@3x.png"; path = "Resources/Images/Stickers/Fall/eyeball_TN@3x.png"; sourceTree = "<group>"; };
+		264740201D9A16E60090BA44 /* eyeball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eyeball.png; path = Resources/Images/Stickers/Fall/eyeball.png; sourceTree = "<group>"; };
+		264740211D9A16E60090BA44 /* fangs_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fangs_TN.png; path = Resources/Images/Stickers/Fall/fangs_TN.png; sourceTree = "<group>"; };
+		264740221D9A16E60090BA44 /* fangs_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fangs_TN@2x.png"; path = "Resources/Images/Stickers/Fall/fangs_TN@2x.png"; sourceTree = "<group>"; };
+		264740231D9A16E60090BA44 /* fangs_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fangs_TN@3x.png"; path = "Resources/Images/Stickers/Fall/fangs_TN@3x.png"; sourceTree = "<group>"; };
+		264740241D9A16E60090BA44 /* fangs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fangs.png; path = Resources/Images/Stickers/Fall/fangs.png; sourceTree = "<group>"; };
+		264740251D9A16E60090BA44 /* ghost_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost_TN.png; path = Resources/Images/Stickers/Fall/ghost_TN.png; sourceTree = "<group>"; };
+		264740261D9A16E60090BA44 /* ghost_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghost_TN@2x.png"; path = "Resources/Images/Stickers/Fall/ghost_TN@2x.png"; sourceTree = "<group>"; };
+		264740271D9A16E60090BA44 /* ghost_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ghost_TN@3x.png"; path = "Resources/Images/Stickers/Fall/ghost_TN@3x.png"; sourceTree = "<group>"; };
+		264740281D9A16E60090BA44 /* ghost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost.png; path = Resources/Images/Stickers/Fall/ghost.png; sourceTree = "<group>"; };
+		264740291D9A16E60090BA44 /* HalloweenHat_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HalloweenHat_TN.png; path = Resources/Images/Stickers/Fall/HalloweenHat_TN.png; sourceTree = "<group>"; };
+		2647402A1D9A16E60090BA44 /* HalloweenHat_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HalloweenHat_TN@2x.png"; path = "Resources/Images/Stickers/Fall/HalloweenHat_TN@2x.png"; sourceTree = "<group>"; };
+		2647402B1D9A16E60090BA44 /* HalloweenHat_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HalloweenHat_TN@3x.png"; path = "Resources/Images/Stickers/Fall/HalloweenHat_TN@3x.png"; sourceTree = "<group>"; };
+		2647402C1D9A16E60090BA44 /* HalloweenHat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HalloweenHat.png; path = Resources/Images/Stickers/Fall/HalloweenHat.png; sourceTree = "<group>"; };
+		2647402D1D9A16E60090BA44 /* jasonmask_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jasonmask_TN.png; path = Resources/Images/Stickers/Fall/jasonmask_TN.png; sourceTree = "<group>"; };
+		2647402E1D9A16E60090BA44 /* jasonmask_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jasonmask_TN@2x.png"; path = "Resources/Images/Stickers/Fall/jasonmask_TN@2x.png"; sourceTree = "<group>"; };
+		2647402F1D9A16E60090BA44 /* jasonmask_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jasonmask_TN@3x.png"; path = "Resources/Images/Stickers/Fall/jasonmask_TN@3x.png"; sourceTree = "<group>"; };
+		264740301D9A16E60090BA44 /* jasonmask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jasonmask.png; path = Resources/Images/Stickers/Fall/jasonmask.png; sourceTree = "<group>"; };
+		264740311D9A16E60090BA44 /* leaf3_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf3_TN.png; path = Resources/Images/Stickers/Fall/leaf3_TN.png; sourceTree = "<group>"; };
+		264740321D9A16E60090BA44 /* leaf3_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "leaf3_TN@2x.png"; path = "Resources/Images/Stickers/Fall/leaf3_TN@2x.png"; sourceTree = "<group>"; };
+		264740331D9A16E60090BA44 /* leaf3_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "leaf3_TN@3x.png"; path = "Resources/Images/Stickers/Fall/leaf3_TN@3x.png"; sourceTree = "<group>"; };
+		264740341D9A16E60090BA44 /* leaf3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf3.png; path = Resources/Images/Stickers/Fall/leaf3.png; sourceTree = "<group>"; };
+		264740351D9A16E60090BA44 /* moon_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moon_TN.png; path = Resources/Images/Stickers/Fall/moon_TN.png; sourceTree = "<group>"; };
+		264740361D9A16E60090BA44 /* moon_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon_TN@2x.png"; path = "Resources/Images/Stickers/Fall/moon_TN@2x.png"; sourceTree = "<group>"; };
+		264740371D9A16E60090BA44 /* moon_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon_TN@3x.png"; path = "Resources/Images/Stickers/Fall/moon_TN@3x.png"; sourceTree = "<group>"; };
+		264740381D9A16E60090BA44 /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moon.png; path = Resources/Images/Stickers/Fall/moon.png; sourceTree = "<group>"; };
+		264740391D9A16E60090BA44 /* moonface_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moonface_TN.png; path = Resources/Images/Stickers/Fall/moonface_TN.png; sourceTree = "<group>"; };
+		2647403A1D9A16E60090BA44 /* moonface_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moonface_TN@2x.png"; path = "Resources/Images/Stickers/Fall/moonface_TN@2x.png"; sourceTree = "<group>"; };
+		2647403B1D9A16E60090BA44 /* moonface_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moonface_TN@3x.png"; path = "Resources/Images/Stickers/Fall/moonface_TN@3x.png"; sourceTree = "<group>"; };
+		2647403C1D9A16E60090BA44 /* moonface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moonface.png; path = Resources/Images/Stickers/Fall/moonface.png; sourceTree = "<group>"; };
+		2647403D1D9A16E60090BA44 /* owl_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = owl_TN.png; path = Resources/Images/Stickers/Fall/owl_TN.png; sourceTree = "<group>"; };
+		2647403E1D9A16E60090BA44 /* owl_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "owl_TN@2x.png"; path = "Resources/Images/Stickers/Fall/owl_TN@2x.png"; sourceTree = "<group>"; };
+		2647403F1D9A16E60090BA44 /* owl_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "owl_TN@3x.png"; path = "Resources/Images/Stickers/Fall/owl_TN@3x.png"; sourceTree = "<group>"; };
+		264740401D9A16E60090BA44 /* owl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = owl.png; path = Resources/Images/Stickers/Fall/owl.png; sourceTree = "<group>"; };
+		264740411D9A16E60090BA44 /* pumpkin_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pumpkin_TN.png; path = Resources/Images/Stickers/Fall/pumpkin_TN.png; sourceTree = "<group>"; };
+		264740421D9A16E60090BA44 /* pumpkin_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pumpkin_TN@2x.png"; path = "Resources/Images/Stickers/Fall/pumpkin_TN@2x.png"; sourceTree = "<group>"; };
+		264740431D9A16E60090BA44 /* pumpkin_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pumpkin_TN@3x.png"; path = "Resources/Images/Stickers/Fall/pumpkin_TN@3x.png"; sourceTree = "<group>"; };
+		264740441D9A16E60090BA44 /* pumpkin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pumpkin.png; path = Resources/Images/Stickers/Fall/pumpkin.png; sourceTree = "<group>"; };
+		264740451D9A16E60090BA44 /* scarycat_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scarycat_TN.png; path = Resources/Images/Stickers/Fall/scarycat_TN.png; sourceTree = "<group>"; };
+		264740461D9A16E60090BA44 /* scarycat_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scarycat_TN@2x.png"; path = "Resources/Images/Stickers/Fall/scarycat_TN@2x.png"; sourceTree = "<group>"; };
+		264740471D9A16E60090BA44 /* scarycat_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scarycat_TN@3x.png"; path = "Resources/Images/Stickers/Fall/scarycat_TN@3x.png"; sourceTree = "<group>"; };
+		264740481D9A16E60090BA44 /* scarycat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scarycat.png; path = Resources/Images/Stickers/Fall/scarycat.png; sourceTree = "<group>"; };
+		264740491D9A16E60090BA44 /* skull_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = skull_TN.png; path = Resources/Images/Stickers/Fall/skull_TN.png; sourceTree = "<group>"; };
+		2647404A1D9A16E60090BA44 /* skull_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "skull_TN@2x.png"; path = "Resources/Images/Stickers/Fall/skull_TN@2x.png"; sourceTree = "<group>"; };
+		2647404B1D9A16E60090BA44 /* skull_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "skull_TN@3x.png"; path = "Resources/Images/Stickers/Fall/skull_TN@3x.png"; sourceTree = "<group>"; };
+		2647404C1D9A16E60090BA44 /* skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = skull.png; path = Resources/Images/Stickers/Fall/skull.png; sourceTree = "<group>"; };
+		2647404D1D9A16E60090BA44 /* spider_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spider_TN.png; path = Resources/Images/Stickers/Fall/spider_TN.png; sourceTree = "<group>"; };
+		2647404E1D9A16E60090BA44 /* spider_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spider_TN@2x.png"; path = "Resources/Images/Stickers/Fall/spider_TN@2x.png"; sourceTree = "<group>"; };
+		2647404F1D9A16E60090BA44 /* spider_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spider_TN@3x.png"; path = "Resources/Images/Stickers/Fall/spider_TN@3x.png"; sourceTree = "<group>"; };
+		264740501D9A16E60090BA44 /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spider.png; path = Resources/Images/Stickers/Fall/spider.png; sourceTree = "<group>"; };
+		264740511D9A16E60090BA44 /* spiderweb_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spiderweb_TN.png; path = Resources/Images/Stickers/Fall/spiderweb_TN.png; sourceTree = "<group>"; };
+		264740521D9A16E60090BA44 /* spiderweb_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spiderweb_TN@2x.png"; path = "Resources/Images/Stickers/Fall/spiderweb_TN@2x.png"; sourceTree = "<group>"; };
+		264740531D9A16E60090BA44 /* spiderweb_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spiderweb_TN@3x.png"; path = "Resources/Images/Stickers/Fall/spiderweb_TN@3x.png"; sourceTree = "<group>"; };
+		264740541D9A16E60090BA44 /* spiderweb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spiderweb.png; path = Resources/Images/Stickers/Fall/spiderweb.png; sourceTree = "<group>"; };
+		264740551D9A16E60090BA44 /* threeeyes_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threeeyes_TN.png; path = Resources/Images/Stickers/Fall/threeeyes_TN.png; sourceTree = "<group>"; };
+		264740561D9A16E60090BA44 /* threeeyes_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "threeeyes_TN@2x.png"; path = "Resources/Images/Stickers/Fall/threeeyes_TN@2x.png"; sourceTree = "<group>"; };
+		264740571D9A16E60090BA44 /* threeeyes_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "threeeyes_TN@3x.png"; path = "Resources/Images/Stickers/Fall/threeeyes_TN@3x.png"; sourceTree = "<group>"; };
+		264740581D9A16E60090BA44 /* threeeyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threeeyes.png; path = Resources/Images/Stickers/Fall/threeeyes.png; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3731680F1AD4B08900503065 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		378EA80619A69E5700C72F1A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back@2x.png"; path = "Resources/Images/Icons/Back@2x.png"; sourceTree = "<group>"; };
@@ -663,6 +839,7 @@
 		56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.release.xcconfig"; sourceTree = "<group>"; };
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
+		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -1116,6 +1293,101 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		264740001D9A16B40090BA44 /* Fall */ = {
+			isa = PBXGroup;
+			children = (
+				264740011D9A16E60090BA44 /* bat_TN.png */,
+				264740021D9A16E60090BA44 /* bat_TN@2x.png */,
+				264740031D9A16E60090BA44 /* bat_TN@3x.png */,
+				264740041D9A16E60090BA44 /* bat.png */,
+				264740051D9A16E60090BA44 /* candycorn_TN.png */,
+				264740061D9A16E60090BA44 /* candycorn_TN@2x.png */,
+				264740071D9A16E60090BA44 /* candycorn_TN@3x.png */,
+				264740081D9A16E60090BA44 /* candycorn.png */,
+				264740091D9A16E60090BA44 /* cateyes_TN.png */,
+				2647400A1D9A16E60090BA44 /* cateyes_TN@2x.png */,
+				2647400B1D9A16E60090BA44 /* cateyes_TN@3x.png */,
+				2647400C1D9A16E60090BA44 /* cateyes.png */,
+				2647400D1D9A16E60090BA44 /* catwhiskers_TN.png */,
+				2647400E1D9A16E60090BA44 /* catwhiskers_TN@2x.png */,
+				2647400F1D9A16E60090BA44 /* catwhiskers_TN@3x.png */,
+				264740101D9A16E60090BA44 /* catwhiskers.png */,
+				264740111D9A16E60090BA44 /* devilhorns_TN.png */,
+				264740121D9A16E60090BA44 /* devilhorns_TN@2x.png */,
+				264740131D9A16E60090BA44 /* devilhorns_TN@3x.png */,
+				264740141D9A16E60090BA44 /* devilhorns.png */,
+				264740151D9A16E60090BA44 /* DODeyes_TN.png */,
+				264740161D9A16E60090BA44 /* DODeyes_TN@2x.png */,
+				264740171D9A16E60090BA44 /* DODeyes_TN@3x.png */,
+				264740181D9A16E60090BA44 /* DODeyes.png */,
+				264740191D9A16E60090BA44 /* DODmask_TN.png */,
+				2647401A1D9A16E60090BA44 /* DODmask_TN@2x.png */,
+				2647401B1D9A16E60090BA44 /* DODmask_TN@3x.png */,
+				2647401C1D9A16E60090BA44 /* DODmask.png */,
+				2647401D1D9A16E60090BA44 /* eyeball_TN.png */,
+				2647401E1D9A16E60090BA44 /* eyeball_TN@2x.png */,
+				2647401F1D9A16E60090BA44 /* eyeball_TN@3x.png */,
+				264740201D9A16E60090BA44 /* eyeball.png */,
+				264740211D9A16E60090BA44 /* fangs_TN.png */,
+				264740221D9A16E60090BA44 /* fangs_TN@2x.png */,
+				264740231D9A16E60090BA44 /* fangs_TN@3x.png */,
+				264740241D9A16E60090BA44 /* fangs.png */,
+				264740251D9A16E60090BA44 /* ghost_TN.png */,
+				264740261D9A16E60090BA44 /* ghost_TN@2x.png */,
+				264740271D9A16E60090BA44 /* ghost_TN@3x.png */,
+				264740281D9A16E60090BA44 /* ghost.png */,
+				264740291D9A16E60090BA44 /* HalloweenHat_TN.png */,
+				2647402A1D9A16E60090BA44 /* HalloweenHat_TN@2x.png */,
+				2647402B1D9A16E60090BA44 /* HalloweenHat_TN@3x.png */,
+				2647402C1D9A16E60090BA44 /* HalloweenHat.png */,
+				2647402D1D9A16E60090BA44 /* jasonmask_TN.png */,
+				2647402E1D9A16E60090BA44 /* jasonmask_TN@2x.png */,
+				2647402F1D9A16E60090BA44 /* jasonmask_TN@3x.png */,
+				264740301D9A16E60090BA44 /* jasonmask.png */,
+				264740311D9A16E60090BA44 /* leaf3_TN.png */,
+				264740321D9A16E60090BA44 /* leaf3_TN@2x.png */,
+				264740331D9A16E60090BA44 /* leaf3_TN@3x.png */,
+				264740341D9A16E60090BA44 /* leaf3.png */,
+				264740351D9A16E60090BA44 /* moon_TN.png */,
+				264740361D9A16E60090BA44 /* moon_TN@2x.png */,
+				264740371D9A16E60090BA44 /* moon_TN@3x.png */,
+				264740381D9A16E60090BA44 /* moon.png */,
+				264740391D9A16E60090BA44 /* moonface_TN.png */,
+				2647403A1D9A16E60090BA44 /* moonface_TN@2x.png */,
+				2647403B1D9A16E60090BA44 /* moonface_TN@3x.png */,
+				2647403C1D9A16E60090BA44 /* moonface.png */,
+				2647403D1D9A16E60090BA44 /* owl_TN.png */,
+				2647403E1D9A16E60090BA44 /* owl_TN@2x.png */,
+				2647403F1D9A16E60090BA44 /* owl_TN@3x.png */,
+				264740401D9A16E60090BA44 /* owl.png */,
+				264740411D9A16E60090BA44 /* pumpkin_TN.png */,
+				264740421D9A16E60090BA44 /* pumpkin_TN@2x.png */,
+				264740431D9A16E60090BA44 /* pumpkin_TN@3x.png */,
+				264740441D9A16E60090BA44 /* pumpkin.png */,
+				264740451D9A16E60090BA44 /* scarycat_TN.png */,
+				264740461D9A16E60090BA44 /* scarycat_TN@2x.png */,
+				264740471D9A16E60090BA44 /* scarycat_TN@3x.png */,
+				264740481D9A16E60090BA44 /* scarycat.png */,
+				264740491D9A16E60090BA44 /* skull_TN.png */,
+				2647404A1D9A16E60090BA44 /* skull_TN@2x.png */,
+				2647404B1D9A16E60090BA44 /* skull_TN@3x.png */,
+				2647404C1D9A16E60090BA44 /* skull.png */,
+				2647404D1D9A16E60090BA44 /* spider_TN.png */,
+				2647404E1D9A16E60090BA44 /* spider_TN@2x.png */,
+				2647404F1D9A16E60090BA44 /* spider_TN@3x.png */,
+				264740501D9A16E60090BA44 /* spider.png */,
+				264740511D9A16E60090BA44 /* spiderweb_TN.png */,
+				264740521D9A16E60090BA44 /* spiderweb_TN@2x.png */,
+				264740531D9A16E60090BA44 /* spiderweb_TN@3x.png */,
+				264740541D9A16E60090BA44 /* spiderweb.png */,
+				264740551D9A16E60090BA44 /* threeeyes_TN.png */,
+				264740561D9A16E60090BA44 /* threeeyes_TN@2x.png */,
+				264740571D9A16E60090BA44 /* threeeyes_TN@3x.png */,
+				264740581D9A16E60090BA44 /* threeeyes.png */,
+			);
+			name = Fall;
+			sourceTree = "<group>";
+		};
 		821523271D82215600C0541C /* Sprocket Print */ = {
 			isa = PBXGroup;
 			children = (
@@ -1197,6 +1469,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				264740001D9A16B40090BA44 /* Fall */,
 				821851DA1D625FBA001288D9 /* arrow_TN.png */,
 				821851DB1D625FBA001288D9 /* arrow_TN@2x.png */,
 				821851DC1D625FBA001288D9 /* arrow_TN@3x.png */,
@@ -1449,6 +1722,7 @@
 			isa = PBXGroup;
 			children = (
 				E3B58B0D1AE6EDA000A79CA8 /* PhotoGram-Info.plist */,
+				652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */,
 				E34D5063199AB87B006D80E0 /* InfoPlist.strings */,
 				E34D5066199AB87B006D80E0 /* main.m */,
 				E34D5068199AB87B006D80E0 /* PhotoGram-Prefix.pch */,
@@ -1828,9 +2102,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PG;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = HP;
 				TargetAttributes = {
+					30ec29c6730ffeaffe3facda = {
+						DevelopmentTeam = UJ5KAZ5V7V;
+					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = UJ5KAZ5V7V;
@@ -2112,6 +2389,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2647406D1D9A16E60090BA44 /* DODeyes_TN.png in Resources */,
+				264740751D9A16E60090BA44 /* eyeball_TN.png in Resources */,
 				821853071D626A96001288D9 /* 6_floral_frame3_TN@2x.png in Resources */,
 				821851FA1D625FBA001288D9 /* bird_TN.png in Resources */,
 				8218532B1D626A96001288D9 /* 15_purple_frame2_TN@2x.png in Resources */,
@@ -2120,32 +2399,54 @@
 				822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */,
 				821852AC1D625FFB001288D9 /* stars_TN@3x.png in Resources */,
 				821852A01D625FFB001288D9 /* heartPixel_TN@3x.png in Resources */,
+				264740651D9A16E60090BA44 /* catwhiskers_TN.png in Resources */,
+				264740A01D9A16E60090BA44 /* scarycat.png in Resources */,
+				264740AB1D9A16E60090BA44 /* spiderweb_TN@3x.png in Resources */,
+				264740A91D9A16E60090BA44 /* spiderweb_TN.png in Resources */,
 				8218528B1D625FFB001288D9 /* cupcake_TN@2x.png in Resources */,
+				2647405C1D9A16E60090BA44 /* bat.png in Resources */,
 				821852A71D625FFB001288D9 /* LOL_TN@2x.png in Resources */,
 				821852F21D626A96001288D9 /* 1_turquoise_frame_TN.png in Resources */,
 				8218532D1D626A96001288D9 /* 15_purple_frame2.png in Resources */,
 				8218531C1D626A96001288D9 /* 11_pink_frame3_TN@3x.png in Resources */,
+				264740871D9A16E60090BA44 /* jasonmask_TN@3x.png in Resources */,
+				2647405B1D9A16E60090BA44 /* bat_TN@3x.png in Resources */,
+				2647409A1D9A16E60090BA44 /* pumpkin_TN@2x.png in Resources */,
+				264740AA1D9A16E60090BA44 /* spiderweb_TN@2x.png in Resources */,
+				2647409F1D9A16E60090BA44 /* scarycat_TN@3x.png in Resources */,
+				2647406A1D9A16E60090BA44 /* devilhorns_TN@2x.png in Resources */,
 				821851F81D625FBA001288D9 /* arrow_TN@3x.png in Resources */,
 				821853271D626A96001288D9 /* 14_blue_gradient_frame_TN@2x.png in Resources */,
+				264740761D9A16E60090BA44 /* eyeball_TN@2x.png in Resources */,
 				821853291D626A96001288D9 /* 14_blue_gradient_frame.png in Resources */,
 				82362A531D59557E0019F024 /* starhp_TN@3x.png in Resources */,
+				264740821D9A16E60090BA44 /* HalloweenHat_TN@2x.png in Resources */,
 				8218520C1D625FBA001288D9 /* catears_TN@3x.png in Resources */,
+				264740911D9A16E60090BA44 /* moonface_TN.png in Resources */,
+				264740801D9A16E60090BA44 /* ghost.png in Resources */,
 				82362A431D59557E0019F024 /* hearts_TN@3x.png in Resources */,
 				821852081D625FBA001288D9 /* cat_TN@3x.png in Resources */,
 				82362A371D59557E0019F024 /* crown_TN.png in Resources */,
 				821851FD1D625FBA001288D9 /* bird.png in Resources */,
 				8218531F1D626A96001288D9 /* 12_blue_frame2_TN@2x.png in Resources */,
+				264740A51D9A16E60090BA44 /* spider_TN.png in Resources */,
 				9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */,
 				821853011D626A96001288D9 /* 4_white_frame.png in Resources */,
+				264740981D9A16E60090BA44 /* owl.png in Resources */,
 				9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */,
+				264740701D9A16E60090BA44 /* DODeyes.png in Resources */,
+				264740641D9A16E60090BA44 /* cateyes.png in Resources */,
+				264740841D9A16E60090BA44 /* HalloweenHat.png in Resources */,
 				821852951D625FFB001288D9 /* feather.png in Resources */,
 				8218531A1D626A96001288D9 /* 11_pink_frame3_TN.png in Resources */,
 				821853151D626A96001288D9 /* 9_polkadots_frame.png in Resources */,
+				2647407B1D9A16E60090BA44 /* fangs_TN@3x.png in Resources */,
 				8218531E1D626A96001288D9 /* 12_blue_frame2_TN.png in Resources */,
 				82362A3D1D59557E0019F024 /* crown.png in Resources */,
 				821852B01D625FFB001288D9 /* sunglasses_TN@3x.png in Resources */,
 				821852A21D625FFB001288D9 /* icecreamcone_TN.png in Resources */,
 				821852F71D626A96001288D9 /* 2_pink_spraypaint_frame2_TN@2x.png in Resources */,
+				264740A71D9A16E60090BA44 /* spider_TN@3x.png in Resources */,
 				821852021D625FBA001288D9 /* candy_TN.png in Resources */,
 				821852941D625FFB001288D9 /* feather_TN@3x.png in Resources */,
 				92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */,
@@ -2154,55 +2455,73 @@
 				821852111D625FBA001288D9 /* cloud.png in Resources */,
 				8218529C1D625FFB001288D9 /* heartExpress_TN@3x.png in Resources */,
 				821852A81D625FFB001288D9 /* LOL_TN@3x.png in Resources */,
+				2647408A1D9A16E60090BA44 /* leaf3_TN@2x.png in Resources */,
 				821851F71D625FBA001288D9 /* arrow_TN@2x.png in Resources */,
+				264740861D9A16E60090BA44 /* jasonmask_TN@2x.png in Resources */,
 				821853021D626A96001288D9 /* 5_Red_frame_TN.png in Resources */,
 				821853041D626A96001288D9 /* 5_Red_frame_TN@3x.png in Resources */,
 				82362A3B1D59557E0019F024 /* crown_TN@3x.png in Resources */,
+				2647405D1D9A16E60090BA44 /* candycorn_TN.png in Resources */,
 				821851FF1D625FBA001288D9 /* birthdayHat_TN@2x.png in Resources */,
 				821853121D626A96001288D9 /* 9_polkadots_frame_TN.png in Resources */,
 				821852AF1D625FFB001288D9 /* sunglasses_TN@2x.png in Resources */,
+				264740B01D9A16E60090BA44 /* threeeyes.png in Resources */,
 				821853141D626A96001288D9 /* 9_polkadots_frame_TN@3x.png in Resources */,
 				821852FA1D626A96001288D9 /* 3_blue_watercolor_frame_TN.png in Resources */,
 				8218529E1D625FFB001288D9 /* heartPixel_TN.png in Resources */,
 				8218532A1D626A96001288D9 /* 15_purple_frame2_TN.png in Resources */,
 				82362A391D59557E0019F024 /* crown_TN@2x.png in Resources */,
+				2647409B1D9A16E60090BA44 /* pumpkin_TN@3x.png in Resources */,
+				264740921D9A16E60090BA44 /* moonface_TN@2x.png in Resources */,
 				82362A471D59557E0019F024 /* OMG_TN.png in Resources */,
 				821852A91D625FFB001288D9 /* LOL.png in Resources */,
 				821852B31D625FFB001288D9 /* xoxo_TN@2x.png in Resources */,
 				8218530A1D626A96001288D9 /* 7_gradient_frame_TN.png in Resources */,
 				E39EF27619B648E500AAB884 /* Bitter-Regular.ttf in Resources */,
+				264740A31D9A16E60090BA44 /* skull_TN@3x.png in Resources */,
 				E39EF27819B648E500AAB884 /* CoveredByYourGrace.ttf in Resources */,
 				E39EF27A19B648E500AAB884 /* Glegoo-Regular.ttf in Resources */,
+				264740711D9A16E60090BA44 /* DODmask_TN.png in Resources */,
 				E34D50AF199AB9FE006D80E0 /* HPSimplified_Bd.ttf in Resources */,
 				E34D50B0199AB9FE006D80E0 /* HPSimplified_BdIt.ttf in Resources */,
+				264740891D9A16E60090BA44 /* leaf3_TN.png in Resources */,
 				8218529A1D625FFB001288D9 /* heartExpress_TN.png in Resources */,
 				E34D50B1199AB9FE006D80E0 /* HPSimplified_It.ttf in Resources */,
 				9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */,
 				E34D50B2199AB9FE006D80E0 /* HPSimplified_Lt.ttf in Resources */,
 				E34D50B3199AB9FE006D80E0 /* HPSimplified_LtIt.ttf in Resources */,
+				264740731D9A16E60090BA44 /* DODmask_TN@3x.png in Resources */,
 				821852921D625FFB001288D9 /* feather_TN.png in Resources */,
 				821851FC1D625FBA001288D9 /* bird_TN@3x.png in Resources */,
 				E34D50B4199AB9FE006D80E0 /* HPSimplified_Rg.ttf in Resources */,
 				8218530C1D626A96001288D9 /* 7_gradient_frame_TN@3x.png in Resources */,
 				E39EF27C19B648E500AAB884 /* Jura-Regular.ttf in Resources */,
 				E34D50B6199AB9FE006D80E0 /* Muli-Regular.ttf in Resources */,
+				264740781D9A16E60090BA44 /* eyeball.png in Resources */,
+				264740631D9A16E60090BA44 /* cateyes_TN@3x.png in Resources */,
 				821852B21D625FFB001288D9 /* xoxo_TN.png in Resources */,
 				E39EF28019B648E500AAB884 /* OpenSans-Bold.ttf in Resources */,
 				821853281D626A96001288D9 /* 14_blue_gradient_frame_TN@3x.png in Resources */,
 				8218532C1D626A96001288D9 /* 15_purple_frame2_TN@3x.png in Resources */,
 				821851F91D625FBA001288D9 /* arrow.png in Resources */,
+				264740A41D9A16E60090BA44 /* skull.png in Resources */,
 				8218528D1D625FFB001288D9 /* cupcake.png in Resources */,
 				8218530E1D626A96001288D9 /* 8_green_spraypaint_frame3_TN.png in Resources */,
 				E34D50B7199AB9FE006D80E0 /* Pacifico.ttf in Resources */,
+				264740951D9A16E60090BA44 /* owl_TN.png in Resources */,
 				82362A491D59557E0019F024 /* OMG_TN@2x.png in Resources */,
 				821852F41D626A96001288D9 /* 1_turquoise_frame_TN@3x.png in Resources */,
+				264740A61D9A16E60090BA44 /* spider_TN@2x.png in Resources */,
 				821852061D625FBA001288D9 /* cat_TN.png in Resources */,
 				E39EF28419B648E500AAB884 /* RockSalt.ttf in Resources */,
 				F1DCB8291B542D6500CA9AAD /* sanchez-regular.ttf in Resources */,
 				8218528F1D625FFB001288D9 /* diamond_TN@2x.png in Resources */,
+				264740AF1D9A16E60090BA44 /* threeeyes_TN@3x.png in Resources */,
 				821853161D626A96001288D9 /* 10_green_watercolor_frame2_TN.png in Resources */,
+				264740661D9A16E60090BA44 /* catwhiskers_TN@2x.png in Resources */,
 				E39EF28619B648E500AAB884 /* SourceSansPro-Regular.ttf in Resources */,
 				821852A51D625FFB001288D9 /* icecreamcone.png in Resources */,
+				2647407D1D9A16E60090BA44 /* ghost_TN.png in Resources */,
 				821853091D626A96001288D9 /* 6_floral_frame3.png in Resources */,
 				E39EF28819B648E500AAB884 /* SpecialElite.ttf in Resources */,
 				F1DCB82B1B542D6500CA9AAD /* spicyrice-regular.ttf in Resources */,
@@ -2210,52 +2529,71 @@
 				821852101D625FBA001288D9 /* cloud_TN@3x.png in Resources */,
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
 				821852A11D625FFB001288D9 /* heartPixel.png in Resources */,
+				264740691D9A16E60090BA44 /* devilhorns_TN.png in Resources */,
 				821852011D625FBA001288D9 /* birthdayHat.png in Resources */,
 				82362A351D59557E0019F024 /* catglasses.png in Resources */,
 				821852AA1D625FFB001288D9 /* stars_TN.png in Resources */,
 				821852FE1D626A96001288D9 /* 4_white_frame_TN.png in Resources */,
 				82362A2F1D59557E0019F024 /* catglasses_TN.png in Resources */,
 				821852F31D626A96001288D9 /* 1_turquoise_frame_TN@2x.png in Resources */,
+				264740741D9A16E60090BA44 /* DODmask.png in Resources */,
 				821852971D625FFB001288D9 /* feather2_TN@2x.png in Resources */,
 				821852FC1D626A96001288D9 /* 3_blue_watercolor_frame_TN@3x.png in Resources */,
 				821853181D626A96001288D9 /* 10_green_watercolor_frame2_TN@3x.png in Resources */,
 				821852981D625FFB001288D9 /* feather2_TN@3x.png in Resources */,
+				264740961D9A16E60090BA44 /* owl_TN@2x.png in Resources */,
 				821852A41D625FFB001288D9 /* icecreamcone_TN@3x.png in Resources */,
 				821852991D625FFB001288D9 /* feather2.png in Resources */,
 				E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */,
+				264740681D9A16E60090BA44 /* catwhiskers.png in Resources */,
 				8218520B1D625FBA001288D9 /* catears_TN@2x.png in Resources */,
+				264740881D9A16E60090BA44 /* jasonmask.png in Resources */,
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				8218529D1D625FFB001288D9 /* heartExpress.png in Resources */,
+				2647406F1D9A16E60090BA44 /* DODeyes_TN@3x.png in Resources */,
 				8218530B1D626A96001288D9 /* 7_gradient_frame_TN@2x.png in Resources */,
 				821851F61D625FBA001288D9 /* arrow_TN.png in Resources */,
+				2647407E1D9A16E60090BA44 /* ghost_TN@2x.png in Resources */,
+				264740941D9A16E60090BA44 /* moonface.png in Resources */,
 				8218520D1D625FBA001288D9 /* catears.png in Resources */,
 				821853031D626A96001288D9 /* 5_Red_frame_TN@2x.png in Resources */,
+				2647405E1D9A16E60090BA44 /* candycorn_TN@2x.png in Resources */,
+				2647409C1D9A16E60090BA44 /* pumpkin.png in Resources */,
 				CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */,
+				2647407A1D9A16E60090BA44 /* fangs_TN@2x.png in Resources */,
 				E375385B19BE57C5009C695F /* HPLogo@2x.png in Resources */,
 				8218528A1D625FFB001288D9 /* cupcake_TN.png in Resources */,
+				2647406C1D9A16E60090BA44 /* devilhorns.png in Resources */,
 				821852AD1D625FFB001288D9 /* stars.png in Resources */,
+				2647405F1D9A16E60090BA44 /* candycorn_TN@3x.png in Resources */,
 				F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */,
+				2647407F1D9A16E60090BA44 /* ghost_TN@3x.png in Resources */,
 				821852931D625FFB001288D9 /* feather_TN@2x.png in Resources */,
 				F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */,
 				821852B51D625FFB001288D9 /* xoxo.png in Resources */,
 				821852091D625FBA001288D9 /* cat.png in Resources */,
 				82362A411D59557E0019F024 /* hearts_TN@2x.png in Resources */,
+				264740591D9A16E60090BA44 /* bat_TN.png in Resources */,
 				821852A31D625FFB001288D9 /* icecreamcone_TN@2x.png in Resources */,
 				821853261D626A96001288D9 /* 14_blue_gradient_frame_TN.png in Resources */,
+				264740971D9A16E60090BA44 /* owl_TN@3x.png in Resources */,
 				CC10808519CA122B00C1553A /* logo.blue.png in Resources */,
 				E3461FA119AF84A80042DF5E /* MeasurementArrowDown@2x.png in Resources */,
 				821852B11D625FFB001288D9 /* sunglasses.png in Resources */,
 				E3461FA319AF84A80042DF5E /* MeasurementArrowLeft@2x.png in Resources */,
+				264740AE1D9A16E60090BA44 /* threeeyes_TN@2x.png in Resources */,
 				821852AB1D625FFB001288D9 /* stars_TN@2x.png in Resources */,
 				E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */,
 				8218529B1D625FFB001288D9 /* heartExpress_TN@2x.png in Resources */,
 				82362A511D59557E0019F024 /* starhp_TN@2x.png in Resources */,
 				E3461FA719AF84A80042DF5E /* MeasurementArrowUp@2x.png in Resources */,
 				E375385D19BE57C5009C695F /* MobilePrinting@2x.png in Resources */,
+				264740AC1D9A16E60090BA44 /* spiderweb.png in Resources */,
 				821852961D625FFB001288D9 /* feather2_TN.png in Resources */,
 				821853001D626A96001288D9 /* 4_white_frame_TN@3x.png in Resources */,
 				821853171D626A96001288D9 /* 10_green_watercolor_frame2_TN@2x.png in Resources */,
+				264740A21D9A16E60090BA44 /* skull_TN@2x.png in Resources */,
 				8218530F1D626A96001288D9 /* 8_green_spraypaint_frame3_TN@2x.png in Resources */,
 				82362A3F1D59557E0019F024 /* hearts_TN.png in Resources */,
 				82362A551D59557E0019F024 /* starhp.png in Resources */,
@@ -2263,23 +2601,38 @@
 				E320F8B919C36A7A00BC2AE3 /* retry@2x.png in Resources */,
 				F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */,
 				E3B62FFE19A50E5800CB80D7 /* Search@2x.png in Resources */,
+				264740771D9A16E60090BA44 /* eyeball_TN@3x.png in Resources */,
 				82362A4F1D59557E0019F024 /* starhp_TN.png in Resources */,
 				E375386119BE57C5009C695F /* SendFeedback@2x.png in Resources */,
+				2647407C1D9A16E60090BA44 /* fangs.png in Resources */,
 				821853111D626A96001288D9 /* 8_green_spraypaint_frame3.png in Resources */,
 				378EA80A19A69E5700C72F1A /* Share@2x.png in Resources */,
+				2647409D1D9A16E60090BA44 /* scarycat_TN.png in Resources */,
 				821851FB1D625FBA001288D9 /* bird_TN@2x.png in Resources */,
 				8218520A1D625FBA001288D9 /* catears_TN.png in Resources */,
+				2647408B1D9A16E60090BA44 /* leaf3_TN@3x.png in Resources */,
 				82362A331D59557E0019F024 /* catglasses_TN@3x.png in Resources */,
+				2647408C1D9A16E60090BA44 /* leaf3.png in Resources */,
 				82362A4D1D59557E0019F024 /* OMG.png in Resources */,
+				264740A81D9A16E60090BA44 /* spider.png in Resources */,
 				E375386319BE57C5009C695F /* TakeSurvey@2x.png in Resources */,
+				264740721D9A16E60090BA44 /* DODmask_TN@2x.png in Resources */,
 				824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */,
+				264740671D9A16E60090BA44 /* catwhiskers_TN@3x.png in Resources */,
+				264740831D9A16E60090BA44 /* HalloweenHat_TN@3x.png in Resources */,
 				821852071D625FBA001288D9 /* cat_TN@2x.png in Resources */,
 				821852031D625FBA001288D9 /* candy_TN@2x.png in Resources */,
 				E34D5076199AB87B006D80E0 /* Images.xcassets in Resources */,
+				264740791D9A16E60090BA44 /* fangs_TN.png in Resources */,
 				821853241D626A96001288D9 /* 13_floral2_frame_TN@3x.png in Resources */,
 				821853101D626A96001288D9 /* 8_green_spraypaint_frame3_TN@3x.png in Resources */,
+				264740811D9A16E60090BA44 /* HalloweenHat_TN.png in Resources */,
 				8218528E1D625FFB001288D9 /* diamond_TN.png in Resources */,
+				264740621D9A16E60090BA44 /* cateyes_TN@2x.png in Resources */,
+				264740931D9A16E60090BA44 /* moonface_TN@3x.png in Resources */,
+				264740601D9A16E60090BA44 /* candycorn.png in Resources */,
 				821852AE1D625FFB001288D9 /* sunglasses_TN.png in Resources */,
+				2647408D1D9A16E60090BA44 /* moon_TN.png in Resources */,
 				821852041D625FBA001288D9 /* candy_TN@3x.png in Resources */,
 				821852F51D626A96001288D9 /* 1_turquoise_frame.png in Resources */,
 				821852001D625FBA001288D9 /* birthdayHat_TN@3x.png in Resources */,
@@ -2289,18 +2642,27 @@
 				821853061D626A96001288D9 /* 6_floral_frame3_TN.png in Resources */,
 				821853081D626A96001288D9 /* 6_floral_frame3_TN@3x.png in Resources */,
 				821853251D626A96001288D9 /* 13_floral2_frame.png in Resources */,
+				2647408E1D9A16E60090BA44 /* moon_TN@2x.png in Resources */,
+				2647409E1D9A16E60090BA44 /* scarycat_TN@2x.png in Resources */,
+				2647405A1D9A16E60090BA44 /* bat_TN@2x.png in Resources */,
 				82362A4B1D59557E0019F024 /* OMG_TN@3x.png in Resources */,
 				82362A451D59557E0019F024 /* hearts.png in Resources */,
 				821853221D626A96001288D9 /* 13_floral2_frame_TN.png in Resources */,
 				8218530D1D626A96001288D9 /* 7_gradient_frame.png in Resources */,
+				2647406E1D9A16E60090BA44 /* DODeyes_TN@2x.png in Resources */,
+				264740851D9A16E60090BA44 /* jasonmask_TN.png in Resources */,
+				264740991D9A16E60090BA44 /* pumpkin_TN.png in Resources */,
 				821852F81D626A96001288D9 /* 2_pink_spraypaint_frame2_TN@3x.png in Resources */,
+				264740901D9A16E60090BA44 /* moon.png in Resources */,
 				821853191D626A96001288D9 /* 10_green_watercolor_frame2.png in Resources */,
 				821853051D626A96001288D9 /* 5_Red_frame.png in Resources */,
 				821852051D625FBA001288D9 /* candy.png in Resources */,
 				8218531D1D626A96001288D9 /* 11_pink_frame3.png in Resources */,
 				8218520E1D625FBA001288D9 /* cloud_TN.png in Resources */,
+				2647408F1D9A16E60090BA44 /* moon_TN@3x.png in Resources */,
 				821852B41D625FFB001288D9 /* xoxo_TN@3x.png in Resources */,
 				821853211D626A96001288D9 /* 12_blue_frame2.png in Resources */,
+				264740AD1D9A16E60090BA44 /* threeeyes_TN.png in Resources */,
 				8218520F1D625FBA001288D9 /* cloud_TN@2x.png in Resources */,
 				821852911D625FFB001288D9 /* diamond.png in Resources */,
 				821852F61D626A96001288D9 /* 2_pink_spraypaint_frame2_TN.png in Resources */,
@@ -2313,9 +2675,12 @@
 				821851FE1D625FBA001288D9 /* birthdayHat_TN.png in Resources */,
 				E34D5065199AB87B006D80E0 /* InfoPlist.strings in Resources */,
 				3731680D1AD4B08900503065 /* Localizable.strings in Resources */,
+				2647406B1D9A16E60090BA44 /* devilhorns_TN@3x.png in Resources */,
 				8218531B1D626A96001288D9 /* 11_pink_frame3_TN@2x.png in Resources */,
 				821853231D626A96001288D9 /* 13_floral2_frame_TN@2x.png in Resources */,
 				E39CE8D41AA7C05900A2A644 /* DBChooser.bundle in Resources */,
+				264740A11D9A16E60090BA44 /* skull_TN.png in Resources */,
+				264740611D9A16E60090BA44 /* cateyes_TN.png in Resources */,
 				821852F91D626A96001288D9 /* 2_pink_spraypaint_frame2.png in Resources */,
 				65E671E91A78267A009A12F3 /* Settings.bundle in Resources */,
 			);
@@ -2840,11 +3205,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2854,7 +3220,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2896,7 +3262,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e6f0b3d6-0b5d-4301-b175-f8709982d9d4";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2906,11 +3273,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2920,7 +3288,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2961,7 +3329,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "141c9196-aebd-4314-b011-337e7e5088c2";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2998,8 +3367,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9cb34f6-0ed6-4cd6-a777-0eb06c8ead30";
-				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development Provision";
+				PROVISIONING_PROFILE = "141c9196-aebd-4314-b011-337e7e5088c2";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -3016,6 +3385,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3035,6 +3405,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "141c9196-aebd-4314-b011-337e7e5088c2";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -3051,6 +3423,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3070,6 +3443,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "22a42cad-940b-4e8b-94f5-f0e6ed53d100";
+				PROVISIONING_PROFILE_SPECIFIER = "XC: *";
 				SKIP_INSTALL = YES;
 			};
 			name = TestFlight;
@@ -3086,6 +3461,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3105,6 +3481,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.Sprocket-Print";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "22a42cad-940b-4e8b-94f5-f0e6ed53d100";
+				PROVISIONING_PROFILE_SPECIFIER = "XC: *";
 				SKIP_INSTALL = YES;
 			};
 			name = AppStore;
@@ -3113,6 +3491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3122,15 +3501,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -3155,6 +3539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3164,14 +3549,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -3191,10 +3581,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
@@ -3243,8 +3634,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9cb34f6-0ed6-4cd6-a777-0eb06c8ead30";
-				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development Provision";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3254,10 +3645,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3306,6 +3699,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3314,8 +3708,8 @@
 		E34D5090199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3337,8 +3731,8 @@
 		E34D5091199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3357,6 +3751,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3366,14 +3761,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -3393,10 +3793,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3446,6 +3848,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3454,8 +3857,8 @@
 		FF3D0A001D2C302C0002AB7C /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3474,6 +3877,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3483,14 +3887,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -3510,10 +3919,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3563,6 +3974,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3571,8 +3983,8 @@
 		FF3D0A041D2DAC260002AB7C /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3591,11 +4003,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3605,7 +4018,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -3647,7 +4060,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "324da143-1cac-487d-983b-02f19471e0d4";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3657,11 +4071,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3671,7 +4086,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -3712,7 +4127,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "141c9196-aebd-4314-b011-337e7e5088c2";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

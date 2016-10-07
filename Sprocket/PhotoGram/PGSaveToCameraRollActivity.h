@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) UIImage *image;
 
++ (NSString *)activityType;
+
 @end
