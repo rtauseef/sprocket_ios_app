@@ -1,0 +1,16 @@
+//
+//  PhotoGram-Share-Prefix.pch
+//  Sprocket
+//
+//  Created by Susy Snowflake on 10/5/16.
+//  Copyright © 2016 HP. All rights reserved.
+//
+
+#import "PhotoGram-Prefix.pch"
+
+#ifndef PhotoGram_Share_Prefix_pch
+#define PhotoGram_Share_Prefix_pch
+
+#define TARGET_IS_EXTENSION 1
+
+#endif /* PhotoGram_Share_Prefix_pch */
