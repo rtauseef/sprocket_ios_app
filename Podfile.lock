@@ -35,24 +35,24 @@ PODS:
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - GoogleAnalytics-iOS-SDK (= 3.12)
-  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `rb/US5134-text-update`)
-  - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `rb/US5134-text-update`)
+  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
+  - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
-    :branch: rb/US5134-text-update
+    :branch: master
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :branch: rb/US5134-text-update
+    :branch: bluetooth
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 2b1fbe225a86abf1de165f36ab23190c21b0aa9f
+    :commit: 63e32de41cd1bf092f2a37c487b3b8cec03275db
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 1e30b0d02aefbeaf59e64bb2407ef21dc1ff9dcc
+    :commit: 159da9e9145bce01b840803696a814c0373d1d54
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -64,6 +64,6 @@ SPEC CHECKSUMS:
   MobilePrintSDK: c906b48fd6cd246ce00f35a2d6fb7fe63142ed79
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
 
-PODFILE CHECKSUM: 91d9621eeb5d73b7756986a846988781d33d8a67
+PODFILE CHECKSUM: dcf477f0d42a9d28c6dfc53588f9b934f4dadfe5
 
 COCOAPODS: 1.0.1

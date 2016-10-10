@@ -76,10 +76,11 @@ int const kCameraRollCancelButtonIndex = 0;
     self.accessCompletion = completion;
     ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
     if (ALAuthorizationStatusDenied == authorizationStatus) {
-        NSString *msgText = HPPRLocalizedString(@"Allow access in your Settings to print and save your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *msgText = HPPRLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
 
         [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                       andMessage:msgText];
+                       andMessage:[NSString stringWithFormat:msgText, appName]];
     } else if (ALAuthorizationStatusRestricted == authorizationStatus) {
         [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Restricted", @"Title of an alert when the application is not authorized to access photo data.")
                        andMessage:HPPRLocalizedString(@"Photo access is restricted on this device. Please check your settings.", @"Message of an alert when the application is not authorized to access photo data.")];
@@ -109,10 +110,11 @@ int const kCameraRollCancelButtonIndex = 0;
             }
         }
     } failureBlock:^(NSError *error) {
-        NSString *msgText = HPPRLocalizedString(@"Allow access in your Settings to print and save your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *msgText = HPPRLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
+        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
 
         [self noAccessWithCaption:HPPRLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                       andMessage:msgText];
+                       andMessage:[NSString stringWithFormat:msgText, appName]];
     }];
 }
 
