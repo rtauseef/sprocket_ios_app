@@ -38,10 +38,6 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.ui-services</string>
 	</dict>
-	<key>UISupportedExternalAccessoryProtocols</key>
-	<array>
-		<string>com.hp.protocol</string>
-	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HPSimplified_Lt.ttf</string>
@@ -50,6 +46,10 @@
 		<string>HPSimplified_It.ttf</string>
 		<string>HPSimplified_LtIt.ttf</string>
 		<string>HPSimplified_Rg.ttf</string>
+	</array>
+	<key>UISupportedExternalAccessoryProtocols</key>
+	<array>
+		<string>com.hp.protocol</string>
 	</array>
 </dict>
 </plist>
