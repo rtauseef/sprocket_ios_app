@@ -4301,7 +4301,7 @@
 			};
 			name = AppStore;
 		};
-		2EB52FBE66D3466463E8B13805EA05D2 /* TestFlight */ = {
+		25E72A8644F2E1905078461F7C188170 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
 			buildSettings = {
@@ -4315,7 +4315,33 @@
 					"$(inherited)",
 					"TARGET_IS_EXTENSION=1",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3787D65C10879FE8A7606F6B139EEB8F /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"TARGET_IS_EXTENSION=1",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -4432,32 +4458,6 @@
 			};
 			name = Debug;
 		};
-		4BC5CE89B98459D1F50964182189DF2C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		4DFDFF5F13E8BEE115D7598BC0D27D1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DD247148683AFFB404A59A6A42A35F9 /* AFNetworking.xcconfig */;
@@ -4482,6 +4482,32 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
+		};
+		59456B2E2C956B8B4C90021B57201968 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"TARGET_IS_EXTENSION=1",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
 		};
 		65E96FE0BAC73F78497E0A4EF7551CD6 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
@@ -4683,32 +4709,6 @@
 			};
 			name = Debug;
 		};
-		8B4E4F2278A8544F0A9F1F80BBA520D3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		9183E96FF828FA26BCCA06036F829751 /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D518259577DB92DEBB6BBFBBDD8C6A5 /* Pods-Sprocket Print.appstore.xcconfig */;
@@ -4759,32 +4759,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
-		};
-		97C2938109A8B3D567C899CC43ED8E4A /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"TARGET_IS_EXTENSION=1",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
 		};
 		9BB2908CC0FAC19BDCD0D00BAB99D100 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4924,6 +4898,32 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		AFBEF4277CF74EFB25E260B9F21C9045 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BD86007DD3AE695A3E9E3715B54C07D /* MobilePrintSDK.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MobilePrintSDK/MobilePrintSDK-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"TARGET_IS_EXTENSION=1",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
 		};
 		B5F5559E38BE633A22172AAF902FD106 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -5257,10 +5257,10 @@
 		03058CBE9B49A711657E3E85D67956DC /* Build configuration list for PBXNativeTarget "MobilePrintSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97C2938109A8B3D567C899CC43ED8E4A /* AppStore */,
-				4BC5CE89B98459D1F50964182189DF2C /* Debug */,
-				8B4E4F2278A8544F0A9F1F80BBA520D3 /* Release */,
-				2EB52FBE66D3466463E8B13805EA05D2 /* TestFlight */,
+				59456B2E2C956B8B4C90021B57201968 /* AppStore */,
+				AFBEF4277CF74EFB25E260B9F21C9045 /* Debug */,
+				25E72A8644F2E1905078461F7C188170 /* Release */,
+				3787D65C10879FE8A7606F6B139EEB8F /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
