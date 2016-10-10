@@ -1,0 +1,1 @@
+../../../MobilePrintSDK/Pod/Classes/Private/MPBTTechnicalInformationViewController.h
