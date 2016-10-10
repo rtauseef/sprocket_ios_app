@@ -29,7 +29,7 @@ PODS:
   - HPPhotoProvider (0.13.31):
     - AFNetworking
     - FlickrKit
-  - MobilePrintSDK (3.0.8)
+  - MobilePrintSDK (3.0.9)
   - TTTAttributedLabel (1.10.1)
 
 DEPENDENCIES:
@@ -52,7 +52,7 @@ CHECKOUT OPTIONS:
     :commit: 63e32de41cd1bf092f2a37c487b3b8cec03275db
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 159da9e9145bce01b840803696a814c0373d1d54
+    :commit: d2f8a95ec9f3a3cfce266cd68e7ce9b1f23e880d
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -61,7 +61,7 @@ SPEC CHECKSUMS:
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   HPPhotoProvider: f507e51bde10a7e51ddc79b40b76552f85c872f3
-  MobilePrintSDK: c906b48fd6cd246ce00f35a2d6fb7fe63142ed79
+  MobilePrintSDK: dc228ff7c4adb9ed8fed8b9a6d016356a23d4fe1
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
 
 PODFILE CHECKSUM: bef5d46999e7fe5a7fb928eb7c72b52f22e86d13
