@@ -439,11 +439,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             completion(YES);
         }
     } else {
-        NSString *msgText = NSLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
-        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
+        NSString *msgText = NSLocalizedString(@"Allow access in your Settings to print and save your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
 
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                                                                       message:[NSString stringWithFormat:msgText, appName]
+                                                                       message:msgText
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         

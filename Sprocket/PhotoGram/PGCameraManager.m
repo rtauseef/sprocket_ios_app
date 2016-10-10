@@ -253,7 +253,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)showCameraPermissionFailedAlert {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Camera Access Required", @"We must be able to use the camera on the user's phone")
-                                                                   message:NSLocalizedString(@"Allow sprocket app to access your camera.", @"Body of Camera Access Required dialog")
+                                                                   message:NSLocalizedString(@"Allow access in your Settings to take and print photos.", @"Body of Camera Access Required dialog")
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
 

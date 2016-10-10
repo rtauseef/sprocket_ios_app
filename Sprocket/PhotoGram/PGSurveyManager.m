@@ -14,7 +14,7 @@
 
 #define DEFAULT_USES_UNTIL_PROMPT 6
 #define DEFAULT_ALERT_VIEW_MESSAGE_TITLE [NSString stringWithFormat:NSLocalizedString(@"Tell us what you think of %@", nil), [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]]
-#define DEFAULT_ALERT_VIEW_MESSAGE NSLocalizedString(@"Please tell us what is awesome and what is lame", @"Ask the user to take a survey to say his opinion of the app")
+#define DEFAULT_ALERT_VIEW_MESSAGE NSLocalizedString(@"Please tell us what is awesome and what could be better!", @"Ask the user to take a survey to say his opinion of the app")
 #define DEFAULT_ALERT_VIEW_ACCEPT_BUTTON_LABEL NSLocalizedString(@"Take the survey", nil)
 #define DEFAULT_ALERT_VIEW_REMIND_LATER_BUTTON_LABEL NSLocalizedString(@"Remind me later", nil)
 #define DEFAULT_ALERT_VIEW_DECLINE_BUTTON_LABEL NSLocalizedString(@"No, thanks", nil)

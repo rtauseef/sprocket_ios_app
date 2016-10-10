@@ -80,7 +80,7 @@ You can also use your device photos." = "Настройте подключени
 "Please select a location for this photo." = "Выберите место для этой фотографии.";
 
 /* Ask the user to take a survey to say his opinion of the app */
-"Please tell us what is awesome and what is lame" = "Расскажите нам, что здорово, а что раздражает";
+"Please tell us what is awesome and what could be better!" = "";
 
 /* No comment provided by engineer. */
 "Print Instructions" = "Инструкции для печати";
