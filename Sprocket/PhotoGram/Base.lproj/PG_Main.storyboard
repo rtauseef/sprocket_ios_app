@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -899,7 +899,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="gr7-FA-59J">
             <objects>
                 <navigationController storyboardIdentifier="PGTermsNavigationController" id="2uM-2W-Nu8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iEO-dW-j4P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEO-dW-j4P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1065,63 +1065,77 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTc-Ba-zcw" userLabel="Camera View">
-                                <frame key="frameInset" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTc-Ba-zcw" userLabel="Camera View">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4H2-xg-aFm" userLabel="Preview View">
-                                <frame key="frameInset" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H2-xg-aFm" userLabel="Preview View">
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOE-OE-xsb" userLabel="Top View">
-                                        <frame key="frameInset" width="600" height="44"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOE-OE-xsb" userLabel="Top View">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-bW-WDq" userLabel="cameraAnchor">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG3-7c-npS" userLabel="closeButton">
+                                                <frame key="frameInset" minY="0.5" width="50" height="43"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="23" id="RqW-Fb-l1i"/>
-                                                    <constraint firstAttribute="width" constant="30" id="VhE-nh-Tac"/>
+                                                    <constraint firstAttribute="width" constant="20" id="UTw-3z-XK9"/>
+                                                    <constraint firstAttribute="height" constant="20" id="qbQ-6h-bLF"/>
                                                 </constraints>
+                                                <state key="normal" backgroundImage="previewX"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="closeButton"/>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-DF-pcn" userLabel="cameraButton">
-                                                <state key="normal" image="previewCamera"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB3-IV-l9k" userLabel="closeButtonActiveArea">
+                                                <frame key="frameInset" minX="164" minY="7" width="46" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTouchUpInsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="Tmj-rE-HNj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-DF-pcn" userLabel="editButton">
+                                                <frame key="frameInset" minX="340" minY="5.5" width="32" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="Udf-Pn-LwP"/>
+                                                    <constraint firstAttribute="height" constant="34" id="y2W-OP-JXf"/>
+                                                </constraints>
+                                                <state key="normal" title="Edit"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="cameraButton"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchUpInsideCameraButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="W9Y-O8-htv"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMb-Oy-Iid" userLabel="closeAnchor">
-                                                <frame key="frameInset" minX="572" minY="13" width="18" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="18" id="P8T-7O-WUs"/>
-                                                    <constraint firstAttribute="height" constant="18" id="goa-md-afj"/>
-                                                </constraints>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG3-7c-npS" userLabel="closeButton">
-                                                <frame key="frameInset" minX="562" minY="3" width="38" height="38"/>
-                                                <state key="normal" image="previewX"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="closeButton"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="didTouchUpInsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="oAL-hm-9dP"/>
+                                                    <action selector="didTouchUpInsideEditButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="hd1-c1-g3X"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="cG3-7c-npS" firstAttribute="centerY" secondItem="YMb-Oy-Iid" secondAttribute="centerY" id="0df-0F-m3v"/>
-                                            <constraint firstItem="fRU-DF-pcn" firstAttribute="centerY" secondItem="Aqy-bW-WDq" secondAttribute="centerY" id="1Dm-vD-ddd"/>
-                                            <constraint firstItem="Aqy-bW-WDq" firstAttribute="leading" secondItem="BOE-OE-xsb" secondAttribute="leading" constant="10" id="1Y5-Yg-Epo"/>
-                                            <constraint firstItem="Aqy-bW-WDq" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="top" constant="11" id="3Mg-D0-5Gi"/>
-                                            <constraint firstItem="cG3-7c-npS" firstAttribute="height" secondItem="YMb-Oy-Iid" secondAttribute="height" constant="20" id="734-Xo-SLk"/>
-                                            <constraint firstItem="cG3-7c-npS" firstAttribute="width" secondItem="YMb-Oy-Iid" secondAttribute="width" constant="20" id="ADE-mm-9WL"/>
-                                            <constraint firstItem="YMb-Oy-Iid" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="top" constant="13" id="BSo-d8-zhs"/>
-                                            <constraint firstItem="fRU-DF-pcn" firstAttribute="width" secondItem="Aqy-bW-WDq" secondAttribute="width" constant="20" id="N6g-WF-c0i"/>
-                                            <constraint firstItem="fRU-DF-pcn" firstAttribute="height" secondItem="Aqy-bW-WDq" secondAttribute="height" constant="20" id="YJb-zg-6k5"/>
-                                            <constraint firstItem="cG3-7c-npS" firstAttribute="centerX" secondItem="YMb-Oy-Iid" secondAttribute="centerX" id="gIl-6D-pV7"/>
-                                            <constraint firstItem="fRU-DF-pcn" firstAttribute="centerX" secondItem="Aqy-bW-WDq" secondAttribute="centerX" id="mcZ-d2-JKx"/>
-                                            <constraint firstAttribute="trailing" secondItem="YMb-Oy-Iid" secondAttribute="trailing" constant="10" id="soK-np-JYQ"/>
+                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="width" secondItem="cG3-7c-npS" secondAttribute="width" constant="75" id="Mh7-wL-vUX"/>
+                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="centerX" secondItem="cG3-7c-npS" secondAttribute="centerX" id="SGp-i4-2cK"/>
+                                            <constraint firstItem="cG3-7c-npS" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="Yig-aY-FPN"/>
+                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="height" secondItem="cG3-7c-npS" secondAttribute="height" constant="10" id="a3F-vr-AyA"/>
+                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="centerY" secondItem="cG3-7c-npS" secondAttribute="centerY" id="gf6-9a-6QH"/>
+                                            <constraint firstItem="fRU-DF-pcn" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="ooq-U0-DXJ"/>
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-VT-qaC" userLabel="ImageSavedView">
+                                        <frame key="frameInset" minY="-44" width="375" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Saved to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
+                                                <frame key="frameInset" minX="99" minY="53" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="height" secondItem="fVw-VT-qaC" secondAttribute="height" id="FW7-3O-3e8"/>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="centerX" secondItem="fVw-VT-qaC" secondAttribute="centerX" id="PX7-49-UYa"/>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="width" secondItem="fVw-VT-qaC" secondAttribute="width" id="VJV-HZ-8Q9"/>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="centerY" secondItem="fVw-VT-qaC" secondAttribute="centerY" id="eKG-u9-qBj"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-Zq-Jww" userLabel="ImageContainer">
@@ -1131,37 +1145,28 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstAttribute="width" secondItem="2A8-Zq-Jww" secondAttribute="height" multiplier="2:3" id="9ny-J8-HOQ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-Sr-Qd8" userLabel="BottomView">
-                                        <frame key="frameInset" minY="525" width="600" height="75"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-Sr-Qd8" userLabel="BottomView">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvh-fe-pwH" userLabel="editAnchor">
-                                                <frame key="frameInset" minX="215" minY="16" width="43" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="5aX-nT-SDy"/>
-                                                    <constraint firstAttribute="height" constant="43" id="Ok8-rs-9Ty"/>
-                                                </constraints>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="editButton">
-                                                <frame key="frameInset" minX="205" minY="6" width="63" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="downloadButton">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="previewEdit"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="Hd2-2J-dAa"/>
+                                                    <constraint firstAttribute="width" constant="23" id="sDp-XH-9SS"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="previewDownload"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="editButton"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTouchUpInsideEditButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="JNZ-vE-fA4"/>
+                                                    <action selector="didTouchUpInsideDownloadButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="isL-tD-QY9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn4-X4-HTM" userLabel="printerAnchor">
-                                                <frame key="frameInset" minX="279" minY="16" width="43" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="43" id="Tw7-cy-8Ae"/>
-                                                    <constraint firstAttribute="height" constant="43" id="obs-IY-odH"/>
-                                                </constraints>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <frame key="frameInset" minX="269" minY="7" width="63" height="61"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Yxx-Th-hq2"/>
+                                                    <constraint firstAttribute="height" constant="37" id="qGV-Vr-PmC"/>
+                                                </constraints>
                                                 <state key="normal" backgroundImage="previewPrinter"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
@@ -1170,17 +1175,13 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                     <action selector="didTouchUpInsidePrinterButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="XjU-DN-gTv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wr3-E7-Jz8" userLabel="shareAnchor">
-                                                <frame key="frameInset" minX="343" minY="16" width="43" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="43" id="Pgq-AB-9ck"/>
-                                                    <constraint firstAttribute="width" constant="43" id="qqd-Do-wOe"/>
-                                                </constraints>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
-                                                <frame key="frameInset" minX="333" minY="6" width="63" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="previewShare"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="DVO-L8-Kgb"/>
+                                                    <constraint firstAttribute="width" constant="22" id="hfb-xJ-fqy"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="previewShare"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="shareButton"/>
                                                 </userDefinedRuntimeAttributes>
@@ -1190,44 +1191,36 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="height" secondItem="wr3-E7-Jz8" secondAttribute="height" constant="20" id="6Et-lQ-PQf"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerX" secondItem="Afb-Xc-wRV" secondAttribute="centerX" id="7V6-XD-kaO"/>
-                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="width" secondItem="wr3-E7-Jz8" secondAttribute="width" constant="20" id="A4N-mN-fMk"/>
                                             <constraint firstAttribute="height" constant="75" id="BlW-aW-yWc"/>
-                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="centerX" secondItem="wr3-E7-Jz8" secondAttribute="centerX" id="CVC-Rb-xvh"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerX" secondItem="Swo-Sr-Qd8" secondAttribute="centerX" id="FuG-pQ-KjI"/>
-                                            <constraint firstItem="iMJ-5T-IcV" firstAttribute="width" secondItem="gvh-fe-pwH" secondAttribute="width" constant="20" id="P9V-XT-trg"/>
-                                            <constraint firstItem="gvh-fe-pwH" firstAttribute="centerX" secondItem="iMJ-5T-IcV" secondAttribute="centerX" id="PY9-Ct-5sM"/>
-                                            <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="iMJ-5T-IcV" secondAttribute="centerY" id="Q7a-6e-k48"/>
-                                            <constraint firstItem="iMJ-5T-IcV" firstAttribute="height" secondItem="gvh-fe-pwH" secondAttribute="height" constant="20" id="QVe-LZ-sEN"/>
-                                            <constraint firstItem="wr3-E7-Jz8" firstAttribute="leading" secondItem="Hn4-X4-HTM" secondAttribute="trailing" constant="21" id="WRk-mm-6au"/>
-                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="height" secondItem="Hn4-X4-HTM" secondAttribute="height" constant="18" id="Xre-AL-fob"/>
-                                            <constraint firstItem="wr3-E7-Jz8" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ZTd-GT-dGs"/>
-                                            <constraint firstItem="gvh-fe-pwH" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="ix1-Fs-fY1"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="leading" secondItem="gvh-fe-pwH" secondAttribute="trailing" constant="21" id="oP0-eZ-mIq"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="op4-i3-eTE"/>
-                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="wr3-E7-Jz8" secondAttribute="centerY" id="wJC-mA-2RW"/>
-                                            <constraint firstItem="Hn4-X4-HTM" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="wVW-6r-QAY"/>
-                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="width" secondItem="Hn4-X4-HTM" secondAttribute="width" constant="20" id="wwO-lh-OiJ"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="leading" secondItem="iMJ-5T-IcV" secondAttribute="trailing" constant="35" id="VaG-RS-kuE"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerX" secondItem="Swo-Sr-Qd8" secondAttribute="centerX" id="Zv7-9f-Gmk"/>
+                                            <constraint firstItem="iMJ-5T-IcV" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="aCp-zn-0xO"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="feC-w4-OqV"/>
+                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="leading" secondItem="Afb-Xc-wRV" secondAttribute="trailing" constant="35" id="hsg-qh-aff"/>
+                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="zhe-27-lat"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
+                                    <constraint firstItem="fRU-DF-pcn" firstAttribute="trailing" secondItem="2A8-Zq-Jww" secondAttribute="trailing" id="4oN-7o-gIA"/>
+                                    <constraint firstItem="fVw-VT-qaC" firstAttribute="width" secondItem="BOE-OE-xsb" secondAttribute="width" id="94O-wH-MDY"/>
+                                    <constraint firstItem="cG3-7c-npS" firstAttribute="leading" secondItem="2A8-Zq-Jww" secondAttribute="leading" id="C2t-sq-t2V"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="Grf-Nx-WsQ"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="HcJ-BT-acW"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
+                                    <constraint firstItem="fVw-VT-qaC" firstAttribute="height" secondItem="BOE-OE-xsb" secondAttribute="height" id="PZB-5d-zf5"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="UIb-W3-b9g"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="VDN-XF-RRJ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2A8-Zq-Jww" secondAttribute="trailing" constant="10" id="XBQ-yT-6KM"/>
+                                    <constraint firstItem="fVw-VT-qaC" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" constant="-44" id="k2o-7D-moC"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="centerX" secondItem="4H2-xg-aFm" secondAttribute="centerX" id="mtU-Ie-RRv"/>
                                     <constraint firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="bottom" id="pmc-DO-IIl"/>
                                     <constraint firstItem="Swo-Sr-Qd8" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="rjT-eS-1Do"/>
                                     <constraint firstAttribute="trailing" secondItem="BOE-OE-xsb" secondAttribute="trailing" id="ykZ-rL-zJI"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-q5-Apw" userLabel="Transition Effect View">
-                                <frame key="frameInset" width="600" height="600"/>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-q5-Apw" userLabel="Transition Effect View">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -1251,7 +1244,9 @@ To improve future versions of this app and HP Printers, HP will periodically col
                     <connections>
                         <outlet property="bottomView" destination="Swo-Sr-Qd8" id="z90-Vm-q0n"/>
                         <outlet property="cameraView" destination="pTc-Ba-zcw" id="JgV-RL-8bO"/>
+                        <outlet property="editButton" destination="fRU-DF-pcn" id="5fD-ns-euF"/>
                         <outlet property="imageContainer" destination="2A8-Zq-Jww" id="qrm-YH-ydp"/>
+                        <outlet property="imageSavedView" destination="fVw-VT-qaC" id="2HC-oc-ebh"/>
                         <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
                         <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
                         <outlet property="topView" destination="BOE-OE-xsb" id="g1o-bp-Ach"/>
@@ -1266,7 +1261,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="svA-7D-PyU">
             <objects>
                 <navigationController storyboardIdentifier="PrintInstructions" definesPresentationContext="YES" id="aOl-ln-qn3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="POo-5F-tuC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="POo-5F-tuC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1600,7 +1595,7 @@ printer and app support.</string>
             <objects>
                 <navigationController definesPresentationContext="YES" id="LIT-0F-CjS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j1Y-sB-UJM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j1Y-sB-UJM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1618,7 +1613,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="WebViewerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qmP-7A-YZZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Q4Y-od-fvh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q4Y-od-fvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1722,7 +1717,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFacebookLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7vZ-mN-2fQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2G-vK-Cya">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2G-vK-Cya">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1920,7 +1915,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGInstagramLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="l4c-MK-fSA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="puT-PP-dRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="puT-PP-dRa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1938,7 +1933,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGCameraRollLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Udl-8d-vIJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Gs-Fu-tt9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Gs-Fu-tt9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1956,7 +1951,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFlickrLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KDo-po-4g5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ucl-Ve-qbL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucl-Ve-qbL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1974,7 +1969,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2008,8 +2003,7 @@ printer and app support.</string>
         <image name="menuGiveFeedback" width="25" height="25"/>
         <image name="menuHowToHelp" width="25" height="25"/>
         <image name="menuPrivacy" width="25" height="25"/>
-        <image name="previewCamera" width="30" height="23"/>
-        <image name="previewEdit" width="43" height="43"/>
+        <image name="previewDownload" width="25" height="25"/>
         <image name="previewPrinter" width="43" height="43"/>
         <image name="previewShare" width="43" height="43"/>
         <image name="previewX" width="18" height="18"/>
