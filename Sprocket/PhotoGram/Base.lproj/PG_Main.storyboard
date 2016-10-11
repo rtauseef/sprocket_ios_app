@@ -1150,8 +1150,8 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="downloadButton">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="31" id="Hd2-2J-dAa"/>
-                                                    <constraint firstAttribute="width" constant="23" id="sDp-XH-9SS"/>
+                                                    <constraint firstAttribute="height" constant="34" id="Hd2-2J-dAa"/>
+                                                    <constraint firstAttribute="width" constant="24" id="sDp-XH-9SS"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="previewDownload"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1164,8 +1164,8 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Yxx-Th-hq2"/>
-                                                    <constraint firstAttribute="height" constant="37" id="qGV-Vr-PmC"/>
+                                                    <constraint firstAttribute="width" constant="45" id="Yxx-Th-hq2"/>
+                                                    <constraint firstAttribute="height" constant="42" id="qGV-Vr-PmC"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="previewPrinter"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1178,8 +1178,8 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="31" id="DVO-L8-Kgb"/>
-                                                    <constraint firstAttribute="width" constant="22" id="hfb-xJ-fqy"/>
+                                                    <constraint firstAttribute="height" constant="34" id="DVO-L8-Kgb"/>
+                                                    <constraint firstAttribute="width" constant="23" id="hfb-xJ-fqy"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="previewShare"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1192,11 +1192,11 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="BlW-aW-yWc"/>
-                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="leading" secondItem="iMJ-5T-IcV" secondAttribute="trailing" constant="35" id="VaG-RS-kuE"/>
+                                            <constraint firstItem="Afb-Xc-wRV" firstAttribute="leading" secondItem="iMJ-5T-IcV" secondAttribute="trailing" constant="45" id="VaG-RS-kuE"/>
                                             <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerX" secondItem="Swo-Sr-Qd8" secondAttribute="centerX" id="Zv7-9f-Gmk"/>
                                             <constraint firstItem="iMJ-5T-IcV" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="aCp-zn-0xO"/>
                                             <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="feC-w4-OqV"/>
-                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="leading" secondItem="Afb-Xc-wRV" secondAttribute="trailing" constant="35" id="hsg-qh-aff"/>
+                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="leading" secondItem="Afb-Xc-wRV" secondAttribute="trailing" constant="45" id="hsg-qh-aff"/>
                                             <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="zhe-27-lat"/>
                                         </constraints>
                                     </view>
