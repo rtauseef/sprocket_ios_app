@@ -24,8 +24,8 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
     PGHelpAndHowToRowIndexesVisitSupport
 };
 
-NSString * const kPGHelpAndHowToViewUserURL = @"http://www.hpsprocket.com/sprocket-userguide.pdf";
-NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/products/printers/";
+NSString * const kPGHelpAndHowToViewUserURL = @"http://h10032.www1.hp.com/ctg/Manual/c05280005";
+NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
 NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
 
 @interface PGHelpAndHowToViewController ()

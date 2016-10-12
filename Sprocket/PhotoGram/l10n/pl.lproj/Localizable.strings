@@ -80,7 +80,7 @@ Możesz też użyć zdjęć zapisanych w urządzeniu.";
 "Please select a location for this photo." = "Wybierz lokalizację, w której zrobiono zdjęcie.";
 
 /* Ask the user to take a survey to say his opinion of the app */
-"Please tell us what is awesome and what is lame" = "Powiedz nam, co jest świetne, a co nie bardzo";
+"Please tell us what is awesome and what could be better!" = "";
 
 /* No comment provided by engineer. */
 "Print Instructions" = "Instrukcje drukowania";

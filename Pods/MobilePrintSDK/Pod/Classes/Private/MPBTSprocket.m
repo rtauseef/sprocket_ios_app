@@ -20,7 +20,7 @@ const char MANTA_PACKET_LENGTH = 34;
 
 static const NSString *kPolaroidProtocol = @"com.polaroid.mobileprinter";
 static const NSString *kHpProtocol = @"com.hp.protocol";
-static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-1.amazonaws.com/sprocket-fw-updates/fw_release.json";
+static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-updates-2/fw_release.json";
 
 static const NSString *kMPBTFirmwareVersionKey = @"fw_version";
 static const NSString *kMPBTTmdVersionKey = @"tmd_version";
@@ -139,11 +139,11 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
 
 - (void)reflash
 {
-    [MPBTSprocket pathForLatestFirmwareVersion:self.protocolString completon:^(NSString *path) {
+    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
         
         NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
         
-        [[httpSession downloadTaskWithURL:[NSURL URLWithString:path]] resume];
+        [[httpSession downloadTaskWithURL:[NSURL URLWithString:fwPath]] resume];
     }];
 }
 
@@ -537,7 +537,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         }
         
         if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didCompareWithLatestFirmwareVersion:needsUpgrade:)]) {
-            [MPBTSprocket latestFirmwareVersion:self.protocolString completion:^(NSUInteger fwVersion) {
+            [MPBTSprocket latestFirmwareVersion:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSUInteger fwVersion) {
                 BOOL needsUpgrade = NO;
                 if (fwVersion > self.firmwareVersion) {
                     needsUpgrade = YES;
@@ -797,10 +797,10 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     
     switch (error) {
         case MantaErrorNoError:
-            errString = MPLocalizedString(@"None", @"Message given when sprocket has no known error");
+            errString = MPLocalizedString(@"Ready", @"Message given when sprocket has no known error");
             break;
         case MantaErrorBusy:
-            errString = MPLocalizedString(@"Printer in Use", @"Message given when sprocket cannot print due to being in use.");
+            errString = MPLocalizedString(@"Sprocket Printer in Use", @"Message given when sprocket cannot print due to being in use.");
             break;
         case MantaErrorPaperJam:
             errString = MPLocalizedString(@"Paper has Jammed", @"Message given when sprocket cannot print due to having a paper jam");
@@ -839,7 +839,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             errString = MPLocalizedString(@"Error", @"Message given when sprocket cannot print due to not recognizing data from our app");
             break;
         case MantaErrorNoSession:
-            errString = MPLocalizedString(@"Sprocket Not Connected", @"Message given when sprocket cannot be reached");
+            errString = MPLocalizedString(@"Sprocket Printer Not Connected", @"Message given when sprocket cannot be reached");
             break;
             
         default:
@@ -859,16 +859,16 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             errString = MPLocalizedString(@"Sprocket is ready to print.", @"Message given when sprocket has no known error");
             break;
         case MantaErrorBusy:
-            errString = MPLocalizedString(@"Sprocket is already processing a job. Please wait to resend photo.", @"Message given when sprocket cannot print due to being in use.");
+            errString = MPLocalizedString(@"The sprocket printer is already processing a job. Please wait to resend photo.", @"Message given when sprocket cannot print due to being in use.");
             break;
         case MantaErrorPaperJam:
             errString = MPLocalizedString(@"Clear paper jam and restart the printer by pressing and holding the power button.", @"Message given when sprocket cannot print due to having a paper jam");
             break;
         case MantaErrorPaperEmpty:
-            errString = MPLocalizedString(@"Load paper with the included smartsheet to continue printing.", @"Message given when sprocket cannot print due to having no paper");
+            errString = MPLocalizedString(@"Load paper with the included Smartsheet to continue printing.", @"Message given when sprocket cannot print due to having no paper");
             break;
         case MantaErrorPaperMismatch:
-            errString = MPLocalizedString(@"Use only HP branded ZINK paper. If using the correct paper, try printing again. ", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
+            errString = MPLocalizedString(@"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. ", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
             break;
         case MantaErrorDataError:
             errString = MPLocalizedString(@"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. ", @"Message given when sprocket cannot print due to an error with the image data.");
@@ -899,7 +899,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             break;
             
         case MantaErrorNoSession:
-            errString = MPLocalizedString(@"Ensure the printer is on and bluetooth connected.", @"Message given when the printer can't be contacted.");
+            errString = MPLocalizedString(@"Make sure the sprocket printer is on and bluetooth connected.", @"Message given when the printer can't be contacted.");
             break;
 
         default:
@@ -941,7 +941,70 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
                 }] resume];
 }
 
-+ (void)latestFirmwareVersion:(NSString *)protocolString completion:(void (^)(NSUInteger fwVersion))completion
++ (NSUInteger)fwVersionFromString:(NSString *)strVersion
+{
+    NSUInteger fwVersion = 0;
+    
+    if (![strVersion isEqualToString:@"none"]) {
+        NSArray *bytes = [strVersion componentsSeparatedByString:@"."];
+        NSInteger topIdx = bytes.count-1;
+        for (NSInteger idx = topIdx; idx >= 0; idx--) {
+            NSString *strByte = bytes[idx];
+            NSInteger byte = [strByte integerValue];
+            
+            NSInteger shiftValue = topIdx-idx;
+            fwVersion += (byte << (8 * shiftValue));
+        }
+    }
+    
+    return fwVersion;
+}
+
++ (NSDictionary *)getCorrectFirmwareVersion:(NSArray *)fwInfo forExistingVersion:(NSUInteger)existingFwVersion
+{
+    NSDictionary *correctFwVersionInfo = nil;
+    
+    if (nil != fwInfo) {
+        
+        // Create a dictionary for quick look-up of dependency versions
+        NSMutableDictionary *fwVersions = [[NSMutableDictionary alloc] init];
+        NSUInteger length = [fwInfo count];
+        NSString *strVersion = nil;
+        for (int idx=0; idx<length; ++idx) {
+            NSDictionary *fwVersionInfo = [fwInfo objectAtIndex:idx];
+            strVersion = [fwVersionInfo objectForKey:@"fw_ver"];
+            [fwVersions setObject:fwVersionInfo forKey:strVersion];
+        }
+        
+        // Start with the latest version. Install it, or any necessary dependency
+        BOOL keepChecking = YES;
+        while (keepChecking) {
+            NSDictionary *fwVersionInfo = [fwVersions objectForKey:strVersion];
+            strVersion = [fwVersionInfo objectForKey:@"fw_ver"];
+            NSUInteger fwVersion = [MPBTSprocket fwVersionFromString:strVersion];
+            
+            if (existingFwVersion < fwVersion) {
+                // check the dependency
+                NSString *dependencyStrVersion = [fwVersionInfo objectForKey:@"dependency"];
+                NSUInteger dependencyFwVersion = [MPBTSprocket fwVersionFromString:dependencyStrVersion];
+                if (existingFwVersion < dependencyFwVersion) {
+                    strVersion = dependencyStrVersion;
+                    keepChecking = YES;
+                } else {
+                    keepChecking = NO;
+                }
+            } else {
+                keepChecking = NO;
+            }
+        }
+        
+        correctFwVersionInfo = [fwVersions objectForKey:strVersion];
+    }
+    
+    return correctFwVersionInfo;
+}
+
++ (void)latestFirmwareVersion:(NSString *)protocolString forExistingVersion:(NSUInteger)existingFwVersion completion:(void (^)(NSUInteger fwVersion))completion
 {
     [MPBTSprocket getFirmwareUpdateInfo:^(NSDictionary *fwUpdateInfo){
         NSUInteger fwVersion = 0;
@@ -952,19 +1015,12 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
                 deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
             } else {
                 deviceUpdateInfo = [fwUpdateInfo objectForKey:@"HP"];
+                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:deviceUpdateInfo forExistingVersion:existingFwVersion];
             }
             
             if (deviceUpdateInfo) {
                 NSString *strVersion = [deviceUpdateInfo objectForKey:@"fw_ver"];
-                NSArray *bytes = [strVersion componentsSeparatedByString:@"."];
-                NSInteger topIdx = bytes.count-1;
-                for (NSInteger idx = topIdx; idx >= 0; idx--) {
-                    NSString *strByte = bytes[idx];
-                    NSInteger byte = [strByte integerValue];
-                    
-                    NSInteger shiftValue = topIdx-idx;
-                    fwVersion += (byte << (8 * shiftValue));
-                }
+                fwVersion = [MPBTSprocket fwVersionFromString:strVersion];
             } else {
                 MPLogError(@"Unrecognized firmware update info: %@", fwUpdateInfo);
             }
@@ -976,24 +1032,29 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     }];
 }
 
-+ (NSString *)pathForLatestFirmwareVersion:(NSString *)protocolString completon:(void(^)(NSString *fwPath))completion
++ (void)latestFirmwarePath:(NSString *)protocolString forExistingVersion:(NSUInteger)existingFwVersion completion:(void (^)(NSString *fwPath))completion
 {
-    [MPBTSprocket getFirmwareUpdateInfo:^(NSDictionary *fwUpdateInfo) {
+    [MPBTSprocket getFirmwareUpdateInfo:^(NSDictionary *fwUpdateInfo){
         NSString *fwPath = nil;
         NSDictionary *deviceUpdateInfo = nil;
         
-        if ([kPolaroidProtocol isEqualToString:protocolString]) {
-            deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
-        } else {
-            deviceUpdateInfo = [fwUpdateInfo objectForKey:@"HP"];
-        }
-        
-        if (deviceUpdateInfo) {
-            fwPath = [deviceUpdateInfo objectForKey:@"fw_url"];
-        }
-        
-        if (completion) {
-            completion(fwPath);
+        if (nil != fwUpdateInfo) {
+            if ([kPolaroidProtocol isEqualToString:protocolString]) {
+                deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
+            } else {
+                deviceUpdateInfo = [fwUpdateInfo objectForKey:@"HP"];
+                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:deviceUpdateInfo forExistingVersion:existingFwVersion];
+            }
+            
+            if (deviceUpdateInfo) {
+                fwPath = [deviceUpdateInfo objectForKey:@"fw_url"];
+            } else {
+                MPLogError(@"Unrecognized firmware update info: %@", fwUpdateInfo);
+            }
+            
+            if (completion) {
+                completion(fwPath);
+            }
         }
     }];
 }

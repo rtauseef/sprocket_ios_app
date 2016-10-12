@@ -49,15 +49,19 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 @property (strong, nonatomic) PGImglyManager *imglyManager;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UIView *imageContainer;
+
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL needNewImageView;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (assign, nonatomic) BOOL selectedNewPhoto;
+@property (weak, nonatomic) IBOutlet UIView *imageSavedView;
+
 @end
 
 @implementation PGPreviewViewController
@@ -70,6 +74,9 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     self.needNewImageView = NO;
     self.didChangeProject = NO;
     self.selectedNewPhoto = YES;
+    
+    self.editButton.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:20];
+    self.editButton.titleLabel.tintColor = [UIColor whiteColor];
     
     self.imglyManager = [[PGImglyManager alloc] init];
     
@@ -236,6 +243,23 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     }];
 }
 
+- (void)hideSavedImageView:(NSObject *)dummy
+{
+    [self showImageSavedView:NO];
+}
+
+- (void)showImageSavedView:(BOOL)show
+{
+    CGRect frame = self.topView.frame;
+    if (!show) {
+        frame.origin.y -= frame.size.height;
+    }
+    
+    [UIView animateWithDuration:0.5F animations:^{
+        self.imageSavedView.frame = frame;
+    }];
+}
+
 #pragma mark - IMGLYToolStackControllerDelegate
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
@@ -327,42 +351,17 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 #pragma mark - Button Handlers
 
-- (IBAction)didTouchUpInsideCameraButton:(id)sender
+- (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
-    if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Save and exit preview?", nil)
-                                                                       message:@""
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
-                                                                  source:kEventDismissEditCameraLabel];
-        }];
-        [alert addAction:cancelAction];
-
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Don't Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self showCamera];
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
-                                                                  source:kEventDismissEditCameraLabel];
-        }];
-        [alert addAction:okAction];
-        
-        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [self saveToCameraRoll:^(BOOL authorized){
-                if (authorized) {
-                    [self showCamera];
-                    [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
-                                                                          source:kEventDismissEditCameraLabel];
-                }
+    [self saveToCameraRoll:^(BOOL saved) {
+        if (saved) {
+            [UIView animateWithDuration:0.5F animations:^{
+                [self showImageSavedView:YES];
+            } completion:^(BOOL finished) {
+                [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
             }];
-        }];
-        [alert addAction:saveAction];
-        
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    } else {
-        [self showCamera];
-    }
+        }
+    }];
 }
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
@@ -439,11 +438,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             completion(YES);
         }
     } else {
-        NSString *msgText = NSLocalizedString(@"Allow %@ app to access your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
-        NSString *appName = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRAppName];
+        NSString *msgText = NSLocalizedString(@"Allow access in your Settings to print and save your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
 
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                                                                       message:[NSString stringWithFormat:msgText, appName]
+                                                                       message:msgText
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         

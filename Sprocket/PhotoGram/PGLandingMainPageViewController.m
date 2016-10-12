@@ -115,7 +115,7 @@
         
         promptedForReflash = YES;
         
-        NSString *title = NSLocalizedString(@"Printer Firmware Upgrade Available", @"Title for dialog that prompts user to ugrade device firmware");
+        NSString *title = NSLocalizedString(@"Sprocket Printer Firmware Upgrade Available", @"Title for dialog that prompts user to ugrade device firmware");
         if ([MP sharedInstance].minimumSprocketBatteryLevelForUpgrade < batteryLevel) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
                                                                                      message:NSLocalizedString(@"Tap Upgrade to continue.", @"Body for dialog that prompts user to ugrade device firmware")
