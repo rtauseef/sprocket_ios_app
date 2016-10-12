@@ -11,7 +11,7 @@ class InstagramPreviewScreen < Calabash::IBase
   end
 
   def cancel
-    "button marked:'previewX'"
+    "button"
       
   end
 
