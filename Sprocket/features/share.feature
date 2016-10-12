@@ -15,6 +15,7 @@ Feature:Photo Share
   Scenario:Photo share by mail
     Given I am on the "Share" screen
     When I touch "Mail"
+    And I wait for some seconds
     Then I should see the "Mail" screen
 
 
@@ -24,6 +25,7 @@ Feature:Photo Share
   Scenario:Save to Camera Roll
     Given I am on the "Share" screen
     When I touch "Save to Camera Roll"
+    And I touch Cancel
     Then I should see the "CameraRoll Preview" screen
 
   @reset
@@ -45,7 +47,7 @@ Feature:Photo Share
     Then I tap "Share" button
     Then I should see the "Share" screen
     Then I should see "Mail" option
-    Then I should see "Print" option
+    Then I should see "Print to sprocket" option
     Then I should see "Save to Camera Roll" option
 
 
