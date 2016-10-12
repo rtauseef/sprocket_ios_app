@@ -28,7 +28,7 @@ class CameraRollPreviewScreen < Calabash::IBase
          "* id:'shareButton'"
   end
 def close
-    "* id:'closeButton'"
+    "button"
   end
 def navigate
   unless current_page?
