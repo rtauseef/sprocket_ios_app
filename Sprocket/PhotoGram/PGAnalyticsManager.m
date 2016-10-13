@@ -41,12 +41,6 @@ NSString * const kNoValue = @"No";
 
 @implementation PGAnalyticsManager
 
-NSString * const kMetricsTypePhotoSourceKey = @"kMetricsTypePhotoSourceKey";
-NSString * const kMetricsTypePhotoPositionKey = @"kMetricsTypePhotoPositionKey";
-NSString * const kMetricsTypeLocationKey = @"kMetricsTypeLocationKey";
-NSString * const kMetricsOfframpKey = @"off_ramp";
-NSString * const kMetricsAppTypeKey = @"app_type";
-NSString * const kMetricsAppTypeHP = @"HP";
 NSString * const kMetricsCard = @"card";
 NSString * const kMetricsPhotoSource = @"photo_source";
 NSString * const kMetricsTemplateName = @"template_name";
@@ -379,33 +373,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 }
 
 #pragma mark - Print handling
-
-- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
-{
-    MPPaper *paper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
-    NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
-    [lastOptionsUsed setValue:paper.typeTitle forKey:kMPPaperTypeId];
-    [lastOptionsUsed setValue:paper.sizeTitle forKey:kMPPaperSizeId];
-    [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.width] forKey:kMPPaperWidthId];
-    [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.height] forKey:kMPPaperHeightId];
-    [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
-    [lastOptionsUsed setValue:[NSNumber numberWithInteger:1] forKey:kMPNumberOfCopies];
-    [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
     
-    NSMutableDictionary *metrics = [NSMutableDictionary dictionaryWithObjectsAndKeys:offramp, kMetricsOfframpKey, kMetricsAppTypeHP, kMetricsAppTypeKey, nil];
-    [metrics addEntriesFromDictionary:printItem.extra];
-    [metrics addEntriesFromDictionary:[extendedInfo objectForKey:kMetricsTypeLocationKey]];
-    [metrics addEntriesFromDictionary:[extendedInfo objectForKey:kMetricsTypePhotoSourceKey]];
-    [metrics addEntriesFromDictionary:[extendedInfo objectForKey:kMetricsTypePhotoPositionKey]];
-    [metrics setObject:offramp forKey:kMetricsOfframpKey];
-
-    NSMutableDictionary *remaining = [NSMutableDictionary dictionaryWithDictionary:extendedInfo];
-    [remaining removeObjectsForKeys:@[kMetricsOfframpKey, kMetricsTypeLocationKey, kMetricsTypePhotoSourceKey, kMetricsTypePhotoPositionKey]];
-    [metrics addEntriesFromDictionary:remaining];
-    
-    return metrics;
-}
-
 - (void)postMetricsWithOfframp:(NSString *)offramp objects:(NSDictionary *)objects exendedInfo:(NSDictionary *)extendedInfo
 {
     MPPrintItem *printItem = [objects objectForKey:kMPPrintQueuePrintItemKey];
@@ -419,15 +387,10 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self postMetrics:offramp object:dictionary metrics:metrics];
 }
 
-- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
-{
-    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem exendedInfo:extendedInfo];
-    [self postMetrics:offramp object:printItem metrics:metrics];
-}
-
 - (void)postMetrics:(NSString *)offramp object:(NSObject *)object metrics:(NSDictionary *)metrics
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kMPShareCompletedNotification object:object userInfo:metrics];
+    [super postMetrics:offramp object:object metrics:metrics];
+    
     [[Crashlytics sharedInstance] setObjectValue:offramp forKey:kCrashlyticsOfframpKey];
     [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:kCrashlyticsWiFiShareKey];
     if ([MPPrintManager printingOfframp:offramp]) {

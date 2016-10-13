@@ -11,8 +11,12 @@
 //
 
 #import "ActionViewController.h"
+#import "PGBaseAnalyticsManager.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MP.h>
+#import <MPPrintItemFactory.h>
+#import <MPLayoutFactory.h>
+#import <MPPrintManager.h>
 #import "PGGesturesView.h"
 #import "UIView+Background.h"
 
@@ -33,6 +37,7 @@
     [super viewDidLoad];
     
     [MP sharedInstance].extensionController = self;
+    [MP sharedInstance].handlePrintMetricsAutomatically = NO;
     
     self.printButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.printButton.layer.borderWidth = 1.0f;
@@ -97,7 +102,13 @@
 }
 
 - (IBAction)printTapped:(id)sender {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:nil];
+    UIImage *image = [self.imageContainer screenshotImage];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:image animated:YES printCompletion:^(){
+        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
+        printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
+
+        [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem exendedInfo:nil];
+    }];
 }
 
 - (IBAction)done {

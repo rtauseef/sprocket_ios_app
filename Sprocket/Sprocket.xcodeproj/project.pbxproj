@@ -1837,10 +1837,12 @@
 			children = (
 				E33FFFF619D21C0E00D2FDAC /* PGAnalyticsManager.h */,
 				E33FFFF719D21C0E00D2FDAC /* PGAnalyticsManager.m */,
-				E33FFFFE19D21CD500D2FDAC /* NSURLRequest+Helper.h */,
-				E33FFFFF19D21CD500D2FDAC /* NSURLRequest+Helper.m */,
+				92DEA0F91DAEB6A500CE8541 /* PGBaseAnalyticsManager.h */,
+				92DEA0FA1DAEB6A500CE8541 /* PGBaseAnalyticsManager.m */,
 				65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */,
 				65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */,
+				E33FFFFE19D21CD500D2FDAC /* NSURLRequest+Helper.h */,
+				E33FFFFF19D21CD500D2FDAC /* NSURLRequest+Helper.m */,
 			);
 			name = Analytics;
 			sourceTree = "<group>";
@@ -2202,7 +2204,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3184,6 +3186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92DEA0FC1DAEBC0C00CE8541 /* PGBaseAnalyticsManager.m in Sources */,
 				82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */,
 				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
 				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
@@ -3240,6 +3243,7 @@
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
+				92DEA0FB1DAEB6A500CE8541 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				E375386719BE5D3C009C695F /* PGSideBarMenuTableViewController.m in Sources */,
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,

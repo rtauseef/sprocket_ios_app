@@ -10,9 +10,9 @@
 // the license agreement.
 //
 
-#import "MPPrintItem.h"
+#import "PGBaseAnalyticsManager.h"
 
-@interface PGAnalyticsManager : NSObject
+@interface PGAnalyticsManager : PGBaseAnalyticsManager
 
 @property (strong) NSString *imageURL;
 @property (strong) NSString *templateName;
@@ -25,12 +25,6 @@
 @property (assign) BOOL photoPanEdited;
 @property (assign) BOOL photoZoomEdited;
 @property (assign) BOOL photoRotationEdited;
-
-extern NSString * const kMetricsOfframpKey;
-
-extern NSString * const kMetricsTypePhotoSourceKey;
-extern NSString * const kMetricsTypePhotoPositionKey;
-extern NSString * const kMetricsTypeLocationKey;
 
 extern NSString * const kEventResultSuccess;
 extern NSString * const kEventResultCancel;
@@ -70,7 +64,6 @@ extern NSString * const kEventPrintShareLabel;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;
-- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo;
 
 + (NSString *)wifiName;
 
