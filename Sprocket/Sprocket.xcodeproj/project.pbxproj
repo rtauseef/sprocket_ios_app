@@ -501,6 +501,7 @@
 		87f2b3852e6e40b9dd7571c9 /* jasonmask_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402E1D9A16E60090BA44 /* jasonmask_TN@2x.png */; };
 		8813bd476cc7d4a96b4e4e1a /* jasonmask_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647402F1D9A16E60090BA44 /* jasonmask_TN@3x.png */; };
 		897072ecabe47bb54c52b270 /* devilhorns.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740141D9A16E60090BA44 /* devilhorns.png */; };
+		8D14780195E50EB1D3C614FE /* libPods-Sprocket-cal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */; };
 		8afa4d63d93bfef2cea4068d /* 4_white_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852C31D626A96001288D9 /* 4_white_frame_TN@2x.png */; };
 		8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
 		8c69591b262054e2e4c92b05 /* cateyes_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647400A1D9A16E60090BA44 /* cateyes_TN@2x.png */; };
@@ -1412,6 +1413,7 @@
 				7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */,
 				F1B9596A1DAECAF400EF6EB7 /* CFNetwork.framework in Frameworks */,
 				F1B9596B1DAECAF400EF6EB7 /* calabash.framework in Frameworks */,
+				8D14780195E50EB1D3C614FE /* libPods-Sprocket-cal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3119,7 +3121,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		b6c87447b5972dfefc4beed8 /* ShellScript */ = {
@@ -3147,7 +3149,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		dc52bd26c76dabb01b526b39 /* ShellScript */ = {
@@ -3463,7 +3465,7 @@
 /* Begin XCBuildConfiguration section */
 		35c2e36ea1855459f530fc84 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */;
+			baseConfigurationReference = 86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3532,7 +3534,7 @@
 		};
 		7178b6c408d97b42552159f6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -4263,7 +4265,7 @@
 		};
 		ef18b9042e37f367acb5fee7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -4331,7 +4333,7 @@
 		};
 		ff3b8922679ec974185b49b4 /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */;
+			baseConfigurationReference = B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
