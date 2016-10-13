@@ -164,6 +164,9 @@
 		264740AE1D9A16E60090BA44 /* threeeyes_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740561D9A16E60090BA44 /* threeeyes_TN@2x.png */; };
 		264740AF1D9A16E60090BA44 /* threeeyes_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740571D9A16E60090BA44 /* threeeyes_TN@3x.png */; };
 		264740B01D9A16E60090BA44 /* threeeyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740581D9A16E60090BA44 /* threeeyes.png */; };
+		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
+		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
+		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26e579154e2842792f7d1cbe /* 5_Red_frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852C61D626A96001288D9 /* 5_Red_frame_TN.png */; };
 		27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
 		2b11f6bb68996a800294d2a4 /* LOL_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8218527B1D625FFB001288D9 /* LOL_TN@2x.png */; };
@@ -914,6 +917,8 @@
 		264740561D9A16E60090BA44 /* threeeyes_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "threeeyes_TN@2x.png"; path = "Resources/Images/Stickers/Fall/threeeyes_TN@2x.png"; sourceTree = "<group>"; };
 		264740571D9A16E60090BA44 /* threeeyes_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "threeeyes_TN@3x.png"; path = "Resources/Images/Stickers/Fall/threeeyes_TN@3x.png"; sourceTree = "<group>"; };
 		264740581D9A16E60090BA44 /* threeeyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = threeeyes.png; path = Resources/Images/Stickers/Fall/threeeyes.png; sourceTree = "<group>"; };
+		26760A7D1DB00FBF00F28176 /* PGBaseAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGBaseAnalyticsManager.h; sourceTree = "<group>"; };
+		26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBaseAnalyticsManager.m; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3731680F1AD4B08900503065 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		378EA80619A69E5700C72F1A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back@2x.png"; path = "Resources/Images/Icons/Back@2x.png"; sourceTree = "<group>"; };
@@ -1837,8 +1842,8 @@
 			children = (
 				E33FFFF619D21C0E00D2FDAC /* PGAnalyticsManager.h */,
 				E33FFFF719D21C0E00D2FDAC /* PGAnalyticsManager.m */,
-				92DEA0F91DAEB6A500CE8541 /* PGBaseAnalyticsManager.h */,
-				92DEA0FA1DAEB6A500CE8541 /* PGBaseAnalyticsManager.m */,
+				26760A7D1DB00FBF00F28176 /* PGBaseAnalyticsManager.h */,
+				26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */,
 				65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */,
 				65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */,
 				E33FFFFE19D21CD500D2FDAC /* NSURLRequest+Helper.h */,
@@ -2204,7 +2209,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3168,6 +3173,7 @@
 				e265c297713e9b6e3f04b533 /* PGView.m in Sources */,
 				7f8d860833dd0b905e33e418 /* PGPreviewViewController.m in Sources */,
 				24621f9ff6a174a391042307 /* UIView+Animations.m in Sources */,
+				26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				a6bac47da8ea69b0d3dc4bcf /* UIImage+MaskImage.m in Sources */,
 				11a05fd7a2bcf8aa27732581 /* PGSideBarMenuTableViewController.m in Sources */,
 				a51149fdd16db14e5519b0c3 /* PGAppAppearance.m in Sources */,
@@ -3186,11 +3192,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92DEA0FC1DAEBC0C00CE8541 /* PGBaseAnalyticsManager.m in Sources */,
 				82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */,
 				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
 				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
 				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
+				26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3243,7 +3249,7 @@
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
-				92DEA0FB1DAEB6A500CE8541 /* PGBaseAnalyticsManager.m in Sources */,
+				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				E375386719BE5D3C009C695F /* PGSideBarMenuTableViewController.m in Sources */,
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,
