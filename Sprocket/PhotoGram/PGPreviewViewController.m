@@ -146,6 +146,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
         [PGCameraManager sharedInstance].isBackgroundCamera = NO;
     } andFailure:^{
     }];
+    
+    self.imageSavedView.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -173,6 +175,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    self.imageSavedView.hidden = YES;
+    
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];

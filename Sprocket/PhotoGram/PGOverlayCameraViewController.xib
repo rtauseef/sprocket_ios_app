@@ -32,7 +32,7 @@
                         <constraint firstAttribute="width" secondItem="cUq-e2-jMp" secondAttribute="height" multiplier="9:11" id="MjL-wU-6gA"/>
                         <constraint firstAttribute="width" constant="38" id="R28-n0-tz6"/>
                     </constraints>
-                    <state key="normal" image="close"/>
+                    <state key="normal" image="cameraClose"/>
                     <connections>
                         <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="BzK-9g-8zX"/>
                     </connections>
@@ -68,8 +68,8 @@
         </view>
     </objects>
     <resources>
+        <image name="cameraClose" width="25" height="25"/>
         <image name="cameraReverse" width="31" height="23"/>
         <image name="cameraShutter" width="67" height="67"/>
-        <image name="close" width="17" height="18"/>
     </resources>
 </document>
