@@ -90,7 +90,7 @@ int const kCameraRollCancelButtonIndex = 0;
         return;
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Photo Access", @"Title shown when the user tries to access the Photos of the device before the authorization was requested")
+            [[[UIAlertView alloc] initWithTitle:HPPRLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
                                         message:HPPRLocalizedString(@"To select a photo you must first authorize this app to access your photo library.", @"Message shown when the user tries to access the Photos of the device before the authorization was requested")
                                        delegate:self
                               cancelButtonTitle:HPPRLocalizedString(@"Cancel", @"Button caption")
