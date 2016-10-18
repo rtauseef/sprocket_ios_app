@@ -80,11 +80,21 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)addCameraButtonsOnView:(UIView *)view
 {
+    static NSString *viewAccessibilityIdentifier = @"PGOverlayCameraView";
+    
+    // Don't keep adding the same overlay view over and over again...
+    for (UIView *subview in view.subviews) {
+        if ([subview.accessibilityIdentifier isEqualToString:viewAccessibilityIdentifier]) {
+            [subview removeFromSuperview];
+        }
+    }
+    
     [view layoutIfNeeded];
     
     self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
     self.cameraOverlay.pickerReference = nil;
     self.cameraOverlay.view.frame = view.frame;
+    self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [view addSubview:self.cameraOverlay.view];
