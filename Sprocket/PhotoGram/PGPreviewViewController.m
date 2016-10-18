@@ -511,7 +511,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             [alertView show];
         }
     } else {
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:self.printItem.activityItems applicationActivities:applicationActivities];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[[self.imageContainer screenshotImage]] applicationActivities:applicationActivities];
         
         [activityViewController setValue:NSLocalizedString(@"Check out my HP Sprocket creation", nil) forKey:@"subject"];
         
