@@ -420,11 +420,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
+    UIImage *image = [self.imageContainer screenshotImage];
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
-    saveToCameraRollActivity.image = [self.imageContainer screenshotImage];
+    saveToCameraRollActivity.image = image;
     
     MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
-    btPrintActivity.image = [self.imageContainer screenshotImage];
+    btPrintActivity.image = image;
     btPrintActivity.vc = self;
     
     [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
@@ -510,8 +511,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             alertView.tag = screenshotErrorAlertViewTag;
             [alertView show];
         }
-    } else {
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[[self.imageContainer screenshotImage]] applicationActivities:applicationActivities];
+    } else {        
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.selectedPhoto] applicationActivities:applicationActivities];
         
         [activityViewController setValue:NSLocalizedString(@"Check out my HP Sprocket creation", nil) forKey:@"subject"];
         
