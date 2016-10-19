@@ -11,6 +11,7 @@
 //
 
 #import "PGSaveToCameraRollActivity.h"
+#import <HPPRCameraRollLoginProvider.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface PGSaveToCameraRollActivity ()
@@ -55,15 +56,13 @@
 
 - (void)performActivity
 {
-    BOOL imageSaved = NO;
-    
-    ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
-    if (ALAuthorizationStatusAuthorized == authorizationStatus) {
-        UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
-        imageSaved = YES;
-    }
-    
-    [self activityDidFinish:imageSaved];
+    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
+        }
+        
+        [self activityDidFinish:loggedIn];
+    }];
 }
 
 @end
