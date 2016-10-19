@@ -18,6 +18,8 @@
 #import <MP.h>
 
 typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
+    PGHelpAndHowToRowIndexesResetPrinter,
+    PGHelpAndHowToRowIndexesSetupPrinter,
     PGHelpAndHowToRowIndexesViewUserGuide,
     PGHelpAndHowToRowIndexesTweetSupport,
     PGHelpAndHowToRowIndexesJoinSupport,
@@ -31,6 +33,8 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
 @interface PGHelpAndHowToViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableViewCell *tweetSupportCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *resetPrinter;
+@property (strong, nonatomic) IBOutlet UITableViewCell *setupPrinter;
 @property (strong, nonatomic) SLComposeViewController *twitterComposeViewController;
 
 @end
@@ -47,6 +51,10 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
                                              selector:@selector(unselectTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
+    
+    UIImage *arrowMenuImage = [UIImage imageNamed:@"arrowMenu"];
+    self.resetPrinter.accessoryView = [[UIImageView alloc] initWithImage:arrowMenuImage];
+    self.setupPrinter.accessoryView = [[UIImageView alloc] initWithImage:arrowMenuImage];
 }
 
 - (void)dealloc
@@ -99,8 +107,6 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
     
     tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS: %@ \n[%@]", appVersion, enterText];
     tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", appVersion, enterTextURL];
-    
-    
     
     if (IS_OS_8_OR_LATER) {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
