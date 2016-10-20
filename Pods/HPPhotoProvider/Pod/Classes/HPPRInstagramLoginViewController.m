@@ -76,7 +76,7 @@ NSString * const kInstagramProviderName = @"Instagram";
 
 - (BOOL)handleURL:(NSURL *)url
 {
-    BOOL handle = YES;
+    BOOL handle = NO;
     NSString *urlString = url.absoluteString;
     
     if ([urlString rangeOfString:@"#access_token"].location != NSNotFound) {
@@ -88,7 +88,6 @@ NSString * const kInstagramProviderName = @"Instagram";
             [self.delegate instagramLoginViewControllerDidLogin:self];
         }
         [self dismissViewControllerAnimated:YES completion:nil];
-        handle = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     } else if ([urlString rangeOfString:@"error_reason=user_denied"].location != NSNotFound) {
         [self dismissViewControllerAnimated:YES completion:^{
@@ -101,8 +100,9 @@ NSString * const kInstagramProviderName = @"Instagram";
                                                   cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption")
                                                   otherButtonTitles:nil];
             [alert show];
-            
         }];
+    } else {
+        handle = YES;
     }
     
     return handle;
