@@ -1278,7 +1278,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
             <objects>
                 <exit id="rlQ-2O-XWg" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFJ-7u-HXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="AAx-am-zd7" sceneMemberID="viewController">
+                <viewController id="AAx-am-zd7" customClass="PGResetSprocketViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="68M-xH-0Yz"/>
                         <viewControllerLayoutGuide type="bottom" id="Edd-Id-DwG"/>
