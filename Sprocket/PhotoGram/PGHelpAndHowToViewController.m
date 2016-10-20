@@ -73,7 +73,6 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
 
 - (IBAction)dismissPresentedViewController:(UIStoryboardSegue *)segue
 {
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
