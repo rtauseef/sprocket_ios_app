@@ -32,9 +32,9 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
 
 @interface PGHelpAndHowToViewController ()
 
-@property (strong, nonatomic) IBOutlet UITableViewCell *tweetSupportCell;
-@property (strong, nonatomic) IBOutlet UITableViewCell *resetPrinter;
-@property (strong, nonatomic) IBOutlet UITableViewCell *setupPrinter;
+@property (weak, nonatomic) IBOutlet UITableViewCell *tweetSupportCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *resetPrinterCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *setupPrinterCell;
 @property (strong, nonatomic) SLComposeViewController *twitterComposeViewController;
 
 @end
@@ -53,8 +53,8 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
                                                object:nil];
     
     UIImage *arrowMenuImage = [UIImage imageNamed:@"arrowMenu"];
-    self.resetPrinter.accessoryView = [[UIImageView alloc] initWithImage:arrowMenuImage];
-    self.setupPrinter.accessoryView = [[UIImageView alloc] initWithImage:arrowMenuImage];
+    self.resetPrinterCell.accessoryView = [[UIImageView alloc] initWithImage:arrowMenuImage];
+    self.setupPrinterCell.accessoryView = [[UIImageView alloc] initWithImage:arrowMenuImage];
 }
 
 - (void)dealloc
