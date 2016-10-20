@@ -1465,8 +1465,8 @@ printer and app support.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="resetPrinter" destination="6UJ-wx-GHn" id="zmQ-Y6-A96"/>
-                        <outlet property="setupPrinter" destination="Fo1-L8-FbB" id="Dmk-z4-1zF"/>
+                        <outlet property="resetPrinterCell" destination="6UJ-wx-GHn" id="1Nt-be-HqK"/>
+                        <outlet property="setupPrinterCell" destination="Fo1-L8-FbB" id="YcE-Xz-wG2"/>
                         <outlet property="tweetSupportCell" destination="PMz-aF-SGY" id="Qm2-m4-8an"/>
                     </connections>
                 </tableViewController>
