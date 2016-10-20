@@ -523,10 +523,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             } else {
                 if (activityType) {
                     [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultCancel];
-                    
-                    if ([activityType isEqualToString:[PGSaveToCameraRollActivity activityType]]) {
-                        [self saveToCameraRoll:nil];
-                    }
                 }
             }
         };
