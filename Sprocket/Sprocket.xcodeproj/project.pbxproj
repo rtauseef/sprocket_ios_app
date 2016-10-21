@@ -629,6 +629,8 @@
 		F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */; };
 		F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */; };
 		F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */; };
+		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
+		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
 		a066e20082450f3d9be0eacf /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D5066199AB87B006D80E0 /* main.m */; };
 		a06a22e0af01ef9f42819ad9 /* 11_pink_frame3_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852DF1D626A96001288D9 /* 11_pink_frame3_TN@2x.png */; };
@@ -1335,6 +1337,8 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
+		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
+		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
 		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1899,6 +1903,7 @@
 				E34D5099199AB98B006D80E0 /* Additions */,
 				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				E3D6816819A3D180000D45E0 /* LandingPage */,
+				F2C46E7E1DB6F17F00604371 /* Onboarding */,
 				9261D4031D189CE60048E5F8 /* Preview */,
 				CCED9C5919F972E700ACC969 /* Select Photos */,
 				E33F4C7819ABFBC900040033 /* Share */,
@@ -2129,6 +2134,15 @@
 				F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */,
 			);
 			name = SideBar;
+			sourceTree = "<group>";
+		};
+		F2C46E7E1DB6F17F00604371 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */,
+				F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3256,6 +3270,7 @@
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
 				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
+				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
 				e265c297713e9b6e3f04b533 /* PGView.m in Sources */,
 				7f8d860833dd0b905e33e418 /* PGPreviewViewController.m in Sources */,
 				24621f9ff6a174a391042307 /* UIView+Animations.m in Sources */,
@@ -3332,6 +3347,7 @@
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
+				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
