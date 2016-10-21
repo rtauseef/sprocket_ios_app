@@ -495,6 +495,7 @@
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
+		82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */; };
 		83569bef079a56f02f2a8855 /* 7_gradient_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852D11D626A96001288D9 /* 7_gradient_frame.png */; };
 		8600eea73f9445cc6332b1d7 /* skull_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404B1D9A16E60090BA44 /* skull_TN@3x.png */; };
 		86ea918f84d2cf7460a13e37 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = 82362A261D59557E0019F024 /* hearts.png */; };
@@ -1172,6 +1173,8 @@
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
+		82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResetSprocketViewController.m; sourceTree = "<group>"; };
+		82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGResetSprocketViewController.h; sourceTree = "<group>"; };
 		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
@@ -2121,6 +2124,8 @@
 				CC10807E19CA0D2400C1553A /* PGAboutViewController.m */,
 				823FB3391D77A4BE0022B132 /* PGHelpAndHowToViewController.h */,
 				823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */,
+				82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */,
+				82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */,
 				F1B5434019C785B100460701 /* PGRevealViewController.h */,
 				F1B5434119C785B100460701 /* PGRevealViewController.m */,
 				E375386519BE5D3C009C695F /* PGSideBarMenuTableViewController.h */,
@@ -2244,7 +2249,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -2252,7 +2257,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3332,6 +3337,7 @@
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
+				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
