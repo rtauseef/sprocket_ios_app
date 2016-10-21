@@ -2027,7 +2027,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2074,16 +2074,25 @@ printer and app support.</string>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="wnr-d8-pvj"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="4uT-AM-NOw"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="UMF-bh-Dhl"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Active_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="ngX-F2-uHY"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XKH-FW-8wX" firstAttribute="top" secondItem="Buw-cr-LLJ" secondAttribute="bottom" id="0OO-b0-lBn"/>
                             <constraint firstAttribute="trailing" secondItem="XKH-FW-8wX" secondAttribute="trailing" id="KZn-Jr-t02"/>
+                            <constraint firstItem="Buw-cr-LLJ" firstAttribute="top" secondItem="4uT-AM-NOw" secondAttribute="bottom" constant="28" id="NWF-hH-hpX"/>
+                            <constraint firstItem="UMF-bh-Dhl" firstAttribute="centerY" secondItem="4uT-AM-NOw" secondAttribute="centerY" id="QEF-8h-IPc"/>
                             <constraint firstItem="oPu-Q8-y8s" firstAttribute="centerY" secondItem="V5g-sC-xEf" secondAttribute="centerY" id="Qyh-vY-erT"/>
                             <constraint firstItem="uJ6-QN-UjB" firstAttribute="top" secondItem="XKH-FW-8wX" secondAttribute="bottom" id="SH6-J1-czP"/>
                             <constraint firstItem="oPu-Q8-y8s" firstAttribute="centerX" secondItem="V5g-sC-xEf" secondAttribute="centerX" id="UXE-LH-HbI"/>
+                            <constraint firstItem="ngX-F2-uHY" firstAttribute="centerY" secondItem="4uT-AM-NOw" secondAttribute="centerY" id="c0b-tF-c9i"/>
                             <constraint firstItem="XKH-FW-8wX" firstAttribute="leading" secondItem="V5g-sC-xEf" secondAttribute="leading" id="kVm-03-Aek"/>
+                            <constraint firstItem="4uT-AM-NOw" firstAttribute="leading" secondItem="ngX-F2-uHY" secondAttribute="trailing" constant="13" id="m2k-Eu-9AO"/>
                             <constraint firstItem="Buw-cr-LLJ" firstAttribute="leading" secondItem="V5g-sC-xEf" secondAttribute="leading" id="nIS-KO-Fl9"/>
+                            <constraint firstItem="4uT-AM-NOw" firstAttribute="centerX" secondItem="V5g-sC-xEf" secondAttribute="centerX" id="qJs-1G-4Ls"/>
+                            <constraint firstItem="UMF-bh-Dhl" firstAttribute="leading" secondItem="4uT-AM-NOw" secondAttribute="trailing" constant="13" id="vof-2Q-WaN"/>
                             <constraint firstAttribute="trailing" secondItem="Buw-cr-LLJ" secondAttribute="trailing" id="yog-GA-pmO"/>
                         </constraints>
                     </view>
@@ -2167,16 +2176,25 @@ printer and app support.</string>
                                     <constraint firstAttribute="height" constant="1" id="cER-zp-tE7"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-Np-ovg"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Active_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-iw-gzr"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="DT0-yt-rXb"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YSb-Ya-K9x" firstAttribute="leading" secondItem="Pgx-WH-Dg1" secondAttribute="leading" id="1Sd-nB-7fz"/>
+                            <constraint firstItem="nsn-Np-ovg" firstAttribute="centerY" secondItem="TYh-iw-gzr" secondAttribute="centerY" id="1vf-fW-Edd"/>
                             <constraint firstAttribute="trailing" secondItem="UmN-au-BmV" secondAttribute="trailing" id="280-89-GSE"/>
                             <constraint firstItem="hjx-sm-9xz" firstAttribute="top" secondItem="YSb-Ya-K9x" secondAttribute="bottom" id="86P-je-Jq8"/>
+                            <constraint firstItem="TYh-iw-gzr" firstAttribute="leading" secondItem="DT0-yt-rXb" secondAttribute="trailing" constant="13" id="9R1-rT-Z6Y"/>
+                            <constraint firstItem="TYh-iw-gzr" firstAttribute="centerX" secondItem="Pgx-WH-Dg1" secondAttribute="centerX" id="Hp9-JJ-6Ef"/>
+                            <constraint firstItem="UmN-au-BmV" firstAttribute="top" secondItem="TYh-iw-gzr" secondAttribute="bottom" constant="28" id="IlM-4a-KWM"/>
                             <constraint firstAttribute="trailing" secondItem="YSb-Ya-K9x" secondAttribute="trailing" id="Px8-mO-oSZ"/>
                             <constraint firstItem="UmN-au-BmV" firstAttribute="leading" secondItem="Pgx-WH-Dg1" secondAttribute="leading" id="WBj-XI-Qj0"/>
                             <constraint firstItem="0MN-IG-jcr" firstAttribute="centerY" secondItem="Pgx-WH-Dg1" secondAttribute="centerY" id="cKb-Qy-nRO"/>
+                            <constraint firstItem="DT0-yt-rXb" firstAttribute="centerY" secondItem="TYh-iw-gzr" secondAttribute="centerY" id="nem-UY-g2r"/>
                             <constraint firstItem="0MN-IG-jcr" firstAttribute="centerX" secondItem="Pgx-WH-Dg1" secondAttribute="centerX" id="otO-EF-u50"/>
+                            <constraint firstItem="nsn-Np-ovg" firstAttribute="leading" secondItem="TYh-iw-gzr" secondAttribute="trailing" constant="13" id="s0R-07-cya"/>
                             <constraint firstItem="YSb-Ya-K9x" firstAttribute="top" secondItem="UmN-au-BmV" secondAttribute="bottom" id="w7x-70-gXp"/>
                         </constraints>
                     </view>
@@ -2224,14 +2242,23 @@ printer and app support.</string>
                                     <constraint firstAttribute="height" constant="1" id="xD0-JP-PRi"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="a8P-f0-5UT"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="9yv-ZK-7c4"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Active_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="CRh-Tq-Z4B"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zhe-1V-Cj9" firstAttribute="centerY" secondItem="M6s-B1-Spb" secondAttribute="centerY" id="0tX-Gl-gVH"/>
+                            <constraint firstItem="HAQ-1E-9NW" firstAttribute="top" secondItem="9yv-ZK-7c4" secondAttribute="bottom" constant="28" id="1qe-td-OtM"/>
                             <constraint firstItem="TZH-n8-H0F" firstAttribute="top" secondItem="HAQ-1E-9NW" secondAttribute="bottom" id="4CI-vr-hBC"/>
+                            <constraint firstItem="9yv-ZK-7c4" firstAttribute="leading" secondItem="a8P-f0-5UT" secondAttribute="trailing" constant="13" id="5g7-mB-G3u"/>
                             <constraint firstItem="HAQ-1E-9NW" firstAttribute="leading" secondItem="M6s-B1-Spb" secondAttribute="leading" id="7N7-bl-GhT"/>
                             <constraint firstItem="Ssx-2Y-fQ1" firstAttribute="top" secondItem="wFZ-ks-lNu" secondAttribute="bottom" id="7s4-ue-SnQ"/>
                             <constraint firstAttribute="trailing" secondItem="HAQ-1E-9NW" secondAttribute="trailing" id="9PU-By-wZe"/>
+                            <constraint firstItem="CRh-Tq-Z4B" firstAttribute="leading" secondItem="9yv-ZK-7c4" secondAttribute="trailing" constant="13" id="FxS-2P-unf"/>
+                            <constraint firstItem="9yv-ZK-7c4" firstAttribute="centerX" secondItem="M6s-B1-Spb" secondAttribute="centerX" id="HD3-N8-U37"/>
+                            <constraint firstItem="a8P-f0-5UT" firstAttribute="centerY" secondItem="9yv-ZK-7c4" secondAttribute="centerY" id="Pdi-0k-Ih1"/>
+                            <constraint firstItem="CRh-Tq-Z4B" firstAttribute="centerY" secondItem="9yv-ZK-7c4" secondAttribute="centerY" id="QUG-kC-YoP"/>
                             <constraint firstItem="wFZ-ks-lNu" firstAttribute="width" secondItem="M6s-B1-Spb" secondAttribute="width" multiplier="0.5" id="TvY-H3-zNN"/>
                             <constraint firstItem="Zhe-1V-Cj9" firstAttribute="centerX" secondItem="M6s-B1-Spb" secondAttribute="centerX" id="dpQ-1w-ixV"/>
                             <constraint firstAttribute="trailing" secondItem="wFZ-ks-lNu" secondAttribute="trailing" id="jHb-i3-J9n"/>
@@ -2247,10 +2274,12 @@ printer and app support.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Active_Circle" width="13" height="13"/>
         <image name="CameraRoll" width="43" height="43"/>
         <image name="Facebook" width="43" height="43"/>
         <image name="Flickr" width="43" height="43"/>
         <image name="HPLogo" width="25" height="25"/>
+        <image name="Inactive_Circle" width="13" height="13"/>
         <image name="Instagram" width="43" height="43"/>
         <image name="Share.png" width="17" height="25"/>
         <image name="aboutLogo" width="65" height="54"/>

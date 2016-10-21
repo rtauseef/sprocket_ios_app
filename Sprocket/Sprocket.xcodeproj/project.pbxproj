@@ -1902,8 +1902,8 @@
 				E34D509B199AB9A4006D80E0 /* Storyboards */,
 				E34D5099199AB98B006D80E0 /* Additions */,
 				E3D6814319A3D02E000D45E0 /* CustomViews */,
+				F2C46E7E1DB6F17F00604371 /* IntroWizard */,
 				E3D6816819A3D180000D45E0 /* LandingPage */,
-				F2C46E7E1DB6F17F00604371 /* Onboarding */,
 				9261D4031D189CE60048E5F8 /* Preview */,
 				CCED9C5919F972E700ACC969 /* Select Photos */,
 				E33F4C7819ABFBC900040033 /* Share */,
@@ -2136,13 +2136,13 @@
 			name = SideBar;
 			sourceTree = "<group>";
 		};
-		F2C46E7E1DB6F17F00604371 /* Onboarding */ = {
+		F2C46E7E1DB6F17F00604371 /* IntroWizard */ = {
 			isa = PBXGroup;
 			children = (
 				F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */,
 				F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */,
 			);
-			name = Onboarding;
+			name = IntroWizard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2258,7 +2258,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -2266,7 +2266,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
