@@ -30,6 +30,7 @@
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
 #import <MPBTPrintActivity.h>
+#import <HPPRCameraRollLoginProvider.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -420,11 +421,12 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
+    UIImage *image = [self.imageContainer screenshotImage];
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
-    saveToCameraRollActivity.image = [self.imageContainer screenshotImage];
+    saveToCameraRollActivity.image = image;
     
     MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
-    btPrintActivity.image = [self.imageContainer screenshotImage];
+    btPrintActivity.image = image;
     btPrintActivity.vc = self;
     
     [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
@@ -433,44 +435,16 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 
 - (void)saveToCameraRoll:(void (^)(BOOL))completion
 {
-    ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
-    if (ALAuthorizationStatusAuthorized == authorizationStatus) {
-        UIImage *image = [self.imageContainer screenshotImage];
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            UIImage *image = [self.imageContainer screenshotImage];
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }
         
         if (completion) {
-            completion(YES);
+            completion(loggedIn);
         }
-    } else {
-        NSString *msgText = NSLocalizedString(@"Allow access in your Settings to print and save your photos.", @"Message of an alert when the user has denied the permission to access the Photos of the device");
-
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Photo Access Required", @"Title of an alert when the user has denied the permission to access the Photos of the device")
-                                                                       message:msgText
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Button for dismissing dialog")
-                                                         style:UIAlertActionStyleCancel
-                                                       handler:^(UIAlertAction * action) {
-                                                           [alert dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-        [alert addAction:cancel];
-        
-        
-        UIAlertAction *settings = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", @"Button for opening the app settings")
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * action) {
-                                                             [alert dismissViewControllerAnimated:YES completion:nil];
-                                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                                                         }];
-        [alert addAction:settings];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        if (completion) {
-            completion(NO);
-        }
-    }
+    }];
 }
 
 #pragma mark - Print preparation
@@ -510,8 +484,8 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             alertView.tag = screenshotErrorAlertViewTag;
             [alertView show];
         }
-    } else {
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[[self.imageContainer screenshotImage]] applicationActivities:applicationActivities];
+    } else {        
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.selectedPhoto] applicationActivities:applicationActivities];
         
         [activityViewController setValue:NSLocalizedString(@"Check out my HP Sprocket creation", nil) forKey:@"subject"];
         
@@ -549,10 +523,6 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
             } else {
                 if (activityType) {
                     [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultCancel];
-                    
-                    if ([activityType isEqualToString:[PGSaveToCameraRollActivity activityType]]) {
-                        [self saveToCameraRoll:nil];
-                    }
                 }
             }
         };
