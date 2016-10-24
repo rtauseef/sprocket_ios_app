@@ -300,21 +300,44 @@
                                         <constraint firstAttribute="width" secondItem="N4E-BV-ikN" secondAttribute="height" multiplier="1:1" id="phh-iF-jsF"/>
                                     </constraints>
                                 </imageView>
-                                <view alpha="0.40000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7mR-XQ-sHG" userLabel="LineView">
-                                    <frame key="frameInset" minY="64" width="600" height="1"/>
+                                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mR-XQ-sHG" userLabel="LineView">
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="UWi-Fc-gGf"/>
                                     </constraints>
                                 </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery100" translatesAutoresizingMaskIntoConstraints="NO" id="DVu-KX-rPP"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
+                                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="14" id="Rku-FI-mx2"/>
+                                        <constraint firstAttribute="width" constant="14" id="ij6-XN-b5f"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="7"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
+                                    <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="DVu-KX-rPP" firstAttribute="centerY" secondItem="N4E-BV-ikN" secondAttribute="centerY" id="8C6-Jl-1KW"/>
                                 <constraint firstItem="N4E-BV-ikN" firstAttribute="centerY" secondItem="7OP-0j-KId" secondAttribute="centerY" constant="-7" id="A7T-An-L3p"/>
                                 <constraint firstItem="N4E-BV-ikN" firstAttribute="leading" secondItem="7OP-0j-KId" secondAttribute="leading" constant="19" id="Eio-O4-PLP"/>
                                 <constraint firstItem="7mR-XQ-sHG" firstAttribute="width" secondItem="7OP-0j-KId" secondAttribute="width" id="F7C-KR-m42"/>
+                                <constraint firstItem="anQ-7m-MS2" firstAttribute="leading" secondItem="E4b-gd-Xgb" secondAttribute="trailing" constant="14" id="HF3-oQ-yAV"/>
+                                <constraint firstItem="E4b-gd-Xgb" firstAttribute="centerY" secondItem="DVu-KX-rPP" secondAttribute="centerY" id="Rss-Z9-uOi"/>
                                 <constraint firstAttribute="bottom" secondItem="7mR-XQ-sHG" secondAttribute="bottom" constant="10" id="YNF-rE-RlS"/>
                                 <constraint firstItem="N4E-BV-ikN" firstAttribute="height" secondItem="7OP-0j-KId" secondAttribute="height" multiplier="0.4" id="ceF-XJ-X6B"/>
+                                <constraint firstAttribute="trailing" secondItem="DVu-KX-rPP" secondAttribute="trailing" constant="20" id="dEJ-dy-sUc"/>
                                 <constraint firstItem="7mR-XQ-sHG" firstAttribute="centerX" secondItem="7OP-0j-KId" secondAttribute="centerX" id="rXx-xe-nDL"/>
+                                <constraint firstItem="anQ-7m-MS2" firstAttribute="centerY" secondItem="DVu-KX-rPP" secondAttribute="centerY" id="syd-J7-Xrq"/>
+                                <constraint firstItem="DVu-KX-rPP" firstAttribute="leading" secondItem="anQ-7m-MS2" secondAttribute="trailing" constant="18" id="uj4-gd-FaB"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="g7v-jr-X61" userLabel="FooterView">
@@ -537,35 +560,11 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
-                                                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="9" id="Rku-FI-mx2"/>
-                                                        <constraint firstAttribute="width" constant="9" id="ij6-XN-b5f"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <real key="value" value="4.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="125" id="GfF-db-fn7"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="12"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="anQ-7m-MS2" firstAttribute="centerY" secondItem="R1h-jR-sJM" secondAttribute="centerY" id="4Ye-mx-sjf"/>
                                                 <constraint firstItem="tla-SB-rgn" firstAttribute="leading" secondItem="R1h-jR-sJM" secondAttribute="leading" constant="15" id="583-UQ-2Y8"/>
-                                                <constraint firstItem="E4b-gd-Xgb" firstAttribute="leading" secondItem="vvr-jY-JqH" secondAttribute="trailing" constant="15" id="7Jj-uU-hNK"/>
                                                 <constraint firstItem="tla-SB-rgn" firstAttribute="centerY" secondItem="R1h-jR-sJM" secondAttribute="centerY" id="Sl3-oh-xcx"/>
-                                                <constraint firstItem="anQ-7m-MS2" firstAttribute="leading" secondItem="E4b-gd-Xgb" secondAttribute="trailing" constant="6" id="e8f-Ff-35S"/>
                                                 <constraint firstItem="vvr-jY-JqH" firstAttribute="centerY" secondItem="tla-SB-rgn" secondAttribute="centerY" id="lCZ-nM-a4L"/>
-                                                <constraint firstItem="E4b-gd-Xgb" firstAttribute="centerY" secondItem="R1h-jR-sJM" secondAttribute="centerY" id="mgP-oL-Nzl"/>
                                                 <constraint firstItem="vvr-jY-JqH" firstAttribute="leading" secondItem="tla-SB-rgn" secondAttribute="trailing" constant="15" id="nRK-na-kRg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -699,6 +698,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraRollView" destination="5un-p3-2DD" id="sn4-AG-ceo"/>
+                        <outlet property="deviceBatteryLevel" destination="DVu-KX-rPP" id="ALh-Jt-w8Q"/>
                         <outlet property="deviceConnectivityLabel" destination="anQ-7m-MS2" id="Mhn-En-9FT"/>
                         <outlet property="deviceStatusLED" destination="E4b-gd-Xgb" id="Yea-KW-VcK"/>
                         <outlet property="devicesCell" destination="r2Y-ba-f7B" id="ExQ-2k-dXF"/>
@@ -751,7 +751,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-5518" y="1278"/>
+            <point key="canvasLocation" x="-5519.1999999999998" y="1277.8110944527737"/>
         </scene>
         <!--Web Viewer View Controller-->
         <scene sceneID="Xkv-WI-a5A">
@@ -2094,6 +2094,7 @@ printer and app support.</string>
         <image name="Share.png" width="17" height="25"/>
         <image name="aboutLogo" width="65" height="54"/>
         <image name="backArrow" width="9" height="18"/>
+        <image name="battery100" width="33" height="14"/>
         <image name="cameraLanding" width="76" height="76"/>
         <image name="hamburger" width="22" height="18"/>
         <image name="helpForum" width="16" height="15"/>

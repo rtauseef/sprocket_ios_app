@@ -99,8 +99,9 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (weak, nonatomic) IBOutlet UITableViewCell *devicesCell;
 
 @property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
-@property (strong, nonatomic) IBOutlet UIView *deviceStatusLED;
-@property (strong, nonatomic) IBOutlet UILabel *devicesLabel;
+@property (weak, nonatomic) IBOutlet UIView *deviceStatusLED;
+@property (weak, nonatomic) IBOutlet UILabel *devicesLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *deviceBatteryLevel;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *instagramGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *facebookGestureRecognizer;
@@ -210,13 +211,11 @@ typedef enum {
 
     if (IS_OS_8_OR_LATER) {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
-        if (numberOfPairedSprockets > 0) {
-            self.deviceConnectivityLabel.hidden = NO;
-            self.deviceStatusLED.hidden = NO;
-        } else {
-            self.deviceConnectivityLabel.hidden = YES;
-            self.deviceStatusLED.hidden = YES;
-        }
+        BOOL shouldHideConnectivity = (numberOfPairedSprockets <= 0);
+        
+        self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
+        self.deviceStatusLED.hidden = shouldHideConnectivity;
+        self.deviceBatteryLevel.hidden = shouldHideConnectivity;
     }
     
     // Resizing the table to the width revealed by the SWRevealViewController forces word-wrapping where necessary
