@@ -70,7 +70,7 @@
     UIGraphicsBeginImageContextWithOptions(size, self.opaque, scale);
     
     self.layer.contentsScale = [UIScreen mainScreen].scale * scale;
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
     
     UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
     
