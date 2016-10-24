@@ -71,6 +71,10 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
+- (IBAction)dismissPresentedViewController:(UIStoryboardSegue *)segue
+{
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {

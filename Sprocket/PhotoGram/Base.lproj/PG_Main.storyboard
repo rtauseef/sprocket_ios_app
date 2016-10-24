@@ -1273,6 +1273,58 @@ To improve future versions of this app and HP Printers, HP will periodically col
             </objects>
             <point key="canvasLocation" x="-6345" y="1332"/>
         </scene>
+        <!--Reset Sprocket Printer-->
+        <scene sceneID="aBw-o5-LOf">
+            <objects>
+                <exit id="rlQ-2O-XWg" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UFJ-7u-HXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="AAx-am-zd7" customClass="PGResetSprocketViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="68M-xH-0Yz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Edd-Id-DwG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6f5-LW-jcC">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resetSprocket" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-TA-9yj">
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="414" id="S6S-b1-ecJ"/>
+                                    <constraint firstAttribute="width" secondItem="gCC-TA-9yj" secondAttribute="height" multiplier="1.13" id="ixd-6R-QqE"/>
+                                    <constraint firstAttribute="height" priority="750" constant="368" id="rHu-Gm-n8S"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIS-tD-Si9">
+                                <string key="text">Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer.</string>
+                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
+                                <color key="textColor" red="0.45882352941176469" green="0.46274509803921571" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gCC-TA-9yj" firstAttribute="leading" secondItem="6f5-LW-jcC" secondAttribute="leadingMargin" constant="5" id="KU8-Pu-smV"/>
+                            <constraint firstItem="sIS-tD-Si9" firstAttribute="top" secondItem="gCC-TA-9yj" secondAttribute="bottom" constant="53" id="KuG-oH-sHf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gCC-TA-9yj" secondAttribute="trailing" constant="5" id="L3K-Jh-Kfg"/>
+                            <constraint firstItem="gCC-TA-9yj" firstAttribute="top" secondItem="68M-xH-0Yz" secondAttribute="bottom" constant="59" id="TIi-dG-rkr"/>
+                            <constraint firstItem="sIS-tD-Si9" firstAttribute="leading" secondItem="6f5-LW-jcC" secondAttribute="leadingMargin" constant="10" id="WsM-px-Ou3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sIS-tD-Si9" secondAttribute="trailing" constant="10" id="qPL-6s-gsq"/>
+                            <constraint firstItem="gCC-TA-9yj" firstAttribute="centerX" secondItem="6f5-LW-jcC" secondAttribute="centerX" id="uHi-6r-1k9"/>
+                            <constraint firstItem="sIS-tD-Si9" firstAttribute="centerX" secondItem="6f5-LW-jcC" secondAttribute="centerX" id="y8F-x1-coZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reset Sprocket Printer" id="OOG-XB-1r0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="M1M-l0-DBL"/>
+                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="9Wz-PP-s92">
+                            <connections>
+                                <segue destination="rlQ-2O-XWg" kind="unwind" unwindAction="dismissPresentedViewController:" id="uZS-PL-KsQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-7239" y="2164"/>
+        </scene>
         <!--How To & Help-->
         <scene sceneID="Xkn-zS-khx">
             <objects>
@@ -1332,6 +1384,9 @@ printer and app support.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="AAx-am-zd7" kind="show" id="Jvc-Kl-xQI"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" shouldIndentWhileEditing="NO" id="Fo1-L8-FbB">
                                         <rect key="frame" x="0.0" y="144" width="414" height="44"/>
@@ -1458,6 +1513,7 @@ printer and app support.</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="How To &amp; Help" id="3PR-Lb-830">
+                        <barButtonItem key="backBarButtonItem" title=" " id="AXW-GE-wKa"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="KJ4-K0-69v">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="BJm-Pn-kYp" id="mHC-f0-Pyz"/>
@@ -2414,6 +2470,7 @@ printer and app support.</string>
         <image name="Wizard3" width="414" height="366"/>
         <image name="Wizard_Sprocket" width="272" height="57"/>
         <image name="aboutLogo" width="65" height="54"/>
+        <image name="backArrow" width="9" height="18"/>
         <image name="cameraLanding" width="76" height="76"/>
         <image name="deviceMenu" width="25" height="25"/>
         <image name="hamburger" width="22" height="17"/>
@@ -2431,6 +2488,7 @@ printer and app support.</string>
         <image name="previewShare" width="19" height="28"/>
         <image name="previewX" width="18" height="18"/>
         <image name="resetMenu" width="21" height="21"/>
+        <image name="resetSprocket" width="414" height="366"/>
         <image name="setupMenu" width="26" height="26"/>
         <image name="signInCameraRoll" width="25" height="25"/>
         <image name="signInFacebook" width="11" height="23"/>
