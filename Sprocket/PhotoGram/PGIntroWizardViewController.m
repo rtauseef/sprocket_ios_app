@@ -11,6 +11,7 @@
 //
 
 #import "PGIntroWizardViewController.h"
+#import "PGAnalyticsManager.h"
 
 @interface PGIntroWizardViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -24,6 +25,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    if ([self shouldSkipWizard]) {
+        [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
+    }
 
     self.pageViewController = [self.childViewControllers firstObject];
 
@@ -48,10 +53,32 @@
     [super viewWillAppear:animated];
 
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    [self trackPageView:[self.pages firstObject]];
 }
+
+- (BOOL)shouldSkipWizard
+{
+    return NO;
+}
+
+- (void)trackPageView:(UIViewController *)viewController
+{
+    NSUInteger index = [self.pages indexOfObject:viewController];
+
+    if (index != NSNotFound) {
+        NSString *screenName = [NSString stringWithFormat:@"StartWizard - Screen%lu", (index + 1)];
+
+        [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
+    }
+}
+
 
 #pragma mark - UIPageViewControllerDelegate
 
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    [self trackPageView:[pendingViewControllers firstObject]];
+}
 
 
 #pragma mark - UIPageViewControllerDataSource
