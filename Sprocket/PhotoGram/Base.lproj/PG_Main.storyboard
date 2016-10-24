@@ -2154,7 +2154,7 @@ printer and app support.</string>
                                     <constraint firstAttribute="width" secondItem="ANa-UT-ef7" secondAttribute="height" multiplier="69:61" id="MZi-en-WEe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBA-Od-V82">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBA-Od-V82">
                                 <attributedString key="attributedText">
                                     <fragment content="Step 1 ">
                                         <attributes>
@@ -2173,7 +2173,7 @@ printer and app support.</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-E2-jHE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-E2-jHE">
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2186,7 +2186,7 @@ printer and app support.</string>
                             <constraint firstItem="L7D-ND-niV" firstAttribute="top" secondItem="Cow-NT-XeC" secondAttribute="bottom" priority="750" constant="70" id="272-1E-5do"/>
                             <constraint firstAttribute="trailing" secondItem="qR2-E2-jHE" secondAttribute="trailing" constant="10" id="4lw-b6-Ou4"/>
                             <constraint firstItem="qa8-cB-bpm" firstAttribute="leading" secondItem="V5g-sC-xEf" secondAttribute="leadingMargin" id="5tX-Wu-076"/>
-                            <constraint firstItem="qa8-cB-bpm" firstAttribute="height" secondItem="XKH-FW-8wX" secondAttribute="height" multiplier="0.9" id="66x-0a-oCv"/>
+                            <constraint firstItem="qa8-cB-bpm" firstAttribute="height" secondItem="XKH-FW-8wX" secondAttribute="height" constant="-10" id="66x-0a-oCv"/>
                             <constraint firstAttribute="trailing" secondItem="XKH-FW-8wX" secondAttribute="trailing" id="KZn-Jr-t02"/>
                             <constraint firstItem="qa8-cB-bpm" firstAttribute="top" secondItem="qR2-E2-jHE" secondAttribute="bottom" id="LiL-G5-AP0"/>
                             <constraint firstItem="ANa-UT-ef7" firstAttribute="top" secondItem="L7D-ND-niV" secondAttribute="bottom" id="TUN-DS-zV5"/>
@@ -2315,7 +2315,7 @@ printer and app support.</string>
                                     <constraint firstAttribute="width" secondItem="4Rb-b2-sUB" secondAttribute="height" multiplier="69:61" id="CUS-Mz-FDj"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-1m-8RD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-1m-8RD">
                                 <attributedString key="attributedText">
                                     <fragment content="Step 2 ">
                                         <attributes>
@@ -2334,7 +2334,7 @@ printer and app support.</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Press and hold the power button until the LED turns white." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bs3-IS-Mi4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Press and hold the power button until the LED turns white." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bs3-IS-Mi4">
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2347,7 +2347,7 @@ printer and app support.</string>
                             <constraint firstItem="6El-Xz-mXo" firstAttribute="centerX" secondItem="kCe-ud-yz5" secondAttribute="centerX" id="9wH-uY-pJM"/>
                             <constraint firstItem="4Rb-b2-sUB" firstAttribute="top" secondItem="6El-Xz-mXo" secondAttribute="bottom" id="AYh-NH-E5F"/>
                             <constraint firstItem="Vjm-Hd-c7a" firstAttribute="top" secondItem="kO8-M2-cav" secondAttribute="bottom" id="DLu-QO-0Ar"/>
-                            <constraint firstItem="kO8-M2-cav" firstAttribute="height" secondItem="jlL-Rr-AWe" secondAttribute="height" multiplier="0.9" id="Faa-gc-vLB"/>
+                            <constraint firstItem="kO8-M2-cav" firstAttribute="height" secondItem="jlL-Rr-AWe" secondAttribute="height" constant="-10" id="Faa-gc-vLB"/>
                             <constraint firstItem="4Rb-b2-sUB" firstAttribute="leading" secondItem="kCe-ud-yz5" secondAttribute="leading" id="POm-5d-S2A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kO8-M2-cav" secondAttribute="trailing" id="XGS-r2-eH0"/>
                             <constraint firstAttribute="trailing" secondItem="bs3-IS-Mi4" secondAttribute="trailing" constant="10" id="ge3-h2-thm"/>
@@ -2431,7 +2431,7 @@ printer and app support.</string>
                                     <constraint firstAttribute="width" secondItem="1CU-l3-G8v" secondAttribute="height" multiplier="69:61" id="lq9-tT-tRg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-Gv-d5S">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-Gv-d5S">
                                 <attributedString key="attributedText">
                                     <fragment content="Step 3 ">
                                         <attributes>
@@ -2450,7 +2450,7 @@ printer and app support.</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="9ty-Gh-wP2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="9ty-Gh-wP2">
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2469,10 +2469,10 @@ printer and app support.</string>
                             <constraint firstItem="pfm-su-KwF" firstAttribute="height" secondItem="JMG-M4-0rY" secondAttribute="height" multiplier="0.1" id="7I1-VI-FwC"/>
                             <constraint firstItem="1CU-l3-G8v" firstAttribute="top" secondItem="evx-6C-227" secondAttribute="bottom" id="CcH-Mo-g2w"/>
                             <constraint firstAttribute="trailing" secondItem="9ty-Gh-wP2" secondAttribute="trailing" constant="10" id="Cd8-b7-lJm"/>
+                            <constraint firstItem="74m-gn-ELV" firstAttribute="height" secondItem="KVl-B3-xgv" secondAttribute="height" constant="-10" id="ECY-lo-MxJ"/>
                             <constraint firstItem="kCk-4w-iz1" firstAttribute="leading" secondItem="JMG-M4-0rY" secondAttribute="leading" id="GfH-GT-eQ9"/>
                             <constraint firstItem="KVl-B3-xgv" firstAttribute="width" secondItem="JMG-M4-0rY" secondAttribute="width" multiplier="0.5" id="HwA-C7-qbU"/>
                             <constraint firstItem="evx-6C-227" firstAttribute="centerX" secondItem="JMG-M4-0rY" secondAttribute="centerX" id="JrI-2L-BlM"/>
-                            <constraint firstItem="74m-gn-ELV" firstAttribute="height" secondItem="pfm-su-KwF" secondAttribute="height" multiplier="0.9" id="Jzm-wm-ZYj"/>
                             <constraint firstItem="KVl-B3-xgv" firstAttribute="leading" secondItem="pfm-su-KwF" secondAttribute="trailing" id="L6O-bl-zVb"/>
                             <constraint firstItem="pfm-su-KwF" firstAttribute="leading" secondItem="JMG-M4-0rY" secondAttribute="leading" id="M9G-kL-zTU"/>
                             <constraint firstItem="XFW-Cy-rj1" firstAttribute="top" secondItem="pfm-su-KwF" secondAttribute="bottom" id="Ms0-Fe-LVH"/>
@@ -2542,7 +2542,7 @@ printer and app support.</string>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EXM-j8-c14"/>
+        <segue reference="Kes-Qj-IFQ"/>
         <segue reference="BEK-gI-c4P"/>
     </inferredMetricsTieBreakers>
 </document>
