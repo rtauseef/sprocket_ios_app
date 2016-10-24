@@ -12,6 +12,9 @@
 
 #import "PGIntroWizardViewController.h"
 #import "PGAnalyticsManager.h"
+#import "MP.h"
+
+NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefore";
 
 @interface PGIntroWizardViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -58,7 +61,17 @@
 
 - (BOOL)shouldSkipWizard
 {
-    return NO;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (nil == [defaults objectForKey:kHasLaunchedAppBefore]) {
+        [defaults setBool:YES forKey:kHasLaunchedAppBefore];
+        [defaults synchronize];
+
+        if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
+            return NO;
+        }
+    }
+
+    return YES;
 }
 
 - (void)trackPageView:(UIViewController *)viewController
