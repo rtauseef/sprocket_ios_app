@@ -899,7 +899,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="gr7-FA-59J">
             <objects>
                 <navigationController storyboardIdentifier="PGTermsNavigationController" id="2uM-2W-Nu8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEO-dW-j4P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iEO-dW-j4P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1261,7 +1261,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="svA-7D-PyU">
             <objects>
                 <navigationController storyboardIdentifier="PrintInstructions" definesPresentationContext="YES" id="aOl-ln-qn3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="POo-5F-tuC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="POo-5F-tuC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1324,6 +1324,227 @@ To improve future versions of this app and HP Printers, HP will periodically col
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFJ-7u-HXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7239" y="2164"/>
+        </scene>
+        <!--Setup Sprocket Printer-->
+        <scene sceneID="MYM-65-kjJ">
+            <objects>
+                <tableViewController title="Setup Sprocket Printer" id="Is4-j4-Oa9" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kBf-Oa-DIl">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="zXl-It-CzW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="aVh-J2-5Ry">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aVh-J2-5Ry" id="jlJ-YS-fVE">
+                                            <frame key="frameInset" width="375" height="366"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="aw9-ZF-9Cf">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="aw9-ZF-9Cf" secondAttribute="height" multiplier="125:122" id="di6-IM-HzM"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aw9-ZF-9Cf" firstAttribute="leading" secondItem="jlJ-YS-fVE" secondAttribute="leading" id="Fvb-Zf-7sJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="aw9-ZF-9Cf" secondAttribute="trailing" id="bOB-kj-DE5"/>
+                                                <constraint firstItem="aw9-ZF-9Cf" firstAttribute="top" secondItem="jlJ-YS-fVE" secondAttribute="top" id="cVc-Ex-8LL"/>
+                                                <constraint firstAttribute="bottom" secondItem="aw9-ZF-9Cf" secondAttribute="bottom" id="lj4-ok-EK6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="3ie-rP-h50">
+                                        <rect key="frame" x="0.0" y="366" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ie-rP-h50" id="GqO-Q0-5q9">
+                                            <frame key="frameInset" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dR-ja-mwE">
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Step 1 ">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="25" name="HPSimplified-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="Load Paper">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.58823529411764708" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="25" name="HPSimplified-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Aen-Ai-ezK">
+                                                    <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="10"/>
+                                                    <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Aen-Ai-ezK" firstAttribute="leading" secondItem="GqO-Q0-5q9" secondAttribute="leading" constant="33" id="1Q6-a1-c78"/>
+                                                <constraint firstAttribute="trailing" secondItem="Aen-Ai-ezK" secondAttribute="trailing" constant="33" id="Bgi-8M-bB1"/>
+                                                <constraint firstItem="2dR-ja-mwE" firstAttribute="top" secondItem="GqO-Q0-5q9" secondAttribute="top" id="H6X-jU-Lxf"/>
+                                                <constraint firstItem="2dR-ja-mwE" firstAttribute="leading" secondItem="GqO-Q0-5q9" secondAttribute="leading" constant="33" id="h72-iT-NcM"/>
+                                                <constraint firstItem="Aen-Ai-ezK" firstAttribute="top" secondItem="2dR-ja-mwE" secondAttribute="bottom" constant="22" id="oDn-WC-R6I"/>
+                                                <constraint firstAttribute="trailing" secondItem="2dR-ja-mwE" secondAttribute="trailing" constant="33" id="vFk-3W-QVP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="MMb-oi-wc2">
+                                        <rect key="frame" x="0.0" y="456" width="375" height="366"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MMb-oi-wc2" id="KmM-Kx-BNN">
+                                            <frame key="frameInset" width="375" height="366"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="iFw-Pi-aDq">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="iFw-Pi-aDq" secondAttribute="height" multiplier="125:122" id="MAl-X4-h6g"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="iFw-Pi-aDq" secondAttribute="bottom" id="Lce-CG-JyD"/>
+                                                <constraint firstItem="iFw-Pi-aDq" firstAttribute="leading" secondItem="KmM-Kx-BNN" secondAttribute="leading" id="VC0-qQ-4bd"/>
+                                                <constraint firstItem="iFw-Pi-aDq" firstAttribute="top" secondItem="KmM-Kx-BNN" secondAttribute="top" id="hq5-Ou-hH9"/>
+                                                <constraint firstAttribute="trailing" secondItem="iFw-Pi-aDq" secondAttribute="trailing" id="raQ-tZ-7hI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="5Ho-qi-jLv">
+                                        <rect key="frame" x="0.0" y="822" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ho-qi-jLv" id="O1q-I1-bgd">
+                                            <frame key="frameInset" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOI-6f-ZOI">
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Step 2 ">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="25" name="HPSimplified-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="Power Up">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.58823529411764708" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="25" name="HPSimplified-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold the power button until the LED turns white. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="OAP-1h-NoS">
+                                                    <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
+                                                    <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uOI-6f-ZOI" firstAttribute="top" secondItem="O1q-I1-bgd" secondAttribute="top" id="43d-az-UX0"/>
+                                                <constraint firstItem="uOI-6f-ZOI" firstAttribute="leading" secondItem="O1q-I1-bgd" secondAttribute="leading" constant="33" id="Gwg-k3-XDk"/>
+                                                <constraint firstAttribute="trailing" secondItem="uOI-6f-ZOI" secondAttribute="trailing" constant="33" id="f6k-4F-m4C"/>
+                                                <constraint firstItem="OAP-1h-NoS" firstAttribute="leading" secondItem="O1q-I1-bgd" secondAttribute="leading" constant="33" id="igV-Sr-DxJ"/>
+                                                <constraint firstItem="OAP-1h-NoS" firstAttribute="top" secondItem="uOI-6f-ZOI" secondAttribute="bottom" constant="22" id="smO-G2-z2V"/>
+                                                <constraint firstAttribute="trailing" secondItem="OAP-1h-NoS" secondAttribute="trailing" constant="33" id="wsn-1S-I6t"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="SRO-y3-XaP">
+                                        <rect key="frame" x="0.0" y="912" width="375" height="366"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SRO-y3-XaP" id="zCA-X1-8bM">
+                                            <frame key="frameInset" width="375" height="366"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="vL1-eG-jg1">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="vL1-eG-jg1" secondAttribute="height" multiplier="125:122" id="ctp-4E-vPK"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="vL1-eG-jg1" secondAttribute="bottom" id="Fmy-fj-OSz"/>
+                                                <constraint firstAttribute="trailing" secondItem="vL1-eG-jg1" secondAttribute="trailing" id="UUz-5t-ajH"/>
+                                                <constraint firstItem="vL1-eG-jg1" firstAttribute="leading" secondItem="zCA-X1-8bM" secondAttribute="leading" id="apz-Kh-ZTK"/>
+                                                <constraint firstItem="vL1-eG-jg1" firstAttribute="top" secondItem="zCA-X1-8bM" secondAttribute="top" id="xso-hM-qOG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="Zs0-Yh-Boo">
+                                        <rect key="frame" x="0.0" y="1278" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zs0-Yh-Boo" id="zrA-PN-eiU">
+                                            <frame key="frameInset" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuB-xs-Msq">
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Step 3 ">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="25" name="HPSimplified-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="Connect">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.58823529411764708" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="25" name="HPSimplified-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="WZe-j8-Us7">
+                                                    <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
+                                                    <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JuB-xs-Msq" firstAttribute="leading" secondItem="zrA-PN-eiU" secondAttribute="leading" constant="33" id="5Sc-sR-LS7"/>
+                                                <constraint firstItem="WZe-j8-Us7" firstAttribute="top" secondItem="JuB-xs-Msq" secondAttribute="bottom" constant="22" id="gBA-aK-H5G"/>
+                                                <constraint firstAttribute="trailing" secondItem="WZe-j8-Us7" secondAttribute="trailing" constant="33" id="hJ2-0b-eEE"/>
+                                                <constraint firstAttribute="trailing" secondItem="JuB-xs-Msq" secondAttribute="trailing" constant="33" id="hRK-D3-L2z"/>
+                                                <constraint firstItem="WZe-j8-Us7" firstAttribute="leading" secondItem="zrA-PN-eiU" secondAttribute="leading" constant="33" id="utv-oJ-DzO"/>
+                                                <constraint firstItem="JuB-xs-Msq" firstAttribute="top" secondItem="zrA-PN-eiU" secondAttribute="top" id="xth-TH-56I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Is4-j4-Oa9" id="10X-mg-5Ly"/>
+                            <outlet property="delegate" destination="Is4-j4-Oa9" id="0AB-n4-K1l"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Setup Sprocket Printer" id="Zbo-aF-O1q">
+                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="5X1-K3-nmJ">
+                            <connections>
+                                <segue destination="jKc-jm-w7j" kind="unwind" unwindAction="dismissPresentedViewController:" id="nfe-i7-mbe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8dV-gJ-vwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jKc-jm-w7j" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-7220" y="2926.6866566716644"/>
         </scene>
         <!--How To & Help-->
         <scene sceneID="Xkn-zS-khx">
@@ -1415,6 +1636,9 @@ printer and app support.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="Is4-j4-Oa9" kind="show" id="lEb-gW-WDX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" textLabel="IFE-wR-WsV" imageView="wQ2-Rs-3uG" style="IBUITableViewCellStyleDefault" id="6FA-A7-vWs">
                                         <rect key="frame" x="0.0" y="188" width="375" height="44"/>
@@ -1709,7 +1933,7 @@ printer and app support.</string>
             <objects>
                 <navigationController definesPresentationContext="YES" id="LIT-0F-CjS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j1Y-sB-UJM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j1Y-sB-UJM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1727,7 +1951,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="WebViewerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qmP-7A-YZZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q4Y-od-fvh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Q4Y-od-fvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1831,7 +2055,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFacebookLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7vZ-mN-2fQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2G-vK-Cya">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2G-vK-Cya">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2029,7 +2253,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGInstagramLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="l4c-MK-fSA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="puT-PP-dRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="puT-PP-dRa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2047,7 +2271,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGCameraRollLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Udl-8d-vIJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Gs-Fu-tt9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Gs-Fu-tt9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2065,7 +2289,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFlickrLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KDo-po-4g5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucl-Ve-qbL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ucl-Ve-qbL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2083,7 +2307,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2542,7 +2766,7 @@ printer and app support.</string>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kes-Qj-IFQ"/>
+        <segue reference="EXM-j8-c14"/>
         <segue reference="BEK-gI-c4P"/>
     </inferredMetricsTieBreakers>
 </document>
