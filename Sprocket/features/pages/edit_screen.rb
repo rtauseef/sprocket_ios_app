@@ -74,11 +74,14 @@ class EditScreen < Calabash::IBase
 
     def navigate
         unless current_page?
-            preview_screen = go_to(PreviewScreen)
+            preview_screen = go_to(FlickrPreviewScreen)
             sleep(WAIT_SCREENLOAD)
-            wait_for_elements_exist(preview_screen.edit, :timeout => MAX_TIMEOUT)
-            touch preview_screen.edit
+            #wait_for_elements_exist(preview_screen.edit, :timeout => MAX_TIMEOUT)
+            touch query("view marked:'Edit")
             sleep(WAIT_SCREENLOAD)    
+            if element_exists("view marked:'Authorize' index:0")
+                touch("view marked:'Authorize' index:0")
+            end
         end
         await
          $curr_edit_img_frame_width = query("UIImageView index:0").first["frame"]["width"]
