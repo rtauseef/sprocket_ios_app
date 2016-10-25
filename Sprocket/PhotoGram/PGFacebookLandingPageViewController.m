@@ -119,10 +119,12 @@ NSString * const kFacebookUserIdKey = @"id";
                         vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
                         ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
                         ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
                     } else {
                         vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
                         ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
                         ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
                     }
                     
                     UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];

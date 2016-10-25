@@ -12,7 +12,7 @@
 
 #import "PGFrameItem.h"
 
-const NSInteger PGFrameItemsCount = 15;
+const NSInteger PGFrameItemsCount = 16;
 
 @implementation PGFrameItem
 
@@ -93,6 +93,11 @@ const NSInteger PGFrameItemsCount = 15;
         case PGFrameItemsWhite: {
             frame.accessibilityText = NSLocalizedString(@"White Frame", nil);
             frame.imageName = @"4_white_frame";
+            break;
+        }
+        case PGFrameItemsNapaValley: {
+            frame.accessibilityText = NSLocalizedString(@"Napa Valley Film Festival", nil);
+            frame.imageName = @"NVFF_Frame";
             break;
         }
         default:
