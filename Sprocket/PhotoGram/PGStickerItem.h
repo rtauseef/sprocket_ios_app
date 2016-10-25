@@ -14,6 +14,10 @@
 
 extern const NSInteger PGStickerItemsCount;
 
+typedef NS_ENUM (NSInteger, PGStickerItemsNapaValley){
+    PGStickerItemsNapaValleyLoveHP  = 45,
+};
+
 typedef NS_ENUM (NSInteger, PGStickerItemsFall){
     PGStickerItemsFallCatWhiskers  = 1,
     PGStickerItemsFallDodMask      = 2,
