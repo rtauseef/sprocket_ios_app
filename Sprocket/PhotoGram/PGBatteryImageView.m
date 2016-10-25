@@ -14,12 +14,17 @@
 
 @implementation PGBatteryImageView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setLevel:(NSUInteger)level
+{
+    if (level > 75 && level <= 100) {
+        self.image = [UIImage imageNamed:@"battery100"];
+    } else if (level < 75 && level >= 50) {
+        self.image = [UIImage imageNamed:@"battery75"];
+    } else if (level < 50 && level >= 25) {
+        self.image = [UIImage imageNamed:@"battery50"];
+    } else if (level < 25) {
+        self.image = [UIImage imageNamed:@"battery25"];
+    }
 }
-*/
 
 @end

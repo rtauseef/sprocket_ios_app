@@ -14,4 +14,6 @@
 
 @interface PGBatteryImageView : UIImageView
 
+@property (assign, nonatomic) NSUInteger level;
+
 @end
