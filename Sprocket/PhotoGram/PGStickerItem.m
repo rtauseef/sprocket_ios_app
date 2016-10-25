@@ -12,7 +12,7 @@
 
 #import "PGStickerItem.h"
 
-const NSInteger PGStickerItemsCount = 45;
+const NSInteger PGStickerItemsCount = 46;
 
 @implementation PGStickerItem
 
@@ -139,6 +139,20 @@ const NSInteger PGStickerItemsCount = 45;
         default:
             sticker = [PGStickerItem fallStickerItemByIndex:index];
             break;
+    }
+    
+    return sticker;
+}
+
++ (PGStickerItem *)napaValleyStickerItemByIndex:(NSInteger)index {
+    PGStickerItem *sticker = [[PGStickerItem alloc] init];
+    
+    switch (index) {
+        case PGStickerItemsNapaValleyLoveHP: {
+            sticker.accessibilityText = NSLocalizedString(@"I love HP", nil);
+            sticker.imageName = @"IloveHP";
+            break;
+        }
     }
     
     return sticker;
@@ -281,6 +295,7 @@ const NSInteger PGStickerItemsCount = 45;
         }
 
         default:
+            sticker = [self napaValleyStickerItemByIndex:index];
             break;
     }
     
