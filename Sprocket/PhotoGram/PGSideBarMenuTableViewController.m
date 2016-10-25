@@ -236,7 +236,6 @@ typedef enum {
 
 - (void)didReceiveSprocketBatteryLevel:(NSUInteger)batteryLevel
 {
-    NSLog(@"RECEIVED BATTERY LEVEL UPDATE!");
     self.deviceBatteryLevel.level = batteryLevel;
 }
 

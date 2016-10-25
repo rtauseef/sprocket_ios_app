@@ -16,7 +16,7 @@
 
 - (void)setLevel:(NSUInteger)level
 {
-    if (level > 75 && level <= 100) {
+    if (level >= 75 && level <= 100) {
         self.image = [UIImage imageNamed:@"battery100"];
     } else if (level < 75 && level >= 50) {
         self.image = [UIImage imageNamed:@"battery75"];
