@@ -41,6 +41,7 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
+static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 3;
 
 @interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
@@ -62,6 +63,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (assign, nonatomic) BOOL selectedNewPhoto;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
+@property (weak, nonatomic) IBOutlet UIButton *printButton;
 
 @end
 
@@ -86,6 +88,10 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [PGAnalyticsManager sharedManager].photoSource = self.source;
     [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
+    
+    [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self checkSprocketPrinterConnectivity];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -149,6 +155,17 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     }];
     
     self.imageSavedView.hidden = NO;
+}
+
+- (void)checkSprocketPrinterConnectivity
+{
+    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+    
+    if (numberOfPairedSprockets > 0) {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterActive"] forState:UIControlStateNormal];
+    } else {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterInactive"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
