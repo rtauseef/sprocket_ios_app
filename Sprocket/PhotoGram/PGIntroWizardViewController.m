@@ -20,6 +20,7 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
 
 @property (nonatomic, strong) NSArray<UIViewController *> *pages;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) NSTimer *printerConnectedCheckTimer;
 
 @end
 
@@ -31,6 +32,7 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
 
     if ([self shouldSkipWizard]) {
         [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
+        return;
     }
 
     self.pageViewController = [self.childViewControllers firstObject];
@@ -56,7 +58,29 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
     [super viewWillAppear:animated];
 
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     [self trackPageView:[self.pages firstObject]];
+
+    self.printerConnectedCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                      repeats:YES
+                                                                        block:^(NSTimer * _Nonnull timer) {
+                                                                            [self skipWizardIfConnected];
+                                                                        }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [self.printerConnectedCheckTimer invalidate];
+    self.printerConnectedCheckTimer = nil;
+}
+
+- (void)skipWizardIfConnected
+{
+    if ([[MP sharedInstance] numberOfPairedSprockets] > 0) {
+        [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
+    }
 }
 
 - (BOOL)shouldSkipWizard

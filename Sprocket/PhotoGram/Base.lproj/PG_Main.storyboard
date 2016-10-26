@@ -2421,7 +2421,7 @@ printer and app support.</string>
                     </view>
                     <navigationItem key="navigationItem" id="2y6-tI-PhO"/>
                     <connections>
-                        <segue destination="wUV-en-vVL" kind="show" identifier="SkipWizardSegue" animates="NO" id="E30-qK-DCn"/>
+                        <segue destination="wUV-en-vVL" kind="show" identifier="SkipWizardSegue" id="E30-qK-DCn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ua9-Bf-dl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2724,7 +2724,7 @@ printer and app support.</string>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EXM-j8-c14"/>
+        <segue reference="E30-qK-DCn"/>
         <segue reference="BEK-gI-c4P"/>
     </inferredMetricsTieBreakers>
 </document>
