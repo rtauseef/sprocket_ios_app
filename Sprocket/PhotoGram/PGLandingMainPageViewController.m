@@ -102,7 +102,7 @@
 {
     [super viewDidAppear:animated];
     
-    [[MP sharedInstance] checkSprocketForFirmwareUpgrade:self];
+    [[MP sharedInstance] checkSprocketForUpdates:self];
     
     [[PGCameraManager sharedInstance] startCamera];
 }

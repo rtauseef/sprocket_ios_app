@@ -491,6 +491,9 @@
 		823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */; };
 		8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247843D1D77B3C300A693D0 /* Social.framework */; };
 		824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 824784431D78DAF700A693D0 /* Support_Printers.jpg */; };
+		825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
+		825E2A941DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
+		825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
 		82607c99a642dddd0ec62e93 /* 3_blue_watercolor_frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852C01D626A96001288D9 /* 3_blue_watercolor_frame_TN@3x.png */; };
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -513,6 +516,14 @@
 		9151f2d92e7651bbfd7ddd56 /* cloud_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821851F41D625FBA001288D9 /* cloud_TN@3x.png */; };
 		91cfafcc2fd6fc20a703b9a4 /* pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740441D9A16E60090BA44 /* pumpkin.png */; };
 		91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
+		9207315C1DC00FFD001EBBF0 /* NVFF_Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 920731581DC00FFD001EBBF0 /* NVFF_Frame_TN.png */; };
+		9207315D1DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920731591DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png */; };
+		9207315E1DC00FFD001EBBF0 /* NVFF_Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9207315A1DC00FFD001EBBF0 /* NVFF_Frame_TN@3x.png */; };
+		9207315F1DC00FFD001EBBF0 /* NVFF_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9207315B1DC00FFD001EBBF0 /* NVFF_Frame.png */; };
+		920731641DC0103A001EBBF0 /* IloveHP_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 920731601DC0103A001EBBF0 /* IloveHP_TN.png */; };
+		920731651DC0103A001EBBF0 /* IloveHP_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920731611DC0103A001EBBF0 /* IloveHP_TN@2x.png */; };
+		920731661DC0103A001EBBF0 /* IloveHP_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920731621DC0103A001EBBF0 /* IloveHP_TN@3x.png */; };
+		920731671DC0103A001EBBF0 /* IloveHP.png in Resources */ = {isa = PBXBuildFile; fileRef = 920731631DC0103A001EBBF0 /* IloveHP.png */; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -632,6 +643,8 @@
 		F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
+		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
+		F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
 		FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
 		a066e20082450f3d9be0eacf /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D5066199AB87B006D80E0 /* main.m */; };
 		a06a22e0af01ef9f42819ad9 /* 11_pink_frame3_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852DF1D626A96001288D9 /* 11_pink_frame3_TN@2x.png */; };
@@ -1172,6 +1185,8 @@
 		823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHelpAndHowToViewController.m; sourceTree = "<group>"; };
 		8247843D1D77B3C300A693D0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		824784431D78DAF700A693D0 /* Support_Printers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Support_Printers.jpg; sourceTree = "<group>"; };
+		825E2A911DBED51E00DB7D5C /* PGBatteryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGBatteryImageView.h; sourceTree = "<group>"; };
+		825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBatteryImageView.m; sourceTree = "<group>"; };
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
@@ -1180,6 +1195,14 @@
 		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
+		920731581DC00FFD001EBBF0 /* NVFF_Frame_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NVFF_Frame_TN.png; path = Resources/Images/Frames/NapaFilmFestival/NVFF_Frame_TN.png; sourceTree = "<group>"; };
+		920731591DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NVFF_Frame_TN@2x.png"; path = "Resources/Images/Frames/NapaFilmFestival/NVFF_Frame_TN@2x.png"; sourceTree = "<group>"; };
+		9207315A1DC00FFD001EBBF0 /* NVFF_Frame_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NVFF_Frame_TN@3x.png"; path = "Resources/Images/Frames/NapaFilmFestival/NVFF_Frame_TN@3x.png"; sourceTree = "<group>"; };
+		9207315B1DC00FFD001EBBF0 /* NVFF_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NVFF_Frame.png; path = Resources/Images/Frames/NapaFilmFestival/NVFF_Frame.png; sourceTree = "<group>"; };
+		920731601DC0103A001EBBF0 /* IloveHP_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IloveHP_TN.png; path = Resources/Images/Stickers/NapaFilmFestival/IloveHP_TN.png; sourceTree = "<group>"; };
+		920731611DC0103A001EBBF0 /* IloveHP_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IloveHP_TN@2x.png"; path = "Resources/Images/Stickers/NapaFilmFestival/IloveHP_TN@2x.png"; sourceTree = "<group>"; };
+		920731621DC0103A001EBBF0 /* IloveHP_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IloveHP_TN@3x.png"; path = "Resources/Images/Stickers/NapaFilmFestival/IloveHP_TN@3x.png"; sourceTree = "<group>"; };
+		920731631DC0103A001EBBF0 /* IloveHP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IloveHP.png; path = Resources/Images/Stickers/NapaFilmFestival/IloveHP.png; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
@@ -1342,6 +1365,8 @@
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
 		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
+		F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSetupSprocketViewController.h; sourceTree = "<group>"; };
+		F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSetupSprocketViewController.m; sourceTree = "<group>"; };
 		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1538,6 +1563,7 @@
 		8236299D1D593D520019F024 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
+				920731571DC00F2A001EBBF0 /* NapaFilmFestival */,
 				821852B61D626A96001288D9 /* 1_turquoise_frame_TN.png */,
 				821852B71D626A96001288D9 /* 1_turquoise_frame_TN@2x.png */,
 				821852B81D626A96001288D9 /* 1_turquoise_frame_TN@3x.png */,
@@ -1605,6 +1631,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				920731561DC00F0E001EBBF0 /* NapaFilmFestival */,
 				264740001D9A16B40090BA44 /* Fall */,
 				821851DA1D625FBA001288D9 /* arrow_TN.png */,
 				821851DB1D625FBA001288D9 /* arrow_TN@2x.png */,
@@ -1700,6 +1727,28 @@
 				821852891D625FFB001288D9 /* xoxo.png */,
 			);
 			name = Stickers;
+			sourceTree = "<group>";
+		};
+		920731561DC00F0E001EBBF0 /* NapaFilmFestival */ = {
+			isa = PBXGroup;
+			children = (
+				920731601DC0103A001EBBF0 /* IloveHP_TN.png */,
+				920731611DC0103A001EBBF0 /* IloveHP_TN@2x.png */,
+				920731621DC0103A001EBBF0 /* IloveHP_TN@3x.png */,
+				920731631DC0103A001EBBF0 /* IloveHP.png */,
+			);
+			name = NapaFilmFestival;
+			sourceTree = "<group>";
+		};
+		920731571DC00F2A001EBBF0 /* NapaFilmFestival */ = {
+			isa = PBXGroup;
+			children = (
+				920731581DC00FFD001EBBF0 /* NVFF_Frame_TN.png */,
+				920731591DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png */,
+				9207315A1DC00FFD001EBBF0 /* NVFF_Frame_TN@3x.png */,
+				9207315B1DC00FFD001EBBF0 /* NVFF_Frame.png */,
+			);
+			name = NapaFilmFestival;
 			sourceTree = "<group>";
 		};
 		9261D4031D189CE60048E5F8 /* Preview */ = {
@@ -2077,6 +2126,8 @@
 				E3B58B041AE6EBA400A79CA8 /* PGSwipeCoachMarksView.xib */,
 				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
+				825E2A911DBED51E00DB7D5C /* PGBatteryImageView.h */,
+				825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */,
 				92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */,
 				92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */,
 			);
@@ -2129,14 +2180,16 @@
 				CC10807E19CA0D2400C1553A /* PGAboutViewController.m */,
 				823FB3391D77A4BE0022B132 /* PGHelpAndHowToViewController.h */,
 				823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */,
-				82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */,
-				82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */,
-				F1B5434019C785B100460701 /* PGRevealViewController.h */,
-				F1B5434119C785B100460701 /* PGRevealViewController.m */,
-				E375386519BE5D3C009C695F /* PGSideBarMenuTableViewController.h */,
-				E375386619BE5D3C009C695F /* PGSideBarMenuTableViewController.m */,
 				F134BC451ACAF9E5007D892B /* PGLoggingSetttingsViewController.h */,
 				F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */,
+				82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */,
+				82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */,
+				F1B5434019C785B100460701 /* PGRevealViewController.h */,
+				F1B5434119C785B100460701 /* PGRevealViewController.m */,
+				F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */,
+				F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */,
+				E375386519BE5D3C009C695F /* PGSideBarMenuTableViewController.h */,
+				E375386619BE5D3C009C695F /* PGSideBarMenuTableViewController.m */,
 			);
 			name = SideBar;
 			sourceTree = "<group>";
@@ -2349,9 +2402,11 @@
 				822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */,
 				821852AC1D625FFB001288D9 /* stars_TN@3x.png in Resources */,
 				821852A01D625FFB001288D9 /* heartPixel_TN@3x.png in Resources */,
+				9207315E1DC00FFD001EBBF0 /* NVFF_Frame_TN@3x.png in Resources */,
 				264740651D9A16E60090BA44 /* catwhiskers_TN.png in Resources */,
 				264740A01D9A16E60090BA44 /* scarycat.png in Resources */,
 				264740AB1D9A16E60090BA44 /* spiderweb_TN@3x.png in Resources */,
+				920731651DC0103A001EBBF0 /* IloveHP_TN@2x.png in Resources */,
 				264740A91D9A16E60090BA44 /* spiderweb_TN.png in Resources */,
 				8218528B1D625FFB001288D9 /* cupcake_TN@2x.png in Resources */,
 				2647405C1D9A16E60090BA44 /* bat.png in Resources */,
@@ -2367,6 +2422,7 @@
 				2647406A1D9A16E60090BA44 /* devilhorns_TN@2x.png in Resources */,
 				821851F81D625FBA001288D9 /* arrow_TN@3x.png in Resources */,
 				821853271D626A96001288D9 /* 14_blue_gradient_frame_TN@2x.png in Resources */,
+				9207315D1DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png in Resources */,
 				264740761D9A16E60090BA44 /* eyeball_TN@2x.png in Resources */,
 				821853291D626A96001288D9 /* 14_blue_gradient_frame.png in Resources */,
 				82362A531D59557E0019F024 /* starhp_TN@3x.png in Resources */,
@@ -2435,6 +2491,7 @@
 				E34D50AF199AB9FE006D80E0 /* HPSimplified_Bd.ttf in Resources */,
 				E34D50B0199AB9FE006D80E0 /* HPSimplified_BdIt.ttf in Resources */,
 				264740891D9A16E60090BA44 /* leaf3_TN.png in Resources */,
+				920731671DC0103A001EBBF0 /* IloveHP.png in Resources */,
 				8218529A1D625FFB001288D9 /* heartExpress_TN.png in Resources */,
 				E34D50B1199AB9FE006D80E0 /* HPSimplified_It.ttf in Resources */,
 				9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */,
@@ -2501,6 +2558,7 @@
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				8218529D1D625FFB001288D9 /* heartExpress.png in Resources */,
+				9207315C1DC00FFD001EBBF0 /* NVFF_Frame_TN.png in Resources */,
 				2647406F1D9A16E60090BA44 /* DODeyes_TN@3x.png in Resources */,
 				8218530B1D626A96001288D9 /* 7_gradient_frame_TN@2x.png in Resources */,
 				821851F61D625FBA001288D9 /* arrow_TN.png in Resources */,
@@ -2551,6 +2609,7 @@
 				E320F8B919C36A7A00BC2AE3 /* retry@2x.png in Resources */,
 				F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */,
 				E3B62FFE19A50E5800CB80D7 /* Search@2x.png in Resources */,
+				920731661DC0103A001EBBF0 /* IloveHP_TN@3x.png in Resources */,
 				264740771D9A16E60090BA44 /* eyeball_TN@3x.png in Resources */,
 				82362A4F1D59557E0019F024 /* starhp_TN.png in Resources */,
 				E375386119BE57C5009C695F /* SendFeedback@2x.png in Resources */,
@@ -2583,6 +2642,7 @@
 				264740601D9A16E60090BA44 /* candycorn.png in Resources */,
 				821852AE1D625FFB001288D9 /* sunglasses_TN.png in Resources */,
 				2647408D1D9A16E60090BA44 /* moon_TN.png in Resources */,
+				920731641DC0103A001EBBF0 /* IloveHP_TN.png in Resources */,
 				821852041D625FBA001288D9 /* candy_TN@3x.png in Resources */,
 				821852F51D626A96001288D9 /* 1_turquoise_frame.png in Resources */,
 				821852001D625FBA001288D9 /* birthdayHat_TN@3x.png in Resources */,
@@ -2621,6 +2681,7 @@
 				F1DCB8391B543CD800CA9AAD /* PG_Main.storyboard in Resources */,
 				E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */,
 				F1DCB83B1B54471E00CA9AAD /* PGSwipeCoachMarksView.xib in Resources */,
+				9207315F1DC00FFD001EBBF0 /* NVFF_Frame.png in Resources */,
 				821852FF1D626A96001288D9 /* 4_white_frame_TN@2x.png in Resources */,
 				821851FE1D625FBA001288D9 /* birthdayHat_TN.png in Resources */,
 				E34D5065199AB87B006D80E0 /* InfoPlist.strings in Resources */,
@@ -3266,12 +3327,14 @@
 				4418fa35a759dbee8758b95d /* PGLandingMainPageViewController.m in Sources */,
 				3bafc46b9f4cb58b01413cb6 /* SWRevealViewController.m in Sources */,
 				70dbfe6bae80bc96cda49075 /* UIColor+Style.m in Sources */,
+				825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				5089b6e4b798bd669905cc1d /* PGExperimentManager.m in Sources */,
 				80b94713d5386721225c29f9 /* PGAppDelegate.m in Sources */,
 				a89aa84a0fd9ca5feb0e4a7b /* PGLandingPageViewController.m in Sources */,
 				c3bc4f151439ee3aad5ab499 /* UIView+Background.m in Sources */,
 				ca33fc8bc9e996cd212214f3 /* PGHelpAndHowToViewController.m in Sources */,
 				49ad600baf4c001336afed6f /* PGTermsAttributedLabel.m in Sources */,
+				F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
 				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
@@ -3299,6 +3362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */,
+				825E2A941DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
 				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
 				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
@@ -3326,6 +3390,7 @@
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
 				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
+				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
@@ -3336,6 +3401,7 @@
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
+				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
 				92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */,

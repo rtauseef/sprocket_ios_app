@@ -30,6 +30,7 @@ typedef NS_ENUM (NSInteger, PGFrameItems){
     PGFrameItemsFloralTwo,
     PGFrameItemsBlueGradient,
     PGFrameItemsPurple,
+    PGFrameItemsNapaValley,
 };
 
 @interface PGFrameItem : NSObject

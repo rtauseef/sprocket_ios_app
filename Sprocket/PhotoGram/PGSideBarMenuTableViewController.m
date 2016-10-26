@@ -37,6 +37,7 @@
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
 #import "NSLocale+Additions.h"
+#import "PGBatteryImageView.h"
 
 #define LONG_SCREEN_SIZE_HEADER_HEIGHT 75.0f
 #define SHORT_SCREEN_SIZE_HEADER_HEIGHT 52.0f
@@ -67,7 +68,7 @@ NSString * const kBuyPaperURL = @"http://hpsprocket.com/#supplies";
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
 
-@interface PGSideBarMenuTableViewController () <MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate>
+@interface PGSideBarMenuTableViewController () <MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
@@ -99,8 +100,9 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (weak, nonatomic) IBOutlet UITableViewCell *devicesCell;
 
 @property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
-@property (strong, nonatomic) IBOutlet UIView *deviceStatusLED;
-@property (strong, nonatomic) IBOutlet UILabel *devicesLabel;
+@property (weak, nonatomic) IBOutlet UIView *deviceStatusLED;
+@property (weak, nonatomic) IBOutlet UILabel *devicesLabel;
+@property (weak, nonatomic) IBOutlet PGBatteryImageView *deviceBatteryLevel;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *instagramGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *facebookGestureRecognizer;
@@ -210,13 +212,13 @@ typedef enum {
 
     if (IS_OS_8_OR_LATER) {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
-        if (numberOfPairedSprockets > 0) {
-            self.deviceConnectivityLabel.hidden = NO;
-            self.deviceStatusLED.hidden = NO;
-        } else {
-            self.deviceConnectivityLabel.hidden = YES;
-            self.deviceStatusLED.hidden = YES;
-        }
+        BOOL shouldHideConnectivity = (numberOfPairedSprockets <= 0);
+        
+        self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
+        self.deviceStatusLED.hidden = shouldHideConnectivity;
+        self.deviceBatteryLevel.hidden = shouldHideConnectivity;
+        
+        [[MP sharedInstance] checkSprocketForUpdates:self];
     }
     
     // Resizing the table to the width revealed by the SWRevealViewController forces word-wrapping where necessary
@@ -228,6 +230,13 @@ typedef enum {
 - (void)unselectTableViewCell
 {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+#pragma mark - MPSprocketDelegate
+
+- (void)didReceiveSprocketBatteryLevel:(NSUInteger)batteryLevel
+{
+    self.deviceBatteryLevel.level = batteryLevel;
 }
 
 #pragma mark - Setter methods
