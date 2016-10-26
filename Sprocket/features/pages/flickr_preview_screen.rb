@@ -16,7 +16,7 @@ class FlickrPreviewScreen < Calabash::IBase
   end
 
   def edit
-         "* id:'editButton'"
+         "view marked:'Edit'"
   end
 
   def print
