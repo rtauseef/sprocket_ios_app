@@ -49,6 +49,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
 @property (strong, nonatomic) PGImglyManager *imglyManager;
+@property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -88,10 +89,6 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     [PGAnalyticsManager sharedManager].photoSource = self.source;
     [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
-    
-    [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self checkSprocketPrinterConnectivity];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -155,6 +152,10 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     }];
     
     self.imageSavedView.hidden = NO;
+    
+    self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self checkSprocketPrinterConnectivity];
+    }];
 }
 
 - (void)checkSprocketPrinterConnectivity
@@ -201,6 +202,9 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [[PGCameraManager sharedInstance] stopCamera];
+    
+    [self.sprocketConnectivityTimer invalidate];
+    self.sprocketConnectivityTimer = nil;
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto editOfPreviousPhoto:(BOOL)edited
