@@ -1060,35 +1060,21 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOE-OE-xsb" userLabel="Top View">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG3-7c-npS" userLabel="closeButton">
-                                                <frame key="frameInset" minY="0.5" width="50" height="43"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG3-7c-npS" userLabel="closeButton">
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="UTw-3z-XK9"/>
-                                                    <constraint firstAttribute="height" constant="20" id="qbQ-6h-bLF"/>
+                                                    <constraint firstAttribute="height" constant="44" id="dAn-nb-yG8"/>
+                                                    <constraint firstAttribute="width" constant="44" id="hsr-Ud-qeC"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="previewX"/>
+                                                <state key="normal" image="previewX"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="closeButton"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB3-IV-l9k" userLabel="closeButtonActiveArea">
-                                                <frame key="frameInset" minX="164" minY="7" width="46" height="30"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
                                                 <connections>
-                                                    <action selector="didTouchUpInsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="Tmj-rE-HNj"/>
+                                                    <action selector="didTouchUpInsideCloseButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="lHQ-E9-FmR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-DF-pcn" userLabel="editButton">
-                                                <frame key="frameInset" minX="340" minY="5" width="32" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="Udf-Pn-LwP"/>
-                                                    <constraint firstAttribute="height" constant="34" id="y2W-OP-JXf"/>
-                                                </constraints>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-DF-pcn" userLabel="editButton">
                                                 <state key="normal" title="Edit"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="cameraButton"/>
@@ -1099,20 +1085,16 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="width" secondItem="cG3-7c-npS" secondAttribute="width" constant="75" id="Mh7-wL-vUX"/>
-                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="centerX" secondItem="cG3-7c-npS" secondAttribute="centerX" id="SGp-i4-2cK"/>
-                                            <constraint firstItem="cG3-7c-npS" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="Yig-aY-FPN"/>
-                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="height" secondItem="cG3-7c-npS" secondAttribute="height" constant="10" id="a3F-vr-AyA"/>
-                                            <constraint firstItem="TB3-IV-l9k" firstAttribute="centerY" secondItem="cG3-7c-npS" secondAttribute="centerY" id="gf6-9a-6QH"/>
+                                            <constraint firstItem="cG3-7c-npS" firstAttribute="leading" secondItem="BOE-OE-xsb" secondAttribute="leading" id="I4y-Re-DQW"/>
+                                            <constraint firstItem="cG3-7c-npS" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="JLD-I1-qx7"/>
+                                            <constraint firstAttribute="trailing" secondItem="fRU-DF-pcn" secondAttribute="trailing" constant="10" id="Z44-6W-2ZG"/>
                                             <constraint firstItem="fRU-DF-pcn" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="ooq-U0-DXJ"/>
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-VT-qaC" userLabel="ImageSavedView">
-                                        <frame key="frameInset" minY="-44" width="375" height="44"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-VT-qaC" userLabel="ImageSavedView">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Saved to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
-                                                <frame key="frameInset" minX="99" minY="53" width="42" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1126,8 +1108,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstItem="XgH-Dx-oow" firstAttribute="centerY" secondItem="fVw-VT-qaC" secondAttribute="centerY" id="eKG-u9-qBj"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-Zq-Jww" userLabel="ImageContainer">
-                                        <frame key="frameInset" minX="140" minY="44" width="321" height="481"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-Zq-Jww" userLabel="ImageContainer">
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2A8-Zq-Jww" secondAttribute="height" multiplier="2:3" id="9ny-J8-HOQ"/>
@@ -1167,7 +1148,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="BlW-aW-yWc"/>
+                                            <constraint firstAttribute="height" priority="750" constant="75" id="BlW-aW-yWc"/>
                                             <constraint firstItem="Afb-Xc-wRV" firstAttribute="leading" secondItem="iMJ-5T-IcV" secondAttribute="trailing" constant="45" id="VaG-RS-kuE"/>
                                             <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerX" secondItem="Swo-Sr-Qd8" secondAttribute="centerX" id="Zv7-9f-Gmk"/>
                                             <constraint firstItem="iMJ-5T-IcV" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="aCp-zn-0xO"/>
@@ -1179,9 +1160,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
-                                    <constraint firstItem="fRU-DF-pcn" firstAttribute="trailing" secondItem="2A8-Zq-Jww" secondAttribute="trailing" id="4oN-7o-gIA"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="width" secondItem="BOE-OE-xsb" secondAttribute="width" id="94O-wH-MDY"/>
-                                    <constraint firstItem="cG3-7c-npS" firstAttribute="leading" secondItem="2A8-Zq-Jww" secondAttribute="leading" id="C2t-sq-t2V"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="Grf-Nx-WsQ"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="HcJ-BT-acW"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
@@ -1202,6 +1181,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fVw-VT-qaC" firstAttribute="centerX" secondItem="faB-tS-mHG" secondAttribute="centerX" id="Bnu-0Q-LzJ"/>
                             <constraint firstItem="4H2-xg-aFm" firstAttribute="width" secondItem="faB-tS-mHG" secondAttribute="width" id="DpX-BM-Cv6"/>
                             <constraint firstItem="pTc-Ba-zcw" firstAttribute="leading" secondItem="faB-tS-mHG" secondAttribute="leading" id="Dt7-ab-IeH"/>
                             <constraint firstItem="kGR-q5-Apw" firstAttribute="top" secondItem="RDY-8P-omY" secondAttribute="bottom" id="V1g-aR-mvj"/>
