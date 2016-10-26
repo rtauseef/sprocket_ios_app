@@ -1153,7 +1153,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerX" secondItem="Swo-Sr-Qd8" secondAttribute="centerX" id="Zv7-9f-Gmk"/>
                                             <constraint firstItem="iMJ-5T-IcV" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="aCp-zn-0xO"/>
                                             <constraint firstItem="Afb-Xc-wRV" firstAttribute="centerY" secondItem="Swo-Sr-Qd8" secondAttribute="centerY" id="feC-w4-OqV"/>
-                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="leading" secondItem="Afb-Xc-wRV" secondAttribute="trailing" constant="45" id="hsg-qh-aff"/>
+                                            <constraint firstItem="pAD-AA-Eej" firstAttribute="leading" secondItem="Afb-Xc-wRV" secondAttribute="trailing" constant="40" id="hsg-qh-aff"/>
                                             <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="zhe-27-lat"/>
                                         </constraints>
                                     </view>
@@ -2488,7 +2488,7 @@ printer and app support.</string>
         <image name="menuPrivacy" width="25" height="25"/>
         <image name="menuSprocket" width="25" height="25"/>
         <image name="previewDownload" width="21" height="29"/>
-        <image name="previewPrinterInactive" width="61" height="44"/>
+        <image name="previewPrinterInactive" width="46" height="33"/>
         <image name="previewShare" width="20" height="29"/>
         <image name="previewX" width="18" height="18"/>
         <image name="resetMenu" width="21" height="21"/>
