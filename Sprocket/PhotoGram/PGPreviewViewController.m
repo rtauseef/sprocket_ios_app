@@ -41,6 +41,7 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
+static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 3;
 
 @interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
@@ -48,6 +49,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
 @property (strong, nonatomic) PGImglyManager *imglyManager;
+@property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
@@ -62,6 +64,7 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (assign, nonatomic) BOOL selectedNewPhoto;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
+@property (weak, nonatomic) IBOutlet UIButton *printButton;
 
 @end
 
@@ -149,6 +152,21 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     }];
     
     self.imageSavedView.hidden = NO;
+    
+    self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [self checkSprocketPrinterConnectivity];
+    }];
+}
+
+- (void)checkSprocketPrinterConnectivity
+{
+    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+    
+    if (numberOfPairedSprockets > 0) {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterActive"] forState:UIControlStateNormal];
+    } else {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterInactive"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -184,6 +202,9 @@ static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [[PGCameraManager sharedInstance] stopCamera];
+    
+    [self.sprocketConnectivityTimer invalidate];
+    self.sprocketConnectivityTimer = nil;
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto editOfPreviousPhoto:(BOOL)edited
