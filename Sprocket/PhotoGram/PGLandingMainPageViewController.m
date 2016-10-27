@@ -287,19 +287,6 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"TakeOurSurveySegue"]) {
-        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-        
-        PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-        webViewerViewController.trackableScreenName = @"Take Our Survey Screen";
-        webViewerViewController.url = kTakeOurSurveyURL;
-        webViewerViewController.notifyUrl = kTakeOurSurveyNotifyURL;
-        webViewerViewController.delegate = self;
-    }
-}
-
 - (void)webViewerViewControllerDidReachNotifyUrl:(PGWebViewerViewController *)webViewerViewController
 {
     [[PGSurveyManager sharedInstance] setDisable:YES];

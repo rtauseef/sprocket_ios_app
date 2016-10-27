@@ -53,18 +53,17 @@
 #define BUY_PAPER 1
 #define HOW_TO_HELP 2
 #define GIVE_FEEDBACK 3
-#define PRIVACY_STATEMENT_INDEX 4
-#define ABOUT_INDEX 5
+#define TAKE_SURVEY 4
+#define PRIVACY_STATEMENT_INDEX 5
+#define ABOUT_INDEX 6
 
 #define kSignInButtonTitle NSLocalizedString(@"Sign In", nil)
 #define kSignOutButtonTitle NSLocalizedString(@"Sign Out", nil)
 #define kCheckingButtonTitle NSLocalizedString(@"Checking", @"Checking the login status of the social network")
 
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
-NSString * const kTakeOurSurveyURL = @"https://www.surveymonkey.com/s/9C9M96H";
-NSString * const kTakeOurSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kBuyPaperURL = @"http://hpsprocket.com/#supplies";
-
+NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
 
@@ -282,6 +281,10 @@ typedef enum {
         case GIVE_FEEDBACK: {
             [self sendEmail];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            break;
+        }
+        case TAKE_SURVEY: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSurveyURL]];
             break;
         }
         case DEVICES_INDEX: {
