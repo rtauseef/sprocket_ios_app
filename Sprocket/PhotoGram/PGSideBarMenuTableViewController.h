@@ -15,7 +15,8 @@
 extern NSString * const kSocialNetworkKey;
 extern NSString * const kIncludeLoginKey;
 extern NSString * const kBuyPaperURL;
-
+extern NSString * const kSurveyURL;
+extern NSString * const kSurveyNotifyURL;
 
 @interface PGSideBarMenuTableViewController : UITableViewController
 
