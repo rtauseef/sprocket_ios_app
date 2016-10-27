@@ -14,8 +14,6 @@
 #import "PGAnalyticsManager.h"
 #import "MP.h"
 
-NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefore";
-
 @interface PGIntroWizardViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) NSArray<UIViewController *> *pages;
@@ -29,11 +27,6 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if ([self shouldSkipWizard]) {
-        [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
-        return;
-    }
 
     self.pageViewController = [self.childViewControllers firstObject];
 
@@ -81,21 +74,6 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
     if ([[MP sharedInstance] numberOfPairedSprockets] > 0) {
         [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
     }
-}
-
-- (BOOL)shouldSkipWizard
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (nil == [defaults objectForKey:kHasLaunchedAppBefore]) {
-        [defaults setBool:YES forKey:kHasLaunchedAppBefore];
-        [defaults synchronize];
-
-        if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
-            return NO;
-        }
-    }
-
-    return YES;
 }
 
 - (void)trackPageView:(UIViewController *)viewController
