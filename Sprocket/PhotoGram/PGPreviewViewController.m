@@ -153,12 +153,10 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     
     self.imageSavedView.hidden = NO;
     
-    self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self checkSprocketPrinterConnectivity];
-    }];
+    self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
 }
 
-- (void)checkSprocketPrinterConnectivity
+- (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
 {
     NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
     
