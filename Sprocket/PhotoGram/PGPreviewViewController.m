@@ -41,7 +41,7 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
-static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 3;
+static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 
 @interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
@@ -152,6 +152,8 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     }];
     
     self.imageSavedView.hidden = NO;
+    
+    [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
 }
