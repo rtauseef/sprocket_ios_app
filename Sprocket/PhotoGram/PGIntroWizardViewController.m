@@ -14,12 +14,11 @@
 #import "PGAnalyticsManager.h"
 #import "MP.h"
 
-NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefore";
-
 @interface PGIntroWizardViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) NSArray<UIViewController *> *pages;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) NSTimer *printerConnectedCheckTimer;
 
 @end
 
@@ -28,10 +27,6 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if ([self shouldSkipWizard]) {
-        [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
-    }
 
     self.pageViewController = [self.childViewControllers firstObject];
 
@@ -56,22 +51,29 @@ NSString * const kHasLaunchedAppBefore = @"com.hp.hp-sprocket.hasLaunchedAppBefo
     [super viewWillAppear:animated];
 
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     [self trackPageView:[self.pages firstObject]];
+
+    self.printerConnectedCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                       target:self
+                                                                     selector:@selector(skipWizardIfConnected)
+                                                                     userInfo:nil
+                                                                      repeats:YES];
 }
 
-- (BOOL)shouldSkipWizard
+- (void)viewWillDisappear:(BOOL)animated
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (nil == [defaults objectForKey:kHasLaunchedAppBefore]) {
-        [defaults setBool:YES forKey:kHasLaunchedAppBefore];
-        [defaults synchronize];
+    [super viewWillDisappear:animated];
 
-        if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
-            return NO;
-        }
+    [self.printerConnectedCheckTimer invalidate];
+    self.printerConnectedCheckTimer = nil;
+}
+
+- (void)skipWizardIfConnected
+{
+    if ([[MP sharedInstance] numberOfPairedSprockets] > 0) {
+        [self performSegueWithIdentifier:@"SkipWizardSegue" sender:self];
     }
-
-    return YES;
 }
 
 - (void)trackPageView:(UIViewController *)viewController
