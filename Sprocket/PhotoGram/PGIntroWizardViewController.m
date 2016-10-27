@@ -55,10 +55,10 @@
     [self trackPageView:[self.pages firstObject]];
 
     self.printerConnectedCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                                      repeats:YES
-                                                                        block:^(NSTimer * _Nonnull timer) {
-                                                                            [self skipWizardIfConnected];
-                                                                        }];
+                                                                       target:self
+                                                                     selector:@selector(skipWizardIfConnected)
+                                                                     userInfo:nil
+                                                                      repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
