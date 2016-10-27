@@ -180,9 +180,6 @@ typedef enum {
     self.flickrGestureRecognizer.enabled = NO;
     
     [self setTableFooterHeight];
-
-    [self setupLabel:self.deviceConnectivityLabel];
-    self.deviceConnectivityLabel.font = [UIFont HPSimplifiedLightFontWithSize:12.0f];
     
     [self setupLabel:self.devicesLabel];
 
