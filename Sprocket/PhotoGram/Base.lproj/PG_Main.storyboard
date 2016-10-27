@@ -1322,9 +1322,16 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DmV-M2-d4s">
-                                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
-                                                <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmV-M2-d4s">
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Put the entire pack in the paper tray with barcode and HP logos facing down.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="17" name="HPSimplified-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1369,9 +1376,16 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold the power button until the LED turns white." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-Sd-rVK">
-                                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
-                                                <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-Sd-rVK">
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Press and hold the power button until the LED turns white.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="17" name="HPSimplified-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1415,9 +1429,16 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-Fg-w5P">
-                                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
-                                                <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-Fg-w5P">
+                                                <attributedString key="attributedText">
+                                                    <fragment content="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer.">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="17" name="HPSimplified-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -2318,9 +2339,16 @@ printer and app support.</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-E2-jHE">
-                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-E2-jHE">
+                                <attributedString key="attributedText">
+                                    <fragment content="Put the entire pack in the paper tray with barcode and HP logos facing down.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="HPSimplified-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2330,7 +2358,7 @@ printer and app support.</string>
                             <constraint firstItem="qR2-E2-jHE" firstAttribute="top" secondItem="WBA-Od-V82" secondAttribute="bottom" constant="22" id="260-6H-47R"/>
                             <constraint firstItem="L7D-ND-niV" firstAttribute="top" secondItem="Cow-NT-XeC" secondAttribute="bottom" constant="70" id="272-1E-5do"/>
                             <constraint firstItem="qa8-cB-bpm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qR2-E2-jHE" secondAttribute="bottom" id="4Va-oC-VlN"/>
-                            <constraint firstAttribute="trailing" secondItem="qR2-E2-jHE" secondAttribute="trailing" constant="10" id="4lw-b6-Ou4"/>
+                            <constraint firstAttribute="trailing" secondItem="qR2-E2-jHE" secondAttribute="trailing" constant="30" id="4lw-b6-Ou4"/>
                             <constraint firstItem="qa8-cB-bpm" firstAttribute="leading" secondItem="V5g-sC-xEf" secondAttribute="leadingMargin" id="5tX-Wu-076"/>
                             <constraint firstAttribute="trailing" secondItem="XKH-FW-8wX" secondAttribute="trailing" id="KZn-Jr-t02"/>
                             <constraint firstItem="ANa-UT-ef7" firstAttribute="top" secondItem="L7D-ND-niV" secondAttribute="bottom" id="TUN-DS-zV5"/>
@@ -2345,7 +2373,7 @@ printer and app support.</string>
                             <constraint firstItem="Buw-cr-LLJ" firstAttribute="top" secondItem="qa8-cB-bpm" secondAttribute="bottom" id="o3s-BI-nM3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qa8-cB-bpm" secondAttribute="trailing" id="raA-fH-Rgy"/>
                             <constraint firstItem="ANa-UT-ef7" firstAttribute="centerX" secondItem="V5g-sC-xEf" secondAttribute="centerX" id="t5P-PG-3mk"/>
-                            <constraint firstItem="qR2-E2-jHE" firstAttribute="leading" secondItem="V5g-sC-xEf" secondAttribute="leading" constant="10" id="x8Y-HQ-OiU"/>
+                            <constraint firstItem="qR2-E2-jHE" firstAttribute="leading" secondItem="V5g-sC-xEf" secondAttribute="leading" constant="30" id="x8Y-HQ-OiU"/>
                             <constraint firstAttribute="trailing" secondItem="Buw-cr-LLJ" secondAttribute="trailing" id="yog-GA-pmO"/>
                         </constraints>
                     </view>
@@ -2486,9 +2514,16 @@ printer and app support.</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Press and hold the power button until the LED turns white." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bs3-IS-Mi4">
-                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bs3-IS-Mi4">
+                                <attributedString key="attributedText">
+                                    <fragment content="Press and hold the power button until the LED turns white.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="HPSimplified-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2603,9 +2638,16 @@ printer and app support.</string>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="9ty-Gh-wP2">
-                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="9ty-Gh-wP2">
+                                <attributedString key="attributedText">
+                                    <fragment content="From Bluetooth Settings, tap on  “HP sprocket” to pair with the printer.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="20" name="HPSimplified-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVl-B3-xgv">
@@ -2623,7 +2665,7 @@ printer and app support.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1CU-l3-G8v" firstAttribute="top" secondItem="evx-6C-227" secondAttribute="bottom" id="CcH-Mo-g2w"/>
-                            <constraint firstAttribute="trailing" secondItem="9ty-Gh-wP2" secondAttribute="trailing" constant="10" id="Cd8-b7-lJm"/>
+                            <constraint firstAttribute="trailing" secondItem="9ty-Gh-wP2" secondAttribute="trailing" constant="30" id="Cd8-b7-lJm"/>
                             <constraint firstItem="kCk-4w-iz1" firstAttribute="leading" secondItem="JMG-M4-0rY" secondAttribute="leading" id="GfH-GT-eQ9"/>
                             <constraint firstItem="KVl-B3-xgv" firstAttribute="width" secondItem="JMG-M4-0rY" secondAttribute="width" multiplier="0.5" id="HwA-C7-qbU"/>
                             <constraint firstItem="evx-6C-227" firstAttribute="centerX" secondItem="JMG-M4-0rY" secondAttribute="centerX" id="JrI-2L-BlM"/>
@@ -2637,7 +2679,7 @@ printer and app support.</string>
                             <constraint firstItem="evx-6C-227" firstAttribute="top" secondItem="lPs-jw-aJu" secondAttribute="bottom" constant="70" id="Y15-F6-7W5"/>
                             <constraint firstAttribute="trailing" secondItem="kCk-4w-iz1" secondAttribute="trailing" id="aQg-HN-z41"/>
                             <constraint firstItem="lpY-Gv-d5S" firstAttribute="top" secondItem="1CU-l3-G8v" secondAttribute="bottom" id="alS-Pi-4Dg"/>
-                            <constraint firstItem="9ty-Gh-wP2" firstAttribute="leading" secondItem="JMG-M4-0rY" secondAttribute="leading" constant="10" id="amA-gN-Pjo"/>
+                            <constraint firstItem="9ty-Gh-wP2" firstAttribute="leading" secondItem="JMG-M4-0rY" secondAttribute="leading" constant="30" id="amA-gN-Pjo"/>
                             <constraint firstItem="kCk-4w-iz1" firstAttribute="top" secondItem="74m-gn-ELV" secondAttribute="bottom" id="cfr-E4-Pvr"/>
                             <constraint firstItem="lpY-Gv-d5S" firstAttribute="centerX" secondItem="JMG-M4-0rY" secondAttribute="centerX" id="evR-FN-RGs"/>
                             <constraint firstAttribute="trailing" secondItem="KVl-B3-xgv" secondAttribute="trailing" id="hMT-UN-z5Y"/>
@@ -2698,6 +2740,6 @@ printer and app support.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BEK-gI-c4P"/>
-        <segue reference="E30-qK-DCn"/>
+        <segue reference="EXM-j8-c14"/>
     </inferredMetricsTieBreakers>
 </document>
