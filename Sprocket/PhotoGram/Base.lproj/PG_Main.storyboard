@@ -887,7 +887,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="gr7-FA-59J">
             <objects>
                 <navigationController storyboardIdentifier="PGTermsNavigationController" id="2uM-2W-Nu8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iEO-dW-j4P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEO-dW-j4P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1218,7 +1218,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="svA-7D-PyU">
             <objects>
                 <navigationController storyboardIdentifier="PrintInstructions" definesPresentationContext="YES" id="aOl-ln-qn3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="POo-5F-tuC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="POo-5F-tuC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1242,14 +1242,13 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resetSprocket" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-TA-9yj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resetSprocket" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-TA-9yj">
                                 <constraints>
-                                    <constraint firstAttribute="width" priority="750" constant="414" id="S6S-b1-ecJ"/>
-                                    <constraint firstAttribute="width" secondItem="gCC-TA-9yj" secondAttribute="height" multiplier="1.13" id="ixd-6R-QqE"/>
-                                    <constraint firstAttribute="height" priority="750" constant="368" id="rHu-Gm-n8S"/>
+                                    <constraint firstAttribute="width" secondItem="gCC-TA-9yj" secondAttribute="height" multiplier="53:47" id="6Rh-Ri-kTe"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="414" id="S6S-b1-ecJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIS-tD-Si9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sIS-tD-Si9">
                                 <string key="text">Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer.</string>
                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                 <color key="textColor" red="0.45882352941176469" green="0.46274509803921571" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
@@ -1258,12 +1257,13 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gCC-TA-9yj" firstAttribute="leading" secondItem="6f5-LW-jcC" secondAttribute="leadingMargin" constant="5" id="KU8-Pu-smV"/>
                             <constraint firstItem="sIS-tD-Si9" firstAttribute="top" secondItem="gCC-TA-9yj" secondAttribute="bottom" constant="53" id="KuG-oH-sHf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gCC-TA-9yj" secondAttribute="trailing" constant="5" id="L3K-Jh-Kfg"/>
+                            <constraint firstItem="gCC-TA-9yj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6f5-LW-jcC" secondAttribute="leading" id="QyP-qi-3IB"/>
                             <constraint firstItem="gCC-TA-9yj" firstAttribute="top" secondItem="68M-xH-0Yz" secondAttribute="bottom" constant="59" id="TIi-dG-rkr"/>
-                            <constraint firstItem="sIS-tD-Si9" firstAttribute="leading" secondItem="6f5-LW-jcC" secondAttribute="leadingMargin" constant="10" id="WsM-px-Ou3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sIS-tD-Si9" secondAttribute="trailing" constant="10" id="qPL-6s-gsq"/>
+                            <constraint firstItem="sIS-tD-Si9" firstAttribute="leading" secondItem="6f5-LW-jcC" secondAttribute="leading" constant="33" id="WsM-px-Ou3"/>
+                            <constraint firstItem="Edd-Id-DwG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sIS-tD-Si9" secondAttribute="bottom" constant="15" id="crC-Xp-ki2"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gCC-TA-9yj" secondAttribute="trailing" id="j2F-El-vRZ"/>
+                            <constraint firstAttribute="trailing" secondItem="sIS-tD-Si9" secondAttribute="trailing" constant="33" id="qPL-6s-gsq"/>
                             <constraint firstItem="gCC-TA-9yj" firstAttribute="centerX" secondItem="6f5-LW-jcC" secondAttribute="centerX" id="uHi-6r-1k9"/>
                             <constraint firstItem="sIS-tD-Si9" firstAttribute="centerX" secondItem="6f5-LW-jcC" secondAttribute="centerX" id="y8F-x1-coZ"/>
                         </constraints>
@@ -1529,7 +1529,7 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="100" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="6UJ-wx-GHn" id="vtM-Qg-8Gw">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="381" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resetMenu" translatesAutoresizingMaskIntoConstraints="NO" id="sWc-l8-HHE">
@@ -1560,7 +1560,7 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="144" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="Fo1-L8-FbB" id="cM8-ac-TCl">
-                                            <frame key="frameInset" width="381" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="381" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setupMenu" translatesAutoresizingMaskIntoConstraints="NO" id="M4X-ZW-cy4">
@@ -1591,7 +1591,7 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="188" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="6FA-A7-vWs" id="QyH-Hy-8sh">
-                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View User Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IFE-wR-WsV">
@@ -1613,7 +1613,7 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="232" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PMz-aF-SGY" id="AID-dg-dbc">
-                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tweet Support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGd-CY-o6r">
@@ -1635,7 +1635,7 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="276" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XS2-Tk-IN1" id="9It-ng-KSj">
-                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Join Support Forum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Vs-BF-yHI">
@@ -1657,7 +1657,7 @@ printer and app support.</string>
                                         <rect key="frame" x="0.0" y="320" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MTU-6P-bzL" id="yU5-tl-tqN">
-                                            <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                            <frame key="frameInset" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Visit Support Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34K-Xv-dA8">
@@ -1824,7 +1824,7 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VJ5-1U-fdc" id="oLe-H7-6Ri">
-                                    <frame key="frameInset" width="414" height="43.666666666666664"/>
+                                    <frame key="frameInset" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7fa-oG-gkS">
@@ -1848,7 +1848,7 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="66" width="414" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WIV-p8-f2c" id="5lM-KM-kDB">
-                                    <frame key="frameInset" width="414" height="163.66666666666666"/>
+                                    <frame key="frameInset" width="414" height="164"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HU6-rf-MYm" userLabel="logLevelPicker">
@@ -1880,7 +1880,7 @@ printer and app support.</string>
             <objects>
                 <navigationController definesPresentationContext="YES" id="LIT-0F-CjS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j1Y-sB-UJM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j1Y-sB-UJM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1898,7 +1898,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="WebViewerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qmP-7A-YZZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Q4Y-od-fvh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q4Y-od-fvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2002,7 +2002,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFacebookLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7vZ-mN-2fQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2G-vK-Cya">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2G-vK-Cya">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2189,7 +2189,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGInstagramLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="l4c-MK-fSA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="puT-PP-dRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="puT-PP-dRa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2207,7 +2207,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGCameraRollLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Udl-8d-vIJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Gs-Fu-tt9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Gs-Fu-tt9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2225,7 +2225,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFlickrLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KDo-po-4g5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ucl-Ve-qbL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucl-Ve-qbL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2243,7 +2243,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" customClass="PGLandingNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2739,7 +2739,7 @@ printer and app support.</string>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BEK-gI-c4P"/>
-        <segue reference="EXM-j8-c14"/>
+        <segue reference="QHg-ci-zc8"/>
+        <segue reference="Kes-Qj-IFQ"/>
     </inferredMetricsTieBreakers>
 </document>
