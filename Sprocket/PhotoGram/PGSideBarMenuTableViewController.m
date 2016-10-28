@@ -64,6 +64,7 @@
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 NSString * const kBuyPaperURL = @"http://hpsprocket.com/#supplies";
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
+NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
 

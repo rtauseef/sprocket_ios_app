@@ -2022,7 +2022,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFacebookLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7vZ-mN-2fQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2G-vK-Cya">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2G-vK-Cya">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2197,6 +2197,7 @@ printer and app support.</string>
                         <outlet property="landingButtonsView" destination="MkG-i6-mOl" id="0FV-Qq-Uvg"/>
                         <outlet property="termsLabel" destination="3rx-Fp-iLE" id="P5f-WS-bQD"/>
                         <outlet property="titleLabel" destination="r8A-4l-TdM" id="17y-Tk-jHz"/>
+                        <segue destination="qmP-7A-YZZ" kind="presentation" identifier="TakeOurSurveySegue" id="6IN-di-nfa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leT-PJ-Eni" userLabel="First Responder" sceneMemberID="firstResponder"/>
