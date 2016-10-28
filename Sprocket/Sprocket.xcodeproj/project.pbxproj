@@ -647,6 +647,8 @@
 		F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
 		F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */; };
 		F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */; };
+		F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
+		F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
 		FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
 		a066e20082450f3d9be0eacf /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D5066199AB87B006D80E0 /* main.m */; };
 		a06a22e0af01ef9f42819ad9 /* 11_pink_frame3_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852DF1D626A96001288D9 /* 11_pink_frame3_TN@2x.png */; };
@@ -1371,6 +1373,8 @@
 		F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSetupSprocketViewController.m; sourceTree = "<group>"; };
 		F2CE0E8D1DC1848A00AA2F6C /* PGLandingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingNavigationController.h; sourceTree = "<group>"; };
 		F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingNavigationController.m; sourceTree = "<group>"; };
+		F2CE0E911DC3E36700AA2F6C /* PGAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAttributedLabel.h; sourceTree = "<group>"; };
+		F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAttributedLabel.m; sourceTree = "<group>"; };
 		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
 		FF60F0BF1C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF60F0C01C44356E00E2804F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2134,6 +2138,8 @@
 				825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */,
 				92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */,
 				92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */,
+				F2CE0E911DC3E36700AA2F6C /* PGAttributedLabel.h */,
+				F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -3317,6 +3323,7 @@
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
+				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				0d5e2bd60e8c18c05212cbcc /* PGSaveToCameraRollActivity.m in Sources */,
@@ -3416,6 +3423,7 @@
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
+				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
