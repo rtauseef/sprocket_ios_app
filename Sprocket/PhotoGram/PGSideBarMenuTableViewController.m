@@ -167,7 +167,7 @@ typedef enum {
     [self setupSocialItemView:self.flickrUserView];
     [self setupSocialItemView:self.cameraRollView];
     
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4  ||  IS_IPHONE_5) {
         self.socialSourcesCellHeight.constant = CELL_SOCIAL_HEIGHT_SMALL;
     }
 
@@ -281,6 +281,8 @@ typedef enum {
         } else {
             cellHeight = CELL_HEIGHT_SMALL;
         }
+    } else if (IS_IPHONE_5) {
+        cellHeight = CELL_HEIGHT_SMALL;
     }
     
     return cellHeight;
@@ -460,7 +462,7 @@ typedef enum {
     CGFloat tableHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat cellHeight = CELL_HEIGHT;
 
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4  ||  IS_IPHONE_5) {
         cellHeight = CELL_HEIGHT_SMALL;
     }
 
