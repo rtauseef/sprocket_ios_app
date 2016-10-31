@@ -74,8 +74,6 @@
 		258e9fc72c86cb32a13852f3 /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740501D9A16E60090BA44 /* spider.png */; };
 		25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
-		261149D61DB0314C00C53F6D /* infoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261149D51DB0314C00C53F6D /* infoPlist.strings */; };
-		261BCFE81DC7F354003AF6F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261BCFEA1DC7F354003AF6F1 /* InfoPlist.strings */; };
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
 		264740591D9A16E60090BA44 /* bat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 264740011D9A16E60090BA44 /* bat_TN.png */; };
@@ -911,7 +909,6 @@
 		261149D01DB0311800C53F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		261149D21DB0311A00C53F6D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		261149D41DB0311B00C53F6D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/MainInterface.strings; sourceTree = "<group>"; };
-		261149D51DB0314C00C53F6D /* infoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = infoPlist.strings; sourceTree = "<group>"; };
 		261BCFE91DC7F354003AF6F1 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261BCFEB1DC7F7EB003AF6F1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261BCFEC1DC7F818003AF6F1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1578,8 +1575,6 @@
 				821523281D82215600C0541C /* ActionViewController.h */,
 				821523291D82215600C0541C /* ActionViewController.m */,
 				8215232B1D82215600C0541C /* MainInterface.storyboard */,
-				8215232E1D82215600C0541C /* Info.plist */,
-				261149D51DB0314C00C53F6D /* infoPlist.strings */,
 			);
 			path = "Sprocket Print";
 			sourceTree = "<group>";
@@ -2409,7 +2404,6 @@
 				82017ADD1D948AB600364F21 /* HPSimplified_It.ttf in Resources */,
 				82017ADE1D948AB600364F21 /* HPSimplified_Lt.ttf in Resources */,
 				82017ADF1D948AB600364F21 /* HPSimplified_LtIt.ttf in Resources */,
-				261149D61DB0314C00C53F6D /* infoPlist.strings in Resources */,
 				82017AE01D948AB600364F21 /* HPSimplified_Rg.ttf in Resources */,
 				8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */,
 				82157D071D91EEEF00360D87 /* Images.xcassets in Resources */,
