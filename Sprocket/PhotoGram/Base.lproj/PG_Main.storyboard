@@ -744,6 +744,7 @@
                         <outlet property="instagramUserView" destination="PuU-Nc-38b" id="IIm-GK-TLT"/>
                         <outlet property="logoImageView" destination="N4E-BV-ikN" id="HKC-TZ-wJL"/>
                         <outlet property="socialSourcesCellHeight" destination="q68-ee-ELW" id="P0N-T2-KBg"/>
+                        <outlet property="takeSurveyCell" destination="IJG-wT-5Fr" id="Fbn-rA-Msn"/>
                         <outletCollection property="cells" destination="s06-l9-9Fo" id="QtJ-ab-TKz"/>
                         <outletCollection property="cells" destination="jla-xB-Gb1" id="1Jd-V1-G9D"/>
                         <outletCollection property="cells" destination="L0C-2b-k55" id="jPv-aI-bVF"/>
@@ -910,7 +911,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="gr7-FA-59J">
             <objects>
                 <navigationController storyboardIdentifier="PGTermsNavigationController" id="2uM-2W-Nu8" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iEO-dW-j4P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEO-dW-j4P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1242,7 +1243,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="svA-7D-PyU">
             <objects>
                 <navigationController storyboardIdentifier="PrintInstructions" definesPresentationContext="YES" id="aOl-ln-qn3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="POo-5F-tuC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="POo-5F-tuC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1919,7 +1920,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="WebViewerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qmP-7A-YZZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Q4Y-od-fvh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q4Y-od-fvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2210,7 +2211,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGInstagramLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="l4c-MK-fSA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="puT-PP-dRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="puT-PP-dRa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2264,7 +2265,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" customClass="PGLandingNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

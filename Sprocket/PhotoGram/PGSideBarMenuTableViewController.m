@@ -49,13 +49,13 @@
 #define DEVICE_CONNECTIVITY_LABEL_X 58.0f
 #define SIGN_OUT_SPACE 1.0f
 
-#define DEVICES_INDEX 0
-#define BUY_PAPER 1
-#define HOW_TO_HELP 2
-#define GIVE_FEEDBACK 3
-#define TAKE_SURVEY 4
-#define PRIVACY_STATEMENT_INDEX 5
-#define ABOUT_INDEX 6
+static const NSInteger DEVICES_INDEX           = 0;
+static const NSInteger BUY_PAPER_INDEX         = 1;
+static const NSInteger HOW_TO_HELP_INDEX       = 2;
+static const NSInteger GIVE_FEEDBACK_INDEX     = 3;
+static const NSInteger TAKE_SURVEY_INDEX       = 4;
+static const NSInteger PRIVACY_STATEMENT_INDEX = 5;
+static const NSInteger ABOUT_INDEX             = 6;
 
 #define kSignInButtonTitle NSLocalizedString(@"Sign In", nil)
 #define kSignOutButtonTitle NSLocalizedString(@"Sign Out", nil)
@@ -97,6 +97,7 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (assign, nonatomic, getter = isInstagramLogged) BOOL instagramLogged;
 
 @property (strong, nonatomic) IBOutletCollection(UITableViewCell) NSArray *cells;
+@property (weak, nonatomic) IBOutlet UITableViewCell *takeSurveyCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *devicesCell;
 
 @property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
@@ -124,6 +125,9 @@ typedef enum {
 
     NSMutableArray *cells = [NSMutableArray arrayWithArray:self.cells];
     [cells addObject:self.devicesCell];
+    if (IS_IPHONE_4  ||  ![NSLocale isSurveyAvailable]) {
+        [cells removeObject:self.takeSurveyCell];
+    }
     
     self.cells = cells.copy;
     
@@ -163,7 +167,7 @@ typedef enum {
     [self setupSocialItemView:self.flickrUserView];
     [self setupSocialItemView:self.cameraRollView];
     
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4  ||  IS_IPHONE_5) {
         self.socialSourcesCellHeight.constant = CELL_SOCIAL_HEIGHT_SMALL;
     }
 
@@ -269,22 +273,30 @@ typedef enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat cellHeight = CELL_HEIGHT;
+    
     if (IS_IPHONE_4) {
-        return CELL_HEIGHT_SMALL;
+        if (TAKE_SURVEY_INDEX == indexPath.row) {
+            cellHeight = 0.0F;
+        } else {
+            cellHeight = CELL_HEIGHT_SMALL;
+        }
+    } else if (IS_IPHONE_5) {
+        cellHeight = CELL_HEIGHT_SMALL;
     }
     
-    return CELL_HEIGHT;
+    return cellHeight;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case GIVE_FEEDBACK: {
+        case GIVE_FEEDBACK_INDEX: {
             [self sendEmail];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
         }
-        case TAKE_SURVEY: {
+        case TAKE_SURVEY_INDEX: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSurveyURL]];
             break;
         }
@@ -293,7 +305,7 @@ typedef enum {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
         }
-        case BUY_PAPER: {
+        case BUY_PAPER_INDEX: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kBuyPaperURL]];
             break;
         }
@@ -450,7 +462,7 @@ typedef enum {
     CGFloat tableHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat cellHeight = CELL_HEIGHT;
 
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4  ||  IS_IPHONE_5) {
         cellHeight = CELL_HEIGHT_SMALL;
     }
 
