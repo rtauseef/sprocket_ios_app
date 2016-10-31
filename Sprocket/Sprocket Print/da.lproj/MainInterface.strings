@@ -1,9 +1,9 @@
-
 /* Class = "UIViewController"; title = "Image"; ObjectID = "ObA-dk-sSI"; */
-"ObA-dk-sSI.title" = "Image";
+"ObA-dk-sSI.title" = "Billede";
 
 /* Class = "UILabel"; text = "Sprocket"; ObjectID = "Qev-mY-2oe"; */
 "Qev-mY-2oe.text" = "Sprocket";
 
 /* Class = "UIButton"; normalTitle = "Print to sprocket"; ObjectID = "XPD-kO-soS"; */
-"XPD-kO-soS.normalTitle" = "Print to sprocket";
+"XPD-kO-soS.normalTitle" = "Udskriv til sprocket";
+

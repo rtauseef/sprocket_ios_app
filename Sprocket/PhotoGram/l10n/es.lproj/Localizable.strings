@@ -1,92 +1,230 @@
-/* No comment provided by engineer. */
-"An error occurred when sharing the item." = "Ocurrió un error al compartir el elemento.";
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Permita el acceso a sus Ajustes para tomar e imprimir fotos.";
 
 /* No comment provided by engineer. */
-"Buy sticker pack" = "Comprar paquete de adhesivos";
+"An error occurred when sharing the item." = "Se ha producido un error al compartir el elemento.";
 
-/* Generic Cancel from an action. */
+/* No comment provided by engineer. */
+"Arrow Sticker" = "Adhesivo flecha";
+
+/* No comment provided by engineer. */
+"Bird Sticker" = "Adhesivo pájaro";
+
+/* No comment provided by engineer. */
+"Birthday Hat Sticker" = "Adhesivo corona de cumpleaños";
+
+/* No comment provided by engineer. */
+"Blue Frame" = "Marco azul";
+
+/* No comment provided by engineer. */
+"Blue Gradient Frame" = "Marco de gradación azul";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Comprar papel";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "El acceso a la cámara es obligatorio";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
 "Cancel" = "Cancelar";
 
+/* No comment provided by engineer. */
+"Candy Sticker" = "Adhesivo caramelo";
+
+/* No comment provided by engineer. */
+"Cat Ears Sticker" = "Adhesivo orejas de gato";
+
+/* No comment provided by engineer. */
+"Cat Glasses Sticker" = "Adhesivo gafas de gato";
+
+/* No comment provided by engineer. */
+"Cat Sticker" = "Adhesivo gato";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Mira mi creación HP Sprocket";
+
 /* Checking the login status of the social network */
-"Checking" = "Verificando";
+"Checking" = "Comprobando";
 
 /* No comment provided by engineer. */
-"Choose Location" = "Elegir ubicación";
+"Cloud Sticker" = "Adhesivo nube";
 
 /* No comment provided by engineer. */
-"Custom Location" = "Ubicación personalizada";
-
-/* Option to customize the location */
-"Custom..." = "Personalizar...";
+"Crown Sticker" = "Adhesivo corona";
 
 /* No comment provided by engineer. */
-"Done" = "Listo";
+"Cupcake Sticker" = "Adhesivo cupcake";
 
 /* No comment provided by engineer. */
-"Enter Text" = "Ingresar texto";
+"DOD Mask Sticker" = "Adhesivo máscara DOD";
+
+/* No comment provided by engineer. */
+"Diamond Sticker" = "Adhesivo diamante";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Cerrar";
+
+/* No comment provided by engineer. */
+"Don't Save" = "No guardar";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Introducir texto";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Introducir más texto";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
 
-/* No comment provided by engineer. */
-"Error loading file from DropBox" = "Error al cargar archivo de DropBox";
-
 /* Error retrieving the facebook user information */
-"Error retrieving user information." = "Error al recuperar información de usuario";
+"Error retrieving user information." = "No se ha podido recuperar la información del usuario.";
+
+/* No comment provided by engineer. */
+"Fall 3 Eyes Sticker" = "Adhesivo 3 ojos otoño";
+
+/* No comment provided by engineer. */
+"Fall Bat Sticker" = "Adhesivo murciélago otoño";
+
+/* No comment provided by engineer. */
+"Fall Candy Corn Sticker" = "Adhesivo caramelo de maíz";
+
+/* No comment provided by engineer. */
+"Fall Cat Eyes Sticker" = "Adhesivo ojos de gato otoño";
+
+/* No comment provided by engineer. */
+"Fall Cat Whiskers Sticker" = "Adhesivo bigotes de gato otoño";
+
+/* No comment provided by engineer. */
+"Fall DOD Eyes Sticker" = "Adhesivo ojos DOD otoño";
+
+/* No comment provided by engineer. */
+"Fall Devil Horns Sticker" = "Adhesivo cuernos de diablo otoño";
+
+/* No comment provided by engineer. */
+"Fall Eyeball Sticker" = "Adhesivo globo ocular otoño";
+
+/* No comment provided by engineer. */
+"Fall Fangs Sticker" = "Adhesivo colmillos otoño";
+
+/* No comment provided by engineer. */
+"Fall Ghost Sticker" = "Adhesivo fantasma otoño";
+
+/* No comment provided by engineer. */
+"Fall Halloween Hat Sticker" = "Adhesivo sombrero de Halloween otoño";
+
+/* No comment provided by engineer. */
+"Fall Jason Mask Sticker" = "Adhesivo máscara de hockey otoño";
+
+/* No comment provided by engineer. */
+"Fall Leaf 3 Sticker" = "Adhesivo 3 hojas otoño";
+
+/* No comment provided by engineer. */
+"Fall Moon Face Sticker" = "Adhesivo luna llena otoño";
+
+/* No comment provided by engineer. */
+"Fall Moon Sticker" = "Adhesivo luna otoño";
+
+/* No comment provided by engineer. */
+"Fall Owl Sticker" = "Adhesivo búho otoño";
+
+/* No comment provided by engineer. */
+"Fall Pumpkin Sticker" = "Adhesivo calabaza otoño";
+
+/* No comment provided by engineer. */
+"Fall Scary Cat Sticker" = "Adhesivo gato aterrador";
+
+/* No comment provided by engineer. */
+"Fall Skull Sticker" = "Adhesivo calavera otoño";
+
+/* No comment provided by engineer. */
+"Fall Spider Sticker" = "Adhesivo araña otoño";
+
+/* No comment provided by engineer. */
+"Fall Spider Web Sticker" = "Adhesivo telaraña otoño";
+
+/* No comment provided by engineer. */
+"Feather 2 Sticker" = "Adhesivo 2 plumas";
+
+/* No comment provided by engineer. */
+"Feather Sticker" = "Adhesivo pluma";
 
 /* Subject of the email send to technical support */
-"Feedback on sprocket for iOS (Record Locator: %@)" = "Comentarios sobre sprocket para iOS (Localizador de registro: %@)";
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Comentarios sobre sprocket para iOS (localizador de registros: @";
 
 /* No comment provided by engineer. */
-"Log file has been cleared." = "Se eliminó el archivo de registros.";
+"Floral Frame" = "Marco floral";
 
 /* No comment provided by engineer. */
-"My HP Snapshot" = "Mi HP Snapshot";
+"Gradient Frame" = "Marco gradiente";
 
 /* No comment provided by engineer. */
-"No Connection Available" = "No hay conexión disponible";
+"Green Spray Paint Frame" = "Marco de pintura en spray verde";
 
 /* No comment provided by engineer. */
-"No Location" = "Sin ubicación";
+"Green Water Color Frame" = "Marco de color verde agua";
+
+/* No comment provided by engineer. */
+"Heart Express Sticker" = "Adhesivo corazón express";
+
+/* No comment provided by engineer. */
+"Heart Pixel Sticker" = "Adhesivo corazón pixelado";
+
+/* No comment provided by engineer. */
+"Hearts Sticker" = "Adhesivo corazones";
+
+/* No comment provided by engineer. */
+"How To" = "Cómo";
+
+/* No comment provided by engineer. */
+"Ice Cream Cone Sticker" = "Adhesivo helado de cucurucho";
+
+/* No comment provided by engineer. */
+"LOL Sticker" = "Adhesivo LOL";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "Se ha borrado el archivo de registro.";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Sin conexión";
 
 /* No comment provided by engineer. */
 "No, thanks" = "No, gracias";
 
-/* No comment provided by engineer. */
+/* Allows user close dialog */
 "OK" = "Aceptar";
 
 /* No comment provided by engineer. */
-"Oops!" = "¡Vaya!";
+"OMG Sticker" = "Adhesivo OMG";
 
 /* No comment provided by engineer. */
-"Oops! Call in the Designers!" = "¡Vaya! Llame a sus diseñadores";
+"Oops!" = "Lo sentimos.";
+
+/* No comment provided by engineer. */
+"Pink Frame" = "Marco rosa";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Marco de pintura en spray rosa";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
-You can also use your device photos." = "Conéctese a una fuente de datos
+You can also use your device photos." = "Conéctese a una fuente de datos.
 También puede usar las fotos de su dispositivo.";
 
-/* No comment provided by engineer. */
-"Please enter a location for this photo." = "Escriba la ubicación para esta foto.";
-
-/* Shows the description of the error */
-"Please retry. 
-
- If the problem persists contact us and mention this error code: %@" = "Inténtelo nuevamente. 
-
- Si el problema persiste póngase en contacto con nosotros y mencione el código de error: %@";
-
-/* No comment provided by engineer. */
-"Please select a location for this photo." = "Seleccione una ubicación para esta foto.";
-
 /* Ask the user to take a survey to say his opinion of the app */
-"Please tell us what is awesome and what could be better!" = "";
+"Please tell us what is awesome and what could be better!" = "Díganos qué le gusta y qué sé podría mejorar";
 
 /* No comment provided by engineer. */
-"Print Instructions" = "Instrucciones de impresión";
+"Polka Dots Frame" = "Marco topos";
 
 /* No comment provided by engineer. */
-"Remind me later" = "Recordarme más tarde";
+"Purple Frame" = "Marco púrpura";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Marco rojo";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Recordar más tarde";
 
 /* No comment provided by engineer. */
 "Reset" = "Restablecer";
@@ -98,37 +236,49 @@ También puede usar las fotos de su dispositivo.";
 "Retry" = "Reintentar";
 
 /* Title of a table view header */
-"SUPPORT:" = "SOPORTE:";
+"SUPPORT:" = "ASISTENCIA:";
 
 /* No comment provided by engineer. */
-"Save to Camera Roll" = "Guardar en Rollo de cámara";
-
-/* Title of the select template screen */
-"Select Template" = "Seleccionar plantilla";
+"Save" = "Guardar";
 
 /* No comment provided by engineer. */
-"Session Error" = "Error en sesión";
+"Save and exit preview?" = "¿Desea guardar y salir de la vista previa?";
 
 /* No comment provided by engineer. */
-"Set Location" = "Establecer una ubicación";
+"Save to Camera Roll" = "Guardar en el carrete de la cámara";
+
+/* Button for opening the app settings */
+"Settings" = "Ajustes";
 
 /* No comment provided by engineer. */
 "Sign In" = "Iniciar sesión";
 
 /* Signing out of a social media site. */
-"Sign Out" = "Cerrar sesión";
+"Sign Out" = "Salir";
 
 /* No comment provided by engineer. */
-"sprocket error log" = "Registro de errores de sprocket";
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Lo sentimos, el error no se puede notificar en estos momentos. Lo más probable es que no haya cuentas de correo configuradas en su dispositivo móvil.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Hay una actualización disponible del firmware de la impresora sprocket";
 
 /* No comment provided by engineer. */
-"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Disculpe, no podemos informar sobre su problema en este momento. Esto es probable porque no hay cuentas de correo configuradas en su dispositivo móvil.";
+"Star Sticker" = "Adhesivo estrella";
 
 /* No comment provided by engineer. */
-"Success" = "Correcto";
+"Stars Sticker" = "Adhesivo estrellas";
 
 /* No comment provided by engineer. */
-"Take the survey" = "Hacer la encuesta";
+"Success" = "Operación realizada correctamente";
+
+/* No comment provided by engineer. */
+"Sunglasses Sticker" = "Adhesivo gafas de sol";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Completar la encuesta";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Haga clic en Actualizar para continuar.";
 
 /* No comment provided by engineer. */
 "Tell us what you think of %@" = "Díganos qué piensa de %@";
@@ -137,26 +287,41 @@ También puede usar las fotos de su dispositivo.";
 "Tell us what you think of sprocket" = "Díganos qué piensa de sprocket";
 
 /* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Términos de servicio";
-
-/* The metadata of the template used is incorrect */
-"The format of the following template is bad: %@" = "El formato de la siguiente plantilla es incorrecto: %@";
+"Terms of Service" = "Términos del servicio";
 
 /* No comment provided by engineer. */
-"The logfile is attached to this message." = "El archivo de registro está adjunto a este mensaje.";
+"The logfile is attached to this message." = "El archivo de registro se adjunta a este mensaje.";
 
 /* No comment provided by engineer. */
-"This will clear all previously saved options." = "Se eliminará todas las opciones guardadas anteriormente.";
+"This will clear all previously saved options." = "Esto borrará todas las opciones guardadas.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Para actualizar, cargue la impresora sprocket al menos al 75 % y vaya a «sprocket» en el menú.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Marco turquesa";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Actualizar";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versión %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Marco azul agua";
+
+/* No comment provided by engineer. */
+"White Frame" = "Marco blanco";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "¿Desea salir de %@?";
 
 /* No comment provided by engineer. */
-"You don’t have any account configured to send emails." = "No tiene ninguna cuenta configurada para el envío de correo electrónico.";
+"XOXO Sticker" = "Adhesivo XOXO";
 
 /* No comment provided by engineer. */
-"Your current session is no longer valid. Please log in again." = "Su sesión actual ya no es válida. Vuelva a iniciar sesión.";
+"You don’t have any account configured to send emails." = "No ha configurado ninguna cuenta para enviar mensajes de correo electrónico.";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "informe de errores de sprocket";
 

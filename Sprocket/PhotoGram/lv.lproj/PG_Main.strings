@@ -1,168 +1,168 @@
-
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "0rj-qp-TWE"; */
-"0rj-qp-TWE.normalTitle" = "Sign in";
+"0rj-qp-TWE.normalTitle" = "Pierakstīties";
 
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
-"1Gm-FD-YRV.title" = "Done";
-
-/* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
-"34K-Xv-dA8.text" = "Visit Support Website";
+"1Gm-FD-YRV.title" = "Gatavs";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
-"3PR-Lb-830.title" = "How To & Help";
+"3PR-Lb-830.title" = "Norādījumi un palīdzība";
 
 /* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "By authenticating with social sources you also agree to HP Terms of Service.";
+"3rx-Fp-iLE.text" = "Autentificējoties sociālo pakalpojumu avotos, jūs piekrītat arī HP pakalpojumu sniegšanas noteikumiem.";
 
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "By authenticating with Instagram, you also agree with HP’s Terms of Service.";
+"3t6-KR-FbJ.text" = "Autentificējoties pakalpojumā Instagram, jūs piekrītat arī HP pakalpojumu sniegšanas noteikumiem.";
 
 /* Class = "UILabel"; text = "Join Support Forum"; ObjectID = "7Vs-BF-yHI"; */
-"7Vs-BF-yHI.text" = "Join Support Forum";
+"7Vs-BF-yHI.text" = "Pievienoties atbalsta forumam";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "7fa-oG-gkS"; */
-"7fa-oG-gkS.text" = "Title";
+"7fa-oG-gkS.text" = "Virsraksts";
 
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "8WR-66-byL"; */
-"8WR-66-byL.title" = "Done";
+"8WR-66-byL.title" = "Gatavs";
+
+/* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
+"34K-Xv-dA8.text" = "Apmeklēt atbalsta vietni";
 
 /* Class = "UILabel"; text = "Give Feedback"; ObjectID = "93f-4f-aru"; */
-"93f-4f-aru.text" = "Give Feedback";
+"93f-4f-aru.text" = "Sniegt atsauksmes";
 
 /* Class = "UILabel"; text = "© 2016 HP Development Company, L.P."; ObjectID = "BBT-a1-B1F"; */
-"BBT-a1-B1F.text" = "© 2016 HP Development Company, L.P.";
+"BBT-a1-B1F.text" = "© 2016 HP Development Company, L.P.";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
-"DG2-Ok-pfm.normalTitle" = "Sign in";
+"DG2-Ok-pfm.normalTitle" = "Pierakstīties";
 
 /* Class = "UILabel"; text = "Privacy"; ObjectID = "Ddg-PB-chd"; */
-"Ddg-PB-chd.text" = "Privacy";
+"Ddg-PB-chd.text" = "Privātums";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "EjE-om-e07"; */
-"EjE-om-e07.title" = "About";
+"EjE-om-e07.title" = "Par";
 
 /* Class = "UILabel"; text = "Instagram"; ObjectID = "GRY-xD-UPv"; */
 "GRY-xD-UPv.text" = "Instagram";
 
 /* Class = "UILabel"; text = "HP Sprocket App Terms of Service"; ObjectID = "Gwf-K7-scA"; */
-"Gwf-K7-scA.text" = "HP Sprocket App Terms of Service";
+"Gwf-K7-scA.text" = "HP programmas Sprocket pakalpojumu sniegšanas noteikumi";
 
 /* Class = "UILabel"; text = "HP Development Company, L.P."; ObjectID = "IRp-QK-PAY"; */
 "IRp-QK-PAY.text" = "HP Development Company, L.P.";
 
-/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "J10-Gj-77T"; */
-"J10-Gj-77T.title" = "Done";
-
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "J8w-u5-UoD"; */
-"J8w-u5-UoD.normalTitle" = "Sign in";
+"J8w-u5-UoD.normalTitle" = "Pierakstīties";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "J10-Gj-77T"; */
+"J10-Gj-77T.title" = "Gatavs";
 
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
-"JEt-SU-tLR.title" = "Camera Roll";
+"JEt-SU-tLR.title" = "Fotoattēli no kameras";
 
 /* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
-"MN9-s9-sQn.text" = "Tap here to edit the description";
+"MN9-s9-sQn.text" = "Pieskarieties šeit, lai rediģētu aprakstu";
 
 /* Class = "UILabel"; text = "Camera Roll"; ObjectID = "Mgb-ox-Ayr"; */
-"Mgb-ox-Ayr.text" = "Camera Roll";
+"Mgb-ox-Ayr.text" = "Fotoattēli no kameras";
 
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
-"P9D-sI-bhx.text" = "Copyright (c) 2016";
+"P9D-sI-bhx.text" = "Autortiesības (c) 2016";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "By authenticating with Flickr, you also agree with HP’s Terms of Service.";
+"QQK-QP-Amd.text" = "Autentificējoties pakalpojumā Flickr, jūs piekrītat arī HP pakalpojumu sniegšanas noteikumiem.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Qz4-e7-zDJ"; */
-"Qz4-e7-zDJ.normalTitle" = "Photos";
+"Qz4-e7-zDJ.normalTitle" = "Fotoattēli";
 
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
 
 /* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. ";
+"TEb-3v-7vp.text" = "Izmantojot šo programmu, varat izveidot savienojumu ar internetu un lietot Instagram, Facebook vai Flickr kontus, lai izveidotu un izdrukātu savu izvēlēto saturu. 
+
+Lai lietotu šo programmu, var būt nepieciešams savienojums ar internetu. Bezvadu režīma darbība ir atkarīga no fiziskās vides un jūsu attāluma līdz piekļuves punktam. Var būt nepieciešami datu plāni, kurus var iegādāties atsevišķi, vai var tikt piemērota lietošanas maksa. Drukāšanas laiks un savienojuma ātrums var atšķirties.
+
+Lai drukātu, būs nepieciešams HP Sprocket fotoattēlu printeris. Jūsu mobilajā ierīcē jāiespējo Bluetooth, jāieslēdz HP Sprocket fotoattēlu printeris un jāizveido printera pāra savienojums ar mobilo ierīci.
+
+Ja savienojumam ar internetu izmantojat datu tīklu, var tik piemērota papildu datu lietojuma maksa, pamatojoties uz jūsu datu tīkla plānu. 
+
+Lai uzlabotu turpmākās šīs programmas un HP printeru versijas, HP regulāri apkopos anonīmus šīs programmas lietojuma datus. ";
 
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
 
 /* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
-"U9F-p5-X9c.text" = "Version 1.0";
+"U9F-p5-X9c.text" = "Versija 1.0";
 
 /* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "By authenticating with Facebook, you also agree with HP’s Terms of Service.";
+"UGC-Wa-Xa2.text" = "Autentificējoties pakalpojumā Facebook, jūs piekrītat arī HP pakalpojumu sniegšanas noteikumiem.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
-"VKP-mJ-ZZt.text" = "Detail";
+"VKP-mJ-ZZt.text" = "Sīkāka informācija";
 
 /* Class = "UILabel"; text = "Facebook"; ObjectID = "Vz4-Tm-rcE"; */
 "Vz4-Tm-rcE.text" = "Facebook";
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "WMv-7o-mbb"; */
-"WMv-7o-mbb.text" = "sprocket";
+"WMv-7o-mbb.text" = "Sprocket";
 
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
-"XgH-Dx-oow.text" = "Saved to Camera Roll";
+"XgH-Dx-oow.text" = "Saglabāti mapē Fotoattēli no kameras";
 
 /* Class = "UILabel"; text = "How To & Help"; ObjectID = "XkB-S7-9ou"; */
-"XkB-S7-9ou.text" = "How To & Help";
+"XkB-S7-9ou.text" = "Norādījumi un palīdzība";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "By using Camera Roll, you also agree to the HP Terms of Service.";
+"Z1T-tw-tdj.text" = "Izmantojot iespēju Fotoattēli no kameras, jūs piekrītat arī HP pakalpojumu sniegšanas noteikumiem.";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
-"aja-HA-rCS.normalTitle" = "Sign in";
-
-/* Class = "UILabel"; text = "Ready"; ObjectID = "anQ-7m-MS2"; */
-"anQ-7m-MS2.text" = "Ready";
+"aja-HA-rCS.normalTitle" = "Pierakstīties";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "cvE-Qn-oLS"; */
-"cvE-Qn-oLS.normalTitle" = "Sign in";
-
-/* Class = "UILabel"; text = "sprocket"; ObjectID = "d71-za-T7q"; */
-"d71-za-T7q.text" = "sprocket";
+"cvE-Qn-oLS.normalTitle" = "Pierakstīties";
 
 /* Class = "UILabel"; text = "Buy Paper"; ObjectID = "d9t-5q-1nR"; */
-"d9t-5q-1nR.text" = "Buy Paper";
+"d9t-5q-1nR.text" = "Pirkt papīru";
+
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "d71-za-T7q"; */
+"d71-za-T7q.text" = "Sprocket";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "dcp-jn-Bby"; */
-"dcp-jn-Bby.text" = "About";
-
-/* Class = "UILabel"; text = "sprocket"; ObjectID = "fKs-uV-c3d"; */
-"fKs-uV-c3d.text" = "sprocket";
+"dcp-jn-Bby.text" = "Par";
 
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
-"fRU-DF-pcn.normalTitle" = "Edit";
+"fRU-DF-pcn.normalTitle" = "Rediģēt";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
-"ipg-92-MP9.title" = "Select Template";
+"ipg-92-MP9.title" = "Atlasīt veidni";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "jv7-tG-mp8"; */
-"jv7-tG-mp8.normalTitle" = "Sign in";
+"jv7-tG-mp8.normalTitle" = "Pierakstīties";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
-"krD-fF-9ON.text" = "Take or select a photo";
+"krD-fF-9ON.text" = "Uzņemt vai atlasīt fotoattēlu";
 
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
-"mGd-CY-o6r.text" = "Tweet Support";
+"mGd-CY-o6r.text" = "Tweet atbalsts";
 
 /* Class = "UILabel"; text = "New! Print later with our Print Queue"; ObjectID = "mh8-hT-PMS"; */
-"mh8-hT-PMS.text" = "New! Print later with our Print Queue";
+"mh8-hT-PMS.text" = "Jaunums! Drukāt vēlāk, izmantojot mūsu drukas rindu";
 
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "r8A-4l-TdM"; */
-"r8A-4l-TdM.text" = "sprocket";
+"r8A-4l-TdM.text" = "Sprocket";
 
 /* Class = "UILabel"; text = "Flickr"; ObjectID = "tOP-DZ-lMX"; */
 "tOP-DZ-lMX.text" = "Flickr";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
-"tmd-Ot-zoO.text" = "Don’t forget to Print & Share your design";
+"tmd-Ot-zoO.text" = "Neaizmirstiet izdrukāt un kopīgot savu dizainu";
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "vvr-jY-JqH"; */
-"vvr-jY-JqH.text" = "sprocket";
-
-/* Class = "UILabel"; text = "View User Guide"; ObjectID = "xdk-mR-STz"; */
-"xdk-mR-STz.text" = "View User Guide";
+"vvr-jY-JqH.text" = "Sprocket";
 
 /* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
-"znF-lh-wdy.text" = "Select an option below for sprocket\nprinter and app support.";
+"znF-lh-wdy.text" = "Atlasiet tālāk norādīto Sprocket
+printeri un programmas atbalstu.";
+
