@@ -49,10 +49,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: dcbdf8f1bafe3ab219765adc24948cf69be907b1
+    :commit: 3069254a72b384a8d393ea80f6b37db76b805cd6
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: bb5a9ea5a8ea3f4b0fda65ee9a3ff0523130e614
+    :commit: 59982e36b22069554dd02760f57d6ee4da5ff043
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:

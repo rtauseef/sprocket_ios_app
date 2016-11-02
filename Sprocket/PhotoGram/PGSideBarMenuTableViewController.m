@@ -275,7 +275,9 @@ typedef enum {
 {
     CGFloat cellHeight = CELL_HEIGHT;
     
-    if (IS_IPHONE_4) {
+    if (TAKE_SURVEY_INDEX == indexPath.row  &&  ![NSLocale isSurveyAvailable]) {
+        cellHeight = 0.0F;
+    } else if (IS_IPHONE_4) {
         if (TAKE_SURVEY_INDEX == indexPath.row) {
             cellHeight = 0.0F;
         } else {
