@@ -498,6 +498,46 @@
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
+		82E505491DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505351DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png */; };
+		82E5054A1DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505351DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png */; };
+		82E5054B1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505361DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png */; };
+		82E5054C1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505361DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png */; };
+		82E5054D1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505371DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png */; };
+		82E5054E1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505371DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png */; };
+		82E5054F1DCAABEF00AE493A /* Kraft_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505381DCAABEF00AE493A /* Kraft_Frame_iOS.png */; };
+		82E505501DCAABEF00AE493A /* Kraft_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505381DCAABEF00AE493A /* Kraft_Frame_iOS.png */; };
+		82E505511DCAABEF00AE493A /* Orange_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505391DCAABEF00AE493A /* Orange_Frame_iOS_TN.png */; };
+		82E505521DCAABEF00AE493A /* Orange_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505391DCAABEF00AE493A /* Orange_Frame_iOS_TN.png */; };
+		82E505531DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053A1DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png */; };
+		82E505541DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053A1DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png */; };
+		82E505551DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053B1DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png */; };
+		82E505561DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053B1DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png */; };
+		82E505571DCAABEF00AE493A /* Orange_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053C1DCAABEF00AE493A /* Orange_Frame_iOS.png */; };
+		82E505581DCAABEF00AE493A /* Orange_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053C1DCAABEF00AE493A /* Orange_Frame_iOS.png */; };
+		82E505591DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053D1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png */; };
+		82E5055A1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053D1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png */; };
+		82E5055B1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053E1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png */; };
+		82E5055C1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053E1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png */; };
+		82E5055D1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053F1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png */; };
+		82E5055E1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5053F1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png */; };
+		82E5055F1DCAABEF00AE493A /* Sloppy_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505401DCAABEF00AE493A /* Sloppy_Frame_iOS.png */; };
+		82E505601DCAABEF00AE493A /* Sloppy_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505401DCAABEF00AE493A /* Sloppy_Frame_iOS.png */; };
+		82E505611DCAABEF00AE493A /* Wood_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505411DCAABEF00AE493A /* Wood_Frame_iOS_TN.png */; };
+		82E505621DCAABEF00AE493A /* Wood_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505411DCAABEF00AE493A /* Wood_Frame_iOS_TN.png */; };
+		82E505631DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505421DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png */; };
+		82E505641DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505421DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png */; };
+		82E505651DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505431DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png */; };
+		82E505661DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505431DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png */; };
+		82E505671DCAABEF00AE493A /* Wood_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505441DCAABEF00AE493A /* Wood_Frame_iOS.png */; };
+		82E505681DCAABEF00AE493A /* Wood_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505441DCAABEF00AE493A /* Wood_Frame_iOS.png */; };
+		82E505691DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505451DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png */; };
+		82E5056A1DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505451DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png */; };
+		82E5056B1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505461DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png */; };
+		82E5056C1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505461DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png */; };
+		82E5056D1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505471DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png */; };
+		82E5056E1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505471DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png */; };
+		82E5056F1DCAABEF00AE493A /* Yellow_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505481DCAABEF00AE493A /* Yellow_Frame_iOS.png */; };
+		82E505701DCAABEF00AE493A /* Yellow_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E505481DCAABEF00AE493A /* Yellow_Frame_iOS.png */; };
 		82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */; };
 		83569bef079a56f02f2a8855 /* 7_gradient_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852D11D626A96001288D9 /* 7_gradient_frame.png */; };
 		8600eea73f9445cc6332b1d7 /* skull_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2647404B1D9A16E60090BA44 /* skull_TN@3x.png */; };
@@ -1209,6 +1249,26 @@
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82D6C74B1D1B47060030569F /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
 		82D6C74C1D1B47060030569F /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
+		82E505351DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kraft_Frame_iOS_TN.png; sourceTree = "<group>"; };
+		82E505361DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kraft_Frame_iOS_TN@2x.png"; sourceTree = "<group>"; };
+		82E505371DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kraft_Frame_iOS_TN@3x.png"; sourceTree = "<group>"; };
+		82E505381DCAABEF00AE493A /* Kraft_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kraft_Frame_iOS.png; sourceTree = "<group>"; };
+		82E505391DCAABEF00AE493A /* Orange_Frame_iOS_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Orange_Frame_iOS_TN.png; sourceTree = "<group>"; };
+		82E5053A1DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange_Frame_iOS_TN@2x.png"; sourceTree = "<group>"; };
+		82E5053B1DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange_Frame_iOS_TN@3x.png"; sourceTree = "<group>"; };
+		82E5053C1DCAABEF00AE493A /* Orange_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Orange_Frame_iOS.png; sourceTree = "<group>"; };
+		82E5053D1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sloppy_Frame_iOS_TN.png; sourceTree = "<group>"; };
+		82E5053E1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sloppy_Frame_iOS_TN@2x.png"; sourceTree = "<group>"; };
+		82E5053F1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sloppy_Frame_iOS_TN@3x.png"; sourceTree = "<group>"; };
+		82E505401DCAABEF00AE493A /* Sloppy_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sloppy_Frame_iOS.png; sourceTree = "<group>"; };
+		82E505411DCAABEF00AE493A /* Wood_Frame_iOS_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wood_Frame_iOS_TN.png; sourceTree = "<group>"; };
+		82E505421DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wood_Frame_iOS_TN@2x.png"; sourceTree = "<group>"; };
+		82E505431DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wood_Frame_iOS_TN@3x.png"; sourceTree = "<group>"; };
+		82E505441DCAABEF00AE493A /* Wood_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wood_Frame_iOS.png; sourceTree = "<group>"; };
+		82E505451DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow_Frame_iOS_TN.png; sourceTree = "<group>"; };
+		82E505461DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow_Frame_iOS_TN@2x.png"; sourceTree = "<group>"; };
+		82E505471DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow_Frame_iOS_TN@3x.png"; sourceTree = "<group>"; };
+		82E505481DCAABEF00AE493A /* Yellow_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow_Frame_iOS.png; sourceTree = "<group>"; };
 		82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResetSprocketViewController.m; sourceTree = "<group>"; };
 		82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGResetSprocketViewController.h; sourceTree = "<group>"; };
 		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
@@ -1590,6 +1650,7 @@
 				821852B61D626A96001288D9 /* 1_turquoise_frame_TN.png */,
 				821852B71D626A96001288D9 /* 1_turquoise_frame_TN@2x.png */,
 				821852B81D626A96001288D9 /* 1_turquoise_frame_TN@3x.png */,
+				82E505341DCAABE000AE493A /* Thanksgiving */,
 				821852B91D626A96001288D9 /* 1_turquoise_frame.png */,
 				821852BA1D626A96001288D9 /* 2_pink_spraypaint_frame2_TN.png */,
 				821852BB1D626A96001288D9 /* 2_pink_spraypaint_frame2_TN@2x.png */,
@@ -1750,6 +1811,33 @@
 				821852891D625FFB001288D9 /* xoxo.png */,
 			);
 			name = Stickers;
+			sourceTree = "<group>";
+		};
+		82E505341DCAABE000AE493A /* Thanksgiving */ = {
+			isa = PBXGroup;
+			children = (
+				82E505351DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png */,
+				82E505361DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png */,
+				82E505371DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png */,
+				82E505381DCAABEF00AE493A /* Kraft_Frame_iOS.png */,
+				82E505391DCAABEF00AE493A /* Orange_Frame_iOS_TN.png */,
+				82E5053A1DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png */,
+				82E5053B1DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png */,
+				82E5053C1DCAABEF00AE493A /* Orange_Frame_iOS.png */,
+				82E5053D1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png */,
+				82E5053E1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png */,
+				82E5053F1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png */,
+				82E505401DCAABEF00AE493A /* Sloppy_Frame_iOS.png */,
+				82E505411DCAABEF00AE493A /* Wood_Frame_iOS_TN.png */,
+				82E505421DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png */,
+				82E505431DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png */,
+				82E505441DCAABEF00AE493A /* Wood_Frame_iOS.png */,
+				82E505451DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png */,
+				82E505461DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png */,
+				82E505471DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png */,
+				82E505481DCAABEF00AE493A /* Yellow_Frame_iOS.png */,
+			);
+			name = Thanksgiving;
 			sourceTree = "<group>";
 		};
 		920731561DC00F0E001EBBF0 /* NapaFilmFestival */ = {
@@ -2426,9 +2514,11 @@
 				8218532B1D626A96001288D9 /* 15_purple_frame2_TN@2x.png in Resources */,
 				821852FB1D626A96001288D9 /* 3_blue_watercolor_frame_TN@2x.png in Resources */,
 				821852A61D625FFB001288D9 /* LOL_TN.png in Resources */,
+				82E5056F1DCAABEF00AE493A /* Yellow_Frame_iOS.png in Resources */,
 				822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */,
 				821852AC1D625FFB001288D9 /* stars_TN@3x.png in Resources */,
 				821852A01D625FFB001288D9 /* heartPixel_TN@3x.png in Resources */,
+				82E505491DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png in Resources */,
 				9207315E1DC00FFD001EBBF0 /* NVFF_Frame_TN@3x.png in Resources */,
 				264740651D9A16E60090BA44 /* catwhiskers_TN.png in Resources */,
 				264740A01D9A16E60090BA44 /* scarycat.png in Resources */,
@@ -2451,12 +2541,14 @@
 				821853271D626A96001288D9 /* 14_blue_gradient_frame_TN@2x.png in Resources */,
 				9207315D1DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png in Resources */,
 				264740761D9A16E60090BA44 /* eyeball_TN@2x.png in Resources */,
+				82E5054D1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png in Resources */,
 				821853291D626A96001288D9 /* 14_blue_gradient_frame.png in Resources */,
 				82362A531D59557E0019F024 /* starhp_TN@3x.png in Resources */,
 				264740821D9A16E60090BA44 /* HalloweenHat_TN@2x.png in Resources */,
 				8218520C1D625FBA001288D9 /* catears_TN@3x.png in Resources */,
 				264740911D9A16E60090BA44 /* moonface_TN.png in Resources */,
 				264740801D9A16E60090BA44 /* ghost.png in Resources */,
+				82E5056B1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png in Resources */,
 				82362A431D59557E0019F024 /* hearts_TN@3x.png in Resources */,
 				821852081D625FBA001288D9 /* cat_TN@3x.png in Resources */,
 				82362A371D59557E0019F024 /* crown_TN.png in Resources */,
@@ -2471,7 +2563,9 @@
 				264740641D9A16E60090BA44 /* cateyes.png in Resources */,
 				264740841D9A16E60090BA44 /* HalloweenHat.png in Resources */,
 				821852951D625FFB001288D9 /* feather.png in Resources */,
+				82E5055F1DCAABEF00AE493A /* Sloppy_Frame_iOS.png in Resources */,
 				8218531A1D626A96001288D9 /* 11_pink_frame3_TN.png in Resources */,
+				82E505611DCAABEF00AE493A /* Wood_Frame_iOS_TN.png in Resources */,
 				821853151D626A96001288D9 /* 9_polkadots_frame.png in Resources */,
 				2647407B1D9A16E60090BA44 /* fangs_TN@3x.png in Resources */,
 				8218531E1D626A96001288D9 /* 12_blue_frame2_TN.png in Resources */,
@@ -2514,6 +2608,7 @@
 				264740A31D9A16E60090BA44 /* skull_TN@3x.png in Resources */,
 				E39EF27819B648E500AAB884 /* CoveredByYourGrace.ttf in Resources */,
 				E39EF27A19B648E500AAB884 /* Glegoo-Regular.ttf in Resources */,
+				82E505651DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png in Resources */,
 				264740711D9A16E60090BA44 /* DODmask_TN.png in Resources */,
 				E34D50AF199AB9FE006D80E0 /* HPSimplified_Bd.ttf in Resources */,
 				E34D50B0199AB9FE006D80E0 /* HPSimplified_BdIt.ttf in Resources */,
@@ -2526,6 +2621,7 @@
 				E34D50B3199AB9FE006D80E0 /* HPSimplified_LtIt.ttf in Resources */,
 				264740731D9A16E60090BA44 /* DODmask_TN@3x.png in Resources */,
 				821852921D625FFB001288D9 /* feather_TN.png in Resources */,
+				82E505631DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png in Resources */,
 				821851FC1D625FBA001288D9 /* bird_TN@3x.png in Resources */,
 				E34D50B4199AB9FE006D80E0 /* HPSimplified_Rg.ttf in Resources */,
 				8218530C1D626A96001288D9 /* 7_gradient_frame_TN@3x.png in Resources */,
@@ -2542,8 +2638,10 @@
 				8218528D1D625FFB001288D9 /* cupcake.png in Resources */,
 				8218530E1D626A96001288D9 /* 8_green_spraypaint_frame3_TN.png in Resources */,
 				E34D50B7199AB9FE006D80E0 /* Pacifico.ttf in Resources */,
+				82E505551DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png in Resources */,
 				264740951D9A16E60090BA44 /* owl_TN.png in Resources */,
 				82362A491D59557E0019F024 /* OMG_TN@2x.png in Resources */,
+				82E505511DCAABEF00AE493A /* Orange_Frame_iOS_TN.png in Resources */,
 				821852F41D626A96001288D9 /* 1_turquoise_frame_TN@3x.png in Resources */,
 				264740A61D9A16E60090BA44 /* spider_TN@2x.png in Resources */,
 				821852061D625FBA001288D9 /* cat_TN.png in Resources */,
@@ -2558,13 +2656,17 @@
 				2647407D1D9A16E60090BA44 /* ghost_TN.png in Resources */,
 				821853091D626A96001288D9 /* 6_floral_frame3.png in Resources */,
 				E39EF28819B648E500AAB884 /* SpecialElite.ttf in Resources */,
+				82E505571DCAABEF00AE493A /* Orange_Frame_iOS.png in Resources */,
 				F1DCB82B1B542D6500CA9AAD /* spicyrice-regular.ttf in Resources */,
 				E375385919BE57C5009C695F /* About@2x.png in Resources */,
 				821852101D625FBA001288D9 /* cloud_TN@3x.png in Resources */,
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
+				82E505691DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png in Resources */,
 				821852A11D625FFB001288D9 /* heartPixel.png in Resources */,
 				264740691D9A16E60090BA44 /* devilhorns_TN.png in Resources */,
+				82E505531DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png in Resources */,
 				821852011D625FBA001288D9 /* birthdayHat.png in Resources */,
+				82E5054B1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png in Resources */,
 				82362A351D59557E0019F024 /* catglasses.png in Resources */,
 				821852AA1D625FFB001288D9 /* stars_TN.png in Resources */,
 				821852FE1D626A96001288D9 /* 4_white_frame_TN.png in Resources */,
@@ -2613,6 +2715,7 @@
 				821852A31D625FFB001288D9 /* icecreamcone_TN@2x.png in Resources */,
 				821853261D626A96001288D9 /* 14_blue_gradient_frame_TN.png in Resources */,
 				264740971D9A16E60090BA44 /* owl_TN@3x.png in Resources */,
+				82E5055D1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png in Resources */,
 				CC10808519CA122B00C1553A /* logo.blue.png in Resources */,
 				E3461FA119AF84A80042DF5E /* MeasurementArrowDown@2x.png in Resources */,
 				821852B11D625FFB001288D9 /* sunglasses.png in Resources */,
@@ -2647,9 +2750,11 @@
 				821851FB1D625FBA001288D9 /* bird_TN@2x.png in Resources */,
 				8218520A1D625FBA001288D9 /* catears_TN.png in Resources */,
 				2647408B1D9A16E60090BA44 /* leaf3_TN@3x.png in Resources */,
+				82E5055B1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png in Resources */,
 				82362A331D59557E0019F024 /* catglasses_TN@3x.png in Resources */,
 				2647408C1D9A16E60090BA44 /* leaf3.png in Resources */,
 				82362A4D1D59557E0019F024 /* OMG.png in Resources */,
+				82E5054F1DCAABEF00AE493A /* Kraft_Frame_iOS.png in Resources */,
 				264740A81D9A16E60090BA44 /* spider.png in Resources */,
 				E375386319BE57C5009C695F /* TakeSurvey@2x.png in Resources */,
 				264740721D9A16E60090BA44 /* DODmask_TN@2x.png in Resources */,
@@ -2686,6 +2791,7 @@
 				82362A451D59557E0019F024 /* hearts.png in Resources */,
 				821853221D626A96001288D9 /* 13_floral2_frame_TN.png in Resources */,
 				8218530D1D626A96001288D9 /* 7_gradient_frame.png in Resources */,
+				82E5056D1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png in Resources */,
 				2647406E1D9A16E60090BA44 /* DODeyes_TN@2x.png in Resources */,
 				264740851D9A16E60090BA44 /* jasonmask_TN.png in Resources */,
 				264740991D9A16E60090BA44 /* pumpkin_TN.png in Resources */,
@@ -2716,8 +2822,10 @@
 				2647406B1D9A16E60090BA44 /* devilhorns_TN@3x.png in Resources */,
 				8218531B1D626A96001288D9 /* 11_pink_frame3_TN@2x.png in Resources */,
 				821853231D626A96001288D9 /* 13_floral2_frame_TN@2x.png in Resources */,
+				82E505591DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png in Resources */,
 				E39CE8D41AA7C05900A2A644 /* DBChooser.bundle in Resources */,
 				264740A11D9A16E60090BA44 /* skull_TN.png in Resources */,
+				82E505671DCAABEF00AE493A /* Wood_Frame_iOS.png in Resources */,
 				264740611D9A16E60090BA44 /* cateyes_TN.png in Resources */,
 				821852F91D626A96001288D9 /* 2_pink_spraypaint_frame2.png in Resources */,
 				65E671E91A78267A009A12F3 /* Settings.bundle in Resources */,
@@ -2749,6 +2857,8 @@
 				f39d5074682c2ca269009d18 /* catwhiskers_TN.png in Resources */,
 				0914586f9edcf74c164baf1e /* scarycat.png in Resources */,
 				ffccbcf4151e1db00dc7b715 /* spiderweb_TN@3x.png in Resources */,
+				82E505701DCAABEF00AE493A /* Yellow_Frame_iOS.png in Resources */,
+				82E5056E1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@3x.png in Resources */,
 				cc8dcbd24fb07de8e5b74fb0 /* spiderweb_TN.png in Resources */,
 				2cd670907ef7ede7c270e8e2 /* cupcake_TN@2x.png in Resources */,
 				25540b22bbe25bb03ffee69c /* bat.png in Resources */,
@@ -2771,6 +2881,7 @@
 				68afebd20b4e886f5f4a194a /* catears_TN@3x.png in Resources */,
 				ce33c7557893ecdfd4065a2f /* moonface_TN.png in Resources */,
 				cf56a952c89137af60cab8a8 /* ghost.png in Resources */,
+				82E5055C1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@2x.png in Resources */,
 				4356022bed1eba49678c3319 /* hearts_TN@3x.png in Resources */,
 				8ebc72196c4d69432bc0d4f3 /* cat_TN@3x.png in Resources */,
 				5ebd09d80222afabe5cb11e6 /* crown_TN.png in Resources */,
@@ -2778,7 +2889,9 @@
 				9b602d50ac8f13a2bef351a7 /* 12_blue_frame2_TN@2x.png in Resources */,
 				42a93d1d65114d07356c3884 /* spider_TN.png in Resources */,
 				30ca0973712d098dc12f2fa7 /* Get_Help_Print@3x.png in Resources */,
+				82E505641DCAABEF00AE493A /* Wood_Frame_iOS_TN@2x.png in Resources */,
 				3f25bf707c159119225659f7 /* 4_white_frame.png in Resources */,
+				82E505661DCAABEF00AE493A /* Wood_Frame_iOS_TN@3x.png in Resources */,
 				651121ca608ac7a740a1c170 /* owl.png in Resources */,
 				094d42be235587fcd97970dd /* Sprocket.gif in Resources */,
 				8140e11bd2db73a82a6b3725 /* DODeyes.png in Resources */,
@@ -2814,6 +2927,7 @@
 				328bf051b3e3af62c7e90ba1 /* sunglasses_TN@2x.png in Resources */,
 				aad67ff019ae9ef3e4ab77c3 /* threeeyes.png in Resources */,
 				b3c0cbae136849d796260560 /* 9_polkadots_frame_TN@3x.png in Resources */,
+				82E505621DCAABEF00AE493A /* Wood_Frame_iOS_TN.png in Resources */,
 				de3e98d3018b073d35b2b8b5 /* 3_blue_watercolor_frame_TN.png in Resources */,
 				c6b85e9923ca3f87d10faddb /* heartPixel_TN.png in Resources */,
 				24980fc28785d156565083b6 /* 15_purple_frame2_TN.png in Resources */,
@@ -2827,6 +2941,8 @@
 				0a2c4d2bfb8cece1f9d1a367 /* Bitter-Regular.ttf in Resources */,
 				8600eea73f9445cc6332b1d7 /* skull_TN@3x.png in Resources */,
 				0aefe6fad1e472ac8cdf97a8 /* CoveredByYourGrace.ttf in Resources */,
+				82E5055A1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN.png in Resources */,
+				82E5054C1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@2x.png in Resources */,
 				9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */,
 				544f60ae599f89f17f1427d0 /* DODmask_TN.png in Resources */,
 				6a8094a8039774830aa1746a /* HPSimplified_Bd.ttf in Resources */,
@@ -2834,6 +2950,7 @@
 				931011cfa59ab183131a3a7a /* leaf3_TN.png in Resources */,
 				55820da898ff91dc81b5f231 /* heartExpress_TN.png in Resources */,
 				a73ce2ed73fb4ce344b47988 /* HPSimplified_It.ttf in Resources */,
+				82E505561DCAABEF00AE493A /* Orange_Frame_iOS_TN@3x.png in Resources */,
 				91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */,
 				3c5e32682184b958db2c4972 /* HPSimplified_Lt.ttf in Resources */,
 				3f61a6f79eae18c8239267a5 /* HPSimplified_LtIt.ttf in Resources */,
@@ -2845,8 +2962,10 @@
 				d5177b16d2258231c10cf82e /* Jura-Regular.ttf in Resources */,
 				fdae1cf600f0b63189e29821 /* Muli-Regular.ttf in Resources */,
 				43b609dceb787e0ecf6212a2 /* eyeball.png in Resources */,
+				82E505681DCAABEF00AE493A /* Wood_Frame_iOS.png in Resources */,
 				7369f6fabff1133388e70bae /* cateyes_TN@3x.png in Resources */,
 				51ed1ffe4c635bd63e6eaef7 /* xoxo_TN.png in Resources */,
+				82E5054A1DCAABEF00AE493A /* Kraft_Frame_iOS_TN.png in Resources */,
 				bb2c4481401f5b9933011b69 /* OpenSans-Bold.ttf in Resources */,
 				a86a86e36b886d598c138e4e /* 14_blue_gradient_frame_TN@3x.png in Resources */,
 				24aac4a8d0db64cca9c8f317 /* 15_purple_frame2_TN@3x.png in Resources */,
@@ -2856,6 +2975,7 @@
 				32ff736217b8af39837500f0 /* 8_green_spraypaint_frame3_TN.png in Resources */,
 				a6c8a9eda54ca7d3639478d0 /* Pacifico.ttf in Resources */,
 				cbd8bb37063067d3d3e7593d /* owl_TN.png in Resources */,
+				82E5054E1DCAABEF00AE493A /* Kraft_Frame_iOS_TN@3x.png in Resources */,
 				3148edc195c405fddad1b6a3 /* OMG_TN@2x.png in Resources */,
 				8f227c44012840e2700f041d /* 1_turquoise_frame_TN@3x.png in Resources */,
 				93f0873da674d088fce78770 /* spider_TN@2x.png in Resources */,
@@ -2870,6 +2990,7 @@
 				228895a9964ecb3edb51c4aa /* icecreamcone.png in Resources */,
 				3809280899bb8c1fa138c4e4 /* ghost_TN.png in Resources */,
 				1fc87134a9521da32f721f25 /* 6_floral_frame3.png in Resources */,
+				82E5056A1DCAABEF00AE493A /* Yellow_Frame_iOS_TN.png in Resources */,
 				ad69787d6bdf794e837f2b25 /* SpecialElite.ttf in Resources */,
 				1043240fc3ef82aadbac9748 /* spicyrice-regular.ttf in Resources */,
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
@@ -2880,11 +3001,13 @@
 				7c7a6af4c5b9a170cef28990 /* birthdayHat.png in Resources */,
 				343d40aad2e7a4e478a5f9ca /* catglasses.png in Resources */,
 				5522aba7222f85b2819ba9c7 /* stars_TN.png in Resources */,
+				82E505601DCAABEF00AE493A /* Sloppy_Frame_iOS.png in Resources */,
 				2d88afc85ef6599f299351fe /* 4_white_frame_TN.png in Resources */,
 				57699a5b81bfa9db567fb52b /* catglasses_TN.png in Resources */,
 				9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */,
 				d3c85f0beddad3544ec33d03 /* DODmask.png in Resources */,
 				5127173d4e5d95d27a5a831e /* feather2_TN@2x.png in Resources */,
+				82E505541DCAABEF00AE493A /* Orange_Frame_iOS_TN@2x.png in Resources */,
 				82607c99a642dddd0ec62e93 /* 3_blue_watercolor_frame_TN@3x.png in Resources */,
 				40afc0a690d0f851c76ba87e /* 10_green_watercolor_frame2_TN@3x.png in Resources */,
 				354be86c5a47e803a13f78d3 /* feather2_TN@3x.png in Resources */,
@@ -2932,6 +3055,7 @@
 				f71d78c69a3b2cf26cda3fe5 /* threeeyes_TN@2x.png in Resources */,
 				59179d046194372660f136ed /* stars_TN@2x.png in Resources */,
 				9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */,
+				82E505521DCAABEF00AE493A /* Orange_Frame_iOS_TN.png in Resources */,
 				d10206a16285baaae005a8bd /* heartExpress_TN@2x.png in Resources */,
 				666fe432ca854b4d8164e0b0 /* starhp_TN@2x.png in Resources */,
 				264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */,
@@ -2952,6 +3076,7 @@
 				a5f5f091bb62a75a79f88b31 /* starhp_TN.png in Resources */,
 				9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */,
 				f765e3af0d4ed14ec5658efb /* fangs.png in Resources */,
+				82E5055E1DCAABEF00AE493A /* Sloppy_Frame_iOS_TN@3x.png in Resources */,
 				d74e60c022d333e88f766adc /* 8_green_spraypaint_frame3.png in Resources */,
 				67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */,
 				39ccd4a8aef132e6f5cce108 /* scarycat_TN.png in Resources */,
@@ -2977,6 +3102,7 @@
 				74672be5f58d79f6e01b1dba /* diamond_TN.png in Resources */,
 				8c69591b262054e2e4c92b05 /* cateyes_TN@2x.png in Resources */,
 				1532f7aeffefa705212da5c7 /* moonface_TN@3x.png in Resources */,
+				82E5056C1DCAABEF00AE493A /* Yellow_Frame_iOS_TN@2x.png in Resources */,
 				6a7bc084c14989e8aea413ba /* candycorn.png in Resources */,
 				13e911415febb6b03d00144c /* sunglasses_TN.png in Resources */,
 				6481b6f39d6f8a04d4369029 /* moon_TN.png in Resources */,
@@ -2991,6 +3117,7 @@
 				d734f1b72f58170f0d959034 /* 13_floral2_frame.png in Resources */,
 				feddcda1fefbc9c7526d0adf /* moon_TN@2x.png in Resources */,
 				7088ccd48719272054694c09 /* scarycat_TN@2x.png in Resources */,
+				82E505581DCAABEF00AE493A /* Orange_Frame_iOS.png in Resources */,
 				7e8884c101517e2ccc142a7d /* bat_TN@2x.png in Resources */,
 				ef95f392b166adfcf6e44a33 /* OMG_TN@3x.png in Resources */,
 				86ea918f84d2cf7460a13e37 /* hearts.png in Resources */,
@@ -3023,6 +3150,7 @@
 				3f79e1abbf2467695b7efca1 /* InfoPlist.strings in Resources */,
 				c7e23e3ba66e4fa184240d1e /* Localizable.strings in Resources */,
 				feeb25f734761bf979d03b4b /* devilhorns_TN@3x.png in Resources */,
+				82E505501DCAABEF00AE493A /* Kraft_Frame_iOS.png in Resources */,
 				a06a22e0af01ef9f42819ad9 /* 11_pink_frame3_TN@2x.png in Resources */,
 				7e519a12ff45fdd0f7d28e18 /* 13_floral2_frame_TN@2x.png in Resources */,
 				64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */,
