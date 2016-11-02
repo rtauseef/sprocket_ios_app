@@ -50,23 +50,23 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFm-89-OFW">
-                                                <rect key="frame" x="10" y="26" width="72.5" height="19"/>
+                                                <rect key="frame" x="23" y="26" width="72.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery100" translatesAutoresizingMaskIntoConstraints="NO" id="t53-UW-oeM">
-                                                <rect key="frame" x="92.5" y="28.5" width="33" height="14"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery100" translatesAutoresizingMaskIntoConstraints="NO" id="t53-UW-oeM" customClass="PGBatteryImageView">
+                                                <rect key="frame" x="113.5" y="28.5" width="33" height="14"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Yhj-H6-ozy" secondAttribute="trailing" id="DJV-dt-qAE"/>
                                             <constraint firstItem="Yhj-H6-ozy" firstAttribute="centerY" secondItem="onK-qA-Org" secondAttribute="centerY" multiplier="1.25" id="EZD-Iw-LYF"/>
                                             <constraint firstItem="t53-UW-oeM" firstAttribute="centerY" secondItem="nFm-89-OFW" secondAttribute="centerY" id="HRl-77-9KX"/>
-                                            <constraint firstItem="nFm-89-OFW" firstAttribute="leading" secondItem="onK-qA-Org" secondAttribute="leading" constant="10" id="S4f-G1-dyY"/>
+                                            <constraint firstItem="nFm-89-OFW" firstAttribute="leading" secondItem="onK-qA-Org" secondAttribute="leading" constant="23" id="S4f-G1-dyY"/>
                                             <constraint firstItem="nFm-89-OFW" firstAttribute="centerY" secondItem="Yhj-H6-ozy" secondAttribute="centerY" id="fwg-j9-c2b"/>
                                             <constraint firstAttribute="height" constant="56" id="pze-vz-FCe"/>
-                                            <constraint firstItem="t53-UW-oeM" firstAttribute="leading" secondItem="nFm-89-OFW" secondAttribute="trailing" constant="10" id="rAS-3a-yHl"/>
+                                            <constraint firstItem="t53-UW-oeM" firstAttribute="leading" secondItem="nFm-89-OFW" secondAttribute="trailing" constant="18" id="rAS-3a-yHl"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcR-YE-OrN" userLabel="ImageContainer" propertyAccessControl="none">
@@ -84,7 +84,9 @@
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="26"/>
                                                 <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
-                                                <state key="normal" title="Print to sprocket"/>
+                                                <state key="normal" title="Print to sprocket">
+                                                    <color key="titleColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
                                                 </userDefinedRuntimeAttributes>
@@ -135,8 +137,11 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                     <connections>
+                        <outlet property="batteryIndicator" destination="t53-UW-oeM" id="lK3-dl-44H"/>
+                        <outlet property="connectedLabel" destination="nFm-89-OFW" id="XGK-ZA-svb"/>
                         <outlet property="imageContainer" destination="EcR-YE-OrN" id="1yX-8U-uKg"/>
                         <outlet property="printButton" destination="XPD-kO-soS" id="dFb-7C-ATv"/>
+                        <outlet property="printerDot" destination="hhX-Y3-hF7" id="UkZ-24-2kU"/>
                         <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>
                     </connections>
                 </viewController>
