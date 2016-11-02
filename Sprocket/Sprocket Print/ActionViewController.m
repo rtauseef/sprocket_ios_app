@@ -92,6 +92,8 @@ static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 
 {
     [self.sprocketConnectivityTimer invalidate];
     self.sprocketConnectivityTimer = nil;
+    
+    [super viewWillDisappear:animated];
 }
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
