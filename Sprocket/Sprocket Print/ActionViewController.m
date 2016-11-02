@@ -19,15 +19,22 @@
 #import <MPPrintManager.h>
 #import "PGGesturesView.h"
 #import "UIView+Background.h"
+#import "PGBatteryImageView.h"
 
-@interface ActionViewController ()
+static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 1;
+
+@interface ActionViewController () <MPSprocketDelegate>
 
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *imageContainer;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 
 @property (strong, nonatomic) CAGradientLayer *gradient;
+@property (weak, nonatomic) IBOutlet UILabel *connectedLabel;
+@property (weak, nonatomic) IBOutlet PGBatteryImageView *batteryIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *printerDot;
 
+@property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 
 @end
 
@@ -41,7 +48,7 @@
     
     self.printButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.printButton.layer.borderWidth = 1.0f;
-    self.printButton.layer.cornerRadius = 2.5f;
+    self.printButton.layer.cornerRadius = 3.5f;
     
     [self addGradientBackgroundToView:self.view];
     
@@ -67,6 +74,40 @@
         if (imageFound) {
             break;
         }
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self checkSprocketPrinterConnectivity:nil];
+    
+    self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kActionViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
+    
+    [[MP sharedInstance] checkSprocketForUpdates:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.sprocketConnectivityTimer invalidate];
+    self.sprocketConnectivityTimer = nil;
+    
+    [super viewWillDisappear:animated];
+}
+
+- (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
+{
+    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+    
+    if (numberOfPairedSprockets > 0) {
+        [self.printerDot setImage:[UIImage imageNamed:@"ptsActive"]];
+        self.connectedLabel.hidden = NO;
+        self.batteryIndicator.hidden = NO;
+    } else {
+        self.connectedLabel.hidden = YES;
+        self.batteryIndicator.hidden = YES;
+        [self.printerDot setImage:[UIImage imageNamed:@"ptsInactive"]];
     }
 }
 
@@ -114,5 +155,13 @@
 - (IBAction)done {
     [self.extensionContext completeRequestReturningItems:self.extensionContext.inputItems completionHandler:nil];
 }
+
+#pragma mark - MPSprocketDelegate
+
+- (void)didReceiveSprocketBatteryLevel:(NSUInteger)batteryLevel
+{
+    self.batteryIndicator.level = batteryLevel;
+}
+
 
 @end
