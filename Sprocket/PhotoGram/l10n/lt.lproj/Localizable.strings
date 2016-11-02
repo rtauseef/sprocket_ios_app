@@ -1,3 +1,327 @@
-"Would you like to sign out of %@?" = "Would you like to sign out of %@?";
-"Cancel" = "Cancel";
-"Sign Out" = "Sign Out";
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Savo nustatymuose leiskite prieigą, kad galėtumėte fotografuoti ir spausdinti nuotraukas.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Klaida bendrinant elementą.";
+
+/* No comment provided by engineer. */
+"Arrow Sticker" = "Rodyklės lipdukas";
+
+/* No comment provided by engineer. */
+"Bird Sticker" = "Paukščio lipdukas";
+
+/* No comment provided by engineer. */
+"Birthday Hat Sticker" = "Gimtadienio kepurėlės lipdukas";
+
+/* No comment provided by engineer. */
+"Blue Frame" = "Mėlynas rėmelis";
+
+/* No comment provided by engineer. */
+"Blue Gradient Frame" = "Mėlynas pereinamų atspalvių rėmelis";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Pirkti popieriaus";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Reikalinga fotoaparato prieiga";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Atšaukti";
+
+/* No comment provided by engineer. */
+"Candy Sticker" = "Saldainio lipdukas";
+
+/* No comment provided by engineer. */
+"Cat Ears Sticker" = "Katės ausų lipdukas";
+
+/* No comment provided by engineer. */
+"Cat Glasses Sticker" = "Katės akinių lipdukas";
+
+/* No comment provided by engineer. */
+"Cat Sticker" = "Katės lipdukas";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Pažiūrėkite mano „HP Sprocket“ kūrinį";
+
+/* Checking the login status of the social network */
+"Checking" = "Peržiūra";
+
+/* No comment provided by engineer. */
+"Cloud Sticker" = "Debesies lipdukas";
+
+/* No comment provided by engineer. */
+"Crown Sticker" = "Karūnos lipdukas";
+
+/* No comment provided by engineer. */
+"Cupcake Sticker" = "Keksiuko lipdukas";
+
+/* No comment provided by engineer. */
+"DOD Mask Sticker" = "Viso veido kaukės lipdukas";
+
+/* No comment provided by engineer. */
+"Diamond Sticker" = "Rombo lipdukas";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Atsisakyti";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Neįrašyti";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Įvesti tekstą";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Įvestis + tekstas";
+
+/* No comment provided by engineer. */
+"Error" = "Klaida";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Klaida gaunant naudotojo informaciją.";
+
+/* No comment provided by engineer. */
+"Fall 3 Eyes Sticker" = "Rudeninis 3 akių lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Bat Sticker" = "Rudeninis šikšnosparnio lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Candy Corn Sticker" = "Rudeninis saldainių lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Cat Eyes Sticker" = "Rudeninis katės akių lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Cat Whiskers Sticker" = "Rudeninis katės ūsų lipdukas";
+
+/* No comment provided by engineer. */
+"Fall DOD Eyes Sticker" = "Rudeninis DOD akių lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Devil Horns Sticker" = "Rudeninis velnio ragų lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Eyeball Sticker" = "Rudeninis akies obuolio lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Fangs Sticker" = "Rudeninis ilčių lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Ghost Sticker" = "Rudeninis vaiduoklio lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Halloween Hat Sticker" = "Rudeninis Helovino kepurės lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Jason Mask Sticker" = "Rudeninis ledo ritulininko kaukės lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Leaf 3 Sticker" = "Rudeninis 3 lapų lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Moon Face Sticker" = "Rudeninis Mėnulio paviršiaus lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Moon Sticker" = "Rudeninis mėnulio lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Owl Sticker" = "Rudeninis pelėdos lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Pumpkin Sticker" = "Rudeninis moliūgo lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Scary Cat Sticker" = "Rudeninis kraupios katės lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Skull Sticker" = "Rudeninis kaukolės lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Spider Sticker" = "Rudeninis voro lipdukas";
+
+/* No comment provided by engineer. */
+"Fall Spider Web Sticker" = "Rudeninis voratinklio lipdukas";
+
+/* No comment provided by engineer. */
+"Feather 2 Sticker" = "2 plunksnų lipdukas";
+
+/* No comment provided by engineer. */
+"Feather Sticker" = "Plunksnų lipdukas";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Atsiliepimai apie „iOS“ skirtą „Sprocket“ (įrašų radimo įrankis: %@)";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "Gėlių rėmelis";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "Pereinamų atspalvių rėmelis";
+
+/* No comment provided by engineer. */
+"Green Spray Paint Frame" = "Žalias purškiamų dažų rėmelis";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "Žalias akvarelės rėmelis";
+
+/* No comment provided by engineer. */
+"Heart Express Sticker" = "Širdžių pašto lipdukas";
+
+/* No comment provided by engineer. */
+"Heart Pixel Sticker" = "Širdies taškų lipdukas";
+
+/* No comment provided by engineer. */
+"Hearts Sticker" = "Širdies lipdukas";
+
+/* No comment provided by engineer. */
+"How To" = "Mokomoji medžiaga";
+
+/* No comment provided by engineer. */
+"Ice Cream Cone Sticker" = "Ledų kūgio lipdukas";
+
+/* No comment provided by engineer. */
+"LOL Sticker" = "LOL lipdukas";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "Žurnalo failas buvo išvalytas.";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Nėra pasiekiamo ryšio";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Ne, ačiū";
+
+/* Allows user close dialog */
+"OK" = "Gerai";
+
+/* No comment provided by engineer. */
+"OMG Sticker" = "OMG lipdukas";
+
+/* No comment provided by engineer. */
+"Oops!" = "Oi!";
+
+/* No comment provided by engineer. */
+"Pink Frame" = "Rožinis rėmelis";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Rožinis purškiamų dažų rėmelis";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Prisijunkite prie duomenų šaltinio.
+Taip pat galite naudoti savo įrenginio nuotraukas.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Pasakykite, kas yra puiku ir kas gali būti geriau!";
+
+/* No comment provided by engineer. */
+"Polka Dots Frame" = "Taškuotas rėmelis";
+
+/* No comment provided by engineer. */
+"Purple Frame" = "Violetinis rėmelis";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Raudonas rėmelis";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Priminti man vėliau";
+
+/* No comment provided by engineer. */
+"Reset" = "Atkurti";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Nustatyti programą iš naujo";
+
+/* No comment provided by engineer. */
+"Retry" = "Kartoti";
+
+/* Title of a table view header */
+"SUPPORT:" = "PAGALBA.";
+
+/* No comment provided by engineer. */
+"Save" = "Įrašyti";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Įrašyti ir uždaryti peržiūrą?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Įrašyti fotoaparato aplanke";
+
+/* Button for opening the app settings */
+"Settings" = "Nustatymai";
+
+/* No comment provided by engineer. */
+"Sign In" = "Prisijungti";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Atsijungti";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Deja, dabar apie problemą pranešti negalima. Greičiausiai taip yra dėl to, kad jūsų mobiliajame įrenginyje nėra nustatyta nė viena el. pašto paskyra.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Yra „Sprocket“ spausdintuvo programinės aparatinės įrangos naujovinimas";
+
+/* No comment provided by engineer. */
+"Star Sticker" = "Žvaigždutės lipdukas";
+
+/* No comment provided by engineer. */
+"Stars Sticker" = "Žvaigždučių lipdukas";
+
+/* No comment provided by engineer. */
+"Success" = "Sėkmingai";
+
+/* No comment provided by engineer. */
+"Sunglasses Sticker" = "Saulės akinių lipdukas";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Atsakykite į apklausos klausimus";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Bakstelėkite „Naujovinti“, kad pratęstumėte.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Pasakykite mums, ką galvojate apie %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Pasakykite, ką galvojate apie „Sprocket“";
+
+/* Phrase to make link for terms of service of the landing page */
+"Terms of Service" = "Paslaugos teikimo sąlygos";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "Žurnalo failas yra pridėtas prie šio pranešimo.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Bus panaikintos visos anksčiau įrašytos parinktys.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Norėdami naujovinti, įkraukite „Sprocket“ spausdintuvą bent iki 75 % ir tada meniu pasirinkite „Sprocket“.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Žalsvai melsvas rėmelis";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Naujovinti";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "%1$@ versija (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Vandens mėlynumo rėmelis";
+
+/* No comment provided by engineer. */
+"White Frame" = "Baltas rėmelis";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Ar norite atsijungti nuo %@?";
+
+/* No comment provided by engineer. */
+"XOXO Sticker" = "XOXO lipdukas";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Neturite paskyros, kuri būtų sukonfigūruota siųsti el. laiškus.";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "„Sprocket“ klaidų žurnalas";
+

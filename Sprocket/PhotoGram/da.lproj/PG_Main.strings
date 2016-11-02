@@ -17,11 +17,17 @@
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
 "3t6-KR-FbJ.text" = "By authenticating with Instagram, you also agree with HP’s Terms of Service.";
 
+/* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
+"4go-MT-3C1.text" = "Reset Sprocket Printer";
+
 /* Class = "UILabel"; text = "Join Support Forum"; ObjectID = "7Vs-BF-yHI"; */
 "7Vs-BF-yHI.text" = "Join Support Forum";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "7fa-oG-gkS"; */
 "7fa-oG-gkS.text" = "Title";
+
+/* Class = "UILabel"; text = "Take Survey"; ObjectID = "7xd-AD-pVN"; */
+"7xd-AD-pVN.text" = "Take Survey";
 
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "8WR-66-byL"; */
 "8WR-66-byL.title" = "Done";
@@ -29,14 +35,29 @@
 /* Class = "UILabel"; text = "Give Feedback"; ObjectID = "93f-4f-aru"; */
 "93f-4f-aru.text" = "Give Feedback";
 
+/* Class = "UINavigationItem"; title = "Setup Sprocket Printer"; ObjectID = "9rP-Vf-tjP"; */
+"9rP-Vf-tjP.title" = "Setup Sprocket Printer";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "AXW-GE-wKa"; */
+"AXW-GE-wKa.title" = " ";
+
 /* Class = "UILabel"; text = "© 2016 HP Development Company, L.P."; ObjectID = "BBT-a1-B1F"; */
 "BBT-a1-B1F.text" = "© 2016 HP Development Company, L.P.";
+
+/* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
+"BV3-xe-r0y.normalTitle" = "More Help";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
 "DG2-Ok-pfm.normalTitle" = "Sign in";
 
 /* Class = "UILabel"; text = "Privacy"; ObjectID = "Ddg-PB-chd"; */
 "Ddg-PB-chd.text" = "Privacy";
+
+/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "DmV-M2-d4s"; */
+"DmV-M2-d4s.text" = "Put the entire pack in the paper tray with barcode and HP logos facing down.";
+
+/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "EN2-Sd-rVK"; */
+"EN2-Sd-rVK.text" = "Press and hold the power button until the LED turns white.";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "EjE-om-e07"; */
 "EjE-om-e07.title" = "About";
@@ -46,6 +67,9 @@
 
 /* Class = "UILabel"; text = "HP Sprocket App Terms of Service"; ObjectID = "Gwf-K7-scA"; */
 "Gwf-K7-scA.text" = "HP Sprocket App Terms of Service";
+
+/* Class = "UILabel"; text = "View User Guide"; ObjectID = "IFE-wR-WsV"; */
+"IFE-wR-WsV.text" = "View User Guide";
 
 /* Class = "UILabel"; text = "HP Development Company, L.P."; ObjectID = "IRp-QK-PAY"; */
 "IRp-QK-PAY.text" = "HP Development Company, L.P.";
@@ -59,17 +83,32 @@
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
 "JEt-SU-tLR.title" = "Camera Roll";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "M1M-l0-DBL"; */
+"M1M-l0-DBL.title" = " ";
+
 /* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
 "MN9-s9-sQn.text" = "Tap here to edit the description";
 
+/* Class = "UILabel"; text = "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer."; ObjectID = "Mau-Fg-w5P"; */
+"Mau-Fg-w5P.text" = "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer.";
+
+/* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "MgL-Ve-2Gu"; */
+"MgL-Ve-2Gu.normalTitle" = "Skip to the App";
+
 /* Class = "UILabel"; text = "Camera Roll"; ObjectID = "Mgb-ox-Ayr"; */
 "Mgb-ox-Ayr.text" = "Camera Roll";
+
+/* Class = "UINavigationItem"; title = "Reset Sprocket Printer"; ObjectID = "OOG-XB-1r0"; */
+"OOG-XB-1r0.title" = "Reset Sprocket Printer";
 
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Copyright (c) 2016";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
 "QQK-QP-Amd.text" = "By authenticating with Flickr, you also agree with HP’s Terms of Service.";
+
+/* Class = "UIButton"; normalTitle = "Go to the App"; ObjectID = "Qfy-vN-Znw"; */
+"Qfy-vN-Znw.normalTitle" = "Go to the App";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Qz4-e7-zDJ"; */
 "Qz4-e7-zDJ.normalTitle" = "Photos";
@@ -110,8 +149,11 @@
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
 "aja-HA-rCS.normalTitle" = "Sign in";
 
-/* Class = "UILabel"; text = "Ready"; ObjectID = "anQ-7m-MS2"; */
-"anQ-7m-MS2.text" = "Ready";
+/* Class = "UILabel"; text = "Connected"; ObjectID = "anQ-7m-MS2"; */
+"anQ-7m-MS2.text" = "Connected";
+
+/* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "ciL-qk-y5Q"; */
+"ciL-qk-y5Q.normalTitle" = "Skip to the App";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "cvE-Qn-oLS"; */
 "cvE-Qn-oLS.normalTitle" = "Sign in";
@@ -124,9 +166,6 @@
 
 /* Class = "UILabel"; text = "About"; ObjectID = "dcp-jn-Bby"; */
 "dcp-jn-Bby.text" = "About";
-
-/* Class = "UILabel"; text = "sprocket"; ObjectID = "fKs-uV-c3d"; */
-"fKs-uV-c3d.text" = "sprocket";
 
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
 "fRU-DF-pcn.normalTitle" = "Edit";
@@ -146,11 +185,17 @@
 /* Class = "UILabel"; text = "New! Print later with our Print Queue"; ObjectID = "mh8-hT-PMS"; */
 "mh8-hT-PMS.text" = "New! Print later with our Print Queue";
 
+/* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
+"nYV-cn-yZe.text" = "Setup Sprocket Printer";
+
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "r8A-4l-TdM"; */
 "r8A-4l-TdM.text" = "sprocket";
+
+/* Class = "UILabel"; text = "Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer."; ObjectID = "sIS-tD-Si9"; */
+"sIS-tD-Si9.text" = "Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer.";
 
 /* Class = "UILabel"; text = "Flickr"; ObjectID = "tOP-DZ-lMX"; */
 "tOP-DZ-lMX.text" = "Flickr";
@@ -160,9 +205,6 @@
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "vvr-jY-JqH"; */
 "vvr-jY-JqH.text" = "sprocket";
-
-/* Class = "UILabel"; text = "View User Guide"; ObjectID = "xdk-mR-STz"; */
-"xdk-mR-STz.text" = "View User Guide";
 
 /* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
 "znF-lh-wdy.text" = "Select an option below for sprocket\nprinter and app support.";

@@ -1,5 +1,9 @@
-/* Localized versions of Info.plist keys */
+/* (No Commment) */
+"CFBundleDisplayName" = "Sprocket";
 
-CFBundleName = "sprocket";
-CFBundleDisplayName = "sprocket";
-CFBundleShortVersionString = "1.0";
+/* (No Commment) */
+"CFBundleName" = "Sprocket";
+
+/* (No Commment) */
+"CFBundleShortVersionString" = "1.0";
+
