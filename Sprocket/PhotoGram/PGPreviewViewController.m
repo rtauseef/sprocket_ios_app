@@ -409,13 +409,18 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
                                                                   source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:okAction];
-        
+
+        __weak PGPreviewViewController *weakSelf = self;
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [self saveToCameraRoll:^(BOOL authorized){
                 if (authorized) {
                     [self closePreviewAndCamera];
                     [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
                                                                           source:kEventDismissEditCloseLabel];
+
+                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                                     printItem:weakSelf.printItem
+                                                                   exendedInfo:[weakSelf extendedMetrics]];
                 }
             }];
         }];
