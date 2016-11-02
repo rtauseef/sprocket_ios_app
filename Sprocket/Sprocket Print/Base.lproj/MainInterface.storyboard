@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -78,11 +79,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KxB-vQ-kqY" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="428" width="320" height="100"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="XPD-kO-soS" userLabel="printerButton">
-                                                <rect key="frame" x="74.5" y="20" width="171" height="60"/>
+                                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPD-kO-soS" userLabel="printerButton">
+                                                <rect key="frame" x="44.5" y="20" width="231" height="60"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="26"/>
-                                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                                 <state key="normal" title="Print to sprocket"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="printButton"/>
@@ -91,12 +92,17 @@
                                                     <action selector="printTapped:" destination="ObA-dk-sSI" eventType="touchUpInside" id="inG-I8-hqX"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ptsActive" translatesAutoresizingMaskIntoConstraints="NO" id="hhX-Y3-hF7" userLabel="ptsStatus">
+                                                <rect key="frame" x="263" y="64.5" width="25" height="25"/>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="XPD-kO-soS" firstAttribute="centerY" secondItem="KxB-vQ-kqY" secondAttribute="centerY" id="9U4-qq-832"/>
+                                            <constraint firstItem="hhX-Y3-hF7" firstAttribute="leading" secondItem="XPD-kO-soS" secondAttribute="trailing" constant="-12.5" id="IYn-pf-MuY"/>
                                             <constraint firstItem="XPD-kO-soS" firstAttribute="centerX" secondItem="KxB-vQ-kqY" secondAttribute="centerX" id="Q0f-6Q-we1"/>
                                             <constraint firstAttribute="bottom" secondItem="XPD-kO-soS" secondAttribute="bottom" constant="20" id="SeE-PO-dck"/>
                                             <constraint firstItem="XPD-kO-soS" firstAttribute="top" secondItem="KxB-vQ-kqY" secondAttribute="top" constant="20" id="VYi-Yo-cga"/>
+                                            <constraint firstItem="hhX-Y3-hF7" firstAttribute="centerY" secondItem="XPD-kO-soS" secondAttribute="bottom" constant="-3" id="YVP-6l-DuK"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XPD-kO-soS" secondAttribute="trailing" constant="20" id="Zm9-T8-MQd"/>
                                             <constraint firstItem="XPD-kO-soS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KxB-vQ-kqY" secondAttribute="leading" constant="20" id="gfS-6e-tgu"/>
                                             <constraint firstAttribute="height" constant="100" id="iLW-cA-kEo"/>
@@ -142,6 +148,7 @@
     <resources>
         <image name="battery100" width="33" height="14"/>
         <image name="previewX" width="18" height="18"/>
+        <image name="ptsActive" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

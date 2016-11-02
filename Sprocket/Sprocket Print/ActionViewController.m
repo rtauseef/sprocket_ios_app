@@ -41,7 +41,7 @@
     
     self.printButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.printButton.layer.borderWidth = 1.0f;
-    self.printButton.layer.cornerRadius = 2.5f;
+    self.printButton.layer.cornerRadius = 3.5f;
     
     [self addGradientBackgroundToView:self.view];
     
