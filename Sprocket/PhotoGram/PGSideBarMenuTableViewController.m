@@ -298,10 +298,6 @@ typedef enum {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
         }
-        case TAKE_SURVEY_INDEX: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSurveyURL]];
-            break;
-        }
         case DEVICES_INDEX: {
             [[MP sharedInstance] presentBluetoothDevicesFromController:self.revealViewController animated:YES completion:nil];
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -638,6 +634,21 @@ typedef enum {
     [[PGSurveyManager sharedInstance] setDisable:YES];
     
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"TakeSurveySegue"]) {
+        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
+        
+        PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
+        webViewerViewController.trackableScreenName = @"Take Our Survey Screen";
+        webViewerViewController.url = kSurveyURL;
+        webViewerViewController.notifyUrl = kSurveyNotifyURL;
+        webViewerViewController.delegate = self;
+    }
 }
 
 @end
