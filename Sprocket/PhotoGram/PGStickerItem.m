@@ -45,11 +45,6 @@ const NSInteger PGStickerItemsCount = 34;
             sticker.imageName = @"heartExpress";
             break;
         }
-        case PGStickerItemsHeartPixel: {
-            sticker.accessibilityText = NSLocalizedString(@"Heart Pixel Sticker", nil);
-            sticker.imageName = @"heartPixel";
-            break;
-        }
         case PGStickerItemsArrow: {
             sticker.accessibilityText = NSLocalizedString(@"Arrow Sticker", nil);
             sticker.imageName = @"arrow";
@@ -90,34 +85,14 @@ const NSInteger PGStickerItemsCount = 34;
             sticker.imageName = @"feather2";
             break;
         }
-        case PGStickerItemsCloud: {
-            sticker.accessibilityText = NSLocalizedString(@"Cloud Sticker", nil);
-            sticker.imageName = @"cloud";
-            break;
-        }
         case PGStickerItemsCupcake: {
             sticker.accessibilityText = NSLocalizedString(@"Cupcake Sticker", nil);
             sticker.imageName = @"cupcake";
             break;
         }
-        case PGStickerItemsIceCreamCone: {
-            sticker.accessibilityText = NSLocalizedString(@"Ice Cream Cone Sticker", nil);
-            sticker.imageName = @"icecreamcone";
-            break;
-        }
-        case PGStickerItemsCandy: {
-            sticker.accessibilityText = NSLocalizedString(@"Candy Sticker", nil);
-            sticker.imageName = @"candy";
-            break;
-        }
         case PGStickerItemsCat: {
             sticker.accessibilityText = NSLocalizedString(@"Cat Sticker", nil);
             sticker.imageName = @"cat";
-            break;
-        }
-        case PGStickerItemsBird: {
-            sticker.accessibilityText = NSLocalizedString(@"Bird Sticker", nil);
-            sticker.imageName = @"bird";
             break;
         }
         case PGStickerItemsDiamond: {
@@ -128,11 +103,6 @@ const NSInteger PGStickerItemsCount = 34;
         case PGStickerItemsOMG: {
             sticker.accessibilityText = NSLocalizedString(@"OMG Sticker", nil);
             sticker.imageName = @"OMG";
-            break;
-        }
-        case PGStickerItemsLOL: {
-            sticker.accessibilityText = NSLocalizedString(@"LOL Sticker", nil);
-            sticker.imageName = @"LOL";
             break;
         }
         case PGStickerItemsCatWhiskers: {
@@ -298,6 +268,47 @@ typedef NS_ENUM (NSInteger, PGUnusedStickers){
             break;
     }
     
+    return sticker;
+}
+
++ (PGStickerItem *)unusedStickerItemByIndex:(NSInteger)index{
+    PGStickerItem *sticker = [[PGStickerItem alloc] init];
+    
+    switch (index) {
+            
+        case PGStickerItemsCandy: {
+            sticker.accessibilityText = NSLocalizedString(@"Candy Sticker", nil);
+            sticker.imageName = @"candy";
+            break;
+        }
+        case PGStickerItemsBird: {
+            sticker.accessibilityText = NSLocalizedString(@"Bird Sticker", nil);
+            sticker.imageName = @"bird";
+            break;
+        }
+        case PGStickerItemsLOL: {
+            sticker.accessibilityText = NSLocalizedString(@"LOL Sticker", nil);
+            sticker.imageName = @"LOL";
+            break;
+        }
+        case PGStickerItemsIceCreamCone: {
+            sticker.accessibilityText = NSLocalizedString(@"Ice Cream Cone Sticker", nil);
+            sticker.imageName = @"icecreamcone";
+            break;
+        }        case PGStickerItemsCloud: {
+            sticker.accessibilityText = NSLocalizedString(@"Cloud Sticker", nil);
+            sticker.imageName = @"cloud";
+            break;
+        }
+        case PGStickerItemsHeartPixel: {
+            sticker.accessibilityText = NSLocalizedString(@"Heart Pixel Sticker", nil);
+            sticker.imageName = @"heartPixel";
+            break;
+        }
+        default:
+            break;
+    }
+
     return sticker;
 }
 
