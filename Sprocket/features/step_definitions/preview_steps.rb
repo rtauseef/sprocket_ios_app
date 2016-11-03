@@ -61,6 +61,19 @@ Then(/^I should see the original image without margins$/) do
   $post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
   raise "Original Image not found" unless $post_img_frame_width > $curr_img_frame_width && $post_img_frame_height > $curr_img_frame_height
 end
+Then(/^I should not see margins on top and bottom$/) do
+  sleep(WAIT_SCREENLOAD)
+  $post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+  $post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
+  raise "Margins not found" unless $post_img_frame_width > $curr_img_frame_width && $post_img_frame_height > $curr_img_frame_height
+
+end
+
+Then(/^I should see the original image with margins$/) do
+  $post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+  $post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
+  raise "Original Image not found" unless $post_img_frame_width < $curr_img_frame_width && $post_img_frame_height < $curr_img_frame_height
+end
 When(/^I pinch "(.*?)" on the picture$/) do |in_out|
   $curr_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
   pinch("#{in_out}", { query: "* id:'GestureView'" })
