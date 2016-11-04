@@ -144,7 +144,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     
     GAI *gai = [GAI sharedInstance];
 
-    gai.trackUncaughtExceptions = NO;
+    gai.trackUncaughtExceptions = YES;
     gai.logger.logLevel = kGAILogLevelNone;
     
 #ifdef DEBUG
