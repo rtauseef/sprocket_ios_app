@@ -37,7 +37,7 @@ const NSInteger PGFrameItemsCount = 16;
             break;
         }
         case PGFrameItemsFloralTwo: {
-            frame.accessibilityText = NSLocalizedString(@"Floral Frame", nil);
+            frame.accessibilityText = NSLocalizedString(@"Floral 2 Frame", nil);
             frame.imageName = @"13_floral2_frame";
             break;
         }
