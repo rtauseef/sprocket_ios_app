@@ -15,22 +15,22 @@
 extern const NSInteger PGFrameItemsCount;
 
 typedef NS_ENUM (NSInteger, PGFrameItems){
-    PGFrameItemsTurquoise,
-    PGFrameItemsPinkSprayPaint,
-    PGFrameItemsBlueWaterColor,
     PGFrameItemsWhite,
-    PGFrameItemsRed,
+    PGFrameItemsKraft,
     PGFrameItemsFloral,
-    PGFrameItemsGradient,
-    PGFrameItemsGreenSprayPaint,
+    PGFrameItemsOrange,
     PGFrameItemsPolkadots,
+    PGFrameItemsBlueWaterColor,
+    PGFrameItemsWoodBottom,
+    PGFrameItemsGradient,
+    PGFrameItemsSloppy,
+    PGFrameItemsTurquoise,
+    PGFrameItemsRed,
     PGFrameItemsGreenWaterColor,
-    PGFrameItemsPink,
-    PGFrameItemsBlue,
     PGFrameItemsFloralTwo,
-    PGFrameItemsBlueGradient,
-    PGFrameItemsPurple,
-    PGFrameItemsNapaValley,
+    PGFrameItemsPinkSprayPaint,
+    PGFrameItemsYellow,
+    PGFrameItemsBlueGradient
 };
 
 @interface PGFrameItem : NSObject
