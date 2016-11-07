@@ -49,9 +49,9 @@ Feature: Verify preview screen from different social media
   Scenario: Verify Double-tap add borders to image on preview screen_instagram
     Given I am on the "Instagram Preview" screen
     When I double tap on the picture
-    Then I should see margins on top and bottom
+    Then I should not see margins on top and bottom
     Then I double tap on the picture
-    Then I should see the original image without margins
+    Then I should see the original image with margins
 
   @reset
   @done
@@ -66,6 +66,7 @@ Feature: Verify preview screen from different social media
     
   @reset
   @TA14130
+  @pinch
   Scenario: Verify pinch in-out and zoom the image on preview screen_instagram
     Given I am on the "Instagram Preview" screen
     Then I wait for some seconds
