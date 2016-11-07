@@ -167,6 +167,34 @@
 		26F7BEB81DCD0630006396FA /* moon_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BE7A1DCBF79F006396FA /* moon_TN@2x.png */; };
 		26F7BEB91DCD0633006396FA /* moon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BE7B1DCBF79F006396FA /* moon_TN@3x.png */; };
 		26F7BEBA1DCD0635006396FA /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BE7C1DCBF79F006396FA /* moon.png */; };
+		26F7BECD1DD0FAA7006396FA /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC21DD0FAA7006396FA /* banner2.png */; };
+		26F7BECE1DD0FAA7006396FA /* Cocoa.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC31DD0FAA7006396FA /* Cocoa.png */; };
+		26F7BECF1DD0FAA7006396FA /* Eyes2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC41DD0FAA7006396FA /* Eyes2.png */; };
+		26F7BED01DD0FAA7006396FA /* Football.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC51DD0FAA7006396FA /* Football.png */; };
+		26F7BED11DD0FAA7006396FA /* Fox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC61DD0FAA7006396FA /* Fox.png */; };
+		26F7BED21DD0FAA7006396FA /* hedgehog.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC71DD0FAA7006396FA /* hedgehog.png */; };
+		26F7BED31DD0FAA7006396FA /* leaves.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC81DD0FAA7006396FA /* leaves.png */; };
+		26F7BED41DD0FAA7006396FA /* Lips.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC91DD0FAA7006396FA /* Lips.png */; };
+		26F7BED51DD0FAA7006396FA /* Pie.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BECA1DD0FAA7006396FA /* Pie.png */; };
+		26F7BED61DD0FAA7006396FA /* Pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BECB1DD0FAA7006396FA /* Pumpkin.png */; };
+		26F7BEDC1DD0FB2F006396FA /* Mushrooms-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BED81DD0FB2F006396FA /* Mushrooms-b.png */; };
+		26F7BEDD1DD0FB2F006396FA /* Pilgram-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BED91DD0FB2F006396FA /* Pilgram-hat.png */; };
+		26F7BEDE1DD0FB2F006396FA /* Turkey-hat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEDA1DD0FB2F006396FA /* Turkey-hat2.png */; };
+		26F7BEDF1DD0FB2F006396FA /* Woman-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEDB1DD0FB2F006396FA /* Woman-hat.png */; };
+		26F7BEE01DD0FE71006396FA /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC21DD0FAA7006396FA /* banner2.png */; };
+		26F7BEE11DD0FE76006396FA /* Cocoa.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC31DD0FAA7006396FA /* Cocoa.png */; };
+		26F7BEE21DD0FE7A006396FA /* Eyes2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC41DD0FAA7006396FA /* Eyes2.png */; };
+		26F7BEE31DD0FE7E006396FA /* Fox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC61DD0FAA7006396FA /* Fox.png */; };
+		26F7BEE41DD0FE81006396FA /* Football.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC51DD0FAA7006396FA /* Football.png */; };
+		26F7BEE51DD0FE86006396FA /* hedgehog.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC71DD0FAA7006396FA /* hedgehog.png */; };
+		26F7BEE61DD0FE8A006396FA /* leaves.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC81DD0FAA7006396FA /* leaves.png */; };
+		26F7BEE71DD0FE90006396FA /* Lips.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEC91DD0FAA7006396FA /* Lips.png */; };
+		26F7BEE81DD0FE94006396FA /* Mushrooms-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BED81DD0FB2F006396FA /* Mushrooms-b.png */; };
+		26F7BEE91DD0FE97006396FA /* Pie.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BECA1DD0FAA7006396FA /* Pie.png */; };
+		26F7BEEA1DD0FE9C006396FA /* Pilgram-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BED91DD0FB2F006396FA /* Pilgram-hat.png */; };
+		26F7BEEB1DD0FEA1006396FA /* Pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BECB1DD0FAA7006396FA /* Pumpkin.png */; };
+		26F7BEEC1DD0FEA6006396FA /* Turkey-hat2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEDA1DD0FB2F006396FA /* Turkey-hat2.png */; };
+		26F7BEED1DD0FEA9006396FA /* Woman-hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BEDB1DD0FB2F006396FA /* Woman-hat.png */; };
 		26e579154e2842792f7d1cbe /* 5_Red_frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852C61D626A96001288D9 /* 5_Red_frame_TN.png */; };
 		27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
 		2cd670907ef7ede7c270e8e2 /* cupcake_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8218525F1D625FFB001288D9 /* cupcake_TN@2x.png */; };
@@ -863,6 +891,20 @@
 		26F7BE7A1DCBF79F006396FA /* moon_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon_TN@2x.png"; path = "Resources/Images/Stickers/moon_TN@2x.png"; sourceTree = "<group>"; };
 		26F7BE7B1DCBF79F006396FA /* moon_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon_TN@3x.png"; path = "Resources/Images/Stickers/moon_TN@3x.png"; sourceTree = "<group>"; };
 		26F7BE7C1DCBF79F006396FA /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moon.png; path = Resources/Images/Stickers/moon.png; sourceTree = "<group>"; };
+		26F7BEC21DD0FAA7006396FA /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner2.png; path = Resources/Images/Stickers/Fall/banner2.png; sourceTree = "<group>"; };
+		26F7BEC31DD0FAA7006396FA /* Cocoa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cocoa.png; path = Resources/Images/Stickers/Fall/Cocoa.png; sourceTree = "<group>"; };
+		26F7BEC41DD0FAA7006396FA /* Eyes2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Eyes2.png; path = Resources/Images/Stickers/Fall/Eyes2.png; sourceTree = "<group>"; };
+		26F7BEC51DD0FAA7006396FA /* Football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Football.png; path = Resources/Images/Stickers/Fall/Football.png; sourceTree = "<group>"; };
+		26F7BEC61DD0FAA7006396FA /* Fox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Fox.png; path = Resources/Images/Stickers/Fall/Fox.png; sourceTree = "<group>"; };
+		26F7BEC71DD0FAA7006396FA /* hedgehog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hedgehog.png; path = Resources/Images/Stickers/Fall/hedgehog.png; sourceTree = "<group>"; };
+		26F7BEC81DD0FAA7006396FA /* leaves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaves.png; path = Resources/Images/Stickers/Fall/leaves.png; sourceTree = "<group>"; };
+		26F7BEC91DD0FAA7006396FA /* Lips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Lips.png; path = Resources/Images/Stickers/Fall/Lips.png; sourceTree = "<group>"; };
+		26F7BECA1DD0FAA7006396FA /* Pie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pie.png; path = Resources/Images/Stickers/Fall/Pie.png; sourceTree = "<group>"; };
+		26F7BECB1DD0FAA7006396FA /* Pumpkin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pumpkin.png; path = Resources/Images/Stickers/Fall/Pumpkin.png; sourceTree = "<group>"; };
+		26F7BED81DD0FB2F006396FA /* Mushrooms-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mushrooms-b.png"; path = "Resources/Images/Stickers/Fall/Mushrooms-b.png"; sourceTree = "<group>"; };
+		26F7BED91DD0FB2F006396FA /* Pilgram-hat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pilgram-hat.png"; path = "Resources/Images/Stickers/Fall/Pilgram-hat.png"; sourceTree = "<group>"; };
+		26F7BEDA1DD0FB2F006396FA /* Turkey-hat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-hat2.png"; path = "Resources/Images/Stickers/Fall/Turkey-hat2.png"; sourceTree = "<group>"; };
+		26F7BEDB1DD0FB2F006396FA /* Woman-hat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Woman-hat.png"; path = "Resources/Images/Stickers/Fall/Woman-hat.png"; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3731680F1AD4B08900503065 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		378EA80619A69E5700C72F1A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back@2x.png"; path = "Resources/Images/Icons/Back@2x.png"; sourceTree = "<group>"; };
@@ -1299,45 +1341,59 @@
 				26F7BE211DCBEDBB006396FA /* banner2_TN.png */,
 				26F7BE221DCBEDBB006396FA /* banner2_TN@2x.png */,
 				26F7BE231DCBEDBB006396FA /* banner2_TN@3x.png */,
+				26F7BEC21DD0FAA7006396FA /* banner2.png */,
 				26F7BE241DCBEDBB006396FA /* Cocoa_TN.png */,
 				26F7BE251DCBEDBB006396FA /* Cocoa_TN@2x.png */,
 				26F7BE261DCBEDBB006396FA /* Cocoa_TN@3x.png */,
+				26F7BEC31DD0FAA7006396FA /* Cocoa.png */,
 				26F7BE271DCBEDBB006396FA /* Eyes2_TN.png */,
 				26F7BE281DCBEDBB006396FA /* Eyes2_TN@2x.png */,
 				26F7BE291DCBEDBB006396FA /* Eyes2_TN@3x.png */,
+				26F7BEC41DD0FAA7006396FA /* Eyes2.png */,
 				26F7BE2A1DCBEDBB006396FA /* Football_TN.png */,
 				26F7BE2B1DCBEDBB006396FA /* Football_TN@2x.png */,
 				26F7BE2C1DCBEDBB006396FA /* Football_TN@3x.png */,
+				26F7BEC51DD0FAA7006396FA /* Football.png */,
 				26F7BE2D1DCBEDBB006396FA /* Fox_TN.png */,
 				26F7BE2E1DCBEDBB006396FA /* Fox_TN@2x.png */,
 				26F7BE2F1DCBEDBB006396FA /* Fox_TN@3x.png */,
+				26F7BEC61DD0FAA7006396FA /* Fox.png */,
 				26F7BE301DCBEDBB006396FA /* hedgehog_TN.png */,
 				26F7BE311DCBEDBB006396FA /* hedgehog_TN@2x.png */,
 				26F7BE321DCBEDBB006396FA /* hedgehog_TN@3x.png */,
+				26F7BEC71DD0FAA7006396FA /* hedgehog.png */,
 				26F7BE331DCBEDBB006396FA /* leaves_TN.png */,
 				26F7BE341DCBEDBB006396FA /* leaves_TN@2x.png */,
 				26F7BE351DCBEDBB006396FA /* leaves_TN@3x.png */,
+				26F7BEC81DD0FAA7006396FA /* leaves.png */,
 				26F7BE361DCBEDBB006396FA /* Lips_TN.png */,
 				26F7BE371DCBEDBB006396FA /* Lips_TN@2x.png */,
 				26F7BE381DCBEDBB006396FA /* Lips_TN@3x.png */,
+				26F7BEC91DD0FAA7006396FA /* Lips.png */,
 				26F7BE391DCBEDBB006396FA /* Mushrooms-b_TN.png */,
 				26F7BE3A1DCBEDBB006396FA /* Mushrooms-b_TN@2x.png */,
 				26F7BE3B1DCBEDBB006396FA /* Mushrooms-b_TN@3x.png */,
+				26F7BED81DD0FB2F006396FA /* Mushrooms-b.png */,
 				26F7BE3C1DCBEDBB006396FA /* Pie_TN.png */,
 				26F7BE3D1DCBEDBB006396FA /* Pie_TN@2x.png */,
 				26F7BE3E1DCBEDBB006396FA /* Pie_TN@3x.png */,
+				26F7BECA1DD0FAA7006396FA /* Pie.png */,
 				26F7BE3F1DCBEDBB006396FA /* Pilgram-hat_TN.png */,
 				26F7BE401DCBEDBB006396FA /* Pilgram-hat_TN@2x.png */,
 				26F7BE411DCBEDBB006396FA /* Pilgram-hat_TN@3x.png */,
+				26F7BED91DD0FB2F006396FA /* Pilgram-hat.png */,
 				26F7BE421DCBEDBB006396FA /* Pumpkin_TN.png */,
 				26F7BE431DCBEDBB006396FA /* Pumpkin_TN@2x.png */,
 				26F7BE441DCBEDBB006396FA /* Pumpkin_TN@3x.png */,
+				26F7BECB1DD0FAA7006396FA /* Pumpkin.png */,
 				26F7BE451DCBEDBB006396FA /* Turkey-hat2_TN.png */,
 				26F7BE461DCBEDBB006396FA /* Turkey-hat2_TN@2x.png */,
 				26F7BE471DCBEDBB006396FA /* Turkey-hat2_TN@3x.png */,
+				26F7BEDA1DD0FB2F006396FA /* Turkey-hat2.png */,
 				26F7BE481DCBEDBB006396FA /* Woman-hat_TN.png */,
 				26F7BE491DCBEDBB006396FA /* Woman-hat_TN@2x.png */,
 				26F7BE4A1DCBEDBB006396FA /* Woman-hat_TN@3x.png */,
+				26F7BEDB1DD0FB2F006396FA /* Woman-hat.png */,
 			);
 			name = Fall;
 			sourceTree = "<group>";
@@ -2167,6 +2223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F7BEDD1DD0FB2F006396FA /* Pilgram-hat.png in Resources */,
 				821853071D626A96001288D9 /* 6_floral_frame3_TN@2x.png in Resources */,
 				8218532B1D626A96001288D9 /* 15_purple_frame2_TN@2x.png in Resources */,
 				821852FB1D626A96001288D9 /* 3_blue_watercolor_frame_TN@2x.png in Resources */,
@@ -2180,17 +2237,21 @@
 				8218531C1D626A96001288D9 /* 11_pink_frame3_TN@3x.png in Resources */,
 				821851F81D625FBA001288D9 /* arrow_TN@3x.png in Resources */,
 				821853271D626A96001288D9 /* 14_blue_gradient_frame_TN@2x.png in Resources */,
+				26F7BECE1DD0FAA7006396FA /* Cocoa.png in Resources */,
 				9207315D1DC00FFD001EBBF0 /* NVFF_Frame_TN@2x.png in Resources */,
 				821853291D626A96001288D9 /* 14_blue_gradient_frame.png in Resources */,
 				26F7BE801DCBF79F006396FA /* leaf3.png in Resources */,
 				26F7BE641DCBEDBB006396FA /* Mushrooms-b_TN@2x.png in Resources */,
+				26F7BECD1DD0FAA7006396FA /* banner2.png in Resources */,
 				82362A531D59557E0019F024 /* starhp_TN@3x.png in Resources */,
 				8218520C1D625FBA001288D9 /* catears_TN@3x.png in Resources */,
 				82362A431D59557E0019F024 /* hearts_TN@3x.png in Resources */,
 				26F7BE5B1DCBEDBB006396FA /* hedgehog_TN@2x.png in Resources */,
 				821852081D625FBA001288D9 /* cat_TN@3x.png in Resources */,
+				26F7BED21DD0FAA7006396FA /* hedgehog.png in Resources */,
 				82362A371D59557E0019F024 /* crown_TN.png in Resources */,
 				8218531F1D626A96001288D9 /* 12_blue_frame2_TN@2x.png in Resources */,
+				26F7BED01DD0FAA7006396FA /* Football.png in Resources */,
 				9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */,
 				821853011D626A96001288D9 /* 4_white_frame.png in Resources */,
 				9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */,
@@ -2224,6 +2285,7 @@
 				821852B31D625FFB001288D9 /* xoxo_TN@2x.png in Resources */,
 				8218530A1D626A96001288D9 /* 7_gradient_frame_TN.png in Resources */,
 				E39EF27619B648E500AAB884 /* Bitter-Regular.ttf in Resources */,
+				26F7BEDF1DD0FB2F006396FA /* Woman-hat.png in Resources */,
 				E39EF27819B648E500AAB884 /* CoveredByYourGrace.ttf in Resources */,
 				26F7BE631DCBEDBB006396FA /* Mushrooms-b_TN.png in Resources */,
 				E39EF27A19B648E500AAB884 /* Glegoo-Regular.ttf in Resources */,
@@ -2281,8 +2343,10 @@
 				82362A2F1D59557E0019F024 /* catglasses_TN.png in Resources */,
 				26F7BE1D1DCBEABA006396FA /* catwhiskers_TN.png in Resources */,
 				26F7BE591DCBEDBB006396FA /* Fox_TN@3x.png in Resources */,
+				26F7BED61DD0FAA7006396FA /* Pumpkin.png in Resources */,
 				821852F31D626A96001288D9 /* 1_turquoise_frame_TN@2x.png in Resources */,
 				26F7BE621DCBEDBB006396FA /* Lips_TN@3x.png in Resources */,
+				26F7BED51DD0FAA7006396FA /* Pie.png in Resources */,
 				26F7BE841DCBF79F006396FA /* moon.png in Resources */,
 				26F7BE201DCBEABA006396FA /* catwhiskers.png in Resources */,
 				821852971D625FFB001288D9 /* feather2_TN@2x.png in Resources */,
@@ -2293,9 +2357,11 @@
 				821852991D625FFB001288D9 /* feather2.png in Resources */,
 				E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */,
 				26F7BE1F1DCBEABA006396FA /* catwhiskers_TN@3x.png in Resources */,
+				26F7BEDC1DD0FB2F006396FA /* Mushrooms-b.png in Resources */,
 				26F7BE541DCBEDBB006396FA /* Football_TN.png in Resources */,
 				8218520B1D625FBA001288D9 /* catears_TN@2x.png in Resources */,
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
+				26F7BEDE1DD0FB2F006396FA /* Turkey-hat2.png in Resources */,
 				CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */,
 				8218529D1D625FFB001288D9 /* heartExpress.png in Resources */,
 				9207315C1DC00FFD001EBBF0 /* NVFF_Frame_TN.png in Resources */,
@@ -2318,6 +2384,7 @@
 				821852B51D625FFB001288D9 /* xoxo.png in Resources */,
 				821852091D625FBA001288D9 /* cat.png in Resources */,
 				82362A411D59557E0019F024 /* hearts_TN@2x.png in Resources */,
+				26F7BED41DD0FAA7006396FA /* Lips.png in Resources */,
 				821853261D626A96001288D9 /* 14_blue_gradient_frame_TN.png in Resources */,
 				CC10808519CA122B00C1553A /* logo.blue.png in Resources */,
 				E3461FA119AF84A80042DF5E /* MeasurementArrowDown@2x.png in Resources */,
@@ -2392,7 +2459,9 @@
 				F1DCB8391B543CD800CA9AAD /* PG_Main.storyboard in Resources */,
 				E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */,
 				F1DCB83B1B54471E00CA9AAD /* PGSwipeCoachMarksView.xib in Resources */,
+				26F7BED31DD0FAA7006396FA /* leaves.png in Resources */,
 				26F7BE5A1DCBEDBB006396FA /* hedgehog_TN.png in Resources */,
+				26F7BED11DD0FAA7006396FA /* Fox.png in Resources */,
 				9207315F1DC00FFD001EBBF0 /* NVFF_Frame.png in Resources */,
 				821852FF1D626A96001288D9 /* 4_white_frame_TN@2x.png in Resources */,
 				821851FE1D625FBA001288D9 /* birthdayHat_TN.png in Resources */,
@@ -2404,6 +2473,7 @@
 				26F7BE4D1DCBEDBB006396FA /* banner2_TN@3x.png in Resources */,
 				821853231D626A96001288D9 /* 13_floral2_frame_TN@2x.png in Resources */,
 				E39CE8D41AA7C05900A2A644 /* DBChooser.bundle in Resources */,
+				26F7BECF1DD0FAA7006396FA /* Eyes2.png in Resources */,
 				26F7BE6A1DCBEDBB006396FA /* Pilgram-hat_TN@2x.png in Resources */,
 				821852F91D626A96001288D9 /* 2_pink_spraypaint_frame2.png in Resources */,
 				65E671E91A78267A009A12F3 /* Settings.bundle in Resources */,
@@ -2461,6 +2531,7 @@
 				daebf86e7a3df049804c14ec /* feather_TN@3x.png in Resources */,
 				130ad6663d4e9dfc7e25d2cf /* PGMediaNavigation.xib in Resources */,
 				cc652f313da3343f51f30ebe /* diamond_TN@3x.png in Resources */,
+				26F7BEE31DD0FE7E006396FA /* Fox.png in Resources */,
 				0801ccd31ec6b3e1e482bf9c /* cupcake_TN@3x.png in Resources */,
 				26F7BEBA1DCD0635006396FA /* moon.png in Resources */,
 				b2e58eadf0f45ed7096af0ce /* heartExpress_TN@3x.png in Resources */,
@@ -2473,6 +2544,7 @@
 				26F7BEB11DCD05FC006396FA /* catwhiskers_TN@3x.png in Resources */,
 				1ae0c1246bbb937bedfe573e /* 9_polkadots_frame_TN.png in Resources */,
 				328bf051b3e3af62c7e90ba1 /* sunglasses_TN@2x.png in Resources */,
+				26F7BEE11DD0FE76006396FA /* Cocoa.png in Resources */,
 				26F7BE961DCD0537006396FA /* hedgehog_TN@3x.png in Resources */,
 				b3c0cbae136849d796260560 /* 9_polkadots_frame_TN@3x.png in Resources */,
 				de3e98d3018b073d35b2b8b5 /* 3_blue_watercolor_frame_TN.png in Resources */,
@@ -2480,6 +2552,7 @@
 				65d183f4ee532bfc2560a29c /* crown_TN@2x.png in Resources */,
 				b02da23efc5e8c80e44150e3 /* OMG_TN.png in Resources */,
 				3b791e08d367d679c1a68e83 /* xoxo_TN@2x.png in Resources */,
+				26F7BEED1DD0FEA9006396FA /* Woman-hat.png in Resources */,
 				6e7d5c91786fff9fc6d47f36 /* 7_gradient_frame_TN.png in Resources */,
 				0a2c4d2bfb8cece1f9d1a367 /* Bitter-Regular.ttf in Resources */,
 				0aefe6fad1e472ac8cdf97a8 /* CoveredByYourGrace.ttf in Resources */,
@@ -2522,6 +2595,7 @@
 				1fc87134a9521da32f721f25 /* 6_floral_frame3.png in Resources */,
 				ad69787d6bdf794e837f2b25 /* SpecialElite.ttf in Resources */,
 				1043240fc3ef82aadbac9748 /* spicyrice-regular.ttf in Resources */,
+				26F7BEE21DD0FE7A006396FA /* Eyes2.png in Resources */,
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
 				7c7a6af4c5b9a170cef28990 /* birthdayHat.png in Resources */,
@@ -2529,6 +2603,7 @@
 				5522aba7222f85b2819ba9c7 /* stars_TN.png in Resources */,
 				26F7BE951DCD0534006396FA /* hedgehog_TN@2x.png in Resources */,
 				2d88afc85ef6599f299351fe /* 4_white_frame_TN.png in Resources */,
+				26F7BEEC1DD0FEA6006396FA /* Turkey-hat2.png in Resources */,
 				57699a5b81bfa9db567fb52b /* catglasses_TN.png in Resources */,
 				9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */,
 				5127173d4e5d95d27a5a831e /* feather2_TN@2x.png in Resources */,
@@ -2537,16 +2612,19 @@
 				354be86c5a47e803a13f78d3 /* feather2_TN@3x.png in Resources */,
 				26F7BEA81DCD0573006396FA /* Pumpkin_TN@3x.png in Resources */,
 				edb1da98cb61c224d151e8b2 /* feather2.png in Resources */,
+				26F7BEEA1DD0FE9C006396FA /* Pilgram-hat.png in Resources */,
 				26F7BE8C1DCD0515006396FA /* Eyes2_TN@2x.png in Resources */,
 				aff115244fa0165d3089bcb7 /* FacebookLogo@2x.png in Resources */,
 				26F7BEA31DCD0561006396FA /* Pilgram-hat_TN.png in Resources */,
 				21f5cd53684e844ef4415c4c /* catears_TN@2x.png in Resources */,
+				26F7BEE41DD0FE81006396FA /* Football.png in Resources */,
 				5a59ecc59e7e438b8865cd21 /* FacebookNoPhotoAlbum@2x.png in Resources */,
 				a2cf52fbb6975b35f780eded /* FlickrLogo@2x.png in Resources */,
 				f390a9ec9dade4ac7c10f76c /* heartExpress.png in Resources */,
 				26F7BEB81DCD0630006396FA /* moon_TN@2x.png in Resources */,
 				26F7BE9B1DCD0545006396FA /* Lips_TN@2x.png in Resources */,
 				26F7BE981DCD053C006396FA /* leaves_TN@2x.png in Resources */,
+				26F7BEEB1DD0FEA1006396FA /* Pumpkin.png in Resources */,
 				692a803853b431a67e319e83 /* 7_gradient_frame_TN@2x.png in Resources */,
 				f65cf21b4d037fd488578320 /* arrow_TN.png in Resources */,
 				26F7BEB01DCD05F8006396FA /* catwhiskers_TN.png in Resources */,
@@ -2567,12 +2645,14 @@
 				0501fc4b113b06666f807665 /* xoxo.png in Resources */,
 				48770b3a5ef946fb56956b9f /* cat.png in Resources */,
 				68c9b5bf0e29ea5c21cbe3a3 /* hearts_TN@2x.png in Resources */,
+				26F7BEE01DD0FE71006396FA /* banner2.png in Resources */,
 				26F7BE8E1DCD051B006396FA /* Football_TN.png in Resources */,
 				1b77ec71e6e2b0af96e94cda /* 14_blue_gradient_frame_TN.png in Resources */,
 				da300a56fe68165662be9328 /* logo.blue.png in Resources */,
 				b3905e1fc269bab6c70ffc97 /* MeasurementArrowDown@2x.png in Resources */,
 				f30dd462ed32d3cd77fe1167 /* sunglasses.png in Resources */,
 				0818277ab6df516fce5454fa /* MeasurementArrowLeft@2x.png in Resources */,
+				26F7BEE51DD0FE86006396FA /* hedgehog.png in Resources */,
 				59179d046194372660f136ed /* stars_TN@2x.png in Resources */,
 				9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */,
 				d10206a16285baaae005a8bd /* heartExpress_TN@2x.png in Resources */,
@@ -2602,7 +2682,9 @@
 				a0be190207beb02642a019ea /* catglasses_TN@3x.png in Resources */,
 				3d6918f1cfb3acc4963c9d33 /* OMG.png in Resources */,
 				30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */,
+				26F7BEE91DD0FE97006396FA /* Pie.png in Resources */,
 				26F7BEB31DCD061D006396FA /* leaf3_TN.png in Resources */,
+				26F7BEE71DD0FE90006396FA /* Lips.png in Resources */,
 				26F7BEB21DCD0602006396FA /* catwhiskers.png in Resources */,
 				26F7BE891DCD0509006396FA /* Cocoa_TN@2x.png in Resources */,
 				ace83614d375df76a2860aae /* Support_Printers.jpg in Resources */,
@@ -2613,6 +2695,7 @@
 				74672be5f58d79f6e01b1dba /* diamond_TN.png in Resources */,
 				13e911415febb6b03d00144c /* sunglasses_TN.png in Resources */,
 				2d971ddc9746ce08b8e0f0a1 /* 1_turquoise_frame.png in Resources */,
+				26F7BEE81DD0FE94006396FA /* Mushrooms-b.png in Resources */,
 				98e03b6979056b1d41f07ab0 /* birthdayHat_TN@3x.png in Resources */,
 				34405a013ceaafbb258e7824 /* catglasses_TN@2x.png in Resources */,
 				7b4980710cde4363b1aa5cef /* 12_blue_frame2_TN@3x.png in Resources */,
@@ -2654,6 +2737,7 @@
 				a06a22e0af01ef9f42819ad9 /* 11_pink_frame3_TN@2x.png in Resources */,
 				7e519a12ff45fdd0f7d28e18 /* 13_floral2_frame_TN@2x.png in Resources */,
 				26F7BEB91DCD0633006396FA /* moon_TN@3x.png in Resources */,
+				26F7BEE61DD0FE8A006396FA /* leaves.png in Resources */,
 				64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */,
 				447c4fc72f1695b05d10ac2f /* 2_pink_spraypaint_frame2.png in Resources */,
 				f86bb0b8ebcfda11f02ee448 /* Settings.bundle in Resources */,
