@@ -118,7 +118,7 @@
 		26F7C02A1DD10C02006396FA /* pumpkin_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF21DD10C02006396FA /* pumpkin_TN.png */; };
 		26F7C02B1DD10C02006396FA /* pumpkin_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF31DD10C02006396FA /* pumpkin_TN@2x.png */; };
 		26F7C02C1DD10C02006396FA /* pumpkin_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF41DD10C02006396FA /* pumpkin_TN@3x.png */; };
-		26F7C02D1DD10C02006396FA /* Pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF51DD10C02006396FA /* Pumpkin.png */; };
+		26F7C02D1DD10C02006396FA /* pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF51DD10C02006396FA /* pumpkin.png */; };
 		26F7C02E1DD10C02006396FA /* Turkey-hat2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF61DD10C02006396FA /* Turkey-hat2_TN.png */; };
 		26F7C02F1DD10C02006396FA /* Turkey-hat2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF71DD10C02006396FA /* Turkey-hat2_TN@2x.png */; };
 		26F7C0301DD10C02006396FA /* Turkey-hat2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF81DD10C02006396FA /* Turkey-hat2_TN@3x.png */; };
@@ -174,7 +174,7 @@
 		26F7C0621DD10C0A006396FA /* pumpkin_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF21DD10C02006396FA /* pumpkin_TN.png */; };
 		26F7C0631DD10C0A006396FA /* pumpkin_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF31DD10C02006396FA /* pumpkin_TN@2x.png */; };
 		26F7C0641DD10C0A006396FA /* pumpkin_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF41DD10C02006396FA /* pumpkin_TN@3x.png */; };
-		26F7C0651DD10C0A006396FA /* Pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF51DD10C02006396FA /* Pumpkin.png */; };
+		26F7C0651DD10C0A006396FA /* pumpkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF51DD10C02006396FA /* pumpkin.png */; };
 		26F7C0661DD10C0A006396FA /* Turkey-hat2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF61DD10C02006396FA /* Turkey-hat2_TN.png */; };
 		26F7C0671DD10C0A006396FA /* Turkey-hat2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF71DD10C02006396FA /* Turkey-hat2_TN@2x.png */; };
 		26F7C0681DD10C0A006396FA /* Turkey-hat2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7BFF81DD10C02006396FA /* Turkey-hat2_TN@3x.png */; };
@@ -936,7 +936,7 @@
 		26F7BFF21DD10C02006396FA /* pumpkin_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pumpkin_TN.png; path = Resources/Images/Stickers/Fall/pumpkin_TN.png; sourceTree = "<group>"; };
 		26F7BFF31DD10C02006396FA /* pumpkin_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pumpkin_TN@2x.png"; path = "Resources/Images/Stickers/Fall/pumpkin_TN@2x.png"; sourceTree = "<group>"; };
 		26F7BFF41DD10C02006396FA /* pumpkin_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pumpkin_TN@3x.png"; path = "Resources/Images/Stickers/Fall/pumpkin_TN@3x.png"; sourceTree = "<group>"; };
-		26F7BFF51DD10C02006396FA /* Pumpkin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pumpkin.png; path = Resources/Images/Stickers/Fall/Pumpkin.png; sourceTree = "<group>"; };
+		26F7BFF51DD10C02006396FA /* pumpkin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pumpkin.png; path = Resources/Images/Stickers/Fall/pumpkin.png; sourceTree = "<group>"; };
 		26F7BFF61DD10C02006396FA /* Turkey-hat2_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-hat2_TN.png"; path = "Resources/Images/Stickers/Fall/Turkey-hat2_TN.png"; sourceTree = "<group>"; };
 		26F7BFF71DD10C02006396FA /* Turkey-hat2_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-hat2_TN@2x.png"; path = "Resources/Images/Stickers/Fall/Turkey-hat2_TN@2x.png"; sourceTree = "<group>"; };
 		26F7BFF81DD10C02006396FA /* Turkey-hat2_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-hat2_TN@3x.png"; path = "Resources/Images/Stickers/Fall/Turkey-hat2_TN@3x.png"; sourceTree = "<group>"; };
@@ -1445,7 +1445,7 @@
 				26F7BFF21DD10C02006396FA /* pumpkin_TN.png */,
 				26F7BFF31DD10C02006396FA /* pumpkin_TN@2x.png */,
 				26F7BFF41DD10C02006396FA /* pumpkin_TN@3x.png */,
-				26F7BFF51DD10C02006396FA /* Pumpkin.png */,
+				26F7BFF51DD10C02006396FA /* pumpkin.png */,
 				26F7BFF61DD10C02006396FA /* Turkey-hat2_TN.png */,
 				26F7BFF71DD10C02006396FA /* Turkey-hat2_TN@2x.png */,
 				26F7BFF81DD10C02006396FA /* Turkey-hat2_TN@3x.png */,
@@ -2313,7 +2313,7 @@
 			files = (
 				26F7C0251DD10C02006396FA /* Pie.png in Resources */,
 				821853071D626A96001288D9 /* 6_floral_frame3_TN@2x.png in Resources */,
-				26F7C02D1DD10C02006396FA /* Pumpkin.png in Resources */,
+				26F7C02D1DD10C02006396FA /* pumpkin.png in Resources */,
 				26F7C0191DD10C02006396FA /* leaves.png in Resources */,
 				8218532B1D626A96001288D9 /* 15_purple_frame2_TN@2x.png in Resources */,
 				821852FB1D626A96001288D9 /* 3_blue_watercolor_frame_TN@2x.png in Resources */,
@@ -2727,7 +2727,7 @@
 				343d40aad2e7a4e478a5f9ca /* catglasses.png in Resources */,
 				5522aba7222f85b2819ba9c7 /* stars_TN.png in Resources */,
 				82E505601DCAABEF00AE493A /* Sloppy_Frame_iOS.png in Resources */,
-				26F7C0651DD10C0A006396FA /* Pumpkin.png in Resources */,
+				26F7C0651DD10C0A006396FA /* pumpkin.png in Resources */,
 				26F7C04F1DD10C0A006396FA /* leaves_TN@2x.png in Resources */,
 				2d88afc85ef6599f299351fe /* 4_white_frame_TN.png in Resources */,
 				26F7C0701DD10C1E006396FA /* catwhiskers_TN@3x.png in Resources */,

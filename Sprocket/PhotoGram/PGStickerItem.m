@@ -135,7 +135,7 @@ const NSInteger PGStickerItemsCount = 34;
     switch (index) {
         case PGStickerItemsPumpkin: {
             sticker.accessibilityText = NSLocalizedString(@"Fall Pumpkin Sticker", nil);
-            sticker.imageName = @"Pumpkin";
+            sticker.imageName = @"pumpkin";
             break;
         }
         case PGStickerItemsFootball: {
