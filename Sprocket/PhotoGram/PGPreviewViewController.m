@@ -381,6 +381,8 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 {
     [self saveToCameraRoll:^(BOOL saved) {
         if (saved) {
+            [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
+
             [UIView animateWithDuration:0.5F animations:^{
                 [self showImageSavedView:YES];
             } completion:^(BOOL finished) {

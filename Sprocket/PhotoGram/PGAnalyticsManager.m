@@ -71,6 +71,11 @@ NSString * const kEventAuthRequestDeniedAction  = @"Denied";
 NSString * const kEventAuthRequestPhotosLabel   = @"Photos";
 NSString * const kEventAuthRequestCameraLabel   = @"Camera";
 
+NSString * const kEventSaveProjectCategory      = @"SaveProject";
+NSString * const kEventSaveProjectSaveAction    = @"Save";
+NSString * const kEventSaveProjectDismiss       = @"SaveFromDismissEdits";
+NSString * const kEventSaveProjectPreview       = @"SaveFromPreview";
+
 NSString * const kEventDismissEditCategory      = @"DismissEdits";
 NSString * const kEventDismissEditOkAction      = @"OK";
 NSString * const kEventDismissEditSaveAction    = @"Save";
@@ -262,8 +267,13 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackEvent:kEventDismissEditCategory action:action label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     
     if ([kEventDismissEditSaveAction isEqualToString:action]) {
-        [self trackEvent:@"SaveProject" action:@"Save" label:@"" value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+        [self trackSaveProjectActivity:kEventSaveProjectDismiss];
     }
+}
+
+- (void)trackSaveProjectActivity:(NSString *)source
+{
+    [self trackEvent:kEventSaveProjectCategory action:kEventSaveProjectSaveAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackCameraDirectionActivity:(NSString *)direction
