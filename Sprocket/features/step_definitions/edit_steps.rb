@@ -38,7 +38,7 @@ Then (/^I select "(.*?)"$/) do |option|
     if option == "Filter"
         touch @current_page.filter_1
     else 
-        if option == "sticker" || option == "frame"
+        if option == "sticker" 
         touch "IMGLYIconCollectionViewCell"
         sleep(STEP_PAUSE)
     else
@@ -53,7 +53,8 @@ end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
-        check_element_does_not_exist(@current_page.selected_frame)
+        selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Wrong frame selected!" unless selected_frame_status != nil
     else
         if edit_item == "sticker"
             check_element_does_not_exist(@current_page.selected_sticker)
@@ -81,8 +82,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
 end
 
 And(/^I verify blue line indicator is displayed under selected frame$/) do 
-   #width_indicator = query("UIView index:29").first["frame"]["width"]
-   selected_frame_status = query("UIImageView index:0 id:'1_turquoise_frame'")
+    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Blue line indicator not found!" unless selected_frame_status != nil
 end
 
@@ -172,3 +172,49 @@ Then(/^I verify the modified crop area$/) do
  raise "crop area not modified successfully!" unless $curr_bot_lft_crp_x != post_bot_lft_crp_x && $curr_bot_lft_crp_y != post_bot_lft_crp_y
 end
 
+Then(/^I select "(.*?)" frame$/) do |frame_name|
+sleep(WAIT_SCREENLOAD)
+select_frame frame_name
+sleep(STEP_PAUSE)
+end
+Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
+    $list_loc=$edit_screen_arr["edit_frame"]
+    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Wrong frame selected!" unless selected_frame_status = $list_loc[frame_name]
+end
+Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
+   sleep(WAIT_SCREENLOAD)
+  frame_name=["No Frame", "Turquoise Frame", "Pink Spray Paint Frame", "Water Blue Frame", "White Frame", "Red Frame", "Floral Frame", "Gradient Frame", "Green Spray Paint Frame", "Polka Dots Frame", "Green Water Color Frame","Pink Frame","Blue Frame","Floral Frame","Blue Gradient Frame","Purple Frame"]
+  i = 0
+  while i < 16
+    macro %Q|I select "#{frame_name[i]}" frame|
+    macro %Q|I verify blue line indicator is displayed under selected frame|
+    macro %Q|I should see the photo with the "Pink Frame" frame|
+    macro %Q|I should see the "FrameEditor" screen|
+    i= i + 1
+    sleep(SLEEP_SCREENLOAD)
+  end
+end
+
+$edit_screen_arr =
+
+{
+    "edit_frame" => {
+        "Turquoise Frame" => "1_turquoise_frame",
+        "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
+        "Water Blue Frame" => "3_blue_watercolor_frame",
+        "White Frame"=> "4_white_frame",
+        "Red Frame" => "5_Red_frame",
+        "Floral Frame 1" => "6_floral_frame3",
+        "Gradient Frame" => "7_gradient_frame",
+        "Green Spray Paint Frame"=> "8_green_spraypaint_frame3",
+        "Polka Dots Frame" => "9_polkadots_frame",
+        "Green Water Color Frame" => "10_green_watercolor_frame2",
+        "Pink Frame" => "11_pink_frame3",
+        "Blue Frame"=> "12_blue_frame2",
+        "Floral Frame 2" => "13_floral2_frame",
+        "Blue Gradient Frame" => "14_blue_gradient_frame",
+        "Purple Frame" => "15_purple_frame2"
+        
+        }
+    }
