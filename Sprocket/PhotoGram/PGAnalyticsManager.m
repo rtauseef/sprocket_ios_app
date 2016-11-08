@@ -236,6 +236,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
         [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     } else {
         [self trackEvent:kEventPrintJobErrorCategory action:error label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+        [self trackEvent:kEventPrintCategory action:@"Error" label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     }
 }
 
