@@ -36,6 +36,9 @@ extern NSString * const kEventAuthRequestDeniedAction;
 extern NSString * const kEventAuthRequestPhotosLabel;
 extern NSString * const kEventAuthRequestCameraLabel;
 
+extern NSString * const kEventSaveProjectDismiss;
+extern NSString * const kEventSaveProjectPreview;
+
 extern NSString * const kEventDismissEditOkAction;
 extern NSString * const kEventDismissEditSaveAction;
 extern NSString * const kEventDismissEditCancelAction;
@@ -57,6 +60,7 @@ extern NSString * const kEventPrintShareLabel;
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result;
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device;
 - (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source;
+- (void)trackSaveProjectActivity:(NSString *)source;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
