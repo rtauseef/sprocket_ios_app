@@ -38,6 +38,7 @@
 #import "UIViewController+Trackable.h"
 #import "NSLocale+Additions.h"
 #import "PGBatteryImageView.h"
+#import "PGAnalyticsManager.h"
 
 #define LONG_SCREEN_SIZE_HEADER_HEIGHT 75.0f
 #define SHORT_SCREEN_SIZE_HEADER_HEIGHT 52.0f
@@ -67,6 +68,8 @@ NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
 NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
+NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
+NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
 @interface PGSideBarMenuTableViewController () <MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
@@ -304,10 +307,12 @@ typedef enum {
             break;
         }
         case BUY_PAPER_INDEX: {
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kBuyPaperScreenName];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kBuyPaperURL]];
             break;
         }
         case PRIVACY_STATEMENT_INDEX: {
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kPrivacyStatementScreenName];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]]]];
             break;
         }
