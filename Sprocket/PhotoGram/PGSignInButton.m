@@ -21,6 +21,10 @@
     if (self) {
         self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:28];
         self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.minimumScaleFactor = 0.5f;
+        self.titleLabel.numberOfLines = 1;
+        self.titleLabel.adjustsFontSizeToFitWidth = YES;
+        self.titleLabel.lineBreakMode = NSLineBreakByClipping;
         
         self.layer.borderWidth = 1.0;
         self.layer.borderColor = [UIColor whiteColor].CGColor;
