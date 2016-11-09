@@ -150,7 +150,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     GAI *gai = [GAI sharedInstance];
 
     gai.trackUncaughtExceptions = YES;
-    gai.logger.logLevel = kGAILogLevelNone;
+    gai.logger.logLevel = kGAILogLevelInfo;
     
 #ifdef DEBUG
     gai.dispatchInterval = 10;
@@ -297,6 +297,12 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackEvent:kEventPrintCategory action:kEventPrintAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
+- (void)fireTestException {
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createExceptionWithDescription:@"Exception Test" withFatal:@YES] build]];
+    [[Crashlytics sharedInstance] throwException];
+}
 /**
  trackEvent
  Category: The primary divisions of the types of Events you have on your site. Categories
