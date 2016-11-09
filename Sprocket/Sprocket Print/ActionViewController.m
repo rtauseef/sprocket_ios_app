@@ -50,6 +50,11 @@ static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 
     self.printButton.layer.borderWidth = 1.0f;
     self.printButton.layer.cornerRadius = 3.5f;
     
+    self.printButton.titleLabel.minimumScaleFactor = 0.5f;
+    self.printButton.titleLabel.numberOfLines = 1;
+    self.printButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.printButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
     [self addGradientBackgroundToView:self.view];
     
     BOOL imageFound = NO;
