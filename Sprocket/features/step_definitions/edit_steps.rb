@@ -184,12 +184,12 @@ Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
 end
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
-  frame_name=["No Frame", "Turquoise Frame", "Pink Spray Paint Frame", "Water Blue Frame", "White Frame", "Red Frame", "Floral Frame", "Gradient Frame", "Green Spray Paint Frame", "Polka Dots Frame", "Green Water Color Frame","Pink Frame","Blue Frame","Floral Frame","Blue Gradient Frame","Purple Frame"]
+  frame_name=["White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame","Yellow Frame","Blue Gradient Frame"]
   i = 0
   while i < 16
     macro %Q|I select "#{frame_name[i]}" frame|
     macro %Q|I verify blue line indicator is displayed under selected frame|
-    macro %Q|I should see the photo with the "Pink Frame" frame|
+    macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
     macro %Q|I should see the "FrameEditor" screen|
     i= i + 1
     sleep(SLEEP_SCREENLOAD)
@@ -200,21 +200,22 @@ $edit_screen_arr =
 
 {
     "edit_frame" => {
-        "Turquoise Frame" => "1_turquoise_frame",
-        "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
-        "Water Blue Frame" => "3_blue_watercolor_frame",
-        "White Frame"=> "4_white_frame",
-        "Red Frame" => "5_Red_frame",
-        "Floral Frame 1" => "6_floral_frame3",
-        "Gradient Frame" => "7_gradient_frame",
-        "Green Spray Paint Frame"=> "8_green_spraypaint_frame3",
+        "White Frame" => "4_white_frame",
+        "Kraft Frame" => "Kraft_Frame_iOS",
+        "Floral Frame" => "6_floral_frame3",
+        "Orange Frame"=> "Orange_Frame_iOS",
         "Polka Dots Frame" => "9_polkadots_frame",
-        "Green Water Color Frame" => "10_green_watercolor_frame2",
-        "Pink Frame" => "11_pink_frame3",
-        "Blue Frame"=> "12_blue_frame2",
-        "Floral Frame 2" => "13_floral2_frame",
-        "Blue Gradient Frame" => "14_blue_gradient_frame",
-        "Purple Frame" => "15_purple_frame2"
+        "Water Blue Frame" => "3_blue_watercolor_frame",
+        "Wood Bottom Frame" => "Wood_Frame_iOS",
+        "Gradient Frame"=> "7_gradient_frame",
+        "Sloppy Frame" => "Sloppy_Frame_iOS",
+        "Turquoise Frame" => "1_turquoise_frame",
+        "Red Frame" => "5_Red_frame",
+        "Green Water Color Frame"=> "10_green_watercolor_frame2",
+        "Floral 2 Frame" => "13_floral2_frame",
+        "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
+        "Yellow Frame" => "Yellow_Frame_iOS",
+        "Blue Gradient Frame" => "14_blue_gradient_frame"
         
         }
     }

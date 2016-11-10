@@ -50,21 +50,22 @@ Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
             |No Frame               |
-            |Turquoise Frame        |
-            |Pink Spray Paint Frame |
-            |Water Blue Frame       |
             |White Frame            |
-            |Red Frame              |
+            |Kraft Frame            |
             |Floral Frame           |
-            |Gradient Frame         |
-            |Green Spray Paint Frame|
+            |Orange Frame           |
             |Polka Dots Frame       |
+            |Water Blue Frame       |
+            |Wood Bottom Frame      |
+            |Gradient Frame         |
+            |Sloppy Frame           |
+            |Turquoise Frame        |
+            |Red Frame              |
             |Green Water Color Frame|
-            |Pink Frame             |
-            |Blue Frame             |
-            |Floral Frame           |
+            |Floral 2 Frame         |
+            |Pink Spray Paint Frame |
+            |Yellow Frame           |
             |Blue Gradient Frame    |
-            |Purple Frame           |
   
   @reset
 @TA15656
@@ -77,12 +78,12 @@ Scenario: Verify all the frames are applied for frame editor screen
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
     Given I am on the "FrameEditor" screen for "<screen_name>"
     Then I select "White Frame" frame
-    And I should see the photo with the "Pink Frame" frame
+    And I should see the photo with the "White Frame" frame
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     Then I tap "Frame" button
-    Then I select "Blue Frame" frame
-    And I should see the photo with the "Blue Frame" frame
+    Then I select "Red Frame" frame
+    And I should see the photo with the "Red Frame" frame
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     
