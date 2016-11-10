@@ -192,21 +192,16 @@ typedef enum {
 
     [self.view setNeedsLayout];
     [self.view layoutIfNeeded];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(unselectTableViewCell)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(unselectTableViewCell)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
@@ -215,20 +210,30 @@ typedef enum {
     [self setFlickrUserView];
 
     if (IS_OS_8_OR_LATER) {
-        NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
-        BOOL shouldHideConnectivity = (numberOfPairedSprockets <= 0);
-        
-        self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
-        self.deviceStatusLED.hidden = shouldHideConnectivity;
-        self.deviceBatteryLevel.hidden = shouldHideConnectivity;
-        
-        [[MP sharedInstance] checkSprocketForUpdates:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+            BOOL shouldHideConnectivity = (numberOfPairedSprockets <= 0);
+            
+            self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
+            self.deviceStatusLED.hidden = shouldHideConnectivity;
+            self.deviceBatteryLevel.hidden = shouldHideConnectivity;
+            
+            [[MP sharedInstance] checkSprocketForUpdates:self];
+        });
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Resizing the table to the width revealed by the SWRevealViewController forces word-wrapping where necessary
+        CGRect frame = self.tableView.frame;
+        frame.size.width = self.revealViewController.rearViewRevealWidth;
+        self.tableView.frame = frame;
+    });
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
     
-    // Resizing the table to the width revealed by the SWRevealViewController forces word-wrapping where necessary
-    CGRect frame = self.tableView.frame;
-    frame.size.width = self.revealViewController.rearViewRevealWidth;
-    self.tableView.frame = frame;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)unselectTableViewCell
@@ -247,29 +252,35 @@ typedef enum {
 
 - (void)setFlickrLogged:(BOOL)flickrLogged
 {
-    _flickrLogged = flickrLogged;
-    NSString *title = (flickrLogged) ? kSignOutButtonTitle : kSignInButtonTitle;
-    [self.flickrSignButton setTitle:title forState:UIControlStateNormal];
-    self.flickrSignButton.userInteractionEnabled = YES;
-    self.flickrGestureRecognizer.enabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _flickrLogged = flickrLogged;
+        NSString *title = (flickrLogged) ? kSignOutButtonTitle : kSignInButtonTitle;
+        [self.flickrSignButton setTitle:title forState:UIControlStateNormal];
+        self.flickrSignButton.userInteractionEnabled = YES;
+        self.flickrGestureRecognizer.enabled = YES;
+    });
 }
 
 - (void)setFacebookLogged:(BOOL)facebookLogged
 {
-    _facebookLogged = facebookLogged;
-    NSString *title = (facebookLogged) ? kSignOutButtonTitle : kSignInButtonTitle;
-    [self.facebookSignButton setTitle:title forState:UIControlStateNormal];
-    self.facebookSignButton.userInteractionEnabled = YES;
-    self.facebookGestureRecognizer.enabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _facebookLogged = facebookLogged;
+        NSString *title = (facebookLogged) ? kSignOutButtonTitle : kSignInButtonTitle;
+        [self.facebookSignButton setTitle:title forState:UIControlStateNormal];
+        self.facebookSignButton.userInteractionEnabled = YES;
+        self.facebookGestureRecognizer.enabled = YES;
+    });
 }
 
 - (void)setInstagramLogged:(BOOL)instagramLogged
 {
-    _instagramLogged = instagramLogged;
-    NSString *title = (instagramLogged) ? kSignOutButtonTitle : kSignInButtonTitle;
-    [self.instagramSignButton setTitle:title forState:UIControlStateNormal];
-    self.instagramSignButton.userInteractionEnabled = YES;
-    self.instagramGestureRecognizer.enabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _instagramLogged = instagramLogged;
+        NSString *title = (instagramLogged) ? kSignOutButtonTitle : kSignInButtonTitle;
+        [self.instagramSignButton setTitle:title forState:UIControlStateNormal];
+        self.instagramSignButton.userInteractionEnabled = YES;
+        self.instagramGestureRecognizer.enabled = YES;
+    });
 }
 
 #pragma mark - Table view delegate
