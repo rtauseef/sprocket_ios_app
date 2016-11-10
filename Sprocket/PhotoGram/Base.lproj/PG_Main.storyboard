@@ -2206,8 +2206,8 @@ printer and app support.</string>
                                             <constraint firstItem="rfA-TY-ykl" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="top" id="u3L-YS-cyB"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="75" y="564" width="225" height="60"/>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="PGTermsAttributedLabel">
+                                        <rect key="frame" x="56.5" y="564" width="262.5" height="60"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="UPL-05-74W"/>
@@ -2231,7 +2231,7 @@ printer and app support.</string>
                                     <constraint firstItem="Ttx-CG-jdw" firstAttribute="top" secondItem="krD-fF-9ON" secondAttribute="bottom" constant="49" id="dOY-SM-BFV"/>
                                     <constraint firstItem="Ttx-CG-jdw" firstAttribute="centerX" secondItem="krD-fF-9ON" secondAttribute="centerX" id="dXR-Uf-AQb"/>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="20" id="lDO-9b-vGY"/>
-                                    <constraint firstItem="3rx-Fp-iLE" firstAttribute="width" secondItem="MkG-i6-mOl" secondAttribute="width" multiplier="0.6" id="ngo-Nz-PMf"/>
+                                    <constraint firstItem="3rx-Fp-iLE" firstAttribute="width" secondItem="MkG-i6-mOl" secondAttribute="width" multiplier="0.7" id="ngo-Nz-PMf"/>
                                     <constraint firstItem="r8A-4l-TdM" firstAttribute="centerX" secondItem="qJF-Uu-U0X" secondAttribute="centerX" id="nqG-Jx-pcp"/>
                                     <constraint firstItem="krD-fF-9ON" firstAttribute="top" secondItem="qJF-Uu-U0X" secondAttribute="bottom" constant="49" id="qJ9-PA-fHf"/>
                                     <constraint firstItem="krD-fF-9ON" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="r46-X4-YGt"/>
@@ -2919,7 +2919,7 @@ printer and app support.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QHg-ci-zc8"/>
-        <segue reference="MlA-75-DXQ"/>
         <segue reference="C19-1u-8Uj"/>
+        <segue reference="6IN-di-nfa"/>
     </inferredMetricsTieBreakers>
 </document>
