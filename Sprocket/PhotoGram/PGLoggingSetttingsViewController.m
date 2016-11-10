@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "PGAppDelegate.h"
 #import "PGLoggingSetttingsViewController.h"
+#import "PGAnalyticsManager.h"
 #import "Logging/PGLog.h"
 #import "Logging/PGLogger.h"
 #import "Logging/PGLogFormatter.h"
@@ -272,7 +273,7 @@ static int kHideSvgMessagesIndex = 7;
             } else if ( kCrashAppCellIndex == selectedRow ) {
                 [[Crashlytics sharedInstance] crash];
             } else if ( kExceptionAppCellIndex == selectedRow ) {
-                [[Crashlytics sharedInstance] throwException];
+                [[PGAnalyticsManager sharedManager] fireTestException];
             } else if ( kHideSvgMessagesIndex == selectedRow ) {
                 BOOL currentSetting = [[PGLogger sharedInstance] hideSvgMessages];
                 [[PGLogger sharedInstance] setHideSvgMessages: !currentSetting];

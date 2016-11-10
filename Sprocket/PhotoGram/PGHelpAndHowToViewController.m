@@ -13,6 +13,7 @@
 #import "PGHelpAndHowToViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGWebViewerViewController.h"
+#import "PGAnalyticsManager.h"
 
 #import <Social/Social.h>
 #import <MP.h>
@@ -29,6 +30,9 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
 NSString * const kPGHelpAndHowToViewUserURL = @"http://h10032.www1.hp.com/ctg/Manual/c05280005";
 NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
 NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
+NSString * const kViewUserGuideScreenName = @"View User Guide";
+NSString * const kVisitWebsiteScreenName = @"Visit Website";
+NSString * const kJoinForumScreenName = @"Join Forum Screen";
 
 @interface PGHelpAndHowToViewController ()
 
@@ -79,6 +83,7 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
 {
     switch (indexPath.row) {
         case PGHelpAndHowToRowIndexesViewUserGuide: {
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kViewUserGuideScreenName];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToViewUserURL]];
             break;
         }
@@ -87,10 +92,12 @@ NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket"
             break;
         }
         case PGHelpAndHowToRowIndexesJoinSupport: {
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToJoinForumSupportURL]];
             break;
         }
         case PGHelpAndHowToRowIndexesVisitSupport: {
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kVisitWebsiteScreenName];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToVisitWebsiteURL]];
             break;
         }

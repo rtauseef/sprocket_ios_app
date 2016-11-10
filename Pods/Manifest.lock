@@ -52,7 +52,7 @@ CHECKOUT OPTIONS:
     :commit: 3069254a72b384a8d393ea80f6b37db76b805cd6
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: adecafd746ccf638ba49ba73c137c58c82d5144e
+    :commit: 0ea444c69dca28084cead2096cad85fe4b143283
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -66,4 +66,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: bef5d46999e7fe5a7fb928eb7c72b52f22e86d13
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
