@@ -16,6 +16,7 @@ When(/^I tap "(.*?)" mark$/) do |mark|
             touch @current_page.check
         else
             if(mark == "Save")
+                sleep(WAIT_SCREENLOAD)
                     touch @current_page.save
                     #sleep(STEP_PAUSE)
             else
@@ -39,7 +40,7 @@ Then (/^I select "(.*?)"$/) do |option|
         touch @current_page.filter_1
     else 
         if option == "sticker" 
-        touch "IMGLYIconCollectionViewCell"
+        touch "* id:'Fox_TN'"
         sleep(STEP_PAUSE)
     else
             sleep(2.0)
@@ -69,8 +70,9 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
             check_element_exists(@current_page.selected_frame)
     else
         if edit_item == "sticker"
-            check_element_exists @current_page.selected_sticker
-            sleep(STEP_PAUSE)
+           selected_frame_status = query("UIImageView index:2",:accessibilityIdentifier)
+           raise "Wrong sticker selected!" unless selected_frame_status == "Fox"
+            
     else
         if edit_item == "text"
             sleep(STEP_PAUSE)

@@ -19,7 +19,7 @@ class StickerEditorScreen < Calabash::IBase
     end
     
     def selected_sticker
-        "* id:'catglasses'"
+        "* id:'Fox_TN'"
     end
     
 
