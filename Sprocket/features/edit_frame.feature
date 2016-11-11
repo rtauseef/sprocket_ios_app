@@ -30,12 +30,12 @@ Scenario Outline: Verify 'Frame' option
 @TA15656
 Scenario Outline: Verify frame applied for frame editor screen
     Given I am on the "FrameEditor" screen for "<screen_name>"
-    Then I select "Pink Frame" frame
+    Then I select "Kraft Frame" frame
     And I verify blue line indicator is displayed under selected frame
-    And I should see the photo with the "Pink Frame" frame
+    And I should see the photo with the "Kraft Frame" frame
     Then I tap "Save" mark
     Then I should see the "Edit" screen
-    And I should see the photo with the "Pink Frame" frame
+    And I should see the photo with the "Kraft Frame" frame
     
     Examples:
     | screen_name       |
