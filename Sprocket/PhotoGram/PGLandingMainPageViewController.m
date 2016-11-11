@@ -202,20 +202,25 @@
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
 {
-    self.termsLabel.userInteractionEnabled = NO;
-    self.instagramButton.userInteractionEnabled = NO;
-    self.facebookButton.userInteractionEnabled = NO;
-    self.flickrButton.userInteractionEnabled = NO;
-    self.cameraRollButton.userInteractionEnabled = NO;    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.termsLabel.userInteractionEnabled = NO;
+        self.instagramButton.userInteractionEnabled = NO;
+        self.facebookButton.userInteractionEnabled = NO;
+        self.flickrButton.userInteractionEnabled = NO;
+        self.cameraRollButton.userInteractionEnabled = NO;
+    });
+    
 }
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
 {
-    self.termsLabel.userInteractionEnabled = YES;
-    self.instagramButton.userInteractionEnabled = YES;
-    self.facebookButton.userInteractionEnabled = YES;
-    self.flickrButton.userInteractionEnabled = YES;
-    self.cameraRollButton.userInteractionEnabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.termsLabel.userInteractionEnabled = YES;
+        self.instagramButton.userInteractionEnabled = YES;
+        self.facebookButton.userInteractionEnabled = YES;
+        self.flickrButton.userInteractionEnabled = YES;
+        self.cameraRollButton.userInteractionEnabled = YES;
+    });
 }
 
 - (void)handleShowSocialNetworkNotification:(NSNotification *)notification
