@@ -25,6 +25,8 @@ target "Sprocket-cal" do
 end
 
 target "Sprocket Print" do
+    pod 'GoogleAnalytics-iOS-SDK', '3.12'
+    pod 'TTTAttributedLabel', '1.10.1'
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'#path:'~/workspace/ios-print-sdk'#
 end

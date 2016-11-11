@@ -180,7 +180,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
 {
-    
     NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
     NSInteger currentlyConnected = (numberOfPairedSprockets > 0);
     
