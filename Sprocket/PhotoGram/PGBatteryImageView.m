@@ -16,15 +16,17 @@
 
 - (void)setLevel:(NSUInteger)level
 {
-    if (level >= 75) {
-        self.image = [UIImage imageNamed:@"battery100"];
-    } else if (level < 75 && level >= 50) {
-        self.image = [UIImage imageNamed:@"battery75"];
-    } else if (level < 50 && level >= 25) {
-        self.image = [UIImage imageNamed:@"battery50"];
-    } else if (level < 25) {
-        self.image = [UIImage imageNamed:@"battery25"];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (level >= 75) {
+            self.image = [UIImage imageNamed:@"battery100"];
+        } else if (level < 75 && level >= 50) {
+            self.image = [UIImage imageNamed:@"battery75"];
+        } else if (level < 50 && level >= 25) {
+            self.image = [UIImage imageNamed:@"battery50"];
+        } else if (level < 25) {
+            self.image = [UIImage imageNamed:@"battery25"];
+        }
+    });
 }
 
 @end

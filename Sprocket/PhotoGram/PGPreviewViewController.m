@@ -457,6 +457,8 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     btPrintActivity.image = image;
     btPrintActivity.vc = self;
     
+    [[MP sharedInstance] closeAccessorySession];
+    
     [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
 
 }
