@@ -21,6 +21,20 @@
 #import "PGAppAppearance.h"
 #import "PGAnalyticsManager.h"
 #import "PGLogger.h"
+#import "PGRevealViewController.h"
+#import "PGLandingSelectorPageViewController.h"
+#import "UIViewController+Trackable.h"
+
+static const NSInteger connectionDefaultValue = -1;
+static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
+
+@interface PGAppDelegate()
+
+@property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
+@property (assign, nonatomic) NSInteger lastConnectedValue;
+@property (assign, nonatomic) BOOL menuShowing;
+
+@end
 
 @implementation PGAppDelegate
 
@@ -55,6 +69,9 @@
    
     self.window.backgroundColor = [UIColor greenColor];
     
+    self.lastConnectedValue = connectionDefaultValue;
+    self.menuShowing = NO;
+    
     return YES;
 }
 
@@ -62,6 +79,9 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [self.sprocketConnectivityTimer invalidate];
+    self.sprocketConnectivityTimer = nil;
+    self.lastConnectedValue = connectionDefaultValue;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -78,6 +98,13 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [[HPPRFacebookLoginProvider sharedInstance] handleDidBecomeActive];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
+
+    [self checkSprocketPrinterConnectivity:nil];
+    
+    self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGAppDelegatePrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -135,6 +162,74 @@
     MPSupportAction *action2 = [[MPSupportAction alloc] initWithIcon:[UIImage imageNamed:@"Buy_Paper_Print"] title:NSLocalizedString(@"Buy Paper", nil) url:[NSURL URLWithString:@"http://store.hp.com/webapp/wcs/stores/servlet/us/en/pdp/ink--toner---paper/hp-social-media-snapshots-removable-sticky-photo-paper-25-sht-4-x-5-in"]];
     
     [MP sharedInstance].supportActions =  @[action1, action2];
+}
+
+#pragma mark - Notifications
+
+- (void)handleMenuOpenedNotification:(NSNotification *)notification
+{
+    self.menuShowing = YES;
+}
+
+- (void)handleMenuClosedNotification:(NSNotification *)notification
+{
+    self.menuShowing = NO;
+}
+
+#pragma mark - sprocket connectivity and reporting
+
+- (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
+{
+    
+    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+    NSInteger currentlyConnected = (numberOfPairedSprockets > 0);
+    
+    // Only record changes to printer connectivity
+    if (connectionDefaultValue != self.lastConnectedValue  &&
+        self.lastConnectedValue != currentlyConnected) {
+        PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        
+        UIViewController *rootViewController = revealController.frontViewController;
+        
+        if (self.menuShowing) {
+            rootViewController = revealController.rearViewController;
+        }
+        
+        UIViewController *topViewController = [self topViewController:rootViewController];
+        NSString *name = topViewController.trackableScreenName;
+        if (nil == name) {
+            name = [NSString stringWithFormat:@"%@", [topViewController class]];
+        }
+        
+        [[PGAnalyticsManager sharedManager] trackPrinterConnected:(BOOL)currentlyConnected screenName:name];
+    }
+    
+    self.lastConnectedValue = currentlyConnected;
+}
+
+- (UIViewController *)topViewController:(UIViewController *)rootViewController
+{
+    UIViewController *topController = nil;
+    
+    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navController = (UINavigationController *)rootViewController;
+        UIViewController *lastViewController = [[navController viewControllers] lastObject];
+        topController = [self topViewController:lastViewController];
+    } else if ([rootViewController isKindOfClass:[PGLandingSelectorPageViewController class]]) {
+        PGLandingSelectorPageViewController *pageController = (PGLandingSelectorPageViewController *)rootViewController;
+        UINavigationController *displayedController = [pageController currentNavigationController];
+        UIViewController *lastViewController = [[displayedController viewControllers] lastObject];
+        topController = [self topViewController:lastViewController];
+    } else {
+        UIViewController *presentedController = rootViewController.presentedViewController;
+        if (nil != presentedController) {
+            topController = [self topViewController:presentedController];
+        } else {
+            topController = rootViewController;
+        }
+    }
+    
+    return topController;
 }
 
 @end

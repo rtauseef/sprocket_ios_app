@@ -114,6 +114,10 @@ NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
+NSString * const kEventPrinterConnectCategory = @"PrinterConnect";
+NSString * const kActionPrinterConnected      = @"Connected";
+NSString * const kActionPrinterDisconnected   = @"Disconnected";
+
 @synthesize templateName = _templateName;
 
 + (PGAnalyticsManager *)sharedManager
@@ -243,6 +247,13 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)handlePrinterNotConnectedNotification:(NSNotification *)notification
 {
     [self trackEvent:kEventPrinterNotConnectedCategory action:kEventPrinterNotConnectedAction label:[notification.userInfo objectForKey:kMPBTPrinterNotConnectedSourceKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackPrinterConnected:(BOOL)connected screenName:(NSString *)screenName
+{
+    NSString *action = connected ? kActionPrinterConnected : kActionPrinterDisconnected;
+    
+    [self trackEvent:kEventPrinterConnectCategory action:action label:screenName value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackScreenViewEvent:(NSString *)screenName

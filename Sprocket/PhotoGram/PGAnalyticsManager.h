@@ -65,6 +65,7 @@ extern NSString * const kEventPrintShareLabel;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
 - (void)trackPrintRequest:(NSString *)source;
+- (void)trackPrinterConnected:(BOOL)connected screenName:(NSString *)screenName;
 - (void)fireTestException;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
