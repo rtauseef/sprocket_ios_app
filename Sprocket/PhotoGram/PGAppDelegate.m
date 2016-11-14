@@ -82,6 +82,9 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [self.sprocketConnectivityTimer invalidate];
     self.sprocketConnectivityTimer = nil;
     self.lastConnectedValue = connectionDefaultValue;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MENU_OPENED_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MENU_CLOSED_NOTIFICATION object:nil];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
