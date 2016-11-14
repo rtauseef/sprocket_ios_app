@@ -22,6 +22,7 @@
 #import "PGBatteryImageView.h"
 
 static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 1;
+static NSInteger  const connectionDefaultValue = -1;
 
 @interface ActionViewController () <MPSprocketDelegate>
 
@@ -35,6 +36,7 @@ static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 
 @property (weak, nonatomic) IBOutlet UIImageView *printerDot;
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
+@property (assign, nonatomic) NSInteger lastConnectedValue;
 
 @end
 
@@ -90,6 +92,7 @@ static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kActionViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
     
+    self.lastConnectedValue = connectionDefaultValue;
     [[MP sharedInstance] checkSprocketForUpdates:self];
 }
 
@@ -97,15 +100,16 @@ static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 
 {
     [self.sprocketConnectivityTimer invalidate];
     self.sprocketConnectivityTimer = nil;
+    self.lastConnectedValue = connectionDefaultValue;
     
     [super viewWillDisappear:animated];
 }
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
 {
-    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
-    
-    if (numberOfPairedSprockets > 0) {
+    BOOL currentlyConnected = ([[MP sharedInstance] numberOfPairedSprockets] > 0);
+
+    if (currentlyConnected) {
         [self.printerDot setImage:[UIImage imageNamed:@"ptsActive"]];
         self.connectedLabel.hidden = NO;
         self.batteryIndicator.hidden = NO;
@@ -114,6 +118,13 @@ static NSUInteger const kActionViewControllerPrinterConnectivityCheckInterval = 
         self.batteryIndicator.hidden = YES;
         [self.printerDot setImage:[UIImage imageNamed:@"ptsInactive"]];
     }
+
+    if (connectionDefaultValue != self.lastConnectedValue  &&
+        self.lastConnectedValue != currentlyConnected) {
+        [[PGBaseAnalyticsManager sharedManager] trackPrinterConnected:(BOOL)currentlyConnected screenName:@"Share Extension"];
+    }
+    
+    self.lastConnectedValue = currentlyConnected;
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
