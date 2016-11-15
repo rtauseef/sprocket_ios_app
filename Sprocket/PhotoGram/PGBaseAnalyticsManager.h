@@ -27,6 +27,8 @@ extern NSUInteger const kEventDefaultValue;
 
 + (PGBaseAnalyticsManager *)sharedManager;
 
+- (void)setupSettings;
+
 - (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo;
     
 - (void)postMetrics:(NSString *)offramp object:(NSObject *)object metrics:(NSDictionary *)metrics;
