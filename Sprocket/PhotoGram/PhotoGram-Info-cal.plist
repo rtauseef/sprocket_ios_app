@@ -163,5 +163,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</string>
 </dict>
 </plist>
