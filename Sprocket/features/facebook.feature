@@ -40,8 +40,6 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
     Then I should see the "Facebook Photo" screen
-    Then I should see "Grid mode" button
-    Then I should see "List mode" button
     Then I should see "Folder" button
 
   @fbtest
