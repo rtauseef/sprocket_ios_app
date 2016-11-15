@@ -82,6 +82,17 @@ class EditScreen < Calabash::IBase
             if element_exists("view marked:'Authorize' index:0")
                 touch("view marked:'Authorize' index:0")
             end
+           
+        if get_xcode_version.to_i < 8
+            if element_exists(uia_query :view, marked:'OK')
+                uia_tap_mark("OK")
+            end
+        else
+            authorize_msg = device_agent.query({marked:"OK"})
+            if authorize_msg.length >0
+                device_agent.touch({marked:"OK"})
+            end
+        end
         end
         await
          $curr_edit_img_frame_width = query("UIImageView index:0").first["frame"]["width"]

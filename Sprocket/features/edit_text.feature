@@ -53,7 +53,7 @@ Scenario Outline: Verify Text editor screen options
     And I should see "Delete" button
     And I should see "Font" button
     And I should see "Color" button
-    And I should see "Backgoround color" button
+    And I should see "Background color" button
     
        
     Examples:
@@ -108,7 +108,7 @@ Scenario: Verify text background
     And I enter unique text
     Then I tap "Add text" mark
     And I should see the photo with the "text"
-    Then I select "Backgoround color" 
+    Then I select "Background color" 
     And I select "Gray"
     Then I wait for some seconds
     Then I tap "Save" mark

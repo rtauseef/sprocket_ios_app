@@ -18,10 +18,6 @@ class FrameEditorScreen < Calabash::IBase
        "UIButton marked:'Apply changes'" 
     end
     
-    def selected_frame
-        "* id:'1_turquoise_frame'" 
-    end
-
     def navigate
         unless current_page?
             edit_screen = go_to(EditScreen)
