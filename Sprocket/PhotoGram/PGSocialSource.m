@@ -47,7 +47,7 @@
 {
     switch (self.type) {
         case PGSocialSourceTypeFacebook:
-            self.icon = [UIImage imageNamed:@"Facebook"];
+            self.icon = [UIImage imageNamed:@"facebook_C"];
             self.menuIcon = self.icon;
             self.title = NSLocalizedString(@"Facebook", @"Social source title for Facebook");
             break;
@@ -57,12 +57,12 @@
             self.title = NSLocalizedString(@"Flickr", @"Social source title for Flickr");
             break;
         case PGSocialSourceTypeInstagram:
-            self.icon = [UIImage imageNamed:@"Instagram"];
+            self.icon = [UIImage imageNamed:@"Instagram_C"];
             self.menuIcon = self.icon;
             self.title = NSLocalizedString(@"Instagram", @"Social source title for Instagram");
             break;
         case PGSocialSourceTypeLocalPhotos:
-            self.icon = [UIImage imageNamed:@"CameraRoll"];
+            self.icon = [UIImage imageNamed:@"Photos_C"];
             self.menuIcon = self.icon;
             self.title = NSLocalizedString(@"Camera Roll", @"Social source title for Camera Roll");
             break;
