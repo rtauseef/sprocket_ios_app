@@ -318,7 +318,7 @@
                                     <rect key="frame" x="322" y="24" width="33" height="14"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
-                                    <rect key="frame" x="203" y="24" width="14" height="14"/>
+                                    <rect key="frame" x="203.5" y="24" width="14" height="14"/>
                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="Rku-FI-mx2"/>
@@ -331,7 +331,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anQ-7m-MS2" userLabel="Connectivity Label">
-                                    <rect key="frame" x="231" y="21" width="73" height="19"/>
+                                    <rect key="frame" x="231.5" y="21" width="72.5" height="19"/>
                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -803,10 +803,10 @@
             </objects>
             <point key="canvasLocation" x="-5519.1999999999998" y="1277.8110944527737"/>
         </scene>
-        <!--View Controller-->
+        <!--Side Bar Menu View Controller-->
         <scene sceneID="MzF-0M-IYE">
             <objects>
-                <viewController id="Guh-3n-On1" sceneMemberID="viewController">
+                <viewController id="Guh-3n-On1" customClass="PGSideBarMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bcO-SD-Cet"/>
                         <viewControllerLayoutGuide type="bottom" id="xMu-BC-Sce"/>
@@ -835,7 +835,7 @@
                                         <rect key="frame" x="322" y="24" width="33" height="14"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCv-5s-9Py" userLabel="Status">
-                                        <rect key="frame" x="203" y="24" width="14" height="14"/>
+                                        <rect key="frame" x="203.5" y="24" width="14" height="14"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="14" id="ZNE-Fb-U7N"/>
@@ -848,7 +848,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsf-b8-Lfu" userLabel="Connectivity Label">
-                                        <rect key="frame" x="231" y="21" width="73" height="19"/>
+                                        <rect key="frame" x="231.5" y="21" width="72.5" height="19"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -870,40 +870,55 @@
                                     <constraint firstItem="LCv-5s-9Py" firstAttribute="centerY" secondItem="iN8-Dm-wnb" secondAttribute="centerY" id="ys1-YW-zuU"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6e-TI-LXh" userLabel="Menu Table View">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6e-TI-LXh" userLabel="Menu Table View">
                                 <rect key="frame" x="0.0" y="75" width="375" height="400"/>
                                 <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9u-Ub-Iep">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Bj4-VP-r0f"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ggJ-iT-bea" userLabel="Social Sources Table View">
-                                <rect key="frame" x="0.0" y="475" width="375" height="148"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PGSideBarMenuCell" textLabel="Ptp-oP-RvF" imageView="qQu-wP-4ea" style="IBUITableViewCellStyleDefault" id="RAo-ZY-JN7">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RAo-ZY-JN7" id="TxB-Sr-c2e">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Menu Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ptp-oP-RvF">
+                                                    <rect key="frame" x="55" y="0.0" width="305" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="HPLogo" id="qQu-wP-4ea">
+                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Guh-3n-On1" id="fiB-JL-BFG"/>
+                                    <outlet property="delegate" destination="Guh-3n-On1" id="Js5-WP-ElD"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ggJ-iT-bea" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="6CS-wc-B9S"/>
                             <constraint firstAttribute="trailing" secondItem="i6e-TI-LXh" secondAttribute="trailing" id="9ep-tJ-8zz"/>
-                            <constraint firstItem="h9u-Ub-Iep" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="ADu-AD-viR"/>
                             <constraint firstItem="FqQ-dy-7N2" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="MUO-dK-aWu"/>
-                            <constraint firstItem="h9u-Ub-Iep" firstAttribute="top" secondItem="ggJ-iT-bea" secondAttribute="bottom" id="OBd-mR-ux5"/>
-                            <constraint firstItem="xMu-BC-Sce" firstAttribute="top" secondItem="h9u-Ub-Iep" secondAttribute="bottom" id="OMy-jc-lxk"/>
                             <constraint firstAttribute="trailing" secondItem="FqQ-dy-7N2" secondAttribute="trailing" id="PGu-iE-PWG"/>
                             <constraint firstItem="i6e-TI-LXh" firstAttribute="height" secondItem="10d-bX-fhQ" secondAttribute="height" multiplier="0.6" id="e9d-cf-xiF"/>
-                            <constraint firstAttribute="trailing" secondItem="h9u-Ub-Iep" secondAttribute="trailing" id="fIi-ku-bAl"/>
                             <constraint firstItem="FqQ-dy-7N2" firstAttribute="top" secondItem="10d-bX-fhQ" secondAttribute="top" id="god-0a-0re"/>
-                            <constraint firstAttribute="trailing" secondItem="ggJ-iT-bea" secondAttribute="trailing" id="k0d-Vu-4sE"/>
-                            <constraint firstItem="ggJ-iT-bea" firstAttribute="top" secondItem="i6e-TI-LXh" secondAttribute="bottom" id="lvS-fm-8CZ"/>
                             <constraint firstItem="i6e-TI-LXh" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="uKL-gB-Gso"/>
                             <constraint firstItem="i6e-TI-LXh" firstAttribute="top" secondItem="FqQ-dy-7N2" secondAttribute="bottom" id="zvw-nN-pH9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainMenuTableView" destination="i6e-TI-LXh" id="dn6-FX-DO9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDG-08-NOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -965,10 +980,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="140"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-eN-AFi">
-                                        <rect key="frame" x="73" y="43" width="65" height="54"/>
+                                        <rect key="frame" x="72.5" y="43" width="65" height="54"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-7o-mbb">
-                                        <rect key="frame" x="153" y="50" width="120" height="40"/>
+                                        <rect key="frame" x="152.5" y="50.5" width="120" height="39.5"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="35"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1006,7 +1021,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2016 HP Development Company, L.P." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-a1-B1F">
-                                <rect key="frame" x="84" y="632" width="208" height="15"/>
+                                <rect key="frame" x="84.5" y="632" width="207.5" height="15"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="13"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1913,20 +1928,20 @@ printer and app support.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9F-p5-X9c">
-                                <rect key="frame" x="149" y="292" width="77" height="19"/>
+                                <rect key="frame" x="149.5" y="292" width="76.5" height="19"/>
                                 <color key="tintColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-sI-bhx">
-                                <rect key="frame" x="72" y="511" width="111" height="17"/>
+                                <rect key="frame" x="72" y="511" width="110.5" height="17"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP Development Company, L.P." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRp-QK-PAY">
-                                <rect key="frame" x="72" y="533" width="186" height="17"/>
+                                <rect key="frame" x="72" y="533" width="185.5" height="17"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2238,7 +2253,7 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8A-4l-TdM">
-                                        <rect key="frame" x="125" y="112" width="124" height="41"/>
+                                        <rect key="frame" x="125.5" y="112.5" width="123.5" height="40.5"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="36"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

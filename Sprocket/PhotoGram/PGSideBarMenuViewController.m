@@ -12,7 +12,21 @@
 
 #import "PGSideBarMenuViewController.h"
 
-@interface PGSideBarMenuViewController ()
+static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
+
+typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
+    PGSideBarMenuCellSprocket,
+    PGSideBarMenuCellBuyPaper,
+    PGSideBarMenuCellHowToAndHelp,
+    PGSideBarMenuCellGiveFeedback,
+    PGSideBarMenuCellTakeSurvey,
+    PGSideBarMenuCellPrivacy,
+    PGSideBarMenuCellAbout,
+};
+
+@interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *mainMenuTableView;
 
 @end
 
@@ -20,22 +34,60 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableViewDatasource methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
+    switch (indexPath.row) {
+        case PGSideBarMenuCellSprocket:
+            cell.textLabel.text = NSLocalizedString(@"sprocket", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuSprocket"];
+            break;
+        case PGSideBarMenuCellBuyPaper:
+            cell.textLabel.text = NSLocalizedString(@"Buy Paper", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuBuyPaper"];
+            break;
+        case PGSideBarMenuCellHowToAndHelp:
+            cell.textLabel.text = NSLocalizedString(@"How to & Help", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuHowToHelp"];
+            break;
+        case PGSideBarMenuCellGiveFeedback:
+            cell.textLabel.text = NSLocalizedString(@"Give Feedback", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuGiveFeedback"];
+            break;
+        case PGSideBarMenuCellTakeSurvey:
+            cell.textLabel.text = NSLocalizedString(@"Take Survey", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuTakeSurvey"];
+            break;
+        case PGSideBarMenuCellPrivacy:
+            cell.textLabel.text = NSLocalizedString(@"Privacy", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuPrivacy"];
+            break;
+        case PGSideBarMenuCellAbout:
+            cell.textLabel.text = NSLocalizedString(@"About", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuAbout"];
+            break;
+        default:
+            break;
+    }
+    
+    
+    return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 7;
 }
-*/
+
+#pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 @end
