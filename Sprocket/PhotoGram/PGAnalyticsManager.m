@@ -126,6 +126,8 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
 - (void)setupSettings
 {
+    [super setupSettings];
+    
     self.photoSource = kNoPhotoSelected;
     self.imageURL = kNoPhotoSelected;
     self.userName = kNoPhotoSelected;
