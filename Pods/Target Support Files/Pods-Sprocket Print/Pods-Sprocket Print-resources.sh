@@ -18,6 +18,9 @@ case "${TARGETED_DEVICE_FAMILY}" in
   2)
     TARGET_DEVICE_ARGS="--target-device ipad"
     ;;
+  3)
+    TARGET_DEVICE_ARGS="--target-device tv"
+    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -108,6 +111,40 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPArrow@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPCheck@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPDoNoEnter.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPDoNoEnter@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPDownload@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPGear@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPInactiveCircle@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPMagnify@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPMeasurementArrowDown@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPMeasurementArrowLeft@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPMeasurementArrowRight@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPMeasurementArrowUp@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPMultipageWire.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPPrint@2x~ipad.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPPrint@2x~iphone.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPPrintLater@2x~ipad.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPPrintLater@2x~iphone.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPSelected@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPSelected@3x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPUnselected@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPUnselected@3x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPWaste@2x.png"
+  install_resource "MobilePrintSDK/Pod/Assets/MPX@2x.png"
+  install_resource "MobilePrintSDK/Pod/Classes/Private/MPBTProgressView.xib"
+  install_resource "MobilePrintSDK/Pod/Classes/Private/MPMultiPageView.xib"
+  install_resource "MobilePrintSDK/Pod/Classes/Private/MPPageRangeView.xib"
+  install_resource "MobilePrintSDK/Pod/Classes/Private/MPPageView.xib"
+  install_resource "MobilePrintSDK/Pod/Classes/Private/MPPrintJobsActionView.xib"
+  install_resource "MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib"
+  install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
+  install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
+fi
+if [[ "$CONFIGURATION" == "LeSprocket" ]]; then
   install_resource "MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png"
   install_resource "MobilePrintSDK/Pod/Assets/MPArrow@2x.png"
   install_resource "MobilePrintSDK/Pod/Assets/MPCheck@2x.png"
