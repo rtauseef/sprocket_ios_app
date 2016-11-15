@@ -57,20 +57,20 @@
     if ([language isEqualToString:@"cn"]) {
         self.socialSources = @[
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeQzone],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu],
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram]
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu],
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeQzone],
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo]
                                ];
         return;
     }
 
     self.socialSources = @[
                            [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
+                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
                            [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFlickr],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]
+                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]
                            ];
 }
 
