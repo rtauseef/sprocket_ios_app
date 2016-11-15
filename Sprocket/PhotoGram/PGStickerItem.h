@@ -14,73 +14,56 @@
 
 extern const NSInteger PGStickerItemsCount;
 
-typedef NS_ENUM (NSInteger, PGStickerItemsNapaValley){
-    PGStickerItemsNapaValleyLoveHP  = 45,
-};
-
-typedef NS_ENUM (NSInteger, PGStickerItemsFall){
-    PGStickerItemsFallCatWhiskers  = 1,
-    PGStickerItemsFallDodMask      = 2,
-    PGStickerItemsFallCatEyes      = 3,
-    PGStickerItemsFallJasonMask    = 4,
-    PGStickerItemsFallDodEyes      = 5,
-    PGStickerItemsFall3Eyes        = 6,
-    PGStickerItemsFallFangs        = 7,
-    PGStickerItemsFallEyeball      = 8,
-    
-    PGStickerItemsFallDevilHorns   = 10,
-    
-    PGStickerItemsFallHalloweenHat = 18,
-    PGStickerItemsFallSpiderWeb    = 19,
-    PGStickerItemsFallMoon         = 20,
-    PGStickerItemsFallMoonFace     = 21,
-    
-    PGStickerItemsFallSkull        = 24,
-    PGStickerItemsFallPumpkin      = 25,
-    PGStickerItemsFallBat          = 26,
-    PGStickerItemsFallGhost        = 27,
-    PGStickerItemsFallCandyCorn    = 28,
-    PGStickerItemsFallSpider       = 29,
-    PGStickerItemsFallScaryCat     = 30,
-    
-    PGStickerItemsFallLeaf3        = 34,
-    PGStickerItemsFallOwl          = 35,
+typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
+    PGStickerItemsSnowman           =  0,
+    PGStickerItemsRudolphGlasses    =  1,
+    PGStickerItemsChristmasHat      =  2,
+    PGStickerItemsChristmasStar     =  3,
+    PGStickerItemsHanukkahGlasses   =  4,
+    PGStickerItemsSnowmanHat        =  5,
+    PGStickerItemsPartyHat          =  6,
+    PGStickerItemsTreeGlasses       =  7,
+    PGStickerItemsStarGlasses       =  8,
+    PGStickerItemsRudolphAntlers    =  9,
+    PGStickerItemsChristmasCap      = 10,
+    PGStickerItemsSnowmanFace       = 11,
+    PGStickerItemsChristmasScarf    = 12,
+    PGStickerItemsSnowflake         = 13,
+    PGStickerItemsStringOfLights    = 14,
+    PGStickerItemsChristmasTree     = 15,
+    PGStickerItemsChristmasStocking = 16,
+    PGStickerItemsCandyCane         = 17,
+    PGStickerItemsHolly             = 18,
+    PGStickerItemsMistletoe         = 19,
+    PGStickerItemsChristmasOrnament = 20,
+    PGStickerItemsMenorah           = 21,
+    PGStickerItemsDreidel           = 22,
+    PGStickerItemsFireworks         = 23,
+    PGStickerItemsNewYearHorn       = 24,
 };
 
 typedef NS_ENUM (NSInteger, PGStickerItems){
-    PGStickerItemsCatGlasses   = 0,
-    PGStickerItemsSunglasses   = 42,
-    
-    PGStickerItemsHearts       = 11,
-    PGStickerItemsXoxo         = 12,
-    PGStickerItemsHeartExpress = 13,
-    PGStickerItemsHeartPixel   = 14,
-    PGStickerItemsArrow        = 15,
-    PGStickerItemsCrown        = 16,
-    PGStickerItemsBirthdayHat  = 17,
-    
-    PGStickerItemsCatEars      = 9,
-    
-    PGStickerItemsStar         = 22,
-    PGStickerItemsStars        = 23,
-    
-    PGStickerItemsFeather      = 33,
-    
-    PGStickerItemsFeather2     = 32,
-    
-    PGStickerItemsCloud        = 31,
-    
-    PGStickerItemsCupcake      = 36,
-    PGStickerItemsIceCreamCone = 37,
-    PGStickerItemsCandy        = 38,
-    PGStickerItemsCat          = 39,
-    PGStickerItemsBird         = 40,
-    PGStickerItemsDiamond      = 41,
-    
-    PGStickerItemsOMG          = 43,
-    PGStickerItemsLOL          = 44
+    PGStickerItemsCatGlasses       = 25,
+    PGStickerItemsCatWhiskers      = 26,
+    PGStickerItemsCatEars          = 27,
+    PGStickerItemsHearts           = 28,
+    PGStickerItemsXoxo             = 29,
+    PGStickerItemsHeartExpress     = 30,
+    PGStickerItemsArrow            = 31,
+    PGStickerItemsCrown            = 32,
+    PGStickerItemsBirthdayHat      = 33,
+    PGStickerItemsMoon             = 34,
+    PGStickerItemsStar             = 35,
+    PGStickerItemsStars            = 36,
+    PGStickerItemsFeather2         = 37,
+    PGStickerItemsFeather          = 38,
+    PGStickerItemsLeaf3            = 39,
+    PGStickerItemsCupcake          = 40,
+    PGStickerItemsCat              = 41,
+    PGStickerItemsDiamond          = 42,
+    PGStickerItemsSunglasses       = 43,
+    PGStickerItemsOMG              = 44,
 };
-
 
 @interface PGStickerItem : NSObject
 

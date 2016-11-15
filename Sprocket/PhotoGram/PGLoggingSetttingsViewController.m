@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "PGAppDelegate.h"
 #import "PGLoggingSetttingsViewController.h"
+#import "PGAnalyticsManager.h"
 #import "Logging/PGLog.h"
 #import "Logging/PGLogger.h"
 #import "Logging/PGLogFormatter.h"
@@ -32,7 +33,8 @@ static int kClearLogsCellIndex   = 2;
 static int kTestLogsCellIndex    = 3;
 static int kMailLogsCellIndex    = 4;
 static int kCrashAppCellIndex    = 5;
-static int kHideSvgMessagesIndex = 6;
+static int kExceptionAppCellIndex= 6;
+static int kHideSvgMessagesIndex = 7;
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -152,7 +154,7 @@ static int kHideSvgMessagesIndex = 6;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 7;
+    NSInteger numberOfRows = 8;
     
     if ([self levelPickerIsShown]){
         
@@ -210,6 +212,13 @@ static int kHideSvgMessagesIndex = 6;
             }
             cell.textLabel.text = @"Crash app";
             cell.textLabel.font = self.photogramCell.textLabel.font;
+        } else if (kExceptionAppCellIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"throwException"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"throwException"];
+            }
+            cell.textLabel.text = @"Throw Exception";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
         } else if (kHideSvgMessagesIndex == indexPath.row) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"hideSvgMsgs"];
             if (!cell) {
@@ -263,6 +272,8 @@ static int kHideSvgMessagesIndex = 6;
                 [PGLogFormatter demoAllFormats];
             } else if ( kCrashAppCellIndex == selectedRow ) {
                 [[Crashlytics sharedInstance] crash];
+            } else if ( kExceptionAppCellIndex == selectedRow ) {
+                [[PGAnalyticsManager sharedManager] fireTestException];
             } else if ( kHideSvgMessagesIndex == selectedRow ) {
                 BOOL currentSetting = [[PGLogger sharedInstance] hideSvgMessages];
                 [[PGLogger sharedInstance] setHideSvgMessages: !currentSetting];

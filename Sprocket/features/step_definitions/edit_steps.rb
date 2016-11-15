@@ -16,6 +16,7 @@ When(/^I tap "(.*?)" mark$/) do |mark|
             touch @current_page.check
         else
             if(mark == "Save")
+                sleep(WAIT_SCREENLOAD)
                     touch @current_page.save
                     #sleep(STEP_PAUSE)
             else
@@ -38,8 +39,8 @@ Then (/^I select "(.*?)"$/) do |option|
     if option == "Filter"
         touch @current_page.filter_1
     else 
-        if option == "sticker" || option == "frame"
-        touch "IMGLYIconCollectionViewCell"
+        if option == "sticker" 
+        touch "* id:'Fox_TN'"
         sleep(STEP_PAUSE)
     else
             sleep(2.0)
@@ -53,7 +54,8 @@ end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
-        check_element_does_not_exist(@current_page.selected_frame)
+        selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Wrong frame selected!" unless selected_frame_status != nil
     else
         if edit_item == "sticker"
             check_element_does_not_exist(@current_page.selected_sticker)
@@ -68,8 +70,9 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
             check_element_exists(@current_page.selected_frame)
     else
         if edit_item == "sticker"
-            check_element_exists @current_page.selected_sticker
-            sleep(STEP_PAUSE)
+           selected_frame_status = query("UIImageView index:2",:accessibilityIdentifier)
+           raise "Wrong sticker selected!" unless selected_frame_status == "Fox"
+            
     else
         if edit_item == "text"
             sleep(STEP_PAUSE)
@@ -81,8 +84,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
 end
 
 And(/^I verify blue line indicator is displayed under selected frame$/) do 
-   #width_indicator = query("UIView index:29").first["frame"]["width"]
-   selected_frame_status = query("UIImageView index:0 id:'1_turquoise_frame'")
+    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Blue line indicator not found!" unless selected_frame_status != nil
 end
 
@@ -172,3 +174,50 @@ Then(/^I verify the modified crop area$/) do
  raise "crop area not modified successfully!" unless $curr_bot_lft_crp_x != post_bot_lft_crp_x && $curr_bot_lft_crp_y != post_bot_lft_crp_y
 end
 
+Then(/^I select "(.*?)" frame$/) do |frame_name|
+sleep(WAIT_SCREENLOAD)
+select_frame frame_name
+sleep(STEP_PAUSE)
+end
+Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
+    $list_loc=$edit_screen_arr["edit_frame"]
+    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Wrong frame selected!" unless selected_frame_status = $list_loc[frame_name]
+end
+Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
+   sleep(WAIT_SCREENLOAD)
+  frame_name=["White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame","Yellow Frame","Blue Gradient Frame"]
+  i = 0
+  while i < 16
+    macro %Q|I select "#{frame_name[i]}" frame|
+    macro %Q|I verify blue line indicator is displayed under selected frame|
+    macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
+    macro %Q|I should see the "FrameEditor" screen|
+    i= i + 1
+    sleep(SLEEP_SCREENLOAD)
+  end
+end
+
+$edit_screen_arr =
+
+{
+    "edit_frame" => {
+        "White Frame" => "4_white_frame",
+        "Kraft Frame" => "Kraft_Frame_iOS",
+        "Floral Frame" => "6_floral_frame3",
+        "Orange Frame"=> "Orange_Frame_iOS",
+        "Polka Dots Frame" => "9_polkadots_frame",
+        "Water Blue Frame" => "3_blue_watercolor_frame",
+        "Wood Bottom Frame" => "Wood_Frame_iOS",
+        "Gradient Frame"=> "7_gradient_frame",
+        "Sloppy Frame" => "Sloppy_Frame_iOS",
+        "Turquoise Frame" => "1_turquoise_frame",
+        "Red Frame" => "5_Red_frame",
+        "Green Water Color Frame"=> "10_green_watercolor_frame2",
+        "Floral 2 Frame" => "13_floral2_frame",
+        "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
+        "Yellow Frame" => "Yellow_Frame_iOS",
+        "Blue Gradient Frame" => "14_blue_gradient_frame"
+        
+        }
+    }

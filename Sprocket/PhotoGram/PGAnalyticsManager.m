@@ -11,19 +11,13 @@
 //
 
 #import <Crashlytics/Crashlytics.h>
-#import <GAI.h>
-#import <GAIFields.h>
-#import <GAIDictionaryBuilder.h>
 #import "PGAnalyticsManager.h"
-#import "PGExperimentManager.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <MP.h>
 #import <MPPrintManager.h>
 #import <HPPR.h>
 
 #define CRASHLYTICS_KEY @"fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed"
-#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-81852585-1"
-#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-81852585-2"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -63,13 +57,17 @@ NSString * const kEventSelectTemplateAction = @"Select";
 NSString * const kEventShareActivityCategory = @"Share";
 NSString * const kEventResultSuccess = @"Success";
 NSString * const kEventResultCancel = @"Cancel";
-NSUInteger const kEventDefaultValue = 0;
 
 NSString * const kEventAuthRequestCategory      = @"AuthRequest";
 NSString * const kEventAuthRequestOkAction      = @"OK";
 NSString * const kEventAuthRequestDeniedAction  = @"Denied";
 NSString * const kEventAuthRequestPhotosLabel   = @"Photos";
 NSString * const kEventAuthRequestCameraLabel   = @"Camera";
+
+NSString * const kEventSaveProjectCategory      = @"SaveProject";
+NSString * const kEventSaveProjectSaveAction    = @"Save";
+NSString * const kEventSaveProjectDismiss       = @"SaveFromDismissEdits";
+NSString * const kEventSaveProjectPreview       = @"SaveFromPreview";
 
 NSString * const kEventDismissEditCategory      = @"DismissEdits";
 NSString * const kEventDismissEditOkAction      = @"OK";
@@ -102,10 +100,6 @@ NSString * const kEventPrintShareLabel  = @"ShareButton";
 
 NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
-
-NSUInteger const kPGExperimentPrintIconDimension = 1;
-NSString * const kPGExperimentPrintIconVisible = @"icon visible";
-NSString * const kPGExperimentPrintIconNotVisible = @"icon not visible";
 
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
@@ -142,23 +136,6 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     
     [self setupCrashlytics];
     
-    GAI *gai = [GAI sharedInstance];
-
-    gai.trackUncaughtExceptions = NO;
-    gai.logger.logLevel = kGAILogLevelNone;
-    
-#ifdef DEBUG
-    gai.dispatchInterval = 10;
-#else
-    gai.dispatchInterval = 120;
-#endif
-    
-    gai.defaultTracker = [gai trackerWithTrackingId:[self googleTrackingId]];
-
-    [gai.defaultTracker set:kGAIUserId value:[[UIDevice currentDevice].identifierForVendor UUIDString]];
-    
-    [self setupExperiments];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobStartedNotification:) name:kMPBTPrintJobStartedNotification object:nil];
@@ -167,33 +144,6 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotificationHPPR:) name:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginCancelNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccessNotificationHPPR:) name:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil];
-}
-
-- (void)setupExperiments
-{
-    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
-    
-    NSString *experimentValue = kPGExperimentPrintIconNotVisible;
-    if ([PGExperimentManager sharedInstance].showPrintIcon) {
-        experimentValue = kPGExperimentPrintIconVisible;
-    }
-    
-    [tracker set:[GAIFields customDimensionForIndex:kPGExperimentPrintIconDimension] value:experimentValue];
-}
-
-// The following is adapted from the technique used in MobilePrintSDK. See MPAnalyticsManager::metricsServerURL
-- (NSString *)googleTrackingId
-{
-    NSString *provisionPath = [[NSBundle mainBundle] pathForResource:@"embedded" ofType:@"mobileprovision"];
-    
-    // The following is adapted from: http://stackoverflow.com/questions/26081543/how-to-tell-at-runtime-whether-an-ios-app-is-running-through-a-testflight-beta-i
-    BOOL sandboxReceipt = [[[[NSBundle mainBundle] appStoreReceiptURL] lastPathComponent] isEqualToString:@"sandboxReceipt"];
-    
-    NSString *trackingId = GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS;
-    if (!provisionPath && !sandboxReceipt && !TARGET_IPHONE_SIMULATOR) {
-        trackingId = GOOGLE_ANALYTICS_TRACKING_ID;
-    }
-    return trackingId;
 }
 
 #pragma mark - Events
@@ -231,20 +181,13 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
         [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     } else {
         [self trackEvent:kEventPrintJobErrorCategory action:error label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+        [self trackEvent:kEventPrintJobCategory action:@"Error" label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     }
 }
 
 - (void)handlePrinterNotConnectedNotification:(NSNotification *)notification
 {
     [self trackEvent:kEventPrinterNotConnectedCategory action:kEventPrinterNotConnectedAction label:[notification.userInfo objectForKey:kMPBTPrinterNotConnectedSourceKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
-}
-
-- (void)trackScreenViewEvent:(NSString *)screenName
-{
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:screenName];
-    PGLogInfo(@"Google Anayltics Screen View:  %@", screenName);
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result
@@ -262,8 +205,13 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackEvent:kEventDismissEditCategory action:action label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
     
     if ([kEventDismissEditSaveAction isEqualToString:action]) {
-        [self trackEvent:@"SaveProject" action:@"Save" label:@"" value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+        [self trackSaveProjectActivity:kEventSaveProjectDismiss];
     }
+}
+
+- (void)trackSaveProjectActivity:(NSString *)source
+{
+    [self trackEvent:kEventSaveProjectCategory action:kEventSaveProjectSaveAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackCameraDirectionActivity:(NSString *)direction
@@ -286,29 +234,23 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
     [self trackEvent:kEventPrintCategory action:kEventPrintAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
-/**
- trackEvent
- Category: The primary divisions of the types of Events you have on your site. Categories
- are at the root of Event tracking, and should function as a first way to sort Events in
- your reports. "Videos" and "Downloads" are good examples of categories, though you can
- be as specific or broad as your content requires.
- 
- Action: A descriptor for a particular Event Category. You can use any string to define an
- Action, so you can be as specific as necessary. For example, you could define "Play" or
- "Pause" as Actions for a Video. You could also be more specific, and create an Action
- called "Video almost finished" to trigger when the play-back slider on a video reaches
- the 90% mark.
- 
- Label: An optional descriptor that you can use to provide further granularity. You can
- specify any string for a label.
- 
- Value: An optional numerical variable. You can use explicit values, like 30, or inferred
- values based on variables you define elsewhere, like downloadTime.
- */
-- (void) trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value {
-    id tracker = [[GAI sharedInstance] defaultTracker];
+- (void) trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
+{
+    [super trackEvent:category action:action label:label value:value];
     PGLogInfo(@"Google Anayltics Event - Category:\"%@\", Action:\"%@\", Label:\"%@\", Value:\"%@\"", category, action, label, value);
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category action:action label:label value:value] build]];
+}
+
+- (void)trackScreenViewEvent:(NSString *)screenName
+{
+    [super trackScreenViewEvent:screenName];
+    PGLogInfo(@"Google Anayltics Screen View:  %@", screenName);
+}
+
+- (void)fireTestException
+{
+    [super fireTestException];
+    
+    [[Crashlytics sharedInstance] throwException];
 }
 
 #pragma mark - Photo metrics 

@@ -381,6 +381,8 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 {
     [self saveToCameraRoll:^(BOOL saved) {
         if (saved) {
+            [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
+
             [UIView animateWithDuration:0.5F animations:^{
                 [self showImageSavedView:YES];
             } completion:^(BOOL finished) {
@@ -409,13 +411,18 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
                                                                   source:kEventDismissEditCloseLabel];
         }];
         [alert addAction:okAction];
-        
+
+        __weak PGPreviewViewController *weakSelf = self;
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [self saveToCameraRoll:^(BOOL authorized){
                 if (authorized) {
                     [self closePreviewAndCamera];
                     [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
                                                                           source:kEventDismissEditCloseLabel];
+
+                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                                     printItem:weakSelf.printItem
+                                                                   exendedInfo:[weakSelf extendedMetrics]];
                 }
             }];
         }];
@@ -449,6 +456,8 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
     btPrintActivity.image = image;
     btPrintActivity.vc = self;
+    
+    [[MP sharedInstance] closeAccessorySession];
     
     [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
 

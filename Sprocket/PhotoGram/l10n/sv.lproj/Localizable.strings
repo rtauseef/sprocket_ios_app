@@ -1,3 +1,327 @@
-"Would you like to sign out of %@?" = "Would you like to sign out of %@?";
-"Cancel" = "Cancel";
-"Sign Out" = "Sign Out";
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Tillåt åtkomst i dina Inställningar för att ta och skriva ut foton.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Ett fel uppstod när objektet skulle delas.";
+
+/* No comment provided by engineer. */
+"Arrow Sticker" = "Klistermärke pil";
+
+/* No comment provided by engineer. */
+"Bird Sticker" = "Klistermärke fågel";
+
+/* No comment provided by engineer. */
+"Birthday Hat Sticker" = "Klistermärke födelsedagshatt";
+
+/* No comment provided by engineer. */
+"Blue Frame" = "Blå ram";
+
+/* No comment provided by engineer. */
+"Blue Gradient Frame" = "Blå stigande ram";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Köp papper";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Åtkomst krävs till kamera";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Avbryt";
+
+/* No comment provided by engineer. */
+"Candy Sticker" = "Klistermärke godis";
+
+/* No comment provided by engineer. */
+"Cat Ears Sticker" = "Klistermärke kattöron";
+
+/* No comment provided by engineer. */
+"Cat Glasses Sticker" = "Klistermärke kattglasögon";
+
+/* No comment provided by engineer. */
+"Cat Sticker" = "Klistermärke katt";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Titta på min HP Sprocket-skapelse";
+
+/* Checking the login status of the social network */
+"Checking" = "Kontrollera";
+
+/* No comment provided by engineer. */
+"Cloud Sticker" = "Klistermärke moln";
+
+/* No comment provided by engineer. */
+"Crown Sticker" = "Klistermärke krona";
+
+/* No comment provided by engineer. */
+"Cupcake Sticker" = "Klistermärke muffins";
+
+/* No comment provided by engineer. */
+"DOD Mask Sticker" = "Klistermärke dödskallemask";
+
+/* No comment provided by engineer. */
+"Diamond Sticker" = "Klistermärke diamant";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Avfärda";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Spara inte";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Skriv text";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Skriv+Text";
+
+/* No comment provided by engineer. */
+"Error" = "Fel";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Fel vid hämtning av användarinformation.";
+
+/* No comment provided by engineer. */
+"Fall 3 Eyes Sticker" = "Höstklistermärke 3 ögon";
+
+/* No comment provided by engineer. */
+"Fall Bat Sticker" = "Höstklistermärke fladdermus";
+
+/* No comment provided by engineer. */
+"Fall Candy Corn Sticker" = "Höstklistermärke candy corn";
+
+/* No comment provided by engineer. */
+"Fall Cat Eyes Sticker" = "Höstklistermärke kattögon";
+
+/* No comment provided by engineer. */
+"Fall Cat Whiskers Sticker" = "Höstklistermärke morrhår";
+
+/* No comment provided by engineer. */
+"Fall DOD Eyes Sticker" = "Höstklistermärke dödskalleögon";
+
+/* No comment provided by engineer. */
+"Fall Devil Horns Sticker" = "Höstklistermärke djävulshorn";
+
+/* No comment provided by engineer. */
+"Fall Eyeball Sticker" = "Höstklistermärke öga";
+
+/* No comment provided by engineer. */
+"Fall Fangs Sticker" = "Höstklistermärke huggtänder";
+
+/* No comment provided by engineer. */
+"Fall Ghost Sticker" = "Höstklistermärke spöke";
+
+/* No comment provided by engineer. */
+"Fall Halloween Hat Sticker" = "Höstklistermärke Halloweenhatt";
+
+/* No comment provided by engineer. */
+"Fall Jason Mask Sticker" = "Höstklistermärke Jason-mask";
+
+/* No comment provided by engineer. */
+"Fall Leaf 3 Sticker" = "Höstklistermärke löv 3";
+
+/* No comment provided by engineer. */
+"Fall Moon Face Sticker" = "Höstklistermärke månansikte";
+
+/* No comment provided by engineer. */
+"Fall Moon Sticker" = "Höstklistermärke måne";
+
+/* No comment provided by engineer. */
+"Fall Owl Sticker" = "Höstklistermärke uggla";
+
+/* No comment provided by engineer. */
+"Fall Pumpkin Sticker" = "Höstklistermärke pumpa";
+
+/* No comment provided by engineer. */
+"Fall Scary Cat Sticker" = "Höstklistermärke läskig katt";
+
+/* No comment provided by engineer. */
+"Fall Skull Sticker" = "Höstklistermärke dödskalle";
+
+/* No comment provided by engineer. */
+"Fall Spider Sticker" = "Höstklistermärke spindel";
+
+/* No comment provided by engineer. */
+"Fall Spider Web Sticker" = "Höstklistermärke spindelnät";
+
+/* No comment provided by engineer. */
+"Feather 2 Sticker" = "Klistermärke fjäder 2";
+
+/* No comment provided by engineer. */
+"Feather Sticker" = "Klistermärke fjäder";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Feedback om Sprocket for iOS (Record Locator: %@)";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "Blomsterram";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "Stigande ram";
+
+/* No comment provided by engineer. */
+"Green Spray Paint Frame" = "Ram med grön sprejfärg";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "Ram med grön vattenfärg";
+
+/* No comment provided by engineer. */
+"Heart Express Sticker" = "Klistermärke skinande hjärta";
+
+/* No comment provided by engineer. */
+"Heart Pixel Sticker" = "Klistermärke pixelhjärta";
+
+/* No comment provided by engineer. */
+"Hearts Sticker" = "Klistermärke hjärtan";
+
+/* No comment provided by engineer. */
+"How To" = "Instruktioner";
+
+/* No comment provided by engineer. */
+"Ice Cream Cone Sticker" = "Klistermärke glasstrut";
+
+/* No comment provided by engineer. */
+"LOL Sticker" = "Klistermärke LOL";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "Loggfil har rensats.";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Ingen anslutning tillgänglig";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Nej tack";
+
+/* Allows user close dialog */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"OMG Sticker" = "Klistermärke LOL";
+
+/* No comment provided by engineer. */
+"Oops!" = "Hoppsan!";
+
+/* No comment provided by engineer. */
+"Pink Frame" = "Rosa ram";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Ram med rosa sprejfärg";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Anslut till en datakälla.
+Du kan även använda din enhets foton.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Berätta för oss vad som är bra och vad som kan bli bättre!";
+
+/* No comment provided by engineer. */
+"Polka Dots Frame" = "Storprickig ram";
+
+/* No comment provided by engineer. */
+"Purple Frame" = "Lila ram";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Röd ram";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Påminn mig senare";
+
+/* No comment provided by engineer. */
+"Reset" = "Återställ";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Återställ program";
+
+/* No comment provided by engineer. */
+"Retry" = "Försök igen";
+
+/* Title of a table view header */
+"SUPPORT:" = "SUPPORT:";
+
+/* No comment provided by engineer. */
+"Save" = "Spara";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Spara och lämna förhandsvisning?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Spara till kamerarulle";
+
+/* Button for opening the app settings */
+"Settings" = "Inställningar";
+
+/* No comment provided by engineer. */
+"Sign In" = "Logga in";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Logga ut";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Ditt ärende kan tyvärr inte anmälas just nu. Det beror förmodligen på att inga e-postkonton har ställts in på din mobila enhet.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Uppgradering av inbyggd programvara till Sprocket-fotoskrivare är tillgänglig";
+
+/* No comment provided by engineer. */
+"Star Sticker" = "Klistermärke stjärna";
+
+/* No comment provided by engineer. */
+"Stars Sticker" = "Klistermärken stjärnor";
+
+/* No comment provided by engineer. */
+"Success" = "Åtgärden utförd";
+
+/* No comment provided by engineer. */
+"Sunglasses Sticker" = "Klistermärke solglasögon";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Delta i undersökningen";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Tryck på Uppgradera för att fortsätta.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Berätta för oss vad du tycker om %@.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Berätta för oss vad du tycker om Sprocket.";
+
+/* Phrase to make link for terms of service of the landing page */
+"Terms of Service" = "Villkor för tjänsten";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "Loggfilen är bifogad till detta meddelande.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Det här kommer att radera alla tidigare sparade val.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Om du vill uppgradera laddar du Sprocket-fotoskrivaren till minst 75 % och går sedan till ”sprocket” i menyn.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Turkos ram";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Uppgradera";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Version %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Vattenblå ram";
+
+/* No comment provided by engineer. */
+"White Frame" = "Vit ram";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Vill du logga ut från %@?";
+
+/* No comment provided by engineer. */
+"XOXO Sticker" = "Klistermärke LOL";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Du har inte konfigurerat något konto för att skicka e-post.";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "sprocket fellogg";
+
