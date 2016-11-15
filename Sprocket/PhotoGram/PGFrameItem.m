@@ -12,7 +12,7 @@
 
 #import "PGFrameItem.h"
 
-const NSInteger PGFrameItemsCount = 16;
+const NSInteger PGFrameItemsCount = 20;
 
 @implementation PGFrameItem
 
@@ -21,9 +21,34 @@ const NSInteger PGFrameItemsCount = 16;
     
     switch (index) {
 
-        case PGFrameItemsBlueGradient: {
-            frame.accessibilityText = NSLocalizedString(@"Blue Gradient Frame", nil);
-            frame.imageName = @"14_blue_gradient_frame";
+        case PGFrameXmasPolkaDot: {
+            frame.accessibilityText = NSLocalizedString(@"Christmas Polka Dot Frame", nil);
+            frame.imageName = @"xmasPolka_Frame_iOS";
+            break;
+        }
+        case PGFrameRedTriangle: {
+            frame.accessibilityText = NSLocalizedString(@"Red Triangle Frame", nil);
+            frame.imageName = @"RedTriangle_Frame_iOS";
+            break;
+        }
+        case PGFrameSnow: {
+            frame.accessibilityText = NSLocalizedString(@"Snow Frame", nil);
+            frame.imageName = @"Snow_Frame_iOS";
+            break;
+        }
+        case PGFrameStriped: {
+            frame.accessibilityText = NSLocalizedString(@"Striped Frame", nil);
+            frame.imageName = @"striped_Frame_iOS";
+            break;
+        }
+        case PGFrameGrey: {
+            frame.accessibilityText = NSLocalizedString(@"Grey Frame", nil);
+            frame.imageName = @"Grey_Frame_iOS";
+            break;
+        }
+        case PGFrameSanta: {
+            frame.accessibilityText = NSLocalizedString(@"Santa Frame", nil);
+            frame.imageName = @"Santa_Frame_iOS";
             break;
         }
         case PGFrameItemsBlueWaterColor: {
@@ -94,11 +119,6 @@ const NSInteger PGFrameItemsCount = 16;
         case PGFrameItemsWoodBottom: {
             frame.accessibilityText = NSLocalizedString(@"Wood Bottom Frame", nil);
             frame.imageName = @"Wood_Frame_iOS";
-            break;
-        }
-        case PGFrameItemsYellow: {
-            frame.accessibilityText = NSLocalizedString(@"Yellow Frame", nil);
-            frame.imageName = @"Yellow_Frame_iOS";
             break;
         }
         default:
