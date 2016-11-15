@@ -12,14 +12,14 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_OPTIONS(NSUInteger, PGSocialSourceType) {
-    PGSocialSourceTypeLocalPhotos = 1 << 0, // 1
-    PGSocialSourceTypeFacebook    = 1 << 1, // 2
-    PGSocialSourceTypeInstagram   = 1 << 2, // 4
-    PGSocialSourceTypeFlickr      = 1 << 3, // 8
-    PGSocialSourceTypePitu        = 1 << 4, // 16
-    PGSocialSourceTypeWeiBo       = 1 << 5, // 32
-    PGSocialSourceTypeQzone       = 1 << 6  // 64
+typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
+    PGSocialSourceTypeLocalPhotos = 0,
+    PGSocialSourceTypeFacebook,
+    PGSocialSourceTypeInstagram,
+    PGSocialSourceTypeFlickr,
+    PGSocialSourceTypePitu,
+    PGSocialSourceTypeWeiBo,
+    PGSocialSourceTypeQzone
 };
 
 @interface PGSocialSource : NSObject
