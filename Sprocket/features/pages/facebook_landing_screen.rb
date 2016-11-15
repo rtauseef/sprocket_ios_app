@@ -5,11 +5,10 @@ class FacebookLandingScreen < Calabash::IBase
 
 	def trait
     facebook_logo
-    sign_in_button
-	end
+ end
 
-	def facebook_logo
-		"UIImageView marked:'Facebook'"
+ def facebook_logo
+  "UIButtonLabel marked:'Facebook'"
   end
 def sign_in_button
   "button marked:'Sign in'"

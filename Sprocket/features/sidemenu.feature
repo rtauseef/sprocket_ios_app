@@ -15,10 +15,21 @@ Scenario Outline: Sign in to different Social media accounts from side menu
     Then I should see the "<Photos>" screen
     Examples:
       | social_media | Sign in          | Photos           |
-      | Instagram    | Instagram Signin | Instagram Photos             |
+      | Instagram    | Instagram Signin | Instagram Photos |
       | Flickr       | FlickrSignin     | Flickr Photo     |
-      | CameraRoll   | CameraRoll       | CameraRoll Photo |
-
+      
+@reset
+@regression
+Scenario: Sign in to different Social media accounts from side menu
+    Given I am on the "Landing" screen
+    When I touch menu button on navigation bar
+    Then I should see the side menu
+    Then I should see "CameraRoll" logo
+    And I click on the "CameraRoll" logo 
+    Then I should see the "CameraRoll Landing" screen
+    And I click on the "Sign in" button
+    Then I should see the "CameraRoll Photo" screen
+      
 
 @reset
 @TA14381
@@ -27,7 +38,7 @@ Scenario: Verify side menu options
     When I touch menu button on navigation bar
     Then I should see the side menu
     And I should see the following:
-    |sprocket        |
+    |sprocket       |
     |Buy Paper      |
     |How To & Help  |
     |Give Feedback  |
@@ -39,7 +50,7 @@ Scenario: Verify side menu options
   Scenario: Verify navigation to device screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
-	Then I should see the side menu
+	  Then I should see the side menu
     Then I touch "sprocket"
     And I should see the modal screen title
     And I tap the "OK" button
@@ -57,7 +68,7 @@ Scenario: Verify side menu options
     Then I should see the "About" screen 
     Then I should see "Sprocket" logo
     And I should see the following:
-    |Version 1.0.1 (DEV)|
+    |Version 1.3.0 (DEV)|
     |HP Development Company, L.P.|
     |Copyright (c) 2016|
     When I touch "Done"
