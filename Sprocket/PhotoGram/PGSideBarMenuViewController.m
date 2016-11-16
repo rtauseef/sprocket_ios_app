@@ -49,6 +49,7 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (weak, nonatomic) IBOutlet PGBatteryImageView *deviceBatteryLevel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerTopConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *collapseButton;
 
 @end
 
@@ -103,17 +104,21 @@ NSString * const kIncludeLoginKey = @"include-login";
     
     if (self.overlayView.alpha == 0) {
         self.containerTopConstraint.constant = -(44 * 3);
+        self.overlayView.userInteractionEnabled = YES;
         
         [UIView animateWithDuration:0.3 animations:^{
             [self.view layoutIfNeeded];
             self.overlayView.alpha = 0.7;
+            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
         }];
     } else {
         self.containerTopConstraint.constant = 0;
+        self.overlayView.userInteractionEnabled = NO;
         
         [UIView animateWithDuration:0.3 animations:^{
             [self.view layoutIfNeeded];
             self.overlayView.alpha = 0;
+            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(-(M_PI * 2));
         }];
     }
 }
