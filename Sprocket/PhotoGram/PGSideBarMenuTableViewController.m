@@ -28,6 +28,7 @@
 
 #import "PGSideBarMenuTableViewController.h"
 #import "PGSideBarMenuViewController.h"
+#import "PGSideBarMenuItems.h"
 #import "PGRevealViewController.h"
 #import "PGSurveyManager.h"
 #import "PGAppAppearance.h"

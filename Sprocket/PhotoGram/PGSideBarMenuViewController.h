@@ -12,14 +12,8 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const kPrivacyStatementURL;
-extern NSString * const kBuyPaperURL;
-extern NSString * const kSurveyURL;
-extern NSString * const kSurveyNotifyURL;
 extern NSString * const kSocialNetworkKey;
 extern NSString * const kIncludeLoginKey;
-extern NSString * const kBuyPaperScreenName;
-extern NSString * const kPrivacyStatementScreenName;
 
 @interface PGSideBarMenuViewController : UIViewController
 

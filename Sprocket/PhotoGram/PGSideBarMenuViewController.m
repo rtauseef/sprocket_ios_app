@@ -20,49 +20,28 @@
 #import "PGBatteryImageView.h"
 #import "PGHelpAndHowToViewController.h"
 #import "PGRevealViewController.h"
+#import "PGSideBarMenuItems.h"
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 
-#import "NSLocale+Additions.h"
 #import "UIViewController+Trackable.h"
-#import "UIColor+Style.h"
 
 static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
 
 CGFloat const kPGSideBarMenuLongScreenSizeHeaderHeight = 75.0f;
 CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
-CGFloat const kPGSideBarMenuRegularCellHeight = 52.0f;
-CGFloat const kPGSideBarMenuSmallCellHeight = 42.0f;
 CGFloat const kPGSideBarMenuSmallSocialHeight = 40.0f;
 CGFloat const kPGSideBarMenuDeviceConnectivityLabelX = 58.0f;
 CGFloat const kPGSideBarMenuSignOutSpacing = 1.0f;
 
-NSInteger const kPGSideBarMenuNumberOfRows = 7;
-
-NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
-NSString * const kBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
-NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
-NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
-NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
-NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
- 
-
-typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
-    PGSideBarMenuCellSprocket,
-    PGSideBarMenuCellBuyPaper,
-    PGSideBarMenuCellHowToAndHelp,
-    PGSideBarMenuCellGiveFeedback,
-    PGSideBarMenuCellTakeSurvey,
-    PGSideBarMenuCellPrivacy,
-    PGSideBarMenuCellAbout,
-};
 
 @interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainMenuTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeight;
 
 @property (weak, nonatomic) IBOutlet UIView *deviceStatusLED;
 @property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
@@ -78,6 +57,10 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
     self.trackableScreenName = @"Side Bar Menu Screen";
     
     [PGAppAppearance addGradientBackgroundToView:self.view];
+    
+    if (IS_IPHONE_4) {
+        self.headerHeight.constant = kPGSideBarMenuShortScreenSizeHeaderHeight;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -114,64 +97,18 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
     
-    UIView *selectionColorView = [[UIView alloc] init];
-    selectionColorView.backgroundColor = [UIColor HPTableRowSelectionColor];
-    
-    cell.selectedBackgroundView = selectionColorView;
-    
-    switch (indexPath.row) {
-        case PGSideBarMenuCellSprocket:
-            cell.textLabel.text = NSLocalizedString(@"sprocket", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuSprocket"];
-            break;
-        case PGSideBarMenuCellBuyPaper:
-            cell.textLabel.text = NSLocalizedString(@"Buy Paper", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuBuyPaper"];
-            break;
-        case PGSideBarMenuCellHowToAndHelp:
-            cell.textLabel.text = NSLocalizedString(@"How to & Help", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuHowToHelp"];
-            break;
-        case PGSideBarMenuCellGiveFeedback:
-            cell.textLabel.text = NSLocalizedString(@"Give Feedback", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuGiveFeedback"];
-            break;
-        case PGSideBarMenuCellTakeSurvey:
-            cell.textLabel.text = NSLocalizedString(@"Take Survey", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuTakeSurvey"];
-            break;
-        case PGSideBarMenuCellPrivacy:
-            cell.textLabel.text = NSLocalizedString(@"Privacy", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuPrivacy"];
-            break;
-        case PGSideBarMenuCellAbout:
-            cell.textLabel.text = NSLocalizedString(@"About", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuAbout"];
-            break;
-        default:
-            break;
-    }
-    
-    return cell;
+    return [PGSideBarMenuItems configureCell:cell atIndexPath:indexPath];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return kPGSideBarMenuNumberOfRows;
+    return kPGSideBarMenuItemsNumberOfRows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
-        return 0.0F;
-    } else if (IS_IPHONE_4) {
-        return kPGSideBarMenuSmallCellHeight;
-    }
-    
-    return kPGSideBarMenuRegularCellHeight;
+    return [PGSideBarMenuItems heightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark - UITableViewDelegate methods
@@ -240,7 +177,6 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
 - (void)webViewerViewControllerDidReachNotifyUrl:(PGWebViewerViewController *)webViewerViewController
 {
     [[PGSurveyManager sharedInstance] setDisable:YES];
-    
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

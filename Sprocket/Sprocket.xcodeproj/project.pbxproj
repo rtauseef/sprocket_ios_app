@@ -430,6 +430,8 @@
 		821853231D626A96001288D9 /* 13_floral2_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852E71D626A96001288D9 /* 13_floral2_frame_TN@2x.png */; };
 		821853241D626A96001288D9 /* 13_floral2_frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852E81D626A96001288D9 /* 13_floral2_frame_TN@3x.png */; };
 		821853251D626A96001288D9 /* 13_floral2_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852E91D626A96001288D9 /* 13_floral2_frame.png */; };
+		8218C5641DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */; };
+		8218C5651DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */; };
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		82362A181D59408E0019F024 /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
@@ -1103,6 +1105,8 @@
 		821852E71D626A96001288D9 /* 13_floral2_frame_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "13_floral2_frame_TN@2x.png"; path = "Resources/Images/Frames/13_floral2_frame_TN@2x.png"; sourceTree = "<group>"; };
 		821852E81D626A96001288D9 /* 13_floral2_frame_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "13_floral2_frame_TN@3x.png"; path = "Resources/Images/Frames/13_floral2_frame_TN@3x.png"; sourceTree = "<group>"; };
 		821852E91D626A96001288D9 /* 13_floral2_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 13_floral2_frame.png; path = Resources/Images/Frames/13_floral2_frame.png; sourceTree = "<group>"; };
+		8218C5621DDBE90C000855D8 /* PGSideBarMenuItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuItems.h; sourceTree = "<group>"; };
+		8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSideBarMenuItems.m; sourceTree = "<group>"; };
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
@@ -1699,6 +1703,8 @@
 			children = (
 				829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */,
 				829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */,
+				8218C5621DDBE90C000855D8 /* PGSideBarMenuItems.h */,
+				8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */,
 				E375386519BE5D3C009C695F /* PGSideBarMenuTableViewController.h */,
 				E375386619BE5D3C009C695F /* PGSideBarMenuTableViewController.m */,
 				829E02851DDA64C200B025C5 /* PGSocialSourcesMenuTableViewController.h */,
@@ -3185,6 +3191,7 @@
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
 				a066e20082450f3d9be0eacf /* main.m in Sources */,
 				a5ddf8bbdfb873da46ef0132 /* UIColor+HexString.m in Sources */,
+				8218C5651DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */,
 				b7f4d03ea6ee15ea731634d1 /* PGLogFormatter.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
@@ -3302,6 +3309,7 @@
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
+				8218C5641DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
 				823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */,
