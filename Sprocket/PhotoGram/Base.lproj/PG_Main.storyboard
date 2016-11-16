@@ -901,29 +901,59 @@
                                     <outlet property="delegate" destination="Guh-3n-On1" id="Js5-WP-ElD"/>
                                 </connections>
                             </tableView>
+                            <view userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjE-ZB-zQE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.031372549020000001" green="0.031372549020000001" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="500" translatesAutoresizingMaskIntoConstraints="NO" id="bwE-1G-LLm">
+                                <rect key="frame" x="0.0" y="475" width="375" height="192"/>
+                                <connections>
+                                    <segue destination="Dah-We-6Of" kind="embed" id="Q1y-9A-3zE"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVt-B1-bbp">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="aYa-Ly-0fG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="collapseButtonTapped:" destination="Guh-3n-On1" eventType="touchUpInside" id="aHG-xs-oqy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="IVt-B1-bbp" secondAttribute="trailing" id="09K-3g-tMj"/>
                             <constraint firstAttribute="trailing" secondItem="i6e-TI-LXh" secondAttribute="trailing" id="9ep-tJ-8zz"/>
+                            <constraint firstAttribute="bottom" secondItem="bwE-1G-LLm" secondAttribute="bottom" id="J7i-cq-Pay"/>
                             <constraint firstItem="FqQ-dy-7N2" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="MUO-dK-aWu"/>
                             <constraint firstAttribute="trailing" secondItem="FqQ-dy-7N2" secondAttribute="trailing" id="PGu-iE-PWG"/>
+                            <constraint firstItem="bwE-1G-LLm" firstAttribute="top" secondItem="i6e-TI-LXh" secondAttribute="bottom" id="VrX-5j-m6r"/>
+                            <constraint firstItem="IVt-B1-bbp" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="Wwx-aP-voh"/>
+                            <constraint firstItem="bwE-1G-LLm" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="a84-Ht-2Zj"/>
                             <constraint firstItem="i6e-TI-LXh" firstAttribute="height" secondItem="10d-bX-fhQ" secondAttribute="height" multiplier="0.6" id="e9d-cf-xiF"/>
                             <constraint firstItem="FqQ-dy-7N2" firstAttribute="top" secondItem="10d-bX-fhQ" secondAttribute="top" id="god-0a-0re"/>
+                            <constraint firstItem="xMu-BC-Sce" firstAttribute="top" secondItem="IVt-B1-bbp" secondAttribute="bottom" id="mAB-BJ-nng"/>
+                            <constraint firstAttribute="trailing" secondItem="bwE-1G-LLm" secondAttribute="trailing" id="toO-oE-Zq2"/>
                             <constraint firstItem="i6e-TI-LXh" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="uKL-gB-Gso"/>
                             <constraint firstItem="i6e-TI-LXh" firstAttribute="top" secondItem="FqQ-dy-7N2" secondAttribute="bottom" id="zvw-nN-pH9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerTopConstraint" destination="VrX-5j-m6r" id="hZo-1j-JhX"/>
                         <outlet property="deviceBatteryLevel" destination="iN8-Dm-wnb" id="vpl-7d-DyO"/>
                         <outlet property="deviceConnectivityLabel" destination="qsf-b8-Lfu" id="Tgq-Nv-aGs"/>
                         <outlet property="deviceStatusLED" destination="LCv-5s-9Py" id="eYq-n3-Eil"/>
                         <outlet property="headerHeight" destination="JEd-73-zdX" id="nfW-iZ-Dax"/>
                         <outlet property="mainMenuTableView" destination="i6e-TI-LXh" id="dn6-FX-DO9"/>
+                        <outlet property="overlayView" destination="cjE-ZB-zQE" id="pu3-KL-fxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDG-08-NOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6876" y="222"/>
+            <point key="canvasLocation" x="-6876" y="221.73913043478262"/>
         </scene>
         <!--Web Viewer View Controller-->
         <scene sceneID="Xkv-WI-a5A">
@@ -1491,7 +1521,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26N-Ox-AW9" userLabel="Step 1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="1Xt-9D-F4w">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1526,7 +1556,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DmV-M2-d4s">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1548,7 +1578,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIm-XJ-JeQ" userLabel="Step 2">
-                                        <rect key="frame" x="0.0" y="458" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="456" width="375" height="456"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="WGB-yn-5rM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1583,7 +1613,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold the power button until the LED turns white." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-Sd-rVK">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1604,7 +1634,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iZ-lr-LdT" userLabel="Step 3">
-                                        <rect key="frame" x="0.0" y="916" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="912" width="375" height="456"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="t7A-xF-zJf">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1639,7 +1669,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-Fg-w5P">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2996,6 +3026,57 @@ printer and app support.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOP-w7-HQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1127" y="-1123"/>
+        </scene>
+        <!--Social Sources Menu View Controller-->
+        <scene sceneID="C8k-hc-Atm">
+            <objects>
+                <viewController id="Dah-We-6Of" customClass="PGSocialSourcesMenuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CZT-qK-owp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wQk-80-xW2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PGSocialSourceMenuCell" textLabel="xpp-LH-RZt" style="IBUITableViewCellStyleDefault" id="6aA-0u-t0A">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6aA-0u-t0A" id="S9g-DI-ch8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xpp-LH-RZt">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dah-We-6Of" id="rF9-aA-pPG"/>
+                                    <outlet property="delegate" destination="Dah-We-6Of" id="agq-sf-HAH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wQk-80-xW2" secondAttribute="trailing" id="Br1-2i-5Zo"/>
+                            <constraint firstItem="wQk-80-xW2" firstAttribute="leading" secondItem="CZT-qK-owp" secondAttribute="leading" id="P0t-3w-1Li"/>
+                            <constraint firstAttribute="bottom" secondItem="wQk-80-xW2" secondAttribute="bottom" constant="44" id="cZU-59-ONB"/>
+                            <constraint firstItem="wQk-80-xW2" firstAttribute="top" secondItem="CZT-qK-owp" secondAttribute="top" id="fjp-qh-gag"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="socialSoucesTableView" destination="wQk-80-xW2" id="dhb-2g-bNl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="brs-Xe-Sca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6910" y="747"/>
         </scene>
     </scenes>
     <resources>

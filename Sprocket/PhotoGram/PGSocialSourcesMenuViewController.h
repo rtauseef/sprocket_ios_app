@@ -12,6 +12,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PGSocialSourcesMenuTableViewController : UIViewController
+@interface PGSocialSourcesMenuViewController : UIViewController
 
 @end

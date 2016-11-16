@@ -42,10 +42,13 @@ NSString * const kIncludeLoginKey = @"include-login";
 
 @property (weak, nonatomic) IBOutlet UITableView *mainMenuTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeight;
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
 
 @property (weak, nonatomic) IBOutlet UIView *deviceStatusLED;
 @property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
 @property (weak, nonatomic) IBOutlet PGBatteryImageView *deviceBatteryLevel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerTopConstraint;
 
 @end
 
@@ -61,6 +64,8 @@ NSString * const kIncludeLoginKey = @"include-login";
     if (IS_IPHONE_4) {
         self.headerHeight.constant = kPGSideBarMenuShortScreenSizeHeaderHeight;
     }
+    
+    self.overlayView.alpha = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,12 +97,32 @@ NSString * const kIncludeLoginKey = @"include-login";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (IBAction)collapseButtonTapped:(id)sender
+{
+    [self.view layoutIfNeeded];
+    
+    if (self.overlayView.alpha == 0) {
+        self.containerTopConstraint.constant = -(44 * 3);
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+            self.overlayView.alpha = 0.7;
+        }];
+    } else {
+        self.containerTopConstraint.constant = 0;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+            self.overlayView.alpha = 0;
+        }];
+    }
+}
+
 #pragma mark - UITableViewDatasource methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
-    
     return [PGSideBarMenuItems configureCell:cell atIndexPath:indexPath];
 }
 
