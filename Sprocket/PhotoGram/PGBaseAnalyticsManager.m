@@ -109,8 +109,12 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.height] forKey:kMPPaperHeightId];
     [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
     [lastOptionsUsed setValue:[NSNumber numberWithInteger:1] forKey:kMPNumberOfCopies];
+    //LeSprocket custom metrics
+    NSMutableDictionary *customData = [NSMutableDictionary dictionaryWithDictionary:lastOptionsUsed[@"custom_data"]];
+    [customData setValue:@"watermark" forKey:@"printed_image"];
+    [lastOptionsUsed setValue:customData forKey:@"custom_data"];
+    //End of LeSprocket custom metrics
     [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
-    
     NSMutableDictionary *metrics = [NSMutableDictionary dictionaryWithObjectsAndKeys:offramp, kMetricsOfframpKey, kMetricsAppTypeHP, kMetricsAppTypeKey, nil];
     [metrics addEntriesFromDictionary:printItem.extra];
     [metrics addEntriesFromDictionary:[extendedInfo objectForKey:kMetricsTypeLocationKey]];
