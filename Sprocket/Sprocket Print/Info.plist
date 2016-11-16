@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>1.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -69,5 +69,7 @@
 	<array>
 		<string>com.hp.protocol</string>
 	</array>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</string>
 </dict>
 </plist>
