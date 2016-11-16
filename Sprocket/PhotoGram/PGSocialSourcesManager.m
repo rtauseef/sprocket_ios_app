@@ -12,6 +12,8 @@
 
 #import "PGSocialSourcesManager.h"
 
+static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enableExtraSocialSources";
+
 @interface PGSocialSourcesManager ()
 
 @property (nonatomic, strong) NSArray<PGSocialSource *> *socialSources;
@@ -48,11 +50,33 @@
 }
 
 
+#pragma mark - Feature Flag
+
+- (BOOL)isEnabledExtraSocialSources
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults boolForKey:kEnableExtraSocialSourcesKey];
+}
+
+- (void)toggleExtraSocialSourcesEnabled
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL enabled = [userDefaults boolForKey:kEnableExtraSocialSourcesKey];
+
+    [userDefaults setBool:!enabled forKey:kEnableExtraSocialSourcesKey];
+    [userDefaults synchronize];
+}
+
+
 #pragma mark - Private
 
 - (void)setupSocialSources
 {
     NSString *language = @"zh";
+
+    if (![self isEnabledExtraSocialSources]) {
+        language = nil;
+    }
 
     if ([language isEqualToString:@"zh"]) {
         self.socialSources = @[

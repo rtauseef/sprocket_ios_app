@@ -19,4 +19,7 @@
 
 + (instancetype)sharedInstance;
 
+- (void)toggleExtraSocialSourcesEnabled;
+- (BOOL)isEnabledExtraSocialSources;
+
 @end
