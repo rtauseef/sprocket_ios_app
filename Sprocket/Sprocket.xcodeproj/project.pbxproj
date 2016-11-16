@@ -3536,7 +3536,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3605,7 +3605,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3913,7 +3913,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3976,7 +3976,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4124,7 +4124,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4249,7 +4249,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4333,7 +4333,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4400,7 +4400,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

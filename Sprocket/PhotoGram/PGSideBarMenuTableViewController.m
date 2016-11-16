@@ -27,6 +27,7 @@
 #import <HPPRFlickrLoginProvider.h>
 
 #import "PGSideBarMenuTableViewController.h"
+#import "PGSideBarMenuViewController.h"
 #import "PGRevealViewController.h"
 #import "PGSurveyManager.h"
 #import "PGAppAppearance.h"
@@ -61,7 +62,7 @@ static const NSInteger ABOUT_INDEX             = 6;
 #define kSignInButtonTitle NSLocalizedString(@"Sign In", nil)
 #define kSignOutButtonTitle NSLocalizedString(@"Sign Out", nil)
 #define kCheckingButtonTitle NSLocalizedString(@"Checking", @"Checking the login status of the social network")
-
+/*
 NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 NSString * const kBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
@@ -70,6 +71,7 @@ NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
+ */
 
 @interface PGSideBarMenuTableViewController () <MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
