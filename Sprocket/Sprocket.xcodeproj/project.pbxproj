@@ -642,6 +642,8 @@
 		F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
 		F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */; };
 		F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */; };
+		F2E785261DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
+		F2E785271DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
 		F2E7852B1DDA782F0074FFB7 /* PGSocialSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E7852A1DDA782F0074FFB7 /* PGSocialSource.m */; };
 		F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E7852A1DDA782F0074FFB7 /* PGSocialSource.m */; };
 		FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
@@ -1318,6 +1320,8 @@
 		F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAttributedLabel.m; sourceTree = "<group>"; };
 		F2E785201DDA4E230074FFB7 /* PGSocialSourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesManager.h; sourceTree = "<group>"; };
 		F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesManager.m; sourceTree = "<group>"; };
+		F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesCircleView.h; sourceTree = "<group>"; };
+		F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesCircleView.m; sourceTree = "<group>"; };
 		F2E785291DDA782F0074FFB7 /* PGSocialSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSource.h; sourceTree = "<group>"; };
 		F2E7852A1DDA782F0074FFB7 /* PGSocialSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSource.m; sourceTree = "<group>"; };
 		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2061,6 +2065,8 @@
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
 				92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */,
 				92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */,
+				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
+				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -3226,6 +3232,7 @@
 				b2b702ca62e7f093ce61c8e9 /* PGLogger.m in Sources */,
 				a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */,
 				04ca2e7bba7087956b9047c7 /* PGFrameItem.m in Sources */,
+				F2E785271DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */,
 				410e5832482fe56a231852de /* NSString+Utils.m in Sources */,
 				1d083780537ed0fd761b7b5c /* UIViewController+Trackable.m in Sources */,
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
@@ -3296,6 +3303,7 @@
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
+				F2E785261DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */,
 				823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */,
 				821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */,
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
