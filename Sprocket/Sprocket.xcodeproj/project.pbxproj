@@ -206,10 +206,10 @@
 		26F7C1891DDA8500006396FA /* snowman_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1251DDA8500006396FA /* snowman_TN@2x.png */; };
 		26F7C18A1DDA8500006396FA /* snowman_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1261DDA8500006396FA /* snowman_TN@3x.png */; };
 		26F7C18B1DDA8500006396FA /* snowman.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1271DDA8500006396FA /* snowman.png */; };
-		26F7C18C1DDA8500006396FA /* star_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1281DDA8500006396FA /* star_TN.png */; };
-		26F7C18D1DDA8500006396FA /* star_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1291DDA8500006396FA /* star_TN@2x.png */; };
-		26F7C18E1DDA8500006396FA /* star_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12A1DDA8500006396FA /* star_TN@3x.png */; };
-		26F7C18F1DDA8500006396FA /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12B1DDA8500006396FA /* star.png */; };
+		26F7C18C1DDA8500006396FA /* star0_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1281DDA8500006396FA /* star0_TN.png */; };
+		26F7C18D1DDA8500006396FA /* star0_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1291DDA8500006396FA /* star0_TN@2x.png */; };
+		26F7C18E1DDA8500006396FA /* star0_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12A1DDA8500006396FA /* star0_TN@3x.png */; };
+		26F7C18F1DDA8500006396FA /* star0.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12B1DDA8500006396FA /* star0.png */; };
 		26F7C1901DDA8500006396FA /* stocking_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12C1DDA8500006396FA /* stocking_TN.png */; };
 		26F7C1911DDA8500006396FA /* stocking_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12D1DDA8500006396FA /* stocking_TN@2x.png */; };
 		26F7C1921DDA8500006396FA /* stocking_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12E1DDA8500006396FA /* stocking_TN@3x.png */; };
@@ -489,6 +489,106 @@
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
 		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92E9C1F21DD65FB6009E4E63 /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
+		92E9C1F31DDCDD19009E4E63 /* candy_cane_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0D41DDA8500006396FA /* candy_cane_TN.png */; };
+		92E9C1F41DDCDD19009E4E63 /* candy_cane_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0D51DDA8500006396FA /* candy_cane_TN@2x.png */; };
+		92E9C1F51DDCDD19009E4E63 /* candy_cane_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0D61DDA8500006396FA /* candy_cane_TN@3x.png */; };
+		92E9C1F61DDCDD19009E4E63 /* candy_cane.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0D71DDA8500006396FA /* candy_cane.png */; };
+		92E9C1F71DDCDD19009E4E63 /* cap_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0D81DDA8500006396FA /* cap_TN.png */; };
+		92E9C1F81DDCDD19009E4E63 /* cap_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0D91DDA8500006396FA /* cap_TN@2x.png */; };
+		92E9C1F91DDCDD19009E4E63 /* cap_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0DA1DDA8500006396FA /* cap_TN@3x.png */; };
+		92E9C1FA1DDCDD19009E4E63 /* cap.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0DB1DDA8500006396FA /* cap.png */; };
+		92E9C1FB1DDCDD19009E4E63 /* christmas_hat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0DC1DDA8500006396FA /* christmas_hat_TN.png */; };
+		92E9C1FC1DDCDD19009E4E63 /* christmas_hat_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0DD1DDA8500006396FA /* christmas_hat_TN@2x.png */; };
+		92E9C1FD1DDCDD19009E4E63 /* christmas_hat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0DE1DDA8500006396FA /* christmas_hat_TN@3x.png */; };
+		92E9C1FE1DDCDD19009E4E63 /* christmas_hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0DF1DDA8500006396FA /* christmas_hat.png */; };
+		92E9C1FF1DDCDD19009E4E63 /* dreidle_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E01DDA8500006396FA /* dreidle_TN.png */; };
+		92E9C2001DDCDD19009E4E63 /* dreidle_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E11DDA8500006396FA /* dreidle_TN@2x.png */; };
+		92E9C2011DDCDD19009E4E63 /* dreidle_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E21DDA8500006396FA /* dreidle_TN@3x.png */; };
+		92E9C2021DDCDD19009E4E63 /* dreidle.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E31DDA8500006396FA /* dreidle.png */; };
+		92E9C2031DDCDD19009E4E63 /* fireworks_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E41DDA8500006396FA /* fireworks_TN.png */; };
+		92E9C2041DDCDD19009E4E63 /* fireworks_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E51DDA8500006396FA /* fireworks_TN@2x.png */; };
+		92E9C2051DDCDD19009E4E63 /* fireworks_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E61DDA8500006396FA /* fireworks_TN@3x.png */; };
+		92E9C2061DDCDD19009E4E63 /* fireworks.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E71DDA8500006396FA /* fireworks.png */; };
+		92E9C2071DDCDD19009E4E63 /* glasses_hanukah_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E81DDA8500006396FA /* glasses_hanukah_TN.png */; };
+		92E9C2081DDCDD19009E4E63 /* glasses_hanukah_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0E91DDA8500006396FA /* glasses_hanukah_TN@2x.png */; };
+		92E9C2091DDCDD19009E4E63 /* glasses_hanukah_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0EA1DDA8500006396FA /* glasses_hanukah_TN@3x.png */; };
+		92E9C20A1DDCDD19009E4E63 /* glasses_hanukah.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0EB1DDA8500006396FA /* glasses_hanukah.png */; };
+		92E9C20B1DDCDD19009E4E63 /* glasses_rudolph_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0EC1DDA8500006396FA /* glasses_rudolph_TN.png */; };
+		92E9C20C1DDCDD19009E4E63 /* glasses_rudolph_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0ED1DDA8500006396FA /* glasses_rudolph_TN@2x.png */; };
+		92E9C20D1DDCDD19009E4E63 /* glasses_rudolph_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0EE1DDA8500006396FA /* glasses_rudolph_TN@3x.png */; };
+		92E9C20E1DDCDD19009E4E63 /* glasses_rudolph.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0EF1DDA8500006396FA /* glasses_rudolph.png */; };
+		92E9C20F1DDCDD19009E4E63 /* glasses_star_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F01DDA8500006396FA /* glasses_star_TN.png */; };
+		92E9C2101DDCDD19009E4E63 /* glasses_star_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F11DDA8500006396FA /* glasses_star_TN@2x.png */; };
+		92E9C2111DDCDD19009E4E63 /* glasses_star_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F21DDA8500006396FA /* glasses_star_TN@3x.png */; };
+		92E9C2121DDCDD19009E4E63 /* glasses_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F31DDA8500006396FA /* glasses_star.png */; };
+		92E9C2131DDCDD19009E4E63 /* glasses_tree_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F41DDA8500006396FA /* glasses_tree_TN.png */; };
+		92E9C2141DDCDD19009E4E63 /* glasses_tree_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F51DDA8500006396FA /* glasses_tree_TN@2x.png */; };
+		92E9C2151DDCDD19009E4E63 /* glasses_tree_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F61DDA8500006396FA /* glasses_tree_TN@3x.png */; };
+		92E9C2161DDCDD19009E4E63 /* glasses_tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F71DDA8500006396FA /* glasses_tree.png */; };
+		92E9C2171DDCDD19009E4E63 /* holly_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F81DDA8500006396FA /* holly_TN.png */; };
+		92E9C2181DDCDD19009E4E63 /* holly_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0F91DDA8500006396FA /* holly_TN@2x.png */; };
+		92E9C2191DDCDD19009E4E63 /* holly_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0FA1DDA8500006396FA /* holly_TN@3x.png */; };
+		92E9C21A1DDCDD19009E4E63 /* holly.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0FB1DDA8500006396FA /* holly.png */; };
+		92E9C21B1DDCDD19009E4E63 /* horn_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0FC1DDA8500006396FA /* horn_TN.png */; };
+		92E9C21C1DDCDD19009E4E63 /* horn_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0FD1DDA8500006396FA /* horn_TN@2x.png */; };
+		92E9C21D1DDCDD19009E4E63 /* horn_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0FE1DDA8500006396FA /* horn_TN@3x.png */; };
+		92E9C21E1DDCDD19009E4E63 /* horn.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0FF1DDA8500006396FA /* horn.png */; };
+		92E9C21F1DDCDD19009E4E63 /* menorah_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1001DDA8500006396FA /* menorah_TN.png */; };
+		92E9C2201DDCDD19009E4E63 /* menorah_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1011DDA8500006396FA /* menorah_TN@2x.png */; };
+		92E9C2211DDCDD19009E4E63 /* menorah_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1021DDA8500006396FA /* menorah_TN@3x.png */; };
+		92E9C2221DDCDD19009E4E63 /* menorah.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1031DDA8500006396FA /* menorah.png */; };
+		92E9C2231DDCDD19009E4E63 /* mistletoe_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1041DDA8500006396FA /* mistletoe_TN.png */; };
+		92E9C2241DDCDD19009E4E63 /* mistletoe_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1051DDA8500006396FA /* mistletoe_TN@2x.png */; };
+		92E9C2251DDCDD19009E4E63 /* mistletoe_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1061DDA8500006396FA /* mistletoe_TN@3x.png */; };
+		92E9C2261DDCDD19009E4E63 /* mistletoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1071DDA8500006396FA /* mistletoe.png */; };
+		92E9C2271DDCDD19009E4E63 /* ornament_1_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1081DDA8500006396FA /* ornament_1_TN.png */; };
+		92E9C2281DDCDD19009E4E63 /* ornament_1_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1091DDA8500006396FA /* ornament_1_TN@2x.png */; };
+		92E9C2291DDCDD19009E4E63 /* ornament_1_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C10A1DDA8500006396FA /* ornament_1_TN@3x.png */; };
+		92E9C22A1DDCDD19009E4E63 /* ornament_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C10B1DDA8500006396FA /* ornament_1.png */; };
+		92E9C22B1DDCDD19009E4E63 /* Party-Hat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C10C1DDA8500006396FA /* Party-Hat_TN.png */; };
+		92E9C22C1DDCDD19009E4E63 /* Party-Hat_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C10D1DDA8500006396FA /* Party-Hat_TN@2x.png */; };
+		92E9C22D1DDCDD19009E4E63 /* Party-Hat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C10E1DDA8500006396FA /* Party-Hat_TN@3x.png */; };
+		92E9C22E1DDCDD19009E4E63 /* Party-Hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C10F1DDA8500006396FA /* Party-Hat.png */; };
+		92E9C22F1DDCDD19009E4E63 /* rudolph_antlers_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1101DDA8500006396FA /* rudolph_antlers_TN.png */; };
+		92E9C2301DDCDD19009E4E63 /* rudolph_antlers_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1111DDA8500006396FA /* rudolph_antlers_TN@2x.png */; };
+		92E9C2311DDCDD19009E4E63 /* rudolph_antlers_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1121DDA8500006396FA /* rudolph_antlers_TN@3x.png */; };
+		92E9C2321DDCDD19009E4E63 /* rudolph_antlers.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1131DDA8500006396FA /* rudolph_antlers.png */; };
+		92E9C2331DDCDD19009E4E63 /* scarf_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1141DDA8500006396FA /* scarf_TN.png */; };
+		92E9C2341DDCDD19009E4E63 /* scarf_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1151DDA8500006396FA /* scarf_TN@2x.png */; };
+		92E9C2351DDCDD19009E4E63 /* scarf_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1161DDA8500006396FA /* scarf_TN@3x.png */; };
+		92E9C2361DDCDD19009E4E63 /* scarf.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1171DDA8500006396FA /* scarf.png */; };
+		92E9C2371DDCDD19009E4E63 /* snowflake_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1181DDA8500006396FA /* snowflake_2_TN.png */; };
+		92E9C2381DDCDD19009E4E63 /* snowflake_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1191DDA8500006396FA /* snowflake_2_TN@2x.png */; };
+		92E9C2391DDCDD19009E4E63 /* snowflake_2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C11A1DDA8500006396FA /* snowflake_2_TN@3x.png */; };
+		92E9C23A1DDCDD19009E4E63 /* snowflake_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C11B1DDA8500006396FA /* snowflake_2.png */; };
+		92E9C23B1DDCDD19009E4E63 /* snowman_face_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C11C1DDA8500006396FA /* snowman_face_TN.png */; };
+		92E9C23C1DDCDD19009E4E63 /* snowman_face_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C11D1DDA8500006396FA /* snowman_face_TN@2x.png */; };
+		92E9C23D1DDCDD19009E4E63 /* snowman_face_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C11E1DDA8500006396FA /* snowman_face_TN@3x.png */; };
+		92E9C23E1DDCDD19009E4E63 /* snowman_face.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C11F1DDA8500006396FA /* snowman_face.png */; };
+		92E9C23F1DDCDD19009E4E63 /* snowman_hat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1201DDA8500006396FA /* snowman_hat_TN.png */; };
+		92E9C2401DDCDD19009E4E63 /* snowman_hat_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1211DDA8500006396FA /* snowman_hat_TN@2x.png */; };
+		92E9C2411DDCDD19009E4E63 /* snowman_hat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1221DDA8500006396FA /* snowman_hat_TN@3x.png */; };
+		92E9C2421DDCDD19009E4E63 /* snowman_hat.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1231DDA8500006396FA /* snowman_hat.png */; };
+		92E9C2431DDCDD19009E4E63 /* snowman_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1241DDA8500006396FA /* snowman_TN.png */; };
+		92E9C2441DDCDD19009E4E63 /* snowman_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1251DDA8500006396FA /* snowman_TN@2x.png */; };
+		92E9C2451DDCDD19009E4E63 /* snowman_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1261DDA8500006396FA /* snowman_TN@3x.png */; };
+		92E9C2461DDCDD19009E4E63 /* snowman.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1271DDA8500006396FA /* snowman.png */; };
+		92E9C2471DDCDD19009E4E63 /* star0_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1281DDA8500006396FA /* star0_TN.png */; };
+		92E9C2481DDCDD19009E4E63 /* star0_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1291DDA8500006396FA /* star0_TN@2x.png */; };
+		92E9C2491DDCDD19009E4E63 /* star0_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12A1DDA8500006396FA /* star0_TN@3x.png */; };
+		92E9C24A1DDCDD19009E4E63 /* star0.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12B1DDA8500006396FA /* star0.png */; };
+		92E9C24B1DDCDD19009E4E63 /* stocking_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12C1DDA8500006396FA /* stocking_TN.png */; };
+		92E9C24C1DDCDD19009E4E63 /* stocking_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12D1DDA8500006396FA /* stocking_TN@2x.png */; };
+		92E9C24D1DDCDD19009E4E63 /* stocking_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12E1DDA8500006396FA /* stocking_TN@3x.png */; };
+		92E9C24E1DDCDD19009E4E63 /* stocking.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C12F1DDA8500006396FA /* stocking.png */; };
+		92E9C24F1DDCDD19009E4E63 /* StringOLights.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1301DDA8500006396FA /* StringOLights.png */; };
+		92E9C2501DDCDD19009E4E63 /* StringOLights_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1311DDA8500006396FA /* StringOLights_TN.png */; };
+		92E9C2511DDCDD19009E4E63 /* StringOLights_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1321DDA8500006396FA /* StringOLights_TN@2x.png */; };
+		92E9C2521DDCDD19009E4E63 /* StringOLights_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1331DDA8500006396FA /* StringOLights_TN@3x.png */; };
+		92E9C2531DDCDD19009E4E63 /* tree_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1341DDA8500006396FA /* tree_TN.png */; };
+		92E9C2541DDCDD19009E4E63 /* tree_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1351DDA8500006396FA /* tree_TN@2x.png */; };
+		92E9C2551DDCDD19009E4E63 /* tree_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1361DDA8500006396FA /* tree_TN@3x.png */; };
+		92E9C2561DDCDD19009E4E63 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C1371DDA8500006396FA /* tree.png */; };
 		98e03b6979056b1d41f07ab0 /* birthdayHat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821851E41D625FBA001288D9 /* birthdayHat_TN@3x.png */; };
 		99640c1215bceb7ddd03db05 /* birthdayHat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 821851E21D625FBA001288D9 /* birthdayHat_TN.png */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
@@ -976,10 +1076,10 @@
 		26F7C1251DDA8500006396FA /* snowman_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snowman_TN@2x.png"; path = "Resources/Images/Stickers/Holiday/snowman_TN@2x.png"; sourceTree = "<group>"; };
 		26F7C1261DDA8500006396FA /* snowman_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "snowman_TN@3x.png"; path = "Resources/Images/Stickers/Holiday/snowman_TN@3x.png"; sourceTree = "<group>"; };
 		26F7C1271DDA8500006396FA /* snowman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snowman.png; path = Resources/Images/Stickers/Holiday/snowman.png; sourceTree = "<group>"; };
-		26F7C1281DDA8500006396FA /* star_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_TN.png; path = Resources/Images/Stickers/Holiday/star_TN.png; sourceTree = "<group>"; };
-		26F7C1291DDA8500006396FA /* star_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star_TN@2x.png"; path = "Resources/Images/Stickers/Holiday/star_TN@2x.png"; sourceTree = "<group>"; };
-		26F7C12A1DDA8500006396FA /* star_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star_TN@3x.png"; path = "Resources/Images/Stickers/Holiday/star_TN@3x.png"; sourceTree = "<group>"; };
-		26F7C12B1DDA8500006396FA /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = Resources/Images/Stickers/Holiday/star.png; sourceTree = "<group>"; };
+		26F7C1281DDA8500006396FA /* star0_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star0_TN.png; path = Resources/Images/Stickers/Holiday/star0_TN.png; sourceTree = "<group>"; };
+		26F7C1291DDA8500006396FA /* star0_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star0_TN@2x.png"; path = "Resources/Images/Stickers/Holiday/star0_TN@2x.png"; sourceTree = "<group>"; };
+		26F7C12A1DDA8500006396FA /* star0_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star0_TN@3x.png"; path = "Resources/Images/Stickers/Holiday/star0_TN@3x.png"; sourceTree = "<group>"; };
+		26F7C12B1DDA8500006396FA /* star0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star0.png; path = Resources/Images/Stickers/Holiday/star0.png; sourceTree = "<group>"; };
 		26F7C12C1DDA8500006396FA /* stocking_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stocking_TN.png; path = Resources/Images/Stickers/Holiday/stocking_TN.png; sourceTree = "<group>"; };
 		26F7C12D1DDA8500006396FA /* stocking_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stocking_TN@2x.png"; path = "Resources/Images/Stickers/Holiday/stocking_TN@2x.png"; sourceTree = "<group>"; };
 		26F7C12E1DDA8500006396FA /* stocking_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stocking_TN@3x.png"; path = "Resources/Images/Stickers/Holiday/stocking_TN@3x.png"; sourceTree = "<group>"; };
@@ -1527,10 +1627,10 @@
 				26F7C1251DDA8500006396FA /* snowman_TN@2x.png */,
 				26F7C1261DDA8500006396FA /* snowman_TN@3x.png */,
 				26F7C1271DDA8500006396FA /* snowman.png */,
-				26F7C1281DDA8500006396FA /* star_TN.png */,
-				26F7C1291DDA8500006396FA /* star_TN@2x.png */,
-				26F7C12A1DDA8500006396FA /* star_TN@3x.png */,
-				26F7C12B1DDA8500006396FA /* star.png */,
+				26F7C1281DDA8500006396FA /* star0_TN.png */,
+				26F7C1291DDA8500006396FA /* star0_TN@2x.png */,
+				26F7C12A1DDA8500006396FA /* star0_TN@3x.png */,
+				26F7C12B1DDA8500006396FA /* star0.png */,
 				26F7C12C1DDA8500006396FA /* stocking_TN.png */,
 				26F7C12D1DDA8500006396FA /* stocking_TN@2x.png */,
 				26F7C12E1DDA8500006396FA /* stocking_TN@3x.png */,
@@ -2442,7 +2542,7 @@
 				26F7C1681DDA8500006396FA /* mistletoe_TN.png in Resources */,
 				26F7BFC21DD10BB8006396FA /* moon_TN.png in Resources */,
 				821852901D625FFB001288D9 /* diamond_TN@3x.png in Resources */,
-				26F7C18E1DDA8500006396FA /* star_TN@3x.png in Resources */,
+				26F7C18E1DDA8500006396FA /* star0_TN@3x.png in Resources */,
 				8218528C1D625FFB001288D9 /* cupcake_TN@3x.png in Resources */,
 				8218529C1D625FFB001288D9 /* heartExpress_TN@3x.png in Resources */,
 				26F7C1631DDA8500006396FA /* horn.png in Resources */,
@@ -2568,7 +2668,7 @@
 				821852991D625FFB001288D9 /* feather2.png in Resources */,
 				26F7C0CB1DDA68CF006396FA /* Sloppy_Frame_iOS_TN.png in Resources */,
 				E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */,
-				26F7C18D1DDA8500006396FA /* star_TN@2x.png in Resources */,
+				26F7C18D1DDA8500006396FA /* star0_TN@2x.png in Resources */,
 				26F7C1421DDA8500006396FA /* christmas_hat_TN@3x.png in Resources */,
 				26F7C1491DDA8500006396FA /* fireworks_TN@2x.png in Resources */,
 				26F7C0C01DDA68CF006396FA /* blue_frame_TN@2x.png in Resources */,
@@ -2610,7 +2710,7 @@
 				26F7C1671DDA8500006396FA /* menorah.png in Resources */,
 				821852B11D625FFB001288D9 /* sunglasses.png in Resources */,
 				E3461FA319AF84A80042DF5E /* MeasurementArrowLeft@2x.png in Resources */,
-				26F7C18C1DDA8500006396FA /* star_TN.png in Resources */,
+				26F7C18C1DDA8500006396FA /* star0_TN.png in Resources */,
 				26F7C0C11DDA68CF006396FA /* blue_frame_TN@3x.png in Resources */,
 				821852AB1D625FFB001288D9 /* stars_TN@2x.png in Resources */,
 				26F7C1411DDA8500006396FA /* christmas_hat_TN@2x.png in Resources */,
@@ -2687,7 +2787,7 @@
 				26F7C16D1DDA8500006396FA /* ornament_1_TN@2x.png in Resources */,
 				26F7C1801DDA8500006396FA /* snowman_face_TN.png in Resources */,
 				821853051D626A96001288D9 /* 5_Red_frame.png in Resources */,
-				26F7C18F1DDA8500006396FA /* star.png in Resources */,
+				26F7C18F1DDA8500006396FA /* star0.png in Resources */,
 				26F7BFBA1DD10BB8006396FA /* catwhiskers_TN.png in Resources */,
 				821852B41D625FFB001288D9 /* xoxo_TN@3x.png in Resources */,
 				821852911D625FFB001288D9 /* diamond.png in Resources */,
@@ -2729,71 +2829,118 @@
 			buildActionMask = 2147483647;
 			files = (
 				b2ead7fad2f4b820007c6390 /* 6_floral_frame3_TN@2x.png in Resources */,
+				92E9C2451DDCDD19009E4E63 /* snowman_TN@3x.png in Resources */,
 				1426dfbe4b48b10fabdcecc7 /* 3_blue_watercolor_frame_TN@2x.png in Resources */,
+				92E9C22E1DDCDD19009E4E63 /* Party-Hat.png in Resources */,
+				92E9C23D1DDCDD19009E4E63 /* snowman_face_TN@3x.png in Resources */,
 				5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */,
+				92E9C2101DDCDD19009E4E63 /* glasses_star_TN@2x.png in Resources */,
+				92E9C2291DDCDD19009E4E63 /* ornament_1_TN@3x.png in Resources */,
+				92E9C2411DDCDD19009E4E63 /* snowman_hat_TN@3x.png in Resources */,
 				ca5182e6b7fd1374958f24a9 /* stars_TN@3x.png in Resources */,
 				2cd670907ef7ede7c270e8e2 /* cupcake_TN@2x.png in Resources */,
+				92E9C2281DDCDD19009E4E63 /* ornament_1_TN@2x.png in Resources */,
 				045dc9dcb0ee035a350f7bd2 /* 1_turquoise_frame_TN.png in Resources */,
 				22e13545893bf6c8deb632b6 /* arrow_TN@3x.png in Resources */,
 				91515e0bcffb0bf86b76994b /* starhp_TN@3x.png in Resources */,
 				68afebd20b4e886f5f4a194a /* catears_TN@3x.png in Resources */,
 				4356022bed1eba49678c3319 /* hearts_TN@3x.png in Resources */,
 				26F7C0721DD10C1E006396FA /* leaf3_TN.png in Resources */,
+				92E9C20A1DDCDD19009E4E63 /* glasses_hanukah.png in Resources */,
 				8ebc72196c4d69432bc0d4f3 /* cat_TN@3x.png in Resources */,
 				5ebd09d80222afabe5cb11e6 /* crown_TN.png in Resources */,
 				30ca0973712d098dc12f2fa7 /* Get_Help_Print@3x.png in Resources */,
 				3f25bf707c159119225659f7 /* 4_white_frame.png in Resources */,
+				92E9C1FC1DDCDD19009E4E63 /* christmas_hat_TN@2x.png in Resources */,
+				92E9C2361DDCDD19009E4E63 /* scarf.png in Resources */,
+				92E9C2081DDCDD19009E4E63 /* glasses_hanukah_TN@2x.png in Resources */,
 				094d42be235587fcd97970dd /* Sprocket.gif in Resources */,
+				92E9C21D1DDCDD19009E4E63 /* horn_TN@3x.png in Resources */,
+				92E9C23B1DDCDD19009E4E63 /* snowman_face_TN.png in Resources */,
 				690d39fa3ab3f49cd66a0d9b /* feather.png in Resources */,
 				6add67480481a12b159afd7c /* 9_polkadots_frame.png in Resources */,
+				92E9C22F1DDCDD19009E4E63 /* rudolph_antlers_TN.png in Resources */,
 				a3b227bce0d55bcf3ed35663 /* crown.png in Resources */,
 				33bb16d25dfa6e624cf617b6 /* sunglasses_TN@3x.png in Resources */,
+				92E9C24F1DDCDD19009E4E63 /* StringOLights.png in Resources */,
 				f5a260a98e129d2e044fb124 /* 2_pink_spraypaint_frame2_TN@2x.png in Resources */,
 				daebf86e7a3df049804c14ec /* feather_TN@3x.png in Resources */,
+				92E9C21F1DDCDD19009E4E63 /* menorah_TN.png in Resources */,
 				130ad6663d4e9dfc7e25d2cf /* PGMediaNavigation.xib in Resources */,
+				92E9C1F41DDCDD19009E4E63 /* candy_cane_TN@2x.png in Resources */,
+				92E9C24A1DDCDD19009E4E63 /* star0.png in Resources */,
 				cc652f313da3343f51f30ebe /* diamond_TN@3x.png in Resources */,
 				0801ccd31ec6b3e1e482bf9c /* cupcake_TN@3x.png in Resources */,
+				92E9C1FB1DDCDD19009E4E63 /* christmas_hat_TN.png in Resources */,
 				b2e58eadf0f45ed7096af0ce /* heartExpress_TN@3x.png in Resources */,
 				706c0f0aabcf149a3c0e630e /* arrow_TN@2x.png in Resources */,
 				26e579154e2842792f7d1cbe /* 5_Red_frame_TN.png in Resources */,
+				92E9C2351DDCDD19009E4E63 /* scarf_TN@3x.png in Resources */,
 				3bde23b670d942cded141e6c /* 5_Red_frame_TN@3x.png in Resources */,
+				92E9C1FF1DDCDD19009E4E63 /* dreidle_TN.png in Resources */,
+				92E9C2321DDCDD19009E4E63 /* rudolph_antlers.png in Resources */,
 				141e603b3128b6ba315c834a /* crown_TN@3x.png in Resources */,
+				92E9C2241DDCDD19009E4E63 /* mistletoe_TN@2x.png in Resources */,
+				92E9C2501DDCDD19009E4E63 /* StringOLights_TN.png in Resources */,
 				f8a7a155f75648cb195ed1d0 /* birthdayHat_TN@2x.png in Resources */,
 				1ae0c1246bbb937bedfe573e /* 9_polkadots_frame_TN.png in Resources */,
+				92E9C2211DDCDD19009E4E63 /* menorah_TN@3x.png in Resources */,
+				92E9C22A1DDCDD19009E4E63 /* ornament_1.png in Resources */,
+				92E9C20C1DDCDD19009E4E63 /* glasses_rudolph_TN@2x.png in Resources */,
 				328bf051b3e3af62c7e90ba1 /* sunglasses_TN@2x.png in Resources */,
 				b3c0cbae136849d796260560 /* 9_polkadots_frame_TN@3x.png in Resources */,
 				26F7C0791DD10C1E006396FA /* moon.png in Resources */,
 				de3e98d3018b073d35b2b8b5 /* 3_blue_watercolor_frame_TN.png in Resources */,
 				65d183f4ee532bfc2560a29c /* crown_TN@2x.png in Resources */,
 				b02da23efc5e8c80e44150e3 /* OMG_TN.png in Resources */,
+				92E9C2561DDCDD19009E4E63 /* tree.png in Resources */,
+				92E9C2261DDCDD19009E4E63 /* mistletoe.png in Resources */,
 				3b791e08d367d679c1a68e83 /* xoxo_TN@2x.png in Resources */,
+				92E9C2431DDCDD19009E4E63 /* snowman_TN.png in Resources */,
+				92E9C2331DDCDD19009E4E63 /* scarf_TN.png in Resources */,
+				92E9C2531DDCDD19009E4E63 /* tree_TN.png in Resources */,
+				92E9C1F51DDCDD19009E4E63 /* candy_cane_TN@3x.png in Resources */,
 				6e7d5c91786fff9fc6d47f36 /* 7_gradient_frame_TN.png in Resources */,
+				92E9C2131DDCDD19009E4E63 /* glasses_tree_TN.png in Resources */,
 				0a2c4d2bfb8cece1f9d1a367 /* Bitter-Regular.ttf in Resources */,
+				92E9C2481DDCDD19009E4E63 /* star0_TN@2x.png in Resources */,
 				0aefe6fad1e472ac8cdf97a8 /* CoveredByYourGrace.ttf in Resources */,
 				9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */,
 				6a8094a8039774830aa1746a /* HPSimplified_Bd.ttf in Resources */,
 				c9012084df6f413058c344b2 /* HPSimplified_BdIt.ttf in Resources */,
+				92E9C1F91DDCDD19009E4E63 /* cap_TN@3x.png in Resources */,
+				92E9C2371DDCDD19009E4E63 /* snowflake_2_TN.png in Resources */,
 				55820da898ff91dc81b5f231 /* heartExpress_TN.png in Resources */,
 				a73ce2ed73fb4ce344b47988 /* HPSimplified_It.ttf in Resources */,
 				91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */,
+				92E9C2201DDCDD19009E4E63 /* menorah_TN@2x.png in Resources */,
 				3c5e32682184b958db2c4972 /* HPSimplified_Lt.ttf in Resources */,
+				92E9C2251DDCDD19009E4E63 /* mistletoe_TN@3x.png in Resources */,
 				3f61a6f79eae18c8239267a5 /* HPSimplified_LtIt.ttf in Resources */,
 				81e8cd1030347c732f21826a /* feather_TN.png in Resources */,
+				92E9C2471DDCDD19009E4E63 /* star0_TN.png in Resources */,
 				26F7C0771DD10C1E006396FA /* moon_TN@2x.png in Resources */,
 				263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */,
 				4105c7119867f855e475c6ae /* 7_gradient_frame_TN@3x.png in Resources */,
 				d5177b16d2258231c10cf82e /* Jura-Regular.ttf in Resources */,
 				fdae1cf600f0b63189e29821 /* Muli-Regular.ttf in Resources */,
+				92E9C20D1DDCDD19009E4E63 /* glasses_rudolph_TN@3x.png in Resources */,
 				26F7C0781DD10C1E006396FA /* moon_TN@3x.png in Resources */,
 				51ed1ffe4c635bd63e6eaef7 /* xoxo_TN.png in Resources */,
+				92E9C24B1DDCDD19009E4E63 /* stocking_TN.png in Resources */,
 				bb2c4481401f5b9933011b69 /* OpenSans-Bold.ttf in Resources */,
 				6d2bb21043cb1bc7b0ec65d9 /* arrow.png in Resources */,
 				e17e4a14cb866f983a2a81bc /* cupcake.png in Resources */,
+				92E9C22C1DDCDD19009E4E63 /* Party-Hat_TN@2x.png in Resources */,
 				a6c8a9eda54ca7d3639478d0 /* Pacifico.ttf in Resources */,
 				3148edc195c405fddad1b6a3 /* OMG_TN@2x.png in Resources */,
+				92E9C23A1DDCDD19009E4E63 /* snowflake_2.png in Resources */,
+				92E9C1FE1DDCDD19009E4E63 /* christmas_hat.png in Resources */,
 				8f227c44012840e2700f041d /* 1_turquoise_frame_TN@3x.png in Resources */,
+				92E9C2181DDCDD19009E4E63 /* holly_TN@2x.png in Resources */,
 				c1a0250fdd608e0ba485e248 /* cat_TN.png in Resources */,
 				6e2c2473ed2f0f1072995bbe /* RockSalt.ttf in Resources */,
+				92E9C1F61DDCDD19009E4E63 /* candy_cane.png in Resources */,
 				e7da7e9d19075d85ceb82352 /* sanchez-regular.ttf in Resources */,
 				fb35aabc9163f8aeef8b61fe /* diamond_TN@2x.png in Resources */,
 				26F7C0741DD10C1E006396FA /* leaf3_TN@3x.png in Resources */,
@@ -2804,6 +2951,8 @@
 				1043240fc3ef82aadbac9748 /* spicyrice-regular.ttf in Resources */,
 				26F7C06F1DD10C1E006396FA /* catwhiskers_TN@2x.png in Resources */,
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
+				92E9C2441DDCDD19009E4E63 /* snowman_TN@2x.png in Resources */,
+				92E9C2011DDCDD19009E4E63 /* dreidle_TN@3x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
 				7c7a6af4c5b9a170cef28990 /* birthdayHat.png in Resources */,
 				343d40aad2e7a4e478a5f9ca /* catglasses.png in Resources */,
@@ -2811,20 +2960,29 @@
 				2d88afc85ef6599f299351fe /* 4_white_frame_TN.png in Resources */,
 				26F7C0701DD10C1E006396FA /* catwhiskers_TN@3x.png in Resources */,
 				57699a5b81bfa9db567fb52b /* catglasses_TN.png in Resources */,
+				92E9C2091DDCDD19009E4E63 /* glasses_hanukah_TN@3x.png in Resources */,
 				9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */,
+				92E9C2001DDCDD19009E4E63 /* dreidle_TN@2x.png in Resources */,
+				92E9C1F81DDCDD19009E4E63 /* cap_TN@2x.png in Resources */,
 				5127173d4e5d95d27a5a831e /* feather2_TN@2x.png in Resources */,
 				26F7C0761DD10C1E006396FA /* moon_TN.png in Resources */,
 				82607c99a642dddd0ec62e93 /* 3_blue_watercolor_frame_TN@3x.png in Resources */,
+				92E9C20E1DDCDD19009E4E63 /* glasses_rudolph.png in Resources */,
+				92E9C21C1DDCDD19009E4E63 /* horn_TN@2x.png in Resources */,
 				40afc0a690d0f851c76ba87e /* 10_green_watercolor_frame2_TN@3x.png in Resources */,
 				354be86c5a47e803a13f78d3 /* feather2_TN@3x.png in Resources */,
 				edb1da98cb61c224d151e8b2 /* feather2.png in Resources */,
 				aff115244fa0165d3089bcb7 /* FacebookLogo@2x.png in Resources */,
 				21f5cd53684e844ef4415c4c /* catears_TN@2x.png in Resources */,
 				5a59ecc59e7e438b8865cd21 /* FacebookNoPhotoAlbum@2x.png in Resources */,
+				92E9C1F31DDCDD19009E4E63 /* candy_cane_TN.png in Resources */,
 				a2cf52fbb6975b35f780eded /* FlickrLogo@2x.png in Resources */,
 				f390a9ec9dade4ac7c10f76c /* heartExpress.png in Resources */,
 				692a803853b431a67e319e83 /* 7_gradient_frame_TN@2x.png in Resources */,
+				92E9C2161DDCDD19009E4E63 /* glasses_tree.png in Resources */,
 				26F7C0731DD10C1E006396FA /* leaf3_TN@2x.png in Resources */,
+				92E9C2551DDCDD19009E4E63 /* tree_TN@3x.png in Resources */,
+				92E9C2111DDCDD19009E4E63 /* glasses_star_TN@3x.png in Resources */,
 				f65cf21b4d037fd488578320 /* arrow_TN.png in Resources */,
 				a3e45e11d2b44e785a3fca6c /* catears.png in Resources */,
 				8200da89c3991a4e1669005c /* 5_Red_frame_TN@2x.png in Resources */,
@@ -2834,72 +2992,114 @@
 				dbd2d7a3132c95eff7450747 /* stars.png in Resources */,
 				fbb9eb29d977be9bd99f7299 /* HPSMS_logo@2x.png in Resources */,
 				6b91d703840a2421f4cae9c2 /* feather_TN@2x.png in Resources */,
+				92E9C2311DDCDD19009E4E63 /* rudolph_antlers_TN@3x.png in Resources */,
+				92E9C2421DDCDD19009E4E63 /* snowman_hat.png in Resources */,
 				45ea131b33884838a8a5f8dc /* LeftSwipeButton@2x.png in Resources */,
 				0501fc4b113b06666f807665 /* xoxo.png in Resources */,
 				48770b3a5ef946fb56956b9f /* cat.png in Resources */,
 				68c9b5bf0e29ea5c21cbe3a3 /* hearts_TN@2x.png in Resources */,
 				da300a56fe68165662be9328 /* logo.blue.png in Resources */,
 				b3905e1fc269bab6c70ffc97 /* MeasurementArrowDown@2x.png in Resources */,
+				92E9C2141DDCDD19009E4E63 /* glasses_tree_TN@2x.png in Resources */,
 				f30dd462ed32d3cd77fe1167 /* sunglasses.png in Resources */,
+				92E9C24D1DDCDD19009E4E63 /* stocking_TN@3x.png in Resources */,
 				0818277ab6df516fce5454fa /* MeasurementArrowLeft@2x.png in Resources */,
 				59179d046194372660f136ed /* stars_TN@2x.png in Resources */,
+				92E9C2341DDCDD19009E4E63 /* scarf_TN@2x.png in Resources */,
 				9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */,
 				26F7C0751DD10C1E006396FA /* leaf3.png in Resources */,
 				26F7C0711DD10C1E006396FA /* catwhiskers.png in Resources */,
+				92E9C2121DDCDD19009E4E63 /* glasses_star.png in Resources */,
+				92E9C1F71DDCDD19009E4E63 /* cap_TN.png in Resources */,
 				d10206a16285baaae005a8bd /* heartExpress_TN@2x.png in Resources */,
 				666fe432ca854b4d8164e0b0 /* starhp_TN@2x.png in Resources */,
 				264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */,
+				92E9C20F1DDCDD19009E4E63 /* glasses_star_TN.png in Resources */,
+				92E9C1FD1DDCDD19009E4E63 /* christmas_hat_TN@3x.png in Resources */,
 				49230dfae2b8359e79122f24 /* MobilePrinting@2x.png in Resources */,
 				229016e963da5ea8fa7cca81 /* feather2_TN.png in Resources */,
 				a1bb326243c965072000f025 /* 4_white_frame_TN@3x.png in Resources */,
 				6ee9d1f5ad38092723fef3ed /* 10_green_watercolor_frame2_TN@2x.png in Resources */,
+				92E9C2381DDCDD19009E4E63 /* snowflake_2_TN@2x.png in Resources */,
 				b28c997ca86d2f7afd83ae30 /* hearts_TN.png in Resources */,
 				3b8b050b6dc265616b928640 /* starhp.png in Resources */,
+				92E9C2041DDCDD19009E4E63 /* fireworks_TN@2x.png in Resources */,
 				24c277c935ea51ebe3c46cc5 /* Privacy@2x.png in Resources */,
 				14eed20c36a3bc4e0150fe31 /* retry@2x.png in Resources */,
 				c31a8d9a6d8ff9f2bff17d35 /* RightSwipeButton@2x.png in Resources */,
 				72f28ed86ea1cb1293a4f971 /* Search@2x.png in Resources */,
+				92E9C24C1DDCDD19009E4E63 /* stocking_TN@2x.png in Resources */,
+				92E9C2151DDCDD19009E4E63 /* glasses_tree_TN@3x.png in Resources */,
 				a5f5f091bb62a75a79f88b31 /* starhp_TN.png in Resources */,
+				92E9C2051DDCDD19009E4E63 /* fireworks_TN@3x.png in Resources */,
 				9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */,
 				67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */,
 				4cf4f382b7869a87a60f8542 /* catears_TN.png in Resources */,
+				92E9C1FA1DDCDD19009E4E63 /* cap.png in Resources */,
 				a0be190207beb02642a019ea /* catglasses_TN@3x.png in Resources */,
+				92E9C21E1DDCDD19009E4E63 /* horn.png in Resources */,
+				92E9C20B1DDCDD19009E4E63 /* glasses_rudolph_TN.png in Resources */,
 				3d6918f1cfb3acc4963c9d33 /* OMG.png in Resources */,
 				30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */,
 				26F7C06E1DD10C1E006396FA /* catwhiskers_TN.png in Resources */,
+				92E9C23E1DDCDD19009E4E63 /* snowman_face.png in Resources */,
 				ace83614d375df76a2860aae /* Support_Printers.jpg in Resources */,
 				5aeeb367209398758ee0e96b /* cat_TN@2x.png in Resources */,
+				92E9C2031DDCDD19009E4E63 /* fireworks_TN.png in Resources */,
 				fb18c75124e0aad8e105717a /* Images.xcassets in Resources */,
 				05e32a72a9057bcc42b5f9d9 /* 13_floral2_frame_TN@3x.png in Resources */,
 				74672be5f58d79f6e01b1dba /* diamond_TN.png in Resources */,
+				92E9C2231DDCDD19009E4E63 /* mistletoe_TN.png in Resources */,
+				92E9C2401DDCDD19009E4E63 /* snowman_hat_TN@2x.png in Resources */,
+				92E9C2391DDCDD19009E4E63 /* snowflake_2_TN@3x.png in Resources */,
+				92E9C21A1DDCDD19009E4E63 /* holly.png in Resources */,
 				13e911415febb6b03d00144c /* sunglasses_TN.png in Resources */,
+				92E9C2521DDCDD19009E4E63 /* StringOLights_TN@3x.png in Resources */,
+				92E9C2461DDCDD19009E4E63 /* snowman.png in Resources */,
+				92E9C21B1DDCDD19009E4E63 /* horn_TN.png in Resources */,
+				92E9C2301DDCDD19009E4E63 /* rudolph_antlers_TN@2x.png in Resources */,
+				92E9C22B1DDCDD19009E4E63 /* Party-Hat_TN.png in Resources */,
 				2d971ddc9746ce08b8e0f0a1 /* 1_turquoise_frame.png in Resources */,
+				92E9C2061DDCDD19009E4E63 /* fireworks.png in Resources */,
 				98e03b6979056b1d41f07ab0 /* birthdayHat_TN@3x.png in Resources */,
 				34405a013ceaafbb258e7824 /* catglasses_TN@2x.png in Resources */,
+				92E9C22D1DDCDD19009E4E63 /* Party-Hat_TN@3x.png in Resources */,
+				92E9C2191DDCDD19009E4E63 /* holly_TN@3x.png in Resources */,
 				fc9ed8c7f9fe2abaf8ea4f64 /* 6_floral_frame3_TN.png in Resources */,
+				92E9C2541DDCDD19009E4E63 /* tree_TN@2x.png in Resources */,
 				ba37055af8724628de312ed9 /* 6_floral_frame3_TN@3x.png in Resources */,
 				d734f1b72f58170f0d959034 /* 13_floral2_frame.png in Resources */,
 				ef95f392b166adfcf6e44a33 /* OMG_TN@3x.png in Resources */,
+				92E9C2511DDCDD19009E4E63 /* StringOLights_TN@2x.png in Resources */,
 				86ea918f84d2cf7460a13e37 /* hearts.png in Resources */,
 				7631e45bdf482b658366095b /* 13_floral2_frame_TN.png in Resources */,
 				83569bef079a56f02f2a8855 /* 7_gradient_frame.png in Resources */,
 				6c655aca144f34ac45a2a065 /* 2_pink_spraypaint_frame2_TN@3x.png in Resources */,
 				ffff97b5d9fcd49eba93b76a /* 10_green_watercolor_frame2.png in Resources */,
+				92E9C2071DDCDD19009E4E63 /* glasses_hanukah_TN.png in Resources */,
 				118922d35cad5ca2665e3b97 /* 5_Red_frame.png in Resources */,
 				be7a7f8af2f149f103a4e04d /* xoxo_TN@3x.png in Resources */,
 				d515725ba72d9e1b1818a96c /* diamond.png in Resources */,
+				92E9C2021DDCDD19009E4E63 /* dreidle.png in Resources */,
 				0b2f479edb19278cd7b558ca /* 2_pink_spraypaint_frame2_TN.png in Resources */,
+				92E9C2491DDCDD19009E4E63 /* star0_TN@3x.png in Resources */,
+				92E9C2271DDCDD19009E4E63 /* ornament_1_TN.png in Resources */,
 				b49a1bca58d27c9d8b612561 /* 3_blue_watercolor_frame.png in Resources */,
+				92E9C2221DDCDD19009E4E63 /* menorah.png in Resources */,
 				f9eb26ef5c3c499cf4b2e2e6 /* 9_polkadots_frame_TN@2x.png in Resources */,
+				92E9C24E1DDCDD19009E4E63 /* stocking.png in Resources */,
 				db4cb0b0a9b0f6406be9fee7 /* PG_Main.storyboard in Resources */,
 				9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */,
+				92E9C2171DDCDD19009E4E63 /* holly_TN.png in Resources */,
 				cd41f7af2b6eb5a581671dd9 /* PGSwipeCoachMarksView.xib in Resources */,
 				8afa4d63d93bfef2cea4068d /* 4_white_frame_TN@2x.png in Resources */,
 				99640c1215bceb7ddd03db05 /* birthdayHat_TN.png in Resources */,
+				92E9C23F1DDCDD19009E4E63 /* snowman_hat_TN.png in Resources */,
 				3f79e1abbf2467695b7efca1 /* InfoPlist.strings in Resources */,
 				c7e23e3ba66e4fa184240d1e /* Localizable.strings in Resources */,
 				7e519a12ff45fdd0f7d28e18 /* 13_floral2_frame_TN@2x.png in Resources */,
 				64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */,
+				92E9C23C1DDCDD19009E4E63 /* snowman_face_TN@2x.png in Resources */,
 				447c4fc72f1695b05d10ac2f /* 2_pink_spraypaint_frame2.png in Resources */,
 				f86bb0b8ebcfda11f02ee448 /* Settings.bundle in Resources */,
 			);
