@@ -11,6 +11,7 @@
 //
 
 #import "PGSocialSourcesManager.h"
+#import "NSLocale+Additions.h"
 
 static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enableExtraSocialSources";
 
@@ -72,7 +73,7 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
 
 - (void)setupSocialSources
 {
-    NSString *language = @"zh";
+    NSString *language = [NSLocale languageID];
 
     if (![self isEnabledExtraSocialSources]) {
         language = nil;
