@@ -441,6 +441,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
+    //TODO: Watermark the image here
     [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:^(){
         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
     }];
@@ -453,6 +454,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
     saveToCameraRollActivity.image = image;
     
+    //TODO: Watermark the image here
     MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
     btPrintActivity.image = image;
     btPrintActivity.vc = self;
