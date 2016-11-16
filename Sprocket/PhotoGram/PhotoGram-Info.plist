@@ -107,7 +107,7 @@
 		</dict>
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Bluetooth allows this app to communicate with the Sprocket printer</string>
+	<string>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to take and print photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -165,7 +165,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</string>
 </dict>
 </plist>

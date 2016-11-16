@@ -11,6 +11,9 @@
 //
 
 #import "PGSocialSourcesManager.h"
+#import "NSLocale+Additions.h"
+
+static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enableExtraSocialSources";
 
 @interface PGSocialSourcesManager ()
 
@@ -48,13 +51,35 @@
 }
 
 
+#pragma mark - Feature Flag
+
+- (BOOL)isEnabledExtraSocialSources
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults boolForKey:kEnableExtraSocialSourcesKey];
+}
+
+- (void)toggleExtraSocialSourcesEnabled
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL enabled = [userDefaults boolForKey:kEnableExtraSocialSourcesKey];
+
+    [userDefaults setBool:!enabled forKey:kEnableExtraSocialSourcesKey];
+    [userDefaults synchronize];
+}
+
+
 #pragma mark - Private
 
 - (void)setupSocialSources
 {
-    NSString *language = @"cn";
+    NSString *language = [NSLocale languageID];
 
-    if ([language isEqualToString:@"cn"]) {
+    if (![self isEnabledExtraSocialSources]) {
+        language = nil;
+    }
+
+    if ([language isEqualToString:@"zh"]) {
         self.socialSources = @[
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],

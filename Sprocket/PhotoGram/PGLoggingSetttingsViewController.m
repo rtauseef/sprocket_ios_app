@@ -17,6 +17,7 @@
 #import "Logging/PGLog.h"
 #import "Logging/PGLogger.h"
 #import "Logging/PGLogFormatter.h"
+#import "PGSocialSourcesManager.h"
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -27,14 +28,15 @@ static NSString* kInfoString     = @"Info";
 static NSString* kDebugString    = @"Debug";
 static NSString* kVerboseString  = @"Verbose";
 
-static int kPhotogramCellIndex   = 0;
-static int kSvgCellIndex         = 1;
-static int kClearLogsCellIndex   = 2;
-static int kTestLogsCellIndex    = 3;
-static int kMailLogsCellIndex    = 4;
-static int kCrashAppCellIndex    = 5;
-static int kExceptionAppCellIndex= 6;
-static int kHideSvgMessagesIndex = 7;
+static int kPhotogramCellIndex            = 0;
+static int kSvgCellIndex                  = 1;
+static int kClearLogsCellIndex            = 2;
+static int kTestLogsCellIndex             = 3;
+static int kMailLogsCellIndex             = 4;
+static int kCrashAppCellIndex             = 5;
+static int kExceptionAppCellIndex         = 6;
+static int kHideSvgMessagesIndex          = 7;
+static int kEnableExtraSocialSourcesIndex = 8;
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -154,7 +156,7 @@ static int kHideSvgMessagesIndex = 7;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 8;
+    NSInteger numberOfRows = 9;
     
     if ([self levelPickerIsShown]){
         
@@ -228,6 +230,20 @@ static int kHideSvgMessagesIndex = 7;
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[[PGLogger sharedInstance] hideSvgMessages]];
+        } else if (kEnableExtraSocialSourcesIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableExtraSocialSources"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enableExtraSocialSources"];
+            }
+
+            if ([[PGSocialSourcesManager sharedInstance] isEnabledExtraSocialSources]) {
+                cell.textLabel.text = @"Disable extra social sources";
+            } else {
+                cell.textLabel.text = @"Enable extra social sources";
+            }
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.text = @"App restart is required";
         }
     }
     
@@ -278,9 +294,11 @@ static int kHideSvgMessagesIndex = 7;
                 BOOL currentSetting = [[PGLogger sharedInstance] hideSvgMessages];
                 [[PGLogger sharedInstance] setHideSvgMessages: !currentSetting];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[[PGLogger sharedInstance] hideSvgMessages]];
+            } else if (kEnableExtraSocialSourcesIndex == indexPath.row) {
+                [[PGSocialSourcesManager sharedInstance] toggleExtraSocialSourcesEnabled];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
-
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
