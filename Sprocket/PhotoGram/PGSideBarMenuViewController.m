@@ -98,29 +98,13 @@ NSString * const kIncludeLoginKey = @"include-login";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (IBAction)overlayViewTapped:(id)sender {
+    [self toggleSocialSourcesMenu];
+}
+
 - (IBAction)collapseButtonTapped:(id)sender
 {
-    [self.view layoutIfNeeded];
-    
-    if (self.overlayView.alpha == 0) {
-        self.containerTopConstraint.constant = -(44 * 3);
-        self.overlayView.userInteractionEnabled = YES;
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.view layoutIfNeeded];
-            self.overlayView.alpha = 0.7;
-            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
-        }];
-    } else {
-        self.containerTopConstraint.constant = 0;
-        self.overlayView.userInteractionEnabled = NO;
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.view layoutIfNeeded];
-            self.overlayView.alpha = 0;
-            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(-(M_PI * 2));
-        }];
-    }
+    [self toggleSocialSourcesMenu];
 }
 
 #pragma mark - UITableViewDatasource methods
@@ -286,6 +270,31 @@ NSString * const kIncludeLoginKey = @"include-login";
 - (void)barButtonCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)toggleSocialSourcesMenu
+{
+    [self.view layoutIfNeeded];
+    
+    if (self.overlayView.alpha == 0) {
+        self.containerTopConstraint.constant = -(44 * 3);
+        self.overlayView.userInteractionEnabled = YES;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+            self.overlayView.alpha = 0.7;
+            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
+        }];
+    } else {
+        self.containerTopConstraint.constant = 0;
+        self.overlayView.userInteractionEnabled = NO;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.view layoutIfNeeded];
+            self.overlayView.alpha = 0;
+            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(-(M_PI * 2));
+        }];
+    }
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
