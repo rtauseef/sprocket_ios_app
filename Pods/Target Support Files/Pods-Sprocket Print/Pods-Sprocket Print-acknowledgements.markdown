@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## GoogleAnalytics-iOS-SDK
+
+Copyright 2009 - 2015 Google, Inc. All rights reserved.
+
 ## MobilePrintSDK
 
 Copyright (c) 2015 HP Inc. <print-sdk@hp.com>

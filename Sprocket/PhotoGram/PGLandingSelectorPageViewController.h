@@ -17,4 +17,6 @@
 @property (strong, nonatomic) NSString *socialNetwork;
 @property (assign, nonatomic) BOOL includeLogin;
 
+- (UINavigationController *)currentNavigationController;
+
 @end

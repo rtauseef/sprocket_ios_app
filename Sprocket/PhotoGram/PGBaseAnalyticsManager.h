@@ -23,13 +23,23 @@ extern NSString * const kMetricsTypePhotoSourceKey;
 extern NSString * const kMetricsTypePhotoSourceKey;
 extern NSString * const kMetricsTypePhotoPositionKey;
 extern NSString * const kMetricsTypeLocationKey;
-    
+extern NSUInteger const kEventDefaultValue;
+
 + (PGBaseAnalyticsManager *)sharedManager;
+
+- (void)setupSettings;
 
 - (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo;
     
 - (void)postMetrics:(NSString *)offramp object:(NSObject *)object metrics:(NSDictionary *)metrics;
-    
+
 - (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo;
-    
+
+
+- (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value;
+- (void)trackScreenViewEvent:(NSString *)screenName;
+- (void)trackPrinterConnected:(BOOL)connected screenName:(NSString *)screenName;
+
+- (void)fireTestException;
+
 @end
