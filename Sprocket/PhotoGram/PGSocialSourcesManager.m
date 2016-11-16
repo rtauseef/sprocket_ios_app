@@ -52,9 +52,9 @@
 
 - (void)setupSocialSources
 {
-    NSString *language = @"cn";
+    NSString *language = @"zh";
 
-    if ([language isEqualToString:@"cn"]) {
+    if ([language isEqualToString:@"zh"]) {
         self.socialSources = @[
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
