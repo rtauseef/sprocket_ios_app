@@ -13,8 +13,7 @@
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSocialSource.h"
 #import "PGSocialSourcesManager.h"
-
-#import "UIColor+Style.h"
+#import "PGSocialSourceMenuCellTableViewCell.h"
 
 CGFloat const kPGSocialSourcesMenuCellHeight = 40;
 NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
@@ -41,9 +40,10 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PGSocialSource *socialSource = [[PGSocialSource alloc] initWithSocialSourceType:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PGSocialSourceMenuCell"];
-    cell.textLabel.text = @"Social Source";
+    PGSocialSourceMenuCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PGSocialSourceMenuCell"];
+    [cell configureCell:socialSource];
     
     return cell;
 }
@@ -63,6 +63,10 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"reaching accessoryButtonTappedForRowWithIndexPath:");
 }
 
 @end
