@@ -21,6 +21,8 @@
 #import "PGHelpAndHowToViewController.h"
 #import "PGRevealViewController.h"
 #import "PGSideBarMenuItems.h"
+#import "PGSocialSourcesManager.h"
+#import "PGSocialSourcesMenuViewController.h"
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 
@@ -30,10 +32,6 @@ static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
 
 CGFloat const kPGSideBarMenuLongScreenSizeHeaderHeight = 75.0f;
 CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
-
-CGFloat const kPGSideBarMenuSmallSocialHeight = 40.0f;
-CGFloat const kPGSideBarMenuDeviceConnectivityLabelX = 58.0f;
-CGFloat const kPGSideBarMenuSignOutSpacing = 1.0f;
 
 NSString * const kSocialNetworkKey = @"social-network";
 NSString * const kIncludeLoginKey = @"include-login";
@@ -48,8 +46,9 @@ NSString * const kIncludeLoginKey = @"include-login";
 @property (weak, nonatomic) IBOutlet UILabel *deviceConnectivityLabel;
 @property (weak, nonatomic) IBOutlet PGBatteryImageView *deviceBatteryLevel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *collapseButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collapseButtonHeightConstraint;
 
 @end
 
@@ -84,6 +83,7 @@ NSString * const kIncludeLoginKey = @"include-login";
 
     [self checkSprocketDeviceConnectivity];
     [self resizeViewAccordingRevealViewController];
+    [self configureSocialSourcesMenu];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -96,15 +96,6 @@ NSString * const kIncludeLoginKey = @"include-login";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (IBAction)overlayViewTapped:(id)sender {
-    [self toggleSocialSourcesMenu];
-}
-
-- (IBAction)collapseButtonTapped:(id)sender
-{
-    [self toggleSocialSourcesMenu];
 }
 
 #pragma mark - UITableViewDatasource methods
@@ -272,30 +263,94 @@ NSString * const kIncludeLoginKey = @"include-login";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Social Sources Menu Methods
+
+- (IBAction)overlayViewTapped:(id)sender {
+    [self toggleSocialSourcesMenu];
+}
+
+- (IBAction)collapseButtonTapped:(id)sender
+{
+    [self toggleSocialSourcesMenu];
+}
+
 - (void)toggleSocialSourcesMenu
 {
     [self.view layoutIfNeeded];
     
-    if (self.overlayView.alpha == 0) {
-        self.containerTopConstraint.constant = -(44 * 3);
-        self.overlayView.userInteractionEnabled = YES;
+    CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(M_PI);
+    CGFloat overlayAlpha = 0;
+    
+    if (self.overlayView.alpha != 0) {
+        rotationTransform = CGAffineTransformMakeRotation(-(M_PI * 2));
         
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.view layoutIfNeeded];
-            self.overlayView.alpha = 0.7;
-            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
-        }];
-    } else {
-        self.containerTopConstraint.constant = 0;
         self.overlayView.userInteractionEnabled = NO;
+        self.containerHeightConstraint.constant = [self closedSocialSourcesMenuHeightConstraint];
+    } else {
+        overlayAlpha = 0.7;
         
-        [UIView animateWithDuration:0.3 animations:^{
-            [self.view layoutIfNeeded];
-            self.overlayView.alpha = 0;
-            self.collapseButton.imageView.transform = CGAffineTransformMakeRotation(-(M_PI * 2));
-        }];
+        self.overlayView.userInteractionEnabled = YES;
+        self.containerHeightConstraint.constant = [self openedSocialSourcesMenuHeightConstraint];
+    }
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.overlayView.alpha = overlayAlpha;
+    }];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0.5
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                         self.collapseButton.imageView.transform = rotationTransform;
+                     } completion:nil];
+}
+
+- (void)configureSocialSourcesMenu
+{
+    if ([self isSocialSourcesDefault]) {
+        self.collapseButton.hidden = YES;
+        self.containerHeightConstraint.constant = [self openedSocialSourcesMenuHeightConstraint];
+    } else {
+        self.collapseButton.hidden = NO;
+        self.collapseButtonHeightConstraint.constant = kPGSocialSourcesMenuCellHeight;
+        
+        if (self.overlayView.alpha != 0) {
+            self.containerHeightConstraint.constant = [self openedSocialSourcesMenuHeightConstraint];
+        } else {
+            self.containerHeightConstraint.constant = [self closedSocialSourcesMenuHeightConstraint];
+        }
     }
 }
+
+- (CGFloat)openedSocialSourcesMenuHeightConstraint
+{
+    NSInteger socialSourcesCount = [PGSocialSourcesManager sharedInstance].enabledSocialSources.count;
+    if (![self isSocialSourcesDefault]) {
+        socialSourcesCount++;
+    }
+    
+    return kPGSocialSourcesMenuCellHeight * socialSourcesCount;
+}
+
+- (CGFloat)closedSocialSourcesMenuHeightConstraint
+{
+    NSInteger socialSourcesCount = [PGSocialSourcesManager sharedInstance].enabledSocialSources.count;
+
+    if (![self isSocialSourcesDefault]) {
+        socialSourcesCount = kPGSocialSourcesMenuDefaultThreshold;
+    }
+    
+    return kPGSocialSourcesMenuCellHeight * socialSourcesCount;
+}
+
+- (BOOL)isSocialSourcesDefault
+{
+    return [PGSocialSourcesManager sharedInstance].enabledSocialSources.count <= kPGSocialSourcesMenuDefaultThreshold;
+}
+
 
 #pragma mark - MFMailComposeViewControllerDelegate
 

@@ -11,6 +11,13 @@
 //
 
 #import "PGSocialSourcesMenuViewController.h"
+#import "PGSocialSource.h"
+#import "PGSocialSourcesManager.h"
+
+#import "UIColor+Style.h"
+
+CGFloat const kPGSocialSourcesMenuCellHeight = 40;
+NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 @interface PGSocialSourcesMenuViewController ()
 
@@ -34,6 +41,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PGSocialSourceMenuCell"];
     cell.textLabel.text = @"Social Source";
     
@@ -42,12 +50,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return [PGSocialSourcesManager sharedInstance].enabledSocialSources.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return kPGSocialSourcesMenuCellHeight;
 }
 
 #pragma mark - UITableViewDelegate methods
@@ -56,7 +64,6 @@
 {
     
 }
-
 
 @end
 

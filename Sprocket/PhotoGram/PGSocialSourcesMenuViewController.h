@@ -12,6 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
+extern CGFloat const kPGSocialSourcesMenuCellHeight;
+extern NSInteger const kPGSocialSourcesMenuDefaultThreshold;
+
 @interface PGSocialSourcesMenuViewController : UIViewController
 
 @end
