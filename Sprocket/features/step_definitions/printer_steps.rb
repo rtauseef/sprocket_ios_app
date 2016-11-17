@@ -12,6 +12,10 @@ And(/^I should see the modal screen content$/) do
     check_element_exists @current_page.modal_content
     sleep(STEP_PAUSE)
 end
+And(/^I should see the techical information$/) do
+    check_element_exists @current_page.technical_info
+    sleep(STEP_PAUSE)
+end
 
 And(/^I should see the button "(.*?)"$/) do |button|
     check_element_exists("label {text CONTAINS '#{button}'}")

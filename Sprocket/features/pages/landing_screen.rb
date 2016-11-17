@@ -38,7 +38,12 @@ class LandingScreen < Calabash::IBase
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
   end
-
+def technical_info
+    "label {text CONTAINS 'No sprockets Connected'}"
+  end
+  def close
+    "UIButton index:1"
+  end
 =begin
     def username_input= username
     fill_input_field(username.to_s,0)

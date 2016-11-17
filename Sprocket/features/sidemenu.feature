@@ -50,13 +50,13 @@ Scenario: Verify side menu options
   Scenario: Verify navigation to device screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
-	  Then I should see the side menu
+	Then I should see the side menu
     Then I touch "sprocket"
-    And I should see the modal screen title
-    And I tap the "OK" button
-    Then I am on the "Device" screen
-    Then I click close button
-    Then I should see the side menu
+    And I should see the techical information 
+    And I tap "Close" mark
+    When I touch menu button on navigation bar
+    Then I should see the "Landing" screen 
+    
     
     @reset
   @TA14381
