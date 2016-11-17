@@ -79,7 +79,7 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
         language = nil;
     }
 
-    if ([language isEqualToString:@"zh"]) {
+    if (true){//[language isEqualToString:@"zh"]) {
         self.socialSources = @[
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],

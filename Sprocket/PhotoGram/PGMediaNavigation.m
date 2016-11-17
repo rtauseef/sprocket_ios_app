@@ -17,6 +17,7 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRFlickrPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
+#import <HPPRPituPhotoProvider.h>
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 #import "AlphaGradientView.h"
@@ -71,7 +72,8 @@
                       [HPPRInstagramPhotoProvider sharedInstance].name,
                       [HPPRFacebookPhotoProvider sharedInstance].name,
                       [HPPRFlickrPhotoProvider sharedInstance].name,
-                      [HPPRCameraRollPhotoProvider sharedInstance].name, nil];
+                      [HPPRCameraRollPhotoProvider sharedInstance].name,
+                      [HPPRPituPhotoProvider sharedInstance].name, nil];
     self.scrollView.spacingBetweenButtons = 0.0f;
     
     self.scrollView.centerButtonTextColor = [UIColor whiteColor];

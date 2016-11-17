@@ -14,6 +14,7 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
+#import <HPPRPituPhotoProvider.h>
 #import <HPPRSelectPhotoCollectionViewController.h>
 #import <HPPRSelectAlbumTableViewController.h>
 #import <HPPR.h>
@@ -23,6 +24,7 @@
 #import "PGFacebookLandingPageViewController.h"
 #import "PGFlickrLandingPageViewController.h"
 #import "PGCameraRollLandingPageViewController.h"
+#import "PGPituLandingPageViewController.h"
 #import "SWRevealViewController.h"
 #import "PGSideBarMenuTableViewController.h"
 #import "PGSwipeCoachMarksView.h"
@@ -42,7 +44,8 @@ typedef enum {
     PGLandingPageViewControlIndexInstagram = 0,
     PGLandingPageViewControlIndexFacebook = 1,
     PGLandingPageViewControlIndexFlickr = 2,
-    PGLandingPageViewControlIndexCameraRoll = 3
+    PGLandingPageViewControlIndexCameraRoll = 3,
+    PGLandingPageViewControlIndexPitu = 4
 } PGLandingPageViewControlIndex;
 
 @interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, PGMediaNavigationDelegate, UINavigationControllerDelegate>
@@ -53,6 +56,7 @@ typedef enum {
 @property (nonatomic, strong) UINavigationController *instagramLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *facebookLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *cameraRollLandingPageViewController;
+@property (nonatomic, strong) UINavigationController *pituLandingPageViewController;
 @property (nonatomic, strong) UINavigationController *flickrLandingPageViewController;
 @property (nonatomic, weak) UIScrollView *scrollView;
 
@@ -138,6 +142,8 @@ typedef enum {
         viewController = self.flickrLandingPageViewController;
     } else if ([socialNetwork isEqualToString:[HPPRCameraRollPhotoProvider sharedInstance].name]) {
         viewController = self.cameraRollLandingPageViewController;
+    } else if ([socialNetwork isEqualToString:[HPPRPituPhotoProvider sharedInstance].name]) {
+        viewController = self.pituLandingPageViewController;
     }
 
     return viewController;
@@ -321,6 +327,10 @@ typedef enum {
             navController = self.cameraRollLandingPageViewController;
             break;
             
+        case PGLandingPageViewControlIndexPitu:
+            navController = self.pituLandingPageViewController;
+            break;
+
         default:
             break;
     }
@@ -340,6 +350,8 @@ typedef enum {
         page = PGLandingPageViewControlIndexFlickr;
     } else if ([socialNetwork isEqualToString:[HPPRCameraRollPhotoProvider sharedInstance].name]) {
         page = PGLandingPageViewControlIndexCameraRoll;
+    } else if ([socialNetwork isEqualToString:[HPPRPituPhotoProvider sharedInstance].name]) {
+        page = PGLandingPageViewControlIndexPitu;
     }
     
     return page;
@@ -369,6 +381,8 @@ typedef enum {
         socialNetwork = [HPPRFlickrPhotoProvider sharedInstance].name;
     } else if ([vc isKindOfClass:[PGCameraRollLandingPageViewController class]]) {
         socialNetwork = [HPPRCameraRollPhotoProvider sharedInstance].name;
+    } else if ([vc isKindOfClass:[PGPituLandingPageViewController class]]) {
+        socialNetwork = [HPPRPituPhotoProvider sharedInstance].name;
     }
 
     [self.navigationView selectButton:socialNetwork animated:YES];
@@ -451,6 +465,17 @@ typedef enum {
     return _cameraRollLandingPageViewController;
 }
 
+- (UINavigationController *)pituLandingPageViewController
+{
+    if (!_pituLandingPageViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        _pituLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPituLandingPageViewNavigationController"];
+        _pituLandingPageViewController.delegate = self;
+    }
+    
+    return _pituLandingPageViewController;
+}
+
 - (UINavigationController *)flickrLandingPageViewController
 {
     if (!_flickrLandingPageViewController) {
@@ -486,6 +511,9 @@ typedef enum {
     } else if (viewController == self.cameraRollLandingPageViewController) {
         self.pageControl.currentPage = PGLandingPageViewControlIndexCameraRoll;
         [self.navigationView selectButton:[HPPRCameraRollPhotoProvider sharedInstance].name animated:YES];
+    } else if (viewController == self.pituLandingPageViewController) {
+        self.pageControl.currentPage = PGLandingPageViewControlIndexPitu;
+        [self.navigationView selectButton:[HPPRPituPhotoProvider sharedInstance].name animated:YES];
     }
     
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
@@ -515,6 +543,8 @@ typedef enum {
     } else if (viewController == self.flickrLandingPageViewController) {
         nextViewController = self.cameraRollLandingPageViewController;
     } else if (viewController == self.cameraRollLandingPageViewController) {
+        nextViewController = self.pituLandingPageViewController;
+    } else if (viewController == self.pituLandingPageViewController) {
         nextViewController = self.instagramLandingPageViewController;
     }
     
@@ -525,14 +555,16 @@ typedef enum {
 {
     UIViewController *prevViewController = nil;
     
-    if (viewController == self.cameraRollLandingPageViewController) {
+    if (viewController == self.pituLandingPageViewController) {
+        prevViewController = self.cameraRollLandingPageViewController;
+    } else if (viewController == self.cameraRollLandingPageViewController) {
         prevViewController = self.flickrLandingPageViewController;
     } else if (viewController == self.flickrLandingPageViewController) {
         prevViewController = self.facebookLandingPageViewController;
     } else if (viewController == self.facebookLandingPageViewController) {
         prevViewController = self.instagramLandingPageViewController;
     } else if (viewController == self.instagramLandingPageViewController) {
-        prevViewController = self.cameraRollLandingPageViewController;
+        prevViewController = self.pituLandingPageViewController;
     }
     
     return prevViewController;
