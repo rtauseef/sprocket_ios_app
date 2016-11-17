@@ -75,11 +75,11 @@
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
-    [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+    [[HPPRPituLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
             
-            HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
+            HPPRPituPhotoProvider *provider = [HPPRPituPhotoProvider sharedInstance];
             UIViewController *vc = nil;
             if (forAlbums) {
                 vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];

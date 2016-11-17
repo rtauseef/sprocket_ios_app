@@ -318,6 +318,7 @@
                                     <rect key="frame" x="322" y="24" width="33" height="14"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4b-gd-Xgb" userLabel="Status">
+                                    <rect key="frame" x="203.5" y="24" width="14" height="14"/>
                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="14" id="Rku-FI-mx2"/>
@@ -1360,7 +1361,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         <viewControllerLayoutGuide type="top" id="gfn-Dx-B8a"/>
                         <viewControllerLayoutGuide type="bottom" id="s9V-Zf-S1w"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DXK-BO-dWS">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="DXK-BO-dWS">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1368,7 +1369,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26N-Ox-AW9" userLabel="Step 1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="1Xt-9D-F4w">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1403,7 +1404,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DmV-M2-d4s">
-                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1425,7 +1426,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIm-XJ-JeQ" userLabel="Step 2">
-                                        <rect key="frame" x="0.0" y="456" width="375" height="456"/>
+                                        <rect key="frame" x="0.0" y="458" width="375" height="458"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="WGB-yn-5rM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1460,7 +1461,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold the power button until the LED turns white." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-Sd-rVK">
-                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1481,7 +1482,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iZ-lr-LdT" userLabel="Step 3">
-                                        <rect key="frame" x="0.0" y="912" width="375" height="456"/>
+                                        <rect key="frame" x="0.0" y="916" width="375" height="458"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="t7A-xF-zJf">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1516,7 +1517,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-Fg-w5P">
-                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2351,7 +2352,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGCameraRollLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Udl-8d-vIJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Gs-Fu-tt9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7Gs-Fu-tt9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2507,7 +2508,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="ZK7-qo-tuB">
-                                <rect key="frame" x="51.5" y="50" width="272" height="57"/>
+                                <rect key="frame" x="52" y="50" width="272" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="I3H-nj-dPe"/>
                                     <constraint firstAttribute="width" secondItem="ZK7-qo-tuB" secondAttribute="height" multiplier="272:57" id="oRy-x2-odJ"/>
@@ -2521,7 +2522,7 @@ printer and app support.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E84-Ew-dV5" customClass="PGAttributedLabel">
-                                <rect key="frame" x="82.5" y="406" width="210" height="30"/>
+                                <rect key="frame" x="83" y="406" width="210" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Step 1 ">
                                         <attributes>
@@ -2661,7 +2662,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="PFu-gM-gaf">
-                                <rect key="frame" x="51.5" y="50" width="272" height="57"/>
+                                <rect key="frame" x="52" y="50" width="272" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PFu-gM-gaf" secondAttribute="height" multiplier="272:57" id="4ma-Vr-frV"/>
                                     <constraint firstAttribute="width" constant="272" id="omU-2A-zzQ"/>
@@ -2675,7 +2676,7 @@ printer and app support.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysw-Oc-Yjw" customClass="PGAttributedLabel">
-                                <rect key="frame" x="91.5" y="433" width="192" height="30"/>
+                                <rect key="frame" x="92" y="433" width="192" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Step 2 ">
                                         <attributes>
@@ -2764,7 +2765,7 @@ printer and app support.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BV3-xe-r0y">
-                                <rect key="frame" x="0.0" y="597" width="187.5" height="70"/>
+                                <rect key="frame" x="0.0" y="597" width="188" height="70"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <state key="normal" title="More Help">
                                     <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2810,7 +2811,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-2c-LAF">
-                                <rect key="frame" x="51.5" y="50" width="272" height="57"/>
+                                <rect key="frame" x="52" y="50" width="272" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GL3-2c-LAF" secondAttribute="height" multiplier="272:57" id="Fsp-ab-YBE"/>
                                     <constraint firstAttribute="width" constant="272" id="LQs-0t-h9i"/>
@@ -2824,7 +2825,7 @@ printer and app support.</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-dc-PvW" customClass="PGAttributedLabel">
-                                <rect key="frame" x="99.5" y="433" width="176" height="30"/>
+                                <rect key="frame" x="100" y="433" width="176" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Step 3 ">
                                         <attributes>
@@ -2869,7 +2870,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfy-vN-Znw">
-                                <rect key="frame" x="187.5" y="597" width="187.5" height="70"/>
+                                <rect key="frame" x="188" y="597" width="187" height="70"/>
                                 <color key="backgroundColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="hV9-BQ-cwY"/>
@@ -2924,14 +2925,14 @@ printer and app support.</string>
                         <viewControllerLayoutGuide type="top" id="tuT-fK-DG5"/>
                         <viewControllerLayoutGuide type="bottom" id="9Sz-O1-7Co"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QIU-gA-v4S">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="QIU-gA-v4S">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bu9-GL-ScJ" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Camera Roll, you also agree to the HP Terms of Service." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14d-GS-DTD" customClass="PGTermsAttributedLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Pitu, you also agree to the HP Terms of Service." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14d-GS-DTD" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="58" y="318" width="260" height="85"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="3i9-5W-xGN"/>
@@ -2965,7 +2966,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInCameraRoll" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-Ro-5ge">
-                                <rect key="frame" x="175" y="288.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="289" width="25" height="25"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2997,7 +2998,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGPituLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="rhO-BN-iG4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZT-MD-Cjd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WZT-MD-Cjd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -33,7 +33,7 @@
 #import "MP.h"
 #import "PGPreviewViewController.h"
 
-#define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 4
+#define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 5
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
 #define PAGE_CONTROL_HEIGHT 20
@@ -364,6 +364,7 @@ typedef enum {
                     animated:(BOOL)animated
 {
     if (navigationController != self.instagramLandingPageViewController  &&
+        navigationController != self.pituLandingPageViewController       &&
         [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]]) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
