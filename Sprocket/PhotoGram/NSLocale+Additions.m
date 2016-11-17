@@ -17,36 +17,36 @@
 
 + (NSString *)languageID
 {
-    NSString *languageCode = @"en";
-    NSArray *supportedLanguages = @[@"en", @"de", @"es", @"fr", @"it", @"nl", @"zh", @"da", @"et", @"fi", @"lv", @"lt", @"nb", @"pt", @"sv"];
+    NSArray *supportedLanguages = [[self supportedLocales] allKeys];
     NSString *preferredLanguage = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
     
-    if([supportedLanguages indexOfObject:preferredLanguage] == NSNotFound) {
-        languageCode = @"en";
-    } else {
-        languageCode = preferredLanguage;
+    if ([supportedLanguages indexOfObject:preferredLanguage] != NSNotFound) {
+        return preferredLanguage;
     }
-    return languageCode;
+
+    return @"en";
 }
 
 + (NSString *)countryID
 {
-    NSDictionary *supportedLocales = @{@"en":@"us", @"de":@"de", @"es":@"es", @"fr":@"fr", @"it":@"it", @"nl":@"nl", @"zh":@"zh", @"da":@"da", @"et":@"et", @"fi":@"fi",
-        @"lv":@"lv", @"lt":@"lt", @"nb":@"nb", @"pt":@"pt", @"sv":@"sv"};
-    
-    NSString *countryCode = @"us";
+    NSDictionary *supportedLocales = [self supportedLocales];
     NSString *languageID = [self languageID];
     
     if ([supportedLocales objectForKey:languageID]) {
-        countryCode = supportedLocales[languageID];
+        return supportedLocales[languageID];
     }
     
-    return countryCode;
+    return @"us";
 }
 
 + (BOOL)isSurveyAvailable
 {
     return [[self languageID] isEqualToString:@"en"];
+}
+
++ (NSDictionary *)supportedLocales
+{
+    return @{@"en":@"us", @"de":@"de", @"es":@"es", @"fr":@"fr", @"it":@"it", @"nl":@"nl",  @"et":@"ee", @"fi":@"fi", @"lv":@"lv", @"lt":@"lt", @"nb":@"no", @"pt":@"pt", @"sv":@"se", @"zh":@"cn", @"da":@"dk"};
 }
 
 @end

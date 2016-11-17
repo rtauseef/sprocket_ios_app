@@ -141,6 +141,9 @@ Afin d'améliorer les futures versions de cette application et les imprimantes H
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Prenez ou sélectionnez une photo";
 
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "HIh-6e-4FK"; */
+"HIh-6e-4FK.text" = "Prenez ou sélectionnez une photo";
+
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Support via Twitter";
 
