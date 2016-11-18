@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "PGSocialSource.h"
 
-@interface PGSocialSourceMenuCellTableViewCell : UITableViewCell
+@interface PGSocialSourceMenuTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) PGSocialSource *socialSource;
 @property (nonatomic, weak) IBOutlet UIImageView *socialImageView;

@@ -10,13 +10,13 @@
 // the license agreement.
 //
 
-#import "PGSocialSourceMenuCellTableViewCell.h"
+#import "PGSocialSourceMenuTableViewCell.h"
 
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
 #import "UIImageView+MaskImage.h"
 
-@implementation PGSocialSourceMenuCellTableViewCell
+@implementation PGSocialSourceMenuTableViewCell
 
 - (void)awakeFromNib
 {
@@ -100,7 +100,7 @@
 - (void)fetchFacebookData
 {
     [[HPPRFacebookPhotoProvider sharedInstance] userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
-        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^ {
             if (!error) {
                 NSString *profilePictureUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square",  [userInfo objectForKey:@"id"]];
@@ -119,7 +119,7 @@
 {
     [HPPRInstagramUser userProfileWithId:@"self" completion:^(NSString *userName, NSString *userId, NSString *profilePictureUrl, NSNumber *posts, NSNumber *followers, NSNumber *following) {
         
-        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^ {
             if (profilePictureUrl) {
                 [weakSelf.socialImageView setMaskImageWithURL:profilePictureUrl];
@@ -139,7 +139,7 @@
 {
     [[HPPRFlickrLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         
-        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (loggedIn) {
                 NSDictionary *user = [HPPRFlickrLoginProvider sharedInstance].user;
@@ -158,7 +158,7 @@
 - (void)signOut
 {
     [self.socialSource.loginProvider logoutWithCompletion:^(BOOL loggedOut, NSError *error) {
-        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:CHECK_PROVIDER_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:self.socialSource.photoProvider.name forKey:kSocialNetworkKey]];
             

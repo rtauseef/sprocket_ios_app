@@ -13,7 +13,7 @@
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSocialSource.h"
 #import "PGSocialSourcesManager.h"
-#import "PGSocialSourceMenuCellTableViewCell.h"
+#import "PGSocialSourceMenuTableViewCell.h"
 #import "PGRevealViewController.h"
 
 CGFloat const kPGSocialSourcesMenuCellHeight = 40;
@@ -42,7 +42,7 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 {
     PGSocialSource *socialSource = [PGSocialSourcesManager sharedInstance].enabledSocialSources[indexPath.row];
     
-    PGSocialSourceMenuCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PGSocialSourceMenuCell"];
+    PGSocialSourceMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PGSocialSourceMenuCell"];
     [cell configureCell:socialSource];
     
     return cell;
