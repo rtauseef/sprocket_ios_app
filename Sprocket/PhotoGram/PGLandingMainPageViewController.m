@@ -14,6 +14,7 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
+#import <HPPRPituPhotoProvider.h>
 
 #import "PGLandingMainPageViewController.h"
 #import "PGAppDelegate.h"
@@ -252,6 +253,11 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
     [self showSocialNetwork:[HPPRCameraRollPhotoProvider sharedInstance].name includeLogin:NO];
 }
 
+- (IBAction)pituTapped:(id)sender
+{
+    [self showSocialNetwork:[HPPRPituPhotoProvider sharedInstance].name includeLogin:NO];
+}
+
 - (IBAction)facebookTapped:(id)sender
 {
     [self showSocialNetwork:[HPPRFacebookPhotoProvider sharedInstance].name includeLogin:NO];
@@ -356,7 +362,7 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
             NSLog(@"Qzone tapped");
             break;
         case PGSocialSourceTypePitu:
-            NSLog(@"Pitu tapped");
+            [self pituTapped:button];
             break;
     }
 }
