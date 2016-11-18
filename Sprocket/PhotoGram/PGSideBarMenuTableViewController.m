@@ -39,6 +39,7 @@
 #import "NSLocale+Additions.h"
 #import "PGBatteryImageView.h"
 #import "PGAnalyticsManager.h"
+#import "PGSocialSource.h"
 
 #define LONG_SCREEN_SIZE_HEADER_HEIGHT 75.0f
 #define SHORT_SCREEN_SIZE_HEADER_HEIGHT 52.0f
@@ -351,7 +352,7 @@ typedef enum {
     if (self.isFlickrLogged) {
         [self displaySignOutAlert:[HPPRFlickrPhotoProvider sharedInstance].name alertTag:Flickr];
     } else {
-        [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:YES];
+        [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:YES];
     }
 }
 
@@ -360,7 +361,7 @@ typedef enum {
     if (self.isFacebookLogged) {
         [self displaySignOutAlert:[HPPRFacebookPhotoProvider sharedInstance].name alertTag:Facebook];
     } else {
-        [self showSocialNetwork:[HPPRFacebookPhotoProvider sharedInstance].name includeLogin:YES];
+        [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:YES];
     }
 }
 
@@ -369,7 +370,7 @@ typedef enum {
     if (self.isInstagramLogged) {
         [self displaySignOutAlert:[HPPRInstagramPhotoProvider sharedInstance].name alertTag:Instagram];
     } else {
-        [self showSocialNetwork:[HPPRInstagramPhotoProvider sharedInstance].name includeLogin:YES];
+        [self showSocialNetwork:PGSocialSourceTypeInstagram includeLogin:YES];
     }
 }
 
@@ -604,13 +605,13 @@ typedef enum {
     }];
 }
 
-- (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
+- (void)showSocialNetwork:(PGSocialSourceType)socialSourceType includeLogin:(BOOL)includeLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.revealViewController revealToggleAnimated:YES];
-        
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys: socialNetwork, kSocialNetworkKey, [NSNumber numberWithBool:includeLogin], kIncludeLoginKey, nil];
-        
+
+        NSDictionary *userInfo = @{kSocialNetworkKey: @(socialSourceType), kIncludeLoginKey: @(includeLogin)};
+
         [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil userInfo:userInfo];
     });
 }
@@ -625,22 +626,22 @@ typedef enum {
 
 - (IBAction)cameraRollTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRCameraRollPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeLocalPhotos includeLogin:NO];
 }
 
 - (IBAction)facebookTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRFacebookPhotoProvider sharedInstance].name includeLogin:(self.facebookLogged ? NO : YES)];
+    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:(self.facebookLogged ? NO : YES)];
 }
 
 - (IBAction)instagramTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRInstagramPhotoProvider sharedInstance].name includeLogin:(self.instagramLogged ? NO : YES)];
+    [self showSocialNetwork:PGSocialSourceTypeInstagram includeLogin:(self.instagramLogged ? NO : YES)];
 }
 
 - (IBAction)flickrTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:(self.flickrLogged ? NO : YES)];
+    [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:(self.flickrLogged ? NO : YES)];
 }
 
 #pragma mark - PGWebViewerViewControllerDelegate methods
