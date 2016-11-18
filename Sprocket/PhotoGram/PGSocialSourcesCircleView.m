@@ -59,7 +59,7 @@
     CGFloat numberOfCircles = self.socialSources.count;
     CGFloat stepDegrees = 360 / numberOfCircles;
 
-    for (int i=0; i<numberOfCircles; i++) {
+    for (int i = 0; i < numberOfCircles; i++) {
         PGSocialSource *socialSource = self.socialSources[i];
 
         CGFloat deg = (stepDegrees * i) + 90;
