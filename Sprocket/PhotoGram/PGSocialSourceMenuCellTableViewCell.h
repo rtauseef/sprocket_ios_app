@@ -13,9 +13,6 @@
 #import <UIKit/UIKit.h>
 #import "PGSocialSource.h"
 
-extern NSString * const kSocialNetworkKey;
-extern NSString * const kIncludeLoginKey;
-
 @interface PGSocialSourceMenuCellTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) PGSocialSource *socialSource;

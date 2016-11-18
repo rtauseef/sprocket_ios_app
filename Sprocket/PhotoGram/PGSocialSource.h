@@ -34,6 +34,9 @@ typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypeQzone
 };
 
+extern NSString * const kSocialNetworkKey;
+extern NSString * const kIncludeLoginKey;
+
 @interface PGSocialSource : NSObject
 
 @property (nonatomic, assign) PGSocialSourceType type;

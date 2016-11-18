@@ -11,7 +11,6 @@
 //
 
 #import "PGRevealViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 
 #pragma GCC diagnostic ignored "-Wundeclared-selector"
 
@@ -26,9 +25,6 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
 {
     [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
-    
-    PGSideBarMenuTableViewController *rearViewController = (PGSideBarMenuTableViewController *)self.rearViewController;
-    [rearViewController setTableFooterHeight];
 }
 
 

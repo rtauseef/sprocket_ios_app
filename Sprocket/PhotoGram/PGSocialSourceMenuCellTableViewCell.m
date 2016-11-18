@@ -16,9 +16,6 @@
 #import "UIFont+Style.h"
 #import "UIImageView+MaskImage.h"
 
-NSString * const kSocialNetworkKey = @"social-network";
-NSString * const kIncludeLoginKey = @"include-login";
-
 @implementation PGSocialSourceMenuCellTableViewCell
 
 - (void)awakeFromNib

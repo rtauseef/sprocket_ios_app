@@ -12,6 +12,9 @@
 
 #import "PGSocialSource.h"
 
+NSString * const kSocialNetworkKey = @"social-network";
+NSString * const kIncludeLoginKey = @"include-login";
+
 @interface PGSocialSource ()
 
 @property (nonatomic, strong) UIImage *icon;
