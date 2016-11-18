@@ -381,7 +381,9 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (index != NSNotFound) {
         PGSocialSource *socialSource = self.socialSources[index];
 
-        if (socialSource.type == PGSocialSourceTypeLocalPhotos) {
+        BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
+
+        if (isShowingPhotoGallery && socialSource.hasFolders) {
             [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];

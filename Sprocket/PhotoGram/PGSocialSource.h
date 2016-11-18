@@ -42,6 +42,7 @@ extern NSString * const kIncludeLoginKey;
 @property (nonatomic, assign) PGSocialSourceType type;
 @property (nonatomic, strong, readonly) UIImage *icon;
 @property (nonatomic, strong, readonly) UIImage *menuIcon;
+@property (nonatomic, assign, readonly) BOOL hasFolders;
 
 @property (nonatomic, copy, readonly) NSString *title;
 

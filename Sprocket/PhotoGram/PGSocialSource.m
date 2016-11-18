@@ -19,6 +19,7 @@ NSString * const kIncludeLoginKey = @"include-login";
 
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) UIImage *menuIcon;
+@property (nonatomic, assign) BOOL hasFolders;
 @property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, strong) HPPRLoginProvider *loginProvider;
@@ -55,6 +56,7 @@ NSString * const kIncludeLoginKey = @"include-login";
         case PGSocialSourceTypeFacebook:
             self.icon = [UIImage imageNamed:@"facebook_C"];
             self.menuIcon = self.icon;
+            self.hasFolders = YES;
             self.title = NSLocalizedString(@"Facebook", @"Social source title for Facebook");
             self.needsSignIn = YES;
             self.loginProvider = [HPPRFacebookLoginProvider sharedInstance];
@@ -63,6 +65,7 @@ NSString * const kIncludeLoginKey = @"include-login";
         case PGSocialSourceTypeFlickr:
             self.icon = [UIImage imageNamed:@"Flickr"];
             self.menuIcon = self.icon;
+            self.hasFolders = YES;
             self.title = NSLocalizedString(@"Flickr", @"Social source title for Flickr");
             self.needsSignIn = YES;
             self.loginProvider = [HPPRFlickrLoginProvider sharedInstance];
@@ -71,6 +74,7 @@ NSString * const kIncludeLoginKey = @"include-login";
         case PGSocialSourceTypeInstagram:
             self.icon = [UIImage imageNamed:@"Instagram_C"];
             self.menuIcon = self.icon;
+            self.hasFolders = NO;
             self.title = NSLocalizedString(@"Instagram", @"Social source title for Instagram");
             self.needsSignIn = YES;
             self.loginProvider = [HPPRInstagramLoginProvider sharedInstance];
@@ -79,6 +83,7 @@ NSString * const kIncludeLoginKey = @"include-login";
         case PGSocialSourceTypeLocalPhotos:
             self.icon = [UIImage imageNamed:@"Photos_C"];
             self.menuIcon = self.icon;
+            self.hasFolders = YES;
             self.title = NSLocalizedString(@"Camera Roll", @"Social source title for Camera Roll");
             self.needsSignIn = NO;
             self.photoProvider = [HPPRCameraRollPhotoProvider sharedInstance];
@@ -86,18 +91,21 @@ NSString * const kIncludeLoginKey = @"include-login";
         case PGSocialSourceTypeWeiBo:
             self.icon = [UIImage imageNamed:@"WeiBo_C"];
             self.menuIcon = self.icon;
+            self.hasFolders = NO; // Still TBD
             self.title = NSLocalizedString(@"WeiBo", @"Social source title for WeiBo");
             self.needsSignIn = YES;
             break;
         case PGSocialSourceTypeQzone:
             self.icon = [UIImage imageNamed:@"Qzone_C"];
             self.menuIcon = self.icon;
+            self.hasFolders = NO; // Still TBD
             self.title = NSLocalizedString(@"Qzone", @"Social source title for Qzone");
             self.needsSignIn = YES;
             break;
         case PGSocialSourceTypePitu:
             self.icon = [UIImage imageNamed:@"Pitu_C"];
             self.menuIcon = self.icon;
+            self.hasFolders = NO;
             self.title = NSLocalizedString(@"Pitu", @"Social source title for Pitu");
             self.needsSignIn = NO;
             break;
