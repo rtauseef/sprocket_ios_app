@@ -12,9 +12,6 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const kSocialNetworkKey;
-extern NSString * const kIncludeLoginKey;
-
 @interface PGSideBarMenuViewController : UIViewController
 
 @end

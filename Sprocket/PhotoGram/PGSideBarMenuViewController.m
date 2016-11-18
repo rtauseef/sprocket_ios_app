@@ -33,9 +33,6 @@ static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
 CGFloat const kPGSideBarMenuLongScreenSizeHeaderHeight = 75.0f;
 CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
-NSString * const kSocialNetworkKey = @"social-network";
-NSString * const kIncludeLoginKey = @"include-login";
-
 @interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainMenuTableView;
@@ -91,6 +88,10 @@ NSString * const kIncludeLoginKey = @"include-login";
     [super viewWillDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    if (self.overlayView.alpha != 0) {
+        [self toggleSocialSourcesMenu];
+    }
 }
 
 - (void)dealloc

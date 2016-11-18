@@ -13,11 +13,15 @@
 #import <UIKit/UIKit.h>
 #import "PGSocialSource.h"
 
+extern NSString * const kSocialNetworkKey;
+extern NSString * const kIncludeLoginKey;
+
 @interface PGSocialSourceMenuCellTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *socialImageView;
-@property (weak, nonatomic) IBOutlet UILabel *socialTitle;
-@property (weak, nonatomic) IBOutlet UIButton *signInButton;
+@property (nonatomic, strong) PGSocialSource *socialSource;
+@property (nonatomic, weak) IBOutlet UIImageView *socialImageView;
+@property (nonatomic, weak) IBOutlet UILabel *socialTitle;
+@property (nonatomic, weak) IBOutlet UIButton *signInButton;
 
 - (void)configureCell:(PGSocialSource *)socialSource;
 

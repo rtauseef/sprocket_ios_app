@@ -14,6 +14,7 @@
 #import "PGSocialSource.h"
 #import "PGSocialSourcesManager.h"
 #import "PGSocialSourceMenuCellTableViewCell.h"
+#import "PGRevealViewController.h"
 
 CGFloat const kPGSocialSourcesMenuCellHeight = 40;
 NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
@@ -26,21 +27,20 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 @implementation PGSocialSourcesMenuViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.socialSoucesTableView reloadData];
+    });
 }
 
 #pragma mark - UITableViewDatasource methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PGSocialSource *socialSource = [[PGSocialSource alloc] initWithSocialSourceType:indexPath.row];
+    PGSocialSource *socialSource = [PGSocialSourcesManager sharedInstance].enabledSocialSources[indexPath.row];
     
     PGSocialSourceMenuCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PGSocialSourceMenuCell"];
     [cell configureCell:socialSource];
@@ -62,11 +62,27 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PGSocialSource *socialSource = [PGSocialSourcesManager sharedInstance].enabledSocialSources[indexPath.row];
     
+    if (!socialSource.photoProvider) {
+        return;
+    }
+    
+    [self showSocialNetwork:socialSource.photoProvider.name includeLogin:(socialSource.needsSignIn ? !socialSource.isLogged : NO)];
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"reaching accessoryButtonTappedForRowWithIndexPath:");
+#pragma mark - Show Social Sources
+
+- (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.revealViewController revealToggleAnimated:YES];
+        [self.socialSoucesTableView deselectRowAtIndexPath:[self.socialSoucesTableView indexPathForSelectedRow] animated:YES];
+        
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys: socialNetwork, kSocialNetworkKey, [NSNumber numberWithBool:includeLogin], kIncludeLoginKey, nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil userInfo:userInfo];
+    });
 }
 
 @end

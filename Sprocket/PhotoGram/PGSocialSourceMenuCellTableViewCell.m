@@ -14,6 +14,10 @@
 
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
+#import "UIImageView+MaskImage.h"
+
+NSString * const kSocialNetworkKey = @"social-network";
+NSString * const kIncludeLoginKey = @"include-login";
 
 @implementation PGSocialSourceMenuCellTableViewCell
 
@@ -24,25 +28,189 @@
 
 - (void)configureCell:(PGSocialSource *)socialSource
 {
+    self.socialSource = socialSource;
     self.socialTitle.text = socialSource.title;
     self.socialTitle.textColor = [UIColor whiteColor];
-    self.socialImageView.image = socialSource.menuIcon;
+    self.signInButton.hidden = !socialSource.needsSignIn;
+    
+    [self configureSocialSourceImage];
+    [self configureSignInButton];
     
     UIView *selectionColorView = [[UIView alloc] init];
     selectionColorView.backgroundColor = [UIColor HPTableRowSelectionColor];
-    
     self.selectedBackgroundView = selectionColorView;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (IBAction)signInButtonTapped:(id)sender {
-    NSLog(@"Sign In Tapped");
+    if (self.socialSource.isLogged) {
+        [self displaySignOutAlert];
+    }
 }
+
+- (void)configureSignInButton
+{
+    NSString *title = (self.socialSource.isLogged) ? NSLocalizedString(@"Sign Out", nil) : NSLocalizedString(@"Sign In", nil);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.signInButton setTitle:title forState:UIControlStateNormal];
+        self.signInButton.userInteractionEnabled = self.socialSource.isLogged;
+    });
+}
+
+- (void)configureSocialSourceImage
+{
+    switch (self.socialSource.type) {
+        case PGSocialSourceTypeFacebook: {
+            [self configureFacebookUserView];
+            break;
+        }
+        case PGSocialSourceTypeInstagram: {
+            [self configureInstagramUserView];
+            break;
+        }
+        case PGSocialSourceTypeFlickr: {
+            [self configureFlickrUserView];
+            break;
+        }
+        default: {
+            [self resetSocialSourceImage];
+            break;
+        }
+    }
+}
+
+- (void)resetSocialSourceImage
+{
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        self.socialImageView.image = self.socialSource.menuIcon;
+    });
+}
+
+#pragma mark - Sign In/Out Methods
+
+- (void)configureFacebookUserView
+{
+    [[HPPRFacebookLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        self.socialSource.isLogged = loggedIn;
+        
+        if (loggedIn) {
+            [self fetchFacebookData];
+        } else {
+            [self resetSocialSourceImage];
+        }
+    }];
+}
+
+- (void)fetchFacebookData
+{
+    [[HPPRFacebookPhotoProvider sharedInstance] userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
+        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            if (!error) {
+                NSString *profilePictureUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square",  [userInfo objectForKey:@"id"]];
+                [weakSelf.socialImageView setMaskImageWithURL:profilePictureUrl];
+            } else {
+                weakSelf.socialSource.isLogged = NO;
+                [weakSelf resetSocialSourceImage];
+            }
+            
+            [weakSelf configureSignInButton];
+        });
+    }];
+}
+
+- (void)configureInstagramUserView
+{
+    [HPPRInstagramUser userProfileWithId:@"self" completion:^(NSString *userName, NSString *userId, NSString *profilePictureUrl, NSNumber *posts, NSNumber *followers, NSNumber *following) {
+        
+        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            if (profilePictureUrl) {
+                [weakSelf.socialImageView setMaskImageWithURL:profilePictureUrl];
+                weakSelf.socialSource.isLogged = YES;
+            } else {
+                weakSelf.socialSource.isLogged = NO;
+                [weakSelf resetSocialSourceImage];
+            }
+            
+            [weakSelf configureSignInButton];
+        });
+        
+    }];
+}
+
+- (void)configureFlickrUserView
+{
+    [[HPPRFlickrLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        
+        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (loggedIn) {
+                NSDictionary *user = [HPPRFlickrLoginProvider sharedInstance].user;
+                [weakSelf.socialImageView setMaskImageWithURL:[user objectForKey:@"imageURL"]];
+                weakSelf.socialSource.isLogged = YES;
+            } else {
+                weakSelf.socialSource.isLogged = NO;
+                [weakSelf resetSocialSourceImage];
+            }
+            
+            [weakSelf configureSignInButton];
+        });
+    }];
+}
+
+- (void)signOut
+{
+    [self.socialSource.loginProvider logoutWithCompletion:^(BOOL loggedOut, NSError *error) {
+        __weak PGSocialSourceMenuCellTableViewCell *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:CHECK_PROVIDER_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:self.socialSource.photoProvider.name forKey:kSocialNetworkKey]];
+            
+            weakSelf.socialSource.isLogged = !loggedOut;
+            weakSelf.socialImageView.image = weakSelf.socialSource.menuIcon;
+            [weakSelf configureSignInButton];
+        });
+    }];
+}
+
+#pragma mark - Sign Out UIAlertView
+
+- (void)displaySignOutAlert
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *alertMessage = [NSString localizedStringWithFormat:
+                                  NSLocalizedString(@"Would you like to sign out of %@?",
+                                                    @"Ask user if he/she wishes to sign out of a particular social media site."), self.socialSource.photoProvider.localizedName];
+        NSString *cancel = [NSString localizedStringWithFormat:
+                            NSLocalizedString(@"Cancel",
+                                              @"Generic Cancel from an action.")];
+        NSString *signOut = [NSString localizedStringWithFormat:
+                             NSLocalizedString(@"Sign Out",
+                                               @"Signing out of a social media site.")];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                       message:alertMessage
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel
+                                                             handler:nil];
+        
+        UIAlertAction *signOutAction = [UIAlertAction actionWithTitle:signOut style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action) {
+                                                                  [self signOut];
+                                                              }];
+        
+        [alert addAction:cancelAction];
+        [alert addAction:signOutAction];
+        
+        // Setting the preferred action is only available in iOS9 and later
+        if ([alert respondsToSelector:@selector(setPreferredAction:)]) {
+            [alert performSelector:@selector(setPreferredAction:) withObject:cancelAction];
+        }
+        
+        UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+        [topController presentViewController:alert animated:YES completion:nil];
+    });
+}
+
 
 @end
