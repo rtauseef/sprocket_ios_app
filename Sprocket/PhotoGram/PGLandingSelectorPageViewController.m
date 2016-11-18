@@ -24,7 +24,6 @@
 #import "PGFlickrLandingPageViewController.h"
 #import "PGCameraRollLandingPageViewController.h"
 #import "SWRevealViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "PGSwipeCoachMarksView.h"
 #import "PGMediaNavigation.h"
 #import "PGCameraManager.h"

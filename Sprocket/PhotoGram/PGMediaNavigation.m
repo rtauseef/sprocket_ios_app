@@ -20,7 +20,7 @@
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 #import "AlphaGradientView.h"
-#import "PGSideBarMenuTableViewController.h"
+#import "PGSocialSource.h"
 
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
