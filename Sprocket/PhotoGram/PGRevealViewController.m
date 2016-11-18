@@ -22,12 +22,6 @@
 
 #pragma mark - Superview overrides
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
-{
-    [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
-}
-
-
 - (IBAction)unwindToReveal:(UIStoryboardSegue *)unwindSegue
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:CHECK_PROVIDER_NOTIFICATION object:nil];
