@@ -21,7 +21,6 @@
 #import "SWRevealViewController.h"
 #import "PGAnalyticsManager.h"
 #import "PGPreviewViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "UIViewController+Trackable.h"
 #import "UIView+Animations.h"
 #import "UIImage+ImageResize.h"

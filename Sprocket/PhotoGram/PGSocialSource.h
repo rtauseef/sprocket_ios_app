@@ -12,6 +12,18 @@
 
 #import <Foundation/Foundation.h>
 
+#import <HPPRInstagramUser.h>
+#import <HPPRInstagram.h>
+
+#import <HPPRInstagramPhotoProvider.h>
+#import <HPPRFacebookPhotoProvider.h>
+#import <HPPRFlickrPhotoProvider.h>
+#import <HPPRCameraRollPhotoProvider.h>
+
+#import <HPPRFacebookLoginProvider.h>
+#import <HPPRInstagramLoginProvider.h>
+#import <HPPRFlickrLoginProvider.h>
+
 typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypeLocalPhotos = 0,
     PGSocialSourceTypeFacebook,
@@ -22,12 +34,23 @@ typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypeQzone
 };
 
+extern NSString * const kSocialNetworkKey;
+extern NSString * const kIncludeLoginKey;
+
 @interface PGSocialSource : NSObject
 
 @property (nonatomic, assign) PGSocialSourceType type;
 @property (nonatomic, strong, readonly) UIImage *icon;
 @property (nonatomic, strong, readonly) UIImage *menuIcon;
-@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, assign, readonly) BOOL hasFolders;
+
+@property (nonatomic, copy, readonly) NSString *title;
+
+@property (nonatomic, assign) BOOL needsSignIn;
+@property (nonatomic, assign) BOOL isLogged;
+
+@property (nonatomic, strong, readonly) HPPRLoginProvider *loginProvider;
+@property (nonatomic, strong, readonly) HPPRSelectPhotoProvider *photoProvider;
 
 - (instancetype)initWithSocialSourceType:(PGSocialSourceType)type;
 
