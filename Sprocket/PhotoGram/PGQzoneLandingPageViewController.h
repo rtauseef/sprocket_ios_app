@@ -10,17 +10,8 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
-#import "PGSocialSource.h"
+#import "PGLandingPageViewController.h"
 
-@interface PGSocialSourcesManager : NSObject
-
-@property (nonatomic, readonly) NSArray<PGSocialSource *> *enabledSocialSources;
-
-+ (instancetype)sharedInstance;
-
-- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
-- (void)toggleExtraSocialSourcesEnabled;
-- (BOOL)isEnabledExtraSocialSources;
+@interface PGQzoneLandingPageViewController : PGLandingPageViewController
 
 @end

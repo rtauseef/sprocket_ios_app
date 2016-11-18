@@ -10,17 +10,16 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "PGSocialSource.h"
 
-@interface PGSocialSourcesManager : NSObject
+@interface PGSocialSourceMenuTableViewCell : UITableViewCell
 
-@property (nonatomic, readonly) NSArray<PGSocialSource *> *enabledSocialSources;
+@property (nonatomic, strong) PGSocialSource *socialSource;
+@property (nonatomic, weak) IBOutlet UIImageView *socialImageView;
+@property (nonatomic, weak) IBOutlet UILabel *socialTitle;
+@property (nonatomic, weak) IBOutlet UIButton *signInButton;
 
-+ (instancetype)sharedInstance;
-
-- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
-- (void)toggleExtraSocialSourcesEnabled;
-- (BOOL)isEnabledExtraSocialSources;
+- (void)configureCell:(PGSocialSource *)socialSource;
 
 @end

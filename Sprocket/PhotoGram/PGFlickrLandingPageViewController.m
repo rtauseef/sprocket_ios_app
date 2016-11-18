@@ -22,7 +22,6 @@
 #import "PGAnalyticsManager.h"
 #import "PGPreviewViewController.h"
 #import "SWRevealViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "UIView+Animations.h"
 #import "UIViewController+Trackable.h"
 

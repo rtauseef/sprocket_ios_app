@@ -12,14 +12,9 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const kSocialNetworkKey;
-extern NSString * const kIncludeLoginKey;
-extern NSString * const kBuyPaperURL;
-extern NSString * const kSurveyURL;
-extern NSString * const kSurveyNotifyURL;
+extern CGFloat const kPGSocialSourcesMenuCellHeight;
+extern NSInteger const kPGSocialSourcesMenuDefaultThreshold;
 
-@interface PGSideBarMenuTableViewController : UITableViewController
-
-- (void)setTableFooterHeight;
+@interface PGSocialSourcesMenuViewController : UIViewController
 
 @end

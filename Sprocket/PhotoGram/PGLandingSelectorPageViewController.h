@@ -11,10 +11,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PGSocialSourcesManager.h"
 
 @interface PGLandingSelectorPageViewController : UIPageViewController
 
-@property (strong, nonatomic) NSString *socialNetwork;
+@property (assign, nonatomic) PGSocialSourceType socialSourceType;
 @property (assign, nonatomic) BOOL includeLogin;
 
 - (UINavigationController *)currentNavigationController;
