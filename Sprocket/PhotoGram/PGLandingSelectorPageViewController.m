@@ -358,15 +358,17 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (NSInteger)pageForSocialNetwork:(PGSocialSourceType)socialSourceType
 {
+    NSInteger page = 0;
+
     for (int i = 0; i < self.socialSources.count; i++) {
         PGSocialSource *socialSource = self.socialSources[i];
 
         if (socialSourceType == socialSource.type) {
-            return i;
+            page = i;
         }
     }
 
-    return 0;
+    return page;
 }
 
 
