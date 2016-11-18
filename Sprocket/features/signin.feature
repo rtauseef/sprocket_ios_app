@@ -5,7 +5,6 @@ Feature: Signin to social media
   
 @reset
 @done
-@TA14379
 Scenario Outline: Sign in to different Social media accounts from Landing screen
     Given I am on the "Landing" screen
     Then I should see "<social_media>" logo
@@ -27,7 +26,6 @@ Scenario Outline: Sign in to different Social media accounts from Landing screen
       
 @reset
 @done
-@TA14379
 Scenario: Sign in to different Social media accounts from Landing screen
     Given I am on the "Landing" screen
     Then I should see "CameraRoll" logo

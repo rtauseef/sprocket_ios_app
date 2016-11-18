@@ -3,6 +3,7 @@ Feature: Verify Side menu feature
   
 @reset
 @regression
+@done
 Scenario Outline: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -20,6 +21,7 @@ Scenario Outline: Sign in to different Social media accounts from side menu
       
 @reset
 @regression
+@done
 Scenario: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -32,7 +34,7 @@ Scenario: Sign in to different Social media accounts from side menu
       
 
 @reset
-@TA14381
+@done
 Scenario: Verify side menu options
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -46,20 +48,20 @@ Scenario: Verify side menu options
     |About          |
     
   @reset
-  @TA14381
+  @done
   Scenario: Verify navigation to device screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "sprocket"
-    And I should see the techical information 
+    And I should see the technical information
     And I tap "Close" mark
     When I touch menu button on navigation bar
     Then I should see the "Landing" screen 
     
     
     @reset
-  @TA14381
+    @done
   Scenario: Verify about screen from side menu
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -68,7 +70,7 @@ Scenario: Verify side menu options
     Then I should see the "About" screen 
     Then I should see "Sprocket" logo
     And I should see the following:
-    |Version 1.3.0 (DEV)|
+    |Version|
     |HP Development Company, L.P.|
     |Copyright (c) 2016|
     When I touch "Done"
@@ -76,7 +78,7 @@ Scenario: Verify side menu options
 	Then I should see the side menu
     
     @reset
-  @TA14381
+    @done
   Scenario: Verify closing side menu
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
