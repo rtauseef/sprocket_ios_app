@@ -353,7 +353,7 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
             NSLog(@"WeiBo tapped");
             break;
         case PGSocialSourceTypeQzone:
-            NSLog(@"Qzone tapped");
+            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
             break;
         case PGSocialSourceTypePitu:
             NSLog(@"Pitu tapped");
