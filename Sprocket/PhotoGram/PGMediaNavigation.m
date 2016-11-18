@@ -16,7 +16,6 @@
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 #import "AlphaGradientView.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "PGSocialSourcesManager.h"
 
 
