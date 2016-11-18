@@ -2650,7 +2650,7 @@ printer and app support.</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="socialSoucesTableView" destination="wQk-80-xW2" id="dhb-2g-bNl"/>
+                        <outlet property="socialSourcesTableView" destination="wQk-80-xW2" id="djp-Vs-wZ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brs-Xe-Sca" userLabel="First Responder" sceneMemberID="firstResponder"/>

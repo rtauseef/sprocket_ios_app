@@ -21,7 +21,7 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 @interface PGSocialSourcesMenuViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *socialSoucesTableView;
+@property (weak, nonatomic) IBOutlet UITableView *socialSourcesTableView;
 
 @end
 
@@ -31,9 +31,7 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 {
     [super viewWillAppear:animated];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.socialSoucesTableView reloadData];
-    });
+    [self.socialSourcesTableView reloadData];
 }
 
 #pragma mark - UITableViewDatasource methods
@@ -77,7 +75,7 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.revealViewController revealToggleAnimated:YES];
-        [self.socialSoucesTableView deselectRowAtIndexPath:[self.socialSoucesTableView indexPathForSelectedRow] animated:YES];
+        [self.socialSourcesTableView deselectRowAtIndexPath:[self.socialSourcesTableView indexPathForSelectedRow] animated:YES];
         
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys: socialNetwork, kSocialNetworkKey, [NSNumber numberWithBool:includeLogin], kIncludeLoginKey, nil];
         
