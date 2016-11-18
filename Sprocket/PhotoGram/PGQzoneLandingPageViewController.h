@@ -10,14 +10,8 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import "PGSocialSourcesManager.h"
+#import "PGLandingPageViewController.h"
 
-@interface PGLandingSelectorPageViewController : UIPageViewController
-
-@property (assign, nonatomic) PGSocialSourceType socialSourceType;
-@property (assign, nonatomic) BOOL includeLogin;
-
-- (UINavigationController *)currentNavigationController;
+@interface PGQzoneLandingPageViewController : PGLandingPageViewController
 
 @end

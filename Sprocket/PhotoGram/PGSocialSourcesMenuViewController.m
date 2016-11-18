@@ -66,19 +66,19 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
         return;
     }
     
-    [self showSocialNetwork:socialSource.photoProvider.name includeLogin:(socialSource.needsSignIn ? !socialSource.isLogged : NO)];
+    [self showSocialNetwork:socialSource.type includeLogin:(socialSource.needsSignIn ? !socialSource.isLogged : NO)];
 }
 
 #pragma mark - Show Social Sources
 
-- (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
+- (void)showSocialNetwork:(PGSocialSourceType)socialSourceType includeLogin:(BOOL)includeLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.revealViewController revealToggleAnimated:YES];
         [self.socialSourcesTableView deselectRowAtIndexPath:[self.socialSourcesTableView indexPathForSelectedRow] animated:YES];
         
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys: socialNetwork, kSocialNetworkKey, [NSNumber numberWithBool:includeLogin], kIncludeLoginKey, nil];
-        
+        NSDictionary *userInfo = @{kSocialNetworkKey: @(socialSourceType), kIncludeLoginKey: @(includeLogin)};
+
         [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil userInfo:userInfo];
     });
 }
