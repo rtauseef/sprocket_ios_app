@@ -194,18 +194,16 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 }
 
 - (void)checkSprocketDeviceConnectivity {
-    if (IS_OS_8_OR_LATER) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
-            BOOL shouldHideConnectivity = (numberOfPairedSprockets <= 0);
-            
-            self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
-            self.deviceStatusLED.hidden = shouldHideConnectivity;
-            self.deviceBatteryLevel.hidden = shouldHideConnectivity;
-            
-            [[MP sharedInstance] checkSprocketForUpdates:self];
-        });
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+        BOOL shouldHideConnectivity = (numberOfPairedSprockets <= 0);
+        
+        self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
+        self.deviceStatusLED.hidden = shouldHideConnectivity;
+        self.deviceBatteryLevel.hidden = shouldHideConnectivity;
+        
+        [[MP sharedInstance] checkSprocketForUpdates:self];
+    });
 }
 
 - (void)resizeViewAccordingRevealViewController {
