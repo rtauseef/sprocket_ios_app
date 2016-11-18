@@ -96,8 +96,8 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
 //                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeQzone],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu],
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]
                                ];
         return;
     }
