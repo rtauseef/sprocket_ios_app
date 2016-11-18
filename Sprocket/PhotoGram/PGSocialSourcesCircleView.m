@@ -62,10 +62,12 @@
     for (int i=0; i<numberOfCircles; i++) {
         PGSocialSource *socialSource = self.socialSources[i];
 
-        CGFloat deg = (stepDegrees * i);
+        CGFloat deg = (stepDegrees * i) + 90;
         CGFloat circleRadius = socialSource.icon.size.width;
-        CGFloat y = cameraCenterXY - (radius * sinf((90 - deg) * M_PI / 180)) - circleRadius;
-        CGFloat x = cameraCenterXY - (radius * sinf(deg * M_PI / 180)) - circleRadius;
+        CGFloat yRadians = deg * M_PI / 180;
+        CGFloat xRadians = (90 - deg) * M_PI / 180;
+        CGFloat y = cameraCenterXY - (radius * sinf(yRadians)) - circleRadius;
+        CGFloat x = cameraCenterXY - (radius * sinf(xRadians)) - circleRadius;
 
         UIButton *socialButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [socialButton setImage:socialSource.icon forState:UIControlStateNormal];
