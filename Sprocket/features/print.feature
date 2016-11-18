@@ -3,7 +3,7 @@ Feature: Verify no printer added modal
   I want to verify no printer added modal.
 
   @reset
-  @TA14290
+  @done
   Scenario: No printer paired
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
