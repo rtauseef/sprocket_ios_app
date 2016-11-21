@@ -57,4 +57,13 @@
     self.termsLabel.userInteractionEnabled = YES;
 }
 
+
+#pragma mark - Button actions
+
+- (IBAction)signInButtonTapped:(id)sender
+{
+    
+}
+
+
 @end

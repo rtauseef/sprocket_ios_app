@@ -3,14 +3,14 @@ Feature: Verify preview screen from different social media
   I should be able to navigate to preview screen
 
   @reset
-  @done
+  @regression
   Scenario: Navigate to preview screen via instagram
     Given I am on the "Instagram Photos" screen
     When I touch second photo
     Then I should see the "Instagram Preview" screen
 
   @reset
-  @done
+  @regression
   Scenario: Verify preview screen for instagram
     Given I am on the "Instagram Preview" screen
     Then I should see "camera" button
@@ -65,7 +65,7 @@ Feature: Verify preview screen from different social media
     Then I should see the original image without margins
     
   @reset
-  @TA14130
+  @done
   @pinch
   Scenario: Verify pinch in-out and zoom the image on preview screen_instagram
     Given I am on the "Instagram Preview" screen

@@ -4,7 +4,7 @@ Feature: Verify Text Edit screen
 
   
 @reset
-@TA14562
+@regression
 Scenario Outline: Verify 'Text' option
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
@@ -16,7 +16,6 @@ Scenario Outline: Verify 'Text' option
     And I tap "Save" mark
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
-    #And I should see the photo with the entered text
     Then I tap "Check" mark
     Then I should see the "<screen_name>" screen
    
@@ -27,7 +26,7 @@ Scenario Outline: Verify 'Text' option
     | CameraRoll Preview |
 
 @reset
-@TA14562
+@regression
 Scenario Outline: Verify text edit screen navigation
     Given I am on the "TextEdit" screen for "<screen_name>" 
     And I enter unique text
@@ -42,7 +41,7 @@ Scenario Outline: Verify text edit screen navigation
     | CameraRoll Preview |
 
 @reset
-@TA14562
+@regression
 Scenario Outline: Verify Text editor screen options
     Given I am on the "TextEdit" screen for "<screen_name>" 
     And I enter unique text
@@ -63,7 +62,6 @@ Scenario Outline: Verify Text editor screen options
     | CameraRoll Preview |
 
 @reset
-@TA14562
 @DE4168
 Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -75,7 +73,7 @@ Scenario: Verify entered text cancellation
     And I should not see the text
 
 @reset
-@TA14562
+@done
 Scenario: Verify font
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -88,7 +86,7 @@ Scenario: Verify font
     Then I should see the text with selected "Font"
 
 @reset
-@TA14562
+@done
 Scenario: Verify text color
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -102,7 +100,7 @@ Scenario: Verify text color
     Then I should see the text with selected "Color"
 
 @reset
-@TA14562
+@done
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text

@@ -40,8 +40,6 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
     Then I should see the "Facebook Photo" screen
-    Then I should see "Grid mode" button
-    Then I should see "List mode" button
     Then I should see "Folder" button
 
   @fbtest
@@ -57,13 +55,13 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     And I should see other albums
 
   @fbtest
+  @pinch
   Scenario: Verify list view and grid view for facebook photos
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
     Then I should see the "Facebook Photo" screen
-    Then I should see the photos in a grid view
-    When I touch list mode button
+    When I pinch "in" on the picture 
     Then I should see the photos in list view
-    When I touch grid mode button
+    When I pinch "out" on the picture 
     Then I should see the photos in a grid view
