@@ -10,18 +10,8 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
-#import "PGSocialSource.h"
+#import <UIKit/UIKit.h>
 
-@interface PGSocialSourcesManager : NSObject
-
-@property (nonatomic, readonly) NSArray<PGSocialSource *> *enabledSocialSources;
-
-+ (instancetype)sharedInstance;
-
-- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
-- (PGSocialSource *)socialSourceByTitle:(NSString *)title;
-- (void)toggleExtraSocialSourcesEnabled;
-- (BOOL)isEnabledExtraSocialSources;
+@interface PGSideBarMenuViewController : UIViewController
 
 @end

@@ -50,6 +50,28 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
     return self.socialSources;
 }
 
+- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type
+{
+    for (PGSocialSource *socialSource in self.socialSources) {
+        if (socialSource.type == type) {
+            return socialSource;
+        }
+    }
+    
+    return nil;
+}
+
+- (PGSocialSource *)socialSourceByTitle:(NSString *)title
+{
+    for (PGSocialSource *socialSource in self.socialSources) {
+        if ([socialSource.title isEqualToString:title]) {
+            return socialSource;
+        }
+    }
+    
+    return nil;
+}
+
 
 #pragma mark - Feature Flag
 
@@ -82,20 +104,20 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
     if (true){//[language isEqualToString:@"zh"]) {
         self.socialSources = @[
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu],
+//                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo],
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeQzone],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo]
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu],
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
+                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]
                                ];
         return;
     }
 
     self.socialSources = @[
                            [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
+                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
                            [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFlickr],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]
+                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]
                            ];
 }
 

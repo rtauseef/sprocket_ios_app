@@ -12,7 +12,6 @@
 
 #import "HPPRCameraRollPhotoProvider.h"
 #import "HPPRCameraRollLoginProvider.h"
-#import "HPPRCameraRollAlbum.h"
 #import "HPPRCameraRollMedia.h"
 #import "NSBundle+HPPRLocalizable.h"
 #import <Photos/Photos.h>

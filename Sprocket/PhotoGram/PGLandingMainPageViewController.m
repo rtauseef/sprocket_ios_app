@@ -20,13 +20,13 @@
 #import "PGAppDelegate.h"
 #import "PGAppAppearance.h"
 #import "SWRevealViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "PGLandingSelectorPageViewController.h"
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGCameraManager.h"
 #import "PGAnalyticsManager.h"
+#import "PGSideBarMenuItems.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
 
@@ -191,14 +191,14 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
     #endif
 }
 
-- (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
+- (void)showSocialNetwork:(PGSocialSourceType)socialSourceType includeLogin:(BOOL)includeLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         // push the LandingSelectorPage onto our nav stack
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGLandingSelectorPageViewController *vc = (PGLandingSelectorPageViewController *)[sb instantiateViewControllerWithIdentifier:@"PGLandingSelectorPageViewController"];
-        
-        vc.socialNetwork = socialNetwork;
+
+        vc.socialSourceType = socialSourceType;
         vc.includeLogin = includeLogin;
         
         [UIView transitionWithView:self.navigationController.view
@@ -240,37 +240,37 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (void)handleShowSocialNetworkNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
-    NSNumber *includeLogin = [notification.userInfo objectForKey:kIncludeLoginKey];
+    PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
+    BOOL includeLogin = [[notification.userInfo objectForKey:kIncludeLoginKey] boolValue];
     
-    [self showSocialNetwork:socialNetwork includeLogin:[includeLogin boolValue]];
+    [self showSocialNetwork:socialSourceType includeLogin:includeLogin];
 }
 
 #pragma mark - Gesture recognizers
 
 - (IBAction)cameraRollTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRCameraRollPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeLocalPhotos includeLogin:NO];
 }
 
 - (IBAction)pituTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRPituPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypePitu includeLogin:NO];
 }
 
 - (IBAction)facebookTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRFacebookPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
 }
 
 - (IBAction)instagramTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRInstagramPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeInstagram includeLogin:NO];
 }
 
 - (IBAction)flickrTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
 }
 
 - (IBAction)cameraTapped:(id)sender

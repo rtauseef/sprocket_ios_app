@@ -10,18 +10,10 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
-#import "PGSocialSource.h"
+#import "HPPRCameraRollPhotoProvider.h"
 
-@interface PGSocialSourcesManager : NSObject
+@interface HPPRPituPhotoProvider : HPPRCameraRollPhotoProvider
 
-@property (nonatomic, readonly) NSArray<PGSocialSource *> *enabledSocialSources;
-
-+ (instancetype)sharedInstance;
-
-- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
-- (PGSocialSource *)socialSourceByTitle:(NSString *)title;
-- (void)toggleExtraSocialSourcesEnabled;
-- (BOOL)isEnabledExtraSocialSources;
++ (HPPRPituPhotoProvider *)sharedInstance;
 
 @end

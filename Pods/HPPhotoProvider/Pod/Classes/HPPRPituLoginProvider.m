@@ -10,18 +10,20 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
-#import "PGSocialSource.h"
+#import "HPPRPituLoginProvider.h"
 
-@interface PGSocialSourcesManager : NSObject
+@implementation HPPRPituLoginProvider
 
-@property (nonatomic, readonly) NSArray<PGSocialSource *> *enabledSocialSources;
+#pragma mark - Initialization
 
-+ (instancetype)sharedInstance;
-
-- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
-- (PGSocialSource *)socialSourceByTitle:(NSString *)title;
-- (void)toggleExtraSocialSourcesEnabled;
-- (BOOL)isEnabledExtraSocialSources;
++ (HPPRPituLoginProvider *)sharedInstance
+{
+    static dispatch_once_t once;
+    static HPPRPituLoginProvider *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[HPPRPituLoginProvider alloc] init];
+    });
+    return sharedInstance;
+}
 
 @end

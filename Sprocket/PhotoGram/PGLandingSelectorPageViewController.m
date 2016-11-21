@@ -14,7 +14,6 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
-#import <HPPRPituPhotoProvider.h>
 #import <HPPRSelectPhotoCollectionViewController.h>
 #import <HPPRSelectAlbumTableViewController.h>
 #import <HPPR.h>
@@ -23,10 +22,10 @@
 #import "PGInstagramLandingPageViewController.h"
 #import "PGFacebookLandingPageViewController.h"
 #import "PGFlickrLandingPageViewController.h"
+#import "PGQzoneLandingPageViewController.h"
 #import "PGCameraRollLandingPageViewController.h"
 #import "PGPituLandingPageViewController.h"
 #import "SWRevealViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "PGSwipeCoachMarksView.h"
 #import "PGMediaNavigation.h"
 #import "PGCameraManager.h"
@@ -40,24 +39,13 @@
 
 NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
-typedef enum {
-    PGLandingPageViewControlIndexInstagram = 0,
-    PGLandingPageViewControlIndexFacebook = 1,
-    PGLandingPageViewControlIndexFlickr = 2,
-    PGLandingPageViewControlIndexCameraRoll = 3,
-    PGLandingPageViewControlIndexPitu = 4
-} PGLandingPageViewControlIndex;
-
 @interface PGLandingSelectorPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate, PGMediaNavigationDelegate, UINavigationControllerDelegate>
 
+@property (nonatomic, strong) NSArray<PGSocialSource *> *socialSources;
+@property (nonatomic, strong) NSArray<UINavigationController *> *socialViewControllers;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) PGMediaNavigation *navigationView;
 @property (nonatomic, strong) PGSwipeCoachMarksView *swipeCoachMarksView;
-@property (nonatomic, strong) UINavigationController *instagramLandingPageViewController;
-@property (nonatomic, strong) UINavigationController *facebookLandingPageViewController;
-@property (nonatomic, strong) UINavigationController *cameraRollLandingPageViewController;
-@property (nonatomic, strong) UINavigationController *pituLandingPageViewController;
-@property (nonatomic, strong) UINavigationController *flickrLandingPageViewController;
 @property (nonatomic, weak) UIScrollView *scrollView;
 
 @end
@@ -84,13 +72,15 @@ typedef enum {
     self.delegate = self;
     
     self.view.accessibilityIdentifier = @"Landing Page View Controller";
+
+    [self setupSocialSources];
+
+    UINavigationController *navController = [self viewControllerForSocialSourceType:self.socialSourceType];
     
-    UINavigationController *navController = [self viewControllerForSocialNetwork:self.socialNetwork];
-    
-    if( nil == navController ) {
-        [self setViewControllers:@[self.instagramLandingPageViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    }
-    else {
+    if (nil == navController) {
+        [self setViewControllers:@[[self.socialViewControllers firstObject]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
+    } else {
         [self setViewControllers:@[navController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         if (self.includeLogin) {
             PGLandingPageViewController *landingPageViewController = (PGLandingPageViewController *) navController.topViewController;
@@ -98,7 +88,7 @@ typedef enum {
         }
 
     }
-    
+
     [self showNavigationView];
     [self initPageControl];
     
@@ -117,6 +107,67 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
+#pragma mark - Social Sources
+
+- (void)setupSocialSources
+{
+    self.socialSources = [[PGSocialSourcesManager sharedInstance] enabledSocialSources];
+
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:self.socialSources.count];
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    for (PGSocialSource *socialSource in self.socialSources) {
+        switch (socialSource.type) {
+            case PGSocialSourceTypeLocalPhotos: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGCameraRollLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypeInstagram: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGInstagramLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypeFacebook: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypeFlickr: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFlickrLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypeWeiBo: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypeQzone: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGQzoneLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypePitu: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPituLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+        }
+    }
+
+    self.socialViewControllers = [viewControllers copy];
+}
+
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -130,40 +181,34 @@ typedef enum {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
-- (UINavigationController *)viewControllerForSocialNetwork:(NSString *)socialNetwork
+- (UINavigationController *)viewControllerForSocialSourceType:(PGSocialSourceType)socialSourceType
 {
-    UINavigationController *viewController = nil;
-    
-    if ([socialNetwork isEqualToString:[HPPRInstagramPhotoProvider sharedInstance].name]) {
-        viewController = self.instagramLandingPageViewController;
-    } else if ([socialNetwork isEqualToString:[HPPRFacebookPhotoProvider sharedInstance].name]) {
-        viewController = self.facebookLandingPageViewController;
-    } else if ([socialNetwork isEqualToString:[HPPRFlickrPhotoProvider sharedInstance].name]) {
-        viewController = self.flickrLandingPageViewController;
-    } else if ([socialNetwork isEqualToString:[HPPRCameraRollPhotoProvider sharedInstance].name]) {
-        viewController = self.cameraRollLandingPageViewController;
-    } else if ([socialNetwork isEqualToString:[HPPRPituPhotoProvider sharedInstance].name]) {
-        viewController = self.pituLandingPageViewController;
+    for (int i = 0; i < self.socialSources.count; i++) {
+        PGSocialSource *socialSource = self.socialSources[i];
+
+        if (socialSourceType == socialSource.type) {
+            return self.socialViewControllers[i];
+        }
     }
 
-    return viewController;
+    return nil;
 }
 
 - (void)showSocialNetworkNotification:(NSNotification *)notification
 {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
-    NSNumber *includeLogin = [notification.userInfo objectForKey:kIncludeLoginKey];
+    PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
+    BOOL includeLogin = [[notification.userInfo objectForKey:kIncludeLoginKey] boolValue];
     
-    UINavigationController *viewController = [self viewControllerForSocialNetwork:socialNetwork];
+    UINavigationController *viewController = [self viewControllerForSocialSourceType:socialSourceType];
     
     [self setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
     
-    self.pageControl.currentPage = [self pageForSocialNetwork:socialNetwork];
+    self.pageControl.currentPage = [self pageForSocialNetwork:socialSourceType];
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
 
-    if ([includeLogin boolValue]) {
+    if (includeLogin) {
         if ([viewController.topViewController isKindOfClass:[PGLandingPageViewController class]]) {
             PGLandingPageViewController *landingPageViewController = (PGLandingPageViewController *) viewController.topViewController;
             [landingPageViewController performSelector:@selector(showLogin) withObject:nil afterDelay:1.0];
@@ -262,37 +307,29 @@ typedef enum {
 - (void)initPageControl
 {
     // Note: The default page control of the UIPageViewController doesn't allow to overlay the view controllers behind it, so for putting the page control with a transparent background on top of them it is necessary to implement our own page control and not use the default one provided by UIPageViewController. The proper way to add subviews is using autolayout constraints but in iOS 7 is not possible to add subviews with autolayout constraints to the UIPageViewController, it throws an exception: "Auto Layout still required after executing -layoutSubviews", so in this case it is implemented using frames.
-    if (IS_OS_8_OR_LATER) {
-        self.pageControl = [[UIPageControl alloc] init];
-        
-        self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [self.view addSubview:self.pageControl];
-        [self.view bringSubviewToFront:self.pageControl];
-        
-        NSDictionary *viewsDictionary = @{@"pageControl":self.pageControl};
-        
-        [self.view addConstraints:[NSLayoutConstraint
-                                   constraintsWithVisualFormat:@"V:[pageControl(20)]|"
-                                   options:0
-                                   metrics:nil
-                                   views:viewsDictionary]];
-        
-        [self.view addConstraints:[NSLayoutConstraint
-                                   constraintsWithVisualFormat:@"H:|[pageControl]|"
-                                   options:NSLayoutFormatDirectionLeadingToTrailing
-                                   metrics:nil
-                                   views:viewsDictionary]];
-    } else {
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - PAGE_CONTROL_HEIGHT, self.view.frame.size.width, PAGE_CONTROL_HEIGHT)];
-        self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-        
-        [self.view addSubview:self.pageControl];
-        [self.view bringSubviewToFront:self.pageControl];
-    }
+    self.pageControl = [[UIPageControl alloc] init];
+    
+    self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.pageControl];
+    [self.view bringSubviewToFront:self.pageControl];
+    
+    NSDictionary *viewsDictionary = @{@"pageControl":self.pageControl};
+    
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"V:[pageControl(20)]|"
+                               options:0
+                               metrics:nil
+                               views:viewsDictionary]];
+    
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"H:|[pageControl]|"
+                               options:NSLayoutFormatDirectionLeadingToTrailing
+                               metrics:nil
+                               views:viewsDictionary]];
     
     self.pageControl.numberOfPages = NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS;
-    self.pageControl.currentPage = [self pageForSocialNetwork:self.socialNetwork];
+    self.pageControl.currentPage = [self pageForSocialNetwork:self.socialSourceType];
 
     self.pageControl.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
 
@@ -306,56 +343,31 @@ typedef enum {
     self.pageControl.hidden = YES;
 }
 
+- (void)setSocialSourceType:(PGSocialSourceType)socialSourceType
+{
+    _socialSourceType = socialSourceType;
+}
+
 - (UINavigationController *)currentNavigationController
 {
-    UINavigationController *navController = nil;
-
-    switch (self.pageControl.currentPage) {
-        case PGLandingPageViewControlIndexInstagram:
-            navController = self.instagramLandingPageViewController;
-            break;
-            
-        case PGLandingPageViewControlIndexFacebook:
-            navController = self.facebookLandingPageViewController;
-            break;
-            
-        case PGLandingPageViewControlIndexFlickr:
-            navController = self.flickrLandingPageViewController;
-            break;
-            
-        case PGLandingPageViewControlIndexCameraRoll:
-            navController = self.cameraRollLandingPageViewController;
-            break;
-            
-        case PGLandingPageViewControlIndexPitu:
-            navController = self.pituLandingPageViewController;
-            break;
-
-        default:
-            break;
-    }
-    
-    return navController;
+    return [self viewControllerForSocialSourceType:self.socialSourceType];
 }
 
-- (NSInteger)pageForSocialNetwork:(NSString *)socialNetwork
+- (NSInteger)pageForSocialNetwork:(PGSocialSourceType)socialSourceType
 {
-    NSInteger page = PGLandingPageViewControlIndexInstagram;
-    
-    if ([socialNetwork isEqualToString:[HPPRInstagramPhotoProvider sharedInstance].name]) {
-        page = PGLandingPageViewControlIndexInstagram;
-    } else if ([socialNetwork isEqualToString:[HPPRFacebookPhotoProvider sharedInstance].name]) {
-        page = PGLandingPageViewControlIndexFacebook;
-    } else if ([socialNetwork isEqualToString:[HPPRFlickrPhotoProvider sharedInstance].name]) {
-        page = PGLandingPageViewControlIndexFlickr;
-    } else if ([socialNetwork isEqualToString:[HPPRCameraRollPhotoProvider sharedInstance].name]) {
-        page = PGLandingPageViewControlIndexCameraRoll;
-    } else if ([socialNetwork isEqualToString:[HPPRPituPhotoProvider sharedInstance].name]) {
-        page = PGLandingPageViewControlIndexPitu;
+    NSInteger page = 0;
+
+    for (int i = 0; i < self.socialSources.count; i++) {
+        PGSocialSource *socialSource = self.socialSources[i];
+
+        if (socialSourceType == socialSource.type) {
+            page = i;
+        }
     }
-    
+
     return page;
 }
+
 
 #pragma mark - UINavigationControllerDelegate
 
@@ -363,30 +375,21 @@ typedef enum {
       willShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated
 {
-    if (navigationController != self.instagramLandingPageViewController  &&
-        navigationController != self.pituLandingPageViewController       &&
-        [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]]) {
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
-    } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
-    }
-    
-    UIViewController *vc = navigationController.viewControllers[0];
-    NSString *socialNetwork = nil;
-    if ([vc isKindOfClass:[PGInstagramLandingPageViewController class]]) {
-        socialNetwork = [HPPRInstagramPhotoProvider sharedInstance].name;
-    } else if ([vc isKindOfClass:[PGFacebookLandingPageViewController class]]) {
-        socialNetwork = [HPPRFacebookPhotoProvider sharedInstance].name;
-    } else if ([vc isKindOfClass:[PGFlickrLandingPageViewController class]]) {
-        socialNetwork = [HPPRFlickrPhotoProvider sharedInstance].name;
-    } else if ([vc isKindOfClass:[PGCameraRollLandingPageViewController class]]) {
-        socialNetwork = [HPPRCameraRollPhotoProvider sharedInstance].name;
-    } else if ([vc isKindOfClass:[PGPituLandingPageViewController class]]) {
-        socialNetwork = [HPPRPituPhotoProvider sharedInstance].name;
-    }
+    NSUInteger index = [self.socialViewControllers indexOfObject:navigationController];
 
-    [self.navigationView selectButton:socialNetwork animated:YES];
+    if (index != NSNotFound) {
+        PGSocialSource *socialSource = self.socialSources[index];
+
+        BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
+
+        if (isShowingPhotoGallery && socialSource.hasFolders) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
+        }
+
+        [self.navigationView selectButton:socialSource.title animated:YES];
+    }
 }
 
 #pragma mark - PGMediaNavigationDelegate
@@ -402,6 +405,7 @@ typedef enum {
     UINavigationController *navController = [self currentNavigationController];
 
     BOOL popped = NO;
+
     for (UIViewController *vc in navController.viewControllers) {
         if ([vc isKindOfClass:[HPPRSelectAlbumTableViewController class]]) {
             [navController popToViewController:vc animated:YES];
@@ -431,92 +435,27 @@ typedef enum {
     }];
 }
 
-#pragma mark - Getter methods
-
-- (UINavigationController *)instagramLandingPageViewController
-{
-    if (!_instagramLandingPageViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        _instagramLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGInstagramLandingPageViewNavigationController"];
-        _instagramLandingPageViewController.delegate = self;
-    }
-    
-    return _instagramLandingPageViewController;
-}
-
-- (UINavigationController *)facebookLandingPageViewController
-{
-    if (!_facebookLandingPageViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        _facebookLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
-        _facebookLandingPageViewController.delegate = self;
-    }
-    
-    return _facebookLandingPageViewController;
-}
-
-- (UINavigationController *)cameraRollLandingPageViewController
-{
-    if (!_cameraRollLandingPageViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        _cameraRollLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGCameraRollLandingPageViewNavigationController"];
-        _cameraRollLandingPageViewController.delegate = self;
-    }
-    
-    return _cameraRollLandingPageViewController;
-}
-
-- (UINavigationController *)pituLandingPageViewController
-{
-    if (!_pituLandingPageViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        _pituLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPituLandingPageViewNavigationController"];
-        _pituLandingPageViewController.delegate = self;
-    }
-    
-    return _pituLandingPageViewController;
-}
-
-- (UINavigationController *)flickrLandingPageViewController
-{
-    if (!_flickrLandingPageViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        _flickrLandingPageViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFlickrLandingPageViewNavigationController"];
-        _flickrLandingPageViewController.delegate = self;
-    }
-    
-    return _flickrLandingPageViewController;
-}
 
 #pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    NSLog(@"didFinish: %d, previous: %@, complete: %d", finished, previousViewControllers, completed);
-    
     if (!completed) {
         return;
     }
     
-    UIViewController *viewController = [pageViewController.viewControllers lastObject];
-    
-    if (viewController == self.instagramLandingPageViewController) {
-        self.pageControl.currentPage = PGLandingPageViewControlIndexInstagram;
-        [self.navigationView selectButton:[HPPRInstagramPhotoProvider sharedInstance].name animated:YES];
-    } else if (viewController == self.facebookLandingPageViewController) {
-        self.pageControl.currentPage = PGLandingPageViewControlIndexFacebook;
-        [self.navigationView selectButton:[HPPRFacebookPhotoProvider sharedInstance].name animated:YES];
-    } else if (viewController == self.flickrLandingPageViewController) {
-        self.pageControl.currentPage = PGLandingPageViewControlIndexFlickr;
-        [self.navigationView selectButton:[HPPRFlickrPhotoProvider sharedInstance].name animated:YES];
-    } else if (viewController == self.cameraRollLandingPageViewController) {
-        self.pageControl.currentPage = PGLandingPageViewControlIndexCameraRoll;
-        [self.navigationView selectButton:[HPPRCameraRollPhotoProvider sharedInstance].name animated:YES];
-    } else if (viewController == self.pituLandingPageViewController) {
-        self.pageControl.currentPage = PGLandingPageViewControlIndexPitu;
-        [self.navigationView selectButton:[HPPRPituPhotoProvider sharedInstance].name animated:YES];
+    UINavigationController *viewController = [pageViewController.viewControllers lastObject];
+
+    NSUInteger index = [self.socialViewControllers indexOfObject:viewController];
+
+    if (index != NSNotFound) {
+        PGSocialSource *socialSource = self.socialSources[index];
+
+        self.pageControl.currentPage = [self pageForSocialNetwork:socialSource.type];
+        [self.navigationView selectButton:socialSource.title animated:YES];
+        self.socialSourceType = socialSource.type;
     }
-    
+
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
 }
 
@@ -535,40 +474,33 @@ typedef enum {
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    UIViewController *nextViewController = nil;
-    
-    if (viewController == self.instagramLandingPageViewController) {
-        nextViewController = self.facebookLandingPageViewController;
-    } else if (viewController == self.facebookLandingPageViewController) {
-        nextViewController = self.flickrLandingPageViewController;
-    } else if (viewController == self.flickrLandingPageViewController) {
-        nextViewController = self.cameraRollLandingPageViewController;
-    } else if (viewController == self.cameraRollLandingPageViewController) {
-        nextViewController = self.pituLandingPageViewController;
-    } else if (viewController == self.pituLandingPageViewController) {
-        nextViewController = self.instagramLandingPageViewController;
+    NSInteger index = [self.socialViewControllers indexOfObject:(UINavigationController *) viewController];
+
+    if (index != NSNotFound) {
+        index = (index + 1) % self.socialSources.count;
+
+        return self.socialViewControllers[index];
     }
-    
-    return nextViewController;
+
+    return nil;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    UIViewController *prevViewController = nil;
-    
-    if (viewController == self.pituLandingPageViewController) {
-        prevViewController = self.cameraRollLandingPageViewController;
-    } else if (viewController == self.cameraRollLandingPageViewController) {
-        prevViewController = self.flickrLandingPageViewController;
-    } else if (viewController == self.flickrLandingPageViewController) {
-        prevViewController = self.facebookLandingPageViewController;
-    } else if (viewController == self.facebookLandingPageViewController) {
-        prevViewController = self.instagramLandingPageViewController;
-    } else if (viewController == self.instagramLandingPageViewController) {
-        prevViewController = self.pituLandingPageViewController;
+    NSInteger index = [self.socialViewControllers indexOfObject:(UINavigationController *) viewController];
+
+    if (index != NSNotFound) {
+        // the modulus operator fails basic arithmetic...
+        if (0 == index) {
+            index = self.socialSources.count-1;
+        } else {
+            index = ((index - 1) % self.socialSources.count);
+        }
+
+        return self.socialViewControllers[index];
     }
-    
-    return prevViewController;
+
+    return nil;
 }
 
 @end

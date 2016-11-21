@@ -224,7 +224,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&err];
         
         if (!newVideoInput || err) {
-            NSLog(@"Error creating capture device input: %@", err.localizedDescription);
+            PGLogError(@"Error creating capture device input: %@", err.localizedDescription);
         } else {
             [self.session addInput:newVideoInput];
         }
