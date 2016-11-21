@@ -8,7 +8,7 @@
 "3PR-Lb-830.title" = "操作指引与帮助";
 
 /* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "通过 Facebook 进行验证，亦表示您同意惠普的服务条款。";
+"3rx-Fp-iLE.text" = "通过社交网络源进行验证，亦表示您同意惠普的服务条款。";
 
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
 "3t6-KR-FbJ.text" = "通过 Instagram 进行验证，亦表示您同意惠普的服务条款。";
