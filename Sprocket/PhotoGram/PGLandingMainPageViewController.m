@@ -14,7 +14,6 @@
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
-#import <HPPRPituPhotoProvider.h>
 
 #import "PGLandingMainPageViewController.h"
 #import "PGAppDelegate.h"
