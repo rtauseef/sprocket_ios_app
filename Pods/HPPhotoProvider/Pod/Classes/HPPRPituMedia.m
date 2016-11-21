@@ -10,11 +10,8 @@
 // the license agreement.
 //
 
-#import "PGLandingPageViewController.h"
+#import "HPPRPituMedia.h"
 
-extern NSString * const kCameraRollUserName;
-extern NSString * const kCameraRollUserId;
-
-@interface PGCameraRollLandingPageViewController : PGLandingPageViewController
+@implementation HPPRPituMedia
 
 @end

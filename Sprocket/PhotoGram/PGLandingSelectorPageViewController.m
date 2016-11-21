@@ -24,6 +24,7 @@
 #import "PGFlickrLandingPageViewController.h"
 #import "PGQzoneLandingPageViewController.h"
 #import "PGCameraRollLandingPageViewController.h"
+#import "PGPituLandingPageViewController.h"
 #import "SWRevealViewController.h"
 #import "PGSwipeCoachMarksView.h"
 #import "PGMediaNavigation.h"
@@ -31,7 +32,7 @@
 #import "MP.h"
 #import "PGPreviewViewController.h"
 
-#define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 4
+#define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 5
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
 #define PAGE_CONTROL_HEIGHT 20
@@ -155,7 +156,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
                 break;
             }
             case PGSocialSourceTypePitu: {
-                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPituLandingPageViewNavigationController"];
                 viewController.delegate = self;
                 [viewControllers addObject:viewController];
                 break;
@@ -306,35 +307,26 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)initPageControl
 {
     // Note: The default page control of the UIPageViewController doesn't allow to overlay the view controllers behind it, so for putting the page control with a transparent background on top of them it is necessary to implement our own page control and not use the default one provided by UIPageViewController. The proper way to add subviews is using autolayout constraints but in iOS 7 is not possible to add subviews with autolayout constraints to the UIPageViewController, it throws an exception: "Auto Layout still required after executing -layoutSubviews", so in this case it is implemented using frames.
-    if (IS_OS_8_OR_LATER) {
-        self.pageControl = [[UIPageControl alloc] init];
-        
-        self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [self.view addSubview:self.pageControl];
-        [self.view bringSubviewToFront:self.pageControl];
-        
-        NSDictionary *viewsDictionary = @{@"pageControl":self.pageControl};
-        
-        [self.view addConstraints:[NSLayoutConstraint
-                                   constraintsWithVisualFormat:@"V:[pageControl(20)]|"
-                                   options:0
-                                   metrics:nil
-                                   views:viewsDictionary]];
-        
-        [self.view addConstraints:[NSLayoutConstraint
-                                   constraintsWithVisualFormat:@"H:|[pageControl]|"
-                                   options:NSLayoutFormatDirectionLeadingToTrailing
-                                   metrics:nil
-                                   views:viewsDictionary]];
-    } else {
-        // Can we drop support for iOS < 8.0?
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - PAGE_CONTROL_HEIGHT, self.view.frame.size.width, PAGE_CONTROL_HEIGHT)];
-        self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-        
-        [self.view addSubview:self.pageControl];
-        [self.view bringSubviewToFront:self.pageControl];
-    }
+    self.pageControl = [[UIPageControl alloc] init];
+    
+    self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.pageControl];
+    [self.view bringSubviewToFront:self.pageControl];
+    
+    NSDictionary *viewsDictionary = @{@"pageControl":self.pageControl};
+    
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"V:[pageControl(20)]|"
+                               options:0
+                               metrics:nil
+                               views:viewsDictionary]];
+    
+    [self.view addConstraints:[NSLayoutConstraint
+                               constraintsWithVisualFormat:@"H:|[pageControl]|"
+                               options:NSLayoutFormatDirectionLeadingToTrailing
+                               metrics:nil
+                               views:viewsDictionary]];
     
     self.pageControl.numberOfPages = NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS;
     self.pageControl.currentPage = [self pageForSocialNetwork:self.socialSourceType];
@@ -349,6 +341,11 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
     //Not pulling the page control out just yet
     self.pageControl.hidden = YES;
+}
+
+- (void)setSocialSourceType:(PGSocialSourceType)socialSourceType
+{
+    _socialSourceType = socialSourceType;
 }
 
 - (UINavigationController *)currentNavigationController
@@ -408,6 +405,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     UINavigationController *navController = [self currentNavigationController];
 
     BOOL popped = NO;
+
     for (UIViewController *vc in navController.viewControllers) {
         if ([vc isKindOfClass:[HPPRSelectAlbumTableViewController class]]) {
             [navController popToViewController:vc animated:YES];
@@ -442,8 +440,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    NSLog(@"didFinish: %d, previous: %@, complete: %d", finished, previousViewControllers, completed);
-
     if (!completed) {
         return;
     }
@@ -457,6 +453,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
         self.pageControl.currentPage = [self pageForSocialNetwork:socialSource.type];
         [self.navigationView selectButton:socialSource.title animated:YES];
+        self.socialSourceType = socialSource.type;
     }
 
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
@@ -493,7 +490,12 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     NSInteger index = [self.socialViewControllers indexOfObject:(UINavigationController *) viewController];
 
     if (index != NSNotFound) {
-        index = ((index - 1) % self.socialSources.count);
+        // the modulus operator fails basic arithmetic...
+        if (0 == index) {
+            index = self.socialSources.count-1;
+        } else {
+            index = ((index - 1) % self.socialSources.count);
+        }
 
         return self.socialViewControllers[index];
     }

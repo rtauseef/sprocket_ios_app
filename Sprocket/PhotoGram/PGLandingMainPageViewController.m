@@ -252,6 +252,11 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
     [self showSocialNetwork:PGSocialSourceTypeLocalPhotos includeLogin:NO];
 }
 
+- (IBAction)pituTapped:(id)sender
+{
+    [self showSocialNetwork:PGSocialSourceTypePitu includeLogin:NO];
+}
+
 - (IBAction)facebookTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
@@ -356,7 +361,7 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
             [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
             break;
         case PGSocialSourceTypePitu:
-            NSLog(@"Pitu tapped");
+            [self pituTapped:button];
             break;
     }
 }

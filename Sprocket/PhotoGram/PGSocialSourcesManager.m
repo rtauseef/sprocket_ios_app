@@ -61,6 +61,17 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
     return nil;
 }
 
+- (PGSocialSource *)socialSourceByTitle:(NSString *)title
+{
+    for (PGSocialSource *socialSource in self.socialSources) {
+        if ([socialSource.title isEqualToString:title]) {
+            return socialSource;
+        }
+    }
+    
+    return nil;
+}
+
 
 #pragma mark - Feature Flag
 
@@ -90,7 +101,7 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
         language = nil;
     }
 
-    if ([language isEqualToString:@"zh"]) {
+    if ([language isEqualToString:@"zh"]  ||  [self isEnabledExtraSocialSources]) {
         self.socialSources = @[
                                [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
 //                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo],

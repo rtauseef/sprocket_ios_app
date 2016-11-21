@@ -10,14 +10,8 @@
 // the license agreement.
 //
 
-#import "HPPRAlbum.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "HPPRCameraRollMedia.h"
 
-@interface HPPRCameraRollAlbum : HPPRAlbum
-
-@property (strong, nonatomic) ALAssetsGroup * group;
-
-- (id)initWithAssetGroup:(ALAssetsGroup *)group;
-- (void)setAAssetGroup:(ALAssetsGroup *)group;
+@interface HPPRPituMedia : HPPRCameraRollMedia
 
 @end

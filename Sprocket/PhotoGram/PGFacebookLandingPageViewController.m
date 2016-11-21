@@ -183,7 +183,7 @@ NSString * const kFacebookUserIdKey = @"id";
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         } else {
-            NSLog(@"FACEBOOK LOGIN ERROR: %@", error);
+            PGLogError(@"FACEBOOK LOGIN ERROR: %@", error);
         }
     }];
 }

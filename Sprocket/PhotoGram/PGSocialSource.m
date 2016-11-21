@@ -52,6 +52,14 @@ NSString * const kIncludeLoginKey = @"include-login";
 
 - (void)setupSocialSource
 {
+    self.icon = nil;
+    self.menuIcon = nil;
+    self.title = nil;
+    self.hasFolders = NO;
+    self.needsSignIn = NO;
+    self.loginProvider = nil;
+    self.photoProvider = nil;
+
     switch (self.type) {
         case PGSocialSourceTypeFacebook:
             self.icon = [UIImage imageNamed:@"facebook_C"];
@@ -86,6 +94,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.hasFolders = YES;
             self.title = NSLocalizedString(@"Camera Roll", @"Social source title for Camera Roll");
             self.needsSignIn = NO;
+            self.loginProvider = [HPPRCameraRollLoginProvider sharedInstance];
             self.photoProvider = [HPPRCameraRollPhotoProvider sharedInstance];
             break;
         case PGSocialSourceTypeWeiBo:
@@ -108,6 +117,8 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.hasFolders = NO;
             self.title = NSLocalizedString(@"Pitu", @"Social source title for Pitu");
             self.needsSignIn = NO;
+            self.loginProvider = [HPPRPituLoginProvider sharedInstance];
+            self.photoProvider = [HPPRPituPhotoProvider sharedInstance];
             break;
 
         default:

@@ -47,6 +47,27 @@
 		24c277c935ea51ebe3c46cc5 /* Privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385619BE57C5009C695F /* Privacy@2x.png */; };
 		2529d15d16aa46d869158238 /* PGWebViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E38E96B419C79FC900EA926A /* PGWebViewerViewController.m */; };
 		25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
+		260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */; };
+		260BD0741DDE539700AE6BAA /* blue_frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0AB1DDA68CF006396FA /* blue_frame_TN.png */; };
+		260BD0751DDE539700AE6BAA /* blue_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0AC1DDA68CF006396FA /* blue_frame_TN@2x.png */; };
+		260BD0761DDE539700AE6BAA /* blue_frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0AD1DDA68CF006396FA /* blue_frame_TN@3x.png */; };
+		260BD0771DDE539700AE6BAA /* blue_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0AE1DDA68CF006396FA /* blue_frame.png */; };
+		260BD0781DDE539700AE6BAA /* Kraft_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0AF1DDA68CF006396FA /* Kraft_Frame_iOS_TN.png */; };
+		260BD0791DDE539700AE6BAA /* Kraft_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B01DDA68CF006396FA /* Kraft_Frame_iOS_TN@2x.png */; };
+		260BD07A1DDE539700AE6BAA /* Kraft_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B11DDA68CF006396FA /* Kraft_Frame_iOS_TN@3x.png */; };
+		260BD07B1DDE539700AE6BAA /* Kraft_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B21DDA68CF006396FA /* Kraft_Frame_iOS.png */; };
+		260BD07C1DDE539700AE6BAA /* Orange_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B31DDA68CF006396FA /* Orange_Frame_iOS_TN.png */; };
+		260BD07D1DDE539700AE6BAA /* Orange_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B41DDA68CF006396FA /* Orange_Frame_iOS_TN@2x.png */; };
+		260BD07E1DDE539700AE6BAA /* Orange_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B51DDA68CF006396FA /* Orange_Frame_iOS_TN@3x.png */; };
+		260BD07F1DDE539700AE6BAA /* Orange_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B61DDA68CF006396FA /* Orange_Frame_iOS.png */; };
+		260BD0801DDE539700AE6BAA /* Sloppy_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B71DDA68CF006396FA /* Sloppy_Frame_iOS_TN.png */; };
+		260BD0811DDE539700AE6BAA /* Sloppy_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B81DDA68CF006396FA /* Sloppy_Frame_iOS_TN@2x.png */; };
+		260BD0821DDE539700AE6BAA /* Sloppy_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0B91DDA68CF006396FA /* Sloppy_Frame_iOS_TN@3x.png */; };
+		260BD0831DDE539700AE6BAA /* Sloppy_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0BA1DDA68CF006396FA /* Sloppy_Frame_iOS.png */; };
+		260BD0841DDE539700AE6BAA /* Wood_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0BB1DDA68CF006396FA /* Wood_Frame_iOS_TN.png */; };
+		260BD0851DDE539700AE6BAA /* Wood_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0BC1DDA68CF006396FA /* Wood_Frame_iOS_TN@2x.png */; };
+		260BD0861DDE539700AE6BAA /* Wood_Frame_iOS_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0BD1DDA68CF006396FA /* Wood_Frame_iOS_TN@3x.png */; };
+		260BD0871DDE539700AE6BAA /* Wood_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F7C0BE1DDA68CF006396FA /* Wood_Frame_iOS.png */; };
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
@@ -884,6 +905,8 @@
 		0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket-cal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		260BD0711DDE3D3C00AE6BAA /* PGPituLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPituLandingPageViewController.h; sourceTree = "<group>"; };
+		260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPituLandingPageViewController.m; sourceTree = "<group>"; };
 		260DCF161D2E0ADD0057BD55 /* AlphaGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaGradientView.h; sourceTree = "<group>"; };
 		260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaGradientView.m; sourceTree = "<group>"; };
 		261149A11DB0306A00C53F6D /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -2277,6 +2300,8 @@
 				E31BE41E19ED91E1006B78BB /* PGFacebookLandingPageViewController.m */,
 				E31BE42119ED91FA006B78BB /* PGCameraRollLandingPageViewController.h */,
 				E31BE42219ED91FA006B78BB /* PGCameraRollLandingPageViewController.m */,
+				260BD0711DDE3D3C00AE6BAA /* PGPituLandingPageViewController.h */,
+				260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */,
 				CC3335221A0BEC4800E421AC /* PGFlickrLandingPageViewController.h */,
 				CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */,
 				F18C59241A702DB900DEF77C /* PGLandingMainPageViewController.h */,
@@ -2874,6 +2899,7 @@
 				92E9C2291DDCDD19009E4E63 /* ornament_1_TN@3x.png in Resources */,
 				92E9C2411DDCDD19009E4E63 /* snowman_hat_TN@3x.png in Resources */,
 				ca5182e6b7fd1374958f24a9 /* stars_TN@3x.png in Resources */,
+				260BD0781DDE539700AE6BAA /* Kraft_Frame_iOS_TN.png in Resources */,
 				2cd670907ef7ede7c270e8e2 /* cupcake_TN@2x.png in Resources */,
 				92E9C2281DDCDD19009E4E63 /* ornament_1_TN@2x.png in Resources */,
 				045dc9dcb0ee035a350f7bd2 /* 1_turquoise_frame_TN.png in Resources */,
@@ -2896,6 +2922,7 @@
 				92E9C23B1DDCDD19009E4E63 /* snowman_face_TN.png in Resources */,
 				690d39fa3ab3f49cd66a0d9b /* feather.png in Resources */,
 				6add67480481a12b159afd7c /* 9_polkadots_frame.png in Resources */,
+				260BD07A1DDE539700AE6BAA /* Kraft_Frame_iOS_TN@3x.png in Resources */,
 				92E9C22F1DDCDD19009E4E63 /* rudolph_antlers_TN.png in Resources */,
 				a3b227bce0d55bcf3ed35663 /* crown.png in Resources */,
 				33bb16d25dfa6e624cf617b6 /* sunglasses_TN@3x.png in Resources */,
@@ -2916,7 +2943,9 @@
 				3bde23b670d942cded141e6c /* 5_Red_frame_TN@3x.png in Resources */,
 				92E9C1FF1DDCDD19009E4E63 /* dreidle_TN.png in Resources */,
 				92E9C2321DDCDD19009E4E63 /* rudolph_antlers.png in Resources */,
+				260BD0831DDE539700AE6BAA /* Sloppy_Frame_iOS.png in Resources */,
 				141e603b3128b6ba315c834a /* crown_TN@3x.png in Resources */,
+				260BD0841DDE539700AE6BAA /* Wood_Frame_iOS_TN.png in Resources */,
 				92E9C2241DDCDD19009E4E63 /* mistletoe_TN@2x.png in Resources */,
 				92E9C2501DDCDD19009E4E63 /* StringOLights_TN.png in Resources */,
 				92E9C2611DDD0AC8009E4E63 /* Santa_Frame_iOS_TN@3x.png in Resources */,
@@ -2926,8 +2955,10 @@
 				92E9C26B1DDD0AC8009E4E63 /* xmasPolka_Frame_iOS_TN.png in Resources */,
 				92E9C22A1DDCDD19009E4E63 /* ornament_1.png in Resources */,
 				92E9C20C1DDCDD19009E4E63 /* glasses_rudolph_TN@2x.png in Resources */,
+				260BD0761DDE539700AE6BAA /* blue_frame_TN@3x.png in Resources */,
 				92E9C26E1DDD0AC8009E4E63 /* xmasPolka_Frame_iOS.png in Resources */,
 				328bf051b3e3af62c7e90ba1 /* sunglasses_TN@2x.png in Resources */,
+				260BD0771DDE539700AE6BAA /* blue_frame.png in Resources */,
 				b3c0cbae136849d796260560 /* 9_polkadots_frame_TN@3x.png in Resources */,
 				26F7C0791DD10C1E006396FA /* moon.png in Resources */,
 				de3e98d3018b073d35b2b8b5 /* 3_blue_watercolor_frame_TN.png in Resources */,
@@ -2957,6 +2988,7 @@
 				91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */,
 				92E9C2201DDCDD19009E4E63 /* menorah_TN@2x.png in Resources */,
 				3c5e32682184b958db2c4972 /* HPSimplified_Lt.ttf in Resources */,
+				260BD0861DDE539700AE6BAA /* Wood_Frame_iOS_TN@3x.png in Resources */,
 				92E9C2251DDCDD19009E4E63 /* mistletoe_TN@3x.png in Resources */,
 				3f61a6f79eae18c8239267a5 /* HPSimplified_LtIt.ttf in Resources */,
 				81e8cd1030347c732f21826a /* feather_TN.png in Resources */,
@@ -2968,6 +3000,8 @@
 				fdae1cf600f0b63189e29821 /* Muli-Regular.ttf in Resources */,
 				92E9C20D1DDCDD19009E4E63 /* glasses_rudolph_TN@3x.png in Resources */,
 				26F7C0781DD10C1E006396FA /* moon_TN@3x.png in Resources */,
+				260BD0751DDE539700AE6BAA /* blue_frame_TN@2x.png in Resources */,
+				260BD0851DDE539700AE6BAA /* Wood_Frame_iOS_TN@2x.png in Resources */,
 				51ed1ffe4c635bd63e6eaef7 /* xoxo_TN.png in Resources */,
 				92E9C24B1DDCDD19009E4E63 /* stocking_TN.png in Resources */,
 				bb2c4481401f5b9933011b69 /* OpenSans-Bold.ttf in Resources */,
@@ -2984,8 +3018,10 @@
 				6e2c2473ed2f0f1072995bbe /* RockSalt.ttf in Resources */,
 				92E9C1F61DDCDD19009E4E63 /* candy_cane.png in Resources */,
 				e7da7e9d19075d85ceb82352 /* sanchez-regular.ttf in Resources */,
+				260BD07E1DDE539700AE6BAA /* Orange_Frame_iOS_TN@3x.png in Resources */,
 				fb35aabc9163f8aeef8b61fe /* diamond_TN@2x.png in Resources */,
 				26F7C0741DD10C1E006396FA /* leaf3_TN@3x.png in Resources */,
+				260BD07C1DDE539700AE6BAA /* Orange_Frame_iOS_TN.png in Resources */,
 				92E9C25F1DDD0AC8009E4E63 /* Santa_Frame_iOS_TN.png in Resources */,
 				7fdb6ff84e18d28fadb585d0 /* 10_green_watercolor_frame2_TN.png in Resources */,
 				71f2dffb8966b2947e2dced6 /* SourceSansPro-Regular.ttf in Resources */,
@@ -3000,14 +3036,18 @@
 				92E9C2011DDCDD19009E4E63 /* dreidle_TN@3x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
 				7c7a6af4c5b9a170cef28990 /* birthdayHat.png in Resources */,
+				260BD07F1DDE539700AE6BAA /* Orange_Frame_iOS.png in Resources */,
 				343d40aad2e7a4e478a5f9ca /* catglasses.png in Resources */,
 				5522aba7222f85b2819ba9c7 /* stars_TN.png in Resources */,
 				2d88afc85ef6599f299351fe /* 4_white_frame_TN.png in Resources */,
 				26F7C0701DD10C1E006396FA /* catwhiskers_TN@3x.png in Resources */,
 				57699a5b81bfa9db567fb52b /* catglasses_TN.png in Resources */,
 				92E9C2091DDCDD19009E4E63 /* glasses_hanukah_TN@3x.png in Resources */,
+				260BD07D1DDE539700AE6BAA /* Orange_Frame_iOS_TN@2x.png in Resources */,
 				9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */,
+				260BD0791DDE539700AE6BAA /* Kraft_Frame_iOS_TN@2x.png in Resources */,
 				92E9C2001DDCDD19009E4E63 /* dreidle_TN@2x.png in Resources */,
+				260BD0741DDE539700AE6BAA /* blue_frame_TN.png in Resources */,
 				92E9C1F81DDCDD19009E4E63 /* cap_TN@2x.png in Resources */,
 				5127173d4e5d95d27a5a831e /* feather2_TN@2x.png in Resources */,
 				26F7C0761DD10C1E006396FA /* moon_TN.png in Resources */,
@@ -3054,6 +3094,7 @@
 				92E9C24D1DDCDD19009E4E63 /* stocking_TN@3x.png in Resources */,
 				0818277ab6df516fce5454fa /* MeasurementArrowLeft@2x.png in Resources */,
 				59179d046194372660f136ed /* stars_TN@2x.png in Resources */,
+				260BD0821DDE539700AE6BAA /* Sloppy_Frame_iOS_TN@3x.png in Resources */,
 				92E9C2341DDCDD19009E4E63 /* scarf_TN@2x.png in Resources */,
 				9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */,
 				26F7C0751DD10C1E006396FA /* leaf3.png in Resources */,
@@ -3088,9 +3129,11 @@
 				4cf4f382b7869a87a60f8542 /* catears_TN.png in Resources */,
 				92E9C1FA1DDCDD19009E4E63 /* cap.png in Resources */,
 				a0be190207beb02642a019ea /* catglasses_TN@3x.png in Resources */,
+				260BD0811DDE539700AE6BAA /* Sloppy_Frame_iOS_TN@2x.png in Resources */,
 				92E9C21E1DDCDD19009E4E63 /* horn.png in Resources */,
 				92E9C20B1DDCDD19009E4E63 /* glasses_rudolph_TN.png in Resources */,
 				3d6918f1cfb3acc4963c9d33 /* OMG.png in Resources */,
+				260BD07B1DDE539700AE6BAA /* Kraft_Frame_iOS.png in Resources */,
 				30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */,
 				26F7C06E1DD10C1E006396FA /* catwhiskers_TN.png in Resources */,
 				92E9C23E1DDCDD19009E4E63 /* snowman_face.png in Resources */,
@@ -3157,8 +3200,10 @@
 				92E9C23F1DDCDD19009E4E63 /* snowman_hat_TN.png in Resources */,
 				3f79e1abbf2467695b7efca1 /* InfoPlist.strings in Resources */,
 				c7e23e3ba66e4fa184240d1e /* Localizable.strings in Resources */,
+				260BD0801DDE539700AE6BAA /* Sloppy_Frame_iOS_TN.png in Resources */,
 				7e519a12ff45fdd0f7d28e18 /* 13_floral2_frame_TN@2x.png in Resources */,
 				64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */,
+				260BD0871DDE539700AE6BAA /* Wood_Frame_iOS.png in Resources */,
 				92E9C23C1DDCDD19009E4E63 /* snowman_face_TN@2x.png in Resources */,
 				447c4fc72f1695b05d10ac2f /* 2_pink_spraypaint_frame2.png in Resources */,
 				f86bb0b8ebcfda11f02ee448 /* Settings.bundle in Resources */,
@@ -3545,6 +3590,7 @@
 				E3461F2619AE2F470042DF5E /* UIColor+HexString.m in Sources */,
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
+				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
@@ -4044,11 +4090,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4508,9 +4554,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4658,8 +4704,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
