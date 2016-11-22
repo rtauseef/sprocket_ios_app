@@ -20,6 +20,7 @@
 + (instancetype)sharedInstance;
 
 - (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
+- (PGSocialSource *)socialSourceByTitle:(NSString *)title;
 - (void)toggleExtraSocialSourcesEnabled;
 - (BOOL)isEnabledExtraSocialSources;
 
