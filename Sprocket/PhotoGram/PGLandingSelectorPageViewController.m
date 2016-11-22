@@ -199,19 +199,23 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     
     PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
-    BOOL includeLogin = [[notification.userInfo objectForKey:kIncludeLoginKey] boolValue];
     
-    UINavigationController *viewController = [self viewControllerForSocialSourceType:socialSourceType];
-    
-    [self setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
-    
-    self.pageControl.currentPage = [self pageForSocialNetwork:socialSourceType];
-    self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
-
-    if (includeLogin) {
-        if ([viewController.topViewController isKindOfClass:[PGLandingPageViewController class]]) {
-            PGLandingPageViewController *landingPageViewController = (PGLandingPageViewController *) viewController.topViewController;
-            [landingPageViewController performSelector:@selector(showLogin) withObject:nil afterDelay:1.0];
+    if (self.socialSourceType != socialSourceType) {
+        BOOL includeLogin = [[notification.userInfo objectForKey:kIncludeLoginKey] boolValue];
+        
+        UINavigationController *viewController = [self viewControllerForSocialSourceType:socialSourceType];
+        
+        [self setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
+        
+        self.socialSourceType = socialSourceType;
+        self.pageControl.currentPage = [self pageForSocialNetwork:socialSourceType];
+        self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
+        
+        if (includeLogin) {
+            if ([viewController.topViewController isKindOfClass:[PGLandingPageViewController class]]) {
+                PGLandingPageViewController *landingPageViewController = (PGLandingPageViewController *) viewController.topViewController;
+                [landingPageViewController performSelector:@selector(showLogin) withObject:nil afterDelay:1.0];
+            }
         }
     }
 }
