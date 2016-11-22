@@ -26,12 +26,6 @@
     dispatch_once(&once, ^{
         sharedInstance = [[HPPRPituPhotoProvider alloc] init];
         sharedInstance.loginProvider = [HPPRPituLoginProvider sharedInstance];
-        
-        [sharedInstance albumsWithRefresh:NO andCompletion:^(NSArray *albums, NSError *error) {
-            if (nil != albums  &&  1 == albums.count) {
-                sharedInstance.album = albums[0];
-            }
-        }];
     });
     return sharedInstance;
 }
@@ -56,6 +50,26 @@
 - (BOOL)showNetworkWarning
 {
     return NO;
+}
+
+#pragma mark - Photo list operations
+
+- (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
+{
+    if (self.album) {
+        NSArray *records = [self getThumbnailPhotosFromCameraRoll];
+        completion(@{ @"data":records });
+    } else {
+        [self albumsWithRefresh:NO andCompletion:^(NSArray *albums, NSError *error) {
+            NSArray *records = [[NSArray alloc] init];
+            if (nil != albums  &&  1 == albums.count) {
+                self.album = albums[0];
+                records = [self getThumbnailPhotosFromCameraRoll];
+            }
+            
+            completion(@{ @"data":records });
+        }];
+    }
 }
 
 #pragma mark - Albums and photos

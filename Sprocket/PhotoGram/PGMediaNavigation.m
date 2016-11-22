@@ -82,7 +82,6 @@
     [self.scrollView createButtonArrayWithButtonTitles:self.providers andLayoutStyle:SShorizontalLayout];
     self.scrollView.ssRollingButtonScrollViewDelegate = self;
     self.refreshing = NO;
-    self.scrollView.ssRollingButtonScrollViewDelegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
@@ -184,17 +183,6 @@
 - (void)photoCollectionEndRefresh:(id)sender
 {
     self.refreshing = NO;
-}
-
-#pragma mark - SSRollingButtonScrollViewDelegate
-
-- (void)rollingScrollViewButtonIsInCenter:(UIButton *)button ssRollingButtonScrollView:(SSRollingButtonScrollView *)rollingButtonScrollView
-{
-    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByTitle:button.titleLabel.text];
-    
-    NSDictionary *userInfo = @{kSocialNetworkKey: @(socialSource.type), kIncludeLoginKey: @(socialSource.needsSignIn)};
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil userInfo:userInfo];
 }
 
 @end
