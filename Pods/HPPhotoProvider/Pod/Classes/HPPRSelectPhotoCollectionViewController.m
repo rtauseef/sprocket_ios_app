@@ -145,6 +145,10 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 {
     [super viewWillAppear:animated];
     
+    if (self.customNoPhotosMessage) {
+        self.noPhotosLabel.text = self.customNoPhotosMessage;
+    }
+
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
