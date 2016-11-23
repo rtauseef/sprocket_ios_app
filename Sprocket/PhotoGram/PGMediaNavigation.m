@@ -185,4 +185,15 @@
     self.refreshing = NO;
 }
 
+#pragma mark - SSRollingButtonScrollViewDelegate
+
+- (void)rollingScrollViewButtonIsInCenter:(UIButton *)button ssRollingButtonScrollView:(SSRollingButtonScrollView *)rollingButtonScrollView
+{
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByTitle:button.titleLabel.text];
+    
+    NSDictionary *userInfo = @{kSocialNetworkKey: @(socialSource.type), kIncludeLoginKey: @(socialSource.needsSignIn)};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil userInfo:userInfo];
+}
+
 @end
