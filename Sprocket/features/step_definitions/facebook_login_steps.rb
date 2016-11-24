@@ -37,7 +37,7 @@ end
 Then(/^I touch the "(.*?)" Logo$/) do |photo_source|
     
   if photo_source == "Facebook"
-        value = "//UIAApplication[1]/UIAWindow[1]/UIAButton[4]"
+        value = "//UIAButton[@name='Facebook']"
     end
     selenium.find_element(:xpath,"#{value}").click
 end
@@ -48,7 +48,7 @@ When(/^I touch signin button$/) do
         action.swipe start_x: 50,end_x: 300,start_y: 100,end_y: 100,duration: 1000
         action.perform 
         sleep(WAIT_SCREENLOAD)
-    sign_in_button="//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIAButton[1]"
+    sign_in_button="//UIAButton[@name='Sign In']"
     if selenium.find_elements(:xpath,"#{sign_in_button}").size > 0
         selenium.find_element(:xpath,"#{sign_in_button}").click
     end
@@ -63,11 +63,11 @@ Given(/^I login to facebook$/) do
         puts "Logging to facebook via safari!" .blue
     else
       sleep(SLEEP_SCREENLOAD)
-        txtFBEmail="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIATextField[1]"
+        txtFBEmail="//UIATextField[@value='Email address or phone number']"
         #txt_pass= "//UIASecureTextField[@value='Facebook password']"
-       txtFBPassword="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIASecureTextField[1]"
-      btnFBLogin= "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[1]"
-        btnFBConfirm= "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAButton[2]"
+       txtFBPassword="//UIASecureTextField[@value='Facebook password']"
+      btnFBLogin= "//UIAButton[@name='Log In']"
+        btnFBConfirm= "//UIAButton[@name='OK']"
         wait = Selenium::WebDriver::Wait.new(:timeout => MAX_TIMEOUT) # seconds
         wait.until { selenium.find_element(:xpath,"#{txtFBEmail}") }
         selenium.find_element(:xpath,"#{txtFBEmail}").click
