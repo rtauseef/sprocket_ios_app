@@ -30,7 +30,7 @@ end
 Then(/^I should see the "(.*?)" Logo$/) do |photo_source|
     sleep(WAIT_SCREENLOAD)
   if photo_source == "Facebook"
-        value = "//UIAApplication[1]/UIAWindow[1]/UIAButton[4]"
+        value = "//UIAButton[@name='Facebook']"
     end
     raise "#{photo_source} logo not found!" unless (selenium.find_elements(:xpath,"#{value}").size) > 0
 end
