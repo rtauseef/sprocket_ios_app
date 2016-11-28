@@ -150,7 +150,7 @@ const NSInteger PGStickerItemsCount = 45;
         }
         case PGStickerItemsChristmasStar: {
             sticker.accessibilityText = NSLocalizedString(@"Holiday Star Sticker", nil);
-            sticker.imageName = @"star";
+            sticker.imageName = @"star0";
             break;
         }
         case PGStickerItemsHanukkahGlasses: {

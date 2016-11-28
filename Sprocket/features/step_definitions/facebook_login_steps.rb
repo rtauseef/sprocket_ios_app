@@ -18,6 +18,8 @@ Given(/^I am on the Landing screen$/) do
     sleep(MAX_TIMEOUT)
     sleep(MAX_TIMEOUT)
     selenium.start_driver
+    sleep(WAIT_SCREENLOAD)
+    selenium.find_element(:xpath,"//UIAButton[@name='Skip to the App']").click
     camera_pop_up = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]"
     if selenium.find_elements(:xpath,"#{camera_pop_up}").size > 0
         selenium.find_elements(:xpath,"#{camera_pop_up}").click
@@ -26,7 +28,7 @@ Given(/^I am on the Landing screen$/) do
 end
 
 Then(/^I should see the "(.*?)" Logo$/) do |photo_source|
-    sleep(2.0)
+    sleep(WAIT_SCREENLOAD)
   if photo_source == "Facebook"
         value = "//UIAApplication[1]/UIAWindow[1]/UIAButton[4]"
     end

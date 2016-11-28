@@ -19,34 +19,37 @@
 #import "PGAppDelegate.h"
 #import "PGAppAppearance.h"
 #import "SWRevealViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "PGLandingSelectorPageViewController.h"
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGCameraManager.h"
 #import "PGAnalyticsManager.h"
+#import "PGSideBarMenuItems.h"
+#import "PGSocialSourcesCircleView.h"
+#import "PGSocialSourcesManager.h"
 
 #import <MP.h>
 
 #define IPHONE_5_HEIGHT 568 // pixels
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate>
+static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
 
-@property (strong, nonatomic) IBOutlet UIView *cameraBackgroundView;
-@property (strong, nonatomic) IBOutlet UIVisualEffectView *blurredView;
-@property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UIView *landingButtonsView;
-@property (strong, nonatomic) IBOutlet UIView *cameraButtonsView;
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIButton *hamburgerButton;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (strong, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
-@property (strong, nonatomic) IBOutlet UIButton *instagramButton;
-@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
-@property (strong, nonatomic) IBOutlet UIButton *flickrButton;
-@property (strong, nonatomic) IBOutlet UIButton *cameraRollButton;
+@property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
+@property (weak, nonatomic) IBOutlet UIView *landingButtonsView;
+@property (weak, nonatomic) IBOutlet UIView *cameraButtonsView;
+@property (weak, nonatomic) IBOutlet UIButton *hamburgerButton;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *instagramButton;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *flickrButton;
+@property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
+@property (weak, nonatomic) IBOutlet PGSocialSourcesCircleView *socialSourcesCircleView;
+@property (weak, nonatomic) IBOutlet UIView *socialSourcesHorizontalContainer;
+@property (weak, nonatomic) IBOutlet UIView *socialSourcesCircularContainer;
 
 @end
 
@@ -66,7 +69,16 @@
     surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of sprocket", nil);
     surveyManager.delegate = self;
     [surveyManager check];
-    
+
+    self.socialSourcesCircleView.delegate = self;
+
+    if ([[PGSocialSourcesManager sharedInstance] enabledSocialSources].count > kSocialSourcesUISwitchThreshold) {
+        self.socialSourcesHorizontalContainer.hidden = YES;
+    } else {
+        self.socialSourcesCircularContainer.hidden = YES;
+    }
+
+
     BOOL openFromNotification = ((PGAppDelegate *)[UIApplication sharedApplication].delegate).openFromNotification;
     if (openFromNotification) {
         [[MP sharedInstance] presentPrintQueueFromController:self animated:YES completion:nil];
@@ -178,14 +190,14 @@
     #endif
 }
 
-- (void)showSocialNetwork:(NSString *)socialNetwork includeLogin:(BOOL)includeLogin
+- (void)showSocialNetwork:(PGSocialSourceType)socialSourceType includeLogin:(BOOL)includeLogin
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         // push the LandingSelectorPage onto our nav stack
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGLandingSelectorPageViewController *vc = (PGLandingSelectorPageViewController *)[sb instantiateViewControllerWithIdentifier:@"PGLandingSelectorPageViewController"];
-        
-        vc.socialNetwork = socialNetwork;
+
+        vc.socialSourceType = socialSourceType;
         vc.includeLogin = includeLogin;
         
         [UIView transitionWithView:self.navigationController.view
@@ -208,6 +220,7 @@
         self.facebookButton.userInteractionEnabled = NO;
         self.flickrButton.userInteractionEnabled = NO;
         self.cameraRollButton.userInteractionEnabled = NO;
+        self.socialSourcesCircleView.userInteractionEnabled = NO;
     });
     
 }
@@ -220,37 +233,43 @@
         self.facebookButton.userInteractionEnabled = YES;
         self.flickrButton.userInteractionEnabled = YES;
         self.cameraRollButton.userInteractionEnabled = YES;
+        self.socialSourcesCircleView.userInteractionEnabled = YES;
     });
 }
 
 - (void)handleShowSocialNetworkNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
-    NSNumber *includeLogin = [notification.userInfo objectForKey:kIncludeLoginKey];
+    PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
+    BOOL includeLogin = [[notification.userInfo objectForKey:kIncludeLoginKey] boolValue];
     
-    [self showSocialNetwork:socialNetwork includeLogin:[includeLogin boolValue]];
+    [self showSocialNetwork:socialSourceType includeLogin:includeLogin];
 }
 
 #pragma mark - Gesture recognizers
 
 - (IBAction)cameraRollTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRCameraRollPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeLocalPhotos includeLogin:NO];
+}
+
+- (IBAction)pituTapped:(id)sender
+{
+    [self showSocialNetwork:PGSocialSourceTypePitu includeLogin:NO];
 }
 
 - (IBAction)facebookTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRFacebookPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
 }
 
 - (IBAction)instagramTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRInstagramPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeInstagram includeLogin:NO];
 }
 
 - (IBAction)flickrTapped:(id)sender
 {
-    [self showSocialNetwork:[HPPRFlickrPhotoProvider sharedInstance].name includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
 }
 
 - (IBAction)cameraTapped:(id)sender
@@ -311,6 +330,42 @@
 
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+#pragma mark - PGSocialSourcesCircleViewDelegate
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
+{
+    [self cameraTapped:button];
+}
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
+{
+    switch (socialSource.type) {
+        case PGSocialSourceTypeFacebook:
+            [self facebookTapped:button];
+            break;
+        case PGSocialSourceTypeInstagram:
+            [self instagramTapped:button];
+            break;
+        case PGSocialSourceTypeFlickr:
+            [self flickrTapped:button];
+            break;
+        case PGSocialSourceTypeLocalPhotos:
+            [self cameraRollTapped:button];
+            break;
+        case PGSocialSourceTypeWeiBo:
+            NSLog(@"WeiBo tapped");
+            break;
+        case PGSocialSourceTypeQzone:
+            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
+            break;
+        case PGSocialSourceTypePitu:
+            [self pituTapped:button];
+            break;
+    }
+}
+
 
 #pragma mark - Reset user defaults
 

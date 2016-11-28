@@ -8,7 +8,7 @@
 "3PR-Lb-830.title" = "操作指引与帮助";
 
 /* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "通过 Facebook 进行验证，亦表示您同意惠普的服务条款。";
+"3rx-Fp-iLE.text" = "通过社交网络源进行验证，亦表示您同意惠普的服务条款。";
 
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
 "3t6-KR-FbJ.text" = "通过 Instagram 进行验证，亦表示您同意惠普的服务条款。";
@@ -140,6 +140,9 @@
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "拍摄或选择一张照片";
+
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "HIh-6e-4FK"; */
+"HIh-6e-4FK.text" = "拍摄或选择一张照片";
 
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Tweet 支持";

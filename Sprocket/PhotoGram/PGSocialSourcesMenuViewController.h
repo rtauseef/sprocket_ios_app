@@ -10,14 +10,11 @@
 // the license agreement.
 //
 
-#import "HPPRAlbum.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <UIKit/UIKit.h>
 
-@interface HPPRCameraRollAlbum : HPPRAlbum
+extern CGFloat const kPGSocialSourcesMenuCellHeight;
+extern NSInteger const kPGSocialSourcesMenuDefaultThreshold;
 
-@property (strong, nonatomic) ALAssetsGroup * group;
-
-- (id)initWithAssetGroup:(ALAssetsGroup *)group;
-- (void)setAAssetGroup:(ALAssetsGroup *)group;
+@interface PGSocialSourcesMenuViewController : UIViewController
 
 @end

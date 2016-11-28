@@ -10,16 +10,8 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
+#import "HPPRCameraRollMedia.h"
 
-extern NSString * const kSocialNetworkKey;
-extern NSString * const kIncludeLoginKey;
-extern NSString * const kBuyPaperURL;
-extern NSString * const kSurveyURL;
-extern NSString * const kSurveyNotifyURL;
-
-@interface PGSideBarMenuTableViewController : UITableViewController
-
-- (void)setTableFooterHeight;
+@interface HPPRPituMedia : HPPRCameraRollMedia
 
 @end

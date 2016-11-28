@@ -13,14 +13,10 @@
 #import "PGMediaNavigation.h"
 #import "PGAppAppearance.h"
 #import <HPPR.h>
-#import <HPPRInstagramPhotoProvider.h>
-#import <HPPRFacebookPhotoProvider.h>
-#import <HPPRFlickrPhotoProvider.h>
-#import <HPPRCameraRollPhotoProvider.h>
 #import "UIFont+Style.h"
 #import "SSRollingButtonScrollView.h"
 #import "AlphaGradientView.h"
-#import "PGSideBarMenuTableViewController.h"
+#import "PGSocialSourcesManager.h"
 
 
 @interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
@@ -66,12 +62,15 @@
 - (void)setup
 {
     self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
-    
-    self.providers = [NSArray arrayWithObjects:
-                      [HPPRInstagramPhotoProvider sharedInstance].name,
-                      [HPPRFacebookPhotoProvider sharedInstance].name,
-                      [HPPRFlickrPhotoProvider sharedInstance].name,
-                      [HPPRCameraRollPhotoProvider sharedInstance].name, nil];
+
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
+
+    for (PGSocialSource *socialSource in [[PGSocialSourcesManager sharedInstance] enabledSocialSources]) {
+        [titles addObject:socialSource.title];
+    }
+
+    self.providers = [titles copy];
+
     self.scrollView.spacingBetweenButtons = 0.0f;
     
     self.scrollView.centerButtonTextColor = [UIColor whiteColor];
@@ -110,9 +109,11 @@
 
 - (void)selectSocialNetwork:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
+    PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
 
-    [self selectButton:socialNetwork animated:YES];
+    PGSocialSource *socialSource = [[PGSocialSource alloc] initWithSocialSourceType:socialSourceType];
+
+    [self selectButton:socialSource.title animated:YES];
 }
 
 -(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page

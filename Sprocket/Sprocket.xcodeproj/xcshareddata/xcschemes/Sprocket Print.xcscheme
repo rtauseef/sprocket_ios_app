@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "30ec29c6730ffeaffe3facda"
+               BlueprintIdentifier = "42188b650312ea34d00c34bf"
                BuildableName = "Sprocket-cal.app"
                BlueprintName = "Sprocket-cal"
                ReferencedContainer = "container:Sprocket.xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "30ec29c6730ffeaffe3facda"
+            BlueprintIdentifier = "42188b650312ea34d00c34bf"
             BuildableName = "Sprocket-cal.app"
             BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">
@@ -91,7 +91,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "30ec29c6730ffeaffe3facda"
+            BlueprintIdentifier = "42188b650312ea34d00c34bf"
             BuildableName = "Sprocket-cal.app"
             BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">

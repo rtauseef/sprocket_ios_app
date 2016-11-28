@@ -3,7 +3,7 @@ Feature: Verify Edit crop feature
   I want to verify crop features.
 
 @reset
-@TA14684
+@done
 Scenario Outline: Verify crop option
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
@@ -25,7 +25,7 @@ Scenario Outline: Verify crop option
     
  
 @reset
-@TA14684
+@done
 Scenario Outline: Verify image crop
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button

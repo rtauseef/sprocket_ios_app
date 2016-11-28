@@ -40,9 +40,10 @@ Then (/^I select "(.*?)"$/) do |option|
         touch @current_page.filter_1
     else 
         if option == "sticker" 
-        touch "* id:'Fox_TN'"
-        sleep(STEP_PAUSE)
-    else
+            sticker_name="snowman_face_TN"
+            select_sticker sticker_name
+            sleep(STEP_PAUSE)
+        else
             sleep(2.0)
             touch query("view marked:'#{option}'")
     end
@@ -70,16 +71,16 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
             check_element_exists(@current_page.selected_frame)
     else
         if edit_item == "sticker"
-           selected_frame_status = query("UIImageView index:2",:accessibilityIdentifier)
-           raise "Wrong sticker selected!" unless selected_frame_status == "Fox"
             
-    else
-        if edit_item == "text"
-            sleep(STEP_PAUSE)
-            txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
+           selected_frame_status = query("UIImageView index:2",:accessibilityIdentifier).first
+           raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "snowman_face"
+        else
+            if edit_item == "text"
+                sleep(STEP_PAUSE)
+                txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
             raise "Text not present!" unless txtTemplate = $template_text 
+            end
         end
-    end
     end
 end
 

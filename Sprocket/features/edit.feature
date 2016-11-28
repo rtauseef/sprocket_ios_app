@@ -3,7 +3,7 @@ Feature: Verify Edit screen
   I want to verify Edit features.
 
 @reset
-@TA14417
+@done
 Scenario Outline: Verify Edit screen
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
@@ -24,20 +24,12 @@ Scenario Outline: Verify Edit screen
     
     
 @reset
-@TA14417
+@regression
 Scenario Outline: Verify close button for edit screen
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
     When I tap "Close" mark
-    #Then I should see the modal screen title
-    #Then I should see the modal screen content
-    #Then I tap "No" button
-    #Then I should see the "Edit" screen
-    #Then I tap "Close" mark
-    #Then I should see the modal screen title
-    #Then I should see the modal screen content
-    #Then I tap "Yes" button
     Then I should see the "<screen_name>" screen
     
     Examples:

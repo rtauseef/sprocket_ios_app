@@ -48,8 +48,6 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    // NSLog(@"URL:   %@", request.URL.absoluteString);
-    
     if ((nil != self.notifyUrl) && [request.URL.absoluteString rangeOfString:self.notifyUrl].location != NSNotFound) {
         if ([self.delegate respondsToSelector:@selector(webViewerViewControllerDidReachNotifyUrl:)]) {
             [self.delegate webViewerViewControllerDidReachNotifyUrl:self];
