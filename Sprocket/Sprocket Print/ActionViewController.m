@@ -107,12 +107,13 @@ static NSInteger  const connectionDefaultValue = -1;
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
 {
-    BOOL currentlyConnected = ([[MP sharedInstance] numberOfPairedSprockets] > 0);
+    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+    BOOL currentlyConnected = (numberOfPairedSprockets > 0);
 
     if (currentlyConnected) {
         [self.printerDot setImage:[UIImage imageNamed:@"ptsActive"]];
         self.connectedLabel.hidden = NO;
-        self.batteryIndicator.hidden = NO;
+        self.batteryIndicator.hidden = (1 != numberOfPairedSprockets);
     } else {
         self.connectedLabel.hidden = YES;
         self.batteryIndicator.hidden = YES;
