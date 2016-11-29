@@ -1,7 +1,11 @@
 require_relative '../common_library/support/gistfile'
 
 Then(/^I change language$/) do
-    SimLocale.new.change_sim_locale "8-4","iPhone 6","es_ES"
+    device_name = get_device_name
+    device_type = get_device_type
+    sim_name = get_device_name + " " + device_type
+    os_version = get_os_version.to_s.gsub(".", "-")
+    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","es_ES"
     #English-en_US
     #Spanish-es_ES
     if $curr_language.strip == "es"
@@ -11,6 +15,7 @@ Then(/^I change language$/) do
 
     end
 end
+
 Then(/^I open cameraroll$/) do
         
     if element_exists("button marked:'#{$list_loc['photos_button']}'")
@@ -23,10 +28,7 @@ Then(/^I open cameraroll$/) do
     end
     sleep(WAIT_SCREENLOAD)
 end
-Then(/^I verify album screen title$/) do
-    screen_title=query("view marked:'#{$list_loc['album_screen']}'")
-    raise "not found!" unless screen_title.length > 0
-end
+
 Then(/^I verify photos screen title$/) do
     screen_title=query("view marked:'#{$list_loc['photo_screen']}'")
     raise "not found!" unless screen_title.length > 0
@@ -47,8 +49,9 @@ $language_arr =
     "es_ES" => {
         "photos_button" => "Fotos",
         "auth" => "Autorizar",
-        "album_screen" => "Albumes de Fotos",
-        "photo_screen"=> "Fotos de Fotos"
+        #"album_screen" => "Albumes de Fotos",
+        #"photo_screen"=> "Fotos de Fotos"
+        "photo_screen"=> "Camera Roll"
         }
     }
     
