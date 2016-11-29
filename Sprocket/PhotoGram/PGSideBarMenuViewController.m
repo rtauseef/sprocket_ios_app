@@ -200,7 +200,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         
         self.deviceConnectivityLabel.hidden = shouldHideConnectivity;
         self.deviceStatusLED.hidden = shouldHideConnectivity;
-        self.deviceBatteryLevel.hidden = shouldHideConnectivity;
+        self.deviceBatteryLevel.hidden = (1 != numberOfPairedSprockets);
         
         [[MP sharedInstance] checkSprocketForUpdates:self];
     });
