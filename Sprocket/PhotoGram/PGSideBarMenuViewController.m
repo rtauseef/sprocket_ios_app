@@ -157,7 +157,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellPrivacy: {
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kPrivacyStatementScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]]]];
+            [[UIApplication sharedApplication] openURL:[self privacyURL]];
             break;
         }
         case PGSideBarMenuCellAbout: {
@@ -260,6 +260,29 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)barButtonCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSURL *)privacyURL
+{
+    NSString *url = kPrivacyStatementURL;
+    
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    
+    NSString *languageCode = [currentLocale languageCode];
+    NSString *countryCode = [currentLocale countryCode];
+    
+    if ([languageCode caseInsensitiveCompare:@"de"] == NSOrderedSame) {
+        url = kPrivacyStatementURLDe;
+    }  else if ([languageCode caseInsensitiveCompare:@"fr"] == NSOrderedSame) {
+        url = kPrivacyStatementURLFr;
+    } else if ([languageCode caseInsensitiveCompare:@"es"] == NSOrderedSame) {
+        url = kPrivacyStatementURLSp;
+    } else if ([countryCode caseInsensitiveCompare:@"gb"] == NSOrderedSame  &&
+              [languageCode caseInsensitiveCompare:@"en"] == NSOrderedSame) {
+        url = kPrivacyStatementURLUk;
+    }
+    
+    return [NSURL URLWithString:url];
 }
 
 #pragma mark - Social Sources Menu Methods

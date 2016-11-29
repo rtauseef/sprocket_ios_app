@@ -14,6 +14,11 @@
 #import "NSLocale+Additions.h"
 
 extern NSString * const kPrivacyStatementURL;
+extern NSString * const kPrivacyStatementURLUk;
+extern NSString * const kPrivacyStatementURLDe;
+extern NSString * const kPrivacyStatementURLFr;
+extern NSString * const kPrivacyStatementURLSp;
+
 extern NSString * const kBuyPaperURL;
 extern NSString * const kSurveyURL;
 extern NSString * const kSurveyNotifyURL;

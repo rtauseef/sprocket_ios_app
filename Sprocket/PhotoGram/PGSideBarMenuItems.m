@@ -16,7 +16,12 @@
 
 #import "UIColor+Style.h"
 
-NSString * const kPrivacyStatementURL = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
+NSString * const kPrivacyStatementURL = @"http://www8.hp.com/us/en/privacy/privacy.html";
+NSString * const kPrivacyStatementURLUk = @"http://www8.hp.com/uk/en/privacy/privacy.html";
+NSString * const kPrivacyStatementURLDe = @"http://www8.hp.com/ch/de/privacy/privacy.html";
+NSString * const kPrivacyStatementURLFr = @"http://www8.hp.com/ch/fr/privacy/privacy.html";
+NSString * const kPrivacyStatementURLSp = @"http://www8.hp.com/es/es/privacy/privacy.html";
+
 NSString * const kBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
 NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
