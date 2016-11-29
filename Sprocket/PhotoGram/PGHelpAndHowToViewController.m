@@ -14,6 +14,7 @@
 #import "UIViewController+Trackable.h"
 #import "PGWebViewerViewController.h"
 #import "PGAnalyticsManager.h"
+#import "NSLocale+Additions.h"
 
 #import <Social/Social.h>
 #import <MP.h>
@@ -27,7 +28,6 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
     PGHelpAndHowToRowIndexesVisitSupport
 };
 
-NSString * const kPGHelpAndHowToViewUserURL = @"http://h10032.www1.hp.com/ctg/Manual/c05280005";
 NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
 NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
 NSString * const kViewUserGuideScreenName = @"View User Guide";
@@ -84,7 +84,7 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
     switch (indexPath.row) {
         case PGHelpAndHowToRowIndexesViewUserGuide: {
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kViewUserGuideScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToViewUserURL]];
+            [[UIApplication sharedApplication] openURL:[NSLocale userGuideURL]];
             break;
         }
         case PGHelpAndHowToRowIndexesTweetSupport: {
@@ -115,17 +115,19 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
     NSString *tweetStringURL = nil;
     NSString *enterTextURL = NSLocalizedString(@"Enter+Text", nil);
     NSString *enterText = NSLocalizedString(@"Enter Text", nil);
+    NSString *supportTagURL = [NSLocale twitterSupportTagURL];
+    NSString *supportTag = [NSLocale twitterSupportTag];
     
-    tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS: %@ \n[%@]", appVersion, enterText];
-    tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", appVersion, enterTextURL];
+    tweetText = [NSString stringWithFormat:@"%@ #hpsprocket \nS: %@ \n[%@]", supportTag, appVersion, enterText];
+    tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=%@+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", supportTagURL, appVersion, enterTextURL];
     
     if (IS_OS_8_OR_LATER) {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
         
         if (numberOfPairedSprockets == 1) {
             fwVersion = [[MP sharedInstance] printerVersion];
-            tweetText = [NSString stringWithFormat:@"@hpsupport #hpsprocket \nS:%@ F:%@ \n[%@]", appVersion, fwVersion, enterText];
-            tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=@hpsupport+%%23hpsprocket%%0aS:%@+F:%@+%%0a%%5B%@%%5D", appVersion, fwVersion, enterTextURL];
+            tweetText = [NSString stringWithFormat:@"%@ #hpsprocket \nS:%@ F:%@ \n[%@]", supportTag, appVersion, fwVersion, enterText];
+            tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=%@+%%23hpsprocket%%0aS:%@+F:%@+%%0a%%5B%@%%5D", supportTagURL, appVersion, fwVersion, enterTextURL];
         }
     }
     
