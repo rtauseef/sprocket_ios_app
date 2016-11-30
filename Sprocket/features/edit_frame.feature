@@ -49,6 +49,12 @@ Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
             |No Frame               |
+            |Christmas Polka Dot Frame|
+            |Red Triangle Frame     |
+            |Snow Frame             |    
+            |Striped Frame          |
+            |Grey Frame             | 
+            |Santa Frame            |
             |White Frame            |
             |Kraft Frame            |
             |Floral Frame           |
@@ -63,9 +69,7 @@ Scenario: Verify frame list
             |Green Water Color Frame|
             |Floral 2 Frame         |
             |Pink Spray Paint Frame |
-            |Yellow Frame           |
-            |Blue Gradient Frame    |
-  
+             
   @reset
   @done
 Scenario: Verify all the frames are applied for frame editor screen 
