@@ -10,7 +10,11 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
         check_element_exists(@current_page.flickr_logo)
       else
         if arg=="Camera Roll"
-          check_element_exists(@current_page.cameraroll_logo)
+            if element_exists("* text:'Sign In'")
+                check_element_exists(@current_page.cameraroll_logo_sidemenu)
+            else
+                check_element_exists(@current_page.cameraroll_logo)
+            end
         else
           if arg=="Sprocket"
             check_element_exists(@current_page.sprocket_logo)
