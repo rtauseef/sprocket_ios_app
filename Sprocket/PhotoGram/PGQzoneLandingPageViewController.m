@@ -85,6 +85,20 @@
     });
 }
 
+- (void)showLogin
+{
+    [[HPPRQzoneLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            [self checkCameraRollAndAlbums:NO];
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
+                                                                  device:kEventAuthRequestPhotosLabel];
+        } else {
+            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
+                                                                  device:kEventAuthRequestPhotosLabel];
+        }
+    }];
+}
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -104,18 +118,8 @@
 
 - (IBAction)signInButtonTapped:(id)sender
 {
-    [[HPPRQzoneLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
-        if (loggedIn) {
-            [self checkCameraRollAndAlbums:NO];
-            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
-                                                                  device:kEventAuthRequestPhotosLabel];
-        } else {
-            [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
-                                                 device:kEventAuthRequestPhotosLabel];
-        }
-    }];
+    [self showLogin];
 }
-
 
 
 #pragma mark - HPPRSelectPhotoCollectionViewControllerDelegate
