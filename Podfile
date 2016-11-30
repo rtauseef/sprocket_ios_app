@@ -13,7 +13,7 @@ def shared_pods
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'CocoaLumberjack', '2.2.0'
     pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'#path:'~/workspace/ios-print-sdk'#
-    pod 'HPPhotoProvider', git:'https://github.com/IPGPTP/hp_photo_provider', branch:'master'#path:'~/workspace/hp_photo_provider'#
+    pod 'HPPhotoProvider', git:'https://github.com/IPGPTP/hp_photo_provider', branch:'qzone'#path:'~/workspace/hp_photo_provider'#
 end
 
 target "Sprocket" do
