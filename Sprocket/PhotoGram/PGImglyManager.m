@@ -25,6 +25,7 @@ static NSString *kMetricCategoryText = @"Text";
 static NSString *kMetricCategorySticker = @"Sticker";
 static NSString *kMetricCategoryFilter = @"Filter";
 static NSString *kMetricCategoryFrame = @"Frame";
+static NSString *kMetricCategoryEdit = @"Edit";
 
 @interface PGImglyManager() <IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
 
@@ -371,7 +372,11 @@ typedef enum {
         case PGEmbellishmentCategoryFrame:
             strCategory = kMetricCategoryFrame;
             break;
-            
+
+        case PGEmbellishmentCategoryEdit:
+            strCategory = kMetricCategoryEdit;
+            break;
+
         default:
             strCategory = @"Unknown";
             break;
@@ -433,31 +438,18 @@ typedef enum {
 
 - (void)addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
 {
-    NSString *strCategory = [self categoryName:category];
-    
     switch (category) {
-        case PGEmbellishmentCategoryFont:
-            break;
-            
-        case PGEmbellishmentCategoryText:
-            break;
-            
-        case PGEmbellishmentCategorySticker:
-            break;
-            
         case PGEmbellishmentCategoryFilter:
-            [self removeEmbellishmentCategory:category];
-            break;
-            
         case PGEmbellishmentCategoryFrame:
             [self removeEmbellishmentCategory:category];
             break;
             
         default:
-            strCategory = @"Unknown";
             break;
     }
-    
+
+    NSString *strCategory = [self categoryName:category];
+
     NSDictionary *metric = @{kCategoryMetricColumn : strCategory,
                              kNameMetricColumn     : name};
     
