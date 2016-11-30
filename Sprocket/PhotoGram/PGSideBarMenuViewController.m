@@ -157,7 +157,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellPrivacy: {
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kPrivacyStatementScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:kPrivacyStatementURL, [NSLocale countryID], [NSLocale languageID]]]];
+            [[UIApplication sharedApplication] openURL:[NSLocale privacyURL]];
             break;
         }
         case PGSideBarMenuCellAbout: {
