@@ -17,6 +17,8 @@
 #import "UIViewController+trackable.h"
 #import <Crashlytics/Crashlytics.h>
 
+NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
+
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
@@ -175,7 +177,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.isBackgroundCamera = YES;
 }
 
-- (void)takePicture
+- (void)captureImage
 {
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
@@ -199,7 +201,43 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
         [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+        
+        if ([weakSelf savePhotos]) {
+            [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+                if (loggedIn) {
+                    UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
+                }
+            }];
+        }
     }];
+}
+
+- (void)takePicture
+{
+    if (![self userPromptedToSavePhotos]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
+                                                                       message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             [self setSavePhotos:NO];
+                                                             [self captureImage];
+                                                         }];
+        [alert addAction:noAction];
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             [self setSavePhotos:YES];
+                                                             [self captureImage];
+                                                         }];
+        [alert addAction:yesAction];
+        
+        [self.viewController presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self captureImage];
+    }
 }
 
 - (void)switchCamera
@@ -297,6 +335,30 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
+}
+
+#pragma mark - Auto-Save Photo Setting
+- (BOOL)savePhotos
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:kSettingSaveCameraPhotos];
+}
+
+- (void)setSavePhotos:(BOOL)save
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:save forKey:kSettingSaveCameraPhotos];
+    [defaults synchronize];
+}
+
+- (BOOL)userPromptedToSavePhotos
+{
+    BOOL userPrompted = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (nil == [defaults objectForKey:kSettingSaveCameraPhotos]) {
+        userPrompted = NO;
+    }
+    return userPrompted;
 }
 
 #pragma mark - Metrics
