@@ -33,7 +33,8 @@ typedef enum {
     PGEmbellishmentCategoryText,
     PGEmbellishmentCategorySticker,
     PGEmbellishmentCategoryFilter,
-    PGEmbellishmentCategoryFrame
+    PGEmbellishmentCategoryFrame,
+    PGEmbellishmentCategoryEdit
 } PGEmbellishmentCategory;
 
 @property (strong, nonatomic) NSMutableArray *analytics;
@@ -57,11 +58,12 @@ typedef enum {
         
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
             photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionFilter],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionFrame],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionSticker],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionText],
-                                                                        [NSNumber numberWithInteger:PhotoEditorActionCrop]
+                                                                        @(PhotoEditorActionMagic),
+                                                                        @(PhotoEditorActionFilter),
+                                                                        @(PhotoEditorActionFrame),
+                                                                        @(PhotoEditorActionSticker),
+                                                                        @(PhotoEditorActionText),
+                                                                        @(PhotoEditorActionCrop)
                                                                         ];
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
@@ -69,6 +71,13 @@ typedef enum {
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
                 switch (action) {
+                    case PhotoEditorActionMagic: {
+                        cell.imageView.image = [UIImage imageNamed:@"editMagic"];
+                        cell.imageView.tintColor = [UIColor whiteColor];
+
+                        cell.accessibilityIdentifier = @"editMagic";
+                        break;
+                    }
                     case PhotoEditorActionFilter:
                         cell.imageView.image = [UIImage imageNamed:@"editFilters"];
                         cell.accessibilityIdentifier = @"editFilters";
@@ -95,6 +104,18 @@ typedef enum {
                 
                 cell.captionLabel.text = nil;
             }];
+
+            [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
+                if (action == PhotoEditorActionMagic) {
+                    NSString *embellishmentName = @"Auto-fix";
+
+                    if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:embellishmentName]) {
+                        [self removeEmbellishmentMetric:PGEmbellishmentCategoryEdit name:embellishmentName];
+                    } else {
+                        [self addEmbellishmentMetric:PGEmbellishmentCategoryEdit name:embellishmentName];
+                    }
+                }
+            }];
         }];
         
         NSArray *photoEffectsArray = [NSArray arrayWithObjects:
@@ -119,7 +140,7 @@ typedef enum {
                                       nil];
         
         IMGLYPhotoEffect.allEffects = photoEffectsArray;
-        
+
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
             stickerBuilder.stickersDataSource = self;
             
@@ -327,7 +348,7 @@ typedef enum {
 
 #pragma mark - Analytics
 
-- (NSString *) categoryName:(PGEmbellishmentCategory)category
+- (NSString *)categoryName:(PGEmbellishmentCategory)category
 {
     NSString *strCategory = @"";
     switch (category) {
@@ -359,7 +380,23 @@ typedef enum {
     return strCategory;
 }
 
-- (void) removeEmbellishmentCategory:(PGEmbellishmentCategory)category
+- (BOOL)hasEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+{
+    BOOL metricFound = NO;
+    NSString *strCategory = [self categoryName:category];
+
+    for (NSDictionary *metric in self.analytics) {
+        if ([strCategory isEqualToString:metric[kCategoryMetricColumn]] &&
+            [name isEqualToString:metric[kNameMetricColumn]]) {
+            metricFound = YES;
+            break;
+        }
+    }
+
+    return metricFound;
+}
+
+- (void)removeEmbellishmentCategory:(PGEmbellishmentCategory)category
 {
     NSString *strCategory = [self categoryName:category];
     
@@ -376,7 +413,7 @@ typedef enum {
     }
 }
 
-- (void) removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+- (void)removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
 {
     NSString *strCategory = [self categoryName:category];
     
@@ -394,7 +431,7 @@ typedef enum {
     }
 }
 
-- (void) addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
+- (void)addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
 {
     NSString *strCategory = [self categoryName:category];
     
