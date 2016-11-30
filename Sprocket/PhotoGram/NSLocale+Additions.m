@@ -67,8 +67,8 @@ static NSString * const kPGHelpAndHowToViewUserURLDa = @"http://h10032.www1.hp.c
     NSString *url = kPrivacyStatementURL;
     
     NSLocale *currentLocale = [NSLocale currentLocale];
-    NSString *languageCode = [currentLocale languageCode];
-    NSString *countryCode = [currentLocale countryCode];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+    NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
     
     if ([languageCode caseInsensitiveCompare:@"de"] == NSOrderedSame) {
         url = kPrivacyStatementURLDe;
@@ -89,7 +89,7 @@ static NSString * const kPGHelpAndHowToViewUserURLDa = @"http://h10032.www1.hp.c
     NSString *url = kPGHelpAndHowToViewUserURL;
     
     NSLocale *currentLocale = [NSLocale currentLocale];
-    NSString *languageCode = [currentLocale languageCode];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
     
     if ([languageCode caseInsensitiveCompare:@"de"] == NSOrderedSame) {
         url = kPGHelpAndHowToViewUserURLDe;
@@ -109,8 +109,8 @@ static NSString * const kPGHelpAndHowToViewUserURLDa = @"http://h10032.www1.hp.c
     NSString *tag = @"@hpsupport";
     
     NSLocale *currentLocale = [NSLocale currentLocale];
-    NSString *languageCode = [currentLocale languageCode];
-    NSString *countryCode = [currentLocale countryCode];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+    NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
 
     if ([languageCode caseInsensitiveCompare:@"de"] == NSOrderedSame) {
         tag = [NSString stringWithFormat:@"%@%@", tag, @"DE"];
