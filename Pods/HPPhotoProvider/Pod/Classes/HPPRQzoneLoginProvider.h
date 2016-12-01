@@ -14,6 +14,8 @@
 
 @interface HPPRQzoneLoginProvider : HPPRLoginProvider
 
+@property (strong, nonatomic) NSDictionary *user;
+
 + (HPPRQzoneLoginProvider *)sharedInstance;
 - (void)listAlbums:(void (^)(NSDictionary *albums, NSError *error))completion;
 - (void)listPhotosForAlbum:(NSString *)albumId completion:(void (^)(NSDictionary *photos, NSError *error))completion;

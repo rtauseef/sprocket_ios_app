@@ -13,13 +13,17 @@
 #import "TencentOpenAPI/TencentOAuth.h"
 #import "HPPRQzoneLoginProvider.h"
 #import "HPPRQzoneAlbum.h"
+#import "HPPR.h"
 
 #define kResponse @"kResponse"
+
+NSString * const kQzoneProviderName = @"Qzone";
 
 @interface HPPRQzoneLoginProvider() <TencentLoginDelegate, TencentApiInterfaceDelegate, TencentWebViewDelegate>
 
 @property (nonatomic, strong) TencentOAuth *loginManager;
 @property (nonatomic, strong) void (^loginCompletion)(BOOL loggedIn, NSError *error);
+@property (nonatomic, strong) void (^logoutCompletion)(BOOL loggedIn, NSError *error);
 @property (nonatomic, strong) void (^albumsCompletion)(NSDictionary *albums, NSError *error);
 @property (nonatomic, strong) void (^photosCompletion)(NSDictionary *photos, NSError *error);
 @property (nonatomic, strong) NSMutableArray *allPhotos;
@@ -46,10 +50,9 @@
 - (void)loginWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion
 {
     if ([self connectedToInternet:completion]) {
-        BOOL isAccessTokenValid = (self.loginManager.accessToken && 0) != self.loginManager.accessToken.length;
         
-        if (isAccessTokenValid) {
-            completion(isAccessTokenValid, nil);
+        if ([self isAccesTokenValid]) {
+            completion([self isAccesTokenValid], nil);
         } else {
             self.loginManager = [[TencentOAuth alloc] initWithAppId:@"222222" andDelegate:self];
             self.loginManager.redirectURI = @"www.qq.com";
@@ -69,6 +72,32 @@
     }
 }
 
+- (void)checkStatusWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion
+{
+    if( [self connectedToInternet:completion] ) {
+        if (completion) {
+            completion([self isAccesTokenValid], nil);
+        }
+    }
+}
+
+- (BOOL)isAccesTokenValid
+{
+    return ((self.loginManager.accessToken && 0) != self.loginManager.accessToken.length);
+}
+
+- (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion
+{
+    self.logoutCompletion = completion;
+    
+    [self.loginManager logout:self];
+}
+
+- (NSString *)providerName
+{
+    return kQzoneProviderName;
+}
+
 - (BOOL)handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation
 {
    return [TencentOAuth HandleOpenURL:url];
@@ -77,7 +106,7 @@
 - (void)tencentDidLogin
 {
     if (self.loginCompletion) {
-        self.loginCompletion((self.loginManager.accessToken && 0) != self.loginManager.accessToken.length, nil);
+        [self.loginManager getUserInfo];
     }
 }
 
@@ -95,6 +124,15 @@
     }
 }
 
+- (void)tencentDidLogout
+{
+    if (self.logoutCompletion) {
+        [self notifyLogout];
+        self.logoutCompletion(YES, nil);
+    }
+}
+
+
 #pragma mark Tencent Request Methods
 
 - (void)listAlbums:(void (^)(NSDictionary *albums, NSError *error))completion
@@ -111,7 +149,7 @@
         self.photosCompletion = completion;
         
         if (![self.loginManager getListPhotoWithParams:params]) {
-            completion(nil, [NSError errorWithDomain:nil code:1 userInfo:nil]);
+            completion(nil, nil);
         }
     } else {
         [self listAlbums:^(NSDictionary *albums, NSError *error) {
@@ -136,6 +174,15 @@
             }
         }];
     }
+}
+
+
+- (void)getUserInfoResponse:(APIResponse *)response
+{
+    self.user = [response jsonResponse];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kQzoneProviderName]];
+    self.loginCompletion([self isAccesTokenValid], nil);
 }
 
 - (void)getListAlbumResponse:(APIResponse *)response

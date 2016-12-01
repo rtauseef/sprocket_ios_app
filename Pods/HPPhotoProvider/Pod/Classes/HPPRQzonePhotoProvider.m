@@ -104,20 +104,26 @@
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
     [[HPPRQzoneLoginProvider sharedInstance] listPhotosForAlbum:self.album.objectID completion:^(NSDictionary *photos, NSError *error) {
-        NSMutableArray *allPhotos = [NSMutableArray array];
-        
-        for (NSDictionary *photo in photos) {
-            [allPhotos addObject:[[HPPRQzoneMedia alloc] initWithAttributes:photo]];
-        }
-        
-        if (reload) {
-            [self replaceImagesWithRecords:allPhotos];
+        if (!photos) {
+            if (completion) {
+                completion(nil);
+            }
         } else {
-            [self updateImagesWithRecords:allPhotos];
-        }
-        
-        if (completion) {
-            completion(allPhotos);
+            NSMutableArray *allPhotos = [NSMutableArray array];
+            
+            for (NSDictionary *photo in photos) {
+                [allPhotos addObject:[[HPPRQzoneMedia alloc] initWithAttributes:photo]];
+            }
+            
+            if (reload) {
+                [self replaceImagesWithRecords:allPhotos];
+            } else {
+                [self updateImagesWithRecords:allPhotos];
+            }
+            
+            if (completion) {
+                completion(allPhotos);
+            }
         }
     }];
 }
