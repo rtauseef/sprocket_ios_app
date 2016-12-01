@@ -35,24 +35,55 @@ Then(/^I verify photos screen title$/) do
     sleep(WAIT_SCREENLOAD)
 end
 
+Then(/^I verify the "(.*?)" text$/) do |text|
+    if text == "Take or Select photo"
+        select_photo_text=query("view marked:'#{$list_loc['select_photo']}'")
+        raise "not found!" unless select_photo_text.length > 0
+    else 
+        if text == "Buy Paper"
+            buy_paper_link=query("view marked:'#{$list_loc['buy_paper']}'")
+            raise "not found!" unless buy_paper_link.length > 0
+        else
+            if text == "How to & Help"
+                how_to_help=query("view marked:'#{$list_loc['how_to_help']}'")
+                raise "not found!" unless how_to_help.length > 0
+            else
+                if text == "Give Feedback"
+                    give_feedback=query("view marked:'#{$list_loc['give_feedback']}'")
+                    raise "not found!" unless give_feedback.length > 0 
+                else
+                    if text == "Privacy"
+                        privacy=query("view marked:'#{$list_loc['privacy']}'")
+                        raise "not found!" unless privacy.length > 0
+                    else
+                        if text == "About"
+                            about=query("view marked:'#{$list_loc['about']}'")
+                            raise "not found!" unless about.length > 0
+                        else
+                            if text == "Camera Roll"
+                                camera_roll=query("view marked:'#{$list_loc['camera_roll']}'")
+                                raise "not found!" unless camera_roll.length > 0
+                            else
+                                if text == "Sign In"
+                                    sign_in=query("view marked:'#{$list_loc['sign_in']}'")
+                                    raise "not found!" unless sign_in.length > 0
+                                end
+                            end
+                        end
+                    end
+                end
+            end                                    
+        end
+    end 
+    sleep(WAIT_SCREENLOAD)
+end
 
-    
-$language_arr =
+And(/^I verify the "(.*?)" link$/) do |link|
+    terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service']}'")
+    raise "not found!" unless terms_of_service_link.length > 0
+    sleep(WAIT_SCREENLOAD)
+end
 
-{
-    "en_US" => {
-        "photos_button" => "Camera Roll",
-        "auth" => "Authorize",
-        "album_screen" => "Camera Roll Albums",
-        "photo_screen"=> "Camera Roll Photos"
-        },
-    "es_ES" => {
-        "photos_button" => "Fotos",
-        "auth" => "Autorizar",
-        #"album_screen" => "Albumes de Fotos",
-        #"photo_screen"=> "Fotos de Fotos"
-        "photo_screen"=> "Camera Roll"
-        }
-    }
+
     
 
