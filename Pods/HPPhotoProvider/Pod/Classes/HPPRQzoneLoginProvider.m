@@ -12,6 +12,7 @@
 
 #import "TencentOpenAPI/TencentOAuth.h"
 #import "HPPRQzoneLoginProvider.h"
+#import "HPPRQzoneAlbum.h"
 
 #define kResponse @"kResponse"
 
@@ -21,6 +22,9 @@
 @property (nonatomic, strong) void (^loginCompletion)(BOOL loggedIn, NSError *error);
 @property (nonatomic, strong) void (^albumsCompletion)(NSDictionary *albums, NSError *error);
 @property (nonatomic, strong) void (^photosCompletion)(NSDictionary *photos, NSError *error);
+@property (nonatomic, strong) NSMutableArray *allPhotos;
+@property (nonatomic, assign) NSUInteger numberOfAlbums;
+@property (nonatomic, assign) NSUInteger albumsCounter;
 
 @end
 
@@ -101,21 +105,56 @@
 
 - (void)listPhotosForAlbum:(NSString *)albumId completion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
-    TCListPhotoDic *params = [TCListPhotoDic dictionary];
-    params.paramAlbumid = albumId;
-    self.photosCompletion = completion;
-    
-    if (![self.loginManager getListPhotoWithParams:params]) {
-        completion(nil, [NSError errorWithDomain:nil code:1 userInfo:nil]);
+    if (albumId) {
+        TCListPhotoDic *params = [TCListPhotoDic dictionary];
+        params.paramAlbumid = albumId;
+        self.photosCompletion = completion;
+        
+        if (![self.loginManager getListPhotoWithParams:params]) {
+            completion(nil, [NSError errorWithDomain:nil code:1 userInfo:nil]);
+        }
+    } else {
+        [self listAlbums:^(NSDictionary *albums, NSError *error) {
+            if (error) {
+                NSLog(@"QZONE ALBUMS ERROR\n%@", error);
+                if (completion) {
+                    completion(nil, error);
+                }
+            } else {
+                self.photosCompletion = completion;
+                self.numberOfAlbums = albums.count;
+                self.albumsCounter = 0;
+                self.allPhotos = [NSMutableArray array];
+                
+                for (NSDictionary *album in albums) {
+                    HPPRQzoneAlbum *qzoneAlbum = [[HPPRQzoneAlbum alloc] initWithAttributes:album];
+                    TCListPhotoDic *params = [TCListPhotoDic dictionary];
+                    params.paramAlbumid = qzoneAlbum.objectID;
+                    
+                    [self.loginManager getListPhotoWithParams:params];
+                }
+            }
+        }];
     }
 }
-
-// _paramAlbumid	__NSCFString *	@"V10nmuBB3TGpPQ"	0x000000017003ccc0
 
 - (void)getListAlbumResponse:(APIResponse *)response
 {
     if (response) {
-        NSDictionary *albums = [[response jsonResponse] objectForKey:@"album"];
+        NSMutableArray *albums = [[response jsonResponse] objectForKey:@"album"];
+        NSInteger totalPhotos = 0;
+        
+        for (NSDictionary *album in albums) {
+            totalPhotos += [[album objectForKey:@"picnum"] integerValue];
+        }
+        
+        NSMutableDictionary *allPhotosAlbum = [[NSMutableDictionary alloc] initWithCapacity:1];
+        [allPhotosAlbum setObject:NSLocalizedString(@"All Photos", nil) forKey:@"name"];
+        [allPhotosAlbum setObject:[NSNumber numberWithInteger:totalPhotos] forKey:@"picnum"];
+        [allPhotosAlbum setObject:[albums[albums.count - 1] objectForKey:@"coverurl"] forKey:@"coverurl"];
+        
+        [albums insertObject:allPhotosAlbum atIndex:0];
+        
         self.albumsCompletion(albums, nil);
     } else {
         self.albumsCompletion(nil, nil);
@@ -124,7 +163,21 @@
 
 - (void)getListPhotoResponse:(APIResponse *)response
 {
-    self.photosCompletion([[response jsonResponse] objectForKey:@"photos"], nil);
+    NSArray *photos = (NSArray *)[[response jsonResponse] objectForKey:@"photos"];
+    
+    if (self.numberOfAlbums) {
+        [self.allPhotos addObjectsFromArray:photos];
+        self.albumsCounter++;
+        
+        if (self.numberOfAlbums == self.albumsCounter) {
+            self.numberOfAlbums = 0;
+            self.albumsCounter = 0;
+            self.photosCompletion(self.allPhotos, nil);
+            self.allPhotos = nil;
+        }
+    } else {
+        self.photosCompletion(photos, nil);
+    }
 }
 
 @end

@@ -103,11 +103,6 @@
 
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
-    if (reload) {
-//        self.numberOfPages = nil;
-//        self.nextPage = nil;
-    }
-
     [[HPPRQzoneLoginProvider sharedInstance] listPhotosForAlbum:self.album.objectID completion:^(NSDictionary *photos, NSError *error) {
         NSMutableArray *allPhotos = [NSMutableArray array];
         
