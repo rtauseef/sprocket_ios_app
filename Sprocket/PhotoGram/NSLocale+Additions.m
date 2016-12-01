@@ -24,7 +24,7 @@ static NSString * const kPGHelpAndHowToViewUserURL = @"http://h10032.www1.hp.com
 static NSString * const kPGHelpAndHowToViewUserURLDe = @"http://h10032.www1.hp.com/ctg/Manual/c05320645";
 static NSString * const kPGHelpAndHowToViewUserURLFr = @"http://h10032.www1.hp.com/ctg/Manual/c05320547";
 static NSString * const kPGHelpAndHowToViewUserURLSp = @"http://h10032.www1.hp.com/ctg/Manual/c05320654";
-static NSString * const kPGHelpAndHowToViewUserURLDa = @"http://h10032.www1.hp.com/ctg/Manual/c05320519";
+static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.com/ctg/Manual/c05320519";
 
 @implementation NSLocale (Additions)
 
@@ -97,8 +97,8 @@ static NSString * const kPGHelpAndHowToViewUserURLDa = @"http://h10032.www1.hp.c
         url = kPGHelpAndHowToViewUserURLFr;
     } else if ([languageCode caseInsensitiveCompare:@"es"] == NSOrderedSame) {
         url = kPGHelpAndHowToViewUserURLSp;
-    } else if ([languageCode caseInsensitiveCompare:@"da"] == NSOrderedSame) {
-        url = kPGHelpAndHowToViewUserURLDa;
+    } else if ([languageCode caseInsensitiveCompare:@"nl"] == NSOrderedSame) {
+        url = kPGHelpAndHowToViewUserURLNl;
     }
     
     return [NSURL URLWithString:url];
