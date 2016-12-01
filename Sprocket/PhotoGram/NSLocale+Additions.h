@@ -19,4 +19,9 @@
 + (NSString *)countryID;
 + (BOOL)isSurveyAvailable;
 
++ (NSURL *)privacyURL;
++ (NSURL *)userGuideURL;
++ (NSString *)twitterSupportTag;
++ (NSString *)twitterSupportTagURL;
+
 @end
