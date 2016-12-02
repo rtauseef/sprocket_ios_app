@@ -73,8 +73,17 @@ typedef enum {
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
                 switch (action) {
                     case PhotoEditorActionMagic: {
-                        cell.imageView.image = [UIImage imageNamed:@"editMagic"];
-                        cell.imageView.tintColor = [UIColor whiteColor];
+                        if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:@"Auto-fix"]) {
+                            cell.imageView.image = [UIImage imageNamed:@"auto_enhance_On"];
+                        } else {
+                            cell.imageView.image = [UIImage imageNamed:@"auto_enhance_Off"];
+                        }
+
+                        // Circumvent img.ly resetting the image to tinted with template rendering on collectionView:willDisplay:forItemAt:
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                            cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+                        });
 
                         cell.accessibilityIdentifier = @"editMagic";
                         break;
