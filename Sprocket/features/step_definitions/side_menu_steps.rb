@@ -79,5 +79,9 @@ When /^I click close button$/ do
   sleep(STEP_PAUSE)
 end
 
+And /^I tap back button$/ do
+    touch @current_page.back
+    sleep(STEP_PAUSE)
+end
 
 
