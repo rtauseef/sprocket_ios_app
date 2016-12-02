@@ -17,4 +17,6 @@ extern NSInteger const kPGSocialSourcesMenuDefaultThreshold;
 
 @interface PGSocialSourcesMenuViewController : UIViewController
 
++ (CGFloat)socialSourceCellHeight;
+
 @end
