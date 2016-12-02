@@ -32,7 +32,7 @@ CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
     self.socialTitle.text = socialSource.title;
     self.socialTitle.textColor = [UIColor whiteColor];
     
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
         self.socialTitle.font = [UIFont fontWithName:self.socialTitle.font.fontName size:kPGSocialSourceMenuTableViewCellSmallFontSize];
         self.signInButton.titleLabel.font = [UIFont fontWithName:self.signInButton.titleLabel.font.fontName size:kPGSocialSourceMenuTableViewCellSignInSmallFontSize];
     }

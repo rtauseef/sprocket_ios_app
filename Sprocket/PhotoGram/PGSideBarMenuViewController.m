@@ -58,7 +58,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
         self.headerHeight.constant = kPGSideBarMenuShortScreenSizeHeaderHeight;
     }
     
