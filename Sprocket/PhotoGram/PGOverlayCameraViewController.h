@@ -16,5 +16,6 @@
 
 @property (nonatomic, weak) UIImagePickerController *pickerReference;
 @property (strong, nonatomic) IBOutlet UIView *transitionEffectView;
+@property (strong, nonatomic) IBOutlet UIButton *flashButton;
 
 @end

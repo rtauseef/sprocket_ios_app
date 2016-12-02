@@ -19,6 +19,7 @@
     [super viewWillAppear:animated];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    [self configFlashButton];
 }
 
 - (IBAction)closeButtonTapped:(id)sender
@@ -29,11 +30,32 @@
 - (IBAction)cameraReverseTapped:(id)sender
 {
     [[PGCameraManager sharedInstance] switchCamera];
+    [self configFlashButton];
 }
 
 - (IBAction)shutterTapped:(id)sender
 {
     [[PGCameraManager sharedInstance] takePicture];
+}
+
+- (IBAction)flashTapped:(id)sender {
+    [[PGCameraManager sharedInstance] toggleFlash];
+    [self configFlashButton];
+}
+
+- (void)configFlashButton
+{
+    if ([PGCameraManager sharedInstance].lastDeviceCameraPosition == AVCaptureDevicePositionFront) {
+        self.flashButton.hidden = YES;
+    } else {
+        self.flashButton.hidden = NO;
+        
+        if ([PGCameraManager sharedInstance].isFlashOn) {
+            [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOn"] forState:UIControlStateNormal];
+        } else {
+            [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOff"] forState:UIControlStateNormal];
+        }
+    }
 }
 
 @end
