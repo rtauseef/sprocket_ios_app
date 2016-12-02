@@ -25,7 +25,9 @@ NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
-CGFloat const kPGSideBarMenuItemsSmallCellHeight = 42.0f;
+CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
+
+CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
 
 @implementation PGSideBarMenuItems
 
@@ -38,6 +40,10 @@ CGFloat const kPGSideBarMenuItemsSmallCellHeight = 42.0f;
     selectionColorView.backgroundColor = [UIColor HPTableRowSelectionColor];
     
     cell.selectedBackgroundView = selectionColorView;
+    
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:kPGSideBarMenuItemsSmallFontSize];
+    }
     
     switch (indexPath.row) {
         case PGSideBarMenuCellSprocket:
@@ -79,7 +85,7 @@ CGFloat const kPGSideBarMenuItemsSmallCellHeight = 42.0f;
 {
     if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
         return 0.0F;
-    } else if (IS_IPHONE_4) {
+    } else if (IS_IPHONE_4 || IS_IPHONE_5) {
         return kPGSideBarMenuItemsSmallCellHeight;
     }
     
