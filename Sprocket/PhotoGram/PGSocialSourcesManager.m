@@ -95,7 +95,7 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
 
 - (void)setupSocialSources
 {
-    NSString *language = @"zh";//[NSLocale languageID];
+    NSString *language = [NSLocale languageID];
 
     if (![self isEnabledExtraSocialSources]) {
         language = nil;
