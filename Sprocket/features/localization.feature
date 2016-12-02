@@ -6,7 +6,7 @@ Feature: Localization testing
   @TA15895
   Scenario: Change iPhone Language
     Given  I am on the "Landing" screen
-    Then I change language
+    Then I change the language to "Spanish"
         
   @TA15895
   Scenario: Verify screen titles

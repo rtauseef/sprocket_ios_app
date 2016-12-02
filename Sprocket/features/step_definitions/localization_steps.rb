@@ -1,11 +1,19 @@
 require_relative '../common_library/support/gistfile'
 
-Then(/^I change language$/) do
+Then(/^I change the language to "(.*?)"$/) do |language|
+
+    if language == "Spanish"
+        ios_locale_id = "es_ES"
+    else
+        if language == "English"
+            ios_locale_id = "en_US"
+        end
+    end
     device_name = get_device_name
     device_type = get_device_type
     sim_name = get_device_name + " " + device_type
     os_version = get_os_version.to_s.gsub(".", "-")
-    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","es_ES"
+    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
     #English-en_US
     #Spanish-es_ES
     if $curr_language.strip == "es"
