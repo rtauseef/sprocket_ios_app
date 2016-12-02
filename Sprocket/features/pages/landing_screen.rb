@@ -16,7 +16,9 @@ class LandingScreen < Calabash::IBase
   end
 
   def instagram_logo
-    "UIImageView id:'Instagram'"
+    #"UIImageView id:'Instagram'"
+      "view marked:'Instagram' index:0"
+      
   end
 
   def flickr_logo
@@ -26,6 +28,10 @@ class LandingScreen < Calabash::IBase
   def cameraroll_logo
     "UIImageView id:'CameraRoll'"
   end
+    
+    def cameraroll_logo_sidemenu
+        "view marked:'Camera Roll'"
+    end
 
   def facebook_logo
     "UIImageView id:'Facebook'"

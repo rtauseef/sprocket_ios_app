@@ -42,7 +42,7 @@ Scenario: Verify side menu options
     And I should see the following:
     |sprocket       |
     |Buy Paper      |
-    |How To & Help  |
+    |How to & Help  |
     |Give Feedback  |
     |Privacy        |
     |About          |
