@@ -41,7 +41,7 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
     
     cell.selectedBackgroundView = selectionColorView;
     
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:kPGSideBarMenuItemsSmallFontSize];
     }
     
@@ -85,7 +85,7 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
 {
     if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
         return 0.0F;
-    } else if (IS_IPHONE_4) {
+    } else if (IS_IPHONE_4 || IS_IPHONE_5) {
         return kPGSideBarMenuItemsSmallCellHeight;
     }
     

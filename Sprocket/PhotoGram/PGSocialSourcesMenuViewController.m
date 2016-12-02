@@ -61,7 +61,7 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 + (CGFloat)socialSourceCellHeight
 {
-    if (IS_IPHONE_4) {
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
         return kPGSocialSourcesMenuSmallCellHeight;
     }
     
