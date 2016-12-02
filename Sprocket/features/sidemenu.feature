@@ -48,7 +48,7 @@ Scenario: Verify side menu options
     |About          |
     
   @reset
-  @done
+  @TA16064
   Scenario: Verify navigation to Technical Information screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
