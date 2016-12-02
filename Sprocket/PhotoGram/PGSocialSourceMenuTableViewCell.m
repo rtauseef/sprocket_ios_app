@@ -29,6 +29,7 @@
     self.socialTitle.text = socialSource.title;
     self.socialTitle.textColor = [UIColor whiteColor];
     self.signInButton.hidden = !socialSource.needsSignIn;
+    self.backgroundColor = [UIColor HPGrayColor]; // bugfix iOS 8.3
     
     [self configureSocialSourceImage];
     [self configureSignInButton];
