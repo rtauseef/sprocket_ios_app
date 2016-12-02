@@ -16,6 +16,9 @@
 #import "UIFont+Style.h"
 #import "UIImageView+MaskImage.h"
 
+CGFloat const kPGSocialSourceMenuTableViewCellSmallFontSize = 16.0f;
+CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
+
 @implementation PGSocialSourceMenuTableViewCell
 
 - (void)awakeFromNib
@@ -28,8 +31,14 @@
     self.socialSource = socialSource;
     self.socialTitle.text = socialSource.title;
     self.socialTitle.textColor = [UIColor whiteColor];
+    
+    if (IS_IPHONE_4) {
+        self.socialTitle.font = [UIFont fontWithName:self.socialTitle.font.fontName size:kPGSocialSourceMenuTableViewCellSmallFontSize];
+        self.signInButton.titleLabel.font = [UIFont fontWithName:self.signInButton.titleLabel.font.fontName size:kPGSocialSourceMenuTableViewCellSignInSmallFontSize];
+    }
+    
     self.signInButton.hidden = !socialSource.needsSignIn;
-    self.backgroundColor = [UIColor HPGrayColor]; // bugfix iOS 8.3
+    self.backgroundColor = [UIColor HPGrayColor]; // bugfix iOS 8
     
     [self configureSocialSourceImage];
     [self configureSignInButton];

@@ -17,6 +17,7 @@
 #import "PGRevealViewController.h"
 
 CGFloat const kPGSocialSourcesMenuCellHeight = 40;
+CGFloat const kPGSocialSourcesMenuSmallCellHeight = 38;
 NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 @interface PGSocialSourcesMenuViewController ()
@@ -53,6 +54,17 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return [PGSocialSourcesMenuViewController socialSourceCellHeight];
+}
+
+#pragma mark - Public Methods
+
++ (CGFloat)socialSourceCellHeight
+{
+    if (IS_IPHONE_4) {
+        return kPGSocialSourcesMenuSmallCellHeight;
+    }
+    
     return kPGSocialSourcesMenuCellHeight;
 }
 

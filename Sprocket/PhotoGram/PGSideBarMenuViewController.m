@@ -314,7 +314,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         self.containerHeightConstraint.constant = [self openedSocialSourcesMenuHeightConstraint];
     } else {
         self.collapseButton.hidden = NO;
-        self.collapseButtonHeightConstraint.constant = kPGSocialSourcesMenuCellHeight;
+        self.collapseButtonHeightConstraint.constant = [PGSocialSourcesMenuViewController socialSourceCellHeight];
         
         if (self.overlayView.alpha != 0) {
             self.containerHeightConstraint.constant = [self openedSocialSourcesMenuHeightConstraint];
@@ -330,8 +330,8 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     if (![self isSocialSourcesDefault]) {
         socialSourcesCount++;
     }
-    
-    return kPGSocialSourcesMenuCellHeight * socialSourcesCount;
+
+    return [PGSocialSourcesMenuViewController socialSourceCellHeight] * socialSourcesCount;
 }
 
 - (CGFloat)closedSocialSourcesMenuHeightConstraint
@@ -342,7 +342,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         socialSourcesCount = kPGSocialSourcesMenuDefaultThreshold;
     }
     
-    return kPGSocialSourcesMenuCellHeight * socialSourcesCount;
+    return [PGSocialSourcesMenuViewController socialSourceCellHeight] * socialSourcesCount;
 }
 
 - (BOOL)isSocialSourcesDefault
