@@ -38,8 +38,13 @@ class LandingScreen < Calabash::IBase
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
   end
+
+    def sprocket_option
+        "view marked:'sprocket'"    
+    end
+    
 def technical_info
-    "label {text CONTAINS 'No sprockets Connected'}"
+    "label {text CONTAINS 'Technical Information'}"
   end
   def close
     "UIButton index:1"

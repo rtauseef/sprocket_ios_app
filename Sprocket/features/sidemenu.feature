@@ -49,12 +49,15 @@ Scenario: Verify side menu options
     
   @reset
   @done
-  Scenario: Verify navigation to device screen
+  Scenario: Verify navigation to Technical Information screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "sprocket"
     And I should see the technical information
+    Then I touch "Technical Information"
+    And I should see the "Technical Information" screen
+    And I tap back button
     And I tap "Close" mark
     When I touch menu button on navigation bar
     Then I should see the "Landing" screen 
