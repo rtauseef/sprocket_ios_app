@@ -54,8 +54,8 @@ NSString * const kQzoneProviderName = @"Qzone";
         if ([self isAccesTokenValid]) {
             completion([self isAccesTokenValid], nil);
         } else {
-            self.loginManager = [[TencentOAuth alloc] initWithAppId:@"222222" andDelegate:self];
-            self.loginManager.redirectURI = @"www.qq.com";
+            self.loginManager = [[TencentOAuth alloc] initWithAppId:[HPPR sharedInstance].qzoneAppId andDelegate:self];
+            self.loginManager.redirectURI = [HPPR sharedInstance].qzoneRedirectURL;
             
             NSArray* permissions = @[kOPEN_PERMISSION_GET_USER_INFO,
                                     kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
@@ -153,7 +153,7 @@ NSString * const kQzoneProviderName = @"Qzone";
         }
     } else {
         [self listAlbums:^(NSDictionary *albums, NSError *error) {
-            if (error) {
+            if (error || !albums) {
                 NSLog(@"QZONE ALBUMS ERROR\n%@", error);
                 if (completion) {
                     completion(nil, error);
@@ -191,16 +191,18 @@ NSString * const kQzoneProviderName = @"Qzone";
         NSMutableArray *albums = [[response jsonResponse] objectForKey:@"album"];
         NSInteger totalPhotos = 0;
         
-        for (NSDictionary *album in albums) {
-            totalPhotos += [[album objectForKey:@"picnum"] integerValue];
+        if (albums) {
+            for (NSDictionary *album in albums) {
+                totalPhotos += [[album objectForKey:@"picnum"] integerValue];
+            }
+            
+            NSMutableDictionary *allPhotosAlbum = [[NSMutableDictionary alloc] initWithCapacity:1];
+            [allPhotosAlbum setObject:NSLocalizedString(@"All Photos", nil) forKey:@"name"];
+            [allPhotosAlbum setObject:[NSNumber numberWithInteger:totalPhotos] forKey:@"picnum"];
+            [allPhotosAlbum setObject:[albums[albums.count - 1] objectForKey:@"coverurl"] forKey:@"coverurl"];
+            
+            [albums insertObject:allPhotosAlbum atIndex:0];
         }
-        
-        NSMutableDictionary *allPhotosAlbum = [[NSMutableDictionary alloc] initWithCapacity:1];
-        [allPhotosAlbum setObject:NSLocalizedString(@"All Photos", nil) forKey:@"name"];
-        [allPhotosAlbum setObject:[NSNumber numberWithInteger:totalPhotos] forKey:@"picnum"];
-        [allPhotosAlbum setObject:[albums[albums.count - 1] objectForKey:@"coverurl"] forKey:@"coverurl"];
-        
-        [albums insertObject:allPhotosAlbum atIndex:0];
         
         self.albumsCompletion(albums, nil);
     } else {

@@ -52,6 +52,9 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [HPPR sharedInstance].flickrAppSecret = @"8865a1b2f3742370";
     [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsprocket://callback/flickr";
     
+    [HPPR sharedInstance].qzoneAppId = @"1105744463";
+    [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
+    
     [self initializePrintPod];
     
     [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application didFinishLaunchingWithOptions:launchOptions];
