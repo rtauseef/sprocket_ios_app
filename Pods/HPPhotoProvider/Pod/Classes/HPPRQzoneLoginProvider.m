@@ -18,6 +18,9 @@
 #define kResponse @"kResponse"
 
 NSString * const kQzoneProviderName = @"Qzone";
+NSString * const kQzoneUserAccessTokenKey = @"kQzoneUserAccessTokenKey";
+NSString * const kQzoneUserAccessTokenExpirationDateKey = @"kQzoneUserAccessTokenExpirationDateKey";
+NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
 @interface HPPRQzoneLoginProvider() <TencentLoginDelegate, TencentApiInterfaceDelegate, TencentWebViewDelegate>
 
@@ -47,6 +50,22 @@ NSString * const kQzoneProviderName = @"Qzone";
     return sharedInstance;
 }
 
+- (void)initLoginManager
+{
+    if (!self.loginManager) {
+        self.loginManager = [[TencentOAuth alloc] initWithAppId:[HPPR sharedInstance].qzoneAppId andDelegate:self];
+        self.loginManager.redirectURI = [HPPR sharedInstance].qzoneRedirectURL;
+    }
+    
+    if ([self isAccesTokenValid]) {
+        return;
+    }
+    
+    self.loginManager.accessToken = [self getAccessToken];
+    self.loginManager.expirationDate = [self getAccessTokenExpirationDate];
+    self.loginManager.openId = [self getQzoneOpenId];
+}
+
 - (void)loginWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion
 {
     if ([self connectedToInternet:completion]) {
@@ -54,8 +73,7 @@ NSString * const kQzoneProviderName = @"Qzone";
         if ([self isAccesTokenValid]) {
             completion([self isAccesTokenValid], nil);
         } else {
-            self.loginManager = [[TencentOAuth alloc] initWithAppId:[HPPR sharedInstance].qzoneAppId andDelegate:self];
-            self.loginManager.redirectURI = [HPPR sharedInstance].qzoneRedirectURL;
+            [self initLoginManager];
             
             NSArray* permissions = @[kOPEN_PERMISSION_GET_USER_INFO,
                                     kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
@@ -63,7 +81,11 @@ NSString * const kQzoneProviderName = @"Qzone";
                                     kOPEN_PERMISSION_GET_OTHER_INFO,
                                     kOPEN_PERMISSION_LIST_ALBUM];
             
-            [self.loginManager authorize:permissions inSafari:NO];
+            if (![self isAccesTokenValid]) {
+                [self.loginManager authorize:permissions inSafari:NO];
+            } else {
+                [self.loginManager getUserInfo];
+            }
             
             self.loginCompletion = completion;
         }
@@ -76,7 +98,14 @@ NSString * const kQzoneProviderName = @"Qzone";
 {
     if( [self connectedToInternet:completion] ) {
         if (completion) {
-            completion([self isAccesTokenValid], nil);
+            [self initLoginManager];
+            
+            if ([self isAccesTokenValid]) {
+                [self.loginManager getUserInfo];
+                self.loginCompletion = completion;
+            } else {
+                completion(NO, nil);
+            }
         }
     }
 }
@@ -106,6 +135,7 @@ NSString * const kQzoneProviderName = @"Qzone";
 - (void)tencentDidLogin
 {
     if (self.loginCompletion) {
+        [self setAccessToken];
         [self.loginManager getUserInfo];
     }
 }
@@ -127,11 +157,44 @@ NSString * const kQzoneProviderName = @"Qzone";
 - (void)tencentDidLogout
 {
     if (self.logoutCompletion) {
+        [self clearAccessToken];
         [self notifyLogout];
         self.logoutCompletion(YES, nil);
     }
 }
 
+- (NSString *)getAccessToken
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kQzoneUserAccessTokenKey];
+}
+
+- (NSString *)getAccessTokenExpirationDate
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kQzoneUserAccessTokenExpirationDateKey];
+}
+
+- (NSString *)getQzoneOpenId
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kQzoneOpenIdKey];
+}
+
+- (void)setAccessToken
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.loginManager.accessToken forKey:kQzoneUserAccessTokenKey];
+    [defaults setObject:self.loginManager.expirationDate forKey:kQzoneUserAccessTokenExpirationDateKey];
+    [defaults setObject:self.loginManager.openId forKey:kQzoneOpenIdKey];
+    [defaults synchronize];
+}
+
+- (void)clearAccessToken
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:kQzoneUserAccessTokenKey];
+    [defaults removeObjectForKey:kQzoneUserAccessTokenExpirationDateKey];
+    [defaults removeObjectForKey:kQzoneOpenIdKey];
+    [defaults synchronize];
+}
 
 #pragma mark Tencent Request Methods
 
