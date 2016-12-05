@@ -20,12 +20,14 @@
 #import <HPPRFlickrPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 #import <HPPRPituPhotoProvider.h>
+#import <HPPRQzonePhotoProvider.h>
 
 #import <HPPRFacebookLoginProvider.h>
 #import <HPPRInstagramLoginProvider.h>
 #import <HPPRFlickrLoginProvider.h>
 #import <HPPRCameraRollLoginProvider.h>
 #import <HPPRPituLoginProvider.h>
+#import <HPPRQzoneLoginProvider.h>
 
 typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypeLocalPhotos = 0,

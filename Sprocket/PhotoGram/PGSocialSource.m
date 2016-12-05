@@ -107,9 +107,11 @@ NSString * const kIncludeLoginKey = @"include-login";
         case PGSocialSourceTypeQzone:
             self.icon = [UIImage imageNamed:@"Qzone_C"];
             self.menuIcon = self.icon;
-            self.hasFolders = NO; // Still TBD
+            self.hasFolders = YES;
             self.title = NSLocalizedString(@"Qzone", @"Social source title for Qzone");
             self.needsSignIn = YES;
+            self.loginProvider = [HPPRQzoneLoginProvider sharedInstance];
+            self.photoProvider = [HPPRQzonePhotoProvider sharedInstance];
             break;
         case PGSocialSourceTypePitu:
             self.icon = [UIImage imageNamed:@"Pitu_C"];

@@ -17,6 +17,7 @@
 
 + (NSString *)languageID;
 + (NSString *)countryID;
++ (BOOL)isChinese;
 + (BOOL)isSurveyAvailable;
 
 + (NSURL *)privacyURL;

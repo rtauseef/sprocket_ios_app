@@ -214,7 +214,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
-        if (![self userPromptedToSavePhotos]) {
+        if (![weakSelf userPromptedToSavePhotos]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
                                                                            message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
                                                                     preferredStyle:UIAlertControllerStyleAlert];
@@ -222,23 +222,23 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
                                                                style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                 [self setSavePhotos:NO];
+                                                                 [weakSelf setSavePhotos:NO];
                                                                  [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                              }];
             [alert addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * _Nonnull action) {
-                                                                  [self setSavePhotos:YES];
-                                                                  [self savePhoto:photo];
+                                                                  [weakSelf setSavePhotos:YES];
+                                                                  [weakSelf savePhoto:photo];
                                                                   [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                               }];
             [alert addAction:yesAction];
             
-            [self.viewController presentViewController:alert animated:YES completion:nil];
+            [weakSelf.viewController presentViewController:alert animated:YES completion:nil];
         } else {
             if ([weakSelf savePhotos]) {
-                [self savePhoto:photo];
+                [weakSelf savePhoto:photo];
             }
             [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
         }
