@@ -155,7 +155,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
     AVCaptureDevice *device = [self cameraWithPosition:self.lastDeviceCameraPosition];
-    [self configFlashOnDevice:device];
+    [self configFlash:self.isFlashOn forDevice:device];
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -178,11 +178,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.isBackgroundCamera = YES;
 }
 
-- (void)configFlashOnDevice:(AVCaptureDevice *)device
+- (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device
 {
     if ([device hasFlash]){
         [device lockForConfiguration:nil];
-        if (self.isFlashOn) {
+        if (isFlashOn) {
             [device setFlashMode:AVCaptureFlashModeOn];
         } else {
             [device setFlashMode:AVCaptureFlashModeOff];
@@ -254,18 +254,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         [self.session removeInput:currentCameraInput];
         
         AVCaptureDevice *newCamera = nil;
-        [self toggleFlash];
         
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [self configFlash:NO forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [self configFlash:self.isFlashOn forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
         
         NSError *err = nil;
-        [self configFlashOnDevice:newCamera];
+        
         AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&err];
         
         if (!newVideoInput || err) {
@@ -281,9 +282,9 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)toggleFlash
 {
     self.isFlashOn = !self.isFlashOn;
-
+    
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    [self configFlashOnDevice:device];
+    [self configFlash:self.isFlashOn forDevice:device];
 }
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
