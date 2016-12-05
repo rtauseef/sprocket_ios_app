@@ -236,7 +236,7 @@ static const NSInteger PGStickerItemsCountStandard = 20;
         }
         case PGStickerItemsDuiLianCouplet: {
             sticker.accessibilityText = NSLocalizedString(@"Chinese Dui Lian Couplet Sticker", nil);
-            sticker.imageName = @"snowman";
+            sticker.imageName = @"dui_lian_couplet";
             break;
         }
         case PGStickerItemsFuGoodLuck: {
