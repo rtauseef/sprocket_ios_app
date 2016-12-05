@@ -24,6 +24,8 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 @property (strong, nonatomic) UIImage *currentSelectedPhoto;
 @property (strong, nonatomic) NSString *currentSource;
 @property (strong, nonatomic) HPPRMedia *currentMedia;
+@property (assign, nonatomic) BOOL isFlashOn;
+@property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
 
 + (PGCameraManager *)sharedInstance;
 
@@ -32,6 +34,7 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 
 - (void)takePicture;
 - (void)switchCamera;
+- (void)toggleFlash;
 
 - (void)startCamera;
 - (void)stopCamera;

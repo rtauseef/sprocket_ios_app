@@ -28,7 +28,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
-    @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
 
 @end
 
@@ -56,6 +55,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)setup
 {
     self.isBackgroundCamera = NO;
+    self.isFlashOn = NO;
 }
 
 #pragma mark - Private Methods
@@ -155,6 +155,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
     AVCaptureDevice *device = [self cameraWithPosition:self.lastDeviceCameraPosition];
+    [self configFlash:self.isFlashOn forDevice:device];
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -175,6 +176,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     [self.session startRunning];
     self.isBackgroundCamera = YES;
+}
+
+- (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device
+{
+    if ([device hasFlash]){
+        [device lockForConfiguration:nil];
+        if (isFlashOn) {
+            [device setFlashMode:AVCaptureFlashModeOn];
+        } else {
+            [device setFlashMode:AVCaptureFlashModeOff];
+        }
+        [device unlockForConfiguration];
+    }
 }
 
 - (void)takePicture
@@ -243,13 +257,16 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [self configFlash:NO forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [self configFlash:self.isFlashOn forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
         
         NSError *err = nil;
+        
         AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&err];
         
         if (!newVideoInput || err) {
@@ -260,6 +277,14 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         [self.session commitConfiguration];
     }
+}
+
+- (void)toggleFlash
+{
+    self.isFlashOn = !self.isFlashOn;
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    [self configFlash:self.isFlashOn forDevice:device];
 }
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
@@ -329,6 +354,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 }
 
 #pragma mark - Auto-Save Photo Setting
+
 - (BOOL)savePhotos
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
