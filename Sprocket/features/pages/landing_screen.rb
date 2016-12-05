@@ -55,6 +55,18 @@ def technical_info
   def close
     "UIButton index:1"
   end
+    
+    def how_to_help
+        "view marked:'How to & Help'" 
+    end
+    
+    def reset_sprocket_printer
+        "view marked:'Reset Sprocket Printer'" 
+    end
+    
+    def setup_sprocket_printer
+        "view marked:'Setup Sprocket Printer'" 
+    end
 =begin
     def username_input= username
     fill_input_field(username.to_s,0)
