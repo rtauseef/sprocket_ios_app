@@ -38,7 +38,6 @@ static const NSInteger PGStickerItemsCountStandard = 20;
         stickerOffset = PGStickerItemsCountChinese;
     } else {
         sticker = [PGStickerItem holidayStickerItemByIndex:index];
-        NSLog(@"index: %ld, sticker: %@", (long)index, sticker.imageName);
         stickerOffset = PGStickerItemsCountHoliday;
     }
 
