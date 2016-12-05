@@ -11,10 +11,23 @@
 //
 
 #import "PGStickerItem.h"
+#import "NSLocale+Additions.h"
 
-const NSInteger PGStickerItemsCount = 45;
+static const NSInteger PGStickerItemsCountHoliday = 25;
+static const NSInteger PGStickerItemsCountChinese = 0;
+static const NSInteger PGStickerItemsCountStandard = 20;
 
 @implementation PGStickerItem
+
++ (NSInteger)stickerCount
+{
+    NSInteger numStickers = (PGStickerItemsCountStandard + PGStickerItemsCountHoliday);
+    
+    if ([NSLocale isChinese]) {
+        numStickers = (PGStickerItemsCountStandard + PGStickerItemsCountChinese);
+    }
+    return numStickers;
+}
 
 + (PGStickerItem *)stickerItemByIndex:(NSInteger)index {
     PGStickerItem *sticker = [[PGStickerItem alloc] init];
@@ -122,10 +135,20 @@ const NSInteger PGStickerItemsCount = 45;
         }
             
         default:
-            sticker = [PGStickerItem holidayStickerItemByIndex:index];
+            if ([NSLocale isChinese]) {
+                sticker = [PGStickerItem chineseStickerItemByIndex:index];
+            } else {
+                sticker = [PGStickerItem holidayStickerItemByIndex:index];
+            }
             break;
     }
     
+    return sticker;
+}
+
++ (PGStickerItem *)chineseStickerItemByIndex:(NSInteger)index {
+    PGStickerItem *sticker = [[PGStickerItem alloc] init];
+
     return sticker;
 }
 

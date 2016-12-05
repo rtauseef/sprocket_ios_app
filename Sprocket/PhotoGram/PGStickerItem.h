@@ -12,7 +12,9 @@
 
 #import <Foundation/Foundation.h>
 
-extern const NSInteger PGStickerItemsCount;
+typedef NS_ENUM (NSInteger, PGStickerItemsChinese){
+    PGStickerItemsChinese_1 = 0,
+};
 
 typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
     PGStickerItemsSnowman           =  0,
@@ -39,7 +41,7 @@ typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
     PGStickerItemsMenorah           = 21,
     PGStickerItemsDreidel           = 22,
     PGStickerItemsFireworks         = 23,
-    PGStickerItemsNewYearHorn       = 24,
+    PGStickerItemsNewYearHorn       = 24
 };
 
 typedef NS_ENUM (NSInteger, PGStickerItems){
@@ -71,6 +73,7 @@ typedef NS_ENUM (NSInteger, PGStickerItems){
 @property (nonatomic, strong) NSString *imageName;
 
 + (PGStickerItem *)stickerItemByIndex:(NSInteger)index;
++ (NSInteger)stickerCount;
 - (UIImage *)thumbnailImage;
 - (UIImage *)stickerImage;
 

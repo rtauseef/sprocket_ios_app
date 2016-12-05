@@ -28,6 +28,19 @@ static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.c
 
 @implementation NSLocale (Additions)
 
++ (BOOL)isChinese
+{
+    BOOL retVal = NO;
+    
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+    if ([languageCode isEqualToString:@"zh"]) {
+        retVal = YES;
+    }
+    
+    return retVal;
+}
+
 + (NSString *)languageID
 {
     NSArray *supportedLanguages = [[self supportedLocales] allKeys];

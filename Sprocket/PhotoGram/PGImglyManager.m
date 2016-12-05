@@ -291,7 +291,7 @@ typedef enum {
 - (void)stickerCountWith:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(PGStickerItemsCount, nil);
+        completionBlock([PGStickerItem stickerCount], nil);
     }
 }
 
