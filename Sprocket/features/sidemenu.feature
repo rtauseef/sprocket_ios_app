@@ -48,7 +48,7 @@ Scenario: Verify side menu options
     |About          |
     
   @reset
-  @TA16064
+  @done
   Scenario: Verify navigation to Technical Information screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -64,7 +64,7 @@ Scenario: Verify side menu options
     
     
     @reset
-    @TA16065
+    @@done
     Scenario: Verify How to & Help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -82,7 +82,7 @@ Scenario: Verify side menu options
     
     
     @reset
-    @TA16065
+    @@done
     Scenario Outline: Verify How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -98,7 +98,7 @@ Scenario: Verify side menu options
     
     
     @reset
-    @TA16065
+   @done
     Scenario Outline: Verify How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
