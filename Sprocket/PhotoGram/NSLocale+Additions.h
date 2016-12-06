@@ -17,6 +17,12 @@
 
 + (NSString *)languageID;
 + (NSString *)countryID;
++ (BOOL)isChinese;
 + (BOOL)isSurveyAvailable;
+
++ (NSURL *)privacyURL;
++ (NSURL *)userGuideURL;
++ (NSString *)twitterSupportTag;
++ (NSString *)twitterSupportTagURL;
 
 @end

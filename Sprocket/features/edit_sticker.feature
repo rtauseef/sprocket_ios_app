@@ -3,7 +3,7 @@ Feature: Verify Edit sticker feature
   I want to verify sticker features.
 
 @reset
-@TA14499
+@regression
 Scenario Outline: Verify 'Sticker' option
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
@@ -23,7 +23,7 @@ Scenario Outline: Verify 'Sticker' option
     | CameraRoll Preview |
     
 @reset
-@TA14499
+@done
 Scenario Outline: Verify 'Sticker' option
     Given I am on the "StickerEditor" screen for "<screen_name>"
     Then I select "sticker"
@@ -39,7 +39,7 @@ Scenario Outline: Verify 'Sticker' option
     | CameraRoll Preview |
     
 @reset
-@TA14499
+@done
 Scenario Outline: Verify Sticker delete option    
     Given I am on the "StickerEditor" screen for "<screen_name>"
     Then I select "sticker"

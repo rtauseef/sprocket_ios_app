@@ -19,6 +19,7 @@
 
 + (instancetype)sharedInstance;
 
+- (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
 - (void)toggleExtraSocialSourcesEnabled;
 - (BOOL)isEnabledExtraSocialSources;
 

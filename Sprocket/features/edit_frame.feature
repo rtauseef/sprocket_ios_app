@@ -3,7 +3,7 @@ Feature: Verify Edit frame feature
   I want to verify frame features.
 
 @reset
-@TA15656
+@regression
 Scenario Outline: Verify 'Frame' option
     Given I am on the "<screen_name>" screen
     When I tap "Edit" button
@@ -26,8 +26,7 @@ Scenario Outline: Verify 'Frame' option
     
 
 @reset
-@TA14498
-@TA15656
+@regression
 Scenario Outline: Verify frame applied for frame editor screen
     Given I am on the "FrameEditor" screen for "<screen_name>"
     Then I select "Kraft Frame" frame
@@ -45,11 +44,17 @@ Scenario Outline: Verify frame applied for frame editor screen
     
     
 @reset
-@TA15656
+@done
 Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
             |No Frame               |
+            |Christmas Polka Dot Frame|
+            |Red Triangle Frame     |
+            |Snow Frame             |    
+            |Striped Frame          |
+            |Grey Frame             | 
+            |Santa Frame            |
             |White Frame            |
             |Kraft Frame            |
             |Floral Frame           |
@@ -64,17 +69,15 @@ Scenario: Verify frame list
             |Green Water Color Frame|
             |Floral 2 Frame         |
             |Pink Spray Paint Frame |
-            |Yellow Frame           |
-            |Blue Gradient Frame    |
-  
+             
   @reset
-@TA15656
+  @done
 Scenario: Verify all the frames are applied for frame editor screen 
     Given I am on the "FrameEditor" screen for "CameraRoll"  
     Then I verify that all the "frames" are applied successfully
 
 @reset
-@TA15656
+@regression
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
     Given I am on the "FrameEditor" screen for "<screen_name>"
     Then I select "White Frame" frame

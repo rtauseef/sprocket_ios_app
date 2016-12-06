@@ -17,6 +17,8 @@
 #import "UIViewController+trackable.h"
 #import <Crashlytics/Crashlytics.h>
 
+NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
+
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
@@ -26,7 +28,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
-    @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
 
 @end
 
@@ -54,6 +55,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)setup
 {
     self.isBackgroundCamera = NO;
+    self.isFlashOn = NO;
 }
 
 #pragma mark - Private Methods
@@ -153,6 +155,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
     AVCaptureDevice *device = [self cameraWithPosition:self.lastDeviceCameraPosition];
+    [self configFlash:self.isFlashOn forDevice:device];
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -173,6 +176,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     [self.session startRunning];
     self.isBackgroundCamera = YES;
+}
+
+- (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device
+{
+    if ([device hasFlash]){
+        [device lockForConfiguration:nil];
+        if (isFlashOn) {
+            [device setFlashMode:AVCaptureFlashModeOn];
+        } else {
+            [device setFlashMode:AVCaptureFlashModeOff];
+        }
+        [device unlockForConfiguration];
+    }
 }
 
 - (void)takePicture
@@ -198,7 +214,34 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
-        [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+        if (![weakSelf userPromptedToSavePhotos]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
+                                                                           message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 [weakSelf setSavePhotos:NO];
+                                                                 [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                                                             }];
+            [alert addAction:noAction];
+            UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  [weakSelf setSavePhotos:YES];
+                                                                  [weakSelf savePhoto:photo];
+                                                                  [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                                                              }];
+            [alert addAction:yesAction];
+            
+            [weakSelf.viewController presentViewController:alert animated:YES completion:nil];
+        } else {
+            if ([weakSelf savePhotos]) {
+                [weakSelf savePhoto:photo];
+            }
+            [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+        }
     }];
 }
 
@@ -214,23 +257,34 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [self configFlash:NO forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
             newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [self configFlash:self.isFlashOn forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
         
         NSError *err = nil;
+        
         AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&err];
         
         if (!newVideoInput || err) {
-            NSLog(@"Error creating capture device input: %@", err.localizedDescription);
+            PGLogError(@"Error creating capture device input: %@", err.localizedDescription);
         } else {
             [self.session addInput:newVideoInput];
         }
         
         [self.session commitConfiguration];
     }
+}
+
+- (void)toggleFlash
+{
+    self.isFlashOn = !self.isFlashOn;
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    [self configFlash:self.isFlashOn forDevice:device];
 }
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
@@ -297,6 +351,40 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
+}
+
+#pragma mark - Auto-Save Photo Setting
+
+- (BOOL)savePhotos
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:kSettingSaveCameraPhotos];
+}
+
+- (void)setSavePhotos:(BOOL)save
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:save forKey:kSettingSaveCameraPhotos];
+    [defaults synchronize];
+}
+
+- (BOOL)userPromptedToSavePhotos
+{
+    BOOL userPrompted = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (nil == [defaults objectForKey:kSettingSaveCameraPhotos]) {
+        userPrompted = NO;
+    }
+    return userPrompted;
+}
+
+- (void)savePhoto:(UIImage *)photo
+{
+    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
+        }
+    }];
 }
 
 #pragma mark - Metrics

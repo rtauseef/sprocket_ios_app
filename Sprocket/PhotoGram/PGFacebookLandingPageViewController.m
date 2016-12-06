@@ -22,7 +22,6 @@
 #import "PGAnalyticsManager.h"
 #import "SWRevealViewController.h"
 #import "PGPreviewViewController.h"
-#import "PGSideBarMenuTableViewController.h"
 #import "UIView+Animations.h"
 #import "UIViewController+Trackable.h"
 
@@ -184,7 +183,7 @@ NSString * const kFacebookUserIdKey = @"id";
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         } else {
-            NSLog(@"FACEBOOK LOGIN ERROR: %@", error);
+            PGLogError(@"FACEBOOK LOGIN ERROR: %@", error);
         }
     }];
 }

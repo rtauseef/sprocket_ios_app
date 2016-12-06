@@ -12,6 +12,9 @@
 
 #import "PGLandingPageViewController.h"
 
+extern NSString * const kCameraRollUserName;
+extern NSString * const kCameraRollUserId;
+
 @interface PGCameraRollLandingPageViewController : PGLandingPageViewController
 
 @end

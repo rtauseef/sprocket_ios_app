@@ -14,6 +14,7 @@
 #import <TTTAttributedLabel.h>
 #import <HPPRLoginProvider.h>
 #import <HPPRError.h>
+#import "PGSocialSource.h"
 
 extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 

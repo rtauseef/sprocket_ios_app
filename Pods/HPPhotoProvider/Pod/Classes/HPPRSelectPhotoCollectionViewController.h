@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) HPPRSelectPhotoProvider *provider;
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSString *customNoPhotosMessage;
 
 @end
 
