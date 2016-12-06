@@ -63,6 +63,7 @@ SPEC CHECKSUMS:
   FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
 

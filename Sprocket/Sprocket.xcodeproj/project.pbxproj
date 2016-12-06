@@ -342,7 +342,8 @@
 		746E9F731DF76BC900A52677 /* OperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 746E9F6F1DF76BC900A52677 /* OperationQueue.m */; };
 		746E9F761DF76C0400A52677 /* PGWatemarkImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 746E9F751DF76C0400A52677 /* PGWatemarkImageOperation.m */; };
 		746E9F771DF76FCA00A52677 /* PGWatemarkImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 746E9F751DF76C0400A52677 /* PGWatemarkImageOperation.m */; };
-		74D419731DF74DA900B030D2 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D419721DF74DA900B030D2 /* link-icon.png */; };
+		746E9F821DF77DC200A52677 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D419721DF74DA900B030D2 /* link-icon.png */; };
+		746E9F831DF77DC400A52677 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D419721DF74DA900B030D2 /* link-icon.png */; };
 		7631e45bdf482b658366095b /* 13_floral2_frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852E61D626A96001288D9 /* 13_floral2_frame_TN.png */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
@@ -2295,7 +2296,6 @@
 				56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */,
 				F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */,
 				BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */,
-				FBCB3FF462F9B7FC095D5335 /* Pods-Sprocket.testflight (link).xcconfig */,
 				E1E8DA02FB86ED1B5D05FDC6 /* Pods-Sprocket Print.testflight (link).xcconfig */,
 				B6379EA45C5FBE66A887FCCE /* Pods-Sprocket-cal.testflight (link).xcconfig */,
 				DF988A886DA3533D3E6A06B5 /* Pods-Sprocket.lesprocket.xcconfig */,
@@ -3230,6 +3230,7 @@
 				82362A331D59557E0019F024 /* catglasses_TN@3x.png in Resources */,
 				82362A4D1D59557E0019F024 /* OMG.png in Resources */,
 				26F7C13E1DDA8500006396FA /* cap_TN@3x.png in Resources */,
+				746E9F821DF77DC200A52677 /* link-icon.png in Resources */,
 				E375386319BE57C5009C695F /* TakeSurvey@2x.png in Resources */,
 				824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */,
 				924A70731DF5F536009A0FB1 /* mustache_1_TN@3x.png in Resources */,
@@ -3475,6 +3476,7 @@
 				5522aba7222f85b2819ba9c7 /* stars_TN.png in Resources */,
 				2d88afc85ef6599f299351fe /* 4_white_frame_TN.png in Resources */,
 				26F7C0701DD10C1E006396FA /* catwhiskers_TN@3x.png in Resources */,
+				746E9F831DF77DC400A52677 /* link-icon.png in Resources */,
 				57699a5b81bfa9db567fb52b /* catglasses_TN.png in Resources */,
 				92E9C2091DDCDD19009E4E63 /* glasses_hanukah_TN@3x.png in Resources */,
 				260BD07D1DDE539700AE6BAA /* Orange_Frame_iOS_TN@2x.png in Resources */,

@@ -69,6 +69,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 @property (assign, nonatomic) BOOL selectedNewPhoto;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
+@property (nonatomic) BOOL sprocketFound;
 
 @end
 
@@ -166,6 +167,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 {
     NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
     
+    self.sprocketFound = numberOfPairedSprockets > 0;
     if (numberOfPairedSprockets > 0) {
         [self.printButton setImage:[UIImage imageNamed:@"previewPrinterActive"] forState:UIControlStateNormal];
     } else {
@@ -449,18 +451,27 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     hud.label.text = @"Watermarking in Progress...";
     UIImage *originalImage = [self.imageContainer screenshotImage];
     
-    [PGWatemarkImageOperation executeWithImage:originalImage completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        UIImage *imageToPrint = image;
-        if(error){
-           // Fail silently. Print a non-watermarked image.
-           imageToPrint = originalImage;
-        }        
-        [[MP sharedInstance] headlessBluetoothPrintFromController:self image:imageToPrint animated:YES printCompletion:^(){
-            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
+    if(self.sprocketFound){
+        [PGWatemarkImageOperation executeWithImage:originalImage completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            UIImage *imageToPrint = image;
+            if(error){
+                // Fail silently. Print a non-watermarked image.
+                imageToPrint = originalImage;
+            }
+            [self printImageInSprocket:imageToPrint];
         }];
-        [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
+    }else{
+        // Let the print SDK handle displaying the alert when the device is not connected
+        [self printImageInSprocket:originalImage];
+    }
+}
+
+- (void)printImageInSprocket:(UIImage*)image {
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:image animated:YES printCompletion:^(){
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
     }];
+    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
