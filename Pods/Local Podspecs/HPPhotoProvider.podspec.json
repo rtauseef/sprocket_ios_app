@@ -29,7 +29,8 @@
   ],
   "vendored_frameworks": [
     "Pod/Frameworks/FBSDKCoreKit.framework",
-    "Pod/Frameworks/FBSDKLoginKit.framework"
+    "Pod/Frameworks/FBSDKLoginKit.framework",
+    "Pod/Frameworks/TencentOpenAPI.framework"
   ],
   "dependencies": {
     "AFNetworking": [

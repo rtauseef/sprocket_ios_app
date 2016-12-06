@@ -78,6 +78,10 @@ CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
             [self configureFlickrUserView];
             break;
         }
+        case PGSocialSourceTypeQzone: {
+            [self configureQzoneUserView];
+            break;
+        }
         default: {
             [self resetSocialSourceImage];
             break;
@@ -162,6 +166,25 @@ CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
             
             [weakSelf configureSignInButton];
         });
+    }];
+}
+
+- (void)configureQzoneUserView
+{
+    [[HPPRQzoneLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        self.socialSource.isLogged = loggedIn;
+        
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
+        if (loggedIn) {
+            NSDictionary *user = [HPPRQzoneLoginProvider sharedInstance].user;
+            [weakSelf.socialImageView setMaskImageWithURL:[user objectForKey:@"figureurl_qq_1"]];
+            weakSelf.socialSource.isLogged = YES;
+        } else {
+            weakSelf.socialSource.isLogged = NO;
+            [weakSelf resetSocialSourceImage];
+        }
+        
+        [weakSelf configureSignInButton];
     }];
 }
 

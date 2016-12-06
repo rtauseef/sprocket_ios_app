@@ -236,7 +236,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records, BOOL complete))completion andReloadAll:(BOOL)reload
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
-        
         if (reload) {
             self.reloadingImages = YES;
             self.requestingImages = NO;
@@ -248,14 +247,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.noPhotosLabel.hidden = YES;
                 self.noInternetConnectionRetryView.hidden = YES;
+                
+                [self.provider requestImagesWithCompletion:^(NSArray *records) {
+                    if (completion) {
+                        completion(records, YES);
+                    }
+                    self.requestingImages = NO;
+                } andReloadAll:reload];
             });
-            
-            [self.provider requestImagesWithCompletion:^(NSArray *records) {
-                if (completion) {
-                    completion(records, YES);
-                }
-                self.requestingImages = NO;
-            } andReloadAll:reload];
         } else {
             if (completion) {
                 completion(nil, NO);

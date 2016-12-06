@@ -12,7 +12,30 @@
 
 #import <Foundation/Foundation.h>
 
-extern const NSInteger PGStickerItemsCount;
+typedef NS_ENUM (NSInteger, PGStickerItemsChinese){
+    PGStickerItemsDragon2        =  0,
+    PGStickerItemsHatWoman       =  1,
+    PGStickerItemsFirecracker    =  2,
+    PGStickerItemsHcny           =  3,
+    PGStickerItemsPanda          =  4,
+    PGStickerItemsHatMan         =  5,
+    PGStickerItemsMustache1      =  6,
+    PGStickerItemsHatWoman2      =  7,
+    PGStickerItemsLionMask       =  8,
+    PGStickerItemsGlassesBlossom =  9,
+    PGStickerItemsGlasses2017    = 10,
+    PGStickerItemsFish1          = 11,
+    PGStickerItemsLuckyCat       = 12,
+    PGStickerItemsLantern        = 13,
+    PGStickerItemsFan            = 14,
+    PGStickerItemsDuiLianCouplet = 15,
+    PGStickerItemsFuGoodLuck     = 16,
+    PGStickerItemsMoney          = 17,
+    PGStickerItemsYinYang        = 18,
+    PGStickerItemsRooster        = 19,
+    PGStickerItemsOranges        = 20,
+    PGStickerItemsPlumBlossom    = 21
+};
 
 typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
     PGStickerItemsSnowman           =  0,
@@ -39,30 +62,30 @@ typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
     PGStickerItemsMenorah           = 21,
     PGStickerItemsDreidel           = 22,
     PGStickerItemsFireworks         = 23,
-    PGStickerItemsNewYearHorn       = 24,
+    PGStickerItemsNewYearHorn       = 24
 };
 
 typedef NS_ENUM (NSInteger, PGStickerItems){
-    PGStickerItemsCatGlasses       = 25,
-    PGStickerItemsCatWhiskers      = 26,
-    PGStickerItemsCatEars          = 27,
-    PGStickerItemsHearts           = 28,
-    PGStickerItemsXoxo             = 29,
-    PGStickerItemsHeartExpress     = 30,
-    PGStickerItemsArrow            = 31,
-    PGStickerItemsCrown            = 32,
-    PGStickerItemsBirthdayHat      = 33,
-    PGStickerItemsMoon             = 34,
-    PGStickerItemsStar             = 35,
-    PGStickerItemsStars            = 36,
-    PGStickerItemsFeather2         = 37,
-    PGStickerItemsFeather          = 38,
-    PGStickerItemsLeaf3            = 39,
-    PGStickerItemsCupcake          = 40,
-    PGStickerItemsCat              = 41,
-    PGStickerItemsDiamond          = 42,
-    PGStickerItemsSunglasses       = 43,
-    PGStickerItemsOMG              = 44,
+    PGStickerItemsCatGlasses       = 0,
+    PGStickerItemsCatWhiskers      = 1,
+    PGStickerItemsCatEars          = 2,
+    PGStickerItemsHearts           = 3,
+    PGStickerItemsXoxo             = 4,
+    PGStickerItemsHeartExpress     = 5,
+    PGStickerItemsArrow            = 6,
+    PGStickerItemsCrown            = 7,
+    PGStickerItemsBirthdayHat      = 8,
+    PGStickerItemsMoon             = 9,
+    PGStickerItemsStar             = 10,
+    PGStickerItemsStars            = 11,
+    PGStickerItemsFeather2         = 12,
+    PGStickerItemsFeather          = 13,
+    PGStickerItemsLeaf3            = 14,
+    PGStickerItemsCupcake          = 15,
+    PGStickerItemsCat              = 16,
+    PGStickerItemsDiamond          = 17,
+    PGStickerItemsSunglasses       = 18,
+    PGStickerItemsOMG              = 19
 };
 
 @interface PGStickerItem : NSObject
@@ -71,6 +94,7 @@ typedef NS_ENUM (NSInteger, PGStickerItems){
 @property (nonatomic, strong) NSString *imageName;
 
 + (PGStickerItem *)stickerItemByIndex:(NSInteger)index;
++ (NSInteger)stickerCount;
 - (UIImage *)thumbnailImage;
 - (UIImage *)stickerImage;
 
