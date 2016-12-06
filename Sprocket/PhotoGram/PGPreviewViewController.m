@@ -34,6 +34,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "PGWatemarkImageOperation.h"
+
+
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -441,11 +445,22 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    //TODO: Watermark the image here
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:^(){
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"Watermarking in Progress...";
+    UIImage *originalImage = [self.imageContainer screenshotImage];
+    
+    [PGWatemarkImageOperation executeWithImage:originalImage completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIImage *imageToPrint = image;
+        if(error){
+           // Fail silently. Print a non-watermarked image.
+           imageToPrint = originalImage;
+        }        
+        [[MP sharedInstance] headlessBluetoothPrintFromController:self image:imageToPrint animated:YES printCompletion:^(){
+            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
+        }];
+        [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
     }];
-    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender

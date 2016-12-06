@@ -1,0 +1,6 @@
+framework module LivePaperSDK {
+  umbrella header "LivePaperSDK.h"
+
+  export *
+  module * { export * }
+}
