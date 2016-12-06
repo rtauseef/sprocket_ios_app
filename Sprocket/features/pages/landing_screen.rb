@@ -16,7 +16,9 @@ class LandingScreen < Calabash::IBase
   end
 
   def instagram_logo
-    "UIImageView id:'Instagram'"
+    #"UIImageView id:'Instagram'"
+      "view marked:'Instagram' index:0"
+      
   end
 
   def flickr_logo
@@ -26,6 +28,10 @@ class LandingScreen < Calabash::IBase
   def cameraroll_logo
     "UIImageView id:'CameraRoll'"
   end
+    
+    def cameraroll_logo_sidemenu
+        "view marked:'Camera Roll'"
+    end
 
   def facebook_logo
     "UIImageView id:'Facebook'"
@@ -38,12 +44,29 @@ class LandingScreen < Calabash::IBase
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
   end
+
+    def sprocket_option
+        "view marked:'sprocket'"    
+    end
+    
 def technical_info
-    "label {text CONTAINS 'No sprockets Connected'}"
+    "label {text CONTAINS 'Technical Information'}"
   end
   def close
     "UIButton index:1"
   end
+    
+    def how_to_help
+        "view marked:'How to & Help'" 
+    end
+    
+    def reset_sprocket_printer
+        "view marked:'Reset Sprocket Printer'" 
+    end
+    
+    def setup_sprocket_printer
+        "view marked:'Setup Sprocket Printer'" 
+    end
 =begin
     def username_input= username
     fill_input_field(username.to_s,0)
