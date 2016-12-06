@@ -1,13 +1,15 @@
 require_relative '../common_library/support/gistfile'
 
-Then(/^I change the language to "(.*?)"$/) do |language|
+Then(/^I change the language$/) do
 
-    if language == "Spanish"
-        ios_locale_id = "es_ES"
-    else
-        if language == "English"
+    
+    if ENV['LANGUAGE'] == "English"
             ios_locale_id = "en_US"
-        end
+    else if ENV['LANGUAGE'] == "French"
+                ios_locale_id = "fr_FR"
+    else
+         ios_locale_id = "es_ES"
+    end
     end
     device_name = get_device_name
     device_type = get_device_type
