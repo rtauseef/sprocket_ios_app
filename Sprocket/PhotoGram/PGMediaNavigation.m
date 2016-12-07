@@ -71,7 +71,7 @@
 
     self.providers = [titles copy];
 
-    self.scrollView.spacingBetweenButtons = 0.0f;
+    self.scrollView.spacingBetweenButtons = 5.0f;
     
     self.scrollView.centerButtonTextColor = [UIColor whiteColor];
     self.scrollView.buttonCenterFont = [UIFont HPNavigationBarTitleFont];

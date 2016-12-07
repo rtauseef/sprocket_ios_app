@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGMediaNavigation">
@@ -15,19 +19,19 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GnL-8B-dhs" userLabel="NavigationBar">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nep-dy-SIh" userLabel="folderAnchor">
-                            <rect key="frame" x="558" y="26" width="30" height="34"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <rect key="frame" x="333" y="26" width="30" height="34"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yok-mV-6Ve" userLabel="FolderButton">
-                            <rect key="frame" x="548" y="18" width="50" height="50"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <rect key="frame" x="323" y="18" width="50" height="50"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="cgM-cA-5mm"/>
                                 <constraint firstAttribute="height" constant="50" id="kL0-tV-lpB"/>
@@ -38,18 +42,15 @@
                             </connections>
                         </button>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-fr-Le6" userLabel="ScrollView" customClass="SSRollingButtonScrollView">
-                            <rect key="frame" x="213" y="10" width="174" height="66"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="174" id="oXA-X0-HK2"/>
-                            </constraints>
+                            <rect key="frame" x="75" y="10" width="225" height="66"/>
                         </scrollView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s51-Xd-Lhr" userLabel="HamburgerAnchor">
                             <rect key="frame" x="12" y="26" width="30" height="34"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE" userLabel="HamburgerButton">
                             <rect key="frame" x="2" y="18" width="50" height="50"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="KfK-eo-Nhq"/>
                                 <constraint firstAttribute="height" constant="50" id="NfP-cH-54H"/>
@@ -60,12 +61,13 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="RCP-fr-Le6" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="3iT-wp-0vK"/>
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="9lq-pd-u28"/>
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="Cfj-qy-T1h"/>
                         <constraint firstAttribute="height" constant="66" id="FHx-gY-wBY"/>
+                        <constraint firstItem="RCP-fr-Le6" firstAttribute="width" secondItem="GnL-8B-dhs" secondAttribute="width" constant="-150" id="LiK-ap-87p"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerX" secondItem="s51-Xd-Lhr" secondAttribute="centerX" id="Oun-Nh-uck"/>
                         <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerX" secondItem="Nep-dy-SIh" secondAttribute="centerX" id="PnM-9s-1oe"/>
                         <constraint firstItem="Nep-dy-SIh" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="QZf-FG-iL6"/>
@@ -77,10 +79,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="CameraBar" customClass="AlphaGradientView">
-                    <rect key="frame" x="0.0" y="530" width="600" height="70"/>
+                    <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-FL-dsH" userLabel="CameraButton">
-                            <rect key="frame" x="278" y="13" width="45" height="45"/>
+                            <rect key="frame" x="165.5" y="13" width="45" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="aBK-kP-dGR"/>
                                 <constraint firstAttribute="height" constant="45" id="ib5-Ah-5YY"/>
@@ -91,7 +93,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="qr0-FL-dsH" firstAttribute="centerY" secondItem="Ixd-bY-Ud5" secondAttribute="centerY" id="4jI-6A-3TY"/>
                         <constraint firstItem="qr0-FL-dsH" firstAttribute="centerX" secondItem="Ixd-bY-Ud5" secondAttribute="centerX" id="ChQ-Cu-tpu"/>
@@ -99,7 +101,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="GnL-8B-dhs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8cx-4H-jU9"/>
                 <constraint firstAttribute="trailing" secondItem="Ixd-bY-Ud5" secondAttribute="trailing" id="M5Y-f4-etv"/>
@@ -112,7 +114,7 @@
     </objects>
     <resources>
         <image name="cameraLanding" width="76" height="76"/>
-        <image name="folderIcon" width="20" height="18"/>
+        <image name="folderIcon" width="20" height="17"/>
         <image name="hamburger" width="22" height="18"/>
     </resources>
 </document>
