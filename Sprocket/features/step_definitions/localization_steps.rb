@@ -1,11 +1,21 @@
 require_relative '../common_library/support/gistfile'
 
-Then(/^I change language$/) do
+Then(/^I change the language$/) do
+
+    
+    if ENV['LANGUAGE'] == "English"
+            ios_locale_id = "en_US"
+    else if ENV['LANGUAGE'] == "French"
+                ios_locale_id = "fr_FR"
+    else
+         ios_locale_id = "es_ES"
+    end
+    end
     device_name = get_device_name
     device_type = get_device_type
     sim_name = get_device_name + " " + device_type
     os_version = get_os_version.to_s.gsub(".", "-")
-    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","es_ES"
+    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
     #English-en_US
     #Spanish-es_ES
     if $curr_language.strip == "es"
@@ -35,47 +45,14 @@ Then(/^I verify photos screen title$/) do
     sleep(WAIT_SCREENLOAD)
 end
 
+Then(/^I touch the option "(.*?)"$/) do |option|
+    touch ("view marked:'#{$list_loc[option]}'")
+    sleep(STEP_PAUSE)
+end
+
 Then(/^I verify the "(.*?)" text$/) do |text|
-    if text == "Take or Select photo"
-        select_photo_text=query("view marked:'#{$list_loc['select_photo']}'")
-        raise "not found!" unless select_photo_text.length > 0
-    else 
-        if text == "Buy Paper"
-            buy_paper_link=query("view marked:'#{$list_loc['buy_paper']}'")
-            raise "not found!" unless buy_paper_link.length > 0
-        else
-            if text == "How to & Help"
-                how_to_help=query("view marked:'#{$list_loc['how_to_help']}'")
-                raise "not found!" unless how_to_help.length > 0
-            else
-                if text == "Give Feedback"
-                    give_feedback=query("view marked:'#{$list_loc['give_feedback']}'")
-                    raise "not found!" unless give_feedback.length > 0 
-                else
-                    if text == "Privacy"
-                        privacy=query("view marked:'#{$list_loc['privacy']}'")
-                        raise "not found!" unless privacy.length > 0
-                    else
-                        if text == "About"
-                            about=query("view marked:'#{$list_loc['about']}'")
-                            raise "not found!" unless about.length > 0
-                        else
-                            if text == "Camera Roll"
-                                camera_roll=query("view marked:'#{$list_loc['camera_roll']}'")
-                                raise "not found!" unless camera_roll.length > 0
-                            else
-                                if text == "Sign In"
-                                    sign_in=query("view marked:'#{$list_loc['sign_in']}'")
-                                    raise "not found!" unless sign_in.length > 0
-                                end
-                            end
-                        end
-                    end
-                end
-            end                                    
-        end
-    end 
-    sleep(WAIT_SCREENLOAD)
+    localized_text=query("view marked:'#{$list_loc[text]}'")
+    raise "not found!" unless localized_text.length > 0 
 end
 
 And(/^I verify the "(.*?)" link$/) do |link|
@@ -84,6 +61,10 @@ And(/^I verify the "(.*?)" link$/) do |link|
     sleep(WAIT_SCREENLOAD)
 end
 
+And(/^I should make sure there is no app crash$/) do 
+    background_app=query("UIImageView marked:'helpForum'")
+    raise "app crash!!" unless background_app.length > 0
+end
 
     
 
