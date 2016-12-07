@@ -28,10 +28,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
+    @property (assign, nonatomic) BOOL isCapturingStillImage;
 
 @end
 
-@implementation PGCameraManager	
+@implementation PGCameraManager
 
 + (PGCameraManager *)sharedInstance
 {
@@ -56,6 +57,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 {
     self.isBackgroundCamera = NO;
     self.isFlashOn = NO;
+    self.isCapturingStillImage = NO;
 }
 
 #pragma mark - Private Methods
@@ -193,6 +195,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)takePicture
 {
+    if (self.isCapturingStillImage) {
+        return;
+    }
+    
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
         for (AVCaptureInputPort *port in [connection inputPorts]) {
@@ -208,7 +214,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     __weak PGCameraManager *weakSelf = self;
-    
+    self.isCapturingStillImage = YES;
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
@@ -242,6 +248,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             }
             [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
         }
+        
+        self.isCapturingStillImage = NO;
     }];
 }
 
@@ -320,12 +328,12 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                    message:NSLocalizedString(@"Allow access in your Settings to take and print photos.", @"Body of Camera Access Required dialog")
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-
+    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Button for dismissing dialog")
                                                      style:UIAlertActionStyleCancel
                                                    handler:^(UIAlertAction * action) {
-        [alert dismissViewControllerAnimated:YES completion:nil];
-    }];
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
     [alert addAction:cancel];
     
     
@@ -336,7 +344,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                                                      }];
     [alert addAction:settings];
-
+    
     [[self topMostController] presentViewController:alert animated:YES completion:nil];
 }
 
@@ -397,7 +405,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 {
     NSString *screenName = [PGCameraManager trackableScreenName];
     [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
-    [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];    
+    [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];
 }
 
 @end
