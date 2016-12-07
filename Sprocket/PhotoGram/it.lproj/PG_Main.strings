@@ -144,6 +144,9 @@ Per migliorare le future versioni di questa app e delle stampanti HP, HP raccogl
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "HIh-6e-4FK"; */
 "HIh-6e-4FK.text" = "Scatta o seleziona una foto";
 
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Scatta o seleziona una foto";
+
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Supporto tweet";
 

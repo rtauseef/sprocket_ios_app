@@ -28,6 +28,8 @@
 #import "PGSideBarMenuItems.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
+#import "NSLocale+Additions.h"
+#import "UIFont+Style.h"
 
 #import <MP.h>
 
@@ -48,8 +50,13 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
 @property (weak, nonatomic) IBOutlet UIButton *flickrButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
 @property (weak, nonatomic) IBOutlet PGSocialSourcesCircleView *socialSourcesCircleView;
+
 @property (weak, nonatomic) IBOutlet UIView *socialSourcesHorizontalContainer;
 @property (weak, nonatomic) IBOutlet UIView *socialSourcesCircularContainer;
+@property (weak, nonatomic) IBOutlet UIView *socialSourcesVerticalContainer;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelBottomConstraint;
 
 @end
 
@@ -72,12 +79,27 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
 
     self.socialSourcesCircleView.delegate = self;
 
+    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
+    /*
     if ([[PGSocialSourcesManager sharedInstance] enabledSocialSources].count > kSocialSourcesUISwitchThreshold) {
         self.socialSourcesHorizontalContainer.hidden = YES;
     } else {
         self.socialSourcesCircularContainer.hidden = YES;
     }
+    */
+    // -> Begin temporary UI
+    self.socialSourcesCircularContainer.hidden = YES;
+    if ([NSLocale isChinese]) {
+        self.socialSourcesHorizontalContainer.hidden = YES;
 
+        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
+            self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
+            self.titleLabelBottomConstraint.constant = 73.0;
+        }
+    } else {
+        self.socialSourcesVerticalContainer.hidden = YES;
+    }
+    // <- End temporary UI
 
     BOOL openFromNotification = ((PGAppDelegate *)[UIApplication sharedApplication].delegate).openFromNotification;
     if (openFromNotification) {

@@ -141,6 +141,9 @@ For at forbedre fremtidige versioner af denne app og HP-printere indsamler HP me
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "HIh-6e-4FK"; */
 "HIh-6e-4FK.text" = "Tag eller vælg et foto";
 
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Tag eller vælg et foto";
+
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Tweet support";
 
