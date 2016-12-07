@@ -42,13 +42,13 @@ Scenario: Verify side menu options
     And I should see the following:
     |sprocket       |
     |Buy Paper      |
-    |How To & Help  |
+    |How to & Help  |
     |Give Feedback  |
     |Privacy        |
     |About          |
     
   @reset
-  @TA16064
+  @done
   Scenario: Verify navigation to Technical Information screen
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -106,6 +106,57 @@ Scenario: Verify side menu options
     Then I touch "How to & Help"
     And I touch "<Option>"
     And I should make sure there is no app crash
+    
+    Examples:
+    | Option                 |
+    | View User Guide        |
+    | Tweet Support          |
+    | Join Support Forum     |
+    | Visit Support Website  |
+    
+   
+    @reset
+    @done
+    Scenario: Verify How to & Help
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+	Then I should see the side menu
+    Then I touch "How to & Help"
+    And I should see the following:
+    | Reset Sprocket Printer |
+    | Setup Sprocket Printer |
+    | View User Guide        |
+    | Tweet Support          |
+    | Join Support Forum     |
+    | Visit Support Website  |
+    And I touch "Done"
+    Then I should see the side menu
+    
+    
+    @reset
+    @done
+    Scenario Outline: Verify How to & Help options
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+	Then I should see the side menu
+    Then I touch "How to & Help"
+    And I touch "<Option>"
+    And I should see the "<Sprocket printer>" screen
+    
+    Examples:
+    | Option                 | Sprocket printer       |
+    | Reset Sprocket Printer | Reset Sprocket Printer |
+    | Setup Sprocket Printer | Setup Sprocket Printer |
+    
+    
+    @reset
+   @done
+    Scenario Outline: Verify How to & Help options
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+	Then I should see the side menu
+    Then I touch "How to & Help"
+    And I touch "<Option>"
     
     Examples:
     | Option                 |

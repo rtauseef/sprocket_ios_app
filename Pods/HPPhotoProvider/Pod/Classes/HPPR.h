@@ -82,6 +82,9 @@ extern NSString * const kHPPRProviderName;
 @property (nonatomic, assign) BOOL preventHideLoginAlert;
 @property (nonatomic, strong) HPPRAppearance *appearance;
 
+@property (nonatomic, strong) NSString *qzoneAppId;
+@property (nonatomic, strong) NSString *qzoneRedirectURL;
+
 + (HPPR *)sharedInstance;
 
 @end

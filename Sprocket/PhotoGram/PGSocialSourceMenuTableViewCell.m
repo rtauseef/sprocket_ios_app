@@ -16,6 +16,9 @@
 #import "UIFont+Style.h"
 #import "UIImageView+MaskImage.h"
 
+CGFloat const kPGSocialSourceMenuTableViewCellSmallFontSize = 16.0f;
+CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
+
 @implementation PGSocialSourceMenuTableViewCell
 
 - (void)awakeFromNib
@@ -28,7 +31,14 @@
     self.socialSource = socialSource;
     self.socialTitle.text = socialSource.title;
     self.socialTitle.textColor = [UIColor whiteColor];
+    
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        self.socialTitle.font = [UIFont fontWithName:self.socialTitle.font.fontName size:kPGSocialSourceMenuTableViewCellSmallFontSize];
+        self.signInButton.titleLabel.font = [UIFont fontWithName:self.signInButton.titleLabel.font.fontName size:kPGSocialSourceMenuTableViewCellSignInSmallFontSize];
+    }
+    
     self.signInButton.hidden = !socialSource.needsSignIn;
+    self.backgroundColor = [UIColor HPGrayColor]; // bugfix iOS 8
     
     [self configureSocialSourceImage];
     [self configureSignInButton];
@@ -66,6 +76,10 @@
         }
         case PGSocialSourceTypeFlickr: {
             [self configureFlickrUserView];
+            break;
+        }
+        case PGSocialSourceTypeQzone: {
+            [self configureQzoneUserView];
             break;
         }
         default: {
@@ -152,6 +166,25 @@
             
             [weakSelf configureSignInButton];
         });
+    }];
+}
+
+- (void)configureQzoneUserView
+{
+    [[HPPRQzoneLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        self.socialSource.isLogged = loggedIn;
+        
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
+        if (loggedIn) {
+            NSDictionary *user = [HPPRQzoneLoginProvider sharedInstance].user;
+            [weakSelf.socialImageView setMaskImageWithURL:[user objectForKey:@"figureurl_qq_1"]];
+            weakSelf.socialSource.isLogged = YES;
+        } else {
+            weakSelf.socialSource.isLogged = NO;
+            [weakSelf resetSocialSourceImage];
+        }
+        
+        [weakSelf configureSignInButton];
     }];
 }
 
