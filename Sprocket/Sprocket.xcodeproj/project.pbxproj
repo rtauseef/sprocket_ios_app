@@ -487,6 +487,8 @@
 		826B69D91DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */; };
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */; };
+		82813D4D1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */; };
 		829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */; };
@@ -1382,6 +1384,8 @@
 		826B69D61DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourceMenuTableViewCell.h; sourceTree = "<group>"; };
 		826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourceMenuTableViewCell.m; sourceTree = "<group>"; };
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
+		82813D4A1DF7962F00F939E0 /* PGSprocketLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSprocketLandingPageViewController.h; sourceTree = "<group>"; };
+		82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSprocketLandingPageViewController.m; sourceTree = "<group>"; };
 		829E02851DDA64C200B025C5 /* PGSocialSourcesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesMenuViewController.h; sourceTree = "<group>"; };
 		829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesMenuViewController.m; sourceTree = "<group>"; };
 		829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuViewController.h; sourceTree = "<group>"; };
@@ -2041,6 +2045,12 @@
 				829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */,
 				826B69D61DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.h */,
 				826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */,
+				CC10807D19CA0D2400C1553A /* PGAboutViewController.h */,
+				CC10807E19CA0D2400C1553A /* PGAboutViewController.m */,
+				823FB3391D77A4BE0022B132 /* PGHelpAndHowToViewController.h */,
+				823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */,
+				82813D4A1DF7962F00F939E0 /* PGSprocketLandingPageViewController.h */,
+				82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -2604,10 +2614,6 @@
 			isa = PBXGroup;
 			children = (
 				829E028D1DDB8C4300B025C5 /* Menu */,
-				CC10807D19CA0D2400C1553A /* PGAboutViewController.h */,
-				CC10807E19CA0D2400C1553A /* PGAboutViewController.m */,
-				823FB3391D77A4BE0022B132 /* PGHelpAndHowToViewController.h */,
-				823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */,
 				F134BC451ACAF9E5007D892B /* PGLoggingSetttingsViewController.h */,
 				F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */,
 				82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */,
@@ -3868,6 +3874,7 @@
 				5bd4fb56c7ce2869164331e4 /* PGGesturesView+Analytics.m in Sources */,
 				1f5f97f22092733e58db8bd3 /* PGImglyManager.m in Sources */,
 				1aceb1ccd8ed31fb57c6e23d /* PGCameraManager.m in Sources */,
+				82813D4D1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				826B69D91DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				b38119a178e5e78951d50540 /* PGCrashlyticsLogger.m in Sources */,
 				2529d15d16aa46d869158238 /* PGWebViewerViewController.m in Sources */,
@@ -3976,6 +3983,7 @@
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
+				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
