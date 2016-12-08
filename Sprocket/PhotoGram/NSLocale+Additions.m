@@ -134,7 +134,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://support.hp.c
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
 
-    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+    if ([self isChinese]) {
         url = kPGHelpAndHowToVisitWebsiteURLZh;
     }
 
@@ -148,7 +148,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://support.hp.c
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
 
-    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+    if ([self isChinese]) {
         url = kPGHelpAndHowToJoinForumSupportURLZh;
     }
 
