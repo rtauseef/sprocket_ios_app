@@ -22,6 +22,8 @@
 
 + (NSURL *)privacyURL;
 + (NSURL *)userGuideURL;
++ (NSURL *)supportWebsiteURL;
++ (NSURL *)supportForumURL;
 + (NSString *)twitterSupportTag;
 + (NSString *)twitterSupportTagURL;
 
