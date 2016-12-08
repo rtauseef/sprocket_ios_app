@@ -32,7 +32,6 @@
 #import "MP.h"
 #import "PGPreviewViewController.h"
 
-#define NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS 5
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
 #define PAGE_CONTROL_HEIGHT 20
@@ -332,7 +331,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
                                metrics:nil
                                views:viewsDictionary]];
     
-    self.pageControl.numberOfPages = NUMBER_OF_LANDING_PAGE_VIEW_CONTROLLERS;
+    self.pageControl.numberOfPages = [PGSocialSourcesManager sharedInstance].enabledSocialSources.count;
     self.pageControl.currentPage = [self pageForSocialNetwork:self.socialSourceType];
 
     self.pageControl.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
