@@ -3,12 +3,14 @@ require_relative '../common_library/support/gistfile'
 Then(/^I change the language$/) do
 
     
-    if ENV['LANGUAGE'] == "English"
-            ios_locale_id = "en_US"
+    #if ENV['LANGUAGE'] == "English"
+            #ios_locale_id = "en_US"
+    if ENV['LANGUAGE'] == "Spanish"
+            ios_locale_id = "es_ES"
     else if ENV['LANGUAGE'] == "French"
                 ios_locale_id = "fr_FR"
     else
-         ios_locale_id = "es_ES"
+         ios_locale_id = "en_US"
     end
     end
     device_name = get_device_name

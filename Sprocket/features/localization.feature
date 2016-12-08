@@ -17,7 +17,7 @@ Feature: Localization testing
  @TA15895
  Scenario: Verify landing screen texts
     Given  I am on the "Landing" screen
-    Then I verify the "Take or Select photo" text
+    Then I verify the "Take or select a photo" text
     And I verify the "Terms and service" link
     
  @TA15895
