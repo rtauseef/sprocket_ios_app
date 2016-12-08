@@ -43,7 +43,20 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://support.hp.c
     
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
-    if ([languageCode isEqualToString:@"zh"]) {
+    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+        retVal = YES;
+    }
+    
+    return retVal;
+}
+
++ (BOOL)isEnglish
+{
+    BOOL retVal = NO;
+    
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+    if ([languageCode caseInsensitiveCompare:@"en"] == NSOrderedSame) {
         retVal = YES;
     }
     
