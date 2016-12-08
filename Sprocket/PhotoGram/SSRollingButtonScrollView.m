@@ -146,9 +146,8 @@ static const NSInteger progressScale = 25;
                     buttonHeight = self.fixedButtonHeight;
                 }
                 
-                button.frame = CGRectMake(x, y, buttonWidth, buttonHeight);
-                
                 x += buttonWidth + self.spacingBetweenButtons;
+                button.frame = CGRectMake(x, y, buttonWidth, buttonHeight);
                 
                 [button addTarget:self action:@selector(scrollViewButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
                 
@@ -469,7 +468,7 @@ static const NSInteger progressScale = 25;
             _scrollVelocity = distanceChange / timeChange;
             
             if (scrollView.decelerating) {
-                if (fabsf(_scrollVelocity) < 150) {
+                if (fabs(_scrollVelocity) < 150) {
                     [self moveButtonToViewCenter:_currentCenterButton animated:YES];
                 }
             }
@@ -485,7 +484,7 @@ static const NSInteger progressScale = 25;
             _scrollVelocity = distanceChange / timeChange;
             
             if (scrollView.decelerating) {
-                if (fabsf(_scrollVelocity) < 75) {
+                if (fabs(_scrollVelocity) < 75) {
                     [self moveButtonToViewCenter:_currentCenterButton animated:YES];
                 }
             }
