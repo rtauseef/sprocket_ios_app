@@ -42,7 +42,10 @@
                             </connections>
                         </button>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-fr-Le6" userLabel="ScrollView" customClass="SSRollingButtonScrollView">
-                            <rect key="frame" x="75" y="10" width="225" height="66"/>
+                            <rect key="frame" x="100.5" y="10" width="174" height="66"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="174" id="Aqo-rP-qHv"/>
+                            </constraints>
                         </scrollView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s51-Xd-Lhr" userLabel="HamburgerAnchor">
                             <rect key="frame" x="12" y="26" width="30" height="34"/>
@@ -67,7 +70,6 @@
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="9lq-pd-u28"/>
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="Cfj-qy-T1h"/>
                         <constraint firstAttribute="height" constant="66" id="FHx-gY-wBY"/>
-                        <constraint firstItem="RCP-fr-Le6" firstAttribute="width" secondItem="GnL-8B-dhs" secondAttribute="width" constant="-150" id="LiK-ap-87p"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerX" secondItem="s51-Xd-Lhr" secondAttribute="centerX" id="Oun-Nh-uck"/>
                         <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerX" secondItem="Nep-dy-SIh" secondAttribute="centerX" id="PnM-9s-1oe"/>
                         <constraint firstItem="Nep-dy-SIh" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="QZf-FG-iL6"/>
