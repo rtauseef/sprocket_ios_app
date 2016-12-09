@@ -32,7 +32,7 @@ static NSString * const kPGHelpAndHowToJoinForumSupportURLZh = @"http://h30471.w
 
 // Support Website
 static NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
-static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://support.hp.com";
+static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
 
 
 @implementation NSLocale (Additions)
