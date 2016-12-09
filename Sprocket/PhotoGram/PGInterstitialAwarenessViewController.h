@@ -10,22 +10,8 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-
-@interface NSLocale (Additions)
-
-+ (NSString *)languageID;
-+ (NSString *)countryID;
-+ (BOOL)isChinese;
-+ (BOOL)isEnglish;
-+ (BOOL)isSurveyAvailable;
-
-+ (NSURL *)privacyURL;
-+ (NSURL *)userGuideURL;
-+ (NSURL *)supportWebsiteURL;
-+ (NSURL *)supportForumURL;
-+ (NSString *)twitterSupportTag;
-+ (NSString *)twitterSupportTagURL;
+@interface PGInterstitialAwarenessViewController : UIViewController
 
 @end
