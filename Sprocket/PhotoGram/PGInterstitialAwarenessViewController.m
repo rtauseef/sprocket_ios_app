@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *enableLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textTopSpaceConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *enableLabelTopSpaceConstraint;
 
 @end
 
@@ -42,6 +43,10 @@
     [super viewWillAppear:animated];
     
     self.textTopSpaceConstraint.constant = .11 * self.backgroundImageView.frame.size.height;
+    
+    if (IS_IPHONE_4) {
+        self.enableLabelTopSpaceConstraint.constant = 30;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
