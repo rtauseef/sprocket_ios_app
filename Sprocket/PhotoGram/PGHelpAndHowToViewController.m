@@ -159,4 +159,13 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
+        return 0;
+    }
+
+    return tableView.rowHeight;
+}
+
 @end
