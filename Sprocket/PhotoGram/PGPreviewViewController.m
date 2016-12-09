@@ -445,10 +445,14 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:^(){
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
-    }];
-    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
+//    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:^(){
+//        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
+//    }];
+//    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
+
+    PGInterstitialAwarenessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PGInterstitialAwarenessViewController"];
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
@@ -578,6 +582,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
         if (kNumPrintsBeforeInterstitialMessage == numPrints) {
             PGInterstitialAwarenessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PGInterstitialAwarenessViewController"];
+            vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
             [self presentViewController:vc animated:YES completion:nil];
         }
         
