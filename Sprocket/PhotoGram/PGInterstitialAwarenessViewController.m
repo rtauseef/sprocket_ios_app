@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *printLabel;
 @property (weak, nonatomic) IBOutlet UILabel *enableLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textTopSpaceConstraint;
 
 @end
 
@@ -34,6 +35,13 @@
     if (![NSLocale isEnglish]) {
         self.backgroundImageView.image = [UIImage imageNamed:@"previewInterstitial"];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.textTopSpaceConstraint.constant = .11 * self.backgroundImageView.frame.size.height;
 }
 
 - (void)didReceiveMemoryWarning {
