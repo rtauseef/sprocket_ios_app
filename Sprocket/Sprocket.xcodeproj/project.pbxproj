@@ -1233,6 +1233,7 @@
 		26F7C1351DDA8500006396FA /* tree_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tree_TN@2x.png"; path = "Resources/Images/Stickers/Holiday/tree_TN@2x.png"; sourceTree = "<group>"; };
 		26F7C1361DDA8500006396FA /* tree_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tree_TN@3x.png"; path = "Resources/Images/Stickers/Holiday/tree_TN@3x.png"; sourceTree = "<group>"; };
 		26F7C1371DDA8500006396FA /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tree.png; path = Resources/Images/Stickers/Holiday/tree.png; sourceTree = "<group>"; };
+		2AC79CFA1DFB792C00D86609 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2AF06EF01DD5484F000FF091 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3731680F1AD4B08900503065 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -4066,6 +4067,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2AF06EF01DD5484F000FF091 /* da */,
+				2AC79CFA1DFB792C00D86609 /* zh */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
