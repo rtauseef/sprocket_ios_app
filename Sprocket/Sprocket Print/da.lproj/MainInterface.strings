@@ -4,3 +4,6 @@
 /* Class = "UIButton"; normalTitle = "Print to sprocket"; ObjectID = "XPD-kO-soS"; */
 "XPD-kO-soS.normalTitle" = "Udskriv til sprocket";
 
+/* Class = "UILabel"; text = "Connected"; ObjectID = "nFm-89-OFW"; */
+"nFm-89-OFW.text" = "Tilsluttet";
+
