@@ -1,3 +1,6 @@
+/* No comment provided by engineer. */
+"About" = "关于";
+
 /* Body of Camera Access Required dialog */
 "Allow access in your Settings to take and print photos." = "在“设置”中选择允许连接来拍照和打印照片。";
 
@@ -7,17 +10,11 @@
 /* No comment provided by engineer. */
 "Arrow Sticker" = "箭头贴纸";
 
-/* No comment provided by engineer. */
-"Bird Sticker" = "小鸟贴纸";
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "自动保存设置";
 
 /* No comment provided by engineer. */
 "Birthday Hat Sticker" = "生日帽子贴纸";
-
-/* No comment provided by engineer. */
-"Blue Frame" = "蓝色边框";
-
-/* No comment provided by engineer. */
-"Blue Gradient Frame" = "蓝色渐变边框";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "购买纸张";
@@ -25,12 +22,12 @@
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "需要访问相机";
 
+/* Social source title for Camera Roll */
+"Camera Roll" = "胶卷";
+
 /* Button for dismissing dialog
    Generic Cancel from an action. */
 "Cancel" = "取消";
-
-/* No comment provided by engineer. */
-"Candy Sticker" = "糖果贴纸";
 
 /* No comment provided by engineer. */
 "Cat Ears Sticker" = "猫耳贴纸";
@@ -42,13 +39,13 @@
 "Cat Sticker" = "猫咪贴纸";
 
 /* No comment provided by engineer. */
-"Check out my HP Sprocket creation" = "查看我的 HP Sprocket 作品";
-
-/* Checking the login status of the social network */
-"Checking" = "检查中";
+"Cat Whiskers Sticker" = "猫咪胡子贴纸";
 
 /* No comment provided by engineer. */
-"Cloud Sticker" = "云朵贴纸";
+"Check out my HP Sprocket creation" = "查看我的 HP Sprocket 作品";
+
+/* No comment provided by engineer. */
+"Christmas Polka Dot Frame" = "圣诞波尔卡圆点边框";
 
 /* No comment provided by engineer. */
 "Crown Sticker" = "皇冠贴纸";
@@ -57,13 +54,13 @@
 "Cupcake Sticker" = "纸杯蛋糕贴纸";
 
 /* No comment provided by engineer. */
-"DOD Mask Sticker" = "亡灵节面具贴纸";
-
-/* No comment provided by engineer. */
 "Diamond Sticker" = "钻石贴纸";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "关闭";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "是否将新相机照片保存到您的设备？";
 
 /* No comment provided by engineer. */
 "Don't Save" = "不保存";
@@ -80,68 +77,8 @@
 /* Error retrieving the facebook user information */
 "Error retrieving user information." = "检索用户信息时出现错误。";
 
-/* No comment provided by engineer. */
-"Fall 3 Eyes Sticker" = "秋季三眼贴纸";
-
-/* No comment provided by engineer. */
-"Fall Bat Sticker" = "秋季蝙蝠贴纸";
-
-/* No comment provided by engineer. */
-"Fall Candy Corn Sticker" = "秋季玉米糖贴纸";
-
-/* No comment provided by engineer. */
-"Fall Cat Eyes Sticker" = "秋季猫眼贴纸";
-
-/* No comment provided by engineer. */
-"Fall Cat Whiskers Sticker" = "秋季猫咪胡子贴纸";
-
-/* No comment provided by engineer. */
-"Fall DOD Eyes Sticker" = "秋季亡灵节眼睛贴纸";
-
-/* No comment provided by engineer. */
-"Fall Devil Horns Sticker" = "秋季恶魔角贴纸";
-
-/* No comment provided by engineer. */
-"Fall Eyeball Sticker" = "秋季眼球贴纸";
-
-/* No comment provided by engineer. */
-"Fall Fangs Sticker" = "秋季尖牙贴纸";
-
-/* No comment provided by engineer. */
-"Fall Ghost Sticker" = "秋季鬼魂贴纸";
-
-/* No comment provided by engineer. */
-"Fall Halloween Hat Sticker" = "秋季万圣节帽子贴纸";
-
-/* No comment provided by engineer. */
-"Fall Jason Mask Sticker" = "秋季“电锯杀人狂”面具贴纸";
-
-/* No comment provided by engineer. */
-"Fall Leaf 3 Sticker" = "秋季叶片贴纸3";
-
-/* No comment provided by engineer. */
-"Fall Moon Face Sticker" = "秋季月亮脸贴纸";
-
-/* No comment provided by engineer. */
-"Fall Moon Sticker" = "秋季月亮贴纸";
-
-/* No comment provided by engineer. */
-"Fall Owl Sticker" = "秋季猫头鹰贴纸";
-
-/* No comment provided by engineer. */
-"Fall Pumpkin Sticker" = "秋季南瓜贴纸";
-
-/* No comment provided by engineer. */
-"Fall Scary Cat Sticker" = "秋季恐怖猫贴纸";
-
-/* No comment provided by engineer. */
-"Fall Skull Sticker" = "秋季骷髅头贴纸";
-
-/* No comment provided by engineer. */
-"Fall Spider Sticker" = "秋季蜘蛛贴纸";
-
-/* No comment provided by engineer. */
-"Fall Spider Web Sticker" = "秋季蜘蛛网贴纸";
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
 
 /* No comment provided by engineer. */
 "Feather 2 Sticker" = "羽毛贴纸2";
@@ -152,41 +89,137 @@
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "iOS Sprocket 反馈（记录编号： %@）";
 
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "花朵边框 2";
+
 /* No comment provided by engineer. */
 "Floral Frame" = "花朵边框";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "提供反馈";
 
 /* No comment provided by engineer. */
 "Gradient Frame" = "渐变边框";
 
 /* No comment provided by engineer. */
-"Green Spray Paint Frame" = "绿色喷漆边框";
+"Green Water Color Frame" = "绿色水彩边框";
 
 /* No comment provided by engineer. */
-"Green Water Color Frame" = "绿色水彩边框";
+"Grey Frame" = "灰色边框";
 
 /* No comment provided by engineer. */
 "Heart Express Sticker" = "心意贴纸";
 
 /* No comment provided by engineer. */
-"Heart Pixel Sticker" = "像素心形贴纸";
+"Hearts Sticker" = "心形贴纸";
 
 /* No comment provided by engineer. */
-"Hearts Sticker" = "心形贴纸";
+"Holiday Candy Cane Sticker" = "圣诞拐杖糖贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Cap Sticker" = "圣诞帽贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Ornament Sticker" = "圣诞饰品贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Scarf Sticker" = "圣诞围巾贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Stocking Sticker" = "圣诞袜贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Tree Sticker" = "圣诞树贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Dreidel Sticker" = "圣诞陀螺贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Elf Hat Sticker" = "圣诞精灵帽贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Fireworks Sticker" = "圣诞烟花贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Hanukkah Glasses Sticker" = "光明节眼镜贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Holly Sticker" = "圣诞冬青贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Horn Sticker" = "圣诞号角贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Lights Sticker" = "圣诞彩灯贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Menorah Sticker" = "圣诞烛台贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Mistletoe Sticker" = "圣诞槲寄生贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Party Hat Sticker" = "圣诞派对帽贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Rudolph Antlers Sticker" = "圣诞鲁道夫鹿角贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Rudolph Glasses Sticker" = "圣诞鲁道夫眼镜贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Snowflake Sticker" = "圣诞雪花贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Face Sticker" = "圣诞雪人脸贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Hat Sticker" = "圣诞雪人帽贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Sticker" = "圣诞雪人贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Star Glasses Sticker" = "圣诞星星眼镜贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Star Sticker" = "圣诞星星贴纸";
+
+/* No comment provided by engineer. */
+"Holiday Tree Glasses Sticker" = "圣诞树眼镜贴纸";
 
 /* No comment provided by engineer. */
 "How To" = "指引";
 
 /* No comment provided by engineer. */
-"Ice Cream Cone Sticker" = "冰淇凌甜筒贴纸";
+"How to & Help" = "操作指引与帮助";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
 
 /* No comment provided by engineer. */
-"LOL Sticker" = "LOL（大笑）贴纸";
+"Kraft Frame" = "牛皮纸边框";
+
+/* No comment provided by engineer. */
+"Leaf 3 Sticker" = "叶片贴纸 3";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "已清除日志文件。";
 
 /* No comment provided by engineer. */
+"Moon Sticker" = "月亮贴纸";
+
+/* Dismisses dialog without taking action */
+"No" = "否";
+
+/* No comment provided by engineer. */
 "No Connection Available" = "无可用连接";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "未找到 Pitu 应用程序图像";
 
 /* No comment provided by engineer. */
 "No, thanks" = "不，谢谢";
@@ -201,10 +234,13 @@
 "Oops!" = "哎呀！";
 
 /* No comment provided by engineer. */
-"Pink Frame" = "粉红边框";
+"Orange Frame" = "橙色边框";
 
 /* No comment provided by engineer. */
 "Pink Spray Paint Frame" = "粉红喷漆边框";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
@@ -218,10 +254,16 @@ You can also use your device photos." = "请连接至数据源。
 "Polka Dots Frame" = "波尔卡圆点边框";
 
 /* No comment provided by engineer. */
-"Purple Frame" = "紫色边框";
+"Privacy" = "隐私";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
 
 /* No comment provided by engineer. */
 "Red Frame" = "红色边框";
+
+/* No comment provided by engineer. */
+"Red Triangle Frame" = "红色三角形边框";
 
 /* No comment provided by engineer. */
 "Remind me later" = "稍后提醒我";
@@ -237,6 +279,9 @@ You can also use your device photos." = "请连接至数据源。
 
 /* Title of a table view header */
 "SUPPORT:" = "支持：";
+
+/* No comment provided by engineer. */
+"Santa Frame" = "圣诞老人边框";
 
 /* No comment provided by engineer. */
 "Save" = "保存";
@@ -257,6 +302,12 @@ You can also use your device photos." = "请连接至数据源。
 "Sign Out" = "退出";
 
 /* No comment provided by engineer. */
+"Sloppy Frame" = "凌乱边框";
+
+/* No comment provided by engineer. */
+"Snow Frame" = "雪花边框";
+
+/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "抱歉，目前无法报告您的问题。 原因很可能是您未在移动设备上设置邮件帐户。";
 
 /* Title for dialog that prompts user to ugrade device firmware */
@@ -269,10 +320,16 @@ You can also use your device photos." = "请连接至数据源。
 "Stars Sticker" = "满天星贴纸";
 
 /* No comment provided by engineer. */
+"Striped Frame" = "条纹边框";
+
+/* No comment provided by engineer. */
 "Success" = "成功";
 
 /* No comment provided by engineer. */
 "Sunglasses Sticker" = "墨镜贴纸";
+
+/* No comment provided by engineer. */
+"Take Survey" = "接受调查";
 
 /* No comment provided by engineer. */
 "Take the survey" = "接受调查";
@@ -310,8 +367,14 @@ You can also use your device photos." = "请连接至数据源。
 /* No comment provided by engineer. */
 "Water Blue Frame" = "水蓝边框";
 
+/* Social source title for WeiBo */
+"WeiBo" = "微博";
+
 /* No comment provided by engineer. */
 "White Frame" = "白色边框";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "木底边框";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "您是否要退出 %@？";
@@ -319,20 +382,15 @@ You can also use your device photos." = "请连接至数据源。
 /* No comment provided by engineer. */
 "XOXO Sticker" = "XOXO（亲亲抱抱）贴纸";
 
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "是";
+
 /* No comment provided by engineer. */
 "You don’t have any account configured to send emails." = "您未配置可用来发送电子邮件的任何帐户。";
 
 /* No comment provided by engineer. */
+"sprocket" = "Sprocket";
+
+/* No comment provided by engineer. */
 "sprocket error log" = "Sprocket 错误日志";
 
-/* No comment provided by engineer. */
-"How to & Help" = "操作指引与帮助";
-
-/* No comment provided by engineer. */
-"Give Feedback" = "提供反馈";
-
-/* No comment provided by engineer. */
-"Privacy" = "隐私";
-
-/* No comment provided by engineer. */
-"About" = "关于";
