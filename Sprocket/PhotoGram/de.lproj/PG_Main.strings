@@ -165,6 +165,9 @@ Um künftige Versionen dieser App und der HP Drucker zu verbessern, erfasst HP r
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Foto aufnehmen oder auswählen";
 
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Foto aufnehmen oder auswählen";
+
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Tweet-Support";
 

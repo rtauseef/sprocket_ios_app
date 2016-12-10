@@ -165,6 +165,9 @@
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "拍摄或选择一张照片";
 
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "拍摄或选择一张照片";
+
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Tweet 支持";
 
