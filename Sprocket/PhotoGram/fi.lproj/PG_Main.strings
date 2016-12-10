@@ -165,6 +165,9 @@ HP kerää säännöllisesti nimettömiä käyttötietoja sovelluksesta sen ja H
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Ota tai valitse valokuva";
 
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Ota tai valitse valokuva";
+
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Twiittaa tuelle";
 
