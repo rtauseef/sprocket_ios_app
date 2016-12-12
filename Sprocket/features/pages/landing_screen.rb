@@ -38,7 +38,8 @@ class LandingScreen < Calabash::IBase
   end
     
   def modal_title
-    "label {text CONTAINS 'Printer not connected to device'}"
+    #"label {text CONTAINS 'Printer not connected to device'}"
+      "label {text CONTAINS 'No sprockets Connected'}"
   end
     
   def modal_content

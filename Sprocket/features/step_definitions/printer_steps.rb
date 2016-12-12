@@ -95,3 +95,7 @@ Then(/^I verify the "(.*?)" is listed in Other Printers field$/) do |printer|
     raise "wrong printer!" unless $printer1 = printer2
 end
 
+Then(/^I should see the message for No sprockets$/) do 
+    check_element_exists @current_page.modal_title
+    sleep(STEP_PAUSE)
+end
