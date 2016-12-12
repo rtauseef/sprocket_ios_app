@@ -578,6 +578,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
         if (kNumPrintsBeforeInterstitialMessage == numPrints) {
             PGInterstitialAwarenessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PGInterstitialAwarenessViewController"];
+            vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
             [self presentViewController:vc animated:YES completion:nil];
         }
         

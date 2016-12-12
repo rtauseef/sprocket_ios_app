@@ -1,3 +1,6 @@
+/* No comment provided by engineer. */
+"About" = "Apie";
+
 /* Body of Camera Access Required dialog */
 "Allow access in your Settings to take and print photos." = "Savo nustatymuose leiskite prieigą, kad galėtumėte fotografuoti ir spausdinti nuotraukas.";
 
@@ -7,17 +10,11 @@
 /* No comment provided by engineer. */
 "Arrow Sticker" = "Rodyklės lipdukas";
 
-/* No comment provided by engineer. */
-"Bird Sticker" = "Paukščio lipdukas";
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Automatinio išsaugojimo nuostatos";
 
 /* No comment provided by engineer. */
 "Birthday Hat Sticker" = "Gimtadienio kepurėlės lipdukas";
-
-/* No comment provided by engineer. */
-"Blue Frame" = "Mėlynas rėmelis";
-
-/* No comment provided by engineer. */
-"Blue Gradient Frame" = "Mėlynas pereinamų atspalvių rėmelis";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "Pirkti popieriaus";
@@ -25,12 +22,12 @@
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Reikalinga fotoaparato prieiga";
 
+/* Social source title for Camera Roll */
+"Camera Roll" = "Fotoaparato aplankas";
+
 /* Button for dismissing dialog
    Generic Cancel from an action. */
 "Cancel" = "Atšaukti";
-
-/* No comment provided by engineer. */
-"Candy Sticker" = "Saldainio lipdukas";
 
 /* No comment provided by engineer. */
 "Cat Ears Sticker" = "Katės ausų lipdukas";
@@ -42,13 +39,13 @@
 "Cat Sticker" = "Katės lipdukas";
 
 /* No comment provided by engineer. */
-"Check out my HP Sprocket creation" = "Pažiūrėkite mano „HP Sprocket“ kūrinį";
-
-/* Checking the login status of the social network */
-"Checking" = "Peržiūra";
+"Cat Whiskers Sticker" = "Katės ūsų lipdukas";
 
 /* No comment provided by engineer. */
-"Cloud Sticker" = "Debesies lipdukas";
+"Check out my HP Sprocket creation" = "Pažiūrėkite mano „HP Sprocket“ kūrinį";
+
+/* No comment provided by engineer. */
+"Christmas Polka Dot Frame" = "Taškuotas kalėdinis rėmelis";
 
 /* No comment provided by engineer. */
 "Crown Sticker" = "Karūnos lipdukas";
@@ -57,13 +54,13 @@
 "Cupcake Sticker" = "Keksiuko lipdukas";
 
 /* No comment provided by engineer. */
-"DOD Mask Sticker" = "Viso veido kaukės lipdukas";
-
-/* No comment provided by engineer. */
 "Diamond Sticker" = "Rombo lipdukas";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Atsisakyti";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Ar norite išsaugoti naujas nuotraukas įrenginyje?";
 
 /* No comment provided by engineer. */
 "Don't Save" = "Neįrašyti";
@@ -80,68 +77,8 @@
 /* Error retrieving the facebook user information */
 "Error retrieving user information." = "Klaida gaunant naudotojo informaciją.";
 
-/* No comment provided by engineer. */
-"Fall 3 Eyes Sticker" = "Rudeninis 3 akių lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Bat Sticker" = "Rudeninis šikšnosparnio lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Candy Corn Sticker" = "Rudeninis saldainių lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Cat Eyes Sticker" = "Rudeninis katės akių lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Cat Whiskers Sticker" = "Rudeninis katės ūsų lipdukas";
-
-/* No comment provided by engineer. */
-"Fall DOD Eyes Sticker" = "Rudeninis DOD akių lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Devil Horns Sticker" = "Rudeninis velnio ragų lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Eyeball Sticker" = "Rudeninis akies obuolio lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Fangs Sticker" = "Rudeninis ilčių lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Ghost Sticker" = "Rudeninis vaiduoklio lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Halloween Hat Sticker" = "Rudeninis Helovino kepurės lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Jason Mask Sticker" = "Rudeninis ledo ritulininko kaukės lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Leaf 3 Sticker" = "Rudeninis 3 lapų lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Moon Face Sticker" = "Rudeninis Mėnulio paviršiaus lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Moon Sticker" = "Rudeninis mėnulio lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Owl Sticker" = "Rudeninis pelėdos lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Pumpkin Sticker" = "Rudeninis moliūgo lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Scary Cat Sticker" = "Rudeninis kraupios katės lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Skull Sticker" = "Rudeninis kaukolės lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Spider Sticker" = "Rudeninis voro lipdukas";
-
-/* No comment provided by engineer. */
-"Fall Spider Web Sticker" = "Rudeninis voratinklio lipdukas";
+/* Social source title for Facebook */
+"Facebook" = "„Facebook“";
 
 /* No comment provided by engineer. */
 "Feather 2 Sticker" = "2 plunksnų lipdukas";
@@ -152,41 +89,137 @@
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "Atsiliepimai apie „iOS“ skirtą „Sprocket“ (įrašų radimo įrankis: %@)";
 
+/* Social source title for Flickr */
+"Flickr" = "„Flickr“";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "Gėlių rėmelis 2";
+
 /* No comment provided by engineer. */
 "Floral Frame" = "Gėlių rėmelis";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "Pateikti atsiliepimą";
 
 /* No comment provided by engineer. */
 "Gradient Frame" = "Pereinamų atspalvių rėmelis";
 
 /* No comment provided by engineer. */
-"Green Spray Paint Frame" = "Žalias purškiamų dažų rėmelis";
+"Green Water Color Frame" = "Žalias akvarelės rėmelis";
 
 /* No comment provided by engineer. */
-"Green Water Color Frame" = "Žalias akvarelės rėmelis";
+"Grey Frame" = "Pilkas rėmelis";
 
 /* No comment provided by engineer. */
 "Heart Express Sticker" = "Širdžių pašto lipdukas";
 
 /* No comment provided by engineer. */
-"Heart Pixel Sticker" = "Širdies taškų lipdukas";
+"Hearts Sticker" = "Širdies lipdukas";
 
 /* No comment provided by engineer. */
-"Hearts Sticker" = "Širdies lipdukas";
+"Holiday Candy Cane Sticker" = "Šventinis kalėdinių ledinukų lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Cap Sticker" = "Šventinis kalėdinės kepurės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Ornament Sticker" = "Šventinis kalėdinio ornamento lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Scarf Sticker" = "Šventinis kalėdinio šaliko lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Stocking Sticker" = "Šventinis kalėdinės kojinės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Tree Sticker" = "Šventinis Kalėdų eglutės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Dreidel Sticker" = "Šventinis sukučio lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Elf Hat Sticker" = "Šventinis elfo kepurės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Fireworks Sticker" = "Šventinis fejerverkų lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Hanukkah Glasses Sticker" = "Šventinis Chanukos akinių lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Holly Sticker" = "Šventinis bugienio lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Horn Sticker" = "Šventinis rago lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Lights Sticker" = "Šventinis šviesų lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Menorah Sticker" = "Šventinis žvakidės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Mistletoe Sticker" = "Šventinis amalo lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Party Hat Sticker" = "Šventinis vakarėlio kepurės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Rudolph Antlers Sticker" = "Šventinis Rudolfo ragų lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Rudolph Glasses Sticker" = "Šventinis Rudolfo akinių lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Snowflake Sticker" = "Šventinis snaigės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Face Sticker" = "Šventinis sniego senio veido lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Hat Sticker" = "Šventinis sniego senio skrybėlės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Sticker" = "Šventinis sniego senio lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Star Glasses Sticker" = "Šventinis žvaigždės akinių lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Star Sticker" = "Šventinis žvaigždės lipdukas";
+
+/* No comment provided by engineer. */
+"Holiday Tree Glasses Sticker" = "Šventinis eglutės akinių lipdukas";
 
 /* No comment provided by engineer. */
 "How To" = "Mokomoji medžiaga";
 
 /* No comment provided by engineer. */
-"Ice Cream Cone Sticker" = "Ledų kūgio lipdukas";
+"How to & Help" = "Instrukcijos ir žinynas";
+
+/* Social source title for Instagram */
+"Instagram" = "„Instagram“";
 
 /* No comment provided by engineer. */
-"LOL Sticker" = "LOL lipdukas";
+"Kraft Frame" = "Ranku darbo rėmelis";
+
+/* No comment provided by engineer. */
+"Leaf 3 Sticker" = "3 lapų lipdukas";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Žurnalo failas buvo išvalytas.";
 
 /* No comment provided by engineer. */
+"Moon Sticker" = "Mėnulio lipdukas";
+
+/* Dismisses dialog without taking action */
+"No" = "Ne";
+
+/* No comment provided by engineer. */
 "No Connection Available" = "Nėra pasiekiamo ryšio";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "„Pitu“ programėlės paveikslėlių nerasta";
 
 /* No comment provided by engineer. */
 "No, thanks" = "Ne, ačiū";
@@ -201,10 +234,13 @@
 "Oops!" = "Oi!";
 
 /* No comment provided by engineer. */
-"Pink Frame" = "Rožinis rėmelis";
+"Orange Frame" = "Oranžinis rėmelis";
 
 /* No comment provided by engineer. */
 "Pink Spray Paint Frame" = "Rožinis purškiamų dažų rėmelis";
+
+/* Social source title for Pitu */
+"Pitu" = "„Pitu“";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
@@ -218,10 +254,16 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 "Polka Dots Frame" = "Taškuotas rėmelis";
 
 /* No comment provided by engineer. */
-"Purple Frame" = "Violetinis rėmelis";
+"Privacy" = "Asmens duomenų apsauga";
+
+/* Social source title for Qzone */
+"Qzone" = "„QZone“";
 
 /* No comment provided by engineer. */
 "Red Frame" = "Raudonas rėmelis";
+
+/* No comment provided by engineer. */
+"Red Triangle Frame" = "Raudono trikampio rėmelis";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Priminti man vėliau";
@@ -237,6 +279,9 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 
 /* Title of a table view header */
 "SUPPORT:" = "PAGALBA.";
+
+/* No comment provided by engineer. */
+"Santa Frame" = "Kalėdų senelio rėmelis";
 
 /* No comment provided by engineer. */
 "Save" = "Įrašyti";
@@ -257,6 +302,12 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 "Sign Out" = "Atsijungti";
 
 /* No comment provided by engineer. */
+"Sloppy Frame" = "Nusitrynęs rėmelis";
+
+/* No comment provided by engineer. */
+"Snow Frame" = "Sniego rėmelis";
+
+/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Deja, dabar apie problemą pranešti negalima. Greičiausiai taip yra dėl to, kad jūsų mobiliajame įrenginyje nėra nustatyta nė viena el. pašto paskyra.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
@@ -269,10 +320,16 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 "Stars Sticker" = "Žvaigždučių lipdukas";
 
 /* No comment provided by engineer. */
+"Striped Frame" = "Dryžuotas rėmelis";
+
+/* No comment provided by engineer. */
 "Success" = "Sėkmingai";
 
 /* No comment provided by engineer. */
 "Sunglasses Sticker" = "Saulės akinių lipdukas";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Atlikti apklausą";
 
 /* No comment provided by engineer. */
 "Take the survey" = "Atsakykite į apklausos klausimus";
@@ -287,7 +344,7 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 "Tell us what you think of sprocket" = "Pasakykite, ką galvojate apie „Sprocket“";
 
 /* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Paslaugos teikimo sąlygomis";
+"Terms of Service" = "Paslaugos teikimo sąlygos";
 
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Žurnalo failas yra pridėtas prie šio pranešimo.";
@@ -310,8 +367,14 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 /* No comment provided by engineer. */
 "Water Blue Frame" = "Vandens mėlynumo rėmelis";
 
+/* Social source title for WeiBo */
+"WeiBo" = "„WeiBo“";
+
 /* No comment provided by engineer. */
 "White Frame" = "Baltas rėmelis";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "Medžio apatinės dalies rėmelis";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Ar norite atsijungti nuo %@?";
@@ -319,20 +382,15 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 /* No comment provided by engineer. */
 "XOXO Sticker" = "XOXO lipdukas";
 
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Taip";
+
 /* No comment provided by engineer. */
 "You don’t have any account configured to send emails." = "Neturite paskyros, kuri būtų sukonfigūruota siųsti el. laiškus.";
 
 /* No comment provided by engineer. */
+"sprocket" = "„Sprocket“";
+
+/* No comment provided by engineer. */
 "sprocket error log" = "„Sprocket“ klaidų žurnalas";
 
-/* No comment provided by engineer. */
-"How to & Help" = "Instrukcijos ir žinynas";
-
-/* No comment provided by engineer. */
-"Give Feedback" = "Pateikti atsiliepimą";
-
-/* No comment provided by engineer. */
-"Privacy" = "Asmens duomenų apsauga";
-
-/* No comment provided by engineer. */
-"About" = "Apie";
