@@ -26,6 +26,15 @@ static NSString * const kPGHelpAndHowToViewUserURLFr = @"http://h10032.www1.hp.c
 static NSString * const kPGHelpAndHowToViewUserURLSp = @"http://h10032.www1.hp.com/ctg/Manual/c05320654";
 static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.com/ctg/Manual/c05320519";
 
+// Join Support
+static NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
+static NSString * const kPGHelpAndHowToJoinForumSupportURLZh = @"http://h30471.www3.hp.com/t5/community/communitypage";
+
+// Support Website
+static NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
+static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.hp.com/t5/community/communitypage";
+
+
 @implementation NSLocale (Additions)
 
 + (BOOL)isChinese
@@ -34,7 +43,20 @@ static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.c
     
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
-    if ([languageCode isEqualToString:@"zh"]) {
+    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+        retVal = YES;
+    }
+    
+    return retVal;
+}
+
++ (BOOL)isEnglish
+{
+    BOOL retVal = NO;
+    
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+    if ([languageCode caseInsensitiveCompare:@"en"] == NSOrderedSame) {
         retVal = YES;
     }
     
@@ -114,6 +136,35 @@ static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.c
         url = kPGHelpAndHowToViewUserURLNl;
     }
     
+    return [NSURL URLWithString:url];
+}
+
+
++ (NSURL *)supportWebsiteURL
+{
+    NSString *url = kPGHelpAndHowToVisitWebsiteURL;
+
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+
+    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+        url = kPGHelpAndHowToVisitWebsiteURLZh;
+    }
+
+    return [NSURL URLWithString:url];
+}
+
++ (NSURL *)supportForumURL
+{
+    NSString *url = kPGHelpAndHowToJoinForumSupportURL;
+
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
+
+    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+        url = kPGHelpAndHowToJoinForumSupportURLZh;
+    }
+
     return [NSURL URLWithString:url];
 }
 

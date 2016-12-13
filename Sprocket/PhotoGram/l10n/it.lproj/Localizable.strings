@@ -1,3 +1,6 @@
+/* No comment provided by engineer. */
+"About" = "Informazioni su";
+
 /* Body of Camera Access Required dialog */
 "Allow access in your Settings to take and print photos." = "Consentire l'accesso in Impostazioni per scattare e stampare foto.";
 
@@ -7,17 +10,11 @@
 /* No comment provided by engineer. */
 "Arrow Sticker" = "Adesivo Freccia";
 
-/* No comment provided by engineer. */
-"Bird Sticker" = "Adesivo Uccello";
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Impostazione Salvataggio automatico";
 
 /* No comment provided by engineer. */
 "Birthday Hat Sticker" = "Adesivo Cappellino compleanno";
-
-/* No comment provided by engineer. */
-"Blue Frame" = "Cornice blu";
-
-/* No comment provided by engineer. */
-"Blue Gradient Frame" = "Cornice gradiente blu";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "Acquista carta";
@@ -25,12 +22,12 @@
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Richiesto l'accesso alla fotocamera";
 
+/* Social source title for Camera Roll */
+"Camera Roll" = "Rullino fotografico";
+
 /* Button for dismissing dialog
    Generic Cancel from an action. */
 "Cancel" = "Annulla";
-
-/* No comment provided by engineer. */
-"Candy Sticker" = "Adesivo Caramella";
 
 /* No comment provided by engineer. */
 "Cat Ears Sticker" = "Adesivo Orecchie di gatto";
@@ -42,13 +39,13 @@
 "Cat Sticker" = "Adesivo Gatto";
 
 /* No comment provided by engineer. */
-"Check out my HP Sprocket creation" = "Guarda le creazioni della mia HP Sprocket";
-
-/* Checking the login status of the social network */
-"Checking" = "Verifica in corso";
+"Cat Whiskers Sticker" = "Adesivo Baffi di gatto";
 
 /* No comment provided by engineer. */
-"Cloud Sticker" = "Adesivo Nuvola";
+"Check out my HP Sprocket creation" = "Guarda le creazioni della mia HP Sprocket";
+
+/* No comment provided by engineer. */
+"Christmas Polka Dot Frame" = "Cornice Natale Pois";
 
 /* No comment provided by engineer. */
 "Crown Sticker" = "Adesivo Corona";
@@ -57,13 +54,13 @@
 "Cupcake Sticker" = "Adesivo Cupcake";
 
 /* No comment provided by engineer. */
-"DOD Mask Sticker" = "Adesivo Maschera DOD";
-
-/* No comment provided by engineer. */
 "Diamond Sticker" = "Adesivo Diamante";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Scarta";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Salvare nuove foto sul dispositivo?";
 
 /* No comment provided by engineer. */
 "Don't Save" = "Non salvare";
@@ -80,68 +77,8 @@
 /* Error retrieving the facebook user information */
 "Error retrieving user information." = "Errore recupero informazioni utente";
 
-/* No comment provided by engineer. */
-"Fall 3 Eyes Sticker" = "Adesivo Autunno 3 occhi";
-
-/* No comment provided by engineer. */
-"Fall Bat Sticker" = "Adesivo Autunno Pipistrello";
-
-/* No comment provided by engineer. */
-"Fall Candy Corn Sticker" = "Adesivo Autunno Candy Corn";
-
-/* No comment provided by engineer. */
-"Fall Cat Eyes Sticker" = "Adesivo Autunno Occhi di gatto";
-
-/* No comment provided by engineer. */
-"Fall Cat Whiskers Sticker" = "Adesivo Autunno Baffi di gatto";
-
-/* No comment provided by engineer. */
-"Fall DOD Eyes Sticker" = "Adesivo Autunno DOD Occhi";
-
-/* No comment provided by engineer. */
-"Fall Devil Horns Sticker" = "Adesivo Autunno Corna del diavolo";
-
-/* No comment provided by engineer. */
-"Fall Eyeball Sticker" = "Adesivo Autunno Bulbi oculari";
-
-/* No comment provided by engineer. */
-"Fall Fangs Sticker" = "Adesivo Autunno Zanne";
-
-/* No comment provided by engineer. */
-"Fall Ghost Sticker" = "Adesivo Autunno Fantasma";
-
-/* No comment provided by engineer. */
-"Fall Halloween Hat Sticker" = "Adesivo Autunno Cappellino Halloween";
-
-/* No comment provided by engineer. */
-"Fall Jason Mask Sticker" = "Adesivo Autunno Maschera Jason";
-
-/* No comment provided by engineer. */
-"Fall Leaf 3 Sticker" = "Adesivo Autunno Foglia 3";
-
-/* No comment provided by engineer. */
-"Fall Moon Face Sticker" = "Adesivo Autunno Faccia della luna";
-
-/* No comment provided by engineer. */
-"Fall Moon Sticker" = "Adesivo Autunno Luna";
-
-/* No comment provided by engineer. */
-"Fall Owl Sticker" = "Adesivo Autunno Gufo";
-
-/* No comment provided by engineer. */
-"Fall Pumpkin Sticker" = "Adesivo Autunno Zucca";
-
-/* No comment provided by engineer. */
-"Fall Scary Cat Sticker" = "Adesivo Autunno Gatto nero";
-
-/* No comment provided by engineer. */
-"Fall Skull Sticker" = "Adesivo Autunno Teschio";
-
-/* No comment provided by engineer. */
-"Fall Spider Sticker" = "Adesivo Autunno Ragno";
-
-/* No comment provided by engineer. */
-"Fall Spider Web Sticker" = "Adesivo Autunno Ragnatela";
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
 
 /* No comment provided by engineer. */
 "Feather 2 Sticker" = "Adesivo Piuma 2";
@@ -152,41 +89,137 @@
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "Feedback su sprocket per iOS (Record Locator: %@)";
 
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "Cornice floreale 2";
+
 /* No comment provided by engineer. */
 "Floral Frame" = "Cornice floreale";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "I tuoi commenti:";
 
 /* No comment provided by engineer. */
 "Gradient Frame" = "Cornice Gradiente";
 
 /* No comment provided by engineer. */
-"Green Spray Paint Frame" = "Cornice pittura spray verde";
+"Green Water Color Frame" = "Cornice colore verde acqua";
 
 /* No comment provided by engineer. */
-"Green Water Color Frame" = "Cornice colore verde acqua";
+"Grey Frame" = "Cornice Grigio";
 
 /* No comment provided by engineer. */
 "Heart Express Sticker" = "Adesivo Cuore Express";
 
 /* No comment provided by engineer. */
-"Heart Pixel Sticker" = "Adesivi Cuore Pixel";
+"Hearts Sticker" = "Adesivi Cuori";
 
 /* No comment provided by engineer. */
-"Hearts Sticker" = "Adesivi Cuori";
+"Holiday Candy Cane Sticker" = "Adesivo Festività Bastoncino di zucchero";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Cap Sticker" = "Adesivo Festività Natale Cappellino";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Ornament Sticker" = "Adesivo Natale Ornamenti";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Scarf Sticker" = "Adesivo Natale Sciarpa";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Stocking Sticker" = "Adesivo Natale Calza";
+
+/* No comment provided by engineer. */
+"Holiday Christmas Tree Sticker" = "Adesivo Festività Albero di Natale";
+
+/* No comment provided by engineer. */
+"Holiday Dreidel Sticker" = "Adesivo Festività Dreidel";
+
+/* No comment provided by engineer. */
+"Holiday Elf Hat Sticker" = "Adesivo Festività Cappello da elfo";
+
+/* No comment provided by engineer. */
+"Holiday Fireworks Sticker" = "Adesivo Festività Fuochi d'artificio";
+
+/* No comment provided by engineer. */
+"Holiday Hanukkah Glasses Sticker" = "Adesivo Festività Occhiali Hanukkah";
+
+/* No comment provided by engineer. */
+"Holiday Holly Sticker" = "Adesivo Festività Trifoglio";
+
+/* No comment provided by engineer. */
+"Holiday Horn Sticker" = "Adesivo Festività Corno";
+
+/* No comment provided by engineer. */
+"Holiday Lights Sticker" = "Adesivo Festività Luci";
+
+/* No comment provided by engineer. */
+"Holiday Menorah Sticker" = "Adesivo Festività Menorah";
+
+/* No comment provided by engineer. */
+"Holiday Mistletoe Sticker" = "Adesivo Festività Vischio";
+
+/* No comment provided by engineer. */
+"Holiday Party Hat Sticker" = "Adesivo Festività Cappellino";
+
+/* No comment provided by engineer. */
+"Holiday Rudolph Antlers Sticker" = "Adesivo Festività Corna di Rudolph";
+
+/* No comment provided by engineer. */
+"Holiday Rudolph Glasses Sticker" = "Adesivo Festività Occhiali Rudolph";
+
+/* No comment provided by engineer. */
+"Holiday Snowflake Sticker" = "Adesivo Festività Fiocco di neve";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Face Sticker" = "Adesivo Festività Faccia pupazzo di neve";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Hat Sticker" = "Adesivo Festività Cappello pupazzo di neve";
+
+/* No comment provided by engineer. */
+"Holiday Snowman Sticker" = "Adesivo Festività Pupazzo di neve";
+
+/* No comment provided by engineer. */
+"Holiday Star Glasses Sticker" = "Adesivo Festività Occhiali a stella";
+
+/* No comment provided by engineer. */
+"Holiday Star Sticker" = "Adesivo Festività Stella";
+
+/* No comment provided by engineer. */
+"Holiday Tree Glasses Sticker" = "Adesivo Festività Occhiali albero";
 
 /* No comment provided by engineer. */
 "How To" = "Istruzioni:";
 
 /* No comment provided by engineer. */
-"Ice Cream Cone Sticker" = "Adesivo Cono gelato";
+"How to & Help" = "Accesso all'assistenza e al supporto";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
 
 /* No comment provided by engineer. */
-"LOL Sticker" = "Etichetta adesiva LOL";
+"Kraft Frame" = "Cornice artigianale";
+
+/* No comment provided by engineer. */
+"Leaf 3 Sticker" = "Adesivo Foglia 3";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Il file di registro è stato cancellato.";
 
 /* No comment provided by engineer. */
+"Moon Sticker" = "Adesivo Luna";
+
+/* Dismisses dialog without taking action */
+"No" = "No";
+
+/* No comment provided by engineer. */
 "No Connection Available" = "Nessuna connessione disponibile";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Non sono state trovate immagini app Pitu";
 
 /* No comment provided by engineer. */
 "No, thanks" = "No, grazie.";
@@ -201,10 +234,13 @@
 "Oops!" = "Attenzione!";
 
 /* No comment provided by engineer. */
-"Pink Frame" = "Cornice rosa";
+"Orange Frame" = "Cornice Arancione";
 
 /* No comment provided by engineer. */
 "Pink Spray Paint Frame" = "Cornice pittura spray rosa";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
@@ -218,10 +254,16 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 "Polka Dots Frame" = "Cornice a pois";
 
 /* No comment provided by engineer. */
-"Purple Frame" = "Cornice viola";
+"Privacy" = "Privacy";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
 
 /* No comment provided by engineer. */
 "Red Frame" = "Cornice rossa";
+
+/* No comment provided by engineer. */
+"Red Triangle Frame" = "Cornice Triangolo rosso";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Promemoria";
@@ -237,6 +279,9 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 
 /* Title of a table view header */
 "SUPPORT:" = "SUPPORTO:";
+
+/* No comment provided by engineer. */
+"Santa Frame" = "Cornice Babbo Natale";
 
 /* No comment provided by engineer. */
 "Save" = "Salva";
@@ -257,6 +302,12 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 "Sign Out" = "Disconnetti";
 
 /* No comment provided by engineer. */
+"Sloppy Frame" = "Cornice Irregolare";
+
+/* No comment provided by engineer. */
+"Snow Frame" = "Cornice Neve";
+
+/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Impossibile segnalare il tuo problema in questo momento. Questo avviene probabilmente perché non vi è nessun account email impostato sul tuo dispositivo mobile.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
@@ -269,10 +320,16 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 "Stars Sticker" = "Adesivo Stelle";
 
 /* No comment provided by engineer. */
+"Striped Frame" = "Cornice a strisce";
+
+/* No comment provided by engineer. */
 "Success" = "Operazione riuscita";
 
 /* No comment provided by engineer. */
 "Sunglasses Sticker" = "Adesivo Occhiali da sole";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Vai al questionario";
 
 /* No comment provided by engineer. */
 "Take the survey" = "Vai al questionario";
@@ -310,8 +367,14 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 /* No comment provided by engineer. */
 "Water Blue Frame" = "Cornice acquamarina";
 
+/* Social source title for WeiBo */
+"WeiBo" = "Weibo";
+
 /* No comment provided by engineer. */
 "White Frame" = "Cornice bianca";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "Cornice Fondo legno";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Vuoi scollegarti da %@?";
@@ -319,20 +382,15 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 /* No comment provided by engineer. */
 "XOXO Sticker" = "Etichetta adesiva XOXO";
 
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Sì";
+
 /* No comment provided by engineer. */
 "You don’t have any account configured to send emails." = "Nessun account email è configurato sul tuo dispositivo mobile.";
 
 /* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
 "sprocket error log" = "registro degli errori sprocket";
 
-/* No comment provided by engineer. */
-"How to & Help" = "Accesso all'assistenza e al supporto";
-
-/* No comment provided by engineer. */
-"Give Feedback" = "I tuoi commenti:";
-
-/* No comment provided by engineer. */
-"Privacy" = "Privacy";
-
-/* No comment provided by engineer. */
-"About" = "Informazioni su";

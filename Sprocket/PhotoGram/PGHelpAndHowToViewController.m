@@ -28,8 +28,6 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
     PGHelpAndHowToRowIndexesVisitSupport
 };
 
-NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
-NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
 NSString * const kViewUserGuideScreenName = @"View User Guide";
 NSString * const kVisitWebsiteScreenName = @"Visit Website";
 NSString * const kJoinForumScreenName = @"Join Forum Screen";
@@ -93,12 +91,12 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
         }
         case PGHelpAndHowToRowIndexesJoinSupport: {
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToJoinForumSupportURL]];
+            [[UIApplication sharedApplication] openURL:[NSLocale supportForumURL]];
             break;
         }
         case PGHelpAndHowToRowIndexesVisitSupport: {
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kVisitWebsiteScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToVisitWebsiteURL]];
+            [[UIApplication sharedApplication] openURL:[NSLocale supportWebsiteURL]];
             break;
         }
         default:
@@ -159,6 +157,15 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
         NSURL *tweetURL = [NSURL URLWithString:tweetStringURL];
         [[UIApplication sharedApplication] openURL:tweetURL];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
+        return 0;
+    }
+
+    return tableView.rowHeight;
 }
 
 @end

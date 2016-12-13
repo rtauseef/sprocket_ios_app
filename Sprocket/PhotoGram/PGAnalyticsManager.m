@@ -177,7 +177,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
 - (void)handlePrintJobCompletedNotification:(NSNotification *)notification
 {
-    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
+    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorRawKey];
 
     if (nil == error) {
         [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];

@@ -18,10 +18,13 @@
 + (NSString *)languageID;
 + (NSString *)countryID;
 + (BOOL)isChinese;
++ (BOOL)isEnglish;
 + (BOOL)isSurveyAvailable;
 
 + (NSURL *)privacyURL;
 + (NSURL *)userGuideURL;
++ (NSURL *)supportWebsiteURL;
++ (NSURL *)supportForumURL;
 + (NSString *)twitterSupportTag;
 + (NSString *)twitterSupportTagURL;
 

@@ -22,6 +22,7 @@
 #import "PGImglyManager.h"
 #import "MPPrintManager.h"
 #import "UIViewController+Trackable.h"
+#import "PGInterstitialAwarenessViewController.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -42,6 +43,8 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
+static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
+static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 @interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
@@ -142,6 +145,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePreviewAndCamera) name:kPGCameraManagerCameraClosed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoTaken) name:kPGCameraManagerPhotoTaken object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
     
     __weak PGPreviewViewController *weakSelf = self;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
@@ -562,6 +566,23 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
         activityViewController.popoverPresentationController.delegate = self;
         
         [self presentViewController:activityViewController animated:YES completion:nil];
+    }
+}
+
+- (void)handlePrintJobCompletedNotification:(NSNotification *)notification
+{
+    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
+    
+    if (nil == error) {
+        NSInteger numPrints = [[NSUserDefaults standardUserDefaults] integerForKey:kPGPreviewViewControllerNumPrintsKey] + 1;
+
+        if (kNumPrintsBeforeInterstitialMessage == numPrints) {
+            PGInterstitialAwarenessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PGInterstitialAwarenessViewController"];
+            vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            [self presentViewController:vc animated:YES completion:nil];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:numPrints forKey:kPGPreviewViewControllerNumPrintsKey];
     }
 }
 
