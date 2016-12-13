@@ -19,9 +19,8 @@
 
 @property (weak, nonatomic) id<PGMediaNavigationDelegate> delegate;
 
--(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page;
--(void)selectButton:(NSString *)title animated:(BOOL)animated;
--(void)showFolderButton:(BOOL)show;
+- (void)selectButton:(NSString *)title animated:(BOOL)animated;
+- (void)showFolderIcon:(BOOL)show;
 
 @end
 
