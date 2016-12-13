@@ -2771,7 +2771,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -2779,7 +2779,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -4484,11 +4484,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4948,9 +4948,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
