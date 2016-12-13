@@ -46,6 +46,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 @property (nonatomic, strong) PGMediaNavigation *navigationView;
 @property (nonatomic, strong) PGSwipeCoachMarksView *swipeCoachMarksView;
 @property (nonatomic, weak) UIScrollView *scrollView;
+@property (nonatomic, assign) BOOL isDraggingPage;
 
 @end
 
@@ -99,6 +100,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             self.scrollView.delegate = self;
         }
     }
+    
+    self.isDraggingPage = NO;
 }
 
 - (void)dealloc
@@ -382,15 +385,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
     if (index != NSNotFound) {
         PGSocialSource *socialSource = self.socialSources[index];
-
-        BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
-
-        if (isShowingPhotoGallery && socialSource.hasFolders) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
-        }
-
+        [self handleFolderIcon:viewController socialSource:socialSource];
         [self.navigationView selectButton:socialSource.title animated:YES];
     }
 }
@@ -443,34 +438,47 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
+    self.isDraggingPage = NO;
+    
     if (!completed) {
         return;
     }
     
-    UINavigationController *viewController = [pageViewController.viewControllers lastObject];
-
-    NSUInteger index = [self.socialViewControllers indexOfObject:viewController];
-
+    UINavigationController *navigationViewController = pageViewController.viewControllers.lastObject;
+    UINavigationController *viewController = navigationViewController.viewControllers.lastObject;
+    NSUInteger index = [self.socialViewControllers indexOfObject:navigationViewController];
+    
     if (index != NSNotFound) {
         PGSocialSource *socialSource = self.socialSources[index];
 
         self.pageControl.currentPage = [self pageForSocialNetwork:socialSource.type];
         [self.navigationView selectButton:socialSource.title animated:YES];
         self.socialSourceType = socialSource.type;
+
+        [self handleFolderIcon:viewController socialSource:socialSource];
     }
 
     self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)handleFolderIcon:(UIViewController *)viewController socialSource:(PGSocialSource *)socialSource
 {
-    // The scroll view appears to store only 3 screens at a time...
-    //  the current screen, one to the left, and one to the right.
-    //  Thus 33% is always the origin of the current screen
-    CGFloat progress = scrollView.contentOffset.x / scrollView.contentSize.width;    
-    progress -= .33F;
+    if (self.isDraggingPage) {
+        return;
+    }
     
-    [self.navigationView setScrollProgress:scrollView progress:progress forPage:self.pageControl.currentPage];
+    BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
+    
+    if (isShowingPhotoGallery && socialSource.hasFolders) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
+    }
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    self.isDraggingPage = YES;
 }
 
 #pragma mark - UIPageViewControllerDataSource
