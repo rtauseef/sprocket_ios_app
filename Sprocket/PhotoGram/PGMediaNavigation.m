@@ -95,7 +95,7 @@
 -(void)showFolderIcon:(BOOL)show
 {
     [UIView animateWithDuration:0.3 animations:^{
-        self.folderButton.alpha = (!show) ? 0.0f : 1.0f;
+        self.folderButton.alpha = (show) ? 1.0f : 0.0f;
     }];
 }
 
