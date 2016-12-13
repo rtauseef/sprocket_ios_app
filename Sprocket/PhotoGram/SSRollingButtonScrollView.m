@@ -9,8 +9,6 @@
 #import "SSRollingButtonScrollView.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-static const NSInteger progressScale = 25;
-
 @implementation SSRollingButtonScrollView
 {
     BOOL _viewsInitialLoad;
@@ -184,7 +182,7 @@ static const NSInteger progressScale = 25;
         [self configureCenterButton:[self getCenterButton]];
         
         if (_viewsInitialLoad) {
-            [self moveButtonToViewCenter:_currentCenterButton animated:NO];
+            [self selectButton:_desiredTitle animated:NO];
             [self tileContentInVisibleBounds];
             _viewsInitialLoad = NO;
         }
@@ -419,38 +417,25 @@ static const NSInteger progressScale = 25;
 
 - (void)selectButton:(NSString *)title animated:(BOOL)animated
 {
-    BOOL moved = NO;
+    [self layoutIfNeeded];
+    
     NSInteger buttonCount = _visibleButtons.count;
-    for(NSInteger idx = 0; idx < buttonCount  &&  !moved; idx++) {
+    
+    BOOL moved = NO;
+    _desiredTitle = title;
+    for (NSInteger idx = 0; idx < buttonCount; idx++) {
         UIButton *b = _visibleButtons[idx];
         if ([b.titleLabel.text isEqualToString:title]) {
-            [self moveButtonToViewCenter:b animated:animated];
             _desiredTitle = nil;
+            [self moveButtonToViewCenter:b animated:animated];
             moved = YES;
+            [self layoutIfNeeded];
         }
         
-        if (!moved  &&  idx == buttonCount-1) {
-            _desiredTitle = title;
-            [self moveButtonToViewCenter:_visibleButtons[buttonCount-1] animated:animated];
+        if (!moved && (idx == (buttonCount - 1))) {
+            [self moveButtonToViewCenter:_visibleButtons[buttonCount-1] animated:NO];
+            [self layoutIfNeeded];
         }
-    }
-}
-
-- (void)setScrollProgress:(CGFloat)progress onPage:(NSInteger)page
-{
-    if (_visibleButtons  &&  _visibleButtons.count > 3) {
-        UIView *currentButton = [_visibleButtons objectAtIndex:1];
-        CGPoint offset = self.contentOffset;
-        
-        UIView *nextButton = [_visibleButtons objectAtIndex:0];
-        if (progress > 0  &&  _visibleButtons.count > 2) {
-            nextButton = [_visibleButtons objectAtIndex:2];
-        }
-        
-        CGFloat widthPerPage = (currentButton.frame.size.width + nextButton.frame.size.width + 10) / 2;
-        
-        offset.x += (progress * widthPerPage) / progressScale;
-        self.contentOffset = offset;
     }
 }
 
