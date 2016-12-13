@@ -344,7 +344,7 @@ Saate kasutada ka oma seadme fotosid.";
 "Tell us what you think of sprocket" = "Avaldage arvamust Sprocketi kohta";
 
 /* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Teenusetingimused";
+"Terms of Service" = "teenusetingimustega";
 
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "See logifail on seotud selle sõnumiga.";
