@@ -383,15 +383,19 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
-    [self saveToCameraRoll:^(BOOL saved) {
-        if (saved) {
+    UIImage *image = [self.imageContainer screenshotImage];
+
+    [[PGCameraManager sharedInstance] saveImage:image completion:^(BOOL success) {
+        if (success) {
             [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
 
-            [UIView animateWithDuration:0.5F animations:^{
-                [self showImageSavedView:YES];
-            } completion:^(BOOL finished) {
-                [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
-            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.5F animations:^{
+                    [self showImageSavedView:YES];
+                } completion:^(BOOL finished) {
+                    [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
+                }];
+            });
         }
     }];
 }
@@ -418,8 +422,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
         __weak PGPreviewViewController *weakSelf = self;
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [self saveToCameraRoll:^(BOOL authorized){
-                if (authorized) {
+            UIImage *image = [self.imageContainer screenshotImage];
+
+            [[PGCameraManager sharedInstance] saveImage:image completion:^(BOOL success) {
+                if (success) {
                     [self closePreviewAndCamera];
                     [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
                                                                           source:kEventDismissEditCloseLabel];
@@ -467,19 +473,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 }
 
-- (void)saveToCameraRoll:(void (^)(BOOL))completion
-{
-    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
-        if (loggedIn) {
-            UIImage *image = [self.imageContainer screenshotImage];
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-        }
-        
-        if (completion) {
-            completion(loggedIn);
-        }
-    }];
-}
 
 #pragma mark - Print preparation
 

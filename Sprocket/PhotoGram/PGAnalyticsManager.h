@@ -54,6 +54,9 @@ extern NSString * const kEventCameraDirectionSelfieLabel;
 extern NSString * const kEventPrintButtonLabel;
 extern NSString * const kEventPrintShareLabel;
 
+extern NSString * const kPhotoCollectionViewModeGrid;
+extern NSString * const kPhotoCollectionViewModeList;
+
 + (PGAnalyticsManager *)sharedManager;
 
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result;
@@ -63,6 +66,7 @@ extern NSString * const kEventPrintShareLabel;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
+- (void)trackPhotoCollectionViewMode:(NSString *)mode;
 - (void)trackPrintRequest:(NSString *)source;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
