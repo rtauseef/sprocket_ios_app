@@ -69,4 +69,18 @@ And(/^I should make sure there is no app crash$/) do
 end
 
     
+Then /^I should see the below listed (?:.*):$/ do |table|
+    check_options_exist table.raw
+    sleep(STEP_PAUSE)
+end
 
+def check_options_exist item
+  if item.kind_of?(Array)
+    item.each do |subitem|
+          check_options_exist subitem
+    end
+else
+    check_element_exists "view marked:'#{$list_loc[item]}'"
+end
+    
+end

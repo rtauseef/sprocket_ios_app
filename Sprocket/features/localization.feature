@@ -21,14 +21,12 @@ Feature: Localization testing
     And I verify the "Terms and service" link
     
  @TA15895
- Scenario Outline: Verify side menu texts
+ Scenario: Verify side menu texts
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    And I verify the "<sidemenu_options>" text
-    
-    Examples:
-    | sidemenu_options |
+    #And I verify the "<sidemenu_options>" text
+    And I should see the below listed side menu texts:
     | Buy Paper        |
     | How to & Help    |
     | Give Feedback    |
@@ -38,15 +36,13 @@ Feature: Localization testing
     | Sign In          |
     
 @TA15895
-Scenario Outline: Verify side menu-how to &help
+Scenario: Verify side menu-how to &help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch the option "How to & Help"
-    And I verify the "<how_to_help_options>" text 
-
-    Examples:
-    | how_to_help_options    |
+    #And I verify the "<how_to_help_options>" text 
+    And I should see the below listed How to & help options:
     | Reset Sprocket Printer |
     | Setup Sprocket Printer |
     | View User Guide        |
@@ -55,7 +51,7 @@ Scenario Outline: Verify side menu-how to &help
     | Visit Support Website  |
     
 @TA15895
-Scenario Outline: Verify side menu-how to &help options
+Scenario Outline: Verify side menu-how to &help screen navigation
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
