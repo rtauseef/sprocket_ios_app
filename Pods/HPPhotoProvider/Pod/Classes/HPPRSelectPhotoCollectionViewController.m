@@ -440,6 +440,17 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         [self.collectionView layoutIfNeeded];
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
         indexPath = nil;
+
+        if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didChangeViewMode:)]) {
+            HPPRSelectPhotoCollectionViewMode mode;
+            if (self.showGridView) {
+                mode = HPPRSelectPhotoCollectionViewModeGrid;
+            } else {
+                mode = HPPRSelectPhotoCollectionViewModeList;
+            }
+
+            [self.delegate selectPhotoCollectionViewController:self didChangeViewMode:mode];
+        }
     }
 }
 
