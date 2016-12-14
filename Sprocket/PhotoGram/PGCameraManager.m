@@ -236,7 +236,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * _Nonnull action) {
                                                                   [weakSelf setSavePhotos:YES];
-                                                                  [weakSelf savePhoto:photo];
+                                                                  [weakSelf saveImage:photo completion:nil];
                                                                   [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                               }];
             [alert addAction:yesAction];
@@ -244,7 +244,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             [weakSelf.viewController presentViewController:alert animated:YES completion:nil];
         } else {
             if ([weakSelf savePhotos]) {
-                [weakSelf savePhoto:photo];
+                [weakSelf saveImage:photo completion:nil];
             }
             [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
         }
@@ -386,14 +386,65 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     return userPrompted;
 }
 
-- (void)savePhoto:(UIImage *)photo
+- (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion
 {
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil);
+            NSString *albumTitle = @"sprocket";
+
+            PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];
+            PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
+
+            if ([fetchResult firstObject]) {
+                PHAssetCollection *sprocketAlbum = [fetchResult firstObject];
+
+                [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
+
+            } else {
+                __block PHObjectPlaceholder *sprocketAlbumPlaceholder;
+
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    PHAssetCollectionChangeRequest *changeRequest = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumTitle];
+                    sprocketAlbumPlaceholder = changeRequest.placeholderForCreatedAssetCollection;
+
+                } completionHandler:^(BOOL success, NSError *error) {
+                    if (success) {
+                        PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[sprocketAlbumPlaceholder.localIdentifier] options:nil];
+                        PHAssetCollection *sprocketAlbum = fetchResult.firstObject;
+
+                        [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
+                    } else {
+                        if (completion) {
+                            completion(NO);
+                        }
+                    }
+                }];
+            }
+            
+        } else {
+            if (completion) {
+                completion(NO);
+            }
+        }
+    }];
+
+}
+
+- (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion
+{
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest *assetChangeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+
+        PHAssetCollectionChangeRequest *assetCollectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
+        [assetCollectionChangeRequest addAssets:@[[assetChangeRequest placeholderForCreatedAsset]]];
+    } completionHandler:^(BOOL success, NSError *error) {
+        if (completion) {
+            completion(success);
         }
     }];
 }
+
 
 #pragma mark - Metrics
 + (NSString *)trackableScreenName
