@@ -219,7 +219,7 @@
 "No Connection Available" = "无可用连接";
 
 /* Message displayed when no images from the Pitu app can be found */
-"No Pitu app images found" = "未找到 Pitu 应用程序图像";
+"No Pitu app images found" = "未找到 天天P图 应用程序图像";
 
 /* No comment provided by engineer. */
 "No, thanks" = "不，谢谢";
@@ -240,7 +240,7 @@
 "Pink Spray Paint Frame" = "粉红喷漆边框";
 
 /* Social source title for Pitu */
-"Pitu" = "Pitu";
+"Pitu" = "天天P图";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
