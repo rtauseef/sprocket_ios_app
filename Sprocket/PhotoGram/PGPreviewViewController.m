@@ -387,11 +387,13 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         if (saved) {
             [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
 
-            [UIView animateWithDuration:0.5F animations:^{
-                [self showImageSavedView:YES];
-            } completion:^(BOOL finished) {
-                [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
-            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.5F animations:^{
+                    [self showImageSavedView:YES];
+                } completion:^(BOOL finished) {
+                    [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
+                }];
+            });
         }
     }];
 }
@@ -467,16 +469,62 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 }
 
+- (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion
+{
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest *assetChangeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+
+        PHAssetCollectionChangeRequest *assetCollectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
+        [assetCollectionChangeRequest addAssets:@[[assetChangeRequest placeholderForCreatedAsset]]];
+    } completionHandler:^(BOOL success, NSError *error) {
+        if (completion) {
+            completion(success);
+        }
+    }];
+}
+
 - (void)saveToCameraRoll:(void (^)(BOOL))completion
 {
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             UIImage *image = [self.imageContainer screenshotImage];
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-        }
-        
-        if (completion) {
-            completion(loggedIn);
+            NSString *albumTitle = @"sprocket";
+
+            PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];
+            PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
+
+            if ([fetchResult firstObject]) {
+                PHAssetCollection *sprocketAlbum = [fetchResult firstObject];
+
+                [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
+
+            } else {
+                __block PHObjectPlaceholder *sprocketAlbumPlaceholder;
+
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    PHAssetCollectionChangeRequest *changeRequest = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumTitle];
+                    sprocketAlbumPlaceholder = changeRequest.placeholderForCreatedAssetCollection;
+
+                } completionHandler:^(BOOL success, NSError *error) {
+                    if (success) {
+                        PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[sprocketAlbumPlaceholder.localIdentifier] options:nil];
+                        PHAssetCollection *sprocketAlbum = fetchResult.firstObject;
+
+                        [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
+                    } else {
+                        if (completion) {
+                            completion(NO);
+                        }
+
+                    }
+                }];
+            }
+
+        } else {
+            if (completion) {
+                completion(NO);
+            }
         }
     }];
 }
