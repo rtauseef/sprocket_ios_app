@@ -383,8 +383,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
-    [self saveToCameraRoll:^(BOOL saved) {
-        if (saved) {
+    UIImage *image = [self.imageContainer screenshotImage];
+
+    [[PGCameraManager sharedInstance] saveImage:image completion:^(BOOL success) {
+        if (success) {
             [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
 
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -420,8 +422,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
         __weak PGPreviewViewController *weakSelf = self;
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [self saveToCameraRoll:^(BOOL authorized){
-                if (authorized) {
+            UIImage *image = [self.imageContainer screenshotImage];
+
+            [[PGCameraManager sharedInstance] saveImage:image completion:^(BOOL success) {
+                if (success) {
                     [self closePreviewAndCamera];
                     [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
                                                                           source:kEventDismissEditCloseLabel];
@@ -469,65 +473,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 }
 
-- (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion
-{
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        PHAssetChangeRequest *assetChangeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-
-        PHAssetCollectionChangeRequest *assetCollectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
-        [assetCollectionChangeRequest addAssets:@[[assetChangeRequest placeholderForCreatedAsset]]];
-    } completionHandler:^(BOOL success, NSError *error) {
-        if (completion) {
-            completion(success);
-        }
-    }];
-}
-
-- (void)saveToCameraRoll:(void (^)(BOOL))completion
-{
-    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
-        if (loggedIn) {
-            UIImage *image = [self.imageContainer screenshotImage];
-            NSString *albumTitle = @"sprocket";
-
-            PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
-            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];
-            PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
-
-            if ([fetchResult firstObject]) {
-                PHAssetCollection *sprocketAlbum = [fetchResult firstObject];
-
-                [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
-
-            } else {
-                __block PHObjectPlaceholder *sprocketAlbumPlaceholder;
-
-                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-                    PHAssetCollectionChangeRequest *changeRequest = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumTitle];
-                    sprocketAlbumPlaceholder = changeRequest.placeholderForCreatedAssetCollection;
-
-                } completionHandler:^(BOOL success, NSError *error) {
-                    if (success) {
-                        PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[sprocketAlbumPlaceholder.localIdentifier] options:nil];
-                        PHAssetCollection *sprocketAlbum = fetchResult.firstObject;
-
-                        [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
-                    } else {
-                        if (completion) {
-                            completion(NO);
-                        }
-
-                    }
-                }];
-            }
-
-        } else {
-            if (completion) {
-                completion(NO);
-            }
-        }
-    }];
-}
 
 #pragma mark - Print preparation
 
