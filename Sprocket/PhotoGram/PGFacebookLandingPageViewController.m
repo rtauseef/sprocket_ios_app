@@ -211,6 +211,18 @@ NSString * const kFacebookUserIdKey = @"id";
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didChangeViewMode:(HPPRSelectPhotoCollectionViewMode)viewMode
+{
+    NSString *mode;
+    if (viewMode == HPPRSelectPhotoCollectionViewModeGrid) {
+        mode = kPhotoCollectionViewModeGrid;
+    } else {
+        mode = kPhotoCollectionViewModeList;
+    }
+
+    [[PGAnalyticsManager sharedManager] trackPhotoCollectionViewMode:mode];
+}
+
 - (UIEdgeInsets)collectionViewContentInset {
     return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
 }
