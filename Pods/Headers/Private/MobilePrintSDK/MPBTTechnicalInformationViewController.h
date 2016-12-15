@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPBTTechnicalInformationViewController.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTTechnicalInformationViewController.h

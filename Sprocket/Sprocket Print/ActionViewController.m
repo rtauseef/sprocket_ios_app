@@ -67,8 +67,16 @@ static NSInteger  const connectionDefaultValue = -1;
                 __weak ActionViewController *weakSelf = self;
                 [itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
                     if (image) {
+                        UIImage *finalImage = image;
+                        
+                        if (image.size.width > image.size.height) {
+                            finalImage = [[UIImage alloc] initWithCGImage: image.CGImage
+                                                                    scale: 1.0
+                                                              orientation: UIImageOrientationRight];
+                        }
+
                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            [weakSelf renderPhoto:image];
+                            [weakSelf renderPhoto:finalImage];
                         }];
                     }
                 }];

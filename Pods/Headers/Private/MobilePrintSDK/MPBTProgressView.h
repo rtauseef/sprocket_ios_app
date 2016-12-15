@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPBTProgressView.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTProgressView.h

@@ -123,8 +123,9 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 {
     switch (indexPath.row) {
         case PGSideBarMenuCellSprocket: {
-            [[MP sharedInstance] presentBluetoothDevicesFromController:self.revealViewController animated:YES completion:nil];
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+            PGHelpAndHowToViewController *viewController = (PGHelpAndHowToViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSprocketLandingPageNavigationController"];
+            [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
         case PGSideBarMenuCellBuyPaper:{

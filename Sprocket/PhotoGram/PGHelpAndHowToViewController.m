@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
     PGHelpAndHowToRowIndexesSetupPrinter,
     PGHelpAndHowToRowIndexesViewUserGuide,
     PGHelpAndHowToRowIndexesTweetSupport,
+    PGHelpAndHowToRowIndexesWeChatSupport,
     PGHelpAndHowToRowIndexesJoinSupport,
     PGHelpAndHowToRowIndexesVisitSupport
 };
@@ -31,6 +32,8 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
 NSString * const kViewUserGuideScreenName = @"View User Guide";
 NSString * const kVisitWebsiteScreenName = @"Visit Website";
 NSString * const kJoinForumScreenName = @"Join Forum Screen";
+
+static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.com/s/xpbdBP6DlevbVt6j_redWQ";
 
 @interface PGHelpAndHowToViewController ()
 
@@ -80,25 +83,30 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case PGHelpAndHowToRowIndexesViewUserGuide: {
+        case PGHelpAndHowToRowIndexesViewUserGuide:
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kViewUserGuideScreenName];
             [[UIApplication sharedApplication] openURL:[NSLocale userGuideURL]];
             break;
-        }
-        case PGHelpAndHowToRowIndexesTweetSupport: {
+
+        case PGHelpAndHowToRowIndexesTweetSupport:
             [self tweetSupportModal:indexPath];
             break;
-        }
-        case PGHelpAndHowToRowIndexesJoinSupport: {
+
+        case PGHelpAndHowToRowIndexesWeChatSupport:
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToWeChatSupportURL]];
+            break;
+
+        case PGHelpAndHowToRowIndexesJoinSupport:
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
             [[UIApplication sharedApplication] openURL:[NSLocale supportForumURL]];
             break;
-        }
-        case PGHelpAndHowToRowIndexesVisitSupport: {
+
+        case PGHelpAndHowToRowIndexesVisitSupport:
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kVisitWebsiteScreenName];
             [[UIApplication sharedApplication] openURL:[NSLocale supportWebsiteURL]];
             break;
-        }
+
         default:
             break;
     }
@@ -162,6 +170,10 @@ NSString * const kJoinForumScreenName = @"Join Forum Screen";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
+        return 0;
+    }
+
+    if (![NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesWeChatSupport) {
         return 0;
     }
 
