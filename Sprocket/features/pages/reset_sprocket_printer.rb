@@ -17,6 +17,11 @@ class ResetSprocketPrinterScreen < Calabash::IBase
        "view marked:'Back'"
     end
 
+    def close
+    "UIButton index:1"
+  end
+
+
   def navigate
     unless current_page?
       landing_screen = go_to(LandingScreen)
