@@ -7766,6 +7766,18 @@ SWIFT_CLASS_NAMED("StickerToolControllerOptions")
 */
 @property (nonatomic, readonly, copy) void (^ _Nullable removedStickerClosure)(IMGLYSticker * _Nonnull);
 /**
+  A floating-point value that specifies the maximum scale factor that can be applied to
+  a sticker. The default value is \code
+  4.0
+  \endcode.
+*/
+@property (nonatomic, readonly) CGFloat maximumStickerZoomScale;
+/**
+  This color will be used as background color for the stickers collection view.
+  Defaults to clear color.
+*/
+@property (nonatomic, readonly, strong) UIColor * _Nonnull stickerCollectionViewBackgroundColor;
+/**
   Returns a newly allocated instance of a \code
   StickersToolControllerOptions
   \endcode using the default builder.
@@ -7835,6 +7847,18 @@ SWIFT_CLASS_NAMED("StickerToolControllerOptionsBuilder")
   This closure is called when the user removes a sticker.
 */
 @property (nonatomic, copy) void (^ _Nullable removedStickerClosure)(IMGLYSticker * _Nonnull);
+/**
+  A floating-point value that specifies the maximum scale factor that can be applied to
+  a sticker. The default value is \code
+  4.0
+  \endcode.
+*/
+@property (nonatomic) CGFloat maximumStickerZoomScale;
+/**
+  This color will be used as background color for the stickers collection view.
+  Defaults to transparent.
+*/
+@property (nonatomic, strong) UIColor * _Nonnull stickerCollectionViewBackgroundColor;
 /**
   An array of \code
   action
