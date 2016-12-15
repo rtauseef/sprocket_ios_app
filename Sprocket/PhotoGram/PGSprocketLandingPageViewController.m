@@ -33,7 +33,8 @@
 
     self.trackableScreenName = @"Sprocket Landing Screen";
     
-    [PGAppAppearance addGradientBackgroundToView:self.view];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deselectRowTableViewCell)
@@ -95,17 +96,15 @@
     cell.selectedBackgroundView = selectionColorView;
     
     switch (indexPath.row) {
-        case 0: {
+        case 0:
             cell.textLabel.text = NSLocalizedString(@"App Settings", nil);
             cell.detailTextLabel.hidden = YES;
             break;
-        }
-        case 1: {
+        case 1:
             cell.textLabel.text = NSLocalizedString(@"Printers", nil);
             cell.detailTextLabel.hidden = NO;
             cell.detailTextLabel.text = self.connectedSprocketName;
             break;
-        }
         default:
             break;
     }
@@ -125,14 +124,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case 0: {
+        case 0:
             [self openSettings];
             break;
-        }
-        case 1: {
+        case 1:
             [[MP sharedInstance] presentBluetoothDevicesFromController:self animated:YES completion:nil];
             break;
-        }
         default:
             break;
     }
