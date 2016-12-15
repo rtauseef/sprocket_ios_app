@@ -68,6 +68,7 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackSelectPhoto:(NSString *)source;
 - (void)trackPhotoCollectionViewMode:(NSString *)mode;
 - (void)trackPrintRequest:(NSString *)source;
+- (void)trackHelpLink:(NSString *)linkName;
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;

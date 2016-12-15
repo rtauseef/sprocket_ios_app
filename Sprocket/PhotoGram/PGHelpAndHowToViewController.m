@@ -93,7 +93,7 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
             break;
 
         case PGHelpAndHowToRowIndexesWeChatSupport:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
+            [[PGAnalyticsManager sharedManager] trackHelpLink:@"WeChat Support"];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToWeChatSupportURL]];
             break;
 

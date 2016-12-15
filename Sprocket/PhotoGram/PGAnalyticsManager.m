@@ -101,6 +101,8 @@ NSString * const kEventPrintAction      = @"Print";
 NSString * const kEventPrintButtonLabel = @"PrintButton";
 NSString * const kEventPrintShareLabel  = @"ShareButton";
 
+NSString * const kEventHelpLinksCategory = @"HelpLinks";
+
 NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
 
@@ -245,6 +247,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackPrintRequest:(NSString *)source
 {
     [self trackEvent:kEventPrintCategory action:kEventPrintAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackHelpLink:(NSString *)linkName
+{
+    [self trackEvent:kEventHelpLinksCategory action:linkName label:nil value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void) trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
