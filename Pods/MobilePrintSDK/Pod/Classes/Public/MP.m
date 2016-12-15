@@ -27,6 +27,7 @@
 #import "MPBTProgressView.h"
 #import "MPBTDeviceInfoTableViewController.h"
 #import "MPBTStatusChecker.h"
+#import "MPLEDiscoveredPeripheralsTableViewController.h"
 
 NSString * const kMPLibraryVersion = @"3.0.10";
 
@@ -380,6 +381,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 - (void)obfuscateMetric:(NSString *)keyName
 {
     [[MPAnalyticsManager sharedManager] obfuscateMetric:keyName];
+}
+
+- (void)presentBluetoothLePeripheralsFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion
+{
+    [MPLEDiscoveredPeripheralsTableViewController presentAnimated:animated usingController:controller  andCompletion:completion];
 }
 
 - (void)presentBluetoothDevicesFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion

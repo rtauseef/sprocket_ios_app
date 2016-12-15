@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPBTSprocketDefinitions.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTSprocketDefinitions.h
