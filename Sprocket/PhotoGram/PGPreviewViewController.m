@@ -253,8 +253,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     self.imageView.image = self.selectedPhoto;
     self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
     self.imageView.delegate = self;
-    
-    self.imageView.alpha = 0.0F;
+
     [self.imageContainer addSubview:self.imageView];
     
     [PGAnalyticsManager sharedManager].trackPhotoPosition = YES;
