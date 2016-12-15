@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPBTSessionController.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTSessionController.h

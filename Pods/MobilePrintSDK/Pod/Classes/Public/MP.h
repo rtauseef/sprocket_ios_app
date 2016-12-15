@@ -571,6 +571,7 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  */
 - (void)closeAccessorySession;
 
+- (void)presentBluetoothLePeripheralsFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
 /*!
  * @abstract Displays the list of sprockets paired with the iPhone/iPad
  * @discussion This method prepares an instance of a view controller with the paired sprockets, and displays it modally.
@@ -854,6 +855,15 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @returns Nothing
  */
 - (void)didReceiveSprocketBatteryLevel:(NSUInteger)batteryLevel;
+
+/*!
+ * @abstract Called when receive a manta refresh info
+ * @discussion This delegate method is called when a sprocket receive a manta refresh info
+ * @param batteryLevel The current name of the device
+ * @returns Nothing
+ */
+- (void)didReceiveSprocketName:(NSString *)name;
+
 
 @end
 
