@@ -64,6 +64,7 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source;
 - (void)trackSaveProjectActivity:(NSString *)source;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
+- (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
 - (void)trackPhotoCollectionViewMode:(NSString *)mode;

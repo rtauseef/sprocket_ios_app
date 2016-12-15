@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPBTStatusChecker.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTStatusChecker.h

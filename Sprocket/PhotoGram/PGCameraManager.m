@@ -230,6 +230,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                              handler:^(UIAlertAction * _Nonnull action) {
                                                                  [weakSelf setSavePhotos:NO];
                                                                  [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                                                                 [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"Off"];
                                                              }];
             [alert addAction:noAction];
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
@@ -238,6 +239,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                   [weakSelf setSavePhotos:YES];
                                                                   [weakSelf saveImage:photo completion:nil];
                                                                   [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                                                                  [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                                                               }];
             [alert addAction:yesAction];
             
