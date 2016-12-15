@@ -66,6 +66,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 @property (assign, nonatomic) BOOL needNewImageView;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (assign, nonatomic) BOOL selectedNewPhoto;
+@property (assign, nonatomic) BOOL firstAppearance;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 
@@ -81,6 +82,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     self.needNewImageView = NO;
     self.didChangeProject = NO;
     self.selectedNewPhoto = YES;
+    self.firstAppearance = YES;
     
     self.editButton.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:20];
     self.editButton.titleLabel.tintColor = [UIColor whiteColor];
@@ -96,8 +98,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    static BOOL firstAppearance = YES;
-    
     [self.view layoutIfNeeded];
     
     [super viewWillAppear:animated];
@@ -114,8 +114,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         }
     }
     
-    if (firstAppearance) {
-        firstAppearance = NO;
+    if (self.firstAppearance) {
+        self.firstAppearance = NO;
         CGRect frame = self.imageContainer.frame;
         
         CGFloat aspectRatioWidth = [self paper].width;
