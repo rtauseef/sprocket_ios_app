@@ -81,6 +81,9 @@ NSString * const kEventCameraDirectionSwitchAction = @"Switch";
 NSString * const kEventCameraDirectionBackLabel    = @"Back";
 NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
 
+NSString * const kEventPreferencesCategory             = @"Preferences";
+NSString * const kEventPreferencesCameraAutoSaveAction = @"CameraAutoSave";
+
 NSString * const kEventSocialSignInCategory      = @"SocialSignIn";
 NSString * const kEventSocialSignInCancelAction  = @"Cancel";
 NSString * const kEventSocialSignInSuccessAction = @"SignIn";
@@ -225,6 +228,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackCameraDirectionActivity:(NSString *)direction
 {
     [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference
+{
+    [self trackEvent:kEventPreferencesCategory action:kEventPreferencesCameraAutoSaveAction label:preference value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider

@@ -27,6 +27,7 @@
 #import "MPBTProgressView.h"
 #import "MPBTDeviceInfoTableViewController.h"
 #import "MPBTStatusChecker.h"
+#import "MPLEDiscoveredPeripheralsTableViewController.h"
 
 NSString * const kMPLibraryVersion = @"3.0.10";
 
@@ -343,6 +344,10 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didReceiveSprocketBatteryLevel:)]) {
         [self.sprocketDelegate didReceiveSprocketBatteryLevel:manta.batteryStatus];
     }
+    
+    if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didReceiveSprocketName:)]) {
+        [self.sprocketDelegate didReceiveSprocketName:manta.displayName];
+    }
 }
 
 - (void)didCompareWithLatestFirmwareVersion:(MPBTSprocket *)sprocket needsUpgrade:(BOOL)needsUpgrade
@@ -376,6 +381,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 - (void)obfuscateMetric:(NSString *)keyName
 {
     [[MPAnalyticsManager sharedManager] obfuscateMetric:keyName];
+}
+
+- (void)presentBluetoothLePeripheralsFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion
+{
+    [MPLEDiscoveredPeripheralsTableViewController presentAnimated:animated usingController:controller  andCompletion:completion];
 }
 
 - (void)presentBluetoothDevicesFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion
