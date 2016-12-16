@@ -1,26 +1,24 @@
-
-
 require 'calabash-cucumber/ibase'
 
-class ResetSprocketPrinterScreen < Calabash::IBase
+class SprocketScreen < Calabash::IBase
 
   def trait
       title
   end
 
   def title
-     # "view {text CONTAINS 'Technical Information'}"
-      "navigationBar marked:'#{$list_loc['Reset Sprocket Printer']}'"
+      "navigationBar marked:'sprocket'"
   end
     
-    def back
-       "view marked:'Back'"
-    end
-
+  def modal_title
+    #"label {text CONTAINS 'Printer not connected to device'}"
+      "label {text CONTAINS 'No sprockets Connected'}"
+  end
+    
     def close
     "UIButton index:1"
   end
-
+    
 
   def navigate
     unless current_page?
@@ -28,11 +26,11 @@ class ResetSprocketPrinterScreen < Calabash::IBase
          wait_for_elements_exist(landing_screen.hamburger_logo, :timeout => MAX_TIMEOUT)
         touch landing_screen.hamburger_logo
         sleep(STEP_PAUSE)
-        touch landing_screen.how_to_help
+        touch "view marked:'Sprocket'"
         sleep(STEP_PAUSE)
-        touch landing_screen.reset_sprocket_printer
     end
     await
+
   end
 
 end
