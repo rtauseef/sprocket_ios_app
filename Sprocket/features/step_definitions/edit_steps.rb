@@ -51,8 +51,6 @@ Then (/^I select "(.*?)"$/) do |option|
 
 end
 
-
-
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
         selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
@@ -84,9 +82,16 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     end
 end
 
+
+
 And(/^I verify blue line indicator is displayed under selected frame$/) do 
     selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Blue line indicator not found!" unless selected_frame_status != nil
+end
+
+And(/^I verify blue line indicator is displayed under selected sticker$/) do 
+    selected_sticker_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Blue line indicator not found!" unless selected_sticker_status != nil
 end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
@@ -175,28 +180,56 @@ Then(/^I verify the modified crop area$/) do
  raise "crop area not modified successfully!" unless $curr_bot_lft_crp_x != post_bot_lft_crp_x && $curr_bot_lft_crp_y != post_bot_lft_crp_y
 end
 
+ 
 Then(/^I select "(.*?)" frame$/) do |frame_name|
-sleep(WAIT_SCREENLOAD)
-select_frame frame_name
-sleep(STEP_PAUSE)
+    sleep(WAIT_SCREENLOAD)
+    select_frame frame_name
+    sleep(STEP_PAUSE)
 end
+
+Then(/^I select "(.*?)" sticker$/) do |sticker_name|
+    sleep(WAIT_SCREENLOAD)
+    select_sticker sticker_name
+    sleep(STEP_PAUSE)
+end
+
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
     $list_loc=$edit_screen_arr["edit_frame"]
     selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Wrong frame selected!" unless selected_frame_status = $list_loc[frame_name]
 end
+
+Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
+    $list_loc=$edit_screen_arr["edit_sticker"]
+    selected_sticker_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Wrong sticker selected!" unless selected_sticker_status = $list_loc[sticker_name]
+end
+
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
   frame_name=["White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame","Yellow Frame","Blue Gradient Frame"]
+    
+    sticker_name=["snowman_TN", "glasses_rudolph_TN", "christmas_hat_TN", "star0_TN", "glasses_hanukah_TN", "snowman_hat_TN", "Party-Hat_TN", "glasses_tree_TN", "glasses_star_TN", "rudolph_antlers_TN", "cap_TN", "snowman_face_TN", "scarf_TN", "snowflake_2_TN", "StringOLights_TN", "tree_TN", "stocking_TN", "candy_cane_TN", "holly_TN", "mistletoe_TN", "ornament_1_TN", "menorah_TN", "dreidle_TN", "fireworks_TN", "horn_TN", "catglasses_TN", "catwhiskers_TN", "catears_TN", "hearts_TN", "xoxo_TN", "heartExpress_TN", "arrow_TN", "crown_TN", "birthdayHat_TN", "moon_TN", "starhp_TN", "stars_TN", "feather2_TN", "feather_TN", "leaf3_TN", "cupcake_TN", "cat_TN", "diamond_TN", "sunglasses_TN", "OMG_TN"]    
   i = 0
-  while i < 16
-    macro %Q|I select "#{frame_name[i]}" frame|
-    macro %Q|I verify blue line indicator is displayed under selected frame|
-    macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
-    macro %Q|I should see the "FrameEditor" screen|
-    i= i + 1
-    sleep(SLEEP_SCREENLOAD)
-  end
+    if option == "frames"
+        while i < 16
+            macro %Q|I select "#{frame_name[i]}" frame|
+            macro %Q|I verify blue line indicator is displayed under selected frame|
+            macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
+            macro %Q|I should see the "FrameEditor" screen|
+            i= i + 1
+            sleep(SLEEP_SCREENLOAD)
+        end
+    else
+        while i < 45
+            macro %Q|I select "#{sticker_name[i]}" sticker|
+            macro %Q|I verify blue line indicator is displayed under selected sticker|
+            macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
+            macro %Q|I should see the "StickerEditor" screen|
+            i= i + 1
+            sleep(SLEEP_SCREENLOAD)
+        end 
+    end
 end
 
 $edit_screen_arr =
@@ -219,6 +252,55 @@ $edit_screen_arr =
         "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
         "Yellow Frame" => "Yellow_Frame_iOS",
         "Blue Gradient Frame" => "14_blue_gradient_frame"
+        },
         
-        }
+    "edit_sticker" => {
+            "snowman_TN" => "snowman",
+            "glasses_rudolph_TN" => "glasses_rudolph",
+            "christmas_hat_TN" => "christmas_hat",
+            "star0_TN" => "star0",
+            "glasses_hanukah_TN" => "glasses_hanukah",
+            "snowman_hat_TN" => "snowman_hat",
+            "Party-Hat_TN" => "Party-Hat",
+            "glasses_tree_TN" => "glasses_tree",
+            "glasses_star_TN" => "glasses_star",
+            "rudolph_antlers_TN" => "rudolph_antlers",
+            "cap_TN" => "cap",
+            "snowman_face_TN" => "snowman_face",
+            "scarf_TN" => "scarf",
+            "snowflake_2_TN" => "snowflake_2",
+            "StringOLights_TN" => "StringOLights",
+            "tree_TN" => "tree",
+            "stocking_TN" => "stocking",
+            "candy_cane_TN" => "candy_cane",
+            "holly_TN" => "holly",
+            "mistletoe_TN" => "mistletoe",
+            "ornament_1_TN" => "ornament_1",
+            "menorah_TN" => "menorah",
+            "dreidle_TN" => "dreidle",
+            "fireworks_TN" => "fireworks",
+            "horn_TN" => "horn",
+            "catglasses_TN" => "catglasses",
+            "catwhiskers_TN" => "catwhiskers",
+            "catears_TN" => "catears",
+            "hearts_TN" => "hearts",
+            "xoxo_TN" => "xoxo",
+            "heartExpress_TN" => "heartExpress",
+            "arrow_TN" => "arrow",
+            "crown_TN" => "crown",
+            "birthdayHat_TN" => "birthdayHat",
+            "moon_TN" => "moon",
+            "starhp_TN" => "starhp",
+            "stars_TN" => "stars",
+            "feather2_TN" => "feather2",
+            "feather_TN" => "feather",
+            "leaf3_TN" => "leaf3",
+            "cupcake_TN" => "cupcake",
+            "cat_TN" => "cat",
+            "diamond_TN" => "diamond",
+            "sunglasses_TN" => "sunglasses",
+            "OMG_TN" => "OMG"
+        
+            }
+        
     }
