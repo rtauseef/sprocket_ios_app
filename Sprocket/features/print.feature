@@ -3,20 +3,17 @@ Feature: Verify no printer added modal
   I want to verify no printer added modal.
 
   @reset
-  @done
+  @TA16208
   Scenario: No printer paired
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "sprocket"
-    And I should see the modal screen title
-    And I should see the modal screen content
-    And I should see the button "OK"
-    And I should see the button "Settings"
-    And I tap the "OK" button
-    Then I should not see the modal screen
-    Then I should see the "Device" screen
-    And I should see the message to pair the device with the bluetooth printer
+    Then I should see the "Sprocket" screen
+    Then I touch "Printers"
+    Then I should see the message for No sprockets
+    Then I tap "Close" mark 
+    Then I should see the side menu
     
 @reset
 @TA14290

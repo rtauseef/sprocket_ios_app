@@ -37,9 +37,7 @@ class LandingScreen < Calabash::IBase
     "UIImageView id:'Facebook'"
   end
     
-  def modal_title
-    "label {text CONTAINS 'Printer not connected to device'}"
-  end
+  
     
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
