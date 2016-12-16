@@ -94,7 +94,9 @@
 
 -(void)showFolderIcon:(BOOL)show
 {
-    self.folderButton.hidden = !show;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.folderButton.alpha = (show) ? 1.0f : 0.0f;
+    }];
 }
 
 -(void)showFolderIcon
@@ -116,19 +118,9 @@
     [self selectButton:socialSource.title animated:YES];
 }
 
--(void)setScrollProgress:(UIScrollView *)scrollView progress:(CGFloat)progress forPage:(NSInteger)page
-{
-    [self.scrollView setScrollProgress:progress onPage:page];
-}
-
 - (void)selectButton:(NSString *)title animated:(BOOL)animated
 {
     [self.scrollView selectButton:title animated:animated];
-}
-
--(void)showFolderButton:(BOOL)show
-{
-    self.folderButton.hidden = !show;
 }
 
 - (IBAction)didPressFolderButton:(id)sender {

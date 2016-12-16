@@ -10,7 +10,7 @@ class SetupSprocketPrinterScreen < Calabash::IBase
 
   def title
      # "view {text CONTAINS 'Technical Information'}"
-      "navigationBar marked:'Setup Sprocket Printer'"
+      "navigationBar marked:'#{$list_loc['Setup Sprocket Printer']}'"
   end
     
     def back

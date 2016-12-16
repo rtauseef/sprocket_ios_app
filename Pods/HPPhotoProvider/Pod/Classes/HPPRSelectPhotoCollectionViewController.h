@@ -13,6 +13,11 @@
 #import <UIKit/UIKit.h>
 #import "HPPRSelectPhotoProvider.h"
 
+typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
+    HPPRSelectPhotoCollectionViewModeGrid,
+    HPPRSelectPhotoCollectionViewModeList
+};
+
 @protocol HPPRSelectPhotoCollectionViewControllerDelegate;
 
 @interface HPPRSelectPhotoCollectionViewController : UIViewController
@@ -29,6 +34,7 @@
 
 @optional
 - (UIEdgeInsets)collectionViewContentInset;
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didChangeViewMode:(HPPRSelectPhotoCollectionViewMode)viewMode;
 
 @end
 

@@ -88,6 +88,9 @@ NSString * const kEventSocialSignInSuccessAction = @"SignIn";
 NSString * const kEventPhotoCategory     = @"Photo";
 NSString * const kEventPhotoSelectAction = @"Select";
 
+NSString * const kEventPhotoGalleryModeCategory  = @"PhotoGalleryMode";
+NSString * const kEventPhotoGalleryModeAction    = @"Switch";
+
 NSString * const kEventPrintJobCategory        = @"PrintJob";
 NSString * const kEventPrintJobErrorCategory   = @"PrintJobError";
 NSString * const kEventPrintJobStartedAction   = @"Started";
@@ -102,6 +105,9 @@ NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
 
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
+
+NSString * const kPhotoCollectionViewModeGrid = @"Grid";
+NSString * const kPhotoCollectionViewModeList = @"List";
 
 @synthesize templateName = _templateName;
 
@@ -177,7 +183,7 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
 - (void)handlePrintJobCompletedNotification:(NSNotification *)notification
 {
-    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
+    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorRawKey];
 
     if (nil == error) {
         [self trackEvent:kEventPrintJobCategory action:kEventPrintJobCompletedAction label:[notification.userInfo objectForKey:kMPBTPrintJobPrinterIdKey] value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
@@ -229,6 +235,11 @@ NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 - (void)trackSelectPhoto:(NSString *)source
 {
     [self trackEvent:kEventPhotoCategory action:kEventPhotoSelectAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackPhotoCollectionViewMode:(NSString *)mode
+{
+    [self trackEvent:kEventPhotoGalleryModeCategory action:kEventPhotoGalleryModeAction label:mode value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackPrintRequest:(NSString *)source
