@@ -113,6 +113,24 @@ def technical_info
 
   def navigate
       close_camera_popup
+       if ENV['LANGUAGE'] == "Spanish"
+     $list_loc=$language_arr["es_ES"]
+  else 
+      $list_loc=$language_arr["en_US"]
+  end
+  survey_message_arr = $list_loc['survey']
+  if get_xcode_version.to_i < 8
+        survey_message=uia_query :view, marked:"#{survey_message_arr}"
+        if survey_message.length >0
+            uia_tap_mark("#{survey_message_arr}")
+        end
+    else
+      survey_message = device_agent.query({marked:"#{survey_message_arr}"})
+      if survey_message.length >0
+        device_agent.touch({marked:"#{survey_message_arr}"})
+      end
+      sleep(WAIT_SCREENLOAD)
+    end
     await
   end
 

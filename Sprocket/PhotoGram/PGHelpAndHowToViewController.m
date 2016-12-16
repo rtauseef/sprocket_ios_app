@@ -32,6 +32,7 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
 NSString * const kViewUserGuideScreenName = @"View User Guide";
 NSString * const kVisitWebsiteScreenName = @"Visit Website";
 NSString * const kJoinForumScreenName = @"Join Forum Screen";
+NSString * const kWeChatSupportScreenName = @"WeChat Support";
 
 static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.com/s/xpbdBP6DlevbVt6j_redWQ";
 
@@ -93,7 +94,7 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
             break;
 
         case PGHelpAndHowToRowIndexesWeChatSupport:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kWeChatSupportScreenName];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToWeChatSupportURL]];
             break;
 
