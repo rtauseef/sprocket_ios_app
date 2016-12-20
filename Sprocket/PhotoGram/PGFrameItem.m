@@ -22,102 +22,102 @@ const NSInteger PGFrameItemsCount = 20;
     switch (index) {
 
         case PGFrameXmasPolkaDot: {
-            frame.accessibilityText = NSLocalizedString(@"Christmas Polka Dot Frame", nil);
+            frame.accessibilityText = @"Christmas Polka Dot Frame";
             frame.imageName = @"xmasPolka_Frame_iOS";
             break;
         }
         case PGFrameRedTriangle: {
-            frame.accessibilityText = NSLocalizedString(@"Red Triangle Frame", nil);
+            frame.accessibilityText = @"Red Triangle Frame";
             frame.imageName = @"RedTriangle_Frame_iOS";
             break;
         }
         case PGFrameSnow: {
-            frame.accessibilityText = NSLocalizedString(@"Snow Frame", nil);
+            frame.accessibilityText = @"Snow Frame";
             frame.imageName = @"Snow_Frame_iOS";
             break;
         }
         case PGFrameStriped: {
-            frame.accessibilityText = NSLocalizedString(@"Striped Frame", nil);
+            frame.accessibilityText = @"Striped Frame";
             frame.imageName = @"striped_Frame_iOS";
             break;
         }
         case PGFrameGrey: {
-            frame.accessibilityText = NSLocalizedString(@"Grey Frame", nil);
+            frame.accessibilityText = @"Grey Frame";
             frame.imageName = @"Grey_Frame_iOS";
             break;
         }
         case PGFrameSanta: {
-            frame.accessibilityText = NSLocalizedString(@"Santa Frame", nil);
+            frame.accessibilityText = @"Santa Frame";
             frame.imageName = @"Santa_Frame_iOS";
             break;
         }
         case PGFrameItemsBlueWaterColor: {
-            frame.accessibilityText = NSLocalizedString(@"Water Blue Frame", nil);
+            frame.accessibilityText = @"Water Blue Frame";
             frame.imageName = @"3_blue_watercolor_frame";
             break;
         }
         case PGFrameItemsFloral: {
-            frame.accessibilityText = NSLocalizedString(@"Floral Frame", nil);
+            frame.accessibilityText = @"Floral Frame";
             frame.imageName = @"6_floral_frame3";
             break;
         }
         case PGFrameItemsFloralTwo: {
-            frame.accessibilityText = NSLocalizedString(@"Floral 2 Frame", nil);
+            frame.accessibilityText = @"Floral 2 Frame";
             frame.imageName = @"13_floral2_frame";
             break;
         }
         case PGFrameItemsGradient: {
-            frame.accessibilityText = NSLocalizedString(@"Gradient Frame", nil);
+            frame.accessibilityText = @"Gradient Frame";
             frame.imageName = @"7_gradient_frame";
             break;
         }
         case PGFrameItemsGreenWaterColor: {
-            frame.accessibilityText = NSLocalizedString(@"Green Water Color Frame", nil);
+            frame.accessibilityText = @"Green Water Color Frame";
             frame.imageName = @"10_green_watercolor_frame2";
             break;
         }
         case PGFrameItemsPinkSprayPaint: {
-            frame.accessibilityText = NSLocalizedString(@"Pink Spray Paint Frame", nil);
+            frame.accessibilityText = @"Pink Spray Paint Frame";
             frame.imageName = @"2_pink_spraypaint_frame2";
             break;
         }
         case PGFrameItemsPolkadots: {
-            frame.accessibilityText = NSLocalizedString(@"Polka Dots Frame", nil);
+            frame.accessibilityText = @"Polka Dots Frame";
             frame.imageName = @"9_polkadots_frame";
             break;
         }
         case PGFrameItemsRed: {
-            frame.accessibilityText = NSLocalizedString(@"Red Frame", nil);
+            frame.accessibilityText = @"Red Frame";
             frame.imageName = @"5_Red_frame";
             break;
         }
         case PGFrameItemsTurquoise: {
-            frame.accessibilityText = NSLocalizedString(@"Turquoise Frame", nil);
+            frame.accessibilityText = @"Turquoise Frame";
             frame.imageName = @"1_turquoise_frame";
             break;
         }
         case PGFrameItemsWhite: {
-            frame.accessibilityText = NSLocalizedString(@"White Frame", nil);
+            frame.accessibilityText = @"White Frame";
             frame.imageName = @"4_white_frame";
             break;
         }
         case PGFrameItemsSloppy: {
-            frame.accessibilityText = NSLocalizedString(@"Sloppy Frame", nil);
+            frame.accessibilityText = @"Sloppy Frame";
             frame.imageName = @"Sloppy_Frame_iOS";
             break;
         }
         case PGFrameItemsKraft: {
-            frame.accessibilityText = NSLocalizedString(@"Kraft Frame", nil);
+            frame.accessibilityText = @"Kraft Frame";
             frame.imageName = @"Kraft_Frame_iOS";
             break;
         }
         case PGFrameItemsOrange: {
-            frame.accessibilityText = NSLocalizedString(@"Orange Frame", nil);
+            frame.accessibilityText = @"Orange Frame";
             frame.imageName = @"Orange_Frame_iOS";
             break;
         }
         case PGFrameItemsWoodBottom: {
-            frame.accessibilityText = NSLocalizedString(@"Wood Bottom Frame", nil);
+            frame.accessibilityText = @"Wood Bottom Frame";
             frame.imageName = @"Wood_Frame_iOS";
             break;
         }
