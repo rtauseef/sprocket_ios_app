@@ -126,6 +126,7 @@ static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraButtonsView];
         [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraBackgroundView presentedViewController:weakSelf];
+        [PGCameraManager sharedInstance].isBackgroundCamera = YES;
     } andFailure:^{
         self.blurredView.alpha = 0;
         self.cameraBackgroundView.alpha = 0;

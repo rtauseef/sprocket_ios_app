@@ -123,11 +123,15 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 }
 
 - (void)startCamera {
-    [self.session startRunning];
+    if (!self.session.isRunning) {
+        [self.session startRunning];
+    }
 }
 
 - (void)stopCamera {
-    [self.session stopRunning];
+    if (self.session.isRunning) {
+        [self.session stopRunning];
+    }
 }
 
 #pragma mark - Custom Camera Methods
@@ -177,7 +181,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     });
     
     [self.session startRunning];
-    self.isBackgroundCamera = YES;
 }
 
 - (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device

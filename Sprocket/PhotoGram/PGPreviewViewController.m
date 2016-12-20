@@ -41,7 +41,6 @@
 #define kPreviewRetryButtonTitle NSLocalizedString(@"Retry", nil)
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
-static CGFloat const kPGPreviewViewControllerFlashTransitionDuration = 0.4F;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
@@ -99,18 +98,21 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.view layoutIfNeeded];
-    
     [super viewWillAppear:animated];
-
-    if ([PGCameraManager sharedInstance].isBackgroundCamera) {
-        self.transitionEffectView.alpha = 1;
-    }
     
     if (self.selectedNewPhoto) {
         if (self.selectedPhoto) {
             self.needNewImageView = YES;
         } else {
-            [self showCamera];
+            __weak PGPreviewViewController *weakSelf = self;
+            [[PGCameraManager sharedInstance] checkCameraPermission:^{
+                [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraView presentedViewController:self];
+                [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
+                [PGCameraManager sharedInstance].isBackgroundCamera = NO;
+                [weakSelf showCamera];
+            } andFailure:^{
+                [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+            }];
         }
     }
     
@@ -131,7 +133,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         frame.size.width = desiredWidth;
         
         self.imageContainer.frame = frame;
-        self.imageContainer.alpha = 0.0F;
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -147,30 +148,9 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoTaken) name:kPGCameraManagerPhotoTaken object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
     
-    __weak PGPreviewViewController *weakSelf = self;
-    [[PGCameraManager sharedInstance] checkCameraPermission:^{
-        [[PGCameraManager sharedInstance] addCameraToView:weakSelf.cameraView presentedViewController:self];
-        [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraView];
-        [PGCameraManager sharedInstance].isBackgroundCamera = NO;
-    } andFailure:^{
-    }];
-    
-    self.imageSavedView.hidden = NO;
-    
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
-}
-
-- (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
-{
-    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
-    
-    if (numberOfPairedSprockets > 0) {
-        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterActive"] forState:UIControlStateNormal];
-    } else {
-        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterInactive"] forState:UIControlStateNormal];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -184,16 +164,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         [self renderPhoto];
     }
     
-    [self.view layoutIfNeeded];
+    [self showPhoto];
     
-    [UIView animateWithDuration:0.3F animations:^{
-        self.imageContainer.alpha = 1.0F;
-        self.imageView.alpha = 1.0F;
-        self.transitionEffectView.alpha = 0;
-        [self.view setNeedsLayout];
-    }];
-    
-    [[PGCameraManager sharedInstance] startCamera];
+    // hidding imageSavedView on the storyboard to avoid seeing the bar when opening preview screen.
+    self.imageSavedView.hidden = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -209,6 +183,19 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     [self.sprocketConnectivityTimer invalidate];
     self.sprocketConnectivityTimer = nil;
+}
+
+#pragma mark - Internal Methods
+
+- (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
+{
+    NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
+    
+    if (numberOfPairedSprockets > 0) {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterActive"] forState:UIControlStateNormal];
+    } else {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterInactive"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)setSelectedPhoto:(UIImage *)selectedPhoto editOfPreviousPhoto:(BOOL)edited
@@ -272,6 +259,20 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     }];
 }
 
+- (void)showPhoto
+{
+    if (self.selectedNewPhoto) {
+        self.imageView.alpha = 0.0F;
+    }
+    
+    [self.view layoutIfNeeded];
+    
+    [UIView animateWithDuration:0.3F animations:^{
+        self.imageView.alpha = 1.0F;
+        [self.view layoutIfNeeded];
+    }];
+}
+
 - (void)hideSavedImageView:(NSObject *)dummy
 {
     [self showImageSavedView:NO];
@@ -293,6 +294,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
 {
+    self.imageView.alpha = 0.0f;
     [self setSelectedPhoto:image editOfPreviousPhoto:YES];
     self.imageView.image = self.selectedPhoto;
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -302,12 +304,14 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
 {
+    self.selectedNewPhoto = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController
 {
     MPLogError(@"toolStackControllerDidFail:%@", toolStackController);
+    self.selectedNewPhoto = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -320,43 +324,21 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 }
 
 - (void)hideCamera {
-    [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
-        self.transitionEffectView.alpha = 1;
-    } completion:^(BOOL finished) {
-        self.previewView.alpha = 1;
-        [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
-            self.transitionEffectView.alpha = 0;
-        } completion:nil];
-    }];
+    self.previewView.alpha = 1;
 }
 
 - (void)showCamera {
-    __weak PGPreviewViewController *weakSelf = self;
-    [[PGCameraManager sharedInstance] checkCameraPermission:^{
-        [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
-            weakSelf.transitionEffectView.alpha = 1;
-        } completion:^(BOOL finished) {
-            weakSelf.previewView.alpha = 0;
-            [UIView animateWithDuration:kPGPreviewViewControllerFlashTransitionDuration / 2 animations:^{
-                weakSelf.transitionEffectView.alpha = 0;
-            } completion:nil];
-            [PGCameraManager logMetrics];
-        }];
-    } andFailure:^{
-        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
-    }];
+    self.previewView.alpha = 0;
+    [PGCameraManager logMetrics];
 }
 
 - (void)photoTaken {
     self.selectedPhoto = [PGCameraManager sharedInstance].currentSelectedPhoto;
-    
     self.didChangeProject = NO;
     
     [self renderPhoto];
     [self hideCamera];
-    
-    self.imageContainer.alpha = 1.0F;
-    self.imageView.alpha = 1.0F;
+    [self showPhoto];
     
     self.source = [PGPreviewViewController cameraSource];
     [PGAnalyticsManager sharedManager].photoSource = self.source;
