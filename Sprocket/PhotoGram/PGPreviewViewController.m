@@ -185,6 +185,13 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     self.sprocketConnectivityTimer = nil;
 }
 
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    // This prevents our share activities from rotating.
+    //  Without this, the share activities rotate, and we rotate (very badly) behind them.
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - Internal Methods
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
