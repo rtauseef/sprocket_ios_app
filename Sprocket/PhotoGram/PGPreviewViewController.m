@@ -162,6 +162,13 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
 }
 
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations
+{
+    // This prevents our share activities from rotating.
+    //  Without this, the share activities rotate, and we rotate (very badly) behind them.
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
 {
     NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
