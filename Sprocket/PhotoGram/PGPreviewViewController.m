@@ -267,7 +267,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     [self.view layoutIfNeeded];
     
-    [UIView animateWithDuration:0.3F animations:^{
+    [UIView animateWithDuration:0.5F animations:^{
         self.imageView.alpha = 1.0F;
         [self.view layoutIfNeeded];
     }];
