@@ -2150,7 +2150,7 @@ printer and app support.</string>
                                         <rect key="frame" x="41" y="187" width="292" height="292"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJR-7b-DiT" userLabel="CameraRollButton">
-                                                <rect key="frame" x="95.5" y="0.0" width="102" height="102.5"/>
+                                                <rect key="frame" x="95.5" y="0.0" width="102" height="102"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ZJR-7b-DiT" secondAttribute="height" multiplier="1:1" id="Dmv-Yr-mKf"/>
                                                 </constraints>
