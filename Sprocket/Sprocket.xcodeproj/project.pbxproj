@@ -2678,12 +2678,12 @@
 				036662ca4a6f529d9da3a935 /* ShellScript */,
 				af41433876b81a65165cdbad /* Resources */,
 				d317d337e74b76acce43a358 /* [CP] Copy Pods Resources */,
-				dc52bd26c76dabb01b526b39 /* ShellScript */,
 				0eead91862bcf05f9111d02b /* ShellScript */,
 				ac9f4e81466168bb8459958f /* [CP] Embed Pods Frameworks */,
 				c3bf14c6c67b762bae9083d9 /* Embed Frameworks */,
 				b6c87447b5972dfefc4beed8 /* ShellScript */,
 				2ce25b4da6bb5ac3c4758195 /* Embed App Extensions */,
+				dc52bd26c76dabb01b526b39 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2727,12 +2727,12 @@
 				CCCEAFBB19D349CE00EB6828 /* ShellScript */,
 				E34D5055199AB87B006D80E0 /* Resources */,
 				8C6684B93DE841829B62429B /* [CP] Copy Pods Resources */,
-				E387B47719DA23E000ABB167 /* ShellScript */,
 				FF7337C719F71C7900A91B3C /* ShellScript */,
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
 				8271DCD41D46D03500B21549 /* Embed Frameworks */,
 				8271DCD81D46D07B00B21549 /* ShellScript */,
 				82157D0B1D9306A400360D87 /* Embed App Extensions */,
+				E387B47719DA23E000ABB167 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2777,7 +2777,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -2785,7 +2785,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -4312,7 +4312,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4621,7 +4621,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
