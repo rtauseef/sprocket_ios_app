@@ -35,8 +35,6 @@
 
 #define IPHONE_5_HEIGHT 568 // pixels
 
-static NSUInteger const kSocialSourcesUISwitchThreshold = 4;
-
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
