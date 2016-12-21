@@ -155,11 +155,11 @@ typedef enum {
             stickerBuilder.stickersDataSource = self;
             
             stickerBuilder.addedStickerClosure = ^(IMGLYSticker *sticker) {
-                [self addEmbellishmentMetric:PGEmbellishmentCategorySticker name:sticker.accessibilityText];
+                [self addEmbellishmentMetric:PGEmbellishmentCategorySticker name:[self stickerNameFromImglySticker:sticker]];
             };
             
             stickerBuilder.removedStickerClosure = ^(IMGLYSticker *sticker) {
-                [self removeEmbellishmentMetric:PGEmbellishmentCategorySticker name:sticker.accessibilityText];
+                [self removeEmbellishmentMetric:PGEmbellishmentCategorySticker name:[self stickerNameFromImglySticker:sticker]];
             };
         }];
         
@@ -169,6 +169,10 @@ typedef enum {
                 NSString *frameName = @"NoFrame";
                 if (nil != frame) {
                     frameName = frame.accessibilityText;
+                    PGFrameItem *frameItem = [PGFrameItem frameByAccessibilityText:frameName];
+                    if (nil != frameItem) {
+                        frameName = frameItem.name;
+                    }
                 }
                 [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frameName];
             };
@@ -316,7 +320,7 @@ typedef enum {
 {
     if (completionBlock) {
         PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
-        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.imageName];
+        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.accessibilityText];
         completionBlock(imglySticker, nil);
     }
 }
@@ -357,6 +361,17 @@ typedef enum {
 }
 
 #pragma mark - Analytics
+
+- (NSString *)stickerNameFromImglySticker:(IMGLYSticker *)sticker
+{
+    NSString *stickerName = sticker.accessibilityText;
+    PGStickerItem *stickerItem = [PGStickerItem stickerByAccessibilityText:stickerName];
+    if (nil != stickerItem) {
+        stickerName = stickerItem.name;
+    }
+
+    return stickerName;
+}
 
 - (NSString *)categoryName:(PGEmbellishmentCategory)category
 {

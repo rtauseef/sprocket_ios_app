@@ -41,8 +41,10 @@ typedef NS_ENUM (NSInteger, PGFrameItems){
 
 @property (nonatomic, strong) NSString *accessibilityText;
 @property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) NSString *name;
 
 + (PGFrameItem *)frameItemByIndex:(NSInteger)index;
++ (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText;
 - (UIImage *)thumbnailImage;
 - (UIImage *)frameImage;
 
