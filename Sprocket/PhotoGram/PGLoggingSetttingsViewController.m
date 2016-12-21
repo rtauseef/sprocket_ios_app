@@ -372,10 +372,10 @@ static int kEnableExtraSocialSourcesIndex = 8;
         PGLogWarn(@"If you didn't cancel that message on purpose, you're probably trying to run the Mail Composer on the simulator.\n\nIt doesn't work on the simulator.");
     }
     else if( MFMailComposeResultFailed == result ) {
-        PGLogError(@"Ack!  Your message failed to be sent.  I blame you.  Here's the result: %u, and error: %@", result, error);
+        PGLogError(@"Ack!  Your message failed to be sent.  I blame you.  Here's the result: %ld, and error: %@", (long)result, error);
     }
     else {
-        PGLogVerbose(@"Mail Composer closed gracefully with result: %u, error: %@", result, error);
+        PGLogVerbose(@"Mail Composer closed gracefully with result: %ld, error: %@", (long)result, error);
     }
     
     PGLogger* logger = (PGLogger *)[PGLogger sharedInstance];

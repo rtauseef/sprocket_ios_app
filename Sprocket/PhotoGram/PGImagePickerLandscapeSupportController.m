@@ -23,7 +23,7 @@
 
 // UIImagePickerController only supports Portrait mode.
 // We have to force the landscape one.
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if (IS_IPHONE) {
         return UIInterfaceOrientationMaskPortrait;
