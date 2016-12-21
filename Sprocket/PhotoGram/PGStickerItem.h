@@ -92,8 +92,10 @@ typedef NS_ENUM (NSInteger, PGStickerItems){
 
 @property (nonatomic, strong) NSString *accessibilityText;
 @property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) NSString *name;
 
 + (PGStickerItem *)stickerItemByIndex:(NSInteger)index;
++ (PGStickerItem *)stickerByAccessibilityText:(NSString *)accessibilityText;
 + (NSInteger)stickerCount;
 - (UIImage *)thumbnailImage;
 - (UIImage *)stickerImage;
