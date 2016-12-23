@@ -22,7 +22,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
-  - FlickrKit (1.0.8)
+  - FlickrKit (1.0.9)
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
@@ -49,16 +49,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: ae885298de88c4d8df17131ebaa79e37cf4653e1
+    :commit: c5f3cade0f508568bb386bbc36c9d6b05b7c7286
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: a2a9f0d486067cafb9862c296ac3ec77709eb436
+    :commit: 27d54c2283b4bc46297228c4337feeda58665012
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
+  FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a

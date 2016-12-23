@@ -18,6 +18,12 @@
 
 const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
 
+@interface HPPRCameraRollMedia()
+
+@property (assign, nonatomic) PHImageRequestID lastImageRequestID;
+
+@end
+
 @implementation HPPRCameraRollMedia
 
 - (id)initWithAsset:(PHAsset *)asset;
@@ -39,7 +45,8 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
         PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
         requestOptions.resizeMode   = PHImageRequestOptionsResizeModeFast;
         requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
-        requestOptions.synchronous = YES;
+        requestOptions.synchronous = NO;
+        requestOptions.networkAccessAllowed = YES;
         
         [[PHImageManager defaultManager] requestImageForAsset:self.asset
                                                    targetSize:CGSizeMake(kHPPRCameraRollMediaThumbnailSize, kHPPRCameraRollMediaThumbnailSize)
@@ -60,15 +67,18 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
         PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
         requestOptions.resizeMode   = PHImageRequestOptionsResizeModeNone;
         requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
-        requestOptions.synchronous = YES;
+        requestOptions.synchronous = NO;
+        requestOptions.networkAccessAllowed = YES;
         
-        [[PHImageManager defaultManager] requestImageForAsset:self.asset
+        self.lastImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:self.asset
                                                    targetSize:PHImageManagerMaximumSize
                                                   contentMode:PHImageContentModeDefault
                                                       options:requestOptions
                                                 resultHandler:^void(UIImage *image, NSDictionary *info) {
-                                                    self.image = image;
-                                                    completion(self.image);
+                                                    if (image) {
+                                                        self.image = image;
+                                                        completion(self.image);
+                                                    }
                                                 }];
         
         PHContentEditingInputRequestOptions *options = [[PHContentEditingInputRequestOptions alloc] init];
@@ -86,6 +96,15 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
         }];
     } else {
         completion(self.image);
+    }
+}
+
+- (void)cancelImageRequestWithCompletion:(void(^)())completion
+{
+    [[PHImageManager defaultManager] cancelImageRequest:self.lastImageRequestID];
+    
+    if (completion) {
+        completion();
     }
 }
 

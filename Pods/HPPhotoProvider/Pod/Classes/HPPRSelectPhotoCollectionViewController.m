@@ -45,6 +45,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 @property (assign, nonatomic, getter = isRequestingImages) BOOL requestingImages;
 @property (assign, nonatomic, getter = isReloadingImages) BOOL reloadingImages;
 
+@property (strong, nonatomic) HPPRSelectPhotoCollectionViewCell *currentSelectedCell;
+
 @property (assign, nonatomic) BOOL showGridView;
 
 @end
@@ -321,10 +323,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    [cell showLoading];
     
-    collectionView.userInteractionEnabled = NO;
+    if (self.currentSelectedCell) {
+        [self.currentSelectedCell.media cancelImageRequestWithCompletion:nil];
+        [self.currentSelectedCell hideLoading];
+    }
     
-    [self.spinner startAnimating];
+    self.currentSelectedCell = cell;
     
     [self.provider retrieveExtraMediaInfo:cell.media withRefresh:NO andCompletion:^(NSError *error) {
         
@@ -333,15 +339,17 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             if (cell.media.asset) {
                 __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     [self.spinner stopAnimating];
                     
                     [cell.media requestImageWithCompletion:^(UIImage *image) {
-                        [weakSelf selectImage:image andMedia:cell.media];
+                        dispatch_async(dispatch_get_main_queue(), ^(void){
+                            [weakSelf selectImage:image andMedia:cell.media];
+                            [weakSelf.spinner stopAnimating];
+                            [cell hideLoading];
+                            weakSelf.currentSelectedCell = nil;
+                        });
                     }];
-                    
-                    
-                    collectionView.userInteractionEnabled = YES;
                 });
                 
                 return;
@@ -351,18 +359,21 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             [[HPPRCacheService sharedInstance] imageForUrl:cell.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
                 if (!self.provider.isImageRequestsCancelled) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.spinner stopAnimating];
+                        [cell hideLoading];
                         
                         [self selectImage:image andMedia:cell.media];
                         
                         collectionView.userInteractionEnabled = YES;
                     });
                 } else {
-                    [self.spinner stopAnimating];
+                    [cell hideLoading];
                 }
+                
+                self.currentSelectedCell = nil;
             }];
         } else {
-            [self.spinner stopAnimating];
+            [cell hideLoading];
+            self.currentSelectedCell = nil;
         }
     }];
 }

@@ -35,6 +35,11 @@
     // Must override in the baseclass
 }
 
+- (void)cancelImageRequestWithCompletion:(void(^)())completion
+{
+    // Must override in the baseclass
+}
+
 - (NSArray *)additionalLocations
 {
     return @[];
