@@ -16,10 +16,14 @@
 #import "HPPR.h"
 #import "HPPRCameraRollMedia.h"
 
+CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
+
 @interface HPPRSelectPhotoCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImage;
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -30,6 +34,7 @@
     [super awakeFromNib];
     self.imageView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRLoadingCellBackgroundColor];
     self.loadingImage.hidden = NO;
+    self.overlayView.alpha = 0;
 }
 
 - (void)setMedia:(HPPRMedia *)media
@@ -87,6 +92,26 @@
 {
     [super setBounds:bounds];
     self.contentView.frame = bounds;
+}
+
+- (void)showLoading
+{
+    [self.activityIndicator startAnimating];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
+    }];
+    
+    self.userInteractionEnabled = NO;
+}
+
+- (void)hideLoading
+{
+    [self.activityIndicator stopAnimating];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.overlayView.alpha = 0;
+    }];
+    
+    self.userInteractionEnabled = YES;
 }
 
 @end

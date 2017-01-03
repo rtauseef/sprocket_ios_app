@@ -26,6 +26,7 @@
 @interface HPPRFacebookPhotoProvider() <HPPRLoginProviderDelegate>
 
 @property (strong, nonatomic) NSString *maxPhotoID;
+@property (strong, nonatomic) FBSDKGraphRequestConnection *lastPhotoRequestConnection;
 
 @end
 
@@ -402,6 +403,11 @@
     
     id cachedResult = [self retrieveFromCacheWithKey:cacheKey];
     
+    if (self.lastPhotoRequestConnection) {
+        [self.lastPhotoRequestConnection cancel];
+        self.lastPhotoRequestConnection = nil;
+    }
+    
     if (cachedResult && !refresh) {
         if (completion) {
             completion(cachedResult, nil);
@@ -420,7 +426,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 FBSDKGraphRequest *graphRequest = [[FBSDKGraphRequest alloc] initWithGraphPath:query parameters:queryParameters];
                 NSLog(@"\n\nVERSION: %@\nQUERY: %@\nPARAMS: %@\n\n", graphRequest.version, query, queryParameters);
-                [graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                self.lastPhotoRequestConnection = [graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                     if (!error) {
                         [weakSelf saveToCache:result withKey:cacheKey];
                     } else {
