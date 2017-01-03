@@ -46,5 +46,6 @@
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion;
+- (void)cancelImageRequestWithCompletion:(void(^)())completion;
 
 @end

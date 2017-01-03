@@ -22,8 +22,10 @@
 @property (assign, nonatomic) BOOL retrieveLowQuality;
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewCellDelegate> delegate;
 
-@end
+- (void)showLoading;
+- (void)hideLoading;
 
+@end
 
 @protocol HPPRSelectPhotoCollectionViewCellDelegate <NSObject>
 
