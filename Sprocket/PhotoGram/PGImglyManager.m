@@ -73,50 +73,50 @@ typedef enum {
             photoEditorBuilder.allowsPreviewImageZoom = NO;
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
-                    cell.tintColor = [UIColor HPGrayBackgroundColor];
-                    cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
-                
-                    cell.captionLabel.text = nil;
-                
-                    switch (action) {
-                        case PhotoEditorActionMagic: {
-                            cell.imageView.highlightedImage = [[UIImage imageNamed:@"auto_enhance_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                            cell.imageView.image = [[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                            cell.accessibilityIdentifier = @"editMagic";
-                            
-                            if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:@"Auto-fix"]) {
-                                cell.imageView.highlighted = YES;
-                            } else {
-                                cell.imageView.highlighted = NO;
-                            }
-                            
-                            break;
+                cell.tintColor = [UIColor HPGrayBackgroundColor];
+                cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+
+                cell.captionLabel.text = nil;
+
+                switch (action) {
+                    case PhotoEditorActionMagic: {
+                        cell.imageView.highlightedImage = [[UIImage imageNamed:@"auto_enhance_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                        cell.imageView.image = [[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                        cell.accessibilityIdentifier = @"editMagic";
+                        
+                        if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:@"Auto-fix"]) {
+                            cell.imageView.highlighted = YES;
+                        } else {
+                            cell.imageView.highlighted = NO;
                         }
-                        case PhotoEditorActionFilter:
-                            cell.imageView.image = [UIImage imageNamed:@"editFilters"];
-                            cell.accessibilityIdentifier = @"editFilters";
-                            break;
-                        case PhotoEditorActionFrame:
-                            cell.imageView.image = [UIImage imageNamed:@"editFrame"];
-                            cell.accessibilityIdentifier = @"editFrame";
-                            break;
-                        case PhotoEditorActionSticker:
-                            cell.imageView.image = [UIImage imageNamed:@"editSticker"];
-                            cell.accessibilityIdentifier = @"editSticker";
-                            break;
-                        case PhotoEditorActionText:
-                            cell.imageView.image = [UIImage imageNamed:@"editText"];
-                            cell.accessibilityIdentifier = @"editText";
-                            break;
-                        case PhotoEditorActionCrop:
-                            cell.imageView.image = [UIImage imageNamed:@"editCrop"];
-                            cell.accessibilityIdentifier = @"editCrop";
-                            break;
-                        default:
-                            break;
+                        
+                        break;
                     }
-                
-                    [cell layoutIfNeeded];
+                    case PhotoEditorActionFilter:
+                        cell.imageView.image = [UIImage imageNamed:@"editFilters"];
+                        cell.accessibilityIdentifier = @"editFilters";
+                        break;
+                    case PhotoEditorActionFrame:
+                        cell.imageView.image = [UIImage imageNamed:@"editFrame"];
+                        cell.accessibilityIdentifier = @"editFrame";
+                        break;
+                    case PhotoEditorActionSticker:
+                        cell.imageView.image = [UIImage imageNamed:@"editSticker"];
+                        cell.accessibilityIdentifier = @"editSticker";
+                        break;
+                    case PhotoEditorActionText:
+                        cell.imageView.image = [UIImage imageNamed:@"editText"];
+                        cell.accessibilityIdentifier = @"editText";
+                        break;
+                    case PhotoEditorActionCrop:
+                        cell.imageView.image = [UIImage imageNamed:@"editCrop"];
+                        cell.accessibilityIdentifier = @"editCrop";
+                        break;
+                    default:
+                        break;
+                }
+
+                [cell layoutIfNeeded];
             }];
 
             [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
