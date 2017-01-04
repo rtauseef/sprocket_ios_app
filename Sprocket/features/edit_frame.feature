@@ -5,7 +5,7 @@ Feature: Verify Edit frame feature
 @reset
 @regression
 Scenario Outline: Verify 'Frame' option
-    Given I am on the "<screen_name>" screen
+    Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
     Then I am on the "Edit" screen
     Then I tap "Frame" button
@@ -18,7 +18,7 @@ Scenario Outline: Verify 'Frame' option
     And I should see the photo with no "frame"
     
     Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
@@ -28,7 +28,7 @@ Scenario Outline: Verify 'Frame' option
 @reset
 @regression
 Scenario Outline: Verify frame applied for frame editor screen
-    Given I am on the "FrameEditor" screen for "<screen_name>"
+    Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "Kraft Frame" frame
     And I verify blue line indicator is displayed under selected frame
     And I should see the photo with the "Kraft Frame" frame
@@ -37,7 +37,7 @@ Scenario Outline: Verify frame applied for frame editor screen
     And I should see the photo with the "Kraft Frame" frame
     
     Examples:
-    | screen_name       |
+    | social_media_screen_name       |
     | Instagram Preview |
     | Flickr Preview    |
     | CameraRoll        |
@@ -79,7 +79,7 @@ Scenario: Verify all the frames are applied for frame editor screen
 @reset
 @regression
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
-    Given I am on the "FrameEditor" screen for "<screen_name>"
+    Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "White Frame" frame
     And I should see the photo with the "White Frame" frame
     Then I tap "Save" mark
@@ -91,7 +91,7 @@ Scenario Outline: Verify navigation to and fro from frame editor screen successf
     Then I should see the "Edit" screen
     
     Examples:
-    | screen_name       |
+    | social_media_screen_name       |
     | Instagram Preview |
     | Flickr Preview    |
     | CameraRoll        |

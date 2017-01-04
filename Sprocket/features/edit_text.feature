@@ -6,7 +6,7 @@ Feature: Verify Text Edit screen
 @reset
 @regression
 Scenario Outline: Verify 'Text' option
-    Given I am on the "<screen_name>" screen
+    Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
     Then I tap "Text" button
@@ -17,10 +17,10 @@ Scenario Outline: Verify 'Text' option
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
     Then I tap "Check" mark
-    Then I should see the "<screen_name>" screen
+    Then I should see the "<social_media_screen_name>" screen
    
     Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
@@ -28,14 +28,14 @@ Scenario Outline: Verify 'Text' option
 @reset
 @regression
 Scenario Outline: Verify text edit screen navigation
-    Given I am on the "TextEdit" screen for "<screen_name>" 
+    Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
     And I enter unique text
     Then I tap "Cancel" mark
     Then I should see the "Edit" screen
    
    
     Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
@@ -43,7 +43,7 @@ Scenario Outline: Verify text edit screen navigation
 @reset
 @regression
 Scenario Outline: Verify Text editor screen options
-    Given I am on the "TextEdit" screen for "<screen_name>" 
+    Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
     And I enter unique text
     Then I tap "Add text" mark
     And I should see the photo with the "text"
@@ -56,7 +56,7 @@ Scenario Outline: Verify Text editor screen options
     
        
     Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
