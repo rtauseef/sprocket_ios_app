@@ -115,8 +115,6 @@ typedef enum {
                     default:
                         break;
                 }
-
-                [cell layoutIfNeeded];
             }];
 
             [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
