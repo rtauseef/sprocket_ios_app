@@ -19,6 +19,10 @@ class SprocketScreen < Calabash::IBase
     "UIButton index:1"
   end
     
+    def technical_info
+    "label {text CONTAINS 'Technical Information'}"
+  end
+    
 
   def navigate
     unless current_page?
