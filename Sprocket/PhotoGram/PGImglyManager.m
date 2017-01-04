@@ -71,21 +71,23 @@ typedef enum {
             photoEditorBuilder.allowsPreviewImageZoom = NO;
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
+                cell.tintColor = [UIColor HPGrayBackgroundColor];
+                cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
+
+                cell.captionLabel.text = nil;
+
                 switch (action) {
                     case PhotoEditorActionMagic: {
-                        if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:@"Auto-fix"]) {
-                            cell.imageView.image = [UIImage imageNamed:@"auto_enhance_On"];
-                        } else {
-                            cell.imageView.image = [UIImage imageNamed:@"auto_enhance_Off"];
-                        }
-
-                        // Circumvent img.ly resetting the image to tinted with template rendering on collectionView:willDisplay:forItemAt:
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            cell.imageView.image = [cell.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                            cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
-                        });
-
+                        cell.imageView.highlightedImage = [[UIImage imageNamed:@"auto_enhance_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                        cell.imageView.image = [[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                         cell.accessibilityIdentifier = @"editMagic";
+                        
+                        if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:@"Auto-fix"]) {
+                            cell.imageView.highlighted = YES;
+                        } else {
+                            cell.imageView.highlighted = NO;
+                        }
+                        
                         break;
                     }
                     case PhotoEditorActionFilter:
@@ -111,8 +113,6 @@ typedef enum {
                     default:
                         break;
                 }
-                
-                cell.captionLabel.text = nil;
             }];
 
             [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
