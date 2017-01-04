@@ -48,8 +48,6 @@ typedef enum {
 {
     self.analytics = [[NSMutableArray alloc] init];
     
-    [[[UIApplication sharedApplication] keyWindow] setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];
-    
     IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
         
         builder.contextMenuBackgroundColor = [UIColor HPGrayColor];
