@@ -5,7 +5,7 @@ Feature: Verify Edit sticker feature
 @reset
 @regression
 Scenario Outline: Verify 'Sticker' option
-    Given I am on the "<screen_name>" screen
+    Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
     Then I tap "Sticker" button
@@ -17,7 +17,7 @@ Scenario Outline: Verify 'Sticker' option
     And I should see the photo with no "sticker"
     
     Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
@@ -25,7 +25,7 @@ Scenario Outline: Verify 'Sticker' option
 @reset
 @done
 Scenario Outline: Verify 'Sticker' option
-    Given I am on the "StickerEditor" screen for "<screen_name>"
+    Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker"
     And I should see the photo with the "sticker"
     Then I tap "Save" mark
@@ -33,7 +33,7 @@ Scenario Outline: Verify 'Sticker' option
     And I should see the photo with the "sticker"
     
     Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
@@ -41,7 +41,7 @@ Scenario Outline: Verify 'Sticker' option
 @reset
 @done
 Scenario Outline: Verify Sticker delete option    
-    Given I am on the "StickerEditor" screen for "<screen_name>"
+    Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker"
     And I should see the photo with the "sticker"
     Then I touch "Delete"
@@ -49,7 +49,7 @@ Scenario Outline: Verify Sticker delete option
     And I should see the photo with no "sticker"
 
      Examples:
-    | screen_name        |
+    | social_media_screen_name        |
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
