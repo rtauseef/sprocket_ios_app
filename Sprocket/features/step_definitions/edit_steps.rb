@@ -11,6 +11,7 @@ end
 When(/^I tap "(.*?)" mark$/) do |mark|
     if(mark == "Close")
         touch @current_page.close
+		sleep(STEP_PAUSE)
     else
         if(mark == "Check")
             touch @current_page.check

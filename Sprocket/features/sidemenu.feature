@@ -47,22 +47,6 @@ Scenario: Verify side menu options
     |Privacy        |
     |About          |
     
-  @reset
-  @done
-  Scenario: Verify navigation to Technical Information screen
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-	Then I should see the side menu
-    Then I touch "sprocket"
-    And I should see the technical information
-    Then I touch "Technical Information"
-    And I should see the "Technical Information" screen
-    And I tap back button
-    And I tap "Close" mark
-    When I touch menu button on navigation bar
-    Then I should see the "Landing" screen 
-     
-    
     @reset
     @TA16065
     Scenario: Verify How to & Help
@@ -168,27 +152,57 @@ Scenario: Verify side menu options
    
     @reset
     @done
-  Scenario: Verify about screen from side menu
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-	Then I should see the side menu
-    When I touch "About"
-    Then I should see the "About" screen 
-    Then I should see "Sprocket" logo
-    And I should see the following:
-    |Version|
-    |HP Development Company, L.P.|
-    |Copyright (c) 2016|
-    When I touch "Done"
-    Then I wait for sometime
-	Then I should see the side menu
+    Scenario: Verify about screen from side menu
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        When I touch "About"
+        Then I should see the "About" screen 
+        Then I should see "Sprocket" logo
+        And I should see the following:
+        |Version|
+        |HP Development Company, L.P.|
+        |Copyright (c) 2016|
+        When I touch "Done"
+        Then I wait for sometime
+        Then I should see the side menu
     
     @reset
     @done
-  Scenario: Verify closing side menu
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-	Then I should see the side menu
-    When I touch menu button on navigation bar
-    Then I should see the "Landing" screen 
+    Scenario: Verify closing side menu
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        When I touch menu button on navigation bar
+        Then I should see the "Landing" screen 
+
     
+    @reset
+    @TA16336
+    Scenario: Verify Sprocket screen options
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        Then I touch "sprocket"
+        Then I should see the "Sprocket" screen
+        And I should see the following:
+        | App Settings |
+        | Printers     | 
+
+    @reset
+    @TA16336
+    Scenario: Verify navigation to Technical Information screen
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        Then I touch "sprocket"
+        Then I should see the "Sprocket" screen
+        Then I touch "Printers"
+        And I should see the technical information
+        Then I touch "Technical Information"
+        And I should see the "Technical Information" screen
+        And I tap back button
+        And I tap "Close" mark
+        And I touch "Done"
+        When I touch menu button on navigation bar
+        Then I should see the "Landing" screen 
