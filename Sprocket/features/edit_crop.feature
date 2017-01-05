@@ -5,7 +5,7 @@ Feature: Verify Edit crop feature
 @reset
 @done
 Scenario Outline: Verify crop option
-    Given I am on the "<screen_name>" screen
+    Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
     Then I am on the "Edit" screen
     Then I tap "Crop" button
@@ -18,7 +18,7 @@ Scenario Outline: Verify crop option
     And I should see the "uncropped" image
           
     Examples:
-    | screen_name        |
+    | social_media_screen_name|
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
@@ -27,7 +27,7 @@ Scenario Outline: Verify crop option
 @reset
 @done
 Scenario Outline: Verify image crop
-    Given I am on the "<screen_name>" screen
+    Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
     Then I am on the "Edit" screen
     Then I tap "Crop" button
@@ -38,7 +38,7 @@ Scenario Outline: Verify image crop
     And I should see the "cropped" image
        
     Examples:
-    | screen_name        |
+    | social_media_screen_name|
     | Instagram Preview  |
     | Flickr Preview     |
     | CameraRoll Preview |
