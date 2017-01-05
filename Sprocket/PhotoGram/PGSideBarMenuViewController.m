@@ -27,6 +27,7 @@
 #import "PGWebViewerViewController.h"
 
 #import "UIViewController+Trackable.h"
+#import "NSLocale+Additions.h"
 
 static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
 
@@ -130,7 +131,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellBuyPaper:{
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kBuyPaperScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kBuyPaperURL]];
+            [[UIApplication sharedApplication] openURL:[NSLocale buyPaperURL]];
             break;
         }
         case PGSideBarMenuCellHowToAndHelp: {

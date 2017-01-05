@@ -23,6 +23,7 @@
 
 + (NSURL *)privacyURL;
 + (NSURL *)userGuideURL;
++ (NSURL *)buyPaperURL;
 + (NSURL *)supportWebsiteURL;
 + (NSURL *)supportForumURL;
 + (NSString *)twitterSupportTag;
