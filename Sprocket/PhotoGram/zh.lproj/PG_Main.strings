@@ -68,7 +68,7 @@
 "J10-Gj-77T.title" = "完成";
 
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
-"JEt-SU-tLR.title" = "胶卷";
+"JEt-SU-tLR.title" = "相册";
 
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "Kp8-0r-uKI"; */
 "Kp8-0r-uKI.normalTitle" = "登录";
@@ -133,10 +133,10 @@
 "WMv-7o-mbb.text" = "sprocket";
 
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
-"XgH-Dx-oow.text" = "已保存到“胶卷”中";
+"XgH-Dx-oow.text" = "已保存到“相册”中";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "使用胶卷，亦表示您同意惠普的服务条款。";
+"Z1T-tw-tdj.text" = "使用相册，亦表示您同意惠普的服务条款。";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "照片";

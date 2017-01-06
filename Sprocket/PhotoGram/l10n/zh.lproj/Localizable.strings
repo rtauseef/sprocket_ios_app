@@ -23,7 +23,7 @@
 "Camera Access Required" = "需要访问相机";
 
 /* Social source title for Camera Roll */
-"Camera Roll" = "胶卷";
+"Camera Roll" = "相册";
 
 /* Button for dismissing dialog
    Generic Cancel from an action. */
@@ -290,7 +290,7 @@ You can also use your device photos." = "请连接至数据源。
 "Save and exit preview?" = "是否保存并退出预览？";
 
 /* No comment provided by engineer. */
-"Save to Camera Roll" = "保存到“胶卷”中";
+"Save to Camera Roll" = "保存到“相册”中";
 
 /* Button for opening the app settings */
 "Settings" = "设置";

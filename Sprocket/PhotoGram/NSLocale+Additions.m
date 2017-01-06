@@ -34,7 +34,6 @@ static NSString * const kPGHelpAndHowToJoinForumSupportURLZh = @"http://h30471.w
 static NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
 static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.hp.com/t5/community/communitypage";
 
-
 @implementation NSLocale (Additions)
 
 + (BOOL)isChinese
@@ -139,15 +138,11 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     return [NSURL URLWithString:url];
 }
 
-
 + (NSURL *)supportWebsiteURL
 {
     NSString *url = kPGHelpAndHowToVisitWebsiteURL;
 
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
-
-    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+    if ([NSLocale isChinese]) {
         url = kPGHelpAndHowToVisitWebsiteURLZh;
     }
 
@@ -157,11 +152,8 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 + (NSURL *)supportForumURL
 {
     NSString *url = kPGHelpAndHowToJoinForumSupportURL;
-
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
-
-    if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
+    
+    if ([NSLocale isChinese]) {
         url = kPGHelpAndHowToJoinForumSupportURLZh;
     }
 
