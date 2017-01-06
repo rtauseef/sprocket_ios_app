@@ -130,7 +130,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellBuyPaper:{
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kBuyPaperScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: kBuyPaperURL]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kBuyPaperURL]];
             break;
         }
         case PGSideBarMenuCellHowToAndHelp: {
