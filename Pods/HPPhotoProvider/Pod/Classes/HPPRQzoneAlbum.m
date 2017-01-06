@@ -25,7 +25,7 @@
         self.objectID = [attributes objectForKey:@"albumid"];
         self.name = [attributes objectForKey:@"name"];
         self.photoCount = [[attributes objectForKey:@"picnum"] integerValue];
-//        self.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:[attributes objectForKey:@"coverurl"]];
+        self.coverPhoto = [UIImage imageNamed:@"Album_Placeholder"];
     }
     
     return self;
