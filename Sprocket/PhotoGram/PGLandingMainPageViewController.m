@@ -35,6 +35,8 @@
 
 #define IPHONE_5_HEIGHT 568 // pixels
 
+NSInteger const kSocialSourcesUISwitchThreshold = 4;
+
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
@@ -78,14 +80,16 @@
     self.socialSourcesCircleView.delegate = self;
 
     // Holding the social sources circle while Qzone and Weibo are not ready for deployment
-    /*
+    
+    self.socialSourcesVerticalContainer.hidden = YES;
     if ([[PGSocialSourcesManager sharedInstance] enabledSocialSources].count > kSocialSourcesUISwitchThreshold) {
         self.socialSourcesHorizontalContainer.hidden = YES;
     } else {
         self.socialSourcesCircularContainer.hidden = YES;
     }
-    */
+    
     // -> Begin temporary UI
+    /*
     self.socialSourcesCircularContainer.hidden = YES;
     if ([NSLocale isChinese]) {
         self.socialSourcesHorizontalContainer.hidden = YES;
@@ -97,6 +101,7 @@
     } else {
         self.socialSourcesVerticalContainer.hidden = YES;
     }
+     */
     // <- End temporary UI
 
     BOOL openFromNotification = ((PGAppDelegate *)[UIApplication sharedApplication].delegate).openFromNotification;

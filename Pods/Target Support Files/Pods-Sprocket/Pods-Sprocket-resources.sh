@@ -74,6 +74,9 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
@@ -122,6 +125,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
@@ -170,6 +176,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
 fi
 if [[ "$CONFIGURATION" == "TestFlight" ]]; then
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
@@ -218,6 +227,9 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
 fi
 if [[ "$CONFIGURATION" == "AppStore" ]]; then
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
