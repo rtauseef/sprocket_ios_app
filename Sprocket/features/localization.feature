@@ -55,14 +55,14 @@ Scenario Outline: Verify side menu-how to &help screen navigation
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    Then I touch the option "How to & Help"
-    And I touch the option "<how_to_help_options>"
-    And I should see the "<Sprocket printer>" screen
+    Then I touch the option "how_to_and_help_options"
+    And I touch the option "<how_to_and_help_options>"
+    And I should see the "<how_to_and_help_options>" screen
     
     Examples:
-    | how_to_help_options    | Sprocket printer       |
-    | Reset Sprocket Printer | Reset Sprocket Printer |
-    | Setup Sprocket Printer | Setup Sprocket Printer |
+    | how_to_and_help_options| 
+    | Reset Sprocket Printer | 
+    | Setup Sprocket Printer | 
 
 @TA15895
 Scenario Outline: Verify side menu-how to &help options

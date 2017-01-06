@@ -72,13 +72,13 @@ Scenario: Verify side menu options
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "How to & Help"
-    And I touch "<Option>"
-    And I should see the "<Sprocket printer>" screen
+    And I touch "<Sprocket_printer_option>"
+    And I should see the "<Sprocket_printer_option>" screen
     
     Examples:
-    | Option                 | Sprocket printer       |
-    | Reset Sprocket Printer | Reset Sprocket Printer |
-    | Setup Sprocket Printer | Setup Sprocket Printer |
+    | Sprocket_printer_option| 
+    | Reset Sprocket Printer | 
+    | Setup Sprocket Printer | 
     
     
     @reset
@@ -124,13 +124,13 @@ Scenario: Verify side menu options
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "How to & Help"
-    And I touch "<Option>"
-    And I should see the "<Sprocket printer>" screen
+    And I touch "<Sprocket_printer_option>"
+    And I should see the "<Sprocket_printer_option>" screen
     
     Examples:
-    | Option                 | Sprocket printer       |
-    | Reset Sprocket Printer | Reset Sprocket Printer |
-    | Setup Sprocket Printer | Setup Sprocket Printer |
+    | Sprocket_printer_option| 
+    | Reset Sprocket Printer | 
+    | Setup Sprocket Printer | 
     
     
     @reset
@@ -140,10 +140,11 @@ Scenario: Verify side menu options
     When I touch menu button on navigation bar
 	Then I should see the side menu
     Then I touch "How to & Help"
-    And I touch "<Option>"
+    And I wait for some seconds
+    And I touch "<How_To_And_Help_option>"
     
     Examples:
-    | Option                 |
+    | How_To_And_Help_option|
     | View User Guide        |
     | Tweet Support          |
     | Join Support Forum     |
