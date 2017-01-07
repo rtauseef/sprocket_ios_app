@@ -52,7 +52,7 @@ CHECKOUT OPTIONS:
     :commit: d4067a55166875349383c03b676bef46a7f37ea9
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 27d54c2283b4bc46297228c4337feeda58665012
+    :commit: f16b5db0a266011844d9907dc60e812ca037afc8
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
