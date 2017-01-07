@@ -73,7 +73,7 @@ typedef enum {
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
                 cell.tintColor = [UIColor HPGrayBackgroundColor];
                 cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
-
+                cell.imageView.highlightedImage = nil;
                 cell.captionLabel.text = nil;
 
                 switch (action) {
