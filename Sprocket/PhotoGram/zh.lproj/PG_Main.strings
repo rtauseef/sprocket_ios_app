@@ -202,6 +202,10 @@
 "YEZ-Yd-vcV.text" = "拍摄或选择一张照片";
 
 /* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
-"znF-lh-wdy.text" = "请在下方选择一个
-Sprocket 打印机和应用支持选项。";
+"znF-lh-wdy.text" = "请在下方选择一个 sprocket
+打印机的应用支持。";
+
+/* Class = "UILabel"; text = "WeChat support."; ObjectID = "w68-hT-Ur3"; */
+"w68-hT-Ur3.text" = "微信支持";
+
 
