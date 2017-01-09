@@ -13,7 +13,6 @@
 #import <Foundation/Foundation.h>
 #import "NSLocale+Additions.h"
 
-extern NSString * const kBuyPaperURL;
 extern NSString * const kSurveyURL;
 extern NSString * const kSurveyNotifyURL;
 extern NSString * const kBuyPaperScreenName;
