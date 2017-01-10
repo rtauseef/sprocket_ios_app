@@ -16,7 +16,6 @@
 
 #import "UIColor+Style.h"
 
-NSString * const kBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
 NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
