@@ -101,13 +101,15 @@ def technical_info
    query("TTTAttributedLabel label",:text)[0]
  end
 
-  def terms_of_service_link
-	xcoord = query("TTTAttributedLabel").first["rect"]["center_x"]
-    ycoord = query("TTTAttributedLabel").first["rect"]["center_y"]
-    if get_device_name.to_s.start_with?('iPad')
-           touch(nil, :offset => {:x => xcoord+90.to_i, :y => ycoord+10.to_i})
-    else
-           touch(nil, :offset => {:x => xcoord+70.to_i, :y => ycoord+10.to_i})
+def terms_of_service_link
+	 xcoord = query("TTTAttributedLabel").first["rect"]["center_x"]
+  ycoord = query("TTTAttributedLabel").first["rect"]["center_y"]
+  attr_width = query("TTTAttributedLabel").first["rect"]["width"]
+  if get_device_name.to_s.start_with?('iPad')
+    xcoord = xcoord +(attr_width.to_i/4)
+    touch(nil, :offset => {:x => xcoord.to_i, :y => ycoord+10.to_i})
+  else
+    touch(nil, :offset => {:x => xcoord+10.to_i, :y => ycoord+10.to_i})
     end
   end
 
