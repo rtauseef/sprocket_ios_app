@@ -26,7 +26,8 @@ class LandingScreen < Calabash::IBase
   end
 
   def cameraroll_logo
-    "UIImageView id:'CameraRoll'"
+    #"UIImageView id:'CameraRoll'"
+      "UIImageView id:'#{$list_loc['cameraroll_logo']}'"
   end
     
     def cameraroll_logo_sidemenu
@@ -117,8 +118,11 @@ def terms_of_service_link
       close_camera_popup
        if ENV['LANGUAGE'] == "Spanish"
      $list_loc=$language_arr["es_ES"]
-  else 
-      $list_loc=$language_arr["en_US"]
+       else if ENV['LANGUAGE'] == "Chinese"
+                 $list_loc=$language_arr["zh_Hans"]
+       else
+        $list_loc=$language_arr["en_US"]
+       end
   end
   survey_message_arr = $list_loc['survey']
   if get_xcode_version.to_i < 8
