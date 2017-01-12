@@ -14,6 +14,8 @@
 #import "PGIntroWizardViewController.h"
 #import "PGAnalyticsManager.h"
 #import "PGAttributedLabel.h"
+#import "PGSetupSprocketViewController.h"
+
 #import "MP.h"
 
 
@@ -41,11 +43,10 @@
     UIViewController *page2 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage2"];
     UIViewController *page3 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage3"];
     
-
-
     self.pages = @[page1, page2, page3];
     
     [self setupStepLabels];
+    [self setupStepContent];
 
     [self.pageViewController setViewControllers:@[page1]
                                  direction:UIPageViewControllerNavigationDirectionForward
@@ -134,15 +135,7 @@
 {
     if ([self.pages count] <3)
         return;
-    
-    NSString *stepOne = NSLocalizedString(@"Step 1", @"Setup step 1 title");
-    NSString *stepTwo = NSLocalizedString(@"Step 2", @"Setup step 2 title");
-    NSString *stepThree = NSLocalizedString(@"Step 3", @"Setup step 3 title");
 
-    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Load Paper", @"Setup step 1 desc")];
-    NSString *stepTwoDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Power Up", @"Setup step 2 desc")];
-    NSString *stepThreeDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Connect", @"Setup step 3 desc")];
-    
     NSInteger wizardTab1Tag = 101;
     NSInteger wizardTab2Tag = 102;
     NSInteger wizardTab3Tag = 103;
@@ -151,20 +144,29 @@
     PGAttributedLabel *wizardTab2 =  [self.pages[1].view viewWithTag:wizardTab2Tag];
     PGAttributedLabel *wizardTab3 =  [self.pages[2].view viewWithTag:wizardTab3Tag];
 
-    [self setupStepLabel:wizardTab1 step:stepOne desc:stepOneDesc];
-    [self setupStepLabel:wizardTab2 step:stepTwo desc:stepTwoDesc];
-    [self setupStepLabel:wizardTab3 step:stepThree desc:stepThreeDesc];
+    [PGSetupSprocketViewController setStepOneLabelText:wizardTab1];
+    [PGSetupSprocketViewController setStepTwoLabelText:wizardTab2];
+    [PGSetupSprocketViewController setStepThreeLabelText:wizardTab3];
 }
 
-
-- (void)setupStepLabel:(PGAttributedLabel *)label step:(NSString *)step desc:(NSString *)desc
+- (void)setupStepContent
 {
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:step attributes:nil];
+    if ([self.pages count] <3)
+        return;
     
-    [attributedText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:desc]];
-    [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0096D6"] range:NSMakeRange(step.length, desc.length)];
-    [attributedText addAttribute:NSFontAttributeName value:[UIFont fontWithName:label.fontFamily size:label.fontSize] range:NSMakeRange(0, attributedText.length)];
-    label.attributedText = attributedText;
+    NSInteger tab1ContentTag = 201;
+    NSInteger tab2ContentTag = 202;
+    NSInteger tab3ContentTag = 203;
+    
+    UILabel *tab1ContentLabel =  [self.pages[0].view viewWithTag:tab1ContentTag];
+    UILabel *tab2ContentLabel =  [self.pages[1].view viewWithTag:tab2ContentTag];
+    UILabel *tab3ContentLabel =  [self.pages[2].view viewWithTag:tab3ContentTag];
+    
+    tab1ContentLabel.text = [PGSetupSprocketViewController stepOneContentText];
+    
+    tab2ContentLabel.text = [PGSetupSprocketViewController stepTwoContentText];
+
+    tab3ContentLabel.text = [PGSetupSprocketViewController stepThreeContentText];
 }
 
 @end

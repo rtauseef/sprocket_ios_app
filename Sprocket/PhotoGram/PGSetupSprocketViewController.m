@@ -12,7 +12,6 @@
 
 #import "PGSetupSprocketViewController.h"
 #import "UIViewController+Trackable.h"
-#import "PGAttributedLabel.h"
 #import "UIColor+HexString.h"
 
 
@@ -20,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet PGAttributedLabel *step1LoadPaper;
 @property (weak, nonatomic) IBOutlet PGAttributedLabel *step2PowerUp;
 @property (weak, nonatomic) IBOutlet PGAttributedLabel *step3Connect;
+
+@property (weak, nonatomic) IBOutlet UILabel *step1Content;
+@property (weak, nonatomic) IBOutlet UILabel *step2Content;
+@property (weak, nonatomic) IBOutlet UILabel *step3Content;
 
 @end
 
@@ -33,20 +36,61 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSString *stepOne = NSLocalizedString(@"Step 1", @"Setup step 1 title");
-    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Load Paper", @"Setup step 1 desc")];
-    NSString *stepTwo = NSLocalizedString(@"Step 2", @"Setup step 2 title");
-    NSString *stepTwoDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Power Up", @"Setup step 2 desc")];
-    NSString *stepThree = NSLocalizedString(@"Step 3", @"Setup step 3 title");
-    NSString *stepThreeDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Connect", @"Setup step 3 desc")];
+    [PGSetupSprocketViewController setStepOneLabelText:self.step1LoadPaper];
+    [PGSetupSprocketViewController setStepTwoLabelText:self.step2PowerUp];
+    [PGSetupSprocketViewController setStepThreeLabelText:self.step3Connect];
     
-    [self setupStepLabel:self.step1LoadPaper step:stepOne desc:stepOneDesc];
-    [self setupStepLabel:self.step2PowerUp step:stepTwo desc:stepTwoDesc];
-    [self setupStepLabel:self.step3Connect step:stepThree desc:stepThreeDesc];
-
+    self.step1Content.text = [PGSetupSprocketViewController stepOneContentText];
+    self.step2Content.text = [PGSetupSprocketViewController stepTwoContentText];
+    self.step3Content.text = [PGSetupSprocketViewController stepThreeContentText];
 }
 
-- (void)setupStepLabel:(PGAttributedLabel *)label step:(NSString *)step desc:(NSString *)desc
++ (NSString *)stepOneContentText
+{
+    NSString *text = NSLocalizedString(@"Put the entire pack in the paper tray with barcode and HP logos facing down.", @"Instructions for loading paper");
+    
+    return text;
+}
+
++ (NSString *)stepTwoContentText
+{
+    NSString *text = NSLocalizedString(@"Press and hold the power button until the LED turns white.", @"Instructions for turning a printer on");
+    
+    return text;
+}
+
++ (NSString *)stepThreeContentText
+{
+    NSString *text = NSLocalizedString(@"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer.", @"Instructions for connecting a phone to a printer via bluetooth");
+    
+    return text;
+}
+
++ (void)setStepOneLabelText:(PGAttributedLabel *)label
+{
+    NSString *stepOne = NSLocalizedString(@"Step 1", @"Setup step 1 title");
+    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Load Paper", @"Setup step 1 desc")];
+
+    [PGSetupSprocketViewController setupStepLabel:label step:stepOne desc:stepOneDesc];
+}
+
++ (void)setStepTwoLabelText:(PGAttributedLabel *)label
+{
+    NSString *stepTwo = NSLocalizedString(@"Step 2", @"Setup step 2 title");
+    NSString *stepTwoDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Power Up", @"Setup step 2 desc")];
+
+    [PGSetupSprocketViewController setupStepLabel:label step:stepTwo desc:stepTwoDesc];
+}
+
++ (void)setStepThreeLabelText:(PGAttributedLabel *)label
+{
+    NSString *stepThree = NSLocalizedString(@"Step 3", @"Setup step 3 title");
+    NSString *stepThreeDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Connect", @"Setup step 3 desc")];
+
+    [PGSetupSprocketViewController setupStepLabel:label step:stepThree desc:stepThreeDesc];
+}
+
++ (void)setupStepLabel:(PGAttributedLabel *)label step:(NSString *)step desc:(NSString *)desc
 {
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:step attributes:nil];
     
