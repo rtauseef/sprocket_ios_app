@@ -76,9 +76,6 @@
 /* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
 "MN9-s9-sQn.text" = "轻触此处编辑描述";
 
-/* Class = "UILabel"; text = "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer."; ObjectID = "Mau-Fg-w5P"; */
-"Mau-Fg-w5P.text" = "在“Bluetooth 设置”中点击“HP sprocket”来连接打印机。";
-
 /* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "MgL-Ve-2Gu"; */
 "MgL-Ve-2Gu.normalTitle" = "跳到应用程序";
 
@@ -208,9 +205,15 @@
 /* Class = "UILabel"; text = "WeChat support."; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "微信支持";
 
-/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "bNM-1G-6tS"; */
-"bNM-1G-6tS.text" = "将整包纸张放入纸盒，条形码和惠普标志向下。";
+/* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
+"Pzx-yx-Rfc.text" = "新功能";
 
-/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
-"JrW-zx-uoD.text" = "长按住电源按钮，直至 LED 灯变白。";
+/* Class = "UILabel"; text = "Print to your HP Sprocket Printer from your favorite creative Apps!"; ObjectID = "cFJ-6P-UAK"; */
+"cFJ-6P-UAK.text" = "通过恵普口袋打印机打印
+您最喜爱应用里的照片
+";
+
+/* Class = "UILabel"; text = "Turn on the “Print to sprocket” feature in the “More” menu when sharing."; ObjectID = "lh1-7W-cpZ"; */
+"lh1-7W-cpZ.text" = "当分享时， 你可以在'更多'选项里
+启用'小印打印'功能哦。";
 
