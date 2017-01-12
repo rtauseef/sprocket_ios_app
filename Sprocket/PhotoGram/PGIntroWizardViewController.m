@@ -10,9 +10,12 @@
 // the license agreement.
 //
 
+#import "UIColor+HexString.h"
 #import "PGIntroWizardViewController.h"
 #import "PGAnalyticsManager.h"
+#import "PGAttributedLabel.h"
 #import "MP.h"
+
 
 @interface PGIntroWizardViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -37,8 +40,12 @@
     UIViewController *page1 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage1"];
     UIViewController *page2 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage2"];
     UIViewController *page3 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage3"];
+    
+
 
     self.pages = @[page1, page2, page3];
+    
+    [self setupStepLabels];
 
     [self.pageViewController setViewControllers:@[page1]
                                  direction:UIPageViewControllerNavigationDirectionForward
@@ -120,6 +127,44 @@
     }
 
     return [self.pages objectAtIndex:index];
+}
+
+#pragma mark - Load UI Methods
+- (void)setupStepLabels
+{
+    if ([self.pages count] <3)
+        return;
+    
+    NSString *stepOne = NSLocalizedString(@"Step 1", @"Setup step 1 title");
+    NSString *stepTwo = NSLocalizedString(@"Step 2", @"Setup step 2 title");
+    NSString *stepThree = NSLocalizedString(@"Step 3", @"Setup step 3 title");
+
+    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Load Paper", @"Setup step 1 desc")];
+    NSString *stepTwoDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Power Up", @"Setup step 2 desc")];
+    NSString *stepThreeDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Connect", @"Setup step 3 desc")];
+    
+    NSInteger wizardTab1Tag = 101;
+    NSInteger wizardTab2Tag = 102;
+    NSInteger wizardTab3Tag = 103;
+    
+    PGAttributedLabel *wizardTab1 =  [self.pages[0].view viewWithTag:wizardTab1Tag];
+    PGAttributedLabel *wizardTab2 =  [self.pages[1].view viewWithTag:wizardTab2Tag];
+    PGAttributedLabel *wizardTab3 =  [self.pages[2].view viewWithTag:wizardTab3Tag];
+
+    [self setupStepLabel:wizardTab1 step:stepOne desc:stepOneDesc];
+    [self setupStepLabel:wizardTab2 step:stepTwo desc:stepTwoDesc];
+    [self setupStepLabel:wizardTab3 step:stepThree desc:stepThreeDesc];
+}
+
+
+- (void)setupStepLabel:(PGAttributedLabel *)label step:(NSString *)step desc:(NSString *)desc
+{
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:step attributes:nil];
+    
+    [attributedText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:desc]];
+    [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0096D6"] range:NSMakeRange(step.length, desc.length)];
+    [attributedText addAttribute:NSFontAttributeName value:[UIFont fontWithName:label.fontFamily size:label.fontSize] range:NSMakeRange(0, attributedText.length)];
+    label.attributedText = attributedText;
 }
 
 @end

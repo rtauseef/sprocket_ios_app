@@ -394,3 +394,27 @@ You can also use your device photos." = "请连接至数据源。
 /* No comment provided by engineer. */
 "sprocket error log" = "Sprocket 错误日志";
 
+/* No comment provided by engineer. */
+"App Settings" = "应用设置";
+
+/* No comment provided by engineer. */
+"Printers" = "打印机";
+
+/* Setup step 1 title*/
+"Step 1" = "第 1 步";
+
+/* Setup step 1 desc*/
+"Load Paper" = "装入纸张";
+
+/* Setup step 2 title*/
+"Step 2" = "第 2 步";
+
+/* Setup step 2 desc*/
+"Power Up" = "接通电源";
+
+/* Setup step 3 title */
+"Step 3" = "第 3 步";
+
+/* Setup step 3 desc*/
+"Connect" = "连接";
+

@@ -208,4 +208,9 @@
 /* Class = "UILabel"; text = "WeChat support."; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "微信支持";
 
+/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "bNM-1G-6tS"; */
+"bNM-1G-6tS.text" = "将整包纸张放入纸盒，条形码和惠普标志向下。";
+
+/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
+"JrW-zx-uoD.text" = "长按住电源按钮，直至 LED 灯变白。";
 
