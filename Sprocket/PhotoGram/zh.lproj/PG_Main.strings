@@ -209,11 +209,14 @@
 "w68-hT-Ur3.text" = "微信支持";
 
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
-"Pzx-yx-Rfc.text" = "新功能";
+"Pzx-yx-Rfc.text" = "新功能!";
+
+/* Class = "UIButton"; text = "Close"; ObjectID = "pvd-qV-bLb"; */
+"pvd-qV-bLb.normalTitle" = "关闭";
 
 /* Class = "UILabel"; text = "Print to your HP Sprocket Printer from your favorite creative Apps!"; ObjectID = "cFJ-6P-UAK"; */
 "cFJ-6P-UAK.text" = "通过恵普口袋打印机打印
-您最喜爱应用里的照片
+您最喜爱应用里的照片!
 ";
 
 /* Class = "UILabel"; text = "Turn on the “Print to sprocket” feature in the “More” menu when sharing."; ObjectID = "lh1-7W-cpZ"; */
