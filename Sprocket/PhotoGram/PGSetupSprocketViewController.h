@@ -11,7 +11,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PGAttributedLabel.h"
 
 @interface PGSetupSprocketViewController : UIViewController
+
++ (void)setStepOneLabelText:(PGAttributedLabel *)label;
++ (void)setStepTwoLabelText:(PGAttributedLabel *)label;
++ (void)setStepThreeLabelText:(PGAttributedLabel *)label;
+
++ (NSString *)stepOneContentText;
++ (NSString *)stepTwoContentText;
++ (NSString *)stepThreeContentText;
 
 @end
