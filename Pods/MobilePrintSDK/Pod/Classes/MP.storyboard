@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -414,7 +414,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kps-nb-uzb" userLabel="Editable name">
-                                                    <rect key="frame" x="161" y="14" width="200" height="17"/>
+                                                    <rect key="frame" x="161" y="13" width="200" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="fzg-Ss-eVC"/>
                                                     </constraints>
@@ -448,7 +448,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-Zo-R2d">
-                                                    <rect key="frame" x="61" y="14" width="300" height="17"/>
+                                                    <rect key="frame" x="61" y="13" width="300" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="300" id="Ivq-Hb-HHH"/>
                                                     </constraints>
@@ -1115,7 +1115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WM5-gY-uef" userLabel="Date Label">
-                                                    <rect key="frame" x="70" y="42" width="42" height="21"/>
+                                                    <rect key="frame" x="70" y="41" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1573,7 +1573,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MPAddPrintLaterJobNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="hOa-24-1AG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nlw-Th-x4S">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nlw-Th-x4S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1864,7 +1864,16 @@ www.hp.com/recycle.</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="disposalTextLabel" destination="Fwa-NI-mZs" id="46q-e7-jNb"/>
+                        <outlet property="batteryContent" destination="Yr7-Kl-NeI" id="CGY-PH-Zst"/>
+                        <outlet property="batteryTitle" destination="z5X-45-boy" id="24M-yb-O39"/>
+                        <outlet property="chemicalContent" destination="rVN-Eh-tNW" id="BlB-wS-YC9"/>
+                        <outlet property="chemicalTitle" destination="eaD-4E-TX9" id="BFG-XB-hD8"/>
+                        <outlet property="dataSheetsContent" destination="rzO-Il-ak6" id="pzs-jB-peE"/>
+                        <outlet property="dataSheetsTitle" destination="E9P-OY-Su3" id="Mlj-C8-bZ8"/>
+                        <outlet property="disposalContent" destination="Fwa-NI-mZs" id="Nth-aI-ERq"/>
+                        <outlet property="disposalTitle" destination="FjF-BM-zcD" id="bpc-JP-XNK"/>
+                        <outlet property="recycleContent" destination="zjh-mo-66H" id="CU4-ja-3w4"/>
+                        <outlet property="recycleTitle" destination="ijn-tq-A33" id="eNA-vf-jJo"/>
                         <outlet property="scrollView" destination="Fwe-R2-X0Q" id="4cQ-k8-LUZ"/>
                         <outletCollection property="titleLabels" destination="E9P-OY-Su3" id="PMl-lg-dEe"/>
                         <outletCollection property="textLabels" destination="rzO-Il-ak6" id="W6r-QB-CQo"/>
@@ -2058,7 +2067,7 @@ www.hp.com/recycle.</string>
     <inferredMetricsTieBreakers>
         <segue reference="C3t-Tz-4rn"/>
         <segue reference="FCW-gd-DkI"/>
-        <segue reference="E8A-CH-mPX"/>
-        <segue reference="4eJ-bv-9qP"/>
+        <segue reference="OHc-hu-xz3"/>
+        <segue reference="gpl-F0-UT5"/>
     </inferredMetricsTieBreakers>
 </document>
