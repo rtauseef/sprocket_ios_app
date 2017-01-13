@@ -426,3 +426,6 @@ You can also use your device photos." = "请连接至数据源。
 
 /* Step 3 Wizard Content */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "在“Bluetooth 设置”中点击“HP sprocket”来连接打印机。";
+
+/* Done */
+"Done" = "完成";
