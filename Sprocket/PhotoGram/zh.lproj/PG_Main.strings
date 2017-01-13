@@ -67,6 +67,9 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "J10-Gj-77T"; */
 "J10-Gj-77T.title" = "完成";
 
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "dbH-gv-JrM"; */
+"dbH-gv-JrM.title" = "完成";
+
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
 "JEt-SU-tLR.title" = "相册";
 
