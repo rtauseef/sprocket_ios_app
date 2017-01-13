@@ -25,6 +25,7 @@ static NSString * const kPGHelpAndHowToViewUserURLDe = @"http://h10032.www1.hp.c
 static NSString * const kPGHelpAndHowToViewUserURLFr = @"http://h10032.www1.hp.com/ctg/Manual/c05320547";
 static NSString * const kPGHelpAndHowToViewUserURLSp = @"http://h10032.www1.hp.com/ctg/Manual/c05320654";
 static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.com/ctg/Manual/c05320519";
+static NSString * const kPGHelpAndHowToViewUserURLZh = @"http://h10032.www1.hp.com/ctg/Manual/c05359608";
 
 // Buy Paper
 static NSString * const kPGBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
@@ -74,7 +75,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     if ([supportedLanguages indexOfObject:preferredLanguage] != NSNotFound) {
         return preferredLanguage;
     }
-
+    
     return @"en";
 }
 
@@ -137,6 +138,8 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
         url = kPGHelpAndHowToViewUserURLSp;
     } else if ([languageCode caseInsensitiveCompare:@"nl"] == NSOrderedSame) {
         url = kPGHelpAndHowToViewUserURLNl;
+    } else if ([NSLocale isChinese]) {
+        url = kPGHelpAndHowToViewUserURLZh;
     }
     
     return [NSURL URLWithString:url];
@@ -156,11 +159,11 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 + (NSURL *)supportWebsiteURL
 {
     NSString *url = kPGHelpAndHowToVisitWebsiteURL;
-
+    
     if ([NSLocale isChinese]) {
         url = kPGHelpAndHowToVisitWebsiteURLZh;
     }
-
+    
     return [NSURL URLWithString:url];
 }
 
@@ -171,7 +174,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     if ([NSLocale isChinese]) {
         url = kPGHelpAndHowToJoinForumSupportURLZh;
     }
-
+    
     return [NSURL URLWithString:url];
 }
 
@@ -182,7 +185,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
     NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
-
+    
     if ([languageCode caseInsensitiveCompare:@"de"] == NSOrderedSame) {
         tag = [NSString stringWithFormat:@"%@%@", tag, @"DE"];
     } else if ([languageCode caseInsensitiveCompare:@"fr"] == NSOrderedSame) {
@@ -193,7 +196,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
                [languageCode caseInsensitiveCompare:@"en"] == NSOrderedSame) {
         tag = [NSString stringWithFormat:@"%@ %@", tag, @"#UK"];
     }
-
+    
     return tag;
 }
 
