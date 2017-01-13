@@ -389,7 +389,7 @@ You can also use your device photos." = "请连接至数据源。
 "You don’t have any account configured to send emails." = "您未配置可用来发送电子邮件的任何帐户。";
 
 /* No comment provided by engineer. */
-"sprocket" = "Sprocket";
+"sprocket" = "sprocket";
 
 /* No comment provided by engineer. */
 "sprocket error log" = "Sprocket 错误日志";
