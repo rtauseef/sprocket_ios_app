@@ -79,8 +79,8 @@
 /* No comment provided by engineer. */
 "Not Available" = "不可用";
 
-/* No comment provided by engineer. */
-"OK" = "OK";
+/* Allows user close dialog */
+"OK" = "确定";
 
 /* No comment provided by engineer. */
 "Page Settings" = "页面设置";
@@ -226,9 +226,6 @@
 /* Message given when sprocket cannot print due to having a low battery */
 "Connect your sprocket to a power source to continue use." = "将您的 Spocket 接通电源以继续使用。";
 
-/* Indicates that the phone is sending an image to the printer */
-"Sending to sprocket printer" = "正在发送至 sprocket 打印机, 请稍候。";
-
 /* Title of table view cell used for displaying technical information */
 "Technical Information" = "技术信息";
 
@@ -263,8 +260,17 @@ www.hp.com/recycle";
 /* Disposal Content for Technical Information screen */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "此符号表示请不要将您的产品与其他生活垃圾一起处理。 相反，您应该保护人类健康和环境，将废弃设备移交到指定回收点对其进行处理，以便回收废弃的电子电机设备。 有关详细信息，请联系您的生活垃圾处理服务，或访问 http://www.hp.com/recycle。 ";
 
+/* Text displayed when print is being sent to sprocket printer */
+"Sending to sprocket printer" = "正在发送至 sprocket 打印机, 请稍候。";
+
 /* Instructions for pairing a printer */
 "Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "确保已开启 sprocket 打印机电源并已连接蓝牙。";
 
 /* Indicates that no sprocket printers are connected */
 "No sprockets Connected" = "打印机尚未连接";
+
+/* Indicates that no sprocket printers are connected */
+"Sprocket Printer Not Connected" = "Sprocket 打印机尚未连接";
+
+/* Instructions for correcting printer-not-connected error */
+"Make sure the sprocket printer is on and bluetooth connected." = "确保已开启 sprocket 打印机电源并已连接蓝牙。";
