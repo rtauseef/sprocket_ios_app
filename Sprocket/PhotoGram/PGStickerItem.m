@@ -15,8 +15,7 @@
 
 //static const NSInteger PGStickerItemsCountHoliday = 25;
 static const NSInteger PGStickerItemsCountValentines = 32;
-//static const NSInteger PGStickerItemsCountSuperBowl = 16;
-static const NSInteger PGStickerItemsCountSuperBowl = 2;
+static const NSInteger PGStickerItemsCountSuperBowl = 16;
 static const NSInteger PGStickerItemsCountChinese = 22;
 static const NSInteger PGStickerItemsCountStandard = 20;
 
@@ -514,6 +513,76 @@ static const NSInteger PGStickerItemsCountStandard = 20;
             sticker.accessibilityText = NSLocalizedString(@"SuperBowl Glasses Two Sticker", nil);
             sticker.imageName = @"glasses_2";
             break;
+        case PGStickerItemsSuperBowlEyeBlack:
+            sticker.name = @"SuperBowl Eye Black Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Eye Black Sticker", nil);
+            sticker.imageName = @"eye_black";
+            break;
+        case PGStickerItemsSuperBowlFoamFinger:
+            sticker.name = @"SuperBowl Foam Finger Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Foam Finger Sticker", nil);
+            sticker.imageName = @"foam_finger";
+            break;
+        case PGStickerItemsSuperBowlHeartFootball:
+            sticker.name = @"SuperBowl Heart Football Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Heart Football Sticker", nil);
+            sticker.imageName = @"heart_football3";
+            break;
+        case PGStickerItemsSuperBowlBanner:
+            sticker.name = @"SuperBowl Banner Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Banner Sticker", nil);
+            sticker.imageName = @"banner";
+            break;
+        case PGStickerItemsSuperBowlFlag:
+            sticker.name = @"SuperBowl Flag Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Flag Sticker", nil);
+            sticker.imageName = @"flag";
+            break;
+        case PGStickerItemsSuperBowlHeartFootballTwo:
+            sticker.name = @"SuperBowl Heart Football Two Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Heart Football Two Sticker", nil);
+            sticker.imageName = @"heart_football";
+            break;
+        case PGStickerItemsSuperBowlStarsNBalls:
+            sticker.name = @"SuperBowl Stars n Balls Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Stars n Balls Sticker", nil);
+            sticker.imageName = @"stars_n_balls";
+            break;
+        case PGStickerItemsSuperBowlGameTime:
+            sticker.name = @"SuperBowl Game Time Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Game Time Sticker", nil);
+            sticker.imageName = @"#_game_time";
+            break;
+        case PGStickerItemsSuperBowlFootballFlames:
+            sticker.name = @"SuperBowl Football Flames Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Football Flames Sticker", nil);
+            sticker.imageName = @"football_flames";
+            break;
+        case PGStickerItemsSuperBowlLove:
+            sticker.name = @"SuperBowl Love Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Love Sticker", nil);
+            sticker.imageName = @"love";
+            break;
+        case PGStickerItemsSuperBowlIHeartFootball:
+            sticker.name = @"SuperBowl I Heart Football Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl I Heart Football Sticker", nil);
+            sticker.imageName = @"i_heart_football_2";
+            break;
+        case PGStickerItemsSuperBowlOwl:
+            sticker.name = @"SuperBowl Owl Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Owl Sticker", nil);
+            sticker.imageName = @"owl";
+            break;
+        case PGStickerItemsSuperBowlGoalPost:
+            sticker.name = @"SuperBowl Goal Post Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Goal Post Sticker", nil);
+            sticker.imageName = @"goal_post_2";
+            break;
+        case PGStickerItemsSuperBowlHelmet:
+            sticker.name = @"SuperBowl Helmet Sticker";
+            sticker.accessibilityText = NSLocalizedString(@"SuperBowl Helmet Sticker", nil);
+            sticker.imageName = @"helmet";
+            break;
         default:
             sticker = nil;
             break;
@@ -522,167 +591,6 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     return sticker;
 }
 
-//+ (PGStickerItem *)holidayStickerItemByIndex:(NSInteger)index {
-//    PGStickerItem *sticker = [[PGStickerItem alloc] init];
-//    
-//    switch (index) {
-//        case PGStickerItemsSnowman: {
-//            sticker.name = @"Holiday Snowman Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Snowman Sticker", nil);
-//            sticker.imageName = @"snowman";
-//            break;
-//        }
-//        case PGStickerItemsRudolphGlasses: {
-//            sticker.name = @"Holiday Rudolph Glasses Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Rudolph Glasses Sticker", nil);
-//            sticker.imageName = @"glasses_rudolph";
-//            break;
-//        }
-//        case PGStickerItemsChristmasHat: {
-//            sticker.name = @"Holiday Elf Hat Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Elf Hat Sticker", nil);
-//            sticker.imageName = @"christmas_hat";
-//            break;
-//        }
-//        case PGStickerItemsChristmasStar: {
-//            sticker.name = @"Holiday Star Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Star Sticker", nil);
-//            sticker.imageName = @"star0";
-//            break;
-//        }
-//        case PGStickerItemsHanukkahGlasses: {
-//            sticker.name = @"Holiday Hanukkah Glasses Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Hanukkah Glasses Sticker", nil);
-//            sticker.imageName = @"glasses_hanukah";
-//            break;
-//        }
-//        case PGStickerItemsSnowmanHat: {
-//            sticker.name = @"Holiday Snowman Hat Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Snowman Hat Sticker", nil);
-//            sticker.imageName = @"snowman_hat";
-//            break;
-//        }
-//        case PGStickerItemsPartyHat: {
-//            sticker.name = @"Holiday Party Hat Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Party Hat Sticker", nil);
-//            sticker.imageName = @"Party-Hat";
-//            break;
-//        }
-//        case PGStickerItemsTreeGlasses: {
-//            sticker.name = @"Holiday Tree Glasses Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Tree Glasses Sticker", nil);
-//            sticker.imageName = @"glasses_tree";
-//            break;
-//        }
-//        case PGStickerItemsStarGlasses: {
-//            sticker.name = @"Holiday Star Glasses Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Star Glasses Sticker", nil);
-//            sticker.imageName = @"glasses_star";
-//            break;
-//        }
-//        case PGStickerItemsRudolphAntlers: {
-//            sticker.name = @"Holiday Rudolph Antlers Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Rudolph Antlers Sticker", nil);
-//            sticker.imageName = @"rudolph_antlers";
-//            break;
-//        }
-//        case PGStickerItemsChristmasCap: {
-//            sticker.name = @"Holiday Christmas Cap Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Christmas Cap Sticker", nil);
-//            sticker.imageName = @"cap";
-//            break;
-//        }
-//        case PGStickerItemsSnowmanFace: {
-//            sticker.name = @"Holiday Snowman Face Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Snowman Face Sticker", nil);
-//            sticker.imageName = @"snowman_face";
-//            break;
-//        }
-//        case PGStickerItemsChristmasScarf: {
-//            sticker.name = @"Holiday Christmas Scarf Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Christmas Scarf Sticker", nil);
-//            sticker.imageName = @"scarf";
-//            break;
-//        }
-//        case PGStickerItemsSnowflake: {
-//            sticker.name = @"Holiday Snowflake Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Snowflake Sticker", nil);
-//            sticker.imageName = @"snowflake_2";
-//            break;
-//        }
-//        case PGStickerItemsStringOfLights: {
-//            sticker.name = @"Holiday Lights Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Lights Sticker", nil);
-//            sticker.imageName = @"StringOLights";
-//            break;
-//        }
-//        case PGStickerItemsChristmasTree: {
-//            sticker.name = @"Holiday Christmas Tree Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Christmas Tree Sticker", nil);
-//            sticker.imageName = @"tree";
-//            break;
-//        }
-//        case PGStickerItemsChristmasStocking: {
-//            sticker.name = @"Holiday Christmas Stocking Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Christmas Stocking Sticker", nil);
-//            sticker.imageName = @"stocking";
-//            break;
-//        }
-//        case PGStickerItemsCandyCane: {
-//            sticker.name = @"Holiday Candy Cane Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Candy Cane Sticker", nil);
-//            sticker.imageName = @"candy_cane";
-//            break;
-//        }
-//        case PGStickerItemsHolly: {
-//            sticker.name = @"Holiday Holly Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Holly Sticker", nil);
-//            sticker.imageName = @"holly";
-//            break;
-//        }
-//        case PGStickerItemsMistletoe: {
-//            sticker.name = @"Holiday Mistletoe Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Mistletoe Sticker", nil);
-//            sticker.imageName = @"mistletoe";
-//            break;
-//        }
-//        case PGStickerItemsChristmasOrnament: {
-//            sticker.name = @"Holiday Christmas Ornament Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Christmas Ornament Sticker", nil);
-//            sticker.imageName = @"ornament_1";
-//            break;
-//        }
-//        case PGStickerItemsMenorah: {
-//            sticker.name = @"Holiday Menorah Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Menorah Sticker", nil);
-//            sticker.imageName = @"menorah";
-//            break;
-//        }
-//        case PGStickerItemsDreidel: {
-//            sticker.name = @"Holiday Dreidel Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Dreidel Sticker", nil);
-//            sticker.imageName = @"dreidle";
-//            break;
-//        }
-//        case PGStickerItemsFireworks: {
-//            sticker.name = @"Holiday Fireworks Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Fireworks Sticker", nil);
-//            sticker.imageName = @"fireworks";
-//            break;
-//        }
-//        case PGStickerItemsNewYearHorn: {
-//            sticker.name = @"Holiday Horn Sticker";
-//            sticker.accessibilityText = NSLocalizedString(@"Holiday Horn Sticker", nil);
-//            sticker.imageName = @"horn";
-//            break;
-//        }
-//        default:
-//            sticker = nil;
-//            break;
-//    };
-//
-//    return sticker;
-//}
 
 + (PGStickerItem *)stickerByAccessibilityText:(NSString *)accessibilityText
 {

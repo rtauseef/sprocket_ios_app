@@ -65,34 +65,6 @@ typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
     PGStickerItemsNewYearHorn       = 24
 };
 
-//typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
-//    PGStickerItemsSnowman           =  0,
-//    PGStickerItemsRudolphGlasses    =  1,
-//    PGStickerItemsChristmasHat      =  2,
-//    PGStickerItemsChristmasStar     =  3,
-//    PGStickerItemsHanukkahGlasses   =  4,
-//    PGStickerItemsSnowmanHat        =  5,
-//    PGStickerItemsPartyHat          =  6,
-//    PGStickerItemsTreeGlasses       =  7,
-//    PGStickerItemsStarGlasses       =  8,
-//    PGStickerItemsRudolphAntlers    =  9,
-//    PGStickerItemsChristmasCap      = 10,
-//    PGStickerItemsSnowmanFace       = 11,
-//    PGStickerItemsChristmasScarf    = 12,
-//    PGStickerItemsSnowflake         = 13,
-//    PGStickerItemsStringOfLights    = 14,
-//    PGStickerItemsChristmasTree     = 15,
-//    PGStickerItemsChristmasStocking = 16,
-//    PGStickerItemsCandyCane         = 17,
-//    PGStickerItemsHolly             = 18,
-//    PGStickerItemsMistletoe         = 19,
-//    PGStickerItemsChristmasOrnament = 20,
-//    PGStickerItemsMenorah           = 21,
-//    PGStickerItemsDreidel           = 22,
-//    PGStickerItemsFireworks         = 23,
-//    PGStickerItemsNewYearHorn       = 24
-//};
-
 typedef NS_ENUM (NSInteger, PGStickerItemsValentines){
     PGStickerItemsValentinesXoxo                =  0,
     PGStickerItemsValentinesHeartFrame          =  1,
