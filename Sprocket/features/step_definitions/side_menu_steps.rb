@@ -22,8 +22,8 @@ end
 
 Then /^I should see the side menu$/ do
     sleep(WAIT_SCREENLOAD)
-check_element_exists("view marked:'sprocket'")
-sleep(STEP_PAUSE)
+    check_element_exists("view marked:'#{$list_loc['side_menu']}'")
+    sleep(STEP_PAUSE)
 end
 
 Then /^I should see the user's profile pic/ do

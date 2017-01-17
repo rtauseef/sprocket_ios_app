@@ -4,6 +4,7 @@ Feature: Localization testing
 
   @reset
   @TA15895
+  @TA16511
   Scenario: Change iPhone Language
     Given  I am on the "Landing" screen
     Then I change the language
@@ -15,12 +16,14 @@ Feature: Localization testing
     Then I verify photos screen title
     
  @TA15895
+ @TA16511
  Scenario: Verify landing screen texts
     Given  I am on the "Landing" screen
     Then I verify the "Take or select a photo" text
     And I verify the "Terms and service" link
     
  @TA15895
+ @TA16511
  Scenario: Verify side menu texts
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -36,6 +39,7 @@ Feature: Localization testing
     | Sign In          |
     
 @TA15895
+@TA16511
 Scenario: Verify side menu-how to &help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -51,11 +55,12 @@ Scenario: Verify side menu-how to &help
     | Visit Support Website  |
     
 @TA15895
+@TA16511
 Scenario Outline: Verify side menu-how to &help screen navigation
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    Then I touch the option "how_to_and_help_options"
+    Then I touch the option "How to & Help"
     And I touch the option "<how_to_and_help_options>"
     And I should see the "<how_to_and_help_options>" screen
     
@@ -65,6 +70,7 @@ Scenario Outline: Verify side menu-how to &help screen navigation
     | Setup Sprocket Printer | 
 
 @TA15895
+@TA16511
 Scenario Outline: Verify side menu-how to &help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -80,6 +86,16 @@ Scenario Outline: Verify side menu-how to &help options
     | Join Support Forum     |
     | Visit Support Website  |
     
+@TA16511
+Scenario: Verify Landing screen texts
+    Given I am on the "Landing" screen
+    And I should see the below listed social media texts:
+    | Instagram  |
+    | Facebook   |
+    | Pitu       |
+    | Qzone      |
+    | Flickr     |
+    | CameraRoll |
     
 
 
