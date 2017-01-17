@@ -76,8 +76,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
                                              selector:@selector(unselectMenuTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
     [self checkSprocketDeviceConnectivity];
     [self resizeViewAccordingRevealViewController];

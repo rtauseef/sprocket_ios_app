@@ -4,27 +4,62 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AFNetworking.xcscheme</key>
+		<key>AFNetworking-Pods-Sprocket-cal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CocoaLumberjack.xcscheme</key>
+		<key>AFNetworking-Pods-Sprocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FlickrKit.xcscheme</key>
+		<key>CocoaLumberjack-Pods-Sprocket-cal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>HPPhotoProvider.xcscheme</key>
+		<key>CocoaLumberjack-Pods-Sprocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MobilePrintSDK.xcscheme</key>
+		<key>FlickrKit-Pods-Sprocket-cal.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FlickrKit-Pods-Sprocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HPPhotoProvider-Pods-Sprocket-cal.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HPPhotoProvider-Pods-Sprocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MobilePrintSDK-Pods-Sprocket Print.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MobilePrintSDK-Pods-Sprocket-cal.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MobilePrintSDK-Pods-Sprocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Sprocket Print.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,22 +74,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SVGKit.xcscheme</key>
+		<key>TTTAttributedLabel-Pods-Sprocket Print.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TTTAttributedLabel.xcscheme</key>
+		<key>TTTAttributedLabel-Pods-Sprocket-cal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>XMLDictionary.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ZipArchive.xcscheme</key>
+		<key>TTTAttributedLabel-Pods-Sprocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,57 +92,87 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0AE5F47DB41A0018E58258C797B48594</key>
+		<key>060B64EC3641BEC9DA5C84FE19FD7811</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>140DBDDD6E7F16B0530C2B753063A298</key>
+		<key>11A4C6704E15B1E44A11A496499338C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15D634E2D859C7F30A9E58E0DBDF712A</key>
+		<key>1749A4F833F57B0BEB41BAFC625BFA64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1621B0A32D4B7DA33B7E1A1B90769CAD</key>
+		<key>30CD5635CEC20E2999982F63BC87374F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>457E056F4BE6241723843A322EDC6FE1</key>
+		<key>62A77CDE9CC055F37D202FAE647AB624</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>536C6A98A73173F6B844F745CBF4766F</key>
+		<key>6619E3866E23472659391914498E8DB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7EF03AD8E34D231518A52308400A84D9</key>
+		<key>66767C67F3D78F0AA35A86CD31080A85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97E91903DA045FA5C7C65CECC19552C4</key>
+		<key>6C817F4EF2A79DD0467F42D942728C60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1A10ECE4BE41755E067F2171535CFD5</key>
+		<key>6E7C0C365926BF2BAE050AA1F5B63A60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B42E68F8A3AC53740C3F5F4B527D5728</key>
+		<key>95B96586D7323FC47B05C3E675685C2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4FD7DE15ACF7E623606183D686D891D</key>
+		<key>9EAB5ACE3729615620E94756A1844669</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7575E20494CA38D33F8FF73AB2BB9E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACAF4DA29430945F0701D19614702F29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B15CD9DAF9E6C2341DBD63CA6C48AC14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7B6C0FF29B7CDE0F84FB82A01F81C6C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD802CA574480441F2551C23F1C67CA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF4CF30A2FE3DC8875C91290015B7562</key>
 		<dict>
 			<key>primary</key>
 			<true/>
