@@ -86,6 +86,16 @@ Scenario Outline: Verify side menu-how to &help options
     | Join Support Forum     |
     | Visit Support Website  |
     
+@TA16511
+Scenario: Verify Landing screen texts
+    Given I am on the "Landing" screen
+    And I should see the below listed social media texts:
+    | Instagram  |
+    | Facebook   |
+    | Pitu       |
+    | Qzone      |
+    | Flickr     |
+    | CameraRoll |
     
 
 

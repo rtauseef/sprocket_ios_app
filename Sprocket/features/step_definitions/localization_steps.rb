@@ -83,12 +83,27 @@ Then /^I should see the below listed (?:.*):$/ do |table|
 end
 
 def check_options_exist item
-  if item.kind_of?(Array)
-    item.each do |subitem|
-          check_options_exist subitem
+    if item.kind_of?(Array)
+        item.each do |subitem|
+            check_options_exist subitem
+            end
+    else
+         if item == "Pitu" || item == "Qzone"
+             if ENV['LANGUAGE'] == "Chinese"
+                 check_element_exists "view marked:'#{$list_loc[item]}'"
+             else
+                 puts "#{item} - Applicable only for Chinese language!".blue 
+             end
+         else
+             if item == "Flickr"
+                 if ENV['LANGUAGE'] == "Chinese"
+                     puts "#{item} - Not Applicable for Chinese language!".blue 
+                 else
+                     check_element_exists "view marked:'#{$list_loc[item]}'"
+                 end
+             else
+                 check_element_exists "view marked:'#{$list_loc[item]}'"
+             end
+         end
     end
-else
-    check_element_exists "view marked:'#{$list_loc[item]}'"
-end
-    
 end
