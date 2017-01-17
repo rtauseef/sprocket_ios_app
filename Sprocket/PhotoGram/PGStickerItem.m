@@ -13,7 +13,6 @@
 #import "PGStickerItem.h"
 #import "NSLocale+Additions.h"
 
-//static const NSInteger PGStickerItemsCountHoliday = 25;
 static const NSInteger PGStickerItemsCountValentines = 32;
 static const NSInteger PGStickerItemsCountSuperBowl = 16;
 static const NSInteger PGStickerItemsCountChinese = 22;
