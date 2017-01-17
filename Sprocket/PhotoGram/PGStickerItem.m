@@ -438,12 +438,12 @@ static const NSInteger PGStickerItemsCountStandard = 20;
         case PGStickerItemsValentinesHeartEmoji:
             sticker.name = @"Heart Emoji Sticker";
             sticker.accessibilityText = NSLocalizedString(@"Heart Emoji Sticker", nil);
-            sticker.imageName = @"";
+            sticker.imageName = @"smiley";
             break;
         case PGStickerItemsValentinesHeartBanner:
             sticker.name = @"Heart Banner Sticker";
             sticker.accessibilityText = NSLocalizedString(@"Heart Banner Sticker", nil);
-            sticker.imageName = @"smiley";
+            sticker.imageName = @"heart_banner";
             break;
         case PGStickerItemsValentinesLockAndKey:
             sticker.name = @"Lock And Key Sticker";
