@@ -25,6 +25,7 @@ static NSString * const kPGHelpAndHowToViewUserURLDe = @"http://h10032.www1.hp.c
 static NSString * const kPGHelpAndHowToViewUserURLFr = @"http://h10032.www1.hp.com/ctg/Manual/c05320547";
 static NSString * const kPGHelpAndHowToViewUserURLSp = @"http://h10032.www1.hp.com/ctg/Manual/c05320654";
 static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.com/ctg/Manual/c05320519";
+static NSString * const kPGHelpAndHowToViewUserURLZh = @"http://h10032.www1.hp.com/ctg/Manual/c05359608";
 
 // Buy Paper
 static NSString * const kPGBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
@@ -137,6 +138,8 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
         url = kPGHelpAndHowToViewUserURLSp;
     } else if ([languageCode caseInsensitiveCompare:@"nl"] == NSOrderedSame) {
         url = kPGHelpAndHowToViewUserURLNl;
+    } else if ([NSLocale isChinese]) {
+        url = kPGHelpAndHowToViewUserURLZh;
     }
     
     return [NSURL URLWithString:url];

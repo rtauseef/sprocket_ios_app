@@ -389,8 +389,43 @@ You can also use your device photos." = "请连接至数据源。
 "You don’t have any account configured to send emails." = "您未配置可用来发送电子邮件的任何帐户。";
 
 /* No comment provided by engineer. */
-"sprocket" = "Sprocket";
+"sprocket" = "sprocket";
 
 /* No comment provided by engineer. */
 "sprocket error log" = "Sprocket 错误日志";
 
+/* No comment provided by engineer. */
+"App Settings" = "应用设置";
+
+/* No comment provided by engineer. */
+"Printers" = "打印机";
+
+/* Setup step 1 title*/
+"Step 1" = "第 1 步";
+
+/* Setup step 1 desc*/
+"Load Paper" = "装入纸张";
+
+/* Setup step 2 title*/
+"Step 2" = "第 2 步";
+
+/* Setup step 2 desc*/
+"Power Up" = "接通电源";
+
+/* Setup step 3 title */
+"Step 3" = "第 3 步";
+
+/* Setup step 3 desc*/
+"Connect" = "连接";
+
+/* Step 1 Wizard Content */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "将整包纸张放入纸盒，条形码和惠普标志向下。";
+
+/* Step 2 Wizard Content */
+"Press and hold the power button until the LED turns white." = "长按住电源按钮，直至 LED 灯变白。";
+
+/* Step 3 Wizard Content */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "在“Bluetooth 设置”中点击“HP sprocket”来连接打印机。";
+
+/* Done */
+"Done" = "完成";

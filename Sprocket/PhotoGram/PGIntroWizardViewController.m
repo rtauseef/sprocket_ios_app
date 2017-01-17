@@ -10,9 +10,14 @@
 // the license agreement.
 //
 
+#import "UIColor+HexString.h"
 #import "PGIntroWizardViewController.h"
 #import "PGAnalyticsManager.h"
+#import "PGAttributedLabel.h"
+#import "PGSetupSprocketViewController.h"
+
 #import "MP.h"
+
 
 @interface PGIntroWizardViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -37,8 +42,11 @@
     UIViewController *page1 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage1"];
     UIViewController *page2 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage2"];
     UIViewController *page3 = [sb instantiateViewControllerWithIdentifier:@"IntroWizardPage3"];
-
+    
     self.pages = @[page1, page2, page3];
+    
+    [self setupStepLabels];
+    [self setupStepContent];
 
     [self.pageViewController setViewControllers:@[page1]
                                  direction:UIPageViewControllerNavigationDirectionForward
@@ -120,6 +128,45 @@
     }
 
     return [self.pages objectAtIndex:index];
+}
+
+#pragma mark - Load UI Methods
+- (void)setupStepLabels
+{
+    if ([self.pages count] <3)
+        return;
+
+    NSInteger wizardTab1Tag = 101;
+    NSInteger wizardTab2Tag = 102;
+    NSInteger wizardTab3Tag = 103;
+    
+    PGAttributedLabel *wizardTab1 =  [self.pages[0].view viewWithTag:wizardTab1Tag];
+    PGAttributedLabel *wizardTab2 =  [self.pages[1].view viewWithTag:wizardTab2Tag];
+    PGAttributedLabel *wizardTab3 =  [self.pages[2].view viewWithTag:wizardTab3Tag];
+
+    [PGSetupSprocketViewController setStepOneLabelText:wizardTab1];
+    [PGSetupSprocketViewController setStepTwoLabelText:wizardTab2];
+    [PGSetupSprocketViewController setStepThreeLabelText:wizardTab3];
+}
+
+- (void)setupStepContent
+{
+    if ([self.pages count] <3)
+        return;
+    
+    NSInteger tab1ContentTag = 201;
+    NSInteger tab2ContentTag = 202;
+    NSInteger tab3ContentTag = 203;
+    
+    UILabel *tab1ContentLabel =  [self.pages[0].view viewWithTag:tab1ContentTag];
+    UILabel *tab2ContentLabel =  [self.pages[1].view viewWithTag:tab2ContentTag];
+    UILabel *tab3ContentLabel =  [self.pages[2].view viewWithTag:tab3ContentTag];
+    
+    tab1ContentLabel.text = [PGSetupSprocketViewController stepOneContentText];
+    
+    tab2ContentLabel.text = [PGSetupSprocketViewController stepTwoContentText];
+
+    tab3ContentLabel.text = [PGSetupSprocketViewController stepThreeContentText];
 }
 
 @end
