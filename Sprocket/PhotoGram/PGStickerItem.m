@@ -25,7 +25,7 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     NSInteger numStickers = (PGStickerItemsCountStandard + PGStickerItemsCountValentines + PGStickerItemsCountSuperBowl);
     
     if ([NSLocale isChinese]) {
-        numStickers = (PGStickerItemsCountStandard + PGStickerItemsCountChinese);
+        numStickers = (PGStickerItemsCountStandard + PGStickerItemsCountValentines + PGStickerItemsCountChinese);
     }
     return numStickers;
 }
@@ -34,15 +34,14 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     PGStickerItem *sticker = nil;
     NSInteger stickerOffset = 0;
     
-    if ([NSLocale isChinese]) {
+    sticker = [PGStickerItem valentinesStickerItemByIndex:index];
+    stickerOffset = PGStickerItemsCountValentines;
+
+    if ([NSLocale isChinese] && nil == sticker) {
+        index -= stickerOffset;
         sticker = [PGStickerItem chineseStickerItemByIndex:index];
         stickerOffset = PGStickerItemsCountChinese;
-    } else {
-        sticker = [PGStickerItem valentinesStickerItemByIndex:index];
-        stickerOffset = PGStickerItemsCountValentines;
-    }
-
-    if (nil == sticker) {
+    } else if (nil == sticker) {
         index -= stickerOffset;
         sticker = [PGStickerItem superbowlStickerItemByIndex:index];
         stickerOffset = PGStickerItemsCountSuperBowl;
