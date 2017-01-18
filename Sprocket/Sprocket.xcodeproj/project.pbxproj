@@ -2265,7 +2265,6 @@
 		E33F4C7819ABFBC900040033 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				E3D6816819A3D180000D45E0 /* LandingPage */,
 				E3461F0819ACDD520042DF5E /* PGSaveToCameraRollActivity.h */,
 				E3461F0919ACDD520042DF5E /* PGSaveToCameraRollActivity.m */,
 			);
@@ -2402,6 +2401,7 @@
 				E34D5099199AB98B006D80E0 /* Additions */,
 				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				F2C46E7E1DB6F17F00604371 /* IntroWizard */,
+				E3D6816819A3D180000D45E0 /* LandingPage */,
 				9261D4031D189CE60048E5F8 /* Preview */,
 				CCED9C5919F972E700ACC969 /* Select Photos */,
 				E33F4C7819ABFBC900040033 /* Share */,
