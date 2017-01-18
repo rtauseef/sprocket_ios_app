@@ -167,7 +167,7 @@ static NSString *PGAppAppearanceLightFont   = @"HPSimplified-Light";
 
 + (UIColor *)navBarColor
 {
-    return [UIColor colorWithRed:0x42/255.0F green:0x42/255.0F blue:0x42/255.0F alpha:1.0F];
+    return [UIColor colorWithRed:0x2A/255.0F green:0x2A/255.0F blue:0x2A/255.0F alpha:1.0F];
 }
 
 @end
