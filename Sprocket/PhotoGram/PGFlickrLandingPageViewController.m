@@ -119,11 +119,6 @@ NSString * const kFlickrUserIdKey = @"userID";
                 ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
             }
             
-            UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
-            
-            vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
-            
-            
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:vc animated:NO];

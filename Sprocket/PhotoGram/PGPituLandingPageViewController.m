@@ -93,10 +93,6 @@
                 ((HPPRSelectPhotoCollectionViewController *)vc).customNoPhotosMessage = NSLocalizedString(@"No Pitu app images found", @"Message displayed when no images from the Pitu app can be found");
             }
             
-            UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
-            
-            vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
-            
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:vc animated:YES];

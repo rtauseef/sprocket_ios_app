@@ -126,10 +126,6 @@ NSString * const kFacebookUserIdKey = @"id";
                         [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
                     }
                     
-                    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
-                    
-                    vc.navigationItem.leftBarButtonItem = hamburgerButtonItem;
-                    
                     [self.spinner removeFromSuperview];
 
                     [self.navigationController pushViewController:vc animated:NO];
