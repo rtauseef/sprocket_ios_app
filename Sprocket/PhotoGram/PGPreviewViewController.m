@@ -377,6 +377,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         if (success) {
             [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
 
+            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                             printItem:self.printItem
+                                                           exendedInfo:[self extendedMetrics]];
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.5F animations:^{
                     [self showImageSavedView:YES];
