@@ -9,10 +9,13 @@ Then(/^I change the language$/) do
             ios_locale_id = "es_ES"
     else if ENV['LANGUAGE'] == "French"
                 ios_locale_id = "fr_FR"
+    else if ENV['LANGUAGE'] == "Chinese"
+                ios_locale_id = "zh_Hans"
     else
          ios_locale_id = "en_US"
     end
     end
+end
     device_name = get_device_name
     device_type = get_device_type
     sim_name = get_device_name + " " + device_type
@@ -20,11 +23,16 @@ Then(/^I change the language$/) do
     SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
     #English-en_US
     #Spanish-es_ES
+    #Chinese-zh_Hans
+
     if $curr_language.strip == "es"
         $list_loc=$language_arr["es_ES"]
-    else 
-        $list_loc=$language_arr["en_US"]
-
+    else
+        if $curr_language.strip == "zh"
+             $list_loc=$language_arr["zh_Hans"]
+        else 
+	$list_loc=$language_arr["en_US"]
+	end 
     end
 end
 
@@ -75,12 +83,27 @@ Then /^I should see the below listed (?:.*):$/ do |table|
 end
 
 def check_options_exist item
-  if item.kind_of?(Array)
-    item.each do |subitem|
-          check_options_exist subitem
+    if item.kind_of?(Array)
+        item.each do |subitem|
+            check_options_exist subitem
+            end
+    else
+         if item == "Pitu" || item == "Qzone"
+             if ENV['LANGUAGE'] == "Chinese"
+                 check_element_exists "view marked:'#{$list_loc[item]}'"
+             else
+                 puts "#{item} - Applicable only for Chinese language!".blue 
+             end
+         else
+             if item == "Flickr"
+                 if ENV['LANGUAGE'] == "Chinese"
+                     puts "#{item} - Not Applicable for Chinese language!".blue 
+                 else
+                     check_element_exists "view marked:'#{$list_loc[item]}'"
+                 end
+             else
+                 check_element_exists "view marked:'#{$list_loc[item]}'"
+             end
+         end
     end
-else
-    check_element_exists "view marked:'#{$list_loc[item]}'"
-end
-    
 end

@@ -65,6 +65,60 @@ typedef NS_ENUM (NSInteger, PGStickerItemsHoliday){
     PGStickerItemsNewYearHorn       = 24
 };
 
+typedef NS_ENUM (NSInteger, PGStickerItemsValentines){
+    PGStickerItemsValentinesXoxo                =  0,
+    PGStickerItemsValentinesHeartFrame          =  1,
+    PGStickerItemsValentinesHeartConfetti       =  2,
+    PGStickerItemsValentinesConversationHeart   =  3,
+    PGStickerItemsValentinesFlyingHeart         =  4,
+    PGStickerItemsValentinesDeliveryBird        =  5,
+    PGStickerItemsValentinesButterFly           =  6,
+    PGStickerItemsValentinesHeartMonster        =  7,
+    PGStickerItemsValentinesRoseBud             =  8,
+    PGStickerItemsValentinesHeartBouquet        =  9,
+    PGStickerItemsValentinesHeartGarland        =  10,
+    PGStickerItemsValentinesPig                 =  11,
+    PGStickerItemsValentinesHeartAntennae       =  12,
+    PGStickerItemsValentinesHeartGlasses        =  13,
+    PGStickerItemsValentinesHat                 =  14,
+    PGStickerItemsValentinesHeartBow            =  15,
+    PGStickerItemsValentinesHeartBalloons       =  16,
+    PGStickerItemsValentinesHeartThought        =  17,
+    PGStickerItemsValentinesLoveLetter          =  18,
+    PGStickerItemsValentinesDancingHearts       =  19,
+    PGStickerItemsValentinesLoveCreature        =  20,
+    PGStickerItemsValentinesHeartArrow          =  21,
+    PGStickerItemsValentinesHeartEmoji          =  22,
+    PGStickerItemsValentinesHeartBanner         =  23,
+    PGStickerItemsValentinesLockAndKey          =  24,
+    PGStickerItemsValentinesCupcake             =  25,
+    PGStickerItemsValentinesCat                 =  26,
+    PGStickerItemsValentinesBrokenHeart         =  27,
+    PGStickerItemsValentinesTargetHeart         =  28,
+    PGStickerItemsValentinesHeartGlassesTwo     =  29,
+    PGStickerItemsValentinesHeartTiara          =  30,
+    PGStickerItemsValentinesFlowerCrown         =  31
+};
+
+typedef NS_ENUM (NSInteger, PGStickerItemsSuperBowl){
+    PGStickerItemsSuperBowlGlasses              =  0,
+    PGStickerItemsSuperBowlGlassesTwo           =  1,
+    PGStickerItemsSuperBowlEyeBlack             =  2,
+    PGStickerItemsSuperBowlFoamFinger           =  3,
+    PGStickerItemsSuperBowlHeartFootball        =  4,
+    PGStickerItemsSuperBowlBanner               =  5,
+    PGStickerItemsSuperBowlFlag                 =  6,
+    PGStickerItemsSuperBowlHeartFootballTwo     =  7,
+    PGStickerItemsSuperBowlStarsNBalls          =  8,
+    PGStickerItemsSuperBowlGameTime             =  9,
+    PGStickerItemsSuperBowlFootballFlames       =  10,
+    PGStickerItemsSuperBowlLove                 =  11,
+    PGStickerItemsSuperBowlIHeartFootball       =  12,
+    PGStickerItemsSuperBowlOwl                  =  13,
+    PGStickerItemsSuperBowlGoalPost             =  14,
+    PGStickerItemsSuperBowlHelmet               =  15,
+};
+
 typedef NS_ENUM (NSInteger, PGStickerItems){
     PGStickerItemsCatGlasses       = 0,
     PGStickerItemsCatWhiskers      = 1,
