@@ -1015,6 +1015,7 @@
 		F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */; };
 		F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */; };
 		F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */; };
+		F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
@@ -4462,6 +4463,7 @@
 				141cc38c3e33f2c4363f6f0c /* UIImageView+MaskImage.m in Sources */,
 				a87555cde15740ecf2522d3b /* PGInstagramLandingPageViewController.m in Sources */,
 				d966d10242301f16a780feda /* SSRollingButtonScrollView.m in Sources */,
+				F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */,
 				F2E785311DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
 				4594aa2a81c01c0db495be1d /* UIImage+ImageResize.m in Sources */,
 				4418fa35a759dbee8758b95d /* PGLandingMainPageViewController.m in Sources */,

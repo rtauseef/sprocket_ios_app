@@ -24,7 +24,6 @@
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
 }
 
