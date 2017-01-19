@@ -47,7 +47,7 @@
 "No Photos Found" = "未找到照片";
 
 /* Button caption */
-"OK" = "确定";
+"OK" = "OK";
 
 /* Title shown when the user tries to access the Photos of the device before the authorization was requested */
 "Photo Access" = "照片访问";

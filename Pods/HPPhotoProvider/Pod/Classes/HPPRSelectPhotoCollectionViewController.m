@@ -59,10 +59,12 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)initRefreshControl
 {
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl setTintColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTintColor]];
-    [self.refreshControl addTarget:self action:@selector(startRefreshing:) forControlEvents:UIControlEventValueChanged];
-    [self.collectionView addSubview:self.refreshControl];
+    if (!self.refreshControl) {
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl setTintColor:[[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTintColor]];
+        [self.refreshControl addTarget:self action:@selector(startRefreshing:) forControlEvents:UIControlEventValueChanged];
+        [self.collectionView addSubview:self.refreshControl];
+    }
 }
 
 - (void)viewDidLoad
@@ -93,50 +95,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     self.spinner = [self.view HPPRAddSpinner];
     
     self.provider.imageRequestsCancelled = NO;
-    
-    // These are the "All Photos" cases
-    if (nil == self.provider.album) {
-        [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
-            if (complete) {
-                [self finishImageRequestWithRecords:nil];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.spinner stopAnimating];
-                    
-                    [self initRefreshControl];
-                });
-            }
-        } andReloadAll:YES];
-
-    } else {
-        [self.provider refreshAlbumWithCompletion:^(NSError *error) {
-            if (error == nil) {
-                [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
-                    if (complete) {
-                        [self finishImageRequestWithRecords:nil];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.spinner stopAnimating];
-                            
-                            [self initRefreshControl];
-                        });
-                    }
-                } andReloadAll:YES];
-            } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.spinner stopAnimating];
-                    
-                    [self initRefreshControl];
-                    
-                    if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_ALBUM_CHANGE_NOTIFICATION object:nil];
-                        
-                        [self.deletedAlbumAlertView show];
-                    } else {
-                        [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
-                    }
-                });
-            }
-        }];
-    }
 
     self.noInternetConnectionRetryView.delegate = self;
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer  alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
@@ -152,7 +110,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    
+
+    [self.spinner startAnimating];
+    [self refreshImages:^{
+        [self.spinner stopAnimating];
+
+        [self initRefreshControl];
+    }];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
 
@@ -188,35 +153,11 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
 
     self.noPhotosLabel.hidden = YES;
-    
-    [self.provider refreshAlbumWithCompletion:^(NSError *error) {
-        if (error == nil) {
-            [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
-                if (complete) {
-                    [self finishImageRequestWithRecords:nil];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if ((nil != refreshControl) && refreshControl.refreshing) {
-                            [refreshControl endRefreshing];
-                            [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
-                        }
-                    });
-                }
-            } andReloadAll:YES];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if ((nil != refreshControl) && refreshControl.refreshing) {
-                    [refreshControl endRefreshing];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
-                }
-                
-                if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_ALBUM_CHANGE_NOTIFICATION object:nil];
-                    
-                    [self.deletedAlbumAlertView show];
-                } else {
-                    [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
-                }
-            });
+
+    [self refreshImages:^{
+        if ((nil != refreshControl) && refreshControl.refreshing) {
+            [refreshControl endRefreshing];
+            [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
         }
     }];
 }
@@ -234,6 +175,37 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 #pragma mark - Image request
 
+- (void)refreshImages:(void (^)())completion {
+    [self.provider refreshAlbumWithCompletion:^(NSError *error) {
+        if (error == nil) {
+            [self requestImagesWithCompletion:^(NSArray *records, BOOL complete) {
+                if (complete) {
+                    [self finishImageRequestWithRecords:nil];
+
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (completion) {
+                            completion();
+                        }
+                    });
+                }
+            } andReloadAll:YES];
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (([error.domain isEqualToString:HP_PHOTO_PROVIDER_DOMAIN]) && (error.code == ALBUM_DOES_NOT_EXISTS)) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_ALBUM_CHANGE_NOTIFICATION object:nil];
+
+                    [self.deletedAlbumAlertView show];
+                } else {
+                    [[[UIAlertView alloc] initWithTitle:error.localizedFailureReason message:error.localizedDescription delegate:self cancelButtonTitle:HPPRLocalizedString(@"OK", @"Button caption") otherButtonTitles:nil] show];
+                }
+
+                if (completion) {
+                    completion();
+                }
+            });
+        }
+    }];
+}
 
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records, BOOL complete))completion andReloadAll:(BOOL)reload
 {
