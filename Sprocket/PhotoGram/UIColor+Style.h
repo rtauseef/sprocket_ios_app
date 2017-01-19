@@ -20,6 +20,7 @@
 + (UIColor *)HPTabBarSelectedColor;
 + (UIColor *)HPTabBarUnselectedColor;
 + (UIColor *)HPGrayBackgroundColor;
-+ (UIImage *)imageWithColor:(UIColor *)color rect:(CGRect)rect;
++ (UIColor *)HPRowColor;
 + (UIColor *)HPTableRowSelectionColor;
++ (UIImage *)imageWithColor:(UIColor *)color rect:(CGRect)rect;
 @end
