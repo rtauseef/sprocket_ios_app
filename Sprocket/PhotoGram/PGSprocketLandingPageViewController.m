@@ -89,7 +89,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sprocketCellReuse"];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor HPGrayColor];
+    cell.backgroundColor = [UIColor HPRowColor];
     
     UIView *selectionColorView = [[UIView alloc] init];
     selectionColorView.backgroundColor = [UIColor HPTableRowSelectionColor];

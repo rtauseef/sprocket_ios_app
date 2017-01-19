@@ -54,6 +54,16 @@
     return [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:244.0f/255.0f alpha:1.0f];
 }
 
++ (UIColor *)HPRowColor
+{
+    return [UIColor colorWithRed:0x2A/255.0f green:0x2A/255.0f blue:0x2A/255.0f alpha:1.0f];
+}
+
++ (UIColor *)HPTableRowSelectionColor
+{
+    return [UIColor colorWithRed:0x68/255.0f green:0xB2/255.0f blue:0xE3/255.0f alpha:1.0f];
+}
+
 + (UIImage *)imageWithColor:(UIColor *)color rect:(CGRect)rect
 {
     UIGraphicsBeginImageContext(rect.size);
@@ -66,11 +76,6 @@
     UIGraphicsEndImageContext();
     
     return image;
-}
-
-+ (UIColor *)HPTableRowSelectionColor
-{
-    return [UIColor colorWithRed:0x68/255.0f green:0xB2/255.0f blue:0xE3/255.0f alpha:1.0f];
 }
 
 @end
