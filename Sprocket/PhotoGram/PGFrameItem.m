@@ -12,51 +12,38 @@
 
 #import "PGFrameItem.h"
 
-const NSInteger PGFrameItemsCount = 20;
+const NSInteger PGFrameItemsStandardCount = 14;
+const NSInteger PGFrameItemsValentinesCount = 6;
 
 @implementation PGFrameItem
 
++ (NSInteger)frameCount
+{
+    NSInteger numFrames = PGFrameItemsStandardCount + PGFrameItemsValentinesCount;
+    
+    return numFrames;
+}
+
 + (PGFrameItem *)frameItemByIndex:(NSInteger)index {
+    PGFrameItem *frame = nil;
+    NSInteger frameOffset = 0;
+    
+    frame = [self valentinesFrameItemByIndex:index];
+    frameOffset = PGFrameItemsValentinesCount;
+    
+    if (nil == frame) {
+        index -= frameOffset;
+        frame = [self standardFrameItemByIndex:index];
+    }
+    
+    return frame;
+}
+
++ (PGFrameItem *)standardFrameItemByIndex:(NSInteger)index
+{
     PGFrameItem *frame = [[PGFrameItem alloc] init];
     
     switch (index) {
-
-        case PGFrameXmasPolkaDot: {
-            frame.name = @"Christmas Polka Dot Frame";
-            frame.accessibilityText = NSLocalizedString(@"Christmas Polka Dot Frame", nil);
-            frame.imageName = @"xmasPolka_Frame_iOS";
-            break;
-        }
-        case PGFrameRedTriangle: {
-            frame.name = @"Red Triangle Frame";
-            frame.accessibilityText = NSLocalizedString(@"Red Triangle Frame", nil);
-            frame.imageName = @"RedTriangle_Frame_iOS";
-            break;
-        }
-        case PGFrameSnow: {
-            frame.name = @"Snow Frame";
-            frame.accessibilityText = NSLocalizedString(@"Snow Frame", nil);
-            frame.imageName = @"Snow_Frame_iOS";
-            break;
-        }
-        case PGFrameStriped: {
-            frame.name = @"Striped Frame";
-            frame.accessibilityText = NSLocalizedString(@"Striped Frame", nil);
-            frame.imageName = @"striped_Frame_iOS";
-            break;
-        }
-        case PGFrameGrey: {
-            frame.name = @"Grey Frame";
-            frame.accessibilityText = NSLocalizedString(@"Grey Frame", nil);
-            frame.imageName = @"Grey_Frame_iOS";
-            break;
-        }
-        case PGFrameSanta: {
-            frame.name = @"Santa Frame";
-            frame.accessibilityText = NSLocalizedString(@"Santa Frame", nil);
-            frame.imageName = @"Santa_Frame_iOS";
-            break;
-        }
         case PGFrameItemsBlueWaterColor: {
             frame.name = @"Water Blue Frame";
             frame.accessibilityText = NSLocalizedString(@"Water Blue Frame", nil);
@@ -142,6 +129,56 @@ const NSInteger PGFrameItemsCount = 20;
             break;
         }
         default:
+            frame = nil;
+            break;
+    }
+    
+    return frame;
+}
+
++ (PGFrameItem *)valentinesFrameItemByIndex:(NSInteger)index
+{
+    PGFrameItem *frame = [[PGFrameItem alloc] init];
+    
+    switch (index) {
+        case PGFrameItemsValentinesHeart: {
+            frame.name = @"Valentines Hearts Frame";
+            frame.accessibilityText = NSLocalizedString(@"Valentines Hearts Frame", nil);
+            frame.imageName = @"Hearts_Frame_iOS";
+            break;
+        }
+        case PGFrameItemsValentinesPinkPolka: {
+            frame.name = @"Valentines Pink Polka Frame";
+            frame.accessibilityText = NSLocalizedString(@"Valentines Pink Polka Frame", nil);
+            frame.imageName = @"PinkPolka_Frame_iOS";
+            break;
+        }
+        case PGFrameItemsValentinesRed: {
+            frame.name = @"Valentines Red Frame";
+            frame.accessibilityText = NSLocalizedString(@"Valentines Red Frame", nil);
+            frame.imageName = @"Red_Frame_iOS";
+            break;
+        }
+        case PGFrameItemsValentinesHeartsOverlay: {
+            frame.name = @"Valentines Hearts Overlay Frame";
+            frame.accessibilityText = NSLocalizedString(@"Valentines Hearts Overlay Frame", nil);
+            frame.imageName = @"HeartsOverlay_Frame_iOS";
+            break;
+        }
+        case PGFrameItemsValentinesPinkWatercolor: {
+            frame.name = @"Valentines Pink Watercolor Frame";
+            frame.accessibilityText = NSLocalizedString(@"Valentines Pink Watercolor Frame", nil);
+            frame.imageName = @"PinkWatercolor_Frame_iOS";
+            break;
+        }
+        case PGFrameItemsValentinesRedStripes: {
+            frame.name = @"Valentines Red Stripes Frame";
+            frame.accessibilityText = NSLocalizedString(@"Valentines Red Stripes Frame", nil);
+            frame.imageName = @"RedStripes_Frame_iOS";
+            break;
+        }
+        default:
+            frame = nil;
             break;
     }
     
@@ -151,8 +188,9 @@ const NSInteger PGFrameItemsCount = 20;
 + (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText
 {
     PGFrameItem *frame = nil;
+    NSInteger frameCount = [PGFrameItem frameCount];
     
-    for (NSInteger i=0; i<PGFrameItemsCount; ++i) {
+    for (NSInteger i = 0; i < frameCount; ++i) {
         PGFrameItem *frameItem = [PGFrameItem frameItemByIndex:i];
         if ([accessibilityText isEqualToString:frameItem.accessibilityText]) {
             frame = frameItem;
@@ -163,11 +201,13 @@ const NSInteger PGFrameItemsCount = 20;
     return frame;
 }
 
-- (UIImage *)thumbnailImage {
+- (UIImage *)thumbnailImage
+{
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@_TN", self.imageName]];
 }
 
-- (UIImage *)frameImage {
+- (UIImage *)frameImage
+{
     return [UIImage imageNamed:self.imageName];
 }
 
