@@ -30,7 +30,8 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     return numStickers;
 }
 
-+ (PGStickerItem *)stickerItemByIndex:(NSInteger)index {
++ (PGStickerItem *)stickerItemByIndex:(NSInteger)index
+{
     PGStickerItem *sticker = nil;
     NSInteger stickerOffset = 0;
     
@@ -181,7 +182,8 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     return sticker;
 }
 
-+ (PGStickerItem *)chineseStickerItemByIndex:(NSInteger)index {
++ (PGStickerItem *)chineseStickerItemByIndex:(NSInteger)index
+{
     PGStickerItem *sticker = [[PGStickerItem alloc] init];
     
     switch (index) {
@@ -325,7 +327,8 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     return sticker;
 }
 
-+ (PGStickerItem *)valentinesStickerItemByIndex:(NSInteger)index {
++ (PGStickerItem *)valentinesStickerItemByIndex:(NSInteger)index
+{
     PGStickerItem *sticker = [[PGStickerItem alloc] init];
 
     switch (index) {
@@ -497,7 +500,8 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     return sticker;
 }
 
-+ (PGStickerItem *)superbowlStickerItemByIndex:(NSInteger)index {
++ (PGStickerItem *)superbowlStickerItemByIndex:(NSInteger)index
+{
     PGStickerItem *sticker = [[PGStickerItem alloc] init];
     
     switch (index) {
@@ -606,11 +610,13 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     return sticker;
 }
 
-- (UIImage *)thumbnailImage {
+- (UIImage *)thumbnailImage
+{
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@_TN", self.imageName]];
 }
 
-- (UIImage *)stickerImage {
+- (UIImage *)stickerImage
+{
     return [UIImage imageNamed:self.imageName];
 }
 
