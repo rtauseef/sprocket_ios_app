@@ -12,15 +12,9 @@
 
 #import <Foundation/Foundation.h>
 
-extern const NSInteger PGFrameItemsCount;
+extern const NSInteger PGFrameItemsStandardCount;
 
 typedef NS_ENUM (NSInteger, PGFrameItems){
-    PGFrameXmasPolkaDot,
-    PGFrameRedTriangle,
-    PGFrameSnow,
-    PGFrameStriped,
-    PGFrameGrey,
-    PGFrameSanta,
     PGFrameItemsWhite,
     PGFrameItemsKraft,
     PGFrameItemsFloral,
@@ -37,6 +31,15 @@ typedef NS_ENUM (NSInteger, PGFrameItems){
     PGFrameItemsPinkSprayPaint
 };
 
+typedef NS_ENUM (NSInteger, PGFrameItemsValentines){
+    PGFrameItemsValentinesHeart,
+    PGFrameItemsValentinesPinkPolka,
+    PGFrameItemsValentinesRed,
+    PGFrameItemsValentinesHeartsOverlay,
+    PGFrameItemsValentinesPinkWatercolor,
+    PGFrameItemsValentinesRedStripes
+};
+
 @interface PGFrameItem : NSObject
 
 @property (nonatomic, strong) NSString *accessibilityText;
@@ -47,5 +50,6 @@ typedef NS_ENUM (NSInteger, PGFrameItems){
 + (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText;
 - (UIImage *)thumbnailImage;
 - (UIImage *)frameImage;
++ (NSInteger)frameCount;
 
 @end

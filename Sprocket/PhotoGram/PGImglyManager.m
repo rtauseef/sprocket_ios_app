@@ -330,7 +330,7 @@ typedef enum {
 - (void)frameCountForRatio:(float)ratio completionBlock:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock(PGFrameItemsCount, nil);
+        completionBlock([PGFrameItem frameCount], nil);
     }
 }
 
