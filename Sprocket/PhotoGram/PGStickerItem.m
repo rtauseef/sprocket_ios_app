@@ -35,7 +35,7 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     PGStickerItem *sticker = nil;
     NSInteger stickerOffset = 0;
     
-    if ([NSLocale isChinese] && nil == sticker) {
+    if ([NSLocale isChinese]) {
         index -= stickerOffset;
         sticker = [PGStickerItem chineseStickerItemByIndex:index];
         stickerOffset = PGStickerItemsCountChinese;
