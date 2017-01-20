@@ -97,9 +97,70 @@ Scenario: Verify Landing screen texts
     | Flickr     |
     | CameraRoll |
     
-
-
-
+@TA16511
+Scenario: Navigating through different Social media screens
+    Given I am on the "Instagram Landing" screen
+    Then I swipe to see "Camera Roll" screen
+    Then I wait for some time
+    Then I swipe to see "Flickr" screen
+    Then I wait for some time
+    Then I swipe to see "QZone" screen
+    Then I wait for some time
+    Then I swipe to see "pitu" screen
+    Then I wait for some time
+    Then I swipe to see "facebook" screen
     
-
-
+    
+@TA16511
+Scenario: Verify localization of Terms of Service link on Landing Screen
+    Given  I am on the "Landing" screen
+    And I touch the Terms of Service link
+    Then I should see the "Sprocket Terms Of Service" screen
+    Then I touch "Done" option in the screen
+    Then I should see the "Landing" screen
+    
+@TA16511
+    Scenario: Verify about screen from side menu
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        Then I touch "About" option in the screen
+        Then I should see the "About" screen 
+        Then I should see "Sprocket" logo
+        And I should see the below listed about screen texts:
+        |HP Development Company, L.P.|
+        |Copyright (c) 2016|
+        Then I touch "Done" option in the screen
+        Then I wait for sometime
+        Then I should see the side menu
+    
+    
+@TA16511
+Scenario: Verify Sprocket screen options
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        Then I touch "sprocket"
+        Then I should see the "Sprocket" screen
+        And I should see the below listed sprocket screen texts:
+        | App Settings |
+        | Printers     | 
+    
+    
+@TA16511
+Scenario: Verify localization of navigation to Technical Information screen
+        Given  I am on the "Landing" screen
+        When I touch menu button on navigation bar
+        Then I should see the side menu
+        Then I touch "sprocket"
+        Then I should see the "Sprocket" screen
+        Then I touch "Printers" option in the screen
+        And I should see the technical information
+        Then I touch "Technical Information" option in the screen
+        And I should see the "Technical Information" screen
+        And I tap back button
+        And I navigate back
+        Then I touch "Done" option in the screen
+        When I touch menu button on navigation bar
+        Then I should see the "Landing" screen 
+    

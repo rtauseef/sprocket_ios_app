@@ -9,12 +9,16 @@ class TechnicalInformationScreen < Calabash::IBase
   end
 
   def title
-     # "view {text CONTAINS 'Technical Information'}"
-      "navigationBar marked:'Technical Information'"
+     # "navigationBar marked:'Technical Information'"
+      "navigationBar marked:'#{$list_loc['Technical Information']}'"
   end
     
     def back
        "view marked:'Back'"
+    end
+    
+    def back_button
+       "view marked:'#{$list_loc['Back']}'"
     end
     
     def close

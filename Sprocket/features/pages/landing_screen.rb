@@ -16,9 +16,8 @@ class LandingScreen < Calabash::IBase
   end
 
   def instagram_logo
-    #"UIImageView id:'Instagram'"
-      "view marked:'Instagram' index:0"
-      
+      #"view marked:'Instagram' index:0"
+      "view marked:'#{$list_loc['Instagram']}' index:0"
   end
 
   def flickr_logo

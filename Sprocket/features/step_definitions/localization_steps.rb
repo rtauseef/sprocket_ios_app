@@ -107,3 +107,9 @@ def check_options_exist item
          end
     end
 end
+
+Then /^I touch "(.*?)" option in the screen$/ do |option|
+    touch "view marked:'#{$list_loc[option]}'" 
+    sleep(STEP_PAUSE)
+end
+ 
