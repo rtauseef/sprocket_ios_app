@@ -123,7 +123,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     switch (indexPath.row) {
         case PGSideBarMenuCellSprocket: {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-            PGHelpAndHowToViewController *viewController = (PGHelpAndHowToViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSprocketLandingPageNavigationController"];
+            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PGSprocketLandingPageNavigationController"];
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
@@ -134,7 +134,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellHowToAndHelp: {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-            PGHelpAndHowToViewController *viewController = (PGHelpAndHowToViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
+            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
@@ -146,7 +146,9 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         case PGSideBarMenuCellTakeSurvey: {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"WebViewerNavigationController"];
-            
+
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+
             PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
             webViewerViewController.trackableScreenName = @"Take Our Survey Screen";
             webViewerViewController.url = kSurveyURL;
@@ -162,7 +164,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellAbout: {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-            PGHelpAndHowToViewController *viewController = (PGHelpAndHowToViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGAboutViewController"];
+            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PGAboutViewController"];
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
@@ -183,7 +185,13 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)webViewerViewControllerDidReachNotifyUrl:(PGWebViewerViewController *)webViewerViewController
 {
     [[PGSurveyManager sharedInstance] setDisable:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)webViewerViewControllerDidDismiss:(PGWebViewerViewController *)webViewerViewController
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 #pragma mark - Private Methods

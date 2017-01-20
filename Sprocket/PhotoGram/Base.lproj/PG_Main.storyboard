@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -392,10 +392,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqQ-dy-7N2" userLabel="HeaderView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HPLogo" translatesAutoresizingMaskIntoConstraints="NO" id="btI-El-2NR">
-                                        <rect key="frame" x="19" y="8" width="30" height="30"/>
+                                        <rect key="frame" x="19" y="13" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="JbN-mp-k4M"/>
                                             <constraint firstAttribute="width" constant="30" id="usI-Ut-wp5"/>
@@ -403,17 +403,17 @@
                                         </constraints>
                                     </imageView>
                                     <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9s-da-3sV" userLabel="LineView">
-                                        <rect key="frame" x="0.0" y="45" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="55" width="375" height="1"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="RGl-Nh-me7"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery100" translatesAutoresizingMaskIntoConstraints="NO" id="iN8-Dm-wnb" customClass="PGBatteryImageView">
-                                        <rect key="frame" x="322" y="16" width="33" height="14"/>
+                                        <rect key="frame" x="322" y="21" width="33" height="14"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCv-5s-9Py" userLabel="Status">
-                                        <rect key="frame" x="192" y="16" width="14" height="14"/>
+                                        <rect key="frame" x="203.5" y="21" width="14" height="14"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="14" id="ZNE-Fb-U7N"/>
@@ -426,7 +426,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsf-b8-Lfu" userLabel="Connectivity Label">
-                                        <rect key="frame" x="220" y="13" width="84" height="20"/>
+                                        <rect key="frame" x="231.5" y="18.5" width="72.5" height="19"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -438,7 +438,7 @@
                                     <constraint firstItem="btI-El-2NR" firstAttribute="centerY" secondItem="FqQ-dy-7N2" secondAttribute="centerY" id="DVl-o3-Ten"/>
                                     <constraint firstAttribute="trailing" secondItem="iN8-Dm-wnb" secondAttribute="trailing" constant="20" id="HUk-Gm-krB"/>
                                     <constraint firstItem="m9s-da-3sV" firstAttribute="width" secondItem="FqQ-dy-7N2" secondAttribute="width" id="HmH-CG-2HZ"/>
-                                    <constraint firstAttribute="height" constant="46" id="JEd-73-zdX"/>
+                                    <constraint firstAttribute="height" constant="56" id="JEd-73-zdX"/>
                                     <constraint firstItem="qsf-b8-Lfu" firstAttribute="centerY" secondItem="iN8-Dm-wnb" secondAttribute="centerY" id="PYT-tM-03F"/>
                                     <constraint firstItem="btI-El-2NR" firstAttribute="leading" secondItem="FqQ-dy-7N2" secondAttribute="leading" constant="19" id="XAn-8Z-Vqm"/>
                                     <constraint firstItem="iN8-Dm-wnb" firstAttribute="centerY" secondItem="btI-El-2NR" secondAttribute="centerY" id="kbd-t9-cnE"/>
@@ -448,7 +448,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6e-TI-LXh" userLabel="Menu Table View">
-                                <rect key="frame" x="0.0" y="66" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PGSideBarMenuCell" textLabel="Ptp-oP-RvF" imageView="qQu-wP-4ea" style="IBUITableViewCellStyleDefault" id="RAo-ZY-JN7">
@@ -1156,7 +1156,7 @@ in the “More” menu when sharing.</string>
         <scene sceneID="svA-7D-PyU">
             <objects>
                 <navigationController storyboardIdentifier="PrintInstructions" definesPresentationContext="YES" id="aOl-ln-qn3" userLabel="How To &amp; Help Navigation Controller" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="POo-5F-tuC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="POo-5F-tuC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1862,7 +1862,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="WebViewerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qmP-7A-YZZ" userLabel="Web Viewer NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q4Y-od-fvh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Q4Y-od-fvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2327,7 +2327,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" customClass="PGLandingNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2846,7 +2846,7 @@ printer and app support.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeE-ya-uIL">
-                                                    <rect key="frame" x="57" y="12" width="30" height="19"/>
+                                                    <rect key="frame" x="57" y="12" width="29.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -3134,6 +3134,6 @@ printer and app support.</string>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kgJ-fr-tUh"/>
+        <segue reference="E30-qK-DCn"/>
     </inferredMetricsTieBreakers>
 </document>
