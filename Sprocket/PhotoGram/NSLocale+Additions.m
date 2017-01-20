@@ -50,7 +50,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     if ([languageCode caseInsensitiveCompare:@"zh"] == NSOrderedSame) {
         retVal = YES;
     }
-    
+    return YES;
     return retVal;
 }
 

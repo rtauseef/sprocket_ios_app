@@ -35,17 +35,25 @@ static const NSInteger PGStickerItemsCountStandard = 20;
     PGStickerItem *sticker = nil;
     NSInteger stickerOffset = 0;
     
-    sticker = [PGStickerItem valentinesStickerItemByIndex:index];
-    stickerOffset = PGStickerItemsCountValentines;
-
     if ([NSLocale isChinese] && nil == sticker) {
         index -= stickerOffset;
         sticker = [PGStickerItem chineseStickerItemByIndex:index];
         stickerOffset = PGStickerItemsCountChinese;
-    } else if (nil == sticker) {
-        index -= stickerOffset;
-        sticker = [PGStickerItem superbowlStickerItemByIndex:index];
-        stickerOffset = PGStickerItemsCountSuperBowl;
+        
+        if (nil == sticker) {
+            index -= stickerOffset;
+            sticker = [PGStickerItem valentinesStickerItemByIndex:index];
+            stickerOffset = PGStickerItemsCountValentines;
+        }
+    } else {
+        sticker = [PGStickerItem valentinesStickerItemByIndex:index];
+        stickerOffset = PGStickerItemsCountValentines;
+        
+        if (nil == sticker) {
+            index -= stickerOffset;
+            sticker = [PGStickerItem superbowlStickerItemByIndex:index];
+            stickerOffset = PGStickerItemsCountSuperBowl;
+        }
     }
     
     if (nil == sticker) {
@@ -470,7 +478,7 @@ static const NSInteger PGStickerItemsCountStandard = 20;
         case PGStickerItemsValentinesBrokenHeart:
             sticker.name = @"Valentines Broken Heart Sticker";
             sticker.accessibilityText = NSLocalizedString(@"Valentines Broken Heart Sticker", nil);
-            sticker.imageName = @"heart";
+            sticker.imageName = @"v_heart";
             break;
         case PGStickerItemsValentinesTargetHeart:
             sticker.name = @"Valentines Target Heart Sticker";

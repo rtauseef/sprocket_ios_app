@@ -485,12 +485,12 @@
 		824952501E2EB6ED00B7F857 /* heart_crown_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951901E2EB6ED00B7F857 /* heart_crown_TN@3x.png */; };
 		824952511E2EB6ED00B7F857 /* heart_crown.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951911E2EB6ED00B7F857 /* heart_crown.png */; };
 		824952521E2EB6ED00B7F857 /* heart_crown.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951911E2EB6ED00B7F857 /* heart_crown.png */; };
-		824952531E2EB6ED00B7F857 /* heart_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951921E2EB6ED00B7F857 /* heart_TN.png */; };
-		824952541E2EB6ED00B7F857 /* heart_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951921E2EB6ED00B7F857 /* heart_TN.png */; };
-		824952551E2EB6ED00B7F857 /* heart_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951931E2EB6ED00B7F857 /* heart_TN@2x.png */; };
-		824952561E2EB6ED00B7F857 /* heart_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951931E2EB6ED00B7F857 /* heart_TN@2x.png */; };
-		824952571E2EB6ED00B7F857 /* heart_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951941E2EB6ED00B7F857 /* heart_TN@3x.png */; };
-		824952581E2EB6ED00B7F857 /* heart_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951941E2EB6ED00B7F857 /* heart_TN@3x.png */; };
+		824952531E2EB6ED00B7F857 /* v_heart_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951921E2EB6ED00B7F857 /* v_heart_TN.png */; };
+		824952541E2EB6ED00B7F857 /* v_heart_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951921E2EB6ED00B7F857 /* v_heart_TN.png */; };
+		824952551E2EB6ED00B7F857 /* v_heart_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951931E2EB6ED00B7F857 /* v_heart_TN@2x.png */; };
+		824952561E2EB6ED00B7F857 /* v_heart_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951931E2EB6ED00B7F857 /* v_heart_TN@2x.png */; };
+		824952571E2EB6ED00B7F857 /* v_heart_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951941E2EB6ED00B7F857 /* v_heart_TN@3x.png */; };
+		824952581E2EB6ED00B7F857 /* v_heart_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951941E2EB6ED00B7F857 /* v_heart_TN@3x.png */; };
 		824952591E2EB6ED00B7F857 /* heart_wings_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951951E2EB6ED00B7F857 /* heart_wings_TN.png */; };
 		8249525A1E2EB6ED00B7F857 /* heart_wings_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951951E2EB6ED00B7F857 /* heart_wings_TN.png */; };
 		8249525B1E2EB6ED00B7F857 /* heart_wings_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824951961E2EB6ED00B7F857 /* heart_wings_TN@2x.png */; };
@@ -505,8 +505,8 @@
 		824952641E2EB6ED00B7F857 /* heart-garland_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519A1E2EB6ED00B7F857 /* heart-garland_TN@2x.png */; };
 		824952651E2EB6ED00B7F857 /* heart-garland_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519B1E2EB6ED00B7F857 /* heart-garland_TN@3x.png */; };
 		824952661E2EB6ED00B7F857 /* heart-garland_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519B1E2EB6ED00B7F857 /* heart-garland_TN@3x.png */; };
-		824952671E2EB6ED00B7F857 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519C1E2EB6ED00B7F857 /* heart.png */; };
-		824952681E2EB6ED00B7F857 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519C1E2EB6ED00B7F857 /* heart.png */; };
+		824952671E2EB6ED00B7F857 /* v_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519C1E2EB6ED00B7F857 /* v_heart.png */; };
+		824952681E2EB6ED00B7F857 /* v_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519C1E2EB6ED00B7F857 /* v_heart.png */; };
 		824952691E2EB6ED00B7F857 /* v_hearts_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519D1E2EB6ED00B7F857 /* v_hearts_TN.png */; };
 		8249526A1E2EB6ED00B7F857 /* v_hearts_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519D1E2EB6ED00B7F857 /* v_hearts_TN.png */; };
 		8249526B1E2EB6ED00B7F857 /* v_hearts_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8249519E1E2EB6ED00B7F857 /* v_hearts_TN@2x.png */; };
@@ -1496,9 +1496,9 @@
 		8249518F1E2EB6ED00B7F857 /* heart_crown_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_crown_TN@2x.png"; path = "Resources/Images/Stickers/Valentines/heart_crown_TN@2x.png"; sourceTree = "<group>"; };
 		824951901E2EB6ED00B7F857 /* heart_crown_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_crown_TN@3x.png"; path = "Resources/Images/Stickers/Valentines/heart_crown_TN@3x.png"; sourceTree = "<group>"; };
 		824951911E2EB6ED00B7F857 /* heart_crown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart_crown.png; path = Resources/Images/Stickers/Valentines/heart_crown.png; sourceTree = "<group>"; };
-		824951921E2EB6ED00B7F857 /* heart_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart_TN.png; path = Resources/Images/Stickers/Valentines/heart_TN.png; sourceTree = "<group>"; };
-		824951931E2EB6ED00B7F857 /* heart_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_TN@2x.png"; path = "Resources/Images/Stickers/Valentines/heart_TN@2x.png"; sourceTree = "<group>"; };
-		824951941E2EB6ED00B7F857 /* heart_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_TN@3x.png"; path = "Resources/Images/Stickers/Valentines/heart_TN@3x.png"; sourceTree = "<group>"; };
+		824951921E2EB6ED00B7F857 /* v_heart_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = v_heart_TN.png; path = Resources/Images/Stickers/Valentines/v_heart_TN.png; sourceTree = "<group>"; };
+		824951931E2EB6ED00B7F857 /* v_heart_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "v_heart_TN@2x.png"; path = "Resources/Images/Stickers/Valentines/v_heart_TN@2x.png"; sourceTree = "<group>"; };
+		824951941E2EB6ED00B7F857 /* v_heart_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "v_heart_TN@3x.png"; path = "Resources/Images/Stickers/Valentines/v_heart_TN@3x.png"; sourceTree = "<group>"; };
 		824951951E2EB6ED00B7F857 /* heart_wings_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart_wings_TN.png; path = Resources/Images/Stickers/Valentines/heart_wings_TN.png; sourceTree = "<group>"; };
 		824951961E2EB6ED00B7F857 /* heart_wings_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_wings_TN@2x.png"; path = "Resources/Images/Stickers/Valentines/heart_wings_TN@2x.png"; sourceTree = "<group>"; };
 		824951971E2EB6ED00B7F857 /* heart_wings_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_wings_TN@3x.png"; path = "Resources/Images/Stickers/Valentines/heart_wings_TN@3x.png"; sourceTree = "<group>"; };
@@ -1506,7 +1506,7 @@
 		824951991E2EB6ED00B7F857 /* heart-garland_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart-garland_TN.png"; path = "Resources/Images/Stickers/Valentines/heart-garland_TN.png"; sourceTree = "<group>"; };
 		8249519A1E2EB6ED00B7F857 /* heart-garland_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart-garland_TN@2x.png"; path = "Resources/Images/Stickers/Valentines/heart-garland_TN@2x.png"; sourceTree = "<group>"; };
 		8249519B1E2EB6ED00B7F857 /* heart-garland_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart-garland_TN@3x.png"; path = "Resources/Images/Stickers/Valentines/heart-garland_TN@3x.png"; sourceTree = "<group>"; };
-		8249519C1E2EB6ED00B7F857 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart.png; path = Resources/Images/Stickers/Valentines/heart.png; sourceTree = "<group>"; };
+		8249519C1E2EB6ED00B7F857 /* v_heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = v_heart.png; path = Resources/Images/Stickers/Valentines/v_heart.png; sourceTree = "<group>"; };
 		8249519D1E2EB6ED00B7F857 /* v_hearts_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = v_hearts_TN.png; path = Resources/Images/Stickers/Valentines/v_hearts_TN.png; sourceTree = "<group>"; };
 		8249519E1E2EB6ED00B7F857 /* v_hearts_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "v_hearts_TN@2x.png"; path = "Resources/Images/Stickers/Valentines/v_hearts_TN@2x.png"; sourceTree = "<group>"; };
 		8249519F1E2EB6ED00B7F857 /* v_hearts_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "v_hearts_TN@3x.png"; path = "Resources/Images/Stickers/Valentines/v_hearts_TN@3x.png"; sourceTree = "<group>"; };
@@ -2234,9 +2234,9 @@
 				8249518F1E2EB6ED00B7F857 /* heart_crown_TN@2x.png */,
 				824951901E2EB6ED00B7F857 /* heart_crown_TN@3x.png */,
 				824951911E2EB6ED00B7F857 /* heart_crown.png */,
-				824951921E2EB6ED00B7F857 /* heart_TN.png */,
-				824951931E2EB6ED00B7F857 /* heart_TN@2x.png */,
-				824951941E2EB6ED00B7F857 /* heart_TN@3x.png */,
+				824951921E2EB6ED00B7F857 /* v_heart_TN.png */,
+				824951931E2EB6ED00B7F857 /* v_heart_TN@2x.png */,
+				824951941E2EB6ED00B7F857 /* v_heart_TN@3x.png */,
 				824951951E2EB6ED00B7F857 /* heart_wings_TN.png */,
 				824951961E2EB6ED00B7F857 /* heart_wings_TN@2x.png */,
 				824951971E2EB6ED00B7F857 /* heart_wings_TN@3x.png */,
@@ -2245,7 +2245,7 @@
 				8249519A1E2EB6ED00B7F857 /* heart-garland_TN@2x.png */,
 				8249519B1E2EB6ED00B7F857 /* heart-garland_TN@3x.png */,
 				8249517D1E2EB6ED00B7F857 /* heart-garland.png */,
-				8249519C1E2EB6ED00B7F857 /* heart.png */,
+				8249519C1E2EB6ED00B7F857 /* v_heart.png */,
 				8249519D1E2EB6ED00B7F857 /* v_hearts_TN.png */,
 				8249519E1E2EB6ED00B7F857 /* v_hearts_TN@2x.png */,
 				8249519F1E2EB6ED00B7F857 /* v_hearts_TN@3x.png */,
@@ -3570,7 +3570,7 @@
 				82E6485E1E316F9200764213 /* RedStripes_Frame_iOS_TN@3x.png in Resources */,
 				924A70861DF5F536009A0FB1 /* yinyang_TN@2x.png in Resources */,
 				824952291E2EB6ED00B7F857 /* heart-garland.png in Resources */,
-				824952671E2EB6ED00B7F857 /* heart.png in Resources */,
+				824952671E2EB6ED00B7F857 /* v_heart.png in Resources */,
 				8249523F1E2EB6ED00B7F857 /* heart_banner_TN@3x.png in Resources */,
 				F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */,
 				824953D41E2EC96000B7F857 /* banner_TN@2x.png in Resources */,
@@ -3633,7 +3633,7 @@
 				824954281E2EC96000B7F857 /* helmet.png in Resources */,
 				824952B91E2EB6ED00B7F857 /* thought_bubble_TN.png in Resources */,
 				82362A311D59557E0019F024 /* catglasses_TN@2x.png in Resources */,
-				824952551E2EB6ED00B7F857 /* heart_TN@2x.png in Resources */,
+				824952551E2EB6ED00B7F857 /* v_heart_TN@2x.png in Resources */,
 				821853061D626A96001288D9 /* 6_floral_frame3_TN.png in Resources */,
 				821853081D626A96001288D9 /* 6_floral_frame3_TN@3x.png in Resources */,
 				824952051E2EB6ED00B7F857 /* v_cupcake_TN@3x.png in Resources */,
@@ -3679,8 +3679,8 @@
 				924A70491DF5F536009A0FB1 /* glasses_2017_TN.png in Resources */,
 				824953F81E2EC96000B7F857 /* football_flames.png in Resources */,
 				924A70421DF5F536009A0FB1 /* fish_1_TN@2x.png in Resources */,
-				824952531E2EB6ED00B7F857 /* heart_TN.png in Resources */,
-				824952571E2EB6ED00B7F857 /* heart_TN@3x.png in Resources */,
+				824952531E2EB6ED00B7F857 /* v_heart_TN.png in Resources */,
+				824952571E2EB6ED00B7F857 /* v_heart_TN@3x.png in Resources */,
 				824952C51E2EB6ED00B7F857 /* tiara_TN@3x.png in Resources */,
 				824953EC1E2EC96000B7F857 /* foam_finger_TN@2x.png in Resources */,
 				824953E81E2EC96000B7F857 /* flag.png in Resources */,
@@ -3723,7 +3723,7 @@
 				1426dfbe4b48b10fabdcecc7 /* 3_blue_watercolor_frame_TN@2x.png in Resources */,
 				5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */,
 				ca5182e6b7fd1374958f24a9 /* stars_TN@3x.png in Resources */,
-				824952681E2EB6ED00B7F857 /* heart.png in Resources */,
+				824952681E2EB6ED00B7F857 /* v_heart.png in Resources */,
 				260BD0781DDE539700AE6BAA /* Kraft_Frame_iOS_TN.png in Resources */,
 				2cd670907ef7ede7c270e8e2 /* cupcake_TN@2x.png in Resources */,
 				045dc9dcb0ee035a350f7bd2 /* 1_turquoise_frame_TN.png in Resources */,
@@ -3866,7 +3866,7 @@
 				a6c8a9eda54ca7d3639478d0 /* Pacifico.ttf in Resources */,
 				3148edc195c405fddad1b6a3 /* OMG_TN@2x.png in Resources */,
 				8f227c44012840e2700f041d /* 1_turquoise_frame_TN@3x.png in Resources */,
-				824952561E2EB6ED00B7F857 /* heart_TN@2x.png in Resources */,
+				824952561E2EB6ED00B7F857 /* v_heart_TN@2x.png in Resources */,
 				c1a0250fdd608e0ba485e248 /* cat_TN.png in Resources */,
 				6e2c2473ed2f0f1072995bbe /* RockSalt.ttf in Resources */,
 				824954211E2EC96000B7F857 /* heart_football3.png in Resources */,
@@ -3892,7 +3892,7 @@
 				26F7C06F1DD10C1E006396FA /* catwhiskers_TN@2x.png in Resources */,
 				8249523E1E2EB6ED00B7F857 /* heart_banner_TN@2x.png in Resources */,
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
-				824952581E2EB6ED00B7F857 /* heart_TN@3x.png in Resources */,
+				824952581E2EB6ED00B7F857 /* v_heart_TN@3x.png in Resources */,
 				824952461E2EB6ED00B7F857 /* heart_bouquet_TN@2x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
 				824953E71E2EC96000B7F857 /* flag_TN@3x.png in Resources */,
@@ -3991,7 +3991,7 @@
 				824952921E2EB6ED00B7F857 /* monster_2_TN.png in Resources */,
 				824953EB1E2EC96000B7F857 /* foam_finger_TN@1x.png in Resources */,
 				824952A41E2EB6ED00B7F857 /* rosebud_TN@2x.png in Resources */,
-				824952541E2EB6ED00B7F857 /* heart_TN.png in Resources */,
+				824952541E2EB6ED00B7F857 /* v_heart_TN.png in Resources */,
 				824954251E2EC96000B7F857 /* helmet_TN@2x.png in Resources */,
 				824952021E2EB6ED00B7F857 /* v_cupcake_TN.png in Resources */,
 				6ee9d1f5ad38092723fef3ed /* 10_green_watercolor_frame2_TN@2x.png in Resources */,
