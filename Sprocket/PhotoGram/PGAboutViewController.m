@@ -35,7 +35,9 @@
     [super viewDidLoad];
     
     self.trackableScreenName = @"About Screen";
-    
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+
     self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:28.0f];
     self.versionLabel.font = [UIFont HPSimplifiedRegularFontWithSize:14.0f];
     self.copyrightLabel.font = [UIFont HPSimplifiedLightFontWithSize:12.0f];
@@ -50,6 +52,8 @@
 
 - (IBAction)doneButtonTapped:(id)sender
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

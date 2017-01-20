@@ -52,7 +52,9 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
     [super viewDidLoad];
     
     self.trackableScreenName = @"Help and How To Screen";
-    
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(unselectTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
@@ -69,6 +71,8 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
 }
 
 - (IBAction)doneButtonTapped:(id)sender {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

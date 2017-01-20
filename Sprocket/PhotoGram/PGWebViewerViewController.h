@@ -26,6 +26,8 @@
 
 @protocol PGWebViewerViewControllerDelegate <NSObject>
 
+@optional
 - (void)webViewerViewControllerDidReachNotifyUrl:(PGWebViewerViewController *)webViewerViewController;
+- (void)webViewerViewControllerDidDismiss:(PGWebViewerViewController *)webViewerViewController;
 
 @end
