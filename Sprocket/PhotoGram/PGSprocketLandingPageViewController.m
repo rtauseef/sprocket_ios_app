@@ -32,7 +32,9 @@
     [super viewDidLoad];
 
     self.trackableScreenName = @"Sprocket Landing Screen";
-    
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -68,6 +70,8 @@
 
 - (IBAction)doneButtonTapped:(id)sender
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

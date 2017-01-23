@@ -79,6 +79,10 @@
         
     } else if (buttonIndex == ALERT_VIEW_OK_BUTTON_INDEX) {
         [self dismissViewControllerAnimated:YES completion:nil];
+
+        if ([self.delegate respondsToSelector:@selector(webViewerViewControllerDidDismiss:)]) {
+            [self.delegate webViewerViewControllerDidDismiss:self];
+        }
     }
 }
 
@@ -87,6 +91,10 @@
 - (IBAction)doneButtonItemTapped:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+
+    if ([self.delegate respondsToSelector:@selector(webViewerViewControllerDidDismiss:)]) {
+        [self.delegate webViewerViewControllerDidDismiss:self];
+    }
 }
 
 @end
