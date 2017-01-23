@@ -2,7 +2,7 @@
 
 CFBundleName = "sprocket";
 CFBundleDisplayName = "sprocket";
-CFBundleShortVersionString = "1.7.0";
+CFBundleShortVersionString = "1.8.0";
 
 NSBluetoothPeripheralUsageDescription = "Sprocket needs bluetooth access to connect to the HP Sprocket Printer.";
 NSCameraUsageDescription = "Allow access to take and print photos.";
