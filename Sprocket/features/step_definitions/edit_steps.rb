@@ -208,12 +208,12 @@ end
 
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
-  frame_name=["Christmas Polka Dot Frame","Red Triangle Frame","Snow Frame","Striped Frame","Grey Frame","Santa Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
+  frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
     sticker_name=["snowman_TN", "glasses_rudolph_TN", "christmas_hat_TN", "star0_TN", "glasses_hanukah_TN", "snowman_hat_TN", "Party-Hat_TN", "glasses_tree_TN", "glasses_star_TN", "rudolph_antlers_TN", "cap_TN", "snowman_face_TN", "scarf_TN", "snowflake_2_TN", "StringOLights_TN", "tree_TN", "stocking_TN", "candy_cane_TN", "holly_TN", "mistletoe_TN", "ornament_1_TN", "menorah_TN", "dreidle_TN", "fireworks_TN", "horn_TN", "catglasses_TN", "catwhiskers_TN", "catears_TN", "hearts_TN", "xoxo_TN", "heartExpress_TN", "arrow_TN", "crown_TN", "birthdayHat_TN", "moon_TN", "starhp_TN", "stars_TN", "feather2_TN", "feather_TN", "leaf3_TN", "cupcake_TN", "cat_TN", "diamond_TN", "sunglasses_TN", "OMG_TN"]    
   i = 0
     if option == "frames"
-        while i < 16
+        while i < 20
             macro %Q|I select "#{frame_name[i]}" frame|
             macro %Q|I verify blue line indicator is displayed under selected frame|
             macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
@@ -237,12 +237,12 @@ $edit_screen_arr =
 
 {
     "edit_frame" => {
-        "Christmas Polka Dot Frame" => "xmasPolka_Frame_iOS",
-        "Red Triangle Frame" => "RedTriangle_Frame_iOS",
-        "Snow Frame" => "Snow_Frame_iOS",
-        "Striped Frame" => "striped_Frame_iOS",
-        "Grey Frame" => "Grey_Frame_iOS",
-        "Santa Frame" => "Santa_Frame_iOS",
+        "Valentines Hearts Frame" => "Hearts_Frame_iOS",
+        "Valentines Pink Polka Frame" => "PinkPolka_Frame_iOS",
+        "Valentines Red Frame" => "Red_Frame_iOS",
+        "Valentines Hearts Overlay Frame" => "HeartsOverlay_Frame_iOS",
+        "Valentines Pink Watercolor Frame" => "PinkWatercolor_Frame_iOS",
+        "Valentines Red Stripes Frame" => "RedStripes_Frame_iOS",
         "White Frame" => "4_white_frame",
         "Kraft Frame" => "Kraft_Frame_iOS",
         "Floral Frame" => "6_floral_frame3",
