@@ -8,7 +8,7 @@ class LandingScreen < Calabash::IBase
   end
 
   def landing_page_logo
-    "view marked:'sprocket'"
+      "view marked:'#{$test}'"
   end
 
   def hamburger_logo
@@ -114,13 +114,27 @@ def terms_of_service_link
   end
 
   def navigate
+          if element_exists("view marked:'sprocket'")
+              $test = "sprocket"
+          else
+              $test = "Sprocket"
+          end
       close_camera_popup
        if ENV['LANGUAGE'] == "Spanish"
      $list_loc=$language_arr["es_ES"]
        else if ENV['LANGUAGE'] == "Chinese"
                  $list_loc=$language_arr["zh_Hans"]
+       else if ENV['LANGUAGE'] == "German"
+           $list_loc=$language_arr["de_DE"]
+       else if ENV['LANGUAGE'] == "French"
+           $list_loc=$language_arr["fr_FR"]
+        else if ENV['LANGUAGE'] == "Italian"
+           $list_loc=$language_arr["it_IT"]
        else
         $list_loc=$language_arr["en_US"]
+       end
+       end
+       end
        end
   end
   survey_message_arr = $list_loc['survey']

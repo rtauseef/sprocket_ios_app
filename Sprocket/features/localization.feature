@@ -10,6 +10,7 @@ Feature: Localization testing
     Then I change the language
         
   @TA15895
+  @TA16511
   Scenario: Verify screen titles
     Given  I am on the "CameraRollLanding" screen
     Then I open cameraroll	
