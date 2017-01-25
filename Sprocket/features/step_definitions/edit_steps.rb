@@ -41,7 +41,7 @@ Then (/^I select "(.*?)"$/) do |option|
         touch @current_page.filter_1
     else 
         if option == "sticker" 
-            sticker_name="snowman_face_TN"
+            sticker_name="v_xoxo_TN"
             select_sticker sticker_name
             sleep(STEP_PAUSE)
         else
@@ -72,7 +72,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
         if edit_item == "sticker"
             
            selected_frame_status = query("UIImageView index:2",:accessibilityIdentifier).first
-           raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "snowman_face"
+           raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "v_xoxo"
         else
             if edit_item == "text"
                 sleep(STEP_PAUSE)
@@ -138,7 +138,6 @@ Then(/^I verify the filter is selected$/) do
   Then(/^I should not see the text$/) do
     sleep(STEP_PAUSE)
     txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
-    puts txtTemplate
     raise "Text found!" unless txtTemplate == ""
 end
 
@@ -189,7 +188,7 @@ Then(/^I select "(.*?)" frame$/) do |frame_name|
 end
 
 Then(/^I select "(.*?)" sticker$/) do |sticker_name|
-    sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
     select_sticker sticker_name
     sleep(STEP_PAUSE)
 end
@@ -202,18 +201,21 @@ end
 
 Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
     $list_loc=$edit_screen_arr["edit_sticker"]
-    selected_sticker_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Wrong sticker selected!" unless selected_sticker_status = $list_loc[sticker_name]
+    
+    selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
+    raise "Wrong sticker selected!" unless selected_sticker_status.to_s == $list_loc[sticker_name]
 end
 
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
-   sleep(WAIT_SCREENLOAD)
-  frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
+   sleep(STEP_PAUSE)
+  frame_name=["Christmas Polka Dot Frame","Red Triangle Frame","Snow Frame","Striped Frame","Grey Frame","Santa Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
-    sticker_name=["snowman_TN", "glasses_rudolph_TN", "christmas_hat_TN", "star0_TN", "glasses_hanukah_TN", "snowman_hat_TN", "Party-Hat_TN", "glasses_tree_TN", "glasses_star_TN", "rudolph_antlers_TN", "cap_TN", "snowman_face_TN", "scarf_TN", "snowflake_2_TN", "StringOLights_TN", "tree_TN", "stocking_TN", "candy_cane_TN", "holly_TN", "mistletoe_TN", "ornament_1_TN", "menorah_TN", "dreidle_TN", "fireworks_TN", "horn_TN", "catglasses_TN", "catwhiskers_TN", "catears_TN", "hearts_TN", "xoxo_TN", "heartExpress_TN", "arrow_TN", "crown_TN", "birthdayHat_TN", "moon_TN", "starhp_TN", "stars_TN", "feather2_TN", "feather_TN", "leaf3_TN", "cupcake_TN", "cat_TN", "diamond_TN", "sunglasses_TN", "OMG_TN"]    
+    sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
+    
+ 
   i = 0
     if option == "frames"
-        while i < 20
+        while i < 16
             macro %Q|I select "#{frame_name[i]}" frame|
             macro %Q|I verify blue line indicator is displayed under selected frame|
             macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
@@ -222,11 +224,16 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
             sleep(SLEEP_SCREENLOAD)
         end
     else
-        while i < 45
+        while i < 68
             macro %Q|I select "#{sticker_name[i]}" sticker|
             macro %Q|I verify blue line indicator is displayed under selected sticker|
             macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
             macro %Q|I should see the "StickerEditor" screen|
+            macro %Q|I tap "Close" mark|
+            macro %Q|I should see the "Edit" screen|
+            macro %Q|I tap "Sticker" button|
+            macro %Q|I should see the "StickerEditor" screen|
+   
             i= i + 1
             sleep(SLEEP_SCREENLOAD)
         end 
@@ -237,12 +244,12 @@ $edit_screen_arr =
 
 {
     "edit_frame" => {
-        "Valentines Hearts Frame" => "Hearts_Frame_iOS",
-        "Valentines Pink Polka Frame" => "PinkPolka_Frame_iOS",
-        "Valentines Red Frame" => "Red_Frame_iOS",
-        "Valentines Hearts Overlay Frame" => "HeartsOverlay_Frame_iOS",
-        "Valentines Pink Watercolor Frame" => "PinkWatercolor_Frame_iOS",
-        "Valentines Red Stripes Frame" => "RedStripes_Frame_iOS",
+        "Christmas Polka Dot Frame" => "xmasPolka_Frame_iOS",
+        "Red Triangle Frame" => "RedTriangle_Frame_iOS",
+        "Snow Frame" => "Snow_Frame_iOS",
+        "Striped Frame" => "striped_Frame_iOS",
+        "Grey Frame" => "Grey_Frame_iOS",
+        "Santa Frame" => "Santa_Frame_iOS",
         "White Frame" => "4_white_frame",
         "Kraft Frame" => "Kraft_Frame_iOS",
         "Floral Frame" => "6_floral_frame3",
@@ -260,31 +267,54 @@ $edit_screen_arr =
          },
         
     "edit_sticker" => {
-            "snowman_TN" => "snowman",
-            "glasses_rudolph_TN" => "glasses_rudolph",
-            "christmas_hat_TN" => "christmas_hat",
-            "star0_TN" => "star0",
-            "glasses_hanukah_TN" => "glasses_hanukah",
-            "snowman_hat_TN" => "snowman_hat",
-            "Party-Hat_TN" => "Party-Hat",
-            "glasses_tree_TN" => "glasses_tree",
-            "glasses_star_TN" => "glasses_star",
-            "rudolph_antlers_TN" => "rudolph_antlers",
-            "cap_TN" => "cap",
-            "snowman_face_TN" => "snowman_face",
-            "scarf_TN" => "scarf",
-            "snowflake_2_TN" => "snowflake_2",
-            "StringOLights_TN" => "StringOLights",
-            "tree_TN" => "tree",
-            "stocking_TN" => "stocking",
-            "candy_cane_TN" => "candy_cane",
-            "holly_TN" => "holly",
-            "mistletoe_TN" => "mistletoe",
-            "ornament_1_TN" => "ornament_1",
-            "menorah_TN" => "menorah",
-            "dreidle_TN" => "dreidle",
-            "fireworks_TN" => "fireworks",
-            "horn_TN" => "horn",
+            "v_xoxo_TN" => "v_xoxo",
+            "heart_2_TN" => "heart_2",
+            "v_hearts_TN" => "v_hearts",
+            "conversation_heart_TN" => "conversation_heart",
+            "heart_wings_TN" => "heart_wings",
+            "bird_TN" => "bird",
+            "butterfly_TN" => "butterfly",
+            "monster_2_TN" => "monster_2",
+            "rosebud_TN" => "rosebud",
+            "heart_bouquet_TN" => "heart_bouquet",
+            "heart-garland_TN" => "heart-garland",
+            "pig_TN" => "pig",
+            "headband_TN" => "headband",
+            "glasses_1_TN" => "glasses_1",
+            "hat_TN" => "hat",
+            "bow2_TN" => "bow2",
+            "balloons_TN" => "balloons",
+            "thought_bubble_TN" => "thought_bubble",
+            "letter_TN" => "letter",
+            "holding_hands_TN" => "holding_hands",
+            "love_monster_TN" => "love_monster",
+            "heart_arrow_TN" => "heart_arrow",
+            "smiley_TN" => "smiley",
+            "heart_banner_TN" => "heart_banner",
+            "lock_TN" => "lock",
+            "v_cupcake_TN" => "v_cupcake",
+            "v_cat_TN" => "v_cat",
+            "v_heart_TN" => "v_heart",
+            "target_TN" => "target",
+            "glasses_TN" => "glasses",
+            "tiara_TN" => "tiara",
+            "heart_crown_TN" => "heart_crown",
+            "sb_glasses_TN" => "sb_glasses",
+            "glasses_2_TN" => "glasses_2",
+            "eye_black_TN" => "eye_black",
+            "foam_finger_TN" => "foam_finger",
+            "heart_football3_TN" => "heart_football3",
+            "banner_TN" => "banner",
+            "flag_TN" => "flag",
+            "heart_football_TN" => "heart_football",
+            "stars_n_balls_TN" => "stars_n_balls",
+            "#_game_time_TN" => "#_game_time",
+            "football_flames_TN" => "football_flames",
+            "love_TN" => "love",
+            "i_heart_football_2_TN" => "i_heart_football_2",
+            "owl_TN" => "owl",
+            "goal_post_2_TN" => "goal_post_2",
+            "helmet_TN" => "helmet",
             "catglasses_TN" => "catglasses",
             "catwhiskers_TN" => "catwhiskers",
             "catears_TN" => "catears",
@@ -302,6 +332,7 @@ $edit_screen_arr =
             "leaf3_TN" => "leaf3",
             "cupcake_TN" => "cupcake",
             "cat_TN" => "cat",
+            "stars_TN" => "stars",
             "diamond_TN" => "diamond",
             "sunglasses_TN" => "sunglasses",
             "OMG_TN" => "OMG"
