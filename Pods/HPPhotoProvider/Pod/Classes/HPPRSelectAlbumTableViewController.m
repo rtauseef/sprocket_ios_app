@@ -43,7 +43,11 @@ NSString * const kAlbumSelectionScreenName = @"Album Selection Screen";
     self.tableView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.tableView.separatorColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRTableSeparatorColor];
     self.title = [NSString stringWithFormat:HPPRLocalizedString(@"%@ Albums", @"Albums of the specified social network"), self.provider.localizedName];
-    
+
+    if ([self.delegate respondsToSelector:@selector(collectionViewContentInset)]) {
+        self.tableView.contentInset = [self.delegate collectionViewContentInset];
+    }
+
     self.albums = @[];
     
     if (!self.isRefreshingAlbums) {
