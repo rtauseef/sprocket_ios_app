@@ -79,6 +79,8 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     
     [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
+
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
             
             HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];

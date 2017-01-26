@@ -42,7 +42,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 @property (nonatomic, strong) NSArray<PGSocialSource *> *socialSources;
 @property (nonatomic, strong) NSArray<UINavigationController *> *socialViewControllers;
-@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) PGMediaNavigation *navigationView;
 @property (nonatomic, strong) PGSwipeCoachMarksView *swipeCoachMarksView;
 @property (nonatomic, weak) UIScrollView *scrollView;
@@ -70,7 +69,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSwipeCoachMarks:) name:HIDE_SWIPE_COACH_MARKS_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showStatusBar) name:kPGCameraManagerCameraClosed object:nil];
 
-
     self.dataSource = self;
     self.delegate = self;
     
@@ -81,7 +79,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     UINavigationController *navController = [self viewControllerForSocialSourceType:self.socialSourceType];
     
     if (nil == navController) {
-        [self setViewControllers:@[[self.socialViewControllers firstObject]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        navController = [self.socialViewControllers firstObject];
+        [self setViewControllers:@[navController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
     } else {
         [self setViewControllers:@[navController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -93,8 +92,17 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 
     [self showNavigationView];
-    [self initPageControl];
-    
+
+    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
+
+    if (index != NSNotFound) {
+        UINavigationController *viewController = navController.viewControllers.lastObject;
+
+        PGSocialSource *socialSource = self.socialSources[index];
+        [self handleFolderIcon:viewController socialSource:socialSource];
+        self.navigationView.socialSource = socialSource;
+    }
+
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
     for (UIView *v in self.view.subviews) {
@@ -223,9 +231,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
         [self setViewControllers:@[viewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
         
         self.socialSourceType = socialSourceType;
-        self.pageControl.currentPage = [self pageForSocialNetwork:socialSourceType];
-        self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
-        
+
         if (includeLogin) {
             if ([viewController.topViewController isKindOfClass:[PGLandingPageViewController class]]) {
                 PGLandingPageViewController *landingPageViewController = (PGLandingPageViewController *) viewController.topViewController;
@@ -238,16 +244,11 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)enablePageControllerFunctionalityNotification:(NSNotification *)notification
 {
     [self enableSwipe];
-    
-    //Not pulling the page control out just yet
-    //self.pageControl.hidden = NO;
 }
 
 - (void)disablePageControllerFunctionalityNotification:(NSNotification *)notification
 {
     [self disableSwipe];
-    
-    self.pageControl.hidden = YES;
 }
 
 #pragma mark - Utils
@@ -303,8 +304,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (self.navigationView == nil) {
         self.navigationView = [[PGMediaNavigation alloc] initWithFrame:self.view.frame];
         self.navigationView.delegate = self;
-        self.navigationView.alpha = 1.0f;
-        
+
         [self.view addSubview:self.navigationView];
         [self.view bringSubviewToFront:self.navigationView];
     }
@@ -321,45 +321,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     } completion:^(BOOL finished) {
         [self.swipeCoachMarksView removeFromSuperview];
     }];
-}
-
-- (void)initPageControl
-{
-    // Note: The default page control of the UIPageViewController doesn't allow to overlay the view controllers behind it, so for putting the page control with a transparent background on top of them it is necessary to implement our own page control and not use the default one provided by UIPageViewController. The proper way to add subviews is using autolayout constraints but in iOS 7 is not possible to add subviews with autolayout constraints to the UIPageViewController, it throws an exception: "Auto Layout still required after executing -layoutSubviews", so in this case it is implemented using frames.
-    self.pageControl = [[UIPageControl alloc] init];
-    
-    self.pageControl.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.view addSubview:self.pageControl];
-    [self.view bringSubviewToFront:self.pageControl];
-    
-    NSDictionary *viewsDictionary = @{@"pageControl":self.pageControl};
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"V:[pageControl(20)]|"
-                               options:0
-                               metrics:nil
-                               views:viewsDictionary]];
-    
-    [self.view addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"H:|[pageControl]|"
-                               options:NSLayoutFormatDirectionLeadingToTrailing
-                               metrics:nil
-                               views:viewsDictionary]];
-    
-    self.pageControl.numberOfPages = [PGSocialSourcesManager sharedInstance].enabledSocialSources.count;
-    self.pageControl.currentPage = [self pageForSocialNetwork:self.socialSourceType];
-
-    self.pageControl.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
-
-    self.pageControl.pageIndicatorTintColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorNormal];
-    self.pageControl.currentPageIndicatorTintColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRButtonTitleColorSelected];
-    
-    self.pageControl.accessibilityIdentifier = @"Dot View For Page Navigation";
-    self.pageControl.accessibilityValue = @"0";
-
-    //Not pulling the page control out just yet
-    self.pageControl.hidden = YES;
 }
 
 - (void)setSocialSourceType:(PGSocialSourceType)socialSourceType
@@ -387,21 +348,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     return page;
 }
 
-
-#pragma mark - UINavigationControllerDelegate
-
-- (void)navigationController:(UINavigationController *)navigationController
-      willShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated
-{
-    NSUInteger index = [self.socialViewControllers indexOfObject:navigationController];
-
-    if (index != NSNotFound) {
-        PGSocialSource *socialSource = self.socialSources[index];
-        [self handleFolderIcon:viewController socialSource:socialSource];
-        [self.navigationView selectButton:socialSource.title animated:YES];
-    }
-}
 
 #pragma mark - PGMediaNavigationDelegate
 
@@ -465,14 +411,11 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (index != NSNotFound) {
         PGSocialSource *socialSource = self.socialSources[index];
 
-        self.pageControl.currentPage = [self pageForSocialNetwork:socialSource.type];
-        [self.navigationView selectButton:socialSource.title animated:YES];
+        self.navigationView.socialSource = socialSource;
         self.socialSourceType = socialSource.type;
 
         [self handleFolderIcon:viewController socialSource:socialSource];
     }
-
-    self.pageControl.accessibilityValue = [NSString stringWithFormat:@"%ld", (long)self.pageControl.currentPage];
 }
 
 - (void)handleFolderIcon:(UIViewController *)viewController socialSource:(PGSocialSource *)socialSource
@@ -482,7 +425,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
     
     BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
-    
+
     if (isShowingPhotoGallery && socialSource.hasFolders) {
         [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
     } else {
@@ -515,12 +458,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     NSInteger index = [self.socialViewControllers indexOfObject:(UINavigationController *) viewController];
 
     if (index != NSNotFound) {
-        // the modulus operator fails basic arithmetic...
-        if (0 == index) {
-            index = self.socialSources.count-1;
-        } else {
-            index = ((index - 1) % self.socialSources.count);
-        }
+        index = ((index - 1) % self.socialSources.count);
 
         return self.socialViewControllers[index];
     }

@@ -12,15 +12,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PGView.h"
+#import "PGSocialSourcesManager.h"
 
 @protocol PGMediaNavigationDelegate;
 
 @interface PGMediaNavigation : PGView
 
+@property (strong, nonatomic) PGSocialSource *socialSource;
 @property (weak, nonatomic) id<PGMediaNavigationDelegate> delegate;
-
-- (void)selectButton:(NSString *)title animated:(BOOL)animated;
-- (void)showFolderIcon:(BOOL)show;
 
 @end
 

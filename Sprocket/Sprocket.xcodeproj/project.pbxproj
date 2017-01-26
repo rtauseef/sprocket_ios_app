@@ -907,7 +907,6 @@
 		924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
-		92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
 		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92E9C1F21DD65FB6009E4E63 /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
@@ -1084,7 +1083,6 @@
 		d515725ba72d9e1b1818a96c /* diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852651D625FFB001288D9 /* diamond.png */; };
 		d5177b16d2258231c10cf82e /* Jura-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26F19B648E500AAB884 /* Jura-Regular.ttf */; };
 		d734f1b72f58170f0d959034 /* 13_floral2_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852E91D626A96001288D9 /* 13_floral2_frame.png */; };
-		d966d10242301f16a780feda /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
 		da300a56fe68165662be9328 /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
 		daebf86e7a3df049804c14ec /* feather_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852681D625FFB001288D9 /* feather_TN@3x.png */; };
 		db4cb0b0a9b0f6406be9fee7 /* PG_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34D506C199AB87B006D80E0 /* PG_Main.storyboard */; };
@@ -1784,8 +1782,6 @@
 		924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInterstitialAwarenessViewController.h; sourceTree = "<group>"; };
 		924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInterstitialAwarenessViewController.m; sourceTree = "<group>"; };
 		9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sprocket.gif; path = Resources/Images/Icons/Sprocket.gif; sourceTree = "<group>"; };
-		92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRollingButtonScrollView.h; sourceTree = "<group>"; };
-		92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRollingButtonScrollView.m; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
@@ -2955,8 +2951,6 @@
 				821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */,
 				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
-				92C38D5A1D25E39300F7CD27 /* SSRollingButtonScrollView.h */,
-				92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
 			);
@@ -4462,7 +4456,6 @@
 				8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */,
 				141cc38c3e33f2c4363f6f0c /* UIImageView+MaskImage.m in Sources */,
 				a87555cde15740ecf2522d3b /* PGInstagramLandingPageViewController.m in Sources */,
-				d966d10242301f16a780feda /* SSRollingButtonScrollView.m in Sources */,
 				F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */,
 				F2E785311DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
 				4594aa2a81c01c0db495be1d /* UIImage+ImageResize.m in Sources */,
@@ -4558,7 +4551,6 @@
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
-				92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
