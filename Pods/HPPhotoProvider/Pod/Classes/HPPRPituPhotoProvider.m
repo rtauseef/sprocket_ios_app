@@ -82,10 +82,8 @@
         HPPRAlbum *album = [[HPPRAlbum alloc] init];
         album.assetCollection = collection;
         album.photoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
-        
-        if (album.photoCount > 0) {
-            [albums addObject:album];
-        }
+
+        [albums addObject:album];
     } else {
         NSLog(@"Pitu rejecting folder %@", collection.localizedTitle);
     }
@@ -99,8 +97,6 @@
     
     if (self.album.assetCollection) {
         result = [PHAsset fetchAssetsInAssetCollection:self.album.assetCollection options:allPhotosOptions];
-    } else {
-        result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:allPhotosOptions];
     }
     
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:result.count];
