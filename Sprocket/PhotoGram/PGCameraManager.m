@@ -165,22 +165,27 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-    [self.session addInput:input];
-    
-    AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
-    newCaptureVideoPreviewLayer.frame = view.bounds;
-    
-    self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
-    NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
-    [self.stillImageOutput setOutputSettings:outputSettings];
-    [self.session addOutput:self.stillImageOutput];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-        [view.layer addSublayer:newCaptureVideoPreviewLayer];
-    });
-    
-    [self.session startRunning];
+
+    if (!input || error) {
+        PGLogError(@"Error creating capture device input: %@", error.localizedDescription);
+    } else {
+        [self.session addInput:input];
+        
+        AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
+        newCaptureVideoPreviewLayer.frame = view.bounds;
+        
+        self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+        NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
+        [self.stillImageOutput setOutputSettings:outputSettings];
+        [self.session addOutput:self.stillImageOutput];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+            [view.layer addSublayer:newCaptureVideoPreviewLayer];
+        });
+        
+        [self.session startRunning];
+    }
 }
 
 - (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device
