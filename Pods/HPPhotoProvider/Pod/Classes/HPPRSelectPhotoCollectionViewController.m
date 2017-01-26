@@ -57,6 +57,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 #pragma mark - View management
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.cameraButtonInCollectionView = NO;
+    }
+    return self;
+}
 - (void)initRefreshControl
 {
     if (!self.refreshControl) {
@@ -268,17 +276,27 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    if (self.cameraButtonInCollectionView) {
+        return [self.provider imageCount] + 1;
+    }
+    
     return [self.provider imageCount];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
-    cell.delegate = self;
-    cell.retrieveLowQuality = self.showGridView;
-    cell.media = [self.provider imageAtIndex:indexPath.row];
-
-    return cell;
+    if (self.cameraButtonInCollectionView && indexPath.item == 0) {
+        UICollectionView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CameraCell" forIndexPath:indexPath];
+        
+        return cell;
+    } else {
+        HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
+        cell.delegate = self;
+        cell.retrieveLowQuality = self.showGridView;
+        cell.media = [self.provider imageAtIndex:indexPath.row];
+        
+        return cell;
+    }
 }
 
 #pragma mark - MCSelectPhotoViewCellDelegate
@@ -294,6 +312,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if  (self.cameraButtonInCollectionView && indexPath.item == 0) {
+        if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerDidSelectCamera:)]) {
+            [self.delegate selectPhotoCollectionViewControllerDidSelectCamera:self];
+        }
+        
+        return;
+    }
+    
     HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     [cell showLoading];
     

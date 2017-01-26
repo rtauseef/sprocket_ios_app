@@ -63,9 +63,9 @@ int const kCameraRollCancelButtonIndex = 0;
 - (void)checkStatusWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion
 {
     if (completion) {
-        ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
-        BOOL loggedIn = (ALAuthorizationStatusAuthorized == authorizationStatus);
-        completion(loggedIn, nil);
+//        ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
+//        BOOL loggedIn = (ALAuthorizationStatusAuthorized == authorizationStatus);
+        completion(YES, nil);
     }
 }
 

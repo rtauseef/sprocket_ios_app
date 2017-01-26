@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 @property (strong, nonatomic) HPPRSelectPhotoProvider *provider;
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *customNoPhotosMessage;
+@property (assign, nonatomic) BOOL cameraButtonInCollectionView;
 
 @end
 
@@ -35,6 +36,7 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 @optional
 - (UIEdgeInsets)collectionViewContentInset;
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didChangeViewMode:(HPPRSelectPhotoCollectionViewMode)viewMode;
+- (void)selectPhotoCollectionViewControllerDidSelectCamera:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 
 @end
 
