@@ -102,12 +102,6 @@
     if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressFolderButton:)]) {
         [self.delegate mediaNavigationDidPressFolderButton:self];
     }
-    
-    if ([PGAppAppearance navBarColor] == self.navigationView.backgroundColor) {
-        self.navigationView.backgroundColor = [UIColor blueColor];
-    } else {
-        self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
-    }
 }
 
 - (IBAction)didPressMenuButton:(id)sender {

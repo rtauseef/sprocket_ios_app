@@ -24,11 +24,12 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIView+Animations.h"
 #import "SWRevealViewController.h"
+#import "PGSelectAlbumDropDownViewController.h"
 
 NSString * const kCameraRollUserName = @"CameraRollUserName";
 NSString * const kCameraRollUserId = @"CameraRollUserId";
 
-@interface PGCameraRollLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate>
+@interface PGCameraRollLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGSelectAlbumDropDownViewControllerDelegate>
 
 @property (strong, nonatomic) void(^accessCompletion)(BOOL granted);
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
@@ -69,7 +70,15 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 
 - (void)showAlbums
 {
-    [self checkCameraRollAndAlbums:YES];
+//    [self checkCameraRollAndAlbums:YES];
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGSelectAlbumDropDownViewController *vc = (PGSelectAlbumDropDownViewController *) [storyboard instantiateViewControllerWithIdentifier:@"PGSelectAlbumDropDownViewController"];
+    vc.delegate = self;
+    vc.provider = [HPPRCameraRollPhotoProvider sharedInstance];
+
+    [self.navigationController.topViewController addChildViewController:vc];
+    [self.navigationController.topViewController.view addSubview:vc.view];
 }
 
 - (void)checkCameraRollAndAlbums:(BOOL)forAlbums
@@ -138,6 +147,13 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 
 - (UIEdgeInsets)collectionViewContentInset {
     return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
+}
+
+
+#pragma mark - PGSelectAlbumDropDownViewControllerDelegate
+
+- (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album
+{
 }
 
 @end

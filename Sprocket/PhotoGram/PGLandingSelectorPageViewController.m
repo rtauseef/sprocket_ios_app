@@ -362,20 +362,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     UINavigationController *navController = [self currentNavigationController];
 
-    BOOL popped = NO;
-
-    for (UIViewController *vc in navController.viewControllers) {
-        if ([vc isKindOfClass:[HPPRSelectAlbumTableViewController class]]) {
-            [navController popToViewController:vc animated:YES];
-            popped = YES;
-            break;
-        }
-    }
-    
-    if (!popped) {
-        PGLandingPageViewController *landingPage = (PGLandingPageViewController *)navController.viewControllers[0];
-        [landingPage showAlbums];
-    }
+    PGLandingPageViewController *landingPage = (PGLandingPageViewController *)navController.viewControllers[0];
+    [landingPage showAlbums];
 }
 
 - (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav

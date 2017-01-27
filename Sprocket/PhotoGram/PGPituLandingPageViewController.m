@@ -67,7 +67,7 @@
 
 - (void)showAlbums
 {
-    [self checkCameraRollAndAlbums:YES];
+//    [self checkCameraRollAndAlbums:YES];
 }
 
 - (void)checkCameraRollAndAlbums:(BOOL)forAlbums

@@ -61,7 +61,7 @@
 
 - (void)showAlbums
 {
-    [self checkQzoneAndAlbums:YES];
+//    [self checkQzoneAndAlbums:YES];
 }
 
 - (void)checkQzoneAndAlbums:(BOOL)forAlbums

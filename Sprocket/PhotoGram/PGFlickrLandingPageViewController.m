@@ -90,7 +90,7 @@ NSString * const kFlickrUserIdKey = @"userID";
 
 - (void)showAlbums
 {
-    [self checkFlickrAndAlbums:YES];
+//    [self checkFlickrAndAlbums:YES];
 }
 
 #pragma mark - Utils

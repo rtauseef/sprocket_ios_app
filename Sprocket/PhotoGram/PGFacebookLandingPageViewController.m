@@ -91,7 +91,7 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)showAlbums
 {
-    [self checkFacebookAndAlbums:YES];
+//    [self checkFacebookAndAlbums:YES];
 }
 
 - (void)checkFacebookAndAlbums:(BOOL)forAlbums
