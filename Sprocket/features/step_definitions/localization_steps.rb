@@ -23,7 +23,15 @@ Then(/^I change the language$/) do
                         if ENV['LANGUAGE'] == 'Italian'
                             ios_locale_id = "it_IT"
                         else
-                            ios_locale_id = "en_US"
+                            if ENV['LANGUAGE'] == 'Dutch'
+                                ios_locale_id = "nl_NL"
+                            else
+                                if ENV['LANGUAGE'] == 'Danish'
+                                    ios_locale_id = "da_DK"
+                                else
+                                    ios_locale_id = "en_US"
+                                end
+                            end
                         end
                     end
                 end
@@ -54,7 +62,15 @@ end
                     if $curr_language.strip == "it"
                         $list_loc=$language_arr["it_IT"]
                     else
-	                   $list_loc=$language_arr["en_US"]
+                        if $curr_language.strip == "nl"
+                            $list_loc=$language_arr["nl_NL"]
+                        else
+                            if $curr_language.strip == "da"
+                                $list_loc=$language_arr["da_DK"]
+                            else
+                                $list_loc=$language_arr["en_US"]
+                            end
+                        end
                     end
                 end
             end
@@ -118,9 +134,14 @@ Then(/^I verify the "(.*?)" text$/) do |text|
 end
 
 And(/^I verify the "(.*?)" link$/) do |link|
-    terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service']}'")
-    raise "not found!" unless terms_of_service_link.length > 0
-    sleep(WAIT_SCREENLOAD)
+    if ENV['LANGUAGE'] == "Danish"
+        link_text = query("PGTermsAttributedLabel", :text)[0]
+        raise "localization failed!" unless link_text == $list_loc['terms_of_service']
+    else
+        terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service']}'")
+        raise "not found!" unless terms_of_service_link.length > 0
+        sleep(WAIT_SCREENLOAD)
+    end
 end
 
 And(/^I should make sure there is no app crash$/) do 

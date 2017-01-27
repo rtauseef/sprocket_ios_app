@@ -130,8 +130,14 @@ def terms_of_service_link
            $list_loc=$language_arr["fr_FR"]
         else if ENV['LANGUAGE'] == "Italian"
            $list_loc=$language_arr["it_IT"]
+       else if ENV['LANGUAGE'] == "Dutch"
+           $list_loc=$language_arr["nl_NL"]
+        else if ENV['LANGUAGE'] == "Danish"
+           $list_loc=$language_arr["da_DK"]
        else
         $list_loc=$language_arr["en_US"]
+       end
+       end
        end
        end
        end
