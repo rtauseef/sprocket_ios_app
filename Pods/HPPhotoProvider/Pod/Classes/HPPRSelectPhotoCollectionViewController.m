@@ -18,6 +18,7 @@
 #import "HPPRNoInternetConnectionMessageView.h"
 #import "HPPRCacheService.h"
 #import "HPPRSelectPhotoProvider.h"
+#import "HPPRCameraCollectionViewCell.h"
 #import "HPPRAppearance.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
@@ -286,7 +287,12 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.cameraButtonInCollectionView && indexPath.item == 0) {
-        UICollectionView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CameraCell" forIndexPath:indexPath];
+        HPPRCameraCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CameraCell" forIndexPath:indexPath];
+        [cell addCamera];
+        
+        if ([self.delegate respondsToSelector:@selector(cameraPosition)]) {
+            [cell changeCameraPosition:[self.delegate cameraPosition]];
+        }
         
         return cell;
     } else {

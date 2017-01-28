@@ -19,6 +19,7 @@
 #import "PGPreviewViewController.h"
 #import "PGImagePickerLandscapeSupportController.h"
 #import "PGAnalyticsManager.h"
+#import "PGCameraManager.h"
 #import "HPPRCameraRollLoginProvider.h"
 #import "HPPRCameraRollPhotoProvider.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -145,6 +146,11 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 
 - (UIEdgeInsets)collectionViewContentInset {
     return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
+}
+
+- (AVCaptureDevicePosition)cameraPosition
+{
+    return [PGCameraManager sharedInstance].lastDeviceCameraPosition;
 }
 
 @end
