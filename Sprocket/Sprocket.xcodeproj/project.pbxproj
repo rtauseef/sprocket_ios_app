@@ -71,8 +71,8 @@
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
-		2671D09C1E3D154200F166E3 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D09B1E3D154200F166E3 /* NotificationService.m */; };
-		2671D0A01E3D154300F166E3 /* UrbanAirshipExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D0981E3D154200F166E3 /* UrbanAirshipExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2671D0AE1E3D227900F166E3 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D0AD1E3D227900F166E3 /* NotificationService.m */; };
+		2671D0B21E3D227900F166E3 /* UrbanAirshipExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D0AA1E3D227900F166E3 /* UrbanAirshipExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
@@ -919,7 +919,6 @@
 		9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852B71D626A96001288D9 /* 1_turquoise_frame_TN@2x.png */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
-		C2C6C5FA0D305A42FBAC83E3 /* libPods-UrbanAirshipExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D93E9BA84CD881E28CF36A /* libPods-UrbanAirshipExtension.a */; };
 		CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
 		CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		CC10808519CA122B00C1553A /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
@@ -1116,11 +1115,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2671D09E1E3D154300F166E3 /* PBXContainerItemProxy */ = {
+		2671D0B01E3D227900F166E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2671D0971E3D154200F166E3;
+			remoteGlobalIDString = 2671D0A91E3D227900F166E3;
 			remoteInfo = UrbanAirshipExtension;
 		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
@@ -1157,7 +1156,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				2671D0A01E3D154300F166E3 /* UrbanAirshipExtension.appex in Embed App Extensions */,
+				2671D0B21E3D227900F166E3 /* UrbanAirshipExtension.appex in Embed App Extensions */,
 				82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -1264,10 +1263,10 @@
 		261BCFFD1DC9346B003AF6F1 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261BCFFE1DC9346C003AF6F1 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		261BCFFF1DC9396C003AF6F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
-		2671D0981E3D154200F166E3 /* UrbanAirshipExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UrbanAirshipExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		2671D09A1E3D154200F166E3 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		2671D09B1E3D154200F166E3 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		2671D09D1E3D154300F166E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2671D0AA1E3D227900F166E3 /* UrbanAirshipExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UrbanAirshipExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2671D0AC1E3D227900F166E3 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		2671D0AD1E3D227900F166E3 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		2671D0AF1E3D227900F166E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26760A7D1DB00FBF00F28176 /* PGBaseAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGBaseAnalyticsManager.h; sourceTree = "<group>"; };
 		26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBaseAnalyticsManager.m; sourceTree = "<group>"; };
 		26A8D4381DC96D950079C0D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1999,11 +1998,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2671D0951E3D154200F166E3 /* Frameworks */ = {
+		2671D0A71E3D227900F166E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2C6C5FA0D305A42FBAC83E3 /* libPods-UrbanAirshipExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2066,12 +2064,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2671D0991E3D154200F166E3 /* UrbanAirshipExtension */ = {
+		2671D0AB1E3D227900F166E3 /* UrbanAirshipExtension */ = {
 			isa = PBXGroup;
 			children = (
-				2671D09A1E3D154200F166E3 /* NotificationService.h */,
-				2671D09B1E3D154200F166E3 /* NotificationService.m */,
-				2671D09D1E3D154300F166E3 /* Info.plist */,
+				2671D0AC1E3D227900F166E3 /* NotificationService.h */,
+				2671D0AD1E3D227900F166E3 /* NotificationService.m */,
+				2671D0AF1E3D227900F166E3 /* Info.plist */,
 			);
 			path = UrbanAirshipExtension;
 			sourceTree = "<group>";
@@ -2704,7 +2702,7 @@
 				E34D5060199AB87B006D80E0 /* Sprocket */,
 				E34D5082199AB87B006D80E0 /* SprocketTests */,
 				821523271D82215600C0541C /* Sprocket Print */,
-				2671D0991E3D154200F166E3 /* UrbanAirshipExtension */,
+				2671D0AB1E3D227900F166E3 /* UrbanAirshipExtension */,
 				E34D5059199AB87B006D80E0 /* Frameworks */,
 				E34D5058199AB87B006D80E0 /* Products */,
 				DCDDC5ACC635A15B68D63426 /* Pods */,
@@ -2718,7 +2716,7 @@
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
 				821523261D82215600C0541C /* Sprocket Print.appex */,
 				F1B9596C1DAECAF400EF6EB7 /* Sprocket-cal.app */,
-				2671D0981E3D154200F166E3 /* UrbanAirshipExtension.appex */,
+				2671D0AA1E3D227900F166E3 /* UrbanAirshipExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3090,15 +3088,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2671D0971E3D154200F166E3 /* UrbanAirshipExtension */ = {
+		2671D0A91E3D227900F166E3 /* UrbanAirshipExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2671D0A51E3D154300F166E3 /* Build configuration list for PBXNativeTarget "UrbanAirshipExtension" */;
+			buildConfigurationList = 2671D0B31E3D227900F166E3 /* Build configuration list for PBXNativeTarget "UrbanAirshipExtension" */;
 			buildPhases = (
-				CE5A2C98B3BC1B6F0BE5F91C /* [CP] Check Pods Manifest.lock */,
-				2671D0941E3D154200F166E3 /* Sources */,
-				2671D0951E3D154200F166E3 /* Frameworks */,
-				2671D0961E3D154200F166E3 /* Resources */,
-				EC0CF4CC17E1A69068C5A9DC /* [CP] Copy Pods Resources */,
+				2671D0A61E3D227900F166E3 /* Sources */,
+				2671D0A71E3D227900F166E3 /* Frameworks */,
+				2671D0A81E3D227900F166E3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -3106,7 +3102,7 @@
 			);
 			name = UrbanAirshipExtension;
 			productName = UrbanAirshipExtension;
-			productReference = 2671D0981E3D154200F166E3 /* UrbanAirshipExtension.appex */;
+			productReference = 2671D0AA1E3D227900F166E3 /* UrbanAirshipExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		42188b650312ea34d00c34bf /* Sprocket-cal */ = {
@@ -3179,7 +3175,7 @@
 			);
 			dependencies = (
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
-				2671D09F1E3D154300F166E3 /* PBXTargetDependency */,
+				2671D0B11E3D227900F166E3 /* PBXTargetDependency */,
 			);
 			name = Sprocket;
 			productName = PhotoGram;
@@ -3214,7 +3210,7 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = HP;
 				TargetAttributes = {
-					2671D0971E3D154200F166E3 = {
+					2671D0A91E3D227900F166E3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = UJ5KAZ5V7V;
 						ProvisioningStyle = Automatic;
@@ -3275,13 +3271,13 @@
 				E34D507A199AB87B006D80E0 /* SprocketTests */,
 				821523251D82215600C0541C /* Sprocket Print */,
 				42188b650312ea34d00c34bf /* Sprocket-cal */,
-				2671D0971E3D154200F166E3 /* UrbanAirshipExtension */,
+				2671D0A91E3D227900F166E3 /* UrbanAirshipExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2671D0961E3D154200F166E3 /* Resources */ = {
+		2671D0A81E3D227900F166E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4418,21 +4414,6 @@
 			shellPath = /bin/bash;
 			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
 		};
-		CE5A2C98B3BC1B6F0BE5F91C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		E387B47719DA23E000ABB167 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4445,21 +4426,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Crashlytics.framework/run fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed 198e928d3e88e21a17980402bb913b2eb11f42f7037c2d1d9747ec9650502ce6";
-		};
-		EC0CF4CC17E1A69068C5A9DC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-UrbanAirshipExtension/Pods-UrbanAirshipExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		FF7337C719F71C7900A91B3C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4533,11 +4499,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2671D0941E3D154200F166E3 /* Sources */ = {
+		2671D0A61E3D227900F166E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2671D09C1E3D154200F166E3 /* NotificationService.m in Sources */,
+				2671D0AE1E3D227900F166E3 /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4725,10 +4691,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2671D09F1E3D154300F166E3 /* PBXTargetDependency */ = {
+		2671D0B11E3D227900F166E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2671D0971E3D154200F166E3 /* UrbanAirshipExtension */;
-			targetProxy = 2671D09E1E3D154300F166E3 /* PBXContainerItemProxy */;
+			target = 2671D0A91E3D227900F166E3 /* UrbanAirshipExtension */;
+			targetProxy = 2671D0B01E3D227900F166E3 /* PBXContainerItemProxy */;
 		};
 		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4918,9 +4884,8 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2671D0A11E3D154300F166E3 /* Debug */ = {
+		2671D0B41E3D227900F166E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27F57161A30B404A8D7C5BA4 /* Pods-UrbanAirshipExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -4938,9 +4903,8 @@
 			};
 			name = Debug;
 		};
-		2671D0A21E3D154300F166E3 /* Release */ = {
+		2671D0B51E3D227900F166E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C36DB06BED36DED3F669C8EA /* Pods-UrbanAirshipExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -4959,9 +4923,8 @@
 			};
 			name = Release;
 		};
-		2671D0A31E3D154300F166E3 /* TestFlight */ = {
+		2671D0B61E3D227900F166E3 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C04D94374AC5786C3183D49 /* Pods-UrbanAirshipExtension.testflight.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -4980,9 +4943,8 @@
 			};
 			name = TestFlight;
 		};
-		2671D0A41E3D154300F166E3 /* AppStore */ = {
+		2671D0B71E3D227900F166E3 /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2EE98156F35FB37EF91CFB0 /* Pods-UrbanAirshipExtension.appstore.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -5936,13 +5898,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2671D0A51E3D154300F166E3 /* Build configuration list for PBXNativeTarget "UrbanAirshipExtension" */ = {
+		2671D0B31E3D227900F166E3 /* Build configuration list for PBXNativeTarget "UrbanAirshipExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2671D0A11E3D154300F166E3 /* Debug */,
-				2671D0A21E3D154300F166E3 /* Release */,
-				2671D0A31E3D154300F166E3 /* TestFlight */,
-				2671D0A41E3D154300F166E3 /* AppStore */,
+				2671D0B41E3D227900F166E3 /* Debug */,
+				2671D0B51E3D227900F166E3 /* Release */,
+				2671D0B61E3D227900F166E3 /* TestFlight */,
+				2671D0B71E3D227900F166E3 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

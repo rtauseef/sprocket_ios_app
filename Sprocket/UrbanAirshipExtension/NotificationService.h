@@ -6,9 +6,8 @@
 //  Copyright © 2017 HP. All rights reserved.
 //
 
-@import AirshipAppExtensions;
+#import <UserNotifications/UserNotifications.h>
 
-@interface NotificationService : UAMediaAttachmentExtension
+@interface NotificationService : UNNotificationServiceExtension
 
 @end
-
