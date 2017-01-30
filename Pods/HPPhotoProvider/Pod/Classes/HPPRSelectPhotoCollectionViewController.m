@@ -58,14 +58,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 #pragma mark - View management
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.cameraButtonInCollectionView = NO;
-    }
-    return self;
-}
 - (void)initRefreshControl
 {
     if (!self.refreshControl) {
@@ -277,7 +269,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (self.cameraButtonInCollectionView) {
+    if (self.provider.showCameraButtonInCollectionView) {
         return [self.provider imageCount] + 1;
     }
     
@@ -286,7 +278,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.cameraButtonInCollectionView && indexPath.item == 0) {
+    if (self.provider.showCameraButtonInCollectionView && indexPath.item == 0) {
         HPPRCameraCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CameraCell" forIndexPath:indexPath];
         [cell addCamera];
         
@@ -318,7 +310,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if  (self.cameraButtonInCollectionView && indexPath.item == 0) {
+    if  (self.provider.showCameraButtonInCollectionView && indexPath.item == 0) {
         if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerDidSelectCamera:)]) {
             [self.delegate selectPhotoCollectionViewControllerDidSelectCamera:self];
         }

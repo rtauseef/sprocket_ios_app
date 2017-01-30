@@ -93,7 +93,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                 vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
                 ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
                 ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
-                ((HPPRSelectPhotoCollectionViewController *)vc).cameraButtonInCollectionView = YES;
             }
             
             dispatch_async(dispatch_get_main_queue(), ^ {
@@ -136,21 +135,8 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     [[PGAnalyticsManager sharedManager] trackPhotoCollectionViewMode:mode];
 }
 
-- (void)selectPhotoCollectionViewControllerDidSelectCamera:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    
-    [self presentViewController:previewViewControllerCamera animated:YES completion:nil];
-}
-
 - (UIEdgeInsets)collectionViewContentInset {
     return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
-}
-
-- (AVCaptureDevicePosition)cameraPosition
-{
-    return [PGCameraManager sharedInstance].lastDeviceCameraPosition;
 }
 
 @end
