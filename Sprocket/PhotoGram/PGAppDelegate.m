@@ -17,6 +17,7 @@
 #import <HPPRFlickrLoginProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <DBChooser/DBChooser.h>
+#import <AirshipKit/AirshipKit.h>
 #import "PGAppDelegate.h"
 #import "PGAppAppearance.h"
 #import "PGAnalyticsManager.h"
@@ -75,6 +76,38 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     self.lastConnectedValue = connectionDefaultValue;
     self.menuShowing = NO;
     
+    // Set log level for debugging config loading (optional)
+    // It will be set to the value in the loaded config upon takeOff
+    [UAirship setLogLevel:UALogLevelTrace];
+    
+    // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
+    // or set runtime properties here.
+    UAConfig *config = [UAConfig defaultConfig];
+    
+    // Call takeOff (which creates the UAirship singleton)
+    [UAirship takeOff:config];
+    
+    // Print out the application configuration for debugging (optional)
+    UA_LDEBUG(@"Config:\n%@", [config description]);
+    
+    // Set the icon badge to zero on startup (optional)
+    [[UAirship push] resetBadge];
+    
+    // Set the notification types required for the app (optional). This value defaults
+    // to badge, alert and sound, so it's only necessary to set it if you want
+    // to add or remove types.
+    //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
+    //                                        UIUserNotificationTypeBadge |
+    //                                        UIUserNotificationTypeSound);
+    
+    
+    // User notifications will not be enabled until userPushNotificationsEnabled is
+    // set YES on UAPush. Onced enabled, the setting will be persisted and the user
+    // will be prompted to allow notifications. You should wait for a more appropriate
+    // time to enable push to increase the likelihood that the user will accept
+    // notifications. For troubleshooting, we will enable this at launch.
+    [UAirship push].userPushNotificationsEnabled = YES;
+
     return YES;
 }
 
