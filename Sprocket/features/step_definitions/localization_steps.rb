@@ -29,7 +29,19 @@ Then(/^I change the language$/) do
                                 if ENV['LANGUAGE'] == 'Danish'
                                     ios_locale_id = "da_DK"
                                 else
-                                    ios_locale_id = "en_US"
+                                    if ENV['LANGUAGE'] == 'Finnish'
+                                        ios_locale_id = "fi_FI"
+                                    else
+                                        if ENV['LANGUAGE'] == 'Estonian'
+                                            ios_locale_id = "et_EE"
+                                        else
+                                            if ENV['LANGUAGE'] == 'Latvian'
+                                                ios_locale_id = "lv_LV"
+                                            else
+                                                ios_locale_id = "en_US"
+                                            end
+                                        end
+                                    end
                                 end
                             end
                         end
@@ -43,10 +55,6 @@ end
     sim_name = get_device_name + " " + device_type
     os_version = get_os_version.to_s.gsub(".", "-")
     SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
-    #English-en_US
-    #Spanish-es_ES
-    #Chinese-zh_Hans
-
     if $curr_language.strip == "es"
         $list_loc=$language_arr["es_ES"]
     else
@@ -68,7 +76,19 @@ end
                             if $curr_language.strip == "da"
                                 $list_loc=$language_arr["da_DK"]
                             else
-                                $list_loc=$language_arr["en_US"]
+                                if $curr_language.strip == "fi"
+                                    $list_loc=$language_arr["fi_FI"]
+                                else
+                                    if $curr_language.strip == "et"
+                                        $list_loc=$language_arr["et_EE"]
+                                    else
+                                        if $curr_language.strip == "lv"
+                                            $list_loc=$language_arr["lv_LV"]
+                                        else
+                                            $list_loc=$language_arr["en_US"]
+                                        end
+                                    end
+                                end
                             end
                         end
                     end

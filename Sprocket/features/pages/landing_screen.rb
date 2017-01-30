@@ -121,28 +121,47 @@ def terms_of_service_link
           end
       close_camera_popup
        if ENV['LANGUAGE'] == "Spanish"
-     $list_loc=$language_arr["es_ES"]
-       else if ENV['LANGUAGE'] == "Chinese"
+            $list_loc=$language_arr["es_ES"]
+       else 
+           if ENV['LANGUAGE'] == "Chinese"
                  $list_loc=$language_arr["zh_Hans"]
-       else if ENV['LANGUAGE'] == "German"
-           $list_loc=$language_arr["de_DE"]
-       else if ENV['LANGUAGE'] == "French"
-           $list_loc=$language_arr["fr_FR"]
-        else if ENV['LANGUAGE'] == "Italian"
-           $list_loc=$language_arr["it_IT"]
-       else if ENV['LANGUAGE'] == "Dutch"
-           $list_loc=$language_arr["nl_NL"]
-        else if ENV['LANGUAGE'] == "Danish"
-           $list_loc=$language_arr["da_DK"]
-       else
-        $list_loc=$language_arr["en_US"]
+            else 
+               if ENV['LANGUAGE'] == "German"
+                    $list_loc=$language_arr["de_DE"]
+                else
+                   if ENV['LANGUAGE'] == "French"
+                        $list_loc=$language_arr["fr_FR"]
+                    else 
+                       if ENV['LANGUAGE'] == "Italian"
+                            $list_loc=$language_arr["it_IT"]
+                       else
+                           if ENV['LANGUAGE'] == "Dutch"
+                               $list_loc=$language_arr["nl_NL"]
+                            else 
+                               if ENV['LANGUAGE'] == "Danish"
+                                   $list_loc=$language_arr["da_DK"]
+                                else
+                                   if ENV['LANGUAGE'] == "Finnish"
+                                        $list_loc=$language_arr["fi_FI"]
+                                   else
+                                       if ENV['LANGUAGE'] == "Estonian"
+                                           $list_loc=$language_arr["et_EE"]
+                                       else 
+                                           if ENV['LANGUAGE'] == "Latvian"
+                                               $list_loc=$language_arr["lv_LV"]
+                                           else
+                                               $list_loc=$language_arr["en_US"]
+                                           end
+                                       end
+                                   end
+                               end
+                           end
+                       end
+                   end
+               end
+           end
        end
-       end
-       end
-       end
-       end
-       end
-  end
+       
   survey_message_arr = $list_loc['survey']
   if get_xcode_version.to_i < 8
         survey_message=uia_query :view, marked:"#{survey_message_arr}"
