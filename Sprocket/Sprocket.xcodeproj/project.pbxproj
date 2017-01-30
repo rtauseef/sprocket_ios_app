@@ -2918,7 +2918,6 @@
 				F2E785281DDA78040074FFB7 /* SocialSources */,
 				E34D509B199AB9A4006D80E0 /* Storyboards */,
 				E34D5099199AB98B006D80E0 /* Additions */,
-				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				F2C46E7E1DB6F17F00604371 /* IntroWizard */,
 				E3D6816819A3D180000D45E0 /* LandingPage */,
 				9261D4031D189CE60048E5F8 /* Preview */,
@@ -2985,6 +2984,7 @@
 		E34D5099199AB98B006D80E0 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				E34D509A199AB996006D80E0 /* Method Swizzling */,
 				E3B62FF619A412E900CB80D7 /* UIView+Animations.h */,
 				E3B62FF719A412E900CB80D7 /* UIView+Animations.m */,
@@ -3335,7 +3335,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -5643,8 +5643,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "641a3a15-372c-491c-ad4a-bccfe9a7350b";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
+				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
