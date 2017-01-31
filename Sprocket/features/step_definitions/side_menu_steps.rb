@@ -84,4 +84,8 @@ And /^I tap back button$/ do
     sleep(STEP_PAUSE)
 end
 
+And /^I navigate back$/ do
+    touch @current_page.back_button
+    sleep(STEP_PAUSE)
+end
 

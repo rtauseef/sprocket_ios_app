@@ -9,8 +9,8 @@ class ResetSprocketPrinterScreen < Calabash::IBase
   end
 
   def title
-     # "view {text CONTAINS 'Technical Information'}"
-      "navigationBar marked:'#{$list_loc['Reset Sprocket Printer']}'"
+      #"navigationBar marked:'#{$list_loc['Reset Sprocket Printer']}'"
+      "UINavigationBar {accessibilityIdentifier CONTAINS '#{$list_loc['reset_sprocket']}'}"
   end
     
     def back
