@@ -1,0 +1,1 @@
+../../../UrbanAirship-iOS-AppExtensions/AirshipAppExtensions/UAMediaAttachmentPayload.h
