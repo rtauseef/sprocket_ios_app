@@ -39,6 +39,7 @@ static int kExceptionAppCellIndex         = 6;
 static int kHideSvgMessagesIndex          = 7;
 static int kEnableExtraSocialSourcesIndex = 8;
 static int kEnablePushNotificationsIndex  = 9;
+static int kDisplayNotificationMsgCenterIndex = 10;
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -158,7 +159,7 @@ static int kEnablePushNotificationsIndex  = 9;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 10;
+    NSInteger numberOfRows = 11;
     
     if ([self levelPickerIsShown]){
         
@@ -253,6 +254,13 @@ static int kEnablePushNotificationsIndex  = 9;
             }
             
             cell.textLabel.text = @"Enable push notifications";
+        } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"displayNotificationMsgCenter"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"displayNotificationMsgCenter"];
+            }
+            
+            cell.textLabel.text = @"Display Notification Message Center";
         }
     }
     
@@ -338,6 +346,9 @@ static int kEnablePushNotificationsIndex  = 9;
                 // time to enable push to increase the likelihood that the user will accept
                 // notifications. For troubleshooting, we will enable this at launch.
                 [UAirship push].userPushNotificationsEnabled = YES;
+            } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
+                // Note-- you must enable messaging before this will work
+                [[UAirship defaultMessageCenter] display];
             }
         }
     }
