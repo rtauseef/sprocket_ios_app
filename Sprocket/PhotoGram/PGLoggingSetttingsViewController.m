@@ -11,7 +11,7 @@
 //
 
 #import <Crashlytics/Crashlytics.h>
-#import <AirshipKit/AirshipKit.h>
+#import "AirshipKit.h"
 #import "PGAppDelegate.h"
 #import "PGLoggingSetttingsViewController.h"
 #import "PGAnalyticsManager.h"
@@ -158,7 +158,7 @@ static int kEnablePushNotificationsIndex  = 9;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 9;
+    NSInteger numberOfRows = 10;
     
     if ([self levelPickerIsShown]){
         
