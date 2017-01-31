@@ -117,8 +117,8 @@ def terms_of_service_link
           if element_exists("view marked:'sprocket'")
               $test = "sprocket"
           else 
-              if element_exists("view marked:'„Sprocket“'")
-                $test = "„Sprocket“"
+              if element_exists("view marked:'â€žSprocketâ€œ'")
+                $test = "â€žSprocketâ€œ"
               else
                   $test = "Sprocket"
               end
