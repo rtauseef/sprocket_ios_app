@@ -5849,8 +5849,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
+				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
