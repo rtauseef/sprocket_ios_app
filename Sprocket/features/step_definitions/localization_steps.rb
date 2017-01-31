@@ -38,7 +38,23 @@ Then(/^I change the language$/) do
                                             if ENV['LANGUAGE'] == 'Latvian'
                                                 ios_locale_id = "lv_LV"
                                             else
-                                                ios_locale_id = "en_US"
+                                                if ENV['LANGUAGE'] == 'Lithuanian'
+                                                    ios_locale_id = "lt_LT"
+                                                else
+                                                    if ENV['LANGUAGE'] == 'Norwegian'
+                                                        ios_locale_id = "nb_NO"
+                                                    else
+                                                        if ENV['LANGUAGE'] == 'Portuguese'
+                                                            ios_locale_id = "pt_PT"
+                                                        else
+                                                            if ENV['LANGUAGE'] == 'Swedish'
+                                                                ios_locale_id = "sv_SE"
+                                                            else
+                                                                ios_locale_id = "en_US"
+                                                            end
+                                                        end
+                                                    end
+                                                end
                                             end
                                         end
                                     end
@@ -85,7 +101,23 @@ end
                                         if $curr_language.strip == "lv"
                                             $list_loc=$language_arr["lv_LV"]
                                         else
-                                            $list_loc=$language_arr["en_US"]
+                                            if $curr_language.strip == "lt"
+                                                $list_loc=$language_arr["lt_LT"]
+                                            else
+                                                if $curr_language.strip == "nb"
+                                                    $list_loc=$language_arr["nb_NO"]
+                                                else
+                                                    if $curr_language.strip == "pt"
+                                                        $list_loc=$language_arr["pt_PT"]
+                                                    else
+                                                        if $curr_language.strip == "sv"
+                                                            $list_loc=$language_arr["sv_SE"]
+                                                        else
+                                                            $list_loc=$language_arr["en_US"]
+                                                        end
+                                                    end
+                                                end
+                                            end
                                         end
                                     end
                                 end
@@ -224,7 +256,12 @@ def check_options_exist item
 end
 
 Then /^I touch "(.*?)" option in the screen$/ do |option|
-    touch "view marked:'#{$list_loc[option]}'" 
-    sleep(STEP_PAUSE)
+    if option == "sprocket"
+        touch "view marked:'#{$list_loc['side_menu']}'" 
+        sleep(STEP_PAUSE)
+    else
+        touch "view marked:'#{$list_loc[option]}'" 
+        sleep(STEP_PAUSE)
+    end
 end
  

@@ -116,8 +116,12 @@ def terms_of_service_link
   def navigate
           if element_exists("view marked:'sprocket'")
               $test = "sprocket"
-          else
-              $test = "Sprocket"
+          else 
+              if element_exists("view marked:'„Sprocket“'")
+                $test = "„Sprocket“"
+              else
+                  $test = "Sprocket"
+              end
           end
       close_camera_popup
        if ENV['LANGUAGE'] == "Spanish"
@@ -150,7 +154,23 @@ def terms_of_service_link
                                            if ENV['LANGUAGE'] == "Latvian"
                                                $list_loc=$language_arr["lv_LV"]
                                            else
-                                               $list_loc=$language_arr["en_US"]
+                                               if ENV['LANGUAGE'] == "Lithuanian"
+                                                   $list_loc=$language_arr["lt_LT"]
+                                                else
+                                                   if ENV['LANGUAGE'] == "Norwegian"
+                                                       $list_loc=$language_arr["nb_NO"]
+                                                   else
+                                                       if ENV['LANGUAGE'] == "Portuguese"
+                                                            $list_loc=$language_arr["pt_PT"]
+                                                       else
+                                                           if ENV['LANGUAGE'] == "Swedish"
+                                                                $list_loc=$language_arr["sv_SE"]
+                                                           else
+                                                                $list_loc=$language_arr["en_US"]
+                                                           end
+                                                       end
+                                                   end
+                                               end
                                            end
                                        end
                                    end

@@ -141,7 +141,8 @@ Scenario: Verify Sprocket screen options
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
         Then I should see the side menu
-        Then I touch "sprocket"
+        #Then I touch "sprocket"
+        Then I touch "sprocket" option in the screen
         Then I should see the "Sprocket" screen
         And I should see the below listed sprocket screen texts:
         | App Settings |
@@ -153,7 +154,8 @@ Scenario: Verify localization of navigation to Technical Information screen
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
         Then I should see the side menu
-        Then I touch "sprocket"
+        #Then I touch "sprocket"
+        Then I touch "sprocket" option in the screen 
         Then I should see the "Sprocket" screen
         Then I touch "Printers" option in the screen
         And I should see the technical information
