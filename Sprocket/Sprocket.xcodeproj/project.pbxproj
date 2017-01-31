@@ -808,6 +808,7 @@
 		82FF41921E369CF70027B181 /* RedStripes_Frame_iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E648471E316F9200764213 /* RedStripes_Frame_iOS.png */; };
 		83569bef079a56f02f2a8855 /* 7_gradient_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852D11D626A96001288D9 /* 7_gradient_frame.png */; };
 		86ea918f84d2cf7460a13e37 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = 82362A261D59557E0019F024 /* hearts.png */; };
+		8B12F3FDE6756EB813D4AA92 /* libPods-PushNotificationExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */; };
 		8D14780195E50EB1D3C614FE /* libPods-Sprocket-cal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */; };
 		8afa4d63d93bfef2cea4068d /* 4_white_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852C31D626A96001288D9 /* 4_white_frame_TN@2x.png */; };
 		8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
@@ -1203,6 +1204,7 @@
 		03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
 		0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket-cal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		260BD0711DDE3D3C00AE6BAA /* PGPituLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPituLandingPageViewController.h; sourceTree = "<group>"; };
@@ -1340,6 +1342,7 @@
 		2AC79D181DFB842600D86609 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AF06EF01DD5484F000FF091 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2D2ACED94C674D85BC61079F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		31CDF0AE41AEFAE787A6AE25 /* Pods-PushNotificationExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotificationExtension.release.xcconfig"; path = "../Pods/Target Support Files/Pods-PushNotificationExtension/Pods-PushNotificationExtension.release.xcconfig"; sourceTree = "<group>"; };
 		3731680F1AD4B08900503065 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		378EA80619A69E5700C72F1A /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back@2x.png"; path = "Resources/Images/Icons/Back@2x.png"; sourceTree = "<group>"; };
 		378EA80719A69E5700C72F1A /* Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Share@2x.png"; path = "Resources/Images/Icons/Share@2x.png"; sourceTree = "<group>"; };
@@ -1351,6 +1354,8 @@
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		65F7A8111DA875AA0023E21D /* Sprocket Print.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sprocket Print.entitlements"; sourceTree = "<group>"; };
+		768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushNotificationExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
 		82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImglyManager.m; sourceTree = "<group>"; };
 		82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGGesturesView+Analytics.h"; sourceTree = "<group>"; };
@@ -1715,8 +1720,6 @@
 		82E648471E316F9200764213 /* RedStripes_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RedStripes_Frame_iOS.png; path = Resources/Images/Frames/Valentines/RedStripes_Frame_iOS.png; sourceTree = "<group>"; };
 		82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResetSprocketViewController.m; sourceTree = "<group>"; };
 		82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGResetSprocketViewController.h; sourceTree = "<group>"; };
-		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
-		85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
 		922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sprocket-cal.entitlements"; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
@@ -1820,7 +1823,9 @@
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
+		B6772700662DB20204F58B3F /* Pods-PushNotificationExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotificationExtension.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-PushNotificationExtension/Pods-PushNotificationExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
+		BDA98530F6A035D66571119E /* Pods-PushNotificationExtension.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotificationExtension.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-PushNotificationExtension/Pods-PushNotificationExtension.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
@@ -1942,6 +1947,7 @@
 		E3DB16D019F567CA00C0F42B /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
 		E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA86AD6601187CF0694C1284 /* Pods-PushNotificationExtension.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushNotificationExtension.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-PushNotificationExtension/Pods-PushNotificationExtension.testflight.xcconfig"; sourceTree = "<group>"; };
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
@@ -2013,6 +2019,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B12F3FDE6756EB813D4AA92 /* libPods-PushNotificationExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2670,8 +2677,6 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */,
-				82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */,
 				08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */,
 				03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */,
 				56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */,
@@ -2682,6 +2687,12 @@
 				56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */,
 				F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */,
 				BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */,
+				0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */,
+				77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */,
+				B6772700662DB20204F58B3F /* Pods-PushNotificationExtension.debug.xcconfig */,
+				31CDF0AE41AEFAE787A6AE25 /* Pods-PushNotificationExtension.release.xcconfig */,
+				EA86AD6601187CF0694C1284 /* Pods-PushNotificationExtension.testflight.xcconfig */,
+				BDA98530F6A035D66571119E /* Pods-PushNotificationExtension.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2751,6 +2762,7 @@
 				16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */,
 				0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */,
 				E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */,
+				768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3101,10 +3113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2671D4CC1E3EB64600F166E3 /* Build configuration list for PBXNativeTarget "PushNotificationExtension" */;
 			buildPhases = (
+				2F480EBDED054F51AD5F193F /* [CP] Check Pods Manifest.lock */,
 				2671D4BF1E3EB64500F166E3 /* Sources */,
 				2671D4C01E3EB64500F166E3 /* Frameworks */,
 				2671D4C11E3EB64500F166E3 /* Resources */,
 				2671D4DD1E3EB82A00F166E3 /* CopyFiles */,
+				AA428AA985FC2F99024BAB11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4294,6 +4308,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		2F480EBDED054F51AD5F193F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4404,6 +4433,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA428AA985FC2F99024BAB11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-PushNotificationExtension/Pods-PushNotificationExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */ = {
@@ -4906,6 +4950,7 @@
 /* Begin XCBuildConfiguration section */
 		2671D4CD1E3EB64600F166E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6772700662DB20204F58B3F /* Pods-PushNotificationExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -4927,6 +4972,7 @@
 		};
 		2671D4CE1E3EB64600F166E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31CDF0AE41AEFAE787A6AE25 /* Pods-PushNotificationExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -4947,6 +4993,7 @@
 		};
 		2671D4CF1E3EB64600F166E3 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA86AD6601187CF0694C1284 /* Pods-PushNotificationExtension.testflight.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -4967,6 +5014,7 @@
 		};
 		2671D4D01E3EB64600F166E3 /* AppStore */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDA98530F6A035D66571119E /* Pods-PushNotificationExtension.appstore.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -5366,7 +5414,7 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5431,7 +5479,7 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

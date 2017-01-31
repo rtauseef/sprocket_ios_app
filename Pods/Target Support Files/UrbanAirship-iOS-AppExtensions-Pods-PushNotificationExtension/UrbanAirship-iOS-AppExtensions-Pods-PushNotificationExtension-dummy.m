@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_UrbanAirship_iOS_AppExtensions_Pods_PushNotificationExtension : NSObject
+@end
+@implementation PodsDummy_UrbanAirship_iOS_AppExtensions_Pods_PushNotificationExtension
+@end
