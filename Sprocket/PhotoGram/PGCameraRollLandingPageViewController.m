@@ -19,6 +19,7 @@
 #import "PGPreviewViewController.h"
 #import "PGImagePickerLandscapeSupportController.h"
 #import "PGAnalyticsManager.h"
+#import "PGCameraManager.h"
 #import "HPPRCameraRollLoginProvider.h"
 #import "HPPRCameraRollPhotoProvider.h"
 #import <AssetsLibrary/AssetsLibrary.h>
