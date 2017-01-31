@@ -69,6 +69,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.needsSignIn = YES;
             self.loginProvider = [HPPRFacebookLoginProvider sharedInstance];
             self.photoProvider = [HPPRFacebookPhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         case PGSocialSourceTypeFlickr:
             self.icon = [UIImage imageNamed:@"Flickr"];
@@ -78,6 +79,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.needsSignIn = YES;
             self.loginProvider = [HPPRFlickrLoginProvider sharedInstance];
             self.photoProvider = [HPPRFlickrPhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         case PGSocialSourceTypeInstagram:
             self.icon = [UIImage imageNamed:@"Instagram_C"];
@@ -87,6 +89,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.needsSignIn = YES;
             self.loginProvider = [HPPRInstagramLoginProvider sharedInstance];
             self.photoProvider = [HPPRInstagramPhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         case PGSocialSourceTypeLocalPhotos:
             self.icon = [UIImage imageNamed:@"Photos_C"];
@@ -96,6 +99,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.needsSignIn = NO;
             self.loginProvider = [HPPRCameraRollLoginProvider sharedInstance];
             self.photoProvider = [HPPRCameraRollPhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         case PGSocialSourceTypeWeiBo:
             self.icon = [UIImage imageNamed:@"WeiBo_C"];
@@ -112,6 +116,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.needsSignIn = YES;
             self.loginProvider = [HPPRQzoneLoginProvider sharedInstance];
             self.photoProvider = [HPPRQzonePhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         case PGSocialSourceTypePitu:
             self.icon = [UIImage imageNamed:@"Pitu_C"];
@@ -121,6 +126,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.needsSignIn = NO;
             self.loginProvider = [HPPRPituLoginProvider sharedInstance];
             self.photoProvider = [HPPRPituPhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
 
         default:
