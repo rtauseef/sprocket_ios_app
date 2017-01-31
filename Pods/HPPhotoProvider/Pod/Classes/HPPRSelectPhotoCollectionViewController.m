@@ -269,10 +269,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (self.provider.showCameraButtonInCollectionView) {
-        return [self.provider imageCount] + 1;
-    }
-    
     return [self.provider imageCount];
 }
 

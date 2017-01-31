@@ -166,7 +166,14 @@
 
 - (NSUInteger)replaceImagesWithRecords:(NSArray *)records
 {
-    self.images = records;
+    if (self.showCameraButtonInCollectionView) {
+        NSMutableArray *recordsWithCamera = [NSMutableArray arrayWithArray:records];
+        [recordsWithCamera insertObject:@"Camera" atIndex:0];
+        self.images = recordsWithCamera;
+    } else {
+        self.images = records;
+    }
+    
     return self.images.count;
 }
 
