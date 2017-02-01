@@ -32,15 +32,12 @@
 
 - (void)addCamera
 {
-    if ([self.session isRunning]) {
+    if (self.session) {
         return;
     }
-    
-    [self layoutIfNeeded];
-    [self.cameraView layoutIfNeeded];
 
     self.session = [[AVCaptureSession alloc] init];
-    self.session.sessionPreset = AVCaptureSessionPresetHigh;
+    self.session.sessionPreset = AVCaptureSessionPresetLow;
 
     AVCaptureDevice *device = [self cameraWithPosition:AVCaptureDevicePositionBack];
 
@@ -62,12 +59,19 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.cameraView.layer addSublayer:newCaptureVideoPreviewLayer];
         });
-        
-        [self.session startRunning];
-        
-        [self layoutIfNeeded];
-        [self.cameraView layoutIfNeeded];
     }
+    
+    [self startCamera];
+}
+
+- (void)startCamera
+{
+    [self.session startRunning];
+}
+
+- (void)stopCamera
+{
+    [self.session stopRunning];
 }
 
 - (void)changeCameraPosition:(AVCaptureDevicePosition)position

@@ -31,6 +31,7 @@ PODS:
     - FlickrKit
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
+  - UrbanAirship-iOS-SDK (8.1.6)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
+  - UrbanAirship-iOS-SDK
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
@@ -49,7 +51,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: e016d693277e02359530fdbb3e19800d7849294b
+    :commit: a0513f548b55e0f98971e6d9daede17182395bb5
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: 9d9f724e547e687ca736bc2f0a05d2e4c2095500
@@ -63,7 +65,8 @@ SPEC CHECKSUMS:
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
+  UrbanAirship-iOS-SDK: 97f134af22ecadd364d784074dfe0e708ca6fcaf
 
-PODFILE CHECKSUM: a1e99ec3b68845a31f85a1db6ff3bf16ad6e130e
+PODFILE CHECKSUM: 59cb795a419fb32410adc4038b77ffd155da24c7
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
