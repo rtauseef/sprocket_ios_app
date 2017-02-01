@@ -20,7 +20,8 @@ class SprocketScreen < Calabash::IBase
   end
     
     def technical_info
-    "label {text CONTAINS 'Technical Information'}"
+    #"label {text CONTAINS 'Technical Information'}"
+        "label {text CONTAINS '#{$list_loc['Technical Information']}'}"
   end
     
 

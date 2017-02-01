@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -85,6 +85,35 @@
                                             <outlet property="imageView" destination="Qq5-cy-Obs" id="7ir-Kq-WN4"/>
                                             <outlet property="loadingImage" destination="PAL-Dt-d67" id="JDN-Xm-Y5v"/>
                                             <outlet property="overlayView" destination="6y7-VJ-6wc" id="iuC-vD-Sph"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CameraCell" id="3cz-ry-AC0" userLabel="CameraCell" customClass="HPPRCameraCollectionViewCell">
+                                        <rect key="frame" x="138.5" y="0.0" width="98" height="98"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVZ-o6-3fn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HPPRCameraCell.png" translatesAutoresizingMaskIntoConstraints="NO" id="mhQ-Q5-vjx">
+                                                    <rect key="frame" x="23.5" y="29.5" width="52" height="40"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="mhQ-Q5-vjx" firstAttribute="centerY" secondItem="3cz-ry-AC0" secondAttribute="centerY" id="279-BK-6CQ"/>
+                                            <constraint firstItem="YVZ-o6-3fn" firstAttribute="width" secondItem="3cz-ry-AC0" secondAttribute="width" id="I92-ga-gHV"/>
+                                            <constraint firstItem="mhQ-Q5-vjx" firstAttribute="centerX" secondItem="3cz-ry-AC0" secondAttribute="centerX" id="RB3-5S-qTR"/>
+                                            <constraint firstItem="YVZ-o6-3fn" firstAttribute="height" secondItem="3cz-ry-AC0" secondAttribute="height" id="aCm-ba-45M"/>
+                                            <constraint firstItem="YVZ-o6-3fn" firstAttribute="centerY" secondItem="3cz-ry-AC0" secondAttribute="centerY" id="ctG-gF-dKJ"/>
+                                            <constraint firstItem="YVZ-o6-3fn" firstAttribute="centerX" secondItem="3cz-ry-AC0" secondAttribute="centerX" id="tuZ-bp-FTc"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="cameraView" destination="YVZ-o6-3fn" id="dWC-iZ-8dV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -200,7 +229,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NaS-UR-KSc" id="Ilx-zy-FSg">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCx-vM-oe9" userLabel="Cover Photo Image View">
@@ -324,7 +353,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRFlickrLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="cLo-O4-i6G" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3g-kr-9iG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3g-kr-9iG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -398,7 +427,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRInstagramLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="d1M-ws-WX4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PU6-hx-jyi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="PU6-hx-jyi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -528,7 +557,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRSelectAlbumTableViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NnT-dj-EWd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GxV-vi-yaa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GxV-vi-yaa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -547,7 +576,7 @@
                 <navigationController storyboardIdentifier="HPPRSelectPhotoCollectionViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Esc-vT-OmA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cYo-OJ-2To"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcp-yD-yrr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hcp-yD-yrr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -564,6 +593,7 @@
     <resources>
         <image name="HPPRBack" width="25" height="25"/>
         <image name="HPPRBack.png" width="11" height="18"/>
+        <image name="HPPRCameraCell.png" width="52" height="40"/>
         <image name="HPPRSearch.png" width="21" height="21"/>
         <image name="Loading_Image.png" width="13" height="13"/>
     </resources>

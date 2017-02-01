@@ -18,6 +18,7 @@
 #import "HPPRNoInternetConnectionMessageView.h"
 #import "HPPRCacheService.h"
 #import "HPPRSelectPhotoProvider.h"
+#import "HPPRCameraCollectionViewCell.h"
 #import "HPPRAppearance.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
@@ -277,12 +278,23 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
-    cell.delegate = self;
-    cell.retrieveLowQuality = self.showGridView;
-    cell.media = [self.provider imageAtIndex:indexPath.row];
-
-    return cell;
+    if (self.provider.showCameraButtonInCollectionView && indexPath.item == 0) {
+        HPPRCameraCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CameraCell" forIndexPath:indexPath];
+        [cell addCamera];
+        
+        if ([self.delegate respondsToSelector:@selector(cameraPosition)]) {
+            [cell changeCameraPosition:[self.delegate cameraPosition]];
+        }
+        
+        return cell;
+    } else {
+        HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
+        cell.delegate = self;
+        cell.retrieveLowQuality = self.showGridView;
+        cell.media = [self.provider imageAtIndex:indexPath.row];
+        
+        return cell;
+    }
 }
 
 #pragma mark - MCSelectPhotoViewCellDelegate
@@ -298,6 +310,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if  (self.provider.showCameraButtonInCollectionView && indexPath.item == 0) {
+        if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerDidSelectCamera:)]) {
+            [self.delegate selectPhotoCollectionViewControllerDidSelectCamera:self];
+        }
+        
+        return;
+    }
+    
     HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     [cell showLoading];
     

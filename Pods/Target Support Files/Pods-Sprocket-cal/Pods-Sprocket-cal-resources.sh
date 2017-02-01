@@ -18,6 +18,9 @@ case "${TARGETED_DEVICE_FAMILY}" in
   2)
     TARGET_DEVICE_ARGS="--target-device ipad"
     ;;
+  3)
+    TARGET_DEVICE_ARGS="--target-device tv"
+    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -78,6 +81,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOn@2x.png"
@@ -123,12 +129,16 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib"
   install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOn@2x.png"
@@ -174,12 +184,16 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib"
   install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOn@2x.png"
@@ -225,12 +239,16 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib"
   install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "AppStore" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRBack@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/HPPRCameraCell@3x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRMyFeedOn@2x.png"
@@ -276,6 +294,7 @@ if [[ "$CONFIGURATION" == "AppStore" ]]; then
   install_resource "MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib"
   install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
+  install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -11,10 +11,14 @@
 //
 
 #import "PGLandingPageViewController.h"
+
+#import <HPPRSelectPhotoCollectionViewController.h>
 #import "PGWebViewerViewController.h"
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
 #import "PGTermsAttributedLabel.h"
+#import "PGPreviewViewController.h"
+#import "PGCameraManager.h"
 #import "UIViewController+trackable.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
@@ -141,6 +145,21 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     return NO;
+}
+
+#pragma mark - Photo Collection Camera Delegate Methods
+
+- (void)selectPhotoCollectionViewControllerDidSelectCamera:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    
+    [self presentViewController:previewViewControllerCamera animated:YES completion:nil];
+}
+
+- (AVCaptureDevicePosition)cameraPosition
+{
+    return [PGCameraManager sharedInstance].lastDeviceCameraPosition;
 }
 
 

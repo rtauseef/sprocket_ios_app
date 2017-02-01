@@ -7,7 +7,7 @@ class AboutScreen < Calabash::IBase
   end
 
   def about
-    "view marked:'About'"
+      "view marked:'#{$list_loc['About']}'"
   end
 
 def build_version

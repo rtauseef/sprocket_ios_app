@@ -27,6 +27,7 @@
 @property (strong, nonatomic) UIImage *headerImage;
 @property (assign, nonatomic) BOOL showSearchButton;
 @property (readonly, nonatomic) BOOL showNetworkWarning;
+@property (assign, nonatomic) BOOL showCameraButtonInCollectionView;
 @property (weak, nonatomic) id<HPPRSelectPhotoProviderDelegate> delegate;
 @property (strong, nonatomic) HPPRAlbum *album;
 @property (strong, nonatomic) HPPRLoginProvider * loginProvider;
