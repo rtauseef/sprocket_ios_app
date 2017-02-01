@@ -50,6 +50,9 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 @property (assign, nonatomic) BOOL showGridView;
 
+@property (strong, nonatomic) HPPRCameraCollectionViewCell *cameraCell;
+@property (strong, nonatomic) NSTimer *startCameraTimer;
+
 @end
 
 @implementation HPPRSelectPhotoCollectionViewController {
@@ -117,9 +120,32 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    __weak __typeof__(self) weakSelf = self;
+    self.startCameraTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(startCamera) userInfo:nil repeats:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.startCameraTimer invalidate];
+    [self.cameraCell stopCamera];
+}
+
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
 {
     [self.collectionView reloadData];
+}
+
+#pragma mark - Camera Collection View Methods
+
+- (void)startCamera
+{
+    [self.cameraCell startCamera];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -285,6 +311,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         if ([self.delegate respondsToSelector:@selector(cameraPosition)]) {
             [cell changeCameraPosition:[self.delegate cameraPosition]];
         }
+        
+        self.cameraCell = cell;
         
         return cell;
     } else {
