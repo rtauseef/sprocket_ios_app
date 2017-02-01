@@ -111,12 +111,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
 
-    [self.spinner startAnimating];
-    [self refreshImages:^{
-        [self.spinner stopAnimating];
-
-        [self initRefreshControl];
-    }];
+    [self refresh];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
@@ -174,6 +169,15 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 }
 
 #pragma mark - Image request
+
+- (void)refresh {
+    [self.spinner startAnimating];
+    [self refreshImages:^{
+        [self.spinner stopAnimating];
+
+        [self initRefreshControl];
+    }];
+}
 
 - (void)refreshImages:(void (^)())completion {
     [self.provider refreshAlbumWithCompletion:^(NSError *error) {

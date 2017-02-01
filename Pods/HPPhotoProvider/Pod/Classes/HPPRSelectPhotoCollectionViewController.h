@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *customNoPhotosMessage;
 
+- (void)refresh;
+
 @end
 
 @protocol HPPRSelectPhotoCollectionViewControllerDelegate <NSObject>
