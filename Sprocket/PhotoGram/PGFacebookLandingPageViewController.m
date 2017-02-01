@@ -113,18 +113,12 @@ NSString * const kFacebookUserIdKey = @"id";
                     [[PGMediaNavigation sharedInstance] showAlbumsDropDownButtonDown:NO];
 
                     provider.user = userInfo;
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
 
-                    self.photoCollectionViewController = (HPPRSelectPhotoCollectionViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-                    self.photoCollectionViewController.delegate = self;
-                    self.photoCollectionViewController.provider = provider;
+                    [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
+                        [self.spinner removeFromSuperview];
 
-                    [self.spinner removeFromSuperview];
-
-                    [self.navigationController pushViewController:self.photoCollectionViewController animated:NO];
-                    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
-                        [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
-                    }
+                        viewController.provider = provider;
+                    }];
 
                 } else {
                     PGLogError(@"Error retrieving user info");

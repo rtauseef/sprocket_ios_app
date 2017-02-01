@@ -33,6 +33,8 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 - (void)showAlbums;
 - (HPPRSelectPhotoProvider *)albumsPhotoProvider;
 
+- (void)presentPhotoGalleryWithSettings:(void (^)(HPPRSelectPhotoCollectionViewController *viewController))settings;
+
 @end
 
 @protocol PGLandingPageViewControllerDelegate <NSObject>

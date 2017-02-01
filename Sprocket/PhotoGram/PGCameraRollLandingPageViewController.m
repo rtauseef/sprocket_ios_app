@@ -83,22 +83,10 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
         if (loggedIn) {
             [[PGMediaNavigation sharedInstance] showAlbumsDropDownButtonDown:NO];
 
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-            
-            HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
-
-            self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-            self.photoCollectionViewController.delegate = self;
-            self.photoCollectionViewController.provider = provider;
-
-            dispatch_async(dispatch_get_main_queue(), ^ {
+            [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
-                [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
-
-                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
-                    [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
-                }
-            });
+                viewController.provider = [HPPRCameraRollPhotoProvider sharedInstance];
+            }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];

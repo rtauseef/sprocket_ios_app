@@ -68,24 +68,17 @@
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-    
     HPPRQzonePhotoProvider *provider = [HPPRQzonePhotoProvider sharedInstance];
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-            self.photoCollectionViewController.delegate = self;
-            self.photoCollectionViewController.provider = provider;
-            self.photoCollectionViewController.customNoPhotosMessage = NSLocalizedString(@"No Qzone app images found", @"Message displayed when no images from the Qzone app can be found");
-            
-            dispatch_async(dispatch_get_main_queue(), ^ {
-                [spinner removeFromSuperview];
-                [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
 
-                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
-                    [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
-                }
-            });
+            [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
+                [spinner removeFromSuperview];
+
+                viewController.provider = provider;
+                viewController.customNoPhotosMessage = NSLocalizedString(@"No Qzone app images found", @"Message displayed when no images from the Qzone app can be found");
+            }];
+
         } else {
             if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
                 [self showNoConnectionAvailableAlert];

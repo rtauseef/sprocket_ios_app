@@ -134,6 +134,23 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     return nil;
 }
 
+- (void)presentPhotoGalleryWithSettings:(void (^)(HPPRSelectPhotoCollectionViewController *))settings {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
+
+    self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+    self.photoCollectionViewController.delegate = self;
+
+    if (settings) {
+        settings(self.photoCollectionViewController);
+    }
+
+    [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
+
+    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+        [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
+    }
+}
+
 - (void)showNoConnectionAvailableAlert
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No Connection Available", nil)

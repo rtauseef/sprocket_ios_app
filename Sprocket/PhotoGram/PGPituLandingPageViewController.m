@@ -76,23 +76,14 @@
     
     [[HPPRPituLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-            
-            HPPRPituPhotoProvider *provider = [HPPRPituPhotoProvider sharedInstance];
 
-            self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-            self.photoCollectionViewController.delegate = self;
-            self.photoCollectionViewController.provider = provider;
-            self.photoCollectionViewController.customNoPhotosMessage = NSLocalizedString(@"No Pitu app images found", @"Message displayed when no images from the Pitu app can be found");
-
-            dispatch_async(dispatch_get_main_queue(), ^ {
+            [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
-                [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
 
-                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
-                    [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
-                }
-            });
+                viewController.provider = [HPPRPituPhotoProvider sharedInstance];
+                viewController.customNoPhotosMessage = NSLocalizedString(@"No Pitu app images found", @"Message displayed when no images from the Pitu app can be found");
+            }];
+
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];

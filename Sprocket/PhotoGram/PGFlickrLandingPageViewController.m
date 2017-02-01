@@ -106,20 +106,12 @@ NSString * const kFlickrUserIdKey = @"userID";
 
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-            
-            self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-            self.photoCollectionViewController.delegate = self;
-            self.photoCollectionViewController.provider = provider;
 
-            dispatch_async(dispatch_get_main_queue(), ^ {
+            [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
-                [self.navigationController pushViewController:self.photoCollectionViewController animated:NO];
 
-                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
-                    [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
-                }
-            });
+                viewController.provider = provider;
+            }];
 
             NSDictionary *user = [HPPRFlickrLoginProvider sharedInstance].user;
             self.user = user;
