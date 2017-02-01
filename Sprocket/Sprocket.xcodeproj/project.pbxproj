@@ -71,6 +71,9 @@
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
+		2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
+		2671D4C71E3EB64600F166E3 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
+		2671D4CB1E3EB64600F166E3 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
@@ -813,6 +816,7 @@
 		9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385719BE57C5009C695F /* SendFeedback@2x.png */; };
 		91515e0bcffb0bf86b76994b /* starhp_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82362A2D1D59557E0019F024 /* starhp_TN@3x.png */; };
 		91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
+		922ACF9D1E3FD4EE00A475A4 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -907,10 +911,16 @@
 		924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
+		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
 		92C38D5C1D25E39300F7CD27 /* SSRollingButtonScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C38D5B1D25E39300F7CD27 /* SSRollingButtonScrollView.m */; };
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
 		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92E9C1F21DD65FB6009E4E63 /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
+		92ECDB4B1E41064000026DE4 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92ECDB4D1E41065100026DE4 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		98e03b6979056b1d41f07ab0 /* birthdayHat_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821851E41D625FBA001288D9 /* birthdayHat_TN@3x.png */; };
 		99640c1215bceb7ddd03db05 /* birthdayHat_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 821851E21D625FBA001288D9 /* birthdayHat_TN.png */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
@@ -1113,12 +1123,54 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
+			remoteInfo = PushNotificationExtension;
+		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 821523251D82215600C0541C;
 			remoteInfo = "Sprocket Print";
+		};
+		92E7730D1E4104820047E610 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 49AA00FC1D65158C0081989A;
+			remoteInfo = AirshipAppExtensions;
+		};
+		92E7730F1E4104820047E610 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 49AA01051D65158C0081989A;
+			remoteInfo = AirshipAppExtensionsTests;
+		};
+		92ECDB421E4105D400026DE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
+			remoteInfo = AirshipAppExtensions;
+		};
+		92ECDB461E4105E100026DE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
+			remoteInfo = AirshipAppExtensions;
+		};
+		92ECDB481E4105EA00026DE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
+			remoteInfo = PushNotificationExtension;
 		};
 		E34D5080199AB87B006D80E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1130,12 +1182,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2671D4DD1E3EB82A00F166E3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2ce25b4da6bb5ac3c4758195 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				922ACF9D1E3FD4EE00A475A4 /* PushNotificationExtension.appex in Embed App Extensions */,
 				1013d62f480a8c2772265b37 /* Sprocket Print.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -1148,6 +1210,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */,
+				2671D4CB1E3EB64600F166E3 /* PushNotificationExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1161,6 +1224,26 @@
 				8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92ECDB4A1E41062C00026DE4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92ECDB4B1E41064000026DE4 /* AirshipAppExtensions.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92ECDB4C1E41064700026DE4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				92ECDB4D1E41065100026DE4 /* AirshipAppExtensions.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		c3bf14c6c67b762bae9083d9 /* Embed Frameworks */ = {
@@ -1180,6 +1263,7 @@
 		03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.appstore.xcconfig"; sourceTree = "<group>"; };
 		08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.testflight.xcconfig"; sourceTree = "<group>"; };
 		0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket-cal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		12b9951de3bbff11258bdeb9 /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		260BD0711DDE3D3C00AE6BAA /* PGPituLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPituLandingPageViewController.h; sourceTree = "<group>"; };
@@ -1253,6 +1337,11 @@
 		261BCFFD1DC9346B003AF6F1 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261BCFFE1DC9346C003AF6F1 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		261BCFFF1DC9396C003AF6F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
+		2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2671D4C51E3EB64600F166E3 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		2671D4C61E3EB64600F166E3 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		2671D4C81E3EB64600F166E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26760A7D1DB00FBF00F28176 /* PGBaseAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGBaseAnalyticsManager.h; sourceTree = "<group>"; };
 		26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBaseAnalyticsManager.m; sourceTree = "<group>"; };
 		26A8D4381DC96D950079C0D8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1264,6 +1353,7 @@
 		26A8D44B1DC971E90079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26A8D44C1DC971E90079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		26A8D44D1DC971EA0079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
+		26B434641E3F02310071EEFA /* Sprocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sprocket.entitlements; sourceTree = SOURCE_ROOT; };
 		26F7BFAE1DD10BB8006396FA /* catwhiskers_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = catwhiskers_TN.png; path = Resources/Images/Stickers/catwhiskers_TN.png; sourceTree = "<group>"; };
 		26F7BFAF1DD10BB8006396FA /* catwhiskers_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catwhiskers_TN@2x.png"; path = "Resources/Images/Stickers/catwhiskers_TN@2x.png"; sourceTree = "<group>"; };
 		26F7BFB01DD10BB8006396FA /* catwhiskers_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catwhiskers_TN@3x.png"; path = "Resources/Images/Stickers/catwhiskers_TN@3x.png"; sourceTree = "<group>"; };
@@ -1322,6 +1412,8 @@
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		65F7A8111DA875AA0023E21D /* Sprocket Print.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sprocket Print.entitlements"; sourceTree = "<group>"; };
+		768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushNotificationExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
 		82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImglyManager.m; sourceTree = "<group>"; };
 		82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGGesturesView+Analytics.h"; sourceTree = "<group>"; };
@@ -1686,9 +1778,8 @@
 		82E648471E316F9200764213 /* RedStripes_Frame_iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RedStripes_Frame_iOS.png; path = Resources/Images/Frames/Valentines/RedStripes_Frame_iOS.png; sourceTree = "<group>"; };
 		82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResetSprocketViewController.m; sourceTree = "<group>"; };
 		82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGResetSprocketViewController.h; sourceTree = "<group>"; };
-		82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
-		85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.debug.xcconfig"; sourceTree = "<group>"; };
 		86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.testflight.xcconfig"; sourceTree = "<group>"; };
+		922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sprocket-cal.entitlements"; sourceTree = "<group>"; };
 		9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewViewController.h; sourceTree = "<group>"; };
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
@@ -1789,6 +1880,7 @@
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
+		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -1979,6 +2071,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2671D4C01E3EB64500F166E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		821523231D82215600C0541C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1992,6 +2092,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
 				8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */,
@@ -2019,6 +2120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				482bc54fe78508365d0534bf /* Social.framework in Frameworks */,
 				53233482f8178877320112d9 /* DBChooser.framework in Frameworks */,
 				05c912861243a915499d938e /* imglyKit.framework in Frameworks */,
@@ -2038,6 +2140,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2671D4C41E3EB64500F166E3 /* PushNotificationExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2671D4C51E3EB64600F166E3 /* NotificationService.h */,
+				2671D4C61E3EB64600F166E3 /* NotificationService.m */,
+				2671D4C81E3EB64600F166E3 /* Info.plist */,
+			);
+			path = PushNotificationExtension;
+			sourceTree = "<group>";
+		};
 		821523271D82215600C0541C /* Sprocket Print */ = {
 			isa = PBXGroup;
 			children = (
@@ -2593,6 +2705,15 @@
 			name = Preview;
 			sourceTree = "<group>";
 		};
+		92E773091E4104810047E610 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */,
+				92E773101E4104820047E610 /* AirshipAppExtensionsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CCED9C5819F972E100ACC969 /* Web View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2623,8 +2744,6 @@
 			isa = PBXGroup;
 			children = (
 				EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */,
-				85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */,
-				82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */,
 				08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */,
 				03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */,
 				56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */,
@@ -2635,6 +2754,8 @@
 				56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */,
 				F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */,
 				BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */,
+				0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */,
+				77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2659,9 +2780,13 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
+				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
+				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
+				92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */,
 				E34D5060199AB87B006D80E0 /* Sprocket */,
 				E34D5082199AB87B006D80E0 /* SprocketTests */,
 				821523271D82215600C0541C /* Sprocket Print */,
+				2671D4C41E3EB64500F166E3 /* PushNotificationExtension */,
 				E34D5059199AB87B006D80E0 /* Frameworks */,
 				E34D5058199AB87B006D80E0 /* Products */,
 				DCDDC5ACC635A15B68D63426 /* Pods */,
@@ -2675,6 +2800,7 @@
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
 				821523261D82215600C0541C /* Sprocket Print.appex */,
 				F1B9596C1DAECAF400EF6EB7 /* Sprocket-cal.app */,
+				2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2700,6 +2826,7 @@
 				16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */,
 				0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */,
 				E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */,
+				768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2707,6 +2834,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
+				26B434641E3F02310071EEFA /* Sprocket.entitlements */,
 				E3461EC919AC01010042DF5E /* Libraries */,
 				F134BC2E1AC60517007D892B /* Logging */,
 				E34D5093199AB90A006D80E0 /* Analytics */,
@@ -2776,7 +2904,6 @@
 				F2E785281DDA78040074FFB7 /* SocialSources */,
 				E34D509B199AB9A4006D80E0 /* Storyboards */,
 				E34D5099199AB98B006D80E0 /* Additions */,
-				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				F2C46E7E1DB6F17F00604371 /* IntroWizard */,
 				E3D6816819A3D180000D45E0 /* LandingPage */,
 				9261D4031D189CE60048E5F8 /* Preview */,
@@ -2843,6 +2970,7 @@
 		E34D5099199AB98B006D80E0 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				E34D509A199AB996006D80E0 /* Method Swizzling */,
 				E3B62FF619A412E900CB80D7 /* UIView+Animations.h */,
 				E3B62FF719A412E900CB80D7 /* UIView+Animations.m */,
@@ -3045,6 +3173,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2671D4C21E3EB64500F166E3 /* PushNotificationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2671D4CC1E3EB64600F166E3 /* Build configuration list for PBXNativeTarget "PushNotificationExtension" */;
+			buildPhases = (
+				2671D4BF1E3EB64500F166E3 /* Sources */,
+				2671D4C01E3EB64500F166E3 /* Frameworks */,
+				2671D4C11E3EB64500F166E3 /* Resources */,
+				2671D4DD1E3EB82A00F166E3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PushNotificationExtension;
+			productName = PushNotificationExtension;
+			productReference = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		42188b650312ea34d00c34bf /* Sprocket-cal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ae1d3f7c29c7235af187634 /* Build configuration list for PBXNativeTarget "Sprocket-cal" */;
@@ -3061,10 +3207,13 @@
 				b6c87447b5972dfefc4beed8 /* ShellScript */,
 				2ce25b4da6bb5ac3c4758195 /* Embed App Extensions */,
 				dc52bd26c76dabb01b526b39 /* ShellScript */,
+				92ECDB4C1E41064700026DE4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				92ECDB491E4105EA00026DE4 /* PBXTargetDependency */,
+				92ECDB471E4105E100026DE4 /* PBXTargetDependency */,
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
 			);
 			name = "Sprocket-cal";
@@ -3110,11 +3259,14 @@
 				8271DCD81D46D07B00B21549 /* ShellScript */,
 				82157D0B1D9306A400360D87 /* Embed App Extensions */,
 				E387B47719DA23E000ABB167 /* ShellScript */,
+				92ECDB4A1E41062C00026DE4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				92ECDB431E4105D400026DE4 /* PBXTargetDependency */,
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
+				2671D4CA1E3EB64600F166E3 /* PBXTargetDependency */,
 			);
 			name = Sprocket;
 			productName = PhotoGram;
@@ -3149,8 +3301,18 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = HP;
 				TargetAttributes = {
+					2671D4C21E3EB64500F166E3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UJ5KAZ5V7V;
+						ProvisioningStyle = Automatic;
+					};
 					42188b650312ea34d00c34bf = {
 						DevelopmentTeam = UJ5KAZ5V7V;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -3165,6 +3327,9 @@
 						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -3199,17 +3364,48 @@
 			mainGroup = E34D504E199AB87A006D80E0;
 			productRefGroup = E34D5058199AB87B006D80E0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 92E773091E4104810047E610 /* Products */;
+					ProjectRef = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E34D5056199AB87B006D80E0 /* Sprocket */,
 				E34D507A199AB87B006D80E0 /* SprocketTests */,
 				821523251D82215600C0541C /* Sprocket Print */,
 				42188b650312ea34d00c34bf /* Sprocket-cal */,
+				2671D4C21E3EB64500F166E3 /* PushNotificationExtension */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AirshipAppExtensions.framework;
+			remoteRef = 92E7730D1E4104820047E610 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		92E773101E4104820047E610 /* AirshipAppExtensionsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AirshipAppExtensionsTests.xctest;
+			remoteRef = 92E7730F1E4104820047E610 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		2671D4C11E3EB64500F166E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		821523241D82215600C0541C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3685,6 +3881,7 @@
 				821852B41D625FFB001288D9 /* xoxo_TN@3x.png in Resources */,
 				821852911D625FFB001288D9 /* diamond.png in Resources */,
 				824952631E2EB6ED00B7F857 /* heart-garland_TN@2x.png in Resources */,
+				2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */,
 				924A707C1DF5F536009A0FB1 /* Panda.png in Resources */,
 				26F7C0CD1DDA68CF006396FA /* Sloppy_Frame_iOS_TN@3x.png in Resources */,
 				821852F61D626A96001288D9 /* 2_pink_spraypaint_frame2_TN.png in Resources */,
@@ -3755,6 +3952,7 @@
 				824951EA1E2EB6ED00B7F857 /* butterfly_TN.png in Resources */,
 				824952A01E2EB6ED00B7F857 /* pig.png in Resources */,
 				824954011E2EC96000B7F857 /* glasses_2.png in Resources */,
+				926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */,
 				824952101E2EB6ED00B7F857 /* glasses_1.png in Resources */,
 				22e13545893bf6c8deb632b6 /* arrow_TN@3x.png in Resources */,
 				82FF41921E369CF70027B181 /* RedStripes_Frame_iOS.png in Resources */,
@@ -4425,6 +4623,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2671D4BF1E3EB64500F166E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2671D4C71E3EB64600F166E3 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		385e52ef178df23c5a543a64 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4609,10 +4815,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2671D4CA1E3EB64600F166E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
+			targetProxy = 2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */;
+		};
 		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 821523251D82215600C0541C /* Sprocket Print */;
 			targetProxy = 82157D091D9306A400360D87 /* PBXContainerItemProxy */;
+		};
+		92ECDB431E4105D400026DE4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AirshipAppExtensions;
+			targetProxy = 92ECDB421E4105D400026DE4 /* PBXContainerItemProxy */;
+		};
+		92ECDB471E4105E100026DE4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AirshipAppExtensions;
+			targetProxy = 92ECDB461E4105E100026DE4 /* PBXContainerItemProxy */;
+		};
+		92ECDB491E4105EA00026DE4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
+			targetProxy = 92ECDB481E4105EA00026DE4 /* PBXContainerItemProxy */;
 		};
 		E34D5081199AB87B006D80E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4797,6 +5023,87 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2671D4CD1E3EB64600F166E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2671D4CE1E3EB64600F166E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2671D4CF1E3EB64600F166E3 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = TestFlight;
+		};
+		2671D4D01E3EB64600F166E3 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
+		};
 		35c2e36ea1855459f530fc84 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */;
@@ -4804,6 +5111,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -4872,6 +5180,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4926,8 +5235,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
+				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4964,7 +5273,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.action";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "65933388-ece2-4340-ba82-d64ca9e18cf1";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				SKIP_INSTALL = YES;
 			};
@@ -5104,7 +5413,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5152,7 +5461,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -5176,11 +5485,12 @@
 		};
 		E34D508D199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85458626E521CDAFC7152756 /* Pods-Sprocket.debug.xcconfig */;
+			baseConfigurationReference = 0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -5231,8 +5541,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
+				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5240,11 +5550,12 @@
 		};
 		E34D508E199AB87B006D80E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82EA60F41810294190CDA521 /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -5294,8 +5605,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
+				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5364,7 +5675,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -5393,6 +5704,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -5489,7 +5801,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -5518,6 +5830,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
@@ -5601,6 +5914,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -5654,8 +5968,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
+				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -5668,6 +5982,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -5732,6 +6047,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2671D4CC1E3EB64600F166E3 /* Build configuration list for PBXNativeTarget "PushNotificationExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2671D4CD1E3EB64600F166E3 /* Debug */,
+				2671D4CE1E3EB64600F166E3 /* Release */,
+				2671D4CF1E3EB64600F166E3 /* TestFlight */,
+				2671D4D01E3EB64600F166E3 /* AppStore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7ae1d3f7c29c7235af187634 /* Build configuration list for PBXNativeTarget "Sprocket-cal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
