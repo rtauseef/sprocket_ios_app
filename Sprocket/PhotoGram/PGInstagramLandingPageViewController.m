@@ -113,18 +113,19 @@
                         
                         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
                         
-                        HPPRSelectPhotoCollectionViewController *vc = (HPPRSelectPhotoCollectionViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+                        self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
                         
-                        vc.delegate = self;
+                        self.photoCollectionViewController.delegate = self;
                         
                         [provider initForStandardDisplay];
-                        vc.provider = provider;
+                        self.photoCollectionViewController.provider = provider;
                         
                         [spinner removeFromSuperview];
 
-                        [self.navigationController pushViewController:vc animated:NO];
-                        
-                       
+                        [self.navigationController pushViewController:self.photoCollectionViewController animated:NO];
+                        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didNavigateTo:)]) {
+                            [self.delegate landingPageViewController:self didNavigateTo:self.photoCollectionViewController];
+                        }
                     }
                 });
             }];

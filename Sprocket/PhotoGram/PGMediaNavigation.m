@@ -20,7 +20,8 @@
 @interface PGMediaNavigation()
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
-@property (weak, nonatomic) IBOutlet AlphaGradientView *cameraView;
+@property (weak, nonatomic) IBOutlet AlphaGradientView *gradientBar;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *albumsArrow;
@@ -28,6 +29,16 @@
 @end
 
 @implementation PGMediaNavigation
+
++ (instancetype)sharedInstance {
+    static PGMediaNavigation *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[PGMediaNavigation alloc] initWithFrame:CGRectZero];
+    });
+
+    return instance;
+}
 
 - (id)init
 {
@@ -60,27 +71,39 @@
 {
     self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSocialNetwork:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
-
-    self.cameraView.direction = GRADIENT_DOWN;
+    self.gradientBar.direction = GRADIENT_DOWN;
 }
 
--(void)showFolderIcon:(BOOL)show
+-(void)showAlbumsDropDownButton:(BOOL)show
 {
     self.titleButton.enabled = show;
     self.albumsArrow.alpha = (show) ? 1.0f : 0.0f;
 }
 
--(void)showFolderIcon
+- (void)showAlbumsDropDownButton
 {
-    [self showFolderIcon:YES];
+    [self showAlbumsDropDownButton:YES];
 }
 
--(void)hideFolderIcon
+- (void)hideAlbumsDropDownButton
 {
-    [self showFolderIcon:NO];
+    [self showAlbumsDropDownButton:NO];
+}
+
+- (void)showGradientBar {
+    self.gradientBar.alpha = 1.0f;
+}
+
+- (void)hideGradientBar {
+    self.gradientBar.alpha = 0.0f;
+}
+
+- (void)showCameraButton {
+    self.cameraButton.alpha = 1.0f;
+}
+
+- (void)hideCameraButton {
+    self.cameraButton.alpha = 0.0f;
 }
 
 - (void)setSocialSource:(PGSocialSource *)socialSource
@@ -88,14 +111,6 @@
     _socialSource = socialSource;
 
     self.titleLabel.text = socialSource.title;
-}
-
-- (void)selectSocialNetwork:(NSNotification *)notification
-{
-    PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
-    PGSocialSource *socialSource = [[PGSocialSource alloc] initWithSocialSourceType:socialSourceType];
-
-    self.socialSource = socialSource;
 }
 
 - (IBAction)didPressFolderButton:(id)sender {
@@ -120,7 +135,7 @@
 {
     // Only accept events for the top and bottom bars
     BOOL underNavigationView = point.y > self.navigationView.frame.size.height;
-    BOOL overCameraBar = point.y < self.cameraView.frame.origin.y;
+    BOOL overCameraBar = point.y < self.gradientBar.frame.origin.y;
 
     return !(underNavigationView && overCameraBar);
 }

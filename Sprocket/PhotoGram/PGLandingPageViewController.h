@@ -15,15 +15,30 @@
 #import <HPPRLoginProvider.h>
 #import <HPPRError.h>
 #import "PGSocialSource.h"
+#import "PGSelectAlbumDropDownViewController.h"
 
 extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 
+@protocol PGLandingPageViewControllerDelegate;
+
 @interface PGLandingPageViewController : UIViewController <TTTAttributedLabelDelegate>
 
-- (void)setLinkForLabel:(TTTAttributedLabel *)label range:(NSRange)range;
+@property (strong, nonatomic) PGSelectAlbumDropDownViewController *albumsViewController;
+@property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;
+@property (weak, nonatomic) id<PGLandingPageViewControllerDelegate> delegate;
 
+- (void)setLinkForLabel:(TTTAttributedLabel *)label range:(NSRange)range;
 - (void)showLogin;
 - (void)showNoConnectionAvailableAlert;
 - (void)showAlbums;
+- (HPPRSelectPhotoProvider *)albumsPhotoProvider;
+
+@end
+
+@protocol PGLandingPageViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didNavigateTo:(UIViewController *)viewController;
 
 @end

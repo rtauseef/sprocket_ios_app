@@ -17,7 +17,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGMediaNavigation">
             <connections>
                 <outlet property="albumsArrow" destination="bat-UE-D7x" id="o2u-sU-Rnv"/>
-                <outlet property="cameraView" destination="Ixd-bY-Ud5" id="3RV-us-Exo"/>
+                <outlet property="cameraButton" destination="qr0-FL-dsH" id="pBy-lQ-I0A"/>
+                <outlet property="gradientBar" destination="Ixd-bY-Ud5" id="uPM-D1-xXQ"/>
                 <outlet property="navigationView" destination="GnL-8B-dhs" id="vId-7B-QuM"/>
                 <outlet property="titleButton" destination="YKD-1j-IUU" id="a51-ph-JFr"/>
                 <outlet property="titleLabel" destination="ZFO-tB-mBe" id="GNz-yb-hdi"/>
@@ -88,7 +89,7 @@
                         <constraint firstItem="ZFO-tB-mBe" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="xX2-4C-XkQ"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="CameraBar" customClass="AlphaGradientView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="GradientBar" customClass="AlphaGradientView">
                     <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-FL-dsH" userLabel="CameraButton">

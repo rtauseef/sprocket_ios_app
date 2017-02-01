@@ -21,6 +21,16 @@
 @property (strong, nonatomic) PGSocialSource *socialSource;
 @property (weak, nonatomic) id<PGMediaNavigationDelegate> delegate;
 
++ (instancetype)sharedInstance;
+
+- (void)hideCameraButton;
+- (void)showCameraButton;
+- (void)hideGradientBar;
+- (void)showGradientBar;
+
+- (void)showAlbumsDropDownButton;
+- (void)hideAlbumsDropDownButton;
+
 @end
 
 @protocol PGMediaNavigationDelegate <NSObject>

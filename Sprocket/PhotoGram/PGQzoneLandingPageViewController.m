@@ -49,7 +49,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCheckProviderNotification:) name:CHECK_PROVIDER_NOTIFICATION object:nil];
     
     [HPPRQzonePhotoProvider sharedInstance].loginProvider.delegate = self;
-    [self checkQzoneAndAlbums:NO];
+    [self showPhotoGallery];
 }
 
 - (void)dealloc
@@ -59,12 +59,11 @@
 
 #pragma mark - PhotoProvider methods
 
-- (void)showAlbums
-{
-//    [self checkQzoneAndAlbums:YES];
+- (HPPRSelectPhotoProvider *)albumsPhotoProvider {
+    return [HPPRQzonePhotoProvider sharedInstance];
 }
 
-- (void)checkQzoneAndAlbums:(BOOL)forAlbums
+- (void)showPhotoGallery
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -74,22 +73,18 @@
     HPPRQzonePhotoProvider *provider = [HPPRQzonePhotoProvider sharedInstance];
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            UIViewController *vc = nil;
-            if (forAlbums) {
-                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
-                ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
-                ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
-                
-            } else {
-                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-                ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
-                ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
-                ((HPPRSelectPhotoCollectionViewController *)vc).customNoPhotosMessage = NSLocalizedString(@"No Qzone app images found", @"Message displayed when no images from the Qzone app can be found");
-            }
+            self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+            self.photoCollectionViewController.delegate = self;
+            self.photoCollectionViewController.provider = provider;
+            self.photoCollectionViewController.customNoPhotosMessage = NSLocalizedString(@"No Qzone app images found", @"Message displayed when no images from the Qzone app can be found");
             
             dispatch_async(dispatch_get_main_queue(), ^ {
                 [spinner removeFromSuperview];
-                [self.navigationController pushViewController:vc animated:YES];
+                [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
+
+                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didNavigateTo:)]) {
+                    [self.delegate landingPageViewController:self didNavigateTo:self.photoCollectionViewController];
+                }
             });
         } else {
             if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
@@ -108,7 +103,7 @@
 {
     [[HPPRQzoneLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkQzoneAndAlbums:NO];
+            [self showPhotoGallery];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
                                                                   device:kEventAuthRequestPhotosLabel];
         } else {
@@ -145,7 +140,7 @@
     
     if ([[HPPRQzonePhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        [self checkQzoneAndAlbums:NO];
+        [self showPhotoGallery];
     }
 }
 
@@ -191,8 +186,7 @@
 - (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
-    [self checkQzoneAndAlbums:NO];
+    [self showPhotoGallery];
 }
-
 
 @end
