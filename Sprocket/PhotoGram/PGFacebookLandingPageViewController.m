@@ -24,6 +24,7 @@
 #import "PGPreviewViewController.h"
 #import "UIView+Animations.h"
 #import "UIViewController+Trackable.h"
+#import "PGMediaNavigation.h"
 
 NSString * const kFacebookUserNameKey = @"name";
 NSString * const kFacebookUserIdKey = @"id";
@@ -55,7 +56,7 @@ NSString * const kFacebookUserIdKey = @"id";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCheckProviderNotification:) name:CHECK_PROVIDER_NOTIFICATION object:nil];
     
     [HPPRFacebookPhotoProvider sharedInstance].loginProvider.delegate = self;
-    [self checkFacebookAndAlbums:NO];
+    [self showPhotoGallery];
 }
 
 - (void)dealloc
@@ -83,18 +84,17 @@ NSString * const kFacebookUserIdKey = @"id";
 
     if ([[HPPRFacebookPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        [self checkFacebookAndAlbums:NO];
+        [self showPhotoGallery];
     }
 }
 
 #pragma mark - Utils
 
-- (void)showAlbums
-{
-    [self checkFacebookAndAlbums:YES];
+- (HPPRSelectPhotoProvider *)albumsPhotoProvider {
+    return [HPPRFacebookPhotoProvider sharedInstance];
 }
 
-- (void)checkFacebookAndAlbums:(BOOL)forAlbums
+- (void)showPhotoGallery
 {
     self.spinner = [self.view addSpinner];
     self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -110,27 +110,16 @@ NSString * const kFacebookUserIdKey = @"id";
             [provider userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
                 
                 if (!error) {
-                    provider.user = userInfo;
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-                    
-                    UIViewController *vc = nil;
-                    if (forAlbums) {
-                        vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
-                        ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
-                        ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
-                        [[NSNotificationCenter defaultCenter] postNotificationName:HIDE_ALBUMS_FOLDER_ICON object:nil];
-                    } else {
-                        vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-                        ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
-                        ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
-                        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_ALBUMS_FOLDER_ICON object:nil];
-                    }
-                    
-                    [self.spinner removeFromSuperview];
+                    [[PGMediaNavigation sharedInstance] showAlbumsDropDownButtonDown:NO];
 
-                    [self.navigationController pushViewController:vc animated:NO];
-                    
-                    
+                    provider.user = userInfo;
+
+                    [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
+                        [self.spinner removeFromSuperview];
+
+                        viewController.provider = provider;
+                    }];
+
                 } else {
                     PGLogError(@"Error retrieving user info");
                     // An error occurred, we need to handle the error
@@ -175,7 +164,7 @@ NSString * const kFacebookUserIdKey = @"id";
 {
     [[HPPRFacebookLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn && nil == error) {
-            [self checkFacebookAndAlbums:NO];
+            [self showPhotoGallery];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
         } else {
@@ -228,7 +217,7 @@ NSString * const kFacebookUserIdKey = @"id";
 - (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
-    [self checkFacebookAndAlbums:NO];
+    [self showPhotoGallery];
 }
 
 @end
