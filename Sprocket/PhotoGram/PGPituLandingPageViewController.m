@@ -48,14 +48,14 @@
     self.containerView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.termsLabel.delegate = self;
     
-    [self checkCameraRollAndAlbums:NO];
+    [self showPhotoGallery];
 }
 
 - (IBAction)signInButtonTapped:(id)sender
 {
     [[HPPRPituLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkCameraRollAndAlbums:NO];
+            [self showPhotoGallery];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
                                                                   device:kEventAuthRequestPhotosLabel];
         } else {
@@ -65,38 +65,25 @@
     }];
 }
 
-- (void)showAlbums
-{
-    [self checkCameraRollAndAlbums:YES];
+- (HPPRSelectPhotoProvider *)albumsPhotoProvider {
+    return [HPPRPituPhotoProvider sharedInstance];
 }
 
-- (void)checkCameraRollAndAlbums:(BOOL)forAlbums
+- (void)showPhotoGallery
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     [[HPPRPituLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-            
-            HPPRPituPhotoProvider *provider = [HPPRPituPhotoProvider sharedInstance];
-            UIViewController *vc = nil;
-            if (forAlbums) {
-                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
-                ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
-                ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
 
-            } else {
-                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-                ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
-                ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
-                ((HPPRSelectPhotoCollectionViewController *)vc).customNoPhotosMessage = NSLocalizedString(@"No Pitu app images found", @"Message displayed when no images from the Pitu app can be found");
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^ {
+            [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
-                [self.navigationController pushViewController:vc animated:YES];
-            });
+
+                viewController.provider = [HPPRPituPhotoProvider sharedInstance];
+                viewController.customNoPhotosMessage = NSLocalizedString(@"No Pitu app images found", @"Message displayed when no images from the Pitu app can be found");
+            }];
+
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];

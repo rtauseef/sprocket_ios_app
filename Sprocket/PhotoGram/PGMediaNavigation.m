@@ -14,23 +14,31 @@
 #import "PGAppAppearance.h"
 #import <HPPR.h>
 #import "UIFont+Style.h"
-#import "SSRollingButtonScrollView.h"
 #import "AlphaGradientView.h"
-#import "PGSocialSourcesManager.h"
 
 
-@interface PGMediaNavigation() <SSRollingButtonScrollViewDelegate>
+@interface PGMediaNavigation()
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
-@property (weak, nonatomic) IBOutlet AlphaGradientView *cameraView;
-@property (weak, nonatomic) IBOutlet SSRollingButtonScrollView *scrollView;
-@property (strong, nonatomic) NSArray *providers;
-@property (weak, nonatomic) IBOutlet UIButton *folderButton;
-@property (assign, nonatomic) BOOL refreshing;
+@property (weak, nonatomic) IBOutlet AlphaGradientView *gradientBar;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *titleButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *albumsArrow;
 
 @end
 
 @implementation PGMediaNavigation
+
++ (instancetype)sharedInstance {
+    static PGMediaNavigation *instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[PGMediaNavigation alloc] initWithFrame:CGRectZero];
+    });
+
+    return instance;
+}
 
 - (id)init
 {
@@ -63,80 +71,88 @@
 {
     self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
 
-    NSMutableArray *titles = [[NSMutableArray alloc] init];
-
-    for (PGSocialSource *socialSource in [[PGSocialSourcesManager sharedInstance] enabledSocialSources]) {
-        [titles addObject:socialSource.title];
-    }
-
-    self.providers = [titles copy];
-
-    self.scrollView.spacingBetweenButtons = 5.0f;
-    
-    self.scrollView.centerButtonTextColor = [UIColor whiteColor];
-    self.scrollView.buttonCenterFont = [UIFont HPNavigationBarTitleFont];
-
-    self.scrollView.notCenterButtonTextColor = [UIColor grayColor];
-    self.scrollView.buttonNotCenterFont = [UIFont HPNavigationBarSubTitleFont];
-    
-    [self.scrollView createButtonArrayWithButtonTitles:self.providers andLayoutStyle:SShorizontalLayout];
-    self.scrollView.ssRollingButtonScrollViewDelegate = self;
-    self.refreshing = NO;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFolderIcon) name:SHOW_ALBUMS_FOLDER_ICON object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideFolderIcon) name:HIDE_ALBUMS_FOLDER_ICON object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSocialNetwork:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoCollectionBeginRefresh:) name:HPPR_PHOTO_COLLECTION_BEGIN_REFRESH object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoCollectionEndRefresh:) name:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
-
-    self.cameraView.direction = GRADIENT_DOWN;
+    self.gradientBar.direction = GRADIENT_DOWN;
 }
 
--(void)showFolderIcon:(BOOL)show
+-(void)showAlbumsDropDownButton:(BOOL)show
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.folderButton.alpha = (show) ? 1.0f : 0.0f;
+    self.titleButton.enabled = show;
+    self.albumsArrow.alpha = (show) ? 1.0f : 0.0f;
+}
+
+- (void)showAlbumsDropDownButtonUp:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.albumsArrow.transform = CGAffineTransformMakeRotation(M_PI);
+        }];
+    } else {
+        self.albumsArrow.transform = CGAffineTransformMakeRotation(M_PI);
+    }
+
+    [self showAlbumsDropDownButton:YES];
+}
+
+- (void)showAlbumsDropDownButtonDown:(BOOL)animated
+{
+    if (animated) {
+        CGAffineTransform transform = CGAffineTransformIdentity;
+
+        if (!CGAffineTransformIsIdentity(self.albumsArrow.transform)) {
+            transform = CGAffineTransformMakeRotation(-M_PI * 2);
+        }
+
+        [UIView animateWithDuration:0.3 animations:^{
+            self.albumsArrow.transform = transform;
+        } completion:^(BOOL finished) {
+            self.albumsArrow.transform = CGAffineTransformIdentity;
+        }];
+    } else {
+        self.albumsArrow.transform = CGAffineTransformIdentity;
+    }
+
+    [self showAlbumsDropDownButton:YES];
+}
+
+- (void)hideAlbumsDropDownButton
+{
+    [self showAlbumsDropDownButton:NO];
+}
+
+- (void)showGradientBar {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.gradientBar.transform = CGAffineTransformIdentity;
     }];
 }
 
--(void)showFolderIcon
-{
-    [self showFolderIcon:YES];
+- (void)hideGradientBar {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.gradientBar.transform = CGAffineTransformMakeTranslation(0.0, self.gradientBar.frame.size.height);
+    }];
 }
 
--(void)hideFolderIcon
-{
-    [self showFolderIcon:NO];
+- (void)showCameraButton {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.cameraButton.alpha = 1.0f;
+    }];
 }
 
-- (void)selectSocialNetwork:(NSNotification *)notification
-{
-    PGSocialSourceType socialSourceType = [[notification.userInfo objectForKey:kSocialNetworkKey] unsignedIntegerValue];
-
-    PGSocialSource *socialSource = [[PGSocialSource alloc] initWithSocialSourceType:socialSourceType];
-
-    [self selectButton:socialSource.title animated:YES];
+- (void)hideCameraButton {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.cameraButton.alpha = 0.0f;
+    }];
 }
 
-- (void)selectButton:(NSString *)title animated:(BOOL)animated
+- (void)setSocialSource:(PGSocialSource *)socialSource
 {
-    [self.scrollView selectButton:title animated:animated];
+    _socialSource = socialSource;
+
+    self.titleLabel.text = socialSource.title;
 }
 
 - (IBAction)didPressFolderButton:(id)sender {
-    
-    if (self.refreshing) {
-        return;
-    }
-    
     if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressFolderButton:)]) {
         [self.delegate mediaNavigationDidPressFolderButton:self];
-    }
-    
-    if ([PGAppAppearance navBarColor] == self.navigationView.backgroundColor) {
-        self.navigationView.backgroundColor = [UIColor blueColor];
-    } else {
-        self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
     }
 }
 
@@ -155,26 +171,10 @@
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // Only accept events for the top and bottom bars
-    BOOL inNavigationView = NO;
-    if( point.y < self.navigationView.frame.size.height &&
-        (point.x < self.scrollView.frame.origin.x  ||
-         point.x > self.scrollView.frame.origin.x + self.scrollView.frame.size.width) ) {
-        inNavigationView = YES;
-    }
-       
-    BOOL inCameraBar = point.y > (self.bounds.size.height - self.cameraView.frame.size.height);
-    
-    return ( inNavigationView || inCameraBar );
-}
+    BOOL underNavigationView = point.y > self.navigationView.frame.size.height;
+    BOOL overCameraBar = point.y < self.gradientBar.frame.origin.y;
 
-- (void)photoCollectionBeginRefresh:(id)sender
-{
-    self.refreshing = YES;
-}
-
-- (void)photoCollectionEndRefresh:(id)sender
-{
-    self.refreshing = NO;
+    return !(underNavigationView && overCameraBar);
 }
 
 @end

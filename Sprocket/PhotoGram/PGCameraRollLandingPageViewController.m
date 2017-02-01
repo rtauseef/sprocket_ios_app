@@ -25,11 +25,13 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIView+Animations.h"
 #import "SWRevealViewController.h"
+#import "PGSelectAlbumDropDownViewController.h"
+#import "PGMediaNavigation.h"
 
 NSString * const kCameraRollUserName = @"CameraRollUserName";
 NSString * const kCameraRollUserId = @"CameraRollUserId";
 
-@interface PGCameraRollLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate>
+@interface PGCameraRollLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGSelectAlbumDropDownViewControllerDelegate>
 
 @property (strong, nonatomic) void(^accessCompletion)(BOOL granted);
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
@@ -51,14 +53,14 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     self.containerView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.termsLabel.delegate = self;
     
-    [self checkCameraRollAndAlbums:NO];
+    [self showPhotoGallery];
 }
 
 - (IBAction)signInButtonTapped:(id)sender
 {
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self checkCameraRollAndAlbums:NO];
+            [self showPhotoGallery];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
                                                                   device:kEventAuthRequestPhotosLabel];
         } else {
@@ -68,37 +70,23 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     }];
 }
 
-- (void)showAlbums
-{
-    [self checkCameraRollAndAlbums:YES];
+- (HPPRSelectPhotoProvider *)albumsPhotoProvider {
+    return [HPPRCameraRollPhotoProvider sharedInstance];
 }
 
-- (void)checkCameraRollAndAlbums:(BOOL)forAlbums
+- (void)showPhotoGallery
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-            
-            HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
-            UIViewController *vc = nil;
-            if (forAlbums) {
-                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectAlbumTableViewController"];
-                ((HPPRSelectAlbumTableViewController *)vc).delegate = self;
-                ((HPPRSelectAlbumTableViewController *)vc).provider = provider;
+            [[PGMediaNavigation sharedInstance] showAlbumsDropDownButtonDown:NO];
 
-            } else {
-                vc = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-                ((HPPRSelectPhotoCollectionViewController *)vc).delegate = self;
-                ((HPPRSelectPhotoCollectionViewController *)vc).provider = provider;
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^ {
+            [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
-                [self.navigationController pushViewController:vc animated:YES];
-            });
+                viewController.provider = [HPPRCameraRollPhotoProvider sharedInstance];
+            }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];
@@ -138,5 +126,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 - (UIEdgeInsets)collectionViewContentInset {
     return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
 }
+
 
 @end
