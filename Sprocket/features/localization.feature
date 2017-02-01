@@ -100,7 +100,9 @@ Scenario: Verify Landing screen texts
     
 @TA16511
 Scenario: Navigating through different Social media screens
-    Given I am on the "Instagram Landing" screen
+    Given  I am on the "Landing" screen
+    Then I should see "Instagram" logo
+    And I click on the "Instagram" logo 
     Then I swipe to see "Camera Roll" screen
     Then I wait for some time
     Then I swipe to see "Flickr" screen
@@ -129,6 +131,7 @@ Scenario: Verify localization of Terms of Service link on Landing Screen
         Then I should see the "About" screen 
         Then I should see "Sprocket" logo
         And I should see the below listed about screen texts:
+        |Version|
         |HP Development Company, L.P.|
         |Copyright (c) 2016|
         Then I touch "Done" option in the screen

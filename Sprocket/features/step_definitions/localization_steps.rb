@@ -1,4 +1,4 @@
-require_relative '../common_library/support/gistfile'
+require_relative '../support/gistfile'
 
 Then(/^I change the language$/) do
 
@@ -247,7 +247,11 @@ def check_options_exist item
                             raise "localization failed!" unless item1 == $list_loc[item]
                         end
                      else
-                         check_element_exists "view marked:'#{$list_loc[item]}'"
+                         if item == "Version"
+                             check_element_exists "view {text CONTAINS '#{$list_loc[item]}'}"
+                         else
+                            check_element_exists "view marked:'#{$list_loc[item]}'"
+                         end
                      end
                  end
              end
