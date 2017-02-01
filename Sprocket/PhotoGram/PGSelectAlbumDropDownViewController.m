@@ -13,9 +13,6 @@
 #import "PGSelectAlbumDropDownViewController.h"
 #import <HPPRSelectAlbumTableViewCell.h>
 
-@interface PGSelectAlbumDropDownViewController ()
-
-@end
 
 @implementation PGSelectAlbumDropDownViewController
 
