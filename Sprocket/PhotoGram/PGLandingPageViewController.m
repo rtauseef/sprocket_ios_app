@@ -94,23 +94,39 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
             [self.dropDownContainerView addSubview:self.albumsViewController.view];
             [self.navigationController.topViewController.view addSubview:self.dropDownContainerView];
 
-            [UIView animateWithDuration:0.5 animations:^{
-                self.dropDownContainerView.frame = frameDown;
-            }];
+            [UIView animateWithDuration:0.5
+                                  delay:0.0
+                 usingSpringWithDamping:1.0
+                  initialSpringVelocity:0.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 self.dropDownContainerView.frame = frameDown;
+                             }
+                             completion:nil];
         }
     }
 }
 
 - (void)hideAlbums {
     if (self.albumsViewController) {
-        [UIView animateWithDuration:0.5 animations:^{
-            CGRect bounds = self.view.bounds;
-            CGRect frame = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
-            self.dropDownContainerView.frame = frame;
-        } completion:^(BOOL finished) {
-            [self.dropDownContainerView removeFromSuperview];
-            self.albumsViewController = nil;
-        }];
+        self.albumsViewController = nil;
+
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+             usingSpringWithDamping:1.0
+              initialSpringVelocity:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             CGRect bounds = self.view.bounds;
+                             CGRect frame = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
+                             self.dropDownContainerView.frame = frame;
+                         } completion:^(BOOL finished) {
+                             [self.dropDownContainerView removeFromSuperview];
+                         }];
+
+        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+            [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
+        }
     }
 }
 

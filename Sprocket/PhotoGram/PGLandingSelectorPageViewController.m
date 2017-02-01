@@ -373,9 +373,14 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav
 {
     UINavigationController *navController = [self currentNavigationController];
-
     PGLandingPageViewController *landingPage = (PGLandingPageViewController *)navController.viewControllers[0];
+    UIViewController *viewController = [navController.viewControllers lastObject];
+
+    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
+    PGSocialSource *socialSource = self.socialSources[index];
+
     [landingPage showAlbums];
+    [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
 }
 
 - (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav
@@ -432,11 +437,11 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
         if (socialSource.hasFolders) {
             BOOL isShowingAlbumsSelector = ((PGLandingPageViewController *)self.currentNavigationController.viewControllers.firstObject).albumsViewController != nil;
 
-            [self.navigationView showAlbumsDropDownButton];
-
             if (isShowingAlbumsSelector) {
+                [self.navigationView showAlbumsDropDownButtonUp:YES];
                 [self.navigationView hideGradientBar];
             } else {
+                [self.navigationView showAlbumsDropDownButtonDown:YES];
                 [self.navigationView showGradientBar];
             }
         }
@@ -484,7 +489,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 #pragma mark - PGLandingPageViewControllerDelegate
 
-- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didNavigateTo:(UIViewController *)viewController {
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didShowViewController:(UIViewController *)viewController {
     NSUInteger index = [self.socialViewControllers indexOfObject:landingViewController.navigationController];
 
     if (index != NSNotFound) {

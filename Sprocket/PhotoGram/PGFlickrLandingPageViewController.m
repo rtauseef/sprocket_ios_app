@@ -116,8 +116,8 @@ NSString * const kFlickrUserIdKey = @"userID";
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:self.photoCollectionViewController animated:NO];
 
-                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didNavigateTo:)]) {
-                    [self.delegate landingPageViewController:self didNavigateTo:self.photoCollectionViewController];
+                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+                    [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
                 }
             });
 

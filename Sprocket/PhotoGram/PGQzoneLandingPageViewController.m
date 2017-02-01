@@ -82,8 +82,8 @@
                 [spinner removeFromSuperview];
                 [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
 
-                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didNavigateTo:)]) {
-                    [self.delegate landingPageViewController:self didNavigateTo:self.photoCollectionViewController];
+                if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+                    [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
                 }
             });
         } else {

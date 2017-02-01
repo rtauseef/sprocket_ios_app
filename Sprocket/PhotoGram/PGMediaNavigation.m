@@ -80,8 +80,37 @@
     self.albumsArrow.alpha = (show) ? 1.0f : 0.0f;
 }
 
-- (void)showAlbumsDropDownButton
+- (void)showAlbumsDropDownButtonUp:(BOOL)animated
 {
+    if (animated) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.albumsArrow.transform = CGAffineTransformMakeRotation(M_PI);
+        }];
+    } else {
+        self.albumsArrow.transform = CGAffineTransformMakeRotation(M_PI);
+    }
+
+    [self showAlbumsDropDownButton:YES];
+}
+
+- (void)showAlbumsDropDownButtonDown:(BOOL)animated
+{
+    if (animated) {
+        CGAffineTransform transform = CGAffineTransformIdentity;
+
+        if (!CGAffineTransformIsIdentity(self.albumsArrow.transform)) {
+            transform = CGAffineTransformMakeRotation(-M_PI * 2);
+        }
+
+        [UIView animateWithDuration:0.3 animations:^{
+            self.albumsArrow.transform = transform;
+        } completion:^(BOOL finished) {
+            self.albumsArrow.transform = CGAffineTransformIdentity;
+        }];
+    } else {
+        self.albumsArrow.transform = CGAffineTransformIdentity;
+    }
+
     [self showAlbumsDropDownButton:YES];
 }
 
@@ -91,19 +120,27 @@
 }
 
 - (void)showGradientBar {
-    self.gradientBar.alpha = 1.0f;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.gradientBar.transform = CGAffineTransformIdentity;
+    }];
 }
 
 - (void)hideGradientBar {
-    self.gradientBar.alpha = 0.0f;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.gradientBar.transform = CGAffineTransformMakeTranslation(0.0, self.gradientBar.frame.size.height);
+    }];
 }
 
 - (void)showCameraButton {
-    self.cameraButton.alpha = 1.0f;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.cameraButton.alpha = 1.0f;
+    }];
 }
 
 - (void)hideCameraButton {
-    self.cameraButton.alpha = 0.0f;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.cameraButton.alpha = 0.0f;
+    }];
 }
 
 - (void)setSocialSource:(PGSocialSource *)socialSource

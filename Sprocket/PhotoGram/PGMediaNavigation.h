@@ -28,7 +28,8 @@
 - (void)hideGradientBar;
 - (void)showGradientBar;
 
-- (void)showAlbumsDropDownButton;
+- (void)showAlbumsDropDownButtonUp:(BOOL)animated;
+- (void)showAlbumsDropDownButtonDown:(BOOL)animated;
 - (void)hideAlbumsDropDownButton;
 
 @end

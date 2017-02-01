@@ -39,6 +39,6 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 
 @optional
 
-- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didNavigateTo:(UIViewController *)viewController;
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didShowViewController:(UIViewController *)viewController;
 
 @end
