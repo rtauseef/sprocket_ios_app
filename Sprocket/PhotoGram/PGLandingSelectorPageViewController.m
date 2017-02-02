@@ -444,6 +444,9 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
                 [self.navigationView showAlbumsDropDownButtonDown:YES];
                 [self.navigationView showGradientBar];
             }
+        } else {
+            [self.navigationView showGradientBar];
+            [self.navigationView hideAlbumsDropDownButton];
         }
     } else {
         [self.navigationView showGradientBar];
