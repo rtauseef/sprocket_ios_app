@@ -1,1 +1,0 @@
-../../../UrbanAirship-iOS-SDK/AirshipKit/AirshipKit/UAInAppResolutionEvent+Internal.h
