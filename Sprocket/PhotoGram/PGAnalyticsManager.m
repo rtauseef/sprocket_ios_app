@@ -80,6 +80,8 @@ NSString * const kEventCameraDirectionCategory     = @"CameraDirection";
 NSString * const kEventCameraDirectionSwitchAction = @"Switch";
 NSString * const kEventCameraDirectionBackLabel    = @"Back";
 NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
+NSString * const kEventCameraGalleryCategory       = @"Gallery_Camera";
+NSString * const kEventCameraGallerySelectAction   = @"Select";
 
 NSString * const kEventPreferencesCategory             = @"Preferences";
 NSString * const kEventPreferencesCameraAutoSaveAction = @"CameraAutoSave";
@@ -253,6 +255,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackPrintRequest:(NSString *)source
 {
     [self trackEvent:kEventPrintCategory action:kEventPrintAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackCameraGallerySelect
+{
+    [self trackEvent:kEventCameraGalleryCategory action:kEventCameraGallerySelectAction label:kEventCameraGalleryCategory value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void) trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
