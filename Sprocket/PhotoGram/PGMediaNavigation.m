@@ -170,11 +170,19 @@
 
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
-    // Only accept events for the top and bottom bars
-    BOOL underNavigationView = point.y > self.navigationView.frame.size.height;
-    BOOL overCameraBar = point.y < self.gradientBar.frame.origin.y;
+    BOOL overNavigationView = point.y <= self.navigationView.frame.size.height;
 
-    return !(underNavigationView && overCameraBar);
+    BOOL overCameraButton = NO;
+    if (self.cameraButton.alpha > 0.0) {
+        BOOL overCameraBar = point.y >= self.gradientBar.frame.origin.y;
+
+        BOOL leftOfCameraButton = point.x < self.cameraButton.frame.origin.x;
+        BOOL rightOfCameraButton = point.x > (self.cameraButton.frame.origin.x + self.cameraButton.frame.size.width);
+
+        overCameraButton = overCameraBar && ( !leftOfCameraButton && !rightOfCameraButton );
+    }
+
+    return overNavigationView || overCameraButton;
 }
 
 @end
