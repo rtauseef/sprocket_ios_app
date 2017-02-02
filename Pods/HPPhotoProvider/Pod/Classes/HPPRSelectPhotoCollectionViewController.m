@@ -471,6 +471,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }
     
     if (performPinchResponse) {
+        [self.cameraCell resetCamera];
+        
         [self.collectionView reloadData];
         [self.collectionView layoutIfNeeded];
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
