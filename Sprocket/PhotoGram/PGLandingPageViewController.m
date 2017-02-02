@@ -23,7 +23,9 @@
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
-@interface PGLandingPageViewController () <UIGestureRecognizerDelegate>
+@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate, PGSelectAlbumDropDownViewControllerDelegate>
+
+@property (strong, nonatomic) UIView *dropDownContainerView;
 
 @end
 
@@ -68,7 +70,85 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
 - (void)showAlbums
 {
-    NSLog(@"Need to implement subclass showAlbums function");
+    HPPRSelectPhotoProvider *provider = [self albumsPhotoProvider];
+
+    if (provider) {
+        if (self.albumsViewController) {
+            [self hideAlbums];
+        } else {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+            self.albumsViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGSelectAlbumDropDownViewController"];
+            self.albumsViewController.delegate = self;
+            self.albumsViewController.provider = provider;
+
+            CGRect bounds = self.view.bounds;
+            CGRect frameUp = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
+            CGRect frameDown = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+
+            self.dropDownContainerView = [[UIView alloc] initWithFrame:frameUp];
+            self.dropDownContainerView.backgroundColor = [UIColor blackColor];
+
+            [self.navigationController.topViewController addChildViewController:self.albumsViewController];
+            self.albumsViewController.view.frame = CGRectMake(0, 0, self.dropDownContainerView.bounds.size.width, self.dropDownContainerView.bounds.size.height - 2);
+
+            [self.dropDownContainerView addSubview:self.albumsViewController.view];
+            [self.navigationController.topViewController.view addSubview:self.dropDownContainerView];
+
+            [UIView animateWithDuration:0.5
+                                  delay:0.0
+                 usingSpringWithDamping:1.0
+                  initialSpringVelocity:0.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 self.dropDownContainerView.frame = frameDown;
+                             }
+                             completion:nil];
+        }
+    }
+}
+
+- (void)hideAlbums {
+    if (self.albumsViewController) {
+        self.albumsViewController = nil;
+
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+             usingSpringWithDamping:1.0
+              initialSpringVelocity:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             CGRect bounds = self.view.bounds;
+                             CGRect frame = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
+                             self.dropDownContainerView.frame = frame;
+                         } completion:^(BOOL finished) {
+                             [self.dropDownContainerView removeFromSuperview];
+                         }];
+
+        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+            [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
+        }
+    }
+}
+
+- (HPPRSelectPhotoProvider *)albumsPhotoProvider {
+    return nil;
+}
+
+- (void)presentPhotoGalleryWithSettings:(void (^)(HPPRSelectPhotoCollectionViewController *))settings {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
+
+    self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+    self.photoCollectionViewController.delegate = self;
+
+    if (settings) {
+        settings(self.photoCollectionViewController);
+    }
+
+    [self.navigationController pushViewController:self.photoCollectionViewController animated:YES];
+
+    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+        [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
+    }
 }
 
 - (void)showNoConnectionAvailableAlert
@@ -114,5 +194,24 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 {
     return [PGCameraManager sharedInstance].lastDeviceCameraPosition;
 }
+
+
+#pragma mark - HPPRSelectPhotoCollectionViewControllerDelegate
+
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media {
+
+}
+
+
+#pragma mark - PGSelectAlbumDropDownViewControllerDelegate
+
+- (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album
+{
+    self.photoCollectionViewController.provider.album = album;
+    [self.photoCollectionViewController refresh];
+
+    [self hideAlbums];
+}
+
 
 @end

@@ -207,15 +207,15 @@ Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
 end
 
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
-   sleep(STEP_PAUSE)
-  frame_name=["Christmas Polka Dot Frame","Red Triangle Frame","Snow Frame","Striped Frame","Grey Frame","Santa Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
+   sleep(WAIT_SCREENLOAD)
+  frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
     sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
     
  
   i = 0
     if option == "frames"
-        while i < 16
+        while i < 20
             macro %Q|I select "#{frame_name[i]}" frame|
             macro %Q|I verify blue line indicator is displayed under selected frame|
             macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
@@ -244,12 +244,12 @@ $edit_screen_arr =
 
 {
     "edit_frame" => {
-        "Christmas Polka Dot Frame" => "xmasPolka_Frame_iOS",
-        "Red Triangle Frame" => "RedTriangle_Frame_iOS",
-        "Snow Frame" => "Snow_Frame_iOS",
-        "Striped Frame" => "striped_Frame_iOS",
-        "Grey Frame" => "Grey_Frame_iOS",
-        "Santa Frame" => "Santa_Frame_iOS",
+        "Valentines Hearts Frame" => "Hearts_Frame_iOS",
+        "Valentines Pink Polka Frame" => "PinkPolka_Frame_iOS",
+        "Valentines Red Frame" => "Red_Frame_iOS",
+        "Valentines Hearts Overlay Frame" => "HeartsOverlay_Frame_iOS",
+        "Valentines Pink Watercolor Frame" => "PinkWatercolor_Frame_iOS",
+        "Valentines Red Stripes Frame" => "RedStripes_Frame_iOS",
         "White Frame" => "4_white_frame",
         "Kraft Frame" => "Kraft_Frame_iOS",
         "Floral Frame" => "6_floral_frame3",

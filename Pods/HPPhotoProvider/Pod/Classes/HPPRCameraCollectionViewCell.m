@@ -21,28 +21,16 @@
 @implementation HPPRCameraCollectionViewCell
 
 
-- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
-{
-    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-    for (AVCaptureDevice *device in devices) {
-        if ([device position] == position) return device;
-    }
-    return nil;
-}
-
 - (void)addCamera
 {
-    if ([self.session isRunning]) {
+    if (self.session) {
         return;
     }
-    
-    [self layoutIfNeeded];
-    [self.cameraView layoutIfNeeded];
 
     self.session = [[AVCaptureSession alloc] init];
-    self.session.sessionPreset = AVCaptureSessionPresetHigh;
+    self.session.sessionPreset = AVCaptureSessionPresetLow;
 
-    AVCaptureDevice *device = [self cameraWithPosition:AVCaptureDevicePositionBack];
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -58,16 +46,27 @@
         newCaptureVideoPreviewLayer.bounds = bounds;
         newCaptureVideoPreviewLayer.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
 
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.cameraView.layer addSublayer:newCaptureVideoPreviewLayer];
-        });
-        
-        [self.session startRunning];
-        
-        [self layoutIfNeeded];
-        [self.cameraView layoutIfNeeded];
+        [self.cameraView.layer addSublayer:newCaptureVideoPreviewLayer];
     }
+    
+    [self startCamera];
+}
+
+- (void)resetCamera
+{
+    [self.cameraView.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self.session stopRunning];
+    self.session = nil;
+}
+
+- (void)startCamera
+{
+    [self.session startRunning];
+}
+
+- (void)stopCamera
+{
+    [self.session stopRunning];
 }
 
 - (void)changeCameraPosition:(AVCaptureDevicePosition)position
@@ -81,7 +80,7 @@
         [self.session beginConfiguration];
         [self.session removeInput:currentDevice];
         
-        AVCaptureDevice *newCamera = [self cameraWithPosition:position];
+        AVCaptureDevice *newCamera = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera mediaType:AVMediaTypeVideo position:position];
         
         NSError *err = nil;
         

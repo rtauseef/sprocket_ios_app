@@ -15,6 +15,9 @@
 @interface HPPRCameraCollectionViewCell : UICollectionViewCell
 
 - (void)addCamera;
+- (void)startCamera;
+- (void)stopCamera;
 - (void)changeCameraPosition:(AVCaptureDevicePosition)position;
+- (void)resetCamera;
 
 @end

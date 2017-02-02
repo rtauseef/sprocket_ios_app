@@ -110,21 +110,13 @@
                     } else {
                         self.userName = userName;
                         self.userId = userId;
-                        
-                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
-                        
-                        HPPRSelectPhotoCollectionViewController *vc = (HPPRSelectPhotoCollectionViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
-                        
-                        vc.delegate = self;
-                        
-                        [provider initForStandardDisplay];
-                        vc.provider = provider;
-                        
-                        [spinner removeFromSuperview];
 
-                        [self.navigationController pushViewController:vc animated:NO];
-                        
-                       
+                        [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
+                            [spinner removeFromSuperview];
+
+                            [provider initForStandardDisplay];
+                            viewController.provider = provider;
+                        }];
                     }
                 });
             }];

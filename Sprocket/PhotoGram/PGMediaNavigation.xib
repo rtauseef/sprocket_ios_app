@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,13 +8,20 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HPSimplified_Lt.ttf">
+            <string>HPSimplified-Light</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGMediaNavigation">
             <connections>
-                <outlet property="cameraView" destination="Ixd-bY-Ud5" id="3RV-us-Exo"/>
-                <outlet property="folderButton" destination="Yok-mV-6Ve" id="4NB-55-bi9"/>
+                <outlet property="albumsArrow" destination="bat-UE-D7x" id="o2u-sU-Rnv"/>
+                <outlet property="cameraButton" destination="qr0-FL-dsH" id="pBy-lQ-I0A"/>
+                <outlet property="gradientBar" destination="Ixd-bY-Ud5" id="uPM-D1-xXQ"/>
                 <outlet property="navigationView" destination="GnL-8B-dhs" id="vId-7B-QuM"/>
-                <outlet property="scrollView" destination="RCP-fr-Le6" id="qV7-19-5WR"/>
+                <outlet property="titleButton" destination="YKD-1j-IUU" id="a51-ph-JFr"/>
+                <outlet property="titleLabel" destination="ZFO-tB-mBe" id="GNz-yb-hdi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,28 +32,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GnL-8B-dhs" userLabel="NavigationBar">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nep-dy-SIh" userLabel="folderAnchor">
-                            <rect key="frame" x="333" y="26" width="30" height="34"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yok-mV-6Ve" userLabel="FolderButton">
-                            <rect key="frame" x="323" y="18" width="50" height="50"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="50" id="cgM-cA-5mm"/>
-                                <constraint firstAttribute="height" constant="50" id="kL0-tV-lpB"/>
-                            </constraints>
-                            <state key="normal" image="folderIcon"/>
-                            <connections>
-                                <action selector="didPressFolderButton:" destination="-1" eventType="touchUpInside" id="iDB-ic-oHm"/>
-                            </connections>
-                        </button>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-fr-Le6" userLabel="ScrollView" customClass="SSRollingButtonScrollView">
-                            <rect key="frame" x="100.5" y="10" width="174" height="66"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="174" id="Aqo-rP-qHv"/>
-                            </constraints>
-                        </scrollView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s51-Xd-Lhr" userLabel="HamburgerAnchor">
                             <rect key="frame" x="12" y="26" width="30" height="34"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,28 +48,52 @@
                                 <action selector="didPressMenuButton:" destination="-1" eventType="touchUpInside" id="tEr-Dx-Kuv"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKD-1j-IUU">
+                            <rect key="frame" x="177.5" y="25" width="37" height="37"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didPressFolderButton:" destination="-1" eventType="touchUpInside" id="qnU-WT-0RS"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFO-tB-mBe">
+                            <rect key="frame" x="187.5" y="43.5" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="bat-UE-D7x">
+                            <rect key="frame" x="192.5" y="40" width="12" height="7"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="12" id="N4T-Mx-ChM"/>
+                                <constraint firstAttribute="height" constant="7" id="tXl-dh-ds6"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="RCP-fr-Le6" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="3iT-wp-0vK"/>
+                        <constraint firstItem="YKD-1j-IUU" firstAttribute="trailing" secondItem="bat-UE-D7x" secondAttribute="trailing" constant="10" id="2bj-Sc-MMI"/>
+                        <constraint firstItem="ZFO-tB-mBe" firstAttribute="centerX" secondItem="GnL-8B-dhs" secondAttribute="centerX" id="74j-H1-4dz"/>
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="9lq-pd-u28"/>
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="Cfj-qy-T1h"/>
                         <constraint firstAttribute="height" constant="66" id="FHx-gY-wBY"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerX" secondItem="s51-Xd-Lhr" secondAttribute="centerX" id="Oun-Nh-uck"/>
-                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerX" secondItem="Nep-dy-SIh" secondAttribute="centerX" id="PnM-9s-1oe"/>
-                        <constraint firstItem="Nep-dy-SIh" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="QZf-FG-iL6"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="s51-Xd-Lhr" secondAttribute="centerY" id="SPM-pj-RlS"/>
-                        <constraint firstAttribute="trailing" secondItem="Nep-dy-SIh" secondAttribute="trailing" constant="12" id="ZQh-Q7-tOn"/>
-                        <constraint firstItem="RCP-fr-Le6" firstAttribute="height" secondItem="GnL-8B-dhs" secondAttribute="height" id="pXd-BW-fTX"/>
-                        <constraint firstItem="Yok-mV-6Ve" firstAttribute="centerY" secondItem="Nep-dy-SIh" secondAttribute="centerY" id="tEa-W3-0df"/>
-                        <constraint firstItem="RCP-fr-Le6" firstAttribute="centerX" secondItem="GnL-8B-dhs" secondAttribute="centerX" id="vld-li-R4V"/>
+                        <constraint firstItem="YKD-1j-IUU" firstAttribute="leading" secondItem="ZFO-tB-mBe" secondAttribute="leading" constant="-10" id="Wis-qY-dI3"/>
+                        <constraint firstItem="YKD-1j-IUU" firstAttribute="centerY" secondItem="ZFO-tB-mBe" secondAttribute="centerY" id="eIU-Zb-yTA"/>
+                        <constraint firstItem="bat-UE-D7x" firstAttribute="leading" secondItem="ZFO-tB-mBe" secondAttribute="trailing" constant="5" id="gTv-7A-bMN"/>
+                        <constraint firstItem="bat-UE-D7x" firstAttribute="centerY" secondItem="ZFO-tB-mBe" secondAttribute="centerY" id="v5d-ln-X2i"/>
+                        <constraint firstItem="ZFO-tB-mBe" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="xX2-4C-XkQ"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="CameraBar" customClass="AlphaGradientView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixd-bY-Ud5" userLabel="GradientBar" customClass="AlphaGradientView">
                     <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-FL-dsH" userLabel="CameraButton">
-                            <rect key="frame" x="165.5" y="13" width="45" height="45"/>
+                            <rect key="frame" x="165" y="13" width="45" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="aBK-kP-dGR"/>
                                 <constraint firstAttribute="height" constant="45" id="ib5-Ah-5YY"/>
@@ -112,11 +121,12 @@
                 <constraint firstAttribute="trailing" secondItem="GnL-8B-dhs" secondAttribute="trailing" id="pK4-lW-RJX"/>
                 <constraint firstItem="Ixd-bY-Ud5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zBO-3a-VTH"/>
             </constraints>
+            <point key="canvasLocation" x="39" y="52"/>
         </view>
     </objects>
     <resources>
+        <image name="arrowDown" width="19" height="10"/>
         <image name="cameraLanding" width="76" height="76"/>
-        <image name="folderIcon" width="20" height="17"/>
         <image name="hamburger" width="22" height="18"/>
     </resources>
 </document>
