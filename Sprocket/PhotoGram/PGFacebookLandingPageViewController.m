@@ -212,6 +212,7 @@ NSString * const kFacebookUserIdKey = @"id";
     return UIEdgeInsetsMake(0, 0, PGLandingPageViewControllerCollectionViewBottomInset, 0);
 }
 
+
 #pragma mark - HPPRLoginProviderDelegate
 
 - (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
@@ -219,5 +220,18 @@ NSString * const kFacebookUserIdKey = @"id";
     [self.navigationController popToRootViewControllerAnimated:YES];
     [self showPhotoGallery];
 }
+
+
+#pragma mark - PGSelectAlbumDropDownViewControllerDelegate
+
+- (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album
+{
+    if ([album objectID] == nil) {
+        album = nil;
+    }
+
+    [super selectAlbumDropDownController:viewController didSelectAlbum:album];
+}
+
 
 @end
