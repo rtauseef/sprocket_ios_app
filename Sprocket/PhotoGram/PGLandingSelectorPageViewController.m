@@ -61,7 +61,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCheckProviderNotification:) name:CHECK_PROVIDER_NOTIFICATION object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enablePageControllerFunctionalityNotification:) name:ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disablePageControllerFunctionalityNotification:) name:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
     
@@ -209,6 +210,17 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     [self enableSwipe];
     [self showStatusBar];
+}
+
+- (void)handleCheckProviderNotification:(NSNotification *)notification
+{
+    UINavigationController *navController = [self currentNavigationController];
+    UIViewController *viewController = [navController.viewControllers lastObject];
+
+    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
+    PGSocialSource *socialSource = self.socialSources[index];
+
+    [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
 }
 
 - (UINavigationController *)viewControllerForSocialSourceType:(PGSocialSourceType)socialSourceType

@@ -80,9 +80,9 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)handleCheckProviderNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
+    PGSocialSource *socialSource = [notification.userInfo objectForKey:kSocialNetworkKey];
 
-    if ([[HPPRFacebookPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
+    if (socialSource && socialSource.type == PGSocialSourceTypeFacebook) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self showPhotoGallery];
     }

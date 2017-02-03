@@ -78,9 +78,9 @@ NSString * const kFlickrUserIdKey = @"userID";
 
 - (void)handleCheckProviderNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
-    
-    if ([[HPPRFlickrPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
+    PGSocialSource *socialSource = [notification.userInfo objectForKey:kSocialNetworkKey];
+
+    if (socialSource && socialSource.type == PGSocialSourceTypeFlickr) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self showPhotoGallery];

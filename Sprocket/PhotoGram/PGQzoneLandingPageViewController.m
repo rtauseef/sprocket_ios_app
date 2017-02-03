@@ -129,9 +129,9 @@
 
 - (void)handleCheckProviderNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
+    PGSocialSource *socialSource = [notification.userInfo objectForKey:kSocialNetworkKey];
     
-    if ([[HPPRQzonePhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
+    if (socialSource && socialSource.type == PGSocialSourceTypeQzone) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self showPhotoGallery];
     }

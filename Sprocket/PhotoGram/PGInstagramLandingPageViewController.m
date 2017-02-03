@@ -77,9 +77,9 @@
 
 - (void)handleCheckProviderNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
-    
-    if ([[HPPRInstagramPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
+    PGSocialSource *socialSource = [notification.userInfo objectForKey:kSocialNetworkKey];
+
+    if (socialSource && socialSource.type == PGSocialSourceTypeInstagram) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self checkInstagramWithCompletion:nil];
     }
