@@ -28,7 +28,12 @@
     }
 
     self.session = [[AVCaptureSession alloc] init];
-    self.session.sessionPreset = AVCaptureSessionPresetLow;
+    if (self.layer.bounds.size.width < 100) {
+        self.session.sessionPreset = AVCaptureSessionPresetLow;
+    } else {
+        self.session.sessionPreset = AVCaptureSessionPresetMedium;
+    }
+
 
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 

@@ -20,10 +20,11 @@
 #import "PGPreviewViewController.h"
 #import "PGCameraManager.h"
 #import "UIViewController+trackable.h"
+#import "PGAnalyticsManager.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
-@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate, PGSelectAlbumDropDownViewControllerDelegate>
+@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate>
 
 @property (strong, nonatomic) UIView *dropDownContainerView;
 
@@ -187,6 +188,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     
+    [[PGAnalyticsManager sharedManager] trackCameraGallerySelect];
     [self presentViewController:previewViewControllerCamera animated:YES completion:nil];
 }
 
