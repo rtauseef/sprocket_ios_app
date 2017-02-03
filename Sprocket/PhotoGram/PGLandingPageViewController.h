@@ -21,7 +21,7 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 
 @protocol PGLandingPageViewControllerDelegate;
 
-@interface PGLandingPageViewController : UIViewController <TTTAttributedLabelDelegate>
+@interface PGLandingPageViewController : UIViewController <TTTAttributedLabelDelegate, PGSelectAlbumDropDownViewControllerDelegate>
 
 @property (strong, nonatomic) PGSelectAlbumDropDownViewController *albumsViewController;
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;

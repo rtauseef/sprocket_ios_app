@@ -24,7 +24,7 @@
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
-@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate, PGSelectAlbumDropDownViewControllerDelegate>
+@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate>
 
 @property (strong, nonatomic) UIView *dropDownContainerView;
 
