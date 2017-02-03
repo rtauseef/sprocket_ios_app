@@ -12,8 +12,8 @@ class FacebookPhotoScreen < Calabash::IBase
     "navigationBar label  marked:'Facebook Photos'"
   end
     
-    def folder_icon
-        "* id:'folderIcon'"
+    def arrow_down
+        "* id:'arrowDown'"
     end
 
   def all_visible_photos

@@ -19,7 +19,7 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
               check_element_exists @current_page.list_mode_button
             else
               if element_id == "Folder"
-                check_element_exists @current_page.folder_icon
+                check_element_exists @current_page.arrow_down
               else
                 if element_id == "Share"
                   check_element_exists @current_page.share
