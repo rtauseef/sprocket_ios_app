@@ -481,8 +481,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     NSInteger index = [self.socialViewControllers indexOfObject:(UINavigationController *) viewController];
 
     if (index != NSNotFound) {
-        index = ((index - 1) % self.socialSources.count);
 
+        if (index == 0) {
+            index = self.socialSources.count - 1;
+        } else {
+            index = ((index - 1) % self.socialSources.count);
+        }
+        
         return self.socialViewControllers[index];
     }
 
