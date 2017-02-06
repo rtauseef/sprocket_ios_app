@@ -326,7 +326,6 @@ $edit_screen_arr =
             "birthdayHat_TN" => "birthdayHat",
             "moon_TN" => "moon",
             "starhp_TN" => "starhp",
-            "stars_TN" => "stars",
             "feather2_TN" => "feather2",
             "feather_TN" => "feather",
             "leaf3_TN" => "leaf3",
