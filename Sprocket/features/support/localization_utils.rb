@@ -115,7 +115,6 @@ $language_arr =
         "Pitu" => "Pitu_C",
         "Qzone" => "Qzone_C",
         "CameraRoll" => "Photos_C",
-        "Camera Roll" => "相册",
         "QZone" => "QQ空间",
         "pitu" => "Pitu",
         "facebook" => "Facebook",
@@ -648,3 +647,83 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         }
     }
+
+
+
+
+def get_ios_locale_id
+         #ios_locale_id = "en_US"
+    if ENV['LANGUAGE'] == "Spanish"
+            ios_locale_id = "es_ES"
+            $list_loc=$language_arr["es_ES"]
+    else 
+        if ENV['LANGUAGE'] == "Chinese"
+            ios_locale_id = "zh_Hans"
+            $list_loc=$language_arr["zh_Hans"]
+        else 
+            if ENV['LANGUAGE'] == 'German'
+                ios_locale_id = "de_DE"
+                $list_loc=$language_arr["de_DE"]
+            else
+                if ENV['LANGUAGE'] == 'French'
+                    ios_locale_id = "fr_FR"
+                    $list_loc=$language_arr["fr_FR"]
+                else 
+                    if ENV['LANGUAGE'] == 'Italian'
+                        ios_locale_id = "it_IT"
+                        $list_loc=$language_arr["it_IT"]
+                    else
+                        if ENV['LANGUAGE'] == 'Dutch'
+                            ios_locale_id = "nl_NL"
+                            $list_loc=$language_arr["nl_NL"]
+                        else
+                            if ENV['LANGUAGE'] == 'Danish'
+                                ios_locale_id = "da_DK"
+                                $list_loc=$language_arr["da_DK"]
+                            else
+                                if ENV['LANGUAGE'] == 'Finnish'
+                                    ios_locale_id = "fi_FI"
+                                    $list_loc=$language_arr["fi_FI"]
+                                else
+                                    if ENV['LANGUAGE'] == 'Estonian'
+                                        ios_locale_id = "et_EE"
+                                        $list_loc=$language_arr["et_EE"]
+                                    else
+                                        if ENV['LANGUAGE'] == 'Latvian'
+                                            ios_locale_id = "lv_LV"
+                                            $list_loc=$language_arr["lv_LV"]
+                                        else
+                                            if ENV['LANGUAGE'] == 'Lithuanian'
+                                                ios_locale_id = "lt_LT"
+                                                $list_loc=$language_arr["lt_LT"]
+                                            else
+                                                if ENV['LANGUAGE'] == 'Norwegian'
+                                                    ios_locale_id = "nb_NO"
+                                                    $list_loc=$language_arr["nb_NO"]
+                                                else
+                                                    if ENV['LANGUAGE'] == 'Portuguese'
+                                                        ios_locale_id = "pt_PT"
+                                                        $list_loc=$language_arr["pt_PT"]
+                                                    else
+                                                        if ENV['LANGUAGE'] == 'Swedish'
+                                                            ios_locale_id = "sv_SE"
+                                                            $list_loc=$language_arr["sv_SE"]
+                                                        else
+                                                            ios_locale_id = "en_US"
+                                                            $list_loc=$language_arr["en_US"]
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return ios_locale_id , $list_loc
+end
