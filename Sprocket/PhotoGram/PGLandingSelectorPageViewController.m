@@ -481,8 +481,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     NSInteger index = [self.socialViewControllers indexOfObject:(UINavigationController *) viewController];
 
     if (index != NSNotFound) {
-        index = ((index - 1) % self.socialSources.count);
-
+        //  code to avoid the weird obj-c mod behavior: http://stackoverflow.com/questions/989943/weird-objective-c-mod-behavior-for-negative-numbers
+        if (index == 0) {
+            index = self.socialSources.count - 1;
+        } else {
+            index = ((index - 1) % self.socialSources.count);
+        }
+        
         return self.socialViewControllers[index];
     }
 
