@@ -23,7 +23,9 @@
 
 - (void)addCamera
 {
-    if (self.session) {
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+
+    if (self.session || devices.count == 0) {
         return;
     }
 
@@ -74,6 +76,15 @@
     [self.session stopRunning];
 }
 
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        if ([device position] == position) return device;
+    }
+    return nil;
+}
+
 - (void)changeCameraPosition:(AVCaptureDevicePosition)position
 {
     if (self.session && position) {
@@ -85,7 +96,7 @@
         [self.session beginConfiguration];
         [self.session removeInput:currentDevice];
         
-        AVCaptureDevice *newCamera = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera mediaType:AVMediaTypeVideo position:position];
+        AVCaptureDevice *newCamera = [self cameraWithPosition:position];
         
         NSError *err = nil;
         
