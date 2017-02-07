@@ -43,12 +43,12 @@ Scenario: Verify Double-tap add borders to image on preview screen_facebook
     Then I should see "Folder" button
 
   @fbtest
-  Scenario: Verify folder icon functionality in facebook
+  Scenario: Verify arrow down functionality in facebook
     Given I am on the "Landing" screen
     Then I should see "Facebook" logo
     And I click on the "Facebook" logo
     Then I should see the "Facebook Photo" screen
-    Then I touch "folderIcon" button
+    Then I touch "arrowDown"
     Then I should see the "Facebook Albums" screen
     Then I wait for sometime
     And I should see "All Photos"
