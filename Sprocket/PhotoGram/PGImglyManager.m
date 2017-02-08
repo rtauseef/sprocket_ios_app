@@ -73,9 +73,7 @@ typedef enum {
             [photoEditorBuilder setApplyButtonConfigurationClosure:^(UIButton * _Nonnull applyButton) {
                 // Workaround to fix saving image bug on slower devices.
                 applyButton.enabled = NO;
-                int64_t delayInSeconds = 2;
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     applyButton.enabled = YES;
                 });
             }];
