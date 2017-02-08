@@ -258,8 +258,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:[self.imageContainer screenshotImage] configuration:self.imglyManager.imglyConfiguration];
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:self.imglyManager.imglyConfiguration];
     toolController.delegate = self;
+    [toolController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [toolController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
-    [self presentViewController:toolController animated:NO completion:^() {
+    [self presentViewController:toolController animated:YES completion:^() {
         NSString *screenName = @"Editor Screen";
         [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
         [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];
@@ -307,6 +309,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.imageView layoutIfNeeded];
     self.didChangeProject = YES;
+    [self showPhoto];
 }
 
 - (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
