@@ -255,8 +255,9 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (void)showImgly
 {
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:[self.imageContainer screenshotImage] configuration:self.imglyManager.imglyConfiguration];
-    IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:self.imglyManager.imglyConfiguration];
+    IMGLYConfiguration *configuration = [self.imglyManager imglyConfiguration];
+    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:[self.imageContainer screenshotImage] configuration:configuration];
+    IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:configuration];
     toolController.delegate = self;
     [toolController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [toolController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
