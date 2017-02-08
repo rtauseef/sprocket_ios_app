@@ -55,8 +55,8 @@ typedef enum {
         [builder configureToolStackController:^(IMGLYToolStackControllerOptionsBuilder * _Nonnull stackBuilder) {
             stackBuilder.mainToolbarBackgroundColor = [UIColor HPGrayColor];
             stackBuilder.secondaryToolbarBackgroundColor = [UIColor clearColor];
+            
         }];
-        
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
             photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
                                                                         @(PhotoEditorActionMagic),
@@ -69,6 +69,16 @@ typedef enum {
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
             photoEditorBuilder.allowsPreviewImageZoom = NO;
+            
+            [photoEditorBuilder setApplyButtonConfigurationClosure:^(UIButton * _Nonnull applyButton) {
+                // Workaround to fix saving image bug on slower devices.
+                applyButton.enabled = NO;
+                int64_t delayInSeconds = 2;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    applyButton.enabled = YES;
+                });
+            }];
             
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
                 cell.tintColor = [UIColor HPGrayBackgroundColor];
