@@ -21,7 +21,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 8;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -71,6 +71,10 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             break;
         case PGSideBarMenuCellAbout:
             cell.textLabel.text = NSLocalizedString(@"About", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuAbout"];
+            break;
+        case PGSideBarMenuCellLaunchMessageCenter:
+            cell.textLabel.text = NSLocalizedString(@"Message Center", nil);
             cell.imageView.image = [UIImage imageNamed:@"menuAbout"];
             break;
         default:

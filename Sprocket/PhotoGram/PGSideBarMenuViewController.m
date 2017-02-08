@@ -12,6 +12,7 @@
 
 #import <MP.h>
 #import <MessageUI/MessageUI.h>
+#import "AirshipKit.h"
 
 #import "PGSideBarMenuViewController.h"
 
@@ -166,6 +167,11 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
             UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PGAboutViewController"];
             [self presentViewController:viewController animated:YES completion:nil];
+            break;
+        }
+        case PGSideBarMenuCellLaunchMessageCenter: {
+            // Note-- you must enable messaging before this will work
+            [[UAirship defaultMessageCenter] display];
             break;
         }
         default:
