@@ -4,8 +4,13 @@ require_relative '../common/base_html_screen'
 class FacebookLandingScreen < Calabash::IBase
 
 	def trait
-    facebook_logo
+        screen_title
  end
+    
+    def screen_title
+        #"UINavigationItemView label marked:'Instagram'"
+        "label marked:'Facebook'"
+    end
 
  def facebook_logo
   "UIButtonLabel marked:'Facebook'"
