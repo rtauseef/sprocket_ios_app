@@ -40,3 +40,5 @@ fastlane/screenshots
 fastlane/test_output
 
 fastlane/build_output
+
+Sprocket/Gemfile.lock

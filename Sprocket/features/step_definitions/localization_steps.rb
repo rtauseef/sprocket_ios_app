@@ -1,133 +1,14 @@
-require_relative '../common_library/support/gistfile'
+require_relative '../support/gistfile'
 
 Then(/^I change the language$/) do
-
-    
-    #if ENV['LANGUAGE'] == "English"
-            #ios_locale_id = "en_US"
-    if ENV['LANGUAGE'] == "Spanish"
-            ios_locale_id = "es_ES"
-    else 
-        if ENV['LANGUAGE'] == "French"
-                ios_locale_id = "fr_FR"
-        else 
-            if ENV['LANGUAGE'] == "Chinese"
-                ios_locale_id = "zh_Hans"
-            else 
-                if ENV['LANGUAGE'] == 'German'
-                    ios_locale_id = "de_DE"
-                else
-                    if ENV['LANGUAGE'] == 'French'
-                        ios_locale_id = "fr_FR"
-                    else 
-                        if ENV['LANGUAGE'] == 'Italian'
-                            ios_locale_id = "it_IT"
-                        else
-                            if ENV['LANGUAGE'] == 'Dutch'
-                                ios_locale_id = "nl_NL"
-                            else
-                                if ENV['LANGUAGE'] == 'Danish'
-                                    ios_locale_id = "da_DK"
-                                else
-                                    if ENV['LANGUAGE'] == 'Finnish'
-                                        ios_locale_id = "fi_FI"
-                                    else
-                                        if ENV['LANGUAGE'] == 'Estonian'
-                                            ios_locale_id = "et_EE"
-                                        else
-                                            if ENV['LANGUAGE'] == 'Latvian'
-                                                ios_locale_id = "lv_LV"
-                                            else
-                                                if ENV['LANGUAGE'] == 'Lithuanian'
-                                                    ios_locale_id = "lt_LT"
-                                                else
-                                                    if ENV['LANGUAGE'] == 'Norwegian'
-                                                        ios_locale_id = "nb_NO"
-                                                    else
-                                                        if ENV['LANGUAGE'] == 'Portuguese'
-                                                            ios_locale_id = "pt_PT"
-                                                        else
-                                                            if ENV['LANGUAGE'] == 'Swedish'
-                                                                ios_locale_id = "sv_SE"
-                                                            else
-                                                                ios_locale_id = "en_US"
-                                                            end
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-end
+    ios_locale_id, $list_loc = get_ios_locale_id
     device_name = get_device_name
     device_type = get_device_type
     sim_name = get_device_name + " " + device_type
     os_version = get_os_version.to_s.gsub(".", "-")
     SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
-    if $curr_language.strip == "es"
-        $list_loc=$language_arr["es_ES"]
-    else
-        if $curr_language.strip == "zh"
-             $list_loc=$language_arr["zh_Hans"]
-        else 
-            if $curr_language.strip == "de"
-                $list_loc=$language_arr["de_DE"]
-            else
-                if $curr_language.strip == "fr"
-                    $list_loc=$language_arr["fr_FR"]
-                else
-                    if $curr_language.strip == "it"
-                        $list_loc=$language_arr["it_IT"]
-                    else
-                        if $curr_language.strip == "nl"
-                            $list_loc=$language_arr["nl_NL"]
-                        else
-                            if $curr_language.strip == "da"
-                                $list_loc=$language_arr["da_DK"]
-                            else
-                                if $curr_language.strip == "fi"
-                                    $list_loc=$language_arr["fi_FI"]
-                                else
-                                    if $curr_language.strip == "et"
-                                        $list_loc=$language_arr["et_EE"]
-                                    else
-                                        if $curr_language.strip == "lv"
-                                            $list_loc=$language_arr["lv_LV"]
-                                        else
-                                            if $curr_language.strip == "lt"
-                                                $list_loc=$language_arr["lt_LT"]
-                                            else
-                                                if $curr_language.strip == "nb"
-                                                    $list_loc=$language_arr["nb_NO"]
-                                                else
-                                                    if $curr_language.strip == "pt"
-                                                        $list_loc=$language_arr["pt_PT"]
-                                                    else
-                                                        if $curr_language.strip == "sv"
-                                                            $list_loc=$language_arr["sv_SE"]
-                                                        else
-                                                            $list_loc=$language_arr["en_US"]
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
+    language_locale =ios_locale_id.split("_")  
+    raise "Language not changed!" unless $curr_language.strip == language_locale[0] 
 end
 
 Then(/^I open cameraroll$/) do
@@ -247,7 +128,11 @@ def check_options_exist item
                             raise "localization failed!" unless item1 == $list_loc[item]
                         end
                      else
-                         check_element_exists "view marked:'#{$list_loc[item]}'"
+                         if item == "Version"
+                             check_element_exists "view {text CONTAINS '#{$list_loc[item]}'}"
+                         else
+                            check_element_exists "view marked:'#{$list_loc[item]}'"
+                         end
                      end
                  end
              end
