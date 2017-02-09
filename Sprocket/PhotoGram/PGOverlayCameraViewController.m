@@ -13,13 +13,21 @@
 #import "PGOverlayCameraViewController.h"
 #import "PGCameraManager.h"
 
+@interface PGOverlayCameraViewController ()
+
+@property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
+@property (weak, nonatomic) IBOutlet UIButton *flashButton;
+@property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
+
+@end
+
 @implementation PGOverlayCameraViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    [self configFlashButton];
+    [self setupButtons];
 }
 
 - (IBAction)closeButtonTapped:(id)sender
@@ -30,7 +38,7 @@
 - (IBAction)cameraReverseTapped:(id)sender
 {
     [[PGCameraManager sharedInstance] switchCamera];
-    [self configFlashButton];
+    [self setupButtons];
 }
 
 - (IBAction)shutterTapped:(id)sender
@@ -40,11 +48,19 @@
 
 - (IBAction)flashTapped:(id)sender {
     [[PGCameraManager sharedInstance] toggleFlash];
-    [self configFlashButton];
+    [self setupButtons];
 }
 
-- (void)configFlashButton
+- (void)setupButtons
 {
+    NSArray<AVCaptureDevice *> *devices = [[PGCameraManager sharedInstance] availableDevices];
+
+    if (devices.count <= 1) {
+        self.switchCameraButton.hidden = YES;
+    } else {
+        self.switchCameraButton.hidden = NO;
+    }
+
     if ([PGCameraManager sharedInstance].lastDeviceCameraPosition == AVCaptureDevicePositionFront) {
         self.flashButton.hidden = YES;
     } else {
