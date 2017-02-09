@@ -15,6 +15,7 @@
 #import "PGAppDelegate.h"
 #import "PGAnalyticsManager.h"
 #import "UIViewController+trackable.h"
+#import "PGOverlayCameraViewController.h"
 #import <Crashlytics/Crashlytics.h>
 
 NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
@@ -134,21 +135,47 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
+
 #pragma mark - Custom Camera Methods
+
+- (NSArray<AVCaptureDevice *> *)availableDevices {
+    NSMutableArray<AVCaptureDevice *> *availableDevices = [[NSMutableArray alloc] init];
+
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        [availableDevices addObject:device];
+    }
+
+    return [availableDevices copy];
+}
 
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
 {
     if (position == AVCaptureDevicePositionUnspecified) {
-        self.lastDeviceCameraPosition = AVCaptureDevicePositionBack;
-    } else {
-        self.lastDeviceCameraPosition = position;
+        position = AVCaptureDevicePositionBack;
     }
-    
+
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *selectedDevice;
+
     for (AVCaptureDevice *device in devices) {
-        if ([device position] == self.lastDeviceCameraPosition) return device;
+        if (device.position == position) {
+            selectedDevice = device;
+            break;
+        }
     }
-    return nil;
+
+    if (selectedDevice) {
+        self.lastDeviceCameraPosition = selectedDevice.position;
+    } else if (devices.count > 0) {
+        // fallback to the first camera if a camera with the specified position is not available (covers the single camera iPod case)
+        selectedDevice = [devices firstObject];
+        self.lastDeviceCameraPosition = selectedDevice.position;
+    } else {
+        self.lastDeviceCameraPosition = AVCaptureDevicePositionUnspecified;
+    }
+
+    return selectedDevice;
 }
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
@@ -270,19 +297,22 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         AVCaptureInput *currentCameraInput = [self.session.inputs objectAtIndex:0];
         
         [self.session removeInput:currentCameraInput];
-        
-        AVCaptureDevice *newCamera = nil;
-        
+
+        AVCaptureDevicePosition position = AVCaptureDevicePositionBack;
         if (self.lastDeviceCameraPosition == AVCaptureDevicePositionBack) {
-            newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            position = AVCaptureDevicePositionFront;
+        }
+
+        AVCaptureDevice *newCamera = [self cameraWithPosition:position];
+
+        if (newCamera.position == AVCaptureDevicePositionBack) {
             [self configFlash:NO forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionSelfieLabel];
         } else {
-            newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
             [self configFlash:self.isFlashOn forDevice:newCamera];
             [[PGAnalyticsManager sharedManager] trackCameraDirectionActivity:kEventCameraDirectionBackLabel];
         }
-        
+
         NSError *err = nil;
         
         AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&err];

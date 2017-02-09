@@ -13,7 +13,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 #import "PGPreviewViewController.h"
-#import "PGOverlayCameraViewController.h"
 
 extern NSString * const kPGCameraManagerCameraClosed;
 extern NSString * const kPGCameraManagerPhotoTaken;
@@ -28,6 +27,8 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
 
 + (PGCameraManager *)sharedInstance;
+
+- (NSArray<AVCaptureDevice *> *)availableDevices;
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController;
 - (void)addCameraButtonsOnView:(UIView *)view;
