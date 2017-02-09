@@ -169,11 +169,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
-        case PGSideBarMenuCellLaunchMessageCenter: {
-            // Note-- you must enable messaging before this will work
-            [[UAirship defaultMessageCenter] display];
-            break;
-        }
         default:
             break;
     }

@@ -346,6 +346,12 @@ static int kDisplayNotificationMsgCenterIndex = 10;
                 // time to enable push to increase the likelihood that the user will accept
                 // notifications. For troubleshooting, we will enable this at launch.
                 [UAirship push].userPushNotificationsEnabled = YES;
+                
+                [[[UIAlertView alloc] initWithTitle:@"Push Notifications Enabled"
+                                            message:@"Push Notifications are now enabled"
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
             } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
                 // Note-- you must enable messaging before this will work
                 [[UAirship defaultMessageCenter] display];
