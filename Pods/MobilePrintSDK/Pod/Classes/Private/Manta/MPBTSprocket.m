@@ -20,7 +20,8 @@ const char MANTA_PACKET_LENGTH = 34;
 
 static const NSString *kPolaroidProtocol = @"com.polaroid.mobileprinter";
 static const NSString *kHpProtocol = @"com.hp.protocol";
-static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-updates-2/fw_release.json";
+//static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-updates-2/fw_release.json";
+static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-update-test/fw_release.json";
 
 static const NSString *kMPBTFirmwareVersionKey = @"fw_version";
 static const NSString *kMPBTTmdVersionKey = @"tmd_version";
