@@ -1,89 +1,278 @@
 /* No comment provided by engineer. */
+"About" = "Informazioni su";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Consentire l'accesso in Impostazioni per scattare e stampare foto.";
+
+/* No comment provided by engineer. */
 "An error occurred when sharing the item." = "Errore durante la condivisione dell'elemento.";
 
 /* No comment provided by engineer. */
-"Buy sticker pack" = "Acquista la confezione di adesivi";
+"App Settings" = "Impostazioni App";
 
-/* Generic Cancel from an action. */
+/* No comment provided by engineer. */
+"Arrow Sticker" = "Adesivo Freccia";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Impostazioni Salvataggio automatico";
+
+/* No comment provided by engineer. */
+"Birthday Hat Sticker" = "Adesivo Cappellino compleanno";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Acquista carta";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Richiesto l'accesso alla fotocamera";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Rullino fotografico";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
 "Cancel" = "Annulla";
 
-/* Checking the login status of the social network */
-"Checking" = "Verifica in corso";
+/* No comment provided by engineer. */
+"Cat Ears Sticker" = "Adesivo Orecchie di gatto";
 
 /* No comment provided by engineer. */
-"Choose Location" = "Scegli posizione";
+"Cat Glasses Sticker" = "Adesivo Occhiali gatto";
 
 /* No comment provided by engineer. */
-"Custom Location" = "Posizione personalizzata";
-
-/* Option to customize the location */
-"Custom..." = "Personalizza...";
+"Cat Sticker" = "Adesivo Gatto";
 
 /* No comment provided by engineer. */
-"Done" = "Fatto";
+"Cat Whiskers Sticker" = "Adesivo Baffi di gatto";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Guarda le creazioni della mia HP Sprocket";
+
+/* No comment provided by engineer. */
+"Chinese Dragon Sticker" = "Adesivo Dragone cinese";
+
+/* No comment provided by engineer. */
+"Chinese Dui Lian Couplet Sticker" = "Adesivo Dui Lian Couplet cinese";
+
+/* No comment provided by engineer. */
+"Chinese Fan Sticker" = "Adesivo Ventaglio cinese";
+
+/* No comment provided by engineer. */
+"Chinese Firecracker Sticker" = "Adesivo Fuochi artificiali cinesi";
+
+/* No comment provided by engineer. */
+"Chinese Fish Sticker" = "Adesivo Pesce cinese";
+
+/* No comment provided by engineer. */
+"Chinese Fu Good Luck Sticker" = "Adesivo Fu Good Luck cinese";
+
+/* No comment provided by engineer. */
+"Chinese Glasses 2017 Sticker" = "Adesivo bicchieri 2017 cinesi";
+
+/* No comment provided by engineer. */
+"Chinese Glasses Blossom Sticker" = "Adesivo Bicchieri Fioritura cinese";
+
+/* No comment provided by engineer. */
+"Chinese HCNY Sticker" = "Adesivo HCNY cinese";
+
+/* No comment provided by engineer. */
+"Chinese Lantern Sticker" = "Adesivo Lanterna cinese";
+
+/* No comment provided by engineer. */
+"Chinese Lion Mask Sticker" = "Adesivo Maschera leone cinese";
+
+/* No comment provided by engineer. */
+"Chinese Lucky Cat Sticker" = "Adesivo Gatto fortunato cinese";
+
+/* No comment provided by engineer. */
+"Chinese Man Hat Sticker" = "Adesivo Cappello uomo cinese";
+
+/* No comment provided by engineer. */
+"Chinese Money Sticker" = "Adesivo Denaro cinese";
+
+/* No comment provided by engineer. */
+"Chinese Mustache Sticker" = "Adesivo Baffi cinesi";
+
+/* No comment provided by engineer. */
+"Chinese Oranges Sticker" = "Adesivo Arance cinesi";
+
+/* No comment provided by engineer. */
+"Chinese Panda Sticker" = "Adesivo Panda cinese";
+
+/* No comment provided by engineer. */
+"Chinese Plum Blossom Sticker" = "Adesivo Bicchiere Boccioli cinesi";
+
+/* No comment provided by engineer. */
+"Chinese Rooster Sticker" = "Adesivo Gallo cinese";
+
+/* No comment provided by engineer. */
+"Chinese Woman Hat 2 Sticker" = "Adesivo Cappello donna cinese 2";
+
+/* No comment provided by engineer. */
+"Chinese Woman Hat Sticker" = "Adesivo Cappello donna cinese";
+
+/* No comment provided by engineer. */
+"Chinese Yin Yang Sticker" = "Adesivo Yin Yang cinese";
+
+/* Setup step 3 desc */
+"Connect" = "Connetti";
+
+/* No comment provided by engineer. */
+"Crown Sticker" = "Adesivo Corona";
+
+/* No comment provided by engineer. */
+"Cupcake Sticker" = "Adesivo Cupcake";
+
+/* No comment provided by engineer. */
+"Diamond Sticker" = "Adesivo Diamante";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Scarta";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Salvare nuove foto sul dispositivo?";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Non salvare";
 
 /* No comment provided by engineer. */
 "Enter Text" = "Inserisci testo";
 
 /* No comment provided by engineer. */
-"Error" = "Errore";
+"Enter+Text" = "Invio+Testo";
 
 /* No comment provided by engineer. */
-"Error loading file from DropBox" = "Errore caricamento file da DropBox";
+"Error" = "Errore";
 
 /* Error retrieving the facebook user information */
 "Error retrieving user information." = "Errore recupero informazioni utente";
 
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* No comment provided by engineer. */
+"Feather 2 Sticker" = "Adesivo Piuma 2";
+
+/* No comment provided by engineer. */
+"Feather Sticker" = "Adesivo Piuma";
+
 /* Subject of the email send to technical support */
-"Feedback on HP Social Media Snapshots for iOS (Record Locator: %@)" = "Feedback su HP Social Media Snapshots per iOS (Record Locator: @";
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Feedback su sprocket per iOS (Record Locator: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "Cornice floreale 2";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "Cornice floreale";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Da Impostazioni Bluetooth, toccare \"HP sprocket\" per abbinare la stampante.";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "I tuoi commenti:";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "Cornice Gradiente";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "Cornice colore verde acqua";
+
+/* No comment provided by engineer. */
+"Heart Express Sticker" = "Adesivo Cuore Express";
+
+/* No comment provided by engineer. */
+"Hearts Sticker" = "Adesivi Cuori";
+
+/* No comment provided by engineer. */
+"How To" = "Istruzioni:";
+
+/* No comment provided by engineer. */
+"How to & Help" = "Accesso all'assistenza e al supporto";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* No comment provided by engineer. */
+"Kraft Frame" = "Cornice artigianale";
+
+/* No comment provided by engineer. */
+"Leaf 3 Sticker" = "Adesivo Foglia 3";
+
+/* Setup step 1 desc */
+"Load Paper" = "Carica carta";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Il file di registro è stato cancellato.";
 
 /* No comment provided by engineer. */
-"My HP Snapshot" = "Mie immagini HP";
+"Moon Sticker" = "Adesivo Luna";
+
+/* Dismisses dialog without taking action */
+"No" = "No";
 
 /* No comment provided by engineer. */
 "No Connection Available" = "Nessuna connessione disponibile";
 
-/* No comment provided by engineer. */
-"No Location" = "Nessuna posizione";
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Non sono state trovate immagini app Pitu";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Non sono state trovate immagini app Qzone";
 
 /* No comment provided by engineer. */
 "No, thanks" = "No, grazie.";
 
-/* No comment provided by engineer. */
+/* Allows user close dialog */
 "OK" = "OK";
+
+/* No comment provided by engineer. */
+"OMG Sticker" = "Etichetta adesiva OMG";
 
 /* No comment provided by engineer. */
 "Oops!" = "Attenzione!";
 
 /* No comment provided by engineer. */
-"Oops! Call in the Designers!" = "Attenzione! Contatta i creatori dell'app!";
+"Orange Frame" = "Cornice Arancione";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Cornice pittura spray rosa";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
-You can also use your device photos." = "Collegati ad una fonte di dati.
-Puoi anche utilizzare le foto del tuo dispositivo.";
-
-/* No comment provided by engineer. */
-"Please enter a location for this photo." = "Inserisci un titolo per la foto.";
-
-/* Shows the description of the error */
-"Please retry. 
-
- If the problem persists contact us and mention this error code: %@" = "Ripristina 
-
- Se il problema persiste contattaci e indica questo codice di errore: %@";
-
-/* No comment provided by engineer. */
-"Please select a location for this photo." = "Seleziona una posizione per questa foto.";
+You can also use your device photos." = "Collegarsi a una sorgente di dati.
+È possibile usare anche le foto del proprio dispositivo.";
 
 /* Ask the user to take a survey to say his opinion of the app */
-"Please tell us what is awesome and what is lame" = "Esprimi il tuo parere su ciò che ritieni sorprendente o poco convincente.";
+"Please tell us what is awesome and what could be better!" = "Esprimi il tuo parere su ciò che ritieni sorprendente o poco convincente.";
 
 /* No comment provided by engineer. */
-"Print Instructions" = "Istruzioni di stampa";
+"Polka Dots Frame" = "Cornice a pois";
+
+/* Setup step 2 desc */
+"Power Up" = "Alimentazione";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Premere e tenere premuto il pulsante di accensione, finché il LED non diventa bianco.";
+
+/* No comment provided by engineer. */
+"Printers" = "Stampanti";
+
+/* No comment provided by engineer. */
+"Privacy" = "Privacy";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Caricare l'intera confezione nel vassoio carta con il codice a barre e il logo HP rivolto verso il basso.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Cornice rossa";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Promemoria";
@@ -98,19 +287,19 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 "Retry" = "Riprova";
 
 /* Title of a table view header */
-"SUPPORT:" = "ASSISTENZA:";
+"SUPPORT:" = "SUPPORTO:";
+
+/* No comment provided by engineer. */
+"Save" = "Salva";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Salva e esci da anteprima?";
 
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Salva in rullino fotografico";
 
-/* Title of the select template screen */
-"Select Template" = "Seleziona modello";
-
-/* No comment provided by engineer. */
-"Session Error" = "Errore sessione";
-
-/* No comment provided by engineer. */
-"Set Location" = "Imposta posizione";
+/* Button for opening the app settings */
+"Settings" = "Impostazioni";
 
 /* No comment provided by engineer. */
 "Sign In" = "Accedi";
@@ -119,28 +308,100 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 "Sign Out" = "Disconnetti";
 
 /* No comment provided by engineer. */
-"Social Media Snapshots error log" = "Registro di errore Social Media Snapshots";
+"Sloppy Frame" = "Cornice Irregolare";
 
 /* No comment provided by engineer. */
-"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Impossibile segnalare il tuo problema in questo momento. Questo avviene probabilmente perché non vi è nessun account email impostato sul tuo dispositivo mobile.";
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Impossibile segnalare il problema in questo momento. Questo inconveniente è probabilmente dovuto al fatto che non è impostato alcun account email sul dispositivo mobile.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Upgrade firmware stampante Sprocket disponibile";
+
+/* No comment provided by engineer. */
+"Star Sticker" = "Adesivo Stella";
+
+/* No comment provided by engineer. */
+"Stars Sticker" = "Adesivo Stelle";
+
+/* Setup step 1 title */
+"Step 1" = "Fase 1";
+
+/* Setup step 2 title */
+"Step 2" = "Fase 2";
+
+/* Setup step 3 title */
+"Step 3" = "Fase 3";
 
 /* No comment provided by engineer. */
 "Success" = "Operazione riuscita";
 
 /* No comment provided by engineer. */
+"Sunglasses Sticker" = "Adesivo Occhiali da sole";
+
+/* No comment provided by engineer. */
+"SuperBowl Banner Sticker" = "Adesivo Maschera SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Eye Black Sticker" = "Adesivo Maschera SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Flag Sticker" = "Adesivo Maschera SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Foam Finger Sticker" = "Adesivo Dito di spugna SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Football Flames Sticker" = "Adesivo Fiamme SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Game Time Sticker" = "Adesivo Game Time Superbowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Glasses Sticker" = "Adesivo Occhiali gatto";
+
+/* No comment provided by engineer. */
+"SuperBowl Glasses Two Sticker" = "Adesivo Bicchieri SuperBowl 2";
+
+/* No comment provided by engineer. */
+"SuperBowl Goal Post Sticker" = "Adesivo Palo gol SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Heart Football Sticker" = "Adesivo Cuore Football SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Heart Football Two Sticker" = "Adesivo Cuore Football SuperBowl 2";
+
+/* No comment provided by engineer. */
+"SuperBowl Helmet Sticker" = "Adesivo Maschera SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl I Heart Football Sticker" = "Adesivo SuperBowl I Heart Football";
+
+/* No comment provided by engineer. */
+"SuperBowl Love Sticker" = "Adesivo Maschera SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Owl Sticker" = "Etichetta adesiva SuperBowl";
+
+/* No comment provided by engineer. */
+"SuperBowl Stars n Balls Sticker" = "Adesivo Stelle e palloni SuperBowl";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Vai al questionario";
+
+/* No comment provided by engineer. */
 "Take the survey" = "Vai al questionario";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Premere Aggiorna per continuare.";
 
 /* No comment provided by engineer. */
 "Tell us what you think of %@" = "Informaci sulla tua opinione riguardo a %@.";
 
 /* No comment provided by engineer. */
-"Tell us what you think of HP Social Media Snapshots" = "Esprimi il tuo parere su HP Social Media Snapshots";
+"Tell us what you think of sprocket" = "Informaci sulla tua opinione riguardo a Sprocket.";
 
 /* Phrase to make link for terms of service of the landing page */
 "Terms of Service" = "Condizioni di Servizio";
-
-/* The metadata of the template used is incorrect */
-"The format of the following template is bad: %@" = "Il formato del seguente modello non è corretto: %@";
 
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Il file di registro è allegato a questo messaggio.";
@@ -148,15 +409,159 @@ Puoi anche utilizzare le foto del tuo dispositivo.";
 /* No comment provided by engineer. */
 "This will clear all previously saved options." = "Tutte le opzioni precedentemente salvate saranno cancellate.";
 
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Per eseguire l'upgrade, caricare la stampante sprocket ad almeno il 75% e passare a 'sprocket' nel menu.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Cornice turchese";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Aggiorna";
+
+/* No comment provided by engineer. */
+"Valentines Broken Heart Sticker" = "Adesivo S.Valentino Cuore spezzato";
+
+/* No comment provided by engineer. */
+"Valentines Butterfly Sticker" = "Adesivo S.Valentino Farfalla";
+
+/* No comment provided by engineer. */
+"Valentines Cat Sticker" = "Adesivo S.Valentino Gatto";
+
+/* No comment provided by engineer. */
+"Valentines Conversation Heart Sticker" = "Adesivo S.Valentino Conversazione Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Cupcake Sticker" = "Adesivo S.Valentino Cupcake";
+
+/* No comment provided by engineer. */
+"Valentines Dancing Hearts Sticker" = "Adesivo S.Valentino Cuori danzanti";
+
+/* No comment provided by engineer. */
+"Valentines Delivery Bird Sticker" = "Adesivo S.Valentino Uccello messaggero";
+
+/* No comment provided by engineer. */
+"Valentines Flower Crown Sticker" = "Adesivo S.Valentino Fiore Corona";
+
+/* No comment provided by engineer. */
+"Valentines Flying Heart Sticker" = "Adesivo S.Valentino Cuore danzante";
+
+/* No comment provided by engineer. */
+"Valentines Hat Sticker" = "Adesivo S.Valentino Cappellino";
+
+/* No comment provided by engineer. */
+"Valentines Heart Antennae Sticker" = "Adesivo S.Valentino Antenna Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Arrow Sticker" = "Adesivo S.Valentino Cuore e freccia";
+
+/* No comment provided by engineer. */
+"Valentines Heart Balloons Sticker" = "Adesivo S.Valentino Palloncini Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Banner Sticker" = "Adesivo S.Valentino Striscione Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Bouquet Sticker" = "Adesivo S.Valentino Cuore Bouquet";
+
+/* No comment provided by engineer. */
+"Valentines Heart Bow Sticker" = "Adesivo S.Valentino Cuore Arco";
+
+/* No comment provided by engineer. */
+"Valentines Heart Confetti Sticker" = "Adesivo S.Valentino Cuore Coriandoli";
+
+/* No comment provided by engineer. */
+"Valentines Heart Emoji Sticker" = "Adesivo S.Valentino Emoji Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Frame Sticker" = "Adesivo S.Valentino Cornice Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Garland Sticker" = "Adesivo S.Valentino Ghirlanda di cuori";
+
+/* No comment provided by engineer. */
+"Valentines Heart Glasses Sticker" = "Adesivo S.Valentino Bicchieri Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Glasses Two Sticker" = "Adesivo S.Valentino Bicchieri Cuore 2";
+
+/* No comment provided by engineer. */
+"Valentines Heart Monster Sticker" = "Adesivo S.Valentino  Mostro Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Heart Thought Sticker" = "Adesivo S.Valentino Cuore Pensiero";
+
+/* No comment provided by engineer. */
+"Valentines Heart Tiara Sticker" = "Adesivo S.Valentino Coroncina Cuore";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Cornice S.Valentino Cuori";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Cornice S.Valentino Cuori sovrimpressione";
+
+/* No comment provided by engineer. */
+"Valentines Lock And Key Sticker" = "Adesivo S.Valentino Lucchetto e chiave";
+
+/* No comment provided by engineer. */
+"Valentines Love Creature Sticker" = "Adesivo S.Valentino Love Creature";
+
+/* No comment provided by engineer. */
+"Valentines Love Letter Sticker" = "Adesivo S.Valentino Lettera d'amore";
+
+/* No comment provided by engineer. */
+"Valentines Pig Sticker" = "Adesivo S.Valentino Maialino";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Cornice S.Valentino Pois rosa";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Cornice S.Valentino Acquerello Rosa";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Cornice S.Valentino Rossa";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Cornice S.Valentino Strisce rosse";
+
+/* No comment provided by engineer. */
+"Valentines Rosebud Sticker" = "Adesivo S.Valentino Boccioli";
+
+/* No comment provided by engineer. */
+"Valentines Target Heart Sticker" = "Adesivo S.Valentino Cuore Bersaglio";
+
+/* No comment provided by engineer. */
+"Valentines Xoxo Sticker" = "Adesivo S.Valentino Xoxo";
+
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versione %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Cornice acquamarina";
+
+/* Social source title for WeiBo */
+"WeiBo" = "Weibo";
+
+/* No comment provided by engineer. */
+"White Frame" = "Cornice bianca";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "Cornice Fondo legno";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Vuoi scollegarti da %@?";
 
 /* No comment provided by engineer. */
+"XOXO Sticker" = "Etichetta adesiva XOXO";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Sì";
+
+/* No comment provided by engineer. */
 "You don’t have any account configured to send emails." = "Nessun account email è configurato sul tuo dispositivo mobile.";
 
 /* No comment provided by engineer. */
-"Your current session is no longer valid. Please log in again." = "La sessione corrente non è più valida. Effettuare nuovamente il login.";
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "registro degli errori sprocket";
 

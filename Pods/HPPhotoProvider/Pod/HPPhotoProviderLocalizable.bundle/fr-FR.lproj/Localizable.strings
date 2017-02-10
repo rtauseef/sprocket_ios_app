@@ -1,0 +1,102 @@
+/* Number of photos */
+" (%lu photos)" = " (Photos %lu)";
+
+/* No comment provided by engineer. */
+" (1 photo)" = " (1 photo)";
+
+/* Title of an alert indicates the specified social network login is not longer valid */
+"%@ Access" = "Accès %@";
+
+/* Albums of the specified social network */
+"%@ Albums" = "Albums %@";
+
+/* Photos of the specified social network */
+"%@ Photos" = "Photos %@";
+
+/* Number of posts */
+"%@ posts" = "Posts %@";
+
+/* Number of photos */
+"%li photos" = "Photos %li";
+
+/* Number of photos */
+"%lu photos" = "Photos %lu";
+
+/* No comment provided by engineer. */
+"1 photo" = "1 photo";
+
+/* Indicates that a user's photo album was deleted */
+"Album deleted" = "Album supprimé";
+
+/* Indicates that all photos will be displayed */
+"All Photos" = "Toutes les photos";
+
+/* Message of an alert when the user has denied the permission to access the Photos of the device */
+"Allow access in your Settings to print and save your photos." = "Autorisez cet accès dans les Paramètres pour imprimer et enregistrer des photos.";
+
+/* Title of an alert requesting authorization to access the Instagram photos */
+"Authorization Required" = "Autorisation requise";
+
+/* Button caption */
+"Authorize" = "Autoriser";
+
+/* Name of the camera roll app of the device */
+"Camera Roll" = "Pellicule";
+
+/* Button caption */
+"Cancel" = "Annuler";
+
+/* Message of an alert when is not possible to retrieve the pictures from the specified social network */
+"Could not retrieve the picture from %@" = "Impossible de récupérer l'image depuis %@";
+
+/* Title of an alert */
+"Error" = "Erreur";
+
+/* Message show to the user when there is no internet connection */
+"No Internet Connection" = "Aucune connexion Internet";
+
+/* Message shown when the album is empty in the select photo screen */
+"No Photos Found" = "Aucune photo détectée";
+
+/* Button caption */
+"OK" = "OK";
+
+/* Message of an alert when the application is not authorized to access photo data. */
+"Photo access is restricted on this device. Please check your settings." = "L'accès aux photos est restreint sur cet appareil. Vérifiez vos paramètres.";
+
+/* Title of an alert when the user has denied the permission to access the Photos of the device */
+"Photo Access Required" = "Accès aux photos requis";
+
+/* Title of an alert when the application is not authorized to access photo data. */
+"Photo Access Restricted" = "Accès aux photos restreint";
+
+/* Name of the Pitu app/social media provider */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Qzone" = "Qzone";
+
+/* Button caption */
+"Retry" = "Réessayer";
+
+/* Button caption */
+"Settings" = "Paramètres";
+
+/* Message of an alert requesting authorization to access the Instagram photos */
+"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "L'application %@ utilise les photos Instagram pour créer des instantanés géniaux. Autorisez %@ à accéder à vos photos Instagram pour continuer.";
+
+/* Indicates that a user's photo album was deleted */
+"The album was deleted" = "L'album a été supprimé";
+
+/* Message shown when the user account is private in the select photo screen */
+"The user account is private." = "Ce compte utilisateur est privé.";
+
+/* Message of an alert indicates the specified social network login is not longer valid */
+"There was a problem accessing %@. Please sign in again." = "Problème d'accès à %@. Veuillez vous reconnecter.";
+
+/* Message shown when the user tries to access the Photos of the device before the authorization was requested */
+"To select a photo you must first authorize this app to access your photo library." = "Pour sélectionner une photo, vous devez d'abord autoriser cette application à accéder à votre bibliothèque de photos.";
+
+/* Message show to the user when there is no internet connection */
+"You appear to be offline" = "Vous semblez être hors ligne";
+
