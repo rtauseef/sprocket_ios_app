@@ -1,0 +1,9 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "sprocket";
+CFBundleDisplayName = "sprocket";
+CFBundleShortVersionString = "1.9.0";
+
+NSBluetoothPeripheralUsageDescription = "Sprocket needs bluetooth access to connect to the HP Sprocket Printer.";
+NSCameraUsageDescription = "Allow access to take and print photos.";
+NSPhotoLibraryUsageDescription = "Allow access to print and save your photos.";
