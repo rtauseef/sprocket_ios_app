@@ -43,8 +43,8 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
 {
     if (!self.thumbnailImage) {
         PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
-        requestOptions.resizeMode   = PHImageRequestOptionsResizeModeExact;
-        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+        requestOptions.resizeMode   = PHImageRequestOptionsResizeModeFast;
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
         requestOptions.synchronous = NO;
         requestOptions.networkAccessAllowed = YES;
         
@@ -66,7 +66,7 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
     if (!self.image) {
         PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
         requestOptions.resizeMode   = PHImageRequestOptionsResizeModeNone;
-        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
         requestOptions.synchronous = NO;
         requestOptions.networkAccessAllowed = YES;
         
