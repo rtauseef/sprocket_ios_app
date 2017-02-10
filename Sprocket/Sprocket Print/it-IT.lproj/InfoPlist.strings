@@ -1,9 +1,6 @@
 /* (No Commment) */
-"CFBundleDisplayName" = "Udskriv til sprocket";
+"CFBundleDisplayName" = "Stampa su Sprocket";
 
 /* (No Commment) */
-"CFBundleName" = "$(PRODUCT_NAME)";
-
-/* (No Commment) */
-"CFBundleShortVersionString" = "1.9.0";
+"CFBundleName" = "${PRODOTTO_NOME}";
 

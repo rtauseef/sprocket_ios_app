@@ -1,9 +1,15 @@
-/* Localized versions of Info.plist keys */
+/* (No Commment) */
+"CFBundleDisplayName" = "Sprocket";
 
-CFBundleName = "Sprocket";
-CFBundleDisplayName = "Sprocket";
-CFBundleShortVersionString = "1.8.0";
+/* (No Commment) */
+"CFBundleName" = "Sprocket";
 
-NSBluetoothPeripheralUsageDescription = "Sprocket benötigt eine Bluetooth-Verbindung für den Zugriff auf den HP Sprocket-Drucker.";
-NSCameraUsageDescription = "Gestatten Sie den Zugriff zum Aufnehmen und Drucken von Fotos.";
-NSPhotoLibraryUsageDescription = "Gestatten Sie den Zugriff zum Drucken und Speichern Ihrer Fotos.";
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocket benötigt eine Bluetooth-Verbindung für den Zugriff auf den HP Sprocket-Drucker.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "Gestatten Sie den Zugriff zum Aufnehmen und Drucken von Fotos.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "Gestatten Sie den Zugriff zum Drucken und Speichern Ihrer Fotos.";
+

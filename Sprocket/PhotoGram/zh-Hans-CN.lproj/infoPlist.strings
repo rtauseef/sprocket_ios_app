@@ -1,9 +1,15 @@
-/* Localized versions of Info.plist keys */
+/* (No Commment) */
+"CFBundleDisplayName" = "Sprocket";
 
-CFBundleName = "Sprocket";
-CFBundleDisplayName = "Sprocket";
-CFBundleShortVersionString = "1.8.0";
+/* (No Commment) */
+"CFBundleName" = "Sprocket";
 
-NSBluetoothPeripheralUsageDescription = "Sprocket 需要有蓝牙服务才能连接到 HP Sprocket 打印机。";
-NSCameraUsageDescription = "允许连接来拍照并打印照片。";
-NSPhotoLibraryUsageDescription = "允许连接来打印和保存您的照片。";
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocket 需要有蓝牙服务才能连接到 HP Sprocket 打印机。";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "允许连接来拍照并打印照片。";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "允许连接来打印和保存您的照片。";
+
