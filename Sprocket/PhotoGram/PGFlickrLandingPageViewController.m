@@ -24,6 +24,7 @@
 #import "SWRevealViewController.h"
 #import "UIView+Animations.h"
 #import "UIViewController+Trackable.h"
+#import "PGSocialSourcesManager.h"
 
 NSString * const kFlickrUserNameKey = @"userName";
 NSString * const kFlickrUserIdKey = @"userID";
@@ -95,7 +96,11 @@ NSString * const kFlickrUserIdKey = @"userID";
     return [HPPRFlickrPhotoProvider sharedInstance];
 }
 
-- (void)showPhotoGallery
+- (void)showPhotoGallery {
+    [self showPhotoGalleryNotifyDelegate:YES];
+}
+
+- (void)showPhotoGalleryNotifyDelegate:(BOOL)notifyDelegate
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -103,9 +108,13 @@ NSString * const kFlickrUserIdKey = @"userID";
     self.signInView.alpha = 0.0f;
     
     HPPRFlickrPhotoProvider *provider = [HPPRFlickrPhotoProvider sharedInstance];
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeFlickr];
+
+    [self willSignInToSocialSource:socialSource notifyDelegate:notifyDelegate];
 
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [self didSignInToSocialSource:socialSource notifyDelegate:notifyDelegate];
 
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
@@ -117,12 +126,15 @@ NSString * const kFlickrUserIdKey = @"userID";
             self.user = user;
             
         } else {
-            if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
+            if ([error code] == HPPR_ERROR_NO_INTERNET_CONNECTION) {
                 [self showNoConnectionAvailableAlert];
+                [self didFailSignInToSocialSource:socialSource notifyDelegate:notifyDelegate];
+            } else if (error) {
+                [self didFailSignInToSocialSource:socialSource notifyDelegate:notifyDelegate];
+            } else {
+                [self didSignOutToSocialSource:socialSource notifyDelegate:notifyDelegate];
             }
-            
-            // Why to call logout?
-            //[[HPPRFlickrLoginProvider sharedInstance] logoutWithCompletion:nil];
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [spinner removeFromSuperview];
                 [self enableSignIn];
@@ -140,12 +152,17 @@ NSString * const kFlickrUserIdKey = @"userID";
 
 - (void)showLogin
 {
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeFlickr];
+    [self willSignInToSocialSource:socialSource];
+
     [HPPRFlickrLoginProvider sharedInstance].viewController = self;
     [[HPPRFlickrLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self showPhotoGallery];
+            [self didSignInToSocialSource:socialSource];
+            [self showPhotoGalleryNotifyDelegate:NO];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
+            [self didFailSignInToSocialSource:socialSource];
         }
     }];
 }

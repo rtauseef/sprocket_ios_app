@@ -100,18 +100,20 @@ NSString * const kFacebookUserIdKey = @"id";
     self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     HPPRFacebookPhotoProvider *provider = [HPPRFacebookPhotoProvider sharedInstance];
-    
+
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeFacebook];
+    [self willSignInToSocialSource:socialSource];
+
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         __block NSString *alertText;
         __block NSString *alertTitle;
         
         if (loggedIn) {
-            
+            [self didSignInToSocialSource:socialSource];
+
             [provider userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
                 
                 if (!error) {
-                    [[PGMediaNavigation sharedInstance] showAlbumsDropDownButtonDown:NO];
-
                     provider.user = userInfo;
 
                     [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
@@ -125,7 +127,9 @@ NSString * const kFacebookUserIdKey = @"id";
                     // An error occurred, we need to handle the error
                     // See: https://developers.facebook.com/docs/ios/errors
                     
-                    [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
+                    [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:^(BOOL loggedOut, NSError *error) {
+                        [self didSignOutToSocialSource:socialSource];
+                    }];
                     
                     [self.spinner removeFromSuperview];
                     
@@ -138,6 +142,8 @@ NSString * const kFacebookUserIdKey = @"id";
             }];
             
         } else if (error) {
+            [self didFailSignInToSocialSource:socialSource];
+
             [self.spinner removeFromSuperview];
             if (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code) {
                 [self showNoConnectionAvailableAlert];
@@ -146,6 +152,7 @@ NSString * const kFacebookUserIdKey = @"id";
             }
         } else {
             [self.spinner removeFromSuperview];
+            [self didSignOutToSocialSource:socialSource];
         }
     }];
 }
@@ -162,12 +169,18 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)showLogin
 {
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeFacebook];
+    [self willSignInToSocialSource:socialSource];
+
     [[HPPRFacebookLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn && nil == error) {
+            [self didSignInToSocialSource:socialSource];
             [self showPhotoGallery];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
+            [self didFailSignInToSocialSource:socialSource];
         } else {
+            [self didFailSignInToSocialSource:socialSource];
             PGLogError(@"FACEBOOK LOGIN ERROR: %@", error);
         }
     }];
