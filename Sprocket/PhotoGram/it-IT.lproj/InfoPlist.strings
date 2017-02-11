@@ -1,9 +1,15 @@
 /* (No Commment) */
-"CFBundleDisplayName" = "HP Snapshots";
+"CFBundleDisplayName" = "sprocket";
 
 /* (No Commment) */
-"CFBundleName" = "HP Snapshots";
+"CFBundleName" = "sprocket";
 
 /* (No Commment) */
-"CFBundleShortVersionString" = "1.6";
+"NSBluetoothPeripheralUsageDescription" = "Sprocket richiede l'accesso bluetooth per la connessione ad HP Sprocket Printer.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "Consentire l'accesso per scattare e stampare foto.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "Consentire l'accesso per stampare e salvare le tue foto.";
 

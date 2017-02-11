@@ -11,6 +11,7 @@
 //
 
 #import <Crashlytics/Crashlytics.h>
+#import "AirshipKit.h"
 #import "PGAppDelegate.h"
 #import "PGLoggingSetttingsViewController.h"
 #import "PGAnalyticsManager.h"
@@ -37,6 +38,8 @@ static int kCrashAppCellIndex             = 5;
 static int kExceptionAppCellIndex         = 6;
 static int kHideSvgMessagesIndex          = 7;
 static int kEnableExtraSocialSourcesIndex = 8;
+static int kEnablePushNotificationsIndex  = 9;
+static int kDisplayNotificationMsgCenterIndex = 10;
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -156,7 +159,7 @@ static int kEnableExtraSocialSourcesIndex = 8;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 9;
+    NSInteger numberOfRows = 11;
     
     if ([self levelPickerIsShown]){
         
@@ -244,6 +247,20 @@ static int kEnableExtraSocialSourcesIndex = 8;
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.text = @"App restart is required";
+        } else if (kEnablePushNotificationsIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enablePushNotifications"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enablePushNotifications"];
+            }
+            
+            cell.textLabel.text = @"Enable push notifications";
+        } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"displayNotificationMsgCenter"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"displayNotificationMsgCenter"];
+            }
+            
+            cell.textLabel.text = @"Display Notification Message Center";
         }
     }
     
@@ -297,6 +314,41 @@ static int kEnableExtraSocialSourcesIndex = 8;
             } else if (kEnableExtraSocialSourcesIndex == indexPath.row) {
                 [[PGSocialSourcesManager sharedInstance] toggleExtraSocialSourcesEnabled];
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            } else if (kEnablePushNotificationsIndex == indexPath.row) {
+                // Set log level for debugging config loading (optional)
+                // It will be set to the value in the loaded config upon takeOff
+                [UAirship setLogLevel:UALogLevelTrace];
+                
+                // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
+                // or set runtime properties here.
+                UAConfig *config = [UAConfig defaultConfig];
+                
+                // Call takeOff (which creates the UAirship singleton)
+                [UAirship takeOff:config];
+                
+                // Print out the application configuration for debugging (optional)
+                UA_LDEBUG(@"Config:\n%@", [config description]);
+                
+                // Set the icon badge to zero on startup (optional)
+                [[UAirship push] resetBadge];
+                
+                // Set the notification types required for the app (optional). This value defaults
+                // to badge, alert and sound, so it's only necessary to set it if you want
+                // to add or remove types.
+                //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
+                //                                        UIUserNotificationTypeBadge |
+                //                                        UIUserNotificationTypeSound);
+                
+                
+                // User notifications will not be enabled until userPushNotificationsEnabled is
+                // set YES on UAPush. Onced enabled, the setting will be persisted and the user
+                // will be prompted to allow notifications. You should wait for a more appropriate
+                // time to enable push to increase the likelihood that the user will accept
+                // notifications. For troubleshooting, we will enable this at launch.
+                [UAirship push].userPushNotificationsEnabled = YES;
+            } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
+                // Note-- you must enable messaging before this will work
+                [[UAirship defaultMessageCenter] display];
             }
         }
     }
