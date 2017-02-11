@@ -212,15 +212,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [self showStatusBar];
 }
 
-- (void)handleCheckProviderNotification:(NSNotification *)notification
-{
-    UINavigationController *navController = [self currentNavigationController];
-    UIViewController *viewController = [navController.viewControllers lastObject];
-
-    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
-    PGSocialSource *socialSource = self.socialSources[index];
-
-    [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
+- (void)handleCheckProviderNotification:(NSNotification *)notification {
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 - (UINavigationController *)viewControllerForSocialSourceType:(PGSocialSourceType)socialSourceType
@@ -433,6 +426,16 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
+- (void)updateMediaNavigationForCurrentViewController {
+    UINavigationController *navController = [self currentNavigationController];
+    UIViewController *viewController = [navController.viewControllers lastObject];
+
+    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
+    PGSocialSource *socialSource = self.socialSources[index];
+
+    [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
+}
+
 - (void)updateMediaNavigationForViewController:(UIViewController *)viewController socialSource:(PGSocialSource *)socialSource
 {
     if (self.isDraggingPage) {
@@ -514,6 +517,23 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
         [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
     }
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController willSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
+    [self.navigationView hideCameraButton];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didFailSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignOutToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 @end
