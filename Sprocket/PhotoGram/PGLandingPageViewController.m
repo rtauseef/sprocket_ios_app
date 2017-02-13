@@ -135,6 +135,62 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     return nil;
 }
 
+- (void)willSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate {
+    if (notifyDelegate) {
+        if ([self.delegate respondsToSelector:@selector(landingPageViewController:willSignInToSocialSource:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate landingPageViewController:self willSignInToSocialSource:socialSource];
+            });
+        }
+    }
+}
+
+- (void)didSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate {
+    if (notifyDelegate) {
+        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didSignInToSocialSource:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate landingPageViewController:self didSignInToSocialSource:socialSource];
+            });
+        }
+    }
+}
+
+- (void)didSignOutToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate {
+    if (notifyDelegate) {
+        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didSignOutToSocialSource:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate landingPageViewController:self didSignOutToSocialSource:socialSource];
+            });
+        }
+    }
+}
+
+- (void)didFailSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate {
+    if (notifyDelegate) {
+        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didFailSignInToSocialSource:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate landingPageViewController:self didFailSignInToSocialSource:socialSource];
+            });
+        }
+    }
+}
+
+- (void)willSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self willSignInToSocialSource:socialSource notifyDelegate:YES];
+}
+
+- (void)didSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self didSignInToSocialSource:socialSource notifyDelegate:YES];
+}
+
+- (void)didSignOutToSocialSource:(PGSocialSource *)socialSource {
+    [self didSignOutToSocialSource:socialSource notifyDelegate:YES];
+}
+
+- (void)didFailSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self didFailSignInToSocialSource:socialSource notifyDelegate:YES];
+}
+
 - (void)presentPhotoGalleryWithSettings:(void (^)(HPPRSelectPhotoCollectionViewController *))settings {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
 

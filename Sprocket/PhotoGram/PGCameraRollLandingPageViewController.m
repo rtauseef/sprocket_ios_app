@@ -78,10 +78,14 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    
+
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeLocalPhotos];
+    [self willSignInToSocialSource:socialSource];
+
     [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [[PGMediaNavigation sharedInstance] showAlbumsDropDownButtonDown:NO];
+            [self didSignInToSocialSource:socialSource];
 
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
@@ -89,6 +93,7 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
             }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self didFailSignInToSocialSource:socialSource];
                 [spinner removeFromSuperview];
             });
         }

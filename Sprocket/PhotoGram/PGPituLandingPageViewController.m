@@ -25,6 +25,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIView+Animations.h"
 #import "SWRevealViewController.h"
+#import "PGSocialSourcesManager.h"
 
 @interface PGPituLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate>
 
@@ -73,9 +74,13 @@
 {
     UIActivityIndicatorView *spinner = [self.view addSpinner];
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    
+
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypePitu];
+    [self willSignInToSocialSource:socialSource];
+
     [[HPPRPituLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [self didSignInToSocialSource:socialSource];
 
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
@@ -86,6 +91,7 @@
 
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self didFailSignInToSocialSource:socialSource];
                 [spinner removeFromSuperview];
             });
         }
