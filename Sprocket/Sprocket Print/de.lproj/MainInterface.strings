@@ -1,0 +1,9 @@
+/* Class = "UIViewController"; title = "Image"; ObjectID = "ObA-dk-sSI"; */
+"ObA-dk-sSI.title" = "Bild";
+
+/* Class = "UIButton"; normalTitle = "Print to sprocket"; ObjectID = "XPD-kO-soS"; */
+"XPD-kO-soS.normalTitle" = "Auf Sprocket drucken";
+
+/* Class = "UILabel"; text = "Connected"; ObjectID = "nFm-89-OFW"; */
+"nFm-89-OFW.text" = "Verbunden";
+
