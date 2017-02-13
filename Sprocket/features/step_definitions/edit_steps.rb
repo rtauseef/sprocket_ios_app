@@ -71,7 +71,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     else
         if edit_item == "sticker"
             
-           selected_frame_status = query("UIImageView index:7",:accessibilityIdentifier).first
+           selected_frame_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
            raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "v_xoxo"
         else
             if edit_item == "text"
