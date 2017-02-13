@@ -1,0 +1,567 @@
+/* No comment provided by engineer. */
+"About" = "關於";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "在設定中允許存取來拍攝和列印相片。";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "共享項目時發生錯誤。";
+
+/* No comment provided by engineer. */
+"App Settings" = "應用程式設定";
+
+/* No comment provided by engineer. */
+"Arrow Sticker" = "箭頭貼紙";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "自動儲存設定";
+
+/* No comment provided by engineer. */
+"Birthday Hat Sticker" = "壽星帽貼紙";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "購買紙張";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "需要相機存取權";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "手機相簿";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Cat Ears Sticker" = "貓耳朵貼紙";
+
+/* No comment provided by engineer. */
+"Cat Glasses Sticker" = "貓眼鏡貼紙";
+
+/* No comment provided by engineer. */
+"Cat Sticker" = "貓咪貼紙";
+
+/* No comment provided by engineer. */
+"Cat Whiskers Sticker" = "貓鬍鬚貼紙";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "欣賞我的 HP Sprocket 創作";
+
+/* No comment provided by engineer. */
+"Chinese Dragon Sticker" = "中國龍貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Dui Lian Couplet Sticker" = "中國對聯貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Fan Sticker" = "中國扇貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Firecracker Sticker" = "中國爆竹貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Fish Sticker" = "中國魚貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Fu Good Luck Sticker" = "中國福好運貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Glasses 2017 Sticker" = "中國 2017 年眼鏡貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Glasses Blossom Sticker" = "中國花朵眼鏡貼紙";
+
+/* No comment provided by engineer. */
+"Chinese HCNY Sticker" = "中國 HCNY 貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Lantern Sticker" = "中國燈籠貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Lion Mask Sticker" = "中國獅頭面具貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Lucky Cat Sticker" = "中國幸運貓貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Man Hat Sticker" = "中國男士帽貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Money Sticker" = "中國錢貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Mustache Sticker" = "中國鬍鬚貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Oranges Sticker" = "中國柑橘貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Panda Sticker" = "中國熊貓貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Plum Blossom Sticker" = "中國梅花貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Rooster Sticker" = "中國公雞貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Woman Hat 2 Sticker" = "中國女士帽 2 貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Woman Hat Sticker" = "中國女士帽貼紙";
+
+/* No comment provided by engineer. */
+"Chinese Yin Yang Sticker" = "中國陰陽貼紙";
+
+/* Setup step 3 desc */
+"Connect" = "連線";
+
+/* No comment provided by engineer. */
+"Crown Sticker" = "皇冠貼紙";
+
+/* No comment provided by engineer. */
+"Cupcake Sticker" = "杯子蛋糕貼紙";
+
+/* No comment provided by engineer. */
+"Diamond Sticker" = "鑽石貼紙";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "解除";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "是否要將新的相機相片儲存於您的裝置？";
+
+/* No comment provided by engineer. */
+"Don't Save" = "不儲存";
+
+/* No comment provided by engineer. */
+"Enter Text" = "輸入文字";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "輸入+文字";
+
+/* No comment provided by engineer. */
+"Error" = "錯誤";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "擷取使用者資訊時發生錯誤。";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* No comment provided by engineer. */
+"Feather 2 Sticker" = "羽毛 2 貼紙";
+
+/* No comment provided by engineer. */
+"Feather Sticker" = "羽毛貼紙";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "關於 sprocket for iOS 的回饋意見 (記錄定位器：%@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "花藝 2 外框";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "花藝外框";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "從 Bluetooth 設定中，觸碰「HP Sprocket」與印表機配對。";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "提供回饋意見";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "漸層外框";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "綠色水彩外框";
+
+/* No comment provided by engineer. */
+"Heart Express Sticker" = "心形小語貼紙";
+
+/* No comment provided by engineer. */
+"Hearts Sticker" = "心形貼紙";
+
+/* No comment provided by engineer. */
+"How To" = "使用方式";
+
+/* No comment provided by engineer. */
+"How to & Help" = "使用方式與說明";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* No comment provided by engineer. */
+"Kraft Frame" = "牛皮紙外框";
+
+/* No comment provided by engineer. */
+"Leaf 3 Sticker" = "葉子 3 貼紙";
+
+/* Setup step 1 desc */
+"Load Paper" = "放入紙張";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "已清除記錄檔。";
+
+/* No comment provided by engineer. */
+"Moon Sticker" = "月亮貼紙";
+
+/* Dismisses dialog without taking action */
+"No" = "否";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "無任何連線可供使用";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "找不到 Pitu 應用程式影像";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "找不到 Qzone 應用程式影像";
+
+/* No comment provided by engineer. */
+"No, thanks" = "不了，謝謝";
+
+/* Allows user close dialog */
+"OK" = "確定";
+
+/* No comment provided by engineer. */
+"OMG Sticker" = "OMG 貼紙";
+
+/* No comment provided by engineer. */
+"Oops!" = "糟糕！";
+
+/* No comment provided by engineer. */
+"Orange Frame" = "柑橘外框";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "粉紅色噴漆外框";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "請連線至資料來源。
+您也可以使用裝置中的相片。";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "請告訴我們您發現的優缺點！";
+
+/* No comment provided by engineer. */
+"Polka Dots Frame" = "圓點花樣外框";
+
+/* Setup step 2 desc */
+"Power Up" = "啟動";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "按住電源按鈕，直到 LED 變成白色。";
+
+/* No comment provided by engineer. */
+"Printers" = "印表機";
+
+/* No comment provided by engineer. */
+"Privacy" = "隱私";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "將整包紙放入紙匣，條碼和 HP 標誌朝下。";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Red Frame" = "紅色外框";
+
+/* No comment provided by engineer. */
+"Remind me later" = "稍後再提醒我";
+
+/* No comment provided by engineer. */
+"Reset" = "重設";
+
+/* No comment provided by engineer. */
+"Reset Application" = "重設應用程式";
+
+/* No comment provided by engineer. */
+"Retry" = "重試";
+
+/* Title of a table view header */
+"SUPPORT:" = "支援：";
+
+/* No comment provided by engineer. */
+"Save" = "儲存";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "儲存並結束預覽？";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "儲存至手機相簿";
+
+/* Button for opening the app settings */
+"Settings" = "設定";
+
+/* No comment provided by engineer. */
+"Sign In" = "登入";
+
+/* Signing out of a social media site. */
+"Sign Out" = "登出";
+
+/* No comment provided by engineer. */
+"Sloppy Frame" = "不整齊外框";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "抱歉，目前無法報告您的問題。這很可能是因為您並未在行動裝置上設定郵件帳戶。";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Sprocket 印表機韌體升級可供使用";
+
+/* No comment provided by engineer. */
+"Star Sticker" = "星光貼紙";
+
+/* No comment provided by engineer. */
+"Stars Sticker" = "星光貼紙";
+
+/* Setup step 1 title */
+"Step 1" = "步驟 1";
+
+/* Setup step 2 title */
+"Step 2" = "步驟 2";
+
+/* Setup step 3 title */
+"Step 3" = "步驟 3";
+
+/* No comment provided by engineer. */
+"Success" = "成功";
+
+/* No comment provided by engineer. */
+"Sunglasses Sticker" = "太陽眼鏡貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Banner Sticker" = "超級盃橫幅貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Eye Black Sticker" = "超級盃黑色眼睛貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Flag Sticker" = "超級盃旗幟貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Foam Finger Sticker" = "超級盃泡棉手指貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Football Flames Sticker" = "超級盃橄欖球火焰貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Game Time Sticker" = "超級盃比賽時間貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Glasses Sticker" = "超級盃眼鏡貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Glasses Two Sticker" = "超級盃眼鏡 2 貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Goal Post Sticker" = "超級盃門柱貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Heart Football Sticker" = "超級盃心形橄欖球貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Heart Football Two Sticker" = "超級盃心形橄欖球 2 貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Helmet Sticker" = "超級盃頭盔貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl I Heart Football Sticker" = "超級盃我愛橄欖球貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Love Sticker" = "超級盃愛心貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Owl Sticker" = "超級盃貓頭鷹貼紙";
+
+/* No comment provided by engineer. */
+"SuperBowl Stars n Balls Sticker" = "超級盃明星與球形貼紙";
+
+/* No comment provided by engineer. */
+"Take Survey" = "填寫問卷";
+
+/* No comment provided by engineer. */
+"Take the survey" = "填寫問卷";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "觸碰「升級」繼續。";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "告訴我們您對於 %@ 的想法";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "告訴我們您對於 sprocket 的想法";
+
+/* Phrase to make link for terms of service of the landing page */
+"Terms of Service" = "服務條款";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "記錄檔附加於此訊息。";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "這將清除先前儲存的全部選項。";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "若要升級，請將 sprocket 印表機充電到至少 75% 的電量，然後進入功能表的「sprocket」。";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "淺粉藍外框";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "升級";
+
+/* No comment provided by engineer. */
+"Valentines Broken Heart Sticker" = "情人節破碎的心貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Butterfly Sticker" = "情人節蝴蝶貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Cat Sticker" = "情人節貓咪貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Conversation Heart Sticker" = "情人節談心貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Cupcake Sticker" = "情人節杯子蛋糕貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Dancing Hearts Sticker" = "情人節舞動的心貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Delivery Bird Sticker" = "情人節信使鳥貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Flower Crown Sticker" = "情人節花冠貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Flying Heart Sticker" = "情人節飛揚的心貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Hat Sticker" = "情人節帽子貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Antennae Sticker" = "情人節心形天線貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Arrow Sticker" = "情人節一箭穿心貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Balloons Sticker" = "情人節心形氣球貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Banner Sticker" = "情人節心形橫幅貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Bouquet Sticker" = "情人節心形捧花貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Bow Sticker" = "情人節心形結貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Confetti Sticker" = "情人節心形彩紙貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Emoji Sticker" = "情人節心形表情符號貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Frame Sticker" = "情人節心形外框貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Garland Sticker" = "情人節心形花環貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Glasses Sticker" = "情人節心形玻璃貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Glasses Two Sticker" = "情人節心形玻璃 2 貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Monster Sticker" = "情人節心形怪物貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Thought Sticker" = "情人節心形沉思貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Heart Tiara Sticker" = "情人節心形頭飾貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "情人節心形外框";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "情人節心心相印外框";
+
+/* No comment provided by engineer. */
+"Valentines Lock And Key Sticker" = "情人節鎖鑰貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Love Creature Sticker" = "情人節愛情生物貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Love Letter Sticker" = "情人節情書貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Pig Sticker" = "情人節豬貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "情人節粉紅色圓點外框";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "情人節粉紅色水彩外框";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "情人節紅色外框";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "情人節紅色條紋外框";
+
+/* No comment provided by engineer. */
+"Valentines Rosebud Sticker" = "情人節玫瑰花蕾貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Target Heart Sticker" = "情人節正中靶心貼紙";
+
+/* No comment provided by engineer. */
+"Valentines Xoxo Sticker" = "情人節 Xoxo 貼紙";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "%1$@ 版 (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "水藍外框";
+
+/* Social source title for WeiBo */
+"WeiBo" = "微博";
+
+/* No comment provided by engineer. */
+"White Frame" = "白色外框";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "木底外框";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "想要登出 %@？";
+
+/* No comment provided by engineer. */
+"XOXO Sticker" = "XOXO 貼紙";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "是";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "您並未設定發送電子郵件的任何帳戶。";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "Sprocket 錯誤日誌";
+

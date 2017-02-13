@@ -33,6 +33,16 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 - (void)showAlbums;
 - (HPPRSelectPhotoProvider *)albumsPhotoProvider;
 
+- (void)willSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate;
+- (void)didSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate;
+- (void)didSignOutToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate;
+- (void)didFailSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate;
+
+- (void)willSignInToSocialSource:(PGSocialSource *)socialSource;
+- (void)didSignInToSocialSource:(PGSocialSource *)socialSource;
+- (void)didSignOutToSocialSource:(PGSocialSource *)socialSource;
+- (void)didFailSignInToSocialSource:(PGSocialSource *)socialSource;
+
 - (void)presentPhotoGalleryWithSettings:(void (^)(HPPRSelectPhotoCollectionViewController *viewController))settings;
 
 @end
@@ -40,6 +50,11 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 @protocol PGLandingPageViewControllerDelegate <NSObject>
 
 @optional
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController willSignInToSocialSource:(PGSocialSource *)socialSource;
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignInToSocialSource:(PGSocialSource *)socialSource;
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignOutToSocialSource:(PGSocialSource *)socialSource;
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didFailSignInToSocialSource:(PGSocialSource *)socialSource;
 
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didShowViewController:(UIViewController *)viewController;
 
