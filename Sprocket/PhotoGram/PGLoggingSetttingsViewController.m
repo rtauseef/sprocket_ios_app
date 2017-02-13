@@ -19,6 +19,7 @@
 #import "Logging/PGLogger.h"
 #import "Logging/PGLogFormatter.h"
 #import "PGSocialSourcesManager.h"
+#import "PGFeatureFlag.h"
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -40,6 +41,7 @@ static int kHideSvgMessagesIndex          = 7;
 static int kEnableExtraSocialSourcesIndex = 8;
 static int kEnablePushNotificationsIndex  = 9;
 static int kDisplayNotificationMsgCenterIndex = 10;
+static int kEnableMultiPrintIndex             = 11;
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -159,7 +161,7 @@ static int kDisplayNotificationMsgCenterIndex = 10;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 11;
+    NSInteger numberOfRows = 12;
     
     if ([self levelPickerIsShown]){
         
@@ -261,6 +263,17 @@ static int kDisplayNotificationMsgCenterIndex = 10;
             }
             
             cell.textLabel.text = @"Display Notification Message Center";
+        } else if (kEnableMultiPrintIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableMultiPrint"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enableMultiPrint"];
+            }
+
+            if ([PGFeatureFlag isMultiPrintEnabled]) {
+                cell.textLabel.text = @"Disable Multi-Print";
+            } else {
+                cell.textLabel.text = @"Enable Multi-Print";
+            }
         }
     }
     
@@ -310,14 +323,17 @@ static int kDisplayNotificationMsgCenterIndex = 10;
                 BOOL currentSetting = [[PGLogger sharedInstance] hideSvgMessages];
                 [[PGLogger sharedInstance] setHideSvgMessages: !currentSetting];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[[PGLogger sharedInstance] hideSvgMessages]];
-            } else if (kEnableExtraSocialSourcesIndex == indexPath.row) {
+            } else if (kEnableExtraSocialSourcesIndex == selectedRow) {
                 [[PGSocialSourcesManager sharedInstance] toggleExtraSocialSourcesEnabled];
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            } else if (kEnablePushNotificationsIndex == indexPath.row) {
+            } else if (kEnablePushNotificationsIndex == selectedRow) {
                 [self enablePushNotifications];
-            } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
+            } else if (kDisplayNotificationMsgCenterIndex == selectedRow) {
                 // Note-- you must enable messaging before this will work
                 [[UAirship defaultMessageCenter] display];
+            } else if (kEnableMultiPrintIndex == selectedRow) {
+                [self toggleMultiPrint];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
     }
@@ -337,7 +353,13 @@ static int kDisplayNotificationMsgCenterIndex = 10;
     }
 }
 
+
 #pragma mark - Mailing Logfile
+
+- (void)toggleMultiPrint {
+    BOOL enabled = [PGFeatureFlag isMultiPrintEnabled];
+    [PGFeatureFlag setMultiPrintEnabled:!enabled];
+}
 
 - (void)enablePushNotifications {
     // Set log level for debugging config loading (optional)
