@@ -1846,13 +1846,6 @@
 		82F01B1A1E52684300670193 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		82F01B1B1E52684300670193 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		82F01B1C1E52684400670193 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		82F01B1D1E526B3400670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainInterface.strings"; sourceTree = "<group>"; };
-		82F01B1E1E526B3400670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		82F01B1F1E526B3500670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		82F01B201E526B3500670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
-		82F01B211E526B3500670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PG_Main.strings"; sourceTree = "<group>"; };
-		82F01B221E526B3600670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		82F01B231E526B3600670193 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		82F01B241E526B6300670193 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		82F01B251E526B6400670193 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		82F01B261E526B6400670193 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -4954,7 +4947,6 @@
 				82F01B091E52676200670193 /* es */,
 				82F01B101E5267D100670193 /* nl */,
 				82F01B171E52684200670193 /* de */,
-				82F01B1E1E526B3400670193 /* zh-Hant */,
 				82F01B251E526B6400670193 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
@@ -4984,7 +4976,6 @@
 				82F01B0D1E52676400670193 /* es */,
 				82F01B141E5267D300670193 /* nl */,
 				82F01B1B1E52684300670193 /* de */,
-				82F01B221E526B3600670193 /* zh-Hant */,
 				82F01B291E526B6600670193 /* zh-Hans */,
 			);
 			name = Localizable.strings;
@@ -5015,7 +5006,6 @@
 				82F01B071E52676100670193 /* es */,
 				82F01B0F1E5267D000670193 /* nl */,
 				82F01B161E52684100670193 /* de */,
-				82F01B1D1E526B3400670193 /* zh-Hant */,
 				82F01B241E526B6300670193 /* zh-Hans */,
 			);
 			name = MainInterface.storyboard;
@@ -5034,7 +5024,6 @@
 				82F01B0E1E52676400670193 /* es */,
 				82F01B151E5267D300670193 /* nl */,
 				82F01B1C1E52684400670193 /* de */,
-				82F01B231E526B3600670193 /* zh-Hant */,
 				82F01B2A1E526B6600670193 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
@@ -5064,7 +5053,6 @@
 				82F01B0A1E52676200670193 /* es */,
 				82F01B111E5267D100670193 /* nl */,
 				82F01B181E52684200670193 /* de */,
-				82F01B1F1E526B3500670193 /* zh-Hant */,
 				82F01B261E526B6400670193 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
@@ -5094,7 +5082,6 @@
 				82F01B0C1E52676300670193 /* es */,
 				82F01B131E5267D200670193 /* nl */,
 				82F01B1A1E52684300670193 /* de */,
-				82F01B211E526B3500670193 /* zh-Hant */,
 				82F01B281E526B6500670193 /* zh-Hans */,
 			);
 			name = PG_Main.storyboard;
@@ -5148,7 +5135,6 @@
 				82F01B0B1E52676300670193 /* es */,
 				82F01B121E5267D200670193 /* nl */,
 				82F01B191E52684300670193 /* de */,
-				82F01B201E526B3500670193 /* zh-Hant */,
 				82F01B271E526B6500670193 /* zh-Hans */,
 			);
 			name = PGSwipeCoachMarksView.xib;
