@@ -273,41 +273,40 @@ static int kDisplayNotificationMsgCenterIndex = 10;
 {
     [self.tableView beginUpdates];
     
-    if ([self levelPickerIsShown] && (self.pickerIndexPath.row - 1 == indexPath.row)){
+    if ([self levelPickerIsShown] && (self.pickerIndexPath.row - 1 == indexPath.row)) {
         [self hideExistingPicker];
-    }else {
-        
-        if( [self.tableView cellForRowAtIndexPath:indexPath] == self.photogramCell ||
-            [self.tableView cellForRowAtIndexPath:indexPath] == self.svgCell          ) {
+
+    } else {
+        if ([self.tableView cellForRowAtIndexPath:indexPath] == self.photogramCell ||
+            [self.tableView cellForRowAtIndexPath:indexPath] == self.svgCell) {
             
             NSIndexPath *newPickerIndexPath = [self calculateIndexPathForNewPicker:indexPath];
             
-            if ([self levelPickerIsShown]){
+            if ([self levelPickerIsShown]) {
                 [self hideExistingPicker];
             }
             
             [self showNewPickerAtIndex:newPickerIndexPath];
             
             self.pickerIndexPath = [NSIndexPath indexPathForRow:newPickerIndexPath.row + 1 inSection:0];
-        }
-        else {
+        } else {
             NSInteger selectedRow = indexPath.row;
-            if( [self levelPickerIsShown] ) {
+            if ([self levelPickerIsShown]) {
                 selectedRow--;
                 [self hideExistingPicker];
             }
             
-            if( kMailLogsCellIndex == selectedRow ) {
+            if (kMailLogsCellIndex == selectedRow) {
                 [self composeEmailWithDebugAttachment];
-            } else if (kClearLogsCellIndex == selectedRow ) {
+            } else if (kClearLogsCellIndex == selectedRow) {
                 [self clearLogfile];
-            } else if( kTestLogsCellIndex == selectedRow ) {
+            } else if(kTestLogsCellIndex == selectedRow) {
                 [PGLogFormatter demoAllFormats];
-            } else if ( kCrashAppCellIndex == selectedRow ) {
+            } else if (kCrashAppCellIndex == selectedRow) {
                 [[Crashlytics sharedInstance] crash];
-            } else if ( kExceptionAppCellIndex == selectedRow ) {
+            } else if (kExceptionAppCellIndex == selectedRow) {
                 [[PGAnalyticsManager sharedManager] fireTestException];
-            } else if ( kHideSvgMessagesIndex == selectedRow ) {
+            } else if (kHideSvgMessagesIndex == selectedRow) {
                 BOOL currentSetting = [[PGLogger sharedInstance] hideSvgMessages];
                 [[PGLogger sharedInstance] setHideSvgMessages: !currentSetting];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[[PGLogger sharedInstance] hideSvgMessages]];
@@ -315,37 +314,7 @@ static int kDisplayNotificationMsgCenterIndex = 10;
                 [[PGSocialSourcesManager sharedInstance] toggleExtraSocialSourcesEnabled];
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             } else if (kEnablePushNotificationsIndex == indexPath.row) {
-                // Set log level for debugging config loading (optional)
-                // It will be set to the value in the loaded config upon takeOff
-                [UAirship setLogLevel:UALogLevelTrace];
-                
-                // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
-                // or set runtime properties here.
-                UAConfig *config = [UAConfig defaultConfig];
-                
-                // Call takeOff (which creates the UAirship singleton)
-                [UAirship takeOff:config];
-                
-                // Print out the application configuration for debugging (optional)
-                UA_LDEBUG(@"Config:\n%@", [config description]);
-                
-                // Set the icon badge to zero on startup (optional)
-                [[UAirship push] resetBadge];
-                
-                // Set the notification types required for the app (optional). This value defaults
-                // to badge, alert and sound, so it's only necessary to set it if you want
-                // to add or remove types.
-                //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
-                //                                        UIUserNotificationTypeBadge |
-                //                                        UIUserNotificationTypeSound);
-                
-                
-                // User notifications will not be enabled until userPushNotificationsEnabled is
-                // set YES on UAPush. Onced enabled, the setting will be persisted and the user
-                // will be prompted to allow notifications. You should wait for a more appropriate
-                // time to enable push to increase the likelihood that the user will accept
-                // notifications. For troubleshooting, we will enable this at launch.
-                [UAirship push].userPushNotificationsEnabled = YES;
+                [self enablePushNotifications];
             } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
                 // Note-- you must enable messaging before this will work
                 [[UAirship defaultMessageCenter] display];
@@ -370,10 +339,44 @@ static int kDisplayNotificationMsgCenterIndex = 10;
 
 #pragma mark - Mailing Logfile
 
+- (void)enablePushNotifications {
+    // Set log level for debugging config loading (optional)
+    // It will be set to the value in the loaded config upon takeOff
+    [UAirship setLogLevel:UALogLevelTrace];
+
+    // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
+    // or set runtime properties here.
+    UAConfig *config = [UAConfig defaultConfig];
+
+    // Call takeOff (which creates the UAirship singleton)
+    [UAirship takeOff:config];
+
+    // Print out the application configuration for debugging (optional)
+    UA_LDEBUG(@"Config:\n%@", [config description]);
+
+    // Set the icon badge to zero on startup (optional)
+    [[UAirship push] resetBadge];
+
+    // Set the notification types required for the app (optional). This value defaults
+    // to badge, alert and sound, so it's only necessary to set it if you want
+    // to add or remove types.
+    //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
+    //                                        UIUserNotificationTypeBadge |
+    //                                        UIUserNotificationTypeSound);
+
+
+    // User notifications will not be enabled until userPushNotificationsEnabled is
+    // set YES on UAPush. Onced enabled, the setting will be persisted and the user
+    // will be prompted to allow notifications. You should wait for a more appropriate
+    // time to enable push to increase the likelihood that the user will accept
+    // notifications. For troubleshooting, we will enable this at launch.
+    [UAirship push].userPushNotificationsEnabled = YES;
+}
+
 - (void)clearLogfile
 {
     PGLogger* logger = (PGLogger *)[PGLogger sharedInstance];
-    
+
     NSArray *sortedLogFileInfos = [logger.fileLogger.logFileManager sortedLogFileInfos];
     for( DDLogFileInfo *logFileInfo in sortedLogFileInfos ) {
         NSFileHandle *file = [NSFileHandle fileHandleForUpdatingAtPath:logFileInfo.filePath];
