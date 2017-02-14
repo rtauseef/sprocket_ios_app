@@ -1,0 +1,15 @@
+/* (No Commment) */
+"CFBundleDisplayName" = "Sprocket";
+
+/* (No Commment) */
+"CFBundleName" = "Sprocket";
+
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocket 需要 Bluetooth 連線，才能連線到 HP Sprocket 印表機。";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "允許連線來拍攝和列印相片。";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "允許連線來列印和儲存相片。";
+
