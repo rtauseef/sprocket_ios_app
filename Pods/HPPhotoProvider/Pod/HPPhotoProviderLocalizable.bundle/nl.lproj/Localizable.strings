@@ -1,74 +1,74 @@
 /* Number of photos */
-" (%lu photos)" = " (%lu 張相片)";
+" (%lu photos)" = " (%lu foto's)";
 
 /* No comment provided by engineer. */
-" (1 photo)" = " (1 張相片)";
+" (1 photo)" = " (1 foto)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
-"%@ Access" = "%@ 存取權";
+"%@ Access" = "%@ toegang";
 
 /* Albums of the specified social network */
-"%@ Albums" = "%@ 個相簿";
+"%@ Albums" = "%@ albums";
 
 /* Photos of the specified social network */
-"%@ Photos" = "%@ 張相片";
+"%@ Photos" = "%@ foto's";
 
 /* Number of posts */
-"%@ posts" = "%@ 個張貼";
+"%@ posts" = "%@ posts";
 
 /* Number of photos */
-"%li photos" = "%li 張相片";
+"%li photos" = "%li foto's";
 
 /* Number of photos */
-"%lu photos" = "%lu 張相片";
+"%lu photos" = "%lu foto's";
 
 /* No comment provided by engineer. */
-"1 photo" = "1 張相片";
+"1 photo" = "1 foto";
 
 /* Indicates that a user's photo album was deleted */
-"Album deleted" = "已刪除相簿";
+"Album deleted" = "Album verwijderd";
 
 /* Indicates that all photos will be displayed */
-"All Photos" = "所有相片";
+"All Photos" = "Alle foto’s";
 
 /* Message of an alert when the user has denied the permission to access the Photos of the device */
-"Allow access in your Settings to print and save your photos." = "在設定中允許存取來列印和儲存相片。";
+"Allow access in your Settings to print and save your photos." = "Geef in je instellingen toegang om foto's te printen en op te slaan.";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
-"Authorization Required" = "需要授權";
+"Authorization Required" = "Autorisatie is vereist";
 
 /* Button caption */
-"Authorize" = "授權";
+"Authorize" = "Toestemming geven";
 
 /* Name of the camera roll app of the device */
-"Camera Roll" = "手機相簿";
+"Camera Roll" = "Filmrol";
 
 /* Button caption */
-"Cancel" = "取消";
+"Cancel" = "Annuleren";
 
 /* Message of an alert when is not possible to retrieve the pictures from the specified social network */
-"Could not retrieve the picture from %@" = "無法擷取 %@ 的相片";
+"Could not retrieve the picture from %@" = "Foto kon niet worden opgehaald van %@";
 
 /* Title of an alert */
-"Error" = "錯誤";
+"Error" = "Fout";
 
 /* Message show to the user when there is no internet connection */
-"No Internet Connection" = "無網際網路連線";
+"No Internet Connection" = "Geen internetverbinding";
 
 /* Message shown when the album is empty in the select photo screen */
-"No Photos Found" = "找不到相片";
+"No Photos Found" = "Geen foto's gevonden";
 
 /* Button caption */
-"OK" = "確定";
+"OK" = "OK";
 
 /* Message of an alert when the application is not authorized to access photo data. */
-"Photo access is restricted on this device. Please check your settings." = "此裝置的相片存取權受到限制。 請檢查您的設定。";
+"Photo access is restricted on this device. Please check your settings." = "Fototoegang is beperkt op dit device. Controleer je instellingen.";
 
 /* Title of an alert when the user has denied the permission to access the Photos of the device */
-"Photo Access Required" = "需要相片存取權";
+"Photo Access Required" = "Toegang tot foto's is vereist";
 
 /* Title of an alert when the application is not authorized to access photo data. */
-"Photo Access Restricted" = "相片存取權受限制";
+"Photo Access Restricted" = "Toegang tot foto's is beperkt";
 
 /* Name of the Pitu app/social media provider */
 "Pitu" = "Pitu";
@@ -77,26 +77,26 @@
 "Qzone" = "Qzone";
 
 /* Button caption */
-"Retry" = "重試";
+"Retry" = "Opnieuw proberen";
 
 /* Button caption */
-"Settings" = "設定";
+"Settings" = "Instellingen";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "%@ 應用程式使用 Instagram 相片製作絕佳的快照。 請允許 %@ 存取 Instagram 相片，以便繼續進行";
+"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "De %@ app gebruikt foto's van Instagram om fantastische snapshots te maken. Geef %@ toegang tot je Instagram-foto's om door te gaan.";
 
 /* Indicates that a user's photo album was deleted */
-"The album was deleted" = "已刪除相簿";
+"The album was deleted" = "Het album is verwijderd";
 
 /* Message shown when the user account is private in the select photo screen */
-"The user account is private." = "使用者帳戶是專用的。";
+"The user account is private." = "Het gebruikersaccount is privé.";
 
 /* Message of an alert indicates the specified social network login is not longer valid */
-"There was a problem accessing %@. Please sign in again." = "存取 %@ 時發生問題。 請重新登入。";
+"There was a problem accessing %@. Please sign in again." = "Er was een probleem met de toegang tot %@. Meld je opnieuw aan.";
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
-"To select a photo you must first authorize this app to access your photo library." = "若要選取相片，您必須先授權此應用程式存取您的相片媒體櫃。";
+"To select a photo you must first authorize this app to access your photo library." = "Om een foto te selecteren moet je deze app eerst toestemming geven om naar je fotobibliotheek te gaan.";
 
 /* Message show to the user when there is no internet connection */
-"You appear to be offline" = "您似乎已離線";
+"You appear to be offline" = "Je bent waarschijnlijk offline";
 

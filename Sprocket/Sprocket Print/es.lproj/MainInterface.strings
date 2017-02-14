@@ -1,9 +1,9 @@
 /* Class = "UIViewController"; title = "Image"; ObjectID = "ObA-dk-sSI"; */
-"ObA-dk-sSI.title" = "图像";
+"ObA-dk-sSI.title" = "Imagen";
 
 /* Class = "UIButton"; normalTitle = "Print to sprocket"; ObjectID = "XPD-kO-soS"; */
-"XPD-kO-soS.normalTitle" = "打印到 Sprocket";
+"XPD-kO-soS.normalTitle" = "Imprimir en sprocket";
 
 /* Class = "UILabel"; text = "Connected"; ObjectID = "nFm-89-OFW"; */
-"nFm-89-OFW.text" = "已连接";
+"nFm-89-OFW.text" = "Conectado";
 
