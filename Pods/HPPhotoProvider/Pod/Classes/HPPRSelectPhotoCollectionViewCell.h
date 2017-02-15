@@ -20,7 +20,8 @@
 
 @property (strong, nonatomic) HPPRMedia *media;
 @property (assign, nonatomic) BOOL retrieveLowQuality;
-@property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewCellDelegate> delegate;
+@property (weak, nonatomic) id<HPPRSelectPhotoCollectionViewCellDelegate> delegate;
+@property (assign, nonatomic) BOOL selectionEnabled;
 
 - (void)showLoading;
 - (void)hideLoading;

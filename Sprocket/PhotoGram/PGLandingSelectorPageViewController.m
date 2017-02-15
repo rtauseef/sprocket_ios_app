@@ -31,6 +31,7 @@
 #import "PGCameraManager.h"
 #import "MP.h"
 #import "PGPreviewViewController.h"
+#import "PGFeatureFlag.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -398,6 +399,24 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }];
 }
 
+- (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
+    PGLandingPageViewController *landing = (PGLandingPageViewController *)([[self currentNavigationController].viewControllers firstObject]);
+    [landing.photoCollectionViewController beginMultiSelect];
+
+    [mediaNav beginSelectionMode];
+}
+
+- (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
+    PGLandingPageViewController *landing = (PGLandingPageViewController *)([[self currentNavigationController].viewControllers firstObject]);
+    [landing.photoCollectionViewController endMultiSelect];
+
+    [mediaNav endSelectionMode];
+}
+
+- (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {
+
+}
+
 
 #pragma mark - UIPageViewControllerDelegate
 
@@ -433,6 +452,15 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
     if (isShowingPhotoGallery) {
         [self.navigationView hideCameraButton];
+
+        ((HPPRSelectPhotoCollectionViewController *) viewController).allowMultiSelect = [PGFeatureFlag isMultiPrintEnabled];
+        BOOL isInMultiSelectMode = [((HPPRSelectPhotoCollectionViewController *) viewController) isInMultiSelectMode];
+
+        if (isInMultiSelectMode) {
+            [self.navigationView beginSelectionMode];
+        } else {
+            [self.navigationView endSelectionMode];
+        }
 
         if (socialSource.hasFolders) {
             BOOL isShowingAlbumsSelector = ((PGLandingPageViewController *)self.currentNavigationController.viewControllers.firstObject).albumsViewController != nil;

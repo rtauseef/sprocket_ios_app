@@ -15,7 +15,7 @@
 #import <HPPR.h>
 #import "UIFont+Style.h"
 #import "AlphaGradientView.h"
-
+#import "PGFeatureFlag.h"
 
 @interface PGMediaNavigation()
 
@@ -25,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *albumsArrow;
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *hamburgerButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end
 
@@ -69,6 +73,10 @@
 
 - (void)setup
 {
+    self.selectButton.hidden = ![PGFeatureFlag isMultiPrintEnabled];
+    self.cancelButton.hidden = YES;
+    self.nextButton.hidden = YES;
+
     self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
 
     self.gradientBar.direction = GRADIENT_DOWN;
@@ -119,6 +127,23 @@
     [self showAlbumsDropDownButton:NO];
 }
 
+
+#pragma mark - UI State control
+
+- (void)beginSelectionMode {
+    self.cancelButton.hidden = NO;
+    self.nextButton.hidden = NO;
+    self.hamburgerButton.hidden = YES;
+    self.selectButton.hidden = YES;
+}
+
+- (void)endSelectionMode {
+    self.cancelButton.hidden = YES;
+    self.nextButton.hidden = YES;
+    self.hamburgerButton.hidden = NO;
+    self.selectButton.hidden = ![PGFeatureFlag isMultiPrintEnabled];
+}
+
 - (void)showGradientBar {
     [UIView animateWithDuration:0.2 animations:^{
         self.gradientBar.transform = CGAffineTransformIdentity;
@@ -151,20 +176,38 @@
 }
 
 - (IBAction)didPressFolderButton:(id)sender {
-    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressFolderButton:)]) {
+    if ([self.delegate respondsToSelector:@selector(mediaNavigationDidPressFolderButton:)]) {
         [self.delegate mediaNavigationDidPressFolderButton:self];
     }
 }
 
 - (IBAction)didPressMenuButton:(id)sender {
-    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressMenuButton:)]) {
+    if ([self.delegate respondsToSelector:@selector(mediaNavigationDidPressMenuButton:)]) {
         [self.delegate mediaNavigationDidPressMenuButton:self];
     }
 }
 
 - (IBAction)didPressCameraButton:(id)sender {
-    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(mediaNavigationDidPressCameraButton:)]) {
+    if ([self.delegate respondsToSelector:@selector(mediaNavigationDidPressCameraButton:)]) {
         [self.delegate mediaNavigationDidPressCameraButton:self];
+    }
+}
+
+- (IBAction)didPressSelectButton:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(mediaNavigationDidPressSelectButton:)]) {
+        [self.delegate mediaNavigationDidPressSelectButton:self];
+    }
+}
+
+- (IBAction)didPressCancelButton:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(mediaNavigationDidPressCancelButton:)]) {
+        [self.delegate mediaNavigationDidPressCancelButton:self];
+    }
+}
+
+- (IBAction)didPressNextButton:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(mediaNavigationDidPressNextButton:)]) {
+        [self.delegate mediaNavigationDidPressNextButton:self];
     }
 }
 

@@ -32,6 +32,9 @@
 - (void)showAlbumsDropDownButtonDown:(BOOL)animated;
 - (void)hideAlbumsDropDownButton;
 
+- (void)beginSelectionMode;
+- (void)endSelectionMode;
+
 @end
 
 @protocol PGMediaNavigationDelegate <NSObject>
@@ -39,5 +42,8 @@
 - (void)mediaNavigationDidPressMenuButton:(PGMediaNavigation *)mediaNav;
 - (void)mediaNavigationDidPressFolderButton:(PGMediaNavigation *)mediaNav;
 - (void)mediaNavigationDidPressCameraButton:(PGMediaNavigation *)mediaNav;
+- (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav;
+- (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav;
+- (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav;
 
 @end

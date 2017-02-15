@@ -24,6 +24,8 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImage;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *selectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkmark;
 
 @end
 
@@ -35,6 +37,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     self.imageView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRLoadingCellBackgroundColor];
     self.loadingImage.hidden = NO;
     self.overlayView.alpha = 0;
+    self.selectionView.hidden = !self.selectionEnabled;
 }
 
 - (void)setMedia:(HPPRMedia *)media
@@ -83,6 +86,18 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
             [self setNeedsLayout];
         });
     }
+}
+
+- (void)setSelectionEnabled:(BOOL)selectionEnabled {
+    _selectionEnabled = selectionEnabled;
+
+    self.selectionView.hidden = !self.selectionEnabled;
+}
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+
+    self.checkmark.highlighted = selected;
 }
 
 // Fix bug with the iOS 8 SDK running on iOS 7 devices. The workaround is to add the following to your subclass of UICollectionViewCell

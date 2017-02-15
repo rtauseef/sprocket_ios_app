@@ -21,6 +21,7 @@
 #import "PGCameraManager.h"
 #import "UIViewController+trackable.h"
 #import "PGAnalyticsManager.h"
+#import "PGMediaNavigation.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
@@ -204,6 +205,9 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
 }
 
+- (void)selectPhotoCollectionViewControllerDidInitiateMultiSelectMode:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController {
+    [[PGMediaNavigation sharedInstance] beginSelectionMode];
+}
 
 #pragma mark - PGSelectAlbumDropDownViewControllerDelegate
 

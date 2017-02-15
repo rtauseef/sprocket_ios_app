@@ -53,10 +53,17 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 @property (strong, nonatomic) HPPRCameraCollectionViewCell *cameraCell;
 @property (strong, nonatomic) NSTimer *startCameraTimer;
 
+@property (strong, nonatomic) NSMutableArray<NSIndexPath *> *selectedPhotos;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressRecognizer;
+
 @end
 
 @implementation HPPRSelectPhotoCollectionViewController {
     CGPoint _contentOffsetStart;
+}
+
+- (void)dealloc {
+    [self.provider removeObserver:self forKeyPath:@"album"];
 }
 
 #pragma mark - View management
@@ -74,16 +81,19 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    self.selectedPhotos = [[NSMutableArray alloc] init];
+
     self.noPhotosLabel.text = HPPRLocalizedString(@"No Photos Found", @"Message shown when the album is empty in the select photo screen");
     self.userAccountIsPrivateLabel.text = HPPRLocalizedString(@"The user account is private.", @"Message shown when the user account is private in the select photo screen");
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.alwaysBounceVertical = YES;
     self.collectionView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
-    
+
     if ([self.delegate respondsToSelector:@selector(collectionViewContentInset)]) {
         self.collectionView.contentInset = [self.delegate collectionViewContentInset];
     }
@@ -100,9 +110,15 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     
     self.provider.imageRequestsCancelled = NO;
 
+    [self.provider addObserver:self forKeyPath:@"album" options:NSKeyValueObservingOptionNew context:nil];
+
     self.noInternetConnectionRetryView.delegate = self;
+
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer  alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
     [self.collectionView addGestureRecognizer:pinchRecognizer];
+
+    self.longPressRecognizer = [[UILongPressGestureRecognizer  alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.collectionView addGestureRecognizer:self.longPressRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -145,7 +161,9 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
 - (void)startCamera
 {
-    [self.cameraCell startCamera];
+    if (![self isInMultiSelectMode]) {
+        [self.cameraCell startCamera];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -313,14 +331,23 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         }
         
         self.cameraCell = cell;
-        
+
+        if ([self isInMultiSelectMode]) {
+            [cell disableCamera];
+        }
+
         return cell;
     } else {
         HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
         cell.delegate = self;
         cell.retrieveLowQuality = self.showGridView;
         cell.media = [self.provider imageAtIndex:indexPath.row];
-        
+        cell.selectionEnabled = [self isInMultiSelectMode];
+        if ([self isSelected:indexPath]) {
+            [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            cell.selected = YES;
+        }
+
         return cell;
     }
 }
@@ -336,70 +363,33 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self isInMultiSelectMode]) {
+        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+
+        HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        [self deselectPhoto:indexPath];
+    }
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if  (self.provider.showCameraButtonInCollectionView && indexPath.item == 0) {
+    if  (self.provider.showCameraButtonInCollectionView && indexPath.item == 0 && ![self isInMultiSelectMode]) {
         if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerDidSelectCamera:)]) {
             [self.delegate selectPhotoCollectionViewControllerDidSelectCamera:self];
         }
         
         return;
     }
-    
-    HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    [cell showLoading];
-    
-    if (self.currentSelectedCell) {
-        [self.currentSelectedCell.media cancelImageRequestWithCompletion:nil];
-        [self.currentSelectedCell hideLoading];
+
+    if ([self isInMultiSelectMode]) {
+        [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+
+        HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        [self.selectedPhotos addObject:indexPath];
+    } else {
+        [self openSingleImageForPreviewAtIndexPath:indexPath];
     }
-    
-    self.currentSelectedCell = cell;
-    
-    [self.provider retrieveExtraMediaInfo:cell.media withRefresh:NO andCompletion:^(NSError *error) {
-        
-        if (!self.provider.isImageRequestsCancelled) {
-            
-            if (cell.media.asset) {
-                __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [self.spinner stopAnimating];
-                    
-                    [cell.media requestImageWithCompletion:^(UIImage *image) {
-                        dispatch_async(dispatch_get_main_queue(), ^(void){
-                            [weakSelf selectImage:image andMedia:cell.media];
-                            [weakSelf.spinner stopAnimating];
-                            [cell hideLoading];
-                            weakSelf.currentSelectedCell = nil;
-                        });
-                    }];
-                });
-                
-                return;
-            }
-            
-            // We continue even if we don't get the extra info because of an error
-            [[HPPRCacheService sharedInstance] imageForUrl:cell.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                if (!self.provider.isImageRequestsCancelled) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [cell hideLoading];
-                        
-                        [self selectImage:image andMedia:cell.media];
-                        
-                        collectionView.userInteractionEnabled = YES;
-                    });
-                } else {
-                    [cell hideLoading];
-                }
-                
-                self.currentSelectedCell = nil;
-            }];
-        } else {
-            [cell hideLoading];
-            self.currentSelectedCell = nil;
-        }
-    }];
 }
 
 - (void)selectImage:(UIImage *)image andMedia:(HPPRMedia *)media
@@ -436,6 +426,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
 
 #pragma mark - UIPinchGestureRecognizer
 
@@ -490,6 +481,31 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         }
     }
 }
+
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
+    if ([self allowMultiSelect] && ![self isInMultiSelectMode] && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint pointInView = [gestureRecognizer locationInView:self.collectionView];
+
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:pointInView];
+
+        if (indexPath) {
+            HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+
+            if (cell != self.cameraCell) {
+                if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerDidInitiateMultiSelectMode:)]) {
+                    [self.delegate selectPhotoCollectionViewControllerDidInitiateMultiSelectMode:self];
+                }
+
+                [self beginMultiSelect];
+
+                [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+
+                [self.selectedPhotos addObject:indexPath];
+            }
+        }
+    }
+}
+
 
 #pragma mark - Scroll View Delegate
 
@@ -602,6 +618,120 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     result *= [self worstCaseNumberOfPhotosPerLine];
     
     return (NSUInteger)result;
+}
+
+
+#pragma mark - Single-Select
+
+- (void)openSingleImageForPreviewAtIndexPath:(NSIndexPath *)indexPath {
+    HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    [cell showLoading];
+
+    if (self.currentSelectedCell) {
+        [self.currentSelectedCell.media cancelImageRequestWithCompletion:nil];
+        [self.currentSelectedCell hideLoading];
+    }
+
+    self.currentSelectedCell = cell;
+
+    [self.provider retrieveExtraMediaInfo:cell.media withRefresh:NO andCompletion:^(NSError *error) {
+
+        if (!self.provider.isImageRequestsCancelled) {
+
+            if (cell.media.asset) {
+                __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
+
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [self.spinner stopAnimating];
+
+                    [cell.media requestImageWithCompletion:^(UIImage *image) {
+                        dispatch_async(dispatch_get_main_queue(), ^(void){
+                            [weakSelf selectImage:image andMedia:cell.media];
+                            [weakSelf.spinner stopAnimating];
+                            [cell hideLoading];
+                            weakSelf.currentSelectedCell = nil;
+                        });
+                    }];
+                });
+
+                return;
+            }
+
+            // We continue even if we don't get the extra info because of an error
+            [[HPPRCacheService sharedInstance] imageForUrl:cell.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if (!self.provider.isImageRequestsCancelled) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [cell hideLoading];
+
+                        [self selectImage:image andMedia:cell.media];
+
+                        self.collectionView.userInteractionEnabled = YES;
+                    });
+                } else {
+                    [cell hideLoading];
+                }
+
+                self.currentSelectedCell = nil;
+            }];
+        } else {
+            [cell hideLoading];
+            self.currentSelectedCell = nil;
+        }
+    }];
+}
+
+
+#pragma mark - Multi-Select
+
+- (void)beginMultiSelect {
+    if (!self.allowMultiSelect) {
+        return;
+    }
+
+    self.collectionView.allowsMultipleSelection = YES;
+
+    [self.collectionView reloadData];
+}
+
+- (void)endMultiSelect {
+    self.collectionView.allowsMultipleSelection = NO;
+    [self.selectedPhotos removeAllObjects];
+
+    [self.collectionView reloadData];
+
+    [self startCamera];
+}
+
+- (BOOL)isInMultiSelectMode {
+    return self.collectionView.allowsMultipleSelection;
+}
+
+- (void)deselectPhoto:(NSIndexPath *)indexPath {
+    for (NSIndexPath *selectedIndexPath in self.selectedPhotos) {
+        if (selectedIndexPath.item == indexPath.item) {
+            [self.selectedPhotos removeObject:selectedIndexPath];
+            break;
+        }
+    }
+}
+
+- (BOOL)isSelected:(NSIndexPath *)indexPath {
+    for (NSIndexPath *selectedIndexPath in self.selectedPhotos) {
+        if (selectedIndexPath.item == indexPath.item) {
+            return YES;
+        }
+    }
+
+    return NO;
+}
+
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"album"]) {
+        [self.selectedPhotos removeAllObjects];
+    }
 }
 
 @end

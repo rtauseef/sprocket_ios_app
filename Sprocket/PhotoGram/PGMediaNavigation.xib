@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,8 +18,12 @@
             <connections>
                 <outlet property="albumsArrow" destination="bat-UE-D7x" id="o2u-sU-Rnv"/>
                 <outlet property="cameraButton" destination="qr0-FL-dsH" id="pBy-lQ-I0A"/>
+                <outlet property="cancelButton" destination="btn-4q-RBc" id="blu-LE-Ig7"/>
                 <outlet property="gradientBar" destination="Ixd-bY-Ud5" id="uPM-D1-xXQ"/>
+                <outlet property="hamburgerButton" destination="AYW-E6-1NE" id="aI9-kc-9UZ"/>
                 <outlet property="navigationView" destination="GnL-8B-dhs" id="vId-7B-QuM"/>
+                <outlet property="nextButton" destination="pm5-cX-I66" id="FDN-BE-2Mb"/>
+                <outlet property="selectButton" destination="G44-ca-Kmr" id="Wu0-6J-a9g"/>
                 <outlet property="titleButton" destination="YKD-1j-IUU" id="a51-ph-JFr"/>
                 <outlet property="titleLabel" destination="ZFO-tB-mBe" id="GNz-yb-hdi"/>
             </connections>
@@ -48,8 +52,18 @@
                                 <action selector="didPressMenuButton:" destination="-1" eventType="touchUpInside" id="tEr-Dx-Kuv"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-4q-RBc">
+                            <rect key="frame" x="8" y="24" width="58" height="37"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didPressCancelButton:" destination="-1" eventType="touchUpInside" id="cAT-dJ-8ti"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKD-1j-IUU">
-                            <rect key="frame" x="177.5" y="25" width="37" height="37"/>
+                            <rect key="frame" x="178" y="24" width="37" height="37"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
                             <state key="normal">
@@ -60,18 +74,40 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFO-tB-mBe">
-                            <rect key="frame" x="187.5" y="43.5" width="0.0" height="0.0"/>
+                            <rect key="frame" x="188" y="43" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="bat-UE-D7x">
-                            <rect key="frame" x="192.5" y="40" width="12" height="7"/>
+                            <rect key="frame" x="193" y="39" width="12" height="7"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="12" id="N4T-Mx-ChM"/>
                                 <constraint firstAttribute="height" constant="7" id="tXl-dh-ds6"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G44-ca-Kmr">
+                            <rect key="frame" x="313" y="25" width="54" height="37"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
+                            <state key="normal" title="Select">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didPressSelectButton:" destination="-1" eventType="touchUpInside" id="yfu-OZ-G0r"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pm5-cX-I66">
+                            <rect key="frame" x="327" y="31" width="40" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="WxL-Gp-rUO"/>
+                            </constraints>
+                            <state key="normal" image="Arrow_Right">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didPressNextButton:" destination="-1" eventType="touchUpInside" id="ACq-a8-uX8"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -80,11 +116,17 @@
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="centerY" secondItem="GnL-8B-dhs" secondAttribute="centerY" constant="10" id="9lq-pd-u28"/>
                         <constraint firstItem="s51-Xd-Lhr" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="12" id="Cfj-qy-T1h"/>
                         <constraint firstAttribute="height" constant="66" id="FHx-gY-wBY"/>
+                        <constraint firstItem="G44-ca-Kmr" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="JfT-w2-eWU"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerX" secondItem="s51-Xd-Lhr" secondAttribute="centerX" id="Oun-Nh-uck"/>
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="s51-Xd-Lhr" secondAttribute="centerY" id="SPM-pj-RlS"/>
                         <constraint firstItem="YKD-1j-IUU" firstAttribute="leading" secondItem="ZFO-tB-mBe" secondAttribute="leading" constant="-10" id="Wis-qY-dI3"/>
+                        <constraint firstItem="pm5-cX-I66" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="WrJ-tN-e7l"/>
+                        <constraint firstAttribute="trailing" secondItem="pm5-cX-I66" secondAttribute="trailing" constant="8" id="Xh2-l6-FC4"/>
+                        <constraint firstItem="btn-4q-RBc" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="bz7-ZD-iSQ"/>
+                        <constraint firstItem="btn-4q-RBc" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="8" id="cis-xw-r8s"/>
                         <constraint firstItem="YKD-1j-IUU" firstAttribute="centerY" secondItem="ZFO-tB-mBe" secondAttribute="centerY" id="eIU-Zb-yTA"/>
                         <constraint firstItem="bat-UE-D7x" firstAttribute="leading" secondItem="ZFO-tB-mBe" secondAttribute="trailing" constant="5" id="gTv-7A-bMN"/>
+                        <constraint firstAttribute="trailing" secondItem="G44-ca-Kmr" secondAttribute="trailing" constant="8" id="mcd-2B-XFz"/>
                         <constraint firstItem="bat-UE-D7x" firstAttribute="centerY" secondItem="ZFO-tB-mBe" secondAttribute="centerY" id="v5d-ln-X2i"/>
                         <constraint firstItem="ZFO-tB-mBe" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="xX2-4C-XkQ"/>
                     </constraints>
@@ -121,10 +163,11 @@
                 <constraint firstAttribute="trailing" secondItem="GnL-8B-dhs" secondAttribute="trailing" id="pK4-lW-RJX"/>
                 <constraint firstItem="Ixd-bY-Ud5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zBO-3a-VTH"/>
             </constraints>
-            <point key="canvasLocation" x="39" y="52"/>
+            <point key="canvasLocation" x="38.5" y="51.5"/>
         </view>
     </objects>
     <resources>
+        <image name="Arrow_Right" width="12" height="24"/>
         <image name="arrowDown" width="19" height="10"/>
         <image name="cameraLanding" width="76" height="76"/>
         <image name="hamburger" width="22" height="18"/>
