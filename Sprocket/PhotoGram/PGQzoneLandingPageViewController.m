@@ -22,6 +22,7 @@
 #import "UIViewController+Trackable.h"
 #import "UIView+Animations.h"
 #import "SWRevealViewController.h"
+#import "PGSocialSourcesManager.h"
 
 #import <HPPR.h>
 
@@ -69,8 +70,13 @@
     spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     HPPRQzonePhotoProvider *provider = [HPPRQzonePhotoProvider sharedInstance];
+
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeQzone];
+    [self willSignInToSocialSource:socialSource];
+
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [self didSignInToSocialSource:socialSource];
 
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                 [spinner removeFromSuperview];
@@ -80,11 +86,16 @@
             }];
 
         } else {
-            if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
-                [self showNoConnectionAvailableAlert];
+            if (error) {
+                [self didFailSignInToSocialSource:socialSource];
+
+                if (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code) {
+                    [self showNoConnectionAvailableAlert];
+                }
             }
-            
+
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self didSignOutToSocialSource:socialSource];
                 [spinner removeFromSuperview];
                 [self enableSignIn];
             });
@@ -94,12 +105,17 @@
 
 - (void)showLogin
 {
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeQzone];
+    [self willSignInToSocialSource:socialSource];
+
     [[HPPRQzoneLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [self didSignInToSocialSource:socialSource];
             [self showPhotoGallery];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
                                                                   device:kEventAuthRequestPhotosLabel];
         } else {
+            [self didFailSignInToSocialSource:socialSource];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestDeniedAction
                                                                   device:kEventAuthRequestPhotosLabel];
         }
@@ -129,9 +145,9 @@
 
 - (void)handleCheckProviderNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
+    PGSocialSource *socialSource = [notification.userInfo objectForKey:kSocialNetworkKey];
     
-    if ([[HPPRQzonePhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
+    if (socialSource && socialSource.type == PGSocialSourceTypeQzone) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self showPhotoGallery];
     }

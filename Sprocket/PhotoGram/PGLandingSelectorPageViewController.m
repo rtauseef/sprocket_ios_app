@@ -62,7 +62,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCheckProviderNotification:) name:CHECK_PROVIDER_NOTIFICATION object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enablePageControllerFunctionalityNotification:) name:ENABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disablePageControllerFunctionalityNotification:) name:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
     
@@ -210,6 +211,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     [self enableSwipe];
     [self showStatusBar];
+}
+
+- (void)handleCheckProviderNotification:(NSNotification *)notification {
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 - (UINavigationController *)viewControllerForSocialSourceType:(PGSocialSourceType)socialSourceType
@@ -440,6 +445,16 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
+- (void)updateMediaNavigationForCurrentViewController {
+    UINavigationController *navController = [self currentNavigationController];
+    UIViewController *viewController = [navController.viewControllers lastObject];
+
+    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
+    PGSocialSource *socialSource = self.socialSources[index];
+
+    [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
+}
+
 - (void)updateMediaNavigationForViewController:(UIViewController *)viewController socialSource:(PGSocialSource *)socialSource
 {
     if (self.isDraggingPage) {
@@ -467,17 +482,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
             if (isShowingAlbumsSelector) {
                 [self.navigationView showAlbumsDropDownButtonUp:YES];
-                [self.navigationView hideGradientBar];
             } else {
                 [self.navigationView showAlbumsDropDownButtonDown:YES];
-                [self.navigationView showGradientBar];
             }
         } else {
-            [self.navigationView showGradientBar];
             [self.navigationView hideAlbumsDropDownButton];
         }
     } else {
-        [self.navigationView showGradientBar];
         [self.navigationView showCameraButton];
         [self.navigationView hideAlbumsDropDownButton];
     }
@@ -534,6 +545,23 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
         [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
     }
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController willSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
+    [self.navigationView hideCameraButton];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didFailSignInToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignOutToSocialSource:(PGSocialSource *)socialSource {
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 @end

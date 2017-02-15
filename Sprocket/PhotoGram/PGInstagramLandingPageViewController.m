@@ -24,6 +24,7 @@
 #import "UIViewController+Trackable.h"
 #import "UIView+Animations.h"
 #import "UIImage+ImageResize.h"
+#import "PGSocialSourcesManager.h"
 
 @interface PGInstagramLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate>
 
@@ -77,9 +78,9 @@
 
 - (void)handleCheckProviderNotification:(NSNotification *)notification
 {
-    NSString *socialNetwork = [notification.userInfo objectForKey:kSocialNetworkKey];
-    
-    if ([[HPPRInstagramPhotoProvider sharedInstance].name isEqualToString:socialNetwork]) {
+    PGSocialSource *socialSource = [notification.userInfo objectForKey:kSocialNetworkKey];
+
+    if (socialSource && socialSource.type == PGSocialSourceTypeInstagram) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self checkInstagramWithCompletion:nil];
     }
@@ -91,8 +92,13 @@
 {
     HPPRInstagramPhotoProvider *provider = [HPPRInstagramPhotoProvider sharedInstance];
 
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeInstagram];
+    [self willSignInToSocialSource:socialSource];
+
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [self didSignInToSocialSource:socialSource];
+
             UIActivityIndicatorView *spinner = [self.view addSpinner];
             spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
@@ -104,6 +110,7 @@
                         [[HPPRInstagram sharedClient] setAccessToken:nil];
                         [spinner removeFromSuperview];
                         [self enableSignIn];
+                        [self didSignOutToSocialSource:socialSource];
                         if (completion) {
                             completion();
                         }
@@ -121,6 +128,8 @@
                 });
             }];
         } else {
+            [self didFailSignInToSocialSource:socialSource];
+
             if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
                 [self showNoConnectionAvailableAlert];
             }
@@ -147,12 +156,19 @@
 
 - (void)showLogin
 {
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeInstagram];
+    [self willSignInToSocialSource:socialSource];
+
     [HPPRInstagramLoginProvider sharedInstance].viewController = self;
     [[HPPRInstagramLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
+            [self didSignInToSocialSource:socialSource];
             [self checkInstagramWithCompletion:nil];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
+            [self didFailSignInToSocialSource:socialSource];
             [self showNoConnectionAvailableAlert];
+        } else {
+            [self didFailSignInToSocialSource:socialSource];
         }
     }];
 }

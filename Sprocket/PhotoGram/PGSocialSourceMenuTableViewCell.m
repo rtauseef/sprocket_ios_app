@@ -193,7 +193,9 @@ CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
     [self.socialSource.loginProvider logoutWithCompletion:^(BOOL loggedOut, NSError *error) {
         __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:CHECK_PROVIDER_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:self.socialSource.photoProvider.name forKey:kSocialNetworkKey]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:CHECK_PROVIDER_NOTIFICATION
+                                                                object:nil
+                                                              userInfo:@{kSocialNetworkKey: self.socialSource}];
             
             weakSelf.socialSource.isLogged = !loggedOut;
             weakSelf.socialImageView.image = weakSelf.socialSource.menuIcon;
