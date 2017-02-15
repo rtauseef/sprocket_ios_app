@@ -1,17 +1,17 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
 "1Gm-FD-YRV.title" = "Baigta";
 
-/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP Terms of Service."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "Naudodami „Pitu“ sutinkate su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
+"3FE-mc-FrD.text" = "Naudodami „Pitu“ sutinkate su HP <paslaugos teikimo sąlygomis>.";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "Instrukcijos ir žinynas";
 
-/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "Autentifikuodamiesi socialiniuose šaltiniuose sutinkate ir su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "Autentifikuodamiesi socialiniuose šaltiniuose sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
-/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "Autentifikuodamiesi „Instagram“ sutinkate ir su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "Autentifikuodamiesi „Instagram“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
 "4go-MT-3C1.text" = "Nustatyti „Sprocket“ spausdintuvą iš naujo";
@@ -91,8 +91,8 @@
 /* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
 "Ptp-oP-RvF.text" = "Menu parinktis";
 
-/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "Autentifikuodamiesi „Flickr“ sutinkate ir su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "Autentifikuodamiesi „Flickr“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "Pavadinimas";
@@ -123,8 +123,8 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
 "U9F-p5-X9c.text" = "1.0 versija";
 
-/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "Autentifikuodamiesi „Facebook“ sutinkate ir su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "Autentifikuodamiesi „Facebook“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Išsami informacija";
@@ -135,8 +135,8 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
 "XgH-Dx-oow.text" = "Įrašyta fotoaparato aplanke";
 
-/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "Naudodami fotoaparato aplanką sutinkate ir su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "Naudodami fotoaparato aplanką sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Nuotraukos";
@@ -183,8 +183,8 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "„Flickr“";
 
-/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s Terms of Service."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "Autentifikuodamiesi „Qzone“ sutinkate ir su HP paslaugos teikimo sąlygomis.";
+/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
+"ob1-ZF-jEd.text" = "Autentifikuodamiesi „Qzone“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
 /* Class = "UILabel"; text = "Connected"; ObjectID = "qsf-b8-Lfu"; */
 "qsf-b8-Lfu.text" = "Prisijungta";
