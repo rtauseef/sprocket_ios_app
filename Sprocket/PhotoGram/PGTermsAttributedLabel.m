@@ -25,7 +25,16 @@
         self.numberOfLines = 3;
         self.minimumLineHeight = 19.9f;
         
-        [self setLinkForLabel:self range:[self.text rangeOfString:NSLocalizedString(@"Terms of Service", @"Phrase to make link for terms of service of the landing page") options:NSCaseInsensitiveSearch]];
+        // Use this variable in the future, when we receive all files with this translation.
+        NSString *termsText = NSLocalizedString(@"By authenticating with %@, you also agree with HP’s <Terms of Service>.", @"Terms of Service String. PS: Don't remove %@ nor < and >");
+        
+        NSRange tagStart = [self.text rangeOfString:@"<" options:NSCaseInsensitiveSearch];
+        NSRange tagEnd = [self.text rangeOfString:@">" options:NSCaseInsensitiveSearch];
+
+        self.text  = [self.text stringByReplacingOccurrencesOfString:@"<" withString:@""];
+        self.text  = [self.text stringByReplacingOccurrencesOfString:@">" withString:@""];
+        
+        [self setLinkForLabel:self range:NSMakeRange(tagStart.location, (tagEnd.location - 1) - tagStart.location)];
     }
     return self;
 }

@@ -1,17 +1,17 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
 "1Gm-FD-YRV.title" = "Listo";
 
-/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP Terms of Service."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "Al usar el Rollo de la cámara, acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
+"3FE-mc-FrD.text" = "Al usar el Rollo de la cámara, acepta los <términos de servicio> de HP.";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "Cómo contactarnos";
 
-/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "Si inicia sesión desde Facebook, también acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "Si inicia sesión desde Facebook, también acepta los <términos de servicio> de HP.";
 
-/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "Si inicia sesión desde Instagram, también acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "Si inicia sesión desde Instagram, también acepta los <términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
 "4go-MT-3C1.text" = "Reiniciar la impresora Sprocket";
@@ -109,8 +109,8 @@
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Recurso nuevo";
 
-/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "Si inicia sesión desde Flickr, también acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "Si inicia sesión desde Flickr, también acepta los <términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "Título";
@@ -141,8 +141,8 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 /* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
 "U9F-p5-X9c.text" = "Versión 1.0";
 
-/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "Si inicia sesión desde Facebook, también acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "Si inicia sesión desde Facebook, también acepta los <términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Detalle";
@@ -162,8 +162,8 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 /* Class = "UINavigationItem"; title = "sprocket"; ObjectID = "Yx0-Cs-62a"; */
 "Yx0-Cs-62a.title" = "sprocket";
 
-/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "Al usar el Rollo de la cámara, acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "Al usar el Rollo de la cámara, acepta los <términos de servicio> de HP.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Fotos";
@@ -219,8 +219,8 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
-/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s Terms of Service."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "Si inicia sesión desde Facebook, también acepta los términos de servicio de HP.";
+/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
+"ob1-ZF-jEd.text" = "Si inicia sesión desde Facebook, también acepta los <términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
 "ofB-Rh-sga.text" = "Detalle";
