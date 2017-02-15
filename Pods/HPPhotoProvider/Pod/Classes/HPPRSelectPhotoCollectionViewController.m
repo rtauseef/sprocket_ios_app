@@ -27,6 +27,7 @@
 #define LAYOUT_SEGMENTED_CONTROL_LIST_INDEX 1
 
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
+NSString * const kProviderAlbumKeyPath = @"album";
 
 @interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
@@ -63,7 +64,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 }
 
 - (void)dealloc {
-    [self.provider removeObserver:self forKeyPath:@"album"];
+    [self.provider removeObserver:self forKeyPath:kProviderAlbumKeyPath];
 }
 
 #pragma mark - View management
@@ -110,7 +111,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     
     self.provider.imageRequestsCancelled = NO;
 
-    [self.provider addObserver:self forKeyPath:@"album" options:NSKeyValueObservingOptionNew context:nil];
+    [self.provider addObserver:self forKeyPath:kProviderAlbumKeyPath options:NSKeyValueObservingOptionNew context:nil];
 
     self.noInternetConnectionRetryView.delegate = self;
 
@@ -729,7 +730,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"album"]) {
+    if ([keyPath isEqualToString:kProviderAlbumKeyPath]) {
         [self.selectedPhotos removeAllObjects];
     }
 }
