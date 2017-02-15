@@ -8,17 +8,13 @@
 // agreement. Disclosure of the Software to third parties, in any form,
 // in whole or in part, is expressly prohibited except as authorized by
 // the license agreement.
+//
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
+#import <Foundation/Foundation.h>
 
-@interface HPPRCameraCollectionViewCell : UICollectionViewCell
+@interface PGFeatureFlag : NSObject
 
-- (void)addCamera;
-- (void)startCamera;
-- (void)stopCamera;
-- (void)changeCameraPosition:(AVCaptureDevicePosition)position;
-- (void)resetCamera;
-- (void)disableCamera;
++ (void)setMultiPrintEnabled:(BOOL)enabled;
++ (BOOL)isMultiPrintEnabled;
 
 @end

@@ -14,6 +14,7 @@
 @interface HPPRCameraCollectionViewCell()
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *cameraView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIView *disabledOverlayView;
 @property (strong, nonatomic) AVCaptureSession *session;
 
 @end
@@ -69,11 +70,17 @@
 - (void)startCamera
 {
     [self.session startRunning];
+    self.disabledOverlayView.hidden = YES;
 }
 
 - (void)stopCamera
 {
     [self.session stopRunning];
+}
+
+- (void)disableCamera {
+    [self stopCamera];
+    self.disabledOverlayView.hidden = NO;
 }
 
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
