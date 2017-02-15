@@ -1,17 +1,17 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
 "1Gm-FD-YRV.title" = "完成";
 
-/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP Terms of Service."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "使用天天 P 图，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
+"3FE-mc-FrD.text" = "使用天天 P 图，亦表示您同意 HP <的服务条款>。";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "操作指引与帮助";
 
-/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "通过社交网络源进行验证，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "通过社交网络源进行验证，亦表示您同意 HP <的服务条款>。";
 
-/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "通过 Instagram 进行验证，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "通过 Instagram 进行验证，亦表示您同意 HP <的服务条款>。";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
 "4go-MT-3C1.text" = "重置 Sprocket 打印机";
@@ -109,8 +109,8 @@
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "新功能！";
 
-/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "通过 Flickr 进行验证，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "通过 Flickr 进行验证，亦表示您同意 HP <的服务条款>。";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "标题";
@@ -141,8 +141,8 @@
 /* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
 "U9F-p5-X9c.text" = "1.0 版";
 
-/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "通过 Facebook 进行验证，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "通过 Facebook 进行验证，亦表示您同意 HP <的服务条款>。";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "详情";
@@ -162,8 +162,8 @@
 /* Class = "UINavigationItem"; title = "sprocket"; ObjectID = "Yx0-Cs-62a"; */
 "Yx0-Cs-62a.title" = "Sprocket";
 
-/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "使用相册，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "使用相册，亦表示您同意 HP <的服务条款>。";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "照片";
@@ -221,8 +221,8 @@
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
-/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s Terms of Service."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "通过 QQ 空间进行验证，亦表示您同意 HP 的服务条款。";
+/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
+"ob1-ZF-jEd.text" = "通过 QQ 空间进行验证，亦表示您同意 HP <的服务条款>。";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
 "ofB-Rh-sga.text" = "详情";

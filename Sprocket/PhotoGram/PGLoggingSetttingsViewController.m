@@ -393,6 +393,11 @@ static int kEnableMultiPrintIndex             = 11;
     // time to enable push to increase the likelihood that the user will accept
     // notifications. For troubleshooting, we will enable this at launch.
     [UAirship push].userPushNotificationsEnabled = YES;
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Notifications Enabled" message:@"Urban Airship notifications enabled.  Your Urban Airship channel ID is in the text field.  Perform a long tap, Select All, and Copy to copy the ID:" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av textFieldAtIndex:0].text = [NSString stringWithFormat: @"%@", [UAirship push].channelID];
+    [av textFieldAtIndex:0].delegate = nil;
+    [av show];
 }
 
 - (void)clearLogfile
