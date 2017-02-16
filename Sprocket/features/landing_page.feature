@@ -30,6 +30,7 @@ Feature: Verify Welcome screen/Landing Page
 
   @reset
   @done
+  @smoke
 Scenario Outline: Open Social Source from  Landing screen
 	Given  I am on the "Landing" screen
 	Then I tap "<Social Source>"

@@ -6,6 +6,7 @@ Feature: Verify screen navigation
 
   @reset
   @done
+    @smoke
 Scenario: Verify camera roll navigation
 Given I am on the "Landing" screen
 And I tap "CameraRoll"

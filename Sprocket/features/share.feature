@@ -37,6 +37,7 @@ Feature:Photo Share
 
   @reset
   @done
+    @smoke
   Scenario: Verify share functionality
     Given I am on the "CameraRollAlbums" screen
     Then I touch Camera Roll Image

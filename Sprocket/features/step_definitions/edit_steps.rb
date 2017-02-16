@@ -71,7 +71,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     else
         if edit_item == "sticker"
             
-           selected_frame_status = query("UIImageView index:2",:accessibilityIdentifier).first
+           selected_frame_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
            raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "v_xoxo"
         else
             if edit_item == "text"
@@ -159,12 +159,14 @@ Then(/^I should see the text with selected "(.*?)"$/) do |option|
 end
 
 Then(/^I should see the "(.*?)" image$/) do |option|
-    post_photo_frame_width =query("UIImageView index:0").first["frame"]["width"]
-    post_photo_frame_height    = query("UIImageView index:0").first["frame"]["height"]
+    #post_photo_frame_width =query("UIImageView index:0").first["frame"]["width"]
+    #post_photo_frame_height    = query("UIImageView index:0").first["frame"]["height"]
+    post_photo_frame_height = query("GLKView").first["frame"]["height"]
     if option == "cropped"
-        raise "Image is not cropped!" unless post_photo_frame_width > $curr_edit_img_frame_width && post_photo_frame_height > $curr_edit_img_frame_height
+        #raise "Image is not cropped!" unless post_photo_frame_width > $curr_edit_img_frame_width && post_photo_frame_height > $curr_edit_img_frame_height
+        raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
     else
-       raise "Image is cropped!" unless post_photo_frame_width == $curr_edit_img_frame_width && post_photo_frame_height == $curr_edit_img_frame_height
+       raise "Image is cropped!" unless post_photo_frame_height == $curr_edit_img_frame_height
     end    
 end
 

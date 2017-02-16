@@ -54,7 +54,7 @@ Feature: Verify preview screen from different social media
     Then I should see the original image with margins
 
   @reset
-  @done
+  @regression
   Scenario: Verify Double-tap add borders to image on preview screen_Flickr
     Given I am on the "Flickr Photo" screen
     When I touch second photo
@@ -65,7 +65,7 @@ Feature: Verify preview screen from different social media
     Then I should see the original image without margins
     
   @reset
-  @done
+  @regression
   @pinch
   Scenario: Verify pinch in-out and zoom the image on preview screen_instagram
     Given I am on the "Instagram Preview" screen

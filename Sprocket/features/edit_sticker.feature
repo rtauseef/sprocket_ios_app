@@ -23,7 +23,7 @@ Scenario Outline: Verify 'Sticker' option
     | CameraRoll Preview |
     
 @reset
-@done
+@regression
 Scenario Outline: Verify 'Sticker' option
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker"
@@ -39,7 +39,7 @@ Scenario Outline: Verify 'Sticker' option
     | CameraRoll Preview |
     
 @reset
-@done
+@regression
 Scenario Outline: Verify Sticker delete option    
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker"
@@ -56,7 +56,7 @@ Scenario Outline: Verify Sticker delete option
     
     
 @reset
-@TA16210
+@done
 Scenario: Verify sticker list
     Given I am on the "StickerEditor" screen for "CameraRoll"
     Then I should see the following Stickers in the screen:
@@ -130,7 +130,7 @@ Scenario: Verify sticker list
                 | OMG_TN                |
                 
 @reset
-@TA16210
+@done
 Scenario: Verify all the stickers are applied for sticker editor screen 
     Given I am on the "StickerEditor" screen for "CameraRoll"  
     Then I verify that all the "stickers" are applied successfully
