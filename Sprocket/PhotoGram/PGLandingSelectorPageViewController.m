@@ -32,6 +32,7 @@
 #import "MP.h"
 #import "PGPreviewViewController.h"
 #import "PGFeatureFlag.h"
+#import "PGPhotoSelection.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -405,17 +406,26 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
-    PGLandingPageViewController *landing = (PGLandingPageViewController *)([[self currentNavigationController].viewControllers firstObject]);
-    [landing.photoCollectionViewController beginMultiSelect];
+    [[PGPhotoSelection sharedInstance] beginSelectionMode];
 
-    [mediaNav beginSelectionMode];
+    for (UINavigationController *navigationController in self.socialViewControllers) {
+        PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+        [landing.photoCollectionViewController beginMultiSelect];
+    }
 }
 
 - (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
-    PGLandingPageViewController *landing = (PGLandingPageViewController *)([[self currentNavigationController].viewControllers firstObject]);
-    [landing.photoCollectionViewController endMultiSelect];
+    [[PGPhotoSelection sharedInstance] endSelectionMode];
 
-    [mediaNav endSelectionMode];
+    for (UINavigationController *navigationController in self.socialViewControllers) {
+        PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+        [landing.photoCollectionViewController endMultiSelect];
+    }
+
+    PGLandingPageViewController *landing = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
+    if (!landing.photoCollectionViewController) {
+        [[PGMediaNavigation sharedInstance] disableSelectionMode];
+    }
 }
 
 - (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {
@@ -468,11 +478,15 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     if (isShowingPhotoGallery) {
         [self.navigationView hideCameraButton];
 
-        ((HPPRSelectPhotoCollectionViewController *) viewController).allowMultiSelect = [PGFeatureFlag isMultiPrintEnabled];
-        BOOL isInMultiSelectMode = [((HPPRSelectPhotoCollectionViewController *) viewController) isInMultiSelectMode];
+        HPPRSelectPhotoCollectionViewController *photoGalleryViewController = (HPPRSelectPhotoCollectionViewController *) viewController;
+        photoGalleryViewController.allowMultiSelect = [PGFeatureFlag isMultiPrintEnabled];
 
-        if (isInMultiSelectMode) {
+        if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
             [self.navigationView beginSelectionMode];
+
+            if (![photoGalleryViewController isInMultiSelectMode]) {
+                [photoGalleryViewController beginMultiSelect];
+            }
         } else {
             [self.navigationView endSelectionMode];
         }
@@ -491,6 +505,12 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     } else {
         [self.navigationView showCameraButton];
         [self.navigationView hideAlbumsDropDownButton];
+
+        if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
+            [self.navigationView beginSelectionMode];
+        } else {
+            [self.navigationView disableSelectionMode];
+        }
     }
 }
 
@@ -562,6 +582,15 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignOutToSocialSource:(PGSocialSource *)socialSource {
     [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewControllerDidInitiateSelection:(PGLandingPageViewController *)landingViewController {
+    [[PGPhotoSelection sharedInstance] beginSelectionMode];
+
+    for (UINavigationController *navigationController in self.socialViewControllers) {
+        PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+        [landing.photoCollectionViewController beginMultiSelect];
+    }
 }
 
 @end

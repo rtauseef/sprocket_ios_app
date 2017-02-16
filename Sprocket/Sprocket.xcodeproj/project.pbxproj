@@ -1030,6 +1030,8 @@
 		F21C66611E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
 		F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12241E522FF300753C5A /* PGFeatureFlag.m */; };
 		F22F12261E522FF300753C5A /* PGFeatureFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12241E522FF300753C5A /* PGFeatureFlag.m */; };
+		F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12381E560C2C00753C5A /* PGPhotoSelection.m */; };
+		F22F123A1E560C2C00753C5A /* PGPhotoSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12381E560C2C00753C5A /* PGPhotoSelection.m */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
@@ -2129,6 +2131,8 @@
 		F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSelectAlbumDropDownViewController.m; sourceTree = "<group>"; };
 		F22F12231E522FF300753C5A /* PGFeatureFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeatureFlag.h; sourceTree = "<group>"; };
 		F22F12241E522FF300753C5A /* PGFeatureFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeatureFlag.m; sourceTree = "<group>"; };
+		F22F12371E560C2C00753C5A /* PGPhotoSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPhotoSelection.h; sourceTree = "<group>"; };
+		F22F12381E560C2C00753C5A /* PGPhotoSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPhotoSelection.m; sourceTree = "<group>"; };
 		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
 		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
 		F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSetupSprocketViewController.h; sourceTree = "<group>"; };
@@ -2808,6 +2812,8 @@
 			isa = PBXGroup;
 			children = (
 				CCED9C5A19F9730800ACC969 /* Camera Roll */,
+				F22F12371E560C2C00753C5A /* PGPhotoSelection.h */,
+				F22F12381E560C2C00753C5A /* PGPhotoSelection.m */,
 			);
 			name = "Select Photos";
 			sourceTree = "<group>";
@@ -2984,6 +2990,7 @@
 			children = (
 				F2E785281DDA78040074FFB7 /* SocialSources */,
 				E34D509B199AB9A4006D80E0 /* Storyboards */,
+				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				E34D5099199AB98B006D80E0 /* Additions */,
 				F2C46E7E1DB6F17F00604371 /* IntroWizard */,
 				E3D6816819A3D180000D45E0 /* LandingPage */,
@@ -3051,7 +3058,6 @@
 		E34D5099199AB98B006D80E0 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
-				E3D6814319A3D02E000D45E0 /* CustomViews */,
 				E34D509A199AB996006D80E0 /* Method Swizzling */,
 				E3B62FF619A412E900CB80D7 /* UIView+Animations.h */,
 				E3B62FF719A412E900CB80D7 /* UIView+Animations.m */,
@@ -4729,6 +4735,7 @@
 				12495e2dc332c51c9c9bb3da /* PGRevealViewController.m in Sources */,
 				c2e153366dd0c752981c1913 /* PGStickerItem.m in Sources */,
 				1174168234d1a88405ac0c0b /* NSURLRequest+Helper.m in Sources */,
+				F22F123A1E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
@@ -4836,6 +4843,7 @@
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
 				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
+				F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,

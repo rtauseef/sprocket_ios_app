@@ -262,7 +262,9 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 }
 
 - (void)selectPhotoCollectionViewControllerDidInitiateMultiSelectMode:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController {
-    [[PGMediaNavigation sharedInstance] beginSelectionMode];
+    if ([self.delegate respondsToSelector:@selector(landingPageViewControllerDidInitiateSelection:)]) {
+        [self.delegate landingPageViewControllerDidInitiateSelection:self];
+    }
 }
 
 #pragma mark - PGSelectAlbumDropDownViewControllerDelegate
