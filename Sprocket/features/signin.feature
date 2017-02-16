@@ -26,7 +26,7 @@ Scenario Outline: Sign in to different Social media accounts from Landing screen
       
 @reset
 @done
-Scenario: Sign in to different Social media accounts from Landing screen
+Scenario: Open Cameraroll from Landing screen
     Given I am on the "Landing" screen
     Then I should see "CameraRoll" logo
     And I click on the "CameraRoll" logo
