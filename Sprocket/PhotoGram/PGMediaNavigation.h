@@ -34,6 +34,7 @@
 
 - (void)beginSelectionMode;
 - (void)endSelectionMode;
+- (void)disableSelectionMode;
 
 @end
 

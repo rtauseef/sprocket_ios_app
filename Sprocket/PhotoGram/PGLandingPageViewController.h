@@ -57,5 +57,6 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didFailSignInToSocialSource:(PGSocialSource *)socialSource;
 
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didShowViewController:(UIViewController *)viewController;
+- (void)landingPageViewControllerDidInitiateSelection:(PGLandingPageViewController *)landingViewController;
 
 @end
