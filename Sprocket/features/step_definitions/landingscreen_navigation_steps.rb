@@ -37,29 +37,32 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             puts "#{screen_name} - Not Applicable for Chinese language!".blue
         else
             swipe(:left)
-            check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")
+           # check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")
+            check_element_exists("view marked:'#{$list_loc[screen_name]}")
             sleep(STEP_PAUSE)
         end
     else
         if screen_name == "Camera Roll"
             i = 0
-            while i < 4
+            while i < 3
                 swipe(:left)
                 sleep(STEP_PAUSE)
                 i = i + 1
             end
-            check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")
+            #check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")
+            check_element_exists("view marked:'#{$list_loc[screen_name]}")
             sleep(STEP_PAUSE)
         else
             if screen_name == "Flickr"
                 swipe(:right)
-                check_element_exists("UINavigationBar marked:'#{$list_loc['flickr']}'")
-                #check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}'")
+                #check_element_exists("UINavigationBar marked:'#{$list_loc['flickr']}'")
+                check_element_exists("view marked:'#{$list_loc['flickr']}'")
                 sleep(STEP_PAUSE)
             else
                 if screen_name == "facebook"
                     swipe(:right)
-                    check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}'")
+                   # check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}'")
+                    check_element_exists("view marked:'#{$list_loc[screen_name]}'")
                 else
                     puts "#{screen_name} - Applicable only for Chinese language!".blue 
                 end

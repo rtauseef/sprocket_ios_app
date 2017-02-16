@@ -166,7 +166,8 @@ Scenario: Verify localization of navigation to Technical Information screen
         And I should see the "Technical Information" screen
         And I tap back button
         And I navigate back
-        Then I touch "Done"
+        #Then I touch "Done"
+        Then I touch "Done" option in the screen
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
     
