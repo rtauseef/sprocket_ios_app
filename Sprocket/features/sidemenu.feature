@@ -22,7 +22,7 @@ Scenario Outline: Sign in to different Social media accounts from side menu
 @reset
 @regression
 @done
-Scenario: Sign in to different Social media accounts from side menu
+Scenario: Open cameraroll from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
     Then I should see the side menu
@@ -49,7 +49,7 @@ Scenario: Verify side menu options
     
     @reset
     @TA16065
-    Scenario: Verify How to & Help
+    Scenario: Verify How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -67,7 +67,7 @@ Scenario: Verify side menu options
     
     @reset
     @TA16065
-    Scenario Outline: Verify How to & Help options
+    Scenario Outline: Verify printer options for How to & Help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -83,7 +83,7 @@ Scenario: Verify side menu options
     
     @reset
     @TA16065
-    Scenario Outline: Verify How to & Help options
+    Scenario Outline: Verify successful navigation for How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -101,7 +101,7 @@ Scenario: Verify side menu options
    
     @reset
     @done
-    Scenario: Verify How to & Help
+    Scenario: Verify navigation back to side menu from How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -116,41 +116,7 @@ Scenario: Verify side menu options
     And I touch "Done"
     Then I should see the side menu
     
-    
-    @reset
-    @done
-    Scenario Outline: Verify How to & Help options
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-	Then I should see the side menu
-    Then I touch "How to & Help"
-    And I touch "<Sprocket_printer_option>"
-    And I should see the "<Sprocket_printer_option>" screen
-    
-    Examples:
-    | Sprocket_printer_option| 
-    | Reset Sprocket Printer | 
-    | Setup Sprocket Printer | 
-    
-    
-    @reset
-   @done
-    Scenario Outline: Verify How to & Help options
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-	Then I should see the side menu
-    Then I touch "How to & Help"
-    And I wait for some seconds
-    And I touch "<How_To_And_Help_option>"
-    
-    Examples:
-    | How_To_And_Help_option|
-    | View User Guide        |
-    | Tweet Support          |
-    | Join Support Forum     |
-    | Visit Support Website  |
-    
-   
+       
     @reset
     @done
     Scenario: Verify about screen from side menu
