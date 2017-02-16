@@ -144,6 +144,13 @@
     self.selectButton.hidden = ![PGFeatureFlag isMultiPrintEnabled];
 }
 
+- (void)disableSelectionMode {
+    self.cancelButton.hidden = YES;
+    self.nextButton.hidden = YES;
+    self.hamburgerButton.hidden = NO;
+    self.selectButton.hidden = YES;
+}
+
 - (void)showGradientBar {
     [UIView animateWithDuration:0.2 animations:^{
         self.gradientBar.transform = CGAffineTransformIdentity;
