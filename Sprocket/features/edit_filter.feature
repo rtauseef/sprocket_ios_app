@@ -4,7 +4,7 @@ Feature: Verify Filter-edit screen
 
   
 @reset
-@regression
+@done
 Scenario Outline: Verify 'Filter' option
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -22,7 +22,7 @@ Scenario Outline: Verify 'Filter' option
     | CameraRoll Preview |
 
 @reset
-@done
+@regression
 Scenario Outline: Verify Filter selection option
     Given I am on the "FilterEditor" screen for "<social_media_screen_name>" 
     Then I select "Filter"

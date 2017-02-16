@@ -124,6 +124,7 @@ $language_arr =
         "Back" => "Back",
         "Printers" => "打印机",
         "Technical Information" => "Technical Information",
+        #技术信息
         "App Settings" => "应用设置",
         "Version" => "版",
         "Copyright (c) 2016" => "版权所有 (c) 2016", 

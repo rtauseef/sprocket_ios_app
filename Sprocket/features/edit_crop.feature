@@ -25,7 +25,7 @@ Scenario Outline: Verify crop option
     
  
 @reset
-@done
+@regression
 Scenario Outline: Verify image crop
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button

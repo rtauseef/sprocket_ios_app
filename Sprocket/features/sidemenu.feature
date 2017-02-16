@@ -3,7 +3,6 @@ Feature: Verify Side menu feature
   
 @reset
 @regression
-@done
 Scenario Outline: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -21,7 +20,6 @@ Scenario Outline: Sign in to different Social media accounts from side menu
       
 @reset
 @regression
-@done
 Scenario: Open cameraroll from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -35,6 +33,7 @@ Scenario: Open cameraroll from side menu
 
 @reset
 @done
+@smoke
 Scenario: Verify side menu options
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -48,7 +47,7 @@ Scenario: Verify side menu options
     |About          |
     
     @reset
-    @TA16065
+    @done
     Scenario: Verify How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -66,7 +65,7 @@ Scenario: Verify side menu options
     
     
     @reset
-    @TA16065
+    @done
     Scenario Outline: Verify printer options for How to & Help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -82,7 +81,7 @@ Scenario: Verify side menu options
     
     
     @reset
-    @TA16065
+    @done
     Scenario Outline: Verify successful navigation for How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -98,24 +97,7 @@ Scenario: Verify side menu options
     | Join Support Forum     |
     | Visit Support Website  |
     
-   
-    @reset
-    @done
-    Scenario: Verify navigation back to side menu from How to & Help options
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-	Then I should see the side menu
-    Then I touch "How to & Help"
-    And I should see the following:
-    | Reset Sprocket Printer |
-    | Setup Sprocket Printer |
-    | View User Guide        |
-    | Tweet Support          |
-    | Join Support Forum     |
-    | Visit Support Website  |
-    And I touch "Done"
-    Then I should see the side menu
-    
+
        
     @reset
     @done
@@ -135,7 +117,7 @@ Scenario: Verify side menu options
         Then I should see the side menu
     
     @reset
-    @done
+    @regression
     Scenario: Verify closing side menu
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
@@ -145,7 +127,7 @@ Scenario: Verify side menu options
 
     
     @reset
-    @TA16336
+    @done
     Scenario: Verify Sprocket screen options
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
@@ -157,7 +139,7 @@ Scenario: Verify side menu options
         | Printers     | 
 
     @reset
-    @TA16336
+    @done
     Scenario: Verify navigation to Technical Information screen
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
