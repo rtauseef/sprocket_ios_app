@@ -19,5 +19,6 @@
 - (void)stopCamera;
 - (void)changeCameraPosition:(AVCaptureDevicePosition)position;
 - (void)resetCamera;
+- (void)disableCamera;
 
 @end

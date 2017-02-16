@@ -1,17 +1,17 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
 "1Gm-FD-YRV.title" = "Valmis";
 
-/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP Terms of Service."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "Pitu kasutamisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
+"3FE-mc-FrD.text" = "Pitu kasutamisel nõustute ka HP <teenusetingimustega>.";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "Kasutamise teave ja spikker";
 
-/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "Sotsiaalmeediaallikatega autentimisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "Sotsiaalmeediaallikatega autentimisel nõustute ka HP <teenusetingimustega>.";
 
-/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "Instagramiga autentimisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "Instagramiga autentimisel nõustute ka HP <teenusetingimustega>.";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
 "4go-MT-3C1.text" = "Lähtesta Sprocketi printer";
@@ -91,8 +91,8 @@
 /* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
 "Ptp-oP-RvF.text" = "Menüü üksus";
 
-/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "Flickriga autentimisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "Flickriga autentimisel nõustute ka HP <teenusetingimustega>.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "Pealkiri";
@@ -123,8 +123,8 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
 "U9F-p5-X9c.text" = "Versioon 1.0";
 
-/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "Facebookiga autentimisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "Facebookiga autentimisel nõustute ka HP <teenusetingimustega>.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Üksikasjad";
@@ -135,8 +135,8 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
 "XgH-Dx-oow.text" = "Filmilindile salvestatud";
 
-/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "Filmilindi kasutamisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "Filmilindi kasutamisel nõustute ka HP <teenusetingimustega>.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Fotod";
@@ -183,8 +183,8 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
-/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s Terms of Service."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "Qzone’iga autentimisel nõustute ka HP teenusetingimustega.";
+/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
+"ob1-ZF-jEd.text" = "Qzone’iga autentimisel nõustute ka HP <teenusetingimustega>.";
 
 /* Class = "UILabel"; text = "Connected"; ObjectID = "qsf-b8-Lfu"; */
 "qsf-b8-Lfu.text" = "Ühendatud";

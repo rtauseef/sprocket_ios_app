@@ -1,17 +1,17 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
 "1Gm-FD-YRV.title" = "Ferdig";
 
-/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP Terms of Service."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "Ved å bruke Pitu, godtar du også HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
+"3FE-mc-FrD.text" = "Ved å bruke Pitu, godtar du også HPs <vilkår for bruk>.";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "Hvordan du gjør det og Hjelp";
 
-/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "Ved å autentisere med sosiale kilder, godtar du også HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "Ved å autentisere med sosiale kilder, godtar du også HPs <vilkår for bruk>.";
 
-/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "Ved å autentisere med Instagram, godtar du også HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "Ved å autentisere med Instagram, godtar du også HPs <vilkår for bruk>.";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
 "4go-MT-3C1.text" = "Tilbakestill sprocket-skriver";
@@ -91,8 +91,8 @@
 /* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
 "Ptp-oP-RvF.text" = "Menyelement";
 
-/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "Ved å autentisere med Flickr, godtar du også HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "Ved å autentisere med Flickr, godtar du også HPs <vilkår for bruk>.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "Tittel";
@@ -123,8 +123,8 @@ For å forbedre fremtidige versjoner av denne appen og HP-skrivere, vil HP jevnl
 /* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
 "U9F-p5-X9c.text" = "Versjon 1.0";
 
-/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "Ved å autentisere med Facebook, er du også enig med HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "Ved å autentisere med Facebook, er du også enig med HPs <vilkår for bruk>.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Detalj";
@@ -135,8 +135,8 @@ For å forbedre fremtidige versjoner av denne appen og HP-skrivere, vil HP jevnl
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
 "XgH-Dx-oow.text" = "Lagret i Kamerarull";
 
-/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "Ved å bruke kamerarullen, godtar du også HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "Ved å bruke kamerarullen, godtar du også HPs <vilkår for bruk>.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Bilder";
@@ -183,8 +183,8 @@ For å forbedre fremtidige versjoner av denne appen og HP-skrivere, vil HP jevnl
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
-/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s Terms of Service."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "Ved å autentisere med Qzone, godtar du også HPs vilkår for bruk.";
+/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
+"ob1-ZF-jEd.text" = "Ved å autentisere med Qzone, godtar du også HPs <vilkår for bruk>.";
 
 /* Class = "UILabel"; text = "Connected"; ObjectID = "qsf-b8-Lfu"; */
 "qsf-b8-Lfu.text" = "Tilkoblet";
