@@ -186,17 +186,7 @@
     if (!_storeURL) {
         NSFileManager *fm = [NSFileManager defaultManager];
         NSURL *libraryDirectoryURL = [[fm URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
-        NSURL *directoryURL = [libraryDirectoryURL URLByAppendingPathComponent:self.storeName];
-
-        NSURL *legacyURL = [libraryDirectoryURL URLByAppendingPathComponent:kUACoreDataStoreName];
-
-        // Move the legacy directory to current directory if it exists
-        if ([fm fileExistsAtPath:[legacyURL path]]) {
-            NSError *error = nil;
-            if (![fm moveItemAtURL:legacyURL toURL:directoryURL error:&error]) {
-                UA_LERR(@"Error moving legacy inbox directory %@ to current directory %@: %@", [legacyURL lastPathComponent], [directoryURL lastPathComponent], error);
-            }
-        }
+        NSURL *directoryURL = [libraryDirectoryURL URLByAppendingPathComponent:kUACoreDataStoreName];
 
         // Create the store directory if it doesnt exist
         if (![fm fileExistsAtPath:[directoryURL path]]) {
@@ -254,12 +244,12 @@
         data.messageBodyURL = [NSURL URLWithString:dict[@"message_body_url"]];
         data.messageURL = [NSURL URLWithString:dict[@"message_url"]];
         data.unread = [dict[@"unread"] boolValue];
-        data.messageSent = [UAUtils parseISO8601DateFromString:dict[@"message_sent"]];
+        data.messageSent = [[UAUtils ISODateFormatterUTC] dateFromString:dict[@"message_sent"]];
         data.rawMessageObject = dict;
 
         NSString *messageExpiration = dict[@"message_expiry"];
         if (messageExpiration) {
-            data.messageExpiration = [UAUtils parseISO8601DateFromString:messageExpiration];
+            data.messageExpiration = [[UAUtils ISODateFormatterUTC] dateFromString:messageExpiration];
         } else {
             data.messageExpiration = nil;
         }

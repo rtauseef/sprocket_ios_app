@@ -166,7 +166,7 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
             return nil;
         }
 
-        start = [UAUtils parseISO8601DateFromString:json[UAActionScheduleInfoStartKey]];
+        start = [[UAUtils ISODateFormatterUTC] dateFromString:json[UAActionScheduleInfoStartKey]];
     }
 
     // End
@@ -183,7 +183,7 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
             return nil;
         }
 
-        end = [UAUtils parseISO8601DateFromString:json[UAActionScheduleInfoEndKey]];
+        end = [[UAUtils ISODateFormatterUTC] dateFromString:json[UAActionScheduleInfoEndKey]];
     }
 
     // Group

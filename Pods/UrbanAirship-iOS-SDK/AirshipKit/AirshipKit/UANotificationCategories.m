@@ -29,7 +29,6 @@
 #import "UAirship.h"
 #import "UANotificationCategory.h"
 #import "UANotificationAction.h"
-#import "UATextInputNotificationAction.h"
 
 @implementation UANotificationCategories
 
@@ -125,24 +124,10 @@
         if ([actionDefinition[@"authenticationRequired"] boolValue]) {
             options |= UANotificationActionOptionAuthenticationRequired;
         }
-        
-        UANotificationAction *action;
-        if ([actionDefinition[@"action_type"] isEqualToString:@"text_input"]) {
-            
-            NSString *textInputButtonTitle = actionDefinition[@"text_input_button_title"];
-            NSString *textInputPlaceholder = actionDefinition[@"text_input_placeholder"];
-            
-            action = [UATextInputNotificationAction actionWithIdentifier:actionId
-                                                                   title:title
-                                                    textInputButtonTitle:textInputButtonTitle
-                                                    textInputPlaceholder:textInputPlaceholder
-                                                                 options:options];
-        } else {
-            action = [UANotificationAction actionWithIdentifier:actionId
-                                                          title:title
-                                                        options:options];
-        }
-        
+
+        UANotificationAction *action = [UANotificationAction actionWithIdentifier:actionId
+                                                                            title:title
+                                                                          options:options];
         [actions addObject:action];
     }
 

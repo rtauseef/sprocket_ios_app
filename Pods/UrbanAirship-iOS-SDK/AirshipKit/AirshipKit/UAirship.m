@@ -130,7 +130,6 @@ BOOL uaLoudImpErrorLoggingEnabled = YES;
 
         self.sharedAutomation = [UAAutomation automationWithConfig:config dataStore:dataStore];
         self.analytics.delegate = self.sharedAutomation;
-        self.channelCapture = [UAChannelCapture channelCaptureWithConfig:config push:self.sharedPush dataStore:self.dataStore];
 
         // Only create the default message center if running iOS 8 and above
         if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){8, 0, 0}]) {
@@ -140,6 +139,8 @@ BOOL uaLoudImpErrorLoggingEnabled = YES;
                 UA_LINFO(@"Unable to initialize default message center: AirshipResources is missing");
             }
         }
+
+        self.channelCapture = [UAChannelCapture channelCaptureWithConfig:config push:self.sharedPush];
     }
 
     return self;

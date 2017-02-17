@@ -26,7 +26,6 @@
 #import <UIKit/UIKit.h>
 
 @class UAConfig;
-@class UAPreferenceDataStore;
 @class UAPush;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -43,25 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param config The Urban Airship config.
  * @param push The UAPush instance.
- * @param dataStore The UAPreferenceDataStore instance.
  *
  * @return A channel capture instance.
  */
-+ (instancetype)channelCaptureWithConfig:(UAConfig *)config
-                                    push:(UAPush *)push
-                               dataStore:(UAPreferenceDataStore *)dataStore;
-
-/**
- * Enable channel capture for a specified duration.
- *
- * @param duration The length of time to enable channel capture for, in seconds.
- */
-- (void)enable:(NSTimeInterval)duration;
-
-/**
- * Disable channel capture.
- */
-- (void)disable;
++ (instancetype)channelCaptureWithConfig:(UAConfig *)config push:(UAPush *)push;
 
 @end
 

@@ -51,7 +51,6 @@
 @class UADefaultMessageCenter;
 @class UALocation;
 @class UAAutomation;
-@class UAChannelCapture;
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -111,10 +110,6 @@ extern NSString * const UAirshipTakeOffBackgroundThreadException;
  */
 @property (nonatomic, strong, readonly) UAWhitelist *whitelist;
 
-/**
- * The channel capture utility.
- */
-@property (nonatomic, strong, readonly) UAChannelCapture *channelCapture;
 
 ///---------------------------------------------------------------------------------------
 /// @name Logging

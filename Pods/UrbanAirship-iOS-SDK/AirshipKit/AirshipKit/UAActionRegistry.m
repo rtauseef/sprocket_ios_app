@@ -34,13 +34,13 @@
 #import "UACloseWindowAction+Internal.h"
 #import "UAAddCustomEventAction.h"
 #import "UAShareAction.h"
+#import "UAIncomingInAppMessageAction.h"
 #import "UADisplayInboxAction.h"
 #import "UAPasteboardAction.h"
 #import "UAOverlayInboxMessageAction.h"
 #import "UACancelSchedulesAction.h"
 #import "UAScheduleAction.h"
 #import "UAFetchDeviceInfoAction.h"
-#import "UAChannelCaptureAction.h"
 
 @implementation UAActionRegistry
 @dynamic registeredEntries;
@@ -260,6 +260,10 @@
 }
 
 - (void)registerDefaultActions {
+    // Incoming in-app message action
+    UAIncomingInAppMessageAction *iamAction = [[UAIncomingInAppMessageAction alloc] init];
+    [self registerReservedAction:iamAction name:kUAIncomingInAppMessageActionDefaultRegistryName predicate:nil];
+
     // Close window action
     UACloseWindowAction *closeWindowAction = [[UACloseWindowAction alloc] init];
     [self registerReservedAction:closeWindowAction name:kUACloseWindowActionRegistryName predicate:nil];
@@ -365,11 +369,6 @@
                predicate:^BOOL(UAActionArguments *args) {
                    return args.situation == UASituationManualInvocation || args.situation == UASituationWebViewInvocation;
                }];
-    
-    // Channel capture action
-    UAChannelCaptureAction *channelCaptureAction = [[UAChannelCaptureAction alloc] init];
-    [self registerAction:channelCaptureAction
-                    names:@[kUAChannelCaptureActionDefaultRegistryName, kUAChannelCaptureActionDefaultRegistryAlias]];
 
 }
 

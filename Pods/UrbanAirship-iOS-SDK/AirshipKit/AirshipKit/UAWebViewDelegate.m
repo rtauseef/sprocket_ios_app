@@ -38,7 +38,6 @@
 #import "NSString+UAURLEncoding.h"
 #import "UANamedUser.h"
 #import "UAPush.h"
-#import "UAConfig.h"
 
 @interface UAWebViewDelegate()
 @property (nonatomic, strong) NSMapTable *injectedWebViews;
@@ -191,11 +190,6 @@
      */
     appendStringGetter(@"getChannelId", [UAirship push].channelID);
 
-    /*
-     * Set the application key
-     */
-    appendStringGetter(@"getAppKey", [UAirship shared].config.appKey);
-    
     /*
      * Set the current message's sent date
      */
