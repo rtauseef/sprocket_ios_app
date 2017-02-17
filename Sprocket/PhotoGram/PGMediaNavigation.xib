@@ -53,8 +53,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-4q-RBc">
-                            <rect key="frame" x="8" y="24" width="58" height="37"/>
-                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
+                            <rect key="frame" x="8" y="25.5" width="53" height="35"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -63,7 +63,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKD-1j-IUU">
-                            <rect key="frame" x="178" y="24" width="37" height="37"/>
+                            <rect key="frame" x="178" y="24.5" width="37" height="37"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
                             <state key="normal">
@@ -87,8 +87,8 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G44-ca-Kmr">
-                            <rect key="frame" x="313" y="25" width="54" height="37"/>
-                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="22"/>
+                            <rect key="frame" x="318" y="25.5" width="49" height="35"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                             <state key="normal" title="Select">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
