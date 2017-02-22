@@ -7,7 +7,7 @@ class DeviceScreen < Calabash::IBase
   end
 
   def title
-    "navigationBar marked:'Devices'"
+      "view marked:'Devices'"
   end
     
   def message_title
@@ -55,16 +55,9 @@ class DeviceScreen < Calabash::IBase
     
 
   def navigate
-    unless current_page?
-      landing_screen = go_to(LandingScreen)
-         wait_for_elements_exist(landing_screen.hamburger_logo, :timeout => MAX_TIMEOUT)
-        touch landing_screen.hamburger_logo
-        sleep(STEP_PAUSE)
-        touch "view marked:'Devices'"
-        sleep(STEP_PAUSE)
-        if element_exists("label {text CONTAINS 'Printer not connected to device'}")
-            touch "label {text CONTAINS 'OK'}"
-        end
+        unless current_page?
+        preview_screen = go_to(InstagramPreviewScreen)
+      touch preview_screen.print
     end
     await
 

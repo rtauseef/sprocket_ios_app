@@ -47,8 +47,10 @@ Then(/^I tap the "(.*?)"$/) do |printer|
     @current_page = required_page
     if printer == "Printer 1" 
         touch @current_page.printer_1
+        sleep(WAIT_SCREENLOAD)
     else
-        touch @current_page.printer_2    
+        touch @current_page.printer_2
+        sleep(WAIT_SCREENLOAD)
     end
     $printer_name = printer
     sleep(WAIT_SCREENLOAD)

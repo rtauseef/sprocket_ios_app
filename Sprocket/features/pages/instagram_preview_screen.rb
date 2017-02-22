@@ -28,11 +28,13 @@ class InstagramPreviewScreen < Calabash::IBase
   end
     
   def modal_title
-    "label {text CONTAINS 'Printer not connected to device'}"
+    #"label {text CONTAINS 'Printer not connected to device'}"
+      "label {text CONTAINS Sprocket Printer Not Connected'}"
   end
     
   def modal_content
-    "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
+    #"label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
+      "label {text CONTAINS 'Make sure the sprocket printer is on and bluetooth connected.'}"
   end
   def close
     "* id:'closeButton'"
