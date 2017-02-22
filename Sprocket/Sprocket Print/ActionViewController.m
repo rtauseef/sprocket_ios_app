@@ -47,6 +47,7 @@ static NSInteger  const connectionDefaultValue = -1;
     
     [MP sharedInstance].extensionController = self;
     [MP sharedInstance].handlePrintMetricsAutomatically = NO;
+    [MP sharedInstance].uniqueDeviceIdPerApp = NO;
     
     self.printButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.printButton.layer.borderWidth = 1.0f;
@@ -102,6 +103,8 @@ static NSInteger  const connectionDefaultValue = -1;
     
     self.lastConnectedValue = connectionDefaultValue;
     [[MP sharedInstance] checkSprocketForUpdates:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -109,6 +112,7 @@ static NSInteger  const connectionDefaultValue = -1;
     [self.sprocketConnectivityTimer invalidate];
     self.sprocketConnectivityTimer = nil;
     self.lastConnectedValue = connectionDefaultValue;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super viewWillDisappear:animated];
 }
@@ -169,12 +173,7 @@ static NSInteger  const connectionDefaultValue = -1;
 
 - (IBAction)printTapped:(id)sender {
     UIImage *image = [self.imageContainer screenshotImage];
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:image animated:YES printCompletion:^(){
-        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
-        printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
-
-        [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem exendedInfo:nil];
-    }];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:image animated:YES printCompletion:nil];
 }
 
 - (IBAction)done {
@@ -188,5 +187,19 @@ static NSInteger  const connectionDefaultValue = -1;
     self.batteryIndicator.level = batteryLevel;
 }
 
+#pragma mark - Print Notification Handler
+
+- (void)handlePrintJobCompletedNotification:(NSNotification *)notification
+{
+    NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
+    
+    if (nil == error) {
+        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:[self.imageContainer screenshotImage]];
+        printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
+        
+        [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem exendedInfo:nil];
+
+    }
+}
 
 @end
