@@ -341,7 +341,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
     } else {
         HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
         cell.delegate = self;
-        cell.retrieveLowQuality = self.showGridView;
+        cell.retrieveLowQuality = [self shouldRequestLowResolutionImage];
         cell.media = [self.provider imageAtIndex:indexPath.row];
         cell.selectionEnabled = [self isInMultiSelectMode];
         if ([self isSelected:indexPath]) {
@@ -351,6 +351,14 @@ NSString * const kProviderAlbumKeyPath = @"album";
 
         return cell;
     }
+}
+
+- (BOOL)shouldRequestLowResolutionImage {
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerShouldRequestOnlyLowResolutionImage:)]) {
+        return [self.delegate selectPhotoCollectionViewControllerShouldRequestOnlyLowResolutionImage:self];
+    }
+
+    return self.showGridView;
 }
 
 #pragma mark - MCSelectPhotoViewCellDelegate

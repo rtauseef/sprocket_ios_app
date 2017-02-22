@@ -39,11 +39,13 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media;
 
 @optional
+
 - (UIEdgeInsets)collectionViewContentInset;
 - (AVCaptureDevicePosition)cameraPosition;
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didChangeViewMode:(HPPRSelectPhotoCollectionViewMode)viewMode;
 - (void)selectPhotoCollectionViewControllerDidInitiateMultiSelectMode:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 - (void)selectPhotoCollectionViewControllerDidSelectCamera:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
+- (BOOL)selectPhotoCollectionViewControllerShouldRequestOnlyLowResolutionImage:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 
 @end
 
