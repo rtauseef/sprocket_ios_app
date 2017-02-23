@@ -1,1 +1,0 @@
-../../../MobilePrintSDK/Pod/Classes/Private/UIImage+MPBundle.h

@@ -1,1 +1,0 @@
-../../../../HPPhotoProvider/Pod/Frameworks/TencentOpenAPI.framework/Headers/sdkdef.h

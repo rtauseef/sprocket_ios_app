@@ -1,1 +1,0 @@
-../../../MobilePrintSDK/Pod/Classes/Private/Malta/MPLEDiscovery.h

@@ -1,1 +1,0 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPDefaultSettingsManager.h

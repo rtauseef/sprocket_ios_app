@@ -142,16 +142,33 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([[DBChooser defaultChooser] handleOpenURL:url]) {
-        // This was a Chooser response and handleOpenURL automatically ran the completion block
-        return YES;
+//    if ([[DBChooser defaultChooser] handleOpenURL:url]) {
+//        // This was a Chooser response and handleOpenURL automatically ran the completion block
+//        return YES;
+//    }
+//    
+//    if ([url.scheme isEqual:@"hpsprocket"]) {
+//        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+//    } else {
+//        return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+//    }
+    NSMutableArray *schemes = [NSMutableArray array];
+    
+    // Look at our plist
+    NSArray *bundleURLTypes = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleURLTypes"];
+    [bundleURLTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [schemes addObjectsFromArray:[bundleURLTypes[idx] objectForKey:@"CFBundleURLSchemes"]];
+    }];
+    
+    NSLog(@"******* schemes: %@", schemes);
+    
+    if (![schemes containsObject:url.scheme]) {
+        return NO;
     }
     
-    if ([url.scheme isEqual:@"hpsprocket"]) {
-        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else {
-        return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    }
+    //    [self deepLink:url.pathComponents];
+    
+    return YES;
 }
 
 #pragma mark - MP object initialization

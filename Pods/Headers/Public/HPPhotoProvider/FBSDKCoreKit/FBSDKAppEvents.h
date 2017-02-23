@@ -1,1 +1,0 @@
-../../../../HPPhotoProvider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKAppEvents.h
