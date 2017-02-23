@@ -27,17 +27,13 @@
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
 
     if (self.session || devices.count == 0) {
+        [self configureSessionPreset];
         return;
     }
 
     self.session = [[AVCaptureSession alloc] init];
-    if (self.layer.bounds.size.width < 100) {
-        self.session.sessionPreset = AVCaptureSessionPresetLow;
-    } else {
-        self.session.sessionPreset = AVCaptureSessionPresetMedium;
-    }
-
-
+    [self configureSessionPreset];
+    
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 
     NSError *error = nil;
@@ -58,6 +54,15 @@
     }
     
     [self startCamera];
+}
+
+- (void)configureSessionPreset
+{
+    if (self.layer.bounds.size.width < 200) {
+        self.session.sessionPreset = AVCaptureSessionPresetLow;
+    } else {
+        self.session.sessionPreset = AVCaptureSessionPresetHigh;
+    }
 }
 
 - (void)resetCamera
