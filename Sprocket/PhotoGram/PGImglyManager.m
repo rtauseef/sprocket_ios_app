@@ -12,6 +12,7 @@
 
 #import "PGImglyManager.h"
 #import "PGStickerItem.h"
+#import "PGStickerManager.h"
 #import "PGFrameItem.h"
 #import "UIColor+Style.h"
 
@@ -312,14 +313,14 @@ typedef enum {
 - (void)stickerCountWith:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock([PGStickerItem stickerCount], nil);
+        completionBlock([PGStickerManager sharedInstance].stickersCount, nil);
     }
 }
 
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
+        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerItemByIndex:index];
         completionBlock(sticker.thumbnailImage, nil, nil);
     }
 }
@@ -327,7 +328,7 @@ typedef enum {
 - (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        PGStickerItem *sticker = [PGStickerItem stickerItemByIndex:index];
+        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerItemByIndex:index];
         IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.accessibilityText];
         completionBlock(imglySticker, nil);
     }
@@ -373,7 +374,7 @@ typedef enum {
 - (NSString *)stickerNameFromImglySticker:(IMGLYSticker *)sticker
 {
     NSString *stickerName = sticker.accessibilityText;
-    PGStickerItem *stickerItem = [PGStickerItem stickerByAccessibilityText:stickerName];
+    PGStickerItem *stickerItem = [[PGStickerManager sharedInstance] stickerByAccessibilityText:stickerName];
     if (nil != stickerItem) {
         stickerName = stickerItem.name;
     }
