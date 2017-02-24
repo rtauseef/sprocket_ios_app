@@ -24,6 +24,7 @@
  */
 
 #import "UAUtils.h"
+#import "UAActionResult.h"
 
 // Frameworks
 #import <CommonCrypto/CommonDigest.h>
@@ -204,6 +205,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
+
     return dateFormatter;
 }
 
@@ -211,6 +213,33 @@
     NSDateFormatter *dateFormatter = [self ISODateFormatterUTC];
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
     return dateFormatter;
+}
+
++ (NSDate *)parseISO8601DateFromString:(NSString *)timestamp {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+
+    // All the various formats
+    NSArray *formats = @[@"yyyy-MM-dd'T'HH:mm:ss",
+                         @"yyyy-MM-dd HH:mm:ss",
+                         @"yyyy-MM-dd'T'HH:mm",
+                         @"yyyy-MM-dd HH:mm",
+                         @"yyyy-MM-dd'T'HH",
+                         @"yyyy-MM-dd HH",
+                         @"yyyy-MM-dd",
+                         @"yyyy-MM",
+                         @"yyyy"];
+
+    for (NSString *format in formats) {
+        dateFormatter.dateFormat = format;
+        NSDate *date = [dateFormatter dateFromString:timestamp];
+        if (date) {
+            return date;
+        }
+    }
+
+    return nil;
 }
 
 + (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)url {
@@ -277,6 +306,23 @@
     }
     
     return topController;
+}
+
+/**
+ * A utility method that takes an array of fetch results and returns the merged result
+ */
++ (UIBackgroundFetchResult)mergeFetchResults:(NSArray<NSNumber *> *)fetchResults {
+    UIBackgroundFetchResult mergedResult = UIBackgroundFetchResultNoData;
+
+    for (NSNumber *fetchResult in fetchResults) {
+        if (fetchResult.intValue == UIBackgroundFetchResultNewData) {
+            return UIBackgroundFetchResultNewData;
+        } else if (fetchResult.intValue == UIBackgroundFetchResultFailed) {
+            mergedResult = fetchResult.intValue;
+        }
+    }
+
+    return mergedResult;
 }
 
 + (BOOL)isSilentPush:(NSDictionary *)notification {

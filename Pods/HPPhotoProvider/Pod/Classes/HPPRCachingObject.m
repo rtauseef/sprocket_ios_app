@@ -14,7 +14,7 @@
 
 @interface HPPRCachingObject()
 
-@property (strong, nonatomic) NSMutableDictionary *cacheStorage;
+@property (strong, nonatomic) NSCache *cacheStorage;
 
 @end
 
@@ -22,46 +22,30 @@
 
 - (id)init
 {
-    if ((self = [super init])) {
-        self.cacheStorage = [[NSMutableDictionary alloc] init];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLowMemory:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    self = [super init];
+
+    if (self) {
+        self.cacheStorage = [[NSCache alloc] init];
     }
     
     return self;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)handleLowMemory:(NSNotification *)notification
-{
-    [self clearCache];
-}
-
 - (void)clearCache
 {
-    @synchronized(self) {
-        [self.cacheStorage removeAllObjects];
-    }
+    [self.cacheStorage removeAllObjects];
 }
 
 - (void)saveToCache:(id)object withKey:(id)key
 {
-    @synchronized(self) {
-        if(object)
-        {
-            [self.cacheStorage setObject:object forKey:key];
-        }
+    if (object) {
+        [self.cacheStorage setObject:object forKey:key];
     }
 }
 
 - (id)retrieveFromCacheWithKey:(id)key
 {
-    @synchronized(self) {
-        return [self.cacheStorage objectForKey:key];
-    }
+    return [self.cacheStorage objectForKey:key];
 }
 
 @end

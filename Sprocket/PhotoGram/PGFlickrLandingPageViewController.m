@@ -117,8 +117,6 @@ NSString * const kFlickrUserIdKey = @"userID";
             [self didSignInToSocialSource:socialSource notifyDelegate:notifyDelegate];
 
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
-                [spinner removeFromSuperview];
-
                 viewController.provider = provider;
             }];
 
@@ -200,6 +198,10 @@ NSString * const kFlickrUserIdKey = @"userID";
     }
 
     [[PGAnalyticsManager sharedManager] trackPhotoCollectionViewMode:mode];
+}
+
+- (BOOL)selectPhotoCollectionViewControllerShouldRequestOnlyLowResolutionImage:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController {
+    return YES;
 }
 
 - (UIEdgeInsets)collectionViewContentInset {

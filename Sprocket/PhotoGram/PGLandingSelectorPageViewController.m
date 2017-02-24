@@ -572,8 +572,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didSignInToSocialSource:(PGSocialSource *)socialSource {
-    [self updateMediaNavigationForCurrentViewController];
-    [self.navigationView hideCameraButton];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateMediaNavigationForCurrentViewController];
+        [self.navigationView hideCameraButton];
+    });
 }
 
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didFailSignInToSocialSource:(PGSocialSource *)socialSource {
