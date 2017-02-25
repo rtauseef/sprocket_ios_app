@@ -2,6 +2,7 @@ $language_arr =
 
 {
     "en_US" => {
+        "skip_to_the_app" => "Skip to the App",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Photos",
@@ -45,6 +46,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "es_ES" => {
+        "skip_to_the_app" => "Siga a la aplicación",
         "cameraroll_logo" => "CameraRoll",
         "photos_button" => "Fotos",
         #"auth" => "Autorizar",
@@ -86,6 +88,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "zh_Hans" => {
+        "skip_to_the_app" => "跳到应用程序",
         "cameraroll_logo" => "Photos_C",
         "photos_button" => "照片",
         #"auth" => "Autorizar",
@@ -132,6 +135,7 @@ $language_arr =
         
         },
     "de_DE" => {
+        "skip_to_the_app" => "Zur App wechseln",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Fotos",
@@ -175,6 +179,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "fr_FR" => {
+        "skip_to_the_app" => "Basculez sur l'application",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Photos",
@@ -218,6 +223,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "it_IT" => {
+        "skip_to_the_app" => "Passare alla App.",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Foto",
@@ -261,6 +267,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "nl_NL" => {
+        "skip_to_the_app" => "Direct naar de app",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Foto's",
@@ -304,6 +311,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "da_DK" => {
+        "skip_to_the_app" => "Spring til appen",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Billeder",
@@ -347,6 +355,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "fi_FI" => {
+        "skip_to_the_app" => "Ohita ja siirry sovellukseen",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Valokuvat",
@@ -390,6 +399,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "et_EE" => {
+        "skip_to_the_app" => "Jätka rakendusega",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Fotod",
@@ -433,6 +443,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "lv_LV" => {
+        "skip_to_the_app" => "Pāriet uz programmu",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Fotoattēli",
@@ -476,6 +487,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "lt_LT" => {
+        "skip_to_the_app" => "Pereiti prie programos",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Nuotraukos",
@@ -519,6 +531,7 @@ $language_arr =
         "HP Development Company, L.P." => "„HP Development Company, L.P.“"
         },
     "nb_NO" => {
+        "skip_to_the_app" => "Gå videre til Appen",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Bilder",
@@ -562,6 +575,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, LP."
         },
     "pt_PT" => {
+        "skip_to_the_app" => "Avançar para a aplicação",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Fotografias",
@@ -605,6 +619,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "sv_SE" => {
+        "skip_to_the_app" => "Gå vidare till appen",
         "cameraroll_logo" => "CameraRoll",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Foton",
