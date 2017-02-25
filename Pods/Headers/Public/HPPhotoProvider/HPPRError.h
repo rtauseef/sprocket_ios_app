@@ -1,0 +1,1 @@
+../../../HPPhotoProvider/Pod/Classes/HPPRError.h
