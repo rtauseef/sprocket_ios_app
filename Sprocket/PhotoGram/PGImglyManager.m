@@ -320,7 +320,7 @@ typedef enum {
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerItemByIndex:index];
+        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerByIndex:index];
         completionBlock(sticker.thumbnailImage, nil, nil);
     }
 }
@@ -328,7 +328,7 @@ typedef enum {
 - (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerItemByIndex:index];
+        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerByIndex:index];
         IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.accessibilityText];
         completionBlock(imglySticker, nil);
     }

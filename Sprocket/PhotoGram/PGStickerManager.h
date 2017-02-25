@@ -17,7 +17,7 @@
 
 + (PGStickerManager *)sharedInstance;
 
-- (PGStickerItem *)stickerItemByIndex:(NSInteger)index;
+- (PGStickerItem *)stickerByIndex:(NSInteger)index;
 - (PGStickerItem *)stickerByAccessibilityText:(NSString *)accessibilityText;
 - (NSUInteger)stickersCount;
 

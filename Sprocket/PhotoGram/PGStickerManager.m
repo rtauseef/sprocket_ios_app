@@ -189,7 +189,7 @@
              ];
 }
 
-- (PGStickerItem *)stickerItemByIndex:(NSInteger)index
+- (PGStickerItem *)stickerByIndex:(NSInteger)index
 {
     PGStickerItem *sticker = (PGStickerItem *)self.stickers[index];
     
@@ -201,7 +201,7 @@
     PGStickerItem *sticker = nil;
     
     for (NSInteger i = 0; i < self.stickersCount; ++i) {
-        PGStickerItem *stickerItem = [self stickerItemByIndex:i];
+        PGStickerItem *stickerItem = [self stickerByIndex:i];
         if ([accessibilityText isEqualToString:stickerItem.accessibilityText]) {
             sticker = stickerItem;
             break;
