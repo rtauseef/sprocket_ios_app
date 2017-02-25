@@ -68,6 +68,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 @property (assign, nonatomic) BOOL firstAppearance;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
+@property (strong, nonatomic) NSString *currentOfframp;
 
 @end
 
@@ -447,9 +448,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:^(){
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager directPrintOfframp] printItem:self.printItem exendedInfo:self.extendedMetrics];
-    }];
+    self.currentOfframp = [MPPrintManager directPrintOfframp];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:nil];
     [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
@@ -539,9 +539,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
             }
             
             if (completed) {
-                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
                 if (!printActivity) {
                     [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
+                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
+                } else {
+                    self.currentOfframp = offramp;
                 }
             } else {
                 if (activityType) {
@@ -572,6 +574,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         }
         
         [[NSUserDefaults standardUserDefaults] setInteger:numPrints forKey:kPGPreviewViewControllerNumPrintsKey];
+        
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:self.currentOfframp printItem:self.printItem exendedInfo:self.extendedMetrics];
+        
+        self.currentOfframp = nil;
     }
 }
 
