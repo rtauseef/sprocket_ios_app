@@ -1279,12 +1279,6 @@
 		82A11ED81E60E72100E7F8FC /* tulip_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E711E60E72000E7F8FC /* tulip_TN@3x.png */; };
 		82A11ED91E60E72100E7F8FC /* tulip.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E721E60E72000E7F8FC /* tulip.png */; };
 		82A11EDA1E60E72100E7F8FC /* tulip.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E721E60E72000E7F8FC /* tulip.png */; };
-		82A11EDB1E60E72100E7F8FC /* wave_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E731E60E72000E7F8FC /* wave_TN.png */; };
-		82A11EDC1E60E72100E7F8FC /* wave_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E731E60E72000E7F8FC /* wave_TN.png */; };
-		82A11EDD1E60E72100E7F8FC /* wave_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E741E60E72000E7F8FC /* wave_TN@2x.png */; };
-		82A11EDE1E60E72100E7F8FC /* wave_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E741E60E72000E7F8FC /* wave_TN@2x.png */; };
-		82A11EDF1E60E72100E7F8FC /* wave_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E751E60E72000E7F8FC /* wave_TN@3x.png */; };
-		82A11EE01E60E72100E7F8FC /* wave_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E751E60E72000E7F8FC /* wave_TN@3x.png */; };
 		82A11EE11E60E72100E7F8FC /* wave-2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E761E60E72000E7F8FC /* wave-2_TN.png */; };
 		82A11EE21E60E72100E7F8FC /* wave-2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E761E60E72000E7F8FC /* wave-2_TN.png */; };
 		82A11EE31E60E72100E7F8FC /* wave-2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E771E60E72000E7F8FC /* wave-2_TN@2x.png */; };
@@ -1293,8 +1287,6 @@
 		82A11EE61E60E72100E7F8FC /* wave-2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E781E60E72000E7F8FC /* wave-2_TN@3x.png */; };
 		82A11EE71E60E72100E7F8FC /* wave-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E791E60E72000E7F8FC /* wave-2.png */; };
 		82A11EE81E60E72100E7F8FC /* wave-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E791E60E72000E7F8FC /* wave-2.png */; };
-		82A11EE91E60E72100E7F8FC /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E7A1E60E72000E7F8FC /* wave.png */; };
-		82A11EEA1E60E72100E7F8FC /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A11E7A1E60E72000E7F8FC /* wave.png */; };
 		82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D6C74C1D1B47060030569F /* PGCameraManager.m */; };
 		82E648481E316F9200764213 /* Hearts_Frame_iOS_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E648301E316F9200764213 /* Hearts_Frame_iOS_TN.png */; };
 		82E648491E316F9200764213 /* Hearts_Frame_iOS_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E648311E316F9200764213 /* Hearts_Frame_iOS_TN@2x.png */; };
@@ -2521,14 +2513,10 @@
 		82A11E701E60E72000E7F8FC /* tulip_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tulip_TN@2x.png"; path = "Resources/Images/Stickers/Woman's day/tulip_TN@2x.png"; sourceTree = "<group>"; };
 		82A11E711E60E72000E7F8FC /* tulip_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tulip_TN@3x.png"; path = "Resources/Images/Stickers/Woman's day/tulip_TN@3x.png"; sourceTree = "<group>"; };
 		82A11E721E60E72000E7F8FC /* tulip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tulip.png; path = "Resources/Images/Stickers/Woman's day/tulip.png"; sourceTree = "<group>"; };
-		82A11E731E60E72000E7F8FC /* wave_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wave_TN.png; path = "Resources/Images/Stickers/Woman's day/wave_TN.png"; sourceTree = "<group>"; };
-		82A11E741E60E72000E7F8FC /* wave_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wave_TN@2x.png"; path = "Resources/Images/Stickers/Woman's day/wave_TN@2x.png"; sourceTree = "<group>"; };
-		82A11E751E60E72000E7F8FC /* wave_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wave_TN@3x.png"; path = "Resources/Images/Stickers/Woman's day/wave_TN@3x.png"; sourceTree = "<group>"; };
 		82A11E761E60E72000E7F8FC /* wave-2_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wave-2_TN.png"; path = "Resources/Images/Stickers/Woman's day/wave-2_TN.png"; sourceTree = "<group>"; };
 		82A11E771E60E72000E7F8FC /* wave-2_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wave-2_TN@2x.png"; path = "Resources/Images/Stickers/Woman's day/wave-2_TN@2x.png"; sourceTree = "<group>"; };
 		82A11E781E60E72000E7F8FC /* wave-2_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wave-2_TN@3x.png"; path = "Resources/Images/Stickers/Woman's day/wave-2_TN@3x.png"; sourceTree = "<group>"; };
 		82A11E791E60E72000E7F8FC /* wave-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wave-2.png"; path = "Resources/Images/Stickers/Woman's day/wave-2.png"; sourceTree = "<group>"; };
-		82A11E7A1E60E72000E7F8FC /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wave.png; path = "Resources/Images/Stickers/Woman's day/wave.png"; sourceTree = "<group>"; };
 		82A7D10E1E53A45100973D07 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		82A7D1101E53A45100973D07 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		82A7D1111E53A45200973D07 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -3428,14 +3416,10 @@
 				82A11E701E60E72000E7F8FC /* tulip_TN@2x.png */,
 				82A11E711E60E72000E7F8FC /* tulip_TN@3x.png */,
 				82A11E721E60E72000E7F8FC /* tulip.png */,
-				82A11E731E60E72000E7F8FC /* wave_TN.png */,
-				82A11E741E60E72000E7F8FC /* wave_TN@2x.png */,
-				82A11E751E60E72000E7F8FC /* wave_TN@3x.png */,
 				82A11E761E60E72000E7F8FC /* wave-2_TN.png */,
 				82A11E771E60E72000E7F8FC /* wave-2_TN@2x.png */,
 				82A11E781E60E72000E7F8FC /* wave-2_TN@3x.png */,
 				82A11E791E60E72000E7F8FC /* wave-2.png */,
-				82A11E7A1E60E72000E7F8FC /* wave.png */,
 			);
 			name = Woman;
 			sourceTree = "<group>";
@@ -4644,7 +4628,6 @@
 				821852F41D626A96001288D9 /* 1_turquoise_frame_TN@3x.png in Resources */,
 				924A707B1DF5F536009A0FB1 /* Panda_TN@3x.png in Resources */,
 				824952CD1E2EB6ED00B7F857 /* v_xoxo_TN@3x.png in Resources */,
-				82A11EDF1E60E72100E7F8FC /* wave_TN@3x.png in Resources */,
 				821852061D625FBA001288D9 /* cat_TN.png in Resources */,
 				82A11D1B1E5FB93B00E7F8FC /* cloud_angry_TN@2x.png in Resources */,
 				E39EF28419B648E500AAB884 /* RockSalt.ttf in Resources */,
@@ -4666,7 +4649,6 @@
 				82A11EA71E60E72100E7F8FC /* Flower-Crown_TN@3x.png in Resources */,
 				26F7C0C41DDA68CF006396FA /* Kraft_Frame_iOS_TN@2x.png in Resources */,
 				82A11C3C1E5FB59700E7F8FC /* volleyball_TN@3x.png in Resources */,
-				82A11EE91E60E72100E7F8FC /* wave.png in Resources */,
 				82A11B401E5FB59600E7F8FC /* boppers_TN.png in Resources */,
 				E39EF28619B648E500AAB884 /* SourceSansPro-Regular.ttf in Resources */,
 				82A11B9C1E5FB59600E7F8FC /* kiss_me_2c_TN@3x.png in Resources */,
@@ -4847,7 +4829,6 @@
 				82A11B4A1E5FB59600E7F8FC /* bow_tie_TN@2x.png in Resources */,
 				82362A3F1D59557E0019F024 /* hearts_TN.png in Resources */,
 				82A11C421E5FB59700E7F8FC /* wave_TN@2x.png in Resources */,
-				82A11EDB1E60E72100E7F8FC /* wave_TN.png in Resources */,
 				82A11BB01E5FB59600E7F8FC /* palmtree_TN.png in Resources */,
 				82362A551D59557E0019F024 /* starhp.png in Resources */,
 				26F7BFBC1DD10BB8006396FA /* catwhiskers_TN@3x.png in Resources */,
@@ -4945,7 +4926,6 @@
 				8218528E1D625FFB001288D9 /* diamond_TN.png in Resources */,
 				82A11C041E5FB59700E7F8FC /* sunglasses_frogskin_TN@3x.png in Resources */,
 				82A11B9E1E5FB59600E7F8FC /* kiss_me_2c.png in Resources */,
-				82A11EDD1E60E72100E7F8FC /* wave_TN@2x.png in Resources */,
 				824952891E2EB6ED00B7F857 /* love_monster_TN.png in Resources */,
 				82A11ECD1E60E72100E7F8FC /* tea_cup_TN@2x.png in Resources */,
 				82A11B8A1E5FB59600E7F8FC /* st_hearts_TN@2x.png in Resources */,
@@ -5351,7 +5331,6 @@
 				824952701E2EB6ED00B7F857 /* v_hearts.png in Resources */,
 				82A11B251E5FB59600E7F8FC /* beach_umbrella_TN@3x.png in Resources */,
 				82A11D4C1E5FB93B00E7F8FC /* panda-mask_TN@2x.png in Resources */,
-				82A11EEA1E60E72100E7F8FC /* wave.png in Resources */,
 				82A11D3A1E5FB93B00E7F8FC /* Frappuccino_TN.png in Resources */,
 				82A11B4D1E5FB59600E7F8FC /* bow_tie_TN@3x.png in Resources */,
 				824952621E2EB6ED00B7F857 /* heart-garland_TN.png in Resources */,
@@ -5531,7 +5510,6 @@
 				d10206a16285baaae005a8bd /* heartExpress_TN@2x.png in Resources */,
 				666fe432ca854b4d8164e0b0 /* starhp_TN@2x.png in Resources */,
 				82FF41831E369CF70027B181 /* PinkPolka_Frame_iOS_TN.png in Resources */,
-				82A11EE01E60E72100E7F8FC /* wave_TN@3x.png in Resources */,
 				264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */,
 				49230dfae2b8359e79122f24 /* MobilePrinting@2x.png in Resources */,
 				824952501E2EB6ED00B7F857 /* heart_crown_TN@3x.png in Resources */,
@@ -5599,7 +5577,6 @@
 				260BD0811DDE539700AE6BAA /* Sloppy_Frame_iOS_TN@2x.png in Resources */,
 				3d6918f1cfb3acc4963c9d33 /* OMG.png in Resources */,
 				82A11D181E5FB93B00E7F8FC /* cat-shock.png in Resources */,
-				82A11EDE1E60E72100E7F8FC /* wave_TN@2x.png in Resources */,
 				82A11B9F1E5FB59600E7F8FC /* kiss_me_2c.png in Resources */,
 				82A11C391E5FB59700E7F8FC /* volleyball_TN.png in Resources */,
 				824952C21E2EB6ED00B7F857 /* tiara_TN.png in Resources */,
@@ -5618,7 +5595,6 @@
 				fb18c75124e0aad8e105717a /* Images.xcassets in Resources */,
 				82A11B791E5FB59600E7F8FC /* st_glasses_TN.png in Resources */,
 				82A11D221E5FB93B00E7F8FC /* cloud_sad_TN.png in Resources */,
-				82A11EDC1E60E72100E7F8FC /* wave_TN.png in Resources */,
 				82FF418B1E369CF70027B181 /* Red_Frame_iOS_TN.png in Resources */,
 				824952CA1E2EB6ED00B7F857 /* v_xoxo_TN.png in Resources */,
 				82A11D4A1E5FB93B00E7F8FC /* panda-mask_TN.png in Resources */,
