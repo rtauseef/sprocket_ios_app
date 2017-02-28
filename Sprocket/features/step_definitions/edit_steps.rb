@@ -44,12 +44,11 @@ Then (/^I select "(.*?)"$/) do |option|
             sticker_name="v_xoxo_TN"
             select_sticker sticker_name
             sleep(STEP_PAUSE)
-        else
+        else    
             sleep(2.0)
             touch query("view marked:'#{option}'")
+        end
     end
-    end
-
 end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
@@ -93,6 +92,11 @@ end
 And(/^I verify blue line indicator is displayed under selected sticker$/) do 
     selected_sticker_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Blue line indicator not found!" unless selected_sticker_status != nil
+end
+
+And(/^I verify blue line indicator is displayed under selected font$/) do 
+    selected_font_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Blue line indicator not found!" unless selected_font_status != nil
 end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
@@ -195,6 +199,13 @@ Then(/^I select "(.*?)" sticker$/) do |sticker_name|
     sleep(STEP_PAUSE)
 end
 
+Then(/^I select "(.*?)" font$/) do |font_name|
+    sleep(STEP_PAUSE)
+    select_font font_name
+    sleep(STEP_PAUSE)
+end
+
+
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
     $list_loc=$edit_screen_arr["edit_frame"]
     selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
@@ -208,11 +219,19 @@ Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == $list_loc[sticker_name]
 end
 
+Then(/^I should see the photo with the "(.*?)" font$/) do |font_name|
+    $list_loc=$edit_screen_arr["edit_font"]
+    font_name_applied = query("IMGLYTextLabel",:font)[0].split(" ")[3].gsub(';','').gsub('"','')
+    raise "Wrong font selected!" unless font_name_applied.to_s == $list_loc[font_name]
+end
+
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
   frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
     sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
+    
+    font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
     
  
   i = 0
@@ -225,6 +244,14 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
             i= i + 1
             sleep(SLEEP_SCREENLOAD)
         end
+    else
+        if option == "fonts"
+            while i < 25
+                macro %Q|I select "#{font_name[i]}" font|
+                macro %Q|I verify blue line indicator is displayed under selected font|
+                macro %Q|I should see the photo with the "#{font_name[i]}" font|
+                i= i + 1
+            end
     else
         while i < 68
             macro %Q|I select "#{sticker_name[i]}" sticker|
@@ -240,6 +267,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
             sleep(SLEEP_SCREENLOAD)
         end 
     end
+end
 end
 
 $edit_screen_arr =
@@ -337,6 +365,36 @@ $edit_screen_arr =
             "diamond_TN" => "diamond",
             "sunglasses_TN" => "sunglasses",
             "OMG_TN" => "OMG"
+        
+            },
+    
+    "edit_font" => {
+        
+        "Helvetica" => "Helvetica",
+        "Typewriter" => "American",
+        "Avenir" => "Avenir-Heavy",
+        "Chalkboard" => "ChalkboardSE-Regular",
+        "Arial" => "Arial",
+        "Kohinoor" => "KohinoorBangla-Regular",
+        "Liberator" => "Liberator",
+        "Muncie" => "Muncie",
+        "Lincoln" => "Abraham",
+        "Airship" => "Airship",
+        "Arvil" => "Arvil",
+        "Bender" => "Bender-Inline",
+        "Blanch" => "Blanch-Condensed",
+        "Cubano" => "Cubano-Regular",
+        "Franchise" => "Franchise",
+        "Geared" => "GearedSlab-Regular",
+        "Governor" => "Governor",
+        "Haymaker" => "Haymaker",
+        "Homestead" => "Homestead-Regular",
+        "Maven Pro" => "MavenProLight200-Regular",
+        "Mensch" => "Mensch",
+        "Sullivan" => "Sullivan-Regular",
+        "Tommaso" => "Tommaso",
+        "Valencia" => "Valencia",
+        "Vevey" => "Vevey"
         
             }
         
