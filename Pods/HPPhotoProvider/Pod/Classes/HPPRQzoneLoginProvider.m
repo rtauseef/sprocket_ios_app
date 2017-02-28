@@ -14,11 +14,11 @@
 #import "HPPRQzoneLoginProvider.h"
 #import "HPPRQzoneAlbum.h"
 #import "HPPR.h"
+#import "HPPRAuthTokenService.h"
 
 #define kResponse @"kResponse"
 
 NSString * const kQzoneProviderName = @"Qzone";
-NSString * const kQzoneUserAccessTokenKey = @"kQzoneUserAccessTokenKey";
 NSString * const kQzoneUserAccessTokenExpirationDateKey = @"kQzoneUserAccessTokenExpirationDateKey";
 NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
@@ -165,7 +165,7 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
 - (NSString *)getAccessToken
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kQzoneUserAccessTokenKey];
+    return [HPPRAuthTokenService authTokenFor:HPPRAuthServiceQzone];
 }
 
 - (NSString *)getAccessTokenExpirationDate
@@ -180,8 +180,9 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
 - (void)setAccessToken
 {
+    [HPPRAuthTokenService setAuthToken:self.loginManager.accessToken for:HPPRAuthServiceQzone];
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.loginManager.accessToken forKey:kQzoneUserAccessTokenKey];
     [defaults setObject:self.loginManager.expirationDate forKey:kQzoneUserAccessTokenExpirationDateKey];
     [defaults setObject:self.loginManager.openId forKey:kQzoneOpenIdKey];
     [defaults synchronize];
@@ -189,8 +190,9 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
 - (void)clearAccessToken
 {
+    [HPPRAuthTokenService clearAuthTokenFor:HPPRAuthServiceQzone];
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:kQzoneUserAccessTokenKey];
     [defaults removeObjectForKey:kQzoneUserAccessTokenExpirationDateKey];
     [defaults removeObjectForKey:kQzoneOpenIdKey];
     [defaults synchronize];
