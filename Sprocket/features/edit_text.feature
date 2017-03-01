@@ -144,6 +144,42 @@ Scenario: Verify text color
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Color"
+    
+@reset  
+@TA17012
+Scenario: Verify color list
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Color" 
+    Then I should see the following "Colors" in the screen:
+    | White      |
+    | Gray       |
+    | Black      |
+    | Light blue |
+    | Blue       |
+    | Purple     |
+    | Orchid     |
+    | Pink       |
+    | Red        |
+    | Orange     |
+    | Gold       |
+    | Yellow     |
+    | Olive      |
+    | Green      |
+    | Aquamarin  |
+
+@reset  
+@TA17012
+Scenario: Verify all the colors are applied successfully
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Color"
+    Then I verify that all the "colors" are applied successfully
+
 
 @reset
 @done
