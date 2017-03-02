@@ -24,6 +24,8 @@ static CGFloat const kSquareImageAllowance = 10.0f;
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) UIViewContentMode imageContentMode;
+@property (nonatomic, strong) UIView *selectionView;
+@property (nonatomic, strong) UIImageView *checkmark;
 
 @end
 
@@ -73,8 +75,36 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     [self addSubview:self.scrollView];
     
+    self.selectionView = [[UIView alloc] initWithFrame:self.bounds];
+    self.selectionView.backgroundColor = [UIColor blackColor];
+    self.selectionView.alpha = 0.6;
+    
+    [self addSubview:self.selectionView];
+    
+    NSUInteger checkmarkWidth = 50;
+    self.checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width - (checkmarkWidth + 10), self.bounds.size.height - (checkmarkWidth + 10), checkmarkWidth, checkmarkWidth)];
+    self.checkmark.image = [UIImage imageNamed:@"Check_Inactive1"];
+    self.checkmark.highlightedImage = [UIImage imageNamed:@"Check"];
+    
+    [self addSubview:self.checkmark];
+    
+    self.isSelected = NO;
     self.clipsToBounds = YES;
     
+    [self enableGestures];
+}
+
+- (void)disableGestures
+{
+    for (UIGestureRecognizer *gr in self.scrollView.gestureRecognizers) {
+        [self.scrollView removeGestureRecognizer:gr];
+    }
+    
+    self.scrollView.userInteractionEnabled = NO;
+}
+
+- (void)enableGestures
+{
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     doubleTapGesture.numberOfTouchesRequired = 1;
@@ -90,7 +120,17 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     lpgr.delaysTouchesBegan = YES;
     lpgr.delegate = self;
     [self.scrollView addGestureRecognizer:lpgr];
+    
+    self.scrollView.userInteractionEnabled = YES;
 
+}
+
+- (void)setIsSelected:(BOOL)isSelected
+{
+    _isSelected = isSelected;
+    
+    self.selectionView.hidden = isSelected;
+    [self.checkmark setHighlighted:isSelected];
 }
 
 #pragma mark - Getter & Setters

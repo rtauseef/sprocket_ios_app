@@ -23,6 +23,8 @@
 #import "MPPrintManager.h"
 #import "UIViewController+Trackable.h"
 #import "PGInterstitialAwarenessViewController.h"
+#import "iCarousel.h"
+#import "PGPhotoSelection.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -59,6 +61,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UIView *imageContainer;
+@property (strong, nonatomic) IBOutlet iCarousel *carouselView;
 
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
@@ -70,9 +73,25 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (strong, nonatomic) NSString *currentOfframp;
 
+@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *selectedItems;
+
 @end
 
 @implementation PGPreviewViewController
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.items = [NSMutableArray array];
+    self.selectedItems = [NSMutableArray array];
+    for (int i = 0; i < 10; i++)
+    {
+        [_items addObject:@(i)];
+        [_selectedItems addObject:[NSNumber numberWithBool:YES]];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -94,6 +113,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [PGAnalyticsManager sharedManager].photoSource = self.source;
     [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
+    
+    self.carouselView.type = iCarouselTypeInvertedCylinder;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -152,6 +173,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
+    
+    self.carouselView.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
+//    self.carouselView.hidden = [PGPhotoSelection sharedInstance].isInSelectionMode;
+    self.imageContainer.hidden = [PGPhotoSelection sharedInstance].isInSelectionMode;
+//    self.imageContainer.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -191,6 +217,16 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     // This prevents our share activities from rotating.
     //  Without this, the share activities rotate, and we rotate (very badly) behind them.
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)dealloc
+{
+    //it's a good idea to set these to nil here to avoid
+    //sending messages to a deallocated viewcontroller
+    //this is true even if your project is using ARC, unless
+    //you are targeting iOS 5 as a minimum deployment target
+    self.carouselView.delegate = nil;
+    self.carouselView.dataSource = nil;
 }
 
 #pragma mark - Internal Methods
@@ -587,6 +623,46 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
 {
     return YES;
+}
+
+#pragma mark - iCarousel methods
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    //return the total number of items in the carousel
+    return [_items count];
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    CGRect frame = self.imageContainer.frame;
+    frame.size.width *= 0.9;
+    frame.size.height *= 0.9;
+    
+    view = [[PGGesturesView alloc] initWithFrame:frame];
+    ((PGGesturesView *)view).image = self.selectedPhoto;
+    ((PGGesturesView *)view).doubleTapBehavior = PGGesturesDoubleTapReset;
+    [((PGGesturesView *)view) disableGestures];
+    ((PGGesturesView *)view).isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
+    
+    return view;
+}
+
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    if (option == iCarouselOptionSpacing) {
+        return value * 1.03;
+    }
+    return value;
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    NSNumber *selectedValue = (NSNumber *) self.selectedItems[index];
+    selectedValue = [NSNumber numberWithBool:!selectedValue.boolValue];
+    
+    self.selectedItems[index] = selectedValue;
+    [carousel reloadData];
 }
 
 @end
