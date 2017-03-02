@@ -183,7 +183,7 @@
              [[PGStickerItem alloc] initWithName:@"Shamrock Crown" imageName:@"shamrock_crown" andPackageName:packageName],
              [[PGStickerItem alloc] initWithName:@"Shamrock" imageName:@"shamrock_2" andPackageName:packageName],
              [[PGStickerItem alloc] initWithName:@"Lucky" imageName:@"#lucky_new" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Shamrock 3" imageName:@"shamrockin'_3" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Shamrock 3" imageName:@"shamrockin_3" andPackageName:packageName],
              [[PGStickerItem alloc] initWithName:@"Clover Headband" imageName:@"clover_headband" andPackageName:packageName],
              [[PGStickerItem alloc] initWithName:@"Clover Wand" imageName:@"clover_wand" andPackageName:packageName]
              ];
