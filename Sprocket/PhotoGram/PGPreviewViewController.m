@@ -84,11 +84,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 {
     [super awakeFromNib];
     
-    self.items = [NSMutableArray array];
+    self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
     self.selectedItems = [NSMutableArray array];
-    for (int i = 0; i < 10; i++)
+    
+    for (int i = 0; i < self.items.count; i++)
     {
-        [_items addObject:@(i)];
         [_selectedItems addObject:[NSNumber numberWithBool:YES]];
     }
 }
@@ -643,6 +643,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     ((PGGesturesView *)view).image = self.selectedPhoto;
     ((PGGesturesView *)view).doubleTapBehavior = PGGesturesDoubleTapReset;
     [((PGGesturesView *)view) disableGestures];
+    ((PGGesturesView *)view).isMultiSelectImage = YES;
     ((PGGesturesView *)view).isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
     
     return view;

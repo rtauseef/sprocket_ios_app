@@ -89,6 +89,8 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     [self addSubview:self.checkmark];
     
     self.isSelected = NO;
+    self.isMultiSelectImage = NO;
+    
     self.clipsToBounds = YES;
     
     [self enableGestures];
@@ -123,6 +125,14 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     self.scrollView.userInteractionEnabled = YES;
 
+}
+
+- (void)setIsMultiSelectImage:(BOOL)isMultiSelectImage
+{
+    _isMultiSelectImage = isMultiSelectImage;
+    
+    self.selectionView.hidden = !isMultiSelectImage;
+    self.checkmark.hidden = !isMultiSelectImage;
 }
 
 - (void)setIsSelected:(BOOL)isSelected
