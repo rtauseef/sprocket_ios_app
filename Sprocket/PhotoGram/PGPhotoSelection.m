@@ -32,6 +32,16 @@
     return instance;
 }
 
+- (instancetype)init {
+    self = [super init];
+
+    if (self) {
+        self.selectedItems = [[NSMutableArray<HPPRMedia *> alloc] init];
+    }
+
+    return self;
+}
+
 - (void)beginSelectionMode {
     self.selectionEnabled = YES;
 
@@ -55,10 +65,17 @@
 }
 
 - (void)deselectMedia:(HPPRMedia *)media {
+    HPPRMedia *mediaToRemove;
+
     for (HPPRMedia *item in self.selectedItems) {
         if ([item isEqualToMedia:media]) {
-            [self.selectedItems removeObject:item];
+            mediaToRemove = item;
+            break;
         }
+    }
+
+    if (mediaToRemove) {
+        [self.selectedItems removeObject:mediaToRemove];
     }
 }
 
