@@ -55,4 +55,8 @@
     return isEqual;
 }
 
+- (HPPRSelectPhotoProvider *)photoProvider {
+    NSAssert(NO, @"Must override in the subclass");
+}
+
 @end

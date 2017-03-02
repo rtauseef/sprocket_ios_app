@@ -11,7 +11,12 @@
 //
 
 #import "HPPRPituMedia.h"
+#import "HPPRPituPhotoProvider.h"
 
 @implementation HPPRPituMedia
+
+- (HPPRSelectPhotoProvider *)photoProvider {
+    return [HPPRPituPhotoProvider sharedInstance];
+}
 
 @end

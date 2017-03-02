@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
+#import "HPPRSelectPhotoProvider.h"
 
 @interface HPPRMedia : NSObject
 
@@ -48,5 +49,7 @@
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)cancelImageRequestWithCompletion:(void(^)())completion;
 - (BOOL)isEqualToMedia:(HPPRMedia *)media;
+
+- (HPPRSelectPhotoProvider *)photoProvider;
 
 @end

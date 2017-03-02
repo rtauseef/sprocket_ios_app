@@ -12,6 +12,7 @@
 
 #import "HPPRCameraRollMedia.h"
 #import "HPPRCameraRollLoginProvider.h"
+#import "HPPRCameraRollPhotoProvider.h"
 #import <CoreLocation/CoreLocation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <ImageIO/ImageIO.h>
@@ -116,6 +117,10 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
     }
 
     return isEqual;
+}
+
+- (HPPRSelectPhotoProvider *)photoProvider {
+    return [HPPRCameraRollPhotoProvider sharedInstance];
 }
 
 @end
