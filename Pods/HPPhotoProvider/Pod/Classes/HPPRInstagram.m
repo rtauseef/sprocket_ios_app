@@ -11,6 +11,7 @@
 //
 
 #import "HPPRInstagram.h"
+#import "HPPRAuthTokenService.h"
 
 NSString *const kInstagramBaseURLString = @"https://api.instagram.com/v1/";
 
@@ -24,8 +25,6 @@ NSString *const kUserTagSearchEndpoint = @"tags/search";
 NSString *const kUserTagMediaSearchEndpoint = @"tags/%@/media/recent";
 
 NSString *const kAuthenticationEndpoint = @"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token";
-
-NSString *const kUserAccessTokenKey = @"kUserAccessTokenKey";
 
 @implementation HPPRInstagram
 
@@ -52,27 +51,21 @@ NSString *const kUserAccessTokenKey = @"kUserAccessTokenKey";
     return sharedClient;
 }
 
-- (NSString *)getAccessToken
-{
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserAccessTokenKey];
+- (NSString *)getAccessToken {
+    return [HPPRAuthTokenService authTokenFor:HPPRAuthServiceInstagram];
 }
 
-- (void)setAccessToken:(NSString *)token
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:token forKey:kUserAccessTokenKey];
-    [defaults synchronize];
+- (void)setAccessToken:(NSString *)token {
+    [HPPRAuthTokenService setAuthToken:token for:HPPRAuthServiceInstagram];
 }
 
 - (void)clearAccessToken
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults removeObjectForKey:kUserAccessTokenKey];
-    [defaults synchronize];
-    
-    for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+    [HPPRAuthTokenService clearAuthTokenFor:HPPRAuthServiceInstagram];
+
+    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
         BOOL isInstagram = ([[cookie domain] rangeOfString:@"instagram"].location != NSNotFound);
-        if(isInstagram) {
+        if (isInstagram) {
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
         }
     }
