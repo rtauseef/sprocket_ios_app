@@ -475,6 +475,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
     BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
 
+    [self.navigationView updateSelectedItemsCount:[[[PGPhotoSelection sharedInstance] selectedMedia] count]];
+
     if (isShowingPhotoGallery) {
         [self.navigationView hideCameraButton];
 
