@@ -267,6 +267,19 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     }
 }
 
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didAddMediaToSelection:(HPPRMedia *)media {
+    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didAddMediaToSelection:)]) {
+        [self.delegate landingPageViewController:self didAddMediaToSelection:media];
+    }
+}
+
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didRemoveMediaFromSelection:(HPPRMedia *)media {
+    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didRemoveMediaFromSelection:)]) {
+        [self.delegate landingPageViewController:self didRemoveMediaFromSelection:media];
+    }
+}
+
+
 #pragma mark - PGSelectAlbumDropDownViewControllerDelegate
 
 - (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album

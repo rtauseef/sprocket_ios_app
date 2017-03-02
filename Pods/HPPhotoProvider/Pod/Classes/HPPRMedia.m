@@ -45,4 +45,14 @@
     return @[];
 }
 
+- (BOOL)isEqualToMedia:(HPPRMedia *)media {
+    BOOL isEqual = NO;
+
+    if ([media objectID]) {
+        isEqual = [self.objectID isEqualToString:media.objectID];
+    }
+
+    return isEqual;
+}
+
 @end

@@ -47,5 +47,6 @@
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)cancelImageRequestWithCompletion:(void(^)())completion;
+- (BOOL)isEqualToMedia:(HPPRMedia *)media;
 
 @end

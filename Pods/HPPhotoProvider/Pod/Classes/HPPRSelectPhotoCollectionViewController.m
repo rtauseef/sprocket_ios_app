@@ -27,7 +27,6 @@
 #define LAYOUT_SEGMENTED_CONTROL_LIST_INDEX 1
 
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
-NSString * const kProviderAlbumKeyPath = @"album";
 
 @interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
@@ -54,7 +53,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
 @property (strong, nonatomic) HPPRCameraCollectionViewCell *cameraCell;
 @property (strong, nonatomic) NSTimer *startCameraTimer;
 
-@property (strong, nonatomic) NSMutableArray<NSIndexPath *> *selectedPhotos;
+@property (strong, nonatomic) NSMutableArray<HPPRMedia *> *selectedPhotos;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPressRecognizer;
 
 @end
@@ -63,9 +62,6 @@ NSString * const kProviderAlbumKeyPath = @"album";
     CGPoint _contentOffsetStart;
 }
 
-- (void)dealloc {
-    [self.provider removeObserver:self forKeyPath:kProviderAlbumKeyPath];
-}
 
 #pragma mark - View management
 
@@ -83,7 +79,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
 {
     [super viewDidLoad];
 
-    self.selectedPhotos = [[NSMutableArray alloc] init];
+    self.selectedPhotos = [[NSMutableArray<HPPRMedia *> alloc] init];
 
     self.noPhotosLabel.text = HPPRLocalizedString(@"No Photos Found", @"Message shown when the album is empty in the select photo screen");
     self.userAccountIsPrivateLabel.text = HPPRLocalizedString(@"The user account is private.", @"Message shown when the user account is private in the select photo screen");
@@ -110,8 +106,6 @@ NSString * const kProviderAlbumKeyPath = @"album";
     self.spinner = [self.view HPPRAddSpinner];
     
     self.provider.imageRequestsCancelled = NO;
-
-    [self.provider addObserver:self forKeyPath:kProviderAlbumKeyPath options:NSKeyValueObservingOptionNew context:nil];
 
     self.noInternetConnectionRetryView.delegate = self;
 
@@ -344,7 +338,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
         cell.retrieveLowQuality = [self shouldRequestLowResolutionImage];
         cell.media = [self.provider imageAtIndex:indexPath.row];
         cell.selectionEnabled = [self isInMultiSelectMode];
-        if ([self isSelected:indexPath]) {
+        if ([self isSelected:cell.media]) {
             [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             cell.selected = YES;
         }
@@ -366,7 +360,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
 - (void)selectPhotoCollectionViewCellDidFailRetrievingImage:(HPPRSelectPhotoCollectionViewCell *)cell
 {
     if (self.provider.showNetworkWarning) {
-        dispatch_async(dispatch_get_main_queue(), ^ {
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self.noInternetConnectionMessageView show];
         });
     }
@@ -377,7 +371,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 
         HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        [self deselectPhoto:indexPath];
+        [self deselectPhoto:cell.media];
     }
 }
 
@@ -395,7 +389,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 
         HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        [self.selectedPhotos addObject:indexPath];
+        [self selectPhoto:cell.media];
     } else {
         [self openSingleImageForPreviewAtIndexPath:indexPath];
     }
@@ -508,8 +502,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
                 [self beginMultiSelect];
 
                 [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-
-                [self.selectedPhotos addObject:indexPath];
+                [self selectPhoto:cell.media];
             }
         }
     }
@@ -715,32 +708,35 @@ NSString * const kProviderAlbumKeyPath = @"album";
     return self.collectionView.allowsMultipleSelection;
 }
 
-- (void)deselectPhoto:(NSIndexPath *)indexPath {
-    for (NSIndexPath *selectedIndexPath in self.selectedPhotos) {
-        if (selectedIndexPath.item == indexPath.item) {
-            [self.selectedPhotos removeObject:selectedIndexPath];
+- (void)selectPhoto:(HPPRMedia *)media {
+    [self.selectedPhotos addObject:media];
+
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didAddMediaToSelection:)]) {
+        [self.delegate selectPhotoCollectionViewController:self didAddMediaToSelection:media];
+    }
+}
+
+- (void)deselectPhoto:(HPPRMedia *)media {
+    for (HPPRMedia *item in self.selectedPhotos) {
+        if ([item isEqualToMedia:media]) {
+            [self.selectedPhotos removeObject:item];
+
+            if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didRemoveMediaFromSelection:)]) {
+                [self.delegate selectPhotoCollectionViewController:self didRemoveMediaFromSelection:media];
+            }
             break;
         }
     }
 }
 
-- (BOOL)isSelected:(NSIndexPath *)indexPath {
-    for (NSIndexPath *selectedIndexPath in self.selectedPhotos) {
-        if (selectedIndexPath.item == indexPath.item) {
+- (BOOL)isSelected:(HPPRMedia *)media {
+    for (HPPRMedia *item in self.selectedPhotos) {
+        if ([item isEqualToMedia:media]) {
             return YES;
         }
     }
 
     return NO;
-}
-
-
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:kProviderAlbumKeyPath]) {
-        [self.selectedPhotos removeAllObjects];
-    }
 }
 
 @end

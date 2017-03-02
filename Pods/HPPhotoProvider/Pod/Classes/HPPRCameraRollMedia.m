@@ -108,4 +108,14 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
     }
 }
 
+- (BOOL)isEqualToMedia:(HPPRMedia *)media {
+    BOOL isEqual = NO;
+
+    if ([[media asset] localIdentifier]) {
+        isEqual = [self.asset.localIdentifier isEqualToString:media.asset.localIdentifier];
+    }
+
+    return isEqual;
+}
+
 @end

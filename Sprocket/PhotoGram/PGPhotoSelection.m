@@ -16,6 +16,7 @@
 @interface PGPhotoSelection ()
 
 @property (nonatomic, assign) BOOL selectionEnabled;
+@property (nonatomic, strong) NSMutableArray<HPPRMedia *> *selectedItems;
 
 @end
 
@@ -45,6 +46,34 @@
 
 - (BOOL)isInSelectionMode {
     return self.selectionEnabled;
+}
+
+- (void)selectMedia:(HPPRMedia *)media {
+    if (![self isSelected:media]) {
+        [self.selectedItems addObject:media];
+    }
+}
+
+- (void)deselectMedia:(HPPRMedia *)media {
+    for (HPPRMedia *item in self.selectedItems) {
+        if ([item isEqualToMedia:media]) {
+            [self.selectedItems removeObject:item];
+        }
+    }
+}
+
+- (NSArray<HPPRMedia *> *)selectedMedia {
+    return [NSArray<HPPRMedia *> arrayWithArray:self.selectedItems];
+}
+
+- (BOOL)isSelected:(HPPRMedia *)media {
+    for (HPPRMedia *item in self.selectedItems) {
+        if ([item isEqualToMedia:media]) {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 @end
