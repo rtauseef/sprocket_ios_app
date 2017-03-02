@@ -84,24 +84,9 @@ end
 
 
 
-And(/^I verify blue line indicator is displayed under selected frame$/) do 
-    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Blue line indicator not found!" unless selected_frame_status != nil
-end
-
-And(/^I verify blue line indicator is displayed under selected sticker$/) do 
-    selected_sticker_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Blue line indicator not found!" unless selected_sticker_status != nil
-end
-
-And(/^I verify blue line indicator is displayed under selected font$/) do 
-    selected_font_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Blue line indicator not found!" unless selected_font_status != nil
-end
-
-And(/^I verify blue line indicator is displayed under selected color$/) do 
-    selected_color_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Blue line indicator not found!" unless selected_color_status != nil
+And(/^I verify blue line indicator is displayed under selected "(.*?)"$/) do |option|
+    selected_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Blue line indicator not found!" unless selected_status != nil
 end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
@@ -240,9 +225,15 @@ Then(/^I should see the photo with the "(.*?)" color$/) do |color_name|
     $list_loc_red=$edit_screen_arr["edit_color_red"]
     $list_loc_blue=$edit_screen_arr["edit_color_blue"]
     $list_loc_green=$edit_screen_arr["edit_color_green"]
-    color_name_applied_red = query("IMGLYTextLabel",:textColor)[0]["red"] 
-    color_name_applied_blue = query("IMGLYTextLabel",:textColor)[0]["blue"] 
-    color_name_applied_green = query("IMGLYTextLabel",:textColor)[0]["green"] 
+    if $option == "colors"
+        color_name_applied_red = query("IMGLYTextLabel",:textColor)[0]["red"] 
+        color_name_applied_blue = query("IMGLYTextLabel",:textColor)[0]["blue"] 
+        color_name_applied_green = query("IMGLYTextLabel",:textColor)[0]["green"] 
+    else
+        color_name_applied_red = query("IMGLYTextLabel",:backgroundColor)[0]["red"] 
+        color_name_applied_blue = query("IMGLYTextLabel",:backgroundColor)[0]["blue"] 
+        color_name_applied_green = query("IMGLYTextLabel",:backgroundColor)[0]["green"] 
+    end
     raise "Wrong color selected!" unless color_name_applied_red == $list_loc_red[color_name] && color_name_applied_blue == $list_loc_blue[color_name] && color_name_applied_green == $list_loc_green[color_name]
 end
 
@@ -261,7 +252,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
     if option == "frames"
         while i < 20
             macro %Q|I select "#{frame_name[i]}" frame|
-            macro %Q|I verify blue line indicator is displayed under selected frame|
+            macro %Q|I verify blue line indicator is displayed under selected "frame"|
             macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
             macro %Q|I should see the "FrameEditor" screen|
             i= i + 1
@@ -271,22 +262,23 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
         if option == "fonts"
             while i < 25
                 macro %Q|I select "#{font_name[i]}" font|
-                macro %Q|I verify blue line indicator is displayed under selected font|
+                macro %Q|I verify blue line indicator is displayed under selected "font"|
                 macro %Q|I should see the photo with the "#{font_name[i]}" font|
                 i= i + 1
             end
         else
-            if option == "colors"
+            if option == "colors" || option == "Background colors"
                 while i < 15
+                    $option = option
                     macro %Q|I select "#{color_name[i]}" color|
-                    macro %Q|I verify blue line indicator is displayed under selected color|
+                    macro %Q|I verify blue line indicator is displayed under selected "color"|
                     macro %Q|I should see the photo with the "#{color_name[i]}" color|
                     i= i + 1
                 end
             else
                 while i < 68
                     macro %Q|I select "#{sticker_name[i]}" sticker|
-                    macro %Q|I verify blue line indicator is displayed under selected sticker|
+                    macro %Q|I verify blue line indicator is displayed under selected "sticker"|
                     macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
                     macro %Q|I should see the "StickerEditor" screen|
                     macro %Q|I tap "Close" mark|
