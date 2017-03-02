@@ -595,4 +595,14 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didAddMediaToSelection:(HPPRMedia *)media {
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didRemoveMediaFromSelection:(HPPRMedia *)media {
+    [[PGPhotoSelection sharedInstance] deselectMedia:media];
+    [self updateMediaNavigationForCurrentViewController];
+}
+
 @end
