@@ -12,6 +12,7 @@
 
 #import "HPPRFlickrMedia.h"
 #import "HPPRFlickrLoginProvider.h"
+#import "HPPRFlickrPhotoProvider.h"
 
 @implementation HPPRFlickrMedia
 
@@ -41,6 +42,10 @@
     }
     
     return self;
+}
+
+- (HPPRSelectPhotoProvider *)photoProvider {
+    return [HPPRFlickrPhotoProvider sharedInstance];
 }
 
 @end
