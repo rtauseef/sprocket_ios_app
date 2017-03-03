@@ -42,31 +42,36 @@
 }
 
 - (void)setValue:(NSString *)value forKey:(NSString *)key {
-    OSStatus status;
-
-    if ([self hasValueForKey:key]) {
-        NSDictionary *findQuery = @{(__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
-                                    (__bridge id)kSecAttrService: [[NSBundle mainBundle] bundleIdentifier],
-                                    (__bridge id)kSecAttrAccount: key
-                                    };
-        NSDictionary *updateQuery = @{(__bridge id)kSecValueData: [value dataUsingEncoding:NSUTF8StringEncoding]
-                                      };
-
-        status = SecItemUpdate((__bridge CFDictionaryRef)findQuery, (__bridge CFDictionaryRef)updateQuery);
+    if (value == nil) {
+        [self removeValueForKey:key];
 
     } else {
-        NSDictionary *query = @{(__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
-                                (__bridge id)kSecAttrService: [[NSBundle mainBundle] bundleIdentifier],
-                                (__bridge id)kSecAttrAccessible: (__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
-                                (__bridge id)kSecValueData: [value dataUsingEncoding:NSUTF8StringEncoding],
-                                (__bridge id)kSecAttrAccount: key
-                                };
+        OSStatus status;
 
-        status = SecItemAdd((__bridge CFDictionaryRef)query, NULL);
-    }
+        if ([self hasValueForKey:key]) {
+            NSDictionary *findQuery = @{(__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
+                                        (__bridge id)kSecAttrService: [[NSBundle mainBundle] bundleIdentifier],
+                                        (__bridge id)kSecAttrAccount: key
+                                        };
+            NSDictionary *updateQuery = @{(__bridge id)kSecValueData: [value dataUsingEncoding:NSUTF8StringEncoding]
+                                          };
 
-    if (status == errSecSuccess) {
-        [self.cache setObject:value forKey:key];
+            status = SecItemUpdate((__bridge CFDictionaryRef)findQuery, (__bridge CFDictionaryRef)updateQuery);
+
+        } else {
+            NSDictionary *query = @{(__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
+                                    (__bridge id)kSecAttrService: [[NSBundle mainBundle] bundleIdentifier],
+                                    (__bridge id)kSecAttrAccessible: (__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                                    (__bridge id)kSecValueData: [value dataUsingEncoding:NSUTF8StringEncoding],
+                                    (__bridge id)kSecAttrAccount: key
+                                    };
+
+            status = SecItemAdd((__bridge CFDictionaryRef)query, NULL);
+        }
+
+        if (status == errSecSuccess) {
+            [self.cache setObject:value forKey:key];
+        }
     }
 }
 
