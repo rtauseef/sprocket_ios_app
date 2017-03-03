@@ -76,6 +76,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 @property (nonatomic, strong) NSMutableArray<HPPRMedia *> *items;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfSelectedPhotos;
 
 @end
 
@@ -85,22 +86,24 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 {
     [super awakeFromNib];
     
-    self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
-    self.selectedItems = [NSMutableArray array];
-    self.selectedPhoto = self.items[0].thumbnailImage;
-    
-    for (int i = 0; i < self.items.count; i++) {
-        [_selectedItems addObject:[NSNumber numberWithBool:YES]];
-        if (self.items[i].asset) {
-            [self.items[i] requestImageWithCompletion:^(UIImage *image) {
-                self.items[i].image = image;
-                [self.carouselView reloadData];
-            }];
-        } else {
-            [[HPPRCacheService sharedInstance] imageForUrl:self.items[i].standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                self.items[i].image = image;
-                [self.carouselView reloadData];
-            }];
+    if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
+        self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
+        self.selectedItems = [NSMutableArray array];
+        self.selectedPhoto = self.items[0].thumbnailImage;
+        
+        for (int i = 0; i < self.items.count; i++) {
+            [_selectedItems addObject:[NSNumber numberWithBool:YES]];
+            if (self.items[i].asset) {
+                [self.items[i] requestImageWithCompletion:^(UIImage *image) {
+                    self.items[i].image = image;
+                    [self.carouselView reloadData];
+                }];
+            } else {
+                [[HPPRCacheService sharedInstance] imageForUrl:self.items[i].standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                    self.items[i].image = image;
+                    [self.carouselView reloadData];
+                }];
+            }
         }
     }
 }
@@ -188,9 +191,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
     
     self.carouselView.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
-//    self.carouselView.hidden = [PGPhotoSelection sharedInstance].isInSelectionMode;
+    self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
     self.imageContainer.hidden = [PGPhotoSelection sharedInstance].isInSelectionMode;
-//    self.imageContainer.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -680,6 +682,14 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     return gestureView;
 }
 
+- (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
+{
+    if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
+        self.numberOfSelectedPhotos.text = [NSString stringWithFormat:NSLocalizedString(@"%ld of %ld", nil), (carousel.currentItemIndex + 1), (long)self.items.count];
+        self.editButton.hidden = !((NSNumber *)self.selectedItems[carousel.currentItemIndex]).boolValue;
+    }
+}
+
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
     if (option == iCarouselOptionWrap) {
@@ -699,6 +709,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     selectedValue = [NSNumber numberWithBool:!selectedValue.boolValue];
     
     self.selectedItems[index] = selectedValue;
+    self.editButton.hidden = !selectedValue;
+    
     [carousel reloadData];
 }
 
