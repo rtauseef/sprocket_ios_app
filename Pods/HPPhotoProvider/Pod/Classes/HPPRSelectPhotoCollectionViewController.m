@@ -27,7 +27,6 @@
 #define LAYOUT_SEGMENTED_CONTROL_LIST_INDEX 1
 
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
-NSString * const kProviderAlbumKeyPath = @"album";
 
 @interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
@@ -54,7 +53,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
 @property (strong, nonatomic) HPPRCameraCollectionViewCell *cameraCell;
 @property (strong, nonatomic) NSTimer *startCameraTimer;
 
-@property (strong, nonatomic) NSMutableArray<NSIndexPath *> *selectedPhotos;
+@property (strong, nonatomic) NSMutableArray<HPPRMedia *> *selectedPhotos;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPressRecognizer;
 
 @end
@@ -63,9 +62,6 @@ NSString * const kProviderAlbumKeyPath = @"album";
     CGPoint _contentOffsetStart;
 }
 
-- (void)dealloc {
-    [self.provider removeObserver:self forKeyPath:kProviderAlbumKeyPath];
-}
 
 #pragma mark - View management
 
@@ -83,7 +79,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
 {
     [super viewDidLoad];
 
-    self.selectedPhotos = [[NSMutableArray alloc] init];
+    self.selectedPhotos = [[NSMutableArray<HPPRMedia *> alloc] init];
 
     self.noPhotosLabel.text = HPPRLocalizedString(@"No Photos Found", @"Message shown when the album is empty in the select photo screen");
     self.userAccountIsPrivateLabel.text = HPPRLocalizedString(@"The user account is private.", @"Message shown when the user account is private in the select photo screen");
@@ -110,8 +106,6 @@ NSString * const kProviderAlbumKeyPath = @"album";
     self.spinner = [self.view HPPRAddSpinner];
     
     self.provider.imageRequestsCancelled = NO;
-
-    [self.provider addObserver:self forKeyPath:kProviderAlbumKeyPath options:NSKeyValueObservingOptionNew context:nil];
 
     self.noInternetConnectionRetryView.delegate = self;
 
@@ -343,8 +337,10 @@ NSString * const kProviderAlbumKeyPath = @"album";
         cell.delegate = self;
         cell.retrieveLowQuality = [self shouldRequestLowResolutionImage];
         cell.media = [self.provider imageAtIndex:indexPath.row];
-        cell.selectionEnabled = [self isInMultiSelectMode];
-        if ([self isSelected:indexPath]) {
+
+        BOOL isSelected = [self isSelected:cell.media];
+        cell.selectionEnabled = ([self isInMultiSelectMode] && [self shouldAllowAdditionalSelection]) || isSelected;
+        if (isSelected) {
             [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             cell.selected = YES;
         }
@@ -366,7 +362,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
 - (void)selectPhotoCollectionViewCellDidFailRetrievingImage:(HPPRSelectPhotoCollectionViewCell *)cell
 {
     if (self.provider.showNetworkWarning) {
-        dispatch_async(dispatch_get_main_queue(), ^ {
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self.noInternetConnectionMessageView show];
         });
     }
@@ -377,7 +373,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 
         HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        [self deselectPhoto:indexPath];
+        [self deselectPhoto:cell.media];
     }
 }
 
@@ -395,7 +391,8 @@ NSString * const kProviderAlbumKeyPath = @"album";
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 
         HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        [self.selectedPhotos addObject:indexPath];
+
+        [self selectPhoto:cell.media];
     } else {
         [self openSingleImageForPreviewAtIndexPath:indexPath];
     }
@@ -508,8 +505,7 @@ NSString * const kProviderAlbumKeyPath = @"album";
                 [self beginMultiSelect];
 
                 [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-
-                [self.selectedPhotos addObject:indexPath];
+                [self selectPhoto:cell.media];
             }
         }
     }
@@ -702,45 +698,78 @@ NSString * const kProviderAlbumKeyPath = @"album";
     [self.collectionView reloadData];
 }
 
-- (void)endMultiSelect {
+- (void)endMultiSelect:(BOOL)refresh {
     self.collectionView.allowsMultipleSelection = NO;
     [self.selectedPhotos removeAllObjects];
 
-    [self.collectionView reloadData];
-
-    [self startCamera];
+    if (refresh) {
+        [self.collectionView reloadData];
+        [self startCamera];
+    }
 }
 
 - (BOOL)isInMultiSelectMode {
     return self.collectionView.allowsMultipleSelection;
 }
 
-- (void)deselectPhoto:(NSIndexPath *)indexPath {
-    for (NSIndexPath *selectedIndexPath in self.selectedPhotos) {
-        if (selectedIndexPath.item == indexPath.item) {
-            [self.selectedPhotos removeObject:selectedIndexPath];
-            break;
+- (BOOL)shouldAllowAdditionalSelection {
+    BOOL shouldAllow = YES;
+
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:)]) {
+        shouldAllow = [self.delegate selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:self];
+    }
+
+    return shouldAllow;
+}
+
+
+- (void)selectPhoto:(HPPRMedia *)media {
+    BOOL shouldAdd = YES;
+
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:shouldAddMediaToSelection:)]) {
+        shouldAdd = [self.delegate selectPhotoCollectionViewController:self shouldAddMediaToSelection:media];
+    }
+
+    if (shouldAdd) {
+        [self.selectedPhotos addObject:media];
+
+        if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didAddMediaToSelection:)]) {
+            [self.delegate selectPhotoCollectionViewController:self didAddMediaToSelection:media];
+        }
+
+        if (![self shouldAllowAdditionalSelection]) {
+            [self.collectionView reloadData];
         }
     }
 }
 
-- (BOOL)isSelected:(NSIndexPath *)indexPath {
-    for (NSIndexPath *selectedIndexPath in self.selectedPhotos) {
-        if (selectedIndexPath.item == indexPath.item) {
+- (void)deselectPhoto:(HPPRMedia *)media {
+    BOOL needsReload = ![self shouldAllowAdditionalSelection];
+
+    for (HPPRMedia *item in self.selectedPhotos) {
+        if ([item isEqualToMedia:media]) {
+            [self.selectedPhotos removeObject:item];
+
+            if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didRemoveMediaFromSelection:)]) {
+                [self.delegate selectPhotoCollectionViewController:self didRemoveMediaFromSelection:media];
+            }
+            break;
+        }
+    }
+
+    if (needsReload) {
+        [self.collectionView reloadData];
+    }
+}
+
+- (BOOL)isSelected:(HPPRMedia *)media {
+    for (HPPRMedia *item in self.selectedPhotos) {
+        if ([item isEqualToMedia:media]) {
             return YES;
         }
     }
 
     return NO;
-}
-
-
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:kProviderAlbumKeyPath]) {
-        [self.selectedPhotos removeAllObjects];
-    }
 }
 
 @end

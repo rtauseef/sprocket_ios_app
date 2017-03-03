@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 
 - (void)refresh;
 - (void)beginMultiSelect;
-- (void)endMultiSelect;
+- (void)endMultiSelect:(BOOL)refresh;
 - (BOOL)isInMultiSelectMode;
 
 @end
@@ -46,6 +46,11 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 - (void)selectPhotoCollectionViewControllerDidInitiateMultiSelectMode:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 - (void)selectPhotoCollectionViewControllerDidSelectCamera:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 - (BOOL)selectPhotoCollectionViewControllerShouldRequestOnlyLowResolutionImage:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
+
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didAddMediaToSelection:(HPPRMedia *)media;
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didRemoveMediaFromSelection:(HPPRMedia *)media;
+- (BOOL)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController shouldAddMediaToSelection:(HPPRMedia *)media;
+- (BOOL)selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 
 @end
 

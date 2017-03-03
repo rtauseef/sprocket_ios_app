@@ -28,12 +28,17 @@ typedef enum
 @property (nonatomic, assign) PGGesturesDoubleTapBehavior doubleTapBehavior;
 @property (nonatomic, assign) CGFloat totalRotation;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIActivityIndicatorView *loadingIndicator;
+@property (nonatomic, assign) BOOL isMultiSelectImage;
+@property (nonatomic, assign) BOOL isSelected;
 
 - (CGPoint)offset;
 - (CGFloat)zoom;
 - (CGFloat)angle;
 - (void)adjustContentOffset;
 - (void)adjustScrollAndImageView;
+- (void)enableGestures;
+- (void)disableGestures;
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale;
 

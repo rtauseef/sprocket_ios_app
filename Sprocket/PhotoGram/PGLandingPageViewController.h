@@ -31,6 +31,7 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 - (void)showLogin;
 - (void)showNoConnectionAvailableAlert;
 - (void)showAlbums;
+- (void)hideAlbums:(BOOL)animated;
 - (HPPRSelectPhotoProvider *)albumsPhotoProvider;
 
 - (void)willSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate;
@@ -57,6 +58,9 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didFailSignInToSocialSource:(PGSocialSource *)socialSource;
 
 - (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didShowViewController:(UIViewController *)viewController;
+
 - (void)landingPageViewControllerDidInitiateSelection:(PGLandingPageViewController *)landingViewController;
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didAddMediaToSelection:(HPPRMedia *)media;
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didRemoveMediaFromSelection:(HPPRMedia *)media;
 
 @end

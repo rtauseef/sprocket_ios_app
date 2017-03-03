@@ -64,4 +64,8 @@
     return [NSArray arrayWithArray:locations];
 }
 
+- (HPPRSelectPhotoProvider *)photoProvider {
+    return [HPPRFacebookPhotoProvider sharedInstance];
+}
+
 @end

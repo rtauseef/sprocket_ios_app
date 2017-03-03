@@ -11,6 +11,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <HPPRMedia.h>
 
 @interface PGPhotoSelection : NSObject
 
@@ -19,5 +20,11 @@
 - (void)beginSelectionMode;
 - (void)endSelectionMode;
 - (BOOL)isInSelectionMode;
+- (BOOL)isMaxedOut;
+
+- (void)selectMedia:(HPPRMedia *)media;
+- (void)deselectMedia:(HPPRMedia *)media;
+- (NSArray<HPPRMedia *> *)selectedMedia;
+- (BOOL)isSelected:(HPPRMedia *)media;
 
 @end

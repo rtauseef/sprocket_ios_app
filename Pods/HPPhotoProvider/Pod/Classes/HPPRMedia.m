@@ -45,4 +45,18 @@
     return @[];
 }
 
+- (BOOL)isEqualToMedia:(HPPRMedia *)media {
+    BOOL isEqual = NO;
+
+    if ([media objectID]) {
+        isEqual = [self.objectID isEqualToString:media.objectID];
+    }
+
+    return isEqual;
+}
+
+- (HPPRSelectPhotoProvider *)photoProvider {
+    NSAssert(NO, @"Must override in the subclass");
+}
+
 @end
