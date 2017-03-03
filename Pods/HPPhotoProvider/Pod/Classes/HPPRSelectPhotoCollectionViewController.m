@@ -377,6 +377,21 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     }
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL shouldSelect = YES;
+
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:shouldAddMediaToSelection:)]) {
+        HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        shouldSelect = [self.delegate selectPhotoCollectionViewController:self shouldAddMediaToSelection:cell.media];
+    }
+
+    if ([self isInMultiSelectMode]) {
+        shouldSelect = [self shouldAllowAdditionalSelection];
+    }
+
+    return shouldSelect;
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if  (self.provider.showCameraButtonInCollectionView && indexPath.item == 0 && ![self isInMultiSelectMode]) {
