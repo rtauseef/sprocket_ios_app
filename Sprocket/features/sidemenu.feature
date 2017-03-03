@@ -16,7 +16,7 @@ Scenario Outline: Sign in to different Social media accounts from side menu
     Examples:
       | social_media | Sign in          | Photos           |
       | Instagram    | Instagram Signin | Instagram Photos |
-      | Flickr       | FlickrSignin     | Flickr Photo     |
+    #  | Flickr       | FlickrSignin     | Flickr Photo     |
       
 @reset
 @regression
@@ -65,7 +65,7 @@ Scenario: Verify side menu options
     
     
     @reset
-    @done
+    @regression
     Scenario Outline: Verify printer options for How to & Help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar

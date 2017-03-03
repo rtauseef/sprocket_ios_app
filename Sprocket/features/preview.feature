@@ -21,6 +21,7 @@ Feature: Verify preview screen from different social media
 
   @reset
   @done
+  @smoke
   Scenario: Verify preview screen for camera roll
     Given I am on the "CameraRoll Photo" screen
     And I should see the camera roll photos

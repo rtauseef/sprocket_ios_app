@@ -19,7 +19,7 @@ Scenario Outline: Verify Edit screen
     Examples:
     | social_media_screen_name|
     | Instagram Preview  |
-    | Flickr Preview     |
+   # | Flickr Preview     |
     | CameraRoll Preview |
     
     
@@ -35,10 +35,8 @@ Scenario Outline: Verify close button for edit screen
     Examples:
     | social_media_screen_name|
     | Instagram Preview       |
-    | Flickr Preview     |
+   # | Flickr Preview     |
     | CameraRoll Preview |
-    
-    
 
-    
+
  

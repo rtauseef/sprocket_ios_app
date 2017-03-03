@@ -20,7 +20,7 @@ Scenario Outline: Verify 'Frame' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-    | Flickr Preview     |
+  #  | Flickr Preview     |
     | CameraRoll Preview |
     
     
@@ -39,7 +39,7 @@ Scenario Outline: Verify frame applied for frame editor screen
     Examples:
     | social_media_screen_name       |
     | Instagram Preview |
-    | Flickr Preview    |
+  #  | Flickr Preview    |
     | CameraRoll        |
     
     
@@ -71,13 +71,13 @@ Scenario: Verify frame list
             |Pink Spray Paint Frame |
              
   @reset
-  @done
+  @regression
 Scenario: Verify all the frames are applied for frame editor screen 
     Given I am on the "FrameEditor" screen for "CameraRoll"  
     Then I verify that all the "frames" are applied successfully
 
 @reset
-@regression
+@done
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "White Frame" frame

@@ -39,12 +39,12 @@ Scenario Outline: Open Social Source from  Landing screen
 	Examples:
 	|Social Source	|
 	|Instagram		|
-  |Flickr			|
-  |Facebook		|
-  |CameraRoll	    |
+  #|Flickr			|
+    |Facebook		|
+    |CameraRoll	    |
 
   @reset
-  @done
+  @regression
 Scenario: Verify Side menu from Landing screen
 	Given  I am on the "Landing" screen
     When I touch menu button on navigation bar

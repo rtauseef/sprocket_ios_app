@@ -4,7 +4,7 @@ Feature: Verify Text Edit screen
 
   
 @reset
-@regression
+@done
 Scenario Outline: Verify 'Text' option
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -22,23 +22,16 @@ Scenario Outline: Verify 'Text' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-    | Flickr Preview     |
+  #  | Flickr Preview     |
     | CameraRoll Preview |
 
 @reset
-@regression
-Scenario Outline: Verify text edit screen navigation
-    Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
+@done
+Scenario : Verify text edit screen navigation
+    Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
     Then I tap "Cancel" mark
     Then I should see the "Edit" screen
-   
-   
-    Examples:
-    | social_media_screen_name        |
-    | Instagram Preview  |
-    | Flickr Preview     |
-    | CameraRoll Preview |
 
 @reset
 @regression
@@ -73,7 +66,7 @@ Scenario: Verify entered text cancellation
     And I should not see the text
     
 @reset
-@TA17012
+@regression
 Scenario: Verify text deletion option
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -96,7 +89,7 @@ Scenario: Verify font
     Then I should see the text with selected "Font"
     
 @reset  
-@TA17012
+@regression
 Scenario: Verify font list
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
@@ -132,7 +125,7 @@ Scenario: Verify font list
     
     
 @reset  
-@TA17012
+@regression
 Scenario: Verify all the fonts are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
@@ -156,7 +149,7 @@ Scenario: Verify text color
     Then I should see the text with selected "Color"
     
 @reset  
-@TA17012
+@regression
 Scenario: Verify color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -206,7 +199,7 @@ Scenario: Verify text background
     Then I should see the text with selected "Background Color"
     
 @reset  
-@TA17012
+@regression
 Scenario: Verify background color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -232,7 +225,7 @@ Scenario: Verify background color list
 
    
 @reset  
-@TA17012
+@done
 Scenario: Verify all the background colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
