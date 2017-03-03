@@ -14,7 +14,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
-#import "HPPRSelectPhotoProvider.h"
+
+@class HPPRSelectPhotoProvider;
 
 @interface HPPRMedia : NSObject
 

@@ -337,8 +337,10 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         cell.delegate = self;
         cell.retrieveLowQuality = [self shouldRequestLowResolutionImage];
         cell.media = [self.provider imageAtIndex:indexPath.row];
-        cell.selectionEnabled = [self isInMultiSelectMode];
-        if ([self isSelected:cell.media]) {
+
+        BOOL isSelected = [self isSelected:cell.media];
+        cell.selectionEnabled = ([self isInMultiSelectMode] && [self shouldAllowAdditionalSelection]) || isSelected;
+        if (isSelected) {
             [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             cell.selected = YES;
         }
@@ -389,6 +391,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 
         HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+
         [self selectPhoto:cell.media];
     } else {
         [self openSingleImageForPreviewAtIndexPath:indexPath];
@@ -708,15 +711,42 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     return self.collectionView.allowsMultipleSelection;
 }
 
-- (void)selectPhoto:(HPPRMedia *)media {
-    [self.selectedPhotos addObject:media];
+- (BOOL)shouldAllowAdditionalSelection {
+    BOOL shouldAllow = YES;
 
-    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didAddMediaToSelection:)]) {
-        [self.delegate selectPhotoCollectionViewController:self didAddMediaToSelection:media];
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:)]) {
+        shouldAllow = [self.delegate selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:self];
+    }
+
+    return shouldAllow;
+}
+
+
+- (void)selectPhoto:(HPPRMedia *)media {
+    BOOL shouldAdd = YES;
+
+    if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:shouldAddMediaToSelection:)]) {
+        shouldAdd = [self.delegate selectPhotoCollectionViewController:self shouldAddMediaToSelection:media];
+    }
+
+    if (shouldAdd) {
+        [self.selectedPhotos addObject:media];
+
+        if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:didAddMediaToSelection:)]) {
+            [self.delegate selectPhotoCollectionViewController:self didAddMediaToSelection:media];
+        }
+
+        if (![self shouldAllowAdditionalSelection]) {
+            [self.collectionView reloadData];
+        }
+    } else {
+        // PERFORM HAND MASSAGE!!!
     }
 }
 
 - (void)deselectPhoto:(HPPRMedia *)media {
+    BOOL needsReload = ![self shouldAllowAdditionalSelection];
+
     for (HPPRMedia *item in self.selectedPhotos) {
         if ([item isEqualToMedia:media]) {
             [self.selectedPhotos removeObject:item];
@@ -726,6 +756,10 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
             }
             break;
         }
+    }
+
+    if (needsReload) {
+        [self.collectionView reloadData];
     }
 }
 
