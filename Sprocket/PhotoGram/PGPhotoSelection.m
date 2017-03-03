@@ -15,7 +15,6 @@
 
 @interface PGPhotoSelection ()
 
-@property (nonatomic, assign) BOOL selectionEnabled;
 @property (nonatomic, strong) NSMutableArray<HPPRMedia *> *selectedItems;
 
 @end

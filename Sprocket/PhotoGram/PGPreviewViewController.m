@@ -1,4 +1,4 @@
-//
+    //
 // Hewlett-Packard Company
 // All rights reserved.
 //
@@ -25,6 +25,7 @@
 #import "PGInterstitialAwarenessViewController.h"
 #import "iCarousel.h"
 #import "PGPhotoSelection.h"
+#import "HPPRCacheService.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -73,7 +74,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (strong, nonatomic) NSString *currentOfframp;
 
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray<HPPRMedia *> *items;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
 
 @end
@@ -86,10 +87,21 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
     self.selectedItems = [NSMutableArray array];
+    self.selectedPhoto = self.items[0].thumbnailImage;
     
-    for (int i = 0; i < self.items.count; i++)
-    {
+    for (int i = 0; i < self.items.count; i++) {
         [_selectedItems addObject:[NSNumber numberWithBool:YES]];
+        if (self.items[i].asset) {
+            [self.items[i] requestImageWithCompletion:^(UIImage *image) {
+                self.items[i].image = image;
+                [self.carouselView reloadData];
+            }];
+        } else {
+            [[HPPRCacheService sharedInstance] imageForUrl:self.items[i].standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                self.items[i].image = image;
+                [self.carouselView reloadData];
+            }];
+        }
     }
 }
 
@@ -114,7 +126,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
     
-    self.carouselView.type = iCarouselTypeInvertedCylinder;
+    self.carouselView.type = iCarouselTypeLinear;
+    [self.carouselView setBounceDistance:0.3];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,7 +136,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [super viewWillAppear:animated];
     
     if (self.selectedNewPhoto) {
-        if (self.selectedPhoto) {
+        if (self.selectedPhoto || [PGPhotoSelection sharedInstance].isInSelectionMode) {
             self.needNewImageView = YES;
         } else {
             __weak PGPreviewViewController *weakSelf = self;
@@ -292,8 +305,15 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (void)showImgly
 {
+    UIImage *photoToEdit = nil;
+    if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
+        photoToEdit = self.items[self.carouselView.currentItemIndex].image;
+    } else {
+        photoToEdit = [self.imageContainer screenshotImage];
+    }
+    
     IMGLYConfiguration *configuration = [self.imglyManager imglyConfiguration];
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:[self.imageContainer screenshotImage] configuration:configuration];
+    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:configuration];
     toolController.delegate = self;
     [toolController setModalPresentationStyle:UIModalPresentationOverFullScreen];
@@ -635,25 +655,41 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    CGRect frame = self.imageContainer.frame;
-    frame.size.width *= 0.9;
-    frame.size.height *= 0.9;
+    HPPRMedia *media = (HPPRMedia *)self.items[index];
+    PGGesturesView *gestureView = (PGGesturesView *)view;
     
-    view = [[PGGesturesView alloc] initWithFrame:frame];
-    ((PGGesturesView *)view).image = self.selectedPhoto;
-    ((PGGesturesView *)view).doubleTapBehavior = PGGesturesDoubleTapReset;
-    [((PGGesturesView *)view) disableGestures];
-    ((PGGesturesView *)view).isMultiSelectImage = YES;
-    ((PGGesturesView *)view).isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
+    if (view == nil) {
+        CGRect frame = self.imageContainer.frame;
+        frame.size.width *= 0.9;
+        frame.size.height *= 0.9;
+        
+        gestureView = [[PGGesturesView alloc] initWithFrame:frame];
+        
+        gestureView.doubleTapBehavior = PGGesturesDoubleTapReset;
+        gestureView.isMultiSelectImage = YES;
+        
+        [gestureView disableGestures];
+    }
+        
+    if (media.image) {
+        gestureView.image = media.image;
+    }
     
-    return view;
+    gestureView.isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
+    
+    return gestureView;
 }
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
+    if (option == iCarouselOptionWrap) {
+        return self.items.count > 2;
+    }
+    
     if (option == iCarouselOptionSpacing) {
         return value * 1.03;
     }
+    
     return value;
 }
 

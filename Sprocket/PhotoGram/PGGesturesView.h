@@ -28,6 +28,7 @@ typedef enum
 @property (nonatomic, assign) PGGesturesDoubleTapBehavior doubleTapBehavior;
 @property (nonatomic, assign) CGFloat totalRotation;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIActivityIndicatorView *loadingIndicator;
 @property (nonatomic, assign) BOOL isMultiSelectImage;
 @property (nonatomic, assign) BOOL isSelected;
 
