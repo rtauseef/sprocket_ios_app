@@ -20,6 +20,7 @@
 - (void)beginSelectionMode;
 - (void)endSelectionMode;
 - (BOOL)isInSelectionMode;
+- (BOOL)isMaxedOut;
 
 - (void)selectMedia:(HPPRMedia *)media;
 - (void)deselectMedia:(HPPRMedia *)media;

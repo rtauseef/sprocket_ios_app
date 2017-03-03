@@ -49,6 +49,8 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didAddMediaToSelection:(HPPRMedia *)media;
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didRemoveMediaFromSelection:(HPPRMedia *)media;
+- (BOOL)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController shouldAddMediaToSelection:(HPPRMedia *)media;
+- (BOOL)selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController;
 
 @end
 

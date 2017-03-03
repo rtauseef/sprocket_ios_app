@@ -13,6 +13,8 @@
 #import "PGPhotoSelection.h"
 #import "PGMediaNavigation.h"
 
+static NSUInteger const kPhotoSelectionMaxSelected = 10;
+
 @interface PGPhotoSelection ()
 
 @property (nonatomic, strong) NSMutableArray<HPPRMedia *> *selectedItems;
@@ -57,8 +59,12 @@
     return self.selectionEnabled;
 }
 
+- (BOOL)isMaxedOut {
+    return self.selectedItems.count >= kPhotoSelectionMaxSelected;
+}
+
 - (void)selectMedia:(HPPRMedia *)media {
-    if (![self isSelected:media]) {
+    if (![self isSelected:media] && ![self isMaxedOut]) {
         [self.selectedItems addObject:media];
     }
 }

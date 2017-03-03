@@ -22,6 +22,7 @@
 #import "UIViewController+trackable.h"
 #import "PGAnalyticsManager.h"
 #import "PGMediaNavigation.h"
+#import "PGPhotoSelection.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
@@ -277,6 +278,14 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     if ([self.delegate respondsToSelector:@selector(landingPageViewController:didRemoveMediaFromSelection:)]) {
         [self.delegate landingPageViewController:self didRemoveMediaFromSelection:media];
     }
+}
+
+- (BOOL)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController shouldAddMediaToSelection:(HPPRMedia *)media {
+    return ![[PGPhotoSelection sharedInstance] isMaxedOut];
+}
+
+- (BOOL)selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController {
+    return ![[PGPhotoSelection sharedInstance] isMaxedOut];
 }
 
 
