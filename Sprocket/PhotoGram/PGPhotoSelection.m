@@ -48,10 +48,12 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
     self.selectionEnabled = YES;
 
     [[PGMediaNavigation sharedInstance] beginSelectionMode];
+    [[PGMediaNavigation sharedInstance] updateSelectedItemsCount:self.selectedItems.count];
 }
 
 - (void)endSelectionMode {
     self.selectionEnabled = NO;
+    [self.selectedItems removeAllObjects];
 
     [[PGMediaNavigation sharedInstance] endSelectionMode];
 }

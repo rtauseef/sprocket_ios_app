@@ -698,13 +698,14 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
     [self.collectionView reloadData];
 }
 
-- (void)endMultiSelect {
+- (void)endMultiSelect:(BOOL)refresh {
     self.collectionView.allowsMultipleSelection = NO;
     [self.selectedPhotos removeAllObjects];
 
-    [self.collectionView reloadData];
-
-    [self startCamera];
+    if (refresh) {
+        [self.collectionView reloadData];
+        [self startCamera];
+    }
 }
 
 - (BOOL)isInMultiSelectMode {

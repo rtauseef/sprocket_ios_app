@@ -31,6 +31,7 @@ extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 - (void)showLogin;
 - (void)showNoConnectionAvailableAlert;
 - (void)showAlbums;
+- (void)hideAlbums:(BOOL)animated;
 - (HPPRSelectPhotoProvider *)albumsPhotoProvider;
 
 - (void)willSignInToSocialSource:(PGSocialSource *)socialSource notifyDelegate:(BOOL)notifyDelegate;

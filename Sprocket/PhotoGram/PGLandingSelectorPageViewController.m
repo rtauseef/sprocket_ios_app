@@ -408,6 +408,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
     [[PGPhotoSelection sharedInstance] beginSelectionMode];
 
+    PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
+    [currentLanding hideAlbums:YES];
+    [currentLanding.photoCollectionViewController beginMultiSelect];
+
     for (UINavigationController *navigationController in self.socialViewControllers) {
         PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
         [landing.photoCollectionViewController beginMultiSelect];
@@ -417,19 +421,38 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
     [[PGPhotoSelection sharedInstance] endSelectionMode];
 
-    for (UINavigationController *navigationController in self.socialViewControllers) {
-        PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
-        [landing.photoCollectionViewController endMultiSelect];
-    }
+    PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
+    [currentLanding hideAlbums:YES];
+    [currentLanding.photoCollectionViewController endMultiSelect:YES];
 
-    PGLandingPageViewController *landing = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
-    if (!landing.photoCollectionViewController) {
+    if (!currentLanding.photoCollectionViewController) {
         [[PGMediaNavigation sharedInstance] disableSelectionMode];
     }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (UINavigationController *navigationController in self.socialViewControllers) {
+            if (self.currentNavigationController != navigationController) {
+                PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+                [landing hideAlbums:NO];
+                [landing.photoCollectionViewController endMultiSelect:NO];
+            }
+        }
+    });
 }
 
 - (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.source = @"MultiSelect";
 
+    [self presentViewController:previewViewController animated:YES completion:nil];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (UINavigationController *navigationController in self.socialViewControllers) {
+            PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+            [landing hideAlbums:NO];
+        }
+    });
 }
 
 

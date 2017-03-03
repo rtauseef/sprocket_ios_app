@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 
 - (void)refresh;
 - (void)beginMultiSelect;
-- (void)endMultiSelect;
+- (void)endMultiSelect:(BOOL)refresh;
 - (BOOL)isInMultiSelectMode;
 
 @end
