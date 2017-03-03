@@ -44,9 +44,16 @@ Then (/^I select "(.*?)"$/) do |option|
             sticker_name="v_xoxo_TN"
             select_sticker sticker_name
             sleep(STEP_PAUSE)
-        else    
-            sleep(2.0)
-            touch query("view marked:'#{option}'")
+        else 
+            if option == "2:3" || option == "3:2"
+                $crop_option = option
+                puts $crop_option
+                sleep(2.0)
+                touch query("view marked:'#{option}'")
+            else
+                sleep(2.0)
+                touch query("view marked:'#{option}'")
+            end
         end
     end
 end
@@ -153,14 +160,22 @@ Then(/^I should see the text with selected "(.*?)"$/) do |option|
 end
 
 Then(/^I should see the "(.*?)" image$/) do |option|
-    #post_photo_frame_width =query("UIImageView index:0").first["frame"]["width"]
-    #post_photo_frame_height    = query("UIImageView index:0").first["frame"]["height"]
     post_photo_frame_height = query("GLKView").first["frame"]["height"]
+    post_photo_frame_width = query("GLKView").first["frame"]["width"]
     if option == "cropped"
-        #raise "Image is not cropped!" unless post_photo_frame_width > $curr_edit_img_frame_width && post_photo_frame_height > $curr_edit_img_frame_height
-        raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
+        if $crop_option == "3:2"
+            puts post_photo_frame_height
+            puts $curr_edit_img_frame_height
+            raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
+        else
+            if $crop_option == "2:3"
+                puts post_photo_frame_height
+                puts $curr_edit_img_frame_height
+                raise "Image is not cropped!" unless post_photo_frame_width < $curr_edit_img_frame_width
+            end
+        end
     else
-       raise "Image is cropped!" unless post_photo_frame_height == $curr_edit_img_frame_height
+        raise "Image is cropped!" unless post_photo_frame_height == $curr_edit_img_frame_height
     end    
 end
 
@@ -200,7 +215,6 @@ Then(/^I select "(.*?)" color$/) do |color_name|
     select_color color_name
     sleep(STEP_PAUSE)
 end
-
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
     $list_loc=$edit_screen_arr["edit_frame"]
@@ -285,7 +299,6 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     macro %Q|I should see the "Edit" screen|
                     macro %Q|I tap "Sticker" button|
                     macro %Q|I should see the "StickerEditor" screen|
-
                     i= i + 1
                     sleep(SLEEP_SCREENLOAD)
                 end
@@ -483,5 +496,4 @@ $edit_screen_arr =
         "Aquamarin" => 1
         
             }
-        
     }

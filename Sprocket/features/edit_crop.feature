@@ -43,3 +43,25 @@ Scenario Outline: Verify image crop
  #   | Flickr Preview     |
     | CameraRoll Preview |
     
+
+@reset
+@TA17012
+Scenario Outline: Verify image crop for both options
+    Given I am on the "CameraRoll Preview" screen
+    When I tap "Edit" button
+    Then I am on the "Edit" screen
+    Then I tap "Crop" button
+    Then I should see the "Crop Editor" screen
+    And I select "<crop_option>"
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    And I should see the "cropped" image
+    
+    Examples:
+    | crop_option |
+    | 2:3         |
+    | 3:2         |
+    
+    
+    
+    

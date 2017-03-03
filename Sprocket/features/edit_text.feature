@@ -27,7 +27,7 @@ Scenario Outline: Verify 'Text' option
 
 @reset
 @done
-Scenario : Verify text edit screen navigation
+Scenario: Verify text edit screen navigation
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
     Then I tap "Cancel" mark
