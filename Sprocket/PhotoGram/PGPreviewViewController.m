@@ -127,7 +127,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     [PGAnalyticsManager sharedManager].photoSource = self.source;
 
-    if (![self.source isEqualToString:@"MultiSelect"]) {
+    if (![[PGPhotoSelection sharedInstance] isInSelectionMode]) {
         [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     }
 
