@@ -81,7 +81,7 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     [self addSubview:self.selectionView];
     
-    NSUInteger checkmarkWidth = 50;
+    NSUInteger checkmarkWidth = 37;
     self.checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width - (checkmarkWidth + 10), self.bounds.size.height - (checkmarkWidth + 10), checkmarkWidth, checkmarkWidth)];
     self.checkmark.image = [UIImage imageNamed:@"Check_Inactive1"];
     self.checkmark.highlightedImage = [UIImage imageNamed:@"Check"];
