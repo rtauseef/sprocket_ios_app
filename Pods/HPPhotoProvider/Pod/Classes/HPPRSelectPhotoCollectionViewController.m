@@ -740,8 +740,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
         if (![self shouldAllowAdditionalSelection]) {
             [self.collectionView reloadData];
         }
-    } else {
-        // PERFORM HAND MASSAGE!!!
     }
 }
 

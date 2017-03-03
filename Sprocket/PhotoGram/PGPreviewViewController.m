@@ -126,7 +126,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     [self.view layoutIfNeeded];
     
     [PGAnalyticsManager sharedManager].photoSource = self.source;
-    [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
+
+    if (![self.source isEqualToString:@"MultiSelect"]) {
+        [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
+    }
+
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
     
     self.carouselView.type = iCarouselTypeLinear;

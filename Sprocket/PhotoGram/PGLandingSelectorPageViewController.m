@@ -33,6 +33,7 @@
 #import "PGPreviewViewController.h"
 #import "PGFeatureFlag.h"
 #import "PGPhotoSelection.h"
+#import "PGAnalyticsManager.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -406,6 +407,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
+    [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectEnable selectedPhotos:nil];
+
     [[PGPhotoSelection sharedInstance] beginSelectionMode];
 
     PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
@@ -419,6 +422,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
+    [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectCancel selectedPhotos:nil];
+
     [[PGPhotoSelection sharedInstance] endSelectionMode];
 
     PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
@@ -441,6 +446,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {
+    [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectPreview selectedPhotos:@([[[PGPhotoSelection sharedInstance] selectedMedia] count])];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = @"MultiSelect";
