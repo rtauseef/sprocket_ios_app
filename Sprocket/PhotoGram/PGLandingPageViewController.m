@@ -22,6 +22,7 @@
 #import "UIViewController+trackable.h"
 #import "PGAnalyticsManager.h"
 #import "PGMediaNavigation.h"
+#import "PGPhotoSelection.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
@@ -76,7 +77,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
     if (provider) {
         if (self.albumsViewController) {
-            [self hideAlbums];
+            [self hideAlbums:YES];
         } else {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
             self.albumsViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGSelectAlbumDropDownViewController"];
@@ -109,25 +110,32 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     }
 }
 
-- (void)hideAlbums {
+- (void)hideAlbums:(BOOL)animated {
     if (self.albumsViewController) {
         self.albumsViewController = nil;
 
-        [UIView animateWithDuration:0.5
-                              delay:0.0
-             usingSpringWithDamping:1.0
-              initialSpringVelocity:0.0
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             CGRect bounds = self.view.bounds;
-                             CGRect frame = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
-                             self.dropDownContainerView.frame = frame;
-                         } completion:^(BOOL finished) {
-                             [self.dropDownContainerView removeFromSuperview];
-                         }];
+        CGRect bounds = self.view.bounds;
+        CGRect frame = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
 
-        if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
-            [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
+        if (animated) {
+            [UIView animateWithDuration:0.5
+                                  delay:0.0
+                 usingSpringWithDamping:1.0
+                  initialSpringVelocity:0.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 self.dropDownContainerView.frame = frame;
+                             } completion:^(BOOL finished) {
+                                 [self.dropDownContainerView removeFromSuperview];
+                             }];
+
+            if ([self.delegate respondsToSelector:@selector(landingPageViewController:didShowViewController:)]) {
+                [self.delegate landingPageViewController:self didShowViewController:self.photoCollectionViewController];
+            }
+
+        } else {
+            self.dropDownContainerView.frame = frame;
+            [self.dropDownContainerView removeFromSuperview];
         }
     }
 }
@@ -267,6 +275,27 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     }
 }
 
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didAddMediaToSelection:(HPPRMedia *)media {
+    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didAddMediaToSelection:)]) {
+        [self.delegate landingPageViewController:self didAddMediaToSelection:media];
+    }
+}
+
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didRemoveMediaFromSelection:(HPPRMedia *)media {
+    if ([self.delegate respondsToSelector:@selector(landingPageViewController:didRemoveMediaFromSelection:)]) {
+        [self.delegate landingPageViewController:self didRemoveMediaFromSelection:media];
+    }
+}
+
+- (BOOL)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController shouldAddMediaToSelection:(HPPRMedia *)media {
+    return ![[PGPhotoSelection sharedInstance] isMaxedOut];
+}
+
+- (BOOL)selectPhotoCollectionViewControllerShouldAllowAdditionalMediaSelection:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController {
+    return ![[PGPhotoSelection sharedInstance] isMaxedOut];
+}
+
+
 #pragma mark - PGSelectAlbumDropDownViewControllerDelegate
 
 - (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album
@@ -274,7 +303,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     self.photoCollectionViewController.provider.album = album;
     [self.photoCollectionViewController refresh];
 
-    [self hideAlbums];
+    [self hideAlbums:YES];
 }
 
 

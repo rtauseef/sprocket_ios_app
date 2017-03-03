@@ -106,6 +106,12 @@ NSString * const kEventPrintAction      = @"Print";
 NSString * const kEventPrintButtonLabel = @"PrintButton";
 NSString * const kEventPrintShareLabel  = @"ShareButton";
 
+NSString * const kEventMultiSelectCategory    = @"Multi-Select";
+NSString * const kEventMultiSelectCancel      = @"Multi-SelectCanceled";
+NSString * const kEventMultiSelectEnable      = @"Multi-SelectEnabled";
+NSString * const kEventMultiSelectPreview     = @"Multi-SelectPreview";
+NSString * const kEventMultiSelectPreviewPhotosSelectedLabel = @"PhotosSelected";
+
 NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
 
@@ -260,6 +266,16 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackCameraGallerySelect
 {
     [self trackEvent:kEventCameraGalleryCategory action:kEventCameraGallerySelectAction label:kEventCameraGalleryCategory value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackMultiSelect:(NSString *)action selectedPhotos:(NSNumber * _Nullable)selectedPhotos {
+    NSString *label;
+
+    if (selectedPhotos != nil) {
+        label = kEventMultiSelectPreviewPhotosSelectedLabel;
+    }
+
+    [self trackEvent:kEventMultiSelectCategory action:action label:label value:selectedPhotos];
 }
 
 - (void) trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
