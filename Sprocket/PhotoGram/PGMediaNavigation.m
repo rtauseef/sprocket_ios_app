@@ -17,7 +17,7 @@
 #import "AlphaGradientView.h"
 #import "PGFeatureFlag.h"
 
-static NSString * const kMediaNavigationNextButtonFormat = @"%li 〉";
+static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
 
 @interface PGMediaNavigation()
 
@@ -135,7 +135,7 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li 〉";
 
 - (void)beginSelectionMode {
     self.cancelButton.hidden = NO;
-    self.nextButton.hidden = NO;
+//    self.nextButton.hidden = YES;
     self.hamburgerButton.hidden = YES;
     self.selectButton.hidden = YES;
 }
@@ -158,6 +158,8 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li 〉";
     NSString *title = [NSString stringWithFormat:kMediaNavigationNextButtonFormat, count];
 
     [self.nextButton setTitle:title forState:UIControlStateNormal];
+
+    self.nextButton.hidden = (count <= 0);
 }
 
 - (void)showGradientBar {
