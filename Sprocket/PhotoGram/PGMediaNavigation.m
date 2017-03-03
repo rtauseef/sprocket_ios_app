@@ -135,7 +135,6 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
 
 - (void)beginSelectionMode {
     self.cancelButton.hidden = NO;
-//    self.nextButton.hidden = YES;
     self.hamburgerButton.hidden = YES;
     self.selectButton.hidden = YES;
 }
