@@ -17,6 +17,7 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
 
 @interface PGPhotoSelection ()
 
+@property (nonatomic, assign) BOOL selectionEnabled;
 @property (nonatomic, strong) NSMutableArray<HPPRMedia *> *selectedItems;
 
 @end

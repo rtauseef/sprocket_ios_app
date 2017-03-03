@@ -27,6 +27,4 @@
 - (NSArray<HPPRMedia *> *)selectedMedia;
 - (BOOL)isSelected:(HPPRMedia *)media;
 
-@property (nonatomic, assign) BOOL selectionEnabled;
-
 @end
