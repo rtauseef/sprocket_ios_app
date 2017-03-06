@@ -93,5 +93,5 @@ Scenario Outline: Verify navigation to and fro from frame editor screen successf
     Examples:
     | social_media_screen_name       |
     | Instagram Preview |
-    | Flickr Preview    |
+  #  | Flickr Preview    |
     | CameraRoll        |
