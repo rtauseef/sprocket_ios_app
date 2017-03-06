@@ -155,3 +155,14 @@ Scenario: Verify side menu options
         And I touch "Done"
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
+        
+        
+    @reset
+	@TA17012
+	Scenario: Instagram Sign Out from Side menu
+		Given I am on the "Instagram Photos" screen
+		And  I touch menu button on navigation bar
+		When I touch Instagram "Sign Out" button
+	    And I click Sign Out button on popup
+		Then I should see Instagram "Sign In" button
+        
