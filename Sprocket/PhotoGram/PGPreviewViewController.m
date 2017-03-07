@@ -716,7 +716,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel
 {
-    if (IS_IPAD) {
+    if (IS_IPAD || IS_IPHONE_6_PLUS) {
         return self.imageContainer.frame.size.width * 1.03;
     }
     
