@@ -46,6 +46,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
+static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 @interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
@@ -60,6 +61,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UIView *imageContainer;
 @property (strong, nonatomic) IBOutlet iCarousel *carouselView;
@@ -135,6 +137,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     self.carouselView.type = iCarouselTypeLinear;
     [self.carouselView setBounceDistance:0.3];
+    self.carouselView.pagingEnabled = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -175,6 +178,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         frame.size.width = desiredWidth;
         
         self.imageContainer.frame = frame;
+        [self.view layoutIfNeeded];
+        
+        if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
+            self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
+        }
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -194,9 +202,15 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
     
-    self.carouselView.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
-    self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].isInSelectionMode;
-    self.imageContainer.hidden = [PGPhotoSelection sharedInstance].isInSelectionMode;
+    BOOL isInSelectionMode = [PGPhotoSelection sharedInstance].isInSelectionMode;
+    
+    self.carouselView.hidden = !isInSelectionMode;
+    self.numberOfSelectedPhotos.hidden = !isInSelectionMode;
+    self.imageContainer.hidden = isInSelectionMode;
+    
+    if (isInSelectionMode) {
+        [self.carouselView reloadData];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -214,6 +228,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     // hidding imageSavedView on the storyboard to avoid seeing the bar when opening preview screen.
     self.imageSavedView.hidden = NO;
+    [self.carouselView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -645,7 +660,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    //return the total number of items in the carousel
     return [_items count];
 }
 
@@ -655,9 +669,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     PGGesturesView *gestureView = (PGGesturesView *)view;
     
     if (view == nil) {
-        CGRect frame = self.imageContainer.frame;
+        CGRect frame = self.carouselView.frame;
         frame.size.width *= 0.9;
-        frame.size.height *= 0.9;
         
         gestureView = [[PGGesturesView alloc] initWithFrame:frame];
         
@@ -668,7 +681,16 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     }
         
     if (media.image) {
-        gestureView.image = media.image;
+        UIImage *finalImage = media.image;
+        
+        if (media.image.size.width > media.image.size.height) {
+            finalImage = [[UIImage alloc] initWithCGImage: media.image.CGImage
+                                                    scale: 1.0
+                                              orientation: UIImageOrientationRight];
+        }
+        
+        gestureView.image = finalImage;
+        [gestureView adjustContentOffset];
     }
     
     gestureView.isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
@@ -690,11 +712,12 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         return self.items.count > 2;
     }
     
-    if (option == iCarouselOptionSpacing) {
-        return value * 1.03;
-    }
-    
     return value;
+}
+
+- (CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    return self.imageContainer.frame.size.width * 1.07;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index

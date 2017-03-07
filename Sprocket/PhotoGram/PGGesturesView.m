@@ -81,7 +81,7 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     [self addSubview:self.selectionView];
     
-    NSUInteger checkmarkWidth = 50;
+    NSUInteger checkmarkWidth = 37;
     self.checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width - (checkmarkWidth + 10), self.bounds.size.height - (checkmarkWidth + 10), checkmarkWidth, checkmarkWidth)];
     self.checkmark.image = [UIImage imageNamed:@"Check_Inactive1"];
     self.checkmark.highlightedImage = [UIImage imageNamed:@"Check"];
@@ -124,7 +124,6 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     [self.scrollView addGestureRecognizer:lpgr];
     
     self.scrollView.userInteractionEnabled = YES;
-
 }
 
 - (void)setIsMultiSelectImage:(BOOL)isMultiSelectImage
@@ -202,10 +201,12 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     self.imageView.image = self.image;
     self.imageView.contentMode = self.imageContentMode;
-    
+
     CGSize imageFinalSize = [self.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
-    self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
-    
+    if (imageFinalSize.width && imageFinalSize.height) {
+        self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
+    }
+
     self.scrollView.minimumZoomScale = scaleFactor * self.minimumZoomScale;
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
     self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
