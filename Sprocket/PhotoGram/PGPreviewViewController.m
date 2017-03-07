@@ -669,8 +669,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     PGGesturesView *gestureView = (PGGesturesView *)view;
     
     if (view == nil) {
-        CGRect frame = self.carouselView.frame;
-        frame.size.width *= 0.9;
+        CGRect frame = self.imageContainer.frame;
         
         gestureView = [[PGGesturesView alloc] initWithFrame:frame];
         
@@ -717,6 +716,10 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel
 {
+    if (IS_IPAD) {
+        return self.imageContainer.frame.size.width * 1.03;
+    }
+    
     return self.imageContainer.frame.size.width * 1.07;
 }
 
