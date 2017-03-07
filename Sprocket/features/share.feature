@@ -3,7 +3,7 @@ Feature:Photo Share
 
 
   @reset
-  @done
+  @regression
   Scenario: Photo share options
     Given I am on the "Instagram Preview" screen
     When I tap "Share" button
@@ -29,7 +29,7 @@ Feature:Photo Share
     Then I should see the "CameraRoll Preview" screen
 
   @reset
-  @done
+  @regression
   Scenario:Cancel the Share
     Given I am on the "Share" screen
     When I cancel the share
