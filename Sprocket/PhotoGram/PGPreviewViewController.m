@@ -711,16 +711,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         return self.items.count > 2;
     }
     
-    return value;
-}
-
-- (CGFloat)carouselItemWidth:(iCarousel *)carousel
-{
-    if (IS_IPAD || IS_IPHONE_6_PLUS) {
-        return self.imageContainer.frame.size.width * 1.03;
+    if (option == iCarouselOptionSpacing) {
+        return 0.96;
     }
     
-    return self.imageContainer.frame.size.width * 1.07;
+    return value;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
