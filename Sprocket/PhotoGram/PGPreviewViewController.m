@@ -669,8 +669,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     PGGesturesView *gestureView = (PGGesturesView *)view;
     
     if (view == nil) {
-        CGRect frame = self.carouselView.frame;
-        frame.size.width *= 0.9;
+        CGRect frame = self.imageContainer.frame;
         
         gestureView = [[PGGesturesView alloc] initWithFrame:frame];
         
@@ -712,12 +711,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         return self.items.count > 2;
     }
     
+    if (option == iCarouselOptionSpacing) {
+        return 0.96;
+    }
+    
     return value;
-}
-
-- (CGFloat)carouselItemWidth:(iCarousel *)carousel
-{
-    return self.imageContainer.frame.size.width * 1.07;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
