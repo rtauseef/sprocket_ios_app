@@ -48,6 +48,7 @@ static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
+static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 @interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
 
@@ -84,31 +85,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 
 @implementation PGPreviewViewController
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
-        self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
-        self.selectedItems = [NSMutableArray array];
-        self.selectedPhoto = self.items[0].thumbnailImage;
-        
-        for (int i = 0; i < self.items.count; i++) {
-            [_selectedItems addObject:[NSNumber numberWithBool:YES]];
-            if (self.items[i].asset) {
-                [self.items[i] requestImageWithCompletion:^(UIImage *image) {
-                    self.items[i].image = image;
-                    [self.carouselView reloadData];
-                }];
-            } else {
-                [[HPPRCacheService sharedInstance] imageForUrl:self.items[i].standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    self.items[i].image = image;
-                    [self.carouselView reloadData];
-                }];
-            }
-        }
-    }
-}
 
 - (void)viewDidLoad
 {
@@ -125,6 +101,11 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     self.imglyManager = [[PGImglyManager alloc] init];
     
+    if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
+        self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
+        [self configureCarousel];
+    }
+    
     [self.view layoutIfNeeded];
     
     [PGAnalyticsManager sharedManager].photoSource = self.source;
@@ -134,10 +115,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     }
 
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
-    
-    self.carouselView.type = iCarouselTypeLinear;
-    [self.carouselView setBounceDistance:0.3];
-    self.carouselView.pagingEnabled = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -178,11 +155,8 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         frame.size.width = desiredWidth;
         
         self.imageContainer.frame = frame;
-        [self.view layoutIfNeeded];
         
-        if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
-            self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
-        }
+        [self.view layoutIfNeeded];
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -207,10 +181,6 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     self.carouselView.hidden = !isInSelectionMode;
     self.numberOfSelectedPhotos.hidden = !isInSelectionMode;
     self.imageContainer.hidden = isInSelectionMode;
-    
-    if (isInSelectionMode) {
-        [self.carouselView reloadData];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -228,6 +198,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     
     // hidding imageSavedView on the storyboard to avoid seeing the bar when opening preview screen.
     self.imageSavedView.hidden = NO;
+    
     [self.carouselView reloadData];
 }
 
@@ -284,6 +255,41 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     if (!edited) {
         self.printItem = [MPPrintItemFactory printItemWithAsset:_selectedPhoto];
         self.printItem.layout = [self layout];
+    }
+}
+
+- (void)configureCarousel
+{
+    self.carouselView.type = iCarouselTypeLinear;
+    [self.carouselView setBounceDistance:0.3];
+    self.carouselView.pagingEnabled = YES;
+    
+    self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
+    self.selectedItems = [NSMutableArray array];
+    self.selectedPhoto = self.items[0].thumbnailImage;
+    
+    __weak typeof(self) weakSelf = self;
+    for (int i = 0; i < self.items.count; i++) {
+        [_selectedItems addObject:[NSNumber numberWithBool:YES]];
+        if (self.items[i].asset) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                [weakSelf.items[i] requestImageWithCompletion:^(UIImage *image) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        weakSelf.items[i].image = image;
+                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
+                    });
+                }];
+            });
+        } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.items[i].standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        weakSelf.items[i].image = image;
+                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
+                    });
+                }];
+            });
+        }
     }
 }
 
@@ -669,16 +675,14 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     PGGesturesView *gestureView = (PGGesturesView *)view;
     
     if (view == nil) {
-        CGRect frame = self.imageContainer.frame;
-        
-        gestureView = [[PGGesturesView alloc] initWithFrame:frame];
+        gestureView = [[PGGesturesView alloc] initWithFrame:CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height)];
         
         gestureView.doubleTapBehavior = PGGesturesDoubleTapReset;
         gestureView.isMultiSelectImage = YES;
         
         [gestureView disableGestures];
     }
-        
+    
     if (media.image) {
         UIImage *finalImage = media.image;
         
@@ -690,16 +694,20 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
         
         gestureView.image = finalImage;
         [gestureView adjustContentOffset];
+        
+        [carousel setNeedsLayout];
     }
     
-    gestureView.isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
+    if (self.selectedItems) {
+        gestureView.isSelected = ((NSNumber *) self.selectedItems[index]).boolValue;
+    }
     
     return gestureView;
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
 {
-    if ([PGPhotoSelection sharedInstance].isInSelectionMode) {
+    if ([PGPhotoSelection sharedInstance].isInSelectionMode && (carousel.currentItemIndex != -1)) {
         self.numberOfSelectedPhotos.text = [NSString stringWithFormat:NSLocalizedString(@"%ld of %ld", nil), (carousel.currentItemIndex + 1), (long)self.items.count];
         self.editButton.hidden = !((NSNumber *)self.selectedItems[carousel.currentItemIndex]).boolValue;
     }
@@ -712,7 +720,7 @@ static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
     }
     
     if (option == iCarouselOptionSpacing) {
-        return 0.96;
+        return value + (10.0f / (self.carouselView.bounds.size.height * kAspectRatio2by3));
     }
     
     return value;
