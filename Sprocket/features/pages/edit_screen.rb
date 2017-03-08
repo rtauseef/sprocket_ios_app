@@ -61,11 +61,7 @@ class EditScreen < Calabash::IBase
     def add_text
         "UIButton marked:'Add text'"
     end
-    
-    def selected_sticker
-        "IMGLYStickerImageView"
-    end
-    
+       
     def selected_frame
         "* id:'1_turquoise_frame'" 
     end

@@ -39,12 +39,7 @@ end
 Then (/^I select "(.*?)"$/) do |option|
     if option == "Filter"
         touch @current_page.filter_1
-    else 
-        if option == "sticker" 
-            sticker_name="v_xoxo_TN"
-            select_sticker sticker_name
-            sleep(STEP_PAUSE)
-        else 
+     else 
             if option == "2:3" || option == "3:2"
                 $crop_option = option
                 puts $crop_option
@@ -55,7 +50,6 @@ Then (/^I select "(.*?)"$/) do |option|
                 touch query("view marked:'#{option}'")
             end
         end
-    end
 end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
@@ -64,7 +58,11 @@ And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     raise "Wrong frame selected!" unless selected_frame_status != nil
     else
         if edit_item == "sticker"
-            check_element_does_not_exist(@current_page.selected_sticker)
+           sticker_value=$sticker[$sticker_id]['value']
+           puts sticker_value
+           selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
+           puts selected_sticker_status
+           raise "Sticker present!" unless selected_sticker_status.to_s != sticker_value
         end
     end
 end
@@ -74,11 +72,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     if(edit_item == "frame")
        
             check_element_exists(@current_page.selected_frame)
-    else
-        if edit_item == "sticker"
-            
-           selected_frame_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
-           raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "v_xoxo"
+  
         else
             if edit_item == "text"
                 sleep(STEP_PAUSE)
@@ -198,8 +192,11 @@ Then(/^I select "(.*?)" frame$/) do |frame_name|
     sleep(STEP_PAUSE)
 end
 
-Then(/^I select "(.*?)" sticker$/) do |sticker_name|
+Then(/^I select "(.*?)" sticker$/) do |sticker_id|
     sleep(STEP_PAUSE)
+    $sticker_id = sticker_id
+    sticker_name=$sticker[sticker_id]['name']
+    puts sticker_name
     select_sticker sticker_name
     sleep(STEP_PAUSE)
 end
@@ -223,10 +220,10 @@ Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
 end
 
 Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
-    $list_loc=$edit_screen_arr["edit_sticker"]
-    
-    selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
-    raise "Wrong sticker selected!" unless selected_sticker_status.to_s == $list_loc[sticker_name]
+    sticker_value=$sticker[sticker_id]['value']
+    puts sticker_value
+    selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
+    raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end
 
 Then(/^I should see the photo with the "(.*?)" font$/) do |font_name|
@@ -255,7 +252,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
   frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
-    sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
+   # sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
     
     font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
     
@@ -290,10 +287,11 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     i= i + 1
                 end
             else
-                while i < 68
-                    macro %Q|I select "#{sticker_name[i]}" sticker|
+                while i < 61
+		sticker_id = "sticker_"+"#{i}"
+                    macro %Q|I select "#{sticker_id}" sticker|
                     macro %Q|I verify blue line indicator is displayed under selected "sticker"|
-                    macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
+                    macro %Q|I should see the photo with the "#{sticker_id}" sticker|
                     macro %Q|I should see the "StickerEditor" screen|
                     macro %Q|I tap "Close" mark|
                     macro %Q|I should see the "Edit" screen|
@@ -332,79 +330,7 @@ $edit_screen_arr =
         "Floral 2 Frame" => "13_floral2_frame",
         "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
          },
-        
-    "edit_sticker" => {
-            "v_xoxo_TN" => "v_xoxo",
-            "heart_2_TN" => "heart_2",
-            "v_hearts_TN" => "v_hearts",
-            "conversation_heart_TN" => "conversation_heart",
-            "heart_wings_TN" => "heart_wings",
-            "bird_TN" => "bird",
-            "butterfly_TN" => "butterfly",
-            "monster_2_TN" => "monster_2",
-            "rosebud_TN" => "rosebud",
-            "heart_bouquet_TN" => "heart_bouquet",
-            "heart-garland_TN" => "heart-garland",
-            "pig_TN" => "pig",
-            "headband_TN" => "headband",
-            "glasses_1_TN" => "glasses_1",
-            "hat_TN" => "hat",
-            "bow2_TN" => "bow2",
-            "balloons_TN" => "balloons",
-            "thought_bubble_TN" => "thought_bubble",
-            "letter_TN" => "letter",
-            "holding_hands_TN" => "holding_hands",
-            "love_monster_TN" => "love_monster",
-            "heart_arrow_TN" => "heart_arrow",
-            "smiley_TN" => "smiley",
-            "heart_banner_TN" => "heart_banner",
-            "lock_TN" => "lock",
-            "v_cupcake_TN" => "v_cupcake",
-            "v_cat_TN" => "v_cat",
-            "v_heart_TN" => "v_heart",
-            "target_TN" => "target",
-            "glasses_TN" => "glasses",
-            "tiara_TN" => "tiara",
-            "heart_crown_TN" => "heart_crown",
-            "sb_glasses_TN" => "sb_glasses",
-            "glasses_2_TN" => "glasses_2",
-            "eye_black_TN" => "eye_black",
-            "foam_finger_TN" => "foam_finger",
-            "heart_football3_TN" => "heart_football3",
-            "banner_TN" => "banner",
-            "flag_TN" => "flag",
-            "heart_football_TN" => "heart_football",
-            "stars_n_balls_TN" => "stars_n_balls",
-            "#_game_time_TN" => "#_game_time",
-            "football_flames_TN" => "football_flames",
-            "love_TN" => "love",
-            "i_heart_football_2_TN" => "i_heart_football_2",
-            "owl_TN" => "owl",
-            "goal_post_2_TN" => "goal_post_2",
-            "helmet_TN" => "helmet",
-            "catglasses_TN" => "catglasses",
-            "catwhiskers_TN" => "catwhiskers",
-            "catears_TN" => "catears",
-            "hearts_TN" => "hearts",
-            "xoxo_TN" => "xoxo",
-            "heartExpress_TN" => "heartExpress",
-            "arrow_TN" => "arrow",
-            "crown_TN" => "crown",
-            "birthdayHat_TN" => "birthdayHat",
-            "moon_TN" => "moon",
-            "starhp_TN" => "starhp",
-            "feather2_TN" => "feather2",
-            "feather_TN" => "feather",
-            "leaf3_TN" => "leaf3",
-            "cupcake_TN" => "cupcake",
-            "cat_TN" => "cat",
-            "stars_TN" => "stars",
-            "diamond_TN" => "diamond",
-            "sunglasses_TN" => "sunglasses",
-            "OMG_TN" => "OMG"
-        
-            },
-    
+          
     "edit_font" => {
         
         "Helvetica" => "Helvetica",
@@ -497,3 +423,69 @@ $edit_screen_arr =
         
             }
     }
+	
+	$sticker ={ 'sticker_0' => {'name' => 'glasses_2b_TN','value' =>'glasses_2b'},
+            'sticker_1' => {'name' => 'hat_1b_TN','value' =>'hat_1b1'},
+            'sticker_2' => {'name' => 'kiss_me_2c_TN','value' =>'kiss_me_2c'},
+            'sticker_3' => {'name' => 'derby_TN','value' =>'derby'},
+            'sticker_4' => {'name' => 'st_hearts_TN','value' =>'st_hearts'},
+            'sticker_5' => {'name' => 'st_glasses_TN','value' =>'st_glasses'},
+            'sticker_6' => {'name' => 'boppers_TN','value' =>'boppers'},
+            'sticker_7' => {'name' => 'lips_TN','value' =>'lips'},
+            'sticker_8' => {'name' => 'bow_tie_TN','value' =>'bow_tie'},
+            'sticker_9' => {'name' => 'beard&-eyebrows_TN','value' =>'beard&-eyebrows'},
+            'sticker_10' => {'name' => 'mustache_TN','value' =>'mustache'},
+            'sticker_11' => {'name' => 'pot_o_gold_TN','value' =>'pot_o_gold'},
+            'sticker_12' => {'name' => 'rainbow_2_TN','value' =>'rainbow_2'},
+            'sticker_13' => {'name' => 'shamrock_crown_TN','value' =>'shamrock_crown'},
+            'sticker_14' => {'name' => 'shamrock_2_TN','value' =>'shamrock_2'},
+            'sticker_15' => {'name' => '#lucky_new_TN','value' =>'#lucky_new'},
+            'sticker_16' => {'name' => 'shamrockin_3_TN','value' =>'shamrockin_3'},
+            'sticker_17' => {'name' => 'clover_headband_TN','value' =>'clover_headband'},
+            'sticker_18' => {'name' => 'clover_wand_TN','value' =>'clover_wand'},
+            'sticker_19' => {'name' => 'hearts_TN','value' =>'hearts'},
+            'sticker_20' => {'name' => 'xoxo_TN','value' =>'xoxo'},
+            'sticker_21' => {'name' => 'heartExpress_TN','value' =>'heartExpress'},
+            'sticker_22' => {'name' => 'v_heart_TN','value' =>'v_heart'},
+            'sticker_23' => {'name' => 'glasses_1_TN','value' =>'glasses_1'},
+            'sticker_24' => {'name' => 'heart_2_TN','value' =>'heart_2'},
+            'sticker_25' => {'name' => 'v_hearts_TN','value' =>'v_hearts'},
+            'sticker_26' => {'name' => 'heart-garland_TN','value' =>'heart-garland'},
+            'sticker_27' => {'name' => 'v_xoxo_TN','value' =>'v_xoxo'},
+            'sticker_28' => {'name' => 'heart_wings_TN','value' =>'heart_wings'},
+            'sticker_29' => {'name' => 'palmtree_TN','value' =>'palmtree'},
+            'sticker_30' => {'name' => 'beachball_TN','value' =>'beachball'},
+            'sticker_31' => {'name' => 'wave_TN','value' =>'wave'},
+            'sticker_32' => {'name' => 'beach_umbrella_TN','value' =>'beach_umbrella'},
+            'sticker_33' => {'name' => 'sun_face_TN','value' =>'sun_face'},
+            'sticker_34' => {'name' => 'sunglasses_frogskin_TN','value' =>'sunglasses_frogskin'},
+            'sticker_35' => {'name' => 'aviator_glasses_TN','value' =>'aviator_glasses'},
+            'sticker_36' => {'name' => 'glasses_TN','value' =>'glasses'},
+            'sticker_37' => {'name' => 'bunny_ears_flowers_TN','value' =>'bunny_ears_flowers'},
+            'sticker_38' => {'name' => 'catglasses_TN','value' =>'catglasses'},
+            'sticker_39' => {'name' => 'catears_TN','value' =>'catears'},
+            'sticker_40' => {'name' => 'scuba_mask_TN','value' =>'scuba_mask'},
+            'sticker_41' => {'name' => 'swim_fins_TN','value' =>'swim_fins'},
+            'sticker_42' => {'name' => 'volleyball_TN','value' =>'volleyball'},
+            'sticker_43' => {'name' => 'trailer_TN','value' =>'trailer'},
+            'sticker_44' => {'name' => 'travel_car_bug_TN','value' =>'travel_car_bug'},
+            'sticker_45' => {'name' => 'travel_car_woody_TN','value' =>'travel_car_woody'},
+            'sticker_46' => {'name' => 'bike_cruiser_TN','value' =>'bike_cruiser'},
+            'sticker_47' => {'name' => 'airplane_TN','value' =>'airplane'},
+            'sticker_48' => {'name' => 'soda_straw_TN','value' =>'soda_straw'},
+            'sticker_49' => {'name' => 'sundae_TN','value' =>'sundae'},
+            'sticker_50' => {'name' => 'icecream_tub_TN','value' =>'icecream_tub'},
+            'sticker_51' => {'name' => 'cupcake_TN','value' =>'cupcake'},
+            'sticker_52' => {'name' => 'bbq_TN','value' =>'bbq'},
+            'sticker_53' => {'name' => 'unicorn_float_TN','value' =>'unicorn_float'},
+            'sticker_54' => {'name' => 'surfboard_TN','value' =>'surfboard'},
+            'sticker_55' => {'name' => 'crown_TN','value' =>'crown'},
+            'sticker_56' => {'name' => 'birthdayHat_TN','value' =>'birthdayHat'},
+            'sticker_57' => {'name' => 'diamond_TN','value' =>'diamond'},
+            'sticker_58' => {'name' => 'feather_TN','value' =>'feather'},
+            'sticker_59' => {'name' => 'stars_TN','value' =>'stars'},
+            'sticker_60' => {'name' => 'starhp_TN','value' =>'starhp'},
+            'sticker_61' => {'name' => 'cat_TN','value' =>'cat'},
+            'sticker_62' => {'name' => 'smiley_TN','value' =>'smiley'}
+          }
+    
