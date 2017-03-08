@@ -23,6 +23,10 @@ class CameraRollPreviewScreen < Calabash::IBase
   def print
           "* id:'printButton'"
   end
+    
+    def check
+        "UIButton marked:'Save photo'"
+    end
 
   def share
          "* id:'shareButton'"
