@@ -19,6 +19,7 @@ static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 static CGFloat const kAnimationDuration = 0.3f;
 static CGFloat const kMarginOfError = .01f;
 static CGFloat const kSquareImageAllowance = 10.0f;
+static CGFloat const kLoadingIndicatorSize = 50;
 
 @interface PGGesturesView ()
 
@@ -88,7 +89,7 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     [self addSubview:self.checkmark];
     
-    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2, self.bounds.size.height / 2, 50, 50)];
+    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width / 2) - (kLoadingIndicatorSize / 2), (self.bounds.size.height / 2) - (kLoadingIndicatorSize / 2), kLoadingIndicatorSize, kLoadingIndicatorSize)];
     self.loadingIndicator.hidesWhenStopped = YES;
     [self addSubview:self.loadingIndicator];
     
