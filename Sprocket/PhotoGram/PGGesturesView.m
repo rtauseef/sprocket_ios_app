@@ -19,6 +19,7 @@ static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 static CGFloat const kAnimationDuration = 0.3f;
 static CGFloat const kMarginOfError = .01f;
 static CGFloat const kSquareImageAllowance = 10.0f;
+static CGFloat const kLoadingIndicatorSize = 50;
 
 @interface PGGesturesView ()
 
@@ -81,12 +82,17 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     [self addSubview:self.selectionView];
     
-    NSUInteger checkmarkWidth = 50;
+    NSUInteger checkmarkWidth = 37;
     self.checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width - (checkmarkWidth + 10), self.bounds.size.height - (checkmarkWidth + 10), checkmarkWidth, checkmarkWidth)];
     self.checkmark.image = [UIImage imageNamed:@"Check_Inactive1"];
     self.checkmark.highlightedImage = [UIImage imageNamed:@"Check"];
     
     [self addSubview:self.checkmark];
+    
+    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width / 2) - (kLoadingIndicatorSize / 2), (self.bounds.size.height / 2) - (kLoadingIndicatorSize / 2), kLoadingIndicatorSize, kLoadingIndicatorSize)];
+    self.loadingIndicator.hidesWhenStopped = YES;
+    self.loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self addSubview:self.loadingIndicator];
     
     self.isSelected = NO;
     self.isMultiSelectImage = NO;
@@ -124,7 +130,6 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     [self.scrollView addGestureRecognizer:lpgr];
     
     self.scrollView.userInteractionEnabled = YES;
-
 }
 
 - (void)setIsMultiSelectImage:(BOOL)isMultiSelectImage
@@ -133,6 +138,14 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     self.selectionView.hidden = !isMultiSelectImage;
     self.checkmark.hidden = !isMultiSelectImage;
+    
+    if (isMultiSelectImage) {
+        self.scrollView.backgroundColor = [UIColor whiteColor];
+        [self.loadingIndicator startAnimating];
+    } else {
+        self.scrollView.backgroundColor = [UIColor clearColor];
+    }
+    
 }
 
 - (void)setIsSelected:(BOOL)isSelected
@@ -175,6 +188,7 @@ static CGFloat const kSquareImageAllowance = 10.0f;
 {
     _image = image;
 
+    [self.loadingIndicator stopAnimating];
     [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
 }
 
@@ -202,10 +216,12 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     self.imageView.image = self.image;
     self.imageView.contentMode = self.imageContentMode;
-    
+
     CGSize imageFinalSize = [self.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
-    self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
-    
+    if (imageFinalSize.width && imageFinalSize.height) {
+        self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
+    }
+
     self.scrollView.minimumZoomScale = scaleFactor * self.minimumZoomScale;
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMaxY(self.imageView.frame));
     self.scrollView.contentOffset = CGPointMake((imageFinalSize.width - self.scrollView.bounds.size.width) / 2,
