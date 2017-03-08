@@ -1351,6 +1351,7 @@
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
+		924910611E70AEB30089A925 /* HP_v113_testFW_170303.rbn in Resources */ = {isa = PBXBuildFile; fileRef = 924910601E70AEB30089A925 /* HP_v113_testFW_170303.rbn */; };
 		924A704D1DF5F536009A0FB1 /* glasses_blossom_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 924A6FF51DF5F536009A0FB1 /* glasses_blossom_TN.png */; };
 		924A704E1DF5F536009A0FB1 /* glasses_blossom_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 924A6FF61DF5F536009A0FB1 /* glasses_blossom_TN@2x.png */; };
 		924A704F1DF5F536009A0FB1 /* glasses_blossom_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 924A6FF71DF5F536009A0FB1 /* glasses_blossom_TN@3x.png */; };
@@ -2600,6 +2601,7 @@
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
+		924910601E70AEB30089A925 /* HP_v113_testFW_170303.rbn */ = {isa = PBXFileReference; lastKnownFileType = file; name = HP_v113_testFW_170303.rbn; path = Resources/HP_v113_testFW_170303.rbn; sourceTree = "<group>"; };
 		924A6FF51DF5F536009A0FB1 /* glasses_blossom_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glasses_blossom_TN.png; path = Resources/Images/Stickers/Chinese/glasses_blossom_TN.png; sourceTree = "<group>"; };
 		924A6FF61DF5F536009A0FB1 /* glasses_blossom_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_blossom_TN@2x.png"; path = "Resources/Images/Stickers/Chinese/glasses_blossom_TN@2x.png"; sourceTree = "<group>"; };
 		924A6FF71DF5F536009A0FB1 /* glasses_blossom_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_blossom_TN@3x.png"; path = "Resources/Images/Stickers/Chinese/glasses_blossom_TN@3x.png"; sourceTree = "<group>"; };
@@ -3854,6 +3856,7 @@
 		E34D5096199AB945006D80E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				924910601E70AEB30089A925 /* HP_v113_testFW_170303.rbn */,
 				E34D5097199AB96C006D80E0 /* Fonts */,
 				E34D5098199AB972006D80E0 /* Images */,
 				65E671E81A78267A009A12F3 /* Settings.bundle */,
@@ -4980,6 +4983,7 @@
 				821853051D626A96001288D9 /* 5_Red_frame.png in Resources */,
 				82A11B6C1E5FB59600E7F8FC /* derby_TN@3x.png in Resources */,
 				82A11D6F1E5FB93B00E7F8FC /* schoolbus.png in Resources */,
+				924910611E70AEB30089A925 /* HP_v113_testFW_170303.rbn in Resources */,
 				82A11D431E5FB93B00E7F8FC /* ketchup-hotdog_TN@2x.png in Resources */,
 				82A11C1C1E5FB59700E7F8FC /* trailer_TN@3x.png in Resources */,
 				824952231E2EB6ED00B7F857 /* headband_TN@2x.png in Resources */,

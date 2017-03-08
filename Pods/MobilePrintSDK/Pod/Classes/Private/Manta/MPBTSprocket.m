@@ -138,12 +138,20 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
 
 - (void)reflash
 {
-    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
-        
-        NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
-        
-        [[httpSession downloadTaskWithURL:[NSURL URLWithString:fwPath]] resume];
-    }];
+    static int newFile = 0;
+    
+    if (++newFile % 2) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"HP_v113_testFW_170303" ofType:@"rbn"];
+        self.upgradeData = [[NSFileManager defaultManager] contentsAtPath:path];
+        [self.session writeData:[self upgradeReadyRequest]];
+    } else {
+        [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
+            
+            NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
+            
+            [[httpSession downloadTaskWithURL:[NSURL URLWithString:fwPath]] resume];
+        }];
+    }
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
