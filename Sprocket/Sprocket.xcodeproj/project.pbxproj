@@ -1482,6 +1482,8 @@
 		F22F12261E522FF300753C5A /* PGFeatureFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12241E522FF300753C5A /* PGFeatureFlag.m */; };
 		F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12381E560C2C00753C5A /* PGPhotoSelection.m */; };
 		F22F123A1E560C2C00753C5A /* PGPhotoSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12381E560C2C00753C5A /* PGPhotoSelection.m */; };
+		F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
+		F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
@@ -2769,6 +2771,8 @@
 		F22F12241E522FF300753C5A /* PGFeatureFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFeatureFlag.m; sourceTree = "<group>"; };
 		F22F12371E560C2C00753C5A /* PGPhotoSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPhotoSelection.h; sourceTree = "<group>"; };
 		F22F12381E560C2C00753C5A /* PGPhotoSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPhotoSelection.m; sourceTree = "<group>"; };
+		F22F12811E6F539200753C5A /* PGSecretKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSecretKeeper.h; sourceTree = "<group>"; };
+		F22F12821E6F539200753C5A /* PGSecretKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSecretKeeper.m; sourceTree = "<group>"; };
 		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
 		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
 		F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSetupSprocketViewController.h; sourceTree = "<group>"; };
@@ -3767,6 +3771,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
+				F22F127F1E6F387900753C5A /* Security */,
 				26B434641E3F02310071EEFA /* Sprocket.entitlements */,
 				E3461EC919AC01010042DF5E /* Libraries */,
 				F134BC2E1AC60517007D892B /* Logging */,
@@ -4083,6 +4088,15 @@
 				F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */,
 			);
 			name = SideBar;
+			sourceTree = "<group>";
+		};
+		F22F127F1E6F387900753C5A /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				F22F12811E6F539200753C5A /* PGSecretKeeper.h */,
+				F22F12821E6F539200753C5A /* PGSecretKeeper.m */,
+			);
+			name = Security;
 			sourceTree = "<group>";
 		};
 		F2C46E7E1DB6F17F00604371 /* IntroWizard */ = {
@@ -6089,6 +6103,7 @@
 				F2E785271DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */,
 				410e5832482fe56a231852de /* NSString+Utils.m in Sources */,
 				829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
+				F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				1d083780537ed0fd761b7b5c /* UIViewController+Trackable.m in Sources */,
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
@@ -6192,6 +6207,7 @@
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
+				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
