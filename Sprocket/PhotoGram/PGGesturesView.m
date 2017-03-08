@@ -91,6 +91,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     
     self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width / 2) - (kLoadingIndicatorSize / 2), (self.bounds.size.height / 2) - (kLoadingIndicatorSize / 2), kLoadingIndicatorSize, kLoadingIndicatorSize)];
     self.loadingIndicator.hidesWhenStopped = YES;
+    self.loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     [self addSubview:self.loadingIndicator];
     
     self.isSelected = NO;
@@ -139,7 +140,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.checkmark.hidden = !isMultiSelectImage;
     
     if (isMultiSelectImage) {
-        self.scrollView.backgroundColor = [UIColor blackColor];
+        self.scrollView.backgroundColor = [UIColor whiteColor];
         [self.loadingIndicator startAnimating];
     } else {
         self.scrollView.backgroundColor = [UIColor clearColor];
