@@ -145,16 +145,22 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-//    if ([[DBChooser defaultChooser] handleOpenURL:url]) {
-//        // This was a Chooser response and handleOpenURL automatically ran the completion block
-//        return YES;
-//    }
-//    
-//    if ([url.scheme isEqual:@"hpsprocket"]) {
-//        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-//    } else {
-//        return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-//    }
+    if ([[DBChooser defaultChooser] handleOpenURL:url]) {
+        // This was a Chooser response and handleOpenURL automatically ran the completion block
+        return YES;
+    }
+    
+    if ([url.scheme isEqual:@"hpsprocket"]) {
+        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    } else if ([url.scheme isEqual:@"com.hp.sprocket.deepLinks"]) {
+        [self deepLink:url.pathComponents];
+        //        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        //UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
+        //[[self currentTopViewController] presentViewController:viewController animated:YES completion:nil];
+        [self goToLandingPage];
+    } else {
+        return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    }
     NSMutableArray *schemes = [NSMutableArray array];
     
     // Look at our plist
@@ -163,15 +169,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         [schemes addObjectsFromArray:[bundleURLTypes[idx] objectForKey:@"CFBundleURLSchemes"]];
     }];
     
-    NSLog(@"******* schemes: %@", schemes);
-    
-    if (![schemes containsObject:url.scheme]) {
-        return NO;
-    }
-    
-    //    [self deepLink:url.pathComponents];
-    
     return YES;
+}
+
+- (void)deepLink:(NSArray *)pathComponents
+{
+    NSLog(@"pathComponents: %@", pathComponents);
 }
 
 #pragma mark - MP object initialization
@@ -243,15 +246,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     // Only record changes to printer connectivity
     if (connectionDefaultValue != self.lastConnectedValue  &&
         self.lastConnectedValue != currentlyConnected) {
-        PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
         
-        UIViewController *rootViewController = revealController.frontViewController;
-        
-        if (self.menuShowing) {
-            rootViewController = revealController.rearViewController;
-        }
-        
-        UIViewController *topViewController = [self topViewController:rootViewController];
+        UIViewController *topViewController = [self currentTopViewController];
         NSString *name = topViewController.trackableScreenName;
         if (nil == name) {
             name = [NSString stringWithFormat:@"%@", [topViewController class]];
@@ -261,6 +257,35 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     }
     
     self.lastConnectedValue = currentlyConnected;
+}
+
+- (void)goToLandingPage
+{
+    PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+
+    UINavigationController *rootViewController = (UINavigationController *)revealController.frontViewController;
+
+    if (self.menuShowing) {
+        [revealController revealToggle:self];
+    }
+    
+    [rootViewController popToRootViewControllerAnimated:NO];
+
+}
+
+- (UIViewController *)currentTopViewController
+{
+    PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    UIViewController *rootViewController = revealController.frontViewController;
+    
+    if (self.menuShowing) {
+        rootViewController = revealController.rearViewController;
+    }
+    
+    UIViewController *topViewController = [self topViewController:rootViewController];
+
+    return topViewController;
 }
 
 - (UIViewController *)topViewController:(UIViewController *)rootViewController
