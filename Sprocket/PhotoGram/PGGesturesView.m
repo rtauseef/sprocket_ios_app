@@ -88,6 +88,10 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     [self addSubview:self.checkmark];
     
+    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2, self.bounds.size.height / 2, 50, 50)];
+    self.loadingIndicator.hidesWhenStopped = YES;
+    [self addSubview:self.loadingIndicator];
+    
     self.isSelected = NO;
     self.isMultiSelectImage = NO;
     
@@ -132,6 +136,14 @@ static CGFloat const kSquareImageAllowance = 10.0f;
     
     self.selectionView.hidden = !isMultiSelectImage;
     self.checkmark.hidden = !isMultiSelectImage;
+    
+    if (isMultiSelectImage) {
+        self.scrollView.backgroundColor = [UIColor blackColor];
+        [self.loadingIndicator startAnimating];
+    } else {
+        self.scrollView.backgroundColor = [UIColor clearColor];
+    }
+    
 }
 
 - (void)setIsSelected:(BOOL)isSelected
@@ -174,6 +186,7 @@ static CGFloat const kSquareImageAllowance = 10.0f;
 {
     _image = image;
 
+    [self.loadingIndicator stopAnimating];
     [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
 }
 
