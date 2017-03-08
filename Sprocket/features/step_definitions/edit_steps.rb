@@ -80,7 +80,6 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
             raise "Text not present!" unless txtTemplate = $template_text 
             end
         end
-    end
 end
 
 
@@ -219,7 +218,7 @@ Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
     raise "Wrong frame selected!" unless selected_frame_status = $list_loc[frame_name]
 end
 
-Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
+Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
     sticker_value=$sticker[sticker_id]['value']
     puts sticker_value
     selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
@@ -287,7 +286,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     i= i + 1
                 end
             else
-                while i < 61
+                while i < 63
 		sticker_id = "sticker_"+"#{i}"
                     macro %Q|I select "#{sticker_id}" sticker|
                     macro %Q|I verify blue line indicator is displayed under selected "sticker"|
@@ -424,8 +423,9 @@ $edit_screen_arr =
             }
     }
 	
-	$sticker ={ 'sticker_0' => {'name' => 'glasses_2b_TN','value' =>'glasses_2b'},
-            'sticker_1' => {'name' => 'hat_1b_TN','value' =>'hat_1b1'},
+	$sticker ={ 
+            'sticker_0' => {'name' => 'glasses_2b_TN','value' =>'glasses_2b'},
+            'sticker_1' => {'name' => 'hat_1b_TN','value' =>'hat_1b'},
             'sticker_2' => {'name' => 'kiss_me_2c_TN','value' =>'kiss_me_2c'},
             'sticker_3' => {'name' => 'derby_TN','value' =>'derby'},
             'sticker_4' => {'name' => 'st_hearts_TN','value' =>'st_hearts'},
