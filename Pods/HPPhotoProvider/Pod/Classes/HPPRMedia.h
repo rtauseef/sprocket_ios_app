@@ -15,6 +15,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
 
+@class HPPRSelectPhotoProvider;
+
 @interface HPPRMedia : NSObject
 
 @property (nonatomic, strong) NSString *objectID;
@@ -47,5 +49,9 @@
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)cancelImageRequestWithCompletion:(void(^)())completion;
+- (BOOL)isEqualToMedia:(HPPRMedia *)media;
+
+
+- (HPPRSelectPhotoProvider *)photoProvider;
 
 @end

@@ -33,6 +33,7 @@
 #import "PGPreviewViewController.h"
 #import "PGFeatureFlag.h"
 #import "PGPhotoSelection.h"
+#import "PGAnalyticsManager.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -406,7 +407,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
+    [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectEnable selectedPhotos:nil];
+
     [[PGPhotoSelection sharedInstance] beginSelectionMode];
+
+    PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
+    [currentLanding hideAlbums:YES];
+    [currentLanding.photoCollectionViewController beginMultiSelect];
 
     for (UINavigationController *navigationController in self.socialViewControllers) {
         PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
@@ -415,21 +422,44 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 }
 
 - (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
+    [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectCancel selectedPhotos:nil];
+
     [[PGPhotoSelection sharedInstance] endSelectionMode];
 
-    for (UINavigationController *navigationController in self.socialViewControllers) {
-        PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
-        [landing.photoCollectionViewController endMultiSelect];
-    }
+    PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
+    [currentLanding hideAlbums:YES];
+    [currentLanding.photoCollectionViewController endMultiSelect:YES];
 
-    PGLandingPageViewController *landing = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
-    if (!landing.photoCollectionViewController) {
+    if (!currentLanding.photoCollectionViewController) {
         [[PGMediaNavigation sharedInstance] disableSelectionMode];
     }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (UINavigationController *navigationController in self.socialViewControllers) {
+            if (self.currentNavigationController != navigationController) {
+                PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+                [landing hideAlbums:NO];
+                [landing.photoCollectionViewController endMultiSelect:NO];
+            }
+        }
+    });
 }
 
 - (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {
+    [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectPreview selectedPhotos:@([[[PGPhotoSelection sharedInstance] selectedMedia] count])];
 
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.source = @"MultiSelect";
+
+    [self presentViewController:previewViewController animated:YES completion:nil];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (UINavigationController *navigationController in self.socialViewControllers) {
+            PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
+            [landing hideAlbums:NO];
+        }
+    });
 }
 
 
@@ -474,6 +504,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     self.navigationView.socialSource = socialSource;
 
     BOOL isShowingPhotoGallery = [viewController isKindOfClass:[HPPRSelectPhotoCollectionViewController class]];
+
+    [self.navigationView updateSelectedItemsCount:[[[PGPhotoSelection sharedInstance] selectedMedia] count]];
 
     if (isShowingPhotoGallery) {
         [self.navigationView hideCameraButton];
@@ -593,6 +625,16 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
         PGLandingPageViewController *landing = (PGLandingPageViewController *)(navigationController.viewControllers.firstObject);
         [landing.photoCollectionViewController beginMultiSelect];
     }
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didAddMediaToSelection:(HPPRMedia *)media {
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    [self updateMediaNavigationForCurrentViewController];
+}
+
+- (void)landingPageViewController:(PGLandingPageViewController *)landingViewController didRemoveMediaFromSelection:(HPPRMedia *)media {
+    [[PGPhotoSelection sharedInstance] deselectMedia:media];
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 @end

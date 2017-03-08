@@ -11,6 +11,7 @@ Feature: Localization testing
         
   @TA15895
   @TA16511
+  @localization
   Scenario: Verify screen titles
     Given  I am on the "CameraRollLanding" screen
     Then I open cameraroll	
@@ -18,6 +19,7 @@ Feature: Localization testing
     
  @TA15895
  @TA16511
+ @localization
  Scenario: Verify landing screen texts
     Given  I am on the "Landing" screen
     Then I verify the "Take or select a photo" text
@@ -25,6 +27,7 @@ Feature: Localization testing
     
  @TA15895
  @TA16511
+ @localization
  Scenario: Verify side menu texts
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -41,6 +44,7 @@ Feature: Localization testing
     
 @TA15895
 @TA16511
+@localization
 Scenario: Verify side menu-how to &help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -57,6 +61,7 @@ Scenario: Verify side menu-how to &help
     
 @TA15895
 @TA16511
+@localization
 Scenario Outline: Verify side menu-how to &help screen navigation
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -72,6 +77,7 @@ Scenario Outline: Verify side menu-how to &help screen navigation
 
 @TA15895
 @TA16511
+@localization
 Scenario Outline: Verify side menu-how to &help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -88,6 +94,7 @@ Scenario Outline: Verify side menu-how to &help options
     | Visit Support Website  |
     
 @TA16511
+@localization
 Scenario: Verify Landing screen texts
     Given I am on the "Landing" screen
     And I should see the below listed social media texts:
@@ -99,6 +106,7 @@ Scenario: Verify Landing screen texts
     | CameraRoll |
     
 @TA16511
+@localization
 Scenario: Navigating through different Social media screens
     Given  I am on the "Landing" screen
     Then I should see "Instagram" logo
@@ -115,6 +123,7 @@ Scenario: Navigating through different Social media screens
     
     
 @TA16511
+@localization
 Scenario: Verify localization of Terms of Service link on Landing Screen
     Given  I am on the "Landing" screen
     And I touch the Terms of Service link
@@ -123,6 +132,7 @@ Scenario: Verify localization of Terms of Service link on Landing Screen
     Then I should see the "Landing" screen
     
 @TA16511
+@localization
     Scenario: Verify about screen from side menu
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
@@ -140,6 +150,7 @@ Scenario: Verify localization of Terms of Service link on Landing Screen
     
     
 @TA16511
+@localization
 Scenario: Verify Sprocket screen options
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar
@@ -153,6 +164,7 @@ Scenario: Verify Sprocket screen options
     
     
 @TA16511
+@localization
 Scenario: Verify localization of navigation to Technical Information screen
         Given  I am on the "Landing" screen
         When I touch menu button on navigation bar

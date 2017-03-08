@@ -673,7 +673,7 @@
                                         <rect key="frame" x="73" y="43" width="65" height="54"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-7o-mbb">
-                                        <rect key="frame" x="153" y="51" width="120" height="40"/>
+                                        <rect key="frame" x="153" y="50" width="120" height="40"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="35"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -907,7 +907,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
             </objects>
             <point key="canvasLocation" x="1435" y="441"/>
         </scene>
-        <!--Preview View Controller-->
+        <!--Data Source-->
         <scene sceneID="277-dk-MxQ">
             <objects>
                 <viewController storyboardIdentifier="PGPreviewViewController" id="ixR-2j-aQt" customClass="PGPreviewViewController" sceneMemberID="viewController">
@@ -955,12 +955,20 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                     <action selector="didTouchUpInsideEditButton:" destination="ixR-2j-aQt" eventType="touchUpInside" id="hd1-c1-g3X"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQq-pE-y19">
+                                                <rect key="frame" x="187" y="22" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="19"/>
+                                                <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="cG3-7c-npS" firstAttribute="leading" secondItem="BOE-OE-xsb" secondAttribute="leading" id="I4y-Re-DQW"/>
                                             <constraint firstItem="cG3-7c-npS" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="JLD-I1-qx7"/>
                                             <constraint firstAttribute="trailing" secondItem="fRU-DF-pcn" secondAttribute="trailing" constant="10" id="Z44-6W-2ZG"/>
+                                            <constraint firstItem="QQq-pE-y19" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="ogN-QM-8po"/>
                                             <constraint firstItem="fRU-DF-pcn" firstAttribute="centerY" secondItem="BOE-OE-xsb" secondAttribute="centerY" id="ooq-U0-DXJ"/>
+                                            <constraint firstItem="QQq-pE-y19" firstAttribute="centerX" secondItem="BOE-OE-xsb" secondAttribute="centerX" id="tSD-RK-XqW"/>
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
                                         </constraints>
                                     </view>
@@ -989,11 +997,19 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstAttribute="width" secondItem="2A8-Zq-Jww" secondAttribute="height" multiplier="2:3" id="9ny-J8-HOQ"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7T-DG-aYq" userLabel="CarouselView" customClass="iCarousel">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="533"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ixR-2j-aQt" id="wx1-It-PsB"/>
+                                            <outlet property="delegate" destination="ixR-2j-aQt" id="B0A-dc-voP"/>
+                                        </connections>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-Sr-Qd8" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="577" width="375" height="90"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="downloadButton">
-                                                <rect key="frame" x="99" y="31" width="21" height="29"/>
+                                                <rect key="frame" x="99" y="30.5" width="21" height="29"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" backgroundImage="previewDownload"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1004,7 +1020,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <rect key="frame" x="165" y="29" width="46" height="33"/>
+                                                <rect key="frame" x="165" y="28.5" width="46" height="33"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="previewPrinterInactive"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1015,7 +1031,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
-                                                <rect key="frame" x="251" y="31" width="20" height="29"/>
+                                                <rect key="frame" x="251" y="30.5" width="20" height="29"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" backgroundImage="previewShare"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1039,11 +1055,15 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
+                                    <constraint firstItem="j7T-DG-aYq" firstAttribute="leading" secondItem="Swo-Sr-Qd8" secondAttribute="leading" id="2i0-5N-HMP"/>
+                                    <constraint firstItem="j7T-DG-aYq" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="2pw-dQ-a0j"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="width" secondItem="BOE-OE-xsb" secondAttribute="width" id="94O-wH-MDY"/>
+                                    <constraint firstItem="j7T-DG-aYq" firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="Asy-Uj-wU2"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="Grf-Nx-WsQ"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="HcJ-BT-acW"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="height" secondItem="BOE-OE-xsb" secondAttribute="height" id="PZB-5d-zf5"/>
+                                    <constraint firstItem="Swo-Sr-Qd8" firstAttribute="top" secondItem="j7T-DG-aYq" secondAttribute="bottom" id="TMS-SZ-ob9"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="UIb-W3-b9g"/>
                                     <constraint firstItem="2A8-Zq-Jww" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="VDN-XF-RRJ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2A8-Zq-Jww" secondAttribute="trailing" constant="10" id="XBQ-yT-6KM"/>
@@ -1064,6 +1084,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                             <constraint firstItem="fVw-VT-qaC" firstAttribute="centerX" secondItem="faB-tS-mHG" secondAttribute="centerX" id="Bnu-0Q-LzJ"/>
                             <constraint firstItem="4H2-xg-aFm" firstAttribute="width" secondItem="faB-tS-mHG" secondAttribute="width" id="DpX-BM-Cv6"/>
                             <constraint firstItem="pTc-Ba-zcw" firstAttribute="leading" secondItem="faB-tS-mHG" secondAttribute="leading" id="Dt7-ab-IeH"/>
+                            <constraint firstItem="j7T-DG-aYq" firstAttribute="width" secondItem="faB-tS-mHG" secondAttribute="width" id="G8A-97-6AI"/>
                             <constraint firstItem="kGR-q5-Apw" firstAttribute="top" secondItem="RDY-8P-omY" secondAttribute="bottom" id="V1g-aR-mvj"/>
                             <constraint firstItem="4H2-xg-aFm" firstAttribute="centerX" secondItem="faB-tS-mHG" secondAttribute="centerX" id="c59-J0-2T5"/>
                             <constraint firstAttribute="trailing" secondItem="kGR-q5-Apw" secondAttribute="trailing" id="h7K-jL-qFB"/>
@@ -1079,10 +1100,13 @@ To improve future versions of this app and HP Printers, HP will periodically col
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="Swo-Sr-Qd8" id="z90-Vm-q0n"/>
+                        <outlet property="bottomViewHeight" destination="BlW-aW-yWc" id="GeK-oc-grg"/>
                         <outlet property="cameraView" destination="pTc-Ba-zcw" id="JgV-RL-8bO"/>
+                        <outlet property="carouselView" destination="j7T-DG-aYq" id="GOa-VA-czq"/>
                         <outlet property="editButton" destination="fRU-DF-pcn" id="5fD-ns-euF"/>
                         <outlet property="imageContainer" destination="2A8-Zq-Jww" id="qrm-YH-ydp"/>
                         <outlet property="imageSavedView" destination="fVw-VT-qaC" id="2HC-oc-ebh"/>
+                        <outlet property="numberOfSelectedPhotos" destination="QQq-pE-y19" id="JND-UB-Om3"/>
                         <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
                         <outlet property="printButton" destination="Afb-Xc-wRV" id="CtR-FB-pGg"/>
                         <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
@@ -1092,7 +1116,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfL-7m-DIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435" y="1144"/>
+            <point key="canvasLocation" x="1434.4000000000001" y="1143.7781109445277"/>
         </scene>
         <!--Interstitial Awareness View Controller Scene-->
         <scene sceneID="QlC-wQ-1Za">
@@ -1542,7 +1566,7 @@ printer and app support.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Sprocket Printer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4go-MT-3C1">
-                                                    <rect key="frame" x="45" y="14" width="134" height="17"/>
+                                                    <rect key="frame" x="45" y="13" width="134" height="17"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                                     <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1575,7 +1599,7 @@ printer and app support.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Sprocket Printer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYV-cn-yZe">
-                                                    <rect key="frame" x="45" y="14" width="135" height="17"/>
+                                                    <rect key="frame" x="45" y="13" width="135" height="17"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="15"/>
                                                     <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2910,13 +2934,13 @@ printer and app support.</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeE-ya-uIL">
-                                                    <rect key="frame" x="57" y="13" width="30" height="19"/>
+                                                    <rect key="frame" x="57" y="12" width="30" height="19"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVm-WV-iXE">
-                                                    <rect key="frame" x="322" y="9" width="38" height="28"/>
+                                                    <rect key="frame" x="322" y="8" width="38" height="28"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                                     <state key="normal" title="Sign In">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

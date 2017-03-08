@@ -4,8 +4,8 @@ Feature: Verify Edit sticker feature
 
 @reset
 @regression
-Scenario Outline: Verify 'Sticker' option
-    Given I am on the "<social_media_screen_name>" screen
+Scenario: Verify 'Sticker' option
+    Given I am on the "CameraRoll Preview" screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
     Then I tap "Sticker" button
@@ -15,15 +15,10 @@ Scenario Outline: Verify 'Sticker' option
     Then I tap "Close" mark
     Then I should see the "Edit" screen
     And I should see the photo with no "sticker"
-    
-    Examples:
-    | social_media_screen_name        |
-    | Instagram Preview  |
-    | Flickr Preview     |
-    | CameraRoll Preview |
+
     
 @reset
-@regression
+@done
 Scenario Outline: Verify 'Sticker' option
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker"
@@ -35,7 +30,7 @@ Scenario Outline: Verify 'Sticker' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-    | Flickr Preview     |
+  #  | Flickr Preview     |
     | CameraRoll Preview |
     
 @reset
@@ -51,7 +46,7 @@ Scenario Outline: Verify Sticker delete option
      Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-    | Flickr Preview     |
+  #  | Flickr Preview     |
     | CameraRoll Preview |
     
     
@@ -130,7 +125,7 @@ Scenario: Verify sticker list
                 | OMG_TN                |
                 
 @reset
-@done
+@regression
 Scenario: Verify all the stickers are applied for sticker editor screen 
     Given I am on the "StickerEditor" screen for "CameraRoll"  
     Then I verify that all the "stickers" are applied successfully

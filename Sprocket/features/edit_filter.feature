@@ -4,7 +4,7 @@ Feature: Verify Filter-edit screen
 
   
 @reset
-@done
+@regression
 Scenario Outline: Verify 'Filter' option
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -18,11 +18,11 @@ Scenario Outline: Verify 'Filter' option
     Examples:
     | social_media_screen_name |
     | Instagram Preview   |
-    | Flickr Preview     |
+   # | Flickr Preview     |
     | CameraRoll Preview |
 
 @reset
-@regression
+@done
 Scenario Outline: Verify Filter selection option
     Given I am on the "FilterEditor" screen for "<social_media_screen_name>" 
     Then I select "Filter"
@@ -34,7 +34,32 @@ Scenario Outline: Verify Filter selection option
     Examples:
     | social_media_screen_name|
     | Instagram Preview       |
-    | Flickr Preview     |
+   # | Flickr Preview     |
     | CameraRoll Preview  |
+    
+@reset
+@TA17012
+Scenario: Verify filer list
+    Given I am on the "FilterEditor" screen for "CameraRoll Preview" 
+    Then I select "Filter"
+    Then I should see the following "filters" in the screen:
+    | None      |
+    | AD1920    |
+    | Candy     |
+    | Lomo      |
+    | Litho     |
+    | Quozi     |
+    | SepiaHigh |
+    | Sunset    |
+    | Twilight  |
+    | Breeze    |
+    | Blues     |
+    | Dynamic   |
+    | Orchid    |
+    | Pale      |
+    | 80s       | 
+    | Pro400    |
+    | Steel     |
+    | Creamy    |
 
     

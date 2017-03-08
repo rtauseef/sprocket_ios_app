@@ -105,9 +105,9 @@
             self.signInView.alpha = 0.0f;
             
             [HPPRInstagramUser userProfileWithId:@"self" completion:^(NSString *userName, NSString *userId, NSString *profilePictureUrl, NSNumber *posts, NSNumber *followers, NSNumber *following) {
-                dispatch_async(dispatch_get_main_queue(), ^ {
+                dispatch_async(dispatch_get_main_queue(), ^{
                     if (userName == nil) {
-                        [[HPPRInstagram sharedClient] setAccessToken:nil];
+                        [[HPPRInstagram sharedClient] clearAccessToken];
                         [spinner removeFromSuperview];
                         [self enableSignIn];
                         [self didSignOutToSocialSource:socialSource];

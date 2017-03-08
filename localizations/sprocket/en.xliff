@@ -27,9 +27,9 @@ social media galleries</target>
         <note>Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV";</note>
       </trans-unit>
       <trans-unit id="3FE-mc-FrD.text">
-        <source>By using Pitu, you also agree to the HP Terms of Service.</source>
-        <target>By using Pitu, you also agree to the HP Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By using Pitu, you also agree to the HP Terms of Service."; ObjectID = "3FE-mc-FrD";</note>
+        <source>By using Pitu, you also agree to the HP &lt;Terms of Service&gt;.</source>
+        <target>By using Pitu, you also agree to the HP &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By using Pitu, you also agree to the HP &lt;Terms of Service&gt;."; ObjectID = "3FE-mc-FrD";</note>
       </trans-unit>
       <trans-unit id="3PR-Lb-830.title">
         <source>How To &amp; Help</source>
@@ -37,14 +37,14 @@ social media galleries</target>
         <note>Class = "UINavigationItem"; title = "How To &amp; Help"; ObjectID = "3PR-Lb-830";</note>
       </trans-unit>
       <trans-unit id="3rx-Fp-iLE.text">
-        <source>By authenticating with social sources you also agree to HP Terms of Service.</source>
-        <target>By authenticating with social sources you also agree to HP Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By authenticating with social sources you also agree to HP Terms of Service."; ObjectID = "3rx-Fp-iLE";</note>
+        <source>By authenticating with social sources you also agree to HP &lt;Terms of Service&gt;.</source>
+        <target>By authenticating with social sources you also agree to HP &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By authenticating with social sources you also agree to HP &lt;Terms of Service&gt;."; ObjectID = "3rx-Fp-iLE";</note>
       </trans-unit>
       <trans-unit id="3t6-KR-FbJ.text">
-        <source>By authenticating with Instagram, you also agree with HP’s Terms of Service.</source>
-        <target>By authenticating with Instagram, you also agree with HP’s Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s Terms of Service."; ObjectID = "3t6-KR-FbJ";</note>
+        <source>By authenticating with Instagram, you also agree with HP’s &lt;Terms of Service&gt;.</source>
+        <target>By authenticating with Instagram, you also agree with HP’s &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s &lt;Terms of Service&gt;."; ObjectID = "3t6-KR-FbJ";</note>
       </trans-unit>
       <trans-unit id="4go-MT-3C1.text">
         <source>Reset Sprocket Printer</source>
@@ -90,6 +90,11 @@ social media galleries</target>
         <source>More Help</source>
         <target>More Help</target>
         <note>Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y";</note>
+      </trans-unit>
+      <trans-unit id="BfZ-Hp-dCM.text">
+        <source>Album Title</source>
+        <target>Album Title</target>
+        <note>Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM";</note>
       </trans-unit>
       <trans-unit id="DG2-Ok-pfm.normalTitle">
         <source>Sign in</source>
@@ -207,9 +212,9 @@ social media galleries</target>
         <note>Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc";</note>
       </trans-unit>
       <trans-unit id="QQK-QP-Amd.text">
-        <source>By authenticating with Flickr, you also agree with HP’s Terms of Service.</source>
-        <target>By authenticating with Flickr, you also agree with HP’s Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s Terms of Service."; ObjectID = "QQK-QP-Amd";</note>
+        <source>By authenticating with Flickr, you also agree with HP’s &lt;Terms of Service&gt;.</source>
+        <target>By authenticating with Flickr, you also agree with HP’s &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s &lt;Terms of Service&gt;."; ObjectID = "QQK-QP-Amd";</note>
       </trans-unit>
       <trans-unit id="QeE-ya-uIL.text">
         <source>Title</source>
@@ -263,9 +268,9 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <note>Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c";</note>
       </trans-unit>
       <trans-unit id="UGC-Wa-Xa2.text">
-        <source>By authenticating with Facebook, you also agree with HP’s Terms of Service.</source>
-        <target>By authenticating with Facebook, you also agree with HP’s Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s Terms of Service."; ObjectID = "UGC-Wa-Xa2";</note>
+        <source>By authenticating with Facebook, you also agree with HP’s &lt;Terms of Service&gt;.</source>
+        <target>By authenticating with Facebook, you also agree with HP’s &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s &lt;Terms of Service&gt;."; ObjectID = "UGC-Wa-Xa2";</note>
       </trans-unit>
       <trans-unit id="VKP-mJ-ZZt.text">
         <source>Detail</source>
@@ -298,9 +303,9 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <note>Class = "UINavigationItem"; title = "sprocket"; ObjectID = "Yx0-Cs-62a";</note>
       </trans-unit>
       <trans-unit id="Z1T-tw-tdj.text">
-        <source>By using Camera Roll, you also agree to the HP Terms of Service.</source>
-        <target>By using Camera Roll, you also agree to the HP Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP Terms of Service."; ObjectID = "Z1T-tw-tdj";</note>
+        <source>By using Camera Roll, you also agree to the HP &lt;Terms of Service&gt;.</source>
+        <target>By using Camera Roll, you also agree to the HP &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP &lt;Terms of Service&gt;."; ObjectID = "Z1T-tw-tdj";</note>
       </trans-unit>
       <trans-unit id="Zq3-aI-5TN.normalTitle">
         <source>Photos</source>
@@ -391,15 +396,20 @@ in the “More” menu when sharing.</target>
         <target>Setup Sprocket Printer</target>
         <note>Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe";</note>
       </trans-unit>
+      <trans-unit id="ncN-EJ-cY0.text">
+        <source>Photo Count</source>
+        <target>Photo Count</target>
+        <note>Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0";</note>
+      </trans-unit>
       <trans-unit id="ncc-Qr-0mC.title">
         <source>Flickr</source>
         <target>Flickr</target>
         <note>Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC";</note>
       </trans-unit>
       <trans-unit id="ob1-ZF-jEd.text">
-        <source>By authenticating with Qzone, you also agree with HP’s Terms of Service.</source>
-        <target>By authenticating with Qzone, you also agree with HP’s Terms of Service.</target>
-        <note>Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s Terms of Service."; ObjectID = "ob1-ZF-jEd";</note>
+        <source>By authenticating with Qzone, you also agree with HP’s &lt;Terms of Service&gt;.</source>
+        <target>By authenticating with Qzone, you also agree with HP’s &lt;Terms of Service&gt;.</target>
+        <note>Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s &lt;Terms of Service&gt;."; ObjectID = "ob1-ZF-jEd";</note>
       </trans-unit>
       <trans-unit id="ofB-Rh-sga.text">
         <source>Detail</source>
@@ -459,8 +469,8 @@ printer and app support.</target>
         <target>sprocket</target>
       </trans-unit>
       <trans-unit id="CFBundleShortVersionString">
-        <source>1.8.0</source>
-        <target>1.8.0</target>
+        <source>1.10.0</source>
+        <target>1.10.0</target>
       </trans-unit>
       <trans-unit id="NSBluetoothPeripheralUsageDescription">
         <source>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</source>
@@ -490,8 +500,8 @@ printer and app support.</target>
         <target>sprocket</target>
       </trans-unit>
       <trans-unit id="CFBundleShortVersionString">
-        <source>1.8.0</source>
-        <target>1.8.0</target>
+        <source>1.10.0</source>
+        <target>1.10.0</target>
       </trans-unit>
       <trans-unit id="NSBluetoothPeripheralUsageDescription">
         <source>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</source>
@@ -532,25 +542,20 @@ printer and app support.</target>
         <target>App Settings</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Arrow Sticker">
-        <source>Arrow Sticker</source>
-        <target>Arrow Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Auto-Save Settings">
         <source>Auto-Save Settings</source>
         <target>Auto-Save Settings</target>
         <note>Settings for automatically saving photos</note>
       </trans-unit>
-      <trans-unit id="Birthday Hat Sticker">
-        <source>Birthday Hat Sticker</source>
-        <target>Birthday Hat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Buy Paper">
         <source>Buy Paper</source>
         <target>Buy Paper</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="By authenticating with %@, you also agree with HP’s &lt;Terms of Service&gt;.">
+        <source>By authenticating with %@, you also agree with HP’s &lt;Terms of Service&gt;.</source>
+        <target>By authenticating with %@, you also agree with HP’s &lt;Terms of Service&gt;.</target>
+        <note>Terms of Service String. PS: Don't remove %@ nor &lt; and &gt;</note>
       </trans-unit>
       <trans-unit id="Camera Access Required">
         <source>Camera Access Required</source>
@@ -568,160 +573,15 @@ printer and app support.</target>
         <note>Button for dismissing dialog
    Generic Cancel from an action.</note>
       </trans-unit>
-      <trans-unit id="Cat Ears Sticker">
-        <source>Cat Ears Sticker</source>
-        <target>Cat Ears Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Cat Glasses Sticker">
-        <source>Cat Glasses Sticker</source>
-        <target>Cat Glasses Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Cat Sticker">
-        <source>Cat Sticker</source>
-        <target>Cat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Cat Whiskers Sticker">
-        <source>Cat Whiskers Sticker</source>
-        <target>Cat Whiskers Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Check out my HP Sprocket creation">
         <source>Check out my HP Sprocket creation</source>
         <target>Check out my HP Sprocket creation</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Dragon Sticker">
-        <source>Chinese Dragon Sticker</source>
-        <target>Chinese Dragon Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Dui Lian Couplet Sticker">
-        <source>Chinese Dui Lian Couplet Sticker</source>
-        <target>Chinese Dui Lian Couplet Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Fan Sticker">
-        <source>Chinese Fan Sticker</source>
-        <target>Chinese Fan Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Firecracker Sticker">
-        <source>Chinese Firecracker Sticker</source>
-        <target>Chinese Firecracker Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Fish Sticker">
-        <source>Chinese Fish Sticker</source>
-        <target>Chinese Fish Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Fu Good Luck Sticker">
-        <source>Chinese Fu Good Luck Sticker</source>
-        <target>Chinese Fu Good Luck Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Glasses 2017 Sticker">
-        <source>Chinese Glasses 2017 Sticker</source>
-        <target>Chinese Glasses 2017 Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Glasses Blossom Sticker">
-        <source>Chinese Glasses Blossom Sticker</source>
-        <target>Chinese Glasses Blossom Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese HCNY Sticker">
-        <source>Chinese HCNY Sticker</source>
-        <target>Chinese HCNY Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Lantern Sticker">
-        <source>Chinese Lantern Sticker</source>
-        <target>Chinese Lantern Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Lion Mask Sticker">
-        <source>Chinese Lion Mask Sticker</source>
-        <target>Chinese Lion Mask Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Lucky Cat Sticker">
-        <source>Chinese Lucky Cat Sticker</source>
-        <target>Chinese Lucky Cat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Man Hat Sticker">
-        <source>Chinese Man Hat Sticker</source>
-        <target>Chinese Man Hat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Money Sticker">
-        <source>Chinese Money Sticker</source>
-        <target>Chinese Money Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Mustache Sticker">
-        <source>Chinese Mustache Sticker</source>
-        <target>Chinese Mustache Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Oranges Sticker">
-        <source>Chinese Oranges Sticker</source>
-        <target>Chinese Oranges Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Panda Sticker">
-        <source>Chinese Panda Sticker</source>
-        <target>Chinese Panda Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Plum Blossom Sticker">
-        <source>Chinese Plum Blossom Sticker</source>
-        <target>Chinese Plum Blossom Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Rooster Sticker">
-        <source>Chinese Rooster Sticker</source>
-        <target>Chinese Rooster Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Woman Hat 2 Sticker">
-        <source>Chinese Woman Hat 2 Sticker</source>
-        <target>Chinese Woman Hat 2 Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Woman Hat Sticker">
-        <source>Chinese Woman Hat Sticker</source>
-        <target>Chinese Woman Hat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Chinese Yin Yang Sticker">
-        <source>Chinese Yin Yang Sticker</source>
-        <target>Chinese Yin Yang Sticker</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect">
         <source>Connect</source>
         <target>Connect</target>
         <note>Setup step 3 desc</note>
-      </trans-unit>
-      <trans-unit id="Crown Sticker">
-        <source>Crown Sticker</source>
-        <target>Crown Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Cupcake Sticker">
-        <source>Cupcake Sticker</source>
-        <target>Cupcake Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Diamond Sticker">
-        <source>Diamond Sticker</source>
-        <target>Diamond Sticker</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dismiss">
         <source>Dismiss</source>
@@ -763,16 +623,6 @@ printer and app support.</target>
         <target>Facebook</target>
         <note>Social source title for Facebook</note>
       </trans-unit>
-      <trans-unit id="Feather 2 Sticker">
-        <source>Feather 2 Sticker</source>
-        <target>Feather 2 Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Feather Sticker">
-        <source>Feather Sticker</source>
-        <target>Feather Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Feedback on sprocket for iOS (Record Locator: %@)">
         <source>Feedback on sprocket for iOS (Record Locator: %@)</source>
         <target>Feedback on sprocket for iOS (Record Locator: %@)</target>
@@ -813,16 +663,6 @@ printer and app support.</target>
         <target>Green Water Color Frame</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Heart Express Sticker">
-        <source>Heart Express Sticker</source>
-        <target>Heart Express Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Hearts Sticker">
-        <source>Hearts Sticker</source>
-        <target>Hearts Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="How To">
         <source>How To</source>
         <target>How To</target>
@@ -843,11 +683,6 @@ printer and app support.</target>
         <target>Kraft Frame</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Leaf 3 Sticker">
-        <source>Leaf 3 Sticker</source>
-        <target>Leaf 3 Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Load Paper">
         <source>Load Paper</source>
         <target>Load Paper</target>
@@ -856,11 +691,6 @@ printer and app support.</target>
       <trans-unit id="Log file has been cleared.">
         <source>Log file has been cleared.</source>
         <target>Log file has been cleared.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Moon Sticker">
-        <source>Moon Sticker</source>
-        <target>Moon Sticker</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No">
@@ -892,11 +722,6 @@ printer and app support.</target>
         <source>OK</source>
         <target>OK</target>
         <note>Allows user close dialog</note>
-      </trans-unit>
-      <trans-unit id="OMG Sticker">
-        <source>OMG Sticker</source>
-        <target>OMG Sticker</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Oops!">
         <source>Oops!</source>
@@ -1040,16 +865,6 @@ You can also use your device photos.</target>
         <target>Sprocket Printer Firmware Upgrade Available</target>
         <note>Title for dialog that prompts user to ugrade device firmware</note>
       </trans-unit>
-      <trans-unit id="Star Sticker">
-        <source>Star Sticker</source>
-        <target>Star Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Stars Sticker">
-        <source>Stars Sticker</source>
-        <target>Stars Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Step 1">
         <source>Step 1</source>
         <target>Step 1</target>
@@ -1068,91 +883,6 @@ You can also use your device photos.</target>
       <trans-unit id="Success">
         <source>Success</source>
         <target>Success</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Sunglasses Sticker">
-        <source>Sunglasses Sticker</source>
-        <target>Sunglasses Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Banner Sticker">
-        <source>SuperBowl Banner Sticker</source>
-        <target>SuperBowl Banner Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Eye Black Sticker">
-        <source>SuperBowl Eye Black Sticker</source>
-        <target>SuperBowl Eye Black Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Flag Sticker">
-        <source>SuperBowl Flag Sticker</source>
-        <target>SuperBowl Flag Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Foam Finger Sticker">
-        <source>SuperBowl Foam Finger Sticker</source>
-        <target>SuperBowl Foam Finger Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Football Flames Sticker">
-        <source>SuperBowl Football Flames Sticker</source>
-        <target>SuperBowl Football Flames Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Game Time Sticker">
-        <source>SuperBowl Game Time Sticker</source>
-        <target>SuperBowl Game Time Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Glasses Sticker">
-        <source>SuperBowl Glasses Sticker</source>
-        <target>SuperBowl Glasses Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Glasses Two Sticker">
-        <source>SuperBowl Glasses Two Sticker</source>
-        <target>SuperBowl Glasses Two Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Goal Post Sticker">
-        <source>SuperBowl Goal Post Sticker</source>
-        <target>SuperBowl Goal Post Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Heart Football Sticker">
-        <source>SuperBowl Heart Football Sticker</source>
-        <target>SuperBowl Heart Football Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Heart Football Two Sticker">
-        <source>SuperBowl Heart Football Two Sticker</source>
-        <target>SuperBowl Heart Football Two Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Helmet Sticker">
-        <source>SuperBowl Helmet Sticker</source>
-        <target>SuperBowl Helmet Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl I Heart Football Sticker">
-        <source>SuperBowl I Heart Football Sticker</source>
-        <target>SuperBowl I Heart Football Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Love Sticker">
-        <source>SuperBowl Love Sticker</source>
-        <target>SuperBowl Love Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Owl Sticker">
-        <source>SuperBowl Owl Sticker</source>
-        <target>SuperBowl Owl Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="SuperBowl Stars n Balls Sticker">
-        <source>SuperBowl Stars n Balls Sticker</source>
-        <target>SuperBowl Stars n Balls Sticker</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Survey">
@@ -1180,11 +910,6 @@ You can also use your device photos.</target>
         <target>Tell us what you think of sprocket</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Terms of Service">
-        <source>Terms of Service</source>
-        <target>Terms of Service</target>
-        <note>Phrase to make link for terms of service of the landing page</note>
-      </trans-unit>
       <trans-unit id="The logfile is attached to this message.">
         <source>The logfile is attached to this message.</source>
         <target>The logfile is attached to this message.</target>
@@ -1210,131 +935,6 @@ You can also use your device photos.</target>
         <target>Upgrade</target>
         <note>If pressed (on firmware upgrade dialog), firmware upgrade will begin</note>
       </trans-unit>
-      <trans-unit id="Valentines Broken Heart Sticker">
-        <source>Valentines Broken Heart Sticker</source>
-        <target>Valentines Broken Heart Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Butterfly Sticker">
-        <source>Valentines Butterfly Sticker</source>
-        <target>Valentines Butterfly Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Cat Sticker">
-        <source>Valentines Cat Sticker</source>
-        <target>Valentines Cat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Conversation Heart Sticker">
-        <source>Valentines Conversation Heart Sticker</source>
-        <target>Valentines Conversation Heart Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Cupcake Sticker">
-        <source>Valentines Cupcake Sticker</source>
-        <target>Valentines Cupcake Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Dancing Hearts Sticker">
-        <source>Valentines Dancing Hearts Sticker</source>
-        <target>Valentines Dancing Hearts Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Delivery Bird Sticker">
-        <source>Valentines Delivery Bird Sticker</source>
-        <target>Valentines Delivery Bird Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Flower Crown Sticker">
-        <source>Valentines Flower Crown Sticker</source>
-        <target>Valentines Flower Crown Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Flying Heart Sticker">
-        <source>Valentines Flying Heart Sticker</source>
-        <target>Valentines Flying Heart Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Hat Sticker">
-        <source>Valentines Hat Sticker</source>
-        <target>Valentines Hat Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Antennae Sticker">
-        <source>Valentines Heart Antennae Sticker</source>
-        <target>Valentines Heart Antennae Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Arrow Sticker">
-        <source>Valentines Heart Arrow Sticker</source>
-        <target>Valentines Heart Arrow Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Balloons Sticker">
-        <source>Valentines Heart Balloons Sticker</source>
-        <target>Valentines Heart Balloons Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Banner Sticker">
-        <source>Valentines Heart Banner Sticker</source>
-        <target>Valentines Heart Banner Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Bouquet Sticker">
-        <source>Valentines Heart Bouquet Sticker</source>
-        <target>Valentines Heart Bouquet Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Bow Sticker">
-        <source>Valentines Heart Bow Sticker</source>
-        <target>Valentines Heart Bow Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Confetti Sticker">
-        <source>Valentines Heart Confetti Sticker</source>
-        <target>Valentines Heart Confetti Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Emoji Sticker">
-        <source>Valentines Heart Emoji Sticker</source>
-        <target>Valentines Heart Emoji Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Frame Sticker">
-        <source>Valentines Heart Frame Sticker</source>
-        <target>Valentines Heart Frame Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Garland Sticker">
-        <source>Valentines Heart Garland Sticker</source>
-        <target>Valentines Heart Garland Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Glasses Sticker">
-        <source>Valentines Heart Glasses Sticker</source>
-        <target>Valentines Heart Glasses Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Glasses Two Sticker">
-        <source>Valentines Heart Glasses Two Sticker</source>
-        <target>Valentines Heart Glasses Two Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Monster Sticker">
-        <source>Valentines Heart Monster Sticker</source>
-        <target>Valentines Heart Monster Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Thought Sticker">
-        <source>Valentines Heart Thought Sticker</source>
-        <target>Valentines Heart Thought Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Heart Tiara Sticker">
-        <source>Valentines Heart Tiara Sticker</source>
-        <target>Valentines Heart Tiara Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Valentines Hearts Frame">
         <source>Valentines Hearts Frame</source>
         <target>Valentines Hearts Frame</target>
@@ -1343,26 +943,6 @@ You can also use your device photos.</target>
       <trans-unit id="Valentines Hearts Overlay Frame">
         <source>Valentines Hearts Overlay Frame</source>
         <target>Valentines Hearts Overlay Frame</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Lock And Key Sticker">
-        <source>Valentines Lock And Key Sticker</source>
-        <target>Valentines Lock And Key Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Love Creature Sticker">
-        <source>Valentines Love Creature Sticker</source>
-        <target>Valentines Love Creature Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Love Letter Sticker">
-        <source>Valentines Love Letter Sticker</source>
-        <target>Valentines Love Letter Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Pig Sticker">
-        <source>Valentines Pig Sticker</source>
-        <target>Valentines Pig Sticker</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Valentines Pink Polka Frame">
@@ -1383,21 +963,6 @@ You can also use your device photos.</target>
       <trans-unit id="Valentines Red Stripes Frame">
         <source>Valentines Red Stripes Frame</source>
         <target>Valentines Red Stripes Frame</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Rosebud Sticker">
-        <source>Valentines Rosebud Sticker</source>
-        <target>Valentines Rosebud Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Target Heart Sticker">
-        <source>Valentines Target Heart Sticker</source>
-        <target>Valentines Target Heart Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Valentines Xoxo Sticker">
-        <source>Valentines Xoxo Sticker</source>
-        <target>Valentines Xoxo Sticker</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Version %@ (%@)">
@@ -1430,11 +995,6 @@ You can also use your device photos.</target>
         <target>Would you like to sign out of %@?</target>
         <note>Ask user if he/she wishes to sign out of a particular social media site.</note>
       </trans-unit>
-      <trans-unit id="XOXO Sticker">
-        <source>XOXO Sticker</source>
-        <target>XOXO Sticker</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Yes">
         <source>Yes</source>
         <target>Yes</target>
@@ -1454,6 +1014,25 @@ You can also use your device photos.</target>
         <source>sprocket error log</source>
         <target>sprocket error log</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="PushNotificationExtension/Info.plist" source-language="en" datatype="plaintext" target-language="en">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName">
+        <source>PushNotificationExtension</source>
+        <target>PushNotificationExtension</target>
+      </trans-unit>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+        <target>$(PRODUCT_NAME)</target>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+        <target>1.0</target>
       </trans-unit>
     </body>
   </file>
@@ -1493,8 +1072,8 @@ You can also use your device photos.</target>
         <target>$(PRODUCT_NAME)</target>
       </trans-unit>
       <trans-unit id="CFBundleShortVersionString">
-        <source>1.8.0</source>
-        <target>1.8.0</target>
+        <source>1.10.0</source>
+        <target>1.10.0</target>
       </trans-unit>
     </body>
   </file>

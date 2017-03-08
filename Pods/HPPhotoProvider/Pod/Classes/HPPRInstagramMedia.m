@@ -11,6 +11,7 @@
 //
 
 #import "HPPRInstagramMedia.h"
+#import "HPPRInstagramPhotoProvider.h"
 
 @interface HPPRInstagramMedia()
 
@@ -78,6 +79,10 @@
         [locations addObject:self.placeName];
     }
     return [NSArray arrayWithArray:locations];
+}
+
+- (HPPRSelectPhotoProvider *)photoProvider {
+    return [HPPRInstagramPhotoProvider sharedInstance];
 }
 
 @end

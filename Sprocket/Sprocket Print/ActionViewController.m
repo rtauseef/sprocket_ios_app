@@ -106,6 +106,8 @@ static NSInteger  const connectionDefaultValue = -1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
 
     [[MP sharedInstance] checkSprocketForUpdates:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -188,7 +190,8 @@ static NSInteger  const connectionDefaultValue = -1;
     self.batteryIndicator.level = batteryLevel;
 }
 
-#pragma mark - Print Notifications
+#pragma mark - Print Notification Handler
+
 - (void)handlePrintJobCompletedNotification:(NSNotification *)notification
 {
     NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
@@ -198,8 +201,8 @@ static NSInteger  const connectionDefaultValue = -1;
         printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
         
         [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem exendedInfo:nil];
+
     }
 }
-
 
 @end

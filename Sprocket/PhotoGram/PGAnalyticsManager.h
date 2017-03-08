@@ -54,6 +54,10 @@ extern NSString * const kEventCameraDirectionSelfieLabel;
 extern NSString * const kEventPrintButtonLabel;
 extern NSString * const kEventPrintShareLabel;
 
+extern NSString * const kEventMultiSelectCancel;
+extern NSString * const kEventMultiSelectEnable;
+extern NSString * const kEventMultiSelectPreview;
+
 extern NSString * const kPhotoCollectionViewModeGrid;
 extern NSString * const kPhotoCollectionViewModeList;
 
@@ -70,6 +74,8 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackPhotoCollectionViewMode:(NSString *)mode;
 - (void)trackPrintRequest:(NSString *)source;
 - (void)trackCameraGallerySelect;
+- (void)trackMultiSelect:(NSString *)action selectedPhotos:(NSNumber * _Nullable)selectedPhotos;
+
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
 - (NSDictionary *)photoSourceMetrics;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;

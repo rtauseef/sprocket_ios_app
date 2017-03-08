@@ -35,6 +35,7 @@
 - (void)beginSelectionMode;
 - (void)endSelectionMode;
 - (void)disableSelectionMode;
+- (void)updateSelectedItemsCount:(NSInteger)count;
 
 @end
 

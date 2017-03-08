@@ -97,11 +97,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pm5-cX-I66">
-                            <rect key="frame" x="327" y="31" width="40" height="24"/>
+                            <rect key="frame" x="325" y="25.5" width="50" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="WxL-Gp-rUO"/>
+                                <constraint firstAttribute="width" constant="50" id="WxL-Gp-rUO"/>
                             </constraints>
-                            <state key="normal" image="Arrow_Right">
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                            <state key="normal" title="10 〉">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -121,7 +122,7 @@
                         <constraint firstItem="AYW-E6-1NE" firstAttribute="centerY" secondItem="s51-Xd-Lhr" secondAttribute="centerY" id="SPM-pj-RlS"/>
                         <constraint firstItem="YKD-1j-IUU" firstAttribute="leading" secondItem="ZFO-tB-mBe" secondAttribute="leading" constant="-10" id="Wis-qY-dI3"/>
                         <constraint firstItem="pm5-cX-I66" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="WrJ-tN-e7l"/>
-                        <constraint firstAttribute="trailing" secondItem="pm5-cX-I66" secondAttribute="trailing" constant="8" id="Xh2-l6-FC4"/>
+                        <constraint firstAttribute="trailing" secondItem="pm5-cX-I66" secondAttribute="trailing" id="Xh2-l6-FC4"/>
                         <constraint firstItem="btn-4q-RBc" firstAttribute="centerY" secondItem="AYW-E6-1NE" secondAttribute="centerY" id="bz7-ZD-iSQ"/>
                         <constraint firstItem="btn-4q-RBc" firstAttribute="leading" secondItem="GnL-8B-dhs" secondAttribute="leading" constant="8" id="cis-xw-r8s"/>
                         <constraint firstItem="YKD-1j-IUU" firstAttribute="centerY" secondItem="ZFO-tB-mBe" secondAttribute="centerY" id="eIU-Zb-yTA"/>
@@ -167,7 +168,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Arrow_Right" width="12" height="24"/>
         <image name="arrowDown" width="19" height="10"/>
         <image name="cameraLanding" width="76" height="76"/>
         <image name="hamburger" width="22" height="18"/>

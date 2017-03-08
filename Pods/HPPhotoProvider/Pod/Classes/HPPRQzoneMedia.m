@@ -11,6 +11,7 @@
 //
 
 #import "HPPRQzoneMedia.h"
+#import "HPPRQzonePhotoProvider.h"
 
 @implementation HPPRQzoneMedia
 
@@ -32,5 +33,8 @@
     return self;
 }
 
+- (HPPRSelectPhotoProvider *)photoProvider {
+    return [HPPRQzonePhotoProvider sharedInstance];
+}
 
 @end

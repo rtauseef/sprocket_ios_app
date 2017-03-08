@@ -44,12 +44,18 @@ Then (/^I select "(.*?)"$/) do |option|
             sticker_name="v_xoxo_TN"
             select_sticker sticker_name
             sleep(STEP_PAUSE)
-        else
-            sleep(2.0)
-            touch query("view marked:'#{option}'")
+        else 
+            if option == "2:3" || option == "3:2"
+                $crop_option = option
+                puts $crop_option
+                sleep(2.0)
+                touch query("view marked:'#{option}'")
+            else
+                sleep(2.0)
+                touch query("view marked:'#{option}'")
+            end
+        end
     end
-    end
-
 end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
@@ -85,14 +91,9 @@ end
 
 
 
-And(/^I verify blue line indicator is displayed under selected frame$/) do 
-    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Blue line indicator not found!" unless selected_frame_status != nil
-end
-
-And(/^I verify blue line indicator is displayed under selected sticker$/) do 
-    selected_sticker_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Blue line indicator not found!" unless selected_sticker_status != nil
+And(/^I verify blue line indicator is displayed under selected "(.*?)"$/) do |option|
+    selected_status = query("UIImageView index:1",:accessibilityIdentifier)
+    raise "Blue line indicator not found!" unless selected_status != nil
 end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
@@ -159,14 +160,22 @@ Then(/^I should see the text with selected "(.*?)"$/) do |option|
 end
 
 Then(/^I should see the "(.*?)" image$/) do |option|
-    #post_photo_frame_width =query("UIImageView index:0").first["frame"]["width"]
-    #post_photo_frame_height    = query("UIImageView index:0").first["frame"]["height"]
     post_photo_frame_height = query("GLKView").first["frame"]["height"]
+    post_photo_frame_width = query("GLKView").first["frame"]["width"]
     if option == "cropped"
-        #raise "Image is not cropped!" unless post_photo_frame_width > $curr_edit_img_frame_width && post_photo_frame_height > $curr_edit_img_frame_height
-        raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
+        if $crop_option == "3:2"
+            puts post_photo_frame_height
+            puts $curr_edit_img_frame_height
+            raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
+        else
+            if $crop_option == "2:3"
+                puts post_photo_frame_height
+                puts $curr_edit_img_frame_height
+                raise "Image is not cropped!" unless post_photo_frame_width < $curr_edit_img_frame_width
+            end
+        end
     else
-       raise "Image is cropped!" unless post_photo_frame_height == $curr_edit_img_frame_height
+        raise "Image is cropped!" unless post_photo_frame_height == $curr_edit_img_frame_height
     end    
 end
 
@@ -195,6 +204,18 @@ Then(/^I select "(.*?)" sticker$/) do |sticker_name|
     sleep(STEP_PAUSE)
 end
 
+Then(/^I select "(.*?)" font$/) do |font_name|
+    sleep(STEP_PAUSE)
+    select_font font_name
+    sleep(STEP_PAUSE)
+end
+
+Then(/^I select "(.*?)" color$/) do |color_name|
+    sleep(STEP_PAUSE)
+    select_color color_name
+    sleep(STEP_PAUSE)
+end
+
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
     $list_loc=$edit_screen_arr["edit_frame"]
     selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
@@ -208,36 +229,80 @@ Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == $list_loc[sticker_name]
 end
 
+Then(/^I should see the photo with the "(.*?)" font$/) do |font_name|
+    $list_loc=$edit_screen_arr["edit_font"]
+    font_name_applied = query("IMGLYTextLabel",:font)[0].split(" ")[3].gsub(';','').gsub('"','')
+    raise "Wrong font selected!" unless font_name_applied.to_s == $list_loc[font_name]
+end
+
+Then(/^I should see the photo with the "(.*?)" color$/) do |color_name|
+    $list_loc_red=$edit_screen_arr["edit_color_red"]
+    $list_loc_blue=$edit_screen_arr["edit_color_blue"]
+    $list_loc_green=$edit_screen_arr["edit_color_green"]
+    if $option == "colors"
+        color_name_applied_red = query("IMGLYTextLabel",:textColor)[0]["red"] 
+        color_name_applied_blue = query("IMGLYTextLabel",:textColor)[0]["blue"] 
+        color_name_applied_green = query("IMGLYTextLabel",:textColor)[0]["green"] 
+    else
+        color_name_applied_red = query("IMGLYTextLabel",:backgroundColor)[0]["red"] 
+        color_name_applied_blue = query("IMGLYTextLabel",:backgroundColor)[0]["blue"] 
+        color_name_applied_green = query("IMGLYTextLabel",:backgroundColor)[0]["green"] 
+    end
+    raise "Wrong color selected!" unless color_name_applied_red == $list_loc_red[color_name] && color_name_applied_blue == $list_loc_blue[color_name] && color_name_applied_green == $list_loc_green[color_name]
+end
+
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
   frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
     sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
     
+    font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
+    
+    color_name=["White", "Gray", "Black", "Light blue", "Blue", "Purple", "Orchid", "Pink", "Red", "Orange", "Gold", "Yellow", "Olive", "Green", "Aquamarin"]
+    
  
   i = 0
     if option == "frames"
         while i < 20
             macro %Q|I select "#{frame_name[i]}" frame|
-            macro %Q|I verify blue line indicator is displayed under selected frame|
+            macro %Q|I verify blue line indicator is displayed under selected "frame"|
             macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
             macro %Q|I should see the "FrameEditor" screen|
             i= i + 1
             sleep(SLEEP_SCREENLOAD)
         end
     else
-        while i < 68
-            macro %Q|I select "#{sticker_name[i]}" sticker|
-            macro %Q|I verify blue line indicator is displayed under selected sticker|
-            macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
-            macro %Q|I should see the "StickerEditor" screen|
-            macro %Q|I tap "Close" mark|
-            macro %Q|I should see the "Edit" screen|
-            macro %Q|I tap "Sticker" button|
-            macro %Q|I should see the "StickerEditor" screen|
-   
-            i= i + 1
-            sleep(SLEEP_SCREENLOAD)
+        if option == "fonts"
+            while i < 25
+                macro %Q|I select "#{font_name[i]}" font|
+                macro %Q|I verify blue line indicator is displayed under selected "font"|
+                macro %Q|I should see the photo with the "#{font_name[i]}" font|
+                i= i + 1
+            end
+        else
+            if option == "colors" || option == "Background colors"
+                while i < 15
+                    $option = option
+                    macro %Q|I select "#{color_name[i]}" color|
+                    macro %Q|I verify blue line indicator is displayed under selected "color"|
+                    macro %Q|I should see the photo with the "#{color_name[i]}" color|
+                    i= i + 1
+                end
+            else
+                while i < 68
+                    macro %Q|I select "#{sticker_name[i]}" sticker|
+                    macro %Q|I verify blue line indicator is displayed under selected "sticker"|
+                    macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
+                    macro %Q|I should see the "StickerEditor" screen|
+                    macro %Q|I tap "Close" mark|
+                    macro %Q|I should see the "Edit" screen|
+                    macro %Q|I tap "Sticker" button|
+                    macro %Q|I should see the "StickerEditor" screen|
+                    i= i + 1
+                    sleep(SLEEP_SCREENLOAD)
+                end
+            end
         end 
     end
 end
@@ -338,6 +403,97 @@ $edit_screen_arr =
             "sunglasses_TN" => "sunglasses",
             "OMG_TN" => "OMG"
         
-            }
+            },
+    
+    "edit_font" => {
         
+        "Helvetica" => "Helvetica",
+        "Typewriter" => "American",
+        "Avenir" => "Avenir-Heavy",
+        "Chalkboard" => "ChalkboardSE-Regular",
+        "Arial" => "Arial",
+        "Kohinoor" => "KohinoorBangla-Regular",
+        "Liberator" => "Liberator",
+        "Muncie" => "Muncie",
+        "Lincoln" => "Abraham",
+        "Airship" => "Airship",
+        "Arvil" => "Arvil",
+        "Bender" => "Bender-Inline",
+        "Blanch" => "Blanch-Condensed",
+        "Cubano" => "Cubano-Regular",
+        "Franchise" => "Franchise",
+        "Geared" => "GearedSlab-Regular",
+        "Governor" => "Governor",
+        "Haymaker" => "Haymaker",
+        "Homestead" => "Homestead-Regular",
+        "Maven Pro" => "MavenProLight200-Regular",
+        "Mensch" => "Mensch",
+        "Sullivan" => "Sullivan-Regular",
+        "Tommaso" => "Tommaso",
+        "Valencia" => "Valencia",
+        "Vevey" => "Vevey"
+        
+            },
+    
+    "edit_color_red" => {
+        
+        "White" => 1,
+        "Gray" => 0.49,
+        "Black" => 0,
+        "Light blue" => 0.4,
+        "Blue" => 0.4,
+        "Purple" => 0.53,
+        "Orchid" => 0.87,
+        "Pink" => 1,
+        "Red" => 1,
+        "Orange" => 1,
+        "Gold" => 1,
+        "Yellow" => 1,
+        "Olive" => 0.8,
+        "Green" => 0.33,
+        "Aquamarin" => 0.33
+        
+            },
+    
+    
+    "edit_color_blue" => {
+        
+        "White" => 1,
+        "Gray" => 0.49,
+        "Black" => 0,
+        "Light blue" => 1,
+        "Blue" => 1,
+        "Purple" => 1,
+        "Orchid" => 1,
+        "Pink" => 0.8,
+        "Red" => 0.53,
+        "Orange" => 0.4,
+        "Gold" => 0.4,
+        "Yellow" => 0.39,
+        "Olive" => 0.4,
+        "Green" => 0.53,
+        "Aquamarin" => 0.92
+        
+            },
+    
+    
+    "edit_color_green" => {
+        
+        "White" => 1,
+        "Gray" => 0.49,
+        "Black" => 0,
+        "Light blue" => 0.8,
+        "Blue" => 0.53,
+        "Purple" => 0.4,
+        "Orchid" => 0.4,
+        "Pink" => 0.4,
+        "Red" => 0.4,
+        "Orange" => 0.53,
+        "Gold" => 0.8,
+        "Yellow" => 0.97,
+        "Olive" => 1,
+        "Green" => 1,
+        "Aquamarin" => 1
+        
+            }
     }
