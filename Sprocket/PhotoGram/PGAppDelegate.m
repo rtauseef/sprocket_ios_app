@@ -26,6 +26,7 @@
 #import "PGRevealViewController.h"
 #import "PGLandingSelectorPageViewController.h"
 #import "UIViewController+Trackable.h"
+#import "PGSecretKeeper.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -47,14 +48,14 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     [PGAppAppearance setupAppearance];
     
-    [HPPR sharedInstance].instagramClientId = @"5db5d92b37f44ad89c5b620a2dc7081c";
+    [HPPR sharedInstance].instagramClientId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryInstagramClientId];
     [HPPR sharedInstance].instagramRedirectURL = @"http://www8.hp.com/us/en/contact-hp/contact.html";
     
-    [HPPR sharedInstance].flickrAppKey = @"48fe53f214de34251c7833fa1675d4b3";
-    [HPPR sharedInstance].flickrAppSecret = @"8865a1b2f3742370";
+    [HPPR sharedInstance].flickrAppKey = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryFlickrAppKey];
+    [HPPR sharedInstance].flickrAppSecret = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryFlickrAppSecret];
     [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsprocket://callback/flickr";
     
-    [HPPR sharedInstance].qzoneAppId = @"101368459";
+    [HPPR sharedInstance].qzoneAppId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryQZoneAppId];
     [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
     
     [self initializePrintPod];
