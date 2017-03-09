@@ -20,6 +20,7 @@
     // Work around Bugfix iOS http://stackoverflow.com/questions/18696706/large-text-being-cut-off-in-uitextview-that-is-inside-uiscrollview
     self.scrollEnabled = !self.scrollEnabled;
     self.scrollEnabled = !self.scrollEnabled;
+    [self setContentOffset:CGPointZero animated:NO];
 }
 
 @end
