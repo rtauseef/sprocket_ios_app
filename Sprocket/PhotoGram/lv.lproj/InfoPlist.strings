@@ -4,3 +4,12 @@
 /* (No Commment) */
 "CFBundleName" = "Sprocket";
 
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocket ir nepieciešama Bluetooth piekļuve, lai izveidotu savienojumu ar HP Sprocket printeri.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "Atļaujiet piekļuvi, lai uzņemtu un drukātu fotoattēlus.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "Atļaujiet piekļuvi, lai drukātu un saglabātu savus fotoattēlus.";
+
