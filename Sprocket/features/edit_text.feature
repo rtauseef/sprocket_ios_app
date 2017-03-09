@@ -4,7 +4,7 @@ Feature: Verify Text Edit screen
 
   
 @reset
-@regression
+@done
 Scenario Outline: Verify 'Text' option
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -22,23 +22,16 @@ Scenario Outline: Verify 'Text' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-    | Flickr Preview     |
+  #  | Flickr Preview     |
     | CameraRoll Preview |
 
 @reset
-@regression
-Scenario Outline: Verify text edit screen navigation
-    Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
+@done
+Scenario: Verify text edit screen navigation
+    Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
     Then I tap "Cancel" mark
     Then I should see the "Edit" screen
-   
-   
-    Examples:
-    | social_media_screen_name        |
-    | Instagram Preview  |
-    | Flickr Preview     |
-    | CameraRoll Preview |
 
 @reset
 @regression
@@ -71,6 +64,16 @@ Scenario: Verify entered text cancellation
     Then I tap "Close" mark
     Then I should see the "Edit" screen
     And I should not see the text
+    
+@reset
+@regression
+Scenario: Verify text deletion option
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I touch "Delete"
+    And I should not see the text
 
 @reset
 @done
@@ -84,6 +87,52 @@ Scenario: Verify font
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Font"
+    
+@reset  
+@regression
+Scenario: Verify font list
+    Given I am on the "TextEdit" screen for "CameraRoll Preview"
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Font"
+    Then I should see the following "Fonts" in the screen:
+    | Helvetica  |
+    | Typewriter | 
+    | Avenir     |
+    | Chalkboard |
+    | Arial      |
+    | Kohinoor   |
+    | Liberator  |
+    | Muncie     |
+    | Lincoln    |
+    | Airship    |
+    | Arvil      |
+    | Bender     |
+    | Blanch     |
+    | Cubano     |
+    | Franchise  |
+    | Geared     |
+    | Governor   |
+    | Haymaker   |
+    | Homestead  |
+    | Maven Pro  |
+    | Mensch     |
+    | Sullivan   |
+    | Tommaso    |
+    | Valencia   |
+    | Vevey      |
+    
+    
+@reset  
+@regression
+Scenario: Verify all the fonts are applied successfully
+    Given I am on the "TextEdit" screen for "CameraRoll Preview"
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Font"
+    Then I verify that all the "fonts" are applied successfully
 
 @reset
 @done
@@ -98,6 +147,42 @@ Scenario: Verify text color
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Color"
+    
+@reset  
+@regression
+Scenario: Verify color list
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Color" 
+    Then I should see the following "Colors" in the screen:
+    | White      |
+    | Gray       |
+    | Black      |
+    | Light blue |
+    | Blue       |
+    | Purple     |
+    | Orchid     |
+    | Pink       |
+    | Red        |
+    | Orange     |
+    | Gold       |
+    | Yellow     |
+    | Olive      |
+    | Green      |
+    | Aquamarin  |
+
+@reset  
+@TA17012
+Scenario: Verify all the colors are applied successfully
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Color"
+    Then I verify that all the "colors" are applied successfully
+
 
 @reset
 @done
@@ -112,4 +197,43 @@ Scenario: Verify text background
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Background Color"
+    
+@reset  
+@regression
+Scenario: Verify background color list
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Background color"
+    Then I should see the following "Background Colors" in the screen:
+    | White      |
+    | Gray       |
+    | Black      |
+    | Light blue |
+    | Blue       |
+    | Purple     |
+    | Orchid     |
+    | Pink       |
+    | Red        |
+    | Orange     |
+    | Gold       |
+    | Yellow     |
+    | Olive      |
+    | Green      |
+    | Aquamarin  |
+
+   
+@reset  
+@done
+Scenario: Verify all the background colors are applied successfully
+    Given I am on the "TextEdit" screen for "CameraRoll Preview" 
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I should see the photo with the "text"
+    Then I select "Background color"
+    Then I verify that all the "Background colors" are applied successfully
+
+    
+    
     
