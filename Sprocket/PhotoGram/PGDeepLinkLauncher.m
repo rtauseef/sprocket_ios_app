@@ -11,6 +11,7 @@
 #import "PGRevealViewController.h"
 #import "PGLandingMainPageViewController.h"
 #import "PGLandingSelectorPageViewController.h"
+#import "PGPreviewViewController.h"
 #import "PGSocialSource.h"
 
 #import "AirshipKit.h"
@@ -61,6 +62,8 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
         [PGDeepLinkLauncher openSettings];
     } else if ([location isEqualToString:@"emailFeedback"]) {
         [PGDeepLinkLauncher sendEmail:[self currentTopViewController]];
+    } else if ([location isEqualToString:@"camera"]) {
+        [PGDeepLinkLauncher goToCamera];
     }
 }
 
@@ -169,6 +172,14 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
     }
     
     return landingPage;
+}
+
++ (void)goToCamera
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    
+    [[PGDeepLinkLauncher currentTopViewController] presentViewController:previewViewControllerCamera animated:YES completion:nil];
 }
 
 + (void)goToSocialSource:(PGSocialSourceType)type
