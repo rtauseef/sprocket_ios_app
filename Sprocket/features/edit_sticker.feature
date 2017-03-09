@@ -126,3 +126,24 @@ Scenario: Verify all the stickers are applied for sticker editor screen
     Given I am on the "StickerEditor" screen for "CameraRoll"  
     Then I verify that all the "stickers" are applied successfully
     
+@reset
+@TA17012
+Scenario Outline: Verify navigation to and fro from sticker editor screen successfully
+    Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
+    Then I select "sticker_1" sticker
+    And I should see the photo with the "sticker_1" sticker
+    Then I should see the "StickerEditor" screen
+    Then I tap "Close" mark
+    Then I should see the "Edit" screen
+    Then I tap "Sticker" button
+    Then I select "sticker_4" sticker
+    And I should see the photo with the "sticker_4" sticker
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    
+    Examples:
+    | social_media_screen_name       |
+    | Instagram Preview  |
+    #| Flickr Preview     |
+    | CameraRoll         |    
+    

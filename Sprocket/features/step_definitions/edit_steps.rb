@@ -42,7 +42,6 @@ Then (/^I select "(.*?)"$/) do |option|
      else 
             if option == "2:3" || option == "3:2"
                 $crop_option = option
-                puts $crop_option
                 sleep(2.0)
                 touch query("view marked:'#{option}'")
             else
@@ -59,9 +58,7 @@ And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     else
         if edit_item == "sticker"
            sticker_value=$sticker[$sticker_id]['value']
-           puts sticker_value
            selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
-           puts selected_sticker_status
            raise "Sticker present!" unless selected_sticker_status.to_s != sticker_value
         end
     end
@@ -157,13 +154,9 @@ Then(/^I should see the "(.*?)" image$/) do |option|
     post_photo_frame_width = query("GLKView").first["frame"]["width"]
     if option == "cropped"
         if $crop_option == "3:2"
-            puts post_photo_frame_height
-            puts $curr_edit_img_frame_height
             raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
         else
             if $crop_option == "2:3"
-                puts post_photo_frame_height
-                puts $curr_edit_img_frame_height
                 raise "Image is not cropped!" unless post_photo_frame_width < $curr_edit_img_frame_width
             end
         end
@@ -195,7 +188,6 @@ Then(/^I select "(.*?)" sticker$/) do |sticker_id|
     sleep(STEP_PAUSE)
     $sticker_id = sticker_id
     sticker_name=$sticker[sticker_id]['name']
-    puts sticker_name
     select_sticker sticker_name
     sleep(STEP_PAUSE)
 end
@@ -220,7 +212,6 @@ end
 
 Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
     sticker_value=$sticker[sticker_id]['value']
-    puts sticker_value
     selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end

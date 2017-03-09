@@ -64,5 +64,73 @@ Scenario: Verify Edit screen navigation
     Then I tap "Close" mark
     Then I should see the "CameraRoll Preview" screen
     
+@reset
+@TA17012
+Scenario: Verify Filter screen navigation  
+    Given I am on the "CameraRoll Preview" screen
+    Then I tap "Edit" button
+    Then I should see the "Edit" screen
+    When I tap "Filter" button
+    Then I should see the "FilterEditor" screen
+    Then I select "Filter"
+    And I verify the filter is selected
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    
+@reset
+@TA17012
+Scenario: Verify crop screen navigation  
+    Given I am on the "CameraRoll Preview" screen
+    Then I tap "Edit" button
+    Then I am on the "Edit" screen
+    Then I tap "Crop" button
+    Then I should see the "Crop Editor" screen
+    And I should see "2:3" button
+    And I should see "3:2" button
+    And I select "3:2"
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    And I should see the "cropped" image
+    
+@reset
+@TA17012
+Scenario: Verify frame screen navigation
+    Given I am on the "CameraRoll Preview" screen
+    Then I tap "Edit" button
+    Then I should see the "Edit" screen
+    Then I tap "Frame" button
+    Then I should see the "Frame Editor" screen
+    Then I select "Turquoise Frame" frame
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    And I should see the photo with the "Turquoise Frame" frame
     
 
+@reset
+@TA17012
+Scenario: Verify sticker screen navigation
+    Given I am on the "CameraRoll Preview" screen
+    Then I tap "Edit" button
+    Then I should see the "Edit" screen
+    Then I tap "Sticker" button
+    Then I should see the "Sticker Editor" screen
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    Then I should see the photo with the "sticker_0" sticker
+    
+    
+@reset
+@TA17012
+Scenario: Verify text screen navigation
+    Given I am on the "CameraRoll Preview" screen
+    Then I tap "Edit" button
+    Then I should see the "Edit" screen
+    Then I tap "Text" button
+    Then I should see the "TextEdit" screen
+    And I enter unique text
+    Then I tap "Add text" mark
+    And I tap "Save" mark
+    Then I should see the "Edit" screen
+    And I should see the photo with the "text"
