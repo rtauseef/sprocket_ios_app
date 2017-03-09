@@ -51,11 +51,11 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [HPPR sharedInstance].instagramClientId = [[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryInstagramClientId];
     [HPPR sharedInstance].instagramRedirectURL = @"http://www8.hp.com/us/en/contact-hp/contact.html";
     
-    [HPPR sharedInstance].flickrAppKey = @"48fe53f214de34251c7833fa1675d4b3";
-    [HPPR sharedInstance].flickrAppSecret = @"8865a1b2f3742370";
+    [HPPR sharedInstance].flickrAppKey = [[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryFlickrAppKey];
+    [HPPR sharedInstance].flickrAppSecret = [[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryFlickrAppSecret];
     [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsprocket://callback/flickr";
     
-    [HPPR sharedInstance].qzoneAppId = @"101368459";
+    [HPPR sharedInstance].qzoneAppId = [[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryQZoneAppId];
     [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
     
     [self initializePrintPod];

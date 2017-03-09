@@ -1484,6 +1484,7 @@
 		F22F123A1E560C2C00753C5A /* PGPhotoSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12381E560C2C00753C5A /* PGPhotoSelection.m */; };
 		F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
+		F22F12861E70CDB400753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
@@ -6122,6 +6123,7 @@
 				82017AD01D945EA000364F21 /* PGGesturesView.m in Sources */,
 				825E2A941DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
+				F22F12861E70CDB400753C5A /* PGSecretKeeper.m in Sources */,
 				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
 				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
 				26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */,

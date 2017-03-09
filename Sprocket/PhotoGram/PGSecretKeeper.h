@@ -16,7 +16,10 @@ typedef NS_ENUM(NSUInteger, SecretKeeperEntry) {
     SecretKeeperEntryInstagramClientId,
     SecretKeeperEntryFlickrAppKey,
     SecretKeeperEntryFlickrAppSecret,
-    SecretKeeperEntryQZoneAppId
+    SecretKeeperEntryQZoneAppId,
+    SecretKeeperEntryGoogleAnalyticsTrakingId,
+    SecretKeeperEntryGoogleAnalyticsTrakingIdDev,
+    SecretKeeperEntryCrashlyticsKey,
 };
 
 
