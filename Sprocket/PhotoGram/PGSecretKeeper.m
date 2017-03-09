@@ -11,7 +11,6 @@
 //
 
 #import "PGSecretKeeper.h"
-#import <CommonCrypto/CommonCrypto.h>
 
 //
 // How to set an obfuscated key

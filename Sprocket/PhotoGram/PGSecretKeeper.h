@@ -10,7 +10,7 @@
 // the license agreement.
 //
 
-#import "MPSecretKeeper.h"
+#import <MPSecretKeeper.h>
 
 extern NSString * const kSecretKeeperEntryInstagramClientId;
 extern NSString * const kSecretKeeperEntryFlickrAppKey;
