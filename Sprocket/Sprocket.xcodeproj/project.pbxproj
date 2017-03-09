@@ -618,6 +618,9 @@
 		825E2A941DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
 		825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
 		82607c99a642dddd0ec62e93 /* 3_blue_watercolor_frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852C01D626A96001288D9 /* 3_blue_watercolor_frame_TN@3x.png */; };
+		8263D7B61E71DD330036E903 /* PGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7B51E71DD330036E903 /* PGTextView.m */; };
+		8263D7B71E71DD330036E903 /* PGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7B51E71DD330036E903 /* PGTextView.m */; };
+		8263D7B81E71DD330036E903 /* PGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7B51E71DD330036E903 /* PGTextView.m */; };
 		826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */; };
 		826B69D91DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */; };
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
@@ -2109,6 +2112,8 @@
 		824951D01E2EB6ED00B7F857 /* v_xoxo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = v_xoxo.png; path = Resources/Images/Stickers/Valentines/v_xoxo.png; sourceTree = "<group>"; };
 		825E2A911DBED51E00DB7D5C /* PGBatteryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGBatteryImageView.h; sourceTree = "<group>"; };
 		825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBatteryImageView.m; sourceTree = "<group>"; };
+		8263D7B41E71DD330036E903 /* PGTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTextView.h; sourceTree = "<group>"; };
+		8263D7B51E71DD330036E903 /* PGTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTextView.m; sourceTree = "<group>"; };
 		826B69D61DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourceMenuTableViewCell.h; sourceTree = "<group>"; };
 		826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourceMenuTableViewCell.m; sourceTree = "<group>"; };
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
@@ -4003,6 +4008,8 @@
 				825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */,
 				E31BE41119E601F0006B78BB /* PGGesturesView.h */,
 				E31BE41219E601F0006B78BB /* PGGesturesView.m */,
+				8263D7B41E71DD330036E903 /* PGTextView.h */,
+				8263D7B51E71DD330036E903 /* PGTextView.m */,
 				92D073851D25ACE8002611C0 /* PGMediaNavigation.h */,
 				92D073861D25ACE8002611C0 /* PGMediaNavigation.m */,
 				92D073891D25AD02002611C0 /* PGMediaNavigation.xib */,
@@ -6035,6 +6042,7 @@
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
 				a066e20082450f3d9be0eacf /* main.m in Sources */,
 				a5ddf8bbdfb873da46ef0132 /* UIColor+HexString.m in Sources */,
+				8263D7B81E71DD330036E903 /* PGTextView.m in Sources */,
 				924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				8218C5651DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */,
 				b7f4d03ea6ee15ea731634d1 /* PGLogFormatter.m in Sources */,
@@ -6109,6 +6117,7 @@
 				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
 				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
 				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
+				8263D7B71E71DD330036E903 /* PGTextView.m in Sources */,
 				26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6180,6 +6189,7 @@
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
+				8263D7B61E71DD330036E903 /* PGTextView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
