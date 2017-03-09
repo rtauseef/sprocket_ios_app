@@ -26,6 +26,8 @@
 #import "PGRevealViewController.h"
 #import "PGLandingSelectorPageViewController.h"
 #import "UIViewController+Trackable.h"
+#import "PGLandingMainPageViewController.h"
+#import "PGSocialSource.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -153,11 +155,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     if ([url.scheme isEqual:@"hpsprocket"]) {
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else if ([url.scheme isEqual:@"com.hp.sprocket.deepLinks"]) {
-        [self deepLink:url.pathComponents];
-        //        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        //UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
-        //[[self currentTopViewController] presentViewController:viewController animated:YES completion:nil];
-        [self goToLandingPage];
+        [self deepLink:url.host];
     } else {
         return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
@@ -172,9 +170,18 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     return YES;
 }
 
-- (void)deepLink:(NSArray *)pathComponents
+- (void)deepLink:(NSString *)location
 {
-    NSLog(@"pathComponents: %@", pathComponents);
+    NSLog(@"location: %@", location);
+    if ([location isEqualToString:@"landingPage"]) {
+        [self goToLandingPage];
+    } else if ([location isEqualToString:@"howToAndHelp"]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
+        [[self currentTopViewController] presentViewController:viewController animated:YES completion:nil];
+    } else if ([location isEqualToString:@"cameraRoll"]) {
+        [self goToSocialSource:PGSocialSourceTypeLocalPhotos];
+    }
 }
 
 #pragma mark - MP object initialization
@@ -258,19 +265,37 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     
     self.lastConnectedValue = currentlyConnected;
 }
-
-- (void)goToLandingPage
+- (void)goToSocialSource:(PGSocialSourceType)type
 {
+    PGLandingMainPageViewController *landingPage = [self goToLandingPage];
+    
+    [landingPage goToSocialSourcePage:type sender:self];
+}
+
+- (PGLandingMainPageViewController *)goToLandingPage
+{
+    PGLandingMainPageViewController *landingPage = nil;
+
+    [[UAirship defaultMessageCenter] dismiss:YES];
     PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
 
     UINavigationController *rootViewController = (UINavigationController *)revealController.frontViewController;
 
     if (self.menuShowing) {
         [revealController revealToggle:self];
+        [revealController.rearViewController dismissViewControllerAnimated:YES completion:^{
+        }];
     }
     
     [rootViewController popToRootViewControllerAnimated:NO];
-
+    
+    if ([rootViewController.viewControllers count]) {
+        if ([rootViewController.viewControllers[0] isKindOfClass:[PGLandingMainPageViewController class]]) {
+            landingPage = rootViewController.viewControllers[0];
+        }
+    }
+                           
+    return landingPage;
 }
 
 - (UIViewController *)currentTopViewController

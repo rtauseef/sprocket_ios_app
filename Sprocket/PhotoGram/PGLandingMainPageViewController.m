@@ -358,17 +358,9 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-#pragma mark - PGSocialSourcesCircleViewDelegate
-
-- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button
 {
-    [self cameraTapped:button];
-}
-
-- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
-{
-    switch (socialSource.type) {
+    switch (type) {
         case PGSocialSourceTypeFacebook:
             [self facebookTapped:button];
             break;
@@ -391,6 +383,18 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
             [self pituTapped:button];
             break;
     }
+}
+
+#pragma mark - PGSocialSourcesCircleViewDelegate
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
+{
+    [self cameraTapped:button];
+}
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
+{
+    [self goToSocialSourcePage:socialSource.type sender:button];
 }
 
 
