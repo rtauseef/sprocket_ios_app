@@ -8,13 +8,10 @@
 "An error occurred when sharing the item." = "Kopīgojot vienumu, radās kļūda.";
 
 /* No comment provided by engineer. */
-"Arrow Sticker" = "Bultiņas uzlīme";
+"App Settings" = "Lietojumprogrammas iestatījumi";
 
 /* Settings for automatically saving photos */
-"Auto-Save Settings" = "Automātiskas saglabāšanas iestatījumi (IP iestatījumi)";
-
-/* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Dzimšanas dienas cepures uzlīme";
+"Auto-Save Settings" = "Automātiskās saglabāšanas iestatījumi";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "Pirkt papīru";
@@ -30,37 +27,16 @@
 "Cancel" = "Atcelt";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Kaķa ausu uzlīme";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Kaķa briļļu uzlīme";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Kaķa uzlīme";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Kaķa ūsu uzlīme";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Apskatiet manis izveidoto HP Sprocket";
 
-/* No comment provided by engineer. */
-"Christmas Polka Dot Frame" = "Ziemassvētku polkas punktains rāmis";
-
-/* No comment provided by engineer. */
-"Crown Sticker" = "Vainaga uzlīme";
-
-/* No comment provided by engineer. */
-"Cupcake Sticker" = "Kūciņas uzlīme";
-
-/* No comment provided by engineer. */
-"Diamond Sticker" = "Dimanta uzlīme";
+/* Setup step 3 desc */
+"Connect" = "Izveidot savienojumu";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Vairs nerādīt";
 
 /* Asks the user if they want their photos saved */
-"Do you want to save new camera photos to your device?" = "Vai vēlaties saglabāt kamerā jaunuzņemtos fotoattēlus savā ierīcē?";
+"Do you want to save new camera photos to your device?" = "Vai vēlaties ierīcē saglabāt jaunus ar kameru uzņemtos fotoattēlus?";
 
 /* No comment provided by engineer. */
 "Don't Save" = "Nesaglabāt";
@@ -80,12 +56,6 @@
 /* Social source title for Facebook */
 "Facebook" = "Facebook";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "2. spalvu uzlīme";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Spalvu uzlīme";
-
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "Atsauksmes par Sprocket operētājsistēmai iOS (ierakstu vietrādis: %@)";
 
@@ -98,6 +68,9 @@
 /* No comment provided by engineer. */
 "Floral Frame" = "Puķu rāmis";
 
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Sadaļā Bluetooth iestatījumi pieskarieties vienumam HP Sprocket, lai izveidotu pāra savienojumu ar printeri.";
+
 /* No comment provided by engineer. */
 "Give Feedback" = "Sniegt atsauksmes";
 
@@ -106,90 +79,6 @@
 
 /* No comment provided by engineer. */
 "Green Water Color Frame" = "Zaļas krāsas ūdens rāmis";
-
-/* No comment provided by engineer. */
-"Grey Frame" = "Pelēks rāmis";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Sirds izteiksmes uzlīme";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Siržu uzlīme";
-
-/* No comment provided by engineer. */
-"Holiday Candy Cane Sticker" = "Svētku uzlīme ar konfektes spieķi";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Cap Sticker" = "Svētku uzlīme ar Ziemassvētku cepuri";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Ornament Sticker" = "Svētku uzlīme ar Ziemassvētku ornamentu";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Scarf Sticker" = "Svētku uzlīme ar Ziemassvētku šalli";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Stocking Sticker" = "Svētku uzlīme ar Ziemassvētku zeķi";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Tree Sticker" = "Svētku uzlīme ar Ziemassvētku egli";
-
-/* No comment provided by engineer. */
-"Holiday Dreidel Sticker" = "Svētku uzlīme ar Hanukā vilciņu";
-
-/* No comment provided by engineer. */
-"Holiday Elf Hat Sticker" = "Svētku uzlīme ar elfas cepuri";
-
-/* No comment provided by engineer. */
-"Holiday Fireworks Sticker" = "Svētku uzlīme ar uguņošanu";
-
-/* No comment provided by engineer. */
-"Holiday Hanukkah Glasses Sticker" = "Svētku uzlīme ar Hanukā brillēm";
-
-/* No comment provided by engineer. */
-"Holiday Holly Sticker" = "Svētku uzlīme ar Ziemassvētku akvifoliju";
-
-/* No comment provided by engineer. */
-"Holiday Horn Sticker" = "Svētku uzlīme ar tauri";
-
-/* No comment provided by engineer. */
-"Holiday Lights Sticker" = "Svētku uzlīme ar gaismas virteni";
-
-/* No comment provided by engineer. */
-"Holiday Menorah Sticker" = "Svētku uzlīme ar menoru";
-
-/* No comment provided by engineer. */
-"Holiday Mistletoe Sticker" = "Svētku uzlīme ar āmuļiem";
-
-/* No comment provided by engineer. */
-"Holiday Party Hat Sticker" = "Svētku uzlīme ar ballīšu cepuri";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Antlers Sticker" = "Svētku uzlīme ar brieža Rūdolfa ragiem";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Glasses Sticker" = "Svētku uzlīme ar brieža Rūdolfa brillēm";
-
-/* No comment provided by engineer. */
-"Holiday Snowflake Sticker" = "Svētku uzlīme ar sniegpārslu";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Face Sticker" = "Svētku uzlīme ar sniegavīra seju";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Hat Sticker" = "Svētku uzlīme ar sniegavīra cepuri";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Sticker" = "Svētku uzlīme ar sniegavīru";
-
-/* No comment provided by engineer. */
-"Holiday Star Glasses Sticker" = "Svētku uzlīme ar zvaigžņu brillēm";
-
-/* No comment provided by engineer. */
-"Holiday Star Sticker" = "Svētku uzlīme ar zvaigzni";
-
-/* No comment provided by engineer. */
-"Holiday Tree Glasses Sticker" = "Svētku uzlīme ar Ziemassvētku egļu brillēm";
 
 /* No comment provided by engineer. */
 "How To" = "Norādījumi";
@@ -203,14 +92,11 @@
 /* No comment provided by engineer. */
 "Kraft Frame" = "Ietinamā papīra rāmis";
 
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "3. lapu uzlīme";
+/* Setup step 1 desc */
+"Load Paper" = "Papīra ievietošana";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Žurnālfails ir notīrīts.";
-
-/* No comment provided by engineer. */
-"Moon Sticker" = "Mēness uzlīme";
 
 /* Dismisses dialog without taking action */
 "No" = "Nē";
@@ -219,16 +105,16 @@
 "No Connection Available" = "Nav pieejams neviens savienojums";
 
 /* Message displayed when no images from the Pitu app can be found */
-"No Pitu app images found" = "Neatrada programmas Pitu attēlus.";
+"No Pitu app images found" = "Neatrada lietojumprogrammas Pitu attēlus.";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Neatrada lietojumprogrammas Qzone attēlus.";
 
 /* No comment provided by engineer. */
 "No, thanks" = "Nē, paldies!";
 
 /* Allows user close dialog */
 "OK" = "Labi";
-
-/* No comment provided by engineer. */
-"OMG Sticker" = "OMG uzlīme";
 
 /* No comment provided by engineer. */
 "Oops!" = "Hmm...";
@@ -244,8 +130,8 @@
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
-You can also use your device photos." = "Lūdzu, izveidojiet savienojumu ar datu avotu.
-Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
+You can also use your device photos." = "Lūdzu izveidojiet savienojumu ar datu avotu.
+Jūs varat izmantot arī savas ierīces fotogrāfijas.";
 
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Lūdzu, informējiet mūs par to, kas jūs sajūsmina un kas jāuzlabo.";
@@ -253,8 +139,20 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 /* No comment provided by engineer. */
 "Polka Dots Frame" = "Punktains rāmis";
 
+/* Setup step 2 desc */
+"Power Up" = "Barošanas ieslēgšana";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Turiet nospiestu ieslēgšanas/izslēgšanas pogu, līdz gaismas diodes (LED) indikators sāks degt baltā krāsā.";
+
+/* No comment provided by engineer. */
+"Printers" = "Printeri";
+
 /* No comment provided by engineer. */
 "Privacy" = "Privātums";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Ievietojiet visu pakotni papīra paplātē, lai svītrkods un HP logotips būtu vērsts uz leju.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
@@ -263,25 +161,19 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 "Red Frame" = "Sarkans rāmis";
 
 /* No comment provided by engineer. */
-"Red Triangle Frame" = "Sarkans trīsstūra rāmis";
-
-/* No comment provided by engineer. */
 "Remind me later" = "Atgādināt vēlāk";
 
 /* No comment provided by engineer. */
 "Reset" = "Atiestatīt";
 
 /* No comment provided by engineer. */
-"Reset Application" = "Atiestatīt programmu";
+"Reset Application" = "Atiestatīt lietojumprogrammu";
 
 /* No comment provided by engineer. */
 "Retry" = "Mēģināt atkārtoti";
 
 /* Title of a table view header */
 "SUPPORT:" = "ATBALSTS:";
-
-/* No comment provided by engineer. */
-"Santa Frame" = "Rāmis ar Ziemsvētku vecīti";
 
 /* No comment provided by engineer. */
 "Save" = "Saglabāt";
@@ -305,28 +197,22 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 "Sloppy Frame" = "Netīrs rāmis";
 
 /* No comment provided by engineer. */
-"Snow Frame" = "Sniegbalts rāmis";
-
-/* No comment provided by engineer. */
-"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Diemžēl par jūsu problēmu šobrīd nevar ziņot. Visticamāk, tas ir tādēļ, ka jūsu mobilajā ierīcē nav neviena pasta konta.";
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Atvainojiet, par jūsu problēmu šobrīd nevar iesniegt ziņojumu. Iespējams, tas noticis tādēļ, ka jūsu mobilajā ierīcē nav iestatīts neviens pasta konts.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Pieejams Sprocket printera programmaparatūras jauninājums";
 
-/* No comment provided by engineer. */
-"Star Sticker" = "Zvaigznes uzlīme";
+/* Setup step 1 title */
+"Step 1" = "1. darbība";
 
-/* No comment provided by engineer. */
-"Stars Sticker" = "Zvaigžņu uzlīme";
+/* Setup step 2 title */
+"Step 2" = "2. darbība";
 
-/* No comment provided by engineer. */
-"Striped Frame" = "Svītrots rāmis";
+/* Setup step 3 title */
+"Step 3" = "3. darbība";
 
 /* No comment provided by engineer. */
 "Success" = "Veiksmīgi";
-
-/* No comment provided by engineer. */
-"Sunglasses Sticker" = "Saulesbriļļu uzlīme";
 
 /* No comment provided by engineer. */
 "Take Survey" = "Piedalīties aptaujā";
@@ -343,9 +229,6 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 /* No comment provided by engineer. */
 "Tell us what you think of sprocket" = "Izsakiet savu viedokli par Sprocket";
 
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "pakalpojumu sniegšanas noteikumiem";
-
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Šim ziņojumam ir pievienots žurnālfails.";
 
@@ -360,6 +243,24 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Jaunināt";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Valentīndienas siržu rāmis";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Valentīndienas siržu pārklājuma rāmis";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Valentīndienas rozā punktains rāmis";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Valentīndienas rozā akvareļu rāmis";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Valentīndienas sarkans rāmis";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Valentīndienas sarkans svītrains rāmis";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versija %1$@ (%2$@)";
@@ -379,9 +280,6 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Vai vēlaties izrakstīties no %@?";
 
-/* No comment provided by engineer. */
-"XOXO Sticker" = "XOXO uzlīme";
-
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Jā";
 
@@ -389,7 +287,7 @@ Varat izmantot arī savā ierīcē saglabātos fotoattēlus.";
 "You don’t have any account configured to send emails." = "Jums nav konfigurēts neviens konts, lai sūtītu e-pasta ziņojumus.";
 
 /* No comment provided by engineer. */
-"sprocket" = "sprocket";
+"sprocket" = "Sprocket";
 
 /* No comment provided by engineer. */
 "sprocket error log" = "Sprocket kļūdu žurnāls";

@@ -89,15 +89,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UrbanAirship-iOS-SDK-Pods-Sprocket-AirshipResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UrbanAirship-iOS-SDK-Pods-Sprocket-cal-AirshipResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UrbanAirship-iOS-SDK-Pods-Sprocket-cal.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UrbanAirship-iOS-SDK-Pods-Sprocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>iCarousel-Pods-Sprocket-cal.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>iCarousel-Pods-Sprocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0449C846608A330003DB34DD219F0741</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>060B64EC3641BEC9DA5C84FE19FD7811</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>11A4C6704E15B1E44A11A496499338C4</key>
+		<key>14AC6F1FF16016CAD87007CBE5E33845</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +142,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30CD5635CEC20E2999982F63BC87374F</key>
+		<key>413FD70D036C9F6B6CBA63417D41A1C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62A77CDE9CC055F37D202FAE647AB624</key>
+		<key>5E527CFB80F377EEB684BD67229E80A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5FAC7E06DDEFCF2434451837F04A450E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>64991B4909F4D7AF997A576243D6EB38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,6 +172,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>66E0956DF8E38B7784F82A12918F55BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6C817F4EF2A79DD0467F42D942728C60</key>
 		<dict>
 			<key>primary</key>
@@ -137,22 +187,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95B96586D7323FC47B05C3E675685C2C</key>
+		<key>76FCE06D9FFA1258A2D8757000373384</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EAB5ACE3729615620E94756A1844669</key>
+		<key>79FBC398A2555A38E81A3200E8D80F46</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7575E20494CA38D33F8FF73AB2BB9E7</key>
+		<key>AA37CDF27091CB940297AF52A3EE5150</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ACAF4DA29430945F0701D19614702F29</key>
+		<key>AFD72C170345E22A813BAD6F9B0DAC9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,17 +212,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7B6C0FF29B7CDE0F84FB82A01F81C6C</key>
+		<key>B586C8BEAF2853AC0621545487ED076E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA357EBE69603DF13264899ECE3BB609</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BAFD40B2F9927536DF52073BA5AE3244</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BBD118370FD1DE57DD0F5CF7EF3E7543</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BD802CA574480441F2551C23F1C67CA7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EF4CF30A2FE3DC8875C91290015B7562</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,0 +1,294 @@
+/* No comment provided by engineer. */
+"About" = "Tentang";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Izinkan akses di Pengaturan Anda untuk mengambil dan mencetak foto.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Terjadi kesalahan saat berbagi item.";
+
+/* No comment provided by engineer. */
+"App Settings" = "Pengaturan Aplikasi";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Pengaturan Simpan Otomatis";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Beli Kertas";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Akses Kamera Diperlukan";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Camera Roll";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Batal";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Lihatlah pembuatan HP Sprocket saya";
+
+/* Setup step 3 desc */
+"Connect" = "Hubungkan";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Hapus";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Anda ingin menyimpan foto kamera yang baru ke perangkat Anda?";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Jangan Simpan";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Masukkan Teks";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Masukkan+Teks";
+
+/* No comment provided by engineer. */
+"Error" = "Galat";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Galat saat mengambil informasi pengguna.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Umpan balik tentang sprocket untuk iOS (Catat Pencari: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "Bingkai Bunga 2";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "Bingkai Bunga";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Dari Pengaturan Bluetooth, ketuk “HP sprocket” untuk dipasangkan dengan printer.";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "Berikan Umpan Balik";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "Bingkai Gradien";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "Bingkai Warna Air Hijau";
+
+/* No comment provided by engineer. */
+"How To" = "Caranya";
+
+/* No comment provided by engineer. */
+"How to & Help" = "Caranya & Bantuan";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* No comment provided by engineer. */
+"Kraft Frame" = "Bingkai Kraft";
+
+/* Setup step 1 desc */
+"Load Paper" = "Masukkan Kertas";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "File log telah dihapus.";
+
+/* Dismisses dialog without taking action */
+"No" = "Tidak";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Koneksi Tidak Tersedia";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Gambar aplikasi Pitu tidak ditemukan";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Gambar aplikasi Qzone tidak ditemukan";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Tidak, terima kasih";
+
+/* Allows user close dialog */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oops!" = "Oops!";
+
+/* No comment provided by engineer. */
+"Orange Frame" = "Bingkai Oranye";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Bingkai Cat Semprot Pink";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Harap hubungkan ke sumber data.
+Anda juga dapat menggunakan foto perangkat Anda.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Harap beri tahu kami definisi menakjubkan dan apa yang dapat ditingkatkan!";
+
+/* No comment provided by engineer. */
+"Polka Dots Frame" = "Bingkai Polka Dot";
+
+/* Setup step 2 desc */
+"Power Up" = "Hidupkan";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Tekan terus tombol daya hingga LED berwarna putih.";
+
+/* No comment provided by engineer. */
+"Printers" = "Printer";
+
+/* No comment provided by engineer. */
+"Privacy" = "Privasi";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Taruh seluruh pak pada baki kertas dengan posisi barcode dan logo HP menghadap ke bawah.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Bingkai Merah";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Ingatkan saya nanti";
+
+/* No comment provided by engineer. */
+"Reset" = "Atur Ulang";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Atur Ulang Aplikasi";
+
+/* No comment provided by engineer. */
+"Retry" = "Coba lagi";
+
+/* Title of a table view header */
+"SUPPORT:" = "DUKUNGAN:";
+
+/* No comment provided by engineer. */
+"Save" = "Simpan";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Simpan dan tutup pratinjau?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Simpan di Camera Roll";
+
+/* Button for opening the app settings */
+"Settings" = "Pengaturan";
+
+/* No comment provided by engineer. */
+"Sign In" = "Masuk";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Keluar";
+
+/* No comment provided by engineer. */
+"Sloppy Frame" = "Bingkai Berantakan";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Maaf, masalah Anda tidak dapat dilaporkan sekarang. Kemungkinan besar karena tidak ada akun mail yang diatur di perangkat seluler Anda.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Peningkatan Firmware Printer Sprocket Sudah Tersedia";
+
+/* Setup step 1 title */
+"Step 1" = "Langkah 1";
+
+/* Setup step 2 title */
+"Step 2" = "Langkah 2";
+
+/* Setup step 3 title */
+"Step 3" = "Langkah 3";
+
+/* No comment provided by engineer. */
+"Success" = "Berhasil";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Ikuti Survei";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Ikuti survei";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Ketuk Tingkatkan untuk melanjutkan.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Beri tahu kami pendapat Anda tentang %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Beri tahu kami pendapat Anda tentang sprocket";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "File log terlampir di pesan ini.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Ini akan menghapus semua pilihan yang tersimpan sebelumnya.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Untuk meningkatkan, isi daya printer sprocket setidaknya hingga 75%, lalu buka 'sprocket' di menu.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Bingkai Biru Kehijauan";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Tingkatkan";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Bingkai Hati Valentine";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Bingkai Tumpukan Hati Valentine";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Bingkai Polka Pink Valentine";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Bingkai Cat Air Pink Valentine";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Bingkai Merah Valentine";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Bingkai Garis Merah Valentine";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Versi %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Bingkai Biru Air";
+
+/* Social source title for WeiBo */
+"WeiBo" = "WeiBo";
+
+/* No comment provided by engineer. */
+"White Frame" = "Bingkai Putih";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "Bingkai Kayu";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Anda ingin keluar dari %@?";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Ya";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Tidak ada akun yang dikonfigurasi untuk mengirim email.";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "log galat sprocket";
+

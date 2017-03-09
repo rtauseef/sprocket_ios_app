@@ -1,0 +1,294 @@
+/* No comment provided by engineer. */
+"About" = "Acerca de";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Permita o acesso nas suas Definições para tirar e imprimir fotografias.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Ocorreu um erro ao partilhar o item.";
+
+/* No comment provided by engineer. */
+"App Settings" = "Definições da aplicação";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Definições de gravação automática";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Comprar papel";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Requer acesso à câmara";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Rolo da câmara";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Cancelar";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Verificar a minha criação HP Sprocket";
+
+/* Setup step 3 desc */
+"Connect" = "Ligar";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Dispensar";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Quer gravar novas fotos da câmara para o seu dispositivo?";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Não guardar";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Introduzir texto";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Introduzir+Texto";
+
+/* No comment provided by engineer. */
+"Error" = "Erro";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Erro ao obter a informação do utilizador.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Comentários sobre a sprocket para iOS (Localizador de registo: @)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "Moldura floral 2";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "Moldura floral";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "A partir das Definições de Bluetooth, toque em \"HP Sprocket\" para emparelhar com a impressora.";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "Fornecer comentários";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "Moldura matizada";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "Moldura verde água";
+
+/* No comment provided by engineer. */
+"How To" = "Introdução";
+
+/* No comment provided by engineer. */
+"How to & Help" = "Introdução e Ajuda";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* No comment provided by engineer. */
+"Kraft Frame" = "Moldura de cartão";
+
+/* Setup step 1 desc */
+"Load Paper" = "Carregue papel";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "O ficheiro de registo foi eliminado.";
+
+/* Dismisses dialog without taking action */
+"No" = "Não";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Nenhuma ligação disponível";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Não foram encontradas imagens da aplicação Pitu";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Não foram encontradas imagens da aplicação Qzone";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Não, obrigado";
+
+/* Allows user close dialog */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oops!" = "Ups!";
+
+/* No comment provided by engineer. */
+"Orange Frame" = "Moldura cor de laranja";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Moldura de tinta spray rosa";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Ligue-se a uma fonte de dados.
+Também pode utilizar as fotografias do seu dispositivo.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Diga-nos o que acha excelente e o que pode ser melhorado!";
+
+/* No comment provided by engineer. */
+"Polka Dots Frame" = "Moldura às bolinhas";
+
+/* Setup step 2 desc */
+"Power Up" = "Ligar";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Prima continuamente o botão para ligar/desligar até o LED ficar branco.";
+
+/* No comment provided by engineer. */
+"Printers" = "Impressoras";
+
+/* No comment provided by engineer. */
+"Privacy" = "Privacidade";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Coloque a embalagem inteira no tabuleiro de papel com o código de barras e os logótipos da HP virados para baixo.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Moldura vermelha";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Lembrar-me mais tarde";
+
+/* No comment provided by engineer. */
+"Reset" = "Redefinir";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Redefinir a aplicação";
+
+/* No comment provided by engineer. */
+"Retry" = "Tentar novamente";
+
+/* Title of a table view header */
+"SUPPORT:" = "SUPORTE:";
+
+/* No comment provided by engineer. */
+"Save" = "Guardar";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Guardar e sair de pré-visualização?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Guardar para rolo da câmara";
+
+/* Button for opening the app settings */
+"Settings" = "Definições";
+
+/* No comment provided by engineer. */
+"Sign In" = "Iniciar sessão";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Terminar sessão";
+
+/* No comment provided by engineer. */
+"Sloppy Frame" = "Moldura imperfeita";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Lamentamos, mas neste momento o seu problema não pode ser comunicado. Isto deve-se, muito provavelmente, ao facto de nenhuma conta de e-mail estar configurada no seu dispositivo móvel.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Disponível atualização de firmware da impressora Sprocket";
+
+/* Setup step 1 title */
+"Step 1" = "Passo 1";
+
+/* Setup step 2 title */
+"Step 2" = "Passo 2";
+
+/* Setup step 3 title */
+"Step 3" = "Passo 3";
+
+/* No comment provided by engineer. */
+"Success" = "Sucesso";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Responder ao inquérito";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Responder ao inquérito";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Tocar em Atualizar para continuar.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Diga-nos o que pensa sobre %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Diga-nos o que pensa sobre a sprocket";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "O ficheiro de registo está anexado a esta mensagem.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Isto irá eliminar todas as opções guardadas anteriormente.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Para atualizar, carregue a impressora sprocket pelo menos 75% e vá a \"sprocket\" no menu.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Moldura turquesa";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Atualizar";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Moldura com corações de Dia dos Namorados";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Moldura com corações sobrepostos de Dia dos Namorados";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Moldura às bolhinhas cor-de-rosa de Dia dos Namorados";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Moldura de aguarela cor-de-rosa de Dia dos Namorados";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Moldura vermelha de Dia dos Namorados";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Moldura às riscas vermelhas de Dia dos Namorados";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Versão %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Moldura azul água";
+
+/* Social source title for WeiBo */
+"WeiBo" = "Weibo";
+
+/* No comment provided by engineer. */
+"White Frame" = "Moldura branca";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "Moldura com base em madeira";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Gostaria de terminar sessão em %@?";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Sim";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Não tem nenhuma conta configurada para enviar emails.";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "registo de erros da sprocket";
+

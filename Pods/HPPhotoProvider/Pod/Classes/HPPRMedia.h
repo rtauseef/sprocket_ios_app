@@ -51,7 +51,6 @@
 - (void)cancelImageRequestWithCompletion:(void(^)())completion;
 - (BOOL)isEqualToMedia:(HPPRMedia *)media;
 
-
 - (HPPRSelectPhotoProvider *)photoProvider;
 
 @end
