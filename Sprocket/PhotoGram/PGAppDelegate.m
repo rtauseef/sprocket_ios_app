@@ -27,7 +27,8 @@
 #import "PGLandingSelectorPageViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGLandingMainPageViewController.h"
-#import "PGSocialSource.h"
+#import "PGDeepLinkLauncher.h"
+
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -36,7 +37,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 @property (assign, nonatomic) NSInteger lastConnectedValue;
-@property (assign, nonatomic) BOOL menuShowing;
 
 @end
 
@@ -77,7 +77,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     self.window.backgroundColor = [UIColor greenColor];
     
     self.lastConnectedValue = connectionDefaultValue;
-    self.menuShowing = NO;
+    [PGDeepLinkLauncher sharedInstance].menuShowing = NO;
 
     [self initializeUAirship];
 
@@ -172,16 +172,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)deepLink:(NSString *)location
 {
-    NSLog(@"location: %@", location);
-    if ([location isEqualToString:@"landingPage"]) {
-        [self goToLandingPage];
-    } else if ([location isEqualToString:@"howToAndHelp"]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
-        [[self currentTopViewController] presentViewController:viewController animated:YES completion:nil];
-    } else if ([location isEqualToString:@"cameraRoll"]) {
-        [self goToSocialSource:PGSocialSourceTypeLocalPhotos];
-    }
+    [PGDeepLinkLauncher deepLink:location];
 }
 
 #pragma mark - MP object initialization
@@ -235,12 +226,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
 {
-    self.menuShowing = YES;
+    [PGDeepLinkLauncher sharedInstance].menuShowing = YES;
 }
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
 {
-    self.menuShowing = NO;
+    [PGDeepLinkLauncher sharedInstance].menuShowing = NO;
 }
 
 #pragma mark - sprocket connectivity and reporting
@@ -254,7 +245,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     if (connectionDefaultValue != self.lastConnectedValue  &&
         self.lastConnectedValue != currentlyConnected) {
         
-        UIViewController *topViewController = [self currentTopViewController];
+        UIViewController *topViewController = [PGDeepLinkLauncher currentTopViewController];
         NSString *name = topViewController.trackableScreenName;
         if (nil == name) {
             name = [NSString stringWithFormat:@"%@", [topViewController class]];
@@ -264,78 +255,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     }
     
     self.lastConnectedValue = currentlyConnected;
-}
-- (void)goToSocialSource:(PGSocialSourceType)type
-{
-    PGLandingMainPageViewController *landingPage = [self goToLandingPage];
-    
-    [landingPage goToSocialSourcePage:type sender:self];
-}
-
-- (PGLandingMainPageViewController *)goToLandingPage
-{
-    PGLandingMainPageViewController *landingPage = nil;
-
-    [[UAirship defaultMessageCenter] dismiss:YES];
-    PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-
-    UINavigationController *rootViewController = (UINavigationController *)revealController.frontViewController;
-
-    if (self.menuShowing) {
-        [revealController revealToggle:self];
-        [revealController.rearViewController dismissViewControllerAnimated:YES completion:^{
-        }];
-    }
-    
-    [rootViewController popToRootViewControllerAnimated:NO];
-    
-    if ([rootViewController.viewControllers count]) {
-        if ([rootViewController.viewControllers[0] isKindOfClass:[PGLandingMainPageViewController class]]) {
-            landingPage = rootViewController.viewControllers[0];
-        }
-    }
-                           
-    return landingPage;
-}
-
-- (UIViewController *)currentTopViewController
-{
-    PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    
-    UIViewController *rootViewController = revealController.frontViewController;
-    
-    if (self.menuShowing) {
-        rootViewController = revealController.rearViewController;
-    }
-    
-    UIViewController *topViewController = [self topViewController:rootViewController];
-
-    return topViewController;
-}
-
-- (UIViewController *)topViewController:(UIViewController *)rootViewController
-{
-    UIViewController *topController = nil;
-    
-    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *navController = (UINavigationController *)rootViewController;
-        UIViewController *lastViewController = [[navController viewControllers] lastObject];
-        topController = [self topViewController:lastViewController];
-    } else if ([rootViewController isKindOfClass:[PGLandingSelectorPageViewController class]]) {
-        PGLandingSelectorPageViewController *pageController = (PGLandingSelectorPageViewController *)rootViewController;
-        UINavigationController *displayedController = [pageController currentNavigationController];
-        UIViewController *lastViewController = [[displayedController viewControllers] lastObject];
-        topController = [self topViewController:lastViewController];
-    } else {
-        UIViewController *presentedController = rootViewController.presentedViewController;
-        if (nil != presentedController) {
-            topController = [self topViewController:presentedController];
-        } else {
-            topController = rootViewController;
-        }
-    }
-    
-    return topController;
 }
 
 @end

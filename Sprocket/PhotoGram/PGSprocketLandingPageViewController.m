@@ -15,6 +15,7 @@
 #import "PGSprocketLandingPageViewController.h"
 #import "PGAppAppearance.h"
 #import "PGRevealViewController.h"
+#import "PGDeepLinkLauncher.h"
 #import "UIFont+Style.h"
 #import "UIColor+Style.h"
 #import "UIViewController+Trackable.h"
@@ -75,11 +76,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)openSettings
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-}
-
 - (void)didReceiveSprocketName:(NSString *)name
 {
     self.connectedSprocketName = name;
@@ -129,7 +125,7 @@
 {
     switch (indexPath.row) {
         case 0:
-            [self openSettings];
+            [PGDeepLinkLauncher openSettings];
             break;
         case 1:
             [[MP sharedInstance] presentBluetoothDevicesFromController:self animated:YES completion:nil];

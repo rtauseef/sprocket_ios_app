@@ -16,6 +16,7 @@
 #import "PGAnalyticsManager.h"
 #import "UIViewController+trackable.h"
 #import "PGOverlayCameraViewController.h"
+#import "PGDeepLinkLauncher.h"
 #import <Crashlytics/Crashlytics.h>
 
 NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
@@ -381,7 +382,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * action) {
                                                          [alert dismissViewControllerAnimated:YES completion:nil];
-                                                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                                         [PGDeepLinkLauncher openSettings];
                                                      }];
     [alert addAction:settings];
     

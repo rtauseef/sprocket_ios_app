@@ -28,6 +28,7 @@
 #import "PGSideBarMenuItems.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
+#import "PGDeepLinkLauncher.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
 
@@ -358,20 +359,20 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)sender
 {
     switch (type) {
         case PGSocialSourceTypeFacebook:
-            [self facebookTapped:button];
+            [self facebookTapped:sender];
             break;
         case PGSocialSourceTypeInstagram:
-            [self instagramTapped:button];
+            [self instagramTapped:sender];
             break;
         case PGSocialSourceTypeFlickr:
-            [self flickrTapped:button];
+            [self flickrTapped:sender];
             break;
         case PGSocialSourceTypeLocalPhotos:
-            [self cameraRollTapped:button];
+            [self cameraRollTapped:sender];
             break;
         case PGSocialSourceTypeWeiBo:
             NSLog(@"WeiBo tapped");
@@ -380,7 +381,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
             [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
             break;
         case PGSocialSourceTypePitu:
-            [self pituTapped:button];
+            [self pituTapped:sender];
             break;
     }
 }

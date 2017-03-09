@@ -1351,6 +1351,8 @@
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
+		924910651E71F92D0089A925 /* PGDeepLinkLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 924910641E71F92D0089A925 /* PGDeepLinkLauncher.m */; };
+		924910661E71F92D0089A925 /* PGDeepLinkLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 924910641E71F92D0089A925 /* PGDeepLinkLauncher.m */; };
 		924A704D1DF5F536009A0FB1 /* glasses_blossom_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 924A6FF51DF5F536009A0FB1 /* glasses_blossom_TN.png */; };
 		924A704E1DF5F536009A0FB1 /* glasses_blossom_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 924A6FF61DF5F536009A0FB1 /* glasses_blossom_TN@2x.png */; };
 		924A704F1DF5F536009A0FB1 /* glasses_blossom_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 924A6FF71DF5F536009A0FB1 /* glasses_blossom_TN@3x.png */; };
@@ -2600,6 +2602,8 @@
 		9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewViewController.m; sourceTree = "<group>"; };
 		9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy_Paper_Print@3x.png"; path = "Resources/Images/Icons/Buy_Paper_Print@3x.png"; sourceTree = "<group>"; };
 		9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Get_Help_Print@3x.png"; path = "Resources/Images/Icons/Get_Help_Print@3x.png"; sourceTree = "<group>"; };
+		924910631E71F92D0089A925 /* PGDeepLinkLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDeepLinkLauncher.h; sourceTree = "<group>"; };
+		924910641E71F92D0089A925 /* PGDeepLinkLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDeepLinkLauncher.m; sourceTree = "<group>"; };
 		924A6FF51DF5F536009A0FB1 /* glasses_blossom_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glasses_blossom_TN.png; path = Resources/Images/Stickers/Chinese/glasses_blossom_TN.png; sourceTree = "<group>"; };
 		924A6FF61DF5F536009A0FB1 /* glasses_blossom_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_blossom_TN@2x.png"; path = "Resources/Images/Stickers/Chinese/glasses_blossom_TN@2x.png"; sourceTree = "<group>"; };
 		924A6FF71DF5F536009A0FB1 /* glasses_blossom_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glasses_blossom_TN@3x.png"; path = "Resources/Images/Stickers/Chinese/glasses_blossom_TN@3x.png"; sourceTree = "<group>"; };
@@ -3057,6 +3061,8 @@
 		829E028D1DDB8C4300B025C5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				924910631E71F92D0089A925 /* PGDeepLinkLauncher.h */,
+				924910641E71F92D0089A925 /* PGDeepLinkLauncher.m */,
 				829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */,
 				829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */,
 				8218C5621DDBE90C000855D8 /* PGSideBarMenuItems.h */,
@@ -6045,6 +6051,7 @@
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				F22F12261E522FF300753C5A /* PGFeatureFlag.m in Sources */,
+				924910661E71F92D0089A925 /* PGDeepLinkLauncher.m in Sources */,
 				0d5e2bd60e8c18c05212cbcc /* PGSaveToCameraRollActivity.m in Sources */,
 				5bd4fb56c7ce2869164331e4 /* PGGesturesView+Analytics.m in Sources */,
 				1f5f97f22092733e58db8bd3 /* PGImglyManager.m in Sources */,
@@ -6175,6 +6182,7 @@
 				823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */,
 				821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */,
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
+				924910651E71F92D0089A925 /* PGDeepLinkLauncher.m in Sources */,
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
