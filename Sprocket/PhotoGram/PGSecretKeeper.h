@@ -10,23 +10,16 @@
 // the license agreement.
 //
 
-#import <Foundation/Foundation.h>
+#import "MPSecretKeeper.h"
 
-typedef NS_ENUM(NSUInteger, SecretKeeperEntry) {
-    SecretKeeperEntryInstagramClientId,
-    SecretKeeperEntryFlickrAppKey,
-    SecretKeeperEntryFlickrAppSecret,
-    SecretKeeperEntryQZoneAppId,
-    SecretKeeperEntryGoogleAnalyticsTrakingId,
-    SecretKeeperEntryGoogleAnalyticsTrakingIdDev,
-    SecretKeeperEntryCrashlyticsKey,
-};
+extern NSString * const kSecretKeeperEntryInstagramClientId;
+extern NSString * const kSecretKeeperEntryFlickrAppKey;
+extern NSString * const kSecretKeeperEntryFlickrAppSecret;
+extern NSString * const kSecretKeeperEntryQZoneAppId;
+extern NSString * const kSecretKeeperEntryGoogleAnalyticsTrakingId;
+extern NSString * const kSecretKeeperEntryGoogleAnalyticsTrakingIdDev;
+extern NSString * const kSecretKeeperEntryCrashlyticsKey;
 
-
-@interface PGSecretKeeper : NSObject
-
-+ (instancetype)sharedInstance;
-
-- (NSString *)secretForEntry:(SecretKeeperEntry)entry;
+@interface PGSecretKeeper : MPSecretKeeper
 
 @end

@@ -60,9 +60,9 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     
     NSString *trackingId;
     if (!provisionPath && !sandboxReceipt && !TARGET_IPHONE_SIMULATOR) {
-        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryGoogleAnalyticsTrakingId];
+        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryGoogleAnalyticsTrakingId];
     } else {
-        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryGoogleAnalyticsTrakingIdDev];
+        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryGoogleAnalyticsTrakingIdDev];
     }
     return trackingId;
 }

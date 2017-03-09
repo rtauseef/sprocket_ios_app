@@ -1485,6 +1485,9 @@
 		F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F22F12861E70CDB400753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
+		F22F129C1E71DE0F00753C5A /* MPSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F129B1E71DE0F00753C5A /* MPSecretKeeper.m */; };
+		F22F129D1E71DE0F00753C5A /* MPSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F129B1E71DE0F00753C5A /* MPSecretKeeper.m */; };
+		F22F129E1E71DE0F00753C5A /* MPSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F129B1E71DE0F00753C5A /* MPSecretKeeper.m */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
@@ -2774,6 +2777,8 @@
 		F22F12381E560C2C00753C5A /* PGPhotoSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPhotoSelection.m; sourceTree = "<group>"; };
 		F22F12811E6F539200753C5A /* PGSecretKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSecretKeeper.h; sourceTree = "<group>"; };
 		F22F12821E6F539200753C5A /* PGSecretKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSecretKeeper.m; sourceTree = "<group>"; };
+		F22F129A1E71DE0F00753C5A /* MPSecretKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPSecretKeeper.h; path = ../../Pods/MobilePrintSDK/Pod/Classes/Public/MPSecretKeeper.h; sourceTree = "<group>"; };
+		F22F129B1E71DE0F00753C5A /* MPSecretKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPSecretKeeper.m; path = ../../Pods/MobilePrintSDK/Pod/Classes/Public/MPSecretKeeper.m; sourceTree = "<group>"; };
 		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
 		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
 		F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSetupSprocketViewController.h; sourceTree = "<group>"; };
@@ -4094,6 +4099,8 @@
 		F22F127F1E6F387900753C5A /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				F22F129A1E71DE0F00753C5A /* MPSecretKeeper.h */,
+				F22F129B1E71DE0F00753C5A /* MPSecretKeeper.m */,
 				F22F12811E6F539200753C5A /* PGSecretKeeper.h */,
 				F22F12821E6F539200753C5A /* PGSecretKeeper.m */,
 			);
@@ -6057,6 +6064,7 @@
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
+				F22F129E1E71DE0F00753C5A /* MPSecretKeeper.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				F22F12261E522FF300753C5A /* PGFeatureFlag.m in Sources */,
@@ -6124,6 +6132,7 @@
 				825E2A941DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				82017AD21D94601400364F21 /* UIImage+ImageResize.m in Sources */,
 				F22F12861E70CDB400753C5A /* PGSecretKeeper.m in Sources */,
+				F22F129D1E71DE0F00753C5A /* MPSecretKeeper.m in Sources */,
 				82017ADA1D946A7E00364F21 /* UIView+Background.m in Sources */,
 				8215232A1D82215600C0541C /* ActionViewController.m in Sources */,
 				26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */,
@@ -6178,6 +6187,7 @@
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
+				F22F129C1E71DE0F00753C5A /* MPSecretKeeper.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,

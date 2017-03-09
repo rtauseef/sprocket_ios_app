@@ -418,7 +418,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)setupCrashlytics
 {
-    [Crashlytics startWithAPIKey:[[PGSecretKeeper sharedInstance] secretForEntry:SecretKeeperEntryCrashlyticsKey]];
+    [Crashlytics startWithAPIKey:[[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryCrashlyticsKey]];
     [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:@"WiFi (app start)"];
     NSArray *keys = @[
                       @"WiFi (share/print)",
