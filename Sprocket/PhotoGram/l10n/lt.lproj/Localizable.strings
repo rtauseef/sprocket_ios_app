@@ -8,13 +8,10 @@
 "An error occurred when sharing the item." = "Klaida bendrinant elementą.";
 
 /* No comment provided by engineer. */
-"Arrow Sticker" = "Rodyklės lipdukas";
+"App Settings" = "Programėlės nustatymai";
 
 /* Settings for automatically saving photos */
-"Auto-Save Settings" = "Automatinio išsaugojimo nuostatos";
-
-/* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Gimtadienio kepurėlės lipdukas";
+"Auto-Save Settings" = "Automatinio išsaugojimo nustatymai";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "Pirkti popieriaus";
@@ -30,37 +27,16 @@
 "Cancel" = "Atšaukti";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Katės ausų lipdukas";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Katės akinių lipdukas";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Katės lipdukas";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Katės ūsų lipdukas";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Pažiūrėkite mano „HP Sprocket“ kūrinį";
 
-/* No comment provided by engineer. */
-"Christmas Polka Dot Frame" = "Taškuotas kalėdinis rėmelis";
-
-/* No comment provided by engineer. */
-"Crown Sticker" = "Karūnos lipdukas";
-
-/* No comment provided by engineer. */
-"Cupcake Sticker" = "Keksiuko lipdukas";
-
-/* No comment provided by engineer. */
-"Diamond Sticker" = "Rombo lipdukas";
+/* Setup step 3 desc */
+"Connect" = "Prisijungti";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Atsisakyti";
 
 /* Asks the user if they want their photos saved */
-"Do you want to save new camera photos to your device?" = "Ar norite išsaugoti naujas nuotraukas įrenginyje?";
+"Do you want to save new camera photos to your device?" = "Ar norite įrenginyje išsaugoti naujas fotoaparato nuotraukas?";
 
 /* No comment provided by engineer. */
 "Don't Save" = "Neįrašyti";
@@ -80,23 +56,20 @@
 /* Social source title for Facebook */
 "Facebook" = "„Facebook“";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "2 plunksnų lipdukas";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Plunksnų lipdukas";
-
 /* Subject of the email send to technical support */
-"Feedback on sprocket for iOS (Record Locator: %@)" = "Atsiliepimai apie „iOS“ skirtą „Sprocket“ (įrašų radimo įrankis: %@)";
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Atsiliepimai apie „iOS“ skirtą „sprocket“ (įrašų radimo įrankis: %@)";
 
 /* Social source title for Flickr */
 "Flickr" = "„Flickr“";
 
 /* No comment provided by engineer. */
-"Floral 2 Frame" = "Gėlių rėmelis 2";
+"Floral 2 Frame" = "Gėlių rėmelis (2)";
 
 /* No comment provided by engineer. */
 "Floral Frame" = "Gėlių rėmelis";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "„Bluetooth“ nustatymuose bakstelėkite „HP sprocket“, kad susietumėte su spausdintuvu.";
 
 /* No comment provided by engineer. */
 "Give Feedback" = "Pateikti atsiliepimą";
@@ -106,90 +79,6 @@
 
 /* No comment provided by engineer. */
 "Green Water Color Frame" = "Žalias akvarelės rėmelis";
-
-/* No comment provided by engineer. */
-"Grey Frame" = "Pilkas rėmelis";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Širdžių pašto lipdukas";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Širdies lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Candy Cane Sticker" = "Šventinis kalėdinių ledinukų lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Cap Sticker" = "Šventinis kalėdinės kepurės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Ornament Sticker" = "Šventinis kalėdinio ornamento lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Scarf Sticker" = "Šventinis kalėdinio šaliko lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Stocking Sticker" = "Šventinis kalėdinės kojinės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Tree Sticker" = "Šventinis Kalėdų eglutės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Dreidel Sticker" = "Šventinis sukučio lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Elf Hat Sticker" = "Šventinis elfo kepurės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Fireworks Sticker" = "Šventinis fejerverkų lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Hanukkah Glasses Sticker" = "Šventinis Chanukos akinių lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Holly Sticker" = "Šventinis bugienio lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Horn Sticker" = "Šventinis rago lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Lights Sticker" = "Šventinis šviesų lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Menorah Sticker" = "Šventinis žvakidės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Mistletoe Sticker" = "Šventinis amalo lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Party Hat Sticker" = "Šventinis vakarėlio kepurės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Antlers Sticker" = "Šventinis Rudolfo ragų lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Glasses Sticker" = "Šventinis Rudolfo akinių lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Snowflake Sticker" = "Šventinis snaigės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Face Sticker" = "Šventinis sniego senio veido lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Hat Sticker" = "Šventinis sniego senio skrybėlės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Sticker" = "Šventinis sniego senio lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Star Glasses Sticker" = "Šventinis žvaigždės akinių lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Star Sticker" = "Šventinis žvaigždės lipdukas";
-
-/* No comment provided by engineer. */
-"Holiday Tree Glasses Sticker" = "Šventinis eglutės akinių lipdukas";
 
 /* No comment provided by engineer. */
 "How To" = "Mokomoji medžiaga";
@@ -203,14 +92,11 @@
 /* No comment provided by engineer. */
 "Kraft Frame" = "Ranku darbo rėmelis";
 
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "3 lapų lipdukas";
+/* Setup step 1 desc */
+"Load Paper" = "Įdėkite popieriaus";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Žurnalo failas buvo išvalytas.";
-
-/* No comment provided by engineer. */
-"Moon Sticker" = "Mėnulio lipdukas";
 
 /* Dismisses dialog without taking action */
 "No" = "Ne";
@@ -219,16 +105,16 @@
 "No Connection Available" = "Nėra pasiekiamo ryšio";
 
 /* Message displayed when no images from the Pitu app can be found */
-"No Pitu app images found" = "„Pitu“ programėlės paveikslėlių nerasta";
+"No Pitu app images found" = "Programėlės „Pitu“ paveikslėlių nerasta";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Programėlės „Qzone“ paveikslėlių nerasta";
 
 /* No comment provided by engineer. */
 "No, thanks" = "Ne, ačiū";
 
 /* Allows user close dialog */
 "OK" = "Gerai";
-
-/* No comment provided by engineer. */
-"OMG Sticker" = "OMG lipdukas";
 
 /* No comment provided by engineer. */
 "Oops!" = "Oi!";
@@ -244,8 +130,8 @@
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
-You can also use your device photos." = "Prisijunkite prie duomenų šaltinio.
-Taip pat galite naudoti savo įrenginio nuotraukas.";
+You can also use your device photos." = "Prijunkite duomenų šaltinį.
+Taip pat galite naudoti įrenginio nuotraukas.";
 
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Pasakykite, kas yra puiku ir kas gali būti geriau!";
@@ -253,17 +139,26 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 /* No comment provided by engineer. */
 "Polka Dots Frame" = "Taškuotas rėmelis";
 
+/* Setup step 2 desc */
+"Power Up" = "Įjunkite";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Paspauskite ir palaikykite maitinimo mygtuką, kol šviesos diodas pradės šviesti baltai.";
+
+/* No comment provided by engineer. */
+"Printers" = "Spausdintuvai";
+
 /* No comment provided by engineer. */
 "Privacy" = "Asmens duomenų apsauga";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Įdėkite visą popieriaus pakuotę į popieriaus dėklą brūkšniniu kodu ir HP logotipu į apačią.";
 
 /* Social source title for Qzone */
 "Qzone" = "„QZone“";
 
 /* No comment provided by engineer. */
 "Red Frame" = "Raudonas rėmelis";
-
-/* No comment provided by engineer. */
-"Red Triangle Frame" = "Raudono trikampio rėmelis";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Priminti man vėliau";
@@ -279,9 +174,6 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 
 /* Title of a table view header */
 "SUPPORT:" = "PAGALBA.";
-
-/* No comment provided by engineer. */
-"Santa Frame" = "Kalėdų senelio rėmelis";
 
 /* No comment provided by engineer. */
 "Save" = "Įrašyti";
@@ -305,28 +197,22 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 "Sloppy Frame" = "Nusitrynęs rėmelis";
 
 /* No comment provided by engineer. */
-"Snow Frame" = "Sniego rėmelis";
-
-/* No comment provided by engineer. */
-"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Deja, dabar apie problemą pranešti negalima. Greičiausiai taip yra dėl to, kad jūsų mobiliajame įrenginyje nėra nustatyta nė viena el. pašto paskyra.";
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Atsiprašome, šiuo metu negalima pateikti ataskaitos apie jūsų problemą. Turbūt taip yra todėl, kad jūsų mobiliajame įrenginyje nėra nustatytų pašto paskyrų.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Yra „Sprocket“ spausdintuvo programinės aparatinės įrangos naujovinimas";
 
-/* No comment provided by engineer. */
-"Star Sticker" = "Žvaigždutės lipdukas";
+/* Setup step 1 title */
+"Step 1" = "1 veiksmas";
 
-/* No comment provided by engineer. */
-"Stars Sticker" = "Žvaigždučių lipdukas";
+/* Setup step 2 title */
+"Step 2" = "2 veiksmas";
 
-/* No comment provided by engineer. */
-"Striped Frame" = "Dryžuotas rėmelis";
+/* Setup step 3 title */
+"Step 3" = "3 veiksmas";
 
 /* No comment provided by engineer. */
 "Success" = "Sėkmingai";
-
-/* No comment provided by engineer. */
-"Sunglasses Sticker" = "Saulės akinių lipdukas";
 
 /* No comment provided by engineer. */
 "Take Survey" = "Atlikti apklausą";
@@ -343,9 +229,6 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 /* No comment provided by engineer. */
 "Tell us what you think of sprocket" = "Pasakykite, ką galvojate apie „Sprocket“";
 
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Paslaugos teikimo sąlygomis";
-
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Žurnalo failas yra pridėtas prie šio pranešimo.";
 
@@ -360,6 +243,24 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Naujovinti";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Valentino dienos širdžių rėmelis";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Valentino dienos persidengiančių širdžių rėmelis";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Valentino dienos rožinis polkos rėmelis";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Valentino dienos rožinis akvarelės rėmelis";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Valentino dienos raudonas rėmelis";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Valentino dienos raudonų juostų rėmelis";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "%1$@ versija (%2$@)";
@@ -378,9 +279,6 @@ Taip pat galite naudoti savo įrenginio nuotraukas.";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Ar norite atsijungti nuo %@?";
-
-/* No comment provided by engineer. */
-"XOXO Sticker" = "XOXO lipdukas";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Taip";
