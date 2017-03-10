@@ -20,6 +20,16 @@ Feature: Verify preview screen from different social media
     And I should see "Share" button
 
   @reset
+  @TA17012
+  Scenario: Verify preview screen for Flickr
+    Given I am on the "Flickr Preview" screen
+    Then I should see "camera" button
+    And I should see "cancel" button
+    And I should see "Edit" button
+    Then I should see "Print" button
+    And I should see "Share" button
+
+  @reset
   @done
   @smoke
   Scenario: Verify preview screen for camera roll

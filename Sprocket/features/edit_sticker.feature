@@ -33,6 +33,19 @@ Scenario Outline: Verify 'Sticker' option
   #  | Flickr Preview     |
     | CameraRoll Preview |
     
+    
+@reset
+@TA17012
+Scenario: Verify Sticker edit options
+    Given I am on the "StickerEditor" screen for "CameraRoll Preview"
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
+    And I should see "Bring to front" button
+    And I should see "Delete" button
+    And I should see "Flip vertically" button
+    And I should see "Flip horizontally" button
+    
+    
 @reset
 @regression
 Scenario Outline: Verify Sticker delete option    
