@@ -17,9 +17,7 @@
 
 #import "PGBaseAnalyticsManager.h"
 #import "PGExperimentManager.h"
-
-#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-81852585-1"
-#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-81852585-2"
+#import "PGSecretKeeper.h"
 
 @implementation PGBaseAnalyticsManager
 
@@ -60,9 +58,11 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     // The following is adapted from: http://stackoverflow.com/questions/26081543/how-to-tell-at-runtime-whether-an-ios-app-is-running-through-a-testflight-beta-i
     BOOL sandboxReceipt = [[[[NSBundle mainBundle] appStoreReceiptURL] lastPathComponent] isEqualToString:@"sandboxReceipt"];
     
-    NSString *trackingId = GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS;
+    NSString *trackingId;
     if (!provisionPath && !sandboxReceipt && !TARGET_IPHONE_SIMULATOR) {
-        trackingId = GOOGLE_ANALYTICS_TRACKING_ID;
+        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryGoogleAnalyticsTrakingId];
+    } else {
+        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryGoogleAnalyticsTrakingIdDev];
     }
     return trackingId;
 }

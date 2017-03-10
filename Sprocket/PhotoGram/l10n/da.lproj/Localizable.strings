@@ -8,13 +8,10 @@
 "An error occurred when sharing the item." = "Der opstod en fejl under deling af elementet.";
 
 /* No comment provided by engineer. */
-"Arrow Sticker" = "Klistermærke med pil";
+"App Settings" = "App-indstillinger";
 
 /* Settings for automatically saving photos */
-"Auto-Save Settings" = "Gem indstillinger automatisk";
-
-/* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Klistermærke med fødselsdagshat";
+"Auto-Save Settings" = "Auto-Save-indstillinger";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "Køb papir";
@@ -30,37 +27,16 @@
 "Cancel" = "Annuller";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Klistermærke med katteører";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Klistermærke med kat med briller";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Klistermærke med kat";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Klistermærke med katteknurhår";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Se min kreation på HP Sprocket";
 
-/* No comment provided by engineer. */
-"Christmas Polka Dot Frame" = "Ramme med juleprikker";
-
-/* No comment provided by engineer. */
-"Crown Sticker" = "Klistermærke med krone";
-
-/* No comment provided by engineer. */
-"Cupcake Sticker" = "Klistermærke med cupcake";
-
-/* No comment provided by engineer. */
-"Diamond Sticker" = "Klistermærke med diamant";
+/* Setup step 3 desc */
+"Connect" = "Opret forbindelse";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Afvis";
 
 /* Asks the user if they want their photos saved */
-"Do you want to save new camera photos to your device?" = "Vil du gemme nye fotos fra kameraet på din enhed?";
+"Do you want to save new camera photos to your device?" = "Vil du gemme nye kamerafotos på din enhed?";
 
 /* No comment provided by engineer. */
 "Don't Save" = "Gem ikke";
@@ -80,12 +56,6 @@
 /* Social source title for Facebook */
 "Facebook" = "Facebook";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "Klistermærke med fjer 2";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Klistermærke med fjer";
-
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "Feedback på Sprocket til iOS (postsøgefunktion: %@)";
 
@@ -98,6 +68,9 @@
 /* No comment provided by engineer. */
 "Floral Frame" = "Blomsterramme";
 
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Tryk på \"HP sprocket\" under Bluetooth-indstillingerne for at aktivere parring med printeren.";
+
 /* No comment provided by engineer. */
 "Give Feedback" = "Giv feedback";
 
@@ -106,90 +79,6 @@
 
 /* No comment provided by engineer. */
 "Green Water Color Frame" = "Ramme med grøn vandfarve";
-
-/* No comment provided by engineer. */
-"Grey Frame" = "Grå ramme";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Klistermærke med hjerteudtryk";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Klistermærke med hjerter";
-
-/* No comment provided by engineer. */
-"Holiday Candy Cane Sticker" = "Højtidsklistermærke med slikstok";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Cap Sticker" = "Højtidsklistermærke med nissehue";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Ornament Sticker" = "Højtidsklistermærke med julepynt";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Scarf Sticker" = "Højtidsklistermærke med juletørklæde";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Stocking Sticker" = "Højtidsklistermærke med julesok";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Tree Sticker" = "Højtidsklistermærke med juletræ";
-
-/* No comment provided by engineer. */
-"Holiday Dreidel Sticker" = "Højtidsklistermærke med dreidel";
-
-/* No comment provided by engineer. */
-"Holiday Elf Hat Sticker" = "Højtidsklistermærke med alfehat";
-
-/* No comment provided by engineer. */
-"Holiday Fireworks Sticker" = "Højtidsklistermærke med fyrværkeri";
-
-/* No comment provided by engineer. */
-"Holiday Hanukkah Glasses Sticker" = "Højtidsklistermærke med Hanukkah-briller";
-
-/* No comment provided by engineer. */
-"Holiday Holly Sticker" = "Højtidsklistermærke med kristtjørn";
-
-/* No comment provided by engineer. */
-"Holiday Horn Sticker" = "Højtidsklistermærke med horn";
-
-/* No comment provided by engineer. */
-"Holiday Lights Sticker" = "Højtidsklistermærke med lys";
-
-/* No comment provided by engineer. */
-"Holiday Menorah Sticker" = "Højtidsklistermærke med Menora";
-
-/* No comment provided by engineer. */
-"Holiday Mistletoe Sticker" = "Højtidsklistermærke med mistelten";
-
-/* No comment provided by engineer. */
-"Holiday Party Hat Sticker" = "Højtidsklistermærke med festhat";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Antlers Sticker" = "Højtidsklistermærke med Rudolfgevir";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Glasses Sticker" = "Højtidsklistermærke med Rudolfbriller";
-
-/* No comment provided by engineer. */
-"Holiday Snowflake Sticker" = "Højtidsklistermærke med snefnug";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Face Sticker" = "Højtidsklistermærke med snemandsansigt";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Hat Sticker" = "Højtidsklistermærke med snemandshat";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Sticker" = "Højtidsklistermærke med snemand";
-
-/* No comment provided by engineer. */
-"Holiday Star Glasses Sticker" = "Højtidsklistermærke med stjernebriller";
-
-/* No comment provided by engineer. */
-"Holiday Star Sticker" = "Højtidsklistermærke med stjerne";
-
-/* No comment provided by engineer. */
-"Holiday Tree Glasses Sticker" = "Højtidsklistermærke med træbriller";
 
 /* No comment provided by engineer. */
 "How To" = "Tip";
@@ -203,14 +92,11 @@
 /* No comment provided by engineer. */
 "Kraft Frame" = "Ramme med kraft";
 
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "Klistermærke med blad 3";
+/* Setup step 1 desc */
+"Load Paper" = "Ilæg papir";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Logfil er blevet ryddet.";
-
-/* No comment provided by engineer. */
-"Moon Sticker" = "Klistermærke med måne";
 
 /* Dismisses dialog without taking action */
 "No" = "Nej";
@@ -221,14 +107,14 @@
 /* Message displayed when no images from the Pitu app can be found */
 "No Pitu app images found" = "Fandt ingen Pitu-appbilleder";
 
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Der blev ikke fundet nogen Qzone-appbilleder";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Nej tak";
 
 /* Allows user close dialog */
 "OK" = "OK";
-
-/* No comment provided by engineer. */
-"OMG Sticker" = "Klistermærke med OMG";
 
 /* No comment provided by engineer. */
 "Oops!" = "Hovsa!";
@@ -245,7 +131,7 @@
 /* No comment provided by engineer. */
 "Please connect to a data source.
 You can also use your device photos." = "Opret forbindelse til en datakilde.
-Du kan også bruge dine enhedsfotos.";
+Du kan også bruge enhedens fotos.";
 
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Fortæl os, hvad der er fantastisk, og hvor der er plads til forbedring!";
@@ -253,17 +139,26 @@ Du kan også bruge dine enhedsfotos.";
 /* No comment provided by engineer. */
 "Polka Dots Frame" = "Ramme med polkaprikker";
 
+/* Setup step 2 desc */
+"Power Up" = "Tænd";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Tryk på tænd/sluk-knappen, indtil LED'en bliver hvid.";
+
+/* No comment provided by engineer. */
+"Printers" = "Printere";
+
 /* No comment provided by engineer. */
 "Privacy" = "Fortrolighed";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Læg hele pakken i papirbakken, så stregkode og HP's logoer vender nedad.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
 
 /* No comment provided by engineer. */
 "Red Frame" = "Rød ramme";
-
-/* No comment provided by engineer. */
-"Red Triangle Frame" = "Rød trekantet ramme";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Husk mig på det senere";
@@ -279,9 +174,6 @@ Du kan også bruge dine enhedsfotos.";
 
 /* Title of a table view header */
 "SUPPORT:" = "SUPPORT:";
-
-/* No comment provided by engineer. */
-"Santa Frame" = "Ramme med julemand";
 
 /* No comment provided by engineer. */
 "Save" = "Gem";
@@ -305,28 +197,22 @@ Du kan også bruge dine enhedsfotos.";
 "Sloppy Frame" = "Sjusket ramme";
 
 /* No comment provided by engineer. */
-"Snow Frame" = "Ramme med sne";
-
-/* No comment provided by engineer. */
-"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Dit problem kan desværre ikke rapporteres lige nu. Dette skyldes formentlig, at der ikke er konfigureret nogen mailkonti på din mobilenhed.";
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Dit problem kan desværre ikke rapporteres lige nu. Dette skyldes sandsynligvis, at der ikke er konfigureret nogen e-mailkonti på din mobilenhed.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Opgradering til Sprocket-printerfirmwaren tilgængelig";
 
-/* No comment provided by engineer. */
-"Star Sticker" = "Klistermærke med stjerne";
+/* Setup step 1 title */
+"Step 1" = "Trin 1";
 
-/* No comment provided by engineer. */
-"Stars Sticker" = "Klistermærke med stjerner";
+/* Setup step 2 title */
+"Step 2" = "Trin 2";
 
-/* No comment provided by engineer. */
-"Striped Frame" = "Stribet ramme";
+/* Setup step 3 title */
+"Step 3" = "Trin 3";
 
 /* No comment provided by engineer. */
 "Success" = "Det lykkedes";
-
-/* No comment provided by engineer. */
-"Sunglasses Sticker" = "Klistermærke med solbriller";
 
 /* No comment provided by engineer. */
 "Take Survey" = "Deltag i undersøgelse";
@@ -343,9 +229,6 @@ Du kan også bruge dine enhedsfotos.";
 /* No comment provided by engineer. */
 "Tell us what you think of sprocket" = "Fortæl os, hvad du synes om sprocket.";
 
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "vilkår og betingelser";
-
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Logfilen er vedhæftet denne meddelelse.";
 
@@ -360,6 +243,24 @@ Du kan også bruge dine enhedsfotos.";
 
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Opgrader";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Valentinshjerteramme";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Ramme med valentinshjerter";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Ramme med lyserøde valentinsprikker";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Valentinsramme i lyserød vandfarve";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Rød valentinsramme";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Valentinsramme med røde striber";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Version %1$@ (%2$@)";
@@ -378,9 +279,6 @@ Du kan også bruge dine enhedsfotos.";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Vil du gerne logge af %@?";
-
-/* No comment provided by engineer. */
-"XOXO Sticker" = "Klistermærke med XOXO";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Ja";

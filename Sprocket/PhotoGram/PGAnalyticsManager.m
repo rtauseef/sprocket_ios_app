@@ -12,12 +12,12 @@
 
 #import <Crashlytics/Crashlytics.h>
 #import "PGAnalyticsManager.h"
+#import "PGSecretKeeper.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <MP.h>
 #import <MPPrintManager.h>
 #import <HPPR.h>
 
-#define CRASHLYTICS_KEY @"fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -418,7 +418,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)setupCrashlytics
 {
-    [Crashlytics startWithAPIKey:CRASHLYTICS_KEY];
+    [Crashlytics startWithAPIKey:[[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryCrashlyticsKey]];
     [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:@"WiFi (app start)"];
     NSArray *keys = @[
                       @"WiFi (share/print)",

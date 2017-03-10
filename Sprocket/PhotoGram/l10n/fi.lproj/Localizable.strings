@@ -8,13 +8,10 @@
 "An error occurred when sharing the item." = "Kohdetta jaettaessa tapahtui virhe.";
 
 /* No comment provided by engineer. */
-"Arrow Sticker" = "Nuolitarra";
+"App Settings" = "Sovellusasetukset";
 
 /* Settings for automatically saving photos */
 "Auto-Save Settings" = "Automaattisen tallennuksen asetukset";
-
-/* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Syntymäpäivähattutarra";
 
 /* No comment provided by engineer. */
 "Buy Paper" = "Osta paperia";
@@ -30,31 +27,10 @@
 "Cancel" = "Peruuta";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Kissankorvatarra";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Kissalasitarra";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Kissatarra";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Kissanviiksitarra";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Katso HP Sprocket -luomukseni";
 
-/* No comment provided by engineer. */
-"Christmas Polka Dot Frame" = "Jouluinen pilkkukehys";
-
-/* No comment provided by engineer. */
-"Crown Sticker" = "Kruunutarra";
-
-/* No comment provided by engineer. */
-"Cupcake Sticker" = "Kuppikakkutarra";
-
-/* No comment provided by engineer. */
-"Diamond Sticker" = "Timanttitarra";
+/* Setup step 3 desc */
+"Connect" = "Yhdistä";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Hylkää";
@@ -80,14 +56,8 @@
 /* Social source title for Facebook */
 "Facebook" = "Facebook";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "Höyhentarra 2";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Höyhentarra";
-
 /* Subject of the email send to technical support */
-"Feedback on sprocket for iOS (Record Locator: %@)" = "Palautetta iOS:n Sprocketista (tietojen tunnus: %@)";
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Palautetta iOS:n sprocketista (tietojen tunnus: %@)";
 
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
@@ -98,6 +68,9 @@
 /* No comment provided by engineer. */
 "Floral Frame" = "Kukallinen kehys";
 
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Yhdistä tulostimeen napauttamalla Bluetooth-asetuksissa vaihtoehtoa HP Sprocket.";
+
 /* No comment provided by engineer. */
 "Give Feedback" = "Anna palautetta";
 
@@ -106,90 +79,6 @@
 
 /* No comment provided by engineer. */
 "Green Water Color Frame" = "Vihreä vesivärikehys";
-
-/* No comment provided by engineer. */
-"Grey Frame" = "Harmaa kehys";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Hehkuva sydäntarra";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Sydäntarra";
-
-/* No comment provided by engineer. */
-"Holiday Candy Cane Sticker" = "Piparminttutankotarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Cap Sticker" = "Joululakkitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Ornament Sticker" = "Joulukoristetarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Scarf Sticker" = "Kaulahuivitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Stocking Sticker" = "Joulusukkatarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Christmas Tree Sticker" = "Joulukuusitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Dreidel Sticker" = "Dreidel-hyrrätarra (hanukka)";
-
-/* No comment provided by engineer. */
-"Holiday Elf Hat Sticker" = "Pukin apulaisen hattutarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Fireworks Sticker" = "Ilotulitustarra (uusivuosi)";
-
-/* No comment provided by engineer. */
-"Holiday Hanukkah Glasses Sticker" = "Hanukkalasitarra (hanukka)";
-
-/* No comment provided by engineer. */
-"Holiday Holly Sticker" = "Orjanlaakeritarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Horn Sticker" = "Torvitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Lights Sticker" = "Valotarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Menorah Sticker" = "Menoratarra (hanukka)";
-
-/* No comment provided by engineer. */
-"Holiday Mistletoe Sticker" = "Mistelitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Party Hat Sticker" = "Juhlahattu (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Antlers Sticker" = "Poronsarvitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Rudolph Glasses Sticker" = "Petteri Punakuonon lasitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Snowflake Sticker" = "Lumihiutaletarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Face Sticker" = "Lumiukon naamatarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Hat Sticker" = "Lumiukon hattutarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Snowman Sticker" = "Lumiukkotarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Star Glasses Sticker" = "Tähtilasitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Star Sticker" = "Tähtitarra (joulunaika)";
-
-/* No comment provided by engineer. */
-"Holiday Tree Glasses Sticker" = "Kuusilasitarra (joulunaika)";
 
 /* No comment provided by engineer. */
 "How To" = "Ohjeet";
@@ -203,14 +92,11 @@
 /* No comment provided by engineer. */
 "Kraft Frame" = "Pahvikehys";
 
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "Lehtitarra (3)";
+/* Setup step 1 desc */
+"Load Paper" = "Lisää paperia";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Lokitiedosto on poistettu.";
-
-/* No comment provided by engineer. */
-"Moon Sticker" = "Kuutarra";
 
 /* Dismisses dialog without taking action */
 "No" = "Ei";
@@ -221,14 +107,14 @@
 /* Message displayed when no images from the Pitu app can be found */
 "No Pitu app images found" = "Yhtään Pitu-sovelluksen kuvaa ei löytynyt";
 
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Yhtään Qzone-sovelluksen kuvaa ei löytynyt";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Ei kiitos";
 
 /* Allows user close dialog */
 "OK" = "OK";
-
-/* No comment provided by engineer. */
-"OMG Sticker" = "OMG-tarra";
 
 /* No comment provided by engineer. */
 "Oops!" = "Hups!";
@@ -253,17 +139,26 @@ Voit käyttää myös laitteella olevia kuvia.";
 /* No comment provided by engineer. */
 "Polka Dots Frame" = "Pilkullinen kehys";
 
+/* Setup step 2 desc */
+"Power Up" = "Käynnistä";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Paina virtapainiketta ja pidä sitä painettuna, kunnes LED-valo muuttuu valkoiseksi.";
+
+/* No comment provided by engineer. */
+"Printers" = "Tulostimet";
+
 /* No comment provided by engineer. */
 "Privacy" = "Tietosuoja";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Aseta koko pakkaus syöttölokeroon viivakoodi ja HP-logot alaspäin.";
 
 /* Social source title for Qzone */
 "Qzone" = "QZone";
 
 /* No comment provided by engineer. */
 "Red Frame" = "Punainen kehys";
-
-/* No comment provided by engineer. */
-"Red Triangle Frame" = "Punainen kolmiokehys";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Muistuta myöhemmin";
@@ -279,9 +174,6 @@ Voit käyttää myös laitteella olevia kuvia.";
 
 /* Title of a table view header */
 "SUPPORT:" = "TUKI:";
-
-/* No comment provided by engineer. */
-"Santa Frame" = "Joulupukkikehys";
 
 /* No comment provided by engineer. */
 "Save" = "Tallenna";
@@ -305,28 +197,22 @@ Voit käyttää myös laitteella olevia kuvia.";
 "Sloppy Frame" = "Suttuinen kehys";
 
 /* No comment provided by engineer. */
-"Snow Frame" = "Lumikehys";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Ongelmaa ei valitettavasti voida raportoida tällä hetkellä. Tämä johtuu luultavasti siitä, että mobiililaitteelle ei ole määritetty yhtään sähköpostitiliä.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Sprocket-tulostimen laiteohjelmistopäivitys saatavilla";
 
-/* No comment provided by engineer. */
-"Star Sticker" = "Tähtitarra";
+/* Setup step 1 title */
+"Step 1" = "Vaihe 1";
 
-/* No comment provided by engineer. */
-"Stars Sticker" = "Tähtitarra (monta)";
+/* Setup step 2 title */
+"Step 2" = "Vaihe 2";
 
-/* No comment provided by engineer. */
-"Striped Frame" = "Raitakehys";
+/* Setup step 3 title */
+"Step 3" = "Vaihe 3";
 
 /* No comment provided by engineer. */
 "Success" = "Onnistui";
-
-/* No comment provided by engineer. */
-"Sunglasses Sticker" = "Aurinkolasitarra";
 
 /* No comment provided by engineer. */
 "Take Survey" = "Vastaa kyselyyn";
@@ -343,9 +229,6 @@ Voit käyttää myös laitteella olevia kuvia.";
 /* No comment provided by engineer. */
 "Tell us what you think of sprocket" = "Anna palautetta sprocketista";
 
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "palveluehdot";
-
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Lokitiedosto on tämän viestin liitteenä.";
 
@@ -360,6 +243,24 @@ Voit käyttää myös laitteella olevia kuvia.";
 
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Päivitä";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Ystävänpäivä: sydänkehys";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Ystävänpäivä: sydänpeittokehys";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Ystävänpäivä: vaaleanpunainen pilkkukehys";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Ystävänpäivä: vaaleanpunainen vesivärikehys";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Ystävänpäivä: punainen kehys";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Ystävänpäivä: punainen raitakehys";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versio %1$@ (%2$@)";
@@ -378,9 +279,6 @@ Voit käyttää myös laitteella olevia kuvia.";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Haluatko kirjautua ulos palvelusta %@?";
-
-/* No comment provided by engineer. */
-"XOXO Sticker" = "XOXO-tarra";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Kyllä";

@@ -1,0 +1,294 @@
+/* No comment provided by engineer. */
+"About" = "Πληροφορίες";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "Επιτρέψτε την πρόσβαση στις ρυθμίσεις σας για να μπορείτε να τραβάτε και να εκτυπώνετε φωτογραφίες.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Παρουσιάστηκε σφάλμα κατά την κοινοποίηση του στοιχείου.";
+
+/* No comment provided by engineer. */
+"App Settings" = "Ρυθμίσεις εφαρμογής";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Ρυθμίσεις αυτόματης αποθήκευσης";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Αγορά χαρτιού";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Απαιτείται πρόσβαση στην κάμερα";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Άλμπουμ κάμερας";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Άκυρο";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Δείτε τι δημιούργησα στο HP Sprocket";
+
+/* Setup step 3 desc */
+"Connect" = "Σύνδεση";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Κλείσιμο";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Θέλετε να αποθηκεύσετε νέες φωτογραφίες από την κάμερα στη συσκευή σας;";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Να μην γίνει αποθήκευση";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Εισαγωγή κειμένου";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Εισαγωγή+Κείμενο";
+
+/* No comment provided by engineer. */
+"Error" = "Σφάλμα";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Σφάλμα κατά την ανάκτηση των πληροφοριών χρήστη.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Σχόλια για το Sprocket για iOS (Τοποθεσία αρχείου: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* No comment provided by engineer. */
+"Floral 2 Frame" = "Πλαίσιο λουλουδιών 2";
+
+/* No comment provided by engineer. */
+"Floral Frame" = "Πλαίσιο λουλουδιών";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Στο μενού \"Ρυθμίσεις Bluetooth\", πατήστε \"HP Sprocket\" για να γίνει σύζευξη με τον εκτυπωτή.";
+
+/* No comment provided by engineer. */
+"Give Feedback" = "Αποστολή σχολίων";
+
+/* No comment provided by engineer. */
+"Gradient Frame" = "Ντεγκραντέ πλαίσιο";
+
+/* No comment provided by engineer. */
+"Green Water Color Frame" = "Πλαίσιο με πράσινη νερομπογιά";
+
+/* No comment provided by engineer. */
+"How To" = "Οδηγίες";
+
+/* No comment provided by engineer. */
+"How to & Help" = "Οδηγίες και βοήθεια";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* No comment provided by engineer. */
+"Kraft Frame" = "Πλαίσιο Kraft";
+
+/* Setup step 1 desc */
+"Load Paper" = "Τοποθέτηση χαρτιού";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "Το αρχείο καταγραφής έχει διαγραφεί.";
+
+/* Dismisses dialog without taking action */
+"No" = "Όχι";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Δεν υπάρχει διαθέσιμη σύνδεση";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Δεν βρέθηκαν εικόνες από την εφαρμογή Pitu";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Δεν βρέθηκαν εικόνες από την εφαρμογή Qzone";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Όχι, ευχαριστώ";
+
+/* Allows user close dialog */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oops!" = "Ουπς!";
+
+/* No comment provided by engineer. */
+"Orange Frame" = "Πορτοκαλί πλαίσιο";
+
+/* No comment provided by engineer. */
+"Pink Spray Paint Frame" = "Πλαίσιο με ροζ σπρέι";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Συνδεθείτε σε μια πηγή δεδομένων.
+Μπορείτε, επίσης, να χρησιμοποιήσετε τις φωτογραφίες που έχετε στη συσκευή σας.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Πείτε μας τις σας ενθουσίασε και τι θα μπορούσαμε να βελτιώσουμε!";
+
+/* No comment provided by engineer. */
+"Polka Dots Frame" = "Πουά πλαίσιο";
+
+/* Setup step 2 desc */
+"Power Up" = "Ενεργοποίηση";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Πατήστε παρατεταμένα το κουμπί λειτουργίας, μέχρι η φωτεινή ένδειξη LED να γίνει λευκή.";
+
+/* No comment provided by engineer. */
+"Printers" = "Εκτυπωτές";
+
+/* No comment provided by engineer. */
+"Privacy" = "Ιδιωτικό απόρρητο";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Τοποθετήστε ολόκληρο το πακέτο στο δίσκο χαρτιού με το γραμμοκώδικα και τα λογότυπα της ΗΡ στραμμένα προς τα κάτω.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Red Frame" = "Κόκκινο πλαίσιο";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Υπενθύμιση αργότερα";
+
+/* No comment provided by engineer. */
+"Reset" = "Επαναφορά";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Επαναφορά εφαρμογής";
+
+/* No comment provided by engineer. */
+"Retry" = "Επανάληψη";
+
+/* Title of a table view header */
+"SUPPORT:" = "ΥΠΟΣΤΗΡΙΞΗ:";
+
+/* No comment provided by engineer. */
+"Save" = "Αποθήκευση";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Αποθήκευση και έξοδος από την προεπισκόπηση;";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Αποθήκευση στο άλμπουμ της κάμερας";
+
+/* Button for opening the app settings */
+"Settings" = "Ρυθμίσεις";
+
+/* No comment provided by engineer. */
+"Sign In" = "Σύνδεση";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Αποσύνδεση";
+
+/* No comment provided by engineer. */
+"Sloppy Frame" = "Πρόχειρο πλαίσιο";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Δυστυχώς, δεν είναι δυνατό να γίνει αναφορά του προβλήματος που αντιμετωπίζετε αυτή τη στιγμή. Πιθανότατα, αυτό οφείλεται στο γεγονός ότι δεν έχετε ορίσει κάποιον λογαριασμό email στη φορητή συσκευή σας.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Διαθέσιμη αναβάθμιση υλικολογισμικού για τον εκτυπωτή sprocket";
+
+/* Setup step 1 title */
+"Step 1" = "Βήμα 1";
+
+/* Setup step 2 title */
+"Step 2" = "Βήμα 2";
+
+/* Setup step 3 title */
+"Step 3" = "Βήμα 3";
+
+/* No comment provided by engineer. */
+"Success" = "Επιτυχής";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Συμμετοχή στην έρευνα";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Πάρε μέρος στην έρευνα";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Πατήστε \"Αναβάθμιση\" για να συνεχίσετε.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Πείτε μας τη γνώμη σας για το %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Πείτε μας τη γνώμη σας για το sprocket";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "Το αρχείο καταγραφής είναι συνημμένο σε αυτό το μήνυμα.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Με την ενέργεια αυτή, θα διαγραφούν όλες οι αποθηκευμένες επιλογές.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Για να κάνετε αναβάθμιση, φορτίστε τον εκτυπωτή sprocket σε ποσοστό τουλάχιστον 75% και έπειτα πηγαίνετε στην επιλογή \"sprocket\" στο μενού.";
+
+/* No comment provided by engineer. */
+"Turquoise Frame" = "Τιρκουάζ πλαίσιο";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Αναβάθμιση";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Frame" = "Πλαίσιο με καρδιές για τον Άγιο Βαλεντίνο";
+
+/* No comment provided by engineer. */
+"Valentines Hearts Overlay Frame" = "Πλαίσιο επικάλυψης με καρδιές για τον Άγιο Βαλεντίνο";
+
+/* No comment provided by engineer. */
+"Valentines Pink Polka Frame" = "Ροζ πουά πλαίσιο για τον Άγιο Βαλεντίνο";
+
+/* No comment provided by engineer. */
+"Valentines Pink Watercolor Frame" = "Πλαίσιο με ροζ νερομπογιά για τον Άγιο Βαλεντίνο";
+
+/* No comment provided by engineer. */
+"Valentines Red Frame" = "Κόκκινο πλαίσιο για τον Άγιο Βαλεντίνο";
+
+/* No comment provided by engineer. */
+"Valentines Red Stripes Frame" = "Κόκκινο ριγέ πλαίσιο για τον Άγιο Βαλεντίνο";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Έκδοση %1$@ (%2$@)";
+
+/* No comment provided by engineer. */
+"Water Blue Frame" = "Γαλάζιο πλαίσιο";
+
+/* Social source title for WeiBo */
+"WeiBo" = "WeiBo";
+
+/* No comment provided by engineer. */
+"White Frame" = "Λευκό πλαίσιο";
+
+/* No comment provided by engineer. */
+"Wood Bottom Frame" = "Ξύλινο κάτω πλαίσιο";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Θέλετε να αποσυνδεθείτε από το %@;";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Ναι";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Δεν έχετε διαμορφώσει κάποιον λογαριασμό για την αποστολή email.";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "Αρχείο καταγραφής sprocket";
+
