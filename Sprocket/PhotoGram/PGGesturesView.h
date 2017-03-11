@@ -38,7 +38,6 @@ typedef enum
 - (void)adjustContentOffset;
 - (void)adjustScrollAndImageView;
 - (void)enableGestures;
-- (void)disableGestures;
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale;
 

@@ -12,6 +12,7 @@
 
 #import "PGGesturesView.h"
 #import "UIImage+imageResize.h"
+#import "UIView+Background.h"
 
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kMaximumZoomScale = 4.0f;
@@ -71,6 +72,9 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.scrollView.maximumZoomScale = self.maximumZoomScale;
     self.scrollView.clipsToBounds = NO;
     
+    self.backgroundColor = [UIColor whiteColor];
+    self.scrollView.backgroundColor = [UIColor whiteColor];
+    
     self.doubleTapBehavior = PGGesturesDoubleTapZoom;
     self.totalRotation = 0.0F;
     
@@ -79,6 +83,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.selectionView = [[UIView alloc] initWithFrame:self.bounds];
     self.selectionView.backgroundColor = [UIColor blackColor];
     self.selectionView.alpha = 0.6;
+    self.selectionView.userInteractionEnabled = NO;
     
     [self addSubview:self.selectionView];
     
@@ -102,17 +107,10 @@ static CGFloat const kLoadingIndicatorSize = 50;
     [self enableGestures];
 }
 
-- (void)disableGestures
-{
-    for (UIGestureRecognizer *gr in self.scrollView.gestureRecognizers) {
-        [self.scrollView removeGestureRecognizer:gr];
-    }
-    
-    self.scrollView.userInteractionEnabled = NO;
-}
-
 - (void)enableGestures
 {
+    self.scrollView.userInteractionEnabled = YES;
+    
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     doubleTapGesture.numberOfTouchesRequired = 1;
@@ -121,15 +119,6 @@ static CGFloat const kLoadingIndicatorSize = 50;
     UIRotationGestureRecognizer *rotateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateGestureRecognized:)];
     rotateGesture.delegate = self;
     [self.scrollView addGestureRecognizer:rotateGesture];
-    
-    // attach long press gesture to collectionView
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-    lpgr.minimumPressDuration = kMinimumPressDurationInSeconds;
-    lpgr.delaysTouchesBegan = YES;
-    lpgr.delegate = self;
-    [self.scrollView addGestureRecognizer:lpgr];
-    
-    self.scrollView.userInteractionEnabled = YES;
 }
 
 - (void)setIsMultiSelectImage:(BOOL)isMultiSelectImage
@@ -139,13 +128,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.selectionView.hidden = !isMultiSelectImage;
     self.checkmark.hidden = !isMultiSelectImage;
     
-    if (isMultiSelectImage) {
-        self.scrollView.backgroundColor = [UIColor whiteColor];
-        [self.loadingIndicator startAnimating];
-    } else {
-        self.scrollView.backgroundColor = [UIColor clearColor];
-    }
-    
+    [self.loadingIndicator startAnimating];
 }
 
 - (void)setIsSelected:(BOOL)isSelected
@@ -164,6 +147,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     
     if (!allowGestures) {
         self.scrollView.scrollEnabled = NO;
+        self.scrollView.userInteractionEnabled = NO;
         for (UIGestureRecognizer *gesture in self.scrollView.gestureRecognizers) {
             if (![gesture isKindOfClass:[UILongPressGestureRecognizer class]]) {
                 [self.scrollView removeGestureRecognizer:gesture];
@@ -197,7 +181,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     if (!self.imageView) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
-        self.imageView.userInteractionEnabled = YES;
+        self.imageView.userInteractionEnabled = NO;
         [self.scrollView addSubview:self.imageView];
     }
     
@@ -344,6 +328,17 @@ static CGFloat const kLoadingIndicatorSize = 50;
             [self.delegate handleLongPress:self];
         }
     }
+}
+
+- (UIImage *)screenshotImage
+{
+    BOOL isCheckmarkHidden = self.checkmark.hidden;
+    self.checkmark.hidden = YES;
+    
+    UIImage *image = [super screenshotImage];
+    self.checkmark.hidden = isCheckmarkHidden;
+    
+    return image;
 }
 
 #pragma mark - UIScrollViewDelegate methods

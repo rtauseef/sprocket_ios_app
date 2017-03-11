@@ -17,6 +17,8 @@
 #import "UIViewController+trackable.h"
 #import "PGOverlayCameraViewController.h"
 #import <Crashlytics/Crashlytics.h>
+#import "PGPhotoSelection.h"
+#import <HPPRCameraRollMedia.h>
 
 NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
 
@@ -109,12 +111,18 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    
+    HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
+    media.image = photo;
+    
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    previewViewController.selectedPhoto = photo;
     previewViewController.source = [PGPreviewViewController cameraSource];
     
+    self.currentSelectedPhoto = photo;
+    self.currentMedia = media;
     self.currentSource = previewViewController.source;
-    self.currentSelectedPhoto = previewViewController.selectedPhoto;
     
     if (self.isBackgroundCamera) {
         [self.viewController presentViewController:previewViewController animated:NO completion:nil];

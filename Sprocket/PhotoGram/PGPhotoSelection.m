@@ -66,7 +66,16 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
     return self.selectedItems.count >= kPhotoSelectionMaxSelected;
 }
 
+- (BOOL)hasMultiplePhotos
+{
+    return self.selectedItems.count > 1;
+}
+
 - (void)selectMedia:(HPPRMedia *)media {
+    if (!self.isInSelectionMode) {
+        [self.selectedItems removeAllObjects];
+    }
+    
     if (![self isSelected:media] && ![self isMaxedOut]) {
         [self.selectedItems addObject:media];
     }
