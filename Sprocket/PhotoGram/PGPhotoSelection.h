@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import <HPPRMedia.h>
+#import "PGGesturesView.h"
 
 @interface PGPhotoSelection : NSObject
 
@@ -27,5 +28,13 @@
 - (void)deselectMedia:(HPPRMedia *)media;
 - (NSArray<HPPRMedia *> *)selectedMedia;
 - (BOOL)isSelected:(HPPRMedia *)media;
+
+- (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion;
+- (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion;
+- (BOOL)savePhotos;
+- (void)savePhotosByGesturesView:(NSArray<PGGesturesView *> *)gesturesView completion:(void (^)(BOOL))completion;
+- (void)setSavePhotos:(BOOL)save;
+- (BOOL)userPromptedToSavePhotos;
+
 
 @end

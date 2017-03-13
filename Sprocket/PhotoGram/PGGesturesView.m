@@ -124,7 +124,6 @@ static CGFloat const kLoadingIndicatorSize = 50;
 {
     _isMultiSelectImage = isMultiSelectImage;
     
-    self.selectionView.hidden = !isMultiSelectImage;
     self.checkmark.hidden = !isMultiSelectImage;
     
     [self.loadingIndicator startAnimating];
@@ -169,7 +168,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
 
 - (void)setImage:(UIImage *)image forceContentMode:(BOOL)forceContentMode
 {
-    _image = image;
+    _media.image = image;
 
     [self.loadingIndicator stopAnimating];
     [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
@@ -185,22 +184,22 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }
     
     if (forceContentMode) {
-        if (abs((int)self.image.size.width - (int)self.image.size.height) < kSquareImageAllowance) {
+        if (abs((int)self.media.image.size.width - (int)self.media.image.size.height) < kSquareImageAllowance) {
             self.imageContentMode = UIViewContentModeScaleAspectFit;
         } else {
             self.imageContentMode = UIViewContentModeScaleAspectFill;
         }
     }
     
-    CGFloat scaleFactor = self.frame.size.width / self.image.size.width;
+    CGFloat scaleFactor = self.frame.size.width / self.media.image.size.width;
     
     CGAffineTransform transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleFactor, scaleFactor);
     self.imageView.transform = transform;
     
-    self.imageView.image = self.image;
+    self.imageView.image = self.media.image;
     self.imageView.contentMode = self.imageContentMode;
 
-    CGSize imageFinalSize = [self.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
+    CGSize imageFinalSize = [self.media.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
     if (imageFinalSize.width && imageFinalSize.height) {
         self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
     }
@@ -290,7 +289,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
             self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
             self.totalRotation = 0.0F;
             
-            [self setImage:_image forceContentMode:NO];
+            [self setImage:self.media.image forceContentMode:NO];
         }];
     }
 }

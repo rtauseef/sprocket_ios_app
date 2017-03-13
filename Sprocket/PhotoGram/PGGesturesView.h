@@ -9,6 +9,7 @@
 // in whole or in part, is expressly prohibited except as authorized by
 // the license agreement.
 //
+#import <HPPRMedia.h>
 
 @protocol PGGesturesViewDelegate;
 
@@ -20,7 +21,7 @@ typedef enum
 
 @interface PGGesturesView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) HPPRMedia *media;
 @property (nonatomic, assign) CGFloat minimumZoomScale;
 @property (nonatomic, assign) CGFloat maximumZoomScale;
 @property (nonatomic, assign) BOOL allowGestures;
@@ -32,6 +33,7 @@ typedef enum
 @property (nonatomic, assign) BOOL isMultiSelectImage;
 @property (nonatomic, assign) BOOL isSelected;
 
+- (void)setImage:(UIImage *)image;
 - (CGPoint)offset;
 - (CGFloat)zoom;
 - (CGFloat)angle;

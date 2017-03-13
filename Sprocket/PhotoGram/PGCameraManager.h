@@ -43,8 +43,6 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure;
 - (void)showCameraPermissionFailedAlert;
 
-- (void)saveImage:(UIImage *)image completion:(void (^)(BOOL success))completion;
-
 + (void)logMetrics;
 
 @end
