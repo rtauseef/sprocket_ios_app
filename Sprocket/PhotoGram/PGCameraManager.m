@@ -110,22 +110,17 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    
     HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
     media.image = photo;
     
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     
-    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    previewViewController.source = [PGPreviewViewController cameraSource];
-    
     self.currentSelectedPhoto = photo;
     self.currentMedia = media;
-    self.currentSource = previewViewController.source;
+    self.currentSource = [PGPreviewViewController cameraSource];
     
     if (self.isBackgroundCamera) {
-        [self.viewController presentViewController:previewViewController animated:NO completion:nil];
+        [PGPreviewViewController presentPreviewPhotoFrom:self.viewController andSource:[PGPreviewViewController cameraSource]];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerPhotoTaken object:nil];
     }

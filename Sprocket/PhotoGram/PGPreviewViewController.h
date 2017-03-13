@@ -20,5 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIView *transitionEffectView;
 
 + (NSString *)cameraSource;
++ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source;
++ (void)presentCameraFrom:(UIViewController *)currentViewController animated:(BOOL)animated;
 
 @end

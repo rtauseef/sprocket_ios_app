@@ -83,6 +83,26 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 @implementation PGPreviewViewController
 
++ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.source = source;
+    [previewViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [previewViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    [currentViewController presentViewController:previewViewController animated:YES completion:nil];
+}
+
++ (void)presentCameraFrom:(UIViewController *)currentViewController animated:(BOOL)animated
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+    previewViewController.source = [PGPreviewViewController cameraSource];
+//    previewViewController.transitionEffectView.alpha = 1;
+    
+    [currentViewController presentViewController:previewViewController animated:animated completion:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -117,7 +137,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self.view layoutIfNeeded];
     [super viewWillAppear:animated];
     
-    if (self.selectedNewPhoto && ![self.source isEqualToString:[PGPreviewViewController cameraSource]]) {
+    if (self.selectedNewPhoto) {
         if (![PGPhotoSelection sharedInstance].selectedMedia.count) {
             __weak PGPreviewViewController *weakSelf = self;
             [[PGCameraManager sharedInstance] checkCameraPermission:^{
@@ -324,6 +344,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
+    if ([self.source isEqualToString:[PGPreviewViewController cameraSource]]) {
+        [[PGPhotoSelection sharedInstance] endSelectionMode];
+    }
+    
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
     }];
