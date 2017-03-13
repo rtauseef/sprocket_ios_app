@@ -120,7 +120,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.currentSource = [PGPreviewViewController cameraSource];
     
     if (self.isBackgroundCamera) {
-        [PGPreviewViewController presentPreviewPhotoFrom:self.viewController andSource:[PGPreviewViewController cameraSource]];
+        [PGPreviewViewController presentPreviewPhotoFrom:self.viewController andSource:[PGPreviewViewController cameraSource] animated:NO];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerPhotoTaken object:nil];
     }

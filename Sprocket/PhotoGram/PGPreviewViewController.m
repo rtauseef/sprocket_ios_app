@@ -83,15 +83,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 @implementation PGPreviewViewController
 
-+ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source
++ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source animated:(BOOL)animated
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = source;
-    [previewViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    [previewViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    if (animated) {
+        [previewViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [previewViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    }
     
-    [currentViewController presentViewController:previewViewController animated:YES completion:nil];
+    [currentViewController presentViewController:previewViewController animated:animated completion:nil];
 }
 
 + (void)presentCameraFrom:(UIViewController *)currentViewController animated:(BOOL)animated
@@ -367,6 +369,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     self.didChangeProject = NO;
     self.source = [PGPreviewViewController cameraSource];
+    self.items = [NSMutableArray arrayWithArray:[PGPhotoSelection sharedInstance].selectedMedia];
+    self.selectedItems[0] = [NSNumber numberWithBool:YES];
     
     [PGAnalyticsManager sharedManager].photoSource = self.source;
     [self.carouselView reloadData];
