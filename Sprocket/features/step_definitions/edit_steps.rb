@@ -196,8 +196,10 @@ Then(/^I select "(.*?)" sticker$/) do |sticker_id|
     sleep(STEP_PAUSE)
 end
 
-Then(/^I select "(.*?)" font$/) do |font_name|
+Then(/^I select "(.*?)" font$/) do |font_id|
     sleep(STEP_PAUSE)
+    $font_id = font_id
+    font_name=$font[font_id]['name']
     select_font font_name
     sleep(STEP_PAUSE)
 end
@@ -222,10 +224,10 @@ Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end
 
-Then(/^I should see the photo with the "(.*?)" font$/) do |font_name|
-    $list_loc=$edit_screen_arr["edit_font"]
+Then(/^I should see the photo with the "(.*?)" font$/) do |font_id|
+    font_value=$font[font_id]['value']
     font_name_applied = query("IMGLYTextLabel",:font)[0].split(" ")[3].gsub(';','').gsub('"','')
-    raise "Wrong font selected!" unless font_name_applied.to_s == $list_loc[font_name]
+    raise "Wrong font selected!" unless font_name_applied.to_s == font_value
 end
 
 Then(/^I should see the photo with the "(.*?)" color$/) do |color_name|
@@ -250,7 +252,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
     
    # sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
     
-    font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
+   # font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
     
     color_name=["White", "Gray", "Black", "Light blue", "Blue", "Purple", "Orchid", "Pink", "Red", "Orange", "Gold", "Yellow", "Olive", "Green", "Aquamarin"]
     
@@ -269,9 +271,10 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
     else
         if option == "fonts"
             while i < 25
-                macro %Q|I select "#{font_name[i]}" font|
+                 font_id = "font_"+"#{i}"
+                macro %Q|I select "#{font_id}" font|
                 macro %Q|I verify blue line indicator is displayed under selected "font"|
-                macro %Q|I should see the photo with the "#{font_name[i]}" font|
+                macro %Q|I should see the photo with the "#{font_id}" font|
                 i= i + 1
             end
         else
@@ -305,36 +308,7 @@ end
 $edit_screen_arr =
 
 {
-          
-    "edit_font" => {
-        
-        "Helvetica" => "Helvetica",
-        "Typewriter" => "American",
-        "Avenir" => "Avenir-Heavy",
-        "Chalkboard" => "ChalkboardSE-Regular",
-        "Arial" => "Arial",
-        "Kohinoor" => "KohinoorBangla-Regular",
-        "Liberator" => "Liberator",
-        "Muncie" => "Muncie",
-        "Lincoln" => "Abraham",
-        "Airship" => "Airship",
-        "Arvil" => "Arvil",
-        "Bender" => "Bender-Inline",
-        "Blanch" => "Blanch-Condensed",
-        "Cubano" => "Cubano-Regular",
-        "Franchise" => "Franchise",
-        "Geared" => "GearedSlab-Regular",
-        "Governor" => "Governor",
-        "Haymaker" => "Haymaker",
-        "Homestead" => "Homestead-Regular",
-        "Maven Pro" => "MavenProLight200-Regular",
-        "Mensch" => "Mensch",
-        "Sullivan" => "Sullivan-Regular",
-        "Tommaso" => "Tommaso",
-        "Valencia" => "Valencia",
-        "Vevey" => "Vevey"
-        
-            },
+   
     
     "edit_color_red" => {
         
@@ -486,4 +460,32 @@ $edit_screen_arr =
             'frame_18' => {'name' => 'Floral 2 Frame','value' =>'13_floral2_frame'},
             'frame_19' => {'name' => 'Pink Spray Paint Frame','value' =>'5_Red_frame'}
         }
+        $font ={ 
+            'font_0' => {'name' => 'Helvetica','value' =>'Helvetica'},
+            'font_1' => {'name' => 'Typewriter','value' =>'American'},
+            'font_2' => {'name' => 'Avenir','value' =>'Avenir-Heavy'},
+            'font_3' => {'name' => 'Chalkboard','value' =>'ChalkboardSE-Regular'},
+            'font_4' => {'name' => 'Arial','value' =>'Arial'},
+            'font_5' => {'name' => 'Kohinoor','value' =>'KohinoorBangla-Regular'},
+            'font_6' => {'name' => 'Liberator','value' =>'Liberator'},
+            'font_7' => {'name' => 'Muncie','value' =>'Muncie'},
+            'font_8' => {'name' => 'Lincoln','value' =>'Abraham'},
+            'font_9' => {'name' => 'Airship','value' =>'Airship'},
+            'font_10' => {'name' => 'Arvil','value' =>'Arvil'},
+            'font_11' => {'name' => 'Bender','value' =>'Bender-Inline'},
+            'font_12' => {'name' => 'Blanch','value' =>'Blanch-Condensed'},
+            'font_13' => {'name' => 'Cubano','value' =>'Cubano-Regular'},
+            'font_14' => {'name' => 'Franchise','value' =>'Franchise'},
+            'font_15' => {'name' => 'Geared','value' =>'GearedSlab-Regular'},
+            'font_16' => {'name' => 'Governor','value' =>'Governor'},
+            'font_17' => {'name' => 'Haymaker','value' =>'Haymaker'},
+            'font_18' => {'name' => 'Homestead','value' =>'Homestead-Regular'},
+            'font_19' => {'name' => 'Maven Pro','value' =>'MavenProLight200-Regular'},
+            'font_20' => {'name' => 'Mensch','value' =>'Mensch'},
+            'font_21' => {'name' => 'Sullivan','value' =>'Sullivan-Regular'},
+            'font_22' => {'name' => 'Tommaso','value' =>'Tommaso'},
+            'font_23' => {'name' => 'Valencia','value' =>'Valencia'},
+            'font_24' => {'name' => 'Vevey','value' =>'Vevey'}                  
+        }
+           
     
