@@ -46,7 +46,7 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             i = 0
             while i < 3
                 swipe(:left)
-                sleep(STEP_PAUSE)
+                sleep(WAIT_SCREENLOAD)
                 i = i + 1
             end
             #check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")

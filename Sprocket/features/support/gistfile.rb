@@ -18,7 +18,8 @@ class SimLocale
       "et_EE" => {"AppleLanguages" => "et", "AppleLocale" => "et_EE"},
       "lv_LV" => {"AppleLanguages" => "lv", "AppleLocale" => "lv_LV"},
       "lt_LT" => {"AppleLanguages" => "lt", "AppleLocale" => "lt_LT"},
-      "nb_NO" => {"AppleLanguages" => "nb", "AppleLocale" => "nb_NO"}
+      "nb_NO" => {"AppleLanguages" => "nb", "AppleLocale" => "nb_NO"},
+      "el_GR" => {"AppleLanguages" => "el", "AppleLocale" => "el_GR"}
     }
 
   def change_sim_locale(sim_os, sim_name, sim_locale)

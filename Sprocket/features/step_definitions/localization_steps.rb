@@ -66,14 +66,57 @@ Then(/^I verify the "(.*?)" text$/) do |text|
     raise "not found!" unless localized_text.length > 0 
 end
 
-And(/^I verify the "(.*?)" link$/) do |link|
-    if ENV['LANGUAGE'] == "Danish"
-        link_text = query("PGTermsAttributedLabel", :text)[0]
-        raise "localization failed!" unless link_text == $list_loc['terms_of_service']
-    else
-        terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service']}'")
+
+And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
+    sleep(STEP_PAUSE)
+    if social_media == "Instagram"
+        terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_instagram']}'")
         raise "not found!" unless terms_of_service_link.length > 0
-        sleep(WAIT_SCREENLOAD)
+        sleep(STEP_PAUSE)
+    else
+        if social_media == "Camera Roll"
+            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_cameraroll']}'")
+            raise "not found!" unless terms_of_service_link.length > 0
+            sleep(STEP_PAUSE)
+        else
+            if social_media == "facebook"
+                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_facebook']}'")
+                raise "not found!" unless terms_of_service_link.length > 0
+                sleep(STEP_PAUSE)
+            else
+                if social_media == "Flickr"
+                    sleep(STEP_PAUSE)
+                    if ENV['LANGUAGE'] == "Chinese"
+                        puts "#{social_media} - Not Applicable for Chinese language!".blue
+                    else
+                        terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_flickr']}'")
+                        raise "not found!" unless terms_of_service_link.length > 0
+                        sleep(STEP_PAUSE)
+                    end
+                else
+                    if social_media == "QZone"
+                        if ENV['LANGUAGE'] == "Chinese"
+                            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_Qzone']}'")
+                            raise "not found!" unless terms_of_service_link.length > 0
+                            sleep(STEP_PAUSE)
+                        else
+                            puts "#{social_media} - Applicable only for Chinese language!".blue
+                            sleep(STEP_PAUSE)
+                        end
+                    else
+                        if social_media == "QZone"
+                            if ENV['LANGUAGE'] == "pitu"
+                                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_pitu']}'")
+                                raise "not found!" unless terms_of_service_link.length > 0
+                                sleep(STEP_PAUSE)
+                            else
+                                puts "#{social_media} - Applicable only for Chinese language!".blue
+                            end
+                        end
+                    end
+                end
+            end
+        end
     end
 end
 
@@ -131,7 +174,14 @@ def check_options_exist item
                          if item == "Version"
                              check_element_exists "view {text CONTAINS '#{$list_loc[item]}'}"
                          else
-                            check_element_exists "view marked:'#{$list_loc[item]}'"
+                             if ENV['LANGUAGE'] == "Danish"
+                                 if item == "Terms and service"
+                                     link_text = query("PGTermsAttributedLabel", :text)[0] 
+                                     raise "localization failed!" unless link_text == $list_loc[item]
+                                 end
+                             else
+                                check_element_exists "view marked:'#{$list_loc[item]}'"
+                             end
                          end
                      end
                  end
@@ -147,6 +197,19 @@ Then /^I touch "(.*?)" option in the screen$/ do |option|
     else
         touch "view marked:'#{$list_loc[option]}'" 
         sleep(STEP_PAUSE)
+    end
+end
+
+Then /^I should see the popup message for the camera access$/ do
+    check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+    sleep(STEP_PAUSE)
+end
+
+Then /^I verify the "(.*?)" of the popup message$/ do |option|
+    if option == "title"
+        check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+    else
+        check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
     end
 end
  

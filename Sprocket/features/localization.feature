@@ -8,6 +8,58 @@ Feature: Localization testing
   Scenario: Change iPhone Language
     Given  I am on the "Landing" screen
     Then I change the language
+    
+@TA16511
+@localization
+Scenario: Verify Landing screen texts
+    Given I am on the "Landing" screen
+    And I should see the below listed social media texts:
+    | Instagram              |
+    | Facebook               |
+    | Pitu                   |
+    | Qzone                  |
+    | Flickr                 |
+    | CameraRoll             |
+    | Take or select a photo |
+    | Terms and service      |
+    
+@TA16511
+@localization
+Scenario: Verify Terms of Service link from social media landing screens
+    Given I am on the "Landing" screen
+    Then I should see "Instagram" logo
+    And I click on the "Instagram" logo
+    And I verify the Terms of Service link for "Instagram"
+    Then I swipe to see "Camera Roll" screen
+    And I verify the Terms of Service link for "Camera Roll"
+    Then I wait for some time
+    Then I swipe to see "Flickr" screen
+    And I verify the Terms of Service link for "Flickr"
+    Then I wait for some time
+    Then I swipe to see "QZone" screen
+    And I verify the Terms of Service link for "QZone"
+    Then I wait for some time
+    Then I swipe to see "pitu" screen
+    And I verify the Terms of Service link for "pitu"
+    Then I wait for some time
+    Then I swipe to see "facebook" screen
+    And I verify the Terms of Service link for "facebook"
+    
+    
+    
+    
+ @TA16511
+@localization
+Scenario: Verify camera roll authorization popup
+    Given I am on the "Landing" screen
+    And I touch "cameraLanding" button
+    Then I should see the popup message for the camera access 
+    Then I verify the "title" of the popup message
+    And I verify the "content" of the popup message
+    And  I should see the below listed buttons:
+    | Cancel   | 
+    | Settings |
+    
         
   @TA15895
   @TA16511
@@ -16,14 +68,6 @@ Feature: Localization testing
     Given  I am on the "CameraRollLanding" screen
     Then I open cameraroll	
     Then I verify photos screen title
-    
- @TA15895
- @TA16511
- @localization
- Scenario: Verify landing screen texts
-    Given  I am on the "Landing" screen
-    Then I verify the "Take or select a photo" text
-    And I verify the "Terms and service" link
     
  @TA15895
  @TA16511
@@ -49,8 +93,7 @@ Scenario: Verify side menu-how to &help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
-    Then I touch the option "How to & Help"
-    #And I verify the "<how_to_help_options>" text 
+    Then I touch the option "How to & Help" 
     And I should see the below listed How to & help options:
     | Reset Sprocket Printer |
     | Setup Sprocket Printer |
@@ -92,18 +135,7 @@ Scenario Outline: Verify side menu-how to &help options
     | Tweet Support          |
     | Join Support Forum     |
     | Visit Support Website  |
-    
-@TA16511
-@localization
-Scenario: Verify Landing screen texts
-    Given I am on the "Landing" screen
-    And I should see the below listed social media texts:
-    | Instagram  |
-    | Facebook   |
-    | Pitu       |
-    | Qzone      |
-    | Flickr     |
-    | CameraRoll |
+
     
 @TA16511
 @localization
