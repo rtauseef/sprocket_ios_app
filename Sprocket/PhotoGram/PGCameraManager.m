@@ -10,15 +10,17 @@
 // the license agreement.
 //
 
+#import <Crashlytics/Crashlytics.h>
+#import <HPPRCameraRollMedia.h>
+
+#import "PGAnalyticsManager.h"
+#import "PGAppDelegate.h"
 #import "PGCameraManager.h"
 #import "PGLandingMainPageViewController.h"
-#import "PGAppDelegate.h"
-#import "PGAnalyticsManager.h"
-#import "UIViewController+trackable.h"
 #import "PGOverlayCameraViewController.h"
-#import <Crashlytics/Crashlytics.h>
 #import "PGPhotoSelection.h"
-#import <HPPRCameraRollMedia.h>
+#import "PGSavePhotos.h"
+#import "UIViewController+trackable.h"
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -256,7 +258,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
-        if (![[PGPhotoSelection sharedInstance] userPromptedToSavePhotos]) {
+        if (![PGSavePhotos userPromptedToSavePhotos]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
                                                                            message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
                                                                     preferredStyle:UIAlertControllerStyleAlert];
@@ -264,7 +266,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
                                                                style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                 [[PGPhotoSelection sharedInstance] setSavePhotos:NO];
+                                                                 [PGSavePhotos setSavePhotos:NO];
                                                                  [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                                  [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"Off"];
                                                              }];
@@ -272,8 +274,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * _Nonnull action) {
-                                                                  [[PGPhotoSelection sharedInstance] setSavePhotos:YES];
-                                                                  [[PGPhotoSelection sharedInstance] saveImage:photo completion:nil];
+                                                                  [PGSavePhotos setSavePhotos:YES];
+                                                                  [PGSavePhotos saveImage:photo completion:nil];
                                                                   [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                                   [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                                                               }];
@@ -281,8 +283,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             
             [weakSelf.viewController presentViewController:alert animated:YES completion:nil];
         } else {
-            if ([[PGPhotoSelection sharedInstance] savePhotos]) {
-                [[PGPhotoSelection sharedInstance] saveImage:photo completion:nil];
+            if ([PGSavePhotos savePhotos]) {
+                [PGSavePhotos saveImage:photo completion:nil];
             }
             [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
         }

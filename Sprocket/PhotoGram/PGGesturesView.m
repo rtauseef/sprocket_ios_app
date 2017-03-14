@@ -162,7 +162,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.scrollView.minimumZoomScale = minimumZoomScale;
 }
 
--(void)setMaximumZoomScale:(CGFloat)maximumZoomScale
+- (void)setMaximumZoomScale:(CGFloat)maximumZoomScale
 {
     _maximumZoomScale = maximumZoomScale;
     self.scrollView.maximumZoomScale = maximumZoomScale;

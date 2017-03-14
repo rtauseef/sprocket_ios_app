@@ -26,6 +26,7 @@
 #import "iCarousel.h"
 #import "PGPhotoSelection.h"
 #import "HPPRCacheService.h"
+#import "PGSavePhotos.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -158,7 +159,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
 
-    self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].hasMultiplePhotos;;
+    self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].hasMultiplePhotos;
     self.imageContainer.hidden = YES;
 }
 
@@ -288,6 +289,22 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
 }
 
+- (void)savePhotosByGesturesView:(NSArray<PGGesturesView *> *)gesturesViews completion:(void (^)(BOOL))completion
+{
+    NSUInteger count = 0;
+    for (PGGesturesView *gestureView in gesturesViews) {
+        if (gestureView.isSelected) {
+            [PGSavePhotos saveImage:gestureView.editedImage completion:nil];
+        }
+        
+        count++;
+        
+        if (count == gesturesViews.count) {
+            completion(YES);
+        }
+    }
+}
+
 #pragma mark - IMGLYToolStackControllerDelegate
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
@@ -364,7 +381,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
-    [[PGPhotoSelection sharedInstance] savePhotosByGesturesView:self.gesturesViews completion:^(BOOL success) {
+    [self savePhotosByGesturesView:self.gesturesViews completion:^(BOOL success) {
         if (success) {
             [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
             
@@ -406,7 +423,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         __weak PGPreviewViewController *weakSelf = self;
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
 
-            [[PGPhotoSelection sharedInstance] savePhotosByGesturesView:self.gesturesViews completion:^(BOOL success) {
+            [self savePhotosByGesturesView:self.gesturesViews completion:^(BOOL success) {
                 if (success) {
                     [self closePreviewAndCamera];
                     [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
