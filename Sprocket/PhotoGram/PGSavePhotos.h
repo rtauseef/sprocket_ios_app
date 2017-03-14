@@ -11,22 +11,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <HPPRMedia.h>
-#import "PGGesturesView.h"
+#import <Photos/Photos.h>
 
-@interface PGPhotoSelection : NSObject
+@interface PGSavePhotos : NSObject
 
-+ (instancetype)sharedInstance;
++ (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion;
++ (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion;
 
-- (void)beginSelectionMode;
-- (void)endSelectionMode;
-- (BOOL)isInSelectionMode;
-- (BOOL)isMaxedOut;
-- (BOOL)hasMultiplePhotos;
-
-- (void)selectMedia:(HPPRMedia *)media;
-- (void)deselectMedia:(HPPRMedia *)media;
-- (NSArray<HPPRMedia *> *)selectedMedia;
-- (BOOL)isSelected:(HPPRMedia *)media;
++ (BOOL)savePhotos;
++ (void)setSavePhotos:(BOOL)save;
++ (BOOL)userPromptedToSavePhotos;
 
 @end
