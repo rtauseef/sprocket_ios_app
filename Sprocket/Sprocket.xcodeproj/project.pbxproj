@@ -621,6 +621,8 @@
 		8263D7B61E71DD330036E903 /* PGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7B51E71DD330036E903 /* PGTextView.m */; };
 		8263D7B71E71DD330036E903 /* PGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7B51E71DD330036E903 /* PGTextView.m */; };
 		8263D7B81E71DD330036E903 /* PGTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7B51E71DD330036E903 /* PGTextView.m */; };
+		8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7CF1E7867670036E903 /* PGSavePhotos.m */; };
+		8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8263D7CF1E7867670036E903 /* PGSavePhotos.m */; };
 		826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */; };
 		826B69D91DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */; };
 		8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; };
@@ -2117,6 +2119,8 @@
 		825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBatteryImageView.m; sourceTree = "<group>"; };
 		8263D7B41E71DD330036E903 /* PGTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTextView.h; sourceTree = "<group>"; };
 		8263D7B51E71DD330036E903 /* PGTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTextView.m; sourceTree = "<group>"; };
+		8263D7CE1E7867670036E903 /* PGSavePhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSavePhotos.h; sourceTree = "<group>"; };
+		8263D7CF1E7867670036E903 /* PGSavePhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSavePhotos.m; sourceTree = "<group>"; };
 		826B69D61DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourceMenuTableViewCell.h; sourceTree = "<group>"; };
 		826B69D71DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourceMenuTableViewCell.m; sourceTree = "<group>"; };
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
@@ -3698,6 +3702,8 @@
 				82A1167F1E5FA57100E7F8FC /* PGStickerManager.m */,
 				82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */,
 				82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */,
+				8263D7CE1E7867670036E903 /* PGSavePhotos.h */,
+				8263D7CF1E7867670036E903 /* PGSavePhotos.m */,
 			);
 			name = Preview;
 			sourceTree = "<group>";
@@ -6109,6 +6115,7 @@
 				1174168234d1a88405ac0c0b /* NSURLRequest+Helper.m in Sources */,
 				F22F123A1E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
+				8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
 				a066e20082450f3d9be0eacf /* main.m in Sources */,
@@ -6201,6 +6208,7 @@
 			files = (
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
+				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
 				821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */,
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,

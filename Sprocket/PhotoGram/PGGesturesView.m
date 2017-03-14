@@ -12,10 +12,10 @@
 
 #import "PGGesturesView.h"
 #import "UIImage+imageResize.h"
+#import "UIView+Background.h"
 
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kMaximumZoomScale = 4.0f;
-static CGFloat const kMinimumPressDurationInSeconds = 0.35f;
 static CGFloat const kAnimationDuration = 0.3f;
 static CGFloat const kMarginOfError = .01f;
 static CGFloat const kSquareImageAllowance = 10.0f;
@@ -27,6 +27,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
 @property (nonatomic, assign) UIViewContentMode imageContentMode;
 @property (nonatomic, strong) UIView *selectionView;
 @property (nonatomic, strong) UIImageView *checkmark;
+@property (nonatomic, strong) NSTimer *zoomTimer;
 
 @end
 
@@ -70,6 +71,10 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.scrollView.minimumZoomScale = self.minimumZoomScale;
     self.scrollView.maximumZoomScale = self.maximumZoomScale;
     self.scrollView.clipsToBounds = NO;
+    self.scrollView.multipleTouchEnabled = YES;
+    
+    self.backgroundColor = [UIColor whiteColor];
+    self.scrollView.backgroundColor = [UIColor whiteColor];
     
     self.doubleTapBehavior = PGGesturesDoubleTapZoom;
     self.totalRotation = 0.0F;
@@ -79,6 +84,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.selectionView = [[UIView alloc] initWithFrame:self.bounds];
     self.selectionView.backgroundColor = [UIColor blackColor];
     self.selectionView.alpha = 0.6;
+    self.selectionView.userInteractionEnabled = NO;
     
     [self addSubview:self.selectionView];
     
@@ -102,17 +108,10 @@ static CGFloat const kLoadingIndicatorSize = 50;
     [self enableGestures];
 }
 
-- (void)disableGestures
-{
-    for (UIGestureRecognizer *gr in self.scrollView.gestureRecognizers) {
-        [self.scrollView removeGestureRecognizer:gr];
-    }
-    
-    self.scrollView.userInteractionEnabled = NO;
-}
-
 - (void)enableGestures
 {
+    self.scrollView.userInteractionEnabled = YES;
+    
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
     doubleTapGesture.numberOfTapsRequired = 2;
     doubleTapGesture.numberOfTouchesRequired = 1;
@@ -121,31 +120,15 @@ static CGFloat const kLoadingIndicatorSize = 50;
     UIRotationGestureRecognizer *rotateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateGestureRecognized:)];
     rotateGesture.delegate = self;
     [self.scrollView addGestureRecognizer:rotateGesture];
-    
-    // attach long press gesture to collectionView
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-    lpgr.minimumPressDuration = kMinimumPressDurationInSeconds;
-    lpgr.delaysTouchesBegan = YES;
-    lpgr.delegate = self;
-    [self.scrollView addGestureRecognizer:lpgr];
-    
-    self.scrollView.userInteractionEnabled = YES;
 }
 
 - (void)setIsMultiSelectImage:(BOOL)isMultiSelectImage
 {
     _isMultiSelectImage = isMultiSelectImage;
     
-    self.selectionView.hidden = !isMultiSelectImage;
     self.checkmark.hidden = !isMultiSelectImage;
     
-    if (isMultiSelectImage) {
-        self.scrollView.backgroundColor = [UIColor whiteColor];
-        [self.loadingIndicator startAnimating];
-    } else {
-        self.scrollView.backgroundColor = [UIColor clearColor];
-    }
-    
+    [self.loadingIndicator startAnimating];
 }
 
 - (void)setIsSelected:(BOOL)isSelected
@@ -164,6 +147,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     
     if (!allowGestures) {
         self.scrollView.scrollEnabled = NO;
+        self.scrollView.userInteractionEnabled = NO;
         for (UIGestureRecognizer *gesture in self.scrollView.gestureRecognizers) {
             if (![gesture isKindOfClass:[UILongPressGestureRecognizer class]]) {
                 [self.scrollView removeGestureRecognizer:gesture];
@@ -178,7 +162,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.scrollView.minimumZoomScale = minimumZoomScale;
 }
 
--(void)setMaximumZoomScale:(CGFloat)maximumZoomScale
+- (void)setMaximumZoomScale:(CGFloat)maximumZoomScale
 {
     _maximumZoomScale = maximumZoomScale;
     self.scrollView.maximumZoomScale = maximumZoomScale;
@@ -186,7 +170,8 @@ static CGFloat const kLoadingIndicatorSize = 50;
 
 - (void)setImage:(UIImage *)image forceContentMode:(BOOL)forceContentMode
 {
-    _image = image;
+    _media.image = image;
+    _editedImage = image;
 
     [self.loadingIndicator stopAnimating];
     [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
@@ -197,27 +182,27 @@ static CGFloat const kLoadingIndicatorSize = 50;
     if (!self.imageView) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.accessibilityIdentifier = @"GestureImageView";
-        self.imageView.userInteractionEnabled = YES;
+        self.imageView.userInteractionEnabled = NO;
         [self.scrollView addSubview:self.imageView];
     }
     
     if (forceContentMode) {
-        if (abs((int)self.image.size.width - (int)self.image.size.height) < kSquareImageAllowance) {
+        if (abs((int)self.media.image.size.width - (int)self.media.image.size.height) < kSquareImageAllowance) {
             self.imageContentMode = UIViewContentModeScaleAspectFit;
         } else {
             self.imageContentMode = UIViewContentModeScaleAspectFill;
         }
     }
     
-    CGFloat scaleFactor = self.frame.size.width / self.image.size.width;
+    CGFloat scaleFactor = self.frame.size.width / self.media.image.size.width;
     
     CGAffineTransform transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleFactor, scaleFactor);
     self.imageView.transform = transform;
     
-    self.imageView.image = self.image;
+    self.imageView.image = self.media.image;
     self.imageView.contentMode = self.imageContentMode;
 
-    CGSize imageFinalSize = [self.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
+    CGSize imageFinalSize = [self.media.image imageFinalSizeAfterContentModeApplied:self.imageView.contentMode containerSize:self.scrollView.bounds.size];
     if (imageFinalSize.width && imageFinalSize.height) {
         self.imageView.frame = CGRectMake(0, 0, imageFinalSize.width, imageFinalSize.height);
     }
@@ -287,6 +272,10 @@ static CGFloat const kLoadingIndicatorSize = 50;
 {
     [self rotate:recognizer.rotation];
     recognizer.rotation = 0;
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        self.editedImage = [self screenshotImage];
+    }
 }
 
 - (void)doubleTapRecognized:(UITapGestureRecognizer*)recognizer
@@ -307,9 +296,11 @@ static CGFloat const kLoadingIndicatorSize = 50;
             self.scrollView.transform = CGAffineTransformRotate(self.scrollView.transform, -self.totalRotation);
             self.totalRotation = 0.0F;
             
-            [self setImage:_image forceContentMode:NO];
+            [self setImage:self.media.image forceContentMode:NO];
         }];
     }
+    
+    self.editedImage = [self screenshotImage];
 }
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale
@@ -346,6 +337,17 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }
 }
 
+- (UIImage *)screenshotImage
+{
+    BOOL isCheckmarkHidden = self.checkmark.hidden;
+    self.checkmark.hidden = YES;
+    
+    UIImage *image = [super screenshotImage];
+    self.checkmark.hidden = isCheckmarkHidden;
+    
+    return image;
+}
+
 #pragma mark - UIScrollViewDelegate methods
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -358,14 +360,31 @@ static CGFloat const kLoadingIndicatorSize = 50;
     [self adjustContentOffset];
 }
 
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    if (!self.zoomTimer) {
+        self.zoomTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            self.editedImage = [self screenshotImage];
+            [self.zoomTimer invalidate];
+            self.zoomTimer = nil;
+        }];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self adjustContentOffset];
+    self.editedImage = [self screenshotImage];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    self.editedImage = [self screenshotImage];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    self.editedImage = [self screenshotImage];
 }
 
 #pragma mark - Photo position
