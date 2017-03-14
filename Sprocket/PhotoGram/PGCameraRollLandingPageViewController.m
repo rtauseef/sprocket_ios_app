@@ -107,7 +107,6 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-//    previewViewController.selectedPhoto = image;
     previewViewController.source = source;
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     
