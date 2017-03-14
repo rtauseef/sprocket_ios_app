@@ -141,7 +141,7 @@ Scenario: Verify all the stickers are applied for sticker editor screen
     
 @reset
 @TA17012
-Scenario Outline: Verify navigation to and fro from sticker editor screen successfully
+Scenario Outline: Verify sticker editor screen navigation
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker_1" sticker
     And I should see the photo with the "sticker_1" sticker
