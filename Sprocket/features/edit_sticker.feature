@@ -33,6 +33,19 @@ Scenario Outline: Verify 'Sticker' option
   #  | Flickr Preview     |
     | CameraRoll Preview |
     
+    
+@reset
+@TA17012
+Scenario: Verify Sticker edit options
+    Given I am on the "StickerEditor" screen for "CameraRoll Preview"
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
+    And I should see "Bring to front" button
+    And I should see "Delete" button
+    And I should see "Flip vertically" button
+    And I should see "Flip horizontally" button
+    
+    
 @reset
 @regression
 Scenario Outline: Verify Sticker delete option    
@@ -125,4 +138,25 @@ Scenario: Verify sticker list
 Scenario: Verify all the stickers are applied for sticker editor screen 
     Given I am on the "StickerEditor" screen for "CameraRoll"  
     Then I verify that all the "stickers" are applied successfully
+    
+@reset
+@TA17012
+Scenario Outline: Verify sticker editor screen navigation
+    Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
+    Then I select "sticker_1" sticker
+    And I should see the photo with the "sticker_1" sticker
+    Then I should see the "StickerEditor" screen
+    Then I tap "Close" mark
+    Then I should see the "Edit" screen
+    Then I tap "Sticker" button
+    Then I select "sticker_4" sticker
+    And I should see the photo with the "sticker_4" sticker
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    
+    Examples:
+    | social_media_screen_name       |
+    | Instagram Preview  |
+    #| Flickr Preview     |
+    | CameraRoll         |    
     
