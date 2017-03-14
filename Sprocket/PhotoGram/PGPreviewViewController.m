@@ -291,17 +291,21 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)savePhotosByGesturesView:(NSArray<PGGesturesView *> *)gesturesViews completion:(void (^)(BOOL))completion
 {
-    NSUInteger count = 0;
+    dispatch_group_t group = dispatch_group_create();
+    
     for (PGGesturesView *gestureView in gesturesViews) {
         if (gestureView.isSelected) {
-            [PGSavePhotos saveImage:gestureView.editedImage completion:nil];
+            dispatch_group_enter(group);
+            [PGSavePhotos saveImage:gestureView.editedImage completion:^(BOOL success) {
+                dispatch_group_leave(group);
+            }];
         }
-        
-        count++;
-        
-        if (count == gesturesViews.count) {
-            completion(YES);
-        }
+    }
+    
+    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
+    
+    if (completion) {
+        completion(YES);
     }
 }
 
