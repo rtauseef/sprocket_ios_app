@@ -119,12 +119,12 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
     NSUInteger count = 0;
     for (PGGesturesView *gestureView in gesturesView) {
         if (gestureView.isSelected) {
-            [self saveImage:self.selectedItems[count].image completion:nil];
+            [self saveImage:gestureView.editedImage completion:nil];
         }
         
         count++;
         
-        if (count == self.selectedItems.count) {
+        if (count == gesturesView.count) {
             completion(YES);
         }
     }

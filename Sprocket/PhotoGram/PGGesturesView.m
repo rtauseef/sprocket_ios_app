@@ -27,6 +27,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
 @property (nonatomic, assign) UIViewContentMode imageContentMode;
 @property (nonatomic, strong) UIView *selectionView;
 @property (nonatomic, strong) UIImageView *checkmark;
+@property (nonatomic, strong) NSTimer *zoomTimer;
 
 @end
 
@@ -70,6 +71,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.scrollView.minimumZoomScale = self.minimumZoomScale;
     self.scrollView.maximumZoomScale = self.maximumZoomScale;
     self.scrollView.clipsToBounds = NO;
+    self.scrollView.multipleTouchEnabled = YES;
     
     self.backgroundColor = [UIColor whiteColor];
     self.scrollView.backgroundColor = [UIColor whiteColor];
@@ -269,6 +271,10 @@ static CGFloat const kLoadingIndicatorSize = 50;
 {
     [self rotate:recognizer.rotation];
     recognizer.rotation = 0;
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        self.editedImage = [self screenshotImage];
+    }
 }
 
 - (void)doubleTapRecognized:(UITapGestureRecognizer*)recognizer
@@ -292,6 +298,8 @@ static CGFloat const kLoadingIndicatorSize = 50;
             [self setImage:self.media.image forceContentMode:NO];
         }];
     }
+    
+    self.editedImage = [self screenshotImage];
 }
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale
@@ -351,14 +359,31 @@ static CGFloat const kLoadingIndicatorSize = 50;
     [self adjustContentOffset];
 }
 
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    if (!self.zoomTimer) {
+        self.zoomTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            self.editedImage = [self screenshotImage];
+            [self.zoomTimer invalidate];
+            self.zoomTimer = nil;
+        }];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self adjustContentOffset];
+    self.editedImage = [self screenshotImage];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
+    self.editedImage = [self screenshotImage];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    self.editedImage = [self screenshotImage];
 }
 
 #pragma mark - Photo position
