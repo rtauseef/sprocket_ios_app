@@ -255,7 +255,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)showImgly
 {
     UIImage *photoToEdit = nil;
-    photoToEdit = [self.carouselView.currentItemView screenshotImage];
+    photoToEdit = [self currentEditedImage];
     
     IMGLYConfiguration *configuration = [self.imglyManager imglyConfiguration];
     IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
@@ -434,13 +434,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
     self.currentOfframp = [MPPrintManager directPrintOfframp];
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self.imageContainer screenshotImage] animated:YES printCompletion:nil];
+    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
     [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
-    UIImage *image = [self.imageContainer screenshotImage];
+    UIImage *image = [self currentEditedImage];
     PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
     saveToCameraRollActivity.image = image;
     
@@ -451,7 +451,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [[MP sharedInstance] closeAccessorySession];
     
     [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
-
 }
 
 
@@ -493,7 +492,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [alertView show];
         }
     } else {        
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.carouselView.currentItemView.screenshotImage] applicationActivities:applicationActivities];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[[self currentEditedImage]] applicationActivities:applicationActivities];
         
         [activityViewController setValue:NSLocalizedString(@"Check out my HP Sprocket creation", nil) forKey:@"subject"];
         
@@ -576,7 +575,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return YES;
 }
 
-#pragma mark - iCarousel methods
+#pragma mark - Carousel methods
 
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
 {
@@ -610,6 +609,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return gestureView;
 }
 
+- (UIImage *)currentEditedImage
+{
+    PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
+    
+    return gesturesView.editedImage;
+}
+
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     return [self.gesturesViews count];
@@ -633,6 +639,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         [carousel setNeedsLayout];
     }
     
+    if (self.printItem == nil && index == 0) {
+        self.printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+        self.printItem.layout = [self layout];
+    }
+    
     return gestureView;
 }
 
@@ -642,7 +653,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         self.numberOfSelectedPhotos.text = [NSString stringWithFormat:NSLocalizedString(@"%ld of %ld", nil), (carousel.currentItemIndex + 1), (long)self.gesturesViews.count];
         self.editButton.hidden = !self.gesturesViews[carousel.currentItemIndex].isSelected;
         
-        self.printItem = [MPPrintItemFactory printItemWithAsset:[self.carouselView.currentItemView screenshotImage]];
+        self.printItem = [MPPrintItemFactory printItemWithAsset:[self currentEditedImage]];
         self.printItem.layout = [self layout];
     }
 }

@@ -171,6 +171,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
 - (void)setImage:(UIImage *)image forceContentMode:(BOOL)forceContentMode
 {
     _media.image = image;
+    _editedImage = image;
 
     [self.loadingIndicator stopAnimating];
     [self adjustScrollAndImageViewWithForceContentMode:forceContentMode];
