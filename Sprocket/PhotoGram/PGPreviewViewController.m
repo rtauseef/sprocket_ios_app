@@ -30,11 +30,12 @@
 
 #import <MP.h>
 #import <HPPR.h>
-#import <MPPrintItemFactory.h>
 #import <MPLayoutFactory.h>
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
+#import <MPPrintItemFactory.h>
 #import <MPBTPrintActivity.h>
+#import <MPBTPrintManager.h>
 #import <HPPRCameraRollLoginProvider.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
@@ -289,11 +290,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
 }
 
-- (void)savePhotosByGesturesView:(NSArray<PGGesturesView *> *)gesturesViews completion:(void (^)(BOOL))completion
+- (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
     dispatch_group_t group = dispatch_group_create();
     
-    for (PGGesturesView *gestureView in gesturesViews) {
+    for (PGGesturesView *gestureView in self.gesturesViews) {
         if (gestureView.isSelected) {
             dispatch_group_enter(group);
             [PGSavePhotos saveImage:gestureView.editedImage completion:^(BOOL success) {
@@ -385,7 +386,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
-    [self savePhotosByGesturesView:self.gesturesViews completion:^(BOOL success) {
+    [self saveSelectedPhotosWithCompletion:^(BOOL success) {
         if (success) {
             [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
             
@@ -427,7 +428,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         __weak PGPreviewViewController *weakSelf = self;
         UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
 
-            [self savePhotosByGesturesView:self.gesturesViews completion:^(BOOL success) {
+            [self saveSelectedPhotosWithCompletion:^(BOOL success) {
                 if (success) {
                     [self closePreviewAndCamera];
                     [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
@@ -454,9 +455,36 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    self.currentOfframp = [MPPrintManager directPrintOfframp];
-    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
-    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isSelected) {
+            MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+
+            [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+
+//            printItem.extra = @{@"offramp": @"PrintFromMultiSelect"};
+        }
+    }
+
+    // trigger multi print
+    [[MPBTPrintManager sharedInstance] resumePrintQueue];
+
+//    NSLog(@"PRINT QUEUE - READY");
+
+//    MPPrintItem *i = [[[[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] firstObject] printItems] objectForKey:@"3x2"];
+//    UIImage *img = (UIImage *)[i printAsset];
+
+
+
+
+
+
+
+
+
+
+//    self.currentOfframp = [MPPrintManager directPrintOfframp];
+//    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
+//    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender

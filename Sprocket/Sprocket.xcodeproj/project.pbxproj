@@ -3730,8 +3730,6 @@
 			isa = PBXGroup;
 			children = (
 				CCED9C5A19F9730800ACC969 /* Camera Roll */,
-				F22F12371E560C2C00753C5A /* PGPhotoSelection.h */,
-				F22F12381E560C2C00753C5A /* PGPhotoSelection.m */,
 			);
 			name = "Select Photos";
 			sourceTree = "<group>";
@@ -3839,6 +3837,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
+				F22F12B41E78AC8E00753C5A /* Multi-Print */,
 				F22F127F1E6F387900753C5A /* Security */,
 				26B434641E3F02310071EEFA /* Sprocket.entitlements */,
 				E3461EC919AC01010042DF5E /* Libraries */,
@@ -4167,6 +4166,15 @@
 				F22F12821E6F539200753C5A /* PGSecretKeeper.m */,
 			);
 			name = Security;
+			sourceTree = "<group>";
+		};
+		F22F12B41E78AC8E00753C5A /* Multi-Print */ = {
+			isa = PBXGroup;
+			children = (
+				F22F12371E560C2C00753C5A /* PGPhotoSelection.h */,
+				F22F12381E560C2C00753C5A /* PGPhotoSelection.m */,
+			);
+			name = "Multi-Print";
 			sourceTree = "<group>";
 		};
 		F2C46E7E1DB6F17F00604371 /* IntroWizard */ = {
