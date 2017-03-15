@@ -87,10 +87,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = source;
-    if (animated) {
-        [previewViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-        [previewViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    }
     
     [currentViewController presentViewController:previewViewController animated:animated completion:nil];
 }
@@ -358,7 +354,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
-    if ([self.source isEqualToString:[PGPreviewViewController cameraSource]]) {
+    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
         [[PGPhotoSelection sharedInstance] endSelectionMode];
     }
     
