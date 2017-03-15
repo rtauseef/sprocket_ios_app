@@ -30,6 +30,10 @@ class EditScreen < Calabash::IBase
         "UIImageView * id:'editSticker'"
     end
     
+    def magic
+        "view marked:'Magic'"
+    end
+    
     def check
         "UIButton marked:'Save photo'"
     end
