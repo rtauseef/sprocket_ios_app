@@ -53,9 +53,9 @@ Scenario: Verify Terms of Service link from social media landing screens
 Scenario: Verify camera roll authorization popup
     Given I am on the "Landing" screen
     And I touch "cameraLanding" button
-    Then I should see the popup message for the camera access 
-    Then I verify the "title" of the popup message
-    And I verify the "content" of the popup message
+    Then I should see the popup message for the camera access
+    Then I verify the "title" of the popup message for "cameraLanding"
+    And I verify the "content" of the popup message for "cameraLanding"
     And  I should see the below listed buttons:
     | Cancel   | 
     | Settings |
@@ -214,4 +214,24 @@ Scenario: Verify localization of navigation to Technical Information screen
         Then I touch "Done" option in the screen
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
+        
+
+@TA17165
+@localization
+Scenario: Navigate to Preview screen
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    When I touch second photo
+    Then I should see the "CameraRoll Preview" screen
+    Then I verify the "Edit" button text
+    Then I tap "Download" button
+    #Then I verify the "title" of the popup message for "DownloadButton"
+    #And I verify the "content" of the popup message for "DownloadButton"
+    Then I tap "Print" button
+    #Then I verify the "title" of the popup message for "PrintButton"
+    #And I verify the "content" of the popup message for "PrintButton"
+    Then I tap "Share" button
+    And I should see the below listed sprocket screen texts:
+    | Save to Camera Roll |
+    | Print to sprocket   |
     

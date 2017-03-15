@@ -31,6 +31,12 @@ class CameraRollPreviewScreen < Calabash::IBase
   def share
          "* id:'shareButton'"
   end
+    
+def download    
+    "* id:'previewDownload'"
+end
+    
+    
 def close
     "button"
   end

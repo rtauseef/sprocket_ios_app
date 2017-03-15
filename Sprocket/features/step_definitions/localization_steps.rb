@@ -205,11 +205,32 @@ Then /^I should see the popup message for the camera access$/ do
     sleep(STEP_PAUSE)
 end
 
-Then /^I verify the "(.*?)" of the popup message$/ do |option|
-    if option == "title"
-        check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, button|
+    if button == "cameraLanding"
+        if option == "title"
+            check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+        else
+            check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
+        end
     else
-        check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
+        if button == "DownloadButton"
+            if option == "title"
+               sleep(STEP_PAUSE) 
+            else
+                sleep(STEP_PAUSE) 
+            end
+        else
+             if option == "title"
+               sleep(STEP_PAUSE) 
+            else
+                sleep(STEP_PAUSE) 
+            end
+        end
     end
+end
+
+Then /^I verify the "(.*?)" button text$/ do |button|
+    check_element_exists "view marked:'#{$list_loc['Edit']}'"
+    sleep(STEP_PAUSE)
 end
  
