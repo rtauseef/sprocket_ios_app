@@ -47,7 +47,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
-static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
+static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 2;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
@@ -73,6 +73,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (strong, nonatomic) NSString *currentOfframp;
+@property (assign, nonatomic) CGPoint panStartPoint;
 
 @property (nonatomic, strong) NSMutableArray<PGGesturesView *> *gesturesViews;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSelectedPhotos;
@@ -212,6 +213,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     self.carouselView.type = iCarouselTypeLinear;
     [self.carouselView setBounceDistance:0.3];
+    [self.carouselView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)]];
     
     if (![PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.carouselView.bounces = NO;
@@ -250,6 +252,27 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }];
             });
         }
+    }
+}
+
+- (void)panGesture:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint currentPoint = [recognizer translationInView:self.carouselView];
+    CGFloat deltaX = -((currentPoint.x - self.panStartPoint.x) / self.carouselView.itemWidth);
+    
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            self.panStartPoint = currentPoint;
+            break;
+        case UIGestureRecognizerStateChanged:
+            self.panStartPoint = currentPoint;
+            [self.carouselView scrollByOffset:deltaX duration:0];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.carouselView scrollToItemAtIndex:round(self.carouselView.currentItemIndex + deltaX) animated:YES];
+            break;
+        default:
+            break;
     }
 }
 
@@ -598,19 +621,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 #pragma mark - Carousel methods
 
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    return YES;
+}
+
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
 {
     PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height)];
     gestureView.media = media;
     gestureView.doubleTapBehavior = PGGesturesDoubleTapReset;
-    
-    if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        gestureView.isMultiSelectImage = YES;
-        gestureView.allowGestures = NO;
-    } else {
-        gestureView.isMultiSelectImage = NO;
-    }
-    
+    gestureView.isMultiSelectImage = [PGPhotoSelection sharedInstance].hasMultiplePhotos;
     gestureView.isSelected = YES;
     
     if (media.image) {

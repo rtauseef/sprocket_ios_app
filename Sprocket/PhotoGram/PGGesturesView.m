@@ -71,8 +71,9 @@ static CGFloat const kLoadingIndicatorSize = 50;
     self.scrollView.minimumZoomScale = self.minimumZoomScale;
     self.scrollView.maximumZoomScale = self.maximumZoomScale;
     self.scrollView.clipsToBounds = NO;
-    self.scrollView.multipleTouchEnabled = YES;
-    
+    self.scrollView.delaysContentTouches = YES;
+    self.scrollView.canCancelContentTouches = NO;
+
     self.backgroundColor = [UIColor whiteColor];
     self.scrollView.backgroundColor = [UIColor whiteColor];
     
@@ -112,14 +113,31 @@ static CGFloat const kLoadingIndicatorSize = 50;
 {
     self.scrollView.userInteractionEnabled = YES;
     
+    UITapGestureRecognizer *regularTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(regularTapRecognized:)];
+    regularTapGesture.numberOfTapsRequired = 1;
+    regularTapGesture.numberOfTouchesRequired = 1;
+    regularTapGesture.delegate = self;
+    [self addGestureRecognizer:regularTapGesture];
+
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
     doubleTapGesture.numberOfTapsRequired = 2;
-    doubleTapGesture.numberOfTouchesRequired = 1;
+    doubleTapGesture.numberOfTouchesRequired = 2;
+    doubleTapGesture.delegate = self;
     [self.scrollView addGestureRecognizer:doubleTapGesture];
     
     UIRotationGestureRecognizer *rotateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateGestureRecognized:)];
     rotateGesture.delegate = self;
     [self.scrollView addGestureRecognizer:rotateGesture];
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureRecognized:)];
+    swipeGesture.delegate = self;
+    [self.scrollView addGestureRecognizer:swipeGesture];
+    
+    [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:swipeGesture];
+    [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:doubleTapGesture];
+    [regularTapGesture requireGestureRecognizerToFail:doubleTapGesture];
+    
+    self.scrollView.panGestureRecognizer.minimumNumberOfTouches = 2;
 }
 
 - (void)setIsMultiSelectImage:(BOOL)isMultiSelectImage
@@ -278,7 +296,12 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }
 }
 
-- (void)doubleTapRecognized:(UITapGestureRecognizer*)recognizer
+- (void)regularTapRecognized:(UITapGestureRecognizer *)recognizer
+{
+    
+}
+
+- (void)doubleTapRecognized:(UITapGestureRecognizer *)recognizer
 {
     if (PGGesturesDoubleTapZoom == self.doubleTapBehavior) {
         CGPoint pointInView = [recognizer locationInView:self.imageView];
@@ -301,6 +324,11 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }
     
     self.editedImage = [self screenshotImage];
+}
+
+- (void)swipeGestureRecognized:(UISwipeGestureRecognizer *)recognizer
+{
+    
 }
 
 - (void)showcaseZoomAndRotate:(CGFloat)animationDuration rotationRadians:(CGFloat)rotationRadians zoomScale:(CGFloat)zoomScale
