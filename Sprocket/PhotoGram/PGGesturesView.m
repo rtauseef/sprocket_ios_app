@@ -117,6 +117,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
     regularTapGesture.numberOfTapsRequired = 1;
     regularTapGesture.numberOfTouchesRequired = 1;
     regularTapGesture.delegate = self;
+    regularTapGesture.cancelsTouchesInView = NO;
     [self addGestureRecognizer:regularTapGesture];
 
     UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapRecognized:)];
@@ -279,6 +280,24 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }
 }
 
+- (UIImage *)screenshotImage
+{
+    BOOL isCheckmarkHidden = self.checkmark.hidden;
+    self.checkmark.hidden = YES;
+    
+    UIImage *image = [super screenshotImage];
+    self.checkmark.hidden = isCheckmarkHidden;
+    
+    return image;
+}
+
+- (void)zoomTimer:(NSTimer *)timer
+{
+    self.editedImage = [self screenshotImage];
+    [self.zoomTimer invalidate];
+    self.zoomTimer = nil;
+}
+
 #pragma mark - UIGestureRecognizerDelegate methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -365,16 +384,6 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }
 }
 
-- (UIImage *)screenshotImage
-{
-    BOOL isCheckmarkHidden = self.checkmark.hidden;
-    self.checkmark.hidden = YES;
-    
-    UIImage *image = [super screenshotImage];
-    self.checkmark.hidden = isCheckmarkHidden;
-    
-    return image;
-}
 
 #pragma mark - UIScrollViewDelegate methods
 
@@ -391,11 +400,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
     if (!self.zoomTimer) {
-        self.zoomTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            self.editedImage = [self screenshotImage];
-            [self.zoomTimer invalidate];
-            self.zoomTimer = nil;
-        }];
+        self.zoomTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(zoomTimer:) userInfo:nil repeats:YES];
     }
 }
 

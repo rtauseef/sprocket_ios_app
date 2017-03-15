@@ -205,73 +205,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-- (void)configureCarousel
-{
-    self.carouselView.type = iCarouselTypeLinear;
-    [self.carouselView setBounceDistance:0.3];
-    [self.carouselView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)]];
-    
-    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        self.carouselView.bounces = NO;
-    }
-    
-    self.carouselView.pagingEnabled = YES;
-    
-    self.gesturesViews = [NSMutableArray array];
-    NSArray<HPPRMedia *> *selectedMedia = [PGPhotoSelection sharedInstance].selectedMedia;
-    
-    __weak typeof(self) weakSelf = self;
-    for (int i = 0; i < selectedMedia.count; i++) {
-        [self.gesturesViews addObject:[self createGestureViewWithMedia:selectedMedia[i]]];
-        
-        if ([self.source isEqualToString:[PGPreviewViewController cameraSource]]) {
-            [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-            return;
-        }
-        
-        if (self.gesturesViews[i].media.asset) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                [self.gesturesViews[i].media requestImageWithCompletion:^(UIImage *image) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.gesturesViews[i] setImage:image];
-                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-                    });
-                }];
-            });
-        } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.gesturesViews[i] setImage:image];
-                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-                    });
-                }];
-            });
-        }
-    }
-}
-
-- (void)panGesture:(UIPanGestureRecognizer *)recognizer
-{
-    CGPoint currentPoint = [recognizer translationInView:self.carouselView];
-    CGFloat deltaX = -((currentPoint.x - self.panStartPoint.x) / self.carouselView.itemWidth);
-    
-    switch (recognizer.state) {
-        case UIGestureRecognizerStateBegan:
-            self.panStartPoint = currentPoint;
-            break;
-        case UIGestureRecognizerStateChanged:
-            self.panStartPoint = currentPoint;
-            [self.carouselView scrollByOffset:deltaX duration:0];
-            break;
-        case UIGestureRecognizerStateEnded:
-            [self.carouselView scrollToItemAtIndex:round(self.carouselView.currentItemIndex + deltaX) animated:YES];
-            break;
-        default:
-            break;
-    }
-}
-
 - (void)showImgly
 {
     UIImage *photoToEdit = nil;
@@ -622,6 +555,91 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return YES;
 }
 
+- (void)selectCarouselItem:(NSInteger)index
+{
+    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+        return;
+    }
+    
+    self.gesturesViews[self.carouselView.currentItemIndex].isSelected = !self.gesturesViews[self.carouselView.currentItemIndex].isSelected;
+    self.editButton.hidden = !self.gesturesViews[self.carouselView.currentItemIndex].isSelected;
+    
+    [self.carouselView reloadData];
+}
+
+- (void)configureCarousel
+{
+    self.carouselView.type = iCarouselTypeLinear;
+    [self.carouselView setBounceDistance:0.3];
+    [self.carouselView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)]];
+    [self.carouselView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)]];
+    
+    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+        self.carouselView.bounces = NO;
+    }
+    
+    self.carouselView.pagingEnabled = YES;
+    
+    self.gesturesViews = [NSMutableArray array];
+    NSArray<HPPRMedia *> *selectedMedia = [PGPhotoSelection sharedInstance].selectedMedia;
+    
+    __weak typeof(self) weakSelf = self;
+    for (int i = 0; i < selectedMedia.count; i++) {
+        [self.gesturesViews addObject:[self createGestureViewWithMedia:selectedMedia[i]]];
+        
+        if ([self.source isEqualToString:[PGPreviewViewController cameraSource]]) {
+            [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
+            return;
+        }
+        
+        if (self.gesturesViews[i].media.asset) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                [self.gesturesViews[i].media requestImageWithCompletion:^(UIImage *image) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.gesturesViews[i] setImage:image];
+                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
+                    });
+                }];
+            });
+        } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.gesturesViews[i] setImage:image];
+                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
+                    });
+                }];
+            });
+        }
+    }
+}
+
+- (void)panGesture:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint currentPoint = [recognizer translationInView:self.carouselView];
+    CGFloat deltaX = -((currentPoint.x - self.panStartPoint.x) / self.carouselView.itemWidth);
+    
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            self.panStartPoint = currentPoint;
+            break;
+        case UIGestureRecognizerStateChanged:
+            self.panStartPoint = currentPoint;
+            [self.carouselView scrollByOffset:deltaX duration:0];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.carouselView scrollToItemAtIndex:round(self.carouselView.currentItemIndex + deltaX) animated:YES];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)tapGesture:(UITapGestureRecognizer *)recognizer
+{
+    [self selectCarouselItem:self.carouselView.currentItemIndex];
+}
+
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
 {
     PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height)];
@@ -707,14 +725,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     return value;
-}
-
-- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
-{
-    self.gesturesViews[carousel.currentItemIndex].isSelected = !self.gesturesViews[carousel.currentItemIndex].isSelected;
-    self.editButton.hidden = !self.gesturesViews[carousel.currentItemIndex].isSelected;
-    
-    [carousel reloadData];
 }
 
 @end
