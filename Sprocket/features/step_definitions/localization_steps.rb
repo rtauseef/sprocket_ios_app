@@ -200,9 +200,14 @@ Then /^I touch "(.*?)" option in the screen$/ do |option|
     end
 end
 
-Then /^I should see the popup message for the camera access$/ do
-    check_element_exists "view marked:'#{$list_loc['camera_access']}'"
-    sleep(STEP_PAUSE)
+Then /^I should see the popup message for the "(.*?)"$/ do |option|
+    if option == "camera access"
+        check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+        sleep(STEP_PAUSE)
+    else
+        check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
+        sleep(STEP_PAUSE)
+    end
 end
 
 Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, button|

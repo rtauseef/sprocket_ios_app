@@ -53,7 +53,7 @@ Scenario: Verify Terms of Service link from social media landing screens
 Scenario: Verify camera roll authorization popup
     Given I am on the "Landing" screen
     And I touch "cameraLanding" button
-    Then I should see the popup message for the camera access
+    Then I should see the popup message for the "camera access"
     Then I verify the "title" of the popup message for "cameraLanding"
     And I verify the "content" of the popup message for "cameraLanding"
     And  I should see the below listed buttons:
@@ -225,8 +225,7 @@ Scenario: Navigate to Preview screen
     Then I should see the "CameraRoll Preview" screen
     Then I verify the "Edit" button text
     Then I tap "Download" button
-    #Then I verify the "title" of the popup message for "DownloadButton"
-    #And I verify the "content" of the popup message for "DownloadButton"
+    Then I should see the popup message for the "Download"
     Then I tap "Print" button
     #Then I verify the "title" of the popup message for "PrintButton"
     #And I verify the "content" of the popup message for "PrintButton"
