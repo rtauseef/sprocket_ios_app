@@ -412,31 +412,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
 
             [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
-
-//            printItem.extra = @{@"offramp": @"PrintFromMultiSelect"};
         }
     }
 
-    // trigger multi print
     [[MPBTPrintManager sharedInstance] resumePrintQueue];
-
-//    NSLog(@"PRINT QUEUE - READY");
-
-//    MPPrintItem *i = [[[[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] firstObject] printItems] objectForKey:@"3x2"];
-//    UIImage *img = (UIImage *)[i printAsset];
-
-
-
-
-
-
-
-
-
-
-//    self.currentOfframp = [MPPrintManager directPrintOfframp];
-//    [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
-//    [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
