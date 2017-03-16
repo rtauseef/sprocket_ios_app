@@ -599,7 +599,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         }
         
         if (self.gesturesViews[i].media.asset) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [self.gesturesViews[i].media requestImageWithCompletion:^(UIImage *image) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.gesturesViews[i] setImage:image];
@@ -608,7 +608,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }];
             });
         } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.gesturesViews[i] setImage:image];
