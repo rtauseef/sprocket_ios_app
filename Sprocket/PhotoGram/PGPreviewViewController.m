@@ -564,7 +564,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.gesturesViews[self.carouselView.currentItemIndex].isSelected = !self.gesturesViews[self.carouselView.currentItemIndex].isSelected;
     self.editButton.hidden = !self.gesturesViews[self.carouselView.currentItemIndex].isSelected;
     
-    [self.carouselView reloadData];
+    [self.carouselView reloadItemAtIndex:index animated:YES];
 }
 
 - (void)configureCarousel
@@ -644,9 +644,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height)];
     gestureView.media = media;
-    gestureView.doubleTapBehavior = PGGesturesDoubleTapReset;
     gestureView.isMultiSelectImage = [PGPhotoSelection sharedInstance].hasMultiplePhotos;
-    gestureView.isSelected = YES;
     
     if (media.image) {
         UIImage *finalImage = media.image;
@@ -689,7 +687,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                                     scale: 1.0
                                               orientation: UIImageOrientationRight];
         }
-        
+
         [gestureView setImage:finalImage];
 
         [carousel setNeedsLayout];
