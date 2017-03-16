@@ -38,9 +38,6 @@
 
 
 - (void)addPrintItemToQueue:(MPPrintItem *)printItem {
-//    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
-//    printItem.extra = @{kMultiPrintOfframpKey: @"PrintFromMultiSelect"};
-
     MPPrintLaterJob *job = [[MPPrintLaterJob alloc] init];
     job.id = [[MPPrintLaterQueue sharedInstance] retrievePrintLaterJobNextAvailableId];
     job.printItems = @{[MP sharedInstance].defaultPaper.sizeTitle: printItem};
