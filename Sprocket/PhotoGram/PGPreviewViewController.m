@@ -561,8 +561,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         return;
     }
     
-    self.gesturesViews[self.carouselView.currentItemIndex].isSelected = !self.gesturesViews[self.carouselView.currentItemIndex].isSelected;
-    self.editButton.hidden = !self.gesturesViews[self.carouselView.currentItemIndex].isSelected;
+    NSInteger countSelected = 0;
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isSelected) {
+            countSelected++;
+        }
+    }
+    BOOL shouldSelect = !(self.gesturesViews[self.carouselView.currentItemIndex].isSelected && (countSelected >= 2));
+    self.gesturesViews[self.carouselView.currentItemIndex].isSelected = shouldSelect;
     
     [self.carouselView reloadItemAtIndex:index animated:YES];
 }
