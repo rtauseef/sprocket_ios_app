@@ -10,9 +10,9 @@ Scenario Outline: Verify 'Frame' option
     Then I am on the "Edit" screen
     Then I tap "Frame" button
     Then I should see the "Frame Editor" screen
-    Then I select "Turquoise Frame" frame
-    And I verify blue line indicator is displayed under selected frame
-    And I should see the photo with the "Turquoise Frame" frame
+    Then I select "frame_0" frame
+    And I verify blue line indicator is displayed under selected "frame"
+    And I should see the photo with the "frame_0" frame
     Then I tap "Close" mark
     Then I should see the "Edit" screen
     And I should see the photo with no "frame"
@@ -29,12 +29,12 @@ Scenario Outline: Verify 'Frame' option
 @regression
 Scenario Outline: Verify frame applied for frame editor screen
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
-    Then I select "Kraft Frame" frame
-    And I verify blue line indicator is displayed under selected frame
-    And I should see the photo with the "Kraft Frame" frame
+    Then I select "frame_0" frame
+    And I verify blue line indicator is displayed under selected "frame"
+    And I should see the photo with the "frame_0" frame
     Then I tap "Save" mark
     Then I should see the "Edit" screen
-    And I should see the photo with the "Kraft Frame" frame
+    And I should see the photo with the "frame_0" frame
     
     Examples:
     | social_media_screen_name       |
@@ -80,13 +80,13 @@ Scenario: Verify all the frames are applied for frame editor screen
 @done
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
-    Then I select "White Frame" frame
-    And I should see the photo with the "White Frame" frame
+    Then I select "frame_1" frame
+    And I should see the photo with the "frame_1" frame
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     Then I tap "Frame" button
-    Then I select "Red Frame" frame
-    And I should see the photo with the "Red Frame" frame
+    Then I select "frame_3" frame
+    And I should see the photo with the "frame_3" frame
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     

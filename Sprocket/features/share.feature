@@ -36,18 +36,19 @@ Feature:Photo Share
     Then I should see the "Instagram Preview" screen
 
   @reset
-  @done
-    @smoke
-  Scenario: Verify share functionality
-    Given I am on the "CameraRollAlbums" screen
-    Then I touch Camera Roll Image
-    And I should see the camera roll photos
-    When I touch a photos in Camera Roll photos
-    Then I should see the "CameraRoll Preview" screen
-    And I close the camera pop up
+  @TA17012
+  Scenario Outline: Verify share functionality
+    Given I am on the "<social_media_screen_name>" screen
     Then I tap "Share" button
     Then I should see the "Share" screen
     Then I should see "Print to sprocket" option
     Then I should see "Save to Camera Roll" option
+    
+Examples:
+    | social_media_screen_name        |
+    | Instagram Preview  |
+  #  | Flickr Preview     |
+    | CameraRoll Preview |
+    
 
 

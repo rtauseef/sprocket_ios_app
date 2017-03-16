@@ -27,7 +27,6 @@
 #import "SWRevealViewController.h"
 #import "PGSelectAlbumDropDownViewController.h"
 #import "PGMediaNavigation.h"
-#import "PGPhotoSelection.h"
 
 NSString * const kCameraRollUserName = @"CameraRollUserName";
 NSString * const kCameraRollUserId = @"CameraRollUserId";
@@ -105,15 +104,12 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
 
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    previewViewController.source = source;
     [[PGPhotoSelection sharedInstance] selectMedia:media];
+    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source animated:YES];
     
     HPPRCameraRollPhotoProvider *provider = [HPPRCameraRollPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:kCameraRollUserName userId:kCameraRollUserId];
     
-    [self presentViewController:previewViewController animated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
 

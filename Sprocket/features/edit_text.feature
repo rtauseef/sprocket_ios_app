@@ -83,10 +83,12 @@ Scenario: Verify font
     Then I tap "Add text" mark
     And I should see the photo with the "text"
     Then I select "Font" 
-    And I select "Avenir"
+    #And I select "Avenir"
+    And I select "font_2" font
     Then I tap "Save" mark
     Then I wait for some seconds
-    Then I should see the text with selected "Font"
+    #Then I should see the text with selected "Font"
+    Then I should see the photo with the "font_2" font
     
 @reset  
 @regression

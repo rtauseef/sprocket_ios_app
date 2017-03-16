@@ -2856,6 +2856,7 @@
 		FF40F87C1E70EC6B00113A58 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/PG_Main.strings; sourceTree = "<group>"; };
 		FF40F87D1E70EC6C00113A58 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FF40F87E1E70EC6C00113A58 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF40F88D1E7A0C6F00113A58 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFF6481C1C8615870002328C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -6505,6 +6506,7 @@
 				FF40F8701E70EB7400113A58 /* ru */,
 				FF40F8771E70EBA200113A58 /* th */,
 				FF40F87E1E70EC6C00113A58 /* tr */,
+				FF40F88D1E7A0C6F00113A58 /* sv */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

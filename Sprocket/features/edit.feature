@@ -3,7 +3,7 @@ Feature: Verify Edit screen
   I want to verify Edit features.
 
 @reset
-@done
+@TA17012
 Scenario Outline: Verify Edit screen
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -13,6 +13,7 @@ Scenario Outline: Verify Edit screen
     Then I should see "Sticker" option
     Then I should see "Text" option
     Then I should see "Crop" option
+    Then I should see "Adjustment" option
     Then I should see "Close" mark
     Then I should see "Check" mark
     
