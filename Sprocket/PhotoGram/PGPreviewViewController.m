@@ -465,7 +465,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [alertView show];
         }
     } else {        
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[[self currentEditedImage]] applicationActivities:applicationActivities];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:[self editedImagesSelected] applicationActivities:applicationActivities];
         
         [activityViewController setValue:NSLocalizedString(@"Check out my HP Sprocket creation", nil) forKey:@"subject"];
         
@@ -674,6 +674,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
     
     return gesturesView.editedImage;
+}
+
+- (NSMutableArray<UIImage *> *)editedImagesSelected
+{
+    NSMutableArray *editedImages = [NSMutableArray array];
+    
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isSelected) {
+            [editedImages addObject:gestureView.editedImage];
+        }
+    }
+    
+    return editedImages;
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
