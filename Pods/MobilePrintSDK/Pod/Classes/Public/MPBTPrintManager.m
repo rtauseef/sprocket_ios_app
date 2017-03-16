@@ -43,7 +43,7 @@
 
     MPPrintLaterJob *job = [[MPPrintLaterJob alloc] init];
     job.id = [[MPPrintLaterQueue sharedInstance] retrievePrintLaterJobNextAvailableId];
-    job.printItems = @{[MPPaper titleFromSize:MPPaperSize2x3]: printItem};
+    job.printItems = @{[MP sharedInstance].defaultPaper.sizeTitle: printItem};
 
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
 }
@@ -53,7 +53,7 @@
 
     if ([self queueSize] > 0) {
         [self checkPrinterStatus];
-        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
+        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
     }
 }
 
@@ -99,34 +99,48 @@
 
 - (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error {
     if (error == MantaErrorNoError) {
-        self.status = MPBTPrinterManagerStatusPrinting;
 
-        self.currentJob = [[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] firstObject];
+        if (self.status != MPBTPrinterManagerStatusSendingPrintJob) {
+            self.status = MPBTPrinterManagerStatusSendingPrintJob;
 
-        if (self.currentJob) {
-            NSLog(@"PRINT QUEUE - STARTING JOB (%@)", self.currentJob.id);
+            self.currentJob = [[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] firstObject];
 
-            NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
-            [lastOptionsUsed addEntriesFromDictionary:[MPBTSprocket sharedInstance].analytics];
-            [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
+            if (self.currentJob) {
+                NSLog(@"PRINT QUEUE - SENDING JOB (%@)", self.currentJob.id);
 
-            MPPrintItem *item = [self.currentJob.printItems objectForKey:[MPPaper titleFromSize:MPPaperSize2x3]];
+                NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
+                [lastOptionsUsed addEntriesFromDictionary:[MPBTSprocket sharedInstance].analytics];
+                [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
 
-            if (item) {
-                [sprocket printItem:item numCopies:1];
+                MPPrintItem *item = [self.currentJob defaultPrintItem];
+
+                if (item) {
+                    [sprocket printItem:item numCopies:1];
+                } else {
+                    NSLog(@"PRINT QUEUE - NO IMAGE FOR JOB (%@)", self.currentJob.id);
+                }
+
             } else {
-                NSLog(@"PRINT QUEUE - NO IMAGE FOR JOB (%@)", self.currentJob.id);
+                NSLog(@"PRINT QUEUE - EMPTY");
+
+                [self cancelPrintQueue];
             }
-
         } else {
-            NSLog(@"PRINT QUEUE - EMPTY");
+            NSLog(@"PRINT QUEUE - WAITING FOR JOB TO START (%@)", self.currentJob.id);
 
-            [self cancelPrintQueue];
+            static int numberOfTries = 0;
+
+            if (numberOfTries < 3) {
+                numberOfTries++;
+            } else {
+                numberOfTries = 0;
+                self.status = MPBTPrinterManagerStatusIdle;
+            }
         }
     } else {
         self.status = MPBTPrinterManagerStatusWaitingForPrinter;
 
-        NSLog(@"PRINT QUEUE - ERROR: %@", error);
+        NSLog(@"PRINT QUEUE - NOT READY: %@", @(error));
     }
 }
 
@@ -137,8 +151,15 @@
 - (void)didStartPrinting:(MPBTSprocket *)sprocket {
     NSLog(@"PRINT QUEUE - JOB STARTED PRINTING (%@)", self.currentJob.id);
 
+    self.status = MPBTPrinterManagerStatusPrinting;
     [[MPPrintLaterQueue sharedInstance] deletePrintLaterJob:self.currentJob];
     self.currentJob = nil;
+}
+
+- (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error {
+    NSLog(@"PRINT QUEUE - ERROR (%@)", @(error));
+
+    self.status = MPBTPrinterManagerStatusWaitingForPrinter;
 }
 
 @end

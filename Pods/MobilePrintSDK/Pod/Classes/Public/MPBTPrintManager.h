@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
     MPBTPrinterManagerStatusEmptyQueue,
     MPBTPrinterManagerStatusIdle,
     MPBTPrinterManagerStatusWaitingForPrinter,
+    MPBTPrinterManagerStatusSendingPrintJob,
     MPBTPrinterManagerStatusPrinting
 };
 
