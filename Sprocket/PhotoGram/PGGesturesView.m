@@ -135,11 +135,6 @@ static CGFloat const kLoadingIndicatorSize = 50;
     rotateGesture.delegate = self;
     [self.scrollView addGestureRecognizer:rotateGesture];
     
-    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureRecognized:)];
-    swipeGesture.delegate = self;
-    [self.scrollView addGestureRecognizer:swipeGesture];
-    
-    [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:swipeGesture];
     [self.scrollView.panGestureRecognizer requireGestureRecognizerToFail:doubleTapGesture];
     [regularTapGesture requireGestureRecognizerToFail:doubleTapGesture];
     
@@ -284,11 +279,6 @@ static CGFloat const kLoadingIndicatorSize = 50;
     }];
     
     self.editedImage = [self screenshotImage];
-}
-
-- (void)swipeGestureRecognized:(UISwipeGestureRecognizer *)recognizer
-{
-    
 }
 
 - (void)longPressGestureRecognized:(UILongPressGestureRecognizer *)gestureRecognizer
