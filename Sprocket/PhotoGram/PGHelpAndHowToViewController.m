@@ -130,8 +130,8 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
     NSString *supportTag = [NSLocale twitterSupportTag];
     
     tweetText = [NSString stringWithFormat:@"%@ #hpsprocket \nS: %@ \n[%@]", supportTag, appVersion, enterText];
-    tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=%@+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", supportTagURL, appVersion, enterTextURL];
-    
+    tweetStringURL = [NSString stringWithFormat:@"http://twitter.com/intent/tweet?text=%@+%%23hpsprocket%%0aS:%@+%%0a%%5B%@%%5D", supportTagURL, appVersion, [enterTextURL stringByAddingPercentEscapesUsingEncoding : NSUTF8StringEncoding]];
+
     if (IS_OS_8_OR_LATER) {
         NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
         
