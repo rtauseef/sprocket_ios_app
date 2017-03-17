@@ -49,18 +49,23 @@ end
 
 Then /^I click Sign Out button on popup$/ do
 	sleep(STEP_PAUSE)
-    touch("* text:'Sign Out'")
+    touch("* text:'#{$list_loc['Sign Out']}'")
 end
 
 Then /I should see Instagram "(.*?)" button$/ do |text|
+    if ENV['LANGUAGE'] == "Chinese" && text == "Sign Out"
+          touch query "UIButton index:1"
+          sleep(STEP_PAUSE)
+    end
 	sleep(STEP_PAUSE)
-    check_element_exists("button marked:'#{text}' button index:0")
+    
+    check_element_exists("button marked:'#{$list_loc[text]}' button index:0")
     sleep(STEP_PAUSE)
 end
 
 When /I touch Instagram "(.*?)" button$/ do |text|
     sleep(STEP_PAUSE)
-    touch("button marked:'#{text}' button index:0")
+    touch("button marked:'#{$list_loc[text]}' button index:0")
 end
 
 When(/^I touch Flickr "(.*?)" button$/) do |text|

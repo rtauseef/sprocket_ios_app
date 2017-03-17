@@ -234,3 +234,26 @@ Scenario: Navigate to Preview screen
     | Save to Camera Roll |
     | Print to sprocket   |
     
+@TA17165
+@localization
+Scenario: Instagram signin/signout from sidemenu
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+    Then I should see the side menu
+    Then I should see "Instagram" logo
+    And I click on the "Instagram" logo 
+    Then I should see the "Instagram Signin" screen
+    And I enter valid credentials
+    And I touch login button
+    Then I should see the "Instagram Photos" screen
+    When I touch menu button on navigation bar
+    Then I should see the side menu
+    And I should see Instagram "Sign Out" button
+    And I touch Instagram "Sign Out" button
+    And I click Sign Out button on popup
+    Then I should see Instagram "Sign In" button
+    
+    
+    
+    
+    
