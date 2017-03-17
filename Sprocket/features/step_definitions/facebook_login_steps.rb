@@ -45,7 +45,7 @@ end
 When(/^I touch signin button$/) do
         sleep(WAIT_SCREENLOAD)
         action = Appium::TouchAction.new
-        action.swipe start_x: 50,end_x: 300,start_y: 100,end_y: 100,duration: 1000
+        action.swipe start_x: 50,offset_x: 300,start_y: 100,offset_y: 100,duration: 1000
         action.perform 
         sleep(WAIT_SCREENLOAD)
     sign_in_button="//UIAButton[@name='Sign In']"
