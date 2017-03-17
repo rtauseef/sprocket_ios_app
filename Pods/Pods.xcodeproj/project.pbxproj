@@ -1318,6 +1318,9 @@
 		824F69A7A2F406AB749F4FEF88A30DAA /* FKFlickrPlacesTagsForPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = D48FDAE7C9F816864E4B9873BA79594F /* FKFlickrPlacesTagsForPlace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8251BAAAAA05867E63451D8D2D6782B2 /* UAEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03E11327B335E16F7DF93A2BECFA37 /* UAEvent.m */; };
 		825A35A4A6DA6A21A3AB08D1CBB16E6D /* FKFlickrPhotosetsEditPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A081E400285DC6AC908F5AC73ECBE7E /* FKFlickrPhotosetsEditPhotos.m */; };
+		8263D7E11E7C5D410036E903 /* MPBTPrintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12BB1E79BF3700753C5A /* MPBTPrintManager.m */; };
+		8263D7E21E7C5D420036E903 /* MPBTPrintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12BB1E79BF3700753C5A /* MPBTPrintManager.m */; };
+		8263D7E31E7C5D430036E903 /* MPBTPrintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12BB1E79BF3700753C5A /* MPBTPrintManager.m */; };
 		82687AF7924C7A4D75BC37D1E59C6AE4 /* UAEvent+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B6BB3A4654492380B9AE20CA15B1E1C8 /* UAEvent+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82CCE9B93D781E2E6B772AD54A6C0079 /* UAInAppMessaging.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7BE6795D115983276BF16F84D8C309 /* UAInAppMessaging.m */; };
 		82CDFD1EABC7F9C3CC894787E8E60563 /* FKDUDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = CB26B6A6F617B761A0829270044B9970 /* FKDUDiskCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2407,7 +2410,6 @@
 		F1FF2BCCF2C71F58A338CB0858AB3C5F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760C01F6C4466FC4FAF05645DBDB598B /* MobileCoreServices.framework */; };
 		F2065B128963B7F0B3F89CACB4C688E1 /* FKFlickrPrefsGetPrivacy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D84BC7962E0614CA8142FFA969F5770 /* FKFlickrPrefsGetPrivacy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F22F12BC1E79BF3700753C5A /* MPBTPrintManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F22F12BA1E79BF3700753C5A /* MPBTPrintManager.h */; };
-		F22F12BD1E79BF3700753C5A /* MPBTPrintManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12BB1E79BF3700753C5A /* MPBTPrintManager.m */; };
 		F238045A1E83F034C66F18C187DEF88C /* FKFlickrGroupsMembersGetList.h in Headers */ = {isa = PBXBuildFile; fileRef = C0E247F16AC5300CF122EE3FDF862EA8 /* FKFlickrGroupsMembersGetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F24590957917967C575F05E2A8DD7FA4 /* UAScheduleAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E3018F6ADC9E96F862DA02377B6809B0 /* UAScheduleAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F245C473625756686AF77BA933FB64E6 /* FKFlickrPlacesFindByLatLon.m in Sources */ = {isa = PBXBuildFile; fileRef = D116BAC7EBCDD5E15DAA9F8EBB8520A5 /* FKFlickrPlacesFindByLatLon.m */; };
@@ -8104,6 +8106,7 @@
 				58B272BBABE0FBF35EEFD6429265FDEF /* MPLEMalta.m in Sources */,
 				E7AC3BD9C1B3ECD7CC10B776B9130248 /* MPLEMaltaInfoTableViewController.m in Sources */,
 				42982C795E6D9F8DA7951222F4E44A28 /* MPLEService.m in Sources */,
+				8263D7E11E7C5D410036E903 /* MPBTPrintManager.m in Sources */,
 				224F41C4FB9E6C6DC1FD91B8D1813F1E /* MPLogger.m in Sources */,
 				8C8F2061C6EE8C0C2B177AE7F1B55A8D /* MPMobilePrintSDKReachability.m in Sources */,
 				83BDD2DE0ECC8CE8CA4966727C53E05F /* MPMultiPageView.m in Sources */,
@@ -8161,7 +8164,6 @@
 				76A3943D36F8B17678CA54EDE336036D /* AFNetworkActivityIndicatorManager.m in Sources */,
 				34DB9152D991927C59D3F2E221358A26 /* AFNetworking-Pods-Sprocket-dummy.m in Sources */,
 				934067FA6BBED885ED32931BD3857528 /* AFNetworkReachabilityManager.m in Sources */,
-				F22F12BD1E79BF3700753C5A /* MPBTPrintManager.m in Sources */,
 				18A5B2991C04D1DAFF99705831C9C23D /* AFSecurityPolicy.m in Sources */,
 				750C81E3A5F4175ECCF66063A6CCFD56 /* AFURLRequestSerialization.m in Sources */,
 				212D350E1FB745A36858FDDE10B90316 /* AFURLResponseSerialization.m in Sources */,
@@ -8226,6 +8228,7 @@
 				BC2955FE923F64C822214481F3371CAD /* MPLEMalta.m in Sources */,
 				DF14C184E8A408D69D208ABE352723E1 /* MPLEMaltaInfoTableViewController.m in Sources */,
 				600188074A18B5558AD4B134ACF309DC /* MPLEService.m in Sources */,
+				8263D7E31E7C5D430036E903 /* MPBTPrintManager.m in Sources */,
 				C4621B23E0DBD710878073E7FC7E5D8E /* MPLogger.m in Sources */,
 				9E0CE49F752CD71EEF3754EDD87E8880 /* MPMobilePrintSDKReachability.m in Sources */,
 				687007062F060C1AE557A898810C52E2 /* MPMultiPageView.m in Sources */,
@@ -9151,6 +9154,7 @@
 				9567FF959EA8DC73B8ED5321109ABC28 /* MPLEMalta.m in Sources */,
 				7C3AE6715F3F0E7DE76C3FE93E51D431 /* MPLEMaltaInfoTableViewController.m in Sources */,
 				701E48ACD6BFA6189E6C3BFDA6290287 /* MPLEService.m in Sources */,
+				8263D7E21E7C5D420036E903 /* MPBTPrintManager.m in Sources */,
 				4926767FDDFE13F621EDE2B992AA3BEF /* MPLogger.m in Sources */,
 				0AFE2D5E69406C65A604168ADCE1953A /* MPMobilePrintSDKReachability.m in Sources */,
 				888D0DBD0830352207B751C846243E37 /* MPMultiPageView.m in Sources */,
