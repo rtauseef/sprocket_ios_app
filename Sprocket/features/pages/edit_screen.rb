@@ -30,6 +30,10 @@ class EditScreen < Calabash::IBase
         "UIImageView * id:'editSticker'"
     end
     
+    def magic
+        "view marked:'Magic'"
+    end
+    
     def check
         "UIButton marked:'Save photo'"
     end
@@ -61,11 +65,7 @@ class EditScreen < Calabash::IBase
     def add_text
         "UIButton marked:'Add text'"
     end
-    
-    def selected_sticker
-        "IMGLYStickerImageView"
-    end
-    
+       
     def selected_frame
         "* id:'1_turquoise_frame'" 
     end

@@ -31,6 +31,9 @@
 /* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
 "34K-Xv-dA8.text" = "Külastage klienditoe veebisaiti";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "AXW-GE-wKa"; */
+"AXW-GE-wKa.title" = "";
+
 /* Class = "UILabel"; text = "© 2016 HP Development Company, L.P."; ObjectID = "BBT-a1-B1F"; */
 "BBT-a1-B1F.text" = "© 2016 HP Development Company, L.P.";
 
@@ -44,10 +47,13 @@
 "DmV-M2-d4s.text" = "Pange kogu pakk paberialusele, vöötkood ja HP logod suunaga alla.";
 
 /* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "EN2-Sd-rVK"; */
-"EN2-Sd-rVK.text" = "Vajutage toitenuppu ja hoidke seda all kuni LED-tule kustumiseni.";
+"EN2-Sd-rVK.text" = "Vajutage toitenuppu ja hoidke seda all kuni LED-tuli muutub valgeks.";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "EjE-om-e07"; */
 "EjE-om-e07.title" = "Teave";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Fnc-S6-0NQ"; */
+"Fnc-S6-0NQ.text" = "Pealkiri";
 
 /* Class = "UILabel"; text = "HP Sprocket App Terms of Service"; ObjectID = "Gwf-K7-scA"; */
 "Gwf-K7-scA.text" = "Rakenduse HP Sprocket teenusetingimused";
@@ -70,8 +76,14 @@
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
 "JEt-SU-tLR.title" = "Filmilint";
 
+/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
+"JrW-zx-uoD.text" = "Vajutage toitenuppu ja hoidke seda all kuni LED-tuli muutub valgeks.";
+
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "Kp8-0r-uKI"; */
 "Kp8-0r-uKI.normalTitle" = "Logi sisse";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "M1M-l0-DBL"; */
+"M1M-l0-DBL.title" = "";
 
 /* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
 "MN9-s9-sQn.text" = "Kirjelduse redigeerimiseks koputage siin";
@@ -85,11 +97,17 @@
 /* Class = "UINavigationItem"; title = "Reset Sprocket Printer"; ObjectID = "OOG-XB-1r0"; */
 "OOG-XB-1r0.title" = "Lähtesta Sprocketi printer";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "OWM-HV-MZn"; */
+"OWM-HV-MZn.title" = "";
+
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Autoriõigus (c) 2016";
 
 /* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
 "Ptp-oP-RvF.text" = "Menüü üksus";
+
+/* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
+"Pzx-yx-Rfc.text" = "Uus funktsioon!";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
 "QQK-QP-Amd.text" = "Flickriga autentimisel nõustute ka HP <teenusetingimustega>.";
@@ -107,15 +125,15 @@
 "R8u-lf-hRh.title" = "Facebook";
 
 /* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "Rakenduse kasutamisel saate luua Interneti-ühenduse ning kasutada oma valitud sisu loomiseks ja printimiseks oma Instagrami, Facebooki ja Flickri kontosid. 
+"TEb-3v-7vp.text" = "Selle rakenduse kasutamise ajal saate luua ühenduse Internetiga ja kasutada oma Instagrami, Facebooki või Flickri kontosid enda valitud sisu loomiseks ja printimiseks. 
 
-Selle rakenduse kasutamiseks võib olla vaja Interneti-ühendust. Juhtmeta ühenduse töö sõltub teie keskkonnatingimustest ja juurdepääsupunkti kaugusest. Võivad rakenduda eraldi ostetud andmeplaanid või kasutustasud. Printimisajad ja ühenduse kiirused võivad erineda.
+Selle rakenduse kasutamine võib nõuda Interneti-ühendust. Wi-Fi jõudlus oleneb füüsilisest keskkonnast ja pääsupunkti kaugusest. Võivad rakenduda eraldi ostetud andmepaketid või kasutustasud. Printimisajad ja ühenduse kiirused võivad erineda.
 
-Printimiseks vajate fotoprinterit HP Sprocket. Teie mobiiltelefonil peab olema Bluetooth-ühendus, fotoprinter HP Sprocket peab olema sisse lülitatud ning printer peab olema seotud mobiilsideseadmega.
+Printimiseks on vaja HP Sprocketi fotoprinterit. Teie mobiilsideseadmel peab olema lubatud Bluetooth, HP Sprocketi fotoprinter peab olema sisse lülitatud ja printer peab olema seotud mobiilsideseadmega.
 
-Juhul kui kasutate Interneti-ühendusena andmevõrku, võivad sellega kaasneda andmekasutuse lisatasud teie andmevõrgu plaani põhjal. 
+Kui kasutate oma Interneti-ühendusena andmevõrku, võivad teile rakenduda teie andmevõrgupakettide põhjal täiendavad andmekasutustasud. 
 
-Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP selle rakenduse kasutamise kohta anonüümseid andmeid. ";
+Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP sellest rakendusest regulaarselt anonüümseid kasutusandmeid. ";
 
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
@@ -129,11 +147,20 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Üksikasjad";
 
+/* Class = "UILabel"; text = "From Bluetooth Settings, tap on  “HP sprocket” to pair with the printer."; ObjectID = "W7o-LK-mcs"; */
+"W7o-LK-mcs.text" = "Puudutage printeriga sidumiseks Bluetoothi sätetes valikut HP sprocket.";
+
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "WMv-7o-mbb"; */
 "WMv-7o-mbb.text" = "sprocket";
 
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
 "XgH-Dx-oow.text" = "Filmilindile salvestatud";
+
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Foto tegemine või valimine";
+
+/* Class = "UINavigationItem"; title = "sprocket"; ObjectID = "Yx0-Cs-62a"; */
+"Yx0-Cs-62a.title" = "sprocket";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
 "Z1T-tw-tdj.text" = "Filmilindi kasutamisel nõustute ka HP <teenusetingimustega>.";
@@ -144,11 +171,21 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
 "aja-HA-rCS.normalTitle" = "Logi sisse";
 
+/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "bNM-1G-6tS"; */
+"bNM-1G-6tS.text" = "Pange kogu pakk paberialusele, vöötkood ja HP logod suunaga alla.";
+
+/* Class = "UILabel"; text = "Print to your HP Sprocket Printer\nfrom your favorite creative Apps!"; ObjectID = "cFJ-6P-UAK"; */
+"cFJ-6P-UAK.text" = "Printige HP Sprocketi printerisse
+oma loovatest lemmikrakendustest!";
+
 /* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "ciL-qk-y5Q"; */
 "ciL-qk-y5Q.normalTitle" = "Jätka rakendusega";
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "d71-za-T7q"; */
 "d71-za-T7q.text" = "sprocket";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "dbH-gv-JrM"; */
+"dbH-gv-JrM.title" = "Valmis";
 
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Logi sisse";
@@ -165,8 +202,9 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Foto tegemine või valimine";
 
-/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
-"YEZ-Yd-vcV.text" = "Foto tegemine või valimine";
+/* Class = "UILabel"; text = "Turn on the “Print to sprocket” feature\nin the “More” menu when sharing."; ObjectID = "lh1-7W-cpZ"; */
+"lh1-7W-cpZ.text" = "Lülitage jagamise ajal sisse funktsioon 
+„Prindi sprocketisse” menüüs „Veel”.";
 
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Säutsumistugi";
@@ -186,6 +224,12 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 /* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
 "ob1-ZF-jEd.text" = "Qzone’iga autentimisel nõustute ka HP <teenusetingimustega>.";
 
+/* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
+"ofB-Rh-sga.text" = "Üksikasjad";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "pvd-qV-bLb"; */
+"pvd-qV-bLb.normalTitle" = "Sule";
+
 /* Class = "UILabel"; text = "Connected"; ObjectID = "qsf-b8-Lfu"; */
 "qsf-b8-Lfu.text" = "Ühendatud";
 
@@ -193,12 +237,15 @@ Selle rakenduse ja HP printerite tulevaste versioonide täiustamiseks kogub HP s
 "r8A-4l-TdM.text" = "sprocket";
 
 /* Class = "UILabel"; text = "Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer."; ObjectID = "sIS-tD-Si9"; */
-"sIS-tD-Si9.text" = "Otsige üles laadimispordi lähedal olev lähtestamise nõelaauk. Sisestage auku sirge nõel, et seesolevat nuppu vajutada. Vajutage toitenuppu kuni LED-tule kustumiseni, et printerit lähtestada.";
+"sIS-tD-Si9.text" = "Otsige laadimispesa juurest üles lähtestamise nõelaauk. Lükake auku sirge nõel, et vajutada sees olevat nuppu. Vajutage printeri taaskäivitamiseks toitenuppu, kuni LED-indikaator muutub valgeks.";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "Ärge unustage oma kujundust printida ja jagada";
 
+/* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
+"w68-hT-Ur3.text" = "WeChati tugi";
+
 /* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
-"znF-lh-wdy.text" = "Valige sprocketi jaoks alt üks suvand
-printeri ja rakenduse tugi";
+"znF-lh-wdy.text" = "Valige sprocketi printeri ja rakenduse
+toe jaoks alt üks suvand.";
 

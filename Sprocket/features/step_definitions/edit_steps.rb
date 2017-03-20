@@ -39,15 +39,9 @@ end
 Then (/^I select "(.*?)"$/) do |option|
     if option == "Filter"
         touch @current_page.filter_1
-    else 
-        if option == "sticker" 
-            sticker_name="v_xoxo_TN"
-            select_sticker sticker_name
-            sleep(STEP_PAUSE)
-        else 
+     else 
             if option == "2:3" || option == "3:2"
                 $crop_option = option
-                puts $crop_option
                 sleep(2.0)
                 touch query("view marked:'#{option}'")
             else
@@ -55,16 +49,19 @@ Then (/^I select "(.*?)"$/) do |option|
                 touch query("view marked:'#{option}'")
             end
         end
-    end
 end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
+        frame_value=$frame[$frame_id]['value']
+       
         selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Wrong frame selected!" unless selected_frame_status != nil
     else
         if edit_item == "sticker"
-            check_element_does_not_exist(@current_page.selected_sticker)
+           sticker_value=$sticker[$sticker_id]['value']
+           selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
+           raise "Sticker present!" unless selected_sticker_status.to_s != sticker_value
         end
     end
 end
@@ -74,11 +71,7 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
     if(edit_item == "frame")
        
             check_element_exists(@current_page.selected_frame)
-    else
-        if edit_item == "sticker"
-            
-           selected_frame_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
-           raise "Wrong sticker selected!" unless selected_frame_status.to_s.strip == "v_xoxo"
+  
         else
             if edit_item == "text"
                 sleep(STEP_PAUSE)
@@ -86,7 +79,6 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
             raise "Text not present!" unless txtTemplate = $template_text 
             end
         end
-    end
 end
 
 
@@ -164,13 +156,9 @@ Then(/^I should see the "(.*?)" image$/) do |option|
     post_photo_frame_width = query("GLKView").first["frame"]["width"]
     if option == "cropped"
         if $crop_option == "3:2"
-            puts post_photo_frame_height
-            puts $curr_edit_img_frame_height
             raise "Image is not cropped!" unless post_photo_frame_height < $curr_edit_img_frame_height
         else
             if $crop_option == "2:3"
-                puts post_photo_frame_height
-                puts $curr_edit_img_frame_height
                 raise "Image is not cropped!" unless post_photo_frame_width < $curr_edit_img_frame_width
             end
         end
@@ -192,20 +180,26 @@ Then(/^I verify the modified crop area$/) do
 end
 
  
-Then(/^I select "(.*?)" frame$/) do |frame_name|
-    sleep(WAIT_SCREENLOAD)
+Then(/^I select "(.*?)" frame$/) do |frame_id|
+    sleep(STEP_PAUSE)
+    $frame_id = frame_id
+    frame_name=$frame[frame_id]['name']
     select_frame frame_name
     sleep(STEP_PAUSE)
 end
 
-Then(/^I select "(.*?)" sticker$/) do |sticker_name|
+Then(/^I select "(.*?)" sticker$/) do |sticker_id|
     sleep(STEP_PAUSE)
+    $sticker_id = sticker_id
+    sticker_name=$sticker[sticker_id]['name']
     select_sticker sticker_name
     sleep(STEP_PAUSE)
 end
 
-Then(/^I select "(.*?)" font$/) do |font_name|
+Then(/^I select "(.*?)" font$/) do |font_id|
     sleep(STEP_PAUSE)
+    $font_id = font_id
+    font_name=$font[font_id]['name']
     select_font font_name
     sleep(STEP_PAUSE)
 end
@@ -216,23 +210,24 @@ Then(/^I select "(.*?)" color$/) do |color_name|
     sleep(STEP_PAUSE)
 end
 
-Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_name|
-    $list_loc=$edit_screen_arr["edit_frame"]
-    selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Wrong frame selected!" unless selected_frame_status = $list_loc[frame_name]
-end
-
-Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_name|
-    $list_loc=$edit_screen_arr["edit_sticker"]
+Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
+    frame_value=$frame[frame_id]['value']
     
-    selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier).first
-    raise "Wrong sticker selected!" unless selected_sticker_status.to_s == $list_loc[sticker_name]
+    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[6]
+    
+    raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
-Then(/^I should see the photo with the "(.*?)" font$/) do |font_name|
-    $list_loc=$edit_screen_arr["edit_font"]
+Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
+    sticker_value=$sticker[sticker_id]['value']
+    selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
+    raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
+end
+
+Then(/^I should see the photo with the "(.*?)" font$/) do |font_id|
+    font_value=$font[font_id]['value']
     font_name_applied = query("IMGLYTextLabel",:font)[0].split(" ")[3].gsub(';','').gsub('"','')
-    raise "Wrong font selected!" unless font_name_applied.to_s == $list_loc[font_name]
+    raise "Wrong font selected!" unless font_name_applied.to_s == font_value
 end
 
 Then(/^I should see the photo with the "(.*?)" color$/) do |color_name|
@@ -253,11 +248,11 @@ end
 
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
-  frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
+  #frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
     
-    sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
+   # sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
     
-    font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
+   # font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
     
     color_name=["White", "Gray", "Black", "Light blue", "Blue", "Purple", "Orchid", "Pink", "Red", "Orange", "Gold", "Yellow", "Olive", "Green", "Aquamarin"]
     
@@ -265,9 +260,10 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
   i = 0
     if option == "frames"
         while i < 20
-            macro %Q|I select "#{frame_name[i]}" frame|
+            frame_id = "frame_"+"#{i}"
+            macro %Q|I select "#{frame_id}" frame|
             macro %Q|I verify blue line indicator is displayed under selected "frame"|
-            macro %Q|I should see the photo with the "#{frame_name[i]}" frame|
+            macro %Q|I should see the photo with the "#{frame_id}" frame|
             macro %Q|I should see the "FrameEditor" screen|
             i= i + 1
             sleep(SLEEP_SCREENLOAD)
@@ -275,9 +271,10 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
     else
         if option == "fonts"
             while i < 25
-                macro %Q|I select "#{font_name[i]}" font|
+                 font_id = "font_"+"#{i}"
+                macro %Q|I select "#{font_id}" font|
                 macro %Q|I verify blue line indicator is displayed under selected "font"|
-                macro %Q|I should see the photo with the "#{font_name[i]}" font|
+                macro %Q|I should see the photo with the "#{font_id}" font|
                 i= i + 1
             end
         else
@@ -290,10 +287,11 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     i= i + 1
                 end
             else
-                while i < 68
-                    macro %Q|I select "#{sticker_name[i]}" sticker|
+                while i < 63
+		sticker_id = "sticker_"+"#{i}"
+                    macro %Q|I select "#{sticker_id}" sticker|
                     macro %Q|I verify blue line indicator is displayed under selected "sticker"|
-                    macro %Q|I should see the photo with the "#{sticker_name[i]}" sticker|
+                    macro %Q|I should see the photo with the "#{sticker_id}" sticker|
                     macro %Q|I should see the "StickerEditor" screen|
                     macro %Q|I tap "Close" mark|
                     macro %Q|I should see the "Edit" screen|
@@ -310,130 +308,7 @@ end
 $edit_screen_arr =
 
 {
-    "edit_frame" => {
-        "Valentines Hearts Frame" => "Hearts_Frame_iOS",
-        "Valentines Pink Polka Frame" => "PinkPolka_Frame_iOS",
-        "Valentines Red Frame" => "Red_Frame_iOS",
-        "Valentines Hearts Overlay Frame" => "HeartsOverlay_Frame_iOS",
-        "Valentines Pink Watercolor Frame" => "PinkWatercolor_Frame_iOS",
-        "Valentines Red Stripes Frame" => "RedStripes_Frame_iOS",
-        "White Frame" => "4_white_frame",
-        "Kraft Frame" => "Kraft_Frame_iOS",
-        "Floral Frame" => "6_floral_frame3",
-        "Orange Frame"=> "Orange_Frame_iOS",
-        "Polka Dots Frame" => "9_polkadots_frame",
-        "Water Blue Frame" => "3_blue_watercolor_frame",
-        "Wood Bottom Frame" => "Wood_Frame_iOS",
-        "Gradient Frame"=> "7_gradient_frame",
-        "Sloppy Frame" => "Sloppy_Frame_iOS",
-        "Turquoise Frame" => "1_turquoise_frame",
-        "Red Frame" => "5_Red_frame",
-        "Green Water Color Frame"=> "10_green_watercolor_frame2",
-        "Floral 2 Frame" => "13_floral2_frame",
-        "Pink Spray Paint Frame" => "2_pink_spraypaint_frame2",
-         },
-        
-    "edit_sticker" => {
-            "v_xoxo_TN" => "v_xoxo",
-            "heart_2_TN" => "heart_2",
-            "v_hearts_TN" => "v_hearts",
-            "conversation_heart_TN" => "conversation_heart",
-            "heart_wings_TN" => "heart_wings",
-            "bird_TN" => "bird",
-            "butterfly_TN" => "butterfly",
-            "monster_2_TN" => "monster_2",
-            "rosebud_TN" => "rosebud",
-            "heart_bouquet_TN" => "heart_bouquet",
-            "heart-garland_TN" => "heart-garland",
-            "pig_TN" => "pig",
-            "headband_TN" => "headband",
-            "glasses_1_TN" => "glasses_1",
-            "hat_TN" => "hat",
-            "bow2_TN" => "bow2",
-            "balloons_TN" => "balloons",
-            "thought_bubble_TN" => "thought_bubble",
-            "letter_TN" => "letter",
-            "holding_hands_TN" => "holding_hands",
-            "love_monster_TN" => "love_monster",
-            "heart_arrow_TN" => "heart_arrow",
-            "smiley_TN" => "smiley",
-            "heart_banner_TN" => "heart_banner",
-            "lock_TN" => "lock",
-            "v_cupcake_TN" => "v_cupcake",
-            "v_cat_TN" => "v_cat",
-            "v_heart_TN" => "v_heart",
-            "target_TN" => "target",
-            "glasses_TN" => "glasses",
-            "tiara_TN" => "tiara",
-            "heart_crown_TN" => "heart_crown",
-            "sb_glasses_TN" => "sb_glasses",
-            "glasses_2_TN" => "glasses_2",
-            "eye_black_TN" => "eye_black",
-            "foam_finger_TN" => "foam_finger",
-            "heart_football3_TN" => "heart_football3",
-            "banner_TN" => "banner",
-            "flag_TN" => "flag",
-            "heart_football_TN" => "heart_football",
-            "stars_n_balls_TN" => "stars_n_balls",
-            "#_game_time_TN" => "#_game_time",
-            "football_flames_TN" => "football_flames",
-            "love_TN" => "love",
-            "i_heart_football_2_TN" => "i_heart_football_2",
-            "owl_TN" => "owl",
-            "goal_post_2_TN" => "goal_post_2",
-            "helmet_TN" => "helmet",
-            "catglasses_TN" => "catglasses",
-            "catwhiskers_TN" => "catwhiskers",
-            "catears_TN" => "catears",
-            "hearts_TN" => "hearts",
-            "xoxo_TN" => "xoxo",
-            "heartExpress_TN" => "heartExpress",
-            "arrow_TN" => "arrow",
-            "crown_TN" => "crown",
-            "birthdayHat_TN" => "birthdayHat",
-            "moon_TN" => "moon",
-            "starhp_TN" => "starhp",
-            "feather2_TN" => "feather2",
-            "feather_TN" => "feather",
-            "leaf3_TN" => "leaf3",
-            "cupcake_TN" => "cupcake",
-            "cat_TN" => "cat",
-            "stars_TN" => "stars",
-            "diamond_TN" => "diamond",
-            "sunglasses_TN" => "sunglasses",
-            "OMG_TN" => "OMG"
-        
-            },
-    
-    "edit_font" => {
-        
-        "Helvetica" => "Helvetica",
-        "Typewriter" => "American",
-        "Avenir" => "Avenir-Heavy",
-        "Chalkboard" => "ChalkboardSE-Regular",
-        "Arial" => "Arial",
-        "Kohinoor" => "KohinoorBangla-Regular",
-        "Liberator" => "Liberator",
-        "Muncie" => "Muncie",
-        "Lincoln" => "Abraham",
-        "Airship" => "Airship",
-        "Arvil" => "Arvil",
-        "Bender" => "Bender-Inline",
-        "Blanch" => "Blanch-Condensed",
-        "Cubano" => "Cubano-Regular",
-        "Franchise" => "Franchise",
-        "Geared" => "GearedSlab-Regular",
-        "Governor" => "Governor",
-        "Haymaker" => "Haymaker",
-        "Homestead" => "Homestead-Regular",
-        "Maven Pro" => "MavenProLight200-Regular",
-        "Mensch" => "Mensch",
-        "Sullivan" => "Sullivan-Regular",
-        "Tommaso" => "Tommaso",
-        "Valencia" => "Valencia",
-        "Vevey" => "Vevey"
-        
-            },
+   
     
     "edit_color_red" => {
         
@@ -497,3 +372,120 @@ $edit_screen_arr =
         
             }
     }
+	
+	$sticker ={ 
+            'sticker_0' => {'name' => 'glasses_2b_TN','value' =>'glasses_2b'},
+            'sticker_1' => {'name' => 'hat_1b_TN','value' =>'hat_1b'},
+            'sticker_2' => {'name' => 'kiss_me_2c_TN','value' =>'kiss_me_2c'},
+            'sticker_3' => {'name' => 'derby_TN','value' =>'derby'},
+            'sticker_4' => {'name' => 'st_hearts_TN','value' =>'st_hearts'},
+            'sticker_5' => {'name' => 'st_glasses_TN','value' =>'st_glasses'},
+            'sticker_6' => {'name' => 'boppers_TN','value' =>'boppers'},
+            'sticker_7' => {'name' => 'lips_TN','value' =>'lips'},
+            'sticker_8' => {'name' => 'bow_tie_TN','value' =>'bow_tie'},
+            'sticker_9' => {'name' => 'beard&-eyebrows_TN','value' =>'beard&-eyebrows'},
+            'sticker_10' => {'name' => 'mustache_TN','value' =>'mustache'},
+            'sticker_11' => {'name' => 'pot_o_gold_TN','value' =>'pot_o_gold'},
+            'sticker_12' => {'name' => 'rainbow_2_TN','value' =>'rainbow_2'},
+            'sticker_13' => {'name' => 'shamrock_crown_TN','value' =>'shamrock_crown'},
+            'sticker_14' => {'name' => 'shamrock_2_TN','value' =>'shamrock_2'},
+            'sticker_15' => {'name' => '#lucky_new_TN','value' =>'#lucky_new'},
+            'sticker_16' => {'name' => 'shamrockin_3_TN','value' =>'shamrockin_3'},
+            'sticker_17' => {'name' => 'clover_headband_TN','value' =>'clover_headband'},
+            'sticker_18' => {'name' => 'clover_wand_TN','value' =>'clover_wand'},
+            'sticker_19' => {'name' => 'hearts_TN','value' =>'hearts'},
+            'sticker_20' => {'name' => 'xoxo_TN','value' =>'xoxo'},
+            'sticker_21' => {'name' => 'heartExpress_TN','value' =>'heartExpress'},
+            'sticker_22' => {'name' => 'v_heart_TN','value' =>'v_heart'},
+            'sticker_23' => {'name' => 'glasses_1_TN','value' =>'glasses_1'},
+            'sticker_24' => {'name' => 'heart_2_TN','value' =>'heart_2'},
+            'sticker_25' => {'name' => 'v_hearts_TN','value' =>'v_hearts'},
+            'sticker_26' => {'name' => 'heart-garland_TN','value' =>'heart-garland'},
+            'sticker_27' => {'name' => 'v_xoxo_TN','value' =>'v_xoxo'},
+            'sticker_28' => {'name' => 'heart_wings_TN','value' =>'heart_wings'},
+            'sticker_29' => {'name' => 'palmtree_TN','value' =>'palmtree'},
+            'sticker_30' => {'name' => 'beachball_TN','value' =>'beachball'},
+            'sticker_31' => {'name' => 'wave_TN','value' =>'wave'},
+            'sticker_32' => {'name' => 'beach_umbrella_TN','value' =>'beach_umbrella'},
+            'sticker_33' => {'name' => 'sun_face_TN','value' =>'sun_face'},
+            'sticker_34' => {'name' => 'sunglasses_frogskin_TN','value' =>'sunglasses_frogskin'},
+            'sticker_35' => {'name' => 'aviator_glasses_TN','value' =>'aviator_glasses'},
+            'sticker_36' => {'name' => 'glasses_TN','value' =>'glasses'},
+            'sticker_37' => {'name' => 'bunny_ears_flowers_TN','value' =>'bunny_ears_flowers'},
+            'sticker_38' => {'name' => 'catglasses_TN','value' =>'catglasses'},
+            'sticker_39' => {'name' => 'catears_TN','value' =>'catears'},
+            'sticker_40' => {'name' => 'scuba_mask_TN','value' =>'scuba_mask'},
+            'sticker_41' => {'name' => 'swim_fins_TN','value' =>'swim_fins'},
+            'sticker_42' => {'name' => 'volleyball_TN','value' =>'volleyball'},
+            'sticker_43' => {'name' => 'trailer_TN','value' =>'trailer'},
+            'sticker_44' => {'name' => 'travel_car_bug_TN','value' =>'travel_car_bug'},
+            'sticker_45' => {'name' => 'travel_car_woody_TN','value' =>'travel_car_woody'},
+            'sticker_46' => {'name' => 'bike_cruiser_TN','value' =>'bike_cruiser'},
+            'sticker_47' => {'name' => 'airplane_TN','value' =>'airplane'},
+            'sticker_48' => {'name' => 'soda_straw_TN','value' =>'soda_straw'},
+            'sticker_49' => {'name' => 'sundae_TN','value' =>'sundae'},
+            'sticker_50' => {'name' => 'icecream_tub_TN','value' =>'icecream_tub'},
+            'sticker_51' => {'name' => 'cupcake_TN','value' =>'cupcake'},
+            'sticker_52' => {'name' => 'bbq_TN','value' =>'bbq'},
+            'sticker_53' => {'name' => 'unicorn_float_TN','value' =>'unicorn_float'},
+            'sticker_54' => {'name' => 'surfboard_TN','value' =>'surfboard'},
+            'sticker_55' => {'name' => 'crown_TN','value' =>'crown'},
+            'sticker_56' => {'name' => 'birthdayHat_TN','value' =>'birthdayHat'},
+            'sticker_57' => {'name' => 'diamond_TN','value' =>'diamond'},
+            'sticker_58' => {'name' => 'feather_TN','value' =>'feather'},
+            'sticker_59' => {'name' => 'stars_TN','value' =>'stars'},
+            'sticker_60' => {'name' => 'starhp_TN','value' =>'starhp'},
+            'sticker_61' => {'name' => 'cat_TN','value' =>'cat'},
+            'sticker_62' => {'name' => 'smiley_TN','value' =>'smiley'}
+          }
+           $frame ={ 
+            'frame_0' => {'name' => 'Valentines Hearts Frame','value' =>'Hearts_Frame_iOS'},
+            'frame_1' => {'name' => 'Valentines Pink Polka Frame','value' =>'PinkPolka_Frame_iOS'},
+            'frame_2' => {'name' => 'Valentines Red Frame','value' =>'Red_Frame_iOS'},
+            'frame_3' => {'name' => 'Valentines Hearts Overlay Frame','value' =>'HeartsOverlay_Frame_iOS'},
+            'frame_4' => {'name' => 'Valentines Pink Watercolor Frame','value' =>'PinkWatercolor_Frame_iOS'},
+            'frame_5' => {'name' => 'Valentines Red Stripes Frame','value' =>'RedStripes_Frame_iOS'},
+            'frame_6' => {'name' => 'White Frame','value' =>'4_white_frame'},
+            'frame_7' => {'name' => 'Kraft Frame','value' =>'Kraft_Frame_iOS'},
+            'frame_8' => {'name' => 'Floral Frame','value' =>'6_floral_frame3'},
+            'frame_9' => {'name' => 'Orange Frame','value' =>'Orange_Frame_iOS'},
+            'frame_10' => {'name' => 'Polka Dots Frame','value' =>'9_polkadots_frame'},
+            'frame_11' => {'name' => 'Water Blue Frame','value' =>'3_blue_watercolor_frame'},
+            'frame_12' => {'name' => 'Wood Bottom Frame','value' =>'Wood_Frame_iOS'},
+            'frame_13' => {'name' => 'Gradient Frame','value' =>'7_gradient_frame'},
+            'frame_14' => {'name' => 'Sloppy Frame','value' =>'Sloppy_Frame_iOS'},
+            'frame_15' => {'name' => 'Turquoise Frame','value' =>'1_turquoise_frame'},
+            'frame_16' => {'name' => 'Red Frame','value' =>'5_Red_frame'},
+            'frame_17' => {'name' => 'Green Water Color Frame','value' =>'10_green_watercolor_frame2'},
+            'frame_18' => {'name' => 'Floral 2 Frame','value' =>'13_floral2_frame'},
+            'frame_19' => {'name' => 'Pink Spray Paint Frame','value' =>'5_Red_frame'}
+        }
+        $font ={ 
+            'font_0' => {'name' => 'Helvetica','value' =>'Helvetica'},
+            'font_1' => {'name' => 'Typewriter','value' =>'American'},
+            'font_2' => {'name' => 'Avenir','value' =>'Avenir-Heavy'},
+            'font_3' => {'name' => 'Chalkboard','value' =>'ChalkboardSE-Regular'},
+            'font_4' => {'name' => 'Arial','value' =>'Arial'},
+            'font_5' => {'name' => 'Kohinoor','value' =>'KohinoorBangla-Regular'},
+            'font_6' => {'name' => 'Liberator','value' =>'Liberator'},
+            'font_7' => {'name' => 'Muncie','value' =>'Muncie'},
+            'font_8' => {'name' => 'Lincoln','value' =>'Abraham'},
+            'font_9' => {'name' => 'Airship','value' =>'Airship'},
+            'font_10' => {'name' => 'Arvil','value' =>'Arvil'},
+            'font_11' => {'name' => 'Bender','value' =>'Bender-Inline'},
+            'font_12' => {'name' => 'Blanch','value' =>'Blanch-Condensed'},
+            'font_13' => {'name' => 'Cubano','value' =>'Cubano-Regular'},
+            'font_14' => {'name' => 'Franchise','value' =>'Franchise'},
+            'font_15' => {'name' => 'Geared','value' =>'GearedSlab-Regular'},
+            'font_16' => {'name' => 'Governor','value' =>'Governor'},
+            'font_17' => {'name' => 'Haymaker','value' =>'Haymaker'},
+            'font_18' => {'name' => 'Homestead','value' =>'Homestead-Regular'},
+            'font_19' => {'name' => 'Maven Pro','value' =>'MavenProLight200-Regular'},
+            'font_20' => {'name' => 'Mensch','value' =>'Mensch'},
+            'font_21' => {'name' => 'Sullivan','value' =>'Sullivan-Regular'},
+            'font_22' => {'name' => 'Tommaso','value' =>'Tommaso'},
+            'font_23' => {'name' => 'Valencia','value' =>'Valencia'},
+            'font_24' => {'name' => 'Vevey','value' =>'Vevey'}                  
+        }
+           
+    

@@ -354,19 +354,19 @@ NSString * const kUserNotificationsPermissionSetKey = @"kUserNotificationsPermis
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound|UIUserNotificationTypeBadge|UIUserNotificationTypeAlert categories:[NSSet setWithObjects:self.printLaterUserNotificationCategory, nil]];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
-        self.userNotificationsPermissionSet = YES;
+        [MPPrintLaterManager setUserNotificationsPermissionSet:YES];
 #endif
     }
 }
 
-- (BOOL)userNotificationsPermissionSet
++ (BOOL)isUserNotificationsPermissionSet
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kUserNotificationsPermissionSetKey];
 }
 
-- (void)setUserNotificationsPermissionSet:(BOOL)userNotificationsPermissionSet
++ (void)setUserNotificationsPermissionSet:(BOOL)userNotificationsPermissionSet
 {
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:userNotificationsPermissionSet forKey:kUserNotificationsPermissionSetKey];
     [defaults synchronize];
 }

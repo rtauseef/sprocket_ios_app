@@ -10,22 +10,22 @@ Scenario: Verify 'Sticker' option
     Then I should see the "Edit" screen
     Then I tap "Sticker" button
     Then I should see the "Sticker Editor" screen
-    Then I select "sticker"
-    And I should see the photo with the "sticker"
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
     Then I tap "Close" mark
     Then I should see the "Edit" screen
     And I should see the photo with no "sticker"
 
     
 @reset
-@done
+@regression
 Scenario Outline: Verify 'Sticker' option
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
-    Then I select "sticker"
-    And I should see the photo with the "sticker"
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
     Then I tap "Save" mark
     Then I should see the "Edit" screen
-    And I should see the photo with the "sticker"
+    Then I should see the photo with the "sticker_0" sticker
     
     Examples:
     | social_media_screen_name        |
@@ -33,12 +33,25 @@ Scenario Outline: Verify 'Sticker' option
   #  | Flickr Preview     |
     | CameraRoll Preview |
     
+    
+@reset
+@TA17012
+Scenario: Verify Sticker edit options
+    Given I am on the "StickerEditor" screen for "CameraRoll Preview"
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
+    And I should see "Bring to front" button
+    And I should see "Delete" button
+    And I should see "Flip vertically" button
+    And I should see "Flip horizontally" button
+    
+    
 @reset
 @regression
 Scenario Outline: Verify Sticker delete option    
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
-    Then I select "sticker"
-    And I should see the photo with the "sticker"
+    Then I select "sticker_0" sticker
+    Then I should see the photo with the "sticker_0" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
     And I should see the photo with no "sticker"
@@ -55,78 +68,95 @@ Scenario Outline: Verify Sticker delete option
 Scenario: Verify sticker list
     Given I am on the "StickerEditor" screen for "CameraRoll"
     Then I should see the following Stickers in the screen:
-                | v_xoxo_TN             |
-                | heart_2_TN            |
-                | v_hearts_TN           |
-                | conversation_heart_TN |
-                | heart_wings_TN        |
-                | bird_TN               |
-                | butterfly_TN          |
-                | monster_2_TN          |
-                | rosebud_TN            |
-                | heart_bouquet_TN      |
-                | heart-garland_TN      |
-                | pig_TN                |
-                | headband_TN           |
-                | glasses_1_TN          |
-                | hat_TN                |
-                | bow2_TN               |
-                | balloons_TN           |
-                | thought_bubble_TN     |
-                | letter_TN             | 
-                | holding_hands_TN      |
-                | love_monster_TN       |
-                | heart_arrow_TN        | 
-                | smiley_TN             |
-                | heart_banner_TN       |
-                | lock_TN               |
-                | v_cupcake_TN          |
-                | v_cat_TN              |
-                | v_heart_TN            |
-                | target_TN             |  
-                | glasses_TN            |
-                | tiara_TN              |
-                | heart_crown_TN        |
-                | sb_glasses_TN         |
-                | glasses_2_TN          |
-                | eye_black_TN          |
-                | foam_finger_TN        |
-                | heart_football3_TN    |
-                | banner_TN             |
-                | flag_TN               |
-                | heart_football_TN     |
-                | stars_n_balls_TN      |
-                | #_game_time_TN        |
-                | football_flames_TN    | 
-                | love_TN               |
-                | i_heart_football_2_TN |
-                | owl_TN                |
-                | goal_post_2_TN        |
-                | helmet_TN             |
-                | catglasses_TN         |
-                | catwhiskers_TN        |
-                | catears_TN            |
+                | glasses_2b_TN         |
+                | hat_1b_TN             |
+                | kiss_me_2c_TN         |
+                | derby_TN              |
+                | st_hearts_TN          |
+                | st_glasses_TN         |
+                | boppers_TN            |
+                | lips_TN               |
+                | bow_tie_TN            |
+                | beard&-eyebrows_TN    |
+                | mustache_TN           |
+                | pot_o_gold_TN         |
+                | rainbow_2_TN          |
+                | shamrock_crown_TN     |
+                | shamrock_2_TN         |
+                | #lucky_new_TN         |
+                | shamrockin_3_TN       |
+                | clover_headband_TN    |
+                | clover_wand_TN        | 
                 | hearts_TN             |
                 | xoxo_TN               |
-                | heartExpress_TN       |
-                | arrow_TN              |
+                | heartExpress_TN       | 
+                | v_heart_TN            |
+                | glasses_1_TN          |
+                | heart_2_TN            |
+                | v_hearts_TN           |
+                | heart-garland_TN      |
+                | v_xoxo_TN             |
+                | heart_wings_TN        |  
+                | palmtree_TN           |
+                | beachball_TN          |
+                | wave_TN               |
+                | beach_umbrella_TN     |
+                | sun_face_TN           |
+                | sunglasses_frogskin_TN|
+                | aviator_glasses_TN    |
+                | glasses_TN            |
+                | bunny_ears_flowers_TN |
+                | catglasses_TN         |
+                | catears_TN            |
+                | scuba_mask_TN         |
+                | swim_fins_TN          |
+                | volleyball_TN         |
+                | trailer_TN            | 
+                | travel_car_bug_TN     |
+                | travel_car_woody_TN   |
+                | bike_cruiser_TN       |
+                | airplane_TN           |
+                | soda_straw_TN         |
+                | sundae_TN             |
+                | icecream_tub_TN       |
+                | cupcake_TN            |
+                | bbq_TN                |
+                | unicorn_float_TN      |
+                | surfboard_TN          |
                 | crown_TN              |
                 | birthdayHat_TN        |
-                | moon_TN               |
-                | starhp_TN             |
-                | stars_TN              |
-                | feather2_TN           |
-                | feather_TN            |
-                | leaf3_TN              |
-                | cupcake_TN            |
-                | cat_TN                |
                 | diamond_TN            |
-                | sunglasses_TN         |
-                | OMG_TN                |
+                | feather_TN            |
+                | stars_TN              |
+                | starhp_TN             |
+                | cat_TN                |
+                | smiley_TN             |
+                
                 
 @reset
 @regression
 Scenario: Verify all the stickers are applied for sticker editor screen 
     Given I am on the "StickerEditor" screen for "CameraRoll"  
     Then I verify that all the "stickers" are applied successfully
+    
+@reset
+@TA17012
+Scenario Outline: Verify sticker editor screen navigation
+    Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
+    Then I select "sticker_1" sticker
+    And I should see the photo with the "sticker_1" sticker
+    Then I should see the "StickerEditor" screen
+    Then I tap "Close" mark
+    Then I should see the "Edit" screen
+    Then I tap "Sticker" button
+    Then I select "sticker_4" sticker
+    And I should see the photo with the "sticker_4" sticker
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    
+    Examples:
+    | social_media_screen_name       |
+    | Instagram Preview  |
+    #| Flickr Preview     |
+    | CameraRoll         |    
     

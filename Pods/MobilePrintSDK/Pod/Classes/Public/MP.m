@@ -117,7 +117,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     self = [super init];
     if (self) {
         
-        if ([MPPrintLaterManager sharedInstance].userNotificationsPermissionSet) {
+        if ([MPPrintLaterManager isUserNotificationsPermissionSet]) {
             [[MPPrintLaterManager sharedInstance] initLocationManager];
             [[MPPrintLaterManager sharedInstance] initUserNotifications];
         }

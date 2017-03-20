@@ -378,13 +378,17 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 }
 
 - (BOOL)isCameraCellIndexPath:(NSIndexPath *)indexPath {
-    return self.provider.showCameraButtonInCollectionView && indexPath.item == 0 && ![self isInMultiSelectMode];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+
+    return [cell isKindOfClass:[HPPRCameraCollectionViewCell class]];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     BOOL shouldSelect = YES;
 
-    if (![self isCameraCellIndexPath:indexPath]) {
+    if ([self isCameraCellIndexPath:indexPath]) {
+        shouldSelect = ![self isInMultiSelectMode];
+    } else {
         if ([self.delegate respondsToSelector:@selector(selectPhotoCollectionViewController:shouldAddMediaToSelection:)]) {
             HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
             shouldSelect = [self.delegate selectPhotoCollectionViewController:self shouldAddMediaToSelection:cell.media];

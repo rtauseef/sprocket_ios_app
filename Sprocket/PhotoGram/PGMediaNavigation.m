@@ -137,6 +137,7 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
     self.cancelButton.hidden = NO;
     self.hamburgerButton.hidden = YES;
     self.selectButton.hidden = YES;
+    self.cameraButton.enabled = NO;
 }
 
 - (void)endSelectionMode {
@@ -144,6 +145,7 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
     self.nextButton.hidden = YES;
     self.hamburgerButton.hidden = NO;
     self.selectButton.hidden = ![PGFeatureFlag isMultiPrintEnabled];
+    self.cameraButton.enabled = YES;
 }
 
 - (void)disableSelectionMode {

@@ -31,6 +31,9 @@
 /* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
 "34K-Xv-dA8.text" = "Apsilankyti pagalbos svetainėje";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "AXW-GE-wKa"; */
+"AXW-GE-wKa.title" = "";
+
 /* Class = "UILabel"; text = "© 2016 HP Development Company, L.P."; ObjectID = "BBT-a1-B1F"; */
 "BBT-a1-B1F.text" = "© „HP Development Company, L.P.“, 2016.";
 
@@ -48,6 +51,9 @@
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "EjE-om-e07"; */
 "EjE-om-e07.title" = "Apie";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Fnc-S6-0NQ"; */
+"Fnc-S6-0NQ.text" = "Pavadinimas";
 
 /* Class = "UILabel"; text = "HP Sprocket App Terms of Service"; ObjectID = "Gwf-K7-scA"; */
 "Gwf-K7-scA.text" = "„HP Sprocket“ programos naudojimo sąlygos";
@@ -70,8 +76,14 @@
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
 "JEt-SU-tLR.title" = "Fotoaparato aplankas";
 
+/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
+"JrW-zx-uoD.text" = "Paspauskite ir palaikykite maitinimo mygtuką, kol šviesos diodas pradės šviesti baltai.";
+
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "Kp8-0r-uKI"; */
 "Kp8-0r-uKI.normalTitle" = "Prisijungti";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "M1M-l0-DBL"; */
+"M1M-l0-DBL.title" = "";
 
 /* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
 "MN9-s9-sQn.text" = "Bakstelėkite čia, jei norite redaguoti aprašą";
@@ -85,11 +97,17 @@
 /* Class = "UINavigationItem"; title = "Reset Sprocket Printer"; ObjectID = "OOG-XB-1r0"; */
 "OOG-XB-1r0.title" = "Nustatyti „Sprocket“ spausdintuvą iš naujo";
 
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "OWM-HV-MZn"; */
+"OWM-HV-MZn.title" = "";
+
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "(c) 2016";
 
 /* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
 "Ptp-oP-RvF.text" = "Menu parinktis";
+
+/* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
+"Pzx-yx-Rfc.text" = "Nauja funkcija!";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
 "QQK-QP-Amd.text" = "Autentifikuodamiesi „Flickr“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
@@ -98,7 +116,7 @@
 "QeE-ya-uIL.text" = "Pavadinimas";
 
 /* Class = "UIButton"; normalTitle = "Go to the App"; ObjectID = "Qfy-vN-Znw"; */
-"Qfy-vN-Znw.normalTitle" = "Eiti į programą";
+"Qfy-vN-Znw.normalTitle" = "Atidaryti programą";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Qz4-e7-zDJ"; */
 "Qz4-e7-zDJ.normalTitle" = "Nuotraukos";
@@ -107,15 +125,15 @@
 "R8u-lf-hRh.title" = "„Facebook“";
 
 /* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "Naudodami šią programą, galėsite prisijungti prie interneto ir naudoti savo „Instagram“, „Facebook“ arba „Flickr“ paskyras, kad galėtumėte kurti ir spausdinti pasirinktą turinį. 
+"TEb-3v-7vp.text" = "Naudodami šią programą galėsite prisijungti prie interneto ir naudoti „Instagram“, „Facebook“ arba „Flickr“ paskyras bei kurti ir spausdinti pasirinktą turinį. 
 
-Šiai programai gali būti reikalingas interneto ryšys. Belaidžio tinklo našumas priklauso nuo fizinės aplinkos ir atstumo iki prieigos taško. Gali būti taikomi atskirai įsigyti duomenų planai ir naudojimo mokesčiai. Spausdinimo trukmė ir ryšio sparta gali skirtis.
+Naudojant šią programą reikalingas interneto ryšys. Belaidis veikimas priklauso nuo fizinės aplinkos ir nuo atstumo tarp jūsų ir prieigos taško. Gali būti taikomi atskirai įsigijami duomenų planai arba naudojimo mokesčiai. Spausdinimo laikas ir ryšio greitis gali skirtis.
 
-Norint spausdinti, reikalingas „HP Sprocket“ nuotraukų spausdintuvas. Mobiliajame įrenginyje turi būti įjungta „Bluetooth“ funkcija, turi būti įjungtas „HP Sprocket“ nuotraukų spausdintuvas ir spausdintuvas turi būti susietas su mobiliuoju įrenginiu.
+Norint spausdinti reikia „HP Sprocket“ nuotraukų spausdintuvas. Jūsų mobiliajame įrenginyje turi būti įjungtas „Bluetooth“, „HP Sprocket Photo Printer“ taip pat turi būti įjungtas ir susietas su mobiliuoju įrenginiu.
 
-Jei interneto ryšiui naudojate duomenų tinklą, gali tekti papildomai sumokėti už panaudotus duomenis pagal jūsų duomenų planą. 
+Jei duomenų tinklą naudojate kaip prieigą prie interneto, gali būti taikomi papildomi duomenų naudojimo mokesčiai, atsižvelgiant į duomenų tinklo planą. 
 
-Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP periodiškai iš šios programos rinks anoniminius naudojimo duomenis. ";
+HP periodiškai rinks anoniminius šios programos naudojimo duomenis, kad būtų pagerintos būsimos šios programos ir HP spausdintuvų versijos. ";
 
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "„Instagram“";
@@ -129,11 +147,20 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Išsami informacija";
 
+/* Class = "UILabel"; text = "From Bluetooth Settings, tap on  “HP sprocket” to pair with the printer."; ObjectID = "W7o-LK-mcs"; */
+"W7o-LK-mcs.text" = "„Bluetooth“ nustatymuose bakstelėkite „HP Sprocket“, kad susietumėte su spausdintuvu.";
+
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "WMv-7o-mbb"; */
 "WMv-7o-mbb.text" = "„Sprocket“";
 
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
 "XgH-Dx-oow.text" = "Įrašyta fotoaparato aplanke";
+
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Nufotografuokite arba pasirinkite nuotrauką";
+
+/* Class = "UINavigationItem"; title = "sprocket"; ObjectID = "Yx0-Cs-62a"; */
+"Yx0-Cs-62a.title" = "„Sprocket“";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
 "Z1T-tw-tdj.text" = "Naudodami fotoaparato aplanką sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
@@ -144,11 +171,21 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
 "aja-HA-rCS.normalTitle" = "Prisijungti";
 
+/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "bNM-1G-6tS"; */
+"bNM-1G-6tS.text" = "Įdėkite visą popieriaus pakuotę į popieriaus dėklą brūkšniniu kodu ir HP logotipu į apačią.";
+
+/* Class = "UILabel"; text = "Print to your HP Sprocket Printer\nfrom your favorite creative Apps!"; ObjectID = "cFJ-6P-UAK"; */
+"cFJ-6P-UAK.text" = "Spausdinkite „HP Sprocket“ spausdintuvu
+naudodami mėgstamiausias kūrybiškas programas!";
+
 /* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "ciL-qk-y5Q"; */
 "ciL-qk-y5Q.normalTitle" = "Pereiti prie programos";
 
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "d71-za-T7q"; */
 "d71-za-T7q.text" = "„Sprocket“";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "dbH-gv-JrM"; */
+"dbH-gv-JrM.title" = "Baigta";
 
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Prisijungti";
@@ -165,8 +202,9 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Nufotografuokite arba pasirinkite nuotrauką";
 
-/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
-"YEZ-Yd-vcV.text" = "Nufotografuokite arba pasirinkite nuotrauką";
+/* Class = "UILabel"; text = "Turn on the “Print to sprocket” feature\nin the “More” menu when sharing."; ObjectID = "lh1-7W-cpZ"; */
+"lh1-7W-cpZ.text" = "Bendrindami, meniu „More“ (daugiau) išjunkite
+funkciją „Print to sprocket“ (spausdinti naudojant „sprocket“).";
 
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "„Twitter“ pagalba";
@@ -175,7 +213,7 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 "mGd-Z2-qhD.title" = "„QZone“";
 
 /* Class = "UILabel"; text = "New! Print later with our Print Queue"; ObjectID = "mh8-hT-PMS"; */
-"mh8-hT-PMS.text" = "Naujiena! Spausdinkite vėliau naudodamiesi mūsų spausdinimo eile";
+"mh8-hT-PMS.text" = "Nauja! Spausdinkite vėliau naudodami spausdinimo eilę";
 
 /* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
 "nYV-cn-yZe.text" = "Nustatyti „Sprocket“ spausdintuvą";
@@ -186,6 +224,12 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 /* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
 "ob1-ZF-jEd.text" = "Autentifikuodamiesi „Qzone“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
 
+/* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
+"ofB-Rh-sga.text" = "Išsami informacija";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "pvd-qV-bLb"; */
+"pvd-qV-bLb.normalTitle" = "Uždaryti";
+
 /* Class = "UILabel"; text = "Connected"; ObjectID = "qsf-b8-Lfu"; */
 "qsf-b8-Lfu.text" = "Prisijungta";
 
@@ -193,12 +237,15 @@ Siekdama tobulinti būsimas šios programos ir HP spausdintuvų versijas, HP per
 "r8A-4l-TdM.text" = "„Sprocket“";
 
 /* Class = "UILabel"; text = "Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer."; ObjectID = "sIS-tD-Si9"; */
-"sIS-tD-Si9.text" = "Suraskite atstatos jungties skylutę šalia įkrovimo jungties. Įkiškite tiesų kištuką į skylutę, kad paspaustumėte mygtuką, esantį viduje. Laikykite įspaudę įjungimo/išjungimo mygtuką, kol diodo šviesa taps balta, kad iš naujo paleistumėte spausdintuvą.";
+"sIS-tD-Si9.text" = "Raskite nustatymų atkūrimo mygtuko ertmę šalia krovimo prievado. Tiesiu smeigtuku paspauskite ertmės viduje esantį mygtuką. Laikykite maitinimo mygtuką nuspaudę tol, kol LED indikatorius ims šviesti baltai, kad paleistumėte spausdintuvą iš naujo.";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "Nepamirškite išspausdinti ir pasidalyti savo kūriniu";
 
+/* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
+"w68-hT-Ur3.text" = "„WeChat“ pagalba";
+
 /* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
-"znF-lh-wdy.text" = "Pasirinkite toliau pateiktą „Sprocket“
-spausdintuvo ir programos palaikymo parinktį.";
+"znF-lh-wdy.text" = "Pasirinkite toliau pateiktą parinktį, norėdami gauti su „sprocket“
+spausdintuvu ir programa susijusios pagalbos.";
 
