@@ -30,9 +30,11 @@ typedef enum
 @property (nonatomic, weak) id<PGGesturesViewDelegate> delegate;
 @property (nonatomic, assign) PGGesturesDoubleTapBehavior doubleTapBehavior;
 @property (nonatomic, assign) CGFloat totalRotation;
-@property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UIActivityIndicatorView *loadingIndicator;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+
 @property (nonatomic, assign) BOOL isMultiSelectImage;
 @property (nonatomic, assign) BOOL isSelected;
 
@@ -41,7 +43,6 @@ typedef enum
 - (CGFloat)zoom;
 - (CGFloat)angle;
 - (void)adjustContentOffset;
-- (void)adjustScrollAndImageView;
 - (void)enableGestures;
 
 @end

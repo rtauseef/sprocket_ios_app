@@ -627,6 +627,9 @@
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */; };
 		82813D4D1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */; };
+		828F02131E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
+		828F02141E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
+		828F02151E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
 		829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */; };
@@ -2164,6 +2167,7 @@
 		828466AF1E4D4C21007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		828466B01E4D4C22007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		828466B11E4D4C22007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		828F02121E7CBCF800902C8F /* PGGesturesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGGesturesView.xib; sourceTree = "<group>"; };
 		829E02851DDA64C200B025C5 /* PGSocialSourcesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesMenuViewController.h; sourceTree = "<group>"; };
 		829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesMenuViewController.m; sourceTree = "<group>"; };
 		829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuViewController.h; sourceTree = "<group>"; };
@@ -4036,6 +4040,7 @@
 				825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */,
 				E31BE41119E601F0006B78BB /* PGGesturesView.h */,
 				E31BE41219E601F0006B78BB /* PGGesturesView.m */,
+				828F02121E7CBCF800902C8F /* PGGesturesView.xib */,
 				8263D7B41E71DD330036E903 /* PGTextView.h */,
 				8263D7B51E71DD330036E903 /* PGTextView.m */,
 				92D073851D25ACE8002611C0 /* PGMediaNavigation.h */,
@@ -4374,6 +4379,7 @@
 				82017ADF1D948AB600364F21 /* HPSimplified_LtIt.ttf in Resources */,
 				82017AE01D948AB600364F21 /* HPSimplified_Rg.ttf in Resources */,
 				8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */,
+				828F02141E7CBCF800902C8F /* PGGesturesView.xib in Resources */,
 				82157D071D91EEEF00360D87 /* Images.xcassets in Resources */,
 				2AF06EEF1DD5484F000FF091 /* InfoPlist.strings in Resources */,
 			);
@@ -4430,6 +4436,7 @@
 				8218520C1D625FBA001288D9 /* catears_TN@3x.png in Resources */,
 				82A11B1A1E5FB59600E7F8FC /* bbq_TN@2x.png in Resources */,
 				82A11CE51E5FB93B00E7F8FC /* band-aid2_TN@2x.png in Resources */,
+				828F02131E7CBCF800902C8F /* PGGesturesView.xib in Resources */,
 				82A11B581E5FB59600E7F8FC /* clover_headband_TN.png in Resources */,
 				82A11B481E5FB59600E7F8FC /* bow_tie_TN.png in Resources */,
 				82E648521E316F9200764213 /* PinkPolka_Frame_iOS_TN@3x.png in Resources */,
@@ -5520,6 +5527,7 @@
 				82A11BED1E5FB59700E7F8FC /* soda_straw_TN@3x.png in Resources */,
 				26F7C0711DD10C1E006396FA /* catwhiskers.png in Resources */,
 				82A11C011E5FB59700E7F8FC /* sunglasses_frogskin_TN.png in Resources */,
+				828F02151E7CBCF800902C8F /* PGGesturesView.xib in Resources */,
 				82A11D481E5FB93B00E7F8FC /* ketchup-hotdog.png in Resources */,
 				8249521C1E2EB6ED00B7F857 /* hat_TN@2x.png in Resources */,
 				8249524C1E2EB6ED00B7F857 /* heart_crown_TN.png in Resources */,
