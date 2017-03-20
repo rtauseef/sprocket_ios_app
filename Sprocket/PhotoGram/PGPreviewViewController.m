@@ -340,11 +340,32 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     [self saveSelectedPhotosWithCompletion:^(BOOL success) {
         if (success) {
-            [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
-            
-            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
-                                                             printItem:self.printItem
-                                                           exendedInfo:[self extendedMetrics]];
+            if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
+                
+                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                                 printItem:self.printItem
+                                                               exendedInfo:[self extendedMetrics]];
+            } else {
+                NSUInteger selectedPhotosCount = 0;
+                
+                // Print Metric
+                NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", NSStringFromClass([PGSaveToCameraRollActivity class])];
+                for (PGGesturesView *gestureView in self.gesturesViews) {
+                    if (gestureView.isSelected) {
+                        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                        printItem.layout = [self layout];
+                        
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
+                                                                         printItem:printItem
+                                                                       exendedInfo:[self extendedMetrics]];
+                        selectedPhotosCount++;
+                    }
+                }
+                
+                // Analytics Metric
+                [[PGAnalyticsManager sharedManager] trackMultiSaveProjectActivity:[NSString stringWithFormat:@"%@-Multi", kEventSaveProjectPreview] numberOfPhotos:selectedPhotosCount];
+            }
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [UIView animateWithDuration:0.5F animations:^{
