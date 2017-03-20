@@ -51,9 +51,13 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
     [[PGMediaNavigation sharedInstance] updateSelectedItemsCount:self.selectedItems.count];
 }
 
+- (void)clearSelection {
+    [self.selectedItems removeAllObjects];
+}
+
 - (void)endSelectionMode {
     self.selectionEnabled = NO;
-    [self.selectedItems removeAllObjects];
+    [self clearSelection];
 
     [[PGMediaNavigation sharedInstance] endSelectionMode];
 }
@@ -73,7 +77,7 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
 
 - (void)selectMedia:(HPPRMedia *)media {
     if (!self.isInSelectionMode) {
-        [self.selectedItems removeAllObjects];
+        [self clearSelection];
     }
     
     if (![self isSelected:media] && ![self isMaxedOut]) {
