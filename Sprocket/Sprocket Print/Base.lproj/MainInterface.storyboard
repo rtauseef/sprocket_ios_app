@@ -50,13 +50,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFm-89-OFW">
-                                                <rect key="frame" x="23" y="26" width="72.5" height="19"/>
+                                                <rect key="frame" x="23" y="26" width="73" height="19"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery100" translatesAutoresizingMaskIntoConstraints="NO" id="t53-UW-oeM" customClass="PGBatteryImageView">
-                                                <rect key="frame" x="113.5" y="28.5" width="33" height="14"/>
+                                                <rect key="frame" x="114" y="29" width="33" height="14"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -70,7 +70,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcR-YE-OrN" userLabel="ImageContainer" customClass="PGGesturesView" propertyAccessControl="none">
-                                        <rect key="frame" x="37.5" y="61" width="245" height="367"/>
+                                        <rect key="frame" x="38" y="61" width="245" height="367"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EcR-YE-OrN" secondAttribute="height" multiplier="2:3" id="LLV-nG-MRK"/>
@@ -80,7 +80,7 @@
                                         <rect key="frame" x="0.0" y="428" width="320" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPD-kO-soS" userLabel="printerButton">
-                                                <rect key="frame" x="44.5" y="20" width="231" height="60"/>
+                                                <rect key="frame" x="45" y="20" width="231" height="60"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="26"/>
                                                 <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
@@ -95,7 +95,7 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ptsActive" translatesAutoresizingMaskIntoConstraints="NO" id="hhX-Y3-hF7" userLabel="ptsStatus">
-                                                <rect key="frame" x="263" y="64.5" width="25" height="25"/>
+                                                <rect key="frame" x="263" y="65" width="25" height="25"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -139,7 +139,7 @@
                     <connections>
                         <outlet property="batteryIndicator" destination="t53-UW-oeM" id="lK3-dl-44H"/>
                         <outlet property="connectedLabel" destination="nFm-89-OFW" id="XGK-ZA-svb"/>
-                        <outlet property="imageContainer" destination="EcR-YE-OrN" id="1yX-8U-uKg"/>
+                        <outlet property="gesturesView" destination="EcR-YE-OrN" id="9be-82-6hc"/>
                         <outlet property="printButton" destination="XPD-kO-soS" id="dFb-7C-ATv"/>
                         <outlet property="printerDot" destination="hhX-Y3-hF7" id="UkZ-24-2kU"/>
                         <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>

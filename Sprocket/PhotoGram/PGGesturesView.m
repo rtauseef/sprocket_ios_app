@@ -15,17 +15,16 @@
 #import "UIView+Background.h"
 
 static CGFloat const kMinimumZoomScale = 1.0f;
-static CGFloat const kMaximumZoomScale = 4.0f;
 static CGFloat const kAnimationDuration = 0.3f;
 static CGFloat const kMarginOfError = .01f;
-static CGFloat const kLoadingIndicatorSize = 50;
 
 @interface PGGesturesView ()
 
 @property (nonatomic, assign) UIViewContentMode imageContentMode;
-@property (nonatomic, strong) UIView *selectionView;
-@property (nonatomic, strong) UIImageView *checkmark;
 @property (nonatomic, strong) NSTimer *zoomTimer;
+
+@property (weak, nonatomic) IBOutlet UIView *selectionOverlayView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkmark;
 
 @end
 
@@ -52,64 +51,24 @@ static CGFloat const kLoadingIndicatorSize = 50;
 
 - (void)setup
 {
+    UIView *xibView = [[[NSBundle mainBundle] loadNibNamed:@"PGGesturesView"
+                                                     owner:self
+                                                   options:nil] objectAtIndex:0];
+    xibView.frame = self.bounds;
+    xibView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:xibView];
+    
     self.accessibilityIdentifier = @"GestureView";
+    self.scrollView.accessibilityIdentifier = @"GestureScrollView";
+    self.imageView.accessibilityIdentifier = @"GestureImageView";
     
     self.imageContentMode = UIViewContentModeScaleAspectFill;
-    
-    self.minimumZoomScale = kMinimumZoomScale;
-    self.maximumZoomScale = kMaximumZoomScale;
-    
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    self.scrollView.accessibilityIdentifier = @"GestureScrollView";
-    self.scrollView.delegate = self;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.alwaysBounceHorizontal = YES;
-    self.scrollView.alwaysBounceVertical = YES;
-    self.scrollView.minimumZoomScale = self.minimumZoomScale;
-    self.scrollView.maximumZoomScale = self.maximumZoomScale;
-    self.scrollView.clipsToBounds = NO;
-    self.scrollView.canCancelContentTouches = NO;
-
-    self.backgroundColor = [UIColor whiteColor];
-    self.scrollView.backgroundColor = [UIColor whiteColor];
     
     self.doubleTapBehavior = PGGesturesDoubleTapReset;
     self.totalRotation = 0.0F;
     
-    [self addSubview:self.scrollView];
-    
-    self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    self.imageView.accessibilityIdentifier = @"GestureImageView";
-    self.imageView.userInteractionEnabled = NO;
-    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-    [self.scrollView addSubview:self.imageView];
-    
-    self.selectionView = [[UIView alloc] initWithFrame:self.bounds];
-    self.selectionView.backgroundColor = [UIColor blackColor];
-    self.selectionView.alpha = 0.6;
-    self.selectionView.userInteractionEnabled = NO;
-    self.selectionView.hidden = YES;
-    
-    [self addSubview:self.selectionView];
-    
-    NSUInteger checkmarkWidth = 37;
-    self.checkmark = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width - (checkmarkWidth + 10), self.bounds.size.height - (checkmarkWidth + 10), checkmarkWidth, checkmarkWidth)];
-    self.checkmark.image = [UIImage imageNamed:@"Check_Inactive1"];
-    self.checkmark.highlightedImage = [UIImage imageNamed:@"Check"];
-    
-    [self addSubview:self.checkmark];
-    
-    self.loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width / 2) - (kLoadingIndicatorSize / 2), (self.bounds.size.height / 2) - (kLoadingIndicatorSize / 2), kLoadingIndicatorSize, kLoadingIndicatorSize)];
-    self.loadingIndicator.hidesWhenStopped = YES;
-    self.loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    [self addSubview:self.loadingIndicator];
-    
     self.isSelected = YES;
     self.isMultiSelectImage = NO;
-    
-    self.clipsToBounds = YES;
     
     [self enableGestures];
 }
@@ -154,7 +113,7 @@ static CGFloat const kLoadingIndicatorSize = 50;
 {
     _isSelected = isSelected;
     
-    self.selectionView.hidden = isSelected;
+    self.selectionOverlayView.hidden = isSelected;
     [self.checkmark setHighlighted:isSelected];
 }
 
@@ -189,7 +148,9 @@ static CGFloat const kLoadingIndicatorSize = 50;
 
 - (void)setImage:(UIImage *)image
 {
-    _media.image = image;
+    if (self.media) {
+        _media.image = image;
+    }
     _editedImage = image;
     
     self.imageView.image = image;
@@ -341,21 +302,6 @@ static CGFloat const kLoadingIndicatorSize = 50;
 - (CGFloat)angle
 {
     return atan2(self.scrollView.transform.b, self.scrollView.transform.a) * 180.0f / M_PI;
-}
-
-#pragma mark - Methods used only by Share Extension
-
-
-- (void)adjustScrollAndImageView
-{
-    self.scrollView.zoomScale = kMinimumZoomScale;
-    self.scrollView.transform = CGAffineTransformIdentity;
-    self.scrollView.contentOffset = CGPointZero;
-    
-    self.imageView.transform = CGAffineTransformIdentity;
-    
-    self.scrollView.frame = self.frame;
-    self.imageView.frame = self.frame;
 }
 
 @end
