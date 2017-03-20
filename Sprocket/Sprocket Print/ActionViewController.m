@@ -26,8 +26,7 @@ static NSInteger  const connectionDefaultValue = -1;
 
 @interface ActionViewController () <MPSprocketDelegate>
 
-@property (strong, nonatomic) PGGesturesView *imageView;
-@property (weak, nonatomic) IBOutlet UIView *imageContainer;
+@property (weak, nonatomic) IBOutlet PGGesturesView *gesturesView;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 
 @property (strong, nonatomic) CAGradientLayer *gradient;
@@ -143,9 +142,6 @@ static NSInteger  const connectionDefaultValue = -1;
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        self.imageView.frame = self.imageContainer.bounds;
-        self.imageView.scrollView.frame = self.imageContainer.bounds;
-        [self.imageView adjustScrollAndImageView];
         self.gradient.frame = self.view.bounds;
         
         [self.view layoutIfNeeded];
@@ -164,15 +160,15 @@ static NSInteger  const connectionDefaultValue = -1;
 }
 
 - (void)renderPhoto:(UIImage *)photo {
-    self.imageView = [[PGGesturesView alloc] initWithFrame:self.imageContainer.bounds];
-    self.imageView.image = photo;
-    self.imageView.doubleTapBehavior = PGGesturesDoubleTapReset;
+    [self.gesturesView setImage:photo];
+    self.gesturesView.doubleTapBehavior = PGGesturesDoubleTapReset;
     
-    [self.imageContainer addSubview:self.imageView];
+    [self.gesturesView layoutIfNeeded];
+    [self.gesturesView setNeedsDisplay];
 }
 
 - (IBAction)printTapped:(id)sender {
-    UIImage *image = [self.imageContainer screenshotImage];
+    UIImage *image = [self.gesturesView screenshotImage];
     [[MP sharedInstance] headlessBluetoothPrintFromController:self image:image animated:YES printCompletion:nil];
 }
 
@@ -194,7 +190,7 @@ static NSInteger  const connectionDefaultValue = -1;
     NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
     
     if (nil == error) {
-        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:[self.imageContainer screenshotImage]];
+        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:[self.gesturesView screenshotImage]];
         printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
         
         [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem exendedInfo:nil];

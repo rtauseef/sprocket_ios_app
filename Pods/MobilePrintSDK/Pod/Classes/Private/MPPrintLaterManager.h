@@ -30,11 +30,6 @@ extern const CLLocationDistance kDefaultPrinterRadiusInMeters;
 @property (strong, nonatomic) UIUserNotificationCategory *printLaterUserNotificationCategory;
 
 /*!
- * @abstract Boolean indicating whether or not the notification permission has already been set
- */
-@property (assign, nonatomic) BOOL userNotificationsPermissionSet;
-
-/*!
  * @abstract Boolean indicating whether or not the location permission has already been set
  */
 @property (assign, nonatomic, readonly) BOOL currentLocationPermissionSet;
@@ -43,6 +38,11 @@ extern const CLLocationDistance kDefaultPrinterRadiusInMeters;
  * @abstract Used to access the singleton instance of this class
  */
 + (MPPrintLaterManager *)sharedInstance;
+
+/*!
+ * @abstract Indicates whether or not the notification permission has already been set
+ */
++ (BOOL)isUserNotificationsPermissionSet;
 
 /*!
  * @abstract Sets up the location manager to monitor location

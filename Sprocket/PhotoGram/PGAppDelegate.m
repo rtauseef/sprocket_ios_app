@@ -17,6 +17,7 @@
 #import <HPPRFlickrLoginProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <DBChooser/DBChooser.h>
+#import <MPBTPrintManager.h>
 
 #import "AirshipKit.h"
 #import "PGAppDelegate.h"
@@ -31,7 +32,7 @@
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
-@interface PGAppDelegate()
+@interface PGAppDelegate() <MPPrintPaperDelegate>
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 @property (assign, nonatomic) NSInteger lastConnectedValue;
@@ -79,6 +80,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     self.menuShowing = NO;
 
     [self initializeUAirship];
+
+    [[MPBTPrintManager sharedInstance] cancelPrintQueue];
 
     return YES;
 }
@@ -164,6 +167,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 {
     [MP sharedInstance].handlePrintMetricsAutomatically = NO;
     [MP sharedInstance].uniqueDeviceIdPerApp = NO;
+    [MP sharedInstance].printPaperDelegate = self;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
     
@@ -204,6 +208,14 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //                                        UIUserNotificationTypeSound);
     
 }
+
+
+#pragma mark - MPPrintPaperDelegate
+
+- (MPPaper *)defaultPaperForPrintSettings:(MPPrintSettings *)printSettings {
+    return [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
+}
+
 
 #pragma mark - Notifications
 
