@@ -403,13 +403,35 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
             [self saveSelectedPhotosWithCompletion:^(BOOL success) {
                 if (success) {
+                    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                        [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                              source:kEventDismissEditCloseLabel];
+                        
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                                         printItem:weakSelf.printItem
+                                                                       exendedInfo:[weakSelf extendedMetrics]];
+                    } else {
+                        NSUInteger selectedPhotosCount = 0;
+                        
+                        // Print Metric
+                        NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", NSStringFromClass([PGSaveToCameraRollActivity class])];
+                        for (PGGesturesView *gestureView in self.gesturesViews) {
+                            if (gestureView.isSelected) {
+                                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                                printItem.layout = [self layout];
+                                
+                                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
+                                                                                 printItem:printItem
+                                                                               exendedInfo:[self extendedMetrics]];
+                                selectedPhotosCount++;
+                            }
+                        }
+                        
+                        // Analytics Metric
+                        [[PGAnalyticsManager sharedManager] trackMultiSaveProjectActivity:[NSString stringWithFormat:@"%@-Multi", kEventSaveProjectDismiss] numberOfPhotos:selectedPhotosCount];
+                    }
+                    
                     [self closePreviewAndCamera];
-                    [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
-                                                                          source:kEventDismissEditCloseLabel];
-
-                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
-                                                                     printItem:weakSelf.printItem
-                                                                   exendedInfo:[weakSelf extendedMetrics]];
                 }
             }];
         }];
