@@ -70,28 +70,48 @@ end
 And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
     sleep(STEP_PAUSE)
     if social_media == "Instagram"
-        terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_instagram']}'")
+        if ENV['LANGUAGE'] == "Danish"
+          link_text = query("PGTermsAttributedLabel", :text)[0] 
+          raise "localization failed!" unless link_text == $list_loc['terms_of_service_instagram']
+        else
+           terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_instagram']}'")
         raise "not found!" unless terms_of_service_link.length > 0
         sleep(STEP_PAUSE)
+        end
     else
         if social_media == "Camera Roll"
-            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_cameraroll']}'")
-            raise "not found!" unless terms_of_service_link.length > 0
-            sleep(STEP_PAUSE)
-        else
-            if social_media == "facebook"
-                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_facebook']}'")
+            if ENV['LANGUAGE'] == "Danish"
+                link_text = query("PGTermsAttributedLabel", :text)[0] 
+                raise "localization failed!" unless link_text == $list_loc['terms_of_service_cameraroll']
+            else
+                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_cameraroll']}'")
                 raise "not found!" unless terms_of_service_link.length > 0
                 sleep(STEP_PAUSE)
+            end
+        else
+            if social_media == "facebook"
+                if ENV['LANGUAGE'] == "Danish"
+                    link_text = query("PGTermsAttributedLabel", :text)[0] 
+                    raise "localization failed!" unless link_text == $list_loc['terms_of_service_facebook']
+                else
+                    terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_facebook']}'")
+                    raise "not found!" unless terms_of_service_link.length > 0
+                end
+                     sleep(STEP_PAUSE)
             else
                 if social_media == "Flickr"
                     sleep(STEP_PAUSE)
                     if ENV['LANGUAGE'] == "Chinese"
                         puts "#{social_media} - Not Applicable for Chinese language!".blue
                     else
-                        terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_flickr']}'")
-                        raise "not found!" unless terms_of_service_link.length > 0
-                        sleep(STEP_PAUSE)
+                        if ENV['LANGUAGE'] == "Danish"
+                            link_text = query("PGTermsAttributedLabel", :text)[0] 
+                            raise "localization failed!" unless link_text == $list_loc['terms_of_service_flickr']
+                        else
+                            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_flickr']}'")
+                            raise "not found!" unless terms_of_service_link.length > 0
+                            sleep(STEP_PAUSE)
+                        end
                     end
                 else
                     if social_media == "QZone"
