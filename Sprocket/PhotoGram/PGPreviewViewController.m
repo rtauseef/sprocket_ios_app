@@ -558,14 +558,48 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             
             if (completed) {
                 if (!printActivity) {
-                    [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
-                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
+                    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                        [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
+                    } else {
+                        NSUInteger selectedPhotosCount = 0;
+                        
+                        // Print Metric
+                        NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", offramp];
+                        for (PGGesturesView *gestureView in weakSelf.gesturesViews) {
+                            if (gestureView.isSelected) {
+                                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                                printItem.layout = [weakSelf layout];
+                                
+                                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
+                                                                                 printItem:printItem
+                                                                               exendedInfo:extendedMetrics];
+                                
+                                selectedPhotosCount++;
+                            }
+                        }
+
+                        // GA Metric
+                        [[PGAnalyticsManager sharedManager] trackShareActivity:offRampMetric withResult:kEventResultSuccess andNumberOfPhotos:selectedPhotosCount];
+                    }
                 } else {
                     self.currentOfframp = offramp;
                 }
             } else {
                 if (activityType) {
-                    [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultCancel];
+                    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                        [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultCancel];
+                    } else {
+                        NSUInteger selectedPhotosCount = 0;
+                        NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", offramp];
+                        
+                        for (PGGesturesView *gestureView in weakSelf.gesturesViews) {
+                            if (gestureView.isSelected) {
+                                selectedPhotosCount++;
+                            }
+                        }
+                        [[PGAnalyticsManager sharedManager] trackShareActivity:offRampMetric withResult:kEventResultCancel andNumberOfPhotos:selectedPhotosCount];
+                    }
                 }
             }
         };
