@@ -152,6 +152,8 @@ static CGFloat const kMarginOfError = .01f;
         _media.image = image;
     }
     
+    _editedImage = image;
+    
     self.imageView.image = image;
     [self.loadingIndicator stopAnimating];
 }
