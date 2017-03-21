@@ -100,7 +100,7 @@
         if (self.status != MPBTPrinterManagerStatusSendingPrintJob) {
             self.status = MPBTPrinterManagerStatusSendingPrintJob;
 
-            self.currentJob = [[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] firstObject];
+            self.currentJob = [[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] lastObject];
 
             if (self.currentJob) {
                 NSLog(@"PRINT QUEUE - SENDING JOB (%@)", self.currentJob.id);
