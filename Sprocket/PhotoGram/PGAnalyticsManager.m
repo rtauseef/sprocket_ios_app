@@ -214,6 +214,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
+- (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result andNumberOfPhotos:(NSUInteger)numberOfPhotos
+{
+    [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:numberOfPhotos]];
+}
+
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device
 {
     [self trackEvent:kEventAuthRequestCategory action:action label:device value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
@@ -231,6 +236,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackSaveProjectActivity:(NSString *)source
 {
     [self trackEvent:kEventSaveProjectCategory action:kEventSaveProjectSaveAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackMultiSaveProjectActivity:(NSString *)source numberOfPhotos:(NSUInteger)numberOfPhotos
+{
+    [self trackEvent:kEventSaveProjectCategory action:kEventSaveProjectSaveAction label:source value:[NSNumber numberWithUnsignedInteger:numberOfPhotos]];
 }
 
 - (void)trackCameraDirectionActivity:(NSString *)direction

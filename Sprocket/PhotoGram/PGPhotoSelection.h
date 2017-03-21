@@ -19,6 +19,7 @@
 + (instancetype)sharedInstance;
 
 - (void)beginSelectionMode;
+- (void)clearSelection;
 - (void)endSelectionMode;
 - (BOOL)isInSelectionMode;
 - (BOOL)isMaxedOut;
