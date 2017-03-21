@@ -404,6 +404,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
     [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectEnable selectedPhotos:nil];
 
+    [[PGPhotoSelection sharedInstance] clearSelection];
     [[PGPhotoSelection sharedInstance] beginSelectionMode];
 
     PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);

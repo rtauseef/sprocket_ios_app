@@ -151,6 +151,7 @@ static CGFloat const kMarginOfError = .01f;
     if (self.media) {
         _media.image = image;
     }
+    
     _editedImage = image;
     
     self.imageView.image = image;
