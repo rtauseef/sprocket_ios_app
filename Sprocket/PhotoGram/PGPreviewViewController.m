@@ -268,6 +268,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     [self.gesturesViews[self.carouselView.currentItemIndex] setImage:image];
     
+    self.gesturesViews[self.carouselView.currentItemIndex].scrollView.transform = CGAffineTransformIdentity;
+    self.gesturesViews[self.carouselView.currentItemIndex].totalRotation = 0.0F;
+    self.gesturesViews[self.carouselView.currentItemIndex].scrollView.zoomScale = self.gesturesViews[self.carouselView.currentItemIndex].minimumZoomScale;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 
     self.didChangeProject = YES;
