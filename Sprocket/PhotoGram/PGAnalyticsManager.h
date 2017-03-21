@@ -64,9 +64,11 @@ extern NSString * const kPhotoCollectionViewModeList;
 + (PGAnalyticsManager *)sharedManager;
 
 - (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result;
+- (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result andNumberOfPhotos:(NSUInteger)numberOfPhotos;
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device;
 - (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source;
 - (void)trackSaveProjectActivity:(NSString *)source;
+- (void)trackMultiSaveProjectActivity:(NSString *)source numberOfPhotos:(NSUInteger)numberOfPhotos;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
 - (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
