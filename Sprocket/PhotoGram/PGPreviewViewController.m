@@ -686,6 +686,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (UIImage *)currentEditedImage
 {
     PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
+    if (!gesturesView.editedImage) {
+        gesturesView.editedImage = [gesturesView screenshotImage];
+    }
     
     return gesturesView.editedImage;
 }

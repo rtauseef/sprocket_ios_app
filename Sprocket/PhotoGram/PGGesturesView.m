@@ -151,11 +151,9 @@ static CGFloat const kMarginOfError = .01f;
     if (self.media) {
         _media.image = image;
     }
+    
     self.imageView.image = image;
-    
     [self.loadingIndicator stopAnimating];
-    
-    _editedImage = [self screenshotImage];
 }
 
 #pragma mark - Helpers
