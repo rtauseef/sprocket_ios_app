@@ -27,6 +27,7 @@
 #define LAYOUT_SEGMENTED_CONTROL_LIST_INDEX 1
 
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
+static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 @interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
@@ -54,7 +55,6 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 @property (strong, nonatomic) NSTimer *startCameraTimer;
 
 @property (strong, nonatomic) NSMutableArray<HPPRMedia *> *selectedPhotos;
-@property (strong, nonatomic) UILongPressGestureRecognizer *longPressRecognizer;
 
 @end
 
@@ -109,11 +109,11 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 
     self.noInternetConnectionRetryView.delegate = self;
 
-    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer  alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
     [self.collectionView addGestureRecognizer:pinchRecognizer];
 
-    self.longPressRecognizer = [[UILongPressGestureRecognizer  alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    [self.collectionView addGestureRecognizer:self.longPressRecognizer];
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.view addGestureRecognizer:longPressRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -134,8 +134,7 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    __weak __typeof__(self) weakSelf = self;
+
     self.startCameraTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(startCamera) userInfo:nil repeats:NO];
 }
 
@@ -464,37 +463,42 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 - (void)handlePinchToZoom:(UIGestureRecognizer *)gestureRecognizer
 {
     static NSIndexPath *indexPath = nil;
-    static const CGFloat pinchChangeThreshold = 1.0F;
     static NSNumber *lastPinchScale = nil;
 
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan  ||  nil == indexPath) {
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan || nil == indexPath) {
         CGPoint lastPoint = [gestureRecognizer locationInView:self.collectionView];
         indexPath = [self.collectionView indexPathForItemAtPoint:lastPoint];
     }
-    
+
     BOOL performPinchResponse = NO;
     UIPinchGestureRecognizer *pinchRecognizer = (UIPinchGestureRecognizer *)gestureRecognizer;
+
     if (lastPinchScale) {
-        if (pinchRecognizer.scale > [lastPinchScale floatValue] + pinchChangeThreshold) {
-            if (YES == self.showGridView) {
+        BOOL shouldZoomIn = pinchRecognizer.scale > [lastPinchScale floatValue] + kPhotoSelectionPinchThreshold;
+        BOOL shouldZoomOut = pinchRecognizer.scale < [lastPinchScale floatValue] - kPhotoSelectionPinchThreshold;
+
+        if (shouldZoomIn) {
+            if (self.showGridView) {
                 self.showGridView = NO;
                 performPinchResponse = YES;
             }
             lastPinchScale = [NSNumber numberWithFloat:pinchRecognizer.scale];
-        } else if (pinchRecognizer.scale < [lastPinchScale floatValue] - pinchChangeThreshold){
-            if (NO == self.showGridView) {
+
+        } else if (shouldZoomOut) {
+            if (!self.showGridView) {
                 self.showGridView = YES;
                 performPinchResponse = YES;
             }
             lastPinchScale = [NSNumber numberWithFloat:pinchRecognizer.scale];
         }
+
     } else {
         lastPinchScale = [NSNumber numberWithFloat:pinchRecognizer.scale];
     }
-    
+
     if (performPinchResponse) {
         [self.cameraCell resetCamera];
-        
+
         [self.collectionView reloadData];
         [self.collectionView layoutIfNeeded];
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
@@ -514,9 +518,8 @@ NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
-    if ([self allowMultiSelect] && ![self isInMultiSelectMode] && gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    if ([self allowMultiSelect] && ![self isInMultiSelectMode] && gestureRecognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint pointInView = [gestureRecognizer locationInView:self.collectionView];
-
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:pointInView];
 
         if (indexPath) {
