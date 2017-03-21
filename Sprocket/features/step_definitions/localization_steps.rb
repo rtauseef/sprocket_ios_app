@@ -200,7 +200,14 @@ def check_options_exist item
                                      raise "localization failed!" unless link_text == $list_loc[item]
                                  end
                              else
-                                check_element_exists "view marked:'#{$list_loc[item]}'"
+                                 if ENV['LANGUAGE'] == "Turkish"
+                                    if item == "Print to sprocket"
+                                        item_text = query("UILabel index:3", :text)[0]
+                                        raise "localization failed!" unless item_text == $list_loc[item]
+                                    end
+                                else
+                                    check_element_exists "view marked:'#{$list_loc[item]}'"
+                                 end
                              end
                          end
                      end

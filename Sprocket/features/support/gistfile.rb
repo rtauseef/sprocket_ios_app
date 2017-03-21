@@ -23,7 +23,8 @@ class SimLocale
       "id_ID" => {"AppleLanguages" => "id", "AppleLocale" => "id_ID"},
       "pt_BR" => {"AppleLanguages" => "pt", "AppleLocale" => "pt_BR"},
       "ru_RU" => {"AppleLanguages" => "ru", "AppleLocale" => "ru_RU"},
-      "th_TH" => {"AppleLanguages" => "th", "AppleLocale" => "th_TH"}
+      "th_TH" => {"AppleLanguages" => "th", "AppleLocale" => "th_TH"},
+      "tr_TR" => {"AppleLanguages" => "tr", "AppleLocale" => "tr_TR"}
     }
 
   def change_sim_locale(sim_os, sim_name, sim_locale)

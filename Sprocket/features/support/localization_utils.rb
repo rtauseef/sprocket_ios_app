@@ -244,7 +244,7 @@ $language_arr =
         "terms_of_service_facebook" => "En vous authentifiant sur Facebook, vous acceptez également les conditions de service de HP.",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Photos",
-        "auth" => "Authorize",
+        "auth" => "Autoriser",
         "album_screen" => "Camera Roll Albums",
         #"photo_screen"=> "Camera Roll Photos",
         "photo_screen"=> "Pellicule",
@@ -529,7 +529,7 @@ $language_arr =
         "terms_of_service_facebook" => "Facebookiga autentimisel nõustute ka HP teenusetingimustega.",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Fotod",
-        "auth" => "Authorize",
+        "auth" => "Autoriseeri",
         "album_screen" => "Filmilint",
         #"photo_screen"=> "Camera Roll Photos",
         "photo_screen"=> "Filmilint",
@@ -590,7 +590,7 @@ $language_arr =
         "Save to Camera Roll" => "Saglabāt mapē Fotoattēli no kameras",
         "Print to sprocket" => "Drukāt Sprocket printerī",
         "Save_to_CameraRoll" => "Saglabāti mapē Fotoattēli no kameras",
-        "auth" => "Authorize",
+        "auth" => "Autorizēt",
         "album_screen" => "Fotoattēli no kameras",
         #"photo_screen"=> "Camera Roll Photos",
         "photo_screen"=> "Fotoattēli no kameras",
@@ -643,7 +643,7 @@ $language_arr =
         "terms_of_service_facebook" => "Autentifikuodamiesi „Facebook“ sutinkate ir su HP paslaugos teikimo sąlygomis.",
         #"photos_button" => "Camera Roll",
         "photos_button" => "Nuotraukos",
-        "auth" => "Authorize",
+        "auth" => "Leisti",
         "album_screen" => "Fotoaparato aplankas",
         #"photo_screen"=> "Camera Roll Photos",
         "photo_screen"=> "Fotoaparato aplankas",
@@ -1145,6 +1145,64 @@ $language_arr =
         "Version" => "Version",
         "Copyright (c) 2016" => "Copyright (c) 2016", 
         "HP Development Company, L.P." => "HP Development Company, L.P."
+        },
+    
+    "tr_TR" => {
+        "skip_to_the_app" => "Uygulamaya Geç",
+        "camera_access" => "Kameraya Erişim Gereklidir",
+        "camera_access_content" => "Fotoğraf çekmek ve yazdırmak için Ayarlar menünüzden erişime izin verin.",
+        "Cancel" => "İptal",
+        "Settings" => "Ayarlar",
+        "cameraroll_logo" => "CameraRoll",
+        "terms_of_service_flickr" => "Flickr kimliğinizi doğruladığınızda, HP’nin Hizmet Şartlarını da kabul etmiş olursunuz.",
+        "terms_of_service_instagram" => "Instagram kimliğinizi doğruladığınızda, HP’nin Hizmet Şartlarını da kabul etmiş olursunuz.",
+        "terms_of_service_cameraroll" => "Film Rulosu’nu kullandığınızda, HP’nin Hizmet Şartlarını da kabul etmiş olursunuz.",
+        "terms_of_service_facebook" => "Facebook kimliğinizi doğruladığınızda, HP’nin Hizmet Şartlarını da kabul etmiş olursunuz.",
+        #"photos_button" => "Camera Roll",
+        "photos_button" => "Fotoğraflar",
+        "auth" => "Onay Ver",
+        "album_screen" => "Film Rulosu",
+        #"photo_screen"=> "Camera Roll Photos",
+        "photo_screen"=> "Film Rulosu",
+        "Take or select a photo"  => "Bir fotoğraf çek veya seç",
+        "Save_to_CameraRoll" => "Film Rulosuna Kaydedildi",
+        "Edit" => "Düzenle",
+        "Save to Camera Roll" => "Film Rulosuna Kaydet",
+        "Print to sprocket" => "sprocket'a yazdır",
+        "Terms and service" => "Sosyal kaynaklarla kimliğinizi doğruladığınızda, HP’nin Hizmet Şartlarını da kabul etmiş olursunuz.",
+        "side_menu" => "sprocket",
+        "Buy Paper" => "Kağıt Satın Al",
+        "How to & Help" => "Nasıl yapılır ve Yardım",
+        "Give Feedback" => "Geribildirimde Bulun",
+        "Privacy" => "Gizlilik",
+        "About" => "Hakkında",
+        "Camera Roll" => "Film Rulosu",
+        "Sign In" => "Oturum Aç",
+        "Sign Out" => "Oturumu Kapat",
+        "Reset Sprocket Printer" => "Sprocket Yazıcıyı Sıfırla",
+        "reset_sprocket" => "Sprocket Yazıcıyı Sıfırla",
+        "Setup Sprocket Printer" => "Sprocket Yazıcıyı Kur",
+        "setup_sprocket" => "Sprocket Yazıcıyı Kur",
+        "View User Guide" => "Kullanıcı Kılavuzunu Görüntüle",
+        "Tweet Support" => "Tweet Desteği",
+        "Join Support Forum" => "Destek Forumuna Katıl",
+        "Visit Support Website" => "Destek Web Sitesini Ziyaret Et",
+        "survey" => "Hayır, teşekkürler",
+        "Instagram" => "Instagram",
+        "Facebook" => "Facebook",
+        "CameraRoll" => "CameraRoll",
+        "Flickr" => "Flickr",
+        "facebook" => "Facebook",
+        "instagram" => "Instagram",
+        "flickr" => "Flickr",
+        "Done" => "Bitti",
+        "Back" => "Back",
+        "Printers" => "Yazıcılar",
+        "Technical Information" => "Technical Information",
+        "App Settings" => "Uygulama Ayarları",
+        "Version" => "Sürüm",
+        "Copyright (c) 2016" => "Copyright (c) 2016", 
+        "HP Development Company, L.P." => "HP Development Company, L.P."
         }
     }
 
@@ -1229,8 +1287,13 @@ def get_ios_locale_id
                                                                                 ios_locale_id = "th_TH"
                                                                                 $list_loc=$language_arr["th_TH"]
                                                                             else
-                                                                                ios_locale_id = "en_US"
-                                                                                $list_loc=$language_arr["en_US"]
+                                                                                if ENV['LANGUAGE'] == 'Turkish'
+                                                                                    ios_locale_id = "tr_TR"
+                                                                                    $list_loc=$language_arr["tr_TR"]
+                                                                                else
+                                                                                    ios_locale_id = "en_US"
+                                                                                    $list_loc=$language_arr["en_US"]
+                                                                                end
                                                                             end
                                                                         end
                                                                     end
