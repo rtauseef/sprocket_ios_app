@@ -45,6 +45,7 @@
     self.stickers = [NSMutableArray array];
     
     if ([NSLocale isChinese]) {
+        [self.stickers addObjectsFromArray:[self easterStickers]];
         [self.stickers addObjectsFromArray:[self chinaStickers]];
     } else {
         [self.stickers addObjectsFromArray:[self easterStickers]];
@@ -53,17 +54,8 @@
 }
 
 - (NSArray *)chinaStickers
-{
-    NSString *packageName = @"Woman's day";
-    
+{   
     return @[
-             [[PGStickerItem alloc] initWithName:@"Banner" imageName:@"Banner2" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"3 Women" imageName:@"3-women" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"8" imageName:@"8" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Profile 2" imageName:@"profile2" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Tea Cup" imageName:@"tea_cup" andPackageName:nil],
-             [[PGStickerItem alloc] initWithName:@"Tulip" imageName:@"tulip" andPackageName:nil],
              [[PGStickerItem alloc] initWithName:@"Cat Glasses" imageName:@"catglasses" andPackageName:nil],
              [[PGStickerItem alloc] initWithName:@"Cat Whiskers" imageName:@"catwhiskers" andPackageName:nil],
              [[PGStickerItem alloc] initWithName:@"Cat Ears" imageName:@"catears" andPackageName:nil],
