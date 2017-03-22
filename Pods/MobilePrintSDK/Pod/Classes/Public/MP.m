@@ -87,8 +87,10 @@ NSString * const kMPPrinterPaperAreaYPoints = @"printer_paper_area_y_points";
 
 BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
-@interface MP()
+@interface MP ()
+
 @property (weak, nonatomic) id<MPSprocketDelegate> sprocketDelegate;
+
 @end
 
 @implementation MP
@@ -405,18 +407,30 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
     
     if (0 == pairedSprockets.count) {
-        [MPBTPairedAccessoriesViewController presentNoPrinterConnectedAlert:controller showConnectSprocket:YES];
+        MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
+        [accessoriesViewController presentNoPrinterConnectedAlert:controller showConnectSprocket:YES];
+
     } else if (1 == pairedSprockets.count) {
-        EAAccessory *device = (EAAccessory *)[pairedSprockets objectAtIndex:0];
+        EAAccessory *device = (EAAccessory *)[pairedSprockets firstObject];
         [MPBTSprocket sharedInstance].accessory = device;
         
         MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
         progressView.viewController = controller;
         [progressView printToDevice:image refreshCompletion:completion];        
+
     } else {
-        [MPBTPairedAccessoriesViewController presentAnimatedForPrint:animated image:image usingController:controller andPrintCompletion:completion];
+        MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
+
+        accessoriesViewController.completionBlock = ^(BOOL selected) {
+            MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
+            progressView.viewController = controller;
+            [progressView printToDevice:image refreshCompletion:completion];
+        };
+
+        [controller showViewController:accessoriesViewController sender:nil];
     }
 }
+
 
 #pragma mark - Setter methods
 
