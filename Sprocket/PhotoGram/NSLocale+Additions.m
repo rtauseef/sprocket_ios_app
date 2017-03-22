@@ -54,6 +54,18 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     return retVal;
 }
 
++ (BOOL)isNorthAmerica
+{
+    BOOL retVal = NO;
+    NSArray *northAmericaCountryCodes = @[@"CA", @"US", @"MX"];
+    NSString *currentCountryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    if ([northAmericaCountryCodes containsObject:currentCountryCode]) {
+        retVal = YES;
+    }
+
+    return retVal;
+}
+
 + (BOOL)isEnglish
 {
     BOOL retVal = NO;
