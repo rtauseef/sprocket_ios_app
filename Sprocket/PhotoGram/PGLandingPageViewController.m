@@ -250,11 +250,15 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
 - (void)selectPhotoCollectionViewControllerDidSelectCamera:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    
-    [[PGAnalyticsManager sharedManager] trackCameraGallerySelect];
-    [self presentViewController:previewViewControllerCamera animated:YES completion:nil];
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
+        
+        [[PGAnalyticsManager sharedManager] trackCameraGallerySelect];
+        [self presentViewController:previewViewControllerCamera animated:YES completion:nil];
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+    }];
 }
 
 - (AVCaptureDevicePosition)cameraPosition
