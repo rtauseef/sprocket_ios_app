@@ -18,7 +18,13 @@ class SimLocale
       "et_EE" => {"AppleLanguages" => "et", "AppleLocale" => "et_EE"},
       "lv_LV" => {"AppleLanguages" => "lv", "AppleLocale" => "lv_LV"},
       "lt_LT" => {"AppleLanguages" => "lt", "AppleLocale" => "lt_LT"},
-      "nb_NO" => {"AppleLanguages" => "nb", "AppleLocale" => "nb_NO"}
+      "nb_NO" => {"AppleLanguages" => "nb", "AppleLocale" => "nb_NO"},
+      "el_GR" => {"AppleLanguages" => "el", "AppleLocale" => "el_GR"},
+      "id_ID" => {"AppleLanguages" => "id", "AppleLocale" => "id_ID"},
+      "pt_BR" => {"AppleLanguages" => "pt", "AppleLocale" => "pt_BR"},
+      "ru_RU" => {"AppleLanguages" => "ru", "AppleLocale" => "ru_RU"},
+      "th_TH" => {"AppleLanguages" => "th", "AppleLocale" => "th_TH"},
+      "tr_TR" => {"AppleLanguages" => "tr", "AppleLocale" => "tr_TR"}
     }
 
   def change_sim_locale(sim_os, sim_name, sim_locale)

@@ -109,7 +109,19 @@ def terms_of_service_link
     xcoord = xcoord +(attr_width.to_i/4)
     touch(nil, :offset => {:x => xcoord.to_i, :y => ycoord+10.to_i})
   else
-    touch(nil, :offset => {:x => xcoord+10.to_i, :y => ycoord+10.to_i})
+      if ENV['LANGUAGE'] == "Turkish"
+        touch(nil, :offset => {:x => xcoord-30.to_i, :y => ycoord+10.to_i})
+      else
+          if ENV['LANGUAGE'] == "Danish"
+              touch(nil, :offset => {:x => xcoord+40.to_i, :y => ycoord+10.to_i})
+          else
+              if ENV['LANGUAGE'] == "Greek"
+                  touch(nil, :offset => {:x => xcoord+100.to_i, :y => ycoord+20.to_i})
+              else
+                  touch(nil, :offset => {:x => xcoord+10.to_i, :y => ycoord+10.to_i})
+              end
+          end
+      end
     end
   end
 
