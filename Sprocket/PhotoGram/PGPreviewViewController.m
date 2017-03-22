@@ -822,8 +822,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         self.numberOfSelectedPhotos.text = [NSString stringWithFormat:NSLocalizedString(@"%ld of %ld", nil), (carousel.currentItemIndex + 1), (long)self.gesturesViews.count];
         self.editButton.hidden = !self.gesturesViews[carousel.currentItemIndex].isSelected;
         
-        self.printItem = [MPPrintItemFactory printItemWithAsset:[self currentEditedImage]];
-        self.printItem.layout = [self layout];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.printItem = [MPPrintItemFactory printItemWithAsset:[self currentEditedImage]];
+            self.printItem.layout = [self layout];
+        });
     }
 }
 
