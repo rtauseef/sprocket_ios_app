@@ -53,7 +53,7 @@ Then /^I click Sign Out button on popup$/ do
 end
 
 Then /I should see Instagram "(.*?)" button$/ do |text|
-    if ENV['LANGUAGE'] == "Chinese" && text == "Sign Out"
+    if ENV['LANGUAGE'] == "Chinese" && text == "Sign Out" || ENV['LANGUAGE'] == "Chinese-Traditional" && text == "Sign Out"
           touch query "UIButton index:1"
           sleep(STEP_PAUSE)
     end

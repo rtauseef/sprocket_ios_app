@@ -101,7 +101,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
             else
                 if social_media == "Flickr"
                     sleep(STEP_PAUSE)
-                    if ENV['LANGUAGE'] == "Chinese"
+                    if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                         puts "#{social_media} - Not Applicable for Chinese language!".blue
                     else
                         if ENV['LANGUAGE'] == "Danish"
@@ -115,7 +115,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                     end
                 else
                     if social_media == "QZone"
-                        if ENV['LANGUAGE'] == "Chinese"
+                        if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                             terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_Qzone']}'")
                             raise "not found!" unless terms_of_service_link.length > 0
                             sleep(STEP_PAUSE)
@@ -124,8 +124,8 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                             sleep(STEP_PAUSE)
                         end
                     else
-                        if social_media == "QZone"
-                            if ENV['LANGUAGE'] == "pitu"
+                        if social_media == "pitu"
+                            if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                                 terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_pitu']}'")
                                 raise "not found!" unless terms_of_service_link.length > 0
                                 sleep(STEP_PAUSE)
@@ -158,14 +158,14 @@ def check_options_exist item
             end
     else
          if item == "Pitu" || item == "Qzone"
-             if ENV['LANGUAGE'] == "Chinese"
+             if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                  check_element_exists "view marked:'#{$list_loc[item]}'"
              else
                  puts "#{item} - Applicable only for Chinese language!".blue 
              end
          else
              if item == "Flickr"
-                 if ENV['LANGUAGE'] == "Chinese"
+                 if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                      puts "#{item} - Not Applicable for Chinese language!".blue 
                  else
                      check_element_exists "view marked:'#{$list_loc[item]}'"
