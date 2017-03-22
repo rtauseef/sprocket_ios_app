@@ -34,7 +34,7 @@ static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
 CGFloat const kPGSideBarMenuLongScreenSizeHeaderHeight = 75.0f;
 CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
-@interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
+@interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainMenuTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeight;
@@ -138,11 +138,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
-        case PGSideBarMenuCellGiveFeedback: {
-            [self sendEmail];
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            break;
-        }
         case PGSideBarMenuCellTakeSurvey: {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
             UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"WebViewerNavigationController"];
@@ -225,44 +220,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (IBAction)doneButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)sendEmail
-{
-    if ([MFMailComposeViewController canSendMail]) {
-        // Use the first six alpha-numeric characters in the device id as an identifier in the subject line
-        NSString *deviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
-        NSCharacterSet *removeCharacters = [NSCharacterSet alphanumericCharacterSet].invertedSet;
-        NSArray *remainingNumbers = [deviceId componentsSeparatedByCharactersInSet:removeCharacters];
-        deviceId = [remainingNumbers componentsJoinedByString:@""];
-        if( deviceId.length >= 6 ) {
-            deviceId = [deviceId substringToIndex:6];
-        }
-        
-        NSString *subjectLine = NSLocalizedString(@"Feedback on sprocket for iOS (Record Locator: %@)", @"Subject of the email send to technical support");
-        subjectLine = [NSString stringWithFormat:subjectLine, deviceId];
-        
-        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
-        mailComposeViewController.trackableScreenName = @"Feedback Screen";
-        [mailComposeViewController.navigationBar setTintColor:[UIColor whiteColor]];
-        mailComposeViewController.mailComposeDelegate = self;
-        [mailComposeViewController setSubject:subjectLine];
-        [mailComposeViewController setMessageBody:@"" isHTML:NO];
-        [mailComposeViewController setToRecipients:@[@"hpsnapshots@hp.com"]];
-        
-        [self presentViewController:mailComposeViewController animated:YES completion:^{
-            // This is a workaround to set the text white in the status bar (otherwise by default would be black)
-            // http://stackoverflow.com/questions/18945390/mfmailcomposeviewcontroller-in-ios-7-statusbar-are-black
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        }];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-                                                        message:NSLocalizedString(@"You don’t have any account configured to send emails.", nil)
-                                                       delegate:nil
-                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
 }
 
 - (void)barButtonCancelPressed:(id)sender
@@ -357,14 +314,5 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 {
     return [PGSocialSourcesManager sharedInstance].enabledSocialSources.count <= kPGSocialSourcesMenuDefaultThreshold;
 }
-
-
-#pragma mark - MFMailComposeViewControllerDelegate
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
 
 @end
