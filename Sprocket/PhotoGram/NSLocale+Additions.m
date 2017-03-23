@@ -14,8 +14,6 @@
 
 // Privacy Statements
 static NSString * const kPrivacyStatementURLFormat = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
-static NSString * const kPrivacyStatementURLPart1 = @"http://www8.hp.com/";
-static NSString * const kPrivacyStatementURLPart2 = @"/privacy/privacy.html";
 
 // User Guides
 static NSString * const kPGHelpAndHowToViewUserURL = @"http://h10032.www1.hp.com/ctg/Manual/c05280005";
