@@ -13,11 +13,7 @@
 #import "NSLocale+Additions.h"
 
 // Privacy Statements
-static NSString * const kPrivacyStatementURL = @"http://www8.hp.com/us/en/privacy/privacy.html";
-static NSString * const kPrivacyStatementURLUk = @"http://www8.hp.com/uk/en/privacy/privacy.html";
-static NSString * const kPrivacyStatementURLDe = @"http://www8.hp.com/ch/de/privacy/privacy.html";
-static NSString * const kPrivacyStatementURLFr = @"http://www8.hp.com/ch/fr/privacy/privacy.html";
-static NSString * const kPrivacyStatementURLSp = @"http://www8.hp.com/es/es/privacy/privacy.html";
+static NSString * const kPrivacyStatementURLFormat = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 
 // User Guides
 static NSString * const kPGHelpAndHowToViewUserURL = @"http://h10032.www1.hp.com/ctg/Manual/c05280005";
@@ -51,6 +47,18 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
         retVal = YES;
     }
     
+    return retVal;
+}
+
++ (BOOL)isNorthAmerica
+{
+    BOOL retVal = NO;
+    NSArray *northAmericaCountryCodes = @[@"CA", @"US", @"MX"];
+    NSString *currentCountryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    if ([northAmericaCountryCodes containsObject:currentCountryCode]) {
+        retVal = YES;
+    }
+
     return retVal;
 }
 
@@ -103,23 +111,15 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 
 + (NSURL *)privacyURL
 {
-    NSString *url = kPrivacyStatementURL;
-    
-    NSLocale *currentLocale = [NSLocale currentLocale];
-    NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
-    NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
-    
-    if ([languageCode caseInsensitiveCompare:@"de"] == NSOrderedSame) {
-        url = kPrivacyStatementURLDe;
-    } else if ([languageCode caseInsensitiveCompare:@"fr"] == NSOrderedSame) {
-        url = kPrivacyStatementURLFr;
-    } else if ([languageCode caseInsensitiveCompare:@"es"] == NSOrderedSame) {
-        url = kPrivacyStatementURLSp;
-    } else if ([countryCode caseInsensitiveCompare:@"gb"] == NSOrderedSame  &&
-               [languageCode caseInsensitiveCompare:@"en"] == NSOrderedSame) {
-        url = kPrivacyStatementURLUk;
+    NSString *languageCode = [self languageID];
+    NSString *countryCode = [self countryID];
+    NSString *url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, languageCode];
+
+    // NOTE: This is to hardcode no/no for norwegian because hp.com does not support no/nb
+    if ([countryCode caseInsensitiveCompare:@"no"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, countryCode];
     }
-    
+
     return [NSURL URLWithString:url];
 }
 

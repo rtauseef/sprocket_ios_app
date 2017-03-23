@@ -30,6 +30,7 @@
 
 #import <MP.h>
 #import <HPPR.h>
+#import <HPPRSelectPhotoProvider.h>
 #import <MPLayoutFactory.h>
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
@@ -209,9 +210,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)showImgly
 {
     UIImage *photoToEdit = nil;
+    
+    PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
     photoToEdit = [self currentEditedImage];
     
-    IMGLYConfiguration *configuration = [self.imglyManager imglyConfiguration];
+    IMGLYConfiguration *configuration = [self.imglyManager imglyConfigurationWithEmbellishmentManager:gesturesView.embellishmentMetricManager];
     IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:configuration];
     toolController.delegate = self;
@@ -266,11 +269,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
 {
-    [self.gesturesViews[self.carouselView.currentItemIndex] setImage:image];
+    PGGesturesView *currentGesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
+    [currentGesturesView setImage:image];
     
-    self.gesturesViews[self.carouselView.currentItemIndex].scrollView.transform = CGAffineTransformIdentity;
-    self.gesturesViews[self.carouselView.currentItemIndex].totalRotation = 0.0F;
-    self.gesturesViews[self.carouselView.currentItemIndex].scrollView.zoomScale = self.gesturesViews[self.carouselView.currentItemIndex].minimumZoomScale;
+    currentGesturesView.scrollView.transform = CGAffineTransformIdentity;
+    currentGesturesView.totalRotation = 0.0F;
+    currentGesturesView.scrollView.zoomScale = currentGesturesView.minimumZoomScale;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -349,7 +353,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
                                                                  printItem:self.printItem
-                                                               exendedInfo:[self extendedMetrics]];
+                                                               extendedInfo:[self extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView]];
             } else {
                 NSUInteger selectedPhotosCount = 0;
                 
@@ -362,7 +366,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         
                         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
                                                                          printItem:printItem
-                                                                       exendedInfo:[self extendedMetrics]];
+                                                                       extendedInfo:[self extendedMetricsByGestureView:gestureView]];
                         selectedPhotosCount++;
                     }
                 }
@@ -413,7 +417,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         
                         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
                                                                          printItem:weakSelf.printItem
-                                                                       exendedInfo:[weakSelf extendedMetrics]];
+                                                                       extendedInfo:[weakSelf extendedMetricsByGestureView:(PGGesturesView *)weakSelf.carouselView.currentItemView]];
                     } else {
                         NSUInteger selectedPhotosCount = 0;
                         
@@ -426,7 +430,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                 
                                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
                                                                                  printItem:printItem
-                                                                               exendedInfo:[self extendedMetrics]];
+                                                                               extendedInfo:[weakSelf extendedMetricsByGestureView:gestureView]];
                                 selectedPhotosCount++;
                             }
                         }
@@ -500,11 +504,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
 }
 
-- (NSDictionary *)extendedMetrics
+- (NSDictionary *)extendedMetricsByGestureView:(PGGesturesView *)gestureView
 {
+    [PGAnalyticsManager sharedManager].photoSource = gestureView.media.photoProvider.name;
+     
     return @{
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-             kMPMetricsEmbellishmentKey:[self.imglyManager analyticsString]
+             kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString
              };
 }
 
@@ -545,7 +551,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             BOOL printActivity = [activityType isEqualToString: NSStringFromClass([MPBTPrintActivity class])];
             
             NSString *offramp = activityType;
-            NSDictionary *extendedMetrics = [weakSelf extendedMetrics];
+            
             if (printActivity) {
                 offramp = [MPPrintManager printOfframp];
                 [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintShareLabel];
@@ -559,21 +565,24 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             if (completed) {
                 if (!printActivity) {
                     if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                        NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:self.carouselView.currentItemView];
                         [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
-                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem extendedInfo:extendedMetrics];
                     } else {
                         NSUInteger selectedPhotosCount = 0;
                         
                         // Print Metric
                         NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", offramp];
+                        
                         for (PGGesturesView *gestureView in weakSelf.gesturesViews) {
                             if (gestureView.isSelected) {
+                                NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:gestureView];
                                 MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
                                 printItem.layout = [weakSelf layout];
                                 
                                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
                                                                                  printItem:printItem
-                                                                               exendedInfo:extendedMetrics];
+                                                                               extendedInfo:extendedMetrics];
                                 
                                 selectedPhotosCount++;
                             }
@@ -627,7 +636,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         [[NSUserDefaults standardUserDefaults] setInteger:numPrints forKey:kPGPreviewViewControllerNumPrintsKey];
         
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:self.currentOfframp printItem:self.printItem exendedInfo:self.extendedMetrics];
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:self.currentOfframp printItem:self.printItem extendedInfo:[self extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView]];
         
         self.currentOfframp = nil;
     }
@@ -822,8 +831,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         self.numberOfSelectedPhotos.text = [NSString stringWithFormat:NSLocalizedString(@"%ld of %ld", nil), (carousel.currentItemIndex + 1), (long)self.gesturesViews.count];
         self.editButton.hidden = !self.gesturesViews[carousel.currentItemIndex].isSelected;
         
-        self.printItem = [MPPrintItemFactory printItemWithAsset:[self currentEditedImage]];
-        self.printItem.layout = [self layout];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.printItem = [MPPrintItemFactory printItemWithAsset:[self currentEditedImage]];
+            self.printItem.layout = [self layout];
+        });
     }
 }
 

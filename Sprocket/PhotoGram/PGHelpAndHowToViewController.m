@@ -23,25 +23,31 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
     PGHelpAndHowToRowIndexesResetPrinter,
     PGHelpAndHowToRowIndexesSetupPrinter,
     PGHelpAndHowToRowIndexesViewUserGuide,
+    PGHelpAndHowToRowIndexesMessengerSupport,
     PGHelpAndHowToRowIndexesTweetSupport,
     PGHelpAndHowToRowIndexesWeChatSupport,
     PGHelpAndHowToRowIndexesJoinSupport,
-    PGHelpAndHowToRowIndexesVisitSupport
+    PGHelpAndHowToRowIndexesVisitSupport,
+    PGHelpAndHowToRowIndexesGiveFeedback
 };
 
 NSString * const kViewUserGuideScreenName = @"View User Guide";
 NSString * const kVisitWebsiteScreenName = @"Visit Website";
 NSString * const kJoinForumScreenName = @"Join Forum Screen";
 NSString * const kWeChatSupportScreenName = @"WeChat Support";
+NSString * const kMessengerSupportScreenName = @"Messenger Support";
 
 static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.com/s/xpbdBP6DlevbVt6j_redWQ";
+static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/SprocketAP";
 
-@interface PGHelpAndHowToViewController ()
+@interface PGHelpAndHowToViewController () <MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *tweetSupportCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *resetPrinterCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *setupPrinterCell;
 @property (strong, nonatomic) SLComposeViewController *twitterComposeViewController;
+@property (weak, nonatomic) IBOutlet UITableViewCell *giveFeedbackCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *messengerSupportCell;
 
 @end
 
@@ -92,6 +98,11 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kViewUserGuideScreenName];
             [[UIApplication sharedApplication] openURL:[NSLocale userGuideURL]];
             break;
+            
+        case PGHelpAndHowToRowIndexesMessengerSupport:
+            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kMessengerSupportScreenName];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToMessengerSupportURL]];
+            break;
 
         case PGHelpAndHowToRowIndexesTweetSupport:
             [self tweetSupportModal:indexPath];
@@ -111,6 +122,11 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kVisitWebsiteScreenName];
             [[UIApplication sharedApplication] openURL:[NSLocale supportWebsiteURL]];
             break;
+
+        case PGHelpAndHowToRowIndexesGiveFeedback: {
+            [self sendEmail];
+            break;
+        }
 
         default:
             break;
@@ -172,6 +188,44 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
     }
 }
 
+- (void)sendEmail
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        // Use the first six alpha-numeric characters in the device id as an identifier in the subject line
+        NSString *deviceId = [[UIDevice currentDevice].identifierForVendor UUIDString];
+        NSCharacterSet *removeCharacters = [NSCharacterSet alphanumericCharacterSet].invertedSet;
+        NSArray *remainingNumbers = [deviceId componentsSeparatedByCharactersInSet:removeCharacters];
+        deviceId = [remainingNumbers componentsJoinedByString:@""];
+        if( deviceId.length >= 6 ) {
+            deviceId = [deviceId substringToIndex:6];
+        }
+        
+        NSString *subjectLine = NSLocalizedString(@"Feedback on sprocket for iOS (Record Locator: %@)", @"Subject of the email send to technical support");
+        subjectLine = [NSString stringWithFormat:subjectLine, deviceId];
+        
+        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+        mailComposeViewController.trackableScreenName = @"Feedback Screen";
+        [mailComposeViewController.navigationBar setTintColor:[UIColor whiteColor]];
+        mailComposeViewController.mailComposeDelegate = self;
+        [mailComposeViewController setSubject:subjectLine];
+        [mailComposeViewController setMessageBody:@"" isHTML:NO];
+        [mailComposeViewController setToRecipients:@[@"hpsnapshots@hp.com"]];
+        
+        [self presentViewController:mailComposeViewController animated:YES completion:^{
+            // This is a workaround to set the text white in the status bar (otherwise by default would be black)
+            // http://stackoverflow.com/questions/18945390/mfmailcomposeviewcontroller-in-ios-7-statusbar-are-black
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                                        message:NSLocalizedString(@"You don’t have any account configured to send emails.", nil)
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
@@ -181,8 +235,19 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
     if (![NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesWeChatSupport) {
         return 0;
     }
+    
+    if (!([NSLocale isNorthAmerica] && [NSLocale isEnglish]) && indexPath.row == PGHelpAndHowToRowIndexesMessengerSupport) {
+        return 0;
+    }
 
     return tableView.rowHeight;
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
