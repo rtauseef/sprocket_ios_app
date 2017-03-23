@@ -13,7 +13,7 @@
 #import "NSLocale+Additions.h"
 
 // Privacy Statements
-static NSString * const kPrivacyStatementURL = @"http://www8.hp.com/us/en/privacy/privacy.html";
+static NSString * const kPrivacyStatementURLFormat = @"http://www8.hp.com/%@/%@/privacy/privacy.html";
 static NSString * const kPrivacyStatementURLPart1 = @"http://www8.hp.com/";
 static NSString * const kPrivacyStatementURLPart2 = @"/privacy/privacy.html";
 
@@ -113,12 +113,14 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 
 + (NSURL *)privacyURL
 {
-    NSString *url = kPrivacyStatementURL;
-
     NSString *languageCode = [self languageID];
     NSString *countryCode = [self countryID];
+    NSString *url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, languageCode];
 
-    url = [NSString stringWithFormat:@"%@%@/%@%@", kPrivacyStatementURLPart1, countryCode, languageCode, kPrivacyStatementURLPart2];
+    // NOTE: This is to hardcode no/no for norwegian because hp.com does not support no/nb
+    if ([countryCode caseInsensitiveCompare:@"no"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, countryCode];
+    }
 
     return [NSURL URLWithString:url];
 }
