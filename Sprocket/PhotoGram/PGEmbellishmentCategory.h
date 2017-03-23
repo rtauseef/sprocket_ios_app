@@ -11,13 +11,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <imglyKit/imglyKit-Swift.h>
-#import "PGEmbellishmentMetric.h"
-#import "PGEmbellishmentMetricsManager.h"
 
-@interface PGImglyManager : NSObject
+typedef enum {
+    PGEmbellishmentCategoryTypeFont,
+    PGEmbellishmentCategoryTypeText,
+    PGEmbellishmentCategoryTypeSticker,
+    PGEmbellishmentCategoryTypeFilter,
+    PGEmbellishmentCategoryTypeFrame,
+    PGEmbellishmentCategoryTypeEdit
+} PGEmbellishmentCategoryType;
 
-- (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager;
-- (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name;
+@interface PGEmbellishmentCategory : NSObject
+
+@property (nonatomic, assign) PGEmbellishmentCategoryType type;
+
+- (instancetype)initWithType:(PGEmbellishmentCategoryType)type;
+
+- (NSString *)name;
 
 @end

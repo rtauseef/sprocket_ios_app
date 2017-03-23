@@ -11,13 +11,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <imglyKit/imglyKit-Swift.h>
+#import "PGAnalyticsManager.h"
 #import "PGEmbellishmentMetric.h"
-#import "PGEmbellishmentMetricsManager.h"
 
-@interface PGImglyManager : NSObject
+@interface PGEmbellishmentMetricsManager : NSObject
 
-- (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager;
-- (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name;
+- (NSString *)embellishmentMetricsString;
+
+- (BOOL)hasEmbellishmentMetric:(PGEmbellishmentMetric *)metricWanted;
+- (void)addEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
+- (void)removeEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
 
 @end

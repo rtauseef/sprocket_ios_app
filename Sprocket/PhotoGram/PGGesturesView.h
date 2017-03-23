@@ -11,6 +11,7 @@
 //
 
 #import <HPPRMedia.h>
+#import "PGEmbellishmentMetricsManager.h"
 
 @protocol PGGesturesViewDelegate;
 
@@ -30,6 +31,7 @@ typedef enum
 @property (nonatomic, weak) id<PGGesturesViewDelegate> delegate;
 @property (nonatomic, assign) PGGesturesDoubleTapBehavior doubleTapBehavior;
 @property (nonatomic, assign) CGFloat totalRotation;
+@property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricManager;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

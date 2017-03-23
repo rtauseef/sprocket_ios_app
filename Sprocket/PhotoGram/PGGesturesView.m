@@ -70,6 +70,8 @@ static CGFloat const kMarginOfError = .01f;
     self.isSelected = YES;
     self.isMultiSelectImage = NO;
     
+    self.embellishmentMetricManager = [[PGEmbellishmentMetricsManager alloc] init];
+    
     [self enableGestures];
 }
 

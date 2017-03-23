@@ -370,11 +370,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 #pragma mark - Print handling
     
-- (void)postMetricsWithOfframp:(NSString *)offramp objects:(NSDictionary *)objects exendedInfo:(NSDictionary *)extendedInfo
+- (void)postMetricsWithOfframp:(NSString *)offramp objects:(NSDictionary *)objects extendedInfo:(NSDictionary *)extendedInfo
 {
     MPPrintItem *printItem = [objects objectForKey:kMPPrintQueuePrintItemKey];
     MPPrintLaterJob *job = [objects objectForKey:kMPPrintQueueJobKey];
-    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem exendedInfo:extendedInfo];
+    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem extendedInfo:extendedInfo];
    
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:job forKey:kMPPrintQueueJobKey];
@@ -406,7 +406,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [dictionary setObject:job forKey:kMPPrintQueueJobKey];
     [dictionary setObject:printItem forKey:kMPPrintQueuePrintItemKey];
  
-    [self postMetricsWithOfframp:action objects:dictionary exendedInfo:job.extra];
+    [self postMetricsWithOfframp:action objects:dictionary extendedInfo:job.extra];
 }
 
 #pragma mark - Crashlytics

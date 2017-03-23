@@ -193,7 +193,7 @@ static NSInteger  const connectionDefaultValue = -1;
         MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:[self.gesturesView screenshotImage]];
         printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
         
-        [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem exendedInfo:nil];
+        [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem extendedInfo:nil];
 
     }
 }
