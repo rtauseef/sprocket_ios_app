@@ -17,6 +17,7 @@
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kAnimationDuration = 0.3f;
 static CGFloat const kMarginOfError = .01f;
+static CGFloat const kMarginOfSquare = 2.0f;
 
 @interface PGGesturesView ()
 
@@ -156,6 +157,14 @@ static CGFloat const kMarginOfError = .01f;
     
     _editedImage = image;
     
+    if (fabs(image.size.width - image.size.height) < kMarginOfSquare) {
+        self.imageContentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.imageContentMode = UIViewContentModeScaleAspectFill;
+    }
+    self.imageView.contentMode = self.imageContentMode;
+    self.scrollView.contentMode = self.imageContentMode;
+
     self.imageView.image = image;
     [self.loadingIndicator stopAnimating];
 }
