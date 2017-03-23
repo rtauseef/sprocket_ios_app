@@ -38,6 +38,7 @@ $language_arr =
         "Setup Sprocket Printer" => "Setup Sprocket Printer",
         "setup_sprocket" => "Setup Sprocket Printer",
         "View User Guide" => "View User Guide",
+        "Messenger Support" => "Messenger Support",
         "Tweet Support" => "Tweet Support",
         "Join Support Forum" => "Join Support Forum",
         "Visit Support Website" => "Visit Support Website",
@@ -851,9 +852,9 @@ $language_arr =
         "flickr" => "Flickr",
         "Done" => "Klar",
         "Back" => "Back",
-        "Printers" => "Printers",
+        "Printers" => "Skrivare",
         "Technical Information" => "Technical Information",
-        "App Settings" => "App Settings",
+        "App Settings" => "Appinställningar",
         "Version" => "Version",
         "Copyright (c) 2016" => "Copyright (c) 2016", 
         "HP Development Company, L.P." => "HP Development Company, L.P."
@@ -1364,6 +1365,7 @@ $language_arr =
         "Setup Sprocket Printer" => "Configuration de l'imprimante Sprocket",
         "setup_sprocket" => "Configuration de l",
         "View User Guide" => "Afficher le manuel de l'utilisateur",
+        "Messenger Support" => "Messenger Support",
         "Tweet Support" => "Support via Twitter",
         "Join Support Forum" => "Accéder au forum de support",
         "Visit Support Website" => "Visiter le site Web de support",
@@ -1421,6 +1423,7 @@ $language_arr =
         "Setup Sprocket Printer" => "Instalación de la impresora Sprocket",
         "setup_sprocket" => "Instalación de la impresora Sprocket",
         "View User Guide" => "Ver la Guía de usuario",
+        "Messenger Support" => "Messenger Support",
         "Tweet Support" => "Tuitear asistencia",
         "Join Support Forum" => "Inscríbase en el foro de asistencia",
         "Visit Support Website" => "Visite el sitio web de asistencia",
@@ -1543,9 +1546,15 @@ def get_ios_locale_id
                                                                                                 if ENV['LANGUAGE'] == 'Mexico-Spanish'
                                                                                                     ios_locale_id = "es_MX"
                                                                                                     $list_loc=$language_arr["es_MX"]
-                                                                                                else  
-                                                                                                    ios_locale_id = "en_US"
-                                                                                                    $list_loc=$language_arr["en_US"]
+                                                                                                else
+                                                                                                    if ENV['LANGUAGE'] == 'English-US'
+                                                                                                        ios_locale_id = "en_US"
+                                                                                                      $list_loc=$language_arr["en_US"]
+                                                                                                    else
+                                                                                                        ios_locale_id = "en_US"
+                                                                                                      $list_loc=$language_arr["en_US"]
+                                                                                            
+                                                                                                    end
                                                                                                 end
                                                                                             end
                                                                                         end

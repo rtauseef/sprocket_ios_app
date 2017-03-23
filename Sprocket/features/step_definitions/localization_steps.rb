@@ -55,8 +55,17 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                 end
             end
         else
-            touch ("view marked:'#{$list_loc[option]}'")
-            sleep(STEP_PAUSE)
+            if option == "Messenger Support"
+                if ENV['LANGUAGE'] == "Mexico-Spanish" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "English-US"
+                
+                    touch ("view marked:'#{$list_loc[option]}'")
+                else
+                    puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                end
+            else
+                touch ("view marked:'#{$list_loc[option]}'")
+                sleep(STEP_PAUSE)
+            end
         end
     end
 end
@@ -206,7 +215,15 @@ def check_options_exist item
                                         raise "localization failed!" unless item_text == $list_loc[item]
                                     end
                                 else
-                                    check_element_exists "view marked:'#{$list_loc[item]}'"
+                                     if item == "Messenger Support"
+                                         if ENV['LANGUAGE'] == "Mexico-Spanish" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "English-US"
+                                             check_element_exists "view marked:'#{$list_loc[item]}'"
+                                         else
+                                             puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                                         end
+                                     else
+                                        check_element_exists "view marked:'#{$list_loc[item]}'"
+                                     end
                                  end
                              end
                          end

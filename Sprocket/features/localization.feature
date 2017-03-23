@@ -87,9 +87,12 @@ Scenario: Verify side menu-how to &help options
     | Reset Sprocket Printer |
     | Setup Sprocket Printer |
     | View User Guide        |
+    | Messenger Support      | 
     | Tweet Support          |
     | Join Support Forum     |
     | Visit Support Website  |
+    | Give Feedback          |
+    
     
 
 @localization
@@ -119,9 +122,11 @@ Scenario Outline: Verify how to &help options navigation and screen titles
     Examples:
     | how_to_help_options    |
     | View User Guide        |
+    | Messenger Support      | 
     | Tweet Support          |
     | Join Support Forum     |
     | Visit Support Website  |
+    | Give Feedback          |
 
     
 
