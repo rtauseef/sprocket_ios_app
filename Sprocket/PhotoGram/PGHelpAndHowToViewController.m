@@ -236,7 +236,7 @@ static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/Sp
         return 0;
     }
     
-    if (![NSLocale isNorthAmerica] && indexPath.row == PGHelpAndHowToRowIndexesMessengerSupport) {
+    if (!([NSLocale isNorthAmerica] && [NSLocale isEnglish]) && indexPath.row == PGHelpAndHowToRowIndexesMessengerSupport) {
         return 0;
     }
 
