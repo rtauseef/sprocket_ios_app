@@ -479,8 +479,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
     UIImage *image = [self currentEditedImage];
-    PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
-    saveToCameraRollActivity.image = image;
     
     MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
     btPrintActivity.image = image;
@@ -488,7 +486,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     [[MP sharedInstance] closeAccessorySession];
     
-    [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
+    [self presentActivityViewControllerWithActivities:@[btPrintActivity]];
 }
 
 
