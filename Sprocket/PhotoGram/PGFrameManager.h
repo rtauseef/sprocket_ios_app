@@ -11,16 +11,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGFrameItem.h"
 
-@interface PGFrameItem : NSObject
+@interface PGFrameManager : NSObject
 
-@property (nonatomic, strong) NSString *accessibilityText;
-@property (nonatomic, strong) NSString *imageName;
-@property (nonatomic, strong) NSString *name;
++ (PGFrameManager *)sharedInstance;
 
-- (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName andPackageName:(NSString *)packageName;
-
-- (UIImage *)thumbnailImage;
-- (UIImage *)frameImage;
+- (PGFrameItem *)frameByIndex:(NSInteger)index;
+- (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText;
+- (NSUInteger)framesCount;
 
 @end
