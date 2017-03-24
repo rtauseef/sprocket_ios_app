@@ -136,6 +136,12 @@
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
 		65DA24781E85B99600034955 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24771E85B99600034955 /* PGWatermarkProcessor.m */; };
 		65DA24791E85B99600034955 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24771E85B99600034955 /* PGWatermarkProcessor.m */; };
+		65DA247E1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */; };
+		65DA247F1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */; };
+		65DA24831E85DCBC00034955 /* PGWatermarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */; };
+		65DA24841E85DCBC00034955 /* PGWatermarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */; };
+		65DA24861E85E31F00034955 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DA24851E85E31F00034955 /* link-icon.png */; };
+		65DA24871E85E31F00034955 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DA24851E85E31F00034955 /* link-icon.png */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80719A69E5700C72F1A /* Share@2x.png */; };
@@ -1852,6 +1858,11 @@
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
 		65DA24761E85B99600034955 /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkProcessor.h; sourceTree = "<group>"; };
 		65DA24771E85B99600034955 /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkProcessor.m; sourceTree = "<group>"; };
+		65DA247C1E85DB8000034955 /* PGLinkCredentialsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkCredentialsManager.h; sourceTree = "<group>"; };
+		65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkCredentialsManager.m; sourceTree = "<group>"; };
+		65DA24811E85DCBC00034955 /* PGWatermarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperation.h; sourceTree = "<group>"; };
+		65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkOperation.m; sourceTree = "<group>"; };
+		65DA24851E85E31F00034955 /* link-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-icon.png"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -2964,8 +2975,13 @@
 		65DA24741E85B96A00034955 /* Watermark */ = {
 			isa = PBXGroup;
 			children = (
+				65DA24851E85E31F00034955 /* link-icon.png */,
 				65DA24761E85B99600034955 /* PGWatermarkProcessor.h */,
 				65DA24771E85B99600034955 /* PGWatermarkProcessor.m */,
+				65DA247C1E85DB8000034955 /* PGLinkCredentialsManager.h */,
+				65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */,
+				65DA24811E85DCBC00034955 /* PGWatermarkOperation.h */,
+				65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */,
 			);
 			name = Watermark;
 			sourceTree = "<group>";
@@ -4799,6 +4815,7 @@
 				82E3DAD21E82EEED0008F600 /* stars_TN@2x.png in Resources */,
 				82A11D0B1E5FB93B00E7F8FC /* cat-on-head_TN@2x.png in Resources */,
 				82A11D7F1E5FB93B00E7F8FC /* spoon.png in Resources */,
+				65DA24861E85E31F00034955 /* link-icon.png in Resources */,
 				82A11D4B1E5FB93B00E7F8FC /* panda-mask_TN@2x.png in Resources */,
 				82E3DB6C1E82EEEE0008F600 /* volleyball_TN@3x.png in Resources */,
 				82E3D9B21E82EEED0008F600 /* catwhiskers_TN@2x.png in Resources */,
@@ -5494,6 +5511,7 @@
 				82E3DC9A1E831BB20008F600 /* bunny_ears_polkadot_TN.png in Resources */,
 				82E3DE591E831BD10008F600 /* cat_grumble.png in Resources */,
 				82E3DCCB1E831BB20008F600 /* easter_birds_TN@2x.png in Resources */,
+				65DA24871E85E31F00034955 /* link-icon.png in Resources */,
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
 				82FF41901E369CF70027B181 /* RedStripes_Frame_iOS_TN@2x.png in Resources */,
@@ -6164,6 +6182,7 @@
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
+				65DA24841E85DCBC00034955 /* PGWatermarkOperation.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				82E3DEB51E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
@@ -6203,6 +6222,7 @@
 				7f8d860833dd0b905e33e418 /* PGPreviewViewController.m in Sources */,
 				24621f9ff6a174a391042307 /* UIView+Animations.m in Sources */,
 				26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */,
+				65DA247F1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */,
 				a6bac47da8ea69b0d3dc4bcf /* UIImage+MaskImage.m in Sources */,
 				F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				65DA24791E85B99600034955 /* PGWatermarkProcessor.m in Sources */,
@@ -6256,6 +6276,7 @@
 				821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */,
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
+				65DA24831E85DCBC00034955 /* PGWatermarkOperation.m in Sources */,
 				F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */,
 				82362A591D5959870019F024 /* PGStickerItem.m in Sources */,
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
@@ -6300,6 +6321,7 @@
 				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DA24781E85B99600034955 /* PGWatermarkProcessor.m in Sources */,
+				65DA247E1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,

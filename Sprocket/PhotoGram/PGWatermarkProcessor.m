@@ -11,6 +11,7 @@
 //
 
 #import "PGWatermarkProcessor.h"
+#import "PGWatermarkOperation.h"
 
 @interface PGWatermarkProcessor()
 
@@ -35,7 +36,7 @@
 
 - (NSString *)progressText
 {
-    return @"Watermarking image...";
+    return @"Watermarking image";
 }
 
 - (BOOL)completed
@@ -45,12 +46,20 @@
 
 - (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options
 {
-    // TODO:jbt: finish this
-    
-    self.finishedWatermarking = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(didCompleteProcessing:result:error:)]) {
-        [self.delegate didCompleteProcessing:self result:image error:nil];
-    }
+    PGWatermarkOperationData *operationData = [PGWatermarkOperationData new];
+    operationData.originalImage = image;
+    operationData.printerIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
+    operationData.payoffURL = self.watermarkURL;
+    [PGWatermarkOperation executeWithOperationData:operationData progress:^(double progress) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {
+            [self.delegate didUpdateProgress:self progress:progress];
+        }
+    } completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+        self.finishedWatermarking = YES;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didCompleteProcessing:result:error:)]) {
+            [self.delegate didCompleteProcessing:self result:image error:error];
+        }
+    }];
 }
 
 @end

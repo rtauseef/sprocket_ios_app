@@ -478,7 +478,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     } else {
         self.currentOfframp = [MPPrintManager directPrintOfframp];
-        // TODO:jbt: figure out social media URL
         PGWatermarkProcessor *processor = nil;
         if (self.media && self.media.socialMediaImageUrl) {
             processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:self.media.socialMediaImageUrl]];
