@@ -454,22 +454,36 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        for (PGGesturesView *gestureView in self.gesturesViews) {
-            if (gestureView.isSelected) {
-                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+    [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
+        if (success) {
+            for (PGGesturesView *gestureView in self.gesturesViews) {
+                if (gestureView.isSelected) {
+                    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
 
-                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+                    [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+                }
             }
+
+            [[MPBTPrintManager sharedInstance] resumePrintQueue];
         }
+    }];
 
-        [[MPBTPrintManager sharedInstance] resumePrintQueue];
-
-    } else {
-        self.currentOfframp = [MPPrintManager directPrintOfframp];
-        [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
-        [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
-    }
+//    if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+//        for (PGGesturesView *gestureView in self.gesturesViews) {
+//            if (gestureView.isSelected) {
+//                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+//
+//                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+//            }
+//        }
+//
+//        [[MPBTPrintManager sharedInstance] resumePrintQueue];
+//
+//    } else {
+//        self.currentOfframp = [MPPrintManager directPrintOfframp];
+//        [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
+//        [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
+//    }
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender

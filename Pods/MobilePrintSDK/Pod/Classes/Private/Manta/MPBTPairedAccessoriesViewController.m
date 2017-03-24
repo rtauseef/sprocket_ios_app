@@ -159,10 +159,9 @@ typedef enum : NSUInteger {
 
 + (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
-    UIViewController *viewControlller = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesViewController"];
+    UIViewController *vc = [self pairedAccessoriesViewControllerForDeviceInfo];
     
-    [hostController showViewController:viewControlller sender:nil];
+    [hostController showViewController:vc sender:nil];
 }
 
 

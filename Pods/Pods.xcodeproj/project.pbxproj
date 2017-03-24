@@ -2409,7 +2409,9 @@
 		F1F9A609E4C4F3B343FA66DE237DA006 /* MPLayoutAlgorithmStretch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2430502DDB60200F66242D91FA7D18C9 /* MPLayoutAlgorithmStretch.m */; };
 		F1FF2BCCF2C71F58A338CB0858AB3C5F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760C01F6C4466FC4FAF05645DBDB598B /* MobileCoreServices.framework */; };
 		F2065B128963B7F0B3F89CACB4C688E1 /* FKFlickrPrefsGetPrivacy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D84BC7962E0614CA8142FFA969F5770 /* FKFlickrPrefsGetPrivacy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F22F12BC1E79BF3700753C5A /* MPBTPrintManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F22F12BA1E79BF3700753C5A /* MPBTPrintManager.h */; };
+		F236FAC11E84890C00FC31B5 /* MPBTPrintManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F22F12BA1E79BF3700753C5A /* MPBTPrintManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F236FAC21E84890D00FC31B5 /* MPBTPrintManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F22F12BA1E79BF3700753C5A /* MPBTPrintManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F236FAC31E84890E00FC31B5 /* MPBTPrintManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F22F12BA1E79BF3700753C5A /* MPBTPrintManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F238045A1E83F034C66F18C187DEF88C /* FKFlickrGroupsMembersGetList.h in Headers */ = {isa = PBXBuildFile; fileRef = C0E247F16AC5300CF122EE3FDF862EA8 /* FKFlickrGroupsMembersGetList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F24590957917967C575F05E2A8DD7FA4 /* UAScheduleAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E3018F6ADC9E96F862DA02377B6809B0 /* UAScheduleAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F245C473625756686AF77BA933FB64E6 /* FKFlickrPlacesFindByLatLon.m in Sources */ = {isa = PBXBuildFile; fileRef = D116BAC7EBCDD5E15DAA9F8EBB8520A5 /* FKFlickrPlacesFindByLatLon.m */; };
@@ -6084,7 +6086,6 @@
 				79166F25AFC2D1EB4805CCCB51053E69 /* AFAutoPurgingImageCache.h in Headers */,
 				6EDD0A79CEFDAD41C0FEA826DC4D9F29 /* AFHTTPSessionManager.h in Headers */,
 				6E6BB63691E39B32AE64B81F0B1C1EEC /* AFImageDownloader.h in Headers */,
-				F22F12BC1E79BF3700753C5A /* MPBTPrintManager.h in Headers */,
 				3C601A0843FFB0E2885EE37F686F5537 /* AFNetworkActivityIndicatorManager.h in Headers */,
 				B23F78297F0594450FF9C60CEE1350D4 /* AFNetworking.h in Headers */,
 				8B49D3673318D7A86210462BC976DAAB /* AFNetworkReachabilityManager.h in Headers */,
@@ -6793,6 +6794,7 @@
 				F8D223FF96AC40557716BEEF7F9F4067 /* MPBTTechnicalInformationViewController.h in Headers */,
 				30DFC6E68353080885210E7109A9926E /* MPDashedLineView.h in Headers */,
 				DD3FF69EA5D358BDEF763C68A1675340 /* MPDefaultSettingsManager.h in Headers */,
+				F236FAC31E84890E00FC31B5 /* MPBTPrintManager.h in Headers */,
 				96D619BA93A3B32157ACAC0CD2D25A59 /* MPInterfaceOptions.h in Headers */,
 				0D8B8AF839DC662A829110A4D0B873BE /* MPLayout.h in Headers */,
 				F6D936928CA0CFBC0A5FA042D2765095 /* MPLayoutAlgorithm.h in Headers */,
@@ -6985,6 +6987,7 @@
 				6D331CFF232363A1C7A6C2801E983429 /* MPBTTechnicalInformationViewController.h in Headers */,
 				7DA5EA7791ADEF1057094B7B69A26AD4 /* MPDashedLineView.h in Headers */,
 				BAD0B8968951144FE05C7016DA6C0DE8 /* MPDefaultSettingsManager.h in Headers */,
+				F236FAC11E84890C00FC31B5 /* MPBTPrintManager.h in Headers */,
 				A9BAAFB6184646C97B58A7280F23B179 /* MPInterfaceOptions.h in Headers */,
 				32E9A466C6AC74F027EA48E16A76F59B /* MPLayout.h in Headers */,
 				7C1D170366B62BA5F7ECF62843F201B6 /* MPLayoutAlgorithm.h in Headers */,
@@ -7084,6 +7087,7 @@
 				1D40EDB6D8E2ECCF6A29E183DA0B2E4F /* MPBTTechnicalInformationViewController.h in Headers */,
 				BF97C5F2D9156D515FA7A2250FBE6DAE /* MPDashedLineView.h in Headers */,
 				1E62A909BE0417D31C29B965B6708972 /* MPDefaultSettingsManager.h in Headers */,
+				F236FAC21E84890D00FC31B5 /* MPBTPrintManager.h in Headers */,
 				CF95844810FF5AEE0F034168DE9531C3 /* MPInterfaceOptions.h in Headers */,
 				0BB7FE4B61B0FECBEB93B87FB129B9E3 /* MPLayout.h in Headers */,
 				4C4676C8FF7AC41777BFF2239FC95E8C /* MPLayoutAlgorithm.h in Headers */,

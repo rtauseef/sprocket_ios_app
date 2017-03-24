@@ -395,10 +395,41 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
 
     if (1 == pairedSprockets.count) {
-        EAAccessory *device = (EAAccessory *)[pairedSprockets objectAtIndex:0];
+        EAAccessory *device = (EAAccessory *)[pairedSprockets firstObject];
         [MPBTDeviceInfoTableViewController presentAnimated:animated device:device usingController:controller  andCompletion:completion];
     } else {
         [MPBTPairedAccessoriesViewController presentAnimatedForDeviceInfo:animated usingController:controller andCompletion:completion];
+    }
+}
+
+- (void)presentBluetoothDeviceSelectionFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(BOOL success))completion {
+    MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
+    NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
+
+    if (pairedSprockets.count == 0) {
+        [accessoriesViewController presentNoPrinterConnectedAlert:controller showConnectSprocket:YES];
+
+        if (completion) {
+            completion(NO);
+        }
+
+    } else if (pairedSprockets.count == 1) {
+        if (![MPBTSprocket sharedInstance].accessory) {
+            [MPBTSprocket sharedInstance].accessory = [pairedSprockets firstObject];
+        }
+
+        if (completion) {
+            completion(YES);
+        }
+
+    } else {
+        accessoriesViewController.completionBlock = ^(BOOL selected) {
+            if (completion) {
+                completion(selected);
+            }
+        };
+
+        [controller showViewController:accessoriesViewController sender:nil];
     }
 }
 
