@@ -44,7 +44,21 @@
 {
     self.frames = [NSMutableArray array];
     
+    if ([NSLocale isAustralia]) {
+        [self.frames addObjectsFromArray:[self australiaFrames]];
+    }
+    
     [self.frames addObjectsFromArray:[self standardUSFrames]];
+}
+
+- (NSArray *)australiaFrames
+{
+    NSString *australiaPackageName = @"Australia";
+    
+    return @[
+             [[PGFrameItem alloc] initWithName:@"Amplify 1" imageName:@"amplify_1" andPackageName:australiaPackageName],
+             [[PGFrameItem alloc] initWithName:@"Amplify 3" imageName:@"amplify_3" andPackageName:australiaPackageName],
+             ];
 }
 
 - (NSArray *)standardUSFrames
