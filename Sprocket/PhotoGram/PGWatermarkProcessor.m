@@ -20,12 +20,25 @@
 
 @implementation PGWatermarkProcessor
 
+- (instancetype)initWithWatermarkURL:(NSURL *)url
+{
+    if (self = [self init]) {
+        _watermarkURL = url;
+    }
+    return self;
+}
+
 - (NSString *)name
+{
+    return @"Watermark";
+}
+
+- (NSString *)progressText
 {
     return @"Watermarking image...";
 }
 
-- (BOOL)complete
+- (BOOL)completed
 {
     return self.finishedWatermarking;
 }

@@ -1,0 +1,1 @@
+../../../../../ios-print-sdk/Pod/Classes/Public/MPBTPrintManager.h

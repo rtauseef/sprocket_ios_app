@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRQzoneAlbum.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRQzoneAlbum.h

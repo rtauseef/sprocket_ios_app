@@ -87,9 +87,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 + (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source animated:(BOOL)animated
 {
+    [self presentPreviewPhotoFrom:currentViewController andSource:source media:nil animated:animated];
+}
+
++ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source media:(HPPRMedia *)media animated:(BOOL)animated
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = source;
+    previewViewController.media = media;
     
     [currentViewController presentViewController:previewViewController animated:animated completion:nil];
 }
@@ -472,8 +478,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     } else {
         self.currentOfframp = [MPPrintManager directPrintOfframp];
-        PGWatermarkProcessor *processor = [[PGWatermarkProcessor alloc] init];
-        processor.watermarkURL = nil;
+        // TODO:jbt: figure out social media URL
+        PGWatermarkProcessor *processor = nil;
+        if (self.media && self.media.socialMediaImageUrl) {
+            processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:self.media.socialMediaImageUrl]];
+        }
         [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] processor:processor animated:YES printCompletion:nil];
         [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
     }

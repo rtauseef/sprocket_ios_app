@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) NSURL *watermarkURL;
 
+- (instancetype)initWithWatermarkURL:(NSURL *)url;
+
 @end

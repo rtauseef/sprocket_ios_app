@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRLoginViewController.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRLoginViewController.h

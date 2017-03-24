@@ -1,1 +1,1 @@
-../../../../HPPhotoProvider/Pod/Frameworks/TencentOpenAPI.framework/Headers/TencentMessageObject.h
+../../../../../../hp_photo_provider/Pod/Frameworks/TencentOpenAPI.framework/Headers/TencentMessageObject.h
