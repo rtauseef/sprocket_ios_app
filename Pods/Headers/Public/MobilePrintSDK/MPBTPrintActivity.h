@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPBTPrintActivity.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPBTPrintActivity.h

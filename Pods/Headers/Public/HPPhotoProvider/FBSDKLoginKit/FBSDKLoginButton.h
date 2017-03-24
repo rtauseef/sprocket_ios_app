@@ -1,1 +1,1 @@
-../../../../HPPhotoProvider/Pod/Frameworks/FBSDKLoginKit.framework/Headers/FBSDKLoginButton.h
+../../../../../../hp_photo_provider/Pod/Frameworks/FBSDKLoginKit.framework/Headers/FBSDKLoginButton.h

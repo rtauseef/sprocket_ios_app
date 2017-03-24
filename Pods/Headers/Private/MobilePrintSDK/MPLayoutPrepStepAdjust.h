@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPLayoutPrepStepAdjust.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPLayoutPrepStepAdjust.h

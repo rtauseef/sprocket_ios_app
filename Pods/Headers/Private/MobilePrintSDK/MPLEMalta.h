@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/Malta/MPLEMalta.h
+../../../../../ios-print-sdk/Pod/Classes/Private/Malta/MPLEMalta.h

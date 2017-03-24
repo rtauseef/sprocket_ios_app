@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPInterfaceOptions.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPInterfaceOptions.h

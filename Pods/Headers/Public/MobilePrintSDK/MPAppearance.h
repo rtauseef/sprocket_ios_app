@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPAppearance.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPAppearance.h

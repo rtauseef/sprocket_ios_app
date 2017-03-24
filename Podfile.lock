@@ -26,10 +26,13 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - HPLinkUtils (0.8.0)
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
   - iCarousel (1.8)
+  - LivePaperSDK (2.0.0):
+    - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
   - UrbanAirship-iOS-SDK (8.2.0)
@@ -37,39 +40,32 @@ PODS:
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - GoogleAnalytics-iOS-SDK (= 3.12)
-  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
+  - HPPhotoProvider (from `~/src/hp_photo_provider`)
   - iCarousel (= 1.8)
-  - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
+  - LivePaperSDK
+  - MobilePrintSDK (from `~/src/ios-print-sdk`)
   - TTTAttributedLabel (= 1.10.1)
   - UrbanAirship-iOS-SDK
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
-    :branch: master
-    :git: https://github.com/IPGPTP/hp_photo_provider
+    :path: "~/src/hp_photo_provider"
   MobilePrintSDK:
-    :branch: bluetooth
-    :git: https://github.com/IPGPTP/ios-print-sdk.git
-
-CHECKOUT OPTIONS:
-  HPPhotoProvider:
-    :commit: c18a2c9646f08c2ff527cfdf8f5c66c795aa4400
-    :git: https://github.com/IPGPTP/hp_photo_provider
-  MobilePrintSDK:
-    :commit: 554f3a234f9c179c58d42d300e80d5baa3325d64
-    :git: https://github.com/IPGPTP/ios-print-sdk.git
+    :path: "~/src/ios-print-sdk"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
+  HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
+  LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 7bd900d7876faafe8650753cea2610daeea27457
 
-PODFILE CHECKSUM: 94e4456e9d49a0607b38fed7e22c14b82b501d98
+PODFILE CHECKSUM: e2d163a0453b33cc13d04f8547652f8cce7588bc
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1

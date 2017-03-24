@@ -128,7 +128,8 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.photoProvider = [HPPRPituPhotoProvider sharedInstance];
             self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
-
+        case PGSocialSourceTypeLink:
+            self.icon = [UIImage imageNamed:@"linkReaderScan"];
         default:
             break;
     }

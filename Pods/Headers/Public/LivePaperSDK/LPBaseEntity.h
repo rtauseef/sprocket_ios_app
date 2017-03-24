@@ -1,0 +1,1 @@
+../../../LivePaperSDK/LivePaperSDK/LivePaperSDK/Classes/Models/LPBaseEntity.h

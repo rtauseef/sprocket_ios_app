@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/UIColor+MPHexString.h
+../../../../../ios-print-sdk/Pod/Classes/Private/UIColor+MPHexString.h

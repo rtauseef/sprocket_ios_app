@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/Malta/MPLEDiscoveredPeripheralsTableViewController.h
+../../../../../ios-print-sdk/Pod/Classes/Private/Malta/MPLEDiscoveredPeripheralsTableViewController.h

@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPPageRangeKeyboardView.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPPageRangeKeyboardView.h

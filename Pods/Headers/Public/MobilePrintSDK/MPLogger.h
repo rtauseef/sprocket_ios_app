@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPLogger.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPLogger.h

@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/Additions/UIView+HPPRAnimation.h
+../../../../../hp_photo_provider/Pod/Classes/Additions/UIView+HPPRAnimation.h

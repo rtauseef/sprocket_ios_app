@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPPrintSettingsTableViewController.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPPrintSettingsTableViewController.h

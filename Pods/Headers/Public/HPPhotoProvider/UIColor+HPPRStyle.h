@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/Additions/UIColor+HPPRStyle.h
+../../../../../hp_photo_provider/Pod/Classes/Additions/UIColor+HPPRStyle.h

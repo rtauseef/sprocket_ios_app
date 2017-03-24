@@ -412,7 +412,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         
         MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
         progressView.viewController = controller;
-        [progressView printToDevice:image refreshCompletion:completion];        
+        [progressView printToDevice:image processor:processor refreshCompletion:completion];
     } else {
         [MPBTPairedAccessoriesViewController presentAnimatedForPrint:animated image:image usingController:controller andPrintCompletion:completion];
     }

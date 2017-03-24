@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRInstagramUserMedia.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRInstagramUserMedia.h

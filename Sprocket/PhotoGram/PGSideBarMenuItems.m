@@ -21,7 +21,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 6;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -68,6 +68,10 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
         case PGSideBarMenuCellAbout:
             cell.textLabel.text = NSLocalizedString(@"About", nil);
             cell.imageView.image = [UIImage imageNamed:@"menuAbout"];
+            break;
+        case PGSideBarMenuCellLinkReader:
+            cell.textLabel.text = NSLocalizedString(@"Scanner", nil);
+            cell.imageView.image = [UIImage imageNamed:@"drawer-scan-icon"];
             break;
         default:
             break;

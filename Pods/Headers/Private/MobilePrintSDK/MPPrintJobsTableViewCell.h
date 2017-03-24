@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPPrintJobsTableViewCell.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPPrintJobsTableViewCell.h

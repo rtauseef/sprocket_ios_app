@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPPrintJobsActionView.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPPrintJobsActionView.h
