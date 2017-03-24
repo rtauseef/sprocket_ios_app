@@ -68,6 +68,7 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                     puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                 end
             else
+				sleep(STEP_PAUSE)
                 touch ("view marked:'#{$list_loc[option]}'")
                 sleep(STEP_PAUSE)
             end
