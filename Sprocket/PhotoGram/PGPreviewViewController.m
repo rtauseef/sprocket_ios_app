@@ -478,15 +478,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
-    UIImage *image = [self currentEditedImage];
-    
-    MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
-    btPrintActivity.image = image;
-    btPrintActivity.vc = self;
-    
     [[MP sharedInstance] closeAccessorySession];
     
-    [self presentActivityViewControllerWithActivities:@[btPrintActivity]];
+    [self presentActivityViewControllerWithActivities:nil];
 }
 
 
