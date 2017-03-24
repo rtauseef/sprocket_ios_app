@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPLayoutPrepStepRotate.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPLayoutPrepStepRotate.h

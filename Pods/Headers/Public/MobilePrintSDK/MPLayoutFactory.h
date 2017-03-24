@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPLayoutFactory.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPLayoutFactory.h

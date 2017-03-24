@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPLegacyPageRange.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPLegacyPageRange.h

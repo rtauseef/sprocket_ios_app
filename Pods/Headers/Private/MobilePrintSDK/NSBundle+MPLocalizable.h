@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/NSBundle+MPLocalizable.h
+../../../../../ios-print-sdk/Pod/Classes/Private/NSBundle+MPLocalizable.h

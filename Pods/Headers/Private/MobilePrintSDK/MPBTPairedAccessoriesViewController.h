@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTPairedAccessoriesViewController.h
+../../../../../ios-print-sdk/Pod/Classes/Private/Manta/MPBTPairedAccessoriesViewController.h

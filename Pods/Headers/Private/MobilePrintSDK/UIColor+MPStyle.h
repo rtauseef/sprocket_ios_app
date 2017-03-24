@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/UIColor+MPStyle.h
+../../../../../ios-print-sdk/Pod/Classes/Private/UIColor+MPStyle.h

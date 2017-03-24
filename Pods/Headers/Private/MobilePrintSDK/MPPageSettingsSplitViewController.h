@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Private/MPPageSettingsSplitViewController.h
+../../../../../ios-print-sdk/Pod/Classes/Private/MPPageSettingsSplitViewController.h

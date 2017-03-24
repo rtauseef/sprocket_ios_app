@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPSupportAction.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPSupportAction.h

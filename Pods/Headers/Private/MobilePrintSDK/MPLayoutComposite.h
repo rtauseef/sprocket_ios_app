@@ -1,1 +1,1 @@
-../../../MobilePrintSDK/Pod/Classes/Public/MPLayoutComposite.h
+../../../../../ios-print-sdk/Pod/Classes/Public/MPLayoutComposite.h
