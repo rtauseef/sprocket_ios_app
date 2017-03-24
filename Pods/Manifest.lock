@@ -26,10 +26,13 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - HPLinkUtils (0.8.0)
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
   - iCarousel (1.8)
+  - LivePaperSDK (2.0.0):
+    - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
   - UrbanAirship-iOS-SDK (8.2.0)
@@ -39,6 +42,7 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK (= 3.12)
   - HPPhotoProvider (from `~/src/hp_photo_provider`)
   - iCarousel (= 1.8)
+  - LivePaperSDK
   - MobilePrintSDK (from `~/src/ios-print-sdk`)
   - TTTAttributedLabel (= 1.10.1)
   - UrbanAirship-iOS-SDK
@@ -54,12 +58,14 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
+  HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
+  LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 7bd900d7876faafe8650753cea2610daeea27457
 
-PODFILE CHECKSUM: f69bf5d3eaf15db19db95e94798bdbc6c02bea92
+PODFILE CHECKSUM: e2d163a0453b33cc13d04f8547652f8cce7588bc
 
 COCOAPODS: 1.1.1

@@ -9,6 +9,7 @@ project 'Sprocket/Sprocket.xcodeproj'
 install! 'cocoapods', :deduplicate_targets => false
 
 def shared_pods
+    pod 'LivePaperSDK'
     pod 'GoogleAnalytics-iOS-SDK', '3.12'
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'CocoaLumberjack', '2.2.0'
