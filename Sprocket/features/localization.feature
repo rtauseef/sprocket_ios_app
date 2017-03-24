@@ -70,7 +70,6 @@ Scenario: Verify camera roll authorization popup
     And I should see the below listed side menu texts:
     | Buy Paper        |
     | How to & Help    |
-    | Give Feedback    |
     | Privacy          |
     | About            |
     | Camera Roll      |

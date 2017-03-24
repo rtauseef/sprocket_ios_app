@@ -233,7 +233,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "fr_FR" => {
-        "skip_to_the_app" => "Basculez sur l'application",
+        "skip_to_the_app" => "Basculez sur l",
         "camera_access" => "Accès à l'appareil photo requis",
         "camera_access_content" => "Autorisez cet accès dans les Paramètres pour prendre et imprimer des photos.",
         "Cancel" => "Annuler",
@@ -1329,7 +1329,7 @@ $language_arr =
         },
     
     "fr_CA" => {
-        "skip_to_the_app" => "Basculez sur l'application",
+        "skip_to_the_app" => "Basculez sur l",
         "camera_access" => "Accès à l'appareil photo requis",
         "camera_access_content" => "Autorisez cet accès dans les Paramètres pour prendre et imprimer des photos.",
         "Cancel" => "Annuler",
@@ -1365,7 +1365,6 @@ $language_arr =
         "Setup Sprocket Printer" => "Configuration de l'imprimante Sprocket",
         "setup_sprocket" => "Configuration de l",
         "View User Guide" => "Afficher le manuel de l'utilisateur",
-        "Messenger Support" => "Messenger Support",
         "Tweet Support" => "Support via Twitter",
         "Join Support Forum" => "Accéder au forum de support",
         "Visit Support Website" => "Visiter le site Web de support",
@@ -1385,49 +1384,50 @@ $language_arr =
         "Version" => "Version",
         "Copyright (c) 2016" => "Copyright (c) 2016", 
         "HP Development Company, L.P." => "HP Development Company, L.P."
-        
         },
     
-    "es_MX" => {
-        "skip_to_the_app" => "Siga a la aplicación",
-        "camera_access" => "El acceso a la cámara es obligatorio",
-        "camera_access_content" => "Permita el acceso a sus Ajustes para tomar e imprimir fotos.",
-        "Cancel" => "Cancelar",
-        "Settings" => "Ajustes",
+    "en_MX" => {
+        "skip_to_the_app" => "Skip to the App",
+        "camera_access" => "Camera Access Required",
+        "camera_access_content" => "Allow access in your Settings to take and print photos.",
+        "Cancel" => "Cancel",
+        "Settings" => "Settings",
         "cameraroll_logo" => "CameraRoll",
-        "Save_to_CameraRoll" => "Guardado en el carrete de la cámara",
-        "terms_of_service_flickr" => "Al autenticarse con Flickr, también acepta los Términos de servicio de HP.",
-        "terms_of_service_instagram" => "Al autenticarse con Instagram, también acepta los Términos de servicio de HP.",
-        "terms_of_service_cameraroll" => "Al usar el carrete de la cámara, también acepta los Términos de servicio de HP.",
-        "terms_of_service_facebook" => "Al autenticarse con Facebook, también acepta los Términos de servicio de HP.",
-        "photos_button" => "Fotos",
-        "auth" => "Autorizar",
-        #"auth" => "Authorize",
-        "photo_screen"=> "Carrete de la cámara",
-        "Edit" => "Editar",
-        "Save to Camera Roll" => "Guardar en el carrete de la cámara",
-        "Print to sprocket" => "Imprimir en sprocket",
-        "Take or select a photo"  => "Tome o seleccione una foto",
-        "Terms and service" => "Al autenticarse con una red social también acepta los Términos de servicio de HP.",
+        "terms_of_service_flickr" => "By authenticating with Flickr, you also agree with HP’s Terms of Service.",
+        "terms_of_service_instagram" => "By authenticating with Instagram, you also agree with HP’s Terms of Service.",
+        "terms_of_service_cameraroll" => "By using Camera Roll, you also agree to the HP Terms of Service.",
+        "terms_of_service_facebook" => "By authenticating with Facebook, you also agree with HP’s Terms of Service.",
+        #"photos_button" => "Camera Roll",
+        "photos_button" => "Photos",
+        "auth" => "Authorize",
+        "album_screen" => "Camera Roll Albums",
+        #"photo_screen"=> "Camera Roll Photos",
+        "photo_screen"=> "Camera Roll",
+        "Take or select a photo"  => "Take or select a photo",
+        "Save_to_CameraRoll" => "Saved to Camera Roll",
+        "Edit" => "Edit",
+        "Save to Camera Roll" => "Save to Camera Roll",
+        "Print to sprocket" => "Print to sprocket",
+        "Terms and service" => "By authenticating with social sources you also agree to HP Terms of Service.",
         "side_menu" => "sprocket",
-        "Buy Paper" => "Comprar papel",
-        "How to & Help" => "Cómo y ayuda",
-        "Give Feedback" => "Envíenos comentarios",
-        "Privacy" => "Privacidad",
-        "About" => "Acerca de",
-        "Camera Roll" => "Carrete de la cámara",
-        "Sign In" => "Iniciar sesión",
-        "Sign Out" => "Salir",
-        "Reset Sprocket Printer" => "Reinicio de la impresora Sprocket",
-        "reset_sprocket" => "Reinicio de la impresora Sprocket",
-        "Setup Sprocket Printer" => "Instalación de la impresora Sprocket",
-        "setup_sprocket" => "Instalación de la impresora Sprocket",
-        "View User Guide" => "Ver la Guía de usuario",
+        "Buy Paper" => "Buy Paper",
+        "How to & Help" => "How to & Help",
+        "Give Feedback" => "Give Feedback",
+        "Privacy" => "Privacy",
+        "About" => "About",
+        "Camera Roll" => "Camera Roll",
+        "Sign In" => "Sign In",
+        "Sign Out" => "Sign Out",
+        "Reset Sprocket Printer" => "Reset Sprocket Printer",
+        "reset_sprocket" => "Reset Sprocket Printer",
+        "Setup Sprocket Printer" => "Setup Sprocket Printer",
+        "setup_sprocket" => "Setup Sprocket Printer",
+        "View User Guide" => "View User Guide",
         "Messenger Support" => "Messenger Support",
-        "Tweet Support" => "Tuitear asistencia",
-        "Join Support Forum" => "Inscríbase en el foro de asistencia",
-        "Visit Support Website" => "Visite el sitio web de asistencia",
-        "survey" => "No, gracias",
+        "Tweet Support" => "Tweet Support",
+        "Join Support Forum" => "Join Support Forum",
+        "Visit Support Website" => "Visit Support Website",
+        "survey" => "No, thanks",
         "Instagram" => "Instagram",
         "Facebook" => "Facebook",
         "CameraRoll" => "CameraRoll",
@@ -1435,12 +1435,70 @@ $language_arr =
         "facebook" => "Facebook",
         "instagram" => "Instagram",
         "flickr" => "Flickr",
-        "Done" => "Listo",
+        "Done" => "Done",
         "Back" => "Back",
-        "Printers" => "Impresoras",
+        "Printers" => "Printers",
         "Technical Information" => "Technical Information",
-        "App Settings" => "Configuración de la aplicación",
-        "Version" => "Versión",
+        "App Settings" => "App Settings",
+        "Version" => "Version",
+        "Copyright (c) 2016" => "Copyright (c) 2016", 
+        "HP Development Company, L.P." => "HP Development Company, L.P."
+        },
+    "en_CA" => {
+        "skip_to_the_app" => "Skip to the App",
+        "camera_access" => "Camera Access Required",
+        "camera_access_content" => "Allow access in your Settings to take and print photos.",
+        "Cancel" => "Cancel",
+        "Settings" => "Settings",
+        "cameraroll_logo" => "CameraRoll",
+        "terms_of_service_flickr" => "By authenticating with Flickr, you also agree with HP’s Terms of Service.",
+        "terms_of_service_instagram" => "By authenticating with Instagram, you also agree with HP’s Terms of Service.",
+        "terms_of_service_cameraroll" => "By using Camera Roll, you also agree to the HP Terms of Service.",
+        "terms_of_service_facebook" => "By authenticating with Facebook, you also agree with HP’s Terms of Service.",
+        #"photos_button" => "Camera Roll",
+        "photos_button" => "Photos",
+        "auth" => "Authorize",
+        "album_screen" => "Camera Roll Albums",
+        #"photo_screen"=> "Camera Roll Photos",
+        "photo_screen"=> "Camera Roll",
+        "Take or select a photo"  => "Take or select a photo",
+        "Save_to_CameraRoll" => "Saved to Camera Roll",
+        "Edit" => "Edit",
+        "Save to Camera Roll" => "Save to Camera Roll",
+        "Print to sprocket" => "Print to sprocket",
+        "Terms and service" => "By authenticating with social sources you also agree to HP Terms of Service.",
+        "side_menu" => "sprocket",
+        "Buy Paper" => "Buy Paper",
+        "How to & Help" => "How to & Help",
+        "Give Feedback" => "Give Feedback",
+        "Privacy" => "Privacy",
+        "About" => "About",
+        "Camera Roll" => "Camera Roll",
+        "Sign In" => "Sign In",
+        "Sign Out" => "Sign Out",
+        "Reset Sprocket Printer" => "Reset Sprocket Printer",
+        "reset_sprocket" => "Reset Sprocket Printer",
+        "Setup Sprocket Printer" => "Setup Sprocket Printer",
+        "setup_sprocket" => "Setup Sprocket Printer",
+        "View User Guide" => "View User Guide",
+        "Messenger Support" => "Messenger Support",
+        "Tweet Support" => "Tweet Support",
+        "Join Support Forum" => "Join Support Forum",
+        "Visit Support Website" => "Visit Support Website",
+        "survey" => "No, thanks",
+        "Instagram" => "Instagram",
+        "Facebook" => "Facebook",
+        "CameraRoll" => "CameraRoll",
+        "Flickr" => "Flickr",
+        "facebook" => "Facebook",
+        "instagram" => "Instagram",
+        "flickr" => "Flickr",
+        "Done" => "Done",
+        "Back" => "Back",
+        "Printers" => "Printers",
+        "Technical Information" => "Technical Information",
+        "App Settings" => "App Settings",
+        "Version" => "Version",
         "Copyright (c) 2016" => "Copyright (c) 2016", 
         "HP Development Company, L.P." => "HP Development Company, L.P."
         }
@@ -1543,17 +1601,21 @@ def get_ios_locale_id
                                                                                                 ios_locale_id = "fr_CA"
                                                                                                 $list_loc=$language_arr["fr_CA"]
                                                                                             else
-                                                                                                if ENV['LANGUAGE'] == 'Mexico-Spanish'
-                                                                                                    ios_locale_id = "es_MX"
-                                                                                                    $list_loc=$language_arr["es_MX"]
+                                                                                                if ENV['LANGUAGE'] == 'Mexico-English'
+                                                                                                    ios_locale_id = "en_MX"
+                                                                                                    $list_loc=$language_arr["en_MX"]
                                                                                                 else
                                                                                                     if ENV['LANGUAGE'] == 'English-US'
                                                                                                         ios_locale_id = "en_US"
                                                                                                       $list_loc=$language_arr["en_US"]
                                                                                                     else
+                                                                                                        if ENV['LANGUAGE'] == 'Canada-English'
+                                                                                                        ios_locale_id = "en_CA"
+                                                                                                      $list_loc=$language_arr["en_CA"]
+                                                                                                            else
                                                                                                         ios_locale_id = "en_US"
                                                                                                       $list_loc=$language_arr["en_US"]
-                                                                                            
+                                                                                                            end
                                                                                                     end
                                                                                                 end
                                                                                             end
