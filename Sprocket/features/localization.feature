@@ -2,7 +2,7 @@ Feature: Localization testing
   As a user
   I want to change iPhone language and verify screen titles
 
-
+@reset
 @localization
 Scenario: Verify Landing screen texts
     Given I am on the "Landing" screen
@@ -70,7 +70,6 @@ Scenario: Verify camera roll authorization popup
     And I should see the below listed side menu texts:
     | Buy Paper        |
     | How to & Help    |
-    | Give Feedback    |
     | Privacy          |
     | About            |
     | Camera Roll      |
@@ -87,9 +86,12 @@ Scenario: Verify side menu-how to &help options
     | Reset Sprocket Printer |
     | Setup Sprocket Printer |
     | View User Guide        |
+    | Messenger Support      | 
     | Tweet Support          |
     | Join Support Forum     |
     | Visit Support Website  |
+    | Give Feedback          |
+    
     
 
 @localization
@@ -119,9 +121,11 @@ Scenario Outline: Verify how to &help options navigation and screen titles
     Examples:
     | how_to_help_options    |
     | View User Guide        |
+    | Messenger Support      | 
     | Tweet Support          |
     | Join Support Forum     |
     | Visit Support Website  |
+    | Give Feedback          |
 
     
 

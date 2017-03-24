@@ -1,7 +1,7 @@
 Then(/^I should see "(.*?)" logo$/) do |arg|
 
   if arg=="Instagram"
-      if ENV['LANGUAGE'] == "Chinese"
+      if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
           touch query "UIButton index:1"
           sleep(STEP_PAUSE)
       end

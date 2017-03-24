@@ -32,7 +32,7 @@ res3 = query("view marked:'Print Queue'")
 end
 
 Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
-    if ENV['LANGUAGE'] == "Chinese"
+    if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
         if screen_name == "Flickr"
             puts "#{screen_name} - Not Applicable for Chinese language!".blue
         else
