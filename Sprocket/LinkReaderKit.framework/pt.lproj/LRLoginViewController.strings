@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; placeholder = "Enter Password"; ObjectID = "C57-4m-Fk9"; */
+"C57-4m-Fk9.placeholder" = "Digite a palavra-passe";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "K82-Em-Exb"; */
+"K82-Em-Exb.normalTitle" = "Iniciar Sessão";
+
+/* Class = "UITextField"; placeholder = "Enter Email"; ObjectID = "rO6-tv-uBx"; */
+"rO6-tv-uBx.placeholder" = "Digite o e-mail";

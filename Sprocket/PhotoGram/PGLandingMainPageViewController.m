@@ -30,6 +30,7 @@
 #import "PGSocialSourcesManager.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
+#import "PGLinkReaderViewController.h"
 
 #import <MP.h>
 
@@ -81,30 +82,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
     self.socialSourcesCircleView.delegate = self;
 
-    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
-    
-    self.socialSourcesVerticalContainer.hidden = YES;
-    if ([[PGSocialSourcesManager sharedInstance] enabledSocialSources].count > kSocialSourcesUISwitchThreshold) {
-        self.socialSourcesHorizontalContainer.hidden = YES;
-    } else {
-        self.socialSourcesCircularContainer.hidden = YES;
-    }
-    
-    // -> Begin temporary UI
-    /*
-    self.socialSourcesCircularContainer.hidden = YES;
-    if ([NSLocale isChinese]) {
-        self.socialSourcesHorizontalContainer.hidden = YES;
-
-        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
-            self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
-            self.titleLabelBottomConstraint.constant = 73.0;
-        }
-    } else {
-        self.socialSourcesVerticalContainer.hidden = YES;
-    }
-     */
-    // <- End temporary UI
+    [self setSocialSourcesLayout];
 
     BOOL openFromNotification = ((PGAppDelegate *)[UIApplication sharedApplication].delegate).openFromNotification;
     if (openFromNotification) {
@@ -115,6 +93,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     [self addLongPressGesture];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLinkSettingsChanged:)  name:kPGLinkSettingsChangedNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -137,6 +116,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.blurredView.alpha = 0;
         self.cameraBackgroundView.alpha = 0;
     }];
+
+    [self setSocialSourcesLayout];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -239,6 +220,41 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     });
 }
 
+- (void)setSocialSourcesLayout
+{
+    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
+    
+    NSInteger sourceCount = [[PGSocialSourcesManager sharedInstance] enabledSocialSources].count;
+    if ([PGLinkSettings linkEnabled]) {
+        sourceCount += 1;
+    }
+    
+    self.socialSourcesVerticalContainer.hidden = YES;
+    if (sourceCount > kSocialSourcesUISwitchThreshold) {
+        self.socialSourcesHorizontalContainer.hidden = YES;
+        self.socialSourcesCircularContainer.hidden = NO;
+    } else {
+        self.socialSourcesCircularContainer.hidden = YES;
+        self.socialSourcesHorizontalContainer.hidden = NO;
+    }
+    
+    // -> Begin temporary UI
+    /*
+     self.socialSourcesCircularContainer.hidden = YES;
+     if ([NSLocale isChinese]) {
+     self.socialSourcesHorizontalContainer.hidden = YES;
+     
+     if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
+     self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
+     self.titleLabelBottomConstraint.constant = 73.0;
+     }
+     } else {
+     self.socialSourcesVerticalContainer.hidden = YES;
+     }
+     */
+    // <- End temporary UI
+}
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -263,6 +279,12 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.flickrButton.userInteractionEnabled = YES;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
+    });
+}
+
+- (void)handleLinkSettingsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setSocialSourcesLayout];
     });
 }
 
@@ -299,6 +321,11 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 - (IBAction)flickrTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
+}
+
+- (IBAction)linkScanTapped:(id)sender
+{
+    [self presentViewController:[PGLinkReaderViewController new] animated:YES completion:nil];
 }
 
 - (IBAction)cameraTapped:(id)sender
@@ -366,6 +393,11 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
 {
     [self cameraTapped:button];
+}
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnLinkButton:(UIButton *)button
+{
+    [self linkScanTapped:button];
 }
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource

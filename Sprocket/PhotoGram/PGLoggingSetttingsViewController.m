@@ -20,6 +20,7 @@
 #import "Logging/PGLogFormatter.h"
 #import "PGSocialSourcesManager.h"
 #import "PGFeatureFlag.h"
+#import "PGLinkSettings.h"
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -41,7 +42,11 @@ static int kHideSvgMessagesIndex          = 7;
 static int kEnableExtraSocialSourcesIndex = 8;
 static int kEnablePushNotificationsIndex  = 9;
 static int kDisplayNotificationMsgCenterIndex = 10;
-static int kEnableMultiPrintIndex             = 11;
+static int kEnableMultiPrintIndex         = 11;
+static int kEnableWatermarkIndex          = 12;
+
+NSString * const kFeatureCodeAll = @"hpway";
+NSString * const kFeatureCodeLink = @"link";
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -150,6 +155,10 @@ static int kEnableMultiPrintIndex             = 11;
         
     }
     
+    if (![self enableFeature:indexPath.row forCode:self.unlockCode]) {
+        rowHeight = 0.0;
+    }
+    
     return rowHeight;
 }
 
@@ -161,7 +170,7 @@ static int kEnableMultiPrintIndex             = 11;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 12;
+    NSInteger numberOfRows = 13;
     
     if ([self levelPickerIsShown]){
         
@@ -274,8 +283,19 @@ static int kEnableMultiPrintIndex             = 11;
             } else {
                 cell.textLabel.text = @"Enable Multi-Print";
             }
+        } else if (kEnableWatermarkIndex == indexPath.row) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableWatermark"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableWatermark"];
+            }
+            cell.textLabel.text = @"Watermark Enabled";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGLinkSettings linkEnabled]];
         }
     }
+    
+    cell.hidden = ![self enableFeature:indexPath.row forCode:self.unlockCode];
     
     return cell;
 }
@@ -334,6 +354,9 @@ static int kEnableMultiPrintIndex             = 11;
             } else if (kEnableMultiPrintIndex == selectedRow) {
                 [self toggleMultiPrint];
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            } else if (kEnableWatermarkIndex == selectedRow) {
+                [PGLinkSettings setLinkEnabled:![PGLinkSettings linkEnabled]];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings linkEnabled]];
             }
         }
     }
@@ -593,6 +616,22 @@ static int kEnableMultiPrintIndex             = 11;
     else {
         cell.detailTextLabel.text = @"False";
     }
+}
+
+- (BOOL)validCode:(NSString *)code
+{
+    return [code isEqualToString:kFeatureCodeAll] || [code isEqualToString:kFeatureCodeLink];
+}
+
+- (BOOL)enableFeature:(NSInteger)index forCode:(NSString *)code
+{
+    BOOL enabled = NO;
+    if ([code isEqualToString:kFeatureCodeAll]) {
+        enabled = YES;
+    } else if ([code isEqualToString:kFeatureCodeLink] && kEnableWatermarkIndex == index) {
+        enabled = YES;
+    }
+    return enabled;
 }
 
 @end

@@ -1,0 +1,1 @@
+../../../LivePaperSDK/LivePaperSDK/LivePaperSDK/Classes/Networking/Utils/LPContainerResource.h

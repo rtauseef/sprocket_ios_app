@@ -128,7 +128,6 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.photoProvider = [HPPRPituPhotoProvider sharedInstance];
             self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
-
         default:
             break;
     }

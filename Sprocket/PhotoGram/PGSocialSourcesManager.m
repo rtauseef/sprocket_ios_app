@@ -12,6 +12,7 @@
 
 #import "PGSocialSourcesManager.h"
 #import "NSLocale+Additions.h"
+#import "PGLinkSettings.h"
 
 static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enableExtraSocialSources";
 
@@ -95,24 +96,23 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
 
 - (void)setupSocialSources
 {
+    NSMutableArray<PGSocialSource *> *sources = [NSMutableArray array];
+    
     if ([NSLocale isChinese]) {
-        self.socialSources = @[
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos],
-//                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeQzone],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
-                               [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
-                               ];
-        return;
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]];
+//        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeWeiBo]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeQzone]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePitu]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram]];
+    } else {
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFlickr]];
+        [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]];
     }
-
-    self.socialSources = @[
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeInstagram],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFlickr],
-                           [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]
-                           ];
+    
+    self.socialSources = sources;
 }
 
 @end

@@ -177,7 +177,7 @@ NSString * const kFlickrUserIdKey = @"userID";
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
     [[PGPhotoSelection sharedInstance] selectMedia:media];
-    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source animated:YES];
+    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source media:media animated:YES];
     
     HPPRFlickrPhotoProvider *provider = [HPPRFlickrPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[self.user objectForKey:kFlickrUserNameKey] userId:[self.user objectForKey:kFlickrUserIdKey]];

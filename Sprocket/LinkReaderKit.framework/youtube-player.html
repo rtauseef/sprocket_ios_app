@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <script>
+            console = new Object();
+            console.log = function(log) {
+                var iframe = document.createElement("IFRAME");
+                iframe.setAttribute("src", "ios-log:#iOS#" + log);
+                document.documentElement.appendChild(iframe);
+                iframe.parentNode.removeChild(iframe);
+                iframe = null;
+            };
+            console.debug = console.log;
+            console.info = console.log;
+            console.warn = console.log;
+            console.error = console.log;
+        </script>
+    </head>
+    <body style="margin:0px;padding:0px;">
+        <div id="player"></div>
+        
+        <script type="text/javascript">                
+            function onYouTubeIframeAPIReady() {
+                window.ytplayer=new YT.Player(
+                    'player',
+                    {
+                        videoId: "%@",
+                        width: "%0.0f",
+                        height: "%0.0f",
+                        events:{
+                            'onReady':onPlayerReady,
+                            'onStateChange':ytStateChange,
+                            'onError': onError
+                        },
+                        playerVars: {
+                            'rel': 0,
+                            'autohide': 1,
+                            'playsinline': %d,
+                          'autoplay' : %d,
+                            'showinfo':0,
+                            'modestbranding':1
+                        }
+                    }
+                );
+            }
+        
+            function ytStateChange(state) {
+                console.log("Player state change: " + state.data);
+                if(state.data == YT.PlayerState.ENDED){
+                    callBack("videoFinished");
+                } else if(state.data == YT.PlayerState.PLAYING ){
+                    callBack("videoPlay");
+                }
+            }
+
+            function onError(event) {
+              console.log('YT Player error: ' + event.data);
+              callBack("videoError");
+            }
+        
+            function callBack(fnName) {
+                var iframe = document.createElement("iframe");
+                iframe.setAttribute("src", "internal-event:#iOS#"+fnName);
+                document.documentElement.appendChild(iframe);
+                iframe.parentNode.removeChild(iframe);
+                iframe = null;
+            }
+
+            function resizeYT(width, height){
+                ytplayer.setSize(width, height);
+//                console.log("Resizing player to " + width + "x" + height);
+            }
+
+            function playYT() {
+                if(typeof ytplayer !== 'undefined' && typeof ytplayer.playVideo !== 'undefined'){
+                    ytplayer.playVideo();
+                    return "YES";
+                } else {
+                    return "NO";
+                }
+            }
+            function pauseYT() {
+                ytplayer.pauseVideo();
+            }
+            function stopYT() {
+                ytplayer.stopVideo();
+                ytplayer.seekTo(0);
+            }
+            function onPlayerReady(a) {
+                callBack("PlayerReady");
+            }
+        </script>
+        <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+    </body>
+</html>
