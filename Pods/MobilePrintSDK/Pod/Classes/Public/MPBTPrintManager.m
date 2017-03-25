@@ -11,16 +11,16 @@
 //
 
 #import "MPBTPrintManager.h"
-#import "MPBTSprocket.h"
 #import "MPPaper.h"
-#import "MPPrintLaterJob.h"
 #import "MPPrintLaterQueue.h"
+#import "MPBTSprocket.h"
 
 @interface MPBTPrintManager () <MPBTSprocketDelegate>
 
 @property (nonatomic, strong) NSTimer *checkTimer;
 @property (nonatomic, assign) MPBTPrinterManagerStatus status;
 @property (nonatomic, strong) MPPrintLaterJob *currentJob;
+@property (nonatomic, copy) BOOL (^statusUpdateBlock)(MPBTPrinterManagerStatus status, NSInteger progress);
 
 @end
 
@@ -45,10 +45,14 @@
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
 }
 
-- (void)resumePrintQueue {
+- (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger))statusUpdate {
     [self.checkTimer invalidate];
 
+    self.statusUpdateBlock = statusUpdate;
+
     if ([self queueSize] > 0) {
+        self.status = MPBTPrinterManagerStatusResumingPrintQueue;
+
         [self checkPrinterStatus];
         self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
     }
@@ -76,52 +80,24 @@
 
 
 - (void)checkPrinterStatus {
-    NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
+    EAAccessory *device = [MPBTSprocket sharedInstance].accessory;
 
-    EAAccessory *device = (EAAccessory *)[pairedSprockets firstObject];
+    if (!device) {
+        NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
+        device = (EAAccessory *)[pairedSprockets firstObject];
+    }
 
     if (device) {
-        MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
-
-        sprocket.accessory = device;
-        sprocket.delegate = self;
-
-        [sprocket refreshInfo];
-    } else {
-        NSLog(@"PRINT QUEUE - NO DEVICES CONNECTED");
-    }
-}
-
-#pragma mark - MPBTSprocketDelegate
-
-- (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error {
-    if (error == MantaErrorNoError) {
-
         if (self.status != MPBTPrinterManagerStatusSendingPrintJob) {
-            self.status = MPBTPrinterManagerStatusSendingPrintJob;
+            MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
 
-            self.currentJob = [[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] lastObject];
+            sprocket.accessory = device;
+            sprocket.delegate = self;
 
-            if (self.currentJob) {
-                NSLog(@"PRINT QUEUE - SENDING JOB (%@)", self.currentJob.id);
+            [self sendStatusUpdate:0];
 
-                NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
-                [lastOptionsUsed addEntriesFromDictionary:[MPBTSprocket sharedInstance].analytics];
-                [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
+            [sprocket refreshInfo];
 
-                MPPrintItem *item = [self.currentJob defaultPrintItem];
-
-                if (item) {
-                    [sprocket printItem:item numCopies:1];
-                } else {
-                    NSLog(@"PRINT QUEUE - NO IMAGE FOR JOB (%@)", self.currentJob.id);
-                }
-
-            } else {
-                NSLog(@"PRINT QUEUE - EMPTY");
-
-                [self cancelPrintQueue];
-            }
         } else {
             NSLog(@"PRINT QUEUE - WAITING FOR JOB TO START (%@)", self.currentJob.id);
 
@@ -134,6 +110,56 @@
                 self.status = MPBTPrinterManagerStatusIdle;
             }
         }
+
+    } else {
+        NSLog(@"PRINT QUEUE - NO DEVICES CONNECTED");
+    }
+}
+
+- (void)sendStatusUpdate:(NSInteger)progress {
+    if (self.statusUpdateBlock) {
+        BOOL shouldContinueUpdatingStatus = self.statusUpdateBlock(self.status, progress);
+
+        if (!shouldContinueUpdatingStatus) {
+            self.statusUpdateBlock = nil;
+        }
+    }
+}
+
+
+#pragma mark - MPBTSprocketDelegate
+
+- (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error {
+    if (error == MantaErrorNoError) {
+        self.status = MPBTPrinterManagerStatusSendingPrintJob;
+
+        self.currentJob = [[[MPPrintLaterQueue sharedInstance] retrieveAllPrintLaterJobs] lastObject];
+
+        if (self.currentJob) {
+            NSLog(@"PRINT QUEUE - SENDING JOB (%@)", self.currentJob.id);
+
+            NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
+            [lastOptionsUsed addEntriesFromDictionary:[MPBTSprocket sharedInstance].analytics];
+            [MP sharedInstance].lastOptionsUsed = [NSDictionary dictionaryWithDictionary:lastOptionsUsed];
+
+            MPPrintItem *item = [self.currentJob defaultPrintItem];
+
+            if (item) {
+                if ([self.delegate respondsToSelector:@selector(btPrintManager:didStartSendingPrintJob:)]) {
+                    [self.delegate btPrintManager:self didStartSendingPrintJob:self.currentJob];
+                }
+
+                [sprocket printItem:item numCopies:1];
+            } else {
+                NSLog(@"PRINT QUEUE - NO IMAGE FOR JOB (%@)", self.currentJob.id);
+            }
+
+        } else {
+            NSLog(@"PRINT QUEUE - EMPTY");
+
+            [self cancelPrintQueue];
+        }
+
     } else {
         self.status = MPBTPrinterManagerStatusWaitingForPrinter;
 
@@ -141,8 +167,22 @@
     }
 }
 
+- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error {
+    NSLog(@"PRINT QUEUE - SENDING DATA %li (%@)", (long)percentageComplete, self.currentJob.id);
+
+    [self sendStatusUpdate:percentageComplete];
+
+    if ([self.delegate respondsToSelector:@selector(btPrintManager:sendingPrintJob:progress:)]) {
+        [self.delegate btPrintManager:self sendingPrintJob:self.currentJob progress:percentageComplete];
+    }
+}
+
 - (void)didFinishSendingPrint:(MPBTSprocket *)sprocket {
     NSLog(@"PRINT QUEUE - JOB SENT TO PRINTER (%@)", self.currentJob.id);
+
+    if ([self.delegate respondsToSelector:@selector(btPrintManager:didFinishSendingPrintJob:)]) {
+        [self.delegate btPrintManager:self didFinishSendingPrintJob:self.currentJob];
+    }
 }
 
 - (void)didStartPrinting:(MPBTSprocket *)sprocket {
@@ -150,6 +190,13 @@
 
     self.status = MPBTPrinterManagerStatusPrinting;
     [[MPPrintLaterQueue sharedInstance] deletePrintLaterJob:self.currentJob];
+
+    [self sendStatusUpdate:0];
+
+    if ([self.delegate respondsToSelector:@selector(btPrintManager:didStartPrintingJob:)]) {
+        [self.delegate btPrintManager:self didStartPrintingJob:self.currentJob];
+    }
+
     self.currentJob = nil;
 }
 
@@ -157,6 +204,10 @@
     NSLog(@"PRINT QUEUE - ERROR (%@)", @(error));
 
     self.status = MPBTPrinterManagerStatusWaitingForPrinter;
+
+    if ([self.delegate respondsToSelector:@selector(btPrintManager:didReceiveErrorForPrintJob:)]) {
+        [self.delegate btPrintManager:self didReceiveErrorForPrintJob:self.currentJob];
+    }
 }
 
 @end
