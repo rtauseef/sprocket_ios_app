@@ -557,7 +557,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             if (completed) {
                 if (!printActivity) {
                     if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
-                        NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:self.carouselView.currentItemView];
+                        NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView];
                         [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
                         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem extendedInfo:extendedMetrics];
                     } else {

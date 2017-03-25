@@ -53,6 +53,7 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 + (BOOL)isNorthAmerica
 {
     BOOL retVal = NO;
+    
     NSArray *northAmericaCountryCodes = @[@"CA", @"US", @"MX"];
     NSString *currentCountryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
     if ([northAmericaCountryCodes containsObject:currentCountryCode]) {
@@ -69,6 +70,18 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     NSLocale *currentLocale = [NSLocale currentLocale];
     NSString *languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
     if ([languageCode caseInsensitiveCompare:@"en"] == NSOrderedSame) {
+        retVal = YES;
+    }
+    
+    return retVal;
+}
+
++ (BOOL)isAustralia
+{
+    BOOL retVal = NO;
+    
+    NSString *currentCountryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    if ([currentCountryCode caseInsensitiveCompare:@"au"] == NSOrderedSame) {
         retVal = YES;
     }
     

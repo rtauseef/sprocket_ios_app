@@ -11,24 +11,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGFrameItem.h"
 
+@interface PGFrameManager : NSObject
 
-@interface NSLocale (Additions)
++ (PGFrameManager *)sharedInstance;
 
-+ (NSString *)languageID;
-+ (NSString *)countryID;
-+ (BOOL)isChinese;
-+ (BOOL)isEnglish;
-+ (BOOL)isNorthAmerica;
-+ (BOOL)isAustralia;
-+ (BOOL)isSurveyAvailable;
-
-+ (NSURL *)privacyURL;
-+ (NSURL *)userGuideURL;
-+ (NSURL *)buyPaperURL;
-+ (NSURL *)supportWebsiteURL;
-+ (NSURL *)supportForumURL;
-+ (NSString *)twitterSupportTag;
-+ (NSString *)twitterSupportTagURL;
+- (PGFrameItem *)frameByIndex:(NSInteger)index;
+- (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText;
+- (NSUInteger)framesCount;
 
 @end

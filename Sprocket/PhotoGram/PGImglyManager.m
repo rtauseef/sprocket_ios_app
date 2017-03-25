@@ -11,9 +11,8 @@
 //
 
 #import "PGImglyManager.h"
-#import "PGStickerItem.h"
 #import "PGStickerManager.h"
-#import "PGFrameItem.h"
+#import "PGFrameManager.h"
 #import "UIColor+Style.h"
 
 #define kImglyColorCellHeightAdjustment 18
@@ -159,7 +158,7 @@
                 NSString *frameName = @"NoFrame";
                 if (nil != frame) {
                     frameName = frame.accessibilityText;
-                    PGFrameItem *frameItem = [PGFrameItem frameByAccessibilityText:frameName];
+                    PGFrameItem *frameItem = [[PGFrameManager sharedInstance] frameByAccessibilityText:frameName];
                     if (nil != frameItem) {
                         frameName = frameItem.name;
                     }
@@ -321,14 +320,14 @@
 - (void)frameCountForRatio:(float)ratio completionBlock:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock([PGFrameItem frameCount], nil);
+        completionBlock([PGFrameManager sharedInstance].framesCount, nil);
     }
 }
 
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index forRatio:(float)ratio completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        PGFrameItem *frame = [[PGFrameManager sharedInstance] frameByIndex:index];
         completionBlock(frame.thumbnailImage, frame.accessibilityText, nil);
     }
 }
@@ -338,7 +337,7 @@
     if (completionBlock) {
         CGFloat ratio = 2.0/3.0;
         
-        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        PGFrameItem *frame = [[PGFrameManager sharedInstance] frameByIndex:index];
         IMGLYFrameInfoRecord *info = [[IMGLYFrameInfoRecord alloc] init];
         
         info.accessibilityText = frame.accessibilityText;
