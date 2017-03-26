@@ -32,7 +32,7 @@ res3 = query("view marked:'Print Queue'")
 end
 
 Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
-    if ENV['LANGUAGE'] == "Chinese"
+    if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
         if screen_name == "Flickr"
             puts "#{screen_name} - Not Applicable for Chinese language!".blue
         else
@@ -46,7 +46,7 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             i = 0
             while i < 3
                 swipe(:left)
-                sleep(STEP_PAUSE)
+                sleep(WAIT_SCREENLOAD)
                 i = i + 1
             end
             #check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")

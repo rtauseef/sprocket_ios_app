@@ -11,44 +11,20 @@
 //
 
 #import "PGImglyManager.h"
-#import "PGStickerItem.h"
 #import "PGStickerManager.h"
-#import "PGFrameItem.h"
+#import "PGFrameManager.h"
 #import "UIColor+Style.h"
 
 #define kImglyColorCellHeightAdjustment 18
 
-static const NSString *kCategoryMetricColumn = @"category";
-static const NSString *kNameMetricColumn = @"name";
-
-static NSString *kMetricCategoryFont = @"Font";
-static NSString *kMetricCategoryText = @"Text";
-static NSString *kMetricCategorySticker = @"Sticker";
-static NSString *kMetricCategoryFilter = @"Filter";
-static NSString *kMetricCategoryFrame = @"Frame";
-static NSString *kMetricCategoryEdit = @"Edit";
-
 @interface PGImglyManager() <IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
-
-typedef enum {
-    PGEmbellishmentCategoryFont,
-    PGEmbellishmentCategoryText,
-    PGEmbellishmentCategorySticker,
-    PGEmbellishmentCategoryFilter,
-    PGEmbellishmentCategoryFrame,
-    PGEmbellishmentCategoryEdit
-} PGEmbellishmentCategory;
-
-@property (strong, nonatomic) NSMutableArray *analytics;
 
 @end
 
 @implementation PGImglyManager
 
-- (IMGLYConfiguration *)imglyConfiguration
+- (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
 {
-    self.analytics = [[NSMutableArray alloc] init];
-    
     IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
         
         builder.contextMenuBackgroundColor = [UIColor HPGrayColor];
@@ -79,6 +55,8 @@ typedef enum {
                 });
             }];
             
+            PGEmbellishmentMetric *autofixMetric = [[PGEmbellishmentMetric alloc] initWithName:@"Auto-fix" andCategoryType:PGEmbellishmentCategoryTypeEdit];
+            
             [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
                 cell.tintColor = [UIColor HPGrayBackgroundColor];
                 cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
@@ -91,7 +69,7 @@ typedef enum {
                         cell.imageView.image = [[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                         cell.accessibilityIdentifier = @"editMagic";
                         
-                        if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:@"Auto-fix"]) {
+                        if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
                             cell.imageView.highlighted = YES;
                         } else {
                             cell.imageView.highlighted = NO;
@@ -126,12 +104,10 @@ typedef enum {
 
             [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
                 if (action == PhotoEditorActionMagic) {
-                    NSString *embellishmentName = @"Auto-fix";
-
-                    if ([self hasEmbellishmentMetric:PGEmbellishmentCategoryEdit name:embellishmentName]) {
-                        [self removeEmbellishmentMetric:PGEmbellishmentCategoryEdit name:embellishmentName];
+                    if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
+                        [embellishmentMetricsManager removeEmbellishmentMetric:autofixMetric];
                     } else {
-                        [self addEmbellishmentMetric:PGEmbellishmentCategoryEdit name:embellishmentName];
+                        [embellishmentMetricsManager addEmbellishmentMetric:autofixMetric];
                     }
                 }
             }];
@@ -164,11 +140,15 @@ typedef enum {
             stickerBuilder.stickersDataSource = self;
             
             stickerBuilder.addedStickerClosure = ^(IMGLYSticker *sticker) {
-                [self addEmbellishmentMetric:PGEmbellishmentCategorySticker name:[self stickerNameFromImglySticker:sticker]];
+                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:[self stickerNameFromImglySticker:sticker] andCategoryType:PGEmbellishmentCategoryTypeSticker];
+
+                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
             
             stickerBuilder.removedStickerClosure = ^(IMGLYSticker *sticker) {
-                [self removeEmbellishmentMetric:PGEmbellishmentCategorySticker name:[self stickerNameFromImglySticker:sticker]];
+                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:[self stickerNameFromImglySticker:sticker] andCategoryType:PGEmbellishmentCategoryTypeSticker];
+                
+                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
         }];
         
@@ -178,12 +158,13 @@ typedef enum {
                 NSString *frameName = @"NoFrame";
                 if (nil != frame) {
                     frameName = frame.accessibilityText;
-                    PGFrameItem *frameItem = [PGFrameItem frameByAccessibilityText:frameName];
+                    PGFrameItem *frameItem = [[PGFrameManager sharedInstance] frameByAccessibilityText:frameName];
                     if (nil != frameItem) {
                         frameName = frameItem.name;
                     }
                 }
-                [self addEmbellishmentMetric:PGEmbellishmentCategoryFrame name:frameName];
+                
+                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:frameName andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             };
         }];
         
@@ -216,7 +197,7 @@ typedef enum {
             }];
             
             filterBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect *filter) {
-                [self addEmbellishmentMetric:PGEmbellishmentCategoryFilter name:filter.displayName];
+                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:filter.displayName andCategoryType:PGEmbellishmentCategoryTypeFilter]];
             };
         }];
         
@@ -339,14 +320,14 @@ typedef enum {
 - (void)frameCountForRatio:(float)ratio completionBlock:(void (^)(NSInteger, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        completionBlock([PGFrameItem frameCount], nil);
+        completionBlock([PGFrameManager sharedInstance].framesCount, nil);
     }
 }
 
 - (void)thumbnailAndLabelAtIndex:(NSInteger)index forRatio:(float)ratio completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
 {
     if (completionBlock) {
-        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        PGFrameItem *frame = [[PGFrameManager sharedInstance] frameByIndex:index];
         completionBlock(frame.thumbnailImage, frame.accessibilityText, nil);
     }
 }
@@ -356,7 +337,7 @@ typedef enum {
     if (completionBlock) {
         CGFloat ratio = 2.0/3.0;
         
-        PGFrameItem *frame = [PGFrameItem frameItemByIndex:index];
+        PGFrameItem *frame = [[PGFrameManager sharedInstance] frameByIndex:index];
         IMGLYFrameInfoRecord *info = [[IMGLYFrameInfoRecord alloc] init];
         
         info.accessibilityText = frame.accessibilityText;
@@ -380,137 +361,6 @@ typedef enum {
     }
 
     return stickerName;
-}
-
-- (NSString *)categoryName:(PGEmbellishmentCategory)category
-{
-    NSString *strCategory = @"";
-    switch (category) {
-        case PGEmbellishmentCategoryFont:
-            strCategory = kMetricCategoryFont;
-            break;
-            
-        case PGEmbellishmentCategoryText:
-            strCategory = kMetricCategoryText;
-            break;
-            
-        case PGEmbellishmentCategorySticker:
-            strCategory = kMetricCategorySticker;
-            break;
-            
-        case PGEmbellishmentCategoryFilter:
-            strCategory = kMetricCategoryFilter;
-            break;
-            
-        case PGEmbellishmentCategoryFrame:
-            strCategory = kMetricCategoryFrame;
-            break;
-
-        case PGEmbellishmentCategoryEdit:
-            strCategory = kMetricCategoryEdit;
-            break;
-
-        default:
-            strCategory = @"Unknown";
-            break;
-    }
-    
-    return strCategory;
-}
-
-- (BOOL)hasEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
-{
-    BOOL metricFound = NO;
-    NSString *strCategory = [self categoryName:category];
-
-    for (NSDictionary *metric in self.analytics) {
-        if ([strCategory isEqualToString:metric[kCategoryMetricColumn]] &&
-            [name isEqualToString:metric[kNameMetricColumn]]) {
-            metricFound = YES;
-            break;
-        }
-    }
-
-    return metricFound;
-}
-
-- (void)removeEmbellishmentCategory:(PGEmbellishmentCategory)category
-{
-    NSString *strCategory = [self categoryName:category];
-    
-    NSDictionary *objectToRemove = nil;
-    for (NSDictionary *metric in self.analytics) {
-        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]]) {
-            objectToRemove = metric;
-            break;
-        }
-    }
-    
-    if (nil != objectToRemove) {
-        [self.analytics removeObject:objectToRemove];
-    }
-}
-
-- (void)removeEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
-{
-    NSString *strCategory = [self categoryName:category];
-    
-    NSDictionary *objectToRemove = nil;
-    for (NSDictionary *metric in self.analytics) {
-        if ([strCategory isEqualToString:[metric objectForKey:kCategoryMetricColumn]] &&
-            [name isEqualToString:[metric objectForKey:kNameMetricColumn]]) {
-            objectToRemove = metric;
-            break;
-        }
-    }
-    
-    if (nil != objectToRemove) {
-        [self.analytics removeObject:objectToRemove];
-    }
-}
-
-- (void)addEmbellishmentMetric:(PGEmbellishmentCategory)category name:(NSString *)name
-{
-    switch (category) {
-        case PGEmbellishmentCategoryFilter:
-        case PGEmbellishmentCategoryFrame:
-            [self removeEmbellishmentCategory:category];
-            break;
-            
-        default:
-            break;
-    }
-
-    NSString *strCategory = [self categoryName:category];
-
-    NSDictionary *metric = @{kCategoryMetricColumn : strCategory,
-                             kNameMetricColumn     : name};
-    
-    [self.analytics addObject:metric];
-    
-    MPLogDebug(@"Embellishment Analytics: %@", self.analytics);
-}
-
-- (NSString *)analyticsString
-{
-    NSString *finalMetric = @"";
-    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@", "];
-    
-    for (NSDictionary *metric in self.analytics) {
-        if (finalMetric.length > 0) {
-            finalMetric = [finalMetric stringByAppendingString:@";"];
-        }
-        
-        NSString *metricString = @"";
-        for (NSString *key in [metric allKeys]) {
-            metricString = [metricString stringByAppendingFormat:@", %@:%@", key, [metric objectForKey:key]];
-        }
-        metricString = [metricString stringByTrimmingCharactersInSet:trimSet];
-        
-        finalMetric = [finalMetric stringByAppendingString:metricString];
-    }
-    
-    return finalMetric;
 }
 
 @end

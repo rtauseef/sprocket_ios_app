@@ -1,7 +1,11 @@
 Then(/^I should see "(.*?)" logo$/) do |arg|
 
   if arg=="Instagram"
-    check_element_exists(@current_page.instagram_logo)
+      if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
+          touch query "UIButton index:1"
+          sleep(STEP_PAUSE)
+      end
+      check_element_exists(@current_page.instagram_logo)
   else
     if arg=="Facebook"
       check_element_exists(@current_page.facebook_logo)
