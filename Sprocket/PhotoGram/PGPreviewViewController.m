@@ -27,6 +27,7 @@
 #import "PGPhotoSelection.h"
 #import "HPPRCacheService.h"
 #import "PGSavePhotos.h"
+#import "PGProgressView.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -79,6 +80,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 @property (nonatomic, strong) NSMutableArray<PGGesturesView *> *gesturesViews;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSelectedPhotos;
+
+@property (strong, nonatomic) PGProgressView *progressView;
 
 @end
 
@@ -458,22 +461,54 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        for (PGGesturesView *gestureView in self.gesturesViews) {
-            if (gestureView.isSelected) {
-                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+    [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
+        if (success) {
+            for (PGGesturesView *gestureView in self.gesturesViews) {
+                if (gestureView.isSelected) {
+                    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
 
-                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+                    [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+                }
             }
+
+            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
+                if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
+                    if (!self.progressView) {
+                        self.progressView = [[PGProgressView alloc] initWithFrame:self.view.bounds];
+                        self.progressView.alpha = 0.0;
+                        [self.progressView setProgress:0.0];
+
+                        [self.view addSubview:self.progressView];
+                        [self.view bringSubviewToFront:self.progressView];
+
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.progressView.alpha = 1.0;
+                        }];
+                    }
+
+                    [self.progressView setProgress:0.0];
+                    [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
+
+                } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
+                    [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
+
+                } else if (status == MPBTPrinterManagerStatusPrinting) {
+                    [self.progressView setProgress:1.0F];
+
+                    [UIView animateWithDuration:0.3 animations:^{
+                        self.progressView.alpha = 0.0;
+                    } completion:^(BOOL finished) {
+                        [self.progressView removeFromSuperview];
+                        self.progressView = nil;
+                    }];
+
+                    return NO;
+                }
+
+                return YES;
+            }];
         }
-
-        [[MPBTPrintManager sharedInstance] resumePrintQueue];
-
-    } else {
-        self.currentOfframp = [MPPrintManager directPrintOfframp];
-        [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
-        [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
-    }
+    }];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender

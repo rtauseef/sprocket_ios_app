@@ -81,7 +81,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     [self initializeUAirship];
 
-    [[MPBTPrintManager sharedInstance] cancelPrintQueue];
+    [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
 
     return YES;
 }
