@@ -25,6 +25,8 @@
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
+#import "PGLinkSettings.h"
+#import "PGLinkReaderViewController.h"
 
 #import "NSLocale+Additions.h"
 #import "UIViewController+Trackable.h"
@@ -64,6 +66,11 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     }
     
     self.overlayView.alpha = 0;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(linkSettingsChanged:)
+                                                 name:kPGLinkSettingsChangedNotification
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,7 +115,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return kPGSideBarMenuItemsNumberOfRows;
+    return [PGLinkSettings linkEnabled] ? kPGSideBarMenuItemsNumberOfRows : kPGSideBarMenuItemsNumberOfRows - 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,6 +168,10 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
             UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PGAboutViewController"];
             [self presentViewController:viewController animated:YES completion:nil];
+            break;
+        }
+        case PGSideBarMenuCellLinkReader: {
+            [self presentViewController:[PGLinkReaderViewController new] animated:YES completion:nil];
             break;
         }
         default:
@@ -225,6 +236,12 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)barButtonCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)linkSettingsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.mainMenuTableView reloadData];
+    });
 }
 
 #pragma mark - Social Sources Menu Methods

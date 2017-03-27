@@ -134,6 +134,13 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
+		6541D4A61E898EAA00FB88A9 /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */; };
+		6541D4A71E898EAA00FB88A9 /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */; };
+		6541D4B91E89C40A00FB88A9 /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */; };
+		6541D4BA1E89C40A00FB88A9 /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */; };
+		6541D4BB1E89C43700FB88A9 /* LinkReaderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6541D4C01E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */; };
+		6541D4C11E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */; };
 		65DA24781E85B99600034955 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24771E85B99600034955 /* PGWatermarkProcessor.m */; };
 		65DA24791E85B99600034955 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24771E85B99600034955 /* PGWatermarkProcessor.m */; };
 		65DA247E1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */; };
@@ -1704,6 +1711,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6541D4BB1E89C43700FB88A9 /* LinkReaderKit.framework in Embed Frameworks */,
 				8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1856,6 +1864,13 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
+		6541D4A41E898EAA00FB88A9 /* PGLinkSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkSettings.h; sourceTree = "<group>"; };
+		6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkSettings.m; sourceTree = "<group>"; };
+		6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkReaderKit.framework; sourceTree = SOURCE_ROOT; };
+		6541D4BC1E89C47400FB88A9 /* PGLinkReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkReaderViewController.h; sourceTree = "<group>"; };
+		6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkReaderViewController.m; sourceTree = "<group>"; };
+		6541D4BE1E89C47400FB88A9 /* LRManagerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRManagerPrivate.h; sourceTree = "<group>"; };
+		6541D4BF1E89C47400FB88A9 /* LRLinkServicesPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLinkServicesPrivate.h; sourceTree = "<group>"; };
 		65DA24761E85B99600034955 /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkProcessor.h; sourceTree = "<group>"; };
 		65DA24771E85B99600034955 /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkProcessor.m; sourceTree = "<group>"; };
 		65DA247C1E85DB8000034955 /* PGLinkCredentialsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkCredentialsManager.h; sourceTree = "<group>"; };
@@ -2913,6 +2928,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6541D4B91E89C40A00FB88A9 /* LinkReaderKit.framework in Frameworks */,
 				92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
@@ -2950,6 +2966,7 @@
 				3830cd319541ff5fc26c2a81 /* Fabric.framework in Frameworks */,
 				a87ef3737b5e49822333f21d /* Crashlytics.framework in Frameworks */,
 				33c24d98e8d8680a7a1ba56f /* UIKit.framework in Frameworks */,
+				6541D4BA1E89C40A00FB88A9 /* LinkReaderKit.framework in Frameworks */,
 				6d00548cf3b1aa84f3d56f23 /* Foundation.framework in Frameworks */,
 				7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */,
 				F1B9596A1DAECAF400EF6EB7 /* CFNetwork.framework in Frameworks */,
@@ -2975,6 +2992,7 @@
 		65DA24741E85B96A00034955 /* Watermark */ = {
 			isa = PBXGroup;
 			children = (
+				6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */,
 				65DA24851E85E31F00034955 /* link-icon.png */,
 				65DA24761E85B99600034955 /* PGWatermarkProcessor.h */,
 				65DA24771E85B99600034955 /* PGWatermarkProcessor.m */,
@@ -2982,6 +3000,12 @@
 				65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */,
 				65DA24811E85DCBC00034955 /* PGWatermarkOperation.h */,
 				65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */,
+				6541D4A41E898EAA00FB88A9 /* PGLinkSettings.h */,
+				6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */,
+				6541D4BC1E89C47400FB88A9 /* PGLinkReaderViewController.h */,
+				6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */,
+				6541D4BE1E89C47400FB88A9 /* LRManagerPrivate.h */,
+				6541D4BF1E89C47400FB88A9 /* LRLinkServicesPrivate.h */,
 			);
 			name = Watermark;
 			sourceTree = "<group>";
@@ -6002,7 +6026,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/imglyKit.framework/strip-framework.sh\"";
+			shellScript = "bash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/imglyKit.framework/strip-framework.sh\"\nbash \"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/LinkReaderKit.framework/release_strip_archs.sh\"";
 		};
 		8668DB1B1956231E575C5DBA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6187,6 +6211,7 @@
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				82E3DEB51E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
 				F22F12261E522FF300753C5A /* PGFeatureFlag.m in Sources */,
+				6541D4C11E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */,
 				0d5e2bd60e8c18c05212cbcc /* PGSaveToCameraRollActivity.m in Sources */,
 				5bd4fb56c7ce2869164331e4 /* PGGesturesView+Analytics.m in Sources */,
 				1f5f97f22092733e58db8bd3 /* PGImglyManager.m in Sources */,
@@ -6224,6 +6249,7 @@
 				26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				65DA247F1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */,
 				a6bac47da8ea69b0d3dc4bcf /* UIImage+MaskImage.m in Sources */,
+				6541D4A71E898EAA00FB88A9 /* PGLinkSettings.m in Sources */,
 				F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				65DA24791E85B99600034955 /* PGWatermarkProcessor.m in Sources */,
 				a51149fdd16db14e5519b0c3 /* PGAppAppearance.m in Sources */,
@@ -6278,6 +6304,7 @@
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				65DA24831E85DCBC00034955 /* PGWatermarkOperation.m in Sources */,
 				F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */,
+				6541D4C01E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */,
 				82362A591D5959870019F024 /* PGStickerItem.m in Sources */,
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
 				E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */,
@@ -6346,6 +6373,7 @@
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,
 				82E3DEB41E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
 				F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */,
+				6541D4A61E898EAA00FB88A9 /* PGLinkSettings.m in Sources */,
 				E31BE41719EC6BB4006B78BB /* PGLandingSelectorPageViewController.m in Sources */,
 				82362A181D59408E0019F024 /* PGFrameItem.m in Sources */,
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
@@ -6813,7 +6841,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -6883,7 +6912,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -7193,6 +7223,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -7257,6 +7288,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -7406,6 +7438,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -7532,6 +7565,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -7616,7 +7650,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -7684,7 +7719,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/PhotoGram",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";

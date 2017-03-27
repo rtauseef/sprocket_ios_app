@@ -28,6 +28,7 @@
 #import "HPPRCacheService.h"
 #import "PGSavePhotos.h"
 #import "PGWatermarkProcessor.h"
+#import "PGLinkSettings.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -479,7 +480,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     } else {
         self.currentOfframp = [MPPrintManager directPrintOfframp];
         PGWatermarkProcessor *processor = nil;
-        if (self.media && self.media.socialMediaImageUrl) {
+        if ([PGLinkSettings linkEnabled] && self.media && self.media.socialMediaImageUrl) {
             processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:self.media.socialMediaImageUrl]];
         }
         [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] processor:processor animated:YES printCompletion:nil];

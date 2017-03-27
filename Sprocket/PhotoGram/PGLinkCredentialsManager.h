@@ -10,6 +10,8 @@
 // the license agreement.
 //
 
+#import <LivePaperSDK/LPSession.h>
+
 @interface PGLinkCredentialsManager : NSObject
 
 + (NSString*)clientId;
