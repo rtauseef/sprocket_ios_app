@@ -363,7 +363,6 @@ $language_arr =
         "terms_of_service_cameraroll" => "Door Filmrol te gebruiken ga je ook akkoord met de gebruiksvoorwaarden van HP.",
         "terms_of_service_facebook" => "Door aanmelding bij Facebook ga je ook akkoord met de gebruiksvoorwaarden van HP.",
         #"photos_button" => "Camera Roll",
-        "photos_button" => "Foto's",
         "auth" => "Toestemming geven",
         "album_screen" => "Filmrol",
         #"photo_screen"=> "Camera Roll Photos",
