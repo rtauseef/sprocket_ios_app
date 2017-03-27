@@ -817,6 +817,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return gestureView;
 }
 
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    self.gesturesViews[index].isSelected = !self.gesturesViews[index].isSelected;
+    [carousel reloadItemAtIndex:index animated:YES];
+}
+
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
 {
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos && (carousel.currentItemIndex != -1)) {
