@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 /**
  Represents sharable content. The LRSharePayoff supports the Share action and is intended to represent a piece of content a user can share with others.
@@ -31,6 +31,6 @@
  
  @since 1.0
  */
--(instancetype)initWithContent:(NSString *)content;
+- (instancetype)initWithContent:(NSString *)content;
 
 @end

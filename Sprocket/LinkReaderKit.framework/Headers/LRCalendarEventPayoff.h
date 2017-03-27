@@ -6,7 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
+
 @import EventKit;
 
 /**
@@ -30,6 +31,6 @@
  
  @since 1.0
  */
--(EKEventStore *)eventStore;
+- (EKEventStore *)eventStore;
 
 @end

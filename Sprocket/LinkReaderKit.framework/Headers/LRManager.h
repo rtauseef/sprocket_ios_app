@@ -11,104 +11,47 @@
 #import <AVFoundation/AVFoundation.h>
 
 /**
- Enumerates the current state of the camera and frame scanner.
+ The error domain string used when LinkReader authentication errors are generated. See LRAuthorizationErrorDomain for error types.
  
  @since 1.0
  */
-typedef NS_ENUM(NSInteger, LRCaptureState){
-    /**
-     The camera is not available for use
-     
-     @since 1.0
-     */
-    LRCameraNotAvailable = -1,
-    /**
-     The camera has stopped, and is not sending frames
-     
-     @since 1.0
-     */
-    LRCameraStopped = 0,
-    /**
-     The camera has started and is sending frames
-     
-     @since 1.0
-     */
-    LRCameraRunning,
-    /**
-     The camera is running, and frames are being processed for data.
-     
-     @since 1.0
-     */
-    LRScannerRunning,
-};
+FOUNDATION_EXPORT NSString *const LRAuthorizationErrorDomain;
 
 /**
- LinkReader Authorization Error Codes
+ Error Codes for LRAuthorizationErrorDomain
  
  @since 1.0
  */
-typedef NS_ENUM(NSInteger, LRErrorCode){
+typedef NS_ENUM(NSInteger, LRAuthorizationError){
     /**
      Either the API key or secret are missing
      
      @since 1.0
      */
-    LRAuthErrorCode_ApiKeyNotFound = -400,
+    LRAuthorizationErrorApiKeyNotFound,
     /**
      The API key+secret combo are invalid
      
      @since 1.0
      */
-    LRAuthErrorCode_ApiKeyInvalid = -401,
-    /**
-     Either the user email or password are invlaid
-     
-     @since ENTER_VERSION_HERE
-     */
-    LRAuthErrorCode_UserLoginFailed = -402,
-    
-    /**
-     The user canceled the login flow
-     
-     @since ENTER_VERSION_HERE
-     */
-    LRAuthErrorCode_UserLoginCanceled = -403,    
-    
-    /**
-     The application has already received authorization
-     
-     @since 1.0
-     */
-    LRAuthErrorCode_AlreadyAuthorized = -801,
+    LRAuthorizationErrorApiKeyInvalid,
     /**
      There was a network error while attempting to authorize
      
      @since 1.0
      */
-    LRAuthErrorCode_NetworkError =  -1009,
-    /**
-     The user has cancelled the request
-     
-     @since 1.0
-     */
-    LRAuthErrorCode_RequestCancelled = -999,
-    
-    /**
-     Unknown Payoff, error, has occurred
-     
-     @since 1.0
-     */
-    LRErrorCode_UnknownPayoff = 100,
+    LRAuthorizationErrorNetworkError,
     /**
      There was an unexpected error while attempting to authorize
      
-     @since ENTER_VERSION_HERE
+     @since 2.1
      */
-    LRAuthErrorCode_UnexpectedError =  -9009,
+    LRAuthorizationErrorUnexpectedError,
 };
 
+
 /**
- These are the various authorization states of the SDK. Before the SDK can become useful, it must be authorized using -authorizeWithClientID:secret:success:failure: . A
+ These are the various authorization states of the SDK. Before the SDK can become useful, it must be authorized using -authorizeWithClientID:secret:success:failure:
  
  @since 1.0
  */
@@ -118,13 +61,13 @@ typedef NS_ENUM(NSInteger, LRAuthStatus){
      
      @since 1.0
      */
-    LRAuthStatusUnknown = -1,
+    LRAuthStatusUnknown,
     /**
      Authorization is in process and has not yet been completed.
      
      @since 1.0
      */
-    LRAuthStatusAuthorizing = 0,
+    LRAuthStatusAuthorizing,
     /**
      The SDK has been successfully authorized.
      
@@ -139,66 +82,112 @@ typedef NS_ENUM(NSInteger, LRAuthStatus){
     LRAuthStatusError
 };
 
-extern NSString *const LinkReaderErrorDomain;
-
-
-#pragma mark -
 
 /**
- The primary purpose of LRManager is to allow the developer user to have finer-grained control over interaction with the LinkReaderSDK. If you wish to use a simple plug-n-play scanning + presentation option, see EasyReadingViewController. The LRManager (Extended) is the central managing class for various components of LinkReaderKit.
+ The primary purpose of the LRManager/`LRDetection`/`LRCaptureManager`/`LRPresenter` classes is to allow the developer user to have finer-grained control over interaction with the LinkReaderSDK. If you wish to use a simple plug-n-play scanning + presentation option, see `EasyReadingViewController`.
  
- Typical usage involves the following workflow
+ The LRManager is the class that handles authorizing applications and some other core functions of the LinkReaderSDK.
  
- 1. In your view controller, set the delegate on the shared instance : `[[LRManager sharedManager] setDelegate:self]`
- 2. Retrieve the video preview layer from LRManager and insert it into your preview subview
- 3. Authorize the SDK using -authorizeWithClientID:secret:success:failure: , and begin scanning once the authorization is completed successfully
+ A typical usage of the LRManager/LRDetection/LRCaptureManager/LRPresenter classes involve the following workflow:
+ 
+ In your view controller, set the delegate on the `LRDetection` and `LRCaptureManager` shared instance and implement the required methods on the `LRDetectionDelegate` and the `LRCaptureDelegate` protocol:
+ 
+    ```
+    [[LRDetection sharedManager] setDelegate:self]
+    [[LRCaptureManager sharedManager] setDelegate:self]
+    ```
+ 
+ Retrieve the video preview layer from `LRCaptureManager` and insert it into your preview subview. Please refer to the sample app for the complete code .
+ 
+    ```
+     LRCaptureManager *captureManager = [LRCaptureManager sharedManager];
+     captureManager.delegate = self;
+     [captureManager stopSession];
+     [self.previewLayer removeFromSuperlayer]; 
+     if ([captureManager startSession] ){
+        self.previewLayer = [captureManager previewLayer];
+        [self.previewLayer setFrame:self.view.bounds];
+        [self.view.layer addSublayer:self.previewLayer];
+     }
+    ```
+ 
+ Authorize your app with the SDK and begin scanning once the authorization is completed successfully:
+ 
+    ```
+     [[LRManager sharedManager] authorizeWithClientID:self.clientID secret:self.clientSecret success:^{
+        ...
+        NSError *error;
+        [[LRCaptureManager sharedManager] startScanning: &error];
+        ...
+     } failure:^(NSError *error) {
+        ...
+     }];
+    ```
+ 
+ When the application detects some content, the didFindPayoff: of the `LRDetectionDelegate` will be called with the payoff data. Present the payoff data using the `LRPresenter` class.
+ 
+    ```
+     - (void)didFindPayoff:(id<LRPayoff> )payoff{
+        LRPresenter *presenter = [[LRPresenter alloc] init];
+ 
+        // Check that we can indeed present the payoff view using a built-in presentation
+        if ( [self.presenter canPresentPayoff:payoff]) {
+            //Set the delgate to receive notifications when presented view controller will appear/dismiss
+            self.presenter.delegate = self;
+            // Present the payoff view
+            [self.presenter presentPayoff:payoff viewController:self];
+        } else {
+            //Handle error
+            ...
+        }
+    }
+    ```
  
  @since 1.0
  */
 @interface LRManager : NSObject
 
 /**
- Current version of the LRManager
- @discussion Get the current version of the LRManager
+ Current version of the LinkReaderSDK
+ @discussion Get the current version of the LinkReaderSDK
 
  @return The current SDK version
  
  @since 1.0
  */
-+ (NSString*) version;
++ (NSString*)version;
 
 /**
- Provides the current authorization status with regards to validating the API Key + Secret credentials.
+ Provides the current authorization status with regards to validating the application with API Key + Secret credentials.
  
  @since 1.0
  */
 @property (nonatomic, readonly) LRAuthStatus authorizationStatus;
 
 /**
- The access token of the signed in user
+ The access token of the signed-in user
  
- @since ENTER_VERSION_HERE
+ @since 2.1
  */
 @property (nonatomic, readonly) NSString * userAccessToken;
 
 /**
- The access token of the signed in user
+ The access token of the signed-in user
  
- @since ENTER_VERSION_HERE
+ @since 2.1
  */
 @property (nonatomic, readonly) NSString * userRefreshToken;
 
 
 
 /**
- Get a shared instance of the LRManager
- @discussion A convenient method to return a shared instance of the LRManager
+ Get a shared instance of the LRManager.
 
- @return A LRManager instance created by createWithClientID or nil if no LRManager has been created yet.
+ @return The LRManager shared instance
  
  @since 1.0
  */
-+ (LRManager*) sharedManager;
++ (LRManager*)sharedManager;
 
 /**
  In order to use the core functionality of the SDK, you must request authorization using the clientID and secret provided to you upon registration with the LinkCreationStudio.com website. Once authorized, you may begin processing camera input for various kinds of content. Authorization only need to occur once per application launch, and does not require refresh.

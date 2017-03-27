@@ -6,19 +6,29 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		tH/BXZMGgRNft4de+LxBvSCh1Ks=
+		9dDZg7Vmvbs65U2o8wUkOHQZSJk=
 		</data>
 		<key>Base.lproj/HPResolvingOverlay.nib</key>
-		<data>
-		fGH1ROfbbv6ej9ModWd+DMooULI=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			1x4lnj8kcV5082jdGNdAK6Gb+qI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>Base.lproj/LRLoginViewController.nib</key>
-		<data>
-		VNPLEDgBzy2VbCR9TBBk14K4hCw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Nam3OffEDxXbsqKnfUfZy8xllV8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>EasyReadingViewController.nib</key>
 		<data>
-		g7x7fFwZhFFKONt6i2/AoYs4imM=
+		xPfcwR7yETVnaMj14scqWlWpkEU=
 		</data>
 		<key>Frameworks/DMSDK.framework/Assets.car</key>
 		<data>
@@ -30,7 +40,7 @@
 		</data>
 		<key>Frameworks/DMSDK.framework/DMSDK</key>
 		<data>
-		87OQnJbwnyiYGx6Lxv0GAPH9vrw=
+		NehAINkl8IkbLXEWDLsoKOWOZv0=
 		</data>
 		<key>Frameworks/DMSDK.framework/Info.plist</key>
 		<data>
@@ -38,135 +48,123 @@
 		</data>
 		<key>Frameworks/DMSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		aFkNaMn4JIwFszGo4qWUL+ma+68=
+		VQByaFzXrGlkhvPgax1SLRLoYs8=
 		</data>
 		<key>HPFlexibleLayoutViewController.nib</key>
 		<data>
-		mXpMT1Ss+RmzOIOnfrghICzhXG8=
+		sUt7EuD43MsNxcClfN59xOA7BSM=
 		</data>
 		<key>HPWebPayoffViewController.nib</key>
 		<data>
-		ZvkI6TkIV0DDVequhpKzPjJDvEE=
+		YO7DOkI2KlcTGRz/t1XqYF9HzX4=
 		</data>
 		<key>HPWebPreviewController.nib</key>
 		<data>
-		1O2UWLifzn6ywZ71ZGJvSdX94gE=
+		dBqFXlr5pqA87/CeJ3YSbX3fOAI=
 		</data>
 		<key>Headers/EasyReadingViewController.h</key>
 		<data>
-		souB0Lgeq8RD3eH+WRb8ymRj0wM=
+		HptcZGmUEpCDn1dEHkDby57BJiE=
 		</data>
 		<key>Headers/LRAction.h</key>
 		<data>
-		+2XLtPItOBpLpyArd0gyM4AEAcw=
+		2xC90xUeMpVFBMvL4sqaAshbehY=
 		</data>
 		<key>Headers/LRCalendarEventPayoff.h</key>
 		<data>
-		s/uSZwuSgJLXEUbcR+n2oRTzrA8=
+		QHr/4qctWUNtehhwX2SQ/1ypF1M=
 		</data>
 		<key>Headers/LRCaptureManager.h</key>
 		<data>
-		8vW1bEnGKkJemOpqD+gLAxdezOM=
+		PX0Xex0asifiWB0N2smvqObq29c=
 		</data>
 		<key>Headers/LRContactPayoff.h</key>
 		<data>
-		2ymIlH/DOdbTqT3lqgejyHciluE=
+		LAVvQlniB9EKymJK5PE3LTt36AY=
 		</data>
 		<key>Headers/LRDetection.h</key>
 		<data>
-		nYhe1oVJhabkgrbURM+qg/IgrIo=
+		RlZ0i4QpTtLY3iVsOhP07LJoeNs=
 		</data>
 		<key>Headers/LREmailPayoff.h</key>
 		<data>
-		Jbpnbywpl4wl6eDYZXK+bu+lJAQ=
+		Wy/JpvyRInBXNz7ciGz2kR7UXvU=
 		</data>
 		<key>Headers/LREnhancedWebPayoff.h</key>
 		<data>
-		hH9SDd8SVelg+Z2dke0e71OusYw=
+		2GnMct+ghAUCpdUNVMuc1uXqkbc=
 		</data>
 		<key>Headers/LRLayoutPayoff.h</key>
 		<data>
-		T8WzcTrBhwBReIf01q4wwThroRs=
+		fLtUc1I3dDWTkFwYgT4pPvGdfIE=
 		</data>
 		<key>Headers/LRLocationPayoff.h</key>
 		<data>
-		qvVdyI8ca5MvcCFw6Qq/8B4A0fI=
+		Oulk65pzNWe9V81ICXLe7b6MtbI=
 		</data>
 		<key>Headers/LRLoginViewController.h</key>
 		<data>
-		pgISpLbhYWOt8CR+kY9M4OYJUCE=
+		PfdGw1quTFarCMksZA8+1bA9a2A=
 		</data>
 		<key>Headers/LRManager.h</key>
 		<data>
-		NOu95k0GYFAZwv1UWbJSEvzIQ6o=
+		4Gsljq+MM0gNiAJdGHdu4RZXN94=
 		</data>
 		<key>Headers/LRMmsPayoff.h</key>
 		<data>
-		IEptFdYa4OX2utFL23ob0A6K8qY=
+		T+coI+D8TMkgo3NMSPDmTzy2W54=
+		</data>
+		<key>Headers/LRNavigationController.h</key>
+		<data>
+		l6uXojyxL8ijxGRDIGySIA6WFmI=
 		</data>
 		<key>Headers/LRPayoff.h</key>
 		<data>
-		4nPXmQK613JYDEJP0ENQ9rMkrts=
+		jeTDN4v56CnF5jdP0GbUCYCT4Uk=
 		</data>
 		<key>Headers/LRPayoffPresenter.h</key>
 		<data>
-		m7Te3s0aLnVEIgQonyu1mwSkJdE=
+		bSTymIoB6z+DRwrKPlEF4ic1uT0=
 		</data>
 		<key>Headers/LRPayoffTypes.h</key>
 		<data>
-		PbcaGnxhK2N15xzvM1l8ftZz4UE=
+		TwxfElkeD4YLHIHlc0SuoK2iBAE=
 		</data>
 		<key>Headers/LRPhoneCallPayoff.h</key>
 		<data>
-		+555VVMe+sRKGP65jVr6lGPmFdg=
+		DL25lDtr8aDRAkKF0wypNpN7N0g=
 		</data>
 		<key>Headers/LRPresenter.h</key>
 		<data>
-		Td+LWAG/qw/KYQvYr4OrtZW7044=
+		YUv4u5GzvgoZxkLYXTYYKjlnIoM=
 		</data>
 		<key>Headers/LRSharePayoff.h</key>
 		<data>
-		urcD/eBOd3l5AEJGF4WZ+5N7SLU=
+		c+Rp6BURZyQCc+oUFX+nXBNZOpg=
 		</data>
 		<key>Headers/LRSmsPayoff.h</key>
 		<data>
-		+A3LF0VWsmtVIBoBZaJDKB3+BP8=
+		NTvLLwwnzaBYVkkLUFMDivfGd5k=
 		</data>
 		<key>Headers/LRWebPayoff.h</key>
 		<data>
-		QyCYX9lhOFnX3IcZlMxCIRYjwe8=
+		hlKD97et1wJp3IviIVxgGi4Yr1w=
 		</data>
 		<key>Headers/LinkReaderKit.h</key>
 		<data>
-		uj4NysFgkWKPeoejX7XQjFDASeg=
+		XpNlAJyQb16h9hZGG4IM/Ky36LY=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bb//TzPZzHw66tkS+KfcXmYqw7U=
+		fo1YUr8wi6MOdp7YAmJSMrBi3P8=
 		</data>
 		<key>LRCropMarkView.nib</key>
 		<data>
-		OyK1WdalEdFfVl9Cr5y1yixjREo=
+		+7VCM072CjPNXwfGVGaNyBiMx7g=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		6Ztl5JmElFDEuYj+8bQhWskiJUo=
-		</data>
-		<key>PrivateHeaders/LRHTTPRequester.h</key>
-		<data>
-		G94cLtrWgS9OHBaDdt3vTmYynAk=
-		</data>
-		<key>PrivateHeaders/LRManagerPrivate.h</key>
-		<data>
-		vOXpjN9FgQVcbk9au1ZE7lq/yEw=
-		</data>
-		<key>PrivateHeaders/LRPrivateConstants.h</key>
-		<data>
-		SFVrqOIiwk2ma4uGML+XFUIO5LE=
-		</data>
-		<key>PrivateHeaders/LRUtils.h</key>
-		<data>
-		VJT78vdgazFp/flRQLRfJFE2JOA=
 		</data>
 		<key>de.lproj/HPResolvingOverlay.strings</key>
 		<dict>
@@ -190,7 +188,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MWqE8vi9d7jCU0H4vaJTKycZUXE=
+			g1ZOimTvE1/GmkOrt36qUofwn8g=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -217,7 +215,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2TAw0ecKh5UO1jUUu+3jwCYrIUo=
+			H6brt3PZGE8uoW3fM60mIGf99a4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -244,7 +242,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yLLFOKSCSURt6bzSdILKdVAFF/c=
+			cE8woGYOcc+xvZcReTq9KwQ15is=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -271,7 +269,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			g2OsoUnKRYpWgz5pMvMAx6y0ar8=
+			rSICsHGdbtJqD07KPDYd9PN437s=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -298,7 +296,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mRMTKN7XfBqKIG3AYRf6FOvRBRk=
+			WMa3LE5fmBgFu66LxxRAcY8ffJg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -325,7 +323,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+FNqeAF4dJ9GNwdct8hJtY+uzAw=
+			N7Sn93ytdvLrfBPcTnv4dBAcRLU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -352,7 +350,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			41Cy7QQfBADENG5F26G8zqjCP4U=
+			7Hume1cS60gewOoj6nt0k9Ivv94=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -379,7 +377,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cJ32Vd8UvijkwIl7QkBpaPrjYv0=
+			K6nLm+H97jo+wxiTDMqrqTk8sCs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -406,7 +404,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XLembMFN1TjAG8Nf9owwt0SQ7oU=
+			qiM3RJkGMuNeKYy9fSPqfevXVpc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -433,14 +431,14 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Q67RZIKvZVn0KvIZ1tZzJlWX8+0=
+			ybU+qEa12LAHrtAFbnFBAo+S3C8=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>release_strip_archs.sh</key>
 		<data>
-		17VRaO7M8FVMlwZjz7ccAIQ24hQ=
+		rUxA2ubGq8Jg0RGYpGwgofDOAFo=
 		</data>
 		<key>youtube-player.html</key>
 		<data>
@@ -453,44 +451,48 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tH/BXZMGgRNft4de+LxBvSCh1Ks=
+			9dDZg7Vmvbs65U2o8wUkOHQZSJk=
 			</data>
 			<key>hash2</key>
 			<data>
-			DEFmicek1VCJP6WT56dHRQyJDSnpvwHl4TZGO71dqFE=
+			lEa452B6aWSaY0SgzxJLN+OG1DH+o7S6jVRHS3wnUMk=
 			</data>
 		</dict>
 		<key>Base.lproj/HPResolvingOverlay.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fGH1ROfbbv6ej9ModWd+DMooULI=
+			1x4lnj8kcV5082jdGNdAK6Gb+qI=
 			</data>
 			<key>hash2</key>
 			<data>
-			p+HlfHg9PNlVSCRrScE5DCNcv22oEIsP1ZSNc1GjwPE=
+			8iYM/1p5X1I7EMv3B9cAbJyk/CdR/ONJhJCvDORlyOc=
 			</data>
+			<key>optional</key>
+			<true/>
 		</dict>
 		<key>Base.lproj/LRLoginViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VNPLEDgBzy2VbCR9TBBk14K4hCw=
+			Nam3OffEDxXbsqKnfUfZy8xllV8=
 			</data>
 			<key>hash2</key>
 			<data>
-			W0lHWz3qhcIbRVjr0ne833cLzWQRqcfIZvwDX1gS+14=
+			ulyNDoLwkZ+w/SgRn5QGHYytsBL1hFG6lXrpCGsNGLw=
 			</data>
+			<key>optional</key>
+			<true/>
 		</dict>
 		<key>EasyReadingViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			g7x7fFwZhFFKONt6i2/AoYs4imM=
+			xPfcwR7yETVnaMj14scqWlWpkEU=
 			</data>
 			<key>hash2</key>
 			<data>
-			ux1vcYXwIuJChkxMw6SHNsivpZJNuQ6s8DafjaE9oEg=
+			StAEh7TnWcxE0155t2U7GS0bbiFvjUS0NzR44574X7c=
 			</data>
 		</dict>
 		<key>Frameworks/DMSDK.framework/Assets.car</key>
@@ -519,11 +521,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			87OQnJbwnyiYGx6Lxv0GAPH9vrw=
+			NehAINkl8IkbLXEWDLsoKOWOZv0=
 			</data>
 			<key>hash2</key>
 			<data>
-			b1wfDv1gNfsLhe/zyDyx9B0PJc1CpS0wuYRjqgQ1pas=
+			pg7UF+ECa63VxqPOr6rpqfNSz6xl1KJIZZHxfnZl0c0=
 			</data>
 		</dict>
 		<key>Frameworks/DMSDK.framework/Info.plist</key>
@@ -541,297 +543,308 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aFkNaMn4JIwFszGo4qWUL+ma+68=
+			VQByaFzXrGlkhvPgax1SLRLoYs8=
 			</data>
 			<key>hash2</key>
 			<data>
-			tGDuBsLWJatCRZ6oPyKF/X2mfzltod1VV0euvbvuWC8=
+			dauSGYJ/cN5JSZ6VVazwjgILwCOxKCm1UFrrj0jzFLQ=
 			</data>
 		</dict>
 		<key>HPFlexibleLayoutViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mXpMT1Ss+RmzOIOnfrghICzhXG8=
+			sUt7EuD43MsNxcClfN59xOA7BSM=
 			</data>
 			<key>hash2</key>
 			<data>
-			roLr4Zh7/LduVtNNqk1/ObdMHQY6fIDU4MVcVDCTIlw=
+			pnqH60wlqh+xvQHNqka/c3DGAvBk27Td+4Hk3Iw6jnc=
 			</data>
 		</dict>
 		<key>HPWebPayoffViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZvkI6TkIV0DDVequhpKzPjJDvEE=
+			YO7DOkI2KlcTGRz/t1XqYF9HzX4=
 			</data>
 			<key>hash2</key>
 			<data>
-			qFhpbx3dyec4gBkAqWJTBlxZZnz4lI+VnjbFADfb230=
+			/iFWI7dQ1tIl0GHHQySV0DAzBc2OlTHCxKpXgIaG9u4=
 			</data>
 		</dict>
 		<key>HPWebPreviewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1O2UWLifzn6ywZ71ZGJvSdX94gE=
+			dBqFXlr5pqA87/CeJ3YSbX3fOAI=
 			</data>
 			<key>hash2</key>
 			<data>
-			cHNbFGLHf6G4qMRzoXeH0RtFPySyYE5AKfDie7Nx1mM=
+			RRVjVVoKzDfk3gnETQugsk2nAU1DjFnVEC+3V61R3AY=
 			</data>
 		</dict>
 		<key>Headers/EasyReadingViewController.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			souB0Lgeq8RD3eH+WRb8ymRj0wM=
+			HptcZGmUEpCDn1dEHkDby57BJiE=
 			</data>
 			<key>hash2</key>
 			<data>
-			2QbxksABqfuK4/Vt4oPqFezUvF5/DV2VcmzoyE4ssbg=
+			V2hctYeXjhO0+gjGWY5Omc1zSP28Vvc8oyAqCJ2bpBM=
 			</data>
 		</dict>
 		<key>Headers/LRAction.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+2XLtPItOBpLpyArd0gyM4AEAcw=
+			2xC90xUeMpVFBMvL4sqaAshbehY=
 			</data>
 			<key>hash2</key>
 			<data>
-			K+L4rcymdu5QPHdce00QEEGJH9ur8W6+ARRQvGdGEFM=
+			Zw3up0M4RXK5XLZYB6TxsRtYPxargI0SOS9vEIE+7ys=
 			</data>
 		</dict>
 		<key>Headers/LRCalendarEventPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			s/uSZwuSgJLXEUbcR+n2oRTzrA8=
+			QHr/4qctWUNtehhwX2SQ/1ypF1M=
 			</data>
 			<key>hash2</key>
 			<data>
-			vNP+JjISCWUXEvHYGRxe7ZU8Q/ART2z/TSC0eoDXDFo=
+			kmgnqMQS9p7JcGUdXyXq9gta5bkSPoPGIvy64pYQBAc=
 			</data>
 		</dict>
 		<key>Headers/LRCaptureManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8vW1bEnGKkJemOpqD+gLAxdezOM=
+			PX0Xex0asifiWB0N2smvqObq29c=
 			</data>
 			<key>hash2</key>
 			<data>
-			ePghJuQtfExSFOHvTnke4ll686vsERP3BKtLnDL0/Hk=
+			azbldMdRYrO9AyXKq17SSiS+Yn2aSxvN0rJGXU+Ag4s=
 			</data>
 		</dict>
 		<key>Headers/LRContactPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2ymIlH/DOdbTqT3lqgejyHciluE=
+			LAVvQlniB9EKymJK5PE3LTt36AY=
 			</data>
 			<key>hash2</key>
 			<data>
-			ICltzIr4qf3CbWsZnnT0eSDEf3wJNctQpQSHVtTrzlc=
+			P7w5r1yDRaCPtS3vx2Vzxwon7jcG6P4hi0/2HHz5avk=
 			</data>
 		</dict>
 		<key>Headers/LRDetection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nYhe1oVJhabkgrbURM+qg/IgrIo=
+			RlZ0i4QpTtLY3iVsOhP07LJoeNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			CJpFMEm5f4No+BYj4YYZ2/4rLJ4O59aGCtfVdllHQLw=
+			n3NSKlEHENSNKWJPxXKmxMv0YhwgVRcFPg15BM0rPtQ=
 			</data>
 		</dict>
 		<key>Headers/LREmailPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Jbpnbywpl4wl6eDYZXK+bu+lJAQ=
+			Wy/JpvyRInBXNz7ciGz2kR7UXvU=
 			</data>
 			<key>hash2</key>
 			<data>
-			C9QeS2c0c+4BKGGohtW91b612YYvEdCxuugeDPJu7+s=
+			bkkjvSt68jUA0cE4Vak+pFi934Tu/XKdg/B0qNHqtQc=
 			</data>
 		</dict>
 		<key>Headers/LREnhancedWebPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hH9SDd8SVelg+Z2dke0e71OusYw=
+			2GnMct+ghAUCpdUNVMuc1uXqkbc=
 			</data>
 			<key>hash2</key>
 			<data>
-			nzNGLXTNfUTc3AFFG2UPeVC5sGqFRNvaP6gOqTi+OhU=
+			b3F3kdJZfFgm5zR0BUhzXS5XflMpF2+KuN2PMeiIYv8=
 			</data>
 		</dict>
 		<key>Headers/LRLayoutPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			T8WzcTrBhwBReIf01q4wwThroRs=
+			fLtUc1I3dDWTkFwYgT4pPvGdfIE=
 			</data>
 			<key>hash2</key>
 			<data>
-			SN8cg92/G1X7yZ5iRziw01UDfOAFjx2h1WCs4v5PdOo=
+			QrAISaFzHmhhB/6gbjJ89ooGsCnKsi8Wx0+wYv1OZBo=
 			</data>
 		</dict>
 		<key>Headers/LRLocationPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qvVdyI8ca5MvcCFw6Qq/8B4A0fI=
+			Oulk65pzNWe9V81ICXLe7b6MtbI=
 			</data>
 			<key>hash2</key>
 			<data>
-			2pTLEDYoAyQI9Mj4dfkK9BHDvZmRXxM+vygbVSHlJ1g=
+			/Ma21ZnwLxEJ1AnE2xjkO0+V29dKZlurnYG1I/OhRgs=
 			</data>
 		</dict>
 		<key>Headers/LRLoginViewController.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pgISpLbhYWOt8CR+kY9M4OYJUCE=
+			PfdGw1quTFarCMksZA8+1bA9a2A=
 			</data>
 			<key>hash2</key>
 			<data>
-			RVPa2XTlY0iwEMHgoECt4AtjV2C+feEgOFC2MsK6Bew=
+			iEIqD7Uo2yWLsgnVZuzHpLNibbpsnj5wZCSofBeyBIw=
 			</data>
 		</dict>
 		<key>Headers/LRManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NOu95k0GYFAZwv1UWbJSEvzIQ6o=
+			4Gsljq+MM0gNiAJdGHdu4RZXN94=
 			</data>
 			<key>hash2</key>
 			<data>
-			IKu5wgHlhLtfj0dWoQx9GA9+SysEpQfVUB726FXGgKU=
+			lTYPv4NmdtWOklWLz2ppO0r+fJgextggEVqsewgXWzc=
 			</data>
 		</dict>
 		<key>Headers/LRMmsPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IEptFdYa4OX2utFL23ob0A6K8qY=
+			T+coI+D8TMkgo3NMSPDmTzy2W54=
 			</data>
 			<key>hash2</key>
 			<data>
-			BGEq+tc0E1jtK5QfjT56P6Dz7oTPAsC3dZ/poBDQYZE=
+			xFH8AyO/8p0BB7ZcsaoPPIX/JIePG7WbF6eoWv0A+C4=
+			</data>
+		</dict>
+		<key>Headers/LRNavigationController.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			l6uXojyxL8ijxGRDIGySIA6WFmI=
+			</data>
+			<key>hash2</key>
+			<data>
+			0qT0eQk/7Rtr31d+/cIn8K6mcqjF+gCkK/lmjmFdnFQ=
 			</data>
 		</dict>
 		<key>Headers/LRPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4nPXmQK613JYDEJP0ENQ9rMkrts=
+			jeTDN4v56CnF5jdP0GbUCYCT4Uk=
 			</data>
 			<key>hash2</key>
 			<data>
-			+ED39hj/eWtq8XqkGhpeRVnmXynYcjybiGUm9r5VUus=
+			AUfRc3D0hzv/zv6N/5w8vRhvs9VyY9Q/2AIK3WA4neI=
 			</data>
 		</dict>
 		<key>Headers/LRPayoffPresenter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			m7Te3s0aLnVEIgQonyu1mwSkJdE=
+			bSTymIoB6z+DRwrKPlEF4ic1uT0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Cd9OrT5VmsmVXA9kVsj6d+eXfCz8UW3LeRzmH0f98QE=
+			3JNj351O0p9MbSxi8dAu8dQMb87l4Vz6DOJaLwg2MOU=
 			</data>
 		</dict>
 		<key>Headers/LRPayoffTypes.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PbcaGnxhK2N15xzvM1l8ftZz4UE=
+			TwxfElkeD4YLHIHlc0SuoK2iBAE=
 			</data>
 			<key>hash2</key>
 			<data>
-			+IhUUuuar2OyRB0nAi9Y9QYjoXdGRS2uDwhjvyvf+KE=
+			DQQihg3qPw6qt8loqLfH2qlAvhuXXwYTwVdlBGPMW24=
 			</data>
 		</dict>
 		<key>Headers/LRPhoneCallPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+555VVMe+sRKGP65jVr6lGPmFdg=
+			DL25lDtr8aDRAkKF0wypNpN7N0g=
 			</data>
 			<key>hash2</key>
 			<data>
-			8Q/CbWBdWnrE6QGR0iAvbczl6RHdzseB0IzAkrkPkOE=
+			EmdVLNpIA60RkH5SUxF5D1gi+8mwyJwcI0VoZ7jFGHc=
 			</data>
 		</dict>
 		<key>Headers/LRPresenter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Td+LWAG/qw/KYQvYr4OrtZW7044=
+			YUv4u5GzvgoZxkLYXTYYKjlnIoM=
 			</data>
 			<key>hash2</key>
 			<data>
-			rTZbrFnkkeZxM/D2dOonOtdisD+V8BFPU7LgOP2LJhA=
+			AGvw9LD25x3/Jz86X1atRqliFIGb/aBTSvUZyqSszQ4=
 			</data>
 		</dict>
 		<key>Headers/LRSharePayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			urcD/eBOd3l5AEJGF4WZ+5N7SLU=
+			c+Rp6BURZyQCc+oUFX+nXBNZOpg=
 			</data>
 			<key>hash2</key>
 			<data>
-			dRVuinf2abDOFajOMcVhXdY8vVNCSQmnSJRolBekINE=
+			A65dSJQw/eszftjatEtDCNrUxLVmO5fx+uzT4rp5qJk=
 			</data>
 		</dict>
 		<key>Headers/LRSmsPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+A3LF0VWsmtVIBoBZaJDKB3+BP8=
+			NTvLLwwnzaBYVkkLUFMDivfGd5k=
 			</data>
 			<key>hash2</key>
 			<data>
-			e7j6+SRQP8UZq1YrAsDtqd8UHpkp2eGRV6lpBpHRnu0=
+			GoHRCWRMoCb1BE4xLCGnNEbsz2Gxc/ktw6YOjClbGgw=
 			</data>
 		</dict>
 		<key>Headers/LRWebPayoff.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QyCYX9lhOFnX3IcZlMxCIRYjwe8=
+			hlKD97et1wJp3IviIVxgGi4Yr1w=
 			</data>
 			<key>hash2</key>
 			<data>
-			qdVy9/TxJw5gbxJx+vlJbWSoejOEX2fcjCPgdAervTs=
+			wGf7HbtvUC3T5lohvS95/uukssDx0oM1NeDa07DND9w=
 			</data>
 		</dict>
 		<key>Headers/LinkReaderKit.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uj4NysFgkWKPeoejX7XQjFDASeg=
+			XpNlAJyQb16h9hZGG4IM/Ky36LY=
 			</data>
 			<key>hash2</key>
 			<data>
-			J3rlpIS2ndLiykw/+uiqd8nAwKg+/2qdO5L3J98yEII=
+			XiN0sCLqgiQpqh7L0IaJaj9ux9PS+3bD4iBUG1qWsZk=
 			</data>
 		</dict>
 		<key>LRCropMarkView.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OyK1WdalEdFfVl9Cr5y1yixjREo=
+			+7VCM072CjPNXwfGVGaNyBiMx7g=
 			</data>
 			<key>hash2</key>
 			<data>
-			0e6zJzjhZIvkA/GfOz+7stOMqOJCXecjDgl/52OYY8k=
+			WmL7TSO1MbaSlTeQFbgOoWk81Y4T/q5peRZpPCYGgqs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -843,50 +856,6 @@
 			<key>hash2</key>
 			<data>
 			A+lHnwM63m/CQ331I+hRD4maXKl0gXQzR0gosi8UBeo=
-			</data>
-		</dict>
-		<key>PrivateHeaders/LRHTTPRequester.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			G94cLtrWgS9OHBaDdt3vTmYynAk=
-			</data>
-			<key>hash2</key>
-			<data>
-			8WnpZ8fc0IySZ2F9l18Vu+ePC71TZ2ccNKYoOLhN2Jg=
-			</data>
-		</dict>
-		<key>PrivateHeaders/LRManagerPrivate.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			vOXpjN9FgQVcbk9au1ZE7lq/yEw=
-			</data>
-			<key>hash2</key>
-			<data>
-			m5TGzfPANV9nnJ+M67Wa6PjWNT+67gT687WjsXrZCAU=
-			</data>
-		</dict>
-		<key>PrivateHeaders/LRPrivateConstants.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			SFVrqOIiwk2ma4uGML+XFUIO5LE=
-			</data>
-			<key>hash2</key>
-			<data>
-			DfsR9ZRpUIzpyNI9HLMHhxZb9oIVk5S0yBlYuioAhBw=
-			</data>
-		</dict>
-		<key>PrivateHeaders/LRUtils.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			VJT78vdgazFp/flRQLRfJFE2JOA=
-			</data>
-			<key>hash2</key>
-			<data>
-			VabEdgTotBxAfbYp88RdhC0GYISKcWPtykITZrpYT78=
 			</data>
 		</dict>
 		<key>de.lproj/HPResolvingOverlay.strings</key>
@@ -919,11 +888,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MWqE8vi9d7jCU0H4vaJTKycZUXE=
+			g1ZOimTvE1/GmkOrt36qUofwn8g=
 			</data>
 			<key>hash2</key>
 			<data>
-			0HLPFQ6POJS5EjhBWzlNinswx0lLEGxTPG46oOC6Hic=
+			k/LtA5HiwWMtxWIsvdr6hMJpWYWvFDC/CR3yBMHT31I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -958,11 +927,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2TAw0ecKh5UO1jUUu+3jwCYrIUo=
+			H6brt3PZGE8uoW3fM60mIGf99a4=
 			</data>
 			<key>hash2</key>
 			<data>
-			i3XFTgokEl70hWir9n2p6ePsbQDBwvqVZ2sguf/KjYw=
+			gQWQwilLR5s98mSFlE9YPaESSOc+MtS6fFLh8GCCFd8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -997,11 +966,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yLLFOKSCSURt6bzSdILKdVAFF/c=
+			cE8woGYOcc+xvZcReTq9KwQ15is=
 			</data>
 			<key>hash2</key>
 			<data>
-			NNgLMtBwO2Tqv2f0ltPThpZOcnKhdoK2ErsUaOJnFxA=
+			qvZiRSUmg/niAKOsIWadVrn0DZ2cM9smidsoyV1WLGM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1036,11 +1005,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			g2OsoUnKRYpWgz5pMvMAx6y0ar8=
+			rSICsHGdbtJqD07KPDYd9PN437s=
 			</data>
 			<key>hash2</key>
 			<data>
-			5cY01oKiLNhPXEPt4WY7z6PwXVLFQOZRYyZ0R+p5oUI=
+			7SpLKOAw2/PuA6/th/fpQcWSFkrq0dCxtlkbJw9XUkQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1075,11 +1044,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mRMTKN7XfBqKIG3AYRf6FOvRBRk=
+			WMa3LE5fmBgFu66LxxRAcY8ffJg=
 			</data>
 			<key>hash2</key>
 			<data>
-			wrTrWec4+qh2qCOVJh8WV3P5H97SGNtbIPbjsNuR9NI=
+			GFnzlUnVa4OCu5qVpE3sVIrHwm6dO6bbr4p3dLftD2k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1114,11 +1083,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+FNqeAF4dJ9GNwdct8hJtY+uzAw=
+			N7Sn93ytdvLrfBPcTnv4dBAcRLU=
 			</data>
 			<key>hash2</key>
 			<data>
-			IPLG8OB6hzQarDgeLWmGUzejLLTnQxRh5V2g/F3VgSg=
+			uQB4oJd3fXkuYGqEadGBSJ8BZIT/wBXwRgYh6upVhkA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1153,11 +1122,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			41Cy7QQfBADENG5F26G8zqjCP4U=
+			7Hume1cS60gewOoj6nt0k9Ivv94=
 			</data>
 			<key>hash2</key>
 			<data>
-			TSUkmeSfls9iw83TZuz2HQGl2UiA8NtDQvb8F0P2SKI=
+			RoZyUXZwmACX9ZzRobP/CZOxF6bbxmeRcZ31nQgVBiY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1192,11 +1161,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cJ32Vd8UvijkwIl7QkBpaPrjYv0=
+			K6nLm+H97jo+wxiTDMqrqTk8sCs=
 			</data>
 			<key>hash2</key>
 			<data>
-			DJ+EC8YXg5+LcgqZVlNTaMAKwd1a6ngICwIVA+Yt56Y=
+			IMm/RjO5pPdXjc+qBfgGct+2/oZP2kV9vdramTgK7+k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1231,11 +1200,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XLembMFN1TjAG8Nf9owwt0SQ7oU=
+			qiM3RJkGMuNeKYy9fSPqfevXVpc=
 			</data>
 			<key>hash2</key>
 			<data>
-			q/5NN8MFtP7IgR6ZEoDbbA/q6FLjMkQrt0buAz/Tjgg=
+			7gBeNw78jU7viPmF4pc4HOfk8rBcHDeZ3NWigPJZTWg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1270,11 +1239,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Q67RZIKvZVn0KvIZ1tZzJlWX8+0=
+			ybU+qEa12LAHrtAFbnFBAo+S3C8=
 			</data>
 			<key>hash2</key>
 			<data>
-			HWDfRW08FwudhZQJCgK3/7D1ju1ps9A4lbJ4/guJ5dw=
+			sVoP2JUjKdf2pr2XQs05iM8s73lEm5I42TsaokWsG/M=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1283,11 +1252,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			17VRaO7M8FVMlwZjz7ccAIQ24hQ=
+			rUxA2ubGq8Jg0RGYpGwgofDOAFo=
 			</data>
 			<key>hash2</key>
 			<data>
-			eE/wuKwXDEP0+kHlMSMZrwDrSODTqFNWbPrW7kZiuKQ=
+			Yqjsa1jcZHlZOo5ovrzS3AjPtk4bEevIdtEvI1TRLzw=
 			</data>
 		</dict>
 		<key>youtube-player.html</key>
@@ -1319,11 +1288,6 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
-		</dict>
-		<key>^Base\.lproj/</key>
-		<dict>
-			<key>weight</key>
-			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -1369,11 +1333,6 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
-		</dict>
-		<key>^Base\.lproj/</key>
-		<dict>
-			<key>weight</key>
-			<real>1010</real>
 		</dict>
 		<key>^Info\.plist$</key>
 		<dict>

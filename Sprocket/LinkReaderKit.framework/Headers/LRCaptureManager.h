@@ -11,11 +11,86 @@
 @import AVFoundation;
 
 /**
- The error domain string used when camera errors are generated
+ Enumerates the current state of the camera and frame scanner.
  
  @since 1.0
  */
-extern NSString *const LinkReaderCameraErrorDomain;
+typedef NS_ENUM(NSInteger, LRCaptureState){
+    /**
+     The camera is not available for use
+     
+     @since 1.0
+     */
+    LRCameraNotAvailable,
+    /**
+     The camera has stopped, and is not sending frames
+     
+     @since 1.0
+     */
+    LRCameraStopped,
+    /**
+     The camera has started and is sending frames
+     
+     @since 1.0
+     */
+    LRCameraRunning,
+    /**
+     The camera is running, and frames are being processed for data.
+     
+     @since 1.0
+     */
+    LRScannerRunning,
+};
+
+/**
+ The error domain string used when camera errors are generated. See LRCameraError for error types.
+ 
+ @since 1.0
+ */
+FOUNDATION_EXPORT NSString *const LRCameraErrorDomain;
+
+/**
+ Enumerates the types of camera errors found in the LRCameraErrorDomain.
+ 
+ @since 1.0
+ */
+typedef NS_ENUM(NSInteger, LRCameraError) {
+    
+    /**
+     An unknown camera error was encountered
+     
+     @since 1.0
+     */
+    LRCameraErrorUnknown,
+    
+    /**
+     Camera access has been denied by the user (or restricted via parental controls)
+     
+     @since 1.0
+     */
+    LRCameraErrorCameraDenied,
+    
+    /**
+     An invalid camera transition ocurred. E.g. from LRCameraStopped to LRCameraScanning by calling startScanning: before startSession
+     
+     @since 2.1
+     */
+    LRCameraErrorCameraInvalidTransition,
+    
+    /**
+     There was an error configuring the camera or capture session
+     
+     @since 1.0
+     */
+    LRCameraErrorConfigurationError,
+    
+    /**
+     There was an error with a metadata detector
+     
+     @since 1.0
+     */
+    LRCameraErrorDetectorError
+};
 
 /**
  The LRCaptureDelegate provides a set of methods to help a delegate manage changes to camera/scanner state and error conditions. These are helpful for informing decisions about UI and recovering from problems. For example, the developer may wish to display appropriate UI when state changes from scanning to cameraRunning, or in response to an error.
@@ -35,7 +110,10 @@ extern NSString *const LinkReaderCameraErrorDomain;
 - (void)didChangeFromState:(LRCaptureState)fromState toState:(LRCaptureState)toState;
 
 /**
- Called when an error with the camera session has occurred
+ Called when an error with the camera session has occurred. Error can be of any of the following domains:
+ - LRCameraErrorDomain
+ - LRAuthorizationErrorDomain
+ 
  
  @param error Camera error with code
  
@@ -47,14 +125,19 @@ extern NSString *const LinkReaderCameraErrorDomain;
 
 
 /**
- LRCaptureManager is the primary interface between the client application and the camera + scanning. The preferred interface for client applications is to use the sharedManager singleton. From there, the camera session may be started so that the video preview may be displayed onscreen. In order to start processing input for data via the scanner, the SDK must first be authorized using [LRManager authorizeWithClientID:secret:success:failure:]
+ 
+ The primary purpose of LRCaptureManager is to allow the developer user to have finer-grained control over interaction with the LinkReaderSDK. If you wish to use a simple plug-n-play scanning + presentation option, see `EasyReadingViewController`.
+ 
+ LRCaptureManager is the primary interface between the client application and the camera + scanning.
+ 
+ Please refer to the LRManager class for instructions on how to use the `LRManager`/`LRDetection`/LRCaptureManager/`LRPresenter` classes.
 
  @since 1.0
  */
 @interface LRCaptureManager : NSObject
 
 /**
- The LRCaptureManager delegate received callbacks regarding camera state and errors.
+ The LRCaptureManager delegate receives callbacks regarding camera state and errors.
 
  @since 1.0
  */
@@ -84,9 +167,9 @@ extern NSString *const LinkReaderCameraErrorDomain;
 @property (nonatomic, readonly) AVCaptureDevice *device;
 
 /**
- Returns a shared instance of LRCaptureManager. This is the preferred way to interact with the camera capture and scanning.
+ Returns a shared instance of LRCaptureManager.
 
- @return Shared instance of LRCaptureManager
+ @return The LRCaptureManager shared instance
 
  @since 1.0
  */
@@ -97,7 +180,7 @@ extern NSString *const LinkReaderCameraErrorDomain;
 
  @discussion This configures and begins the camera session. If setup appears to be fine, YES is returned and the captureState is set to Running. Any errors that might occur will be reported through the `-cameraFailedError:` delegate method, and are likely due to an AVCaptureSessionRuntimeErrorNotification.
 
- @return YES If the captureState is successfully set to LRCameraRunning; NO if the session was already running.
+ @return YES If the captureState successfully transitioned to LRCameraRunning; NO if the session was already running or an error ocurred.
 
  @since 1.0
  */
@@ -113,9 +196,9 @@ extern NSString *const LinkReaderCameraErrorDomain;
 /**
  Start actively scanning for content via the camera input. The camera must be running.
  
- @discussion The LRManager must have successfully completed authorization before scanning can begin. Should authorization fail, scanning will not start and NO will be returned, along with an error message via the -scannerFailedError: method
+ @discussion The LRManager must have successfully completed authorization before scanning can begin. If the application has not been authorized, scanning will not start and NO will be returned.
  
- @property: error
+ @param error Pointer to an error object that might be populated when an error ocurrs.
  
  @return BOOL YES if scanning started, NO if there was an error.
  
@@ -131,40 +214,3 @@ extern NSString *const LinkReaderCameraErrorDomain;
 - (void)stopScanning;
 
 @end
-
-/**
- Enumerates the types of camera errors.
-
- @since 1.0
- */
-typedef NS_ENUM(NSInteger, LRCameraError) {
-
-    /**
-     An unknown camera error was encountered
-
-     @since 1.0
-     */
-    LRCaptureErrorUnknown = 0,
-    
-    /**
-     Camera access has been denied by the user (or restricted via parental controls)
-     
-     @since 1.0
-     */
-    LRCaptureCameraDenied,
-    
-    /**
-     There was an error configuring the camera or capture session
-     
-     @since 1.0
-     */
-    LRCaptureConfigurationError,
-    
-    /**
-     There was an error with a metadata detector
-     
-     @since 1.0
-     */
-    LRCaptureErrorDetector,
-    
-};

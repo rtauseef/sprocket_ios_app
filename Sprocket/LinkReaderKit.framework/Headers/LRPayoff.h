@@ -7,91 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define LR_PAYOFF_ERROR_DOMAIN @"LRPayoffErrorDomain"
-
-///**
-// The payoff type is unknown or unparsable
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeUnknown;
-///**
-// URL formats:
-// http (standard URL)
-// urlto
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeWebURL;
-///**
-// Email formats:
-// mailto
-// matmsg
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeEmail;
-///**
-// Phone number format:
-// tel
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypePhoneNumber;
-///**
-// Contact Card formats:
-// mecard
-// bizcard
-// vcard
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeContact;
-///**
-// SMS formats:
-// sms
-// smsto
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeSMS;
-///**
-// MMS formats:
-// mms
-// mmsto
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeMMS;
-///**
-// Location format:
-// geo
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeLocation;
-///**
-// Event formats:
-// vcalendar
-// vevent
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeEvent;
-///**
-// Rich payoff, type layout
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeLayout;
-///**
-// Rich payoff, type share. Typically used as a Layout action
-// 
-// @since 1.0
-// */
-//extern NSString * const LRPayoffTypeShare;
-
-
 
 @protocol LRPayoff <NSObject>
 
@@ -121,7 +36,7 @@
  
  @since 1.0
  */
-+(BOOL)isThisPayoffType:(id)payoffObject;
++ (BOOL)isThisPayoffType:(id)payoffObject;
 
 
 /**
@@ -133,7 +48,7 @@
  
  @since 1.0
  */
-+(void)parsePayoff:(id)payoffObject completion:(void(^)(id<LRPayoff>  payoff, NSError * error))completion;
++ (void)parsePayoff:(id)payoffObject completion:(void(^)(id<LRPayoff>  payoff, NSError * error))completion;
 
 @end
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 HP. All rights reserved.
 //
 
-#import "LRWebPayoff.h"
+#import <LinkReaderKit/LRWebPayoff.h>
 
 @interface LREnhancedWebPayoff : LRWebPayoff
 

@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 HP. All rights reserved.
 //
 
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 /**
  Represents data that is to be presented in terms of a user interface

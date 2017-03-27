@@ -5,18 +5,15 @@
 //  Copyright (c) 2015 HP. All rights reserved.
 //
 
-#import "LRPayoff.h"
-#import "LRLayoutPayoff.h"
-#import "LRSharePayoff.h"
-#import "LREmailPayoff.h"
-#import "LRContactPayoff.h"
-#import "LRCalendarEventPayoff.h"
-#import "LRSmsPayoff.h"
-#import "LRMmsPayoff.h"
-#import "LRPhoneCallPayoff.h"
-#import "LRWebPayoff.h"
-#import "LRLocationPayoff.h"
-#import "LREnhancedWebPayoff.h"
-
-
-#import "LRPayoffPresenter.h"
+#import <LinkReaderKit/LRPayoff.h>
+#import <LinkReaderKit/LRLayoutPayoff.h>
+#import <LinkReaderKit/LRSharePayoff.h>
+#import <LinkReaderKit/LREmailPayoff.h>
+#import <LinkReaderKit/LRContactPayoff.h>
+#import <LinkReaderKit/LRCalendarEventPayoff.h>
+#import <LinkReaderKit/LRSmsPayoff.h>
+#import <LinkReaderKit/LRMmsPayoff.h>
+#import <LinkReaderKit/LRPhoneCallPayoff.h>
+#import <LinkReaderKit/LRWebPayoff.h>
+#import <LinkReaderKit/LRLocationPayoff.h>
+#import <LinkReaderKit/LREnhancedWebPayoff.h>

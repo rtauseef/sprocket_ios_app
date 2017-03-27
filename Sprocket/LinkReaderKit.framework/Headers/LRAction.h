@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 /**
  LRAction is the model representation of what will end up being a button on the screen with a specific action
@@ -68,7 +68,7 @@
  
  @since 1.0
  */
-+(void)getLRActionWithPayoffFromDictionary:(NSDictionary *)action
++ (void)getLRActionWithPayoffFromDictionary:(NSDictionary *)action
                                      index:(NSInteger)index
                                  completion:(void(^)(LRAction* lrAction, NSInteger index, NSError* error))completion;
 

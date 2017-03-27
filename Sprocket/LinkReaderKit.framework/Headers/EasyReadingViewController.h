@@ -18,13 +18,23 @@
 
 
 /**
- This method is called when an error in the easyReadingViewController has occurred and should be dealt with by the client (i.e., your) application. Typically only authorization errors and problems with the video capture session will be reported. In the case of an authentication errors, you may wish to attempt reauthentication using -(void)reauthenticate; In the case of a payoff-related error, you will need to provide the appropriate notification to your users and call the -resumeScanning method at the appropriate time.
+ This method is called when an error in the easyReadingViewController has occurred and should be dealt with by the client (i.e., your) application. In the case of an authentication errors, you may wish to attempt reauthentication using `-(void)reauthenticate` In the case of a payoff-related error, you will need to provide the appropriate notification to your users and call the -resumeScanning method at the appropriate time.
+ 
+ The possible error domains received here are:
+ 
+ - LRAuthorizationErrorDomain : See `LRManager`
+ 
+ - LRPayoffResolverErrorDomain : See `LRDetection`
+ 
+ - LRPayoffErrorDomain : See `LRDetection`
+ 
+ - LRCameraErrorDomain : See `LRCaptureManager`
  
  @param error NSError with code and description
 
  @since 1.0
  */
--(void)readerError:(NSError *)error;
+- (void)readerError:(NSError *)error;
 
 @optional
 
@@ -35,7 +45,7 @@
  
  @since 1.0
  */
--(void)readerFinished;
+- (void)readerFinished;
 
 @end
 
@@ -135,7 +145,7 @@
  
  @since 1.0
  */
--(instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret delegate:(id<EasyReadingDelegate>)delegate success:(void (^)(void))success failure:(void (^)(NSError * error))failure;
+- (instancetype)initWithClientID:(NSString *)clientID secret:(NSString *)secret delegate:(id<EasyReadingDelegate>)delegate success:(void (^)(void))success failure:(void (^)(NSError * error))failure;
 
 /**
  The done button is normally only hidden on UINavigationController stacks. In the case of modal presentations, the done button will dismiss its modal presentation. In some cases, such as when the EasyReadingViewController is a child of a UITabBarController, you may need to hide the Done button
@@ -144,7 +154,7 @@
  
  @since 1.0
  */
--(void)forceDoneButtonHidden:(BOOL)hidden;
+- (void)forceDoneButtonHidden:(BOOL)hidden;
 
 
 /**
@@ -156,13 +166,13 @@
 
   @since 1.0
  */
--(void)reauthenticateWithSuccess:(void (^)(void))success failure:(void (^)(NSError * error))failure;
+- (void)reauthenticateWithSuccess:(void (^)(void))success failure:(void (^)(NSError * error))failure;
 
 /**
  When a payoff is detected, scanning is paused to prevent repetitive triggering. In the case of a payoff-related error, scanning will need to be resumed once the error has been properly handled. This method is not required under normal scan-payoff flows. Once the payoff display dismisses, the viewer returns to scanning mode.
  
  @since 1.0
  */
--(void)resumeScanning;
+- (void)resumeScanning;
 
 @end

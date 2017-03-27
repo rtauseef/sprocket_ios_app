@@ -9,36 +9,113 @@
 #import <Foundation/Foundation.h>
 #import "LRPayoff.h"
 
-#define LR_PAYOFF_RESOLVER_ERROR_DOMAIN @"LRPayoffResolverErrorDomain"
-#define LR_PAYOFF_ERROR_DOMAIN @"LRPayoffErrorDomain"
+/**
+ The domain string for errors that occur when LinkReaderSDK is trying to retrieve the experience related with a QRCode or a Watermark. See LRPayoffError for error types.
+ 
+ @since 3.0
+ */
+FOUNDATION_EXPORT NSString *const LRPayoffResolverErrorDomain;
 
 /**
- These are the errors which can occur when LinkReaderSDK is trying to get the experience related with QRCode or Watermark read.
+ Error codes for LRPayoffResolverErrorDomain.
  
  @since 2.0.0
  */
-typedef NS_ENUM(NSInteger, LRPayoffResolverErrorCode) {
-    LRPayoffResolverErrorCode_ServerError = 0,
-    LRPayoffResolverErrorCode_PayloadNotFound,
-    LRPayoffResolverErrorCode_PayloadOutOfRange,
-    LRPayoffResolverErrorCode_BadResolveRequest,
-    LRPayoffResolverErrorCode_ConnectionError,
-    LRPayoffResolverErrorCode_RequestCancelled,
-    LRPayoffResolverErrorCode_NetworkConnectionLost,
-    LRPayoffResolverErrorCode_NetworkRequestTimedOut,
-    LRPayoffResolverErrorCode_NotAuthorized
+typedef NS_ENUM(NSInteger, LRPayoffResolverError) {
+    /**
+     A server error occurred when retrieving the payoff
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorServerError,
+    /**
+     Trigger expired or not linked to a payoff
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorPayloadNotFound,
+    /**
+     The trigger value was not recognized by the Link server
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorPayloadOutOfRange,
+    /**
+     The server rejected the resolver request
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorBadResolveRequest,
+    /**
+     There was a network error while attempting to retrieve the content
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorConnectionError,
+    /**
+     The request to retrieve content was canceled by calling 'cancelPayoffRetrieval'
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorRequestCancelled,
+    /**
+     The internet connection is not available before making the resolver request
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorNetworkConnectionLost,
+    /**
+     The resolver request timed out
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorNetworkRequestTimedOut,
+    /**
+     The applicaiton is not authorized to retrieve the resolver data
+     
+     @since 2.0
+     */
+    LRPayoffResolverErrorNotAuthorized
 };
 
+
 /**
- These are the errors which can occur when LinkReaderSDK is trying to parse the experience related with QRCode or Watermark read.
+ The domain string for errors that occur when LinkReaderSDK is trying to parse the experience related with a QRCode or a Watermark. See LRPayoffError for error types.
+ 
+ @since 3.0
+ */
+FOUNDATION_EXPORT NSString *const LRPayoffErrorDomain;
+
+/**
+ Error codes for LRPayoffErrorDomain.
  
  @since 2.0.0
  */
-typedef NS_ENUM(NSInteger, LRPayoffErrorCode) {
-    LRPayoffErrorCode_PayoffNotPresentInData,
-    LRPayoffErrorCode_InvalidPayoffData,
-    LRPayoffErrorCode_MissingOrUnknownPayoffType,
-    LRPayoffErrorCode_InvalidPayoffFormat
+typedef NS_ENUM(NSInteger, LRPayoffError) {
+    /**
+     The payoff is not present in the response data
+     
+     @since 2.0
+     */
+    LRPayoffErrorPayoffNotPresentInData,
+    /**
+     The payoff data is not valid
+     
+     @since 2.0
+     */
+    LRPayoffErrorInvalidPayoffData,
+    /**
+     The payoff type is not recognized by the LinkReaderSDK
+     
+     @since 2.0
+     */
+    LRPayoffErrorMissingOrUnknownPayoffType,
+    /**
+     The payoff data is not in the expected structure or format
+     
+     @since 2.0
+     */
+    LRPayoffErrorInvalidPayoffFormat
 };
 
 
@@ -60,7 +137,7 @@ typedef NS_ENUM(NSInteger, LRTriggerType){
     /**
      Payload read from QRCode.
      
-     @since 1.0
+     @since 1.2.0
      */
     LRQRCode = 1,
 };
@@ -80,19 +157,19 @@ typedef NS_ENUM(NSInteger, LRTriggerType){
  
  @since 2.0.0
  */
-- (void)didFindPayoff:(id<LRPayoff> )payoff;
+- (void)didFindPayoff:(id<LRPayoff>)payoff;
 
 /**
- When a payload has been detected but an error has ocurred while trying to obtain the payoff linked to it, the delegate will be provided with the error.
+ When a payload has been detected but an error has ocurred while trying to obtain the payoff linked to it, the delegate will be provided with the error. The error domain will be 'LRPayoffResolverErrorDomain'
  
- @param error     an error produced while attempting to obtain the payoff.
+ @param error an error produced while attempting to obtain the payoff.
  
  @since 2.0.0
  */
 - (void)errorOnPayoffResolving:(NSError *)error;
 
 /**
- When a payload has been detected, LinkReader obtained a payoff linked to it and an error has ocurred when parsing it, the delegate will be provided with the error.
+ When a payload has been detected, LinkReader obtained a payoff linked to it and an error has ocurred when parsing it, the delegate will be provided with the error. The error domain will be 'LRPayoffErrorDomain'
  
  @param error     an error produced while attempting to parse the payoff.
  
@@ -118,13 +195,11 @@ typedef NS_ENUM(NSInteger, LRTriggerType){
 #pragma mark -
 
 /**
- The primary purpose of LRDetection is to allow the developer user to have finer-grained control over interaction with the LinkReaderSDK. If you wish to use a simple plug-n-play scanning + presentation option, see EasyReadingViewController. The LRDetection is the central class for listen detecton related events.
+ The primary purpose of LRDetection is to allow the developer user to have finer-grained control over interaction with the LinkReaderSDK. If you wish to use a simple plug-n-play scanning + presentation option, see `EasyReadingViewController`.
  
- Typical usage involves the following workflow
+ The LRDetection is the central class for listen detecton related events.
  
- 1. In your view controller, set the delegate on the shared instance : `[[LRManager sharedManager] setDelegate:self]`
- 2. Retrieve the video preview layer from LRManager and insert it into your preview subview
- 3. Authorize the SDK using -authorizeWithClientID:secret:success:failure: , and begin scanning once the authorization is completed successfully
+ Please refer to the LRManager class for instructions on how to use the `LRManager`/LRDetection/`LRCaptureManager`/`LRPresenter` classes.
  
  @since 2.0.0
  */
@@ -137,7 +212,20 @@ typedef NS_ENUM(NSInteger, LRTriggerType){
  */
 @property (nonatomic, weak) id<LRDetectionDelegate> delegate;
 
-+ (LRDetection*) sharedInstance;
+/**
+ Get a shared instance of the LRDetection.
+ 
+ @return The LRDetection shared instance
+ 
+ @since 1.0
+ */
++ (LRDetection*)sharedInstance;
+    
+/**
+ Cancels the retrieval of a payoff.
+ 
+ @since 2.0.0
+ */
 - (void)cancelPayoffRetrieval;
 
 @end

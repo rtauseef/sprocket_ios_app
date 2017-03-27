@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 HP. All rights reserved.
 //
 
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 /**
  Describes a web payoff available via URL (eg, a website)
@@ -37,13 +37,13 @@
  
  @since 1.0
  */
--(BOOL)isExternal;
+- (BOOL)isExternal;
 
 /**
  Show Web Preview
  
  @since 1.1.x
  */
--(void)showWebPreview:(BOOL)value;
+- (void)showWebPreview:(BOOL)value;
 
 @end

@@ -6,7 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
+
 @import CoreGraphics;
 @import CoreLocation;
 
@@ -34,6 +35,6 @@
  
  @since 1.0
  */
-- (instancetype) initWithLatitude:(CGFloat)latitude Longitude:(CGFloat)longitude;
+- (instancetype)initWithLatitude:(CGFloat)latitude Longitude:(CGFloat)longitude;
 
 @end

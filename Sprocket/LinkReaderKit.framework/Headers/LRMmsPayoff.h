@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 /**
  Represents an MMS message, commonly found in QRcodes. 

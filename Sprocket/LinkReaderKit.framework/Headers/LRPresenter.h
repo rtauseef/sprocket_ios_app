@@ -6,9 +6,6 @@
 //  Copyright © 2016 HP. All rights reserved.
 //
 
-#ifndef LRPresenter_h
-#define LRPresenter_h
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <LinkReaderKit/LRPayoff.h>
@@ -21,31 +18,41 @@
  
  @since 1.0
  */
--(void)presentationWillAppear;
+- (void)presentationWillAppear;
 
 /**
  Called once the payoff presentation animation has completed.
  
  @since 1.0
  */
--(void)presentationDidAppear;
+- (void)presentationDidAppear;
 
 /**
  Called when the payoff presentation has been signaled to dismiss.
  
  @since 1.0
  */
--(void)presentationWillDismiss;
+- (void)presentationWillDismiss;
 
 /**
  Called when the payoff presentation dismissal is complete.
  
  @since 1.0
  */
--(void)presentationDidDismiss;
+- (void)presentationDidDismiss;
 
 @end
 
+/**
+ 
+ The primary purpose of LRPresenter is to allow the developer user to have finer-grained control over interaction with the LinkReaderSDK. If you wish to use a simple plug-n-play scanning + presentation option, see `EasyReadingViewController`.
+ 
+ LRPresenter is the class resonsible for presenting payoff received by LRDetection callbacks.
+ 
+ Please refer to the LRManager class for instructions on how to use the `LRManager`/`LRDetection`/`LRCaptureManager`/LRPresenter classes.
+ 
+ @since 1.0
+ */
 @interface LRPresenter: NSObject
 
 /**
@@ -86,5 +93,3 @@
 - (void)presentPayoff:(id<LRPayoff> )payoff viewController:(UIViewController *)viewController;
 
 @end
-
-#endif /* LRPresenter_h */

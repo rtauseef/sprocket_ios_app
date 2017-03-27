@@ -6,7 +6,7 @@
 //
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 
 @class LRPayoffPresenter;
@@ -21,19 +21,20 @@
  
  @since 1.0
  */
--(void)payoffWillDismiss;
+- (void)payoffWillDismiss;
 
 /**
  Method that will be called after the payoff gets dismissed
  
  @since 1.0
  */
--(void)payoffDidDismiss;
+- (void)payoffDidDismiss;
 
 @end
 
 
 /**
+ LRPayoffPresenter is an abstract class that allows the creation of custom presenters for payoffs
  
  @since 1.0
  */
@@ -44,14 +45,14 @@
  
  @since 1.0
  */
-@property (strong, nonatomic) id<LRPayoff> payoff;
+@property (nonatomic) id<LRPayoff> payoff;
 
 /**
  Delegate object that will be informed when the payoff presenter gets dismissed
  
  @since 1.0
  */
-@property (strong, nonatomic) id<LRPayoffPresenterDelegate> delegate;
+@property (nonatomic) id<LRPayoffPresenterDelegate> delegate;
 
 /**
  Presents the payoff inside the a view controller
@@ -60,7 +61,7 @@
  
  @since 1.0
  */
-- (void) present:(UIViewController *)parentViewController completion:(void(^)(void))finished;
+- (void)present:(UIViewController *)parentViewController completion:(void(^)(void))finished;
 
 /**
  Method called to determine if the payoff presenter can present the current payoff
@@ -69,20 +70,20 @@
  
  @since 1.0
  */
--(BOOL)canPresentPayoff:(id<LRPayoff> )payoff;
+- (BOOL)canPresentPayoff:(id<LRPayoff> )payoff;
 
 /**
  Notifies the delegate that the payoff presenter will get dismissed
  
  @since 1.0
  */
--(void)notifyWillDismiss;
+- (void)notifyWillDismiss;
 
 /**
  Notifies the delegate that the payoff presenter got dismissed
  
  @since 1.0
  */
--(void)notifyDidDismiss;
+- (void)notifyDidDismiss;
 
 @end

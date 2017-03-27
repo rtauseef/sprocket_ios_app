@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LRPayoff.h"
+#import <LinkReaderKit/LRPayoff.h>
 
 /**
  Represents a phone number
