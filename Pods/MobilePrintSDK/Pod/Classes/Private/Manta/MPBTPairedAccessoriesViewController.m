@@ -28,6 +28,11 @@ static NSString * const kDeviceListScreenName = @"Devices Screen";
 static const NSInteger kMPBTPairedAccessoriesRecentSection = 0;
 static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
 
+typedef enum : NSUInteger {
+    PairedAccessoriesViewControllerModeForPrint,
+    PairedAccessoriesViewControllerModeForDeviceInfo
+} PairedAccessoriesViewControllerMode;
+
 @interface MPBTPairedAccessoriesViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -42,10 +47,9 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
 @property (weak, nonatomic) IBOutlet UILabel *noDevicesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
-@property (strong, nonatomic) UIImage *image;
-@property (weak, nonatomic) UIViewController *hostController;
 @property (assign, nonatomic) BOOL presentedNoDevicesModal;
-@property (strong, nonatomic) void (^printCompletionBlock)(void);
+
+@property (assign, nonatomic) PairedAccessoriesViewControllerMode mode;
 
 @end
 
@@ -103,12 +107,12 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
         self.topView.hidden = YES;
     }
     
-    [self setTitle];
+    [self setupTitle];
     [self refreshPairedDevices];
     
     if (0 == self.pairedDevices.count && !self.presentedNoDevicesModal) {
         self.presentedNoDevicesModal = YES;
-        [MPBTPairedAccessoriesViewController presentNoPrinterConnectedAlert:self showConnectSprocket:NO];
+        [self presentNoPrinterConnectedAlert:nil showConnectSprocket:NO];
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kMPTrackableScreenNotification object:nil userInfo:[NSDictionary dictionaryWithObject:kDeviceListScreenName forKey:kMPTrackableScreenNameKey]];
@@ -118,20 +122,13 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
     [super didReceiveMemoryWarning];
 }
 
-- (void)setTitle
+- (void)setupTitle
 {
-    if (nil == self.image) {
-        [self setTitle:MPLocalizedString(@"sprocket",@"Title for screen listing all available sprocket printers")];
+    if (self.mode == PairedAccessoriesViewControllerModeForPrint) {
+        [self setTitle:MPLocalizedString(@"Select Printer", @"Title for screen listing all available sprocket printers")];
     } else {
-        [self setTitle:MPLocalizedString(@"Select Printer",@"Title for screen listing all available sprocket printers")];
+        [self setTitle:MPLocalizedString(@"sprocket", @"Title for screen listing all available sprocket printers")];
     }
-}
-
-- (void)setImage:(UIImage *)image
-{
-    _image = image;
-    [self setTitle];
-    [self refreshPairedDevices];
 }
 
 - (void)didPressBack
@@ -139,26 +136,34 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-+ (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
-    UIViewController *viewControlller = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesViewController"];
-    
-    [hostController showViewController:viewControlller sender:nil];
-}
-
-+ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
-{
++ (instancetype)pairedAccessoriesViewController {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
     MPBTPairedAccessoriesViewController *vc = (MPBTPairedAccessoriesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesViewController"];
 
-    vc.image = image;
-    vc.hostController = hostController;
-    vc.printCompletionBlock = completion;
-    [vc.tableView reloadData];
+    return vc;
+}
+
++ (instancetype)pairedAccessoriesViewControllerForPrint {
+    MPBTPairedAccessoriesViewController *vc = [self pairedAccessoriesViewController];
+    vc.mode = PairedAccessoriesViewControllerModeForPrint;
+
+    return vc;
+}
+
++ (instancetype)pairedAccessoriesViewControllerForDeviceInfo {
+    MPBTPairedAccessoriesViewController *vc = [self pairedAccessoriesViewController];
+    vc.mode = PairedAccessoriesViewControllerModeForDeviceInfo;
+
+    return vc;
+}
+
++ (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion
+{
+    UIViewController *vc = [self pairedAccessoriesViewControllerForDeviceInfo];
     
     [hostController showViewController:vc sender:nil];
 }
+
 
 #pragma mark - UITableViewDataSource
 
@@ -191,7 +196,7 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
         }
         
         [[cell textLabel] setText:[MPBTSprocket displayNameForAccessory:accessory]];
-        if (self.image) {
+        if (self.mode == PairedAccessoriesViewControllerModeForPrint) {
             cell.accessoryType = UITableViewCellAccessoryNone;
         } else {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -280,7 +285,7 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
     footer.contentView.backgroundColor = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralBackgroundColor];
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!self.noDevicesView.hidden) {
 #ifndef TARGET_IS_EXTENSION
@@ -314,30 +319,13 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
             MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
             sprocket.accessory = accessory;
             
-            if (self.image  &&  self.hostController) {
-                [self dismissViewControllerAnimated:YES completion:^{
-                    MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:self.hostController.view.frame];
-                    progressView.viewController = self.hostController;
-                    [progressView printToDevice:self.image refreshCompletion:nil];
-                    if (self.printCompletionBlock) {
-                        self.printCompletionBlock();
-                        self.printCompletionBlock = nil;
-                    }
-                }];
-            }
-            else if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSelectSprocket:)]) {
-                void (^completionBlock)(void) = ^{
-                    [self.delegate didSelectSprocket:sprocket];
-                    
-                    if (self.completionBlock) {
-                        self.completionBlock(YES);
-                    }
-                };
-                
+            if (self.completionBlock) {
                 if (nil == self.parentViewController) {
-                    [self dismissViewControllerAnimated:YES completion:completionBlock];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        self.completionBlock(YES);
+                    }];
                 } else {
-                    completionBlock();
+                    self.completionBlock(YES);
                 }
             } else {
 #ifndef TARGET_IS_EXTENSION
@@ -394,13 +382,13 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
     return [[NSUserDefaults standardUserDefaults] objectForKey:kMPBTLastPrinterNameSetting];
 }
 
-+ (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprocket
+- (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprocket
 {
 #ifndef TARGET_IS_EXTENSION
     if (![[MPBTStatusChecker sharedInstance] isBluetoothEnabled]) {
         if (showConnectSprocket) {
             // The following call forces the system "Connect to Bluetooth" dialog if bluetooth has been turned off
-            CBCentralManager* cbManager = [[CBCentralManager alloc] initWithDelegate:nil queue: nil];
+            CBCentralManager *cbManager = [[CBCentralManager alloc] initWithDelegate:nil queue: nil];
         }
     } else
 #endif
@@ -413,15 +401,17 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
                                                                style:UIAlertActionStyleCancel
                                                              handler:nil];
             [alert addAction:okAction];
-            
+
+            if (!hostController) {
+                hostController = self;
+            }
             [hostController presentViewController:alert animated:YES completion:nil];
             
             NSString *source = @"Print";
-            if ([hostController isKindOfClass:[MPBTPairedAccessoriesViewController class]]) {
-                if (nil == ((MPBTPairedAccessoriesViewController *)hostController).image) {
-                    source = @"DeviceInfo";
-                }
+            if (self.mode == PairedAccessoriesViewControllerModeForDeviceInfo) {
+                source = @"DeviceInfo";
             }
+
             NSDictionary *dictionary = @{kMPBTPrinterNotConnectedSourceKey : source};
             [[NSNotificationCenter defaultCenter] postNotificationName:kMPBTPrinterNotConnectedNotification object:nil userInfo:dictionary];
         }
@@ -437,7 +427,7 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
     self.recentDevice = nil;
     self.pairedDevices = [MPBTSprocket pairedSprockets];
     
-    if (self.image) {
+    if (self.mode == PairedAccessoriesViewControllerModeForPrint) {
         self.recentDevice = [self lastAccessoryUsed];
         if (self.recentDevice) {
             for (EAAccessory *acc in self.pairedDevices) {
