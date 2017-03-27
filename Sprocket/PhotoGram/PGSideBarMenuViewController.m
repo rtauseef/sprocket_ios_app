@@ -66,11 +66,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     }
     
     self.overlayView.alpha = 0;
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(linkSettingsChanged:)
-                                                 name:kPGLinkSettingsChangedNotification
-                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,12 +73,17 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     [super viewWillAppear:animated];
     
     [self unselectMenuTableViewCell];
-    
+    [self.mainMenuTableView reloadData];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(unselectMenuTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(linkSettingsChanged:)
+                                                 name:kPGLinkSettingsChangedNotification
+                                               object:nil];
+    
     [self checkSprocketDeviceConnectivity];
     [self resizeViewAccordingRevealViewController];
     [self configureSocialSourcesMenu];
