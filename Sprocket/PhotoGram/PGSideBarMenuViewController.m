@@ -78,11 +78,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
                                              selector:@selector(unselectMenuTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(linkSettingsChanged:)
-                                                 name:kPGLinkSettingsChangedNotification
-                                               object:nil];
     
     [self checkSprocketDeviceConnectivity];
     [self resizeViewAccordingRevealViewController];
@@ -236,12 +231,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)barButtonCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)linkSettingsChanged:(NSNotification *)notification {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.mainMenuTableView reloadData];
-    });
 }
 
 #pragma mark - Social Sources Menu Methods
