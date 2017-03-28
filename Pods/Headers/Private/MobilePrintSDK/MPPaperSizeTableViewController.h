@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPPaperSizeTableViewController.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPPaperSizeTableViewController.h

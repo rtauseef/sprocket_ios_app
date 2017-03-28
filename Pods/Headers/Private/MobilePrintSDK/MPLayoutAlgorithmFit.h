@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPLayoutAlgorithmFit.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPLayoutAlgorithmFit.h

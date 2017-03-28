@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/UIImage+MPResize.h
+../../../MobilePrintSDK/Pod/Classes/Private/UIImage+MPResize.h

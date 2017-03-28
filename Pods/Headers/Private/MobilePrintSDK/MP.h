@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Public/MP.h
+../../../MobilePrintSDK/Pod/Classes/Public/MP.h

@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPAnalyticsManager.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPAnalyticsManager.h

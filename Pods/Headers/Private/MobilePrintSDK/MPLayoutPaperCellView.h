@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPLayoutPaperCellView.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPLayoutPaperCellView.h

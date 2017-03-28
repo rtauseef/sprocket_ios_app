@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRQzoneLoginProvider.h
+../../../HPPhotoProvider/Pod/Classes/HPPRQzoneLoginProvider.h

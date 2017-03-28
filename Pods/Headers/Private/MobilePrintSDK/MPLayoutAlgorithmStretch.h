@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPLayoutAlgorithmStretch.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPLayoutAlgorithmStretch.h

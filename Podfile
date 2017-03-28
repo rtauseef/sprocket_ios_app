@@ -13,8 +13,8 @@ def shared_pods
     pod 'GoogleAnalytics-iOS-SDK', '3.12'
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'CocoaLumberjack', '2.2.0'
-    pod 'MobilePrintSDK', path:'~/src/ios-print-sdk'#git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'#
-    pod 'HPPhotoProvider', path:'~/src/hp_photo_provider'#git:'https://github.com/IPGPTP/hp_photo_provider', branch:'master'#
+    pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'US5734'#path:'~/src/ios-print-sdk'#
+    pod 'HPPhotoProvider', git:'https://github.com/IPGPTP/hp_photo_provider', branch:'US5734'#path:'~/src/hp_photo_provider'#
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
 end
@@ -31,7 +31,7 @@ target "Sprocket Print" do
     pod 'GoogleAnalytics-iOS-SDK', '3.12'
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'TTTAttributedLabel', '1.10.1'
-    pod 'MobilePrintSDK', path:'~/src/ios-print-sdk'#git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'#
+    pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'US5734'#path:'~/src/ios-print-sdk'#
 end
 
 post_install do |installer_representation|

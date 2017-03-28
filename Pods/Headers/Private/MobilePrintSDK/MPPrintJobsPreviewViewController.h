@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPPrintJobsPreviewViewController.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPPrintJobsPreviewViewController.h

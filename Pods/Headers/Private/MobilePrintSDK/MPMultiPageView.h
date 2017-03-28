@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPMultiPageView.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPMultiPageView.h

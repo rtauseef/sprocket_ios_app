@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRCachingObject.h
+../../../HPPhotoProvider/Pod/Classes/HPPRCachingObject.h

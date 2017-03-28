@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Public/MPSecretKeeper.h
+../../../MobilePrintSDK/Pod/Classes/Public/MPSecretKeeper.h

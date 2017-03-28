@@ -19,6 +19,7 @@
 #import "MPBTProgressView.h"
 #import "MPBTTechnicalInformationViewController.h"
 #import "MPBTStatusChecker.h"
+#import "MPBTImageProcessor.h"
 
 #import <ExternalAccessory/ExternalAccessory.h>
 #import <CoreBluetooth/CBCentralManager.h>
@@ -46,6 +47,7 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
 @property (weak, nonatomic) UIViewController *hostController;
 @property (assign, nonatomic) BOOL presentedNoDevicesModal;
 @property (strong, nonatomic) void (^printCompletionBlock)(void);
+@property (strong, nonatomic) MPBTImageProcessor *processor;
 
 @end
 
@@ -149,12 +151,18 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
 
 + (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
 {
+    [self presentAnimatedForPrint:animated image:image processor:nil usingController:hostController andPrintCompletion:completion];
+}
+
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image processor:(MPBTImageProcessor *) processor usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
     MPBTPairedAccessoriesViewController *vc = (MPBTPairedAccessoriesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesViewController"];
 
     vc.image = image;
     vc.hostController = hostController;
     vc.printCompletionBlock = completion;
+    vc.processor = processor;
     [vc.tableView reloadData];
     
     [hostController showViewController:vc sender:nil];
@@ -318,7 +326,7 @@ static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
                 [self dismissViewControllerAnimated:YES completion:^{
                     MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:self.hostController.view.frame];
                     progressView.viewController = self.hostController;
-                    [progressView printToDevice:self.image refreshCompletion:nil];
+                    [progressView printToDevice:self.image processor:self.processor refreshCompletion:nil];
                     if (self.printCompletionBlock) {
                         self.printCompletionBlock();
                         self.printCompletionBlock = nil;
