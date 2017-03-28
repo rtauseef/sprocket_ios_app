@@ -245,6 +245,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     self.status = MPBTPrinterManagerStatusWaitingForPrinter;
 
+    if (error == MantaErrorNoSession) {
+        sprocket.accessory = nil;
+    }
+
     if ([self.delegate respondsToSelector:@selector(btPrintManager:didReceiveErrorForPrintJob:)]) {
         [self.delegate btPrintManager:self didReceiveErrorForPrintJob:self.currentJob];
     }
