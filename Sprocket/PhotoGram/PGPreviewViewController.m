@@ -795,11 +795,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     PGGesturesView *gestureView = self.gesturesViews[index];
     
-    if (gestureView.media.image) {
-        UIImage *finalImage = gestureView.media.image;
+    if (gestureView.image) {
+        UIImage *finalImage = gestureView.image;
         
-        if (gestureView.media.image.size.width > gestureView.media.image.size.height) {
-            finalImage = [[UIImage alloc] initWithCGImage: gestureView.media.image.CGImage
+        if (gestureView.image.size.width > gestureView.image.size.height) {
+            finalImage = [[UIImage alloc] initWithCGImage: gestureView.image.CGImage
                                                     scale: 1.0
                                               orientation: UIImageOrientationRight];
         }
