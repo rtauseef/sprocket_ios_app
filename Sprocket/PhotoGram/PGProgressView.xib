@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HPSimplified_Lt.ttf">
-            <string>HPSimplified-Light</string>
+        <array key="HPSimplified_Rg.ttf">
+            <string>HPSimplified-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -46,9 +46,9 @@
                             <color key="trackTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </progressView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Progress" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-dU-snA">
-                            <rect key="frame" x="45" y="260.5" width="285" height="22.5"/>
+                            <rect key="frame" x="45" y="266" width="285" height="17"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
