@@ -299,7 +299,12 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
 end
 
 Then /^I verify the "(.*?)" button text$/ do |button|
-    check_element_exists "view marked:'#{$list_loc['Edit']}'"
-    sleep(STEP_PAUSE)
+    if button == "Print to sprocket" && ENV['LANGUAGE'] == "Turkish"
+        button_name = query("UITableViewCell index:0", :text)[0]
+        raise "localization failed!" unless button_name == $list_loc[button]
+    else
+        check_element_exists "view marked:'#{$list_loc[button]}'"
+        sleep(STEP_PAUSE)
+    end
 end
  
