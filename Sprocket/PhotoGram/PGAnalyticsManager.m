@@ -383,9 +383,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (NSString *)userUniqueIdentifier
 {
     NSString *identifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
-    NSString *seed = [NSString stringWithFormat:@"%@%@", identifier, [[NSBundle mainBundle] bundleIdentifier]];
-
-    return [self obfuscateValue:seed];
+    if ([MP sharedInstance].uniqueDeviceIdPerApp) {
+        NSString *seed = [NSString stringWithFormat:@"%@%@", identifier, [[NSBundle mainBundle] bundleIdentifier]];
+        identifier = [self obfuscateValue:seed];
+    }
+    return identifier;
 }
 
 - (NSString *)obfuscateValue:(NSString *)value
