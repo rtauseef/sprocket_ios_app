@@ -17,6 +17,7 @@
 #import <MP.h>
 #import <MPPrintManager.h>
 #import <HPPR.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 
 NSString * const kNoPhotoSelected = @"No Photo";
@@ -96,10 +97,18 @@ NSString * const kEventPhotoSelectAction = @"Select";
 NSString * const kEventPhotoGalleryModeCategory  = @"PhotoGalleryMode";
 NSString * const kEventPhotoGalleryModeAction    = @"Switch";
 
-NSString * const kEventPrintJobCategory        = @"PrintJob";
-NSString * const kEventPrintJobErrorCategory   = @"PrintJobError";
-NSString * const kEventPrintJobStartedAction   = @"Started";
-NSString * const kEventPrintJobCompletedAction = @"Completed";
+NSString * const kEventPrintJobCategory          = @"PrintJob";
+NSString * const kEventPrintJobErrorCategory     = @"PrintJobError";
+NSString * const kEventPrintJobPrintSingleAction = @"Print";
+NSString * const kEventPrintJobPrintMultiAction  = @"Print-MultiSelect";
+NSString * const kEventPrintJobStartedAction     = @"Started";
+NSString * const kEventPrintJobCompletedAction   = @"Completed";
+
+NSString * const kEventPrintQueueCategory          = @"Queue";
+NSString * const kEventPrintQueueAddMultiAction    = @"Add-MultiSelect";
+NSString * const kEventPrintQueueAddSingleAction   = @"Add-Single";
+NSString * const kEventPrintQueuePrintMultiAction  = @"Print-MultiSelect";
+NSString * const kEventPrintQueuePrintSingleAction = @"Print-Single";
 
 NSString * const kEventPrintCategory    = @"Print";
 NSString * const kEventPrintAction      = @"Print";
@@ -288,7 +297,25 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventMultiSelectCategory action:action label:label value:selectedPhotos];
 }
 
-- (void) trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
+- (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId
+{
+    [self trackPrintQueueAction:action queueId:queueId queueSize:kEventDefaultValue];
+}
+
+- (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId queueSize:(NSUInteger)queueSize
+{
+    NSString *deviceId = [self userUniqueIdentifier];
+    NSString *label = [NSString stringWithFormat:@"%@-%li", deviceId, (long)queueId];
+
+    [self trackEvent:kEventPrintQueueCategory action:action label:label value:@(queueSize)];
+}
+
+- (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
+{
+    [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(kEventDefaultValue)];
+}
+
+- (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
 {
     [super trackEvent:category action:action label:label value:value];
     PGLogInfo(@"Google Anayltics Event - Category:\"%@\", Action:\"%@\", Label:\"%@\", Value:\"%@\"", category, action, label, value);
@@ -334,6 +361,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
             };
 }
 
+
 #pragma mark - Helpers
 
 - (NSString *)nonNullString:(NSString *)value
@@ -351,6 +379,31 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [[Crashlytics sharedInstance] setObjectValue:userId forKey:@"User ID"];
     [[Crashlytics sharedInstance] setObjectValue:userName forKey:@"User Name"];
 }
+
+- (NSString *)userUniqueIdentifier
+{
+    NSString *identifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
+    NSString *seed = [NSString stringWithFormat:@"%@%@", identifier, [[NSBundle mainBundle] bundleIdentifier]];
+
+    return [self obfuscateValue:seed];
+}
+
+- (NSString *)obfuscateValue:(NSString *)value
+{
+    const char *cstr = [value UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cstr, (CC_LONG)strlen(cstr), result);
+
+    NSMutableString *md5String = [[NSMutableString alloc] initWithCapacity:CC_MD5_DIGEST_LENGTH];
+
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [md5String appendFormat:@"%02X", result[i]];
+    }
+
+    return md5String;
+}
+
+
 
 #pragma mark - WiFi SSID
 
