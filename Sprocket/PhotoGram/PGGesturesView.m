@@ -151,10 +151,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
 
 - (void)setImage:(UIImage *)image
 {
-    if (self.media) {
-        _media.image = image;
-    }
-    
+    _image = image;
     _editedImage = image;
     
     if (fabs(image.size.width - image.size.height) < kMarginOfSquare) {
