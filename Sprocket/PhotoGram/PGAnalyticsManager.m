@@ -52,6 +52,9 @@ NSString * const kNonPrintingActivity = @"No Print";
 NSString * const kCrashlyticsOfframpKey = @"Offramp";
 NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 
+NSString * const kMetricsOffRampQueueAddSingle = @"AddToQueue-Single";
+NSString * const kMetricsOffRampQueueAddMulti  = @"AddToQueue-MultiSelect";
+
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
 

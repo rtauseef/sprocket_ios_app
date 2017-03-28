@@ -59,7 +59,6 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     NSInteger queueSize = [self queueSize];
     if (queueSize > 0) {
         self.originalQueueSize = queueSize;
-        self.queueId = [self currentQueueId];
 
         self.status = MPBTPrinterManagerStatusResumingPrintQueue;
 
@@ -90,6 +89,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (NSInteger)queueSize {
     return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+}
+
+- (NSInteger)queueId {
+    return [self currentQueueId];
 }
 
 - (NSInteger)currentQueueId {

@@ -463,12 +463,30 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
         if (success) {
+            NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
             for (PGGesturesView *gestureView in self.gesturesViews) {
                 if (gestureView.isSelected) {
-                    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-
-                    [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+                    [selectedViews addObject:gestureView];
                 }
+            }
+
+            NSString *offRamp = kMetricsOffRampQueueAddSingle;
+            if (selectedViews.count > 1) {
+                offRamp = kMetricsOffRampQueueAddMulti;
+            }
+
+            for (PGGesturesView *gestureView in selectedViews) {
+                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+
+                NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+                [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
+                [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                 printItem:printItem
+                                                              extendedInfo:extendedMetrics];
+
+                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
             }
 
             [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
@@ -484,7 +502,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
                                                               queueId:[MPBTPrintManager sharedInstance].queueId
                                                             queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
-
         }
     }];
 }
