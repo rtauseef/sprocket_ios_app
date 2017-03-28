@@ -592,7 +592,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             if (completed) {
                 if (!printActivity) {
                     if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
-                        NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView];
+                        NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:(PGGesturesView *)[weakSelf.gesturesViews objectAtIndex:weakSelf.carouselView.currentItemIndex]];
                         [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
                         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem extendedInfo:extendedMetrics];
                     } else {
@@ -830,11 +830,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     PGGesturesView *gestureView = self.gesturesViews[index];
     
-    if (gestureView.media.image) {
-        UIImage *finalImage = gestureView.media.image;
+    if (gestureView.image) {
+        UIImage *finalImage = gestureView.image;
         
-        if (gestureView.media.image.size.width > gestureView.media.image.size.height) {
-            finalImage = [[UIImage alloc] initWithCGImage: gestureView.media.image.CGImage
+        if (gestureView.image.size.width > gestureView.image.size.height) {
+            finalImage = [[UIImage alloc] initWithCGImage: gestureView.image.CGImage
                                                     scale: 1.0
                                               orientation: UIImageOrientationRight];
         }
@@ -850,6 +850,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     return gestureView;
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    self.gesturesViews[index].isSelected = !self.gesturesViews[index].isSelected;
+    [carousel reloadItemAtIndex:index animated:YES];
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
