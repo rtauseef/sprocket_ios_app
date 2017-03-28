@@ -1,21 +1,16 @@
 require_relative '../support/gistfile'
 
-Then(/^I change the language$/) do
-    ios_locale_id, $list_loc = get_ios_locale_id
-    device_name = get_device_name
-    device_type = get_device_type
-    sim_name = get_device_name + " " + device_type
-    os_version = get_os_version.to_s.gsub(".", "-")
-    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
-    language_locale =ios_locale_id.split("_")  
-    raise "Language not changed!" unless $curr_language.strip == language_locale[0] 
-end
-
 Then(/^I open cameraroll$/) do
-        
-    if element_exists("button marked:'#{$list_loc['photos_button']}'")
-        sleep(WAIT_SCREENLOAD)
-        touch "button marked:'#{$list_loc['photos_button']}'"
+    if ENV['LANGUAGE'] == "Dutch"
+        if element_exists("UIButtonLabel")
+            touch query("UIButtonLabel")
+            sleep(STEP_PAUSE)
+        end
+    else
+        if element_exists("button marked:'#{$list_loc['photos_button']}'")
+            sleep(WAIT_SCREENLOAD)
+            touch "button marked:'#{$list_loc['photos_button']}'"
+        end
     end
     if element_exists("view marked:'#{$list_loc['auth']}' index:0")
         sleep(WAIT_SCREENLOAD)
@@ -256,7 +251,7 @@ end
 
 Then /^I should see the popup message for the "(.*?)"$/ do |option|
     if option == "camera access"
-        if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French"
+        if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "Italian"
             title_name = query("UILabel index:1", :text)[0]
             raise "localization failed!" unless title_name == $list_loc['camera_access']
         else
@@ -272,14 +267,19 @@ end
 Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, button|
     if button == "cameraLanding"
         if option == "title"
-            if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French"
+            if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "Italian"
                 title_name = query("UILabel index:1", :text)[0]
                 raise "localization failed!" unless title_name == $list_loc['camera_access']
             else
                 check_element_exists "view marked:'#{$list_loc['camera_access']}'"
             end
         else
-            check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
+            if ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch"
+                    content = query("UILabel index:2", :text)[0]
+                    raise "localization failed!" unless content == $list_loc['camera_access_content']
+            else
+                check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
+            end
         end
     else
         if button == "DownloadButton"
@@ -299,7 +299,12 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
 end
 
 Then /^I verify the "(.*?)" button text$/ do |button|
-    check_element_exists "view marked:'#{$list_loc['Edit']}'"
-    sleep(STEP_PAUSE)
+    if button == "Print to sprocket" && ENV['LANGUAGE'] == "Turkish"
+        button_name = query("UITableViewCell index:0", :text)[0]
+        raise "localization failed!" unless button_name == $list_loc[button]
+    else
+        check_element_exists "view marked:'#{$list_loc[button]}'"
+        sleep(STEP_PAUSE)
+    end
 end
  
