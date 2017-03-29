@@ -37,6 +37,7 @@ typedef enum
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UIView *noInternetConnectionView;
 
 @property (nonatomic, assign) BOOL isMultiSelectImage;
 @property (nonatomic, assign) BOOL isSelected;
@@ -47,6 +48,8 @@ typedef enum
 - (CGFloat)angle;
 - (void)adjustContentOffset;
 - (void)enableGestures;
+- (void)showNoInternetConnectionView;
+- (void)hideNoInternetConnectionView;
 
 @end
 

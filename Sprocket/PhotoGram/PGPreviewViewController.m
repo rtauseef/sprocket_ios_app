@@ -741,8 +741,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         } else {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                    if (error) {
+                        [weakSelf.gesturesViews[i] showNoInternetConnectionView];
+                        return;
+                    }
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.gesturesViews[i] setImage:image];
+                        [weakSelf.gesturesViews[i] hideNoInternetConnectionView];
                         [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
                     });
                 }];
