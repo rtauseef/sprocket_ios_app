@@ -49,26 +49,26 @@ Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
             |No Frame               |
-            |Valentines Hearts Frame|
-            |Valentines Pink Polka Frame|
-            |Valentines Red Frame|
-            |Valentines Hearts Overlay Frame|
-            |Valentines Pink Watercolor Frame|
-            |Valentines Red Stripes Frame|
-            |White Frame|
-            |Kraft Frame|
-            |Floral Frame|
-            |Orange Frame|
-            |Polka Dots Frame|
-            |Water Blue Frame|
-            |Wood Bottom Frame      |
-            |Gradient Frame         |
-            |Sloppy Frame           |
-            |Turquoise Frame        |
-            |Red Frame              |
-            |Green Water Color Frame|
+            |Hearts Overlay Frame   |
+            |Sloppy Frame           | 
+            |Rainbow Frame          |
+            |White Frame            |
+            |Stars Overlay Frame    |
+            |Polka Dots Frame       |
+            |Grey Shadow Frame      |
+            |Pink Triangle Frame    |
             |Floral 2 Frame         |
+            |Blue Watercolor Frame  |
+            |Floral Overlay Frame   |
+            |Red Frame              |
+            |Gradient Frame         |
+            |Turquoise Frame        |
+            |Dots Overlay Frame     |
+            |Kraft Frame            |
+            |White Bar Frame        |
             |Pink Spray Paint Frame |
+            |White Full Frame       |
+          
              
   @reset
   @regression
