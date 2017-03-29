@@ -132,6 +132,18 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     if ([countryCode caseInsensitiveCompare:@"no"] == NSOrderedSame) {
         url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, countryCode];
     }
+    // NOTE: This is changing el/el to gr/el for greek
+    if ([countryCode caseInsensitiveCompare:@"el"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, @"gr", languageCode];
+    }
+    // NOTE: This is changing id/id to id/en for indonesian
+    if ([countryCode caseInsensitiveCompare:@"id"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, @"en"];
+    }
+    // NOTE: This is changing th/th to th/en for thai
+    if ([countryCode caseInsensitiveCompare:@"th"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, @"en"];
+    }
 
     return [NSURL URLWithString:url];
 }

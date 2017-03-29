@@ -218,10 +218,8 @@ Scenario: Navigate to Preview screen
     #Then I verify the "title" of the popup message for "PrintButton"
     #And I verify the "content" of the popup message for "PrintButton"
     Then I tap "Share" button
-    And I should see the below listed sprocket screen texts:
-    | Save to Camera Roll |
-    | Print to sprocket   |
-    
+    Then I tap "More" button
+    Then I verify the "Print to sprocket" button text
 
 @localization
 Scenario: Verify localization of Instagram signin/signout buttons from sidemenu

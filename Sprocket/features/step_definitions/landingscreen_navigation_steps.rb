@@ -54,6 +54,7 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             sleep(STEP_PAUSE)
         else
             if screen_name == "Flickr"
+                sleep(STEP_PAUSE)
                 swipe(:right)
                 #check_element_exists("UINavigationBar marked:'#{$list_loc['flickr']}'")
                 check_element_exists("view marked:'#{$list_loc['flickr']}'")

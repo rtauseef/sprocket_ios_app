@@ -24,6 +24,7 @@ typedef enum
 @interface PGGesturesView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) HPPRMedia *media;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *editedImage;
 @property (nonatomic, assign) CGFloat minimumZoomScale;
 @property (nonatomic, assign) CGFloat maximumZoomScale;
