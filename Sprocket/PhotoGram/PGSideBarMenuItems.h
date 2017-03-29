@@ -22,6 +22,7 @@ extern NSInteger const kPGSideBarMenuItemsNumberOfRows;
 
 typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
     PGSideBarMenuCellSprocket,
+    PGSideBarMenuCellPrintQueue,
     PGSideBarMenuCellBuyPaper,
     PGSideBarMenuCellHowToAndHelp,
     PGSideBarMenuCellTakeSurvey,

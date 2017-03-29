@@ -49,6 +49,11 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             cell.textLabel.text = NSLocalizedString(@"sprocket", nil);
             cell.imageView.image = [UIImage imageNamed:@"menuSprocket"];
             break;
+        case PGSideBarMenuCellPrintQueue:
+            cell.textLabel.text = NSLocalizedString(@"Print Queue", nil);
+            cell.imageView.image = [UIImage imageNamed:@"menuPrintQueueInactive"];
+            cell.imageView.highlightedImage = [UIImage imageNamed:@"menuPrintQueueActive"];
+            break;
         case PGSideBarMenuCellBuyPaper:
             cell.textLabel.text = NSLocalizedString(@"Buy Paper", nil);
             cell.imageView.image = [UIImage imageNamed:@"menuBuyPaper"];

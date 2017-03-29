@@ -11,6 +11,7 @@
 //
 
 #import <MP.h>
+#import <MPBTPrintManager.h>
 #import <MessageUI/MessageUI.h>
 
 #import "PGSideBarMenuViewController.h"
@@ -78,6 +79,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
                                                object:nil];
 
     [self checkSprocketDeviceConnectivity];
+    [self checkPrintQueue];
     [self resizeViewAccordingRevealViewController];
     [self configureSocialSourcesMenu];
 }
@@ -125,6 +127,9 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
             UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PGSprocketLandingPageNavigationController"];
             [self presentViewController:viewController animated:YES completion:nil];
+            break;
+        }
+        case PGSideBarMenuCellPrintQueue: {
             break;
         }
         case PGSideBarMenuCellBuyPaper:{
@@ -206,6 +211,13 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         self.deviceBatteryLevel.hidden = (1 != numberOfPairedSprockets);
         
         [[MP sharedInstance] checkSprocketForUpdates:self];
+    });
+}
+
+- (void)checkPrintQueue {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UITableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
+        cell.imageView.highlighted = [MPBTPrintManager sharedInstance].queueSize > 0;
     });
 }
 
