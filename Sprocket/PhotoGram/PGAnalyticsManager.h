@@ -33,6 +33,8 @@ extern NSString * const kMPMetricsEmbellishmentKey;
 
 extern NSString * const kMetricsOffRampQueueAddSingle;
 extern NSString * const kMetricsOffRampQueueAddMulti;
+extern NSString * const kMetricsOffRampQueuePrintSingle;
+extern NSString * const kMetricsOffRampQueuePrintMulti;
 
 extern NSString * const kEventAuthRequestOkAction;
 extern NSString * const kEventAuthRequestDeniedAction;

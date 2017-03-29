@@ -369,9 +369,11 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
     NSString *queueAction = kEventPrintQueuePrintSingleAction;
     NSString *jobAction = kEventPrintJobPrintSingleAction;
+    NSString *offRamp = kMetricsOffRampQueuePrintSingle;
     if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
         queueAction = kEventPrintQueuePrintMultiAction;
         jobAction = kEventPrintJobPrintMultiAction;
+        offRamp = kMetricsOffRampQueuePrintMulti;
     }
 
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:queueAction
@@ -379,6 +381,14 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
     [[PGAnalyticsManager sharedManager] trackPrintJobAction:jobAction
                                                   printerId:printManager.printerId];
+
+    NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+    [extendedMetrics addEntriesFromDictionary:printManager.printerAnalytics];
+    [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                     printItem:job.defaultPrintItem
+                                                  extendedInfo:extendedMetrics];
 }
 
 

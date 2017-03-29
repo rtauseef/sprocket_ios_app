@@ -21,7 +21,6 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 @property (nonatomic, assign) NSInteger queueId;
 @property (nonatomic, assign) NSInteger originalQueueSize;
-@property (nonatomic, strong) NSString *printerId;
 
 @property (nonatomic, strong) NSTimer *checkTimer;
 @property (nonatomic, assign) MPBTPrinterManagerStatus status;
@@ -76,7 +75,6 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     self.checkTimer = nil;
 
     self.originalQueueSize = 0;
-    self.printerId = nil;
     [self incrementQueueId];
 }
 
@@ -93,6 +91,14 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (NSInteger)queueId {
     return [self currentQueueId];
+}
+
+- (NSDictionary *)printerAnalytics {
+    return [MPBTSprocket sharedInstance].analytics;
+}
+
+- (NSString *)printerId {
+    return [[MPBTSprocket sharedInstance].analytics objectForKey:kMPPrinterId];
 }
 
 - (NSInteger)currentQueueId {
@@ -132,10 +138,6 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
             sprocket.accessory = device;
             sprocket.delegate = self;
-
-            if (self.status = MPBTPrinterManagerStatusResumingPrintQueue) {
-                self.printerId = [sprocket.analytics objectForKey:kMPPrinterId];
-            }
 
             [self sendStatusUpdate:0];
 
