@@ -463,50 +463,45 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
         if (success) {
+            NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
             for (PGGesturesView *gestureView in self.gesturesViews) {
                 if (gestureView.isSelected) {
-                    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-
-                    [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+                    [selectedViews addObject:gestureView];
                 }
             }
 
+            NSString *offRamp = kMetricsOffRampQueueAddSingle;
+            if (selectedViews.count > 1) {
+                offRamp = kMetricsOffRampQueueAddMulti;
+            }
+
+            for (PGGesturesView *gestureView in selectedViews) {
+                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+
+                NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+                [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
+                [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                 printItem:printItem
+                                                              extendedInfo:extendedMetrics];
+
+                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+            }
+
             [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
-                if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
-                    if (!self.progressView) {
-                        self.progressView = [[PGProgressView alloc] initWithFrame:self.view.bounds];
-                        self.progressView.alpha = 0.0;
-                        [self.progressView setProgress:0.0];
-
-                        [self.view addSubview:self.progressView];
-                        [self.view bringSubviewToFront:self.progressView];
-
-                        [UIView animateWithDuration:0.3 animations:^{
-                            self.progressView.alpha = 1.0;
-                        }];
-                    }
-
-                    [self.progressView setProgress:0.0];
-                    [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
-
-                } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
-                    [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
-
-                } else if (status == MPBTPrinterManagerStatusPrinting) {
-                    [self.progressView setProgress:1.0F];
-
-                    [UIView animateWithDuration:0.3 animations:^{
-                        self.progressView.alpha = 0.0;
-                    } completion:^(BOOL finished) {
-                        [self.progressView removeFromSuperview];
-                        self.progressView = nil;
-                    }];
-
-                    return NO;
-                }
-
-                return YES;
+                return [self handlePrintQueueStatus:status progress:progress];
             }];
+
+
+            NSString *action = kEventPrintQueueAddSingleAction;
+            if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+                action = kEventPrintQueueAddMultiAction;
+            }
+
+            [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
+                                                              queueId:[MPBTPrintManager sharedInstance].queueId
+                                                            queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
         }
     }];
 }
@@ -520,6 +515,43 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 
 #pragma mark - Print preparation
+
+- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress {
+    if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
+        if (!self.progressView) {
+            self.progressView = [[PGProgressView alloc] initWithFrame:self.view.bounds];
+            self.progressView.alpha = 0.0;
+            [self.progressView setProgress:0.0];
+
+            [self.view addSubview:self.progressView];
+            [self.view bringSubviewToFront:self.progressView];
+
+            [UIView animateWithDuration:0.3 animations:^{
+                self.progressView.alpha = 1.0;
+            }];
+        }
+
+        [self.progressView setProgress:0.0];
+        [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
+
+    } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
+        [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
+
+    } else if (status == MPBTPrinterManagerStatusPrinting) {
+        [self.progressView setProgress:1.0F];
+
+        [UIView animateWithDuration:0.3 animations:^{
+            self.progressView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.progressView removeFromSuperview];
+            self.progressView = nil;
+        }];
+
+        return NO;
+    }
+
+    return YES;
+}
 
 - (MPPaper *)paper
 {

@@ -26,6 +26,10 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 
 @interface MPBTPrintManager : NSObject
 
+@property (nonatomic, assign, readonly) NSInteger queueId;
+@property (nonatomic, assign, readonly) NSInteger originalQueueSize;
+@property (nonatomic, readonly) NSString *printerId;
+@property (nonatomic, readonly) NSDictionary *printerAnalytics;
 @property (nonatomic, assign, readonly) NSInteger queueSize;
 @property (nonatomic, assign, readonly) MPBTPrinterManagerStatus status;
 @property (nonatomic, weak) id<MPBTPrintManagerDelegate> delegate;

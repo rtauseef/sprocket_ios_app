@@ -16,6 +16,7 @@
 @interface PGBaseAnalyticsManager : NSObject
 
 extern NSString * const kMetricsOfframpKey;
+extern NSString * const kMetricsPrintQueueIdKey;
 extern NSString * const kMetricsAppTypeKey;
 extern NSString * const kMetricsAppTypeHP;
     

@@ -15,7 +15,12 @@
 #import "MPPrintLaterQueue.h"
 #import "MPBTSprocket.h"
 
+static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print-manager.queue-id";
+
 @interface MPBTPrintManager () <MPBTSprocketDelegate>
+
+@property (nonatomic, assign) NSInteger queueId;
+@property (nonatomic, assign) NSInteger originalQueueSize;
 
 @property (nonatomic, strong) NSTimer *checkTimer;
 @property (nonatomic, assign) MPBTPrinterManagerStatus status;
@@ -50,7 +55,10 @@
 
     self.statusUpdateBlock = statusUpdate;
 
-    if ([self queueSize] > 0) {
+    NSInteger queueSize = [self queueSize];
+    if (queueSize > 0) {
+        self.originalQueueSize = queueSize;
+
         self.status = MPBTPrinterManagerStatusResumingPrintQueue;
 
         [self checkPrinterStatus];
@@ -65,6 +73,9 @@
 
     [self.checkTimer invalidate];
     self.checkTimer = nil;
+
+    self.originalQueueSize = 0;
+    [self incrementQueueId];
 }
 
 - (void)pausePrintQueue {
@@ -78,6 +89,40 @@
     return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
 }
 
+- (NSInteger)queueId {
+    return [self currentQueueId];
+}
+
+- (NSDictionary *)printerAnalytics {
+    return [MPBTSprocket sharedInstance].analytics;
+}
+
+- (NSString *)printerId {
+    return [[MPBTSprocket sharedInstance].analytics objectForKey:kMPPrinterId];
+}
+
+- (NSInteger)currentQueueId {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+    NSInteger queueId = [userDefaults integerForKey:kPrintManagerQueueIdKey];
+
+    if (queueId == 0) {
+        // It's the first queue sent to printer
+        queueId = [self incrementQueueId];
+    }
+
+    return queueId;
+}
+
+- (NSInteger)incrementQueueId {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger queueId = [userDefaults integerForKey:kPrintManagerQueueIdKey];
+
+    queueId++;
+
+    [userDefaults setInteger:queueId forKey:kPrintManagerQueueIdKey];
+    [userDefaults synchronize];
+}
 
 - (void)checkPrinterStatus {
     EAAccessory *device = [MPBTSprocket sharedInstance].accessory;
@@ -204,6 +249,10 @@
     NSLog(@"PRINT QUEUE - ERROR (%@)", @(error));
 
     self.status = MPBTPrinterManagerStatusWaitingForPrinter;
+
+    if (error == MantaErrorNoSession) {
+        sprocket.accessory = nil;
+    }
 
     if ([self.delegate respondsToSelector:@selector(btPrintManager:didReceiveErrorForPrintJob:)]) {
         [self.delegate btPrintManager:self didReceiveErrorForPrintJob:self.currentJob];

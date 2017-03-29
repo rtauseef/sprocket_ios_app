@@ -32,12 +32,13 @@
 #import "UIFont+Style.h"
 
 #import <MP.h>
+#import <MPBTPrintManager.h>
 
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
@@ -115,6 +116,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     [self addLongPressGesture];
+
+    [MPBTPrintManager sharedInstance].delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -358,6 +361,34 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGSurveyManager sharedInstance] setDisable:YES];
 
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - MPBTPrintManagerDelegate
+
+- (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
+    NSString *queueAction = kEventPrintQueuePrintSingleAction;
+    NSString *jobAction = kEventPrintJobPrintSingleAction;
+    NSString *offRamp = kMetricsOffRampQueuePrintSingle;
+    if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+        queueAction = kEventPrintQueuePrintMultiAction;
+        jobAction = kEventPrintJobPrintMultiAction;
+        offRamp = kMetricsOffRampQueuePrintMulti;
+    }
+
+    [[PGAnalyticsManager sharedManager] trackPrintQueueAction:queueAction
+                                                      queueId:printManager.queueId];
+
+    [[PGAnalyticsManager sharedManager] trackPrintJobAction:jobAction
+                                                  printerId:printManager.printerId];
+
+    NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+    [extendedMetrics addEntriesFromDictionary:printManager.printerAnalytics];
+    [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                     printItem:job.defaultPrintItem
+                                                  extendedInfo:extendedMetrics];
 }
 
 
