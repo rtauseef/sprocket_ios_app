@@ -83,9 +83,6 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
         default:
             break;
     }
-    
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 + (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath
