@@ -48,27 +48,37 @@ Scenario Outline: Verify frame applied for frame editor screen
 Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
-            |No Frame               |
-            |Hearts Overlay Frame   |
-            |Sloppy Frame           | 
-            |Rainbow Frame          |
-            |White Frame            |
-            |Stars Overlay Frame    |
-            |Polka Dots Frame       |
-            |Grey Shadow Frame      |
-            |Pink Triangle Frame    |
-            |Floral 2 Frame         |
-            |Blue Watercolor Frame  |
-            |Floral Overlay Frame   |
-            |Red Frame              |
-            |Gradient Frame         |
-            |Turquoise Frame        |
-            |Dots Overlay Frame     |
-            |Kraft Frame            |
-            |White Bar Frame        |
-            |Pink Spray Paint Frame |
-            |White Full Frame       |
-          
+            |No Frame                   |
+            |Hearts Overlay Frame       |
+            |Sloppy Frame               | 
+            |Rainbow Frame              |
+            |White Frame                |
+            |Stars Overlay Frame        |
+            |Polka Dots Frame           |
+            |Grey Shadow Frame          |
+            |Pink Triangle Frame        |
+            |Floral 2 Frame             |
+            |Blue Watercolor Frame      |
+            |Floral Overlay Frame       |
+            |Red Frame                  |
+            |Gradient Frame             |
+            |Turquoise Frame            |
+            |Dots Overlay Frame         |
+            |Kraft Frame                |
+            |White Bar Frame            |
+            |Pink Spray Paint Frame     |
+            |White Full Frame           |
+            
+@reset
+@localization
+@TA17514
+Scenario: Verify additional frames for region Australia
+    Given I am on the "FrameEditor" screen for "CameraRoll"
+    Then I should see the following "Frames" in the screen:
+            |Australia Amplify 1 Frame  |
+            |Australia Amplify 3 Frame  |
+            
+    
              
   @reset
   @regression

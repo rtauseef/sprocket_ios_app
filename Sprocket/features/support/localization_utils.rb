@@ -1550,6 +1550,66 @@ $language_arr =
         "Version" => "Version",
         "Copyright (c) 2016" => "Copyright (c) 2016", 
         "HP Development Company, L.P." => "HP Development Company, L.P."
+        },
+    
+    "en_AU" => {
+        "skip_to_the_app" => "Skip to the App",
+        "camera_access" => "Camera Access Required",
+        "camera_access_content" => "Allow access in your Settings to take and print photos.",
+        "Cancel" => "Cancel",
+        "Settings" => "Settings",
+        "cameraroll_logo" => "CameraRoll",
+        "terms_of_service_flickr" => "By authenticating with Flickr, you also agree with HP’s Terms of Service.",
+        "terms_of_service_instagram" => "By authenticating with Instagram, you also agree with HP’s Terms of Service.",
+        "terms_of_service_cameraroll" => "By using Camera Roll, you also agree to the HP Terms of Service.",
+        "terms_of_service_facebook" => "By authenticating with Facebook, you also agree with HP’s Terms of Service.",
+        #"photos_button" => "Camera Roll",
+        "photos_button" => "Photos",
+        "auth" => "Authorize",
+        "album_screen" => "Camera Roll Albums",
+        #"photo_screen"=> "Camera Roll Photos",
+        "photo_screen"=> "Camera Roll",
+        "Take or select a photo"  => "Take or select a photo",
+        "Save_to_CameraRoll" => "Saved to Camera Roll",
+        "More" => "More",
+        "Edit" => "Edit",
+        "Save to Camera Roll" => "Save to Camera Roll",
+        "Print to sprocket" => "Print to sprocket",
+        "Terms and service" => "By authenticating with social sources you also agree to HP Terms of Service.",
+        "side_menu" => "sprocket",
+        "Buy Paper" => "Buy Paper",
+        "How to & Help" => "How to & Help",
+        "Give Feedback" => "Give Feedback",
+        "Privacy" => "Privacy",
+        "About" => "About",
+        "Camera Roll" => "Camera Roll",
+        "Sign In" => "Sign In",
+        "Sign Out" => "Sign Out",
+        "Reset Sprocket Printer" => "Reset Sprocket Printer",
+        "reset_sprocket" => "Reset Sprocket Printer",
+        "Setup Sprocket Printer" => "Setup Sprocket Printer",
+        "setup_sprocket" => "Setup Sprocket Printer",
+        "View User Guide" => "View User Guide",
+        "Messenger Support" => "Messenger Support",
+        "Tweet Support" => "Tweet Support",
+        "Join Support Forum" => "Join Support Forum",
+        "Visit Support Website" => "Visit Support Website",
+        "survey" => "No, thanks",
+        "Instagram" => "Instagram",
+        "Facebook" => "Facebook",
+        "CameraRoll" => "CameraRoll",
+        "Flickr" => "Flickr",
+        "facebook" => "Facebook",
+        "instagram" => "Instagram",
+        "flickr" => "Flickr",
+        "Done" => "Done",
+        "Back" => "Back",
+        "Printers" => "Printers",
+        "Technical Information" => "Technical Information",
+        "App Settings" => "App Settings",
+        "Version" => "Version",
+        "Copyright (c) 2016" => "Copyright (c) 2016", 
+        "HP Development Company, L.P." => "HP Development Company, L.P."
         }
     }
 
@@ -1662,8 +1722,12 @@ def get_ios_locale_id
                                                                                                         ios_locale_id = "en_CA"
                                                                                                       $list_loc=$language_arr["en_CA"]
                                                                                                             else
-                                                                                                        ios_locale_id = "en_US"
+                                                                                                            if ios_locale_id = "Australian-English"
+                                                                                                      $list_loc=$language_arr["en_AU"]
+                                                                                                        ios_locale_id = "en_AU"
+                                                                                                                else
                                                                                                       $list_loc=$language_arr["en_US"]
+                                                                                                            end
                                                                                                             end
                                                                                                     end
                                                                                                 end
