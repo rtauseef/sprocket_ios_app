@@ -36,9 +36,10 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 
 + (instancetype)sharedInstance;
 
-- (void)addPrintItemToQueue:(MPPrintItem *)printItem;
+- (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem;
 
 - (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
+- (void)pausePrintQueue;
 - (void)cancelPrintQueue;
 
 @end
@@ -53,6 +54,6 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 - (void)btPrintManager:(MPBTPrintManager *)printManager sendingPrintJob:(MPPrintLaterJob *)job progress:(NSInteger)progress;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didFinishSendingPrintJob:(MPPrintLaterJob *)job;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job;
-- (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveErrorForPrintJob:(MPPrintLaterJob *)job;
+- (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job;
 
 @end
