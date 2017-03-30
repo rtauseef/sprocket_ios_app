@@ -234,7 +234,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     NSLog(@"PRINT QUEUE - JOB STARTED PRINTING (%@)", self.currentJob.id);
 
     self.status = MPBTPrinterManagerStatusPrinting;
-    [[MPPrintLaterQueue sharedInstance] deletePrintLaterJob:self.currentJob];
+    [[MPPrintLaterQueue sharedInstance] completePrintLaterJob:self.currentJob];
 
     [self sendStatusUpdate:0];
 
