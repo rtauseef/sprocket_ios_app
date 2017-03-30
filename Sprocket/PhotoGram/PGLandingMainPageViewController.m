@@ -422,7 +422,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     }
 
     NSString *printsInQueue = [NSString stringWithFormat:format, (long)printManager.queueSize];
-    NSString *errorMessage = [NSString stringWithFormat:@"%@\n%@", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
+    NSString *errorMessage = [NSString stringWithFormat:@"%@\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
 
     self.errorAlert = [UIAlertController alertControllerWithTitle:[[MP sharedInstance] errorTitle:errorCode]
                                                                    message:errorMessage
