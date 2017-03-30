@@ -195,6 +195,9 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
                 [viewControllers addObject:viewController];
                 break;
             }
+            case PGSocialSourceTypeLink: {
+                // Do nothing
+            }
         }
     }
 

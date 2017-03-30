@@ -12,6 +12,7 @@
 
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
+#import "PGLinkSettings.h"
 
 @interface PGSocialSourcesCircleView ()
 
@@ -26,6 +27,7 @@
     [super awakeFromNib];
 
     [self setupSocialSources];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupSocialSources) name:kPGLinkSettingsChangedNotification object:nil];
 }
 
 - (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled
@@ -41,7 +43,14 @@
 
 - (void)setupSocialSources
 {
-    self.socialSources = [[PGSocialSourcesManager sharedInstance] enabledSocialSources];
+    [[self subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    NSMutableArray *sources = [NSMutableArray arrayWithArray:[[PGSocialSourcesManager sharedInstance] enabledSocialSources]];
+    if ([PGLinkSettings linkEnabled]) {
+        [sources insertObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLink] atIndex:0];
+    }
+    
+    self.socialSources = sources;
 
     CGFloat cameraCenterXY = self.frame.size.width / 2;
 

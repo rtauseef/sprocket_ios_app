@@ -43,7 +43,6 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
         [self setupSocialSources];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupSocialSources) name:kPGLinkSettingsChangedNotification object:nil];
     return self;
 }
 
@@ -111,10 +110,6 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]];
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFlickr]];
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]];
-        
-        if ([PGLinkSettings linkEnabled]) {
-            [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLink]];
-        }
     }
     
     self.socialSources = sources;
