@@ -21,7 +21,7 @@
 #import "PGBatteryImageView.h"
 #import "PGHelpAndHowToViewController.h"
 #import "PGRevealViewController.h"
-#import "PGSideBarMenuItems.h"
+#import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesManager.h"
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSurveyManager.h"
@@ -104,8 +104,10 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
-    return [PGSideBarMenuItems configureCell:cell atIndexPath:indexPath];
+    PGSideBarMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
+    [cell configureCellAtIndexPath:indexPath];
+    
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -115,7 +117,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [PGSideBarMenuItems heightForRowAtIndexPath:indexPath];
+    return [PGSideBarMenuTableViewCell heightForRowAtIndexPath:indexPath];
 }
 
 
@@ -353,8 +355,9 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 }
 
 - (void)checkPrintQueue {
-    UITableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
-    cell.imageView.highlighted = [MPBTPrintManager sharedInstance].queueSize > 0;
+    PGSideBarMenuTableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
+    
+    cell.menuImageView.image = [cell printQueueImageForQueueSize:[MPBTPrintManager sharedInstance].queueSize];
 }
 
 - (void)resizeViewAccordingRevealViewController {
