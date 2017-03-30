@@ -42,12 +42,19 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 
-- (void)addPrintItemToQueue:(MPPrintItem *)printItem {
+- (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem {
+    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
+        [self reportError:MantaErrorBusy];
+        return NO;
+    }
+
     MPPrintLaterJob *job = [[MPPrintLaterJob alloc] init];
     job.id = [[MPPrintLaterQueue sharedInstance] retrievePrintLaterJobNextAvailableId];
     job.printItems = @{[MP sharedInstance].defaultPaper.sizeTitle: printItem};
 
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
+
+    return YES;
 }
 
 - (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger))statusUpdate {
@@ -209,6 +216,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
         self.status = MPBTPrinterManagerStatusWaitingForPrinter;
 
         NSLog(@"PRINT QUEUE - NOT READY: %@", @(error));
+
+        if (error != MantaErrorBusy) {
+            [self reportError:error];
+        }
     }
 }
 
@@ -248,14 +259,24 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 - (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error {
     NSLog(@"PRINT QUEUE - ERROR (%@)", @(error));
 
-    self.status = MPBTPrinterManagerStatusWaitingForPrinter;
+    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
+        self.status = MPBTPrinterManagerStatusWaitingForPrinter;
+    }
 
     if (error == MantaErrorNoSession) {
         sprocket.accessory = nil;
     }
 
-    if ([self.delegate respondsToSelector:@selector(btPrintManager:didReceiveErrorForPrintJob:)]) {
-        [self.delegate btPrintManager:self didReceiveErrorForPrintJob:self.currentJob];
+    [self reportError:error];
+}
+
+- (void)reportError:(MantaError)error {
+    if (self.status == MPBTPrinterManagerStatusEmptyQueue) {
+        return;
+    }
+
+    if ([self.delegate respondsToSelector:@selector(btPrintManager:didReceiveError:forPrintJob:)]) {
+        [self.delegate btPrintManager:self didReceiveError:error forPrintJob:self.currentJob];
     }
 }
 

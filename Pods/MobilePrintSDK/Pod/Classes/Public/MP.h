@@ -571,6 +571,20 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  */
 - (void)closeAccessorySession;
 
+/*!
+ * @abstract Parses a sprocket error code into an error title
+ * @param errorCode error code
+ * @return Localized error title
+ */
+- (NSString *)errorTitle:(NSInteger)errorCode;
+
+/*!
+ * @abstract Parses a sprocket error code into an error description
+ * @param errorCode error code
+ * @return Localized error description
+ */
+- (NSString *)errorDescription:(NSInteger)errorCode;
+
 - (void)presentBluetoothLePeripheralsFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
 
 /*!

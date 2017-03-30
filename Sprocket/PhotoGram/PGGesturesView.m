@@ -26,6 +26,8 @@ static CGFloat const kMarginOfSquare = 2.0f;
 
 @property (weak, nonatomic) IBOutlet UIView *selectionOverlayView;
 @property (weak, nonatomic) IBOutlet UIImageView *checkmark;
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionViewTitle;
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionViewDescription;
 
 @end
 
@@ -58,6 +60,9 @@ static CGFloat const kMarginOfSquare = 2.0f;
     xibView.frame = self.bounds;
     xibView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:xibView];
+    
+    self.noConnectionViewTitle.text = NSLocalizedString(@"No Connection Available", nil);
+    self.noConnectionViewDescription.text = NSLocalizedString(@"Please connect to a data source.\nYou can also use your device photos.", nil);
     
     self.accessibilityIdentifier = @"GestureView";
     self.scrollView.accessibilityIdentifier = @"GestureScrollView";
@@ -206,6 +211,16 @@ static CGFloat const kMarginOfSquare = 2.0f;
     self.editedImage = [self screenshotImage];
     [self.zoomTimer invalidate];
     self.zoomTimer = nil;
+}
+
+- (void)showNoInternetConnectionView
+{
+    self.noInternetConnectionView.hidden = NO;
+}
+
+- (void)hideNoInternetConnectionView
+{
+    self.noInternetConnectionView.hidden = YES;
 }
 
 #pragma mark - UIGestureRecognizerDelegate methods

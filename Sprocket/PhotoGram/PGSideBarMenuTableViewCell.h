@@ -22,6 +22,7 @@ extern NSInteger const kPGSideBarMenuItemsNumberOfRows;
 
 typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
     PGSideBarMenuCellSprocket,
+    PGSideBarMenuCellPrintQueue,
     PGSideBarMenuCellBuyPaper,
     PGSideBarMenuCellHowToAndHelp,
     PGSideBarMenuCellTakeSurvey,
@@ -29,9 +30,13 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
     PGSideBarMenuCellAbout,
 };
 
-@interface PGSideBarMenuItems : NSObject
+@interface PGSideBarMenuTableViewCell : UITableViewCell
 
-+ (UITableViewCell *)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@property (weak, nonatomic) IBOutlet UIImageView *menuImageView;
+@property (weak, nonatomic) IBOutlet UILabel *menuTitle;
+
+- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath;
 + (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UIImage *)printQueueImageForQueueSize:(NSInteger)queueSize;
 
 @end
