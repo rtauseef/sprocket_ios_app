@@ -59,6 +59,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelBottomConstraint;
 
+@property (strong, nonatomic) UIAlertController *errorAlert;
+
 @end
 
 @implementation PGLandingMainPageViewController
@@ -242,6 +244,14 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     });
 }
 
+- (void)dismissErrorAlert {
+    if (![self.errorAlert isBeingDismissed]) {
+        [self.errorAlert dismissViewControllerAnimated:YES completion:^{
+            self.errorAlert = nil;
+        }];
+    }
+}
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -366,6 +376,14 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 #pragma mark - MPBTPrintManagerDelegate
 
+- (void)btPrintManager:(MPBTPrintManager *)printManager didStartSendingPrintJob:(MPPrintLaterJob *)job {
+    [self dismissErrorAlert];
+}
+
+- (void)btPrintManager:(MPBTPrintManager *)printManager sendingPrintJob:(MPPrintLaterJob *)job progress:(NSInteger)progress {
+    [self dismissErrorAlert];
+}
+
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
     NSString *queueAction = kEventPrintQueuePrintSingleAction;
     NSString *jobAction = kEventPrintJobPrintSingleAction;
@@ -389,6 +407,44 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+}
+
+- (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
+    if (self.errorAlert) {
+        return;
+    }
+
+    NSString *format;
+    if (printManager.queueSize == 1) {
+        format = NSLocalizedString(@"%li print in Print Queue", @"Message presented when there is only one image in the print queue");
+    } else {
+        format = NSLocalizedString(@"%li prints in Print Queue", @"Message presented when there more than one images in the print queue");
+    }
+
+    NSString *printsInQueue = [NSString stringWithFormat:format, (long)printManager.queueSize];
+    NSString *errorMessage = [NSString stringWithFormat:@"%@\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
+
+    self.errorAlert = [UIAlertController alertControllerWithTitle:[[MP sharedInstance] errorTitle:errorCode]
+                                                                   message:errorMessage
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * _Nonnull action) {
+                                                            self.errorAlert = nil;
+                                                            [printManager pausePrintQueue];
+                                                        }];
+    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         self.errorAlert = nil;
+                                                     }];
+
+    [self.errorAlert addAction:tryAgainAction];
+    [self.errorAlert addAction:pauseAction];
+
+    UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];
+    [topViewController presentViewController:self.errorAlert animated:YES completion:nil];
 }
 
 
@@ -446,8 +502,9 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
                 [self resetUserDefaults];
             }]];
             [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];    }
-        else {
+            [self presentViewController:alertController animated:YES completion:nil];
+
+        } else {
             UIActionSheet *actionSheet = [[UIActionSheet alloc] init];
             actionSheet.title = NSLocalizedString(@"Reset Application", nil);
             actionSheet.delegate = self;
