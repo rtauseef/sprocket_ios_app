@@ -21,7 +21,7 @@
 #import "PGBatteryImageView.h"
 #import "PGHelpAndHowToViewController.h"
 #import "PGRevealViewController.h"
-#import "PGSideBarMenuItems.h"
+#import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesManager.h"
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSurveyManager.h"
@@ -104,8 +104,10 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
-    return [PGSideBarMenuItems configureCell:cell atIndexPath:indexPath];
+    PGSideBarMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PGSideBarMenuCellIdentifier];
+    [cell configureCellAtIndexPath:indexPath];
+    
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -115,7 +117,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [PGSideBarMenuItems heightForRowAtIndexPath:indexPath];
+    return [PGSideBarMenuTableViewCell heightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark - UITableViewDelegate methods

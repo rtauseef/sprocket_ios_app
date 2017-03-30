@@ -25,7 +25,7 @@
 #import "UIViewController+Trackable.h"
 #import "PGCameraManager.h"
 #import "PGAnalyticsManager.h"
-#import "PGSideBarMenuItems.h"
+#import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
 #import "NSLocale+Additions.h"

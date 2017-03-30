@@ -113,8 +113,8 @@
 		82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 821523261D82215600C0541C /* Sprocket Print.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
-		8218C5641DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */; };
-		8218C5651DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */; };
+		8218C5641DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */; };
+		8218C5651DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */; };
 		821E39221E82103E00A23A41 /* bunny_balloon_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 821E38A61E82103D00A23A41 /* bunny_balloon_TN.png */; };
 		821E39231E82103E00A23A41 /* bunny_balloon_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821E38A71E82103D00A23A41 /* bunny_balloon_TN@2x.png */; };
 		821E39241E82103E00A23A41 /* bunny_balloon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821E38A81E82103D00A23A41 /* bunny_balloon_TN@3x.png */; };
@@ -1859,8 +1859,8 @@
 		821851D31D60EC6F001288D9 /* PGSignInButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSignInButton.m; sourceTree = "<group>"; };
 		821851D61D60EF4A001288D9 /* PGTermsAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTermsAttributedLabel.h; sourceTree = "<group>"; };
 		821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTermsAttributedLabel.m; sourceTree = "<group>"; };
-		8218C5621DDBE90C000855D8 /* PGSideBarMenuItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuItems.h; sourceTree = "<group>"; };
-		8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSideBarMenuItems.m; sourceTree = "<group>"; };
+		8218C5621DDBE90C000855D8 /* PGSideBarMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuTableViewCell.h; sourceTree = "<group>"; };
+		8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSideBarMenuTableViewCell.m; sourceTree = "<group>"; };
 		821E38A61E82103D00A23A41 /* bunny_balloon_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bunny_balloon_TN.png; path = Resources/Images/Stickers/Easter/bunny_balloon_TN.png; sourceTree = "<group>"; };
 		821E38A71E82103D00A23A41 /* bunny_balloon_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bunny_balloon_TN@2x.png"; path = "Resources/Images/Stickers/Easter/bunny_balloon_TN@2x.png"; sourceTree = "<group>"; };
 		821E38A81E82103D00A23A41 /* bunny_balloon_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bunny_balloon_TN@3x.png"; path = "Resources/Images/Stickers/Easter/bunny_balloon_TN@3x.png"; sourceTree = "<group>"; };
@@ -3235,8 +3235,8 @@
 			children = (
 				829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */,
 				829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */,
-				8218C5621DDBE90C000855D8 /* PGSideBarMenuItems.h */,
-				8218C5631DDBE90C000855D8 /* PGSideBarMenuItems.m */,
+				8218C5621DDBE90C000855D8 /* PGSideBarMenuTableViewCell.h */,
+				8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */,
 				829E02851DDA64C200B025C5 /* PGSocialSourcesMenuViewController.h */,
 				829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */,
 				826B69D61DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.h */,
@@ -6169,7 +6169,7 @@
 				a5ddf8bbdfb873da46ef0132 /* UIColor+HexString.m in Sources */,
 				8263D7B81E71DD330036E903 /* PGTextView.m in Sources */,
 				924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
-				8218C5651DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */,
+				8218C5651DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */,
 				b7f4d03ea6ee15ea731634d1 /* PGLogFormatter.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
@@ -6315,7 +6315,7 @@
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
-				8218C5641DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */,
+				8218C5641DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
