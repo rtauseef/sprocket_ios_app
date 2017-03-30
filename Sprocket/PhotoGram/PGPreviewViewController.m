@@ -475,8 +475,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 offRamp = kMetricsOffRampQueueAddMulti;
             }
 
+            BOOL canResumePrinting = YES;
             for (PGGesturesView *gestureView in selectedViews) {
                 MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+
+                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem]) {
+                    canResumePrinting = NO;
+                    break;
+                }
 
                 NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
                 [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
@@ -485,23 +491,23 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                                  printItem:printItem
                                                               extendedInfo:extendedMetrics];
-
-                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
             }
 
-            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
-                return [self handlePrintQueueStatus:status progress:progress];
-            }];
+            if (canResumePrinting) {
+                [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
+                    return [self handlePrintQueueStatus:status progress:progress];
+                }];
 
 
-            NSString *action = kEventPrintQueueAddSingleAction;
-            if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
-                action = kEventPrintQueueAddMultiAction;
+                NSString *action = kEventPrintQueueAddSingleAction;
+                if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+                    action = kEventPrintQueueAddMultiAction;
+                }
+
+                [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
+                                                                  queueId:[MPBTPrintManager sharedInstance].queueId
+                                                                queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
             }
-
-            [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
-                                                              queueId:[MPBTPrintManager sharedInstance].queueId
-                                                            queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
         }
     }];
 }
