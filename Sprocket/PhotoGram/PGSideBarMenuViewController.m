@@ -217,10 +217,9 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 }
 
 - (void)checkPrintQueue {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UITableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
-        cell.imageView.highlighted = [MPBTPrintManager sharedInstance].queueSize > 0;
-    });
+    PGSideBarMenuTableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
+    
+    cell.menuImageView.image = [cell printQueueImageForQueueSize:([MPBTPrintManager sharedInstance].queueSize > 0)];
 }
 
 - (void)resizeViewAccordingRevealViewController {

@@ -57,8 +57,8 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             break;
         case PGSideBarMenuCellPrintQueue:
             self.menuTitle.text = NSLocalizedString(@"Print Queue", nil);
-            self.menuImageView.image = [UIImage imageNamed:@"menuPrintQueueInactive"];
-            self.menuImageView.highlightedImage = [UIImage imageNamed:@"menuPrintQueueActive"];
+            self.menuImageView.image = [self printQueueImageForQueueSize:0];
+            self.titlePadding.constant = 9;
             break;
         case PGSideBarMenuCellBuyPaper:
             self.menuTitle.text = NSLocalizedString(@"Buy Paper", nil);
@@ -83,6 +83,15 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
         default:
             break;
     }
+}
+
+- (UIImage *)printQueueImageForQueueSize:(NSInteger)queueSize
+{
+    if (queueSize > 0) {
+        return [UIImage imageNamed:@"menuPrintQueueOn"];
+    }
+    
+    return [UIImage imageNamed:@"menuPrintQueueOff"];
 }
 
 + (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath
