@@ -219,7 +219,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)checkPrintQueue {
     PGSideBarMenuTableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
     
-    cell.menuImageView.image = [cell printQueueImageForQueueSize:([MPBTPrintManager sharedInstance].queueSize > 0)];
+    cell.menuImageView.image = [cell printQueueImageForQueueSize:[MPBTPrintManager sharedInstance].queueSize];
 }
 
 - (void)resizeViewAccordingRevealViewController {
