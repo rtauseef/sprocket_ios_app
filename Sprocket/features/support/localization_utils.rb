@@ -1722,7 +1722,7 @@ def get_ios_locale_id
                                                                                                         ios_locale_id = "en_CA"
                                                                                                       $list_loc=$language_arr["en_CA"]
                                                                                                             else
-                                                                                                            if ios_locale_id = "Australian-English"
+                                                                                                            if ios_locale_id == "Australian-English"
                                                                                                       $list_loc=$language_arr["en_AU"]
                                                                                                         ios_locale_id = "en_AU"
                                                                                                                 else
