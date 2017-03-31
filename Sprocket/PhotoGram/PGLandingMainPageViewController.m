@@ -376,18 +376,13 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 #pragma mark - MPBTPrintManagerDelegate
 
-- (void)btPrintManager:(MPBTPrintManager *)printManager didStartSendingPrintJob:(MPPrintLaterJob *)job {
-    [self dismissErrorAlert];
-}
-
-- (void)btPrintManager:(MPBTPrintManager *)printManager sendingPrintJob:(MPPrintLaterJob *)job progress:(NSInteger)progress {
-    [self dismissErrorAlert];
-}
-
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
+    [self dismissErrorAlert];
+
     NSString *queueAction = kEventPrintQueuePrintSingleAction;
     NSString *jobAction = kEventPrintJobPrintSingleAction;
     NSString *offRamp = kMetricsOffRampQueuePrintSingle;
+
     if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
         queueAction = kEventPrintQueuePrintMultiAction;
         jobAction = kEventPrintJobPrintMultiAction;
@@ -402,6 +397,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
     NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
     [extendedMetrics addEntriesFromDictionary:printManager.printerAnalytics];
+    [extendedMetrics addEntriesFromDictionary:job.extra];
     [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
 
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
@@ -422,26 +418,26 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     }
 
     NSString *printsInQueue = [NSString stringWithFormat:format, (long)printManager.queueSize];
-    NSString *errorMessage = [NSString stringWithFormat:@"%@\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
+    NSString *errorMessage = [NSString stringWithFormat:@"%@\n\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
 
     self.errorAlert = [UIAlertController alertControllerWithTitle:[[MP sharedInstance] errorTitle:errorCode]
                                                                    message:errorMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                          style:UIAlertActionStyleDefault
+                                                          style:UIAlertActionStyleCancel
                                                         handler:^(UIAlertAction * _Nonnull action) {
                                                             self.errorAlert = nil;
                                                             [printManager pausePrintQueue];
                                                         }];
+    [self.errorAlert addAction:pauseAction];
+
     UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
-                                                       style:UIAlertActionStyleCancel
+                                                       style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
                                                          self.errorAlert = nil;
                                                      }];
-
     [self.errorAlert addAction:tryAgainAction];
-    [self.errorAlert addAction:pauseAction];
 
     UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];
     [topViewController presentViewController:self.errorAlert animated:YES completion:nil];

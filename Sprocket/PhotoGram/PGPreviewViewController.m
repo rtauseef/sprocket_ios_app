@@ -248,24 +248,30 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
 }
 
+- (void)savePhoto:(NSArray *)images index:(NSInteger)index withCompletion:(void (^)(BOOL))completion
+{
+    __block NSArray *savedImages = images;
+    __block NSInteger idx = index;
+    
+    [PGSavePhotos saveImage:savedImages[idx++] completion:^(BOOL success) {
+        if (success && [savedImages count] > idx) {
+            [self savePhoto:savedImages index:idx withCompletion:completion];
+        } else if (completion) {
+            completion(success);
+        }
+    }];
+}
+
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
-    dispatch_group_t group = dispatch_group_create();
-    
+    NSMutableArray *images = [[NSMutableArray alloc] init];
     for (PGGesturesView *gestureView in self.gesturesViews) {
         if (gestureView.isSelected) {
-            dispatch_group_enter(group);
-            [PGSavePhotos saveImage:gestureView.editedImage completion:^(BOOL success) {
-                dispatch_group_leave(group);
-            }];
+            [images addObject:gestureView.editedImage];
         }
     }
-    
-    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
-    
-    if (completion) {
-        completion(YES);
-    }
+
+    [self savePhoto:images index:0 withCompletion:completion];
 }
 
 #pragma mark - IMGLYToolStackControllerDelegate
@@ -477,16 +483,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
             BOOL canResumePrinting = YES;
             for (PGGesturesView *gestureView in selectedViews) {
-                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-
-                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem]) {
-                    canResumePrinting = NO;
-                    break;
-                }
-
                 NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
                 [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
                 [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:[[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics]]) {
+                    canResumePrinting = NO;
+                    break;
+                }
 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                                  printItem:printItem
@@ -545,18 +550,27 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     } else if (status == MPBTPrinterManagerStatusPrinting) {
         [self.progressView setProgress:1.0F];
+        [self dismissProgressView];
 
-        [UIView animateWithDuration:0.3 animations:^{
-            self.progressView.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self.progressView removeFromSuperview];
-            self.progressView = nil;
-        }];
+        return NO;
+
+    } else if (status == MPBTPrinterManagerStatusIdle) {
+        // User paused the print queue
+        [self dismissProgressView];
 
         return NO;
     }
 
     return YES;
+}
+
+- (void)dismissProgressView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.progressView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.progressView removeFromSuperview];
+        self.progressView = nil;
+    }];
 }
 
 - (MPPaper *)paper
