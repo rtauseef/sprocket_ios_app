@@ -44,7 +44,13 @@ extern NSString * const kMPOfframpDeleteFromQueue;
 - (BOOL)addPrintLaterJob:(MPPrintLaterJob *)printLaterJob fromController:(MPPageSettingsTableViewController *)controller;
 
 /*!
- * @abstract Removes a job to the print queue
+ * @abstract Marks a job as complete and removes it from the print queue
+ * @param printLaterJob The job to remove
+ */
+- (BOOL)completePrintLaterJob:(MPPrintLaterJob *)printLaterJob;
+
+/*!
+ * @abstract Removes a job from the print queue
  * @param printLaterJob The job to remove
  */
 - (BOOL)deletePrintLaterJob:(MPPrintLaterJob *)printLaterJob;
