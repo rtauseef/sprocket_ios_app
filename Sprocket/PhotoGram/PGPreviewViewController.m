@@ -248,24 +248,30 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
 }
 
+- (void)savePhoto:(NSArray *)images index:(NSInteger)index withCompletion:(void (^)(BOOL))completion
+{
+    __block NSArray *savedImages = images;
+    __block NSInteger idx = index;
+    
+    [PGSavePhotos saveImage:savedImages[idx++] completion:^(BOOL success) {
+        if (success && [savedImages count] > idx) {
+            [self savePhoto:savedImages index:idx withCompletion:completion];
+        } else if (completion) {
+            completion(success);
+        }
+    }];
+}
+
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
-    dispatch_group_t group = dispatch_group_create();
-    
+    NSMutableArray *images = [[NSMutableArray alloc] init];
     for (PGGesturesView *gestureView in self.gesturesViews) {
         if (gestureView.isSelected) {
-            dispatch_group_enter(group);
-            [PGSavePhotos saveImage:gestureView.editedImage completion:^(BOOL success) {
-                dispatch_group_leave(group);
-            }];
+            [images addObject:gestureView.editedImage];
         }
     }
-    
-    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
-    
-    if (completion) {
-        completion(YES);
-    }
+
+    [self savePhoto:images index:0 withCompletion:completion];
 }
 
 #pragma mark - IMGLYToolStackControllerDelegate
