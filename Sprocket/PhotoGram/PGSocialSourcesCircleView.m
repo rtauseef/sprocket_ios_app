@@ -45,42 +45,41 @@
 {
     [[self subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    NSMutableArray *sources = [NSMutableArray arrayWithArray:[[PGSocialSourcesManager sharedInstance] enabledSocialSources]];
-    if ([PGLinkSettings linkEnabled]) {
-        [sources insertObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLink] atIndex:0];
-    }
-    
-    self.socialSources = sources;
+    self.socialSources = [[PGSocialSourcesManager sharedInstance] enabledSocialSources];
 
     CGFloat cameraCenterXY = self.frame.size.width / 2;
 
     UIImage *cameraImage = [UIImage imageNamed:@"cameraLanding"];
     CGFloat cameraRadius = cameraImage.size.width;
+
     UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [cameraButton setImage:cameraImage forState:UIControlStateNormal];
     cameraButton.frame = CGRectMake(cameraCenterXY - cameraRadius, cameraCenterXY - cameraRadius, cameraRadius * 2, cameraRadius * 2);
-
     [cameraButton addTarget:self action:@selector(cameraButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-
     [self addSubview:cameraButton];
 
     CGFloat radius = cameraCenterXY - (self.socialSources[0].icon.size.width / 2);
-    CGFloat numberOfCircles = self.socialSources.count;
-    CGFloat stepDegrees = 360 / numberOfCircles;
 
+    CGFloat numberOfCircles = self.socialSources.count;
+    NSInteger extraIcons = 0;
+    CGFloat stepDegrees = 360 / numberOfCircles;
+    if ([PGLinkSettings linkEnabled]) {
+        extraIcons = 1;
+        stepDegrees = 360 / (numberOfCircles + extraIcons);
+        UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *linkImage = [UIImage imageNamed:@"linkReaderScan"];
+        [linkButton setImage:linkImage forState:UIControlStateNormal];
+        linkButton.frame = [self frameForImage:linkImage step:stepDegrees center:cameraCenterXY radius:radius andIndex:0];
+        [linkButton addTarget:self action:@selector(linkButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:linkButton];
+    }
+    
     for (int i = 0; i < numberOfCircles; i++) {
         PGSocialSource *socialSource = self.socialSources[i];
 
-        CGFloat deg = (stepDegrees * i) + 90;
-        CGFloat circleRadius = socialSource.icon.size.width;
-        CGFloat yRadians = deg * M_PI / 180;
-        CGFloat xRadians = (90 - deg) * M_PI / 180;
-        CGFloat y = cameraCenterXY - (radius * sinf(yRadians)) - circleRadius;
-        CGFloat x = cameraCenterXY - (radius * sinf(xRadians)) - circleRadius;
-
         UIButton *socialButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [socialButton setImage:socialSource.icon forState:UIControlStateNormal];
-        socialButton.frame = CGRectMake(x, y, circleRadius * 2, circleRadius * 2);
+        socialButton.frame = [self frameForImage:socialSource.icon step:stepDegrees center:cameraCenterXY radius:radius andIndex:(i + extraIcons)];
         socialButton.tag = i;
 
         [socialButton addTarget:self action:@selector(socialButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -90,10 +89,28 @@
 
 }
 
+- (CGRect)frameForImage:(UIImage *)image step:(CGFloat)step center:(CGFloat)center radius:(CGFloat)radius andIndex:(NSInteger)index
+{
+    CGFloat deg = (step * index) + 90;
+    CGFloat circleRadius = image.size.width;
+    CGFloat yRadians = deg * M_PI / 180;
+    CGFloat xRadians = (90 - deg) * M_PI / 180;
+    CGFloat y = center - (radius * sinf(yRadians)) - circleRadius;
+    CGFloat x = center - (radius * sinf(xRadians)) - circleRadius;
+    return CGRectMake(x, y, circleRadius * 2, circleRadius * 2);
+}
+
 - (void)cameraButtonTapped:(UIButton *)sender
 {
     if ([self.delegate respondsToSelector:@selector(socialCircleView:didTapOnCameraButton:)]) {
         [self.delegate socialCircleView:self didTapOnCameraButton:sender];
+    }
+}
+
+- (void)linkButtonTapped:(UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(socialCircleView:didTapOnLinkButton:)]) {
+        [self.delegate socialCircleView:self didTapOnLinkButton:sender];
     }
 }
 

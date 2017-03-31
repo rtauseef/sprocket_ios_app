@@ -36,8 +36,7 @@ typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypeFlickr,
     PGSocialSourceTypePitu,
     PGSocialSourceTypeWeiBo,
-    PGSocialSourceTypeQzone,
-    PGSocialSourceTypeLink
+    PGSocialSourceTypeQzone
 };
 
 extern NSString * const kSocialNetworkKey;

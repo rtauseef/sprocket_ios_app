@@ -27,6 +27,7 @@
 @optional
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button;
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnLinkButton:(UIButton *)button;
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource;
 
 @end

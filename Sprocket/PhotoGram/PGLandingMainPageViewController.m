@@ -395,6 +395,11 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [self cameraTapped:button];
 }
 
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnLinkButton:(UIButton *)button
+{
+    [self linkScanTapped:button];
+}
+
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
 {
     switch (socialSource.type) {
@@ -418,9 +423,6 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
             break;
         case PGSocialSourceTypePitu:
             [self pituTapped:button];
-            break;
-        case PGSocialSourceTypeLink:
-            [self linkScanTapped:button];
             break;
     }
 }

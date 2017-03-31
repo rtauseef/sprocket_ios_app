@@ -50,7 +50,6 @@ NSInteger const kPGSocialSourcesMenuDefaultThreshold = 4;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [PGSocialSourcesManager sharedInstance].enabledSocialSources.count;
-    // TODO:jbt: figure out how to ignore link "source"
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
