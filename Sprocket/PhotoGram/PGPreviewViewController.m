@@ -477,16 +477,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
             BOOL canResumePrinting = YES;
             for (PGGesturesView *gestureView in selectedViews) {
-                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-
-                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem]) {
-                    canResumePrinting = NO;
-                    break;
-                }
-
                 NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
                 [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
                 [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:[[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics]]) {
+                    canResumePrinting = NO;
+                    break;
+                }
 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                                  printItem:printItem
@@ -545,18 +544,27 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     } else if (status == MPBTPrinterManagerStatusPrinting) {
         [self.progressView setProgress:1.0F];
+        [self dismissProgressView];
 
-        [UIView animateWithDuration:0.3 animations:^{
-            self.progressView.alpha = 0.0;
-        } completion:^(BOOL finished) {
-            [self.progressView removeFromSuperview];
-            self.progressView = nil;
-        }];
+        return NO;
+
+    } else if (status == MPBTPrinterManagerStatusIdle) {
+        // User paused the print queue
+        [self dismissProgressView];
 
         return NO;
     }
 
     return YES;
+}
+
+- (void)dismissProgressView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.progressView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.progressView removeFromSuperview];
+        self.progressView = nil;
+    }];
 }
 
 - (MPPaper *)paper

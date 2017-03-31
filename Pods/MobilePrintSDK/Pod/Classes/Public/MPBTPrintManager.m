@@ -14,6 +14,7 @@
 #import "MPPaper.h"
 #import "MPPrintLaterQueue.h"
 #import "MPBTSprocket.h"
+#import "MPAnalyticsManager.h"
 
 static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print-manager.queue-id";
 
@@ -42,7 +43,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 
-- (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem {
+- (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
     if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
         [self reportError:MantaErrorBusy];
         return NO;
@@ -51,6 +52,15 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     MPPrintLaterJob *job = [[MPPrintLaterJob alloc] init];
     job.id = [[MPPrintLaterQueue sharedInstance] retrievePrintLaterJobNextAvailableId];
     job.printItems = @{[MP sharedInstance].defaultPaper.sizeTitle: printItem};
+    [job prepareMetricsForOfframp:[metrics objectForKey:kMPOfframpKey]];
+
+    NSMutableDictionary *finalMetrics = [NSMutableDictionary dictionaryWithDictionary:metrics];
+    [finalMetrics addEntriesFromDictionary:job.extra];
+    [finalMetrics setObject:@(job.numCopies) forKey:kMPNumberOfCopies];
+    [finalMetrics setObject:[MP sharedInstance].defaultPaper.sizeTitle forKey:kMPPaperSizeId];
+    [finalMetrics setObject:[MP sharedInstance].defaultPaper.typeTitle forKey:kMPPaperTypeId];
+
+    job.extra = finalMetrics;
 
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
 
@@ -87,6 +97,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (void)pausePrintQueue {
     self.status = MPBTPrinterManagerStatusIdle;
+
+    [self sendStatusUpdate:0];
 
     [self.checkTimer invalidate];
     self.checkTimer = nil;
@@ -251,6 +263,12 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     if ([self.delegate respondsToSelector:@selector(btPrintManager:didStartPrintingJob:)]) {
         [self.delegate btPrintManager:self didStartPrintingJob:self.currentJob];
+    }
+
+    if ([self queueSize] == 0) {
+        NSLog(@"PRINT QUEUE - EMPTY");
+
+        [self cancelPrintQueue];
     }
 
     self.currentJob = nil;
