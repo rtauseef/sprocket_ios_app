@@ -42,7 +42,7 @@ Scenario: Verify side menu options
     |sprocket       |
     |Buy Paper      |
     |How to & Help  |
-    |Give Feedback  |
+    |Take Survey    |
     |Privacy        |
     |About          |
     
