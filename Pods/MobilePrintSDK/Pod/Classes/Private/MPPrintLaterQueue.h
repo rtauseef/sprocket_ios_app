@@ -61,6 +61,11 @@ extern NSString * const kMPOfframpDeleteFromQueue;
 - (BOOL)deleteAllPrintLaterJobs;
 
 /*!
+ * @abstract Removes all jobs from the print queue, calling the block for each after it gets deleted
+ */
+- (BOOL)deleteEachPrintLaterJobsWithBlock:(void (^)(MPPrintLaterJob *job))deletionBlock;
+
+/*!
  * @abstract Retrieves the job with the given ID
  * @param id The ID of the job to retrieve
  * @return The job with the given ID or nil if the job is not found

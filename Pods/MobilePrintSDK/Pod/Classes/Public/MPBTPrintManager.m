@@ -86,10 +86,18 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 - (void)cancelPrintQueue {
     self.status = MPBTPrinterManagerStatusEmptyQueue;
 
-    [[MPPrintLaterQueue sharedInstance] deleteAllPrintLaterJobs];
+    [[MPPrintLaterQueue sharedInstance] deleteEachPrintLaterJobsWithBlock:^(MPPrintLaterJob *job) {
+        if ([self.delegate respondsToSelector:@selector(mtPrintManager:didDeletePrintJob:)]) {
+            [self.delegate mtPrintManager:self didDeletePrintJob:job];
+        }
+    }];
 
     [self.checkTimer invalidate];
     self.checkTimer = nil;
+
+    if ([self.delegate respondsToSelector:@selector(btPrintManagerDidClearPrintQueue:)]) {
+        [self.delegate btPrintManagerDidClearPrintQueue:self];
+    }
 
     self.originalQueueSize = 0;
     [self incrementQueueId];

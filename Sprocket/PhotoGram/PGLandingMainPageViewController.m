@@ -443,6 +443,19 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [topViewController presentViewController:self.errorAlert animated:YES completion:nil];
 }
 
+- (void)mtPrintManager:(MPBTPrintManager *)printManager didDeletePrintJob:(MPPrintLaterJob *)job {
+    [[PGAnalyticsManager sharedManager] trackPrintQueueAction:kEventPrintQueueDeleteMultiAction
+                                                      queueId:printManager.queueId];
+
+    NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+    [extendedMetrics addEntriesFromDictionary:job.extra];
+    [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteMulti
+                                                     printItem:job.defaultPrintItem
+                                                  extendedInfo:extendedMetrics];
+}
+
 
 #pragma mark - PGSocialSourcesCircleViewDelegate
 
