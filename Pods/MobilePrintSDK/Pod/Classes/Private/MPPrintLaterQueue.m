@@ -128,7 +128,7 @@ NSString * const kMPOfframpDeleteFromQueue = @"DeleteFromQueue";
 - (BOOL)completePrintLaterJob:(MPPrintLaterJob *)printLaterJob {
     BOOL success = [self deleteFile:printLaterJob.id atPath:self.printLaterJobsDirectoryPath];
 
-    if (success) {
+    if (success && printLaterJob.id != nil) {
         [self removeCachedJob:printLaterJob.id];
     }
 
