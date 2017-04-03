@@ -304,7 +304,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId
 {
-    [self trackPrintQueueAction:action queueId:queueId queueSize:kEventDefaultValue];
+    [self trackPrintQueueAction:action queueId:queueId queueSize:1];
 }
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId queueSize:(NSUInteger)queueSize
@@ -317,7 +317,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
 {
-    [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(kEventDefaultValue)];
+    [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(1)];
 }
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
