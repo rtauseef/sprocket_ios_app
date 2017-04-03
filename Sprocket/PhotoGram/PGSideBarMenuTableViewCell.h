@@ -37,6 +37,5 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
 
 - (void)configureCellAtIndexPath:(NSIndexPath *)indexPath;
 + (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (UIImage *)printQueueImageForQueueSize:(NSInteger)queueSize;
 
 @end
