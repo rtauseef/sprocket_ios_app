@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9384035c49d6bfc4876835ff"
-            BuildableName = "Sprocket.app"
-            BlueprintName = "Sprocket-cal1"
+            BlueprintIdentifier = "42188b650312ea34d00c34bf"
+            BuildableName = "Sprocket-cal.app"
+            BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9384035c49d6bfc4876835ff"
-            BuildableName = "Sprocket.app"
-            BlueprintName = "Sprocket-cal1"
+            BlueprintIdentifier = "42188b650312ea34d00c34bf"
+            BuildableName = "Sprocket-cal.app"
+            BlueprintName = "Sprocket-cal"
             ReferencedContainer = "container:Sprocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

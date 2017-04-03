@@ -395,12 +395,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     __weak PGLandingSelectorPageViewController *weakSelf = self;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-        previewViewController.source = [PGPreviewViewController cameraSource];
-        previewViewController.transitionEffectView.alpha = 1;
-        
-        [weakSelf presentViewController:previewViewController animated:YES completion:nil];
+        [PGPreviewViewController presentCameraFrom:weakSelf animated:YES];
     } andFailure:^{
         [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
     }];
@@ -409,6 +404,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)mediaNavigationDidPressSelectButton:(PGMediaNavigation *)mediaNav {
     [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectEnable selectedPhotos:nil];
 
+    [[PGPhotoSelection sharedInstance] clearSelection];
     [[PGPhotoSelection sharedInstance] beginSelectionMode];
 
     PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);

@@ -45,25 +45,17 @@
     self.stickers = [NSMutableArray array];
     
     if ([NSLocale isChinese]) {
+        [self.stickers addObjectsFromArray:[self easterStickers]];
         [self.stickers addObjectsFromArray:[self chinaStickers]];
     } else {
-        [self.stickers addObjectsFromArray:[self stPatrickStickers]];
+        [self.stickers addObjectsFromArray:[self easterStickers]];
         [self.stickers addObjectsFromArray:[self standardUSStickers]];
     }
 }
 
 - (NSArray *)chinaStickers
-{
-    NSString *packageName = @"Woman's day";
-    
+{   
     return @[
-             [[PGStickerItem alloc] initWithName:@"Banner" imageName:@"Banner2" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"3 Women" imageName:@"3-women" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"8" imageName:@"8" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Profile 2" imageName:@"profile2" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Tea Cup" imageName:@"tea_cup" andPackageName:nil],
-             [[PGStickerItem alloc] initWithName:@"Tulip" imageName:@"tulip" andPackageName:nil],
              [[PGStickerItem alloc] initWithName:@"Cat Glasses" imageName:@"catglasses" andPackageName:nil],
              [[PGStickerItem alloc] initWithName:@"Cat Whiskers" imageName:@"catwhiskers" andPackageName:nil],
              [[PGStickerItem alloc] initWithName:@"Cat Ears" imageName:@"catears" andPackageName:nil],
@@ -162,31 +154,44 @@
              ];
 }
 
-- (NSArray *)stPatrickStickers
+- (NSArray *)easterStickers
 {
-    NSString *packageName = @"St Patrick";
+    NSString *packageName = @"Easter";
     
     return @[
-             [[PGStickerItem alloc] initWithName:@"Glasses" imageName:@"glasses_2b" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Hat" imageName:@"hat_1b" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Kiss me" imageName:@"kiss_me_2c" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Derby" imageName:@"derby" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Hearts 2" imageName:@"st_hearts" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Glasses 2" imageName:@"st_glasses" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Boppers" imageName:@"boppers" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Lips" imageName:@"lips" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Bow Tie" imageName:@"bow_tie" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Beard and Eyebrows" imageName:@"beard&-eyebrows" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Mustache" imageName:@"mustache" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Pot O Gold" imageName:@"pot_o_gold" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Rainbow" imageName:@"rainbow_2" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Shamrock Crown" imageName:@"shamrock_crown" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Shamrock" imageName:@"shamrock_2" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Lucky" imageName:@"#lucky_new" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Shamrock 3" imageName:@"shamrockin_3" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Clover Headband" imageName:@"clover_headband" andPackageName:packageName],
-             [[PGStickerItem alloc] initWithName:@"Clover Wand" imageName:@"clover_wand" andPackageName:packageName]
-             ];
+             [[PGStickerItem alloc] initWithName:@"Bunny Ears" imageName:@"bunny_ears" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Flower Glasses" imageName:@"flower_glasses" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Peeps" imageName:@"peeps" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Easter Banner" imageName:@"easter_banner" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny New" imageName:@"bunny_new" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Eggs" imageName:@"eggs" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Chicks" imageName:@"chicks" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Chocolate Bunny" imageName:@"chocolate_bunny" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Easter Birds" imageName:@"easter_birds" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Floating Flowers 2" imageName:@"floating_flowers_2" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Happy Spring" imageName:@"happy_spring" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny Balloon" imageName:@"bunny_balloon" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Jelly Beans" imageName:@"jelly_beans" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Carrot" imageName:@"carrot" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Marshmallow Yellow" imageName:@"marshmallow_yellow" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Marshmallow Pink" imageName:@"marshmallow-pink" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Marshmallow Blue" imageName:@"marshmallow_blue" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Marshmallow Purple" imageName:@"marshmallow_purple" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny Face Bow" imageName:@"bunny_face_bow" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny Ears Polkadot" imageName:@"bunny_ears_polkadot" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny Big Egg" imageName:@"bunny_big_egg" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Easter Basket" imageName:@"easter_basket" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Easter Egg" imageName:@"easter_egg" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny Holding Egg" imageName:@"bunny_holding_egg" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Bunny Egg" imageName:@"bunny_egg" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Carrot2" imageName:@"carrot2" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Lilly" imageName:@"lilly" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Hanging lillies" imageName:@"hanging_lillies" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Tulips" imageName:@"tulips" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Flower Leaves Element" imageName:@"flower_leaves_element" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Flower Ring" imageName:@"flower_ring" andPackageName:packageName]
+            ];
+
 }
 
 - (PGStickerItem *)stickerByIndex:(NSInteger)index

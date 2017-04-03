@@ -73,10 +73,12 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     self.termsLabel.delegate = self;
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
-    PGSurveyManager *surveyManager = [PGSurveyManager sharedInstance];
-    surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of sprocket", nil);
-    surveyManager.delegate = self;
-    [surveyManager check];
+    if ([NSLocale isSurveyAvailable]) {
+        PGSurveyManager *surveyManager = [PGSurveyManager sharedInstance];
+        surveyManager.messageTitle = NSLocalizedString(@"Tell us what you think of sprocket", nil);
+        surveyManager.delegate = self;
+        [surveyManager check];
+    }
 
     self.socialSourcesCircleView.delegate = self;
 

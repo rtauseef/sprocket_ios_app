@@ -16,6 +16,7 @@
 #import <HPPRError.h>
 #import "PGSocialSource.h"
 #import "PGSelectAlbumDropDownViewController.h"
+#import "PGPhotoSelection.h"
 
 extern const NSInteger PGLandingPageViewControllerCollectionViewBottomInset;
 

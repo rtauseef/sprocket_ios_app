@@ -10,16 +10,19 @@
 // the license agreement.
 //
 
+#import <Crashlytics/Crashlytics.h>
+#import <HPPRCameraRollMedia.h>
+
+#import "PGAnalyticsManager.h"
+#import "PGAppDelegate.h"
 #import "PGCameraManager.h"
 #import "PGLandingMainPageViewController.h"
-#import "PGAppDelegate.h"
-#import "PGAnalyticsManager.h"
-#import "UIViewController+trackable.h"
 #import "PGOverlayCameraViewController.h"
+#import "PGPhotoSelection.h"
+#import "PGSavePhotos.h"
+#import "UIViewController+trackable.h"
 #import "PGDeepLinkLauncher.h"
 #import <Crashlytics/Crashlytics.h>
-
-NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -109,16 +112,17 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
-    previewViewController.selectedPhoto = photo;
-    previewViewController.source = [PGPreviewViewController cameraSource];
+    HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
+    media.image = photo;
     
-    self.currentSource = previewViewController.source;
-    self.currentSelectedPhoto = previewViewController.selectedPhoto;
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    
+    self.currentSelectedPhoto = photo;
+    self.currentMedia = media;
+    self.currentSource = [PGPreviewViewController cameraSource];
     
     if (self.isBackgroundCamera) {
-        [self.viewController presentViewController:previewViewController animated:NO completion:nil];
+        [PGPreviewViewController presentPreviewPhotoFrom:self.viewController andSource:[PGPreviewViewController cameraSource] animated:NO];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerPhotoTaken object:nil];
     }
@@ -256,7 +260,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
-        if (![weakSelf userPromptedToSavePhotos]) {
+        if (![PGSavePhotos userPromptedToSavePhotos]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
                                                                            message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
                                                                     preferredStyle:UIAlertControllerStyleAlert];
@@ -264,7 +268,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
                                                                style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                 [weakSelf setSavePhotos:NO];
+                                                                 [PGSavePhotos setSavePhotos:NO];
                                                                  [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                                  [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"Off"];
                                                              }];
@@ -272,8 +276,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * _Nonnull action) {
-                                                                  [weakSelf setSavePhotos:YES];
-                                                                  [weakSelf saveImage:photo completion:nil];
+                                                                  [PGSavePhotos setSavePhotos:YES];
+                                                                  [PGSavePhotos saveImage:photo completion:nil];
                                                                   [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
                                                                   [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                                                               }];
@@ -281,8 +285,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             
             [weakSelf.viewController presentViewController:alert animated:YES completion:nil];
         } else {
-            if ([weakSelf savePhotos]) {
-                [weakSelf saveImage:photo completion:nil];
+            if ([PGSavePhotos savePhotos]) {
+                [PGSavePhotos saveImage:photo completion:nil];
             }
             [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
         }
@@ -401,91 +405,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     [self loadPreviewViewControllerWithPhoto:photo andInfo:info];
 }
-
-#pragma mark - Auto-Save Photo Setting
-
-- (BOOL)savePhotos
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults boolForKey:kSettingSaveCameraPhotos];
-}
-
-- (void)setSavePhotos:(BOOL)save
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:save forKey:kSettingSaveCameraPhotos];
-    [defaults synchronize];
-}
-
-- (BOOL)userPromptedToSavePhotos
-{
-    BOOL userPrompted = YES;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (nil == [defaults objectForKey:kSettingSaveCameraPhotos]) {
-        userPrompted = NO;
-    }
-    return userPrompted;
-}
-
-- (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion
-{
-    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
-        if (loggedIn) {
-            NSString *albumTitle = @"sprocket";
-
-            PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
-            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];
-            PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
-
-            if ([fetchResult firstObject]) {
-                PHAssetCollection *sprocketAlbum = [fetchResult firstObject];
-
-                [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
-
-            } else {
-                __block PHObjectPlaceholder *sprocketAlbumPlaceholder;
-
-                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-                    PHAssetCollectionChangeRequest *changeRequest = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumTitle];
-                    sprocketAlbumPlaceholder = changeRequest.placeholderForCreatedAssetCollection;
-
-                } completionHandler:^(BOOL success, NSError *error) {
-                    if (success) {
-                        PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[sprocketAlbumPlaceholder.localIdentifier] options:nil];
-                        PHAssetCollection *sprocketAlbum = fetchResult.firstObject;
-
-                        [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
-                    } else {
-                        if (completion) {
-                            completion(NO);
-                        }
-                    }
-                }];
-            }
-            
-        } else {
-            if (completion) {
-                completion(NO);
-            }
-        }
-    }];
-
-}
-
-- (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion
-{
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        PHAssetChangeRequest *assetChangeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-
-        PHAssetCollectionChangeRequest *assetCollectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
-        [assetCollectionChangeRequest addAssets:@[[assetChangeRequest placeholderForCreatedAsset]]];
-    } completionHandler:^(BOOL success, NSError *error) {
-        if (completion) {
-            completion(success);
-        }
-    }];
-}
-
 
 #pragma mark - Metrics
 + (NSString *)trackableScreenName

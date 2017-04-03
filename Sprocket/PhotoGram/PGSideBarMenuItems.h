@@ -22,7 +22,6 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
     PGSideBarMenuCellSprocket,
     PGSideBarMenuCellBuyPaper,
     PGSideBarMenuCellHowToAndHelp,
-    PGSideBarMenuCellGiveFeedback,
     PGSideBarMenuCellTakeSurvey,
     PGSideBarMenuCellPrivacy,
     PGSideBarMenuCellAbout,

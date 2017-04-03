@@ -17,6 +17,7 @@
 #import <HPPRFlickrLoginProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <DBChooser/DBChooser.h>
+#import <MPBTPrintManager.h>
 
 #import "AirshipKit.h"
 #import "PGAppDelegate.h"
@@ -28,12 +29,13 @@
 #import "UIViewController+Trackable.h"
 #import "PGLandingMainPageViewController.h"
 #import "PGDeepLinkLauncher.h"
+#import "PGSecretKeeper.h"
 
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
-@interface PGAppDelegate()
+@interface PGAppDelegate() <MPPrintPaperDelegate>
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 @property (assign, nonatomic) NSInteger lastConnectedValue;
@@ -49,14 +51,14 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     [PGAppAppearance setupAppearance];
     
-    [HPPR sharedInstance].instagramClientId = @"5db5d92b37f44ad89c5b620a2dc7081c";
+    [HPPR sharedInstance].instagramClientId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryInstagramClientId];
     [HPPR sharedInstance].instagramRedirectURL = @"http://www8.hp.com/us/en/contact-hp/contact.html";
     
-    [HPPR sharedInstance].flickrAppKey = @"48fe53f214de34251c7833fa1675d4b3";
-    [HPPR sharedInstance].flickrAppSecret = @"8865a1b2f3742370";
+    [HPPR sharedInstance].flickrAppKey = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryFlickrAppKey];
+    [HPPR sharedInstance].flickrAppSecret = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryFlickrAppSecret];
     [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsprocket://callback/flickr";
     
-    [HPPR sharedInstance].qzoneAppId = @"101368459";
+    [HPPR sharedInstance].qzoneAppId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryQZoneAppId];
     [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
     
     [self initializePrintPod];
@@ -80,6 +82,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [PGDeepLinkLauncher sharedInstance].menuShowing = NO;
 
     [self initializeUAirship];
+
+    [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
 
     return YES;
 }
@@ -181,6 +185,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 {
     [MP sharedInstance].handlePrintMetricsAutomatically = NO;
     [MP sharedInstance].uniqueDeviceIdPerApp = NO;
+    [MP sharedInstance].printPaperDelegate = self;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
     
@@ -221,6 +226,14 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //                                        UIUserNotificationTypeSound);
     
 }
+
+
+#pragma mark - MPPrintPaperDelegate
+
+- (MPPaper *)defaultPaperForPrintSettings:(MPPrintSettings *)printSettings {
+    return [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
+}
+
 
 #pragma mark - Notifications
 

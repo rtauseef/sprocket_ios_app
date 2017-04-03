@@ -29,11 +29,11 @@ extern NSUInteger const kEventDefaultValue;
 
 - (void)setupSettings;
 
-- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo;
+- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem extendedInfo:(NSDictionary *)extendedInfo;
     
 - (void)postMetrics:(NSString *)offramp object:(NSObject *)object metrics:(NSDictionary *)metrics;
 
-- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo;
+- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem extendedInfo:(NSDictionary *)extendedInfo;
 
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value;

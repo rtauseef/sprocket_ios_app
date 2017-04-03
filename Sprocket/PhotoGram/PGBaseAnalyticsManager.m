@@ -17,9 +17,7 @@
 
 #import "PGBaseAnalyticsManager.h"
 #import "PGExperimentManager.h"
-
-#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-81852585-1"
-#define GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS @"UA-81852585-2"
+#import "PGSecretKeeper.h"
 
 @implementation PGBaseAnalyticsManager
 
@@ -60,9 +58,11 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     // The following is adapted from: http://stackoverflow.com/questions/26081543/how-to-tell-at-runtime-whether-an-ios-app-is-running-through-a-testflight-beta-i
     BOOL sandboxReceipt = [[[[NSBundle mainBundle] appStoreReceiptURL] lastPathComponent] isEqualToString:@"sandboxReceipt"];
     
-    NSString *trackingId = GOOGLE_ANALYTICS_TRACKING_FOR_TEST_BUILDS;
+    NSString *trackingId;
     if (!provisionPath && !sandboxReceipt && !TARGET_IPHONE_SIMULATOR) {
-        trackingId = GOOGLE_ANALYTICS_TRACKING_ID;
+        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryGoogleAnalyticsTrakingId];
+    } else {
+        trackingId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryGoogleAnalyticsTrakingIdDev];
     }
     return trackingId;
 }
@@ -99,7 +99,7 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     [tracker set:[GAIFields customDimensionForIndex:kPGExperimentPrintIconDimension] value:experimentValue];
 }
 
-- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
+- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem extendedInfo:(NSDictionary *)extendedInfo
 {
     MPPaper *paper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
     NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
@@ -125,9 +125,9 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     return metrics;
 }
 
-- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
+- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem extendedInfo:(NSDictionary *)extendedInfo
 {
-    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem exendedInfo:extendedInfo];
+    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem extendedInfo:extendedInfo];
     [self postMetrics:offramp object:printItem metrics:metrics];
 }
 

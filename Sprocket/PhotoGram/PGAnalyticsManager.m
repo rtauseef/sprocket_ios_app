@@ -12,12 +12,12 @@
 
 #import <Crashlytics/Crashlytics.h>
 #import "PGAnalyticsManager.h"
+#import "PGSecretKeeper.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <MP.h>
 #import <MPPrintManager.h>
 #import <HPPR.h>
 
-#define CRASHLYTICS_KEY @"fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -214,6 +214,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
+- (void)trackShareActivity:(NSString *)activityName withResult:(NSString *)result andNumberOfPhotos:(NSUInteger)numberOfPhotos
+{
+    [self trackEvent:kEventShareActivityCategory action:activityName label:result value:[NSNumber numberWithUnsignedInteger:numberOfPhotos]];
+}
+
 - (void)trackAuthRequestActivity:(NSString *)action device:(NSString *)device
 {
     [self trackEvent:kEventAuthRequestCategory action:action label:device value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
@@ -231,6 +236,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackSaveProjectActivity:(NSString *)source
 {
     [self trackEvent:kEventSaveProjectCategory action:kEventSaveProjectSaveAction label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackMultiSaveProjectActivity:(NSString *)source numberOfPhotos:(NSUInteger)numberOfPhotos
+{
+    [self trackEvent:kEventSaveProjectCategory action:kEventSaveProjectSaveAction label:source value:[NSNumber numberWithUnsignedInteger:numberOfPhotos]];
 }
 
 - (void)trackCameraDirectionActivity:(NSString *)direction
@@ -360,11 +370,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 #pragma mark - Print handling
     
-- (void)postMetricsWithOfframp:(NSString *)offramp objects:(NSDictionary *)objects exendedInfo:(NSDictionary *)extendedInfo
+- (void)postMetricsWithOfframp:(NSString *)offramp objects:(NSDictionary *)objects extendedInfo:(NSDictionary *)extendedInfo
 {
     MPPrintItem *printItem = [objects objectForKey:kMPPrintQueuePrintItemKey];
     MPPrintLaterJob *job = [objects objectForKey:kMPPrintQueueJobKey];
-    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem exendedInfo:extendedInfo];
+    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem extendedInfo:extendedInfo];
    
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:job forKey:kMPPrintQueueJobKey];
@@ -396,7 +406,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [dictionary setObject:job forKey:kMPPrintQueueJobKey];
     [dictionary setObject:printItem forKey:kMPPrintQueuePrintItemKey];
  
-    [self postMetricsWithOfframp:action objects:dictionary exendedInfo:job.extra];
+    [self postMetricsWithOfframp:action objects:dictionary extendedInfo:job.extra];
 }
 
 #pragma mark - Crashlytics
@@ -418,7 +428,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)setupCrashlytics
 {
-    [Crashlytics startWithAPIKey:CRASHLYTICS_KEY];
+    [Crashlytics startWithAPIKey:[[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryCrashlyticsKey]];
     [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:@"WiFi (app start)"];
     NSArray *keys = @[
                       @"WiFi (share/print)",

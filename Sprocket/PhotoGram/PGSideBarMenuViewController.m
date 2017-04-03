@@ -34,7 +34,7 @@ static NSString *PGSideBarMenuCellIdentifier = @"PGSideBarMenuCell";
 CGFloat const kPGSideBarMenuLongScreenSizeHeaderHeight = 75.0f;
 CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
-@interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
+@interface PGSideBarMenuViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, PGWebViewerViewControllerDelegate, MPSprocketDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainMenuTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeight;
@@ -135,11 +135,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         case PGSideBarMenuCellHowToAndHelp: {
             UIViewController *viewController = [PGDeepLinkLauncher howToAndHelpViewController];
             [self presentViewController:viewController animated:YES completion:nil];
-            break;
-        }
-        case PGSideBarMenuCellGiveFeedback: {
-            [PGDeepLinkLauncher sendEmail:self];
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
         }
         case PGSideBarMenuCellTakeSurvey: {

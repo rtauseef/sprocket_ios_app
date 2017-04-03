@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HPSimplified_Lt.ttf">
+            <string>HPSimplified-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGProgressView">
+            <connections>
+                <outlet property="label" destination="nc8-dU-snA" id="Bsq-wE-9Lk"/>
+                <outlet property="progressBar" destination="od1-xX-bqh" id="XHf-JI-3xU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="szB-7G-HQr">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHp-cY-iLd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RTo-et-l1u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ay-Qq-7DO" userLabel="ProgressView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="od1-xX-bqh" userLabel="ProgressBar">
+                            <rect key="frame" x="45" y="313" width="285" height="2.5"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="FgS-si-Ess"/>
+                            </constraints>
+                            <color key="progressTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="trackTintColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </progressView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Progress" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-dU-snA">
+                            <rect key="frame" x="45" y="260.5" width="285" height="22.5"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="od1-xX-bqh" firstAttribute="centerY" secondItem="9Ay-Qq-7DO" secondAttribute="centerY" constant="-20" id="JdQ-Pl-pvk"/>
+                        <constraint firstItem="od1-xX-bqh" firstAttribute="top" secondItem="nc8-dU-snA" secondAttribute="bottom" constant="30" id="ST5-0U-NBD"/>
+                        <constraint firstItem="od1-xX-bqh" firstAttribute="leading" secondItem="9Ay-Qq-7DO" secondAttribute="leading" constant="45" id="aWO-io-nXd"/>
+                        <constraint firstAttribute="trailing" secondItem="od1-xX-bqh" secondAttribute="trailing" constant="45" id="e4B-LP-qh4"/>
+                        <constraint firstItem="nc8-dU-snA" firstAttribute="width" secondItem="od1-xX-bqh" secondAttribute="width" id="j1a-bu-EQb"/>
+                        <constraint firstItem="nc8-dU-snA" firstAttribute="centerX" secondItem="od1-xX-bqh" secondAttribute="centerX" id="zL7-re-CKH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9Ay-Qq-7DO" firstAttribute="width" secondItem="szB-7G-HQr" secondAttribute="width" id="JuB-4z-s6l"/>
+                <constraint firstItem="oHp-cY-iLd" firstAttribute="centerY" secondItem="szB-7G-HQr" secondAttribute="centerY" id="RbQ-IL-PPB"/>
+                <constraint firstItem="oHp-cY-iLd" firstAttribute="height" secondItem="szB-7G-HQr" secondAttribute="height" id="VrM-fh-MNa"/>
+                <constraint firstItem="9Ay-Qq-7DO" firstAttribute="centerX" secondItem="szB-7G-HQr" secondAttribute="centerX" id="d2c-86-ASO"/>
+                <constraint firstItem="9Ay-Qq-7DO" firstAttribute="height" secondItem="szB-7G-HQr" secondAttribute="height" id="oEa-ug-a3i"/>
+                <constraint firstItem="oHp-cY-iLd" firstAttribute="width" secondItem="szB-7G-HQr" secondAttribute="width" id="qYh-jQ-v2p"/>
+                <constraint firstItem="9Ay-Qq-7DO" firstAttribute="centerY" secondItem="szB-7G-HQr" secondAttribute="centerY" id="tE9-Oz-PNi"/>
+                <constraint firstItem="oHp-cY-iLd" firstAttribute="centerX" secondItem="szB-7G-HQr" secondAttribute="centerX" id="vrd-3g-SRi"/>
+            </constraints>
+            <point key="canvasLocation" x="351" y="-194"/>
+        </view>
+    </objects>
+</document>

@@ -19,6 +19,7 @@ Scenario: Verify camera roll navigation
 	And I should see the camera roll photos
 	When I touch a photos in Camera Roll photos
 	Then I should see the "CameraRoll Preview" screen
+
 @reset
 @TA17012
 Scenario: Verify Instagram navigation   
@@ -49,20 +50,5 @@ Scenario: Verify Flickr navigation
     Then I should see the "Flickr Photo" screen
     When I touch second photo
     Then I should see the "Flickr Preview" screen
-    
-
-@reset
-@TA17012
-Scenario: Verify Edit screen navigation    
-    Given I am on the "CameraRoll Preview" screen
-    Then I tap "Edit" button
-    Then I wait for some seconds
-    Then I tap "Check" mark
-    Then I should see the "CameraRoll Preview" screen
-    And I tap "Edit" button
-    Then I wait for some seconds
-    Then I tap "Close" mark
-    Then I should see the "CameraRoll Preview" screen
-    
     
 

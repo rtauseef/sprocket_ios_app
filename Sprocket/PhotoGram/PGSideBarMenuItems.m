@@ -18,7 +18,7 @@
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 6;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -53,10 +53,6 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
         case PGSideBarMenuCellHowToAndHelp:
             cell.textLabel.text = NSLocalizedString(@"How to & Help", nil);
             cell.imageView.image = [UIImage imageNamed:@"menuHowToHelp"];
-            break;
-        case PGSideBarMenuCellGiveFeedback:
-            cell.textLabel.text = NSLocalizedString(@"Give Feedback", nil);
-            cell.imageView.image = [UIImage imageNamed:@"menuGiveFeedback"];
             break;
         case PGSideBarMenuCellTakeSurvey:
             cell.textLabel.text = NSLocalizedString(@"Take Survey", nil);
