@@ -52,10 +52,14 @@ NSString * const kNonPrintingActivity = @"No Print";
 NSString * const kCrashlyticsOfframpKey = @"Offramp";
 NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 
+NSString * const kMetricsOffRampPrintNoUISingle   = @"PrintWithNoUI";
+NSString * const kMetricsOffRampPrintNoUIMulti    = @"PrintWithNoUI-MultiSelect";
+
 NSString * const kMetricsOffRampQueueAddSingle   = @"AddToQueue-Single";
 NSString * const kMetricsOffRampQueueAddMulti    = @"AddToQueue-MultiSelect";
 NSString * const kMetricsOffRampQueuePrintSingle = @"PrintFromQueue-Single";
 NSString * const kMetricsOffRampQueuePrintMulti  = @"PrintFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueDeleteMulti = @"DeleteFromQueue-MultiSelect";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
@@ -114,6 +118,7 @@ NSString * const kEventPrintQueueAddMultiAction    = @"Add-MultiSelect";
 NSString * const kEventPrintQueueAddSingleAction   = @"Add-Single";
 NSString * const kEventPrintQueuePrintMultiAction  = @"Print-MultiSelect";
 NSString * const kEventPrintQueuePrintSingleAction = @"Print-Single";
+NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 
 NSString * const kEventPrintCategory    = @"Print";
 NSString * const kEventPrintAction      = @"Print";
@@ -304,7 +309,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId
 {
-    [self trackPrintQueueAction:action queueId:queueId queueSize:kEventDefaultValue];
+    [self trackPrintQueueAction:action queueId:queueId queueSize:1];
 }
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId queueSize:(NSUInteger)queueSize
@@ -317,7 +322,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
 {
-    [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(kEventDefaultValue)];
+    [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(1)];
 }
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value

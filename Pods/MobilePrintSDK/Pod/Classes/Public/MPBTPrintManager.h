@@ -36,6 +36,7 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 
 + (instancetype)sharedInstance;
 
+- (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics;
 
 - (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
@@ -47,13 +48,17 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 
 @protocol MPBTPrintManagerDelegate <NSObject>
 
+@optional
+
 - (void)btPrintManagerDidResumePrintQueue:(MPBTPrintManager *)printManager;
 - (void)btPrintManagerDidClearPrintQueue:(MPBTPrintManager *)printManager;
 - (void)btPrintManagerDidFinishPrintQueue:(MPBTPrintManager *)printManager;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartSendingPrintJob:(MPPrintLaterJob *)job;
 - (void)btPrintManager:(MPBTPrintManager *)printManager sendingPrintJob:(MPPrintLaterJob *)job progress:(NSInteger)progress;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didFinishSendingPrintJob:(MPPrintLaterJob *)job;
+- (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingDirectJob:(MPPrintLaterJob *)job;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job;
+- (void)mtPrintManager:(MPBTPrintManager *)printManager didDeletePrintJob:(MPPrintLaterJob *)job;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job;
 
 @end
