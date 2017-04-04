@@ -376,6 +376,23 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 #pragma mark - MPBTPrintManagerDelegate
 
+- (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingDirectJob:(MPPrintLaterJob *)job {
+    [self dismissErrorAlert];
+
+    NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+    [extendedMetrics addEntriesFromDictionary:printManager.printerAnalytics];
+    [extendedMetrics addEntriesFromDictionary:job.extra];
+
+    NSString *offRamp = [extendedMetrics objectForKey:kMetricsOfframpKey];
+    if (offRamp == nil) {
+        offRamp = kMetricsOffRampPrintNoUISingle;
+    }
+
+    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                     printItem:job.defaultPrintItem
+                                                  extendedInfo:extendedMetrics];
+}
+
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
     [self dismissErrorAlert];
 
@@ -450,6 +467,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
     [extendedMetrics addEntriesFromDictionary:job.extra];
     [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+    [extendedMetrics removeObjectsForKeys:@[kMPPaperSizeId, kMPPaperTypeId]];
 
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteMulti
                                                      printItem:job.defaultPrintItem

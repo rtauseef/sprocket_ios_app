@@ -470,8 +470,20 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }
             }
 
-            NSString *offRamp = kMetricsOffRampQueueAddSingle;
-            if (selectedViews.count > 1) {
+            NSString *offRamp;
+            BOOL isPrintDirect = NO;
+
+            if (selectedViews.count == 1) {
+                if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
+                    isPrintDirect = YES;
+                    offRamp = kMetricsOffRampPrintNoUISingle;
+                    if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
+                        offRamp = kMetricsOffRampPrintNoUIMulti;
+                    }
+                } else {
+                    offRamp = kMetricsOffRampQueueAddSingle;
+                }
+            } else if (selectedViews.count > 1) {
                 offRamp = kMetricsOffRampQueueAddMulti;
             }
 
@@ -479,17 +491,28 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             for (PGGesturesView *gestureView in selectedViews) {
                 NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
                 [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
-                [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
 
                 MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:[[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics]]) {
+                NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+
+                if (isPrintDirect) {
+                    [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
+                        return [self handlePrintQueueStatus:status progress:progress];
+                    }];
                     canResumePrinting = NO;
-                    break;
+                } else {
+                    [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+
+                    if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
+                        canResumePrinting = NO;
+                        break;
+                    }
+
+                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                     printItem:printItem
+                                                                  extendedInfo:extendedMetrics];
                 }
 
-                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
-                                                                 printItem:printItem
-                                                              extendedInfo:extendedMetrics];
             }
 
             if (canResumePrinting) {
