@@ -13,7 +13,7 @@
 #import <MP.h>
 
 #import "PGSideBarMenuTableViewCell.h"
-
+#import <MPBTPrintManager.h>
 #import "UIColor+Style.h"
 
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
@@ -21,7 +21,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 6;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -57,7 +57,7 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             break;
         case PGSideBarMenuCellPrintQueue:
             self.menuTitle.text = NSLocalizedString(@"Print Queue", nil);
-            self.menuImageView.image = [self printQueueImageForQueueSize:0];
+            self.menuImageView.image = [self printQueueImage];
             self.titlePadding.constant = 9;
             break;
         case PGSideBarMenuCellBuyPaper:
@@ -85,9 +85,9 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
     }
 }
 
-- (UIImage *)printQueueImageForQueueSize:(NSInteger)queueSize
+- (UIImage *)printQueueImage
 {
-    if (queueSize > 0) {
+    if ([MPBTPrintManager sharedInstance].status != MPBTPrinterManagerStatusEmptyQueue) {
         return [UIImage imageNamed:@"menuPrintQueueOn"];
     }
     

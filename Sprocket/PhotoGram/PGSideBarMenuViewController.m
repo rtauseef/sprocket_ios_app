@@ -79,7 +79,6 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
                                                object:nil];
 
     [self checkSprocketDeviceConnectivity];
-    [self checkPrintQueue];
     [self resizeViewAccordingRevealViewController];
     [self configureSocialSourcesMenu];
 }
@@ -350,14 +349,16 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         self.deviceStatusLED.hidden = shouldHideConnectivity;
         self.deviceBatteryLevel.hidden = (1 != numberOfPairedSprockets);
         
+        [self checkPrintQueue];
+        
         [[MP sharedInstance] checkSprocketForUpdates:self];
     });
 }
 
 - (void)checkPrintQueue {
-    PGSideBarMenuTableViewCell *cell = [self.mainMenuTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]];
-    
-    cell.menuImageView.image = [cell printQueueImageForQueueSize:[MPBTPrintManager sharedInstance].queueSize];
+    [self.mainMenuTableView
+        reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:PGSideBarMenuCellPrintQueue inSection:0]]
+        withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)resizeViewAccordingRevealViewController {
