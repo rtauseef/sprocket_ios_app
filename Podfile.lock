@@ -32,7 +32,7 @@ PODS:
   - iCarousel (1.8)
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
-  - UrbanAirship-iOS-SDK (8.2.0)
+  - UrbanAirship-iOS-SDK (8.2.2)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -53,10 +53,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: c18a2c9646f08c2ff527cfdf8f5c66c795aa4400
+    :commit: 43f9b82c711b480dc11c2ebc65698830e2c75c20
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 554f3a234f9c179c58d42d300e80d5baa3325d64
+    :commit: df8d1ede6b68a59ca946740c4fc9c438aa65b050
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -68,7 +68,7 @@ SPEC CHECKSUMS:
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  UrbanAirship-iOS-SDK: 7bd900d7876faafe8650753cea2610daeea27457
+  UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
 PODFILE CHECKSUM: 94e4456e9d49a0607b38fed7e22c14b82b501d98
 
