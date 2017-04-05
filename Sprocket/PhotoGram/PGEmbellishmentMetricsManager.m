@@ -68,11 +68,14 @@
 
 - (void)clearFramesEmbellishmentMetric
 {
+    NSMutableArray *objectsToRemove = [NSMutableArray array];
     for (PGEmbellishmentMetric *metricStored in self.metrics) {
         if (metricStored.category.type == PGEmbellishmentCategoryTypeFrame) {
-            [self.metrics removeObject:metricStored];
+            [objectsToRemove addObject:metricStored];
         }
     }
+    
+    [self.metrics removeObjectsInArray:objectsToRemove];
 }
 
 
