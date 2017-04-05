@@ -66,5 +66,14 @@
     }
 }
 
+- (void)clearFramesEmbellishmentMetric
+{
+    for (PGEmbellishmentMetric *metricStored in self.metrics) {
+        if (metricStored.category.type == PGEmbellishmentCategoryTypeFrame) {
+            [self.metrics removeObject:metricStored];
+        }
+    }
+}
+
 
 @end

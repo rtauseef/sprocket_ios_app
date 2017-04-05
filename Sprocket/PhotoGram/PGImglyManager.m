@@ -148,7 +148,7 @@
             stickerBuilder.removedStickerClosure = ^(IMGLYSticker *sticker) {
                 PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:[self stickerNameFromImglySticker:sticker] andCategoryType:PGEmbellishmentCategoryTypeSticker];
                 
-                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
+                [embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
             };
         }];
         
@@ -164,6 +164,7 @@
                     }
                 }
                 
+                [embellishmentMetricsManager clearFramesEmbellishmentMetric];
                 [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:frameName andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             };
         }];
