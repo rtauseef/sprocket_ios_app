@@ -181,7 +181,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)initializeUAirship
 {
-    
+    /*
     // Starting Urban Airship Services
     // Set log level for debugging config loading (optional)
     // It will be set to the value in the loaded config upon takeOff
@@ -206,7 +206,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
     //                                        UIUserNotificationTypeBadge |
     //                                        UIUserNotificationTypeSound);
-    
+    */
 }
 
 

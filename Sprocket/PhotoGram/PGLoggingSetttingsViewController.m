@@ -318,7 +318,7 @@ static int kDisplayNotificationMsgCenterIndex = 10;
                 [self enablePushNotifications];
             } else if (kDisplayNotificationMsgCenterIndex == selectedRow) {
                 // Note-- you must enable messaging before this will work
-                [[UAirship defaultMessageCenter] display];
+                //[[UAirship defaultMessageCenter] display];
             }
         }
     }
@@ -342,6 +342,7 @@ static int kDisplayNotificationMsgCenterIndex = 10;
 #pragma mark - Mailing Logfile
 
 - (void)enablePushNotifications {
+    /*
     // User notifications will not be enabled until userPushNotificationsEnabled is
     // set YES on UAPush. Onced enabled, the setting will be persisted and the user
     // will be prompted to allow notifications. You should wait for a more appropriate
@@ -353,6 +354,7 @@ static int kDisplayNotificationMsgCenterIndex = 10;
     [av textFieldAtIndex:0].text = [NSString stringWithFormat: @"%@", [UAirship push].channelID];
     [av textFieldAtIndex:0].delegate = nil;
     [av show];
+     */
 }
 
 - (void)clearLogfile
