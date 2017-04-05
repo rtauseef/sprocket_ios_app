@@ -30,6 +30,11 @@
     // Must override in the baseclass
 }
 
+- (void)requestPreviewImageWithCompletion:(void(^)(UIImage *image))completion
+{
+    // Must override in the baseclass
+}
+
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion
 {
     // Must override in the baseclass
@@ -57,6 +62,14 @@
 
 - (HPPRSelectPhotoProvider *)photoProvider {
     NSAssert(NO, @"Must override in the subclass");
+}
+
+
+- (void)clearCachedImages
+{
+    self.thumbnailImage = nil;
+    self.previewImage = nil;
+    self.image = nil;
 }
 
 @end

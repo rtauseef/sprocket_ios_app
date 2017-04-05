@@ -24,6 +24,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 @property (nonatomic, assign) NSInteger originalQueueSize;
 
 @property (nonatomic, strong) NSTimer *checkTimer;
+@property (nonatomic, strong) NSTimer *finalCheckTimer;
 @property (nonatomic, assign) MPBTPrinterManagerStatus status;
 @property (nonatomic, strong) MPPrintLaterJob *currentJob;
 @property (nonatomic, strong) MPPrintLaterJob *directJob;
@@ -60,7 +61,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger))statusUpdate {
     if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        [self reportError:MantaErrorBusy];
+        [self reportError:MantaErrorBusy isFinalError:NO];
         return NO;
     }
 
@@ -76,7 +77,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
     if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        [self reportError:MantaErrorBusy];
+        [self reportError:MantaErrorBusy isFinalError:NO];
         return NO;
     }
 
@@ -177,14 +178,34 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     [userDefaults synchronize];
 }
 
-- (void)checkPrinterStatus {
+- (EAAccessory *)currentDevice
+{
     EAAccessory *device = [MPBTSprocket sharedInstance].accessory;
 
     if (!device) {
         NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
         device = (EAAccessory *)[pairedSprockets firstObject];
     }
+    
+    return device;
+}
 
+- (void)checkForFinalError {
+    EAAccessory *device = [self currentDevice];
+    
+    if (device) {
+        MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
+        
+        sprocket.accessory = device;
+        sprocket.delegate = self;
+        
+        [sprocket refreshInfo];
+    }
+}
+
+- (void)checkPrinterStatus {
+    EAAccessory *device = [self currentDevice];
+    
     if (device) {
         if (self.status != MPBTPrinterManagerStatusSendingPrintJob) {
             MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
@@ -228,7 +249,17 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 #pragma mark - MPBTSprocketDelegate
 
 - (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error {
-    if (error == MantaErrorNoError) {
+    if (self.finalCheckTimer) {
+        NSLog(@"Handling final error");
+        // We're waiting for the device to stop printing in order to gather the final error, if any
+        if (MantaErrorBusy != error) {
+            [self.finalCheckTimer invalidate];
+            self.finalCheckTimer = nil;
+            if (MantaErrorNoError != error) {
+                [self reportError:error isFinalError:YES];
+            }
+        }
+    } else if (error == MantaErrorNoError) {
         self.status = MPBTPrinterManagerStatusSendingPrintJob;
 
         if (self.directJob) {
@@ -268,7 +299,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
         NSLog(@"PRINT QUEUE - NOT READY: %@", @(error));
 
         if (error != MantaErrorBusy) {
-            [self reportError:error];
+            [self reportError:error isFinalError:NO];
         }
     }
 }
@@ -315,6 +346,9 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
         NSLog(@"PRINT QUEUE - EMPTY");
 
         [self clearPrintQueue];
+        
+        // look for any post print error states on the device (like "Wrong Paper Type")
+        self.finalCheckTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForFinalError) userInfo:nil repeats:YES];
     }
 
     self.currentJob = nil;
@@ -331,11 +365,11 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
         sprocket.accessory = nil;
     }
 
-    [self reportError:error];
+    [self reportError:error isFinalError:NO];
 }
 
-- (void)reportError:(MantaError)error {
-    if (self.status == MPBTPrinterManagerStatusEmptyQueue) {
+- (void)reportError:(MantaError)error isFinalError:(BOOL)isFinalError {
+    if (self.status == MPBTPrinterManagerStatusEmptyQueue  &&  !isFinalError) {
         return;
     }
 

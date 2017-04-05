@@ -21,5 +21,6 @@
 - (BOOL)hasEmbellishmentMetric:(PGEmbellishmentMetric *)metricWanted;
 - (void)addEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
 - (void)removeEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
+- (void)clearFramesEmbellishmentMetric;
 
 @end

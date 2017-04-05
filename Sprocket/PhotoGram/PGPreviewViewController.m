@@ -557,7 +557,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
                     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                                      printItem:printItem
-                                                                  extendedInfo:extendedMetrics];
+                                                                  extendedInfo:metrics];
                 }
 
             }
