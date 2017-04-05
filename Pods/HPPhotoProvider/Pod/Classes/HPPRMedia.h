@@ -28,6 +28,7 @@
 
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic, strong) UIImage *thumbnailImage;
+@property (nonatomic, strong) UIImage *previewImage;
 @property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, assign) NSUInteger likes;
@@ -47,10 +48,13 @@
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;
+- (void)requestPreviewImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)cancelImageRequestWithCompletion:(void(^)())completion;
 - (BOOL)isEqualToMedia:(HPPRMedia *)media;
 
 - (HPPRSelectPhotoProvider *)photoProvider;
+
+- (void)clearCachedImages;
 
 @end
