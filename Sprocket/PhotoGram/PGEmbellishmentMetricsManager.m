@@ -43,7 +43,7 @@
 - (BOOL)hasEmbellishmentMetric:(PGEmbellishmentMetric *)metricWanted
 {
     for (PGEmbellishmentMetric *metric in self.metrics) {
-        if (metricWanted == metric) {
+        if ([metricWanted isEqual:metric]) {
             return YES;
         }
     }
@@ -59,18 +59,18 @@
 - (void)removeEmbellishmentMetric:(PGEmbellishmentMetric *)metric
 {
     for (PGEmbellishmentMetric *metricStored in self.metrics) {
-        if (metric == metricStored) {
+        if ([metric isEqual:metricStored]) {
             [self.metrics removeObject:metricStored];
             return;
         }
     }
 }
 
-- (void)clearFramesEmbellishmentMetric
+- (void)clearEmbellishmentMetricForCategory:(PGEmbellishmentCategoryType)type
 {
     NSMutableArray *objectsToRemove = [NSMutableArray array];
     for (PGEmbellishmentMetric *metricStored in self.metrics) {
-        if (metricStored.category.type == PGEmbellishmentCategoryTypeFrame) {
+        if (metricStored.category.type == type) {
             [objectsToRemove addObject:metricStored];
         }
     }

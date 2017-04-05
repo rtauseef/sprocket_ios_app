@@ -164,7 +164,7 @@
                     }
                 }
                 
-                [embellishmentMetricsManager clearFramesEmbellishmentMetric];
+                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFrame];
                 [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:frameName andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             };
         }];
@@ -198,6 +198,7 @@
             }];
             
             filterBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect *filter) {
+                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFilter];
                 [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:filter.displayName andCategoryType:PGEmbellishmentCategoryTypeFilter]];
             };
         }];
