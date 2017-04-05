@@ -259,6 +259,13 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
         end
         sleep(STEP_PAUSE)
     else
+        if element_exists("view marked:'#{$list_loc['auth']}' index:0")
+            sleep(WAIT_SCREENLOAD)
+            touch("view marked:'#{$list_loc['auth']}' index:0")
+            sleep(STEP_PAUSE)
+            #touch "* id:'previewDownload'"
+            touch @current_page.download
+        end
         check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
         sleep(STEP_PAUSE)
     end
