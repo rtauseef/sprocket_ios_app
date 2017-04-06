@@ -47,6 +47,7 @@
 - (HPPRMedia *)imageAtIndex:(NSInteger)index;
 - (BOOL)hasMoreImages;
 - (void)clearImagesWithCompletion:(void (^)(void))completion;
+- (void)clearCachedImagesWithCompletion:(void (^)(void))completion;
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload;
 - (void)cancelAllOperations;
 - (NSUInteger)imagesPerScreen;
@@ -73,3 +74,4 @@
 - (void)providerAccessedPrivateAccount;
 
 @end
+
