@@ -27,8 +27,13 @@ And(/^I tap the "(.*?)" button$/) do |button|
         touch "label {text CONTAINS 'OK'}"
         sleep(STEP_PAUSE)
     else
-        touch "PGSignInButton"
-        sleep(STEP_PAUSE)
+        if button == "Edit"
+            touch "view marked:'#{$list_loc['Edit']}'"
+            sleep(STEP_PAUSE)
+        else
+            touch "PGSignInButton"
+            sleep(STEP_PAUSE)
+        end
     end
 end
 

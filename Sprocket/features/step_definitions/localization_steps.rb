@@ -288,20 +288,20 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
                 check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
             end
         end
-    else
-        if button == "DownloadButton"
-            if option == "title"
-               sleep(STEP_PAUSE) 
-            else
-                sleep(STEP_PAUSE) 
-            end
-        else
-             if option == "title"
-               sleep(STEP_PAUSE) 
-            else
-                sleep(STEP_PAUSE) 
-            end
-        end
+    #else
+    #    if button == "DownloadButton"
+    #        if option == "title"
+    #           sleep(STEP_PAUSE) 
+    #        else
+     #           sleep(STEP_PAUSE) 
+     #       end
+     #   else
+      #       if option == "title"
+      #         sleep(STEP_PAUSE) 
+       #     else
+       #         sleep(STEP_PAUSE) 
+       #     end
+        #end
     end
 end
 
