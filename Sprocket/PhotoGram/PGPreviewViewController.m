@@ -67,6 +67,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+@property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
@@ -201,8 +202,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"PGPreviewDrawerViewController"]){
-        PGPreviewDrawerViewController *embedVC = (PGPreviewDrawerViewController *)segue.destinationViewController;
-        embedVC.delegate = self;
+        self.drawer = (PGPreviewDrawerViewController *)segue.destinationViewController;
+        self.drawer.delegate = self;
     }
 }
 
@@ -292,6 +293,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
+- (void)closeDrawer
+{
+    if (!self.drawer.isOpened) {
+        return;
+    }
+    
+    [self.view layoutIfNeeded];
+    
+    self.drawer.isOpened = NO;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+    [self reloadVisibleItems];
+}
+
 #pragma mark - PGPreviewDrawerDelegate
 
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
@@ -306,12 +320,34 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
 {
+    CGPoint translation = [gesture translationInView:self.view];
+    
     if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [gesture translationInView:self.view];
+        CGFloat newHeight = [drawer drawerHeight] - translation.y;
         
+        BOOL isTopLimit = newHeight > [drawer drawerHeightOpened];
+        BOOL isBottomLimit = newHeight < [drawer drawerHeightClosed];
+        if (!isTopLimit && !isBottomLimit) {
+            [self.view layoutIfNeeded];
+            self.containerViewHeightConstraint.constant = newHeight;
+            [self reloadVisibleItems];
+        }
+        
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
         [self.view layoutIfNeeded];
-        self.containerViewHeightConstraint.constant = [drawer drawerHeight] - translation.y;
-        [self reloadVisibleItems];
+        CGFloat threshold = [drawer drawerHeightOpened] * 0.7;
+        if (!drawer.isOpened) {
+            threshold = [drawer drawerHeightOpened] * 0.3;
+        }
+        
+        drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
+        self.containerViewHeightConstraint.constant = [drawer drawerHeight];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self reloadVisibleItems];
+        }];
     }
 }
 
@@ -396,6 +432,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
+    [self closeDrawer];
     [self saveSelectedPhotosWithCompletion:^(BOOL success) {
         if (success) {
             if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
@@ -503,11 +540,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    [self closeDrawer];
     [self showImgly];
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
+    [self closeDrawer];
     [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
         if (success) {
             NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
@@ -583,6 +622,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
+    [self closeDrawer];
     [[MP sharedInstance] closeAccessorySession];
     
     [self presentActivityViewControllerWithActivities:nil];

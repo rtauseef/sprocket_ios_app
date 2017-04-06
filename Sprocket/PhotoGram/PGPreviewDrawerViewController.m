@@ -13,8 +13,26 @@
 #import "PGPreviewDrawerViewController.h"
 
 static NSInteger const kPGPreviewDrawerClosedDrawerHeight = 33;
+static NSInteger const kPGPreviewDrawerHotAreaHeight = 50;
+
+@interface PGPreviewDrawerViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *button;
+
+@end
 
 @implementation PGPreviewDrawerViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.button.clipsToBounds = NO;
+    self.button.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.button.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.button.layer.shadowOpacity = 0.8f;
+    self.button.layer.shadowRadius = 6.0f;
+}
 
 - (IBAction)didTapDrawerButton:(id)sender {
     self.isOpened = !self.isOpened;
@@ -36,10 +54,20 @@ static NSInteger const kPGPreviewDrawerClosedDrawerHeight = 33;
 - (CGFloat)drawerHeight
 {
     if (self.isOpened) {
-        return 150;
+        return [self drawerHeightOpened];
     } else {
-        return kPGPreviewDrawerClosedDrawerHeight;
+        return [self drawerHeightClosed];
     }
+}
+
+- (CGFloat)drawerHeightOpened
+{
+    return 150 + kPGPreviewDrawerHotAreaHeight;
+}
+
+- (CGFloat)drawerHeightClosed
+{
+    return kPGPreviewDrawerClosedDrawerHeight + kPGPreviewDrawerHotAreaHeight;
 }
 
 #pragma mark - Gesture Recognizers

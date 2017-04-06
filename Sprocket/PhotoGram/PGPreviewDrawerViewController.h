@@ -20,6 +20,8 @@
 @property (nonatomic, assign) BOOL isOpened;
 
 - (CGFloat)drawerHeight;
+- (CGFloat)drawerHeightOpened;
+- (CGFloat)drawerHeightClosed;
 
 @end
 
