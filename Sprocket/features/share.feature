@@ -21,7 +21,7 @@ Feature:Photo Share
 
   
   @reset
-  @done
+  @obsolete
   Scenario:Save to Camera Roll
     Given I am on the "Share" screen
     When I touch "Save to Camera Roll"

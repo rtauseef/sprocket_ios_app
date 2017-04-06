@@ -1613,146 +1613,34 @@ $language_arr =
         }
     }
 
+$language_locale ={ 
+            'Spanish' => {'ios_locale_id' => 'es_ES'},
+            'Chinese' => {'ios_locale_id' => 'zh_Hans'},
+            'German' => {'ios_locale_id' => 'de_DE'},
+            'French' => {'ios_locale_id' => 'fr_FR'},            
+            'Italian' => {'ios_locale_id' => 'it_IT'},
+            'Dutch' => {'ios_locale_id' => 'nl_NL'},
+            'Danish' => {'ios_locale_id' => 'da_DK'},
+            'Finnish' => {'ios_locale_id' => 'fi_FI'},            
+            'Estonian' => {'ios_locale_id' => 'et_EE'},
+            'Latvian' => {'ios_locale_id' => 'lv_LV'},
+            'Lithuanian' => {'ios_locale_id' => 'lt_LT'},
+            'Norwegian' => {'ios_locale_id' => 'nb_NO'},            
+            'Portuguese' => {'ios_locale_id' => 'pt_PT'},
+            'Swedish' => {'ios_locale_id' => 'sv_SE'},
+            'Greek' => {'ios_locale_id' => 'el_GR'},
+            'Indonesian' => {'ios_locale_id' => 'id_ID'},
+            'Portuguese-Brazil' => {'ios_locale_id' => 'pt_BR'},
+            'Russian' => {'ios_locale_id' => 'ru_RU'},
+            'Thai' => {'ios_locale_id' => 'th_TH'},
+            'Turkish' => {'ios_locale_id' => 'tr_TR'},            
+            'English-UK' => {'ios_locale_id' => 'en_GB'},
+            'Chinese-Traditional' => {'ios_locale_id' => 'zh_Hant'},
+            'Canada-French' => {'ios_locale_id' => 'fr_CA'},
+            'Mexico-English' => {'ios_locale_id' => 'en_MX'},            
+            'English-US' => {'ios_locale_id' => 'en_US'},
+            'Canada-English' => {'ios_locale_id' => 'en_CA'},
+            'Australian-English' => {'ios_locale_id' => 'en_AU'},
+            'English' => {'ios_locale_id' => 'en_US'}
+        }
 
-
-
-def get_ios_locale_id
-         #ios_locale_id = "en_US"
-    if ENV['LANGUAGE'] == "Spanish"
-            ios_locale_id = "es_ES"
-            $list_loc=$language_arr["es_ES"]
-    else 
-        if ENV['LANGUAGE'] == "Chinese"
-            ios_locale_id = "zh_Hans"
-            $list_loc=$language_arr["zh_Hans"]
-        else 
-            if ENV['LANGUAGE'] == 'German'
-                ios_locale_id = "de_DE"
-                $list_loc=$language_arr["de_DE"]
-            else
-                if ENV['LANGUAGE'] == 'French'
-                    ios_locale_id = "fr_FR"
-                    $list_loc=$language_arr["fr_FR"]
-                else 
-                    if ENV['LANGUAGE'] == 'Italian'
-                        ios_locale_id = "it_IT"
-                        $list_loc=$language_arr["it_IT"]
-                    else
-                        if ENV['LANGUAGE'] == 'Dutch'
-                            ios_locale_id = "nl_NL"
-                            $list_loc=$language_arr["nl_NL"]
-                        else
-                            if ENV['LANGUAGE'] == 'Danish'
-                                ios_locale_id = "da_DK"
-                                $list_loc=$language_arr["da_DK"]
-                            else
-                                if ENV['LANGUAGE'] == 'Finnish'
-                                    ios_locale_id = "fi_FI"
-                                    $list_loc=$language_arr["fi_FI"]
-                                else
-                                    if ENV['LANGUAGE'] == 'Estonian'
-                                        ios_locale_id = "et_EE"
-                                        $list_loc=$language_arr["et_EE"]
-                                    else
-                                        if ENV['LANGUAGE'] == 'Latvian'
-                                            ios_locale_id = "lv_LV"
-                                            $list_loc=$language_arr["lv_LV"]
-                                        else
-                                            if ENV['LANGUAGE'] == 'Lithuanian'
-                                                ios_locale_id = "lt_LT"
-                                                $list_loc=$language_arr["lt_LT"]
-                                            else
-                                                if ENV['LANGUAGE'] == 'Norwegian'
-                                                    ios_locale_id = "nb_NO"
-                                                    $list_loc=$language_arr["nb_NO"]
-                                                else
-                                                    if ENV['LANGUAGE'] == 'Portuguese'
-                                                        ios_locale_id = "pt_PT"
-                                                        $list_loc=$language_arr["pt_PT"]
-                                                    else
-                                                        if ENV['LANGUAGE'] == 'Swedish'
-                                                            ios_locale_id = "sv_SE"
-                                                            $list_loc=$language_arr["sv_SE"]
-                                                        else
-                                                            if ENV['LANGUAGE'] == 'Greek'
-                                                                ios_locale_id = "el_GR"
-                                                                $list_loc=$language_arr["el_GR"]
-                                                            else
-                                                                if ENV['LANGUAGE'] == 'Indonesian'
-                                                                    ios_locale_id = "id_ID"
-                                                                    $list_loc=$language_arr["id_ID"]
-                                                                else
-                                                                    if ENV['LANGUAGE'] == 'Portuguese-Brazil'
-                                                                        ios_locale_id = "pt_BR"
-                                                                        $list_loc=$language_arr["pt_BR"]
-                                                                    else
-                                                                        if ENV['LANGUAGE'] == 'Russian'
-                                                                            ios_locale_id = "ru_RU"
-                                                                            $list_loc=$language_arr["ru_RU"]
-                                                                        else
-                                                                            if ENV['LANGUAGE'] == 'Thai'
-                                                                                ios_locale_id = "th_TH"
-                                                                                $list_loc=$language_arr["th_TH"]
-                                                                            else
-                                                                                if ENV['LANGUAGE'] == 'Turkish'
-                                                                                    ios_locale_id = "tr_TR"
-                                                                                    $list_loc=$language_arr["tr_TR"]
-                                                                                else
-                                                                                    if ENV['LANGUAGE'] == 'English-UK'
-                                                                                        ios_locale_id = "en_GB"                         
-                                                                                        $list_loc=$language_arr["en_GB"]
-                                                                                    else
-                                                                                        if ENV['LANGUAGE'] == 'Chinese-Traditional'
-                                                                                            ios_locale_id = "zh_Hant"
-                                                                                            $list_loc=$language_arr["zh_Hant"]
-                                                                                        else
-                                                                                            if ENV['LANGUAGE'] == 'Canada-French'
-                                                                                                ios_locale_id = "fr_CA"
-                                                                                                $list_loc=$language_arr["fr_CA"]
-                                                                                            else
-                                                                                                if ENV['LANGUAGE'] == 'Mexico-English'
-                                                                                                    ios_locale_id = "en_MX"
-                                                                                                    $list_loc=$language_arr["en_MX"]
-                                                                                                else
-                                                                                                    if ENV['LANGUAGE'] == 'English-US'
-                                                                                                        ios_locale_id = "en_US"
-                                                                                                      $list_loc=$language_arr["en_US"]
-                                                                                                    else
-                                                                                                        if ENV['LANGUAGE'] == 'Canada-English'
-                                                                                                        ios_locale_id = "en_CA"
-                                                                                                      $list_loc=$language_arr["en_CA"]
-                                                                                                            else
-                                                                                                            if ios_locale_id == "Australian-English"
-                                                                                                      $list_loc=$language_arr["en_AU"]
-                                                                                                        ios_locale_id = "en_AU"
-                                                                                                                else
-                                                                                                      $list_loc=$language_arr["en_US"]
-                                                                                                            end
-                                                                                                            end
-                                                                                                    end
-                                                                                                end
-                                                                                            end
-                                                                                        end
-                                                                                    end
-                                                                                end
-                                                                            end
-                                                                        end
-                                                                    end
-                                                                end
-                                                            end
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-    return ios_locale_id , $list_loc
-end
