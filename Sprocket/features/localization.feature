@@ -2,7 +2,7 @@ Feature: Localization testing
   As a user
   I want to change iPhone language and verify screen titles
 
-@reset
+
 @localization
 Scenario: Verify Landing screen texts
     Given I am on the "Landing" screen
@@ -204,6 +204,24 @@ Scenario: Verify Technical Information screen navigation and localization
         Then I should see the "Landing" screen 
         
 @localization
+Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
+    Given  I am on the "Landing" screen
+    When I touch menu button on navigation bar
+    Then I should see the side menu
+    Then I should see "Instagram" logo
+    And I click on the "Instagram" logo 
+    Then I should see the "Instagram Signin" screen
+    And I enter valid credentials
+    And I touch login button
+    Then I should see the "Instagram Photos" screen
+    When I touch menu button on navigation bar
+    Then I should see the side menu
+    And I should see Instagram "Sign Out" button
+    And I touch Instagram "Sign Out" button
+    And I click Sign Out button on popup
+    Then I should see Instagram "Sign In" button
+        
+@localization
   Scenario Outline: Navigate to preview screen via instagram/Flickr
     Given  I am on the "Landing" screen  
     Then I should see "<social_media>" logo
@@ -250,23 +268,7 @@ Scenario: Navigate to Preview screen for cameraroll
     Then I tap "More" button
     Then I verify the "Print to sprocket" button text
 
-@localization
-Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
-    Given  I am on the "Landing" screen
-    When I touch menu button on navigation bar
-    Then I should see the side menu
-    Then I should see "Instagram" logo
-    And I click on the "Instagram" logo 
-    Then I should see the "Instagram Signin" screen
-    And I enter valid credentials
-    And I touch login button
-    Then I should see the "Instagram Photos" screen
-    When I touch menu button on navigation bar
-    Then I should see the side menu
-    And I should see Instagram "Sign Out" button
-    And I touch Instagram "Sign Out" button
-    And I click Sign Out button on popup
-    Then I should see Instagram "Sign In" button
+
     
     
     
