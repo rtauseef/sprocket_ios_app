@@ -652,6 +652,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
                     action = kEventPrintQueueAddMultiAction;
                 }
+                
+                if (self.drawer.numberOfCopies > 1) {
+                    action = kEventPrintQueueAddCopiesAction;
+                }
 
                 [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
                                                                   queueId:[MPBTPrintManager sharedInstance].queueId
