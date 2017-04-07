@@ -50,6 +50,7 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
+static NSUInteger const kPGPreviewViewControllerImageViewNegativeMargin = 40;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
@@ -121,6 +122,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imglyManager = [[PGImglyManager alloc] init];
     
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+        self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
+        self.drawer.view.userInteractionEnabled = NO;
+        self.drawer.view.hidden = YES;
+        
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
     } else {
         [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
@@ -163,7 +168,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
-
+    
     self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].hasMultiplePhotos;
 }
 
@@ -293,6 +298,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
+#pragma mark - Drawer Methods
+
 - (void)closeDrawer
 {
     if (!self.drawer.isOpened) {
@@ -302,6 +309,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self.view layoutIfNeeded];
     
     self.drawer.isOpened = NO;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+    [self reloadVisibleItems];
+}
+
+- (void)openDrawer
+{
+    if (self.drawer.isOpened) {
+        return;
+    }
+    
+    [self.view layoutIfNeeded];
+    
+    self.drawer.isOpened = YES;
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
     [self reloadVisibleItems];
 }
@@ -540,8 +560,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    BOOL drawerWasOpened = self.drawer.isOpened;
     [self closeDrawer];
     [self showImgly];
+    
+    if (drawerWasOpened) {
+        [self openDrawer];
+    }
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
