@@ -28,6 +28,7 @@
 #import "HPPRCacheService.h"
 #import "PGSavePhotos.h"
 #import "PGProgressView.h"
+#import "PGPreviewDrawerViewController.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -54,7 +55,7 @@ static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate, PGPreviewDrawerViewControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -66,8 +67,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+@property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
-@property (weak, nonatomic) IBOutlet UIView *imageContainer;
 @property (strong, nonatomic) IBOutlet iCarousel *carouselView;
 
 @property (strong, nonatomic) PGGesturesView *imageView;
@@ -162,7 +165,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
 
     self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].hasMultiplePhotos;
-    self.imageContainer.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -195,6 +197,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     // This prevents our share activities from rotating.
     //  Without this, the share activities rotate, and we rotate (very badly) behind them.
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"PGPreviewDrawerViewController"]){
+        self.drawer = (PGPreviewDrawerViewController *)segue.destinationViewController;
+        self.drawer.delegate = self;
+    }
 }
 
 #pragma mark - Internal Methods
@@ -272,6 +282,73 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 
     [self savePhoto:images index:0 withCompletion:completion];
+}
+
+- (void)reloadVisibleItems
+{
+    [self.view layoutIfNeeded];
+    
+    for (NSInteger i = 0; i < self.carouselView.visibleItemViews.count; i++) {
+        [self.carouselView reloadItemAtIndex:i animated:NO];
+    }
+}
+
+- (void)closeDrawer
+{
+    if (!self.drawer.isOpened) {
+        return;
+    }
+    
+    [self.view layoutIfNeeded];
+    
+    self.drawer.isOpened = NO;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+    [self reloadVisibleItems];
+}
+
+#pragma mark - PGPreviewDrawerDelegate
+
+- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
+{
+    [self.view layoutIfNeeded];
+    self.containerViewHeightConstraint.constant = [drawer drawerHeight];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self reloadVisibleItems];
+    }];
+}
+
+- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
+{
+    CGPoint translation = [gesture translationInView:self.view];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
+        CGFloat newHeight = [drawer drawerHeight] - translation.y;
+        
+        BOOL isTopLimit = newHeight > [drawer drawerHeightOpened];
+        BOOL isBottomLimit = newHeight < [drawer drawerHeightClosed];
+        if (!isTopLimit && !isBottomLimit) {
+            [self.view layoutIfNeeded];
+            self.containerViewHeightConstraint.constant = newHeight;
+            [self reloadVisibleItems];
+        }
+        
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        [self.view layoutIfNeeded];
+        CGFloat threshold = [drawer drawerHeightOpened] * 0.7;
+        if (!drawer.isOpened) {
+            threshold = [drawer drawerHeightOpened] * 0.3;
+        }
+        
+        drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
+        self.containerViewHeightConstraint.constant = [drawer drawerHeight];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self reloadVisibleItems];
+        }];
+    }
 }
 
 #pragma mark - IMGLYToolStackControllerDelegate
@@ -355,6 +432,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
+    [self closeDrawer];
     [self saveSelectedPhotosWithCompletion:^(BOOL success) {
         if (success) {
             if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
@@ -462,11 +540,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    [self closeDrawer];
     [self showImgly];
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
+    [self closeDrawer];
     [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
         if (success) {
             NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
@@ -542,6 +622,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
+    [self closeDrawer];
     [[MP sharedInstance] closeAccessorySession];
     
     [self presentActivityViewControllerWithActivities:nil];
@@ -857,9 +938,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self selectCarouselItem:self.carouselView.currentItemIndex];
 }
 
+- (CGRect)carouselItemFrame
+{
+    return CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height);;
+}
+
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
 {
-    PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height)];
+    PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:[self carouselItemFrame]];
     gestureView.media = media;
     gestureView.isMultiSelectImage = [PGPhotoSelection sharedInstance].hasMultiplePhotos;
     
@@ -909,6 +995,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
     PGGesturesView *gestureView = self.gesturesViews[index];
+    gestureView.frame = [self carouselItemFrame];
     
     if (gestureView.image) {
         UIImage *finalImage = gestureView.image;
@@ -953,15 +1040,18 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
+    [self.view layoutIfNeeded];
+    
     if (option == iCarouselOptionWrap) {
         return self.gesturesViews.count > 2;
     }
     
-    if (option == iCarouselOptionSpacing) {
-        return value + (10.0f / (self.carouselView.bounds.size.height * kAspectRatio2by3));
-    }
-    
     return value;
+}
+
+- (CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    return 10.0f + (self.carouselView.bounds.size.height * kAspectRatio2by3);
 }
 
 @end
