@@ -574,6 +574,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self closeDrawer];
     [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
         if (success) {
+            NSString *origin = @"";
             NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
             for (PGGesturesView *gestureView in self.gesturesViews) {
                 if (gestureView.isSelected) {
@@ -588,20 +589,25 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
                     isPrintDirect = YES;
                     offRamp = kMetricsOffRampPrintNoUISingle;
+                    origin = kMetricsOriginSingle;
+                    
                     if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
                         offRamp = kMetricsOffRampPrintNoUIMulti;
                     }
                 } else {
                     if (self.drawer.numberOfCopies > 1) {
+                        origin = kMetricsOriginCopies;
                         offRamp = kMetricsOffRampQueueAddCopies;
                         for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
                             [selectedViews addObject:selectedViews.firstObject];
                         }
                     } else {
+                        origin = kMetricsOriginSingle;
                         offRamp = kMetricsOffRampQueueAddSingle;
                     }
                 }
             } else if (selectedViews.count > 1) {
+                origin = kMetricsOriginMulti;
                 offRamp = kMetricsOffRampQueueAddMulti;
             }
 
@@ -612,6 +618,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
                 MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
                 NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+                
+                [metrics setObject:origin forKey:kMetricsOrigin];
 
                 if (isPrintDirect) {
                     [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
@@ -726,7 +734,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
      
     return @{
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-             kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString
+             kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString,
              };
 }
 
