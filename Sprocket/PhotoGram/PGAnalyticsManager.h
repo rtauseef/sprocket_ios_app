@@ -36,8 +36,10 @@ extern NSString * const kMetricsOffRampPrintNoUIMulti;
 
 extern NSString * const kMetricsOffRampQueueAddSingle;
 extern NSString * const kMetricsOffRampQueueAddMulti;
+extern NSString * const kMetricsOffRampQueueAddCopies;
 extern NSString * const kMetricsOffRampQueuePrintSingle;
 extern NSString * const kMetricsOffRampQueuePrintMulti;
+extern NSString * const kMetricsOffRampQueuePrintCopies;
 extern NSString * const kMetricsOffRampQueueDeleteMulti;
 
 extern NSString * const kEventAuthRequestOkAction;

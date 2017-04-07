@@ -57,8 +57,11 @@ NSString * const kMetricsOffRampPrintNoUIMulti    = @"PrintWithNoUI-MultiSelect"
 
 NSString * const kMetricsOffRampQueueAddSingle   = @"AddToQueue-Single";
 NSString * const kMetricsOffRampQueueAddMulti    = @"AddToQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueAddCopies   = @"AddToQueue-Copies";
+
 NSString * const kMetricsOffRampQueuePrintSingle = @"PrintFromQueue-Single";
 NSString * const kMetricsOffRampQueuePrintMulti  = @"PrintFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueuePrintCopies = @"PrintFromQueue-Copies";
 NSString * const kMetricsOffRampQueueDeleteMulti = @"DeleteFromQueue-MultiSelect";
 
 NSString * const kEventSelectTemplateCategory = @"Template";

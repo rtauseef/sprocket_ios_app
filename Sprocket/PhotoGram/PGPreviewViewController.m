@@ -584,7 +584,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             NSString *offRamp;
             BOOL isPrintDirect = NO;
 
-            if (selectedViews.count == 1) {
+            if ((selectedViews.count == 1) && (self.drawer.numberOfCopies == 1)) {
                 if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
                     isPrintDirect = YES;
                     offRamp = kMetricsOffRampPrintNoUISingle;
@@ -592,7 +592,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         offRamp = kMetricsOffRampPrintNoUIMulti;
                     }
                 } else {
-                    offRamp = kMetricsOffRampQueueAddSingle;
+                    if (self.drawer.numberOfCopies > 1) {
+                        offRamp = kMetricsOffRampQueueAddCopies;
+                        for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+                            [selectedViews addObject:selectedViews.firstObject];
+                        }
+                    } else {
+                        offRamp = kMetricsOffRampQueueAddSingle;
+                    }
                 }
             } else if (selectedViews.count > 1) {
                 offRamp = kMetricsOffRampQueueAddMulti;
@@ -613,6 +620,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     canResumePrinting = NO;
                 } else {
                     [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                    [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
 
                     if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
                         canResumePrinting = NO;
