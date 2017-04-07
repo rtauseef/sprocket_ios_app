@@ -18,6 +18,9 @@
 
 @property (nonatomic, weak) id<PGPreviewDrawerViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL isOpened;
+@property (nonatomic, assign) BOOL showCopies;
+@property (nonatomic, assign) BOOL showTiling;
+@property (assign, nonatomic) NSInteger numberOfCopies;
 
 - (CGFloat)drawerHeight;
 - (CGFloat)drawerHeightOpened;
