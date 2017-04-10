@@ -212,9 +212,7 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[6]
-    
+    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[7]
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
