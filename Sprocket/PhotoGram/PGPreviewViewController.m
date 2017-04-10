@@ -595,20 +595,18 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         offRamp = kMetricsOffRampPrintNoUIMulti;
                     }
                 } else {
-                    if (self.drawer.numberOfCopies > 1) {
-                        origin = kMetricsOriginCopies;
-                        offRamp = kMetricsOffRampQueueAddCopies;
-                        for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
-                            [selectedViews addObject:selectedViews.firstObject];
-                        }
-                    } else {
-                        origin = kMetricsOriginSingle;
-                        offRamp = kMetricsOffRampQueueAddSingle;
-                    }
+                    origin = kMetricsOriginSingle;
+                    offRamp = kMetricsOffRampQueueAddSingle;
                 }
             } else if (selectedViews.count > 1) {
                 origin = kMetricsOriginMulti;
                 offRamp = kMetricsOffRampQueueAddMulti;
+            } else if (self.drawer.numberOfCopies > 1) {
+                origin = kMetricsOriginCopies;
+                offRamp = kMetricsOffRampQueueAddCopies;
+                for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+                    [selectedViews addObject:selectedViews.firstObject];
+                }
             }
 
             BOOL canResumePrinting = YES;
