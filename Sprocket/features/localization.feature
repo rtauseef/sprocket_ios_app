@@ -2,7 +2,7 @@ Feature: Localization testing
   As a user
   I want to change iPhone language and verify screen titles
 
-
+@reset
 @localization
 Scenario: Verify Landing screen texts
     Given I am on the "Landing" screen
