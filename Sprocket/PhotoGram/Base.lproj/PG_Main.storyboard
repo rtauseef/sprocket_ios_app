@@ -357,7 +357,7 @@
         <scene sceneID="ZyA-Bs-T1U">
             <objects>
                 <navigationController storyboardIdentifier="PGSprocketLandingPageNavigationController" id="aNX-1x-wU3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="yxq-jY-0o5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yxq-jY-0o5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -526,7 +526,7 @@
                                                     <rect key="frame" x="15" y="8" width="28" height="28"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqE-FT-oz5">
-                                                    <rect key="frame" x="58" y="12" width="38" height="19"/>
+                                                    <rect key="frame" x="58" y="13" width="38" height="19"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -759,7 +759,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
         <scene sceneID="gr7-FA-59J">
             <objects>
                 <navigationController storyboardIdentifier="PGTermsNavigationController" id="2uM-2W-Nu8" userLabel="TermsOfService NavController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="iEO-dW-j4P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="iEO-dW-j4P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -932,9 +932,39 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-q5-Apw" userLabel="Transition Effect View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H2-xg-aFm" userLabel="Preview View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7T-DG-aYq" userLabel="CarouselView" customClass="iCarousel">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="513"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ixR-2j-aQt" id="wx1-It-PsB"/>
+                                            <outlet property="delegate" destination="ixR-2j-aQt" id="B0A-dc-voP"/>
+                                        </connections>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-VT-qaC" userLabel="ImageSavedView">
+                                        <rect key="frame" x="0.0" y="-44" width="375" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="height" secondItem="fVw-VT-qaC" secondAttribute="height" id="FW7-3O-3e8"/>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="centerX" secondItem="fVw-VT-qaC" secondAttribute="centerX" id="PX7-49-UYa"/>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="width" secondItem="fVw-VT-qaC" secondAttribute="width" id="VJV-HZ-8Q9"/>
+                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="centerY" secondItem="fVw-VT-qaC" secondAttribute="centerY" id="eKG-u9-qBj"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOE-OE-xsb" userLabel="Top View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
@@ -981,44 +1011,20 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-VT-qaC" userLabel="ImageSavedView">
-                                        <rect key="frame" x="0.0" y="-44" width="375" height="44"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PGPreviewDrawerViewController" translatesAutoresizingMaskIntoConstraints="NO" id="emz-NR-R5x">
+                                        <rect key="frame" x="0.0" y="517" width="375" height="75"/>
                                         <constraints>
-                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="height" secondItem="fVw-VT-qaC" secondAttribute="height" id="FW7-3O-3e8"/>
-                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="centerX" secondItem="fVw-VT-qaC" secondAttribute="centerX" id="PX7-49-UYa"/>
-                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="width" secondItem="fVw-VT-qaC" secondAttribute="width" id="VJV-HZ-8Q9"/>
-                                            <constraint firstItem="XgH-Dx-oow" firstAttribute="centerY" secondItem="fVw-VT-qaC" secondAttribute="centerY" id="eKG-u9-qBj"/>
+                                            <constraint firstAttribute="height" constant="75" id="9Bt-SA-WNZ"/>
                                         </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-Zq-Jww" userLabel="ImageContainer">
-                                        <rect key="frame" x="10" y="44" width="355" height="533"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="2A8-Zq-Jww" secondAttribute="height" multiplier="2:3" id="9ny-J8-HOQ"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7T-DG-aYq" userLabel="CarouselView" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="533"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="ixR-2j-aQt" id="wx1-It-PsB"/>
-                                            <outlet property="delegate" destination="ixR-2j-aQt" id="B0A-dc-voP"/>
+                                            <segue destination="0AQ-C1-f9y" kind="embed" identifier="PGPreviewDrawerViewController" id="uEh-IU-3Cj"/>
                                         </connections>
-                                    </view>
+                                    </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swo-Sr-Qd8" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="592" width="375" height="75"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="downloadButton">
-                                                <rect key="frame" x="99" y="31" width="21" height="29"/>
+                                                <rect key="frame" x="99" y="23" width="21" height="29"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" backgroundImage="previewDownload"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1029,7 +1035,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <rect key="frame" x="165" y="29" width="46" height="33"/>
+                                                <rect key="frame" x="165" y="21" width="46" height="33"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="previewPrinterInactive"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1040,7 +1046,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
-                                                <rect key="frame" x="251" y="31" width="20" height="29"/>
+                                                <rect key="frame" x="251" y="23" width="20" height="29"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" backgroundImage="previewShare"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1064,28 +1070,21 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
-                                    <constraint firstItem="j7T-DG-aYq" firstAttribute="leading" secondItem="Swo-Sr-Qd8" secondAttribute="leading" id="2i0-5N-HMP"/>
                                     <constraint firstItem="j7T-DG-aYq" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="2pw-dQ-a0j"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="width" secondItem="BOE-OE-xsb" secondAttribute="width" id="94O-wH-MDY"/>
-                                    <constraint firstItem="j7T-DG-aYq" firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="Asy-Uj-wU2"/>
-                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="top" id="Grf-Nx-WsQ"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="HcJ-BT-acW"/>
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="height" secondItem="BOE-OE-xsb" secondAttribute="height" id="PZB-5d-zf5"/>
-                                    <constraint firstItem="Swo-Sr-Qd8" firstAttribute="top" secondItem="j7T-DG-aYq" secondAttribute="bottom" id="TMS-SZ-ob9"/>
-                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4H2-xg-aFm" secondAttribute="leading" constant="10" id="UIb-W3-b9g"/>
-                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="top" secondItem="BOE-OE-xsb" secondAttribute="bottom" id="VDN-XF-RRJ"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2A8-Zq-Jww" secondAttribute="trailing" constant="10" id="XBQ-yT-6KM"/>
+                                    <constraint firstItem="j7T-DG-aYq" firstAttribute="centerX" secondItem="4H2-xg-aFm" secondAttribute="centerX" id="T0l-kQ-bIy"/>
+                                    <constraint firstItem="emz-NR-R5x" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="YZR-B3-dyN"/>
+                                    <constraint firstItem="emz-NR-R5x" firstAttribute="top" secondItem="j7T-DG-aYq" secondAttribute="bottom" priority="750" constant="-40" id="dv4-6U-U3r"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" constant="-44" id="k2o-7D-moC"/>
-                                    <constraint firstItem="2A8-Zq-Jww" firstAttribute="centerX" secondItem="4H2-xg-aFm" secondAttribute="centerX" id="mtU-Ie-RRv"/>
+                                    <constraint firstAttribute="trailing" secondItem="emz-NR-R5x" secondAttribute="trailing" id="ojm-rj-jdP"/>
                                     <constraint firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="bottom" id="pmc-DO-IIl"/>
                                     <constraint firstItem="Swo-Sr-Qd8" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="rjT-eS-1Do"/>
+                                    <constraint firstItem="Swo-Sr-Qd8" firstAttribute="top" secondItem="emz-NR-R5x" secondAttribute="bottom" id="wzg-ib-QVB"/>
                                     <constraint firstAttribute="trailing" secondItem="BOE-OE-xsb" secondAttribute="trailing" id="ykZ-rL-zJI"/>
                                 </constraints>
-                            </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-q5-Apw" userLabel="Transition Effect View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1112,8 +1111,9 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         <outlet property="bottomViewHeight" destination="BlW-aW-yWc" id="GeK-oc-grg"/>
                         <outlet property="cameraView" destination="pTc-Ba-zcw" id="JgV-RL-8bO"/>
                         <outlet property="carouselView" destination="j7T-DG-aYq" id="GOa-VA-czq"/>
+                        <outlet property="containerViewBottomConstraint" destination="wzg-ib-QVB" id="43U-1v-lvZ"/>
+                        <outlet property="containerViewHeightConstraint" destination="9Bt-SA-WNZ" id="J6X-44-XKa"/>
                         <outlet property="editButton" destination="fRU-DF-pcn" id="5fD-ns-euF"/>
-                        <outlet property="imageContainer" destination="2A8-Zq-Jww" id="qrm-YH-ydp"/>
                         <outlet property="imageSavedView" destination="fVw-VT-qaC" id="2HC-oc-ebh"/>
                         <outlet property="numberOfSelectedPhotos" destination="QQq-pE-y19" id="JND-UB-Om3"/>
                         <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
@@ -1253,7 +1253,7 @@ in the “More” menu when sharing.</string>
         <scene sceneID="svA-7D-PyU">
             <objects>
                 <navigationController storyboardIdentifier="PrintInstructions" definesPresentationContext="YES" id="aOl-ln-qn3" userLabel="How To &amp; Help Navigation Controller" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="POo-5F-tuC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="POo-5F-tuC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1987,7 +1987,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGAboutViewController" definesPresentationContext="YES" id="LIT-0F-CjS" userLabel="About NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j1Y-sB-UJM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j1Y-sB-UJM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2005,7 +2005,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="WebViewerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qmP-7A-YZZ" userLabel="Web Viewer NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Q4Y-od-fvh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Q4Y-od-fvh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2110,7 +2110,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFacebookLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7vZ-mN-2fQ" userLabel="Facebook NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="g2G-vK-Cya">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="g2G-vK-Cya">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2416,7 +2416,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGInstagramLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="l4c-MK-fSA" userLabel="Instagram NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="puT-PP-dRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="puT-PP-dRa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2434,7 +2434,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGCameraRollLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Udl-8d-vIJ" userLabel="CameraRoll NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="7Gs-Fu-tt9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7Gs-Fu-tt9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2452,7 +2452,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGFlickrLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KDo-po-4g5" userLabel="Flickr NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ucl-Ve-qbL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ucl-Ve-qbL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2470,7 +2470,7 @@ printer and app support.</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugO-IO-t14" customClass="PGLandingNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xsa-X2-upN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xsa-X2-upN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3126,7 +3126,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGQzoneLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="3du-xq-xJB" userLabel="QZone NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="ZHx-7O-8Wk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ZHx-7O-8Wk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3220,7 +3220,7 @@ printer and app support.</string>
             <objects>
                 <navigationController storyboardIdentifier="PGPituLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Ka2-ZZ-PRE" userLabel="Pitu NavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="qUW-PE-n5b">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qUW-PE-n5b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3233,8 +3233,134 @@ printer and app support.</string>
             </objects>
             <point key="canvasLocation" x="-4058.4000000000001" y="2672.1139430284861"/>
         </scene>
+        <!--Preview Drawer View Controller-->
+        <scene sceneID="AfP-4u-IJ8">
+            <objects>
+                <viewController id="0AQ-C1-f9y" customClass="PGPreviewDrawerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nm2-LZ-TNo"/>
+                        <viewControllerLayoutGuide type="bottom" id="eDR-Ib-0UX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PGl-Ny-PVI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSr-jm-E12">
+                                <rect key="frame" x="0.0" y="50" width="375" height="25"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="JaT-ef-3js"/>
+                                </constraints>
+                                <state key="normal" image="PreviewBarDots"/>
+                                <connections>
+                                    <action selector="didTapDrawerButton:" destination="0AQ-C1-f9y" eventType="touchUpInside" id="MkT-3I-6l2"/>
+                                    <outletCollection property="gestureRecognizers" destination="noS-hs-dJB" appends="YES" id="yz7-py-uAB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cue-dP-RhJ">
+                                <rect key="frame" x="0.0" y="75" width="375" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%@ Copy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-KF-FRi">
+                                        <rect key="frame" x="37" y="18" width="75" height="23"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                        <color key="textColor" red="0.87450980392156863" green="0.8784313725490196" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta4-Qc-4b4">
+                                        <rect key="frame" x="306" y="7" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="1f1-g7-7Cb"/>
+                                            <constraint firstAttribute="height" constant="44" id="Sf3-Cd-KJc"/>
+                                        </constraints>
+                                        <state key="normal" image="+ButtonEnabled">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" image="+ButtonDisabled"/>
+                                        <connections>
+                                            <action selector="plusTapped:" destination="0AQ-C1-f9y" eventType="touchUpInside" id="Bc0-sF-jNd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Eq-VN-Woc">
+                                        <rect key="frame" x="237" y="7" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="3WN-G3-fEP"/>
+                                            <constraint firstAttribute="height" constant="44" id="Hvq-yT-lGM"/>
+                                        </constraints>
+                                        <state key="normal" image="-ButtonEnabled">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" image="-ButtonDisabled"/>
+                                        <connections>
+                                            <action selector="minusTapped:" destination="0AQ-C1-f9y" eventType="touchUpInside" id="rIU-aT-Uso"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Ta4-Qc-4b4" firstAttribute="leading" secondItem="0Eq-VN-Woc" secondAttribute="trailing" constant="25" id="7Sq-E1-qX9"/>
+                                    <constraint firstItem="0Eq-VN-Woc" firstAttribute="centerY" secondItem="cue-dP-RhJ" secondAttribute="centerY" id="CVa-BP-9sV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ta4-Qc-4b4" secondAttribute="trailing" constant="25" id="Grw-Tw-usD"/>
+                                    <constraint firstAttribute="height" constant="58" id="ICg-LF-xBa"/>
+                                    <constraint firstItem="g9Y-KF-FRi" firstAttribute="centerY" secondItem="cue-dP-RhJ" secondAttribute="centerY" id="JtN-V9-Wai"/>
+                                    <constraint firstItem="Ta4-Qc-4b4" firstAttribute="centerY" secondItem="cue-dP-RhJ" secondAttribute="centerY" id="fLI-4o-2tR"/>
+                                    <constraint firstItem="g9Y-KF-FRi" firstAttribute="leading" secondItem="cue-dP-RhJ" secondAttribute="leading" constant="37" id="gnX-mm-KtV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-6n-Gfr">
+                                <rect key="frame" x="0.0" y="133" width="375" height="58"/>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="Fdk-AE-lHF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="rSr-jm-E12" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="ENM-8G-7jI"/>
+                            <constraint firstItem="cue-dP-RhJ" firstAttribute="top" secondItem="rSr-jm-E12" secondAttribute="bottom" id="MRb-St-4y3"/>
+                            <constraint firstAttribute="trailing" secondItem="id5-6n-Gfr" secondAttribute="trailing" id="Xbc-Rg-Zdk"/>
+                            <constraint firstItem="cue-dP-RhJ" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="dHJ-Y9-xcw"/>
+                            <constraint firstItem="id5-6n-Gfr" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="e4v-qE-eOF"/>
+                            <constraint firstAttribute="trailing" secondItem="rSr-jm-E12" secondAttribute="trailing" id="fXt-z3-hv6"/>
+                            <constraint firstItem="rSr-jm-E12" firstAttribute="top" secondItem="PGl-Ny-PVI" secondAttribute="top" constant="50" id="rfY-y5-F5c"/>
+                            <constraint firstItem="id5-6n-Gfr" firstAttribute="top" secondItem="cue-dP-RhJ" secondAttribute="bottom" id="sju-aM-NgH"/>
+                            <constraint firstAttribute="trailing" secondItem="cue-dP-RhJ" secondAttribute="trailing" id="w3S-fF-EKd"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ovC-aq-WXQ" appends="YES" id="t0M-Q9-x46"/>
+                        </connections>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="300"/>
+                    <connections>
+                        <outlet property="copiesLabel" destination="g9Y-KF-FRi" id="X42-1f-Lrw"/>
+                        <outlet property="drawerButton" destination="rSr-jm-E12" id="lWf-QW-BOt"/>
+                        <outlet property="minusButton" destination="0Eq-VN-Woc" id="vse-My-RDV"/>
+                        <outlet property="plusButton" destination="Ta4-Qc-4b4" id="qrf-hl-7CI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMx-Ig-NIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="noS-hs-dJB" userLabel="Pan Gesture Recognizer Button">
+                    <connections>
+                        <action selector="handlePan:" destination="0AQ-C1-f9y" id="3x7-pu-bck"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ovC-aq-WXQ" userLabel="Pan Gesture Recognizer View">
+                    <connections>
+                        <action selector="handlePan:" destination="0AQ-C1-f9y" id="iMz-qs-WeZ"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1434" y="1766"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="+ButtonDisabled" width="19" height="19"/>
+        <image name="+ButtonEnabled" width="19" height="19"/>
+        <image name="-ButtonDisabled" width="20" height="1"/>
+        <image name="-ButtonEnabled" width="20" height="1"/>
         <image name="About.png" width="28" height="28"/>
         <image name="Active_Circle" width="13" height="13"/>
         <image name="CameraRoll" width="43" height="43"/>
@@ -3247,6 +3373,7 @@ printer and app support.</string>
         <image name="Instagram" width="43" height="43"/>
         <image name="Messenger" width="17" height="17"/>
         <image name="Pitu_Login" width="19" height="24"/>
+        <image name="PreviewBarDots" width="33" height="3"/>
         <image name="Qzone_Login" width="25" height="25"/>
         <image name="Share.png" width="17" height="25"/>
         <image name="WeChat" width="20" height="17"/>
@@ -3280,6 +3407,6 @@ printer and app support.</string>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E30-qK-DCn"/>
+        <segue reference="C19-1u-8Uj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -244,6 +244,8 @@
 		823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */; };
 		8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247843D1D77B3C300A693D0 /* Social.framework */; };
 		824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 824784431D78DAF700A693D0 /* Support_Printers.jpg */; };
+		8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257D63E1E94559000EEC08F /* PGPreviewDrawerViewController.m */; };
+		8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257D63E1E94559000EEC08F /* PGPreviewDrawerViewController.m */; };
 		825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
 		825E2A941DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
 		825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */; };
@@ -1997,6 +1999,8 @@
 		823FB33A1D77A4BE0022B132 /* PGHelpAndHowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHelpAndHowToViewController.m; sourceTree = "<group>"; };
 		8247843D1D77B3C300A693D0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		824784431D78DAF700A693D0 /* Support_Printers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Support_Printers.jpg; sourceTree = "<group>"; };
+		8257D63D1E94559000EEC08F /* PGPreviewDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPreviewDrawerViewController.h; sourceTree = "<group>"; };
+		8257D63E1E94559000EEC08F /* PGPreviewDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPreviewDrawerViewController.m; sourceTree = "<group>"; };
 		825E2A911DBED51E00DB7D5C /* PGBatteryImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGBatteryImageView.h; sourceTree = "<group>"; };
 		825E2A921DBED51E00DB7D5C /* PGBatteryImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGBatteryImageView.m; sourceTree = "<group>"; };
 		8263D7B41E71DD330036E903 /* PGTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTextView.h; sourceTree = "<group>"; };
@@ -3713,6 +3717,8 @@
 				82D6C74C1D1B47060030569F /* PGCameraManager.m */,
 				9230AEA01D18B3A80029A888 /* PGPreviewViewController.h */,
 				9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */,
+				8257D63D1E94559000EEC08F /* PGPreviewDrawerViewController.h */,
+				8257D63E1E94559000EEC08F /* PGPreviewDrawerViewController.m */,
 				924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */,
 				924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */,
 				82362A161D59408E0019F024 /* PGFrameItem.h */,
@@ -6236,6 +6242,7 @@
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
+				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				5bdaef2b736e0b67a0f52115 /* PGCameraRollLandingPageViewController.m in Sources */,
 			);
@@ -6348,6 +6355,7 @@
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
+				8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

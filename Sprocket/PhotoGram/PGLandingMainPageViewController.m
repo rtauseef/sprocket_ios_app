@@ -405,6 +405,12 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         jobAction = kEventPrintJobPrintMultiAction;
         offRamp = kMetricsOffRampQueuePrintMulti;
     }
+    
+    if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
+        queueAction = kEventPrintQueuePrintCopiesAction;
+        jobAction = kEventPrintJobPrintCopiesAction;
+        offRamp = kMetricsOffRampQueuePrintCopies;
+    }
 
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:queueAction
                                                       queueId:printManager.queueId];
