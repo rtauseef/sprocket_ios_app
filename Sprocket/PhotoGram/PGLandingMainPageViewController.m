@@ -406,7 +406,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         offRamp = kMetricsOffRampQueuePrintMulti;
     }
     
-    if (job.extra[kMetricsOrigin] == kMetricsOriginCopies) {
+    if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
         queueAction = kEventPrintQueuePrintCopiesAction;
         jobAction = kEventPrintJobPrintCopiesAction;
         offRamp = kMetricsOffRampQueuePrintCopies;
