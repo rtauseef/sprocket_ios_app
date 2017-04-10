@@ -34,10 +34,17 @@ extern NSString * const kMPMetricsEmbellishmentKey;
 extern NSString * const kMetricsOffRampPrintNoUISingle;
 extern NSString * const kMetricsOffRampPrintNoUIMulti;
 
+extern NSString * const kMetricsOrigin;
+extern NSString * const kMetricsOriginSingle;
+extern NSString * const kMetricsOriginMulti;
+extern NSString * const kMetricsOriginCopies;
+
 extern NSString * const kMetricsOffRampQueueAddSingle;
 extern NSString * const kMetricsOffRampQueueAddMulti;
+extern NSString * const kMetricsOffRampQueueAddCopies;
 extern NSString * const kMetricsOffRampQueuePrintSingle;
 extern NSString * const kMetricsOffRampQueuePrintMulti;
+extern NSString * const kMetricsOffRampQueuePrintCopies;
 extern NSString * const kMetricsOffRampQueueDeleteMulti;
 
 extern NSString * const kEventAuthRequestOkAction;
@@ -65,12 +72,18 @@ extern NSString * const kEventPrintShareLabel;
 
 extern NSString * const kEventPrintJobPrintSingleAction;
 extern NSString * const kEventPrintJobPrintMultiAction;
+extern NSString * const kEventPrintJobPrintCopiesAction;
 
 extern NSString * const kEventPrintQueueAddMultiAction;
 extern NSString * const kEventPrintQueueAddSingleAction;
+extern NSString * const kEventPrintQueueAddCopiesAction;
+
 extern NSString * const kEventPrintQueuePrintMultiAction;
 extern NSString * const kEventPrintQueuePrintSingleAction;
+extern NSString * const kEventPrintQueuePrintCopiesAction;
+
 extern NSString * const kEventPrintQueueDeleteMultiAction;
+
 
 extern NSString * const kEventMultiSelectCancel;
 extern NSString * const kEventMultiSelectEnable;

@@ -55,10 +55,18 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 NSString * const kMetricsOffRampPrintNoUISingle   = @"PrintWithNoUI";
 NSString * const kMetricsOffRampPrintNoUIMulti    = @"PrintWithNoUI-MultiSelect";
 
+NSString * const kMetricsOrigin                   = @"Origin";
+NSString * const kMetricsOriginSingle             = @"Single";
+NSString * const kMetricsOriginMulti              = @"MultiSelect";
+NSString * const kMetricsOriginCopies             = @"Copies";
+
 NSString * const kMetricsOffRampQueueAddSingle   = @"AddToQueue-Single";
 NSString * const kMetricsOffRampQueueAddMulti    = @"AddToQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueAddCopies   = @"AddToQueue-Copies";
+
 NSString * const kMetricsOffRampQueuePrintSingle = @"PrintFromQueue-Single";
 NSString * const kMetricsOffRampQueuePrintMulti  = @"PrintFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueuePrintCopies = @"PrintFromQueue-Copies";
 NSString * const kMetricsOffRampQueueDeleteMulti = @"DeleteFromQueue-MultiSelect";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
@@ -110,14 +118,19 @@ NSString * const kEventPrintJobCategory          = @"PrintJob";
 NSString * const kEventPrintJobErrorCategory     = @"PrintJobError";
 NSString * const kEventPrintJobPrintSingleAction = @"Print";
 NSString * const kEventPrintJobPrintMultiAction  = @"Print-MultiSelect";
+NSString * const kEventPrintJobPrintCopiesAction  = @"Print-Copies";
 NSString * const kEventPrintJobStartedAction     = @"Started";
 NSString * const kEventPrintJobCompletedAction   = @"Completed";
 
 NSString * const kEventPrintQueueCategory          = @"Queue";
 NSString * const kEventPrintQueueAddMultiAction    = @"Add-MultiSelect";
 NSString * const kEventPrintQueueAddSingleAction   = @"Add-Single";
+NSString * const kEventPrintQueueAddCopiesAction   = @"Add-Copies";
+
 NSString * const kEventPrintQueuePrintMultiAction  = @"Print-MultiSelect";
 NSString * const kEventPrintQueuePrintSingleAction = @"Print-Single";
+NSString * const kEventPrintQueuePrintCopiesAction = @"Print-Copies";
+
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 
 NSString * const kEventPrintCategory    = @"Print";

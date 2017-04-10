@@ -12,12 +12,17 @@
 
 #import "PGPreviewDrawerViewController.h"
 
-static NSInteger const kPGPreviewDrawerClosedDrawerHeight = 33;
+static NSInteger const kPGPreviewDrawerClosedDrawerHeight = 25;
 static NSInteger const kPGPreviewDrawerHotAreaHeight = 50;
+static NSInteger const kPGPreviewDrawerNumberOfCopiesLimit = 10;
+static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 @interface PGPreviewDrawerViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UIButton *drawerButton;
+@property (weak, nonatomic) IBOutlet UILabel *copiesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
 @end
 
@@ -27,11 +32,17 @@ static NSInteger const kPGPreviewDrawerHotAreaHeight = 50;
 {
     [super viewDidLoad];
     
-    self.button.clipsToBounds = NO;
-    self.button.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.button.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-    self.button.layer.shadowOpacity = 0.8f;
-    self.button.layer.shadowRadius = 6.0f;
+    self.showCopies = YES;
+    self.showTiling = NO;
+    self.numberOfCopies = 1;
+    
+    self.drawerButton.clipsToBounds = NO;
+    self.drawerButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.drawerButton.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.drawerButton.layer.shadowOpacity = 0.8f;
+    self.drawerButton.layer.shadowRadius = 6.0f;
+    
+    [self updateCopyLabelAndButtons];
 }
 
 - (IBAction)didTapDrawerButton:(id)sender {
@@ -62,12 +73,51 @@ static NSInteger const kPGPreviewDrawerHotAreaHeight = 50;
 
 - (CGFloat)drawerHeightOpened
 {
-    return 150 + kPGPreviewDrawerHotAreaHeight;
+    NSInteger numberOfRowsActive = 0;
+    if (self.showCopies) {
+        numberOfRowsActive++;
+    }
+    
+    if (self.showTiling) {
+        numberOfRowsActive++;
+    }
+    
+    return kPGPreviewDrawerClosedDrawerHeight + (kPGPreviewDrawerRowHeight * numberOfRowsActive) + kPGPreviewDrawerHotAreaHeight;
 }
 
 - (CGFloat)drawerHeightClosed
 {
     return kPGPreviewDrawerClosedDrawerHeight + kPGPreviewDrawerHotAreaHeight;
+}
+
+- (void)updateCopyLabelAndButtons
+{
+    NSString *copyString = NSLocalizedString(@"Copy", @"Number of Copies for printing");
+    if (self.numberOfCopies > 1) {
+        copyString = NSLocalizedString(@"Copies", @"Number of Copies for printing");
+    }
+    
+    self.copiesLabel.text = [NSString stringWithFormat:@"%ld %@", (long)self.numberOfCopies, copyString];
+    self.plusButton.enabled = self.numberOfCopies != kPGPreviewDrawerNumberOfCopiesLimit;
+    self.minusButton.enabled = self.numberOfCopies != 1;
+}
+
+#pragma mark - Buttons Handlers
+
+- (IBAction)plusTapped:(id)sender {
+    if (self.numberOfCopies < kPGPreviewDrawerNumberOfCopiesLimit) {
+        self.numberOfCopies++;
+    }
+    
+    [self updateCopyLabelAndButtons];
+}
+
+- (IBAction)minusTapped:(id)sender {
+    if (self.numberOfCopies >= 1) {
+        self.numberOfCopies--;
+    }
+    
+    [self updateCopyLabelAndButtons];
 }
 
 #pragma mark - Gesture Recognizers

@@ -50,6 +50,7 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
+static NSUInteger const kPGPreviewViewControllerImageViewNegativeMargin = 40;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
@@ -121,6 +122,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imglyManager = [[PGImglyManager alloc] init];
     
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+        self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
+        self.drawer.view.userInteractionEnabled = NO;
+        self.drawer.view.hidden = YES;
+        
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
     } else {
         [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
@@ -163,7 +168,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
-
+    
     self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].hasMultiplePhotos;
 }
 
@@ -293,6 +298,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
+#pragma mark - Drawer Methods
+
 - (void)closeDrawer
 {
     if (!self.drawer.isOpened) {
@@ -302,6 +309,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self.view layoutIfNeeded];
     
     self.drawer.isOpened = NO;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+    [self reloadVisibleItems];
+}
+
+- (void)openDrawer
+{
+    if (self.drawer.isOpened) {
+        return;
+    }
+    
+    [self.view layoutIfNeeded];
+    
+    self.drawer.isOpened = YES;
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
     [self reloadVisibleItems];
 }
@@ -540,8 +560,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    BOOL drawerWasOpened = self.drawer.isOpened;
     [self closeDrawer];
     [self showImgly];
+    
+    if (drawerWasOpened) {
+        [self openDrawer];
+    }
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
@@ -549,6 +574,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self closeDrawer];
     [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
         if (success) {
+            NSString *origin = @"";
             NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
             for (PGGesturesView *gestureView in self.gesturesViews) {
                 if (gestureView.isSelected) {
@@ -559,18 +585,28 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             NSString *offRamp;
             BOOL isPrintDirect = NO;
 
-            if (selectedViews.count == 1) {
+            if ((selectedViews.count == 1) && (self.drawer.numberOfCopies == 1)) {
                 if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
                     isPrintDirect = YES;
                     offRamp = kMetricsOffRampPrintNoUISingle;
+                    origin = kMetricsOriginSingle;
+                    
                     if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
                         offRamp = kMetricsOffRampPrintNoUIMulti;
                     }
                 } else {
+                    origin = kMetricsOriginSingle;
                     offRamp = kMetricsOffRampQueueAddSingle;
                 }
             } else if (selectedViews.count > 1) {
+                origin = kMetricsOriginMulti;
                 offRamp = kMetricsOffRampQueueAddMulti;
+            } else if (self.drawer.numberOfCopies > 1) {
+                origin = kMetricsOriginCopies;
+                offRamp = kMetricsOffRampQueueAddCopies;
+                for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+                    [selectedViews addObject:selectedViews.firstObject];
+                }
             }
 
             BOOL canResumePrinting = YES;
@@ -580,6 +616,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
                 MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
                 NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+                
+                [metrics setObject:origin forKey:kMetricsOrigin];
 
                 if (isPrintDirect) {
                     [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
@@ -588,6 +626,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     canResumePrinting = NO;
                 } else {
                     [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                    [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
 
                     if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
                         canResumePrinting = NO;
@@ -610,6 +649,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 NSString *action = kEventPrintQueueAddSingleAction;
                 if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
                     action = kEventPrintQueueAddMultiAction;
+                }
+                
+                if (self.drawer.numberOfCopies > 1) {
+                    action = kEventPrintQueueAddCopiesAction;
                 }
 
                 [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
@@ -693,7 +736,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
      
     return @{
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-             kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString
+             kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString,
              };
 }
 
