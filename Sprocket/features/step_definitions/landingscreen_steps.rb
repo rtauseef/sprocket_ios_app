@@ -13,7 +13,12 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
       check_element_exists(@current_page.facebook_logo)
     else
       if arg=="Flickr"
-        check_element_exists(@current_page.flickr_logo)
+          if ENV['LANGUAGE'] =='Chinese' || ENV['LANGUAGE'] == 'Chinese-Traditional'
+              puts "Flickr not applicable for Chinese".blue
+              skip_this_scenario
+          else
+            check_element_exists(@current_page.flickr_logo)
+          end
       else
         if arg=="Camera Roll"
             if element_exists("* text:'Sign In'")

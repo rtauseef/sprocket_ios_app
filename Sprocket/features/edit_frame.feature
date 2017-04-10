@@ -73,7 +73,14 @@ Scenario: Verify frame list
 @localization
 @TA17514
 Scenario: Verify additional frames for region Australia
-    Given I am on the "FrameEditor" screen for "CameraRoll"
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    When I touch second photo
+    Then I should see the "CameraRoll Preview" screen
+    And I tap the "Edit" button
+    Then I am on the "Edit" screen
+    Then I tap "Frame" button
+    Then I should see the "Frame Editor" screen
     Then I should see the following "Frames" in the screen:
             |Australia Amplify 1 Frame  |
             |Australia Amplify 3 Frame  |
