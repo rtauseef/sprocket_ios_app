@@ -289,13 +289,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self savePhoto:images index:0 withCompletion:completion];
 }
 
-- (void)reloadVisibleItems
+- (void)reloadCarouselItems
 {
     [self.view layoutIfNeeded];
-    
-    for (NSInteger i = 0; i < self.carouselView.visibleItemViews.count; i++) {
-        [self.carouselView reloadItemAtIndex:i animated:NO];
-    }
+    [self.carouselView reloadData];
 }
 
 #pragma mark - Drawer Methods
@@ -306,11 +303,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         return;
     }
     
-    [self.view layoutIfNeeded];
-    
     self.drawer.isOpened = NO;
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
-    [self reloadVisibleItems];
+    [self reloadCarouselItems];
 }
 
 - (void)openDrawer
@@ -319,22 +314,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         return;
     }
     
-    [self.view layoutIfNeeded];
-    
     self.drawer.isOpened = YES;
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
-    [self reloadVisibleItems];
+    [self reloadCarouselItems];
 }
 
 #pragma mark - PGPreviewDrawerDelegate
 
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
 {
-    [self.view layoutIfNeeded];
     self.containerViewHeightConstraint.constant = [drawer drawerHeight];
     
     [UIView animateWithDuration:0.3 animations:^{
-        [self reloadVisibleItems];
+        [self reloadCarouselItems];
     }];
 }
 
@@ -348,15 +340,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         BOOL isTopLimit = newHeight > [drawer drawerHeightOpened];
         BOOL isBottomLimit = newHeight < [drawer drawerHeightClosed];
         if (!isTopLimit && !isBottomLimit) {
-            [self.view layoutIfNeeded];
             self.containerViewHeightConstraint.constant = newHeight;
-            [self reloadVisibleItems];
+            [self reloadCarouselItems];
         }
         
     }
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
-        [self.view layoutIfNeeded];
         CGFloat threshold = [drawer drawerHeightOpened] * 0.7;
         if (!drawer.isOpened) {
             threshold = [drawer drawerHeightOpened] * 0.3;
@@ -366,7 +356,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         self.containerViewHeightConstraint.constant = [drawer drawerHeight];
         
         [UIView animateWithDuration:0.3 animations:^{
-            [self reloadVisibleItems];
+            [self reloadCarouselItems];
         }];
     }
 }
