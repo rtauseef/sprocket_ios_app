@@ -33,13 +33,14 @@ Scenario: Open cameraroll from side menu
 
 @reset
 @done
-@smoke
+@smoke1
 Scenario: Verify side menu options
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
     Then I should see the side menu
     And I should see the following:
     |sprocket       |
+    |Print Queue    |
     |Buy Paper      |
     |How to & Help  |
     |Take Survey    |
