@@ -22,9 +22,19 @@ And(/^I should see the button "(.*?)"$/) do |button|
     sleep(STEP_PAUSE)
 end
 
-And(/^I tap the "OK" button$/) do
-    touch "label {text CONTAINS 'OK'}"
-    sleep(STEP_PAUSE)
+And(/^I tap the "(.*?)" button$/) do |button|
+    if button == "OK"
+        touch "label {text CONTAINS 'OK'}"
+        sleep(STEP_PAUSE)
+    else
+        if button == "Edit"
+            touch "view marked:'#{$list_loc['Edit']}'"
+            sleep(STEP_PAUSE)
+        else
+            touch "PGSignInButton"
+            sleep(STEP_PAUSE)
+        end
+    end
 end
 
 Then(/^I should not see the modal screen$/) do

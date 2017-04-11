@@ -21,9 +21,11 @@
 
 @implementation PGBaseAnalyticsManager
 
-    NSString * const kMetricsTypePhotoSourceKey = @"kMetricsTypePhotoSourceKey";
+NSString * const kMetricsTypePhotoSourceKey = @"kMetricsTypePhotoSourceKey";
 NSString * const kMetricsTypePhotoPositionKey = @"kMetricsTypePhotoPositionKey";
 NSString * const kMetricsTypeLocationKey = @"kMetricsTypeLocationKey";
+NSString * const kMetricsPrintQueueIdKey = @"print_queue_id";
+NSString * const kMetricsPrintQueueCopiesKey = @"copies";
 NSString * const kMetricsOfframpKey = @"off_ramp";
 NSString * const kMetricsAppTypeKey = @"app_type";
 NSString * const kMetricsAppTypeHP = @"HP";
@@ -99,7 +101,7 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     [tracker set:[GAIFields customDimensionForIndex:kPGExperimentPrintIconDimension] value:experimentValue];
 }
 
-- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
+- (NSMutableDictionary *)getMetrics:(NSString *)offramp printItem:(MPPrintItem *)printItem extendedInfo:(NSDictionary *)extendedInfo
 {
     MPPaper *paper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
     NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
@@ -125,9 +127,9 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
     return metrics;
 }
 
-- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem exendedInfo:(NSDictionary *)extendedInfo
+- (void)postMetricsWithOfframp:(NSString *)offramp printItem:(MPPrintItem *)printItem extendedInfo:(NSDictionary *)extendedInfo
 {
-    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem exendedInfo:extendedInfo];
+    NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem extendedInfo:extendedInfo];
     [self postMetrics:offramp object:printItem metrics:metrics];
 }
 

@@ -34,6 +34,15 @@ class InstagramPreviewScreen < Calabash::IBase
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
   end
+    
+    def download    
+    "* id:'previewDownload'"
+end
+    
+    def more    
+        "UILabel marked:'#{$list_loc['More']}' index:1"
+end
+    
   def close
     "* id:'closeButton'"
   end

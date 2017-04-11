@@ -6,14 +6,26 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HPSimplified_Lt.ttf">
+            <string>HPSimplified-Light</string>
+        </array>
+        <array key="HPSimplified_Rg.ttf">
+            <string>HPSimplified-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGGesturesView">
             <connections>
                 <outlet property="checkmark" destination="Bbu-Io-fbX" id="Obv-Mk-2bu"/>
                 <outlet property="imageView" destination="A7k-zj-lAc" id="wwT-E4-L80"/>
                 <outlet property="loadingIndicator" destination="7v3-YO-v12" id="ryU-eJ-j7o"/>
+                <outlet property="noConnectionViewDescription" destination="Gx9-GC-gG2" id="Sfp-my-wNe"/>
+                <outlet property="noConnectionViewTitle" destination="Ya8-xd-Eib" id="wTc-iR-84N"/>
+                <outlet property="noInternetConnectionView" destination="2xK-Zm-lvW" id="rpj-zq-NTL"/>
                 <outlet property="scrollView" destination="o7F-Ej-6or" id="lh0-i3-Ebb"/>
                 <outlet property="selectionOverlayView" destination="p9Z-y7-sCf" id="ggw-lb-3HX"/>
             </connections>
@@ -53,11 +65,37 @@
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7v3-YO-v12">
                     <rect key="frame" x="177" y="323" width="20" height="20"/>
                 </activityIndicatorView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-Zm-lvW" userLabel="No Internet Connection View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Connection Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya8-xd-Eib">
+                            <rect key="frame" x="98" y="289.5" width="178.5" height="21"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please connect to a data source. You can also use your device photos." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gx9-GC-gG2">
+                            <rect key="frame" x="0.0" y="315.5" width="375" height="40.5"/>
+                            <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Ya8-xd-Eib" firstAttribute="centerX" secondItem="2xK-Zm-lvW" secondAttribute="centerX" id="Av5-XA-cJN"/>
+                        <constraint firstItem="Gx9-GC-gG2" firstAttribute="top" secondItem="Ya8-xd-Eib" secondAttribute="bottom" constant="5" id="NQp-90-1gq"/>
+                        <constraint firstItem="Ya8-xd-Eib" firstAttribute="centerY" secondItem="2xK-Zm-lvW" secondAttribute="centerY" multiplier="0.9" id="Q8h-xu-uyd"/>
+                        <constraint firstItem="Gx9-GC-gG2" firstAttribute="centerX" secondItem="2xK-Zm-lvW" secondAttribute="centerX" id="kvA-KO-vBu"/>
+                        <constraint firstItem="Gx9-GC-gG2" firstAttribute="width" secondItem="2xK-Zm-lvW" secondAttribute="width" id="vVt-Py-MST"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="o7F-Ej-6or" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1BJ-fr-xZn"/>
                 <constraint firstAttribute="bottom" secondItem="o7F-Ej-6or" secondAttribute="bottom" id="1NC-fJ-4U8"/>
+                <constraint firstItem="2xK-Zm-lvW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="48k-f3-8JI"/>
                 <constraint firstItem="7v3-YO-v12" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FbF-BG-AP6"/>
                 <constraint firstItem="o7F-Ej-6or" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Hjs-vB-0F5"/>
                 <constraint firstAttribute="trailing" secondItem="p9Z-y7-sCf" secondAttribute="trailing" id="IUq-4O-fKe"/>
@@ -67,10 +105,14 @@
                 <constraint firstAttribute="trailing" secondItem="o7F-Ej-6or" secondAttribute="trailing" id="aJ7-m1-xQ4"/>
                 <constraint firstAttribute="trailing" secondItem="Bbu-Io-fbX" secondAttribute="trailing" constant="10" id="fc0-4O-mb7"/>
                 <constraint firstAttribute="bottom" secondItem="p9Z-y7-sCf" secondAttribute="bottom" id="l7g-90-MBB"/>
+                <constraint firstAttribute="bottom" secondItem="2xK-Zm-lvW" secondAttribute="bottom" id="oQa-HN-jY7"/>
                 <constraint firstItem="o7F-Ej-6or" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r9F-dA-2WO"/>
                 <constraint firstAttribute="bottom" secondItem="Bbu-Io-fbX" secondAttribute="bottom" constant="10" id="rRV-bd-sg6"/>
                 <constraint firstItem="7v3-YO-v12" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tco-4O-8CK"/>
+                <constraint firstAttribute="trailing" secondItem="2xK-Zm-lvW" secondAttribute="trailing" id="vmR-cM-t27"/>
+                <constraint firstItem="2xK-Zm-lvW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xzJ-JO-ooM"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
     <resources>

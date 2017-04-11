@@ -18,6 +18,7 @@
 #import <ImageIO/ImageIO.h>
 
 const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
+const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
 
 @interface HPPRCameraRollMedia()
 
@@ -62,6 +63,32 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
     }
 }
 
+- (void)requestPreviewImageWithCompletion:(void(^)(UIImage *image))completion
+{
+    if (!self.previewImage) {
+        PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
+        requestOptions.resizeMode   = PHImageRequestOptionsResizeModeFast;
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+        requestOptions.synchronous = NO;
+        
+        CGFloat size = kHPPRCameraRollMediaPreviewSize * [[UIScreen mainScreen] scale];
+        self.lastImageRequestID = [[PHImageManager defaultManager] requestImageForAsset:self.asset
+                                                                         targetSize:CGSizeMake(size, size)
+                                                                        contentMode:PHImageContentModeAspectFit
+                                                                            options:requestOptions
+                                                                      resultHandler:^void(UIImage *image, NSDictionary *info) {
+                                                                          if ( ([info[PHImageResultRequestIDKey] integerValue] == self.lastImageRequestID || self.lastImageRequestID == 0) &&
+                                                                              ![info[PHImageResultIsDegradedKey] boolValue] ) {
+                                                                              self.lastImageRequestID = 0;
+                                                                              self.previewImage = image;
+                                                                              completion(self.previewImage);
+                                                                          }
+                                                                      }];
+    } else {
+        completion(self.previewImage);
+    }
+}
+
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion
 {
     if (!self.image) {
@@ -102,7 +129,10 @@ const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
 
 - (void)cancelImageRequestWithCompletion:(void(^)())completion
 {
-    [[PHImageManager defaultManager] cancelImageRequest:self.lastImageRequestID];
+    if (0 != self.lastImageRequestID) {
+        [[PHImageManager defaultManager] cancelImageRequest:self.lastImageRequestID];
+        self.lastImageRequestID = 0;
+    }
     
     if (completion) {
         completion();

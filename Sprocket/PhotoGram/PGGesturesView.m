@@ -17,6 +17,7 @@
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kAnimationDuration = 0.3f;
 static CGFloat const kMarginOfError = .01f;
+static CGFloat const kMarginOfSquare = 2.0f;
 
 @interface PGGesturesView ()
 
@@ -25,6 +26,8 @@ static CGFloat const kMarginOfError = .01f;
 
 @property (weak, nonatomic) IBOutlet UIView *selectionOverlayView;
 @property (weak, nonatomic) IBOutlet UIImageView *checkmark;
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionViewTitle;
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionViewDescription;
 
 @end
 
@@ -58,6 +61,9 @@ static CGFloat const kMarginOfError = .01f;
     xibView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:xibView];
     
+    self.noConnectionViewTitle.text = NSLocalizedString(@"No Connection Available", nil);
+    self.noConnectionViewDescription.text = NSLocalizedString(@"Please connect to a data source.\nYou can also use your device photos.", nil);
+    
     self.accessibilityIdentifier = @"GestureView";
     self.scrollView.accessibilityIdentifier = @"GestureScrollView";
     self.imageView.accessibilityIdentifier = @"GestureImageView";
@@ -69,6 +75,8 @@ static CGFloat const kMarginOfError = .01f;
     
     self.isSelected = YES;
     self.isMultiSelectImage = NO;
+    
+    self.embellishmentMetricManager = [[PGEmbellishmentMetricsManager alloc] init];
     
     [self enableGestures];
 }
@@ -148,12 +156,17 @@ static CGFloat const kMarginOfError = .01f;
 
 - (void)setImage:(UIImage *)image
 {
-    if (self.media) {
-        _media.image = image;
-    }
-    
+    _image = image;
     _editedImage = image;
     
+    if (fabs(image.size.width - image.size.height) < kMarginOfSquare) {
+        self.imageContentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.imageContentMode = UIViewContentModeScaleAspectFill;
+    }
+    self.imageView.contentMode = self.imageContentMode;
+    self.scrollView.contentMode = self.imageContentMode;
+
     self.imageView.image = image;
     [self.loadingIndicator stopAnimating];
 }
@@ -198,6 +211,16 @@ static CGFloat const kMarginOfError = .01f;
     self.editedImage = [self screenshotImage];
     [self.zoomTimer invalidate];
     self.zoomTimer = nil;
+}
+
+- (void)showNoInternetConnectionView
+{
+    self.noInternetConnectionView.hidden = NO;
+}
+
+- (void)hideNoInternetConnectionView
+{
+    self.noInternetConnectionView.hidden = YES;
 }
 
 #pragma mark - UIGestureRecognizerDelegate methods

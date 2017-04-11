@@ -27,9 +27,12 @@
 #import "PGPhotoSelection.h"
 #import "HPPRCacheService.h"
 #import "PGSavePhotos.h"
+#import "PGProgressView.h"
+#import "PGPreviewDrawerViewController.h"
 
 #import <MP.h>
 #import <HPPR.h>
+#import <HPPRSelectPhotoProvider.h>
 #import <MPLayoutFactory.h>
 #import <MPLayout.h>
 #import <MPPrintActivity.h>
@@ -47,12 +50,13 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
+static NSUInteger const kPGPreviewViewControllerImageViewNegativeMargin = 40;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate, PGPreviewDrawerViewControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -64,8 +68,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
+@property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
-@property (weak, nonatomic) IBOutlet UIView *imageContainer;
 @property (strong, nonatomic) IBOutlet iCarousel *carouselView;
 
 @property (strong, nonatomic) PGGesturesView *imageView;
@@ -78,6 +84,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 @property (nonatomic, strong) NSMutableArray<PGGesturesView *> *gesturesViews;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSelectedPhotos;
+
+@property (strong, nonatomic) PGProgressView *progressView;
 
 @end
 
@@ -114,6 +122,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imglyManager = [[PGImglyManager alloc] init];
     
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+        self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
+        self.drawer.view.userInteractionEnabled = NO;
+        self.drawer.view.hidden = YES;
+        
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
     } else {
         [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
@@ -156,9 +168,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGPreviewViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
-
+    
     self.numberOfSelectedPhotos.hidden = ![PGPhotoSelection sharedInstance].hasMultiplePhotos;
-    self.imageContainer.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -193,6 +204,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return UIInterfaceOrientationMaskPortrait;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"PGPreviewDrawerViewController"]){
+        self.drawer = (PGPreviewDrawerViewController *)segue.destinationViewController;
+        self.drawer.delegate = self;
+    }
+}
+
 #pragma mark - Internal Methods
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
@@ -209,9 +228,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)showImgly
 {
     UIImage *photoToEdit = nil;
+    
+    PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
     photoToEdit = [self currentEditedImage];
     
-    IMGLYConfiguration *configuration = [self.imglyManager imglyConfiguration];
+    IMGLYConfiguration *configuration = [self.imglyManager imglyConfigurationWithEmbellishmentManager:gesturesView.embellishmentMetricManager];
     IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
     IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:configuration];
     toolController.delegate = self;
@@ -242,23 +263,101 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
 }
 
+- (void)savePhoto:(NSArray *)images index:(NSInteger)index withCompletion:(void (^)(BOOL))completion
+{
+    __block NSArray *savedImages = images;
+    __block NSInteger idx = index;
+    
+    [PGSavePhotos saveImage:savedImages[idx++] completion:^(BOOL success) {
+        if (success && [savedImages count] > idx) {
+            [self savePhoto:savedImages index:idx withCompletion:completion];
+        } else if (completion) {
+            completion(success);
+        }
+    }];
+}
+
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
-    dispatch_group_t group = dispatch_group_create();
-    
+    NSMutableArray *images = [[NSMutableArray alloc] init];
     for (PGGesturesView *gestureView in self.gesturesViews) {
         if (gestureView.isSelected) {
-            dispatch_group_enter(group);
-            [PGSavePhotos saveImage:gestureView.editedImage completion:^(BOOL success) {
-                dispatch_group_leave(group);
-            }];
+            [images addObject:gestureView.editedImage];
         }
     }
+
+    [self savePhoto:images index:0 withCompletion:completion];
+}
+
+- (void)reloadCarouselItems
+{
+    [self.view layoutIfNeeded];
+    [self.carouselView reloadData];
+}
+
+#pragma mark - Drawer Methods
+
+- (void)closeDrawer
+{
+    if (!self.drawer.isOpened) {
+        return;
+    }
     
-    dispatch_group_wait(group, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
+    self.drawer.isOpened = NO;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+    [self reloadCarouselItems];
+}
+
+- (void)openDrawer
+{
+    if (self.drawer.isOpened) {
+        return;
+    }
     
-    if (completion) {
-        completion(YES);
+    self.drawer.isOpened = YES;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+    [self reloadCarouselItems];
+}
+
+#pragma mark - PGPreviewDrawerDelegate
+
+- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
+{
+    self.containerViewHeightConstraint.constant = [drawer drawerHeight];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self reloadCarouselItems];
+    }];
+}
+
+- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
+{
+    CGPoint translation = [gesture translationInView:self.view];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
+        CGFloat newHeight = [drawer drawerHeight] - translation.y;
+        
+        BOOL isTopLimit = newHeight > [drawer drawerHeightOpened];
+        BOOL isBottomLimit = newHeight < [drawer drawerHeightClosed];
+        if (!isTopLimit && !isBottomLimit) {
+            self.containerViewHeightConstraint.constant = newHeight;
+            [self reloadCarouselItems];
+        }
+        
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        CGFloat threshold = [drawer drawerHeightOpened] * 0.7;
+        if (!drawer.isOpened) {
+            threshold = [drawer drawerHeightOpened] * 0.3;
+        }
+        
+        drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
+        self.containerViewHeightConstraint.constant = [drawer drawerHeight];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [self reloadCarouselItems];
+        }];
     }
 }
 
@@ -266,11 +365,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
 {
-    [self.gesturesViews[self.carouselView.currentItemIndex] setImage:image];
+    PGGesturesView *currentGesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
+    [currentGesturesView setImage:image];
     
-    self.gesturesViews[self.carouselView.currentItemIndex].scrollView.transform = CGAffineTransformIdentity;
-    self.gesturesViews[self.carouselView.currentItemIndex].totalRotation = 0.0F;
-    self.gesturesViews[self.carouselView.currentItemIndex].scrollView.zoomScale = self.gesturesViews[self.carouselView.currentItemIndex].minimumZoomScale;
+    currentGesturesView.scrollView.transform = CGAffineTransformIdentity;
+    currentGesturesView.totalRotation = 0.0F;
+    currentGesturesView.scrollView.zoomScale = currentGesturesView.minimumZoomScale;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -342,6 +442,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
+    [self closeDrawer];
     [self saveSelectedPhotosWithCompletion:^(BOOL success) {
         if (success) {
             if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
@@ -349,7 +450,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
                                                                  printItem:self.printItem
-                                                               exendedInfo:[self extendedMetrics]];
+                                                               extendedInfo:[self extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView]];
             } else {
                 NSUInteger selectedPhotosCount = 0;
                 
@@ -362,7 +463,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         
                         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
                                                                          printItem:printItem
-                                                                       exendedInfo:[self extendedMetrics]];
+                                                                       extendedInfo:[self extendedMetricsByGestureView:gestureView]];
                         selectedPhotosCount++;
                     }
                 }
@@ -413,7 +514,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         
                         [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
                                                                          printItem:weakSelf.printItem
-                                                                       exendedInfo:[weakSelf extendedMetrics]];
+                                                                       extendedInfo:[weakSelf extendedMetricsByGestureView:(PGGesturesView *)weakSelf.carouselView.currentItemView]];
                     } else {
                         NSUInteger selectedPhotosCount = 0;
                         
@@ -426,7 +527,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                 
                                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
                                                                                  printItem:printItem
-                                                                               exendedInfo:[self extendedMetrics]];
+                                                                               extendedInfo:[weakSelf extendedMetricsByGestureView:gestureView]];
                                 selectedPhotosCount++;
                             }
                         }
@@ -449,46 +550,165 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
+    BOOL drawerWasOpened = self.drawer.isOpened;
+    [self closeDrawer];
     [self showImgly];
+    
+    if (drawerWasOpened) {
+        [self openDrawer];
+    }
 }
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        for (PGGesturesView *gestureView in self.gesturesViews) {
-            if (gestureView.isSelected) {
-                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+    [self closeDrawer];
+    [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
+        if (success) {
+            NSString *origin = @"";
+            NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
+            for (PGGesturesView *gestureView in self.gesturesViews) {
+                if (gestureView.isSelected) {
+                    [selectedViews addObject:gestureView];
+                }
+            }
 
-                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem];
+            NSString *offRamp;
+            BOOL isPrintDirect = NO;
+
+            if ((selectedViews.count == 1) && (self.drawer.numberOfCopies == 1)) {
+                if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
+                    isPrintDirect = YES;
+                    offRamp = kMetricsOffRampPrintNoUISingle;
+                    origin = kMetricsOriginSingle;
+                    
+                    if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
+                        offRamp = kMetricsOffRampPrintNoUIMulti;
+                    }
+                } else {
+                    origin = kMetricsOriginSingle;
+                    offRamp = kMetricsOffRampQueueAddSingle;
+                }
+            } else if (selectedViews.count > 1) {
+                origin = kMetricsOriginMulti;
+                offRamp = kMetricsOffRampQueueAddMulti;
+            } else if (self.drawer.numberOfCopies > 1) {
+                origin = kMetricsOriginCopies;
+                offRamp = kMetricsOffRampQueueAddCopies;
+                for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+                    [selectedViews addObject:selectedViews.firstObject];
+                }
+            }
+
+            BOOL canResumePrinting = YES;
+            for (PGGesturesView *gestureView in selectedViews) {
+                NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+                [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
+
+                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+                
+                [metrics setObject:origin forKey:kMetricsOrigin];
+
+                if (isPrintDirect) {
+                    [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
+                        return [self handlePrintQueueStatus:status progress:progress];
+                    }];
+                    canResumePrinting = NO;
+                } else {
+                    [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                    [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
+
+                    if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
+                        canResumePrinting = NO;
+                        break;
+                    }
+
+                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                     printItem:printItem
+                                                                  extendedInfo:metrics];
+                }
+
+            }
+
+            if (canResumePrinting) {
+                [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
+                    return [self handlePrintQueueStatus:status progress:progress];
+                }];
+
+
+                NSString *action = kEventPrintQueueAddSingleAction;
+                if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+                    action = kEventPrintQueueAddMultiAction;
+                }
+                
+                if (self.drawer.numberOfCopies > 1) {
+                    action = kEventPrintQueueAddCopiesAction;
+                }
+
+                [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
+                                                                  queueId:[MPBTPrintManager sharedInstance].queueId
+                                                                queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
             }
         }
-
-        [[MPBTPrintManager sharedInstance] resumePrintQueue];
-
-    } else {
-        self.currentOfframp = [MPPrintManager directPrintOfframp];
-        [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] animated:YES printCompletion:nil];
-        [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintButtonLabel];
-    }
+    }];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
-    UIImage *image = [self currentEditedImage];
-    PGSaveToCameraRollActivity *saveToCameraRollActivity = [[PGSaveToCameraRollActivity alloc] init];
-    saveToCameraRollActivity.image = image;
-    
-    MPBTPrintActivity *btPrintActivity = [[MPBTPrintActivity alloc] init];
-    btPrintActivity.image = image;
-    btPrintActivity.vc = self;
-    
+    [self closeDrawer];
     [[MP sharedInstance] closeAccessorySession];
     
-    [self presentActivityViewControllerWithActivities:@[btPrintActivity, saveToCameraRollActivity]];
+    [self presentActivityViewControllerWithActivities:nil];
 }
 
 
 #pragma mark - Print preparation
+
+- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress {
+    if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
+        if (!self.progressView) {
+            self.progressView = [[PGProgressView alloc] initWithFrame:self.view.bounds];
+            self.progressView.alpha = 0.0;
+            [self.progressView setProgress:0.0];
+
+            [self.view addSubview:self.progressView];
+            [self.view bringSubviewToFront:self.progressView];
+
+            [UIView animateWithDuration:0.3 animations:^{
+                self.progressView.alpha = 1.0;
+            }];
+        }
+
+        [self.progressView setProgress:0.0];
+        [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
+
+    } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
+        [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
+
+    } else if (status == MPBTPrinterManagerStatusPrinting) {
+        [self.progressView setProgress:1.0F];
+        [self dismissProgressView];
+
+        return NO;
+
+    } else if (status == MPBTPrinterManagerStatusIdle) {
+        // User paused the print queue
+        [self dismissProgressView];
+
+        return NO;
+    }
+
+    return YES;
+}
+
+- (void)dismissProgressView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.progressView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.progressView removeFromSuperview];
+        self.progressView = nil;
+    }];
+}
 
 - (MPPaper *)paper
 {
@@ -500,11 +720,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
 }
 
-- (NSDictionary *)extendedMetrics
+- (NSDictionary *)extendedMetricsByGestureView:(PGGesturesView *)gestureView
 {
+    [PGAnalyticsManager sharedManager].photoSource = gestureView.media.photoProvider.name;
+     
     return @{
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
-             kMPMetricsEmbellishmentKey:[self.imglyManager analyticsString]
+             kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString,
              };
 }
 
@@ -545,7 +767,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             BOOL printActivity = [activityType isEqualToString: NSStringFromClass([MPBTPrintActivity class])];
             
             NSString *offramp = activityType;
-            NSDictionary *extendedMetrics = [weakSelf extendedMetrics];
+            
             if (printActivity) {
                 offramp = [MPPrintManager printOfframp];
                 [[PGAnalyticsManager sharedManager] trackPrintRequest:kEventPrintShareLabel];
@@ -559,21 +781,24 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             if (completed) {
                 if (!printActivity) {
                     if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                        NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:(PGGesturesView *)[weakSelf.gesturesViews objectAtIndex:weakSelf.carouselView.currentItemIndex]];
                         [[PGAnalyticsManager sharedManager] trackShareActivity:offramp withResult:kEventResultSuccess];
-                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem exendedInfo:extendedMetrics];
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offramp printItem:weakSelf.printItem extendedInfo:extendedMetrics];
                     } else {
                         NSUInteger selectedPhotosCount = 0;
                         
                         // Print Metric
                         NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", offramp];
+                        
                         for (PGGesturesView *gestureView in weakSelf.gesturesViews) {
                             if (gestureView.isSelected) {
+                                NSDictionary *extendedMetrics = [weakSelf extendedMetricsByGestureView:gestureView];
                                 MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
                                 printItem.layout = [weakSelf layout];
                                 
                                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
                                                                                  printItem:printItem
-                                                                               exendedInfo:extendedMetrics];
+                                                                               extendedInfo:extendedMetrics];
                                 
                                 selectedPhotosCount++;
                             }
@@ -627,7 +852,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         [[NSUserDefaults standardUserDefaults] setInteger:numPrints forKey:kPGPreviewViewControllerNumPrintsKey];
         
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:self.currentOfframp printItem:self.printItem exendedInfo:self.extendedMetrics];
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:self.currentOfframp printItem:self.printItem extendedInfo:[self extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView]];
         
         self.currentOfframp = nil;
     }
@@ -705,8 +930,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         } else {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                    if (error) {
+                        [weakSelf.gesturesViews[i] showNoInternetConnectionView];
+                        return;
+                    }
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.gesturesViews[i] setImage:image];
+                        [weakSelf.gesturesViews[i] hideNoInternetConnectionView];
                         [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
                     });
                 }];
@@ -741,9 +971,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self selectCarouselItem:self.carouselView.currentItemIndex];
 }
 
+- (CGRect)carouselItemFrame
+{
+    return CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height);;
+}
+
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
 {
-    PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height)];
+    PGGesturesView *gestureView = [[PGGesturesView alloc] initWithFrame:[self carouselItemFrame]];
     gestureView.media = media;
     gestureView.isMultiSelectImage = [PGPhotoSelection sharedInstance].hasMultiplePhotos;
     
@@ -793,12 +1028,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
     PGGesturesView *gestureView = self.gesturesViews[index];
+    gestureView.frame = [self carouselItemFrame];
     
-    if (gestureView.media.image) {
-        UIImage *finalImage = gestureView.media.image;
+    if (gestureView.image) {
+        UIImage *finalImage = gestureView.image;
         
-        if (gestureView.media.image.size.width > gestureView.media.image.size.height) {
-            finalImage = [[UIImage alloc] initWithCGImage: gestureView.media.image.CGImage
+        if (gestureView.image.size.width > gestureView.image.size.height) {
+            finalImage = [[UIImage alloc] initWithCGImage: gestureView.image.CGImage
                                                     scale: 1.0
                                               orientation: UIImageOrientationRight];
         }
@@ -816,6 +1052,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return gestureView;
 }
 
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    self.gesturesViews[index].isSelected = !self.gesturesViews[index].isSelected;
+    [carousel reloadItemAtIndex:index animated:YES];
+}
+
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
 {
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos && (carousel.currentItemIndex != -1)) {
@@ -831,15 +1073,18 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
+    [self.view layoutIfNeeded];
+    
     if (option == iCarouselOptionWrap) {
         return self.gesturesViews.count > 2;
     }
     
-    if (option == iCarouselOptionSpacing) {
-        return value + (10.0f / (self.carouselView.bounds.size.height * kAspectRatio2by3));
-    }
-    
     return value;
+}
+
+- (CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    return 10.0f + (self.carouselView.bounds.size.height * kAspectRatio2by3);
 }
 
 @end

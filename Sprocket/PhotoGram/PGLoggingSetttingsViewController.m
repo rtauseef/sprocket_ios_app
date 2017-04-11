@@ -41,7 +41,6 @@ static int kHideSvgMessagesIndex          = 7;
 static int kEnableExtraSocialSourcesIndex = 8;
 static int kEnablePushNotificationsIndex  = 9;
 static int kDisplayNotificationMsgCenterIndex = 10;
-static int kEnableMultiPrintIndex             = 11;
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -263,17 +262,6 @@ static int kEnableMultiPrintIndex             = 11;
             }
             
             cell.textLabel.text = @"Display Notification Message Center";
-        } else if (kEnableMultiPrintIndex == indexPath.row) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"enableMultiPrint"];
-            if (!cell) {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enableMultiPrint"];
-            }
-
-            if ([PGFeatureFlag isMultiPrintEnabled]) {
-                cell.textLabel.text = @"Disable Multi-Print";
-            } else {
-                cell.textLabel.text = @"Enable Multi-Print";
-            }
         }
     }
     
@@ -331,9 +319,6 @@ static int kEnableMultiPrintIndex             = 11;
             } else if (kDisplayNotificationMsgCenterIndex == selectedRow) {
                 // Note-- you must enable messaging before this will work
                 [[UAirship defaultMessageCenter] display];
-            } else if (kEnableMultiPrintIndex == selectedRow) {
-                [self toggleMultiPrint];
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
     }
@@ -355,11 +340,6 @@ static int kEnableMultiPrintIndex             = 11;
 
 
 #pragma mark - Mailing Logfile
-
-- (void)toggleMultiPrint {
-    BOOL enabled = [PGFeatureFlag isMultiPrintEnabled];
-    [PGFeatureFlag setMultiPrintEnabled:!enabled];
-}
 
 - (void)enablePushNotifications {
     // User notifications will not be enabled until userPushNotificationsEnabled is

@@ -12,21 +12,10 @@
 
 #import "PGFeatureFlag.h"
 
-static NSString * const kEnableMultiPrintKey = @"com.hp.hp-sprocket.enableMultiPrint";
-
 @implementation PGFeatureFlag
 
-+ (void)setMultiPrintEnabled:(BOOL)enabled {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
-    [userDefaults setBool:enabled forKey:kEnableMultiPrintKey];
-    [userDefaults synchronize];
-}
-
 + (BOOL)isMultiPrintEnabled {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
-    return [userDefaults boolForKey:kEnableMultiPrintKey];
+    return YES;
 }
 
 @end

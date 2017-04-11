@@ -48,27 +48,44 @@ Scenario Outline: Verify frame applied for frame editor screen
 Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
-            |No Frame               |
-            |Valentines Hearts Frame|
-            |Valentines Pink Polka Frame|
-            |Valentines Red Frame|
-            |Valentines Hearts Overlay Frame|
-            |Valentines Pink Watercolor Frame|
-            |Valentines Red Stripes Frame|
-            |White Frame|
-            |Kraft Frame|
-            |Floral Frame|
-            |Orange Frame|
-            |Polka Dots Frame|
-            |Water Blue Frame|
-            |Wood Bottom Frame      |
-            |Gradient Frame         |
-            |Sloppy Frame           |
-            |Turquoise Frame        |
-            |Red Frame              |
-            |Green Water Color Frame|
-            |Floral 2 Frame         |
-            |Pink Spray Paint Frame |
+            |No Frame                   |
+            |Hearts Overlay Frame       |
+            |Sloppy Frame               | 
+            |Rainbow Frame              |
+            |White Frame                |
+            |Stars Overlay Frame        |
+            |Polka Dots Frame           |
+            |Grey Shadow Frame          |
+            |Pink Triangle Frame        |
+            |Floral 2 Frame             |
+            |Blue Watercolor Frame      |
+            |Floral Overlay Frame       |
+            |Red Frame                  |
+            |Gradient Frame             |
+            |Turquoise Frame            |
+            |Dots Overlay Frame         |
+            |Kraft Frame                |
+            |White Bar Frame            |
+            |Pink Spray Paint Frame     |
+            |White Full Frame           |
+            
+@reset
+@localization
+@TA17514
+Scenario: Verify additional frames for region Australia
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    When I touch second photo
+    Then I should see the "CameraRoll Preview" screen
+    And I tap the "Edit" button
+    Then I am on the "Edit" screen
+    Then I tap "Frame" button
+    Then I should see the "Frame Editor" screen
+    Then I should see the following "Frames" in the screen:
+            |Australia Amplify 1 Frame  |
+            |Australia Amplify 3 Frame  |
+            
+    
              
   @reset
   @regression

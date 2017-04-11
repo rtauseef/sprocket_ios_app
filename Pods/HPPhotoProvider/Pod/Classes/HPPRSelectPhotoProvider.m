@@ -60,6 +60,10 @@
 - (void)cancelAllOperations
 {
     self.imageRequestsCancelled = YES;
+    
+    [self.images enumerateObjectsUsingBlock:^(HPPRMedia *media, NSUInteger idx, BOOL *stop) {
+        [media cancelImageRequestWithCompletion:nil];
+    }];
 }
 
 - (void)resetAccess
@@ -157,6 +161,18 @@
     }
 }
 
+- (void)clearCachedImagesWithCompletion:(void (^)(void))completion
+{
+    [self cancelAllOperations];
+    [self.images enumerateObjectsUsingBlock:^(HPPRMedia *media, NSUInteger idx, BOOL * stop) {
+        [media clearCachedImages];
+    }];
+    
+    if (completion) {
+        completion();
+    }
+}
+
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
     if (completion) {
@@ -227,6 +243,16 @@
     if ([self.delegate respondsToSelector:@selector(providerLostAccess)]) {
         [self.delegate providerLostAccess];
     }
+}
+
+
+#pragma mark - Low memory handling
+
+- (void)clearCache
+{
+    [super clearCache];
+    
+    [self clearCachedImagesWithCompletion:nil];
 }
 
 @end
