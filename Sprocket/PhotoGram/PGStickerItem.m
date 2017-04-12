@@ -54,7 +54,8 @@
 
 - (IMGLYSticker *)imglySticker {
     IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImageURL:[self imageURL]
-                                                           thumbnailURL:[self thumbnailURL]];
+                                                           thumbnailURL:[self thumbnailURL]
+                                                               tintMode:IMGLYStickerTintModeSolid];
     imglySticker.accessibilityLabel = self.name;
 
     return imglySticker;
