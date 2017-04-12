@@ -63,6 +63,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) PGImglyManager *imglyManager;
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 
+@property (weak, nonatomic) IBOutlet UIButton *downloadButton;
+@property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -78,7 +80,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
-@property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (strong, nonatomic) NSString *currentOfframp;
 @property (assign, nonatomic) CGPoint panStartPoint;
 
@@ -286,13 +287,35 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         }
     }
 
-    [self savePhoto:images index:0 withCompletion:completion];
+    if (images.count > 0) {
+        [self savePhoto:images index:0 withCompletion:completion];
+    }
 }
 
 - (void)reloadCarouselItems
 {
     [self.view layoutIfNeeded];
     [self.carouselView reloadData];
+}
+
+- (BOOL)isThereImageSelected
+{
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isSelected) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)configureActionButtons
+{
+    BOOL isThereImageSelected = [self isThereImageSelected];
+    
+    self.downloadButton.enabled = isThereImageSelected;
+    self.printButton.enabled = isThereImageSelected;
+    self.shareButton.enabled = isThereImageSelected;
 }
 
 #pragma mark - Drawer Methods
@@ -994,6 +1017,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         gestureView.image = finalImage;
         
         [self.carouselView setNeedsLayout];
+    } else {
+        gestureView.isSelected = NO;
     }
     
     return gestureView;
@@ -1056,6 +1081,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     self.gesturesViews[index].isSelected = !self.gesturesViews[index].isSelected;
     [carousel reloadItemAtIndex:index animated:YES];
+    
+    [self configureActionButtons];
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
@@ -1069,6 +1096,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             self.printItem.layout = [self layout];
         });
     }
+    
+    [self configureActionButtons];
 }
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
