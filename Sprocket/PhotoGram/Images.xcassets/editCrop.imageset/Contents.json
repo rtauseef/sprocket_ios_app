@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Icon_Crop@1x.png",
+      "filename" : "editCrop.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icon_Crop@2x.png",
+      "filename" : "editCrop@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Icon_Crop@3x.png",
+      "filename" : "editCrop@3x.png",
       "scale" : "3x"
     }
   ],
