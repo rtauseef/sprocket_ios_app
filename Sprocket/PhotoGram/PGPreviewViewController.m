@@ -43,6 +43,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <AFNetworking.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -141,6 +142,20 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [PGAnalyticsManager sharedManager].photoSource = self.source;
 
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        
+        if (status != AFNetworkReachabilityStatusNotReachable) {
+            for (int i = 0; i < self.gesturesViews.count; i++) {
+                if (!self.gesturesViews[i].image && !self.gesturesViews[i].isDownloading) {
+                    [self loadImageByGestureViewIndex:i];
+                }
+            }
+        }
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -907,7 +922,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)selectCarouselItem:(NSInteger)index
 {
-    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos || !self.gesturesViews[index].image) {
         return;
     }
     
@@ -917,10 +932,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             countSelected++;
         }
     }
-    BOOL shouldSelect = !(self.gesturesViews[self.carouselView.currentItemIndex].isSelected && (countSelected >= 2));
-    self.gesturesViews[self.carouselView.currentItemIndex].isSelected = shouldSelect;
+    BOOL shouldSelect = !(self.gesturesViews[index].isSelected && (countSelected >= 2));
+    self.gesturesViews[index].isSelected = shouldSelect;
     
     [self.carouselView reloadItemAtIndex:index animated:YES];
+    [self configureActionButtons];
 }
 
 - (void)configureCarousel
@@ -948,31 +964,49 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             return;
         }
         
-        if (self.gesturesViews[i].media.asset) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self.gesturesViews[i].media requestImageWithCompletion:^(UIImage *image) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.gesturesViews[i] setImage:image];
-                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-                    });
-                }];
-            });
-        } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    if (error) {
-                        [weakSelf.gesturesViews[i] showNoInternetConnectionView];
-                        return;
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.gesturesViews[i] setImage:image];
-                        [weakSelf.gesturesViews[i] hideNoInternetConnectionView];
-                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-                    });
-                }];
-            });
-        }
+        [self loadImageByGestureViewIndex:i];
     }
+}
+
+- (void)loadImageByGestureViewIndex:(NSUInteger)index
+{
+    __weak typeof(self) weakSelf = self;
+    if (self.gesturesViews[index].media.asset) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.gesturesViews[index].media requestImageWithCompletion:^(UIImage *image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.gesturesViews[index] setImage:image];
+                    weakSelf.gesturesViews[index].isSelected = YES;
+                    [weakSelf.carouselView reloadItemAtIndex:index animated:NO];
+                });
+            }];
+        });
+    } else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            weakSelf.gesturesViews[index].isDownloading = YES;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.gesturesViews[index] hideNoInternetConnectionView];
+            });
+            [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[index].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        weakSelf.gesturesViews[index].isDownloading = NO;
+                        [weakSelf.gesturesViews[index] showNoInternetConnectionView];
+                        [weakSelf.carouselView reloadItemAtIndex:index animated:NO];
+                    });
+                    return;
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.gesturesViews[index] setImage:image];
+                    weakSelf.gesturesViews[index].isSelected = YES;
+                    weakSelf.gesturesViews[index].isDownloading = NO;
+                    [weakSelf.gesturesViews[index] hideNoInternetConnectionView];
+                    [weakSelf.carouselView reloadItemAtIndex:index animated:NO];
+                });
+            }];
+        });
+    }
+
 }
 
 - (void)panGesture:(UIPanGestureRecognizer *)recognizer
@@ -1076,6 +1110,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         [carousel setNeedsLayout];
     }
     
+    self.editButton.hidden = !gestureView.isSelected;
+    
     if (self.printItem == nil && index == 0) {
         self.printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
         self.printItem.layout = [self layout];
@@ -1086,10 +1122,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    self.gesturesViews[index].isSelected = !self.gesturesViews[index].isSelected;
-    [carousel reloadItemAtIndex:index animated:YES];
-    
-    [self configureActionButtons];
+    [self selectCarouselItem:index];
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel

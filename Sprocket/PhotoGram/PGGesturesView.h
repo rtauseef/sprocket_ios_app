@@ -41,6 +41,7 @@ typedef enum
 
 @property (nonatomic, assign) BOOL isMultiSelectImage;
 @property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, assign) BOOL isDownloading;
 
 - (void)setImage:(UIImage *)image;
 - (CGPoint)offset;
