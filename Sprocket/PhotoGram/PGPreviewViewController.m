@@ -268,21 +268,28 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     __block NSArray *savedImages = images;
     __block NSInteger idx = index;
-    
-    [PGSavePhotos saveImage:savedImages[idx++] completion:^(BOOL success) {
-        if (success && [savedImages count] > idx) {
-            [self savePhoto:savedImages index:idx withCompletion:completion];
-        } else if (completion) {
-            completion(success);
-        }
-    }];
+
+    UIImage *image = [savedImages objectAtIndex:idx++];
+
+    if (image) {
+        [PGSavePhotos saveImage:image completion:^(BOOL success) {
+            if (success && [savedImages count] > idx) {
+                [self savePhoto:savedImages index:idx withCompletion:completion];
+            } else if (completion) {
+                completion(success);
+            }
+        }];
+
+    } else if (completion) {
+        completion(NO);
+    }
 }
 
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
     NSMutableArray *images = [[NSMutableArray alloc] init];
     for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected) {
+        if (gestureView.isSelected && gestureView.editedImage) {
             [images addObject:gestureView.editedImage];
         }
     }
