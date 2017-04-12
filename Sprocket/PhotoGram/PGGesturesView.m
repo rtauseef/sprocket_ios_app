@@ -197,13 +197,18 @@ static CGFloat const kMarginOfSquare = 2.0f;
 
 - (UIImage *)screenshotImage
 {
-    BOOL isCheckmarkHidden = self.checkmark.hidden;
-    self.checkmark.hidden = YES;
-    
-    UIImage *image = [super screenshotImage];
-    self.checkmark.hidden = isCheckmarkHidden;
-    
-    return image;
+    // If the image is not loaded yet do not take a screenshot
+    if (self.image) {
+        BOOL isCheckmarkHidden = self.checkmark.hidden;
+        self.checkmark.hidden = YES;
+        
+        UIImage *image = [super screenshotImage];
+        self.checkmark.hidden = isCheckmarkHidden;
+        
+        return image;
+    }
+
+    return nil;
 }
 
 - (void)zoomTimer:(NSTimer *)timer
