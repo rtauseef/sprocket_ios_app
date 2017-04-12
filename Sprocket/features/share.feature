@@ -33,7 +33,7 @@ Feature:Photo Share
     Then I tap "Share" button
     Then I should see the "Share" screen
     Then I should see "Print to sprocket" option
-    Then I should see "Save to Camera Roll" option
+    #Then I should see "Save to Camera Roll" option
     
 Examples:
     | social_media_screen_name        |
