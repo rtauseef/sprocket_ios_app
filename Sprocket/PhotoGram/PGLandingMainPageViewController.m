@@ -475,9 +475,15 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
     [extendedMetrics removeObjectsForKeys:@[kMPPaperSizeId, kMPPaperTypeId]];
 
-    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteMulti
-                                                     printItem:job.defaultPrintItem
-                                                  extendedInfo:extendedMetrics];
+    if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteCopies
+                                                         printItem:job.defaultPrintItem
+                                                      extendedInfo:extendedMetrics];
+    } else {
+        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteMulti
+                                                         printItem:job.defaultPrintItem
+                                                      extendedInfo:extendedMetrics];
+    }
 }
 
 
