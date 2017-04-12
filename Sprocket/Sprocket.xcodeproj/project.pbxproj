@@ -3710,6 +3710,7 @@
 		9261D4031D189CE60048E5F8 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
+				F27257001E983F97009E553D /* imgly */,
 				822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */,
 				822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */,
 				822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */,
@@ -3721,16 +3722,6 @@
 				8257D63E1E94559000EEC08F /* PGPreviewDrawerViewController.m */,
 				924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */,
 				924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */,
-				82362A161D59408E0019F024 /* PGFrameItem.h */,
-				82362A171D59408E0019F024 /* PGFrameItem.m */,
-				82362A571D5959870019F024 /* PGStickerItem.h */,
-				82362A581D5959870019F024 /* PGStickerItem.m */,
-				82A1167E1E5FA57100E7F8FC /* PGStickerManager.h */,
-				82A1167F1E5FA57100E7F8FC /* PGStickerManager.m */,
-				82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */,
-				82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */,
-				826BE9691E85B693000BE3FA /* PGFrameManager.h */,
-				826BE96A1E85B693000BE3FA /* PGFrameManager.m */,
 				8263D7CE1E7867670036E903 /* PGSavePhotos.h */,
 				8263D7CF1E7867670036E903 /* PGSavePhotos.m */,
 			);
@@ -4210,6 +4201,23 @@
 				F22F12381E560C2C00753C5A /* PGPhotoSelection.m */,
 			);
 			name = "Multi-Print";
+			sourceTree = "<group>";
+		};
+		F27257001E983F97009E553D /* imgly */ = {
+			isa = PBXGroup;
+			children = (
+				82362A161D59408E0019F024 /* PGFrameItem.h */,
+				82362A171D59408E0019F024 /* PGFrameItem.m */,
+				826BE9691E85B693000BE3FA /* PGFrameManager.h */,
+				826BE96A1E85B693000BE3FA /* PGFrameManager.m */,
+				82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */,
+				82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */,
+				82362A571D5959870019F024 /* PGStickerItem.h */,
+				82362A581D5959870019F024 /* PGStickerItem.m */,
+				82A1167E1E5FA57100E7F8FC /* PGStickerManager.h */,
+				82A1167F1E5FA57100E7F8FC /* PGStickerManager.m */,
+			);
+			name = imgly;
 			sourceTree = "<group>";
 		};
 		F2C46E7E1DB6F17F00604371 /* IntroWizard */ = {

@@ -56,7 +56,7 @@ static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, IMGLYToolStackControllerDelegate, PGPreviewDrawerViewControllerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -120,7 +120,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.editButton.titleLabel.tintColor = [UIColor whiteColor];
     
     self.imglyManager = [[PGImglyManager alloc] init];
-    
+
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
         self.drawer.view.userInteractionEnabled = NO;
@@ -233,9 +233,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     photoToEdit = [self currentEditedImage];
     
     IMGLYConfiguration *configuration = [self.imglyManager imglyConfigurationWithEmbellishmentManager:gesturesView.embellishmentMetricManager];
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
-    IMGLYToolStackController *toolController = [[IMGLYToolStackController alloc] initWithPhotoEditViewController:photoController configuration:configuration];
-    toolController.delegate = self;
+
+    NSArray<IMGLYBoxedMenuItem *> *menuItems = [self.imglyManager menuItemsWithConfiguration:configuration];
+
+    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
+
+    photoController.delegate = self;
+
+    IMGLYToolbarController *toolController = [[IMGLYToolbarController alloc] init];
+    toolController.toolbar.backgroundColor = [UIColor HPRowColor];
+
+    [toolController pushViewController:photoController animated:NO completion:nil];
     [toolController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [toolController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
@@ -371,33 +379,31 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-#pragma mark - IMGLYToolStackControllerDelegate
+#pragma mark - IMGLYPhotoEditViewControllerDelegate
 
-- (void)toolStackController:(IMGLYToolStackController * _Nonnull)toolStackController didFinishWithImage:(UIImage * _Nonnull)image
-{
+- (void)photoEditViewController:(IMGLYPhotoEditViewController *)photoEditViewController didSaveImage:(UIImage *)image imageAsData:(NSData *)data {
     PGGesturesView *currentGesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
     [currentGesturesView setImage:image];
-    
+
     currentGesturesView.scrollView.transform = CGAffineTransformIdentity;
     currentGesturesView.totalRotation = 0.0F;
     currentGesturesView.scrollView.zoomScale = currentGesturesView.minimumZoomScale;
-    
+
     [self dismissViewControllerAnimated:YES completion:nil];
 
     self.didChangeProject = YES;
     [self.carouselView reloadItemAtIndex:self.carouselView.currentItemIndex animated:YES];
 }
 
-- (void)toolStackControllerDidCancel:(IMGLYToolStackController * _Nonnull)toolStackController
-{
+- (void)photoEditViewControllerDidCancel:(IMGLYPhotoEditViewController *)photoEditViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)toolStackControllerDidFail:(IMGLYToolStackController * _Nonnull)toolStackController
-{
-    MPLogError(@"toolStackControllerDidFail:%@", toolStackController);
+- (void)photoEditViewControllerDidFailToGeneratePhoto:(IMGLYPhotoEditViewController *)photoEditViewController {
+    MPLogError(@"photoEditViewControllerDidFailToGeneratePhoto:%@", photoEditViewController);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark - Camera Handlers
 

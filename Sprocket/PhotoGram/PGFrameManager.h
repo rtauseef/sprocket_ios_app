@@ -11,14 +11,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <imglyKit/imglyKit-Swift.h>
 #import "PGFrameItem.h"
 
 @interface PGFrameManager : NSObject
 
 + (PGFrameManager *)sharedInstance;
 
-- (PGFrameItem *)frameByIndex:(NSInteger)index;
-- (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText;
-- (NSUInteger)framesCount;
+- (NSArray<IMGLYFrame *> *)imglyFrames;
 
 @end

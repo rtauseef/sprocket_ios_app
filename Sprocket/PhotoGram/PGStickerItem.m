@@ -44,4 +44,20 @@
     return [UIImage imageNamed:self.imageName];
 }
 
+- (NSURL *)thumbnailURL {
+    return [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@_TN", self.imageName] withExtension:@"png"];
+}
+
+- (NSURL *)imageURL {
+    return [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@_TN", self.imageName] withExtension:@"png"];
+}
+
+- (IMGLYSticker *)imglySticker {
+    IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImageURL:[self imageURL]
+                                                           thumbnailURL:[self thumbnailURL]];
+    imglySticker.accessibilityLabel = self.name;
+
+    return imglySticker;
+}
+
 @end

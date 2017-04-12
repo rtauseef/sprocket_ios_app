@@ -20,4 +20,6 @@
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager;
 - (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name;
 
+- (NSArray<IMGLYBoxedMenuItem *> *)menuItemsWithConfiguration:(IMGLYConfiguration *)configuration;
+
 @end

@@ -13,6 +13,9 @@
 #import "PGFrameItem.h"
 #import "NSLocale+Additions.h"
 
+@interface PGFrameItem () <IMGLYFrameBuilderProtocol>
+
+@end
 
 @implementation PGFrameItem
 
@@ -39,9 +42,31 @@
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@_TN", self.imageName]];
 }
 
+- (NSURL *)thumbnailURL {
+    return [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@_TN", self.imageName] withExtension:@"png"];
+}
+
 - (UIImage *)frameImage
 {
     return [UIImage imageNamed:self.imageName];
+}
+
+- (IMGLYFrame *)imglyFrame {
+    IMGLYFrame *imglyFrame = [[IMGLYFrame alloc] initWithFrameBuilder:self
+                                                        relativeScale:2.0/3.0
+                                                         thumbnailURL:[self thumbnailURL]
+                              ];
+
+    imglyFrame.accessibilityLabel = self.name;
+
+    return imglyFrame;
+}
+
+
+#pragma mark - IMGLYFrameBuilderProtocol
+
+- (UIImage *)buildWithSize:(CGSize)size relativeScale:(CGFloat)relativeScale {
+    return [self frameImage];
 }
 
 @end
