@@ -64,10 +64,21 @@ Given(/^I login to facebook$/) do
     else
       sleep(SLEEP_SCREENLOAD)
         txtFBEmail="//UIATextField[@value='Email address or phone number']"
+        if get_os_version.to_f < 10.0
+            txtFBPassword="//UIASecureTextField[@value='Facebook password']"
+            btnFBConfirm= "//UIAButton[@name='Continue']"
+         else
+            txtFBPassword="//XCUIElementTypeSecureTextField[@value='Facebook password']"
+            btnFBConfirm= "//XCUIElementTypeButton[@name='Continue']"
+            
+        end
+        
         #txt_pass= "//UIASecureTextField[@value='Facebook password']"
-       txtFBPassword="//UIASecureTextField[@value='Facebook password']"
+       #txtFBPassword="//UIASecureTextField[@value='Facebook password']"
+       
       btnFBLogin= "//UIAButton[@name='Log In']"
-        btnFBConfirm= "//UIAButton[@name='OK']"
+        #btnFBConfirm= "//UIAButton[@name='Continue']"
+        
         wait = Selenium::WebDriver::Wait.new(:timeout => MAX_TIMEOUT) # seconds
         wait.until { selenium.find_element(:xpath,"#{txtFBEmail}") }
         selenium.find_element(:xpath,"#{txtFBEmail}").click
