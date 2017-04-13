@@ -1024,6 +1024,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     } else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             weakSelf.gesturesViews[index].isDownloading = YES;
+            [weakSelf.view layoutIfNeeded];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.gesturesViews[index] hideNoInternetConnectionView];
             });
