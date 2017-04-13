@@ -46,6 +46,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 @property (strong, nonatomic) UIAlertView *deletedAlbumAlertView;
 @property (assign, nonatomic, getter = isRequestingImages) BOOL requestingImages;
 @property (assign, nonatomic, getter = isReloadingImages) BOOL reloadingImages;
+@property (assign, nonatomic) BOOL allowsMultipleSelection;
 
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewCell *currentSelectedCell;
 
@@ -126,6 +127,10 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
 
+    if  (self.allowsMultipleSelection) {
+        [self beginMultiSelect];
+    }
+    
     [self refresh];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
@@ -721,13 +726,15 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
         return;
     }
 
-    self.collectionView.allowsMultipleSelection = YES;
+    self.allowsMultipleSelection = YES;
+    self.collectionView.allowsMultipleSelection = self.allowsMultipleSelection;
 
     [self.collectionView reloadData];
 }
 
 - (void)endMultiSelect:(BOOL)refresh {
-    self.collectionView.allowsMultipleSelection = NO;
+    self.allowsMultipleSelection = NO;
+    self.collectionView.allowsMultipleSelection = self.allowsMultipleSelection;
     [self.selectedPhotos removeAllObjects];
 
     if (refresh) {
@@ -737,7 +744,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 }
 
 - (BOOL)isInMultiSelectMode {
-    return self.collectionView.allowsMultipleSelection;
+    return self.allowsMultipleSelection;
 }
 
 - (BOOL)shouldAllowAdditionalSelection {
