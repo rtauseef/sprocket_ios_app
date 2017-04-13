@@ -43,6 +43,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <AFNetworking.h>
 
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
@@ -63,6 +64,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) PGImglyManager *imglyManager;
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 
+@property (weak, nonatomic) IBOutlet UIButton *downloadButton;
+@property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -78,7 +81,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
-@property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (strong, nonatomic) NSString *currentOfframp;
 @property (assign, nonatomic) CGPoint panStartPoint;
 
@@ -140,6 +142,20 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [PGAnalyticsManager sharedManager].photoSource = self.source;
 
     [PGAppAppearance addGradientBackgroundToView:self.previewView];
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        
+        if (status != AFNetworkReachabilityStatusNotReachable) {
+            for (int i = 0; i < self.gesturesViews.count; i++) {
+                if (!self.gesturesViews[i].image) {
+                    [self loadImageByGestureViewIndex:i];
+                }
+            }
+        }
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -304,6 +320,60 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self.carouselView reloadData];
 }
 
+- (BOOL)hasImageSelected
+{
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isSelected) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)hasPendingImagesDownload
+{
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isDownloading) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)configureActionButtons
+{
+    BOOL hasImageSelected = [self hasImageSelected];
+    
+    self.downloadButton.enabled = hasImageSelected;
+    self.printButton.enabled = hasImageSelected;
+    self.shareButton.enabled = hasImageSelected;
+}
+
+- (void)showDownloadingImagesAlertWithCompletion:(void (^)())completion
+{
+    if ([self hasPendingImagesDownload]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Not all images were downloaded. Do you want to continue?", nil)
+                                                                       message:@""
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"YES", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            completion();
+        }];
+        
+        [alert addAction:okAction];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"NO", nil) style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        completion();
+    }
+}
+
 #pragma mark - Drawer Methods
 
 - (void)closeDrawer
@@ -451,44 +521,46 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
-    [self closeDrawer];
-    [self saveSelectedPhotosWithCompletion:^(BOOL success) {
-        if (success) {
-            if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
-                [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
-                
-                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
-                                                                 printItem:self.printItem
-                                                               extendedInfo:[self extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView]];
-            } else {
-                NSUInteger selectedPhotosCount = 0;
-                
-                // Print Metric
-                NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", NSStringFromClass([PGSaveToCameraRollActivity class])];
-                for (PGGesturesView *gestureView in self.gesturesViews) {
-                    if (gestureView.isSelected) {
-                        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-                        printItem.layout = [self layout];
-                        
-                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
-                                                                         printItem:printItem
-                                                                       extendedInfo:[self extendedMetricsByGestureView:gestureView]];
-                        selectedPhotosCount++;
+    [self showDownloadingImagesAlertWithCompletion:^{
+        [self closeDrawer];
+        [self saveSelectedPhotosWithCompletion:^(BOOL success) {
+            if (success) {
+                if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                    [[PGAnalyticsManager sharedManager] trackSaveProjectActivity:kEventSaveProjectPreview];
+                    
+                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                                     printItem:self.printItem
+                                                                  extendedInfo:[self extendedMetricsByGestureView:(PGGesturesView *)self.carouselView.currentItemView]];
+                } else {
+                    NSUInteger selectedPhotosCount = 0;
+                    
+                    // Print Metric
+                    NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", NSStringFromClass([PGSaveToCameraRollActivity class])];
+                    for (PGGesturesView *gestureView in self.gesturesViews) {
+                        if (gestureView.isSelected) {
+                            MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                            printItem.layout = [self layout];
+                            
+                            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
+                                                                             printItem:printItem
+                                                                          extendedInfo:[self extendedMetricsByGestureView:gestureView]];
+                            selectedPhotosCount++;
+                        }
                     }
+                    
+                    // Analytics Metric
+                    [[PGAnalyticsManager sharedManager] trackMultiSaveProjectActivity:[NSString stringWithFormat:@"%@-Multi", kEventSaveProjectPreview] numberOfPhotos:selectedPhotosCount];
                 }
                 
-                // Analytics Metric
-                [[PGAnalyticsManager sharedManager] trackMultiSaveProjectActivity:[NSString stringWithFormat:@"%@-Multi", kEventSaveProjectPreview] numberOfPhotos:selectedPhotosCount];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:0.5F animations:^{
+                        [self showImageSavedView:YES];
+                    } completion:^(BOOL finished) {
+                        [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
+                    }];
+                });
             }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIView animateWithDuration:0.5F animations:^{
-                    [self showImageSavedView:YES];
-                } completion:^(BOOL finished) {
-                    [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
-                }];
-            });
-        }
+        }];
     }];
 }
 
@@ -570,104 +642,108 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    [self closeDrawer];
-    [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
-        if (success) {
-            NSString *origin = @"";
-            NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
-            for (PGGesturesView *gestureView in self.gesturesViews) {
-                if (gestureView.isSelected) {
-                    [selectedViews addObject:gestureView];
-                }
-            }
-
-            NSString *offRamp;
-            BOOL isPrintDirect = NO;
-
-            if ((selectedViews.count == 1) && (self.drawer.numberOfCopies == 1)) {
-                if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
-                    isPrintDirect = YES;
-                    offRamp = kMetricsOffRampPrintNoUISingle;
-                    origin = kMetricsOriginSingle;
-                    
-                    if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
-                        offRamp = kMetricsOffRampPrintNoUIMulti;
+    [self showDownloadingImagesAlertWithCompletion:^{
+        [self closeDrawer];
+        [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
+            if (success) {
+                NSString *origin = @"";
+                NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
+                for (PGGesturesView *gestureView in self.gesturesViews) {
+                    if (gestureView.isSelected) {
+                        [selectedViews addObject:gestureView];
                     }
-                } else {
-                    origin = kMetricsOriginSingle;
-                    offRamp = kMetricsOffRampQueueAddSingle;
                 }
-            } else if (selectedViews.count > 1) {
-                origin = kMetricsOriginMulti;
-                offRamp = kMetricsOffRampQueueAddMulti;
-            } else if (self.drawer.numberOfCopies > 1) {
-                origin = kMetricsOriginCopies;
-                offRamp = kMetricsOffRampQueueAddCopies;
-                for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
-                    [selectedViews addObject:selectedViews.firstObject];
+
+                NSString *offRamp;
+                BOOL isPrintDirect = NO;
+
+                if ((selectedViews.count == 1) && (self.drawer.numberOfCopies == 1)) {
+                    if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
+                        isPrintDirect = YES;
+                        offRamp = kMetricsOffRampPrintNoUISingle;
+                        origin = kMetricsOriginSingle;
+                        
+                        if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
+                            offRamp = kMetricsOffRampPrintNoUIMulti;
+                        }
+                    } else {
+                        origin = kMetricsOriginSingle;
+                        offRamp = kMetricsOffRampQueueAddSingle;
+                    }
+                } else if (selectedViews.count > 1) {
+                    origin = kMetricsOriginMulti;
+                    offRamp = kMetricsOffRampQueueAddMulti;
+                } else if (self.drawer.numberOfCopies > 1) {
+                    origin = kMetricsOriginCopies;
+                    offRamp = kMetricsOffRampQueueAddCopies;
+                    for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+                        [selectedViews addObject:selectedViews.firstObject];
+                    }
                 }
-            }
 
-            BOOL canResumePrinting = YES;
-            for (PGGesturesView *gestureView in selectedViews) {
-                NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
-                [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
+                BOOL canResumePrinting = YES;
+                for (PGGesturesView *gestureView in selectedViews) {
+                    NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+                    [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
 
-                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-                NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
-                
-                [metrics setObject:origin forKey:kMetricsOrigin];
+                    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                    NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+                    
+                    [metrics setObject:origin forKey:kMetricsOrigin];
 
-                if (isPrintDirect) {
-                    [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
+                    if (isPrintDirect) {
+                        [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
+                            return [self handlePrintQueueStatus:status progress:progress];
+                        }];
+                        canResumePrinting = NO;
+                    } else {
+                        [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                        [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
+
+                        if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
+                            canResumePrinting = NO;
+                            break;
+                        }
+
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                         printItem:printItem
+                                                                      extendedInfo:metrics];
+                    }
+
+                }
+
+                if (canResumePrinting) {
+                    [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
                         return [self handlePrintQueueStatus:status progress:progress];
                     }];
-                    canResumePrinting = NO;
-                } else {
-                    [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
-                    [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
 
-                    if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
-                        canResumePrinting = NO;
-                        break;
+
+                    NSString *action = kEventPrintQueueAddSingleAction;
+                    if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+                        action = kEventPrintQueueAddMultiAction;
+                    }
+                    
+                    if (self.drawer.numberOfCopies > 1) {
+                        action = kEventPrintQueueAddCopiesAction;
                     }
 
-                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
-                                                                     printItem:printItem
-                                                                  extendedInfo:metrics];
+                    [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
+                                                                      queueId:[MPBTPrintManager sharedInstance].queueId
+                                                                    queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
                 }
-
             }
-
-            if (canResumePrinting) {
-                [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
-                    return [self handlePrintQueueStatus:status progress:progress];
-                }];
-
-
-                NSString *action = kEventPrintQueueAddSingleAction;
-                if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
-                    action = kEventPrintQueueAddMultiAction;
-                }
-                
-                if (self.drawer.numberOfCopies > 1) {
-                    action = kEventPrintQueueAddCopiesAction;
-                }
-
-                [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
-                                                                  queueId:[MPBTPrintManager sharedInstance].queueId
-                                                                queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
-            }
-        }
+        }];
     }];
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
-    [self closeDrawer];
-    [[MP sharedInstance] closeAccessorySession];
-    
-    [self presentActivityViewControllerWithActivities:nil];
+    [self showDownloadingImagesAlertWithCompletion:^{
+        [self closeDrawer];
+        [[MP sharedInstance] closeAccessorySession];
+        
+        [self presentActivityViewControllerWithActivities:nil];
+    }];
 }
 
 
@@ -886,7 +962,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)selectCarouselItem:(NSInteger)index
 {
-    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos) {
+    if (![PGPhotoSelection sharedInstance].hasMultiplePhotos || !self.gesturesViews[index].image) {
         return;
     }
     
@@ -896,10 +972,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             countSelected++;
         }
     }
-    BOOL shouldSelect = !(self.gesturesViews[self.carouselView.currentItemIndex].isSelected && (countSelected >= 2));
-    self.gesturesViews[self.carouselView.currentItemIndex].isSelected = shouldSelect;
+    BOOL shouldSelect = !(self.gesturesViews[index].isSelected && (countSelected >= 2));
+    self.gesturesViews[index].isSelected = shouldSelect;
     
     [self.carouselView reloadItemAtIndex:index animated:YES];
+    [self configureActionButtons];
 }
 
 - (void)configureCarousel
@@ -927,31 +1004,50 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             return;
         }
         
-        if (self.gesturesViews[i].media.asset) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self.gesturesViews[i].media requestImageWithCompletion:^(UIImage *image) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.gesturesViews[i] setImage:image];
-                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-                    });
-                }];
-            });
-        } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[i].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    if (error) {
-                        [weakSelf.gesturesViews[i] showNoInternetConnectionView];
-                        return;
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.gesturesViews[i] setImage:image];
-                        [weakSelf.gesturesViews[i] hideNoInternetConnectionView];
-                        [weakSelf.carouselView reloadItemAtIndex:i animated:NO];
-                    });
-                }];
-            });
-        }
+        [self loadImageByGestureViewIndex:i];
     }
+}
+
+- (void)loadImageByGestureViewIndex:(NSUInteger)index
+{
+    __weak typeof(self) weakSelf = self;
+    if (self.gesturesViews[index].media.asset) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.gesturesViews[index].media requestImageWithCompletion:^(UIImage *image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.gesturesViews[index] setImage:image];
+                    weakSelf.gesturesViews[index].isSelected = YES;
+                    [weakSelf.carouselView reloadItemAtIndex:index animated:NO];
+                });
+            }];
+        });
+    } else {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            weakSelf.gesturesViews[index].isDownloading = YES;
+            [weakSelf.view layoutIfNeeded];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.gesturesViews[index] hideNoInternetConnectionView];
+            });
+            [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.gesturesViews[index].media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.gesturesViews[index] showNoInternetConnectionView];
+                        [weakSelf.carouselView reloadItemAtIndex:index animated:NO];
+                    });
+                    return;
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.gesturesViews[index] setImage:image];
+                    weakSelf.gesturesViews[index].isSelected = YES;
+                    weakSelf.gesturesViews[index].isDownloading = NO;
+                    [weakSelf.gesturesViews[index] hideNoInternetConnectionView];
+                    [weakSelf.carouselView reloadItemAtIndex:index animated:NO];
+                });
+            }];
+        });
+    }
+
 }
 
 - (void)panGesture:(UIPanGestureRecognizer *)recognizer
@@ -1003,6 +1099,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         gestureView.image = finalImage;
         
         [self.carouselView setNeedsLayout];
+    } else {
+        gestureView.isSelected = NO;
     }
     
     return gestureView;
@@ -1053,6 +1151,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         [carousel setNeedsLayout];
     }
     
+    self.editButton.hidden = !gestureView.isSelected;
+    
     if (self.printItem == nil && index == 0) {
         self.printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
         self.printItem.layout = [self layout];
@@ -1063,8 +1163,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    self.gesturesViews[index].isSelected = !self.gesturesViews[index].isSelected;
-    [carousel reloadItemAtIndex:index animated:YES];
+    [self selectCarouselItem:index];
 }
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel
@@ -1078,6 +1177,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             self.printItem.layout = [self layout];
         });
     }
+    
+    [self configureActionButtons];
 }
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
