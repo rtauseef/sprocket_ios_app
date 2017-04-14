@@ -120,7 +120,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     self.editButton.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:20];
     self.editButton.titleLabel.tintColor = [UIColor whiteColor];
-    
+
+    self.editButton.hidden = !IS_OS_9_OR_LATER;
+
     self.imglyManager = [[PGImglyManager alloc] init];
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
@@ -1158,7 +1160,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         [carousel setNeedsLayout];
     }
     
-    self.editButton.hidden = !gestureView.isSelected;
+    self.editButton.hidden = !gestureView.isSelected || !IS_OS_9_OR_LATER;
     
     if (self.printItem == nil && index == 0) {
         self.printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
@@ -1177,7 +1179,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos && (carousel.currentItemIndex != -1)) {
         self.numberOfSelectedPhotos.text = [NSString stringWithFormat:NSLocalizedString(@"%ld of %ld", nil), (carousel.currentItemIndex + 1), (long)self.gesturesViews.count];
-        self.editButton.hidden = !self.gesturesViews[carousel.currentItemIndex].isSelected;
+        self.editButton.hidden = !self.gesturesViews[carousel.currentItemIndex].isSelected || !IS_OS_9_OR_LATER;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.printItem = [MPPrintItemFactory printItemWithAsset:[self currentEditedImage]];
