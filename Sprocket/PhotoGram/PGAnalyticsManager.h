@@ -83,6 +83,8 @@ extern NSString * const kEventPrintQueuePrintSingleAction;
 extern NSString * const kEventPrintQueuePrintCopiesAction;
 
 extern NSString * const kEventPrintQueueDeleteMultiAction;
+extern NSString * const kEventPrintQueueDeleteCopiesAction;
+
 extern NSString * const kMetricsOffRampQueueDeleteCopies;
 
 extern NSString * const kEventMultiSelectCancel;
