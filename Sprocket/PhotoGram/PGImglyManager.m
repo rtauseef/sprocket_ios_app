@@ -114,6 +114,47 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     return photoEffectsArray;
 }
 
+- (NSArray<IMGLYFont *> *)fonts {
+
+    NSArray<IMGLYFont *> *fonts = @[
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Aleo-Bold" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Aleo-Bold"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"BERNIERRegular-Regular" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"BERNIERRegular-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Blogger Sans-Light" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Blogger Sans-Light"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Cheque-Regular" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Cheque-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"FiraSans-Regular" ofType:@"ttf"]
+                                                        displayName:@" " fontName:@"FiraSans-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Gagalin-Regular" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Gagalin-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Hagin Caps Thin" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Hagin Caps Thin"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Panton-BlackitalicCaps" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Panton-BlackitalicCaps"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Panton-LightitalicCaps" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Panton-LightitalicCaps"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Perfograma" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Perfograma"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Summer Font Light" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Summer Font Light"],
+
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"AmericanTypewriter"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"Baskerville"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"BodoniSvtyTwoITCTT-Book"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"BradleyHandITCTT-Bold"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"ChalkboardSE-Regular"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"DINAlternate-Bold"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"HelveticaNeue"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"Noteworthy-Bold"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"SnellRoundhand"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"Thonburi"]
+                                    ];
+
+    return fonts;
+}
+
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
 {
     self.titleBlock = ^(UIView * _Nonnull view) {
@@ -134,33 +175,15 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
     IMGLYPhotoEffect.allEffects = [self photoEffects];
 
+    IMGLYFontImporter.fonts = [self fonts];
+
     PESDK.bundleImageBlock = ^UIImage * _Nullable(NSString * _Nonnull imageName) {
-        UIImage *image;
-
-        if ([imageName isEqualToString:@"ic_cancel_44pt"]) {
-            image = [UIImage imageNamed:@"ic_cancel_44pt"];
-
-        } else if ([imageName isEqualToString:@"ic_redo_24pt"]) {
-            image = [UIImage imageNamed:@"ic_redo_24pt"];
-
-        } else if ([imageName isEqualToString:@"ic_undo_24pt"]) {
-            image = [UIImage imageNamed:@"ic_undo_24pt"];
-
-        } else if ([imageName isEqualToString:@"save_image_icon"]) {
-            image = [UIImage imageNamed:@"ic_approve_44pt"];
-
-        } else if ([imageName isEqualToString:@"ic_approve_44pt"]) {
-            image = [UIImage imageNamed:@"ic_approve_44pt"];
-
-        } else if ([imageName isEqualToString:@"ic_toFront_24pt"]) {
-            image = [UIImage imageNamed:@"ic_toFront_24pt"];
-
-        } else if ([imageName isEqualToString:@"ic_noFrame_48pt"]) {
-            image = [UIImage imageNamed:@"ic_noFrame_48pt"];
-
+        if ([imageName isEqualToString:@"save_image_icon"]) {
+            imageName = @"ic_approve_44pt";
         }
 
-        return image;
+        // Getting the images from our own bundle if there is a replacement
+        return [UIImage imageNamed:imageName];
     };
 
 
@@ -194,6 +217,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
                 cell.imageView.highlightedImage = nil;
                 cell.captionLabel.text = nil;
+                cell.imageView.highlighted = NO;
 
                 if ([item.title isEqualToString:kImglyMenuItemMagic]) {
                     cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_magic_active_48pt"];
@@ -202,8 +226,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
                     if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
                         cell.imageView.highlighted = YES;
-                    } else {
-                        cell.imageView.highlighted = NO;
                     }
 
                 } else if ([item.title isEqualToString:kImglyMenuItemFilter]) {
@@ -270,15 +292,13 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             };
 
             toolBuilder.frameCellConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYFrame * _Nonnull frame) {
-                cell.tintColor = [UIColor HPBlueColor];
+                cell.tintColor = [UIColor HPRowColor];
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
             };
 
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
                 cell.captionLabel.text = nil;
-//                cell.tintColor = [UIColor HPBlueColor];
-//                cell.captionLabel.highlightedTextColor = [UIColor HPBlueColor];
             };
 
             toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
@@ -322,6 +342,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
         [builder configureStickerColorToolController:^(IMGLYStickerColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
             toolBuilder.colorActionButtonConfigurationClosure = self.colorBlock;
         }];
 
@@ -376,23 +398,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum TextAction action) {
                 UIImage *image;
 
-                switch (action) {
-                    case TextActionSelectFont:
-                        image = [UIImage imageNamed:@"imglyIconFont"];
-                        break;
-
-                    case TextActionSelectColor:
-                        image = [UIImage imageNamed:@"imglyIconColor"];
-                        break;
-
-                    case TextActionSelectBackgroundColor:
-                        image = [UIImage imageNamed:@"imglyIconBackgroundColor"];
-                        break;
-                        
-                    default:
-                        break;
-                };
-
                 if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
                     IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
 
@@ -405,7 +410,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 } else if ([cell isKindOfClass:[IMGLYLabelCaptionCollectionViewCell class]]) {
                     IMGLYLabelCaptionCollectionViewCell *itemCell = (IMGLYLabelCaptionCollectionViewCell *) cell;
 
-                    itemCell.label.font = [UIFont systemFontOfSize:32.0 weight:UIFontWeightUltraLight];
+                    UIFont *font = [UIFont fontWithName:itemCell.label.font.familyName size:32.0];
+                    itemCell.label.font = font;
                     itemCell.captionLabel.text = nil;
                 }
             };
@@ -426,14 +432,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
             toolBuilder.allowedCropRatios = @[cropAspect2x3, cropAspect3x2];
 
-            toolBuilder.transformButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button, enum TransformAction action) {
-                // workaround because toolBuilder.allowedTransformActionsAsNSNumbers = @[]; does not seem to work yet as of 6.5.3. maybe in a future version...
-                [button.superview setHidden:YES];
-            };
-
             toolBuilder.cropAspectButtonConfigurationClosure = ^(IMGLYLabelBorderedCollectionViewCell * _Nonnull cell, IMGLYCropAspect * _Nullable cropAspect) {
                 cell.tintColor = [UIColor HPBlueColor];
                 cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
                 cell.textLabel.highlightedTextColor = [UIColor HPBlueColor];
             };
         }];
