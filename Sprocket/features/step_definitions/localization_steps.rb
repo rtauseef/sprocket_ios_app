@@ -1,17 +1,17 @@
 require_relative '../support/gistfile'
 
 Then(/^I open cameraroll$/) do
-    if ENV['LANGUAGE'] == "Dutch"
-        if element_exists("UIButtonLabel")
-            touch query("UIButtonLabel")
-            sleep(STEP_PAUSE)
-        end
-    else
+    #if ENV['LANGUAGE'] == "Dutch"
+       # if element_exists("UIButtonLabel")
+         #   touch query("UIButtonLabel")
+         #   sleep(STEP_PAUSE)
+       # end
+    #else
         if element_exists("button marked:'#{$list_loc['photos_button']}'")
             sleep(WAIT_SCREENLOAD)
             touch "button marked:'#{$list_loc['photos_button']}'"
         end
-    end
+    #end
     if element_exists("view marked:'#{$list_loc['auth']}' index:0")
         sleep(WAIT_SCREENLOAD)
         touch("view marked:'#{$list_loc['auth']}' index:0")
@@ -29,7 +29,8 @@ Then(/^I touch the option "(.*?)"$/) do |option|
     if option == "How to & Help"
         if ENV['LANGUAGE'] == "Italian"
         
-            touch "UITableViewLabel index:2"
+            #touch "UITableViewLabel index:2"
+            touch "UILabel index:3"
         else
             touch ("view marked:'#{$list_loc[option]}'")
             sleep(STEP_PAUSE)
@@ -200,7 +201,8 @@ def check_options_exist item
                      if item == "How to & Help"
                         if ENV['LANGUAGE'] == "Italian"
                         
-                            item1 = query("UITableViewLabel index:2", :text)[0]
+                            #item1 = query("UITableViewLabel index:2", :text)[0]
+                            item1 = query("UILabel index:3", :text)[0]
                             raise "localization failed!" unless item1 == $list_loc[item]
                         end
                      else
