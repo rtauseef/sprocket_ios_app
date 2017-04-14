@@ -196,6 +196,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imageSavedView.hidden = NO;
     
     [self.carouselView reloadData];
+    [self currentEditedImage];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
