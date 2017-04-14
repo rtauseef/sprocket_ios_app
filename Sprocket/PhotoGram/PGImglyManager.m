@@ -25,7 +25,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @interface PGImglyManager() //<IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
 
 @property (nonatomic, strong) NSDictionary *menuItems;
+
 @property (nonatomic, copy) void (^titleBlock)(UIView * _Nonnull view);
+@property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 
 @end
 
@@ -48,7 +50,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 - (NSArray<IMGLYBoxedMenuItem *> *)menuItemsWithConfiguration:(IMGLYConfiguration *)configuration {
 
     IMGLYBoxedMenuItem *magicItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemMagic
-                                                                         icon:[[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                                         icon:[UIImage imageNamed:@"ic_magic_48pt"]
                                                                        action:^IMGLYBoxedPhotoEditModel * _Nonnull(IMGLYBoxedPhotoEditModel * _Nonnull photoEditModel) {
                                                                            photoEditModel.isAutoEnhancementEnabled = !photoEditModel.isAutoEnhancementEnabled;
                                                                            return photoEditModel;
@@ -56,23 +58,23 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                                                                         state:nil];
 
     IMGLYBoxedMenuItem *filterItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFilter
-                                                                          icon:[UIImage imageNamed:@"editFilters"]
+                                                                          icon:[UIImage imageNamed:@"ic_filter_48pt"]
                                                                           tool:[[IMGLYFilterToolController alloc] initWithConfiguration:configuration]];
 
     IMGLYBoxedMenuItem *frameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFrame
-                                                                         icon:[UIImage imageNamed:@"editFrame"]
+                                                                         icon:[UIImage imageNamed:@"ic_frame_48pt"]
                                                                          tool:[[IMGLYFrameToolController alloc] initWithConfiguration:configuration]];
 
     IMGLYBoxedMenuItem *stickerItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemSticker
-                                                                           icon:[UIImage imageNamed:@"editSticker"]
+                                                                           icon:[UIImage imageNamed:@"ic_sticker_48pt"]
                                                                            tool:[[IMGLYStickerToolController alloc] initWithConfiguration:configuration]];
 
     IMGLYBoxedMenuItem *textItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemText
-                                                                        icon:[UIImage imageNamed:@"editText"]
+                                                                        icon:[UIImage imageNamed:@"ic_text_48pt"]
                                                                         tool:[[IMGLYTextToolController alloc] initWithConfiguration:configuration]];
 
     IMGLYBoxedMenuItem *cropItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemCrop
-                                                                        icon:[UIImage imageNamed:@"editCrop"]
+                                                                        icon:[UIImage imageNamed:@"ic_crop_48pt"]
                                                                         tool:[[IMGLYTransformToolController alloc] initWithConfiguration:configuration]];
 
     return @[
@@ -120,22 +122,43 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }
     };
 
+    self.colorBlock = ^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName) {
+        CGRect cellRect = cell.frame;
+        cellRect.size.height = cellRect.size.width;
+        cell.frame = cellRect;
+        cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
+        cell.colorView.layer.masksToBounds = YES;
+
+        cell.imageView.image = [UIImage imageNamed:@"ic_adjust_color"];
+    };
+
     IMGLYPhotoEffect.allEffects = [self photoEffects];
 
     PESDK.bundleImageBlock = ^UIImage * _Nullable(NSString * _Nonnull imageName) {
         UIImage *image;
 
         if ([imageName isEqualToString:@"ic_cancel_44pt"]) {
-            image = [UIImage imageNamed:@"ic_cancel_44pt" inBundle:[NSBundle imglyKitBundle] compatibleWithTraitCollection:nil];
+            image = [UIImage imageNamed:@"ic_cancel_44pt"];
+
+        } else if ([imageName isEqualToString:@"ic_redo_24pt"]) {
+            image = [UIImage imageNamed:@"ic_redo_24pt"];
+
+        } else if ([imageName isEqualToString:@"ic_undo_24pt"]) {
+            image = [UIImage imageNamed:@"ic_undo_24pt"];
 
         } else if ([imageName isEqualToString:@"save_image_icon"]) {
-            image = [UIImage imageNamed:@"ic_approve_44pt" inBundle:[NSBundle imglyKitBundle] compatibleWithTraitCollection:nil];
+            image = [UIImage imageNamed:@"ic_approve_44pt"];
 
         } else if ([imageName isEqualToString:@"ic_approve_44pt"]) {
-            image = [UIImage imageNamed:@"ic_approve_44pt" inBundle:[NSBundle imglyKitBundle] compatibleWithTraitCollection:nil];
-        }
+            image = [UIImage imageNamed:@"ic_approve_44pt"];
 
-        image = [image imageWithTint:[UIColor whiteColor]];
+        } else if ([imageName isEqualToString:@"ic_toFront_24pt"]) {
+            image = [UIImage imageNamed:@"ic_toFront_24pt"];
+
+        } else if ([imageName isEqualToString:@"ic_noFrame_48pt"]) {
+            image = [UIImage imageNamed:@"ic_noFrame_48pt"];
+
+        }
 
         return image;
     };
@@ -149,8 +172,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Editor general configuration
 
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
-
-            photoEditorBuilder.allowedPhotoEditOverlayActionsAsNSNumbers = @[];
 
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPRowColor];
@@ -175,8 +196,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.captionLabel.text = nil;
 
                 if ([item.title isEqualToString:kImglyMenuItemMagic]) {
-                    cell.imageView.highlightedImage = [[UIImage imageNamed:@"auto_enhance_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                    cell.imageView.image = [[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_magic_active_48pt"];
+                    cell.imageView.image = [UIImage imageNamed:@"ic_magic_48pt"];
                     cell.accessibilityIdentifier = @"editMagic";
 
                     if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
@@ -251,11 +272,13 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.frameCellConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYFrame * _Nonnull frame) {
                 cell.tintColor = [UIColor HPBlueColor];
                 cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
             };
 
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
-                cell.tintColor = [UIColor HPBlueColor];
-                cell.captionLabel.highlightedTextColor = [UIColor HPBlueColor];
+                cell.captionLabel.text = nil;
+//                cell.tintColor = [UIColor HPBlueColor];
+//                cell.captionLabel.highlightedTextColor = [UIColor HPBlueColor];
             };
 
             toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
@@ -288,6 +311,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
                 cell.tintColor = [UIColor HPBlueColor];
                 cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
@@ -295,6 +319,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
 
+        }];
+
+        [builder configureStickerColorToolController:^(IMGLYStickerColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.colorActionButtonConfigurationClosure = self.colorBlock;
         }];
 
         [builder configureStickerOptionsToolController:^(IMGLYStickerOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
@@ -339,15 +367,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         [builder configureTextColorToolController:^(IMGLYTextColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
 
-            toolBuilder.textColorActionButtonConfigurationClosure = ^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName) {
-                CGRect cellRect = cell.frame;
-                cellRect.size.height = cellRect.size.width;
-                cell.frame = cellRect;
-                cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
-                cell.colorView.layer.masksToBounds = YES;
-
-//                cell.imageView.image = nil; // to be replaced by final image
-            };
+            toolBuilder.textColorActionButtonConfigurationClosure = self.colorBlock;
         }];
 
         [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
