@@ -65,20 +65,18 @@ Given(/^I login to facebook$/) do
       sleep(SLEEP_SCREENLOAD)
         txtFBEmail="//UIATextField[@value='Email address or phone number']"
         if get_os_version.to_f < 10.0
+            txtFBEmail="//UIATextField[@value='Email address or phone number']"
             txtFBPassword="//UIASecureTextField[@value='Facebook password']"
+            btnFBLogin= "//UIAButton[@name='Log In']"
             btnFBConfirm= "//UIAButton[@name='Continue']"
-         else
+        else
+            txtFBEmail="//XCUIElementTypeTextField[@value='Email address or phone number']"
             txtFBPassword="//XCUIElementTypeSecureTextField[@value='Facebook password']"
+            btnFBLogin= "//XCUIElementTypeButton[@name='Log In']"
             btnFBConfirm= "//XCUIElementTypeButton[@name='Continue']"
             
         end
-        
-        #txt_pass= "//UIASecureTextField[@value='Facebook password']"
-       #txtFBPassword="//UIASecureTextField[@value='Facebook password']"
-       
-      btnFBLogin= "//UIAButton[@name='Log In']"
-        #btnFBConfirm= "//UIAButton[@name='Continue']"
-        
+
         wait = Selenium::WebDriver::Wait.new(:timeout => MAX_TIMEOUT) # seconds
         wait.until { selenium.find_element(:xpath,"#{txtFBEmail}") }
         selenium.find_element(:xpath,"#{txtFBEmail}").click
@@ -86,6 +84,7 @@ Given(/^I login to facebook$/) do
         wait.until { selenium.find_element(:xpath, "#{txtFBPassword}") }
         sleep(5)
         selenium.find_element(:xpath, "#{txtFBPassword}").click
+        sleep(5)
         selenium.find_element(:xpath, "#{txtFBPassword}").send_keys VALID_CREDENTIALS_Facebook[:password]
         wait.until { selenium.find_element(:xpath, "#{btnFBLogin}") }
         selenium.find_element(:xpath, "#{btnFBLogin}").click

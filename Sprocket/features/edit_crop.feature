@@ -3,7 +3,7 @@ Feature: Verify Edit crop feature
   I want to verify crop features.
 
 @reset
-@done
+@regression
 Scenario Outline: Verify crop option
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -45,7 +45,7 @@ Scenario Outline: Verify image crop
     
 
 @reset
-@TA17012
+@done
 Scenario Outline: Verify image crop for both options
     Given I am on the "CameraRoll Preview" screen
     When I tap "Edit" button

@@ -38,7 +38,7 @@ Scenario Outline: Verify Filter selection option
     | CameraRoll Preview  |
     
 @reset
-@TA17012
+@regression
 Scenario: Verify filer list
     Given I am on the "FilterEditor" screen for "CameraRoll Preview" 
     Then I select "Filter"

@@ -3,7 +3,7 @@ Feature: Verify Edit sticker feature
   I want to verify sticker features.
 
 @reset
-@regression
+@done
 Scenario: Verify 'Sticker' option
     Given I am on the "CameraRoll Preview" screen
     When I tap "Edit" button
@@ -35,7 +35,7 @@ Scenario Outline: Verify 'Sticker' option
     
     
 @reset
-@TA17012
+@regression
 Scenario: Verify Sticker edit options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     Then I select "sticker_0" sticker
@@ -48,6 +48,7 @@ Scenario: Verify Sticker edit options
     
 @reset
 @regression
+@done
 Scenario Outline: Verify Sticker delete option    
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker_0" sticker
@@ -152,7 +153,7 @@ Scenario: Verify all the stickers are applied for sticker editor screen
     Then I verify that all the "stickers" are applied successfully
     
 @reset
-@TA17012
+@done
 Scenario Outline: Verify sticker editor screen navigation
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     Then I select "sticker_1" sticker

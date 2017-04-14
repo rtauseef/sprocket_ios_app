@@ -21,7 +21,7 @@ Scenario: Verify camera roll navigation
 	Then I should see the "CameraRoll Preview" screen
 
 @reset
-@TA17012
+@done
 Scenario: Verify Instagram navigation   
     Given I am on the "Landing" screen
     Then I should see "Instagram" logo

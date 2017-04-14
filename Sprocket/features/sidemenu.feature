@@ -2,7 +2,7 @@ Feature: Verify Side menu feature
   As a user I want to verify side menu functionality
   
 @reset
-@regression
+@done
 Scenario Outline: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -33,7 +33,7 @@ Scenario: Open cameraroll from side menu
 
 @reset
 @done
-@smoke1
+@smoke
 Scenario: Verify side menu options
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -159,7 +159,7 @@ Scenario: Verify side menu options
         
         
     @reset
-	@TA17012
+	@regression
 	Scenario: Instagram Sign Out from Side menu
 		Given I am on the "Instagram Photos" screen
 		And  I touch menu button on navigation bar
