@@ -467,23 +467,25 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 }
 
 - (void)mtPrintManager:(MPBTPrintManager *)printManager didDeletePrintJob:(MPPrintLaterJob *)job {
-    [[PGAnalyticsManager sharedManager] trackPrintQueueAction:kEventPrintQueueDeleteMultiAction
-                                                      queueId:printManager.queueId];
+    NSString *action = kEventPrintQueueDeleteMultiAction;
+    NSString *offRamp = kMetricsOffRampQueueDeleteMulti;
+    
+    if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
+        action = kEventPrintQueueDeleteCopiesAction;
+        offRamp = kMetricsOffRampQueueDeleteCopies;
+    }
 
+    [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
+                                                      queueId:printManager.queueId];
+    
     NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
     [extendedMetrics addEntriesFromDictionary:job.extra];
     [extendedMetrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
     [extendedMetrics removeObjectsForKeys:@[kMPPaperSizeId, kMPPaperTypeId]];
-
-    if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteCopies
-                                                         printItem:job.defaultPrintItem
-                                                      extendedInfo:extendedMetrics];
-    } else {
-        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:kMetricsOffRampQueueDeleteMulti
-                                                         printItem:job.defaultPrintItem
-                                                      extendedInfo:extendedMetrics];
-    }
+    
+    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                     printItem:job.defaultPrintItem
+                                                  extendedInfo:extendedMetrics];
 }
 
 

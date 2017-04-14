@@ -196,6 +196,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imageSavedView.hidden = NO;
     
     [self.carouselView reloadData];
+    
+    // Updating visible edited images with the correct contentMode after loading the screen;
+    for (PGGesturesView *visibleGestureView in self.carouselView.visibleItemViews) {
+        visibleGestureView.editedImage = [visibleGestureView screenshotImage];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -1147,6 +1152,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         }
 
         [gestureView setImage:finalImage];
+        
+        BOOL isVisibleItem = [carousel.indexesForVisibleItems containsObject:[NSNumber numberWithInteger:index]];
+        if (isVisibleItem) {
+            gestureView.editedImage = [gestureView screenshotImage];
+        }
 
         [carousel setNeedsLayout];
     }

@@ -133,6 +133,7 @@ NSString * const kEventPrintQueuePrintSingleAction = @"Print-Single";
 NSString * const kEventPrintQueuePrintCopiesAction = @"Print-Copies";
 
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
+NSString * const kEventPrintQueueDeleteCopiesAction = @"Delete-Copies";
 
 NSString * const kEventPrintCategory    = @"Print";
 NSString * const kEventPrintAction      = @"Print";
