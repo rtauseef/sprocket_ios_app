@@ -3,9 +3,9 @@ Feature: Verify Edit frame feature
   I want to verify frame features.
 
 @reset
-@regression
-Scenario Outline: Verify 'Frame' option
-    Given I am on the "<social_media_screen_name>" screen
+@done
+Scenario: Verify 'Frame' option
+    Given I am on the "CameraRoll Preview " screen
     When I tap "Edit" button
     Then I am on the "Edit" screen
     Then I tap "Frame" button
@@ -16,14 +16,7 @@ Scenario Outline: Verify 'Frame' option
     Then I tap "Close" mark
     Then I should see the "Edit" screen
     And I should see the photo with no "frame"
-    
-    Examples:
-    | social_media_screen_name        |
-    | Instagram Preview  |
-  #  | Flickr Preview     |
-    | CameraRoll Preview |
-    
-    
+
 
 @reset
 @regression
@@ -44,7 +37,7 @@ Scenario Outline: Verify frame applied for frame editor screen
     
     
 @reset
-@done
+@regression
 Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
@@ -71,7 +64,6 @@ Scenario: Verify frame list
             
 @reset
 @localization
-@TA17514
 Scenario: Verify additional frames for region Australia
     Given  I am on the "CameraRollLanding" screen
     Then I open cameraroll	

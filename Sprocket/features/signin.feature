@@ -4,7 +4,7 @@ Feature: Signin to social media
   
   
 @reset
-@done
+@regression
 Scenario Outline: Sign in to different Social media accounts from Landing screen
     Given I am on the "Landing" screen
     Then I should see "<social_media>" logo
@@ -26,6 +26,7 @@ Scenario Outline: Sign in to different Social media accounts from Landing screen
       
 @reset
 @done
+@smoke
 Scenario: Open Cameraroll from Landing screen
     Given I am on the "Landing" screen
     Then I should see "CameraRoll" logo

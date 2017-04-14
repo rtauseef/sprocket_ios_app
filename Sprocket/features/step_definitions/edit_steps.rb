@@ -54,14 +54,13 @@ end
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
         frame_value=$frame[$frame_id]['value']
-       
-        selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Wrong frame selected!" unless selected_frame_status != nil
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[9]
+    raise "Wrong frame selected!" unless selected_frame_status == nil
     else
         if edit_item == "sticker"
            sticker_value=$sticker[$sticker_id]['value']
-           selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
-           raise "Sticker present!" unless selected_sticker_status.to_s != sticker_value
+           selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier)[0]
+           raise "Sticker present!" unless selected_sticker_status.to_s == nil
         end
     end
 end
@@ -212,13 +211,14 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[7]
+    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[9]
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
 Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
     sticker_value=$sticker[sticker_id]['value']
-    selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
+    selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier)[0]
+    puts selected_sticker_status
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end
 
