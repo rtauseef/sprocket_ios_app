@@ -194,31 +194,14 @@
 
 }
 
-- (PGStickerItem *)stickerByIndex:(NSInteger)index
-{
-    PGStickerItem *sticker = (PGStickerItem *)self.stickers[index];
-    
-    return sticker;
-}
+- (NSArray<IMGLYSticker *> *)imglyStickers {
+    NSMutableArray<IMGLYSticker *> *stickers = [[NSMutableArray alloc] init];
 
-- (PGStickerItem *)stickerByAccessibilityText:(NSString *)accessibilityText
-{
-    PGStickerItem *sticker = nil;
-    
-    for (NSInteger i = 0; i < self.stickersCount; ++i) {
-        PGStickerItem *stickerItem = [self stickerByIndex:i];
-        if ([accessibilityText isEqualToString:stickerItem.accessibilityText]) {
-            sticker = stickerItem;
-            break;
-        }
+    for (PGStickerItem *sticker in self.stickers) {
+        [stickers addObject:sticker.imglySticker];
     }
-    
-    return sticker;
-}
 
-- (NSUInteger)stickersCount
-{
-    return self.stickers.count;
+    return stickers;
 }
 
 @end

@@ -15,354 +15,441 @@
 #import "PGFrameManager.h"
 #import "UIColor+Style.h"
 
-#define kImglyColorCellHeightAdjustment 18
+static NSString * const kImglyMenuItemMagic = @"Magic";
+static NSString * const kImglyMenuItemFilter = @"Filter";
+static NSString * const kImglyMenuItemFrame = @"Frame";
+static NSString * const kImglyMenuItemSticker = @"Sticker";
+static NSString * const kImglyMenuItemText = @"Text";
+static NSString * const kImglyMenuItemCrop = @"Crop";
 
-@interface PGImglyManager() <IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
+@interface PGImglyManager() //<IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
+
+@property (nonatomic, strong) NSDictionary *menuItems;
+
+@property (nonatomic, copy) void (^titleBlock)(UIView * _Nonnull view);
+@property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 
 @end
 
 @implementation PGImglyManager
 
+- (instancetype)init {
+    self = [super init];
+
+    if (self) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            NSURL *licenseURL = [[NSBundle mainBundle] URLForResource:@"imgly_license" withExtension:@""];
+            [PESDK unlockWithLicenseAt:licenseURL];
+        });
+    }
+
+    return self;
+}
+
+- (NSArray<IMGLYBoxedMenuItem *> *)menuItemsWithConfiguration:(IMGLYConfiguration *)configuration {
+
+    IMGLYBoxedMenuItem *magicItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemMagic
+                                                                         icon:[UIImage imageNamed:@"ic_magic_48pt"]
+                                                                       action:^IMGLYBoxedPhotoEditModel * _Nonnull(IMGLYBoxedPhotoEditModel * _Nonnull photoEditModel) {
+                                                                           photoEditModel.isAutoEnhancementEnabled = !photoEditModel.isAutoEnhancementEnabled;
+                                                                           return photoEditModel;
+                                                                       }
+                                                                        state:nil];
+
+    IMGLYBoxedMenuItem *filterItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFilter
+                                                                          icon:[UIImage imageNamed:@"ic_filter_48pt"]
+                                                                          tool:[[IMGLYFilterToolController alloc] initWithConfiguration:configuration]];
+
+    IMGLYBoxedMenuItem *frameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFrame
+                                                                         icon:[UIImage imageNamed:@"ic_frame_48pt"]
+                                                                         tool:[[IMGLYFrameToolController alloc] initWithConfiguration:configuration]];
+
+    IMGLYBoxedMenuItem *stickerItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemSticker
+                                                                           icon:[UIImage imageNamed:@"ic_sticker_48pt"]
+                                                                           tool:[[IMGLYStickerToolController alloc] initWithConfiguration:configuration]];
+
+    IMGLYBoxedMenuItem *textItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemText
+                                                                        icon:[UIImage imageNamed:@"ic_text_48pt"]
+                                                                        tool:[[IMGLYTextToolController alloc] initWithConfiguration:configuration]];
+
+    IMGLYBoxedMenuItem *cropItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemCrop
+                                                                        icon:[UIImage imageNamed:@"ic_crop_48pt"]
+                                                                        tool:[[IMGLYTransformToolController alloc] initWithConfiguration:configuration]];
+
+    return @[
+             magicItem,
+             filterItem,
+             frameItem,
+             stickerItem,
+             textItem,
+             cropItem
+             ];
+}
+
+- (NSArray<IMGLYPhotoEffect *> *)photoEffects {
+    NSArray *photoEffectsArray = @[
+                                   [[IMGLYPhotoEffect alloc] initWithIdentifier:@"None" ciFilterName:nil lutURL:nil displayName:@"None" options:nil],
+                                   [self imglyFilterByName:@"AD1920"],
+                                   [self imglyFilterByName:@"Candy"],
+                                   [self imglyFilterByName:@"Lomo"],
+                                   [self imglyFilterByName:@"Litho"],
+                                   [self imglyFilterByName:@"Quozi"],
+                                   [self imglyFilterByName:@"SepiaHigh"],
+                                   [self imglyFilterByName:@"Sunset"],
+                                   [self imglyFilterByName:@"Twilight"],
+                                   [self imglyFilterByName:@"Breeze"],
+                                   [self imglyFilterByName:@"Blues"],
+                                   [self imglyFilterByName:@"Dynamic"],
+                                   [self imglyFilterByName:@"Orchid"],
+                                   [self imglyFilterByName:@"Pale"],
+                                   [self imglyFilterByName:@"80s"],
+                                   [self imglyFilterByName:@"Pro400"],
+                                   [self imglyFilterByName:@"Steel"],
+                                   [self imglyFilterByName:@"Creamy"]
+                                   ];
+
+    IMGLYPhotoEffect.allEffects = photoEffectsArray;
+
+    return photoEffectsArray;
+}
+
+- (NSArray<IMGLYFont *> *)fonts {
+
+    NSArray<IMGLYFont *> *fonts = @[
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Aleo-Bold" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Aleo-Bold"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"BERNIERRegular-Regular" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"BERNIERRegular-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Blogger Sans-Light" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Blogger Sans-Light"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Cheque-Regular" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Cheque-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"FiraSans-Regular" ofType:@"ttf"]
+                                                        displayName:@" " fontName:@"FiraSans-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Gagalin-Regular" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Gagalin-Regular"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Hagin Caps Thin" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Hagin Caps Thin"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Panton-BlackitalicCaps" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Panton-BlackitalicCaps"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Panton-LightitalicCaps" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Panton-LightitalicCaps"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Perfograma" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Perfograma"],
+                                    [[IMGLYFont alloc] initWithPath:[[NSBundle imglyKitBundle] pathForResource:@"Summer Font Light" ofType:@"otf"]
+                                                        displayName:@" " fontName:@"Summer Font Light"],
+
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"AmericanTypewriter"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"Baskerville"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"BodoniSvtyTwoITCTT-Book"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"BradleyHandITCTT-Bold"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"ChalkboardSE-Regular"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"DINAlternate-Bold"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"HelveticaNeue"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"Noteworthy-Bold"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"SnellRoundhand"],
+                                    [[IMGLYFont alloc] initWithDisplayName:@" " fontName:@"Thonburi"]
+                                    ];
+
+    return fonts;
+}
+
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
 {
+    self.titleBlock = ^(UIView * _Nonnull view) {
+        if ([view isKindOfClass:[UILabel class]]) {
+            ((UILabel *)view).text = nil;
+        }
+    };
+
+    self.colorBlock = ^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName) {
+        CGRect cellRect = cell.frame;
+        cellRect.size.height = cellRect.size.width;
+        cell.frame = cellRect;
+        cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
+        cell.colorView.layer.masksToBounds = YES;
+
+        cell.imageView.image = [UIImage imageNamed:@"ic_adjust_color"];
+    };
+
+    IMGLYPhotoEffect.allEffects = [self photoEffects];
+
+    IMGLYFontImporter.fonts = [self fonts];
+
+    PESDK.bundleImageBlock = ^UIImage * _Nullable(NSString * _Nonnull imageName) {
+        if ([imageName isEqualToString:@"save_image_icon"]) {
+            imageName = @"ic_approve_44pt";
+        }
+
+        // Getting the images from our own bundle if there is a replacement
+        return [UIImage imageNamed:imageName];
+    };
+
+
     IMGLYConfiguration *configuration = [[IMGLYConfiguration alloc] initWithBuilder:^(IMGLYConfigurationBuilder * _Nonnull builder) {
-        
-        builder.contextMenuBackgroundColor = [UIColor HPGrayColor];
-        
-        [builder configureToolStackController:^(IMGLYToolStackControllerOptionsBuilder * _Nonnull stackBuilder) {
-            stackBuilder.mainToolbarBackgroundColor = [UIColor HPGrayColor];
-            stackBuilder.secondaryToolbarBackgroundColor = [UIColor clearColor];
-            
-        }];
+
+        builder.accessoryViewBackgroundColor = [UIColor HPRowColor];
+
+
+        // Editor general configuration
+
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
-            photoEditorBuilder.allowedPhotoEditorActionsAsNSNumbers = @[
-                                                                        @(PhotoEditorActionMagic),
-                                                                        @(PhotoEditorActionFilter),
-                                                                        @(PhotoEditorActionFrame),
-                                                                        @(PhotoEditorActionSticker),
-                                                                        @(PhotoEditorActionText),
-                                                                        @(PhotoEditorActionCrop)
-                                                                        ];
+
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
-            photoEditorBuilder.backgroundColor = [UIColor HPGrayColor];
+            photoEditorBuilder.backgroundColor = [UIColor HPRowColor];
             photoEditorBuilder.allowsPreviewImageZoom = NO;
-            
-            [photoEditorBuilder setApplyButtonConfigurationClosure:^(UIButton * _Nonnull applyButton) {
+
+            photoEditorBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            photoEditorBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
                 // Workaround to fix saving image bug on slower devices.
-                applyButton.enabled = NO;
+                button.enabled = NO;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    applyButton.enabled = YES;
+                    button.enabled = YES;
                 });
-            }];
-            
+            };
+
             PGEmbellishmentMetric *autofixMetric = [[PGEmbellishmentMetric alloc] initWithName:@"Auto-fix" andCategoryType:PGEmbellishmentCategoryTypeEdit];
-            
-            [photoEditorBuilder setActionButtonConfigurationClosure:^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum PhotoEditorAction action) {
+
+            photoEditorBuilder.actionButtonConfigurationBlock = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, IMGLYBoxedMenuItem * _Nonnull item) {
                 cell.tintColor = [UIColor HPGrayBackgroundColor];
                 cell.imageView.tintAdjustmentMode = UIViewTintAdjustmentModeNormal;
                 cell.imageView.highlightedImage = nil;
                 cell.captionLabel.text = nil;
+                cell.imageView.highlighted = NO;
 
-                switch (action) {
-                    case PhotoEditorActionMagic: {
-                        cell.imageView.highlightedImage = [[UIImage imageNamed:@"auto_enhance_On"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                        cell.imageView.image = [[UIImage imageNamed:@"auto_enhance_Off"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                        cell.accessibilityIdentifier = @"editMagic";
-                        
-                        if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
-                            cell.imageView.highlighted = YES;
-                        } else {
-                            cell.imageView.highlighted = NO;
-                        }
-                        
-                        break;
+                if ([item.title isEqualToString:kImglyMenuItemMagic]) {
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_magic_active_48pt"];
+                    cell.imageView.image = [UIImage imageNamed:@"ic_magic_48pt"];
+                    cell.accessibilityIdentifier = @"editMagic";
+
+                    if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
+                        cell.imageView.highlighted = YES;
                     }
-                    case PhotoEditorActionFilter:
-                        cell.imageView.image = [UIImage imageNamed:@"editFilters"];
-                        cell.accessibilityIdentifier = @"editFilters";
-                        break;
-                    case PhotoEditorActionFrame:
-                        cell.imageView.image = [UIImage imageNamed:@"editFrame"];
-                        cell.accessibilityIdentifier = @"editFrame";
-                        break;
-                    case PhotoEditorActionSticker:
-                        cell.imageView.image = [UIImage imageNamed:@"editSticker"];
-                        cell.accessibilityIdentifier = @"editSticker";
-                        break;
-                    case PhotoEditorActionText:
-                        cell.imageView.image = [UIImage imageNamed:@"editText"];
-                        cell.accessibilityIdentifier = @"editText";
-                        break;
-                    case PhotoEditorActionCrop:
-                        cell.imageView.image = [UIImage imageNamed:@"editCrop"];
-                        cell.accessibilityIdentifier = @"editCrop";
-                        break;
-                    default:
-                        break;
-                }
-            }];
 
-            [photoEditorBuilder setPhotoEditorActionSelectedClosure:^(enum PhotoEditorAction action) {
-                if (action == PhotoEditorActionMagic) {
+                } else if ([item.title isEqualToString:kImglyMenuItemFilter]) {
+                    cell.accessibilityIdentifier = @"editFilters";
+
+                } else if ([item.title isEqualToString:kImglyMenuItemFrame]) {
+                    cell.accessibilityIdentifier = @"editFrame";
+
+                } else if ([item.title isEqualToString:kImglyMenuItemSticker]) {
+                    cell.accessibilityIdentifier = @"editSticker";
+
+                } else if ([item.title isEqualToString:kImglyMenuItemText]) {
+                    cell.accessibilityIdentifier = @"editText";
+
+                } else if ([item.title isEqualToString:kImglyMenuItemCrop]) {
+                    cell.accessibilityIdentifier = @"editCrop";
+                }
+            };
+
+            photoEditorBuilder.photoEditorActionSelectedBlock = ^(IMGLYBoxedMenuItem * _Nonnull item) {
+                if ([item.title isEqualToString:kImglyMenuItemMagic]) {
                     if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
                         [embellishmentMetricsManager removeEmbellishmentMetric:autofixMetric];
                     } else {
                         [embellishmentMetricsManager addEmbellishmentMetric:autofixMetric];
                     }
                 }
-            }];
-        }];
-        
-        NSArray *photoEffectsArray = [NSArray arrayWithObjects:
-                                      [[IMGLYPhotoEffect alloc] initWithIdentifier:@"None" CIFilterName:nil lutURL:nil displayName:@"None" options:nil],
-                                      [self imglyFilterByName:@"AD1920"],
-                                      [self imglyFilterByName:@"Candy"],
-                                      [self imglyFilterByName:@"Lomo"],
-                                      [self imglyFilterByName:@"Litho"],
-                                      [self imglyFilterByName:@"Quozi"],
-                                      [self imglyFilterByName:@"SepiaHigh"],
-                                      [self imglyFilterByName:@"Sunset"],
-                                      [self imglyFilterByName:@"Twilight"],
-                                      [self imglyFilterByName:@"Breeze"],
-                                      [self imglyFilterByName:@"Blues"],
-                                      [self imglyFilterByName:@"Dynamic"],
-                                      [self imglyFilterByName:@"Orchid"],
-                                      [self imglyFilterByName:@"Pale"],
-                                      [self imglyFilterByName:@"80s"],
-                                      [self imglyFilterByName:@"Pro400"],
-                                      [self imglyFilterByName:@"Steel"],
-                                      [self imglyFilterByName:@"Creamy"],
-                                      nil];
-        
-        IMGLYPhotoEffect.allEffects = photoEffectsArray;
-
-        [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull stickerBuilder) {
-            stickerBuilder.stickersDataSource = self;
-            
-            stickerBuilder.addedStickerClosure = ^(IMGLYSticker *sticker) {
-                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:[self stickerNameFromImglySticker:sticker] andCategoryType:PGEmbellishmentCategoryTypeSticker];
-
-                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
-            
-            stickerBuilder.removedStickerClosure = ^(IMGLYSticker *sticker) {
-                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:[self stickerNameFromImglySticker:sticker] andCategoryType:PGEmbellishmentCategoryTypeSticker];
-                
-                [embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
+
+        }];
+
+
+        // Filters configuration
+
+        [builder configureFilterToolController:^(IMGLYFilterToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.filterCellConfigurationClosure = ^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
+                cell.captionLabel.text = nil;
+                [cell.selectionLabel removeFromSuperview];
+
+                cell.selectionIndicator.backgroundColor = [UIColor HPBlueColor];
+            };
+
+            toolBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect * _Nonnull filter) {
+                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFilter];
+                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:filter.displayName andCategoryType:PGEmbellishmentCategoryTypeFilter]];
+            };
+
+            toolBuilder.filterIntensitySliderConfigurationClosure = ^(IMGLYSlider * _Nonnull slider) {
+                slider.filledTrackColor = [UIColor HPBlueColor];
+                slider.thumbTintColor = [UIColor HPBlueColor];
             };
         }];
-        
-        [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull frameToolBuilder) {
-            frameToolBuilder.framesDataSource = self;
-            frameToolBuilder.selectedFrameClosure = ^(IMGLYFrame *frame) {
+
+
+        // Frames configuration
+
+        [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.frameDataSourceConfigurationClosure = ^(IMGLYFrameDataSource * _Nonnull dataSource) {
+                dataSource.allFrames = [[PGFrameManager sharedInstance] imglyFrames];
+            };
+
+            toolBuilder.frameCellConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYFrame * _Nonnull frame) {
+                cell.tintColor = [UIColor HPRowColor];
+                cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
+            };
+
+            toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
+                cell.captionLabel.text = nil;
+            };
+
+            toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
                 NSString *frameName = @"NoFrame";
-                if (nil != frame) {
-                    frameName = frame.accessibilityText;
-                    PGFrameItem *frameItem = [[PGFrameManager sharedInstance] frameByAccessibilityText:frameName];
-                    if (nil != frameItem) {
-                        frameName = frameItem.name;
-                    }
+
+                if (frame) {
+                    frameName = frame.accessibilityLabel;
                 }
-                
+
                 [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFrame];
                 [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:frameName andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             };
         }];
-        
-        [builder configureCropToolController:^(IMGLYCropToolControllerOptionsBuilder * _Nonnull cropToolBuilder) {
-            IMGLYCropRatio *cropRatio2x3 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:2.0/3.0] title:@"2:3" accessibilityLabel:@"2:3 crop ratio" icon:[UIImage imageNamed:@"imglyIconCrop2x3"]];
-            IMGLYCropRatio *cropRatio3x2 = [[IMGLYCropRatio alloc] initWithRatio:[NSNumber numberWithFloat:3.0/2.0] title:@"3:2" accessibilityLabel:@"3:2 crop ratio" icon:[UIImage imageNamed:@"imglyIconCrop3x2"]];
-            cropToolBuilder.allowedCropRatios = @[
-                                                  cropRatio2x3,
-                                                  cropRatio3x2 ];
-        }];
-        
-        // The textField configuration
-        [builder configureTextToolController:^(IMGLYTextToolControllerOptionsBuilder * _Nonnull textToolBuilder) {
-            [textToolBuilder setTitle:@" "];
-            
-            
-            [textToolBuilder setTextViewConfigurationClosure:^(UITextView * _Nonnull textView) {
-                static NSInteger numTextFields = 0;
-                
-                [textView setKeyboardAppearance:UIKeyboardAppearanceDark];
-                [textView setTextAlignment:NSTextAlignmentCenter];
-                [textView setTintColor:[UIColor whiteColor]];
-                [textView setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
-            }];
-        }];
-        
-        [builder configureFilterToolController:^(IMGLYFilterToolControllerOptionsBuilder * _Nonnull filterBuilder) {
-            [filterBuilder setFilterCellConfigurationClosure:^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
-                [cell.captionLabel removeFromSuperview];
-            }];
-            
-            filterBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect *filter) {
-                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFilter];
-                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:filter.displayName andCategoryType:PGEmbellishmentCategoryTypeFilter]];
+
+
+        // Stickers configuration
+
+        [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
+                NSArray<IMGLYSticker *> *allStickers = [[PGStickerManager sharedInstance] imglyStickers];
+                IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                    imageURL:[allStickers firstObject].thumbnailURL
+                                                                                    stickers:allStickers];
+
+                dataSource.stickerCategories = @[category];
             };
+
+            toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
+                cell.tintColor = [UIColor HPBlueColor];
+                cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
+            };
+
+            toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
+                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:sticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
+                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
+            };
+
         }];
-        
-        // The initial text font and color modification screen (created after entering text into the textfield
-        [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull textOptionsBuilder) {
-            [textOptionsBuilder setTitle:@" "];
-            
-            [textOptionsBuilder setContextActionConfigurationClosure:^(IMGLYContextMenuAction * _Nonnull menuAction, enum TextContextAction contextAction) {
-                
-                // Unfortunately, the image property on menuAction is readOnly... so, we stay with the default icons
-            }];
-            
-            [textOptionsBuilder setActionButtonConfigurationClosure:^(UICollectionViewCell * _Nonnull cell, enum TextAction textAction) {
-                
-                UIImageView *imageView = nil;
-                
-                switch (textAction) {
-                    case TextActionSelectFont:
-                        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imglyIconFont"]];
-                        break;
-                        
-                    case TextActionSelectColor:
-                        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imglyIconColor"]];
-                        break;
-                        
-                    case TextActionSelectBackgroundColor:
-                        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imglyIconBackgroundColor"]];
-                        break;
-                        
-                    default:
-                        break;
-                };
-                
-                if (nil != imageView) {
-                    CGFloat inverseAspectRatio = imageView.image.size.height / imageView.image.size.width;
-                    
-                    [cell.subviews[0] removeFromSuperview];
-                    [cell addSubview:imageView];
-                    
-                    CGRect frame = imageView.frame;
-                    frame.size.width = cell.frame.size.width - 20;
-                    frame.size.height = frame.size.width * inverseAspectRatio;
-                    frame.origin.x = (cell.frame.size.width - frame.size.width)/2;
-                    frame.origin.y = (cell.frame.size.height - frame.size.height)/2;
-                    imageView.frame = frame;
+
+        [builder configureStickerColorToolController:^(IMGLYStickerColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.colorActionButtonConfigurationClosure = self.colorBlock;
+        }];
+
+        [builder configureStickerOptionsToolController:^(IMGLYStickerOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum StickerAction action) {
+                if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
+                    IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
+
+                    itemCell.captionLabel.text = nil;
                 }
-            }];
-            
-            textOptionsBuilder.textActionSelectedClosure = ^(TextAction textAction) {
-                // called for selectFont, selectColor, and selectBackgroundColor
-               MPLogDebug(@"text action: %ld", (long)textAction);
             };
         }];
-        
-        // The screen for both text color and background color
-        [builder configureTextColorToolController:^(IMGLYTextColorToolControllerOptionsBuilder * _Nonnull textColorToolBuilder) {
-            [textColorToolBuilder setTitle:@" "];
-            
-            [textColorToolBuilder setTextColorActionButtonConfigurationClosure:^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull title) {
-                CGRect cellRect = cell.frame;
-                cellRect.size.height = cellRect.size.width + kImglyColorCellHeightAdjustment;
-                cell.frame = cellRect;
-                cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
-                cell.colorView.layer.masksToBounds = YES;
-            }];
+
+
+        // Text configuration
+
+        [builder configureTextToolController:^(IMGLYTextToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.textViewConfigurationClosure = ^(UITextView * _Nonnull textView) {
+                static NSInteger numTextFields = 0;
+
+                [textView setKeyboardAppearance:UIKeyboardAppearanceDark];
+                [textView setAccessibilityIdentifier:[NSString stringWithFormat:@"txtField%ld", (long)numTextFields]];
+            };
         }];
-        
-        // The screen for text font
-        [builder configureTextFontToolController:^(IMGLYTextFontToolControllerOptionsBuilder * _Nonnull textFontToolBuilder) {
-            [textFontToolBuilder setTitle:@" "];
-            
-            [textFontToolBuilder setActionButtonConfigurationClosure:^(IMGLYLabelCaptionCollectionViewCell * _Nonnull cell, NSString * _Nonnull label) {
+
+        [builder configureTextFontToolController:^(IMGLYTextFontToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.actionButtonConfigurationClosure = ^(IMGLYLabelCaptionCollectionViewCell * _Nonnull cell, NSString * _Nonnull action) {
                 cell.captionLabel.text = nil;
-            }];
-            
-            textFontToolBuilder.textFontActionSelectedClosure = ^(NSString *font) {
-                // Never called :-(
+                cell.label.highlightedTextColor = [UIColor HPBlueColor];
+
+                UIFont *font = [UIFont fontWithName:cell.label.font.familyName size:28.0];
+                cell.label.font = font;
+            };
+
+        }];
+
+        [builder configureTextColorToolController:^(IMGLYTextColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.textColorActionButtonConfigurationClosure = self.colorBlock;
+        }];
+
+        [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum TextAction action) {
+                UIImage *image;
+
+                if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
+                    IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
+
+                    itemCell.captionLabel.text = nil;
+
+                    if (image) {
+                        itemCell.imageView.image = image;
+                    }
+
+                } else if ([cell isKindOfClass:[IMGLYLabelCaptionCollectionViewCell class]]) {
+                    IMGLYLabelCaptionCollectionViewCell *itemCell = (IMGLYLabelCaptionCollectionViewCell *) cell;
+
+                    UIFont *font = [UIFont fontWithName:itemCell.label.font.familyName size:32.0];
+                    itemCell.label.font = font;
+                    itemCell.captionLabel.text = nil;
+                }
             };
         }];
+
+
+        // Transform/Crop configuration
+
+        [builder configureTransformToolController:^(IMGLYTransformToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.allowFreeCrop = NO;
+
+            IMGLYCropAspect *cropAspect2x3 = [[IMGLYCropAspect alloc] initWithWidth:2.0 height:3.0 localizedName:@"2:3" rotatable:NO];
+            cropAspect2x3.accessibilityLabel = @"2:3 crop ratio";
+            IMGLYCropAspect *cropAspect3x2 = [[IMGLYCropAspect alloc] initWithWidth:3.0 height:2.0 localizedName:@"3:2" rotatable:NO];
+            cropAspect3x2.accessibilityLabel = @"3:2 crop ratio";
+
+            toolBuilder.allowedCropRatios = @[cropAspect2x3, cropAspect3x2];
+
+            toolBuilder.cropAspectButtonConfigurationClosure = ^(IMGLYLabelBorderedCollectionViewCell * _Nonnull cell, IMGLYCropAspect * _Nullable cropAspect) {
+                cell.tintColor = [UIColor HPBlueColor];
+                cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
+                cell.textLabel.highlightedTextColor = [UIColor HPBlueColor];
+            };
+        }];
+
     }];
-    
+
     return configuration;
 }
 
 - (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name {
-    NSBundle *photoEffectBundle = [NSBundle bundleForClass:[IMGLYPhotoEffect self]];
-    NSURL *k2Url = [photoEffectBundle URLForResource:name withExtension:@"png" subdirectory:@"imglyKit.bundle"];
-    
-    return [[IMGLYPhotoEffect alloc] initWithIdentifier:name lutURL:k2Url displayName:name];
-}
+    NSBundle *photoEffectBundle = [NSBundle bundleForClass:[IMGLYPhotoEffect class]];
+    NSURL *effectUrl = [photoEffectBundle URLForResource:name withExtension:@"png" subdirectory:@"imglyKit.bundle"];
 
-#pragma mark - IMGLY Stickers
-
-- (void)stickerCountWith:(void (^)(NSInteger, NSError * _Nullable))completionBlock
-{
-    if (completionBlock) {
-        completionBlock([PGStickerManager sharedInstance].stickersCount, nil);
-    }
-}
-
-- (void)thumbnailAndLabelAtIndex:(NSInteger)index completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
-{
-    if (completionBlock) {
-        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerByIndex:index];
-        completionBlock(sticker.thumbnailImage, nil, nil);
-    }
-}
-
-- (void)stickerAtIndex:(NSInteger)index completionBlock:(void (^)(IMGLYSticker * _Nullable, NSError * _Nullable))completionBlock
-{
-    if (completionBlock) {
-        PGStickerItem *sticker = [[PGStickerManager sharedInstance] stickerByIndex:index];
-        IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImage:sticker.stickerImage thumbnail:sticker.thumbnailImage accessibilityText:sticker.accessibilityText];
-        completionBlock(imglySticker, nil);
-    }
-}
-
-#pragma mark - IMGLYFramesDataSourceProtocol
-
-- (void)frameCountForRatio:(float)ratio completionBlock:(void (^)(NSInteger, NSError * _Nullable))completionBlock
-{
-    if (completionBlock) {
-        completionBlock([PGFrameManager sharedInstance].framesCount, nil);
-    }
-}
-
-- (void)thumbnailAndLabelAtIndex:(NSInteger)index forRatio:(float)ratio completionBlock:(void (^)(UIImage * _Nullable, NSString * _Nullable, NSError * _Nullable))completionBlock
-{
-    if (completionBlock) {
-        PGFrameItem *frame = [[PGFrameManager sharedInstance] frameByIndex:index];
-        completionBlock(frame.thumbnailImage, frame.accessibilityText, nil);
-    }
-}
-
-- (void)frameAtIndex:(NSInteger)index forRatio:(float)ratio completionBlock:(void (^)(IMGLYFrame * _Nullable, NSError * _Nullable))completionBlock
-{
-    if (completionBlock) {
-        CGFloat ratio = 2.0/3.0;
-        
-        PGFrameItem *frame = [[PGFrameManager sharedInstance] frameByIndex:index];
-        IMGLYFrameInfoRecord *info = [[IMGLYFrameInfoRecord alloc] init];
-        
-        info.accessibilityText = frame.accessibilityText;
-        IMGLYFrame *imglyFrame = [[IMGLYFrame alloc] initWithInfo:info];
-        
-        [imglyFrame addImage:frame.frameImage forRatio:ratio];
-        [imglyFrame addThumbnail:frame.thumbnailImage forRatio:ratio];
-        
-        completionBlock(imglyFrame, nil);
-    }
-}
-
-#pragma mark - Analytics
-
-- (NSString *)stickerNameFromImglySticker:(IMGLYSticker *)sticker
-{
-    NSString *stickerName = sticker.accessibilityText;
-    PGStickerItem *stickerItem = [[PGStickerManager sharedInstance] stickerByAccessibilityText:stickerName];
-    if (nil != stickerItem) {
-        stickerName = stickerItem.name;
-    }
-
-    return stickerName;
+    return [[IMGLYPhotoEffect alloc] initWithIdentifier:name lutURL:effectUrl displayName:name];
 }
 
 @end
