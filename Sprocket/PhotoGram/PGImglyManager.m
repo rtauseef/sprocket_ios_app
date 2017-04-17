@@ -321,8 +321,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
                 NSArray<IMGLYSticker *> *allStickers = [[PGStickerManager sharedInstance] imglyStickers];
+                NSURL *thumbnailURL = [[NSBundle mainBundle] URLForResource:@"imglyStickerCategory" withExtension:@"png"];
                 IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                    imageURL:[allStickers firstObject].thumbnailURL
+                                                                                    imageURL:thumbnailURL
                                                                                     stickers:allStickers];
 
                 dataSource.stickerCategories = @[category];

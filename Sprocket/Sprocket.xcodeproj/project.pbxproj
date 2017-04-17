@@ -1538,6 +1538,15 @@
 		F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */; };
 		F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */; };
 		F2030BEA1EA5420600141855 /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
+		F2030BEF1EA55B8200141855 /* imglyStickerCategory.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BEC1EA55B8100141855 /* imglyStickerCategory.png */; };
+		F2030BF01EA55B8200141855 /* imglyStickerCategory.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BEC1EA55B8100141855 /* imglyStickerCategory.png */; };
+		F2030BF11EA55B8200141855 /* imglyStickerCategory.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BEC1EA55B8100141855 /* imglyStickerCategory.png */; };
+		F2030BF21EA55B8200141855 /* imglyStickerCategory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BED1EA55B8100141855 /* imglyStickerCategory@2x.png */; };
+		F2030BF31EA55B8200141855 /* imglyStickerCategory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BED1EA55B8100141855 /* imglyStickerCategory@2x.png */; };
+		F2030BF41EA55B8200141855 /* imglyStickerCategory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BED1EA55B8100141855 /* imglyStickerCategory@2x.png */; };
+		F2030BF51EA55B8200141855 /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BEE1EA55B8200141855 /* imglyStickerCategory@3x.png */; };
+		F2030BF61EA55B8200141855 /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BEE1EA55B8200141855 /* imglyStickerCategory@3x.png */; };
+		F2030BF71EA55B8200141855 /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030BEE1EA55B8200141855 /* imglyStickerCategory@3x.png */; };
 		F20D4CA01E87392900A347B5 /* PGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F236FAC51E8721F700FC31B5 /* PGProgressView.m */; };
 		F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
 		F21C66611E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
@@ -2815,6 +2824,9 @@
 		F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSwipeCoachMarksView.m; sourceTree = "<group>"; };
 		F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RightSwipeButton@2x.png"; path = "Resources/Images/Icons/RightSwipeButton@2x.png"; sourceTree = "<group>"; };
 		F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LeftSwipeButton@2x.png"; path = "Resources/Images/Icons/LeftSwipeButton@2x.png"; sourceTree = "<group>"; };
+		F2030BEC1EA55B8100141855 /* imglyStickerCategory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imglyStickerCategory.png; path = ../../../../../../Downloads/assets/imglyStickerCategory.png; sourceTree = "<group>"; };
+		F2030BED1EA55B8100141855 /* imglyStickerCategory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "imglyStickerCategory@2x.png"; path = "../../../../../../Downloads/assets/imglyStickerCategory@2x.png"; sourceTree = "<group>"; };
+		F2030BEE1EA55B8200141855 /* imglyStickerCategory@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "imglyStickerCategory@3x.png"; path = "../../../../../../Downloads/assets/imglyStickerCategory@3x.png"; sourceTree = "<group>"; };
 		F21C665E1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSelectAlbumDropDownViewController.h; sourceTree = "<group>"; };
 		F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSelectAlbumDropDownViewController.m; sourceTree = "<group>"; };
 		F22F12231E522FF300753C5A /* PGFeatureFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeatureFlag.h; sourceTree = "<group>"; };
@@ -3985,6 +3997,9 @@
 			isa = PBXGroup;
 			children = (
 				82362A1A1D5955450019F024 /* Stickers */,
+				F2030BEC1EA55B8100141855 /* imglyStickerCategory.png */,
+				F2030BED1EA55B8100141855 /* imglyStickerCategory@2x.png */,
+				F2030BEE1EA55B8200141855 /* imglyStickerCategory@3x.png */,
 				8236299D1D593D520019F024 /* Frames */,
 				E3D6812419A3B194000D45E0 /* Icons */,
 				824784431D78DAF700A693D0 /* Support_Printers.jpg */,
@@ -4489,10 +4504,13 @@
 				82017ADD1D948AB600364F21 /* HPSimplified_It.ttf in Resources */,
 				82017ADE1D948AB600364F21 /* HPSimplified_Lt.ttf in Resources */,
 				82017ADF1D948AB600364F21 /* HPSimplified_LtIt.ttf in Resources */,
+				F2030BF61EA55B8200141855 /* imglyStickerCategory@3x.png in Resources */,
 				82017AE01D948AB600364F21 /* HPSimplified_Rg.ttf in Resources */,
 				8215232D1D82215600C0541C /* MainInterface.storyboard in Resources */,
 				828F02141E7CBCF800902C8F /* PGGesturesView.xib in Resources */,
 				82157D071D91EEEF00360D87 /* Images.xcassets in Resources */,
+				F2030BF31EA55B8200141855 /* imglyStickerCategory@2x.png in Resources */,
+				F2030BF01EA55B8200141855 /* imglyStickerCategory.png in Resources */,
 				2AF06EEF1DD5484F000FF091 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4586,6 +4604,7 @@
 				821E394B1E82103E00A23A41 /* chicks_TN@2x.png in Resources */,
 				82E3DA721E82EEED0008F600 /* lock_TN@2x.png in Resources */,
 				82E3DB1C1E82EEEE0008F600 /* tiara_TN@3x.png in Resources */,
+				F2030BEF1EA55B8200141855 /* imglyStickerCategory.png in Resources */,
 				821E39651E82103E00A23A41 /* eggs.png in Resources */,
 				82E3D9461E82EEEC0008F600 /* aviator_glasses.png in Resources */,
 				821E398D1E82103E00A23A41 /* marshmallow_purple.png in Resources */,
@@ -4687,6 +4706,7 @@
 				82A11D091E5FB93B00E7F8FC /* cat-on-head_TN.png in Resources */,
 				82A11D691E5FB93B00E7F8FC /* schoolbus_TN.png in Resources */,
 				826BEB5F1E85BEAD000BE3FA /* WhiteBarFrame_TN.png in Resources */,
+				F2030BF51EA55B8200141855 /* imglyStickerCategory@3x.png in Resources */,
 				82E3DB3A1E82EEEE0008F600 /* unicorn_float_TN@2x.png in Resources */,
 				821E392A1E82103E00A23A41 /* bunny_ears_polkadot_TN.png in Resources */,
 				821E39251E82103E00A23A41 /* bunny_balloon.png in Resources */,
@@ -4849,6 +4869,7 @@
 				82E3DB941E82F1920008F600 /* glasses_blossom_TN@3x.png in Resources */,
 				826BEB3B1E85BEAD000BE3FA /* RainbowFrame_TN@3x.png in Resources */,
 				82A11CFF1E5FB93B00E7F8FC /* cat-coffee.png in Resources */,
+				F2030BF21EA55B8200141855 /* imglyStickerCategory@2x.png in Resources */,
 				82A11D071E5FB93B00E7F8FC /* cat-fries.png in Resources */,
 				82E3D9E81E82EEED0008F600 /* glasses_1_TN.png in Resources */,
 				82E3DA0A1E82EEED0008F600 /* heart_2_TN@2x.png in Resources */,
@@ -5511,6 +5532,7 @@
 				826BEB6E1E85BEAD000BE3FA /* WhiteFrame.png in Resources */,
 				82E3DD881E831BC00008F600 /* heart_bouquet_TN@3x.png in Resources */,
 				1043240fc3ef82aadbac9748 /* spicyrice-regular.ttf in Resources */,
+				F2030BF41EA55B8200141855 /* imglyStickerCategory@2x.png in Resources */,
 				82E3DD9C1E831BC00008F600 /* hearts_TN@3x.png in Resources */,
 				82E3DC9A1E831BB20008F600 /* bunny_ears_polkadot_TN.png in Resources */,
 				826BEB001E85BEAD000BE3FA /* GradientFrame_TN.png in Resources */,
@@ -5866,6 +5888,7 @@
 				826BEB4A1E85BEAD000BE3FA /* SloppyFrame_TN@2x.png in Resources */,
 				826BEB081E85BEAD000BE3FA /* GreyShadowFrame_TN.png in Resources */,
 				82E3DE571E831BD10008F600 /* cat_grumble_TN@2x.png in Resources */,
+				F2030BF11EA55B8200141855 /* imglyStickerCategory.png in Resources */,
 				82E3DD931E831BC00008F600 /* heart-garland_TN@2x.png in Resources */,
 				826BEB301E85BEAD000BE3FA /* PolkadotsFrame_TN.png in Resources */,
 				82E3DE671E831BD10008F600 /* cat-on-head_TN@2x.png in Resources */,
@@ -5886,6 +5909,7 @@
 				82E3DD4A1E831BC00008F600 /* catglasses_TN.png in Resources */,
 				826BEB161E85BEAD000BE3FA /* HeartsOverlayFrame.png in Resources */,
 				82E3DE651E831BD10008F600 /* cat-fries.png in Resources */,
+				F2030BF71EA55B8200141855 /* imglyStickerCategory@3x.png in Resources */,
 				f86bb0b8ebcfda11f02ee448 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
