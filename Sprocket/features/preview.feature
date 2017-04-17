@@ -20,7 +20,7 @@ Feature: Verify preview screen from different social media
     And I should see "Share" button
 
   @reset
-  @TA17012
+  @regression
   Scenario: Verify preview screen for Flickr
     Given I am on the "Flickr Preview" screen
     Then I should see "camera" button
