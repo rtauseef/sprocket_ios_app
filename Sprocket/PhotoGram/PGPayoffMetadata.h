@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kPGPayoffMetadataURLKey;
+extern NSString * const kPGPayoffTypeKey;
+extern NSString * const kPGPayoffUUIDKey;
+extern NSString * const kPGPayoffDataKey;
 
-NSString * const kPGPayoffMetadataURLKey = @"url";
-NSString * const kPGPayoffTypeKey = @"type";
-NSString * const kPGPayoffUUIDKey = @"uuid";
-NSString * const kPGPayoffDataKey = @"data";
 
 typedef enum {
     kPGPayoffNoType, // undefined

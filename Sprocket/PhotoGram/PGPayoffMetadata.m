@@ -8,6 +8,11 @@
 
 #import "PGPayoffMetadata.h"
 
+NSString * const kPGPayoffMetadataURLKey = @"url";
+NSString * const kPGPayoffTypeKey = @"type";
+NSString * const kPGPayoffUUIDKey = @"uuid";
+NSString * const kPGPayoffDataKey = @"data";
+
 @implementation PGPayoffMetadata
 
 
