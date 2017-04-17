@@ -166,4 +166,12 @@ Scenario: Verify side menu options
 		When I touch Instagram "Sign Out" button
 	    And I click Sign Out button on popup
 		Then I should see Instagram "Sign In" button
-        
+
+ @reset
+ @appium
+ @TA17541
+  Scenario: Signin to Facebook
+    Given I am on the Landing screen
+    When I touch hamburger button on navigation bar
+    And I select "Buy Paper" option
+    Then I verify the url
