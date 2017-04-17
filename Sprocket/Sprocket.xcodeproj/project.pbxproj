@@ -1431,6 +1431,7 @@
 		976F68C11EA56F0800E1FA14 /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C01EA56F0800E1FA14 /* PGPayoffMetadata.m */; };
 		976F68C41EA56F2300E1FA14 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C31EA56F2300E1FA14 /* PGPayoffManager.m */; };
 		976F68C91EA5846300E1FA14 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */; };
+		976F68CC1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68CB1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852B71D626A96001288D9 /* 1_turquoise_frame_TN@2x.png */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
@@ -2675,14 +2676,14 @@
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
-		976F68BC1EA56EEC00E1FA14 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "zh-Hans"; path = "zh-Hans.lproj/PGOfflinePayoffDatabase.h"; sourceTree = "<group>"; };
-		976F68BE1EA56EEC00E1FA14 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "zh-Hans"; path = "zh-Hans.lproj/PGOfflinePayoffDatabase.m"; sourceTree = "<group>"; };
 		976F68BF1EA56F0800E1FA14 /* PGPayoffMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffMetadata.h; sourceTree = "<group>"; };
 		976F68C01EA56F0800E1FA14 /* PGPayoffMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffMetadata.m; sourceTree = "<group>"; };
 		976F68C21EA56F2300E1FA14 /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
 		976F68C31EA56F2300E1FA14 /* PGPayoffManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffManager.m; sourceTree = "<group>"; };
 		976F68C71EA5846300E1FA14 /* PGPayoffProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffProcessor.h; sourceTree = "<group>"; };
 		976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffProcessor.m; sourceTree = "<group>"; };
+		976F68CA1EA5893100E1FA14 /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
+		976F68CB1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -3794,8 +3795,8 @@
 		976F68B91EA56E4E00E1FA14 /* Payoffs */ = {
 			isa = PBXGroup;
 			children = (
-				976F68BB1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.h */,
-				976F68BD1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.m */,
+				976F68CA1EA5893100E1FA14 /* PGOfflinePayoffDatabase.h */,
+				976F68CB1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m */,
 				976F68BF1EA56F0800E1FA14 /* PGPayoffMetadata.h */,
 				976F68C01EA56F0800E1FA14 /* PGPayoffMetadata.m */,
 				976F68C21EA56F2300E1FA14 /* PGPayoffManager.h */,
@@ -6401,6 +6402,7 @@
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,
+				976F68CC1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m in Sources */,
 				82E3DEB41E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
 				F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */,
 				6541D4A61E898EAA00FB88A9 /* PGLinkSettings.m in Sources */,
@@ -6628,22 +6630,6 @@
 				FF40F88D1E7A0C6F00113A58 /* sv */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		976F68BB1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.h */ = {
-			isa = PBXVariantGroup;
-			children = (
-				976F68BC1EA56EEC00E1FA14 /* zh-Hans */,
-			);
-			name = PGOfflinePayoffDatabase.h;
-			sourceTree = "<group>";
-		};
-		976F68BD1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.m */ = {
-			isa = PBXVariantGroup;
-			children = (
-				976F68BE1EA56EEC00E1FA14 /* zh-Hans */,
-			);
-			name = PGOfflinePayoffDatabase.m;
 			sourceTree = "<group>";
 		};
 		E34D5063199AB87B006D80E0 /* InfoPlist.strings */ = {
