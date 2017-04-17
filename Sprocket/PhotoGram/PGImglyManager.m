@@ -321,11 +321,43 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
                 NSArray<IMGLYSticker *> *allStickers = [[PGStickerManager sharedInstance] imglyStickers];
-                IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                
+                IMGLYStickerCategory *mothersDayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                     imageURL:[allStickers firstObject].thumbnailURL
                                                                                     stickers:allStickers];
 
-                dataSource.stickerCategories = @[category];
+                IMGLYStickerCategory *graduationCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                    imageURL:[allStickers firstObject].thumbnailURL
+                                                                                    stickers:allStickers];
+                
+                IMGLYStickerCategory *faceCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                              imageURL:[allStickers firstObject].thumbnailURL
+                                                                                              stickers:allStickers];
+                
+                IMGLYStickerCategory *decorativeCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                              imageURL:[allStickers firstObject].thumbnailURL
+                                                                                              stickers:allStickers];
+                
+                IMGLYStickerCategory *foodCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                              imageURL:[allStickers firstObject].thumbnailURL
+                                                                                              stickers:allStickers];
+                
+                IMGLYStickerCategory *birthdayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        stickers:allStickers];
+                
+                IMGLYStickerCategory *animalCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        stickers:allStickers];
+                IMGLYStickerCategory *natureCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        stickers:allStickers];
+                
+                IMGLYStickerCategory *getWellCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        stickers:allStickers];
+                
+                dataSource.stickerCategories = @[mothersDayCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
             };
 
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
