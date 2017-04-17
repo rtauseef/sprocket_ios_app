@@ -1428,6 +1428,9 @@
 		92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		976F68C11EA56F0800E1FA14 /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C01EA56F0800E1FA14 /* PGPayoffMetadata.m */; };
+		976F68C41EA56F2300E1FA14 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C31EA56F2300E1FA14 /* PGPayoffManager.m */; };
+		976F68C91EA5846300E1FA14 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852B71D626A96001288D9 /* 1_turquoise_frame_TN@2x.png */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
@@ -2672,6 +2675,14 @@
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
+		976F68BC1EA56EEC00E1FA14 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "zh-Hans"; path = "zh-Hans.lproj/PGOfflinePayoffDatabase.h"; sourceTree = "<group>"; };
+		976F68BE1EA56EEC00E1FA14 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "zh-Hans"; path = "zh-Hans.lproj/PGOfflinePayoffDatabase.m"; sourceTree = "<group>"; };
+		976F68BF1EA56F0800E1FA14 /* PGPayoffMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffMetadata.h; sourceTree = "<group>"; };
+		976F68C01EA56F0800E1FA14 /* PGPayoffMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffMetadata.m; sourceTree = "<group>"; };
+		976F68C21EA56F2300E1FA14 /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
+		976F68C31EA56F2300E1FA14 /* PGPayoffManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffManager.m; sourceTree = "<group>"; };
+		976F68C71EA5846300E1FA14 /* PGPayoffProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffProcessor.h; sourceTree = "<group>"; };
+		976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffProcessor.m; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -2992,6 +3003,7 @@
 		65DA24741E85B96A00034955 /* Watermark */ = {
 			isa = PBXGroup;
 			children = (
+				976F68B91EA56E4E00E1FA14 /* Payoffs */,
 				6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */,
 				65DA24851E85E31F00034955 /* link-icon.png */,
 				65DA24761E85B99600034955 /* PGWatermarkProcessor.h */,
@@ -3779,6 +3791,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		976F68B91EA56E4E00E1FA14 /* Payoffs */ = {
+			isa = PBXGroup;
+			children = (
+				976F68BB1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.h */,
+				976F68BD1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.m */,
+				976F68BF1EA56F0800E1FA14 /* PGPayoffMetadata.h */,
+				976F68C01EA56F0800E1FA14 /* PGPayoffMetadata.m */,
+				976F68C21EA56F2300E1FA14 /* PGPayoffManager.h */,
+				976F68C31EA56F2300E1FA14 /* PGPayoffManager.m */,
+				976F68C71EA5846300E1FA14 /* PGPayoffProcessor.h */,
+				976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */,
+			);
+			name = Payoffs;
+			sourceTree = "<group>";
+		};
 		CCED9C5819F972E100ACC969 /* Web View */ = {
 			isa = PBXGroup;
 			children = (
@@ -4454,6 +4481,7 @@
 				"it-IT",
 				"fr-CA",
 				"nl-NL",
+				"zh-Hans",
 			);
 			mainGroup = E34D504E199AB87A006D80E0;
 			productRefGroup = E34D5058199AB87B006D80E0 /* Products */;
@@ -6313,6 +6341,7 @@
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
 				E31BE41F19ED91E1006B78BB /* PGFacebookLandingPageViewController.m in Sources */,
 				E34D5067199AB87B006D80E0 /* main.m in Sources */,
+				976F68C11EA56F0800E1FA14 /* PGPayoffMetadata.m in Sources */,
 				E3461F2619AE2F470042DF5E /* UIColor+HexString.m in Sources */,
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
@@ -6350,6 +6379,7 @@
 				65DA24781E85B99600034955 /* PGWatermarkProcessor.m in Sources */,
 				65DA247E1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
+				976F68C41EA56F2300E1FA14 /* PGPayoffManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				8218C5641DDBE90C000855D8 /* PGSideBarMenuItems.m in Sources */,
@@ -6379,6 +6409,7 @@
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
+				976F68C91EA5846300E1FA14 /* PGPayoffProcessor.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
@@ -6597,6 +6628,22 @@
 				FF40F88D1E7A0C6F00113A58 /* sv */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		976F68BB1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				976F68BC1EA56EEC00E1FA14 /* zh-Hans */,
+			);
+			name = PGOfflinePayoffDatabase.h;
+			sourceTree = "<group>";
+		};
+		976F68BD1EA56EEC00E1FA14 /* PGOfflinePayoffDatabase.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				976F68BE1EA56EEC00E1FA14 /* zh-Hans */,
+			);
+			name = PGOfflinePayoffDatabase.m;
 			sourceTree = "<group>";
 		};
 		E34D5063199AB87B006D80E0 /* InfoPlist.strings */ = {
