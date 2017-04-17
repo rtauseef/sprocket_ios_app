@@ -1537,6 +1537,7 @@
 		F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7441A609616004B512E /* RightSwipeButton@2x.png */; };
 		F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1ECD7481A60984F004B512E /* LeftSwipeButton@2x.png */; };
 		F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */; };
+		F2030BEA1EA5420600141855 /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
 		F20D4CA01E87392900A347B5 /* PGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F236FAC51E8721F700FC31B5 /* PGProgressView.m */; };
 		F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
 		F21C66611E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
@@ -5451,6 +5452,7 @@
 				82E3DDC01E831BC00008F600 /* OMG_TN@3x.png in Resources */,
 				82E3DCD41E831BB20008F600 /* eggs_TN@3x.png in Resources */,
 				82E3DE071E831BC10008F600 /* trailer_TN@2x.png in Resources */,
+				F2030BEA1EA5420600141855 /* imgly_license in Resources */,
 				82E3DDB11E831BC00008F600 /* lock.png in Resources */,
 				82E3DDA51E831BC00008F600 /* icecream_tub.png in Resources */,
 				a6c8a9eda54ca7d3639478d0 /* Pacifico.ttf in Resources */,
