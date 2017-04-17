@@ -164,13 +164,29 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     };
 
     self.colorBlock = ^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName) {
-        CGRect cellRect = cell.frame;
-        cellRect.size.height = cellRect.size.width;
-        cell.frame = cellRect;
-        cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
+        CGRect cellFrame = cell.frame;
+        cellFrame.size.height = cellFrame.size.width;
+        cell.frame = cellFrame;
+        cell.colorView.layer.cornerRadius = cellFrame.size.width / 2.0;
         cell.colorView.layer.masksToBounds = YES;
 
-        cell.imageView.image = [UIImage imageNamed:@"ic_adjust_color"];
+        NSArray<NSLayoutConstraint *> *constraints = cell.imageView.superview.constraints;
+
+        [NSLayoutConstraint deactivateConstraints:@[[constraints lastObject]]];
+
+        NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:cell.imageView
+                                     attribute:NSLayoutAttributeCenterY
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:cell.imageView.superview
+                                     attribute:NSLayoutAttributeCenterY
+                                    multiplier:1.0
+                                      constant:0.0];
+
+        centerY.priority = UILayoutPriorityRequired;
+
+        [cell.imageView.superview addConstraint:centerY];
+        [cell setNeedsUpdateConstraints];
+        [cell updateConstraintsIfNeeded];
     };
 
     IMGLYPhotoEffect.allEffects = [self photoEffects];
@@ -295,10 +311,20 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.tintColor = [UIColor HPRowColor];
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
+
+                [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
+                [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:60.0 height:60.0]];
+                [cell.imageView setNeedsUpdateConstraints];
+                [cell.imageView updateConstraintsIfNeeded];
             };
 
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
                 cell.captionLabel.text = nil;
+
+                [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
+                [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
+                [cell.imageView setNeedsUpdateConstraints];
+                [cell.imageView updateConstraintsIfNeeded];
             };
 
             toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
@@ -324,6 +350,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 
                 IMGLYStickerCategory *mothersDayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                     imageURL:[allStickers firstObject].thumbnailURL
+                NSURL *thumbnailURL = [[NSBundle mainBundle] URLForResource:@"imglyStickerCategory" withExtension:@"png"];
+                IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                    imageURL:thumbnailURL
                                                                                     stickers:allStickers];
 
                 IMGLYStickerCategory *graduationCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
@@ -475,6 +504,26 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     }];
 
     return configuration;
+}
+
+- (NSArray<NSLayoutConstraint *> *)thumbnailSizeConstraintsFor:(UIImageView *)imageView width:(CGFloat)width height:(CGFloat)height {
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:imageView
+                                                             attribute:NSLayoutAttributeWidth
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1.0
+                                                              constant:width];
+
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:imageView
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                             multiplier:1.0
+                                                               constant:height];
+
+    return @[widthConstraint, heightConstraint];
 }
 
 - (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name {

@@ -456,6 +456,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
+
 #pragma mark - IMGLYPhotoEditViewControllerDelegate
 
 - (void)photoEditViewController:(IMGLYPhotoEditViewController *)photoEditViewController didSaveImage:(UIImage *)image imageAsData:(NSData *)data {
@@ -470,6 +471,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     self.didChangeProject = YES;
     [self.carouselView reloadItemAtIndex:self.carouselView.currentItemIndex animated:YES];
+
+    [self currentEditedImage];
 }
 
 - (void)photoEditViewControllerDidCancel:(IMGLYPhotoEditViewController *)photoEditViewController {
