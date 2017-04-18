@@ -49,7 +49,7 @@
 }
 
 - (NSURL *)imageURL {
-    return [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@_TN", self.imageName] withExtension:@"png"];
+    return [[NSBundle mainBundle] URLForResource:self.imageName withExtension:@"png"];
 }
 
 - (IMGLYSticker *)imglySticker {
