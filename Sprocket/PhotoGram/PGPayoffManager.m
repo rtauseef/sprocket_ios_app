@@ -12,6 +12,7 @@
 
 #import "PGPayoffManager.h"
 #import "PGPayoffMetadata.h"
+#import "PGOfflinePayoffDatabase.h"
 
 
 static NSString * const kOfflineIDUserDefaultsKey = @"pg-payoff-offline-id";
@@ -71,15 +72,27 @@ static NSString * const kPGPayoffManagerDomain = @"com.hp.sprocket.payoffmanager
 
 // we're resolving payoffs from URLs because that's what we get from link SDK. Ideally, we could get metadata directly
 - (void)resolvePayoffFromURL:(NSURL *)url complete:(void (^)(NSError *error, PGPayoffMetadata *metadata))complete {
+
+
     NSArray * components = url.pathComponents;
     if([url.host isEqualToString:kUniversalURLHost] && [components[1] isEqualToString:kUniversalURLBasePath]) {
         // this is possibly a local URL payoff, extract parameters
-        if( [components[2] isEqualToString:kUniversalURLLocalPath] ) {
+        // URL has format schema://host/meta-payoff/[local]/ownId/payoffId
+        //                  components:    1          2      3     4
+        if( [components[2] isEqualToString:kUniversalURLLocalPath] && components.count >= 5 ) {
             // local path
-            if([components[3] isEqualToString:self.offlineID]) {
+            if([components[3] isEqualToString:self.offlineID] ) {
                 // I myself created this content
 
                 // now load metadata from offline database
+
+                PGPayoffMetadata *  meta = [[PGOfflinePayoffDatabase sharedInstance] loadMetadata:components[4]];
+                if( meta ) {
+                    complete(nil,meta);
+                } else {
+                    complete([NSError errorWithDomain:kPGPayoffManagerDomain code:kPGPayoffErrorNoLocalEntry userInfo:nil],nil);
+                }
+
             } else {
                 // offline content can only be retrieved by the creator
                 complete([NSError errorWithDomain:kPGPayoffManagerDomain code:kPGPayoffErrorLocalIdentityMismatch userInfo:nil],nil);

@@ -34,6 +34,7 @@ typedef enum {
 @property tPGPayoffMetadataType type;
 @property NSDictionary* data;
 
+
 +(instancetype) offlineVideoPayoffWithAsset:(PHAsset*) asset;
 +(instancetype) offlinePayoffFromDictionary:(NSDictionary *) data;
 +(instancetype) onlineURLPayoff:(NSURL *) url;
@@ -42,5 +43,8 @@ typedef enum {
 
 // helper methods to access meta
 -(NSURL*) URL;
+-(NSString*) assetIdentifier;
+
+-(PHAsset*) fetchPHAsset;
 
 @end

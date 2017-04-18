@@ -26,7 +26,7 @@
 #import "PGSurveyManager.h"
 #import "PGWebViewerViewController.h"
 #import "PGLinkSettings.h"
-#import "PGLinkReaderViewController.h"
+#import "PGScanViewController.h"
 
 #import "NSLocale+Additions.h"
 #import "UIViewController+Trackable.h"
@@ -166,7 +166,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellLinkReader: {
-            [self presentViewController:[PGLinkReaderViewController new] animated:YES completion:nil];
+            [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
             break;
         }
         default:

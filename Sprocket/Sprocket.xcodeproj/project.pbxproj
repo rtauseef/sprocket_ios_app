@@ -1432,6 +1432,8 @@
 		976F68C41EA56F2300E1FA14 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C31EA56F2300E1FA14 /* PGPayoffManager.m */; };
 		976F68C91EA5846300E1FA14 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */; };
 		976F68CC1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 976F68CB1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m */; };
+		97FDEBEA1EA6C69600C5B9F1 /* PGScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FDEBE81EA6C69600C5B9F1 /* PGScanViewController.m */; };
+		97FDEBEB1EA6C69600C5B9F1 /* PGScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97FDEBE91EA6C69600C5B9F1 /* PGScanViewController.xib */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9bc6d26a21b34aa8d35b5b42 /* 1_turquoise_frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 821852B71D626A96001288D9 /* 1_turquoise_frame_TN@2x.png */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
@@ -2684,6 +2686,9 @@
 		976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffProcessor.m; sourceTree = "<group>"; };
 		976F68CA1EA5893100E1FA14 /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		976F68CB1EA5893100E1FA14 /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
+		97FDEBE71EA6C69600C5B9F1 /* PGScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGScanViewController.h; sourceTree = "<group>"; };
+		97FDEBE81EA6C69600C5B9F1 /* PGScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGScanViewController.m; sourceTree = "<group>"; };
+		97FDEBE91EA6C69600C5B9F1 /* PGScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGScanViewController.xib; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -3004,6 +3009,7 @@
 		65DA24741E85B96A00034955 /* Watermark */ = {
 			isa = PBXGroup;
 			children = (
+				97FDEBF11EA6D3AC00C5B9F1 /* ViewControllers */,
 				976F68B91EA56E4E00E1FA14 /* Payoffs */,
 				6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */,
 				65DA24851E85E31F00034955 /* link-icon.png */,
@@ -3805,6 +3811,16 @@
 				976F68C81EA5846300E1FA14 /* PGPayoffProcessor.m */,
 			);
 			name = Payoffs;
+			sourceTree = "<group>";
+		};
+		97FDEBF11EA6D3AC00C5B9F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				97FDEBE71EA6C69600C5B9F1 /* PGScanViewController.h */,
+				97FDEBE81EA6C69600C5B9F1 /* PGScanViewController.m */,
+				97FDEBE91EA6C69600C5B9F1 /* PGScanViewController.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CCED9C5819F972E100ACC969 /* Web View */ = {
@@ -4909,6 +4925,7 @@
 				82A11CFF1E5FB93B00E7F8FC /* cat-coffee.png in Resources */,
 				82A11D071E5FB93B00E7F8FC /* cat-fries.png in Resources */,
 				82E3D9E81E82EEED0008F600 /* glasses_1_TN.png in Resources */,
+				97FDEBEB1EA6C69600C5B9F1 /* PGScanViewController.xib in Resources */,
 				82E3DA0A1E82EEED0008F600 /* heart_2_TN@2x.png in Resources */,
 				82A11D4F1E5FB93B00E7F8FC /* panda-mask.png in Resources */,
 				E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */,
@@ -6356,6 +6373,7 @@
 				F2E785301DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
+				97FDEBEA1EA6C69600C5B9F1 /* PGScanViewController.m in Sources */,
 				82E3DEBA1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
 				F2E7852B1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,

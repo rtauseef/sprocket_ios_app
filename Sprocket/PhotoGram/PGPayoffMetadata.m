@@ -69,6 +69,25 @@ NSString * const kPGPayoffDataKey = @"data";
     return [NSURL URLWithString:self.data[kPGPayoffMetadataURLKey]];
 }
 
+- (NSString *)assetIdentifier {
+    return self.data[kPGPayoffMetadataAssetIdentifierKey];
+}
+
+- (PHAsset*)fetchPHAsset {
+    NSString * id = self.assetIdentifier;
+    if( id ) {
+        PHFetchOptions * options = [PHFetchOptions new];
+        PHFetchResult *  res = [PHAsset fetchAssetsWithLocalIdentifiers:@[id] options:options];
+        if( res.count > 0 ) {
+            return [res objectAtIndex:0];
+        }
+    }
+
+    return nil;
+
+
+}
+
 
 -(void) generateId {
     // creates new random ID

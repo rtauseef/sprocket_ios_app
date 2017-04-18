@@ -11,8 +11,6 @@
 //
 
 #import <HPPRFlickrPhotoProvider.h>
-#import <HPPRFacebookPhotoProvider.h>
-#import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 
 #import "PGLandingMainPageViewController.h"
@@ -24,13 +22,10 @@
 #import "PGWebViewerViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGCameraManager.h"
-#import "PGAnalyticsManager.h"
 #import "PGSideBarMenuItems.h"
 #import "PGSocialSourcesCircleView.h"
-#import "PGSocialSourcesManager.h"
-#import "NSLocale+Additions.h"
-#import "UIFont+Style.h"
-#import "PGLinkReaderViewController.h"
+#import "PGScanViewController.h"
+#import "PGLinkSettings.h"
 
 #import <MP.h>
 
@@ -325,7 +320,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (IBAction)linkScanTapped:(id)sender
 {
-    [self presentViewController:[PGLinkReaderViewController new] animated:YES completion:nil];
+    [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
 }
 
 - (IBAction)cameraTapped:(id)sender
