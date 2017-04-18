@@ -219,11 +219,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             photoEditorBuilder.titleViewConfigurationClosure = self.titleBlock;
 
             photoEditorBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
-                // Workaround to fix saving image bug on slower devices.
-                button.enabled = NO;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    button.enabled = YES;
-                });
+                button.accessibilityLabel = @"editor-tool-apply-btn";
             };
 
             PGEmbellishmentMetric *autofixMetric = [[PGEmbellishmentMetric alloc] initWithName:@"Auto-fix" andCategoryType:PGEmbellishmentCategoryTypeEdit];
@@ -279,6 +275,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         [builder configureFilterToolController:^(IMGLYFilterToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
 
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"filter-tool-apply-btn";
+            };
+
             toolBuilder.filterCellConfigurationClosure = ^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
                 cell.captionLabel.text = nil;
                 [cell.selectionLabel removeFromSuperview];
@@ -302,6 +302,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
         [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"frame-tool-apply-btn";
+            };
 
             toolBuilder.frameDataSourceConfigurationClosure = ^(IMGLYFrameDataSource * _Nonnull dataSource) {
                 dataSource.allFrames = [[PGFrameManager sharedInstance] imglyFrames];
@@ -345,6 +349,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
 
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"sticker-tool-apply-btn";
+            };
+
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
                 NSArray<IMGLYSticker *> *allStickers = [[PGStickerManager sharedInstance] imglyStickers];
                 NSURL *thumbnailURL = [[NSBundle mainBundle] URLForResource:@"imglyStickerCategory" withExtension:@"png"];
@@ -372,10 +380,18 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
 
             toolBuilder.colorActionButtonConfigurationClosure = self.colorBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"sticker-color-tool-apply-btn";
+            };
         }];
 
         [builder configureStickerOptionsToolController:^(IMGLYStickerOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"sticker-options-tool-apply-btn";
+            };
 
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum StickerAction action) {
                 if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
@@ -392,6 +408,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         [builder configureTextToolController:^(IMGLYTextToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
 
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"text-tool-apply-btn";
+            };
+
             toolBuilder.textViewConfigurationClosure = ^(UITextView * _Nonnull textView) {
                 static NSInteger numTextFields = 0;
 
@@ -402,6 +422,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
         [builder configureTextFontToolController:^(IMGLYTextFontToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"text-font-tool-apply-btn";
+            };
 
             toolBuilder.actionButtonConfigurationClosure = ^(IMGLYLabelCaptionCollectionViewCell * _Nonnull cell, NSString * _Nonnull action) {
                 cell.captionLabel.text = nil;
@@ -417,10 +441,18 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
 
             toolBuilder.textColorActionButtonConfigurationClosure = self.colorBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"text-color-tool-apply-btn";
+            };
         }];
 
         [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"text-options-tool-apply-btn";
+            };
 
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum TextAction action) {
                 UIImage *image;
@@ -449,6 +481,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
         [builder configureTransformToolController:^(IMGLYTransformToolControllerOptionsBuilder * _Nonnull toolBuilder) {
             toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
+                button.accessibilityLabel = @"transform-tool-apply-btn";
+            };
 
             toolBuilder.allowFreeCrop = NO;
 
