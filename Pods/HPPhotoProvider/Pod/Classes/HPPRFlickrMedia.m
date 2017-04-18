@@ -39,6 +39,7 @@
         self.createdTime = [dateFormatter dateFromString:dateString];
         
         self.text = [attributes objectForKey:@"title"];
+        self.mediaType = kHPRMediaTypeImage;
     }
     
     return self;

@@ -51,6 +51,7 @@
         }
         
         self.placeName = [[attributes objectForKey:@"place"] objectForKey:@"name"];
+        self.mediaType = kHPRMediaTypeImage;
     }
     
     return self;

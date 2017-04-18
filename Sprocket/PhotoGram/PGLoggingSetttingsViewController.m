@@ -31,19 +31,27 @@ static NSString* kInfoString     = @"Info";
 static NSString* kDebugString    = @"Debug";
 static NSString* kVerboseString  = @"Verbose";
 
-static int kPhotogramCellIndex            = 0;
-static int kSvgCellIndex                  = 1;
-static int kClearLogsCellIndex            = 2;
-static int kTestLogsCellIndex             = 3;
-static int kMailLogsCellIndex             = 4;
-static int kCrashAppCellIndex             = 5;
-static int kExceptionAppCellIndex         = 6;
-static int kHideSvgMessagesIndex          = 7;
-static int kEnableExtraSocialSourcesIndex = 8;
-static int kEnablePushNotificationsIndex  = 9;
-static int kDisplayNotificationMsgCenterIndex = 10;
-static int kEnableMultiPrintIndex         = 11;
-static int kEnableWatermarkIndex          = 12;
+enum {
+    kPhotogramCellIndex = 0,
+    kSvgCellIndex,
+    kClearLogsCellIndex,
+    kTestLogsCellIndex,
+    kMailLogsCellIndex,
+    kCrashAppCellIndex,
+    kExceptionAppCellIndex,
+    kHideSvgMessagesIndex,
+    kEnableExtraSocialSourcesIndex,
+    kEnablePushNotificationsIndex,
+    kDisplayNotificationMsgCenterIndex,
+    kEnableMultiPrintIndex,
+    kEnableWatermarkIndex,
+    kEnableVideoPrintIndex,
+
+    kCellIndexMax // keep this on last position so we have a source for number of rows
+};
+
+
+
 
 NSString * const kFeatureCodeAll = @"hpway";
 NSString * const kFeatureCodeLink = @"link";
@@ -170,7 +178,7 @@ NSString * const kFeatureCodeLink = @"link";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 13;
+    NSInteger numberOfRows = kCellIndexMax;
     
     if ([self levelPickerIsShown]){
         
@@ -190,13 +198,19 @@ NSString * const kFeatureCodeLink = @"link";
         cell = [self createPickerCell];
         
     } else {
-        if( kPhotogramCellIndex == indexPath.row ) {
+        NSUInteger selectedRow = indexPath.row;
+        if ([self levelPickerIsShown] && selectedRow > self.pickerIndexPath.row) {
+            selectedRow--;
+        }
+
+        
+        if( kPhotogramCellIndex == selectedRow ) {
             self.photogramCell = [self createLogLevelCell: @"Photogram" logLevel:[self stringForLogLevel:pgLogLevel]];
             cell = self.photogramCell;
-        } else if (kSvgCellIndex == indexPath.row ) {
+        } else if (kSvgCellIndex == selectedRow ) {
             self.svgCell = [self createLogLevelCell: @"SVG/Other" logLevel:[self stringForLogLevel:(ddLogLevel << PG_LOG_SHIFT)]];
             cell = self.svgCell;
-        } else if( kMailLogsCellIndex == indexPath.row) {
+        } else if( kMailLogsCellIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"mailLogs"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"mailLogs"];
@@ -207,35 +221,35 @@ NSString * const kFeatureCodeLink = @"link";
                 cell.textLabel.text = @"Mail logs";
             #endif
             cell.textLabel.font = self.photogramCell.textLabel.font;
-        } else if( kClearLogsCellIndex == indexPath.row) {
+        } else if( kClearLogsCellIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"clearLogs"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"clearLogs"];
             }
             cell.textLabel.text = @"Clear logs";
             cell.textLabel.font = self.photogramCell.textLabel.font;
-        } else if( kTestLogsCellIndex == indexPath.row) {
+        } else if( kTestLogsCellIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"testLogs"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"testLogs"];
             }
             cell.textLabel.text = @"Generate test messages";
             cell.textLabel.font = self.photogramCell.textLabel.font;
-        } else if (kCrashAppCellIndex == indexPath.row) {
+        } else if (kCrashAppCellIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"crashApp"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"crashApp"];
             }
             cell.textLabel.text = @"Crash app";
             cell.textLabel.font = self.photogramCell.textLabel.font;
-        } else if (kExceptionAppCellIndex == indexPath.row) {
+        } else if (kExceptionAppCellIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"throwException"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"throwException"];
             }
             cell.textLabel.text = @"Throw Exception";
             cell.textLabel.font = self.photogramCell.textLabel.font;
-        } else if (kHideSvgMessagesIndex == indexPath.row) {
+        } else if (kHideSvgMessagesIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"hideSvgMsgs"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"hideSvgMsgs"];
@@ -244,7 +258,7 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[[PGLogger sharedInstance] hideSvgMessages]];
-        } else if (kEnableExtraSocialSourcesIndex == indexPath.row) {
+        } else if (kEnableExtraSocialSourcesIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableExtraSocialSources"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enableExtraSocialSources"];
@@ -258,21 +272,21 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.text = @"App restart is required";
-        } else if (kEnablePushNotificationsIndex == indexPath.row) {
+        } else if (kEnablePushNotificationsIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enablePushNotifications"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enablePushNotifications"];
             }
             
             cell.textLabel.text = @"Enable push notifications";
-        } else if (kDisplayNotificationMsgCenterIndex == indexPath.row) {
+        } else if (kDisplayNotificationMsgCenterIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"displayNotificationMsgCenter"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"displayNotificationMsgCenter"];
             }
             
             cell.textLabel.text = @"Display Notification Message Center";
-        } else if (kEnableMultiPrintIndex == indexPath.row) {
+        } else if (kEnableMultiPrintIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableMultiPrint"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enableMultiPrint"];
@@ -283,7 +297,7 @@ NSString * const kFeatureCodeLink = @"link";
             } else {
                 cell.textLabel.text = @"Enable Multi-Print";
             }
-        } else if (kEnableWatermarkIndex == indexPath.row) {
+        } else if (kEnableWatermarkIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableWatermark"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableWatermark"];
@@ -292,10 +306,21 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings linkEnabled]];
+        } else if(kEnableVideoPrintIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableVideoPrint"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableVideoPrint"];
+            }
+            cell.textLabel.text = @"Video Print Enabled";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGLinkSettings videoPrintEnabled]];
         }
+        
+         cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
     }
     
-    cell.hidden = ![self enableFeature:indexPath.row forCode:self.unlockCode];
+   
     
     return cell;
 }
@@ -357,6 +382,9 @@ NSString * const kFeatureCodeLink = @"link";
             } else if (kEnableWatermarkIndex == selectedRow) {
                 [PGLinkSettings setLinkEnabled:![PGLinkSettings linkEnabled]];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings linkEnabled]];
+            } else if( kEnableVideoPrintIndex == selectedRow) {
+                [PGLinkSettings setVideoPrintEnabled:![PGLinkSettings videoPrintEnabled]];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings videoPrintEnabled]];
             }
         }
     }
@@ -628,7 +656,7 @@ NSString * const kFeatureCodeLink = @"link";
     BOOL enabled = NO;
     if ([code isEqualToString:kFeatureCodeAll]) {
         enabled = YES;
-    } else if ([code isEqualToString:kFeatureCodeLink] && kEnableWatermarkIndex == index) {
+    } else if ([code isEqualToString:kFeatureCodeLink] && (kEnableWatermarkIndex == index || kEnableVideoPrintIndex == index) ) {
         enabled = YES;
     }
     return enabled;

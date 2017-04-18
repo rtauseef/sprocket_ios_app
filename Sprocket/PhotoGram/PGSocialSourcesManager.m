@@ -40,6 +40,7 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
     self = [super init];
 
     if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateVideoSetting) name:kPGLinkSettingsChangedNotification object:nil];
         [self setupSocialSources];
     }
 
@@ -94,6 +95,13 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
 
 #pragma mark - Private
 
+-(void) updateVideoSetting {
+    BOOL videoPrintEnabled = [PGLinkSettings videoPrintEnabled];
+    for(PGSocialSource * src in self.socialSources) {
+        src.photoProvider.displayVideos = videoPrintEnabled;
+    }
+}
+
 - (void)setupSocialSources
 {
     NSMutableArray<PGSocialSource *> *sources = [NSMutableArray array];
@@ -111,8 +119,10 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFlickr]];
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]];
     }
-    
+
+
     self.socialSources = sources;
+    [self updateVideoSetting];
 }
 
 @end

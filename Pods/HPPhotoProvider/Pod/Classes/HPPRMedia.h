@@ -15,6 +15,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
 
+typedef enum {
+    kHPRMediaTypeImage,
+    kHPRMediaTypeVideo
+} tHPRMediaType;
+
 @class HPPRSelectPhotoProvider;
 
 @interface HPPRMedia : NSObject
@@ -26,6 +31,7 @@
 @property (nonatomic, strong) NSString *thumbnailUrl;
 @property (nonatomic, strong) NSString *standardUrl;
 @property (nonatomic, strong) NSString *socialMediaImageUrl;
+@property (assign, nonatomic) tHPRMediaType mediaType;
 
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic, strong) UIImage *thumbnailImage;

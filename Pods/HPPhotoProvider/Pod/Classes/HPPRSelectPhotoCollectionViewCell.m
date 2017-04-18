@@ -21,6 +21,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
 @interface HPPRSelectPhotoCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mediaTypeImageView; // overlay for video or live photo icon
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImage;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -36,6 +37,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     [super awakeFromNib];
     self.imageView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRLoadingCellBackgroundColor];
     self.loadingImage.hidden = NO;
+    self.mediaTypeImageView.hidden = YES;
     self.overlayView.alpha = 0;
     self.selectionView.hidden = !self.selectionEnabled;
 }
@@ -45,7 +47,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     if (media) {
         _media = media;
         self.imageView.image = nil;
-        
+        self.mediaTypeImageView.hidden = YES;
         if (media.asset) {
             if (self.retrieveLowQuality) {
                 [media requestThumbnailImageWithCompletion:^(UIImage *image) {
@@ -89,6 +91,13 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
         dispatch_async(dispatch_get_main_queue(), ^ {
             self.imageView.image = image;
             self.loadingImage.hidden = YES;
+            if( _media.mediaType == kHPRMediaTypeVideo ) {
+                // display overlay
+                self.mediaTypeImageView.hidden = NO;
+                // TODO set overlay icon
+            } else {
+                self.mediaTypeImageView.hidden = YES;
+            }
             [self setNeedsLayout];
         });
     }

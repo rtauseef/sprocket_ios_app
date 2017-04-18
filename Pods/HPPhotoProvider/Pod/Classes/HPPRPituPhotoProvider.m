@@ -19,6 +19,8 @@
 
 #pragma mark - Initialization
 
+
+
 + (HPPRPituPhotoProvider *)sharedInstance
 {
     static dispatch_once_t once;

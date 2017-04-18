@@ -14,6 +14,7 @@
 
 NSString * const kPGLinkSettingsEnabled = @"kPGLinkSettingsEnabled";
 NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNotification";
+static NSString * const kPGLinkSettingsVideoPrintEnabled = @"kPGVideoPrintEnabled";
 
 @implementation PGLinkSettings
 
@@ -27,5 +28,17 @@ NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNo
     NSNumber *visible = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsEnabled];
     return visible ? visible.boolValue : NO;
 }
+
++ (void)setVideoPrintEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsVideoPrintEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsChangedNotification object:self];
+}
+
++ (BOOL)videoPrintEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsVideoPrintEnabled];
+    return enabled && enabled.boolValue;
+}
+
 
 @end

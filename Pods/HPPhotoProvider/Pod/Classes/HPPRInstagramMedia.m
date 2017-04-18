@@ -51,7 +51,8 @@
         
         NSInteger createdTimeSince1970 = [[attributes valueForKey:@"created_time"] integerValue];
         self.createdTime = [NSDate dateWithTimeIntervalSince1970:createdTimeSince1970];
-        
+
+        self.mediaType = kHPRMediaTypeImage;
         
         self.text = [attributes valueForKeyPath:@"caption.text"];
         

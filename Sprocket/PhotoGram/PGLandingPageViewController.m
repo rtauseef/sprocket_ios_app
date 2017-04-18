@@ -12,17 +12,11 @@
 
 #import "PGLandingPageViewController.h"
 
-#import <HPPRSelectPhotoCollectionViewController.h>
-#import "PGWebViewerViewController.h"
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
-#import "PGTermsAttributedLabel.h"
 #import "PGPreviewViewController.h"
 #import "PGCameraManager.h"
 #import "UIViewController+trackable.h"
-#import "PGAnalyticsManager.h"
-#import "PGMediaNavigation.h"
-#import "PGPhotoSelection.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 

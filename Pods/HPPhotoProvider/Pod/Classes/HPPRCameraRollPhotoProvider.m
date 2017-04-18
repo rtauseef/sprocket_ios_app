@@ -77,7 +77,6 @@ int const kPhotosPerRequest = 50;
     } else {
         [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)count];
     }
-    
     return [NSString stringWithString:text];
 }
 
@@ -135,9 +134,20 @@ int const kPhotosPerRequest = 50;
     HPPRAlbum *album = [[HPPRAlbum alloc] init];
     album.assetCollection = collection;
     album.photoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
+    if( self.displayVideos ) {
+        album.photoCount += [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+    }
     
     if (album.photoCount > 0) {
         [albums addObject:album];
+    }
+}
+
+-(NSPredicate * ) mediaFetchPredicate {
+    if( self.displayVideos ) {
+        return [NSPredicate predicateWithFormat:@"mediaType = %d || mediaType = %d",PHAssetMediaTypeImage, PHAssetMediaTypeVideo];
+    } else {
+        return [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
     }
 }
 
@@ -145,12 +155,14 @@ int const kPhotosPerRequest = 50;
 {
     PHFetchOptions *allPhotosOptions = [PHFetchOptions new];
     allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    allPhotosOptions.predicate = [self mediaFetchPredicate];
     PHFetchResult *result = nil;
+
     
     if (self.album.assetCollection) {
         result = [PHAsset fetchAssetsInAssetCollection:self.album.assetCollection options:allPhotosOptions];
     } else {
-        result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:allPhotosOptions];
+        result = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     }
     
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:result.count];

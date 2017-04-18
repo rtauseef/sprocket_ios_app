@@ -1,14 +1,19 @@
 //
-//  PGPayoffMetadata.m
-//  Sprocket
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Bruno Dal Bo on 4/17/17.
-//  Copyright © 2017 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "PGPayoffMetadata.h"
 
 NSString * const kPGPayoffMetadataURLKey = @"url";
+NSString * const kPGPayoffMetadataAssetIdentifierKey = @"phasset-id";
 NSString * const kPGPayoffTypeKey = @"type";
 NSString * const kPGPayoffUUIDKey = @"uuid";
 NSString * const kPGPayoffDataKey = @"data";
@@ -28,7 +33,7 @@ NSString * const kPGPayoffDataKey = @"data";
 }
 
 
-+(instancetype) offlinePayoffWithDictionary:(NSDictionary *) data {
++(instancetype)offlinePayoffFromDictionary:(NSDictionary *) data {
     PGPayoffMetadata * ret = [[PGPayoffMetadata alloc] init];
     ret.uuid = data[kPGPayoffUUIDKey];
     if( ! ret.uuid ) {
@@ -70,12 +75,12 @@ NSString * const kPGPayoffDataKey = @"data";
     self.uuid = [[NSUUID UUID] UUIDString];
 }
 
-+(instancetype) offlineVideoPayoffWithAsset:(NSURL*) asset {
++(instancetype) offlineVideoPayoffWithAsset:(PHAsset*) asset; {
     PGPayoffMetadata * ret = [[PGPayoffMetadata alloc] init];
     ret.type = kPGPayoffVideo;
     ret.offline = YES;
     ret.data = @{
-                 kPGPayoffMetadataURLKey : [asset absoluteString]
+            kPGPayoffMetadataAssetIdentifierKey : asset.localIdentifier
     };
     return ret;
 }

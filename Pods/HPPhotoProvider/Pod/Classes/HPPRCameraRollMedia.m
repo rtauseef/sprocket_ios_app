@@ -11,11 +11,7 @@
 //
 
 #import "HPPRCameraRollMedia.h"
-#import "HPPRCameraRollLoginProvider.h"
 #import "HPPRCameraRollPhotoProvider.h"
-#import <CoreLocation/CoreLocation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import <ImageIO/ImageIO.h>
 
 const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
 const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
@@ -36,9 +32,18 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
         self.asset = asset;
         self.location = asset.location;
         self.createdTime = asset.creationDate;
+        self.mediaType = [HPPRCameraRollMedia mediaTypeForAsset:asset];
     }
 
     return self;
+}
+
++ (tHPRMediaType) mediaTypeForAsset:(PHAsset*) asset {
+    if( asset.mediaType == PHAssetMediaTypeVideo ) {
+        return kHPRMediaTypeVideo;
+    } else {
+        return kHPRMediaTypeImage; // default to image if it's not video. audio possibility is "gracefully ignored" =)
+    }
 }
 
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion

@@ -48,6 +48,7 @@ extern NSString * const kIncludeLoginKey;
 @property (nonatomic, strong, readonly) UIImage *icon;
 @property (nonatomic, strong, readonly) UIImage *menuIcon;
 @property (nonatomic, assign, readonly) BOOL hasFolders;
+@property (nonatomic, assign) BOOL displayVideos;
 
 @property (nonatomic, copy, readonly) NSString *title;
 
