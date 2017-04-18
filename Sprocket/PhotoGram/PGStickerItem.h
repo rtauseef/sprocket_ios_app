@@ -15,7 +15,6 @@
 
 @interface PGStickerItem : NSObject
 
-@property (nonatomic, strong) NSString *accessibilityText;
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong, readonly) IMGLYSticker *imglySticker;
