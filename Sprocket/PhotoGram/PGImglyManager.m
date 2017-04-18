@@ -350,40 +350,39 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 
                 IMGLYStickerCategory *mothersDayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                     imageURL:[allStickers firstObject].thumbnailURL
+                                                            
                 NSURL *thumbnailURL = [[NSBundle mainBundle] URLForResource:@"imglyStickerCategory" withExtension:@"png"];
-                IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                    imageURL:thumbnailURL
-                                                                                    stickers:allStickers];
+                                                            
 
                 IMGLYStickerCategory *graduationCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                    imageURL:[allStickers firstObject].thumbnailURL
+                                                                                    imageURL:thumbnailURL
                                                                                     stickers:allStickers];
                 
                 IMGLYStickerCategory *faceCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                              imageURL:[allStickers firstObject].thumbnailURL
+                                                                                              imageURL:thumbnailURL
                                                                                               stickers:allStickers];
                 
                 IMGLYStickerCategory *decorativeCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                              imageURL:[allStickers firstObject].thumbnailURL
+                                                                                              imageURL:thumbnailURL
                                                                                               stickers:allStickers];
                 
                 IMGLYStickerCategory *foodCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                              imageURL:[allStickers firstObject].thumbnailURL
+                                                                                              imageURL:thumbnailURL
                                                                                               stickers:allStickers];
                 
                 IMGLYStickerCategory *birthdayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        imageURL:thumbnailURL
                                                                                         stickers:allStickers];
                 
                 IMGLYStickerCategory *animalCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        imageURL:thumbnailURL
                                                                                         stickers:allStickers];
                 IMGLYStickerCategory *natureCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        imageURL:thumbnailURL
                                                                                         stickers:allStickers];
                 
                 IMGLYStickerCategory *getWellCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                        imageURL:[allStickers firstObject].thumbnailURL
+                                                                                        imageURL:thumbnailURL
                                                                                         stickers:allStickers];
                 
                 dataSource.stickerCategories = @[mothersDayCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
