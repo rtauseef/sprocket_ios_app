@@ -7,7 +7,7 @@ class StickerEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'STICKER'"
+        "label marked:'sticker-tool-screen'"
     end
     
     def close

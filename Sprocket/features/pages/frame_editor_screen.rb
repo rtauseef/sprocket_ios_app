@@ -7,7 +7,7 @@ class FrameEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'FRAME'"
+        "label marked:'frame-tool-screen'"
     end
     
     def close

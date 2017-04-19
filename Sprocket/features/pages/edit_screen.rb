@@ -7,27 +7,27 @@ class EditScreen < Calabash::IBase
     end
 
     def title
-        "UILabel text:'EDITOR'"
+        "label marked:'editor-tool-screen'"
     end
     
     def crop
-        "UIImageView * id:'editCrop'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editCrop'"
     end
     
     def text
-        "UIImageView * id:'editText'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editText'"
     end
     
     def filter
-        "UIImageView * id:'editFilters'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editFilters'"
     end
     
     def frame
-        "UIImageView * id:'editFrame'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editFrame'"
     end
     
     def sticker
-        "UIImageView * id:'editSticker'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editSticker'"
     end
     
     def magic

@@ -7,7 +7,7 @@ class FilterEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'FILTER'"
+        "label marked:'filter-tool-screen'"
     end
     
     

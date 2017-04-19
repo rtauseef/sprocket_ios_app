@@ -7,7 +7,7 @@ class CropEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'CROP'"
+        "label marked:'transform-tool-screen'"
     end
     
     def close
