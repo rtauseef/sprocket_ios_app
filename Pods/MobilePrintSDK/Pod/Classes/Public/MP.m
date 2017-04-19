@@ -350,15 +350,6 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 }
 
 
-- (NSString *)errorTitle:(NSInteger)errorCode {
-    return [MPBTSprocket errorTitle:errorCode];
-}
-
-- (NSString *)errorDescription:(NSInteger)errorCode {
-    return [MPBTSprocket errorDescription:errorCode];
-}
-
-
 - (void)didRefreshMantaInfo:(MPBTSprocket *)manta error:(MantaError)error
 {
     if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didReceiveSprocketBatteryLevel:)]) {

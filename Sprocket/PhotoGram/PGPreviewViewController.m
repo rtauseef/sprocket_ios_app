@@ -247,13 +247,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"PGPreviewDrawerViewController"]){
-        self.drawer = (PGPreviewDrawerViewController *)segue.destinationViewController;
-        self.drawer.delegate = self;
-    }
-}
 
 #pragma mark - Internal Methods
 

@@ -29,7 +29,6 @@ static NSString * const kDeviceListScreenName = @"Devices Screen";
 static const NSInteger kMPBTPairedAccessoriesRecentSection = 0;
 static const NSInteger kMPBTPairedAccessoriesOtherSection  = 1;
 
-
 typedef enum : NSUInteger {
     PairedAccessoriesViewControllerModeForPrint,
     PairedAccessoriesViewControllerModeForDeviceInfo
