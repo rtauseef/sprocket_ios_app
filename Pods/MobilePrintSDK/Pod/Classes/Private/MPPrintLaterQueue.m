@@ -125,21 +125,14 @@ NSString * const kMPOfframpDeleteFromQueue = @"DeleteFromQueue";
     return success;
 }
 
-- (BOOL)completePrintLaterJob:(MPPrintLaterJob *)printLaterJob {
-    BOOL success = [self deleteFile:printLaterJob.id atPath:self.printLaterJobsDirectoryPath];
-
-    if (success && printLaterJob.id != nil) {
-        [self removeCachedJob:printLaterJob.id];
-    }
-
-    return success;
-}
-
 - (BOOL)deletePrintLaterJob:(MPPrintLaterJob *)printLaterJob
 {
-    BOOL success = [self completePrintLaterJob:printLaterJob];
+    BOOL success = [self deleteFile:printLaterJob.id atPath:self.printLaterJobsDirectoryPath];
     
     if (success) {
+        
+        [self removeCachedJob:printLaterJob.id];
+        
         [printLaterJob prepareMetricsForOfframp:kMPOfframpDeleteFromQueue];
         
         NSDictionary *values = @{
@@ -171,22 +164,6 @@ NSString * const kMPOfframpDeleteFromQueue = @"DeleteFromQueue";
     }
     
     return  success;
-}
-
-- (BOOL)deleteEachPrintLaterJobsWithBlock:(void (^)(MPPrintLaterJob *job))deletionBlock {
-    if (deletionBlock == nil) {
-        return [self deleteAllPrintLaterJobs];
-    }
-
-    NSArray<MPPrintLaterJob *> *jobs = [self retrieveAllPrintLaterJobs];
-
-    for (MPPrintLaterJob *job in jobs) {
-        if ([self completePrintLaterJob:job]) {
-            deletionBlock(job);
-        }
-    }
-
-    return YES;
 }
 
 - (MPPrintLaterJob *)retrievePrintLaterJobWithID:(NSString *)jobId

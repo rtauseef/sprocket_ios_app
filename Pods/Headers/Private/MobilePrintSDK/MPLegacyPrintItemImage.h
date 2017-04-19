@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPLegacyPrintItemImage.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPLegacyPrintItemImage.h

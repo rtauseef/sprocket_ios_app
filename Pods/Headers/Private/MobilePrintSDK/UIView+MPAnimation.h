@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/UIView+MPAnimation.h
+../../../MobilePrintSDK/Pod/Classes/Private/UIView+MPAnimation.h

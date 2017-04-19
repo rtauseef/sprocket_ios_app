@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/UITableView+MPHeader.h
+../../../MobilePrintSDK/Pod/Classes/Private/UITableView+MPHeader.h

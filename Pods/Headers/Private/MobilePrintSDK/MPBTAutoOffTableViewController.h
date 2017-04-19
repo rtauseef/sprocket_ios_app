@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/Manta/MPBTAutoOffTableViewController.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTAutoOffTableViewController.h

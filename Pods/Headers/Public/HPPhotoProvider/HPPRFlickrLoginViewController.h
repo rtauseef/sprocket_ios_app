@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRFlickrLoginViewController.h
+../../../HPPhotoProvider/Pod/Classes/HPPRFlickrLoginViewController.h

@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Public/MPBTImageProcessor.h
+../../../MobilePrintSDK/Pod/Classes/Public/MPBTImageProcessor.h

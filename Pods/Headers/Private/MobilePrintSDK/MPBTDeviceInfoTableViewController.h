@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/Manta/MPBTDeviceInfoTableViewController.h
+../../../MobilePrintSDK/Pod/Classes/Private/Manta/MPBTDeviceInfoTableViewController.h

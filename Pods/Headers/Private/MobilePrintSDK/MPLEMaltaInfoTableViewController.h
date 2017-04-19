@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/Malta/MPLEMaltaInfoTableViewController.h
+../../../MobilePrintSDK/Pod/Classes/Private/Malta/MPLEMaltaInfoTableViewController.h

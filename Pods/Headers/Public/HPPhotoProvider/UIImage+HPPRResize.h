@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/Additions/UIImage+HPPRResize.h
+../../../HPPhotoProvider/Pod/Classes/Additions/UIImage+HPPRResize.h

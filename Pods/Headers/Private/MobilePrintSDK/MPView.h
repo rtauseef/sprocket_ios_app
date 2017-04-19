@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPView.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPView.h

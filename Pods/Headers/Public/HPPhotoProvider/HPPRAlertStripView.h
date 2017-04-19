@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRAlertStripView.h
+../../../HPPhotoProvider/Pod/Classes/HPPRAlertStripView.h

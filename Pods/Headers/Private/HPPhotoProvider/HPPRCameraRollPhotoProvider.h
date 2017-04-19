@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRCameraRollPhotoProvider.h
+../../../HPPhotoProvider/Pod/Classes/HPPRCameraRollPhotoProvider.h

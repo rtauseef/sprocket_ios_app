@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPPrintSettingsDelegateManager.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPPrintSettingsDelegateManager.h

@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/MPPrintPageRenderer.h
+../../../MobilePrintSDK/Pod/Classes/Private/MPPrintPageRenderer.h

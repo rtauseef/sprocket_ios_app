@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Public/MPLayoutAlgorithm.h
+../../../MobilePrintSDK/Pod/Classes/Public/MPLayoutAlgorithm.h

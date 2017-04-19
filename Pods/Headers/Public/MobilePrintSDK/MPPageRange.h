@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Public/MPPageRange.h
+../../../MobilePrintSDK/Pod/Classes/Public/MPPageRange.h

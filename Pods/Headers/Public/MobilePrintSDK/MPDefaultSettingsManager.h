@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Public/MPDefaultSettingsManager.h
+../../../MobilePrintSDK/Pod/Classes/Public/MPDefaultSettingsManager.h

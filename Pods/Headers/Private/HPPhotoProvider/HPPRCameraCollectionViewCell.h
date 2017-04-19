@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRCameraCollectionViewCell.h
+../../../HPPhotoProvider/Pod/Classes/HPPRCameraCollectionViewCell.h

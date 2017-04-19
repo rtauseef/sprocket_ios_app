@@ -1,1 +1,1 @@
-../../../../../ios-print-sdk/Pod/Classes/Private/UIImage+MPBundle.h
+../../../MobilePrintSDK/Pod/Classes/Private/UIImage+MPBundle.h

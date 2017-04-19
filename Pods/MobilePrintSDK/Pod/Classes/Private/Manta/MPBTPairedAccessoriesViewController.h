@@ -12,6 +12,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MPBTSprocket.h"
+#import "MPBTImageProcessor.h"
 
 @protocol MPBTPairedAccessoriesViewControllerDelegate;
 
@@ -20,13 +21,11 @@
 @property (weak, nonatomic) id<MPBTPairedAccessoriesViewControllerDelegate> delegate;
 @property (strong, nonatomic) void (^completionBlock)(BOOL userDidSelect);
 
-+ (instancetype)pairedAccessoriesViewControllerForPrint;
-+ (instancetype)pairedAccessoriesViewControllerForDeviceInfo;
-
 + (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion;
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion;
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image processor:(MPBTImageProcessor *) processor usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion;
 
-- (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprockets;
-
++ (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprockets;
 + (NSString *)lastPrinterUsed;
 + (void)setLastPrinterUsed:(NSString *)lastPrinterUsed;
 
@@ -34,6 +33,6 @@
 
 @protocol MPBTPairedAccessoriesViewControllerDelegate <NSObject>
 
-- (void)pairedAccessoriesViewController:(MPBTPairedAccessoriesViewController *)controller didSelectSprocket:(MPBTSprocket *)sprocket;
+- (void)didSelectSprocket:(MPBTSprocket *)sprocket;
 
 @end;
