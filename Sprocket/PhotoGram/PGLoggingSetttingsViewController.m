@@ -367,9 +367,9 @@ NSString * const kFeatureCodeLink = @"link";
             } else if (kEnableWatermarkIndex == selectedRow) {
                 [PGLinkSettings setLinkEnabled:![PGLinkSettings linkEnabled]];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings linkEnabled]];
-            } else if( kEnableVideoPrintIndex == selectedRow) {
-                [PGLinkSettings setVideoPrintEnabled:![PGLinkSettings videoPrintEnabled]];
-                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings videoPrintEnabled]];
+            } else if (kEnableMultiPrintIndex == selectedRow) {
+                [self toggleMultiPrint];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
     }

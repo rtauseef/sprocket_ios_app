@@ -35,7 +35,7 @@ PODS:
     - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
-  - UrbanAirship-iOS-SDK (8.2.0)
+  - UrbanAirship-iOS-SDK (8.2.2)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -74,7 +74,7 @@ SPEC CHECKSUMS:
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  UrbanAirship-iOS-SDK: 7bd900d7876faafe8650753cea2610daeea27457
+  UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
 PODFILE CHECKSUM: 1a7dbc4c13d130b47b04869e306d855159596e7e
 
