@@ -43,7 +43,7 @@ DEPENDENCIES:
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `innovation-master`)
   - iCarousel (= 1.8)
   - LivePaperSDK
-  - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `US5734-rebased`)
+  - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `innovation-master`)
   - TTTAttributedLabel (= 1.10.1)
   - UrbanAirship-iOS-SDK
 
@@ -52,7 +52,7 @@ EXTERNAL SOURCES:
     :branch: innovation-master
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :branch: US5734-rebased
+    :branch: innovation-master
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 CHECKOUT OPTIONS:
@@ -60,7 +60,7 @@ CHECKOUT OPTIONS:
     :commit: 4610194df2199d381bc0ac4dd2ece51dbcda3bd0
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 0d641387b89fccaedb979c45fa909afe137f1f68
+    :commit: e6eac44ed10c757ad69463f9e41a2b82cf34c9a0
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -76,6 +76,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 7bd900d7876faafe8650753cea2610daeea27457
 
-PODFILE CHECKSUM: 83c4d6d3c12f6a326a61ecfe4770604d551321cd
+PODFILE CHECKSUM: 1a7dbc4c13d130b47b04869e306d855159596e7e
 
 COCOAPODS: 1.2.0

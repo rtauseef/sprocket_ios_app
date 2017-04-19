@@ -3,9 +3,9 @@ Feature: Verify Edit screen
   I want to verify Edit features.
 
 @reset
-@TA17012
-Scenario Outline: Verify Edit screen
-    Given I am on the "<social_media_screen_name>" screen
+@done
+Scenario: Verify Edit screen
+    Given I am on the "CameraRoll Preview " screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
     Then I should see "Filter" option
@@ -16,13 +16,7 @@ Scenario Outline: Verify Edit screen
     Then I should see "Adjustment" option
     Then I should see "Close" mark
     Then I should see "Check" mark
-    
-    Examples:
-    | social_media_screen_name|
-    | Instagram Preview  |
-   # | Flickr Preview     |
-    | CameraRoll Preview |
-    
+
     
 @reset
 @regression

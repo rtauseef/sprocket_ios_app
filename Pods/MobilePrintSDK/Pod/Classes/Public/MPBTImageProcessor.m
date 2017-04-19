@@ -15,6 +15,7 @@
 @implementation MPBTImageProcessor
 
 NSString * const kMPBTImageProcessorPrinterSerialNumberKey = @"kMPBTImageProcessorPrinterIdKey";
+NSString * const kMPBTImageProcessorLocalIdentifierKey = @"kMPBTImageProcessorLocalIdentifierIdKey";
 
 - (NSString *)name
 {

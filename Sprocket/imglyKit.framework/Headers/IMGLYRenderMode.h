@@ -1,5 +1,5 @@
 //  This file is part of the PhotoEditor Software Development Kit.
-//  Copyright (C) 2016 9elements GmbH <contact@9elements.com>
+//  Copyright (C) 2016-2017 9elements GmbH <contact@9elements.com>
 //  All rights reserved.
 //  Redistribution and use in source and binary forms, without
 //  modification, are permitted provided that the following license agreement
@@ -44,9 +44,17 @@ typedef NS_OPTIONS(NSUInteger, IMGLYRenderMode) {
      */
     IMGLYRenderModeOverlay = 1 << 6,
     /**
+     *  Inset should be rendered.
+     */
+    IMGLYRenderModeInset = 1 << 7,
+    /**
+     *  Backdrop should be rendered.
+     */
+    IMGLYRenderModeBackdrop = 1 << 8,
+    /**
      *  Everything should be rendered.
      */
     IMGLYRenderModeAll = IMGLYRenderModeAutoEnhancement | IMGLYRenderModeOrientation | IMGLYRenderModeCrop |
-                         IMGLYRenderModeFocus | IMGLYRenderModePhotoEffect | IMGLYRenderModeColorAdjustments |
-                         IMGLYRenderModeOverlay
+    IMGLYRenderModeFocus | IMGLYRenderModePhotoEffect | IMGLYRenderModeColorAdjustments |
+    IMGLYRenderModeOverlay | IMGLYRenderModeInset | IMGLYRenderModeBackdrop
 };

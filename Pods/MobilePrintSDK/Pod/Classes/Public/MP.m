@@ -87,8 +87,10 @@ NSString * const kMPPrinterPaperAreaYPoints = @"printer_paper_area_y_points";
 
 BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
-@interface MP()
+@interface MP ()
+
 @property (weak, nonatomic) id<MPSprocketDelegate> sprocketDelegate;
+
 @end
 
 @implementation MP
@@ -205,7 +207,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 {
     MPPrintLaterJob *firstJob = printLaterJobs[0];
     
-    MPPrintItem *printItem = [firstJob.printItems objectForKey:self.defaultPaper.sizeTitle];
+    MPPrintItem *printItem = [firstJob printItemForPaperSize:self.defaultPaper.sizeTitle];
     printItem.extra = firstJob.extra;
     
     UIViewController *vc = [self printViewControllerWithDelegate:delegate dataSource:dataSource printItem:printItem fromQueue:fromQueue settingsOnly:settingsOnly];
@@ -283,8 +285,8 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
 - (UIViewController *)printLaterViewControllerWithDelegate:(id<MPAddPrintLaterDelegate>)delegate printLaterJob:(MPPrintLaterJob *)printLaterJob
 {
-    MPPrintItem *printItem = [printLaterJob.printItems objectForKey:self.defaultPaper.sizeTitle];
-
+    MPPrintItem *printItem = [printLaterJob printItemForPaperSize:self.defaultPaper.sizeTitle];
+    
     MPPageSettingsTableViewController *pageSettingsTableViewController;
     MPPageSettingsTableViewController *previewViewController;
     
@@ -338,6 +340,15 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 {
     [[MPBTSessionController sharedController] closeSession];
 }
+
+- (NSString *)errorTitle:(NSInteger)errorCode {
+    return [MPBTSprocket errorTitle:errorCode];
+}
+
+- (NSString *)errorDescription:(NSInteger)errorCode {
+    return [MPBTSprocket errorDescription:errorCode];
+}
+
 
 - (void)didRefreshMantaInfo:(MPBTSprocket *)manta error:(MantaError)error
 {
@@ -393,10 +404,41 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
 
     if (1 == pairedSprockets.count) {
-        EAAccessory *device = (EAAccessory *)[pairedSprockets objectAtIndex:0];
+        EAAccessory *device = (EAAccessory *)[pairedSprockets firstObject];
         [MPBTDeviceInfoTableViewController presentAnimated:animated device:device usingController:controller  andCompletion:completion];
     } else {
         [MPBTPairedAccessoriesViewController presentAnimatedForDeviceInfo:animated usingController:controller andCompletion:completion];
+    }
+}
+
+- (void)presentBluetoothDeviceSelectionFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(BOOL success))completion {
+    MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
+    NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
+
+    if (pairedSprockets.count == 0) {
+        [accessoriesViewController presentNoPrinterConnectedAlert:controller showConnectSprocket:YES];
+
+        if (completion) {
+            completion(NO);
+        }
+
+    } else if (pairedSprockets.count == 1) {
+        if (![MPBTSprocket sharedInstance].accessory) {
+            [MPBTSprocket sharedInstance].accessory = [pairedSprockets firstObject];
+        }
+
+        if (completion) {
+            completion(YES);
+        }
+
+    } else {
+        accessoriesViewController.completionBlock = ^(BOOL selected) {
+            if (completion) {
+                completion(selected);
+            }
+        };
+
+        [controller showViewController:accessoriesViewController sender:nil];
     }
 }
 
@@ -410,17 +452,29 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
     
     if (0 == pairedSprockets.count) {
-        [MPBTPairedAccessoriesViewController presentNoPrinterConnectedAlert:controller showConnectSprocket:YES];
+        MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
+        [accessoriesViewController presentNoPrinterConnectedAlert:controller showConnectSprocket:YES];
+
     } else if (1 == pairedSprockets.count) {
-        EAAccessory *device = (EAAccessory *)[pairedSprockets objectAtIndex:0];
+        EAAccessory *device = (EAAccessory *)[pairedSprockets firstObject];
         [MPBTSprocket sharedInstance].accessory = device;
         MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
         progressView.viewController = controller;
         [progressView printToDevice:image processor:processor refreshCompletion:completion];
+
     } else {
-        [MPBTPairedAccessoriesViewController presentAnimatedForPrint:animated image:image processor:processor usingController:controller andPrintCompletion:completion];
+        MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
+
+        accessoriesViewController.completionBlock = ^(BOOL selected) {
+            MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
+            progressView.viewController = controller;
+           [progressView printToDevice:image processor:processor refreshCompletion:completion];
+        };
+
+        [controller showViewController:accessoriesViewController sender:nil];
     }
 }
+
 
 #pragma mark - Setter methods
 

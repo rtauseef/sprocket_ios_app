@@ -572,7 +572,22 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  */
 - (void)closeAccessorySession;
 
+/*!
+ * @abstract Parses a sprocket error code into an error title
+ * @param errorCode error code
+ * @return Localized error title
+ */
+- (NSString *)errorTitle:(NSInteger)errorCode;
+
+/*!
+ * @abstract Parses a sprocket error code into an error description
+ * @param errorCode error code
+ * @return Localized error description
+ */
+- (NSString *)errorDescription:(NSInteger)errorCode;
+
 - (void)presentBluetoothLePeripheralsFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
+
 /*!
  * @abstract Displays the list of sprockets paired with the iPhone/iPad
  * @discussion This method prepares an instance of a view controller with the paired sprockets, and displays it modally.
@@ -581,6 +596,16 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @param completion A block to call when the display animation is complete
  */
 - (void)presentBluetoothDevicesFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
+
+/*!
+ * @abstract Displays the list of sprockets paired with the iPhone/iPad for selection ONLY IF there are more than one printer connected.
+ * @discussion This method prepares an instance of a view controller with the paired sprockets, and displays it modally. The selected sprocket will be set as default for printing.
+ * If there is only one sprocket connected this method will call the completion block immediatelly. If there is no sprockets connected this method will display an alert.
+ * @param controller The controller used as the parent for displaying the modal view controller
+ * @param animated A boolean indicating whether or not to animate the display
+ * @param completion A block to call when the display animation is complete
+ */
+- (void)presentBluetoothDeviceSelectionFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(BOOL success))completion;
 
 /*!
  * @abstract Launches a headless print, only displaying device selection if multiple devices are connected

@@ -11,14 +11,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <imglyKit/imglyKit-Swift.h>
 #import "PGStickerItem.h"
 
 @interface PGStickerManager : NSObject
 
 + (PGStickerManager *)sharedInstance;
 
-- (PGStickerItem *)stickerByIndex:(NSInteger)index;
-- (PGStickerItem *)stickerByAccessibilityText:(NSString *)accessibilityText;
-- (NSUInteger)stickersCount;
+- (NSArray<IMGLYSticker *> *)imglyStickers;
 
 @end

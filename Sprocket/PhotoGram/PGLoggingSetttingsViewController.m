@@ -43,7 +43,6 @@ enum {
     kEnableExtraSocialSourcesIndex,
     kEnablePushNotificationsIndex,
     kDisplayNotificationMsgCenterIndex,
-    kEnableMultiPrintIndex,
     kEnableWatermarkIndex,
     kEnableVideoPrintIndex,
 
@@ -286,17 +285,6 @@ NSString * const kFeatureCodeLink = @"link";
             }
             
             cell.textLabel.text = @"Display Notification Message Center";
-        } else if (kEnableMultiPrintIndex == selectedRow) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"enableMultiPrint"];
-            if (!cell) {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enableMultiPrint"];
-            }
-
-            if ([PGFeatureFlag isMultiPrintEnabled]) {
-                cell.textLabel.text = @"Disable Multi-Print";
-            } else {
-                cell.textLabel.text = @"Enable Multi-Print";
-            }
         } else if (kEnableWatermarkIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableWatermark"];
             if (!cell) {
@@ -376,9 +364,6 @@ NSString * const kFeatureCodeLink = @"link";
             } else if (kDisplayNotificationMsgCenterIndex == selectedRow) {
                 // Note-- you must enable messaging before this will work
                 [[UAirship defaultMessageCenter] display];
-            } else if (kEnableMultiPrintIndex == selectedRow) {
-                [self toggleMultiPrint];
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             } else if (kEnableWatermarkIndex == selectedRow) {
                 [PGLinkSettings setLinkEnabled:![PGLinkSettings linkEnabled]];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings linkEnabled]];
@@ -406,11 +391,6 @@ NSString * const kFeatureCodeLink = @"link";
 
 
 #pragma mark - Mailing Logfile
-
-- (void)toggleMultiPrint {
-    BOOL enabled = [PGFeatureFlag isMultiPrintEnabled];
-    [PGFeatureFlag setMultiPrintEnabled:!enabled];
-}
 
 - (void)enablePushNotifications {
     // User notifications will not be enabled until userPushNotificationsEnabled is

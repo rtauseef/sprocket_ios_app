@@ -21,9 +21,11 @@
 
 @implementation PGBaseAnalyticsManager
 
-    NSString * const kMetricsTypePhotoSourceKey = @"kMetricsTypePhotoSourceKey";
+NSString * const kMetricsTypePhotoSourceKey = @"kMetricsTypePhotoSourceKey";
 NSString * const kMetricsTypePhotoPositionKey = @"kMetricsTypePhotoPositionKey";
 NSString * const kMetricsTypeLocationKey = @"kMetricsTypeLocationKey";
+NSString * const kMetricsPrintQueueIdKey = @"print_queue_id";
+NSString * const kMetricsPrintQueueCopiesKey = @"copies";
 NSString * const kMetricsOfframpKey = @"off_ramp";
 NSString * const kMetricsAppTypeKey = @"app_type";
 NSString * const kMetricsAppTypeHP = @"HP";

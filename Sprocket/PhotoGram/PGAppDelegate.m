@@ -32,7 +32,7 @@
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
-@interface PGAppDelegate() <MPPrintPaperDelegate>
+@interface PGAppDelegate()
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 @property (assign, nonatomic) NSInteger lastConnectedValue;
@@ -81,7 +81,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     [self initializeUAirship];
 
-    [[MPBTPrintManager sharedInstance] cancelPrintQueue];
+    [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
 
     return YES;
 }
@@ -167,7 +167,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 {
     [MP sharedInstance].handlePrintMetricsAutomatically = NO;
     [MP sharedInstance].uniqueDeviceIdPerApp = NO;
-    [MP sharedInstance].printPaperDelegate = self;
+    [MP sharedInstance].defaultPaper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
     
@@ -207,13 +207,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //                                        UIUserNotificationTypeBadge |
     //                                        UIUserNotificationTypeSound);
     
-}
-
-
-#pragma mark - MPPrintPaperDelegate
-
-- (MPPaper *)defaultPaperForPrintSettings:(MPPrintSettings *)printSettings {
-    return [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
 }
 
 

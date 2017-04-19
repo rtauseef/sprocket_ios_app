@@ -54,14 +54,13 @@ end
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
         frame_value=$frame[$frame_id]['value']
-       
-        selected_frame_status = query("UIImageView index:1",:accessibilityIdentifier)
-    raise "Wrong frame selected!" unless selected_frame_status != nil
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[9]
+    raise "Wrong frame selected!" unless selected_frame_status == nil
     else
         if edit_item == "sticker"
            sticker_value=$sticker[$sticker_id]['value']
-           selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
-           raise "Sticker present!" unless selected_sticker_status.to_s != sticker_value
+           selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier)[0]
+           raise "Sticker present!" unless selected_sticker_status.to_s == nil
         end
     end
 end
@@ -212,15 +211,14 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[6]
-    
+    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[9]
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
 Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
     sticker_value=$sticker[sticker_id]['value']
-    selected_sticker_status = query("UIImageView",:accessibilityIdentifier)[7]
+    selected_sticker_status = query("IMGLYStickerImageView",:accessibilityIdentifier)[0]
+    puts selected_sticker_status
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end
 
@@ -431,46 +429,46 @@ $edit_screen_arr =
             'sticker_54' => {'name' => 'volleyball_TN','value' =>'volleyball'},
             'sticker_55' => {'name' => 'trailer_TN','value' =>'trailer'},
             'sticker_56' => {'name' => 'travel_car_bug_TN','value' =>'travel_car_bug'},
-            'sticker_56' => {'name' => 'travel_car_woody_TN','value' =>'travel_car_woody'},
-            'sticker_57' => {'name' => 'bike_cruiser_TN','value' =>'bike_cruiser'},
-            'sticker_58' => {'name' => 'airplane_TN','value' =>'airplane'},
-            'sticker_59' => {'name' => 'soda_straw_TN','value' =>'soda_straw'},
-            'sticker_60' => {'name' => 'sundae_TN','value' =>'sundae'},
-            'sticker_61' => {'name' => 'icecream_tub_TN','value' =>'icecream_tub'},
-            'sticker_62' => {'name' => 'cupcake_TN','value' =>'cupcake'},
-            'sticker_63' => {'name' => 'bbq_TN','value' =>'bbq'},
-            'sticker_64' => {'name' => 'unicorn_float_TN','value' =>'unicorn_float'},
-            'sticker_65' => {'name' => 'surfboard_TN','value' =>'surfboard'},
-            'sticker_66' => {'name' => 'crown_TN','value' =>'crown'},
-            'sticker_67' => {'name' => 'birthdayHat_TN','value' =>'birthdayHat'},
-            'sticker_68' => {'name' => 'diamond_TN','value' =>'diamond'},
-            'sticker_69' => {'name' => 'feather_TN','value' =>'feather'},
-            'sticker_70' => {'name' => 'stars_TN','value' =>'stars'},
-            'sticker_71' => {'name' => 'starhp_TN','value' =>'starhp'},
-            'sticker_72' => {'name' => 'cat_TN','value' =>'cat'},
-            'sticker_73' => {'name' => 'smiley_TN','value' =>'smiley'}
+            'sticker_57' => {'name' => 'travel_car_woody_TN','value' =>'travel_car_woody'},
+            'sticker_58' => {'name' => 'bike_cruiser_TN','value' =>'bike_cruiser'},
+            'sticker_59' => {'name' => 'airplane_TN','value' =>'airplane'},
+            'sticker_60' => {'name' => 'soda_straw_TN','value' =>'soda_straw'},
+            'sticker_61' => {'name' => 'sundae_TN','value' =>'sundae'},
+            'sticker_62' => {'name' => 'icecream_tub_TN','value' =>'icecream_tub'},
+            'sticker_63' => {'name' => 'cupcake_TN','value' =>'cupcake'},
+            'sticker_64' => {'name' => 'bbq_TN','value' =>'bbq'},
+            'sticker_65' => {'name' => 'unicorn_float_TN','value' =>'unicorn_float'},
+            'sticker_66' => {'name' => 'surfboard_TN','value' =>'surfboard'},
+            'sticker_67' => {'name' => 'crown_TN','value' =>'crown'},
+            'sticker_68' => {'name' => 'birthdayHat_TN','value' =>'birthdayHat'},
+            'sticker_69' => {'name' => 'diamond_TN','value' =>'diamond'},
+            'sticker_70' => {'name' => 'feather_TN','value' =>'feather'},
+            'sticker_71' => {'name' => 'stars_TN','value' =>'stars'},
+            'sticker_72' => {'name' => 'starhp_TN','value' =>'starhp'},
+            'sticker_73' => {'name' => 'cat_TN','value' =>'cat'},
+            'sticker_74' => {'name' => 'smiley_TN','value' =>'smiley'}
           }
            $frame ={ 
-            'frame_0' => {'name' => 'Valentines Hearts Frame','value' =>'Hearts_Frame_iOS'},
-            'frame_1' => {'name' => 'Valentines Pink Polka Frame','value' =>'PinkPolka_Frame_iOS'},
-            'frame_2' => {'name' => 'Valentines Red Frame','value' =>'Red_Frame_iOS'},
-            'frame_3' => {'name' => 'Valentines Hearts Overlay Frame','value' =>'HeartsOverlay_Frame_iOS'},
-            'frame_4' => {'name' => 'Valentines Pink Watercolor Frame','value' =>'PinkWatercolor_Frame_iOS'},
-            'frame_5' => {'name' => 'Valentines Red Stripes Frame','value' =>'RedStripes_Frame_iOS'},
-            'frame_6' => {'name' => 'White Frame','value' =>'4_white_frame'},
-            'frame_7' => {'name' => 'Kraft Frame','value' =>'Kraft_Frame_iOS'},
-            'frame_8' => {'name' => 'Floral Frame','value' =>'6_floral_frame3'},
-            'frame_9' => {'name' => 'Orange Frame','value' =>'Orange_Frame_iOS'},
-            'frame_10' => {'name' => 'Polka Dots Frame','value' =>'9_polkadots_frame'},
-            'frame_11' => {'name' => 'Water Blue Frame','value' =>'3_blue_watercolor_frame'},
-            'frame_12' => {'name' => 'Wood Bottom Frame','value' =>'Wood_Frame_iOS'},
-            'frame_13' => {'name' => 'Gradient Frame','value' =>'7_gradient_frame'},
-            'frame_14' => {'name' => 'Sloppy Frame','value' =>'Sloppy_Frame_iOS'},
-            'frame_15' => {'name' => 'Turquoise Frame','value' =>'1_turquoise_frame'},
-            'frame_16' => {'name' => 'Red Frame','value' =>'5_Red_frame'},
-            'frame_17' => {'name' => 'Green Water Color Frame','value' =>'10_green_watercolor_frame2'},
-            'frame_18' => {'name' => 'Floral 2 Frame','value' =>'13_floral2_frame'},
-            'frame_19' => {'name' => 'Pink Spray Paint Frame','value' =>'5_Red_frame'}
+            'frame_0' => {'name' => 'HeartsOverlayFrame_TN','value' =>'HeartsOverlayFrame'},
+            'frame_1' => {'name' => 'SloppyFrame_TN','value' =>'SloppyFrame'},
+            'frame_2' => {'name' => 'RainbowFrame_TN','value' =>'RainbowFrame'},
+            'frame_3' => {'name' => 'WhiteFrame_TN','value' =>'WhiteFrame'},
+            'frame_4' => {'name' => 'StarsOverlayFrame_TN','value' =>'StarsOverlayFrame'},
+            'frame_5' => {'name' => 'PolkadotsFrame_TN','value' =>'PolkadotsFrame'},
+            'frame_6' => {'name' => 'GreyShadowFrame_TN','value' =>'GreyShadowFrame'},
+            'frame_7' => {'name' => 'PinkTriangleFrame_TN','value' =>'PinkTriangleFrame'},
+            'frame_8' => {'name' => 'WhiteRoundedFrame_TN','value' =>'WhiteRoundedFrame'},
+            'frame_9' => {'name' => 'Floral2Frame_TN','value' =>'Floral2Frame'},
+            'frame_10' => {'name' => 'BlueWatercoloFrame_TN','value' =>'BlueWatercoloFrame'},
+            'frame_11' => {'name' => 'FloralOverlayFrame_TN','value' =>'FloralOverlayFrame'},
+            'frame_12' => {'name' => 'RedFrame_TN','value' =>'RedFrame'},
+            'frame_13' => {'name' => 'GradientFrame_TN','value' =>'GradientFrame'},
+            'frame_14' => {'name' => 'TurquoiseFrame_TN','value' =>'TurquoiseFrame'},
+            'frame_15' => {'name' => 'DotsOverlayFrame_TN','value' =>'DotsOverlayFrame'},
+            'frame_16' => {'name' => 'KraftFrame_TN','value' =>'KraftFrame'},
+            'frame_17' => {'name' => 'WhiteBarFrame_TN','value' =>'WhiteBarFrame'},
+            'frame_18' => {'name' => 'PinkSpraypaintFrame_TN','value' =>'PinkSpraypaintFrame'},
+            'frame_19' => {'name' => 'WhiteFullFrame_TN','value' =>'WhiteFullFrame'}
         }
         $font ={ 
             'font_0' => {'name' => 'Helvetica','value' =>'Helvetica'},

@@ -1,22 +1,17 @@
 require_relative '../support/gistfile'
 
-Then(/^I change the language$/) do
-    ios_locale_id, $list_loc = get_ios_locale_id
-    device_name = get_device_name
-    device_type = get_device_type
-    sim_name = get_device_name + " " + device_type
-    os_version = get_os_version.to_s.gsub(".", "-")
-    SimLocale.new.change_sim_locale "#{os_version}","#{sim_name}","#{ios_locale_id}"
-    language_locale =ios_locale_id.split("_")  
-    raise "Language not changed!" unless $curr_language.strip == language_locale[0] 
-end
-
 Then(/^I open cameraroll$/) do
-        
-    if element_exists("button marked:'#{$list_loc['photos_button']}'")
-        sleep(WAIT_SCREENLOAD)
-        touch "button marked:'#{$list_loc['photos_button']}'"
-    end
+    #if ENV['LANGUAGE'] == "Dutch"
+       # if element_exists("UIButtonLabel")
+         #   touch query("UIButtonLabel")
+         #   sleep(STEP_PAUSE)
+       # end
+    #else
+        if element_exists("button marked:'#{$list_loc['photos_button']}'")
+            sleep(WAIT_SCREENLOAD)
+            touch "button marked:'#{$list_loc['photos_button']}'"
+        end
+    #end
     if element_exists("view marked:'#{$list_loc['auth']}' index:0")
         sleep(WAIT_SCREENLOAD)
         touch("view marked:'#{$list_loc['auth']}' index:0")
@@ -31,15 +26,17 @@ Then(/^I verify photos screen title$/) do
 end
 
 Then(/^I touch the option "(.*?)"$/) do |option|
-    if ENV['LANGUAGE'] == "Italian"
-        if option == "How to & Help"
-            touch "UITableViewLabel index:2"
+    if option == "How to & Help"
+        if ENV['LANGUAGE'] == "Italian"
+        
+            #touch "UITableViewLabel index:2"
+            touch "UILabel index:3"
         else
             touch ("view marked:'#{$list_loc[option]}'")
             sleep(STEP_PAUSE)
         end
     else
-        if ENV['LANGUAGE'] == "French"
+        if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French"
             if option == "Reset Sprocket Printer"
                 touch ("UILabel index:0")
             else
@@ -49,14 +46,28 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                     if option == "View User Guide"
                         touch ("UILabel index:2")
                     else
-                        touch ("view marked:'#{$list_loc[option]}'")
-                        sleep(STEP_PAUSE)
+                        if option == "Messenger Support"
+                            puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                        else
+                            touch ("view marked:'#{$list_loc[option]}'")
+                            sleep(STEP_PAUSE)
+                        end
                     end
                 end
             end
         else
-            touch ("view marked:'#{$list_loc[option]}'")
-            sleep(STEP_PAUSE)
+            if option == "Messenger Support"
+                if ENV['LANGUAGE'] == "Mexico-English" || ENV['LANGUAGE'] == "Canada-English" || ENV['LANGUAGE'] == "English-US"
+                
+                    touch ("view marked:'#{$list_loc[option]}'")
+                else
+                    puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                end
+            else
+				sleep(STEP_PAUSE)
+                touch ("view marked:'#{$list_loc[option]}'")
+                sleep(STEP_PAUSE)
+            end
         end
     end
 end
@@ -101,7 +112,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
             else
                 if social_media == "Flickr"
                     sleep(STEP_PAUSE)
-                    if ENV['LANGUAGE'] == "Chinese"
+                    if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                         puts "#{social_media} - Not Applicable for Chinese language!".blue
                     else
                         if ENV['LANGUAGE'] == "Danish"
@@ -115,7 +126,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                     end
                 else
                     if social_media == "QZone"
-                        if ENV['LANGUAGE'] == "Chinese"
+                        if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                             terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_Qzone']}'")
                             raise "not found!" unless terms_of_service_link.length > 0
                             sleep(STEP_PAUSE)
@@ -124,8 +135,8 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                             sleep(STEP_PAUSE)
                         end
                     else
-                        if social_media == "QZone"
-                            if ENV['LANGUAGE'] == "pitu"
+                        if social_media == "pitu"
+                            if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                                 terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_pitu']}'")
                                 raise "not found!" unless terms_of_service_link.length > 0
                                 sleep(STEP_PAUSE)
@@ -158,21 +169,21 @@ def check_options_exist item
             end
     else
          if item == "Pitu" || item == "Qzone"
-             if ENV['LANGUAGE'] == "Chinese"
+             if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                  check_element_exists "view marked:'#{$list_loc[item]}'"
              else
                  puts "#{item} - Applicable only for Chinese language!".blue 
              end
          else
              if item == "Flickr"
-                 if ENV['LANGUAGE'] == "Chinese"
+                 if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                      puts "#{item} - Not Applicable for Chinese language!".blue 
                  else
                      check_element_exists "view marked:'#{$list_loc[item]}'"
                  end
              else
-                 if ENV['LANGUAGE'] == "French"
-                     if item == "Reset Sprocket Printer" || item == "Setup Sprocket Printer" || item == "View User Guide"
+                if item == "Reset Sprocket Printer" || item == "Setup Sprocket Printer" || item == "View User Guide"
+                    if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French"
                         if item == "Reset Sprocket Printer"
                             item1 = query("UILabel index:0", :text)[0]
                         else 
@@ -183,30 +194,43 @@ def check_options_exist item
                             end
                         end
                             raise "localization failed!" unless item1 == $list_loc[item]
-                     end
+                    end
+                     
+                 
                  else
-                     if ENV['LANGUAGE'] == "Italian"
-                        if item == "How to & Help"
-                            item1 = query("UITableViewLabel index:2", :text)[0]
+                     if item == "How to & Help"
+                        if ENV['LANGUAGE'] == "Italian"
+                        
+                            #item1 = query("UITableViewLabel index:2", :text)[0]
+                            item1 = query("UILabel index:3", :text)[0]
                             raise "localization failed!" unless item1 == $list_loc[item]
                         end
                      else
                          if item == "Version"
                              check_element_exists "view {text CONTAINS '#{$list_loc[item]}'}"
                          else
-                             if ENV['LANGUAGE'] == "Danish"
-                                 if item == "Terms and service"
+                             if item == "Terms and service"
+                                if ENV['LANGUAGE'] == "Danish"
                                      link_text = query("PGTermsAttributedLabel", :text)[0] 
                                      raise "localization failed!" unless link_text == $list_loc[item]
                                  end
                              else
-                                 if ENV['LANGUAGE'] == "Turkish"
-                                    if item == "Print to sprocket"
+                                 if item == "Print to sprocket"
+                                    if ENV['LANGUAGE'] == "Turkish"
+                                    
                                         item_text = query("UILabel index:3", :text)[0]
                                         raise "localization failed!" unless item_text == $list_loc[item]
                                     end
                                 else
-                                    check_element_exists "view marked:'#{$list_loc[item]}'"
+                                     if item == "Messenger Support"
+                                         if ENV['LANGUAGE'] == "Mexico-English" || ENV['LANGUAGE'] == "Canada-English" || ENV['LANGUAGE'] == "English-US"
+                                             check_element_exists "view marked:'#{$list_loc[item]}'"
+                                         else
+                                             puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                                         end
+                                     else
+                                        check_element_exists "view marked:'#{$list_loc[item]}'"
+                                     end
                                  end
                              end
                          end
@@ -229,9 +253,21 @@ end
 
 Then /^I should see the popup message for the "(.*?)"$/ do |option|
     if option == "camera access"
-        check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+        if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "Italian"
+            title_name = query("UILabel index:1", :text)[0]
+            raise "localization failed!" unless title_name == $list_loc['camera_access']
+        else
+            check_element_exists "view marked:'#{$list_loc['camera_access']}'"
+        end
         sleep(STEP_PAUSE)
     else
+        if element_exists("view marked:'#{$list_loc['auth']}' index:0")
+            sleep(WAIT_SCREENLOAD)
+            touch("view marked:'#{$list_loc['auth']}' index:0")
+            sleep(STEP_PAUSE)
+            #touch "* id:'previewDownload'"
+            touch @current_page.download
+        end
         check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
         sleep(STEP_PAUSE)
     end
@@ -240,29 +276,44 @@ end
 Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, button|
     if button == "cameraLanding"
         if option == "title"
-            check_element_exists "view marked:'#{$list_loc['camera_access']}'"
-        else
-            check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
-        end
-    else
-        if button == "DownloadButton"
-            if option == "title"
-               sleep(STEP_PAUSE) 
+            if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "Italian"
+                title_name = query("UILabel index:1", :text)[0]
+                raise "localization failed!" unless title_name == $list_loc['camera_access']
             else
-                sleep(STEP_PAUSE) 
+                check_element_exists "view marked:'#{$list_loc['camera_access']}'"
             end
         else
-             if option == "title"
-               sleep(STEP_PAUSE) 
+            if ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch"
+                    content = query("UILabel index:2", :text)[0]
+                    raise "localization failed!" unless content == $list_loc['camera_access_content']
             else
-                sleep(STEP_PAUSE) 
+                check_element_exists "view marked:'#{$list_loc['camera_access_content']}'"
             end
         end
+    #else
+    #    if button == "DownloadButton"
+    #        if option == "title"
+    #           sleep(STEP_PAUSE) 
+    #        else
+     #           sleep(STEP_PAUSE) 
+     #       end
+     #   else
+      #       if option == "title"
+      #         sleep(STEP_PAUSE) 
+       #     else
+       #         sleep(STEP_PAUSE) 
+       #     end
+        #end
     end
 end
 
 Then /^I verify the "(.*?)" button text$/ do |button|
-    check_element_exists "view marked:'#{$list_loc['Edit']}'"
-    sleep(STEP_PAUSE)
+    if button == "Print to sprocket" && ENV['LANGUAGE'] == "Turkish"
+        button_name = query("UITableViewCell index:0", :text)[0]
+        raise "localization failed!" unless button_name == $list_loc[button]
+    else
+        check_element_exists "view marked:'#{$list_loc[button]}'"
+        sleep(STEP_PAUSE)
+    end
 end
  

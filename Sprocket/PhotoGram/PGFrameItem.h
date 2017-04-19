@@ -11,45 +11,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
-extern const NSInteger PGFrameItemsStandardCount;
-
-typedef NS_ENUM (NSInteger, PGFrameItems){
-    PGFrameItemsWhite,
-    PGFrameItemsKraft,
-    PGFrameItemsFloral,
-    PGFrameItemsOrange,
-    PGFrameItemsPolkadots,
-    PGFrameItemsBlueWaterColor,
-    PGFrameItemsWoodBottom,
-    PGFrameItemsGradient,
-    PGFrameItemsSloppy,
-    PGFrameItemsTurquoise,
-    PGFrameItemsRed,
-    PGFrameItemsGreenWaterColor,
-    PGFrameItemsFloralTwo,
-    PGFrameItemsPinkSprayPaint
-};
-
-typedef NS_ENUM (NSInteger, PGFrameItemsValentines){
-    PGFrameItemsValentinesHeart,
-    PGFrameItemsValentinesPinkPolka,
-    PGFrameItemsValentinesRed,
-    PGFrameItemsValentinesHeartsOverlay,
-    PGFrameItemsValentinesPinkWatercolor,
-    PGFrameItemsValentinesRedStripes
-};
+#import <imglyKit/imglyKit-Swift.h>
 
 @interface PGFrameItem : NSObject
 
 @property (nonatomic, strong) NSString *accessibilityText;
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong, readonly) IMGLYFrame *imglyFrame;
 
-+ (PGFrameItem *)frameItemByIndex:(NSInteger)index;
-+ (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText;
+- (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName andPackageName:(NSString *)packageName;
+
 - (UIImage *)thumbnailImage;
 - (UIImage *)frameImage;
-+ (NSInteger)frameCount;
 
 @end
