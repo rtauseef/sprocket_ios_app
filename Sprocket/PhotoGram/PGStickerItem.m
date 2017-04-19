@@ -34,6 +34,7 @@
     return self;
 }
 
+
 - (UIImage *)thumbnailImage
 {
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@_TN", self.imageName]];
