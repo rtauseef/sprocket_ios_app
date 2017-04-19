@@ -26,6 +26,14 @@ class FlickrPreviewScreen < Calabash::IBase
   def share
          "* id:'shareButton'"
   end
+    
+    def download    
+    "* id:'previewDownload'"
+end
+    
+    def more    
+        "UILabel marked:'#{$list_loc['More']}' index:1"
+end
 
   def navigate
     unless current_page?

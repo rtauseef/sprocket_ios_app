@@ -26,46 +26,50 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
-  - HPLinkUtils (0.8.0)
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
   - iCarousel (1.8)
-  - LivePaperSDK (2.0.0):
-    - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
-  - UrbanAirship-iOS-SDK (8.2.0)
+  - UrbanAirship-iOS-SDK (8.2.2)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - GoogleAnalytics-iOS-SDK (= 3.12)
-  - HPPhotoProvider (from `~/src/hp_photo_provider`)
+  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - iCarousel (= 1.8)
-  - LivePaperSDK
-  - MobilePrintSDK (from `~/src/ios-print-sdk`)
+  - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
   - UrbanAirship-iOS-SDK
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
-    :path: "~/src/hp_photo_provider"
+    :branch: master
+    :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :path: "~/src/ios-print-sdk"
+    :branch: bluetooth
+    :git: https://github.com/IPGPTP/ios-print-sdk.git
+
+CHECKOUT OPTIONS:
+  HPPhotoProvider:
+    :commit: 6b6f6423a7e05bafd1cb563618bfb78b1e238963
+    :git: https://github.com/IPGPTP/hp_photo_provider
+  MobilePrintSDK:
+    :commit: df8d1ede6b68a59ca946740c4fc9c438aa65b050
+    :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
-  HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
-  LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  UrbanAirship-iOS-SDK: 7bd900d7876faafe8650753cea2610daeea27457
+  UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
-PODFILE CHECKSUM: e2d163a0453b33cc13d04f8547652f8cce7588bc
+PODFILE CHECKSUM: 94e4456e9d49a0607b38fed7e22c14b82b501d98
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

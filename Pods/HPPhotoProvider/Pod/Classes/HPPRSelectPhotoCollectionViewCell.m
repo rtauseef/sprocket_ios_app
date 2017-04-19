@@ -47,9 +47,15 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
         self.imageView.image = nil;
         
         if (media.asset) {
-            [media requestThumbnailImageWithCompletion:^(UIImage *image) {
-                [self setImage: image];
-            }];
+            if (self.retrieveLowQuality) {
+                [media requestThumbnailImageWithCompletion:^(UIImage *image) {
+                    [self setImage: image];
+                }];
+            } else {
+                [media requestPreviewImageWithCompletion:^(UIImage *image) {
+                    [self setImage: image];
+                }];
+            }
             
             return;
         }

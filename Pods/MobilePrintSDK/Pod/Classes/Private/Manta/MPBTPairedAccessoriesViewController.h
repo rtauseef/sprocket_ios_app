@@ -20,10 +20,13 @@
 @property (weak, nonatomic) id<MPBTPairedAccessoriesViewControllerDelegate> delegate;
 @property (strong, nonatomic) void (^completionBlock)(BOOL userDidSelect);
 
-+ (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion;
-+ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion;
++ (instancetype)pairedAccessoriesViewControllerForPrint;
++ (instancetype)pairedAccessoriesViewControllerForDeviceInfo;
 
-+ (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprockets;
++ (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion;
+
+- (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprockets;
+
 + (NSString *)lastPrinterUsed;
 + (void)setLastPrinterUsed:(NSString *)lastPrinterUsed;
 
@@ -31,6 +34,6 @@
 
 @protocol MPBTPairedAccessoriesViewControllerDelegate <NSObject>
 
-- (void)didSelectSprocket:(MPBTSprocket *)sprocket;
+- (void)pairedAccessoriesViewController:(MPBTPairedAccessoriesViewController *)controller didSelectSprocket:(MPBTSprocket *)sprocket;
 
 @end;
