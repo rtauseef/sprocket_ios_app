@@ -143,7 +143,7 @@
     return @[
              [[PGStickerItem alloc] initWithName:@"Heart Garland" imageName:@"heart-garland" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Hearts" imageName:@"v_hearts" andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Heart 2" imageName:@"heart_2" andPackageName:packageName],
+             [[PGStickerItem alloc] initWithName:@"Heart 2" imageName:@"heart_2" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Hearts Doodle" imageName:@"hearts" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Heart Express" imageName:@"heartExpress" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Xoxo" imageName:@"xoxo" andPackageName:nil].imglySticker,
