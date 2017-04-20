@@ -31,11 +31,11 @@ class EditScreen < Calabash::IBase
     end
     
     def magic
-        "view marked:'Magic'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
     end
     
     def check
-        "UIButton marked:'Save photo'"
+        "UIButton marked:'editor-tool-apply-btn'"
     end
     
     def close

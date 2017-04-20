@@ -10,6 +10,7 @@ end
 
 When(/^I tap "(.*?)" mark$/) do |mark|
     if(mark == "Close")
+      sleep(WAIT_SCREENLOAD)
         touch @current_page.close
 		sleep(STEP_PAUSE)
     else
@@ -211,7 +212,7 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[9]
+    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 

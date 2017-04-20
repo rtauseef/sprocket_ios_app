@@ -15,7 +15,7 @@ class FrameEditorScreen < Calabash::IBase
     end
 
     def save
-       "UIButton marked:'Apply changes'" 
+       "UIButton marked:'frame-tool-apply-btn'"
     end
     
     def navigate
