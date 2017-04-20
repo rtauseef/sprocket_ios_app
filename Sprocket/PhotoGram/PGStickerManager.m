@@ -97,13 +97,63 @@
 - (NSArray<IMGLYSticker *> *)mothersDayCategoryStickers {
     return @[
              [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+             
+//             [[PGStickerItem alloc] initWithName:@"Flowers Left" imageName:@"flowers_left" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Mother's Day" imageName:@"mothers_Day" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Banner Flowers" imageName:@"banner_copy" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Banner Flowers 2" imageName:@"banner_2" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Flowers Right" imageName:@"flowers_right" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Flowers Daises" imageName:@"flowers_daises" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Flower" imageName:@"flower" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Heart Mom" imageName:@"heart_mom" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Pacifier" imageName:@"pacifier_copy" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Bouquet" imageName:@"bouquet" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Rose" imageName:@"rose" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Snails" imageName:@"snails" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Mother Giraffe" imageName:@"mother_giraffe" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Mother Turtle" imageName:@"mother_turtle" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Feather Color" imageName:@"feather_color" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Girl Flower" imageName:@"girl_flower" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Envelope" imageName:@"envelope" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Silhoutte" imageName:@"silhoutte" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Mom Tattoo" imageName:@"mom_tattoo" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Three Rosebuds" imageName:@"three_rosebuds" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Rosebud Leaves" imageName:@"rosebud_leaves" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Three Flowers Bunch" imageName:@"three_flowers_bunch" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Three Daises" imageName:@"three_daises" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"We Love You" imageName:@"we_love_you" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Mom Child Cats" imageName:@"Mom_child_cats" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Aster Flower" imageName:@"aster_flower" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Envelope Flowers" imageName:@"envelope_flowers" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cat Holding Flowers" imageName:@"cat_holding_flwoers" andPackageName:nil].imglySticker,
              ];
 }
 
 
 - (NSArray<IMGLYSticker *> *)graduationCategoryStickers {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Graduation Glasses" imageName:@"g_glasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cap" imageName:@"cap" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"diploma 2" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"g_balloons" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"confetti" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"g_horn" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"medal" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"ribbon" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"books" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"pencil" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"owl" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"nerd_glasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"cap_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"diploma" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"confetti_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"necktie_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"bowie_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"medal_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"book_stack" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"pencil_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"ribbon_graduation" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"flying_caps_graduation" andPackageName:nil].imglySticker,
              ];
 }
 
