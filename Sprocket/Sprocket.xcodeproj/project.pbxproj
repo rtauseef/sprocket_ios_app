@@ -1338,6 +1338,10 @@
 		8271DCD31D46D03500B21549 /* imglyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8271DCD11D46D03500B21549 /* imglyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */; };
 		82813D4D1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */; };
+		8281ECAC1EA948D1003021DB /* xoxo_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECA81EA948D1003021DB /* xoxo_TN.png */; };
+		8281ECAD1EA948D1003021DB /* xoxo_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECA91EA948D1003021DB /* xoxo_TN@2x.png */; };
+		8281ECAE1EA948D1003021DB /* xoxo_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECAA1EA948D1003021DB /* xoxo_TN@3x.png */; };
+		8281ECAF1EA948D1003021DB /* xoxo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECAB1EA948D1003021DB /* xoxo.png */; };
 		8284668D1E4D48D4007C0A25 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8284668F1E4D48D4007C0A25 /* InfoPlist.strings */; };
 		828F02131E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
 		828F02141E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
@@ -3164,6 +3168,10 @@
 		8271DCD11D46D03500B21549 /* imglyKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = imglyKit.framework; sourceTree = "<group>"; };
 		82813D4A1DF7962F00F939E0 /* PGSprocketLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSprocketLandingPageViewController.h; sourceTree = "<group>"; };
 		82813D4B1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSprocketLandingPageViewController.m; sourceTree = "<group>"; };
+		8281ECA81EA948D1003021DB /* xoxo_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xoxo_TN.png; path = Resources/Images/Stickers/StandardUS/xoxo_TN.png; sourceTree = "<group>"; };
+		8281ECA91EA948D1003021DB /* xoxo_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "xoxo_TN@2x.png"; path = "Resources/Images/Stickers/StandardUS/xoxo_TN@2x.png"; sourceTree = "<group>"; };
+		8281ECAA1EA948D1003021DB /* xoxo_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "xoxo_TN@3x.png"; path = "Resources/Images/Stickers/StandardUS/xoxo_TN@3x.png"; sourceTree = "<group>"; };
+		8281ECAB1EA948D1003021DB /* xoxo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xoxo.png; path = Resources/Images/Stickers/StandardUS/xoxo.png; sourceTree = "<group>"; };
 		8284664B1E4D34BC007C0A25 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		8284664C1E4D34BC007C0A25 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		8284664D1E4D34BC007C0A25 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
@@ -5031,6 +5039,10 @@
 				82E3D9251E82EEEC0008F600 /* volleyball_TN@2x.png */,
 				82E3D9261E82EEEC0008F600 /* volleyball_TN@3x.png */,
 				82E3D9271E82EEEC0008F600 /* volleyball.png */,
+				8281ECA81EA948D1003021DB /* xoxo_TN.png */,
+				8281ECA91EA948D1003021DB /* xoxo_TN@2x.png */,
+				8281ECAA1EA948D1003021DB /* xoxo_TN@3x.png */,
+				8281ECAB1EA948D1003021DB /* xoxo.png */,
 				82E3D9281E82EEEC0008F600 /* wave_TN.png */,
 				82E3D9291E82EEEC0008F600 /* wave_TN@2x.png */,
 				82E3D92A1E82EEEC0008F600 /* wave_TN@3x.png */,
@@ -5979,6 +5991,7 @@
 				82A11D5D1E5FB93B00E7F8FC /* pizza_TN@3x.png in Resources */,
 				8212BAFA1EA929FE009E66EC /* three_daisies_TN@3x.png in Resources */,
 				82E3DAB61E82EEED0008F600 /* scuba_mask.png in Resources */,
+				8281ECAF1EA948D1003021DB /* xoxo.png in Resources */,
 				8212BE3B1EA93616009E66EC /* Glasses-blinds_TN.png in Resources */,
 				8212BFC31EA93616009E66EC /* watermelon_TN@3x.png in Resources */,
 				82A11D471E5FB93B00E7F8FC /* ketchup-hotdog.png in Resources */,
@@ -6038,6 +6051,7 @@
 				826BEAF11E85BEAD000BE3FA /* Floral2Frame_TN@2x.png in Resources */,
 				8212BEE31EA93616009E66EC /* Mushrooms-b_TN@2x.png in Resources */,
 				8212BC021EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */,
+				8281ECAC1EA948D1003021DB /* xoxo_TN.png in Resources */,
 				8212BE9F1EA93616009E66EC /* leaves_TN.png in Resources */,
 				8212BAF41EA929FE009E66EC /* snails.png in Resources */,
 				82E3DA1E1E82EEED0008F600 /* heart_banner.png in Resources */,
@@ -6265,6 +6279,7 @@
 				8212BB781EA92A25009E66EC /* book_stack_TN@2x.png in Resources */,
 				826BEB6F1E85BEAD000BE3FA /* WhiteFullFrame_TN.png in Resources */,
 				82E3D9AC1E82EEED0008F600 /* catglasses_TN@3x.png in Resources */,
+				8281ECAD1EA948D1003021DB /* xoxo_TN@2x.png in Resources */,
 				82A11D1B1E5FB93B00E7F8FC /* cloud_angry_TN@2x.png in Resources */,
 				E39EF28419B648E500AAB884 /* RockSalt.ttf in Resources */,
 				F1DCB8291B542D6500CA9AAD /* sanchez-regular.ttf in Resources */,
@@ -6688,6 +6703,7 @@
 				824784441D78DAF700A693D0 /* Support_Printers.jpg in Resources */,
 				8212BFA31EA93616009E66EC /* sun_hat_TN@3x.png in Resources */,
 				8212BB9A1EA92A25009E66EC /* cap_TN@3x.png in Resources */,
+				8281ECAE1EA948D1003021DB /* xoxo_TN@3x.png in Resources */,
 				8212BBC61EA92A26009E66EC /* g_glasses_TN.png in Resources */,
 				826BEB4F1E85BEAD000BE3FA /* StarsOverlayFrame_TN.png in Resources */,
 				82A11D5B1E5FB93B00E7F8FC /* pizza_TN@2x.png in Resources */,
