@@ -1105,8 +1105,8 @@
 		8212BFAC1EA93616009E66EC /* sun_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD491EA93615009E66EC /* sun_TN@3x.png */; };
 		8212BFAD1EA93616009E66EC /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4A1EA93615009E66EC /* sun.png */; };
 		8212BFAE1EA93616009E66EC /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4A1EA93615009E66EC /* sun.png */; };
-		8212BFAF1EA93616009E66EC /* Turkey leg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4B1EA93615009E66EC /* Turkey leg.png */; };
-		8212BFB01EA93616009E66EC /* Turkey leg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4B1EA93615009E66EC /* Turkey leg.png */; };
+		8212BFAF1EA93616009E66EC /* Turkey-leg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4B1EA93615009E66EC /* Turkey-leg.png */; };
+		8212BFB01EA93616009E66EC /* Turkey-leg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4B1EA93615009E66EC /* Turkey-leg.png */; };
 		8212BFB11EA93616009E66EC /* Turkey-leg_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4C1EA93615009E66EC /* Turkey-leg_TN.png */; };
 		8212BFB21EA93616009E66EC /* Turkey-leg_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4C1EA93615009E66EC /* Turkey-leg_TN.png */; };
 		8212BFB31EA93616009E66EC /* Turkey-leg_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BD4D1EA93615009E66EC /* Turkey-leg_TN@2x.png */; };
@@ -3032,7 +3032,7 @@
 		8212BD481EA93615009E66EC /* sun_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sun_TN@2x.png"; path = "Resources/Images/Stickers/NewTinyStickers/sun_TN@2x.png"; sourceTree = "<group>"; };
 		8212BD491EA93615009E66EC /* sun_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sun_TN@3x.png"; path = "Resources/Images/Stickers/NewTinyStickers/sun_TN@3x.png"; sourceTree = "<group>"; };
 		8212BD4A1EA93615009E66EC /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun.png; path = Resources/Images/Stickers/NewTinyStickers/sun.png; sourceTree = "<group>"; };
-		8212BD4B1EA93615009E66EC /* Turkey leg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey leg.png"; path = "Resources/Images/Stickers/NewTinyStickers/Turkey leg.png"; sourceTree = "<group>"; };
+		8212BD4B1EA93615009E66EC /* Turkey-leg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-leg.png"; path = "Resources/Images/Stickers/NewTinyStickers/Turkey-leg.png"; sourceTree = "<group>"; };
 		8212BD4C1EA93615009E66EC /* Turkey-leg_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-leg_TN.png"; path = "Resources/Images/Stickers/NewTinyStickers/Turkey-leg_TN.png"; sourceTree = "<group>"; };
 		8212BD4D1EA93615009E66EC /* Turkey-leg_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-leg_TN@2x.png"; path = "Resources/Images/Stickers/NewTinyStickers/Turkey-leg_TN@2x.png"; sourceTree = "<group>"; };
 		8212BD4E1EA93615009E66EC /* Turkey-leg_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Turkey-leg_TN@3x.png"; path = "Resources/Images/Stickers/NewTinyStickers/Turkey-leg_TN@3x.png"; sourceTree = "<group>"; };
@@ -4519,7 +4519,7 @@
 				8212BD481EA93615009E66EC /* sun_TN@2x.png */,
 				8212BD491EA93615009E66EC /* sun_TN@3x.png */,
 				8212BD4A1EA93615009E66EC /* sun.png */,
-				8212BD4B1EA93615009E66EC /* Turkey leg.png */,
+				8212BD4B1EA93615009E66EC /* Turkey-leg.png */,
 				8212BD4C1EA93615009E66EC /* Turkey-leg_TN.png */,
 				8212BD4D1EA93615009E66EC /* Turkey-leg_TN@2x.png */,
 				8212BD4E1EA93615009E66EC /* Turkey-leg_TN@3x.png */,
@@ -6201,7 +6201,7 @@
 				8212BEB51EA93616009E66EC /* Lips.png in Resources */,
 				82E3D9481E82EEEC0008F600 /* balloons_TN.png in Resources */,
 				8212BEED1EA93616009E66EC /* Mustache-brown_TN@2x.png in Resources */,
-				8212BFAF1EA93616009E66EC /* Turkey leg.png in Resources */,
+				8212BFAF1EA93616009E66EC /* Turkey-leg.png in Resources */,
 				E34D50B4199AB9FE006D80E0 /* HPSimplified_Rg.ttf in Resources */,
 				82E3DAE61E82EEED0008F600 /* sundae.png in Resources */,
 				8212BF011EA93616009E66EC /* oranges_TN@2x.png in Resources */,
@@ -7116,7 +7116,7 @@
 				8212BBE71EA92A26009E66EC /* necktie_graduation_TN.png in Resources */,
 				8212BE801EA93616009E66EC /* horn_TN.png in Resources */,
 				8212BA751EA929FE009E66EC /* feather_color.png in Resources */,
-				8212BFB01EA93616009E66EC /* Turkey leg.png in Resources */,
+				8212BFB01EA93616009E66EC /* Turkey-leg.png in Resources */,
 				8212BF5C1EA93616009E66EC /* scarycat_TN@3x.png in Resources */,
 				82E3DE7D1E831BD10008F600 /* fork.png in Resources */,
 				0a2c4d2bfb8cece1f9d1a367 /* Bitter-Regular.ttf in Resources */,
