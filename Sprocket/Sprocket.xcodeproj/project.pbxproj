@@ -897,8 +897,8 @@
 		8212BEDC1EA93616009E66EC /* moon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE11EA93615009E66EC /* moon_TN@3x.png */; };
 		8212BEDD1EA93616009E66EC /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE21EA93615009E66EC /* moon.png */; };
 		8212BEDE1EA93616009E66EC /* moon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE21EA93615009E66EC /* moon.png */; };
-		8212BEDF1EA93616009E66EC /* Mushrooms b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE31EA93615009E66EC /* Mushrooms b.png */; };
-		8212BEE01EA93616009E66EC /* Mushrooms b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE31EA93615009E66EC /* Mushrooms b.png */; };
+		8212BEDF1EA93616009E66EC /* Mushrooms-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE31EA93615009E66EC /* Mushrooms-b.png */; };
+		8212BEE01EA93616009E66EC /* Mushrooms-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE31EA93615009E66EC /* Mushrooms-b.png */; };
 		8212BEE11EA93616009E66EC /* Mushrooms-b_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE41EA93615009E66EC /* Mushrooms-b_TN.png */; };
 		8212BEE21EA93616009E66EC /* Mushrooms-b_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE41EA93615009E66EC /* Mushrooms-b_TN.png */; };
 		8212BEE31EA93616009E66EC /* Mushrooms-b_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BCE51EA93615009E66EC /* Mushrooms-b_TN@2x.png */; };
@@ -2928,7 +2928,7 @@
 		8212BCE01EA93615009E66EC /* moon_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon_TN@2x.png"; path = "Resources/Images/Stickers/NewTinyStickers/moon_TN@2x.png"; sourceTree = "<group>"; };
 		8212BCE11EA93615009E66EC /* moon_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moon_TN@3x.png"; path = "Resources/Images/Stickers/NewTinyStickers/moon_TN@3x.png"; sourceTree = "<group>"; };
 		8212BCE21EA93615009E66EC /* moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moon.png; path = Resources/Images/Stickers/NewTinyStickers/moon.png; sourceTree = "<group>"; };
-		8212BCE31EA93615009E66EC /* Mushrooms b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mushrooms b.png"; path = "Resources/Images/Stickers/NewTinyStickers/Mushrooms b.png"; sourceTree = "<group>"; };
+		8212BCE31EA93615009E66EC /* Mushrooms-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mushrooms-b.png"; path = "Resources/Images/Stickers/NewTinyStickers/Mushrooms-b.png"; sourceTree = "<group>"; };
 		8212BCE41EA93615009E66EC /* Mushrooms-b_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mushrooms-b_TN.png"; path = "Resources/Images/Stickers/NewTinyStickers/Mushrooms-b_TN.png"; sourceTree = "<group>"; };
 		8212BCE51EA93615009E66EC /* Mushrooms-b_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mushrooms-b_TN@2x.png"; path = "Resources/Images/Stickers/NewTinyStickers/Mushrooms-b_TN@2x.png"; sourceTree = "<group>"; };
 		8212BCE61EA93615009E66EC /* Mushrooms-b_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mushrooms-b_TN@3x.png"; path = "Resources/Images/Stickers/NewTinyStickers/Mushrooms-b_TN@3x.png"; sourceTree = "<group>"; };
@@ -4415,7 +4415,7 @@
 				8212BCE01EA93615009E66EC /* moon_TN@2x.png */,
 				8212BCE11EA93615009E66EC /* moon_TN@3x.png */,
 				8212BCE21EA93615009E66EC /* moon.png */,
-				8212BCE31EA93615009E66EC /* Mushrooms b.png */,
+				8212BCE31EA93615009E66EC /* Mushrooms-b.png */,
 				8212BCE41EA93615009E66EC /* Mushrooms-b_TN.png */,
 				8212BCE51EA93615009E66EC /* Mushrooms-b_TN@2x.png */,
 				8212BCE61EA93615009E66EC /* Mushrooms-b_TN@3x.png */,
@@ -6374,7 +6374,7 @@
 				82E3DB541E82EEEE0008F600 /* v_heart_TN@3x.png in Resources */,
 				8212BEEF1EA93616009E66EC /* Mustache-brown_TN@3x.png in Resources */,
 				82E3DAD41E82EEED0008F600 /* stars_TN@3x.png in Resources */,
-				8212BEDF1EA93616009E66EC /* Mushrooms b.png in Resources */,
+				8212BEDF1EA93616009E66EC /* Mushrooms-b.png in Resources */,
 				82E3DB621E82EEEE0008F600 /* v_xoxo_TN@2x.png in Resources */,
 				8212BE8B1EA93616009E66EC /* icecreamcone_TN@3x.png in Resources */,
 				8212BEA11EA93616009E66EC /* leaves_TN@2x.png in Resources */,
@@ -7228,7 +7228,7 @@
 				8212BE001EA93616009E66EC /* fist_TN.png in Resources */,
 				8212BF8C1EA93616009E66EC /* spider_TN@3x.png in Resources */,
 				8212BEBE1EA93616009E66EC /* LOL.png in Resources */,
-				8212BEE01EA93616009E66EC /* Mushrooms b.png in Resources */,
+				8212BEE01EA93616009E66EC /* Mushrooms-b.png in Resources */,
 				82E3DE5E1E831BD10008F600 /* cat-coffee_TN.png in Resources */,
 				8212BF0C1EA93616009E66EC /* Owl_TN@3x.png in Resources */,
 				8212BACD1EA929FE009E66EC /* mothers_day_TN@3x.png in Resources */,
