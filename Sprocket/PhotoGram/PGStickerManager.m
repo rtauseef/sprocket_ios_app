@@ -78,7 +78,7 @@
                                                                                      stickers:[self birthdayCategoryStickers]];
     
     IMGLYStickerCategory *animalCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.animalCategoryStickers[0].thumbnailURL
+                                                                                     imageURL:self.animalCategoryStickers[8].thumbnailURL
                                                                                      stickers:[self animalCategoryStickers]];
     
     IMGLYStickerCategory *natureCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
