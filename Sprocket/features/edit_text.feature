@@ -22,7 +22,6 @@ Scenario Outline: Verify 'Text' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-  #  | Flickr Preview     |
     | CameraRoll Preview |
 
 @reset

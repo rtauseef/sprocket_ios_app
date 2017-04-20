@@ -31,7 +31,6 @@ Scenario Outline: Verify 'Sticker' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-  #  | Flickr Preview     |
     | CameraRoll Preview |
     
     
@@ -65,7 +64,6 @@ Scenario Outline: Verify Sticker delete option
      Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-  #  | Flickr Preview     |
     | CameraRoll Preview |
     
     
@@ -109,7 +107,15 @@ Scenario: Verify sticker list
                 | Trailer Sticker             |
                 | Soda Straw Sticker          | 
                 | Unicorn Float Sticker       |
-                             
+                | Surf Board Sticker          |
+                | Crown Sticker               |
+                | Stars Sticker               |
+                |Smiley Sticker               |
+                |Birthday Hat Sticker         |
+                |Star Sticker                 |
+                |Cat Face Sticker             |
+                |Feather Sticker              |
+                |Diamond Sticker              |
                 
 @reset
 @regression
@@ -136,6 +142,5 @@ Scenario Outline: Verify sticker editor screen navigation
     Examples:
     | social_media_screen_name       |
     | Instagram Preview  |
-    #| Flickr Preview     |
     | CameraRoll         |    
     

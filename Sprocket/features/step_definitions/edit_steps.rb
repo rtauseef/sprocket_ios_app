@@ -246,14 +246,7 @@ end
 
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
    sleep(WAIT_SCREENLOAD)
-  #frame_name=["Valentines Hearts Frame","Valentines Pink Polka Frame","Valentines Red Frame","Valentines Hearts Overlay Frame","Valentines Pink Watercolor Frame","Valentines Red Stripes Frame","White Frame", "Kraft Frame", "Floral Frame", "Orange Frame", "Polka Dots Frame", "Water Blue Frame", "Wood Bottom Frame", "Gradient Frame", "Sloppy Frame", "Turquoise Frame", "Red Frame","Green Water Color Frame","Floral 2 Frame","Pink Spray Paint Frame"]
-    
-   # sticker_name=["v_xoxo_TN", "heart_2_TN", "v_hearts_TN", "conversation_heart_TN", "heart_wings_TN", "bird_TN", "butterfly_TN", "monster_2_TN", "rosebud_TN", "heart_bouquet_TN", "heart-garland_TN", "pig_TN", "headband_TN", "glasses_1_TN", "hat_TN", "bow2_TN", "balloons_TN", "thought_bubble_TN", "letter_TN", "holding_hands_TN", "love_monster_TN", "heart_arrow_TN", "smiley_TN", "heart_banner_TN", "lock_TN", "v_cupcake_TN", "v_cat_TN", "v_heart_TN", "target_TN", "glasses_TN", "tiara_TN", "heart_crown_TN", "sb_glasses_TN", "glasses_2_TN", "eye_black_TN", "foam_finger_TN", "heart_football3_TN", "banner_TN", "flag_TN", "heart_football_TN", "stars_n_balls_TN", "#_game_time_TN", "football_flames_TN", "love_TN", "i_heart_football_2_TN","owl_TN","goal_post_2_TN","helmet_TN","catglasses_TN","catwhiskers_TN","catears_TN","hearts_TN","xoxo_TN","heartExpress_TN","arrow_TN","crown_TN","birthdayHat_TN","moon_TN","starhp_TN","stars_TN","feather2_TN","feather_TN","leaf3_TN","cupcake_TN","cat_TN","diamond_TN","sunglasses_TN","OMG_TN"]   
-    
-   # font_name=["Helvetica", "Typewriter", "Avenir", "Chalkboard", "Arial", "Kohinoor", "Liberator", "Muncie", "Lincoln", "Airship", "Arvil", "Bender", "Blanch", "Cubano", "Franchise", "Geared", "Governor", "Haymaker", "Homestead", "Maven Pro", "Mensch", "Sullivan", "Tommaso", "Valencia", "Vevey"]
-    
     color_name=["White", "Gray", "Black", "Light blue", "Blue", "Purple", "Orchid", "Pink", "Red", "Orange", "Gold", "Yellow", "Olive", "Green", "Aquamarin"]
-    
  
   i = 0
     if option == "frames"
@@ -288,7 +281,6 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                 while i < 34
 		sticker_id = "sticker_"+"#{i}"
                     macro %Q|I select "#{sticker_id}" sticker|
-                    #macro %Q|I verify blue line indicator is displayed under selected "sticker"|
                     macro %Q|I am on the "StickerOptionEditor" screen|
                     macro %Q|I should see the photo with the "#{sticker_id}" sticker|
                     macro %Q|I touch "Delete"|
@@ -407,7 +399,16 @@ $edit_screen_arr =
             'sticker_32' => {'name' => 'Trailer Sticker','value' =>'Trailer Sticker'},
             'sticker_33' => {'name' => 'Soda Straw Sticker','value' =>'Soda Straw Sticker'},
             'sticker_34' => {'name' => 'Unicorn Float Sticker','value' =>'Unicorn Float Sticker'},
-            
+            'sticker_35' => {'name' => 'Surf Board Sticker', 'value'=>'Surf Board Sticker'},
+            'sticker_36' => {'name' => 'Crown Sticker', 'value'=>'Crown Sticker'},
+            'sticker_37' => {'name' => 'Stars Sticker', 'value'=>'Stars Sticker'},
+            'sticker_38' => {'name' => 'Smiley Sticker', 'value'=>'Smiley Sticker'},
+            'sticker_39' => {'name' => 'Birthday Hat Sticker', 'value'=>'Birthday Hat Sticker'},
+            'sticker_40' => {'name' => 'Star Sticker', 'value'=>'Star Sticker'},
+            'sticker_41' => {'name' => 'Cat Face Sticker', 'value'=>'Cat Face Sticker'},
+            'sticker_42' => {'name' => 'Feather Sticker', 'value'=>'Feather Sticker'},
+            'sticker_43' => {'name' => 'Diamond Sticker', 'value'=>'Diamond Sticker'},
+
           }
            $frame ={ 
             'frame_0' => {'name' => 'HeartsOverlayFrame_TN','value' =>'HeartsOverlayFrame'},
