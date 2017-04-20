@@ -189,14 +189,51 @@
 
 - (NSArray<IMGLYSticker *> *)foodCategoryStickers {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Frappuccino" imageName:@"Frappuccino" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Doughnut" imageName:@"doughnut" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Pizza" imageName:@"pizza" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Taco 2" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Watermelon" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Pineapple" imageName:@"" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Bacon n egg" imageName:@"bacon_egg" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Soda Can" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Ice Cream Cone" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Candy" imageName:@"" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cupcake" imageName:@"cupcake" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sundae" imageName:@"sundae" andPackageName:nil].imglySticker,
+//              [[PGStickerItem alloc] initWithName:@"Cupcake 2" imageName:@"" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Ice Cream Tub" imageName:@"icecream_tub" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat Coffee" imageName:@"cat-coffee" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cat Fries" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Ketchup Hot Dog" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Apple Angry" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Spoon" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Fork" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Soda" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Turkey" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cocoa" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Oranges" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Pie" imageName:@"" andPackageName:nil].imglySticker,
              ];
 }
 
 
 - (NSArray<IMGLYSticker *> *)birthdayCategoryStickers {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Balloons 2" imageName:@"balloons2" andPackageName:nil].imglySticker,
+//            [[PGStickerItem alloc] initWithName:@"Banner" imageName:@"banner" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Birthday Hat" imageName:@"birthdayHat" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cake" imageName:@"cake" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Crown" imageName:@"crown" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cupcake" imageName:@"cupcake" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Fireworks" imageName:@"fireworks" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Gift" imageName:@"gift" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Gift Dog" imageName:@"gift-dog" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Horn" imageName:@"horn" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Party Hat" imageName:@"" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Stars" imageName:@"stars" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Balloons" imageName:@"" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cat Celebrate" imageName:@"" andPackageName:nil].imglySticker,
              ];
 }
 
