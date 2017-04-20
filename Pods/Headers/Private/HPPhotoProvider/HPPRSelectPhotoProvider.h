@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRSelectPhotoProvider.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRSelectPhotoProvider.h

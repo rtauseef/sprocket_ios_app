@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRFlickrMedia.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRFlickrMedia.h

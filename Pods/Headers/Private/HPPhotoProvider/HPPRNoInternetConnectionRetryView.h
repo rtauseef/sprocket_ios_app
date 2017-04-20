@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRNoInternetConnectionRetryView.h

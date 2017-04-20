@@ -18,6 +18,7 @@
 #import <HPPRInstagramPhotoProvider.h>
 #import <DBChooser/DBChooser.h>
 #import <MPBTPrintManager.h>
+#import <Google/SignIn.h>
 
 #import "AirshipKit.h"
 #import "PGAppDelegate.h"
@@ -153,6 +154,10 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         // This was a Chooser response and handleOpenURL automatically ran the completion block
         return YES;
     }
+    
+return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:sourceApplication
+                                      annotation:annotation];
     
     if ([url.scheme isEqual:@"hpsprocket"]) {
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];

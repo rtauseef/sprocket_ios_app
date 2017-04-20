@@ -311,7 +311,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (IBAction)flickrTapped:(id)sender
 {
-    [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
+    [self showSocialNetwork:PGSocialSourceTypeGoogle includeLogin:NO];
 }
 
 - (IBAction)cameraTapped:(id)sender
