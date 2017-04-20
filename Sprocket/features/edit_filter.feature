@@ -18,7 +18,6 @@ Scenario Outline: Verify 'Filter' option
     Examples:
     | social_media_screen_name |
     | Instagram Preview   |
-   # | Flickr Preview     |
     | CameraRoll Preview |
 
 @reset
@@ -34,7 +33,6 @@ Scenario Outline: Verify Filter selection option
     Examples:
     | social_media_screen_name|
     | Instagram Preview       |
-   # | Flickr Preview     |
     | CameraRoll Preview  |
     
 @reset

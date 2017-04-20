@@ -7,7 +7,8 @@ class TextEditScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'Add text'"
+
+        "label marked:'text-tool-screen'"
     end
     def close
         "UIButton marked:'Discard changes'"
@@ -21,7 +22,7 @@ class TextEditScreen < Calabash::IBase
         "UIButton marked:'Cancel'"
     end
     def save
-       "UIButton marked:'Apply changes'" 
+       "UIButton marked:'text-tool-apply-btn'"
     end
     def navigate
         unless current_page?

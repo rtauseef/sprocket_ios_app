@@ -3,10 +3,15 @@ require 'calabash-cucumber/ibase'
 class ShareScreen < Calabash::IBase
 
   def trait
-    mail
-    print
-    save_to_camera
+    #mail
+    #print
+    #save_to_camera
+      icloud_photo_sharing
   end
+    
+    def icloud_photo_sharing
+        "view marked:'iCloud Photo Sharing'"
+    end
 
   def mail
   "view marked:'Mail'"

@@ -28,7 +28,6 @@
         }
         
         self.name = stickerName;
-        self.accessibilityText = stickerName;
         self.imageName = imageName;
     }
     return self;
