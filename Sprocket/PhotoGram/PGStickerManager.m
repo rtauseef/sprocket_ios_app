@@ -70,11 +70,11 @@
                                                                                      stickers:[self decorativeCategoryStickers]];
     
     IMGLYStickerCategory *foodCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.foodCategoryStickers[0].thumbnailURL
+                                                                                     imageURL:self.foodCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self foodCategoryStickers]];
     
     IMGLYStickerCategory *birthdayCategory      = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.birthdayCategoryStickers[0].thumbnailURL
+                                                                                     imageURL:self.birthdayCategoryStickers[3].thumbnailURL
                                                                                      stickers:[self birthdayCategoryStickers]];
     
     IMGLYStickerCategory *animalCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
@@ -82,11 +82,11 @@
                                                                                      stickers:[self animalCategoryStickers]];
     
     IMGLYStickerCategory *natureCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.natureCategoryStickers[0].thumbnailURL
+                                                                                     imageURL:self.natureCategoryStickers[6].thumbnailURL
                                                                                      stickers:[self natureCategoryStickers]];
     
     IMGLYStickerCategory *getWellCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.getWellCategoryStickers[0].thumbnailURL
+                                                                                     imageURL:self.getWellCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self getWellCategoryStickers]];
     
     return @[mothersDayCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
@@ -284,8 +284,8 @@
 //             [[PGStickerItem alloc] initWithName:@"Star Yellow" imageName:@"star_yeallow" andPackageName:nil].imglySticker,
 //             [[PGStickerItem alloc] initWithName:@"Moon" imageName:@"moon" andPackageName:nil].imglySticker,
 //             [[PGStickerItem alloc] initWithName:@"Mushrooms" imageName:@"mushrooms-b" andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Cloud Sun" imageName:@"cloud_sun" andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Cloud Angry" imageName:@"cloud_angry" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cloud Sun" imageName:@"cloud_sun" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cloud Angry" imageName:@"cloud_angry" andPackageName:nil].imglySticker,
             [[PGStickerItem alloc] initWithName:@"Cloud Sad" imageName:@"cloud_sad" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Feather 2" imageName:@"feather2" andPackageName:nil].imglySticker,
 //             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:nil].imglySticker,
