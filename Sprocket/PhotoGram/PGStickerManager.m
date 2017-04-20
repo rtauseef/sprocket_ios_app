@@ -239,19 +239,68 @@
 
 - (NSArray<IMGLYSticker *> *)animalCategoryStickers {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat Face" imageName:@"cat" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cat" imageName:@"cat" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Dog" imageName:@"dog" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Sloth" imageName:@"sloth" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Bird" imageName:@"bird" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Fox" imageName:@"fox" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Sloth" imageName:@"sloth" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Hedgehog" imageName:@"Hedgehog" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Owl" imageName:@"owl" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Panda" imageName:@"Panda" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Panda Mask" imageName:@"panda-mask" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Koala" imageName:@"koala" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat Glasses" imageName:@"catglasses" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Rabbit" imageName:@"rabbit" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Scary Cat" imageName:@"scarycat" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat on Head" imageName:@"cat-on-head" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat Shock" imageName:@"cat-shock" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Cat Grumble" imageName:@"cat-grumble" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat Fries" imageName:@"cat-fries" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Spider" imageName:@"spider" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Bird Color" imageName:@"bird" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Butterfly" imageName:@"butterfly" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Pig" imageName:@"pig" andPackageName:nil].imglySticker,
              ];
 }
 
 - (NSArray<IMGLYSticker *> *)natureCategoryStickers {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Feather" imageName:@"feather" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Hibiscus" imageName:@"hibiscus" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Plum Blossom" imageName:@"plum-blossom" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Rosebud" imageName:@"rosebud" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Palm Tree 2" imageName:@"palm-tree-2" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Rainbow 2" imageName:@"rainbow_2" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Sun" imageName:@"sun" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sun Face" imageName:@"sun_face" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Palm Tree" imageName:@"palmtree" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Wave" imageName:@"wave" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Heart Bouquet" imageName:@"heart-bouquet" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Star" imageName:@"starhp" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Stars" imageName:@"stars" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Star Yellow" imageName:@"star_yeallow" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Moon" imageName:@"moon" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Mushrooms" imageName:@"mushrooms-b" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cloud Sun" imageName:@"cloud_sun" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cloud Angry" imageName:@"cloud_angry" andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Cloud Sad" imageName:@"cloud_sad" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Feather 2" imageName:@"feather2" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Leaves" imageName:@"leaves" andPackageName:nil].imglySticker,
              ];
 }
 
 - (NSArray<IMGLYSticker *> *)getWellCategoryStickers {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Sunglasses" imageName:@"sunglasses" andPackageName:nil].imglySticker,
+              [[PGStickerItem alloc] initWithName:@"Band aid 2" imageName:@"band-aid2" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Kleenex" imageName:@"kleenex" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Measles" imageName:@"measles" andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Medicine" imageName:@"medicine" andPackageName:nil].imglySticker,
+              [[PGStickerItem alloc] initWithName:@"Love Monster" imageName:@"love_monster" andPackageName:nil].imglySticker,
+              [[PGStickerItem alloc] initWithName:@"Letter" imageName:@"letter" andPackageName:nil].imglySticker,
              ];
 }
 
