@@ -337,13 +337,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-tool-apply-btn"];
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
-                NSArray<IMGLYSticker *> *allStickers = [[PGStickerManager sharedInstance] imglyStickers];
-                NSURL *thumbnailURL = [[NSBundle mainBundle] URLForResource:@"imglyStickerCategory" withExtension:@"png"];
-                IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                    imageURL:thumbnailURL
-                                                                                    stickers:allStickers];
-
-                dataSource.stickerCategories = @[category];
+                dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
             };
 
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
