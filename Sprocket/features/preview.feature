@@ -44,8 +44,7 @@ Feature: Verify preview screen from different social media
     And I should see "Print" button
     And I should see "Share" button
 
-  @reset
-  @done
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_camera roll
     Given I am on the "CameraRoll Photo" screen
     When I touch a photos in Camera Roll photos
@@ -55,8 +54,7 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image without margins
 
-  @reset
-  @done
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_instagram
     Given I am on the "Instagram Preview" screen
     When I double tap on the picture
