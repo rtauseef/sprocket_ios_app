@@ -13,6 +13,7 @@ Scenario Outline: Verify 'Text' option
     Then I should see the "TextEdit" screen
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I tap "Save" mark
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
@@ -59,10 +60,11 @@ Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I tap "Close" mark
     Then I should see the "Edit" screen
-    And I should not see the text
+    And I should see the photo with the "text"
     
 @reset
 @regression
@@ -70,6 +72,7 @@ Scenario: Verify text deletion option
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I touch "Delete"
     And I should not see the text
@@ -80,6 +83,7 @@ Scenario: Verify font
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Font" 
     #And I select "Avenir"
@@ -141,6 +145,7 @@ Scenario: Verify text color
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color" 
     And I select "Blue"
@@ -155,6 +160,7 @@ Scenario: Verify color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color" 
     Then I should see the following "Colors" in the screen:
@@ -180,6 +186,7 @@ Scenario: Verify all the colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color"
     Then I verify that all the "colors" are applied successfully
