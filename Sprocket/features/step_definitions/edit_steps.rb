@@ -278,7 +278,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     i= i + 1
                 end
             else
-                while i < 34
+                while i < 43
 		sticker_id = "sticker_"+"#{i}"
                     macro %Q|I select "#{sticker_id}" sticker|
                     macro %Q|I am on the "StickerOptionEditor" screen|
