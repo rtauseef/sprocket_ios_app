@@ -53,9 +53,17 @@
 
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories
 {
-    IMGLYStickerCategory *mothersDayCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.mothersDayCategoryStickers[7].thumbnailURL
-                                                                                     stickers:[self mothersDayCategoryStickers]];
+    IMGLYStickerCategory *mothersDayCategory = nil;
+    
+    if ([NSLocale isChinese]) {
+        mothersDayCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                   imageURL:self.mothersDayChineseCategoryStickers[1].thumbnailURL
+                                                                   stickers:[self mothersDayChineseCategoryStickers]];
+    } else {
+        mothersDayCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                   imageURL:self.mothersDayCategoryStickers[7].thumbnailURL
+                                                                   stickers:[self mothersDayCategoryStickers]];
+    }
     
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
@@ -123,6 +131,35 @@
              [[PGStickerItem alloc] initWithName:@"Mom Child Cats" imageName:@"Mom_child_cats" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Aster Flower" imageName:@"aster_flower" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Envelope Flowers" imageName:@"envelope_flowers" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Cat Holding Flowers" imageName:@"cat_holding_flwoers" andPackageName:nil].imglySticker,
+             ];
+}
+
+- (NSArray<IMGLYSticker *> *)mothersDayChineseCategoryStickers {
+    return @[
+             [[PGStickerItem alloc] initWithName:@"Flowers Left" imageName:@"flowers_left" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Envelope" imageName:@"envelope" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Girl Flower" imageName:@"girl_flower" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Silhoutte" imageName:@"silhouette" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Banner Flowers" imageName:@"banner copy" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Banner Flowers 2" imageName:@"banner_2" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flowers Right" imageName:@"flowers_right" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flowers Daisies" imageName:@"flowers_daisies" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flower" imageName:@"flower" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Pacifier" imageName:@"pacifier-copy" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Bouquet" imageName:@"bouquet" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Rose" imageName:@"rose" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Snails" imageName:@"snails" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mother Giraffe" imageName:@"mother_giraffe" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mother Turtle" imageName:@"mother_turtle" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Feather Color" imageName:@"feather_color" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Envelope Flowers" imageName:@"envelope_flowers" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Three Rosebuds" imageName:@"three_rosebuds" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Rosebud Leaves" imageName:@"rosebud_leaves" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Three Flowers Bunch" imageName:@"three_flower_bunch" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Three Daisies" imageName:@"three_daisies" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mom Child Cats" imageName:@"Mom_child_cats" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Aster Flower" imageName:@"aster_flower" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Cat Holding Flowers" imageName:@"cat_holding_flwoers" andPackageName:nil].imglySticker,
              ];
 }
@@ -296,7 +333,7 @@
              [[PGStickerItem alloc] initWithName:@"Hedgehog" imageName:@"hedgehog" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Owl" imageName:@"Owl" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Panda" imageName:@"Panda" andPackageName:nil].imglySticker,
-//             [[PGStickerItem alloc] initWithName:@"Panda Mask" imageName:@"panda-mask" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Panda Face" imageName:@"panda-face" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Koala" imageName:@"koala" andPackageName:nil].imglySticker,
 //             [[PGStickerItem alloc] initWithName:@"Cat Glasses" imageName:@"catglasses" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Rabbit" imageName:@"rabbit" andPackageName:nil].imglySticker,
@@ -319,12 +356,12 @@
              [[PGStickerItem alloc] initWithName:@"Plum Blossom" imageName:@"plum-blossom" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Rosebud" imageName:@"rosebud" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Palm Tree 2" imageName:@"palm-tree-2" andPackageName:nil].imglySticker,
-//             [[PGStickerItem alloc] initWithName:@"Rainbow 2" imageName:@"rainbow_2" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Rainbow 2" imageName:@"rainbow_2" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Sun" imageName:@"sun" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Sun Face" imageName:@"sun_face" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Palm Tree" imageName:@"palmtree" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Wave" imageName:@"wave" andPackageName:nil].imglySticker,
-//             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Heart Bouquet" imageName:@"heart_bouquet" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Star" imageName:@"starhp" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Stars" imageName:@"stars" andPackageName:nil].imglySticker,
@@ -335,7 +372,7 @@
              [[PGStickerItem alloc] initWithName:@"Cloud Angry" imageName:@"cloud_angry" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Cloud Sad" imageName:@"cloud_sad" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Feather 2" imageName:@"feather2" andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"Flowers" andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"Flowers2" andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Leaves" imageName:@"leaves" andPackageName:nil].imglySticker,
              ];
 }
