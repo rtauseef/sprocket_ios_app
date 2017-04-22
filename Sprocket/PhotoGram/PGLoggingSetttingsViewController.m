@@ -160,7 +160,7 @@ static int kDisplayNotificationMsgCenterIndex = 10;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 12;
+    NSInteger numberOfRows = 11;
     
     if ([self levelPickerIsShown]){
         
