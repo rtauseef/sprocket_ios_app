@@ -73,7 +73,7 @@ DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - Google/SignIn
   - GoogleAnalytics-iOS-SDK (= 3.12)
-  - HPPhotoProvider (from `~/workspace/hp_photo_provider`)
+  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - iCarousel (= 1.8)
   - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
@@ -81,12 +81,16 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
-    :path: "~/workspace/hp_photo_provider"
+    :branch: master
+    :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :branch: bluetooth
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 CHECKOUT OPTIONS:
+  HPPhotoProvider:
+    :commit: 6b6f6423a7e05bafd1cb563618bfb78b1e238963
+    :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: df8d1ede6b68a59ca946740c4fc9c438aa65b050
     :git: https://github.com/IPGPTP/ios-print-sdk.git
@@ -110,6 +114,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
-PODFILE CHECKSUM: 14f5a6a214313337e0505c2c4b9e58e87979581f
+PODFILE CHECKSUM: 3bece028784587831a77d0e22d4f2a0fa4022c10
 
 COCOAPODS: 1.2.0

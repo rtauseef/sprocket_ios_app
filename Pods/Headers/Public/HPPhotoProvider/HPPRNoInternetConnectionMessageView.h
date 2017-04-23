@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRNoInternetConnectionMessageView.h
+../../../HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.h

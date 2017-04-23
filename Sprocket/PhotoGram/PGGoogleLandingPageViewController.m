@@ -26,6 +26,9 @@
 #import "UIViewController+Trackable.h"
 #import "PGMediaNavigation.h"
 
+static NSString * const kGoogleUserNameKey = @"userName";
+static NSString * const kGoogleUserIdKey = @"userID";
+
 @interface PGGoogleLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, HPPRLoginProviderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *signInView;
@@ -53,7 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleCheckProviderNotification:) name:CHECK_PROVIDER_NOTIFICATION object:nil];
     
     [HPPRGooglePhotoProvider sharedInstance].loginProvider.delegate = self;
-    //[self showPhotoGallery];
+    [self showPhotoGallery];
 }
 
 - (void)dealloc
@@ -102,42 +105,16 @@
     [self willSignInToSocialSource:socialSource];
 
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
-        __block NSString *alertText;
-        __block NSString *alertTitle;
-        
         if (loggedIn) {
             [self didSignInToSocialSource:socialSource];
-
-//            [provider userInfoWithRefresh:NO andCompletion:^(NSDictionary *userInfo, NSError *error) {
-//                
-//                if (!error) {
-//                    provider.user = userInfo;
-//
-//                    [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
-//                        [self.spinner removeFromSuperview];
-//
-//                        viewController.provider = provider;
-//                    }];
-//
-//                } else {
-//                    PGLogError(@"Error retrieving user info");
-//                    // An error occurred, we need to handle the error
-//                    // See: https://developers.facebook.com/docs/ios/errors
-//                    
-//                    [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:^(BOOL loggedOut, NSError *error) {
-//                        [self didSignOutToSocialSource:socialSource];
-//                    }];
-//                    
-//                    [self.spinner removeFromSuperview];
-//                    
-//                    alertTitle = NSLocalizedString(@"Error", nil);
-//                    alertText = NSLocalizedString(@"Error retrieving user information.", @"Error retrieving the facebook user information");
-//                    [self showMessage:alertText withTitle:alertTitle];
-//                    
-//                    return;
-//                }
-//            }];
             
+            if (!error) {
+                [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
+                    [self.spinner removeFromSuperview];
+                    
+                    viewController.provider = provider;
+                }];
+            }
         } else if (error) {
             [self didFailSignInToSocialSource:socialSource];
 
@@ -145,7 +122,7 @@
             if (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code) {
                 [self showNoConnectionAvailableAlert];
             } else {
-                [[HPPRFacebookLoginProvider sharedInstance] logoutWithCompletion:nil];
+                [[HPPRGoogleLoginProvider sharedInstance] logoutWithCompletion:nil];
             }
         } else {
             [self.spinner removeFromSuperview];
@@ -166,7 +143,7 @@
 
 - (void)showLogin
 {
-    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeFacebook];
+    PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeGoogle];
     [self willSignInToSocialSource:socialSource];
 
     [[HPPRGoogleLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
@@ -178,7 +155,7 @@
             [self didFailSignInToSocialSource:socialSource];
         } else {
             [self didFailSignInToSocialSource:socialSource];
-            PGLogError(@"FACEBOOK LOGIN ERROR: %@", error);
+            PGLogError(@"GOOGLE LOGIN ERROR: %@", error);
         }
     }];
 }
@@ -197,8 +174,9 @@
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source animated:YES];
     
-    HPPRFacebookPhotoProvider *provider = [HPPRFacebookPhotoProvider sharedInstance];
-    //    [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[provider.user objectForKey:kFacebookUserNameKey] userId:[provider.user objectForKey:kFacebookUserIdKey]];
+    HPPRGoogleLoginProvider *loginProvider = [HPPRGoogleLoginProvider sharedInstance];
+    HPPRGooglePhotoProvider *photoProvider = [HPPRGooglePhotoProvider sharedInstance];
+    [[PGAnalyticsManager sharedManager] switchSource:photoProvider.name userName:[loginProvider.user objectForKey:kGoogleUserNameKey] userId:[loginProvider.user objectForKey:kGoogleUserIdKey]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
 }
@@ -225,7 +203,6 @@
 - (void)didLogoutWithProvider:(HPPRLoginProvider *)loginProvider
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
-    [self showPhotoGallery];
 }
 
 

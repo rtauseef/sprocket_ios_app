@@ -1,1 +1,1 @@
-../../../../../../hp_photo_provider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKProfilePictureView.h
+../../../../HPPhotoProvider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKProfilePictureView.h

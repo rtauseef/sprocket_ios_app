@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>503006244099-o476d7n5ouk2p4023c2ng7uq29krk70i.apps.googleusercontent.com</string>
+	<string>1061247858270-ooo6t5saq65rf3pok0eu9vmqb4kn09q7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.503006244099-o476d7n5ouk2p4023c2ng7uq29krk70i</string>
+	<string>com.googleusercontent.apps.1061247858270-ooo6t5saq65rf3pok0eu9vmqb4kn09q7</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.google.samples.quickstart.SignInExample</string>
+	<string>com.hp.dev.hp-sprocket</string>
 	<key>PROJECT_ID</key>
-	<string>default-demo-app-e4c32</string>
+	<string>sprocket-a5e90</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -23,6 +23,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:503006244099:ios:6fbd6c0efa1b97a8</string>
+	<string>1:1061247858270:ios:a09305ba03c3c2a2</string>
 </dict>
 </plist>

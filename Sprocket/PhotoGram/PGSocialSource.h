@@ -18,6 +18,7 @@
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRFlickrPhotoProvider.h>
+#import <HPPRGooglePhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 #import <HPPRPituPhotoProvider.h>
 #import <HPPRQzonePhotoProvider.h>
@@ -25,6 +26,7 @@
 #import <HPPRFacebookLoginProvider.h>
 #import <HPPRInstagramLoginProvider.h>
 #import <HPPRFlickrLoginProvider.h>
+#import <HPPRGoogleLoginProvider.h>
 #import <HPPRCameraRollLoginProvider.h>
 #import <HPPRPituLoginProvider.h>
 #import <HPPRQzoneLoginProvider.h>

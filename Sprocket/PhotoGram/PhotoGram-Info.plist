@@ -82,7 +82,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.503006244099-o476d7n5ouk2p4023c2ng7uq29krk70i</string>
+				<string>com.googleusercontent.apps.1061247858270-ooo6t5saq65rf3pok0eu9vmqb4kn09q7</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.hp.dev.hp-sprocket</string>
 			</array>
 		</dict>
 	</array>
@@ -111,6 +119,15 @@
 		<string>fbapi</string>
 		<string>fbauth2</string>
 		<string>hpsprocket</string>
+		<string>com.googleusercontent.apps.1061247858270-ooo6t5saq65rf3pok0eu9vmqb4kn09q7</string>
+		<string>com-google-gidconsent-google</string>
+		<string>com-google-gidconsent-youtube</string>
+		<string>com-google-gidconsent</string>
+		<string>com.google.gppconsent.2.4.1</string>
+		<string>com.google.gppconsent.2.4.0</string>
+		<string>googlechrome</string>
+		<string>googlechrome-x-callback</string>
+		<string> https://www.googleapis.com/auth/plus.login</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
