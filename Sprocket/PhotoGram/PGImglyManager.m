@@ -26,7 +26,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
 @property (nonatomic, strong) NSDictionary *menuItems;
 
-@property (nonatomic, copy) void (^titleBlock)(UIView * _Nonnull view);
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 
 @end
@@ -157,20 +156,32 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
 {
-    self.titleBlock = ^(UIView * _Nonnull view) {
-        if ([view isKindOfClass:[UILabel class]]) {
-            ((UILabel *)view).text = nil;
-        }
-    };
-
     self.colorBlock = ^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName) {
-        CGRect cellRect = cell.frame;
-        cellRect.size.height = cellRect.size.width;
-        cell.frame = cellRect;
-        cell.colorView.layer.cornerRadius = cellRect.size.width / 2;
+        CGRect cellFrame = cell.frame;
+        cellFrame.size.height = cellFrame.size.width;
+        cell.frame = cellFrame;
+        cell.colorView.layer.cornerRadius = cellFrame.size.width / 2.0;
         cell.colorView.layer.masksToBounds = YES;
 
-        cell.imageView.image = [UIImage imageNamed:@"ic_adjust_color"];
+        cell.accessibilityLabel = colorName;
+
+        NSArray<NSLayoutConstraint *> *constraints = cell.imageView.superview.constraints;
+
+        [NSLayoutConstraint deactivateConstraints:@[[constraints lastObject]]];
+
+        NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:cell.imageView
+                                     attribute:NSLayoutAttributeCenterY
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:cell.imageView.superview
+                                     attribute:NSLayoutAttributeCenterY
+                                    multiplier:1.0
+                                      constant:0.0];
+
+        centerY.priority = UILayoutPriorityRequired;
+
+        [cell.imageView.superview addConstraint:centerY];
+        [cell setNeedsUpdateConstraints];
+        [cell updateConstraintsIfNeeded];
     };
 
     IMGLYPhotoEffect.allEffects = [self photoEffects];
@@ -200,15 +211,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             photoEditorBuilder.backgroundColor = [UIColor HPRowColor];
             photoEditorBuilder.allowsPreviewImageZoom = NO;
 
-            photoEditorBuilder.titleViewConfigurationClosure = self.titleBlock;
+            photoEditorBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"editor-tool-screen"];
 
-            photoEditorBuilder.applyButtonConfigurationClosure = ^(IMGLYButton * _Nonnull button) {
-                // Workaround to fix saving image bug on slower devices.
-                button.enabled = NO;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    button.enabled = YES;
-                });
-            };
+            photoEditorBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"editor-tool-apply-btn"];
 
             PGEmbellishmentMetric *autofixMetric = [[PGEmbellishmentMetric alloc] initWithName:@"Auto-fix" andCategoryType:PGEmbellishmentCategoryTypeEdit];
 
@@ -261,7 +266,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Filters configuration
 
         [builder configureFilterToolController:^(IMGLYFilterToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"filter-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"filter-tool-apply-btn"];
+
 
             toolBuilder.filterCellConfigurationClosure = ^(IMGLYFilterCollectionViewCell * _Nonnull cell, IMGLYPhotoEffect * _Nonnull effect) {
                 cell.captionLabel.text = nil;
@@ -285,7 +292,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Frames configuration
 
         [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"frame-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"frame-tool-apply-btn"];
 
             toolBuilder.frameDataSourceConfigurationClosure = ^(IMGLYFrameDataSource * _Nonnull dataSource) {
                 dataSource.allFrames = [[PGFrameManager sharedInstance] imglyFrames];
@@ -295,10 +303,22 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.tintColor = [UIColor HPRowColor];
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
+
+                cell.accessibilityLabel = frame.accessibilityLabel;
+
+                [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
+                [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:60.0 height:60.0]];
+                [cell.imageView setNeedsUpdateConstraints];
+                [cell.imageView updateConstraintsIfNeeded];
             };
 
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
                 cell.captionLabel.text = nil;
+
+                [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
+                [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
+                [cell.imageView setNeedsUpdateConstraints];
+                [cell.imageView updateConstraintsIfNeeded];
             };
 
             toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
@@ -317,21 +337,21 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Stickers configuration
 
         [builder configureStickerToolController:^(IMGLYStickerToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"sticker-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-tool-apply-btn"];
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
-                NSArray<IMGLYSticker *> *allStickers = [[PGStickerManager sharedInstance] imglyStickers];
-                IMGLYStickerCategory *category = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                    imageURL:[allStickers firstObject].thumbnailURL
-                                                                                    stickers:allStickers];
-
-                dataSource.stickerCategories = @[category];
+                dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
             };
 
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
                 cell.tintColor = [UIColor HPBlueColor];
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
+            };
+
+            toolBuilder.stickerButtonConfigurationClosure = ^(IMGLYIconCollectionViewCell * _Nonnull cell, IMGLYSticker * _Nonnull sticker) {
+                cell.accessibilityLabel = sticker.accessibilityLabel;
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
@@ -342,13 +362,16 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
         [builder configureStickerColorToolController:^(IMGLYStickerColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"sticker-color-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-color-tool-apply-btn"];
 
             toolBuilder.colorActionButtonConfigurationClosure = self.colorBlock;
+
         }];
 
         [builder configureStickerOptionsToolController:^(IMGLYStickerOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"sticker-options-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-options-tool-apply-btn"];
 
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum StickerAction action) {
                 if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
@@ -363,7 +386,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Text configuration
 
         [builder configureTextToolController:^(IMGLYTextToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"text-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-tool-apply-btn"];
 
             toolBuilder.textViewConfigurationClosure = ^(UITextView * _Nonnull textView) {
                 static NSInteger numTextFields = 0;
@@ -374,11 +398,14 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
         [builder configureTextFontToolController:^(IMGLYTextFontToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"text-font-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-font-tool-apply-btn"];
 
             toolBuilder.actionButtonConfigurationClosure = ^(IMGLYLabelCaptionCollectionViewCell * _Nonnull cell, NSString * _Nonnull action) {
                 cell.captionLabel.text = nil;
                 cell.label.highlightedTextColor = [UIColor HPBlueColor];
+
+                cell.accessibilityLabel = cell.label.font.familyName;
 
                 UIFont *font = [UIFont fontWithName:cell.label.font.familyName size:28.0];
                 cell.label.font = font;
@@ -387,13 +414,15 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
         [builder configureTextColorToolController:^(IMGLYTextColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"text-color-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-color-tool-apply-btn"];
 
             toolBuilder.textColorActionButtonConfigurationClosure = self.colorBlock;
         }];
 
         [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"text-options-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-options-tool-apply-btn"];
 
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum TextAction action) {
                 UIImage *image;
@@ -421,7 +450,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Transform/Crop configuration
 
         [builder configureTransformToolController:^(IMGLYTransformToolControllerOptionsBuilder * _Nonnull toolBuilder) {
-            toolBuilder.titleViewConfigurationClosure = self.titleBlock;
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"transform-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"transform-tool-apply-btn"];
 
             toolBuilder.allowFreeCrop = NO;
 
@@ -443,6 +473,41 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     }];
 
     return configuration;
+}
+
+- (void (^)(IMGLYButton * _Nonnull))applyButtonBlockWithAccessibilityLabel:(NSString *)label {
+    return ^(IMGLYButton * _Nonnull button) {
+        button.accessibilityLabel = label;
+    };
+}
+
+- (void (^)(UIView * _Nonnull))titleBlockWithAccessibilityLabel:(NSString *)label {
+    return ^(UIView * _Nonnull view) {
+        if ([view isKindOfClass:[UILabel class]]) {
+            ((UILabel *)view).text = nil;
+            view.accessibilityLabel = label;
+        }
+    };
+}
+
+- (NSArray<NSLayoutConstraint *> *)thumbnailSizeConstraintsFor:(UIImageView *)imageView width:(CGFloat)width height:(CGFloat)height {
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:imageView
+                                                             attribute:NSLayoutAttributeWidth
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1.0
+                                                              constant:width];
+
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:imageView
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                             multiplier:1.0
+                                                               constant:height];
+
+    return @[widthConstraint, heightConstraint];
 }
 
 - (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name {
