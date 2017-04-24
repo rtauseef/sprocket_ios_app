@@ -20,7 +20,6 @@
 #import "MPLogger.h"
 #import "MPInterfaceOptions.h"
 #import "MPPrintSettings.h"
-#import "MPBTImageProcessor.h"
 
 @class MPPaper;
 @class MPPrintItem;
@@ -572,7 +571,22 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  */
 - (void)closeAccessorySession;
 
+/*!
+ * @abstract Parses a sprocket error code into an error title
+ * @param errorCode error code
+ * @return Localized error title
+ */
+- (NSString *)errorTitle:(NSInteger)errorCode;
+
+/*!
+ * @abstract Parses a sprocket error code into an error description
+ * @param errorCode error code
+ * @return Localized error description
+ */
+- (NSString *)errorDescription:(NSInteger)errorCode;
+
 - (void)presentBluetoothLePeripheralsFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
+
 /*!
  * @abstract Displays the list of sprockets paired with the iPhone/iPad
  * @discussion This method prepares an instance of a view controller with the paired sprockets, and displays it modally.
@@ -583,25 +597,24 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
 - (void)presentBluetoothDevicesFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(void))completion;
 
 /*!
- * @abstract Launches a headless print, only displaying device selection if multiple devices are connected
- * @discussion This method launches a bluetooth print.
- * @param controller The controller used to display the print job's status
- * @param image The image to print
+ * @abstract Displays the list of sprockets paired with the iPhone/iPad for selection ONLY IF there are more than one printer connected.
+ * @discussion This method prepares an instance of a view controller with the paired sprockets, and displays it modally. The selected sprocket will be set as default for printing.
+ * If there is only one sprocket connected this method will call the completion block immediatelly. If there is no sprockets connected this method will display an alert.
+ * @param controller The controller used as the parent for displaying the modal view controller
  * @param animated A boolean indicating whether or not to animate the display
  * @param completion A block to call when the display animation is complete
  */
-- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated printCompletion:(void(^)(void))completion;
+- (void)presentBluetoothDeviceSelectionFromController:(UIViewController *)controller animated:(BOOL)animated completion:(void(^)(BOOL success))completion;
 
 /*!
  * @abstract Launches a headless print, only displaying device selection if multiple devices are connected
  * @discussion This method launches a bluetooth print.
  * @param controller The controller used to display the print job's status
- * @param image The image to print
- * @param processor The processor to apply to the image prior to printing
  * @param animated A boolean indicating whether or not to animate the display
  * @param completion A block to call when the display animation is complete
  */
-- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image processor:(MPBTImageProcessor *)processor animated:(BOOL)animated printCompletion:(void(^)(void))completion;
+- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated printCompletion:(void(^)(void))completion;
+
 
 /*!
  * @abstract Indicates whether a single sprocket is paired and needs to be updated

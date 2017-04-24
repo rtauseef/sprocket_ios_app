@@ -248,7 +248,7 @@
 - (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
     NSString *query = [NSString stringWithFormat:@"%@/photos", albumID];
-    NSDictionary *fields = @{@"fields":@"name,created_time,images,place,link"};
+    NSDictionary *fields = @{@"fields":@"name,created_time,images,place"};
     if (nil == albumID) {
         query = @"me/photos/uploaded";
     }

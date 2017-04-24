@@ -18,7 +18,7 @@
 static CGFloat    const kProgressViewAnimationDuration = 1.0F;
 static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUpgrade";
 
-@interface MPBTProgressView() <MPBTSprocketDelegate, MPBTImageProcessorDelegate>
+@interface MPBTProgressView() <MPBTSprocketDelegate>
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -27,7 +27,6 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
 @property (strong, nonatomic) UIImage *printJobImage;
 @property (assign, nonatomic) BOOL newJob;
 @property (strong, nonatomic) void(^refreshCompletion)(void);
-@property (strong, nonatomic) MPBTImageProcessor *imageProcessor;
 
 @end
 
@@ -118,24 +117,11 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }];
 }
 
-- (void)sendPrint
-{
-    self.label.text = MPLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer");
-    [[MPBTSprocket sharedInstance] printImage:self.printJobImage numCopies:1];
-}
-
 - (void)printToDevice:(UIImage *)image refreshCompletion:(void(^)(void))completion
 {
-    [self printToDevice:image processor:nil refreshCompletion:completion];
-}
-
-- (void)printToDevice:(UIImage *)image processor:(nullable MPBTImageProcessor *)processor refreshCompletion:(void (^)(void))completion
-{
     self.printJobImage = image;
-    self.imageProcessor = processor;
-    self.imageProcessor.delegate = self;
     self.newJob   = YES;
-    self.label.text = @"";
+    self.label.text = MPLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer");
 
     [self.viewController.view addSubview:self];
     [MPBTSprocket sharedInstance].delegate = self;
@@ -189,14 +175,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }
 
     if (self.printJobImage) {
-        
-        if (self.imageProcessor) {
-            self.label.text = self.imageProcessor.progressText;
-            NSDictionary *options = @{ kMPBTImageProcessorPrinterSerialNumberKey: [MPBTSprocket sharedInstance].accessory.serialNumber };
-            [self.imageProcessor processImage:self.printJobImage withOptions:options];
-        } else {
-            [self sendPrint];
-        }
+        [[MPBTSprocket sharedInstance] printImage:self.printJobImage numCopies:1];
         
         [UIView animateWithDuration:[MPBTProgressView animationDuration]/2 animations:^{
             self.alpha = 1.0;
@@ -210,11 +189,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
 
 - (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
 {
-    if (self.imageProcessor && self.imageProcessor.completed) {
-        [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.4F + 0.4];
-    }else{
-        [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.8F];
-    }
+    [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.8F];
     
     if (MantaErrorNoError != error) {
         [self didReceiveError:sprocket error:error];
@@ -386,26 +361,6 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
                                                                   }
                                                               }];
         [self.alert addAction:defaultAction];
-    }
-}
-
-#pragma mark - MPBTImageProcessorDelegate
-
-- (void)didUpdateProgress:(MPBTImageProcessor *)processor progress:(double)progress
-{
-    [self setProgress:(progress * 0.4)];
-}
-
-- (void)didCompleteProcessing:(MPBTImageProcessor *)processor result:(UIImage *)image error:(NSError *)error
-{
-    if (error) {
-        self.label.text = error.userInfo[NSLocalizedDescriptionKey];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self sendPrint];
-        });
-    } else {
-        self.printJobImage = image;
-        [self sendPrint];
     }
 }
 

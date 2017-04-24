@@ -27,7 +27,7 @@
         self.objectID = [attributes objectForKey:@"id"];
         self.thumbnailUrl = [attributes objectForKey:@"url_m"];
         self.standardUrl = [attributes objectForKey:@"url_o"];
-
+        
         self.userName = [provider.user objectForKey:@"userName"];
         
         self.userProfilePicture = [provider.user objectForKey:@"imageURL"];

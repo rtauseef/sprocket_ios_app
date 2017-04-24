@@ -29,8 +29,7 @@
         self.objectID = [attributes objectForKey:@"id"];
         self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:attributes];
         self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForLargestPhoto:attributes];
-        self.socialMediaImageUrl = [attributes objectForKey:@"link"];
-
+        
         self.userName = [[attributes objectForKey:@"from"] objectForKey:@"name"];
         
         HPPRFacebookPhotoProvider * provider = [HPPRFacebookPhotoProvider sharedInstance];

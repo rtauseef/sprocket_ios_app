@@ -25,7 +25,6 @@
 @property (nonatomic, strong) NSString *userProfilePicture;
 @property (nonatomic, strong) NSString *thumbnailUrl;
 @property (nonatomic, strong) NSString *standardUrl;
-@property (nonatomic, strong) NSString *socialMediaImageUrl;
 
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic, strong) UIImage *thumbnailImage;
