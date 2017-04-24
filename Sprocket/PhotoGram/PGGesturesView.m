@@ -11,7 +11,7 @@
 //
 
 #import "PGGesturesView.h"
-#import "UIImage+imageResize.h"
+#import "UIImage+ImageResize.h"
 #import "UIView+Background.h"
 
 static CGFloat const kMinimumZoomScale = 1.0f;

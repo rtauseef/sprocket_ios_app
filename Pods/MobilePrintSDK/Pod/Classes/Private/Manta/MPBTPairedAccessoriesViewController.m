@@ -167,25 +167,6 @@ typedef enum : NSUInteger {
     [hostController showViewController:vc sender:nil];
 }
 
-+ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
-{
-    [self presentAnimatedForPrint:animated image:image processor:nil usingController:hostController andPrintCompletion:completion];
-}
-
-+ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image processor:(MPBTImageProcessor *) processor usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
-    MPBTPairedAccessoriesViewController *vc = (MPBTPairedAccessoriesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesViewController"];
-    
-    vc.image = image;
-    vc.hostController = hostController;
-    vc.printCompletionBlock = completion;
-    vc.processor = processor;
-    [vc.tableView reloadData];
-    
-    [hostController showViewController:vc sender:nil];
-}
-
 
 #pragma mark - UITableViewDataSource
 

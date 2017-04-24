@@ -743,7 +743,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         return [self handlePrintQueueStatus:status progress:progress];
                     }];
 
-
                     NSString *action = kEventPrintQueueAddSingleAction;
                     if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
                         action = kEventPrintQueueAddMultiAction;

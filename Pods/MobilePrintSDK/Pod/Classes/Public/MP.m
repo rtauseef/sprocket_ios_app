@@ -467,7 +467,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         accessoriesViewController.completionBlock = ^(BOOL selected) {
             MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
             progressView.viewController = controller;
-            [progressView printToDevice:image refreshCompletion:completion];
+            [progressView printToDevice:image processor:processor refreshCompletion:completion];
         };
 
         [controller showViewController:accessoriesViewController sender:nil];

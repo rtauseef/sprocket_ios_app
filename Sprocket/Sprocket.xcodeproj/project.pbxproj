@@ -78,20 +78,14 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
-		6541D4A61E898EAA00FB88A9 /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */; };
 		6541D4A71E898EAA00FB88A9 /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */; };
 		6541D4B91E89C40A00FB88A9 /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */; };
 		6541D4BA1E89C40A00FB88A9 /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */; };
 		6541D4BB1E89C43700FB88A9 /* LinkReaderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6541D4C01E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */; };
 		6541D4C11E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */; };
-		65DA24781E85B99600034955 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24771E85B99600034955 /* PGWatermarkProcessor.m */; };
 		65DA24791E85B99600034955 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24771E85B99600034955 /* PGWatermarkProcessor.m */; };
-		65DA247E1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */; };
 		65DA247F1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */; };
-		65DA24831E85DCBC00034955 /* PGWatermarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */; };
 		65DA24841E85DCBC00034955 /* PGWatermarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */; };
-		65DA24861E85E31F00034955 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DA24851E85E31F00034955 /* link-icon.png */; };
 		65DA24871E85E31F00034955 /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 65DA24851E85E31F00034955 /* link-icon.png */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
@@ -2263,6 +2257,16 @@
 		F22F12861E70CDB400753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F236FAC71E8721F700FC31B5 /* PGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F236FAC51E8721F700FC31B5 /* PGProgressView.m */; };
 		F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
+		F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
+		F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */; };
+		F24DA7CE1EAEA0F500C24AAB /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */; };
+		F24DA7CF1EAEA0F500C24AAB /* PGWatermarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C91EAEA0F500C24AAB /* PGWatermarkOperation.m */; };
+		F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */; };
+		F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
+		F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */; };
+		F24DA7D51EAEA13800C24AAB /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */; };
+		F24DA7D61EAEA13800C24AAB /* PGWatermarkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C91EAEA0F500C24AAB /* PGWatermarkOperation.m */; };
+		F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */; };
 		F27256FB1E95ACA1009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
@@ -2274,6 +2278,12 @@
 		F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */; };
 		F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
 		F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
+		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
+		F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */; };
+		F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */; };
+		F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperation.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C81EAEA0F500C24AAB /* PGWatermarkOperation.h */; };
+		F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */; };
+		F2D5A3981EAEA5E8002F9DDC /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D5A3971EAEA5E8002F9DDC /* link-icon.png */; };
 		F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */; };
 		F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */; };
 		F2E785261DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
@@ -2559,18 +2569,11 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
-		6541D4A41E898EAA00FB88A9 /* PGLinkSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkSettings.h; sourceTree = "<group>"; };
 		6541D4A51E898EAA00FB88A9 /* PGLinkSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkSettings.m; sourceTree = "<group>"; };
 		6541D4B81E89C40A00FB88A9 /* LinkReaderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkReaderKit.framework; sourceTree = SOURCE_ROOT; };
-		6541D4BC1E89C47400FB88A9 /* PGLinkReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkReaderViewController.h; sourceTree = "<group>"; };
 		6541D4BD1E89C47400FB88A9 /* PGLinkReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkReaderViewController.m; sourceTree = "<group>"; };
-		6541D4BE1E89C47400FB88A9 /* LRManagerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRManagerPrivate.h; sourceTree = "<group>"; };
-		6541D4BF1E89C47400FB88A9 /* LRLinkServicesPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLinkServicesPrivate.h; sourceTree = "<group>"; };
-		65DA24761E85B99600034955 /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkProcessor.h; sourceTree = "<group>"; };
 		65DA24771E85B99600034955 /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkProcessor.m; sourceTree = "<group>"; };
-		65DA247C1E85DB8000034955 /* PGLinkCredentialsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkCredentialsManager.h; sourceTree = "<group>"; };
 		65DA247D1E85DB8000034955 /* PGLinkCredentialsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkCredentialsManager.m; sourceTree = "<group>"; };
-		65DA24811E85DCBC00034955 /* PGWatermarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperation.h; sourceTree = "<group>"; };
 		65DA24821E85DCBC00034955 /* PGWatermarkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkOperation.m; sourceTree = "<group>"; };
 		65DA24851E85E31F00034955 /* link-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-icon.png"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
@@ -3902,6 +3905,16 @@
 		F236FAC41E8721F700FC31B5 /* PGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressView.h; sourceTree = "<group>"; };
 		F236FAC51E8721F700FC31B5 /* PGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressView.m; sourceTree = "<group>"; };
 		F236FAC61E8721F700FC31B5 /* PGProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProgressView.xib; sourceTree = "<group>"; };
+		F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkCredentialsManager.h; sourceTree = "<group>"; };
+		F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkCredentialsManager.m; sourceTree = "<group>"; };
+		F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkReaderViewController.h; sourceTree = "<group>"; };
+		F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkReaderViewController.m; sourceTree = "<group>"; };
+		F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkSettings.h; sourceTree = "<group>"; };
+		F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkSettings.m; sourceTree = "<group>"; };
+		F24DA7C81EAEA0F500C24AAB /* PGWatermarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperation.h; sourceTree = "<group>"; };
+		F24DA7C91EAEA0F500C24AAB /* PGWatermarkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkOperation.m; sourceTree = "<group>"; };
+		F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkProcessor.h; sourceTree = "<group>"; };
+		F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkProcessor.m; sourceTree = "<group>"; };
 		F27256FE1E96B2A6009E553D /* imgly_license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = imgly_license; sourceTree = SOURCE_ROOT; };
 		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
 		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
@@ -3911,6 +3924,7 @@
 		F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingNavigationController.m; sourceTree = "<group>"; };
 		F2CE0E911DC3E36700AA2F6C /* PGAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAttributedLabel.h; sourceTree = "<group>"; };
 		F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAttributedLabel.m; sourceTree = "<group>"; };
+		F2D5A3971EAEA5E8002F9DDC /* link-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-icon.png"; sourceTree = "<group>"; };
 		F2E785201DDA4E230074FFB7 /* PGSocialSourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesManager.h; sourceTree = "<group>"; };
 		F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesManager.m; sourceTree = "<group>"; };
 		F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesCircleView.h; sourceTree = "<group>"; };
@@ -5300,7 +5314,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
-				65DA24741E85B96A00034955 /* Watermark */,
+				F24DA7D21EAEA10200C24AAB /* Watermark */,
 				F22F12B41E78AC8E00753C5A /* Multi-Print */,
 				F22F127F1E6F387900753C5A /* Security */,
 				26B434641E3F02310071EEFA /* Sprocket.entitlements */,
@@ -5434,6 +5448,7 @@
 				E320F8B819C36A7A00BC2AE3 /* retry@2x.png */,
 				CC10808119CA122B00C1553A /* hp.logo.blue.png */,
 				CC10808219CA122B00C1553A /* logo.blue.png */,
+				F2D5A3971EAEA5E8002F9DDC /* link-icon.png */,
 				E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */,
 			);
 			name = Images;
@@ -5645,6 +5660,23 @@
 				F22F12381E560C2C00753C5A /* PGPhotoSelection.m */,
 			);
 			name = "Multi-Print";
+			sourceTree = "<group>";
+		};
+		F24DA7D21EAEA10200C24AAB /* Watermark */ = {
+			isa = PBXGroup;
+			children = (
+				F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */,
+				F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */,
+				F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */,
+				F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */,
+				F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */,
+				F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */,
+				F24DA7C81EAEA0F500C24AAB /* PGWatermarkOperation.h */,
+				F24DA7C91EAEA0F500C24AAB /* PGWatermarkOperation.m */,
+				F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */,
+				F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */,
+			);
+			name = Watermark;
 			sourceTree = "<group>";
 		};
 		F27257001E983F97009E553D /* imgly */ = {
@@ -6127,6 +6159,7 @@
 				826BEAF11E85BEAD000BE3FA /* Floral2Frame_TN@2x.png in Resources */,
 				8212BEE31EA93616009E66EC /* Mushrooms-b_TN@2x.png in Resources */,
 				8212BC021EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */,
+				F2D5A3981EAEA5E8002F9DDC /* link-icon.png in Resources */,
 				8281ECAC1EA948D1003021DB /* xoxo_TN.png in Resources */,
 				8212BE9F1EA93616009E66EC /* leaves_TN.png in Resources */,
 				8212BAF41EA929FE009E66EC /* snails.png in Resources */,
@@ -6423,7 +6456,6 @@
 				82A11D0B1E5FB93B00E7F8FC /* cat-on-head_TN@2x.png in Resources */,
 				8212BD871EA93615009E66EC /* bird_envelope_TN.png in Resources */,
 				82A11D7F1E5FB93B00E7F8FC /* spoon.png in Resources */,
-				65DA24861E85E31F00034955 /* link-icon.png in Resources */,
 				82A11D4B1E5FB93B00E7F8FC /* panda-mask_TN@2x.png in Resources */,
 				8212BDB51EA93616009E66EC /* cat_body.png in Resources */,
 				826BEAFF1E85BEAD000BE3FA /* GradientFrame_TN.png in Resources */,
@@ -7486,7 +7518,7 @@
 				82E3DE591E831BD10008F600 /* cat_grumble.png in Resources */,
 				826BEAF61E85BEAD000BE3FA /* Floral2Frame.png in Resources */,
 				826BEB321E85BEAD000BE3FA /* PolkadotsFrame_TN@2x.png in Resources */,
-                65DA24871E85E31F00034955 /* link-icon.png in Resources */,
+				65DA24871E85E31F00034955 /* link-icon.png in Resources */,
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
 				8212BC171EA92A26009E66EC /* ribbon_TN.png in Resources */,
@@ -8315,6 +8347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				a4c085aca577f3bf459cbec2 /* PGImagePickerLandscapeSupportController.m in Sources */,
+				F24DA7D51EAEA13800C24AAB /* PGLinkSettings.m in Sources */,
 				a7818a6671c8c9a25b3cc654 /* PGAboutViewController.m in Sources */,
 				49f04ff6f777ef64c4d0cae4 /* PGSwipeCoachMarksView.m in Sources */,
 				7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */,
@@ -8335,11 +8368,13 @@
 				924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				8218C5651DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */,
 				b7f4d03ea6ee15ea731634d1 /* PGLogFormatter.m in Sources */,
+				F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				65DA24841E85DCBC00034955 /* PGWatermarkOperation.m in Sources */,
+				F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				82E3DEB51E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
@@ -8388,6 +8423,7 @@
 				b2b702ca62e7f093ce61c8e9 /* PGLogger.m in Sources */,
 				a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */,
 				82A116811E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
+				F24DA7D61EAEA13800C24AAB /* PGWatermarkOperation.m in Sources */,
 				04ca2e7bba7087956b9047c7 /* PGFrameItem.m in Sources */,
 				F2E785271DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */,
 				410e5832482fe56a231852de /* NSString+Utils.m in Sources */,
@@ -8400,6 +8436,7 @@
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
+				F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				5bdaef2b736e0b67a0f52115 /* PGCameraRollLandingPageViewController.m in Sources */,
@@ -8429,6 +8466,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */,
+				F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */,
+				F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */,
+				F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperation.h in Sources */,
+				F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */,
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
@@ -8437,15 +8479,15 @@
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				F27256FB1E95ACA1009E553D /* PGImglyManager.m in Sources */,
-				65DA24831E85DCBC00034955 /* PGWatermarkOperation.m in Sources */,
+				F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */,
-				6541D4C01E89C47400FB88A9 /* PGLinkReaderViewController.m in Sources */,
 				82362A591D5959870019F024 /* PGStickerItem.m in Sources */,
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
 				E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */,
 				829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
 				E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */,
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
+				F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */,
 				E31BE41F19ED91E1006B78BB /* PGFacebookLandingPageViewController.m in Sources */,
 				E34D5067199AB87B006D80E0 /* main.m in Sources */,
 				E3461F2619AE2F470042DF5E /* UIColor+HexString.m in Sources */,
@@ -8471,6 +8513,7 @@
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
+				F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */,
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
@@ -8483,8 +8526,6 @@
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
-				65DA24781E85B99600034955 /* PGWatermarkProcessor.m in Sources */,
-				65DA247E1E85DB8000034955 /* PGLinkCredentialsManager.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
@@ -8504,12 +8545,12 @@
 				8263D7B61E71DD330036E903 /* PGTextView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
+				F24DA7CF1EAEA0F500C24AAB /* PGWatermarkOperation.m in Sources */,
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,
 				82E3DEB41E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
 				F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */,
-				6541D4A61E898EAA00FB88A9 /* PGLinkSettings.m in Sources */,
 				E31BE41719EC6BB4006B78BB /* PGLandingSelectorPageViewController.m in Sources */,
 				82362A181D59408E0019F024 /* PGFrameItem.m in Sources */,
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
@@ -8519,6 +8560,7 @@
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
 				8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
+				F24DA7CE1EAEA0F500C24AAB /* PGLinkSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
