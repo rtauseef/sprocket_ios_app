@@ -22,10 +22,45 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
+  - FirebaseAnalytics (3.8.0):
+    - FirebaseCore (~> 3.6)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.6.0):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.10):
+    - FirebaseCore (~> 3.6)
   - FlickrKit (1.0.9)
+  - Google/Core (3.0.3):
+    - FirebaseAnalytics (~> 3.2)
+  - Google/SignIn (3.0.3):
+    - Google/Core
+    - GoogleSignIn (~> 4.0)
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - GoogleSignIn (4.0.2):
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMOAuth2 (1.1.4):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.9):
+    - GTMSessionFetcher/Full (= 1.1.9)
+  - GTMSessionFetcher/Core (1.1.9)
+  - GTMSessionFetcher/Full (1.1.9):
+    - GTMSessionFetcher/Core (= 1.1.9)
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
@@ -36,6 +71,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
+  - Google/SignIn
   - GoogleAnalytics-iOS-SDK (= 3.12)
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - iCarousel (= 1.8)
@@ -53,23 +89,31 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 6b6f6423a7e05bafd1cb563618bfb78b1e238963
+    :commit: f4fc0aceab25dafcf65ef769c039cd0d1b98d3a6
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: df8d1ede6b68a59ca946740c4fc9c438aa65b050
+    :commit: 406a69753b0c1ec7cebd649144b412511bb54279
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
+  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
+  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
+  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
+  GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
+  GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
-PODFILE CHECKSUM: 94e4456e9d49a0607b38fed7e22c14b82b501d98
+PODFILE CHECKSUM: de51344fc0ddce0cbd67ec7bd977262d28833db2
 
 COCOAPODS: 1.2.0

@@ -2116,6 +2116,8 @@
 		924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
 		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
+		929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
+		929B9A061EAE7CC200A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
 		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92E9C1F21DD65FB6009E4E63 /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
@@ -3706,6 +3708,9 @@
 		924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInterstitialAwarenessViewController.h; sourceTree = "<group>"; };
 		924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInterstitialAwarenessViewController.m; sourceTree = "<group>"; };
 		9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sprocket.gif; path = Resources/Images/Icons/Sprocket.gif; sourceTree = "<group>"; };
+		929B99F51EA801F200A2CF0E /* PGGoogleLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGoogleLandingPageViewController.h; sourceTree = "<group>"; };
+		929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGoogleLandingPageViewController.m; sourceTree = "<group>"; };
+		929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
@@ -5214,6 +5219,7 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
+				929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
 				92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */,
@@ -5546,6 +5552,8 @@
 				E34D50BD199ABA70006D80E0 /* PGInstagramLandingPageViewController.m */,
 				E31BE41D19ED91E1006B78BB /* PGFacebookLandingPageViewController.h */,
 				E31BE41E19ED91E1006B78BB /* PGFacebookLandingPageViewController.m */,
+				929B99F51EA801F200A2CF0E /* PGGoogleLandingPageViewController.h */,
+				929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */,
 				E31BE42119ED91FA006B78BB /* PGCameraRollLandingPageViewController.h */,
 				E31BE42219ED91FA006B78BB /* PGCameraRollLandingPageViewController.m */,
 				260BD0711DDE3D3C00AE6BAA /* PGPituLandingPageViewController.h */,
@@ -6186,6 +6194,7 @@
 				82E3D9541E82EEEC0008F600 /* bbq_TN@3x.png in Resources */,
 				8212BA3E1EA929FD009E66EC /* banner copy.png in Resources */,
 				8212BA861EA929FE009E66EC /* flowers_left_TN.png in Resources */,
+				929B9A061EAE7CC200A2CF0E /* GoogleService-Info.plist in Resources */,
 				8212BFAB1EA93616009E66EC /* sun_TN@3x.png in Resources */,
 				8212BEC91EA93616009E66EC /* measles_TN@2x.png in Resources */,
 				82E3DA841E82EEED0008F600 /* monster_2_TN@3x.png in Resources */,
@@ -8454,6 +8463,7 @@
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
+				929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,

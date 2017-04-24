@@ -77,6 +77,8 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
@@ -138,6 +140,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket/AirshipResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
@@ -199,6 +203,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket/AirshipResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "TestFlight" ]]; then
+  install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
@@ -260,6 +266,8 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket/AirshipResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "AppStore" ]]; then
+  install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png"
