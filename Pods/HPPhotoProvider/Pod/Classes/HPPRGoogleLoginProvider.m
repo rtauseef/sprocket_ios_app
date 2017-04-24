@@ -19,7 +19,7 @@ static NSString * const kGoogleProviderName = @"Google";
 
 @interface HPPRGoogleLoginProvider() <GIDSignInDelegate, GIDSignInUIDelegate>
 
-@property (nonatomic, copy) void (^completion)(BOOL loggedIn, NSError *error);
+@property (copy, nonatomic) void (^completion)(BOOL loggedIn, NSError *error);
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (assign, nonatomic) BOOL loggedIn;
 
@@ -46,6 +46,13 @@ static NSString * const kGoogleProviderName = @"Google";
         [[GIDSignIn sharedInstance] signInSilently];
     });
     return sharedInstance;
+}
+
+- (BOOL)handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation
+{
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:sourceApplication
+                                      annotation:annotation];
 }
 
 - (void)loginWithCompletion:(void (^)(BOOL loggedIn, NSError *error))completion

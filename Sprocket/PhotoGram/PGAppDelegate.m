@@ -18,7 +18,6 @@
 #import <HPPRInstagramPhotoProvider.h>
 #import <DBChooser/DBChooser.h>
 #import <MPBTPrintManager.h>
-#import <Google/SignIn.h>
 
 #import "AirshipKit.h"
 #import "PGAppDelegate.h"
@@ -148,12 +147,11 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 #pragma mark - URL handler
 
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary *)options {
-    return [[GIDSignIn sharedInstance] handleURL:url
-                               sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                      annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
+    return [self application:app
+                     openURL:url
+           sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                  annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -165,6 +163,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     if ([url.scheme isEqual:@"hpsprocket"]) {
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    } else if ([url.scheme containsString:@"googleusercontent"]) {
+        return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else {
         return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
