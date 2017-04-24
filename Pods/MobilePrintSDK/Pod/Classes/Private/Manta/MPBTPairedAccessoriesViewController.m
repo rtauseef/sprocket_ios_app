@@ -19,6 +19,7 @@
 #import "MPBTProgressView.h"
 #import "MPBTTechnicalInformationViewController.h"
 #import "MPBTStatusChecker.h"
+#import "MPBTImageProcessor.h"
 
 #import <ExternalAccessory/ExternalAccessory.h>
 #import <CoreBluetooth/CBCentralManager.h>
@@ -48,6 +49,8 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 @property (assign, nonatomic) BOOL presentedNoDevicesModal;
+@property (strong, nonatomic) void (^printCompletionBlock)(void);
+@property (strong, nonatomic) MPBTImageProcessor *processor;
 
 @property (assign, nonatomic) PairedAccessoriesViewControllerMode mode;
 
@@ -160,6 +163,25 @@ typedef enum : NSUInteger {
 + (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion
 {
     UIViewController *vc = [self pairedAccessoriesViewControllerForDeviceInfo];
+    
+    [hostController showViewController:vc sender:nil];
+}
+
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
+{
+    [self presentAnimatedForPrint:animated image:image processor:nil usingController:hostController andPrintCompletion:completion];
+}
+
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image processor:(MPBTImageProcessor *) processor usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
+    MPBTPairedAccessoriesViewController *vc = (MPBTPairedAccessoriesViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTPairedAccessoriesViewController"];
+    
+    vc.image = image;
+    vc.hostController = hostController;
+    vc.printCompletionBlock = completion;
+    vc.processor = processor;
+    [vc.tableView reloadData];
     
     [hostController showViewController:vc sender:nil];
 }

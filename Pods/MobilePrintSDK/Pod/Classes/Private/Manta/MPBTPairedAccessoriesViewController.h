@@ -12,6 +12,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MPBTSprocket.h"
+#import "MPBTImageProcessor.h"
 
 @protocol MPBTPairedAccessoriesViewControllerDelegate;
 
@@ -24,6 +25,8 @@
 + (instancetype)pairedAccessoriesViewControllerForDeviceInfo;
 
 + (void)presentAnimatedForDeviceInfo:(BOOL)animated usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion;
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion;
++ (void)presentAnimatedForPrint:(BOOL)animated image:(UIImage *)image processor:(MPBTImageProcessor *) processor usingController:(UIViewController *)hostController andPrintCompletion:(void(^)(void))completion;
 
 - (void)presentNoPrinterConnectedAlert:(UIViewController *)hostController showConnectSprocket:(BOOL)showConnectSprockets;
 
