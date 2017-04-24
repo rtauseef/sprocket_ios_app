@@ -7,7 +7,7 @@ class CropEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'CROP'"
+        "label marked:'transform-tool-screen'"
     end
     
     def close
@@ -15,7 +15,7 @@ class CropEditorScreen < Calabash::IBase
     end
 
     def save
-       "UIButton marked:'Apply changes'" 
+       "UIButton marked:'transform-tool-apply-btn'"
     end
     
     def selected_frame

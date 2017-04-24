@@ -169,7 +169,7 @@ NSString * const kFeatureCodeLink = @"link";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger numberOfRows = 13;
+    NSInteger numberOfRows = 12;
     
     if ([self levelPickerIsShown]){
         

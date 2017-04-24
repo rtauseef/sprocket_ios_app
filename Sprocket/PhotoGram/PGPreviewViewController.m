@@ -74,6 +74,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
+@property (weak, nonatomic) IBOutlet UIView *drawerContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
@@ -135,8 +136,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
-        self.drawer.view.userInteractionEnabled = NO;
-        self.drawer.view.hidden = YES;
+        self.drawerContainer.userInteractionEnabled = NO;
+        self.drawerContainer.hidden = YES;
         
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
     } else {
@@ -1015,7 +1016,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     BOOL shouldSelect = !(self.gesturesViews[index].isSelected && (countSelected >= 2));
     self.gesturesViews[index].isSelected = shouldSelect;
     
-    [self.carouselView reloadItemAtIndex:index animated:YES];
     [self configureActionButtons];
 }
 
