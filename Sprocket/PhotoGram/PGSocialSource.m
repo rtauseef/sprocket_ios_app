@@ -82,7 +82,7 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         case PGSocialSourceTypeGoogle:
-            self.icon = [UIImage imageNamed:@"Flickr"];
+            self.icon = [UIImage imageNamed:@"google_C"];
             self.menuIcon = self.icon;
             self.hasFolders = YES;
             self.title = NSLocalizedString(@"Google", @"Social source title for Google");
