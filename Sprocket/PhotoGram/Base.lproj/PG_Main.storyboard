@@ -2282,9 +2282,13 @@ printer and app support.</string>
                                                             <action selector="facebookTapped:" destination="wUV-en-vVL" eventType="touchUpInside" id="yt7-1T-JGw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfA-TY-ykl" userLabel="FlickrButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfA-TY-ykl" userLabel="GoogleButton">
                                                         <rect key="frame" x="130" y="0.0" width="43" height="43"/>
-                                                        <state key="normal" image="Flickr">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="43" id="aew-yb-tGj"/>
+                                                            <constraint firstAttribute="height" constant="43" id="kAH-iR-qAm"/>
+                                                        </constraints>
+                                                        <state key="normal" image="google_C">
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -3462,7 +3466,6 @@ printer and app support.</string>
         <image name="China_Camera1" width="102" height="101"/>
         <image name="China_Gallery1" width="102" height="102"/>
         <image name="Facebook" width="43" height="43"/>
-        <image name="Flickr" width="43" height="43"/>
         <image name="HPLogo" width="25" height="25"/>
         <image name="Inactive_Circle" width="13" height="13"/>
         <image name="Instagram" width="43" height="43"/>
@@ -3481,6 +3484,7 @@ printer and app support.</string>
         <image name="backArrow" width="9" height="18"/>
         <image name="battery100" width="33" height="14"/>
         <image name="cameraLanding" width="76" height="76"/>
+        <image name="google_C" width="53" height="53"/>
         <image name="hamburger" width="22" height="18"/>
         <image name="helpForum" width="16" height="15"/>
         <image name="helpTweetSupport" width="17" height="14"/>
