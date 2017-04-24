@@ -163,6 +163,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         cell.colorView.layer.cornerRadius = cellFrame.size.width / 2.0;
         cell.colorView.layer.masksToBounds = YES;
 
+        cell.accessibilityLabel = colorName;
+
         NSArray<NSLayoutConstraint *> *constraints = cell.imageView.superview.constraints;
 
         [NSLayoutConstraint deactivateConstraints:@[[constraints lastObject]]];
@@ -302,6 +304,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
 
+                cell.accessibilityLabel = frame.accessibilityLabel;
+
                 [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
                 [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:60.0 height:60.0]];
                 [cell.imageView setNeedsUpdateConstraints];
@@ -400,6 +404,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.actionButtonConfigurationClosure = ^(IMGLYLabelCaptionCollectionViewCell * _Nonnull cell, NSString * _Nonnull action) {
                 cell.captionLabel.text = nil;
                 cell.label.highlightedTextColor = [UIColor HPBlueColor];
+
+                cell.accessibilityLabel = cell.label.font.familyName;
 
                 UIFont *font = [UIFont fontWithName:cell.label.font.familyName size:28.0];
                 cell.label.font = font;
