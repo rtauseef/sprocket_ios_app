@@ -25,7 +25,8 @@ class TextEditScreen < Calabash::IBase
         "* id:'ic_cancel_44pt'"
     end
     def save
-       "UIButton marked:'text-tool-apply-btn'"
+       #"UIButton marked:'text-tool-apply-btn'"
+        "IMGLYToolbarButton index:1"
     end
     def navigate
         unless current_page?
