@@ -99,7 +99,8 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
     return [UIImage imageNamed:@"menuPrintQueueOff"];
 }
 
-+ (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath {
++ (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     CGFloat cellHeight = kPGSideBarMenuItemsRegularCellHeight;
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cellHeight = kPGSideBarMenuItemsSmallCellHeight;
