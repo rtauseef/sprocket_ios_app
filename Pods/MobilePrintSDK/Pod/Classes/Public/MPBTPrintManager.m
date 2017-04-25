@@ -73,6 +73,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [self checkPrinterStatus];
     self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
+
+    return YES;
 }
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
@@ -140,7 +142,11 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 - (NSInteger)queueSize {
-    return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    if (self.currentJob != nil) {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs] + 1;
+    } else {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    }
 }
 
 - (NSInteger)queueId {
@@ -153,6 +159,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (NSString *)printerId {
     return [[MPBTSprocket sharedInstance].analytics objectForKey:kMPPrinterId];
+}
+
+- (NSDictionary *)defaultOptionsForImageProcessor {
+    return @{ kMPBTImageProcessorPrinterSerialNumberKey: [MPBTSprocket sharedInstance].accessory.serialNumber };
 }
 
 - (NSInteger)currentQueueId {
@@ -176,6 +186,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [userDefaults setInteger:queueId forKey:kPrintManagerQueueIdKey];
     [userDefaults synchronize];
+
+    return queueId;
 }
 
 - (EAAccessory *)currentDevice

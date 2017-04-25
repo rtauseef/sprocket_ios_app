@@ -43,6 +43,8 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 - (void)pausePrintQueue;
 - (void)cancelPrintQueue;
 
+- (NSDictionary *)defaultOptionsForImageProcessor;
+
 @end
 
 

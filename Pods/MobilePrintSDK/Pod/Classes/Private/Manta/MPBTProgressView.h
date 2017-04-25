@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "MPView.h"
 #import "MPBTSprocket.h"
+#import "MPBTImageProcessor.h"
 
 @interface MPBTProgressView : MPView
 
@@ -26,5 +27,6 @@
 - (void)setStatus:(MantaUpgradeStatus)status;
 - (void)reflashDevice;
 - (void)printToDevice:(UIImage *)image refreshCompletion:(void(^)(void))completion;
+- (void)printToDevice:(UIImage *)image processor:(MPBTImageProcessor *)processor refreshCompletion:(void(^)(void))completion;
 
 @end

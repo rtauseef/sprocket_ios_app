@@ -130,10 +130,21 @@
         numTaps = 0;
         tapStartTime = nil;
         
-        // launch menu
-        PGLoggingSetttingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PGLoggingSetttingsViewController"];
-        [self.navigationController pushViewController: vc animated:YES];
-        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Admin Menu" message:@"Please enter unlock code" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"Code";
+        }];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UITextField *textField = [alert.textFields firstObject];
+            PGLoggingSetttingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PGLoggingSetttingsViewController"];
+            if ([vc validCode:textField.text]) {
+                vc.unlockCode = textField.text;
+                [self.navigationController pushViewController: vc animated:YES];
+            }
+        }];
+        [alert addAction:action];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else if( nil == tapStartTime ||
              maxSecondsToTap < secondsElapsed ) {

@@ -43,7 +43,8 @@
         
         self.thumbnailUrl = [attributes valueForKeyPath:@"images.thumbnail.url"];
         self.standardUrl = [attributes valueForKeyPath:@"images.standard_resolution.url"];
-        
+        self.socialMediaImageUrl = [attributes valueForKey:@"link"];
+
         self.likes = [[attributes valueForKeyPath:@"likes.count"] integerValue];
         
         self.comments = [[attributes valueForKeyPath:@"comments.count"] integerValue];
