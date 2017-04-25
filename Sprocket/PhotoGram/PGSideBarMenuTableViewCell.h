@@ -21,14 +21,14 @@ extern NSString * const kPrivacyStatementScreenName;
 extern NSInteger const kPGSideBarMenuItemsNumberOfRows;
 
 typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
+    PGSideBarMenuCellLinkReader,
     PGSideBarMenuCellSprocket,
     PGSideBarMenuCellPrintQueue,
     PGSideBarMenuCellBuyPaper,
     PGSideBarMenuCellHowToAndHelp,
     PGSideBarMenuCellTakeSurvey,
     PGSideBarMenuCellPrivacy,
-    PGSideBarMenuCellAbout,
-    PGSideBarMenuCellLinkReader
+    PGSideBarMenuCellAbout
 };
 
 @interface PGSideBarMenuTableViewCell : UITableViewCell

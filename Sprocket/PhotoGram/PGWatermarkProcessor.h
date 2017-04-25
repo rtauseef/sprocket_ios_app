@@ -11,11 +11,14 @@
 //
 
 #import <MPBTImageProcessor.h>
+#import "PGWatermarkOperation.h"
 
 @interface PGWatermarkProcessor : MPBTImageProcessor
 
 @property (strong, nonatomic) NSURL *watermarkURL;
 
 - (instancetype)initWithWatermarkURL:(NSURL *)url;
+
+- (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options completion:(nullable PGWatermarkEmbedderCompletionBlock)completion;
 
 @end

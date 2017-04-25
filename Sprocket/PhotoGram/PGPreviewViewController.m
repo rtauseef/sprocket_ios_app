@@ -98,16 +98,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 + (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source animated:(BOOL)animated
 {
-    [self presentPreviewPhotoFrom:currentViewController andSource:source media:nil animated:animated];
-}
-
-+ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source media:(HPPRMedia *)media animated:(BOOL)animated
-{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = source;
-    previewViewController.media = media;
-    
+
     [currentViewController presentViewController:previewViewController animated:animated completion:nil];
 }
 
@@ -707,33 +701,60 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     }
                 }
 
-                BOOL canResumePrinting = YES;
+                __block BOOL canResumePrinting = YES;
+
                 for (PGGesturesView *gestureView in selectedViews) {
                     NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
                     [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
 
-                    MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-                    NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
-                    
-                    [metrics setObject:origin forKey:kMetricsOrigin];
+                    void (^block)(UIImage *image) = ^(UIImage *image) {
+                        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
+                        NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
 
-                    if (isPrintDirect) {
-                        [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
-                            return [self handlePrintQueueStatus:status progress:progress];
-                        }];
-                        canResumePrinting = NO;
-                    } else {
-                        [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
-                        [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
+                        [metrics setObject:origin forKey:kMetricsOrigin];
 
-                        if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
+                        if (isPrintDirect) {
+                            [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
+                                return [self handlePrintQueueStatus:status progress:progress];
+                            }];
                             canResumePrinting = NO;
-                            break;
-                        }
+                        } else {
+                            [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                            [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
 
-                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
-                                                                         printItem:printItem
-                                                                      extendedInfo:metrics];
+                            if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
+                                canResumePrinting = NO;
+                            }
+
+                            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                             printItem:printItem
+                                                                          extendedInfo:metrics];
+                        }
+                    };
+
+                    PGWatermarkProcessor *processor;
+                    if ([PGLinkSettings linkEnabled] && gestureView.media && gestureView.media.socialMediaImageUrl) {
+                        processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:gestureView.media.socialMediaImageUrl]];
+                    }
+
+                    if (processor) {
+                        [processor processImage:gestureView.editedImage
+                                    withOptions:[[MPBTPrintManager sharedInstance] defaultOptionsForImageProcessor]
+                                     completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+                                         if (!error) {
+                                             block(image);
+                                         } else {
+                                             NSLog(@"Error watermarking image: %@", error);
+                                             NSLog(@"Proceeding with original image.");
+                                             block(gestureView.editedImage);
+                                         }
+                                     }];
+                    } else {
+                        block(gestureView.editedImage);
+                    }
+
+                    if (!canResumePrinting) {
+                        break;
                     }
 
                 }
@@ -759,21 +780,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             }
         }];
     }];
-    
-    
-    /*
-     
-     PGWatermarkProcessor *processor = nil;
-     if ([PGLinkSettings linkEnabled] && self.media && self.media.socialMediaImageUrl) {
-     processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:self.media.socialMediaImageUrl]];
-     }
-     [[MP sharedInstance] headlessBluetoothPrintFromController:self image:[self currentEditedImage] processor:processor animated:YES printCompletion:nil];
-     
-     */
-    
-    
-    
-    
 }
 
 - (IBAction)didTouchUpInsideShareButton:(id)sender

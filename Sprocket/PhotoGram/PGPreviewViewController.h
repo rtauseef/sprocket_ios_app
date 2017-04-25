@@ -17,12 +17,10 @@
 
 @property (strong, nonatomic) UIImage *selectedPhoto;
 @property (strong, nonatomic) NSString *source;
-@property (strong, nonatomic) HPPRMedia *media;
 @property (strong, nonatomic) IBOutlet UIView *transitionEffectView;
 
 + (NSString *)cameraSource;
 + (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source animated:(BOOL)animated;
-+ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source media:(HPPRMedia *)media animated:(BOOL)animated;
 + (void)presentCameraFrom:(UIViewController *)currentViewController animated:(BOOL)animated;
 
 @end
