@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRInstagramLoginProvider.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRInstagramLoginProvider.h

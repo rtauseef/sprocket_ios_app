@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRKeychainService.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRKeychainService.h

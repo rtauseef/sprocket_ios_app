@@ -1,1 +1,1 @@
-../../../../HPPhotoProvider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKMacros.h
+../../../../../../hp_photo_provider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKMacros.h

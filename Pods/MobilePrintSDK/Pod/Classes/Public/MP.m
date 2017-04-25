@@ -207,7 +207,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 {
     MPPrintLaterJob *firstJob = printLaterJobs[0];
     
-    MPPrintItem *printItem = [firstJob.printItems objectForKey:self.defaultPaper.sizeTitle];
+    MPPrintItem *printItem = [firstJob printItemForPaperSize:self.defaultPaper.sizeTitle];
     printItem.extra = firstJob.extra;
     
     UIViewController *vc = [self printViewControllerWithDelegate:delegate dataSource:dataSource printItem:printItem fromQueue:fromQueue settingsOnly:settingsOnly];
@@ -285,8 +285,8 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
 - (UIViewController *)printLaterViewControllerWithDelegate:(id<MPAddPrintLaterDelegate>)delegate printLaterJob:(MPPrintLaterJob *)printLaterJob
 {
-    MPPrintItem *printItem = [printLaterJob.printItems objectForKey:self.defaultPaper.sizeTitle];
-
+    MPPrintItem *printItem = [printLaterJob printItemForPaperSize:self.defaultPaper.sizeTitle];
+    
     MPPageSettingsTableViewController *pageSettingsTableViewController;
     MPPageSettingsTableViewController *previewViewController;
     

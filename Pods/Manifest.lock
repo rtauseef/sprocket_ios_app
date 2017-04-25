@@ -39,6 +39,11 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - GoogleAPIClientForREST/Core (1.2.1):
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleAPIClientForREST/Drive (1.2.1):
+    - GoogleAPIClientForREST/Core
+    - GTMSessionFetcher (>= 1.1.7)
   - GoogleSignIn (4.0.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
@@ -73,7 +78,8 @@ DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - Google/SignIn
   - GoogleAnalytics-iOS-SDK (= 3.12)
-  - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
+  - GoogleAPIClientForREST/Drive
+  - HPPhotoProvider (from `~/workspace/hp_photo_provider`)
   - iCarousel (= 1.8)
   - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
@@ -81,18 +87,14 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   HPPhotoProvider:
-    :branch: master
-    :git: https://github.com/IPGPTP/hp_photo_provider
+    :path: "~/workspace/hp_photo_provider"
   MobilePrintSDK:
     :branch: bluetooth
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 CHECKOUT OPTIONS:
-  HPPhotoProvider:
-    :commit: 6b6f6423a7e05bafd1cb563618bfb78b1e238963
-    :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: df8d1ede6b68a59ca946740c4fc9c438aa65b050
+    :commit: 406a69753b0c1ec7cebd649144b412511bb54279
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -104,6 +106,7 @@ SPEC CHECKSUMS:
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
+  GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
@@ -114,6 +117,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
-PODFILE CHECKSUM: 3bece028784587831a77d0e22d4f2a0fa4022c10
+PODFILE CHECKSUM: f43f7635e129553248f3a5e7c88be558bff32646
 
 COCOAPODS: 1.2.0
