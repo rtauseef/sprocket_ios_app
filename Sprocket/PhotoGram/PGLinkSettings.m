@@ -20,7 +20,7 @@ NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNo
 + (void)setLinkEnabled:(BOOL)visible {
     [[NSUserDefaults standardUserDefaults] setObject:@(visible) forKey:kPGLinkSettingsEnabled];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    // TODO:jbt: get this working
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsChangedNotification object:self];
     });
