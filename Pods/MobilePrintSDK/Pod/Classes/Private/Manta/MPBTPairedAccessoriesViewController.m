@@ -19,7 +19,6 @@
 #import "MPBTProgressView.h"
 #import "MPBTTechnicalInformationViewController.h"
 #import "MPBTStatusChecker.h"
-#import "MPBTImageProcessor.h"
 
 #import <ExternalAccessory/ExternalAccessory.h>
 #import <CoreBluetooth/CBCentralManager.h>
@@ -49,8 +48,6 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 @property (assign, nonatomic) BOOL presentedNoDevicesModal;
-@property (strong, nonatomic) void (^printCompletionBlock)(void);
-@property (strong, nonatomic) MPBTImageProcessor *processor;
 
 @property (assign, nonatomic) PairedAccessoriesViewControllerMode mode;
 
