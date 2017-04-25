@@ -16,7 +16,7 @@
 
 @implementation PGStickerItem
 
-- (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName andPackageName:(NSString *)packageName
+- (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName  tintMode:(IMGLYStickerTintMode)tintMode andPackageName:(NSString *)packageName
 {
     self = [super init];
     if (self) {
@@ -29,9 +29,11 @@
         
         self.name = stickerName;
         self.imageName = imageName;
+        self.tintMode = tintMode;
     }
     return self;
 }
+
 
 - (UIImage *)thumbnailImage
 {
@@ -54,7 +56,7 @@
 - (IMGLYSticker *)imglySticker {
     IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImageURL:[self imageURL]
                                                            thumbnailURL:[self thumbnailURL]
-                                                               tintMode:IMGLYStickerTintModeSolid];
+                                                               tintMode:[self tintMode]];
     imglySticker.accessibilityLabel = self.name;
 
     return imglySticker;

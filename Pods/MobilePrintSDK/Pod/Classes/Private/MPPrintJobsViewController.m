@@ -371,9 +371,9 @@ NSString * const kJobListScreenName = @"Job List Screen";
     for (MPPrintLaterJob *job in self.selectedPrintJobs) {
         
         NSString *paperSize = [[MP sharedInstance].lastOptionsUsed objectForKey:kMPPaperSizeId];
-        MPPrintItem *printItem = [job.printItems objectForKey:paperSize];
+        MPPrintItem *printItem = [job printItemForPaperSize:paperSize];
         if (!printItem) {
-            printItem = [job.printItems objectForKey:[MP sharedInstance].defaultPaper.sizeTitle];
+            printItem = [job printItemForPaperSize:[MP sharedInstance].defaultPaper.sizeTitle];
         }
         
         NSString *offramp = [printItem.extra objectForKey:kMPOfframpKey];
@@ -408,10 +408,10 @@ NSString * const kJobListScreenName = @"Job List Screen";
     MPLogInfo(@"Retrieving image for size: %@", imageKey);
     
     if (completion) {
-        MPPrintItem *printItem = [self.selectedPrintJob.printItems objectForKey:imageKey];
+        MPPrintItem *printItem = [self.selectedPrintJob printItemForPaperSize:imageKey];
         printItem.extra = self.selectedPrintJob.extra;
         if (printItem == nil) {
-            printItem = [self.selectedPrintJob.printItems objectForKey:[MPPaper titleFromSize:[MP sharedInstance].defaultPaper.paperSize]];
+            printItem = [self.selectedPrintJob printItemForPaperSize:[MPPaper titleFromSize:[MP sharedInstance].defaultPaper.paperSize]];
         }
         
         completion(printItem);

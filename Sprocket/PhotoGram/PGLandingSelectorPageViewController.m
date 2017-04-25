@@ -174,6 +174,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
                 [viewControllers addObject:viewController];
                 break;
             }
+            case PGSocialSourceTypeGoogle: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGGoogleLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                ((PGLandingPageViewController *) viewController.viewControllers.firstObject).delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
             case PGSocialSourceTypeWeiBo: {
                 UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
                 viewController.delegate = self;

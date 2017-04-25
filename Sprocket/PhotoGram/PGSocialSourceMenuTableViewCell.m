@@ -78,6 +78,10 @@ CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
             [self configureFlickrUserView];
             break;
         }
+        case PGSocialSourceTypeGoogle: {
+            [self configureGoogleUserView];
+            break;
+        }
         case PGSocialSourceTypeQzone: {
             [self configureQzoneUserView];
             break;
@@ -157,6 +161,26 @@ CGFloat const kPGSocialSourceMenuTableViewCellSignInSmallFontSize = 13.0f;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (loggedIn) {
                 NSDictionary *user = [HPPRFlickrLoginProvider sharedInstance].user;
+                [weakSelf.socialImageView setMaskImageWithURL:[user objectForKey:@"imageURL"]];
+                weakSelf.socialSource.isLogged = YES;
+            } else {
+                weakSelf.socialSource.isLogged = NO;
+                [weakSelf resetSocialSourceImage];
+            }
+            
+            [weakSelf configureSignInButton];
+        });
+    }];
+}
+
+- (void)configureGoogleUserView
+{
+    [[HPPRGoogleLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        
+        __weak PGSocialSourceMenuTableViewCell *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (loggedIn) {
+                NSDictionary *user = [HPPRGoogleLoginProvider sharedInstance].user;
                 [weakSelf.socialImageView setMaskImageWithURL:[user objectForKey:@"imageURL"]];
                 weakSelf.socialSource.isLogged = YES;
             } else {
