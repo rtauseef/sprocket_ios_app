@@ -10,11 +10,12 @@
 // the license agreement.
 //
 
-#import <MP.h>
-
 #import "PGSideBarMenuTableViewCell.h"
-#import <MPBTPrintManager.h>
 #import "UIColor+Style.h"
+#import "PGLinkSettings.h"
+
+#import <MP.h>
+#import <MPBTPrintManager.h>
 
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
 NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
@@ -98,15 +99,20 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
     return [UIImage imageNamed:@"menuPrintQueueOff"];
 }
 
-+ (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
-        return 0.0F;
-    } else if (IS_IPHONE_4 || IS_IPHONE_5) {
-        return kPGSideBarMenuItemsSmallCellHeight;
++ (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat cellHeight = kPGSideBarMenuItemsRegularCellHeight;
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cellHeight = kPGSideBarMenuItemsSmallCellHeight;
     }
-    
-    return kPGSideBarMenuItemsRegularCellHeight;
+
+    if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
+        cellHeight = 0.0;
+
+    } else if (indexPath.row == PGSideBarMenuCellLinkReader && ![PGLinkSettings linkEnabled]) {
+        cellHeight = 0.0;
+    }
+
+    return cellHeight;
 }
 
 @end
