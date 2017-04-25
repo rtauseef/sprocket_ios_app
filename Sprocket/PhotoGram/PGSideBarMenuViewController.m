@@ -118,7 +118,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [PGLinkSettings linkEnabled] ? kPGSideBarMenuItemsNumberOfRows : kPGSideBarMenuItemsNumberOfRows - 1;
+    return kPGSideBarMenuItemsNumberOfRows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
