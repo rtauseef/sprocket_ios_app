@@ -12,6 +12,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MPBTSprocket.h"
+#import "MPBTImageProcessor.h"
 
 @protocol MPBTPairedAccessoriesViewControllerDelegate;
 

@@ -1,0 +1,1 @@
+../../../HPLinkUtils/HPLinkUtils/HPLinkUtils/Classes/Serialization/HPLinkRequestSerializer.h
