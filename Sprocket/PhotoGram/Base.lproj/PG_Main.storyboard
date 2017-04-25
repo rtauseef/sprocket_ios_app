@@ -720,7 +720,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2016 HP Development Company, L.P." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBT-a1-B1F">
-                                <rect key="frame" x="84" y="568" width="207.5" height="15"/>
+                                <rect key="frame" x="84.5" y="568" width="207.5" height="15"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="13"/>
                                 <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1810,6 +1810,82 @@ printer and app support.</string>
             </objects>
             <point key="canvasLocation" x="-6423.1999999999998" y="2163.8680659670167"/>
         </scene>
+        <!--Google-->
+        <scene sceneID="q6Y-1O-W1z">
+            <objects>
+                <viewController id="4m9-eG-OC7" userLabel="Google" customClass="PGGoogleLandingPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ga1-K0-BaB"/>
+                        <viewControllerLayoutGuide type="bottom" id="FFv-vK-S6G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zxJ-23-X1f">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7q-f7-lin" userLabel="Sign In View">
+                                <rect key="frame" x="16" y="61.5" width="343" height="480"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ga4-if-IR4" userLabel="Sign in with Google" customClass="PGSignInButton">
+                                        <rect key="frame" x="115" y="67.5" width="114" height="114"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="FTd-pT-hXo"/>
+                                            <constraint firstAttribute="height" constant="114" id="TYa-11-fj8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="18"/>
+                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signInButtonTapped:" destination="4m9-eG-OC7" eventType="touchUpInside" id="mUS-Kt-vHg"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Google, you also agree with HP’s &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3A-HJ-eXe" customClass="PGTermsAttributedLabel">
+                                        <rect key="frame" x="42" y="323.5" width="260" height="85"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="85" id="1aw-Ga-SfJ"/>
+                                            <constraint firstAttribute="width" constant="260" id="YhQ-zm-8hQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ga4-if-IR4" firstAttribute="centerX" secondItem="X7q-f7-lin" secondAttribute="centerX" id="1dS-sm-4mz"/>
+                                    <constraint firstAttribute="height" constant="480" id="IhH-aE-ISc"/>
+                                    <constraint firstItem="w3A-HJ-eXe" firstAttribute="centerX" secondItem="X7q-f7-lin" secondAttribute="centerX" id="eKk-c1-mWq"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInGoogle" translatesAutoresizingMaskIntoConstraints="NO" id="I5B-gT-Iqg" userLabel="signInGoogle">
+                                <rect key="frame" x="170" y="285" width="34" height="34"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="X7q-f7-lin" firstAttribute="leading" secondItem="zxJ-23-X1f" secondAttribute="leadingMargin" id="Coa-e3-eth"/>
+                            <constraint firstItem="I5B-gT-Iqg" firstAttribute="centerX" secondItem="X7q-f7-lin" secondAttribute="centerX" id="O1Z-dN-WNa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X7q-f7-lin" secondAttribute="trailing" id="U01-s1-R9u"/>
+                            <constraint firstItem="X7q-f7-lin" firstAttribute="centerY" secondItem="zxJ-23-X1f" secondAttribute="centerY" id="Z5u-Aw-b9O"/>
+                            <constraint firstItem="w3A-HJ-eXe" firstAttribute="top" secondItem="I5B-gT-Iqg" secondAttribute="bottom" constant="66" id="cbv-iK-iNM"/>
+                            <constraint firstItem="I5B-gT-Iqg" firstAttribute="centerY" secondItem="X7q-f7-lin" secondAttribute="centerY" id="qdd-lx-Bal"/>
+                            <constraint firstItem="I5B-gT-Iqg" firstAttribute="top" secondItem="ga4-if-IR4" secondAttribute="bottom" constant="42" id="wWJ-kB-E5v"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="Lkt-Ss-tG0"/>
+                    <connections>
+                        <outlet property="signInButton" destination="ga4-if-IR4" id="oy1-P1-sbp"/>
+                        <outlet property="signInView" destination="X7q-f7-lin" id="mvq-nk-Uab"/>
+                        <outlet property="termsLabel" destination="w3A-HJ-eXe" id="WtV-kQ-t6H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxy-Fa-q92" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3247" y="3327"/>
+        </scene>
         <!--About-->
         <scene sceneID="TK2-Bl-bMQ">
             <objects>
@@ -1918,7 +1994,7 @@ printer and app support.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMD-4I-RFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3232" y="3697"/>
+            <point key="canvasLocation" x="-3247" y="4054"/>
         </scene>
         <!--Logging Settings View Controller-->
         <scene sceneID="Pgr-ne-Gwi">
@@ -1982,7 +2058,7 @@ printer and app support.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0u-14-kYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2565" y="3685"/>
+            <point key="canvasLocation" x="-2506" y="4054"/>
         </scene>
         <!--About NavController-->
         <scene sceneID="s5U-hN-esZ">
@@ -2000,7 +2076,7 @@ printer and app support.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVc-dw-ZAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4134" y="3697"/>
+            <point key="canvasLocation" x="-3967" y="4054"/>
         </scene>
         <!--Web Viewer NavController-->
         <scene sceneID="hZb-Kv-Rca">
@@ -2207,13 +2283,17 @@ printer and app support.</string>
                                                             <action selector="facebookTapped:" destination="wUV-en-vVL" eventType="touchUpInside" id="yt7-1T-JGw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfA-TY-ykl" userLabel="FlickrButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfA-TY-ykl" userLabel="GoogleButton">
                                                         <rect key="frame" x="130" y="0.0" width="43" height="43"/>
-                                                        <state key="normal" image="Flickr">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="43" id="aew-yb-tGj"/>
+                                                            <constraint firstAttribute="height" constant="43" id="kAH-iR-qAm"/>
+                                                        </constraints>
+                                                        <state key="normal" image="google_C">
                                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="flickrTapped:" destination="wUV-en-vVL" eventType="touchUpInside" id="gwm-MZ-m5N"/>
+                                                            <action selector="googleTapped:" destination="wUV-en-vVL" eventType="touchUpInside" id="knI-ZW-WFC"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjv-x8-V3Q" userLabel="CameraRollButton">
@@ -2395,7 +2475,7 @@ printer and app support.</string>
                         <outlet property="cameraButtonsView" destination="zEd-iE-6Rq" id="Dto-Fb-DPM"/>
                         <outlet property="cameraRollButton" destination="mjv-x8-V3Q" id="0xa-Gc-Qqq"/>
                         <outlet property="facebookButton" destination="VJv-UZ-k0V" id="8v5-zQ-8OJ"/>
-                        <outlet property="flickrButton" destination="rfA-TY-ykl" id="BAR-sa-oAM"/>
+                        <outlet property="googleButton" destination="rfA-TY-ykl" id="jwe-VQ-fj4"/>
                         <outlet property="hamburgerButton" destination="Vwa-ue-pKP" id="2Vg-4s-GM1"/>
                         <outlet property="instagramButton" destination="TZ2-Uy-yQ3" id="fBM-TU-TKZ"/>
                         <outlet property="landingButtonsView" destination="MkG-i6-mOl" id="0FV-Qq-Uvg"/>
@@ -3357,6 +3437,24 @@ printer and app support.</string>
             </objects>
             <point key="canvasLocation" x="1434" y="1766"/>
         </scene>
+        <!--Google NavController-->
+        <scene sceneID="M1q-ih-JXC">
+            <objects>
+                <navigationController storyboardIdentifier="PGGoogleLandingPageViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="GVb-N0-BSF" userLabel="Google NavController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9gr-ss-rXc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4m9-eG-OC7" kind="relationship" relationship="rootViewController" id="aTc-Yt-FJH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Mm-WT-KrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4058" y="3327"/>
+        </scene>
     </scenes>
     <resources>
         <image name="+ButtonDisabled" width="19" height="19"/>
@@ -3369,7 +3467,6 @@ printer and app support.</string>
         <image name="China_Camera1" width="102" height="101"/>
         <image name="China_Gallery1" width="102" height="102"/>
         <image name="Facebook" width="43" height="43"/>
-        <image name="Flickr" width="43" height="43"/>
         <image name="HPLogo" width="25" height="25"/>
         <image name="Inactive_Circle" width="13" height="13"/>
         <image name="Instagram" width="43" height="43"/>
@@ -3388,6 +3485,7 @@ printer and app support.</string>
         <image name="backArrow" width="9" height="18"/>
         <image name="battery100" width="33" height="14"/>
         <image name="cameraLanding" width="76" height="76"/>
+        <image name="google_C" width="53" height="53"/>
         <image name="hamburger" width="22" height="18"/>
         <image name="helpForum" width="16" height="15"/>
         <image name="helpTweetSupport" width="17" height="14"/>
@@ -3406,6 +3504,7 @@ printer and app support.</string>
         <image name="signInCameraRoll" width="25" height="25"/>
         <image name="signInFacebook" width="12" height="23"/>
         <image name="signInFlickr" width="27" height="12"/>
+        <image name="signInGoogle" width="34" height="34"/>
         <image name="signInInstagram" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

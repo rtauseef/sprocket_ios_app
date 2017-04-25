@@ -17,6 +17,7 @@ def shared_pods
     pod 'HPPhotoProvider', git:'https://github.com/IPGPTP/hp_photo_provider', branch:'master'
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
+    pod 'Google/SignIn'
 end
 
 target "Sprocket" do
