@@ -70,13 +70,24 @@ int const kPhotosPerRequest = 50;
 - (NSString *)headerText
 {
     NSMutableString *text = [NSMutableString stringWithFormat:@"%@", self.album.name];
-    NSUInteger count = self.album.photoCount;
+    NSUInteger photoCount = self.album.photoCount;
     
-    if (1 == count) {
+    if (1 == photoCount) {
         [text appendString:HPPRLocalizedString(@" (1 photo)", nil)];
     } else {
-        [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)count];
+        [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)photoCount];
     }
+    
+    if (self.displayVideos) {
+        NSUInteger videoCount = self.album.videoCount;
+    
+        if (1 == videoCount) {
+            [text appendString:HPPRLocalizedString(@" (1 video)", nil)];
+        } else {
+            [text appendFormat:HPPRLocalizedString(@" (%lu videos)", @"Number of videos"), (unsigned long)photoCount];
+        }
+    }
+    
     return [NSString stringWithString:text];
 }
 
@@ -135,10 +146,10 @@ int const kPhotosPerRequest = 50;
     album.assetCollection = collection;
     album.photoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
     if( self.displayVideos ) {
-        album.photoCount += [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+        album.videoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
     }
     
-    if (album.photoCount > 0) {
+    if (album.photoCount > 0 || album.videoCount > 0) {
         [albums addObject:album];
     }
 }
