@@ -80,6 +80,7 @@ extern NSString * const kHPPRProviderName;
 @property (nonatomic, strong) NSString *instagramRedirectURL;
 @property (nonatomic, assign) BOOL immediateLoginAlert;
 @property (nonatomic, assign) BOOL preventHideLoginAlert;
+@property (nonatomic, assign) BOOL showVideos;
 @property (nonatomic, strong) HPPRAppearance *appearance;
 
 @property (nonatomic, strong) NSString *qzoneAppId;

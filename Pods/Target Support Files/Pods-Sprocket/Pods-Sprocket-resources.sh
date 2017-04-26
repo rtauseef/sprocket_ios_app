@@ -21,6 +21,9 @@ case "${TARGETED_DEVICE_FAMILY}" in
   3)
     TARGET_DEVICE_ARGS="--target-device tv"
     ;;
+  4)
+    TARGET_DEVICE_ARGS="--target-device watch"
+    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -96,6 +99,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/HPPRRetry@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRSearch@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Loading_Image@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@3x.png"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRAlertStripView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.xib"
@@ -157,6 +163,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/HPPRRetry@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRSearch@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Loading_Image@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@3x.png"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRAlertStripView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.xib"
@@ -218,6 +227,9 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/HPPRRetry@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRSearch@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Loading_Image@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@3x.png"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRAlertStripView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.xib"
@@ -279,6 +291,9 @@ if [[ "$CONFIGURATION" == "AppStore" ]]; then
   install_resource "HPPhotoProvider/Pod/Assets/HPPRRetry@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/HPPRSearch@2x.png"
   install_resource "HPPhotoProvider/Pod/Assets/Loading_Image@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@2x.png"
+  install_resource "HPPhotoProvider/Pod/Assets/Video@3x.png"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRAlertStripView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.xib"
   install_resource "HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.xib"

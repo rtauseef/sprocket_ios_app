@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu photos)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu videos)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 photo)";
+
+/* Single video available. */
+" (1 video)" = " (1 video)";
 
 /* Albums of the specified social network */
 "%@ Albums" = "%@ Albums";
@@ -10,14 +16,23 @@
 /* Photos of the specified social network */
 "%@ Photos" = "%@ Photos";
 
+/* Videos of the specified social network */
+"%@ Videos" = "%@ Videos";
+
 /* Number of posts */
 "%@ posts" = "%@ posts";
 
 /* Number of photos */
 "%lu photos" = "%lu photos";
 
+/* Number of videos */
+"%lu videos" = "%lu videos";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 photo";
+
+/* Single video available. */
+"1 video" = "1 video";
 
 /* Button caption */
 "Authorize" = "Authorize";

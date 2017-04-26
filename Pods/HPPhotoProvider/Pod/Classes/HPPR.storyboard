@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +23,7 @@
                         <viewControllerLayoutGuide type="top" id="epH-Q6-qGl"/>
                         <viewControllerLayoutGuide type="bottom" id="hb1-ST-9Ac"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="jAx-bQ-6cK">
+                    <view key="view" contentMode="scaleToFill" id="jAx-bQ-6cK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -48,7 +48,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check_Inactive1.png" translatesAutoresizingMaskIntoConstraints="NO" id="yaS-Se-2eh" userLabel="Media Type overlay">
+                                                <imageView userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Video.png" translatesAutoresizingMaskIntoConstraints="NO" id="yaS-Se-2eh" userLabel="Media Type overlay">
                                                     <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
@@ -160,7 +160,7 @@
                                 </cells>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-do-DUT" customClass="HPPRNoInternetConnectionRetryView">
-                                <rect key="frame" x="28" y="305.5" width="320" height="56"/>
+                                <rect key="frame" x="27.5" y="305.5" width="320" height="56"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="ICe-9G-sXR"/>
@@ -280,8 +280,8 @@
                                                 <constraint firstAttribute="height" constant="90" id="myh-3v-xDv"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Album Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tse-bM-l8x" userLabel="Album Title Label View">
-                                            <rect key="frame" x="113" y="30" width="416" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tse-bM-l8x" userLabel="Album Title Label View">
+                                            <rect key="frame" x="113" y="30" width="191" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -394,7 +394,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRFlickrLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="cLo-O4-i6G" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3g-kr-9iG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3g-kr-9iG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -468,7 +468,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRInstagramLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="d1M-ws-WX4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="PU6-hx-jyi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PU6-hx-jyi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -489,7 +489,7 @@
                         <viewControllerLayoutGuide type="top" id="PKM-UW-dNV"/>
                         <viewControllerLayoutGuide type="bottom" id="6mq-47-dMO"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="v8f-WU-b8g" userLabel="Main View">
+                    <view key="view" contentMode="scaleToFill" id="v8f-WU-b8g" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -530,10 +530,10 @@
                                 </view>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wnq-5T-0pq">
-                                <rect key="frame" x="178" y="323.5" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-PZ-5MH" customClass="HPPRNoInternetConnectionRetryView">
-                                <rect key="frame" x="28" y="305.5" width="320" height="56"/>
+                                <rect key="frame" x="27.5" y="305.5" width="320" height="56"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="FB2-kp-jNb"/>
@@ -598,7 +598,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRSelectAlbumTableViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NnT-dj-EWd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GxV-vi-yaa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GxV-vi-yaa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -617,7 +617,7 @@
                 <navigationController storyboardIdentifier="HPPRSelectPhotoCollectionViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Esc-vT-OmA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cYo-OJ-2To"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hcp-yD-yrr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcp-yD-yrr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -639,6 +639,7 @@
         <image name="HPPRCameraCell.png" width="52" height="40"/>
         <image name="HPPRSearch.png" width="21" height="21"/>
         <image name="Loading_Image.png" width="13" height="13"/>
+        <image name="Video.png" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TsP-MT-Os3"/>
