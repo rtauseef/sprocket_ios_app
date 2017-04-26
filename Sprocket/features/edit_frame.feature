@@ -12,7 +12,9 @@ Scenario: Verify 'Frame' option
     Then I should see the "Frame Editor" screen
     Then I select "frame_0" frame
     And I verify blue line indicator is displayed under selected "frame"
-    And I should see the photo with the "frame_0" frame
+   # Then I tap "Save" mark
+    #Then I should see the "Edit" screen
+    Then I should see the photo in the "Frame Editor" screen with the "frame_0" frame 
     Then I tap "Close" mark
     Then I should see the "Edit" screen
     And I should see the photo with no "frame"
@@ -24,7 +26,8 @@ Scenario Outline: Verify frame applied for frame editor screen
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "frame_0" frame
     And I verify blue line indicator is displayed under selected "frame"
-    And I should see the photo with the "frame_0" frame
+    #And I should see the photo with the "frame_0" frame
+    Then I should see the photo in the "Frame Editor" screen with the "frame_0" frame 
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     And I should see the photo with the "frame_0" frame
@@ -40,7 +43,7 @@ Scenario Outline: Verify frame applied for frame editor screen
 Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
-            |No Frame                   |
+            
             |Hearts Overlay Frame       |
             |Sloppy Frame               | 
             |Rainbow Frame              |
@@ -88,13 +91,14 @@ Scenario: Verify all the frames are applied for frame editor screen
 @done
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
-    Then I select "frame_1" frame
-    And I should see the photo with the "frame_1" frame
+    Then I select "frame_0" frame
+    Then I should see the photo in the "Frame Editor" screen with the "frame_0" frame 
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     Then I tap "Frame" button
-    Then I select "frame_3" frame
-    And I should see the photo with the "frame_3" frame
+    Then I should see the "Frame Editor" screen
+    Then I select "frame_1" frame
+    Then I should see the photo in the "Frame Editor" screen with the "frame_1" frame 
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     
