@@ -17,7 +17,7 @@
 extern NSString * const kPGCameraManagerCameraClosed;
 extern NSString * const kPGCameraManagerPhotoTaken;
 
-@interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate, AVCaptureFileOutputRecordingDelegate>
 
 @property (assign, nonatomic) BOOL isBackgroundCamera;
 @property (strong, nonatomic) UIImage *currentSelectedPhoto;
@@ -25,6 +25,7 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 @property (strong, nonatomic) HPPRMedia *currentMedia;
 @property (assign, nonatomic) BOOL isFlashOn;
 @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
+@property (assign, nonatomic) BOOL isCapturingVideo;
 
 + (PGCameraManager *)sharedInstance;
 
@@ -34,6 +35,8 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 - (void)addCameraButtonsOnView:(UIView *)view;
 
 - (void)takePicture;
+- (void)startRecording;
+- (void)stopRecording;
 - (void)switchCamera;
 - (void)toggleFlash;
 

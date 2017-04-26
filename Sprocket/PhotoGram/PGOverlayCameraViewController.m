@@ -18,11 +18,31 @@
 @property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *shutterButton;
+@property (assign) BOOL movieMode;
 
 @end
 
 @implementation PGOverlayCameraViewController
 
+- (void)viewDidLoad {
+    self.movieMode = NO;
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self.view addGestureRecognizer:panGesture];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    CGPoint velocity = [gestureRecognizer velocityInView:self.view];
+    
+    if(velocity.x > 0) { // gesture to the right
+        [self.shutterButton.imageView setImage: [UIImage imageNamed:@"cameraShutter"]];
+        self.movieMode = NO;
+    } else { // gesture to the left
+        [self.shutterButton.imageView setImage: [UIImage imageNamed:@"cameraRecord"]];
+        self.movieMode = YES;
+    }
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -43,7 +63,15 @@
 
 - (IBAction)shutterTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] takePicture];
+    if (self.movieMode) {
+        if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
+            [[PGCameraManager sharedInstance] startRecording];
+        } else {
+            [[PGCameraManager sharedInstance] stopRecording];
+        }
+    } else {
+        [[PGCameraManager sharedInstance] takePicture];
+    }
 }
 
 - (IBAction)flashTapped:(id)sender {

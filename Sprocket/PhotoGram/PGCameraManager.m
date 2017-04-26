@@ -31,6 +31,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
+    @property (strong, nonatomic) AVCaptureMovieFileOutput *movieFileOutput;
     @property (assign, nonatomic) BOOL isCapturingStillImage;
 
 @end
@@ -61,6 +62,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.isBackgroundCamera = NO;
     self.isFlashOn = NO;
     self.isCapturingStillImage = NO;
+    self.isCapturingVideo = NO;
 }
 
 #pragma mark - Private Methods
@@ -209,6 +211,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         [self.stillImageOutput setOutputSettings:outputSettings];
         [self.session addOutput:self.stillImageOutput];
         
+        self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
+        if ([self.session canAddOutput:self.movieFileOutput]) {
+            [self.session addOutput:self.movieFileOutput];
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
             [view.layer addSublayer:newCaptureVideoPreviewLayer];
@@ -231,9 +238,34 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
+- (void)startRecording {
+    if (self.isCapturingStillImage || self.isCapturingVideo) {
+        return;
+    }
+    
+    NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mov"];
+    NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:outputPath])
+    {
+        NSError *error;
+        if ([fileManager removeItemAtPath:outputPath error:&error] == NO)
+        {
+            //Error - handle if requried
+        }
+    }
+    //Start recording
+    self.isCapturingVideo = YES;
+    [self.movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
+}
+
+- (void)stopRecording {
+    [self.movieFileOutput stopRecording];
+}
+
 - (void)takePicture
 {
-    if (self.isCapturingStillImage) {
+    if (self.isCapturingStillImage || self.isCapturingVideo) {
         return;
     }
     
@@ -415,6 +447,40 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     NSString *screenName = [PGCameraManager trackableScreenName];
     [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
     [[Crashlytics sharedInstance] setObjectValue:screenName forKey:[UIViewController screenNameKey]];
+}
+
+#pragma mark - AVCaptureFileOutput delegate
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
+    self.isCapturingVideo = NO;
+    __weak PGCameraManager *weakSelf = self;
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:outputFileURL options:nil];
+    
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    generator.requestedTimeToleranceAfter =  kCMTimeZero;
+    generator.requestedTimeToleranceBefore =  kCMTimeZero;
+    generator.appliesPreferredTrackTransform = YES;
+    CGSize maxSize = CGSizeMake(480, 640);
+    generator.maximumSize = maxSize;
+    
+    AVAssetImageGeneratorCompletionHandler handler = ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
+        
+        if (result != AVAssetImageGeneratorSucceeded) {
+            NSLog(@"couldn't generate thumbnail, error:%@", error);
+        }
+        
+        UIImage *frameImage = [UIImage imageWithCGImage:im];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf loadPreviewViewControllerWithPhoto:frameImage andInfo:nil];
+        });
+    };
+    
+    NSMutableArray *timeArray = [NSMutableArray array];
+    [timeArray addObject:[NSValue valueWithCMTime:CMTimeMakeWithSeconds(0, 600)]];
+    
+    [generator generateCGImagesAsynchronouslyForTimes:timeArray completionHandler:handler];
 }
 
 @end
