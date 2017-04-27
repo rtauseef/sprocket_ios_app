@@ -2,8 +2,6 @@ Feature: Verify Text Edit screen
   As a user
   I want to verify Edit text features.
 
-  
-@reset
 @done
 Scenario Outline: Verify 'Text' option
     Given I am on the "<social_media_screen_name>" screen
@@ -25,7 +23,6 @@ Scenario Outline: Verify 'Text' option
     | Instagram Preview  |
     | CameraRoll Preview |
 
-@reset
 @done
 Scenario: Verify text edit screen navigation
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
@@ -33,7 +30,6 @@ Scenario: Verify text edit screen navigation
     Then I tap "Cancel" mark
     Then I should see the "Edit" screen
 
-@reset
 @regression
 Scenario Outline: Verify Text editor screen options
     Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
@@ -54,7 +50,7 @@ Scenario Outline: Verify Text editor screen options
     | Flickr Preview     |
     | CameraRoll Preview |
 
-@reset
+
 @DE4168
 Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -66,7 +62,7 @@ Scenario: Verify entered text cancellation
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
     
-@reset
+
 @regression
 Scenario: Verify text deletion option
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -77,7 +73,7 @@ Scenario: Verify text deletion option
     Then I touch "Delete"
     And I should not see the text
 
-@reset
+
 @done
 Scenario: Verify font
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -93,7 +89,7 @@ Scenario: Verify font
     #Then I should see the text with selected "Font"
     Then I should see the photo with the "font_2" font
     
-@reset  
+  
 @regression
 Scenario: Verify font list
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
@@ -129,7 +125,6 @@ Scenario: Verify font list
     | Vevey      |
     
     
-@reset  
 @regression
 Scenario: Verify all the fonts are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
@@ -139,7 +134,6 @@ Scenario: Verify all the fonts are applied successfully
     Then I select "Font"
     Then I verify that all the "fonts" are applied successfully
 
-@reset
 @done
 Scenario: Verify text color
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -153,8 +147,7 @@ Scenario: Verify text color
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Color"
-    
-@reset  
+      
 @regression
 Scenario: Verify color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -179,8 +172,7 @@ Scenario: Verify color list
     | Olive      |
     | Green      |
     | Aquamarin  |
-
-@reset  
+  
 @TA17012
 Scenario: Verify all the colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -191,8 +183,6 @@ Scenario: Verify all the colors are applied successfully
     Then I select "Color"
     Then I verify that all the "colors" are applied successfully
 
-
-@reset
 @done
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -205,8 +195,7 @@ Scenario: Verify text background
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Background Color"
-    
-@reset  
+      
 @regression
 Scenario: Verify background color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -230,9 +219,7 @@ Scenario: Verify background color list
     | Olive      |
     | Green      |
     | Aquamarin  |
-
-   
-@reset  
+  
 @done
 Scenario: Verify all the background colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 

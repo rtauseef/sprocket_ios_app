@@ -2,7 +2,6 @@ Feature: Verify Edit screen
   As a user
   I want to verify Edit features.
 
-@reset
 @done
 Scenario: Verify Edit screen
     Given I am on the "CameraRoll Preview " screen
@@ -18,7 +17,6 @@ Scenario: Verify Edit screen
     Then I should see "Check" mark
 
     
-@reset
 @regression
 Scenario Outline: Verify close button for edit screen
     Given I am on the "<social_media_screen_name>" screen

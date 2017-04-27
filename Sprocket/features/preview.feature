@@ -2,14 +2,12 @@ Feature: Verify preview screen from different social media
   As a signed in user
   I should be able to navigate to preview screen
 
-  @reset
   @regression
   Scenario: Navigate to preview screen via instagram
     Given I am on the "Instagram Photos" screen
     When I touch second photo
     Then I should see the "Instagram Preview" screen
 
-  @reset
   @regression
   Scenario: Verify preview screen for instagram
     Given I am on the "Instagram Preview" screen
@@ -19,7 +17,6 @@ Feature: Verify preview screen from different social media
     Then I should see "Print" button
     And I should see "Share" button
 
-  @reset
   @regression
   Scenario: Verify preview screen for Flickr
     Given I am on the "Flickr Preview" screen
@@ -29,7 +26,6 @@ Feature: Verify preview screen from different social media
     Then I should see "Print" button
     And I should see "Share" button
 
-  @reset
   @done
   @smoke
   Scenario: Verify preview screen for camera roll
@@ -73,7 +69,6 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image without margins
     
-  @reset
   @regression
   @pinch
   Scenario: Verify pinch in-out and zoom the image on preview screen_instagram

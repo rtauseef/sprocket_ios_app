@@ -2,7 +2,6 @@ Feature: Verify Edit frame feature
   As a user
   I want to verify frame features.
 
-@reset
 @done
 Scenario: Verify 'Frame' option
     Given I am on the "CameraRoll Preview " screen
@@ -17,8 +16,6 @@ Scenario: Verify 'Frame' option
     Then I should see the "Edit" screen
     And I should see the photo with no "frame"
 
-
-@reset
 @regression
 Scenario Outline: Verify frame applied for frame editor screen
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
@@ -34,8 +31,7 @@ Scenario Outline: Verify frame applied for frame editor screen
     | Instagram Preview |
     | CameraRoll        |
     
-    
-@reset
+
 @regression
 Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
@@ -61,7 +57,7 @@ Scenario: Verify frame list
             |Pink Spray Paint Frame     |
             |White Full Frame           |
             
-@reset
+            
 @localization
 Scenario: Verify additional frames for region Australia
     Given  I am on the "CameraRollLanding" screen
@@ -76,15 +72,12 @@ Scenario: Verify additional frames for region Australia
             |Australia Amplify 1 Frame  |
             |Australia Amplify 3 Frame  |
             
-    
-             
-  @reset
-  @regression
+            
+@regression
 Scenario: Verify all the frames are applied for frame editor screen 
     Given I am on the "FrameEditor" screen for "CameraRoll"  
     Then I verify that all the "frames" are applied successfully
 
-@reset
 @done
 Scenario Outline: Verify navigation to and fro from frame editor screen successfully
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
