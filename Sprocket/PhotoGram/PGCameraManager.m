@@ -110,6 +110,24 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     });
 }
 
+- (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andInfo:(NSDictionary *)info {
+    HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
+    media.image = photo;
+    media.assetURL = assetURL;
+    
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    
+    self.currentSelectedPhoto = photo;
+    self.currentMedia = media;
+    self.currentSource = [PGPreviewViewController cameraSource];
+    
+    if (self.isBackgroundCamera) {
+        [PGPreviewViewController presentPreviewPhotoFrom:self.viewController andSource:[PGPreviewViewController cameraSource] media:media animated:NO];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerPhotoTaken object:nil];
+    }
+}
+
 - (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
 {
     HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
@@ -473,7 +491,35 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         UIImage *frameImage = [UIImage imageWithCGImage:im];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf loadPreviewViewControllerWithPhoto:frameImage andInfo:nil];
+            
+            if ([PGSavePhotos savePhotos]) {
+                [PGSavePhotos saveVideo:asset completion:nil];
+                
+                [weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
+                                                                               message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     [PGSavePhotos setSavePhotos:NO];
+                                                                     [weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
+                                                                     [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"Off"];
+                                                                 }];
+                [alert addAction:noAction];
+                UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * _Nonnull action) {
+                                                                      [PGSavePhotos setSavePhotos:YES];
+                                                                      [PGSavePhotos saveVideo:asset completion:nil];
+                                                                      [weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
+                                                                      [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+                                                                  }];
+                [alert addAction:yesAction];
+            }
+
         });
     };
     

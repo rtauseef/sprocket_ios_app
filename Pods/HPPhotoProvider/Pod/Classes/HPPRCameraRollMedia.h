@@ -16,6 +16,8 @@
 
 @interface HPPRCameraRollMedia : HPPRMedia
 
+@property (strong, nonatomic) AVURLAsset *assetURL;
+
 - (id)initWithAsset:(PHAsset *)asset;
 
 @end

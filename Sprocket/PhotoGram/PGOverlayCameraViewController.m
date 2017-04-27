@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
 @property (assign) BOOL movieMode;
+@property (assign) NSUInteger recordingTime;
+@property (weak, nonatomic) IBOutlet UILabel *recordingTimeLabel;
+
 
 @end
 
@@ -39,7 +42,10 @@
         [self.shutterButton.imageView setImage: [UIImage imageNamed:@"cameraShutter"]];
         self.movieMode = NO;
     } else { // gesture to the left
-        [self.shutterButton.imageView setImage: [UIImage imageNamed:@"cameraRecord"]];
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraRecord"] forState:UIControlStateNormal];
+        
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraRecord"] forState:UIControlStateHighlighted];
+        
         self.movieMode = YES;
     }
 }
@@ -66,12 +72,28 @@
     if (self.movieMode) {
         if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
             [[PGCameraManager sharedInstance] startRecording];
+            self.recordingTime = 0;
+            [NSTimer scheduledTimerWithTimeInterval: 1.0f target: self
+                                           selector: @selector(updateTimeDisplay) userInfo: nil repeats: YES];
+            [self.recordingTimeLabel setHidden:NO];
+            [self.shutterButton setImage:[UIImage imageNamed:@"cameraStop"] forState:UIControlStateNormal];
+            [self.shutterButton setImage:[UIImage imageNamed:@"cameraStop"] forState:UIControlStateHighlighted];
         } else {
+            [self.recordingTimeLabel setHidden:YES];
             [[PGCameraManager sharedInstance] stopRecording];
         }
     } else {
         [[PGCameraManager sharedInstance] takePicture];
     }
+}
+
+- (void) updateTimeDisplay {
+    _recordingTime += 1;
+
+    int seconds = _recordingTime % 60;
+    int minutes = (int) (_recordingTime - seconds) / 60;
+    
+    self.recordingTimeLabel.text = [NSString stringWithFormat:@"%.2d:%.2d",minutes,seconds];
 }
 
 - (IBAction)flashTapped:(id)sender {

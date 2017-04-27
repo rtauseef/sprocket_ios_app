@@ -20,6 +20,49 @@ NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
 #pragma mark - Save Photos Methods
 
 
++ (void)saveVideo:(AVURLAsset *)asset completion:(void (^)(BOOL))completion {
+    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            NSString *albumTitle = @"sprocket";
+            
+            PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];
+            PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
+            
+            if ([fetchResult firstObject]) {
+                PHAssetCollection *sprocketAlbum = [fetchResult firstObject];
+                
+                [self saveVideo:asset toAssetCollection:sprocketAlbum completion:completion];
+                
+            } else {
+                __block PHObjectPlaceholder *sprocketAlbumPlaceholder;
+                
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    PHAssetCollectionChangeRequest *changeRequest = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumTitle];
+                    sprocketAlbumPlaceholder = changeRequest.placeholderForCreatedAssetCollection;
+                    
+                } completionHandler:^(BOOL success, NSError *error) {
+                    if (success) {
+                        PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[sprocketAlbumPlaceholder.localIdentifier] options:nil];
+                        PHAssetCollection *sprocketAlbum = fetchResult.firstObject;
+                        
+                        [self saveVideo:asset toAssetCollection:sprocketAlbum completion:completion];
+                    } else {
+                        if (completion) {
+                            completion(NO);
+                        }
+                    }
+                }];
+            }
+            
+        } else {
+            if (completion) {
+                completion(NO);
+            }
+        }
+    }];
+}
+
 + (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion
 {
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
@@ -68,6 +111,20 @@ NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
 {
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         PHAssetChangeRequest *assetChangeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        
+        PHAssetCollectionChangeRequest *assetCollectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
+        [assetCollectionChangeRequest addAssets:@[[assetChangeRequest placeholderForCreatedAsset]]];
+    } completionHandler:^(BOOL success, NSError *error) {
+        if (completion) {
+            completion(success);
+        }
+    }];
+}
+
++ (void)saveVideo:(AVURLAsset *)video toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion
+{
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        PHAssetChangeRequest *assetChangeRequest = [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:[video URL]];
         
         PHAssetCollectionChangeRequest *assetCollectionChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
         [assetCollectionChangeRequest addAssets:@[[assetChangeRequest placeholderForCreatedAsset]]];
