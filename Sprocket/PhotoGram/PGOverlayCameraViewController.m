@@ -18,11 +18,36 @@
 @property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *shutterButton;
+@property (assign) BOOL movieMode;
+@property (assign) NSUInteger recordingTime;
+@property (weak, nonatomic) IBOutlet UILabel *recordingTimeLabel;
+
 
 @end
 
 @implementation PGOverlayCameraViewController
 
+- (void)viewDidLoad {
+    self.movieMode = NO;
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self.view addGestureRecognizer:panGesture];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    CGPoint velocity = [gestureRecognizer velocityInView:self.view];
+    
+    if(velocity.x > 0) { // gesture to the right
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+        
+        self.movieMode = NO;
+    } else { // gesture to the left
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraRecord"] forState:UIControlStateNormal];
+        
+        self.movieMode = YES;
+    }
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -43,7 +68,31 @@
 
 - (IBAction)shutterTapped:(id)sender
 {
-    [[PGCameraManager sharedInstance] takePicture];
+    if (self.movieMode) {
+        if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
+            [[PGCameraManager sharedInstance] startRecording];
+            self.recordingTime = 0;
+            [NSTimer scheduledTimerWithTimeInterval: 1.0f target: self
+                                           selector: @selector(updateTimeDisplay) userInfo: nil repeats: YES];
+            [self.recordingTimeLabel setHidden:NO];
+            [self.shutterButton setImage:[UIImage imageNamed:@"cameraStop"] forState:UIControlStateNormal];
+
+        } else {
+            [self.recordingTimeLabel setHidden:YES];
+            [[PGCameraManager sharedInstance] stopRecording];
+        }
+    } else {
+        [[PGCameraManager sharedInstance] takePicture];
+    }
+}
+
+- (void) updateTimeDisplay {
+    _recordingTime += 1;
+
+    int seconds = _recordingTime % 60;
+    int minutes = (int) (_recordingTime - seconds) / 60;
+    
+    self.recordingTimeLabel.text = [NSString stringWithFormat:@"%.2d:%.2d",minutes,seconds];
 }
 
 - (IBAction)flashTapped:(id)sender {

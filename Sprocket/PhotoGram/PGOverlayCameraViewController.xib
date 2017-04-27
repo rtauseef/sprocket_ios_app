@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGOverlayCameraViewController">
             <connections>
                 <outlet property="flashButton" destination="voU-GQ-VkJ" id="Fxa-PS-S40"/>
+                <outlet property="recordingTimeLabel" destination="hpA-4f-k7q" id="wGM-gf-FnX"/>
+                <outlet property="shutterButton" destination="fg2-TL-pwq" id="aKL-YI-USR"/>
                 <outlet property="switchCameraButton" destination="AKI-P8-ZbS" id="0qe-ve-Bwl"/>
                 <outlet property="transitionEffectView" destination="BJW-QH-UdF" id="qdZ-gP-WnO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -70,6 +72,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-4f-k7q" userLabel="recordingTime">
+                    <rect key="frame" x="138" y="514" width="100" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="8mM-jz-m9n"/>
+                        <constraint firstAttribute="height" constant="21" id="Nuf-Pe-oEl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="16x-nJ-btJ"/>
@@ -80,6 +92,8 @@
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rwk-wz-iuu"/>
                 <constraint firstAttribute="trailing" secondItem="BJW-QH-UdF" secondAttribute="trailing" id="Ryg-Dp-a3C"/>
                 <constraint firstAttribute="bottom" secondItem="fg2-TL-pwq" secondAttribute="bottom" constant="57" id="VEm-cn-nxs"/>
+                <constraint firstItem="fg2-TL-pwq" firstAttribute="top" secondItem="hpA-4f-k7q" secondAttribute="bottom" constant="8" id="apR-z0-AMQ"/>
+                <constraint firstItem="hpA-4f-k7q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dYJ-7h-WnX"/>
                 <constraint firstItem="voU-GQ-VkJ" firstAttribute="centerY" secondItem="AKI-P8-ZbS" secondAttribute="centerY" id="ney-DO-SBS"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="leading" secondItem="voU-GQ-VkJ" secondAttribute="trailing" constant="10" id="pDP-dq-dNu"/>
                 <constraint firstItem="fg2-TL-pwq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qfY-Tp-dQ5"/>

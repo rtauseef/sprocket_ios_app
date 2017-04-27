@@ -15,6 +15,7 @@
 
 @interface PGSavePhotos : NSObject
 
++ (void)saveVideo:(AVURLAsset *)asset completion:(void (^)(BOOL))completion;
 + (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion;
 + (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion;
 
