@@ -83,10 +83,12 @@ end
 
 
 
+=begin
 And(/^I verify blue line indicator is displayed under selected "(.*?)"$/) do |option|
     selected_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Blue line indicator not found!" unless selected_status != nil
 end
+=end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
     if photo_source == "Instagram Preview"
@@ -260,7 +262,6 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
         while i < 19
             frame_id = "frame_"+"#{i}"
             macro %Q|I select "#{frame_id}" frame|
-            macro %Q|I verify blue line indicator is displayed under selected "frame"|
             macro %Q|I tap "Save" mark|
             macro %Q|I should see the "Edit" screen|
             macro %Q|I should see the photo with the "#{frame_id}" frame|
