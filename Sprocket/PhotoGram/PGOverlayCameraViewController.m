@@ -39,12 +39,11 @@
     CGPoint velocity = [gestureRecognizer velocityInView:self.view];
     
     if(velocity.x > 0) { // gesture to the right
-        [self.shutterButton.imageView setImage: [UIImage imageNamed:@"cameraShutter"]];
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+        
         self.movieMode = NO;
     } else { // gesture to the left
         [self.shutterButton setImage:[UIImage imageNamed:@"cameraRecord"] forState:UIControlStateNormal];
-        
-        [self.shutterButton setImage:[UIImage imageNamed:@"cameraRecord"] forState:UIControlStateHighlighted];
         
         self.movieMode = YES;
     }
@@ -77,7 +76,7 @@
                                            selector: @selector(updateTimeDisplay) userInfo: nil repeats: YES];
             [self.recordingTimeLabel setHidden:NO];
             [self.shutterButton setImage:[UIImage imageNamed:@"cameraStop"] forState:UIControlStateNormal];
-            [self.shutterButton setImage:[UIImage imageNamed:@"cameraStop"] forState:UIControlStateHighlighted];
+
         } else {
             [self.recordingTimeLabel setHidden:YES];
             [[PGCameraManager sharedInstance] stopRecording];
