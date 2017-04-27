@@ -269,9 +269,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSError *error;
         if ([fileManager removeItemAtPath:outputPath error:&error] == NO)
         {
-            //Error - handle if requried
+            PGLogError(@"Error creating temporary video file: %@", error.localizedDescription);
+            return;
         }
     }
+    
     //Start recording
     self.isCapturingVideo = YES;
     [self.movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
@@ -471,8 +473,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
     self.isCapturingVideo = NO;
-    __weak PGCameraManager *weakSelf = self;
     
+    
+    
+    __weak PGCameraManager *weakSelf = self;
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:outputFileURL options:nil];
     
     AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
@@ -485,7 +489,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     AVAssetImageGeneratorCompletionHandler handler = ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
         
         if (result != AVAssetImageGeneratorSucceeded) {
-            NSLog(@"couldn't generate thumbnail, error:%@", error);
+            PGLogError(@"couldn't generate thumbnail for video, error:%@", error.localizedDescription);
+            return;
         }
         
         UIImage *frameImage = [UIImage imageWithCGImage:im];

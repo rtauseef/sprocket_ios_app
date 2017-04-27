@@ -12,6 +12,7 @@
 
 #import "PGOverlayCameraViewController.h"
 #import "PGCameraManager.h"
+#import "PGLinkSettings.h"
 
 @interface PGOverlayCameraViewController ()
 
@@ -30,8 +31,11 @@
 
 - (void)viewDidLoad {
     self.movieMode = NO;
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [self.view addGestureRecognizer:panGesture];
+    
+    if ([PGLinkSettings videoPrintEnabled]) {
+        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        [self.view addGestureRecognizer:panGesture];
+    }
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
