@@ -355,8 +355,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
-                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:sticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
-                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
+// TODO removed until we got a fix for deleted stickers.
+//                PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:sticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
+//                [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
 
         }];
