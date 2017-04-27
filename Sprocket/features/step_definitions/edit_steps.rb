@@ -55,7 +55,7 @@ end
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     if(edit_item == "frame") 
         frame_value=$frame[$frame_id]['value']
-        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[9]
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
     raise "Wrong frame selected!" unless selected_frame_status == nil
     else
         if edit_item == "sticker"
@@ -83,10 +83,12 @@ end
 
 
 
+=begin
 And(/^I verify blue line indicator is displayed under selected "(.*?)"$/) do |option|
     selected_status = query("UIImageView index:1",:accessibilityIdentifier)
     raise "Blue line indicator not found!" unless selected_status != nil
 end
+=end
 
 Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
     if photo_source == "Instagram Preview"
@@ -212,6 +214,13 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
+    #selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
+    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
+    raise "Wrong frame selected!" unless selected_frame_status == frame_value
+end
+
+Then(/^I should see the photo in the "Frame Editor" screen with the "(.*?)" frame$/) do |frame_id|
+    frame_value=$frame[frame_id]['value']
     selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
@@ -250,18 +259,20 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
  
   i = 0
     if option == "frames"
-        while i < 20
+        while i < 19
             frame_id = "frame_"+"#{i}"
             macro %Q|I select "#{frame_id}" frame|
-            macro %Q|I verify blue line indicator is displayed under selected "frame"|
+            macro %Q|I tap "Save" mark|
+            macro %Q|I should see the "Edit" screen|
             macro %Q|I should see the photo with the "#{frame_id}" frame|
+            macro %Q|I tap "Frame" button|
             macro %Q|I should see the "FrameEditor" screen|
             i= i + 1
             sleep(SLEEP_SCREENLOAD)
         end
     else
         if option == "fonts"
-            while i < 25
+            while i < 20
                  font_id = "font_"+"#{i}"
                 macro %Q|I select "#{font_id}" font|
                 macro %Q|I verify blue line indicator is displayed under selected "font"|
@@ -411,53 +422,50 @@ $edit_screen_arr =
 
           }
            $frame ={ 
-            'frame_0' => {'name' => 'HeartsOverlayFrame_TN','value' =>'HeartsOverlayFrame'},
-            'frame_1' => {'name' => 'SloppyFrame_TN','value' =>'SloppyFrame'},
-            'frame_2' => {'name' => 'RainbowFrame_TN','value' =>'RainbowFrame'},
-            'frame_3' => {'name' => 'WhiteFrame_TN','value' =>'WhiteFrame'},
-            'frame_4' => {'name' => 'StarsOverlayFrame_TN','value' =>'StarsOverlayFrame'},
-            'frame_5' => {'name' => 'PolkadotsFrame_TN','value' =>'PolkadotsFrame'},
-            'frame_6' => {'name' => 'GreyShadowFrame_TN','value' =>'GreyShadowFrame'},
-            'frame_7' => {'name' => 'PinkTriangleFrame_TN','value' =>'PinkTriangleFrame'},
-            'frame_8' => {'name' => 'WhiteRoundedFrame_TN','value' =>'WhiteRoundedFrame'},
-            'frame_9' => {'name' => 'Floral2Frame_TN','value' =>'Floral2Frame'},
-            'frame_10' => {'name' => 'BlueWatercoloFrame_TN','value' =>'BlueWatercoloFrame'},
-            'frame_11' => {'name' => 'FloralOverlayFrame_TN','value' =>'FloralOverlayFrame'},
-            'frame_12' => {'name' => 'RedFrame_TN','value' =>'RedFrame'},
-            'frame_13' => {'name' => 'GradientFrame_TN','value' =>'GradientFrame'},
-            'frame_14' => {'name' => 'TurquoiseFrame_TN','value' =>'TurquoiseFrame'},
-            'frame_15' => {'name' => 'DotsOverlayFrame_TN','value' =>'DotsOverlayFrame'},
-            'frame_16' => {'name' => 'KraftFrame_TN','value' =>'KraftFrame'},
-            'frame_17' => {'name' => 'WhiteBarFrame_TN','value' =>'WhiteBarFrame'},
-            'frame_18' => {'name' => 'PinkSpraypaintFrame_TN','value' =>'PinkSpraypaintFrame'},
-            'frame_19' => {'name' => 'WhiteFullFrame_TN','value' =>'WhiteFullFrame'}
+            'frame_0' => {'name' => 'Hearts Overlay Frame','value' =>'HeartsOverlayFrame'},
+            'frame_1' => {'name' => 'Sloppy Frame','value' =>'SloppyFrame'},
+            'frame_2' => {'name' => 'Rainbow Frame','value' =>'RainbowFrame'},
+            'frame_3' => {'name' => 'White Frame','value' =>'WhiteFrame'},
+            'frame_4' => {'name' => 'Stars Overlay Frame','value' =>'StarsOverlayFrame'},
+            'frame_5' => {'name' => 'Polka Dots Frame','value' =>'PolkadotsFrame'},
+            'frame_6' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
+            'frame_7' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
+            'frame_8' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
+            'frame_9' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
+            'frame_10' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
+            'frame_11' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
+            'frame_12' => {'name' => 'Red Frame','value' =>'RedFrame'},
+            'frame_13' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
+            'frame_14' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
+            'frame_15' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
+            'frame_16' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
+            'frame_17' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
+            'frame_18' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
+            'frame_19' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
         }
         $font ={ 
-            'font_0' => {'name' => 'Helvetica','value' =>'Helvetica'},
-            'font_1' => {'name' => 'Typewriter','value' =>'American'},
-            'font_2' => {'name' => 'Avenir','value' =>'Avenir-Heavy'},
-            'font_3' => {'name' => 'Chalkboard','value' =>'ChalkboardSE-Regular'},
-            'font_4' => {'name' => 'Arial','value' =>'Arial'},
-            'font_5' => {'name' => 'Kohinoor','value' =>'KohinoorBangla-Regular'},
-            'font_6' => {'name' => 'Liberator','value' =>'Liberator'},
-            'font_7' => {'name' => 'Muncie','value' =>'Muncie'},
-            'font_8' => {'name' => 'Lincoln','value' =>'Abraham'},
-            'font_9' => {'name' => 'Airship','value' =>'Airship'},
-            'font_10' => {'name' => 'Arvil','value' =>'Arvil'},
-            'font_11' => {'name' => 'Bender','value' =>'Bender-Inline'},
-            'font_12' => {'name' => 'Blanch','value' =>'Blanch-Condensed'},
-            'font_13' => {'name' => 'Cubano','value' =>'Cubano-Regular'},
-            'font_14' => {'name' => 'Franchise','value' =>'Franchise'},
-            'font_15' => {'name' => 'Geared','value' =>'GearedSlab-Regular'},
-            'font_16' => {'name' => 'Governor','value' =>'Governor'},
-            'font_17' => {'name' => 'Haymaker','value' =>'Haymaker'},
-            'font_18' => {'name' => 'Homestead','value' =>'Homestead-Regular'},
-            'font_19' => {'name' => 'Maven Pro','value' =>'MavenProLight200-Regular'},
-            'font_20' => {'name' => 'Mensch','value' =>'Mensch'},
-            'font_21' => {'name' => 'Sullivan','value' =>'Sullivan-Regular'},
-            'font_22' => {'name' => 'Tommaso','value' =>'Tommaso'},
-            'font_23' => {'name' => 'Valencia','value' =>'Valencia'},
-            'font_24' => {'name' => 'Vevey','value' =>'Vevey'}                  
+            'font_0' => {'name' => 'Aleo','value' =>'Aleo'},
+            'font_1' => {'name' => 'BERNIER Regular','value' =>'BERNIERRegular-Regular'},
+            'font_2' => {'name' => 'Blogger Sans','value' =>'BloggerSans-Light'},
+            'font_3' => {'name' => 'Cheque','value' =>'Cheque-Regular'},
+            'font_4' => {'name' => 'Fira Sans','value' =>'FiraSans-Regular'},
+            'font_5' => {'name' => 'Gagalin','value' =>'Gagalin-Regular'},
+            'font_6' => {'name' => 'Hagin Caps Thin','value' =>'Hagin'},
+            'font_7' => {'name' => 'Panton','value' =>'Panton-LightitalicCaps'},
+            'font_8' => {'name' => 'Panton','value' =>'Panton-LightitalicCaps'},
+            'font_9' => {'name' => 'Perfograma','value' =>'Perfograma'},
+            'font_10' => {'name' => 'Summer Font','value' =>'SummerFont-Light'},
+            'font_11' => {'name' => 'American Typewriter','value' =>'American'},
+            'font_12' => {'name' => 'Baskerville','value' =>'Baskerville'},
+            'font_13' => {'name' => 'Bodoni 72','value' =>'BodoniSvtyTwoITCTT-Book'},
+            'font_14' => {'name' => 'Bradley Hand','value' =>'Bradley'},
+            'font_15' => {'name' => 'Chalkboard SE','value' =>'ChalkboardSE-Regular'},
+            'font_16' => {'name' => 'DIN Alternate','value' =>'DIN'},
+            'font_17' => {'name' => 'Helvetica Neue','value' =>'Helvetica'},
+            'font_18' => {'name' => 'Noteworthy','value' =>'Noteworthy-Light'},
+            'font_19' => {'name' => 'Snell Roundhand','value' =>'Snell'},
+            'font_20' => {'name' => 'Thonburi','value' =>'Thonburi'}
+                             
         }
            
     

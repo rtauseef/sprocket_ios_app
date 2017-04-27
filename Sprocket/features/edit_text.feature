@@ -98,31 +98,28 @@ Scenario: Verify font list
     And I should see the photo with the "text"
     Then I select "Font"
     Then I should see the following "Fonts" in the screen:
-    | Helvetica  |
-    | Typewriter | 
-    | Avenir     |
-    | Chalkboard |
-    | Arial      |
-    | Kohinoor   |
-    | Liberator  |
-    | Muncie     |
-    | Lincoln    |
-    | Airship    |
-    | Arvil      |
-    | Bender     |
-    | Blanch     |
-    | Cubano     |
-    | Franchise  |
-    | Geared     |
-    | Governor   |
-    | Haymaker   |
-    | Homestead  |
-    | Maven Pro  |
-    | Mensch     |
-    | Sullivan   |
-    | Tommaso    |
-    | Valencia   |
-    | Vevey      |
+    
+    | Aleo                | 
+    | BERNIER Regular     |
+    | Blogger Sans        |
+    | Cheque              |
+    | Fira Sans           |
+    | Gagalin             |
+    | Hagin Caps Thin     |
+    | Panton              |
+    | Panton              |
+    | Perfograma          |
+    | Summer Font         |
+    | American Typewriter |
+    | Baskerville         |
+    | Bodoni 72           |
+    | Bradley Hand        |
+    | Chalkboard SE       |
+    | DIN Alternate       |
+    | Helvetica Neue      |
+    | Noteworthy          |
+    | Snell Roundhand     |
+    | Thonburi            |
     
     
 @regression
