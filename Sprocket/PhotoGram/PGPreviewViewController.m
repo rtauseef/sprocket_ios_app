@@ -662,6 +662,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
+    if (![[MPBTPrintManager sharedInstance] canAddToQueue:YES]) {
+        return;
+    }
+
     [self showDownloadingImagesAlertWithCompletion:^{
         [self closeDrawer];
         [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
