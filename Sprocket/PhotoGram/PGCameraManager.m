@@ -474,8 +474,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
     self.isCapturingVideo = NO;
     
-    
-    
     __weak PGCameraManager *weakSelf = self;
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:outputFileURL options:nil];
     
