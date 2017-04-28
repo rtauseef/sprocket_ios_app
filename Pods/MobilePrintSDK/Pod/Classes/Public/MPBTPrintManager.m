@@ -161,6 +161,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
                 break;
             }
         }
+    } else {
+       return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
     }
     
     if (!isInsidePrintLaterJobs) {

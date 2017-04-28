@@ -350,6 +350,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.tintColor = [UIColor HPBlueColor];
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
+                cell.accessibilityLabel = category.accessibilityLabel;
             };
 
             toolBuilder.stickerButtonConfigurationClosure = ^(IMGLYIconCollectionViewCell * _Nonnull cell, IMGLYSticker * _Nonnull sticker) {
