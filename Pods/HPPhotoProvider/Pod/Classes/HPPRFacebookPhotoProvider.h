@@ -26,5 +26,7 @@
 - (NSString *)urlForPhoto:(NSDictionary *)photoInfo withHeight:(NSUInteger)height;
 - (NSString *)urlForSmallestPhoto:(NSDictionary *)photoInfo;
 - (NSString *)urlForLargestPhoto:(NSDictionary *)photoInfo;
+- (NSString *)urlForVideoPhoto:(NSDictionary *)photoInfo;
+- (NSString *)urlForVideoThumbnail:(NSDictionary *)photoInfo;
 
 @end

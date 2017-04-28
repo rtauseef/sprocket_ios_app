@@ -236,9 +236,9 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album
 {
-    if ([album objectID] == nil) {
+    /*if ([album objectID] == nil) {
         album = nil;
-    }
+    }*/
 
     [super selectAlbumDropDownController:viewController didSelectAlbum:album];
 }

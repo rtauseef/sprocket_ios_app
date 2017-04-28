@@ -96,7 +96,7 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
 
 - (void)requestImageWithCompletion:(void(^)(UIImage *image))completion
 {
-    if (!self.image ) {
+    if (!self.image) {
         PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
         requestOptions.resizeMode   = PHImageRequestOptionsResizeModeNone;
         requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;

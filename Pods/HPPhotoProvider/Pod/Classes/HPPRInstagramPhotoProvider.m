@@ -18,6 +18,7 @@
 #import "HPPRInstagramError.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
+#import "HPPR.h"
 
 #define PHOTO_SOURCE_SEGMENTED_CONTROL_MY_PHOTOS_INDEX 0
 #define PHOTO_SOURCE_SEGMENTED_CONTROL_MY_FEED_INDEX 1
@@ -55,7 +56,17 @@ enum MCInstagramDisplayType {
         sharedInstance = [[HPPRInstagramPhotoProvider alloc] init];
         sharedInstance.loginProvider = [HPPRInstagramLoginProvider sharedInstance];
     });
+    
     return sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.displayVideos = [[HPPR sharedInstance] showVideos]; // default to not show videos
+    }
+    return self;
 }
 
 - (void)initForStandardDisplay

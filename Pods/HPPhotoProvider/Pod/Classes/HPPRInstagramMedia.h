@@ -16,6 +16,6 @@
 
 @interface HPPRInstagramMedia : HPPRMedia
 
-+ (BOOL)isImage:(NSDictionary *)mediaDict;
++ (BOOL)shouldPresent:(NSDictionary *)mediaDict;
 
 @end
