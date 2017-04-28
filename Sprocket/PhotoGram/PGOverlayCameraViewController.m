@@ -14,6 +14,8 @@
 #import "PGCameraManager.h"
 #import "PGLinkSettings.h"
 
+#define kMaxRecordingTime (NSUInteger)20
+
 @interface PGOverlayCameraViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
@@ -21,10 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
 @property (assign) BOOL movieMode;
-@property (assign) NSUInteger recordingTime;
+@property (assign) float recordingTime;
 @property (weak, nonatomic) IBOutlet UILabel *recordingTimeLabel;
-
-
+@property (strong, nonatomic) CAShapeLayer *circle;
+@property (strong, nonatomic) NSTimer *recordingTimer;
 @end
 
 @implementation PGOverlayCameraViewController
@@ -33,25 +35,31 @@
     self.movieMode = NO;
     
     if ([PGLinkSettings videoPrintEnabled]) {
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        [self.view addGestureRecognizer:panGesture];
+        UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        longPressGesture.minimumPressDuration = 0.3f;
+        
+        [self.shutterButton addGestureRecognizer:longPressGesture];
     }
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer
-{
-    CGPoint velocity = [gestureRecognizer velocityInView:self.view];
-    
-    if(velocity.x > 0) { // gesture to the right
-        [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
-        
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        // start recording
+        if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
+            [[PGCameraManager sharedInstance] startRecording];
+            self.recordingTime = 0;
+            self.recordingTimer = [NSTimer scheduledTimerWithTimeInterval: 0.2f target: self
+                                           selector: @selector(updateTimeDisplay) userInfo: nil repeats: YES];
+            self.movieMode = YES;
+        }
+    } else if (self.movieMode && recognizer.state == UIGestureRecognizerStateEnded) {
+        // stop recording
+        [self.recordingTimer invalidate];
+        [[PGCameraManager sharedInstance] stopRecording];
         self.movieMode = NO;
-    } else { // gesture to the left
-        [self.shutterButton setImage:[UIImage imageNamed:@"cameraRecord"] forState:UIControlStateNormal];
-        
-        self.movieMode = YES;
     }
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -72,31 +80,49 @@
 
 - (IBAction)shutterTapped:(id)sender
 {
-    if (self.movieMode) {
-        if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
-            [[PGCameraManager sharedInstance] startRecording];
-            self.recordingTime = 0;
-            [NSTimer scheduledTimerWithTimeInterval: 1.0f target: self
-                                           selector: @selector(updateTimeDisplay) userInfo: nil repeats: YES];
-            [self.recordingTimeLabel setHidden:NO];
-            [self.shutterButton setImage:[UIImage imageNamed:@"cameraStop"] forState:UIControlStateNormal];
-
-        } else {
-            [self.recordingTimeLabel setHidden:YES];
-            [[PGCameraManager sharedInstance] stopRecording];
-        }
-    } else {
+    if (!self.movieMode) {
         [[PGCameraManager sharedInstance] takePicture];
     }
 }
 
 - (void) updateTimeDisplay {
-    _recordingTime += 1;
+    _recordingTime += 0.2;
 
-    int seconds = _recordingTime % 60;
-    int minutes = (int) (_recordingTime - seconds) / 60;
+    if (_recordingTime >= kMaxRecordingTime) {
+        [self.recordingTimer invalidate];
+        [[PGCameraManager sharedInstance] stopRecording];
+        return;
+    }
+
+    int radius = (int) self.shutterButton.bounds.size.width / 2;
+    float startAngle = M_PI * -90 / 180;
+    float endAngle;
     
-    self.recordingTimeLabel.text = [NSString stringWithFormat:@"%.2d:%.2d",minutes,seconds];
+    if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
+        [self.recordingTimer invalidate];
+        self.movieMode = NO;
+        endAngle = startAngle;
+    } else {
+        startAngle = M_PI * -90 / 180;
+        endAngle = _recordingTime * ((M_PI * 360 / 180) / 20) + startAngle;
+    }
+    
+    if (self.circle == nil) {
+        self.circle = [CAShapeLayer layer];
+        self.circle.position = CGPointMake(CGRectGetMidX(self.shutterButton.bounds)-radius,
+                                      CGRectGetMidY(self.shutterButton.bounds)-radius);
+        self.circle.fillColor = [UIColor clearColor].CGColor;
+        self.circle.lineCap=kCALineCapRound;
+        UIColor *strokeColor=[UIColor redColor];
+        self.circle.strokeColor = strokeColor.CGColor;
+        self.circle.lineWidth = 4;
+        
+        [self.shutterButton.layer addSublayer:self.circle];
+    }
+    
+    UIBezierPath *path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius) radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+    self.circle.path = [path CGPath];
+    [self.circle setNeedsDisplay];
 }
 
 - (IBAction)flashTapped:(id)sender {
