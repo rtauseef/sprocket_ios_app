@@ -91,6 +91,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSelectedPhotos;
 
 @property (strong, nonatomic) PGProgressView *progressView;
+@property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
+
 
 @end
 
@@ -262,17 +264,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     NSArray<IMGLYBoxedMenuItem *> *menuItems = [self.imglyManager menuItemsWithConfiguration:configuration];
 
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
+    self.photoEditViewController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
 //    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
 
-    photoController.delegate = self;
+    self.photoEditViewController.delegate = self;
 
     IMGLYToolbarController *toolController = [[IMGLYToolbarController alloc] init];
     toolController.toolbar.backgroundColor = [UIColor HPRowColor];
 
-    [toolController pushViewController:photoController animated:NO completion:nil];
+    [toolController pushViewController:self.photoEditViewController animated:NO completion:nil];
     [toolController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [toolController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    self.imglyManager.photoEditViewController = self.photoEditViewController;
     
     [self presentViewController:toolController animated:YES completion:^() {
         NSString *screenName = @"Editor Screen";

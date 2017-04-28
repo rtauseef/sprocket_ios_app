@@ -14,6 +14,7 @@
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
 #import "UIColor+Style.h"
+#import <imglyKit/IMGLYAnalyticsConstants.h>
 
 static NSString * const kImglyMenuItemMagic = @"Magic";
 static NSString * const kImglyMenuItemFilter = @"Filter";
@@ -22,9 +23,11 @@ static NSString * const kImglyMenuItemSticker = @"Sticker";
 static NSString * const kImglyMenuItemText = @"Text";
 static NSString * const kImglyMenuItemCrop = @"Crop";
 
-@interface PGImglyManager() //<IMGLYStickersDataSourceProtocol, IMGLYFramesDataSourceProtocol>
+@interface PGImglyManager() <IMGLYAnalyticsClient>
 
 @property (nonatomic, strong) NSDictionary *menuItems;
+@property (nonatomic, strong) IMGLYSticker *selectedSticker;
+@property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricsManager;
 
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 
@@ -156,6 +159,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
 {
+    self.embellishmentMetricsManager = embellishmentMetricsManager;
     self.colorBlock = ^(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName) {
         CGRect cellFrame = cell.frame;
         cellFrame.size.height = cellFrame.size.width;
@@ -202,11 +206,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
         builder.accessoryViewBackgroundColor = [UIColor HPRowColor];
 
-
         // Editor general configuration
 
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
-
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPRowColor];
             photoEditorBuilder.allowsPreviewImageZoom = NO;
@@ -380,6 +382,14 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                     itemCell.captionLabel.text = nil;
                 }
             };
+            
+            toolBuilder.stickerActionSelectedClosure = ^(enum StickerAction action) {
+                
+            };
+            
+            toolBuilder.stickerOverlayActionSelectedClosure = ^(enum StickerOverlayAction overlayAction) {
+                
+            };
         }];
 
 
@@ -471,8 +481,24 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
     }];
+    
+    [PESDK sharedInstance].analytics.isEnabled = YES;
+    [[PESDK sharedInstance].analytics addAnalyticsClient:self];
 
     return configuration;
+}
+
+- (void)setPhotoEditViewController:(IMGLYPhotoEditViewController *)photoEditViewController
+{
+    void (^ _Nullable selectionChangedHandler)(UIView * _Nullable, UIView * _Nullable) = photoEditViewController.overlayController.selectionChangedHandler;
+    
+    __weak PGImglyManager *weakSelf = self;
+    photoEditViewController.overlayController.selectionChangedHandler = ^(UIView * _Nullable view1, UIView * _Nullable view2) {
+        if (view2 && [view2 isKindOfClass:[IMGLYStickerImageView class]]) {
+            weakSelf.selectedSticker = ((IMGLYStickerImageView *)view2).sticker;
+        }
+        selectionChangedHandler(view1, view2);
+    };
 }
 
 - (void (^)(IMGLYButton * _Nonnull))applyButtonBlockWithAccessibilityLabel:(NSString *)label {
@@ -515,6 +541,23 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     NSURL *effectUrl = [photoEffectBundle URLForResource:name withExtension:@"png" subdirectory:@"imglyKit.bundle"];
 
     return [[IMGLYPhotoEffect alloc] initWithIdentifier:name lutURL:effectUrl displayName:name];
+}
+
+#pragma mark - IMGLYAnalyticsClient
+
+- (void)logScreenView:(IMGLYAnalyticsScreenViewName _Nonnull)screenView
+{
+    
+}
+
+- (void)logEvent:(IMGLYAnalyticsEventName _Nonnull)event attributes:(NSDictionary<IMGLYAnalyticsEventAttributeName, id> * _Nullable)attributes
+{
+    if (attributes[IMGLYAnalyticsEventAttributeNameAction] == IMGLYAnalyticsEventAttributeValueActionDelete) {
+        PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:self.selectedSticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
+        
+        [self.embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
+    }
+    
 }
 
 @end
