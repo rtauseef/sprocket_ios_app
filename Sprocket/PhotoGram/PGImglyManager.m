@@ -544,7 +544,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
 - (void)logEvent:(IMGLYAnalyticsEventName _Nonnull)event attributes:(NSDictionary<IMGLYAnalyticsEventAttributeName, id> * _Nullable)attributes
 {
-    if (attributes[IMGLYAnalyticsEventAttributeNameAction] == IMGLYAnalyticsEventAttributeValueActionDelete) {
+    if ((event == IMGLYAnalyticsEventNameStickerActionSelect) && (attributes[IMGLYAnalyticsEventAttributeNameAction] == IMGLYAnalyticsEventAttributeValueActionDelete)) {
         PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:self.selectedSticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
         
         [self.embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
