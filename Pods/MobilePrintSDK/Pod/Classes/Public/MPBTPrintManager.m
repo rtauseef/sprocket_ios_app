@@ -78,14 +78,25 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
-    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        [self reportError:MantaErrorBusy isFinalError:NO];
+    if (![self canAddToQueue:YES]) {
         return NO;
     }
 
     MPPrintLaterJob *job = [self jobForPrintItem:printItem metrics:metrics];
 
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
+
+    return YES;
+}
+
+- (BOOL)canAddToQueue:(BOOL)shouldTriggerError {
+    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
+        if (shouldTriggerError) {
+            [self reportError:MantaErrorBusy isFinalError:NO];
+        }
+
+        return NO;
+    }
 
     return YES;
 }
@@ -142,7 +153,17 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 - (NSInteger)queueSize {
+    BOOL isInsidePrintLaterJobs = NO;
     if (self.currentJob != nil) {
+        for (MPPrintLaterJob *job in [MPPrintLaterQueue sharedInstance].retrieveAllPrintLaterJobs) {
+            if ([self.currentJob.id isEqualToString:job.id]) {
+                isInsidePrintLaterJobs = YES;
+                break;
+            }
+        }
+    }
+    
+    if (!isInsidePrintLaterJobs) {
         return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs] + 1;
     } else {
         return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];

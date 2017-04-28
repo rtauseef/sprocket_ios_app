@@ -39,6 +39,8 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 - (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics;
 
+- (BOOL)canAddToQueue:(BOOL)shouldTriggerError;
+
 - (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
 - (void)pausePrintQueue;
 - (void)cancelPrintQueue;
