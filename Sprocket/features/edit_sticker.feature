@@ -2,7 +2,6 @@ Feature: Verify Edit sticker feature
   As a user
   I want to verify sticker features.
 
-@reset
 @done
 Scenario: Verify 'Sticker' option
     Given I am on the "CameraRoll Preview" screen
@@ -17,8 +16,6 @@ Scenario: Verify 'Sticker' option
     Then I should see the "Edit" screen
     And I should see the photo with the "sticker_0" sticker
 
-    
-@reset
 @regression
 Scenario Outline: Verify 'Sticker' option
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
@@ -34,7 +31,6 @@ Scenario Outline: Verify 'Sticker' option
     | CameraRoll Preview |
     
     
-@reset
 @regression
 Scenario: Verify Sticker edit options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
@@ -49,7 +45,6 @@ Scenario: Verify Sticker edit options
     #And I should see "Flip horizontally" button
     
     
-@reset
 @regression
 @done
 Scenario Outline: Verify Sticker delete option    
@@ -67,7 +62,6 @@ Scenario Outline: Verify Sticker delete option
     | CameraRoll Preview |
     
     
-@reset
 @done
 Scenario: Verify sticker list
     Given I am on the "StickerEditor" screen for "CameraRoll"
@@ -117,13 +111,13 @@ Scenario: Verify sticker list
                 |Feather Sticker              |
                 |Diamond Sticker              |
                 
-@reset
+
 @regression
 Scenario: Verify all the stickers are applied for sticker editor screen 
     Given I am on the "StickerEditor" screen for "CameraRoll"  
     Then I verify that all the "stickers" are applied successfully
     
-@reset
+
 @done
 Scenario Outline: Verify sticker editor screen navigation
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"

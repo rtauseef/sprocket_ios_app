@@ -2,7 +2,6 @@ Feature: Verify Edit frame feature
   As a user
   I want to verify frame features.
 
-
   @reset
   @done
   Scenario: Verify frame list

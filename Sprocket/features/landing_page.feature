@@ -2,7 +2,6 @@ Feature: Verify Welcome screen/Landing Page
   As a user
   I want to check elements displayed on landing page
 
-  @reset
   @done
   @smoke
   Scenario: Verify Landing Screen
@@ -15,9 +14,6 @@ Feature: Verify Welcome screen/Landing Page
     And I should see "Camera Roll" logo
     And I should see social source authentication text
 
-
-
-  @reset
   @done
   Scenario: Verify Terms of Service link on Landing Screen
     Given  I am on the "Landing" screen
@@ -28,7 +24,6 @@ Feature: Verify Welcome screen/Landing Page
     When I touch "Done" button
     Then I should see the "Landing" screen
 
-  @reset
   @done
   @smoke
 Scenario Outline: Open Social Source from  Landing screen
@@ -43,7 +38,6 @@ Scenario Outline: Open Social Source from  Landing screen
     |Facebook		|
     |CameraRoll	    |
 
-  @reset
   @regression
 Scenario: Verify Side menu from Landing screen
 	Given  I am on the "Landing" screen
