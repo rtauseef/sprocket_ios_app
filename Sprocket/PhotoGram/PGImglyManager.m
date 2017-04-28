@@ -382,14 +382,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                     itemCell.captionLabel.text = nil;
                 }
             };
-            
-            toolBuilder.stickerActionSelectedClosure = ^(enum StickerAction action) {
-                
-            };
-            
-            toolBuilder.stickerOverlayActionSelectedClosure = ^(enum StickerOverlayAction overlayAction) {
-                
-            };
         }];
 
 
