@@ -21,9 +21,14 @@
 
 @implementation HPPRInstagramMedia
 
-+ (BOOL)isImage:(NSDictionary *)mediaDict
++ (BOOL)shouldPresent:(NSDictionary *)mediaDict
 {
     NSString *type = [mediaDict objectForKey:@"type"];
+    
+    if ([[HPPRInstagramPhotoProvider sharedInstance] displayVideos]) {
+        return YES;
+    }
+    
     if ([type isEqualToString:@"image"]) {
         return YES;
     } else {
@@ -51,8 +56,18 @@
         
         NSInteger createdTimeSince1970 = [[attributes valueForKey:@"created_time"] integerValue];
         self.createdTime = [NSDate dateWithTimeIntervalSince1970:createdTimeSince1970];
-
-        self.mediaType = kHPRMediaTypeImage;
+        
+        if ([[attributes valueForKey:@"type"] isEqualToString:@"video"]) {
+            self.mediaType = kHPRMediaTypeVideo;
+            
+            NSString *videoURL = [attributes valueForKeyPath:@"videos.standard_resolution.url"];
+            
+            if (videoURL != nil) {
+                self.assetURL = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoURL] options:nil];
+            }
+        } else { // TODO: handle image sequence
+            self.mediaType = kHPRMediaTypeImage;
+        }
         
         self.text = [attributes valueForKeyPath:@"caption.text"];
         

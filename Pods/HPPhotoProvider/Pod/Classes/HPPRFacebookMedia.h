@@ -16,4 +16,6 @@
 
 @interface HPPRFacebookMedia : HPPRMedia
 
+- (id)initWithVideoAttributes:(NSDictionary *)attributes;
+
 @end

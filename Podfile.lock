@@ -57,7 +57,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 604b1ea6da0051df7fc24b80463c03eb5d673439
+    :commit: 9be8ba0fb12bf52a103eb4b12b44ecf620ea56c2
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: e6eac44ed10c757ad69463f9e41a2b82cf34c9a0
@@ -76,6 +76,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
 
-PODFILE CHECKSUM: 1a7dbc4c13d130b47b04869e306d855159596e7e
+PODFILE CHECKSUM: 6fadefd03463cf074e7e39cb0b656e6ca059bcc1
 
 COCOAPODS: 1.2.1

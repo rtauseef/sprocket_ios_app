@@ -22,7 +22,7 @@
 #define HPPR_PHOTO_COLLECTION_BEGIN_REFRESH @"PhotoCollectionBeginRefresh"
 #define HPPR_PHOTO_COLLECTION_END_REFRESH @"PhotoCollectionEndRefresh"
 
-#define FACEBOOK_PERMISSIONS @[@"public_profile", @"user_photos"]
+#define FACEBOOK_PERMISSIONS @[@"public_profile", @"user_videos", @"user_photos"]
 
 #define FLICKR_MAX_PER_PAGE @"50"
 #define FLICKR_MAX_FAVORITES_PER_PAGE @"50"

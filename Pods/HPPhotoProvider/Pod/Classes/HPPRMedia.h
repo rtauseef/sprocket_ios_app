@@ -34,6 +34,7 @@ typedef enum {
 @property (assign, nonatomic) tHPRMediaType mediaType;
 
 @property (nonatomic, strong) PHAsset *asset;
+@property (strong, nonatomic) AVURLAsset *assetURL;
 @property (nonatomic, strong) UIImage *thumbnailImage;
 @property (nonatomic, strong) UIImage *previewImage;
 @property (nonatomic, strong) UIImage *image;

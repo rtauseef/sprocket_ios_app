@@ -21,6 +21,29 @@
 
 @implementation HPPRFacebookMedia
 
+- (id)initWithVideoAttributes:(NSDictionary *)attributes {
+    self = [super init];
+    
+    if (self) {
+        self.mediaType = kHPRMediaTypeVideo;
+        self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForVideoThumbnail:attributes];
+        self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForVideoPhoto:attributes];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+        NSString *dateString = [attributes objectForKey:@"created_time"];
+        self.createdTime = [dateFormatter dateFromString:dateString];
+        
+        id latitude = [[[attributes objectForKey:@"place"] objectForKey:@"location"] objectForKey:@"latitude"];
+        id longitude = [[[attributes objectForKey:@"place"] objectForKey:@"location"] objectForKey:@"longitude"];
+        if (latitude && longitude) {
+            self.location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+        }
+    }
+    
+    return self;
+}
+
 - (id)initWithAttributes:(NSDictionary *)attributes
 {
     self = [super init];

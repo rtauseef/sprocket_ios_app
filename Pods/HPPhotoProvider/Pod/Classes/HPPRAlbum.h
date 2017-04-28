@@ -28,6 +28,7 @@
 @property (nonatomic, assign) NSUInteger videoCount;
 @property (nonatomic, strong) UIImage *coverPhoto;
 @property (nonatomic, strong) PHAssetCollection *assetCollection;
+@property (nonatomic, assign) BOOL videoOnly;
 
 + (NSError *)albumDeletedError;
 

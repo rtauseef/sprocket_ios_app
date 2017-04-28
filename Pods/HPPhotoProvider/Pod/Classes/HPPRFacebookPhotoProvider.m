@@ -17,6 +17,7 @@
 #import "HPPRFacebookAlbum.h"
 #import "NSBundle+HPPRLocalizable.h"
 #import "FBSDKCoreKit/FBSDKCoreKit.h"
+#import "HPPR.h"
 
 #define PAGING_ALL @"All"
 #define FACEBOOK_ERROR_DOMAIN @"com.facebook.sdk"
@@ -44,6 +45,15 @@
         sharedInstance.loginProvider.delegate = sharedInstance;
     });
     return sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.displayVideos = [[HPPR sharedInstance] showVideos];
+    }
+    return self;
 }
 
 - (void)applicationDidStart
@@ -138,22 +148,18 @@
     });
 }
 
-- (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
-{
-    if (reload) {
-        self.maxPhotoID = nil;
-    }
-    
-    [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:^(NSDictionary *photoInfo, NSError *error) {
+- (void)requestVideosWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload {
+    [self videosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:^(NSDictionary *videoInfo, NSError *error) {
         
         NSArray *records = nil;
         
         if (!error) {
-            NSArray * photos = [photoInfo objectForKey:@"data"];
-            NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
+            NSArray * videos = [videoInfo objectForKey:@"data"];
+            NSString *maxVideoID = [[[videoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
             NSMutableArray *mutableRecords = [NSMutableArray array];
-            for (NSDictionary * photo in photos) {
-                __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+            
+            for (NSDictionary * video in videos) {
+                __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithVideoAttributes:video];
                 [mutableRecords addObject:media];
             }
             
@@ -164,9 +170,10 @@
             } else {
                 [self replaceImagesWithRecords:records];
             }
-            self.maxPhotoID = maxPhotoID;
+            
+            self.maxPhotoID = maxVideoID;
         } else {
-            NSLog(@"ALBUM PHOTOS ERROR\n%@", error);
+            NSLog(@"ALBUM VIDEOS ERROR\n%@", error);
             [self lostAccess];
         }
         
@@ -174,7 +181,49 @@
             completion(records);
         }
     }];
+}
+
+- (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
+{
+    if (reload) {
+        self.maxPhotoID = nil;
+    }
     
+    if (self.album.videoOnly) {
+        [self requestVideosWithCompletion:completion andReloadAll:reload];
+    } else {
+    
+        [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:^(NSDictionary *photoInfo, NSError *error) {
+        
+            NSArray *records = nil;
+        
+            if (!error) {
+                NSArray * photos = [photoInfo objectForKey:@"data"];
+                NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
+                NSMutableArray *mutableRecords = [NSMutableArray array];
+                for (NSDictionary * photo in photos) {
+                    __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+                    [mutableRecords addObject:media];
+                }
+            
+                records = mutableRecords.copy;
+            
+                if (self.maxPhotoID) {
+                    [self updateImagesWithRecords:records];
+                } else {
+                    [self replaceImagesWithRecords:records];
+                }
+                self.maxPhotoID = maxPhotoID;
+            } else {
+                NSLog(@"ALBUM PHOTOS ERROR\n%@", error);
+                [self lostAccess];
+            }
+        
+            if (completion) {
+                completion(records);
+            }
+        }];
+    }
 }
 
 - (BOOL)hasMoreImages
@@ -208,8 +257,39 @@
             allPhotos.coverPhotoID = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).coverPhotoID;
             allPhotos.provider = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).provider;
 
-            if (completion) {
-                completion([NSArray arrayWithArray:facebookAlbums], nil);
+            if (self.displayVideos) {
+                [self cachedGraphRequest:@"me/videos/uploaded" parameters:@{ @"fields":@"picture,limit=1" } refresh:refresh paging:PAGING_ALL completion:^(id result, NSError *error) {
+                    if (error) {
+                        NSLog(@"FACEBOOK ERROR\n%@", error);
+                        [self lostAccess];
+                        if (completion) {
+                            completion(nil, error);
+                        }
+                    } else {
+                        HPPRFacebookAlbum *allVideos = [[HPPRFacebookAlbum alloc] init];
+                        allVideos.name = HPPRLocalizedString(@"Videos", @"Indicates that all videos will be displayed");
+                        allVideos.objectID = nil;
+                        allVideos.videoOnly = YES;
+                        allVideos.coverPhotoID = nil;
+                        allVideos.provider = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).provider;
+                        
+                        for (NSDictionary *entry in result) { // there should be just one
+                            allVideos.coverPhotoURL = [entry objectForKey:@"picture"];
+                        }
+                        
+                        [facebookAlbums addObject:allVideos];
+                        
+                        if (completion) {
+                            completion([NSArray arrayWithArray:facebookAlbums], nil);
+                        }
+                    }
+                }];
+                
+            } else {
+                
+                if (completion) {
+                    completion([NSArray arrayWithArray:facebookAlbums], nil);
+                }
             }
         }
         
@@ -262,6 +342,14 @@
     [self cachedGraphRequest:photoID parameters:fields refresh:refresh paging:nil completion:completion];
 }
 
+- (void)videosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *videoInfo, NSError *error))completion
+{
+    // me/videos/uploaded?fields=created_time,place,thumbnails
+    NSString *query = @"me/videos/uploaded";
+    
+    [self cachedGraphRequest:query parameters:@{@"fields":@"created_time,thumbnails,place,picture"} refresh:refresh paging:afterID completion:completion];
+}
+
 - (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *userInfo, NSError *error))completion
 {
     [self cachedGraphRequest:@"me" parameters:@{ @"fields":@"name,id" } refresh:refresh paging:nil completion:completion];
@@ -285,30 +373,39 @@
 {
     HPPRFacebookAlbum *facebookAlbum = (HPPRFacebookAlbum *)album;
     
-    if (facebookAlbum.coverPhotoID == nil) {
+    if (facebookAlbum.coverPhotoID == nil && facebookAlbum.coverPhotoURL == nil) {
         if (completion) {
             completion(album, [UIImage imageNamed:@"HPPRFacebookNoPhotoAlbum"], nil);
         }
         return;
     }
     
-    [[HPPRFacebookPhotoProvider sharedInstance] photoByID:facebookAlbum.coverPhotoID withRefresh:refresh andCompletion:^(NSDictionary *photoInfo, NSError *error) {
-        if (error) {
-            NSLog(@"PHOTO ERROR\n%@", error);
-            [self lostAccess];
-            if (completion) {
-                completion(facebookAlbum, nil, error);
-            }
-        } else {
-            NSString *url = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:photoInfo];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:url];
+    if (facebookAlbum.coverPhotoID != nil) {
+        [[HPPRFacebookPhotoProvider sharedInstance] photoByID:facebookAlbum.coverPhotoID withRefresh:refresh andCompletion:^(NSDictionary *photoInfo, NSError *error) {
+            if (error) {
+                NSLog(@"PHOTO ERROR\n%@", error);
+                [self lostAccess];
                 if (completion) {
-                    completion(album, album.coverPhoto, nil);
+                    completion(facebookAlbum, nil, error);
                 }
-            });
-        }
-    }];
+            } else {
+                NSString *url = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:photoInfo];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:url];
+                    if (completion) {
+                        completion(album, album.coverPhoto, nil);
+                    }
+                });
+            }
+        }];
+    } else if (facebookAlbum.coverPhotoURL != nil) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:facebookAlbum.coverPhotoURL];
+            if (completion) {
+                completion(album, album.coverPhoto, nil);
+            }
+        });
+    }
 }
 
 #pragma mark - Photo helpers
@@ -322,6 +419,24 @@
     }
     
     return nil;
+}
+
+- (NSString *)urlForVideoPhoto:(NSDictionary *)photoInfo {
+    NSDictionary *imageInfo = [photoInfo objectForKey:@"thumbnails"];
+    
+    if (imageInfo != nil) {
+        NSArray *imageList = [imageInfo objectForKey:@"data"];
+        if ([imageList count] > 0) {
+            NSString *photoURL =[imageList[0] objectForKey:@"uri"];
+            return photoURL;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)urlForVideoThumbnail:(NSDictionary *)photoInfo {
+    return [photoInfo objectForKey:@"picture"];
 }
 
 - (NSString *)urlForSmallestPhoto:(NSDictionary *)photoInfo

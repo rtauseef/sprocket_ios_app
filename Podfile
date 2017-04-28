@@ -16,7 +16,7 @@ def shared_pods
     pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'innovation-master'
     # pod 'MobilePrintSDK', path:'../ios-print-sdk'
     pod 'HPPhotoProvider', git:'https://github.com/IPGPTP/hp_photo_provider', branch:'innovation-master'
-#    pod 'HPPhotoProvider', path:'../hp_photo_provider'
+    # pod 'HPPhotoProvider', path:'../hp_photo_provider'
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
 end
