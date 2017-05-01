@@ -105,8 +105,6 @@ static NSInteger  const connectionDefaultValue = -1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
 
     [[MP sharedInstance] checkSprocketForUpdates:self];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
