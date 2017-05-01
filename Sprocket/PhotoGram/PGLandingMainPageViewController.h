@@ -14,4 +14,6 @@
 
 @interface PGLandingMainPageViewController : PGLandingPageViewController
 
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button;
+
 @end
