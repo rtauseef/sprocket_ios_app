@@ -379,7 +379,35 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)sender
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button
+{
+    switch (type) {
+        case PGSocialSourceTypeFacebook:
+            [self facebookTapped:button];
+            break;
+        case PGSocialSourceTypeInstagram:
+            [self instagramTapped:button];
+            break;
+        case PGSocialSourceTypeFlickr:
+            [self flickrTapped:button];
+            break;
+        case PGSocialSourceTypeLocalPhotos:
+            [self cameraRollTapped:button];
+            break;
+        case PGSocialSourceTypeWeiBo:
+            NSLog(@"WeiBo tapped");
+            break;
+        case PGSocialSourceTypeGoogle:
+            NSLog(@"Google not supported for China");
+            break;
+        case PGSocialSourceTypeQzone:
+            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
+            break;
+        case PGSocialSourceTypePitu:
+            [self pituTapped:button];
+            break;
+    }
+}
 
 #pragma mark - MPBTPrintManagerDelegate
 
@@ -500,38 +528,6 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
 {
-    switch (type) {
-        case PGSocialSourceTypeFacebook:
-            [self facebookTapped:sender];
-            break;
-        case PGSocialSourceTypeInstagram:
-            [self instagramTapped:sender];
-            break;
-        case PGSocialSourceTypeFlickr:
-            [self flickrTapped:sender];
-            break;
-        case PGSocialSourceTypeLocalPhotos:
-            [self cameraRollTapped:sender];
-            break;
-        case PGSocialSourceTypeWeiBo:
-            NSLog(@"WeiBo tapped");
-            break;
-        case PGSocialSourceTypeGoogle:
-            NSLog(@"Google not supported for China");
-            break;
-        case PGSocialSourceTypeQzone:
-            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
-            break;
-        case PGSocialSourceTypePitu:
-            [self pituTapped:sender];
-            break;
-    }
-}
-
-#pragma mark - PGSocialSourcesCircleViewDelegate
-
-- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
-{
     [self cameraTapped:button];
 }
 
@@ -539,7 +535,6 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 {
     [self goToSocialSourcePage:socialSource.type sender:button];
 }
-
 
 #pragma mark - Reset user defaults
 
