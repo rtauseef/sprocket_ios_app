@@ -37,8 +37,6 @@
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
 		2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
-		2671D4C71E3EB64600F166E3 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
-		2671D4CB1E3EB64600F166E3 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
@@ -1593,7 +1591,6 @@
 		8281ECAD1EA948D1003021DB /* xoxo_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECA91EA948D1003021DB /* xoxo_TN@2x.png */; };
 		8281ECAE1EA948D1003021DB /* xoxo_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECAA1EA948D1003021DB /* xoxo_TN@3x.png */; };
 		8281ECAF1EA948D1003021DB /* xoxo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECAB1EA948D1003021DB /* xoxo.png */; };
-		8284668D1E4D48D4007C0A25 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8284668F1E4D48D4007C0A25 /* InfoPlist.strings */; };
 		828F02131E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
 		828F02141E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
 		828F02151E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
@@ -2115,7 +2112,6 @@
 		8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
 		9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385719BE57C5009C695F /* SendFeedback@2x.png */; };
 		91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
-		922ACF9D1E3FD4EE00A475A4 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
 		9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -2135,7 +2131,6 @@
 		92ECDB4D1E41065100026DE4 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
-		92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
@@ -2347,13 +2342,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
-			remoteInfo = PushNotificationExtension;
-		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -2389,13 +2377,6 @@
 			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
 			remoteInfo = AirshipAppExtensions;
 		};
-		92ECDB481E4105EA00026DE4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
-			remoteInfo = PushNotificationExtension;
-		};
 		E34D5080199AB87B006D80E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -2406,22 +2387,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2671D4DD1E3EB82A00F166E3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2ce25b4da6bb5ac3c4758195 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				922ACF9D1E3FD4EE00A475A4 /* PushNotificationExtension.appex in Embed App Extensions */,
 				1013d62f480a8c2772265b37 /* Sprocket Print.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -2434,7 +2405,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				82157D081D9306A400360D87 /* Sprocket Print.appex in Embed App Extensions */,
-				2671D4CB1E3EB64600F166E3 /* PushNotificationExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2547,7 +2517,6 @@
 		261BCFF61DC7F8F2003AF6F1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		261BCFFF1DC9396C003AF6F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
-		2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2671D4C51E3EB64600F166E3 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		2671D4C61E3EB64600F166E3 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		2671D4C81E3EB64600F166E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -4009,14 +3978,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2671D4C01E3EB64500F166E3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		821523231D82215600C0541C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -5298,7 +5259,6 @@
 				E34D507B199AB87B006D80E0 /* SprocketTests.xctest */,
 				821523261D82215600C0541C /* Sprocket Print.appex */,
 				F1B9596C1DAECAF400EF6EB7 /* Sprocket-cal.app */,
-				2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -5742,24 +5702,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2671D4C21E3EB64500F166E3 /* PushNotificationExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2671D4CC1E3EB64600F166E3 /* Build configuration list for PBXNativeTarget "PushNotificationExtension" */;
-			buildPhases = (
-				2671D4BF1E3EB64500F166E3 /* Sources */,
-				2671D4C01E3EB64500F166E3 /* Frameworks */,
-				2671D4C11E3EB64500F166E3 /* Resources */,
-				2671D4DD1E3EB82A00F166E3 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PushNotificationExtension;
-			productName = PushNotificationExtension;
-			productReference = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		42188b650312ea34d00c34bf /* Sprocket-cal */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ae1d3f7c29c7235af187634 /* Build configuration list for PBXNativeTarget "Sprocket-cal" */;
@@ -5781,7 +5723,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				92ECDB491E4105EA00026DE4 /* PBXTargetDependency */,
 				92ECDB471E4105E100026DE4 /* PBXTargetDependency */,
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
 			);
@@ -5835,7 +5776,6 @@
 			dependencies = (
 				92ECDB431E4105D400026DE4 /* PBXTargetDependency */,
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
-				2671D4CA1E3EB64600F166E3 /* PBXTargetDependency */,
 			);
 			name = Sprocket;
 			productName = PhotoGram;
@@ -5870,11 +5810,6 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = HP;
 				TargetAttributes = {
-					2671D4C21E3EB64500F166E3 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = UJ5KAZ5V7V;
-						ProvisioningStyle = Manual;
-					};
 					42188b650312ea34d00c34bf = {
 						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
@@ -5899,7 +5834,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -5947,7 +5882,6 @@
 				E34D507A199AB87B006D80E0 /* SprocketTests */,
 				821523251D82215600C0541C /* Sprocket Print */,
 				42188b650312ea34d00c34bf /* Sprocket-cal */,
-				2671D4C21E3EB64500F166E3 /* PushNotificationExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -5970,14 +5904,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2671D4C11E3EB64500F166E3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8284668D1E4D48D4007C0A25 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		821523241D82215600C0541C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -8368,14 +8294,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2671D4BF1E3EB64500F166E3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2671D4C71E3EB64600F166E3 /* NotificationService.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		385e52ef178df23c5a543a64 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -8606,11 +8524,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2671D4CA1E3EB64600F166E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
-			targetProxy = 2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */;
-		};
 		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 821523251D82215600C0541C /* Sprocket Print */;
@@ -8625,11 +8538,6 @@
 			isa = PBXTargetDependency;
 			name = AirshipAppExtensions;
 			targetProxy = 92ECDB461E4105E100026DE4 /* PBXContainerItemProxy */;
-		};
-		92ECDB491E4105EA00026DE4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
-			targetProxy = 92ECDB481E4105EA00026DE4 /* PBXContainerItemProxy */;
 		};
 		E34D5081199AB87B006D80E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8953,89 +8861,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2671D4CD1E3EB64600F166E3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
-				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65933388-ece2-4340-ba82-d64ca9e18cf1";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		2671D4CE1E3EB64600F166E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
-				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65933388-ece2-4340-ba82-d64ca9e18cf1";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		2671D4CF1E3EB64600F166E3 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		2671D4D01E3EB64600F166E3 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
 		35c2e36ea1855459f530fc84 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */;
@@ -9424,7 +9249,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -9490,7 +9314,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -9640,7 +9463,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
 				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
@@ -9767,7 +9589,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
@@ -9987,17 +9808,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2671D4CC1E3EB64600F166E3 /* Build configuration list for PBXNativeTarget "PushNotificationExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2671D4CD1E3EB64600F166E3 /* Debug */,
-				2671D4CE1E3EB64600F166E3 /* Release */,
-				2671D4CF1E3EB64600F166E3 /* TestFlight */,
-				2671D4D01E3EB64600F166E3 /* AppStore */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7ae1d3f7c29c7235af187634 /* Build configuration list for PBXNativeTarget "Sprocket-cal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
