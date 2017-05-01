@@ -35,7 +35,7 @@
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
-@interface PGAppDelegate() <MPPrintPaperDelegate>
+@interface PGAppDelegate()
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 @property (assign, nonatomic) NSInteger lastConnectedValue;
@@ -149,15 +149,24 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 #pragma mark - URL handler
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
+    return [self application:app
+                     openURL:url
+           sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                  annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     if ([[DBChooser defaultChooser] handleOpenURL:url]) {
         // This was a Chooser response and handleOpenURL automatically ran the completion block
         return YES;
     }
-    
+
     if ([url.scheme isEqual:@"hpsprocket"]) {
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    } else if ([url.scheme containsString:@"googleusercontent"]) {
+        return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else if ([url.scheme isEqual:@"com.hp.sprocket.deepLinks"]) {
         [self deepLink:url.host];
     } else {
@@ -185,7 +194,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 {
     [MP sharedInstance].handlePrintMetricsAutomatically = NO;
     [MP sharedInstance].uniqueDeviceIdPerApp = NO;
-    [MP sharedInstance].printPaperDelegate = self;
+    [MP sharedInstance].defaultPaper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
     
@@ -225,13 +234,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //                                        UIUserNotificationTypeBadge |
     //                                        UIUserNotificationTypeSound);
     
-}
-
-
-#pragma mark - MPPrintPaperDelegate
-
-- (MPPaper *)defaultPaperForPrintSettings:(MPPrintSettings *)printSettings {
-    return [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
 }
 
 

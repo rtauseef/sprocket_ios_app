@@ -29,7 +29,8 @@ class SimLocale
       "zh_Hant" => {"AppleLanguages" => "zh", "AppleLocale" => "zh_Hant"},
       "fr_CA" => {"AppleLanguages" => "fr", "AppleLocale" => "fr_CA"},
       "en_MX" => {"AppleLanguages" => "en", "AppleLocale" => "en_MX"},
-      "en_CA" => {"AppleLanguages" => "en", "AppleLocale" => "en_CA"}
+      "en_CA" => {"AppleLanguages" => "en", "AppleLocale" => "en_CA"},
+      "en_AU" => {"AppleLanguages" => "en", "AppleLocale" => "en_AU"}
     }
 
   def change_sim_locale(sim_os, sim_name, sim_locale)

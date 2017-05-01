@@ -2,14 +2,12 @@ Feature: Verify preview screen from different social media
   As a signed in user
   I should be able to navigate to preview screen
 
-  @reset
   @regression
   Scenario: Navigate to preview screen via instagram
     Given I am on the "Instagram Photos" screen
     When I touch second photo
     Then I should see the "Instagram Preview" screen
 
-  @reset
   @regression
   Scenario: Verify preview screen for instagram
     Given I am on the "Instagram Preview" screen
@@ -19,8 +17,7 @@ Feature: Verify preview screen from different social media
     Then I should see "Print" button
     And I should see "Share" button
 
-  @reset
-  @TA17012
+  @regression
   Scenario: Verify preview screen for Flickr
     Given I am on the "Flickr Preview" screen
     Then I should see "camera" button
@@ -29,7 +26,6 @@ Feature: Verify preview screen from different social media
     Then I should see "Print" button
     And I should see "Share" button
 
-  @reset
   @done
   @smoke
   Scenario: Verify preview screen for camera roll
@@ -44,8 +40,7 @@ Feature: Verify preview screen from different social media
     And I should see "Print" button
     And I should see "Share" button
 
-  @reset
-  @done
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_camera roll
     Given I am on the "CameraRoll Photo" screen
     When I touch a photos in Camera Roll photos
@@ -55,8 +50,7 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image without margins
 
-  @reset
-  @done
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_instagram
     Given I am on the "Instagram Preview" screen
     When I double tap on the picture
@@ -75,7 +69,6 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image without margins
     
-  @reset
   @regression
   @pinch
   Scenario: Verify pinch in-out and zoom the image on preview screen_instagram

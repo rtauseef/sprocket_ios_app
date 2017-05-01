@@ -36,6 +36,10 @@ def download
     "* id:'previewDownload'"
 end
     
+    def more    
+        "UILabel marked:'#{$list_loc['More']}' index:1"
+end
+    
     
 def close
     "button"

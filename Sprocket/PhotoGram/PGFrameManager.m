@@ -87,31 +87,14 @@
              ];
 }
 
+- (NSArray<IMGLYFrame *> *)imglyFrames {
+    NSMutableArray<IMGLYFrame *> *frames = [[NSMutableArray alloc] init];
 
-- (PGFrameItem *)frameByIndex:(NSInteger)index
-{
-    PGFrameItem *frame = (PGFrameItem *)self.frames[index];
-    
-    return frame;
-}
-
-- (PGFrameItem *)frameByAccessibilityText:(NSString *)accessibilityText
-{
-    PGFrameItem *frame = nil;
-    
-    for (PGFrameItem *frameItem in self.frames) {
-        if ([accessibilityText isEqualToString:frameItem.accessibilityText]) {
-            frame = frameItem;
-            break;
-        }
+    for (PGFrameItem *frame in self.frames) {
+        [frames addObject:frame.imglyFrame];
     }
-    
-    return frame;
-}
 
-- (NSUInteger)framesCount
-{
-    return self.frames.count;
+    return frames;
 }
 
 @end

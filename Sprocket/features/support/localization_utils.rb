@@ -23,6 +23,7 @@ $language_arr =
         "Edit" => "Edit",
         "Save to Camera Roll" => "Save to Camera Roll",
         "Print to sprocket" => "Print to sprocket",
+        "More" => "More",
         "Terms and service" => "By authenticating with social sources you also agree to HP Terms of Service.",
         "side_menu" => "sprocket",
         "Buy Paper" => "Buy Paper",
@@ -78,6 +79,7 @@ $language_arr =
         "Edit" => "Editar",
         "Save to Camera Roll" => "Guardar en el carrete de la cámara",
         "Print to sprocket" => "Imprimir en sprocket",
+        "More" => "Más",
         "Take or select a photo"  => "Tome o seleccione una foto",
         "Terms and service" => "Al autenticarse con una red social también acepta los Términos de servicio de HP.",
         "side_menu" => "sprocket",
@@ -133,8 +135,9 @@ $language_arr =
         "photo_screen"=> "Camera Roll 张照片",
         "Edit" => "编辑",
         "Save to Camera Roll" => "保存到“相册”中",
-        "Print to sprocket" => "Print to sprocket",
+        "Print to sprocket" => "打印到 Sprocket",
         "Save_to_CameraRoll" => "已保存到“相册”中",
+        "More" => "更多",
         "Take or select a photo"  => "拍摄或选择一张照片",
         "Terms and service" => "通过社交网络源进行验证，亦表示您同意 HP 的服务条款。",
         "side_menu" => "sprocket",
@@ -201,6 +204,7 @@ $language_arr =
         "Take or select a photo"  => "Foto aufnehmen oder auswählen",
         "Terms and service" => "Durch die Authentifizierung mit sozialen Medien akzeptieren Sie die HP Nutzungsbedingungen.",
         "side_menu" => "sprocket",
+        "More" => "Mehr",
         "Buy Paper" => "Papier kaufen",
         "How to & Help" => "Anleitungen und Hilfe",
        # "Give Feedback" => "Ihr Feedback",
@@ -255,6 +259,7 @@ $language_arr =
         "Edit" => "Modifier",
         "Save to Camera Roll" => "Enregistrer sur la pellicule",
         "Print to sprocket" => "Imprimer avec Sprocket",
+        "More" => "Autre",
         "Save_to_CameraRoll" => "Enregistré sur la pellicule",
         "Take or select a photo"  => "Prenez ou sélectionnez une photo",
         "Terms and service" => "En vous authentifiant sur les réseaux sociaux, vous acceptez également les conditions de service de HP.",
@@ -309,7 +314,7 @@ $language_arr =
         "auth" => "Autorizza",
         "album_screen" => "Rullino fotografico",
         #"photo_screen"=> "Camera Roll Photos",
-        "photo_screen"=> "Camera Roll",
+        "photo_screen"=> "Rullino fotografico",
         "Edit" => "Modifica",
         "Save to Camera Roll" => "Salva in rullino fotografico",
         "Print to sprocket" => "Stampa su Sprocket",
@@ -324,6 +329,7 @@ $language_arr =
         "Privacy" => "Privacy",
         "About" => "Informazioni su",
         "Camera Roll" => "Rullino fotografico",
+        "More" => "Altro",
         "Sign In" => "Accedi",
         "Sign Out" => "Disconnetti",
         "Reset Sprocket Printer" => "Ripristinare la stampante Sprocket",
@@ -358,16 +364,16 @@ $language_arr =
         "Cancel" => "Annuleren",
         "Settings" => "Instellingen",
         "cameraroll_logo" => "CameraRoll",
+        "More" => "Meer",
         "terms_of_service_flickr" => "Door aanmelding bij Flickr ga je ook akkoord met de gebruiksvoorwaarden van HP.",
         "terms_of_service_instagram" => "Door aanmelding bij Instagram ga je ook akkoord met de gebruiksvoorwaarden van HP.",
         "terms_of_service_cameraroll" => "Door Filmrol te gebruiken ga je ook akkoord met de gebruiksvoorwaarden van HP.",
         "terms_of_service_facebook" => "Door aanmelding bij Facebook ga je ook akkoord met de gebruiksvoorwaarden van HP.",
         #"photos_button" => "Camera Roll",
-        "photos_button" => "Foto's",
         "auth" => "Toestemming geven",
         "album_screen" => "Filmrol",
         #"photo_screen"=> "Camera Roll Photos",
-        "photo_screen"=> "Camera Roll",
+        "photo_screen"=> "Filmrol",
         "Take or select a photo"  => "Een foto maken of selecteren",
         "Edit" => "Bewerken",
         "Save to Camera Roll" => "Opslaan naar Filmrol",
@@ -429,6 +435,7 @@ $language_arr =
         "Edit" => "Rediger",
         "Save to Camera Roll" => "Gem i kamerarulle",
         "Print to sprocket" => "Udskriv til sprocket",
+        "More" => "Mere",
         "Save_to_CameraRoll" => "Gemt i kamerarulle",
         "Take or select a photo"  => "Tag eller vælg et foto",
         "Terms and service" => "Når du bruger sociale mediekonti til godkendelse, accepterer du også HP's servicevilkår.",
@@ -494,6 +501,7 @@ $language_arr =
         "Buy Paper" => "Osta paperia",
         "How to & Help" => "Ohje",
         #"Give Feedback" => "Anna palautetta",
+        "More" => "Muut",
         "Give Feedback" => "Give Feedback",
         "Privacy" => "Tietosuoja",
         "About" => "Tietoja",
@@ -557,6 +565,7 @@ $language_arr =
         "About" => "Teave",
         "Camera Roll" => "Filmilint",
         "Sign In" => "Logi sisse",
+        "More" => "More",
         "Sign Out" => "Logi välja",
         "Reset Sprocket Printer" => "Lähtesta Sprocketi printer",
         "reset_sprocket" => "Lähtesta Sprocketi printer",
@@ -584,7 +593,7 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, L.P."
         },
     "lv_LV" => {
-        "skip_to_the_app" => "Pāriet uz programmu",
+        "skip_to_the_app" => "Pāriet uz lietojumprogrammu",
         "camera_access" => "Nepieciešama piekļuve kamerai",
         "camera_access_content" => "Atļaujiet piekļuvi iestatījumos, lai uzņemtu un drukātu fotoattēlus.",
         "Cancel" => "Atcelt",
@@ -600,6 +609,7 @@ $language_arr =
         "Save to Camera Roll" => "Saglabāt mapē Fotoattēli no kameras",
         "Print to sprocket" => "Drukāt Sprocket printerī",
         "Save_to_CameraRoll" => "Saglabāti mapē Fotoattēli no kameras",
+        "More" => "More",
         "auth" => "Autorizēt",
         "album_screen" => "Fotoattēli no kameras",
         #"photo_screen"=> "Camera Roll Photos",
@@ -661,6 +671,7 @@ $language_arr =
         "Edit" => "Redaguoti",
         "Save to Camera Roll" => "Įrašyti fotoaparato aplanke",
         "Print to sprocket" => "Spausdinti į „Sprocket“",
+        "More" => "More",
         "Save_to_CameraRoll" => "Įrašyta fotoaparato aplanke",
         "Take or select a photo"  => "Nufotografuokite arba pasirinkite nuotrauką",
         "Terms and service" => "Autentifikuodamiesi socialiniuose šaltiniuose sutinkate ir su HP paslaugos teikimo sąlygomis.",
@@ -720,6 +731,7 @@ $language_arr =
         "Save to Camera Roll" => "Lagre i Kamerarull",
         "Print to sprocket" => "Skriv ut til sprocket",
         "Save_to_CameraRoll" => "Lagret i Kamerarull",
+        "More" => "Mer",
         "Take or select a photo"  => "Ta eller velg et bilde",
         "Terms and service" => "Ved å autentisere med sosiale kilder, godtar du også HPs vilkår for bruk.",
         "side_menu" => "sprocket",
@@ -758,7 +770,8 @@ $language_arr =
         "HP Development Company, L.P." => "HP Development Company, LP."
         },
     "pt_PT" => {
-        "skip_to_the_app" => "Avançar para a aplicação",
+        #"skip_to_the_app" => "Avançar para a aplicação",
+        "skip_to_the_app" => "Pular para o aplicativo",
         "camera_access" => "Necessário o acesso à câmera",
         "camera_access_content" => "Permita acesso em suas Configurações para capturar e imprimir fotos.",
         "Cancel" => "Cancelar",
@@ -769,7 +782,7 @@ $language_arr =
         "terms_of_service_cameraroll" => "Ao utilizar o rolo da câmera, você também concorda com os termos de serviços da HP.",
         "terms_of_service_facebook" => "Ao autenticar-se com o Facebook, você também concorda com os termos de serviço da HP.",
         #"photos_button" => "Camera Roll",
-        "photos_button" => "Fotografias",
+        "photos_button" => "Fotos",
         "auth" => "Autorizar",
         "album_screen" => "Rolo da câmara",
         #"photo_screen"=> "Camera Roll Photos",
@@ -777,6 +790,7 @@ $language_arr =
         "Edit" => "Editar",
         "Save to Camera Roll" => "Salvar no rolo da câmera",
         "Print to sprocket" => "Imprimir para sprocket",
+        "More" => "Mais",
         "Save_to_CameraRoll" => "Salvo no rolo da câmera",
         "Take or select a photo"  => "Capturar ou selecionar uma foto",
         "Terms and service" => "Ao autenticar-se em redes sociais, você também concorda com os termos de serviço da HP.",
@@ -795,7 +809,7 @@ $language_arr =
         "Setup Sprocket Printer" => "Configurar impressora de sprocket",
         "setup_sprocket" => "Configurar impressora de sprocket",
         "View User Guide" => "Ver Manual do Usuário",
-        "Tweet Support" => "Suporte de tweet",
+        "Tweet Support" => "Suporte do Tweeter",
         "Join Support Forum" => "Participe do fórum de suporte",
         "Visit Support Website" => "Visite o site de suporte:",
         "survey" => "Não, obrigado",
@@ -835,6 +849,7 @@ $language_arr =
         "Edit" => "Redigera",
         "Save to Camera Roll" => "Spara till kamerarulle",
         "Print to sprocket" => "Skriv ut med Sprocket",
+        "More" => "Mer",
         "Save_to_CameraRoll" => "Sparad till kamerarulle",
         "Take or select a photo"  => "Ta eller välj ett foto",
         "Terms and service" => "När du loggar in med konton för sociala medier godkänner du HPs villkor för tjänsten.",
@@ -843,7 +858,8 @@ $language_arr =
         "How to & Help" => "Instruktioner och hjälp",
        # "Give Feedback" => "Ge feedback",
         "Give Feedback" => "Give Feedback",
-        "Privacy" => "Sekretess",
+       # "Privacy" => "Sekretess",
+        "Privacy" => "Integritet",
         "About" => "Om",
         "Camera Roll" => "Kamerarulle",
         "Sign In" => "Logga in",
@@ -894,6 +910,7 @@ $language_arr =
         "Edit" => "Επεξεργασία",
         "Save to Camera Roll" => "Αποθήκευση στο άλμπουμ της κάμερας",
         "Print to sprocket" => "Εκτύπωση σε εκτυπωτή sprocket",
+        "More" => "Λοιπά",
         "Save_to_CameraRoll" => "Έγινε αποθήκευση στο άλμπουμ της κάμερας",
         "Take or select a photo"  => "Λήψη ή επιλογή φωτογραφίας",
         "Terms and service" => "Εφόσον επιλέξετε να ολοκληρώσετε τη διαδικασία ελέγχου ταυτότητας κάνοντας χρήση κάποιου κοινωνικού μέσου, συμφωνείτε και με τους όρους χρήσης της ΗΡ.",
@@ -954,6 +971,7 @@ $language_arr =
         "Save_to_CameraRoll" => "Disimpan di Camera Roll",
         "Edit" => "Edit",
         "Save to Camera Roll" => "Simpan di Camera Roll",
+        "More" => "Lainnya",
         "Print to sprocket" => "Cetak ke sprocket",
         "Terms and service" => "Dengan mengesahkan melalui sumber sosial, Anda juga menyetujui Ketentuan Layanan HP.",
         "side_menu" => "sprocket",
@@ -1013,6 +1031,7 @@ $language_arr =
         "Save_to_CameraRoll" => "Salvo no rolo da câmera",
         "Edit" => "Editar",
         "Save to Camera Roll" => "Salvar no rolo da câmera",
+        "More" => "Mais",
         "Print to sprocket" => "Imprimir para sprocket",
         "Terms and service" => "Ao autenticar-se em redes sociais, você também concorda com os termos de serviço da HP.",
         "side_menu" => "sprocket",
@@ -1070,9 +1089,10 @@ $language_arr =
         "photo_screen"=> "Фотопленка",
         "Take or select a photo"  => "Сделайте или выберите фото",
         "Save_to_CameraRoll" => "Сохранено в Фотопленку",
+        "More" => "Еще",
         "Edit" => "Изменить",
         "Save to Camera Roll" => "Сохранить в каталог фотографий",
-        "Print to sprocket" => "Print to sprocket",
+        "Print to sprocket" => "Печать в sprocket",
         "Terms and service" => "Выполняя аутентификацию через соцсети, вы принимаете условия обслуживания HP.",
         "side_menu" => "sprocket",
         "Buy Paper" => "Приобрести бумагу",
@@ -1129,9 +1149,10 @@ $language_arr =
         "photo_screen"=> "Camera Roll",
         "Take or select a photo"  => "ถ่ายรูปหรือเลือกรูปถ่าย",
         "Save_to_CameraRoll" => "บันทึกใน Camera Roll แล้ว",
+         "More" => "อื่นๆ",
         "Edit" => "แก้ไข",
         "Save to Camera Roll" => "บันทึกลง Camera Roll",
-        "Print to sprocket" => "พิมพ์ไปยัง Sprocket",
+        "Print to sprocket" => "พิมพ์ไปยัง sprocket",                        
         "Terms and service" => "การยืนยันตัวตนผ่านแหล่งสังคมออนไลน์หมายความว่าคุณยอมรับเงื่อนไขและข้อตกลงการให้บริการของ HP แล้ว",
         "side_menu" => "sprocket",
         "Buy Paper" => "ซื้อกระดาษ",
@@ -1191,6 +1212,7 @@ $language_arr =
         "Edit" => "Düzenle",
         "Save to Camera Roll" => "Film Rulosuna Kaydet",
         "Print to sprocket" => "sprocket'a yazdır",
+        "More" => "Fazlası",
         "Terms and service" => "Sosyal kaynaklarla kimliğinizi doğruladığınızda, HP’nin Hizmet Şartlarını da kabul etmiş olursunuz.",
         "side_menu" => "sprocket",
         "Buy Paper" => "Kağıt Satın Al",
@@ -1247,6 +1269,7 @@ $language_arr =
         "photo_screen"=> "Camera Roll",
         "Take or select a photo"  => "Take or select a photo",
         "Save_to_CameraRoll" => "Saved to Camera Roll",
+        "More" => "More",
         "Edit" => "Edit",
         "Save to Camera Roll" => "Save to Camera Roll",
         "Print to sprocket" => "Print to sprocket",
@@ -1304,8 +1327,9 @@ $language_arr =
         "photo_screen"=> "Camera Roll 张照片",
         "Edit" => "编辑",
         "Save to Camera Roll" => "保存到“相册”中",
-        "Print to sprocket" => "Print to sprocket",
+        "Print to sprocket" => "打印到 Sprocket",
         "Save_to_CameraRoll" => "已保存到“相册”中",
+        "More" => "更多",
         "Take or select a photo"  => "拍摄或选择一张照片",
         "Terms and service" => "通过社交网络源进行验证，亦表示您同意 HP 的服务条款。",
         "side_menu" => "sprocket",
@@ -1368,6 +1392,7 @@ $language_arr =
         "photo_screen"=> "Pellicule",
         "Edit" => "Modifier",
         "Save to Camera Roll" => "Enregistrer sur la pellicule",
+        "More" => "Autre",
         "Print to sprocket" => "Imprimer avec Sprocket",
         "Save_to_CameraRoll" => "Enregistré sur la pellicule",
         "Take or select a photo"  => "Prenez ou sélectionnez une photo",
@@ -1428,6 +1453,7 @@ $language_arr =
         "Take or select a photo"  => "Take or select a photo",
         "Save_to_CameraRoll" => "Saved to Camera Roll",
         "Edit" => "Edit",
+        "More" => "More",
         "Save to Camera Roll" => "Save to Camera Roll",
         "Print to sprocket" => "Print to sprocket",
         "Terms and service" => "By authenticating with social sources you also agree to HP Terms of Service.",
@@ -1485,6 +1511,67 @@ $language_arr =
         "photo_screen"=> "Camera Roll",
         "Take or select a photo"  => "Take or select a photo",
         "Save_to_CameraRoll" => "Saved to Camera Roll",
+        "More" => "More",
+        "Edit" => "Edit",
+        "Save to Camera Roll" => "Save to Camera Roll",
+        "Print to sprocket" => "Print to sprocket",
+        "Terms and service" => "By authenticating with social sources you also agree to HP Terms of Service.",
+        "side_menu" => "sprocket",
+        "Buy Paper" => "Buy Paper",
+        "How to & Help" => "How to & Help",
+        "Give Feedback" => "Give Feedback",
+        "Privacy" => "Privacy",
+        "About" => "About",
+        "Camera Roll" => "Camera Roll",
+        "Sign In" => "Sign In",
+        "Sign Out" => "Sign Out",
+        "Reset Sprocket Printer" => "Reset Sprocket Printer",
+        "reset_sprocket" => "Reset Sprocket Printer",
+        "Setup Sprocket Printer" => "Setup Sprocket Printer",
+        "setup_sprocket" => "Setup Sprocket Printer",
+        "View User Guide" => "View User Guide",
+        "Messenger Support" => "Messenger Support",
+        "Tweet Support" => "Tweet Support",
+        "Join Support Forum" => "Join Support Forum",
+        "Visit Support Website" => "Visit Support Website",
+        "survey" => "No, thanks",
+        "Instagram" => "Instagram",
+        "Facebook" => "Facebook",
+        "CameraRoll" => "CameraRoll",
+        "Flickr" => "Flickr",
+        "facebook" => "Facebook",
+        "instagram" => "Instagram",
+        "flickr" => "Flickr",
+        "Done" => "Done",
+        "Back" => "Back",
+        "Printers" => "Printers",
+        "Technical Information" => "Technical Information",
+        "App Settings" => "App Settings",
+        "Version" => "Version",
+        "Copyright (c) 2016" => "Copyright (c) 2016", 
+        "HP Development Company, L.P." => "HP Development Company, L.P."
+        },
+    
+    "en_AU" => {
+        "skip_to_the_app" => "Skip to the App",
+        "camera_access" => "Camera Access Required",
+        "camera_access_content" => "Allow access in your Settings to take and print photos.",
+        "Cancel" => "Cancel",
+        "Settings" => "Settings",
+        "cameraroll_logo" => "CameraRoll",
+        "terms_of_service_flickr" => "By authenticating with Flickr, you also agree with HP’s Terms of Service.",
+        "terms_of_service_instagram" => "By authenticating with Instagram, you also agree with HP’s Terms of Service.",
+        "terms_of_service_cameraroll" => "By using Camera Roll, you also agree to the HP Terms of Service.",
+        "terms_of_service_facebook" => "By authenticating with Facebook, you also agree with HP’s Terms of Service.",
+        #"photos_button" => "Camera Roll",
+        "photos_button" => "Photos",
+        "auth" => "Authorize",
+        "album_screen" => "Camera Roll Albums",
+        #"photo_screen"=> "Camera Roll Photos",
+        "photo_screen"=> "Camera Roll",
+        "Take or select a photo"  => "Take or select a photo",
+        "Save_to_CameraRoll" => "Saved to Camera Roll",
+        "More" => "More",
         "Edit" => "Edit",
         "Save to Camera Roll" => "Save to Camera Roll",
         "Print to sprocket" => "Print to sprocket",
@@ -1526,142 +1613,34 @@ $language_arr =
         }
     }
 
+$language_locale ={ 
+            'Spanish' => {'ios_locale_id' => 'es_ES'},
+            'Chinese' => {'ios_locale_id' => 'zh_Hans'},
+            'German' => {'ios_locale_id' => 'de_DE'},
+            'French' => {'ios_locale_id' => 'fr_FR'},            
+            'Italian' => {'ios_locale_id' => 'it_IT'},
+            'Dutch' => {'ios_locale_id' => 'nl_NL'},
+            'Danish' => {'ios_locale_id' => 'da_DK'},
+            'Finnish' => {'ios_locale_id' => 'fi_FI'},            
+            'Estonian' => {'ios_locale_id' => 'et_EE'},
+            'Latvian' => {'ios_locale_id' => 'lv_LV'},
+            'Lithuanian' => {'ios_locale_id' => 'lt_LT'},
+            'Norwegian' => {'ios_locale_id' => 'nb_NO'},            
+            'Portuguese' => {'ios_locale_id' => 'pt_PT'},
+            'Swedish' => {'ios_locale_id' => 'sv_SE'},
+            'Greek' => {'ios_locale_id' => 'el_GR'},
+            'Indonesian' => {'ios_locale_id' => 'id_ID'},
+            'Portuguese-Brazil' => {'ios_locale_id' => 'pt_BR'},
+            'Russian' => {'ios_locale_id' => 'ru_RU'},
+            'Thai' => {'ios_locale_id' => 'th_TH'},
+            'Turkish' => {'ios_locale_id' => 'tr_TR'},            
+            'English-UK' => {'ios_locale_id' => 'en_GB'},
+            'Chinese-Traditional' => {'ios_locale_id' => 'zh_Hant'},
+            'Canada-French' => {'ios_locale_id' => 'fr_CA'},
+            'Mexico-English' => {'ios_locale_id' => 'en_MX'},            
+            'English-US' => {'ios_locale_id' => 'en_US'},
+            'Canada-English' => {'ios_locale_id' => 'en_CA'},
+            'Australian-English' => {'ios_locale_id' => 'en_AU'},
+            'English' => {'ios_locale_id' => 'en_US'}
+        }
 
-
-
-def get_ios_locale_id
-         #ios_locale_id = "en_US"
-    if ENV['LANGUAGE'] == "Spanish"
-            ios_locale_id = "es_ES"
-            $list_loc=$language_arr["es_ES"]
-    else 
-        if ENV['LANGUAGE'] == "Chinese"
-            ios_locale_id = "zh_Hans"
-            $list_loc=$language_arr["zh_Hans"]
-        else 
-            if ENV['LANGUAGE'] == 'German'
-                ios_locale_id = "de_DE"
-                $list_loc=$language_arr["de_DE"]
-            else
-                if ENV['LANGUAGE'] == 'French'
-                    ios_locale_id = "fr_FR"
-                    $list_loc=$language_arr["fr_FR"]
-                else 
-                    if ENV['LANGUAGE'] == 'Italian'
-                        ios_locale_id = "it_IT"
-                        $list_loc=$language_arr["it_IT"]
-                    else
-                        if ENV['LANGUAGE'] == 'Dutch'
-                            ios_locale_id = "nl_NL"
-                            $list_loc=$language_arr["nl_NL"]
-                        else
-                            if ENV['LANGUAGE'] == 'Danish'
-                                ios_locale_id = "da_DK"
-                                $list_loc=$language_arr["da_DK"]
-                            else
-                                if ENV['LANGUAGE'] == 'Finnish'
-                                    ios_locale_id = "fi_FI"
-                                    $list_loc=$language_arr["fi_FI"]
-                                else
-                                    if ENV['LANGUAGE'] == 'Estonian'
-                                        ios_locale_id = "et_EE"
-                                        $list_loc=$language_arr["et_EE"]
-                                    else
-                                        if ENV['LANGUAGE'] == 'Latvian'
-                                            ios_locale_id = "lv_LV"
-                                            $list_loc=$language_arr["lv_LV"]
-                                        else
-                                            if ENV['LANGUAGE'] == 'Lithuanian'
-                                                ios_locale_id = "lt_LT"
-                                                $list_loc=$language_arr["lt_LT"]
-                                            else
-                                                if ENV['LANGUAGE'] == 'Norwegian'
-                                                    ios_locale_id = "nb_NO"
-                                                    $list_loc=$language_arr["nb_NO"]
-                                                else
-                                                    if ENV['LANGUAGE'] == 'Portuguese'
-                                                        ios_locale_id = "pt_PT"
-                                                        $list_loc=$language_arr["pt_PT"]
-                                                    else
-                                                        if ENV['LANGUAGE'] == 'Swedish'
-                                                            ios_locale_id = "sv_SE"
-                                                            $list_loc=$language_arr["sv_SE"]
-                                                        else
-                                                            if ENV['LANGUAGE'] == 'Greek'
-                                                                ios_locale_id = "el_GR"
-                                                                $list_loc=$language_arr["el_GR"]
-                                                            else
-                                                                if ENV['LANGUAGE'] == 'Indonesian'
-                                                                    ios_locale_id = "id_ID"
-                                                                    $list_loc=$language_arr["id_ID"]
-                                                                else
-                                                                    if ENV['LANGUAGE'] == 'Portuguese-Brazil'
-                                                                        ios_locale_id = "pt_BR"
-                                                                        $list_loc=$language_arr["pt_BR"]
-                                                                    else
-                                                                        if ENV['LANGUAGE'] == 'Russian'
-                                                                            ios_locale_id = "ru_RU"
-                                                                            $list_loc=$language_arr["ru_RU"]
-                                                                        else
-                                                                            if ENV['LANGUAGE'] == 'Thai'
-                                                                                ios_locale_id = "th_TH"
-                                                                                $list_loc=$language_arr["th_TH"]
-                                                                            else
-                                                                                if ENV['LANGUAGE'] == 'Turkish'
-                                                                                    ios_locale_id = "tr_TR"
-                                                                                    $list_loc=$language_arr["tr_TR"]
-                                                                                else
-                                                                                    if ENV['LANGUAGE'] == 'English-UK'
-                                                                                        ios_locale_id = "en_GB"                         
-                                                                                        $list_loc=$language_arr["en_GB"]
-                                                                                    else
-                                                                                        if ENV['LANGUAGE'] == 'Chinese-Traditional'
-                                                                                            ios_locale_id = "zh_Hant"
-                                                                                            $list_loc=$language_arr["zh_Hant"]
-                                                                                        else
-                                                                                            if ENV['LANGUAGE'] == 'Canada-French'
-                                                                                                ios_locale_id = "fr_CA"
-                                                                                                $list_loc=$language_arr["fr_CA"]
-                                                                                            else
-                                                                                                if ENV['LANGUAGE'] == 'Mexico-English'
-                                                                                                    ios_locale_id = "en_MX"
-                                                                                                    $list_loc=$language_arr["en_MX"]
-                                                                                                else
-                                                                                                    if ENV['LANGUAGE'] == 'English-US'
-                                                                                                        ios_locale_id = "en_US"
-                                                                                                      $list_loc=$language_arr["en_US"]
-                                                                                                    else
-                                                                                                        if ENV['LANGUAGE'] == 'Canada-English'
-                                                                                                        ios_locale_id = "en_CA"
-                                                                                                      $list_loc=$language_arr["en_CA"]
-                                                                                                            else
-                                                                                                        ios_locale_id = "en_US"
-                                                                                                      $list_loc=$language_arr["en_US"]
-                                                                                                            end
-                                                                                                    end
-                                                                                                end
-                                                                                            end
-                                                                                        end
-                                                                                    end
-                                                                                end
-                                                                            end
-                                                                        end
-                                                                    end
-                                                                end
-                                                            end
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-    return ios_locale_id , $list_loc
-end

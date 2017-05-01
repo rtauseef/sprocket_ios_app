@@ -14,7 +14,6 @@
 
 @interface PGFeatureFlag : NSObject
 
-+ (void)setMultiPrintEnabled:(BOOL)enabled;
 + (BOOL)isMultiPrintEnabled;
 
 @end

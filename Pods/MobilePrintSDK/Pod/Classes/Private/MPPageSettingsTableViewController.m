@@ -615,7 +615,7 @@ CGFloat const kMPDisabledAlpha = 0.5;
     
     if (MPPageSettingsModePrintFromQueue == self.mode && self.multiPageView) {
         MPPrintLaterJob *job = self.printLaterJobs[self.multiPageView.currentPage-1];
-        MPPrintItem *item = [job.printItems objectForKey:self.delegateManager.printSettings.paper.sizeTitle];
+        MPPrintItem *item = [job printItemForPaperSize:self.delegateManager.printSettings.paper.sizeTitle];
         if (item.numberOfPages > 1) {
             showPageRange = YES;
         }
@@ -1621,7 +1621,7 @@ CGFloat const kMPDisabledAlpha = 0.5;
         printLaterJob.blackAndWhite = self.delegateManager.blackAndWhite;
         
         NSString *titleForInitialPaperSize = [MPPaper titleFromSize:[MP sharedInstance].defaultPaper.paperSize];
-        MPPrintItem *printItem = [printLaterJob.printItems objectForKey:titleForInitialPaperSize];
+        MPPrintItem *printItem = [printLaterJob printItemForPaperSize:titleForInitialPaperSize];
         
         if (printItem == nil) {
             MPLogError(@"At least the printing item for the initial paper size (%@) must be provided", titleForInitialPaperSize);
@@ -1907,7 +1907,7 @@ CGFloat const kMPDisabledAlpha = 0.5;
     if (MPPageSettingsModePrintFromQueue == self.mode) {
         if (pageNumber > 0  &&  pageNumber <= [self.printLaterJobs count]) {
             MPPrintLaterJob *printLaterJob = self.printLaterJobs[pageNumber-1];
-            MPPrintItem *printItem = [printLaterJob.printItems objectForKey:self.delegateManager.printSettings.paper.sizeTitle];
+            MPPrintItem *printItem = [printLaterJob printItemForPaperSize:self.delegateManager.printSettings.paper.sizeTitle];
             
             image = [printItem previewImageForPage:1 paper:self.delegateManager.printSettings.paper];
         }
@@ -1924,7 +1924,7 @@ CGFloat const kMPDisabledAlpha = 0.5;
     if (MPPageSettingsModePrintFromQueue == self.mode) {
         if (pageNumber > 0  &&  pageNumber <= self.printLaterJobs.count) {
             MPPrintLaterJob *printLaterJob = self.printLaterJobs[pageNumber-1];
-            MPPrintItem *printItem = [printLaterJob.printItems objectForKey:self.delegateManager.printSettings.paper.sizeTitle];
+            MPPrintItem *printItem = [printLaterJob printItemForPaperSize:self.delegateManager.printSettings.paper.sizeTitle];
             if (printItem.numberOfPages > 1) {
                 useIndicator = YES;
             }

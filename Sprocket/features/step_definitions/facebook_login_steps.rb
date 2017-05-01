@@ -45,7 +45,7 @@ end
 When(/^I touch signin button$/) do
         sleep(WAIT_SCREENLOAD)
         action = Appium::TouchAction.new
-        action.swipe start_x: 50,end_x: 300,start_y: 100,end_y: 100,duration: 1000
+        action.swipe start_x: 50,offset_x: 300,start_y: 100,offset_y: 100,duration: 1000
         action.perform 
         sleep(WAIT_SCREENLOAD)
     sign_in_button="//UIAButton[@name='Sign In']"
@@ -64,10 +64,19 @@ Given(/^I login to facebook$/) do
     else
       sleep(SLEEP_SCREENLOAD)
         txtFBEmail="//UIATextField[@value='Email address or phone number']"
-        #txt_pass= "//UIASecureTextField[@value='Facebook password']"
-       txtFBPassword="//UIASecureTextField[@value='Facebook password']"
-      btnFBLogin= "//UIAButton[@name='Log In']"
-        btnFBConfirm= "//UIAButton[@name='OK']"
+        if get_os_version.to_f < 10.0
+            txtFBEmail="//UIATextField[@value='Email address or phone number']"
+            txtFBPassword="//UIASecureTextField[@value='Facebook password']"
+            btnFBLogin= "//UIAButton[@name='Log In']"
+            btnFBConfirm= "//UIAButton[@name='Continue']"
+        else
+            txtFBEmail="//XCUIElementTypeTextField[@value='Email address or phone number']"
+            txtFBPassword="//XCUIElementTypeSecureTextField[@value='Facebook password']"
+            btnFBLogin= "//XCUIElementTypeButton[@name='Log In']"
+            btnFBConfirm= "//XCUIElementTypeButton[@name='Continue']"
+            
+        end
+
         wait = Selenium::WebDriver::Wait.new(:timeout => MAX_TIMEOUT) # seconds
         wait.until { selenium.find_element(:xpath,"#{txtFBEmail}") }
         selenium.find_element(:xpath,"#{txtFBEmail}").click
@@ -75,6 +84,7 @@ Given(/^I login to facebook$/) do
         wait.until { selenium.find_element(:xpath, "#{txtFBPassword}") }
         sleep(5)
         selenium.find_element(:xpath, "#{txtFBPassword}").click
+        sleep(5)
         selenium.find_element(:xpath, "#{txtFBPassword}").send_keys VALID_CREDENTIALS_Facebook[:password]
         wait.until { selenium.find_element(:xpath, "#{btnFBLogin}") }
         selenium.find_element(:xpath, "#{btnFBLogin}").click

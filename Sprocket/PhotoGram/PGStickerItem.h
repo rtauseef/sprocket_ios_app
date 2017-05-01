@@ -11,14 +11,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <imglyKit/imglyKit-Swift.h>
 
 @interface PGStickerItem : NSObject
 
-@property (nonatomic, strong) NSString *accessibilityText;
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) IMGLYStickerTintMode tintMode;
 
-- (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName andPackageName:(NSString *)packageName;
+@property (nonatomic, strong, readonly) IMGLYSticker *imglySticker;
+
+- (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName  tintMode:(IMGLYStickerTintMode)tintMode andPackageName:(NSString *)packageName;
 
 - (UIImage *)thumbnailImage;
 - (UIImage *)stickerImage;

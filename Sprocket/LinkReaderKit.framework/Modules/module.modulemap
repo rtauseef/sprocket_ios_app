@@ -1,0 +1,6 @@
+framework module LinkReaderKit {
+  umbrella header "LinkReaderKit.h"
+
+  export *
+  module * { export * }
+}

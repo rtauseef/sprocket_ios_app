@@ -24,8 +24,7 @@ static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.c
 static NSString * const kPGHelpAndHowToViewUserURLZh = @"http://h10032.www1.hp.com/ctg/Manual/c05359608";
 
 // Buy Paper
-static NSString * const kPGBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
-static NSString * const kPGBuyPaperURLZh = @"http://www8.hp.com/cn/zh/printers/sprocket.html?jumpid=cp_r163_cn/zh/ipg/sprocket/app_paper#retail";
+static NSString * const kPGBuyPaperURL = @"http://www.hp.com/go/zinkphotopaper";
 
 // Join Support
 static NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
@@ -132,6 +131,18 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     if ([countryCode caseInsensitiveCompare:@"no"] == NSOrderedSame) {
         url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, countryCode];
     }
+    // NOTE: This is changing el/el to gr/el for greek
+    if ([countryCode caseInsensitiveCompare:@"el"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, @"gr", languageCode];
+    }
+    // NOTE: This is changing id/id to id/en for indonesian
+    if ([countryCode caseInsensitiveCompare:@"id"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, @"en"];
+    }
+    // NOTE: This is changing th/th to th/en for thai
+    if ([countryCode caseInsensitiveCompare:@"th"] == NSOrderedSame) {
+        url = [NSString stringWithFormat:kPrivacyStatementURLFormat, countryCode, @"en"];
+    }
 
     return [NSURL URLWithString:url];
 }
@@ -161,11 +172,6 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 + (NSURL *)buyPaperURL
 {
     NSString *url = kPGBuyPaperURL;
-    
-    if ([NSLocale isChinese]) {
-        url = kPGBuyPaperURLZh;
-    }
-    
     return [NSURL URLWithString:url];
 }
 

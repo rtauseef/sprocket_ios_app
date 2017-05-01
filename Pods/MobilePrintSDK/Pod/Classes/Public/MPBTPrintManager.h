@@ -26,21 +26,33 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 
 @interface MPBTPrintManager : NSObject
 
+@property (nonatomic, assign, readonly) NSInteger queueId;
+@property (nonatomic, assign, readonly) NSInteger originalQueueSize;
+@property (nonatomic, readonly) NSString *printerId;
+@property (nonatomic, readonly) NSDictionary *printerAnalytics;
 @property (nonatomic, assign, readonly) NSInteger queueSize;
 @property (nonatomic, assign, readonly) MPBTPrinterManagerStatus status;
 @property (nonatomic, weak) id<MPBTPrintManagerDelegate> delegate;
 
 + (instancetype)sharedInstance;
 
-- (void)addPrintItemToQueue:(MPPrintItem *)printItem;
+- (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
+- (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics;
+
+- (BOOL)canAddToQueue:(BOOL)shouldTriggerError;
 
 - (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus status, NSInteger progress))statusUpdate;
+- (void)pausePrintQueue;
 - (void)cancelPrintQueue;
+
+- (NSDictionary *)defaultOptionsForImageProcessor;
 
 @end
 
 
 @protocol MPBTPrintManagerDelegate <NSObject>
+
+@optional
 
 - (void)btPrintManagerDidResumePrintQueue:(MPBTPrintManager *)printManager;
 - (void)btPrintManagerDidClearPrintQueue:(MPBTPrintManager *)printManager;
@@ -48,7 +60,9 @@ typedef NS_ENUM(NSUInteger, MPBTPrinterManagerStatus) {
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartSendingPrintJob:(MPPrintLaterJob *)job;
 - (void)btPrintManager:(MPBTPrintManager *)printManager sendingPrintJob:(MPPrintLaterJob *)job progress:(NSInteger)progress;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didFinishSendingPrintJob:(MPPrintLaterJob *)job;
+- (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingDirectJob:(MPPrintLaterJob *)job;
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job;
-- (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveErrorForPrintJob:(MPPrintLaterJob *)job;
+- (void)mtPrintManager:(MPBTPrintManager *)printManager didDeletePrintJob:(MPPrintLaterJob *)job;
+- (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job;
 
 @end

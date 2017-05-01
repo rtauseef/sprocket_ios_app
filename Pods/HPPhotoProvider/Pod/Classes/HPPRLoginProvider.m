@@ -48,6 +48,14 @@
     return NO;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options
+{
+    return [self handleApplication:app
+                           openURL:url
+                 sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                        annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+}
+
 - (void)handleDidBecomeActive
 {
 }

@@ -203,26 +203,6 @@ Scenario: Verify Technical Information screen navigation and localization
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
         
-
-@block
-@localization
-Scenario: Navigate to Preview screen
-    Given  I am on the "CameraRollLanding" screen
-    Then I open cameraroll	
-    When I touch second photo
-    Then I should see the "CameraRoll Preview" screen
-    Then I verify the "Edit" button text
-    Then I tap "Download" button
-    Then I should see the popup message for the "Download"
-    Then I tap "Print" button
-    #Then I verify the "title" of the popup message for "PrintButton"
-    #And I verify the "content" of the popup message for "PrintButton"
-    Then I tap "Share" button
-    And I should see the below listed sprocket screen texts:
-    | Save to Camera Roll |
-    | Print to sprocket   |
-    
-
 @localization
 Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     Given  I am on the "Landing" screen
@@ -240,6 +220,55 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     And I touch Instagram "Sign Out" button
     And I click Sign Out button on popup
     Then I should see Instagram "Sign In" button
+        
+@localization
+  Scenario Outline: Navigate to preview screen via instagram/Flickr
+    Given  I am on the "Landing" screen  
+    Then I should see "<social_media>" logo
+    And I click on the "<social_media>" logo
+    Then I wait for some time
+    And I tap the "Signin" button
+    Then I should see the "<Sign in>" screen
+    And I enter valid credentials
+    And I touch login button
+    Then I wait for some time
+    Then I should see the "<Photos>" screen
+    When I touch second photo
+    Then I should see the "<Preview>" screen
+    Then I verify the "Edit" button text
+    Then I tap "Download" button
+    Then I should see the popup message for the "Download"
+    Then I tap "Print" button
+    #Then I verify the "title" of the popup message for "PrintButton"
+    #And I verify the "content" of the popup message for "PrintButton"
+    Then I tap "Share" button
+    Then I tap "More" button
+    Then I verify the "Print to sprocket" button text
+        
+    Examples:
+      | social_media  | Sign in          | welcome           | Photos           | Preview           |
+      | Instagram     | Instagram Signin | Instagram Landing | Instagram Photos | Instagram Preview |
+      | Flickr        | FlickrSignin     | Flickr Landing    | Flickr Photo     | Flickr Preview    | 
+    
+
+@block
+@localization
+Scenario: Navigate to Preview screen for cameraroll
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    When I touch second photo
+    Then I should see the "CameraRoll Preview" screen
+    Then I verify the "Edit" button text
+    Then I tap "Download" button
+    Then I should see the popup message for the "Download"
+    Then I tap "Print" button
+    #Then I verify the "title" of the popup message for "PrintButton"
+    #And I verify the "content" of the popup message for "PrintButton"
+    Then I tap "Share" button
+    Then I tap "More" button
+    Then I verify the "Print to sprocket" button text
+
+
     
     
     

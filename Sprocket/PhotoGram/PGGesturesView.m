@@ -11,7 +11,7 @@
 //
 
 #import "PGGesturesView.h"
-#import "UIImage+imageResize.h"
+#import "UIImage+ImageResize.h"
 #import "UIView+Background.h"
 
 static CGFloat const kMinimumZoomScale = 1.0f;
@@ -26,6 +26,8 @@ static CGFloat const kMarginOfSquare = 2.0f;
 
 @property (weak, nonatomic) IBOutlet UIView *selectionOverlayView;
 @property (weak, nonatomic) IBOutlet UIImageView *checkmark;
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionViewTitle;
+@property (weak, nonatomic) IBOutlet UILabel *noConnectionViewDescription;
 
 @end
 
@@ -58,6 +60,9 @@ static CGFloat const kMarginOfSquare = 2.0f;
     xibView.frame = self.bounds;
     xibView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:xibView];
+    
+    self.noConnectionViewTitle.text = NSLocalizedString(@"No Connection Available", nil);
+    self.noConnectionViewDescription.text = NSLocalizedString(@"Please connect to a data source.\nYou can also use your device photos.", nil);
     
     self.accessibilityIdentifier = @"GestureView";
     self.scrollView.accessibilityIdentifier = @"GestureScrollView";
@@ -151,10 +156,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
 
 - (void)setImage:(UIImage *)image
 {
-    if (self.media) {
-        _media.image = image;
-    }
-    
+    _image = image;
     _editedImage = image;
     
     if (fabs(image.size.width - image.size.height) < kMarginOfSquare) {
@@ -195,13 +197,18 @@ static CGFloat const kMarginOfSquare = 2.0f;
 
 - (UIImage *)screenshotImage
 {
-    BOOL isCheckmarkHidden = self.checkmark.hidden;
-    self.checkmark.hidden = YES;
-    
-    UIImage *image = [super screenshotImage];
-    self.checkmark.hidden = isCheckmarkHidden;
-    
-    return image;
+    // If the image is not loaded yet do not take a screenshot
+    if (self.image) {
+        BOOL isCheckmarkHidden = self.checkmark.hidden;
+        self.checkmark.hidden = YES;
+        
+        UIImage *image = [super screenshotImage];
+        self.checkmark.hidden = isCheckmarkHidden;
+        
+        return image;
+    }
+
+    return nil;
 }
 
 - (void)zoomTimer:(NSTimer *)timer
@@ -209,6 +216,16 @@ static CGFloat const kMarginOfSquare = 2.0f;
     self.editedImage = [self screenshotImage];
     [self.zoomTimer invalidate];
     self.zoomTimer = nil;
+}
+
+- (void)showNoInternetConnectionView
+{
+    self.noInternetConnectionView.hidden = NO;
+}
+
+- (void)hideNoInternetConnectionView
+{
+    self.noInternetConnectionView.hidden = YES;
 }
 
 #pragma mark - UIGestureRecognizerDelegate methods

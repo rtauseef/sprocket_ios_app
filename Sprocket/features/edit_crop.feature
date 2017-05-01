@@ -2,8 +2,7 @@ Feature: Verify Edit crop feature
   As a user
   I want to verify crop features.
 
-@reset
-@done
+@regression
 Scenario Outline: Verify crop option
     Given I am on the "<social_media_screen_name>" screen
     When I tap "Edit" button
@@ -20,11 +19,9 @@ Scenario Outline: Verify crop option
     Examples:
     | social_media_screen_name|
     | Instagram Preview  |
-   # | Flickr Preview     |
     | CameraRoll Preview |
     
  
-@reset
 @regression
 Scenario Outline: Verify image crop
     Given I am on the "<social_media_screen_name>" screen
@@ -40,12 +37,10 @@ Scenario Outline: Verify image crop
     Examples:
     | social_media_screen_name|
     | Instagram Preview  |
- #   | Flickr Preview     |
     | CameraRoll Preview |
     
 
-@reset
-@TA17012
+@done
 Scenario Outline: Verify image crop for both options
     Given I am on the "CameraRoll Preview" screen
     When I tap "Edit" button

@@ -2,7 +2,7 @@ Feature: Verify Side menu feature
   As a user I want to verify side menu functionality
   
 @reset
-@regression
+@done
 Scenario Outline: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar
@@ -18,7 +18,6 @@ Scenario Outline: Sign in to different Social media accounts from side menu
       | Instagram    | Instagram Signin | Instagram Photos |
     #  | Flickr       | FlickrSignin     | Flickr Photo     |
       
-@reset
 @regression
 Scenario: Open cameraroll from side menu
     Given I am on the "Landing" screen
@@ -30,8 +29,6 @@ Scenario: Open cameraroll from side menu
     And I click on the "Sign in" button
     Then I should see the "CameraRoll Photo" screen
       
-
-@reset
 @done
 @smoke
 Scenario: Verify side menu options
@@ -40,15 +37,16 @@ Scenario: Verify side menu options
     Then I should see the side menu
     And I should see the following:
     |sprocket       |
+    |Print Queue    |
     |Buy Paper      |
     |How to & Help  |
-    |Give Feedback  |
+    |Take Survey    |
     |Privacy        |
     |About          |
     
-    @reset
-    @done
-    Scenario: Verify How to & Help options
+    
+@done
+Scenario: Verify How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -63,10 +61,8 @@ Scenario: Verify side menu options
     And I touch "Done"
     Then I should see the side menu
     
-    
-    @reset
-    @regression
-    Scenario Outline: Verify printer options for How to & Help
+@regression
+Scenario Outline: Verify printer options for How to & Help
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -80,9 +76,8 @@ Scenario: Verify side menu options
     | Setup Sprocket Printer | 
     
     
-    @reset
-    @done
-    Scenario Outline: Verify successful navigation for How to & Help options
+@done
+Scenario Outline: Verify successful navigation for How to & Help options
     Given  I am on the "Landing" screen
     When I touch menu button on navigation bar
 	Then I should see the side menu
@@ -99,7 +94,6 @@ Scenario: Verify side menu options
     
 
        
-    @reset
     @done
     Scenario: Verify about screen from side menu
         Given  I am on the "Landing" screen
@@ -116,7 +110,6 @@ Scenario: Verify side menu options
         Then I wait for sometime
         Then I should see the side menu
     
-    @reset
     @regression
     Scenario: Verify closing side menu
         Given  I am on the "Landing" screen
@@ -126,7 +119,6 @@ Scenario: Verify side menu options
         Then I should see the "Landing" screen 
 
     
-    @reset
     @done
     Scenario: Verify Sprocket screen options
         Given  I am on the "Landing" screen
@@ -138,7 +130,6 @@ Scenario: Verify side menu options
         | App Settings |
         | Printers     | 
 
-    @reset
     @done
     Scenario: Verify navigation to Technical Information screen
         Given  I am on the "Landing" screen
@@ -156,9 +147,8 @@ Scenario: Verify side menu options
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
         
-        
-    @reset
-	@TA17012
+
+	@regression
 	Scenario: Instagram Sign Out from Side menu
 		Given I am on the "Instagram Photos" screen
 		And  I touch menu button on navigation bar

@@ -136,7 +136,12 @@ def terms_of_service_link
               end
           end
       close_camera_popup
-      ios_locale_id, $list_loc = get_ios_locale_id       
+            if $language != nil
+          ios_locale = $language_locale[$language]['ios_locale_id']
+        else
+          ios_locale = $language_locale["English-US"]['ios_locale_id']
+        end
+      $list_loc=$language_arr[ios_locale]      
   survey_message_arr = $list_loc['survey']
   if get_xcode_version.to_i < 8
         survey_message=uia_query :view, marked:"#{survey_message_arr}"
