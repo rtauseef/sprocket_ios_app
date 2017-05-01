@@ -42,7 +42,7 @@
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
-		26BEE7A31E92F8470055D5E4 /* PGDeepLinkLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGDeepLinkLauncher.m */; };
+		26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
 		2AF06EEF1DD5484F000FF091 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AF06EF11DD5484F000FF091 /* InfoPlist.strings */; };
 		30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385819BE57C5009C695F /* TakeSurvey@2x.png */; };
@@ -2563,8 +2563,8 @@
 		26A8D44C1DC971E90079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		26A8D44D1DC971EA0079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		26B434641E3F02310071EEFA /* Sprocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sprocket.entitlements; sourceTree = SOURCE_ROOT; };
-		26BEE7A11E92F8470055D5E4 /* PGDeepLinkLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDeepLinkLauncher.h; sourceTree = "<group>"; };
-		26BEE7A21E92F8470055D5E4 /* PGDeepLinkLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDeepLinkLauncher.m; sourceTree = "<group>"; };
+		26BEE7A11E92F8470055D5E4 /* PGAppNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAppNavigation.h; sourceTree = "<group>"; };
+		26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAppNavigation.m; sourceTree = "<group>"; };
 		2AC79D0F1DFB812400D86609 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D101DFB817A00D86609 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D131DFB82C100D86609 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = lt; path = lt.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -5341,10 +5341,12 @@
 				F134BC2E1AC60517007D892B /* Logging */,
 				E34D5093199AB90A006D80E0 /* Analytics */,
 				E34D5095199AB930006D80E0 /* UI */,
-				E34D5069199AB87B006D80E0 /* PGAppDelegate.h */,
-				E34D506A199AB87B006D80E0 /* PGAppDelegate.m */,
 				E34D50D1199AC233006D80E0 /* PGAppAppearance.h */,
 				E34D50D2199AC233006D80E0 /* PGAppAppearance.m */,
+				E34D5069199AB87B006D80E0 /* PGAppDelegate.h */,
+				E34D506A199AB87B006D80E0 /* PGAppDelegate.m */,
+				26BEE7A11E92F8470055D5E4 /* PGAppNavigation.h */,
+				26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */,
 				E34D5096199AB945006D80E0 /* Resources */,
 				E34D5075199AB87B006D80E0 /* Images.xcassets */,
 				E34D5061199AB87B006D80E0 /* Supporting Files */,
@@ -5651,8 +5653,6 @@
 			isa = PBXGroup;
 			children = (
 				829E028D1DDB8C4300B025C5 /* Menu */,
-				26BEE7A11E92F8470055D5E4 /* PGDeepLinkLauncher.h */,
-				26BEE7A21E92F8470055D5E4 /* PGDeepLinkLauncher.m */,
 				F22F12231E522FF300753C5A /* PGFeatureFlag.h */,
 				F22F12241E522FF300753C5A /* PGFeatureFlag.m */,
 				F134BC451ACAF9E5007D892B /* PGLoggingSetttingsViewController.h */,
@@ -8558,7 +8558,7 @@
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
-				26BEE7A31E92F8470055D5E4 /* PGDeepLinkLauncher.m in Sources */,
+				26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,

@@ -25,7 +25,7 @@
 #import "PGSocialSourcesManager.h"
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSurveyManager.h"
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import "PGWebViewerViewController.h"
 #import "PGLinkSettings.h"
 #import "PGLinkReaderViewController.h"
@@ -285,12 +285,12 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellHowToAndHelp: {
-            UIViewController *viewController = [PGDeepLinkLauncher howToAndHelpViewController];
+            UIViewController *viewController = [PGAppNavigation howToAndHelpViewController];
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
         case PGSideBarMenuCellTakeSurvey: {
-            UINavigationController *navigationController = [PGDeepLinkLauncher surveyNavController:self];
+            UINavigationController *navigationController = [PGAppNavigation surveyNavController:self];
             [self presentViewController:navigationController animated:YES completion:nil];
             break;
         }

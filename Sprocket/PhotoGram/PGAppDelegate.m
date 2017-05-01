@@ -28,7 +28,7 @@
 #import "PGLandingSelectorPageViewController.h"
 #import "UIViewController+Trackable.h"
 #import "PGLandingMainPageViewController.h"
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
 
 
@@ -79,7 +79,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     self.window.backgroundColor = [UIColor greenColor];
     
     self.lastConnectedValue = connectionDefaultValue;
-    [PGDeepLinkLauncher sharedInstance].menuShowing = NO;
+    [PGAppNavigation sharedInstance].menuShowing = NO;
 
     [self initializeUAirship];
 
@@ -185,7 +185,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)deepLink:(NSString *)location
 {
-    [PGDeepLinkLauncher deepLink:location];
+    [PGAppNavigation deepLink:location];
 }
 
 #pragma mark - MP object initialization
@@ -241,12 +241,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
 {
-    [PGDeepLinkLauncher sharedInstance].menuShowing = YES;
+    [PGAppNavigation sharedInstance].menuShowing = YES;
 }
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
 {
-    [PGDeepLinkLauncher sharedInstance].menuShowing = NO;
+    [PGAppNavigation sharedInstance].menuShowing = NO;
 }
 
 #pragma mark - sprocket connectivity and reporting
@@ -260,7 +260,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     if (connectionDefaultValue != self.lastConnectedValue  &&
         self.lastConnectedValue != currentlyConnected) {
         
-        UIViewController *topViewController = [PGDeepLinkLauncher currentTopViewController];
+        UIViewController *topViewController = [PGAppNavigation currentTopViewController];
         NSString *name = topViewController.trackableScreenName;
         if (nil == name) {
             name = [NSString stringWithFormat:@"%@", [topViewController class]];

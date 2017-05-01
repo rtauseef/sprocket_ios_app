@@ -11,7 +11,7 @@
 //
 
 #import "PGSideBarMenuTableViewCell.h"
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import "UIColor+Style.h"
 #import "PGLinkSettings.h"
 

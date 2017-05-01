@@ -28,7 +28,7 @@
 #import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
 

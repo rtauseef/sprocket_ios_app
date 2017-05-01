@@ -1,12 +1,16 @@
+///
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  PGDeepLinkLauncher.m
-//  Sprocket
-//
-//  Created by Susy Snowflake on 3/9/17.
-//  Copyright © 2017 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import "UIViewController+Trackable.h"
 #import "PGRevealViewController.h"
 #import "PGLandingMainPageViewController.h"
@@ -22,18 +26,18 @@
 NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
 NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 
-@interface PGDeepLinkLauncher()<MFMailComposeViewControllerDelegate>
+@interface PGAppNavigation()<MFMailComposeViewControllerDelegate>
     @property (weak, nonatomic) UIViewController *mailLaunchingPoint;
 @end
 
-@implementation PGDeepLinkLauncher
+@implementation PGAppNavigation
 
-+ (PGDeepLinkLauncher *)sharedInstance
++ (PGAppNavigation *)sharedInstance
 {
     static dispatch_once_t once;
-    static PGDeepLinkLauncher *sharedInstance;
+    static PGAppNavigation *sharedInstance;
     dispatch_once(&once, ^{
-        sharedInstance = [[PGDeepLinkLauncher alloc] init];
+        sharedInstance = [[PGAppNavigation alloc] init];
     });
     return sharedInstance;
 }
@@ -42,28 +46,28 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 {
     NSLog(@"location: %@", location);
     if ([location isEqualToString:@"landingPage"]) {
-        [PGDeepLinkLauncher goToLandingPage];
+        [PGAppNavigation goToLandingPage];
     } else if ([location isEqualToString:@"howToAndHelp"]) {
-        UIViewController *viewController = [PGDeepLinkLauncher howToAndHelpViewController];
-        [[PGDeepLinkLauncher currentTopViewController] presentViewController:viewController animated:YES completion:nil];
+        UIViewController *viewController = [PGAppNavigation howToAndHelpViewController];
+        [[PGAppNavigation currentTopViewController] presentViewController:viewController animated:YES completion:nil];
     } else if ([location isEqualToString:@"flickr"]) {
-        [PGDeepLinkLauncher goToSocialSource:PGSocialSourceTypeFlickr];
+        [PGAppNavigation goToSocialSource:PGSocialSourceTypeFlickr];
     } else if ([location isEqualToString:@"instagram"]) {
-        [PGDeepLinkLauncher goToSocialSource:PGSocialSourceTypeInstagram];
+        [PGAppNavigation goToSocialSource:PGSocialSourceTypeInstagram];
     } else if ([location isEqualToString:@"facebook"]) {
-        [PGDeepLinkLauncher goToSocialSource:PGSocialSourceTypeFacebook];
+        [PGAppNavigation goToSocialSource:PGSocialSourceTypeFacebook];
     } else if ([location isEqualToString:@"qzone"]) {
-        [PGDeepLinkLauncher goToSocialSource:PGSocialSourceTypeQzone];
+        [PGAppNavigation goToSocialSource:PGSocialSourceTypeQzone];
     } else if ([location isEqualToString:@"pitu"]) {
-        [PGDeepLinkLauncher goToSocialSource:PGSocialSourceTypePitu];
+        [PGAppNavigation goToSocialSource:PGSocialSourceTypePitu];
     } else if ([location isEqualToString:@"cameraRoll"]) {
-        [PGDeepLinkLauncher goToSocialSource:PGSocialSourceTypeLocalPhotos];
+        [PGAppNavigation goToSocialSource:PGSocialSourceTypeLocalPhotos];
     } else if ([location isEqualToString:@"appSettings"]) {
-        [PGDeepLinkLauncher openSettings];
+        [PGAppNavigation openSettings];
     } else if ([location isEqualToString:@"emailFeedback"]) {
-        [PGDeepLinkLauncher sendEmail:[self currentTopViewController]];
+        [PGAppNavigation sendEmail:[self currentTopViewController]];
     } else if ([location isEqualToString:@"camera"]) {
-        [PGDeepLinkLauncher goToCamera];
+        [PGAppNavigation goToCamera];
     }
 }
 
@@ -93,7 +97,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 
 + (void)sendEmail:(UIViewController *)launchingPoint
 {
-    [PGDeepLinkLauncher sharedInstance].mailLaunchingPoint = launchingPoint;
+    [PGAppNavigation sharedInstance].mailLaunchingPoint = launchingPoint;
     
     if ([MFMailComposeViewController canSendMail]) {
         // Use the first six alpha-numeric characters in the device id as an identifier in the subject line
@@ -111,12 +115,12 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
         MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
         mailComposeViewController.trackableScreenName = @"Feedback Screen";
         [mailComposeViewController.navigationBar setTintColor:[UIColor whiteColor]];
-        mailComposeViewController.mailComposeDelegate = [PGDeepLinkLauncher sharedInstance];
+        mailComposeViewController.mailComposeDelegate = [PGAppNavigation sharedInstance];
         [mailComposeViewController setSubject:subjectLine];
         [mailComposeViewController setMessageBody:@"" isHTML:NO];
         [mailComposeViewController setToRecipients:@[@"hpsnapshots@hp.com"]];
         
-        [[PGDeepLinkLauncher sharedInstance].mailLaunchingPoint presentViewController:mailComposeViewController animated:YES completion:^{
+        [[PGAppNavigation sharedInstance].mailLaunchingPoint presentViewController:mailComposeViewController animated:YES completion:^{
             // This is a workaround to set the text white in the status bar (otherwise by default would be black)
             // http://stackoverflow.com/questions/18945390/mfmailcomposeviewcontroller-in-ios-7-statusbar-are-black
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -142,7 +146,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 
 + (UINavigationController *)frontNavController
 {
-    PGRevealViewController *revealController = [PGDeepLinkLauncher revealController];
+    PGRevealViewController *revealController = [PGAppNavigation revealController];
     
     UINavigationController *frontNavController = nil;
     
@@ -159,7 +163,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 {
     PGLandingMainPageViewController *landingPage = nil;
     
-    UINavigationController *frontNavController = [PGDeepLinkLauncher frontNavController];
+    UINavigationController *frontNavController = [PGAppNavigation frontNavController];
     
     if (frontNavController  &&  [frontNavController.viewControllers count]) {
         if ([frontNavController.viewControllers[0] isKindOfClass:[PGLandingMainPageViewController class]]) {
@@ -179,15 +183,15 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewControllerCamera = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     
-    [[PGDeepLinkLauncher currentTopViewController] presentViewController:previewViewControllerCamera animated:YES completion:nil];
+    [[PGAppNavigation currentTopViewController] presentViewController:previewViewControllerCamera animated:YES completion:nil];
 }
 
 + (void)goToSocialSource:(PGSocialSourceType)type
 {
-    PGLandingMainPageViewController *landingPage = [PGDeepLinkLauncher landingPage];
+    PGLandingMainPageViewController *landingPage = [PGAppNavigation landingPage];
     
     [self goToLandingPage];
-    [landingPage goToSocialSourcePage:type sender:[PGDeepLinkLauncher sharedInstance]];
+    [landingPage goToSocialSourcePage:type sender:[PGAppNavigation sharedInstance]];
 }
 
 + (void)goToLandingPage
@@ -197,7 +201,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
     
     UINavigationController *rootViewController = [self frontNavController];
     
-    if ([PGDeepLinkLauncher sharedInstance].menuShowing) {
+    if ([PGAppNavigation sharedInstance].menuShowing) {
         [revealController revealToggle:self];
         [revealController.rearViewController dismissViewControllerAnimated:YES completion:^{
         }];
@@ -217,7 +221,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
     
     UIViewController *rootViewController = [self frontNavController];
     
-    if ([PGDeepLinkLauncher sharedInstance].menuShowing) {
+    if ([PGAppNavigation sharedInstance].menuShowing) {
         rootViewController = revealController.rearViewController;
     }
     
@@ -255,8 +259,8 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-    [[PGDeepLinkLauncher sharedInstance].mailLaunchingPoint dismissViewControllerAnimated:YES completion:NULL];
-    [PGDeepLinkLauncher sharedInstance].mailLaunchingPoint = nil;
+    [[PGAppNavigation sharedInstance].mailLaunchingPoint dismissViewControllerAnimated:YES completion:NULL];
+    [PGAppNavigation sharedInstance].mailLaunchingPoint = nil;
 }
 
 @end

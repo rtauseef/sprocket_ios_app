@@ -21,7 +21,7 @@
 #import "PGPhotoSelection.h"
 #import "PGSavePhotos.h"
 #import "UIViewController+trackable.h"
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import <Crashlytics/Crashlytics.h>
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
@@ -386,7 +386,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * action) {
                                                          [alert dismissViewControllerAnimated:YES completion:nil];
-                                                         [PGDeepLinkLauncher openSettings];
+                                                         [PGAppNavigation openSettings];
                                                      }];
     [alert addAction:settings];
     

@@ -15,7 +15,7 @@
 #import "PGSprocketLandingPageViewController.h"
 #import "PGAppAppearance.h"
 #import "PGRevealViewController.h"
-#import "PGDeepLinkLauncher.h"
+#import "PGAppNavigation.h"
 #import "UIFont+Style.h"
 #import "UIColor+Style.h"
 #import "UIViewController+Trackable.h"
@@ -125,7 +125,7 @@
 {
     switch (indexPath.row) {
         case 0:
-            [PGDeepLinkLauncher openSettings];
+            [PGAppNavigation openSettings];
             break;
         case 1:
             [[MP sharedInstance] presentBluetoothDevicesFromController:self animated:YES completion:nil];
