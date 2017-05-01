@@ -24,7 +24,8 @@ static NSString * const kPGHelpAndHowToViewUserURLNl = @"http://h10032.www1.hp.c
 static NSString * const kPGHelpAndHowToViewUserURLZh = @"http://h10032.www1.hp.com/ctg/Manual/c05359608";
 
 // Buy Paper
-static NSString * const kPGBuyPaperURL = @"http://www.hp.com/go/zinkphotopaper";
+static NSString * const kPGBuyPaperURL = @"https://cltest-mobilepay.herokuapp.com/Sprocket.html";
+//static NSString * const kPGBuyPaperURL = @"http://www.hp.com/go/ZINKphotopaper";
 
 // Join Support
 static NSString * const kPGHelpAndHowToJoinForumSupportURL = @"http://hp.care/sprocket";
