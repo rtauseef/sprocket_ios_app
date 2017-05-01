@@ -73,17 +73,30 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [self checkPrinterStatus];
     self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
+
+    return YES;
 }
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
-    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        [self reportError:MantaErrorBusy isFinalError:NO];
+    if (![self canAddToQueue:YES]) {
         return NO;
     }
 
     MPPrintLaterJob *job = [self jobForPrintItem:printItem metrics:metrics];
 
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
+
+    return YES;
+}
+
+- (BOOL)canAddToQueue:(BOOL)shouldTriggerError {
+    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
+        if (shouldTriggerError) {
+            [self reportError:MantaErrorBusy isFinalError:NO];
+        }
+
+        return NO;
+    }
 
     return YES;
 }
@@ -140,7 +153,23 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 - (NSInteger)queueSize {
-    return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    BOOL isInsidePrintLaterJobs = NO;
+    if (self.currentJob != nil) {
+        for (MPPrintLaterJob *job in [MPPrintLaterQueue sharedInstance].retrieveAllPrintLaterJobs) {
+            if ([self.currentJob.id isEqualToString:job.id]) {
+                isInsidePrintLaterJobs = YES;
+                break;
+            }
+        }
+    } else {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    }
+    
+    if (!isInsidePrintLaterJobs) {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs] + 1;
+    } else {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    }
 }
 
 - (NSInteger)queueId {
@@ -153,6 +182,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (NSString *)printerId {
     return [[MPBTSprocket sharedInstance].analytics objectForKey:kMPPrinterId];
+}
+
+- (NSDictionary *)defaultOptionsForImageProcessor {
+    return @{ kMPBTImageProcessorPrinterSerialNumberKey: [MPBTSprocket sharedInstance].accessory.serialNumber };
 }
 
 - (NSInteger)currentQueueId {
@@ -176,6 +209,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [userDefaults setInteger:queueId forKey:kPrintManagerQueueIdKey];
     [userDefaults synchronize];
+
+    return queueId;
 }
 
 - (EAAccessory *)currentDevice

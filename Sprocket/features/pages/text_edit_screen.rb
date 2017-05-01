@@ -7,21 +7,26 @@ class TextEditScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'Add text'"
+
+        #"label marked:'text-tool-apply-btn'"
+        "view marked:'text-tool-apply-btn'"
     end
     def close
         "UIButton marked:'Discard changes'"
     end
 
     def add_text
-        "UIButton marked:'Add text'"
+        #"UIButton marked:'Add text'"
+        "* id:'ic_approve_44pt'"
     end
     
     def cancel
-        "UIButton marked:'Cancel'"
+        #"UIButton marked:'Cancel'"
+        "* id:'ic_cancel_44pt'"
     end
     def save
-       "UIButton marked:'Apply changes'" 
+       #"UIButton marked:'text-tool-apply-btn'"
+        "IMGLYToolbarButton index:1"
     end
     def navigate
         unless current_page?

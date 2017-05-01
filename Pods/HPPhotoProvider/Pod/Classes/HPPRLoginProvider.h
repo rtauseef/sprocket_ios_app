@@ -25,6 +25,7 @@
 
 - (BOOL)handleApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 - (BOOL)handleApplication:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options;
 - (void)handleDidBecomeActive;
 
 - (BOOL)connectedToInternet:(void (^)(BOOL loggedIn, NSError *error))completion;

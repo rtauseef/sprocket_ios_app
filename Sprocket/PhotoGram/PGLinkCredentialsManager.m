@@ -14,8 +14,8 @@
 #import "PGLinkCredentialsManager.h"
 #import <LivePaperSDK/LPSession.h>
 
-static NSString *const LPPClientId = @"sxpjwjjoi3u0sfljtcusez8knpo2q22q"; 
-static NSString *const LPPClientSecret = @"dO29dedfySjzFOQ2z2WLYExEh6hIiCF8";
+static NSString *const LPPClientId = @"hl4gdy8diyuguh922jly21j9q3bexyga"; // lesprocket@hp.com
+static NSString *const LPPClientSecret = @"3K14wHFHBJ2vpmiDvJnx4U3jXTz40ZSh";
 
 @implementation PGLinkCredentialsManager
 

@@ -461,14 +461,13 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
         progressView.viewController = controller;
         [progressView printToDevice:image processor:processor refreshCompletion:completion];
-
     } else {
         MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
 
         accessoriesViewController.completionBlock = ^(BOOL selected) {
             MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
             progressView.viewController = controller;
-           [progressView printToDevice:image processor:processor refreshCompletion:completion];
+            [progressView printToDevice:image processor:processor refreshCompletion:completion];
         };
 
         [controller showViewController:accessoriesViewController sender:nil];

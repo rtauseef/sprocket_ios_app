@@ -88,6 +88,16 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.photoProvider = [HPPRFlickrPhotoProvider sharedInstance];
             self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
+        case PGSocialSourceTypeGoogle:
+            self.icon = [UIImage imageNamed:@"google_C"];
+            self.menuIcon = self.icon;
+            self.hasFolders = YES;
+            self.title = NSLocalizedString(@"Google", @"Social source title for Google");
+            self.needsSignIn = YES;
+            self.loginProvider = [HPPRGoogleLoginProvider sharedInstance];
+            self.photoProvider = [HPPRGooglePhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
+            break;
         case PGSocialSourceTypeInstagram:
             self.icon = [UIImage imageNamed:@"Instagram_C"];
             self.menuIcon = self.icon;

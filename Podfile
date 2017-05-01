@@ -19,6 +19,7 @@ def shared_pods
     # pod 'HPPhotoProvider', path:'../hp_photo_provider'
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
+    pod 'Google/SignIn'
 end
 
 target "Sprocket" do

@@ -11,6 +11,7 @@
 //
 
 #import "MPBTImageProcessor.h"
+#import "NSBundle+MPLocalizable.h"
 
 @implementation MPBTImageProcessor
 
@@ -24,7 +25,7 @@ NSString * const kMPBTImageProcessorLocalIdentifierKey = @"kMPBTImageProcessorLo
 
 - (NSString *)progressText
 {
-    return @"Processing...";
+    return MPLocalizedString(@"Processing...", nil);
 }
 
 - (BOOL)completed

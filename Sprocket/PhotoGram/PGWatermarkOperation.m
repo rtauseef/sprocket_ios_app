@@ -80,7 +80,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
     if (!error && (!operationData.originalImage || ![operationData.originalImage isKindOfClass:[UIImage class]])) {
         error = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid image argument."}];
     }
-    if (!error && (!operationData.localOperationIdentifier || ![operationData.localOperationIdentifier isKindOfClass:[NSString class]] || operationData.localOperationIdentifier.length == 0)) {
+    if (!error && (!operationData.printerIdentifier || ![operationData.printerIdentifier isKindOfClass:[NSString class]] || operationData.printerIdentifier.length == 0)) {
         error = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid printer identifier argument"}];
     }
     if (error) {
@@ -101,7 +101,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
         return;
     }
 #ifdef DEBUG
-    NSLog(@"Will start watermarking image for device: %@", [[self baseOperationData] localOperationIdentifier]);
+    NSLog(@"Will start watermarking image for device: %@", [[self baseOperationData] printerIdentifier]);
 #endif
     [self setupTimeout];
     NSString *projectId = [self savedProjectIdentifierForSprocket];
@@ -113,7 +113,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
         NSLog(@"Will create project");
 #endif
         __weak PGWatermarkOperation *weakSelf = self;
-        [LPProject createWithName:[[self baseOperationData] localOperationIdentifier] session:[[self class] sharedSession] completion:^(LPProject * _Nullable project, NSError * _Nullable error) {
+        [LPProject createWithName:[[self baseOperationData] printerIdentifier] session:[[self class] sharedSession] completion:^(LPProject * _Nullable project, NSError * _Nullable error) {
             if (error) {
                 [weakSelf handleOperationError:error];
                 return;
@@ -166,7 +166,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
 #if REUSE_TRIGGER
     [LPTrigger get:@"GhFeMQlkQImcvqEIpLB_Nw" projectId:self.projectId session:[[self class] sharedSession] completion:^(LPTrigger *trigger, NSError *error) {
 #else
-        [LPTrigger createWatermarkWithName:[[self baseOperationData] localOperationIdentifier] projectId:self.projectId session:[[self class] sharedSession] completion:^(LPTrigger *trigger, NSError *error) {
+        [LPTrigger createWatermarkWithName:[[self baseOperationData] printerIdentifier] projectId:self.projectId session:[[self class] sharedSession] completion:^(LPTrigger *trigger, NSError *error) {
 #endif
             if (error) {
                 [weakSelf handleOperationError:error];
@@ -185,7 +185,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
                 [weakSelf createLink];
             }];
         }];
-        [LPPayoff createWebPayoffWithName:[[self baseOperationData] localOperationIdentifier] url:[[self baseOperationData] payoffURL] projectId:self.projectId session:[[self class] sharedSession] completion:^(LPPayoff *payoff, NSError *error) {
+        [LPPayoff createWebPayoffWithName:[[self baseOperationData] printerIdentifier] url:[[self baseOperationData] payoffURL] projectId:self.projectId session:[[self class] sharedSession] completion:^(LPPayoff *payoff, NSError *error) {
             if (error) {
                 [weakSelf handleOperationError:error];
                 return;
@@ -208,7 +208,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
              return;
          }
          __weak PGWatermarkOperation *weakSelf = self;
-         [LPLink createWithName:[[self baseOperationData] localOperationIdentifier] triggerId:self.trigger.identifier payoffId:self.payoff.identifier projectId:self.projectId session:[[self class] sharedSession] completion:^(LPLink *link, NSError *error) {
+         [LPLink createWithName:[[self baseOperationData] printerIdentifier] triggerId:self.trigger.identifier payoffId:self.payoff.identifier projectId:self.projectId session:[[self class] sharedSession] completion:^(LPLink *link, NSError *error) {
              if (error) {
                  [weakSelf handleOperationError:error];
                  return;
@@ -305,7 +305,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
      }
      
      - (NSString *)savedProjectKey {
-         return [NSString stringWithFormat:@"%@:%@:%@:%@", PGWatermarkEmbedderDomain, [PGLinkCredentialsManager stackString], [PGLinkCredentialsManager clientId], [[self baseOperationData] localOperationIdentifier]];
+         return [NSString stringWithFormat:@"%@:%@:%@:%@",PGWatermarkEmbedderDomain, [PGLinkCredentialsManager stackString], [PGLinkCredentialsManager clientId], [[self baseOperationData] printerIdentifier]];
      }
      
      - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {

@@ -16,31 +16,29 @@
 #import "LRLinkServicesPrivate.h"
 
 @interface EasyReadingViewController()
+
 - (void)startScanning;
 - (void)dismissThisController;
+
 @end
 
 @interface PGLinkReaderViewController ()
+
 @end
 
 @implementation PGLinkReaderViewController
 
--(instancetype)init {
-    if (self = [super initWithClientID:[PGLinkCredentialsManager clientId] secret:[PGLinkCredentialsManager clientSecret] delegate:nil success:^{
-        NSLog(@"SUCCESS");
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
-    }]) {
+- (instancetype)init {
+    self = [super initWithClientID:[PGLinkCredentialsManager clientId] secret:[PGLinkCredentialsManager clientSecret] delegate:nil success:nil failure:nil];
+
+    if (self) {
+
     }
+
     return self;
 }
 
-//-(void)doAuthenticationSuccess:(void (^)(void))success failure:(void (^)(NSError * error))failure {
-//    [LRLinkServices setCurrentLppStack:LppStackProduction];
-//    [[LRManager sharedManager] authorizePartnerAppWithClientID:[PGLinkCredentialsManager clientId] secret:[PGLinkCredentialsManager clientSecret]];
-//}
-
--(void)reportError:(NSError *)error {
+- (void)reportError:(NSError *)error {
     if ([error.domain isEqualToString:LRPayoffResolverErrorDomain]) {
         switch (error.code) {
             case LRPayoffResolverErrorRequestCancelled:
@@ -55,7 +53,7 @@
                 [self alertWithTitle:@"Error while retrieving content" message:@"The content to be presented could not be retrieved."];
                 break;
         }
-    }else if ([error.domain isEqualToString:LRPayoffResolverErrorDomain]) {
+    } else if ([error.domain isEqualToString:LRPayoffResolverErrorDomain]) {
         switch (error.code) {
             case LRPayoffErrorMissingOrUnknownPayoffType:
                 [self alertWithTitle:@"Content Error" message:@"We do not support scanning that content."];
@@ -69,7 +67,7 @@
                 [self alertWithTitle:@"Content Error" message:@"An error ocurred and the content could not be presented."];
                 break;
         }
-    }else if ([error.domain isEqualToString:LRCameraErrorDomain]) {
+    } else if ([error.domain isEqualToString:LRCameraErrorDomain]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Scanner Error" message:@"An error has ocurred when trying to present the scanner" preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil) style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertController animated:YES completion:^{
@@ -80,9 +78,11 @@
 
 - (void)alertWithTitle:(NSString*)title message:(NSString *)message {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+
     [controller addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
       [self startScanning];
     }]];
+
     [self presentViewController:controller animated:YES completion:nil];
 }
 

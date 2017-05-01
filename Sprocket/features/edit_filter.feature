@@ -3,7 +3,6 @@ Feature: Verify Filter-edit screen
   I want to verify Filter features.
 
   
-@reset
 @regression
 Scenario Outline: Verify 'Filter' option
     Given I am on the "<social_media_screen_name>" screen
@@ -18,10 +17,8 @@ Scenario Outline: Verify 'Filter' option
     Examples:
     | social_media_screen_name |
     | Instagram Preview   |
-   # | Flickr Preview     |
     | CameraRoll Preview |
 
-@reset
 @done
 Scenario Outline: Verify Filter selection option
     Given I am on the "FilterEditor" screen for "<social_media_screen_name>" 
@@ -34,10 +31,9 @@ Scenario Outline: Verify Filter selection option
     Examples:
     | social_media_screen_name|
     | Instagram Preview       |
-   # | Flickr Preview     |
     | CameraRoll Preview  |
     
-@reset
+
 @regression
 Scenario: Verify filer list
     Given I am on the "FilterEditor" screen for "CameraRoll Preview" 

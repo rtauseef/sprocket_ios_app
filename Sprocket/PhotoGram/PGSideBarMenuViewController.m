@@ -29,6 +29,8 @@
 #import "PGLinkSettings.h"
 #import "PGScanViewController.h"
 
+#import "PGLinkReaderViewController.h"
+
 #import "NSLocale+Additions.h"
 #import "UIViewController+Trackable.h"
 
@@ -78,6 +80,11 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(unselectMenuTableViewCell)
                                                  name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(linkSettingsChanged:)
+                                                 name:kPGLinkSettingsChangedNotification
                                                object:nil];
     
     [self checkSprocketDeviceConnectivity];
@@ -383,6 +390,12 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)barButtonCancelPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)linkSettingsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.mainMenuTableView reloadData];
+    });
 }
 
 #pragma mark - Social Sources Menu Methods

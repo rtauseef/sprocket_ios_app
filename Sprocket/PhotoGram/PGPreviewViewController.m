@@ -33,6 +33,8 @@
 #import "PGProgressView.h"
 #import "PGPreviewDrawerViewController.h"
 #import "PGPayoffManager.h"
+#import "PGWatermarkProcessor.h"
+#import "PGLinkSettings.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -77,6 +79,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
+@property (weak, nonatomic) IBOutlet UIView *drawerContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
@@ -93,6 +96,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfSelectedPhotos;
 
 @property (strong, nonatomic) PGProgressView *progressView;
+@property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
 
 
 @end
@@ -139,8 +143,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
-        self.drawer.view.userInteractionEnabled = NO;
-        self.drawer.view.hidden = YES;
+        self.drawerContainer.userInteractionEnabled = NO;
+        self.drawerContainer.hidden = YES;
         
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
     } else {
@@ -247,7 +251,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-
 #pragma mark - Internal Methods
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
@@ -272,18 +275,20 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     NSArray<IMGLYBoxedMenuItem *> *menuItems = [self.imglyManager menuItemsWithConfiguration:configuration];
 
-    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
+    self.photoEditViewController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
 //    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
 
-    photoController.delegate = self;
+    self.photoEditViewController.delegate = self;
 
     IMGLYToolbarController *toolController = [[IMGLYToolbarController alloc] init];
     toolController.toolbar.backgroundColor = [UIColor HPRowColor];
 
-    [toolController pushViewController:photoController animated:NO completion:nil];
+    [toolController pushViewController:self.photoEditViewController animated:NO completion:nil];
     [toolController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [toolController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-
+    
+    self.imglyManager.photoEditViewController = self.photoEditViewController;
+    
     [self presentViewController:toolController animated:YES completion:^() {
         NSString *screenName = @"Editor Screen";
         [[PGAnalyticsManager sharedManager] trackScreenViewEvent:screenName];
@@ -499,7 +504,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 }
 
 
-
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
@@ -674,6 +678,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
+    if (![[MPBTPrintManager sharedInstance] canAddToQueue:YES]) {
+        return;
+    }
+
     [self showDownloadingImagesAlertWithCompletion:^{
         [self closeDrawer];
         [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {

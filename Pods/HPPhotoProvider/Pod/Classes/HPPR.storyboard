@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KDP-Ka-xEI">
-                                <rect key="frame" x="0.0" y="25" width="375" height="642"/>
+                                <rect key="frame" x="0.0" y="5" width="375" height="642"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="5YY-vT-LSc">
                                     <size key="itemSize" width="98" height="98"/>
@@ -389,12 +389,58 @@
             </objects>
             <point key="canvasLocation" x="4161" y="3701"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Google Login View Controller-->
+        <scene sceneID="q6L-NO-kqd">
+            <objects>
+                <viewController storyboardIdentifier="HPPRGoogleLoginViewController" id="Rp7-Fm-nsZ" userLabel="Google Login View Controller" customClass="HPPRGoogleLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zwf-G1-zbu"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZY5-c5-Mrh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S0P-HY-AiI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUh-we-RKm">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdE-do-H15" userLabel="Alert Strip View" customClass="HPPRAlertStripView">
+                                <rect key="frame" x="16" y="577" width="343" height="90"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="i8l-vT-cJj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mUh-we-RKm" firstAttribute="centerY" secondItem="S0P-HY-AiI" secondAttribute="centerY" id="08n-vu-mbK"/>
+                            <constraint firstItem="kdE-do-H15" firstAttribute="centerX" secondItem="S0P-HY-AiI" secondAttribute="centerX" id="61A-PQ-358"/>
+                            <constraint firstItem="mUh-we-RKm" firstAttribute="centerX" secondItem="S0P-HY-AiI" secondAttribute="centerX" id="Ohy-0N-7Ed"/>
+                            <constraint firstItem="mUh-we-RKm" firstAttribute="height" secondItem="S0P-HY-AiI" secondAttribute="height" id="Q8V-15-ZlK"/>
+                            <constraint firstItem="ZY5-c5-Mrh" firstAttribute="top" secondItem="kdE-do-H15" secondAttribute="bottom" id="YYX-PQ-loe"/>
+                            <constraint firstItem="kdE-do-H15" firstAttribute="leading" secondItem="S0P-HY-AiI" secondAttribute="leadingMargin" id="dWY-hI-1SU"/>
+                            <constraint firstItem="mUh-we-RKm" firstAttribute="width" secondItem="S0P-HY-AiI" secondAttribute="width" id="hFZ-gj-1Lk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kdE-do-H15" secondAttribute="trailing" id="qLG-AW-63P"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Xa-Bs-RKJ"/>
+                    <connections>
+                        <outlet property="alertStripView" destination="kdE-do-H15" id="azY-Kn-Ca8"/>
+                        <outlet property="webView" destination="mUh-we-RKm" id="npL-u0-xho"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iuf-Td-hzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4161" y="4399"/>
+        </scene>
+        <!--Flickr Navigation Controller-->
         <scene sceneID="0tf-bg-7ES">
             <objects>
-                <navigationController storyboardIdentifier="HPPRFlickrLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="cLo-O4-i6G" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HPPRFlickrLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="cLo-O4-i6G" userLabel="Flickr Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3g-kr-9iG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3g-kr-9iG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -463,12 +509,12 @@
             </objects>
             <point key="canvasLocation" x="4161" y="2973"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Instagram Navigation Controller-->
         <scene sceneID="cuk-U6-vxI">
             <objects>
-                <navigationController storyboardIdentifier="HPPRInstagramLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="d1M-ws-WX4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HPPRInstagramLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="d1M-ws-WX4" userLabel="Instagram Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PU6-hx-jyi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="PU6-hx-jyi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -593,12 +639,12 @@
             </objects>
             <point key="canvasLocation" x="6115" y="1703"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Album Navigation Controller-->
         <scene sceneID="rKA-7f-rPn">
             <objects>
-                <navigationController storyboardIdentifier="HPPRSelectAlbumTableViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NnT-dj-EWd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HPPRSelectAlbumTableViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NnT-dj-EWd" userLabel="Album Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GxV-vi-yaa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GxV-vi-yaa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -611,10 +657,10 @@
             </objects>
             <point key="canvasLocation" x="5085" y="2554"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Select Photo Navigation Controller-->
         <scene sceneID="7k0-tp-k0X">
             <objects>
-                <navigationController storyboardIdentifier="HPPRSelectPhotoCollectionViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Esc-vT-OmA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HPPRSelectPhotoCollectionViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Esc-vT-OmA" userLabel="Select Photo Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cYo-OJ-2To"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcp-yD-yrr">
@@ -630,6 +676,24 @@
             </objects>
             <point key="canvasLocation" x="6855" y="3194"/>
         </scene>
+        <!--Google Navigation Controller-->
+        <scene sceneID="Sjw-rI-JPu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hwc-ES-QRS" userLabel="Google Navigation Controller" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2QO-0F-x1I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rp7-Fm-nsZ" kind="relationship" relationship="rootViewController" id="vrE-uD-Ric"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AHn-do-4mD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3474" y="4399"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Check.png" width="37" height="37"/>
@@ -642,6 +706,6 @@
         <image name="Video.png" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TsP-MT-Os3"/>
+        <segue reference="ti8-Zn-FSC"/>
     </inferredMetricsTieBreakers>
 </document>

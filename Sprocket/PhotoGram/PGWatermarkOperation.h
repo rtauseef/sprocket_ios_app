@@ -33,6 +33,7 @@ typedef void (^PGWatermarkEmbedderCompletionBlock)(UIImage * _Nullable image, NS
 @property (nonatomic, nonnull) UIImage *originalImage;
 // The identifier of the device to which the watermark data will be associated to
 @property (nonatomic, nonnull) NSString *localOperationIdentifier;
+@property (nonatomic, nonnull) NSString *printerIdentifier;
 // The URL that will be shown when the image is scanned
 @property (nonatomic, nonnull) NSURL *payoffURL;
 @end

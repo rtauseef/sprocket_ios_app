@@ -7,7 +7,7 @@ class FilterEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'FILTER'"
+        "label marked:'filter-tool-screen'"
     end
     
     
@@ -19,7 +19,7 @@ class FilterEditorScreen < Calabash::IBase
         "view marked:'Candy'"
     end
     def save
-       "UIButton marked:'Apply changes'" 
+       "UIButton marked:'filter-tool-apply-btn'"
     end
     def navigate
         unless current_page?
