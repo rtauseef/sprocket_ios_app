@@ -126,6 +126,8 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
                            [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeGoogle],
                            [[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]
                            ];
+    
+    [self updateVideoSetting];
 }
 
 @end

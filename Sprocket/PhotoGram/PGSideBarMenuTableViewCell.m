@@ -82,7 +82,7 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             break;
         case PGSideBarMenuCellLinkReader:
             self.menuTitle.text = NSLocalizedString(@"Scan", nil);
-            self.menuImageView.image = [UIImage imageNamed:@"menuAbout"];
+            self.menuImageView.image = [UIImage imageNamed:@"menuAbout  "];
             break;
         default:
             break;
