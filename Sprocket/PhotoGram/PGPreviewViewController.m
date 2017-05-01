@@ -31,6 +31,7 @@
 #import "PGPreviewDrawerViewController.h"
 #import "PGWatermarkProcessor.h"
 #import "PGLinkSettings.h"
+#import "PGPrintQueueManager.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -59,7 +60,7 @@ static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate, PGPrintQueueManagerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -131,15 +132,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imglyManager = [[PGImglyManager alloc] init];
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
-        self.drawerContainer.userInteractionEnabled = NO;
-        self.drawerContainer.hidden = YES;
-        
+        self.drawer.showCopies = NO;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
+
     } else {
         [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     }
-    
+
+    if ([[MPBTPrintManager sharedInstance] queueSize] > 0) {
+        [self peekDrawer];
+    }
+
     [self.view layoutIfNeeded];
     
     [self configureCarousel];
@@ -265,7 +268,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     NSArray<IMGLYBoxedMenuItem *> *menuItems = [self.imglyManager menuItemsWithConfiguration:configuration];
 
     self.photoEditViewController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
-//    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
 
     self.photoEditViewController.delegate = self;
 
@@ -399,6 +401,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 #pragma mark - Drawer Methods
 
+- (void)peekDrawer {
+    if (self.drawer.isOpened || self.drawer.isPeeking) {
+        return;
+    }
+
+    self.drawer.isOpened = NO;
+    self.drawer.isPeeking = YES;
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeightPeeking];
+    [self reloadCarouselItems];
+}
+
 - (void)closeDrawer
 {
     if (!self.drawer.isOpened) {
@@ -406,6 +419,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     self.drawer.isOpened = NO;
+    self.drawer.isPeeking = NO;
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
     [self reloadCarouselItems];
 }
@@ -417,6 +431,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     self.drawer.isOpened = YES;
+    self.drawer.isPeeking = NO;
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
     [self reloadCarouselItems];
 }
@@ -461,6 +476,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [self reloadCarouselItems];
         }];
     }
+}
+
+- (void)PGPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
+{
+    [PGPrintQueueManager sharedInstance].delegate = self;
+    [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
+}
+
+
+#pragma mark - PGPrintQueueManagerDelegate
+
+- (void)pgPrintQueueManagerDidClearQueue:(PGPrintQueueManager *)printQueueManager {
+    [self closeDrawer];
 }
 
 
@@ -739,8 +767,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         [metrics setObject:origin forKey:kMetricsOrigin];
 
                         if (isPrintDirect) {
-                            [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
-                                return [self handlePrintQueueStatus:status progress:progress];
+                            [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
+                                return [self handlePrintQueueStatus:status progress:progress error:errorCode];
                             }];
                             canResumePrinting = NO;
                         } else {
@@ -800,13 +828,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (canResumePrinting) {
-                            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
-                                return [self handlePrintQueueStatus:status progress:progress];
+                            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
+                                return [self handlePrintQueueStatus:status progress:progress error:errorCode];
                             }];
 
                             NSString *action = kEventPrintQueueAddSingleAction;
                             if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
                                 action = kEventPrintQueueAddMultiAction;
+                                [self peekDrawer];
                             }
 
                             if (self.drawer.numberOfCopies > 1) {
@@ -865,9 +894,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     });
 }
 
-- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress {
+- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress error:(NSInteger)errorCode {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
+
+        if (errorCode > 0) {
+            [self dismissProgressView];
+
+            if ([[MPBTPrintManager sharedInstance] queueSize] > 0) {
+                [self peekDrawer];
+            }
+
+        } else if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
             [self showProgressView];
 
             [self.progressView setProgress:0.0];
@@ -884,18 +921,23 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             // User paused the print queue
             [self dismissProgressView];
         }
+
     });
 
-    return (status != MPBTPrinterManagerStatusPrinting && status != MPBTPrinterManagerStatusIdle);
+    BOOL progressViewDismissed = (errorCode > 0 || status == MPBTPrinterManagerStatusPrinting || status == MPBTPrinterManagerStatusIdle);
+
+    return !progressViewDismissed;
 }
 
 - (void)dismissProgressView {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.progressView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.progressView removeFromSuperview];
-        self.progressView = nil;
-    }];
+    if (self.progressView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.progressView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.progressView removeFromSuperview];
+            self.progressView = nil;
+        }];
+    }
 }
 
 - (MPPaper *)paper

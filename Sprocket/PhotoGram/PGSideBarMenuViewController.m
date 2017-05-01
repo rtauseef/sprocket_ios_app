@@ -28,6 +28,7 @@
 #import "PGWebViewerViewController.h"
 #import "PGLinkSettings.h"
 #import "PGLinkReaderViewController.h"
+#import "PGPrintQueueManager.h"
 
 #import "NSLocale+Additions.h"
 #import "UIViewController+Trackable.h"
@@ -132,136 +133,8 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 - (void)showPrintQueueAlert {
     [self.revealViewController revealToggle:self];
 
-    MPBTPrinterManagerStatus status = [MPBTPrintManager sharedInstance].status;
-
-    if (status != MPBTPrinterManagerStatusEmptyQueue) {
-        if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
-            [self showPrintQueueAlertNotConnected];
-        } else {
-            if (status == MPBTPrinterManagerStatusIdle) {
-                [self showPrintQueueAlertPaused];
-            } else {
-                [self showPrintQueueAlertActive];
-            }
-        }
-    } else {
-        [self showPrintQueueAlertEmpty];
-    }
+    [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
 }
-
-- (NSString *)titleWithNumberOfPrints {
-    NSString *format;
-    if ([MPBTPrintManager sharedInstance].queueSize == 1) {
-        format = NSLocalizedString(@"%li print in Print Queue", @"Message presented when there is only one image in the print queue");
-    } else {
-        format = NSLocalizedString(@"%li prints in Print Queue", @"Message presented when there more than one images in the print queue");
-    }
-
-    return [NSString stringWithFormat:format, [MPBTPrintManager sharedInstance].queueSize];
-}
-
-- (void)deletePrintQueue {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete all prints from Print Queue?", nil)
-                                                                             message:nil
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil)
-                                                       style:UIAlertActionStyleDestructive
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         [[MPBTPrintManager sharedInstance] cancelPrintQueue];
-                                                     }];
-    [alertController addAction:yesAction];
-
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No, Keep Them", nil)
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
-    [alertController addAction:noAction];
-
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)showPrintQueueAlertNotConnected {
-    NSString *title = [NSString stringWithFormat:@"%@,\n%@", [self titleWithNumberOfPrints], NSLocalizedString(@"Sprocket not Connected", nil)];
-
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
-                                                                             message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected.", nil)
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    [alertController addAction:okAction];
-
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         [self deletePrintQueue];
-                                                     }];
-    [alertController addAction:deleteAction];
-
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)showPrintQueueAlertEmpty {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"No prints in Print Queue", @"Message title for when the print queue is empty")
-                                                                             message:nil
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:nil];
-    [alertController addAction:okAction];
-
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)showPrintQueueAlertPaused {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
-                                                                             message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    [alertController addAction:okAction];
-
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             [self deletePrintQueue];
-                                                         }];
-    [alertController addAction:deleteAction];
-
-    UIAlertAction *printAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print", nil)
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
-                                                         }];
-    [alertController addAction:printAction];
-
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)showPrintQueueAlertActive {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
-                                                                             message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    [alertController addAction:okAction];
-
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             [self deletePrintQueue];
-                                                         }];
-    [alertController addAction:deleteAction];
-
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
 
 #pragma mark - UITableViewDelegate methods
 
