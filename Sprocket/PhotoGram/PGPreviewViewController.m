@@ -824,7 +824,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         PGPayoffMetadata * meta = nil;
         if( media.socialMediaImageUrl ) {
             meta = [PGPayoffMetadata onlineURLPayoff:[NSURL URLWithString:self.media.socialMediaImageUrl]];
-        } else if (media.mediaType == kHPRMediaTypeVideo && media.asset) {
+        } else if (media.asset) {
             meta = [PGPayoffMetadata offlineVideoPayoffWithAsset:media.asset];
         }
 

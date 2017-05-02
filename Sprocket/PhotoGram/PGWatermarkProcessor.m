@@ -49,6 +49,7 @@
     PGWatermarkOperationData *operationData = [PGWatermarkOperationData new];
     operationData.originalImage = image;
     operationData.localOperationIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
+    operationData.printerIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.payoffURL = self.watermarkURL;
     [PGWatermarkOperation executeWithOperationData:operationData progress:^(double progress) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {

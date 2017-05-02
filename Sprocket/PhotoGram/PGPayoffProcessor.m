@@ -44,8 +44,12 @@
     PGWatermarkOperationData *operationData = [PGWatermarkOperationData new];
     operationData.originalImage = image;
     operationData.localOperationIdentifier = options[kMPBTImageProcessorPrinterSerialNumberKey];
+    operationData.printerIdentifier = options[kMPBTImageProcessorPrinterSerialNumberKey];
+
+    
     if( ! operationData.localOperationIdentifier ) { // printer Serial  may not be available when processor runs
         operationData.localOperationIdentifier = [NSString stringWithFormat:@"L-Payoff-%@",options[kMPBTImageProcessorLocalIdentifierKey]];
+        operationData.printerIdentifier =  operationData.localOperationIdentifier;
     }
     operationData.payoffURL = [[PGPayoffManager sharedInstance] createURLWithPayoff:self.metadata];
     [PGWatermarkOperation executeWithOperationData:operationData progress:^(double progress) {
