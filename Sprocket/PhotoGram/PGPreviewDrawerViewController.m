@@ -50,7 +50,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [self updateCopyLabelAndButtons];
 }
 
-- (void)setShowPrintQueue:(BOOL)showPrintQueue {
+- (void)setShowPrintQueue:(BOOL)showPrintQueue
+{
     _showPrintQueue = showPrintQueue;
 
     [self.queueCountTimer invalidate];
@@ -62,7 +63,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     }
 }
 
-- (IBAction)didTapDrawerButton:(id)sender {
+- (IBAction)didTapDrawerButton:(id)sender
+{
     self.isOpened = !self.isOpened;
     
     if ([self.delegate respondsToSelector:@selector(PGPreviewDrawer:didTapButton:)]) {
@@ -130,7 +132,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.minusButton.enabled = self.numberOfCopies != 1;
 }
 
-- (void)refreshQueueCount {
+- (void)refreshQueueCount
+{
     NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
 
     self.numberOfJobsLabel.text = [NSString stringWithFormat:@"%li", (long)count];
@@ -138,7 +141,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 #pragma mark - Buttons Handlers
 
-- (IBAction)plusTapped:(id)sender {
+- (IBAction)plusTapped:(id)sender
+{
     if (self.numberOfCopies < kPGPreviewDrawerNumberOfCopiesLimit) {
         self.numberOfCopies++;
     }
@@ -146,7 +150,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [self updateCopyLabelAndButtons];
 }
 
-- (IBAction)minusTapped:(id)sender {
+- (IBAction)minusTapped:(id)sender
+{
     if (self.numberOfCopies >= 1) {
         self.numberOfCopies--;
     }
@@ -156,13 +161,15 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 #pragma mark - Gesture Recognizers
 
-- (IBAction)handlePan:(UIPanGestureRecognizer *)gesture {
+- (IBAction)handlePan:(UIPanGestureRecognizer *)gesture
+{
     if ([self.delegate respondsToSelector:@selector(PGPreviewDrawer:didDrag:)]) {
         [self.delegate PGPreviewDrawer:self didDrag:gesture];
     }
 }
 
-- (IBAction)printQueueTapped:(id)sender {
+- (IBAction)printQueueTapped:(id)sender
+{
     if ([self.delegate respondsToSelector:@selector(PGPreviewDrawerDidTapPrintQueue:)]) {
         [self.delegate PGPreviewDrawerDidTapPrintQueue:self];
     }

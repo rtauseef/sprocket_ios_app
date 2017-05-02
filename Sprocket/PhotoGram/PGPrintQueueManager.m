@@ -24,7 +24,8 @@
 
 @implementation PGPrintQueueManager
 
-+ (instancetype)sharedInstance {
++ (instancetype)sharedInstance
+{
     static PGPrintQueueManager *instance;
 
     static dispatch_once_t onceToken;
@@ -35,7 +36,8 @@
     return instance;
 }
 
-- (void)showPrintQueueStatusFromViewController:(UIViewController *)viewController {
+- (void)showPrintQueueStatusFromViewController:(UIViewController *)viewController
+{
     [PGPrintQueueManager sharedInstance].viewController = viewController;
 
     MPBTPrinterManagerStatus status = [MPBTPrintManager sharedInstance].status;
@@ -61,7 +63,8 @@
 
 #pragma mark - Private
 
-- (NSString *)titleWithNumberOfPrints {
+- (NSString *)titleWithNumberOfPrints
+{
     NSString *format;
     if ([MPBTPrintManager sharedInstance].queueSize == 1) {
         format = NSLocalizedString(@"%li print in Print Queue", @"Message presented when there is only one image in the print queue");
@@ -72,7 +75,8 @@
     return [NSString stringWithFormat:format, [MPBTPrintManager sharedInstance].queueSize];
 }
 
-- (void)deletePrintQueue {
+- (void)deletePrintQueue
+{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete all prints from Print Queue?", nil)
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -96,7 +100,8 @@
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)showPrintQueueAlertNotConnected {
+- (void)showPrintQueueAlertNotConnected
+{
     NSString *title = [NSString stringWithFormat:@"%@,\n%@", [self titleWithNumberOfPrints], NSLocalizedString(@"Sprocket not Connected", nil)];
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
@@ -118,7 +123,8 @@
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)showPrintQueueAlertEmpty {
+- (void)showPrintQueueAlertEmpty
+{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"No prints in Print Queue", @"Message title for when the print queue is empty")
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -131,7 +137,8 @@
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)showPrintQueueAlertPaused {
+- (void)showPrintQueueAlertPaused
+{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -158,7 +165,8 @@
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)showPrintQueueAlertActive {
+- (void)showPrintQueueAlertActive
+{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -177,6 +185,5 @@
 
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
-
 
 @end
