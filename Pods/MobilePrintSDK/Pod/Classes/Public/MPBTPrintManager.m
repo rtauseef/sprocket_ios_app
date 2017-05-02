@@ -123,6 +123,9 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     [self.checkTimer invalidate];
     self.checkTimer = nil;
 
+    self.currentJob = nil;
+    self.directJob = nil;
+
     self.originalQueueSize = 0;
     [self incrementQueueId];
 }

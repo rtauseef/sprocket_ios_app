@@ -83,6 +83,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 {
     if (self.isOpened) {
         return [self drawerHeightOpened];
+    } else if (self.isPeeking) {
+        return [self drawerHeightPeeking];
     } else {
         return [self drawerHeightClosed];
     }
