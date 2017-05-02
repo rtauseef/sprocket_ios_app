@@ -184,6 +184,8 @@
 	<string>Allow access to take and print photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow access to print and save your photos.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow access to add items to your calendar.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>sanchez-regular.ttf</string>
