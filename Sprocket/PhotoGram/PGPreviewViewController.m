@@ -343,6 +343,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 {
     [self.view layoutIfNeeded];
     [self.carouselView reloadData];
+    [self currentEditedImage];
 }
 
 - (BOOL)hasImageSelected
