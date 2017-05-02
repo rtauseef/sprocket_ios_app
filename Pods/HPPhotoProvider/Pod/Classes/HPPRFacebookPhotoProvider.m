@@ -258,7 +258,7 @@
             allPhotos.provider = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).provider;
 
             if (self.displayVideos) {
-                [self cachedGraphRequest:@"me/videos/uploaded" parameters:@{ @"fields":@"picture,limit=1" } refresh:refresh paging:PAGING_ALL completion:^(id result, NSError *error) {
+                [self cachedGraphRequest:@"me/videos/uploaded" parameters:@{ @"fields":@"picture" } refresh:refresh paging:PAGING_ALL completion:^(id result, NSError *error) {
                     if (error) {
                         NSLog(@"FACEBOOK ERROR\n%@", error);
                         [self lostAccess];
@@ -298,11 +298,24 @@
 
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {
-    NSString *request = @"me/photos/uploaded";
+    NSString *request = [NSMutableString string];
+    NSString *fields = [NSMutableString string];
+    
     if (nil != self.album.objectID) {
         request = [NSString stringWithFormat:@"%@", self.album.objectID];
+        fields = @"count,cover_photo,name";
+    } else {
+        if (self.album.videoOnly) {
+            request = @"me/videos/uploaded";
+            fields = @"created_time,thumbnails,place,picture";
+            
+        } else {
+            request = @"me/photos/uploaded";
+            fields = @"count,cover_photo,name";
+        }
     }
-    [self cachedGraphRequest:request parameters:@{ @"fields":@"count,cover_photo,name" } refresh:YES paging:nil completion:^(id result, NSError *error) {
+    
+    [self cachedGraphRequest:request parameters:@{ @"fields":fields } refresh:YES paging:nil completion:^(id result, NSError *error) {
         if (error) {
             if ([error.domain isEqualToString:FACEBOOK_ERROR_DOMAIN] && (error.code == ALBUM_NOT_FOUND_ERROR_CODE)) {
                 if (completion) {
@@ -316,7 +329,9 @@
                 }
             }
         } else {
-            [self.album setAttributes:result];
+            if (self.album.objectID != nil) {
+                [self.album setAttributes:result];
+            }
             
             if (completion) {
                 completion(nil);
