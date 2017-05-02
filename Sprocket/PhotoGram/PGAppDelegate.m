@@ -27,7 +27,10 @@
 #import "PGRevealViewController.h"
 #import "PGLandingSelectorPageViewController.h"
 #import "UIViewController+Trackable.h"
+#import "PGLandingMainPageViewController.h"
+#import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
+
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -36,7 +39,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 @property (strong, nonatomic) NSTimer *sprocketConnectivityTimer;
 @property (assign, nonatomic) NSInteger lastConnectedValue;
-@property (assign, nonatomic) BOOL menuShowing;
 
 @end
 
@@ -77,7 +79,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     self.window.backgroundColor = [UIColor greenColor];
     
     self.lastConnectedValue = connectionDefaultValue;
-    self.menuShowing = NO;
+    [PGAppNavigation sharedInstance].menuShowing = NO;
 
     [self initializeUAirship];
 
@@ -165,9 +167,25 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else if ([url.scheme containsString:@"googleusercontent"]) {
         return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    } else if ([url.scheme isEqual:@"com.hp.sprocket.deepLinks"]) {
+        [self deepLink:url.host];
     } else {
         return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
+    NSMutableArray *schemes = [NSMutableArray array];
+    
+    // Look at our plist
+    NSArray *bundleURLTypes = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleURLTypes"];
+    [bundleURLTypes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [schemes addObjectsFromArray:[bundleURLTypes[idx] objectForKey:@"CFBundleURLSchemes"]];
+    }];
+    
+    return YES;
+}
+
+- (void)deepLink:(NSString *)location
+{
+    [PGAppNavigation deepLink:location];
 }
 
 #pragma mark - MP object initialization
@@ -223,12 +241,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
 {
-    self.menuShowing = YES;
+    [PGAppNavigation sharedInstance].menuShowing = YES;
 }
 
 - (void)handleMenuClosedNotification:(NSNotification *)notification
 {
-    self.menuShowing = NO;
+    [PGAppNavigation sharedInstance].menuShowing = NO;
 }
 
 #pragma mark - sprocket connectivity and reporting
@@ -241,15 +259,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     // Only record changes to printer connectivity
     if (connectionDefaultValue != self.lastConnectedValue  &&
         self.lastConnectedValue != currentlyConnected) {
-        PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
         
-        UIViewController *rootViewController = revealController.frontViewController;
-        
-        if (self.menuShowing) {
-            rootViewController = revealController.rearViewController;
-        }
-        
-        UIViewController *topViewController = [self topViewController:rootViewController];
+        UIViewController *topViewController = [PGAppNavigation currentTopViewController];
         NSString *name = topViewController.trackableScreenName;
         if (nil == name) {
             name = [NSString stringWithFormat:@"%@", [topViewController class]];
@@ -259,31 +270,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     }
     
     self.lastConnectedValue = currentlyConnected;
-}
-
-- (UIViewController *)topViewController:(UIViewController *)rootViewController
-{
-    UIViewController *topController = nil;
-    
-    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *navController = (UINavigationController *)rootViewController;
-        UIViewController *lastViewController = [[navController viewControllers] lastObject];
-        topController = [self topViewController:lastViewController];
-    } else if ([rootViewController isKindOfClass:[PGLandingSelectorPageViewController class]]) {
-        PGLandingSelectorPageViewController *pageController = (PGLandingSelectorPageViewController *)rootViewController;
-        UINavigationController *displayedController = [pageController currentNavigationController];
-        UIViewController *lastViewController = [[displayedController viewControllers] lastObject];
-        topController = [self topViewController:lastViewController];
-    } else {
-        UIViewController *presentedController = rootViewController.presentedViewController;
-        if (nil != presentedController) {
-            topController = [self topViewController:presentedController];
-        } else {
-            topController = rootViewController;
-        }
-    }
-    
-    return topController;
 }
 
 @end

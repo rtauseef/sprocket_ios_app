@@ -28,6 +28,7 @@
 #import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
+#import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
 
@@ -378,6 +379,35 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button
+{
+    switch (type) {
+        case PGSocialSourceTypeFacebook:
+            [self facebookTapped:button];
+            break;
+        case PGSocialSourceTypeInstagram:
+            [self instagramTapped:button];
+            break;
+        case PGSocialSourceTypeFlickr:
+            [self flickrTapped:button];
+            break;
+        case PGSocialSourceTypeLocalPhotos:
+            [self cameraRollTapped:button];
+            break;
+        case PGSocialSourceTypeWeiBo:
+            NSLog(@"WeiBo tapped");
+            break;
+        case PGSocialSourceTypeGoogle:
+            NSLog(@"Google not supported for China");
+            break;
+        case PGSocialSourceTypeQzone:
+            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
+            break;
+        case PGSocialSourceTypePitu:
+            [self pituTapped:button];
+            break;
+    }
+}
 
 #pragma mark - MPBTPrintManagerDelegate
 
@@ -503,34 +533,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
 {
-    switch (socialSource.type) {
-        case PGSocialSourceTypeFacebook:
-            [self facebookTapped:button];
-            break;
-        case PGSocialSourceTypeInstagram:
-            [self instagramTapped:button];
-            break;
-        case PGSocialSourceTypeFlickr:
-            [self flickrTapped:button];
-            break;
-        case PGSocialSourceTypeLocalPhotos:
-            [self cameraRollTapped:button];
-            break;
-        case PGSocialSourceTypeWeiBo:
-            NSLog(@"WeiBo tapped");
-            break;
-        case PGSocialSourceTypeGoogle:
-            NSLog(@"Google not supported for China");
-            break;
-        case PGSocialSourceTypeQzone:
-            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
-            break;
-        case PGSocialSourceTypePitu:
-            [self pituTapped:button];
-            break;
-    }
+    [self goToSocialSourcePage:socialSource.type sender:button];
 }
-
 
 #pragma mark - Reset user defaults
 

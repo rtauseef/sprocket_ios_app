@@ -25,6 +25,7 @@
 #import "PGSocialSourcesManager.h"
 #import "PGSocialSourcesMenuViewController.h"
 #import "PGSurveyManager.h"
+#import "PGAppNavigation.h"
 #import "PGWebViewerViewController.h"
 #import "PGLinkSettings.h"
 #import "PGLinkReaderViewController.h"
@@ -284,22 +285,12 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellHowToAndHelp: {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"PrintInstructions"];
+            UIViewController *viewController = [PGAppNavigation howToAndHelpViewController];
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
         case PGSideBarMenuCellTakeSurvey: {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-            UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"WebViewerNavigationController"];
-
-            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-
-            PGWebViewerViewController *webViewerViewController = (PGWebViewerViewController *)navigationController.topViewController;
-            webViewerViewController.trackableScreenName = @"Take Our Survey Screen";
-            webViewerViewController.url = kSurveyURL;
-            webViewerViewController.notifyUrl = kSurveyNotifyURL;
-            webViewerViewController.delegate = self;
+            UINavigationController *navigationController = [PGAppNavigation surveyNavController:self];
             [self presentViewController:navigationController animated:YES completion:nil];
             break;
         }
