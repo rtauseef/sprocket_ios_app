@@ -2303,6 +2303,8 @@
 		F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E7852A1DDA782F0074FFB7 /* PGSocialSource.m */; };
 		F2E785301DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E7852F1DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m */; };
 		F2E785311DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E7852F1DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m */; };
+		F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E85D341EB7A00000569AE9 /* PGPrintQueueManager.m */; };
+		F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E85D341EB7A00000569AE9 /* PGPrintQueueManager.m */; };
 		FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF6481C1C8615870002328C /* Fabric.framework */; };
 		a066e20082450f3d9be0eacf /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D5066199AB87B006D80E0 /* main.m */; };
 		a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BE41619EC6BB4006B78BB /* PGLandingSelectorPageViewController.m */; };
@@ -3948,6 +3950,8 @@
 		F2E7852A1DDA782F0074FFB7 /* PGSocialSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSource.m; sourceTree = "<group>"; };
 		F2E7852E1DDD23B20074FFB7 /* PGQzoneLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGQzoneLandingPageViewController.h; sourceTree = "<group>"; };
 		F2E7852F1DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGQzoneLandingPageViewController.m; sourceTree = "<group>"; };
+		F2E85D331EB7A00000569AE9 /* PGPrintQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPrintQueueManager.h; sourceTree = "<group>"; };
+		F2E85D341EB7A00000569AE9 /* PGPrintQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPrintQueueManager.m; sourceTree = "<group>"; };
 		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
 		FF40F8461E70E15500113A58 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF40F8481E70E18100113A58 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -5408,6 +5412,7 @@
 		E34D5095199AB930006D80E0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F2E85D311EB79EFA00569AE9 /* PrintQueue */,
 				F2E785281DDA78040074FFB7 /* SocialSources */,
 				E34D509B199AB9A4006D80E0 /* Storyboards */,
 				E3D6814319A3D02E000D45E0 /* CustomViews */,
@@ -5739,6 +5744,15 @@
 				F2E7852A1DDA782F0074FFB7 /* PGSocialSource.m */,
 			);
 			name = SocialSources;
+			sourceTree = "<group>";
+		};
+		F2E85D311EB79EFA00569AE9 /* PrintQueue */ = {
+			isa = PBXGroup;
+			children = (
+				F2E85D331EB7A00000569AE9 /* PGPrintQueueManager.h */,
+				F2E85D341EB7A00000569AE9 /* PGPrintQueueManager.m */,
+			);
+			name = PrintQueue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -8409,6 +8423,7 @@
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
+				F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
@@ -8551,6 +8566,7 @@
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
+				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
