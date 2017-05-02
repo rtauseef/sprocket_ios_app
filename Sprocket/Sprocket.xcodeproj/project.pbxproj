@@ -2111,6 +2111,8 @@
 		82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E3DEBD1E8342330008F600 /* PGEmbellishmentMetricsManager.m */; };
 		82E3DEBF1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E3DEBD1E8342330008F600 /* PGEmbellishmentMetricsManager.m */; };
 		82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */; };
+		82EF7B011EB8E9A40099026B /* PGHamburgerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF7B001EB8E9A40099026B /* PGHamburgerButton.m */; };
+		82EF7B021EB8E9A40099026B /* PGHamburgerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF7B001EB8E9A40099026B /* PGHamburgerButton.m */; };
 		8D14780195E50EB1D3C614FE /* libPods-Sprocket-cal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9A31ECDB34CC63D071423F /* libPods-Sprocket-cal.a */; };
 		8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
 		9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385719BE57C5009C695F /* SendFeedback@2x.png */; };
@@ -3713,6 +3715,8 @@
 		82E3DEBD1E8342330008F600 /* PGEmbellishmentMetricsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGEmbellishmentMetricsManager.m; sourceTree = "<group>"; };
 		82E97D0F1DB97FFD00946555 /* PGResetSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResetSprocketViewController.m; sourceTree = "<group>"; };
 		82E97D101DB97FFD00946555 /* PGResetSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGResetSprocketViewController.h; sourceTree = "<group>"; };
+		82EF7AFF1EB8E9A40099026B /* PGHamburgerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGHamburgerButton.h; sourceTree = "<group>"; };
+		82EF7B001EB8E9A40099026B /* PGHamburgerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGHamburgerButton.m; sourceTree = "<group>"; };
 		82F01B071E52676100670193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		82F01B091E52676200670193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		82F01B0A1E52676200670193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -5593,6 +5597,8 @@
 				92D073851D25ACE8002611C0 /* PGMediaNavigation.h */,
 				92D073861D25ACE8002611C0 /* PGMediaNavigation.m */,
 				92D073891D25AD02002611C0 /* PGMediaNavigation.xib */,
+				82EF7AFF1EB8E9A40099026B /* PGHamburgerButton.h */,
+				82EF7B001EB8E9A40099026B /* PGHamburgerButton.m */,
 				E3D6810619A2B249000D45E0 /* PGSegmentedControlView.h */,
 				E3D6810719A2B249000D45E0 /* PGSegmentedControlView.m */,
 				E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */,
@@ -8422,6 +8428,7 @@
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */,
+				82EF7B021EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
@@ -8534,6 +8541,7 @@
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
 				E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */,
 				829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
+				82EF7B011EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
 				E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */,
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
 				F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */,

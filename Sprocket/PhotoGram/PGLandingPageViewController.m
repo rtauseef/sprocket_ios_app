@@ -37,7 +37,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (void)viewDidLoad {
     [super viewDidLoad];
        
-    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
+    UIBarButtonItem *hamburgerButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector(revealToggle:)];
     
     self.navigationItem.leftBarButtonItem = hamburgerButtonItem;
     
