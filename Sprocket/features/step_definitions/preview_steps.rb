@@ -27,7 +27,11 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
                   if element_id == "close"
                     check_element_exists @current_page.close
                   else
-                  check_element_exists "view marked:'#{element_id}'"
+                      if element_id == "Download"
+                          check_element_exists @current_page.download
+                      else
+                          check_element_exists "view marked:'#{element_id}'"
+                      end
                   end
                 end
               end
