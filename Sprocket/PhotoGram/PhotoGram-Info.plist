@@ -25,6 +25,12 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>com.hp.sprocket.deepLinks</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>hpsprocket</string>
 				<string>fb1784144831820268</string>
 			</array>

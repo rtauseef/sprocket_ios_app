@@ -42,6 +42,7 @@
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
+		26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
 		2AF06EEF1DD5484F000FF091 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AF06EF11DD5484F000FF091 /* InfoPlist.strings */; };
 		30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385819BE57C5009C695F /* TakeSurvey@2x.png */; };
@@ -1387,8 +1388,6 @@
 		821851761EAA9103000EDFD2 /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E3D92B1E82EEEC0008F600 /* wave.png */; };
 		821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
-		8218C5641DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */; };
-		8218C5651DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */; };
 		822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */; };
 		822ED5351D19F8D000F4EE4B /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		82362A181D59408E0019F024 /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
@@ -2124,10 +2123,13 @@
 		924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
 		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
+		926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
+		926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
 		929B9A061EAE7CC200A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
 		929B9A191EAFB3FE00A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
 		929B9A1B1EAFB41800A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
+		929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
 		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92E9C1F21DD65FB6009E4E63 /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
@@ -2565,6 +2567,8 @@
 		26A8D44C1DC971E90079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		26A8D44D1DC971EA0079C0D8 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		26B434641E3F02310071EEFA /* Sprocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sprocket.entitlements; sourceTree = SOURCE_ROOT; };
+		26BEE7A11E92F8470055D5E4 /* PGAppNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAppNavigation.h; sourceTree = "<group>"; };
+		26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAppNavigation.m; sourceTree = "<group>"; };
 		2AC79D0F1DFB812400D86609 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D101DFB817A00D86609 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D131DFB82C100D86609 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = lt; path = lt.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -3111,8 +3115,6 @@
 		821851D31D60EC6F001288D9 /* PGSignInButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSignInButton.m; sourceTree = "<group>"; };
 		821851D61D60EF4A001288D9 /* PGTermsAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTermsAttributedLabel.h; sourceTree = "<group>"; };
 		821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTermsAttributedLabel.m; sourceTree = "<group>"; };
-		8218C5621DDBE90C000855D8 /* PGSideBarMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuTableViewCell.h; sourceTree = "<group>"; };
-		8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSideBarMenuTableViewCell.m; sourceTree = "<group>"; };
 		822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOverlayCameraViewController.h; sourceTree = "<group>"; };
 		822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOverlayCameraViewController.m; sourceTree = "<group>"; };
 		822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGOverlayCameraViewController.xib; sourceTree = "<group>"; };
@@ -3751,6 +3753,8 @@
 		929B99F51EA801F200A2CF0E /* PGGoogleLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGoogleLandingPageViewController.h; sourceTree = "<group>"; };
 		929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGoogleLandingPageViewController.m; sourceTree = "<group>"; };
 		929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		929B9B201EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuTableViewCell.h; sourceTree = "<group>"; };
+		929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSideBarMenuTableViewCell.m; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
@@ -4767,10 +4771,10 @@
 		829E028D1DDB8C4300B025C5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				929B9B201EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.h */,
+				929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */,
 				829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */,
 				829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */,
-				8218C5621DDBE90C000855D8 /* PGSideBarMenuTableViewCell.h */,
-				8218C5631DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m */,
 				829E02851DDA64C200B025C5 /* PGSocialSourcesMenuViewController.h */,
 				829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */,
 				826B69D61DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.h */,
@@ -5343,10 +5347,12 @@
 				F134BC2E1AC60517007D892B /* Logging */,
 				E34D5093199AB90A006D80E0 /* Analytics */,
 				E34D5095199AB930006D80E0 /* UI */,
-				E34D5069199AB87B006D80E0 /* PGAppDelegate.h */,
-				E34D506A199AB87B006D80E0 /* PGAppDelegate.m */,
 				E34D50D1199AC233006D80E0 /* PGAppAppearance.h */,
 				E34D50D2199AC233006D80E0 /* PGAppAppearance.m */,
+				E34D5069199AB87B006D80E0 /* PGAppDelegate.h */,
+				E34D506A199AB87B006D80E0 /* PGAppDelegate.m */,
+				26BEE7A11E92F8470055D5E4 /* PGAppNavigation.h */,
+				26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */,
 				E34D5096199AB945006D80E0 /* Resources */,
 				E34D5075199AB87B006D80E0 /* Images.xcassets */,
 				E34D5061199AB87B006D80E0 /* Supporting Files */,
@@ -5903,7 +5909,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8404,17 +8410,18 @@
 				F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
 				8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */,
+				926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
 				a066e20082450f3d9be0eacf /* main.m in Sources */,
 				a5ddf8bbdfb873da46ef0132 /* UIColor+HexString.m in Sources */,
 				8263D7B81E71DD330036E903 /* PGTextView.m in Sources */,
 				924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
-				8218C5651DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */,
 				b7f4d03ea6ee15ea731634d1 /* PGLogFormatter.m in Sources */,
 				F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
+				926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
@@ -8518,6 +8525,7 @@
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
 				821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */,
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
+				929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */,
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				F27256FB1E95ACA1009E553D /* PGImglyManager.m in Sources */,
 				F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */,
@@ -8570,8 +8578,8 @@
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
+				26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
-				8218C5641DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
