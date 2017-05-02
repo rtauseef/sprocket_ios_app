@@ -2123,6 +2123,8 @@
 		924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
 		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
+		926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
+		926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
 		929B9A061EAE7CC200A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
 		929B9A191EAFB3FE00A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
@@ -5893,7 +5895,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8394,6 +8396,7 @@
 				F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
 				8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */,
+				926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
 				a066e20082450f3d9be0eacf /* main.m in Sources */,
@@ -8404,6 +8407,7 @@
 				F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
+				926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */,
