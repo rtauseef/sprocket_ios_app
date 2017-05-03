@@ -31,18 +31,9 @@
 
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories
 {
-    IMGLYStickerCategory *mothersDayCategory = nil;
-    
-    if ([NSLocale isChinese]) {
-        mothersDayCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                   imageURL:self.mothersDayChineseCategoryStickers[1].thumbnailURL
-                                                                   stickers:[self mothersDayChineseCategoryStickers]];
-    } else {
-        mothersDayCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                   imageURL:self.mothersDayCategoryStickers[7].thumbnailURL
-                                                                   stickers:[self mothersDayCategoryStickers]];
-    }
-    mothersDayCategory.accessibilityLabel = @"Mother's Day Category";
+//    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+//                                                                              imageURL:self.cannesCategoryStickers[1].thumbnailURL
+//                                                                              stickers:[self cannesCategoryStickers]];
     
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
@@ -91,75 +82,19 @@
     
     getWellCategory.accessibilityLabel = @"Get Well";
     
-    return @[mothersDayCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+    return @[/*cannesCategory,*/ graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }
 
 #pragma mark - Stickers by category
 
-- (NSArray<IMGLYSticker *> *)mothersDayCategoryStickers {
+- (NSArray<IMGLYSticker *> *)cannesCategoryStickers
+{
     return @[
-             [[PGStickerItem alloc] initWithName:@"Flowers Left" imageName:@"flowers_left" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mother's Day" imageName:@"mothers_day" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Banner Flowers" imageName:@"banner copy" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Banner Flowers 2" imageName:@"banner_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flowers Right" imageName:@"flowers_right" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flowers Daisies" imageName:@"flowers_daisies" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flower" imageName:@"flower" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Heart Mom" imageName:@"heart_mom" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Pacifier" imageName:@"pacifier-copy" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Bouquet" imageName:@"bouquet" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Rose" imageName:@"rose" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Snails" imageName:@"snails" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mother Giraffe" imageName:@"mother_giraffe" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mother Turtle" imageName:@"mother_turtle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Feather Color" imageName:@"feather_color" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Girl Flower" imageName:@"girl_flower" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Envelope" imageName:@"envelope" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Silhoutte" imageName:@"silhouette" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mom Tattoo" imageName:@"mom_tattoo" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Three Rosebuds" imageName:@"three_rosebuds" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Rosebud Leaves" imageName:@"rosebud_leaves" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Three Flowers Bunch" imageName:@"three_flower_bunch" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Three Daisies" imageName:@"three_daisies" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"We Love You" imageName:@"we_love_you" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mom Child Cats" imageName:@"Mom_child_cats" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Aster Flower" imageName:@"aster_flower" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Envelope Flowers" imageName:@"envelope_flowers" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Cat Holding Flowers" imageName:@"cat_holding_flwoers" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              ];
 }
 
-- (NSArray<IMGLYSticker *> *)mothersDayChineseCategoryStickers {
-    return @[
-             [[PGStickerItem alloc] initWithName:@"Flowers Left" imageName:@"flowers_left" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Envelope" imageName:@"envelope" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Girl Flower" imageName:@"girl_flower" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Silhoutte" imageName:@"silhouette" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Banner Flowers" imageName:@"banner copy" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Banner Flowers 2" imageName:@"banner_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flowers Right" imageName:@"flowers_right" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flowers Daisies" imageName:@"flowers_daisies" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flower" imageName:@"flower" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Pacifier" imageName:@"pacifier-copy" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Bouquet" imageName:@"bouquet" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Rose" imageName:@"rose" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Snails" imageName:@"snails" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mother Giraffe" imageName:@"mother_giraffe" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mother Turtle" imageName:@"mother_turtle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Feather Color" imageName:@"feather_color" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Envelope Flowers" imageName:@"envelope_flowers" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Three Rosebuds" imageName:@"three_rosebuds" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Rosebud Leaves" imageName:@"rosebud_leaves" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Three Flowers Bunch" imageName:@"three_flower_bunch" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Three Daisies" imageName:@"three_daisies" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Mom Child Cats" imageName:@"Mom_child_cats" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Aster Flower" imageName:@"aster_flower" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Cat Holding Flowers" imageName:@"cat_holding_flwoers" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             ];
-}
-
-
-- (NSArray<IMGLYSticker *> *)graduationCategoryStickers {
+- (NSArray<IMGLYSticker *> *)graduationCategoryStickers
+{
     return @[
              [[PGStickerItem alloc] initWithName:@"Graduation Glasses" imageName:@"g_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Cap" imageName:@"cap" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -186,7 +121,8 @@
              ];
 }
 
-- (NSArray<IMGLYSticker *> *)faceCategoryStickers {
+- (NSArray<IMGLYSticker *> *)faceCategoryStickers
+{
     return @[
             [[PGStickerItem alloc] initWithName:@"Aviator Glasses Color" imageName:@"aviator-glasses-color" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
             [[PGStickerItem alloc] initWithName:@"Lips" imageName:@"Lips" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -218,7 +154,8 @@
             ];
 }
 
-- (NSArray<IMGLYSticker *> *)decorativeCategoryStickers {
+- (NSArray<IMGLYSticker *> *)decorativeCategoryStickers
+{
     return @[
              [[PGStickerItem alloc] initWithName:@"Heart Garland" imageName:@"heart-garland" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Hearts" imageName:@"v_hearts" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -252,7 +189,8 @@
 }
 
 
-- (NSArray<IMGLYSticker *> *)foodCategoryStickers {
+- (NSArray<IMGLYSticker *> *)foodCategoryStickers
+{
     return @[
              [[PGStickerItem alloc] initWithName:@"Frappuccino" imageName:@"Frappuccino" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Doughnut" imageName:@"doughnut" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -284,7 +222,8 @@
 }
 
 
-- (NSArray<IMGLYSticker *> *)birthdayCategoryStickers {
+- (NSArray<IMGLYSticker *> *)birthdayCategoryStickers
+{
     return @[
              [[PGStickerItem alloc] initWithName:@"Balloons 2" imageName:@"balloons2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Banner" imageName:@"banner" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -303,7 +242,8 @@
              ];
 }
 
-- (NSArray<IMGLYSticker *> *)animalCategoryStickers {
+- (NSArray<IMGLYSticker *> *)animalCategoryStickers
+{
     return @[
              [[PGStickerItem alloc] initWithName:@"Cat Face" imageName:@"cat_face" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Cat" imageName:@"cat_body" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
@@ -328,7 +268,8 @@
              ];
 }
 
-- (NSArray<IMGLYSticker *> *)natureCategoryStickers {
+- (NSArray<IMGLYSticker *> *)natureCategoryStickers
+{
     return @[
              [[PGStickerItem alloc] initWithName:@"Feather" imageName:@"feather" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Hibiscus" imageName:@"hibiscus" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -356,7 +297,8 @@
              ];
 }
 
-- (NSArray<IMGLYSticker *> *)getWellCategoryStickers {
+- (NSArray<IMGLYSticker *> *)getWellCategoryStickers
+{
     return @[
               [[PGStickerItem alloc] initWithName:@"Band aid 2" imageName:@"band-aid2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
               [[PGStickerItem alloc] initWithName:@"Kleenex" imageName:@"kleenex" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
