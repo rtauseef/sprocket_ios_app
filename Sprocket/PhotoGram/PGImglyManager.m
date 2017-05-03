@@ -492,6 +492,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }
         selectionChangedHandler(view1, view2);
     };
+    
+    photoEditViewController.undoController.isEnabled = NO;
 }
 
 - (void (^)(IMGLYButton * _Nonnull))applyButtonBlockWithAccessibilityLabel:(NSString *)label {
