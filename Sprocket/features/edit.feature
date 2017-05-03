@@ -6,7 +6,7 @@ Feature: Verify Edit screen
 Scenario: Verify Edit screen
     Given I am on the "CameraRoll Preview " screen
     When I tap "Edit" button
-    Then I should see the "Edit" screen
+    Then I am on the "Edit" screen
     Then I should see "Adjustment" option
     Then I should see "Filter" option
     Then I should see "Frame" option

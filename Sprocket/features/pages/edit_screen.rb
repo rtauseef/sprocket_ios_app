@@ -70,7 +70,9 @@ class EditScreen < Calabash::IBase
         "* id:'1_turquoise_frame'" 
     end
 
-    
+    def undo
+        "* id:'ic_undo_24pt'"
+    end
 
     def navigate
         unless current_page?
