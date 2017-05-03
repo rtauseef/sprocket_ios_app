@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
+#import "HPPRMedia.h"
 
 extern NSString * const kPGPayoffMetadataURLKey;
 extern NSString * const kPGPayoffTypeKey;
@@ -35,9 +36,9 @@ typedef enum {
 @property NSDictionary* data;
 
 
-+(instancetype) offlineVideoPayoffWithAsset:(PHAsset*) asset;
-+(instancetype) offlinePayoffFromDictionary:(NSDictionary *) data;
-+(instancetype) onlineURLPayoff:(NSURL *) url;
++(instancetype) metaFromHPPRMedia: (HPPRMedia *) media;
++(instancetype)offlinePayoffFromDictionary:(NSDictionary *) data;
++(instancetype)onlineURLPayoff:(NSURL *)url;
 
 -(NSDictionary *) toDictionary;
 

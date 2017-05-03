@@ -11,7 +11,8 @@
 //
 
 #import "PGPayoffProcessor.h"
-#import "PGWatermarkOperation.h"
+#import "PGWatermarkOperationHPLink.h"
+#import "PGWatermarkOperationHPMetar.h"
 #import "PGPayoffManager.h"
 #import "PGOfflinePayoffDatabase.h"
 
@@ -52,7 +53,9 @@
         operationData.printerIdentifier =  operationData.localOperationIdentifier;
     }
     operationData.payoffURL = [[PGPayoffManager sharedInstance] createURLWithPayoff:self.metadata];
-    [PGWatermarkOperation executeWithOperationData:operationData progress:^(double progress) {
+    
+    // changed from Link to Metar
+    [PGWatermarkOperationHPMetar executeWithOperationData:operationData progress:^(double progress) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {
             [self.delegate didUpdateProgress:self progress:progress];
         }
