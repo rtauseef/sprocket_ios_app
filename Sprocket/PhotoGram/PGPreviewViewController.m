@@ -208,7 +208,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         visibleGestureView.editedImage = [visibleGestureView screenshotImage];
     }
 
-    if ([[MPBTPrintManager sharedInstance] queueSize] > 0) {
+    if ([[MPBTPrintManager sharedInstance] queueSize] > 0 && self.carouselView.visibleItemViews.count > 0) {
         [self peekDrawerAnimated:YES];
     }
 }
@@ -341,8 +341,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)reloadCarouselItems
 {
-    [self.view layoutIfNeeded];
-    [self.carouselView reloadData];
+    if (self.carouselView.visibleItemViews.count > 0) {
+        [self.view layoutIfNeeded];
+        [self.carouselView reloadData];
+    }
 }
 
 - (BOOL)hasImageSelected
