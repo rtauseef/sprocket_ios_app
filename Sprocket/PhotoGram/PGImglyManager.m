@@ -472,7 +472,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.textLabel.highlightedTextColor = [UIColor HPBlueColor];
             };
         }];
-
     }];
     
     [PESDK sharedInstance].analytics.isEnabled = YES;
@@ -492,6 +491,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }
         selectionChangedHandler(view1, view2);
     };
+    
+    photoEditViewController.undoController.isEnabled = NO;
 }
 
 - (void (^)(IMGLYButton * _Nonnull))applyButtonBlockWithAccessibilityLabel:(NSString *)label {
