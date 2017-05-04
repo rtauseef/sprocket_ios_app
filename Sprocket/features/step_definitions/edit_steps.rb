@@ -10,11 +10,7 @@ Then (/^I should see "(.*?)" mark$/) do |mark|
             if mark == "Redo"
                 check_element_exists(@current_page.redo)
             else
-                if mark == "Save"
-                    check_element_exists(@current_page.redo)
-                else
-                    check_element_exists(@current_page.check)
-                end
+                check_element_exists(@current_page.check)
             end
         end
     end

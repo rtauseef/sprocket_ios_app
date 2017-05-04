@@ -25,7 +25,7 @@ class CameraRollPreviewScreen < Calabash::IBase
   end
     
     def check
-        "UIButton marked:'Save photo'"
+        "view marked:'editor-tool-apply-btn'"
     end
 
   def share

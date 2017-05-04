@@ -34,10 +34,6 @@ class EditScreen < Calabash::IBase
         "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
     end
     
-    def check
-        "UIButton marked:'editor-tool-apply-btn'"
-    end
-    
     def close
         "UIButton marked:'Discard photo'"
     end
@@ -58,10 +54,6 @@ class EditScreen < Calabash::IBase
         "UILabel text:'No'"
     end
     
-    def save
-       "UIButton marked:'Apply changes'" 
-    end
-    
     def add_text
         "UIButton marked:'Add text'"
     end
@@ -77,7 +69,7 @@ class EditScreen < Calabash::IBase
         "* id:'ic_redo_24pt'"
     end
     def check
-        "UIButton marked:'Save photo'"
+        "view marked:'editor-tool-apply-btn'"
     end
 
     def navigate
