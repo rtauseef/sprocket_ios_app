@@ -15,7 +15,7 @@
 NSString * const PGMetarAPIDomain = @"com.hp.sprocket.metarapi";
 
 static NSString * const kMetarApplicationID = @"dm_ios";
-static NSString * const kMetarAPIURL = @"http://www.somacoding.com/metar/";
+static NSString * const kMetarAPIURL = @"http://www.somacoding.com/metar";
 static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
 
 - (NSMutableURLRequest *) getMetarRequest {
@@ -135,6 +135,15 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     return pgUser;
 }
 
+- (void) handleError: (NSHTTPURLResponse *) response completion: (nullable void (^)(NSError *error)) completion {
+    
+    NSString *XHPError = [[response allHeaderFields] objectForKey:@"X-HP-ErrorCode"];
+    
+    // TODO: better handling HP response codes, renew token when needed
+    
+    completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@",(int) [response statusCode], XHPError]}]);
+}
+
 #pragma mark METAR API CALLS
 
 - (void) authenticate: (nullable void (^)(BOOL success)) completion {
@@ -155,7 +164,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
 }
 
 - (void) challenge: (nullable void (^)(NSError *error)) completion {
-    NSString *requestString = [NSString stringWithFormat:@"%@auth/challenge/", kMetarAPIURL];
+    NSString *requestString = [NSString stringWithFormat:@"%@/auth/challenge/", kMetarAPIURL];
     NSURL *requestUrl = [NSURL URLWithString:requestString];
     NSMutableURLRequest *request = [self getMetarRequest];
     
@@ -186,14 +195,14 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                      completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, missing auth parameters"}]);
                                                  }
                                              } else {
-                                                 completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, not 200/201"}]);
+                                                 [self handleError:httpResponse completion:completion];
                                              }
                                          }
                                      }] resume];
 }
 
 - (void) getAccessToken: (nullable void (^)(NSError *error)) completion {
-    NSString *requestString = [NSString stringWithFormat:@"%@auth/token", kMetarAPIURL];
+    NSString *requestString = [NSString stringWithFormat:@"%@/auth/token", kMetarAPIURL];
     NSURL *requestUrl = [NSURL URLWithString:requestString];
     NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:NO];
     
@@ -224,7 +233,84 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                      completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, missing auth parameters"}]);
                                                  }
                                              } else {
-                                                 completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, not 200/201"}]);
+                                                  [self handleError:httpResponse completion:completion];
+                                             }
+                                         }
+                                     }] resume];
+}
+
+- (void) uploadImage: (UIImage *) image completion: (nullable void (^)(NSError *error, PGMetarImageTag *imageTag)) completion {
+    NSString *requestString = [NSString stringWithFormat:@"%@/resource/tag/", kMetarAPIURL];
+    NSURL *requestUrl = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
+    
+    //TODO: re-scaling?
+    NSData *jpeg = UIImageJPEGRepresentation(image, 0.9f);
+    
+    NSLog(@"Watermarked image length: %ld bytes",[jpeg length]);
+    
+    [request setValue:@"image/jpeg" forHTTPHeaderField:@"Content-Type"];
+    [request setURL:requestUrl];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jpeg];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+      
+                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                         if (error) {
+                                             completion(error, nil);
+                                         } else {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                             if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
+                                                 if ([data length] > 0) {
+                                                     NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                     
+                                                     NSString *atString = [dic objectForKey:@"at"];
+                                                     NSDate *at = [NSDate dateWithTimeIntervalSince1970:[atString doubleValue]];
+                                                     NSString *resource = [dic objectForKey:@"resource"];
+                                                     NSString *media = [dic objectForKey:@"media"];
+                                                     
+                                                     PGMetarImageTag *imageTag = [[PGMetarImageTag alloc] initWithDate:at andResource:resource andMedia:media];
+                                                     completion(nil, imageTag);
+                                                 } else {
+                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API failed to return image tag object"}],nil);
+                                                 }
+                                             } else {
+                                                 [self handleError:httpResponse completion:^(NSError *error) {
+                                                     completion(error, nil);
+                                                 }];
+                                             }
+                                         }
+                                     }] resume];
+}
+
+- (void) downloadWatermarkedImage: (PGMetarImageTag *) imageTag completion: (nullable void (^)(NSError * _Nullable error, UIImage * _Nullable watermarkedImage)) completion {
+    NSString *requestString = [NSString stringWithFormat:@"%@%@", kMetarAPIURL, imageTag.media];
+    NSURL *requestUrl = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
+
+    [request setURL:requestUrl];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"image/jpeg" forHTTPHeaderField:@"Accept"];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+      
+                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                         if (error) {
+                                             completion(error, nil);
+                                         } else {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                             if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
+                                                 if ([data length] > 0) {
+                                                     UIImage *image = [UIImage imageWithData:data];
+                                                     completion(nil, image);
+                                                 } else {
+                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API returned 0 bytes for watermarked image"}],nil);
+                                                 }
+                                             } else {
+                                                 [self handleError:httpResponse completion:^(NSError *error) {
+                                                     completion(error, nil);
+                                                 }];
                                              }
                                          }
                                      }] resume];

@@ -2232,6 +2232,7 @@
 		EDB0C2D91EBA879A00AE14CB /* PGWatermarkOperationHPMetar.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2D81EBA879A00AE14CB /* PGWatermarkOperationHPMetar.m */; };
 		EDB0C2DD1EBA88B300AE14CB /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2DC1EBA88B300AE14CB /* PGMetarAPI.m */; };
 		EDB0C2E01EBA92FC00AE14CB /* PGMetarUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2DF1EBA92FC00AE14CB /* PGMetarUser.m */; };
+		EDB0C2E41EBBD87D00AE14CB /* PGMetarImageTag.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2E31EBBD87D00AE14CB /* PGMetarImageTag.m */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
@@ -3909,6 +3910,8 @@
 		EDB0C2DC1EBA88B300AE14CB /* PGMetarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarAPI.m; path = Metar/PGMetarAPI.m; sourceTree = "<group>"; };
 		EDB0C2DE1EBA92FC00AE14CB /* PGMetarUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarUser.h; path = Metar/PGMetarUser.h; sourceTree = "<group>"; };
 		EDB0C2DF1EBA92FC00AE14CB /* PGMetarUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarUser.m; path = Metar/PGMetarUser.m; sourceTree = "<group>"; };
+		EDB0C2E21EBBD87D00AE14CB /* PGMetarImageTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarImageTag.h; path = Metar/PGMetarImageTag.h; sourceTree = "<group>"; };
+		EDB0C2E31EBBD87D00AE14CB /* PGMetarImageTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarImageTag.m; path = Metar/PGMetarImageTag.m; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
@@ -5681,12 +5684,22 @@
 		EDB0C2DA1EBA887700AE14CB /* Metar */ = {
 			isa = PBXGroup;
 			children = (
+				EDB0C2E11EBBD84400AE14CB /* DataObjects */,
 				EDB0C2DB1EBA88B300AE14CB /* PGMetarAPI.h */,
 				EDB0C2DC1EBA88B300AE14CB /* PGMetarAPI.m */,
 				EDB0C2DE1EBA92FC00AE14CB /* PGMetarUser.h */,
 				EDB0C2DF1EBA92FC00AE14CB /* PGMetarUser.m */,
 			);
 			name = Metar;
+			sourceTree = "<group>";
+		};
+		EDB0C2E11EBBD84400AE14CB /* DataObjects */ = {
+			isa = PBXGroup;
+			children = (
+				EDB0C2E21EBBD87D00AE14CB /* PGMetarImageTag.h */,
+				EDB0C2E31EBBD87D00AE14CB /* PGMetarImageTag.m */,
+			);
+			name = DataObjects;
 			sourceTree = "<group>";
 		};
 		F134BC2E1AC60517007D892B /* Logging */ = {
@@ -8620,6 +8633,7 @@
 				F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */,
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
+				EDB0C2E41EBBD87D00AE14CB /* PGMetarImageTag.m in Sources */,
 				EDB0C2D91EBA879A00AE14CB /* PGWatermarkOperationHPMetar.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,

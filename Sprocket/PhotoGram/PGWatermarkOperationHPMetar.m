@@ -14,6 +14,7 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
 @interface PGWatermarkOperationHPMetar ()
 
 @property (nonatomic, copy, nullable) void (^progressCallback)(double progress);
+@property (strong, nonatomic) PGWatermarkOperationData *operationData;
 
 @end
 
@@ -31,28 +32,64 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
 + (nullable instancetype)executeWithOperationData:(nonnull PGWatermarkOperationData *)operationData progress:(nullable void (^)(double progress))progress completion:(nullable PGWatermarkEmbedderCompletionBlock)completion {
     
     PGWatermarkOperationHPMetar *operation = [[self alloc] init];
+    operation.operationData = operationData;
     operation.progressCallback = progress;
     [operation execute:completion];
     
     return operation;
 }
 
+- (void) handleCallback: (nullable void (^) (UIImage *  image, NSError *  error)) completion image:(UIImage *) image error: (NSError *) error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _progressCallback(1);
+        completion(image,error);
+    });
+}
+
+- (void) updateProgress: (double) value {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _progressCallback(value);
+    });
+}
+
+//TODO: better progress callback, using http download/upload progress
 - (void) execute: (nullable PGWatermarkEmbedderCompletionBlock)completion {
     PGMetarAPI *api = [[PGMetarAPI alloc] init];
     [api authenticate:^(BOOL success) {
         if (success) {
             
+            [self updateProgress: 0.1];
+            
             // testing get access token, this only need to run when token is no longer valid
             [api getAccessToken:^(NSError *error) {
                 if (error == nil) {
-                    completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"All good!"}]);
+                    
+                    [self updateProgress: 0.2];
+                    
+                    [api uploadImage:self.operationData.originalImage completion:^(NSError * _Nullable error, PGMetarImageTag * _Nullable imageTag) {
+                        if (error == nil) {
+                            
+                            [self updateProgress: 0.7];
+                            
+                            [api downloadWatermarkedImage:imageTag completion:^(NSError * _Nullable error, UIImage * _Nullable watermarkedImage) {
+                                if (error == nil) {
+                                    [self handleCallback:completion image:watermarkedImage error:error];
+                                } else {
+                                    [self handleCallback:completion image:nil error:error];
+                                }
+                            }];
+                            
+                        } else {
+                            [self handleCallback:completion image:nil error:error];
+                        }
+                    }];
                 } else {
-                    completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"Error getting access token."}]);
+                    [self handleCallback:completion image:nil error:[NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"Error getting access token."}]];
                 }
             }];
             
         } else {
-            completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"API Auth Error."}]);
+            [self handleCallback:completion image:nil error: [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"API Auth Error."}]];
         }
     }];
 }

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGMetarImageTag.h"
 
 @interface PGMetarAPI : NSObject
 
@@ -17,10 +18,10 @@ typedef NS_ENUM(NSInteger, PGMetarAPIError) {
 - (void) authenticate: (nullable void (^)(BOOL success)) completion;
 - (void) challenge: (nullable void (^)(NSError * _Nullable error)) completion;
 - (void) getAccessToken: (nullable void (^)(NSError * _Nullable error)) completion;
-
+- (void) uploadImage: (UIImage *_Nullable) image completion: (nullable void (^)(NSError * _Nullable error, PGMetarImageTag * _Nullable imageTag)) completion;
+- (void) downloadWatermarkedImage: (PGMetarImageTag *_Nonnull) imageTag completion: (nullable void (^)(NSError * _Nullable error, UIImage * _Nullable watermarkedImage)) completion;
 
 // TODO: implement
-- (void) watermarkImage;
 - (void) setImageMetadata;
 - (void) requestImageMetadata;
 - (void) requestImageMetadataWithFilter;
