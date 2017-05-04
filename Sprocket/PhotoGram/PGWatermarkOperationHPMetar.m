@@ -40,8 +40,20 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
 - (void) execute: (nullable PGWatermarkEmbedderCompletionBlock)completion {
     PGMetarAPI *api = [[PGMetarAPI alloc] init];
     [api authenticate:^(BOOL success) {
-        completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid operation data."}]);
-    
+        if (success) {
+            
+            // testing get access token, this only need to run when token is no longer valid
+            [api getAccessToken:^(NSError *error) {
+                if (error == nil) {
+                    completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"All good!"}]);
+                } else {
+                    completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"Error getting access token."}]);
+                }
+            }];
+            
+        } else {
+            completion(nil, [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"API Auth Error."}]);
+        }
     }];
 }
 

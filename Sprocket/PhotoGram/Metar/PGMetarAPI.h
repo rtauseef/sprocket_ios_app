@@ -15,12 +15,17 @@ typedef NS_ENUM(NSInteger, PGMetarAPIError) {
 };
 
 - (void) authenticate: (nullable void (^)(BOOL success)) completion;
+- (void) challenge: (nullable void (^)(NSError * _Nullable error)) completion;
+- (void) getAccessToken: (nullable void (^)(NSError * _Nullable error)) completion;
+
+
+// TODO: implement
 - (void) watermarkImage;
 - (void) setImageMetadata;
 - (void) requestImageMetadata;
 - (void) requestImageMetadataWithFilter;
 
-// future
+// TODO: implement when available, future spec
 - (void) requestOfflineTags;
 - (void) downloadImage;
 

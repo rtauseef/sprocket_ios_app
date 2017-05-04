@@ -20,6 +20,22 @@
     return self;
 }
 
+- (instancetype)initWithToken: (NSString *) accessToken secret:(NSString *) secret accountID:(NSString *) accountID expire: (NSString *) expire
+{
+    self = [super init];
+    if (self) {
+        self.accessToken = accessToken;
+        self.secret = secret;
+        self.accountID = accountID;
+        
+        double timeInterval = [expire doubleValue];
+        NSDate *expireDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+        self.expire = expireDate;
+    }
+    
+    return self;
+}
+    
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super init];
@@ -27,6 +43,7 @@
         self.accessToken = [coder decodeObjectForKey:@"accessToken"];
         self.secret = [coder decodeObjectForKey:@"secret"];
         self.accountID = [coder decodeObjectForKey:@"accountID"];
+        self.expire = [coder decodeObjectForKey:@"expire"];
     }
     return self;
 }
@@ -37,5 +54,6 @@
     [coder encodeObject:self.accessToken forKey:@"accessToken"];
     [coder encodeObject:self.secret forKey:@"secret"];
     [coder encodeObject:self.accountID forKey:@"accountID"];
+    [coder encodeObject:self.expire forKey:@"expire"];
 }
 @end

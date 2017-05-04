@@ -15,5 +15,8 @@
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NSString *secret;
 @property (strong, nonatomic) NSString *accountID;
+@property (strong, nonatomic) NSDate *expire;
+
+- (instancetype)initWithToken: (NSString *) accessToken secret:(NSString *) secret accountID:(NSString *) accountID expire: (NSString *) expire;
 
 @end

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, PGWatermarkEmbedderError) {
     PGWatermarkEmbedderErrorInputsError,
     PGWatermarkEmbedderErrorWatermarkingImage,
     PGWatermarkEmbedderErrorWatermarkingImageNoInternet,
+    PGWatermarkEmbedderErrorInputsErrorAPIAuth,
     PGWatermarkEmbedderWatermarkingTimeout
 };
 
