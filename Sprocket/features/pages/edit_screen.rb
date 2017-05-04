@@ -70,8 +70,14 @@ class EditScreen < Calabash::IBase
         "* id:'1_turquoise_frame'" 
     end
 
-    def undo
+     def undo
         "* id:'ic_undo_24pt'"
+    end
+    def redo
+        "* id:'ic_redo_24pt'"
+    end
+    def check
+        "UIButton marked:'Save photo'"
     end
 
     def navigate

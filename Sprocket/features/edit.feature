@@ -14,7 +14,9 @@ Scenario: Verify Edit screen
     Then I should see "Text" option
     Then I should see "Crop" option
     Then I should see "Close" mark
-    Then I should see "Check" mark
+    Then I should see "Save" mark
+    And I should see "Undo" mark
+    And I should see "Redo" mark
 
     
 @regression
