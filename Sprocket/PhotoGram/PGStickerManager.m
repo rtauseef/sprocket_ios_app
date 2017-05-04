@@ -31,17 +31,23 @@
 
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories
 {
-//    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-//                                                                              imageURL:self.cannesCategoryStickers[1].thumbnailURL
-//                                                                              stickers:[self cannesCategoryStickers]];
+    NSMutableArray *summerStickers = [NSMutableArray arrayWithArray:[self summerCategoryStickers]];
+    if ([NSLocale isChinese]) {
+        //Removing plane sticker from chinese because it contains english words on it.
+        [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
+    }
     
-//    cannesCategory.accessibilityLabel = @"Cannes Category";
-
     IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                               imageURL:self.summerCategoryStickers[1].thumbnailURL
-                                                                              stickers:[self summerCategoryStickers]];
+                                                                              stickers:summerStickers];
     
     summerCategory.accessibilityLabel = @"Summer Category";
+    
+    //    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+    //                                                                              imageURL:self.cannesCategoryStickers[1].thumbnailURL
+    //                                                                              stickers:[self cannesCategoryStickers]];
+    
+    //    cannesCategory.accessibilityLabel = @"Cannes Category";
     
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
@@ -90,7 +96,7 @@
     
     getWellCategory.accessibilityLabel = @"Get Well";
     
-    return @[/*cannesCategory,*/ graduationCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+    return @[graduationCategory, summerCategory, /*cannesCategory,*/ faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }
 
 #pragma mark - Stickers by category
