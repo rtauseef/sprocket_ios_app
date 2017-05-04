@@ -2,6 +2,7 @@ Feature: Verify Edit screen
   As a user
   I want to verify Edit features.
 
+@smoke
 @done
 Scenario: Verify Edit screen
     Given I am on the "CameraRoll Preview " screen

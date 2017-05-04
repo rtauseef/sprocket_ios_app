@@ -51,7 +51,7 @@ Scenario Outline: Verify Text editor screen options
     | CameraRoll Preview |
 
 
-@DE4168
+@regression
 Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
