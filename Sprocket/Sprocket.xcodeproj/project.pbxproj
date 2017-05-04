@@ -1533,6 +1533,46 @@
 		829A7A9F1EBBB015005D4938 /* flower_glasses_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7A8B1EBBA2C6005D4938 /* flower_glasses_TN@2x.png */; };
 		829A7AA01EBBB015005D4938 /* flower_glasses_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7A8C1EBBA2C6005D4938 /* flower_glasses_TN@3x.png */; };
 		829A7AA11EBBB015005D4938 /* flower_glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7A8D1EBBA2C6005D4938 /* flower_glasses.png */; };
+		829A7AB71EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA31EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png */; };
+		829A7AB81EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA31EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png */; };
+		829A7AB91EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA41EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png */; };
+		829A7ABA1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA41EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png */; };
+		829A7ABB1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA51EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png */; };
+		829A7ABC1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA51EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png */; };
+		829A7ABD1EBBC49E005D4938 /* #ReinventMemories_sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA61EBBC49E005D4938 /* #ReinventMemories_sticker.png */; };
+		829A7ABE1EBBC49E005D4938 /* #ReinventMemories_sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA61EBBC49E005D4938 /* #ReinventMemories_sticker.png */; };
+		829A7ABF1EBBC49E005D4938 /* Cannes_logo_white_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA71EBBC49E005D4938 /* Cannes_logo_white_TN.png */; };
+		829A7AC01EBBC49E005D4938 /* Cannes_logo_white_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA71EBBC49E005D4938 /* Cannes_logo_white_TN.png */; };
+		829A7AC11EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA81EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png */; };
+		829A7AC21EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA81EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png */; };
+		829A7AC31EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA91EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png */; };
+		829A7AC41EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AA91EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png */; };
+		829A7AC51EBBC49E005D4938 /* Cannes_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAA1EBBC49E005D4938 /* Cannes_logo_white.png */; };
+		829A7AC61EBBC49E005D4938 /* Cannes_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAA1EBBC49E005D4938 /* Cannes_logo_white.png */; };
+		829A7AC71EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png */; };
+		829A7AC81EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png */; };
+		829A7AC91EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAC1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png */; };
+		829A7ACA1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAC1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png */; };
+		829A7ACB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAD1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png */; };
+		829A7ACC1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAD1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png */; };
+		829A7ACD1EBBC49E005D4938 /* ChainSmokers_sticker_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAE1EBBC49E005D4938 /* ChainSmokers_sticker_2.png */; };
+		829A7ACE1EBBC49E005D4938 /* ChainSmokers_sticker_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAE1EBBC49E005D4938 /* ChainSmokers_sticker_2.png */; };
+		829A7ACF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png */; };
+		829A7AD01EBBC49E005D4938 /* ChainSmokers_sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AAF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png */; };
+		829A7AD11EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB01EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png */; };
+		829A7AD21EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB01EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png */; };
+		829A7AD31EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB11EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png */; };
+		829A7AD41EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB11EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png */; };
+		829A7AD51EBBC49E005D4938 /* ChainSmokers_sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB21EBBC49E005D4938 /* ChainSmokers_sticker.png */; };
+		829A7AD61EBBC49E005D4938 /* ChainSmokers_sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB21EBBC49E005D4938 /* ChainSmokers_sticker.png */; };
+		829A7AD71EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB31EBBC49E005D4938 /* HP_white-sticker_TN.png */; };
+		829A7AD81EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB31EBBC49E005D4938 /* HP_white-sticker_TN.png */; };
+		829A7AD91EBBC49E005D4938 /* HP_white-sticker_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB41EBBC49E005D4938 /* HP_white-sticker_TN@2x.png */; };
+		829A7ADA1EBBC49E005D4938 /* HP_white-sticker_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB41EBBC49E005D4938 /* HP_white-sticker_TN@2x.png */; };
+		829A7ADB1EBBC49E005D4938 /* HP_white-sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */; };
+		829A7ADC1EBBC49E005D4938 /* HP_white-sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */; };
+		829A7ADD1EBBC49E005D4938 /* HP_white-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */; };
+		829A7ADE1EBBC49E005D4938 /* HP_white-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */; };
 		829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */; };
@@ -3209,6 +3249,26 @@
 		829A7A931EBBB009005D4938 /* floating_flowers_2_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "floating_flowers_2_TN@2x.png"; path = "Resources/Images/Stickers/Summer/floating_flowers_2_TN@2x.png"; sourceTree = "<group>"; };
 		829A7A941EBBB009005D4938 /* floating_flowers_2_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "floating_flowers_2_TN@3x.png"; path = "Resources/Images/Stickers/Summer/floating_flowers_2_TN@3x.png"; sourceTree = "<group>"; };
 		829A7A951EBBB009005D4938 /* floating_flowers_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = floating_flowers_2.png; path = Resources/Images/Stickers/Summer/floating_flowers_2.png; sourceTree = "<group>"; };
+		829A7AA31EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "#ReinventMemories_sticker_TN.png"; path = "Resources/Images/Stickers/Cannes/#ReinventMemories_sticker_TN.png"; sourceTree = "<group>"; };
+		829A7AA41EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "#ReinventMemories_sticker_TN@2x.png"; path = "Resources/Images/Stickers/Cannes/#ReinventMemories_sticker_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AA51EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "#ReinventMemories_sticker_TN@3x.png"; path = "Resources/Images/Stickers/Cannes/#ReinventMemories_sticker_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AA61EBBC49E005D4938 /* #ReinventMemories_sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "#ReinventMemories_sticker.png"; path = "Resources/Images/Stickers/Cannes/#ReinventMemories_sticker.png"; sourceTree = "<group>"; };
+		829A7AA71EBBC49E005D4938 /* Cannes_logo_white_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cannes_logo_white_TN.png; path = Resources/Images/Stickers/Cannes/Cannes_logo_white_TN.png; sourceTree = "<group>"; };
+		829A7AA81EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cannes_logo_white_TN@2x.png"; path = "Resources/Images/Stickers/Cannes/Cannes_logo_white_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AA91EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cannes_logo_white_TN@3x.png"; path = "Resources/Images/Stickers/Cannes/Cannes_logo_white_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AAA1EBBC49E005D4938 /* Cannes_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cannes_logo_white.png; path = Resources/Images/Stickers/Cannes/Cannes_logo_white.png; sourceTree = "<group>"; };
+		829A7AAB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChainSmokers_sticker_2_TN.png; path = Resources/Images/Stickers/Cannes/ChainSmokers_sticker_2_TN.png; sourceTree = "<group>"; };
+		829A7AAC1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ChainSmokers_sticker_2_TN@2x.png"; path = "Resources/Images/Stickers/Cannes/ChainSmokers_sticker_2_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AAD1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ChainSmokers_sticker_2_TN@3x.png"; path = "Resources/Images/Stickers/Cannes/ChainSmokers_sticker_2_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AAE1EBBC49E005D4938 /* ChainSmokers_sticker_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChainSmokers_sticker_2.png; path = Resources/Images/Stickers/Cannes/ChainSmokers_sticker_2.png; sourceTree = "<group>"; };
+		829A7AAF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChainSmokers_sticker_TN.png; path = Resources/Images/Stickers/Cannes/ChainSmokers_sticker_TN.png; sourceTree = "<group>"; };
+		829A7AB01EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ChainSmokers_sticker_TN@2x.png"; path = "Resources/Images/Stickers/Cannes/ChainSmokers_sticker_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AB11EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ChainSmokers_sticker_TN@3x.png"; path = "Resources/Images/Stickers/Cannes/ChainSmokers_sticker_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AB21EBBC49E005D4938 /* ChainSmokers_sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChainSmokers_sticker.png; path = Resources/Images/Stickers/Cannes/ChainSmokers_sticker.png; sourceTree = "<group>"; };
+		829A7AB31EBBC49E005D4938 /* HP_white-sticker_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker_TN.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker_TN.png"; sourceTree = "<group>"; };
+		829A7AB41EBBC49E005D4938 /* HP_white-sticker_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker_TN@2x.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker_TN@3x.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker.png"; sourceTree = "<group>"; };
 		829E02851DDA64C200B025C5 /* PGSocialSourcesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesMenuViewController.h; sourceTree = "<group>"; };
 		829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesMenuViewController.m; sourceTree = "<group>"; };
 		829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuViewController.h; sourceTree = "<group>"; };
@@ -4536,6 +4596,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				829A7AA21EBBC485005D4938 /* Cannes */,
 				829A79941EBB8E5A005D4938 /* Summer */,
 				82A11E421E5FB9D400E7F8FC /* StandardUS */,
 				924A6FD81DF5EB9A009A0FB1 /* Chinese */,
@@ -4642,6 +4703,33 @@
 				829A79E51EBB8E7E005D4938 /* water_bubbles.png */,
 			);
 			name = Summer;
+			sourceTree = "<group>";
+		};
+		829A7AA21EBBC485005D4938 /* Cannes */ = {
+			isa = PBXGroup;
+			children = (
+				829A7AA31EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png */,
+				829A7AA41EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png */,
+				829A7AA51EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png */,
+				829A7AA61EBBC49E005D4938 /* #ReinventMemories_sticker.png */,
+				829A7AA71EBBC49E005D4938 /* Cannes_logo_white_TN.png */,
+				829A7AA81EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png */,
+				829A7AA91EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png */,
+				829A7AAA1EBBC49E005D4938 /* Cannes_logo_white.png */,
+				829A7AAB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png */,
+				829A7AAC1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png */,
+				829A7AAD1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png */,
+				829A7AAE1EBBC49E005D4938 /* ChainSmokers_sticker_2.png */,
+				829A7AAF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png */,
+				829A7AB01EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png */,
+				829A7AB11EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png */,
+				829A7AB21EBBC49E005D4938 /* ChainSmokers_sticker.png */,
+				829A7AB31EBBC49E005D4938 /* HP_white-sticker_TN.png */,
+				829A7AB41EBBC49E005D4938 /* HP_white-sticker_TN@2x.png */,
+				829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */,
+				829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */,
+			);
+			name = Cannes;
 			sourceTree = "<group>";
 		};
 		829E028D1DDB8C4300B025C5 /* Menu */ = {
@@ -6023,10 +6111,12 @@
 				8212BC181EA92A26009E66EC /* ribbon_TN@2x.png in Resources */,
 				82A11D231E5FB93B00E7F8FC /* cloud_sad_TN@2x.png in Resources */,
 				8212BF231EA93616009E66EC /* Pie_TN@3x.png in Resources */,
+				829A7AB71EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png in Resources */,
 				8212BDD11EA93616009E66EC /* Cocoa_TN@2x.png in Resources */,
 				829A7A8F1EBBA2C6005D4938 /* flower_glasses_TN@2x.png in Resources */,
 				829A7A201EBB8E7E005D4938 /* lei_TN@2x.png in Resources */,
 				826BEB1F1E85BEAD000BE3FA /* PinkSpraypaintFrame_TN.png in Resources */,
+				829A7ACF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png in Resources */,
 				82A11CEF1E5FB93B00E7F8FC /* cat_grumble.png in Resources */,
 				8212BBA81EA92A26009E66EC /* confetti_TN@2x.png in Resources */,
 				8212BDEB1EA93616009E66EC /* devilhorns_TN@3x.png in Resources */,
@@ -6041,6 +6131,7 @@
 				8212BBE81EA92A26009E66EC /* necktie_graduation_TN@2x.png in Resources */,
 				82E3DAC41E82EEED0008F600 /* soda_straw_TN@3x.png in Resources */,
 				82A11D211E5FB93B00E7F8FC /* cloud_sad_TN.png in Resources */,
+				829A7AC71EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png in Resources */,
 				82E3D9E01E82EEED0008F600 /* feather2_TN.png in Resources */,
 				8212BD9F1EA93615009E66EC /* cake_TN.png in Resources */,
 				8212BB741EA92A25009E66EC /* g_balloons.png in Resources */,
@@ -6057,8 +6148,10 @@
 				8212BDB91EA93616009E66EC /* cat_face_TN@2x.png in Resources */,
 				82A11D8B1E5FB93B00E7F8FC /* thumbs-up_TN@2x.png in Resources */,
 				8212BEF31EA93616009E66EC /* Mustache-dark_TN@2x.png in Resources */,
+				829A7ADB1EBBC49E005D4938 /* HP_white-sticker_TN@3x.png in Resources */,
 				8212BE931EA93616009E66EC /* kleenex_TN@3x.png in Resources */,
 				829A7A1E1EBB8E7E005D4938 /* lei_TN.png in Resources */,
+				829A7AD51EBBC49E005D4938 /* ChainSmokers_sticker.png in Resources */,
 				8212BF391EA93616009E66EC /* plane_TN@2x.png in Resources */,
 				82A11CEB1E5FB93B00E7F8FC /* cat_grumble_TN@2x.png in Resources */,
 				829A7A121EBB8E7E005D4938 /* ice_cream_cone_TN@3x.png in Resources */,
@@ -6104,11 +6197,13 @@
 				8212BF5B1EA93616009E66EC /* scarycat_TN@3x.png in Resources */,
 				8212BDBD1EA93616009E66EC /* cat_face.png in Resources */,
 				826BEAEB1E85BEAD000BE3FA /* DotsOverlayFrame_TN@3x.png in Resources */,
+				829A7ABB1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png in Resources */,
 				8212BE771EA93616009E66EC /* hibiscus_TN.png in Resources */,
 				829A7A581EBB8E7E005D4938 /* radio_TN@2x.png in Resources */,
 				8212BEC71EA93616009E66EC /* measles_TN.png in Resources */,
 				8212BD931EA93615009E66EC /* bird_TN@3x.png in Resources */,
 				82E3DADA1E82EEED0008F600 /* sun_face_TN@2x.png in Resources */,
+				829A7ABF1EBBC49E005D4938 /* Cannes_logo_white_TN.png in Resources */,
 				8212BC141EA92A26009E66EC /* ribbon_graduation.png in Resources */,
 				E39EF27819B648E500AAB884 /* CoveredByYourGrace.ttf in Resources */,
 				82A11D811E5FB93B00E7F8FC /* taco2_TN.png in Resources */,
@@ -6149,6 +6244,7 @@
 				8212BDCB1EA93616009E66EC /* cloud-sun_TN@3x.png in Resources */,
 				8212BEAF1EA93616009E66EC /* Lips_TN.png in Resources */,
 				826BEAE91E85BEAD000BE3FA /* DotsOverlayFrame_TN@2x.png in Resources */,
+				829A7ACD1EBBC49E005D4938 /* ChainSmokers_sticker_2.png in Resources */,
 				8212BF6D1EA93616009E66EC /* skull.png in Resources */,
 				82E3DACC1E82EEED0008F600 /* starhp_TN@3x.png in Resources */,
 				8212BE231EA93616009E66EC /* gift_TN@3x.png in Resources */,
@@ -6176,6 +6272,7 @@
 				8212BF751EA93616009E66EC /* sloth.png in Resources */,
 				8212BDB11EA93616009E66EC /* cat_body_TN@2x.png in Resources */,
 				82A11D691E5FB93B00E7F8FC /* schoolbus_TN.png in Resources */,
+				829A7ACB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png in Resources */,
 				8212BDBB1EA93616009E66EC /* cat_face_TN@3x.png in Resources */,
 				8212BBD41EA92A26009E66EC /* g_horn.png in Resources */,
 				826BEB5F1E85BEAD000BE3FA /* WhiteBarFrame_TN.png in Resources */,
@@ -6285,6 +6382,7 @@
 				82E3D9C01E82EEED0008F600 /* crown_TN.png in Resources */,
 				82E3D9F81E82EEED0008F600 /* hat_TN.png in Resources */,
 				82A11CBB1E5FB93B00E7F8FC /* 3d-diamond-1_TN@2x.png in Resources */,
+				829A7ABD1EBBC49E005D4938 /* #ReinventMemories_sticker.png in Resources */,
 				82E3DB9C1E82F1920008F600 /* Panda_TN@3x.png in Resources */,
 				82E3DA181E82EEED0008F600 /* heart_banner_TN.png in Resources */,
 				8212BDD51EA93616009E66EC /* Cocoa.png in Resources */,
@@ -6415,6 +6513,7 @@
 				829A7A481EBB8E7E005D4938 /* popsicle-2_TN@2x.png in Resources */,
 				8212BE691EA93616009E66EC /* heartPixel_TN@2x.png in Resources */,
 				8212BB821EA92A25009E66EC /* books_TN@3x.png in Resources */,
+				829A7ADD1EBBC49E005D4938 /* HP_white-sticker.png in Resources */,
 				82E3DB721E82EEEE0008F600 /* wave_TN@2x.png in Resources */,
 				829A79EA1EBB8E7E005D4938 /* dolphin_doodle_TN@3x.png in Resources */,
 				8212BBBC1EA92A26009E66EC /* diploma.png in Resources */,
@@ -6451,6 +6550,7 @@
 				829A7A441EBB8E7E005D4938 /* popsicle_TN@3x.png in Resources */,
 				8212BDAB1EA93615009E66EC /* candy_TN@3x.png in Resources */,
 				8212BDC11EA93616009E66EC /* cat_heart_eyes_TN@2x.png in Resources */,
+				829A7AC11EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png in Resources */,
 				826BEB191E85BEAD000BE3FA /* KraftFrame_TN@2x.png in Resources */,
 				8212BF931EA93616009E66EC /* Spring_Break_TN@3x.png in Resources */,
 				82A11CDF1E5FB93B00E7F8FC /* balloons2.png in Resources */,
@@ -6524,6 +6624,7 @@
 				82E3DB461E82EEEE0008F600 /* v_cat.png in Resources */,
 				8212BDF31EA93616009E66EC /* dog_TN@3x.png in Resources */,
 				82E3DB281E82EEEE0008F600 /* travel_car_bug_TN.png in Resources */,
+				829A7AC91EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png in Resources */,
 				82E3D9801E82EEEC0008F600 /* bow2_TN.png in Resources */,
 				826BEB471E85BEAD000BE3FA /* SloppyFrame_TN.png in Resources */,
 				8212BEA91EA93616009E66EC /* letter_TN@2x.png in Resources */,
@@ -6563,6 +6664,7 @@
 				8212BFBB1EA93616009E66EC /* Unicorn_TN@3x.png in Resources */,
 				82A11CC31E5FB93B00E7F8FC /* 3d-diamond-2_TN@2x.png in Resources */,
 				8212BD611EA93615009E66EC /* arrow_TN@2x.png in Resources */,
+				829A7AB91EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png in Resources */,
 				82E3D9781E82EEEC0008F600 /* birthdayHat_TN.png in Resources */,
 				8212BC0A1EA92A26009E66EC /* pencil_TN@3x.png in Resources */,
 				82E3DB4E1E82EEEE0008F600 /* v_cupcake.png in Resources */,
@@ -6594,6 +6696,7 @@
 				8212BF631EA93616009E66EC /* scuba_TN@3x.png in Resources */,
 				8212BE1D1EA93616009E66EC /* Fox.png in Resources */,
 				829A7A1A1EBB8E7E005D4938 /* kite_TN@3x.png in Resources */,
+				829A7AC51EBBC49E005D4938 /* Cannes_logo_white.png in Resources */,
 				82E3DA761E82EEED0008F600 /* lock.png in Resources */,
 				826BEB6B1E85BEAD000BE3FA /* WhiteFrame_TN@3x.png in Resources */,
 				8212BB921EA92A25009E66EC /* cap_graduation_TN@3x.png in Resources */,
@@ -6656,6 +6759,7 @@
 				82A11D0D1E5FB93B00E7F8FC /* cat-on-head_TN@3x.png in Resources */,
 				82E3DB6E1E82EEEE0008F600 /* volleyball.png in Resources */,
 				82E3D9DA1E82EEED0008F600 /* feather_TN@2x.png in Resources */,
+				829A7AD31EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png in Resources */,
 				8212BD951EA93615009E66EC /* bird.png in Resources */,
 				826BEB351E85BEAD000BE3FA /* PolkadotsFrame.png in Resources */,
 				8212BBCA1EA92A26009E66EC /* g_glasses_TN@3x.png in Resources */,
@@ -6699,6 +6803,7 @@
 				8212BEFB1EA93616009E66EC /* OMG_TN@3x.png in Resources */,
 				8212BF0B1EA93616009E66EC /* Owl_TN@3x.png in Resources */,
 				8212BC1C1EA92A26009E66EC /* ribbon.png in Resources */,
+				829A7AD11EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png in Resources */,
 				8212BC0E1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				82A11D351E5FB93B00E7F8FC /* fork_TN@3x.png in Resources */,
 				8212BF911EA93616009E66EC /* Spring_Break_TN@2x.png in Resources */,
@@ -6869,6 +6974,7 @@
 				8212BF4F1EA93616009E66EC /* rosebud_TN.png in Resources */,
 				82A11CD71E5FB93B00E7F8FC /* bacon_egg.png in Resources */,
 				8212BBCE1EA92A26009E66EC /* g_horn_TN.png in Resources */,
+				829A7AD71EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */,
 				82A11D731E5FB93B00E7F8FC /* skateboard_TN@2x.png in Resources */,
 				82E3DA001E82EEED0008F600 /* headband_TN.png in Resources */,
 				829A7A7E1EBB8E7E005D4938 /* water_bubbles_TN.png in Resources */,
@@ -6896,6 +7002,7 @@
 				8212BF3D1EA93616009E66EC /* plane.png in Resources */,
 				8212BC041EA92A26009E66EC /* pencil_graduation.png in Resources */,
 				82E3DB001E82EEED0008F600 /* swim_fins_TN.png in Resources */,
+				829A7AD91EBBC49E005D4938 /* HP_white-sticker_TN@2x.png in Resources */,
 				8212BF5D1EA93616009E66EC /* scarycat.png in Resources */,
 				82A11CD91E5FB93B00E7F8FC /* balloons2_TN.png in Resources */,
 				82E3DABA1E82EEED0008F600 /* smiley_TN@2x.png in Resources */,
@@ -6904,6 +7011,7 @@
 				826BEB151E85BEAD000BE3FA /* HeartsOverlayFrame.png in Resources */,
 				82A11CBD1E5FB93B00E7F8FC /* 3d-diamond-1_TN@3x.png in Resources */,
 				8212BF791EA93616009E66EC /* Soda_can_TN@2x.png in Resources */,
+				829A7AC31EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7020,6 +7128,7 @@
 				829A7A151EBB8E7E005D4938 /* ice_cream_cone.png in Resources */,
 				829A7A571EBB8E7E005D4938 /* radio_TN.png in Resources */,
 				8218507B1EAA9041000EDFD2 /* watermelon_TN.png in Resources */,
+				829A7AD61EBBC49E005D4938 /* ChainSmokers_sticker.png in Resources */,
 				8218510B1EAA9103000EDFD2 /* palmtree_TN.png in Resources */,
 				82184F891EAA9040000EDFD2 /* devilhorns_TN@3x.png in Resources */,
 				82184F631EAA9040000EDFD2 /* cake_TN.png in Resources */,
@@ -7034,6 +7143,7 @@
 				821850D01EAA9102000EDFD2 /* glasses_1_TN@2x.png in Resources */,
 				82184F581EAA9040000EDFD2 /* bird_envelope_TN@2x.png in Resources */,
 				82E3DE611E831BD10008F600 /* cat-coffee.png in Resources */,
+				829A7AC61EBBC49E005D4938 /* Cannes_logo_white.png in Resources */,
 				821850B01EAA9102000EDFD2 /* catears_TN@2x.png in Resources */,
 				826BEB201E85BEAD000BE3FA /* PinkSpraypaintFrame_TN.png in Resources */,
 				821851591EAA9103000EDFD2 /* v_cat_TN@3x.png in Resources */,
@@ -7071,6 +7181,7 @@
 				82184FA21EAA9040000EDFD2 /* Football.png in Resources */,
 				82E3DE781E831BD10008F600 /* doughnut_TN@3x.png in Resources */,
 				8218508E1EAA9102000EDFD2 /* balloons.png in Resources */,
+				829A7ABA1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png in Resources */,
 				821850E51EAA9102000EDFD2 /* heart_banner_TN@3x.png in Resources */,
 				8218505F1EAA9040000EDFD2 /* spider_TN.png in Resources */,
 				82184FB61EAA9040000EDFD2 /* Glasses-blinds.png in Resources */,
@@ -7200,6 +7311,7 @@
 				8218516B1EAA9103000EDFD2 /* volleyball_TN.png in Resources */,
 				8212BB871EA92A25009E66EC /* bowtie_graduation_TN.png in Resources */,
 				82184F9C1EAA9040000EDFD2 /* Flowers2_TN.png in Resources */,
+				829A7ADE1EBBC49E005D4938 /* HP_white-sticker.png in Resources */,
 				821850AA1EAA9102000EDFD2 /* bunny_ears_flowers.png in Resources */,
 				821850C01EAA9102000EDFD2 /* crown_TN@2x.png in Resources */,
 				821850581EAA9040000EDFD2 /* Soda_can_TN@2x.png in Resources */,
@@ -7243,8 +7355,10 @@
 				8212BC191EA92A26009E66EC /* ribbon_TN@2x.png in Resources */,
 				82184FA41EAA9040000EDFD2 /* Fox_TN@2x.png in Resources */,
 				821850D81EAA9102000EDFD2 /* hat_TN@2x.png in Resources */,
+				829A7ACA1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png in Resources */,
 				821850901EAA9102000EDFD2 /* bbq_TN@2x.png in Resources */,
 				821851331EAA9103000EDFD2 /* surfboard_TN.png in Resources */,
+				829A7ADA1EBBC49E005D4938 /* HP_white-sticker_TN@2x.png in Resources */,
 				82184F471EAA9040000EDFD2 /* aviator-glasses-color_TN.png in Resources */,
 				829A7A3B1EBB8E7E005D4938 /* mermaid_tail_water.png in Resources */,
 				8212BB811EA92A25009E66EC /* books_TN@2x.png in Resources */,
@@ -7334,6 +7448,7 @@
 				829A79F31EBB8E7E005D4938 /* fan_TN@3x.png in Resources */,
 				826BEB281E85BEAD000BE3FA /* PinkTriangleFrame_TN.png in Resources */,
 				8212BBF71EA92A26009E66EC /* g_owl_TN.png in Resources */,
+				829A7AD41EBBC49E005D4938 /* ChainSmokers_sticker_TN@3x.png in Resources */,
 				82184FEA1EAA9040000EDFD2 /* leaves.png in Resources */,
 				8212BBC51EA92A26009E66EC /* flying_caps_graduation.png in Resources */,
 				82184F651EAA9040000EDFD2 /* cake_TN@3x.png in Resources */,
@@ -7416,6 +7531,7 @@
 				82184F951EAA9040000EDFD2 /* fist_TN@3x.png in Resources */,
 				821851051EAA9103000EDFD2 /* lock_TN@3x.png in Resources */,
 				82184FDA1EAA9040000EDFD2 /* horn.png in Resources */,
+				829A7ADC1EBBC49E005D4938 /* HP_white-sticker_TN@3x.png in Resources */,
 				821850741EAA9041000EDFD2 /* Turkey-leg_TN.png in Resources */,
 				826BEB041E85BEAD000BE3FA /* GradientFrame_TN@3x.png in Resources */,
 				82E3DE9C1E831BD10008F600 /* skateboard_TN@3x.png in Resources */,
@@ -7426,6 +7542,7 @@
 				829A7A4B1EBB8E7E005D4938 /* popsicle-2_TN@3x.png in Resources */,
 				826BEB241E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@3x.png in Resources */,
 				8212BC1D1EA92A26009E66EC /* ribbon.png in Resources */,
+				829A7AC81EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png in Resources */,
 				82E3DE381E831BC70008F600 /* glasses_blossom_TN@3x.png in Resources */,
 				82E3DE691E831BD10008F600 /* cat-on-head.png in Resources */,
 				8218500E1EAA9040000EDFD2 /* Mustache-brown.png in Resources */,
@@ -7551,6 +7668,7 @@
 				0818277ab6df516fce5454fa /* MeasurementArrowLeft@2x.png in Resources */,
 				82184FDF1EAA9040000EDFD2 /* kleenex_TN.png in Resources */,
 				821850051EAA9040000EDFD2 /* moon_TN@3x.png in Resources */,
+				829A7ABE1EBBC49E005D4938 /* #ReinventMemories_sticker.png in Resources */,
 				829A7A071EBB8E7E005D4938 /* floating_sloth_TN.png in Resources */,
 				8212BBCF1EA92A26009E66EC /* g_horn_TN.png in Resources */,
 				8218516D1EAA9103000EDFD2 /* volleyball_TN@3x.png in Resources */,
@@ -7566,6 +7684,7 @@
 				82184F731EAA9040000EDFD2 /* cat_heart_eyes_TN.png in Resources */,
 				821850EA1EAA9103000EDFD2 /* heart_crown.png in Resources */,
 				821850431EAA9040000EDFD2 /* rosebud_TN.png in Resources */,
+				829A7ACE1EBBC49E005D4938 /* ChainSmokers_sticker_2.png in Resources */,
 				821850D41EAA9102000EDFD2 /* glasses_TN@2x.png in Resources */,
 				8218509F1EAA9102000EDFD2 /* birthdayHat_TN.png in Resources */,
 				82184F4C1EAA9040000EDFD2 /* banner_TN@2x.png in Resources */,
@@ -7605,6 +7724,7 @@
 				82E3DE8E1E831BD10008F600 /* pizza_TN.png in Resources */,
 				82E3DEA21E831BD10008F600 /* taco2_TN.png in Resources */,
 				82184F8E1EAA9040000EDFD2 /* dog.png in Resources */,
+				829A7AB81EBBC49E005D4938 /* #ReinventMemories_sticker_TN.png in Resources */,
 				49230dfae2b8359e79122f24 /* MobilePrinting@2x.png in Resources */,
 				82184FAD1EAA9040000EDFD2 /* gift-dog_TN@3x.png in Resources */,
 				821851441EAA9103000EDFD2 /* tiara_TN@2x.png in Resources */,
@@ -7638,6 +7758,7 @@
 				82E3DE721E831BD10008F600 /* cloud_sad_TN.png in Resources */,
 				82184FE81EAA9040000EDFD2 /* leaves_TN@2x.png in Resources */,
 				829A7A9F1EBBB015005D4938 /* flower_glasses_TN@2x.png in Resources */,
+				829A7ABC1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@3x.png in Resources */,
 				821850521EAA9040000EDFD2 /* skull.png in Resources */,
 				821851431EAA9103000EDFD2 /* tiara_TN.png in Resources */,
 				8212BBC71EA92A26009E66EC /* g_glasses_TN.png in Resources */,
@@ -7655,6 +7776,7 @@
 				821850861EAA9102000EDFD2 /* airplane.png in Resources */,
 				821850C61EAA9102000EDFD2 /* diamond.png in Resources */,
 				82184FBB1EAA9040000EDFD2 /* heart_arrow_TN.png in Resources */,
+				829A7AC41EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png in Resources */,
 				829A7A451EBB8E7E005D4938 /* popsicle_TN@3x.png in Resources */,
 				82184FC21EAA9040000EDFD2 /* heart_balloons.png in Resources */,
 				829A7A5D1EBB8E7E005D4938 /* radio.png in Resources */,
@@ -7715,6 +7837,7 @@
 				821851181EAA9103000EDFD2 /* soda_straw_TN@2x.png in Resources */,
 				8212BC0F1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				8218509A1EAA9102000EDFD2 /* beachball.png in Resources */,
+				829A7ACC1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png in Resources */,
 				82184FEF1EAA9040000EDFD2 /* Lips_TN.png in Resources */,
 				82184FA01EAA9040000EDFD2 /* Football_TN@2x.png in Resources */,
 				8212BBD31EA92A26009E66EC /* g_horn_TN@3x.png in Resources */,
@@ -7738,6 +7861,7 @@
 				8212BBCB1EA92A26009E66EC /* g_glasses_TN@3x.png in Resources */,
 				8218502B1EAA9040000EDFD2 /* pig_TN.png in Resources */,
 				82184F7C1EAA9040000EDFD2 /* Cocoa_TN@2x.png in Resources */,
+				829A7AD21EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png in Resources */,
 				82E3DE981E831BD10008F600 /* schoolbus_TN@3x.png in Resources */,
 				8212BBBB1EA92A26009E66EC /* diploma_TN@3x.png in Resources */,
 				821851561EAA9103000EDFD2 /* unicorn_float.png in Resources */,
@@ -7790,6 +7914,8 @@
 				821851091EAA9103000EDFD2 /* monster_2_TN@3x.png in Resources */,
 				8218500C1EAA9040000EDFD2 /* Mustache-brown_TN@2x.png in Resources */,
 				826BEB261E85BEAD000BE3FA /* PinkSpraypaintFrame.png in Resources */,
+				829A7AC21EBBC49E005D4938 /* Cannes_logo_white_TN@2x.png in Resources */,
+				829A7AD01EBBC49E005D4938 /* ChainSmokers_sticker_TN.png in Resources */,
 				82E3DE491E831BD10008F600 /* alarm-clock.png in Resources */,
 				82184FF91EAA9040000EDFD2 /* love_monster_TN@3x.png in Resources */,
 				826BEAFE1E85BEAD000BE3FA /* FloralOverlayFrame.png in Resources */,
@@ -7869,6 +7995,7 @@
 				821851031EAA9103000EDFD2 /* lock_TN.png in Resources */,
 				821850061EAA9040000EDFD2 /* moon.png in Resources */,
 				8212BBF31EA92A26009E66EC /* nerd_glasses_TN@3x.png in Resources */,
+				829A7AD81EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */,
 				821850351EAA9040000EDFD2 /* plane_TN@3x.png in Resources */,
 				8212BB7B1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */,
 				826BEB781E85BEAD000BE3FA /* WhiteRoundedFrame_TN.png in Resources */,
@@ -7899,6 +8026,7 @@
 				82A489431EAFD0960017B072 /* stars_bunch_TN@3x.png in Resources */,
 				82184FE21EAA9040000EDFD2 /* kleenex.png in Resources */,
 				821851711EAA9103000EDFD2 /* xoxo_TN@3x.png in Resources */,
+				829A7AC01EBBC49E005D4938 /* Cannes_logo_white_TN.png in Resources */,
 				8218510A1EAA9103000EDFD2 /* monster_2.png in Resources */,
 				82184FF11EAA9040000EDFD2 /* Lips_TN@3x.png in Resources */,
 				8212BBCD1EA92A26009E66EC /* g_glasses.png in Resources */,

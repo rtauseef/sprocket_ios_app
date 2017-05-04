@@ -43,11 +43,12 @@
     
     summerCategory.accessibilityLabel = @"Summer Category";
     
-    //    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-    //                                                                              imageURL:self.cannesCategoryStickers[1].thumbnailURL
-    //                                                                              stickers:[self cannesCategoryStickers]];
-    
-    //    cannesCategory.accessibilityLabel = @"Cannes Category";
+    IMGLYSticker *cannnesIcon = [[PGStickerItem alloc] initWithName:@"Cannes Icon" imageName:@"Cannes_logo_white" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker;
+    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                              imageURL:cannnesIcon.thumbnailURL
+                                                                              stickers:[self cannesCategoryStickers]];
+
+    cannesCategory.accessibilityLabel = @"Cannes Category";
     
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
@@ -96,7 +97,7 @@
     
     getWellCategory.accessibilityLabel = @"Get Well";
     
-    return @[graduationCategory, summerCategory, /*cannesCategory,*/ faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+    return @[graduationCategory, summerCategory, cannesCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }
 
 #pragma mark - Stickers by category
@@ -104,6 +105,9 @@
 - (NSArray<IMGLYSticker *> *)cannesCategoryStickers
 {
     return @[
+             [[PGStickerItem alloc] initWithName:@"Chainsmokers" imageName:@"ChainSmokers_sticker" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Chainsmokers 2" imageName:@"ChainSmokers_sticker_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"HP White" imageName:@"HP_white-sticker" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              ];
 }
 
