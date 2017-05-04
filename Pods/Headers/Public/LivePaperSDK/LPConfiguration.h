@@ -1,0 +1,1 @@
+../../../LivePaperSDK/LivePaperSDK/LivePaperSDK/Classes/Configuration/LPConfiguration.h

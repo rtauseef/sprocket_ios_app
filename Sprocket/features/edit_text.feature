@@ -2,8 +2,6 @@ Feature: Verify Text Edit screen
   As a user
   I want to verify Edit text features.
 
-  
-@reset
 @done
 Scenario Outline: Verify 'Text' option
     Given I am on the "<social_media_screen_name>" screen
@@ -13,6 +11,7 @@ Scenario Outline: Verify 'Text' option
     Then I should see the "TextEdit" screen
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I tap "Save" mark
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
@@ -22,10 +21,8 @@ Scenario Outline: Verify 'Text' option
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-  #  | Flickr Preview     |
     | CameraRoll Preview |
 
-@reset
 @done
 Scenario: Verify text edit screen navigation
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
@@ -33,7 +30,6 @@ Scenario: Verify text edit screen navigation
     Then I tap "Cancel" mark
     Then I should see the "Edit" screen
 
-@reset
 @regression
 Scenario Outline: Verify Text editor screen options
     Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
@@ -54,33 +50,36 @@ Scenario Outline: Verify Text editor screen options
     | Flickr Preview     |
     | CameraRoll Preview |
 
-@reset
+
 @DE4168
 Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I tap "Close" mark
     Then I should see the "Edit" screen
-    And I should not see the text
+    And I should see the photo with the "text"
     
-@reset
+
 @regression
 Scenario: Verify text deletion option
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I touch "Delete"
     And I should not see the text
 
-@reset
+
 @done
 Scenario: Verify font
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Font" 
     #And I select "Avenir"
@@ -90,7 +89,7 @@ Scenario: Verify font
     #Then I should see the text with selected "Font"
     Then I should see the photo with the "font_2" font
     
-@reset  
+  
 @regression
 Scenario: Verify font list
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
@@ -99,34 +98,30 @@ Scenario: Verify font list
     And I should see the photo with the "text"
     Then I select "Font"
     Then I should see the following "Fonts" in the screen:
-    | Helvetica  |
-    | Typewriter | 
-    | Avenir     |
-    | Chalkboard |
-    | Arial      |
-    | Kohinoor   |
-    | Liberator  |
-    | Muncie     |
-    | Lincoln    |
-    | Airship    |
-    | Arvil      |
-    | Bender     |
-    | Blanch     |
-    | Cubano     |
-    | Franchise  |
-    | Geared     |
-    | Governor   |
-    | Haymaker   |
-    | Homestead  |
-    | Maven Pro  |
-    | Mensch     |
-    | Sullivan   |
-    | Tommaso    |
-    | Valencia   |
-    | Vevey      |
+    
+    | Aleo                | 
+    | BERNIER Regular     |
+    | Blogger Sans        |
+    | Cheque              |
+    | Fira Sans           |
+    | Gagalin             |
+    | Hagin Caps Thin     |
+    | Panton              |
+    | Panton              |
+    | Perfograma          |
+    | Summer Font         |
+    | American Typewriter |
+    | Baskerville         |
+    | Bodoni 72           |
+    | Bradley Hand        |
+    | Chalkboard SE       |
+    | DIN Alternate       |
+    | Helvetica Neue      |
+    | Noteworthy          |
+    | Snell Roundhand     |
+    | Thonburi            |
     
     
-@reset  
 @regression
 Scenario: Verify all the fonts are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
@@ -136,12 +131,12 @@ Scenario: Verify all the fonts are applied successfully
     Then I select "Font"
     Then I verify that all the "fonts" are applied successfully
 
-@reset
 @done
 Scenario: Verify text color
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color" 
     And I select "Blue"
@@ -149,13 +144,13 @@ Scenario: Verify text color
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Color"
-    
-@reset  
+      
 @regression
 Scenario: Verify color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color" 
     Then I should see the following "Colors" in the screen:
@@ -174,19 +169,17 @@ Scenario: Verify color list
     | Olive      |
     | Green      |
     | Aquamarin  |
-
-@reset  
+  
 @TA17012
 Scenario: Verify all the colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I tap "Add text" mark
+    Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color"
     Then I verify that all the "colors" are applied successfully
 
-
-@reset
 @done
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -199,8 +192,7 @@ Scenario: Verify text background
     Then I tap "Save" mark
     Then I wait for some seconds
     Then I should see the text with selected "Background Color"
-    
-@reset  
+      
 @regression
 Scenario: Verify background color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
@@ -224,9 +216,7 @@ Scenario: Verify background color list
     | Olive      |
     | Green      |
     | Aquamarin  |
-
-   
-@reset  
+  
 @done
 Scenario: Verify all the background colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 

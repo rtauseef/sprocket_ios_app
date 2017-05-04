@@ -61,10 +61,13 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
+  - HPLinkUtils (0.8.0)
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
   - iCarousel (1.8)
+  - LivePaperSDK (2.0.0):
+    - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
   - UrbanAirship-iOS-SDK (8.3.0)
@@ -75,6 +78,7 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK (= 3.12)
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - iCarousel (= 1.8)
+  - LivePaperSDK
   - MobilePrintSDK (from `https://github.com/IPGPTP/ios-print-sdk.git`, branch `bluetooth`)
   - TTTAttributedLabel (= 1.10.1)
   - UrbanAirship-iOS-SDK
@@ -108,12 +112,14 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
   HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
+  LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 5d6971729f19d3ec4a4d03d17c5a1e7f458cbaad
 
-PODFILE CHECKSUM: 3bece028784587831a77d0e22d4f2a0fa4022c10
+PODFILE CHECKSUM: cad0313086fdcfe66b57e86b7658d2d390e24197
 
 COCOAPODS: 1.2.1

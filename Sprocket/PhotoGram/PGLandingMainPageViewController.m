@@ -28,6 +28,7 @@
 #import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
+#import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
 
@@ -48,6 +49,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *instagramButton;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *googleButton;
 @property (weak, nonatomic) IBOutlet UIButton *flickrButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
 @property (weak, nonatomic) IBOutlet PGSocialSourcesCircleView *socialSourcesCircleView;
@@ -260,6 +262,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.termsLabel.userInteractionEnabled = NO;
         self.instagramButton.userInteractionEnabled = NO;
         self.facebookButton.userInteractionEnabled = NO;
+        self.googleButton.userInteractionEnabled = NO;
         self.flickrButton.userInteractionEnabled = NO;
         self.cameraRollButton.userInteractionEnabled = NO;
         self.socialSourcesCircleView.userInteractionEnabled = NO;
@@ -273,6 +276,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.termsLabel.userInteractionEnabled = YES;
         self.instagramButton.userInteractionEnabled = YES;
         self.facebookButton.userInteractionEnabled = YES;
+        self.googleButton.userInteractionEnabled = YES;
         self.flickrButton.userInteractionEnabled = YES;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
@@ -310,6 +314,11 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 }
 
 - (IBAction)flickrTapped:(id)sender
+{
+    [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
+}
+
+- (IBAction)googleTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypeGoogle includeLogin:NO];
 }
@@ -373,6 +382,35 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button
+{
+    switch (type) {
+        case PGSocialSourceTypeFacebook:
+            [self facebookTapped:button];
+            break;
+        case PGSocialSourceTypeInstagram:
+            [self instagramTapped:button];
+            break;
+        case PGSocialSourceTypeFlickr:
+            [self flickrTapped:button];
+            break;
+        case PGSocialSourceTypeLocalPhotos:
+            [self cameraRollTapped:button];
+            break;
+        case PGSocialSourceTypeWeiBo:
+            NSLog(@"WeiBo tapped");
+            break;
+        case PGSocialSourceTypeGoogle:
+            NSLog(@"Google not supported for China");
+            break;
+        case PGSocialSourceTypeQzone:
+            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
+            break;
+        case PGSocialSourceTypePitu:
+            [self pituTapped:button];
+            break;
+    }
+}
 
 #pragma mark - MPBTPrintManagerDelegate
 
@@ -498,31 +536,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
 {
-    switch (socialSource.type) {
-        case PGSocialSourceTypeFacebook:
-            [self facebookTapped:button];
-            break;
-        case PGSocialSourceTypeInstagram:
-            [self instagramTapped:button];
-            break;
-        case PGSocialSourceTypeFlickr:
-            [self flickrTapped:button];
-            break;
-        case PGSocialSourceTypeLocalPhotos:
-            [self cameraRollTapped:button];
-            break;
-        case PGSocialSourceTypeWeiBo:
-            NSLog(@"WeiBo tapped");
-            break;
-        case PGSocialSourceTypeQzone:
-            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
-            break;
-        case PGSocialSourceTypePitu:
-            [self pituTapped:button];
-            break;
-    }
+    [self goToSocialSourcePage:socialSource.type sender:button];
 }
-
 
 #pragma mark - Reset user defaults
 

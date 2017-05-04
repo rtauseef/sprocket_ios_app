@@ -7,7 +7,7 @@ class StickerEditorScreen < Calabash::IBase
     end
 
     def title
-        "label marked:'STICKER'"
+        "label marked:'sticker-tool-screen'"
     end
     
     def close
@@ -15,7 +15,7 @@ class StickerEditorScreen < Calabash::IBase
     end
 
     def save
-       "UIButton marked:'Apply changes'" 
+       "UIButton marked:'sticker-tool-apply-btn'"
     end
     
     def selected_sticker
