@@ -2,7 +2,9 @@ Feature: Verify multiselect feature
   As a signed in user
   I should be able to select multiple images and verify different social media
 
-  @TA17668
+  @smoke
+  @done
+  @regression
   Scenario: Verify image multi select from camera Roll
     Given I am on the "CameraRoll Photo" screen
     And I touch "Select"
@@ -22,10 +24,11 @@ Feature: Verify multiselect feature
     And I should see "Download" button
     And I should see the count of images and checkmark circle in each page when swipe "left"
     And I should see the count of images and checkmark circle in each page when swipe "right"
-    
-  @TA17668
+
+  @done
+  @regression
   Scenario: Verify 10 images can be selected without app crash
-    Given I am on the "CameraRoll Photo" screen
+    Given I am on the "Instagram Photos" screen
     And I touch "Select"
     Then I should see the multiselect option enabled
     Then I select "10" photos
@@ -36,7 +39,8 @@ Feature: Verify multiselect feature
     And I should see the count of images and checkmark circle in each page when swipe "right"
     
     
-  @TA17668
+  @done
+  @regression
   Scenario: Verify multiselect with different social media
     Given I am on the "Instagram Photos" screen
     And I touch "Select"

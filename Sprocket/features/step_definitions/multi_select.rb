@@ -23,6 +23,7 @@ Then(/^I tap on the multi selected number$/) do
 end
 
 Then(/^I should see the count of images and checkmark circle in each page when swipe "(.*?)"$/) do |side|
+    sleep(WAIT_SCREENLOAD)
     if side == "left"
         i = 1
         while i < $number.to_i
