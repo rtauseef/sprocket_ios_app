@@ -102,6 +102,18 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     return hexOutput;
 }
 
+- (NSString *) getHMACSha256WithDataKey: (NSData *) key andMessage: (NSString *) message {
+    char *cKey = (char *) [key bytes];
+    const char *cData = [message cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    NSData *output = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
+    NSString *hexOutput = [self NSDataToHex:output];
+    
+    return hexOutput;
+}
+
 - (BOOL) validUser: (PGMetarUser *) user {
      if (!user.accessToken || !user.secret || !user.accountID || !user.expire) {
          return NO;
