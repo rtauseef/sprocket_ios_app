@@ -34,10 +34,15 @@
 //    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
 //                                                                              imageURL:self.cannesCategoryStickers[1].thumbnailURL
 //                                                                              stickers:[self cannesCategoryStickers]];
+    
+//    cannesCategory.accessibilityLabel = @"Cannes Category";
 
-//    IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-//                                                                              imageURL:self.summerCategoryStickers[1].thumbnailURL
-//                                                                              stickers:[self cannesCategoryStickers]];
+    IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                              imageURL:self.summerCategoryStickers[1].thumbnailURL
+                                                                              stickers:[self summerCategoryStickers]];
+    
+    summerCategory.accessibilityLabel = @"Summer Category";
+    
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self graduationCategoryStickers]];
@@ -85,7 +90,7 @@
     
     getWellCategory.accessibilityLabel = @"Get Well";
     
-    return @[/*cannesCategory,*/ graduationCategory,/*summerCategory,*/ faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+    return @[/*cannesCategory,*/ graduationCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }
 
 #pragma mark - Stickers by category
@@ -99,6 +104,57 @@
 - (NSArray<IMGLYSticker *> *)summerCategoryStickers
 {
     return @[
+             [[PGStickerItem alloc] initWithName:@"Flower Glasses" imageName:@"flower_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses Palmtree" imageName:@"summer_sunglasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sun Hat" imageName:@"sun_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Popsicle" imageName:@"popsicle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Watermelon" imageName:@"watermelon" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Pineapple" imageName:@"Pineapple" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Popsicle Green" imageName:@"popsicle-2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Ice Cream Cone" imageName:@"ice_cream_cone" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sun" imageName:@"sun" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mermaid Tail" imageName:@"mermaid_tail" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Hibiscus" imageName:@"hibiscus" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sweat" imageName:@"sweat_3" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Palm Tree 2" imageName:@"palm-tree-2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flamingo" imageName:@"flamingo" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Beachball 2" imageName:@"beachball-color" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Radio" imageName:@"radio" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Unicorn" imageName:@"Unicorn" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Floating Flowers 2" imageName:@"floating_flowers_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Visor" imageName:@"visor" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sunglasses Frogskin" imageName:@"sunglasses_frogskin" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Aviator Glasses" imageName:@"aviator_glasses" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Palm Tree" imageName:@"palmtree" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Wave" imageName:@"wave" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sun Face" imageName:@"sun_face" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Beach Umbrella" imageName:@"beach_umbrella" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Beachball" imageName:@"beachball" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Radio Doodle" imageName:@"radio_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Swim Fins" imageName:@"swim_fins" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Scuba Mask" imageName:@"scuba_mask" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Water Bubbles" imageName:@"water_bubbles" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Bike Cruiser" imageName:@"bike_cruiser" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Floating Sloth" imageName:@"floating_sloth" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Kite" imageName:@"kite" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sand Castle" imageName:@"sand_castle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flip Flops 2" imageName:@"flip_flops2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Plane" imageName:@"plane" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Fan Summer" imageName:@"fan" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Rainbow 2" imageName:@"rainbow_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Dolphin Doodle" imageName:@"dolphin_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Soda Straw" imageName:@"soda_straw" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mermaid Girl" imageName:@"mermaid_girl" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Surfboard" imageName:@"surfboard" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Unicorn Float" imageName:@"unicorn_float" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mermaid Tail Water" imageName:@"mermaid_tail_water" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"BBQ" imageName:@"bbq" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Sundae" imageName:@"sundae" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Ice Cream Tub" imageName:@"icecream_tub" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Volleyball" imageName:@"volleyball" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Travel Car Bug" imageName:@"travel_car_bug" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Travel Car Woody" imageName:@"travel_car_woody" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Trailer" imageName:@"trailer" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              ];
 }
 
