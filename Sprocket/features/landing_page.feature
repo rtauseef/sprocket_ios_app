@@ -24,6 +24,7 @@ Feature: Verify Welcome screen/Landing Page
     When I touch "Done" button
     Then I should see the "Landing" screen
 
+  @reset
   @done
   @smoke
 Scenario Outline: Open Social Source from  Landing screen

@@ -13,7 +13,7 @@ Scenario Outline: Verify 'Text' option
     Then I tap "Add text" mark
     Then I should see the "TextOptionEditor" screen
     And I tap "Save" mark
-    Then I should see the "Edit" screen
+    Then I am on the "Edit" screen
     And I should see the photo with the "text"
     Then I tap "Check" mark
     Then I should see the "<social_media_screen_name>" screen
@@ -51,7 +51,7 @@ Scenario Outline: Verify Text editor screen options
     | CameraRoll Preview |
 
 
-@DE4168
+@regression
 Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
