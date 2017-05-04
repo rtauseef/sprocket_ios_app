@@ -1573,6 +1573,30 @@
 		829A7ADC1EBBC49E005D4938 /* HP_white-sticker_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */; };
 		829A7ADD1EBBC49E005D4938 /* HP_white-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */; };
 		829A7ADE1EBBC49E005D4938 /* HP_white-sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */; };
+		829A7AEC1EBBC738005D4938 /* LOreal_iOS_1c_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE01EBBC738005D4938 /* LOreal_iOS_1c_TN.png */; };
+		829A7AED1EBBC738005D4938 /* LOreal_iOS_1c_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE01EBBC738005D4938 /* LOreal_iOS_1c_TN.png */; };
+		829A7AEE1EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE11EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png */; };
+		829A7AEF1EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE11EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png */; };
+		829A7AF01EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE21EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png */; };
+		829A7AF11EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE21EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png */; };
+		829A7AF21EBBC738005D4938 /* LOreal_iOS_1c.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE31EBBC738005D4938 /* LOreal_iOS_1c.png */; };
+		829A7AF31EBBC738005D4938 /* LOreal_iOS_1c.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE31EBBC738005D4938 /* LOreal_iOS_1c.png */; };
+		829A7AF41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png */; };
+		829A7AF51EBBC738005D4938 /* Nestle_iOS_Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png */; };
+		829A7AF61EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE51EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png */; };
+		829A7AF71EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE51EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png */; };
+		829A7AF81EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE61EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png */; };
+		829A7AF91EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE61EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png */; };
+		829A7AFA1EBBC738005D4938 /* Nestle_iOS_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE71EBBC738005D4938 /* Nestle_iOS_Frame.png */; };
+		829A7AFB1EBBC738005D4938 /* Nestle_iOS_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE71EBBC738005D4938 /* Nestle_iOS_Frame.png */; };
+		829A7AFC1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE81EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png */; };
+		829A7AFD1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE81EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png */; };
+		829A7AFE1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE91EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png */; };
+		829A7AFF1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AE91EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png */; };
+		829A7B001EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AEA1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png */; };
+		829A7B011EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AEA1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png */; };
+		829A7B021EBBC738005D4938 /* S_pellegrino_iOS_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AEB1EBBC738005D4938 /* S_pellegrino_iOS_Frame.png */; };
+		829A7B031EBBC738005D4938 /* S_pellegrino_iOS_Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 829A7AEB1EBBC738005D4938 /* S_pellegrino_iOS_Frame.png */; };
 		829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E028A1DDA868300B025C5 /* PGSideBarMenuViewController.m */; };
@@ -3269,6 +3293,18 @@
 		829A7AB41EBBC49E005D4938 /* HP_white-sticker_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker_TN@2x.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker_TN@2x.png"; sourceTree = "<group>"; };
 		829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker_TN@3x.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker_TN@3x.png"; sourceTree = "<group>"; };
 		829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HP_white-sticker.png"; path = "Resources/Images/Stickers/Cannes/HP_white-sticker.png"; sourceTree = "<group>"; };
+		829A7AE01EBBC738005D4938 /* LOreal_iOS_1c_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LOreal_iOS_1c_TN.png; path = Resources/Images/Frames/Cannes/LOreal_iOS_1c_TN.png; sourceTree = "<group>"; };
+		829A7AE11EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LOreal_iOS_1c_TN@2x.png"; path = "Resources/Images/Frames/Cannes/LOreal_iOS_1c_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AE21EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LOreal_iOS_1c_TN@3x.png"; path = "Resources/Images/Frames/Cannes/LOreal_iOS_1c_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AE31EBBC738005D4938 /* LOreal_iOS_1c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LOreal_iOS_1c.png; path = Resources/Images/Frames/Cannes/LOreal_iOS_1c.png; sourceTree = "<group>"; };
+		829A7AE41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nestle_iOS_Frame_TN.png; path = Resources/Images/Frames/Cannes/Nestle_iOS_Frame_TN.png; sourceTree = "<group>"; };
+		829A7AE51EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Nestle_iOS_Frame_TN@2x.png"; path = "Resources/Images/Frames/Cannes/Nestle_iOS_Frame_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AE61EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Nestle_iOS_Frame_TN@3x.png"; path = "Resources/Images/Frames/Cannes/Nestle_iOS_Frame_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AE71EBBC738005D4938 /* Nestle_iOS_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nestle_iOS_Frame.png; path = Resources/Images/Frames/Cannes/Nestle_iOS_Frame.png; sourceTree = "<group>"; };
+		829A7AE81EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = S_pellegrino_iOS_Frame_TN.png; path = Resources/Images/Frames/Cannes/S_pellegrino_iOS_Frame_TN.png; sourceTree = "<group>"; };
+		829A7AE91EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "S_pellegrino_iOS_Frame_TN@2x.png"; path = "Resources/Images/Frames/Cannes/S_pellegrino_iOS_Frame_TN@2x.png"; sourceTree = "<group>"; };
+		829A7AEA1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "S_pellegrino_iOS_Frame_TN@3x.png"; path = "Resources/Images/Frames/Cannes/S_pellegrino_iOS_Frame_TN@3x.png"; sourceTree = "<group>"; };
+		829A7AEB1EBBC738005D4938 /* S_pellegrino_iOS_Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = S_pellegrino_iOS_Frame.png; path = Resources/Images/Frames/Cannes/S_pellegrino_iOS_Frame.png; sourceTree = "<group>"; };
 		829E02851DDA64C200B025C5 /* PGSocialSourcesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesMenuViewController.h; sourceTree = "<group>"; };
 		829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSocialSourcesMenuViewController.m; sourceTree = "<group>"; };
 		829E02891DDA868300B025C5 /* PGSideBarMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuViewController.h; sourceTree = "<group>"; };
@@ -4509,6 +4545,7 @@
 		8236299D1D593D520019F024 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
+				829A7ADF1EBBC724005D4938 /* Cannes */,
 				826BEA7F1E85BEAC000BE3FA /* BlueWatercoloFrame_TN.png */,
 				826BEA801E85BEAC000BE3FA /* BlueWatercoloFrame_TN@2x.png */,
 				826BEA811E85BEAC000BE3FA /* BlueWatercoloFrame_TN@3x.png */,
@@ -4728,6 +4765,25 @@
 				829A7AB41EBBC49E005D4938 /* HP_white-sticker_TN@2x.png */,
 				829A7AB51EBBC49E005D4938 /* HP_white-sticker_TN@3x.png */,
 				829A7AB61EBBC49E005D4938 /* HP_white-sticker.png */,
+			);
+			name = Cannes;
+			sourceTree = "<group>";
+		};
+		829A7ADF1EBBC724005D4938 /* Cannes */ = {
+			isa = PBXGroup;
+			children = (
+				829A7AE01EBBC738005D4938 /* LOreal_iOS_1c_TN.png */,
+				829A7AE11EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png */,
+				829A7AE21EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png */,
+				829A7AE31EBBC738005D4938 /* LOreal_iOS_1c.png */,
+				829A7AE41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png */,
+				829A7AE51EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png */,
+				829A7AE61EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png */,
+				829A7AE71EBBC738005D4938 /* Nestle_iOS_Frame.png */,
+				829A7AE81EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png */,
+				829A7AE91EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png */,
+				829A7AEA1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png */,
+				829A7AEB1EBBC738005D4938 /* S_pellegrino_iOS_Frame.png */,
 			);
 			name = Cannes;
 			sourceTree = "<group>";
@@ -6031,6 +6087,7 @@
 				82A11CD51E5FB93B00E7F8FC /* bacon_egg_TN@3x.png in Resources */,
 				8212BB7A1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */,
 				82E3DB4A1E82EEEE0008F600 /* v_cupcake_TN@2x.png in Resources */,
+				829A7AF41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png in Resources */,
 				826BEB371E85BEAD000BE3FA /* RainbowFrame_TN.png in Resources */,
 				82A11CE91E5FB93B00E7F8FC /* cat_grumble_TN.png in Resources */,
 				82BFB00C1EAA6F9A00C579B8 /* rainbow_2_TN@3x.png in Resources */,
@@ -6148,6 +6205,7 @@
 				8212BDB91EA93616009E66EC /* cat_face_TN@2x.png in Resources */,
 				82A11D8B1E5FB93B00E7F8FC /* thumbs-up_TN@2x.png in Resources */,
 				8212BEF31EA93616009E66EC /* Mustache-dark_TN@2x.png in Resources */,
+				829A7AF81EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png in Resources */,
 				829A7ADB1EBBC49E005D4938 /* HP_white-sticker_TN@3x.png in Resources */,
 				8212BE931EA93616009E66EC /* kleenex_TN@3x.png in Resources */,
 				829A7A1E1EBB8E7E005D4938 /* lei_TN.png in Resources */,
@@ -6257,6 +6315,7 @@
 				82E3DB761E82EEEE0008F600 /* wave.png in Resources */,
 				829A7A7A1EBB8E7E005D4938 /* visor_TN@3x.png in Resources */,
 				8212BFB51EA93616009E66EC /* Turkey-leg_TN@3x.png in Resources */,
+				829A7AEE1EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png in Resources */,
 				82E3D9A41E82EEED0008F600 /* catears_TN@3x.png in Resources */,
 				8212BE811EA93616009E66EC /* horn_TN@2x.png in Resources */,
 				E34D50B1199AB9FE006D80E0 /* HPSimplified_It.ttf in Resources */,
@@ -6305,6 +6364,7 @@
 				82E3DB2A1E82EEEE0008F600 /* travel_car_bug_TN@2x.png in Resources */,
 				8212BBD61EA92A26009E66EC /* medal_graduation_TN.png in Resources */,
 				8212BF851EA93616009E66EC /* soda.png in Resources */,
+				829A7B021EBBC738005D4938 /* S_pellegrino_iOS_Frame.png in Resources */,
 				8212BEC51EA93616009E66EC /* love_monster.png in Resources */,
 				8212BEB51EA93616009E66EC /* Lips.png in Resources */,
 				82E3D9481E82EEEC0008F600 /* balloons_TN.png in Resources */,
@@ -6327,6 +6387,7 @@
 				8212BF9F1EA93616009E66EC /* sun_hat_TN.png in Resources */,
 				82E3DA021E82EEED0008F600 /* headband_TN@2x.png in Resources */,
 				829A7A5A1EBB8E7E005D4938 /* radio_TN@3x.png in Resources */,
+				829A7AF21EBBC738005D4938 /* LOreal_iOS_1c.png in Resources */,
 				826BEB591E85BEAD000BE3FA /* TurquoiseFrame_TN@2x.png in Resources */,
 				8212BE171EA93616009E66EC /* Fox_TN.png in Resources */,
 				82E3D9B41E82EEED0008F600 /* catwhiskers_TN@3x.png in Resources */,
@@ -6554,6 +6615,7 @@
 				826BEB191E85BEAD000BE3FA /* KraftFrame_TN@2x.png in Resources */,
 				8212BF931EA93616009E66EC /* Spring_Break_TN@3x.png in Resources */,
 				82A11CDF1E5FB93B00E7F8FC /* balloons2.png in Resources */,
+				829A7AFA1EBBC738005D4938 /* Nestle_iOS_Frame.png in Resources */,
 				8212BD711EA93615009E66EC /* banner_TN@2x.png in Resources */,
 				8212BD5D1EA93615009E66EC /* apple_angry.png in Resources */,
 				8212BE711EA93616009E66EC /* hedgehog_TN@2x.png in Resources */,
@@ -6677,6 +6739,7 @@
 				82E3D9621E82EEEC0008F600 /* beachball_TN@2x.png in Resources */,
 				82E3DB481E82EEEE0008F600 /* v_cupcake_TN.png in Resources */,
 				8212BBFE1EA92A26009E66EC /* pencil_graduation_TN.png in Resources */,
+				829A7B001EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png in Resources */,
 				8212BB7C1EA92A25009E66EC /* book_stack.png in Resources */,
 				8212BE671EA93616009E66EC /* heartPixel_TN.png in Resources */,
 				82E3D95E1E82EEEC0008F600 /* beach_umbrella.png in Resources */,
@@ -6687,6 +6750,7 @@
 				8212BD6F1EA93615009E66EC /* banner_TN.png in Resources */,
 				8212BF891EA93616009E66EC /* spider_TN@2x.png in Resources */,
 				82E3DAF81E82EEED0008F600 /* surfboard_TN.png in Resources */,
+				829A7AFE1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png in Resources */,
 				82E3DA461E82EEED0008F600 /* heartExpress.png in Resources */,
 				826BEB451E85BEAD000BE3FA /* RedFrame.png in Resources */,
 				82A11D591E5FB93B00E7F8FC /* pizza_TN.png in Resources */,
@@ -6768,6 +6832,7 @@
 				8212BBB61EA92A26009E66EC /* diploma_TN.png in Resources */,
 				82E3DB9E1E82F1920008F600 /* Panda.png in Resources */,
 				8212BF091EA93616009E66EC /* Owl_TN@2x.png in Resources */,
+				829A7AF61EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png in Resources */,
 				8212BF331EA93616009E66EC /* Pineapple_TN@3x.png in Resources */,
 				8212BE371EA93616009E66EC /* glasses_football_TN@3x.png in Resources */,
 				82A11D531E5FB93B00E7F8FC /* peace_TN@2x.png in Resources */,
@@ -6910,6 +6975,7 @@
 				82A11D391E5FB93B00E7F8FC /* Frappuccino_TN.png in Resources */,
 				82A11D871E5FB93B00E7F8FC /* taco2.png in Resources */,
 				829A7A0A1EBB8E7E005D4938 /* floating_sloth_TN@3x.png in Resources */,
+				829A7AEC1EBBC738005D4938 /* LOreal_iOS_1c_TN.png in Resources */,
 				2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */,
 				82E3D94E1E82EEEC0008F600 /* balloons.png in Resources */,
 				82BFB00E1EAA6F9A00C579B8 /* rainbow_2_TN.png in Resources */,
@@ -6963,6 +7029,7 @@
 				8212BBD21EA92A26009E66EC /* g_horn_TN@3x.png in Resources */,
 				82E3DB381E82EEEE0008F600 /* unicorn_float_TN.png in Resources */,
 				82E3DAEC1E82EEED0008F600 /* sunglasses_frogskin_TN@3x.png in Resources */,
+				829A7AFC1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png in Resources */,
 				8212BE2F1EA93616009E66EC /* Glasses-blinds.png in Resources */,
 				8212BF491EA93616009E66EC /* rabbit_TN@2x.png in Resources */,
 				82A4893C1EAFD06F0017B072 /* stars_bunch_TN.png in Resources */,
@@ -6992,6 +7059,7 @@
 				82E3D9BE1E82EEED0008F600 /* conversation_heart.png in Resources */,
 				82A11D611E5FB93B00E7F8FC /* rabbit-mask_TN.png in Resources */,
 				8212BF271EA93616009E66EC /* pig_TN.png in Resources */,
+				829A7AF01EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png in Resources */,
 				8212BE1F1EA93616009E66EC /* gift_TN.png in Resources */,
 				65E671E91A78267A009A12F3 /* Settings.bundle in Resources */,
 				82E3DB4C1E82EEEE0008F600 /* v_cupcake_TN@3x.png in Resources */,
@@ -7089,6 +7157,7 @@
 				826BEB741E85BEAD000BE3FA /* WhiteFullFrame_TN@3x.png in Resources */,
 				821850121EAA9040000EDFD2 /* Mustache-dark.png in Resources */,
 				8212BBBD1EA92A26009E66EC /* diploma.png in Resources */,
+				829A7AF91EBBC738005D4938 /* Nestle_iOS_Frame_TN@3x.png in Resources */,
 				8212BBF11EA92A26009E66EC /* nerd_glasses_TN@2x.png in Resources */,
 				82E3DE821E831BD10008F600 /* ketchup-hotdog_TN.png in Resources */,
 				82E3DE8D1E831BD10008F600 /* peace.png in Resources */,
@@ -7103,6 +7172,7 @@
 				82E3DE601E831BD10008F600 /* cat-coffee_TN@3x.png in Resources */,
 				094d42be235587fcd97970dd /* Sprocket.gif in Resources */,
 				826BEAFA1E85BEAD000BE3FA /* FloralOverlayFrame_TN@2x.png in Resources */,
+				829A7AEF1EBBC738005D4938 /* LOreal_iOS_1c_TN@2x.png in Resources */,
 				821851611EAA9103000EDFD2 /* v_heart_TN@3x.png in Resources */,
 				82E3DEA01E831BD10008F600 /* spoon_TN@3x.png in Resources */,
 				821850C31EAA9102000EDFD2 /* diamond_TN.png in Resources */,
@@ -7180,6 +7250,7 @@
 				8218500A1EAA9040000EDFD2 /* Mushrooms-b_TN@3x.png in Resources */,
 				82184FA21EAA9040000EDFD2 /* Football.png in Resources */,
 				82E3DE781E831BD10008F600 /* doughnut_TN@3x.png in Resources */,
+				829A7AF51EBBC738005D4938 /* Nestle_iOS_Frame_TN.png in Resources */,
 				8218508E1EAA9102000EDFD2 /* balloons.png in Resources */,
 				829A7ABA1EBBC49E005D4938 /* #ReinventMemories_sticker_TN@2x.png in Resources */,
 				821850E51EAA9102000EDFD2 /* heart_banner_TN@3x.png in Resources */,
@@ -7216,6 +7287,7 @@
 				82184F5E1EAA9040000EDFD2 /* bird.png in Resources */,
 				82184FE71EAA9040000EDFD2 /* leaves_TN.png in Resources */,
 				829A7A311EBB8E7E005D4938 /* mermaid_tail_TN.png in Resources */,
+				829A7AFF1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@2x.png in Resources */,
 				821850DE1EAA9102000EDFD2 /* headband.png in Resources */,
 				821851101EAA9103000EDFD2 /* scuba_mask_TN@2x.png in Resources */,
 				82184FAE1EAA9040000EDFD2 /* gift-dog.png in Resources */,
@@ -7290,6 +7362,7 @@
 				91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */,
 				3c5e32682184b958db2c4972 /* HPSimplified_Lt.ttf in Resources */,
 				82E3DE851E831BD10008F600 /* ketchup-hotdog.png in Resources */,
+				829A7AFB1EBBC738005D4938 /* Nestle_iOS_Frame.png in Resources */,
 				821850CD1EAA9102000EDFD2 /* feather2_TN@3x.png in Resources */,
 				821851291EAA9103000EDFD2 /* sundae_TN@3x.png in Resources */,
 				82E3DE371E831BC70008F600 /* glasses_blossom_TN@2x.png in Resources */,
@@ -7454,6 +7527,7 @@
 				82184F651EAA9040000EDFD2 /* cake_TN@3x.png in Resources */,
 				82184FBC1EAA9040000EDFD2 /* heart_arrow_TN@2x.png in Resources */,
 				821850EC1EAA9103000EDFD2 /* heart-garland_TN@2x.png in Resources */,
+				829A7AF11EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png in Resources */,
 				82E3DE431E831BD10008F600 /* 3d-diamond-2_TN@2x.png in Resources */,
 				826BEB0E1E85BEAD000BE3FA /* GreyShadowFrame.png in Resources */,
 				82184F6C1EAA9040000EDFD2 /* cat_body_TN@2x.png in Resources */,
@@ -7547,6 +7621,7 @@
 				82E3DE691E831BD10008F600 /* cat-on-head.png in Resources */,
 				8218500E1EAA9040000EDFD2 /* Mustache-brown.png in Resources */,
 				821851551EAA9103000EDFD2 /* unicorn_float_TN@3x.png in Resources */,
+				829A7AF71EBBC738005D4938 /* Nestle_iOS_Frame_TN@2x.png in Resources */,
 				829A79F71EBB8E7E005D4938 /* flamingo_TN.png in Resources */,
 				8212BBAB1EA92A26009E66EC /* confetti_TN@3x.png in Resources */,
 				8218510E1EAA9103000EDFD2 /* palmtree.png in Resources */,
@@ -7607,6 +7682,7 @@
 				82184FAB1EAA9040000EDFD2 /* gift-dog_TN.png in Resources */,
 				8218512C1EAA9103000EDFD2 /* sunglasses_frogskin_TN@2x.png in Resources */,
 				821850CE1EAA9102000EDFD2 /* feather2.png in Resources */,
+				829A7AED1EBBC738005D4938 /* LOreal_iOS_1c_TN.png in Resources */,
 				82E3DE701E831BD10008F600 /* cloud_angry_TN@3x.png in Resources */,
 				8212BBB11EA92A26009E66EC /* diploma_doodle_TN@2x.png in Resources */,
 				8212BBAF1EA92A26009E66EC /* diploma_doodle_TN.png in Resources */,
@@ -7718,6 +7794,7 @@
 				8212BC031EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */,
 				8212BB6F1EA92A25009E66EC /* g_balloons_TN.png in Resources */,
 				829A7A651EBB8E7E005D4938 /* sand_castle.png in Resources */,
+				829A7B031EBBC738005D4938 /* S_pellegrino_iOS_Frame.png in Resources */,
 				82E3DE881E831BD10008F600 /* panda-mask_TN@3x.png in Resources */,
 				264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */,
 				826BEB3E1E85BEAD000BE3FA /* RainbowFrame.png in Resources */,
@@ -7763,6 +7840,7 @@
 				821851431EAA9103000EDFD2 /* tiara_TN.png in Resources */,
 				8212BBC71EA92A26009E66EC /* g_glasses_TN.png in Resources */,
 				826BEB461E85BEAD000BE3FA /* RedFrame.png in Resources */,
+				829A7B011EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png in Resources */,
 				82184F991EAA9040000EDFD2 /* flowers_TN@2x.png in Resources */,
 				821850E41EAA9102000EDFD2 /* heart_banner_TN@2x.png in Resources */,
 				829A7A611EBB8E7E005D4938 /* sand_castle_TN@2x.png in Resources */,
@@ -7936,6 +8014,7 @@
 				82E3DE911E831BD10008F600 /* pizza.png in Resources */,
 				829A7A7B1EBB8E7E005D4938 /* visor_TN@3x.png in Resources */,
 				821851161EAA9103000EDFD2 /* smiley.png in Resources */,
+				829A7AFD1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png in Resources */,
 				82E3DE791E831BD10008F600 /* doughnut.png in Resources */,
 				db4cb0b0a9b0f6406be9fee7 /* PG_Main.storyboard in Resources */,
 				829A7A391EBB8E7E005D4938 /* mermaid_tail_water_TN@3x.png in Resources */,
@@ -8004,6 +8083,7 @@
 				82184FD31EAA9040000EDFD2 /* hibiscus_TN.png in Resources */,
 				821850651EAA9041000EDFD2 /* Spring_Break_TN@3x.png in Resources */,
 				82184F7F1EAA9040000EDFD2 /* cupcake_TN.png in Resources */,
+				829A7AF31EBBC738005D4938 /* LOreal_iOS_1c.png in Resources */,
 				8218511D1EAA9103000EDFD2 /* starhp_TN@3x.png in Resources */,
 				3f79e1abbf2467695b7efca1 /* InfoPlist.strings in Resources */,
 				8218503C1EAA9040000EDFD2 /* rabbit_TN@2x.png in Resources */,
