@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/Additions/UIFont+HPPRStyle.h
+../../../HPPhotoProvider/Pod/Classes/Additions/UIFont+HPPRStyle.h

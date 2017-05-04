@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/Additions/NSBundle+HPPRLocalizable.h
+../../../HPPhotoProvider/Pod/Classes/Additions/NSBundle+HPPRLocalizable.h

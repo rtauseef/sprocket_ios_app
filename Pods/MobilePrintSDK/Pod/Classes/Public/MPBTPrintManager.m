@@ -28,7 +28,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 @property (nonatomic, assign) MPBTPrinterManagerStatus status;
 @property (nonatomic, strong) MPPrintLaterJob *currentJob;
 @property (nonatomic, strong) MPPrintLaterJob *directJob;
-@property (nonatomic, copy) BOOL (^statusUpdateBlock)(MPBTPrinterManagerStatus status, NSInteger progress);
+@property (nonatomic, copy) BOOL (^statusUpdateBlock)(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode);
 
 @end
 
@@ -59,7 +59,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     return job;
 }
 
-- (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger))statusUpdate {
+- (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger, NSInteger))statusUpdate {
     if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
         [self reportError:MantaErrorBusy isFinalError:NO];
         return NO;
@@ -73,11 +73,12 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [self checkPrinterStatus];
     self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
+
+    return YES;
 }
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
-    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        [self reportError:MantaErrorBusy isFinalError:NO];
+    if (![self canAddToQueue:YES]) {
         return NO;
     }
 
@@ -88,7 +89,19 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     return YES;
 }
 
-- (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger))statusUpdate {
+- (BOOL)canAddToQueue:(BOOL)shouldTriggerError {
+    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
+        if (shouldTriggerError) {
+            [self reportError:MantaErrorBusy isFinalError:NO];
+        }
+
+        return NO;
+    }
+
+    return YES;
+}
+
+- (void)resumePrintQueue:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger, NSInteger))statusUpdate {
     [self.checkTimer invalidate];
 
     self.statusUpdateBlock = statusUpdate;
@@ -109,6 +122,9 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [self.checkTimer invalidate];
     self.checkTimer = nil;
+
+    self.currentJob = nil;
+    self.directJob = nil;
 
     self.originalQueueSize = 0;
     [self incrementQueueId];
@@ -133,14 +149,30 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 - (void)pausePrintQueue {
     self.status = MPBTPrinterManagerStatusIdle;
 
-    [self sendStatusUpdate:0];
+    [self sendStatusUpdate:0 error:MantaErrorNoError];
 
     [self.checkTimer invalidate];
     self.checkTimer = nil;
 }
 
 - (NSInteger)queueSize {
-    return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    BOOL isInsidePrintLaterJobs = NO;
+    if (self.currentJob != nil) {
+        for (MPPrintLaterJob *job in [MPPrintLaterQueue sharedInstance].retrieveAllPrintLaterJobs) {
+            if ([self.currentJob.id isEqualToString:job.id]) {
+                isInsidePrintLaterJobs = YES;
+                break;
+            }
+        }
+    } else {
+       return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    }
+    
+    if (!isInsidePrintLaterJobs) {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs] + 1;
+    } else {
+        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+    }
 }
 
 - (NSInteger)queueId {
@@ -153,6 +185,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (NSString *)printerId {
     return [[MPBTSprocket sharedInstance].analytics objectForKey:kMPPrinterId];
+}
+
+- (NSDictionary *)defaultOptionsForImageProcessor {
+    return @{ kMPBTImageProcessorPrinterSerialNumberKey: [MPBTSprocket sharedInstance].accessory.serialNumber };
 }
 
 - (NSInteger)currentQueueId {
@@ -176,6 +212,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
     [userDefaults setInteger:queueId forKey:kPrintManagerQueueIdKey];
     [userDefaults synchronize];
+
+    return queueId;
 }
 
 - (EAAccessory *)currentDevice
@@ -213,7 +251,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
             sprocket.accessory = device;
             sprocket.delegate = self;
 
-            [self sendStatusUpdate:0];
+            [self sendStatusUpdate:0 error:MantaErrorNoError];
 
             [sprocket refreshInfo];
 
@@ -235,9 +273,9 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     }
 }
 
-- (void)sendStatusUpdate:(NSInteger)progress {
+- (void)sendStatusUpdate:(NSInteger)progress error:(MantaError)error {
     if (self.statusUpdateBlock) {
-        BOOL shouldContinueUpdatingStatus = self.statusUpdateBlock(self.status, progress);
+        BOOL shouldContinueUpdatingStatus = self.statusUpdateBlock(self.status, progress, error);
 
         if (!shouldContinueUpdatingStatus) {
             self.statusUpdateBlock = nil;
@@ -307,7 +345,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 - (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error {
     NSLog(@"PRINT QUEUE - SENDING DATA %li (%@)", (long)percentageComplete, self.currentJob.id);
 
-    [self sendStatusUpdate:percentageComplete];
+    [self sendStatusUpdate:percentageComplete error:MantaErrorNoError];
 
     if ([self.delegate respondsToSelector:@selector(btPrintManager:sendingPrintJob:progress:)]) {
         [self.delegate btPrintManager:self sendingPrintJob:self.currentJob progress:percentageComplete];
@@ -326,7 +364,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     NSLog(@"PRINT QUEUE - JOB STARTED PRINTING (%@)", self.currentJob.id);
 
     self.status = MPBTPrinterManagerStatusPrinting;
-    [self sendStatusUpdate:0];
+    [self sendStatusUpdate:0 error:MantaErrorNoError];
 
     if (self.directJob) {
         self.directJob = nil;
@@ -376,6 +414,8 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     if ([self.delegate respondsToSelector:@selector(btPrintManager:didReceiveError:forPrintJob:)]) {
         [self.delegate btPrintManager:self didReceiveError:error forPrintJob:self.currentJob];
     }
+
+    [self sendStatusUpdate:0 error:error];
 }
 
 @end

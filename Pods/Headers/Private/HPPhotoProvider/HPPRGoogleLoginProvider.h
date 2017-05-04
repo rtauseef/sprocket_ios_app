@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRGoogleLoginProvider.h
+../../../HPPhotoProvider/Pod/Classes/HPPRGoogleLoginProvider.h

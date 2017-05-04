@@ -20,6 +20,7 @@
 #import "MPLogger.h"
 #import "MPInterfaceOptions.h"
 #import "MPPrintSettings.h"
+#import "MPBTImageProcessor.h"
 
 @class MPPaper;
 @class MPPrintItem;
@@ -610,11 +611,22 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @abstract Launches a headless print, only displaying device selection if multiple devices are connected
  * @discussion This method launches a bluetooth print.
  * @param controller The controller used to display the print job's status
+ * @param image The image to print
  * @param animated A boolean indicating whether or not to animate the display
  * @param completion A block to call when the display animation is complete
  */
 - (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated printCompletion:(void(^)(void))completion;
 
+/*!
+ * @abstract Launches a headless print, only displaying device selection if multiple devices are connected
+ * @discussion This method launches a bluetooth print.
+ * @param controller The controller used to display the print job's status
+ * @param image The image to print
+ * @param processor The processor to apply to the image prior to printing
+ * @param animated A boolean indicating whether or not to animate the display
+ * @param completion A block to call when the display animation is complete
+ */
+- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image processor:(MPBTImageProcessor *)processor animated:(BOOL)animated printCompletion:(void(^)(void))completion;
 
 /*!
  * @abstract Indicates whether a single sprocket is paired and needs to be updated

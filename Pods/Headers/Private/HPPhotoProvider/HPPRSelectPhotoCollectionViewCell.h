@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRSelectPhotoCollectionViewCell.h
+../../../HPPhotoProvider/Pod/Classes/HPPRSelectPhotoCollectionViewCell.h

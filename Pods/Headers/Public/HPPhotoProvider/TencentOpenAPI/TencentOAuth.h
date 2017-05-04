@@ -1,1 +1,1 @@
-../../../../../../hp_photo_provider/Pod/Frameworks/TencentOpenAPI.framework/Headers/TencentOAuth.h
+../../../../HPPhotoProvider/Pod/Frameworks/TencentOpenAPI.framework/Headers/TencentOAuth.h

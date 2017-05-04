@@ -1,1 +1,1 @@
-../../../../../../hp_photo_provider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKAccessToken.h
+../../../../HPPhotoProvider/Pod/Frameworks/FBSDKCoreKit.framework/Headers/FBSDKAccessToken.h
