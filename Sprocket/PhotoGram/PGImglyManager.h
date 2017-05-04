@@ -17,6 +17,8 @@
 
 @interface PGImglyManager : NSObject
 
+@property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
+
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager;
 - (IMGLYPhotoEffect *)imglyFilterByName:(NSString *)name;
 

@@ -11,8 +11,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PGWebViewerViewController.h"
 
-@interface PGSideBarMenuViewController : UIViewController
+@interface PGHamburgerButton : UIButton
 
 @end

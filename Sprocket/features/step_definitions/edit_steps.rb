@@ -4,7 +4,15 @@ Then (/^I should see "(.*?)" mark$/) do |mark|
     if(mark == "Close")
         check_element_exists(@current_page.close)
     else 
-        check_element_exists(@current_page.check)
+        if mark == "Undo"
+            check_element_exists(@current_page.undo)
+        else
+            if mark == "Redo"
+                check_element_exists(@current_page.redo)
+            else
+                check_element_exists(@current_page.check)
+            end
+        end
     end
 end
 
@@ -59,7 +67,7 @@ And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
     raise "Wrong frame selected!" unless selected_frame_status == nil
     else
         if edit_item == "sticker"
-           sticker_value=$sticker[$sticker_id]['value']
+           sticker_value=$sticker[$sticker_tab][$sticker_id]['value']
            selected_sticker_status = query("IMGLYStickerImageView",:accessibilityLabel)[0]
            raise "Sticker present!" unless selected_sticker_status.to_s == ""
         end
@@ -193,9 +201,17 @@ end
 Then(/^I select "(.*?)" sticker$/) do |sticker_id|
     sleep(STEP_PAUSE)
     $sticker_id = sticker_id
-    sticker_name=$sticker[sticker_id]['name']
+    sticker_name=$sticker[$sticker_tab][sticker_id]['name']
+    #sticker_name=$sticker[$sticker_tab_0][sticker_id]['name']
     select_sticker sticker_name
     sleep(STEP_PAUSE)
+end
+Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
+  sleep(STEP_PAUSE)
+  $sticker_tab = sticker_tab
+  split_sticker_tab = sticker_tab.split("_")
+  split_sticker_tab_id = split_sticker_tab[2].to_i
+  touch query("IMGLYIconBorderedCollectionViewCell")[split_sticker_tab_id]
 end
 
 Then(/^I select "(.*?)" font$/) do |font_id|
@@ -226,7 +242,7 @@ Then(/^I should see the photo in the "Frame Editor" screen with the "(.*?)" fram
 end
 
 Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
-    sticker_value=$sticker[sticker_id]['value']
+    sticker_value=$sticker[$sticker_tab][sticker_id]['value']
     selected_sticker_status = query("IMGLYStickerImageView",:accessibilityLabel)[0]
     raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end
@@ -275,7 +291,6 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
             while i < 20
                  font_id = "font_"+"#{i}"
                 macro %Q|I select "#{font_id}" font|
-                macro %Q|I verify blue line indicator is displayed under selected "font"|
                 macro %Q|I should see the photo with the "#{font_id}" font|
                 i= i + 1
             end
@@ -284,12 +299,13 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                 while i < 15
                     $option = option
                     macro %Q|I select "#{color_name[i]}" color|
-                    macro %Q|I verify blue line indicator is displayed under selected "color"|
                     macro %Q|I should see the photo with the "#{color_name[i]}" color|
                     i= i + 1
                 end
             else
-                while i < 43
+                stic_count=$sticker[$sticker_tab].length
+               
+                while i < stic_count
 		sticker_id = "sticker_"+"#{i}"
                     macro %Q|I select "#{sticker_id}" sticker|
                     macro %Q|I am on the "StickerOptionEditor" screen|
@@ -306,166 +322,14 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
     end
 end
 
-$edit_screen_arr =
+Then(/^I should see the all the corresponding "([^"]*)"$/) do |item|
+    check_sticker_exists item
+ end
+Then(/^I should see the "([^"]*)" with "([^"]*)" Color$/) do |type, color|
+  description = query("IMGLYStickerImageView", :description)[0]
+  selected_flag = query("view marked:'#{color}'", :isSelected).first
+  raise "#{color} no selected!" unless  (description.include? "tintColor") && (selected_flag == 1)
+ end
 
-{
-   
-    
-    "edit_color_red" => {
-        
-        "White" => 1,
-        "Gray" => 0.4898799061775208,
-        "Black" => 0,
-        "Light blue" => 0.1784424781799316,
-        "Blue" => 0.3624181151390076,
-        "Purple" => 0.554045557975769,
-        "Orchid" => 0.9373828172683716,
-        "Pink" => 1.081278085708618,
-        "Red" => 1.081276059150696,
-        "Orange" => 1.071406126022339,
-        "Gold" => 1.038132071495056,
-        "Yellow" => 1.00648832321167,
-        "Olive" => 0.7447972893714905,
-        "Green" => -0.3752276003360748,
-        "Aquamarin" => -0.375214695930481
-        
-            },
-    
-    
-    "edit_color_blue" => {
-        
-        "White" => 1,
-        "Gray" => 0.4898685216903687,
-        "Black" => 0,
-        "Light blue" => 1.020771384239197,
-        "Blue" => 1.032818078994751,
-        "Purple" => 1.0355464220047,
-        "Orchid" => 1.031528234481812,
-        "Pink" => 0.8169015049934387,
-        "Red" => 0.5235827565193176,
-        "Orange" => 0.3609134554862976,
-        "Gold" => 0.3108342885971069,
-        "Yellow" => 0.2354578375816345,
-        "Olive" => 0.2608795166015625,
-        "Green" => 0.4687141180038452,
-        "Aquamarin" => 0.920339047908783
-        
-            },
-    
-    
-    "edit_color_green" => {
-        
-        "White" => 1,
-        "Gray" => 0.489966094493866,
-        "Black" => 0,
-        "Light blue" => 0.8116050362586975,
-        "Blue" => 0.534614086151123,
-        "Purple" => 0.3933246433734894,
-        "Orchid" => 0.3620219230651855,
-        "Pink" => 0.3430601358413696,
-        "Red" => 0.3430392444133759,
-        "Orange" => 0.4967131018638611,
-        "Gold" => 0.7901139855384827,
-        "Yellow" => 0.968762218952179,
-        "Olive" => 1.007340788841248,
-        "Green" => 1.01670515537262,
-        "Aquamarin" => 1.016713500022888
-        
-            }
-    }
-	
-	$sticker ={ 
-            'sticker_0' => {'name' => 'Hearts Doodle Sticker','value' =>'Hearts Doodle Sticker'},
-            'sticker_1' => {'name' => 'Heart 2 Sticker','value' =>'Heart 2 Sticker'},
-            'sticker_2' => {'name' => 'Palm Tree Sticker','value' =>'Palm Tree Sticker'},
-            'sticker_3' => {'name' => 'Sunglasses Frogskin Sticker','value' =>'Sunglasses Frogskin Sticker'},
-            'sticker_4' => {'name' => 'Cat Ears Sticker','value' =>'Cat Ears Sticker'},
-            'sticker_5' => {'name' => 'Travel Car Sticker','value' =>'Travel Car Sticker'},
-            'sticker_6' => {'name' => 'Sundae Sticker','value' =>'Sundae Sticker'},
-            'sticker_7' => {'name' => 'Xoxo Sticker','value' =>'Xoxo Sticker'},
-            'sticker_8' => {'name' => 'Hearts Sticker','value' =>'Hearts Sticker'},
-            'sticker_9' => {'name' => 'Beach Ball Sticker','value' =>'Beach Ball Sticker'},
-            'sticker_10' => {'name' => 'Aviator Glasses Sticker','value' =>'Aviator Glasses Sticker'},
-            'sticker_11' => {'name' => 'Scuba Mask Sticker','value' =>'Scuba Mask Sticker'},
-            'sticker_12' => {'name' => 'Travel Car Woody Sticker','value' =>'Travel Car Woody Sticker'},
-            'sticker_13' => {'name' => 'Ice Cream Tub Sticker','value' =>'Ice Cream Tub Sticker'},
-            'sticker_14' => {'name' => 'Heart Express Sticker','value' =>'Heart Express Sticker'},
-            'sticker_15' => {'name' => 'Heart Garland Sticker','value' =>'Heart Garland Sticker'},
-            'sticker_16' => {'name' => 'Wave Sticker','value' =>'Wave Sticker'},
-            'sticker_17' => {'name' => 'Glasses Sticker','value' =>'Glasses Sticker'},
-            'sticker_18' => {'name' => 'Swim Fins Sticker','value' =>'Swim Fins Sticker'},
-            'sticker_19' => {'name' => 'Bike Cruiser Sticker','value' =>'Bike Cruiser Sticker'},
-            'sticker_20' => {'name' => 'Cupcake Sticker','value' =>'Cupcake Sticker'},
-            'sticker_21' => {'name' => 'Heart Sticker','value' =>'Heart Sticker'},
-            'sticker_22' => {'name' => 'Valentines Xoxo Sticker','value' =>'Valentines Xoxo Sticker'},
-            'sticker_23' => {'name' => 'Beach Umbrella Sticker','value' =>'Beach Umbrella Sticker'},
-            'sticker_24' => {'name' => 'Bunny Ears Flowers Sticker','value' =>'Bunny Ears Flowers Sticker'},
-            'sticker_25' => {'name' => 'Volley Ball Sticker','value' =>'Volley Ball Sticker'},
-            'sticker_26' => {'name' => 'Airplane Sticker','value' =>'Airplane Sticker'},
-            'sticker_27' => {'name' => 'BBQ Sticker','value' =>'BBQ Sticker'},
-            'sticker_28' => {'name' => 'Glasses 1 Sticker','value' =>'Glasses 1 Sticker'},
-            'sticker_29' => {'name' => 'Heart Wings Sticker','value' =>'Heart Wings Sticker'},
-            'sticker_30' => {'name' => 'Sun Face Sticker','value' =>'Sun Face Sticker'},
-            'sticker_31' => {'name' => 'Cat Glasses Sticker','value' =>'Cat Glasses Sticker'},
-            'sticker_32' => {'name' => 'Trailer Sticker','value' =>'Trailer Sticker'},
-            'sticker_33' => {'name' => 'Soda Straw Sticker','value' =>'Soda Straw Sticker'},
-            'sticker_34' => {'name' => 'Unicorn Float Sticker','value' =>'Unicorn Float Sticker'},
-            'sticker_35' => {'name' => 'Surf Board Sticker', 'value'=>'Surf Board Sticker'},
-            'sticker_36' => {'name' => 'Crown Sticker', 'value'=>'Crown Sticker'},
-            'sticker_37' => {'name' => 'Stars Sticker', 'value'=>'Stars Sticker'},
-            'sticker_38' => {'name' => 'Smiley Sticker', 'value'=>'Smiley Sticker'},
-            'sticker_39' => {'name' => 'Birthday Hat Sticker', 'value'=>'Birthday Hat Sticker'},
-            'sticker_40' => {'name' => 'Star Sticker', 'value'=>'Star Sticker'},
-            'sticker_41' => {'name' => 'Cat Face Sticker', 'value'=>'Cat Face Sticker'},
-            'sticker_42' => {'name' => 'Feather Sticker', 'value'=>'Feather Sticker'},
-            'sticker_43' => {'name' => 'Diamond Sticker', 'value'=>'Diamond Sticker'},
-
-          }
-           $frame ={ 
-            'frame_0' => {'name' => 'Hearts Overlay Frame','value' =>'HeartsOverlayFrame'},
-            'frame_1' => {'name' => 'Sloppy Frame','value' =>'SloppyFrame'},
-            'frame_2' => {'name' => 'Rainbow Frame','value' =>'RainbowFrame'},
-            'frame_3' => {'name' => 'White Frame','value' =>'WhiteFrame'},
-            'frame_4' => {'name' => 'Stars Overlay Frame','value' =>'StarsOverlayFrame'},
-            'frame_5' => {'name' => 'Polka Dots Frame','value' =>'PolkadotsFrame'},
-            'frame_6' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
-            'frame_7' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
-            'frame_8' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
-            'frame_9' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
-            'frame_10' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
-            'frame_11' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
-            'frame_12' => {'name' => 'Red Frame','value' =>'RedFrame'},
-            'frame_13' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
-            'frame_14' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
-            'frame_15' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
-            'frame_16' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
-            'frame_17' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
-            'frame_18' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
-            'frame_19' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
-        }
-        $font ={ 
-            'font_0' => {'name' => 'Aleo','value' =>'Aleo'},
-            'font_1' => {'name' => 'BERNIER Regular','value' =>'BERNIERRegular-Regular'},
-            'font_2' => {'name' => 'Blogger Sans','value' =>'BloggerSans-Light'},
-            'font_3' => {'name' => 'Cheque','value' =>'Cheque-Regular'},
-            'font_4' => {'name' => 'Fira Sans','value' =>'FiraSans-Regular'},
-            'font_5' => {'name' => 'Gagalin','value' =>'Gagalin-Regular'},
-            'font_6' => {'name' => 'Hagin Caps Thin','value' =>'Hagin'},
-            'font_7' => {'name' => 'Panton','value' =>'Panton-LightitalicCaps'},
-            'font_8' => {'name' => 'Panton','value' =>'Panton-LightitalicCaps'},
-            'font_9' => {'name' => 'Perfograma','value' =>'Perfograma'},
-            'font_10' => {'name' => 'Summer Font','value' =>'SummerFont-Light'},
-            'font_11' => {'name' => 'American Typewriter','value' =>'American'},
-            'font_12' => {'name' => 'Baskerville','value' =>'Baskerville'},
-            'font_13' => {'name' => 'Bodoni 72','value' =>'BodoniSvtyTwoITCTT-Book'},
-            'font_14' => {'name' => 'Bradley Hand','value' =>'Bradley'},
-            'font_15' => {'name' => 'Chalkboard SE','value' =>'ChalkboardSE-Regular'},
-            'font_16' => {'name' => 'DIN Alternate','value' =>'DIN'},
-            'font_17' => {'name' => 'Helvetica Neue','value' =>'Helvetica'},
-            'font_18' => {'name' => 'Noteworthy','value' =>'Noteworthy-Light'},
-            'font_19' => {'name' => 'Snell Roundhand','value' =>'Snell'},
-            'font_20' => {'name' => 'Thonburi','value' =>'Thonburi'}
-                             
-        }
            
     

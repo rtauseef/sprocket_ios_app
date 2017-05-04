@@ -101,9 +101,10 @@ static NSInteger  const connectionDefaultValue = -1;
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kActionViewControllerPrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
     
     self.lastConnectedValue = connectionDefaultValue;
-    [[MP sharedInstance] checkSprocketForUpdates:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobCompletedNotification:) name:kMPBTPrintJobCompletedNotification object:nil];
+
+    [[MP sharedInstance] checkSprocketForUpdates:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -42,38 +42,54 @@
                                                                    imageURL:self.mothersDayCategoryStickers[7].thumbnailURL
                                                                    stickers:[self mothersDayCategoryStickers]];
     }
+    mothersDayCategory.accessibilityLabel = @"Mother's Day Category";
     
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self graduationCategoryStickers]];
+    graduationCategory.accessibilityLabel = @"Graduation Category";
     
     IMGLYStickerCategory *faceCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.faceCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self faceCategoryStickers]];
     
+    faceCategory.accessibilityLabel = @"Face Category";
+    
     IMGLYStickerCategory *decorativeCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.decorativeCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self decorativeCategoryStickers]];
+    
+    decorativeCategory.accessibilityLabel = @"Decorative Category";
     
     IMGLYStickerCategory *foodCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.foodCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self foodCategoryStickers]];
     
+    foodCategory.accessibilityLabel = @"Food Category";
+    
     IMGLYStickerCategory *birthdayCategory      = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.birthdayCategoryStickers[3].thumbnailURL
                                                                                      stickers:[self birthdayCategoryStickers]];
+    
+    birthdayCategory.accessibilityLabel = @"Birthday Category";
     
     IMGLYStickerCategory *animalCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.animalCategoryStickers[8].thumbnailURL
                                                                                      stickers:[self animalCategoryStickers]];
     
+    animalCategory.accessibilityLabel = @"Animal Category";
+    
     IMGLYStickerCategory *natureCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.natureCategoryStickers[6].thumbnailURL
                                                                                      stickers:[self natureCategoryStickers]];
     
+    natureCategory.accessibilityLabel = @"Nature Category";
+    
     IMGLYStickerCategory *getWellCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.getWellCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self getWellCategoryStickers]];
+    
+    getWellCategory.accessibilityLabel = @"Get Well";
     
     return @[mothersDayCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }

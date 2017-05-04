@@ -66,7 +66,13 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
                    # check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}'")
                     check_element_exists("view marked:'#{$list_loc[screen_name]}'")
                 else
-                    puts "#{screen_name} - Applicable only for Chinese language!".blue 
+                    if screen_name == "CameraRoll Photo"
+                        sleep(STEP_PAUSE)
+                        swipe(:right)
+                        swipe :right, :offset => {:x => -100, :y => 0}
+                    else
+                        puts "#{screen_name} - Applicable only for Chinese language!".blue 
+                    end
                 end
             end
         end

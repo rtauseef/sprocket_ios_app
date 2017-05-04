@@ -10,9 +10,26 @@
 // the license agreement.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "PGWebViewerViewController.h"
 
-@interface PGSideBarMenuViewController : UIViewController
+@protocol PGPrintQueueManagerDelegate;
+
+@interface PGPrintQueueManager : NSObject
+
+@property (weak, nonatomic) id<PGPrintQueueManagerDelegate> delegate;
+
++ (instancetype)sharedInstance;
+
+- (void)showPrintQueueStatusFromViewController:(UIViewController *)viewController;
+
+@end
+
+
+@protocol PGPrintQueueManagerDelegate <NSObject>
+
+@optional;
+
+- (void)pgPrintQueueManagerDidClearQueue:(PGPrintQueueManager *)printQueueManager;
 
 @end
