@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -2230,8 +2230,8 @@ printer and app support.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkG-i6-mOl" userLabel="LandingButtonsView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwa-ue-pKP" userLabel="Hamburger">
-                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwa-ue-pKP" userLabel="Hamburger" customClass="PGHamburgerButton">
+                                        <rect key="frame" x="12" y="10" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="f2f-we-n4i"/>
                                             <constraint firstAttribute="height" constant="44" id="jAs-pQ-6eX"/>
@@ -2434,9 +2434,9 @@ printer and app support.</string>
                                     <constraint firstItem="HWP-dm-kns" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="DVQ-9p-AOg"/>
                                     <constraint firstItem="r8A-4l-TdM" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="LuE-Xf-FPq"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3rx-Fp-iLE" secondAttribute="trailing" constant="20" id="NnR-NK-Nyf"/>
-                                    <constraint firstItem="Vwa-ue-pKP" firstAttribute="leading" secondItem="MkG-i6-mOl" secondAttribute="leading" id="RCk-UM-VWj"/>
+                                    <constraint firstItem="Vwa-ue-pKP" firstAttribute="leading" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="12" id="RCk-UM-VWj"/>
                                     <constraint firstItem="saP-Wi-LB7" firstAttribute="top" secondItem="r8A-4l-TdM" secondAttribute="bottom" constant="38" id="S5V-9q-zIn"/>
-                                    <constraint firstItem="Vwa-ue-pKP" firstAttribute="top" secondItem="MkG-i6-mOl" secondAttribute="top" id="Umc-P0-HUi"/>
+                                    <constraint firstItem="Vwa-ue-pKP" firstAttribute="top" secondItem="MkG-i6-mOl" secondAttribute="top" constant="10" id="Umc-P0-HUi"/>
                                     <constraint firstItem="saP-Wi-LB7" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="VmU-7H-WUQ"/>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="top" secondItem="saP-Wi-LB7" secondAttribute="bottom" priority="250" constant="48" id="e1o-gy-LRp"/>
                                     <constraint firstItem="cJ5-4G-usG" firstAttribute="top" secondItem="r8A-4l-TdM" secondAttribute="bottom" constant="47" id="ecV-Vd-JQl"/>
@@ -3340,8 +3340,46 @@ printer and app support.</string>
                                     <outletCollection property="gestureRecognizers" destination="noS-hs-dJB" appends="YES" id="yz7-py-uAB"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cue-dP-RhJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9P-1b-Xdy" userLabel="Print Queue Row">
                                 <rect key="frame" x="0.0" y="75" width="375" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Print Queue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAx-zh-2yP">
+                                        <rect key="frame" x="37" y="17" width="94.5" height="23"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fe-Oa-byX" userLabel="Number of Jobs">
+                                        <rect key="frame" x="295" y="18" width="11" height="23"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow_Right" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-Ye-XWK">
+                                        <rect key="frame" x="306" y="7" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="QBS-S2-dER"/>
+                                            <constraint firstAttribute="width" constant="44" id="y7L-RA-FM9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="6sU-5b-Mh8"/>
+                                    <constraint firstItem="xrc-Ye-XWK" firstAttribute="leading" secondItem="9fe-Oa-byX" secondAttribute="trailing" id="N2H-ug-glR"/>
+                                    <constraint firstItem="EAx-zh-2yP" firstAttribute="centerY" secondItem="S9P-1b-Xdy" secondAttribute="centerY" id="NiO-y2-UIr"/>
+                                    <constraint firstItem="EAx-zh-2yP" firstAttribute="leading" secondItem="S9P-1b-Xdy" secondAttribute="leading" constant="37" id="Oxs-Ad-LvR"/>
+                                    <constraint firstItem="xrc-Ye-XWK" firstAttribute="centerY" secondItem="S9P-1b-Xdy" secondAttribute="centerY" id="jCy-ff-ffz"/>
+                                    <constraint firstAttribute="trailing" secondItem="xrc-Ye-XWK" secondAttribute="trailing" constant="25" id="mgW-7x-Q41"/>
+                                    <constraint firstItem="9fe-Oa-byX" firstAttribute="centerY" secondItem="S9P-1b-Xdy" secondAttribute="centerY" id="nbN-N7-JLe"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8QG-9e-2yK" appends="YES" id="8EE-AR-4an"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cue-dP-RhJ" userLabel="Copies Row">
+                                <rect key="frame" x="0.0" y="133" width="375" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%@ Copy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-KF-FRi">
                                         <rect key="frame" x="37" y="18" width="75" height="23"/>
@@ -3389,8 +3427,8 @@ printer and app support.</string>
                                     <constraint firstItem="g9Y-KF-FRi" firstAttribute="leading" secondItem="cue-dP-RhJ" secondAttribute="leading" constant="37" id="gnX-mm-KtV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-6n-Gfr">
-                                <rect key="frame" x="0.0" y="133" width="375" height="58"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-6n-Gfr" userLabel="Tiles Row">
+                                <rect key="frame" x="0.0" y="191" width="375" height="58"/>
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="Fdk-AE-lHF"/>
@@ -3401,11 +3439,14 @@ printer and app support.</string>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="rSr-jm-E12" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="ENM-8G-7jI"/>
-                            <constraint firstItem="cue-dP-RhJ" firstAttribute="top" secondItem="rSr-jm-E12" secondAttribute="bottom" id="MRb-St-4y3"/>
+                            <constraint firstItem="cue-dP-RhJ" firstAttribute="top" secondItem="S9P-1b-Xdy" secondAttribute="bottom" id="FBr-WV-wGG"/>
+                            <constraint firstItem="S9P-1b-Xdy" firstAttribute="top" secondItem="rSr-jm-E12" secondAttribute="bottom" id="VIg-1P-NPI"/>
                             <constraint firstAttribute="trailing" secondItem="id5-6n-Gfr" secondAttribute="trailing" id="Xbc-Rg-Zdk"/>
                             <constraint firstItem="cue-dP-RhJ" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="dHJ-Y9-xcw"/>
                             <constraint firstItem="id5-6n-Gfr" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="e4v-qE-eOF"/>
                             <constraint firstAttribute="trailing" secondItem="rSr-jm-E12" secondAttribute="trailing" id="fXt-z3-hv6"/>
+                            <constraint firstItem="S9P-1b-Xdy" firstAttribute="leading" secondItem="PGl-Ny-PVI" secondAttribute="leading" id="ipc-uK-J16"/>
+                            <constraint firstAttribute="trailing" secondItem="S9P-1b-Xdy" secondAttribute="trailing" id="nmI-0h-kOf"/>
                             <constraint firstItem="rSr-jm-E12" firstAttribute="top" secondItem="PGl-Ny-PVI" secondAttribute="top" constant="50" id="rfY-y5-F5c"/>
                             <constraint firstItem="id5-6n-Gfr" firstAttribute="top" secondItem="cue-dP-RhJ" secondAttribute="bottom" id="sju-aM-NgH"/>
                             <constraint firstAttribute="trailing" secondItem="cue-dP-RhJ" secondAttribute="trailing" id="w3S-fF-EKd"/>
@@ -3420,6 +3461,7 @@ printer and app support.</string>
                         <outlet property="copiesLabel" destination="g9Y-KF-FRi" id="X42-1f-Lrw"/>
                         <outlet property="drawerButton" destination="rSr-jm-E12" id="lWf-QW-BOt"/>
                         <outlet property="minusButton" destination="0Eq-VN-Woc" id="vse-My-RDV"/>
+                        <outlet property="numberOfJobsLabel" destination="9fe-Oa-byX" id="Upr-ZQ-M2u"/>
                         <outlet property="plusButton" destination="Ta4-Qc-4b4" id="qrf-hl-7CI"/>
                     </connections>
                 </viewController>
@@ -3434,8 +3476,13 @@ printer and app support.</string>
                         <action selector="handlePan:" destination="0AQ-C1-f9y" id="iMz-qs-WeZ"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="8QG-9e-2yK">
+                    <connections>
+                        <action selector="printQueueTapped:" destination="0AQ-C1-f9y" id="TvQ-nv-svd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1434" y="1766"/>
+            <point key="canvasLocation" x="1432.8" y="1765.8170914542729"/>
         </scene>
         <!--Google NavController-->
         <scene sceneID="M1q-ih-JXC">
@@ -3463,6 +3510,7 @@ printer and app support.</string>
         <image name="-ButtonEnabled" width="20" height="1"/>
         <image name="About.png" width="28" height="28"/>
         <image name="Active_Circle" width="13" height="13"/>
+        <image name="Arrow_Right" width="12" height="24"/>
         <image name="CameraRoll" width="43" height="43"/>
         <image name="China_Camera1" width="102" height="101"/>
         <image name="China_Gallery1" width="102" height="102"/>
@@ -3486,7 +3534,8 @@ printer and app support.</string>
         <image name="backArrow" width="9" height="18"/>
         <image name="battery100" width="33" height="14"/>
         <image name="cameraLanding" width="76" height="76"/>
-        <image name="hamburger" width="22" height="18"/>
+        <image name="google_C" width="53" height="53"/>
+        <image name="hamburger" width="37" height="35"/>
         <image name="helpForum" width="16" height="15"/>
         <image name="helpTweetSupport" width="17" height="14"/>
         <image name="helpViewUserGuide" width="14" height="16"/>

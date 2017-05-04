@@ -11,6 +11,7 @@
 //
 
 #import "PGPreviewDrawerViewController.h"
+#import <MPBTPrintManager.h>
 
 static NSInteger const kPGPreviewDrawerClosedDrawerHeight = 25;
 static NSInteger const kPGPreviewDrawerHotAreaHeight = 50;
@@ -23,6 +24,9 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 @property (weak, nonatomic) IBOutlet UILabel *copiesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfJobsLabel;
+
+@property (strong, nonatomic) NSTimer *queueCountTimer;
 
 @end
 
@@ -34,6 +38,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     
     self.showCopies = YES;
     self.showTiling = NO;
+    self.showPrintQueue = YES;
     self.numberOfCopies = 1;
     
     self.drawerButton.clipsToBounds = NO;
@@ -45,7 +50,21 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [self updateCopyLabelAndButtons];
 }
 
-- (IBAction)didTapDrawerButton:(id)sender {
+- (void)setShowPrintQueue:(BOOL)showPrintQueue
+{
+    _showPrintQueue = showPrintQueue;
+
+    [self.queueCountTimer invalidate];
+    self.queueCountTimer = nil;
+
+    if (showPrintQueue) {
+        [self refreshQueueCount];
+        self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
+    }
+}
+
+- (IBAction)didTapDrawerButton:(id)sender
+{
     self.isOpened = !self.isOpened;
     
     if ([self.delegate respondsToSelector:@selector(PGPreviewDrawer:didTapButton:)]) {
@@ -66,6 +85,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 {
     if (self.isOpened) {
         return [self drawerHeightOpened];
+    } else if (self.isPeeking) {
+        return [self drawerHeightPeeking];
     } else {
         return [self drawerHeightClosed];
     }
@@ -74,15 +95,24 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 - (CGFloat)drawerHeightOpened
 {
     NSInteger numberOfRowsActive = 0;
+    if (self.showPrintQueue) {
+        numberOfRowsActive++;
+    }
+
     if (self.showCopies) {
         numberOfRowsActive++;
     }
-    
+
     if (self.showTiling) {
         numberOfRowsActive++;
     }
     
     return kPGPreviewDrawerClosedDrawerHeight + (kPGPreviewDrawerRowHeight * numberOfRowsActive) + kPGPreviewDrawerHotAreaHeight;
+}
+
+- (CGFloat)drawerHeightPeeking
+{
+    return kPGPreviewDrawerClosedDrawerHeight + kPGPreviewDrawerRowHeight + kPGPreviewDrawerHotAreaHeight;
 }
 
 - (CGFloat)drawerHeightClosed
@@ -102,9 +132,17 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.minusButton.enabled = self.numberOfCopies != 1;
 }
 
+- (void)refreshQueueCount
+{
+    NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
+
+    self.numberOfJobsLabel.text = [NSString stringWithFormat:@"%li", (long)count];
+}
+
 #pragma mark - Buttons Handlers
 
-- (IBAction)plusTapped:(id)sender {
+- (IBAction)plusTapped:(id)sender
+{
     if (self.numberOfCopies < kPGPreviewDrawerNumberOfCopiesLimit) {
         self.numberOfCopies++;
     }
@@ -112,7 +150,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [self updateCopyLabelAndButtons];
 }
 
-- (IBAction)minusTapped:(id)sender {
+- (IBAction)minusTapped:(id)sender
+{
     if (self.numberOfCopies >= 1) {
         self.numberOfCopies--;
     }
@@ -122,9 +161,17 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 #pragma mark - Gesture Recognizers
 
-- (IBAction)handlePan:(UIPanGestureRecognizer *)gesture {
+- (IBAction)handlePan:(UIPanGestureRecognizer *)gesture
+{
     if ([self.delegate respondsToSelector:@selector(PGPreviewDrawer:didDrag:)]) {
         [self.delegate PGPreviewDrawer:self didDrag:gesture];
+    }
+}
+
+- (IBAction)printQueueTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(PGPreviewDrawerDidTapPrintQueue:)]) {
+        [self.delegate PGPreviewDrawerDidTapPrintQueue:self];
     }
 }
 
