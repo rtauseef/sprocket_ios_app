@@ -34,7 +34,10 @@
 //    IMGLYStickerCategory *cannesCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
 //                                                                              imageURL:self.cannesCategoryStickers[1].thumbnailURL
 //                                                                              stickers:[self cannesCategoryStickers]];
-    
+
+//    IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+//                                                                              imageURL:self.summerCategoryStickers[1].thumbnailURL
+//                                                                              stickers:[self cannesCategoryStickers]];
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self graduationCategoryStickers]];
@@ -82,12 +85,18 @@
     
     getWellCategory.accessibilityLabel = @"Get Well";
     
-    return @[/*cannesCategory,*/ graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+    return @[/*cannesCategory,*/ graduationCategory,/*summerCategory,*/ faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }
 
 #pragma mark - Stickers by category
 
 - (NSArray<IMGLYSticker *> *)cannesCategoryStickers
+{
+    return @[
+             ];
+}
+
+- (NSArray<IMGLYSticker *> *)summerCategoryStickers
 {
     return @[
              ];
