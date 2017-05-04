@@ -38,6 +38,12 @@
     ],
     "FlickrKit": [
 
+    ],
+    "Google/SignIn": [
+
+    ],
+    "GoogleAPIClientForREST/Drive": [
+
     ]
   },
   "xcconfig": {

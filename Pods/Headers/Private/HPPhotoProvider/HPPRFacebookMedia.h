@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRFacebookMedia.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRFacebookMedia.h

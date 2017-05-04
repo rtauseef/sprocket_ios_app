@@ -1,1 +1,1 @@
-../../../HPPhotoProvider/Pod/Classes/HPPRSelectAlbumTableViewCell.h
+../../../../../hp_photo_provider/Pod/Classes/HPPRSelectAlbumTableViewCell.h

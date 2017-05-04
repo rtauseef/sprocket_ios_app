@@ -14,7 +14,7 @@ def shared_pods
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'CocoaLumberjack', '2.2.0'
     pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'
-    pod 'HPPhotoProvider', git:'https://github.com/IPGPTP/hp_photo_provider', branch:'master'
+    pod 'HPPhotoProvider', path:'~/workspace/hp_photo_provider' #git:'https://github.com/IPGPTP/hp_photo_provider', branch:'master'
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
     pod 'Google/SignIn'
