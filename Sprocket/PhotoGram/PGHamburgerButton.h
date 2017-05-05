@@ -14,4 +14,6 @@
 
 @interface PGHamburgerButton : UIButton
 
+- (void)refreshIndicator;
+
 @end
