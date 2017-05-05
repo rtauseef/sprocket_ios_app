@@ -3,7 +3,9 @@ Feature: Check Paper size and Paper type
     I want to Check and Verify Paper size and Paper type
 
 
-    @TA17800
+    @done
+    @smoke
+    @regression
     Scenario: Verify print metrics
         Given I am on the "CameraRoll Photo" screen
         And  I touch menu button on navigation bar
