@@ -36,7 +36,10 @@ When(/^I tap "(.*?)" mark$/) do |mark|
                 else
                     if(mark == "Cancel")
                         touch @current_page.cancel
-                        #sleep(STEP_PAUSE)
+                    else
+                        if(mark == "Print Queue")
+                            touch @current_page.print_queue
+                        end
                     end
                 end
             end

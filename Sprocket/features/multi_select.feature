@@ -56,4 +56,25 @@ Feature: Verify multiselect feature
     And I should see the count of images and checkmark circle in each page when swipe "left"
     And I should see the count of images and checkmark circle in each page when swipe "right"
     
+@TA17881
+Scenario: Verify preview -Drawer multiselect
+    Given I am on the "CameraRoll Photo" screen
+    And I touch "Select"
+    Then I should see the multiselect option enabled
+    Then I select "3" photos
+    And I should see the number of photos selected as "3"
+    Then I tap on the multi selected number  
+    Then I am on the "CameraRoll Preview" screen
+    Then I should see "PreviewBardots" button
+    Then I tap "PreviewBardots" button
+    Then I should see the preview-drawer "slides up"
+    And I should see "Print Queue" with "0" items and a right arrow
+    Then I tap "Print Queue" mark
+    Then I verify the "content" of the popup message for "No Prints" 
+    And I should see the button "OK"
+    And I touch "OK"
+    Then I tap "PreviewBardots" button
+    Then I should see the preview-drawer "closes"
+
+
     
