@@ -55,8 +55,9 @@ Feature: Verify multiselect feature
     Then I should see the "CameraRoll Preview" screen
     And I should see the count of images and checkmark circle in each page when swipe "left"
     And I should see the count of images and checkmark circle in each page when swipe "right"
-    
-@TA17881
+
+  @done
+  @regression
 Scenario: Verify preview -Drawer multiselect
     Given I am on the "CameraRoll Photo" screen
     And I touch "Select"

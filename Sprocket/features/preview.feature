@@ -81,8 +81,9 @@ Feature: Verify preview screen from different social media
     Then I wait for some seconds
     Then I should see it in "smaller" size
     #pinch not working correctly for < ios 9
-    
-@TA17881
+
+  @done
+  @regression
 Scenario: Verify preview -Drawer
     Given I am on the "CameraRoll Preview" screen
     Then I should see "PreviewBardots" button
