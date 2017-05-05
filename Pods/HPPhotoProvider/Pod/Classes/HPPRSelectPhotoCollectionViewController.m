@@ -123,6 +123,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 {
     [super viewWillAppear:animated];
     
+    self.provider.imageRequestsCancelled = NO;
+    
     if (self.customNoPhotosMessage) {
         self.noPhotosLabel.text = self.customNoPhotosMessage;
     }

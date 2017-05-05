@@ -16,6 +16,7 @@
 #import "UIFont+Style.h"
 #import "AlphaGradientView.h"
 #import "PGFeatureFlag.h"
+#import "PGHamburgerButton.h"
 
 static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
 
@@ -29,7 +30,7 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
 @property (weak, nonatomic) IBOutlet UIImageView *albumsArrow;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *hamburgerButton;
+@property (weak, nonatomic) IBOutlet PGHamburgerButton *hamburgerButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end
@@ -83,6 +84,7 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
     self.navigationView.backgroundColor = [PGAppAppearance navBarColor];
 
     self.gradientBar.direction = GRADIENT_DOWN;
+    [self.hamburgerButton refreshIndicator];
 }
 
 -(void)showAlbumsDropDownButton:(BOOL)show
