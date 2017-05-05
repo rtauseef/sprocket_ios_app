@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "PGMetarSource.h"
+#import "PGMetarVideo.h"
+#import "PGMetarImage.h"
+#import "PGMetarArtifact.h"
+#import "PGMetarLocation.h"
 
 typedef NS_ENUM(NSInteger, PGMetarMediaType) {
     PGMetarMediaTypeImage,
@@ -23,7 +27,7 @@ typedef NS_ENUM(NSInteger, PGMetarMediaOrientation) {
 
 @property (assign, nonatomic) PGMetarMediaType mediaType;
 @property (strong, nonatomic) NSString *mime;
-@property (strong, nonatomic) NSNumber *size;
+@property (assign, nonatomic) double *size;
 @property (assign, nonatomic) PGMetarMediaOrientation orientation;
 @property (assign, nonatomic) CGSize pixels;
 @property (assign, nonatomic) CGSize inches;
@@ -32,9 +36,12 @@ typedef NS_ENUM(NSInteger, PGMetarMediaOrientation) {
 @property (strong, nonatomic) NSDate *lastQueried;
 @property (strong, nonatomic) PGMetarSource *source;
 @property (strong, nonatomic) NSArray<NSString *> *tags;
-// -> Video video
-// -> Image image
-// -> Array<Artifact> artifacts
-// -> Location location
+@property (strong, nonatomic) PGMetarVideo *video;
+@property (strong, nonatomic) PGMetarImage *image;
+@property (strong, nonatomic) NSArray<PGMetarArtifact *> *artifacts;
+@property (strong, nonatomic) PGMetarLocation *location;
+
+- (instancetype)initWithDictionary: (NSDictionary *) dict;
+- (NSDictionary *) getDict;
 
 @end

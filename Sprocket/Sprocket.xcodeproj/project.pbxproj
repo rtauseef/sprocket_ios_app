@@ -2235,6 +2235,12 @@
 		EDB0C2E41EBBD87D00AE14CB /* PGMetarImageTag.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2E31EBBD87D00AE14CB /* PGMetarImageTag.m */; };
 		EDB0C2E71EBBF06800AE14CB /* PGMetarMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2E61EBBF06800AE14CB /* PGMetarMedia.m */; };
 		EDB0C2EA1EBBF27600AE14CB /* PGMetarSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2E91EBBF27600AE14CB /* PGMetarSource.m */; };
+		EDB0C2ED1EBCF75300AE14CB /* PGMetarVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2EC1EBCF75300AE14CB /* PGMetarVideo.m */; };
+		EDB0C2F01EBCF82D00AE14CB /* PGMetarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2EF1EBCF82D00AE14CB /* PGMetarImage.m */; };
+		EDB0C2F31EBCFA6F00AE14CB /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2F21EBCFA6F00AE14CB /* PGMetarArtifact.m */; };
+		EDB0C2F91EBCFB4E00AE14CB /* PGMetarArtifactEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2F81EBCFB4E00AE14CB /* PGMetarArtifactEmotion.m */; };
+		EDB0C2FC1EBCFC2200AE14CB /* PGMetarLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2FB1EBCFC2200AE14CB /* PGMetarLocation.m */; };
+		EDB0C3001EBCFD7600AE14CB /* PGMetarLocationVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2FF1EBCFD7600AE14CB /* PGMetarLocationVenue.m */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
@@ -3918,6 +3924,18 @@
 		EDB0C2E61EBBF06800AE14CB /* PGMetarMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarMedia.m; path = Metar/PGMetarMedia.m; sourceTree = "<group>"; };
 		EDB0C2E81EBBF27600AE14CB /* PGMetarSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSource.h; path = Metar/PGMetarSource.h; sourceTree = "<group>"; };
 		EDB0C2E91EBBF27600AE14CB /* PGMetarSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSource.m; path = Metar/PGMetarSource.m; sourceTree = "<group>"; };
+		EDB0C2EB1EBCF75300AE14CB /* PGMetarVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarVideo.h; path = Metar/PGMetarVideo.h; sourceTree = "<group>"; };
+		EDB0C2EC1EBCF75300AE14CB /* PGMetarVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarVideo.m; path = Metar/PGMetarVideo.m; sourceTree = "<group>"; };
+		EDB0C2EE1EBCF82D00AE14CB /* PGMetarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarImage.h; path = Metar/PGMetarImage.h; sourceTree = "<group>"; };
+		EDB0C2EF1EBCF82D00AE14CB /* PGMetarImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarImage.m; path = Metar/PGMetarImage.m; sourceTree = "<group>"; };
+		EDB0C2F11EBCFA6F00AE14CB /* PGMetarArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarArtifact.h; path = Metar/PGMetarArtifact.h; sourceTree = "<group>"; };
+		EDB0C2F21EBCFA6F00AE14CB /* PGMetarArtifact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarArtifact.m; path = Metar/PGMetarArtifact.m; sourceTree = "<group>"; };
+		EDB0C2F71EBCFB4E00AE14CB /* PGMetarArtifactEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarArtifactEmotion.h; path = Metar/PGMetarArtifactEmotion.h; sourceTree = "<group>"; };
+		EDB0C2F81EBCFB4E00AE14CB /* PGMetarArtifactEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarArtifactEmotion.m; path = Metar/PGMetarArtifactEmotion.m; sourceTree = "<group>"; };
+		EDB0C2FA1EBCFC2200AE14CB /* PGMetarLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarLocation.h; path = Metar/PGMetarLocation.h; sourceTree = "<group>"; };
+		EDB0C2FB1EBCFC2200AE14CB /* PGMetarLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarLocation.m; path = Metar/PGMetarLocation.m; sourceTree = "<group>"; };
+		EDB0C2FE1EBCFD7600AE14CB /* PGMetarLocationVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarLocationVenue.h; path = Metar/PGMetarLocationVenue.h; sourceTree = "<group>"; };
+		EDB0C2FF1EBCFD7600AE14CB /* PGMetarLocationVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarLocationVenue.m; path = Metar/PGMetarLocationVenue.m; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
@@ -5708,6 +5726,18 @@
 				EDB0C2E61EBBF06800AE14CB /* PGMetarMedia.m */,
 				EDB0C2E81EBBF27600AE14CB /* PGMetarSource.h */,
 				EDB0C2E91EBBF27600AE14CB /* PGMetarSource.m */,
+				EDB0C2EB1EBCF75300AE14CB /* PGMetarVideo.h */,
+				EDB0C2EC1EBCF75300AE14CB /* PGMetarVideo.m */,
+				EDB0C2EE1EBCF82D00AE14CB /* PGMetarImage.h */,
+				EDB0C2EF1EBCF82D00AE14CB /* PGMetarImage.m */,
+				EDB0C2F11EBCFA6F00AE14CB /* PGMetarArtifact.h */,
+				EDB0C2F21EBCFA6F00AE14CB /* PGMetarArtifact.m */,
+				EDB0C2F71EBCFB4E00AE14CB /* PGMetarArtifactEmotion.h */,
+				EDB0C2F81EBCFB4E00AE14CB /* PGMetarArtifactEmotion.m */,
+				EDB0C2FA1EBCFC2200AE14CB /* PGMetarLocation.h */,
+				EDB0C2FB1EBCFC2200AE14CB /* PGMetarLocation.m */,
+				EDB0C2FE1EBCFD7600AE14CB /* PGMetarLocationVenue.h */,
+				EDB0C2FF1EBCFD7600AE14CB /* PGMetarLocationVenue.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -8590,6 +8620,7 @@
 				F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */,
 				F24DA7CF1EAEA0F500C24AAB /* PGWatermarkOperationHPLink.m in Sources */,
 				F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */,
+				EDB0C2FC1EBCFC2200AE14CB /* PGMetarLocation.m in Sources */,
 				F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */,
 				F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperationHPLink.h in Sources */,
 				F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */,
@@ -8605,6 +8636,8 @@
 				F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */,
 				82362A591D5959870019F024 /* PGStickerItem.m in Sources */,
+				EDB0C2ED1EBCF75300AE14CB /* PGMetarVideo.m in Sources */,
+				EDB0C2F31EBCFA6F00AE14CB /* PGMetarArtifact.m in Sources */,
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
 				E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */,
 				829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
@@ -8622,6 +8655,7 @@
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
+				EDB0C3001EBCFD7600AE14CB /* PGMetarLocationVenue.m in Sources */,
 				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
 				F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
@@ -8658,6 +8692,7 @@
 				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
+				EDB0C2F91EBCFB4E00AE14CB /* PGMetarArtifactEmotion.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				8218C5641DDBE90C000855D8 /* PGSideBarMenuTableViewCell.m in Sources */,
@@ -8691,6 +8726,7 @@
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
+				EDB0C2F01EBCF82D00AE14CB /* PGMetarImage.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
 				8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F24DA7CE1EAEA0F500C24AAB /* PGLinkSettings.m in Sources */,

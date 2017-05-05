@@ -10,4 +10,17 @@
 
 @implementation PGMetarMedia
 
+- (instancetype)initWithDictionary: (NSDictionary *) dict
+{
+    self = [super init];
+    if (self) {
+        self.mime = [dict objectForKey:@"mime"];
+    }
+    return self;
+}
+
+- (NSDictionary *) getDict {
+    return @{@"mime" : self.mime};
+}
+
 @end
