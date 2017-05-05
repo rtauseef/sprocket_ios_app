@@ -32,7 +32,12 @@
 
 - (void)checkPrintQueue:(NSTimer *)timer
 {
-    if ([MPBTPrintManager sharedInstance].queueSize > 0) {
+    [self refreshIndicator];
+}
+
+- (void)refreshIndicator
+{
+    if ([MPBTPrintManager sharedInstance].queueSize >= 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setImage:[UIImage imageNamed:@"hamburgerActive"] forState:UIControlStateNormal];
         });
