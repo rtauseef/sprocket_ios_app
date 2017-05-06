@@ -52,7 +52,9 @@
         operationData.localOperationIdentifier = [NSString stringWithFormat:@"L-Payoff-%@",options[kMPBTImageProcessorLocalIdentifierKey]];
         operationData.printerIdentifier =  operationData.localOperationIdentifier;
     }
-    operationData.payoffURL = [[PGPayoffManager sharedInstance] createURLWithPayoff:self.metadata];
+    
+    operationData.metadata = self.metadata;
+    //operationData.payoffURL = [[PGPayoffManager sharedInstance] createURLWithPayoff:self.metadata];
     
     // changed from Link to Metar
     [PGWatermarkOperationHPMetar executeWithOperationData:operationData progress:^(double progress) {
@@ -63,7 +65,7 @@
         self.finishedWatermarking = YES;
         // created trigger on backend, we can save the watermark to local database if no errors occurred.
         if( (!error) && outputImage ) {
-            [[PGOfflinePayoffDatabase sharedInstance] saveMetadata:self.metadata];
+            //[[PGOfflinePayoffDatabase sharedInstance] saveMetadata:self.metadata];
         }
         if (self.delegate && [self.delegate respondsToSelector:@selector(didCompleteProcessing:result:error:)]) {
             [self.delegate didCompleteProcessing:self result:outputImage error:error];
@@ -72,7 +74,7 @@
 }
 
 
-- (instancetype)initWithMetadata:(PGPayoffMetadata *)metadata {
+- (instancetype)initWithMetadata:(PGMetarMedia *)metadata {
     self = [super init];
     if (self) {
         self.metadata = metadata;
@@ -81,7 +83,7 @@
     return self;
 }
 
-+ (instancetype)processorWithMetadata:(PGPayoffMetadata *)metadata {
++ (instancetype)processorWithMetadata:(PGMetarMedia *)metadata {
     return [[self alloc] initWithMetadata:metadata];
 }
 

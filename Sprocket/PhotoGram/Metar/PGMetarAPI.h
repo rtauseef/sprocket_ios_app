@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "PGMetarImageTag.h"
+#import "PGMetarMedia.h"
 
 @interface PGMetarAPI : NSObject
 
 typedef NS_ENUM(NSInteger, PGMetarAPIError) {
-    PGMetarAPIErrorRequestFailed
+    PGMetarAPIErrorRequestFailed,
+    PGMetarAPIErrorCreatingJsonForMediaObject,
 };
 
 - (void) authenticate: (nullable void (^)(BOOL success)) completion;
@@ -20,9 +22,9 @@ typedef NS_ENUM(NSInteger, PGMetarAPIError) {
 - (void) getAccessToken: (nullable void (^)(NSError * _Nullable error)) completion;
 - (void) uploadImage: (UIImage *_Nullable) image completion: (nullable void (^)(NSError * _Nullable error, PGMetarImageTag * _Nullable imageTag)) completion;
 - (void) downloadWatermarkedImage: (PGMetarImageTag *_Nonnull) imageTag completion: (nullable void (^)(NSError * _Nullable error, UIImage * _Nullable watermarkedImage)) completion;
+- (void) setIMageMetadata: (PGMetarImageTag *_Nonnull) imageTag mediaMetada:(PGMetarMedia *_Nonnull) metadata completion: (nullable void (^)(NSError * _Nullable error)) completion;
 
 // TODO: implement
-- (void) setImageMetadata;
 - (void) requestImageMetadata;
 - (void) requestImageMetadataWithFilter;
 

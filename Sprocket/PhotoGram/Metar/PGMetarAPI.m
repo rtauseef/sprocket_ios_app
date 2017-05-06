@@ -10,6 +10,12 @@
 #import "PGMetarUser.h"
 #import <CommonCrypto/CommonHMAC.h>
 
+@interface PGMetarAPI()
+
+@property (assign, nonatomic) BOOL authRetry;
+
+@end
+
 @implementation PGMetarAPI
 
 NSString * const PGMetarAPIDomain = @"com.hp.sprocket.metarapi";
@@ -152,8 +158,33 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     NSString *XHPError = [[response allHeaderFields] objectForKey:@"X-HP-ErrorCode"];
     
     // TODO: better handling HP response codes, renew token when needed
-    
-    completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@",(int) [response statusCode], XHPError]}]);
+    if ([response statusCode] == 401 && !self.authRetry) {
+        self.authRetry = YES;
+     
+        PGMetarUser *user = [[PGMetarUser alloc] init];
+        [self saveCredentialsToStorage:user];
+        
+        [self challenge:^(NSError * _Nullable error) {
+            self.authRetry = NO;
+            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new challenge",(int) [response statusCode], XHPError]}]);
+        }];
+    } else if ([response statusCode] == 403 && !self.authRetry) {
+        // needs a new token
+        self.authRetry = YES;
+        [self getAccessToken:^(NSError * _Nullable error) {
+            
+            // invalidating user, two 403 in a row
+            if (error != nil) {
+                PGMetarUser *user = [[PGMetarUser alloc] init];
+                [self saveCredentialsToStorage:user];
+            }
+            
+            self.authRetry = NO;
+            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new token",(int) [response statusCode], XHPError]}]);
+        }];
+    } else {
+        completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@",(int) [response statusCode], XHPError]}]);
+    }
 }
 
 #pragma mark METAR API CALLS
@@ -234,9 +265,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                  
                                                  NSString *account = [authData objectForKey:@"account"];
                                                  NSString *expire = [authData objectForKey:@"expire"];
-                                                 NSString *secret = [authData objectForKey:@"secret"];
                                                  NSString *token = [authData objectForKey:@"token"];
-                                                 
+                                                 NSString *secret = [[self getCredentialsFromStorage] secret];
+                                                                     
                                                  if (account && expire && secret && token) {
                                                      PGMetarUser *user =  [[PGMetarUser alloc] initWithToken:token secret:secret accountID:account expire:expire];
                                                      [self saveCredentialsToStorage:user];
@@ -322,6 +353,54 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
                                                      completion(error, nil);
+                                                 }];
+                                             }
+                                         }
+                                     }] resume];
+}
+
+- (void) setIMageMetadata: (PGMetarImageTag *_Nonnull) imageTag mediaMetada:(PGMetarMedia *_Nonnull) metadata completion: (nullable void (^)(NSError * _Nullable error)) completion {
+    
+    NSString *requestString = [NSString stringWithFormat:@"%@/resource/tag/%@/meta", kMetarAPIURL, imageTag.resource];
+    NSURL *requestUrl = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
+    
+    [request setURL:requestUrl];
+    [request setHTTPMethod:@"POST"];
+    
+    NSError *jsonError;
+    
+    NSDictionary *media = @{@"media" : [metadata getDict]};
+    NSDictionary *to = @{@"to" : media};
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:to options:NSJSONWritingPrettyPrinted error:&jsonError];
+    
+    if (jsonError != nil) {
+        completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorCreatingJsonForMediaObject userInfo:@{ NSLocalizedDescriptionKey: @"Failed to create jSON from PGMetarMedia dictionary"}]);
+        return;
+    }
+    
+    NSString *jsonString = [NSString stringWithCString:[jsonData bytes] encoding:NSUTF8StringEncoding];
+    //TODO: remove me
+    NSLog(@"JSON: \n%@",jsonString);
+    
+    [request setHTTPBody:jsonData];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+      
+                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                         if (error) {
+                                             completion(error);
+                                         } else {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                             if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
+                                                 completion(nil);
+                                             } else if ([httpResponse statusCode] == 206) {
+                                                 //TODO: handle partially accepted
+                                                 completion(nil);
+                                             } else {
+                                                 [self handleError:httpResponse completion:^(NSError *error) {
+                                                     completion(error);
                                                  }];
                                              }
                                          }

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGMetarMedia.h"
 
 /**
  The data used to execute a 'PGWatermarkOperation' operation.
@@ -20,6 +21,7 @@
 @property (nonatomic, nonnull) NSString *printerIdentifier;
 // The URL that will be shown when the image is scanned
 @property (nonatomic, nonnull) NSURL *payoffURL;
+@property (strong, nonatomic) PGMetarMedia * _Nullable metadata;
 
 @end
 

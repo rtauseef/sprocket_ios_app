@@ -20,7 +20,42 @@
 }
 
 - (NSDictionary *) getDict {
-    return @{@"mime" : self.mime};
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.mime)
+        [dict setObject:self.mime forKey:@"mime"];
+    
+    if ([self getMediaType])
+        [dict setObject:[self getMediaType] forKey:@"mediaType"];
+    
+    return dict;
+}
+
+- (NSString *) getMediaType {
+    if (self.mediaType == PGMetarMediaTypeVideo) {
+        return @"video";
+    } else if (self.mediaType == PGMetarMediaTypeImage) {
+        return @"image";
+    } else {
+        return nil;
+    }
+}
+
++(instancetype)metaFromHPPRMedia: (HPPRMedia *) media {
+    PGMetarMedia *meta = [[self alloc] init];
+    
+    switch (media.mediaType) {
+        case kHPRMediaTypeImage:
+            meta.mediaType = PGMetarMediaTypeImage;
+            break;
+        case kHPRMediaTypeVideo:
+            meta.mediaType = PGMetarMediaTypeVideo;
+            break;
+        default:
+            break;
+    }
+    
+    return meta;
 }
 
 @end

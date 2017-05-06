@@ -60,7 +60,7 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
             
             [self updateProgress: 0.1];
             
-            // testing get access token, this only need to run when token is no longer valid
+            // TODO: testing get access token, this only need to run when token is no longer valid
             [api getAccessToken:^(NSError *error) {
                 if (error == nil) {
                     
@@ -73,7 +73,13 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
                             
                             [api downloadWatermarkedImage:imageTag completion:^(NSError * _Nullable error, UIImage * _Nullable watermarkedImage) {
                                 if (error == nil) {
-                                    [self handleCallback:completion image:watermarkedImage error:error];
+                                    [api setIMageMetadata:imageTag mediaMetada:self.operationData.metadata completion:^(NSError * _Nullable error) {
+                                        if (error == nil) {
+                                            [self handleCallback:completion image:watermarkedImage error:error];
+                                        } else {
+                                            [self handleCallback:completion image:nil error:error];
+                                        }
+                                    }];
                                 } else {
                                     [self handleCallback:completion image:nil error:error];
                                 }
@@ -84,7 +90,7 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
                         }
                     }];
                 } else {
-                    [self handleCallback:completion image:nil error:[NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"Error getting access token."}]];
+                    [self handleCallback:completion image:nil error:error];
                 }
             }];
             

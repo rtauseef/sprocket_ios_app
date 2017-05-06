@@ -821,7 +821,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 -(MPBTImageProcessor *) createPrintProcessorFromMedia:(HPPRMedia*)media {
     PGPayoffProcessor * processor = nil;
     if ([PGLinkSettings linkEnabled] && media ) {
-        PGPayoffMetadata * meta = [PGPayoffMetadata metaFromHPPRMedia:media];
+        PGMetarMedia * meta = [PGMetarMedia metaFromHPPRMedia:media];
         // if we created payoff
         if( meta ) {
             processor = [PGPayoffProcessor processorWithMetadata:meta];
