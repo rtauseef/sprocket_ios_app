@@ -739,7 +739,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                         [metrics setObject:origin forKey:kMetricsOrigin];
 
                         if (isPrintDirect) {
-                            [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress) {
+                            [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
                                 return [self handlePrintQueueStatus:status progress:progress];
                             }];
                             canResumePrinting = NO;
@@ -800,7 +800,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (canResumePrinting) {
-                            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress) {
+                            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
                                 return [self handlePrintQueueStatus:status progress:progress];
                             }];
 
