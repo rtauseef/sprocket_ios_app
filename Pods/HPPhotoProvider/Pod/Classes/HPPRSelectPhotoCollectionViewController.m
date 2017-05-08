@@ -115,11 +115,15 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     [self.view addGestureRecognizer:longPressRecognizer];
+    
+    [self refresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.provider.imageRequestsCancelled = NO;
     
     if (self.customNoPhotosMessage) {
         self.noPhotosLabel.text = self.customNoPhotosMessage;
@@ -130,8 +134,6 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
     if  (self.allowsMultipleSelection) {
         [self beginMultiSelect];
     }
-    
-    [self refresh];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
 }
