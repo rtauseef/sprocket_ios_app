@@ -30,9 +30,14 @@
 @class UAPreferenceDataStore;
 @class UAChannelCapture;
 
+
 @interface UAirship()
 
 NS_ASSUME_NONNULL_BEGIN
+
+///---------------------------------------------------------------------------------------
+/// @name Airship Internal Properties
+///---------------------------------------------------------------------------------------
 
 // Setters for public readonly-getters
 @property (nonatomic, strong) UAConfig *config;
@@ -87,6 +92,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) UAAutomation *sharedAutomation;
 
+///---------------------------------------------------------------------------------------
+/// @name Airship Internal Methods
+///---------------------------------------------------------------------------------------
 
 /**
  * Handle app init. This should be called from NSNotification center
@@ -107,6 +115,12 @@ NS_ASSUME_NONNULL_BEGIN
  * terminates.
  */
 + (void)land;
+
+/**
+ * Sets the shared airship.
+ * @param airship The shared airship instance.
+ */
++ (void)setSharedAirship:(UAirship * __nullable)airship;
 
 NS_ASSUME_NONNULL_END
 
