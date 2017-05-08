@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRAuthTokenService.h
+../../../HPPhotoProvider/Pod/Classes/HPPRAuthTokenService.h

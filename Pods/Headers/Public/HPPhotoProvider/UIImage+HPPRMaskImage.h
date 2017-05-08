@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/Additions/UIImage+HPPRMaskImage.h
+../../../HPPhotoProvider/Pod/Classes/Additions/UIImage+HPPRMaskImage.h

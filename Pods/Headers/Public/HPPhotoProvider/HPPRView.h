@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRView.h
+../../../HPPhotoProvider/Pod/Classes/HPPRView.h

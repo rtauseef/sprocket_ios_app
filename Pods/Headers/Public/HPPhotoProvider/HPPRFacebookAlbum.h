@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRFacebookAlbum.h
+../../../HPPhotoProvider/Pod/Classes/HPPRFacebookAlbum.h

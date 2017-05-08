@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAScheduleTrigger+Internal.h"
 #import "UAJSONPredicate.h"
@@ -33,6 +10,7 @@ NSString *const UAScheduleTriggerPredicateKey = @"predicate";
 NSString *const UAScheduleTriggerGoalKey = @"goal";
 
 // Trigger Names
+NSString *const UAScheduleTriggerAppInitName = @"app_init";
 NSString *const UAScheduleTriggerAppForegroundName = @"foreground";
 NSString *const UAScheduleTriggerAppBackgroundName = @"background";
 NSString *const UAScheduleTriggerRegionEnterName = @"region_enter";
@@ -58,6 +36,10 @@ NSString * const UAScheduleTriggerErrorDomain = @"com.urbanairship.schedule_trig
 
 + (instancetype)triggerWithType:(UAScheduleTriggerType)type goal:(NSNumber *)goal predicate:(UAJSONPredicate *)predicate {
     return [[UAScheduleTrigger alloc] initWithType:type goal:goal predicate:predicate];
+}
+
++ (instancetype)appInitTriggerWithCount:(NSUInteger)count {
+    return [UAScheduleTrigger triggerWithType:UAScheduleTriggerAppInit goal:@(count) predicate:nil];
 }
 
 + (instancetype)foregroundTriggerWithCount:(NSUInteger)count {
@@ -123,25 +105,9 @@ NSString * const UAScheduleTriggerErrorDomain = @"com.urbanairship.schedule_trig
         return nil;
     }
 
-    NSSet *keySet = [NSSet setWithArray:[json allKeys]];
-    NSSet *possibleKeys = [NSSet setWithArray:@[UAScheduleTriggerGoalKey, UAScheduleTriggerTypeKey, UAScheduleTriggerPredicateKey]];
-    if (![keySet isSubsetOfSet:possibleKeys]) {
-        if (error) {
-            NSMutableSet *invalid = [NSMutableSet setWithSet:keySet];
-            [invalid minusSet:possibleKeys];
-
-            NSString *msg = [NSString stringWithFormat:@"Invalid keys: %@", invalid];
-            *error =  [NSError errorWithDomain:UAScheduleTriggerErrorDomain
-                                          code:UAScheduleTriggerErrorCodeInvalidJSON
-                                      userInfo:@{NSLocalizedDescriptionKey:msg}];
-        }
-
-        return nil;
-    }
-
     UAScheduleTriggerType triggerType;
 
-    NSString *triggerTypeString = json[UAScheduleTriggerTypeKey];
+    NSString *triggerTypeString = [json[UAScheduleTriggerTypeKey] lowercaseString];
     if ([UAScheduleTriggerAppForegroundName isEqualToString:triggerTypeString]) {
         triggerType = UAScheduleTriggerAppForeground;
     } else if ([UAScheduleTriggerAppBackgroundName isEqualToString:triggerTypeString]) {
@@ -156,6 +122,8 @@ NSString * const UAScheduleTriggerErrorDomain = @"com.urbanairship.schedule_trig
         triggerType = UAScheduleTriggerCustomEventValue;
     } else if ([UAScheduleTriggerScreenName isEqualToString:triggerTypeString]) {
         triggerType = UAScheduleTriggerScreen;
+    } else if ([UAScheduleTriggerAppInitName isEqualToString:triggerTypeString]) {
+        triggerType = UAScheduleTriggerAppInit;
     } else {
 
         if (error) {
@@ -184,7 +152,6 @@ NSString * const UAScheduleTriggerErrorDomain = @"com.urbanairship.schedule_trig
 
         return nil;
     }
-
 
     UAJSONPredicate *predicate;
     if (json[UAScheduleTriggerPredicateKey]) {
@@ -217,8 +184,6 @@ NSString * const UAScheduleTriggerErrorDomain = @"com.urbanairship.schedule_trig
 
     return YES;
 }
-
-
 
 #pragma mark - NSObject
 

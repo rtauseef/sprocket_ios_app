@@ -41,9 +41,6 @@
     ],
     "Google/SignIn": [
 
-    ],
-    "GoogleAPIClientForREST/Drive": [
-
     ]
   },
   "xcconfig": {

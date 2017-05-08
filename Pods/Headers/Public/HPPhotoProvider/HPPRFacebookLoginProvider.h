@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRFacebookLoginProvider.h
+../../../HPPhotoProvider/Pod/Classes/HPPRFacebookLoginProvider.h

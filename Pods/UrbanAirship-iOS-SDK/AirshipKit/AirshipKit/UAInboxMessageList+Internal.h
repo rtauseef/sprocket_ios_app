@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAInboxMessageList.h"
 #import "UAInboxAPIClient+Internal.h"
@@ -30,23 +7,72 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/*
+ * SDK-private extensions to UAInboxMessageList
+ */
 @interface UAInboxMessageList ()
 
+///---------------------------------------------------------------------------------------
+/// @name Message List Internal Properties
+///---------------------------------------------------------------------------------------
+
+/**
+ * The Inbox API client instance.
+ */
 @property (nonatomic, strong) UAInboxAPIClient *client;
+
+/**
+ * The User instance.
+ */
 @property (nonatomic, strong) UAUser *user;
+
+/**
+ * The Inbox database manager.
+ */
 @property (nonatomic, strong) UAInboxDBManager *inboxDBManager;
 
+/**
+ * The current count of batch operations.
+ */
 @property (atomic, assign) NSUInteger batchOperationCount;
+
+/**
+ * The current count of retrieve operations.
+ */
 @property (atomic, assign) NSUInteger retrieveOperationCount;
+
+/**
+ * An array of messages in the inbox.
+ */
 @property (nonatomic, strong) NSArray<UAInboxMessage *> *messages;
+
+/**
+ * A dictionary of messages mapped to their IDs
+ */
 @property (nonatomic, strong) NSDictionary *messageIDMap;
+
+/**
+ * A dictionary of messages mapped to their URLs
+ */
 @property (nonatomic, strong) NSDictionary *messageURLMap;
+
+///---------------------------------------------------------------------------------------
+/// @name Message List Internal Methods
+///---------------------------------------------------------------------------------------
 
 /**
  * Loads the inbox with the current saved messages.
  */
 - (void)loadSavedMessages;
 
+/**
+ * Factory method for creating an Inbox Message List
+ *
+ * @param user The user.
+ * @param client The internal inbox API client.
+ * @param config The config.
+ * @return An allocated UAInboxMessageList instance.
+ */
 + (instancetype)messageListWithUser:(UAUser *)user
                              client:(UAInboxAPIClient *)client
                              config:(UAConfig *)config;

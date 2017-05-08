@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAPush.h"
 #import "UAirship.h"
@@ -124,6 +101,10 @@ extern NSString *const UAPushRemoveTagGroupsSettingsKey;
 
 @interface UAPush () <UAChannelRegistrarDelegate>
 
+///---------------------------------------------------------------------------------------
+/// @name Push Internal Properties
+///---------------------------------------------------------------------------------------
+
 /**
  * Device token as a string.
  */
@@ -184,9 +165,18 @@ extern NSString *const UAPushRemoveTagGroupsSettingsKey;
 @property (nonatomic, assign) UANotificationOptions authorizedNotificationOptions;
 
 /**
+ * Indicates whether the user has been prompted for notifications or not.
+ */
+@property (nonatomic, assign) BOOL userPromptedForNotifications;
+
+/**
  * The push registration instance.
  */
 @property (nonatomic, strong) id<UAAPNSRegistrationProtocol> pushRegistration;
+
+///---------------------------------------------------------------------------------------
+/// @name Push Internal Methods
+///---------------------------------------------------------------------------------------
 
 /**
  * Factory method to create a push instance.
@@ -240,7 +230,6 @@ extern NSString *const UAPushRemoveTagGroupsSettingsKey;
 - (void)channelCreated:(NSString *)channelID
        channelLocation:(NSString *)channelLocation
               existing:(BOOL)existing;
-
 
 /**
  * Creates a UAChannelRegistrationPayload.
@@ -312,6 +301,24 @@ extern NSString *const UAPushRemoveTagGroupsSettingsKey;
  * @param handler The completion handler.
  */
 - (void)handleRemoteNotification:(UANotificationContent *)notification foreground:(BOOL)foreground completionHandler:(void (^)(UIBackgroundFetchResult))handler;
+
+/**
+ * Called by the UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:
+ * so UAPush can forward the delegate call to its registration delegate.
+ *
+ * @param application The application instance.
+ * @param deviceToken The APNS device token.
+ */
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+
+/**
+ * Called by the UIApplicationDelegate's application:didFailToRegisterForRemoteNotificationsWithError:
+ * so UAPush can forward the delegate call to its registration delegate.
+ *
+ * @param application The application instance.
+ * @param error An NSError object that encapsulates information why registration did not succeed.
+ */
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
 
 @end

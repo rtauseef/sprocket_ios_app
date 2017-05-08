@@ -1,1 +1,1 @@
-../../../../../hp_photo_provider/Pod/Classes/HPPRAppearance.h
+../../../HPPhotoProvider/Pod/Classes/HPPRAppearance.h
