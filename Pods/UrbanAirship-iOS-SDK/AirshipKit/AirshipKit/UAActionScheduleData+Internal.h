@@ -1,43 +1,83 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+@class UAScheduleDelayData;
+@class UAScheduleTriggerData;
+
+/**
+ * CoreData class representing the backing data for
+ * a UAActionSchedule.
+ *
+ * This class should not ordinarily be used directly.
+ */
 @interface UAActionScheduleData : NSManagedObject
 
+///---------------------------------------------------------------------------------------
+/// @name Action Schedule Data Properties
+///---------------------------------------------------------------------------------------
+
+/**
+ * The schedule's identifier.
+ */
 @property (nullable, nonatomic, retain) NSString *identifier;
+
+/**
+ * The schedule's group.
+ */
 @property (nullable, nonatomic, retain) NSString *group;
+
+/**
+ * Number of times the actions will be triggered until the schedule is
+ * canceled.
+ */
 @property (nullable, nonatomic, retain) NSNumber *limit;
+
+/**
+ * The number of times the action has been triggered.
+ */
 @property (nullable, nonatomic, retain) NSNumber *triggeredCount;
+
+/**
+ * Actions payload to run when the schedule is triggered represented
+ * as a JSON string.
+ */
 @property (nullable, nonatomic, retain) NSString *actions;
-@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *triggers;
+
+/**
+ * Set of triggers. Triggers define conditions on when to run
+ * the actions.
+ */
+@property (nullable, nonatomic, retain) NSSet<UAScheduleTriggerData *> *triggers;
+
+/**
+ * The schedule's start time.
+ */
 @property (nullable, nonatomic, retain) NSDate *start;
+
+/**
+ * The schedule's end time. After the end time the schedule will be canceled.
+ */
 @property (nullable, nonatomic, retain) NSDate *end;
+
+/**
+ * The schedule's delay in seconds.
+ */
+@property (nullable, nonatomic, retain) UAScheduleDelayData *delay;
+
+/**
+ * Checks if the schedule's actions are pending execution.
+ */
+@property (nullable, nonatomic, retain) NSNumber *isPendingExecution;
+
+/**
+ * The delayed execution date. This delay date takes precedent over the delay in seconds.
+ */
+@property (nullable, nonatomic, retain) NSDate *delayedExecutionDate;
 
 @end
 

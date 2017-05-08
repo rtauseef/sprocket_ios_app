@@ -13,7 +13,7 @@
 #import "HPPRGoogleAlbum.h"
 #import "HPPR.h"
 #import "HPPRCacheService.h"
-#import "HPPRFlickrPhotoProvider.h"
+#import "HPPRGooglePhotoProvider.h"
 
 @implementation HPPRGoogleAlbum
 
@@ -24,12 +24,21 @@
     self = [super init];
     
     if (self) {
-        self.provider = [HPPRFlickrPhotoProvider sharedInstance];
-        self.objectID = [attributes objectForKey:@"id"];
-        self.name = [[attributes objectForKey:@"title"] objectForKey:@"_content"];
-        self.photoCount = [[attributes objectForKey:@"photos"] integerValue];
-        self.coverPhotoThumbnailURL = [[attributes objectForKey:@"primary_photo_extras"] objectForKey:@"url_m"];
-        self.coverPhotoFullSizeURL = [[attributes objectForKey:@"primary_photo_extras"] objectForKey:@"url_o"];
+        self.provider = [HPPRGooglePhotoProvider sharedInstance];
+        self.objectID = [attributes objectForKey:@"gphoto:id"];
+        self.name = [attributes objectForKey:@"media:group"];
+        
+        if ([attributes objectForKey:@"gphoto:numphotos"]) {
+            self.photoCount = [[attributes objectForKey:@"gphoto:numphotos"] integerValue];
+        } else if ([attributes objectForKey:@"totalResults"]) {
+            self.photoCount = [[attributes objectForKey:@"totalResults"] integerValue];
+        }
+        
+        NSArray *thumbnails = [attributes objectForKey:@"thumbnails"];
+        if (thumbnails  &&  thumbnails.count > 0) {
+            self.coverPhotoThumbnailURL = [[attributes objectForKey:@"thumbnails"][0] objectForKey:@"url"];
+            self.coverPhotoFullSizeURL = self.coverPhotoThumbnailURL;
+        }
     }
     
     return self;

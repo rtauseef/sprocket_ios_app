@@ -1,16 +1,16 @@
 /*
  Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
+ 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
-
+ 
  1. Redistributions of source code must retain the above copyright notice, this
  list of conditions and the following disclaimer.
-
+ 
  2. Redistributions in binary form must reproduce the above copyright notice,
  this list of conditions and the following disclaimer in the documentation
  and/or other materials provided with the distribution.
-
+ 
  THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
@@ -23,28 +23,25 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "UACloseWindowAction+Internal.h"
-#import "UARichContentWindow.h"
+#import "UAWebView+Internal.h"
+#import "UAirship.h"
+#import "UAConfig.h"
 
-@implementation UACloseWindowAction
+// Had to create this class because Interface Builder doesn't directly support WKWebView
+@implementation UAWebView
 
-- (BOOL)acceptsArguments:(UAActionArguments *)arguments {
-    return (BOOL)(arguments.situation == UASituationWebViewInvocation &&
-                  [arguments.metadata objectForKey:UAActionMetadataWebViewKey]);
-}
-
-- (void)performWithArguments:(UAActionArguments *)arguments
-           completionHandler:(UAActionCompletionHandler)completionHandler {
-
-    UIWebView *webView = [arguments.metadata objectForKey:UAActionMetadataWebViewKey];
-
-    id webViewDelegate = webView.delegate;
-
-    if ([webViewDelegate respondsToSelector:@selector(closeWebView:animated:)]) {
-        [webViewDelegate closeWebView:webView animated:YES];
-    }
-
-    completionHandler([UAActionResult emptyResult]);
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    // An initial frame for initialization must be set, but it will be overridden
+    // below by the autolayout constraints set in interface builder.
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    WKWebViewConfiguration *myConfiguration = [WKWebViewConfiguration new];
+    
+    self = [super initWithFrame:frame configuration:myConfiguration];
+    
+    // Apply constraints from interface builder.
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+ 
+    return self;
 }
 
 @end

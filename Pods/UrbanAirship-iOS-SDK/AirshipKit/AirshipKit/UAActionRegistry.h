@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import <Foundation/Foundation.h>
 #import "UAAction.h"
@@ -57,6 +34,8 @@
 #define kUAFetchDeviceInfoActionDefaultRegistryAlias @"^fdi"
 #define kUAChannelCaptureActionDefaultRegistryName @"channel_capture_action"
 #define kUAChannelCaptureActionDefaultRegistryAlias @"^cc"
+#define kUAEnableFeatureActionDefaultRegistryName @"enable_feature"
+#define kUAEnableFeatureActionDefaultRegistryAlias @"^ef"
 
 
 #define kUALandingPageActionLastOpenTimeLimitInSeconds @(7 * 86400) // 1 week
@@ -74,11 +53,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) NSSet<NSMutableDictionary *> *registeredEntries;
 
+///---------------------------------------------------------------------------------------
+/// @name Action Registry Factory
+///---------------------------------------------------------------------------------------
+
 /**
  * Factory method to create an action registry with the default action entries.
  * @return An action registry with the default action entries.
  */
 + (instancetype)defaultRegistry;
+
+///---------------------------------------------------------------------------------------
+/// @name Action Registry Core Methods
+///---------------------------------------------------------------------------------------
 
 /**
  * Registers an action with a predicate.
@@ -130,7 +117,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(BOOL)registerAction:(UAAction *)action name:(NSString *)name;
 
-
 /**
  * Registers an action.
  *
@@ -145,7 +131,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(BOOL)registerAction:(UAAction *)action names:(NSArray *)names;
 
-
 /**
  * Returns a registered action for a given name.
  * 
@@ -155,6 +140,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(nullable UAActionRegistryEntry *)registryEntryWithName:(NSString *)name;
 
+///---------------------------------------------------------------------------------------
+/// @name Action Registry Management
+///---------------------------------------------------------------------------------------
 
 /**
  * Adds a situation override action to be used instead of the default
@@ -171,7 +159,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)addSituationOverride:(UASituation)situation
             forEntryWithName:(NSString *)name
                       action:(nullable UAAction *)action;
-
 
 /**
  * Updates the predicate for a registered entry.
@@ -204,7 +191,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)removeName:(NSString *)name;
 
-
 /**
  * Removes an entry and all of its registered names.
  *
@@ -213,7 +199,6 @@ NS_ASSUME_NONNULL_BEGIN
  * entry is a reserved action and is unable to be removed.
  */
 - (BOOL)removeEntryWithName:(NSString *)name;
-
 
 /**
  * Adds a name to a registered entry.

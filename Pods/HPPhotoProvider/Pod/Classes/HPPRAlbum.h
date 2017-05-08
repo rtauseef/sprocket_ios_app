@@ -16,6 +16,7 @@
 
 #define HP_PHOTO_PROVIDER_DOMAIN @"com.hp.photo-provider-pod"
 #define ALBUM_DOES_NOT_EXISTS      -100
+#define PARSE_ERROR                -101
 
 @class HPPRSelectPhotoProvider;
 
