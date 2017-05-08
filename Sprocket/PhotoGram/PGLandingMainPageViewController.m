@@ -31,6 +31,7 @@
 #import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
+#import "PGInAppMessageManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -39,7 +40,7 @@
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
@@ -302,7 +303,12 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (IBAction)facebookTapped:(id)sender
 {
-    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
+//    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
+
+    UAInAppMessage *message = [UAInAppMessage message];
+    message.alert = @"Well hello there!";
+
+    [[UAirship inAppMessaging] displayMessage:message];
 }
 
 - (IBAction)instagramTapped:(id)sender
@@ -535,6 +541,15 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 {
     [self goToSocialSourcePage:socialSource.type sender:button];
 }
+
+
+#pragma mark - PGInAppMessageHost
+
+- (BOOL)allowsInAppMessages
+{
+    return YES;
+}
+
 
 #pragma mark - Reset user defaults
 
