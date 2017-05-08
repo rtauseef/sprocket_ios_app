@@ -740,7 +740,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
                         if (isPrintDirect) {
                             [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                                return [self handlePrintQueueStatus:status progress:progress];
+                                return [self handlePrintQueueStatus:status progress:progress error:errorCode];
                             }];
                             canResumePrinting = NO;
                         } else {
@@ -801,7 +801,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (canResumePrinting) {
                             [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                                return [self handlePrintQueueStatus:status progress:progress];
+                                return [self handlePrintQueueStatus:status progress:progress error:errorCode];
                             }];
 
                             NSString *action = kEventPrintQueueAddSingleAction;
@@ -865,7 +865,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     });
 }
 
-- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress {
+- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress error:(NSInteger)errorCode {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
             [self showProgressView];
