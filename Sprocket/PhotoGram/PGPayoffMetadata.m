@@ -11,6 +11,7 @@
 //
 
 #import "PGPayoffMetadata.h"
+#import "HPPRMedia.h"
 
 NSString * const kPGPayoffMetadataURLKey = @"url";
 NSString * const kPGPayoffMetadataAssetIdentifierKey = @"phasset-id";
@@ -32,6 +33,15 @@ NSString * const kPGPayoffDataKey = @"data";
     return self;
 }
 
++(instancetype)metaFromHPPRMedia: (HPPRMedia *) media {
+    if( media.socialMediaImageUrl ) {
+        return [self onlineURLPayoff:[NSURL URLWithString:media.socialMediaImageUrl]];
+    } else if (media.asset && media.asset.mediaType == PHAssetMediaTypeVideo) {
+        return [self offlineVideoPayoffWithAsset:media.asset];
+    } else {
+        return nil;
+    }
+}
 
 +(instancetype)offlinePayoffFromDictionary:(NSDictionary *) data {
     PGPayoffMetadata * ret = [[PGPayoffMetadata alloc] init];

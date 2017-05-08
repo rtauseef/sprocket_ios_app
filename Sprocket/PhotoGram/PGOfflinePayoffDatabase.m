@@ -40,7 +40,6 @@ static NSString * const kOfflineMetadataUserDefaultsKey = @"pg-payoff-offline-me
     data[meta.uuid] = [meta toDictionary]; // save all data
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:kOfflineMetadataUserDefaultsKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
 }
 
 - (PGPayoffMetadata *)loadMetadata:(NSString *)id {

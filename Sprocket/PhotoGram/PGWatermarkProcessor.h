@@ -11,7 +11,7 @@
 //
 
 #import <MPBTImageProcessor.h>
-#import "PGWatermarkOperation.h"
+#import "PGWatermarkOperationHPLink.h"
 
 @interface PGWatermarkProcessor : MPBTImageProcessor
 

@@ -14,16 +14,18 @@
 
 #import "PGPayoffMetadata.h"
 #import <MPBTImageProcessor.h>
+#import "PGMetarMedia.h"
 
 @interface PGPayoffProcessor : MPBTImageProcessor
 
 
-@property (strong, nonatomic) PGPayoffMetadata * metadata;
+@property (strong, nonatomic) PGMetarMedia * metadata;
 
+- (instancetype)initWithMetadata:(PGMetarMedia *)metadata;
++ (instancetype)processorWithMetadata:(PGMetarMedia *)metadata;
 
-- (instancetype)initWithMetadata:(PGPayoffMetadata *)metadata;
-
-+ (instancetype)processorWithMetadata:(PGPayoffMetadata *)metadata;
+//- (instancetype)initWithMetadata:(PGPayoffMetadata *)metadata;
+//+ (instancetype)processorWithMetadata:(PGPayoffMetadata *)metadata;
 
 
 @end

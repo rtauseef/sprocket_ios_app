@@ -10,8 +10,8 @@
 // the license agreement.
 //
 
+#import "PGWatermarkOperationHPLink.h"
 #import "PGWatermarkProcessor.h"
-#import "PGWatermarkOperation.h"
 
 @interface PGWatermarkProcessor()
 
@@ -51,7 +51,7 @@
     operationData.localOperationIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.printerIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.payoffURL = self.watermarkURL;
-    [PGWatermarkOperation executeWithOperationData:operationData progress:^(double progress) {
+    [PGWatermarkOperationHPLink executeWithOperationData:operationData progress:^(double progress) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {
             [self.delegate didUpdateProgress:self progress:progress];
         }
