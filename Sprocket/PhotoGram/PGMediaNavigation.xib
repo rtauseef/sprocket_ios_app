@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -40,12 +40,12 @@
                             <rect key="frame" x="12" y="26" width="30" height="34"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE" userLabel="HamburgerButton">
-                            <rect key="frame" x="2" y="18" width="50" height="50"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYW-E6-1NE" userLabel="HamburgerButton" customClass="PGHamburgerButton">
+                            <rect key="frame" x="10.5" y="27.5" width="33" height="31"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="KfK-eo-Nhq"/>
-                                <constraint firstAttribute="height" constant="50" id="NfP-cH-54H"/>
+                                <constraint firstAttribute="width" constant="33" id="KfK-eo-Nhq"/>
+                                <constraint firstAttribute="height" constant="31" id="NfP-cH-54H"/>
                             </constraints>
                             <state key="normal" image="hamburger"/>
                             <connections>
@@ -170,6 +170,6 @@
     <resources>
         <image name="arrowDown" width="19" height="10"/>
         <image name="cameraLanding" width="76" height="76"/>
-        <image name="hamburger" width="22" height="18"/>
+        <image name="hamburger" width="37" height="35"/>
     </resources>
 </document>

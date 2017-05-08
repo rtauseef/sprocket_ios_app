@@ -10,14 +10,13 @@
 // the license agreement.
 //
 
+#import "PGAppNavigation.h"
 #import <MP.h>
 
 #import "PGSideBarMenuTableViewCell.h"
 #import <MPBTPrintManager.h>
 #import "UIColor+Style.h"
 
-NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
-NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 

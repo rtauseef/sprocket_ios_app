@@ -35,6 +35,7 @@
 #import "PGPayoffManager.h"
 #import "PGWatermarkProcessor.h"
 #import "PGLinkSettings.h"
+#import "PGPrintQueueManager.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -58,13 +59,13 @@
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
-static NSUInteger const kPGPreviewViewControllerImageViewNegativeMargin = 40;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
-static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.8;
+static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.4;
+static CGFloat const kDrawerAnimationDuration = 0.3;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate, PGPrintQueueManagerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -142,11 +143,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.imglyManager = [[PGImglyManager alloc] init];
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
-        self.containerViewHeightConstraint.constant = kPGPreviewViewControllerImageViewNegativeMargin;
-        self.drawerContainer.userInteractionEnabled = NO;
-        self.drawerContainer.hidden = YES;
-        
+        self.drawer.showCopies = NO;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
+
     } else {
         [[PGAnalyticsManager sharedManager] trackSelectPhoto:self.source];
     }
@@ -219,6 +218,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     for (PGGesturesView *visibleGestureView in self.carouselView.visibleItemViews) {
         visibleGestureView.editedImage = [visibleGestureView screenshotImage];
     }
+
+    if ([[MPBTPrintManager sharedInstance] queueSize] > 0 && self.carouselView.visibleItemViews.count > 0) {
+        [self peekDrawerAnimated:YES];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -276,7 +279,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     NSArray<IMGLYBoxedMenuItem *> *menuItems = [self.imglyManager menuItemsWithConfiguration:configuration];
 
     self.photoEditViewController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit menuItems:menuItems configuration:configuration];
-//    IMGLYPhotoEditViewController *photoController = [[IMGLYPhotoEditViewController alloc] initWithPhoto:photoToEdit configuration:configuration];
 
     self.photoEditViewController.delegate = self;
 
@@ -350,8 +352,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)reloadCarouselItems
 {
-    [self.view layoutIfNeeded];
-    [self.carouselView reloadData];
+    if (self.carouselView.visibleItemViews.count > 0) {
+        [self.view layoutIfNeeded];
+        [self.carouselView reloadData];
+        [self currentEditedImage];
+    }
 }
 
 - (BOOL)hasImageSelected
@@ -411,35 +416,63 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 #pragma mark - Drawer Methods
 
-- (void)closeDrawer
+- (void)setDrawerHeightAnimated:(BOOL)animated
 {
-    if (!self.drawer.isOpened) {
+    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
+
+    if (animated) {
+        [UIView animateWithDuration:kDrawerAnimationDuration animations:^{
+            [self reloadCarouselItems];
+        }];
+    } else {
+        [self reloadCarouselItems];
+    }
+}
+
+- (void)peekDrawerAnimated:(BOOL)animated
+{
+    if (self.drawer.isOpened || self.drawer.isPeeking) {
+        return;
+    }
+
+    self.drawer.isOpened = NO;
+    self.drawer.isPeeking = YES;
+
+    [self setDrawerHeightAnimated:animated];
+}
+
+- (void)closeDrawerAnimated:(BOOL)animated
+{
+    if (!self.drawer.isOpened && !self.drawer.isPeeking) {
         return;
     }
     
     self.drawer.isOpened = NO;
-    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
-    [self reloadCarouselItems];
+    self.drawer.isPeeking = NO;
+
+    [self setDrawerHeightAnimated:animated];
 }
 
-- (void)openDrawer
+- (void)openDrawerAnimated:(BOOL)animated
 {
     if (self.drawer.isOpened) {
         return;
     }
     
     self.drawer.isOpened = YES;
-    self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
-    [self reloadCarouselItems];
+    self.drawer.isPeeking = NO;
+
+    [self setDrawerHeightAnimated:animated];
 }
 
 #pragma mark - PGPreviewDrawerDelegate
 
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
 {
+    drawer.isPeeking = NO;
     self.containerViewHeightConstraint.constant = [drawer drawerHeight];
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:kDrawerAnimationDuration animations:^{
         [self reloadCarouselItems];
     }];
 }
@@ -465,14 +498,28 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         if (!drawer.isOpened) {
             threshold = [drawer drawerHeightOpened] * 0.3;
         }
-        
+        if (drawer.isPeeking) {
+            threshold = [drawer drawerHeightPeeking];
+        }
+
+        drawer.isPeeking = NO;
         drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
-        self.containerViewHeightConstraint.constant = [drawer drawerHeight];
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            [self reloadCarouselItems];
-        }];
+
+        [self setDrawerHeightAnimated:YES];
     }
+}
+
+- (void)PGPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
+{
+    [PGPrintQueueManager sharedInstance].delegate = self;
+    [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
+}
+
+
+#pragma mark - PGPrintQueueManagerDelegate
+
+- (void)pgPrintQueueManagerDidClearQueue:(PGPrintQueueManager *)printQueueManager {
+    [self closeDrawerAnimated:YES];
 }
 
 
@@ -558,7 +605,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
     [self showDownloadingImagesAlertWithCompletion:^{
-        [self closeDrawer];
+        [self closeDrawerAnimated:NO];
         [self saveSelectedPhotosWithCompletion:^(BOOL success) {
             if (success) {
                 if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
@@ -668,11 +715,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
     BOOL drawerWasOpened = self.drawer.isOpened;
-    [self closeDrawer];
+    [self closeDrawerAnimated:NO];
     [self showImgly];
     
     if (drawerWasOpened) {
-        [self openDrawer];
+        [self openDrawerAnimated:NO];
     }
 }
 
@@ -683,7 +730,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 
     [self showDownloadingImagesAlertWithCompletion:^{
-        [self closeDrawer];
+        BOOL drawerWasOpen = self.drawer.isOpened;
+
+        [self closeDrawerAnimated:NO];
         [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
             if (success) {
                 NSString *origin = @"";
@@ -808,7 +857,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
     [self showDownloadingImagesAlertWithCompletion:^{
-        [self closeDrawer];
+        [self closeDrawerAnimated:NO];
         [[MP sharedInstance] closeAccessorySession];
         
         [self presentActivityViewControllerWithActivities:nil];
@@ -886,12 +935,18 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 }
 
 - (void)dismissProgressView {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.progressView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.progressView removeFromSuperview];
-        self.progressView = nil;
-    }];
+    if (self.progressView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.progressView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.progressView removeFromSuperview];
+            self.progressView = nil;
+
+            if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+                [self peekDrawerAnimated:YES];
+            }
+        }];
+    }
 }
 
 - (MPPaper *)paper
