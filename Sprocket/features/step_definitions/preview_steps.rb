@@ -27,7 +27,15 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
                   if element_id == "close"
                     check_element_exists @current_page.close
                   else
-                  check_element_exists "view marked:'#{element_id}'"
+                      if element_id == "Download"
+                          check_element_exists @current_page.download
+                      else
+                          if element_id == "PreviewBardots"
+                              check_element_exists @current_page.preview_bar_dots
+                          else
+                              check_element_exists "view marked:'#{element_id}'"
+                          end
+                      end
                   end
                 end
               end
@@ -87,3 +95,48 @@ Then(/^I should see it in "(.*?)" size$/) do |size|
       raise "Image not zoomed out!" unless $post_img_frame_width < $curr_img_frame_width
   end
 end
+
+Then(/^I should see the preview-drawer "(.*?)"$/) do |drawer_move|
+    post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
+    post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
+    if drawer_move == "slides up"
+        raise "Drawer not found" unless post_img_frame_width < $curr_img_frame_width && post_img_frame_height < $curr_img_frame_height
+    else
+        raise "Drawer not closed" unless post_img_frame_width == $curr_img_frame_width && post_img_frame_height == $curr_img_frame_height
+    end
+end
+
+And(/^I should see "(.*?)" with "(.*?)" items and a right arrow$/) do |print_queue, number|
+    check_element_exists(@current_page.print_queue)
+    check_element_exists("view marked:'#{number}'")
+    check_element_exists("* id:'Arrow_Right'")
+    sleep(STEP_PAUSE)
+end
+
+Then(/^I should see "([^"]*)" mark with "([^"]*)" button enabled$/) do |copy, change_copy|
+    $num = copy.gsub(' Copy','').gsub(' Copies','')
+    check_element_exists("view marked:'#{copy}'")
+    if change_copy == "Increment"
+        check_element_exists "* id:'+ButtonEnabled'"
+    end
+    sleep(STEP_PAUSE)
+end
+
+Then(/^I should see the number of copies "(.*?)"$/) do |copies|
+    if copies == "incremented"
+        num_copies = $num.to_i
+        incr_num = num_copies + 1
+        copies_incr = query("UILabel index:3", :text)[0].gsub(' Copy','').gsub(' Copies','')
+        $copies_incr = copies_incr.to_i
+        raise "Copies not incremented" unless incr_num == $copies_incr
+    else
+        num_copies = $copies_incr
+        incr_num = num_copies - 1
+        copies_incr = query("UILabel index:3", :text)[0].gsub(' Copy','').gsub(' Copies','')
+        copies_incr = copies_incr.to_i
+        raise "Copies not incremented" unless incr_num == copies_incr
+    end
+end
+
+
+
