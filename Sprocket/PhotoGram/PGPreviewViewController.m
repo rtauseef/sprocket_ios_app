@@ -938,6 +938,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         }];
     }
     
+    if (self.totalPrints > 0) {
+        progress /= self.totalPrints;
+    }
+    
     [self.progressView setProgress:(CGFloat) progress];
     [self.progressView setText:processor.progressText];
 }
