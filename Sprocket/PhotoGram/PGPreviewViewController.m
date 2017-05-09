@@ -980,8 +980,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (NSDictionary *)extendedMetricsByGestureView:(PGGesturesView *)gestureView
 {
-    [PGAnalyticsManager sharedManager].photoSource = gestureView.media.photoProvider.name;
-     
+    if (self.source == [PGPreviewViewController cameraSource]) {
+        [PGAnalyticsManager sharedManager].photoSource = self.source;
+    } else {
+        [PGAnalyticsManager sharedManager].photoSource = gestureView.media.photoProvider.name;
+    }
+    
     return @{
              kMetricsTypePhotoSourceKey:[[PGAnalyticsManager sharedManager] photoSourceMetrics],
              kMPMetricsEmbellishmentKey:gestureView.embellishmentMetricManager.embellishmentMetricsString,
