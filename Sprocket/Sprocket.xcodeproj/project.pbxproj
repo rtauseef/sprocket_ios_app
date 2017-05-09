@@ -2185,6 +2185,24 @@
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
+		A84F86B61EC243B20049091C /* AurasmaPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86B51EC243B20049091C /* AurasmaPlugin.framework */; };
+		A84F86B81EC245280049091C /* com.hp.dev.hp-sprocket .key in Resources */ = {isa = PBXBuildFile; fileRef = A84F86B71EC245280049091C /* com.hp.dev.hp-sprocket .key */; };
+		A84F86BA1EC245890049091C /* AurasmaPlugin Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A84F86B91EC245890049091C /* AurasmaPlugin Bundle.bundle */; };
+		A84F86C41EC246470049091C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86BD1EC246470049091C /* libavcodec.a */; };
+		A84F86C51EC246470049091C /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86BE1EC246470049091C /* libavdevice.a */; };
+		A84F86C61EC246470049091C /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86BF1EC246470049091C /* libavfilter.a */; };
+		A84F86C71EC246470049091C /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86C01EC246470049091C /* libavformat.a */; };
+		A84F86C81EC246470049091C /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86C11EC246470049091C /* libavutil.a */; };
+		A84F86C91EC246470049091C /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86C21EC246470049091C /* libswresample.a */; };
+		A84F86CA1EC246470049091C /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86C31EC246470049091C /* libswscale.a */; };
+		A84F86CC1EC246610049091C /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86CB1EC246610049091C /* libpng.a */; };
+		A84F86CE1EC246740049091C /* libtar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86CD1EC246740049091C /* libtar.a */; };
+		A84F86D01EC246880049091C /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86CF1EC246880049091C /* libcrypto.a */; };
+		A84F86D61EC247380049091C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D11EC247380049091C /* Accelerate.framework */; };
+		A84F86D71EC247380049091C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D21EC247380049091C /* AudioToolbox.framework */; };
+		A84F86D81EC247380049091C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D31EC247380049091C /* JavaScriptCore.framework */; };
+		A84F86D91EC247380049091C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D41EC247380049091C /* OpenAL.framework */; };
+		A84F86DA1EC247380049091C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D51EC247380049091C /* OpenGLES.framework */; };
 		CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
 		CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		CC10808519CA122B00C1553A /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
@@ -3826,6 +3844,25 @@
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
+		A84F86B51EC243B20049091C /* AurasmaPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AurasmaPlugin.framework; path = Aurasma/AurasmaPlugin.framework; sourceTree = "<group>"; };
+		A84F86B71EC245280049091C /* com.hp.dev.hp-sprocket .key */ = {isa = PBXFileReference; lastKnownFileType = file; name = "com.hp.dev.hp-sprocket .key"; path = "Aurasma/com.hp.dev.hp-sprocket .key"; sourceTree = "<group>"; };
+		A84F86B91EC245890049091C /* AurasmaPlugin Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "AurasmaPlugin Bundle.bundle"; path = "Aurasma/AurasmaPlugin.framework/Versions/A/Resources/AurasmaPlugin Bundle.bundle"; sourceTree = "<group>"; };
+		A84F86BB1EC246070049091C /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Aurasma/libs/AFNetworking-2.6.1/libAFNetworking.a"; sourceTree = "<group>"; };
+		A84F86BD1EC246470049091C /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "Aurasma/libs/FFmpeg-2.5.2/libavcodec.a"; sourceTree = "<group>"; };
+		A84F86BE1EC246470049091C /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = "Aurasma/libs/FFmpeg-2.5.2/libavdevice.a"; sourceTree = "<group>"; };
+		A84F86BF1EC246470049091C /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = "Aurasma/libs/FFmpeg-2.5.2/libavfilter.a"; sourceTree = "<group>"; };
+		A84F86C01EC246470049091C /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = "Aurasma/libs/FFmpeg-2.5.2/libavformat.a"; sourceTree = "<group>"; };
+		A84F86C11EC246470049091C /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = "Aurasma/libs/FFmpeg-2.5.2/libavutil.a"; sourceTree = "<group>"; };
+		A84F86C21EC246470049091C /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = "Aurasma/libs/FFmpeg-2.5.2/libswresample.a"; sourceTree = "<group>"; };
+		A84F86C31EC246470049091C /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = "Aurasma/libs/FFmpeg-2.5.2/libswscale.a"; sourceTree = "<group>"; };
+		A84F86CB1EC246610049091C /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = "Aurasma/libs/libpng-1.6.13/libpng.a"; sourceTree = "<group>"; };
+		A84F86CD1EC246740049091C /* libtar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtar.a; path = "Aurasma/libs/libtar-1.2.20/libtar.a"; sourceTree = "<group>"; };
+		A84F86CF1EC246880049091C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Aurasma/libs/OpenSSL-1.0.1j/libcrypto.a"; sourceTree = "<group>"; };
+		A84F86D11EC247380049091C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		A84F86D21EC247380049091C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A84F86D31EC247380049091C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A84F86D41EC247380049091C /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		A84F86D51EC247380049091C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -4103,6 +4140,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84F86D61EC247380049091C /* Accelerate.framework in Frameworks */,
+				A84F86D71EC247380049091C /* AudioToolbox.framework in Frameworks */,
+				A84F86D81EC247380049091C /* JavaScriptCore.framework in Frameworks */,
+				A84F86D91EC247380049091C /* OpenAL.framework in Frameworks */,
+				A84F86DA1EC247380049091C /* OpenGLES.framework in Frameworks */,
+				A84F86D01EC246880049091C /* libcrypto.a in Frameworks */,
+				A84F86CE1EC246740049091C /* libtar.a in Frameworks */,
+				A84F86CC1EC246610049091C /* libpng.a in Frameworks */,
+				A84F86C41EC246470049091C /* libavcodec.a in Frameworks */,
+				A84F86C51EC246470049091C /* libavdevice.a in Frameworks */,
+				A84F86C61EC246470049091C /* libavfilter.a in Frameworks */,
+				A84F86C71EC246470049091C /* libavformat.a in Frameworks */,
+				A84F86C81EC246470049091C /* libavutil.a in Frameworks */,
+				A84F86C91EC246470049091C /* libswresample.a in Frameworks */,
+				A84F86CA1EC246470049091C /* libswscale.a in Frameworks */,
 				92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				F2D5A3AC1EB00611002F9DDC /* LinkReaderKit.framework in Frameworks */,
@@ -4115,6 +4167,7 @@
 				E34D505F199AB87B006D80E0 /* UIKit.framework in Frameworks */,
 				E34D505B199AB87B006D80E0 /* Foundation.framework in Frameworks */,
 				6C925F45D34C511902EE5709 /* libPods-Sprocket.a in Frameworks */,
+				A84F86B61EC243B20049091C /* AurasmaPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5387,6 +5440,8 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
+				A84F86B91EC245890049091C /* AurasmaPlugin Bundle.bundle */,
+				A84F86B71EC245280049091C /* com.hp.dev.hp-sprocket .key */,
 				929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
@@ -5416,6 +5471,23 @@
 		E34D5059199AB87B006D80E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A84F86D11EC247380049091C /* Accelerate.framework */,
+				A84F86D21EC247380049091C /* AudioToolbox.framework */,
+				A84F86D31EC247380049091C /* JavaScriptCore.framework */,
+				A84F86D41EC247380049091C /* OpenAL.framework */,
+				A84F86D51EC247380049091C /* OpenGLES.framework */,
+				A84F86CF1EC246880049091C /* libcrypto.a */,
+				A84F86CD1EC246740049091C /* libtar.a */,
+				A84F86CB1EC246610049091C /* libpng.a */,
+				A84F86BD1EC246470049091C /* libavcodec.a */,
+				A84F86BE1EC246470049091C /* libavdevice.a */,
+				A84F86BF1EC246470049091C /* libavfilter.a */,
+				A84F86C01EC246470049091C /* libavformat.a */,
+				A84F86C11EC246470049091C /* libavutil.a */,
+				A84F86C21EC246470049091C /* libswresample.a */,
+				A84F86C31EC246470049091C /* libswscale.a */,
+				A84F86BB1EC246070049091C /* libAFNetworking.a */,
+				A84F86B51EC243B20049091C /* AurasmaPlugin.framework */,
 				F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */,
 				8247843D1D77B3C300A693D0 /* Social.framework */,
 				8271DCD11D46D03500B21549 /* imglyKit.framework */,
@@ -6124,6 +6196,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84F86BA1EC245890049091C /* AurasmaPlugin Bundle.bundle in Resources */,
+				A84F86B81EC245280049091C /* com.hp.dev.hp-sprocket .key in Resources */,
 				82E3DA5A1E82EEED0008F600 /* icecream_tub_TN@2x.png in Resources */,
 				829A7A6A1EBB8E7E005D4938 /* summer_sunglasses_TN@3x.png in Resources */,
 				82E3D99E1E82EEED0008F600 /* cat.png in Resources */,
@@ -9604,6 +9678,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -9614,6 +9689,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -9642,6 +9723,7 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
+					"-all_load",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
@@ -9669,6 +9751,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -9679,6 +9762,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -9707,6 +9796,7 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
+					"-all_load",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
@@ -9819,6 +9909,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -9829,6 +9920,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = (
@@ -9858,6 +9955,7 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
+					"-all_load",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
@@ -9946,6 +10044,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -9956,6 +10055,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = (
@@ -9985,6 +10090,7 @@
 					SystemConfiguration,
 					"-framework",
 					UIKit,
+					"-all_load",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;

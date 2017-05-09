@@ -188,6 +188,10 @@
 	<string>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to take and print photos.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This experience includes contact information. Select ‘OK’ to save contacts to your device.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use your location to show Auras near you.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow access to print and save your photos.</string>
 	<key>UIAppFonts</key>
