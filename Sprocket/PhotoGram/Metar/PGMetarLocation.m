@@ -13,11 +13,16 @@
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    NSDictionary *geo = @{@"lat": [NSNumber numberWithDouble:self.geo.latitude],
-                          @"lon": [NSNumber numberWithDouble:self.geo.longitude]};
+    //TODO: 0,0 is valid
+    if (self.geo.latitude != 0 || self.geo.longitude != 0) {
+        NSDictionary *geo = @{@"lat": [NSNumber numberWithDouble:self.geo.latitude],
+                              @"lon": [NSNumber numberWithDouble:self.geo.longitude]};
+        [dict setObject:geo forKey:@"geo"];
+    }
     
-    [dict setObject:geo forKey:@"geo"];
-    [dict setObject:[NSNumber numberWithDouble:self.altitude] forKey:@"elevation"];
+    if (self.altitude) {
+        [dict setObject:self.altitude forKey:@"elevation"];
+    }
     
     if (self.name) {
         [dict setObject:self.name forKey:@"name"];

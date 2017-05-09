@@ -94,7 +94,7 @@
         [dict setObject:self.album forKey:@"album"];
    
     if (self.social)
-        [dict setObject:self.social forKey:@"social"];
+        [dict setObject:[self.social getDict] forKey:@"social"];
     
     if (self.identifier)
         [dict setObject:self.identifier forKey:@"id"];

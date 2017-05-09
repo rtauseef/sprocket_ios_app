@@ -16,4 +16,6 @@
 
 - (instancetype)initWithDate: (NSDate *) at andResource: (NSString *) resource andMedia: (NSString *) media;
 
+- (NSDictionary *) getDict;
+
 @end

@@ -68,19 +68,25 @@
     }
     
     if (self.tags) {
-        // build array
+        [dict setObject:self.tags forKey:@"tags"];
     }
     
     if (self.video) {
-        //
+        [dict setObject:[self.video getDict] forKey:@"video"];
     }
     
     if (self.image) {
-        //
+        [dict setObject:[self.image getDict] forKey:@"image"];
     }
     
     if (self.artifacts) {
-        // build array
+        NSMutableArray *artifactArray = [NSMutableArray array];
+        
+        for (PGMetarArtifact *artifact in self.artifacts) {
+            [artifactArray addObject:[artifact getDict]];
+        }
+             
+        [dict setObject:artifactArray forKey:@"artifacts"];
     }
     
     if (self.location) {
@@ -110,12 +116,25 @@
     }
 }
 
+- (PGMetarImage *) getImageAttributesForMedia: (HPPRMedia *) media {
+    PGMetarImage *image = [[PGMetarImage alloc] init];
+    
+    image.iso = media.isoSpeed;
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    image.exposure = [f numberFromString:media.shutterSpeed];
+    
+    return image;
+}
+
 +(instancetype)metaFromHPPRMedia: (HPPRMedia *) media {
     PGMetarMedia *meta = [[self alloc] init];
     
     switch (media.mediaType) {
         case kHPRMediaTypeImage:
             meta.mediaType = PGMetarMediaTypeImage;
+            meta.image = [meta getImageAttributesForMedia: media];
             break;
         case kHPRMediaTypeVideo:
             meta.mediaType = PGMetarMediaTypeVideo;
@@ -145,8 +164,13 @@
     if (media.location) {
         PGMetarLocation *location = [[PGMetarLocation alloc] init];
         location.geo = media.location.coordinate;
-        location.altitude = media.location.altitude;
+        
+        location.altitude = [NSNumber numberWithDouble:media.location.altitude];
         location.name = media.locationName;
+        
+        if (location.name == nil) {
+            location.name = [media.place name];
+        }
         
         meta.location = location;
     }
@@ -157,6 +181,16 @@
         source.owner = media.userName;
 
         meta.source = source;
+    
+        if (media.likes > 0 || media.comments > 0) {
+            PGMetarSocialActivity *socialActivity = [[PGMetarSocialActivity alloc] init];
+            socialActivity.likes = [NSNumber numberWithUnsignedInteger:media.likes];
+            socialActivity.comments = [NSNumber numberWithUnsignedInteger:media.comments];
+            PGMetarSocial *social = [[PGMetarSocial alloc] init];
+            social.activity = socialActivity;
+            
+            meta.source.social = social;;
+        }        
     }
     
     return meta;

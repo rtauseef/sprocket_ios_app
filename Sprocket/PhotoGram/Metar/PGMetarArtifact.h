@@ -12,17 +12,20 @@
 @interface PGMetarArtifact : NSObject
 
 typedef NS_ENUM(NSInteger, PGMetarArtifactType) {
+    PGMetarArtifactTypeUnknown,
     PGMetarArtifactTypeFace,
     PGMetarArtifactTypeObject,
     PGMetarArtifactTypeLogo
 };
 
-@property (assign, nonatomic) PGMetarArtifactType *type;
+@property (assign, nonatomic) PGMetarArtifactType type;
 @property (assign, nonatomic) CGRect *bounds;
 @property (assign, nonatomic) int confidence;
 @property (strong, nonatomic) PGMetarArtifactEmotion *emotion;
 @property (strong, nonatomic) NSString* name;
 @property (assign, nonatomic) int kind;
+
+- (NSDictionary *) getDict;
 
 @end
 

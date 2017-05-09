@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, PGMetarLocationKind) {
 
 @property (assign, nonatomic) CLLocationCoordinate2D geo;
 @property (strong, nonatomic) NSString *name;
-@property (assign, nonatomic) double altitude;
+@property (strong, nonatomic) NSNumber *altitude;
 @property (assign, nonatomic) PGMetarLocationType type;
 @property (assign, nonatomic) PGMetarLocationKind kind;
 @property (strong, nonatomic) PGMetarLocationVenue *venue;
