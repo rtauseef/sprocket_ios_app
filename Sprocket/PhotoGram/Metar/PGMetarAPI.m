@@ -288,7 +288,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
     
     //TODO: re-scaling?
-    NSData *jpeg = UIImageJPEGRepresentation(image, 0.9f);
+    NSData *jpeg = UIImageJPEGRepresentation(image, 0.9);
     
     NSLog(@"Watermarked image length: %ld bytes",[jpeg length]);
     

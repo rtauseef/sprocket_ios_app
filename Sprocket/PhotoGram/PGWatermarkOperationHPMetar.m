@@ -57,43 +57,31 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
     PGMetarAPI *api = [[PGMetarAPI alloc] init];
     [api authenticate:^(BOOL success) {
         if (success) {
+            [self updateProgress: 0.2];
             
-            [self updateProgress: 0.1];
-            
-            // TODO: testing get access token, this only need to run when token is no longer valid
-            [api getAccessToken:^(NSError *error) {
+            [api uploadImage:self.operationData.originalImage completion:^(NSError * _Nullable error, PGMetarImageTag * _Nullable imageTag) {
                 if (error == nil) {
                     
-                    [self updateProgress: 0.2];
+                    [self updateProgress: 0.7];
                     
-                    [api uploadImage:self.operationData.originalImage completion:^(NSError * _Nullable error, PGMetarImageTag * _Nullable imageTag) {
+                    [api downloadWatermarkedImage:imageTag completion:^(NSError * _Nullable error, UIImage * _Nullable watermarkedImage) {
                         if (error == nil) {
-                            
-                            [self updateProgress: 0.7];
-                            
-                            [api downloadWatermarkedImage:imageTag completion:^(NSError * _Nullable error, UIImage * _Nullable watermarkedImage) {
+                            [api setIMageMetadata:imageTag mediaMetada:self.operationData.metadata completion:^(NSError * _Nullable error) {
                                 if (error == nil) {
-                                    [api setIMageMetadata:imageTag mediaMetada:self.operationData.metadata completion:^(NSError * _Nullable error) {
-                                        if (error == nil) {
-                                            [self handleCallback:completion image:watermarkedImage error:error];
-                                        } else {
-                                            [self handleCallback:completion image:nil error:error];
-                                        }
-                                    }];
+                                    [self handleCallback:completion image:watermarkedImage error:error];
                                 } else {
                                     [self handleCallback:completion image:nil error:error];
                                 }
                             }];
-                            
                         } else {
                             [self handleCallback:completion image:nil error:error];
                         }
                     }];
+                    
                 } else {
                     [self handleCallback:completion image:nil error:error];
                 }
             }];
-            
         } else {
             [self handleCallback:completion image:nil error: [NSError errorWithDomain:PGWatermarkEmbedderDomainMetar code:PGWatermarkEmbedderErrorInputsErrorAPIAuth userInfo:@{ NSLocalizedDescriptionKey: @"API Auth Error."}]];
         }

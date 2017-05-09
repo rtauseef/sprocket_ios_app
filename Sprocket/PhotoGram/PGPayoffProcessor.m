@@ -43,7 +43,15 @@
 
 - (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options {
     PGWatermarkOperationData *operationData = [PGWatermarkOperationData new];
-    operationData.originalImage = image;
+    
+    // TODO: this should be according to the selected printer
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(640, 960), NO, 1.0);
+    [image drawInRect:CGRectMake(0, 0, 640, 960)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    operationData.originalImage = newImage;
+    
     operationData.localOperationIdentifier = options[kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.printerIdentifier = options[kMPBTImageProcessorPrinterSerialNumberKey];
 
