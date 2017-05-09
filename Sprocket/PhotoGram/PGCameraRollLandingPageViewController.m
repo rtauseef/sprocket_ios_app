@@ -54,6 +54,13 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
     self.termsLabel.delegate = self;
     
     [self showPhotoGallery];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPhotos) name:kPGCameraManagerCameraClosed object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)signInButtonTapped:(id)sender
@@ -68,6 +75,11 @@ NSString * const kCameraRollUserId = @"CameraRollUserId";
                                                                   device:kEventAuthRequestPhotosLabel];
         }
     }];
+}
+
+- (void)refreshPhotos
+{
+    [self.photoCollectionViewController refresh];
 }
 
 - (HPPRSelectPhotoProvider *)albumsPhotoProvider {
