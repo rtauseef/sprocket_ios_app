@@ -77,38 +77,38 @@
 				<string>QQ0003640E</string>
 			</array>
 		</dict>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.766956670547-2qp2jmb66eaqp6dodp5fho8vm3e864p0</string>
-            </array>
-        </dict>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.766956670547-l81u4bvoh8finqq0724l6cvekpobvkrm</string>
-            </array>
-        </dict>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.hp.dev.hp-sprocket</string>
-            </array>
-        </dict>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.hp.sprocket</string>
-            </array>
-        </dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.766956670547-2qp2jmb66eaqp6dodp5fho8vm3e864p0</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.766956670547-l81u4bvoh8finqq0724l6cvekpobvkrm</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.hp.dev.hp-sprocket</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.hp.sprocket</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>DEV</string>
@@ -136,7 +136,7 @@
 		<string>fbauth2</string>
 		<string>hpsprocket</string>
 		<string>com.googleusercontent.apps.766956670547-2qp2jmb66eaqp6dodp5fho8vm3e864p0</string>
-        <string>com.googleusercontent.apps.766956670547-l81u4bvoh8finqq0724l6cvekpobvkrm</string>
+		<string>com.googleusercontent.apps.766956670547-l81u4bvoh8finqq0724l6cvekpobvkrm</string>
 		<string>https://www.googleapis.com/auth/plus.login</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

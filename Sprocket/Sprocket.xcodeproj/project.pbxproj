@@ -5885,6 +5885,7 @@
 			buildConfigurationList = 7ae1d3f7c29c7235af187634 /* Build configuration list for PBXNativeTarget "Sprocket-cal" */;
 			buildPhases = (
 				10346681b2fa1af96d787e42 /* [CP] Check Pods Manifest.lock */,
+				9298862C1EC25B3400750C74 /* Copy proper GoogleService-Info.plist */,
 				385e52ef178df23c5a543a64 /* Sources */,
 				d66ed6106ea20df03222a463 /* Frameworks */,
 				036662ca4a6f529d9da3a935 /* ShellScript */,
@@ -5937,7 +5938,7 @@
 			buildConfigurationList = E34D508C199AB87B006D80E0 /* Build configuration list for PBXNativeTarget "Sprocket" */;
 			buildPhases = (
 				6D373432ABF44BB282FD6567 /* [CP] Check Pods Manifest.lock */,
-				929886221EC2427C00750C74 /* ShellScript */,
+				929886221EC2427C00750C74 /* Copy proper GoogleService-Info.plist */,
 				E34D5053199AB87B006D80E0 /* Sources */,
 				E34D5054199AB87B006D80E0 /* Frameworks */,
 				CCCEAFBB19D349CE00EB6828 /* ShellScript */,
@@ -8416,13 +8417,28 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		929886221EC2427C00750C74 /* ShellScript */ = {
+		929886221EC2427C00750C74 /* Copy proper GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Copy proper GoogleService-Info.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_REL.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_REL.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_REL.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_DEV.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;";
+		};
+		9298862C1EC25B3400750C74 /* Copy proper GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy proper GoogleService-Info.plist";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
