@@ -320,7 +320,7 @@ $frame ={
     'frame_3' => {'name' => 'White Frame','value' =>'WhiteFrame'},
     'frame_4' => {'name' => 'Stars Overlay Frame','value' =>'StarsOverlayFrame'},
     'frame_5' => {'name' => 'Polka Dots Frame','value' =>'PolkadotsFrame'},
-    #'frame_5' => {'name' => 'L'Oreal iOS Frame','value' =>'LOreal_iOS_1c'},
+    'frame_5' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
     'frame_6' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
     'frame_7' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
     'frame_8' => {'name' => 'ChainSmokers 1 Frame','value' =>'ChainSmokers_Android_1'},
