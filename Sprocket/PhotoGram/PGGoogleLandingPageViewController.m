@@ -102,12 +102,9 @@ static NSString * const kGoogleUserIdKey = @"userID";
     HPPRGooglePhotoProvider *provider = [HPPRGooglePhotoProvider sharedInstance];
 
     PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeGoogle];
-    [self willSignInToSocialSource:socialSource];
 
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            [self didSignInToSocialSource:socialSource];
-            
             if (!error) {
                 [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                     [self.spinner removeFromSuperview];
@@ -134,11 +131,9 @@ static NSString * const kGoogleUserIdKey = @"userID";
 - (void)showLogin
 {
     PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeGoogle];
-    [self willSignInToSocialSource:socialSource];
 
     [[HPPRGoogleLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn && nil == error) {
-            [self didSignInToSocialSource:socialSource];
             [self showPhotoGallery];
         } else if ((nil != error) && (HPPR_ERROR_NO_INTERNET_CONNECTION == error.code)) {
             [self showNoConnectionAvailableAlert];
