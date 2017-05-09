@@ -2169,9 +2169,8 @@
 		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
 		926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
 		926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
+		929886271EC24E7A00750C74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929886261EC24E7A00750C74 /* GoogleService-Info.plist */; };
 		929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
-		929B9A061EAE7CC200A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
-		929B9A191EAFB3FE00A2CF0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
 		929B9A1B1EAFB41800A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
 		929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
@@ -2338,7 +2337,6 @@
 		F2D5A3AE1EB00646002F9DDC /* LinkReaderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2D5A3AF1EB00A17002F9DDC /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */; };
 		F2D5A3B01EB00A29002F9DDC /* LinkReaderKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F2D5A3B11EB00B03002F9DDC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */; };
 		F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */; };
 		F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785211DDA4E230074FFB7 /* PGSocialSourcesManager.m */; };
 		F2E785261DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
@@ -3817,9 +3815,9 @@
 		924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInterstitialAwarenessViewController.h; sourceTree = "<group>"; };
 		924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInterstitialAwarenessViewController.m; sourceTree = "<group>"; };
 		9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sprocket.gif; path = Resources/Images/Icons/Sprocket.gif; sourceTree = "<group>"; };
+		929886261EC24E7A00750C74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		929B99F51EA801F200A2CF0E /* PGGoogleLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGoogleLandingPageViewController.h; sourceTree = "<group>"; };
 		929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGoogleLandingPageViewController.m; sourceTree = "<group>"; };
-		929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		929B9B201EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuTableViewCell.h; sourceTree = "<group>"; };
 		929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSideBarMenuTableViewCell.m; sourceTree = "<group>"; };
 		92D073851D25ACE8002611C0 /* PGMediaNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMediaNavigation.h; sourceTree = "<group>"; };
@@ -5387,7 +5385,7 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
-				929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */,
+				929886261EC24E7A00750C74 /* GoogleService-Info.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
 				92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */,
@@ -5939,6 +5937,7 @@
 			buildConfigurationList = E34D508C199AB87B006D80E0 /* Build configuration list for PBXNativeTarget "Sprocket" */;
 			buildPhases = (
 				6D373432ABF44BB282FD6567 /* [CP] Check Pods Manifest.lock */,
+				929886221EC2427C00750C74 /* ShellScript */,
 				E34D5053199AB87B006D80E0 /* Sources */,
 				E34D5054199AB87B006D80E0 /* Frameworks */,
 				CCCEAFBB19D349CE00EB6828 /* ShellScript */,
@@ -6015,7 +6014,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -6397,7 +6396,6 @@
 				82E3DACC1E82EEED0008F600 /* starhp_TN@3x.png in Resources */,
 				8212BE231EA93616009E66EC /* gift_TN@3x.png in Resources */,
 				82E3D9541E82EEEC0008F600 /* bbq_TN@3x.png in Resources */,
-				929B9A061EAE7CC200A2CF0E /* GoogleService-Info.plist in Resources */,
 				8212BFAB1EA93616009E66EC /* sun_TN@3x.png in Resources */,
 				8212BEC91EA93616009E66EC /* measles_TN@2x.png in Resources */,
 				82E3DA841E82EEED0008F600 /* monster_2_TN@3x.png in Resources */,
@@ -6911,6 +6909,7 @@
 				829A79FE1EBB8E7E005D4938 /* flip_flops2_TN.png in Resources */,
 				826BEB111E85BEAD000BE3FA /* HeartsOverlayFrame_TN@2x.png in Resources */,
 				82E3DAC61E82EEED0008F600 /* soda_straw.png in Resources */,
+				929886271EC24E7A00750C74 /* GoogleService-Info.plist in Resources */,
 				8212BD7B1EA93615009E66EC /* beachball-color_TN@3x.png in Resources */,
 				82A11CE31E5FB93B00E7F8FC /* band-aid2_TN.png in Resources */,
 				82E3DB061E82EEED0008F600 /* swim_fins.png in Resources */,
@@ -7490,7 +7489,6 @@
 				821851621EAA9103000EDFD2 /* v_heart.png in Resources */,
 				82184F601EAA9040000EDFD2 /* butterfly_TN@2x.png in Resources */,
 				829A79E71EBB8E7E005D4938 /* dolphin_doodle_TN.png in Resources */,
-				F2D5A3B11EB00B03002F9DDC /* GoogleService-Info.plist in Resources */,
 				821850B81EAA9102000EDFD2 /* catwhiskers_TN@2x.png in Resources */,
 				82E3DE7F1E831BD10008F600 /* Frappuccino_TN@2x.png in Resources */,
 				8218516B1EAA9103000EDFD2 /* volleyball_TN.png in Resources */,
@@ -8176,7 +8174,6 @@
 				82E3DE861E831BD10008F600 /* panda-mask_TN.png in Resources */,
 				821851321EAA9103000EDFD2 /* sunglasses.png in Resources */,
 				8212BBE91EA92A26009E66EC /* necktie_graduation_TN@2x.png in Resources */,
-				929B9A191EAFB3FE00A2CF0E /* GoogleService-Info.plist in Resources */,
 				9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */,
 				82184FCE1EAA9040000EDFD2 /* heartPixel.png in Resources */,
 				821850B51EAA9102000EDFD2 /* catglasses_TN@3x.png in Resources */,
@@ -8418,6 +8415,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		929886221EC2427C00750C74 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_REL.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_REL.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_REL.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\ncp \"${PROJECT_DIR}/GoogleService-Info_DEV.plist\" \"${PROJECT_DIR}/GoogleService-Info.plist\"\nfi;";
 		};
 		BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -88,7 +88,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.1061247858270-ooo6t5saq65rf3pok0eu9vmqb4kn09q7</string>
+				<string>com.googleusercontent.apps.766956670547-2qp2jmb66eaqp6dodp5fho8vm3e864p0</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.766956670547-l81u4bvoh8finqq0724l6cvekpobvkrm</string>
 			</array>
 		</dict>
 		<dict>
@@ -97,6 +105,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.hp.dev.hp-sprocket</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.hp.sprocket</string>
 			</array>
 		</dict>
 	</array>
@@ -125,9 +141,9 @@
 		<string>fbapi</string>
 		<string>fbauth2</string>
 		<string>hpsprocket</string>
-		<string>com.googleusercontent.apps.1061247858270-ooo6t5saq65rf3pok0eu9vmqb4kn09q7</string>
+		<string>com.googleusercontent.apps.766956670547-2qp2jmb66eaqp6dodp5fho8vm3e864p0</string>
+		<string>com.googleusercontent.apps.766956670547-l81u4bvoh8finqq0724l6cvekpobvkrm</string>
 		<string>com-google-gidconsent-google</string>
-		<string>com-google-gidconsent-youtube</string>
 		<string>com-google-gidconsent</string>
 		<string>com.google.gppconsent.2.4.1</string>
 		<string>com.google.gppconsent.2.4.0</string>
