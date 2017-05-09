@@ -14,19 +14,31 @@
 {
     self = [super init];
     if (self) {
-        self.length = [[dict objectForKey:@"length"] intValue];
+        self.length = [dict objectForKey:@"length"];
         self.encoding = [dict objectForKey:@"encoding"];
-        self.bitrate = [[dict objectForKey:@"bitrate"] intValue];
+        self.bitrate = [dict objectForKey:@"bitrate"];
         self.artist = [dict objectForKey:@"artist"];
     }
     return self;
 }
 
 - (NSDictionary *) getDict {
-    return @{@"length" : [NSNumber numberWithInt:self.length],
-             @"encoding" : self.encoding,
-             @"bitrate" : [NSNumber numberWithInt:self.bitrate],
-             @"artist" : self.artist};
+    NSMutableDictionary *dict;
+    
+    if (self.length)
+        [dict setObject:self.length forKey:@"length"];
+    
+    if (self.encoding)
+        [dict setObject:self.encoding forKey:@"encoding"];
+    
+    if (self.bitrate)
+        [dict setObject:self.bitrate forKey:@"bitrate"];
+    
+    if (self.artist)
+        [dict setObject:self.artist forKey:@"artist"];
+
+    
+    return dict;
 }
 
 @end

@@ -10,10 +10,10 @@
 
 @interface PGMetarImage : NSObject
 
-@property (assign, nonatomic) double aperture;
-@property (assign, nonatomic) double exposure;
-@property (assign, nonatomic) BOOL usedFlash;
-@property (assign, nonatomic) double focalLength;
+@property (strong, nonatomic) NSNumber* aperture;
+@property (strong, nonatomic) NSNumber* exposure;
+@property (strong, nonatomic) NSNumber* usedFlash;
+@property (strong, nonatomic) NSNumber* focalLength;
 @property (strong, nonatomic) NSString* iso;
 @property (strong, nonatomic) NSString* make;
 @property (strong, nonatomic) NSString* model;

@@ -87,11 +87,20 @@
             break;
     }
     
-    [dict setObject:self.uri forKey:@"uri"];
-    [dict setObject:self.album forKey:@"album"];
-    [dict setObject:self.social forKey:@"social"];
-    [dict setObject:self.identifier forKey:@"id"];
-    [dict setObject:self.owner forKey:@"owner"];
+    if (self.uri)
+        [dict setObject:self.uri forKey:@"uri"];
+    
+    if (self.album)
+        [dict setObject:self.album forKey:@"album"];
+   
+    if (self.social)
+        [dict setObject:self.social forKey:@"social"];
+    
+    if (self.identifier)
+        [dict setObject:self.identifier forKey:@"id"];
+    
+    if (self.owner)
+        [dict setObject:self.owner forKey:@"owner"];
     
     return dict;
 }

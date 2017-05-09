@@ -14,10 +14,10 @@
 {
     self = [super init];
     if (self) {
-        self.aperture = [[dict objectForKey:@"aperture"] doubleValue];
-        self.exposure = [[dict objectForKey:@"exposure"] doubleValue];
-        self.usedFlash = [[dict objectForKey:@"usedFlash"] boolValue];
-        self.focalLength = [[dict objectForKey:@"focalLength"] doubleValue];
+        self.aperture = [dict objectForKey:@"aperture"];
+        self.exposure = [dict objectForKey:@"exposure"];
+        self.usedFlash = [dict objectForKey:@"usedFlash"];
+        self.focalLength = [dict objectForKey:@"focalLength"];
         self.iso = [dict objectForKey:@"iso"];
         self.make = [dict objectForKey:@"make"];
         self.model = [dict objectForKey:@"model"];
@@ -26,13 +26,30 @@
 }
 
 - (NSDictionary *) getDict {
-    return @{@"aperture" : [NSNumber numberWithDouble:self.aperture],
-             @"exposure" : [NSNumber numberWithDouble:self.exposure],
-             @"usedFlash" : [NSNumber numberWithBool:self.usedFlash],
-             @"focalLength" : [NSNumber numberWithDouble:self.focalLength],
-             @"iso" : self.iso,
-             @"make" : self.make,
-             @"model" : self.model};
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.aperture)
+        [dict setObject:self.aperture forKey:@"aperture"];
+    
+    if (self.exposure)
+        [dict setObject:self.exposure forKey:@"exposure"];
+    
+    if (self.usedFlash)
+        [dict setObject:self.usedFlash forKey:@"usedFlash"];
+    
+    if (self.focalLength)
+        [dict setObject:self.focalLength forKey:@"focalLength"];
+    
+    if (self.iso)
+        [dict setObject:self.iso forKey:@"iso"];
+    
+    if (self.make)
+        [dict setObject:self.make forKey:@"make"];
+    
+    if (self.model)
+        [dict setObject:self.model forKey:@"model"];
+    
+    return dict;
 }
 
 @end

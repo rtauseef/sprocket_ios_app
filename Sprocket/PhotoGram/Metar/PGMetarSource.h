@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, PGMetarSourceFrom) {
+    PGMetarSourceFromUnknown,
     PGMetarSourceFromLocal,
     PGMetarSourceFromSocial,
     PGMetarSourceFromShared,
@@ -17,6 +18,7 @@ typedef NS_ENUM(NSInteger, PGMetarSourceFrom) {
 };
 
 typedef NS_ENUM(NSInteger, PGMetarSourceOrigin) {
+    PGMetarSourceOriginUnknown,
     PGMetarSourceOriginStorage,
     PGMetarSourceOriginOpenIn,
     PGMetarSourceOriginDownloaded

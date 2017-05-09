@@ -13,11 +13,13 @@
 @interface PGMetarLocation : NSObject
 
 typedef NS_ENUM(NSInteger, PGMetarLocationType) {
+    PGMetarLocationTypeUnknown,
     PGMetarLocationTypeAddress,
     PGMetarLocationTypeMonument
 };
 
 typedef NS_ENUM(NSInteger, PGMetarLocationKind) {
+    PGMetarLocationKindUnknown,
     PGMetarLocationKindIndoor,
     PGMetarLocationKindOutdoor
 };
@@ -28,5 +30,7 @@ typedef NS_ENUM(NSInteger, PGMetarLocationKind) {
 @property (assign, nonatomic) PGMetarLocationType type;
 @property (assign, nonatomic) PGMetarLocationKind kind;
 @property (strong, nonatomic) PGMetarLocationVenue *venue;
+
+- (NSDictionary *) getDict;
 
 @end
