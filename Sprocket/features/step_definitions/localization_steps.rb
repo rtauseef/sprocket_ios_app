@@ -30,7 +30,7 @@ Then(/^I touch the option "(.*?)"$/) do |option|
         if ENV['LANGUAGE'] == "Italian"
         
             #touch "UITableViewLabel index:2"
-            touch "UILabel index:3"
+            touch "UILabel index:4"
         else
             touch ("view marked:'#{$list_loc[option]}'")
             sleep(STEP_PAUSE)
@@ -202,7 +202,7 @@ def check_options_exist item
                         if ENV['LANGUAGE'] == "Italian"
                         
                             #item1 = query("UITableViewLabel index:2", :text)[0]
-                            item1 = query("UILabel index:3", :text)[0]
+                            item1 = query("UILabel index:4", :text)[0]
                             raise "localization failed!" unless item1 == $list_loc[item]
                         end
                      else
