@@ -23,7 +23,7 @@
 }
 
 - (NSDictionary *) getDict {
-    NSMutableDictionary *dict;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     if (self.length)
         [dict setObject:self.length forKey:@"length"];

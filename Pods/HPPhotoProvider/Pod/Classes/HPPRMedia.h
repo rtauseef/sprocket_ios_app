@@ -53,6 +53,15 @@ typedef enum {
 
 @property (nonatomic, strong) NSString *isoSpeed;
 @property (nonatomic, strong) NSString *shutterSpeed;
+@property (strong, nonatomic) NSNumber *exposureTime;
+@property (strong, nonatomic) NSNumber *aperture;
+@property (strong, nonatomic) NSNumber *flash;
+@property (strong, nonatomic) NSNumber *focalLength;
+@property (nonatomic, strong) NSString *cameraMake;
+@property (nonatomic, strong) NSString *cameraModel;
+
+@property (strong, nonatomic) NSNumber *videoDuration;
+
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;

@@ -26,7 +26,7 @@
         [dict setObject:self.mime forKey:@"mime"];
     
     if ([self getMediaType])
-        [dict setObject:[self getMediaType] forKey:@"mediaType"];
+        [dict setObject:[self getMediaType] forKey:@"type"];
     
     if (self.size)
         [dict setObject:self.size forKey:@"size"];
@@ -98,9 +98,9 @@
 
 - (NSString *) getMediaType {
     if (self.mediaType == PGMetarMediaTypeVideo) {
-        return @"video";
+        return @"VIDEO";
     } else if (self.mediaType == PGMetarMediaTypeImage) {
-        return @"image";
+        return @"IMAGE";
     } else {
         return nil;
     }
@@ -108,9 +108,9 @@
 
 - (NSString *) getOrientation {
     if (self.orientation == PGMetarMediaOrientationPortrait) {
-        return @"portrait";
-    } else if (self.mediaType == PGMetarMediaOrientationLandscape) {
-        return @"landscape";
+        return @"PORTRAIT";
+    } else if (self.orientation == PGMetarMediaOrientationLandscape) {
+        return @"LANDSCAPE";
     } else {
         return nil;
     }
@@ -120,12 +120,22 @@
     PGMetarImage *image = [[PGMetarImage alloc] init];
     
     image.iso = media.isoSpeed;
-    
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    f.numberStyle = NSNumberFormatterDecimalStyle;
-    image.exposure = [f numberFromString:media.shutterSpeed];
-    
+    image.exposure = media.exposureTime;
+    image.aperture = media.aperture;
+    image.usedFlash = media.flash;
+    image.make = media.cameraMake;
+    image.model = media.cameraModel;
+    media.focalLength = media.focalLength;
+        
     return image;
+}
+
+- (PGMetarVideo *) getVideoAttributesForMedia: (HPPRMedia *) media {
+    PGMetarVideo *video = [[PGMetarVideo alloc] init];
+    
+    video.length = media.videoDuration;
+    
+    return video;
 }
 
 +(instancetype)metaFromHPPRMedia: (HPPRMedia *) media {
@@ -138,6 +148,7 @@
             break;
         case kHPRMediaTypeVideo:
             meta.mediaType = PGMetarMediaTypeVideo;
+            meta.video = [meta getVideoAttributesForMedia: media];
             break;
         default:
             break;
@@ -189,8 +200,19 @@
             PGMetarSocial *social = [[PGMetarSocial alloc] init];
             social.activity = socialActivity;
             
-            meta.source.social = social;;
+            meta.source.social = social;
         }        
+    } else {
+        PGMetarSource *source = [[PGMetarSource alloc] init];
+        source.from = PGMetarSourceFromLocal;
+        source.identifier = media.objectID;
+        meta.source = source;
+    }
+    
+    if (media.image.size.width > media.image.size.height) {
+        meta.orientation = PGMetarMediaOrientationLandscape;
+    } else {
+        meta.orientation = PGMetarMediaOrientationPortrait;
     }
     
     return meta;
