@@ -2415,7 +2415,7 @@ printer and app support.</string>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_line" translatesAutoresizingMaskIntoConstraints="NO" id="xgR-tY-0QS" userLabel="horizontalBar">
-                                        <rect key="frame" x="67" y="505" width="240" height="2"/>
+                                        <rect key="frame" x="67" y="462" width="240" height="2"/>
                                     </imageView>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="56" y="564" width="263" height="60"/>
@@ -2428,7 +2428,7 @@ printer and app support.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udT-U1-QU6" userLabel="ScanButton">
-                                        <rect key="frame" x="162" y="512" width="52" height="52"/>
+                                        <rect key="frame" x="162" y="474" width="52" height="52"/>
                                         <state key="normal" image="scanButton"/>
                                         <connections>
                                             <action selector="scanTapped:" destination="wUV-en-vVL" eventType="touchUpInside" id="9ot-uC-GKK"/>
@@ -2436,6 +2436,7 @@ printer and app support.</string>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="udT-U1-QU6" firstAttribute="top" secondItem="Ttx-CG-jdw" secondAttribute="bottom" constant="20" id="44i-Yh-aK5"/>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cJ5-4G-usG" secondAttribute="bottom" constant="10" id="4ZA-uD-tAc"/>
                                     <constraint firstItem="cJ5-4G-usG" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="6Ze-Df-mkn"/>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="8Jl-Ic-bpD"/>
@@ -2444,7 +2445,6 @@ printer and app support.</string>
                                     <constraint firstItem="HWP-dm-kns" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="DVQ-9p-AOg"/>
                                     <constraint firstItem="r8A-4l-TdM" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="LuE-Xf-FPq"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3rx-Fp-iLE" secondAttribute="trailing" constant="20" id="NnR-NK-Nyf"/>
-                                    <constraint firstItem="3rx-Fp-iLE" firstAttribute="top" secondItem="udT-U1-QU6" secondAttribute="bottom" id="OB3-7L-xxH"/>
                                     <constraint firstItem="xgR-tY-0QS" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="ObN-yX-6T3"/>
                                     <constraint firstItem="Vwa-ue-pKP" firstAttribute="leading" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="12" id="RCk-UM-VWj"/>
                                     <constraint firstItem="saP-Wi-LB7" firstAttribute="top" secondItem="r8A-4l-TdM" secondAttribute="bottom" constant="38" id="S5V-9q-zIn"/>
@@ -2455,7 +2455,7 @@ printer and app support.</string>
                                     <constraint firstItem="udT-U1-QU6" firstAttribute="centerX" secondItem="MkG-i6-mOl" secondAttribute="centerX" id="jAa-R6-CN4"/>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="20" id="lDO-9b-vGY"/>
                                     <constraint firstItem="cJ5-4G-usG" firstAttribute="centerY" secondItem="MkG-i6-mOl" secondAttribute="centerY" id="mLj-fk-hbE"/>
-                                    <constraint firstItem="udT-U1-QU6" firstAttribute="top" secondItem="xgR-tY-0QS" secondAttribute="bottom" constant="5" id="mrz-je-sVs"/>
+                                    <constraint firstItem="udT-U1-QU6" firstAttribute="top" secondItem="xgR-tY-0QS" secondAttribute="bottom" constant="10" id="mrz-je-sVs"/>
                                     <constraint firstItem="3rx-Fp-iLE" firstAttribute="width" secondItem="MkG-i6-mOl" secondAttribute="width" multiplier="0.7" id="ngo-Nz-PMf"/>
                                     <constraint firstItem="HWP-dm-kns" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MkG-i6-mOl" secondAttribute="leading" constant="40" id="nmE-wt-tcc"/>
                                     <constraint firstAttribute="bottom" secondItem="3rx-Fp-iLE" secondAttribute="bottom" constant="43" id="tVZ-dW-Cik"/>
