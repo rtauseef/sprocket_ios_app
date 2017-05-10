@@ -10,25 +10,28 @@
 // the license agreement.
 //
 
-#import "FlickrKit.h"
 #import "HPPRGooglePhotoProvider.h"
 #import "HPPR.h"
 #import "HPPRGoogleLoginProvider.h"
 #import "HPPRGoogleMedia.h"
 #import "HPPRGoogleAlbum.h"
+#import "HPPRGoogleXmlParser.h"
 #import "HPPRCacheService.h"
 #import "NSBundle+HPPRLocalizable.h"
 
-#define FLICKR_ERROR_DOMAIN @"com.devedup.flickrapi.ErrorDomain"
-#define PHOTOSET_NOT_FOUND_ERROR_CODE 1
 
-@interface HPPRGooglePhotoProvider()
+static const long GOOGLE_PAGE_SIZE = 20;
+static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
 
-@property (nonatomic, strong) NSString *numberOfPages;
-@property (nonatomic, strong) NSString *nextPage;
-@property (nonatomic, strong) FKFlickrNetworkOperation *imageApiOperation;
-@property (nonatomic, strong) FKFlickrNetworkOperation *albumApiOperation;
+@interface HPPRGooglePhotoProvider() <HPPRGoogleXmlParserDelegate>
+
+@property (nonatomic, assign) NSInteger nextPhoto;
+@property (nonatomic, strong) NSString *numberOfAllPhotos;
 @property (nonatomic, strong) NSString *lastUserID;
+@property (nonatomic, strong) NSMutableArray *currentItems;
+@property (nonatomic, strong) NSString *userThumbnail;
+@property (nonatomic, strong) NSString *userName;
+@property (strong) NSString *latestRequest;
 
 @end
 
@@ -43,7 +46,8 @@
     dispatch_once(&once, ^{
         sharedInstance = [[HPPRGooglePhotoProvider alloc] init];
         sharedInstance.loginProvider = [HPPRGoogleLoginProvider sharedInstance];
-        [[FlickrKit sharedFlickrKit] initializeWithAPIKey:[HPPR sharedInstance].flickrAppKey sharedSecret:[HPPR sharedInstance].flickrAppSecret];
+        sharedInstance.currentItems = [[NSMutableArray alloc] init];
+        sharedInstance.nextPhoto = GOOGLE_FIRST_PHOTO_INDEX;
     });
     return sharedInstance;
 }
@@ -106,188 +110,142 @@
 - (void)cancelAllOperations
 {
     [super cancelAllOperations];
-    [self.imageApiOperation cancel];
-    [self.albumApiOperation cancel];
 }
 
 - (BOOL)isImageRequestsCancelled
 {
     BOOL cancelled = super.isImageRequestsCancelled;
     
-    if (self.imageApiOperation) {
-        cancelled = self.imageApiOperation.isCancelled;
-    }
-    
     return cancelled;
 }
 
 - (BOOL)hasMoreImages
 {
-    NSInteger numberOfPages = [self.numberOfPages integerValue];
-    NSInteger nextPage = [self.nextPage integerValue];
+    NSInteger nextPhoto = self.nextPhoto;
     
-    return (nextPage <= numberOfPages);
+    return ((nextPhoto <= self.album.photoCount) ||  (nil == self.album.objectID  &&  0 == self.album.photoCount));
+}
+
+- (NSArray *)photosFromItems:(NSArray *)items
+{
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    for (NSDictionary *photo in items) {
+        HPPRGoogleMedia *media = [[HPPRGoogleMedia alloc] initWithAttributes:photo];
+        [photos addObject:media];
+    }
+
+    return photos;
 }
 
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
     if (reload) {
-        self.numberOfPages = nil;
-        self.nextPage = nil;
+        self.currentItems = [[NSMutableArray alloc] init];
+        self.nextPhoto = GOOGLE_FIRST_PHOTO_INDEX;
     }
     
-    [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.nextPage andCompletion:^(NSDictionary *photos, NSError *error) {
-        NSArray *records = [photos objectForKey:@"data"];
-        if (reload) {
-            [self replaceImagesWithRecords:records];
-        } else {
-            [self updateImagesWithRecords:records];
+    [self photosForAlbum:self.album.objectID withPaging:[NSString stringWithFormat:@"%ld", (long)self.nextPhoto] andCompletion:^(NSArray *records, NSError *error) {
+        NSArray *photos = nil;
+        if (nil == error) {
+            photos = [self photosFromItems:records];
+            
+            if (nil == self.album.objectID) {
+                self.album.photoCount = [photos count];
+            }
+            
+            if (GOOGLE_FIRST_PHOTO_INDEX == self.nextPhoto) {
+                [self replaceImagesWithRecords:photos];
+            } else {
+                [self updateImagesWithRecords:photos];
+            }
+            self.nextPhoto = self.nextPhoto + self.currentItems.count;
         }
-        
+                
         if (completion) {
-            completion(records);
+            completion(photos);
         }
     }];
 }
 
 #pragma mark - Albums
 
+- (HPPRGoogleAlbum *)allPhotosAlbum
+{
+    HPPRGoogleAlbum *allPhotos = [[HPPRGoogleAlbum alloc] init];
+    allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates that all photos will be displayed");
+    
+    return allPhotos;
+}
+
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {
-    if (nil != self.album.objectID) {
-        [self call:@"flickr.photosets.getInfo" args:@{@"photoset_id": self.album.objectID} refresh:YES apiOperation:self.albumApiOperation completion:^(NSDictionary *response, NSError *error) {
-            if (error) {
-                NSLog(@"FLICKR ALBUMS ERROR\n%@", error);
-                
-                if ([error.domain isEqualToString:FLICKR_ERROR_DOMAIN] && (error.code == PHOTOSET_NOT_FOUND_ERROR_CODE)) {
-                    if (completion) {
-                        completion([HPPRAlbum albumDeletedError]);
-                    }
-                } else {
-                    if (completion) {
-                        completion(error);
-                    }
-                }
-            } else {
-                
-                NSDictionary *photoset = [response objectForKey:@"photoset"];
-                [self.album setAttributes:photoset];
-                
-                if (completion) {
-                    completion(nil);
-                }
-            }
-        }];
-    } else {
-        if (completion) {
-            completion(nil);
-        }
+    // We don't need to refresh album contents in Google, we query directly for album photos
+    if (completion) {
+        completion(nil);
     }
 }
 
 - (void)albumsWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *albums, NSError *error))completion
 {
-    BOOL shouldRefresh = refresh;
-    HPPRGoogleLoginProvider *loginProvider = (HPPRGoogleLoginProvider *)self.loginProvider;
-    NSString *currentUserID = [loginProvider.user objectForKey:@"userID"];
-    
-    if (![currentUserID isEqualToString:self.lastUserID]) {
-        shouldRefresh = YES;
-        self.lastUserID = currentUserID;
-    }
-    [self call:@"flickr.photosets.getList" args:@{@"per_page":FLICKR_MAX_PER_PAGE, @"primary_photo_extras": @"url_m,url_o"} refresh:shouldRefresh apiOperation:self.albumApiOperation completion:^(NSDictionary *response, NSError *error) {
-        if (error) {
-            NSLog(@"FLICKR ALBUMS ERROR\n%@", error);
-            if (completion) {
-                completion(nil, error);
-            }
-        } else {
+    [self getAlbums:^(NSArray *records, NSError *error) {
+        NSArray *finalAlbums = nil;
+       
+        if (nil == error) {
             NSMutableArray *albums = [NSMutableArray array];
             
-            HPPRGoogleAlbum *allPhotos = [[HPPRGoogleAlbum alloc] init];
-            allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates that all photos will be displayed");
+            HPPRGoogleAlbum *allPhotos = [self allPhotosAlbum];
             [albums addObject:allPhotos];
             
-            for (NSDictionary *photoset in [[response objectForKey:@"photosets"] objectForKey:@"photoset"]) {
-                [albums addObject:[[HPPRGoogleAlbum alloc] initWithAttributes:photoset]];
+            for (NSDictionary *record in records) {
+                HPPRGoogleAlbum *album = [[HPPRGoogleAlbum alloc] initWithAttributes:record];
+                [albums addObject:album];
             }
             
             allPhotos.coverPhotoThumbnailURL = ((HPPRGoogleAlbum *)(albums[albums.count - 1])).coverPhotoThumbnailURL;
             allPhotos.coverPhotoFullSizeURL = ((HPPRGoogleAlbum *)(albums[albums.count - 1])).coverPhotoFullSizeURL;
             allPhotos.provider = ((HPPRGoogleAlbum *)(albums[albums.count - 1])).provider;
-
-            if (completion) {
-                completion([NSArray arrayWithArray:albums], nil);
-            }
+        
+            finalAlbums = [NSArray arrayWithArray:albums];
+        }
+        
+        if (completion) {
+            completion(finalAlbums, error);
         }
     }];
 }
 
-- (void)retrieveExtraMediaInfo:(HPPRMedia *)media withRefresh:(BOOL)refresh andCompletion:(void (^)(NSError *error))completion
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [self infoForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSDictionary *photoInfo, NSError *error) {
-            if (!error) {
-                [self updateMedia:(HPPRGoogleMedia *)media withPhotoInfo:photoInfo];
-                
-                [self favoritesForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSArray *favorites, NSError *error) {
-                    if (!error) {
-                        media.likes = [favorites count];
-                    }
-                    
-                    if (completion) {
-                        completion(error);
-                    }
-                }];
-            } else {
-                if (completion) {
-                    completion(error);
-                }
-            }
-        }];
-    });
-}
+#pragma mark - getting data
 
-- (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
+- (void)getPhotos:(NSString *)startIndex completion:(void (^)(NSArray *records, NSError *error))completion
 {
-    NSString *call = nil;
-    NSMutableDictionary *args = [[NSMutableDictionary alloc] init];
-    [args addEntriesFromDictionary:@{@"page": ((afterID == nil) ? @"1" : afterID), @"per_page":FLICKR_MAX_PER_PAGE, @"extras": @"url_m,url_o,date_taken,geo"}];
-    if (nil != albumID) {
-        call = @"flickr.photosets.getPhotos";
-        [args setObject:albumID forKey:@"photoset_id"];
-    } else {
-        call = @"flickr.people.getPhotos";
-        [args setObject:@"me" forKey:@"user_id"];
+    if (nil == self.album) {
+        self.album = [self allPhotosAlbum];
     }
     
-    [self call:call args:args refresh:refresh apiOperation:self.imageApiOperation completion:^(NSDictionary *response, NSError *error) {
-        if (error) {
-            NSLog(@"FLICKR ALBUM ERROR\n%@", error);
-            if (completion) {
-                completion(nil, error);
-            }
-        } else {
-            NSDictionary *photoSet = [response objectForKey:@"photoset"];
-            if (photoSet == nil) {
-                photoSet = [response objectForKey:@"photos"];
-            }
-            
-            self.numberOfPages = [photoSet objectForKey:@"pages"];
-            NSInteger currentPage = [[photoSet objectForKey:@"page"] integerValue];
-            self.nextPage = [NSString stringWithFormat:@"%ld", (long)(currentPage + 1)];
-            
-            NSMutableArray *mutableRecords = [NSMutableArray array];
-            for (NSDictionary *photo in [photoSet objectForKey:@"photo"]) {
-                __block HPPRGoogleMedia *media = [[HPPRGoogleMedia alloc] initWithAttributes:photo];
-                [mutableRecords addObject:media];
-            }
-            NSDictionary *result = @{ @"data":mutableRecords.copy };
-            if (completion) {
-                completion(result, nil);
-            }
-        }
-    }];
+    // We need to sub the %5B and %5D for [ and ] in order to string compare
+    //  on the query returned by our NSURLRequest...
+    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium!='video'%5D(title,content,media:group/media:content,media:group/media:thumbnail)";
+    
+    NSString *url = [NSString stringWithFormat:@"https://picasaweb.google.com/data/feed/api/user/default?kind=photo&fields=openSearch:totalResults,gphoto:thumbnail,gphoto:nickname,%@", searchFields];
+
+    if (self.album.objectID) {
+        url = [NSString stringWithFormat:@"https://picasaweb.google.com/data/feed/api/user/default/albumid/%@?fields=openSearch:totalResults,%@", self.album.objectID, searchFields];
+        url = [url stringByAppendingString:[NSString stringWithFormat:@"&start-index=%@&max-results=%ld", startIndex, GOOGLE_PAGE_SIZE]];
+    }
+   
+    [self parseXMLFileAtURL:url completion:completion];
+}
+
+- (void) getAlbums:(void (^)(NSArray *records, NSError *error))completion
+{
+    [self parseXMLFileAtURL:@"https://picasaweb.google.com/data/feed/api/user/default?kind=album" completion:completion];
+}
+    
+- (void)photosForAlbum:(NSString *)albumID withPaging:(NSString *)startIndex andCompletion:(void (^)(NSArray *items, NSError *error))completion
+{
+    if ([self hasMoreImages]) {
+        [self getPhotos:startIndex completion:completion];
+    }
 }
 
 - (void)landingPagePhotoWithRefresh:(BOOL)refresh andCompletion:(void (^)(UIImage *photo, NSError *error))completion
@@ -318,74 +276,37 @@
 
 - (void)coverPhotoForAlbum:(HPPRAlbum *)album withRefresh:(BOOL)refresh andCompletion:(void (^)(HPPRAlbum *album, UIImage *coverPhoto, NSError *error))completion
 {
-    HPPRGoogleAlbum *flickrAlbum = (HPPRGoogleAlbum *)album;
+    HPPRGoogleAlbum *googleAlbum = (HPPRGoogleAlbum *)album;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:flickrAlbum.coverPhotoThumbnailURL];
+        album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:googleAlbum.coverPhotoThumbnailURL];
         if (completion) {
             completion(album, album.coverPhoto, nil);
         }
     });
 }
 
-#pragma mark - Private methods
+#pragma mark - XML File Retrieval and Parsing
 
-- (void)call:(NSString *)apiMethod args:(NSDictionary *)requestArgs refresh:(BOOL)refresh apiOperation:(FKFlickrNetworkOperation *)apiOperation completion:(FKAPIRequestCompletion)completion
+- (void)parseXMLFileAtURL:(NSString *)URL completion:(void (^)(NSArray *records, NSError *error))completion
 {
-    FKDUMaxAge cacheAge = refresh ? FKDUMaxAgeNeverCache : FKDUMaxAgeOneHour;
-    apiOperation = [[FlickrKit sharedFlickrKit] call:apiMethod args:requestArgs maxCacheAge:cacheAge completion:^(NSDictionary *response, NSError *error) {
-        if (completion) {
-            completion(response, error);
-        }
-        if (FKErrorNotAuthorized == error.code || FLICKR_INVALID_TOKEN_ERROR_CODE == error.code) {
-            [self lostAccess];
-        }
-        if (FKErrorNoInternet == error.code) {
-            [self lostConnection];
-        }
-    }];
+    self.latestRequest = [URL componentsSeparatedByString:@"?"][0];
+    
+    HPPRGoogleXmlParser *parser = [[HPPRGoogleXmlParser alloc] initWithUrl:URL delegate:self completion:completion];
+    [parser startParsing];
 }
 
-
-- (void)infoForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion
+- (void)didFinishParsing:(HPPRGoogleXmlParser *)parser items:(NSMutableArray *)items completion:(void (^)(NSArray *records, NSError *error))completion
 {
-    [self call:@"flickr.photos.getInfo" args:@{@"photo_id":photoID} refresh:refresh apiOperation:self.imageApiOperation completion:^(NSDictionary *response, NSError *error) {
-        if (error) {
-            NSLog(@"FLICKR PHOTO INFO ERROR\n%@", error);
-            if (completion) {
-                completion(nil, error);
-            }
-        } else {
-            if (completion) {
-                completion([response objectForKey:@"photo"], nil);
-            }
-        }
-    }];
-}
-
-- (void)favoritesForPhoto:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSArray *favorites, NSError *error))completion
-{
-    [self call:@"flickr.photos.getFavorites" args:@{ @"photo_id":photoID, @"per_page":FLICKR_MAX_FAVORITES_PER_PAGE } refresh:refresh apiOperation:self.imageApiOperation completion:^(NSDictionary *response, NSError *error) {
-        if (error) {
-            NSLog(@"FLICKR PHOTO FAVORITES ERROR\n%@", error);
-            if (completion) {
-                completion(nil, error);
-            }
-        } else {
-            if (completion) {
-                completion([response valueForKeyPath:@"photo.person"], nil);
-            }
-        }
-    }];
-}
-
-- (void)updateMedia:(HPPRGoogleMedia *)media withPhotoInfo:(NSDictionary *)photoInfo
-{
-    media.comments = [[photoInfo valueForKeyPath:@"comments._content"] integerValue];
-    NSString *latitude = [photoInfo valueForKeyPath:@"location.latitude"];
-    NSString *longitude = [photoInfo valueForKeyPath:@"location.longitude"];
-    if (latitude && longitude) {
-        media.location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    NSString *baseUrl = [parser.url componentsSeparatedByString:@"?"][0];
+    
+    if ([baseUrl isEqualToString:self.latestRequest]  &&  completion) {
+        self.currentItems = items;
+        completion(self.currentItems, parser.error);
+    } else {
+        NSLog(@"Ignoring results from URL: %@", parser.url);
     }
+    
+    parser = nil;
 }
 
 @end

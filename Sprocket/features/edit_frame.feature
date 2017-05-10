@@ -2,7 +2,7 @@ Feature: Verify Edit frame feature
   As a user
   I want to verify frame features.
 
-  @reset
+  
   @done
   Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
@@ -14,8 +14,14 @@ Feature: Verify Edit frame feature
       |White Frame                |
       |Stars Overlay Frame        |
       |Polka Dots Frame           |
+      |L\\'Oreal iOS Frame          |
+      |Nestle iOS Frame           |
+      |San Pelegrino iOS Frame    |
+      |ChainSmokers 1 Frame       |
+      |ChainSmokers 2 Frame       |
       |Grey Shadow Frame          |
       |Pink Triangle Frame        |
+      |White Rounded Frame        |
       |Floral 2 Frame             |
       |Blue Watercolor Frame      |
       |Floral Overlay Frame       |
@@ -28,30 +34,13 @@ Feature: Verify Edit frame feature
       |Pink Spray Paint Frame     |
       |White Full Frame           |
 
-  @reset
-  @localization
-  Scenario: Verify additional frames for region Australia
-    Given  I am on the "CameraRollLanding" screen
-    Then I open cameraroll
-    When I touch second photo
-    Then I should see the "CameraRoll Preview" screen
-    And I tap the "Edit" button
-    Then I am on the "Edit" screen
-    Then I tap "Frame" button
-    Then I should see the "Frame Editor" screen
-    Then I should see the following "Frames" in the screen:
-      |Australia Amplify 1 Frame  |
-      |Australia Amplify 3 Frame  |
-
-
-
-  @reset
+  
   @regression
   Scenario: Verify all the frames are applied for frame editor screen
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I verify that all the "frames" are applied successfully
 
-  @reset
+  
   @done
   Scenario Outline: Verify Frame Save,Close functionality
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"

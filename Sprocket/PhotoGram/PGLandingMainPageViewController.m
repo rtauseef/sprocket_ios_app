@@ -31,6 +31,7 @@
 #import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
+#import "PGHamburgerButton.h"
 #import "PGInAppMessageManager.h"
 
 #import <MP.h>
@@ -46,7 +47,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
 @property (weak, nonatomic) IBOutlet UIView *landingButtonsView;
 @property (weak, nonatomic) IBOutlet UIView *cameraButtonsView;
-@property (weak, nonatomic) IBOutlet UIButton *hamburgerButton;
+@property (weak, nonatomic) IBOutlet PGHamburgerButton *hamburgerButton;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *instagramButton;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
@@ -128,6 +129,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 {
     [super viewWillAppear:animated];
 
+    [self.hamburgerButton refreshIndicator];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];

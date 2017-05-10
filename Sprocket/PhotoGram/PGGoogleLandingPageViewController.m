@@ -29,7 +29,7 @@
 static NSString * const kGoogleUserNameKey = @"userName";
 static NSString * const kGoogleUserIdKey = @"userID";
 
-@interface PGGoogleLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, HPPRLoginProviderDelegate>
+@interface PGGoogleLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, HPPRLoginProviderDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *signInView;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
@@ -107,8 +107,9 @@ static NSString * const kGoogleUserIdKey = @"userID";
     [provider.loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self didSignInToSocialSource:socialSource];
-            
             if (!error) {
+                
+                self.navigationController.delegate = self;
                 [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
                     [self.spinner removeFromSuperview];
                     
@@ -135,7 +136,7 @@ static NSString * const kGoogleUserIdKey = @"userID";
 {
     PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeGoogle];
     [self willSignInToSocialSource:socialSource];
-
+    
     [[HPPRGoogleLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn && nil == error) {
             [self didSignInToSocialSource:socialSource];
@@ -207,5 +208,12 @@ static NSString * const kGoogleUserIdKey = @"userID";
     [super selectAlbumDropDownController:viewController didSelectAlbum:album];
 }
 
+#pragma mark - UINavigationControllerDelegate
+    
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    navigationController.delegate = nil;
+    [self didSignInToSocialSource:[[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypeGoogle]];
+}
 
 @end

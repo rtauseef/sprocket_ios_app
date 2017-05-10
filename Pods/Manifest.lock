@@ -22,7 +22,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
-  - FirebaseAnalytics (3.8.0):
+  - FirebaseAnalytics (3.9.0):
     - FirebaseCore (~> 3.6)
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -65,12 +65,13 @@ PODS:
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
+    - Google/SignIn
   - iCarousel (1.8)
   - LivePaperSDK (2.0.0):
     - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
-  - UrbanAirship-iOS-SDK (8.2.2)
+  - UrbanAirship-iOS-SDK (8.3.1)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -93,16 +94,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 114f62ef4929a8d4a09d7f21b6e1c1737c5e1c77
+    :commit: 319c596ca1315d97fefc7df170baaaaf6c1a425f
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 2e254dc1ece78f8f886bcfe1cc58346ea8bd9b4a
+    :commit: 550f03552c955c38f566162bd1825696b761d731
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
+  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
@@ -113,13 +114,13 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
-  HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
+  HPPhotoProvider: 08358b88169d402942d7a48e86446188d7c5028e
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
+  UrbanAirship-iOS-SDK: 167c2a32af012bd9142eda4198244dbdd7896eec
 
 PODFILE CHECKSUM: cad0313086fdcfe66b57e86b7658d2d390e24197
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

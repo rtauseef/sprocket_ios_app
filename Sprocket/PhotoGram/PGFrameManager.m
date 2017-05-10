@@ -44,21 +44,7 @@
 {
     self.frames = [NSMutableArray array];
     
-    if ([NSLocale isAustralia]) {
-        [self.frames addObjectsFromArray:[self australiaFrames]];
-    }
-    
     [self.frames addObjectsFromArray:[self standardUSFrames]];
-}
-
-- (NSArray *)australiaFrames
-{
-    NSString *australiaPackageName = @"Australia";
-    
-    return @[
-             [[PGFrameItem alloc] initWithName:@"Amplify 1" imageName:@"amplify_1" andPackageName:australiaPackageName],
-             [[PGFrameItem alloc] initWithName:@"Amplify 3" imageName:@"amplify_3" andPackageName:australiaPackageName],
-             ];
 }
 
 - (NSArray *)standardUSFrames
@@ -70,6 +56,11 @@
              [[PGFrameItem alloc] initWithName:@"White" imageName:@"WhiteFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Stars Overlay" imageName:@"StarsOverlayFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Polka Dots" imageName:@"PolkadotsFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"L'Oreal iOS" imageName:@"LOreal_iOS_1c" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Nestle iOS" imageName:@"Nestle_iOS_Frame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"San Pelegrino iOS" imageName:@"S_pellegrino_iOS_Frame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"ChainSmokers 1" imageName:@"ChainSmokers_Android_1" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"ChainSmokers 2" imageName:@"ChainSmokers_Android_2" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Grey Shadow" imageName:@"GreyShadowFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Pink Triangle" imageName:@"PinkTriangleFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"White Rounded" imageName:@"WhiteRoundedFrame" andPackageName:nil],

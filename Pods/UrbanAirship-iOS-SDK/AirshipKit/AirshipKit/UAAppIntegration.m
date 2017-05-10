@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAAppIntegration.h"
 #import "UAirship.h"
@@ -52,19 +29,17 @@
 #pragma mark AppDelegate methods
 
 + (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // Convert device deviceToken to a hex string
-    NSString *deviceTokenString = [self deviceTokenStringFromDeviceToken:deviceToken];
-    UA_LINFO(@"Application registered device token: %@", deviceTokenString);
+    UA_LINFO(@"Application registered device token: %@", [UAUtils deviceTokenStringFromDeviceToken:deviceToken]);
 
     [[UAirship shared].analytics addEvent:[UADeviceRegistrationEvent event]];
 
-    [UAirship push].deviceToken = deviceTokenString;
+    [[UAirship push] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
 
-    if (application.applicationState == UIApplicationStateBackground && [UAirship push].channelID) {
-         UA_LDEBUG(@"Skipping device registration. The app is currently backgrounded.");
-    } else {
-        [[UAirship push] updateChannelRegistrationForcefully:NO];
-    }
++ (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    UA_LERR(@"Application failed to register for remote notifications with error %@", error);
+    
+    [[UAirship push] application:application didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 + (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
@@ -358,17 +333,6 @@
     }
 
     return notificationAction;
-}
-
-+ (NSString *)deviceTokenStringFromDeviceToken:(NSData *)deviceToken {
-    NSMutableString *deviceTokenString = [NSMutableString stringWithCapacity:([deviceToken length] * 2)];
-    const unsigned char *bytes = (const unsigned char *)[deviceToken bytes];
-
-    for (NSUInteger i = 0; i < [deviceToken length]; i++) {
-        [deviceTokenString appendFormat:@"%02X", bytes[i]];
-    }
-
-    return [deviceTokenString lowercaseString];
 }
 
 @end

@@ -21,24 +21,32 @@
     self = [super init];
     
     if (self) {
+        self.objectID = [attributes objectForKey:@"gphoto:id"];
         
-        HPPRGoogleLoginProvider * provider = [HPPRGoogleLoginProvider sharedInstance];
+        NSDictionary *photo = [attributes objectForKey:@"original"];
+        if (photo) {
+            self.standardUrl = [photo objectForKey:@"src"];
+        }
         
-        self.objectID = [attributes objectForKey:@"id"];
-        self.thumbnailUrl = [attributes objectForKey:@"url_m"];
-        self.standardUrl = [attributes objectForKey:@"url_o"];
+        NSArray *thumbnails = [attributes objectForKey:@"thumbnails"];
+        if (thumbnails) {
+            NSDictionary *thumb = [thumbnails lastObject];
+            self.thumbnailUrl = [thumb objectForKey:@"url"];
+        }
         
-        self.userName = [provider.user objectForKey:@"userName"];
+        self.userName = [attributes objectForKey:@"userName"];
         
-        self.userProfilePicture = [provider.user objectForKey:@"imageURL"];
+        self.userProfilePicture = [attributes objectForKey:@"userThumbnail"];
         
         // NOTE: Don't localize this date, it comes from the API always in the same format regardless the language.
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSString *dateString = [attributes objectForKey:@"datetaken"];
+        NSString *dateString = [attributes objectForKey:@"updated"];
         self.createdTime = [dateFormatter dateFromString:dateString];
         
         self.text = [attributes objectForKey:@"title"];
+        
+        self.objectID = self.standardUrl;
     }
     
     return self;
