@@ -2186,7 +2186,6 @@
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
 		A84F86B61EC243B20049091C /* AurasmaPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86B51EC243B20049091C /* AurasmaPlugin.framework */; };
-		A84F86B81EC245280049091C /* com.hp.dev.hp-sprocket .key in Resources */ = {isa = PBXBuildFile; fileRef = A84F86B71EC245280049091C /* com.hp.dev.hp-sprocket .key */; };
 		A84F86BA1EC245890049091C /* AurasmaPlugin Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A84F86B91EC245890049091C /* AurasmaPlugin Bundle.bundle */; };
 		A84F86C41EC246470049091C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86BD1EC246470049091C /* libavcodec.a */; };
 		A84F86C51EC246470049091C /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86BE1EC246470049091C /* libavdevice.a */; };
@@ -2203,6 +2202,7 @@
 		A84F86D81EC247380049091C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D31EC247380049091C /* JavaScriptCore.framework */; };
 		A84F86D91EC247380049091C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D41EC247380049091C /* OpenAL.framework */; };
 		A84F86DA1EC247380049091C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F86D51EC247380049091C /* OpenGLES.framework */; };
+		A8D89A1B1EC36FEE00E2140B /* Sprocket.key in Resources */ = {isa = PBXBuildFile; fileRef = A8D89A1A1EC36FEE00E2140B /* Sprocket.key */; };
 		CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
 		CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		CC10808519CA122B00C1553A /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
@@ -3845,7 +3845,6 @@
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
 		A84F86B51EC243B20049091C /* AurasmaPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AurasmaPlugin.framework; path = Aurasma/AurasmaPlugin.framework; sourceTree = "<group>"; };
-		A84F86B71EC245280049091C /* com.hp.dev.hp-sprocket .key */ = {isa = PBXFileReference; lastKnownFileType = file; name = "com.hp.dev.hp-sprocket .key"; path = "Aurasma/com.hp.dev.hp-sprocket .key"; sourceTree = "<group>"; };
 		A84F86B91EC245890049091C /* AurasmaPlugin Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "AurasmaPlugin Bundle.bundle"; path = "Aurasma/AurasmaPlugin.framework/Versions/A/Resources/AurasmaPlugin Bundle.bundle"; sourceTree = "<group>"; };
 		A84F86BB1EC246070049091C /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Aurasma/libs/AFNetworking-2.6.1/libAFNetworking.a"; sourceTree = "<group>"; };
 		A84F86BD1EC246470049091C /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "Aurasma/libs/FFmpeg-2.5.2/libavcodec.a"; sourceTree = "<group>"; };
@@ -3863,6 +3862,7 @@
 		A84F86D31EC247380049091C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		A84F86D41EC247380049091C /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		A84F86D51EC247380049091C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A8D89A1A1EC36FEE00E2140B /* Sprocket.key */ = {isa = PBXFileReference; lastKnownFileType = file; name = Sprocket.key; path = Aurasma/Sprocket.key; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -5440,8 +5440,8 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
+				A8D89A1A1EC36FEE00E2140B /* Sprocket.key */,
 				A84F86B91EC245890049091C /* AurasmaPlugin Bundle.bundle */,
-				A84F86B71EC245280049091C /* com.hp.dev.hp-sprocket .key */,
 				929B9A051EAE7CC200A2CF0E /* GoogleService-Info.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
@@ -6196,8 +6196,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D89A1B1EC36FEE00E2140B /* Sprocket.key in Resources */,
 				A84F86BA1EC245890049091C /* AurasmaPlugin Bundle.bundle in Resources */,
-				A84F86B81EC245280049091C /* com.hp.dev.hp-sprocket .key in Resources */,
 				82E3DA5A1E82EEED0008F600 /* icecream_tub_TN@2x.png in Resources */,
 				829A7A6A1EBB8E7E005D4938 /* summer_sunglasses_TN@3x.png in Resources */,
 				82E3D99E1E82EEED0008F600 /* cat.png in Resources */,

@@ -596,8 +596,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 #pragma mark - Aurasma
 
 - (AurasmaPlugin *)createPlugin {
-    NSURL *key = [[NSBundle mainBundle] URLForResource:@"com.hp.dev.hp-sprocket " withExtension:@"key"];
-    NSString *clientSecret = @"b7hP/29tMrAYCNtHXKiYxw";
+    NSURL *key = [[NSBundle mainBundle] URLForResource:@"Sprocket" withExtension:@"key"];
+    NSString *clientSecret = @"ZnXXlPR30cv1zpsbNQ4UOg";
     AurasmaPlugin *plugin = [AurasmaPlugin aurasmaPluginWithKey:key secret:clientSecret delegate:self];
     
     plugin.customDelegate = self;
