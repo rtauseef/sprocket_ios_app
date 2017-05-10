@@ -36,11 +36,14 @@
 #import <MP.h>
 #import <MPBTPrintManager.h>
 
+#import <AurasmaPlugin/AurasmaPlugin.h>
+#import <AurasmaPlugin/AurasmaPlugin+Custom.h>
+
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, AurasmaPluginDelegate, AurasmaPluginCustomDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
@@ -52,6 +55,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
 @property (weak, nonatomic) IBOutlet UIButton *googleButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
+@property (weak, nonatomic) IBOutlet UIButton *scanButton;
 @property (weak, nonatomic) IBOutlet PGSocialSourcesCircleView *socialSourcesCircleView;
 
 @property (weak, nonatomic) IBOutlet UIView *socialSourcesHorizontalContainer;
@@ -586,5 +590,62 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 }
 
 #endif
+
+
+
+#pragma mark - Aurasma
+
+- (AurasmaPlugin *)createPlugin {
+    NSURL *key = [[NSBundle mainBundle] URLForResource:@"com.hp.dev.hp-sprocket " withExtension:@"key"];
+    NSString *clientSecret = @"b7hP/29tMrAYCNtHXKiYxw";
+    AurasmaPlugin *plugin = [AurasmaPlugin aurasmaPluginWithKey:key secret:clientSecret delegate:self];
+    
+    plugin.customDelegate = self;
+    [plugin enableScanningAnimation];
+    [plugin disableFullscreenUI];
+    [plugin disableSplashVideo];
+    [plugin disableFirstTimeGuide]; //Disable to prevent overlapping of guide and custom view.
+    return plugin;
+}
+
+- (void)aurasmaDidClose:(AurasmaPlugin *)plugin {
+    [plugin dismiss];
+}
+
+- (void)aurasmaDidFinishUnloading:(AurasmaPlugin *)plugin {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _scanButton.enabled = YES;
+    });
+}
+
+- (UIImage *)customImageForView:(AurasmaView)view andState:(__unused UIControlState)state {
+    NSString *launchImage;
+    if  ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) &&
+         ([UIScreen mainScreen].bounds.size.height > 480.0f)) {
+        launchImage = @"LaunchImage-700-568h";
+    } else {
+        launchImage = @"LaunchImage-700";
+    }
+    switch (view) {
+        case AurasmaView_SplashScreen:
+            // override
+            return [UIImage imageNamed:launchImage];
+        case AurasmaView_TorchButton:
+        case AurasmaView_InfoButton:
+        case AurasmaView_LikeButton:
+        case AurasmaView_ScreenshotButton:
+        case AurasmaView_WatermarkImage:
+        case AurasmaView_CloseButton:
+        default:
+            // use default
+            return [AurasmaPlugin defaultImage];
+    }
+}
+
+- (IBAction)scanTapped:(id)sender
+{
+    _scanButton.enabled = NO;
+    [[self createPlugin] show];
+}
 
 @end
