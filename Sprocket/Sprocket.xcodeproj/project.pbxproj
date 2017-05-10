@@ -79,6 +79,96 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
+		65792EBA1EC3697400FC9BBA /* AurasmaPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E821EC3697400FC9BBA /* AurasmaPlugin.framework */; };
+		65792EBB1EC3697400FC9BBA /* AurasmaPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E821EC3697400FC9BBA /* AurasmaPlugin.framework */; };
+		65792EC61EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8B1EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch */; };
+		65792EC71EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8B1EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch */; };
+		65792EC81EC3697400FC9BBA /* CONFIGURE in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8C1EC3697400FC9BBA /* CONFIGURE */; };
+		65792EC91EC3697400FC9BBA /* CONFIGURE in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8C1EC3697400FC9BBA /* CONFIGURE */; };
+		65792ECA1EC3697400FC9BBA /* COPYING.GPLv2 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8D1EC3697400FC9BBA /* COPYING.GPLv2 */; };
+		65792ECB1EC3697400FC9BBA /* COPYING.GPLv2 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8D1EC3697400FC9BBA /* COPYING.GPLv2 */; };
+		65792ECC1EC3697400FC9BBA /* COPYING.GPLv3 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8E1EC3697400FC9BBA /* COPYING.GPLv3 */; };
+		65792ECD1EC3697400FC9BBA /* COPYING.GPLv3 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8E1EC3697400FC9BBA /* COPYING.GPLv3 */; };
+		65792ECE1EC3697400FC9BBA /* COPYING.LGPLv2.1 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8F1EC3697400FC9BBA /* COPYING.LGPLv2.1 */; };
+		65792ECF1EC3697400FC9BBA /* COPYING.LGPLv2.1 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E8F1EC3697400FC9BBA /* COPYING.LGPLv2.1 */; };
+		65792ED01EC3697400FC9BBA /* COPYING.LGPLv3 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E901EC3697400FC9BBA /* COPYING.LGPLv3 */; };
+		65792ED11EC3697500FC9BBA /* COPYING.LGPLv3 in Resources */ = {isa = PBXBuildFile; fileRef = 65792E901EC3697400FC9BBA /* COPYING.LGPLv3 */; };
+		65792ED21EC3697500FC9BBA /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 65792E911EC3697400FC9BBA /* CREDITS */; };
+		65792ED31EC3697500FC9BBA /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 65792E911EC3697400FC9BBA /* CREDITS */; };
+		65792ED41EC3697500FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch in Resources */ = {isa = PBXBuildFile; fileRef = 65792E921EC3697400FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch */; };
+		65792ED51EC3697500FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch in Resources */ = {isa = PBXBuildFile; fileRef = 65792E921EC3697400FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch */; };
+		65792ED61EC3697500FC9BBA /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E931EC3697400FC9BBA /* libavcodec.a */; };
+		65792ED71EC3697500FC9BBA /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E931EC3697400FC9BBA /* libavcodec.a */; };
+		65792ED81EC3697500FC9BBA /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E941EC3697400FC9BBA /* libavdevice.a */; };
+		65792ED91EC3697500FC9BBA /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E941EC3697400FC9BBA /* libavdevice.a */; };
+		65792EDA1EC3697500FC9BBA /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E951EC3697400FC9BBA /* libavfilter.a */; };
+		65792EDB1EC3697500FC9BBA /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E951EC3697400FC9BBA /* libavfilter.a */; };
+		65792EDC1EC3697500FC9BBA /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E961EC3697400FC9BBA /* libavformat.a */; };
+		65792EDD1EC3697500FC9BBA /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E961EC3697400FC9BBA /* libavformat.a */; };
+		65792EDE1EC3697500FC9BBA /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E971EC3697400FC9BBA /* libavutil.a */; };
+		65792EDF1EC3697500FC9BBA /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E971EC3697400FC9BBA /* libavutil.a */; };
+		65792EE01EC3697500FC9BBA /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E981EC3697400FC9BBA /* libswresample.a */; };
+		65792EE11EC3697500FC9BBA /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E981EC3697400FC9BBA /* libswresample.a */; };
+		65792EE21EC3697500FC9BBA /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E991EC3697400FC9BBA /* libswscale.a */; };
+		65792EE31EC3697500FC9BBA /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792E991EC3697400FC9BBA /* libswscale.a */; };
+		65792EE41EC3697500FC9BBA /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 65792E9A1EC3697400FC9BBA /* LICENSE.md */; };
+		65792EE51EC3697500FC9BBA /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 65792E9A1EC3697400FC9BBA /* LICENSE.md */; };
+		65792EE61EC3697500FC9BBA /* MAINTAINERS in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9B1EC3697400FC9BBA /* MAINTAINERS */; };
+		65792EE71EC3697500FC9BBA /* MAINTAINERS in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9B1EC3697400FC9BBA /* MAINTAINERS */; };
+		65792EE81EC3697500FC9BBA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65792E9C1EC3697400FC9BBA /* README.md */; };
+		65792EE91EC3697500FC9BBA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65792E9C1EC3697400FC9BBA /* README.md */; };
+		65792EEA1EC3697500FC9BBA /* RELEASE in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9D1EC3697400FC9BBA /* RELEASE */; };
+		65792EEB1EC3697500FC9BBA /* RELEASE in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9D1EC3697400FC9BBA /* RELEASE */; };
+		65792EEC1EC3697500FC9BBA /* RELEASE_NOTES in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9E1EC3697400FC9BBA /* RELEASE_NOTES */; };
+		65792EED1EC3697500FC9BBA /* RELEASE_NOTES in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9E1EC3697400FC9BBA /* RELEASE_NOTES */; };
+		65792EEE1EC3697500FC9BBA /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9F1EC3697400FC9BBA /* VERSION */; };
+		65792EEF1EC3697500FC9BBA /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 65792E9F1EC3697400FC9BBA /* VERSION */; };
+		65792EF01EC3697500FC9BBA /* ANNOUNCE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA11EC3697400FC9BBA /* ANNOUNCE */; };
+		65792EF11EC3697500FC9BBA /* ANNOUNCE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA11EC3697400FC9BBA /* ANNOUNCE */; };
+		65792EF21EC3697500FC9BBA /* CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA21EC3697400FC9BBA /* CHANGES */; };
+		65792EF31EC3697500FC9BBA /* CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA21EC3697400FC9BBA /* CHANGES */; };
+		65792EF41EC3697500FC9BBA /* CONFIGURE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA31EC3697400FC9BBA /* CONFIGURE */; };
+		65792EF51EC3697500FC9BBA /* CONFIGURE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA31EC3697400FC9BBA /* CONFIGURE */; };
+		65792EF61EC3697500FC9BBA /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792EA41EC3697400FC9BBA /* libpng.a */; };
+		65792EF71EC3697500FC9BBA /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792EA41EC3697400FC9BBA /* libpng.a */; };
+		65792EF81EC3697500FC9BBA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA51EC3697400FC9BBA /* LICENSE */; };
+		65792EF91EC3697500FC9BBA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA51EC3697400FC9BBA /* LICENSE */; };
+		65792EFA1EC3697500FC9BBA /* README in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA61EC3697400FC9BBA /* README */; };
+		65792EFB1EC3697500FC9BBA /* README in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA61EC3697400FC9BBA /* README */; };
+		65792EFC1EC3697500FC9BBA /* AUTHORS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA81EC3697400FC9BBA /* AUTHORS */; };
+		65792EFD1EC3697500FC9BBA /* AUTHORS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA81EC3697400FC9BBA /* AUTHORS */; };
+		65792EFE1EC3697500FC9BBA /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA91EC3697400FC9BBA /* ChangeLog */; };
+		65792EFF1EC3697500FC9BBA /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 65792EA91EC3697400FC9BBA /* ChangeLog */; };
+		65792F001EC3697500FC9BBA /* ChangeLog-1.0.x in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAA1EC3697400FC9BBA /* ChangeLog-1.0.x */; };
+		65792F011EC3697500FC9BBA /* ChangeLog-1.0.x in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAA1EC3697400FC9BBA /* ChangeLog-1.0.x */; };
+		65792F021EC3697500FC9BBA /* CONFIGURE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAB1EC3697400FC9BBA /* CONFIGURE */; };
+		65792F031EC3697500FC9BBA /* CONFIGURE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAB1EC3697400FC9BBA /* CONFIGURE */; };
+		65792F041EC3697500FC9BBA /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAC1EC3697400FC9BBA /* COPYING */; };
+		65792F051EC3697500FC9BBA /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAC1EC3697400FC9BBA /* COPYING */; };
+		65792F061EC3697500FC9BBA /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAD1EC3697400FC9BBA /* COPYRIGHT */; };
+		65792F071EC3697500FC9BBA /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAD1EC3697400FC9BBA /* COPYRIGHT */; };
+		65792F081EC3697500FC9BBA /* libtar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792EAE1EC3697400FC9BBA /* libtar.a */; };
+		65792F091EC3697500FC9BBA /* libtar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792EAE1EC3697400FC9BBA /* libtar.a */; };
+		65792F0A1EC3697500FC9BBA /* NEWS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAF1EC3697400FC9BBA /* NEWS */; };
+		65792F0B1EC3697500FC9BBA /* NEWS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EAF1EC3697400FC9BBA /* NEWS */; };
+		65792F0C1EC3697500FC9BBA /* README in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB01EC3697400FC9BBA /* README */; };
+		65792F0D1EC3697500FC9BBA /* README in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB01EC3697400FC9BBA /* README */; };
+		65792F0E1EC3697500FC9BBA /* CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB21EC3697400FC9BBA /* CHANGES */; };
+		65792F0F1EC3697500FC9BBA /* CHANGES in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB21EC3697400FC9BBA /* CHANGES */; };
+		65792F101EC3697500FC9BBA /* CHANGES.SSLeay in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB31EC3697400FC9BBA /* CHANGES.SSLeay */; };
+		65792F111EC3697500FC9BBA /* CHANGES.SSLeay in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB31EC3697400FC9BBA /* CHANGES.SSLeay */; };
+		65792F121EC3697500FC9BBA /* FAQ in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB41EC3697400FC9BBA /* FAQ */; };
+		65792F131EC3697500FC9BBA /* FAQ in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB41EC3697400FC9BBA /* FAQ */; };
+		65792F141EC3697500FC9BBA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792EB51EC3697400FC9BBA /* libcrypto.a */; };
+		65792F151EC3697500FC9BBA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65792EB51EC3697400FC9BBA /* libcrypto.a */; };
+		65792F161EC3697500FC9BBA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB61EC3697400FC9BBA /* LICENSE */; };
+		65792F171EC3697500FC9BBA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB61EC3697400FC9BBA /* LICENSE */; };
+		65792F181EC3697500FC9BBA /* NEWS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB71EC3697400FC9BBA /* NEWS */; };
+		65792F191EC3697500FC9BBA /* NEWS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB71EC3697400FC9BBA /* NEWS */; };
+		65792F1A1EC3697500FC9BBA /* PROBLEMS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB81EC3697400FC9BBA /* PROBLEMS */; };
+		65792F1B1EC3697500FC9BBA /* PROBLEMS in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB81EC3697400FC9BBA /* PROBLEMS */; };
+		65792F1C1EC3697500FC9BBA /* README in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB91EC3697400FC9BBA /* README */; };
+		65792F1D1EC3697500FC9BBA /* README in Resources */ = {isa = PBXBuildFile; fileRef = 65792EB91EC3697400FC9BBA /* README */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80719A69E5700C72F1A /* Share@2x.png */; };
@@ -2647,6 +2737,51 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
+		65792E821EC3697400FC9BBA /* AurasmaPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AurasmaPlugin.framework; path = Aurasma/AurasmaPlugin.framework; sourceTree = SOURCE_ROOT; };
+		65792E8B1EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch; sourceTree = "<group>"; };
+		65792E8C1EC3697400FC9BBA /* CONFIGURE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONFIGURE; sourceTree = "<group>"; };
+		65792E8D1EC3697400FC9BBA /* COPYING.GPLv2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.GPLv2; sourceTree = "<group>"; };
+		65792E8E1EC3697400FC9BBA /* COPYING.GPLv3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.GPLv3; sourceTree = "<group>"; };
+		65792E8F1EC3697400FC9BBA /* COPYING.LGPLv2.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = COPYING.LGPLv2.1; sourceTree = "<group>"; };
+		65792E901EC3697400FC9BBA /* COPYING.LGPLv3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.LGPLv3; sourceTree = "<group>"; };
+		65792E911EC3697400FC9BBA /* CREDITS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
+		65792E921EC3697400FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch; sourceTree = "<group>"; };
+		65792E931EC3697400FC9BBA /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
+		65792E941EC3697400FC9BBA /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
+		65792E951EC3697400FC9BBA /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
+		65792E961EC3697400FC9BBA /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
+		65792E971EC3697400FC9BBA /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
+		65792E981EC3697400FC9BBA /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
+		65792E991EC3697400FC9BBA /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
+		65792E9A1EC3697400FC9BBA /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		65792E9B1EC3697400FC9BBA /* MAINTAINERS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MAINTAINERS; sourceTree = "<group>"; };
+		65792E9C1EC3697400FC9BBA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65792E9D1EC3697400FC9BBA /* RELEASE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RELEASE; sourceTree = "<group>"; };
+		65792E9E1EC3697400FC9BBA /* RELEASE_NOTES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RELEASE_NOTES; sourceTree = "<group>"; };
+		65792E9F1EC3697400FC9BBA /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		65792EA11EC3697400FC9BBA /* ANNOUNCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ANNOUNCE; sourceTree = "<group>"; };
+		65792EA21EC3697400FC9BBA /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGES; sourceTree = "<group>"; };
+		65792EA31EC3697400FC9BBA /* CONFIGURE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONFIGURE; sourceTree = "<group>"; };
+		65792EA41EC3697400FC9BBA /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
+		65792EA51EC3697400FC9BBA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		65792EA61EC3697400FC9BBA /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		65792EA81EC3697400FC9BBA /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		65792EA91EC3697400FC9BBA /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		65792EAA1EC3697400FC9BBA /* ChangeLog-1.0.x */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ChangeLog-1.0.x"; sourceTree = "<group>"; };
+		65792EAB1EC3697400FC9BBA /* CONFIGURE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONFIGURE; sourceTree = "<group>"; };
+		65792EAC1EC3697400FC9BBA /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		65792EAD1EC3697400FC9BBA /* COPYRIGHT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
+		65792EAE1EC3697400FC9BBA /* libtar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtar.a; sourceTree = "<group>"; };
+		65792EAF1EC3697400FC9BBA /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		65792EB01EC3697400FC9BBA /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		65792EB21EC3697400FC9BBA /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGES; sourceTree = "<group>"; };
+		65792EB31EC3697400FC9BBA /* CHANGES.SSLeay */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGES.SSLeay; sourceTree = "<group>"; };
+		65792EB41EC3697400FC9BBA /* FAQ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ; sourceTree = "<group>"; };
+		65792EB51EC3697400FC9BBA /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		65792EB61EC3697400FC9BBA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		65792EB71EC3697400FC9BBA /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		65792EB81EC3697400FC9BBA /* PROBLEMS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PROBLEMS; sourceTree = "<group>"; };
+		65792EB91EC3697400FC9BBA /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -4143,26 +4278,37 @@
 				A84F86D61EC247380049091C /* Accelerate.framework in Frameworks */,
 				A84F86D71EC247380049091C /* AudioToolbox.framework in Frameworks */,
 				A84F86D81EC247380049091C /* JavaScriptCore.framework in Frameworks */,
+				65792EF61EC3697500FC9BBA /* libpng.a in Frameworks */,
+				65792EDC1EC3697500FC9BBA /* libavformat.a in Frameworks */,
+				65792EE21EC3697500FC9BBA /* libswscale.a in Frameworks */,
 				A84F86D91EC247380049091C /* OpenAL.framework in Frameworks */,
 				A84F86DA1EC247380049091C /* OpenGLES.framework in Frameworks */,
+				65792F081EC3697500FC9BBA /* libtar.a in Frameworks */,
 				A84F86D01EC246880049091C /* libcrypto.a in Frameworks */,
 				A84F86CE1EC246740049091C /* libtar.a in Frameworks */,
 				A84F86CC1EC246610049091C /* libpng.a in Frameworks */,
+				65792EDA1EC3697500FC9BBA /* libavfilter.a in Frameworks */,
 				A84F86C41EC246470049091C /* libavcodec.a in Frameworks */,
 				A84F86C51EC246470049091C /* libavdevice.a in Frameworks */,
 				A84F86C61EC246470049091C /* libavfilter.a in Frameworks */,
 				A84F86C71EC246470049091C /* libavformat.a in Frameworks */,
+				65792ED61EC3697500FC9BBA /* libavcodec.a in Frameworks */,
+				65792EBA1EC3697400FC9BBA /* AurasmaPlugin.framework in Frameworks */,
 				A84F86C81EC246470049091C /* libavutil.a in Frameworks */,
 				A84F86C91EC246470049091C /* libswresample.a in Frameworks */,
 				A84F86CA1EC246470049091C /* libswscale.a in Frameworks */,
 				92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				F2D5A3AC1EB00611002F9DDC /* LinkReaderKit.framework in Frameworks */,
+				65792F141EC3697500FC9BBA /* libcrypto.a in Frameworks */,
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
 				8271DCD21D46D03500B21549 /* imglyKit.framework in Frameworks */,
+				65792EDE1EC3697500FC9BBA /* libavutil.a in Frameworks */,
 				F1DCB7EB1B5066B000CA9AAD /* libz.dylib in Frameworks */,
 				E34D505D199AB87B006D80E0 /* CoreGraphics.framework in Frameworks */,
+				65792EE01EC3697500FC9BBA /* libswresample.a in Frameworks */,
 				FFF6481D1C8615870002328C /* Fabric.framework in Frameworks */,
+				65792ED81EC3697500FC9BBA /* libavdevice.a in Frameworks */,
 				E387B47919DA247000ABB167 /* Crashlytics.framework in Frameworks */,
 				E34D505F199AB87B006D80E0 /* UIKit.framework in Frameworks */,
 				E34D505B199AB87B006D80E0 /* Foundation.framework in Frameworks */,
@@ -4189,17 +4335,28 @@
 				482bc54fe78508365d0534bf /* Social.framework in Frameworks */,
 				53233482f8178877320112d9 /* DBChooser.framework in Frameworks */,
 				05c912861243a915499d938e /* imglyKit.framework in Frameworks */,
+				65792EDF1EC3697500FC9BBA /* libavutil.a in Frameworks */,
 				f7bf7be4b6c11fda3172b333 /* libz.dylib in Frameworks */,
+				65792ED91EC3697500FC9BBA /* libavdevice.a in Frameworks */,
 				b91313dfc6ceae6ca759eca1 /* CoreGraphics.framework in Frameworks */,
+				65792F151EC3697500FC9BBA /* libcrypto.a in Frameworks */,
 				3830cd319541ff5fc26c2a81 /* Fabric.framework in Frameworks */,
 				a87ef3737b5e49822333f21d /* Crashlytics.framework in Frameworks */,
+				65792EF71EC3697500FC9BBA /* libpng.a in Frameworks */,
+				65792EDD1EC3697500FC9BBA /* libavformat.a in Frameworks */,
 				33c24d98e8d8680a7a1ba56f /* UIKit.framework in Frameworks */,
+				65792EE31EC3697500FC9BBA /* libswscale.a in Frameworks */,
 				F2D5A3AF1EB00A17002F9DDC /* LinkReaderKit.framework in Frameworks */,
+				65792EE11EC3697500FC9BBA /* libswresample.a in Frameworks */,
 				6d00548cf3b1aa84f3d56f23 /* Foundation.framework in Frameworks */,
 				7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */,
+				65792EBB1EC3697400FC9BBA /* AurasmaPlugin.framework in Frameworks */,
 				F1B9596A1DAECAF400EF6EB7 /* CFNetwork.framework in Frameworks */,
+				65792F091EC3697500FC9BBA /* libtar.a in Frameworks */,
+				65792EDB1EC3697500FC9BBA /* libavfilter.a in Frameworks */,
 				F1B9596B1DAECAF400EF6EB7 /* calabash.framework in Frameworks */,
 				8D14780195E50EB1D3C614FE /* libPods-Sprocket-cal.a in Frameworks */,
+				65792ED71EC3697500FC9BBA /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4215,6 +4372,99 @@
 				2671D4C81E3EB64600F166E3 /* Info.plist */,
 			);
 			path = PushNotificationExtension;
+			sourceTree = "<group>";
+		};
+		65792E801EC3695300FC9BBA /* Aurasma */ = {
+			isa = PBXGroup;
+			children = (
+				65792E821EC3697400FC9BBA /* AurasmaPlugin.framework */,
+				65792E831EC3697400FC9BBA /* libs */,
+			);
+			name = Aurasma;
+			sourceTree = "<group>";
+		};
+		65792E831EC3697400FC9BBA /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				65792E8A1EC3697400FC9BBA /* FFmpeg-2.5.2 */,
+				65792EA01EC3697400FC9BBA /* libpng-1.6.13 */,
+				65792EA71EC3697400FC9BBA /* libtar-1.2.20 */,
+				65792EB11EC3697400FC9BBA /* OpenSSL-1.0.1j */,
+			);
+			name = libs;
+			path = Aurasma/libs;
+			sourceTree = SOURCE_ROOT;
+		};
+		65792E8A1EC3697400FC9BBA /* FFmpeg-2.5.2 */ = {
+			isa = PBXGroup;
+			children = (
+				65792E8B1EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch */,
+				65792E8C1EC3697400FC9BBA /* CONFIGURE */,
+				65792E8D1EC3697400FC9BBA /* COPYING.GPLv2 */,
+				65792E8E1EC3697400FC9BBA /* COPYING.GPLv3 */,
+				65792E8F1EC3697400FC9BBA /* COPYING.LGPLv2.1 */,
+				65792E901EC3697400FC9BBA /* COPYING.LGPLv3 */,
+				65792E911EC3697400FC9BBA /* CREDITS */,
+				65792E921EC3697400FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch */,
+				65792E931EC3697400FC9BBA /* libavcodec.a */,
+				65792E941EC3697400FC9BBA /* libavdevice.a */,
+				65792E951EC3697400FC9BBA /* libavfilter.a */,
+				65792E961EC3697400FC9BBA /* libavformat.a */,
+				65792E971EC3697400FC9BBA /* libavutil.a */,
+				65792E981EC3697400FC9BBA /* libswresample.a */,
+				65792E991EC3697400FC9BBA /* libswscale.a */,
+				65792E9A1EC3697400FC9BBA /* LICENSE.md */,
+				65792E9B1EC3697400FC9BBA /* MAINTAINERS */,
+				65792E9C1EC3697400FC9BBA /* README.md */,
+				65792E9D1EC3697400FC9BBA /* RELEASE */,
+				65792E9E1EC3697400FC9BBA /* RELEASE_NOTES */,
+				65792E9F1EC3697400FC9BBA /* VERSION */,
+			);
+			path = "FFmpeg-2.5.2";
+			sourceTree = "<group>";
+		};
+		65792EA01EC3697400FC9BBA /* libpng-1.6.13 */ = {
+			isa = PBXGroup;
+			children = (
+				65792EA11EC3697400FC9BBA /* ANNOUNCE */,
+				65792EA21EC3697400FC9BBA /* CHANGES */,
+				65792EA31EC3697400FC9BBA /* CONFIGURE */,
+				65792EA41EC3697400FC9BBA /* libpng.a */,
+				65792EA51EC3697400FC9BBA /* LICENSE */,
+				65792EA61EC3697400FC9BBA /* README */,
+			);
+			path = "libpng-1.6.13";
+			sourceTree = "<group>";
+		};
+		65792EA71EC3697400FC9BBA /* libtar-1.2.20 */ = {
+			isa = PBXGroup;
+			children = (
+				65792EA81EC3697400FC9BBA /* AUTHORS */,
+				65792EA91EC3697400FC9BBA /* ChangeLog */,
+				65792EAA1EC3697400FC9BBA /* ChangeLog-1.0.x */,
+				65792EAB1EC3697400FC9BBA /* CONFIGURE */,
+				65792EAC1EC3697400FC9BBA /* COPYING */,
+				65792EAD1EC3697400FC9BBA /* COPYRIGHT */,
+				65792EAE1EC3697400FC9BBA /* libtar.a */,
+				65792EAF1EC3697400FC9BBA /* NEWS */,
+				65792EB01EC3697400FC9BBA /* README */,
+			);
+			path = "libtar-1.2.20";
+			sourceTree = "<group>";
+		};
+		65792EB11EC3697400FC9BBA /* OpenSSL-1.0.1j */ = {
+			isa = PBXGroup;
+			children = (
+				65792EB21EC3697400FC9BBA /* CHANGES */,
+				65792EB31EC3697400FC9BBA /* CHANGES.SSLeay */,
+				65792EB41EC3697400FC9BBA /* FAQ */,
+				65792EB51EC3697400FC9BBA /* libcrypto.a */,
+				65792EB61EC3697400FC9BBA /* LICENSE */,
+				65792EB71EC3697400FC9BBA /* NEWS */,
+				65792EB81EC3697400FC9BBA /* PROBLEMS */,
+				65792EB91EC3697400FC9BBA /* README */,
+			);
+			path = "OpenSSL-1.0.1j";
 			sourceTree = "<group>";
 		};
 		8212B9C31EA929C5009E66EC /* Graduation */ = {
@@ -5515,6 +5765,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
+				65792E801EC3695300FC9BBA /* Aurasma */,
 				F24DA7D21EAEA10200C24AAB /* Watermark */,
 				F22F12B41E78AC8E00753C5A /* Multi-Print */,
 				F22F127F1E6F387900753C5A /* Security */,
@@ -6087,7 +6338,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -6211,8 +6462,10 @@
 				8212BF2B1EA93616009E66EC /* pig_TN@3x.png in Resources */,
 				8212BF1B1EA93616009E66EC /* Party-Hat_TN@3x.png in Resources */,
 				82A11D8F1E5FB93B00E7F8FC /* thumbs-up.png in Resources */,
+				65792F121EC3697500FC9BBA /* FAQ in Resources */,
 				82A11CC91E5FB93B00E7F8FC /* alarm-clock_TN.png in Resources */,
 				8212BF291EA93616009E66EC /* pig_TN@2x.png in Resources */,
+				65792F0A1EC3697500FC9BBA /* NEWS in Resources */,
 				8212BE9D1EA93616009E66EC /* koala.png in Resources */,
 				8212BE751EA93616009E66EC /* hedgehog.png in Resources */,
 				82A11D251E5FB93B00E7F8FC /* cloud_sad_TN@3x.png in Resources */,
@@ -6228,6 +6481,7 @@
 				8212BD6B1EA93615009E66EC /* aviator-glasses-color_TN@3x.png in Resources */,
 				8212BBAE1EA92A26009E66EC /* diploma_doodle_TN.png in Resources */,
 				8212BDFD1EA93616009E66EC /* fireworks.png in Resources */,
+				65792EE61EC3697500FC9BBA /* MAINTAINERS in Resources */,
 				82E3DA9E1E82EEED0008F600 /* palmtree.png in Resources */,
 				8212BE591EA93616009E66EC /* heart_bouquet_TN@2x.png in Resources */,
 				82E3DB2E1E82EEEE0008F600 /* travel_car_bug.png in Resources */,
@@ -6244,6 +6498,7 @@
 				82E3DA1A1E82EEED0008F600 /* heart_banner_TN@2x.png in Resources */,
 				82A11CD51E5FB93B00E7F8FC /* bacon_egg_TN@3x.png in Resources */,
 				8212BB7A1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */,
+				65792ED21EC3697500FC9BBA /* CREDITS in Resources */,
 				82E3DB4A1E82EEEE0008F600 /* v_cupcake_TN@2x.png in Resources */,
 				829A7AF41EBBC738005D4938 /* Nestle_iOS_Frame_TN.png in Resources */,
 				826BEB371E85BEAD000BE3FA /* RainbowFrame_TN.png in Resources */,
@@ -6257,6 +6512,7 @@
 				829A7A261EBB8E7E005D4938 /* mermaid_girl_TN.png in Resources */,
 				82A11D491E5FB93B00E7F8FC /* panda-mask_TN.png in Resources */,
 				82E3DB581E82EEEE0008F600 /* v_hearts_TN.png in Resources */,
+				65792ED01EC3697400FC9BBA /* COPYING.LGPLv3 in Resources */,
 				8212BF2D1EA93616009E66EC /* pig.png in Resources */,
 				82A11CE51E5FB93B00E7F8FC /* band-aid2_TN@2x.png in Resources */,
 				82BFB0061EAA6DCE00C579B8 /* Flowers2.png in Resources */,
@@ -6288,6 +6544,7 @@
 				82E3DA401E82EEED0008F600 /* heartExpress_TN.png in Resources */,
 				82BFB0031EAA6DCE00C579B8 /* Flowers2_TN.png in Resources */,
 				8212BED71EA93616009E66EC /* moon_TN.png in Resources */,
+				65792F101EC3697500FC9BBA /* CHANGES.SSLeay in Resources */,
 				8212BDDB1EA93616009E66EC /* cupcake_TN@3x.png in Resources */,
 				8212BEB11EA93616009E66EC /* Lips_TN@2x.png in Resources */,
 				8212BBAC1EA92A26009E66EC /* confetti.png in Resources */,
@@ -6336,6 +6593,7 @@
 				82A11CEF1E5FB93B00E7F8FC /* cat_grumble.png in Resources */,
 				8212BBA81EA92A26009E66EC /* confetti_TN@2x.png in Resources */,
 				8212BDEB1EA93616009E66EC /* devilhorns_TN@3x.png in Resources */,
+				65792F0C1EC3697500FC9BBA /* README in Resources */,
 				829A7A2E1EBB8E7E005D4938 /* mermaid_tail_@3x.png in Resources */,
 				8212BF591EA93616009E66EC /* scarycat_TN@2x.png in Resources */,
 				82E3DB081E82EEED0008F600 /* target_TN.png in Resources */,
@@ -6349,6 +6607,7 @@
 				82A11D211E5FB93B00E7F8FC /* cloud_sad_TN.png in Resources */,
 				829A7AC71EBBC49E005D4938 /* ChainSmokers_sticker_2_TN.png in Resources */,
 				82E3D9E01E82EEED0008F600 /* feather2_TN.png in Resources */,
+				65792EEA1EC3697500FC9BBA /* RELEASE in Resources */,
 				8212BD9F1EA93615009E66EC /* cake_TN.png in Resources */,
 				829A7B311EBBCFF2005D4938 /* LOreal_Android_1c_TN@3x.png in Resources */,
 				8212BB741EA92A25009E66EC /* g_balloons.png in Resources */,
@@ -6497,6 +6756,7 @@
 				8212BDB11EA93616009E66EC /* cat_body_TN@2x.png in Resources */,
 				82A11D691E5FB93B00E7F8FC /* schoolbus_TN.png in Resources */,
 				829A7ACB1EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@3x.png in Resources */,
+				65792F061EC3697500FC9BBA /* COPYRIGHT in Resources */,
 				8212BDBB1EA93616009E66EC /* cat_face_TN@3x.png in Resources */,
 				8212BBD41EA92A26009E66EC /* g_horn.png in Resources */,
 				826BEB5F1E85BEAD000BE3FA /* WhiteBarFrame_TN.png in Resources */,
@@ -6505,13 +6765,18 @@
 				8212BE531EA93616009E66EC /* heart_balloons_TN@3x.png in Resources */,
 				F2030C0D1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */,
 				82E3DB3A1E82EEEE0008F600 /* unicorn_float_TN@2x.png in Resources */,
+				65792EF01EC3697500FC9BBA /* ANNOUNCE in Resources */,
 				E34D50B3199AB9FE006D80E0 /* HPSimplified_LtIt.ttf in Resources */,
 				8212BF9D1EA93616009E66EC /* star_yellow.png in Resources */,
+				65792F1A1EC3697500FC9BBA /* PROBLEMS in Resources */,
 				82E3DB921E82F1920008F600 /* glasses_blossom_TN@2x.png in Resources */,
+				65792F001EC3697500FC9BBA /* ChangeLog-1.0.x in Resources */,
 				82A11CCF1E5FB93B00E7F8FC /* alarm-clock.png in Resources */,
 				82E3DA601E82EEED0008F600 /* leaf3_TN.png in Resources */,
+				65792EFA1EC3697500FC9BBA /* README in Resources */,
 				82A11D7B1E5FB93B00E7F8FC /* spoon_TN@2x.png in Resources */,
 				829A7B1D1EBBCFF2005D4938 /* ChainSmokers_Android_1_TN.png in Resources */,
+				65792EFE1EC3697500FC9BBA /* ChangeLog in Resources */,
 				829A7B231EBBCFF2005D4938 /* ChainSmokers_Android_1.png in Resources */,
 				829A7A4C1EBB8E7E005D4938 /* popsicle.png in Resources */,
 				8212BFBD1EA93616009E66EC /* Unicorn.png in Resources */,
@@ -6547,6 +6812,7 @@
 				8212BF431EA93616009E66EC /* plum-blossom_TN@3x.png in Resources */,
 				82E3D9EC1E82EEED0008F600 /* glasses_1_TN@3x.png in Resources */,
 				826BEB791E85BEAD000BE3FA /* WhiteRoundedFrame_TN@2x.png in Resources */,
+				65792ECA1EC3697400FC9BBA /* COPYING.GPLv2 in Resources */,
 				8212BE8D1EA93616009E66EC /* icecreamcone.png in Resources */,
 				8212BE271EA93616009E66EC /* gift-dog_TN@2x.png in Resources */,
 				8212BD9B1EA93615009E66EC /* butterfly_TN@3x.png in Resources */,
@@ -6569,6 +6835,7 @@
 				8212BE131EA93616009E66EC /* Football_TN@3x.png in Resources */,
 				82E3DB341E82EEEE0008F600 /* travel_car_woody_TN@3x.png in Resources */,
 				8212BF0F1EA93616009E66EC /* palm-tree-2_TN.png in Resources */,
+				65792EC61EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch in Resources */,
 				8212BF571EA93616009E66EC /* scarycat_TN.png in Resources */,
 				826BEAE11E85BEAD000BE3FA /* BlueWatercoloFrame_TN@2x.png in Resources */,
 				82E3D9A01E82EEED0008F600 /* catears_TN.png in Resources */,
@@ -6608,6 +6875,7 @@
 				82A11D7D1E5FB93B00E7F8FC /* spoon_TN@3x.png in Resources */,
 				8212BDA31EA93615009E66EC /* cake_TN@3x.png in Resources */,
 				8212BBDC1EA92A26009E66EC /* medal_graduation.png in Resources */,
+				65792ECE1EC3697400FC9BBA /* COPYING.LGPLv2.1 in Resources */,
 				82E3D9C01E82EEED0008F600 /* crown_TN.png in Resources */,
 				82E3D9F81E82EEED0008F600 /* hat_TN.png in Resources */,
 				82A11CBB1E5FB93B00E7F8FC /* 3d-diamond-1_TN@2x.png in Resources */,
@@ -6623,6 +6891,7 @@
 				82A11D1B1E5FB93B00E7F8FC /* cloud_angry_TN@2x.png in Resources */,
 				E39EF28419B648E500AAB884 /* RockSalt.ttf in Resources */,
 				829A7A1C1EBB8E7E005D4938 /* kite.png in Resources */,
+				65792F1C1EC3697500FC9BBA /* README in Resources */,
 				F1DCB8291B542D6500CA9AAD /* sanchez-regular.ttf in Resources */,
 				8212BBE01EA92A26009E66EC /* medal_TN@2x.png in Resources */,
 				829A7A6E1EBB8E7E005D4938 /* sweat_3_TN.png in Resources */,
@@ -6636,6 +6905,7 @@
 				8212BEFF1EA93616009E66EC /* oranges_TN.png in Resources */,
 				829A7A981EBBB009005D4938 /* floating_flowers_2_TN@2x.png in Resources */,
 				8212BBA61EA92A26009E66EC /* confetti_TN.png in Resources */,
+				65792F0E1EC3697500FC9BBA /* CHANGES in Resources */,
 				8212BE731EA93616009E66EC /* hedgehog_TN@3x.png in Resources */,
 				8212BF0D1EA93616009E66EC /* Owl.png in Resources */,
 				829A79F81EBB8E7E005D4938 /* flamingo_TN@2x.png in Resources */,
@@ -6662,6 +6932,7 @@
 				8212BB8C1EA92A25009E66EC /* bowtie_graduation.png in Resources */,
 				82E3DAD81E82EEED0008F600 /* sun_face_TN.png in Resources */,
 				82E3DAFE1E82EEED0008F600 /* surfboard.png in Resources */,
+				65792EF81EC3697500FC9BBA /* LICENSE in Resources */,
 				8212BDF51EA93616009E66EC /* dog.png in Resources */,
 				E39EF28819B648E500AAB884 /* SpecialElite.ttf in Resources */,
 				82A11D2F1E5FB93B00E7F8FC /* doughnut.png in Resources */,
@@ -6686,6 +6957,7 @@
 				826BEB6D1E85BEAD000BE3FA /* WhiteFrame.png in Resources */,
 				82E3DAD21E82EEED0008F600 /* stars_TN@2x.png in Resources */,
 				829A7A2C1EBB8E7E005D4938 /* mermaid_girl.png in Resources */,
+				65792EEE1EC3697500FC9BBA /* VERSION in Resources */,
 				8212BB8E1EA92A25009E66EC /* cap_graduation_TN.png in Resources */,
 				82A11D0B1E5FB93B00E7F8FC /* cat-on-head_TN@2x.png in Resources */,
 				8212BD871EA93615009E66EC /* bird_envelope_TN.png in Resources */,
@@ -6705,6 +6977,7 @@
 				8212BC061EA92A26009E66EC /* pencil_TN.png in Resources */,
 				826BEB311E85BEAD000BE3FA /* PolkadotsFrame_TN@2x.png in Resources */,
 				82E3D9501E82EEEC0008F600 /* bbq_TN.png in Resources */,
+				65792F041EC3697500FC9BBA /* COPYING in Resources */,
 				8212BDC91EA93616009E66EC /* cloud-sun_TN@2x.png in Resources */,
 				82A11CE11E5FB93B00E7F8FC /* band-aid2.png in Resources */,
 				82E3DA2C1E82EEED0008F600 /* heart_crown_TN@3x.png in Resources */,
@@ -6761,6 +7034,7 @@
 				82A11D071E5FB93B00E7F8FC /* cat-fries.png in Resources */,
 				82E3D9E81E82EEED0008F600 /* glasses_1_TN.png in Resources */,
 				82E3DA0A1E82EEED0008F600 /* heart_2_TN@2x.png in Resources */,
+				65792ED41EC3697500FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch in Resources */,
 				8212BD591EA93615009E66EC /* apple_angry_TN@2x.png in Resources */,
 				82A11D4F1E5FB93B00E7F8FC /* panda-mask.png in Resources */,
 				829A79F41EBB8E7E005D4938 /* fan.png in Resources */,
@@ -6800,6 +7074,7 @@
 				829A7A641EBB8E7E005D4938 /* sand_castle.png in Resources */,
 				8212BEB31EA93616009E66EC /* Lips_TN@3x.png in Resources */,
 				82E3D9421E82EEEC0008F600 /* aviator_glasses_TN@2x.png in Resources */,
+				65792F181EC3697500FC9BBA /* NEWS in Resources */,
 				8212BEF51EA93616009E66EC /* Mustache-dark_TN@3x.png in Resources */,
 				82E3DB1E1E82EEEE0008F600 /* tiara.png in Resources */,
 				8212BB6E1EA92A25009E66EC /* g_balloons_TN.png in Resources */,
@@ -6849,6 +7124,7 @@
 				E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */,
 				8212BE291EA93616009E66EC /* gift-dog_TN@3x.png in Resources */,
 				8212BE191EA93616009E66EC /* Fox_TN@2x.png in Resources */,
+				65792EF41EC3697500FC9BBA /* CONFIGURE in Resources */,
 				8212BF691EA93616009E66EC /* skull_TN@2x.png in Resources */,
 				82E3D9FC1E82EEED0008F600 /* hat_TN@3x.png in Resources */,
 				82E3DB561E82EEEE0008F600 /* v_heart.png in Resources */,
@@ -6858,6 +7134,7 @@
 				8212BDF31EA93616009E66EC /* dog_TN@3x.png in Resources */,
 				82E3DB281E82EEEE0008F600 /* travel_car_bug_TN.png in Resources */,
 				829A7AC91EBBC49E005D4938 /* ChainSmokers_sticker_2_TN@2x.png in Resources */,
+				65792EC81EC3697400FC9BBA /* CONFIGURE in Resources */,
 				82E3D9801E82EEEC0008F600 /* bow2_TN.png in Resources */,
 				826BEB471E85BEAD000BE3FA /* SloppyFrame_TN.png in Resources */,
 				8212BEA91EA93616009E66EC /* letter_TN@2x.png in Resources */,
@@ -6865,6 +7142,7 @@
 				82A11CF51E5FB93B00E7F8FC /* cat-celebrate_TN@3x.png in Resources */,
 				82A11D1D1E5FB93B00E7F8FC /* cloud_angry_TN@3x.png in Resources */,
 				8212BD771EA93615009E66EC /* beachball-color_TN.png in Resources */,
+				65792ECC1EC3697400FC9BBA /* COPYING.GPLv3 in Resources */,
 				8212BF3F1EA93616009E66EC /* plum-blossom_TN.png in Resources */,
 				8212BE211EA93616009E66EC /* gift_TN@2x.png in Resources */,
 				E3461FA719AF84A80042DF5E /* MeasurementArrowUp@2x.png in Resources */,
@@ -6912,6 +7190,7 @@
 				8212BBFE1EA92A26009E66EC /* pencil_graduation_TN.png in Resources */,
 				829A7B001EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png in Resources */,
 				8212BB7C1EA92A25009E66EC /* book_stack.png in Resources */,
+				65792EFC1EC3697500FC9BBA /* AUTHORS in Resources */,
 				8212BE671EA93616009E66EC /* heartPixel_TN.png in Resources */,
 				82E3D95E1E82EEEC0008F600 /* beach_umbrella.png in Resources */,
 				8212BF451EA93616009E66EC /* plum-blossom.png in Resources */,
@@ -6948,6 +7227,7 @@
 				82E3DB681E82EEEE0008F600 /* volleyball_TN.png in Resources */,
 				826BEB711E85BEAD000BE3FA /* WhiteFullFrame_TN@2x.png in Resources */,
 				82E3DB981E82F1920008F600 /* Panda_TN.png in Resources */,
+				65792F161EC3697500FC9BBA /* LICENSE in Resources */,
 				82E3DAE21E82EEED0008F600 /* sundae_TN@2x.png in Resources */,
 				8212BDDF1EA93616009E66EC /* Derby_TN.png in Resources */,
 				82E3D9B61E82EEED0008F600 /* catwhiskers.png in Resources */,
@@ -7120,6 +7400,7 @@
 				8212BF171EA93616009E66EC /* Party-Hat_TN.png in Resources */,
 				82E3DB301E82EEEE0008F600 /* travel_car_woody_TN.png in Resources */,
 				829A7A301EBB8E7E005D4938 /* mermaid_tail_TN.png in Resources */,
+				65792EF21EC3697500FC9BBA /* CHANGES in Resources */,
 				8212BDFB1EA93616009E66EC /* fireworks_TN@3x.png in Resources */,
 				8212BD651EA93615009E66EC /* arrow.png in Resources */,
 				8212BD991EA93615009E66EC /* butterfly_TN@2x.png in Resources */,
@@ -7214,10 +7495,12 @@
 				8212BDCD1EA93616009E66EC /* cloud-sun.png in Resources */,
 				8212BD731EA93615009E66EC /* banner_TN@3x.png in Resources */,
 				8212BE491EA93616009E66EC /* heart_arrow_TN@2x.png in Resources */,
+				65792EEC1EC3697500FC9BBA /* RELEASE_NOTES in Resources */,
 				8212BF4F1EA93616009E66EC /* rosebud_TN.png in Resources */,
 				82A11CD71E5FB93B00E7F8FC /* bacon_egg.png in Resources */,
 				8212BBCE1EA92A26009E66EC /* g_horn_TN.png in Resources */,
 				829A7B211EBBCFF2005D4938 /* ChainSmokers_Android_1_TN@3x.png in Resources */,
+				65792F021EC3697500FC9BBA /* CONFIGURE in Resources */,
 				829A7AD71EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */,
 				82A11D731E5FB93B00E7F8FC /* skateboard_TN@2x.png in Resources */,
 				82E3DA001E82EEED0008F600 /* headband_TN.png in Resources */,
@@ -7288,6 +7571,7 @@
 				8218514F1EAA9103000EDFD2 /* travel_car_woody_TN.png in Resources */,
 				82E3DE741E831BD10008F600 /* cloud_sad_TN@3x.png in Resources */,
 				821851671EAA9103000EDFD2 /* v_xoxo_TN.png in Resources */,
+				65792F1D1EC3697500FC9BBA /* README in Resources */,
 				82E3DEA41E831BD10008F600 /* taco2_TN@3x.png in Resources */,
 				829A7A5F1EBB8E7E005D4938 /* sand_castle_TN.png in Resources */,
 				82E3DE401E831BD10008F600 /* 3d-diamond-1_TN@3x.png in Resources */,
@@ -7295,6 +7579,7 @@
 				829A7B301EBBCFF2005D4938 /* LOreal_Android_1c_TN@2x.png in Resources */,
 				821850091EAA9040000EDFD2 /* Mushrooms-b_TN@2x.png in Resources */,
 				829A7A971EBBB009005D4938 /* floating_flowers_2_TN.png in Resources */,
+				65792EFD1EC3697500FC9BBA /* AUTHORS in Resources */,
 				82184FC11EAA9040000EDFD2 /* heart_balloons_TN@3x.png in Resources */,
 				82E3DE951E831BD10008F600 /* rabbit-mask.png in Resources */,
 				8212BBB51EA92A26009E66EC /* diploma_doodle.png in Resources */,
@@ -7312,6 +7597,7 @@
 				82184F431EAA9040000EDFD2 /* arrow_TN.png in Resources */,
 				826BEB761E85BEAD000BE3FA /* WhiteFullFrame.png in Resources */,
 				821850301EAA9040000EDFD2 /* Pineapple_TN@2x.png in Resources */,
+				65792F0F1EC3697500FC9BBA /* CHANGES in Resources */,
 				829A7A4D1EBB8E7E005D4938 /* popsicle.png in Resources */,
 				82184F981EAA9040000EDFD2 /* flowers_TN.png in Resources */,
 				821850201EAA9040000EDFD2 /* palm-tree-2_TN@2x.png in Resources */,
@@ -7386,6 +7672,7 @@
 				82184F631EAA9040000EDFD2 /* cake_TN.png in Resources */,
 				829A7A671EBB8E7E005D4938 /* summer_sunglasses_TN.png in Resources */,
 				82184F501EAA9040000EDFD2 /* beachball-color_TN@2x.png in Resources */,
+				65792EC71EC3697400FC9BBA /* 581c7f0e12b1fa39f73d683e54d6ecda0772c5a9.patch in Resources */,
 				8218508F1EAA9102000EDFD2 /* bbq_TN.png in Resources */,
 				829A7A791EBB8E7E005D4938 /* visor_TN@2x.png in Resources */,
 				821851651EAA9103000EDFD2 /* v_hearts_TN@3x.png in Resources */,
@@ -7425,6 +7712,7 @@
 				82184F791EAA9040000EDFD2 /* cloud-sun_TN@3x.png in Resources */,
 				82E3DE8F1E831BD10008F600 /* pizza_TN@2x.png in Resources */,
 				8218516C1EAA9103000EDFD2 /* volleyball_TN@2x.png in Resources */,
+				65792F051EC3697500FC9BBA /* COPYING in Resources */,
 				821850DD1EAA9102000EDFD2 /* headband_TN@3x.png in Resources */,
 				82184FBA1EAA9040000EDFD2 /* Glasses-red.png in Resources */,
 				82E3DE4D1E831BD10008F600 /* bacon_egg.png in Resources */,
@@ -7436,6 +7724,7 @@
 				829A7AF51EBBC738005D4938 /* Nestle_iOS_Frame_TN.png in Resources */,
 				8218508E1EAA9102000EDFD2 /* balloons.png in Resources */,
 				829A7ABA1EBBC49E005D4938 /* ReinventMemories_sticker_TN@2x.png in Resources */,
+				65792F111EC3697500FC9BBA /* CHANGES.SSLeay in Resources */,
 				821850E51EAA9102000EDFD2 /* heart_banner_TN@3x.png in Resources */,
 				8218505F1EAA9040000EDFD2 /* spider_TN.png in Resources */,
 				82184FB61EAA9040000EDFD2 /* Glasses-blinds.png in Resources */,
@@ -7596,9 +7885,11 @@
 				82E3DE8B1E831BD10008F600 /* peace_TN@2x.png in Resources */,
 				263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */,
 				8218503F1EAA9040000EDFD2 /* rainbow_2.png in Resources */,
+				65792F031EC3697500FC9BBA /* CONFIGURE in Resources */,
 				821851581EAA9103000EDFD2 /* v_cat_TN@2x.png in Resources */,
 				821850561EAA9040000EDFD2 /* sloth.png in Resources */,
 				8218503A1EAA9040000EDFD2 /* plum-blossom.png in Resources */,
+				65792F0D1EC3697500FC9BBA /* README in Resources */,
 				82E3DE5E1E831BD10008F600 /* cat-coffee_TN.png in Resources */,
 				8218512A1EAA9103000EDFD2 /* sundae.png in Resources */,
 				829A7A3F1EBB8E7E005D4938 /* popsicle-2.png in Resources */,
@@ -7713,6 +8004,7 @@
 				8212BBC51EA92A26009E66EC /* flying_caps_graduation.png in Resources */,
 				82184F651EAA9040000EDFD2 /* cake_TN@3x.png in Resources */,
 				82184FBC1EAA9040000EDFD2 /* heart_arrow_TN@2x.png in Resources */,
+				65792F0B1EC3697500FC9BBA /* NEWS in Resources */,
 				821850EC1EAA9103000EDFD2 /* heart-garland_TN@2x.png in Resources */,
 				829A7AF11EBBC738005D4938 /* LOreal_iOS_1c_TN@3x.png in Resources */,
 				82E3DE431E831BD10008F600 /* 3d-diamond-2_TN@2x.png in Resources */,
@@ -7730,8 +8022,10 @@
 				829A7A831EBB8E7E005D4938 /* water_bubbles_TN@3x.png in Resources */,
 				821851221EAA9103000EDFD2 /* stars.png in Resources */,
 				821850571EAA9040000EDFD2 /* Soda_can_TN.png in Resources */,
+				65792EE71EC3697500FC9BBA /* MAINTAINERS in Resources */,
 				82E3DE9F1E831BD10008F600 /* spoon_TN@2x.png in Resources */,
 				82184F4B1EAA9040000EDFD2 /* banner_TN.png in Resources */,
+				65792F1B1EC3697500FC9BBA /* PROBLEMS in Resources */,
 				82184FBE1EAA9040000EDFD2 /* heart_arrow.png in Resources */,
 				821850231EAA9040000EDFD2 /* Party-Hat_TN.png in Resources */,
 				821850141EAA9040000EDFD2 /* OMG_TN@2x.png in Resources */,
@@ -7749,6 +8043,7 @@
 				82184FA11EAA9040000EDFD2 /* Football_TN@3x.png in Resources */,
 				82184FF41EAA9040000EDFD2 /* LOL_TN@2x.png in Resources */,
 				82184FA81EAA9040000EDFD2 /* gift_TN@2x.png in Resources */,
+				65792F191EC3697500FC9BBA /* NEWS in Resources */,
 				82184F4A1EAA9040000EDFD2 /* aviator-glasses-color.png in Resources */,
 				829A79F91EBB8E7E005D4938 /* flamingo_TN@2x.png in Resources */,
 				826BEB6E1E85BEAD000BE3FA /* WhiteFrame.png in Resources */,
@@ -7760,6 +8055,7 @@
 				821850941EAA9102000EDFD2 /* beach_umbrella_TN@2x.png in Resources */,
 				821850311EAA9040000EDFD2 /* Pineapple_TN@3x.png in Resources */,
 				826BEB001E85BEAD000BE3FA /* GradientFrame_TN.png in Resources */,
+				65792ED11EC3697500FC9BBA /* COPYING.LGPLv3 in Resources */,
 				8218513D1EAA9103000EDFD2 /* target_TN@3x.png in Resources */,
 				829A7A991EBBB009005D4938 /* floating_flowers_2_TN@2x.png in Resources */,
 				82184FE41EAA9040000EDFD2 /* koala_TN@2x.png in Resources */,
@@ -7770,6 +8066,7 @@
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
 				829A7A9B1EBBB009005D4938 /* floating_flowers_2_TN@3x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
+				65792ED51EC3697500FC9BBA /* f963f80399deb1a2b44c1bac3af7123e8a0c9e46.patch in Resources */,
 				8212BC171EA92A26009E66EC /* ribbon_TN.png in Resources */,
 				821850F61EAA9103000EDFD2 /* hearts.png in Resources */,
 				821850E01EAA9102000EDFD2 /* heart_2_TN@2x.png in Resources */,
@@ -7883,6 +8180,7 @@
 				8218511A1EAA9103000EDFD2 /* soda_straw.png in Resources */,
 				82184F8B1EAA9040000EDFD2 /* dog_TN.png in Resources */,
 				82E3DE6E1E831BD10008F600 /* cloud_angry_TN.png in Resources */,
+				65792F131EC3697500FC9BBA /* FAQ in Resources */,
 				821850381EAA9040000EDFD2 /* plum-blossom_TN@2x.png in Resources */,
 				82184F461EAA9040000EDFD2 /* arrow.png in Resources */,
 				826BEB441E85BEAD000BE3FA /* RedFrame_TN@3x.png in Resources */,
@@ -7903,6 +8201,7 @@
 				8212BB931EA92A25009E66EC /* cap_graduation_TN@3x.png in Resources */,
 				821851071EAA9103000EDFD2 /* monster_2_TN.png in Resources */,
 				829A7A711EBB8E7E005D4938 /* sweat_3_TN@2x.png in Resources */,
+				65792F011EC3697500FC9BBA /* ChangeLog-1.0.x in Resources */,
 				821850971EAA9102000EDFD2 /* beachball_TN.png in Resources */,
 				82184FF71EAA9040000EDFD2 /* love_monster_TN.png in Resources */,
 				8218511B1EAA9103000EDFD2 /* starhp_TN.png in Resources */,
@@ -7963,6 +8262,7 @@
 				829A7A051EBB8E7E005D4938 /* flip_flops2.png in Resources */,
 				82184F8D1EAA9040000EDFD2 /* dog_TN@3x.png in Resources */,
 				8212BB8B1EA92A25009E66EC /* bowtie_graduation_TN@3x.png in Resources */,
+				65792EED1EC3697500FC9BBA /* RELEASE_NOTES in Resources */,
 				829A7A211EBB8E7E005D4938 /* lei_TN@2x.png in Resources */,
 				821851021EAA9103000EDFD2 /* leaf3.png in Resources */,
 				8218505A1EAA9040000EDFD2 /* Soda_can.png in Resources */,
@@ -8012,6 +8312,7 @@
 				8212BB7F1EA92A25009E66EC /* books_TN.png in Resources */,
 				82E3DE901E831BD10008F600 /* pizza_TN@3x.png in Resources */,
 				14eed20c36a3bc4e0150fe31 /* retry@2x.png in Resources */,
+				65792EFF1EC3697500FC9BBA /* ChangeLog in Resources */,
 				c31a8d9a6d8ff9f2bff17d35 /* RightSwipeButton@2x.png in Resources */,
 				821851141EAA9103000EDFD2 /* smiley_TN@2x.png in Resources */,
 				82184FBF1EAA9040000EDFD2 /* heart_balloons_TN.png in Resources */,
@@ -8031,6 +8332,8 @@
 				821851431EAA9103000EDFD2 /* tiara_TN.png in Resources */,
 				8212BBC71EA92A26009E66EC /* g_glasses_TN.png in Resources */,
 				826BEB461E85BEAD000BE3FA /* RedFrame.png in Resources */,
+				65792EF11EC3697500FC9BBA /* ANNOUNCE in Resources */,
+				65792ECD1EC3697400FC9BBA /* COPYING.GPLv3 in Resources */,
 				829A7B011EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN@3x.png in Resources */,
 				82184F991EAA9040000EDFD2 /* flowers_TN@2x.png in Resources */,
 				821850E41EAA9102000EDFD2 /* heart_banner_TN@2x.png in Resources */,
@@ -8040,6 +8343,7 @@
 				826BEB6C1E85BEAD000BE3FA /* WhiteFrame_TN@3x.png in Resources */,
 				82184F5D1EAA9040000EDFD2 /* bird_TN@3x.png in Resources */,
 				82184FB31EAA9040000EDFD2 /* Glasses-blinds_TN.png in Resources */,
+				65792EF31EC3697500FC9BBA /* CHANGES in Resources */,
 				821850D91EAA9102000EDFD2 /* hat_TN@3x.png in Resources */,
 				82184F5C1EAA9040000EDFD2 /* bird_TN@2x.png in Resources */,
 				829A7B2A1EBBCFF2005D4938 /* ChainSmokers_Android_2_TN@3x.png in Resources */,
@@ -8047,6 +8351,7 @@
 				821850C61EAA9102000EDFD2 /* diamond.png in Resources */,
 				82184FBB1EAA9040000EDFD2 /* heart_arrow_TN.png in Resources */,
 				829A7AC41EBBC49E005D4938 /* Cannes_logo_white_TN@3x.png in Resources */,
+				65792ECB1EC3697400FC9BBA /* COPYING.GPLv2 in Resources */,
 				829A7A451EBB8E7E005D4938 /* popsicle_TN@3x.png in Resources */,
 				82184FC21EAA9040000EDFD2 /* heart_balloons.png in Resources */,
 				829A7A5D1EBB8E7E005D4938 /* radio.png in Resources */,
@@ -8068,6 +8373,7 @@
 				821850A91EAA9102000EDFD2 /* bunny_ears_flowers_TN@3x.png in Resources */,
 				8212BBA31EA92A26009E66EC /* confetti_graduation_TN@3x.png in Resources */,
 				82E3DE7B1E831BD10008F600 /* fork_TN@2x.png in Resources */,
+				65792EFB1EC3697500FC9BBA /* README in Resources */,
 				829A79F11EBB8E7E005D4938 /* fan_TN@2x.png in Resources */,
 				30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */,
 				82184F931EAA9040000EDFD2 /* fist_TN.png in Resources */,
@@ -8077,6 +8383,7 @@
 				82184FD21EAA9040000EDFD2 /* hedgehog.png in Resources */,
 				82184F971EAA9040000EDFD2 /* flowers.png in Resources */,
 				829A7B421EBBCFF2005D4938 /* Nestle_Android_TN@3x.png in Resources */,
+				65792EC91EC3697400FC9BBA /* CONFIGURE in Resources */,
 				82E3DE5B1E831BD10008F600 /* cat-celebrate_TN@2x.png in Resources */,
 				8212BC011EA92A26009E66EC /* pencil_graduation_TN@2x.png in Resources */,
 				8212BB971EA92A25009E66EC /* cap_TN.png in Resources */,
@@ -8105,6 +8412,7 @@
 				82184FC71EAA9040000EDFD2 /* heart_wings_TN.png in Resources */,
 				826BEB7E1E85BEAD000BE3FA /* WhiteRoundedFrame.png in Resources */,
 				821850FA1EAA9103000EDFD2 /* holding_hands.png in Resources */,
+				65792ED31EC3697500FC9BBA /* CREDITS in Resources */,
 				821851181EAA9103000EDFD2 /* soda_straw_TN@2x.png in Resources */,
 				8212BC0F1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				8218509A1EAA9102000EDFD2 /* beachball.png in Resources */,
@@ -8135,6 +8443,7 @@
 				82184F7C1EAA9040000EDFD2 /* Cocoa_TN@2x.png in Resources */,
 				829A7AD21EBBC49E005D4938 /* ChainSmokers_sticker_TN@2x.png in Resources */,
 				82E3DE981E831BD10008F600 /* schoolbus_TN@3x.png in Resources */,
+				65792EEB1EC3697500FC9BBA /* RELEASE in Resources */,
 				8212BBBB1EA92A26009E66EC /* diploma_TN@3x.png in Resources */,
 				821851561EAA9103000EDFD2 /* unicorn_float.png in Resources */,
 				821851661EAA9103000EDFD2 /* v_hearts.png in Resources */,
@@ -8169,6 +8478,7 @@
 				829A7A111EBB8E7E005D4938 /* ice_cream_cone_TN@2x.png in Resources */,
 				821850BC1EAA9102000EDFD2 /* conversation_heart_TN@2x.png in Resources */,
 				826BEAE61E85BEAD000BE3FA /* BlueWatercoloFrame.png in Resources */,
+				65792F071EC3697500FC9BBA /* COPYRIGHT in Resources */,
 				8218512F1EAA9103000EDFD2 /* sunglasses_TN.png in Resources */,
 				826BEB561E85BEAD000BE3FA /* StarsOverlayFrame.png in Resources */,
 				82184FE51EAA9040000EDFD2 /* koala_TN@3x.png in Resources */,
@@ -8212,6 +8522,7 @@
 				829A7AFD1EBBC738005D4938 /* S_pellegrino_iOS_Frame_TN.png in Resources */,
 				82E3DE791E831BD10008F600 /* doughnut.png in Resources */,
 				db4cb0b0a9b0f6406be9fee7 /* PG_Main.storyboard in Resources */,
+				65792EEF1EC3697500FC9BBA /* VERSION in Resources */,
 				829A7A391EBB8E7E005D4938 /* mermaid_tail_water_TN@3x.png in Resources */,
 				82184FFA1EAA9040000EDFD2 /* love_monster.png in Resources */,
 				829A7B4E1EBBCFF2005D4938 /* SanPellegrino_Android.png in Resources */,
@@ -8228,9 +8539,11 @@
 				82184F941EAA9040000EDFD2 /* fist_TN@2x.png in Resources */,
 				826BEB3A1E85BEAD000BE3FA /* RainbowFrame_TN@2x.png in Resources */,
 				8218516A1EAA9103000EDFD2 /* v_xoxo.png in Resources */,
+				65792ECF1EC3697400FC9BBA /* COPYING.LGPLv2.1 in Resources */,
 				821850CF1EAA9102000EDFD2 /* glasses_1_TN.png in Resources */,
 				821850181EAA9040000EDFD2 /* oranges_TN@2x.png in Resources */,
 				82184F841EAA9040000EDFD2 /* Derby_TN@2x.png in Resources */,
+				65792F171EC3697500FC9BBA /* LICENSE in Resources */,
 				821851061EAA9103000EDFD2 /* lock.png in Resources */,
 				821851081EAA9103000EDFD2 /* monster_2_TN@2x.png in Resources */,
 				8218512D1EAA9103000EDFD2 /* sunglasses_frogskin_TN@3x.png in Resources */,
@@ -8300,8 +8613,10 @@
 				82184F7B1EAA9040000EDFD2 /* Cocoa_TN.png in Resources */,
 				821850CB1EAA9102000EDFD2 /* feather2_TN.png in Resources */,
 				821850F71EAA9103000EDFD2 /* holding_hands_TN.png in Resources */,
+				65792EF91EC3697500FC9BBA /* LICENSE in Resources */,
 				64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */,
 				82A489431EAFD0960017B072 /* stars_bunch_TN@3x.png in Resources */,
+				65792EF51EC3697500FC9BBA /* CONFIGURE in Resources */,
 				82184FE21EAA9040000EDFD2 /* kleenex.png in Resources */,
 				821851711EAA9103000EDFD2 /* xoxo_TN@3x.png in Resources */,
 				829A7AC01EBBC49E005D4938 /* Cannes_logo_white_TN.png in Resources */,
@@ -8681,6 +8996,7 @@
 				49ad600baf4c001336afed6f /* PGTermsAttributedLabel.m in Sources */,
 				F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
+				65792EE91EC3697500FC9BBA /* README.md in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
 				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
 				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
@@ -8705,6 +9021,7 @@
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
+				65792EE51EC3697500FC9BBA /* LICENSE.md in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */,
@@ -8767,6 +9084,7 @@
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				F236FAC71E8721F700FC31B5 /* PGProgressView.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
+				65792EE81EC3697500FC9BBA /* README.md in Sources */,
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
@@ -8795,6 +9113,7 @@
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
+				65792EE41EC3697500FC9BBA /* LICENSE.md in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
@@ -9297,6 +9616,7 @@
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -9307,6 +9627,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = (
@@ -9368,6 +9693,7 @@
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -9378,6 +9704,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -10138,6 +10469,7 @@
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -10148,6 +10480,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -10207,6 +10544,7 @@
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)/PhotoGram",
+					"$(PROJECT_DIR)/Aurasma",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
@@ -10217,6 +10555,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Aurasma/libs/AFNetworking-2.6.1",
+					"$(PROJECT_DIR)/Aurasma/libs/FFmpeg-2.5.2",
+					"$(PROJECT_DIR)/Aurasma/libs/libpng-1.6.13",
+					"$(PROJECT_DIR)/Aurasma/libs/libtar-1.2.20",
+					"$(PROJECT_DIR)/Aurasma/libs/OpenSSL-1.0.1j",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = (
