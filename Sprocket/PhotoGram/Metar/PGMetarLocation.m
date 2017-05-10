@@ -10,11 +10,19 @@
 
 @implementation PGMetarLocation
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.geo = kCLLocationCoordinate2DInvalid;
+    }
+    return self;
+}
+
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    //TODO: 0,0 is valid
-    if (self.geo.latitude != 0 || self.geo.longitude != 0) {
+    if (CLLocationCoordinate2DIsValid(self.geo)) {
         NSDictionary *geo = @{@"lat": [NSNumber numberWithDouble:self.geo.latitude],
                               @"lon": [NSNumber numberWithDouble:self.geo.longitude]};
         [dict setObject:geo forKey:@"geo"];
@@ -26,6 +34,10 @@
     
     if (self.name) {
         [dict setObject:self.name forKey:@"name"];
+    }
+    
+    if (self.venue) {
+        [dict setObject:[self.venue getDict] forKey:@"venue"];
     }
     
     return dict;

@@ -33,6 +33,7 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
         self.location = asset.location;
         self.createdTime = asset.creationDate;
         self.mediaType = [HPPRCameraRollMedia mediaTypeForAsset:asset];
+        self.objectID = [self.asset localIdentifier];
     }
 
     return self;

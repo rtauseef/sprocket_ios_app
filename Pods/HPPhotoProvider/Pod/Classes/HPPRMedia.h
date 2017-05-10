@@ -51,6 +51,12 @@ typedef enum {
 @property (strong, nonatomic) NSString *locationName;
 @property (strong, nonatomic) NSArray *additionalLocations;
 
+@property (strong, nonatomic) NSString* city;
+@property (strong, nonatomic) NSString* country;
+@property (strong, nonatomic) NSString* state;
+@property (strong, nonatomic) NSString* street;
+@property (strong, nonatomic) NSString* zip;
+
 @property (nonatomic, strong) NSString *isoSpeed;
 @property (nonatomic, strong) NSString *shutterSpeed;
 @property (strong, nonatomic) NSNumber *exposureTime;
