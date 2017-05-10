@@ -72,11 +72,20 @@
     }
     
     if (self.video) {
-        [dict setObject:[self.video getDict] forKey:@"video"];
+        NSDictionary *videoDict = [self.video getDict];
+        
+        if ([videoDict count] > 0) {
+            [dict setObject:videoDict forKey:@"video"];
+        }
     }
     
-    if (self.image) {
-        [dict setObject:[self.image getDict] forKey:@"image"];
+    if (self.image)
+    {
+        NSDictionary *imageDict = [self.image getDict];
+        
+        if ([imageDict count] > 0) {
+            [dict setObject:imageDict forKey:@"image"];
+        }
     }
     
     if (self.artifacts) {
@@ -183,6 +192,14 @@
             location.name = [media.place name];
         }
         
+        PGMetarLocationVenue *venue = [[PGMetarLocationVenue alloc] init];
+        venue.address = media.street;
+        venue.country = media.country;
+        venue.state = media.state;
+        venue.city = media.city;
+        
+        location.venue = venue;
+        
         meta.location = location;
     }
     
@@ -205,9 +222,10 @@
     } else {
         PGMetarSource *source = [[PGMetarSource alloc] init];
         source.from = PGMetarSourceFromLocal;
-        source.identifier = media.objectID;
         meta.source = source;
     }
+    
+    meta.source.identifier = media.objectID;
     
     if (media.image.size.width > media.image.size.height) {
         meta.orientation = PGMetarMediaOrientationLandscape;

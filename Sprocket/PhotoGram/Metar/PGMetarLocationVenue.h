@@ -17,4 +17,6 @@
 @property (strong, nonatomic) NSString *country;
 @property (strong, nonatomic) NSString *iata;
 
+- (NSDictionary *) getDict;
+
 @end

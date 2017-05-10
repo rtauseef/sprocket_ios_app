@@ -117,7 +117,11 @@
 
 - (void)retrieveExtraMediaInfo:(HPPRMedia *)media withRefresh:(BOOL)refresh andCompletion:(void (^)(NSError *error))completion
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    // nothing to do here
+    
+    completion(nil);
+    
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
         [self likesCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalLikes, NSError *error) {
             if (error) {
@@ -145,7 +149,7 @@
             }
         }];
         
-    });
+    });*/
 }
 
 - (void)requestVideosWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload {
@@ -343,7 +347,7 @@
 - (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
     NSString *query = [NSString stringWithFormat:@"%@/photos", albumID];
-    NSDictionary *fields = @{@"fields":@"name,created_time,images,place,link"};
+    NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
     if (nil == albumID) {
         query = @"me/photos/uploaded";
     }
@@ -353,7 +357,7 @@
 
 - (void)photoByID:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion
 {
-    NSDictionary *fields = @{@"fields":@"name,place,created_time,images"};
+    NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
     [self cachedGraphRequest:photoID parameters:fields refresh:refresh paging:nil completion:completion];
 }
 
@@ -362,7 +366,7 @@
     // me/videos/uploaded?fields=created_time,place,thumbnails
     NSString *query = @"me/videos/uploaded";
     
-    [self cachedGraphRequest:query parameters:@{@"fields":@"created_time,thumbnails,place,picture"} refresh:refresh paging:afterID completion:completion];
+    [self cachedGraphRequest:query parameters:@{@"fields":@"id,picture,thumbnails,place,from,created_time,source,permalink_url"} refresh:refresh paging:afterID completion:completion];
 }
 
 - (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *userInfo, NSError *error))completion
