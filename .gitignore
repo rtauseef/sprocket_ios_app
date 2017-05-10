@@ -42,3 +42,8 @@ fastlane/test_output
 fastlane/build_output
 
 Sprocket/Gemfile.lock
+
+# Aurasma files - too big to add
+Sprocket/Aurasma/AurasmaPlugin.framework
+Sprocket/Aurasma/libs
+
