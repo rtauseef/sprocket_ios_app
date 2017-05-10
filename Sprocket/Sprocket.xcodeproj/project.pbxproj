@@ -2266,6 +2266,8 @@
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
 		E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
+		ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685981EC270890036ECE9 /* PGMetarSocial.m */; };
+		ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */; };
 		EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */; };
 		EDB0C2C31EB7F7D800AE14CB /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BD1EB7F7D800AE14CB /* PGPayoffManager.m */; };
 		EDB0C2C41EB7F7D800AE14CB /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BF1EB7F7D800AE14CB /* PGPayoffMetadata.m */; };
@@ -3971,6 +3973,10 @@
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
 		E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
+		ED7685971EC270890036ECE9 /* PGMetarSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocial.h; path = Metar/PGMetarSocial.h; sourceTree = "<group>"; };
+		ED7685981EC270890036ECE9 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocial.m; path = Metar/PGMetarSocial.m; sourceTree = "<group>"; };
+		ED76859B1EC271500036ECE9 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocialActivity.h; path = Metar/PGMetarSocialActivity.h; sourceTree = "<group>"; };
+		ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocialActivity.m; path = Metar/PGMetarSocialActivity.m; sourceTree = "<group>"; };
 		EDB0C2BA1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
 		EDB0C2BC1EB7F7D800AE14CB /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
@@ -5855,6 +5861,10 @@
 				EDB0C2FB1EBCFC2200AE14CB /* PGMetarLocation.m */,
 				EDB0C2FE1EBCFD7600AE14CB /* PGMetarLocationVenue.h */,
 				EDB0C2FF1EBCFD7600AE14CB /* PGMetarLocationVenue.m */,
+				ED7685971EC270890036ECE9 /* PGMetarSocial.h */,
+				ED7685981EC270890036ECE9 /* PGMetarSocial.m */,
+				ED76859B1EC271500036ECE9 /* PGMetarSocialActivity.h */,
+				ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -6136,7 +6146,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8870,6 +8880,7 @@
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
 				26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
+				ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
@@ -8881,6 +8892,7 @@
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
+				ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */,
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,

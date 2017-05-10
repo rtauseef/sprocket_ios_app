@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGMetarSocial.h"
 
 typedef NS_ENUM(NSInteger, PGMetarSourceFrom) {
+    PGMetarSourceFromUnknown,
     PGMetarSourceFromLocal,
     PGMetarSourceFromSocial,
     PGMetarSourceFromShared,
@@ -17,6 +19,7 @@ typedef NS_ENUM(NSInteger, PGMetarSourceFrom) {
 };
 
 typedef NS_ENUM(NSInteger, PGMetarSourceOrigin) {
+    PGMetarSourceOriginUnknown,
     PGMetarSourceOriginStorage,
     PGMetarSourceOriginOpenIn,
     PGMetarSourceOriginDownloaded
@@ -28,7 +31,7 @@ typedef NS_ENUM(NSInteger, PGMetarSourceOrigin) {
 @property (assign, nonatomic) PGMetarSourceOrigin origin;
 @property (strong, nonatomic) NSString* uri;
 @property (strong, nonatomic) NSString* album;
-@property (strong, nonatomic) NSString* social;
+@property (strong, nonatomic) PGMetarSocial* social;
 @property (strong, nonatomic) NSString* identifier;
 @property (strong, nonatomic) NSString* owner;
 

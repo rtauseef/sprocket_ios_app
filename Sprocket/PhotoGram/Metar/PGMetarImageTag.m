@@ -23,4 +23,19 @@
     return self;
 }
 
+- (NSDictionary *) getDict {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    if (self.at)
+        [dict setObject:[NSNumber numberWithDouble:[self.at timeIntervalSince1970]] forKey:@"at"];
+    
+    if (self.resource)
+        [dict setObject:self.resource forKey:@"resource"];
+    
+    if (self.media)
+        [dict setObject:self.media forKey:@"media"];
+    
+    return dict;
+}
+
 @end

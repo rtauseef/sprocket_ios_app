@@ -10,9 +10,9 @@
 
 @interface PGMetarVideo : NSObject
 
-@property (assign, nonatomic) int length;
+@property (strong, nonatomic) NSNumber* length;
 @property (strong, nonatomic) NSString* encoding;
-@property (assign, nonatomic) int bitrate;
+@property (strong, nonatomic) NSNumber* bitrate;
 @property (strong, nonatomic) NSString* artist;
 
 - (instancetype)initWithDictionary: (NSDictionary *) dict;

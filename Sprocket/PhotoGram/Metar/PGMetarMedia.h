@@ -15,11 +15,13 @@
 #import "HPPRMedia.h"
 
 typedef NS_ENUM(NSInteger, PGMetarMediaType) {
+    PGMetarMediaTypeUnknown,
     PGMetarMediaTypeImage,
     PGMetarMediaTypeVideo
 };
 
 typedef NS_ENUM(NSInteger, PGMetarMediaOrientation) {
+    PGMetarMediaOrientationUnknown,
     PGMetarMediaOrientationPortrait,
     PGMetarMediaOrientationLandscape
 };
@@ -28,12 +30,12 @@ typedef NS_ENUM(NSInteger, PGMetarMediaOrientation) {
 
 @property (assign, nonatomic) PGMetarMediaType mediaType;
 @property (strong, nonatomic) NSString *mime;
-@property (assign, nonatomic) double *size;
+@property (strong, nonatomic) NSNumber *size;
 @property (assign, nonatomic) PGMetarMediaOrientation orientation;
 @property (assign, nonatomic) CGSize pixels;
 @property (assign, nonatomic) CGSize inches;
 @property (strong, nonatomic) NSDate *created;
-@property (strong, nonatomic) NSDate *submited;
+@property (strong, nonatomic) NSDate *submitted;
 @property (strong, nonatomic) NSDate *lastQueried;
 @property (strong, nonatomic) PGMetarSource *source;
 @property (strong, nonatomic) NSArray<NSString *> *tags;

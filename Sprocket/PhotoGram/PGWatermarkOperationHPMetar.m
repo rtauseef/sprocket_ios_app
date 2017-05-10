@@ -66,7 +66,7 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
                     
                     [api downloadWatermarkedImage:imageTag completion:^(NSError * _Nullable error, UIImage * _Nullable watermarkedImage) {
                         if (error == nil) {
-                            [api setIMageMetadata:imageTag mediaMetada:self.operationData.metadata completion:^(NSError * _Nullable error) {
+                            [api setImageMetadata:imageTag mediaMetada:self.operationData.metadata completion:^(NSError * _Nullable error) {
                                 if (error == nil) {
                                     [self handleCallback:completion image:watermarkedImage error:error];
                                 } else {

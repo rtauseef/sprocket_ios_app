@@ -79,6 +79,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
         
         NSString *encodedHeader = [NSString stringWithFormat:@"Sprocket %@,signature=%@",headerString,signature];
         
+        NSLog(@"DEBUG Auth Header: %@",encodedHeader);
         return encodedHeader;
     }
     
@@ -359,7 +360,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                      }] resume];
 }
 
-- (void) setIMageMetadata: (PGMetarImageTag *_Nonnull) imageTag mediaMetada:(PGMetarMedia *_Nonnull) metadata completion: (nullable void (^)(NSError * _Nullable error)) completion {
+- (void) setImageMetadata: (PGMetarImageTag *_Nonnull) imageTag mediaMetada:(PGMetarMedia *_Nonnull) metadata completion: (nullable void (^)(NSError * _Nullable error)) completion {
     
     NSString *requestString = [NSString stringWithFormat:@"%@/resource/tag/%@/meta", kMetarAPIURL, imageTag.resource];
     NSURL *requestUrl = [NSURL URLWithString:requestString];
@@ -383,6 +384,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     NSString *jsonString = [NSString stringWithCString:[jsonData bytes] encoding:NSUTF8StringEncoding];
     //TODO: remove me
     NSLog(@"JSON: \n%@",jsonString);
+    NSLog(@"Metadata URL: \n%@",requestString);
     
     [request setHTTPBody:jsonData];
     
