@@ -21,9 +21,6 @@
     self = [super init];
     
     if (self) {
-        
-        HPPRGoogleLoginProvider * provider = [HPPRGoogleLoginProvider sharedInstance];
-        
         self.objectID = [attributes objectForKey:@"gphoto:id"];
         
         NSDictionary *photo = [attributes objectForKey:@"original"];
@@ -48,6 +45,8 @@
         self.createdTime = [dateFormatter dateFromString:dateString];
         
         self.text = [attributes objectForKey:@"title"];
+        
+        self.objectID = self.standardUrl;
     }
     
     return self;

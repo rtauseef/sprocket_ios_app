@@ -94,7 +94,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 798b55b736529588ca6525717a17512ed2b63921
+    :commit: 319c596ca1315d97fefc7df170baaaaf6c1a425f
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
     :commit: 2e254dc1ece78f8f886bcfe1cc58346ea8bd9b4a
@@ -123,4 +123,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: cad0313086fdcfe66b57e86b7658d2d390e24197
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.1
