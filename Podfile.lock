@@ -71,7 +71,7 @@ PODS:
     - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
-  - UrbanAirship-iOS-SDK (8.3.0)
+  - UrbanAirship-iOS-SDK (8.3.1)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -97,7 +97,7 @@ CHECKOUT OPTIONS:
     :commit: 319c596ca1315d97fefc7df170baaaaf6c1a425f
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 2e254dc1ece78f8f886bcfe1cc58346ea8bd9b4a
+    :commit: 550f03552c955c38f566162bd1825696b761d731
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -119,8 +119,8 @@ SPEC CHECKSUMS:
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  UrbanAirship-iOS-SDK: 5d6971729f19d3ec4a4d03d17c5a1e7f458cbaad
+  UrbanAirship-iOS-SDK: 167c2a32af012bd9142eda4198244dbdd7896eec
 
 PODFILE CHECKSUM: cad0313086fdcfe66b57e86b7658d2d390e24197
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

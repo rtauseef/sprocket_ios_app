@@ -2176,11 +2176,11 @@
 		92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D073861D25ACE8002611C0 /* PGMediaNavigation.m */; };
 		92D0738A1D25AD02002611C0 /* PGMediaNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D073891D25AD02002611C0 /* PGMediaNavigation.xib */; };
 		92E9C1F21DD65FB6009E4E63 /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
-		92ECDB4B1E41064000026DE4 /* ReferenceProxy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92ECDB4D1E41065100026DE4 /* ReferenceProxy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92ECDB4E1E4106F600026DE4 /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
-		92ECDB4F1E41070F00026DE4 /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
-		92ECDB671E41081000026DE4 /* ReferenceProxy in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		92ECDB4B1E41064000026DE4 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92ECDB4D1E41065100026DE4 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
@@ -2503,7 +2503,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				92ECDB4B1E41064000026DE4 /* ReferenceProxy in CopyFiles */,
+				92ECDB4B1E41064000026DE4 /* AirshipAppExtensions.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2513,7 +2513,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				92ECDB4D1E41065100026DE4 /* ReferenceProxy in CopyFiles */,
+				92ECDB4D1E41065100026DE4 /* AirshipAppExtensions.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4084,7 +4084,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92ECDB671E41081000026DE4 /* ReferenceProxy in Frameworks */,
+				92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4101,7 +4101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92ECDB4E1E4106F600026DE4 /* ReferenceProxy in Frameworks */,
+				92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				F2D5A3AC1EB00611002F9DDC /* LinkReaderKit.framework in Frameworks */,
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
@@ -4130,7 +4130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92ECDB4F1E41070F00026DE4 /* ReferenceProxy in Frameworks */,
+				92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 				482bc54fe78508365d0534bf /* Social.framework in Frameworks */,
 				53233482f8178877320112d9 /* DBChooser.framework in Frameworks */,
 				05c912861243a915499d938e /* imglyKit.framework in Frameworks */,
@@ -8302,7 +8302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */ = {
@@ -8317,7 +8317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		65E7D9A81DB56EE2009B5584 /* ShellScript */ = {
@@ -8371,7 +8371,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8271DCD81D46D07B00B21549 /* ShellScript */ = {

@@ -157,22 +157,29 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (NSInteger)queueSize {
     BOOL isInsidePrintLaterJobs = NO;
-    if (self.currentJob != nil) {
+
+    MPPrintLaterJob *currentJob = self.currentJob;
+
+    if (!currentJob) {
+        currentJob = self.directJob;
+    }
+
+    if (currentJob) {
         for (MPPrintLaterJob *job in [MPPrintLaterQueue sharedInstance].retrieveAllPrintLaterJobs) {
-            if ([self.currentJob.id isEqualToString:job.id]) {
+            if ([currentJob.id isEqualToString:job.id]) {
                 isInsidePrintLaterJobs = YES;
                 break;
             }
         }
-    } else {
-       return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
     }
-    
-    if (!isInsidePrintLaterJobs) {
-        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs] + 1;
-    } else {
-        return [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+
+    NSInteger size = [[MPPrintLaterQueue sharedInstance] retrieveNumberOfPrintLaterJobs];
+
+    if (currentJob && !isInsidePrintLaterJobs) {
+        size++;
     }
+
+    return size;
 }
 
 - (NSInteger)queueId {
