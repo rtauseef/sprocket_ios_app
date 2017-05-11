@@ -15,6 +15,10 @@
 #import "PGLinkSettings.h"
 
 #define kMaxRecordingTime (NSUInteger)20
+#define kScanningCircleRadius 180.0
+#define kScanningCircleBorder 3
+#define kLineDashPattern @[[NSNumber numberWithInt:20],[NSNumber numberWithInt:40]]
+#define kSpinnerCircleSpeed 2.0f
 
 @interface PGOverlayCameraViewController ()
 
@@ -27,6 +31,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *recordingTimeLabel;
 @property (strong, nonatomic) CAShapeLayer *circle;
 @property (strong, nonatomic) NSTimer *recordingTimer;
+
+@property (strong, nonatomic) NSTimer *scanningTimer;
+@property (strong, nonatomic) CAShapeLayer *scanningCircle;
+@property (strong, nonatomic) CAShapeLayer *yelloCircle;
+@property (strong, nonatomic) UIView *overlay;
+
 @end
 
 @implementation PGOverlayCameraViewController
@@ -35,14 +45,117 @@
     self.movieMode = NO;
     
     if ([PGLinkSettings videoPrintEnabled]) {
-        UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-        longPressGesture.minimumPressDuration = 0.3f;
-        
-        [self.shutterButton addGestureRecognizer:longPressGesture];
+        UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
+        longPressGestureForShutter.minimumPressDuration = 0.3f;
+        [self.shutterButton addGestureRecognizer:longPressGestureForShutter];
+    }
+    
+    if ([PGLinkSettings linkEnabled]) {
+        UILongPressGestureRecognizer *longPressGestureForScreen = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressScreen:)];
+        longPressGestureForScreen.minimumPressDuration = 0.3f;
+        [self.view addGestureRecognizer:longPressGestureForScreen];
     }
 }
 
-- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer {
+- (void) handleLongPressScreen:(UILongPressGestureRecognizer *)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.scanningTimer = [NSTimer scheduledTimerWithTimeInterval: 0.2f target: self
+                                                             selector: @selector(updateScanning) userInfo: nil repeats: YES];
+    }  else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        [self.scanningTimer invalidate];
+        [self.scanningCircle removeFromSuperlayer];
+        [self.yelloCircle removeFromSuperlayer];
+        self.scanningCircle = nil;
+        self.yelloCircle = nil;
+        [self.overlay removeFromSuperview];
+        self.overlay = nil;
+    }
+}
+
+- (void) updateScanning {
+    
+    if (self.scanningCircle == nil) {
+        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        [self.overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
+        
+        self.scanningCircle = [CAShapeLayer layer];
+        self.scanningCircle.frame = self.overlay.bounds;
+        self.scanningCircle.fillColor = [UIColor blackColor].CGColor;
+        
+        float initialRadius = kScanningCircleRadius * 4;
+        
+        CGRect rect = CGRectMake(CGRectGetMidX(self.overlay.frame) - initialRadius, CGRectGetMidY(self.overlay.frame) - initialRadius
+                                 , 2 * initialRadius, 2 * initialRadius);
+        
+        UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.overlay.bounds];
+        self.scanningCircle.fillRule = kCAFillRuleEvenOdd;
+        [path appendPath:[UIBezierPath bezierPathWithOvalInRect:rect]];
+        
+        self.scanningCircle.path = path.CGPath;
+        self.overlay.layer.mask = self.scanningCircle;
+        
+        [CATransaction begin];
+        
+        float finalRadius = kScanningCircleRadius;
+        
+        CGRect finalRect = CGRectMake(CGRectGetMidX(self.overlay.frame) - finalRadius, CGRectGetMidY(self.overlay.frame) - finalRadius
+                                 , 2 * finalRadius, 2 * finalRadius);
+        
+        UIBezierPath *newPath = [UIBezierPath bezierPathWithRect:self.overlay.bounds];
+        [newPath appendPath:[UIBezierPath bezierPathWithOvalInRect:finalRect]];
+        
+        CABasicAnimation* pathAnim = [CABasicAnimation animationWithKeyPath: @"path"];
+        pathAnim.toValue = (id)newPath.CGPath;
+        CAAnimationGroup *anims = [CAAnimationGroup animation];
+        anims.removedOnCompletion = NO;
+        anims.duration = 0.3f;
+        anims.fillMode  = kCAFillModeForwards;
+        anims.animations = [NSArray arrayWithObjects:pathAnim, nil];
+        
+        [CATransaction setCompletionBlock:^{
+            float finalRadius = kScanningCircleRadius;
+            
+            CGRect finalRect = CGRectMake(CGRectGetMidX(self.overlay.frame) - finalRadius, CGRectGetMidY(self.overlay.frame) - finalRadius
+                                          , 2 * finalRadius, 2 * finalRadius);
+            
+
+            self.yelloCircle = [CAShapeLayer layer];
+            self.yelloCircle.frame = self.overlay.bounds;
+            UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:finalRect];
+            self.yelloCircle.path = [path CGPath];
+            self.yelloCircle.fillColor = [UIColor clearColor].CGColor;
+            self.yelloCircle.lineCap=kCALineCapRound;
+            self.yelloCircle.lineDashPattern = kLineDashPattern;
+            self.yelloCircle.anchorPoint = (CGPoint){0.5, 0.5};
+            UIColor *strokeColor= [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1.0];
+            self.yelloCircle.strokeColor = strokeColor.CGColor;
+            self.yelloCircle.lineWidth = kScanningCircleBorder;
+            
+            CABasicAnimation *rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+            rotateAnim.toValue = [NSNumber numberWithFloat: M_PI * 2.0 /* full rotation*/];
+            rotateAnim.duration = kSpinnerCircleSpeed;
+            rotateAnim.cumulative = YES;
+            rotateAnim.repeatCount = HUGE_VAL;
+            [self.yelloCircle addAnimation:rotateAnim forKey:@"rotationAnimation"];
+            
+            [self.overlay.layer addSublayer:self.yelloCircle];
+            
+            [self.yelloCircle setNeedsDisplay];
+        }];
+        
+        [self.scanningCircle addAnimation:anims forKey:nil];
+        [CATransaction commit];
+        
+        [self.view addSubview:self.overlay];
+    }
+    
+    if (self.yelloCircle)
+        [self.yelloCircle setNeedsDisplay];
+    
+    [self.scanningCircle setNeedsDisplay];
+}
+
+- (void)handleLongPressShutterButton:(UILongPressGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         // start recording
         if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
