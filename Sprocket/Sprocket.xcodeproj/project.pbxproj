@@ -2158,6 +2158,7 @@
 		8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
 		9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385719BE57C5009C695F /* SendFeedback@2x.png */; };
 		91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
+		920994541EC4D72C002B7579 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929886261EC24E7A00750C74 /* GoogleService-Info.plist */; };
 		922ACF9D1E3FD4EE00A475A4 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
@@ -6012,7 +6013,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8230,6 +8231,7 @@
 				8212BBCD1EA92A26009E66EC /* g_glasses.png in Resources */,
 				82184F901EAA9040000EDFD2 /* fireworks_TN@2x.png in Resources */,
 				821850B71EAA9102000EDFD2 /* catwhiskers_TN.png in Resources */,
+				920994541EC4D72C002B7579 /* GoogleService-Info.plist in Resources */,
 				82184FB11EAA9040000EDFD2 /* glasses_football_TN@3x.png in Resources */,
 				82184F9A1EAA9040000EDFD2 /* Flowers_TN@3x.png in Resources */,
 				826BEB521E85BEAD000BE3FA /* StarsOverlayFrame_TN@2x.png in Resources */,
