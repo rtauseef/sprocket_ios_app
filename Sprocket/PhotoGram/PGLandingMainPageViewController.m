@@ -39,6 +39,7 @@
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
+NSInteger const kMantaErrorBusy = 1;
 
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
 
@@ -485,20 +486,29 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
                                                                    message:errorMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                          style:UIAlertActionStyleCancel
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                            self.errorAlert = nil;
-                                                            [printManager pausePrintQueue];
-                                                        }];
-    [self.errorAlert addAction:pauseAction];
-
-    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         self.errorAlert = nil;
-                                                     }];
-    [self.errorAlert addAction:tryAgainAction];
+    if (errorCode == kMantaErrorBusy) {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:okAction];
+    } else {
+        UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
+                                                              style:UIAlertActionStyleCancel
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+                                                                self.errorAlert = nil;
+                                                                [printManager pausePrintQueue];
+                                                            }];
+        [self.errorAlert addAction:pauseAction];
+        
+        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:tryAgainAction];
+    }
 
     UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];
     [topViewController presentViewController:self.errorAlert animated:YES completion:nil];
