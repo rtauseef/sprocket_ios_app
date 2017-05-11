@@ -11,6 +11,7 @@
 //
 
 #import "PGInAppMessageView.h"
+#import "UIColor+Style.h"
 
 static CGFloat const kInAppMessageViewHeight = 127.0;
 
@@ -30,7 +31,6 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 
     if (self) {
         self.message = message;
-        self.translatesAutoresizingMaskIntoConstraints = NO;
     }
 
     return self;
@@ -83,6 +83,44 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 - (void)hide
 {
     self.bottomEdgeConstraint.constant = kInAppMessageViewHeight;
+}
+
+
+#pragma mark - Private
+
+- (void)setMessage:(UAInAppMessage *)message
+{
+    _message = message;
+
+    [self setupView];
+}
+
+- (void)setupView
+{
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+
+    self.messageLabel.text = self.message.alert;
+
+    self.primaryButton.layer.cornerRadius = 2.0;
+    self.secondaryButton.layer.cornerRadius = 2.0;
+    self.secondaryButton.layer.borderWidth = 1.0;
+    self.secondaryButton.layer.borderColor = [UIColor HPTabBarUnselectedColor].CGColor;
+
+    UANotificationCategory *buttonCategory = self.message.buttonCategory;
+
+    if (buttonCategory == nil || buttonCategory.actions.count == 0) {
+        self.primaryButton.hidden = YES;
+        self.secondaryButton.hidden = YES;
+
+    } else {
+        [self.primaryButton setTitle:[[buttonCategory.actions firstObject] title] forState:UIControlStateNormal];
+
+        if (buttonCategory.actions.count == 1) {
+            self.secondaryButton.hidden = YES;
+        } else {
+            [self.secondaryButton setTitle:[[buttonCategory.actions lastObject] title] forState:UIControlStateNormal];
+        }
+    }
 }
 
 @end

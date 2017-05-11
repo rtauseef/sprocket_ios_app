@@ -15,6 +15,12 @@
 
 @interface PGInAppMessageView : PGView
 
+@property (weak, nonatomic) IBOutlet UIButton *primaryButton;
+@property (weak, nonatomic) IBOutlet UIButton *secondaryButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+
+
 - (instancetype)initWithMessage:(UAInAppMessage *)message;
 
 - (void)setupConstraints;

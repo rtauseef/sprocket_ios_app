@@ -80,8 +80,14 @@
 
 - (UIControl *)messageView:(UIView *)messageView buttonAtIndex:(NSUInteger)index
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"Custom Button" forState:UIControlStateNormal];
+    UIButton *button;
+
+    if (index == 0) {
+        button = ((PGInAppMessageView *)messageView).primaryButton;
+
+    } else if (index == 1) {
+        button = ((PGInAppMessageView *)messageView).secondaryButton;
+    }
 
     return button;
 }

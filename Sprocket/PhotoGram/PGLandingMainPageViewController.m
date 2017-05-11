@@ -306,12 +306,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (IBAction)facebookTapped:(id)sender
 {
-//    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
-
-    UAInAppMessage *message = [UAInAppMessage message];
-    message.alert = @"Well hello there!";
-
-    [[UAirship inAppMessaging] displayMessage:message];
+    [self showSocialNetwork:PGSocialSourceTypeFacebook includeLogin:NO];
 }
 
 - (IBAction)instagramTapped:(id)sender
