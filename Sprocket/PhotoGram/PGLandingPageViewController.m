@@ -74,35 +74,6 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
 - (void)showAlbums
 {
-
-
-
-
-
-
-    UAInAppMessage *message = [UAInAppMessage message];
-    message.alert = @"Well hello there!";
-//    message.buttonGroup = @"ua_buy_now";
-    message.buttonGroup = @"ua_accept_decline_foreground";
-    message.buttonActions = @{
-                              @"accept": @{kUADeepLinkActionDefaultRegistryAlias: @"com.hp.sprocket.deepLinks://cameraRoll"},
-                              @"decline": @{kUADeepLinkActionDefaultRegistryAlias: @"com.hp.sprocket.deepLinks://camera"},
-                              };
-
-    [[UAirship inAppMessaging] displayMessage:message];
-
-
-    return;
-
-
-
-
-
-
-
-
-
-
     HPPRSelectPhotoProvider *provider = [self albumsPhotoProvider];
 
     if (provider) {
