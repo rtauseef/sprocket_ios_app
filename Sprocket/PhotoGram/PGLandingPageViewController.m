@@ -82,6 +82,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
     UAInAppMessage *message = [UAInAppMessage message];
     message.alert = @"Well hello there!";
+//    message.buttonGroup = @"ua_buy_now";
     message.buttonGroup = @"ua_accept_decline_foreground";
     message.buttonActions = @{
                               @"accept": @{kUADeepLinkActionDefaultRegistryAlias: @"com.hp.sprocket.deepLinks://cameraRoll"},

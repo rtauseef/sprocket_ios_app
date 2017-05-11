@@ -19,6 +19,8 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 
 @property (nonatomic, strong) UAInAppMessage *message;
 @property (nonatomic, strong) NSLayoutConstraint *bottomEdgeConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryButtonLeadingCenterConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryButtonLeadingLeftConstraint;
 
 @end
 
@@ -45,7 +47,7 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
                                                                           toItem:self.superview
                                                                        attribute:NSLayoutAttributeLeading
                                                                       multiplier:1.0
-                                                                        constant:0.0];
+                                                                        constant:10.0];
 
         NSLayoutConstraint *trailingEdge = [NSLayoutConstraint constraintWithItem:self
                                                                         attribute:NSLayoutAttributeTrailing
@@ -53,7 +55,7 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
                                                                            toItem:self.superview
                                                                         attribute:NSLayoutAttributeTrailing
                                                                        multiplier:1.0
-                                                                         constant:0.0];
+                                                                         constant:-10.0];
 
         self.bottomEdgeConstraint = [NSLayoutConstraint constraintWithItem:self
                                                                  attribute:NSLayoutAttributeBottom
@@ -99,7 +101,15 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 {
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
-    self.messageLabel.text = self.message.alert;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 6.0;
+
+    self.messageLabel.attributedText = [[NSAttributedString alloc] initWithString:self.message.alert
+                                                                       attributes:@{
+                                                                                    NSFontAttributeName: self.messageLabel.font,
+                                                                                    NSForegroundColorAttributeName: [UIColor HPRowColor],
+                                                                                    NSParagraphStyleAttributeName: paragraphStyle
+                                                                                    }];
 
     self.primaryButton.layer.cornerRadius = 2.0;
     self.secondaryButton.layer.cornerRadius = 2.0;
@@ -117,6 +127,10 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 
         if (buttonCategory.actions.count == 1) {
             self.secondaryButton.hidden = YES;
+
+            self.primaryButtonLeadingCenterConstraint.active = NO;
+            self.primaryButtonLeadingLeftConstraint.active = YES;
+
         } else {
             [self.secondaryButton setTitle:[[buttonCategory.actions lastObject] title] forState:UIControlStateNormal];
         }
