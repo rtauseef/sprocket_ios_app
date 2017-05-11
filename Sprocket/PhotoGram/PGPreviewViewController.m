@@ -344,6 +344,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (self.carouselView.visibleItemViews.count > 0) {
         [self.view layoutIfNeeded];
         [self.carouselView reloadData];
+    }
+}
+
+- (void)reloadCarouselItemsAndEditedImage
+{
+    [self reloadCarouselItems];
+    
+    if (self.carouselView.visibleItemViews.count > 0) {
         [self currentEditedImage];
     }
 }
@@ -411,9 +419,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (animated) {
         [UIView animateWithDuration:kDrawerAnimationDuration animations:^{
             [self reloadCarouselItems];
+        } completion:^(BOOL finished) {
+            [self reloadCarouselItemsAndEditedImage];
         }];
     } else {
-        [self reloadCarouselItems];
+        [self reloadCarouselItemsAndEditedImage];
     }
 }
 
@@ -489,7 +499,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         drawer.isPeeking = NO;
         drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
 
-        [self setDrawerHeightAnimated:YES];
+        [self setDrawerHeightAnimated:NO];
     }
 }
 
