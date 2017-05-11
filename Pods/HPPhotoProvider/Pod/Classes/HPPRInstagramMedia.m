@@ -15,8 +15,6 @@
 
 @interface HPPRInstagramMedia()
 
-@property (strong, nonatomic) NSString *placeName;
-
 @end
 
 @implementation HPPRInstagramMedia
@@ -82,7 +80,7 @@
             if (latitude && longitude) {
                 self.location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
             }
-            self.placeName = [location objectForKey:@"name"];
+            self.locationName = [location objectForKey:@"name"];
         }
     }
     
@@ -92,8 +90,8 @@
 - (NSArray *)additionalLocations
 {
     NSMutableArray *locations = [NSMutableArray array];
-    if (self.placeName) {
-        [locations addObject:self.placeName];
+    if (self.locationName) {
+        [locations addObject:self.locationName];
     }
     return [NSArray arrayWithArray:locations];
 }
