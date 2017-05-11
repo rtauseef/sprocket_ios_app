@@ -192,13 +192,14 @@
             location.name = [media.place name];
         }
         
-        PGMetarLocationVenue *venue = [[PGMetarLocationVenue alloc] init];
-        venue.address = media.street;
-        venue.country = media.country;
-        venue.state = media.state;
-        venue.city = media.city;
-        
-        location.venue = venue;
+        if (media.street || media.country || media.state || media.city) {
+            PGMetarLocationVenue *venue = [[PGMetarLocationVenue alloc] init];
+            venue.address = media.street;
+            venue.country = media.country;
+            venue.state = media.state;
+            venue.city = media.city;
+            location.venue = venue;
+        }
         
         meta.location = location;
     }
