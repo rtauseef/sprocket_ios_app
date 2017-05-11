@@ -458,11 +458,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
 {
     drawer.isPeeking = NO;
-    self.containerViewHeightConstraint.constant = [drawer drawerHeight];
-    
-    [UIView animateWithDuration:kDrawerAnimationDuration animations:^{
-        [self reloadCarouselItems];
-    }];
+    [self setDrawerHeightAnimated:YES];
 }
 
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
