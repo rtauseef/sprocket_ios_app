@@ -59,8 +59,6 @@
              [[PGFrameItem alloc] initWithName:@"L'Oreal iOS" imageName:@"LOreal_iOS_1c" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Nestle iOS" imageName:@"Nestle_iOS_Frame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"San Pelegrino iOS" imageName:@"S_pellegrino_iOS_Frame" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"ChainSmokers 1" imageName:@"ChainSmokers_Android_1" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"ChainSmokers 2" imageName:@"ChainSmokers_Android_2" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Grey Shadow" imageName:@"GreyShadowFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Pink Triangle" imageName:@"PinkTriangleFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"White Rounded" imageName:@"WhiteRoundedFrame" andPackageName:nil],

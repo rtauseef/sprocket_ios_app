@@ -150,7 +150,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
     
     UINavigationController *frontNavController = nil;
     
-    if ([revealController.frontViewController isKindOfClass:[UINavigationController class]]) {
+    if (revealController  &&  [revealController.frontViewController isKindOfClass:[UINavigationController class]]) {
         frontNavController = (UINavigationController *)revealController.frontViewController;
     } else {
         PGLogError(@"Front view controller is not a UINavigationController!");
@@ -243,7 +243,7 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
         UINavigationController *displayedController = [pageController currentNavigationController];
         UIViewController *lastViewController = [[displayedController viewControllers] lastObject];
         topController = [self topViewController:lastViewController];
-    } else {
+    } else if (rootViewController) {
         UIViewController *presentedController = rootViewController.presentedViewController;
         if (nil != presentedController) {
             topController = [self topViewController:presentedController];
