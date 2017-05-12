@@ -261,11 +261,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         self.lastConnectedValue != currentlyConnected) {
         
         UIViewController *topViewController = [PGAppNavigation currentTopViewController];
-        NSString *name = topViewController.trackableScreenName;
-        if (nil == name) {
-            name = [NSString stringWithFormat:@"%@", [topViewController class]];
-        }
         
+        NSString *name = [NSString stringWithFormat:@"%@", [topViewController class]];
+        if (topViewController) {
+            name = topViewController.trackableScreenName;
+        }
+
         [[PGAnalyticsManager sharedManager] trackPrinterConnected:(BOOL)currentlyConnected screenName:name];
     }
     
