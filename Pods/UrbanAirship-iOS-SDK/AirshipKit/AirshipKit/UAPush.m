@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import <UIKit/UIKit.h>
 
@@ -68,6 +45,7 @@ NSString *const UAPushChannelCreationOnForeground = @"UAPushChannelCreationOnFor
 NSString *const UAPushEnabledSettingsMigratedKey = @"UAPushEnabledSettingsMigrated";
 
 NSString *const UAPushTypesAuthorizedKey = @"UAPushTypesAuthorized";
+NSString *const UAPushUserPromptedForNotificationsKey = @"UAPushUserPromptedForNotifications";
 
 // Old push enabled key
 NSString *const UAPushEnabledKey = @"UAPushEnabled";
@@ -85,8 +63,12 @@ NSString *const UAPushTagGroupsMutationsKey = @"UAPushTagGroupsMutations";
 NSString *const UAPushDefaultDeviceTagGroup = @"device";
 
 NSString *const UAChannelCreatedEvent = @"com.urbanairship.push.channel_created";
+NSString *const UAChannelUpdatedEvent = @"com.urbanairship.push.channel_updated";
+
 NSString *const UAChannelCreatedEventChannelKey = @"com.urbanairship.push.channel_id";
 NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.existing";
+
+NSString *const UAChannelUpdatedEventChannelKey = @"com.urbanairship.push.channel_id";
 
 @implementation UAPush
 
@@ -203,6 +185,9 @@ NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.exist
 
 - (void)setAuthorizedNotificationOptions:(UANotificationOptions)types {
     if ([self.dataStore integerForKey:UAPushTypesAuthorizedKey] != types) {
+        if (types != UANotificationOptionNone) {
+            self.userPromptedForNotifications = YES;
+        }
         [self.dataStore setInteger:(NSInteger)types forKey:UAPushTypesAuthorizedKey];
         [self updateRegistration];
 
@@ -351,6 +336,18 @@ NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.exist
     if (enabled != previousValue) {
         self.shouldUpdateAPNSRegistration = YES;
         [self updateRegistration];
+    }
+}
+
+- (BOOL)userPromptedForNotifications {
+    return [self.dataStore boolForKey:UAPushUserPromptedForNotificationsKey];
+}
+
+- (void)setUserPromptedForNotifications:(BOOL)userPrompted {
+    BOOL previousValue = self.userPromptedForNotifications;
+
+    if (userPrompted != previousValue) {
+        [self.dataStore setBool:userPrompted forKey:UAPushUserPromptedForNotificationsKey];
     }
 }
 
@@ -632,6 +629,40 @@ NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.exist
     }
 }
 
+/**
+ * Called by the UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:
+ * so UAPush can forward the delegate call to its registration delegate.
+ */
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    self.deviceToken = [UAUtils deviceTokenStringFromDeviceToken:deviceToken];
+    
+    if (application.applicationState == UIApplicationStateBackground && self.channelID) {
+        UA_LDEBUG(@"Skipping channel registration. The app is currently backgrounded.");
+    } else {
+        [self updateChannelRegistrationForcefully:NO];
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        id strongDelegate = self.registrationDelegate;
+        if ([strongDelegate respondsToSelector:@selector(apnsRegistrationSucceededWithDeviceToken:)]) {
+            [strongDelegate apnsRegistrationSucceededWithDeviceToken:deviceToken];
+        }
+    });
+}
+
+/**
+ * Called by the UIApplicationDelegate's application:didFailToRegisterForRemoteNotificationsWithError:
+ * so sh can forward the delegate call to its registration delegate.
+ */
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        id strongDelegate = self.registrationDelegate;
+        if ([strongDelegate respondsToSelector:@selector(apnsRegistrationFailedWithError:)]) {
+            [strongDelegate apnsRegistrationFailedWithError:error];
+        }
+    });
+}
+
 #pragma mark -
 #pragma mark UA Registration Methods
 
@@ -781,6 +812,7 @@ NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.exist
 
     if (self.userPushNotificationsEnabled) {
 
+        self.userPromptedForNotifications = YES;
         options = self.notificationOptions;
         categories = self.combinedCategories;
     }
@@ -812,6 +844,10 @@ NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.exist
         if ([strongDelegate respondsToSelector:@selector(registrationSucceededForChannelID:deviceToken:)]) {
             [strongDelegate registrationSucceededForChannelID:self.channelID deviceToken:self.deviceToken];
         }
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:UAChannelUpdatedEvent
+                                                            object:self
+                                                          userInfo:@{UAChannelUpdatedEventChannelKey: self.channelID}];
     });
 
     if (![payload isEqualToPayload:[self createChannelPayload]]) {
@@ -867,11 +903,11 @@ NSString *const UAChannelCreatedEventExistingKey = @"com.urbanairship.push.exist
 - (UNNotificationPresentationOptions)presentationOptionsForNotification:(UNNotification *)notification {
     UNNotificationPresentationOptions options = UNNotificationPresentationOptionNone;
 
-    id pushDelegate = [UAirship push].pushNotificationDelegate;
+    id pushDelegate = self.pushNotificationDelegate;
     if ([pushDelegate respondsToSelector:@selector(presentationOptionsForNotification:)]) {
         options = [pushDelegate presentationOptionsForNotification:notification];
     } else {
-        options = [UAirship push].defaultPresentationOptions;
+        options = self.defaultPresentationOptions;
     }
 
     return options;

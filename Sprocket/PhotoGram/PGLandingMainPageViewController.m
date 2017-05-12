@@ -28,8 +28,11 @@
 #import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
+#import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
+#import "PGHamburgerButton.h"
+#import "PGInAppMessageManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -37,18 +40,19 @@
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
+NSInteger const kMantaErrorBusy = 1;
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
 @property (weak, nonatomic) IBOutlet UIView *landingButtonsView;
 @property (weak, nonatomic) IBOutlet UIView *cameraButtonsView;
-@property (weak, nonatomic) IBOutlet UIButton *hamburgerButton;
+@property (weak, nonatomic) IBOutlet PGHamburgerButton *hamburgerButton;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *instagramButton;
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
-@property (weak, nonatomic) IBOutlet UIButton *flickrButton;
+@property (weak, nonatomic) IBOutlet UIButton *googleButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
 @property (weak, nonatomic) IBOutlet PGSocialSourcesCircleView *socialSourcesCircleView;
 
@@ -126,6 +130,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 {
     [super viewWillAppear:animated];
 
+    [self.hamburgerButton refreshIndicator];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuOpenedNotification:) name:MENU_OPENED_NOTIFICATION object:nil];
@@ -260,7 +266,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.termsLabel.userInteractionEnabled = NO;
         self.instagramButton.userInteractionEnabled = NO;
         self.facebookButton.userInteractionEnabled = NO;
-        self.flickrButton.userInteractionEnabled = NO;
+        self.googleButton.userInteractionEnabled = NO;
         self.cameraRollButton.userInteractionEnabled = NO;
         self.socialSourcesCircleView.userInteractionEnabled = NO;
     });
@@ -273,7 +279,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.termsLabel.userInteractionEnabled = YES;
         self.instagramButton.userInteractionEnabled = YES;
         self.facebookButton.userInteractionEnabled = YES;
-        self.flickrButton.userInteractionEnabled = YES;
+        self.googleButton.userInteractionEnabled = YES;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
     });
@@ -312,6 +318,11 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 - (IBAction)flickrTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
+}
+
+- (IBAction)googleTapped:(id)sender
+{
+    [self showSocialNetwork:PGSocialSourceTypeGoogle includeLogin:NO];
 }
 
 - (IBAction)cameraTapped:(id)sender
@@ -373,6 +384,35 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [webViewerViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)goToSocialSourcePage:(PGSocialSourceType)type sender:(id)button
+{
+    switch (type) {
+        case PGSocialSourceTypeFacebook:
+            [self facebookTapped:button];
+            break;
+        case PGSocialSourceTypeInstagram:
+            [self instagramTapped:button];
+            break;
+        case PGSocialSourceTypeFlickr:
+            [self flickrTapped:button];
+            break;
+        case PGSocialSourceTypeLocalPhotos:
+            [self cameraRollTapped:button];
+            break;
+        case PGSocialSourceTypeWeiBo:
+            NSLog(@"WeiBo tapped");
+            break;
+        case PGSocialSourceTypeGoogle:
+            NSLog(@"Google not supported for China");
+            break;
+        case PGSocialSourceTypeQzone:
+            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
+            break;
+        case PGSocialSourceTypePitu:
+            [self pituTapped:button];
+            break;
+    }
+}
 
 #pragma mark - MPBTPrintManagerDelegate
 
@@ -447,20 +487,29 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
                                                                    message:errorMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                          style:UIAlertActionStyleCancel
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                            self.errorAlert = nil;
-                                                            [printManager pausePrintQueue];
-                                                        }];
-    [self.errorAlert addAction:pauseAction];
-
-    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         self.errorAlert = nil;
-                                                     }];
-    [self.errorAlert addAction:tryAgainAction];
+    if (errorCode == kMantaErrorBusy) {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:okAction];
+    } else {
+        UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
+                                                              style:UIAlertActionStyleCancel
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+                                                                self.errorAlert = nil;
+                                                                [printManager pausePrintQueue];
+                                                            }];
+        [self.errorAlert addAction:pauseAction];
+        
+        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:tryAgainAction];
+    }
 
     UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];
     [topViewController presentViewController:self.errorAlert animated:YES completion:nil];
@@ -498,29 +547,15 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource
 {
-    switch (socialSource.type) {
-        case PGSocialSourceTypeFacebook:
-            [self facebookTapped:button];
-            break;
-        case PGSocialSourceTypeInstagram:
-            [self instagramTapped:button];
-            break;
-        case PGSocialSourceTypeFlickr:
-            [self flickrTapped:button];
-            break;
-        case PGSocialSourceTypeLocalPhotos:
-            [self cameraRollTapped:button];
-            break;
-        case PGSocialSourceTypeWeiBo:
-            NSLog(@"WeiBo tapped");
-            break;
-        case PGSocialSourceTypeQzone:
-            [self showSocialNetwork:PGSocialSourceTypeQzone includeLogin:NO];
-            break;
-        case PGSocialSourceTypePitu:
-            [self pituTapped:button];
-            break;
-    }
+    [self goToSocialSourcePage:socialSource.type sender:button];
+}
+
+
+#pragma mark - PGInAppMessageHost
+
+- (BOOL)allowsInAppMessages
+{
+    return YES;
 }
 
 

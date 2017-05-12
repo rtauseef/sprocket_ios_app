@@ -14,4 +14,8 @@
 
 @interface PGLoggingSetttingsViewController : UITableViewController
 
+@property (strong, nonatomic) NSString *unlockCode;
+
+- (BOOL)validCode:(NSString *)code;
+
 @end

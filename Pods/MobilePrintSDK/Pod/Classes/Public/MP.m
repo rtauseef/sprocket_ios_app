@@ -207,7 +207,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 {
     MPPrintLaterJob *firstJob = printLaterJobs[0];
     
-    MPPrintItem *printItem = [firstJob.printItems objectForKey:self.defaultPaper.sizeTitle];
+    MPPrintItem *printItem = [firstJob printItemForPaperSize:self.defaultPaper.sizeTitle];
     printItem.extra = firstJob.extra;
     
     UIViewController *vc = [self printViewControllerWithDelegate:delegate dataSource:dataSource printItem:printItem fromQueue:fromQueue settingsOnly:settingsOnly];
@@ -285,8 +285,8 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
 - (UIViewController *)printLaterViewControllerWithDelegate:(id<MPAddPrintLaterDelegate>)delegate printLaterJob:(MPPrintLaterJob *)printLaterJob
 {
-    MPPrintItem *printItem = [printLaterJob.printItems objectForKey:self.defaultPaper.sizeTitle];
-
+    MPPrintItem *printItem = [printLaterJob printItemForPaperSize:self.defaultPaper.sizeTitle];
+    
     MPPageSettingsTableViewController *pageSettingsTableViewController;
     MPPageSettingsTableViewController *previewViewController;
     
@@ -444,6 +444,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
 - (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image animated:(BOOL)animated printCompletion:(void(^)(void))completion
 {
+    [self headlessBluetoothPrintFromController:controller image:image processor:nil animated:animated printCompletion:completion];
+}
+
+- (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image processor:(MPBTImageProcessor *)processor animated:(BOOL)animated printCompletion:(void(^)(void))completion
+{
     NSArray *pairedSprockets = [MPBTSprocket pairedSprockets];
     
     if (0 == pairedSprockets.count) {
@@ -453,18 +458,16 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     } else if (1 == pairedSprockets.count) {
         EAAccessory *device = (EAAccessory *)[pairedSprockets firstObject];
         [MPBTSprocket sharedInstance].accessory = device;
-        
         MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
         progressView.viewController = controller;
-        [progressView printToDevice:image refreshCompletion:completion];        
-
+        [progressView printToDevice:image processor:processor refreshCompletion:completion];
     } else {
         MPBTPairedAccessoriesViewController *accessoriesViewController = [MPBTPairedAccessoriesViewController pairedAccessoriesViewControllerForPrint];
 
         accessoriesViewController.completionBlock = ^(BOOL selected) {
             MPBTProgressView *progressView = [[MPBTProgressView alloc] initWithFrame:controller.view.frame];
             progressView.viewController = controller;
-            [progressView printToDevice:image refreshCompletion:completion];
+            [progressView printToDevice:image processor:processor refreshCompletion:completion];
         };
 
         [controller showViewController:accessoriesViewController sender:nil];

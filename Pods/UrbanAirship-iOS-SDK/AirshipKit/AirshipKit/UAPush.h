@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAGlobal.h"
 #import "UAirship.h"
@@ -29,6 +6,7 @@
 #import "UAChannelRegistrar.h"
 #import "UANotificationContent.h"
 #import "UANotificationResponse.h"
+#import "UANotificationAction.h"
 
 @class UANotificationCategory;
 
@@ -43,9 +21,20 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSString *const UAChannelCreatedEvent;
 
 /**
+ * NSNotification event when the channel is updated. The event
+ * will contain the channel ID under `UAChannelUpdatedEventChannelKey`
+ */
+extern NSString *const UAChannelUpdatedEvent;
+
+/**
  * Channel ID key for the channel created event.
  */
 extern NSString *const UAChannelCreatedEventChannelKey;
+
+/**
+ * Channel ID key for the channel updated event.
+ */
+extern NSString *const UAChannelUpdatedEventChannelKey;
 
 /**
  * Channel existing key for the channel created event.
@@ -117,6 +106,22 @@ static const UANotificationOptions UANotificationOptionNone =  0;
  * @param options UANotificationOptions that were most recently registered.
  */
 - (void)notificationAuthorizedOptionsDidChange:(UANotificationOptions)options;
+
+/**
+ * Called when the UIApplicationDelegate's application:didRegisterForRemoteNotificationsWithDeviceToken:
+ * delegate method is called.
+ *
+ * @param deviceToken The APNS device token.
+ */
+- (void)apnsRegistrationSucceededWithDeviceToken:(NSData *)deviceToken;
+
+/**
+ * Called when the UIApplicationDelegate's application:didFailToRegisterForRemoteNotificationsWithError:
+ * delegate method is called.
+ *
+ * @param error An NSError object that encapsulates information why registration did not succeed.
+ */
+- (void)apnsRegistrationFailedWithError:(NSError *)error;
 
 @end
 
@@ -324,6 +329,11 @@ static const UANotificationOptions UANotificationOptionNone =  0;
  * The current authorized notification options.
  */
 @property (nonatomic, assign, readonly) UANotificationOptions authorizedNotificationOptions;
+
+/**
+ * Indicates whether the user has been prompted for notifications or not.
+ */
+@property (nonatomic, assign, readonly) BOOL userPromptedForNotifications;
 
 /**
  * The default presentation options to use for foreground notifications.

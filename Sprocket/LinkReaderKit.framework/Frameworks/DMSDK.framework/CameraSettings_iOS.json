@@ -1,0 +1,41 @@
+{
+    "docType":"RecommendedCameraSettingsKB",
+    "kbVersion":"1.8.0.0",
+    "platform":"iOS",
+    "rules":[
+        {   "ruleName":"No Camera!",
+            "comment":"These devices have no camera, so can't load even basic settings",
+            "actions":[
+                       {"action":"error", "parameters":{"domain":"DMSCameraSettingsKB", "code":"100", "description":"Device does not have a camera"}}
+             ],
+            "modelName":{"matches":[
+                                    "iPod1,1",
+                                    "iPod2,1",
+                                    "iPod3,1",
+                                    "iPod4,1"],
+                        "startsWith":[
+                                    "iPad1"]}
+        },
+        {   "ruleName":"Cameras With VGA Resolution Only",
+            "comment":"Early iPhones support only VGA 640x480 mode",
+            "actions":[
+                       {"action":"sessionPreset", "parameters":{"presetName":"AVCaptureSessionPreset640x480"}}
+             ],
+            "modelName":{"startsWith":[
+                                       "iPhone1",
+                                       "iPhone2"]}
+        },
+        {   "ruleName":"Cameras With Unwanted Noise Reduction Filter",
+            "comment":"Modern cameras apply pixel noise reduction that impedes image watermark signal in all lower resolutions.",
+            "actions":[
+                       {"action":"deviceFormat", "parameters":{"width":"2592", "height":"1936", "framesPerSecond":"20", "videoCode":"420f"}}
+             ],
+        },
+        {   "ruleName":"All Other Cameras",
+            "comment":"Preset 1280x720 resolution works well for image watermarks and barcodes, so long as Apple noise reduction filter is not in play.",
+            "actions":[
+                       {"action":"sessionPreset", "parameters":{"presetName":"AVCaptureSessionPreset1280x720"}}
+             ]
+        }
+    ]
+}

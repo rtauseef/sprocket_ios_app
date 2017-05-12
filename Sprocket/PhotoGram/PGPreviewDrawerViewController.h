@@ -18,12 +18,15 @@
 
 @property (nonatomic, weak) id<PGPreviewDrawerViewControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL isOpened;
+@property (nonatomic, assign) BOOL isPeeking;
 @property (nonatomic, assign) BOOL showCopies;
 @property (nonatomic, assign) BOOL showTiling;
+@property (nonatomic, assign) BOOL showPrintQueue;
 @property (assign, nonatomic) NSInteger numberOfCopies;
 
 - (CGFloat)drawerHeight;
 - (CGFloat)drawerHeightOpened;
+- (CGFloat)drawerHeightPeeking;
 - (CGFloat)drawerHeightClosed;
 
 @end
@@ -32,5 +35,6 @@
 
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button;
 - (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture;
+- (void)PGPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer;
 
 @end

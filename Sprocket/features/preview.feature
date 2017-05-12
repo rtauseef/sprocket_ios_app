@@ -2,14 +2,12 @@ Feature: Verify preview screen from different social media
   As a signed in user
   I should be able to navigate to preview screen
 
-  @reset
   @regression
   Scenario: Navigate to preview screen via instagram
     Given I am on the "Instagram Photos" screen
     When I touch second photo
     Then I should see the "Instagram Preview" screen
 
-  @reset
   @regression
   Scenario: Verify preview screen for instagram
     Given I am on the "Instagram Preview" screen
@@ -19,7 +17,6 @@ Feature: Verify preview screen from different social media
     Then I should see "Print" button
     And I should see "Share" button
 
-  @reset
   @regression
   Scenario: Verify preview screen for Flickr
     Given I am on the "Flickr Preview" screen
@@ -29,7 +26,6 @@ Feature: Verify preview screen from different social media
     Then I should see "Print" button
     And I should see "Share" button
 
-  @reset
   @done
   @smoke
   Scenario: Verify preview screen for camera roll
@@ -44,8 +40,7 @@ Feature: Verify preview screen from different social media
     And I should see "Print" button
     And I should see "Share" button
 
-  @reset
-  @done
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_camera roll
     Given I am on the "CameraRoll Photo" screen
     When I touch a photos in Camera Roll photos
@@ -55,8 +50,7 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image without margins
 
-  @reset
-  @done
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_instagram
     Given I am on the "Instagram Preview" screen
     When I double tap on the picture
@@ -75,7 +69,6 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image without margins
     
-  @reset
   @regression
   @pinch
   Scenario: Verify pinch in-out and zoom the image on preview screen_instagram
@@ -88,3 +81,28 @@ Feature: Verify preview screen from different social media
     Then I wait for some seconds
     Then I should see it in "smaller" size
     #pinch not working correctly for < ios 9
+
+  @done
+  @regression
+Scenario: Verify preview -Drawer
+    Given I am on the "CameraRoll Preview" screen
+    Then I should see "PreviewBardots" button
+    Then I tap "PreviewBardots" button
+    Then I should see the preview-drawer "slides up"
+    And I should see "Print Queue" with "0" items and a right arrow
+    And I should see "1 Copy" mark with "Increment" button enabled
+    Then I tap "Print Queue" mark
+    Then I verify the "content" of the popup message for "No Prints" 
+    And I should see the button "OK"
+    And I touch "OK"
+    Then I tap "Increment" button
+    Then I should see the number of copies "incremented"
+    Then I tap "Decrement" button
+    Then I should see the number of copies "decremented"
+    Then I tap "PreviewBardots" button
+    Then I should see the preview-drawer "closes"
+    
+
+    
+    
+    

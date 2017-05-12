@@ -13,21 +13,20 @@
 #import <Foundation/Foundation.h>
 #import "NSLocale+Additions.h"
 
-extern NSString * const kSurveyURL;
-extern NSString * const kSurveyNotifyURL;
 extern NSString * const kBuyPaperScreenName;
 extern NSString * const kPrivacyStatementScreenName;
 
 extern NSInteger const kPGSideBarMenuItemsNumberOfRows;
 
 typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
+    PGSideBarMenuCellLinkReader,
     PGSideBarMenuCellSprocket,
     PGSideBarMenuCellPrintQueue,
     PGSideBarMenuCellBuyPaper,
     PGSideBarMenuCellHowToAndHelp,
     PGSideBarMenuCellTakeSurvey,
     PGSideBarMenuCellPrivacy,
-    PGSideBarMenuCellAbout,
+    PGSideBarMenuCellAbout
 };
 
 @interface PGSideBarMenuTableViewCell : UITableViewCell

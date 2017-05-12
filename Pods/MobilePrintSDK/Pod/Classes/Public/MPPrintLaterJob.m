@@ -83,7 +83,10 @@ NSString * const kMPPrintLaterJobExtra = @"kMPPrintLaterJobExtra";
 - (MPPrintItem *) printItemForPaperSize:(NSString *)paperSizeTitle
 {
     id rawPrintItem = [self.printItems objectForKey:paperSizeTitle];
-    
+    if (rawPrintItem == nil) {
+        rawPrintItem = [self.printItems objectForKey:[MPPaper constantPaperSizeFromTitle:paperSizeTitle]];
+    }
+
     MPPrintItem *printItem;
     if( [rawPrintItem isKindOfClass:[MPPrintItem class]] ) {
         printItem = rawPrintItem;

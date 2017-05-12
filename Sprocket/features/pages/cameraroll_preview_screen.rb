@@ -25,7 +25,7 @@ class CameraRollPreviewScreen < Calabash::IBase
   end
     
     def check
-        "UIButton marked:'Save photo'"
+        "view marked:'editor-tool-apply-btn'"
     end
 
   def share
@@ -36,10 +36,29 @@ def download
     "* id:'previewDownload'"
 end
     
+    def checkmark
+        "* id:'Check_Inactive1.png'" 
+    end
+    
     def more    
         "UILabel marked:'#{$list_loc['More']}' index:1"
 end
     
+    def preview_bar_dots
+       "* id:'PreviewBarDots'" 
+    end
+    
+    def print_queue
+        "view marked:'Print Queue'" 
+    end
+    
+    def increment
+        "* id:'+ButtonEnabled'"
+    end
+    
+    def decrement
+        "* id:'-ButtonEnabled'"
+    end
     
 def close
     "button"

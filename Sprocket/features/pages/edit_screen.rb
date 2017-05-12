@@ -7,35 +7,31 @@ class EditScreen < Calabash::IBase
     end
 
     def title
-        "UILabel text:'EDITOR'"
+        "label marked:'editor-tool-screen'"
     end
     
     def crop
-        "UIImageView * id:'editCrop'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editCrop'"
     end
     
     def text
-        "UIImageView * id:'editText'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editText'"
     end
     
     def filter
-        "UIImageView * id:'editFilters'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editFilters'"
     end
     
     def frame
-        "UIImageView * id:'editFrame'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editFrame'"
     end
     
     def sticker
-        "UIImageView * id:'editSticker'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editSticker'"
     end
     
     def magic
-        "view marked:'Magic'"
-    end
-    
-    def check
-        "UIButton marked:'Save photo'"
+        "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
     end
     
     def close
@@ -58,10 +54,6 @@ class EditScreen < Calabash::IBase
         "UILabel text:'No'"
     end
     
-    def save
-       "UIButton marked:'Apply changes'" 
-    end
-    
     def add_text
         "UIButton marked:'Add text'"
     end
@@ -70,7 +62,15 @@ class EditScreen < Calabash::IBase
         "* id:'1_turquoise_frame'" 
     end
 
-    
+     def undo
+        "* id:'ic_undo_24pt'"
+    end
+    def redo
+        "* id:'ic_redo_24pt'"
+    end
+    def check
+        "view marked:'editor-tool-apply-btn'"
+    end
 
     def navigate
         unless current_page?

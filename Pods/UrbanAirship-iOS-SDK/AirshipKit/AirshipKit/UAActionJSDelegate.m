@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAActionJSDelegate.h"
 #import "UAGlobal.h"
@@ -32,14 +9,19 @@
 #import "UAActionRunner.h"
 #import "UAWebViewCallData.h"
 
+#import "UAWKWebViewDelegate.h"
+#import "UARichContentWindow.h"
+
 @implementation UAActionJSDelegate
 
-- (id)objectForEncodedArguments:(NSString *)arguments {
-    NSString *urlDecodedArgs = [arguments urlDecodedStringWithEncoding:NSUTF8StringEncoding];
++ (id)objectForEncodedArguments:(NSString *)arguments {
+    NSString *urlDecodedArgs = [arguments urlDecodedString];
+
     if (!urlDecodedArgs) {
         UA_LDEBUG(@"unable to url decode action args: %@", arguments);
         return nil;
     }
+
     //allow the reading of fragments so we can parse lower level JSON values
     id jsonDecodedArgs = [NSJSONSerialization objectWithString:urlDecodedArgs
                                                        options: NSJSONReadingMutableContainers | NSJSONReadingAllowFragments];
@@ -53,7 +35,10 @@
 
 - (NSDictionary *)metadataWithCallData:(UAWebViewCallData *)data {
     NSMutableDictionary *metadata = [NSMutableDictionary dictionary];
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     [metadata setValue:data.webView forKey:UAActionMetadataWebViewKey];
+#pragma GCC diagnostic pop
     [metadata setValue:data.message forKey:UAActionMetadataInboxMessageKey];
     return metadata;
 }
@@ -123,8 +108,8 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
             // JSONify the error message
             errorMessage = [NSJSONSerialization stringWithObject:errorMessage acceptingFragments:YES];
             script = [NSString stringWithFormat:@"var error = new Error();\
-                                                  error.message = %@; \
-                                                  UAirship.finishAction(error, null, %@)", errorMessage, callbackID];
+                      error.message = %@; \
+                      UAirship.finishAction(error, null, %@)", errorMessage, callbackID];
         } else if (resultString) {
             script = [NSString stringWithFormat:@"UAirship.finishAction(null, %@, %@);", resultString, callbackID];
         }
@@ -143,7 +128,7 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
 
 /**
  * Runs a dictionary of action names to an array of action values.
- * 
+ *
  * @param actionValues A map of action name to an array of action values.
  * @param metadata Optional metadata to pass to the action arguments.
  */
@@ -183,7 +168,7 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
 
     for (NSString *encodedActionName in callData.options) {
 
-        NSString *actionName = [encodedActionName urlDecodedStringWithEncoding:NSUTF8StringEncoding];
+        NSString *actionName = [encodedActionName urlDecodedString];
         if (!actionName.length) {
             UA_LDEBUG(@"Error decoding action name: %@", encodedActionName);
             return nil;
@@ -194,15 +179,15 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
         for (id encodedValue in callData.options[encodedActionName]) {
 
             if (!encodedValue || encodedValue == [NSNull null]) {
-                 [values addObject:[NSNull null]];
+                [values addObject:[NSNull null]];
                 continue;
             }
 
             id value;
             if (basicEncoding) {
-                value = [encodedValue urlDecodedStringWithEncoding:NSUTF8StringEncoding];
+                value = [encodedValue urlDecodedString];
             } else {
-                value = [self objectForEncodedArguments:encodedValue];
+                value = [UAActionJSDelegate objectForEncodedArguments:encodedValue];
             }
 
             if (!value) {
@@ -222,45 +207,27 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
 - (void)callWithData:(UAWebViewCallData *)data withCompletionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
     UA_LDEBUG(@"action js delegate name: %@ \n arguments: %@ \n options: %@", data.name, data.arguments, data.options);
 
+    /*
+     * run-action-cb performs a single action and calls the completion handler with
+     * the result of the action. The action's value is JSON encoded.
+     *
+     * Expected format:
+     * run-action-cb/<actionName>/<actionValue>/<callbackID>
+     */
+
     if ([data.name isEqualToString:@"run-action-cb"]) {
-
-        /*
-         * run-action-cb performs a single action and calls the completion handler with
-         * the result of the action. The action's value is JSON encoded.
-         * 
-         * Expected format:
-         * run-action-cb/<callbackID>?<actionName>=<actionValue>
-         */
-
-        // Callback ID is optional
-        NSString *callbackID = [data.arguments firstObject];
-
-        NSDictionary *actionValues = [self decodeActionValuesWithCallData:data basicEncoding:NO];
-
-        if (!actionValues) {
-            if (callbackID) {
-                NSString *errorString = [NSString stringWithFormat:@"Error decoding action arguments from URL: %@", data.url];
-                // JSONify the the error string and callback ID
-                errorString = [NSJSONSerialization stringWithObject:errorString acceptingFragments:YES];
-                callbackID = [NSJSONSerialization stringWithObject:callbackID acceptingFragments:YES];
-
-                NSString *script = [NSString stringWithFormat:@"var error = new Error();\
-                                                                error.message = %@; \
-                                                                UAirship.finishAction(error, null, %@);", errorString, callbackID];
-                if (completionHandler) {
-                    completionHandler(script);
-                }
-            } else {
-                if (completionHandler) {
-                    completionHandler(nil);
-                }
+        if (data.arguments.count != 3) {
+            UA_LDEBUG(@"Unable to run-action-cb, wrong number of arguments. %@", data.arguments);
+            if (completionHandler) {
+                completionHandler(nil);
             }
             return;
         }
 
-        // We only support running a single action with a single argument
-        NSString *actionName = [[actionValues allKeys] firstObject];
-        id actionValue = [actionValues[actionName] firstObject];
+        NSString *actionName = [data.arguments[0] urlDecodedString];
+        id actionValue = [UAActionJSDelegate objectForEncodedArguments:data.arguments[1]];
+        NSString *callbackID = [data.arguments[2] urlDecodedString];
+
 
         // Run the action
         [self runAction:actionName
@@ -269,29 +236,36 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
              callbackID:callbackID
       completionHandler:completionHandler];
 
-    } else if ([data.name isEqualToString:@"run-actions"]) {
+        return;
+    }
 
-        /*
-         * run-actions performs several actions with the values JSON encoded.
-         *
-         * Expected format:
-         * run-actions?<actionName>=<actionValue>&<anotherActionName>=<anotherActionValue>...
-         */
+    /*
+     * run-actions performs several actions with the values JSON encoded.
+     *
+     * Expected format:
+     * run-actions?<actionName>=<actionValue>&<anotherActionName>=<anotherActionValue>...
+     */
+    if ([data.name isEqualToString:@"run-actions"]) {
+
 
         [self runActionsWithValues:[self decodeActionValuesWithCallData:data basicEncoding:NO]
-                         metadata:[self metadataWithCallData:data]];
+                          metadata:[self metadataWithCallData:data]];
 
         if (completionHandler) {
             completionHandler(nil);
         }
-    } else if ([data.name isEqualToString:@"run-basic-actions"]) {
 
-        /*
-         * run-basic-actions performs several actions with basic encoded action values.
-         *
-         * Expected format:
-         * run-basic-actions?<actionName>=<actionValue>&<anotherActionName>=<anotherActionValue>...
-         */
+
+        return;
+    }
+
+    /*
+     * run-basic-actions performs several actions with basic encoded action values.
+     *
+     * Expected format:
+     * run-basic-actions?<actionName>=<actionValue>&<anotherActionName>=<anotherActionValue>...
+     */
+    if ([data.name isEqualToString:@"run-basic-actions"]) {
 
         [self runActionsWithValues:[self decodeActionValuesWithCallData:data basicEncoding:YES]
                           metadata:[self metadataWithCallData:data]];
@@ -299,11 +273,44 @@ completionHandler:(UAJavaScriptDelegateCompletionHandler)completionHandler {
         if (completionHandler) {
             completionHandler(nil);
         }
-    } else {
-        // Arguments not recognized, pass a nil script result
+
+        return;
+    }
+
+    /**
+     * close tries to invoke the closeWindowAnimated:
+     *
+     * Expected format:
+     * close
+     */
+    if ([data.name isEqualToString:@"close"]) {
+        id delegate = data.delegate;
+        if ([delegate respondsToSelector:@selector(closeWindowAnimated:)]) {
+            [delegate closeWindowAnimated:YES];
+        } else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+            UIWebView *webView = data.webView;
+            if (webView != nil) {
+                id webViewDelegate = webView.delegate;
+                if ([webViewDelegate respondsToSelector:@selector(closeWebView:animated:)]) {
+                    UA_LIMPERR(@"closeWebView:animated: will be removed in SDK version 9.0");
+                    [webViewDelegate closeWebView:webView animated:YES];
+                }
+#pragma GCC diagnostic pop
+            }
+        }
+
         if (completionHandler) {
             completionHandler(nil);
         }
+
+        return;
+    }
+
+    // Arguments not recognized, pass a nil script result
+    if (completionHandler) {
+        completionHandler(nil);
     }
 }
 

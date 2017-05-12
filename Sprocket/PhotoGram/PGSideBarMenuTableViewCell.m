@@ -10,18 +10,18 @@
 // the license agreement.
 //
 
-#import <MP.h>
-
 #import "PGSideBarMenuTableViewCell.h"
-#import <MPBTPrintManager.h>
+#import "PGAppNavigation.h"
 #import "UIColor+Style.h"
+#import "PGLinkSettings.h"
 
-NSString * const kSurveyURL = @"https://www.surveymonkey.com/r/Q99S6P5";
-NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
+#import <MP.h>
+#import <MPBTPrintManager.h>
+
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 8;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -80,6 +80,10 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             self.menuTitle.text = NSLocalizedString(@"About", nil);
             self.menuImageView.image = [UIImage imageNamed:@"menuAbout"];
             break;
+        case PGSideBarMenuCellLinkReader:
+            self.menuTitle.text = NSLocalizedString(@"Scanner", nil);
+            self.menuImageView.image = [UIImage imageNamed:@"menuScan"];
+            break;
         default:
             break;
     }
@@ -96,13 +100,19 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
 
 + (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
-        return 0.0F;
-    } else if (IS_IPHONE_4 || IS_IPHONE_5) {
-        return kPGSideBarMenuItemsSmallCellHeight;
+    CGFloat cellHeight = kPGSideBarMenuItemsRegularCellHeight;
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cellHeight = kPGSideBarMenuItemsSmallCellHeight;
     }
-    
-    return kPGSideBarMenuItemsRegularCellHeight;
+
+    if ((PGSideBarMenuCellTakeSurvey == indexPath.row)  &&  ![NSLocale isSurveyAvailable]) {
+        cellHeight = 0.0;
+
+    } else if (indexPath.row == PGSideBarMenuCellLinkReader && ![PGLinkSettings linkEnabled]) {
+        cellHeight = 0.0;
+    }
+
+    return cellHeight;
 }
 
 @end

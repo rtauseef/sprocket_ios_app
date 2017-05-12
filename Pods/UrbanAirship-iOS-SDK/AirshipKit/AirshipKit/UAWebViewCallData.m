@@ -1,40 +1,34 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAWebViewCallData.h"
+#import "NSString+UAURLEncoding.h"
 
 @implementation UAWebViewCallData
 
 + (UAWebViewCallData *)callDataForURL:(NSURL *)url webView:(UIWebView *)webView {
-    return [UAWebViewCallData callDataForURL:url webView:webView message:nil];
+    return [UAWebViewCallData callDataForURL:url nullableWebView:webView nullableDelegate:nil message:nil];
 }
 
 + (UAWebViewCallData *)callDataForURL:(NSURL *)url webView:(UIWebView *)webView message:(UAInboxMessage *)message {
-    NSString *urlPath = [url path];
-    if ([urlPath hasPrefix:@"/"]) {
-        urlPath = [urlPath substringFromIndex:1]; //trim the leading slash
+    return [UAWebViewCallData callDataForURL:url nullableWebView:webView nullableDelegate:nil message:message];
+}
+
++ (UAWebViewCallData *)callDataForURL:(NSURL *)url delegate:(id <UAWKWebViewDelegate>)delegate {
+    return [UAWebViewCallData callDataForURL:url nullableWebView:nil nullableDelegate:delegate message:nil];
+}
+
++ (UAWebViewCallData *)callDataForURL:(NSURL *)url delegate:(id <UAWKWebViewDelegate>)delegate message:(UAInboxMessage *)message {
+    return [UAWebViewCallData callDataForURL:url nullableWebView:nil nullableDelegate:delegate message:message];
+}
+
++ (UAWebViewCallData *)callDataForURL:(NSURL *)url nullableWebView:(UIWebView *)webView nullableDelegate:(id <UAWKWebViewDelegate>)delegate message:(UAInboxMessage *)message {
+    
+    NSAssert((webView != nil) || (delegate != nil),@"webView (%@) or delegate (%@) must be non-null",webView,delegate);
+
+    NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
+    NSString *encodedUrlPath = components.percentEncodedPath;
+    if ([encodedUrlPath hasPrefix:@"/"]) {
+        encodedUrlPath = [encodedUrlPath substringFromIndex:1]; //trim the leading slash
     }
 
     // Put the arguments into an array
@@ -42,16 +36,25 @@
     // returns an array with a copy of the input in the first position when passed
     // a string without any delimiters
     NSArray* arguments;
-    if ([urlPath length] > 0) {
-        arguments = [urlPath componentsSeparatedByString:@"/"];
+    if (encodedUrlPath.length) {
+        NSArray *encodedArguments = [encodedUrlPath componentsSeparatedByString:@"/"];
+        NSMutableArray *decodedArguments = [NSMutableArray arrayWithCapacity:encodedArguments.count];
+
+        for (NSString *encodedArgument in encodedArguments) {
+            [decodedArguments addObject:[encodedArgument urlDecodedString]];
+        }
+
+        arguments = [decodedArguments copy];
     } else {
         arguments = [NSArray array];//empty
     }
 
+
+
     // Dictionary of options - primitive parsing, so external docs should mention the limitations
     NSString *urlQuery = [url query];
     NSMutableDictionary* options = [NSMutableDictionary dictionary];
-    NSArray * queries = [urlQuery componentsSeparatedByString:@"&"];
+    NSArray *queries = [urlQuery componentsSeparatedByString:@"&"];
 
     for (int i = 0; i < [queries count]; i++) {
         NSArray *optionPair = [[queries objectAtIndex:(NSUInteger)i] componentsSeparatedByString:@"="];
@@ -73,7 +76,11 @@
     data.name = url.host;
     data.arguments = arguments;
     data.options = options;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
     data.webView = webView;
+#pragma GCC diagnostic pop
+    data.delegate = delegate;
     data.url = url;
     data.message = message;
 

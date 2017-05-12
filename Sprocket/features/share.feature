@@ -2,7 +2,6 @@ Feature:Photo Share
   As a user I want to share my edited photo by mail,Print or Save to Camera Roll
 
 
-  @reset
   @regression
   Scenario: Photo share options
     Given I am on the "Instagram Preview" screen
@@ -18,15 +17,12 @@ Feature:Photo Share
     And I wait for some seconds
     Then I should see the "Mail" screen
 
-
-  @reset
   @regression
   Scenario:Cancel the Share
     Given I am on the "Share" screen
     When I cancel the share
     Then I should see the "Instagram Preview" screen
 
-  @reset
   @done
   Scenario Outline: Verify share functionality
     Given I am on the "<social_media_screen_name>" screen

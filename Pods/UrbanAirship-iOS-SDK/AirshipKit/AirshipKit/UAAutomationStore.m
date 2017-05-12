@@ -1,32 +1,11 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "NSManagedObjectContext+UAAdditions.h"
 #import "UAAutomationStore+Internal.h"
 #import "UAActionScheduleData+Internal.h"
 #import "UAScheduleTriggerData+Internal.h"
+#import "UAScheduleDelayData+Internal.h"
+
 #import "UAActionSchedule.h"
 #import "NSJSONSerialization+UAAdditions.h"
 #import "UAScheduleTrigger+Internal.h"
@@ -69,8 +48,12 @@ NSString *const UAAutomationStoreFileFormat = @"Automation-%@.sqlite";
         UA_LERR(@"Error saving context %@", error);
         return NO;
     }
+
+    [self.managedContext reset];
     return YES;
 }
+
+
 
 #pragma mark -
 #pragma mark Data Access
@@ -85,31 +68,7 @@ NSString *const UAAutomationStoreFileFormat = @"Automation-%@.sqlite";
             return;
         }
 
-        NSMutableSet *triggers = [NSMutableSet set];
-        for (UAScheduleTrigger *trigger in schedule.info.triggers) {
-            UAScheduleTriggerData *triggerData = [NSEntityDescription insertNewObjectForEntityForName:@"UAScheduleTriggerData"
-                                                                               inManagedObjectContext:self.managedContext];
-            triggerData.type = @(trigger.type);
-            triggerData.goal = trigger.goal;
-            triggerData.start = schedule.info.start;
-
-            if (trigger.predicate) {
-                triggerData.predicateData = [NSJSONSerialization dataWithJSONObject:trigger.predicate.payload options:0 error:nil];
-            }
-
-            [triggers addObject:triggerData];
-        }
-
-        UAActionScheduleData *scheduleData = [NSEntityDescription insertNewObjectForEntityForName:@"UAActionScheduleData"
-                                                                           inManagedObjectContext:self.managedContext];
-
-        scheduleData.identifier = schedule.identifier;
-        scheduleData.limit = @(schedule.info.limit);
-        scheduleData.actions = [NSJSONSerialization stringWithObject:schedule.info.actions];
-        scheduleData.group = schedule.info.group;
-        scheduleData.triggers = triggers;
-        scheduleData.start = schedule.info.start;
-        scheduleData.end = schedule.info.end;
+        [self createScheduleDataFromSchedule:schedule];
 
         completionHandler([self saveContext]);
     }];
@@ -121,10 +80,19 @@ NSString *const UAAutomationStoreFileFormat = @"Automation-%@.sqlite";
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"UAActionScheduleData"];
         request.predicate = predicate;
 
-        NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
-
         NSError *error;
-        [self.managedContext executeRequest:deleteRequest error:&error];
+
+        if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){9, 0, 0}]) {
+            NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
+            [self.managedContext executeRequest:deleteRequest error:&error];
+        } else {
+            request.includesPropertyValues = NO;
+            NSArray *schedules = [self.managedContext executeFetchRequest:request error:&error];
+            for (NSManagedObject *schedule in schedules) {
+                [self.managedContext deleteObject:schedule];
+            }
+        }
+
         if (error) {
             UA_LERR(@"Error deleting entities %@", error);
             return;
@@ -169,6 +137,61 @@ NSString *const UAAutomationStoreFileFormat = @"Automation-%@.sqlite";
             [self saveContext];
         }
     }];
+}
+
+#pragma mark -
+#pragma mark Converters
+
+- (UAActionScheduleData *)createScheduleDataFromSchedule:(UAActionSchedule *)schedule {
+    UAActionScheduleData *scheduleData = [NSEntityDescription insertNewObjectForEntityForName:@"UAActionScheduleData"
+                                                                       inManagedObjectContext:self.managedContext];
+
+    scheduleData.identifier = schedule.identifier;
+    scheduleData.limit = @(schedule.info.limit);
+    scheduleData.actions = [NSJSONSerialization stringWithObject:schedule.info.actions];
+    scheduleData.group = schedule.info.group;
+    scheduleData.triggers = [self createTriggerDataFromTriggers:schedule.info.triggers scheduleStart:schedule.info.start];
+    scheduleData.start = schedule.info.start;
+    scheduleData.end = schedule.info.end;
+
+    if (schedule.info.delay) {
+        scheduleData.delay = [self createDelayDataFromDelay:schedule.info.delay scheduleStart:schedule.info.start];
+    }
+
+    return scheduleData;
+}
+
+- (UAScheduleDelayData *)createDelayDataFromDelay:(UAScheduleDelay *)delay scheduleStart:(NSDate *)scheduleStart {
+    UAScheduleDelayData *delayData = [NSEntityDescription insertNewObjectForEntityForName:@"UAScheduleDelayData"
+                                                                   inManagedObjectContext:self.managedContext];
+
+    delayData.seconds = @(delay.seconds);
+    delayData.appState = @(delay.appState);
+    delayData.regionID = delay.regionID;
+    delayData.screen = delay.screen;
+    delayData.cancellationTriggers = [self createTriggerDataFromTriggers:delay.cancellationTriggers scheduleStart:scheduleStart];
+
+    return delayData;
+}
+
+- (NSSet<UAScheduleTriggerData *> *)createTriggerDataFromTriggers:(NSArray <UAScheduleTrigger *> *)triggers scheduleStart:(NSDate *)scheduleStart {
+    NSMutableSet *data = [NSMutableSet set];
+
+    for (UAScheduleTrigger *trigger in triggers) {
+        UAScheduleTriggerData *triggerData = [NSEntityDescription insertNewObjectForEntityForName:@"UAScheduleTriggerData"
+                                                                           inManagedObjectContext:self.managedContext];
+        triggerData.type = @(trigger.type);
+        triggerData.goal = trigger.goal;
+        triggerData.start = scheduleStart;
+
+        if (trigger.predicate) {
+            triggerData.predicateData = [NSJSONSerialization dataWithJSONObject:trigger.predicate.payload options:0 error:nil];
+        }
+
+        [data addObject:triggerData];
+    }
+
+    return data;
 }
 
 

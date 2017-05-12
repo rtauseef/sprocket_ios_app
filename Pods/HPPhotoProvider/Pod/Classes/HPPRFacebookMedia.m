@@ -29,10 +29,14 @@
         self.objectID = [attributes objectForKey:@"id"];
         self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:attributes];
         self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForLargestPhoto:attributes];
-        
-        self.userName = [[attributes objectForKey:@"from"] objectForKey:@"name"];
-        
+        self.socialMediaImageUrl = [attributes objectForKey:@"link"];
+
         HPPRFacebookPhotoProvider * provider = [HPPRFacebookPhotoProvider sharedInstance];
+
+        self.userName = [[attributes objectForKey:@"from"] objectForKey:@"name"];
+        if (self.userName == nil) {
+            self.userName = [provider.user objectForKey:@"name"];
+        }
         self.userProfilePicture = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", [provider.user objectForKey:@"id"]];
         
         // NOTE: Don't localize this date, it comes from the API always in the same format regardless the language.
