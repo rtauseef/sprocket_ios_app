@@ -48,4 +48,8 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 
 + (void)logMetrics;
 
+- (void)startScanning;
+- (void)stopScanning;
+- (void)runAuthorization;
+
 @end

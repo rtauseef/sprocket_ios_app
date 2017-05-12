@@ -1,4 +1,4 @@
-//
+    //
 // Hewlett-Packard Company
 // All rights reserved.
 //
@@ -37,6 +37,8 @@
 @property (strong, nonatomic) CAShapeLayer *yelloCircle;
 @property (strong, nonatomic) UIView *overlay;
 
+@property (assign, nonatomic) BOOL watermarkingEnabled;
+
 @end
 
 @implementation PGOverlayCameraViewController
@@ -51,25 +53,63 @@
     }
     
     if ([PGLinkSettings linkEnabled]) {
+        self.watermarkingEnabled = NO;
+        [[PGCameraManager sharedInstance] runAuthorization];
+        
         UILongPressGestureRecognizer *longPressGestureForScreen = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressScreen:)];
         longPressGestureForScreen.minimumPressDuration = 0.3f;
         [self.view addGestureRecognizer:longPressGestureForScreen];
     }
 }
 
+- (void) enableLinkWatermarking {
+    self.watermarkingEnabled = YES;
+}
+
 - (void) handleLongPressScreen:(UILongPressGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
+    if (!_watermarkingEnabled) {
+        
+        if (recognizer.state == UIGestureRecognizerStateBegan) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"Image scanning is not available at this time. Please try again later.", @"Message shown when the user tries to scan an image and the scanning service is not available")
+                                   delegate:self
+                          cancelButtonTitle:NSLocalizedString(@"OK", @"Button caption")
+                          otherButtonTitles:nil] show];
+        
+        }
+        
+        return;
+    }
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan && !self.movieMode) {
         self.scanningTimer = [NSTimer scheduledTimerWithTimeInterval: 0.2f target: self
                                                              selector: @selector(updateScanning) userInfo: nil repeats: YES];
-    }  else if (recognizer.state == UIGestureRecognizerStateEnded) {
+    }  else if (recognizer.state == UIGestureRecognizerStateEnded && !self.movieMode) {
+        
+        [self stopScanning];
+    }
+}
+
+- (void) stopScanning {
+    if (self.scanningTimer)
         [self.scanningTimer invalidate];
+    
+    if (self.scanningCircle) {
         [self.scanningCircle removeFromSuperlayer];
-        [self.yelloCircle removeFromSuperlayer];
         self.scanningCircle = nil;
+    }
+    
+    if (self.yelloCircle) {
+        [self.yelloCircle removeFromSuperlayer];
         self.yelloCircle = nil;
+    }
+    
+    if (self.overlay) {
         [self.overlay removeFromSuperview];
         self.overlay = nil;
     }
+    
+    [[PGCameraManager sharedInstance] stopScanning];
 }
 
 - (void) updateScanning {
@@ -141,6 +181,8 @@
             [self.overlay.layer addSublayer:self.yelloCircle];
             
             [self.yelloCircle setNeedsDisplay];
+            
+            [[PGCameraManager sharedInstance] startScanning];
         }];
         
         [self.scanningCircle addAnimation:anims forKey:nil];
