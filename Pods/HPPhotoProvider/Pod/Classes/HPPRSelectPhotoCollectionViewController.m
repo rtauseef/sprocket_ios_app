@@ -133,6 +133,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
     if  (self.allowsMultipleSelection) {
         [self beginMultiSelect];
+    } else {
+        [self endMultiSelect:YES];
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
