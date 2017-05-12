@@ -87,7 +87,17 @@
 		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
+		656FC3A01EC622DE00433269 /* add_sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 656FC39F1EC622DE00433269 /* add_sticker.png */; };
+		656FC3A21EC6242200433269 /* add_sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 656FC3A11EC6242200433269 /* add_sticker_TN.png */; };
+		656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */; };
+		656FC3A71EC673BF00433269 /* PGCustomStickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */; };
+		656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3AA1EC6744800433269 /* UIImage+Fixup.m */; };
+		656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3AA1EC6744800433269 /* UIImage+Fixup.m */; };
+		65A0026E1ECFA9D1006500EA /* stickers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 65A0026D1ECFA9D1006500EA /* stickers.mp4 */; };
+		65A0026F1ECFA9D1006500EA /* stickers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 65A0026D1ECFA9D1006500EA /* stickers.mp4 */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
+		65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */; };
+		65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80719A69E5700C72F1A /* Share@2x.png */; };
 		696b4cf61c03206ef232189d /* HPLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385419BE57C5009C695F /* HPLogo@2x.png */; };
@@ -2583,8 +2593,17 @@
 		65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_DEV.plist"; sourceTree = "<group>"; };
 		65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_REL.plist"; sourceTree = "<group>"; };
 		65778C021ED8FE93007DA11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		656FC39F1EC622DE00433269 /* add_sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_sticker.png; sourceTree = "<group>"; };
+		656FC3A11EC6242200433269 /* add_sticker_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_sticker_TN.png; sourceTree = "<group>"; };
+		656FC3A41EC673BF00433269 /* PGCustomStickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCustomStickerManager.h; sourceTree = "<group>"; };
+		656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCustomStickerManager.m; sourceTree = "<group>"; };
+		656FC3A91EC6744800433269 /* UIImage+Fixup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Fixup.h"; sourceTree = "<group>"; };
+		656FC3AA1EC6744800433269 /* UIImage+Fixup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Fixup.m"; sourceTree = "<group>"; };
+		65A0026D1ECFA9D1006500EA /* stickers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = stickers.mp4; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
+		65E025231ECA26A000C88803 /* PGCustomStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCustomStickerViewController.h; sourceTree = "<group>"; };
+		65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCustomStickerViewController.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		65F7A8111DA875AA0023E21D /* Sprocket Print.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sprocket Print.entitlements"; sourceTree = "<group>"; };
 		731333A51ECF68B900E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/MainInterface.strings"; sourceTree = "<group>"; };
@@ -4097,6 +4116,23 @@
 			path = PushNotificationExtension;
 			sourceTree = "<group>";
 		};
+		656FC39D1EC6221D00433269 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				656FC39F1EC622DE00433269 /* add_sticker.png */,
+				656FC3A11EC6242200433269 /* add_sticker_TN.png */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
+		65A0026B1ECFA9A1006500EA /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				65A0026D1ECFA9D1006500EA /* stickers.mp4 */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
 		8212B9C31EA929C5009E66EC /* Graduation */ = {
 			isa = PBXGroup;
 			children = (
@@ -4628,6 +4664,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				656FC39D1EC6221D00433269 /* Custom */,
 				829A7AA21EBBC485005D4938 /* Cannes */,
 				829A79941EBB8E5A005D4938 /* Summer */,
 				82A11E421E5FB9D400E7F8FC /* StandardUS */,
@@ -5426,6 +5463,7 @@
 		E34D5096199AB945006D80E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65A0026B1ECFA9A1006500EA /* Video */,
 				E34D5097199AB96C006D80E0 /* Fonts */,
 				E34D5098199AB972006D80E0 /* Images */,
 				F27256FE1E96B2A6009E553D /* imgly_license */,
@@ -5733,6 +5771,8 @@
 		F27257001E983F97009E553D /* imgly */ = {
 			isa = PBXGroup;
 			children = (
+				656FC3A91EC6744800433269 /* UIImage+Fixup.h */,
+				656FC3AA1EC6744800433269 /* UIImage+Fixup.m */,
 				82362A161D59408E0019F024 /* PGFrameItem.h */,
 				82362A171D59408E0019F024 /* PGFrameItem.m */,
 				826BE9691E85B693000BE3FA /* PGFrameManager.h */,
@@ -5743,6 +5783,10 @@
 				82362A581D5959870019F024 /* PGStickerItem.m */,
 				82A1167E1E5FA57100E7F8FC /* PGStickerManager.h */,
 				82A1167F1E5FA57100E7F8FC /* PGStickerManager.m */,
+				656FC3A41EC673BF00433269 /* PGCustomStickerManager.h */,
+				656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */,
+				65E025231ECA26A000C88803 /* PGCustomStickerViewController.h */,
+				65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */,
 			);
 			name = imgly;
 			sourceTree = "<group>";
@@ -6333,6 +6377,7 @@
 				8212BE531EA93616009E66EC /* heart_balloons_TN@3x.png in Resources */,
 				F2030C0D1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */,
 				82E3DB3A1E82EEEE0008F600 /* unicorn_float_TN@2x.png in Resources */,
+				65A0026E1ECFA9D1006500EA /* stickers.mp4 in Resources */,
 				E34D50B3199AB9FE006D80E0 /* HPSimplified_LtIt.ttf in Resources */,
 				8212BF9D1EA93616009E66EC /* star_yellow.png in Resources */,
 				82E3DB921E82F1920008F600 /* glasses_blossom_TN@2x.png in Resources */,
@@ -6399,6 +6444,7 @@
 				829A7A841EBB8E7E005D4938 /* water_bubbles.png in Resources */,
 				8212BF371EA93616009E66EC /* plane_TN.png in Resources */,
 				826BEB5D1E85BEAD000BE3FA /* TurquoiseFrame.png in Resources */,
+				656FC3A21EC6242200433269 /* add_sticker_TN.png in Resources */,
 				8212BD9D1EA93615009E66EC /* butterfly.png in Resources */,
 				829A7A101EBB8E7E005D4938 /* ice_cream_cone_TN@2x.png in Resources */,
 				82E3DB0A1E82EEED0008F600 /* target_TN@2x.png in Resources */,
@@ -6667,6 +6713,7 @@
 				8212BE971EA93616009E66EC /* koala_TN.png in Resources */,
 				829A7A8E1EBBA2C6005D4938 /* flower_glasses_TN.png in Resources */,
 				826BEB671E85BEAD000BE3FA /* WhiteFrame_TN.png in Resources */,
+				656FC3A01EC622DE00433269 /* add_sticker.png in Resources */,
 				E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */,
 				8212BE291EA93616009E66EC /* gift-dog_TN@3x.png in Resources */,
 				F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */,
@@ -8065,6 +8112,7 @@
 				829A7A171EBB8E7E005D4938 /* kite_TN.png in Resources */,
 				82E3DEAD1E831BD10008F600 /* word-cloud-grumble.png in Resources */,
 				826BEB2A1E85BEAD000BE3FA /* PinkTriangleFrame_TN@2x.png in Resources */,
+				65A0026F1ECFA9D1006500EA /* stickers.mp4 in Resources */,
 				82184F7B1EAA9040000EDFD2 /* Cocoa_TN.png in Resources */,
 				821850CB1EAA9102000EDFD2 /* feather2_TN.png in Resources */,
 				821850F71EAA9103000EDFD2 /* holding_hands_TN.png in Resources */,
@@ -8467,6 +8515,7 @@
 				F21C66611E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
 				4418fa35a759dbee8758b95d /* PGLandingMainPageViewController.m in Sources */,
 				3bafc46b9f4cb58b01413cb6 /* SWRevealViewController.m in Sources */,
+				656FC3A71EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
 				70dbfe6bae80bc96cda49075 /* UIColor+Style.m in Sources */,
 				825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				5089b6e4b798bd669905cc1d /* PGExperimentManager.m in Sources */,
@@ -8478,6 +8527,7 @@
 				49ad600baf4c001336afed6f /* PGTermsAttributedLabel.m in Sources */,
 				F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
+				65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
 				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
 				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
@@ -8508,6 +8558,7 @@
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
+				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
@@ -8602,11 +8653,14 @@
 				F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */,
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
+				65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
+				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
 				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
+				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,

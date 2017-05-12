@@ -13,6 +13,8 @@
 #import "PGStickerManager.h"
 #import "NSLocale+Additions.h"
 
+#import "PGCustomStickerManager.h"
+
 @interface PGStickerManager()
 
 @end
@@ -36,61 +38,80 @@
         //Removing plane sticker from chinese because it contains english words on it.
         [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
     }
-    
+
     IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                               imageURL:self.summerCategoryStickers[1].thumbnailURL
                                                                               stickers:summerStickers];
-    
+
     summerCategory.accessibilityLabel = @"Summer Category";
-    
+
     IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.graduationCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self graduationCategoryStickers]];
     graduationCategory.accessibilityLabel = @"Graduation Category";
-    
+
     IMGLYStickerCategory *faceCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.faceCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self faceCategoryStickers]];
-    
+
     faceCategory.accessibilityLabel = @"Face Category";
-    
+
     IMGLYStickerCategory *decorativeCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.decorativeCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self decorativeCategoryStickers]];
-    
+
     decorativeCategory.accessibilityLabel = @"Decorative Category";
-    
+
     IMGLYStickerCategory *foodCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.foodCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self foodCategoryStickers]];
-    
+
     foodCategory.accessibilityLabel = @"Food Category";
-    
+
     IMGLYStickerCategory *birthdayCategory      = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.birthdayCategoryStickers[3].thumbnailURL
                                                                                      stickers:[self birthdayCategoryStickers]];
-    
+
     birthdayCategory.accessibilityLabel = @"Birthday Category";
-    
+
     IMGLYStickerCategory *animalCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.animalCategoryStickers[8].thumbnailURL
                                                                                      stickers:[self animalCategoryStickers]];
-    
+
     animalCategory.accessibilityLabel = @"Animal Category";
-    
+
     IMGLYStickerCategory *natureCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.natureCategoryStickers[6].thumbnailURL
                                                                                      stickers:[self natureCategoryStickers]];
-    
+
     natureCategory.accessibilityLabel = @"Nature Category";
-    
+
     IMGLYStickerCategory *getWellCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                      imageURL:self.getWellCategoryStickers[1].thumbnailURL
                                                                                      stickers:[self getWellCategoryStickers]];
-    
+
     getWellCategory.accessibilityLabel = @"Get Well";
-    
-    return @[graduationCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+
+    NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"add_sticker_TN" withExtension:@"png"];
+    IMGLYStickerCategory *addCustomCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                    imageURL:addStickerIcon
+                                                                                    stickers:@[]];
+
+    addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
+
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, graduationCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
+
+    NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
+    if (customStickers.count > 0) {
+        IMGLYStickerCategory *customCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[customStickers firstObject].thumbnailURL
+                                                                                        stickers:customStickers];
+
+        customCategory.accessibilityLabel = @"Custom Stickers";
+        [categories insertObject:customCategory atIndex:1];
+    }
+
+    return categories;
 }
 
 #pragma mark - Stickers by category
