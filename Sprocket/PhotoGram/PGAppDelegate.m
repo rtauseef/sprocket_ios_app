@@ -30,6 +30,7 @@
 #import "PGLandingMainPageViewController.h"
 #import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
+#import "PGInAppMessageManager.h"
 
 
 static const NSInteger connectionDefaultValue = -1;
@@ -233,7 +234,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
     //                                        UIUserNotificationTypeBadge |
     //                                        UIUserNotificationTypeSound);
-    
+
+    [UAirship push].defaultPresentationOptions = UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound;
+
+    [UAirship inAppMessaging].messageControllerDelegate = [PGInAppMessageManager sharedInstance];
+    [UAirship inAppMessaging].messagingDelegate = [PGInAppMessageManager sharedInstance];
+    [UAirship inAppMessaging].autoDisplayEnabled = NO;
 }
 
 

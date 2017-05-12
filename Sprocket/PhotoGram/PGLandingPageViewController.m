@@ -19,14 +19,15 @@
 #import "PGTermsAttributedLabel.h"
 #import "PGPreviewViewController.h"
 #import "PGCameraManager.h"
-#import "UIViewController+trackable.h"
+#import "UIViewController+Trackable.h"
 #import "PGAnalyticsManager.h"
 #import "PGMediaNavigation.h"
 #import "PGPhotoSelection.h"
+#import "PGInAppMessageManager.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
-@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate>
+@interface PGLandingPageViewController () <UIGestureRecognizerDelegate, HPPRSelectPhotoCollectionViewControllerDelegate, PGInAppMessageHost>
 
 @property (strong, nonatomic) UIView *dropDownContainerView;
 
@@ -306,5 +307,12 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     [self hideAlbums:YES];
 }
 
+
+#pragma mark - PGInAppMessageHost
+
+- (BOOL)allowsInAppMessages
+{
+    return YES;
+}
 
 @end

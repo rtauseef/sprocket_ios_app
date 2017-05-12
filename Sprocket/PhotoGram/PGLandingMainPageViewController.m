@@ -32,6 +32,7 @@
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
 #import "PGHamburgerButton.h"
+#import "PGInAppMessageManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -41,7 +42,7 @@
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
 NSInteger const kMantaErrorBusy = 1;
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
@@ -548,6 +549,15 @@ NSInteger const kMantaErrorBusy = 1;
 {
     [self goToSocialSourcePage:socialSource.type sender:button];
 }
+
+
+#pragma mark - PGInAppMessageHost
+
+- (BOOL)allowsInAppMessages
+{
+    return YES;
+}
+
 
 #pragma mark - Reset user defaults
 

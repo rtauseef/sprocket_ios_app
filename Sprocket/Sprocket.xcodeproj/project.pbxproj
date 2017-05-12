@@ -2293,7 +2293,15 @@
 		F2030C0D1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030C061EA5878600141855 /* imglyStickerCategory@3x.png */; };
 		F2030C0E1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030C061EA5878600141855 /* imglyStickerCategory@3x.png */; };
 		F2030C0F1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2030C061EA5878600141855 /* imglyStickerCategory@3x.png */; };
+		F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
+		F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
+		F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */; };
+		F20CE2591EC2436400FD910D /* PGInAppMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */; };
+		F20CE25D1EC243A400FD910D /* PGInAppMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE25C1EC243A400FD910D /* PGInAppMessageView.m */; };
+		F20CE25E1EC243A400FD910D /* PGInAppMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE25C1EC243A400FD910D /* PGInAppMessageView.m */; };
 		F20D4CA01E87392900A347B5 /* PGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F236FAC51E8721F700FC31B5 /* PGProgressView.m */; };
+		F21185BB1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21185BA1EBBD9CD00D8D073 /* PGInAppMessageManager.m */; };
+		F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21185BA1EBBD9CD00D8D073 /* PGInAppMessageManager.m */; };
 		F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
 		F21C66611E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */; };
 		F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12241E522FF300753C5A /* PGFeatureFlag.m */; };
@@ -3974,6 +3982,13 @@
 		F2030C041EA5878600141855 /* imglyStickerCategory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imglyStickerCategory.png; path = Resources/Images/Stickers/imglyStickerCategory.png; sourceTree = "<group>"; };
 		F2030C051EA5878600141855 /* imglyStickerCategory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "imglyStickerCategory@2x.png"; path = "Resources/Images/Stickers/imglyStickerCategory@2x.png"; sourceTree = "<group>"; };
 		F2030C061EA5878600141855 /* imglyStickerCategory@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "imglyStickerCategory@3x.png"; path = "Resources/Images/Stickers/imglyStickerCategory@3x.png"; sourceTree = "<group>"; };
+		F20CE24F1EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.h"; sourceTree = "<group>"; };
+		F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.m"; sourceTree = "<group>"; };
+		F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGInAppMessageView.xib; sourceTree = "<group>"; };
+		F20CE25B1EC243A400FD910D /* PGInAppMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInAppMessageView.h; sourceTree = "<group>"; };
+		F20CE25C1EC243A400FD910D /* PGInAppMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInAppMessageView.m; sourceTree = "<group>"; };
+		F21185B91EBBD9CD00D8D073 /* PGInAppMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInAppMessageManager.h; sourceTree = "<group>"; };
+		F21185BA1EBBD9CD00D8D073 /* PGInAppMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInAppMessageManager.m; sourceTree = "<group>"; };
 		F21C665E1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSelectAlbumDropDownViewController.h; sourceTree = "<group>"; };
 		F21C665F1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSelectAlbumDropDownViewController.m; sourceTree = "<group>"; };
 		F22F12231E522FF300753C5A /* PGFeatureFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFeatureFlag.h; sourceTree = "<group>"; };
@@ -5512,6 +5527,7 @@
 		E34D5095199AB930006D80E0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F21185B71EBBD98500D8D073 /* Messaging */,
 				F2E85D311EB79EFA00569AE9 /* PrintQueue */,
 				F2E785281DDA78040074FFB7 /* SocialSources */,
 				E34D509B199AB9A4006D80E0 /* Storyboards */,
@@ -5614,6 +5630,8 @@
 				E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */,
 				82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */,
 				82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */,
+				F20CE24F1EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.h */,
+				F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -5774,6 +5792,18 @@
 				F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */,
 			);
 			name = SideBar;
+			sourceTree = "<group>";
+		};
+		F21185B71EBBD98500D8D073 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				F21185B91EBBD9CD00D8D073 /* PGInAppMessageManager.h */,
+				F21185BA1EBBD9CD00D8D073 /* PGInAppMessageManager.m */,
+				F20CE25B1EC243A400FD910D /* PGInAppMessageView.h */,
+				F20CE25C1EC243A400FD910D /* PGInAppMessageView.m */,
+				F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */,
+			);
+			name = Messaging;
 			sourceTree = "<group>";
 		};
 		F22F127F1E6F387900753C5A /* Security */ = {
@@ -6771,6 +6801,7 @@
 				826BEB671E85BEAD000BE3FA /* WhiteFrame_TN.png in Resources */,
 				E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */,
 				8212BE291EA93616009E66EC /* gift-dog_TN@3x.png in Resources */,
+				F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */,
 				8212BE191EA93616009E66EC /* Fox_TN@2x.png in Resources */,
 				8212BF691EA93616009E66EC /* skull_TN@2x.png in Resources */,
 				82E3D9FC1E82EEED0008F600 /* hat_TN@3x.png in Resources */,
@@ -8015,6 +8046,7 @@
 				821850851EAA9102000EDFD2 /* airplane_TN@3x.png in Resources */,
 				821850BE1EAA9102000EDFD2 /* conversation_heart.png in Resources */,
 				82E3DE631E831BD10008F600 /* cat-fries_TN@2x.png in Resources */,
+				F20CE2591EC2436400FD910D /* PGInAppMessageView.xib in Resources */,
 				8212BC071EA92A26009E66EC /* pencil_TN.png in Resources */,
 				82E3DE3D1E831BC70008F600 /* Panda.png in Resources */,
 				fb18c75124e0aad8e105717a /* Images.xcassets in Resources */,
@@ -8598,6 +8630,7 @@
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
+				F20CE25E1EC243A400FD910D /* PGInAppMessageView.m in Sources */,
 				F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				929B9A1B1EAFB41800A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
@@ -8642,6 +8675,7 @@
 				F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				a51149fdd16db14e5519b0c3 /* PGAppAppearance.m in Sources */,
 				b2b702ca62e7f093ce61c8e9 /* PGLogger.m in Sources */,
+				F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */,
 				a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */,
 				82A116811E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				F24DA7D61EAEA13800C24AAB /* PGWatermarkOperation.m in Sources */,
@@ -8658,6 +8692,7 @@
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */,
+				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				5bdaef2b736e0b67a0f52115 /* PGCameraRollLandingPageViewController.m in Sources */,
@@ -8689,6 +8724,7 @@
 			files = (
 				F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */,
 				F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */,
+				F21185BB1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */,
 				F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperation.h in Sources */,
 				F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */,
@@ -8712,6 +8748,7 @@
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
 				F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */,
 				E31BE41F19ED91E1006B78BB /* PGFacebookLandingPageViewController.m in Sources */,
+				F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */,
 				E34D5067199AB87B006D80E0 /* main.m in Sources */,
 				E3461F2619AE2F470042DF5E /* UIColor+HexString.m in Sources */,
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
@@ -8721,6 +8758,7 @@
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
 				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
+				F20CE25D1EC243A400FD910D /* PGInAppMessageView.m in Sources */,
 				F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
