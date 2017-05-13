@@ -43,22 +43,38 @@
 
 @implementation PGOverlayCameraViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"Created new camera overlay");
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     self.movieMode = NO;
-    
-    if ([PGLinkSettings videoPrintEnabled]) {
-        UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
-        longPressGestureForShutter.minimumPressDuration = 0.3f;
-        [self.shutterButton addGestureRecognizer:longPressGestureForShutter];
-    }
     
     if ([PGLinkSettings linkEnabled]) {
         self.watermarkingEnabled = NO;
         [[PGCameraManager sharedInstance] runAuthorization];
-        
-        UILongPressGestureRecognizer *longPressGestureForScreen = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressScreen:)];
-        longPressGestureForScreen.minimumPressDuration = 0.3f;
-        [self.view addGestureRecognizer:longPressGestureForScreen];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [self stopScanning];
+    
+    if ([PGLinkSettings videoPrintEnabled]) {
+        for (UIGestureRecognizer *gesture in self.shutterButton.gestureRecognizers) {
+            [self.shutterButton removeGestureRecognizer:gesture];
+        }
+    }
+    
+    if ([PGLinkSettings linkEnabled]) {
+        for (UIGestureRecognizer *gesture in self.view.gestureRecognizers) {
+            [self.view removeGestureRecognizer:gesture];
+        }
     }
 }
 
@@ -87,6 +103,8 @@
     }  else if (recognizer.state == UIGestureRecognizerStateEnded && !self.movieMode) {
         
         [self stopScanning];
+        
+        [[PGCameraManager sharedInstance] stopScanning];
     }
 }
 
@@ -108,8 +126,6 @@
         [self.overlay removeFromSuperview];
         self.overlay = nil;
     }
-    
-    [[PGCameraManager sharedInstance] stopScanning];
 }
 
 - (void) updateScanning {
@@ -181,13 +197,10 @@
             [self.overlay.layer addSublayer:self.yelloCircle];
             
             [self.yelloCircle setNeedsDisplay];
-            
-            [[PGCameraManager sharedInstance] startScanning];
         }];
         
         [self.scanningCircle addAnimation:anims forKey:nil];
         [CATransaction commit];
-        
         [self.view addSubview:self.overlay];
     }
     
@@ -195,6 +208,8 @@
         [self.yelloCircle setNeedsDisplay];
     
     [self.scanningCircle setNeedsDisplay];
+    
+    [[PGCameraManager sharedInstance] startScanning];
 }
 
 - (void)handleLongPressShutterButton:(UILongPressGestureRecognizer *)recognizer {
@@ -220,6 +235,18 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [self setupButtons];
+    
+    if ([PGLinkSettings videoPrintEnabled]) {
+        UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
+        longPressGestureForShutter.minimumPressDuration = 0.3f;
+        [self.shutterButton addGestureRecognizer:longPressGestureForShutter];
+    }
+    
+    if ([PGLinkSettings linkEnabled]) {
+        UILongPressGestureRecognizer *longPressGestureForScreen = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressScreen:)];
+        longPressGestureForScreen.minimumPressDuration = 0.3f;
+        [self.view addGestureRecognizer:longPressGestureForScreen];
+    }
 }
 
 - (IBAction)closeButtonTapped:(id)sender
@@ -306,6 +333,11 @@
             [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOff"] forState:UIControlStateNormal];
         }
     }
+}
+
+- (void)dealloc
+{
+    NSLog(@"PG overlay is being dealloced");
 }
 
 @end

@@ -1,4 +1,4 @@
-//
+    //
 // Hewlett-Packard Company
 // All rights reserved.
 //
@@ -44,6 +44,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) UIView *cameraView;
     @property (strong, nonatomic) AVCaptureVideoPreviewLayer *scanPreviewLayer;
     @property (strong, nonatomic) AVCaptureVideoPreviewLayer *defaultPreviewLayer;
+    @property (strong, nonatomic) UIView* overlayView;
 @end
 
 @implementation PGCameraManager
@@ -101,22 +102,34 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 {
     static NSString *viewAccessibilityIdentifier = @"PGOverlayCameraView";
     
-    // Don't keep adding the same overlay view over and over again...
-    for (UIView *subview in view.subviews) {
-        if ([subview.accessibilityIdentifier isEqualToString:viewAccessibilityIdentifier]) {
-            [subview removeFromSuperview];
-        }
-    }
-    
-    [view layoutIfNeeded];
-    
-    self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
-    self.cameraOverlay.pickerReference = nil;
-    self.cameraOverlay.view.frame = view.frame;
-    self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-        [view addSubview:self.cameraOverlay.view];
+        
+        if (self.cameraOverlay == nil) {
+            self.cameraView = view;
+            
+            [view layoutIfNeeded];
+        
+            
+            self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
+            self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
+            self.cameraOverlay.pickerReference = nil;
+            self.cameraOverlay.view.frame = view.frame;
+            self.overlayView = self.cameraOverlay.view;
+        }
+        
+        // Don't keep adding the same overlay view over and over again...
+        
+        BOOL found = NO;
+        for (UIView *subview in view.subviews) {
+            if ([subview.accessibilityIdentifier isEqualToString:viewAccessibilityIdentifier]) {
+                found = YES;
+            }
+        }
+        
+        if (!found) {
+            [self.overlayView removeFromSuperview];
+            [view addSubview:self.overlayView];
+        }
     });
 }
 
@@ -246,8 +259,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-            [view.layer addSublayer:self.defaultPreviewLayer];
+            [self.defaultPreviewLayer removeFromSuperlayer];
+            [view.layer insertSublayer:self.defaultPreviewLayer atIndex:0];
         });
         
         [self.session startRunning];
@@ -564,8 +577,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.defaultPreviewLayer removeFromSuperlayer];
                     self.scanPreviewLayer = [self.lrCaptureManager previewLayer];
-                    [self.scanPreviewLayer setFrame:self.cameraView.bounds];
-                    [self.cameraView.layer addSublayer:self.scanPreviewLayer];
+                    [self.scanPreviewLayer setFrame:self.cameraView.layer.bounds];
+                    [self.scanPreviewLayer removeFromSuperlayer];
+                    
+                    [self.cameraView.layer insertSublayer:self.scanPreviewLayer atIndex:0];
                 });
                 
                 [[LRCaptureManager sharedManager] startScanning: &error];
