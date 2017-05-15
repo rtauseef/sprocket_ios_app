@@ -18,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGInAppMessageView">
             <connections>
+                <outlet property="messageIcon" destination="jZC-zd-6fi" id="I6m-yi-EqF"/>
                 <outlet property="messageLabel" destination="DGR-6L-mex" id="pRD-uS-yBG"/>
                 <outlet property="primaryButton" destination="iGT-li-4ds" id="nXk-bR-gHK"/>
                 <outlet property="primaryButtonLeadingCenterConstraint" destination="DxP-a3-X6w" id="LFd-Xx-ebD"/>

@@ -16,6 +16,10 @@
 
 #import <UIKit/UIKit.h>
 
+NSString * const kInAppMessageTypeKey = @"message_type";
+NSString * const kInAppMessageTypeValueBuyPaper = @"buy-paper";
+NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
+
 @implementation PGInAppMessageManager
 
 + (instancetype)sharedInstance
@@ -27,6 +31,35 @@
     });
 
     return instance;
+}
+
+- (void)showBuyPaperMessage
+{
+    UAInAppMessage *message = [UAInAppMessage message];
+    message.alert = NSLocalizedString(@"Hi, do you need more HP ZINK Photo Paper?", @"Buy paper notification message");
+    message.buttonGroup = @"ua_buy_now";
+    message.buttonActions = @{
+                              @"buy_now": @{kUAOpenExternalURLActionDefaultRegistryAlias: @"http://www.hp.com/go/zinkphotopaper"}
+                              };
+
+    message.extra = @{kInAppMessageTypeKey: kInAppMessageTypeValueBuyPaper};
+
+    [[UAirship inAppMessaging] displayMessage:message];
+}
+
+- (void)showFirmwareUpgradeMessage
+{
+    UAInAppMessage *message = [UAInAppMessage message];
+    message.alert = NSLocalizedString(@"There is a firmware upgrade available for your sprocket printer.", @"Firmware update notification message");
+    message.buttonGroup = @"ua_download"; // Don't need a "Not now" button?
+    message.buttonActions = @{
+                              // TODO: this is not the correct deep link. Should direct the user to the device screen. Deep link needs to be created
+                              @"download": @{kUADeepLinkActionDefaultRegistryAlias: @"com.hp.sprocket.deepLinks://appSettings"}
+                              };
+
+    message.extra = @{kInAppMessageTypeKey: kInAppMessageTypeValueFirmwareUpgrade};
+
+    [[UAirship inAppMessaging] displayMessage:message];
 }
 
 
@@ -50,16 +83,9 @@
 
 - (void)pendingMessageAvailable:(UAInAppMessage *)message
 {
-    NSLog(@"PENDING MESSAGE");
-
     if ([self shouldDisplayMessage]) {
         [[UAirship inAppMessaging] displayPendingMessage];
     }
-}
-
-- (void)messageWillBeDisplayed:(UAInAppMessage *)message
-{
-    NSLog(@"MESSAGE WILL BE DISPLAYED");
 }
 
 
