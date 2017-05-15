@@ -13,6 +13,7 @@
 #import "PGInAppMessageManager.h"
 #import "PGAppNavigation.h"
 #import "PGInAppMessageView.h"
+#import "NSLocale+Additions.h"
 
 #import <UIKit/UIKit.h>
 
@@ -44,14 +45,14 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
 
     message.extra = @{kInAppMessageTypeKey: kInAppMessageTypeValueBuyPaper};
 
-    [[UAirship inAppMessaging] displayMessage:message];
+    [UAirship inAppMessaging].pendingMessage = message;
 }
 
 - (void)showFirmwareUpgradeMessage
 {
     UAInAppMessage *message = [UAInAppMessage message];
     message.alert = NSLocalizedString(@"There is a firmware upgrade available for your sprocket printer.", @"Firmware update notification message");
-    message.buttonGroup = @"ua_download"; // Don't need a "Not now" button?
+    message.buttonGroup = @"ua_download";
     message.buttonActions = @{
                               // TODO: this is not the correct deep link. Should direct the user to the device screen. Deep link needs to be created
                               @"download": @{kUADeepLinkActionDefaultRegistryAlias: @"com.hp.sprocket.deepLinks://appSettings"}
@@ -59,7 +60,7 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
 
     message.extra = @{kInAppMessageTypeKey: kInAppMessageTypeValueFirmwareUpgrade};
 
-    [[UAirship inAppMessaging] displayMessage:message];
+    [UAirship inAppMessaging].pendingMessage = message;
 }
 
 
@@ -83,7 +84,10 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
 
 - (void)pendingMessageAvailable:(UAInAppMessage *)message
 {
-    if ([self shouldDisplayMessage]) {
+    if (![NSLocale isEnglish]) {
+        [[UAirship inAppMessaging] deletePendingMessage:message];
+
+    } else if ([self shouldDisplayMessage]) {
         [[UAirship inAppMessaging] displayPendingMessage];
     }
 }

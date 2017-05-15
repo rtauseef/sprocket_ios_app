@@ -11,9 +11,16 @@
 //
 
 #import "PGPrintQueueManager.h"
+#import "PGInAppMessageManager.h"
+
 #import <MP.h>
 #import <MPBTPrintManager.h>
 
+
+static NSString * const kPrintQueueManagerPrintCount = @"com.hp.hp-sprocket.printCount";
+static NSInteger const kBuyPaperNotificationThresholdFirstTier  = 10;
+static NSInteger const kBuyPaperNotificationThresholdSecondTier = 30;
+static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
 
 @interface PGPrintQueueManager ()
 
@@ -57,6 +64,24 @@
 
     } else {
         [[PGPrintQueueManager sharedInstance] showPrintQueueAlertEmpty];
+    }
+}
+
+- (void)incrementPrintCounter
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+
+    NSInteger count = [userdefaults integerForKey:kPrintQueueManagerPrintCount];
+    count++;
+
+    [userdefaults setInteger:count forKey:kPrintQueueManagerPrintCount];
+    [userdefaults synchronize];
+
+    if (count == kBuyPaperNotificationThresholdFirstTier ||
+        count == kBuyPaperNotificationThresholdSecondTier ||
+        count == kBuyPaperNotificationThresholdThirdTier)
+    {
+        [[PGInAppMessageManager sharedInstance] showBuyPaperMessage];
     }
 }
 

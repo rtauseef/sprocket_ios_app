@@ -38,6 +38,7 @@
                     <rect key="frame" x="19" y="-10" width="81" height="81"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="jZC-zd-6fi" secondAttribute="height" multiplier="1:1" id="9dh-yB-be9"/>
+                        <constraint firstAttribute="width" constant="81" id="aHk-rC-8ep"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message text" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGR-6L-mex">
@@ -72,7 +73,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="t26-LS-iNi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="1G7-eO-bJZ"/>
-                <constraint firstItem="8Cn-B2-IHW" firstAttribute="top" secondItem="jZC-zd-6fi" secondAttribute="bottom" constant="10" id="2KY-iG-AWO"/>
                 <constraint firstAttribute="centerX" secondItem="8Cn-B2-IHW" secondAttribute="trailing" constant="5" id="996-ek-vjF"/>
                 <constraint firstAttribute="trailing" secondItem="iGT-li-4ds" secondAttribute="trailing" constant="18" id="9Y2-Jy-ASV"/>
                 <constraint firstItem="iGT-li-4ds" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="5" id="DxP-a3-X6w"/>
