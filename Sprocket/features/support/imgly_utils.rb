@@ -69,7 +69,7 @@ $edit_screen_arr =
     }
 
 $sticker ={
-    'sticker_tab_0' => {
+    'Graduation Category' => {
         'sticker_0' => {'name' => 'Graduation Glasses Sticker','value' =>'Graduation Glasses Sticker'},
         'sticker_1' => {'name' => 'Graduation Horn Sticker','value' =>'Graduation Horn Sticker'},
         'sticker_2' => {'name' => 'Owl Sticker','value' =>'Owl Sticker'},
@@ -93,7 +93,7 @@ $sticker ={
         'sticker_20' => {'name' => 'Confetti Graduation Sticker','value' =>'Confetti Graduation Sticker'},
         'sticker_21' => {'name' => 'Pencil Graduation Sticker','value' =>'Pencil Graduation Sticker'}
     },
-    'sticker_tab_1' => {
+    'Summer Category' => {
         'sticker_0' => {'name' => 'Flower Glasses Sticker','value' => 'Flower Glasses Sticker'},
         'sticker_1' => {'name' => 'Pineapple Sticker','value' => 'Pineapple Sticker'},
         'sticker_2' => {'name' => 'Hibiscus Sticker','value' => 'Hibiscus Sticker'},
@@ -146,13 +146,13 @@ $sticker ={
         'sticker_49' => {'name' => 'BBQ Sticker','value' => 'BBQ Sticker'},
         'sticker_50' => {'name' => 'Travel Car Woody Sticker','value' => 'Travel Car Woody Sticker'}
     },
-    'sticker_tab_2' => {
-        'sticker_0' => {'name' => 'Chainsmokers Sticker','value' => 'Chainsmokers Sticker'},
-        'sticker_1' => {'name' => 'Chainsmokers 2 Sticker','value' => 'Chainsmokers 2 Sticker'},
-        'sticker_2' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
-        'sticker_3' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
+    'Cannes Category' => {
+        #'sticker_0' => {'name' => 'Chainsmokers Sticker','value' => 'Chainsmokers Sticker'},
+        #'sticker_1' => {'name' => 'Chainsmokers 2 Sticker','value' => 'Chainsmokers 2 Sticker'},
+        'sticker_0' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
+        'sticker_1' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
     },
-    'sticker_tab_3' => {
+    'Face Category' => {
         'sticker_0' => {'name' => 'Aviator Glasses Color Sticker','value' =>'Aviator Glasses Color Sticker'},
         'sticker_1' => {'name' => 'Bunny Ears Flowers Sticker','value' =>'Bunny Ears Flowers Sticker'},
         'sticker_2' => {'name' => 'Rabbit Mask Sticker','value' =>'Rabbit Mask Sticker'},
@@ -181,7 +181,7 @@ $sticker ={
         'sticker_25' => {'name' => 'Cat on Head Sticker','value' =>'Cat on Head Sticker'},
         'sticker_26' => {'name' => 'Mustache Dark Sticker','value' =>'Mustache Dark Sticker'}
     },
-    'sticker_tab_4' => {
+    'Decorative Category' => {
         'sticker_0' => {'name' => 'Heart Garland Sticker','value' =>'Heart Garland Sticker'},
         'sticker_1' => {'name' => 'Stars Bunch Sticker','value' =>'Stars Bunch Sticker'},
         'sticker_2' => {'name' => '3D diamond 2 Sticker','value' =>'3D diamond 2 Sticker'},
@@ -211,7 +211,7 @@ $sticker ={
         'sticker_26' => {'name' => 'Heart Pixel Sticker','value' =>'Heart Pixel Sticker'},
         'sticker_27' => {'name' => 'Word Cloud Grumble Sticker','value' =>'Word Cloud Grumble Sticker'}
     },
-    'sticker_tab_5' => {
+    'Food Category' => {
         'sticker_0' => {'name' => 'Frappuccino Sticker','value' =>'Frappuccino Sticker'},
         'sticker_1' => {'name' => 'Pineapple Sticker','value' =>'Pineapple Sticker'},
         'sticker_2' => {'name' => 'Cupcake Sticker','value' =>'Cupcake Sticker'},
@@ -239,7 +239,7 @@ $sticker ={
         'sticker_24' => {'name' => 'Fork Sticker','value' =>'Fork Sticker'},
         'sticker_25' => {'name' => 'Oranges Sticker','value' =>'Oranges Sticker'}
     },
-    'sticker_tab_6' => {
+    'Birthday Category' => {
         'sticker_0' => {'name' => 'Balloons 2 Sticker','value' =>'Balloons 2 Sticker'},
         'sticker_1' => {'name' => 'Cupcake Sticker','value' =>'Cupcake Sticker'},
         'sticker_2' => {'name' => 'Party Hat Sticker','value' =>'Party Hat Sticker'},
@@ -255,7 +255,7 @@ $sticker ={
         'sticker_12' => {'name' => 'Crown Sticker','value' =>'Crown Sticker'},
         'sticker_13' => {'name' => 'Horn Sticker','value' =>'Horn Sticker'}
     },
-    'sticker_tab_7' => {
+    'Animal Category' => {
         'sticker_0' => {'name' => 'Cat Face Sticker','value' =>'Cat Face Sticker'},
         'sticker_1' => {'name' => 'Fox Sticker','value' =>'Fox Sticker'},
         'sticker_2' => {'name' => 'Rabbit Sticker','value' =>'Rabbit Sticker'},
@@ -277,7 +277,7 @@ $sticker ={
         'sticker_18' => {'name' => 'Cat Grumble Sticker','value' =>'Cat Grumble Sticker'},
         'sticker_19' => {'name' => 'Pig Sticker','value' =>'Pig Sticker'}
     },
-    'sticker_tab_8' => {
+    'Nature Category' => {
         'sticker_0' => {'name' => 'Feather Sticker','value' =>'Feather Sticker'},
         'sticker_1' => {'name' => 'Rainbow 2 Sticker','value' =>'Rainbow 2 Sticker'},
         'sticker_2' => {'name' => 'Flowers Sticker','value' =>'Flowers Sticker'},
@@ -302,7 +302,7 @@ $sticker ={
         'sticker_21' => {'name' => 'Star Yellow Sticker','value' =>'Star Yellow Sticker'},
         'sticker_22' => {'name' => 'Cloud Sad Sticker','value' =>'Cloud Sad Sticker'}
     },
-    'sticker_tab_9' => {
+    'Get Well' => {
         'sticker_0' => {'name' => 'Band aid 2 Sticker','value' =>'Band aid 2 Sticker'},
         'sticker_1' => {'name' => 'Letter Sticker','value' =>'Letter Sticker'},
         'sticker_2' => {'name' => 'Kleenex Sticker','value' =>'Kleenex Sticker'},
@@ -320,25 +320,25 @@ $frame ={
     'frame_3' => {'name' => 'White Frame','value' =>'WhiteFrame'},
     'frame_4' => {'name' => 'Stars Overlay Frame','value' =>'StarsOverlayFrame'},
     'frame_5' => {'name' => 'Polka Dots Frame','value' =>'PolkadotsFrame'},
-    'frame_5' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
-    'frame_6' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
-    'frame_7' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
-    'frame_8' => {'name' => 'ChainSmokers 1 Frame','value' =>'ChainSmokers_Android_1'},
-    'frame_9' => {'name' => 'ChainSmokers 2 Frame','value' =>'ChainSmokers_Android_2'},
-    'frame_10' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
-    'frame_11' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
-    'frame_12' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
-    'frame_13' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
-    'frame_14' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
-    'frame_15' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
-    'frame_16' => {'name' => 'Red Frame','value' =>'RedFrame'},
-    'frame_17' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
-    'frame_18' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
-    'frame_19' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
-    'frame_20' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
-    'frame_21' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
-    'frame_22' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
-    'frame_23' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
+    'frame_6' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
+    'frame_7' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
+    'frame_8' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
+    #'frame_8' => {'name' => 'ChainSmokers 1 Frame','value' =>'ChainSmokers_Android_1'},
+    #'frame_9' => {'name' => 'ChainSmokers 2 Frame','value' =>'ChainSmokers_Android_2'},
+    'frame_9' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
+    'frame_10' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
+    'frame_11' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
+    'frame_12' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
+    'frame_13' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
+    'frame_14' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
+    'frame_15' => {'name' => 'Red Frame','value' =>'RedFrame'},
+    'frame_16' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
+    'frame_17' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
+    'frame_18' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
+    'frame_19' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
+    'frame_20' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
+    'frame_21' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
+    'frame_22' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
 }
 $font ={
     'font_0' => {'name' => 'Aleo','value' =>'Aleo'},

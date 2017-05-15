@@ -14,11 +14,11 @@ Feature: Verify Edit frame feature
       |White Frame                |
       |Stars Overlay Frame        |
       |Polka Dots Frame           |
-      |L\\'Oreal iOS Frame          |
+      |L\\'Oreal iOS Frame        |
       |Nestle iOS Frame           |
       |San Pelegrino iOS Frame    |
-      |ChainSmokers 1 Frame       |
-      |ChainSmokers 2 Frame       |
+      #|ChainSmokers 1 Frame       |
+      #|ChainSmokers 2 Frame       |
       |Grey Shadow Frame          |
       |Pink Triangle Frame        |
       |White Rounded Frame        |
