@@ -28,6 +28,7 @@
 #import <AVKit/AVKit.h>
 #import <LinkReaderKit/LinkReaderKit.h>
 #import "PGPayoffManager.h"
+#import "PGMetarPayoffViewController.h"
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -654,6 +655,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                     if(!success) {
 
                     }
+                    
+                    [self stopScanning];
                 }];
             }
         }];
@@ -683,14 +686,18 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             } else {
                 handler(NO);
             }
-            
-            
         } else {
             handler(NO);
         }
     } else if(meta.type == kPGPayoffURL && meta.URL) {
         [[UIApplication sharedApplication] openURL:meta.URL options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @(NO)} completionHandler:^(BOOL success) {
             handler(success);
+        }];
+    } else if(meta.type == kPGPayoffURLMetar || meta.type == kPGPayoffURLBatata) {
+        PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
+        [metarViewController setMetadata:meta];
+        [self.viewController presentViewController:metarViewController animated:YES completion:^{
+            handler(YES);
         }];
     } else {
         handler(NO);

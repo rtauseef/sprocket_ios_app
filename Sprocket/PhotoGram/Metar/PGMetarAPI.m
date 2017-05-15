@@ -21,7 +21,6 @@
 NSString * const PGMetarAPIDomain = @"com.hp.sprocket.metarapi";
 
 static NSString * const kMetarApplicationID = @"dm_ios";
-static NSString * const kMetarAPIURL = @"http://www.somacoding.com/metar";
 static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
 
 - (NSMutableURLRequest *) getMetarRequest {
@@ -403,6 +402,60 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
                                                      completion(error);
+                                                 }];
+                                             }
+                                         }
+                                     }] resume];
+}
+
+- (void) requestImageMetadataWithUUID: (NSString *_Nonnull) uuid completion: (nullable void (^)(NSError * _Nullable error, PGMetarMedia * _Nullable metarMedia)) completion {
+    
+    NSString *requestString = [NSString stringWithFormat:@"%@/resource/tag/%@/meta", kMetarAPIURL, uuid];
+    NSURL *requestUrl = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
+    
+    [request setURL:requestUrl];
+    [request setHTTPMethod:@"GET"];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+      
+                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                         if (error) {
+                                             completion(error, nil);
+                                         } else {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                             if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
+                                                 if ([data length] > 0) {
+                                                     NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                     
+                                                     BOOL payloadOk = NO;
+                                                     
+                                                     if (dic != nil) {
+                                                         NSDictionary *to = [dic objectForKey:@"to"];
+                                                         if (to != nil) {
+                                                             NSDictionary *media = [to objectForKey:@"media"];
+                                                    
+                                                             if (media != nil) {
+                                                                 PGMetarMedia *metarMedia = [[PGMetarMedia alloc] initWithDictionary:media];
+                                                                 
+                                                                 if (metarMedia != nil) {
+                                                                     completion(nil,metarMedia);
+                                                                     payloadOk = YES;
+                                                                 }
+                                                             }
+                                                         }
+                                                     }
+                                                     
+                                                     if (!payloadOk) {
+                                                         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorFailedParsingPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Failed to parse MEDIA payload"}],nil);
+                                                     }
+                                                 } else {
+                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Empty data for image"}],nil);
+                                                 }
+                                                
+                                             } else {
+                                                 [self handleError:httpResponse completion:^(NSError *error) {
+                                                     completion(error, nil);
                                                  }];
                                              }
                                          }

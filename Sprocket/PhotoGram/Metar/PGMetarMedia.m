@@ -15,6 +15,57 @@
     self = [super init];
     if (self) {
         self.mime = [dict objectForKey:@"mime"];
+        
+        if ([dict objectForKey:@"type"]) {
+            self.mediaType = [self getMediaTypeFromString:[dict objectForKey:@"type"]];
+        }
+        
+        self.size = [dict objectForKey:@"size"];
+        
+        if ([dict objectForKey:@"orientation"]) {
+            self.orientation = [self getOrientationFromString:[dict objectForKey:@"orientation"]];
+        }
+
+        NSDictionary *pixels = [dict objectForKey:@"pixels"];
+        if (pixels != nil) {
+            if ([pixels objectForKey:@"width"] && [pixels objectForKey:@"height"]) {
+                float width = [(NSNumber *) [pixels objectForKey:@"width"] floatValue];
+                float height = [(NSNumber *) [pixels objectForKey:@"height"] floatValue];
+                self.pixels = CGSizeMake(width, height);
+            }
+        }
+
+        NSDictionary *inches = [dict objectForKey:@"inches"];
+        if (inches != nil) {
+            if ([inches objectForKey:@"width"] && [inches objectForKey:@"height"]) {
+                float width = [(NSNumber *) [inches objectForKey:@"width"] floatValue];
+                float height = [(NSNumber *) [inches objectForKey:@"height"] floatValue];
+                self.inches = CGSizeMake(width, height);
+            }
+        }
+        
+        NSString *createdStr = [dict objectForKey:@"created"];
+        
+        if (createdStr != nil) {
+            self.created = [NSDate dateWithTimeIntervalSince1970:[createdStr doubleValue]];
+        }
+        
+        NSString *submittedStr = [dict objectForKey:@"submitted"];
+        
+        if (submittedStr != nil) {
+            self.submitted = [NSDate dateWithTimeIntervalSince1970:[submittedStr doubleValue]];
+        }
+        
+        NSString *lastQueriedStr = [dict objectForKey:@"lastQueried"];
+        
+        if (lastQueriedStr != nil) {
+            self.lastQueried = [NSDate dateWithTimeIntervalSince1970:[lastQueriedStr doubleValue]];
+        }
+        
+        if ([dict objectForKey:@"source"] != nil) {
+            PGMetarSource *source = [[PGMetarSource alloc] initWithDictionary:[dict objectForKey:@"source"]];
+            self.source = source;
+        }
     }
     return self;
 }
@@ -115,6 +166,16 @@
     }
 }
 
+- (PGMetarMediaType) getMediaTypeFromString: (NSString *) mediaType {
+    if ([mediaType rangeOfString:@"video" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarMediaTypeVideo;
+    } else if ([mediaType rangeOfString:@"image" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarMediaTypeImage;
+    } else {
+        return PGMetarMediaTypeUnknown;
+    }
+}
+
 - (NSString *) getOrientation {
     if (self.orientation == PGMetarMediaOrientationPortrait) {
         return @"PORTRAIT";
@@ -122,6 +183,16 @@
         return @"LANDSCAPE";
     } else {
         return nil;
+    }
+}
+
+- (PGMetarMediaOrientation) getOrientationFromString: (NSString *) orientation {
+    if ([orientation rangeOfString:@"portrait" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarMediaOrientationPortrait;
+    } else if ([orientation rangeOfString:@"landscape" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarMediaOrientationLandscape;
+    } else {
+        return PGMetarMediaOrientationUnknown;
     }
 }
 

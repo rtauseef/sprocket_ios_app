@@ -24,7 +24,9 @@ typedef enum {
     kPGPayoffNoType, // undefined
     kPGPayoffURL, // simply open URL
     kPGPayoffVideo, // play video
-    kPGPayoffMetaPresentation // show extended information based on metadata
+    kPGPayoffMetaPresentation, // show extended information based on metadata,
+    kPGPayoffURLMetar, // METAR API rich content,
+    kPGPayoffURLBatata, // OLD batata API tagged photos
 } tPGPayoffMetadataType;
 
 

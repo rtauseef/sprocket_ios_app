@@ -2268,6 +2268,8 @@
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
 		ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685981EC270890036ECE9 /* PGMetarSocial.m */; };
 		ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */; };
+		ED7685A91ECA5AD70036ECE9 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */; };
+		ED7685AA1ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */; };
 		EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */; };
 		EDB0C2C31EB7F7D800AE14CB /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BD1EB7F7D800AE14CB /* PGPayoffManager.m */; };
 		EDB0C2C41EB7F7D800AE14CB /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BF1EB7F7D800AE14CB /* PGPayoffMetadata.m */; };
@@ -3977,6 +3979,9 @@
 		ED7685981EC270890036ECE9 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocial.m; path = Metar/PGMetarSocial.m; sourceTree = "<group>"; };
 		ED76859B1EC271500036ECE9 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocialActivity.h; path = Metar/PGMetarSocialActivity.h; sourceTree = "<group>"; };
 		ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocialActivity.m; path = Metar/PGMetarSocialActivity.m; sourceTree = "<group>"; };
+		ED7685A61ECA5AD70036ECE9 /* PGMetarPayoffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarPayoffViewController.h; path = Metar/PGMetarPayoffViewController.h; sourceTree = "<group>"; };
+		ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarPayoffViewController.m; path = Metar/PGMetarPayoffViewController.m; sourceTree = "<group>"; };
+		ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGMetarPayoffViewController.xib; path = Metar/PGMetarPayoffViewController.xib; sourceTree = "<group>"; };
 		EDB0C2BA1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
 		EDB0C2BC1EB7F7D800AE14CB /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
@@ -5942,6 +5947,9 @@
 				F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */,
 				EDB0C2D21EBA845600AE14CB /* PGWatermarkOperationData.h */,
 				EDB0C2D31EBA845600AE14CB /* PGWatermarkOperationData.m */,
+				ED7685A61ECA5AD70036ECE9 /* PGMetarPayoffViewController.h */,
+				ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */,
+				ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */,
 			);
 			name = Watermark;
 			sourceTree = "<group>";
@@ -6269,6 +6277,7 @@
 				8212BF1B1EA93616009E66EC /* Party-Hat_TN@3x.png in Resources */,
 				82A11D8F1E5FB93B00E7F8FC /* thumbs-up.png in Resources */,
 				82A11CC91E5FB93B00E7F8FC /* alarm-clock_TN.png in Resources */,
+				ED7685AA1ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib in Resources */,
 				8212BF291EA93616009E66EC /* pig_TN@2x.png in Resources */,
 				8212BE9D1EA93616009E66EC /* koala.png in Resources */,
 				8212BE751EA93616009E66EC /* hedgehog.png in Resources */,
@@ -8881,6 +8890,7 @@
 				26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */,
+				ED7685A91ECA5AD70036ECE9 /* PGMetarPayoffViewController.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,

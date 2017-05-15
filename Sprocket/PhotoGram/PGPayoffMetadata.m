@@ -12,6 +12,7 @@
 
 #import "PGPayoffMetadata.h"
 #import "HPPRMedia.h"
+#import "PGMetarAPI.h"
 
 NSString * const kPGPayoffMetadataURLKey = @"url";
 NSString * const kPGPayoffMetadataAssetIdentifierKey = @"phasset-id";
@@ -59,10 +60,27 @@ NSString * const kPGPayoffDataKey = @"data";
 + (instancetype)onlineURLPayoff:(NSURL *)url {
     PGPayoffMetadata * ret = [[PGPayoffMetadata alloc] init];
     ret.offline = NO;
-    ret.type = kPGPayoffURL;
-    ret.data = @{
-            kPGPayoffMetadataURLKey : [url absoluteString]
-    };
+    
+    NSArray * components = url.pathComponents;
+    
+    if ([[url absoluteString] rangeOfString:kMetarAPIURL].location != NSNotFound) {
+        ret.type = kPGPayoffURLMetar;
+        ret.data = @{
+                     kPGPayoffMetadataURLKey : [url absoluteString],
+                     kPGPayoffUUIDKey : [components lastObject]
+                     };
+    } else if ([[url absoluteString] rangeOfString:kBatataAPIURL].location != NSNotFound) {
+        ret.type = kPGPayoffURLBatata;
+        ret.data = @{
+                     kPGPayoffMetadataURLKey : [url absoluteString],
+                     kPGPayoffUUIDKey : [components lastObject]
+                     };
+    } else {
+        ret.type = kPGPayoffURL;
+        ret.data = @{
+                     kPGPayoffMetadataURLKey : [url absoluteString]
+                     };
+    }
 
     return ret;
 }
