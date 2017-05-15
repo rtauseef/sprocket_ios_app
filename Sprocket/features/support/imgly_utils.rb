@@ -147,10 +147,8 @@ $sticker ={
         'sticker_50' => {'name' => 'Travel Car Woody Sticker','value' => 'Travel Car Woody Sticker'}
     },
     'sticker_tab_2' => {
-        'sticker_0' => {'name' => 'Chainsmokers Sticker','value' => 'Chainsmokers Sticker'},
-        'sticker_1' => {'name' => 'Chainsmokers 2 Sticker','value' => 'Chainsmokers 2 Sticker'},
-        'sticker_2' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
-        'sticker_3' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
+        'sticker_0' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
+        'sticker_1' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
     },
     'sticker_tab_3' => {
         'sticker_0' => {'name' => 'Aviator Glasses Color Sticker','value' =>'Aviator Glasses Color Sticker'},
@@ -323,22 +321,20 @@ $frame ={
     'frame_5' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
     'frame_6' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
     'frame_7' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
-    'frame_8' => {'name' => 'ChainSmokers 1 Frame','value' =>'ChainSmokers_Android_1'},
-    'frame_9' => {'name' => 'ChainSmokers 2 Frame','value' =>'ChainSmokers_Android_2'},
-    'frame_10' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
-    'frame_11' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
-    'frame_12' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
-    'frame_13' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
-    'frame_14' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
-    'frame_15' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
-    'frame_16' => {'name' => 'Red Frame','value' =>'RedFrame'},
-    'frame_17' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
-    'frame_18' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
-    'frame_19' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
-    'frame_20' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
-    'frame_21' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
-    'frame_22' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
-    'frame_23' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
+    'frame_8' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
+    'frame_9' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
+    'frame_10' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
+    'frame_11' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
+    'frame_12' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
+    'frame_13' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
+    'frame_14' => {'name' => 'Red Frame','value' =>'RedFrame'},
+    'frame_15' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
+    'frame_16' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
+    'frame_17' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
+    'frame_18' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
+    'frame_19' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
+    'frame_20' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
+    'frame_21' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
 }
 $font ={
     'font_0' => {'name' => 'Aleo','value' =>'Aleo'},
