@@ -147,8 +147,6 @@ $sticker ={
         'sticker_50' => {'name' => 'Travel Car Woody Sticker','value' => 'Travel Car Woody Sticker'}
     },
     'Cannes Category' => {
-        #'sticker_0' => {'name' => 'Chainsmokers Sticker','value' => 'Chainsmokers Sticker'},
-        #'sticker_1' => {'name' => 'Chainsmokers 2 Sticker','value' => 'Chainsmokers 2 Sticker'},
         'sticker_0' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
         'sticker_1' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
     },
@@ -323,8 +321,6 @@ $frame ={
     'frame_6' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
     'frame_7' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
     'frame_8' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
-    #'frame_8' => {'name' => 'ChainSmokers 1 Frame','value' =>'ChainSmokers_Android_1'},
-    #'frame_9' => {'name' => 'ChainSmokers 2 Frame','value' =>'ChainSmokers_Android_2'},
     'frame_9' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
     'frame_10' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
     'frame_11' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},

@@ -105,8 +105,6 @@
 - (NSArray<IMGLYSticker *> *)cannesCategoryStickers
 {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Chainsmokers" imageName:@"ChainSmokers_sticker" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Chainsmokers 2" imageName:@"ChainSmokers_sticker_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Reinvent Memories" imageName:@"ReinventMemories_sticker" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"HP White" imageName:@"HP_white-sticker" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              ];
@@ -357,7 +355,7 @@
              [[PGStickerItem alloc] initWithName:@"Sun Face" imageName:@"sun_face" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Palm Tree" imageName:@"palmtree" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Wave" imageName:@"wave" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"flowers" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Flowers" imageName:@"Flowers" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Heart Bouquet" imageName:@"heart_bouquet" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Star" imageName:@"starhp" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Stars" imageName:@"stars" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,

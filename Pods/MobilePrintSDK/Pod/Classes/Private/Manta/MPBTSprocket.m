@@ -262,10 +262,15 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     [dictionary setValue:[MPBTSprocket displayNameForAccessory:self.accessory] forKey:kMPPrinterDisplayName];
     [dictionary setValue:[NSString stringWithFormat:@"HP sprocket"] forKey:kMPPrinterMakeAndModel];
     
-    NSDictionary *customData = @{ kMPBTFirmwareVersionKey : [MPBTSprocket version:self.firmwareVersion],
-                                  kMPBTTmdVersionKey      : [MPBTSprocket version:self.hardwareVersion],
-                                  kMPBTModelNumberKey     : self.accessory.modelNumber,
-                                  kMPBTHardwareVersion    : self.accessory.hardwareRevision };
+    NSString *fwVersion  = [MPBTSprocket version:self.firmwareVersion] ? [MPBTSprocket version:self.firmwareVersion] : @"";
+    NSString *tmdVersion = [MPBTSprocket version:self.hardwareVersion] ? [MPBTSprocket version:self.hardwareVersion] : @"";
+    NSString *modelNum   = self.accessory.modelNumber ? self.accessory.modelNumber : @"";
+    NSString *hwVersion  = self.accessory.hardwareRevision ? self.accessory.hardwareRevision : @"";
+    
+    NSDictionary *customData = @{ kMPBTFirmwareVersionKey : fwVersion,
+                                  kMPBTTmdVersionKey      : tmdVersion,
+                                  kMPBTModelNumberKey     : modelNum,
+                                  kMPBTHardwareVersion    : hwVersion };
     [dictionary setValue:customData forKey:kMPCustomAnalyticsKey];
     
     return dictionary;
@@ -541,7 +546,10 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
                     if (fwVersion > self.firmwareVersion) {
                         needsUpgrade = YES;
                     }
-                    [self.delegate didCompareWithLatestFirmwareVersion:self needsUpgrade:needsUpgrade];
+                    // make sure the delegate is still around now that we're in the completion block...
+                    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didCompareWithLatestFirmwareVersion:needsUpgrade:)]) {
+                        [self.delegate didCompareWithLatestFirmwareVersion:self needsUpgrade:needsUpgrade];
+                    }
                 }];
             } else {
                 [self.delegate didCompareWithLatestFirmwareVersion:self needsUpgrade:NO];
