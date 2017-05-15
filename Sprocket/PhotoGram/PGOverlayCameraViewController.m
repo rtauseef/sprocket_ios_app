@@ -52,30 +52,75 @@
     return self;
 }
 
+- (void) onResume {
+     [[PGCameraManager sharedInstance] stopScanning];
+}
+
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.movieMode = NO;
     
     if ([PGLinkSettings linkEnabled]) {
         self.watermarkingEnabled = NO;
         [[PGCameraManager sharedInstance] runAuthorization];
     }
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.circle) {
+        [self.circle removeFromSuperlayer];
+        self.circle = nil;
+    }
+    
+    if (self.scanningCircle) {
+        [self.scanningCircle removeFromSuperlayer];
+        self.scanningCircle = nil;
+    }
+    
+    if (self.yelloCircle) {
+        [self.yelloCircle removeFromSuperlayer];
+        self.yelloCircle = nil;
+    }
+ 
+    if ([PGLinkSettings videoPrintEnabled]) {
+        UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
+        longPressGestureForShutter.minimumPressDuration = 0.3f;
+        [self.shutterButton addGestureRecognizer:longPressGestureForShutter];
+    }
+    
+    if ([PGLinkSettings linkEnabled]) {
+        UILongPressGestureRecognizer *longPressGestureForScreen = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressScreen:)];
+        longPressGestureForScreen.minimumPressDuration = 0.3f;
+        [self.view addGestureRecognizer:longPressGestureForScreen];
+    }
+
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(onResume)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                              object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    
+    [super viewWillDisappear:animated];
     [self stopScanning];
     
     if ([PGLinkSettings videoPrintEnabled]) {
-        for (UIGestureRecognizer *gesture in self.shutterButton.gestureRecognizers) {
-            [self.shutterButton removeGestureRecognizer:gesture];
+        if ([[self.shutterButton gestureRecognizers] count] > 0) {
+            [self.shutterButton removeGestureRecognizer:[[self.shutterButton gestureRecognizers] firstObject]];
         }
     }
     
     if ([PGLinkSettings linkEnabled]) {
-        for (UIGestureRecognizer *gesture in self.view.gestureRecognizers) {
-            [self.view removeGestureRecognizer:gesture];
+        if ([[self.view gestureRecognizers] count] > 0) {
+            [self.view removeGestureRecognizer:[[self.view gestureRecognizers] firstObject]];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) enableLinkWatermarking {
@@ -235,18 +280,6 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [self setupButtons];
-    
-    if ([PGLinkSettings videoPrintEnabled]) {
-        UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
-        longPressGestureForShutter.minimumPressDuration = 0.3f;
-        [self.shutterButton addGestureRecognizer:longPressGestureForShutter];
-    }
-    
-    if ([PGLinkSettings linkEnabled]) {
-        UILongPressGestureRecognizer *longPressGestureForScreen = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressScreen:)];
-        longPressGestureForScreen.minimumPressDuration = 0.3f;
-        [self.view addGestureRecognizer:longPressGestureForScreen];
-    }
 }
 
 - (IBAction)closeButtonTapped:(id)sender

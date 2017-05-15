@@ -198,13 +198,14 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 
 - (void)addLongPressGesture {
     #ifndef APP_STORE_BUILD
-        
-        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-        lpgr.minimumPressDuration = 2.0f; //seconds
-        lpgr.delaysTouchesBegan = YES;
-        lpgr.delegate = self;
-        [self.view addGestureRecognizer:lpgr];
-        
+        // link uses this long press for integrated scanning
+        if (![PGLinkSettings linkEnabled]) {
+            UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+            lpgr.minimumPressDuration = 2.0f; //seconds
+            lpgr.delaysTouchesBegan = YES;
+            lpgr.delegate = self;
+            [self.view addGestureRecognizer:lpgr];
+        }
     #endif
 }
 

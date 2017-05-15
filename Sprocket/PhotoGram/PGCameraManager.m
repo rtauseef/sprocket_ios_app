@@ -102,35 +102,38 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 {
     static NSString *viewAccessibilityIdentifier = @"PGOverlayCameraView";
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if (self.cameraOverlay == nil) {
-            self.cameraView = view;
-            
-            [view layoutIfNeeded];
-        
-            
-            self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
-            self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
-            self.cameraOverlay.pickerReference = nil;
-            self.cameraOverlay.view.frame = view.frame;
-            self.overlayView = self.cameraOverlay.view;
+    [view layoutIfNeeded];
+    
+    if (self.cameraOverlay == nil) {
+    
+        self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
+        self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
+        self.cameraOverlay.pickerReference = nil;
+        self.cameraOverlay.view.frame = view.frame;
+        self.overlayView = self.cameraOverlay.view;
+    }
+    
+    // Don't keep adding the same overlay view over and over again...
+    
+    BOOL found = NO;
+    for (UIView *subview in view.subviews) {
+        if ([subview.accessibilityIdentifier isEqualToString:viewAccessibilityIdentifier]) {
+            found = YES;
         }
+    }
+    
+    if (!found) {
+        [self.overlayView removeFromSuperview];
         
-        // Don't keep adding the same overlay view over and over again...
-        
-        BOOL found = NO;
-        for (UIView *subview in view.subviews) {
-            if ([subview.accessibilityIdentifier isEqualToString:viewAccessibilityIdentifier]) {
-                found = YES;
-            }
-        }
-        
-        if (!found) {
-            [self.overlayView removeFromSuperview];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
             [view addSubview:self.overlayView];
-        }
-    });
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [view setNeedsDisplay];
+        });
+    }
 }
 
 - (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andInfo:(NSDictionary *)info {
@@ -224,13 +227,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     return selectedDevice;
 }
 
-- (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
-{
-    [view layoutIfNeeded];
-    
-    self.cameraView = view;
-    self.viewController = viewController;
-    
+- (void) createCaptureSession {
     self.session = [[AVCaptureSession alloc] init];
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
@@ -239,14 +236,13 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-
+    
     if (!input || error) {
         PGLogError(@"Error creating capture device input: %@", error.localizedDescription);
     } else {
         [self.session addInput:input];
         
         self.defaultPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
-        self.defaultPreviewLayer.frame = view.bounds;
         
         self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
         NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
@@ -257,14 +253,30 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         if ([self.session canAddOutput:self.movieFileOutput]) {
             [self.session addOutput:self.movieFileOutput];
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.defaultPreviewLayer removeFromSuperlayer];
-            [view.layer insertSublayer:self.defaultPreviewLayer atIndex:0];
-        });
-        
-        [self.session startRunning];
     }
+}
+
+- (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
+{
+   
+    [view layoutIfNeeded];
+    self.cameraView = view;
+    self.viewController = viewController;
+    
+    if (self.defaultPreviewLayer) {
+        [self.defaultPreviewLayer removeFromSuperlayer];
+    }
+    
+    [self createCaptureSession];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.defaultPreviewLayer setFrame:[view bounds]];
+        [view.layer insertSublayer:self.defaultPreviewLayer atIndex:0];
+    
+        if (![self.session isRunning]) {
+            [self.session startRunning];
+        }
+    });
 }
 
 - (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device
@@ -330,6 +342,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     __weak PGCameraManager *weakSelf = self;
     self.isCapturingStillImage = YES;
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
+        
+        if (imageSampleBuffer == nil) {
+            return;
+        }
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
@@ -580,6 +596,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                     [self.scanPreviewLayer setFrame:self.cameraView.layer.bounds];
                     [self.scanPreviewLayer removeFromSuperlayer];
                     
+                    //[self.cameraView.layer addSublayer:self.scanPreviewLayer];
+                    //[self.cameraView setNeedsDisplay];
                     [self.cameraView.layer insertSublayer:self.scanPreviewLayer atIndex:0];
                 });
                 
@@ -599,13 +617,9 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void) stopScanning {
     [self.lrCaptureManager stopSession];
-   
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.scanPreviewLayer removeFromSuperlayer];
-        
-        [self addCameraToView:self.cameraView presentedViewController:self.viewController];
-    });
-    
+    [self.scanPreviewLayer removeFromSuperlayer];
+    [self addCameraToView:self.cameraView presentedViewController:self.viewController];
+
     [[LRDetection sharedInstance] setDelegate:nil];
     self.lrCaptureManager.delegate = nil;
     self.lrCaptureManager = nil;
