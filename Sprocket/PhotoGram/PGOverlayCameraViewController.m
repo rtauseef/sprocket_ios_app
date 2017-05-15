@@ -1,4 +1,4 @@
-//
+    //
 // Hewlett-Packard Company
 // All rights reserved.
 //
@@ -37,13 +37,55 @@
 @property (strong, nonatomic) CAShapeLayer *yelloCircle;
 @property (strong, nonatomic) UIView *overlay;
 
+@property (assign, nonatomic) BOOL watermarkingEnabled;
+
 @end
 
 @implementation PGOverlayCameraViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"Created new camera overlay");
+    }
+    return self;
+}
+
+- (void) onResume {
+     [[PGCameraManager sharedInstance] stopScanning];
+}
+
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.movieMode = NO;
     
+    if ([PGLinkSettings linkEnabled]) {
+        self.watermarkingEnabled = NO;
+        [[PGCameraManager sharedInstance] runAuthorization];
+    }
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.circle) {
+        [self.circle removeFromSuperlayer];
+        self.circle = nil;
+    }
+    
+    if (self.scanningCircle) {
+        [self.scanningCircle removeFromSuperlayer];
+        self.scanningCircle = nil;
+    }
+    
+    if (self.yelloCircle) {
+        [self.yelloCircle removeFromSuperlayer];
+        self.yelloCircle = nil;
+    }
+ 
     if ([PGLinkSettings videoPrintEnabled]) {
         UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
         longPressGestureForShutter.minimumPressDuration = 0.3f;
@@ -55,18 +97,77 @@
         longPressGestureForScreen.minimumPressDuration = 0.3f;
         [self.view addGestureRecognizer:longPressGestureForScreen];
     }
+
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(onResume)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                              object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self stopScanning];
+    
+    if ([PGLinkSettings videoPrintEnabled]) {
+        if ([[self.shutterButton gestureRecognizers] count] > 0) {
+            [self.shutterButton removeGestureRecognizer:[[self.shutterButton gestureRecognizers] firstObject]];
+        }
+    }
+    
+    if ([PGLinkSettings linkEnabled]) {
+        if ([[self.view gestureRecognizers] count] > 0) {
+            [self.view removeGestureRecognizer:[[self.view gestureRecognizers] firstObject]];
+        }
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) enableLinkWatermarking {
+    self.watermarkingEnabled = YES;
 }
 
 - (void) handleLongPressScreen:(UILongPressGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
+    if (!_watermarkingEnabled) {
+        
+        if (recognizer.state == UIGestureRecognizerStateBegan) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                    message:NSLocalizedString(@"Image scanning is not available at this time. Please try again later.", @"Message shown when the user tries to scan an image and the scanning service is not available")
+                                   delegate:self
+                          cancelButtonTitle:NSLocalizedString(@"OK", @"Button caption")
+                          otherButtonTitles:nil] show];
+        
+        }
+        
+        return;
+    }
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan && !self.movieMode) {
         self.scanningTimer = [NSTimer scheduledTimerWithTimeInterval: 0.2f target: self
                                                              selector: @selector(updateScanning) userInfo: nil repeats: YES];
-    }  else if (recognizer.state == UIGestureRecognizerStateEnded) {
+    }  else if (recognizer.state == UIGestureRecognizerStateEnded && !self.movieMode) {
+        
+        [self stopScanning];
+        
+        [[PGCameraManager sharedInstance] stopScanning];
+    }
+}
+
+- (void) stopScanning {
+    if (self.scanningTimer)
         [self.scanningTimer invalidate];
+    
+    if (self.scanningCircle) {
         [self.scanningCircle removeFromSuperlayer];
-        [self.yelloCircle removeFromSuperlayer];
         self.scanningCircle = nil;
+    }
+    
+    if (self.yelloCircle) {
+        [self.yelloCircle removeFromSuperlayer];
         self.yelloCircle = nil;
+    }
+    
+    if (self.overlay) {
         [self.overlay removeFromSuperview];
         self.overlay = nil;
     }
@@ -145,7 +246,6 @@
         
         [self.scanningCircle addAnimation:anims forKey:nil];
         [CATransaction commit];
-        
         [self.view addSubview:self.overlay];
     }
     
@@ -153,6 +253,8 @@
         [self.yelloCircle setNeedsDisplay];
     
     [self.scanningCircle setNeedsDisplay];
+    
+    [[PGCameraManager sharedInstance] startScanning];
 }
 
 - (void)handleLongPressShutterButton:(UILongPressGestureRecognizer *)recognizer {
@@ -264,6 +366,11 @@
             [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOff"] forState:UIControlStateNormal];
         }
     }
+}
+
+- (void)dealloc
+{
+    NSLog(@"PG overlay is being dealloced");
 }
 
 @end

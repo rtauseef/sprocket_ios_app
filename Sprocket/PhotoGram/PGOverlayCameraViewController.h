@@ -16,4 +16,7 @@
 
 @property (nonatomic, weak) UIImagePickerController *pickerReference;
 
+- (void) stopScanning;
+- (void) enableLinkWatermarking;
+
 @end

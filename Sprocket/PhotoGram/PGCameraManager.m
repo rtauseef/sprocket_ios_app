@@ -1,4 +1,4 @@
-//
+    //
 // Hewlett-Packard Company
 // All rights reserved.
 //
@@ -23,19 +23,28 @@
 #import "UIViewController+trackable.h"
 #import "PGAppNavigation.h"
 #import <Crashlytics/Crashlytics.h>
+#import "PGLinkCredentialsManager.h"
+
+#import <AVKit/AVKit.h>
+#import <LinkReaderKit/LinkReaderKit.h>
+#import "PGPayoffManager.h"
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
-@interface PGCameraManager ()
 
+@interface PGCameraManager () <LRCaptureDelegate, LRDetectionDelegate>
     @property (weak, nonatomic) UIViewController *viewController;
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
     @property (strong, nonatomic) AVCaptureMovieFileOutput *movieFileOutput;
     @property (assign, nonatomic) BOOL isCapturingStillImage;
-
+    @property (weak, nonatomic) LRCaptureManager *lrCaptureManager;
+    @property (strong, nonatomic) UIView *cameraView;
+    @property (strong, nonatomic) AVCaptureVideoPreviewLayer *scanPreviewLayer;
+    @property (strong, nonatomic) AVCaptureVideoPreviewLayer *defaultPreviewLayer;
+    @property (strong, nonatomic) UIView* overlayView;
 @end
 
 @implementation PGCameraManager
@@ -93,23 +102,38 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 {
     static NSString *viewAccessibilityIdentifier = @"PGOverlayCameraView";
     
+    [view layoutIfNeeded];
+    
+    if (self.cameraOverlay == nil) {
+    
+        self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
+        self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
+        self.cameraOverlay.pickerReference = nil;
+        self.cameraOverlay.view.frame = view.frame;
+        self.overlayView = self.cameraOverlay.view;
+    }
+    
     // Don't keep adding the same overlay view over and over again...
+    
+    BOOL found = NO;
     for (UIView *subview in view.subviews) {
         if ([subview.accessibilityIdentifier isEqualToString:viewAccessibilityIdentifier]) {
-            [subview removeFromSuperview];
+            found = YES;
         }
     }
     
-    [view layoutIfNeeded];
-    
-    self.cameraOverlay = [[PGOverlayCameraViewController alloc] initWithNibName:@"PGOverlayCameraViewController" bundle:nil];
-    self.cameraOverlay.pickerReference = nil;
-    self.cameraOverlay.view.frame = view.frame;
-    self.cameraOverlay.view.accessibilityIdentifier = viewAccessibilityIdentifier;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [view addSubview:self.cameraOverlay.view];
-    });
+    if (!found) {
+        [self.overlayView removeFromSuperview];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [view addSubview:self.overlayView];
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [view setNeedsDisplay];
+        });
+    }
 }
 
 - (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andInfo:(NSDictionary *)info {
@@ -203,12 +227,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     return selectedDevice;
 }
 
-- (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
-{
-    [view layoutIfNeeded];
-    
-    self.viewController = viewController;
-    
+- (void) createCaptureSession {
     self.session = [[AVCaptureSession alloc] init];
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
@@ -217,14 +236,13 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     NSError *error = nil;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-
+    
     if (!input || error) {
         PGLogError(@"Error creating capture device input: %@", error.localizedDescription);
     } else {
         [self.session addInput:input];
         
-        AVCaptureVideoPreviewLayer *newCaptureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
-        newCaptureVideoPreviewLayer.frame = view.bounds;
+        self.defaultPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
         
         self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
         NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
@@ -235,14 +253,30 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         if ([self.session canAddOutput:self.movieFileOutput]) {
             [self.session addOutput:self.movieFileOutput];
         }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [view.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
-            [view.layer addSublayer:newCaptureVideoPreviewLayer];
-        });
-        
-        [self.session startRunning];
     }
+}
+
+- (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
+{
+   
+    [view layoutIfNeeded];
+    self.cameraView = view;
+    self.viewController = viewController;
+    
+    if (self.defaultPreviewLayer) {
+        [self.defaultPreviewLayer removeFromSuperlayer];
+    }
+    
+    [self createCaptureSession];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.defaultPreviewLayer setFrame:[view bounds]];
+        [view.layer insertSublayer:self.defaultPreviewLayer atIndex:0];
+    
+        if (![self.session isRunning]) {
+            [self.session startRunning];
+        }
+    });
 }
 
 - (void)configFlash:(BOOL)isFlashOn forDevice:(AVCaptureDevice *)device
@@ -308,6 +342,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     __weak PGCameraManager *weakSelf = self;
     self.isCapturingStillImage = YES;
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
+        
+        if (imageSampleBuffer == nil) {
+            return;
+        }
         
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
@@ -532,6 +570,172 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     [timeArray addObject:[NSValue valueWithCMTime:CMTimeMakeWithSeconds(0, 600)]];
     
     [generator generateCGImagesAsynchronouslyForTimes:timeArray completionHandler:handler];
+}
+
+#pragma mark Link Scanning Methods
+
+- (void) startScanning {
+    if (!self.lrCaptureManager) {
+        [[LRDetection sharedInstance] setDelegate:self];
+        self.lrCaptureManager = [LRCaptureManager sharedManager];
+        self.lrCaptureManager.delegate = self;
+    }
+    
+    [self stopCamera];
+    //[self.session stopRunning];
+    
+    if ([[LRManager sharedManager] isAuthorized]) {
+        NSError *error;
+
+            if ([self.lrCaptureManager startSession]) {
+                NSLog(@"Link scanning is now running ...");
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.defaultPreviewLayer removeFromSuperlayer];
+                    self.scanPreviewLayer = [self.lrCaptureManager previewLayer];
+                    [self.scanPreviewLayer setFrame:self.cameraView.layer.bounds];
+                    [self.scanPreviewLayer removeFromSuperlayer];
+                    
+                    //[self.cameraView.layer addSublayer:self.scanPreviewLayer];
+                    //[self.cameraView setNeedsDisplay];
+                    [self.cameraView.layer insertSublayer:self.scanPreviewLayer atIndex:0];
+                });
+                
+                [[LRCaptureManager sharedManager] startScanning: &error];
+                if (error) {
+                    NSLog(@"An error occurred when scanning was started: %@", error);
+                    [self.cameraOverlay stopScanning];
+                } else{
+                    NSLog(@"Scanning is good...");
+                }
+            }
+    } else {
+        NSLog(@"The App is not authorized to use the LinkReaderKit services");
+    }
+
+}
+
+- (void) stopScanning {
+    [self.lrCaptureManager stopSession];
+    [self.scanPreviewLayer removeFromSuperlayer];
+    [self addCameraToView:self.cameraView presentedViewController:self.viewController];
+
+    [[LRDetection sharedInstance] setDelegate:nil];
+    self.lrCaptureManager.delegate = nil;
+    self.lrCaptureManager = nil;
+}
+
+-(void) runAuthorization {
+    // 1. Pass your credentials to get authorized.
+    [[LRManager sharedManager] authorizeWithClientID:[PGLinkCredentialsManager clientId] secret:[PGLinkCredentialsManager clientSecret] success:^{
+        
+        [self.cameraOverlay enableLinkWatermarking];
+    } failure:^(NSError *error) {
+        // Authentication or Network Error
+    }];
+    
+}
+
+#pragma mark Link Capture Delegates
+
+- (void)didFindPayoff:(id<LRPayoff>)payoff {
+    [self.cameraOverlay stopScanning];
+    
+    if ([payoff isKindOfClass:[LRWebPayoff class]]) {
+        NSString * surl  = [(LRWebPayoff*)payoff url];
+        NSURL * url = [NSURL URLWithString:surl];
+        [[PGPayoffManager sharedInstance] resolvePayoffFromURL:url complete:^(NSError *error, PGPayoffMetadata *metadata) {
+            if( error ) {
+                // TODO handle possible payoff resolving errors, show default AR experience (?)
+                NSLog(@"error : %@", error);
+
+            } else {
+                [self resolvePayoffFromMetadata:metadata completion:^(BOOL success) {
+                    if(!success) {
+
+                    }
+                }];
+            }
+        }];
+    }
+}
+
+-(void) resolvePayoffFromMetadata:(PGPayoffMetadata *) meta completion:(void(^)(BOOL success)) handler {
+    if( meta.offline ) {
+        if( meta.type == kPGPayoffVideo ) {
+            PHAsset * asset = [meta fetchPHAsset];
+            if( asset ) {
+                
+                PHVideoRequestOptions * opt = [PHVideoRequestOptions new];
+                
+                [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:opt resultHandler:^(AVAsset *vasset, AVAudioMix *audioMix, NSDictionary *info) {
+                    AVPlayer * player = [AVPlayer playerWithPlayerItem:[AVPlayerItem playerItemWithAsset:vasset]];
+                    AVPlayerViewController * ctrl = [AVPlayerViewController new];
+                    ctrl.player = player;
+                    
+                    [player play];
+                    [self.viewController presentViewController:ctrl animated:YES completion:^{
+                        handler(YES);
+                    }];
+                }];
+                
+                
+            } else {
+                handler(NO);
+            }
+            
+            
+        } else {
+            handler(NO);
+        }
+    } else if(meta.type == kPGPayoffURL && meta.URL) {
+        [[UIApplication sharedApplication] openURL:meta.URL options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @(NO)} completionHandler:^(BOOL success) {
+            handler(success);
+        }];
+    } else {
+        handler(NO);
+    }
+    
+}
+
+- (void)errorOnPayoffResolving:(NSError *)error {
+    
+    // Resolving errors mean that there was a problem retrieving the content.
+    // For example: the content server is unreachable and/or the Internet
+    // connection is offline.
+    [self.cameraOverlay stopScanning];
+}
+
+- (void)errorOnPayoffParsing:(NSError *)error {
+    
+    // Parsing errors mean that there was a problem with the content itself.
+    // For example: the content was successfully retrieved, but it's somehow
+    // defective (may contain typos, invalid character, etc).
+    
+    [self.cameraOverlay stopScanning];
+}
+
+
+- (void)cameraFailedError:(NSError *)error {
+    NSLog(@"There was an error with the camera session");
+}
+
+- (void)didChangeFromState:(LRCaptureState)fromState toState:(LRCaptureState)toState {
+    switch (toState) {
+        case LRCameraNotAvailable:
+            break;
+        case LRCameraStopped:
+            NSLog(@"Camera stopped");
+            break;
+        case LRCameraRunning:
+            NSLog(@"Camera is running");
+            break;
+        case LRScannerRunning:
+            NSLog(@"Scanner is running");
+            break;
+        default:
+            break;
+    }
 }
 
 @end
