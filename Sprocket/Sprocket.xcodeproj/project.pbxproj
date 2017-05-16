@@ -2279,6 +2279,8 @@
 		F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
 		F22F12861E70CDB400753C5A /* PGSecretKeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F12821E6F539200753C5A /* PGSecretKeeper.m */; };
+		F23051681ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F23051671ECB973E00E21B5A /* PGInboxMessageManager.m */; };
+		F23051691ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F23051671ECB973E00E21B5A /* PGInboxMessageManager.m */; };
 		F236FAC71E8721F700FC31B5 /* PGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F236FAC51E8721F700FC31B5 /* PGProgressView.m */; };
 		F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
 		F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
@@ -3949,6 +3951,8 @@
 		F22F12381E560C2C00753C5A /* PGPhotoSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPhotoSelection.m; sourceTree = "<group>"; };
 		F22F12811E6F539200753C5A /* PGSecretKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSecretKeeper.h; sourceTree = "<group>"; };
 		F22F12821E6F539200753C5A /* PGSecretKeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSecretKeeper.m; sourceTree = "<group>"; };
+		F23051661ECB973E00E21B5A /* PGInboxMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInboxMessageManager.h; sourceTree = "<group>"; };
+		F23051671ECB973E00E21B5A /* PGInboxMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInboxMessageManager.m; sourceTree = "<group>"; };
 		F236FAC41E8721F700FC31B5 /* PGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGProgressView.h; sourceTree = "<group>"; };
 		F236FAC51E8721F700FC31B5 /* PGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGProgressView.m; sourceTree = "<group>"; };
 		F236FAC61E8721F700FC31B5 /* PGProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGProgressView.xib; sourceTree = "<group>"; };
@@ -5738,6 +5742,8 @@
 				F20CE25B1EC243A400FD910D /* PGInAppMessageView.h */,
 				F20CE25C1EC243A400FD910D /* PGInAppMessageView.m */,
 				F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */,
+				F23051661ECB973E00E21B5A /* PGInboxMessageManager.h */,
+				F23051671ECB973E00E21B5A /* PGInboxMessageManager.m */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -5979,7 +5985,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8581,6 +8587,7 @@
 				b2b702ca62e7f093ce61c8e9 /* PGLogger.m in Sources */,
 				F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */,
 				a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */,
+				F23051691ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */,
 				82A116811E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				F24DA7D61EAEA13800C24AAB /* PGWatermarkOperation.m in Sources */,
 				04ca2e7bba7087956b9047c7 /* PGFrameItem.m in Sources */,
@@ -8637,6 +8644,7 @@
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
 				821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */,
+				F23051681ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */,
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */,
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
