@@ -10,6 +10,57 @@
 
 @implementation PGMetarSocial
 
+
+- (instancetype)initWithDictionary: (NSDictionary *) dict {
+    self = [super init];
+    if (self) {
+        if ([dict objectForKey:@"provider"] != nil) {
+            self.provider = [self getProviderFromString:[dict objectForKey:@"provider"]];
+        }
+        
+        if ([dict objectForKey:@"type"] != nil) {
+            self.type = [self getTypeFromString:[dict objectForKey:@"type"]];
+        }
+        
+        self.uri = [dict objectForKey:@"uri"];
+        self.assetId = [dict objectForKey:@"assetId"];
+        self.profileUri = [dict objectForKey:@"profileUri"];
+        self.profileId = [dict objectForKey:@"profileId"];
+        
+        if ([dict objectForKey:@"activity"] != nil) {
+            PGMetarSocialActivity *socialActivity = [[PGMetarSocialActivity alloc] initWithDictionary:[dict objectForKey:@"activity"]];
+            self.activity = socialActivity;
+        }
+    }
+    return self;
+}
+
+- (PGMetarSocialType) getTypeFromString: (NSString *) type {
+    if ([type rangeOfString:@"post" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialTypePost;
+    } else if ([type rangeOfString:@"picture" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialTypePicture;
+    } else if ([type rangeOfString:@"video" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialTypeVideo;
+    }
+    
+    return PGMetarSocialTypeUnknown;
+}
+
+- (PGMetarSocialProvider) getProviderFromString: (NSString *) provider {
+    if ([provider rangeOfString:@"facebook" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialProviderFacebook;
+    } else if ([provider rangeOfString:@"instagram" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialProviderInstagram;
+    } else if ([provider rangeOfString:@"google" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialProviderGoogle;
+    } else if ([provider rangeOfString:@"flickr" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarSocialProviderFlickr;
+    }
+    
+    return PGMetarSocialProviderUnknown;
+}
+
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     

@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSNumber *comments;
 
 - (NSDictionary *) getDict;
+- (instancetype)initWithDictionary: (NSDictionary *) dict;
 
 @end

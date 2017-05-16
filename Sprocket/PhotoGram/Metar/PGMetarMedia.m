@@ -66,6 +66,11 @@
             PGMetarSource *source = [[PGMetarSource alloc] initWithDictionary:[dict objectForKey:@"source"]];
             self.source = source;
         }
+        
+        if ([dict objectForKey:@"location"] != nil) {
+            PGMetarLocation *location = [[PGMetarLocation alloc] initWithDictionary:[dict objectForKey:@"location"]];
+            self.location = location;
+        }
     }
     return self;
 }

@@ -18,5 +18,6 @@
 @property (strong, nonatomic) NSString *iata;
 
 - (NSDictionary *) getDict;
+- (instancetype)initWithDictionary: (NSDictionary *) dict;
 
 @end

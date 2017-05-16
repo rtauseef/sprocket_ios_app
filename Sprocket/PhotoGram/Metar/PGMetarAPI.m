@@ -410,6 +410,8 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
 
 - (void) requestImageMetadataWithUUID: (NSString *_Nonnull) uuid completion: (nullable void (^)(NSError * _Nullable error, PGMetarMedia * _Nullable metarMedia)) completion {
     
+    NSLog(@"METAR: fetching metadata for %@",uuid);
+    
     NSString *requestString = [NSString stringWithFormat:@"%@/resource/tag/%@/meta", kMetarAPIURL, uuid];
     NSURL *requestUrl = [NSURL URLWithString:requestString];
     NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];

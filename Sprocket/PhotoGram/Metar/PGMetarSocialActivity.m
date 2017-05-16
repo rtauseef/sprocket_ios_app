@@ -10,6 +10,16 @@
 
 @implementation PGMetarSocialActivity
 
+- (instancetype)initWithDictionary: (NSDictionary *) dict {
+    self = [super init];
+    if (self) {
+        self.likes = [dict objectForKey:@"likes"];
+        self.shares = [dict objectForKey:@"shares"];
+        self.comments = [dict objectForKey:@"comments"];
+    }
+    return self;
+}
+
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     

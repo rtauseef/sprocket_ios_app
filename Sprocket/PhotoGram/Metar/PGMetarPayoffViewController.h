@@ -14,5 +14,6 @@
 @property (strong, nonatomic) PGPayoffMetadata *metadata;
 
 - (IBAction)closeButtonClick:(id)sender;
+- (void) getMetadataFromMetar;
 
 @end
