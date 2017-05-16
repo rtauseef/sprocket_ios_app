@@ -138,7 +138,7 @@ NSInteger const kMantaErrorBusy = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCameraButtons) name:kPGCameraManagerCameraClosed object:nil];
-    
+
     __weak PGLandingMainPageViewController *weakSelf = self;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraButtonsView];
@@ -258,6 +258,7 @@ NSInteger const kMantaErrorBusy = 1;
     }
 }
 
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -282,6 +283,8 @@ NSInteger const kMantaErrorBusy = 1;
         self.googleButton.userInteractionEnabled = YES;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
+
+        [[UAirship inAppMessaging] displayPendingMessage];
     });
 }
 
