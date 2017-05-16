@@ -33,6 +33,7 @@
 #import "UIFont+Style.h"
 #import "PGHamburgerButton.h"
 #import "PGInAppMessageManager.h"
+#import "PGPrintQueueManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -433,6 +434,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+
+    [[PGPrintQueueManager sharedInstance] incrementPrintCounter];    
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
@@ -468,6 +471,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+
+    [[PGPrintQueueManager sharedInstance] incrementPrintCounter];
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
