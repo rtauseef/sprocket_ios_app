@@ -3,7 +3,7 @@ Feature: Verify Edit sticker feature
   I want to verify sticker features.
 
 @done
-Scenario: Verify 'Sticker' option
+Scenario: Verify 'Sticker' selection in sticker option editor screen
     Given I am on the "CameraRoll Preview" screen
     When I tap "Edit" button
     Then I should see the "Edit" screen
@@ -12,20 +12,20 @@ Scenario: Verify 'Sticker' option
     And I select "Summer Category" tab
     Then I select "sticker_0" sticker
     Then I should see the "StickerOptionEditor" screen
-    Then I should see the photo with the "sticker_0" sticker
+    And I should see the photo with the "sticker_0" sticker from "Summer Category" tab
     Then I tap "Close" mark
     Then I should see the "Edit" screen
-    And I should see the photo with the "sticker_0" sticker
+    And I should see the photo with the "sticker_0" sticker from "Summer Category" tab
 
 @regression
-Scenario Outline: Verify 'Sticker' option
+Scenario Outline: Verify 'Sticker' selection in edit screen
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
     And I select "Graduation Category" tab
     Then I select "sticker_0" sticker
     Then I am on the "StickerOptionEditor" screen
     Then I tap "Save" mark
     Then I am on the "Edit" screen
-    Then I should see the photo with the "sticker_0" sticker
+    And I should see the photo with the "sticker_0" sticker from "Graduation Category" tab
        
     Examples:
     | social_media_screen_name        |
@@ -39,7 +39,7 @@ Scenario: Verify Sticker edit options
     And I select "Graduation Category" tab
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_21" sticker
+    And I should see the photo with the "sticker_21" sticker from "Graduation Category" tab
     And I should see "Add" button
     And I should see "Delete" button
     And I should see "Color" button
@@ -57,7 +57,7 @@ Scenario Outline: Verify Sticker delete option
     And I select "Graduation Category" tab
     Then I select "sticker_0" sticker
     Then I should see the "StickerOptionEditor" screen
-    Then I should see the photo with the "sticker_0" sticker
+    And I should see the photo with the "sticker_0" sticker from "Graduation Category" tab
     Then I touch "Delete"
     Then I should see the "Edit" screen
     And I should see the photo with no "sticker"
@@ -113,14 +113,14 @@ Scenario Outline: Verify sticker editor screen navigation
     And I select "Graduation Category" tab
     Then I select "sticker_1" sticker
     Then I should see the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_1" sticker
+    And I should see the photo with the "sticker_1" sticker from "Graduation Category" tab
     Then I touch "Delete"
     Then I should see the "Edit" screen
     Then I tap "Sticker" button
     And I select "Graduation Category" tab
     Then I select "sticker_4" sticker
     Then I am on the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_4" sticker
+    And I should see the photo with the "sticker_4" sticker from "Graduation Category" tab
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     
@@ -130,20 +130,25 @@ Scenario Outline: Verify sticker editor screen navigation
     | CameraRoll         |  
 
 @done
-Scenario: Verify Sticker edit options
+@TA17968
+Scenario: Verify Sticker add option
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
-    And I select "Graduation Category" tab
+    And I select "Face Category" tab
     Then I select "sticker_3" sticker
     Then I am on the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_3" sticker
+    And I should see the photo with the "sticker_3" sticker from "Face Category" tab
     Then I touch "Add"  
     Then I should see the "Sticker Editor" screen
-    And I select "Summer Category" tab
-    Then I select "sticker_3" sticker
+    And I select "Decorative Category" tab
+    Then I select "sticker_7" sticker
     Then I should see the "StickerOptionEditor" screen
+   And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
+    Then I tap "Save" mark
+    Then I should see the "Edit" screen
+    And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
 
 @done
-Scenario: Verify Sticker edit options
+Scenario: Verify Sticker color options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Graduation Category" tab
     Then I select "sticker_21" sticker
@@ -168,11 +173,39 @@ Scenario: Verify Sticker edit options
     | Aquamarin  |
     
 @done
-Scenario: Verify Sticker edit options
+@TA17968
+Scenario: Verify Sticker color selection
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Graduation Category" tab
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
     Then I touch "Color"  
-    And I select "Olive" color
-    Then I should see the "sticker" with "Olive" Color
+    Then I verify that all the "colors" are applied successfully
+    
+
+@TA17968
+Scenario: Verify Sticker add/delete functionality
+    Given I am on the "StickerEditor" screen for "CameraRoll Preview"
+    And I select "Graduation Category" tab
+    Then I select "sticker_3" sticker
+    Then I touch "Add"  
+    And I select "Summer Category" tab
+    Then I select "sticker_7" sticker
+    Then I touch "Add"  
+    And I select "Cannes Category" tab
+    Then I select "sticker_0" sticker
+    Then I touch "Delete"
+    Then I should see the "Edit" screen
+    Then I tap "Sticker" button
+    And I select "Face Category" tab
+    Then I select "sticker_11" sticker
+    #Then I should see the "StickerOptionEditor" screen
+    Then I touch "Add"  
+    And I select "Decorative Category" tab
+    Then I select "sticker_9" sticker
+    Then I touch "Delete"
+    Then I should see the "Edit" screen
+    And I should see the photo with the "sticker_3" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
+    And I should see the photo with the "sticker_11" sticker from "Face Category" tab
+
