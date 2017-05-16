@@ -11,12 +11,13 @@
 #import "PGPayoffViewVideoViewController.h"
 #import "PGPayoffViewImageViewController.h"
 #import "PGPayoffViewErrorViewController.h"
+#import "PGPageControl.h"
 
 @interface PGMetarPayoffViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *paginationView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet PGPageControl *pageControl;
 
 @property (strong, nonatomic) NSMutableArray <UIViewController *> *arrayOfViewControllers;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
@@ -42,6 +43,7 @@
     [_pageViewController.view setFrame:self.paginationView.bounds];
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
+    self.pageControl.hidesForSinglePage = YES;
  
     [self.paginationView addSubview:_pageViewController.view];
 }
@@ -57,6 +59,8 @@
         
         [self.arrayOfViewControllers addObject:viewImageVc];
         [self.arrayOfViewControllers addObject:viewVideoVc];
+        [self.arrayOfViewControllers addObject: [[PGPayoffViewImageViewController alloc] initWithNibName:@"PGPayoffViewImageViewController" bundle:nil]];
+        [self.arrayOfViewControllers addObject: [[PGPayoffViewImageViewController alloc] initWithNibName:@"PGPayoffViewImageViewController" bundle:nil]];
     } else {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];
@@ -73,8 +77,6 @@
 
         weakSelf.pageControl.numberOfPages = [weakSelf.arrayOfViewControllers count];
         weakSelf.pageControl.currentPage = 0;
-        
-        weakSelf.pageControl.hidden = [weakSelf.arrayOfViewControllers count] == 1;
     }];
 }
 

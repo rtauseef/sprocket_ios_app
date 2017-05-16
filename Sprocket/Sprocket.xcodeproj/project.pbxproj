@@ -2276,6 +2276,7 @@
 		ED7685B61ECA75120036ECE9 /* PGPayoffViewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685B41ECA75120036ECE9 /* PGPayoffViewImageViewController.xib */; };
 		ED7685BD1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */; };
 		ED7685BE1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */; };
+		ED7685C11ECB8DF30036ECE9 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */; };
 		EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */; };
 		EDB0C2C31EB7F7D800AE14CB /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BD1EB7F7D800AE14CB /* PGPayoffManager.m */; };
 		EDB0C2C41EB7F7D800AE14CB /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BF1EB7F7D800AE14CB /* PGPayoffMetadata.m */; };
@@ -3997,6 +3998,8 @@
 		ED7685BA1ECB77580036ECE9 /* PGPayoffViewErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewErrorViewController.h; path = PayoffViews/PGPayoffViewErrorViewController.h; sourceTree = "<group>"; };
 		ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewErrorViewController.m; path = PayoffViews/PGPayoffViewErrorViewController.m; sourceTree = "<group>"; };
 		ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewErrorViewController.xib; path = PayoffViews/PGPayoffViewErrorViewController.xib; sourceTree = "<group>"; };
+		ED7685BF1ECB8DF30036ECE9 /* PGPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPageControl.h; sourceTree = "<group>"; };
+		ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPageControl.m; sourceTree = "<group>"; };
 		EDB0C2BA1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
 		EDB0C2BC1EB7F7D800AE14CB /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
@@ -5982,6 +5985,8 @@
 				ED7685A61ECA5AD70036ECE9 /* PGMetarPayoffViewController.h */,
 				ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */,
 				ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */,
+				ED7685BF1ECB8DF30036ECE9 /* PGPageControl.h */,
+				ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */,
 			);
 			name = Watermark;
 			sourceTree = "<group>";
@@ -8850,6 +8855,7 @@
 				F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperationHPLink.h in Sources */,
 				F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */,
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
+				ED7685C11ECB8DF30036ECE9 /* PGPageControl.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
 				EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
