@@ -8,10 +8,16 @@
 
 #import "PGMetarPayoffViewController.h"
 #import "PGMetarAPI.h"
+#import "PGPayoffViewVideoViewController.h"
+#import "PGPayoffViewImageViewController.h"
 
-@interface PGMetarPayoffViewController ()
+@interface PGMetarPayoffViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *paginationView;
+
+@property (strong, nonatomic) NSMutableArray <UIViewController *> *arrayOfViewControllers;
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @end
 
@@ -45,6 +51,26 @@
             }
         }];
     }
+    
+    PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc] initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
+    PGPayoffViewVideoViewController *viewVideoVc = [[PGPayoffViewVideoViewController alloc]
+        initWithNibName:@"PGPayoffViewVideoViewController" bundle:nil];
+    
+    self.arrayOfViewControllers = [NSMutableArray array];
+    [self.arrayOfViewControllers addObject:viewImageVc];
+    [self.arrayOfViewControllers addObject:viewVideoVc];
+    
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    
+    [_pageViewController.view setFrame:self.paginationView.bounds];
+    _pageViewController.delegate = self;
+    _pageViewController.dataSource = self;
+ 
+    [_pageViewController setViewControllers:@[[self.arrayOfViewControllers objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        
+    }];
+    
+    [self.paginationView addSubview:_pageViewController.view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +97,34 @@
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+#pragma mark UIPageViewController data source
+
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    for (int i = 0; i < [_arrayOfViewControllers count]; i++) {
+        if ([self.arrayOfViewControllers objectAtIndex:i] == viewController) {
+            int pos = i-1;
+            if (pos>=0 && pos < [_arrayOfViewControllers count]) {
+                return [self.arrayOfViewControllers  objectAtIndex:pos];
+            }
+        }
+    }
+    return nil;
+}
+
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    for (int i = 0; i < [_arrayOfViewControllers count]; i++) {
+        if ([self.arrayOfViewControllers objectAtIndex:i] == viewController) {
+            int pos = i+1;
+            if (pos>=0 && pos < [_arrayOfViewControllers count]) {
+                return [self.arrayOfViewControllers  objectAtIndex:pos];
+            }
+        }
+    }
+    
+    return nil;
 }
 
 @end
