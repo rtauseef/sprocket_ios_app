@@ -28,6 +28,7 @@
 #import <AVKit/AVKit.h>
 #import <LinkReaderKit/LinkReaderKit.h>
 #import "PGPayoffManager.h"
+#import "PGMetarPayoffViewController.h"
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -631,9 +632,16 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         
         [self.cameraOverlay enableLinkWatermarking];
     } failure:^(NSError *error) {
-        // Authentication or Network Error
+        // TODO: Authentication or Network Error
     }];
     
+}
+
+//TODO: localize this
+-(void) linkScanningError {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not available",nil) message:NSLocalizedString(@"Scanning is not available at this time, please try again later.",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alertView show];
 }
 
 #pragma mark Link Capture Delegates
@@ -646,14 +654,16 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSURL * url = [NSURL URLWithString:surl];
         [[PGPayoffManager sharedInstance] resolvePayoffFromURL:url complete:^(NSError *error, PGPayoffMetadata *metadata) {
             if( error ) {
-                // TODO handle possible payoff resolving errors, show default AR experience (?)
+                // TODO: handle possible payoff resolving errors, show default AR experience (?), localize it
                 NSLog(@"error : %@", error);
-
+                [self linkScanningError];
             } else {
                 [self resolvePayoffFromMetadata:metadata completion:^(BOOL success) {
                     if(!success) {
-
+                        [self linkScanningError];
                     }
+                    
+                    [self stopScanning];
                 }];
             }
         }];
@@ -683,14 +693,18 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             } else {
                 handler(NO);
             }
-            
-            
         } else {
             handler(NO);
         }
     } else if(meta.type == kPGPayoffURL && meta.URL) {
         [[UIApplication sharedApplication] openURL:meta.URL options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @(NO)} completionHandler:^(BOOL success) {
             handler(success);
+        }];
+    } else if(meta.type == kPGPayoffURLMetar || meta.type == kPGPayoffURLBatata) {
+        PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
+        [metarViewController setMetadata:meta];
+        [self.viewController presentViewController:metarViewController animated:YES completion:^{
+            handler(YES);
         }];
     } else {
         handler(NO);
@@ -704,6 +718,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     // For example: the content server is unreachable and/or the Internet
     // connection is offline.
     [self.cameraOverlay stopScanning];
+    [self linkScanningError];
 }
 
 - (void)errorOnPayoffParsing:(NSError *)error {
@@ -713,6 +728,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     // defective (may contain typos, invalid character, etc).
     
     [self.cameraOverlay stopScanning];
+    [self linkScanningError];
 }
 
 

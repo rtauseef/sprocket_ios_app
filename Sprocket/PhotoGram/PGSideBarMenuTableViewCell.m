@@ -20,7 +20,7 @@
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 8;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 7;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -79,10 +79,10 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             self.menuTitle.text = NSLocalizedString(@"About", nil);
             self.menuImageView.image = [UIImage imageNamed:@"menuAbout"];
             break;
-        case PGSideBarMenuCellLinkReader:
+        /*case PGSideBarMenuCellLinkReader:
             self.menuTitle.text = NSLocalizedString(@"Scan", nil);
             self.menuImageView.image = [UIImage imageNamed:@"menuAbout  "];
-            break;
+            break;*/
         default:
             break;
     }

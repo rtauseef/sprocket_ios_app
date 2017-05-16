@@ -243,9 +243,10 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     // Holding the social sources circle while Qzone and Weibo are not ready for deployment
     
     NSInteger sourceCount = [[PGSocialSourcesManager sharedInstance] enabledSocialSources].count;
-    if ([PGLinkSettings linkEnabled]) {
+    
+    /*if ([PGLinkSettings linkEnabled]) {
         sourceCount += 1;
-    }
+    }*/
     
     self.socialSourcesVerticalContainer.hidden = YES;
     if (sourceCount > kSocialSourcesUISwitchThreshold) {

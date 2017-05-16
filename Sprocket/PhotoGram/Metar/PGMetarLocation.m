@@ -10,6 +10,59 @@
 
 @implementation PGMetarLocation
 
+- (instancetype)initWithDictionary: (NSDictionary *) dict {
+    self = [self init];
+    
+    if (self) {
+        NSDictionary *geo = [dict objectForKey:@"geo"];
+        if (geo != nil) {
+            NSNumber *lat = [geo objectForKey:@"lat"];
+            NSNumber *lon = [geo objectForKey:@"lon"];
+            
+            if (lat && lon) {
+                self.geo = CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+            }
+        }
+        
+        self.name = [dict objectForKey:@"name"];
+        self.altitude = [dict objectForKey:@"altitude"];
+        
+        if ([dict objectForKey:@"type"] != nil ) {
+            self.type = [self getTypeFromString:[dict objectForKey:@"type"]];
+        }
+        
+        if ([dict objectForKey:@"kind"] != nil) {
+            self.kind = [self getKindFromString:[dict objectForKey:@"kind"]];
+        }
+        
+        if ([dict objectForKey:@"venue"] != nil) {
+            self.venue = [[PGMetarLocationVenue alloc] initWithDictionary: [dict objectForKey:@"venue"]];
+        }
+    }
+    
+    return self;
+}
+
+- (PGMetarLocationKind) getKindFromString: (NSString *) kind {
+    if ([kind rangeOfString:@"indoor" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarLocationKindIndoor;
+    } else if ([kind rangeOfString:@"outdoor" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarLocationKindOutdoor;
+    } else {
+        return PGMetarLocationKindUnknown;
+    }
+}
+
+- (PGMetarLocationType) getTypeFromString: (NSString *) type {
+    if ([type rangeOfString:@"address" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarLocationTypeAddress;
+    } else if ([type rangeOfString:@"monument" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return PGMetarLocationTypeMonument;
+    }
+    
+    return PGMetarLocationTypeUnknown;
+}
+
 - (instancetype)init
 {
     self = [super init];

@@ -122,7 +122,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [PGLinkSettings linkEnabled] ? kPGSideBarMenuItemsNumberOfRows : kPGSideBarMenuItemsNumberOfRows - 1;
+    return kPGSideBarMenuItemsNumberOfRows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -180,10 +180,10 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
-        case PGSideBarMenuCellLinkReader: {
+        /*case PGSideBarMenuCellLinkReader: {
             [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
             break;
-        }
+        }*/
         default:
             break;
     }

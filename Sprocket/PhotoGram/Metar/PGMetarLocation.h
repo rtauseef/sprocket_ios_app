@@ -32,5 +32,6 @@ typedef NS_ENUM(NSInteger, PGMetarLocationKind) {
 @property (strong, nonatomic) PGMetarLocationVenue *venue;
 
 - (NSDictionary *) getDict;
+- (instancetype)initWithDictionary: (NSDictionary *) dict;
 
 @end

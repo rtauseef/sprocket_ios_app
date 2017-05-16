@@ -2268,6 +2268,15 @@
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
 		ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685981EC270890036ECE9 /* PGMetarSocial.m */; };
 		ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */; };
+		ED7685A91ECA5AD70036ECE9 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */; };
+		ED7685AA1ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */; };
+		ED7685B01ECA74E60036ECE9 /* PGPayoffViewVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685AE1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.m */; };
+		ED7685B11ECA74E60036ECE9 /* PGPayoffViewVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685AF1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.xib */; };
+		ED7685B51ECA75120036ECE9 /* PGPayoffViewImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685B31ECA75120036ECE9 /* PGPayoffViewImageViewController.m */; };
+		ED7685B61ECA75120036ECE9 /* PGPayoffViewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685B41ECA75120036ECE9 /* PGPayoffViewImageViewController.xib */; };
+		ED7685BD1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */; };
+		ED7685BE1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */; };
+		ED7685C11ECB8DF30036ECE9 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */; };
 		EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */; };
 		EDB0C2C31EB7F7D800AE14CB /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BD1EB7F7D800AE14CB /* PGPayoffManager.m */; };
 		EDB0C2C41EB7F7D800AE14CB /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BF1EB7F7D800AE14CB /* PGPayoffMetadata.m */; };
@@ -3977,6 +3986,20 @@
 		ED7685981EC270890036ECE9 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocial.m; path = Metar/PGMetarSocial.m; sourceTree = "<group>"; };
 		ED76859B1EC271500036ECE9 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocialActivity.h; path = Metar/PGMetarSocialActivity.h; sourceTree = "<group>"; };
 		ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocialActivity.m; path = Metar/PGMetarSocialActivity.m; sourceTree = "<group>"; };
+		ED7685A61ECA5AD70036ECE9 /* PGMetarPayoffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarPayoffViewController.h; path = Metar/PGMetarPayoffViewController.h; sourceTree = "<group>"; };
+		ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarPayoffViewController.m; path = Metar/PGMetarPayoffViewController.m; sourceTree = "<group>"; };
+		ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGMetarPayoffViewController.xib; path = Metar/PGMetarPayoffViewController.xib; sourceTree = "<group>"; };
+		ED7685AD1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewVideoViewController.h; path = PayoffViews/PGPayoffViewVideoViewController.h; sourceTree = "<group>"; };
+		ED7685AE1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewVideoViewController.m; path = PayoffViews/PGPayoffViewVideoViewController.m; sourceTree = "<group>"; };
+		ED7685AF1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewVideoViewController.xib; path = PayoffViews/PGPayoffViewVideoViewController.xib; sourceTree = "<group>"; };
+		ED7685B21ECA75120036ECE9 /* PGPayoffViewImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewImageViewController.h; path = PayoffViews/PGPayoffViewImageViewController.h; sourceTree = "<group>"; };
+		ED7685B31ECA75120036ECE9 /* PGPayoffViewImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewImageViewController.m; path = PayoffViews/PGPayoffViewImageViewController.m; sourceTree = "<group>"; };
+		ED7685B41ECA75120036ECE9 /* PGPayoffViewImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewImageViewController.xib; path = PayoffViews/PGPayoffViewImageViewController.xib; sourceTree = "<group>"; };
+		ED7685BA1ECB77580036ECE9 /* PGPayoffViewErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewErrorViewController.h; path = PayoffViews/PGPayoffViewErrorViewController.h; sourceTree = "<group>"; };
+		ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewErrorViewController.m; path = PayoffViews/PGPayoffViewErrorViewController.m; sourceTree = "<group>"; };
+		ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewErrorViewController.xib; path = PayoffViews/PGPayoffViewErrorViewController.xib; sourceTree = "<group>"; };
+		ED7685BF1ECB8DF30036ECE9 /* PGPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPageControl.h; sourceTree = "<group>"; };
+		ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPageControl.m; sourceTree = "<group>"; };
 		EDB0C2BA1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
 		EDB0C2BC1EB7F7D800AE14CB /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
@@ -5813,6 +5836,22 @@
 			name = LandingPage;
 			sourceTree = "<group>";
 		};
+		ED7685AC1ECA74B00036ECE9 /* PayoffViews */ = {
+			isa = PBXGroup;
+			children = (
+				ED7685AD1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.h */,
+				ED7685AE1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.m */,
+				ED7685AF1ECA74E60036ECE9 /* PGPayoffViewVideoViewController.xib */,
+				ED7685B21ECA75120036ECE9 /* PGPayoffViewImageViewController.h */,
+				ED7685B31ECA75120036ECE9 /* PGPayoffViewImageViewController.m */,
+				ED7685B41ECA75120036ECE9 /* PGPayoffViewImageViewController.xib */,
+				ED7685BA1ECB77580036ECE9 /* PGPayoffViewErrorViewController.h */,
+				ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */,
+				ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */,
+			);
+			name = PayoffViews;
+			sourceTree = "<group>";
+		};
 		EDB0C2B81EB7F7C500AE14CB /* Payoff */ = {
 			isa = PBXGroup;
 			children = (
@@ -5942,6 +5981,12 @@
 				F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */,
 				EDB0C2D21EBA845600AE14CB /* PGWatermarkOperationData.h */,
 				EDB0C2D31EBA845600AE14CB /* PGWatermarkOperationData.m */,
+				ED7685AC1ECA74B00036ECE9 /* PayoffViews */,
+				ED7685A61ECA5AD70036ECE9 /* PGMetarPayoffViewController.h */,
+				ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */,
+				ED7685A81ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib */,
+				ED7685BF1ECB8DF30036ECE9 /* PGPageControl.h */,
+				ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */,
 			);
 			name = Watermark;
 			sourceTree = "<group>";
@@ -6269,6 +6314,7 @@
 				8212BF1B1EA93616009E66EC /* Party-Hat_TN@3x.png in Resources */,
 				82A11D8F1E5FB93B00E7F8FC /* thumbs-up.png in Resources */,
 				82A11CC91E5FB93B00E7F8FC /* alarm-clock_TN.png in Resources */,
+				ED7685AA1ECA5AD70036ECE9 /* PGMetarPayoffViewController.xib in Resources */,
 				8212BF291EA93616009E66EC /* pig_TN@2x.png in Resources */,
 				8212BE9D1EA93616009E66EC /* koala.png in Resources */,
 				8212BE751EA93616009E66EC /* hedgehog.png in Resources */,
@@ -6328,6 +6374,7 @@
 				82E3DA441E82EEED0008F600 /* heartExpress_TN@3x.png in Resources */,
 				9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */,
 				8212BDE51EA93616009E66EC /* Derby.png in Resources */,
+				ED7685BE1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib in Resources */,
 				82E3D9D21E82EEED0008F600 /* diamond_TN@2x.png in Resources */,
 				82E3DB441E82EEEE0008F600 /* v_cat_TN@3x.png in Resources */,
 				82E3D9FE1E82EEED0008F600 /* hat.png in Resources */,
@@ -6391,6 +6438,7 @@
 				826BEB1F1E85BEAD000BE3FA /* PinkSpraypaintFrame_TN.png in Resources */,
 				829A7ACF1EBBC49E005D4938 /* ChainSmokers_sticker_TN.png in Resources */,
 				82A11CEF1E5FB93B00E7F8FC /* cat_grumble.png in Resources */,
+				ED7685B11ECA74E60036ECE9 /* PGPayoffViewVideoViewController.xib in Resources */,
 				8212BBA81EA92A26009E66EC /* confetti_TN@2x.png in Resources */,
 				8212BDEB1EA93616009E66EC /* devilhorns_TN@3x.png in Resources */,
 				829A7A2E1EBB8E7E005D4938 /* mermaid_tail_@3x.png in Resources */,
@@ -7019,6 +7067,7 @@
 				8212BECF1EA93616009E66EC /* medicine_TN.png in Resources */,
 				829A7A911EBBA2C6005D4938 /* flower_glasses.png in Resources */,
 				829A7A761EBB8E7E005D4938 /* visor_TN.png in Resources */,
+				ED7685B61ECA75120036ECE9 /* PGPayoffViewImageViewController.xib in Resources */,
 				82E3DB9A1E82F1920008F600 /* Panda_TN@2x.png in Resources */,
 				82A11D891E5FB93B00E7F8FC /* thumbs-up_TN.png in Resources */,
 				E3B62FFE19A50E5800CB80D7 /* Search@2x.png in Resources */,
@@ -8806,6 +8855,7 @@
 				F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperationHPLink.h in Sources */,
 				F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */,
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
+				ED7685C11ECB8DF30036ECE9 /* PGPageControl.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
 				EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
@@ -8850,6 +8900,7 @@
 				EDB0C2E01EBA92FC00AE14CB /* PGMetarUser.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
 				82E3DEBA1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
+				ED7685BD1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m in Sources */,
 				F2E7852B1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
@@ -8870,6 +8921,7 @@
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
+				ED7685B51ECA75120036ECE9 /* PGPayoffViewImageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				EDB0C2C31EB7F7D800AE14CB /* PGPayoffManager.m in Sources */,
@@ -8881,6 +8933,7 @@
 				26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */,
+				ED7685A91ECA5AD70036ECE9 /* PGMetarPayoffViewController.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
@@ -8912,6 +8965,7 @@
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
+				ED7685B01ECA74E60036ECE9 /* PGPayoffViewVideoViewController.m in Sources */,
 				EDB0C2F01EBCF82D00AE14CB /* PGMetarImage.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
 				8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,

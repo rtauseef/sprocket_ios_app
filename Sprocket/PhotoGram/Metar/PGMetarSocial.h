@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, PGMetarSocialType) {
 @property (strong, nonatomic) NSString* profileId;
 @property (strong, nonatomic) PGMetarSocialActivity* activity;
 
+- (instancetype)initWithDictionary: (NSDictionary *) dict;
 - (NSDictionary *) getDict;
 
 @end

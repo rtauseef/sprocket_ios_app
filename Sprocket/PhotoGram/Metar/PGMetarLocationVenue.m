@@ -10,6 +10,21 @@
 
 @implementation PGMetarLocationVenue
 
+- (instancetype)initWithDictionary: (NSDictionary *) dict {
+    self = [super init];
+    
+    if (self) {
+        self.address = [dict objectForKey:@"address"];
+        self.city = [dict objectForKey:@"city"];
+        self.state = [dict objectForKey:@"state"];
+        self.countryCode = [dict objectForKey:@"countryCode"];
+        self.country = [dict objectForKey:@"country"];
+        self.iata = [dict objectForKey:@"iata"];
+    }
+
+    return self;
+}
+
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     

@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {
     PGSideBarMenuCellTakeSurvey,
     PGSideBarMenuCellPrivacy,
     PGSideBarMenuCellAbout,
-    PGSideBarMenuCellLinkReader
 };
 
 @interface PGSideBarMenuTableViewCell : UITableViewCell
