@@ -10,7 +10,7 @@ Feature: Verify Welcome screen/Landing Page
     Then I should see "Hamburger" logo
     Then I should see "Instagram" logo
     And I should see "Facebook" logo
-    Then I should see "Flickr" logo
+    Then I should see "Google" logo
     And I should see "Camera Roll" logo
     And I should see social source authentication text
 
@@ -35,9 +35,9 @@ Scenario Outline: Open Social Source from  Landing screen
 	Examples:
 	|Social Source	|
 	|Instagram		|
-  #|Flickr			|
-    |Facebook		|
-    |CameraRoll	    |
+  |Google			|
+  |Facebook		|
+  |CameraRoll	    |
 
   @regression
 Scenario: Verify Side menu from Landing screen

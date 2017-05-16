@@ -36,7 +36,9 @@ class LandingScreen < Calabash::IBase
   def facebook_logo
     "UIImageView id:'Facebook'"
   end
-    
+    def google_logo
+    "UIImageView marked:'google_C'"
+  end
   
     
   def modal_content

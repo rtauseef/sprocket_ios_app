@@ -38,17 +38,17 @@ Scenario: Verify Instagram navigation
     
 @reset
 @TA17012
-Scenario: Verify Flickr navigation 
+Scenario: Verify Google navigation 
     Given I am on the "Landing" screen
-    Then I should see "Flickr" logo
-    And I click on the "Flickr" logo
-    Then I should see the "Flickr Landing" screen
+    Then I should see "Google" logo
+    And I click on the "Google" logo
+    Then I should see the "Google Landing" screen
     And I click on the "Sign in" button
-    Then I should see the "Flickr Signin" screen
+    Then I should see the "Google Signin" screen
     And I enter valid credentials
     And I touch login button
-    Then I should see the "Flickr Photo" screen
+    Then I should see the "Google Photos" screen
     When I touch second photo
-    Then I should see the "Flickr Preview" screen
+    Then I should see the "Google Preview" screen
     
 

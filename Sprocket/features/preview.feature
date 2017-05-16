@@ -18,8 +18,9 @@ Feature: Verify preview screen from different social media
     And I should see "Share" button
 
   @regression
-  Scenario: Verify preview screen for Flickr
-    Given I am on the "Flickr Preview" screen
+  
+  Scenario: Verify preview screen for Google
+    Given I am on the "Google Preview" screen
     Then I should see "camera" button
     And I should see "cancel" button
     And I should see "Edit" button

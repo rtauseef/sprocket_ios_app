@@ -41,6 +41,9 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
 end
 
 Then(/^I tap "(.*?)"$/) do |social_source|
+  if social_source == "Google"
+    social_source = "google_C"
+  end
   if element_exists("UIImageView id:'#{social_source}'")
     touch ("UIImageView id:'#{social_source}'")
   end

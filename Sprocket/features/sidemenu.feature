@@ -16,7 +16,7 @@ Scenario Outline: Sign in to different Social media accounts from side menu
     Examples:
       | social_media | Sign in          | Photos           |
       | Instagram    | Instagram Signin | Instagram Photos |
-    #  | Flickr       | FlickrSignin     | Flickr Photo     |
+      | Google        | Google Signin     | Google Photos     |
       
 @regression
 Scenario: Open cameraroll from side menu
