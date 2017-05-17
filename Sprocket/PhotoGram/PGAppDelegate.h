@@ -16,5 +16,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (assign, nonatomic) BOOL openFromNotification;
+@property (assign, nonatomic) BOOL restrictRotation;
 
 @end

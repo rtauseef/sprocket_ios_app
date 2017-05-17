@@ -46,6 +46,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.restrictRotation = YES;
+    
     // Force the initialization of the analytics manager to start tracking crashes
     [PGAnalyticsManager sharedManager];
 
@@ -186,6 +188,13 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 - (void)deepLink:(NSString *)location
 {
     [PGAppNavigation deepLink:location];
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    if(self.restrictRotation)
+        return UIInterfaceOrientationMaskPortrait;
+    else
+        return UIInterfaceOrientationMaskAll;
 }
 
 #pragma mark - MP object initialization

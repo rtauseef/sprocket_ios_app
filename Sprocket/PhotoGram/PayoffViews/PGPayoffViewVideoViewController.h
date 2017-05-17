@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @interface PGPayoffViewVideoViewController : UIViewController
+
+- (void) setVideoWithURL: (NSString *) strUrl;
+- (void) setVideoWithAsset: (PHAsset *) asset;
 
 @end

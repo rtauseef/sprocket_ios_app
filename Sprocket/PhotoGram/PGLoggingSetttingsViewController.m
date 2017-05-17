@@ -45,7 +45,8 @@ enum {
     kDisplayNotificationMsgCenterIndex,
     kEnableWatermarkIndex,
     kEnableVideoPrintIndex,
-
+    kEnableFakePrintIndex,
+    
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
 
@@ -303,6 +304,15 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings videoPrintEnabled]];
+        } else if(kEnableFakePrintIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableFakePrint"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableFakePrint"];
+            }
+            cell.textLabel.text = @"Fake Print Enabled";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGLinkSettings fakePrintEnabled]];
         }
         
          cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
@@ -370,6 +380,9 @@ NSString * const kFeatureCodeLink = @"link";
             } else if( kEnableVideoPrintIndex == selectedRow) {
                 [PGLinkSettings setVideoPrintEnabled:![PGLinkSettings videoPrintEnabled]];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings videoPrintEnabled]];
+            } else if( kEnableFakePrintIndex == selectedRow) {
+                [PGLinkSettings setFakePrintEnabled:![PGLinkSettings fakePrintEnabled]];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings fakePrintEnabled]];
             }
         }
     }
@@ -636,7 +649,7 @@ NSString * const kFeatureCodeLink = @"link";
     BOOL enabled = NO;
     if ([code isEqualToString:kFeatureCodeAll]) {
         enabled = YES;
-    } else if ([code isEqualToString:kFeatureCodeLink] && (kEnableWatermarkIndex == index || kEnableVideoPrintIndex == index) ) {
+    } else if ([code isEqualToString:kFeatureCodeLink] && (kEnableWatermarkIndex == index || kEnableVideoPrintIndex == index || kEnableFakePrintIndex == index) ) {
         enabled = YES;
     }
     return enabled;

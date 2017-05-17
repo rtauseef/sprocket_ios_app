@@ -21,12 +21,16 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg2-TL-pwq" userLabel="shutter">
-                    <rect key="frame" x="266.5" y="476" width="67" height="67"/>
+                    <rect key="frame" x="154" y="543" width="67" height="67"/>
                     <accessibility key="accessibilityConfiguration" identifier="ShutterCamera"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="67" id="cWB-wn-07m"/>
+                        <constraint firstAttribute="width" constant="67" id="zLw-bU-0Gg"/>
+                    </constraints>
                     <state key="normal" image="cameraShutter"/>
                     <connections>
                         <action selector="shutterTapped:" destination="-1" eventType="touchUpInside" id="tK7-JW-nB2"/>
@@ -45,7 +49,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voU-GQ-VkJ">
-                    <rect key="frame" x="511" y="9" width="28" height="28.5"/>
+                    <rect key="frame" x="286" y="9" width="28" height="28.5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28.25" id="NeF-vd-vFB"/>
                         <constraint firstAttribute="width" constant="27.5" id="pTx-PV-OFZ"/>
@@ -56,7 +60,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-P8-ZbS" userLabel="reverseCamera">
-                    <rect key="frame" x="549" y="3.5" width="51" height="39.5"/>
+                    <rect key="frame" x="324" y="3.5" width="51" height="39.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="ReverseCamera"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="AKI-P8-ZbS" secondAttribute="height" multiplier="31:24" id="Q23-ji-33B"/>
@@ -68,7 +72,7 @@
                     </connections>
                 </button>
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-QH-UdF">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
@@ -78,9 +82,11 @@
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="C44-gb-l7T"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CjH-fq-ear"/>
                 <constraint firstAttribute="bottom" secondItem="BJW-QH-UdF" secondAttribute="bottom" id="JZf-r2-PMB"/>
+                <constraint firstItem="fg2-TL-pwq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OZZ-dF-6fp"/>
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rwk-wz-iuu"/>
                 <constraint firstAttribute="trailing" secondItem="BJW-QH-UdF" secondAttribute="trailing" id="Ryg-Dp-a3C"/>
                 <constraint firstAttribute="bottom" secondItem="fg2-TL-pwq" secondAttribute="bottom" constant="57" id="VEm-cn-nxs"/>
+                <constraint firstAttribute="bottom" secondItem="fg2-TL-pwq" secondAttribute="bottom" constant="57" id="mve-ro-BO5"/>
                 <constraint firstItem="voU-GQ-VkJ" firstAttribute="centerY" secondItem="AKI-P8-ZbS" secondAttribute="centerY" id="ney-DO-SBS"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="leading" secondItem="voU-GQ-VkJ" secondAttribute="trailing" constant="10" id="pDP-dq-dNu"/>
                 <constraint firstItem="fg2-TL-pwq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qfY-Tp-dQ5"/>

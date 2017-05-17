@@ -20,6 +20,13 @@ typedef enum {
     kHPRMediaTypeVideo
 } tHPRMediaType;
 
+typedef enum {
+    tHPRMediaSocialProviderFacebook,
+    tHPRMediaSocialProviderInstagram,
+    tHPRMediaSocialProviderGoogle,
+    tHPRMediaSocialProviderFlickr,
+} tHPRMediaSocialProvider;
+
 @class HPPRSelectPhotoProvider;
 
 @interface HPPRMedia : NSObject
@@ -67,7 +74,8 @@ typedef enum {
 @property (nonatomic, strong) NSString *cameraModel;
 
 @property (strong, nonatomic) NSNumber *videoDuration;
-
+@property (assign, nonatomic) tHPRMediaSocialProvider socialProvider;
+@property (nonatomic, strong) NSString *videoPlaybackUri;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;

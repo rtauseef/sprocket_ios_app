@@ -18,6 +18,7 @@
 + (void)saveVideo:(AVURLAsset *)asset completion:(void (^)(BOOL))completion;
 + (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion;
 + (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion;
++ (void)saveImageFake:(UIImage *)image completion:(void (^)(BOOL))completion;
 
 + (BOOL)savePhotos;
 + (void)setSavePhotos:(BOOL)save;

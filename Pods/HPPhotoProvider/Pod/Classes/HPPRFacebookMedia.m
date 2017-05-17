@@ -37,6 +37,8 @@
             }
             self.socialMediaImageUrl = permalink;
         }
+        
+        self.videoPlaybackUri = [attributes objectForKey:@"source"];
     }
     
     return self;
@@ -47,6 +49,7 @@
     self = [super init];
     
     if (self) {
+        self.socialProvider = tHPRMediaSocialProviderFacebook;
         self.objectID = [attributes objectForKey:@"id"];
         self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:attributes];
         self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForLargestPhoto:attributes];

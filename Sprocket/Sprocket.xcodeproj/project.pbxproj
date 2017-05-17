@@ -2277,6 +2277,7 @@
 		ED7685BD1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */; };
 		ED7685BE1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */; };
 		ED7685C11ECB8DF30036ECE9 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */; };
+		ED7685C71ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685C61ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.m */; };
 		EDB0C2C21EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */; };
 		EDB0C2C31EB7F7D800AE14CB /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BD1EB7F7D800AE14CB /* PGPayoffManager.m */; };
 		EDB0C2C41EB7F7D800AE14CB /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB0C2BF1EB7F7D800AE14CB /* PGPayoffMetadata.m */; };
@@ -4000,6 +4001,8 @@
 		ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewErrorViewController.xib; path = PayoffViews/PGPayoffViewErrorViewController.xib; sourceTree = "<group>"; };
 		ED7685BF1ECB8DF30036ECE9 /* PGPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPageControl.h; sourceTree = "<group>"; };
 		ED7685C01ECB8DF30036ECE9 /* PGPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPageControl.m; sourceTree = "<group>"; };
+		ED7685C51ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AVPlayerViewController+Fullscreen.h"; path = "PayoffViews/AVPlayerViewController+Fullscreen.h"; sourceTree = "<group>"; };
+		ED7685C61ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AVPlayerViewController+Fullscreen.m"; path = "PayoffViews/AVPlayerViewController+Fullscreen.m"; sourceTree = "<group>"; };
 		EDB0C2BA1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		EDB0C2BB1EB7F7D800AE14CB /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
 		EDB0C2BC1EB7F7D800AE14CB /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
@@ -5848,6 +5851,8 @@
 				ED7685BA1ECB77580036ECE9 /* PGPayoffViewErrorViewController.h */,
 				ED7685BB1ECB77580036ECE9 /* PGPayoffViewErrorViewController.m */,
 				ED7685BC1ECB77580036ECE9 /* PGPayoffViewErrorViewController.xib */,
+				ED7685C51ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.h */,
+				ED7685C61ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.m */,
 			);
 			name = PayoffViews;
 			sourceTree = "<group>";
@@ -8945,6 +8950,7 @@
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
+				ED7685C71ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.m in Sources */,
 				ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */,
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,

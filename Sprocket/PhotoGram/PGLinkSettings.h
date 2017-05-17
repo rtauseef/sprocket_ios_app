@@ -22,5 +22,7 @@ extern NSString * const kPGLinkSettingsChangedNotification;
 +(void) setVideoPrintEnabled:(BOOL) enabled;
 +(BOOL) videoPrintEnabled;
 
++(void) setFakePrintEnabled:(BOOL) enabled;
++(BOOL) fakePrintEnabled;
 
 @end
