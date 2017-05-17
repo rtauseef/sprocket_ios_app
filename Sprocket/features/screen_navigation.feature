@@ -37,8 +37,8 @@ Scenario: Verify Instagram navigation
     
     
 @reset
-@TA17012
-@TA17951
+@done
+@regression
 Scenario: Verify Google navigation 
     Given I am on the "Landing" screen
     Then I should see "Google" logo

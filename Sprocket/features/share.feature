@@ -24,7 +24,6 @@ Feature:Photo Share
     Then I should see the "Instagram Preview" screen
 
   @done
-  @TA17951
   Scenario Outline: Verify share functionality
     Given I am on the "<social_media_screen_name>" screen
     Then I tap "Share" button

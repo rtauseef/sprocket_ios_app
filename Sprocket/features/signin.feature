@@ -5,7 +5,6 @@ Feature: Signin to social media
   
 @reset
 @regression
-@TA17951
 Scenario Outline: Sign in to different Social media accounts from Landing screen
     Given I am on the "Landing" screen
     Then I should see "<social_media>" logo

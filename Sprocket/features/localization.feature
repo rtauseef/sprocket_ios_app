@@ -4,7 +4,6 @@ Feature: Localization testing
 
 @reset
 @localization
-@TA17951
 Scenario: Verify Landing screen texts
     Given I am on the "Landing" screen
     And I should see the below listed social media texts:
@@ -19,7 +18,6 @@ Scenario: Verify Landing screen texts
     
 
 @localization
-@TA17951
 Scenario: Verify Terms of Service link from social media landing screens
     Given I am on the "Landing" screen
     Then I should see "Instagram" logo
@@ -132,7 +130,6 @@ Scenario Outline: Verify how to &help options navigation and screen titles
     
 
 @localization
-@TA17951
 Scenario: Verify Social media screen titles and navigation
     Given  I am on the "Landing" screen
     Then I should see "Instagram" logo
@@ -226,7 +223,6 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
    
 @reset     
 @localization
-@TA17951
   Scenario Outline: Navigate to preview screen via instagram/Google
     Given  I am on the "Landing" screen  
     Then I should see "<social_media>" logo
