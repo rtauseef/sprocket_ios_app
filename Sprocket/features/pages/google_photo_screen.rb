@@ -9,8 +9,7 @@ class GooglePhotosScreen < Calabash::IBase
 	end
 
   def select_photo
-    #"navigationBar label  marked:'Flickr Photos'"
-      "view {text CONTAINS 'Google'}"
+     "view {text CONTAINS 'Google'}"
   end
 
     def all_visible_photos

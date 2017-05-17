@@ -10,9 +10,7 @@ class GoogleAlbumScreen < Calabash::IBase
   end
 
   def google_albums
-    #"navigationBar label  marked:'Flickr Albums'"
-     # "label  marked:'Flickr Albums'"
-      "view {text CONTAINS 'Google'}"
+     "view {text CONTAINS 'Google'}"
   end
 
   def google_first_album

@@ -3,6 +3,7 @@ Feature: Verify Side menu feature
   
 @reset
 @done
+@TA17951
 Scenario Outline: Sign in to different Social media accounts from side menu
     Given I am on the "Landing" screen
     When I touch menu button on navigation bar

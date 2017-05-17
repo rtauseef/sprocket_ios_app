@@ -31,6 +31,7 @@ Scenario: Verify text edit screen navigation
     Then I should see the "Edit" screen
 
 @regression
+@TA17951
 Scenario Outline: Verify Text editor screen options
     Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
     And I enter unique text

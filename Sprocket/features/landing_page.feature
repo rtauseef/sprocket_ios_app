@@ -4,6 +4,7 @@ Feature: Verify Welcome screen/Landing Page
 
   @done
   @smoke
+  @TA17951
   Scenario: Verify Landing Screen
     Given  I am on the "Landing" screen
     Then I should see "sprocket"
@@ -27,6 +28,7 @@ Feature: Verify Welcome screen/Landing Page
   @reset
   @done
   @smoke
+  @TA17951
 Scenario Outline: Open Social Source from  Landing screen
 	Given  I am on the "Landing" screen
 	Then I tap "<Social Source>"

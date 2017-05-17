@@ -9,43 +9,25 @@ class GoogleSigninScreen < BaseHtmlScreen
 
 
   def fill_input_field(text,input_id)
-
     device_agent.touch({type: "TextField", index: 0 })
     sleep(STEP_PAUSE)
-    device_agent.touch({marked:"l" })
-    device_agent.touch({marked:"o" })
-    device_agent.touch({marked:"k" })
-    device_agent.touch({marked:"i" })
-    device_agent.touch({marked:"a" })
-    device_agent.touch({marked:"u" })
-    device_agent.touch({marked:"t" })
-    device_agent.touch({marked:"o" })
-    device_agent.touch({marked:"m" })
-    device_agent.touch({marked:"a" })
-    device_agent.touch({marked:"t" })
-    device_agent.touch({marked:"i" })
-    device_agent.touch({marked:"o" })
-    device_agent.touch({marked:"n" })
-    device_agent.touch({marked:"t" })
-    device_agent.touch({marked:"e" })
-    device_agent.touch({marked:"s" })
-    device_agent.touch({marked:"t" })
+    username_arr = text.split('')
+    i = 0
+    while i < username_arr.length
+      device_agent.touch({marked:"#{username_arr[i]}" })
+      i = i + 1
+    end   
   end
   def fill_password_field(text,input_id)
 
    device_agent.touch({type: "SecureTextField", index: 0 })
     sleep(STEP_PAUSE)
-    device_agent.touch({marked:"l" })
-    device_agent.touch({marked:"o" })
-    device_agent.touch({marked:"k" })
-    device_agent.touch({marked:"i" })
-    device_agent.touch({marked:"t" })
-    device_agent.touch({marked:"e" })
-    device_agent.touch({marked:"s" })
-    device_agent.touch({marked:"t" })
-    device_agent.touch({marked:"e" })
-    device_agent.touch({marked:"r" })
-    
+    passwrd_arr = text.split('')
+    i = 0
+    while i < passwrd_arr.length
+      device_agent.touch({marked:"#{passwrd_arr[i]}" })
+      i = i + 1
+    end      
   end
 
   def google_auth_button
@@ -53,8 +35,7 @@ class GoogleSigninScreen < BaseHtmlScreen
    sleep(5.0)
   end
 
-  def navigate
-      
+  def navigate      
       await
   end
 end
