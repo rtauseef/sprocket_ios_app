@@ -771,9 +771,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         BOOL wasDrawerOpened = self.drawer.isOpened;
 
         [self closeDrawerAnimated:NO];
-        [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
-            [self printWithDrawerOpened:wasDrawerOpened andPrinterConnectedStatus:success];
-        }];
+        if ([MP sharedInstance].numberOfPairedSprockets > 0) {
+            [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
+                [self printWithDrawerOpened:wasDrawerOpened andPrinterConnectedStatus:success];
+            }];
+        } else {
+            [self printWithDrawerOpened:wasDrawerOpened andPrinterConnectedStatus:NO];
+        }
     }];
 }
 
@@ -905,7 +909,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 [self showAddToQueueAlert:numberOfJobsAdded withCompletion:nil];
             }
             
-            if (isPrinterConnected && [MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusPrinting) {
+            if (isPrinterConnected && [MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusResumingPrintQueue) {
                 NSString *printString = NSLocalizedString(@"print", nil);
                 if (numberOfJobsAdded > 1) {
                     printString = NSLocalizedString(@"prints", nil);
