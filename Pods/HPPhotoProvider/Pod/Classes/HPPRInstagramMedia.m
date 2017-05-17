@@ -40,6 +40,7 @@
     
     if (self) {
         self.objectID = [attributes valueForKey:@"id"];
+        self.socialProvider = tHPRMediaSocialProviderInstagram;
 
         self.userName = [attributes valueForKeyPath:@"user.username"];
         self.userProfilePicture = [attributes valueForKeyPath:@"user.profile_picture"];
@@ -62,6 +63,7 @@
             
             if (videoURL != nil) {
                 self.assetURL = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoURL] options:nil];
+                self.videoPlaybackUri = videoURL;
             }
         } else { // TODO: handle image sequence
             self.mediaType = kHPRMediaTypeImage;

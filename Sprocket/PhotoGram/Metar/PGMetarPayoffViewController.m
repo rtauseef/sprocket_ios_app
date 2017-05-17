@@ -52,15 +52,33 @@
     self.arrayOfViewControllers = [NSMutableArray array];
     
     if (metadata != nil) {
-        // TODO: select payoffs per content
-        PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc] initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
-        PGPayoffViewVideoViewController *viewVideoVc = [[PGPayoffViewVideoViewController alloc]
+        
+        if (metadata.mediaType == PGMetarMediaTypeVideo) {
+            PGPayoffViewVideoViewController *viewVideoVc = [[PGPayoffViewVideoViewController alloc]
                                                         initWithNibName:@"PGPayoffViewVideoViewController" bundle:nil];
         
+            if (metadata.source.social != nil && metadata.source.uri != nil) {
+                [viewVideoVc setVideoWithURL:metadata.source.uri];
+                [self.arrayOfViewControllers addObject:viewVideoVc];
+            } else if (metadata.source.from == PGMetarSourceFromLocal) {
+                NSString *localId = metadata.source.identifier;
+                
+                PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
+                if( assets.count ) {
+                    PHAsset * firstAsset = assets[0];
+                    [viewVideoVc setVideoWithAsset:firstAsset];
+                    [self.arrayOfViewControllers addObject:viewVideoVc];
+                }
+            }
+        }
+        
+        // TODO: remove me (add other VC just for testing...)
+        PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc]
+                                                        initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
+        
+        
         [self.arrayOfViewControllers addObject:viewImageVc];
-        [self.arrayOfViewControllers addObject:viewVideoVc];
-        [self.arrayOfViewControllers addObject: [[PGPayoffViewImageViewController alloc] initWithNibName:@"PGPayoffViewImageViewController" bundle:nil]];
-        [self.arrayOfViewControllers addObject: [[PGPayoffViewImageViewController alloc] initWithNibName:@"PGPayoffViewImageViewController" bundle:nil]];
+        
     } else {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];

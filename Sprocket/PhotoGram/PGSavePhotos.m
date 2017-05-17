@@ -107,6 +107,51 @@ NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
     }];
 }
 
+
++ (void)saveImageFake:(UIImage *)image completion:(void (^)(BOOL))completion
+{
+    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            NSString *albumTitle = @"sprocket-metar";
+            
+            PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];
+            PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
+            
+            if ([fetchResult firstObject]) {
+                PHAssetCollection *sprocketAlbum = [fetchResult firstObject];
+                
+                [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
+                
+            } else {
+                __block PHObjectPlaceholder *sprocketAlbumPlaceholder;
+                
+                [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+                    PHAssetCollectionChangeRequest *changeRequest = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumTitle];
+                    sprocketAlbumPlaceholder = changeRequest.placeholderForCreatedAssetCollection;
+                    
+                } completionHandler:^(BOOL success, NSError *error) {
+                    if (success) {
+                        PHFetchResult *fetchResult = [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[sprocketAlbumPlaceholder.localIdentifier] options:nil];
+                        PHAssetCollection *sprocketAlbum = fetchResult.firstObject;
+                        
+                        [self saveImage:image toAssetCollection:sprocketAlbum completion:completion];
+                    } else {
+                        if (completion) {
+                            completion(NO);
+                        }
+                    }
+                }];
+            }
+            
+        } else {
+            if (completion) {
+                completion(NO);
+            }
+        }
+    }];
+}
+
 + (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion
 {
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{

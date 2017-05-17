@@ -282,20 +282,43 @@
     
     if (media.socialMediaImageUrl) {
         PGMetarSource *source = [[PGMetarSource alloc] init];
-        source.uri = media.socialMediaImageUrl;
+        PGMetarSocial *social = [[PGMetarSocial alloc] init];
+        
+        if (media.mediaType == kHPRMediaTypeVideo) {
+            source.uri = media.videoPlaybackUri;
+        } else if (media.mediaType == kHPRMediaTypeImage) {
+            source.uri = media.socialMediaImageUrl;
+        }
+        
+        social.uri = media.socialMediaImageUrl;
         source.owner = media.userName;
-
-        meta.source = source;
-    
+        
+        switch (media.socialProvider) {
+            case tHPRMediaSocialProviderInstagram:
+                source.from = PGMetarSourceFromSocial;
+                social.provider = PGMetarSocialProviderInstagram;
+                break;
+            case tHPRMediaSocialProviderFacebook:
+                source.from = PGMetarSourceFromSocial;
+                social.provider = PGMetarSocialProviderFacebook;
+                break;
+            case tHPRMediaSocialProviderGoogle:
+                source.from = PGMetarSourceFromSocial;
+                social.provider = PGMetarSocialProviderGoogle;
+                break;
+            default:
+                break;
+        }
+       
         if (media.likes > 0 || media.comments > 0) {
             PGMetarSocialActivity *socialActivity = [[PGMetarSocialActivity alloc] init];
             socialActivity.likes = [NSNumber numberWithUnsignedInteger:media.likes];
             socialActivity.comments = [NSNumber numberWithUnsignedInteger:media.comments];
-            PGMetarSocial *social = [[PGMetarSocial alloc] init];
             social.activity = socialActivity;
-            
-            meta.source.social = social;
-        }        
+        }
+        
+        meta.source = source;
+        meta.source.social = social;
     } else {
         PGMetarSource *source = [[PGMetarSource alloc] init];
         source.from = PGMetarSourceFromLocal;

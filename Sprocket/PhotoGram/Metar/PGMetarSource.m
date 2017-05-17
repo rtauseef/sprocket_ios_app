@@ -42,7 +42,11 @@
         
         self.uri = [dict objectForKey:@"uri"];
         self.album = [dict objectForKey:@"album"];
-        self.social = [dict objectForKey:@"social"];
+        
+        if ([dict objectForKey:@"social"]) {
+            self.social = [[PGMetarSocial alloc] initWithDictionary:[dict objectForKey:@"social"]];
+        }
+        
         self.identifier = [dict objectForKey:@"id"];
         self.owner = [dict objectForKey:@"owner"];
     }
