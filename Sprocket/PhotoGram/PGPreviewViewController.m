@@ -32,6 +32,7 @@
 #import "PGWatermarkProcessor.h"
 #import "PGLinkSettings.h"
 #import "PGPrintQueueManager.h"
+#import "PGSetupSprocketViewController.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -85,6 +86,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
+@property (weak, nonatomic) IBOutlet UILabel *imageSavedLabel;
 @property (strong, nonatomic) NSString *currentOfframp;
 @property (assign, nonatomic) CGPoint panStartPoint;
 
@@ -410,6 +412,46 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
+- (void)showAddToQueueAlert:(NSInteger)numberOfJobsAdded withCompletion:(void (^)())completion
+{
+    NSString *printString = NSLocalizedString(@"print", nil);
+    if (numberOfJobsAdded > 1) {
+        printString = NSLocalizedString(@"prints", nil);
+    }
+    
+    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"%lld %@ added to the queue, %lld total,\nSprocket Printer Not Connected", nil), numberOfJobsAdded, printString, [MPBTPrintManager sharedInstance].queueSize];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:NSLocalizedString(@"Your prints will start when the sprocket printer is on and bluetooth connected.", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"PRINT QUEUE", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [PGPrintQueueManager sharedInstance].delegate = self;
+        [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
+        [self peekDrawerAnimated:YES];
+    }];
+    
+    [alert addAction:printQueueAction];
+    
+    UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"PRINT HELP", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
+        [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [setupViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self presentViewController:setupViewController animated:YES completion:nil];
+    }];
+    
+    [alert addAction:printHelpAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self peekDrawerAnimated:YES];
+    }];
+    
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:completion];
+}
+
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
@@ -630,6 +672,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.imageSavedLabel.text = NSLocalizedString(@"Saved to Camera Roll", nil);
+                    
                     [UIView animateWithDuration:0.5F animations:^{
                         [self showImageSavedView:YES];
                     } completion:^(BOOL finished) {
@@ -719,9 +763,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    if (![[MPBTPrintManager sharedInstance] canAddToQueue:YES]) {
-        return;
-    }
+//    if (![[MPBTPrintManager sharedInstance] canAddToQueue:YES]) {
+//        return;
+//    }
 
     [self showDownloadingImagesAlertWithCompletion:^{
         BOOL wasDrawerOpened = self.drawer.isOpened;
@@ -761,11 +805,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 
     __block BOOL canResumePrinting = YES;
+    __block BOOL wasAddedToQueue = NO;
+    __block NSUInteger numberOfJobsAdded = 0;
     __block CGFloat watermarkedImages = 0.0;
     
     // CREATE GROUP
     dispatch_group_t watermarkGroup = dispatch_group_create();
-    
     for (PGGesturesView *gestureView in selectedViews) {
         
         PGWatermarkProcessor *processor;
@@ -789,7 +834,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             
             [metrics setObject:origin forKey:kMetricsOrigin];
             
-            if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected) {
+            BOOL isPrintDirect = (selectedViews.count == 1) && (self.drawer.numberOfCopies == 1);
+            if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
                 [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
                     return [self handlePrintQueueStatus:status progress:progress error:errorCode];
                 }];
@@ -798,13 +844,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
                 [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
                 
-                if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
-                    canResumePrinting = NO;
-                }
+                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
                 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                                  printItem:printItem
-                                                              extendedInfo:metrics];
+                                                            extendedInfo:metrics];
+                canResumePrinting = YES;
+                wasAddedToQueue = YES;
+                numberOfJobsAdded++;
             }
             
             watermarkedImages++;
@@ -852,6 +899,32 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (canResumePrinting) {
                 [self resumePrintingWithDrawerOpened:wasDrawerOpened];
+            }
+            
+            if (wasAddedToQueue && !isPrinterConnected) {
+                [self showAddToQueueAlert:numberOfJobsAdded withCompletion:nil];
+            }
+            
+            if (isPrinterConnected && [MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusPrinting) {
+                NSString *printString = NSLocalizedString(@"print", nil);
+                if (numberOfJobsAdded > 1) {
+                    printString = NSLocalizedString(@"prints", nil);
+                }
+                
+                NSString *title = [NSString stringWithFormat:NSLocalizedString(@"%lld %@ added to the queue, %lld total", nil), numberOfJobsAdded, printString, [MPBTPrintManager sharedInstance].queueSize];
+                
+                self.imageSavedLabel.text = NSLocalizedString(title, nil);
+                
+                [UIView animateWithDuration:0.5F animations:^{
+                    [self showImageSavedView:YES];
+                } completion:^(BOOL finished) {
+                    [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:1.0];
+                    [self peekDrawerAnimated:YES];
+                }];
+            }
+            
+            if (isPrinterConnected && [MPBTPrintManager sharedInstance].status != MPBTPrinterManagerStatusPrinting) {
+                
             }
         });
     });

@@ -477,7 +477,7 @@ NSInteger const kMantaErrorBusy = 1;
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
-    if (self.errorAlert) {
+    if (self.errorAlert || (errorCode == kMantaErrorBusy)) {
         return;
     }
 

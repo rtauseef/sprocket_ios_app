@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *step2Content;
 @property (weak, nonatomic) IBOutlet UILabel *step3Content;
 
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
 @end
 
 @implementation PGSetupSprocketViewController
@@ -32,6 +34,7 @@
     [super viewDidLoad];
 
     self.trackableScreenName = @"Setup Sprocket Printer";
+    self.closeButton.hidden = self.modalTransitionStyle != UIModalTransitionStyleCrossDissolve;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -98,6 +101,11 @@
     [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0096D6"] range:NSMakeRange(step.length, desc.length)];
     [attributedText addAttribute:NSFontAttributeName value:[UIFont fontWithName:label.fontFamily size:label.fontSize] range:NSMakeRange(0, attributedText.length)];
     label.attributedText = attributedText;
+}
+
+
+- (IBAction)closeButtonTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
