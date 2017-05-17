@@ -22,6 +22,7 @@
 + (instancetype)sharedInstance;
 
 - (void)showPrintQueueStatusFromViewController:(UIViewController *)viewController;
+- (void)incrementPrintCounter;
 
 @end
 

@@ -11,9 +11,11 @@
 //
 
 #import "PGInAppMessageView.h"
+#import "PGInAppMessageManager.h"
 #import "UIColor+Style.h"
 
 static CGFloat const kInAppMessageViewHeight = 127.0;
+static CGFloat const kInAppMessageButtonsRowHeight = 46.0;
 
 @interface PGInAppMessageView ()
 
@@ -21,6 +23,7 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 @property (nonatomic, strong) NSLayoutConstraint *bottomEdgeConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryButtonLeadingCenterConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryButtonLeadingLeftConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *messageIcon;
 
 @end
 
@@ -63,7 +66,7 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
                                                                     toItem:self.superview
                                                                  attribute:NSLayoutAttributeBottom
                                                                 multiplier:1.0
-                                                                  constant:kInAppMessageViewHeight];
+                                                                  constant:[self viewHeight]];
 
         NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self
                                                                   attribute:NSLayoutAttributeHeight
@@ -71,7 +74,7 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                  multiplier:1.0
-                                                                   constant:kInAppMessageViewHeight];
+                                                                   constant:[self viewHeight]];
 
         [NSLayoutConstraint activateConstraints:@[leadingEdge, trailingEdge, self.bottomEdgeConstraint, height]];
     }
@@ -84,11 +87,24 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
 
 - (void)hide
 {
-    self.bottomEdgeConstraint.constant = kInAppMessageViewHeight;
+    self.bottomEdgeConstraint.constant = [self viewHeight];
 }
 
 
 #pragma mark - Private
+
+- (CGFloat)viewHeight
+{
+    CGFloat height = kInAppMessageViewHeight;
+
+    UANotificationCategory *buttonCategory = self.message.buttonCategory;
+
+    if (buttonCategory == nil || buttonCategory.actions.count == 0) {
+        height -= kInAppMessageButtonsRowHeight;
+    }
+
+    return height;
+}
 
 - (void)setMessage:(UAInAppMessage *)message
 {
@@ -123,7 +139,20 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
         self.secondaryButton.hidden = YES;
 
     } else {
-        [self.primaryButton setTitle:[[buttonCategory.actions firstObject] title] forState:UIControlStateNormal];
+        NSString *primaryButtonLabel = [[buttonCategory.actions firstObject] title];
+        NSString *secondaryButtonLabel = [[buttonCategory.actions lastObject] title];
+
+        NSString *messageType = [self.message.extra objectForKey:kInAppMessageTypeKey];
+        if ([messageType isEqualToString:kInAppMessageTypeValueBuyPaper]) {
+            primaryButtonLabel = NSLocalizedString(@"Get More", nil);
+            self.messageIcon.image = [UIImage imageNamed:@"ZincPhotoPaper"];
+
+        } else if ([messageType isEqualToString:kInAppMessageTypeValueFirmwareUpgrade]) {
+            primaryButtonLabel = NSLocalizedString(@"Get Firmware Upgrade", nil);
+            self.messageIcon.image = [UIImage imageNamed:@"FW_icon"];
+        }
+
+        [self.primaryButton setTitle:primaryButtonLabel forState:UIControlStateNormal];
 
         if (buttonCategory.actions.count == 1) {
             self.secondaryButton.hidden = YES;
@@ -132,7 +161,7 @@ static CGFloat const kInAppMessageViewHeight = 127.0;
             self.primaryButtonLeadingLeftConstraint.active = YES;
 
         } else {
-            [self.secondaryButton setTitle:[[buttonCategory.actions lastObject] title] forState:UIControlStateNormal];
+            [self.secondaryButton setTitle:secondaryButtonLabel forState:UIControlStateNormal];
         }
     }
 }

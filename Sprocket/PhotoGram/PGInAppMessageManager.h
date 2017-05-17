@@ -13,9 +13,16 @@
 #import <Foundation/Foundation.h>
 #import <AirshipKit.h>
 
+extern NSString * const kInAppMessageTypeKey;
+extern NSString * const kInAppMessageTypeValueBuyPaper;
+extern NSString * const kInAppMessageTypeValueFirmwareUpgrade;
+
 @interface PGInAppMessageManager : NSObject <UAInAppMessagingDelegate, UAInAppMessageControllerDelegate>
 
 + (instancetype)sharedInstance;
+
+- (void)showBuyPaperMessage;
+- (void)showFirmwareUpgradeMessage;
 
 @end
 

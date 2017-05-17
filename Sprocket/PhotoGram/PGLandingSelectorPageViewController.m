@@ -17,6 +17,7 @@
 #import <HPPRSelectPhotoCollectionViewController.h>
 #import <HPPRSelectAlbumTableViewController.h>
 #import <HPPR.h>
+#import <AirshipKit.h>
 
 #import "PGLandingSelectorPageViewController.h"
 #import "PGInstagramLandingPageViewController.h"
@@ -132,6 +133,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 - (void)showStatusBar
 {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+
+    [[UAirship inAppMessaging] displayPendingMessage];
 }
 
 
