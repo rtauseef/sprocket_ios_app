@@ -11,7 +11,7 @@
 //
 
 #import "UIImage+MaskImage.h"
-#import "UIImage+imageResize.h"
+#import "UIImage+ImageResize.h"
 
 @implementation UIImage (MaskImage)
 

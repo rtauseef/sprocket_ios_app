@@ -13,6 +13,7 @@
 #import <MP.h>
 #import <MPBTPrintManager.h>
 #import <MessageUI/MessageUI.h>
+#import <AirshipKit.h>
 
 #import "PGSideBarMenuViewController.h"
 
@@ -150,6 +151,13 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
         }
         case PGSideBarMenuCellPrintQueue: {
             [self showPrintQueueAlert];
+            break;
+        }
+        case PGSideBarMenuCellInbox: {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"PGMessageCenterNavigationController"];
+
+            [self presentViewController:navigationController animated:YES completion:nil];
             break;
         }
         case PGSideBarMenuCellBuyPaper:{

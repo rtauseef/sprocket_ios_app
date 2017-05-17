@@ -10,7 +10,7 @@
 // the license agreement.
 //
 #import "UIImageView+MaskImage.h"
-#import "UIImage+imageResize.h"
+#import "UIImage+ImageResize.h"
 
 #define MASKED_IMAGE_SIZE 22.0f
 #define MASKED_IMAGE_BORDER_WIDTH 1.0f
