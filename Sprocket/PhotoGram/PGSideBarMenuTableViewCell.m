@@ -14,6 +14,7 @@
 #import "PGAppNavigation.h"
 #import "UIColor+Style.h"
 #import "PGLinkSettings.h"
+#import "PGInboxMessageManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -21,7 +22,7 @@
 NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
 NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
 
-NSInteger const kPGSideBarMenuItemsNumberOfRows = 8;
+NSInteger const kPGSideBarMenuItemsNumberOfRows = 9;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
 CGFloat const kPGSideBarMenuItemsSmallCellHeight = 38.0f;
@@ -55,6 +56,11 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
             self.menuTitle.text = NSLocalizedString(@"sprocket", nil);
             self.menuImageView.image = [UIImage imageNamed:@"menuSprocket"];
             break;
+        case PGSideBarMenuCellInbox:
+            self.menuTitle.text = NSLocalizedString(@"Inbox", nil);
+            self.menuImageView.image = [self inboxImage];
+            self.titlePadding.constant = 9;
+            break;
         case PGSideBarMenuCellPrintQueue:
             self.menuTitle.text = NSLocalizedString(@"Print Queue", nil);
             self.menuImageView.image = [self printQueueImage];
@@ -87,6 +93,15 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
         default:
             break;
     }
+}
+
+- (UIImage *)inboxImage
+{
+    if ([[PGInboxMessageManager sharedInstance] hasUnreadMessages]) {
+        return [UIImage imageNamed:@"Inbox_Active"];
+    }
+
+    return [UIImage imageNamed:@"Inbox_Inactive"];
 }
 
 - (UIImage *)printQueueImage
