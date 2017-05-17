@@ -602,7 +602,6 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     
     plugin.customDelegate = self;
     [plugin enableScanningAnimation];
-    [plugin disableFullscreenUI];
     [plugin disableSplashVideo];
     [plugin disableFirstTimeGuide]; //Disable to prevent overlapping of guide and custom view.
     return plugin;
