@@ -58,8 +58,7 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image with margins
 
-  @reset
-  @regression
+  @manual
   Scenario: Verify Double-tap add borders to image on preview screen_Google
     Given I am on the "Google Photos" screen
     When I touch second photo
