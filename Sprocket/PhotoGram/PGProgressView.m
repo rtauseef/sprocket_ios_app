@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *sublabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sublabelHeight;
 
 @end
 
@@ -24,6 +26,14 @@
 
 - (void)setText:(NSString *)text {
     self.label.text = text;
+}
+
+- (void)setSubText:(NSString *)text {
+    if (text) {
+        self.sublabel.text = text;
+    } else {
+        self.sublabelHeight.constant = 0;
+    }
 }
 
 - (void)setProgress:(CGFloat)progress {
