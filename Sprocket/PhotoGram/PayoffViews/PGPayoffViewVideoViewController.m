@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "PGAppDelegate.h"
 #import "AVPlayerViewController+Fullscreen.h"
+#import "HPPR.h"
 
 @interface PGPayoffViewVideoViewController ()
 
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.readyToPlay = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,6 +96,8 @@
     
     self.playerViewController = [AVPlayerViewController new];
     self.playerViewController.player = self.player;
+    
+    self.playerViewController.view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.playerViewController.view.frame = self.view.bounds;
     [self.playerViewController.contentOverlayView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [self.player addObserver:self forKeyPath:@"status" options:0 context:nil];

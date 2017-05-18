@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGMetarPayoffViewController">
             <connections>
                 <outlet property="activityIndicator" destination="0ii-bz-gO1" id="Yvi-Wf-DBU"/>
+                <outlet property="currentViewLabel" destination="8Q1-kc-Vxm" id="hK9-rM-JNu"/>
                 <outlet property="pageControl" destination="EG5-gu-eOs" id="PU2-z7-Gqx"/>
                 <outlet property="paginationView" destination="9zz-au-Tse" id="e5p-DF-9Z9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -43,6 +44,13 @@
                 <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EG5-gu-eOs" customClass="PGPageControl">
                     <rect key="frame" x="16" y="51" width="382" height="37"/>
                 </pageControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q1-kc-Vxm" userLabel="currentViewLabel">
+                    <rect key="frame" x="20" y="21" width="347" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -58,7 +66,7 @@
                 <constraint firstItem="EG5-gu-eOs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="y4C-z0-tBJ"/>
                 <constraint firstAttribute="trailing" secondItem="9zz-au-Tse" secondAttribute="trailing" id="yQk-0a-zdR"/>
             </constraints>
-            <point key="canvasLocation" x="24.5" y="52.5"/>
+            <point key="canvasLocation" x="24" y="52"/>
         </view>
     </objects>
     <resources>

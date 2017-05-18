@@ -19,10 +19,7 @@
 
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;
 @property (strong, nonatomic) HPPRCameraRollPartialPhotoProvider *provider;
-@property (weak, nonatomic) IBOutlet UILabel *viewLabel;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIView *topBarView;
-
 @property (strong, nonatomic) NSDate* filteringDate;
 @property (strong, nonatomic) CLLocation* filteringLocation;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -46,9 +43,8 @@
     self.provider = [[HPPRCameraRollPartialPhotoProvider alloc] init];
     self.photoCollectionViewController.provider = self.provider;
     [self.photoCollectionViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-    _topBarView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     [self.mainView addSubview:self.photoCollectionViewController.view];
-    self.viewLabel.text = @"";
+    self.viewTitle = [NSString string];
     [self.activityIndicator startAnimating];
     self.photoCollectionViewController.view.hidden = YES;
     
@@ -61,9 +57,9 @@
         if (self.metadata && self.metadata.created) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setLocalizedDateFormatFromTemplate:@"MMM d, yyyy"];
-            self.viewLabel.text = [NSString stringWithFormat:@"Photos from %@",[formatter stringFromDate:self.metadata.created]];
+            self.viewTitle = [NSString stringWithFormat:@"Photos from %@",[formatter stringFromDate:self.metadata.created]];
         } else {
-            self.viewLabel.text = NSLocalizedString(@"Photos taken on the same day", nil);
+            self.viewTitle = NSLocalizedString(@"Photos taken on the same day", nil);
         }
     } else if (self.filteringLocation) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -74,9 +70,9 @@
         if (self.metadata && self.metadata.location && self.metadata.location.venue &&
             self.metadata.location.venue.city && self.metadata.location.venue.state) {
          
-            self.viewLabel.text = [NSString stringWithFormat:@"Photos from %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
+            self.viewTitle = [NSString stringWithFormat:@"Photos from %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
         } else {
-            self.viewLabel.text = NSLocalizedString(@"Photos taken at the same location", nil);
+            self.viewTitle = NSLocalizedString(@"Photos taken at the same location", nil);
         }
     }
 }

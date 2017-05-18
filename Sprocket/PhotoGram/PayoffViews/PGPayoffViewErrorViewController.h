@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PGMetarPayoffViewController.h"
+#import "PGPayoffViewBaseViewController.h"
 
-@interface PGPayoffViewErrorViewController : UIViewController
+@interface PGPayoffViewErrorViewController : PGPayoffViewBaseViewController
 
 @property (strong, nonatomic) PGMetarPayoffViewController* parentVc;
 @property (strong, nonatomic) NSString *errorCustomMessage;

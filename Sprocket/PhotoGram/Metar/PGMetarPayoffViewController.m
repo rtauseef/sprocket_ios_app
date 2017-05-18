@@ -12,6 +12,7 @@
 #import "PGPayoffViewImageViewController.h"
 #import "PGPayoffViewErrorViewController.h"
 #import "PGPageControl.h"
+#import "HPPR.h"
 
 @interface PGMetarPayoffViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @property (assign, nonatomic) NSUInteger pendingIndex;
+@property (weak, nonatomic) IBOutlet UILabel *currentViewLabel;
 
 @end
 
@@ -34,6 +36,7 @@
     
     if (self.metadata != nil && self.metadata.data != nil && [self.metadata.data objectForKey:kPGPayoffUUIDKey] != nil) {
         // resolve metadata
+        self.view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
         [self getMetadataFromMetar];
     }
     
@@ -114,6 +117,14 @@
         weakSelf.pageControl.numberOfPages = [weakSelf.arrayOfViewControllers count];
         weakSelf.pageControl.currentPage = 0;
         [weakSelf.pageControl setHidden:NO];
+        
+        PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [weakSelf.arrayOfViewControllers objectAtIndex:0];
+        weakSelf.currentViewLabel.text = currentVc.viewTitle;
+        weakSelf.currentViewLabel.alpha = 0;
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{ weakSelf.currentViewLabel.alpha = 1;}
+                         completion:nil];
     }];
 }
 
@@ -197,7 +208,15 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
 willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
+    
+    // fade out
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{ self.currentViewLabel.alpha = 0;}
+                     completion:nil];
+    
     self.pendingIndex = [self.arrayOfViewControllers indexOfObject:[pendingViewControllers firstObject]];
+    
+    
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
@@ -206,6 +225,17 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
        transitionCompleted:(BOOL)completed {
     if (completed) {
         self.pageControl.currentPage = self.pendingIndex;
+        
+        PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pendingIndex];
+        
+        self.currentViewLabel.text = currentVc.viewTitle;
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{ self.currentViewLabel.alpha = 1;}
+                         completion:nil];
     }
 }
+
+
+
 @end

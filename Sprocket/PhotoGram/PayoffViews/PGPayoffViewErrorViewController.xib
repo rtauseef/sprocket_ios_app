@@ -28,18 +28,21 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVe-1J-mZ6">
-                    <rect key="frame" x="169" y="363" width="37" height="30"/>
+                    <rect key="frame" x="142" y="363" width="90" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="37" id="Yzx-3g-U4K"/>
+                        <constraint firstAttribute="width" constant="90" id="Yzx-3g-U4K"/>
                         <constraint firstAttribute="height" constant="30" id="wkd-JG-fGh"/>
                     </constraints>
-                    <state key="normal" title="Retry"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Retry">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didClickRetry:" destination="-1" eventType="touchUpInside" id="ahu-Jm-vHK"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="3ay-ac-gOH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6ev-PC-8h3"/>
                 <constraint firstItem="3ay-ac-gOH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="C00-Gb-BKz"/>

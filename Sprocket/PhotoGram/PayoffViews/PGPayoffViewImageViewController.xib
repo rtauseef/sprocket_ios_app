@@ -13,9 +13,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="GBS-xY-0vP" id="nNn-Zo-XvO"/>
                 <outlet property="mainView" destination="Lbs-Qh-NHP" id="aYB-0K-6pd"/>
-                <outlet property="topBarView" destination="Ltb-53-1Lv" id="Ty4-kb-osr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewLabel" destination="GQj-FT-r1l" id="Eha-kF-Hc3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,34 +21,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltb-53-1Lv" userLabel="topBarView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos taken on the same day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQj-FT-r1l" userLabel="viewLabel">
-                            <rect key="frame" x="8" y="10" width="398" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="GQj-FT-r1l" firstAttribute="centerX" secondItem="Ltb-53-1Lv" secondAttribute="centerX" id="3gM-nv-aqe"/>
-                        <constraint firstItem="GQj-FT-r1l" firstAttribute="top" secondItem="Ltb-53-1Lv" secondAttribute="top" constant="10" id="Bdl-Zf-x7N"/>
-                        <constraint firstAttribute="trailing" secondItem="GQj-FT-r1l" secondAttribute="trailing" constant="8" id="Er7-7x-eKc"/>
-                        <constraint firstAttribute="bottom" secondItem="GQj-FT-r1l" secondAttribute="bottom" constant="9" id="NFm-jM-ErI"/>
-                        <constraint firstItem="GQj-FT-r1l" firstAttribute="centerY" secondItem="Ltb-53-1Lv" secondAttribute="centerY" id="QTx-Qk-51D"/>
-                        <constraint firstItem="GQj-FT-r1l" firstAttribute="leading" secondItem="Ltb-53-1Lv" secondAttribute="leading" constant="8" id="iEh-Mg-viv"/>
-                        <constraint firstItem="GQj-FT-r1l" firstAttribute="leading" secondItem="Ltb-53-1Lv" secondAttribute="leading" constant="8" id="pcO-nj-lez"/>
-                        <constraint firstAttribute="trailing" secondItem="GQj-FT-r1l" secondAttribute="trailing" constant="8" id="vob-O0-NkA"/>
-                        <constraint firstItem="GQj-FT-r1l" firstAttribute="centerY" secondItem="Ltb-53-1Lv" secondAttribute="centerY" id="wYS-rF-I0s"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbs-Qh-NHP" userLabel="mainView">
-                    <rect key="frame" x="0.0" y="40" width="414" height="696"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="GBS-xY-0vP">
-                            <rect key="frame" x="197" y="338" width="20" height="20"/>
+                            <rect key="frame" x="197" y="358" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -63,16 +38,15 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Lbs-Qh-NHP" secondAttribute="trailing" id="0TC-I5-fGB"/>
-                <constraint firstAttribute="trailing" secondItem="Ltb-53-1Lv" secondAttribute="trailing" id="5Pz-J3-CNc"/>
-                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="Ltb-53-1Lv" secondAttribute="bottom" id="81k-X2-MVL"/>
-                <constraint firstItem="Ltb-53-1Lv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9uT-vU-R41"/>
-                <constraint firstItem="Ltb-53-1Lv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="A6L-5q-ak5"/>
+                <constraint firstAttribute="trailing" secondItem="Lbs-Qh-NHP" secondAttribute="trailing" id="3yl-LN-Jpg"/>
+                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5Um-Ux-kUx"/>
                 <constraint firstAttribute="bottom" secondItem="Lbs-Qh-NHP" secondAttribute="bottom" id="Fnd-0B-31G"/>
+                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NjT-jQ-j8M"/>
                 <constraint firstItem="Lbs-Qh-NHP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i3F-UT-6oS"/>
-                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="Ltb-53-1Lv" secondAttribute="bottom" id="kDM-w8-WKu"/>
+                <constraint firstAttribute="bottom" secondItem="Lbs-Qh-NHP" secondAttribute="bottom" id="iLE-Sr-EU7"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
-            <point key="canvasLocation" x="29.5" y="14.5"/>
+            <point key="canvasLocation" x="29" y="14"/>
         </view>
     </objects>
 </document>

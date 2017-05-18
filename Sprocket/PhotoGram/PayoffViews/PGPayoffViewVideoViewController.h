@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
+#import "PGPayoffViewBaseViewController.h"
 
-@interface PGPayoffViewVideoViewController : UIViewController
+@interface PGPayoffViewVideoViewController : PGPayoffViewBaseViewController
 
 - (void) setVideoWithURL: (NSString *) strUrl;
 - (void) setVideoWithAsset: (PHAsset *) asset;
