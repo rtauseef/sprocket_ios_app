@@ -66,6 +66,13 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
 
 #pragma mark - Private
 
+- (BOOL)isRemoteBuyPaperMessage:(UAInAppMessage *)message
+{
+    BOOL titleMatch = [message.alert isEqualToString:@"Hi, do you need more HP ZINK Photo Paper?"];
+
+    return titleMatch && message.extra == nil;
+}
+
 - (BOOL)shouldDisplayMessage
 {
     BOOL allowsInAppMessages = NO;
@@ -86,6 +93,10 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
 {
     if (![NSLocale isEnglish]) {
         [[UAirship inAppMessaging] deletePendingMessage:message];
+
+    } else if ([self isRemoteBuyPaperMessage:message]) {
+        [[UAirship inAppMessaging] deletePendingMessage:message];
+        [self showBuyPaperMessage];
 
     } else if ([self shouldDisplayMessage]) {
         [[UAirship inAppMessaging] displayPendingMessage];
