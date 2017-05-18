@@ -13,12 +13,14 @@
 #import "PGImglyManager.h"
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
+#import "PGMagicFrameManager.h"
 #import "UIColor+Style.h"
 #import <imglyKit/IMGLYAnalyticsConstants.h>
 
 static NSString * const kImglyMenuItemMagic = @"Magic";
 static NSString * const kImglyMenuItemFilter = @"Filter";
 static NSString * const kImglyMenuItemFrame = @"Frame";
+static NSString * const kImglyMenuItemMagicFrame = @"MagicFrame";
 static NSString * const kImglyMenuItemSticker = @"Sticker";
 static NSString * const kImglyMenuItemText = @"Text";
 static NSString * const kImglyMenuItemCrop = @"Crop";
@@ -69,6 +71,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     IMGLYBoxedMenuItem *frameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFrame
                                                                          icon:[UIImage imageNamed:@"ic_frame_48pt"]
                                                                          tool:[[IMGLYFrameToolController alloc] initWithConfiguration:configuration]];
+    
+    IMGLYBoxedMenuItem *magicFrameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemMagicFrame
+                                                                         icon:[UIImage imageNamed:@"ic_magicframe_48pt"]
+                                                                         tool:[[IMGLYFrameToolController alloc] initWithConfiguration:configuration]];
 
     IMGLYBoxedMenuItem *stickerItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemSticker
                                                                            icon:[UIImage imageNamed:@"ic_sticker_48pt"]
@@ -86,6 +92,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
              magicItem,
              filterItem,
              frameItem,
+             magicFrameItem,
              stickerItem,
              textItem,
              cropItem
@@ -244,6 +251,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 } else if ([item.title isEqualToString:kImglyMenuItemFrame]) {
                     cell.accessibilityIdentifier = @"editFrame";
 
+                } else if ([item.title isEqualToString:kImglyMenuItemMagicFrame]) {
+                    cell.accessibilityIdentifier = @"editMagicFrame";
+                    
                 } else if ([item.title isEqualToString:kImglyMenuItemSticker]) {
                     cell.accessibilityIdentifier = @"editSticker";
 
@@ -319,6 +329,51 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
                 [cell.imageView setNeedsUpdateConstraints];
                 [cell.imageView updateConstraintsIfNeeded];
+            };
+        }];
+        
+        
+        // Magic Frames configuration
+        
+        [builder configureFrameToolController:^(IMGLYFrameToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"magic-frame-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"magic-frame-tool-apply-btn"];
+            
+            toolBuilder.frameDataSourceConfigurationClosure = ^(IMGLYFrameDataSource * _Nonnull dataSource) {
+                dataSource.allFrames = [[PGMagicFrameManager sharedInstance] imglyFrames];
+            };
+            
+            toolBuilder.frameCellConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYFrame * _Nonnull frame) {
+                cell.tintColor = [UIColor HPRowColor];
+                cell.borderColor = [UIColor HPRowColor];
+                cell.contentView.backgroundColor = [UIColor HPRowColor];
+                
+                cell.accessibilityLabel = frame.accessibilityLabel;
+                
+                [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
+                [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:60.0 height:60.0]];
+                [cell.imageView setNeedsUpdateConstraints];
+                [cell.imageView updateConstraintsIfNeeded];
+            };
+            
+            toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
+                cell.captionLabel.text = nil;
+                
+                [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
+                [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
+                [cell.imageView setNeedsUpdateConstraints];
+                [cell.imageView updateConstraintsIfNeeded];
+            };
+            
+            toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
+                NSString *frameName = @"NoFrame";
+                
+                if (frame) {
+                    frameName = frame.accessibilityLabel;
+                }
+                
+                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFrame];
+                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:frameName andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             };
         }];
 
