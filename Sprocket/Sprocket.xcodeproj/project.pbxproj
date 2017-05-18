@@ -5922,7 +5922,7 @@
 				TargetAttributes = {
 					2A0342461ECD038400CCFC59 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						ProvisioningStyle = Manual;
 					};
 					42188b650312ea34d00c34bf = {
@@ -5935,7 +5935,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -5943,7 +5943,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -9055,7 +9055,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -9077,7 +9077,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.sprocket.PushNotificationExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b1d4462e-3326-4cda-a0f4-127d3c1d8cc2";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
