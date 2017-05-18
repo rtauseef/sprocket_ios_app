@@ -51,7 +51,10 @@ end
 Then (/^I select "(.*?)"$/) do |option|
     if option == "Filter"
         touch @current_page.filter_1
-     else 
+    else 
+        if option =="AutoFix"
+            touch @current_page.magic
+        else 
             if option == "2:3" || option == "3:2"
                 $crop_option = option
                 sleep(2.0)
@@ -61,6 +64,7 @@ Then (/^I select "(.*?)"$/) do |option|
                 touch query("view marked:'#{option}'")
             end
         end
+    end
 end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
@@ -352,8 +356,8 @@ Then(/^I should see the "([^"]*)" with "([^"]*)" Color$/) do |type, color|
     Given(/^I should see the photo with the "([^"]*)" sticker from "([^"]*)" tab$/) do |sticker_id, sticker_tab|
     flag = 0
     sticker_value=$sticker[sticker_tab][sticker_id]['value']
-    stic_arr = query("IMGLYStickerImageView",:accessibilityLabel)
-    stic_arr.each do |test|
+    $stic_arr = query("IMGLYStickerImageView",:accessibilityLabel)
+    $stic_arr.each do |test|
         if test == sticker_value
             flag = 1
             break
