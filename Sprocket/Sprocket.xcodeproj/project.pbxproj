@@ -9072,14 +9072,15 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
 				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.dev.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "b1d4462e-3326-4cda-a0f4-127d3c1d8cc2";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -9123,7 +9124,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "77759253-698d-4ff3-a731-f375c15a921b";
+				PROVISIONING_PROFILE = "d476c719-2c88-42c4-8fe4-3c3d7ba3e452";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Extension Distrib";
 				SKIP_INSTALL = YES;
 			};
@@ -10089,6 +10090,7 @@
 				2A0342541ECD038400CCFC59 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7ae1d3f7c29c7235af187634 /* Build configuration list for PBXNativeTarget "Sprocket-cal" */ = {
 			isa = XCConfigurationList;
