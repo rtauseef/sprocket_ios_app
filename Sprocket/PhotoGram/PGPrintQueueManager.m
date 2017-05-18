@@ -52,7 +52,6 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
     if (status != MPBTPrinterManagerStatusEmptyQueue || [MPBTPrintManager sharedInstance].queueSize > 0) {
         if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
             [[PGPrintQueueManager sharedInstance] showPrintQueueAlertNotConnected];
-
         } else {
             if (status == MPBTPrinterManagerStatusIdle) {
                 [[PGPrintQueueManager sharedInstance] showPrintQueueAlertPaused];
@@ -61,7 +60,6 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                 [[PGPrintQueueManager sharedInstance] showPrintQueueAlertActive];
             }
         }
-
     } else {
         [[PGPrintQueueManager sharedInstance] showPrintQueueAlertEmpty];
     }
