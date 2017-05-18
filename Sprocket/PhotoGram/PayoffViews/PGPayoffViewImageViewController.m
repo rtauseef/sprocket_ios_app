@@ -57,13 +57,27 @@
             [self.provider populateImagesForSameDayAsDate:self.filteringDate];
             [self providerUpdateDone];
         });
-        self.viewLabel.text = NSLocalizedString(@"Photos taken on the same day", nil);
+        
+        if (self.metadata && self.metadata.created) {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setLocalizedDateFormatFromTemplate:@"MMM d, yyyy"];
+            self.viewLabel.text = [NSString stringWithFormat:@"Photos from %@",[formatter stringFromDate:self.metadata.created]];
+        } else {
+            self.viewLabel.text = NSLocalizedString(@"Photos taken on the same day", nil);
+        }
     } else if (self.filteringLocation) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self.provider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
             [self providerUpdateDone];
         });
-        self.viewLabel.text = NSLocalizedString(@"Photos taken at the same location", nil);
+        
+        if (self.metadata && self.metadata.location && self.metadata.location.venue &&
+            self.metadata.location.venue.city && self.metadata.location.venue.state) {
+         
+            self.viewLabel.text = [NSString stringWithFormat:@"Photos from %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
+        } else {
+            self.viewLabel.text = NSLocalizedString(@"Photos taken at the same location", nil);
+        }
     }
 }
 

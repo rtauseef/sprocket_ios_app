@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "PGMetarMedia.h"
 
 @interface PGPayoffViewImageViewController : UIViewController
 
 - (void)showImageSameDayAsDate: (NSDate *) date;
 - (void)showImagesSameLocation: (CLLocation *) location;
+
+@property (strong, nonatomic) PGMetarMedia *metadata;
 
 @end

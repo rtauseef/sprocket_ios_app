@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGPayoffViewErrorViewController">
             <connections>
+                <outlet property="errorLabel" destination="3ay-ac-gOH" id="9MX-di-M0m"/>
+                <outlet property="errorRetryButton" destination="EVe-1J-mZ6" id="1OH-yF-jnj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

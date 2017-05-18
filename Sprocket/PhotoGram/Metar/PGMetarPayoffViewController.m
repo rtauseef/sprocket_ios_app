@@ -81,6 +81,7 @@
             PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc]
                                                             initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
             
+            [viewImageVc setMetadata:metadata];
             [viewImageVc showImageSameDayAsDate:metadata.created];
             [self.arrayOfViewControllers addObject:viewImageVc];
         }
@@ -90,6 +91,7 @@
                                                             initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
             
             CLLocation *loc = [[CLLocation alloc] initWithLatitude:metadata.location.geo.latitude longitude:metadata.location.geo.longitude];
+            [viewImageVc setMetadata:metadata];
             [viewImageVc showImagesSameLocation:loc];
             [self.arrayOfViewControllers addObject:viewImageVc];
         }
@@ -97,6 +99,8 @@
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];
         viewErrorVc.parentVc = self;
+        viewErrorVc.errorCustomMessage = NSLocalizedString(@"Sorry, no information available about the scanned content.", nil);
+        viewErrorVc.shouldHideRetry = YES;
         
         [self.arrayOfViewControllers addObject:viewErrorVc];
     }

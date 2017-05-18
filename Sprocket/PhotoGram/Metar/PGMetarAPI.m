@@ -416,6 +416,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     NSURL *requestUrl = [NSURL URLWithString:requestString];
     NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
     
+    NSLog(@"METAR: fetching metadata: %@",requestString);
+    
+    
     [request setURL:requestUrl];
     [request setHTTPMethod:@"GET"];
     

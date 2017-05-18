@@ -11,10 +11,21 @@
 @interface PGPayoffViewErrorViewController ()
 - (IBAction)didClickRetry:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+@property (weak, nonatomic) IBOutlet UIButton *errorRetryButton;
+
 @end
 
 @implementation PGPayoffViewErrorViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.shouldHideRetry = NO;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -23,6 +34,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.shouldHideRetry) {
+        self.errorRetryButton.hidden = YES;
+    }
+    
+    if (self.errorCustomMessage) {
+        self.errorLabel.text = self.errorCustomMessage;
+    }
 }
 
 /*

@@ -12,5 +12,7 @@
 @interface PGPayoffViewErrorViewController : UIViewController
 
 @property (strong, nonatomic) PGMetarPayoffViewController* parentVc;
+@property (strong, nonatomic) NSString *errorCustomMessage;
+@property (assign, nonatomic) BOOL shouldHideRetry;
 
 @end
