@@ -425,7 +425,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)showAddToQueueAlert:(NSInteger)numberOfPrintsAdded withCompletion:(void (^)())completion
 {
-    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"%@,\nSprocket Printer Not Connected", nil), [self numberOfPrintsAddedString:numberOfPrintsAdded]];
+    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Sprocket Printer Not Connected,\n%@", nil), [self numberOfPrintsAddedString:numberOfPrintsAdded]];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
                                                                    message:NSLocalizedString(@"Your prints will start when the sprocket printer is on and bluetooth connected.", nil)
