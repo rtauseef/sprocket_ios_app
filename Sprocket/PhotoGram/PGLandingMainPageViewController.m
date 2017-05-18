@@ -629,11 +629,12 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         case AurasmaView_SplashScreen:
             // override
             return [UIImage imageNamed:launchImage];
+        case AurasmaView_WatermarkImage:
+            return nil;
         case AurasmaView_TorchButton:
         case AurasmaView_InfoButton:
         case AurasmaView_LikeButton:
         case AurasmaView_ScreenshotButton:
-        case AurasmaView_WatermarkImage:
         case AurasmaView_CloseButton:
         default:
             // use default
