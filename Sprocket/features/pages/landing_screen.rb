@@ -20,10 +20,6 @@ class LandingScreen < Calabash::IBase
       "view marked:'#{$list_loc['Instagram']}' index:0"
   end
 
-  def flickr_logo
-    "UIImageView id:'Flickr'"
-  end
-
   def cameraroll_logo
     #"UIImageView id:'CameraRoll'"
       "UIImageView id:'#{$list_loc['cameraroll_logo']}'"
@@ -36,7 +32,9 @@ class LandingScreen < Calabash::IBase
   def facebook_logo
     "UIImageView id:'Facebook'"
   end
-    
+    def google_logo
+    "UIImageView marked:'google_C'"
+  end
   
     
   def modal_content

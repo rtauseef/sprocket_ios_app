@@ -31,8 +31,10 @@ And(/^I tap the "(.*?)" button$/) do |button|
             touch "view marked:'#{$list_loc['Edit']}'"
             sleep(STEP_PAUSE)
         else
-            touch "PGSignInButton"
-            sleep(STEP_PAUSE)
+            if element_exists("PGSignInButton")
+                touch "PGSignInButton"
+                sleep(STEP_PAUSE)
+            end
         end
     end
 end

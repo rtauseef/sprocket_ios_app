@@ -68,12 +68,12 @@ When /I touch Instagram "(.*?)" button$/ do |text|
     touch("button marked:'#{$list_loc[text]}' button index:0")
 end
 
-When(/^I touch Flickr "(.*?)" button$/) do |text|
+When(/^I touch Google "(.*?)" button$/) do |text|
    wait_for_elements_exist("label marked:'#{text}'",:timeout=>SPINNER_TIMEOUT)
     touch("button marked:'#{text}'")
 end
 
-Then(/^I should see Flickr "(.*?)" button$/) do |text|
+Then(/^I should see Google "(.*?)" button$/) do |text|
     sleep(STEP_PAUSE)
     check_element_exists("button marked:'#{text}' button index:2")
     sleep(STEP_PAUSE)

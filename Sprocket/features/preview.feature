@@ -18,8 +18,8 @@ Feature: Verify preview screen from different social media
     And I should see "Share" button
 
   @regression
-  Scenario: Verify preview screen for Flickr
-    Given I am on the "Flickr Preview" screen
+  Scenario: Verify preview screen for Google
+    Given I am on the "Google Preview" screen
     Then I should see "camera" button
     And I should see "cancel" button
     And I should see "Edit" button
@@ -58,12 +58,11 @@ Feature: Verify preview screen from different social media
     Then I double tap on the picture
     Then I should see the original image with margins
 
-  @reset
-  @regression
-  Scenario: Verify Double-tap add borders to image on preview screen_Flickr
-    Given I am on the "Flickr Photo" screen
+  @manual
+  Scenario: Verify Double-tap add borders to image on preview screen_Google
+    Given I am on the "Google Photos" screen
     When I touch second photo
-    Then I should see the "Flickr Preview" screen
+    Then I should see the "Google Preview" screen
     When I double tap on the picture
     Then I should see margins on top and bottom
     Then I double tap on the picture

@@ -110,16 +110,16 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                 end
                      sleep(STEP_PAUSE)
             else
-                if social_media == "Flickr"
+                if social_media == "Google"
                     sleep(STEP_PAUSE)
                     if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                         puts "#{social_media} - Not Applicable for Chinese language!".blue
                     else
                         if ENV['LANGUAGE'] == "Danish"
                             link_text = query("PGTermsAttributedLabel", :text)[0] 
-                            raise "localization failed!" unless link_text == $list_loc['terms_of_service_flickr']
+                            raise "localization failed!" unless link_text == $list_loc['terms_of_service_google']
                         else
-                            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_flickr']}'")
+                            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_google']}'")
                             raise "not found!" unless terms_of_service_link.length > 0
                             sleep(STEP_PAUSE)
                         end
@@ -175,7 +175,7 @@ def check_options_exist item
                  puts "#{item} - Applicable only for Chinese language!".blue 
              end
          else
-             if item == "Flickr"
+             if item == "Google"
                  if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                      puts "#{item} - Not Applicable for Chinese language!".blue 
                  else

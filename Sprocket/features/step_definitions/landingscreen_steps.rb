@@ -12,12 +12,12 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
     if arg=="Facebook"
       check_element_exists(@current_page.facebook_logo)
     else
-      if arg=="Flickr"
+      if arg=="Google"
           if ENV['LANGUAGE'] =='Chinese' || ENV['LANGUAGE'] == 'Chinese-Traditional'
-              puts "Flickr not applicable for Chinese".blue
+              puts "Google not applicable for Chinese".blue
               skip_this_scenario
           else
-            check_element_exists(@current_page.flickr_logo)
+            check_element_exists(@current_page.google_logo)
           end
       else
         if arg=="Camera Roll"
@@ -41,6 +41,9 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
 end
 
 Then(/^I tap "(.*?)"$/) do |social_source|
+  if social_source == "Google"
+    social_source = "google_C"
+  end
   if element_exists("UIImageView id:'#{social_source}'")
     touch ("UIImageView id:'#{social_source}'")
   end

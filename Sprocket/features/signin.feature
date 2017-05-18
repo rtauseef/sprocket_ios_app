@@ -20,7 +20,7 @@ Scenario Outline: Sign in to different Social media accounts from Landing screen
     Examples:
       | social_media | welcome             | Sign in          | Photos           |
       | Instagram    | Instagram Landing   | Instagram Signin | Instagram Photos |
-    #  | Flickr       | Flickr Landing      | FlickrSignin     | Flickr Photo     |
+      | Google       | Google Landing      | Google Signin     | Google Photos     |
      
     
       
