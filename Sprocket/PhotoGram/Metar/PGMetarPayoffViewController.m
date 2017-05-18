@@ -39,13 +39,18 @@
     
 
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
-    [_pageViewController.view setFrame:self.paginationView.bounds];
+
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
     self.pageControl.hidesForSinglePage = YES;
  
     [self.paginationView addSubview:_pageViewController.view];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [_pageViewController.view setFrame:self.paginationView.bounds];
 }
 
 - (void) renderPagesWithMetadata: (PGMetarMedia *) metadata {
@@ -72,13 +77,22 @@
             }
         }
         
-        // TODO: remove me (add other VC just for testing...)
-        PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc]
-                                                        initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
+        if (metadata.created) {
+            PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc]
+                                                            initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
+            
+            [viewImageVc showImageSameDayAsDate:metadata.created];
+            [self.arrayOfViewControllers addObject:viewImageVc];
+        }
         
-        
-        [self.arrayOfViewControllers addObject:viewImageVc];
-        
+        if (metadata.location && CLLocationCoordinate2DIsValid(metadata.location.geo)) {
+            PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc]
+                                                            initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
+            
+            CLLocation *loc = [[CLLocation alloc] initWithLatitude:metadata.location.geo.latitude longitude:metadata.location.geo.longitude];
+            [viewImageVc showImagesSameLocation:loc];
+            [self.arrayOfViewControllers addObject:viewImageVc];
+        }
     } else {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];
@@ -95,6 +109,7 @@
 
         weakSelf.pageControl.numberOfPages = [weakSelf.arrayOfViewControllers count];
         weakSelf.pageControl.currentPage = 0;
+        [weakSelf.pageControl setHidden:NO];
     }];
 }
 
@@ -129,11 +144,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 
 /*
 #pragma mark - Navigation

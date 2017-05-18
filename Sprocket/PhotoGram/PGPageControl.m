@@ -16,12 +16,13 @@
 
 
 @interface PGPageControl ()
-    @property (strong, nonatomic) NSArray* pageViews;
+    @property (strong, nonatomic) NSMutableArray* pageViews;
 @end
 
 @implementation PGPageControl
 
 // hack, re-visit this
+
 - (void)addSubview:(UIView *)view {
     return;
 }
@@ -37,7 +38,7 @@
     
     if ( self.hidesForSinglePage && self.numberOfPages == 1 ) return;
     
-    float eachRectWidth = (rect.size.width / self.numberOfPages) - ((self.numberOfPages - 1) * kSpaceBetweenControls / self.numberOfPages);
+    float eachRectWidth = floorf((rect.size.width / self.numberOfPages) - ((self.numberOfPages - 1) * kSpaceBetweenControls / self.numberOfPages));
     
     if (eachRectWidth > kMinimumSizeForControl) {
         eachRectWidth = kMinimumSizeForControl;
@@ -48,6 +49,9 @@
     drawRect.size.height = kDefaultBarHeight;
     
     drawRect.origin.x = floorf( ( rect.size.width - drawRect.size.width * self.numberOfPages - ((self.numberOfPages - 1) * kSpaceBetweenControls) ) / 2.0 );
+
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [kBarColor set];
     
     for (int i = 0; i < self.numberOfPages; i++) {
         // draw rect
@@ -62,9 +66,7 @@
             drawRect.origin.y = floorf( ( rect.size.height - kDefaultBarHeight ) / 2.0 );
 
         }
-
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [kBarColor set];
+        
         CGContextFillRect(context, drawRect);
         
         drawRect.origin.x += drawRect.size.width + kSpaceBetweenControls;

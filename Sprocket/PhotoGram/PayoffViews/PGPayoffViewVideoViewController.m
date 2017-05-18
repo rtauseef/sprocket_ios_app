@@ -16,6 +16,9 @@
 
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
+@property (assign, nonatomic) BOOL readyToPlay;
+
 @end
 
 @implementation PGPayoffViewVideoViewController
@@ -23,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.readyToPlay = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +39,10 @@
     
     PGAppDelegate* appDelegate = (PGAppDelegate*)[UIApplication sharedApplication].delegate;
     appDelegate.restrictRotation = NO;
+    
+    if (!self.readyToPlay) {
+        [self.activitySpinner startAnimating];
+    }
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter]
@@ -93,11 +101,20 @@
 }
 
 - (void) setVideoWithAsset: (PHAsset *) asset {
-    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:nil resultHandler:^(AVAsset * avasset, AVAudioMix * audioMix, NSDictionary * info) {
+    PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+    options.networkAccessAllowed = YES;
+    
+    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset * avasset, AVAudioMix * audioMix, NSDictionary * info) {
         dispatch_async(dispatch_get_main_queue(), ^{
             AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:avasset];
-            self.player = [AVPlayer playerWithPlayerItem:item];
-            [self prepareViewController];
+            
+            if (item) {
+                self.player = [AVPlayer playerWithPlayerItem:item];
+                [self prepareViewController];
+            } else {
+                [self.activitySpinner stopAnimating];
+                // handle error
+            }
         });
     }];
 }
@@ -113,11 +130,15 @@
                         change:(NSDictionary *)change context:(void *)context {
     if (object == self.player && [keyPath isEqualToString:@"status"]) {
         if (self.player.status == AVPlayerStatusReadyToPlay) {
+            self.readyToPlay = YES;
+            [self.activitySpinner stopAnimating];
             [self.player play];
             
             PGAppDelegate* appDelegate = (PGAppDelegate*)[UIApplication sharedApplication].delegate;
             appDelegate.restrictRotation = NO;
         } else if (self.player.status == AVPlayerStatusFailed) {
+            [self.activitySpinner stopAnimating];
+            
             // something went wrong
         }
     } else if (object == self.playerViewController.contentOverlayView && [keyPath isEqualToString:@"bounds"]) {
