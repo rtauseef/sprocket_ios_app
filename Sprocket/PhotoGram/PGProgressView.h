@@ -17,5 +17,5 @@
 
 - (void)setText:(NSString *)text;
 - (void)setProgress:(CGFloat)progress;
-
+- (void)setSubText:(NSString *)text;
 @end
