@@ -49,7 +49,7 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
 
     MPBTPrinterManagerStatus status = [MPBTPrintManager sharedInstance].status;
 
-    if (status != MPBTPrinterManagerStatusEmptyQueue) {
+    if (status != MPBTPrinterManagerStatusEmptyQueue || [MPBTPrintManager sharedInstance].queueSize > 0) {
         if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
             [[PGPrintQueueManager sharedInstance] showPrintQueueAlertNotConnected];
 
