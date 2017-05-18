@@ -972,7 +972,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         }
     }
     
-    return [NSArray arrayWithObjects:origin, offRamp, nil];
+    return @[origin, offRamp];
 }
 
 - (BOOL)isWatermarkingEnabledForMedia:(HPPRMedia *)media {
