@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface PGPayoffViewImageViewController : UIViewController
+
+- (void)showImageSameDayAsDate: (NSDate *) date;
+- (void)showImagesSameLocation: (CLLocation *) location;
 
 @end

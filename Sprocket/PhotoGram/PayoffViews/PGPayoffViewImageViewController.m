@@ -7,16 +7,87 @@
 //
 
 #import "PGPayoffViewImageViewController.h"
+#import "HPPRSelectPhotoCollectionViewController.h"
+#import "HPPRCameraRollPartialPhotoProvider.h"
+#import "HPPRMedia.h"
+#import "hPPR.h"
+#import "PGPhotoSelection.h"
+#import "PGPreviewViewController.h"
+#import "PGPayoffFullScreenTmpViewController.h"
 
-@interface PGPayoffViewImageViewController ()
+@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate>
+
+@property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;
+@property (strong, nonatomic) HPPRCameraRollPartialPhotoProvider *provider;
+@property (weak, nonatomic) IBOutlet UILabel *viewLabel;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIView *topBarView;
+
+@property (strong, nonatomic) NSDate* filteringDate;
+@property (strong, nonatomic) CLLocation* filteringLocation;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 
 @end
+
+#define kPayoffViewInset 60
+#define kPGLocationDistance 1000 // 1km
 
 @implementation PGPayoffViewImageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
+    
+    self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+    self.photoCollectionViewController.delegate = self;
+    self.provider = [[HPPRCameraRollPartialPhotoProvider alloc] init];
+    self.photoCollectionViewController.provider = self.provider;
+    [self.photoCollectionViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+    _topBarView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
+    [self.mainView addSubview:self.photoCollectionViewController.view];
+    self.viewLabel.text = @"";
+    [self.activityIndicator startAnimating];
+    self.photoCollectionViewController.view.hidden = YES;
+    
+    if (self.filteringDate) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.provider populateImagesForSameDayAsDate:self.filteringDate];
+            [self providerUpdateDone];
+        });
+        self.viewLabel.text = NSLocalizedString(@"Photos taken on the same day", nil);
+    } else if (self.filteringLocation) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.provider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
+            [self providerUpdateDone];
+        });
+        self.viewLabel.text = NSLocalizedString(@"Photos taken at the same location", nil);
+    }
+}
+
+- (void) providerUpdateDone {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.photoCollectionViewController refresh];
+        
+        [self.activityIndicator stopAnimating];
+        self.photoCollectionViewController.view.hidden = NO;
+        
+    });
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, floorf(self.mainView.bounds.size.height));
+    [self.photoCollectionViewController.view setFrame:frame];
+    [self.photoCollectionViewController.view setNeedsDisplay];
+    
+    if (self.tmpViewController) {
+        [self.tmpViewController.view removeFromSuperview];
+        self.tmpViewController = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +104,39 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)showImagesSameLocation: (CLLocation *) location {
+    self.filteringLocation = location;
+}
+
+- (void)showImageSameDayAsDate: (NSDate *) date {
+    self.filteringDate = date;
+}
+
+#pragma mark Collection View Delegate
+
+- (UIEdgeInsets)collectionViewContentInset {
+    return UIEdgeInsetsMake(0, 0, kPayoffViewInset, 0);
+}
+
+- (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media {
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    self.tmpViewController = [[PGPayoffFullScreenTmpViewController alloc] init];
+    self.tmpViewController.view.frame = self.view.bounds;
+    [self.mainView addSubview:_tmpViewController.view];
+    [PGPreviewViewController presentPreviewPhotoFrom:_tmpViewController andSource:source animated:YES];
+    self.tmpViewController.delegate = self;
+    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:DISABLE_PAGE_CONTROLLER_FUNCTIONALITY_NOTIFICATION object:nil];
+}
+
+#pragma mark Temp View Controller Delegate
+
+//TODO: I don't like this, need to revisit - it's a hack because the preview controller is messing up with the current view controller frame
+
+-(void)tmpViewIsBack {
+    [self.tmpViewController.view removeFromSuperview];
+    self.tmpViewController = nil;
+}
 
 @end

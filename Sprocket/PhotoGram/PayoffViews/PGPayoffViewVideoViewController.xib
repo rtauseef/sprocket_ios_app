@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGPayoffViewVideoViewController">
             <connections>
+                <outlet property="activitySpinner" destination="uxn-J5-GDJ" id="CtE-Ua-Vgo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,16 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uxn-J5-GDJ">
+                    <rect key="frame" x="177" y="323" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="uxn-J5-GDJ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2PT-QT-Riu"/>
+                <constraint firstItem="uxn-J5-GDJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="49A-mz-Eg2"/>
+            </constraints>
         </view>
     </objects>
 </document>
