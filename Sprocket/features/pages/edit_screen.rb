@@ -74,7 +74,7 @@ class EditScreen < Calabash::IBase
 
     def navigate
         unless current_page?
-            preview_screen = go_to(FlickrPreviewScreen)
+            preview_screen = go_to(GooglePreviewScreen)
             sleep(WAIT_SCREENLOAD)
             #wait_for_elements_exist(preview_screen.edit, :timeout => MAX_TIMEOUT)
             touch query("view marked:'Edit")

@@ -33,6 +33,7 @@
 #import "UIFont+Style.h"
 #import "PGHamburgerButton.h"
 #import "PGInAppMessageManager.h"
+#import "PGPrintQueueManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -434,6 +435,8 @@ NSInteger const kMantaErrorBusy = 1;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+
+    [[PGPrintQueueManager sharedInstance] incrementPrintCounter];    
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
@@ -469,10 +472,12 @@ NSInteger const kMantaErrorBusy = 1;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+
+    [[PGPrintQueueManager sharedInstance] incrementPrintCounter];
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
-    if (self.errorAlert) {
+    if (self.errorAlert || (errorCode == kMantaErrorBusy)) {
         return;
     }
 
