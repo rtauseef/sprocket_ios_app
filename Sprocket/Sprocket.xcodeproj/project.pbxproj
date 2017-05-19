@@ -42,9 +42,7 @@
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
-		2A0342421ECD031F00CCFC59 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A03423D1ECD029100CCFC59 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2A03424F1ECD038400CCFC59 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2A0342471ECD038400CCFC59 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2A0342551ECD03CF00CCFC59 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A03423D1ECD029100CCFC59 /* AirshipAppExtensions.framework */; };
 		2AF06EEF1DD5484F000FF091 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AF06EF11DD5484F000FF091 /* InfoPlist.strings */; };
 		30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385819BE57C5009C695F /* TakeSurvey@2x.png */; };
 		30ca0973712d098dc12f2fa7 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -2363,33 +2361,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2A03423C1ECD029100CCFC59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A0342371ECD029100CCFC59 /* AirshipAppExtensions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 49AA00FC1D65158C0081989A;
-			remoteInfo = AirshipAppExtensions;
-		};
-		2A03423E1ECD029100CCFC59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A0342371ECD029100CCFC59 /* AirshipAppExtensions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 49AA01051D65158C0081989A;
-			remoteInfo = AirshipAppExtensionsTests;
-		};
-		2A0342401ECD030500CCFC59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A0342371ECD029100CCFC59 /* AirshipAppExtensions.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
-			remoteInfo = AirshipAppExtensions;
-		};
 		2A03424D1ECD038400CCFC59 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2A0342461ECD038400CCFC59;
 			remoteInfo = PushNotificationExtension;
+		};
+		657AD6D91ECE6E5700F84472 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 657AD6D41ECE6E5700F84472 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 49AA00FC1D65158C0081989A;
+			remoteInfo = AirshipAppExtensions;
+		};
+		657AD6DB1ECE6E5700F84472 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 657AD6D41ECE6E5700F84472 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 49AA01051D65158C0081989A;
+			remoteInfo = AirshipAppExtensionsTests;
 		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2449,7 +2440,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2A0342421ECD031F00CCFC59 /* AirshipAppExtensions.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2555,7 +2545,6 @@
 		26B434641E3F02310071EEFA /* Sprocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sprocket.entitlements; sourceTree = SOURCE_ROOT; };
 		26BEE7A11E92F8470055D5E4 /* PGAppNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAppNavigation.h; sourceTree = "<group>"; };
 		26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAppNavigation.m; sourceTree = "<group>"; };
-		2A0342371ECD029100CCFC59 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = "../../../../Downloads/libUAirship-8-2/AirshipAppExtensions/AirshipAppExtensions.xcodeproj"; sourceTree = "<group>"; };
 		2A0342471ECD038400CCFC59 /* PushNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC79D0F1DFB812400D86609 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D101DFB817A00D86609 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -2573,6 +2562,7 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
+		657AD6D41ECE6E5700F84472 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -4019,7 +4009,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A0342551ECD03CF00CCFC59 /* AirshipAppExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4095,11 +4084,11 @@
 			path = PushNotificationExtension;
 			sourceTree = "<group>";
 		};
-		2A0342381ECD029100CCFC59 /* Products */ = {
+		657AD6D51ECE6E5700F84472 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2A03423D1ECD029100CCFC59 /* AirshipAppExtensions.framework */,
-				2A03423F1ECD029100CCFC59 /* AirshipAppExtensionsTests.xctest */,
+				657AD6DA1ECE6E5700F84472 /* AirshipAppExtensions.framework */,
+				657AD6DC1ECE6E5700F84472 /* AirshipAppExtensionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -5304,7 +5293,7 @@
 				929886261EC24E7A00750C74 /* GoogleService-Info.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
-				2A0342371ECD029100CCFC59 /* AirshipAppExtensions.xcodeproj */,
+				657AD6D41ECE6E5700F84472 /* AirshipAppExtensions.xcodeproj */,
 				E34D5060199AB87B006D80E0 /* Sprocket */,
 				E34D5082199AB87B006D80E0 /* SprocketTests */,
 				821523271D82215600C0541C /* Sprocket Print */,
@@ -5883,7 +5872,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2A0342411ECD030500CCFC59 /* PBXTargetDependency */,
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
 				2A03424E1ECD038400CCFC59 /* PBXTargetDependency */,
 			);
@@ -5922,7 +5910,7 @@
 				TargetAttributes = {
 					2A0342461ECD038400CCFC59 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						ProvisioningStyle = Manual;
 					};
 					42188b650312ea34d00c34bf = {
@@ -5935,7 +5923,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -5943,7 +5931,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -5987,8 +5975,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2A0342381ECD029100CCFC59 /* Products */;
-					ProjectRef = 2A0342371ECD029100CCFC59 /* AirshipAppExtensions.xcodeproj */;
+					ProductGroup = 657AD6D51ECE6E5700F84472 /* Products */;
+					ProjectRef = 657AD6D41ECE6E5700F84472 /* AirshipAppExtensions.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -6003,18 +5991,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2A03423D1ECD029100CCFC59 /* AirshipAppExtensions.framework */ = {
+		657AD6DA1ECE6E5700F84472 /* AirshipAppExtensions.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = AirshipAppExtensions.framework;
-			remoteRef = 2A03423C1ECD029100CCFC59 /* PBXContainerItemProxy */;
+			remoteRef = 657AD6D91ECE6E5700F84472 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2A03423F1ECD029100CCFC59 /* AirshipAppExtensionsTests.xctest */ = {
+		657AD6DC1ECE6E5700F84472 /* AirshipAppExtensionsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = AirshipAppExtensionsTests.xctest;
-			remoteRef = 2A03423E1ECD029100CCFC59 /* PBXContainerItemProxy */;
+			remoteRef = 657AD6DB1ECE6E5700F84472 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -8704,11 +8692,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2A0342411ECD030500CCFC59 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AirshipAppExtensions;
-			targetProxy = 2A0342401ECD030500CCFC59 /* PBXContainerItemProxy */;
-		};
 		2A03424E1ECD038400CCFC59 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2A0342461ECD038400CCFC59 /* PushNotificationExtension */;
