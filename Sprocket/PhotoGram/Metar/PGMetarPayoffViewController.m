@@ -11,6 +11,8 @@
 #import "PGPayoffViewVideoViewController.h"
 #import "PGPayoffViewImageViewController.h"
 #import "PGPayoffViewErrorViewController.h"
+#import "PGPayoffViewWikipediaViewController.h"
+
 #import "PGPageControl.h"
 #import "HPPR.h"
 
@@ -98,16 +100,31 @@
             [viewImageVc showImagesSameLocation:loc];
             [self.arrayOfViewControllers addObject:viewImageVc];
         }
-    } else {
+        
+        if (metadata.location.content.wikipedia != nil) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PGPayoffView" bundle:nil];
+            
+            PGPayoffViewWikipediaViewController *viewWikipedia  = [storyboard instantiateViewControllerWithIdentifier:@"wikipediaVc"];
+            
+            [viewWikipedia setMetadata:metadata];
+            
+            if ([viewWikipedia metadataValidForCurrentLang]) {
+                [self.arrayOfViewControllers addObject:viewWikipedia];
+            }
+        }
+    } 
+
+    if ([self.arrayOfViewControllers count] == 0) {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];
+        
         viewErrorVc.parentVc = self;
         viewErrorVc.errorCustomMessage = NSLocalizedString(@"Sorry, no information available about the scanned content.", nil);
         viewErrorVc.shouldHideRetry = YES;
         
         [self.arrayOfViewControllers addObject:viewErrorVc];
     }
-
+    
     __weak __typeof__(self) weakSelf = self;
     
     [_pageViewController setViewControllers:@[[self.arrayOfViewControllers objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {

@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.readyToPlay = NO;
-    
+    self.viewTitle = NSLocalizedString(@"Original Video", nil);
 }
 
 - (void)didReceiveMemoryWarning {
