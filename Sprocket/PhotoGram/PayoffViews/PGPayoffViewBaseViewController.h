@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PGMetarMedia.h"
 
 @interface PGPayoffViewBaseViewController : UIViewController
 
 @property (strong, nonatomic) NSString *viewTitle;
+@property (strong, nonatomic) PGMetarMedia *metadata;
 
 @end

@@ -11,6 +11,8 @@
 #import "PGPayoffViewVideoViewController.h"
 #import "PGPayoffViewImageViewController.h"
 #import "PGPayoffViewErrorViewController.h"
+#import "PGPayoffViewWikipediaViewController.h"
+
 #import "PGPageControl.h"
 #import "HPPR.h"
 
@@ -97,6 +99,13 @@
             [viewImageVc setMetadata:metadata];
             [viewImageVc showImagesSameLocation:loc];
             [self.arrayOfViewControllers addObject:viewImageVc];
+        }
+        
+        if (metadata.location.content.wikipedia != nil) {
+            PGPayoffViewWikipediaViewController *viewWikipedia = [[PGPayoffViewWikipediaViewController alloc]
+                                                            initWithNibName:@"PGPayoffViewWikipediaViewController" bundle:nil];
+            [viewWikipedia setMetadata:metadata];
+            [self.arrayOfViewControllers addObject:viewWikipedia];
         }
     } else {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]

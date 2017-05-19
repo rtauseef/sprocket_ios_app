@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CLLocation.h>
 #import "PGMetarLocationVenue.h"
+#import "PGMetarContent.h"
 
 @interface PGMetarLocation : NSObject
 
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSInteger, PGMetarLocationKind) {
 @property (assign, nonatomic) PGMetarLocationType type;
 @property (assign, nonatomic) PGMetarLocationKind kind;
 @property (strong, nonatomic) PGMetarLocationVenue *venue;
+@property (strong, nonatomic) PGMetarContent *content;
 
 - (NSDictionary *) getDict;
 - (instancetype)initWithDictionary: (NSDictionary *) dict;

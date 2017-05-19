@@ -15,7 +15,7 @@
     
     if (self) {
         NSDictionary *geo = [dict objectForKey:@"geo"];
-        if (geo != nil) {
+        if (geo != nil && ![geo isKindOfClass:[NSNull class]]) {
             NSNumber *lat = [geo objectForKey:@"lat"];
             NSNumber *lon = [geo objectForKey:@"lon"];
             
@@ -38,12 +38,20 @@
         if ([dict objectForKey:@"venue"] != nil) {
             self.venue = [[PGMetarLocationVenue alloc] initWithDictionary: [dict objectForKey:@"venue"]];
         }
+        
+        if ([dict objectForKey:@"content"] != nil && ![[dict objectForKey:@"content"] isEqual:[NSNull null]]) {
+            self.content = [[PGMetarContent alloc] initWithDictionary: [dict objectForKey:@"content"]];
+        }
     }
     
     return self;
 }
 
 - (PGMetarLocationKind) getKindFromString: (NSString *) kind {
+    if ([kind isEqual:[NSNull null]]) {
+        return PGMetarLocationKindUnknown;
+    }
+    
     if ([kind rangeOfString:@"indoor" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         return PGMetarLocationKindIndoor;
     } else if ([kind rangeOfString:@"outdoor" options:NSCaseInsensitiveSearch].location != NSNotFound) {
@@ -54,6 +62,10 @@
 }
 
 - (PGMetarLocationType) getTypeFromString: (NSString *) type {
+    if ([type isEqual:[NSNull null]]) {
+        return PGMetarLocationTypeUnknown;
+    }
+
     if ([type rangeOfString:@"address" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         return PGMetarLocationTypeAddress;
     } else if ([type rangeOfString:@"monument" options:NSCaseInsensitiveSearch].location != NSNotFound) {
