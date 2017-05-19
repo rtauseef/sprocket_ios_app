@@ -200,8 +200,8 @@ end
 Then(/^I select "(.*?)" frame$/) do |frame_id|
     sleep(STEP_PAUSE)
     $frame_id = frame_id
-    frame_name=$frame[frame_id]['name']
-    select_frame frame_name
+    $frame_name=$frame[frame_id]['name']
+    select_frame $frame_name
     sleep(STEP_PAUSE)
 end
 
