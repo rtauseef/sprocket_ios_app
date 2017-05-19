@@ -12,6 +12,7 @@
 
 #import "PGInboxMessageCenterListViewController.h"
 #import "PGInboxMessageCenterTableViewCell.h"
+#import "UIFont+Style.h"
 
 #import <AirshipKit.h>
 
@@ -40,11 +41,8 @@
 {
     [super viewDidLoad];
 
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refreshControlUpdated) forControlEvents:UIControlEventValueChanged];
-
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 328;
+    self.tableView.estimatedRowHeight = 340;
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
@@ -56,15 +54,14 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-#pragma mark - Private
-
-- (void)refreshControlUpdated
-{
-    if (self.refreshControl.isRefreshing) {
+- (IBAction)refreshControlUpdated:(UIRefreshControl *)sender {
+    if (sender.isRefreshing) {
         [self loadMessages];
     }
 }
+
+
+#pragma mark - Private
 
 - (void)loadMessages {
 
@@ -87,6 +84,39 @@
     self.messages = [NSArray arrayWithArray:[UAirship inbox].messageList.messages];
 
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.messages.count > 0) {
+            self.tableView.backgroundView = nil;
+
+        } else {
+            UILabel *label = [[UILabel alloc] init];
+            label.font = [UIFont HPSimplifiedLightFontWithSize:20.0];
+            label.textColor = [UIColor whiteColor];
+            label.numberOfLines = 2;
+            label.text = NSLocalizedString(@"We'll send you sprocket tips\nand fun project ideas.", nil);
+            label.textAlignment = NSTextAlignmentCenter;
+
+            self.tableView.backgroundView = label;
+
+            NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:label
+                                                                       attribute:NSLayoutAttributeCenterX
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeCenterX
+                                                                      multiplier:1.0
+                                                                        constant:0.0];
+            
+            NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:label
+                                                                       attribute:NSLayoutAttributeCenterY
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeCenterY
+                                                                      multiplier:1.0
+                                                                        constant:0.0];
+
+            [NSLayoutConstraint activateConstraints:@[centerX, centerY]];
+            
+        }
+
         [self.tableView reloadData];
     });
 }
