@@ -413,12 +413,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 }
 - (NSString *)numberOfPrintsAddedString:(NSInteger)numberOfPrintsAdded
 {
-    NSString *printString = NSLocalizedString(@"print", nil);
+    NSString *printString = NSLocalizedString(@"print added", @"This will be formatted as '1 print added to the queue, 7 total'");
     if (numberOfPrintsAdded > 1) {
-        printString = NSLocalizedString(@"prints", nil);
+        printString = NSLocalizedString(@"prints added", @"This will be formatted as '3 prints added to the queue, 7 total'");
     }
-    NSString *addedToQueueString = NSLocalizedString(@"added to the queue", nil);
-    NSString *totalString = NSLocalizedString(@"total", nil);
+    NSString *addedToQueueString = NSLocalizedString(@"to the queue", @"This will be formatted as '3 prints added to the queue, 7 total'");
+    NSString *totalString = NSLocalizedString(@"total", @"This will be formatted as '3 prints added to the queue, 7 total'");
     NSString *title = [NSString stringWithFormat:@"%ld %@ %@, %ld %@", (long)numberOfPrintsAdded, printString, addedToQueueString, (long)[MPBTPrintManager sharedInstance].queueSize, totalString];
     
     return title;
