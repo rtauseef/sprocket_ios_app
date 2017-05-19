@@ -417,21 +417,22 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (numberOfPrintsAdded > 1) {
         printString = NSLocalizedString(@"prints", nil);
     }
-    
-    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"%lld %@ added to the queue, %lld total", @"number of print or prints added to the queue"), numberOfPrintsAdded, printString, [MPBTPrintManager sharedInstance].queueSize];
+    NSString *addedToQueueString = NSLocalizedString(@"added to the queue", nil);
+    NSString *totalString = NSLocalizedString(@"total", nil);
+    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"%ld %@ %@, %ld %@", @"number of print or prints added to the queue"), (long)numberOfPrintsAdded, printString, addedToQueueString, (long)[MPBTPrintManager sharedInstance].queueSize, totalString];
     
     return title;
 }
 
 - (void)showAddToQueueAlert:(NSInteger)numberOfPrintsAdded withCompletion:(void (^)())completion
 {
-    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Sprocket Printer Not Connected,\n%@", nil), [self numberOfPrintsAddedString:numberOfPrintsAdded]];
+    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Sprocket Printer Not Connected, %@", nil), [self numberOfPrintsAddedString:numberOfPrintsAdded]];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
                                                                    message:NSLocalizedString(@"Your prints will start when the sprocket printer is on and bluetooth connected.", nil)
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"PRINT QUEUE", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Queue", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [PGPrintQueueManager sharedInstance].delegate = self;
         [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
         [self peekDrawerAnimated:YES];
@@ -439,7 +440,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     [alert addAction:printQueueAction];
     
-    UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"PRINT HELP", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Help", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
         [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
