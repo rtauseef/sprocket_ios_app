@@ -3204,13 +3204,6 @@
 		828466A11E4D4B2F007C0A25 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		828466A21E4D4B3B007C0A25 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		828466A31E4D4B42007C0A25 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		828466AB1E4D4C1F007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/MainInterface.strings"; sourceTree = "<group>"; };
-		828466AC1E4D4C1F007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		828466AD1E4D4C20007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		828466AE1E4D4C21007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
-		828466AF1E4D4C21007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/PG_Main.strings"; sourceTree = "<group>"; };
-		828466B01E4D4C22007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		828466B11E4D4C22007C0A25 /* es-XL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-XL"; path = "es-XL.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		828F02121E7CBCF800902C8F /* PGGesturesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGGesturesView.xib; sourceTree = "<group>"; };
 		829A79961EBB8E7E005D4938 /* dolphin_doodle_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dolphin_doodle_TN.png; path = Resources/Images/Stickers/Summer/dolphin_doodle_TN.png; sourceTree = "<group>"; };
 		829A79971EBB8E7E005D4938 /* dolphin_doodle_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dolphin_doodle_TN@2x.png"; path = "Resources/Images/Stickers/Summer/dolphin_doodle_TN@2x.png"; sourceTree = "<group>"; };
@@ -8830,7 +8823,6 @@
 				828466781E4D3A84007C0A25 /* it-IT */,
 				8284669A1E4D4AB5007C0A25 /* fr-CA */,
 				828466A01E4D4B2E007C0A25 /* nl-NL */,
-				828466AC1E4D4C1F007C0A25 /* es-XL */,
 				82F01B091E52676200670193 /* es */,
 				82F01B101E5267D100670193 /* nl */,
 				82F01B171E52684200670193 /* de */,
@@ -8870,7 +8862,6 @@
 				8284668A1E4D45B5007C0A25 /* it-IT */,
 				828466981E4D4AB5007C0A25 /* fr-CA */,
 				828466A31E4D4B42007C0A25 /* nl-NL */,
-				828466B01E4D4C22007C0A25 /* es-XL */,
 				82F01B0D1E52676400670193 /* es */,
 				82F01B141E5267D300670193 /* nl */,
 				82F01B1B1E52684300670193 /* de */,
@@ -8919,7 +8910,6 @@
 				828466761E4D3A84007C0A25 /* it-IT */,
 				828466961E4D4AB4007C0A25 /* fr-CA */,
 				8284669E1E4D4B2E007C0A25 /* nl-NL */,
-				828466AB1E4D4C1F007C0A25 /* es-XL */,
 				82F01B071E52676100670193 /* es */,
 				82F01B0F1E5267D000670193 /* nl */,
 				82F01B161E52684100670193 /* de */,
@@ -8948,7 +8938,6 @@
 				828466931E4D4A82007C0A25 /* fr-FR */,
 				8284669B1E4D4AB6007C0A25 /* fr-CA */,
 				828466A11E4D4B2F007C0A25 /* nl-NL */,
-				828466B11E4D4C22007C0A25 /* es-XL */,
 				82F01B0E1E52676400670193 /* es */,
 				82F01B151E5267D300670193 /* nl */,
 				82F01B1C1E52684400670193 /* de */,
@@ -8996,7 +8985,6 @@
 				828466881E4D45A5007C0A25 /* it-IT */,
 				828466971E4D4AB4007C0A25 /* fr-CA */,
 				828466A21E4D4B3B007C0A25 /* nl-NL */,
-				828466AD1E4D4C20007C0A25 /* es-XL */,
 				82F01B0A1E52676200670193 /* es */,
 				82F01B111E5267D100670193 /* nl */,
 				82F01B181E52684200670193 /* de */,
@@ -9036,7 +9024,6 @@
 				828466741E4D3A7F007C0A25 /* it-IT */,
 				828466941E4D4AB4007C0A25 /* fr-CA */,
 				8284669C1E4D4B29007C0A25 /* nl-NL */,
-				828466AF1E4D4C21007C0A25 /* es-XL */,
 				82F01B0C1E52676300670193 /* es */,
 				82F01B131E5267D200670193 /* nl */,
 				82F01B1A1E52684300670193 /* de */,
@@ -9100,7 +9087,6 @@
 				828466751E4D3A80007C0A25 /* it-IT */,
 				828466951E4D4AB4007C0A25 /* fr-CA */,
 				8284669D1E4D4B2A007C0A25 /* nl-NL */,
-				828466AE1E4D4C21007C0A25 /* es-XL */,
 				82F01B0B1E52676300670193 /* es */,
 				82F01B121E5267D200670193 /* nl */,
 				82F01B191E52684300670193 /* de */,
