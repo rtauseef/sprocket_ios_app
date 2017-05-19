@@ -80,9 +80,6 @@
     };
 
     [[UAirship inbox].messageList retrieveMessageListWithSuccessBlock:retrieveMessageCompletionBlock withFailureBlock:retrieveMessageCompletionBlock];
-
-
-    [[UAirship inbox].messageList retrieveMessageListWithSuccessBlock:nil withFailureBlock:nil];
 }
 
 - (void)messageListUpdated
