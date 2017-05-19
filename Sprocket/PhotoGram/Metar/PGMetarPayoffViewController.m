@@ -102,14 +102,20 @@
         }
         
         if (metadata.location.content.wikipedia != nil) {
-            PGPayoffViewWikipediaViewController *viewWikipedia = [[PGPayoffViewWikipediaViewController alloc]
-                                                            initWithNibName:@"PGPayoffViewWikipediaViewController" bundle:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PGPayoffView" bundle:nil];
+            
+            PGPayoffViewWikipediaViewController *viewWikipedia  = [storyboard instantiateViewControllerWithIdentifier:@"wikipediaVc"];
+            
             [viewWikipedia setMetadata:metadata];
-            [self.arrayOfViewControllers addObject:viewWikipedia];
+            
+            if ([viewWikipedia metadataValidForCurrentLang]) {
+                [self.arrayOfViewControllers addObject:viewWikipedia];
+            }
         }
     } else {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];
+        
         viewErrorVc.parentVc = self;
         viewErrorVc.errorCustomMessage = NSLocalizedString(@"Sorry, no information available about the scanned content.", nil);
         viewErrorVc.shouldHideRetry = YES;

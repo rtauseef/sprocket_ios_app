@@ -2267,7 +2267,8 @@
 		E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
 		ED2902961ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2902941ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.m */; };
-		ED2902971ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2902951ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.xib */; };
+		ED29029D1ECF634D00FEB7D1 /* PGPayoffView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED29029C1ECF634D00FEB7D1 /* PGPayoffView.storyboard */; };
+		ED2902A31ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2902A21ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m */; };
 		ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685981EC270890036ECE9 /* PGMetarSocial.m */; };
 		ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */; };
 		ED7685A91ECA5AD70036ECE9 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */; };
@@ -3993,7 +3994,9 @@
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
 		ED2902931ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewWikipediaViewController.h; path = PayoffViews/PGPayoffViewWikipediaViewController.h; sourceTree = "<group>"; };
 		ED2902941ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewWikipediaViewController.m; path = PayoffViews/PGPayoffViewWikipediaViewController.m; sourceTree = "<group>"; };
-		ED2902951ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewWikipediaViewController.xib; path = PayoffViews/PGPayoffViewWikipediaViewController.xib; sourceTree = "<group>"; };
+		ED29029C1ECF634D00FEB7D1 /* PGPayoffView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PGPayoffView.storyboard; path = PayoffViews/PGPayoffView.storyboard; sourceTree = "<group>"; };
+		ED2902A11ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWikipediaImageCollectionViewCell.h; path = PayoffViews/PGWikipediaImageCollectionViewCell.h; sourceTree = "<group>"; };
+		ED2902A21ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWikipediaImageCollectionViewCell.m; path = PayoffViews/PGWikipediaImageCollectionViewCell.m; sourceTree = "<group>"; };
 		ED7685971EC270890036ECE9 /* PGMetarSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocial.h; path = Metar/PGMetarSocial.h; sourceTree = "<group>"; };
 		ED7685981EC270890036ECE9 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocial.m; path = Metar/PGMetarSocial.m; sourceTree = "<group>"; };
 		ED76859B1EC271500036ECE9 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocialActivity.h; path = Metar/PGMetarSocialActivity.h; sourceTree = "<group>"; };
@@ -5879,7 +5882,7 @@
 				ED7685DE1ECE1E120036ECE9 /* PGPayoffViewBaseViewController.m */,
 				ED2902931ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.h */,
 				ED2902941ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.m */,
-				ED2902951ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.xib */,
+				ED29029C1ECF634D00FEB7D1 /* PGPayoffView.storyboard */,
 			);
 			name = PayoffViews;
 			sourceTree = "<group>";
@@ -5891,6 +5894,8 @@
 				ED7685C61ECBCA520036ECE9 /* AVPlayerViewController+Fullscreen.m */,
 				ED7685D41ECD1D530036ECE9 /* PGPayoffFullScreenTmpViewController.h */,
 				ED7685D51ECD1D530036ECE9 /* PGPayoffFullScreenTmpViewController.m */,
+				ED2902A11ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.h */,
+				ED2902A21ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m */,
 			);
 			name = Accessories;
 			sourceTree = "<group>";
@@ -7193,7 +7198,6 @@
 				8212BEBD1EA93616009E66EC /* LOL.png in Resources */,
 				8212BE431EA93616009E66EC /* Glasses-red_TN@2x.png in Resources */,
 				82A11D131E5FB93B00E7F8FC /* cat-shock_TN@2x.png in Resources */,
-				ED2902971ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.xib in Resources */,
 				8212BFA91EA93616009E66EC /* sun_TN@2x.png in Resources */,
 				826BEB5B1E85BEAD000BE3FA /* TurquoiseFrame_TN@3x.png in Resources */,
 				8212BFB91EA93616009E66EC /* Unicorn_TN@2x.png in Resources */,
@@ -7333,6 +7337,7 @@
 				8212BDB71EA93616009E66EC /* cat_face_TN.png in Resources */,
 				829A7A2A1EBB8E7E005D4938 /* mermaid_girl_TN@3x.png in Resources */,
 				E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */,
+				ED29029D1ECF634D00FEB7D1 /* PGPayoffView.storyboard in Resources */,
 				F1DCB83B1B54471E00CA9AAD /* PGSwipeCoachMarksView.xib in Resources */,
 				8212BBBE1EA92A26009E66EC /* flying_caps_graduation_TN.png in Resources */,
 				829A7A681EBB8E7E005D4938 /* summer_sunglasses_TN@2x.png in Resources */,
@@ -9021,6 +9026,7 @@
 				82362A181D59408E0019F024 /* PGFrameItem.m in Sources */,
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
+				ED2902A31ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,

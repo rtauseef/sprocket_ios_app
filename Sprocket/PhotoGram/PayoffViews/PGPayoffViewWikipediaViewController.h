@@ -10,4 +10,6 @@
 
 @interface PGPayoffViewWikipediaViewController : PGPayoffViewBaseViewController
 
+- (BOOL) metadataValidForCurrentLang;
+
 @end
