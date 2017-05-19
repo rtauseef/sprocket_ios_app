@@ -25,7 +25,7 @@
 
 @property (weak, nonatomic) id<MPBTSprocketDelegate> delegate;
 
-@property (strong, nonnull, nonatomic) NSString *protocolString;
+@property (strong, nonatomic) NSString *protocolString;
 @property (assign, nonatomic) MantaPrintMode printMode;
 @property (assign, nonatomic) MantaAutoExposure autoExposure;
 @property (assign, nonatomic) MantaAutoPowerOffInterval powerOffInterval;
@@ -44,7 +44,6 @@
 
 + (NSArray *)pairedSprockets;
 + (NSString *)displayNameForAccessory:(EAAccessory *)accessory;
-+ (NSString *)analyticsForAccessory:(EAAccessory *)accessory;
 + (BOOL)supportedAccessory:(EAAccessory *)accessory;
 + (NSString *)macAddress:(NSData *)data;
 + (NSString *)version:(NSUInteger)version;

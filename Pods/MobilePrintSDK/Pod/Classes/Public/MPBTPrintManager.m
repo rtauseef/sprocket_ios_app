@@ -78,6 +78,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
+    if (![self canAddToQueue:YES]) {
+        return NO;
+    }
+
     MPPrintLaterJob *job = [self jobForPrintItem:printItem metrics:metrics];
 
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];

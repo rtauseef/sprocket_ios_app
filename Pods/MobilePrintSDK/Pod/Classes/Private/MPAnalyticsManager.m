@@ -357,7 +357,7 @@ NSString * const kMPMetricsEventTypePrintCompleted = @"5";
 
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", username, password];
     NSData   *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *authValue = [authData base64Encoding];
+    NSString *authValue = [authData base64EncodedStringWithOptions:0];
     
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody:bodyData];

@@ -148,7 +148,7 @@
 
 /*!
  * @abstract Sets the last used print options with the user's current selections
- * @param printId the printer ID to use in the last used print options
+ * @param printerId the printer ID to use in the last used print options
  */
 - (void)savePrinterId:(NSString *)printerId;
 
