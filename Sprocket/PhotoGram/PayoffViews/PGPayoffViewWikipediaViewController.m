@@ -10,8 +10,14 @@
 #import "PGMetarPage.h"
 #import "UIImageView+AFNetworking.h"
 #import "PGWikipediaImageCollectionViewCell.h"
+#import "PGWikipediaTableViewCell.h"
+#import "PGPhotoSelection.h"
+#import "HPPRMedia.h"
+#import "HPPRGoogleMedia.h"
+#import "PGPayoffFullScreenTmpViewController.h"
+#import "PGPreviewViewController.h"
 
-@interface PGPayoffViewWikipediaViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface PGPayoffViewWikipediaViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PGPayoffFullScreenTmpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *articleNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *articleDescriptionTextView;
@@ -28,6 +34,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageShowMoreButtonHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageCollectionViewHeightConstraint;
 
+@property (weak, nonatomic) IBOutlet UITableView *blocksTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *blocksTableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+@property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
+
 - (IBAction)didClickShowMoreImagesButton:(id)sender;
 - (IBAction)didClickArticleDescriptionShowMore:(id)sender;
 
@@ -35,6 +47,7 @@
 @property (assign, nonatomic) BOOL imagesExpanded;
 @property (assign, nonatomic) int currentIndex;
 @property (strong, nonatomic) NSArray *collectionImageArray;
+@property (strong, nonatomic) NSArray *blockArray;
 
 @end
 
@@ -48,6 +61,8 @@
 #define kImageGridMargin 20.0
 #define kImageGridLineSpacing 10.0
 #define kNumberOfImagesPerRow 3
+#define kTableViewMargin 15
+#define kMinimumBlockSize 75
 
 @implementation PGPayoffViewWikipediaViewController
 
@@ -56,19 +71,42 @@
     self.viewTitle = NSLocalizedString(@"Wikipedia", nil);
     self.currentIndex = 0;
     self.collectionImageArray = [NSArray array];
+    self.blockArray = [NSArray array];
     
     // page description (check and render)
     // TODO: other languages
     
-    if ([self getPagesForLang:kFixedLanguage]) {
-        [self renderPageAtIndex:_currentIndex withLang:kFixedLanguage];
-    }
+    self.blocksTableView.backgroundView = nil;
+    self.blocksTableView.backgroundColor = [UIColor clearColor];
+    self.scrollView.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    self.scrollView.hidden = YES;
+
+    self.collectionImageArray = [NSArray array];
+    self.blockArray = [NSArray array];
+    
+    [self.activityIndicator startAnimating];
+    
     UILongPressGestureRecognizer *longPressWikipedia = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressWikipedia:)];
     longPressWikipedia.minimumPressDuration = kLongPressDurationForAlternative;
     [self.view addGestureRecognizer:longPressWikipedia];
+
+    if (self.tmpViewController) {
+        [self.tmpViewController.view removeFromSuperview];
+        self.tmpViewController = nil;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self getPagesForLang:kFixedLanguage]) {
+            [self renderPageAtIndex:_currentIndex withLang:kFixedLanguage];
+        }
+         
+         [self.activityIndicator stopAnimating];
+         self.scrollView.hidden = NO;
+    });
+
 }
 
 - (void)handleLongPressWikipedia:(UILongPressGestureRecognizer *)recognizer {
@@ -165,11 +203,24 @@
                     self.imageShowMoreButtonHeightConstraint.constant = 0;
                 }
                 
+                // Blocks
+                
+                if (page.blocks && [page.blocks count] > 0) {
+                    self.blocksTableView.hidden = NO;
+                    self.blockArray = page.blocks;
+                    [self.blocksTableView reloadData];
+                } else {
+                    self.blocksTableView.hidden = YES;
+                    self.blocksTableViewHeightConstraint.constant = 0;
+                    self.blockArray = [NSArray array];
+                    [self.blocksTableView reloadData];
+                }
+                
                 return YES;
             }
         }
     }
-    
+
     return NO;
 }
 
@@ -180,6 +231,13 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
+    CGRect oldFrame = self.blocksTableView.frame;
+    oldFrame.size.height = self.blocksTableView.contentSize.height;
+    self.blocksTableView.frame = oldFrame;
+    
+    self.blocksTableViewHeightConstraint.constant = self.blocksTableView.contentSize.height;
+
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.endLabel.frame.origin.y);
 }
 
@@ -235,6 +293,7 @@
 - (int) getImageSize {
     return (self.view.bounds.size.width / kNumberOfImagesPerRow) - kImageGridSpacing * (kNumberOfImagesPerRow - 1) - kImageGridMargin * 2;
 }
+
 #pragma mark UICollectionView delegate and data source (image section)
 
 
@@ -266,6 +325,101 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return kImageGridLineSpacing;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *currentUrl = [self.collectionImageArray objectAtIndex:indexPath.row];
+    
+    NSString *originalUrl = [currentUrl objectForKey:@"original"];
+    
+    if (originalUrl) {
+        HPPRMedia *media = [[HPPRMedia alloc] init];
+        media.thumbnailUrl = [currentUrl objectForKey:@"thumb"];
+        media.standardUrl = [currentUrl objectForKey:@"original"];
+        
+        [[PGPhotoSelection sharedInstance] selectMedia:media];
+        self.tmpViewController = [[PGPayoffFullScreenTmpViewController alloc] init];
+        self.tmpViewController.view.frame = self.view.bounds;
+        [self.view addSubview:_tmpViewController.view];
+        [PGPreviewViewController presentPreviewPhotoFrom:_tmpViewController andSource:@"wikipedia" animated:YES];
+        self.tmpViewController.delegate = self;
+    }
+}
+
+#pragma mark UITableView delegate and data source (block section)
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section{
+    return [self.blockArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PGWikipediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"blockCell"];
+    
+    PGMetarBlock *currentBlock = [self.blockArray objectAtIndex:indexPath.row];
+    if (cell) {
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textView.text = currentBlock.text;
+        cell.blockTitleLabel.text = currentBlock.title;
+        cell.blockTitleLabel.textColor = [UIColor whiteColor];
+        
+        NSLog(@"Title: %@ \n Text: %@\n",currentBlock.title, currentBlock.text);
+    }
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PGWikipediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"blockCell"];
+    
+    PGMetarBlock *currentBlock = [self.blockArray objectAtIndex:indexPath.row];
+    
+    /*NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0]};
+
+    CGRect newSize = [currentBlock.text boundingRectWithSize:CGSizeMake(cell.textView.frame.size.width
+                                                                        , CGFLOAT_MAX)
+                                              options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                           attributes:attributes
+                                              context:nil];*/
+    
+    UITextView *view=[[UITextView alloc] initWithFrame:CGRectMake(0, 0, cell.textView.frame.size.width, 10)];
+    view.font = [UIFont systemFontOfSize:14.0];
+    view.text=currentBlock.text;
+    CGSize size=[view sizeThatFits:CGSizeMake(cell.textView.frame.size.width, CGFLOAT_MAX)];
+    
+
+    float calcSize = ceil(size.height + cell.textView.frame.origin.y + kTableViewMargin);
+
+    //return calcSize > kMinimumBlockSize? calcSize : kMinimumBlockSize;
+    
+    return calcSize;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
+
+#pragma mark Temp View Controller Delegate
+
+//TODO: I don't like this, need to revisit - it's a hack because the preview controller is messing up with the current view controller frame
+
+-(void)tmpViewIsBack {
+    [self.tmpViewController.view removeFromSuperview];
+    self.tmpViewController = nil;
 }
 
 @end

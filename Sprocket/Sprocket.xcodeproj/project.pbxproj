@@ -2269,6 +2269,7 @@
 		ED2902961ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2902941ECE5F7B00FEB7D1 /* PGPayoffViewWikipediaViewController.m */; };
 		ED29029D1ECF634D00FEB7D1 /* PGPayoffView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED29029C1ECF634D00FEB7D1 /* PGPayoffView.storyboard */; };
 		ED2902A31ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2902A21ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m */; };
+		ED2902A61ECF817000FEB7D1 /* PGWikipediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2902A51ECF817000FEB7D1 /* PGWikipediaTableViewCell.m */; };
 		ED7685991EC270890036ECE9 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685981EC270890036ECE9 /* PGMetarSocial.m */; };
 		ED76859D1EC271500036ECE9 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED76859C1EC271500036ECE9 /* PGMetarSocialActivity.m */; };
 		ED7685A91ECA5AD70036ECE9 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7685A71ECA5AD70036ECE9 /* PGMetarPayoffViewController.m */; };
@@ -3997,6 +3998,8 @@
 		ED29029C1ECF634D00FEB7D1 /* PGPayoffView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PGPayoffView.storyboard; path = PayoffViews/PGPayoffView.storyboard; sourceTree = "<group>"; };
 		ED2902A11ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWikipediaImageCollectionViewCell.h; path = PayoffViews/PGWikipediaImageCollectionViewCell.h; sourceTree = "<group>"; };
 		ED2902A21ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWikipediaImageCollectionViewCell.m; path = PayoffViews/PGWikipediaImageCollectionViewCell.m; sourceTree = "<group>"; };
+		ED2902A41ECF817000FEB7D1 /* PGWikipediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWikipediaTableViewCell.h; path = PayoffViews/PGWikipediaTableViewCell.h; sourceTree = "<group>"; };
+		ED2902A51ECF817000FEB7D1 /* PGWikipediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWikipediaTableViewCell.m; path = PayoffViews/PGWikipediaTableViewCell.m; sourceTree = "<group>"; };
 		ED7685971EC270890036ECE9 /* PGMetarSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocial.h; path = Metar/PGMetarSocial.h; sourceTree = "<group>"; };
 		ED7685981EC270890036ECE9 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocial.m; path = Metar/PGMetarSocial.m; sourceTree = "<group>"; };
 		ED76859B1EC271500036ECE9 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocialActivity.h; path = Metar/PGMetarSocialActivity.h; sourceTree = "<group>"; };
@@ -5896,6 +5899,8 @@
 				ED7685D51ECD1D530036ECE9 /* PGPayoffFullScreenTmpViewController.m */,
 				ED2902A11ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.h */,
 				ED2902A21ECF65B300FEB7D1 /* PGWikipediaImageCollectionViewCell.m */,
+				ED2902A41ECF817000FEB7D1 /* PGWikipediaTableViewCell.h */,
+				ED2902A51ECF817000FEB7D1 /* PGWikipediaTableViewCell.m */,
 			);
 			name = Accessories;
 			sourceTree = "<group>";
@@ -8907,6 +8912,7 @@
 				EDB0C2D41EBA845600AE14CB /* PGWatermarkOperationData.m in Sources */,
 				F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */,
 				F24DA7CF1EAEA0F500C24AAB /* PGWatermarkOperationHPLink.m in Sources */,
+				ED2902A61ECF817000FEB7D1 /* PGWikipediaTableViewCell.m in Sources */,
 				F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */,
 				EDB0C2FC1EBCFC2200AE14CB /* PGMetarLocation.m in Sources */,
 				F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */,

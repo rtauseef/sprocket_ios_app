@@ -112,7 +112,9 @@
                 [self.arrayOfViewControllers addObject:viewWikipedia];
             }
         }
-    } else {
+    } 
+
+    if ([self.arrayOfViewControllers count] == 0) {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
                                                         initWithNibName:@"PGPayoffViewErrorViewController" bundle:nil];
         
@@ -122,7 +124,7 @@
         
         [self.arrayOfViewControllers addObject:viewErrorVc];
     }
-
+    
     __weak __typeof__(self) weakSelf = self;
     
     [_pageViewController setViewControllers:@[[self.arrayOfViewControllers objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
