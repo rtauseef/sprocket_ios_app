@@ -419,7 +419,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     NSString *addedToQueueString = NSLocalizedString(@"added to the queue", nil);
     NSString *totalString = NSLocalizedString(@"total", nil);
-    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"%ld %@ %@, %ld %@", @"number of print or prints added to the queue"), (long)numberOfPrintsAdded, printString, addedToQueueString, (long)[MPBTPrintManager sharedInstance].queueSize, totalString];
+    NSString *title = [NSString stringWithFormat:@"%ld %@ %@, %ld %@", (long)numberOfPrintsAdded, printString, addedToQueueString, (long)[MPBTPrintManager sharedInstance].queueSize, totalString];
     
     return title;
 }
