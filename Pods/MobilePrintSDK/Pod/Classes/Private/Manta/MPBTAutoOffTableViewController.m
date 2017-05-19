@@ -75,7 +75,7 @@
 {
     if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSelectAutoOffInterval:)]) {
         NSInteger rowValue = ((NSNumber *)(self.autoOffValues[indexPath.row])).integerValue;
-        [self.delegate didSelectAutoOffInterval:rowValue];
+        [self.delegate didSelectAutoOffInterval:(MantaAutoPowerOffInterval)rowValue];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

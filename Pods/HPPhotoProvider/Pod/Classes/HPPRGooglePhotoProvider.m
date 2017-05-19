@@ -20,7 +20,7 @@
 #import "NSBundle+HPPRLocalizable.h"
 
 
-static const long GOOGLE_PAGE_SIZE = 20;
+static const long GOOGLE_PAGE_SIZE = 100;
 static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
 
 @interface HPPRGooglePhotoProvider() <HPPRGoogleXmlParserDelegate>
@@ -172,7 +172,7 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
 - (HPPRGoogleAlbum *)allPhotosAlbum
 {
     HPPRGoogleAlbum *allPhotos = [[HPPRGoogleAlbum alloc] init];
-    allPhotos.name = HPPRLocalizedString(@"All Photos", @"Indicates that all photos will be displayed");
+    allPhotos.name = HPPRLocalizedString(@"Recent Photos", @"Indicates that recent photos will be displayed");
     
     return allPhotos;
 }

@@ -87,7 +87,7 @@ NSString * const kMPPrinterPaperAreaYPoints = @"printer_paper_area_y_points";
 
 BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 
-@interface MP ()
+@interface MP ()<MPBTSprocketDelegate>
 
 @property (weak, nonatomic) id<MPSprocketDelegate> sprocketDelegate;
 
@@ -342,11 +342,11 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 }
 
 - (NSString *)errorTitle:(NSInteger)errorCode {
-    return [MPBTSprocket errorTitle:errorCode];
+    return [MPBTSprocket errorTitle:(MantaError)errorCode];
 }
 
 - (NSString *)errorDescription:(NSInteger)errorCode {
-    return [MPBTSprocket errorDescription:errorCode];
+    return [MPBTSprocket errorDescription:(MantaError)errorCode];
 }
 
 
