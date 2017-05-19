@@ -393,7 +393,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     UITextView *view=[[UITextView alloc] initWithFrame:CGRectMake(0, 0, cell.textView.frame.size.width, 10)];
     view.font = [UIFont systemFontOfSize:14.0];
     view.text=currentBlock.text;
-    CGSize size=[view sizeThatFits:CGSizeMake(cell.textView.frame.size.width, CGFLOAT_MAX)];
+    CGSize size=[view sizeThatFits:CGSizeMake([[UIScreen mainScreen]bounds].size.width - 16, CGFLOAT_MAX)];
     
 
     float calcSize = ceil(size.height + cell.textView.frame.origin.y + kTableViewMargin);
