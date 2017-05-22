@@ -1,0 +1,140 @@
+//
+// Hewlett-Packard Company
+// All rights reserved.
+//
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
+//
+
+#import "PGInboxMessageCenterListViewController.h"
+#import "PGInboxMessageCenterTableViewCell.h"
+#import "UIFont+Style.h"
+
+#import <AirshipKit.h>
+
+@interface PGInboxMessageCenterListViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) NSArray<UAInboxMessage *> *messages;
+
+@end
+
+@implementation PGInboxMessageCenterListViewController
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+
+    if (self) {
+        self.title = NSLocalizedString(@"Inbox", nil);
+
+        [self loadMessages];
+    }
+
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 340;
+
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
+
+- (IBAction)doneButtonTapped:(id)sender
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)refreshControlUpdated:(UIRefreshControl *)sender {
+    if (sender.isRefreshing) {
+        [self loadMessages];
+    }
+}
+
+
+#pragma mark - Private
+
+- (void)loadMessages {
+
+    void (^retrieveMessageCompletionBlock)() = ^(void){
+        [CATransaction begin];
+        [CATransaction setCompletionBlock: ^{
+            [self messageListUpdated];
+        }];
+        if (self.refreshControl.isRefreshing) {
+            [self.refreshControl endRefreshing];
+        }
+        [CATransaction commit];
+    };
+
+    [[UAirship inbox].messageList retrieveMessageListWithSuccessBlock:retrieveMessageCompletionBlock withFailureBlock:retrieveMessageCompletionBlock];
+}
+
+- (void)messageListUpdated
+{
+    self.messages = [NSArray arrayWithArray:[UAirship inbox].messageList.messages];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.messages.count > 0) {
+            self.tableView.backgroundView = nil;
+
+        } else {
+            UILabel *label = [[UILabel alloc] init];
+            label.font = [UIFont HPSimplifiedLightFontWithSize:20.0];
+            label.textColor = [UIColor whiteColor];
+            label.numberOfLines = 2;
+            label.text = NSLocalizedString(@"We'll send you sprocket tips\nand fun project ideas.", nil);
+            label.textAlignment = NSTextAlignmentCenter;
+
+            self.tableView.backgroundView = label;
+
+            NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:label
+                                                                       attribute:NSLayoutAttributeCenterX
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeCenterX
+                                                                      multiplier:1.0
+                                                                        constant:0.0];
+            
+            NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:label
+                                                                       attribute:NSLayoutAttributeCenterY
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeCenterY
+                                                                      multiplier:1.0
+                                                                        constant:0.0];
+
+            [NSLayoutConstraint activateConstraints:@[centerX, centerY]];
+            
+        }
+
+        [self.tableView reloadData];
+    });
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PGInboxMessageCenterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PGInboxMessageCenterTableViewCell"];
+    cell.message = [self.messages objectAtIndex:indexPath.row];
+
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.messages.count;
+}
+
+@end
