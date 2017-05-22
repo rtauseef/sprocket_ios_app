@@ -15,5 +15,6 @@
 
 - (IBAction)closeButtonClick:(id)sender;
 - (void) getMetadataFromMetar;
+- (void) updateCurrentViewLabel: (NSString *) name;
 
 @end

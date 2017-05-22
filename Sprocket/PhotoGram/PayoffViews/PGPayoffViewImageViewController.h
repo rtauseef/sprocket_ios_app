@@ -10,10 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PGMetarMedia.h"
 #import "PGPayoffViewBaseViewController.h"
+#import "PGMetarPayoffViewController.h"
 
 @interface PGPayoffViewImageViewController : PGPayoffViewBaseViewController
 
 - (void)showImageSameDayAsDate: (NSDate *) date;
 - (void)showImagesSameLocation: (CLLocation *) location;
+
+@property (strong, nonatomic) PGMetarPayoffViewController *parentVc;
 
 @end

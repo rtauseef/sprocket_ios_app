@@ -58,6 +58,10 @@
     [_pageViewController.view setFrame:self.paginationView.bounds];
 }
 
+- (void) updateCurrentViewLabel: (NSString *) name {
+    self.currentViewLabel.text = name;
+}
+
 - (void) renderPagesWithMetadata: (PGMetarMedia *) metadata {
     self.arrayOfViewControllers = [NSMutableArray array];
     
@@ -86,6 +90,7 @@
             PGPayoffViewImageViewController *viewImageVc = [[PGPayoffViewImageViewController alloc]
                                                             initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
             
+            [viewImageVc setParentVc:self];
             [viewImageVc setMetadata:metadata];
             [viewImageVc showImageSameDayAsDate:metadata.created];
             [self.arrayOfViewControllers addObject:viewImageVc];
@@ -96,6 +101,7 @@
                                                             initWithNibName:@"PGPayoffViewImageViewController" bundle:nil];
             
             CLLocation *loc = [[CLLocation alloc] initWithLatitude:metadata.location.geo.latitude longitude:metadata.location.geo.longitude];
+            [viewImageVc setParentVc:self];
             [viewImageVc setMetadata:metadata];
             [viewImageVc showImagesSameLocation:loc];
             [self.arrayOfViewControllers addObject:viewImageVc];

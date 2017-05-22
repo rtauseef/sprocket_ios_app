@@ -24,6 +24,7 @@
 @property (strong, nonatomic) CLLocation* filteringLocation;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
+@property (strong, nonatomic) CLGeocoder *geocoder;
 
 @end
 
@@ -66,18 +67,42 @@
             [self.provider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
             [self providerUpdateDone];
         });
-        
-        if (self.metadata && self.metadata.location && self.metadata.location.venue &&
-            self.metadata.location.venue.city && self.metadata.location.venue.state) {
-         
-            if (self.metadata.location && self.metadata.location.venue.area != nil) {
-                self.viewTitle = [NSString stringWithFormat:@"Photos from %@",self.metadata.location.venue.area];
-            } else if (self.metadata.location) {
-                self.viewTitle = [NSString stringWithFormat:@"Photos from %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
-            }
+
+        if (self.metadata &&self.metadata.location && CLLocationCoordinate2DIsValid(self.metadata.location.geo)) {
+            CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.metadata.location.geo.latitude longitude:self.metadata.location.geo.longitude];
+            
+            if (!self.geocoder)
+                self.geocoder = [[CLGeocoder alloc] init];
+            
+            [self.geocoder reverseGeocodeLocation:loc completionHandler:
+             ^(NSArray* placemarks, NSError* error){
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (!error && placemarks && [placemarks count] > 0)
+                     {
+                         CLPlacemark *_placemark = [placemarks firstObject];
+                         NSString *name = _placemark.name;
+                         self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
+                     } else {
+                         [self updateViewTitleLocally];
+                     }
+                     
+                     [self.parentVc updateCurrentViewLabel:self.viewTitle];
+                 });
+             }];
         } else {
-            self.viewTitle = NSLocalizedString(@"Photos taken at the same location", nil);
+            [self updateViewTitleLocally];
         }
+    }
+}
+
+- (void) updateViewTitleLocally {
+    if (self.metadata.location && self.metadata.location.venue.area != nil) {
+        self.viewTitle = [NSString stringWithFormat:@"Photos near %@",self.metadata.location.venue.area];
+    } else if (self.metadata.location.venue &&
+               self.metadata.location.venue.city && self.metadata.location.venue.state) {
+        self.viewTitle = [NSString stringWithFormat:@"Photos near %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
+    } else {
+        self.viewTitle = NSLocalizedString(@"Photos taken nearoi  the same location", nil);
     }
 }
 
