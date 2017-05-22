@@ -103,9 +103,6 @@
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Copyright (c) 2016";
 
-/* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
-"Ptp-oP-RvF.text" = "Elemento de Menú";
-
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Recurso nuevo";
 
@@ -124,7 +121,7 @@
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
 
-/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
+/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Google accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
 "TEb-3v-7vp.text" = "Mientras utilice esta aplicación, será capaz de conectarse a Internet y utilizar sus cuentas de Instagram, Facebook o Flickr para crear e imprimir el contenido de su elección.
 
 Para el uso de esta aplicación, puede ser necesario utilizar una conexión a Internet. El funcionamiento de la conexión inalámbrica depende del entorno físico y de la distancia al punto de acceso. Pueden surgir cargos por la compra de paquetes de datos que se adquieran por separado o cargos por el uso, y el tiempo que tarden las impresiones y la velocidad de conexión pueden variar.

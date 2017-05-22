@@ -13,8 +13,8 @@ Then /^I should navigate to facebook screen$/ do
 res = query("imageView marked:'Facebook'")
  end
 
-Then /^I should navigate to Flickr photos screen$/ do
-res1 = query("imageView marked:'Flickr'")
+Then /^I should navigate to Google photos screen$/ do
+res1 = query("imageView marked:'Google'")
 end
 
 Then /^I should navigate to Social Media Snapshots screen$/ do
@@ -33,7 +33,7 @@ end
 
 Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
     if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
-        if screen_name == "Flickr"
+        if screen_name == "Google"
             puts "#{screen_name} - Not Applicable for Chinese language!".blue
         else
             swipe(:left)
@@ -53,11 +53,11 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             check_element_exists("view marked:'#{$list_loc[screen_name]}")
             sleep(STEP_PAUSE)
         else
-            if screen_name == "Flickr"
+            if screen_name == "Google"
                 sleep(STEP_PAUSE)
                 swipe(:right)
-                #check_element_exists("UINavigationBar marked:'#{$list_loc['flickr']}'")
-                check_element_exists("view marked:'#{$list_loc['flickr']}'")
+                sleep(STEP_PAUSE)
+                check_element_exists("view marked:'#{$list_loc['google']}'")
                 sleep(STEP_PAUSE)
             else
                 if screen_name == "facebook"

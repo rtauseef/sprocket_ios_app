@@ -16,6 +16,8 @@
 #import "HPPRInstagramUser.h"
 #import "HPPRInstagramLoginViewController.h"
 
+#define kInstagramLoggedInKey @"kInstagramLoggedInKey"
+
 @interface HPPRInstagramLoginProvider () <HPPRInstagramLoginViewControllerDelegate>
 
 @property (strong, nonatomic) void (^completion)(BOOL loggedIn, NSError *error);
@@ -47,12 +49,24 @@
         
         [self.viewController presentViewController:navigationController animated:YES completion:nil];
         
-        self.completion = completion;
+        self.completion = ^(BOOL loggedIn, NSError *error){
+            if (loggedIn) {
+                [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:kInstagramLoggedInKey];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
+            if (completion) {
+                completion(loggedIn, error);
+            }
+        };
     }
 }
 
 - (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion
 {
+    [[NSUserDefaults standardUserDefaults] setObject:@(NO) forKey:kInstagramLoggedInKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     [HPPRInstagramUser clearSaveUserProfile];
     
     [[HPPRInstagram sharedClient] clearAccessToken];
@@ -74,7 +88,7 @@
 {
     if( [self connectedToInternet:completion] ) {
         if (completion) {
-            completion(!([[HPPRInstagram sharedClient] getAccessToken] == nil), nil);
+            completion([[[NSUserDefaults standardUserDefaults] objectForKey:kInstagramLoggedInKey] boolValue] && [[HPPRInstagram sharedClient] getAccessToken] != nil, nil);
         }
     }
 }

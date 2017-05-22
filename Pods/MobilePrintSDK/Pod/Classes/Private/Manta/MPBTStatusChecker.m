@@ -80,7 +80,7 @@
         break;
         
         default:
-        MPLogInfo(@"Unrecognized bluetooth state: %d", central.state);
+        MPLogInfo(@"Unrecognized bluetooth state: %ld", (long)central.state);
     };
 }
     

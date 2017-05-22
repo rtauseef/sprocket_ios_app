@@ -101,7 +101,7 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
     self = [super init];
     if (self) {
 
-        self.supportedProtocols = @[kHpProtocol/*kPolaroidProtocol, @"com.lge.pocketphoto"*/];
+        self.supportedProtocols = @[kHpProtocol/*, kPolaroidProtocol, @"com.lge.pocketphoto"*/];
         
         // watch for received data from the accessory
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_sessionDataReceived:) name:MPBTSessionDataReceivedNotification object:nil];
@@ -162,7 +162,7 @@ expectedTotalBytes:(int64_t)expectedTotalBytes
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
-    MPLogDebug(@"%d of %d bytes", totalBytesWritten, totalBytesExpectedToWrite);
+    MPLogDebug(@"%lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
     if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didDownloadDeviceUpgradeData:percentageComplete:)]) {
         NSInteger percentageComplete = ((float)totalBytesWritten/(float)totalBytesExpectedToWrite) * 100;
         [self.delegate didDownloadDeviceUpgradeData:self percentageComplete:percentageComplete];
@@ -192,7 +192,6 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
     _session = nil;
     
-    NSString *protocolString = nil;
     if (self.accessory) {
         _session = [MPBTSessionController sharedController];
         [_session setupControllerForAccessory:self.accessory
@@ -305,10 +304,10 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     packet[0] = START_CODE_BYTE_1;
     packet[1] = START_CODE_BYTE_2;
     
-    if ([self.protocolString isEqualToString:kPolaroidProtocol]) {
+    if ([self.protocolString isEqualToString:[kPolaroidProtocol copy]]) {
         packet[2] = POLAROID_CUSTOMER_CODE_BYTE_1;
         packet[3] = POLAROID_CUSTOMER_CODE_BYTE_2;
-    } else if ([self.protocolString isEqualToString:kHpProtocol]){
+    } else if ([self.protocolString isEqualToString:[kHpProtocol copy]]){
         packet[2] = HP_CUSTOMER_CODE_BYTE_1;
         packet[3] = HP_CUSTOMER_CODE_BYTE_2;
     } else {
@@ -325,7 +324,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
     NSMutableData *data;
     char byteArray[MANTA_PACKET_LENGTH];
-    
+
     [self setupPacket:byteArray command:CMD_GET_INFO_CMD subcommand:CMD_GET_INFO_SUB_CMD];
 
     data = [NSMutableData dataWithBytes:byteArray length:MANTA_PACKET_LENGTH];
@@ -432,16 +431,16 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     NSUInteger firmwareVersion = fwVersion[0] << 16 | fwVersion[1] << 8 | fwVersion[2];
     NSUInteger hardwareVersion = hwVersion[0] << 16 | hwVersion[1] << 8 | hwVersion[2];
     
-    MPLogDebug(@"\n\nAccessoryInfo:\n\terrorCode: %@  \n\ttotalPrintCount: 0x%04x  \n\tprintMode: %@  \n\tbatteryStatus: 0x%x => %d percent  \n\tautoExposure: %@  \n\tautoPowerOff: %@  \n\tmacAddress: %@  \n\tfwVersion: 0x%06x  \n\thwVersion: 0x%06x",
-          [MPBTSprocket errorTitle:errorCode[0]],
-          printCount,
-          [MPBTSprocket printModeString:printMode[0]],
-          batteryStatus[0], batteryStatus[0],
-          [MPBTSprocket autoExposureString:autoExposure[0]],
-          [MPBTSprocket autoPowerOffIntervalString:autoPowerOff[0]],
-          [MPBTSprocket macAddress:macAddressData],
-          firmwareVersion,
-          hardwareVersion);
+    MPLogDebug(@"\n\nAccessoryInfo:\n\terrorCode: %@  \n\ttotalPrintCount: 0x%04lx  \n\tprintMode: %@  \n\tbatteryStatus: 0x%x => %d percent  \n\tautoExposure: %@  \n\tautoPowerOff: %@  \n\tmacAddress: %@  \n\tfwVersion: 0x%06lx  \n\thwVersion: 0x%06lx",
+               [MPBTSprocket errorTitle:errorCode[0]],
+               (unsigned long)printCount,
+               [MPBTSprocket printModeString:printMode[0]],
+               batteryStatus[0], batteryStatus[0],
+               [MPBTSprocket autoExposureString:autoExposure[0]],
+               [MPBTSprocket autoPowerOffIntervalString:autoPowerOff[0]],
+               [MPBTSprocket macAddress:macAddressData],
+               (unsigned long)firmwareVersion,
+               (unsigned long)hardwareVersion);
     
     _totalPrintCount = printCount;
     _batteryStatus = batteryStatus[0];
@@ -536,7 +535,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         NSUInteger error = payload[0];
         
         if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didRefreshMantaInfo:error:)]) {
-            [self.delegate didRefreshMantaInfo:self error:error];
+            [self.delegate didRefreshMantaInfo:self error:(MantaError)error];
         }
         
         if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didCompareWithLatestFirmwareVersion:needsUpgrade:)]) {
@@ -597,18 +596,17 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 
 - (void)_sessionDataSent:(NSNotification *)notification
 {
-    NSInteger bytesWritten = [[notification.userInfo objectForKey:MPBTSessionDataBytesWritten] integerValue];
     long long totalBytesWritten = [[notification.userInfo objectForKey:MPBTSessionDataTotalBytesWritten] longLongValue];
     long long totalBytes = self.imageData ? self.imageData.length : self.upgradeData.length;
     NSInteger percentageComplete = ((float)totalBytesWritten/(float)totalBytes) * 100;
     
     if (self.imageData) {
         if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendPrintData:percentageComplete:error:)]) {
-            [self.delegate didSendPrintData:self percentageComplete:percentageComplete error:nil];
+            [self.delegate didSendPrintData:self percentageComplete:percentageComplete error:MantaErrorNoError];
         }
     } else if (self.upgradeData) {
         if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendDeviceUpgradeData:percentageComplete:error:)]) {
-            [self.delegate didSendDeviceUpgradeData:self percentageComplete:percentageComplete error:nil];
+            [self.delegate didSendDeviceUpgradeData:self percentageComplete:percentageComplete error:MantaErrorNoError];
         }
     }
     
@@ -666,7 +664,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     fw2 = (0x00FF00 & version) >>  8;
     fw3 =  0x0000FF & version;
  
-    return [NSString stringWithFormat:@"%d.%d.%d", fw1, fw2, fw3];
+    return [NSString stringWithFormat:@"%lu.%lu.%lu", (unsigned long)fw1, (unsigned long)fw2, (unsigned long)fw3];
 }
 
 + (BOOL)supportedAccessory:(EAAccessory *)accessory
@@ -981,7 +979,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     config.URLCache = nil;
     NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:config delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     
-    [[httpSession dataTaskWithURL: [NSURL URLWithString:kFirmwareUpdatePath]
+    [[httpSession dataTaskWithURL: [NSURL URLWithString:[kFirmwareUpdatePath copy]]
                 completionHandler:^(NSData *data, NSURLResponse *response,
                                     NSError *error) {
                     NSDictionary *fwUpdateInfo = nil;
@@ -1079,8 +1077,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             if ([kPolaroidProtocol isEqualToString:protocolString]) {
                 deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
             } else {
-                deviceUpdateInfo = [fwUpdateInfo objectForKey:@"HP"];
-                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:deviceUpdateInfo forExistingVersion:existingFwVersion];
+                NSArray *info = [fwUpdateInfo objectForKey:@"HP"];
+                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:info forExistingVersion:existingFwVersion];
             }
             
             if (deviceUpdateInfo) {
@@ -1107,8 +1105,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             if ([kPolaroidProtocol isEqualToString:protocolString]) {
                 deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
             } else {
-                deviceUpdateInfo = [fwUpdateInfo objectForKey:@"HP"];
-                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:deviceUpdateInfo forExistingVersion:existingFwVersion];
+                NSArray *info = [fwUpdateInfo objectForKey:@"HP"];
+                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:info forExistingVersion:existingFwVersion];
             }
             
             if (deviceUpdateInfo) {

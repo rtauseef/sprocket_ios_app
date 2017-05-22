@@ -146,10 +146,12 @@ typedef enum
 
 - (IBAction)didPressFirmwareUpgrade:(id)sender {
     if (!self.updating) {
+        __weak MPBTDeviceInfoTableViewController *weakSelf = self;
+
         self.updating = YES;
         self.progressView = [[MPBTProgressView alloc] initWithFrame:self.navigationController.view.frame];
         self.progressView.viewController = self.navigationController;
-        self.progressView.completion = ^{[self didPressCancel];};
+        self.progressView.completion = ^{[weakSelf didPressCancel];};
         self.progressView.sprocketDelegate = self;
         [self.progressView reflashDevice];
     }
@@ -168,13 +170,13 @@ typedef enum
 {
     if (MPBTDeviceInfoOrderAutoOff == indexPath.row) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
-        MPBTAutoOffTableViewController *vc = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTAutoOffTableViewController"];
+        MPBTAutoOffTableViewController *vc = (MPBTAutoOffTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTAutoOffTableViewController"];
         vc.currentAutoOffValue = self.sprocket.powerOffInterval;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (MPBTDeviceInfoOrderTechnicalInfo == indexPath.row) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
-        MPBTTechnicalInformationViewController *vc = (UIViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTTechnicalInformationViewController"];
+        MPBTTechnicalInformationViewController *vc = (MPBTTechnicalInformationViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTTechnicalInformationViewController"];
 
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -221,7 +223,7 @@ typedef enum
                 
             case MPBTDeviceInfoOrderHardwareVersion:
                 cell.textLabel.text = MPLocalizedString(@"Hardware Version", @"Title of field displaying the printer's hardware version");
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%x", self.sprocket.hardwareVersion];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%lx", (unsigned long)self.sprocket.hardwareVersion];
                 break;
                 
             case MPBTDeviceInfoOrderTechnicalInfo:

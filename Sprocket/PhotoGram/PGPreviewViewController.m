@@ -32,6 +32,7 @@
 #import "PGWatermarkProcessor.h"
 #import "PGLinkSettings.h"
 #import "PGPrintQueueManager.h"
+#import "PGSetupSprocketViewController.h"
 
 #import <MP.h>
 #import <HPPR.h>
@@ -85,6 +86,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) UIPopoverController *popover;
 @property (assign, nonatomic) BOOL didChangeProject;
 @property (weak, nonatomic) IBOutlet UIView *imageSavedView;
+@property (weak, nonatomic) IBOutlet UILabel *imageSavedLabel;
 @property (strong, nonatomic) NSString *currentOfframp;
 @property (assign, nonatomic) CGPoint panStartPoint;
 
@@ -409,6 +411,52 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         completion();
     }
 }
+- (NSString *)numberOfPrintsAddedString:(NSInteger)numberOfPrintsAdded
+{
+    NSString *printString = NSLocalizedString(@"%ld print added to the queue, %ld total", @"This will be formatted as '1 print added to the queue, 7 total'");
+    if (numberOfPrintsAdded > 1) {
+        printString = NSLocalizedString(@"%ld prints added to the queue, %ld total", @"This will be formatted as '3 prints added to the queue, 7 total'");
+    }
+    
+    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded,(long)[MPBTPrintManager sharedInstance].queueSize];
+    
+    return title;
+}
+
+- (void)showAddToQueueAlert:(NSInteger)numberOfPrintsAdded withCompletion:(void (^)())completion
+{
+    NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Sprocket Printer Not Connected, %@", nil), [self numberOfPrintsAddedString:numberOfPrintsAdded]];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:NSLocalizedString(@"Your prints will start when the sprocket printer is on and bluetooth connected.", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Queue", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [PGPrintQueueManager sharedInstance].delegate = self;
+        [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
+        [self peekDrawerAnimated:YES];
+    }];
+    
+    [alert addAction:printQueueAction];
+    
+    UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Help", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
+        [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [setupViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self presentViewController:setupViewController animated:YES completion:nil];
+    }];
+    
+    [alert addAction:printHelpAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self peekDrawerAnimated:YES];
+    }];
+    
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:completion];
+}
 
 #pragma mark - Drawer Methods
 
@@ -630,6 +678,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    self.imageSavedLabel.text = NSLocalizedString(@"Saved to Camera Roll", nil);
+                    
                     [UIView animateWithDuration:0.5F animations:^{
                         [self showImageSavedView:YES];
                     } completion:^(BOOL finished) {
@@ -719,167 +769,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsidePrinterButton:(id)sender
 {
-    if (![[MPBTPrintManager sharedInstance] canAddToQueue:YES]) {
-        return;
-    }
-
     [self showDownloadingImagesAlertWithCompletion:^{
-        BOOL drawerWasOpen = self.drawer.isOpened;
+        BOOL wasDrawerOpened = self.drawer.isOpened;
 
         [self closeDrawerAnimated:NO];
-        [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
-            if (success) {
-                NSString *origin = @"";
-                NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
-                for (PGGesturesView *gestureView in self.gesturesViews) {
-                    if (gestureView.isSelected) {
-                        [selectedViews addObject:gestureView];
-                    }
-                }
-
-                NSString *offRamp;
-                BOOL isPrintDirect = NO;
-
-                if ((selectedViews.count == 1) && (self.drawer.numberOfCopies == 1)) {
-                    if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue) {
-                        isPrintDirect = YES;
-                        offRamp = kMetricsOffRampPrintNoUISingle;
-                        origin = kMetricsOriginSingle;
-                        
-                        if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
-                            offRamp = kMetricsOffRampPrintNoUIMulti;
-                        }
-                    } else {
-                        origin = kMetricsOriginSingle;
-                        offRamp = kMetricsOffRampQueueAddSingle;
-                    }
-                } else if (selectedViews.count > 1) {
-                    origin = kMetricsOriginMulti;
-                    offRamp = kMetricsOffRampQueueAddMulti;
-                } else if (self.drawer.numberOfCopies > 1) {
-                    origin = kMetricsOriginCopies;
-                    offRamp = kMetricsOffRampQueueAddCopies;
-                    for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
-                        [selectedViews addObject:selectedViews.firstObject];
-                    }
-                }
-
-                __block BOOL canResumePrinting = YES;
-                __block CGFloat watermarkedImages = 0.0;
-
-                // CREATE GROUP
-                dispatch_group_t watermarkGroup = dispatch_group_create();
-
-                for (PGGesturesView *gestureView in selectedViews) {
-
-                    PGWatermarkProcessor *processor;
-                    if ([self isWatermarkingEnabledForMedia:gestureView.media]) {
-                        processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:gestureView.media.socialMediaImageUrl]];
-
-                        // SHOW PROGRESS VIEW
-                        [self handleWatermarkingProgress:watermarkedImages / selectedViews.count];
-                    }
-
-                    // ENTER GROUP
-                    NSLog(@"WATERMARK - GROUP ENTER");
-                    dispatch_group_enter(watermarkGroup);
-
-                    NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
-                    [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
-
-                    void (^block)(UIImage *image) = ^(UIImage *image) {
-                        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
-                        NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
-
-                        [metrics setObject:origin forKey:kMetricsOrigin];
-
-                        if (isPrintDirect) {
-                            [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                                return [self handlePrintQueueStatus:status progress:progress error:errorCode];
-                            }];
-                            canResumePrinting = NO;
-                        } else {
-                            [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
-                            [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-
-                            if (![[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics]) {
-                                canResumePrinting = NO;
-                            }
-
-                            [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
-                                                                             printItem:printItem
-                                                                          extendedInfo:metrics];
-                        }
-
-                        watermarkedImages++;
-                        if ([self isWatermarkingEnabledForMedia:gestureView.media]) {
-                            [self handleWatermarkingProgress:watermarkedImages / (double)selectedViews.count];
-                        }
-
-                        // LEAVE GROUP
-                        NSLog(@"WATERMARK - GROUP LEAVE");
-                        dispatch_group_leave(watermarkGroup);
-                    };
-
-                    if (processor) {
-                        NSLog(@"WATERMARK - WILL PROCESS IMAGE");
-
-                        [processor processImage:gestureView.editedImage
-                                    withOptions:[[MPBTPrintManager sharedInstance] defaultOptionsForImageProcessor]
-                                     completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
-                                         if (!error) {
-                                             NSLog(@"WATERMARK - SUCCESSFULLY PROCESSED IMAGE");
-                                             block(image);
-                                         } else {
-                                             NSLog(@"WATERMARK - ERROR PROCESSING IMAGE - %@", error);
-                                             block(gestureView.editedImage);
-                                         }
-                                     }];
-                    } else {
-                        block(gestureView.editedImage);
-                    }
-
-                    if (!canResumePrinting) {
-                        break;
-                    }
-                }
-
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    // WAIT FOR GROUP
-
-                    NSLog(@"WATERMARK - GROUP WAIT");
-
-                    dispatch_group_wait(watermarkGroup, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
-
-                    NSLog(@"WATERMARK - DONE WAITING");
-
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (canResumePrinting) {
-                            [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                                return [self handlePrintQueueStatus:status progress:progress error:errorCode];
-                            }];
-
-                            NSString *action = kEventPrintQueueAddSingleAction;
-                            if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
-                                action = kEventPrintQueueAddMultiAction;
-                            }
-
-                            if (self.drawer.numberOfCopies > 1) {
-                                action = kEventPrintQueueAddCopiesAction;
-                            }
-
-                            if (drawerWasOpen) {
-                                [self openDrawerAnimated:NO];
-                            }
-
-                            [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
-                                                                              queueId:[MPBTPrintManager sharedInstance].queueId
-                                                                            queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
-                        }
-                    });
-                });
-            }
-        }];
+        if ([MP sharedInstance].numberOfPairedSprockets > 0) {
+            [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
+                [self printWithDrawerOpened:wasDrawerOpened andPrinterConnectedStatus:success];
+            }];
+        } else {
+            [self printWithDrawerOpened:wasDrawerOpened andPrinterConnectedStatus:NO];
+        }
     }];
 }
 
@@ -895,6 +795,185 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 
 #pragma mark - Print preparation
+
+- (void)printWithDrawerOpened:(BOOL)wasDrawerOpened andPrinterConnectedStatus:(BOOL)isPrinterConnected
+{
+    NSMutableArray<PGGesturesView *> *selectedViews = [self gestureViewsSelected];
+    
+    NSArray *offRampAndOrigin = [self offrampAndOriginByPrinterConnectedStatus:isPrinterConnected];
+    NSString *origin = offRampAndOrigin[0];
+    NSString *offRamp = offRampAndOrigin[1];
+    
+    if (self.drawer.numberOfCopies > 1) {
+        for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+            [selectedViews addObject:selectedViews.firstObject];
+        }
+    }
+
+    __block BOOL wasAddedToQueue = NO;
+    __block NSUInteger numberOfPrintsAdded = 0;
+    __block CGFloat watermarkedImages = 0.0;
+    
+    // CREATE GROUP
+    dispatch_group_t watermarkGroup = dispatch_group_create();
+    for (PGGesturesView *gestureView in selectedViews) {
+        
+        PGWatermarkProcessor *processor;
+        if ([self isWatermarkingEnabledForMedia:gestureView.media]) {
+            processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:gestureView.media.socialMediaImageUrl]];
+            
+            // SHOW PROGRESS VIEW
+            [self handleWatermarkingProgress:watermarkedImages / selectedViews.count];
+        }
+        
+        // ENTER GROUP
+        NSLog(@"WATERMARK - GROUP ENTER");
+        dispatch_group_enter(watermarkGroup);
+        
+        NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+        [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
+        BOOL isPrintDirect = (selectedViews.count == 1) && (self.drawer.numberOfCopies == 1);
+        
+        void (^block)(UIImage *image) = ^(UIImage *image) {
+            MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
+            NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+            
+            [metrics setObject:origin forKey:kMetricsOrigin];
+            
+            if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
+                [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
+                    return [self handlePrintQueueStatus:status progress:progress printsAdded:0 error:errorCode];
+                }];
+            } else {
+                [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
+                
+                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
+                
+                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                 printItem:printItem
+                                                            extendedInfo:metrics];
+                wasAddedToQueue = YES;
+                numberOfPrintsAdded++;
+            }
+            
+            watermarkedImages++;
+            if ([self isWatermarkingEnabledForMedia:gestureView.media]) {
+                [self handleWatermarkingProgress:watermarkedImages / (double)selectedViews.count];
+            }
+            
+            // LEAVE GROUP
+            NSLog(@"WATERMARK - GROUP LEAVE");
+            dispatch_group_leave(watermarkGroup);
+        };
+        
+        if (processor) {
+            NSLog(@"WATERMARK - WILL PROCESS IMAGE");
+            
+            [processor processImage:gestureView.editedImage
+                        withOptions:[[MPBTPrintManager sharedInstance] defaultOptionsForImageProcessor]
+                         completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+                             if (!error) {
+                                 NSLog(@"WATERMARK - SUCCESSFULLY PROCESSED IMAGE");
+                                 block(image);
+                             } else {
+                                 NSLog(@"WATERMARK - ERROR PROCESSING IMAGE - %@", error);
+                                 block(gestureView.editedImage);
+                             }
+                         }];
+        } else {
+            block(gestureView.editedImage);
+        }
+    }
+    
+    MPBTPrinterManagerStatus printerStatus = [MPBTPrintManager sharedInstance].status;
+    BOOL isNotPrinting = (printerStatus == MPBTPrinterManagerStatusEmptyQueue) || (printerStatus == MPBTPrinterManagerStatusIdle);
+    
+    if (isPrinterConnected && !isNotPrinting) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self peekDrawerAnimated:YES];
+            
+            self.imageSavedLabel.text = [self numberOfPrintsAddedString:numberOfPrintsAdded];
+            
+            [UIView animateWithDuration:0.5F animations:^{
+                [self showImageSavedView:YES];
+            } completion:^(BOOL finished) {
+                [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:2.0];
+            }];
+        });
+    }
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // WAIT FOR GROUP
+        NSLog(@"WATERMARK - GROUP WAIT");
+        
+        dispatch_group_wait(watermarkGroup, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
+        
+        NSLog(@"WATERMARK - DONE WAITING");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (wasAddedToQueue && !isPrinterConnected) {
+                [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
+            } else if (isPrinterConnected && isNotPrinting) {
+                [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
+            }
+        });
+    });
+}
+
+- (void)resumePrintingWithDrawerOpened:(BOOL)wasDrawerOpened andNumberOfPrintsAddedToQueue:(NSInteger)numberOfPrintsAdded;
+{
+    [[MPBTPrintManager sharedInstance] resumePrintQueue:^(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
+        return [self handlePrintQueueStatus:status progress:progress printsAdded:numberOfPrintsAdded error:errorCode];
+    }];
+    
+    NSString *action = kEventPrintQueueAddSingleAction;
+    if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
+        action = kEventPrintQueueAddMultiAction;
+    }
+    
+    if (self.drawer.numberOfCopies > 1) {
+        action = kEventPrintQueueAddCopiesAction;
+    }
+    
+    if (wasDrawerOpened) {
+        [self openDrawerAnimated:NO];
+    }
+    
+    [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
+                                                      queueId:[MPBTPrintManager sharedInstance].queueId
+                                                    queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
+}
+
+- (NSArray<NSString *> *)offrampAndOriginByPrinterConnectedStatus:(BOOL)isPrinterConnected
+{
+    NSUInteger selectedViewsCount = [self gestureViewsSelected].count;
+    NSUInteger numberOfCopies = self.drawer.numberOfCopies;
+    NSString *origin = @"";
+    NSString *offRamp = @"";
+    
+    if (selectedViewsCount > 1) {
+        origin = kMetricsOriginMulti;
+        offRamp = kMetricsOffRampQueueAddMulti;
+    } else if (numberOfCopies > 1) {
+        origin = kMetricsOriginCopies;
+        offRamp = kMetricsOffRampQueueAddCopies;
+    } else if ((selectedViewsCount == 1) && (numberOfCopies == 1)) {
+        if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected) {
+            offRamp = kMetricsOffRampPrintNoUISingle;
+            origin = kMetricsOriginSingle;
+            
+            if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
+                offRamp = kMetricsOffRampPrintNoUIMulti;
+            }
+        } else {
+            origin = kMetricsOriginSingle;
+            offRamp = kMetricsOffRampQueueAddSingle;
+        }
+    }
+    
+    return @[origin, offRamp];
+}
 
 - (BOOL)isWatermarkingEnabledForMedia:(HPPRMedia *)media {
     return ([PGLinkSettings linkEnabled] && [media socialMediaImageUrl]);
@@ -921,10 +1000,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
         [self.progressView setProgress:progress];
         [self.progressView setText:NSLocalizedString(@"Watermarking images", @"Indicates that the phone is applying watermark to the images before sending to the printer")];
+        [self.progressView setSubText:nil];
     });
 }
 
-- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress error:(NSInteger)errorCode {
+- (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress printsAdded:(NSInteger)numberOfPrintsAdded error:(NSInteger)errorCode {
     dispatch_async(dispatch_get_main_queue(), ^{
 
         if (errorCode > 0) {
@@ -939,6 +1019,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
             [self.progressView setProgress:0.0];
             [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
+            if (numberOfPrintsAdded > 0) {
+                [self.progressView setSubText:[self numberOfPrintsAddedString:numberOfPrintsAdded]];
+            } else {
+                [self.progressView setSubText:nil];
+            }
 
         } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
             [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
@@ -1307,6 +1392,18 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     return editedImages;
+}
+
+- (NSMutableArray<PGGesturesView *> *)gestureViewsSelected
+{
+    NSMutableArray<PGGesturesView *> *selectedViews = [[NSMutableArray alloc] init];
+    for (PGGesturesView *gestureView in self.gesturesViews) {
+        if (gestureView.isSelected) {
+            [selectedViews addObject:gestureView];
+        }
+    }
+    
+    return selectedViews;
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel

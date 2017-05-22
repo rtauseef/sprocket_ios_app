@@ -340,9 +340,6 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }
     
     if (self.viewController) {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upgrade Status"
-                                                                       message:@"This is an alert."
-                                                                preferredStyle:UIAlertControllerStyleAlert];
          if (MantaUpgradeStatusStart != status) {
              if (MantaUpgradeStatusFinish == status) {
                  self.alert.title = MPLocalizedString(@"Firmware Updated", @"Title for dialog given after a successful firmware update");

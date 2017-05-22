@@ -196,6 +196,8 @@
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Sprocket needs bluetooth access to connect to the HP Sprocket Printer.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow access to add items to your calendar.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to take and print photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
