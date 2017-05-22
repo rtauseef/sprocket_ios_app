@@ -5895,11 +5895,11 @@
 				TargetAttributes = {
 					2671D4C21E3EB64500F166E3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						ProvisioningStyle = Manual;
 					};
 					42188b650312ea34d00c34bf = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -5908,7 +5908,7 @@
 					};
 					821523251D82215600C0541C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -5916,7 +5916,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = UJ5KAZ5V7V;
+						DevelopmentTeam = 6HB5Y2QTA3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -9004,18 +9004,18 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65933388-ece2-4340-ba82-d64ca9e18cf1";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "ce71e2d1-e4e6-473d-bb00-cbb6ca8bcccc";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Develop Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -9025,19 +9025,19 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65933388-ece2-4340-ba82-d64ca9e18cf1";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "ce71e2d1-e4e6-473d-bb00-cbb6ca8bcccc";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Develop Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -9047,17 +9047,19 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b8694d75-6b5a-45d4-bc04-9de5af7a9ae0";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Extension Distrib";
 				SKIP_INSTALL = YES;
 			};
 			name = TestFlight;
@@ -9067,17 +9069,19 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.PushNotificationExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b8694d75-6b5a-45d4-bc04-9de5af7a9ae0";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Extension Distrib";
 				SKIP_INSTALL = YES;
 			};
 			name = AppStore;
@@ -9090,9 +9094,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9143,10 +9147,10 @@
 					"-lstdc++",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "2ce2c540-13c0-43f2-b076-177b94a9e309";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9160,10 +9164,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9213,10 +9217,10 @@
 					"-lstdc++",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
-				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
+				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9230,10 +9234,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9251,10 +9255,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.action";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65933388-ece2-4340-ba82-d64ca9e18cf1";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "a6f009be-5d41-4a8a-952d-549ce508f9bf";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action Develop Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -9267,11 +9271,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9289,10 +9293,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.action";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Wildcard Development Provision";
+				PROVISIONING_PROFILE = "a6f009be-5d41-4a8a-952d-549ce508f9bf";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action Develop Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -9305,11 +9309,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9327,10 +9331,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket.action";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22a42cad-940b-4e8b-94f5-f0e6ed53d100";
-				PROVISIONING_PROFILE_SPECIFIER = "XC: *";
+				PROVISIONING_PROFILE = "7dd6df9d-bf6c-442a-9ace-be5b1a312a96";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action iOS Distribution Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = TestFlight;
@@ -9367,7 +9371,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7dd6df9d-bf6c-442a-9ace-be5b1a312a96";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action iOS Distribution Provision";
 				SKIP_INSTALL = YES;
 			};
@@ -9471,10 +9475,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9520,10 +9524,10 @@
 					UIKit,
 				);
 				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
-				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
+				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9537,9 +9541,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9585,10 +9589,10 @@
 					UIKit,
 				);
 				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
-				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
+				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9687,9 +9691,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eric Talle (UJ5KAZ5V7V)";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9736,10 +9740,10 @@
 					UIKit,
 				);
 				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Distribution Provision";
+				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9865,7 +9869,7 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -9899,9 +9903,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Talle (X55T2978K2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9951,10 +9955,10 @@
 					"-lstdc++",
 				);
 				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hp.dev.hp-sprocket";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c915faa-df16-496a-979d-57b2eade7783";
-				PROVISIONING_PROFILE_SPECIFIER = "Sprocket Dev Push Notification Profile";
+				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9970,7 +9974,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
-				DEVELOPMENT_TEAM = UJ5KAZ5V7V;
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -10023,8 +10027,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "a9cb34f6-0ed6-4cd6-a777-0eb06c8ead30";
-				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Development Provision";
+				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
