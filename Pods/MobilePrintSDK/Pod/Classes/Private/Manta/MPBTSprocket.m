@@ -862,6 +862,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         case MantaErrorNoError:
             errString = MPLocalizedString(@"Ready", @"Message given when sprocket has no known error");
             break;
+        case MantaErrorNoSession:
         case MantaErrorBusy:
             errString = MPLocalizedString(@"Sprocket Printer in Use", @"Message given when sprocket cannot print due to being in use.");
             break;
@@ -901,9 +902,6 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         case MantaErrorWrongCustomer:
             errString = MPLocalizedString(@"Error", @"Message given when sprocket cannot print due to not recognizing data from our app");
             break;
-        case MantaErrorNoSession:
-            errString = MPLocalizedString(@"Sprocket Printer Not Connected", @"Message given when sprocket cannot be reached");
-            break;
             
         default:
             errString = MPLocalizedString(@"Unrecognized Error", @"Message given when sprocket has an unrecgonized error");
@@ -921,6 +919,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         case MantaErrorNoError:
             errString = MPLocalizedString(@"Sprocket is ready to print.", @"Message given when sprocket has no known error");
             break;
+        case MantaErrorNoSession:
         case MantaErrorBusy:
             errString = MPLocalizedString(@"The sprocket printer is already processing a job. Please wait to resend photo.", @"Message given when sprocket cannot print due to being in use.");
             break;
@@ -961,10 +960,6 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             errString = MPLocalizedString(@"The device is not recognized.", @"Message given when sprocket cannot print due to not recognizing data from our app");
             break;
             
-        case MantaErrorNoSession:
-            errString = MPLocalizedString(@"Make sure the sprocket printer is on and bluetooth connected.", @"Message given when the printer can't be contacted.");
-            break;
-
         default:
             errString = MPLocalizedString(@"Unrecognized Error", @"Message given when sprocket has an unrecgonized error");
             break;
