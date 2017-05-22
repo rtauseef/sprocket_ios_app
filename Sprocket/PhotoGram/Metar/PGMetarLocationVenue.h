@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *countryCode;
 @property (strong, nonatomic) NSString *country;
 @property (strong, nonatomic) NSString *iata;
+@property (strong, nonatomic) NSString *area;
 
 - (NSDictionary *) getDict;
 - (instancetype)initWithDictionary: (NSDictionary *) dict;

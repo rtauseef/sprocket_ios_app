@@ -22,6 +22,7 @@
             self.countryCode = [dict objectForKey:@"countryCode"];
             self.country = [dict objectForKey:@"country"];
             self.iata = [dict objectForKey:@"iata"];
+            self.area = [dict objectForKey:@"area"];
         }
     }
 
@@ -48,6 +49,9 @@
     
     if (self.iata)
         [dict setObject:self.iata forKey:@"iata"];
+    
+    if (self.area)
+        [dict setObject:self.area forKey:@"area"];
     
     return dict;
 }

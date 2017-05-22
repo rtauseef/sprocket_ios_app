@@ -52,8 +52,6 @@
 @end
 
 #define kLongPressDurationForAlternative 0.6f
-
-#define kImageCollectionGridFixedHeight 100.0
 #define kShortDescriptionFixedHeight 200.0
 #define kShowMoreButtonFixedHeight 30.0
 #define kFixedLanguage @"en"
@@ -184,9 +182,9 @@
                 if (page.images && [page.images count] > 0) {
                     self.collectionImageArray = page.images;
                     self.imagesCollectionView.hidden = NO;
-                    self.imageCollectionViewHeightConstraint.constant = kImageCollectionGridFixedHeight;
+                    self.imageCollectionViewHeightConstraint.constant = [self getImageSize] + kImageGridSpacing;
                     
-                    int numberOfLines = ceil([self.collectionImageArray count] / kNumberOfImagesPerRow);
+                    int numberOfLines = ceil((float) [self.collectionImageArray count] / (float) kNumberOfImagesPerRow);
                     if (numberOfLines > 1) {
                         self.imagesShowMorebutton.hidden = NO;
                         self.imageShowMoreButtonHeightConstraint.constant = kShowMoreButtonFixedHeight;
@@ -247,13 +245,13 @@
     if (self.imagesExpanded) {
         self.imagesExpanded = NO;
         [self.imagesShowMorebutton setTitle:NSLocalizedString(@"Show More",nil) forState:UIControlStateNormal];
-        newFrame.size.height = kImageCollectionGridFixedHeight;
+        newFrame.size.height = [self getImageSize] + kImageGridSpacing;
         self.imagesCollectionView.frame = newFrame;
-        self.imageCollectionViewHeightConstraint.constant = kImageCollectionGridFixedHeight;
+        self.imageCollectionViewHeightConstraint.constant = [self getImageSize] + kImageGridSpacing;
     } else {
         [self.imagesShowMorebutton setTitle:NSLocalizedString(@"Show Less",nil) forState:UIControlStateNormal];
         self.imagesExpanded = YES;
-        int numberOfLines = ceil([self.collectionImageArray count] / kNumberOfImagesPerRow);
+        int numberOfLines = ceil((float) [self.collectionImageArray count] / (float) kNumberOfImagesPerRow);
         float height = [self getImageSize] * numberOfLines + (kImageGridLineSpacing * (numberOfLines - 1));
         newFrame.size.height = height;
         self.imagesCollectionView.frame = newFrame;
@@ -291,7 +289,7 @@
 }
 
 - (int) getImageSize {
-    return (self.view.bounds.size.width / kNumberOfImagesPerRow) - kImageGridSpacing * (kNumberOfImagesPerRow - 1) - kImageGridMargin * 2;
+    return floorf((self.imagesCollectionView.bounds.size.width - (kImageGridSpacing * (kNumberOfImagesPerRow - 1)) - (kImageGridMargin * 2))/kNumberOfImagesPerRow);
 }
 
 #pragma mark UICollectionView delegate and data source (image section)
@@ -307,14 +305,16 @@
 
     if (cell != nil) {
         cell.backgroundColor = [UIColor clearColor];
-        NSDictionary *currentUrl = [self.collectionImageArray objectAtIndex:indexPath.row];
-        [cell.imageView setImageWithURL:[NSURL URLWithString:[currentUrl objectForKey:@"thumb"]]];
+        PGMetarIcon *currentIcon = [self.collectionImageArray objectAtIndex:indexPath.row];
+        [cell.imageView setImageWithURL:[NSURL URLWithString:currentIcon.thumb]];
     }
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     int calcSize = [self getImageSize];
+    
+    NSLog(@"Image size will be: %d",calcSize);
     
     return CGSizeMake(calcSize,calcSize);
 }
@@ -329,14 +329,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *currentUrl = [self.collectionImageArray objectAtIndex:indexPath.row];
+    PGMetarIcon *currentImage = [self.collectionImageArray objectAtIndex:indexPath.row];
     
-    NSString *originalUrl = [currentUrl objectForKey:@"original"];
+    NSString *originalUrl = currentImage.original;;
     
     if (originalUrl) {
         HPPRMedia *media = [[HPPRMedia alloc] init];
-        media.thumbnailUrl = [currentUrl objectForKey:@"thumb"];
-        media.standardUrl = [currentUrl objectForKey:@"original"];
+        media.thumbnailUrl = currentImage.thumb;
+        media.standardUrl = currentImage.original;
         
         [[PGPhotoSelection sharedInstance] selectMedia:media];
         self.tmpViewController = [[PGPayoffFullScreenTmpViewController alloc] init];

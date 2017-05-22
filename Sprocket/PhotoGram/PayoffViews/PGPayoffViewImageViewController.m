@@ -70,7 +70,11 @@
         if (self.metadata && self.metadata.location && self.metadata.location.venue &&
             self.metadata.location.venue.city && self.metadata.location.venue.state) {
          
-            self.viewTitle = [NSString stringWithFormat:@"Photos from %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
+            if (self.metadata.location && self.metadata.location.venue.area != nil) {
+                self.viewTitle = [NSString stringWithFormat:@"Photos from %@",self.metadata.location.venue.area];
+            } else if (self.metadata.location) {
+                self.viewTitle = [NSString stringWithFormat:@"Photos from %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
+            }
         } else {
             self.viewTitle = NSLocalizedString(@"Photos taken at the same location", nil);
         }

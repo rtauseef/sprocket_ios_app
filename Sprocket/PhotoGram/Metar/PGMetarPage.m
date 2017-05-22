@@ -73,8 +73,14 @@
         if (images) {
             NSMutableArray *tmpImages = [NSMutableArray array];
             
-            for (NSString* image in images) {
-                [tmpImages addObject:image];
+            for (NSDictionary* image in images) {
+                if (image && [image isKindOfClass:[NSDictionary class]]) {
+                    PGMetarIcon *icon = [[PGMetarIcon alloc] initWithDictionary:image];
+                
+                    if (icon.original && icon.thumb) {
+                        [tmpImages addObject:icon];
+                    }
+                }
             }
             
             self.images = tmpImages;

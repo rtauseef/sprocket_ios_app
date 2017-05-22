@@ -39,7 +39,7 @@
 @property (strong, nonatomic) PGMetarIcon* icon;
 @property (strong, nonatomic) NSString* from;
 @property (strong, nonatomic) NSArray <PGMetarBlock *>* blocks;
-@property (strong, nonatomic) NSArray <NSString *>* images;
+@property (strong, nonatomic) NSArray <PGMetarIcon *>* images;
 @property (strong, nonatomic) NSArray <NSString *>* externalLinks;
 
 - (instancetype)initWithDictionary: (NSDictionary *) dict;
