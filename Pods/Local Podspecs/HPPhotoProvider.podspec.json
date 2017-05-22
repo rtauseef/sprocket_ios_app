@@ -38,6 +38,9 @@
     ],
     "FlickrKit": [
 
+    ],
+    "Google/SignIn": [
+
     ]
   },
   "xcconfig": {

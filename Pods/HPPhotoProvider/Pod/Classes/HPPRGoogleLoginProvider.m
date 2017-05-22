@@ -40,7 +40,7 @@ static NSString * const kGoogleProviderName = @"Google";
         NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
         
         sharedInstance.loggedIn = NO;
-        [[GIDSignIn sharedInstance] setScopes:[NSArray arrayWithObject:@"https://www.googleapis.com/auth/plus.login"]];
+        [[GIDSignIn sharedInstance] setScopes:@[@"https://www.googleapis.com/auth/plus.login", @"https://picasaweb.google.com/data/"]];
         [GIDSignIn sharedInstance].delegate = sharedInstance;
         [GIDSignIn sharedInstance].uiDelegate = sharedInstance;
         [[GIDSignIn sharedInstance] signInSilently];

@@ -65,6 +65,7 @@ PODS:
   - HPPhotoProvider (0.13.32):
     - AFNetworking
     - FlickrKit
+    - Google/SignIn
   - iCarousel (1.8)
   - LivePaperSDK (2.0.0):
     - HPLinkUtils
@@ -93,10 +94,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 2d7859043dc0a60da3da8d31b973f5bcca8e8b7c
+    :commit: 18ecb01a09640be5ae8875a60b42fb59b1e14c96
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: ab0f73231970a52aeed3e1fa3e36882beaa35347
+    :commit: fd447d955a59b712e8cdbfe23664cbbdb46a2756
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -113,7 +114,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
-  HPPhotoProvider: eaf88024e646d3e5663a8fce9b35042e32b733d1
+  HPPhotoProvider: 08358b88169d402942d7a48e86446188d7c5028e
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a

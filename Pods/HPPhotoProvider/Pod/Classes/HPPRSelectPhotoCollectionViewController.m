@@ -149,6 +149,10 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 {
     [super viewWillDisappear:animated];
     
+    if (self.refreshControl.isRefreshing) {
+        [self.refreshControl endRefreshing];
+    }
+    
     [self.startCameraTimer invalidate];
     [self.cameraCell stopCamera];
 }
@@ -196,8 +200,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
     self.noPhotosLabel.hidden = YES;
 
     [self refreshImages:^{
-        if ((nil != refreshControl) && refreshControl.refreshing) {
-            [refreshControl endRefreshing];
+        if ((nil != self.refreshControl) && self.refreshControl.refreshing) {
+            [self.refreshControl endRefreshing];
             [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PHOTO_COLLECTION_END_REFRESH object:nil];
         }
     }];
