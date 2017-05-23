@@ -47,7 +47,7 @@ Scenario Outline: Verify Text editor screen options
     Examples:
     | social_media_screen_name        |
     | Instagram Preview  |
-    | Flickr Preview     |
+    | Google Preview     |
     | CameraRoll Preview |
 
 

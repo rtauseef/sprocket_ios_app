@@ -11,9 +11,16 @@
 //
 
 #import "PGPrintQueueManager.h"
+#import "PGInAppMessageManager.h"
+
 #import <MP.h>
 #import <MPBTPrintManager.h>
 
+
+static NSString * const kPrintQueueManagerPrintCount = @"com.hp.hp-sprocket.printCount";
+static NSInteger const kBuyPaperNotificationThresholdFirstTier  = 10;
+static NSInteger const kBuyPaperNotificationThresholdSecondTier = 30;
+static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
 
 @interface PGPrintQueueManager ()
 
@@ -42,10 +49,9 @@
 
     MPBTPrinterManagerStatus status = [MPBTPrintManager sharedInstance].status;
 
-    if (status != MPBTPrinterManagerStatusEmptyQueue) {
+    if (status != MPBTPrinterManagerStatusEmptyQueue || [MPBTPrintManager sharedInstance].queueSize > 0) {
         if ([[MP sharedInstance] numberOfPairedSprockets] == 0) {
             [[PGPrintQueueManager sharedInstance] showPrintQueueAlertNotConnected];
-
         } else {
             if (status == MPBTPrinterManagerStatusIdle) {
                 [[PGPrintQueueManager sharedInstance] showPrintQueueAlertPaused];
@@ -54,9 +60,26 @@
                 [[PGPrintQueueManager sharedInstance] showPrintQueueAlertActive];
             }
         }
-
     } else {
         [[PGPrintQueueManager sharedInstance] showPrintQueueAlertEmpty];
+    }
+}
+
+- (void)incrementPrintCounter
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+
+    NSInteger count = [userdefaults integerForKey:kPrintQueueManagerPrintCount];
+    count++;
+
+    [userdefaults setInteger:count forKey:kPrintQueueManagerPrintCount];
+    [userdefaults synchronize];
+
+    if (count == kBuyPaperNotificationThresholdFirstTier ||
+        count == kBuyPaperNotificationThresholdSecondTier ||
+        count == kBuyPaperNotificationThresholdThirdTier)
+    {
+        [[PGInAppMessageManager sharedInstance] showBuyPaperMessage];
     }
 }
 

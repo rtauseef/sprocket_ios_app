@@ -68,12 +68,12 @@ When /I touch Instagram "(.*?)" button$/ do |text|
     touch("button marked:'#{$list_loc[text]}' button index:0")
 end
 
-When(/^I touch Flickr "(.*?)" button$/) do |text|
+When(/^I touch Google "(.*?)" button$/) do |text|
    wait_for_elements_exist("label marked:'#{text}'",:timeout=>SPINNER_TIMEOUT)
     touch("button marked:'#{text}'")
 end
 
-Then(/^I should see Flickr "(.*?)" button$/) do |text|
+Then(/^I should see Google "(.*?)" button$/) do |text|
     sleep(STEP_PAUSE)
     check_element_exists("button marked:'#{text}' button index:2")
     sleep(STEP_PAUSE)
@@ -92,5 +92,22 @@ end
 And /^I navigate back$/ do
     touch @current_page.back_button
     sleep(STEP_PAUSE)
+end
+When(/^I touch hamburger button on navigation bar$/) do
+  selenium.find_element(:xpath, "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click
+  sleep(SLEEP_SCREENLOAD)
+end
+
+When(/^I select "([^"]*)" option$/) do |arg1|
+ selenium.find_element(:xpath, "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[3]/XCUIElementTypeStaticText[1]").click
+  sleep(SLEEP_SCREENLOAD)
+  sleep(10.0)
+end
+When(/^I verify the url$/) do
+  url_buy_paper= "www8.hp.com/us/en/printers/zink.html"
+  xpath_buy_paper ="//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTextField[1]"
+   selenium.find_element(:name,"Address").click
+   sleep(SLEEP_SCREENLOAD)
+   raise "Incorrect url loaded!" unless selenium.find_element(:xpath,"#{xpath_buy_paper}").value == url_buy_paper.to_s
 end
 

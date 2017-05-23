@@ -30,6 +30,7 @@
 #import "PGLandingMainPageViewController.h"
 #import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
+#import "PGInAppMessageManager.h"
 
 
 static const NSInteger connectionDefaultValue = -1;
@@ -242,7 +243,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     //    [UAirship push].userNotificationTypes = (UIUserNotificationTypeAlert |
     //                                        UIUserNotificationTypeBadge |
     //                                        UIUserNotificationTypeSound);
-    
+
+    [UAirship push].defaultPresentationOptions = UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionSound;
+
+    [UAirship inAppMessaging].messageControllerDelegate = [PGInAppMessageManager sharedInstance];
+    [UAirship inAppMessaging].messagingDelegate = [PGInAppMessageManager sharedInstance];
+    [UAirship inAppMessaging].autoDisplayEnabled = NO;
 }
 
 
@@ -270,11 +276,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         self.lastConnectedValue != currentlyConnected) {
         
         UIViewController *topViewController = [PGAppNavigation currentTopViewController];
-        NSString *name = topViewController.trackableScreenName;
-        if (nil == name) {
-            name = [NSString stringWithFormat:@"%@", [topViewController class]];
-        }
         
+        NSString *name = [NSString stringWithFormat:@"%@", [topViewController class]];
+        if (topViewController) {
+            name = topViewController.trackableScreenName;
+        }
+
         [[PGAnalyticsManager sharedManager] trackPrinterConnected:(BOOL)currentlyConnected screenName:name];
     }
     

@@ -12,6 +12,7 @@
 
 #import "PGWatermarkOperationHPLink.h"
 #import "PGWatermarkProcessor.h"
+#import "PGWatermarkOperationHPMetar.h"
 
 @interface PGWatermarkProcessor()
 
@@ -51,7 +52,7 @@
     operationData.localOperationIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.printerIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.payoffURL = self.watermarkURL;
-    [PGWatermarkOperationHPLink executeWithOperationData:operationData progress:^(double progress) {
+    [PGWatermarkOperationHPMetar executeWithOperationData:operationData progress:^(double progress) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {
             [self.delegate didUpdateProgress:self progress:progress];
         }

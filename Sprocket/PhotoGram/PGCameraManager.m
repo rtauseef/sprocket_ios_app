@@ -127,7 +127,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         [self.overlayView removeFromSuperview];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            self.cameraOverlay.view.frame = view.bounds;
             [view addSubview:self.overlayView];
         });
     } else {

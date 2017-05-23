@@ -1,27 +1,4 @@
-/*
- Copyright 2009-2017 Urban Airship Inc. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
-
- 1. Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
-
- 2. Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
-
- THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+/* Copyright 2017 Urban Airship and Contributors */
 
 #import "UAActionScheduleInfo.h"
 #import "UAUtils.h"
@@ -34,6 +11,7 @@ NSString *const UAActionScheduleInfoGroupKey = @"group";
 NSString *const UAActionScheduleInfoEndKey = @"end";
 NSString *const UAActionScheduleInfoStartKey = @"start";
 NSString *const UAActionScheduleInfoTriggersKey = @"triggers";
+NSString *const UAActionScheduleInfoDelayKey = @"delay";
 
 NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_info";
 
@@ -49,6 +27,8 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
 @property(nonatomic, assign) NSUInteger limit;
 @property(nonatomic, strong) NSDate *start;
 @property(nonatomic, strong) NSDate *end;
+@property(nonatomic, strong) UAScheduleDelay *delay;
+
 @end
 
 @implementation UAActionScheduleInfo
@@ -66,6 +46,10 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
         return NO;
     }
 
+    if (self.delay && !self.delay.isValid) {
+        return NO;
+    }
+
     return YES;
 }
 
@@ -76,6 +60,7 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
         self.triggers = [builder.triggers copy] ?: @[];
         self.limit = builder.limit;
         self.group = builder.group;
+        self.delay = builder.delay;
         self.start = builder.start ?: [NSDate distantPast];
         self.end = builder.end ?: [NSDate distantFuture];
     }
@@ -107,25 +92,6 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
         return nil;
     }
 
-    NSSet *keySet = [NSSet setWithArray:[json allKeys]];
-    NSSet *possibleKeys = [NSSet setWithArray:@[UAActionScheduleInfoActionsKey, UAActionScheduleInfoLimitKey,
-                                                UAActionScheduleInfoGroupKey, UAActionScheduleInfoEndKey,
-                                                UAActionScheduleInfoStartKey, UAActionScheduleInfoTriggersKey]];
-
-    if (![keySet isSubsetOfSet:possibleKeys]) {
-        if (error) {
-            NSMutableSet *invalid = [NSMutableSet setWithSet:keySet];
-            [invalid minusSet:possibleKeys];
-
-            NSString *msg = [NSString stringWithFormat:@"Invalid keys: %@", invalid];
-            *error =  [NSError errorWithDomain:UAActionScheduleInfoErrorDomain
-                                          code:UAActionScheduleInfoErrorCodeInvalidJSON
-                                      userInfo:@{NSLocalizedDescriptionKey:msg}];
-        }
-
-        return nil;
-    }
-
     // Actions
     id actions = json[UAActionScheduleInfoActionsKey];
     if (![actions isKindOfClass:[NSDictionary class]]) {
@@ -143,7 +109,7 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
     id limit = json[UAActionScheduleInfoLimitKey];
     if (limit && ![limit isKindOfClass:[NSNumber class]]) {
         if (error) {
-            NSString *msg = [NSString stringWithFormat:@"Limit must be defined and be a number. Invalid value: %@", actions];
+            NSString *msg = [NSString stringWithFormat:@"Limit must be defined and be a number. Invalid value: %@", limit];
             *error =  [NSError errorWithDomain:UAActionScheduleInfoErrorDomain
                                           code:UAActionScheduleInfoErrorCodeInvalidJSON
                                       userInfo:@{NSLocalizedDescriptionKey:msg}];
@@ -231,6 +197,25 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
         }
         return nil;
     }
+    
+    // Delay
+    UAScheduleDelay *delay = nil;
+    if (json[UAActionScheduleInfoDelayKey]) {
+        if (![json[UAActionScheduleInfoDelayKey] isKindOfClass:[NSDictionary class]]) {
+            if (error) {
+                NSString *msg = [NSString stringWithFormat:@"Delay payload must be a dictionary. Invalid value: %@", json[UAActionScheduleInfoDelayKey]];
+                *error =  [NSError errorWithDomain:UAActionScheduleInfoErrorDomain
+                                              code:UAActionScheduleInfoErrorCodeInvalidJSON
+                                          userInfo:@{NSLocalizedDescriptionKey:msg}];
+            }
+        }
+        
+        delay = [UAScheduleDelay delayWithJSON:json[UAActionScheduleInfoDelayKey] error:error];
+        
+        if (!delay) {
+            return nil;
+        }
+    }
 
     return [UAActionScheduleInfo actionScheduleInfoWithBuilderBlock:^(UAActionScheduleInfoBuilder *builder) {
         builder.actions = actions;
@@ -239,6 +224,7 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
         builder.group = group;
         builder.start = start;
         builder.end = end;
+        builder.delay = delay;
     }];
 }
 
@@ -270,6 +256,10 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
     if (self.group != scheduleInfo.group && ![self.group isEqualToString:scheduleInfo.group]) {
         return NO;
     }
+    
+    if (self.delay != scheduleInfo.delay && ![self.delay isEqualToDelay:scheduleInfo.delay]) {
+        return NO;
+    }
 
     return YES;
 }
@@ -297,6 +287,8 @@ NSString * const UAActionScheduleInfoErrorDomain = @"com.urbanairship.schedule_i
     result = 31 * result + [self.group hash];
     result = 31 * result + [self.triggers hash];
     result = 31 * result + [self.actions hash];
+    result = 31 * result + [self.delay hash];
+
     return result;
 }
 

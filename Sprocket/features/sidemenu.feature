@@ -16,7 +16,7 @@ Scenario Outline: Sign in to different Social media accounts from side menu
     Examples:
       | social_media | Sign in          | Photos           |
       | Instagram    | Instagram Signin | Instagram Photos |
-    #  | Flickr       | FlickrSignin     | Flickr Photo     |
+      | Google        | Google Signin     | Google Photos     |
       
 @regression
 Scenario: Open cameraroll from side menu
@@ -155,4 +155,12 @@ Scenario Outline: Verify successful navigation for How to & Help options
 		When I touch Instagram "Sign Out" button
 	    And I click Sign Out button on popup
 		Then I should see Instagram "Sign In" button
-        
+
+ @reset
+ @appium
+ @TA17541
+  Scenario: Signin to Facebook
+    Given I am on the Landing screen
+    When I touch hamburger button on navigation bar
+    And I select "Buy Paper" option
+    Then I verify the url

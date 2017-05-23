@@ -391,6 +391,7 @@ typedef enum : NSUInteger {
         if (showConnectSprocket) {
             // The following call forces the system "Connect to Bluetooth" dialog if bluetooth has been turned off
             CBCentralManager *cbManager = [[CBCentralManager alloc] initWithDelegate:nil queue: nil];
+            cbManager = nil;
         }
     } else
 #endif

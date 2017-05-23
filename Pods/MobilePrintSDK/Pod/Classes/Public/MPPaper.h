@@ -189,8 +189,8 @@ extern NSString * const kMPPaperSizePrinterHeightKey;
 
 /*!
  * @abstract Initializer using string titles
- * @param paperSize The title of the paper size
- * @param paperType The title of the paper type
+ * @param paperSizeTitle The title of the paper size
+ * @param paperTypeTitle The title of the paper type
  * @seealso titleFromSize:
  * @seealso titleFromType:
  * @returns The initialized MPPaper object

@@ -11,7 +11,7 @@ Scenario: Verify Landing screen texts
     | Facebook               |
     | Pitu                   |
     | Qzone                  |
-    | Flickr                 |
+    | Google                 |
     | CameraRoll             |
     | Take or select a photo |
     | Terms and service      |
@@ -26,8 +26,8 @@ Scenario: Verify Terms of Service link from social media landing screens
     Then I swipe to see "Camera Roll" screen
     And I verify the Terms of Service link for "Camera Roll"
     Then I wait for some time
-    Then I swipe to see "Flickr" screen
-    And I verify the Terms of Service link for "Flickr"
+    Then I swipe to see "Google" screen
+    And I verify the Terms of Service link for "Google"
     Then I wait for some time
     Then I swipe to see "QZone" screen
     And I verify the Terms of Service link for "QZone"
@@ -136,7 +136,7 @@ Scenario: Verify Social media screen titles and navigation
     And I click on the "Instagram" logo 
     Then I swipe to see "Camera Roll" screen
     Then I wait for some time
-    Then I swipe to see "Flickr" screen
+    Then I swipe to see "Google" screen
     Then I wait for some time
     Then I swipe to see "QZone" screen
     Then I wait for some time
@@ -220,9 +220,10 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     And I touch Instagram "Sign Out" button
     And I click Sign Out button on popup
     Then I should see Instagram "Sign In" button
-        
+   
+@reset     
 @localization
-  Scenario Outline: Navigate to preview screen via instagram/Flickr
+  Scenario Outline: Navigate to preview screen via instagram/Google
     Given  I am on the "Landing" screen  
     Then I should see "<social_media>" logo
     And I click on the "<social_media>" logo
@@ -248,7 +249,7 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     Examples:
       | social_media  | Sign in          | welcome           | Photos           | Preview           |
       | Instagram     | Instagram Signin | Instagram Landing | Instagram Photos | Instagram Preview |
-      | Flickr        | FlickrSignin     | Flickr Landing    | Flickr Photo     | Flickr Preview    | 
+      | Google        | Google Signin     | Google Landing    | Google Photos     | Google Preview    | 
     
 
 @block

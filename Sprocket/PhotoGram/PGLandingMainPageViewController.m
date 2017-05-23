@@ -32,6 +32,8 @@
 #import "NSLocale+Additions.h"
 #import "UIFont+Style.h"
 #import "PGHamburgerButton.h"
+#import "PGInAppMessageManager.h"
+#import "PGPrintQueueManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -39,8 +41,9 @@
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
+NSInteger const kMantaErrorBusy = 1;
 
-@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate>
+@interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
 @property (weak, nonatomic) IBOutlet UIView *cameraBackgroundView;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurredView;
@@ -114,7 +117,7 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMenuClosedNotification:) name:MENU_CLOSED_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShowSocialNetworkNotification:) name:SHOW_SOCIAL_NETWORK_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCameraButtons) name:kPGCameraManagerCameraClosed object:nil];
-    
+
     __weak PGLandingMainPageViewController *weakSelf = self;
     [[PGCameraManager sharedInstance] checkCameraPermission:^{
         [[PGCameraManager sharedInstance] addCameraButtonsOnView:weakSelf.cameraButtonsView];
@@ -298,6 +301,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
         self.googleButton.userInteractionEnabled = YES;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
+
+        [[UAirship inAppMessaging] displayPendingMessage];
     });
 }
 
@@ -458,6 +463,8 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+
+    [[PGPrintQueueManager sharedInstance] incrementPrintCounter];    
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didStartPrintingJob:(MPPrintLaterJob *)job {
@@ -493,10 +500,12 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                      printItem:job.defaultPrintItem
                                                   extendedInfo:extendedMetrics];
+
+    [[PGPrintQueueManager sharedInstance] incrementPrintCounter];
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
-    if (self.errorAlert) {
+    if (self.errorAlert || (errorCode == kMantaErrorBusy)) {
         return;
     }
 
@@ -514,20 +523,29 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
                                                                    message:errorMessage
                                                             preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                          style:UIAlertActionStyleCancel
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                            self.errorAlert = nil;
-                                                            [printManager pausePrintQueue];
-                                                        }];
-    [self.errorAlert addAction:pauseAction];
-
-    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         self.errorAlert = nil;
-                                                     }];
-    [self.errorAlert addAction:tryAgainAction];
+    if (errorCode == kMantaErrorBusy) {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:okAction];
+    } else {
+        UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
+                                                              style:UIAlertActionStyleCancel
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+                                                                self.errorAlert = nil;
+                                                                [printManager pausePrintQueue];
+                                                            }];
+        [self.errorAlert addAction:pauseAction];
+        
+        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:tryAgainAction];
+    }
 
     UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];
     [topViewController presentViewController:self.errorAlert animated:YES completion:nil];
@@ -572,6 +590,15 @@ NSInteger const kSocialSourcesUISwitchThreshold = 4;
 {
     [self goToSocialSourcePage:socialSource.type sender:button];
 }
+
+
+#pragma mark - PGInAppMessageHost
+
+- (BOOL)allowsInAppMessages
+{
+    return YES;
+}
+
 
 #pragma mark - Reset user defaults
 

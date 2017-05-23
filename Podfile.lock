@@ -22,7 +22,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.2.0):
     - CocoaLumberjack/Default
-  - FirebaseAnalytics (3.8.0):
+  - FirebaseAnalytics (3.9.0):
     - FirebaseCore (~> 3.6)
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -71,7 +71,7 @@ PODS:
     - HPLinkUtils
   - MobilePrintSDK (3.0.10)
   - TTTAttributedLabel (1.10.1)
-  - UrbanAirship-iOS-SDK (8.2.2)
+  - UrbanAirship-iOS-SDK (8.3.1)
 
 DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
@@ -97,13 +97,13 @@ CHECKOUT OPTIONS:
     :commit: 18ecb01a09640be5ae8875a60b42fb59b1e14c96
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: fd447d955a59b712e8cdbfe23664cbbdb46a2756
+    :commit: ea056531834d6fdd3eb5ae7b9900b4f0739b9dfd
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
+  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
@@ -119,7 +119,7 @@ SPEC CHECKSUMS:
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
-  UrbanAirship-iOS-SDK: b73b08b28f1b1366b671da21fac261072ef3fe19
+  UrbanAirship-iOS-SDK: 167c2a32af012bd9142eda4198244dbdd7896eec
 
 PODFILE CHECKSUM: 093a5715757288e8ef90a215bd7de3c4c49c4c77
 

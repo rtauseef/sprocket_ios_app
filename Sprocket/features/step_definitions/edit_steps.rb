@@ -51,7 +51,10 @@ end
 Then (/^I select "(.*?)"$/) do |option|
     if option == "Filter"
         touch @current_page.filter_1
-     else 
+    else 
+        if option =="AutoFix"
+            touch @current_page.magic
+        else 
             if option == "2:3" || option == "3:2"
                 $crop_option = option
                 sleep(2.0)
@@ -61,6 +64,7 @@ Then (/^I select "(.*?)"$/) do |option|
                 touch query("view marked:'#{option}'")
             end
         end
+    end
 end
 
 And(/^I should see the photo with no "(.*?)"$/) do |edit_item|
@@ -105,8 +109,8 @@ Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
     if photo_source == "Instagram Preview"
         macro %Q|I am on the "Instagram Preview" screen|
     else 
-        if photo_source == "Flickr Preview"
-        macro %Q|I am on the "Flickr Preview" screen|
+        if photo_source == "Google Preview"
+        macro %Q|I am on the "Google Preview" screen|
         else
             macro %Q|I am on the "CameraRoll Preview" screen|        
         end  
@@ -196,8 +200,8 @@ end
 Then(/^I select "(.*?)" frame$/) do |frame_id|
     sleep(STEP_PAUSE)
     $frame_id = frame_id
-    frame_name=$frame[frame_id]['name']
-    select_frame frame_name
+    $frame_name=$frame[frame_id]['name']
+    select_frame $frame_name
     sleep(STEP_PAUSE)
 end
 
@@ -212,9 +216,26 @@ end
 Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
   sleep(STEP_PAUSE)
   $sticker_tab = sticker_tab
-  split_sticker_tab = sticker_tab.split("_")
-  split_sticker_tab_id = split_sticker_tab[2].to_i
-  touch query("IMGLYIconBorderedCollectionViewCell")[split_sticker_tab_id]
+  #split_sticker_tab = sticker_tab.split("_")
+  #split_sticker_tab_id = split_sticker_tab[2].to_i
+    if (element_exists "view marked:'#{sticker_tab.to_s}'")
+        touch query("view marked:'#{sticker_tab}'")
+    else
+        i = 0
+        while i < 5 do      
+            scroll("UICollectionView",:right)
+            sleep(WAIT_SCREENLOAD)
+            i = i + 1
+            if i >= 5
+                raise "Tab not found"
+            end
+            if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                touch query("view marked:'#{sticker_tab}'")
+                sleep(STEP_PAUSE)
+            break
+            end
+        end
+    end
 end
 
 Then(/^I select "(.*?)" font$/) do |font_id|
@@ -242,12 +263,6 @@ Then(/^I should see the photo in the "Frame Editor" screen with the "(.*?)" fram
     frame_value=$frame[frame_id]['value']
     selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
-end
-
-Then(/^I should see the photo with the "(.*?)" sticker$/) do |sticker_id|
-    sticker_value=$sticker[$sticker_tab][sticker_id]['value']
-    selected_sticker_status = query("IMGLYStickerImageView",:accessibilityLabel)[0]
-    raise "Wrong sticker selected!" unless selected_sticker_status.to_s == sticker_value
 end
 
 Then(/^I should see the photo with the "(.*?)" font$/) do |font_id|
@@ -299,10 +314,14 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
             end
         else
             if option == "colors" || option == "Background colors"
-                while i < 15
+                while i < 15                    
                     $option = option
                     macro %Q|I select "#{color_name[i]}" color|
-                    macro %Q|I should see the photo with the "#{color_name[i]}" color|
+                    if $sticker_tab != nil
+                        macro %Q|I should see the "sticker" with "#{color_name[i]}" Color|
+                    else
+                        macro %Q|I should see the photo with the "#{color_name[i]}" color|
+                    end
                     i= i + 1
                 end
             else
@@ -312,7 +331,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
 		sticker_id = "sticker_"+"#{i}"
                     macro %Q|I select "#{sticker_id}" sticker|
                     macro %Q|I am on the "StickerOptionEditor" screen|
-                    macro %Q|I should see the photo with the "#{sticker_id}" sticker|
+                    macro %Q|I should see the photo with the "#{sticker_id}" sticker from "#{$sticker_tab}" tab|
                     macro %Q|I touch "Delete"|
                     macro %Q|I should see the "Edit" screen|
                     macro %Q|I tap "Sticker" button|
@@ -334,5 +353,16 @@ Then(/^I should see the "([^"]*)" with "([^"]*)" Color$/) do |type, color|
   raise "#{color} no selected!" unless  (description.include? "tintColor") && (selected_flag == 1)
  end
 
-           
+    Given(/^I should see the photo with the "([^"]*)" sticker from "([^"]*)" tab$/) do |sticker_id, sticker_tab|
+    flag = 0
+    sticker_value=$sticker[sticker_tab][sticker_id]['value']
+    $stic_arr = query("IMGLYStickerImageView",:accessibilityLabel)
+    $stic_arr.each do |test|
+        if test == sticker_value
+            flag = 1
+            break
+        end
+    end
+    raise "Wrong sticker selected!" unless flag == 1
+end       
     

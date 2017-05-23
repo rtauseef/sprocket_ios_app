@@ -74,7 +74,7 @@
     }
 
     for (UILabel *label in self.textLabels) {
-        [self configureText:label];
+        [self configureText:(TTTAttributedLabel *)label];
     }
 }
 
@@ -101,7 +101,7 @@
     [titleLabel sizeToFit];
 }
 
-- (void)configureText:(UILabel *)textLabel
+- (void)configureText:(TTTAttributedLabel *)textLabel
 {
     textLabel.font = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralBackgroundSecondaryFont];
     textLabel.textColor = [[MP sharedInstance].appearance.settings objectForKey:kMPGeneralBackgroundSecondaryFontColor];

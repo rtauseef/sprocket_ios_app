@@ -664,7 +664,6 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @abstract Called when the print flow finishes successfully
  * @discussion This delegate method is called when the print flow finishes successfully. This means that the print job was sent to the printer without error. It does not mean that the job was completed and printed without error, just that the job was queued successfully. Errors such as out-of-paper could still occur after this method is called.
  * @param printViewController The view controller calling the method
- * @returns Nothing
  * @seealso didCancelPrintFlow:
  */
 - (void)didFinishPrintFlow:(UIViewController *)printViewController;
@@ -673,7 +672,6 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @abstract Called when the print flow is canceled
  * @discussion This method is called when the print flow is canceled by the user. If the print job is queued successfully but subsequently canceled by the user in the Print Center, this method is not called.
  * @param printViewController The view controller calling the method
- * @returns Nothing
  * @seealso didFinishPrintFlow:
  */
 - (void)didCancelPrintFlow:(UIViewController *)printViewController;
@@ -783,7 +781,6 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @abstract Called when the "add to print queue" flow finishes successfully
  * @discussion This delegate method is called when the "add to print queue" flow finishes successfully.
  * @param addPrintLaterJobTableViewController The view controller calling the method
- * @returns Nothing
  * @seealso didCancelAddPrintLaterFlow:
  */
 - (void)didFinishAddPrintLaterFlow:(UIViewController *)addPrintLaterJobTableViewController;
@@ -792,7 +789,6 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @abstract Called when the "add to print queue" flow is canceled
  * @discussion This delegate method is called when the "add to print queue" is canceled by the user..
  * @param addPrintLaterJobTableViewController The view controller calling the method
- * @returns Nothing
  * @seealso didFinishAddPrintLaterFlow:
  */
 - (void)didCancelAddPrintLaterFlow:(UIViewController *)addPrintLaterJobTableViewController;
@@ -881,7 +877,6 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @discussion This delegate method is called when a sprocket needs a firmware upgrade.
  * @param batteryLevel The current battery level (on a scale of 1-100) of the device
  * @param needsUpgrade YES if the sprocket needs to be upgraded, NO otherwise
- * @returns Nothing
  */
 - (void)didCompareSprocketWithLatestFirmwareVersion:(NSString *)deviceName batteryLevel:(NSUInteger)batteryLevel needsUpgrade:(BOOL)needsUpgrade;
 
@@ -889,15 +884,13 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @abstract Called when a sprocket battery level property is updated
  * @discussion This delegate method is called when a sprocket had its battery level updated from manta refresh info
  * @param batteryLevel The current battery level (on a scale of 1-100) of the device
- * @returns Nothing
  */
 - (void)didReceiveSprocketBatteryLevel:(NSUInteger)batteryLevel;
 
 /*!
  * @abstract Called when receive a manta refresh info
  * @discussion This delegate method is called when a sprocket receive a manta refresh info
- * @param batteryLevel The current name of the device
- * @returns Nothing
+ * @param name The current name of the device
  */
 - (void)didReceiveSprocketName:(NSString *)name;
 
