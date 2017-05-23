@@ -238,7 +238,7 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     Then I should see the "<Preview>" screen
     Then I verify the "Edit" button text
     Then I tap "Download" button
-    Then I should see the popup message for the "Download"
+    #Then I should see the popup message for the "Download"
     Then I tap "Print" button
     #Then I verify the "title" of the popup message for "PrintButton"
     #And I verify the "content" of the popup message for "PrintButton"
