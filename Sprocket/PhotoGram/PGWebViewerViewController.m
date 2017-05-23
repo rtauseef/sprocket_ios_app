@@ -11,7 +11,6 @@
 //
 
 #import <HPPR.h>
-#import <AirshipKit.h>
 #import "PGWebViewerViewController.h"
 #import "UIView+Animations.h"
 
