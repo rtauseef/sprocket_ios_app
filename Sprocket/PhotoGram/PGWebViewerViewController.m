@@ -11,6 +11,7 @@
 //
 
 #import <HPPR.h>
+#import <AirshipKit.h>
 #import "PGWebViewerViewController.h"
 #import "UIView+Animations.h"
 
@@ -35,7 +36,11 @@
     
     self.webView.delegate = self;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+    if (self.urlRequestHeaders) {
+        request.allHTTPHeaderFields = self.urlRequestHeaders;
+    }
+
     [self.webView loadRequest:request];
 }
 

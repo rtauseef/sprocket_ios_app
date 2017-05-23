@@ -10,18 +10,13 @@
 // the license agreement.
 //
 
-@interface UIColor (Style)
+#import <UIKit/UIKit.h>
+#import <AirshipKit.h>
 
-+ (UIColor *)HPBlueColor;
-+ (UIColor *)HPLinkColor;
-+ (UIColor *)HPGrayColor;
-+ (UIColor *)HPGrayButtonColor;
-+ (UIColor *)HPBlueButtonColor;
-+ (UIColor *)HPTabBarSelectedColor;
-+ (UIColor *)HPTabBarUnselectedColor;
-+ (UIColor *)HPGrayBackgroundColor;
-+ (UIColor *)HPDarkBackgroundColor;
-+ (UIColor *)HPRowColor;
-+ (UIColor *)HPTableRowSelectionColor;
-+ (UIImage *)imageWithColor:(UIColor *)color rect:(CGRect)rect;
+@interface PGInboxMessagePageViewController : UIPageViewController
+
+@property (nonatomic, strong) NSArray<UAInboxMessage *> *messages;
+
+- (void)setFocusedMessageIndex:(NSInteger)focusedMessageIndex;
+
 @end
