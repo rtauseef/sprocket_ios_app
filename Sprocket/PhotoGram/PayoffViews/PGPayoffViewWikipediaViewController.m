@@ -12,8 +12,7 @@
 #import "PGWikipediaImageCollectionViewCell.h"
 #import "PGWikipediaTableViewCell.h"
 #import "PGPhotoSelection.h"
-#import "HPPRMedia.h"
-#import "HPPRGoogleMedia.h"
+#import "HPPRWikipediaMedia.h"
 #import "PGPayoffFullScreenTmpViewController.h"
 #import "PGPreviewViewController.h"
 
@@ -48,6 +47,7 @@
 @property (assign, nonatomic) int currentIndex;
 @property (strong, nonatomic) NSArray *collectionImageArray;
 @property (strong, nonatomic) NSArray *blockArray;
+@property (strong, nonatomic) PGMetarPage *currentPage;
 
 @end
 
@@ -151,6 +151,7 @@
             
             if (index < [enPages count]) {
                 PGMetarPage *page = [enPages objectAtIndex:index];
+                self.currentPage = page;
                 self.descriptionExpanded = NO;
                 self.articleNameLabel.text = page.title;
                 self.articleDescriptionTextView.text = page.text;
@@ -334,9 +335,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *originalUrl = currentImage.original;;
     
     if (originalUrl) {
-        HPPRMedia *media = [[HPPRMedia alloc] init];
+        HPPRWikipediaMedia *media = [[HPPRWikipediaMedia alloc] init];
         media.thumbnailUrl = currentImage.thumb;
         media.standardUrl = currentImage.original;
+        
+        if (self.currentPage.location && CLLocationCoordinate2DIsValid(self.currentPage.location.geo)) {
+            media.location = [[CLLocation alloc] initWithLatitude:self.currentPage.location.geo.latitude longitude:self.currentPage.location.geo.longitude];
+        }
         
         [[PGPhotoSelection sharedInstance] selectMedia:media];
         self.tmpViewController = [[PGPayoffFullScreenTmpViewController alloc] init];

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, PGMetarSocialProvider) {
     PGMetarSocialProviderInstagram,
     PGMetarSocialProviderGoogle,
     PGMetarSocialProviderFlickr,
+    PGMetarSocialProviderWikipedia
 };
 
 typedef NS_ENUM(NSInteger, PGMetarSocialType) {
