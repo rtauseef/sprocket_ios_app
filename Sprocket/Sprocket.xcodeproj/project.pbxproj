@@ -37,7 +37,6 @@
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
 		2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
-		2671D4C71E3EB64600F166E3 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		2671D4CB1E3EB64600F166E3 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
@@ -1354,7 +1353,6 @@
 		8281ECAD1EA948D1003021DB /* xoxo_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECA91EA948D1003021DB /* xoxo_TN@2x.png */; };
 		8281ECAE1EA948D1003021DB /* xoxo_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECAA1EA948D1003021DB /* xoxo_TN@3x.png */; };
 		8281ECAF1EA948D1003021DB /* xoxo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281ECAB1EA948D1003021DB /* xoxo.png */; };
-		8284668D1E4D48D4007C0A25 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8284668F1E4D48D4007C0A25 /* InfoPlist.strings */; };
 		828F02131E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
 		828F02141E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
 		828F02151E7CBCF800902C8F /* PGGesturesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F02121E7CBCF800902C8F /* PGGesturesView.xib */; };
@@ -2099,7 +2097,6 @@
 		92ECDB4D1E41065100026DE4 /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92ECDB4E1E4106F600026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		92ECDB4F1E41070F00026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
-		92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
@@ -2393,15 +2390,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2671D4DD1E3EB82A00F166E3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2ce25b4da6bb5ac3c4758195 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4005,7 +3993,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92ECDB671E41081000026DE4 /* AirshipAppExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5770,7 +5757,6 @@
 				2671D4BF1E3EB64500F166E3 /* Sources */,
 				2671D4C01E3EB64500F166E3 /* Frameworks */,
 				2671D4C11E3EB64500F166E3 /* Resources */,
-				2671D4DD1E3EB82A00F166E3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -5997,7 +5983,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8284668D1E4D48D4007C0A25 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8384,7 +8369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2671D4C71E3EB64600F166E3 /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
