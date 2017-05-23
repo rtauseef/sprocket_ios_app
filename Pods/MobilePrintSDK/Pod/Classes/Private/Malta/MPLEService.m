@@ -144,7 +144,7 @@ static const NSInteger MPLEMaltaBatteryLevelKey = 0x2A19;
     if (characteristic.value != nil) {
         NSString *stringValue = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
         MPLogDebug(@"characteristic: %@\n\nvalue: %@", characteristic, stringValue);
-        unsigned char *bytes = characteristic.UUID.data.bytes;
+        const unsigned char *bytes = characteristic.UUID.data.bytes;
         NSInteger value = bytes[0] << 8 | bytes[1];
         
         if (MPLEMaltaManufacturerKey == value) {
@@ -156,7 +156,7 @@ static const NSInteger MPLEMaltaBatteryLevelKey = 0x2A19;
         } else if (MPLEMaltaModelNumberKey == value) {
             self.malta.modelNumber = stringValue;
         } else if (MPLEMaltaBatteryLevelKey == value) {
-            unsigned char *batteryLevelBytes = characteristic.value.bytes;
+            const unsigned char *batteryLevelBytes = characteristic.value.bytes;
             self.malta.batteryLevel = batteryLevelBytes[0];
         }
     }

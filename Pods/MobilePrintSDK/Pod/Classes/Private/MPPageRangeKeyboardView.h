@@ -71,7 +71,7 @@ extern NSString *kPageRangeNoPages;
 
 /*!
  * @abstract Called when the user selects a page range
- * @param view The page range view
+ * @param pageRangeView The page range view
  * @param pageRange The selected page range
  */
 - (void)didSelectPageRange:(MPPageRangeKeyboardView *)pageRangeView pageRange:(MPPageRange *)pageRange;

@@ -19,7 +19,7 @@
 
 @implementation MPLEMaltaInfoTableViewController
 
-typedef enum MPLEMaltaProperties
+typedef enum
 {
     MPLEMaltaPropertiesCompanyId = 0,
     MPLEMaltaPropertiesFormat,
@@ -33,7 +33,7 @@ typedef enum MPLEMaltaProperties
     MPLEMaltaPropertiesFirmwareVersion,
     MPLEMaltaPropertiesBatteryLevel,
     MPLEMaltaPropertiesNumProperties
-};
+} MPLEMaltaProperties;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -94,22 +94,22 @@ typedef enum MPLEMaltaProperties
     switch (indexPath.row) {
         case MPLEMaltaPropertiesCompanyId:
             cell.textLabel.text = @"Company ID";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"0x%04x", self.malta.companyId];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"0x%04lx", (long)self.malta.companyId];
             break;
             
         case MPLEMaltaPropertiesFormat:
             cell.textLabel.text = @"Format";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.malta.format];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)self.malta.format];
             break;
 
         case MPLEMaltaPropertiesCalibratedRssi:
             cell.textLabel.text = @"Calibrated RSSI";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%#x", self.malta.calibratedRssi];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%#lx", (long)self.malta.calibratedRssi];
             break;
 
         case MPLEMaltaPropertiesConnectableStatus:
             cell.textLabel.text = @"Connectable Status";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.malta.connectableStatus];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)self.malta.connectableStatus];
             break;
 
         case MPLEMaltaPropertiesDeviceColor:
@@ -145,7 +145,7 @@ typedef enum MPLEMaltaProperties
 
         case MPLEMaltaPropertiesBatteryLevel:
             cell.textLabel.text = @"Battery Level";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d%@", self.malta.batteryLevel, @"%"];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld%@", (long)self.malta.batteryLevel, @"%"];
             break;
 
         default:

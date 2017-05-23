@@ -51,13 +51,13 @@ NSString * const kMPLEMaltaUpdatedNotification = @"kMPLEMaltaUpdatedNotification
     [[NSNotificationCenter defaultCenter] postNotificationName:kMPLEMaltaUpdatedNotification object:self userInfo:nil];
 }
 
-- (void) setDeviceColor:(NSInteger)deviceColor
+- (void) setDeviceColor:(MPLEMaltaDeviceColor)deviceColor
 {
     _deviceColor = deviceColor;
     [[NSNotificationCenter defaultCenter] postNotificationName:kMPLEMaltaUpdatedNotification object:self userInfo:nil];
 }
 
-- (void) setPrinterStatus:(NSInteger)printerStatus
+- (void) setPrinterStatus:(MPLEMaltaPrinterStatus)printerStatus
 {
     _printerStatus = printerStatus;
     [[NSNotificationCenter defaultCenter] postNotificationName:kMPLEMaltaUpdatedNotification object:self userInfo:nil];
@@ -96,16 +96,16 @@ NSString * const kMPLEMaltaUpdatedNotification = @"kMPLEMaltaUpdatedNotification
 -(NSString *)description
 {
     NSString *str = [NSString stringWithFormat:@"peripheral: %@", self.peripheral];
-    str = [str stringByAppendingFormat:@"\ncompanyId: %#x", self.companyId];
-    str = [str stringByAppendingFormat:@"\nformat: %d", self.format];
-    str = [str stringByAppendingFormat:@"\ncalibratedRssi: %#x", self.calibratedRssi];
-    str = [str stringByAppendingFormat:@"\nconnectableStatus: %d", self.connectableStatus];
+    str = [str stringByAppendingFormat:@"\ncompanyId: %#lx", (long)self.companyId];
+    str = [str stringByAppendingFormat:@"\nformat: %ld", (long)self.format];
+    str = [str stringByAppendingFormat:@"\ncalibratedRssi: %#lx", (long)self.calibratedRssi];
+    str = [str stringByAppendingFormat:@"\nconnectableStatus: %ld", (long)self.connectableStatus];
     str = [str stringByAppendingFormat:@"\ndeviceColor: %d", self.deviceColor];
     str = [str stringByAppendingFormat:@"\nprinterStatus: %d", self.printerStatus];
     str = [str stringByAppendingFormat:@"\nmodelNumber: %@", self.modelNumber];
     str = [str stringByAppendingFormat:@"\nsystemId: %@", self.systemId];
     str = [str stringByAppendingFormat:@"\nfirmwareVersion: %@", self.firmwareVersion];
-    str = [str stringByAppendingFormat:@"\nbatteryLevel: %d", self.batteryLevel];
+    str = [str stringByAppendingFormat:@"\nbatteryLevel: %ld", (long)self.batteryLevel];
     str = [str stringByAppendingFormat:@"\nmanufacturer: %@", self.manufacturer];
 
     return str;

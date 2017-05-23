@@ -130,11 +130,11 @@ static const NSString *MALTA_DISCOVERY_PREFIX = @"HPMalta-";
 	if (![self alreadyFound:peripheral]) {
         MPLogDebug(@"Peripheral Name: %@", peripheral.name);
 
-        if ([peripheral.name hasPrefix:MALTA_DISCOVERY_PREFIX]) {
+        if ([peripheral.name hasPrefix:[MALTA_DISCOVERY_PREFIX copy]]) {
             MPLogDebug(@"%@", advertisementData);
             
             NSData *manufacturerData = [advertisementData objectForKey:@"kCBAdvDataManufacturerData"];
-            unsigned char *bytes = [manufacturerData bytes];
+            const unsigned char *bytes = [manufacturerData bytes];
             
             NSInteger companyIdentifier = (bytes[1] << 8  |  bytes[0]);
             
@@ -154,20 +154,20 @@ static const NSString *MALTA_DISCOVERY_PREFIX = @"HPMalta-";
                 NSInteger printerStatus     = bytes[6];
                 
                 MPLogDebug(@"name              : %@", name);
-                MPLogDebug(@"companyIdentifier : %#x", companyIdentifier);
-                MPLogDebug(@"format            : %d",  format);
-                MPLogDebug(@"calibratedRssi    : %#x", calibratedRssi);
-                MPLogDebug(@"connectableStatus : %d",  connectableStatus);
-                MPLogDebug(@"deviceColor       : %d",  deviceColor);
-                MPLogDebug(@"printerStatus     : %d",  printerStatus);
+                MPLogDebug(@"companyIdentifier : %#lx", (long)companyIdentifier);
+                MPLogDebug(@"format            : %ld",  (long)format);
+                MPLogDebug(@"calibratedRssi    : %#lx", (long)calibratedRssi);
+                MPLogDebug(@"connectableStatus : %ld",  (long)connectableStatus);
+                MPLogDebug(@"deviceColor       : %ld",  (long)deviceColor);
+                MPLogDebug(@"printerStatus     : %ld",  (long)printerStatus);
                 
                 malta.name = name;
                 malta.companyId = companyIdentifier;
                 malta.format = format;
                 malta.calibratedRssi = calibratedRssi;
                 malta.connectableStatus = connectableStatus;
-                malta.deviceColor = deviceColor;
-                malta.printerStatus = printerStatus;
+                malta.deviceColor = (MPLEMaltaDeviceColor)deviceColor;
+                malta.printerStatus = (MPLEMaltaPrinterStatus)printerStatus;
             } else {
                 MPLogDebug(@"Reject Malta discovery due to incomplete advertisement data");
             }
@@ -261,7 +261,7 @@ static const NSString *MALTA_DISCOVERY_PREFIX = @"HPMalta-";
             [_discoveryDelegate discoveryDidRefresh];
             
 			/* Tell user to power ON BT for functionality, but not on first run - the Framework will alert in that instance. */
-            if (previousState != -1) {
+            if (previousState != (CBCentralManagerState)(-1)) {
                 [_discoveryDelegate discoveryStatePoweredOff];
             }
 			break;
@@ -298,9 +298,15 @@ static const NSString *MALTA_DISCOVERY_PREFIX = @"HPMalta-";
 			self.pendingInit = YES;
 			break;
 		}
+            
+        case CBManagerStateUnsupported:
+        {
+            MPLogDebug(@"CBCentralManagerStateUnsupported");
+            break;
+        }
 	}
     
-    previousState = [self.centralManager state];
+    previousState = (CBCentralManagerState)[self.centralManager state];
 }
 
 @end
