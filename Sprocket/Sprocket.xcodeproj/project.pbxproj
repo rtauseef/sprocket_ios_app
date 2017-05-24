@@ -2301,10 +2301,14 @@
 		F27256FB1E95ACA1009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
+		F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
+		F272AE631ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
 		F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC11ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC51ECD08F100C11BE9 /* PGImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEC41ECD08F100C11BE9 /* PGImageCache.m */; };
 		F2C1EEC61ECD08F100C11BE9 /* PGImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEC41ECD08F100C11BE9 /* PGImageCache.m */; };
+		F2C1EECC1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EECB1ED35BAF00C11BE9 /* PGInboxMessageViewController.m */; };
+		F2C1EECD1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EECB1ED35BAF00C11BE9 /* PGInboxMessageViewController.m */; };
 		F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
@@ -3981,10 +3985,14 @@
 		F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkProcessor.h; sourceTree = "<group>"; };
 		F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkProcessor.m; sourceTree = "<group>"; };
 		F27256FE1E96B2A6009E553D /* imgly_license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = imgly_license; sourceTree = SOURCE_ROOT; };
+		F272AE601ED3A9E800030ADE /* PGInboxMessagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInboxMessagePageViewController.h; sourceTree = "<group>"; };
+		F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInboxMessagePageViewController.m; sourceTree = "<group>"; };
 		F2C1EEBE1ECD06AE00C11BE9 /* UIImageView+Cached.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cached.h"; sourceTree = "<group>"; };
 		F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cached.m"; sourceTree = "<group>"; };
 		F2C1EEC31ECD08F100C11BE9 /* PGImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImageCache.h; sourceTree = "<group>"; };
 		F2C1EEC41ECD08F100C11BE9 /* PGImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImageCache.m; sourceTree = "<group>"; };
+		F2C1EECA1ED35BAF00C11BE9 /* PGInboxMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInboxMessageViewController.h; sourceTree = "<group>"; };
+		F2C1EECB1ED35BAF00C11BE9 /* PGInboxMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInboxMessageViewController.m; sourceTree = "<group>"; };
 		F2C46E7F1DB6F21300604371 /* PGIntroWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIntroWizardViewController.h; sourceTree = "<group>"; };
 		F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIntroWizardViewController.m; sourceTree = "<group>"; };
 		F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSetupSprocketViewController.h; sourceTree = "<group>"; };
@@ -5771,6 +5779,10 @@
 				F230516C1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m */,
 				F230516F1ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.h */,
 				F23051701ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m */,
+				F2C1EECA1ED35BAF00C11BE9 /* PGInboxMessageViewController.h */,
+				F2C1EECB1ED35BAF00C11BE9 /* PGInboxMessageViewController.m */,
+				F272AE601ED3A9E800030ADE /* PGInboxMessagePageViewController.h */,
+				F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -8624,6 +8636,7 @@
 				F230516E1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,
 				F2E785271DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */,
 				F23051731ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m in Sources */,
+				F2C1EECD1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
 				410e5832482fe56a231852de /* NSString+Utils.m in Sources */,
 				82E3DEBF1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
@@ -8638,6 +8651,7 @@
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
+				F272AE631ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */,
 				5bdaef2b736e0b67a0f52115 /* PGCameraRollLandingPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8688,6 +8702,7 @@
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
 				E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */,
 				829E02871DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
+				F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */,
 				82EF7B011EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
 				E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */,
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
@@ -8733,6 +8748,7 @@
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
+				F2C1EECC1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,

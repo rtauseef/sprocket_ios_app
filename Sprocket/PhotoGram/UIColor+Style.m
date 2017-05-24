@@ -54,6 +54,11 @@
     return [UIColor colorWithRed:239.0f/255.0f green:239.0f/255.0f blue:244.0f/255.0f alpha:1.0f];
 }
 
++ (UIColor *)HPDarkBackgroundColor
+{
+    return [UIColor colorWithRed:33.0f/255.0f green:33.0f/255.0f blue:33.0f/255.0f alpha:1.0f];
+}
+
 + (UIColor *)HPRowColor
 {
     return [UIColor colorWithRed:0x2A/255.0f green:0x2A/255.0f blue:0x2A/255.0f alpha:1.0f];
