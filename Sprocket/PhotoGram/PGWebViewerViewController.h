@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *notifyUrl;
+@property (strong, nonatomic) NSDictionary<NSString *, NSString *> *urlRequestHeaders;
 
 @property (nonatomic, weak) id<PGWebViewerViewControllerDelegate> delegate;
 

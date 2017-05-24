@@ -13,6 +13,7 @@
 #import "PGInboxMessageCenterListViewController.h"
 #import "PGInboxMessageCenterTableViewCell.h"
 #import "UIFont+Style.h"
+#import "PGInboxMessagePageViewController.h"
 
 #import <AirshipKit.h>
 
@@ -30,8 +31,6 @@
 
     if (self) {
         self.title = NSLocalizedString(@"Inbox", nil);
-
-        [self loadMessages];
     }
 
     return self;
@@ -47,6 +46,13 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self loadMessages];
+}
+
 - (IBAction)doneButtonTapped:(id)sender
 {
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
@@ -54,7 +60,8 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)refreshControlUpdated:(UIRefreshControl *)sender {
+- (IBAction)refreshControlUpdated:(UIRefreshControl *)sender
+{
     if (sender.isRefreshing) {
         [self loadMessages];
     }
@@ -63,17 +70,19 @@
 
 #pragma mark - Private
 
-- (void)loadMessages {
-
+- (void)loadMessages
+{
     void (^retrieveMessageCompletionBlock)() = ^(void){
-        [CATransaction begin];
-        [CATransaction setCompletionBlock: ^{
-            [self messageListUpdated];
-        }];
-        if (self.refreshControl.isRefreshing) {
-            [self.refreshControl endRefreshing];
-        }
-        [CATransaction commit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [CATransaction begin];
+            [CATransaction setCompletionBlock: ^{
+                [self messageListUpdated];
+            }];
+            if (self.refreshControl.isRefreshing) {
+                [self.refreshControl endRefreshing];
+            }
+            [CATransaction commit];
+        });
     };
 
     [[UAirship inbox].messageList retrieveMessageListWithSuccessBlock:retrieveMessageCompletionBlock withFailureBlock:retrieveMessageCompletionBlock];
@@ -83,42 +92,40 @@
 {
     self.messages = [NSArray arrayWithArray:[UAirship inbox].messageList.messages];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.messages.count > 0) {
-            self.tableView.backgroundView = nil;
+    if (self.messages.count > 0) {
+        self.tableView.backgroundView = nil;
 
-        } else {
-            UILabel *label = [[UILabel alloc] init];
-            label.font = [UIFont HPSimplifiedLightFontWithSize:20.0];
-            label.textColor = [UIColor whiteColor];
-            label.numberOfLines = 2;
-            label.text = NSLocalizedString(@"We'll send you sprocket tips\nand fun project ideas.", nil);
-            label.textAlignment = NSTextAlignmentCenter;
+    } else {
+        UILabel *label = [[UILabel alloc] init];
+        label.font = [UIFont HPSimplifiedLightFontWithSize:20.0];
+        label.textColor = [UIColor whiteColor];
+        label.numberOfLines = 2;
+        label.text = NSLocalizedString(@"We'll send you sprocket tips\nand fun project ideas.", nil);
+        label.textAlignment = NSTextAlignmentCenter;
 
-            self.tableView.backgroundView = label;
+        self.tableView.backgroundView = label;
 
-            NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:label
-                                                                       attribute:NSLayoutAttributeCenterX
-                                                                       relatedBy:NSLayoutRelationEqual
-                                                                          toItem:self.view
-                                                                       attribute:NSLayoutAttributeCenterX
-                                                                      multiplier:1.0
-                                                                        constant:0.0];
-            
-            NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:label
-                                                                       attribute:NSLayoutAttributeCenterY
-                                                                       relatedBy:NSLayoutRelationEqual
-                                                                          toItem:self.view
-                                                                       attribute:NSLayoutAttributeCenterY
-                                                                      multiplier:1.0
-                                                                        constant:0.0];
+        NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:label
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                  multiplier:1.0
+                                                                    constant:0.0];
 
-            [NSLayoutConstraint activateConstraints:@[centerX, centerY]];
-            
-        }
+        NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:label
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.0
+                                                                    constant:0.0];
 
-        [self.tableView reloadData];
-    });
+        [NSLayoutConstraint activateConstraints:@[centerX, centerY]];
+
+    }
+
+    [self.tableView reloadData];
 }
 
 
@@ -135,6 +142,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.messages.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+
+    PGInboxMessagePageViewController *viewController = (PGInboxMessagePageViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGInboxMessagePageViewController"];
+    viewController.messages = self.messages;
+    viewController.focusedMessageIndex = indexPath.row;
+
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
