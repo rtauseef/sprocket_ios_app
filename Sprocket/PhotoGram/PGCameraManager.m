@@ -257,6 +257,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.isCapturingStillImage = YES;
     [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
         
+        if (!imageSampleBuffer) {
+            self.isCapturingStillImage = NO;
+            return;
+        }
+        
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         

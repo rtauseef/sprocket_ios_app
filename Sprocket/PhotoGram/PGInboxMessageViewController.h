@@ -10,18 +10,12 @@
 // the license agreement.
 //
 
-@interface UIColor (Style)
+#import <UIKit/UIKit.h>
+#import <AirshipKit.h>
+#import "PGWebViewerViewController.h"
 
-+ (UIColor *)HPBlueColor;
-+ (UIColor *)HPLinkColor;
-+ (UIColor *)HPGrayColor;
-+ (UIColor *)HPGrayButtonColor;
-+ (UIColor *)HPBlueButtonColor;
-+ (UIColor *)HPTabBarSelectedColor;
-+ (UIColor *)HPTabBarUnselectedColor;
-+ (UIColor *)HPGrayBackgroundColor;
-+ (UIColor *)HPDarkBackgroundColor;
-+ (UIColor *)HPRowColor;
-+ (UIColor *)HPTableRowSelectionColor;
-+ (UIImage *)imageWithColor:(UIColor *)color rect:(CGRect)rect;
+@interface PGInboxMessageViewController : PGWebViewerViewController
+
+@property (nonatomic, strong) UAInboxMessage *message;
+
 @end
