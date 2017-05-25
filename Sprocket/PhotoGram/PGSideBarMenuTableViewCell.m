@@ -19,9 +19,6 @@
 #import <MP.h>
 #import <MPBTPrintManager.h>
 
-NSString * const kBuyPaperScreenName = @"Buy Paper Screen";
-NSString * const kPrivacyStatementScreenName = @"Privacy Statement Screen";
-
 NSInteger const kPGSideBarMenuItemsNumberOfRows = 9;
 
 CGFloat const kPGSideBarMenuItemsRegularCellHeight = 52.0f;
