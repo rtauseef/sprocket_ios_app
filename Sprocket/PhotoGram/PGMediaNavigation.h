@@ -37,6 +37,8 @@
 - (void)disableSelectionMode;
 - (void)updateSelectedItemsCount:(NSInteger)count;
 
+- (void)updateNewContentIndicator;
+
 @end
 
 @protocol PGMediaNavigationDelegate <NSObject>

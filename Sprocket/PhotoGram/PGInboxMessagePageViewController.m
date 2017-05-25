@@ -159,17 +159,30 @@
         }
 
         [[UAirship inbox].messageList markMessagesDeleted:@[message] completionHandler:^{
-            PGInboxMessageViewController *viewController = [self messageViewControllerWithMessageIndex:messageIndex];
 
-            if (viewController) {
-                [self setViewControllers:@[viewController] direction:direction animated:YES completion:nil];
-                self.title = [viewController.message title];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIView *view = [self.viewControllers firstObject].view;
+                CGRect frame = CGRectMake(view.frame.origin.x, view.frame.size.height, view.frame.size.width, view.frame.size.height);
 
-            } else {
-                [self.navigationController popViewControllerAnimated:YES];
-            }
+                [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                    view.frame = frame;
 
-            self.messages = [NSArray arrayWithArray:[UAirship inbox].messageList.messages];
+                } completion:^(BOOL finished) {
+                    view.alpha = 0.0;
+
+                    PGInboxMessageViewController *viewController = [self messageViewControllerWithMessageIndex:messageIndex];
+
+                    if (viewController) {
+                        [self setViewControllers:@[viewController] direction:direction animated:YES completion:nil];
+                        self.title = [viewController.message title];
+
+                    } else {
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
+
+                    self.messages = [NSArray arrayWithArray:[UAirship inbox].messageList.messages];
+                }];
+            });
         }];
     }
 }

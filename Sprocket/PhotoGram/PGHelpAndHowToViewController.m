@@ -38,7 +38,6 @@ NSString * const kWeChatSupportScreenName = @"WeChat Support";
 NSString * const kMessengerSupportScreenName = @"Messenger Support";
 
 static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.com/s/xpbdBP6DlevbVt6j_redWQ";
-static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/SprocketAP";
 
 @interface PGHelpAndHowToViewController () <MFMailComposeViewControllerDelegate>
 
@@ -101,7 +100,7 @@ static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/Sp
             
         case PGHelpAndHowToRowIndexesMessengerSupport:
             [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kMessengerSupportScreenName];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToMessengerSupportURL]];
+            [[UIApplication sharedApplication] openURL: [NSURL URLWithString:[NSLocale messengerSupportURL]]];
             break;
 
         case PGHelpAndHowToRowIndexesTweetSupport:
@@ -183,6 +182,9 @@ static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/Sp
         
         [self presentViewController:self.twitterComposeViewController animated:YES completion:nil];
     } else {
+        if ([NSLocale twitterHPCareSupportURL].length != 0) {
+            tweetStringURL = [NSLocale twitterHPCareSupportURL];
+        }
         NSURL *tweetURL = [NSURL URLWithString:tweetStringURL];
         [[UIApplication sharedApplication] openURL:tweetURL];
     }
@@ -228,7 +230,7 @@ static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/Sp
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
+    if (![NSLocale isTwitterSupportAvailable] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
         return 0;
     }
 
@@ -236,7 +238,7 @@ static NSString * const kPGHelpAndHowToMessengerSupportURL = @"http://hp.care/Sp
         return 0;
     }
     
-    if (!([NSLocale isNorthAmerica] && [NSLocale isEnglish]) && indexPath.row == PGHelpAndHowToRowIndexesMessengerSupport) {
+    if (![NSLocale isFBMessengerSupportAvailable] && indexPath.row == PGHelpAndHowToRowIndexesMessengerSupport) {
         return 0;
     }
 

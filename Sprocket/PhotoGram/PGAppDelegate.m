@@ -31,6 +31,7 @@
 #import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
 #import "PGInAppMessageManager.h"
+#import "PGInboxMessageManager.h"
 
 
 static const NSInteger connectionDefaultValue = -1;
@@ -240,6 +241,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [UAirship inAppMessaging].messageControllerDelegate = [PGInAppMessageManager sharedInstance];
     [UAirship inAppMessaging].messagingDelegate = [PGInAppMessageManager sharedInstance];
     [UAirship inAppMessaging].autoDisplayEnabled = NO;
+
+    [UAirship inbox].delegate = [PGInboxMessageManager sharedInstance];
 }
 
 
