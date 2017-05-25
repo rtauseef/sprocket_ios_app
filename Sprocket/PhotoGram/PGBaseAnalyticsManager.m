@@ -105,8 +105,8 @@ NSString * const kActionPrinterDisconnected   = @"Disconnected";
 {
     MPPaper *paper = [[MPPaper alloc] initWithPaperSize:MPPaperSize2x3 paperType:MPPaperTypePhoto];
     NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
-    [lastOptionsUsed setValue:paper.typeTitle forKey:kMPPaperTypeId];
-    [lastOptionsUsed setValue:paper.sizeTitle forKey:kMPPaperSizeId];
+    [lastOptionsUsed setValue:[MPPaper constantPaperTypeFromTitle:paper.typeTitle] forKey:kMPPaperTypeId];
+    [lastOptionsUsed setValue:[MPPaper constantPaperSizeFromTitle:paper.sizeTitle] forKey:kMPPaperSizeId];
     [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.width] forKey:kMPPaperWidthId];
     [lastOptionsUsed setValue:[NSNumber numberWithFloat:paper.height] forKey:kMPPaperHeightId];
     [lastOptionsUsed setValue:[NSNumber numberWithBool:NO] forKey:kMPBlackAndWhiteFilterId];
