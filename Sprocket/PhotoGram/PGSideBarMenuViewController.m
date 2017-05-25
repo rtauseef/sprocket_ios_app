@@ -161,7 +161,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellBuyPaper:{
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kBuyPaperScreenName];
+            [[PGAnalyticsManager sharedManager] trackOpenBuyPaper];
             [[UIApplication sharedApplication] openURL:[NSLocale buyPaperURL]];
             break;
         }
@@ -176,7 +176,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellPrivacy: {
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kPrivacyStatementScreenName];
+            [[PGAnalyticsManager sharedManager] trackOpenPrivacy];
             [[UIApplication sharedApplication] openURL:[NSLocale privacyURL]];
             break;
         }

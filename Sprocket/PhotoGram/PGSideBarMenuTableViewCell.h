@@ -13,9 +13,6 @@
 #import <Foundation/Foundation.h>
 #import "NSLocale+Additions.h"
 
-extern NSString * const kBuyPaperScreenName;
-extern NSString * const kPrivacyStatementScreenName;
-
 extern NSInteger const kPGSideBarMenuItemsNumberOfRows;
 
 typedef NS_ENUM(NSInteger, PGSideBarMenuCell) {

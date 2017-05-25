@@ -110,6 +110,9 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackPrintRequest:(NSString *)source;
 - (void)trackCameraGallerySelect;
 - (void)trackMultiSelect:(NSString *)action selectedPhotos:(NSNumber * _Nullable)selectedPhotos;
+- (void)trackOpenAppSettings;
+- (void)trackOpenPrivacy;
+- (void)trackOpenBuyPaper;
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId;
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId queueSize:(NSUInteger)queueSize;
