@@ -58,8 +58,12 @@
     [_pageViewController.view setFrame:self.paginationView.bounds];
 }
 
-- (void) updateCurrentViewLabel: (NSString *) name {
-    self.currentViewLabel.text = name;
+- (void) updateCurrentViewLabel: (NSString *) name forView: (PGPayoffViewBaseViewController *) view {
+    PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
+    
+    if (view == currentVc) {
+        self.currentViewLabel.text = name;
+    }
 }
 
 - (void) renderPagesWithMetadata: (PGMetarMedia *) metadata {

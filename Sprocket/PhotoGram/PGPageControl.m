@@ -10,8 +10,8 @@
 
 #define kSpaceBetweenControls 6.0
 #define kMinimumSizeForControl 200.0
-#define kDefaultBarHeight 3.0
-#define kSelectedBarHeight 6.0
+#define kDefaultBarHeight 1.0
+#define kSelectedBarHeight 3.0
 #define kBarColor [UIColor lightGrayColor]
 
 
