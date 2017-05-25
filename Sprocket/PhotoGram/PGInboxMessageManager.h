@@ -11,8 +11,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AirshipKit.h>
 
-@interface PGInboxMessageManager : NSObject
+@interface PGInboxMessageManager : NSObject <UAInboxDelegate>
 
 + (instancetype)sharedInstance;
 

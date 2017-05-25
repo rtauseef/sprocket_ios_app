@@ -12,6 +12,9 @@
 
 #import "PGHamburgerButton.h"
 #import <MPBTPrintManager.h>
+#import <AirshipKit.h>
+
+NSString * const kLastInboxMessageReceived = @"com.hp.hp-sprocket.LastInboxMessageReceived";
 
 @interface PGHamburgerButton ()
 
@@ -26,6 +29,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkPrintQueue:) userInfo:nil repeats:YES];
+        [self addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -37,14 +41,44 @@
 
 - (void)refreshIndicator
 {
-    if ([MPBTPrintManager sharedInstance].queueSize > 0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    BOOL hasNewContent = [MPBTPrintManager sharedInstance].queueSize > 0;
+
+    if (!hasNewContent) {
+        UAInboxMessage *message = [[UAirship inbox].messageList.messages firstObject];
+
+        if (message) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSDate *lastMessageDate = [userDefaults objectForKey:kLastInboxMessageReceived];
+
+            if (lastMessageDate) {
+                hasNewContent = ([lastMessageDate compare:message.messageSent] == NSOrderedAscending);
+
+            } else {
+                hasNewContent = YES;
+            }
+        }
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (hasNewContent) {
             [self setImage:[UIImage imageNamed:@"hamburgerActive"] forState:UIControlStateNormal];
-        });
-    } else {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        } else {
             [self setImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
-        });
+        }
+    });
+
+}
+
+- (void)buttonTapped
+{
+    UAInboxMessage *message = [[UAirship inbox].messageList.messages firstObject];
+
+    if (message) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:message.messageSent forKey:kLastInboxMessageReceived];
+        [userDefaults synchronize];
+
+        [self refreshIndicator];
     }
 }
 

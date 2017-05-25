@@ -50,6 +50,10 @@
 {
     [super viewWillAppear:animated];
 
+    // refresh immediately with available local message list
+    [self messageListUpdated];
+
+    // update message list and refresh
     [self loadMessages];
 }
 
@@ -96,19 +100,25 @@
         self.tableView.backgroundView = nil;
 
     } else {
+        UIView *view = [[UIView alloc] init];
+
         UILabel *label = [[UILabel alloc] init];
         label.font = [UIFont HPSimplifiedLightFontWithSize:20.0];
         label.textColor = [UIColor whiteColor];
         label.numberOfLines = 2;
-        label.text = NSLocalizedString(@"We'll send you sprocket tips\nand fun project ideas.", nil);
+        label.adjustsFontSizeToFitWidth = YES;
+        label.text = NSLocalizedString(@"Check back soon for cool sprocket tips, fun project ideas, and app updates!", nil);
         label.textAlignment = NSTextAlignmentCenter;
+        label.translatesAutoresizingMaskIntoConstraints = NO;
 
-        self.tableView.backgroundView = label;
+        [view addSubview:label];
+
+        self.tableView.backgroundView = view;
 
         NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:label
                                                                    attribute:NSLayoutAttributeCenterX
                                                                    relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
+                                                                      toItem:view
                                                                    attribute:NSLayoutAttributeCenterX
                                                                   multiplier:1.0
                                                                     constant:0.0];
@@ -116,13 +126,23 @@
         NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:label
                                                                    attribute:NSLayoutAttributeCenterY
                                                                    relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
+                                                                      toItem:view
                                                                    attribute:NSLayoutAttributeCenterY
                                                                   multiplier:1.0
                                                                     constant:0.0];
 
-        [NSLayoutConstraint activateConstraints:@[centerX, centerY]];
+        NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:label
+                                                                   attribute:NSLayoutAttributeWidth
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:view
+                                                                   attribute:NSLayoutAttributeWidth
+                                                                  multiplier:0.8
+                                                                    constant:0.0];
 
+        [NSLayoutConstraint activateConstraints:@[centerX, centerY, width]];
+
+        [view layoutIfNeeded];
+        [label layoutIfNeeded];
     }
 
     [self.tableView reloadData];

@@ -154,10 +154,9 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellInbox: {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"PGMessageCenterNavigationController"];
-
-            [self presentViewController:navigationController animated:YES completion:nil];
+            [UAActionRunner runActionWithName:kUADisplayInboxActionDefaultRegistryAlias
+                                        value:nil
+                                    situation:UASituationManualInvocation];
             break;
         }
         case PGSideBarMenuCellBuyPaper:{
