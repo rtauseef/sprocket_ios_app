@@ -230,11 +230,11 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
+    if (![NSLocale isTwitterSupportAvailable] && indexPath.row == PGHelpAndHowToRowIndexesTweetSupport) {
         return 0;
     }
 
-    if (![NSLocale isTwitterSupportAvailable] && indexPath.row == PGHelpAndHowToRowIndexesWeChatSupport) {
+    if (![NSLocale isChinese] && indexPath.row == PGHelpAndHowToRowIndexesWeChatSupport) {
         return 0;
     }
     
