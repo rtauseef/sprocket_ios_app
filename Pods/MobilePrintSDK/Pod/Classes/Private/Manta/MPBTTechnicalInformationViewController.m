@@ -15,6 +15,8 @@
 #import "NSBundle+MPLocalizable.h"
 #import <TTTAttributedLabel.h>
 
+static NSString * const kTechnicalInformationScreenName = @"Technical Information";
+
 @interface MPBTTechnicalInformationViewController () <TTTAttributedLabelDelegate>
 
 @property (strong, nonatomic) NSArray *links;
@@ -76,6 +78,9 @@
     for (UILabel *label in self.textLabels) {
         [self configureText:(TTTAttributedLabel *)label];
     }
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:kTechnicalInformationScreenName forKey:kMPTrackableScreenNameKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMPTrackableScreenNotification object:nil userInfo:userInfo];
 }
 
 - (void)viewDidAppear:(BOOL)animated
