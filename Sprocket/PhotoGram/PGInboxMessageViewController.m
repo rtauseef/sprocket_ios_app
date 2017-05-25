@@ -39,4 +39,20 @@
     [self.message markMessageReadWithCompletionHandler:nil];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        NSString *rootHost = [NSURL URLWithString:self.url].host;
+        NSString *requestHost = request.URL.host;
+
+        if (![requestHost isEqualToString:rootHost]) {
+            // we're trying to go somewhere else so open in the external browser
+            [[UIApplication sharedApplication] openURL:request.URL];
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
 @end
