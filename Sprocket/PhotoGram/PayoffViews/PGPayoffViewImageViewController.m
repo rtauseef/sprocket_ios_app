@@ -80,13 +80,18 @@
                      if (!error && placemarks && [placemarks count] > 0)
                      {
                          CLPlacemark *_placemark = [placemarks firstObject];
+                         
                          NSString *name = _placemark.name;
-                         self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
+                         if ([name rangeOfString:_placemark.thoroughfare].location == NSNotFound) {
+                             self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
+                         } else {
+                             [self updateViewTitleLocally];
+                         }
                      } else {
                          [self updateViewTitleLocally];
                      }
                      
-                     [self.parentVc updateCurrentViewLabel:self.viewTitle];
+                     [self.parentVc updateCurrentViewLabel:self.viewTitle forView:self];
                  });
              }];
         } else {

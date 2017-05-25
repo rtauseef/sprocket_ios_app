@@ -28,6 +28,10 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     [request setValue:kMetarApplicationID forHTTPHeaderField:@"X-HP-AppId"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    [request setValue:language forHTTPHeaderField:@"Accept-Language"];
+    
     return request;
 }
 

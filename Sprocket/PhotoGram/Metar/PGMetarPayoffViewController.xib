@@ -24,29 +24,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zz-au-Tse" userLabel="paginationView">
-                    <rect key="frame" x="0.0" y="97" width="414" height="639"/>
+                    <rect key="frame" x="0.0" y="80" width="414" height="656"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npd-oM-UQe">
-                    <rect key="frame" x="375" y="20" width="23" height="23"/>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0ii-bz-gO1">
+                    <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
+                <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EG5-gu-eOs" customClass="PGPageControl">
+                    <rect key="frame" x="20" y="0.0" width="374" height="36"/>
+                </pageControl>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npd-oM-UQe">
+                    <rect key="frame" x="375" y="0.0" width="39" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="23" id="184-Af-BfY"/>
-                        <constraint firstAttribute="width" constant="23" id="FLr-MB-kqx"/>
+                        <constraint firstAttribute="height" constant="50" id="NJC-3S-Zyf"/>
+                        <constraint firstAttribute="width" constant="39" id="sm0-np-Wlm"/>
                     </constraints>
                     <state key="normal" image="cameraClose"/>
                     <connections>
                         <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="yCi-Id-4gQ"/>
                     </connections>
                 </button>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0ii-bz-gO1">
-                    <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
-                </activityIndicatorView>
-                <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EG5-gu-eOs" customClass="PGPageControl">
-                    <rect key="frame" x="16" y="51" width="382" height="37"/>
-                </pageControl>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q1-kc-Vxm" userLabel="currentViewLabel">
-                    <rect key="frame" x="20" y="21" width="347" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q1-kc-Vxm" userLabel="currentViewLabel">
+                    <rect key="frame" x="20" y="52" width="378" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="oGX-B7-nL0"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -54,17 +58,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="9zz-au-Tse" secondAttribute="bottom" id="3Hk-uP-FZ2"/>
-                <constraint firstItem="Npd-oM-UQe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="BEe-7J-cd5"/>
-                <constraint firstItem="0ii-bz-gO1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="C8v-bZ-y8U"/>
-                <constraint firstItem="EG5-gu-eOs" firstAttribute="top" secondItem="Npd-oM-UQe" secondAttribute="bottom" constant="8" id="SPY-oy-rJK"/>
-                <constraint firstItem="9zz-au-Tse" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hJx-q5-Wkl"/>
-                <constraint firstAttribute="trailing" secondItem="EG5-gu-eOs" secondAttribute="trailing" constant="16" id="jYd-as-uMA"/>
-                <constraint firstAttribute="trailing" secondItem="Npd-oM-UQe" secondAttribute="trailing" constant="16" id="lb1-BE-64O"/>
-                <constraint firstItem="9zz-au-Tse" firstAttribute="top" secondItem="EG5-gu-eOs" secondAttribute="bottom" constant="9" id="oyy-Wq-7LC"/>
-                <constraint firstItem="0ii-bz-gO1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rb3-or-3Fc"/>
-                <constraint firstItem="EG5-gu-eOs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="y4C-z0-tBJ"/>
-                <constraint firstAttribute="trailing" secondItem="9zz-au-Tse" secondAttribute="trailing" id="yQk-0a-zdR"/>
+                <constraint firstAttribute="trailing" secondItem="9zz-au-Tse" secondAttribute="trailing" id="1kt-lN-hDW"/>
+                <constraint firstItem="9zz-au-Tse" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="61I-RN-FBo"/>
+                <constraint firstItem="EG5-gu-eOs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="7um-A1-HTU"/>
+                <constraint firstAttribute="trailing" secondItem="8Q1-kc-Vxm" secondAttribute="trailing" constant="16" id="HQO-4H-Nn9"/>
+                <constraint firstItem="8Q1-kc-Vxm" firstAttribute="top" secondItem="EG5-gu-eOs" secondAttribute="bottom" constant="16" id="I8y-xt-m69"/>
+                <constraint firstItem="9zz-au-Tse" firstAttribute="top" secondItem="8Q1-kc-Vxm" secondAttribute="bottom" constant="8" id="KET-fp-4Cv"/>
+                <constraint firstAttribute="trailing" secondItem="EG5-gu-eOs" secondAttribute="trailing" constant="20" id="OKb-1W-OJE"/>
+                <constraint firstItem="EG5-gu-eOs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="P23-Rj-aCi"/>
+                <constraint firstAttribute="bottom" secondItem="9zz-au-Tse" secondAttribute="bottom" id="dxl-Fs-4GR"/>
+                <constraint firstItem="Npd-oM-UQe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mZi-9V-EDj"/>
+                <constraint firstItem="8Q1-kc-Vxm" firstAttribute="top" secondItem="Npd-oM-UQe" secondAttribute="bottom" constant="2" id="n8D-q5-EEp"/>
+                <constraint firstItem="9zz-au-Tse" firstAttribute="top" secondItem="8Q1-kc-Vxm" secondAttribute="bottom" constant="8" id="nzV-Da-LUu"/>
+                <constraint firstAttribute="trailing" secondItem="Npd-oM-UQe" secondAttribute="trailing" id="oFe-4x-4RU"/>
+                <constraint firstItem="8Q1-kc-Vxm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pca-Yt-LNo"/>
             </constraints>
             <point key="canvasLocation" x="24" y="52"/>
         </view>

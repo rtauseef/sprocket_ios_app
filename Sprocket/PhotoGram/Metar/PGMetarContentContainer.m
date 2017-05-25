@@ -31,24 +31,13 @@
             self.updatedAt = [NSDate dateWithTimeIntervalSince1970:[updatedAt doubleValue]];
         }
         
-        NSDictionary *pages = [dict objectForKey:@"pages"];
+        NSArray *pages = [dict objectForKey:@"pages"];
         
         if (pages) {
+            NSMutableArray *tmpPages = [NSMutableArray array];
             
-            NSMutableDictionary *tmpPages = [NSMutableDictionary dictionary];
-            
-            NSArray *allKeys = [pages allKeys];
-            
-            for (NSString *key in allKeys) {
-                NSArray *allPages = [pages objectForKey:key];
-                NSMutableArray *tmpAllPages = [NSMutableArray array];
-                
-                for (NSDictionary *page in allPages) {
-                    PGMetarPage *metarPage = [[PGMetarPage alloc] initWithDictionary:page];
-                    [tmpAllPages addObject:metarPage];
-                }
-                
-                [tmpPages setObject:tmpAllPages forKey:key];
+            for (NSDictionary *page in pages) {
+                [tmpPages addObject:[[PGMetarPage alloc] initWithDictionary:page]];
             }
             
             self.pages = tmpPages;

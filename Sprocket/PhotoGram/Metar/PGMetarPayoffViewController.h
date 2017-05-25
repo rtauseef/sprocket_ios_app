@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PGPayoffMetadata.h"
+#import "PGPayoffViewBaseViewController.h"
 
 @interface PGMetarPayoffViewController : UIViewController
 
@@ -15,6 +16,6 @@
 
 - (IBAction)closeButtonClick:(id)sender;
 - (void) getMetadataFromMetar;
-- (void) updateCurrentViewLabel: (NSString *) name;
+- (void) updateCurrentViewLabel: (NSString *) name forView: (PGPayoffViewBaseViewController *) view;
 
 @end
