@@ -34,6 +34,11 @@ static NSString * const kPGHelpAndHowToJoinForumSupportURLZh = @"http://h30471.w
 static NSString * const kPGHelpAndHowToVisitWebsiteURL = @"http://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221";
 static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.hp.com/t5/community/communitypage";
 
+// HP Care URL Formats
+static NSString * const kPGHPCareURLFormat = @"http://hp.care/%@";
+static NSString * const kPGHPCareFBURLFormat = @"http://hp.care/HPCS%@FB";
+static NSString * const kPGHPCareTwitterURLFormat = @"http://hp.care/HPCS%@TW";
+
 @implementation NSLocale (Additions)
 
 + (BOOL)isChinese
@@ -111,6 +116,16 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
     return @"us";
 }
 
++ (NSString *)deviceCountryCode
+{
+    return [[[self currentLocale] objectForKey:NSLocaleCountryCode] lowercaseString];
+}
+
++ (NSString *)deviceLanguageCode
+{
+    return [[[[self preferredLanguages] objectAtIndex:0] substringToIndex:2] lowercaseString];
+}
+
 + (BOOL)isSurveyAvailable
 {
     return [[self languageID] isEqualToString:@"en"];
@@ -119,6 +134,93 @@ static NSString * const kPGHelpAndHowToVisitWebsiteURLZh = @"http://h30471.www3.
 + (NSDictionary *)supportedLocales
 {
     return @{@"en":@"us", @"de":@"de", @"es":@"es", @"fr":@"fr", @"it":@"it", @"nl":@"nl",  @"et":@"ee", @"fi":@"fi", @"lv":@"lv", @"lt":@"lt", @"nb":@"no", @"pt":@"pt", @"sv":@"se", @"zh":@"cn", @"da":@"dk", @"el":@"el", @"id":@"id", @"ru":@"ru", @"tr":@"tr", @"th":@"th"};
+}
+
++ (NSDictionary *)twitterHPSupportLocales
+{
+    return @{@"en":@[@"ca",@"au",@"nz",@"sg",@"ie",@"gb",@"uk",@"us"],
+             @"fr":@[@"ca"]};
+}
+
++ (NSDictionary *)twitterHPCareSupportLocales
+{
+    return @{@"de":@[@"at",@"lu",@"ch",@"de"],
+             @"tr":@[@"tr"],
+             @"fr":@[@"fr",@"ch"],
+             @"es":@[@"es"]};
+}
+
++ (NSArray *)fbMessengerEnglishSupport
+{
+    return @[@"ca",@"au",@"nz",@"sg",@"ie",@"gb",@"uk",@"us"];
+}
+
++ (NSDictionary *)fbMessengerHPCareSupportLocales
+{
+    return @{@"de":@[@"at",@"lu",@"ch",@"de"],
+             @"ru":@[@"ru"],
+             @"tr":@[@"tr"],
+             @"he":@[@"il"],
+             @"fr":@[@"fr",@"ch"],
+             @"es":@[@"es"]};
+}
+
++ (BOOL)isTwitterSupportAvailable {
+    NSArray *twitterHPSupportLocales = [[self twitterHPSupportLocales] objectForKey:[self deviceLanguageCode]];
+    
+    NSArray *twitterHPCareSupportLocales = [[self twitterHPCareSupportLocales] objectForKey:[self deviceLanguageCode]];
+    
+    if (twitterHPSupportLocales || twitterHPCareSupportLocales) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
++ (BOOL)isFBMessengerSupportAvailable {
+    return ([NSLocale messengerSupportURL].length != 0);
+}
+
++ (NSString *)twitterHPCareSupportURL
+{
+    NSArray *supportedNonEnglishCountries = [[self twitterHPCareSupportLocales] objectForKey:[self deviceLanguageCode]];
+
+    if (supportedNonEnglishCountries && [supportedNonEnglishCountries containsObject:[self deviceCountryCode]]) {
+        if ([[self deviceLanguageCode] caseInsensitiveCompare:@"es"] == NSOrderedSame) {
+            return [NSString stringWithFormat:kPGHPCareTwitterURLFormat,@"ESP"];
+        } else {
+            return  [NSString stringWithFormat:kPGHPCareTwitterURLFormat,[[self deviceLanguageCode] uppercaseString]];
+        }
+    }
+    return nil;
+}
+
++ (NSString *)messengerSupportURL
+{
+    NSArray *supportedNonEnglishCountries = [[self fbMessengerHPCareSupportLocales] objectForKey:[self deviceLanguageCode]];
+    
+    if (supportedNonEnglishCountries && [supportedNonEnglishCountries containsObject:[self deviceCountryCode]]) {
+
+        return [self fbMessengerNonEnglishSupportURL];
+        
+    } else if ([[self fbMessengerEnglishSupport] containsObject:[self deviceCountryCode]]) {
+        
+        return [NSString stringWithFormat:kPGHPCareURLFormat,@"SprocketAP"];
+        
+    }
+    
+    return nil;
+}
+
++ (NSString *)fbMessengerNonEnglishSupportURL
+{
+    if ([[self deviceLanguageCode] caseInsensitiveCompare:@"es"] == NSOrderedSame) {
+        return [NSString stringWithFormat:kPGHPCareFBURLFormat,@"ESP"];
+    } else if ([[self deviceCountryCode] caseInsensitiveCompare:@"il"] == NSOrderedSame) {
+        return [NSString stringWithFormat:kPGHPCareFBURLFormat,[[self deviceCountryCode] uppercaseString]];
+    } else {
+        return [NSString stringWithFormat:kPGHPCareFBURLFormat,[[self deviceLanguageCode] uppercaseString]];
+    }
 }
 
 + (NSURL *)privacyURL
