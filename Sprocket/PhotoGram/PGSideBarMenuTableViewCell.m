@@ -59,12 +59,12 @@ CGFloat const kPGSideBarMenuItemsSmallFontSize = 16.0f;
         case PGSideBarMenuCellInbox:
             self.menuTitle.text = NSLocalizedString(@"Inbox", nil);
             self.menuImageView.image = [self inboxImage];
-            self.titlePadding.constant = 9;
+            self.titlePadding.constant = 14;
             break;
         case PGSideBarMenuCellPrintQueue:
             self.menuTitle.text = NSLocalizedString(@"Print Queue", nil);
             self.menuImageView.image = [self printQueueImage];
-            self.titlePadding.constant = 9;
+            self.titlePadding.constant = 11;
             break;
         case PGSideBarMenuCellBuyPaper:
             self.menuTitle.text = NSLocalizedString(@"Buy Paper", nil);
