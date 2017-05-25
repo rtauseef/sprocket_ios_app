@@ -54,7 +54,6 @@
 #define kLongPressDurationForAlternative 0.6f
 #define kShortDescriptionFixedHeight 200.0
 #define kShowMoreButtonFixedHeight 30.0
-#define kFixedLanguage @"en"
 #define kImageGridSpacing 10.0
 #define kImageGridMargin 20.0
 #define kImageGridLineSpacing 10.0
@@ -97,10 +96,8 @@
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([self getPagesForLang:kFixedLanguage]) {
-            [self renderPageAtIndex:_currentIndex withLang:kFixedLanguage];
-        }
-         
+        [self renderPageAtIndex:_currentIndex];
+        
          [self.activityIndicator stopAnimating];
          self.scrollView.hidden = NO;
     });
@@ -110,9 +107,9 @@
 - (void)handleLongPressWikipedia:(UILongPressGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.currentIndex++;
-        if (![self renderPageAtIndex:_currentIndex withLang:kFixedLanguage]) {
+        if (![self renderPageAtIndex:_currentIndex]) {
             self.currentIndex = 0;
-            [self renderPageAtIndex:self.currentIndex withLang:kFixedLanguage];
+            [self renderPageAtIndex:self.currentIndex];
         }
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
 
@@ -128,29 +125,21 @@
 }
 
 - (BOOL) metadataValidForCurrentLang {
-    if ([self getPagesForLang:kFixedLanguage]) {
+    if (self.metadata.location.content.wikipedia.pages) {
         return YES;
     }
     
     return NO;
 }
 
-- (NSArray *) getPagesForLang: (NSString *) lang {
-    if (self.metadata.location.content.wikipedia.pages && [self.metadata.location.content.wikipedia.pages isKindOfClass:[NSDictionary class]]) {
-        return [self.metadata.location.content.wikipedia.pages objectForKey:lang];
-    }
-    
-    return nil;
-}
-
-- (BOOL) renderPageAtIndex: (int) index withLang:(NSString *) lang {
+- (BOOL) renderPageAtIndex: (int) index {
     if (self.metadata != nil) {
-        NSArray *enPages = [self getPagesForLang:lang];
+        NSArray *pages = self.metadata.location.content.wikipedia.pages;
         
-        if (enPages != nil) {
+        if (pages != nil) {
             
-            if (index < [enPages count]) {
-                PGMetarPage *page = [enPages objectAtIndex:index];
+            if (index < [pages count]) {
+                PGMetarPage *page = [pages objectAtIndex:index];
                 self.currentPage = page;
                 self.descriptionExpanded = NO;
                 self.articleNameLabel.text = page.title;

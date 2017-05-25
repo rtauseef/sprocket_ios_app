@@ -12,7 +12,7 @@
 @interface PGMetarContentContainer : NSObject
 
 @property (strong, nonatomic) NSDate* updatedAt;
-@property (strong, nonatomic) NSDictionary* pages;
+@property (strong, nonatomic) NSArray* pages;
 @property (strong, nonatomic) NSArray<PGMetarImageItem*>* imagelist;
 
 - (instancetype)initWithDictionary: (NSDictionary *) dict;
