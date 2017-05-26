@@ -2339,13 +2339,6 @@
 			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
 			remoteInfo = PushNotificationExtension;
 		};
-		659D897B1ED7F98F0085DEFC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
-			remoteInfo = AirshipAppExtensions;
-		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -5769,7 +5762,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				659D897C1ED7F98F0085DEFC /* PBXTargetDependency */,
 			);
 			name = PushNotificationExtension;
 			productName = PushNotificationExtension;
@@ -8642,11 +8634,6 @@
 			isa = PBXTargetDependency;
 			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
 			targetProxy = 2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */;
-		};
-		659D897C1ED7F98F0085DEFC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AirshipAppExtensions;
-			targetProxy = 659D897B1ED7F98F0085DEFC /* PBXContainerItemProxy */;
 		};
 		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

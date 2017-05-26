@@ -10,8 +10,8 @@
 // the license agreement.
 //
 
-#import <AirshipAppExtensions/AirshipAppExtensions.h>
+#import <UserNotifications/UserNotifications.h>
 
-@interface NotificationService : UAMediaAttachmentExtension
+@interface NotificationService : UNNotificationServiceExtension
 
 @end
