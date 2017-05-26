@@ -78,6 +78,7 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
+		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80719A69E5700C72F1A /* Share@2x.png */; };
@@ -2337,6 +2338,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
 			remoteInfo = PushNotificationExtension;
+		};
+		659D897B1ED7F98F0085DEFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
+			remoteInfo = AirshipAppExtensions;
 		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -5761,6 +5769,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				659D897C1ED7F98F0085DEFC /* PBXTargetDependency */,
 			);
 			name = PushNotificationExtension;
 			productName = PushNotificationExtension;
@@ -8369,6 +8378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8632,6 +8642,11 @@
 			isa = PBXTargetDependency;
 			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
 			targetProxy = 2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */;
+		};
+		659D897C1ED7F98F0085DEFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AirshipAppExtensions;
+			targetProxy = 659D897B1ED7F98F0085DEFC /* PBXContainerItemProxy */;
 		};
 		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
