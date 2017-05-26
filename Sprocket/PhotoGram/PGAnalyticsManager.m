@@ -146,6 +146,13 @@ NSString * const kEventMultiSelectEnable      = @"Multi-SelectEnabled";
 NSString * const kEventMultiSelectPreview     = @"Multi-SelectPreview";
 NSString * const kEventMultiSelectPreviewPhotosSelectedLabel = @"PhotosSelected";
 
+NSString * const kEventSprocketPreferencesCategory          = @"sprocket Preferences";
+NSString * const kEventSprocketPreferencesAppSettingsAction = @"App Settings";
+
+NSString * const kEventSideBarMenuCategory          = @"Side Bar Menu";
+NSString * const kEventSideBarMenuPrivacyAction     = @"Privacy";
+NSString * const kEventSideBarMenuBuyPaperAction    = @"Buy Paper";
+
 NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
 
@@ -320,6 +327,21 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     }
 
     [self trackEvent:kEventMultiSelectCategory action:action label:label value:selectedPhotos];
+}
+
+- (void)trackOpenAppSettings
+{
+    [self trackEvent:kEventSprocketPreferencesCategory action:kEventSprocketPreferencesAppSettingsAction label:nil value:nil];
+}
+
+- (void)trackOpenPrivacy
+{
+    [self trackEvent:kEventSideBarMenuCategory action:kEventSideBarMenuPrivacyAction label:nil value:nil];
+}
+
+- (void)trackOpenBuyPaper
+{
+    [self trackEvent:kEventSideBarMenuCategory action:kEventSideBarMenuBuyPaperAction label:nil value:nil];
 }
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId
