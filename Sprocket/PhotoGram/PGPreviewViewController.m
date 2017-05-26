@@ -56,7 +56,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
-static NSString *kMPBTPrinterConnected = @"printer_connected";
+static NSString * const kMPBTPrinterConnected = @"printer_connected";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.4;
 static CGFloat const kDrawerAnimationDuration = 0.3;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
