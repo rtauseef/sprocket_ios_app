@@ -13,24 +13,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol PGPrintQueueManagerDelegate;
-
 @interface PGPrintQueueManager : NSObject
-
-@property (weak, nonatomic) id<PGPrintQueueManagerDelegate> delegate;
 
 + (instancetype)sharedInstance;
 
 - (void)showPrintQueueStatusFromViewController:(UIViewController *)viewController;
 - (void)incrementPrintCounter;
-
-@end
-
-
-@protocol PGPrintQueueManagerDelegate <NSObject>
-
-@optional;
-
-- (void)pgPrintQueueManagerDidClearQueue:(PGPrintQueueManager *)printQueueManager;
 
 @end

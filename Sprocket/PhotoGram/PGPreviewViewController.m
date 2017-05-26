@@ -61,7 +61,7 @@ static CGFloat const kDrawerAnimationDuration = 0.3;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate, PGPrintQueueManagerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -76,6 +76,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
+@property (assign, nonatomic) BOOL wasDrawerOpenedByUser;
 @property (weak, nonatomic) IBOutlet UIView *drawerContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
@@ -95,7 +96,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 @property (strong, nonatomic) PGProgressView *progressView;
 @property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
-
 
 @end
 
@@ -125,6 +125,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.trackableScreenName = @"Preview Screen";
 
     self.didChangeProject = NO;
+    
+    self.wasDrawerOpenedByUser = NO;
     
     self.editButton.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:20];
     self.editButton.titleLabel.tintColor = [UIColor whiteColor];
@@ -441,7 +443,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Queue", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [PGPrintQueueManager sharedInstance].delegate = self;
         [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
         [self peekDrawerAnimated:YES];
     }];
@@ -504,6 +505,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     self.drawer.isOpened = NO;
     self.drawer.isPeeking = NO;
+    self.wasDrawerOpenedByUser = NO;
 
     [self setDrawerHeightAnimated:animated];
 }
@@ -522,13 +524,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 #pragma mark - PGPreviewDrawerDelegate
 
-- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
 {
     drawer.isPeeking = NO;
+    self.wasDrawerOpenedByUser = drawer.isOpened;
     [self setDrawerHeightAnimated:YES];
 }
 
-- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
 {
     CGPoint translation = [gesture translationInView:self.view];
     
@@ -560,19 +563,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-- (void)PGPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
+- (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
 {
-    [PGPrintQueueManager sharedInstance].delegate = self;
     [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
 }
 
-
-#pragma mark - PGPrintQueueManagerDelegate
-
-- (void)pgPrintQueueManagerDidClearQueue:(PGPrintQueueManager *)printQueueManager {
-    [self closeDrawerAnimated:YES];
+- (void)pgPreviewDrawerDidClearQueue:(PGPreviewDrawerViewController *)drawer
+{
+    if (!self.wasDrawerOpenedByUser) {
+        [self closeDrawerAnimated:YES];
+    }
 }
-
 
 #pragma mark - IMGLYPhotoEditViewControllerDelegate
 

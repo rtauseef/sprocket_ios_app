@@ -67,8 +67,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 {
     self.isOpened = !self.isOpened;
     
-    if ([self.delegate respondsToSelector:@selector(PGPreviewDrawer:didTapButton:)]) {
-        [self.delegate PGPreviewDrawer:self didTapButton:sender];
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didTapButton:)]) {
+        [self.delegate pgPreviewDrawer:self didTapButton:sender];
     }
 }
 
@@ -135,7 +135,13 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 - (void)refreshQueueCount
 {
     NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
-
+    
+    if (count <= 0 && (self.isOpened || self.isPeeking)) {
+        if ([self.delegate respondsToSelector:@selector(pgPreviewDrawerDidClearQueue:)]) {
+            [self.delegate pgPreviewDrawerDidClearQueue:self];
+        }
+    }
+    
     self.numberOfJobsLabel.text = [NSString stringWithFormat:@"%li", (long)count];
 }
 
@@ -163,15 +169,15 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 - (IBAction)handlePan:(UIPanGestureRecognizer *)gesture
 {
-    if ([self.delegate respondsToSelector:@selector(PGPreviewDrawer:didDrag:)]) {
-        [self.delegate PGPreviewDrawer:self didDrag:gesture];
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didDrag:)]) {
+        [self.delegate pgPreviewDrawer:self didDrag:gesture];
     }
 }
 
 - (IBAction)printQueueTapped:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(PGPreviewDrawerDidTapPrintQueue:)]) {
-        [self.delegate PGPreviewDrawerDidTapPrintQueue:self];
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawerDidTapPrintQueue:)]) {
+        [self.delegate pgPreviewDrawerDidTapPrintQueue:self];
     }
 }
 
