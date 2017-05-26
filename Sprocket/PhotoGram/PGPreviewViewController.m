@@ -411,6 +411,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         completion();
     }
 }
+
 - (NSString *)numberOfPrintsAddedString:(NSInteger)numberOfPrintsAdded
 {
     NSString *printString = NSLocalizedString(@"%ld print added to the queue, %ld total", @"This will be formatted as '1 print added to the queue, 7 total'");
@@ -418,7 +419,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         printString = NSLocalizedString(@"%ld prints added to the queue, %ld total", @"This will be formatted as '3 prints added to the queue, 7 total'");
     }
     
-    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded,(long)[MPBTPrintManager sharedInstance].queueSize];
+    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded, (long)[MPBTPrintManager sharedInstance].queueSize];
+    
+    return title;
+}
+
+- (NSString *)numberOfPrintsAddedAndInProgressString:(NSInteger)numberOfPrintsAdded
+{
+    NSString *printString = NSLocalizedString(@"%ld prints added to the queue, 1 in progress", @"This will be formatted as '3 prints added to the queue, 1 in progress'");
+    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded];
     
     return title;
 }
@@ -887,13 +896,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     MPBTPrinterManagerStatus printerStatus = [MPBTPrintManager sharedInstance].status;
-    BOOL isNotPrinting = (printerStatus == MPBTPrinterManagerStatusEmptyQueue) || (printerStatus == MPBTPrinterManagerStatusIdle);
+    BOOL isPrinting = printerStatus != MPBTPrinterManagerStatusEmptyQueue && printerStatus != MPBTPrinterManagerStatusIdle;
     
-    if (isPrinterConnected && !isNotPrinting) {
+    if (isPrinterConnected && isPrinting && numberOfPrintsAdded > 1) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self peekDrawerAnimated:YES];
             
-            self.imageSavedLabel.text = [self numberOfPrintsAddedString:numberOfPrintsAdded];
+            self.imageSavedLabel.text = [self numberOfPrintsAddedAndInProgressString:numberOfPrintsAdded];
             
             [UIView animateWithDuration:0.5F animations:^{
                 [self showImageSavedView:YES];
@@ -914,7 +923,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (wasAddedToQueue && !isPrinterConnected) {
                 [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
-            } else if (isPrinterConnected && isNotPrinting) {
+            } else if (isPrinterConnected && !isPrinting) {
                 [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
             }
         });
