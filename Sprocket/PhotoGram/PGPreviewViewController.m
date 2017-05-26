@@ -56,6 +56,7 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
+static NSString * const kMPBTPrinterConnected = @"printer_connected";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.4;
 static CGFloat const kDrawerAnimationDuration = 0.3;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
@@ -847,7 +848,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             } else {
                 [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
                 [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-                
+                [metrics setObject:[NSString stringWithFormat:@"{%@:%@}", kMPBTPrinterConnected,[NSNumber numberWithBool:isPrinterConnected]] forKey:kMPCustomAnalyticsKey];
                 [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
                 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
