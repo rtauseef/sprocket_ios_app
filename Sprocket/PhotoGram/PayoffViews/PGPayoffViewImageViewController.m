@@ -82,7 +82,9 @@
                          CLPlacemark *_placemark = [placemarks firstObject];
                          
                          NSString *name = _placemark.name;
-                         if ([name rangeOfString:_placemark.thoroughfare].location == NSNotFound) {
+                         if (_placemark.thoroughfare == nil) {
+                             self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
+                         } else if (_placemark.thoroughfare != nil && [name rangeOfString:_placemark.thoroughfare].location == NSNotFound) {
                              self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
                          } else {
                              [self updateViewTitleLocally];
