@@ -51,6 +51,23 @@
      addObserver:self selector:@selector(orientationChanged:)
      name:UIDeviceOrientationDidChangeNotification
      object:[UIDevice currentDevice]];
+    
+    if (self.player.status == AVPlayerStatusReadyToPlay) {
+        if (CMTimeCompare(self.player.currentItem.currentTime, self.player.currentItem.duration) == 0) {
+            // at the end
+            [self.player.currentItem seekToTime:kCMTimeZero];
+        }
+        
+        [self.player play];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.player.status == AVPlayerStatusReadyToPlay) {
+        [self.player pause];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
