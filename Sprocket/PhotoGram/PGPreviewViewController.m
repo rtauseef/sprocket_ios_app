@@ -848,7 +848,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             } else {
                 [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
                 [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-                [metrics setObject:@{kMPBTPrinterConnected:[NSNumber numberWithBool:isPrinterConnected]} forKey:kMPCustomAnalyticsKey];
+                [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
                 [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
                 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
