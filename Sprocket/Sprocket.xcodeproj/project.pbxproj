@@ -84,6 +84,8 @@
 		65778BF41ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */; };
 		65778BF51ED8E9D5007DA11B /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
+		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
@@ -2580,6 +2582,7 @@
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
 		65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_DEV.plist"; sourceTree = "<group>"; };
 		65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_REL.plist"; sourceTree = "<group>"; };
+		65778C021ED8FE93007DA11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -5268,6 +5271,7 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
+				65778C021ED8FE93007DA11B /* GoogleService-Info.plist */,
 				65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */,
 				65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
@@ -6513,6 +6517,7 @@
 				82A11D4B1E5FB93B00E7F8FC /* panda-mask_TN@2x.png in Resources */,
 				8212BDB51EA93616009E66EC /* cat_body.png in Resources */,
 				829A7A4A1EBB8E7E005D4938 /* popsicle-2_TN@3x.png in Resources */,
+				65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */,
 				826BEAFF1E85BEAD000BE3FA /* GradientFrame_TN.png in Resources */,
 				829A79EE1EBB8E7E005D4938 /* fan_TN.png in Resources */,
 				82E3DB6C1E82EEEE0008F600 /* volleyball_TN@3x.png in Resources */,
@@ -7323,6 +7328,7 @@
 				82E3DE9E1E831BD10008F600 /* spoon_TN.png in Resources */,
 				8218506E1EAA9041000EDFD2 /* sun_hat.png in Resources */,
 				8218505D1EAA9040000EDFD2 /* soda_TN@3x.png in Resources */,
+				65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */,
 				8218516F1EAA9103000EDFD2 /* xoxo_TN.png in Resources */,
 				8218510C1EAA9103000EDFD2 /* palmtree_TN@2x.png in Resources */,
 				8218509B1EAA9102000EDFD2 /* bike_cruiser_TN.png in Resources */,
