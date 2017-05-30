@@ -165,13 +165,11 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         return YES;
     }
 
-    NSString *scheme = [url.scheme lowercaseString];
-
-    if ([scheme isEqual:@"hpsprocket"]) {
+    if ([url.scheme isEqual:@"hpsprocket"]) {
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else if ([scheme containsString:@"googleusercontent"]) {
+    } else if ([url.scheme containsString:@"googleusercontent"]) {
         return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else if ([scheme isEqual:@"com.hp.sprocket.deeplinks"]) {
+    } else if ([url.scheme caseInsensitiveCompare:@"com.hp.sprocket.deeplinks"] == NSOrderedSame) {
         [self deepLink:url.host];
     } else {
         return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
