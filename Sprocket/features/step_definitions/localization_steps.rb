@@ -264,9 +264,9 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
         if element_exists("view marked:'#{$list_loc['auth']}' index:0")
             sleep(WAIT_SCREENLOAD)
             touch("view marked:'#{$list_loc['auth']}' index:0")
-            sleep(STEP_PAUSE)
-            #touch "* id:'previewDownload'"
+            sleep(WAIT_SCREENLOAD)
             touch @current_page.download
+            sleep(STEP_PAUSE)
         end
         check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
         sleep(STEP_PAUSE)
@@ -291,7 +291,8 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
             end
         end
     else
-        check_element_exists "label marked:'No prints in Print Queue'"
+       # check_element_exists "label marked:'No prints in Print Queue'"
+        check_element_exists "label marked:'Sprocket Printer Not Connected, 1 print added to the queue, 1 total'"
     end
 end
 

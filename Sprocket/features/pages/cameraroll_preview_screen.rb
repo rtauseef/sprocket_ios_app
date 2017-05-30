@@ -36,6 +36,10 @@ def download
     "* id:'previewDownload'"
 end
     
+    def ok
+        "UILabel marked:'#{$list_loc['ok']}'" 
+    end
+    
     def checkmark
         "* id:'Check_Inactive1.png'" 
     end
