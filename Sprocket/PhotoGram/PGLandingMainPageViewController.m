@@ -504,7 +504,7 @@ NSInteger const kMantaErrorBusy = 1;
         [self.errorAlert addAction:okAction];
     } else {
         UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                              style:UIAlertActionStyleCancel
+                                                              style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
                                                                 self.errorAlert = nil;
                                                                 [printManager pausePrintQueue];
