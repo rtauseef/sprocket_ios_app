@@ -165,15 +165,18 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         return YES;
     }
 
-    if ([url.scheme isEqual:@"hpsprocket"]) {
+    NSString *scheme = [url.scheme lowercaseString];
+
+    if ([scheme isEqual:@"hpsprocket"]) {
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else if ([url.scheme containsString:@"googleusercontent"]) {
+    } else if ([scheme containsString:@"googleusercontent"]) {
         return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else if ([url.scheme isEqual:@"com.hp.sprocket.deepLinks"]) {
+    } else if ([scheme isEqual:@"com.hp.sprocket.deeplinks"]) {
         [self deepLink:url.host];
     } else {
         return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
+
     NSMutableArray *schemes = [NSMutableArray array];
     
     // Look at our plist
