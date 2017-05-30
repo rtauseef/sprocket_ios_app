@@ -78,6 +78,14 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
+		65778BF11ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */; };
+		65778BF21ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */; };
+		65778BF31ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */; };
+		65778BF41ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */; };
+		65778BF51ED8E9D5007DA11B /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
+		65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
+		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
@@ -2076,7 +2084,6 @@
 		8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E34D50C9199ABC29006D80E0 /* UIFont+Style.m */; };
 		9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385719BE57C5009C695F /* SendFeedback@2x.png */; };
 		91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
-		920994541EC4D72C002B7579 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929886261EC24E7A00750C74 /* GoogleService-Info.plist */; };
 		922ACF9D1E3FD4EE00A475A4 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */; };
 		9230AEA51D19DD3A0029A888 /* Buy_Paper_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA31D19DD3A0029A888 /* Buy_Paper_Print@3x.png */; };
@@ -2087,7 +2094,6 @@
 		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
 		926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
 		926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
-		929886271EC24E7A00750C74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 929886261EC24E7A00750C74 /* GoogleService-Info.plist */; };
 		929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
 		929B9A1B1EAFB41800A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
 		929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
@@ -2410,6 +2416,16 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65778BF61ED8E9DD007DA11B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		82157D0B1D9306A400360D87 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2564,6 +2580,9 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
+		65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_DEV.plist"; sourceTree = "<group>"; };
+		65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_REL.plist"; sourceTree = "<group>"; };
+		65778C021ED8FE93007DA11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -2576,6 +2595,8 @@
 		731333AF1ECF68BE00E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		731333B01ECF68BF00E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		731333B11ECF68C000E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		73E63B8A1ED8C2BE0037C185 /* GoogleService-Info_DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_DEV.plist"; sourceTree = "<group>"; };
+		73E63B8B1ED8C2BE0037C185 /* GoogleService-Info_REL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_REL.plist"; sourceTree = "<group>"; };
 		768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushNotificationExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
@@ -3711,7 +3732,6 @@
 		924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInterstitialAwarenessViewController.h; sourceTree = "<group>"; };
 		924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInterstitialAwarenessViewController.m; sourceTree = "<group>"; };
 		9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Sprocket.gif; path = Resources/Images/Icons/Sprocket.gif; sourceTree = "<group>"; };
-		929886261EC24E7A00750C74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		929B99F51EA801F200A2CF0E /* PGGoogleLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGoogleLandingPageViewController.h; sourceTree = "<group>"; };
 		929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGoogleLandingPageViewController.m; sourceTree = "<group>"; };
 		929B9B201EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSideBarMenuTableViewCell.h; sourceTree = "<group>"; };
@@ -4001,6 +4021,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65778BF51ED8E9D5007DA11B /* AirshipAppExtensions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5252,7 +5273,9 @@
 		E34D504E199AB87A006D80E0 = {
 			isa = PBXGroup;
 			children = (
-				929886261EC24E7A00750C74 /* GoogleService-Info.plist */,
+				65778C021ED8FE93007DA11B /* GoogleService-Info.plist */,
+				65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */,
+				65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
 				92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */,
@@ -5765,6 +5788,7 @@
 				2671D4BF1E3EB64500F166E3 /* Sources */,
 				2671D4C01E3EB64500F166E3 /* Frameworks */,
 				2671D4C11E3EB64500F166E3 /* Resources */,
+				65778BF61ED8E9DD007DA11B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -6495,6 +6519,7 @@
 				82A11D4B1E5FB93B00E7F8FC /* panda-mask_TN@2x.png in Resources */,
 				8212BDB51EA93616009E66EC /* cat_body.png in Resources */,
 				829A7A4A1EBB8E7E005D4938 /* popsicle-2_TN@3x.png in Resources */,
+				65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */,
 				826BEAFF1E85BEAD000BE3FA /* GradientFrame_TN.png in Resources */,
 				829A79EE1EBB8E7E005D4938 /* fan_TN.png in Resources */,
 				82E3DB6C1E82EEEE0008F600 /* volleyball_TN@3x.png in Resources */,
@@ -6547,6 +6572,7 @@
 				82E3DB721E82EEEE0008F600 /* wave_TN@2x.png in Resources */,
 				829A79EA1EBB8E7E005D4938 /* dolphin_doodle_TN@3x.png in Resources */,
 				8212BBBC1EA92A26009E66EC /* diploma.png in Resources */,
+				65778BF11ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */,
 				82E3D9321E82EEEC0008F600 /* airplane_TN@2x.png in Resources */,
 				82E3DB941E82F1920008F600 /* glasses_blossom_TN@3x.png in Resources */,
 				8212BB721EA92A25009E66EC /* g_balloons_TN@3x.png in Resources */,
@@ -6778,7 +6804,6 @@
 				829A79FE1EBB8E7E005D4938 /* flip_flops2_TN.png in Resources */,
 				826BEB111E85BEAD000BE3FA /* HeartsOverlayFrame_TN@2x.png in Resources */,
 				82E3DAC61E82EEED0008F600 /* soda_straw.png in Resources */,
-				929886271EC24E7A00750C74 /* GoogleService-Info.plist in Resources */,
 				8212BD7B1EA93615009E66EC /* beachball-color_TN@3x.png in Resources */,
 				82A11CE31E5FB93B00E7F8FC /* band-aid2_TN.png in Resources */,
 				82E3DB061E82EEED0008F600 /* swim_fins.png in Resources */,
@@ -6823,6 +6848,7 @@
 				8212BBDA1EA92A26009E66EC /* medal_graduation_TN@3x.png in Resources */,
 				826BEAF31E85BEAD000BE3FA /* Floral2Frame_TN@3x.png in Resources */,
 				8212BDE11EA93616009E66EC /* Derby_TN@2x.png in Resources */,
+				65778BF31ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */,
 				8212BE2D1EA93616009E66EC /* gift.png in Resources */,
 				8212BEBD1EA93616009E66EC /* LOL.png in Resources */,
 				8212BE431EA93616009E66EC /* Glasses-red_TN@2x.png in Resources */,
@@ -7304,6 +7330,7 @@
 				82E3DE9E1E831BD10008F600 /* spoon_TN.png in Resources */,
 				8218506E1EAA9041000EDFD2 /* sun_hat.png in Resources */,
 				8218505D1EAA9040000EDFD2 /* soda_TN@3x.png in Resources */,
+				65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */,
 				8218516F1EAA9103000EDFD2 /* xoxo_TN.png in Resources */,
 				8218510C1EAA9103000EDFD2 /* palmtree_TN@2x.png in Resources */,
 				8218509B1EAA9102000EDFD2 /* bike_cruiser_TN.png in Resources */,
@@ -7350,6 +7377,7 @@
 				3f61a6f79eae18c8239267a5 /* HPSimplified_LtIt.ttf in Resources */,
 				821850551EAA9040000EDFD2 /* sloth_TN@3x.png in Resources */,
 				82184F881EAA9040000EDFD2 /* devilhorns_TN@2x.png in Resources */,
+				65778BF41ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */,
 				8212BB8D1EA92A25009E66EC /* bowtie_graduation.png in Resources */,
 				821851341EAA9103000EDFD2 /* surfboard_TN@2x.png in Resources */,
 				82E3DE541E831BD10008F600 /* band-aid2_TN@2x.png in Resources */,
@@ -7388,6 +7416,7 @@
 				829A7A3B1EBB8E7E005D4938 /* mermaid_tail_water.png in Resources */,
 				8212BB811EA92A25009E66EC /* books_TN@2x.png in Resources */,
 				8218501F1EAA9040000EDFD2 /* palm-tree-2_TN.png in Resources */,
+				65778BF21ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */,
 				82184F481EAA9040000EDFD2 /* aviator-glasses-color_TN@2x.png in Resources */,
 				821851251EAA9103000EDFD2 /* sun_face_TN@3x.png in Resources */,
 				821851641EAA9103000EDFD2 /* v_hearts_TN@2x.png in Resources */,
@@ -8051,7 +8080,6 @@
 				8212BBCD1EA92A26009E66EC /* g_glasses.png in Resources */,
 				82184F901EAA9040000EDFD2 /* fireworks_TN@2x.png in Resources */,
 				821850B71EAA9102000EDFD2 /* catwhiskers_TN.png in Resources */,
-				920994541EC4D72C002B7579 /* GoogleService-Info.plist in Resources */,
 				82184FB11EAA9040000EDFD2 /* glasses_football_TN@3x.png in Resources */,
 				82184F9A1EAA9040000EDFD2 /* Flowers_TN@3x.png in Resources */,
 				826BEB521E85BEAD000BE3FA /* StarsOverlayFrame_TN@2x.png in Resources */,
@@ -9024,8 +9052,8 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
@@ -9035,125 +9063,11 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ce71e2d1-e4e6-473d-bb00-cbb6ca8bcccc";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Develop Provision";
+				PROVISIONING_PROFILE = "4b41b472-54cf-4489-ae0d-753cedf5b4ad";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Extension Distrib";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
-		};
-		2671D4CF1E3EB64600F166E3 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8694d75-6b5a-45d4-bc04-9de5af7a9ae0";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Extension Distrib";
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		2671D4D01E3EB64600F166E3 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8694d75-6b5a-45d4-bc04-9de5af7a9ae0";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification Extension Distrib";
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		35c2e36ea1855459f530fc84 /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86DEDBEA83B99833B51EA7F9 /* Pods-Sprocket-cal.testflight.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)/PhotoGram",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				New_Setting = "";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lGoogleAnalyticsServices",
-					"-lsqlite3",
-					"-lxml2",
-					"-lz",
-					"-framework",
-					CFNetwork,
-					"-framework",
-					CoreData,
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					CoreText,
-					"-framework",
-					Foundation,
-					"-framework",
-					MobileCoreServices,
-					"-framework",
-					QuartzCore,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					UIKit,
-					"-force_load",
-					"\"$(SRCROOT)/calabash.framework/calabash\"",
-					"-lstdc++",
-				);
-				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
-				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = TestFlight;
 		};
 		7178b6c408d97b42552159f6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -9270,8 +9184,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
@@ -9294,87 +9208,11 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a6f009be-5d41-4a8a-952d-549ce508f9bf";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action Develop Provision";
+				PROVISIONING_PROFILE = "d7ddcb35-388c-4a89-a60e-21f7b0f73141";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action iOS Distribution Provision";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
-		};
-		821523341D82215600C0541C /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
-				INFOPLIST_FILE = "Sprocket Print/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7dd6df9d-bf6c-442a-9ace-be5b1a312a96";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action iOS Distribution Provision";
-				SKIP_INSTALL = YES;
-			};
-			name = TestFlight;
-		};
-		821523351D82215600C0541C /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-				);
-				INFOPLIST_FILE = "Sprocket Print/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7dd6df9d-bf6c-442a-9ace-be5b1a312a96";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action iOS Distribution Provision";
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
 		};
 		E34D508A199AB87B006D80E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -9540,8 +9378,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
 				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -9590,8 +9428,8 @@
 				PODS_BUILD_DIR = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
+				PROVISIONING_PROFILE = "c1e4a7cd-690e-4ba5-acd2-4ee5197c17fc";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -9639,260 +9477,6 @@
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
-		};
-		FF3D09FE1D2C302C0002AB7C /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = TestFlight;
-		};
-		FF3D09FF1D2C302C0002AB7C /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08106804895444A02DA88FFC /* Pods-Sprocket.testflight.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PhotoGram",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				New_Setting = "";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lGoogleAnalyticsServices",
-					"-lsqlite3",
-					"-lxml2",
-					"-lz",
-					"-framework",
-					CFNetwork,
-					"-framework",
-					CoreData,
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					CoreText,
-					"-framework",
-					Foundation,
-					"-framework",
-					MobileCoreServices,
-					"-framework",
-					QuartzCore,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					UIKit,
-				);
-				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
-				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = TestFlight;
-		};
-		FF3D0A001D2C302C0002AB7C /* TestFlight */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = TestFlight;
-		};
-		FF3D0A021D2DAC260002AB7C /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = AppStore;
-		};
-		FF3D0A031D2DAC260002AB7C /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PhotoGram",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				New_Setting = "";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lGoogleAnalyticsServices",
-					"-lsqlite3",
-					"-lxml2",
-					"-lz",
-					"-framework",
-					CFNetwork,
-					"-framework",
-					CoreData,
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					CoreText,
-					"-framework",
-					Foundation,
-					"-framework",
-					MobileCoreServices,
-					"-framework",
-					QuartzCore,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					UIKit,
-				);
-				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
-				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = AppStore;
-		};
-		FF3D0A041D2DAC260002AB7C /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = AppStore;
 		};
 		ef18b9042e37f367acb5fee7 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -9963,76 +9547,6 @@
 			};
 			name = Release;
 		};
-		ff3b8922679ec974185b49b4 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (UJ5KAZ5V7V)";
-				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)/PhotoGram",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				New_Setting = "";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lGoogleAnalyticsServices",
-					"-lsqlite3",
-					"-lxml2",
-					"-lz",
-					"-framework",
-					CFNetwork,
-					"-framework",
-					CoreData,
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					CoreText,
-					"-framework",
-					Foundation,
-					"-framework",
-					MobileCoreServices,
-					"-framework",
-					QuartzCore,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					UIKit,
-					"-force_load",
-					"\"$(SRCROOT)/calabash.framework/calabash\"",
-					"-lstdc++",
-				);
-				PODS_BUILD_DIR = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
-				PRODUCT_NAME = Sprocket;
-				PROVISIONING_PROFILE = "828f1570-0ef8-4841-a947-bf451d5d33de";
-				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = AppStore;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -10041,8 +9555,6 @@
 			buildConfigurations = (
 				2671D4CD1E3EB64600F166E3 /* Debug */,
 				2671D4CE1E3EB64600F166E3 /* Release */,
-				2671D4CF1E3EB64600F166E3 /* TestFlight */,
-				2671D4D01E3EB64600F166E3 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10052,8 +9564,6 @@
 			buildConfigurations = (
 				7178b6c408d97b42552159f6 /* Debug */,
 				ef18b9042e37f367acb5fee7 /* Release */,
-				35c2e36ea1855459f530fc84 /* TestFlight */,
-				ff3b8922679ec974185b49b4 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10063,8 +9573,6 @@
 			buildConfigurations = (
 				821523321D82215600C0541C /* Debug */,
 				821523331D82215600C0541C /* Release */,
-				821523341D82215600C0541C /* TestFlight */,
-				821523351D82215600C0541C /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10074,8 +9582,6 @@
 			buildConfigurations = (
 				E34D508A199AB87B006D80E0 /* Debug */,
 				E34D508B199AB87B006D80E0 /* Release */,
-				FF3D09FE1D2C302C0002AB7C /* TestFlight */,
-				FF3D0A021D2DAC260002AB7C /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10085,8 +9591,6 @@
 			buildConfigurations = (
 				E34D508D199AB87B006D80E0 /* Debug */,
 				E34D508E199AB87B006D80E0 /* Release */,
-				FF3D09FF1D2C302C0002AB7C /* TestFlight */,
-				FF3D0A031D2DAC260002AB7C /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10096,8 +9600,6 @@
 			buildConfigurations = (
 				E34D5090199AB87B006D80E0 /* Debug */,
 				E34D5091199AB87B006D80E0 /* Release */,
-				FF3D0A001D2C302C0002AB7C /* TestFlight */,
-				FF3D0A041D2DAC260002AB7C /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
