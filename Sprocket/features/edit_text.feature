@@ -170,7 +170,7 @@ Scenario: Verify color list
     | Green      |
     | Aquamarin  |
   
-@TA17012
+@manual
 Scenario: Verify all the colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -217,7 +217,8 @@ Scenario: Verify background color list
     | Green      |
     | Aquamarin  |
   
-@done
+
+@manual
 Scenario: Verify all the background colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
