@@ -95,7 +95,7 @@ Scenario Outline: Verify all the stickers are applied for sticker editor screen
     | sticker_tab_name   |
     | Graduation Category|
     | Summer Category    |
-    | Cannes Category    |
+    #| Cannes Category    |
     | Face Category      |
     | Decorative Category|
     | Food Category      |

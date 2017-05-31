@@ -43,6 +43,11 @@ end
         "UILabel marked:'#{$list_loc['More']}' index:1"
 end
     
+    
+ def ok
+        "UILabel marked:'#{$list_loc['ok']}'" 
+    end
+    
   def close
     "* id:'closeButton'"
   end

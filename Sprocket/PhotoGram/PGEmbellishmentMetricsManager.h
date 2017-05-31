@@ -22,5 +22,6 @@
 - (void)addEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
 - (void)removeEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
 - (void)clearEmbellishmentMetricForCategory:(PGEmbellishmentCategoryType)type;
+- (void)clearAllEmbellishmentMetrics;
 
 @end
