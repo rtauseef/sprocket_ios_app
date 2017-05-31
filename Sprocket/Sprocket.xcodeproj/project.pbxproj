@@ -9115,7 +9115,7 @@
 		};
 		653175511EDDEE70003F1D0F /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -9199,7 +9199,7 @@
 		};
 		653175531EDDEE70003F1D0F /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */;
+			baseConfigurationReference = BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -9237,7 +9237,7 @@
 		};
 		653175541EDDEE70003F1D0F /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */;
+			baseConfigurationReference = B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
