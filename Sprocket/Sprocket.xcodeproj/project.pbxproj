@@ -86,6 +86,10 @@
 		65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
+		658DF9D31EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */; };
+		658DF9D41EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */; };
+		658DF9D61EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */; };
+		658DF9D71EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
@@ -2839,6 +2843,8 @@
 		65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_DEV.plist"; sourceTree = "<group>"; };
 		65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_REL.plist"; sourceTree = "<group>"; };
 		65778C021ED8FE93007DA11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirshipConfig-PRODUCTION.plist"; sourceTree = "<group>"; };
+		658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirshipConfig-DEFAULT.plist"; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -5661,6 +5667,8 @@
 				65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
 				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
+				658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */,
+				658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */,
 				92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */,
 				E34D5060199AB87B006D80E0 /* Sprocket */,
 				E34D5082199AB87B006D80E0 /* SprocketTests */,
@@ -6378,12 +6386,13 @@
 			buildPhases = (
 				6D373432ABF44BB282FD6567 /* [CP] Check Pods Manifest.lock */,
 				929886221EC2427C00750C74 /* Copy proper GoogleService-Info.plist */,
+				658DF9D81EDF898600F0EBCB /* Run Script - Copy proper Urban Airship configuration */,
 				E34D5053199AB87B006D80E0 /* Sources */,
 				E34D5054199AB87B006D80E0 /* Frameworks */,
 				CCCEAFBB19D349CE00EB6828 /* ShellScript */,
 				E34D5055199AB87B006D80E0 /* Resources */,
 				8C6684B93DE841829B62429B /* [CP] Copy Pods Resources */,
-				FF7337C719F71C7900A91B3C /* ShellScript */,
+				FF7337C719F71C7900A91B3C /* Run Script */,
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
 				8271DCD41D46D03500B21549 /* Embed Frameworks */,
 				8271DCD81D46D07B00B21549 /* ShellScript */,
@@ -7085,6 +7094,7 @@
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
 				8212BEA51EA93616009E66EC /* leaves.png in Resources */,
 				829A7A801EBB8E7E005D4938 /* water_bubbles_TN@2x.png in Resources */,
+				658DF9D61EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */,
 				826BEB531E85BEAD000BE3FA /* StarsOverlayFrame_TN@3x.png in Resources */,
 				829A7A9A1EBBB009005D4938 /* floating_flowers_2_TN@3x.png in Resources */,
 				82E3DA2E1E82EEED0008F600 /* heart_crown.png in Resources */,
@@ -7298,6 +7308,7 @@
 				82E3DB1A1E82EEEE0008F600 /* tiara_TN@2x.png in Resources */,
 				826BEB211E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@2x.png in Resources */,
 				8212BB9C1EA92A25009E66EC /* cap.png in Resources */,
+				658DF9D31EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */,
 				8212BF511EA93616009E66EC /* rosebud_TN@2x.png in Resources */,
 				F2D44BCD1EDF3AC900492DE5 /* hat_TN.png in Resources */,
 				F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */,
@@ -7878,6 +7889,7 @@
 				821850FB1EAA9103000EDFD2 /* icecream_tub_TN.png in Resources */,
 				F2D44C751EDF66C300492DE5 /* shoes_TN.png in Resources */,
 				821851421EAA9103000EDFD2 /* thought_bubble.png in Resources */,
+				658DF9D41EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */,
 				821850331EAA9040000EDFD2 /* plane_TN.png in Resources */,
 				821850BB1EAA9102000EDFD2 /* conversation_heart_TN.png in Resources */,
 				821850191EAA9040000EDFD2 /* oranges_TN@3x.png in Resources */,
@@ -8714,6 +8726,7 @@
 				F2D44C781EDF66C300492DE5 /* shoes.png in Resources */,
 				821850401EAA9040000EDFD2 /* rainbow_2_TN@3x.png in Resources */,
 				82E3DEAB1E831BD10008F600 /* word-cloud-grumble_TN@2x.png in Resources */,
+				658DF9D71EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */,
 				821850C91EAA9102000EDFD2 /* feather_TN@3x.png in Resources */,
 				82E3DE4B1E831BD10008F600 /* bacon_egg_TN@2x.png in Resources */,
 				8218515F1EAA9103000EDFD2 /* v_heart_TN.png in Resources */,
@@ -8939,6 +8952,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		658DF9D81EDF898600F0EBCB /* Run Script - Copy proper Urban Airship configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Copy proper Urban Airship configuration";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "suffix=\"DEFAULT\"\nif [ ${URBAN_AIRSHIP_FORCE_PRODUCTION} == \"1\" ]; then\nsuffix=\"PRODUCTION\"\nfi;\ncp \"${PROJECT_DIR}/AirshipConfig-$suffix.plist\" \"${PROJECT_DIR}/AirshipConfig.plist\"";
+		};
 		65E7D9A81DB56EE2009B5584 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -9105,13 +9132,14 @@
 			shellPath = /bin/sh;
 			shellScript = "./Crashlytics.framework/run fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed 198e928d3e88e21a17980402bb913b2eb11f42f7037c2d1d9747ec9650502ce6";
 		};
-		FF7337C719F71C7900A91B3C /* ShellScript */ = {
+		FF7337C719F71C7900A91B3C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
