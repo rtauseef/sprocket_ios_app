@@ -78,5 +78,9 @@
     [self.metrics removeObjectsInArray:objectsToRemove];
 }
 
+- (void)clearAllEmbellishmentMetrics
+{
+    [self.metrics removeAllObjects];
+}
 
 @end
