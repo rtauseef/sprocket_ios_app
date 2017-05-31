@@ -451,6 +451,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [alert addAction:printQueueAction];
     
     UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Help", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self peekDrawerAnimated:YES];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
         [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
