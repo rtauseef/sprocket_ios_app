@@ -291,8 +291,11 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
             end
         end
     else
-       # check_element_exists "label marked:'No prints in Print Queue'"
-        check_element_exists "label marked:'Sprocket Printer Not Connected, 1 print added to the queue, 1 total'"
+        if button == "No Prints"
+             check_element_exists "label marked:'No prints in Print Queue'"
+         else
+            check_element_exists "label marked:'Sprocket Printer Not Connected, 1 print added to the queue, 1 total'"
+        end
     end
 end
 

@@ -254,8 +254,12 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    #selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
+    device_name = get_device_name
+    if device_name.to_s != 'iPad'
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
+    else
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[7]
+    end
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 

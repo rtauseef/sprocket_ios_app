@@ -76,7 +76,7 @@ Scenario Outline: Verify sticker list
     | sticker_tab_name   |
     | Graduation Category|
     | Summer Category    |
-    | Cannes Category    |
+    #| Cannes Category    |
     | Face Category      |
     | Decorative Category|
     | Food Category      |
