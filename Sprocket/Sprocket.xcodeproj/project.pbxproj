@@ -5859,15 +5859,15 @@
 				929886221EC2427C00750C74 /* Copy proper GoogleService-Info.plist */,
 				E34D5053199AB87B006D80E0 /* Sources */,
 				E34D5054199AB87B006D80E0 /* Frameworks */,
-				CCCEAFBB19D349CE00EB6828 /* ShellScript */,
+				CCCEAFBB19D349CE00EB6828 /* Run script - Set build number */,
 				E34D5055199AB87B006D80E0 /* Resources */,
 				8C6684B93DE841829B62429B /* [CP] Copy Pods Resources */,
-				FF7337C719F71C7900A91B3C /* ShellScript */,
+				FF7337C719F71C7900A91B3C /* Run Script - Restore build number to DEV */,
 				BD83A6D7AD733724F143ED45 /* [CP] Embed Pods Frameworks */,
 				8271DCD41D46D03500B21549 /* Embed Frameworks */,
-				8271DCD81D46D07B00B21549 /* ShellScript */,
+				8271DCD81D46D07B00B21549 /* Run Script - Process framework scripts */,
 				82157D0B1D9306A400360D87 /* Embed App Extensions */,
-				E387B47719DA23E000ABB167 /* ShellScript */,
+				E387B47719DA23E000ABB167 /* Run Script - Process Crashlytics script */,
 				92ECDB4A1E41062C00026DE4 /* CopyFiles */,
 			);
 			buildRules = (
@@ -8216,13 +8216,14 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8271DCD81D46D07B00B21549 /* ShellScript */ = {
+		8271DCD81D46D07B00B21549 /* Run Script - Process framework scripts */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Process framework scripts";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8302,39 +8303,42 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCCEAFBB19D349CE00EB6828 /* ShellScript */ = {
+		CCCEAFBB19D349CE00EB6828 /* Run script - Set build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run script - Set build number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
 		};
-		E387B47719DA23E000ABB167 /* ShellScript */ = {
+		E387B47719DA23E000ABB167 /* Run Script - Process Crashlytics script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Process Crashlytics script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Crashlytics.framework/run fed1fe4ea8a4c5778ff0754bc1851f8f8ef7f5ed 198e928d3e88e21a17980402bb913b2eb11f42f7037c2d1d9747ec9650502ce6";
 		};
-		FF7337C719F71C7900A91B3C /* ShellScript */ = {
+		FF7337C719F71C7900A91B3C /* Run Script - Restore build number to DEV */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Restore build number to DEV";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
