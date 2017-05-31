@@ -234,7 +234,7 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
     
     // We need to sub the %5B and %5D for [ and ] in order to string compare
     //  on the query returned by our NSURLRequest...
-    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium%5D(gphoto:timestamp,title,content,media:group/media:content,media:group/media:thumbnail,georss:where)";
+    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium%5D(gphoto:timestamp,title,content,media:group/media:content,media:group/media:thumbnail,georss:where,exif:tags)";
     
     if (!self.displayVideos) {
         searchFields =  @"entry%5Bmedia:group/media:content/@medium!='video'%5D(title,content,media:group/media:content,media:group/media:thumbnail)";

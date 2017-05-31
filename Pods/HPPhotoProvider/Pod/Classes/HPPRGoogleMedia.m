@@ -40,7 +40,9 @@
         NSString *timestamp = [attributes objectForKey:@"gphoto:timestamp"];
         
         if (timestamp) {
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[timestamp longLongValue] / 1000];
+            double when = [timestamp longLongValue] / 1000;
+            
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:when];
             self.createdTime = date;
         }
         
@@ -74,16 +76,49 @@
         self.userProfilePicture = [attributes objectForKey:@"userThumbnail"];
         
         // NOTE: Don't localize this date, it comes from the API always in the same format regardless the language.
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        /*NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSString *dateString = [attributes objectForKey:@"updated"];
-        self.createdTime = [dateFormatter dateFromString:dateString];
+        self.createdTime = [dateFormatter dateFromString:dateString];*/
         
         self.text = [attributes objectForKey:@"title"];
         
         self.objectID = self.standardUrl;
         
         self.socialProvider = tHPRMediaSocialProviderGoogle;
+   
+        self.isoSpeed = [attributes objectForKey:@"exif:iso"];
+        
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        f.numberStyle = NSNumberFormatterDecimalStyle;
+        
+        if ([attributes objectForKey:@"exif:exposure"])
+            self.exposureTime = [f numberFromString:[attributes objectForKey:@"exif:exposure"]];
+        
+        if ([attributes objectForKey:@"exif:fstop"])
+            self.aperture = [f numberFromString:[attributes objectForKey:@"exif:fstop"]];
+        
+        if ([attributes objectForKey:@"exif:flash"])
+            self.flash = [attributes objectForKey:@"exif:flash"] && [[attributes objectForKey:@"exif:flash"] isEqualToString:@"true"] ? [NSNumber numberWithBool:true] : [NSNumber numberWithBool:false];
+        
+        if ([attributes objectForKey:@"exif:focallength"])
+            self.focalLength = [f numberFromString:[attributes objectForKey:@"exif:focallength"]];
+        
+        self.cameraMake = [attributes objectForKey:@"exif:make"];
+        self.cameraModel = [attributes objectForKey:@"exif:model"];
+        
+        if ([attributes objectForKey:@"gml:pos"]) {
+            NSArray *latlon = [[attributes objectForKey:@"gml:pos"] componentsSeparatedByString: @" "];
+            if ([latlon count] == 2) {
+                NSNumber *lat = [f numberFromString:latlon[0]];
+                NSNumber *lon = [f numberFromString:latlon[1]];
+                
+                if (lat && lon) {
+                    self.location = [[CLLocation alloc] initWithLatitude:[lat doubleValue] longitude:[lon doubleValue]];
+                }
+            }
+        }
+        
     }
     
     return self;
