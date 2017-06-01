@@ -74,7 +74,7 @@ float const kPGCustomStickerCameraInset = 60.0;
 float const kPGCustomStickerCameraOpacity = 0.61803398875;
 float const kPGCustomStickerCameraCornerLength = 30.0;
 float const kPGCustomStickerCameraCornerInset = 52.0;
-int const kPGCustomStickerCameraCornerWidth = 5;
+int const kPGCustomStickerCameraCornerWidth = 3;
 float const kPGCustomStickerAnimationDuration = 0.61803398875;
 NSString *kPGCustomStickerVideoPlayedKey = @"kPGCustomStickerVideoPlayedKey";
 
@@ -199,7 +199,7 @@ CGSize const kThumbnailSize = { 100, 100 };
         self.noButton.enabled = NO;
     } completion:^(BOOL finished) {
         [self dismissViewControllerAnimated:YES completion:^{
-            [[PGCustomStickerManager sharedInstance] saveSticker:self.stickerImage thumbnail:self.thumbnailImage data:self.resultData];
+            [[PGCustomStickerManager sharedInstance] saveSticker:self.stickerImage thumbnail:self.thumbnailImage];
             [[NSNotificationCenter defaultCenter] postNotificationName:kPGImglyManagerStickersChangedNotification object:nil];
         }];
     }];
@@ -208,6 +208,24 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 #pragma mark - UI
 
+- (void)setupSaveLabel
+{
+    NSArray *randomTextLines = @[
+                                 NSLocalizedString(@"Check out your custom sticker!", nil),
+                                 NSLocalizedString(@"Nice drawing!", nil),
+                                 NSLocalizedString(@"Looks good.", nil),
+                                 NSLocalizedString(@"You must be an artist.", nil),
+                                 NSLocalizedString(@"Perfect!", nil)
+                                 ];
+
+    uint32_t rnd = arc4random_uniform((uint32_t)[randomTextLines count]);
+
+    NSString *firstLine = [randomTextLines objectAtIndex:rnd];
+    NSString *secondLine = NSLocalizedString(@"Add to your sticker collection?", nil);
+
+    self.saveLabel.text = [NSString stringWithFormat:@"%@\n%@", firstLine, secondLine];
+}
+
 - (void)setSaveMode:(BOOL)saveMode
 {
     _saveMode = saveMode;
@@ -215,6 +233,7 @@ CGSize const kThumbnailSize = { 100, 100 };
     dispatch_async(dispatch_get_main_queue(), ^{
         self.resultImageView.image = self.stickerImage;
         if (saveMode) {
+            [self setupSaveLabel];
             [UIView animateWithDuration:kPGCustomStickerAnimationDuration animations:^{
                 self.resultImageView.alpha = 1.0;
                 self.captureLabel.alpha = 0.0;
@@ -296,9 +315,9 @@ CGSize const kThumbnailSize = { 100, 100 };
     self.cornerLayer = [CAShapeLayer layer];
     self.cornerLayer.path = path.CGPath;
     self.cornerLayer.lineWidth = kPGCustomStickerCameraCornerWidth;
-    self.cornerLayer.lineCap = kCALineCapRound;
+    self.cornerLayer.lineCap = kCALineCapSquare;
     self.cornerLayer.fillColor = [UIColor clearColor].CGColor;
-    self.cornerLayer.strokeColor = [UIColor HPBlueColor].CGColor;
+    self.cornerLayer.strokeColor = [UIColor whiteColor].CGColor;
     
     [view.layer addSublayer:self.cornerLayer];
 }
@@ -319,11 +338,6 @@ CGSize const kThumbnailSize = { 100, 100 };
     self.noButton.layer.borderColor  = [UIColor whiteColor].CGColor;
     self.noButton.layer.borderWidth = 1.0;
     self.noButton.layer.masksToBounds = YES;
-    
-    [self.captureLabel setFont:[UIFont HPSimplifiedLightFontWithSize:18.0f]];
-    [self.saveLabel setFont:[UIFont HPSimplifiedLightFontWithSize:18.0f]];
-    [self.yesButton.titleLabel setFont:[UIFont HPSimplifiedLightFontWithSize:18.0f]];
-    [self.noButton.titleLabel setFont:[UIFont HPSimplifiedLightFontWithSize:18.0f]];
 }
 
 #pragma mark - GPUImage

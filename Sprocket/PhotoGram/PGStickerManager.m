@@ -121,10 +121,10 @@
                                                                                stickers:getWellStickers];
     getWellCategory.accessibilityLabel = @"Get Well";
 
-    NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"add_sticker_TN" withExtension:@"png"];
-    IMGLYStickerCategory *addCustomCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                    imageURL:addStickerIcon
-                                                                                    stickers:@[]];
+    NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"customSticker" withExtension:@"png"];
+    IMGLYStickerCategory *addCustomCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                 imageURL:addStickerIcon
+                                                                                 stickers:@[]];
 
     addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
 

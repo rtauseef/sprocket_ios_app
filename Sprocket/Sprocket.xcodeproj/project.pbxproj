@@ -77,8 +77,6 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
-		656FC3A01EC622DE00433269 /* add_sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 656FC39F1EC622DE00433269 /* add_sticker.png */; };
-		656FC3A21EC6242200433269 /* add_sticker_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 656FC3A11EC6242200433269 /* add_sticker_TN.png */; };
 		656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */; };
 		656FC3A71EC673BF00433269 /* PGCustomStickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */; };
 		656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3AA1EC6744800433269 /* UIImage+Fixup.m */; };
@@ -2529,6 +2527,9 @@
 		F2D44CC61EE089A200492DE5 /* fd_heart_banner_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC21EE089A200492DE5 /* fd_heart_banner_TN@2x.png */; };
 		F2D44CC71EE089A200492DE5 /* fd_heart_banner_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC31EE089A200492DE5 /* fd_heart_banner_TN@3x.png */; };
 		F2D44CC81EE089A200492DE5 /* fd_heart_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */; };
+		F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD41EE0D65700492DE5 /* customSticker.png */; };
+		F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */; };
+		F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };
 		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
 		F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */; };
 		F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */; };
@@ -2837,8 +2838,6 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
-		656FC39F1EC622DE00433269 /* add_sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_sticker.png; sourceTree = "<group>"; };
-		656FC3A11EC6242200433269 /* add_sticker_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_sticker_TN.png; sourceTree = "<group>"; };
 		656FC3A41EC673BF00433269 /* PGCustomStickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCustomStickerManager.h; sourceTree = "<group>"; };
 		656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCustomStickerManager.m; sourceTree = "<group>"; };
 		656FC3A91EC6744800433269 /* UIImage+Fixup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Fixup.h"; sourceTree = "<group>"; };
@@ -4337,6 +4336,9 @@
 		F2D44CC21EE089A200492DE5 /* fd_heart_banner_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fd_heart_banner_TN@2x.png"; sourceTree = "<group>"; };
 		F2D44CC31EE089A200492DE5 /* fd_heart_banner_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fd_heart_banner_TN@3x.png"; sourceTree = "<group>"; };
 		F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fd_heart_banner.png; sourceTree = "<group>"; };
+		F2D44CD41EE0D65700492DE5 /* customSticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customSticker.png; sourceTree = "<group>"; };
+		F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSticker@2x.png"; sourceTree = "<group>"; };
+		F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSticker@3x.png"; sourceTree = "<group>"; };
 		F2D5A3971EAEA5E8002F9DDC /* link-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-icon.png"; sourceTree = "<group>"; };
 		F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkReaderKit.framework; sourceTree = "<group>"; };
 		F2E785201DDA4E230074FFB7 /* PGSocialSourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesManager.h; sourceTree = "<group>"; };
@@ -4492,15 +4494,6 @@
 				2671D4C81E3EB64600F166E3 /* Info.plist */,
 			);
 			path = PushNotificationExtension;
-			sourceTree = "<group>";
-		};
-		656FC39D1EC6221D00433269 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				656FC39F1EC622DE00433269 /* add_sticker.png */,
-				656FC3A11EC6242200433269 /* add_sticker_TN.png */,
-			);
-			name = Custom;
 			sourceTree = "<group>";
 		};
 		65A0026B1ECFA9A1006500EA /* Video */ = {
@@ -5042,7 +5035,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
-				656FC39D1EC6221D00433269 /* Custom */,
+				F2D44CD11EE0CD7100492DE5 /* Custom */,
 				F2D44B071EDF3AC800492DE5 /* FathersDay */,
 				829A7AA21EBBC485005D4938 /* Cannes */,
 				829A79941EBB8E5A005D4938 /* Summer */,
@@ -6317,6 +6310,17 @@
 			path = Resources/Images/Stickers/FathersDay;
 			sourceTree = "<group>";
 		};
+		F2D44CD11EE0CD7100492DE5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F2D44CD41EE0D65700492DE5 /* customSticker.png */,
+				F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */,
+				F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */,
+			);
+			name = Custom;
+			path = Resources/Images/Stickers/Custom;
+			sourceTree = "<group>";
+		};
 		F2E785281DDA78040074FFB7 /* SocialSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -7006,7 +7010,6 @@
 				829A7A841EBB8E7E005D4938 /* water_bubbles.png in Resources */,
 				8212BF371EA93616009E66EC /* plane_TN.png in Resources */,
 				826BEB5D1E85BEAD000BE3FA /* TurquoiseFrame.png in Resources */,
-				656FC3A21EC6242200433269 /* add_sticker_TN.png in Resources */,
 				8212BD9D1EA93615009E66EC /* butterfly.png in Resources */,
 				829A7A101EBB8E7E005D4938 /* ice_cream_cone_TN@2x.png in Resources */,
 				82E3DB0A1E82EEED0008F600 /* target_TN@2x.png in Resources */,
@@ -7215,6 +7218,7 @@
 				8212BE7F1EA93616009E66EC /* horn_TN.png in Resources */,
 				8212BE5F1EA93616009E66EC /* heart_wings_TN.png in Resources */,
 				8212BEB91EA93616009E66EC /* LOL_TN@2x.png in Resources */,
+				F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */,
 				F2030C0A1EA5878600141855 /* imglyStickerCategory@2x.png in Resources */,
 				82A11D071E5FB93B00E7F8FC /* cat-fries.png in Resources */,
 				82E3D9E81E82EEED0008F600 /* glasses_1_TN.png in Resources */,
@@ -7232,6 +7236,7 @@
 				8212BE051EA93616009E66EC /* fist.png in Resources */,
 				82E3DACA1E82EEED0008F600 /* starhp_TN@2x.png in Resources */,
 				82E3DB101E82EEED0008F600 /* thought_bubble_TN.png in Resources */,
+				F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */,
 				8212BFA51EA93616009E66EC /* sun_hat.png in Resources */,
 				8212BBFA1EA92A26009E66EC /* g_owl_TN@3x.png in Resources */,
 				82A11D851E5FB93B00E7F8FC /* taco2_TN@3x.png in Resources */,
@@ -7312,7 +7317,6 @@
 				8212BE971EA93616009E66EC /* koala_TN.png in Resources */,
 				829A7A8E1EBBA2C6005D4938 /* flower_glasses_TN.png in Resources */,
 				826BEB671E85BEAD000BE3FA /* WhiteFrame_TN.png in Resources */,
-				656FC3A01EC622DE00433269 /* add_sticker.png in Resources */,
 				F2D44BE81EDF3AC900492DE5 /* screwdriver.png in Resources */,
 				E3461FA519AF84A80042DF5E /* MeasurementArrowRight@2x.png in Resources */,
 				8212BE291EA93616009E66EC /* gift-dog_TN@3x.png in Resources */,
@@ -7524,6 +7528,7 @@
 				8212BEFB1EA93616009E66EC /* OMG_TN@3x.png in Resources */,
 				8212BF0B1EA93616009E66EC /* Owl_TN@3x.png in Resources */,
 				8212BC1C1EA92A26009E66EC /* ribbon.png in Resources */,
+				F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */,
 				F2D44B991EDF3AC900492DE5 /* bow_tie_TN.png in Resources */,
 				8212BC0E1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				82A11D351E5FB93B00E7F8FC /* fork_TN@3x.png in Resources */,

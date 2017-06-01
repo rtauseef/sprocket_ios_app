@@ -15,16 +15,18 @@
 #import "UIImage+Fixup.h"
 #import "PGStickerItem.h"
 #import "PGImglyManager.h"
+#import "PGCameraManager.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 
 @implementation PGCustomStickerManager
 
-NSString * const kPGCustomStickerManagerDirectory = @"stickers";
-NSString * const kCustomStickerManagerThumbnailSuffix = @"_TN";
-NSString * const kPGCustomStickerManagerRawSuffix = @"_RAW";
-int const kCustomStickerManagerPrefixLength = 8;
+static NSString * const kPGCustomStickerManagerLastStickerNumberKey = @"com.hp.sprocket.imgly.last-sticker";
+static NSString * const kPGCustomStickerManagerDirectory = @"stickers";
+static NSString * const kCustomStickerManagerThumbnailSuffix = @"_TN";
+static NSString * const kPGCustomStickerManagerRawSuffix = @"_RAW";
+static int const kCustomStickerManagerPrefixLength = 8;
 
 + (instancetype)sharedInstance
 {
@@ -39,9 +41,13 @@ int const kCustomStickerManagerPrefixLength = 8;
 
 - (void)presentCameraFromViewController:(UIViewController *)parentController
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    PGCustomStickerViewController *vc = (PGCustomStickerViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGCustomStickerViewController"];
-    [parentController presentViewController:vc animated:YES completion:nil];
+    [[PGCameraManager sharedInstance] checkCameraPermission:^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        PGCustomStickerViewController *vc = (PGCustomStickerViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGCustomStickerViewController"];
+        [parentController presentViewController:vc animated:YES completion:nil];
+    } andFailure:^{
+        [[PGCameraManager sharedInstance] showCameraPermissionFailedAlert];
+    }];
 }
 
 - (NSURL *)stickerDirectoryURL
@@ -61,25 +67,24 @@ int const kCustomStickerManagerPrefixLength = 8;
 
 - (NSInteger)nextStickerNumber
 {
-    NSInteger next = 0;
-    for (NSURL *url in [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[self stickerDirectoryURL] includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:nil]) {
-        NSInteger number = [[[url lastPathComponent] substringToIndex:kCustomStickerManagerPrefixLength] integerValue];
-        next = fmaxf(number, next);
-    }
-    return next + 1;
+    NSInteger lastStickerNumber = [[NSUserDefaults standardUserDefaults] integerForKey:kPGCustomStickerManagerLastStickerNumberKey];
+
+    return lastStickerNumber + 1;
 }
 
 - (void)deleteAllStickers:(UIViewController *)viewController
 {
     if ([PGCustomStickerManager stickers].count > 0) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete All Stickers" message:@"Would you like to delete all stickers?" preferredStyle:[self alertStyle]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"Delete All" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete All Stickers", nil)
+                                                                       message:NSLocalizedString(@"Are you sure you want to delete all stickers?", nil)
+                                                                preferredStyle:[self alertStyle]];
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             for (NSURL *url in [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[self stickerDirectoryURL] includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles error:nil]) {
                 [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:kPGImglyManagerStickersChangedNotification object:nil];
         }]];
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
         [viewController presentViewController:alert animated:YES completion:nil];
     } else {
         // indicate no stickers
@@ -88,21 +93,24 @@ int const kCustomStickerManagerPrefixLength = 8;
 
 - (void)deleteSticker:(NSString *)sticker viewController:(UIViewController *)viewController
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Sticker" message:@"Would you like to delete this sticker?" preferredStyle:[self alertStyle]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete Sticker", nil)
+                                                                   message:NSLocalizedString(@"Are you sure you want to delete this sticker?", nil)
+                                                            preferredStyle:[self alertStyle]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         NSURL *stickerUrl = [[self stickerDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", sticker]];
         NSURL *thumbUrl = [[self stickerDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.png", sticker, kCustomStickerManagerThumbnailSuffix]];
         [[NSFileManager defaultManager] removeItemAtURL:stickerUrl error:nil];
         [[NSFileManager defaultManager] removeItemAtURL:thumbUrl error:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGImglyManagerStickersChangedNotification object:nil];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil]];
     [viewController presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)saveSticker:(UIImage *)sticker thumbnail:(UIImage *)thumbnail data:(NSData *)rawData
+- (void)saveSticker:(UIImage *)sticker thumbnail:(UIImage *)thumbnail
 {
     NSInteger number = [self nextStickerNumber];
+    // Appending a random suffix to prevent caching by imgly
     NSString *unique = [[[NSProcessInfo processInfo] globallyUniqueString] substringToIndex:4];
     
     NSData *data = UIImagePNGRepresentation(sticker);
@@ -112,11 +120,10 @@ int const kCustomStickerManagerPrefixLength = 8;
     data = UIImagePNGRepresentation(thumbnail);
     url = [[self stickerDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%0*ld-%@%@.png", kCustomStickerManagerPrefixLength, (long)number, unique, kCustomStickerManagerThumbnailSuffix]];
     [data writeToURL:url atomically:YES];
-    
-    if (rawData) {
-        url = [[self stickerDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%0*ld-%@%@.png", kCustomStickerManagerPrefixLength, (long)number, unique, kPGCustomStickerManagerRawSuffix]];
-        [rawData writeToURL:url atomically:YES];
-    }
+
+    [[NSUserDefaults standardUserDefaults] setInteger:number forKey:kPGCustomStickerManagerLastStickerNumberKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 + (NSArray<IMGLYSticker *> *)stickers

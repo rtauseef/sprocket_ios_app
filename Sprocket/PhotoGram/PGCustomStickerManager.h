@@ -21,7 +21,7 @@
 
 - (void)presentCameraFromViewController:(UIViewController *)parentController;
 
-- (void)saveSticker:(UIImage *)sticker thumbnail:(UIImage *)thumbnail data:(NSData *)rawData;
+- (void)saveSticker:(UIImage *)sticker thumbnail:(UIImage *)thumbnail;
 - (void)deleteSticker:(NSString *)sticker viewController:(UIViewController *)viewController;
 - (void)deleteAllStickers:(UIViewController *)viewController;
 
