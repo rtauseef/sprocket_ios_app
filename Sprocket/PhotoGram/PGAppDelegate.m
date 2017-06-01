@@ -31,7 +31,7 @@
 #import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
 #import "PGInAppMessageManager.h"
-
+#import "PGMetarOfflineTagManager.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -87,7 +87,15 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [self initializeUAirship];
 
     [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
-
+    
+    // pre fetch offline tags
+    dispatch_async(dispatch_queue_create("OFFLINE_TAG_QUEUE", 0), ^{
+        PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
+        [metaroffline checkTagDB:^{
+            
+        }];
+    });
+    
     return YES;
 }
 

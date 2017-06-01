@@ -109,7 +109,7 @@
                self.metadata.location.venue.city && self.metadata.location.venue.state) {
         self.viewTitle = [NSString stringWithFormat:@"Photos near %@, %@",self.metadata.location.venue.city, self.metadata.location.venue.state];
     } else {
-        self.viewTitle = NSLocalizedString(@"Photos taken nearoi  the same location", nil);
+        self.viewTitle = NSLocalizedString(@"Photos taken near the same location", nil);
     }
 }
 
