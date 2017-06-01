@@ -220,8 +220,26 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     And I touch Instagram "Sign Out" button
     And I click Sign Out button on popup
     Then I should see Instagram "Sign In" button
+    
+    
+@localization
+Scenario: Navigate to Preview screen for cameraroll
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    When I touch second photo
+    Then I should see the "CameraRoll Preview" screen
+    Then I verify the "Edit" button text
+    Then I tap "Download" button
+    Then I should see the popup message for the "Download"
+    Then I tap "Print" button
+    Then I verify the "title" of the popup message for "PrintButton"
+    And I verify the "content" of the popup message for "PrintButton"
+    Then I tap "OK" button
+    Then I tap "Share" button
+    Then I wait for some time
+    Then I tap "More" button
+    Then I verify the "Print to sprocket" button text
    
-@reset     
 @localization
   Scenario Outline: Navigate to preview screen via instagram/Google
     Given  I am on the "Landing" screen  
@@ -251,29 +269,8 @@ Scenario: Verify localization of Instagram signin/signout buttons from sidemenu
     Examples:
       | social_media  | Sign in          | welcome           | Photos           | Preview           |
       | Instagram     | Instagram Signin | Instagram Landing | Instagram Photos | Instagram Preview |
-      | Google        | Google Signin     | Google Landing    | Google Photos     | Google Preview    | 
+      | Google        | Google Signin    | Google Landing    | Google Photos    | Google Preview    |
     
-
-@block
-@localization
-Scenario: Navigate to Preview screen for cameraroll
-    Given  I am on the "CameraRollLanding" screen
-    Then I open cameraroll	
-    When I touch second photo
-    Then I should see the "CameraRoll Preview" screen
-    Then I verify the "Edit" button text
-    Then I tap "Download" button
-    Then I should see the popup message for the "Download"
-    Then I tap "Print" button
-    Then I verify the "title" of the popup message for "PrintButton"
-    And I verify the "content" of the popup message for "PrintButton"
-    Then I tap "OK" button
-    Then I tap "Share" button
-    Then I wait for some time
-    Then I tap "More" button
-    Then I verify the "Print to sprocket" button text
-
-
     
     
     
