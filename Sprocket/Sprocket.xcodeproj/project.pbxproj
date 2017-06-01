@@ -36,7 +36,6 @@
 		260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 260DCF171D2E0ADD0057BD55 /* AlphaGradientView.m */; };
 		263ba4f23fdfcc5ba600a60d /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
 		264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461FA019AF84A80042DF5E /* MeasurementArrowUp@2x.png */; };
-		2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
 		2671D4CB1E3EB64600F166E3 /* PushNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
@@ -78,18 +77,12 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
-		65778BF11ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */; };
-		65778BF21ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */; };
-		65778BF31ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */; };
-		65778BF41ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */; };
 		65778BF51ED8E9D5007DA11B /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
-		658DF9D31EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */; };
-		658DF9D41EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */; };
-		658DF9D61EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */; };
-		658DF9D71EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */; };
+		658DF9DF1EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
+		658DF9E01EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
@@ -2095,7 +2088,6 @@
 		924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */; };
 		9254BB4F1D6FA21D008EAF11 /* Sprocket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9254BB4E1D6FA21D008EAF11 /* Sprocket.gif */; };
-		926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */; };
 		926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B9B211EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m */; };
 		926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 929B99F61EA801F200A2CF0E /* PGGoogleLandingPageViewController.m */; };
@@ -2805,7 +2797,6 @@
 		261BCFF51DC7F8E3003AF6F1 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		261BCFF61DC7F8F2003AF6F1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		261BCFFF1DC9396C003AF6F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
-		2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		2671D4C31E3EB64500F166E3 /* PushNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2671D4C51E3EB64600F166E3 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		2671D4C61E3EB64600F166E3 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
@@ -2845,6 +2836,7 @@
 		65778C021ED8FE93007DA11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirshipConfig-PRODUCTION.plist"; sourceTree = "<group>"; };
 		658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirshipConfig-DEFAULT.plist"; sourceTree = "<group>"; };
+		658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -5666,7 +5658,7 @@
 				65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */,
 				65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */,
 				922ACF9B1E3FD26E00A475A4 /* Sprocket-cal.entitlements */,
-				2671D4BD1E3EB52A00F166E3 /* AirshipConfig.plist */,
+				658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */,
 				658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */,
 				658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */,
 				92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */,
@@ -7094,7 +7086,6 @@
 				378EA80819A69E5700C72F1A /* Back@2x.png in Resources */,
 				8212BEA51EA93616009E66EC /* leaves.png in Resources */,
 				829A7A801EBB8E7E005D4938 /* water_bubbles_TN@2x.png in Resources */,
-				658DF9D61EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */,
 				826BEB531E85BEAD000BE3FA /* StarsOverlayFrame_TN@3x.png in Resources */,
 				829A7A9A1EBBB009005D4938 /* floating_flowers_2_TN@3x.png in Resources */,
 				82E3DA2E1E82EEED0008F600 /* heart_crown.png in Resources */,
@@ -7170,7 +7161,6 @@
 				82E3DB721E82EEEE0008F600 /* wave_TN@2x.png in Resources */,
 				829A79EA1EBB8E7E005D4938 /* dolphin_doodle_TN@3x.png in Resources */,
 				8212BBBC1EA92A26009E66EC /* diploma.png in Resources */,
-				65778BF11ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */,
 				82E3D9321E82EEEC0008F600 /* airplane_TN@2x.png in Resources */,
 				82E3DB941E82F1920008F600 /* glasses_blossom_TN@3x.png in Resources */,
 				8212BB721EA92A25009E66EC /* g_balloons_TN@3x.png in Resources */,
@@ -7308,7 +7298,6 @@
 				82E3DB1A1E82EEEE0008F600 /* tiara_TN@2x.png in Resources */,
 				826BEB211E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@2x.png in Resources */,
 				8212BB9C1EA92A25009E66EC /* cap.png in Resources */,
-				658DF9D31EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */,
 				8212BF511EA93616009E66EC /* rosebud_TN@2x.png in Resources */,
 				F2D44BCD1EDF3AC900492DE5 /* hat_TN.png in Resources */,
 				F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */,
@@ -7478,7 +7467,6 @@
 				8212BBDA1EA92A26009E66EC /* medal_graduation_TN@3x.png in Resources */,
 				826BEAF31E85BEAD000BE3FA /* Floral2Frame_TN@3x.png in Resources */,
 				8212BDE11EA93616009E66EC /* Derby_TN@2x.png in Resources */,
-				65778BF31ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */,
 				8212BE2D1EA93616009E66EC /* gift.png in Resources */,
 				F2D44B971EDF3AC900492DE5 /* bear_TN@3x.png in Resources */,
 				8212BEBD1EA93616009E66EC /* LOL.png in Resources */,
@@ -7584,6 +7572,7 @@
 				8212BD651EA93615009E66EC /* arrow.png in Resources */,
 				8212BD991EA93615009E66EC /* butterfly_TN@2x.png in Resources */,
 				82E3DB961E82F1920008F600 /* glasses_blossom.png in Resources */,
+				658DF9DF1EDF907C00F0EBCB /* AirshipConfig.plist in Resources */,
 				82E3DA041E82EEED0008F600 /* headband_TN@3x.png in Resources */,
 				826BEB251E85BEAD000BE3FA /* PinkSpraypaintFrame.png in Resources */,
 				F2D44B891EDF3AC900492DE5 /* bacon_TN.png in Resources */,
@@ -7611,7 +7600,6 @@
 				82A11D391E5FB93B00E7F8FC /* Frappuccino_TN.png in Resources */,
 				82A11D871E5FB93B00E7F8FC /* taco2.png in Resources */,
 				829A7A0A1EBB8E7E005D4938 /* floating_sloth_TN@3x.png in Resources */,
-				2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */,
 				F2D44BEB1EDF3AC900492DE5 /* screwdriver_TN@3x.png in Resources */,
 				82E3D94E1E82EEEC0008F600 /* balloons.png in Resources */,
 				82BFB00E1EAA6F9A00C579B8 /* rainbow_2_TN.png in Resources */,
@@ -7791,7 +7779,6 @@
 				829A7A6D1EBB8E7E005D4938 /* summer_sunglasses.png in Resources */,
 				821850B41EAA9102000EDFD2 /* catglasses_TN@2x.png in Resources */,
 				82184F8A1EAA9040000EDFD2 /* devilhorns.png in Resources */,
-				926B505F1E3FDEDF0043625E /* AirshipConfig.plist in Resources */,
 				8218504B1EAA9040000EDFD2 /* scuba_TN.png in Resources */,
 				829A7A7F1EBB8E7E005D4938 /* water_bubbles_TN.png in Resources */,
 				8212BBDD1EA92A26009E66EC /* medal_graduation.png in Resources */,
@@ -7889,7 +7876,6 @@
 				821850FB1EAA9103000EDFD2 /* icecream_tub_TN.png in Resources */,
 				F2D44C751EDF66C300492DE5 /* shoes_TN.png in Resources */,
 				821851421EAA9103000EDFD2 /* thought_bubble.png in Resources */,
-				658DF9D41EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist in Resources */,
 				821850331EAA9040000EDFD2 /* plane_TN.png in Resources */,
 				821850BB1EAA9102000EDFD2 /* conversation_heart_TN.png in Resources */,
 				821850191EAA9040000EDFD2 /* oranges_TN@3x.png in Resources */,
@@ -8076,7 +8062,6 @@
 				3f61a6f79eae18c8239267a5 /* HPSimplified_LtIt.ttf in Resources */,
 				821850551EAA9040000EDFD2 /* sloth_TN@3x.png in Resources */,
 				82184F881EAA9040000EDFD2 /* devilhorns_TN@2x.png in Resources */,
-				65778BF41ED8E742007DA11B /* GoogleService-Info_REL.plist in Resources */,
 				8212BB8D1EA92A25009E66EC /* bowtie_graduation.png in Resources */,
 				821851341EAA9103000EDFD2 /* surfboard_TN@2x.png in Resources */,
 				F2D44C371EDF66C300492DE5 /* fathers_day_2_TN@3x.png in Resources */,
@@ -8120,7 +8105,6 @@
 				8212BB811EA92A25009E66EC /* books_TN@2x.png in Resources */,
 				F2D44C531EDF66C300492DE5 /* hammer_TN@3x.png in Resources */,
 				8218501F1EAA9040000EDFD2 /* palm-tree-2_TN.png in Resources */,
-				65778BF21ED8E742007DA11B /* GoogleService-Info_DEV.plist in Resources */,
 				82184F481EAA9040000EDFD2 /* aviator-glasses-color_TN@2x.png in Resources */,
 				821851251EAA9103000EDFD2 /* sun_face_TN@3x.png in Resources */,
 				821851641EAA9103000EDFD2 /* v_hearts_TN@2x.png in Resources */,
@@ -8654,6 +8638,7 @@
 				8212BBD31EA92A26009E66EC /* g_horn_TN@3x.png in Resources */,
 				826BEAE81E85BEAD000BE3FA /* DotsOverlayFrame_TN.png in Resources */,
 				821850F81EAA9103000EDFD2 /* holding_hands_TN@2x.png in Resources */,
+				658DF9E01EDF907C00F0EBCB /* AirshipConfig.plist in Resources */,
 				821850F41EAA9103000EDFD2 /* hearts_TN@2x.png in Resources */,
 				82184F771EAA9040000EDFD2 /* cloud-sun_TN.png in Resources */,
 				826BEB341E85BEAD000BE3FA /* PolkadotsFrame_TN@3x.png in Resources */,
@@ -8726,7 +8711,6 @@
 				F2D44C781EDF66C300492DE5 /* shoes.png in Resources */,
 				821850401EAA9040000EDFD2 /* rainbow_2_TN@3x.png in Resources */,
 				82E3DEAB1E831BD10008F600 /* word-cloud-grumble_TN@2x.png in Resources */,
-				658DF9D71EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist in Resources */,
 				821850C91EAA9102000EDFD2 /* feather_TN@3x.png in Resources */,
 				82E3DE4B1E831BD10008F600 /* bacon_egg_TN@2x.png in Resources */,
 				8218515F1EAA9103000EDFD2 /* v_heart_TN.png in Resources */,
