@@ -31,75 +31,135 @@
 
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories
 {
-    NSMutableArray *summerStickers = [NSMutableArray arrayWithArray:[self summerCategoryStickers]];
+    NSMutableArray<IMGLYSticker *> *fathersDayStickers = [NSMutableArray arrayWithArray:[self fathersDayCategoryStickers]];
+    NSInteger fathersDayThumbnailIndex = 0;
+    if ([NSLocale isChinese]) {
+        //Removing these stickers from chinese because they contain english words.
+        NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+        [indexSet addIndex:8];
+        [indexSet addIndex:16];
+        [indexSet addIndex:21];
+
+        [fathersDayStickers removeObjectsAtIndexes:indexSet];
+
+        fathersDayThumbnailIndex = 3;
+    }
+
+    IMGLYStickerCategory *fathersDayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                  imageURL:fathersDayStickers[fathersDayThumbnailIndex].thumbnailURL
+                                                                                  stickers:fathersDayStickers];
+    fathersDayCategory.accessibilityLabel = @"Father's Day Category";
+
+
+    NSMutableArray<IMGLYSticker *> *summerStickers = [NSMutableArray arrayWithArray:[self summerCategoryStickers]];
     if ([NSLocale isChinese]) {
         //Removing plane sticker from chinese because it contains english words on it.
         [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
     }
-    
+
     IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                              imageURL:self.summerCategoryStickers[1].thumbnailURL
+                                                                              imageURL:summerStickers[1].thumbnailURL
                                                                               stickers:summerStickers];
-    
     summerCategory.accessibilityLabel = @"Summer Category";
-    
-    IMGLYStickerCategory *graduationCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.graduationCategoryStickers[1].thumbnailURL
-                                                                                     stickers:[self graduationCategoryStickers]];
+
+
+    NSArray<IMGLYSticker *> *graduationStickers = [self graduationCategoryStickers];
+
+    IMGLYStickerCategory *graduationCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                  imageURL:graduationStickers[1].thumbnailURL
+                                                                                  stickers:graduationStickers];
     graduationCategory.accessibilityLabel = @"Graduation Category";
-    
-    IMGLYStickerCategory *faceCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.faceCategoryStickers[1].thumbnailURL
-                                                                                     stickers:[self faceCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *faceStickers = [self faceCategoryStickers];
+    IMGLYStickerCategory *faceCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                            imageURL:faceStickers[1].thumbnailURL
+                                                                            stickers:faceStickers];
     faceCategory.accessibilityLabel = @"Face Category";
-    
-    IMGLYStickerCategory *decorativeCategory    = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.decorativeCategoryStickers[1].thumbnailURL
-                                                                                     stickers:[self decorativeCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *decorativeStickers = [self decorativeCategoryStickers];
+    IMGLYStickerCategory *decorativeCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                  imageURL:decorativeStickers[1].thumbnailURL
+                                                                                  stickers:decorativeStickers];
     decorativeCategory.accessibilityLabel = @"Decorative Category";
-    
-    IMGLYStickerCategory *foodCategory          = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.foodCategoryStickers[1].thumbnailURL
-                                                                                     stickers:[self foodCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *foodStickers = [self foodCategoryStickers];
+    IMGLYStickerCategory *foodCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                            imageURL:foodStickers[1].thumbnailURL
+                                                                            stickers:foodStickers];
     foodCategory.accessibilityLabel = @"Food Category";
-    
-    IMGLYStickerCategory *birthdayCategory      = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.birthdayCategoryStickers[3].thumbnailURL
-                                                                                     stickers:[self birthdayCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *birthdayStickers = [self birthdayCategoryStickers];
+    IMGLYStickerCategory *birthdayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                imageURL:birthdayStickers[3].thumbnailURL
+                                                                                stickers:birthdayStickers];
     birthdayCategory.accessibilityLabel = @"Birthday Category";
-    
-    IMGLYStickerCategory *animalCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.animalCategoryStickers[8].thumbnailURL
-                                                                                     stickers:[self animalCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *animalStickers = [self animalCategoryStickers];
+    IMGLYStickerCategory *animalCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                              imageURL:animalStickers[8].thumbnailURL
+                                                                              stickers:animalStickers];
     animalCategory.accessibilityLabel = @"Animal Category";
-    
-    IMGLYStickerCategory *natureCategory        = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.natureCategoryStickers[6].thumbnailURL
-                                                                                     stickers:[self natureCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *natureStickers = [self natureCategoryStickers];
+    IMGLYStickerCategory *natureCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                              imageURL:natureStickers[6].thumbnailURL
+                                                                              stickers:natureStickers];
     natureCategory.accessibilityLabel = @"Nature Category";
-    
-    IMGLYStickerCategory *getWellCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                     imageURL:self.getWellCategoryStickers[1].thumbnailURL
-                                                                                     stickers:[self getWellCategoryStickers]];
-    
+
+
+    NSArray<IMGLYSticker *> *getWellStickers = [self getWellCategoryStickers];
+    IMGLYStickerCategory *getWellCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                               imageURL:getWellStickers[1].thumbnailURL
+                                                                               stickers:getWellStickers];
     getWellCategory.accessibilityLabel = @"Get Well";
     
-    return @[graduationCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+    return @[fathersDayCategory, summerCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
 }
+
 
 #pragma mark - Stickers by category
 
-- (NSArray<IMGLYSticker *> *)cannesCategoryStickers
+- (NSArray<IMGLYSticker *> *)fathersDayCategoryStickers
 {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Reinvent Memories" imageName:@"ReinventMemories_sticker" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"HP White" imageName:@"HP_white-sticker" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Glasses 1" imageName:@"fd_glasses_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Glasses 2" imageName:@"glasses_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mustache" imageName:@"mustache" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Crown 2" imageName:@"crown_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Crown 1" imageName:@"crown_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Tie Collar" imageName:@"tie_collar" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Mask" imageName:@"mask" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Super Dad" imageName:@"super_dad" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Fathers Day 2" imageName:@"fathers_day_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Bear" imageName:@"bear" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Bacon" imageName:@"bacon" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"BBQ" imageName:@"fd_bbq" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Shoes" imageName:@"shoes" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Coffee 1" imageName:@"coffee_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Bow Tie" imageName:@"bow_tie" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Hat" imageName:@"fd_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"I Heart Dad 1" imageName:@"i_heart_dad_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Heart Banner" imageName:@"fd_heart_banner" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Golf" imageName:@"golf" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Talk Bubble" imageName:@"talk_bubble" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Necktie Fathers Day" imageName:@"necktie_fathersday" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Dad Tattoo" imageName:@"dad_tattoo" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Smoking Pipe" imageName:@"smoking_pipe" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Fishing Father Son" imageName:@"fishing_fatherson" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"BBQ Utensils" imageName:@"bbq_utensils" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Golf Set" imageName:@"golf_set" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Strong Arm" imageName:@"strong_arm" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Screwdriver" imageName:@"screwdriver" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Wrench" imageName:@"wrench" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Hammer" imageName:@"hammer" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Hotrod Car" imageName:@"hotrod_car" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Football Fathers Day" imageName:@"football_fathersday" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              ];
 }
 

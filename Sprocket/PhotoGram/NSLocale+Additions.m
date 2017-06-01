@@ -145,7 +145,6 @@ static NSString * const kPGHPCareTwitterURLFormat = @"http://hp.care/HPCS%@TW";
 + (NSDictionary *)twitterHPCareSupportLocales
 {
     return @{@"de":@[@"at",@"lu",@"ch",@"de"],
-             @"tr":@[@"tr"],
              @"fr":@[@"fr",@"ch"],
              @"es":@[@"es"]};
 }
