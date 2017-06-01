@@ -946,29 +946,32 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         if (processor) {
             NSLog(@"WATERMARK - WILL PROCESS IMAGE");
             
+            //TODO: all processors running in parallel, need a queue
+            
             MPBTImagePreprocessorManager * mg = [MPBTImagePreprocessorManager createWithProcessors:@[processor] options:@{
                                                                                                                           kMPBTImageProcessorLocalIdentifierKey : [[PGPayoffManager sharedInstance] offlineID]
                                                                                                                           }];
-            
             [mg processImage:gestureView.editedImage statusUpdate:^(NSUInteger processorIndex, double progress) {
-                // watermarking progress
-                [self handleProcessorStatus:mg.processors[processorIndex] progress:progress];
-            } complete:^(NSError *error, UIImage *image) {
-                if (!error) {
-                    NSLog(@"WATERMARK - SUCCESSFULLY PROCESSED IMAGE");
-                    block(image);
-                } else {
-                    NSLog(@"WATERMARK - ERROR PROCESSING IMAGE - %@", error);
-                    block(gestureView.editedImage);
-                }
-                
-                self.totalPrints--;
-                
-                if (self.totalPrints == 0) {
-                    [self dismissProgressView];
-                }
+                    // watermarking progress
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self handleProcessorStatus:mg.processors[processorIndex] progress:progress];
+                    });
+                } complete:^(NSError *error, UIImage *image) {
+                    if (!error) {
+                        NSLog(@"WATERMARK - SUCCESSFULLY PROCESSED IMAGE");
+                        block(image);
+                    } else {
+                        NSLog(@"WATERMARK - ERROR PROCESSING IMAGE - %@", error);
+                        block(gestureView.editedImage);
+                    }
+                    
+                    self.totalPrints--;
+                    
+                    if (self.totalPrints == 0) {
+                        [self dismissProgressView];
+                    }
             }];
-            
+
             /*
             [processor processImage:gestureView.editedImage
                         withOptions:[[MPBTPrintManager sharedInstance] defaultOptionsForImageProcessor]

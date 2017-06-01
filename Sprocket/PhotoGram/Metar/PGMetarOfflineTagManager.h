@@ -10,7 +10,12 @@
 
 @interface PGMetarOfflineTagManager : NSObject
 
-+ (PGMetarOfflineTagManager *)sharedInstance;
++ (PGMetarOfflineTagManager *_Nonnull)sharedInstance;
 - (void) checkTagDB: (nullable void (^)()) completion;
+- (NSDictionary *_Nullable) fetchLocalDatabase;
+- (void) saveLocalDatabase: (NSDictionary *_Nonnull) dic;
+- (NSDictionary *_Nullable) getTag;
+- (int) tagCount;
+
 
 @end
