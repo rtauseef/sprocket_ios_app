@@ -27,7 +27,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @interface PGImglyManager() <IMGLYAnalyticsClient>
 
 @property (nonatomic, strong) NSDictionary *menuItems;
+@property (nonatomic, strong) IMGLYAnalyticsScreenViewName currentScreenName;
 @property (nonatomic, strong) IMGLYSticker *selectedSticker;
+@property (nonatomic, strong) NSString *selectedFilter;
+@property (nonatomic, strong) NSString *selectedFrame;
 @property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricsManager;
 
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
@@ -287,11 +290,6 @@ int const kCustomButtonTag = 9999;
                 cell.selectionIndicator.backgroundColor = [UIColor HPBlueColor];
             };
 
-            toolBuilder.filterSelectedClosure = ^(IMGLYPhotoEffect * _Nonnull filter) {
-                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFilter];
-                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:filter.displayName andCategoryType:PGEmbellishmentCategoryTypeFilter]];
-            };
-
             toolBuilder.filterIntensitySliderConfigurationClosure = ^(IMGLYSlider * _Nonnull slider) {
                 slider.filledTrackColor = [UIColor HPBlueColor];
                 slider.thumbTintColor = [UIColor HPBlueColor];
@@ -329,17 +327,6 @@ int const kCustomButtonTag = 9999;
                 [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
                 [cell.imageView setNeedsUpdateConstraints];
                 [cell.imageView updateConstraintsIfNeeded];
-            };
-
-            toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
-                NSString *frameName = @"NoFrame";
-
-                if (frame) {
-                    frameName = frame.accessibilityLabel;
-                }
-
-                [embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFrame];
-                [embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:frameName andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             };
         }];
 
@@ -563,17 +550,56 @@ int const kCustomButtonTag = 9999;
 
 - (void)logScreenView:(IMGLYAnalyticsScreenViewName _Nonnull)screenView
 {
-    
+    self.currentScreenName = screenView;
 }
 
 - (void)logEvent:(IMGLYAnalyticsEventName _Nonnull)event attributes:(NSDictionary<IMGLYAnalyticsEventAttributeName, id> * _Nullable)attributes
 {
+    if (event == IMGLYAnalyticsEventNameFilterSelect) {
+        self.selectedFilter = attributes[IMGLYAnalyticsEventAttributeNameFilterType];
+    }
+    
+    if (event == IMGLYAnalyticsEventNameFrameSelect) {
+        if ([attributes[IMGLYAnalyticsEventAttributeNameFrame] isKindOfClass:[IMGLYFrame class]]) {
+            self.selectedFrame = ((IMGLYFrame *)attributes[IMGLYAnalyticsEventAttributeNameFrame]).accessibilityLabel;
+        } else {
+            self.selectedFrame = @"NoFrame";
+        }
+    }
+    
+    if (event == IMGLYAnalyticsEventNameFrameDeselect) {
+        self.selectedFrame = nil;
+    }
+    
+    if (event == IMGLYAnalyticsEventNameApplyChanges) {
+        if (self.currentScreenName == IMGLYAnalyticsScreenViewNameFilter) {
+            [self.embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFilter];
+            if (self.selectedFilter) {
+                [self.embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:self.selectedFilter andCategoryType:PGEmbellishmentCategoryTypeFilter]];
+            }
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameFrame) {
+            [self.embellishmentMetricsManager clearEmbellishmentMetricForCategory:PGEmbellishmentCategoryTypeFrame];
+            if (self.selectedFrame) {
+                [self.embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:self.selectedFrame andCategoryType:PGEmbellishmentCategoryTypeFrame]];
+            }
+        }
+    }
+    
+    if (event == IMGLYAnalyticsEventNameDiscardChanges) {
+        if (self.currentScreenName == IMGLYAnalyticsScreenViewNameEditor) {
+            [self.embellishmentMetricsManager clearAllEmbellishmentMetrics];
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameFilter) {
+            self.selectedFilter = nil;
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameFrame) {
+            self.selectedFrame = nil;
+        }
+    }
+    
     if ((event == IMGLYAnalyticsEventNameStickerActionSelect) && (attributes[IMGLYAnalyticsEventAttributeNameAction] == IMGLYAnalyticsEventAttributeValueActionDelete)) {
         PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:self.selectedSticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
         
         [self.embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
     }
-    
 }
 
 #pragma mark - Custom Sticker

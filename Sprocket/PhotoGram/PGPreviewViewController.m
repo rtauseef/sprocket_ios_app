@@ -451,6 +451,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [alert addAction:printQueueAction];
     
     UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Help", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self peekDrawerAnimated:YES];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
         [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
@@ -908,7 +909,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     MPBTPrinterManagerStatus printerStatus = [MPBTPrintManager sharedInstance].status;
     BOOL isPrinting = printerStatus != MPBTPrinterManagerStatusEmptyQueue && printerStatus != MPBTPrinterManagerStatusIdle;
     
-    if (isPrinterConnected && isPrinting && numberOfPrintsAdded > 1) {
+    if (isPrinterConnected && isPrinting && numberOfPrintsAdded > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self peekDrawerAnimated:YES];
             
