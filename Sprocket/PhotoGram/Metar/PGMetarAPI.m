@@ -170,7 +170,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
         
         [self challenge:^(NSError * _Nullable error) {
             self.authRetry = NO;
-            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new challenge",(int) [response statusCode], XHPError]}]);
+            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailedAuth userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new challenge",(int) [response statusCode], XHPError]}]);
         }];
     } else if ([response statusCode] == 403 && !self.authRetry) {
         // needs a new token
@@ -184,7 +184,7 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
             }
             
             self.authRetry = NO;
-            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new token",(int) [response statusCode], XHPError]}]);
+            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailedAuth userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new token",(int) [response statusCode], XHPError]}]);
         }];
     } else {
         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@",(int) [response statusCode], XHPError]}]);
@@ -462,6 +462,47 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                      completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Empty data for image"}],nil);
                                                  }
                                                 
+                                             } else {
+                                                 [self handleError:httpResponse completion:^(NSError *error) {
+                                                     completion(error, nil);
+                                                 }];
+                                             }
+                                         }
+                                     }] resume];
+}
+
+- (void) getOfflineTags: (nullable void (^)(NSError *error, NSArray *tags)) completion {
+    NSString *requestString = [NSString stringWithFormat:@"%@/resource/tag/", kMetarAPIURL];
+    NSURL *requestUrl = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [self getMetarRequestWithAuthAndToken:YES];
+    
+    [request setURL:requestUrl];
+    [request setHTTPMethod:@"GET"];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request
+      
+                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                         if (error) {
+                                             completion(error,nil);
+                                         } else {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                             if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
+                                                 NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                 NSMutableArray *tagArray = [NSMutableArray array];
+                                                 if (dic != nil) {
+                                                     NSArray *resources = [dic objectForKey:@"resources"];
+                                                     
+                                                     if (resources != nil) {
+                                                         for (NSDictionary *resource in resources) {
+                                                             [tagArray addObject:[resource objectForKey:@"resource"]];
+                                                         }
+                                                              
+                                                        completion(nil,tagArray);
+                                                        return;
+                                                     }
+                                                 }
+                                                
+                                                completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: failed to get offline tags"}],nil);
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
                                                      completion(error, nil);

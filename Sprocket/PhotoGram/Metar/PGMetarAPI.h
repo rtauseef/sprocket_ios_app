@@ -14,6 +14,7 @@
 
 typedef NS_ENUM(NSInteger, PGMetarAPIError) {
     PGMetarAPIErrorRequestFailed,
+    PGMetarAPIErrorRequestFailedAuth,
     PGMetarAPIErrorCreatingJsonForMediaObject,
     PGMetarAPIErrorEmptyPayload,
     PGMetarAPIErrorFailedParsingPayload,
@@ -29,12 +30,12 @@ typedef NS_ENUM(NSInteger, PGMetarAPIError) {
 - (void) downloadWatermarkedImage: (PGMetarImageTag *_Nonnull) imageTag completion: (nullable void (^)(NSError * _Nullable error, UIImage * _Nullable watermarkedImage)) completion;
 - (void) setImageMetadata: (PGMetarImageTag *_Nonnull) imageTag mediaMetada:(PGMetarMedia *_Nonnull) metadata completion: (nullable void (^)(NSError * _Nullable error)) completion;
 - (void) requestImageMetadataWithUUID: (NSString *_Nonnull) uuid completion: (nullable void (^)(NSError * _Nullable error, PGMetarMedia * _Nullable metarMedia)) completion;
+- (void) getOfflineTags: (nullable void (^)(NSError * _Nullable error, NSArray * _Nullable tags)) completion;
 
 // TODO: implement
 - (void) requestImageMetadataWithFilter;
 
 // TODO: implement when available, future spec
-- (void) requestOfflineTags;
 - (void) downloadImage;
 
 @end

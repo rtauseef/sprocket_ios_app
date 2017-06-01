@@ -10,11 +10,13 @@
 #import "PGMetarAPI.h"
 
 NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkembedder.metar";
+#define kTotalAuthRetries 3
 
 @interface PGWatermarkOperationHPMetar ()
 
 @property (nonatomic, copy, nullable) void (^progressCallback)(double progress);
 @property (strong, nonatomic) PGWatermarkOperationData *operationData;
+@property (assign, nonatomic) int currentAuthRetry;
 
 @end
 
@@ -34,6 +36,8 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
     PGWatermarkOperationHPMetar *operation = [[self alloc] init];
     operation.operationData = operationData;
     operation.progressCallback = progress;
+    operation.currentAuthRetry = 0;
+    
     [operation execute:completion];
     
     return operation;
@@ -55,6 +59,7 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
 //TODO: better progress callback, using http download/upload progress
 - (void) execute: (nullable PGWatermarkEmbedderCompletionBlock)completion {
     PGMetarAPI *api = [[PGMetarAPI alloc] init];
+    
     [api authenticate:^(BOOL success) {
         if (success) {
             [self updateProgress: 0.2];
@@ -79,7 +84,13 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
                     }];
                     
                 } else {
-                    [self handleCallback:completion image:nil error:error];
+                    ++self.currentAuthRetry;
+                    
+                    if (error.code == PGMetarAPIErrorRequestFailedAuth && self.currentAuthRetry <= kTotalAuthRetries) {
+                        [self execute: completion];
+                    } else {
+                        [self handleCallback:completion image:nil error:error];
+                    }
                 }
             }];
         } else {

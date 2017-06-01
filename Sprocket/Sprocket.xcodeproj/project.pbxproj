@@ -2276,6 +2276,7 @@
 		ED7F65E01ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D61ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m */; };
 		ED7F65E11ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */; };
 		ED7F65E21ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */; };
+		ED7F65FF1EE07F2F002A0912 /* PGMetarOfflineTagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
@@ -4029,6 +4030,8 @@
 		ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewVideoViewController.xib; path = PayoffViews/PGPayoffViewVideoViewController.xib; sourceTree = "<group>"; };
 		ED7F65D81ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewWikipediaViewController.h; path = PayoffViews/PGPayoffViewWikipediaViewController.h; sourceTree = "<group>"; };
 		ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewWikipediaViewController.m; path = PayoffViews/PGPayoffViewWikipediaViewController.m; sourceTree = "<group>"; };
+		ED7F65FD1EE07F2F002A0912 /* PGMetarOfflineTagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarOfflineTagManager.h; path = Metar/PGMetarOfflineTagManager.h; sourceTree = "<group>"; };
+		ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarOfflineTagManager.m; path = Metar/PGMetarOfflineTagManager.m; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
@@ -5830,6 +5833,8 @@
 				ED7F656A1ED3AC1E002A0912 /* PGMetarUser.h */,
 				ED7F656B1ED3AC1E002A0912 /* PGMetarUser.m */,
 				ED7F65671ED3ABE8002A0912 /* DataObjects */,
+				ED7F65FD1EE07F2F002A0912 /* PGMetarOfflineTagManager.h */,
+				ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */,
 			);
 			name = Metar;
 			sourceTree = "<group>";
@@ -6222,7 +6227,7 @@
 						};
 					};
 					E34D5056199AB87B006D80E0 = {
-						DevelopmentTeam = 6HB5Y2QTA3;
+						DevelopmentTeam = UJ5KAZ5V7V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8895,6 +8900,7 @@
 				ED7F65C91ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m in Sources */,
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */,
+				ED7F65FF1EE07F2F002A0912 /* PGMetarOfflineTagManager.m in Sources */,
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				ED7F65A41ED3AC6C002A0912 /* PGScanViewController.m in Sources */,
 				F27256FB1E95ACA1009E553D /* PGImglyManager.m in Sources */,
