@@ -6333,7 +6333,7 @@
 				9298862C1EC25B3400750C74 /* Copy proper GoogleService-Info.plist */,
 				385e52ef178df23c5a543a64 /* Sources */,
 				d66ed6106ea20df03222a463 /* Frameworks */,
-				036662ca4a6f529d9da3a935 /* ShellScript */,
+				036662ca4a6f529d9da3a935 /* Run Script - Set build number */,
 				af41433876b81a65165cdbad /* Resources */,
 				d317d337e74b76acce43a358 /* [CP] Copy Pods Resources */,
 				0eead91862bcf05f9111d02b /* ShellScript */,
@@ -6363,7 +6363,7 @@
 				502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */,
 				821523221D82215600C0541C /* Sources */,
 				821523231D82215600C0541C /* Frameworks */,
-				65E7D9AA1DB56EE5009B5584 /* ShellScript */,
+				65E7D9AA1DB56EE5009B5584 /* Run Script - Set build number */,
 				821523241D82215600C0541C /* Resources */,
 				65E7D9A81DB56EE2009B5584 /* ShellScript */,
 				8668DB1B1956231E575C5DBA /* [CP] Copy Pods Resources */,
@@ -6387,7 +6387,7 @@
 				658DF9D81EDF898600F0EBCB /* Run Script - Copy proper Urban Airship configuration */,
 				E34D5053199AB87B006D80E0 /* Sources */,
 				E34D5054199AB87B006D80E0 /* Frameworks */,
-				CCCEAFBB19D349CE00EB6828 /* ShellScript */,
+				CCCEAFBB19D349CE00EB6828 /* Run Script - Set build number */,
 				E34D5055199AB87B006D80E0 /* Resources */,
 				8C6684B93DE841829B62429B /* [CP] Copy Pods Resources */,
 				FF7337C719F71C7900A91B3C /* Run Script */,
@@ -8886,18 +8886,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		036662ca4a6f529d9da3a935 /* ShellScript */ = {
+		036662ca4a6f529d9da3a935 /* Run Script - Set build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Set build number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
+			shellScript = "if [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AdHoc\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber-QA\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
 		};
 		0eead91862bcf05f9111d02b /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8954,7 +8955,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "suffix=\"DEFAULT\"\nif [ ${URBAN_AIRSHIP_FORCE_PRODUCTION} == \"1\" ]; then\nsuffix=\"PRODUCTION\"\nfi;\ncp \"${PROJECT_DIR}/AirshipConfig-$suffix.plist\" \"${PROJECT_DIR}/AirshipConfig.plist\"";
+			shellScript = "suffix=\"DEFAULT\"\nif [ ${CONFIGURATION} == \"AdHoc\" ]; then\nsuffix=\"PRODUCTION\"\nfi;\ncp \"${PROJECT_DIR}/AirshipConfig-$suffix.plist\" \"${PROJECT_DIR}/AirshipConfig.plist\"";
 		};
 		65E7D9A81DB56EE2009B5584 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8982,18 +8983,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# see http://stackoverflow.com/questions/25777958/validation-error-invalid-bundle-the-bundle-at-contains-disallowed-file-fr/33092433#33092433\n\ncd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\nrm -fr Frameworks\nfi";
 		};
-		65E7D9AA1DB56EE5009B5584 /* ShellScript */ = {
+		65E7D9AA1DB56EE5009B5584 /* Run Script - Set build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Set build number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\n";
+			shellScript = "if [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AdHoc\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber-QA\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
 		};
 		6D373432ABF44BB282FD6567 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -9096,18 +9098,19 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCCEAFBB19D349CE00EB6828 /* ShellScript */ = {
+		CCCEAFBB19D349CE00EB6828 /* Run Script - Set build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Set build number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ ${CONFIGURATION} == \"TestFlight\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
+			shellScript = "if [ ${CONFIGURATION} == \"AppStore\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"AdHoc\" ]; then\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber-QA\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Release\" ]; then\nbuildNumber=$(git rev-parse --short HEAD | tr [a-z] [A-Z])\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;\n\nif [ ${CONFIGURATION} == \"Debug\" ]; then\nbuildNumber=\"DEV\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi;";
 		};
 		E387B47719DA23E000ABB167 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
