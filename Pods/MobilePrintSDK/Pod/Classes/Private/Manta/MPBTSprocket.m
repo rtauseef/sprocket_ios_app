@@ -930,7 +930,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             errString = MPLocalizedString(@"Load paper with the included Smartsheet to continue printing.", @"Message given when sprocket cannot print due to having no paper");
             break;
         case MantaErrorPaperMismatch:
-            errString = MPLocalizedString(@"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. ", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
+            errString = MPLocalizedString(@"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer.", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
             break;
         case MantaErrorDataError:
             errString = MPLocalizedString(@"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. ", @"Message given when sprocket cannot print due to an error with the image data.");
@@ -948,13 +948,13 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             errString = MPLocalizedString(@"A battery error has occured. Restart Sprocket to continue printing.", @"Message given when sprocket cannot print due to having an error related to the battery.");
             break;
         case MantaErrorHighTemperature:
-            errString = MPLocalizedString(@"Printing is diabled until a lower temperature is reached. Wait to send another photo.", @"Message given when sprocket cannot print due to being too hot");
+            errString = MPLocalizedString(@"Printing will resume after your Sprocket cools down.", @"Message given when sprocket cannot print due to being too hot");
             break;
         case MantaErrorLowTemperature:
-            errString = MPLocalizedString(@"Printing is diabled until a higher temperature is reached. Wait to send another photo.", @"Message given when sprocket cannot print due to being too cold");
+            errString = MPLocalizedString(@"Printing will resume after your Sprocket warms up.", @"Message given when sprocket cannot print due to being too cold");
             break;
         case MantaErrorCoolingMode:
-            errString = MPLocalizedString(@"Sprocket needs to cool down before printing another job. Wait to send another photo.", @"Message given when sprocket cannot print due to bing in a cooling mode");
+            errString = MPLocalizedString(@"Printing will resume after your Sprocket cools down.", @"Message given when sprocket cannot print due to bing in a cooling mode");
             break;
         case MantaErrorWrongCustomer:
             errString = MPLocalizedString(@"The device is not recognized.", @"Message given when sprocket cannot print due to not recognizing data from our app");
