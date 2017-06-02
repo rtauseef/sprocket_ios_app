@@ -9,10 +9,20 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HPSimplified_Rg.ttf">
+            <string>HPSimplified-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGOverlayCameraViewController">
             <connections>
+                <outlet property="closeButton" destination="cUq-e2-jMp" id="1JE-Z3-xuB"/>
                 <outlet property="flashButton" destination="voU-GQ-VkJ" id="Fxa-PS-S40"/>
+                <outlet property="recordingContainerView" destination="zcR-2M-2SD" id="JsC-VI-LP3"/>
+                <outlet property="recordingProgressView" destination="TJD-At-VJ2" id="CT7-mR-sEA"/>
+                <outlet property="recordingProgressViewHeight" destination="bMq-Do-d9H" id="e5I-yb-RHS"/>
+                <outlet property="scanView" destination="85K-3T-BoG" id="zHg-74-DQE"/>
                 <outlet property="shutterButton" destination="fg2-TL-pwq" id="aKL-YI-USR"/>
                 <outlet property="switchCameraButton" destination="AKI-P8-ZbS" id="0qe-ve-Bwl"/>
                 <outlet property="transitionEffectView" destination="BJW-QH-UdF" id="qdZ-gP-WnO"/>
@@ -24,6 +34,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-QH-UdF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcR-2M-2SD" userLabel="recording container view">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TJD-At-VJ2">
+                            <rect key="frame" x="17" y="14" width="341" height="2"/>
+                            <color key="tintColor" red="0.94302493333816528" green="0.24626821279525757" blue="0.12805253267288208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </progressView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="TJD-At-VJ2" secondAttribute="trailing" constant="17" id="QnI-LC-6He"/>
+                        <constraint firstAttribute="height" constant="30" id="bMq-Do-d9H"/>
+                        <constraint firstItem="TJD-At-VJ2" firstAttribute="leading" secondItem="zcR-2M-2SD" secondAttribute="leading" constant="17" id="eiw-3g-fBG"/>
+                        <constraint firstItem="TJD-At-VJ2" firstAttribute="centerY" secondItem="zcR-2M-2SD" secondAttribute="centerY" id="iv7-um-loR"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg2-TL-pwq" userLabel="shutter">
                     <rect key="frame" x="154" y="543" width="67" height="67"/>
                     <accessibility key="accessibilityConfiguration" identifier="ShutterCamera"/>
@@ -37,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-e2-jMp" userLabel="close">
-                    <rect key="frame" x="0.0" y="0.0" width="38" height="46.5"/>
+                    <rect key="frame" x="0.0" y="30" width="38" height="46.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="CloseCamera"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="cUq-e2-jMp" secondAttribute="height" multiplier="9:11" id="MjL-wU-6gA"/>
@@ -49,7 +79,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voU-GQ-VkJ">
-                    <rect key="frame" x="286" y="9" width="28" height="28.5"/>
+                    <rect key="frame" x="286" y="39" width="28" height="28.5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28.25" id="NeF-vd-vFB"/>
                         <constraint firstAttribute="width" constant="27.5" id="pTx-PV-OFZ"/>
@@ -60,7 +90,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-P8-ZbS" userLabel="reverseCamera">
-                    <rect key="frame" x="324" y="3.5" width="51" height="39.5"/>
+                    <rect key="frame" x="324" y="33.5" width="51" height="39.5"/>
                     <accessibility key="accessibilityConfiguration" identifier="ReverseCamera"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="AKI-P8-ZbS" secondAttribute="height" multiplier="31:24" id="Q23-ji-33B"/>
@@ -71,25 +101,58 @@
                         <action selector="cameraReverseTapped:" destination="-1" eventType="touchUpInside" id="Srm-MZ-b9B"/>
                     </connections>
                 </button>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJW-QH-UdF">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85K-3T-BoG" userLabel="ScanView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanLink" translatesAutoresizingMaskIntoConstraints="NO" id="fTA-qb-2Sw">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtN-qD-Ugv">
+                            <rect key="frame" x="96" y="553" width="182" height="51"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="182" id="1LE-s7-xKT"/>
+                                <constraint firstAttribute="height" constant="51" id="Zuk-6O-EmM"/>
+                            </constraints>
+                            <string key="text">Scan sprocket prints―
+you’ll be glad you did!</string>
+                            <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="fTA-qb-2Sw" secondAttribute="trailing" id="61x-w4-uN7"/>
+                        <constraint firstItem="UtN-qD-Ugv" firstAttribute="centerX" secondItem="85K-3T-BoG" secondAttribute="centerX" id="GA3-6c-OCD"/>
+                        <constraint firstAttribute="bottom" secondItem="UtN-qD-Ugv" secondAttribute="bottom" constant="63" id="Mqk-Ax-SjF"/>
+                        <constraint firstAttribute="bottom" secondItem="fTA-qb-2Sw" secondAttribute="bottom" id="adu-SJ-qrY"/>
+                        <constraint firstItem="fTA-qb-2Sw" firstAttribute="top" secondItem="85K-3T-BoG" secondAttribute="top" id="pi1-Yr-whl"/>
+                        <constraint firstItem="fTA-qb-2Sw" firstAttribute="leading" secondItem="85K-3T-BoG" secondAttribute="leading" id="r4e-PY-aMh"/>
+                    </constraints>
                 </view>
             </subviews>
             <constraints>
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="16x-nJ-btJ"/>
                 <constraint firstAttribute="trailing" secondItem="AKI-P8-ZbS" secondAttribute="trailing" id="1g4-4S-DPE"/>
-                <constraint firstItem="cUq-e2-jMp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="C44-gb-l7T"/>
+                <constraint firstItem="cUq-e2-jMp" firstAttribute="top" secondItem="zcR-2M-2SD" secondAttribute="bottom" id="4Bc-Op-WW2"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CjH-fq-ear"/>
+                <constraint firstAttribute="bottom" secondItem="85K-3T-BoG" secondAttribute="bottom" id="IJU-NY-EYf"/>
+                <constraint firstItem="85K-3T-BoG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IWE-Vr-MTi"/>
+                <constraint firstAttribute="trailing" secondItem="85K-3T-BoG" secondAttribute="trailing" id="IqT-o3-eZN"/>
                 <constraint firstAttribute="bottom" secondItem="BJW-QH-UdF" secondAttribute="bottom" id="JZf-r2-PMB"/>
                 <constraint firstAttribute="bottom" secondItem="fg2-TL-pwq" secondAttribute="bottom" constant="57" id="LBW-oR-eWn"/>
+                <constraint firstItem="85K-3T-BoG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QIx-Vr-vE1"/>
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rwk-wz-iuu"/>
                 <constraint firstAttribute="trailing" secondItem="BJW-QH-UdF" secondAttribute="trailing" id="Ryg-Dp-a3C"/>
                 <constraint firstItem="voU-GQ-VkJ" firstAttribute="centerY" secondItem="AKI-P8-ZbS" secondAttribute="centerY" id="ney-DO-SBS"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="leading" secondItem="voU-GQ-VkJ" secondAttribute="trailing" constant="10" id="pDP-dq-dNu"/>
+                <constraint firstItem="zcR-2M-2SD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pM8-fb-VFM"/>
                 <constraint firstItem="fg2-TL-pwq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qfY-Tp-dQ5"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="centerY" secondItem="cUq-e2-jMp" secondAttribute="centerY" id="qj6-eR-b2j"/>
+                <constraint firstItem="zcR-2M-2SD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rwu-G9-hrA"/>
+                <constraint firstAttribute="trailing" secondItem="zcR-2M-2SD" secondAttribute="trailing" id="w7J-gH-ctp"/>
             </constraints>
+            <point key="canvasLocation" x="64" y="57"/>
         </view>
     </objects>
     <resources>
@@ -97,5 +160,6 @@
         <image name="cameraFlashOff" width="36" height="37"/>
         <image name="cameraReverse" width="33" height="26"/>
         <image name="cameraShutter" width="67" height="67"/>
+        <image name="scanLink" width="377" height="689"/>
     </resources>
 </document>

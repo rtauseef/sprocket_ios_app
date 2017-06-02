@@ -539,7 +539,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             if ([PGSavePhotos savePhotos]) {
                 [PGSavePhotos saveVideo:asset completion:nil];
                 
-                [weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
+                
+                // got video, do playback
+                
+                [weakSelf.cameraOverlay playVideo:asset image:frameImage];
+                //[weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
             } else {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
                                                                                message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
