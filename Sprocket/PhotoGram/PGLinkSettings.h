@@ -25,4 +25,7 @@ extern NSString * const kPGLinkSettingsChangedNotification;
 +(void) setFakePrintEnabled:(BOOL) enabled;
 +(BOOL) fakePrintEnabled;
 
++ (BOOL)localWatermarkEnabled;
++ (void)setLocalWatermarkEnabled:(BOOL)enabled;
+
 @end

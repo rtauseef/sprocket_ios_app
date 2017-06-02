@@ -967,7 +967,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     
                     self.totalPrints--;
                     
-                    if (self.totalPrints == 0) {
+                    if ((self.totalPrints == 0 && [selectedViews count] > 1) || [PGLinkSettings fakePrintEnabled]) {
                         [self dismissProgressView];
                     }
             }];

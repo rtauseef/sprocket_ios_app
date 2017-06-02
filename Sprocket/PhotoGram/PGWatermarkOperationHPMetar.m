@@ -9,6 +9,7 @@
 #import "PGWatermarkOperationHPMetar.h"
 #import "PGMetarAPI.h"
 #import "PGMetarOfflineTagManager.h"
+#import "PGLinkSettings.h"
 
 NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkembedder.metar";
 #define kTotalAuthRetries 3
@@ -40,7 +41,11 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
     operation.progressCallback = progress;
     operation.currentAuthRetry = 0;
     
-    [operation executeOffline:completion];
+    if ([PGLinkSettings localWatermarkEnabled]) {
+        [operation executeOffline:completion];
+    } else {
+        [operation execute:completion];
+    }
     
     return operation;
 }
