@@ -3992,6 +3992,7 @@
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
+		9D4194EE8C94C86E49247AA7 /* Pods-Sprocket-cal.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.adhoc.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.adhoc.xcconfig"; sourceTree = "<group>"; };
 		B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.appstore.xcconfig"; sourceTree = "<group>"; };
 		BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.appstore.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.appstore.xcconfig"; sourceTree = "<group>"; };
 		CC10807D19CA0D2400C1553A /* PGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAboutViewController.h; sourceTree = "<group>"; };
@@ -4001,6 +4002,8 @@
 		CC3335221A0BEC4800E421AC /* PGFlickrLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFlickrLandingPageViewController.h; sourceTree = "<group>"; };
 		CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFlickrLandingPageViewController.m; sourceTree = "<group>"; };
 		CC4661E01A11898A0000BC2E /* FlickrLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlickrLogo@2x.png"; path = "Resources/Images/Icons/FlickrLogo@2x.png"; sourceTree = "<group>"; };
+		D29645009FB3B3C8E6175474 /* Pods-Sprocket Print.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.adhoc.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.adhoc.xcconfig"; sourceTree = "<group>"; };
+		DBAD1AFBE54EA14A81D0A3B1 /* Pods-Sprocket.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.adhoc.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.adhoc.xcconfig"; sourceTree = "<group>"; };
 		E30841A01AEECF8E0031FB67 /* NSLocale+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Additions.h"; sourceTree = "<group>"; };
 		E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Additions.m"; sourceTree = "<group>"; };
 		E316630B19C09FE400996E20 /* UIImageView+MaskImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MaskImage.h"; sourceTree = "<group>"; };
@@ -5630,6 +5633,9 @@
 				BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */,
 				0E6FE52F0004AD0FEFFF8135 /* Pods-Sprocket.debug.xcconfig */,
 				77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */,
+				DBAD1AFBE54EA14A81D0A3B1 /* Pods-Sprocket.adhoc.xcconfig */,
+				D29645009FB3B3C8E6175474 /* Pods-Sprocket Print.adhoc.xcconfig */,
+				9D4194EE8C94C86E49247AA7 /* Pods-Sprocket-cal.adhoc.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -9900,7 +9906,7 @@
 		};
 		653175511EDDEE70003F1D0F /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */;
+			baseConfigurationReference = 03E04F694C7EB9FE970CF654 /* Pods-Sprocket.appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -9984,7 +9990,7 @@
 		};
 		653175531EDDEE70003F1D0F /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56DCBB47B8B68B1AE819D670 /* Pods-Sprocket Print.release.xcconfig */;
+			baseConfigurationReference = BAC32DCA30F6B7079FD8D933 /* Pods-Sprocket Print.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -10022,7 +10028,7 @@
 		};
 		653175541EDDEE70003F1D0F /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */;
+			baseConfigurationReference = B556B6864DCEB4C75A4CA45A /* Pods-Sprocket-cal.appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -10110,6 +10116,261 @@
 				SKIP_INSTALL = YES;
 			};
 			name = AppStore;
+		};
+		6547AFA71EE1DD3700F984D9 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eric Talle (X55T2978K2)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AdHoc;
+		};
+		6547AFA81EE1DD3700F984D9 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBAD1AFBE54EA14A81D0A3B1 /* Pods-Sprocket.adhoc.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Sprocket.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PhotoGram",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lGoogleAnalyticsServices",
+					"-lsqlite3",
+					"-lxml2",
+					"-lz",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+				);
+				PODS_BUILD_DIR = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "81802eab-548d-407c-b28f-50106e46c3da";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket AdHoc Distrib Provision";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = AdHoc;
+		};
+		6547AFA91EE1DD3700F984D9 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PhotoGram.app/PhotoGram";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = AdHoc;
+		};
+		6547AFAA1EE1DD3700F984D9 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D29645009FB3B3C8E6175474 /* Pods-Sprocket Print.adhoc.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "Sprocket Print/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.action;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb8c13a9-24de-4ee2-98ea-2802b2f5d413";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Action AdHoc Distribution Provision";
+				SKIP_INSTALL = YES;
+			};
+			name = AdHoc;
+		};
+		6547AFAB1EE1DD3700F984D9 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D4194EE8C94C86E49247AA7 /* Pods-Sprocket-cal.adhoc.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Sprocket-cal.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Trask (XYS9ACZYGJ)";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/PhotoGram",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info-cal.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lGoogleAnalyticsServices",
+					"-lsqlite3",
+					"-lxml2",
+					"-lz",
+					"-framework",
+					CFNetwork,
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-force_load",
+					"\"$(SRCROOT)/calabash.framework/calabash\"",
+					"-lstdc++",
+				);
+				PODS_BUILD_DIR = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = AdHoc;
+		};
+		6547AFAC1EE1DD3700F984D9 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: HP Inc. (6HB5Y2QTA3)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6HB5Y2QTA3;
+				INFOPLIST_FILE = PushNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hp.sprocket.PushNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fd673098-c664-4e26-bda1-e3dc9b111cd9";
+				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Push Notification AdHoc Provision";
+				SKIP_INSTALL = YES;
+			};
+			name = AdHoc;
 		};
 		7178b6c408d97b42552159f6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -10598,6 +10859,7 @@
 				2671D4CD1E3EB64600F166E3 /* Debug */,
 				2671D4CE1E3EB64600F166E3 /* Release */,
 				653175551EDDEE70003F1D0F /* AppStore */,
+				6547AFAC1EE1DD3700F984D9 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10608,6 +10870,7 @@
 				7178b6c408d97b42552159f6 /* Debug */,
 				ef18b9042e37f367acb5fee7 /* Release */,
 				653175541EDDEE70003F1D0F /* AppStore */,
+				6547AFAB1EE1DD3700F984D9 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10618,6 +10881,7 @@
 				821523321D82215600C0541C /* Debug */,
 				821523331D82215600C0541C /* Release */,
 				653175531EDDEE70003F1D0F /* AppStore */,
+				6547AFAA1EE1DD3700F984D9 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10628,6 +10892,7 @@
 				E34D508A199AB87B006D80E0 /* Debug */,
 				E34D508B199AB87B006D80E0 /* Release */,
 				653175501EDDEE70003F1D0F /* AppStore */,
+				6547AFA71EE1DD3700F984D9 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10638,6 +10903,7 @@
 				E34D508D199AB87B006D80E0 /* Debug */,
 				E34D508E199AB87B006D80E0 /* Release */,
 				653175511EDDEE70003F1D0F /* AppStore */,
+				6547AFA81EE1DD3700F984D9 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10648,6 +10914,7 @@
 				E34D5090199AB87B006D80E0 /* Debug */,
 				E34D5091199AB87B006D80E0 /* Release */,
 				653175521EDDEE70003F1D0F /* AppStore */,
+				6547AFA91EE1DD3700F984D9 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
