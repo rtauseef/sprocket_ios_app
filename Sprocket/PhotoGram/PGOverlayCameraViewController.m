@@ -13,6 +13,7 @@
 #import "PGOverlayCameraViewController.h"
 #import "PGCameraManager.h"
 #import "PGLinkSettings.h"
+#import <AVKit/AVKit.h>
 
 #define kMaxRecordingTime (NSUInteger)20
 #define kScanningCircleRadius 180.0
@@ -28,16 +29,24 @@
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
 @property (assign) BOOL movieMode;
 @property (assign) float recordingTime;
-@property (weak, nonatomic) IBOutlet UILabel *recordingTimeLabel;
-@property (strong, nonatomic) CAShapeLayer *circle;
 @property (strong, nonatomic) NSTimer *recordingTimer;
 
-@property (strong, nonatomic) NSTimer *scanningTimer;
-@property (strong, nonatomic) CAShapeLayer *scanningCircle;
-@property (strong, nonatomic) CAShapeLayer *yelloCircle;
-@property (strong, nonatomic) UIView *overlay;
 
+@property (weak, nonatomic) IBOutlet UIView *scanView;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *recordingProgressViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *recordingContainerView;
+@property (weak, nonatomic) IBOutlet UIProgressView *recordingProgressView;
+
+@property (assign, nonatomic) BOOL playbackMode;
 @property (assign, nonatomic) BOOL watermarkingEnabled;
+
+@property (strong, nonatomic) AVURLAsset *playbackAsset;
+@property (strong, nonatomic) UIImage *playbackImage;
+
+@property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) AVPlayerViewController *playerViewController;
 
 @end
 
@@ -71,21 +80,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (self.circle) {
-        [self.circle removeFromSuperlayer];
-        self.circle = nil;
-    }
+    self.playbackMode = NO;
+    self.recordingProgressViewHeight.constant = 0.0f;
+    self.recordingProgressView.hidden = YES;
+    self.scanView.hidden = YES;
+    [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
     
-    if (self.scanningCircle) {
-        [self.scanningCircle removeFromSuperlayer];
-        self.scanningCircle = nil;
-    }
-    
-    if (self.yelloCircle) {
-        [self.yelloCircle removeFromSuperlayer];
-        self.yelloCircle = nil;
-    }
- 
     if ([PGLinkSettings videoPrintEnabled]) {
         UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
         longPressGestureForShutter.minimumPressDuration = 0.3f;
@@ -143,118 +143,70 @@
     }
     
     if (recognizer.state == UIGestureRecognizerStateBegan && !self.movieMode) {
-        self.scanningTimer = [NSTimer scheduledTimerWithTimeInterval: 0.2f target: self
-                                                             selector: @selector(updateScanning) userInfo: nil repeats: YES];
+        
+        [self.scanView setAlpha:0];
+        [self.scanView setHidden:NO];
+        
+        self.closeButton.hidden = YES;
+        self.shutterButton.hidden = YES;
+        self.flashButton.hidden = YES;
+        self.switchCameraButton.hidden = YES;
+        
+        // fade in
+        [UIView animateWithDuration:1.0f animations:^{
+            self.scanView.alpha = 1;
+        } completion:^(BOOL finished) {
+            [[PGCameraManager sharedInstance] startScanning];
+        }];
     }  else if (recognizer.state == UIGestureRecognizerStateEnded && !self.movieMode) {
         
-        [self stopScanning];
+        // fade out
+        [UIView animateWithDuration:1.0f animations:^{
+            self.scanView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [[PGCameraManager sharedInstance] stopScanning];
+            [self stopScanning];
+        }];
         
-        [[PGCameraManager sharedInstance] stopScanning];
     }
 }
 
 - (void) stopScanning {
-    if (self.scanningTimer)
-        [self.scanningTimer invalidate];
-    
-    if (self.scanningCircle) {
-        [self.scanningCircle removeFromSuperlayer];
-        self.scanningCircle = nil;
-    }
-    
-    if (self.yelloCircle) {
-        [self.yelloCircle removeFromSuperlayer];
-        self.yelloCircle = nil;
-    }
-    
-    if (self.overlay) {
-        [self.overlay removeFromSuperview];
-        self.overlay = nil;
-    }
+    self.scanView.hidden = YES;
+    self.closeButton.hidden = NO;
+    self.shutterButton.hidden = NO;
+    self.flashButton.hidden = NO;
+    self.switchCameraButton.hidden = NO;
 }
 
-- (void) updateScanning {
+- (void) playVideo: (AVURLAsset *) asset image: (UIImage *) image {
+    [self.shutterButton setImage:[UIImage imageNamed:@"videoNext"] forState:UIControlStateNormal];
+    self.playbackMode = YES;
+    self.playbackAsset = asset;
+    self.playbackImage = image;
     
-    if (self.scanningCircle == nil) {
-        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-        [self.overlay setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4]];
-        
-        self.scanningCircle = [CAShapeLayer layer];
-        self.scanningCircle.frame = self.overlay.bounds;
-        self.scanningCircle.fillColor = [UIColor blackColor].CGColor;
-        
-        float initialRadius = kScanningCircleRadius * 4;
-        
-        CGRect rect = CGRectMake(CGRectGetMidX(self.overlay.frame) - initialRadius, CGRectGetMidY(self.overlay.frame) - initialRadius
-                                 , 2 * initialRadius, 2 * initialRadius);
-        
-        UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.overlay.bounds];
-        self.scanningCircle.fillRule = kCAFillRuleEvenOdd;
-        [path appendPath:[UIBezierPath bezierPathWithOvalInRect:rect]];
-        
-        self.scanningCircle.path = path.CGPath;
-        self.overlay.layer.mask = self.scanningCircle;
-        
-        [CATransaction begin];
-        
-        float finalRadius = kScanningCircleRadius;
-        
-        CGRect finalRect = CGRectMake(CGRectGetMidX(self.overlay.frame) - finalRadius, CGRectGetMidY(self.overlay.frame) - finalRadius
-                                 , 2 * finalRadius, 2 * finalRadius);
-        
-        UIBezierPath *newPath = [UIBezierPath bezierPathWithRect:self.overlay.bounds];
-        [newPath appendPath:[UIBezierPath bezierPathWithOvalInRect:finalRect]];
-        
-        CABasicAnimation* pathAnim = [CABasicAnimation animationWithKeyPath: @"path"];
-        pathAnim.toValue = (id)newPath.CGPath;
-        CAAnimationGroup *anims = [CAAnimationGroup animation];
-        anims.removedOnCompletion = NO;
-        anims.duration = 0.3f;
-        anims.fillMode  = kCAFillModeForwards;
-        anims.animations = [NSArray arrayWithObjects:pathAnim, nil];
-        
-        [CATransaction setCompletionBlock:^{
-            float finalRadius = kScanningCircleRadius;
-            
-            CGRect finalRect = CGRectMake(CGRectGetMidX(self.overlay.frame) - finalRadius, CGRectGetMidY(self.overlay.frame) - finalRadius
-                                          , 2 * finalRadius, 2 * finalRadius);
-            
+    AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:asset];
+    
+    self.player = [AVPlayer playerWithPlayerItem:item];
+    self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[self.player currentItem]];
+    
+    self.playerViewController = [AVPlayerViewController new];
+    self.playerViewController.player = self.player;
+    self.playerViewController.view.backgroundColor = [UIColor clearColor];
+    self.playerViewController.view.frame = self.view.bounds;
+    self.playerViewController.showsPlaybackControls = NO;
+    [self.view insertSubview:self.playerViewController.view atIndex:0];
+    [self.player play];
+};
 
-            self.yelloCircle = [CAShapeLayer layer];
-            self.yelloCircle.frame = self.overlay.bounds;
-            UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:finalRect];
-            self.yelloCircle.path = [path CGPath];
-            self.yelloCircle.fillColor = [UIColor clearColor].CGColor;
-            self.yelloCircle.lineCap=kCALineCapRound;
-            self.yelloCircle.lineDashPattern = kLineDashPattern;
-            self.yelloCircle.anchorPoint = (CGPoint){0.5, 0.5};
-            UIColor *strokeColor= [UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:1.0];
-            self.yelloCircle.strokeColor = strokeColor.CGColor;
-            self.yelloCircle.lineWidth = kScanningCircleBorder;
-            
-            CABasicAnimation *rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-            rotateAnim.toValue = [NSNumber numberWithFloat: M_PI * 2.0 /* full rotation*/];
-            rotateAnim.duration = kSpinnerCircleSpeed;
-            rotateAnim.cumulative = YES;
-            rotateAnim.repeatCount = HUGE_VAL;
-            [self.yelloCircle addAnimation:rotateAnim forKey:@"rotationAnimation"];
-            
-            [self.overlay.layer addSublayer:self.yelloCircle];
-            
-            [self.yelloCircle setNeedsDisplay];
-        }];
-        
-        [self.scanningCircle addAnimation:anims forKey:nil];
-        [CATransaction commit];
-        [self.view addSubview:self.overlay];
-    }
-    
-    if (self.yelloCircle)
-        [self.yelloCircle setNeedsDisplay];
-    
-    [self.scanningCircle setNeedsDisplay];
-    
-    [[PGCameraManager sharedInstance] startScanning];
+- (void) playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem *p = [notification object];
+    [p seekToTime:kCMTimeZero];
 }
 
 - (void)handleLongPressShutterButton:(UILongPressGestureRecognizer *)recognizer {
@@ -266,12 +218,28 @@
             self.recordingTimer = [NSTimer scheduledTimerWithTimeInterval: 0.2f target: self
                                            selector: @selector(updateTimeDisplay) userInfo: nil repeats: YES];
             self.movieMode = YES;
+            
+            [self.recordingProgressView setProgress:0.0];
+            //self.recordingContainerView.hidden = NO;
+            self.recordingProgressView.hidden = NO;
+            _recordingProgressViewHeight.constant = 30.0f;
+            
+            [self.shutterButton setImage:[UIImage imageNamed:@"videoRecord"] forState:UIControlStateNormal];
+            
+            
+            [self.view setNeedsLayout];
         }
     } else if (self.movieMode && recognizer.state == UIGestureRecognizerStateEnded) {
         // stop recording
         [self.recordingTimer invalidate];
         [[PGCameraManager sharedInstance] stopRecording];
         self.movieMode = NO;
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+        
+        self.recordingProgressViewHeight.constant = 0.0f;
+        self.recordingProgressView.hidden = YES;
+        //self.recordingContainerView.hidden = YES;
+        [self.recordingContainerView setNeedsLayout];
     }
 }
 
@@ -284,7 +252,14 @@
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+    if (!self.playbackMode) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
+    } else {
+        self.playbackMode = NO;
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+        [self.player pause];
+        [self.playerViewController.view removeFromSuperview];
+    }
 }
 
 - (IBAction)cameraReverseTapped:(id)sender
@@ -295,21 +270,28 @@
 
 - (IBAction)shutterTapped:(id)sender
 {
-    if (!self.movieMode) {
+    if (!self.movieMode && !self.playbackMode) {
         [[PGCameraManager sharedInstance] takePicture];
+    } else if (!self.movieMode && self.playbackMode) {
+        [self.player pause];
+        [self.playerViewController.view removeFromSuperview];
+
+        [[PGCameraManager sharedInstance] loadPreviewViewControllerWithVideo:_playbackAsset andImage:_playbackImage andInfo:nil];
     }
 }
 
 - (void) updateTimeDisplay {
     _recordingTime += 0.2;
 
+    [self.recordingProgressView setProgress:_recordingTime/20];
+    
     if (_recordingTime >= kMaxRecordingTime) {
         [self.recordingTimer invalidate];
         [[PGCameraManager sharedInstance] stopRecording];
         return;
     }
 
-    int radius = (int) self.shutterButton.bounds.size.width / 2;
+    /*int radius = (int) self.shutterButton.bounds.size.width / 2;
     float startAngle = M_PI * -90 / 180;
     float endAngle;
     
@@ -337,7 +319,7 @@
     
     UIBezierPath *path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius) radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
     self.circle.path = [path CGPath];
-    [self.circle setNeedsDisplay];
+    [self.circle setNeedsDisplay];*/
 }
 
 - (IBAction)flashTapped:(id)sender {
