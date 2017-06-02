@@ -16,6 +16,7 @@ NSString * const kPGLinkSettingsEnabled = @"kPGLinkSettingsEnabled";
 NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNotification";
 static NSString * const kPGLinkSettingsVideoPrintEnabled = @"kPGVideoPrintEnabled";
 static NSString * const kPGLinkSettingsFakePrintEnabled = @"kPGFakePrintEnabled";
+static NSString * const kPGLinkSettingsLocalWatermarkEnabled = @"kPGLocalWatermarkEnabled";
 
 @implementation PGLinkSettings
 
@@ -53,6 +54,17 @@ static NSString * const kPGLinkSettingsFakePrintEnabled = @"kPGFakePrintEnabled"
 + (BOOL)fakePrintEnabled {
     NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsFakePrintEnabled];
     return enabled && enabled.boolValue;
+}
+
++ (BOOL)localWatermarkEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsLocalWatermarkEnabled];
+    return enabled && enabled.boolValue;
+}
+
++ (void)setLocalWatermarkEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsLocalWatermarkEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsLocalWatermarkEnabled object:self];
 }
 
 @end
