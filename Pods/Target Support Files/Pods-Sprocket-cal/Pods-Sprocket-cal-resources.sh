@@ -205,7 +205,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
-if [[ "$CONFIGURATION" == "TestFlight" ]]; then
+if [[ "$CONFIGURATION" == "AppStore" ]]; then
   install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
   install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"
@@ -268,7 +268,7 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
-if [[ "$CONFIGURATION" == "AppStore" ]]; then
+if [[ "$CONFIGURATION" == "AdHoc" ]]; then
   install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
   install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png"

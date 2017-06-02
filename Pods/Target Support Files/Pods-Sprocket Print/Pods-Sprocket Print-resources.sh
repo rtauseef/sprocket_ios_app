@@ -147,7 +147,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
 fi
-if [[ "$CONFIGURATION" == "TestFlight" ]]; then
+if [[ "$CONFIGURATION" == "AppStore" ]]; then
   install_resource "MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png"
   install_resource "MobilePrintSDK/Pod/Assets/MPArrow@2x.png"
   install_resource "MobilePrintSDK/Pod/Assets/MPCheck@2x.png"
@@ -181,7 +181,7 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "MobilePrintSDK/Pod/Classes/MP.storyboard"
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
 fi
-if [[ "$CONFIGURATION" == "AppStore" ]]; then
+if [[ "$CONFIGURATION" == "AdHoc" ]]; then
   install_resource "MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png"
   install_resource "MobilePrintSDK/Pod/Assets/MPArrow@2x.png"
   install_resource "MobilePrintSDK/Pod/Assets/MPCheck@2x.png"
