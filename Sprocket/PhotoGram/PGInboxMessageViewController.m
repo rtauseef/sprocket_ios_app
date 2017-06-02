@@ -17,6 +17,12 @@
 
 @end
 
+@interface PGInboxMessageViewController ()
+
+@property (nonatomic, strong) UAWebViewDelegate *webViewDelegate;
+
+@end
+
 @implementation PGInboxMessageViewController
 
 - (void)viewDidLoad {
@@ -25,6 +31,8 @@
 
     self.title = self.message.title;
     self.view.backgroundColor = [UIColor HPDarkBackgroundColor];
+
+    self.webViewDelegate = [[UAWebViewDelegate alloc] init];
 
     [super viewDidLoad];
 }
@@ -37,6 +45,8 @@
     [super webViewDidFinishLoad:webView];
 
     [self.message markMessageReadWithCompletionHandler:nil];
+
+    [self.webViewDelegate webViewDidFinishLoad:webView];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -52,7 +62,7 @@
         }
     }
 
-    return YES;
+    return [self.webViewDelegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
 @end
