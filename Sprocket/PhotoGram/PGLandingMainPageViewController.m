@@ -511,7 +511,7 @@ NSInteger const kMantaErrorBusy = 1;
                                                             }];
         [self.errorAlert addAction:pauseAction];
         
-        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Resume", @"Dismisses dialog without taking action")
                                                                  style:UIAlertActionStyleDefault
                                                                handler:^(UIAlertAction * _Nonnull action) {
                                                                    self.errorAlert = nil;
