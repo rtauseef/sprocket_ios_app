@@ -5789,6 +5789,7 @@
 			buildPhases = (
 				10346681b2fa1af96d787e42 /* [CP] Check Pods Manifest.lock */,
 				9298862C1EC25B3400750C74 /* Copy proper GoogleService-Info.plist */,
+				650167EC1EE36B6800AB921D /* Copy proper AirshipConfig.plist */,
 				385e52ef178df23c5a543a64 /* Sources */,
 				d66ed6106ea20df03222a463 /* Frameworks */,
 				036662ca4a6f529d9da3a935 /* Run Script - Set build number */,
@@ -8137,6 +8138,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		650167EC1EE36B6800AB921D /* Copy proper AirshipConfig.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy proper AirshipConfig.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "suffix=\"DEFAULT\"\nif [ ${URBAN_AIRSHIP_FORCE_PRODUCTION} == \"1\" ]; then\nsuffix=\"PRODUCTION\"\nfi;\ncp \"${PROJECT_DIR}/AirshipConfig-$suffix.plist\" \"${PROJECT_DIR}/AirshipConfig.plist\"";
 		};
 		658DF9D81EDF898600F0EBCB /* Run Script - Copy proper Urban Airship configuration */ = {
 			isa = PBXShellScriptBuildPhase;
