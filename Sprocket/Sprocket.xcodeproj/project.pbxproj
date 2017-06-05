@@ -78,7 +78,6 @@
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
 		65778BF51ED8E9D5007DA11B /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
-		65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		658DF9DF1EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
@@ -2341,13 +2340,6 @@
 			remoteGlobalIDString = 2671D4C21E3EB64500F166E3;
 			remoteInfo = PushNotificationExtension;
 		};
-		659D897B1ED7F98F0085DEFC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 49AA00FB1D65158C0081989A;
-			remoteInfo = AirshipAppExtensions;
-		};
 		82157D091D9306A400360D87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E34D504F199AB87A006D80E0 /* Project object */;
@@ -2410,16 +2402,6 @@
 				1013d62f480a8c2772265b37 /* Sprocket Print.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65778BF61ED8E9DD007DA11B /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */,
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		82157D0B1D9306A400360D87 /* Embed App Extensions */ = {
@@ -5791,13 +5773,10 @@
 			buildPhases = (
 				2671D4BF1E3EB64500F166E3 /* Sources */,
 				2671D4C01E3EB64500F166E3 /* Frameworks */,
-				2671D4C11E3EB64500F166E3 /* Resources */,
-				65778BF61ED8E9DD007DA11B /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				659D897C1ED7F98F0085DEFC /* PBXTargetDependency */,
 			);
 			name = PushNotificationExtension;
 			productName = PushNotificationExtension;
@@ -5826,9 +5805,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				92ECDB491E4105EA00026DE4 /* PBXTargetDependency */,
 				92ECDB471E4105E100026DE4 /* PBXTargetDependency */,
 				82157D0A1D9306A400360D87 /* PBXTargetDependency */,
+				92ECDB491E4105EA00026DE4 /* PBXTargetDependency */,
 			);
 			name = "Sprocket-cal";
 			productName = "PhotoGram-cal";
@@ -6017,13 +5996,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2671D4C11E3EB64500F166E3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		821523241D82215600C0541C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6968,8 +6940,6 @@
 				82A11D391E5FB93B00E7F8FC /* Frappuccino_TN.png in Resources */,
 				82A11D871E5FB93B00E7F8FC /* taco2.png in Resources */,
 				829A7A0A1EBB8E7E005D4938 /* floating_sloth_TN@3x.png in Resources */,
-				2671D4BE1E3EB52A00F166E3 /* AirshipConfig.plist in Resources */,
-				F2D44BEB1EDF3AC900492DE5 /* screwdriver_TN@3x.png in Resources */,
 				82E3D94E1E82EEEC0008F600 /* balloons.png in Resources */,
 				82BFB00E1EAA6F9A00C579B8 /* rainbow_2_TN.png in Resources */,
 				8212BEC11EA93616009E66EC /* love_monster_TN@2x.png in Resources */,
@@ -8691,11 +8661,6 @@
 			isa = PBXTargetDependency;
 			target = 2671D4C21E3EB64500F166E3 /* PushNotificationExtension */;
 			targetProxy = 2671D4C91E3EB64600F166E3 /* PBXContainerItemProxy */;
-		};
-		659D897C1ED7F98F0085DEFC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AirshipAppExtensions;
-			targetProxy = 659D897B1ED7F98F0085DEFC /* PBXContainerItemProxy */;
 		};
 		82157D0A1D9306A400360D87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
