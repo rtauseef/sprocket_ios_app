@@ -4,7 +4,7 @@ class GoogleSigninScreen < BaseHtmlScreen
 
   def screen_title
     sleep(10.0)
-    device_agent.query({marked:"Sign in - Google Accounts" })
+    device_agent.query({marked:"#{$list_loc['screen_title_signin']}" })
   end
 
 
@@ -31,7 +31,7 @@ class GoogleSigninScreen < BaseHtmlScreen
   end
 
   def google_auth_button
-   device_agent.touch({marked:"ALLOW" })
+   device_agent.touch({marked:"#{$list_loc['allow']}" })
    sleep(5.0)
   end
 

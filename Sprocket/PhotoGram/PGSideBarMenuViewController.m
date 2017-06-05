@@ -13,6 +13,7 @@
 #import <MP.h>
 #import <MPBTPrintManager.h>
 #import <MessageUI/MessageUI.h>
+#import <AirshipKit.h>
 
 #import "PGSideBarMenuViewController.h"
 
@@ -67,6 +68,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     if (IS_IPHONE_4 || IS_IPHONE_5) {
+        self.mainMenuTableView.scrollEnabled = YES;
         self.headerHeight.constant = kPGSideBarMenuShortScreenSizeHeaderHeight;
     }
     
@@ -154,8 +156,14 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             [self showPrintQueueAlert];
             break;
         }
+        case PGSideBarMenuCellInbox: {
+            [UAActionRunner runActionWithName:kUADisplayInboxActionDefaultRegistryAlias
+                                        value:nil
+                                    situation:UASituationManualInvocation];
+            break;
+        }
         case PGSideBarMenuCellBuyPaper:{
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kBuyPaperScreenName];
+            [[PGAnalyticsManager sharedManager] trackOpenBuyPaper];
             [[UIApplication sharedApplication] openURL:[NSLocale buyPaperURL]];
             break;
         }
@@ -170,7 +178,7 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             break;
         }
         case PGSideBarMenuCellPrivacy: {
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kPrivacyStatementScreenName];
+            [[PGAnalyticsManager sharedManager] trackOpenPrivacy];
             [[UIApplication sharedApplication] openURL:[NSLocale privacyURL]];
             break;
         }

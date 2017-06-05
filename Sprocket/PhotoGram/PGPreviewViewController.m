@@ -61,12 +61,13 @@
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
 static NSString * const kPGPreviewViewControllerNumPrintsKey = @"kPGPreviewViewControllerNumPrintsKey";
+static NSString * const kMPBTPrinterConnected = @"printer_connected";
 static CGFloat const kPGPreviewViewControllerCarouselPhotoSizeMultiplier = 1.4;
 static CGFloat const kDrawerAnimationDuration = 0.3;
 static NSInteger const kNumPrintsBeforeInterstitialMessage = 2;
 static CGFloat kAspectRatio2by3 = 0.66666666667;
 
-@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate, PGPrintQueueManagerDelegate>
+@interface PGPreviewViewController() <UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PGGesturesViewDelegate, PGPreviewDrawerViewControllerDelegate, IMGLYPhotoEditViewControllerDelegate>
 
 @property (strong, nonatomic) MPPrintItem *printItem;
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
@@ -81,6 +82,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
 @property (weak, nonatomic) IBOutlet PGPreviewDrawerViewController *drawer;
+@property (assign, nonatomic) BOOL wasDrawerOpenedByUser;
 @property (weak, nonatomic) IBOutlet UIView *drawerContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
@@ -137,6 +139,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     self.trackableScreenName = @"Preview Screen";
 
     self.didChangeProject = NO;
+    
+    self.wasDrawerOpenedByUser = NO;
     
     self.editButton.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:20];
     self.editButton.titleLabel.tintColor = [UIColor whiteColor];
@@ -427,6 +431,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         completion();
     }
 }
+
 - (NSString *)numberOfPrintsAddedString:(NSInteger)numberOfPrintsAdded
 {
     NSString *printString = NSLocalizedString(@"%ld print added to the queue, %ld total", @"This will be formatted as '1 print added to the queue, 7 total'");
@@ -434,7 +439,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         printString = NSLocalizedString(@"%ld prints added to the queue, %ld total", @"This will be formatted as '3 prints added to the queue, 7 total'");
     }
     
-    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded,(long)[MPBTPrintManager sharedInstance].queueSize];
+    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded, (long)[MPBTPrintManager sharedInstance].queueSize];
+    
+    return title;
+}
+
+- (NSString *)numberOfPrintsAddedAndInProgressString:(NSInteger)numberOfPrintsAdded
+{
+    NSString *printString = NSLocalizedString(@"%ld prints added to the queue, 1 in progress", @"This will be formatted as '3 prints added to the queue, 1 in progress'");
+    NSString *title = [NSString stringWithFormat:printString, (long)numberOfPrintsAdded];
     
     return title;
 }
@@ -448,7 +461,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Queue", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [PGPrintQueueManager sharedInstance].delegate = self;
         [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
         [self peekDrawerAnimated:YES];
     }];
@@ -456,6 +468,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [alert addAction:printQueueAction];
     
     UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Help", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self peekDrawerAnimated:YES];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
         PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
         [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
@@ -511,6 +524,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     self.drawer.isOpened = NO;
     self.drawer.isPeeking = NO;
+    self.wasDrawerOpenedByUser = NO;
 
     [self setDrawerHeightAnimated:animated];
 }
@@ -529,13 +543,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 #pragma mark - PGPreviewDrawerDelegate
 
-- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button
 {
     drawer.isPeeking = NO;
+    self.wasDrawerOpenedByUser = drawer.isOpened;
     [self setDrawerHeightAnimated:YES];
 }
 
-- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture
 {
     CGPoint translation = [gesture translationInView:self.view];
     
@@ -567,19 +582,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-- (void)PGPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
+- (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
 {
-    [PGPrintQueueManager sharedInstance].delegate = self;
     [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
 }
 
-
-#pragma mark - PGPrintQueueManagerDelegate
-
-- (void)pgPrintQueueManagerDidClearQueue:(PGPrintQueueManager *)printQueueManager {
-    [self closeDrawerAnimated:YES];
+- (void)pgPreviewDrawerDidClearQueue:(PGPreviewDrawerViewController *)drawer
+{
+    if (!self.wasDrawerOpenedByUser) {
+        [self closeDrawerAnimated:YES];
+    }
 }
-
 
 #pragma mark - IMGLYPhotoEditViewControllerDelegate
 
@@ -893,7 +906,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 } else {
                     [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
                     [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-                    
+                [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
                     [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
                     
                     [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
@@ -990,13 +1003,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     
     MPBTPrinterManagerStatus printerStatus = [MPBTPrintManager sharedInstance].status;
-    BOOL isNotPrinting = (printerStatus == MPBTPrinterManagerStatusEmptyQueue) || (printerStatus == MPBTPrinterManagerStatusIdle);
+    BOOL isPrinting = printerStatus != MPBTPrinterManagerStatusEmptyQueue && printerStatus != MPBTPrinterManagerStatusIdle;
     
-    if (isPrinterConnected && !isNotPrinting) {
+    if (isPrinterConnected && isPrinting && numberOfPrintsAdded > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self peekDrawerAnimated:YES];
             
-            self.imageSavedLabel.text = [self numberOfPrintsAddedString:numberOfPrintsAdded];
+            self.imageSavedLabel.text = [self numberOfPrintsAddedAndInProgressString:numberOfPrintsAdded];
             
             [UIView animateWithDuration:0.5F animations:^{
                 [self showImageSavedView:YES];
@@ -1017,7 +1030,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (wasAddedToQueue && !isPrinterConnected) {
                 [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
-            } else if (isPrinterConnected && isNotPrinting) {
+            } else if (isPrinterConnected && !isPrinting) {
                 [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
             }
         });
@@ -1457,7 +1470,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (CGRect)carouselItemFrame
 {
-    return CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height);;
+    return CGRectMake(0, 0, floorf(self.carouselView.bounds.size.height * kAspectRatio2by3), self.carouselView.bounds.size.height);;
 }
 
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media

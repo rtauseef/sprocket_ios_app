@@ -560,7 +560,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    if ((targetContentOffset->y <= _contentOffsetStart.y || targetContentOffset->y <= 0) || !self.provider.hasMoreImages) {
+    if ((targetContentOffset->y <= _contentOffsetStart.y || targetContentOffset->y <= 0) || !self.provider.hasMoreImages || self.currentSelectedCell != nil) {
         return;
     }
     
@@ -669,31 +669,37 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 - (void)openSingleImageForPreviewAtIndexPath:(NSIndexPath *)indexPath {
     HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    [cell showLoading];
-
-    if (self.currentSelectedCell) {
-        [self.currentSelectedCell.media cancelImageRequestWithCompletion:nil];
-        [self.currentSelectedCell hideLoading];
-    }
-
     self.currentSelectedCell = cell;
+    self.collectionView.allowsSelection = NO;
+    [self.refreshControl removeFromSuperview];
+    [cell showLoading];
+    
+    __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
+    void (^restoreUIBlock)(void)  = ^ {
+        [cell hideLoading];
+        weakSelf.currentSelectedCell = nil;
+        weakSelf.collectionView.allowsSelection = YES;
+        if (weakSelf.refreshControl != nil) {
+            [weakSelf.collectionView addSubview:weakSelf.refreshControl];
+        }
+    };
 
     [self.provider retrieveExtraMediaInfo:cell.media withRefresh:NO andCompletion:^(NSError *error) {
 
         if (!self.provider.isImageRequestsCancelled) {
 
             if (cell.media.asset) {
-                __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
-
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     [self.spinner stopAnimating];
 
                     [cell.media requestImageWithCompletion:^(UIImage *image) {
                         dispatch_async(dispatch_get_main_queue(), ^(void){
-                            [weakSelf selectImage:image andMedia:cell.media];
+                            if (!weakSelf.provider.isImageRequestsCancelled) {
+                                [weakSelf selectImage:image andMedia:cell.media];
+                            }
                             [weakSelf.spinner stopAnimating];
-                            [cell hideLoading];
-                            weakSelf.currentSelectedCell = nil;
+
+                            restoreUIBlock();
                         });
                     }];
                 });
@@ -703,23 +709,18 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
             // We continue even if we don't get the extra info because of an error
             [[HPPRCacheService sharedInstance] imageForUrl:cell.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                if (!self.provider.isImageRequestsCancelled) {
+                if (!weakSelf.provider.isImageRequestsCancelled) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [cell hideLoading];
-
-                        [self selectImage:image andMedia:cell.media];
-
-                        self.collectionView.userInteractionEnabled = YES;
+                        [weakSelf selectImage:image andMedia:cell.media];
+                        
+                        restoreUIBlock();
                     });
                 } else {
-                    [cell hideLoading];
+                    restoreUIBlock();
                 }
-
-                self.currentSelectedCell = nil;
             }];
         } else {
-            [cell hideLoading];
-            self.currentSelectedCell = nil;
+            restoreUIBlock();
         }
     }];
 }

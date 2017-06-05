@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6P-et-iBN" userLabel="Sign In View">
-                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aja-HA-rCS" userLabel="Sign in with Instagram" customClass="PGSignInButton">
                                         <rect key="frame" x="131" y="72" width="114" height="114"/>
@@ -77,7 +77,7 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInInstagram" translatesAutoresizingMaskIntoConstraints="NO" id="JdR-el-UxR">
-                                <rect key="frame" x="175" y="290" width="25" height="25"/>
+                                <rect key="frame" x="175" y="289.5" width="25" height="25"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,7 +118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWA-38-z89" userLabel="Sign In View">
-                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="J8w-u5-UoD" userLabel="Sign in with Facebook" customClass="PGSignInButton">
                                         <rect key="frame" x="131" y="73" width="114" height="114"/>
@@ -155,7 +155,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInFacebook" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-zR-OE3">
-                                <rect key="frame" x="182" y="291" width="12" height="23"/>
+                                <rect key="frame" x="182" y="290.5" width="12" height="23"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -195,7 +195,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWn-v9-iQb" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Camera Roll, you also agree to the HP &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-tw-tdj" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="58" y="319" width="260" height="85"/>
@@ -231,7 +231,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInCameraRoll" translatesAutoresizingMaskIntoConstraints="NO" id="swu-B6-Va4">
-                                <rect key="frame" x="175" y="290" width="25" height="25"/>
+                                <rect key="frame" x="175" y="289.5" width="25" height="25"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -512,7 +512,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6e-TI-LXh" userLabel="Menu Table View">
-                                <rect key="frame" x="0.0" y="76" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="407"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PGSideBarMenuCell" id="RAo-ZY-JN7" customClass="PGSideBarMenuTableViewCell">
@@ -585,14 +585,13 @@
                             <constraint firstAttribute="trailing" secondItem="IVt-B1-bbp" secondAttribute="trailing" id="09K-3g-tMj"/>
                             <constraint firstAttribute="trailing" secondItem="i6e-TI-LXh" secondAttribute="trailing" id="9ep-tJ-8zz"/>
                             <constraint firstAttribute="bottom" secondItem="bwE-1G-LLm" secondAttribute="bottom" id="J7i-cq-Pay"/>
-                            <constraint firstItem="bwE-1G-LLm" firstAttribute="top" relation="lessThanOrEqual" secondItem="i6e-TI-LXh" secondAttribute="bottom" priority="750" id="KeW-sF-nMD"/>
+                            <constraint firstItem="bwE-1G-LLm" firstAttribute="top" secondItem="i6e-TI-LXh" secondAttribute="bottom" id="KeW-sF-nMD"/>
                             <constraint firstItem="FqQ-dy-7N2" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="MUO-dK-aWu"/>
                             <constraint firstAttribute="trailing" secondItem="FqQ-dy-7N2" secondAttribute="trailing" id="PGu-iE-PWG"/>
                             <constraint firstAttribute="trailing" secondItem="cjE-ZB-zQE" secondAttribute="trailing" id="W0o-9X-Zgr"/>
                             <constraint firstItem="FqQ-dy-7N2" firstAttribute="top" secondItem="bcO-SD-Cet" secondAttribute="bottom" id="WTX-yh-kxq"/>
                             <constraint firstItem="IVt-B1-bbp" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="Wwx-aP-voh"/>
                             <constraint firstItem="bwE-1G-LLm" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="a84-Ht-2Zj"/>
-                            <constraint firstItem="i6e-TI-LXh" firstAttribute="height" secondItem="10d-bX-fhQ" secondAttribute="height" multiplier="0.6" id="e9d-cf-xiF"/>
                             <constraint firstItem="xMu-BC-Sce" firstAttribute="top" secondItem="cjE-ZB-zQE" secondAttribute="bottom" id="lub-TV-DS5"/>
                             <constraint firstItem="xMu-BC-Sce" firstAttribute="top" secondItem="IVt-B1-bbp" secondAttribute="bottom" id="mAB-BJ-nng"/>
                             <constraint firstItem="cjE-ZB-zQE" firstAttribute="leading" secondItem="10d-bX-fhQ" secondAttribute="leading" id="o5p-DN-Hfh"/>
@@ -679,10 +678,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutLogo" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-eN-AFi">
-                                        <rect key="frame" x="73" y="43" width="65" height="54"/>
+                                        <rect key="frame" x="72.5" y="43" width="65" height="54"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sprocket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-7o-mbb">
-                                        <rect key="frame" x="153" y="51" width="120" height="39.5"/>
+                                        <rect key="frame" x="152.5" y="50.5" width="120" height="39.5"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="35"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1024,7 +1023,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                         <rect key="frame" x="0.0" y="592" width="375" height="75"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMJ-5T-IcV" userLabel="downloadButton">
-                                                <rect key="frame" x="99.5" y="23" width="21" height="29"/>
+                                                <rect key="frame" x="99" y="23" width="21" height="29"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" backgroundImage="previewDownload"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1035,7 +1034,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afb-Xc-wRV" userLabel="printerButton">
-                                                <rect key="frame" x="165.5" y="21" width="45" height="33"/>
+                                                <rect key="frame" x="165" y="21" width="45" height="33"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="previewPrinterInactive"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1046,7 +1045,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAD-AA-Eej" userLabel="shareButton">
-                                                <rect key="frame" x="250.5" y="23" width="20" height="29"/>
+                                                <rect key="frame" x="250" y="23" width="20" height="29"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" backgroundImage="previewShare"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1281,14 +1280,14 @@ in the “More” menu when sharing.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resetSprocket" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-TA-9yj">
-                                <rect key="frame" x="0.0" y="59" width="375" height="332"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="332.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gCC-TA-9yj" secondAttribute="height" multiplier="53:47" id="6Rh-Ri-kTe"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="414" id="S6S-b1-ecJ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sIS-tD-Si9">
-                                <rect key="frame" x="33" y="444" width="309" height="95"/>
+                                <rect key="frame" x="33" y="444.5" width="309" height="95"/>
                                 <string key="text">Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer.</string>
                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                 <color key="textColor" red="0.45882352941176469" green="0.46274509803921571" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
@@ -1338,7 +1337,7 @@ in the “More” menu when sharing.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26N-Ox-AW9" userLabel="Step 1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="1Xt-9D-F4w">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1366,7 +1365,7 @@ in the “More” menu when sharing.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DmV-M2-d4s">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1388,7 +1387,7 @@ in the “More” menu when sharing.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIm-XJ-JeQ" userLabel="Step 2">
-                                        <rect key="frame" x="0.0" y="458" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="456" width="375" height="456"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="WGB-yn-5rM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1416,7 +1415,7 @@ in the “More” menu when sharing.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold the power button until the LED turns white." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-Sd-rVK">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1437,7 +1436,7 @@ in the “More” menu when sharing.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iZ-lr-LdT" userLabel="Step 3">
-                                        <rect key="frame" x="0.0" y="916" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="912" width="375" height="456"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="t7A-xF-zJf">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1465,7 +1464,7 @@ in the “More” menu when sharing.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-Fg-w5P">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="418" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1842,7 +1841,7 @@ printer and app support.</string>
                                 <rect key="frame" x="16" y="61.5" width="343" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ga4-if-IR4" userLabel="Sign in with Google" customClass="PGSignInButton">
-                                        <rect key="frame" x="115" y="74.5" width="114" height="114"/>
+                                        <rect key="frame" x="115" y="74" width="114" height="114"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="114" id="FTd-pT-hXo"/>
                                             <constraint firstAttribute="height" constant="114" id="TYa-11-fj8"/>
@@ -1858,7 +1857,7 @@ printer and app support.</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with Google, you also agree with HP’s &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3A-HJ-eXe" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="42" y="316.5" width="260" height="85"/>
+                                        <rect key="frame" x="42" y="316" width="260" height="85"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="1aw-Ga-SfJ"/>
@@ -1876,7 +1875,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInGoogle" translatesAutoresizingMaskIntoConstraints="NO" id="I5B-gT-Iqg" userLabel="signInGoogle">
-                                <rect key="frame" x="157" y="292" width="60" height="20"/>
+                                <rect key="frame" x="157" y="291.5" width="60" height="20"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2125,7 +2124,7 @@ printer and app support.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9Y-8e-8Qe" userLabel="Sign In View">
-                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DG2-Ok-pfm" userLabel="Sign in with Flickr" customClass="PGSignInButton">
                                         <rect key="frame" x="131" y="78" width="114" height="114"/>
@@ -2431,7 +2430,7 @@ printer and app support.</string>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By authenticating with social sources you also agree to HP &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="3rx-Fp-iLE" customClass="PGTermsAttributedLabel">
-                                        <rect key="frame" x="56" y="564" width="263" height="60"/>
+                                        <rect key="frame" x="56.5" y="564" width="263" height="60"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="UPL-05-74W"/>
@@ -2688,21 +2687,21 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="ZK7-qo-tuB">
-                                <rect key="frame" x="52" y="50" width="272" height="57"/>
+                                <rect key="frame" x="51.5" y="50" width="272" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="272" id="I3H-nj-dPe"/>
                                     <constraint firstAttribute="width" secondItem="ZK7-qo-tuB" secondAttribute="height" multiplier="272:57" id="oRy-x2-odJ"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wm-Mo-9ND">
-                                <rect key="frame" x="14" y="107" width="347" height="307"/>
+                                <rect key="frame" x="0.0" y="107" width="375" height="332"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="1fH-IJ-vLm"/>
                                     <constraint firstAttribute="width" secondItem="2Wm-Mo-9ND" secondAttribute="height" multiplier="69:61" id="pf0-8r-Jv6"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E84-Ew-dV5" userLabel="Step 1 Load Paper" customClass="PGAttributedLabel">
-                                <rect key="frame" x="-13" y="414" width="401" height="30"/>
+                                <rect key="frame" x="-13" y="439" width="401" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="See PGIntroWizardViewController.m">
                                         <attributes>
@@ -2721,7 +2720,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bNM-1G-6tS">
-                                <rect key="frame" x="15" y="466" width="345" height="70"/>
+                                <rect key="frame" x="15" y="491" width="345" height="45"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2828,21 +2827,21 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="PFu-gM-gaf">
-                                <rect key="frame" x="52" y="50" width="272" height="57"/>
+                                <rect key="frame" x="51.5" y="50" width="272" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PFu-gM-gaf" secondAttribute="height" multiplier="272:57" id="4ma-Vr-frV"/>
                                     <constraint firstAttribute="width" constant="272" id="omU-2A-zzQ"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="bRh-Br-Dkm">
-                                <rect key="frame" x="1" y="107" width="373" height="330"/>
+                                <rect key="frame" x="-0.5" y="107" width="376" height="332"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bRh-Br-Dkm" secondAttribute="height" multiplier="69:61" id="6a6-vM-yIg"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="X6r-nZ-Xdl"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysw-Oc-Yjw" userLabel="Step 2 Power Up" customClass="PGAttributedLabel">
-                                <rect key="frame" x="-13" y="437" width="401" height="30"/>
+                                <rect key="frame" x="-13" y="439" width="401" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="See PGIntroWizardViewController.m">
                                         <attributes>
@@ -2861,7 +2860,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Press and hold the power button until the LED turns white." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="JrW-zx-uoD">
-                                <rect key="frame" x="15" y="489" width="345" height="47"/>
+                                <rect key="frame" x="15" y="491" width="345" height="45"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2917,7 +2916,7 @@ printer and app support.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BV3-xe-r0y">
-                                <rect key="frame" x="0.0" y="597" width="188" height="70"/>
+                                <rect key="frame" x="0.0" y="597" width="187.5" height="70"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <state key="normal" title="More Help">
                                     <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2963,21 +2962,21 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-2c-LAF">
-                                <rect key="frame" x="52" y="50" width="272" height="57"/>
+                                <rect key="frame" x="51.5" y="50" width="272" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GL3-2c-LAF" secondAttribute="height" multiplier="272:57" id="Fsp-ab-YBE"/>
                                     <constraint firstAttribute="width" constant="272" id="LQs-0t-h9i"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="xdH-qJ-0eT">
-                                <rect key="frame" x="1" y="107" width="373" height="330"/>
+                                <rect key="frame" x="0.0" y="107" width="375" height="332"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="6dn-xU-TlD"/>
                                     <constraint firstAttribute="width" secondItem="xdH-qJ-0eT" secondAttribute="height" multiplier="69:61" id="iGp-84-MJR"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-dc-PvW" userLabel="Step 3 Connect" customClass="PGAttributedLabel">
-                                <rect key="frame" x="-13" y="437" width="401" height="30"/>
+                                <rect key="frame" x="-13" y="439" width="401" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="See PGIntroWizardViewController.m">
                                         <attributes>
@@ -2996,7 +2995,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="203" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="From Bluetooth Settings, tap on  “HP sprocket” to pair with the printer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="W7o-LK-mcs">
-                                <rect key="frame" x="15" y="489" width="345" height="47"/>
+                                <rect key="frame" x="15" y="491" width="345" height="45"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3008,7 +3007,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfy-vN-Znw">
-                                <rect key="frame" x="188" y="597" width="187" height="70"/>
+                                <rect key="frame" x="187.5" y="597" width="187.5" height="70"/>
                                 <color key="backgroundColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="hV9-BQ-cwY"/>
@@ -3055,6 +3054,138 @@ printer and app support.</string>
             </objects>
             <point key="canvasLocation" x="-1127" y="-1123"/>
         </scene>
+        <!--Inbox-->
+        <scene sceneID="qO3-fj-iAi">
+            <objects>
+                <tableViewController id="UBi-42-bZI" customClass="PGInboxMessageCenterListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="340" sectionHeaderHeight="28" sectionFooterHeight="28" id="jGC-rK-lUT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PGInboxMessageCenterTableViewCell" id="tZx-Jl-c29" customClass="PGInboxMessageCenterTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="340"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZx-Jl-c29" id="WZB-co-C1q">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiJ-Z9-XfR" userLabel="Detail View">
+                                            <rect key="frame" x="7" y="240" width="361" height="93"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-qn-klK" userLabel="Title Label">
+                                                    <rect key="frame" x="41" y="20" width="274" height="27"/>
+                                                    <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <color key="highlightedColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Read_Message" translatesAutoresizingMaskIntoConstraints="NO" id="w3k-zx-9j5">
+                                                    <rect key="frame" x="19" y="28" width="11" height="11"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="w3k-zx-9j5" secondAttribute="height" multiplier="1:1" id="G0z-sH-U52"/>
+                                                        <constraint firstAttribute="width" constant="11" id="aJe-N1-PtC"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowMenu" translatesAutoresizingMaskIntoConstraints="NO" id="i5j-5c-iGM">
+                                                    <rect key="frame" x="333" y="38" width="10" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="Jg1-hO-SPi"/>
+                                                        <constraint firstAttribute="height" constant="18" id="S4Y-Qd-st0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSo-cH-Wi9" userLabel="Subtitle Label">
+                                                    <rect key="frame" x="41" y="55" width="274" height="18"/>
+                                                    <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="hSo-cH-Wi9" firstAttribute="width" secondItem="2NA-qn-klK" secondAttribute="width" id="1eb-IK-qAF"/>
+                                                <constraint firstItem="w3k-zx-9j5" firstAttribute="centerY" secondItem="2NA-qn-klK" secondAttribute="centerY" id="5jt-re-uni"/>
+                                                <constraint firstAttribute="bottom" secondItem="hSo-cH-Wi9" secondAttribute="bottom" constant="20" id="EnA-dx-kzY"/>
+                                                <constraint firstItem="2NA-qn-klK" firstAttribute="top" secondItem="DiJ-Z9-XfR" secondAttribute="top" constant="20" id="IYp-V7-hbc"/>
+                                                <constraint firstItem="2NA-qn-klK" firstAttribute="leading" secondItem="w3k-zx-9j5" secondAttribute="trailing" constant="11" id="NCf-IQ-LPd"/>
+                                                <constraint firstAttribute="trailing" secondItem="i5j-5c-iGM" secondAttribute="trailing" constant="18" id="Syw-81-cRQ"/>
+                                                <constraint firstItem="w3k-zx-9j5" firstAttribute="leading" secondItem="DiJ-Z9-XfR" secondAttribute="leadingMargin" constant="11" id="Uh8-gg-0xI"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="93" id="Wt1-dA-AZD"/>
+                                                <constraint firstItem="hSo-cH-Wi9" firstAttribute="top" secondItem="2NA-qn-klK" secondAttribute="bottom" constant="8" id="jDL-qb-5GR"/>
+                                                <constraint firstItem="i5j-5c-iGM" firstAttribute="centerY" secondItem="DiJ-Z9-XfR" secondAttribute="centerY" id="jdH-Nk-Uy4"/>
+                                                <constraint firstItem="i5j-5c-iGM" firstAttribute="leading" secondItem="2NA-qn-klK" secondAttribute="trailing" constant="18" id="ncE-dZ-odb"/>
+                                                <constraint firstItem="hSo-cH-Wi9" firstAttribute="leading" secondItem="2NA-qn-klK" secondAttribute="leading" id="vHP-8D-PNz"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mLb-Xx-DR9" userLabel="Preview Image">
+                                            <rect key="frame" x="7" y="0.0" width="361" height="240"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="240" id="q0X-RC-fBG"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="DiJ-Z9-XfR" secondAttribute="bottom" constant="7" id="1p4-nx-SfP"/>
+                                        <constraint firstAttribute="trailing" secondItem="DiJ-Z9-XfR" secondAttribute="trailing" constant="7" id="Eji-Z0-fa1"/>
+                                        <constraint firstItem="mLb-Xx-DR9" firstAttribute="top" secondItem="WZB-co-C1q" secondAttribute="top" id="QFc-bR-Xn9"/>
+                                        <constraint firstItem="mLb-Xx-DR9" firstAttribute="leading" secondItem="WZB-co-C1q" secondAttribute="leading" constant="7" id="Siz-HQ-KE1"/>
+                                        <constraint firstItem="DiJ-Z9-XfR" firstAttribute="top" secondItem="mLb-Xx-DR9" secondAttribute="bottom" id="WwY-sK-6cS"/>
+                                        <constraint firstAttribute="trailing" secondItem="mLb-Xx-DR9" secondAttribute="trailing" constant="7" id="YqS-le-kTD"/>
+                                        <constraint firstItem="DiJ-Z9-XfR" firstAttribute="leading" secondItem="WZB-co-C1q" secondAttribute="leading" constant="7" id="qRg-hO-5Hz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="previewImage" destination="mLb-Xx-DR9" id="k0S-Vs-e20"/>
+                                    <outlet property="previewImageHeightConstraint" destination="q0X-RC-fBG" id="CGn-eP-NaJ"/>
+                                    <outlet property="subtitleLabel" destination="hSo-cH-Wi9" id="vhI-fn-ZgK"/>
+                                    <outlet property="titleLabel" destination="2NA-qn-klK" id="75r-tS-8nt"/>
+                                    <outlet property="unreadImage" destination="w3k-zx-9j5" id="pT8-X3-VBY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="UBi-42-bZI" id="Qlb-MJ-s6l"/>
+                            <outlet property="delegate" destination="UBi-42-bZI" id="c2d-3P-d99"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Inbox" id="XZd-Vn-LS0">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ll9-g0-BUR">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="UBi-42-bZI" id="hbB-Ft-qxP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="NEu-x1-Ibo">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshControlUpdated:" destination="UBi-42-bZI" eventType="valueChanged" id="j2e-HY-ZIq"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUp-of-u8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-9391" y="991"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jbn-B1-EV1">
+            <objects>
+                <navigationController storyboardIdentifier="PGMessageCenterNavigationController" id="Z7g-VM-KWp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2CD-Nk-X9T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UBi-42-bZI" kind="relationship" relationship="rootViewController" id="XIH-7Z-ch5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aUa-IT-cXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10270" y="991"/>
+        </scene>
         <!--Social Sources Menu View Controller-->
         <scene sceneID="C8k-hc-Atm">
             <objects>
@@ -3093,7 +3224,7 @@ printer and app support.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVm-WV-iXE">
-                                                    <rect key="frame" x="322" y="7.5" width="38" height="28"/>
+                                                    <rect key="frame" x="322" y="7" width="38" height="28"/>
                                                     <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                                     <state key="normal" title="Sign In">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3155,7 +3286,7 @@ printer and app support.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuv-n8-ZQy" userLabel="Sign In View">
-                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Kp8-0r-uKI" userLabel="Sign in with Facebook" customClass="PGSignInButton">
                                         <rect key="frame" x="131" y="72" width="114" height="114"/>
@@ -3192,7 +3323,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Qzone_Login" translatesAutoresizingMaskIntoConstraints="NO" id="NwV-ts-uyI">
-                                <rect key="frame" x="175" y="290" width="25" height="25"/>
+                                <rect key="frame" x="175" y="289.5" width="25" height="25"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3250,7 +3381,7 @@ printer and app support.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSa-5N-A3u" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="62" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="480"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using Pitu, you also agree to the HP &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FE-mc-FrD" customClass="PGTermsAttributedLabel">
                                         <rect key="frame" x="58" y="318" width="260" height="85"/>
@@ -3286,7 +3417,7 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pitu_Login" translatesAutoresizingMaskIntoConstraints="NO" id="6W3-An-fpe">
-                                <rect key="frame" x="178" y="290" width="19" height="24"/>
+                                <rect key="frame" x="178" y="289.5" width="19" height="24"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3360,7 +3491,7 @@ printer and app support.</string>
                                 <rect key="frame" x="0.0" y="75" width="375" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Print Queue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAx-zh-2yP">
-                                        <rect key="frame" x="37" y="17" width="94.5" height="23"/>
+                                        <rect key="frame" x="37" y="18" width="94.5" height="23"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                         <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3518,6 +3649,47 @@ printer and app support.</string>
             </objects>
             <point key="canvasLocation" x="-4058" y="3327"/>
         </scene>
+        <!--Inbox Message Page View Controller-->
+        <scene sceneID="dUZ-dz-BFU">
+            <objects>
+                <pageViewController storyboardIdentifier="PGInboxMessagePageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="5" navigationOrientation="horizontal" spineLocation="none" id="AZ9-ld-bhu" customClass="PGInboxMessagePageViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fho-yv-UKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8548" y="991"/>
+        </scene>
+        <!--Inbox Message View Controller-->
+        <scene sceneID="6aA-Ad-6Ke">
+            <objects>
+                <viewController storyboardIdentifier="PGInboxMessageViewController" id="aVC-kd-pfa" customClass="PGInboxMessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N2R-Uz-if7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gam-gz-1aQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k8g-Ip-djC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekg-K5-gr0">
+                                <rect key="frame" x="0.0" y="30" width="375" height="637"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ekg-K5-gr0" secondAttribute="trailing" id="Co9-6P-rFf"/>
+                            <constraint firstItem="ekg-K5-gr0" firstAttribute="leading" secondItem="k8g-Ip-djC" secondAttribute="leading" id="Msy-I5-KQL"/>
+                            <constraint firstItem="Gam-gz-1aQ" firstAttribute="top" secondItem="ekg-K5-gr0" secondAttribute="bottom" id="Pbc-iP-ys2"/>
+                            <constraint firstItem="ekg-K5-gr0" firstAttribute="top" secondItem="N2R-Uz-if7" secondAttribute="bottom" constant="10" id="YzT-J0-1Kj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="ekg-K5-gr0" id="yzW-Km-jAE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hrm-6E-3JM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7700" y="991"/>
+        </scene>
     </scenes>
     <resources>
         <image name="+ButtonDisabled" width="19" height="19"/>
@@ -3538,6 +3710,7 @@ printer and app support.</string>
         <image name="Pitu_Login" width="19" height="24"/>
         <image name="PreviewBarDots" width="33" height="3"/>
         <image name="Qzone_Login" width="25" height="25"/>
+        <image name="Read_Message" width="11" height="11"/>
         <image name="Share.png" width="17" height="25"/>
         <image name="WeChat" width="20" height="17"/>
         <image name="Wizard" width="414" height="366"/>
@@ -3546,6 +3719,7 @@ printer and app support.</string>
         <image name="Wizard_Sprocket" width="271" height="57"/>
         <image name="aboutLogo" width="65" height="54"/>
         <image name="arrowDown" width="19" height="10"/>
+        <image name="arrowMenu" width="10" height="18"/>
         <image name="backArrow" width="9" height="18"/>
         <image name="battery100" width="33" height="14"/>
         <image name="cameraLanding" width="76" height="76"/>

@@ -33,13 +33,12 @@ class SimLocale
       "en_AU" => {"AppleLanguages" => "en", "AppleLocale" => "en_AU"}
     }
 
-  def change_sim_locale(sim_os, sim_name, sim_locale)
+
+  def current_language(sim_os, sim_name)
     sim_path=""
     found=false
-
     #get home folder
     home_folder=`echo ~`.strip
-
     #navigate to core devices folder
     core_devices="#{home_folder}/Library/Developer/CoreSimulator/Devices"
     `cd #{core_devices}`
@@ -60,14 +59,16 @@ class SimLocale
     end
 
     #execute plist buddy command
-    global_pref_path=sim_path+"/data/Library/Preferences/.GlobalPreferences.plist"
-    `echo #{global_pref_path}`
-
+    $global_pref_path=sim_path+"/data/Library/Preferences/.GlobalPreferences.plist"
+    `echo #{$global_pref_path}`
+    $curr_language= `/usr/libexec/PlistBuddy  -c "Print AppleLanguages:0" #{$global_pref_path}`
+    return $curr_language
+  end
+  def change_sim_locale(sim_os, sim_name, sim_locale)
+    current_language(sim_os, sim_name)
     locale= sim_locale
-      abort if LANG_HASH["#{sim_locale}"]==nil # if locale is not specifed stop tests
-      
-    `/usr/libexec/PlistBuddy #{global_pref_path} -c "Add :AppleLanguages:0 string '#{LANG_HASH["#{locale}"]["AppleLanguages"]}'"`
-    `/usr/libexec/PlistBuddy #{global_pref_path} -c "Set :AppleLocale '#{LANG_HASH["#{locale}"]["AppleLocale"]}'"`
-$curr_language= `/usr/libexec/PlistBuddy  -c "Print AppleLanguages:0" #{global_pref_path}`
+    abort if LANG_HASH["#{sim_locale}"]==nil # if locale is not specifed stop tests
+    `/usr/libexec/PlistBuddy #{$global_pref_path} -c "Add :AppleLanguages:0 string '#{LANG_HASH["#{locale}"]["AppleLanguages"]}'"`
+    `/usr/libexec/PlistBuddy #{$global_pref_path} -c "Set :AppleLocale '#{LANG_HASH["#{locale}"]["AppleLocale"]}'"`
   end
 end

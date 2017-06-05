@@ -69,6 +69,42 @@ $edit_screen_arr =
     }
 
 $sticker ={
+    
+    'Fathers Day Category' => {
+        'sticker_0' => {'name' => 'Glasses 1 Sticker','value' => 'Glasses 1 Sticker'},
+        'sticker_1' => {'name' => 'Tie Collar Sticker','value' => 'Tie Collar Sticker'},
+        'sticker_2' => {'name' => 'Bacon Sticker','value' => 'Bacon Sticker'},
+        'sticker_3' => {'name' => 'Hat Sticker','value' => 'Hat Sticker'},
+        'sticker_4' => {'name' => 'Necktie Fathers Day Sticker','value' => 'Necktie Fathers Day Sticker'},
+        'sticker_5' => {'name' => 'Golf Set Sticker','value' => 'Golf Set Sticker'},
+        'sticker_6' => {'name' => 'Hotrod Car Sticker','value' => 'Hotrod Car Sticker'},
+        'sticker_7' => {'name' => 'Glasses 2 Sticker','value' => 'Glasses 2 Sticker'},
+        'sticker_8' => {'name' => 'Mask Sticker','value' => 'Mask Sticker'},
+        'sticker_9' => {'name' => 'BBQ Sticker','value' => 'BBQ Sticker'},
+        'sticker_10' => {'name' => 'I Heart Dad 1 Sticker','value' => 'I Heart Dad 1 Sticker'},
+        'sticker_11' => {'name' => 'Dad Tattoo Sticker','value' => 'Dad Tattoo Sticker'},
+        'sticker_12' => {'name' => 'Strong Arm Sticker','value' => 'Strong Arm Sticker'},
+        'sticker_13' => {'name' => 'Football Fathers Day Sticker','value' => 'Football Fathers Day Sticker'},
+        'sticker_14' => {'name' => 'Mustache Sticker','value' => 'Mustache Sticker'},
+        'sticker_15' => {'name' => 'Super Dad Sticker','value' => 'Super Dad Sticker'},
+        'sticker_16' => {'name' => 'Shoes Sticker','value' => 'Shoes Sticker'},
+        'sticker_17' => {'name' => 'Heart Banner Sticker','value' => 'Heart Banner Sticker'},
+        'sticker_18' => {'name' => 'Smoking Pipe Sticker','value' => 'Smoking Pipe Sticker'},
+        'sticker_19' => {'name' => 'Screwdriver Sticker','value' => 'Screwdriver Sticker'},
+        'sticker_20' => {'name' => 'Crown 2 Sticker','value' => 'Crown 2 Sticker'},
+        'sticker_21' => {'name' => 'Fathers Day 2 Sticker','value' => 'Fathers Day 2 Sticker'},
+        'sticker_22' => {'name' => 'Coffee 1 Sticker','value' => 'Coffee 1 Sticker'},
+        'sticker_23' => {'name' => 'Golf Sticker','value' => 'Golf Sticker'},
+        'sticker_24' => {'name' => 'Fishing Father Son Sticker','value' => 'Fishing Father Son Sticker'},
+        'sticker_25' => {'name' => 'Wrench Sticker','value' => 'Wrench Sticker'},
+        'sticker_26' => {'name' => 'Crown 1 Sticker','value' => 'Crown 1 Sticker'},
+        'sticker_27' => {'name' => 'Bear Sticker','value' => 'Bear Sticker'},
+        'sticker_28' => {'name' => 'Bow Tie Sticker','value' => 'Bow Tie Sticker'},
+        'sticker_29' => {'name' => 'Talk Bubble Sticker','value' => 'Talk Bubble Sticker'},
+        'sticker_30' => {'name' => 'BBQ Utensils Sticker','value' => 'BBQ Utensils Sticker'},
+        'sticker_31' => {'name' => 'Hammer Sticker','value' => 'Hammer Sticker'}
+        },
+    
     'Graduation Category' => {
         'sticker_0' => {'name' => 'Graduation Glasses Sticker','value' =>'Graduation Glasses Sticker'},
         'sticker_1' => {'name' => 'Graduation Horn Sticker','value' =>'Graduation Horn Sticker'},
@@ -146,10 +182,10 @@ $sticker ={
         'sticker_49' => {'name' => 'BBQ Sticker','value' => 'BBQ Sticker'},
         'sticker_50' => {'name' => 'Travel Car Woody Sticker','value' => 'Travel Car Woody Sticker'}
     },
-    'Cannes Category' => {
-        'sticker_0' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
-        'sticker_1' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
-    },
+    #'Cannes Category' => {
+     #   'sticker_0' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
+      #  'sticker_1' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
+   # },
     'Face Category' => {
         'sticker_0' => {'name' => 'Aviator Glasses Color Sticker','value' =>'Aviator Glasses Color Sticker'},
         'sticker_1' => {'name' => 'Bunny Ears Flowers Sticker','value' =>'Bunny Ears Flowers Sticker'},
@@ -207,7 +243,9 @@ $sticker ={
         'sticker_24' => {'name' => '3D diamond 1 Sticker','value' =>'3D diamond 1 Sticker'},
         'sticker_25' => {'name' => 'Fist Sticker','value' =>'Fist Sticker'},
         'sticker_26' => {'name' => 'Heart Pixel Sticker','value' =>'Heart Pixel Sticker'},
-        'sticker_27' => {'name' => 'Word Cloud Grumble Sticker','value' =>'Word Cloud Grumble Sticker'}
+        'sticker_27' => {'name' => 'Word Cloud Grumble Sticker','value' =>'Word Cloud Grumble Sticker'},
+        'sticker_28' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
+        'sticker_29' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
     },
     'Food Category' => {
         'sticker_0' => {'name' => 'Frappuccino Sticker','value' =>'Frappuccino Sticker'},
@@ -318,23 +356,24 @@ $frame ={
     'frame_3' => {'name' => 'White Frame','value' =>'WhiteFrame'},
     'frame_4' => {'name' => 'Stars Overlay Frame','value' =>'StarsOverlayFrame'},
     'frame_5' => {'name' => 'Polka Dots Frame','value' =>'PolkadotsFrame'},
-    'frame_6' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
-    'frame_7' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
-    'frame_8' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
-    'frame_9' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
-    'frame_10' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
-    'frame_11' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
-    'frame_12' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
-    'frame_13' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
-    'frame_14' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
-    'frame_15' => {'name' => 'Red Frame','value' =>'RedFrame'},
-    'frame_16' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
-    'frame_17' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
-    'frame_18' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
-    'frame_19' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
-    'frame_20' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
-    'frame_21' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
-    'frame_22' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
+    #'frame_6' => {'name' => 'LOreal iOS Frame','value' =>'LOreal_iOS_1c'},
+    #'frame_6' => {'name' => "L\\'Oreal iOS Frame",'value' =>'LOreal_iOS_1c'},
+    #'frame_7' => {'name' => 'Nestle iOS Frame','value' =>'Nestle_iOS_Frame'},
+    #'frame_8' => {'name' => 'San Pelegrino iOS Frame','value' =>'S_pellegrino_iOS_Frame'},
+    'frame_6' => {'name' => 'Grey Shadow Frame','value' =>'GreyShadowFrame'},
+    'frame_7' => {'name' => 'Pink Triangle Frame','value' =>'PinkTriangleFrame'},
+    'frame_8' => {'name' => 'White Rounded Frame','value' =>'WhiteRoundedFrame'},
+    'frame_9' => {'name' => 'Floral 2 Frame','value' =>'Floral2Frame'},
+    'frame_10' => {'name' => 'Blue Watercolor Frame','value' =>'BlueWatercoloFrame'},
+    'frame_11' => {'name' => 'Floral Overlay Frame','value' =>'FloralOverlayFrame'},
+    'frame_12' => {'name' => 'Red Frame','value' =>'RedFrame'},
+    'frame_13' => {'name' => 'Gradient Frame','value' =>'GradientFrame'},
+    'frame_14' => {'name' => 'Turquoise Frame','value' =>'TurquoiseFrame'},
+    'frame_15' => {'name' => 'Dots Overlay Frame','value' =>'DotsOverlayFrame'},
+    'frame_16' => {'name' => 'Kraft Frame','value' =>'KraftFrame'},
+    'frame_17' => {'name' => 'White Bar Frame','value' =>'WhiteBarFrame'},
+    'frame_18' => {'name' => 'Pink Spray Paint Frame','value' =>'PinkSpraypaintFrame'},
+    'frame_19' => {'name' => 'White Full Frame','value' =>'WhiteFullFrame'}
 }
 $font ={
     'font_0' => {'name' => 'Aleo','value' =>'Aleo'},

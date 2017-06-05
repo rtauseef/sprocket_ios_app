@@ -32,6 +32,8 @@
 #import "PGSecretKeeper.h"
 #import "PGInAppMessageManager.h"
 #import "PGMetarOfflineTagManager.h"
+#import "PGInboxMessageManager.h"
+
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -178,11 +180,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else if ([url.scheme containsString:@"googleusercontent"]) {
         return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else if ([url.scheme isEqual:@"com.hp.sprocket.deepLinks"]) {
+    } else if ([url.scheme caseInsensitiveCompare:@"com.hp.sprocket.deeplinks"] == NSOrderedSame) {
         [self deepLink:url.host];
     } else {
         return [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     }
+
     NSMutableArray *schemes = [NSMutableArray array];
     
     // Look at our plist
@@ -257,6 +260,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [UAirship inAppMessaging].messageControllerDelegate = [PGInAppMessageManager sharedInstance];
     [UAirship inAppMessaging].messagingDelegate = [PGInAppMessageManager sharedInstance];
     [UAirship inAppMessaging].autoDisplayEnabled = NO;
+
+    [UAirship inbox].delegate = [PGInboxMessageManager sharedInstance];
 }
 
 

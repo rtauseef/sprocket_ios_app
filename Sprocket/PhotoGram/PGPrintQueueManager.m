@@ -108,10 +108,6 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                         style:UIAlertActionStyleDestructive
                                                       handler:^(UIAlertAction * _Nonnull action) {
                                                           [[MPBTPrintManager sharedInstance] cancelPrintQueue];
-
-                                                          if ([self.delegate respondsToSelector:@selector(pgPrintQueueManagerDidClearQueue:)]) {
-                                                              [self.delegate pgPrintQueueManagerDidClearQueue:self];
-                                                          }
                                                       }];
     [alertController addAction:yesAction];
 

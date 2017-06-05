@@ -78,24 +78,11 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 }
 
 - (BOOL)addPrintItemToQueue:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics {
-    if (![self canAddToQueue:YES]) {
-        return NO;
-    }
-
     MPPrintLaterJob *job = [self jobForPrintItem:printItem metrics:metrics];
-
     [[MPPrintLaterQueue sharedInstance] addPrintLaterJob:job fromController:nil];
-
-    return YES;
-}
-
-- (BOOL)canAddToQueue:(BOOL)shouldTriggerError {
-    if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        if (shouldTriggerError) {
-            [self reportError:MantaErrorBusy isFinalError:NO];
-        }
-
-        return NO;
+    
+    if (self.queueSize > 0 && self.status == MPBTPrinterManagerStatusEmptyQueue) {
+        self.status = MPBTPrinterManagerStatusIdle;
     }
 
     return YES;

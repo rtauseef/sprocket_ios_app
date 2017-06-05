@@ -33,8 +33,9 @@
 
 @protocol PGPreviewDrawerViewControllerDelegate <NSObject>
 
-- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button;
-- (void)PGPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture;
-- (void)PGPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer;
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button;
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture;
+- (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer;
+- (void)pgPreviewDrawerDidClearQueue:(PGPreviewDrawerViewController *)drawer;
 
 @end

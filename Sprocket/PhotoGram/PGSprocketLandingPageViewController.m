@@ -13,6 +13,7 @@
 #import <MP.h>
 
 #import "PGSprocketLandingPageViewController.h"
+#import "PGAnalyticsManager.h"
 #import "PGAppAppearance.h"
 #import "PGRevealViewController.h"
 #import "PGAppNavigation.h"
@@ -125,6 +126,7 @@
 {
     switch (indexPath.row) {
         case 0:
+            [[PGAnalyticsManager sharedManager] trackOpenAppSettings];
             [PGAppNavigation openSettings];
             break;
         case 1:

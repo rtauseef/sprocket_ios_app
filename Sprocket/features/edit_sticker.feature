@@ -73,17 +73,18 @@ Scenario Outline: Verify sticker list
     And I select "<sticker_tab_name>" tab
     Then I should see the all the corresponding "stickers"
     Examples:
-    | sticker_tab_name   |
-    | Graduation Category|
-    | Summer Category    |
-    | Cannes Category    |
-    | Face Category      |
-    | Decorative Category|
-    | Food Category      |
-    | Birthday Category  |
-    | Animal Category    |
-    | Nature Category    |
-    | Get Well           |
+    | sticker_tab_name        |
+    | Fathers Day Category    |
+    | Summer Category         |
+    | Graduation Category     |
+   # | Cannes Category        |
+    | Face Category           |
+    | Decorative Category     |
+    | Food Category           |
+    | Birthday Category       |
+    | Animal Category         |
+    | Nature Category         |
+    | Get Well                |
                     
                               
 @regression
@@ -92,17 +93,18 @@ Scenario Outline: Verify all the stickers are applied for sticker editor screen
     And I select "<sticker_tab_name>" tab
     Then I verify that all the "stickers" are applied successfully
     Examples:
-    | sticker_tab_name   |
-    | Graduation Category|
-    | Summer Category    |
-    | Cannes Category    |
-    | Face Category      |
-    | Decorative Category|
-    | Food Category      |
-    | Birthday Category  |
-    | Animal Category    |
-    | Nature Category    |
-    | Get Well           |
+    | sticker_tab_name      |
+    | Fathers Day Category |
+    | Summer Category       |
+    | Graduation Category   |
+   # | Cannes Category       |
+    | Face Category         |
+    | Decorative Category   |
+    | Food Category         |
+    | Birthday Category     |
+    | Animal Category       |
+    | Nature Category       |
+    | Get Well              |
 
 
     

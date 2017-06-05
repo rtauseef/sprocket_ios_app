@@ -22,12 +22,15 @@
 + (BOOL)isNorthAmerica;
 + (BOOL)isAustralia;
 + (BOOL)isSurveyAvailable;
-
++ (BOOL)isTwitterSupportAvailable;
++ (BOOL)isFBMessengerSupportAvailable;
 + (NSURL *)privacyURL;
 + (NSURL *)userGuideURL;
 + (NSURL *)buyPaperURL;
 + (NSURL *)supportWebsiteURL;
 + (NSURL *)supportForumURL;
++ (NSString *)messengerSupportURL;
++ (NSString *)twitterHPCareSupportURL;
 + (NSString *)twitterSupportTag;
 + (NSString *)twitterSupportTagURL;
 

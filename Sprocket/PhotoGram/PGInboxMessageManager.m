@@ -11,7 +11,10 @@
 //
 
 #import "PGInboxMessageManager.h"
-#import <AirshipKit.h>
+#import "PGAppNavigation.h"
+#import "PGMediaNavigation.h"
+#import "PGInboxMessageCenterListViewController.h"
+#import "PGInboxMessageViewController.h"
 
 @implementation PGInboxMessageManager
 
@@ -29,6 +32,34 @@
 - (BOOL)hasUnreadMessages
 {
     return [[UAirship inbox] messageList].unreadCount > 0;
+}
+
+
+#pragma mark - UAInboxDelegate
+
+- (void)showInbox
+{
+    UIViewController *topViewController = [PGAppNavigation currentTopViewController];
+
+    if ([topViewController isKindOfClass:[PGInboxMessageCenterListViewController class]]) {
+        // already on inbox
+        return;
+    }
+
+    if ([topViewController isKindOfClass:[PGInboxMessageViewController class]]) {
+        // already on message view
+        return;
+    }
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"PGMessageCenterNavigationController"];
+
+    [topViewController presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)richPushMessageAvailable:(UAInboxMessage *)richPushMessage
+{
+    [[PGMediaNavigation sharedInstance] updateNewContentIndicator];
 }
 
 @end

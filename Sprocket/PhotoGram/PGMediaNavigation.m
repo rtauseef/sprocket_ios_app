@@ -135,6 +135,11 @@ static NSString * const kMediaNavigationNextButtonFormat = @"%li  〉";
 
 #pragma mark - UI State control
 
+- (void)updateNewContentIndicator
+{
+    [self.hamburgerButton refreshIndicator];
+}
+
 - (void)beginSelectionMode {
     self.cancelButton.hidden = NO;
     self.hamburgerButton.hidden = YES;
