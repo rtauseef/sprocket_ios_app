@@ -31,7 +31,7 @@ Feature: Check Paper size and Paper type
         And I check the os version
         #And I check the wifi ssid
         And I check the device brand is "Apple"
-        And I check the product id is "com.hp.dev.hp-sprocket"
+        And I check the product id is "com.hp.sprocket"
         And I check the library version
         And I check the application type is "HP"
         

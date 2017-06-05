@@ -2527,9 +2527,13 @@
 		F2D44CC61EE089A200492DE5 /* fd_heart_banner_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC21EE089A200492DE5 /* fd_heart_banner_TN@2x.png */; };
 		F2D44CC71EE089A200492DE5 /* fd_heart_banner_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC31EE089A200492DE5 /* fd_heart_banner_TN@3x.png */; };
 		F2D44CC81EE089A200492DE5 /* fd_heart_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */; };
+		F2D44CCA1EE08B1600492DE5 /* fd_heart_banner_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC11EE089A200492DE5 /* fd_heart_banner_TN.png */; };
+		F2D44CCB1EE08B1600492DE5 /* fd_heart_banner_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC21EE089A200492DE5 /* fd_heart_banner_TN@2x.png */; };
+		F2D44CCC1EE08B1600492DE5 /* fd_heart_banner_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC31EE089A200492DE5 /* fd_heart_banner_TN@3x.png */; };
+		F2D44CCD1EE08B1600492DE5 /* fd_heart_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */; };
 		F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD41EE0D65700492DE5 /* customSticker.png */; };
 		F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */; };
-		F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };
+		F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };        
 		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
 		F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */; };
 		F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */; };
@@ -8016,6 +8020,7 @@
 				82184F5A1EAA9040000EDFD2 /* bird_envelope.png in Resources */,
 				826BEB621E85BEAD000BE3FA /* WhiteBarFrame_TN@2x.png in Resources */,
 				829A79F51EBB8E7E005D4938 /* fan.png in Resources */,
+				F2D44CCB1EE08B1600492DE5 /* fd_heart_banner_TN@2x.png in Resources */,
 				829A79FF1EBB8E7E005D4938 /* flip_flops2_TN.png in Resources */,
 				8218502A1EAA9040000EDFD2 /* Pie.png in Resources */,
 				82E3DE361E831BC70008F600 /* glasses_blossom_TN.png in Resources */,
@@ -8182,6 +8187,7 @@
 				826BEAE21E85BEAD000BE3FA /* BlueWatercoloFrame_TN@2x.png in Resources */,
 				8218514A1EAA9103000EDFD2 /* trailer.png in Resources */,
 				fdae1cf600f0b63189e29821 /* Muli-Regular.ttf in Resources */,
+				F2D44CCC1EE08B1600492DE5 /* fd_heart_banner_TN@3x.png in Resources */,
 				821850E21EAA9102000EDFD2 /* heart_2.png in Resources */,
 				826BEB5E1E85BEAD000BE3FA /* TurquoiseFrame.png in Resources */,
 				821850461EAA9040000EDFD2 /* rosebud.png in Resources */,
@@ -8513,6 +8519,7 @@
 				8218509F1EAA9102000EDFD2 /* birthdayHat_TN.png in Resources */,
 				82184F4C1EAA9040000EDFD2 /* banner_TN@2x.png in Resources */,
 				8218502E1EAA9040000EDFD2 /* pig.png in Resources */,
+				F2D44CCD1EE08B1600492DE5 /* fd_heart_banner.png in Resources */,
 				826BEB221E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@2x.png in Resources */,
 				8212BBD51EA92A26009E66EC /* g_horn.png in Resources */,
 				82184FE31EAA9040000EDFD2 /* koala_TN.png in Resources */,
@@ -8595,6 +8602,7 @@
 				821851431EAA9103000EDFD2 /* tiara_TN.png in Resources */,
 				8212BBC71EA92A26009E66EC /* g_glasses_TN.png in Resources */,
 				826BEB461E85BEAD000BE3FA /* RedFrame.png in Resources */,
+				F2D44CCA1EE08B1600492DE5 /* fd_heart_banner_TN.png in Resources */,
 				82184F991EAA9040000EDFD2 /* Flowers_TN@2x.png in Resources */,
 				821850E41EAA9102000EDFD2 /* heart_banner_TN@2x.png in Resources */,
 				829A7A611EBB8E7E005D4938 /* sand_castle_TN@2x.png in Resources */,

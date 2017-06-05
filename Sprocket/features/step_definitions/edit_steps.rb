@@ -218,21 +218,30 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
   $sticker_tab = sticker_tab
   #split_sticker_tab = sticker_tab.split("_")
   #split_sticker_tab_id = split_sticker_tab[2].to_i
-    if (element_exists "view marked:'#{sticker_tab.to_s}'")
-        touch query("view marked:'#{sticker_tab}'")
+    if $sticker_tab == "Fathers Day Category"
+        tab = query("IMGLYIconBorderedCollectionViewCell index:0",:accessibilityLabel)[0]
+        if tab == "Father's Day Category"
+            touch query "IMGLYIconBorderedCollectionViewCell index:0" 
+        else
+            raise "Tab not found"
+        end
     else
-        i = 0
-        while i < 5 do      
-            scroll("UICollectionView",:right)
-            sleep(WAIT_SCREENLOAD)
-            i = i + 1
-            if i >= 5
-                raise "Tab not found"
-            end
-            if (element_exists "view marked:'#{sticker_tab.to_s}'")
-                touch query("view marked:'#{sticker_tab}'")
-                sleep(STEP_PAUSE)
-            break
+        if (element_exists "view marked:'#{sticker_tab.to_s}'")
+            touch query("view marked:'#{sticker_tab}'")
+        else
+            i = 0
+            while i < 5 do      
+                scroll("UICollectionView",:right)
+                sleep(WAIT_SCREENLOAD)
+                i = i + 1
+                if i >= 5
+                    raise "Tab not found"
+                end
+                if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                    touch query("view marked:'#{sticker_tab}'")
+                    sleep(STEP_PAUSE)
+                break
+                end
             end
         end
     end
@@ -254,8 +263,12 @@ end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    #selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
+    device_name = get_device_name
+    if device_name.to_s != 'iPad'
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
+    else
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[7]
+    end
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
