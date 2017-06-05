@@ -215,7 +215,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
-if [[ "$CONFIGURATION" == "TestFlight" ]]; then
+if [[ "$CONFIGURATION" == "AppStore" ]]; then
   install_resource "GPUImage/framework/Resources/lookup.png"
   install_resource "GPUImage/framework/Resources/lookup_amatorka.png"
   install_resource "GPUImage/framework/Resources/lookup_miss_etikate.png"
@@ -283,7 +283,7 @@ if [[ "$CONFIGURATION" == "TestFlight" ]]; then
   install_resource "MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle"
 fi
-if [[ "$CONFIGURATION" == "AppStore" ]]; then
+if [[ "$CONFIGURATION" == "AdHoc" ]]; then
   install_resource "GPUImage/framework/Resources/lookup.png"
   install_resource "GPUImage/framework/Resources/lookup_amatorka.png"
   install_resource "GPUImage/framework/Resources/lookup_miss_etikate.png"
