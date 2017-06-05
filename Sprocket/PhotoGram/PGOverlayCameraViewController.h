@@ -12,6 +12,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <Photos/Photos.h>
 
 @interface PGOverlayCameraViewController : UIViewController
 
@@ -19,6 +20,6 @@
 
 - (void) stopScanning;
 - (void) enableLinkWatermarking;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image;
+- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
 
 @end

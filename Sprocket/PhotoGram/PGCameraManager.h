@@ -28,7 +28,7 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 @property (assign, nonatomic) BOOL isCapturingVideo;
 
 + (PGCameraManager *)sharedInstance;
-- (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andInfo:(NSDictionary *)info;
+- (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andOriginalAsset: (PHAsset *) originalAsset andInfo:(NSDictionary *)info;
 - (NSArray<AVCaptureDevice *> *)availableDevices;
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController;

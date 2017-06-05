@@ -330,7 +330,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     UIImage *image = [savedImages objectAtIndex:idx++];
 
     if (image) {
-        [PGSavePhotos saveImage:image completion:^(BOOL success) {
+        [PGSavePhotos saveImage:image completion:^(BOOL success, PHAsset* asset) {
             if (success && [savedImages count] > idx) {
                 [self savePhoto:savedImages index:idx withCompletion:completion];
             } else if (completion) {

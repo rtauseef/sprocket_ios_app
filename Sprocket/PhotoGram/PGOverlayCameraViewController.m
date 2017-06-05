@@ -44,6 +44,7 @@
 
 @property (strong, nonatomic) AVURLAsset *playbackAsset;
 @property (strong, nonatomic) UIImage *playbackImage;
+@property (strong, nonatomic) PHAsset *originalAsset;
 
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController;
@@ -179,29 +180,32 @@
     self.switchCameraButton.hidden = NO;
 }
 
-- (void) playVideo: (AVURLAsset *) asset image: (UIImage *) image {
-    [self.shutterButton setImage:[UIImage imageNamed:@"videoNext"] forState:UIControlStateNormal];
-    self.playbackMode = YES;
-    self.playbackAsset = asset;
-    self.playbackImage = image;
-    
-    AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:asset];
-    
-    self.player = [AVPlayer playerWithPlayerItem:item];
-    self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[self.player currentItem]];
-    
-    self.playerViewController = [AVPlayerViewController new];
-    self.playerViewController.player = self.player;
-    self.playerViewController.view.backgroundColor = [UIColor clearColor];
-    self.playerViewController.view.frame = self.view.bounds;
-    self.playerViewController.showsPlaybackControls = NO;
-    [self.view insertSubview:self.playerViewController.view atIndex:0];
-    [self.player play];
+- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.shutterButton setImage:[UIImage imageNamed:@"videoNext"] forState:UIControlStateNormal];
+        self.playbackMode = YES;
+        self.playbackAsset = asset;
+        self.playbackImage = image;
+        self.originalAsset = originalAsset;
+        
+        AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:asset];
+        
+        self.player = [AVPlayer playerWithPlayerItem:item];
+        self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(playerItemDidReachEnd:)
+                                                     name:AVPlayerItemDidPlayToEndTimeNotification
+                                                   object:[self.player currentItem]];
+        
+        self.playerViewController = [AVPlayerViewController new];
+        self.playerViewController.player = self.player;
+        self.playerViewController.view.backgroundColor = [UIColor clearColor];
+        self.playerViewController.view.frame = self.view.bounds;
+        self.playerViewController.showsPlaybackControls = NO;
+        [self.view insertSubview:self.playerViewController.view atIndex:0];
+        [self.player play];
+        });
 };
 
 - (void) playerItemDidReachEnd:(NSNotification *)notification {
@@ -276,7 +280,7 @@
         [self.player pause];
         [self.playerViewController.view removeFromSuperview];
 
-        [[PGCameraManager sharedInstance] loadPreviewViewControllerWithVideo:_playbackAsset andImage:_playbackImage andInfo:nil];
+        [[PGCameraManager sharedInstance] loadPreviewViewControllerWithVideo:_playbackAsset andImage:_playbackImage andOriginalAsset: self.originalAsset andInfo:nil];
     }
 }
 

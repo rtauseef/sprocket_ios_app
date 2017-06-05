@@ -137,10 +137,22 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
-- (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andInfo:(NSDictionary *)info {
-    HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
-    media.image = photo;
-    media.assetURL = assetURL;
+- (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andOriginalAsset: (PHAsset *) originalAsset andInfo:(NSDictionary *)info {
+    
+    HPPRCameraRollMedia *media;
+    
+    if (originalAsset !=  nil) {
+        media = [[HPPRCameraRollMedia alloc] initWithAsset:originalAsset];
+        //media.assetURL = assetURL;
+    } else {
+        media = [[HPPRCameraRollMedia alloc] init];
+        media.image = photo;
+        media.assetURL = assetURL;
+    }
+    
+    // TODO: will use the EXIF data instead
+    media.createdTime = [NSDate date];
+    media.mediaType = kHPRMediaTypeVideo;
     
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     
@@ -155,10 +167,30 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
+- (void)loadPreviewViewControllerWithPhotoAsset:(PHAsset *)asset andPhoto:(UIImage *) photo andInfo:(NSDictionary *)info
+{
+    HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] initWithAsset:asset];
+    
+    [[PGPhotoSelection sharedInstance] selectMedia:media];
+    
+    self.currentSelectedPhoto = photo;
+    self.currentMedia = media;
+    self.currentSource = [PGPreviewViewController cameraSource];
+    
+    if (self.isBackgroundCamera) {
+        [PGPreviewViewController presentPreviewPhotoFrom:self.viewController andSource:[PGPreviewViewController cameraSource] media:media animated:NO];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerPhotoTaken object:nil];
+    }
+}
+
+
 - (void)loadPreviewViewControllerWithPhoto:(UIImage *)photo andInfo:(NSDictionary *)info
 {
     HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] init];
     media.image = photo;
+    // TODO: will use the EXIF data instead
+    media.createdTime = [NSDate date];
     
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     
@@ -351,6 +383,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
         UIImage *photo = [[UIImage alloc] initWithData:imageData];
         
+        //TODO: use this for non saved photos
+        CGImageSourceRef source = CGImageSourceCreateWithData((__bridge_retained  CFDataRef)imageData, NULL);
+        NSDictionary *metadata = (__bridge NSDictionary *) CGImageSourceCopyPropertiesAtIndex(source,0,NULL);
+
         if (![PGSavePhotos userPromptedToSavePhotos]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
                                                                            message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
@@ -367,19 +403,35 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                  
                                                                   [PGSavePhotos setSavePhotos:YES];
-                                                                  [PGSavePhotos saveImage:photo completion:nil];
-                                                                  [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
-                                                                  [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+                                                                  [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
+                                                                      
+                                                                      if (success) {
+                                                                          [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
+                                                                          [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+                                                                      } else {
+                                                                          [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                                                                          [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+                                                                      }
+                                                                  }];
+                                                                
                                                               }];
             [alert addAction:yesAction];
             
             [weakSelf.viewController presentViewController:alert animated:YES completion:nil];
         } else {
             if ([PGSavePhotos savePhotos]) {
-                [PGSavePhotos saveImage:photo completion:nil];
+                [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
+                    if (success) {
+                        [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
+                        [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+                    } else {
+                        [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                        [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+                    }
+                }];
             }
-            [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
         }
         
         self.isCapturingStillImage = NO;
@@ -537,12 +589,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if ([PGSavePhotos savePhotos]) {
-                [PGSavePhotos saveVideo:asset completion:nil];
-                
-                
-                // got video, do playback
-                
-                [weakSelf.cameraOverlay playVideo:asset image:frameImage];
+                [PGSavePhotos saveVideo:asset completion:^(BOOL success, PHAsset *createdAsset) {
+                    // got video, do playback
+                    
+                    [weakSelf.cameraOverlay playVideo:asset image:frameImage originalAsset: createdAsset];
+                }];
                 //[weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
             } else {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
@@ -553,7 +604,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                    style:UIAlertActionStyleCancel
                                                                  handler:^(UIAlertAction * _Nonnull action) {
                                                                      [PGSavePhotos setSavePhotos:NO];
-                                                                     [weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
+                                                                     [weakSelf.cameraOverlay playVideo:asset image:frameImage originalAsset: nil];
                                                                      [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"Off"];
                                                                  }];
                 [alert addAction:noAction];
@@ -561,8 +612,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                     style:UIAlertActionStyleDefault
                                                                   handler:^(UIAlertAction * _Nonnull action) {
                                                                       [PGSavePhotos setSavePhotos:YES];
-                                                                      [PGSavePhotos saveVideo:asset completion:nil];
-                                                                      [weakSelf loadPreviewViewControllerWithVideo:asset andImage:frameImage andInfo:nil];
+                                                                      [PGSavePhotos saveVideo:asset completion:^(BOOL success, PHAsset *createdAsset) {
+                                                                            [weakSelf.cameraOverlay playVideo:asset image:frameImage originalAsset: createdAsset];
+                                                                      }];
+\
                                                                       [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                                                                   }];
                 [alert addAction:yesAction];
