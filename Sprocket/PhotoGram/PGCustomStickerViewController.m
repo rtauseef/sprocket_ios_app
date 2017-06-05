@@ -89,9 +89,6 @@ CGSize const kThumbnailSize = { 100, 100 };
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setupPlayer];
-    if ([PGCustomStickerManager stickers].count > 0) {
-        self.videoView.hidden = YES;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -100,10 +97,6 @@ CGSize const kThumbnailSize = { 100, 100 };
     
     [self setupCamera];
     [self setupPlayerUI];
-    
-    if (0 == [PGCustomStickerManager stickers].count) {
-        [self playVideo];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,6 +107,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
+
 
 #pragma mark - Events
 
@@ -137,7 +131,8 @@ CGSize const kThumbnailSize = { 100, 100 };
     [self hideVideo];
 }
 
-- (void)closeButtonTapped {
+- (IBAction)closeButtonTapped:(id)sender
+{
     if (self.videoView.hidden) {
         [self.camera stopCameraCapture];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -146,10 +141,11 @@ CGSize const kThumbnailSize = { 100, 100 };
     }
 }
 
-- (void)infoButtonTapped
+- (IBAction)infoButtonTapped:(id)sender
 {
-    [self replayVideo];
+    [self playVideo];
 }
+
 
 #pragma mark - Stickers
 
@@ -324,11 +320,6 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 - (void)setupUI
 {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeButtonTapped)];
-    [self.closeButton addGestureRecognizer:tap];
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(infoButtonTapped)];
-    [self.infoButton addGestureRecognizer:tap];
-    
     self.yesButton.layer.cornerRadius = 3.0;
     self.yesButton.layer.borderColor  = [UIColor whiteColor].CGColor;
     self.yesButton.layer.borderWidth = 1.0;
@@ -499,12 +490,6 @@ CGSize const kThumbnailSize = { 100, 100 };
 }
 
 - (void)playVideo
-{
-    self.videoView.hidden = NO;
-    [self.player play];
-}
-
-- (void)replayVideo
 {
     [self.player seekToTime:kCMTimeZero];
     [self.player play];
