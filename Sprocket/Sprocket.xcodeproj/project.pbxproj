@@ -2261,6 +2261,9 @@
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
 		F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
 		F272AE631ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
+		F2B69A851EE6111A0082A504 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD41EE0D65700492DE5 /* customSticker.png */; };
+		F2B69A861EE6111A0082A504 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */; };
+		F2B69A871EE6111A0082A504 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };
 		F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC11ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC51ECD08F100C11BE9 /* PGImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEC41ECD08F100C11BE9 /* PGImageCache.m */; };
@@ -2533,7 +2536,7 @@
 		F2D44CCD1EE08B1600492DE5 /* fd_heart_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */; };
 		F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD41EE0D65700492DE5 /* customSticker.png */; };
 		F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */; };
-		F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };        
+		F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };
 		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
 		F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */; };
 		F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */; };
@@ -7944,6 +7947,7 @@
 				82184F511EAA9040000EDFD2 /* beachball-color_TN@3x.png in Resources */,
 				8212BB791EA92A25009E66EC /* book_stack_TN@2x.png in Resources */,
 				8218500A1EAA9040000EDFD2 /* Mushrooms-b_TN@3x.png in Resources */,
+				F2B69A871EE6111A0082A504 /* customSticker@3x.png in Resources */,
 				82184FA21EAA9040000EDFD2 /* Football.png in Resources */,
 				82E3DE781E831BD10008F600 /* doughnut_TN@3x.png in Resources */,
 				8218508E1EAA9102000EDFD2 /* balloons.png in Resources */,
@@ -8074,6 +8078,7 @@
 				a73ce2ed73fb4ce344b47988 /* HPSimplified_It.ttf in Resources */,
 				821850281EAA9040000EDFD2 /* Pie_TN@2x.png in Resources */,
 				91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */,
+				F2B69A861EE6111A0082A504 /* customSticker@2x.png in Resources */,
 				3c5e32682184b958db2c4972 /* HPSimplified_Lt.ttf in Resources */,
 				82E3DE851E831BD10008F600 /* ketchup-hotdog.png in Resources */,
 				821850CD1EAA9102000EDFD2 /* feather2_TN@3x.png in Resources */,
@@ -8564,6 +8569,7 @@
 				82184FAD1EAA9040000EDFD2 /* gift-dog_TN@3x.png in Resources */,
 				821851441EAA9103000EDFD2 /* tiara_TN@2x.png in Resources */,
 				82184F531EAA9040000EDFD2 /* Beard_TN.png in Resources */,
+				F2B69A851EE6111A0082A504 /* customSticker.png in Resources */,
 				8218515C1EAA9103000EDFD2 /* v_cupcake_TN@2x.png in Resources */,
 				82E3DE421E831BD10008F600 /* 3d-diamond-2_TN.png in Resources */,
 				821851461EAA9103000EDFD2 /* tiara.png in Resources */,
