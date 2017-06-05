@@ -144,6 +144,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     if (originalAsset !=  nil) {
         media = [[HPPRCameraRollMedia alloc] initWithAsset:originalAsset];
         //media.assetURL = assetURL;
+        media.image = photo;
     } else {
         media = [[HPPRCameraRollMedia alloc] init];
         media.image = photo;
@@ -170,6 +171,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)loadPreviewViewControllerWithPhotoAsset:(PHAsset *)asset andPhoto:(UIImage *) photo andInfo:(NSDictionary *)info
 {
     HPPRCameraRollMedia *media = [[HPPRCameraRollMedia alloc] initWithAsset:asset];
+    media.image = photo;
     
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     
