@@ -236,9 +236,9 @@ CGSize const kThumbnailSize = { 100, 100 };
                 self.saveLabel.alpha = 1.0;
                 self.cornerLayer.opacity = 0.0;
                 self.closeButton.alpha = 0.0;
-                self.closeButton.userInteractionEnabled = NO;
+                self.closeButton.superview.userInteractionEnabled = NO;
                 self.infoButton.alpha = 0.0;
-                self.infoButton.userInteractionEnabled = NO;
+                self.infoButton.superview.userInteractionEnabled = NO;
                 self.noButton.alpha = 1.0;
                 self.noButton.enabled = YES;
                 self.yesButton.alpha = 1.0;
@@ -251,9 +251,9 @@ CGSize const kThumbnailSize = { 100, 100 };
                 self.saveLabel.alpha = 0.0;
                 self.cornerLayer.opacity = 1.0;
                 self.closeButton.alpha = 1.0;
-                self.closeButton.userInteractionEnabled = YES;
+                self.closeButton.superview.userInteractionEnabled = YES;
                 self.infoButton.alpha = 1.0;
-                self.infoButton.userInteractionEnabled = YES;
+                self.infoButton.superview.userInteractionEnabled = YES;
                 self.noButton.alpha = 0.0;
                 self.noButton.enabled = NO;
                 self.yesButton.alpha = 0.0;
@@ -495,11 +495,11 @@ CGSize const kThumbnailSize = { 100, 100 };
     [self.player play];
     self.videoView.alpha = 0.0;
     self.videoView.hidden = NO;
-    self.infoButton.userInteractionEnabled = NO;
+    self.infoButton.superview.userInteractionEnabled = NO;
     [UIView animateWithDuration:kPGCustomStickerAnimationDuration animations:^{
         self.videoView.alpha = 1.0;
     } completion:^(BOOL finished) {
-        self.infoButton.userInteractionEnabled = YES;
+        self.infoButton.superview.userInteractionEnabled = YES;
     }];
 }
 
