@@ -34,6 +34,12 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
         self.createdTime = asset.creationDate;
         self.mediaType = [HPPRCameraRollMedia mediaTypeForAsset:asset];
         self.objectID = [self.asset localIdentifier];
+        
+        if (self.asset.mediaSubtypes & PHAssetMediaSubtypePhotoLive) {
+            self.livePhoto = [NSNumber numberWithBool:YES];
+        } else {
+            self.livePhoto = [NSNumber numberWithBool:NO];
+        }
     }
 
     return self;

@@ -49,6 +49,12 @@
         
         self.identifier = [dict objectForKey:@"id"];
         self.owner = [dict objectForKey:@"owner"];
+        
+        if ([dict objectForKey:@"livePhoto"]) {
+            self.livePhoto = [dict objectForKey:@"livePhoto"];
+        } else {
+            self.livePhoto = [NSNumber numberWithBool:NO];
+        }
     }
     
     return self;
@@ -105,6 +111,9 @@
     
     if (self.owner)
         [dict setObject:self.owner forKey:@"owner"];
+    
+    if (self.livePhoto)
+        [dict setObject:self.livePhoto forKey:@"livePhoto"];
     
     return dict;
 }

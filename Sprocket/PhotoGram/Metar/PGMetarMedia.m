@@ -322,6 +322,13 @@
     } else {
         PGMetarSource *source = [[PGMetarSource alloc] init];
         source.from = PGMetarSourceFromLocal;
+        
+        if (media.livePhoto && [media.livePhoto boolValue]) {
+            source.livePhoto = [NSNumber numberWithBool:YES];
+        } else {
+            source.livePhoto = [NSNumber numberWithBool:NO];
+        }
+
         meta.source = source;
     }
     

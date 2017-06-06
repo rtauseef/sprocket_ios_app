@@ -12,6 +12,7 @@
 #import "PGPayoffViewImageViewController.h"
 #import "PGPayoffViewErrorViewController.h"
 #import "PGPayoffViewWikipediaViewController.h"
+#import "PGPayoffViewLivePhotoViewController.h"
 
 #import "PGPageControl.h"
 #import "HPPR.h"
@@ -87,6 +88,19 @@
                     [viewVideoVc setVideoWithAsset:firstAsset];
                     [self.arrayOfViewControllers addObject:viewVideoVc];
                 }
+            }
+        } else if (metadata.mediaType == PGMetarMediaTypeImage && metadata.source.livePhoto && [metadata.source.livePhoto boolValue]) {
+            
+            NSString *localId = metadata.source.identifier;
+            PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
+            
+            if( assets.count ) {
+                PGPayoffViewLivePhotoViewController *livePhotoVc = [[PGPayoffViewLivePhotoViewController alloc]
+                                                                initWithNibName:@"PGPayoffViewLivePhotoViewController" bundle:nil];
+                
+                PHAsset * firstAsset = assets[0];
+                [livePhotoVc setLivePhotoAsset:firstAsset];
+                [self.arrayOfViewControllers addObject:livePhotoVc];
             }
         }
         

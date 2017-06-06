@@ -2230,6 +2230,8 @@
 		EDFC68941EE618A3009FA37E /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
 		EDFC68951EE618AB009FA37E /* PGRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5434119C785B100460701 /* PGRevealViewController.m */; };
 		EDFC68961EE618B5009FA37E /* PGSegmentedControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810719A2B249000D45E0 /* PGSegmentedControlView.m */; };
+		EDFC689A1EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */; };
+		EDFC689D1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
@@ -4237,6 +4239,9 @@
 		ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewWikipediaViewController.m; path = PayoffViews/PGPayoffViewWikipediaViewController.m; sourceTree = "<group>"; };
 		ED7F65FD1EE07F2F002A0912 /* PGMetarOfflineTagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarOfflineTagManager.h; path = Metar/PGMetarOfflineTagManager.h; sourceTree = "<group>"; };
 		ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarOfflineTagManager.m; path = Metar/PGMetarOfflineTagManager.m; sourceTree = "<group>"; };
+		EDFC68981EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewLivePhotoViewController.h; path = Metar/PGPayoffViewLivePhotoViewController.h; sourceTree = "<group>"; };
+		EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewLivePhotoViewController.m; path = Metar/PGPayoffViewLivePhotoViewController.m; sourceTree = "<group>"; };
+		EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewLivePhotoViewController.xib; path = PayoffViews/PGPayoffViewLivePhotoViewController.xib; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
@@ -6229,6 +6234,9 @@
 				ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */,
 				ED7F65D81ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.h */,
 				ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */,
+				EDFC68981EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.h */,
+				EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */,
+				EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */,
 				ED7F65BF1ED3AD7B002A0912 /* Accessories */,
 			);
 			name = PayoffViews;
@@ -7354,6 +7362,7 @@
 				F2D44BA41EDF3AC900492DE5 /* crown_2.png in Resources */,
 				F2D44BC91EDF3AC900492DE5 /* hammer_TN.png in Resources */,
 				8212BBB21EA92A26009E66EC /* diploma_doodle_TN@3x.png in Resources */,
+				EDFC689D1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib in Resources */,
 				8212BEFD1EA93616009E66EC /* OMG.png in Resources */,
 				82E3D9B21E82EEED0008F600 /* catwhiskers_TN@2x.png in Resources */,
 				826BEAF51E85BEAD000BE3FA /* Floral2Frame.png in Resources */,
@@ -9622,6 +9631,7 @@
 				F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */,
 				82EF7B011EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
 				E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */,
+				EDFC689A1EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m in Sources */,
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
 				ED7F65CA1ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m in Sources */,
 				F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */,

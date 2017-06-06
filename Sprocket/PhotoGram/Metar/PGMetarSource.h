@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, PGMetarSourceOrigin) {
 @property (strong, nonatomic) PGMetarSocial* social;
 @property (strong, nonatomic) NSString* identifier;
 @property (strong, nonatomic) NSString* owner;
+@property (strong, nonatomic) NSNumber* livePhoto;
 
 - (instancetype)initWithDictionary: (NSDictionary *) dict;
 - (NSDictionary *) getDict;
