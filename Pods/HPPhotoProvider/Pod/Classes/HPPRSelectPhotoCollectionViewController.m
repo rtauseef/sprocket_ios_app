@@ -31,8 +31,6 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 @interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @property (strong, nonatomic) UIImage *selectedImage;
 @property (weak, nonatomic) IBOutlet UILabel *userAccountIsPrivateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noPhotosLabel;

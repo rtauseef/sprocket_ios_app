@@ -27,6 +27,8 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 @property (strong, nonatomic) NSString *customNoPhotosMessage;
 @property (assign, nonatomic) BOOL allowMultiSelect;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 - (void)refresh;
 - (void)beginMultiSelect;
 - (void)endMultiSelect:(BOOL)refresh;

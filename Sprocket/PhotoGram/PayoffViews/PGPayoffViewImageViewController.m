@@ -25,9 +25,12 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 @property (strong, nonatomic) CLGeocoder *geocoder;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (assign, nonatomic) BOOL scrollViewNeedsUpdate;
+@property (weak, nonatomic) IBOutlet UIImageView *blockImageView;
 @end
 
+#define kPayoffBottomMargin 20
 #define kPayoffViewInset 60
 #define kPGLocationDistance 1000 // 1km
 
@@ -39,6 +42,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
     
+    self.scrollViewNeedsUpdate = YES;
     self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
     self.photoCollectionViewController.delegate = self;
     self.provider = [[HPPRCameraRollPartialPhotoProvider alloc] init];
@@ -48,6 +52,7 @@
     self.viewTitle = [NSString string];
     [self.activityIndicator startAnimating];
     self.photoCollectionViewController.view.hidden = YES;
+    self.photoCollectionViewController.collectionView.scrollEnabled = NO;
     
     if (self.filteringDate) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -102,6 +107,8 @@
     }
 }
 
+
+
 - (void) updateViewTitleLocally {
     if (self.metadata.location && self.metadata.location.venue.area != nil) {
         self.viewTitle = [NSString stringWithFormat:@"Photos near %@",self.metadata.location.venue.area];
@@ -116,20 +123,73 @@
 - (void) providerUpdateDone {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.photoCollectionViewController refresh];
-        
         [self.activityIndicator stopAnimating];
         self.photoCollectionViewController.view.hidden = NO;
         
+    
+        self.scrollViewNeedsUpdate = YES;
+        
+        if (self.view.window != nil) {
+            [self fixScrollViewSize];
+        }
     });
+}
+
+
+- (UIImage *)imageByCroppingImage:(UIImage *)image toSize:(CGSize)size
+{
+    double newCropWidth, newCropHeight;
+    
+    newCropWidth = image.size.width;
+    newCropHeight = image.size.width/size.width*size.height;
+    
+    
+    double x = image.size.width/2.0 - newCropWidth/2.0;
+    double y = image.size.height/2.0 - newCropHeight/2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, newCropWidth, newCropHeight);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return cropped;
+}
+
+- (void) fixScrollViewSize {
+    [self.photoCollectionViewController.collectionView reloadData];
+    [self.photoCollectionViewController.collectionView layoutIfNeeded];
+    CGSize calculatedSize = self.photoCollectionViewController.collectionView.contentSize;
+    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, calculatedSize.height);
+    CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, calculatedSize.height + self.mainView.frame.origin.y + kPayoffBottomMargin);
+    
+    self.scrollView.contentSize = totalScrollSize;
+    self.scrollViewNeedsUpdate = NO;
+    [self.photoCollectionViewController.view setFrame:frame];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, floorf(self.mainView.bounds.size.height));
-    [self.photoCollectionViewController.view setFrame:frame];
-    [self.photoCollectionViewController.view setNeedsDisplay];
+    if (self.scrollViewNeedsUpdate) {
+        [self fixScrollViewSize];
+    }
     
+    if (self.blockImageView.image == nil) {
+        NSString *localId = self.metadata.source.identifier;
+        PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
+        
+        if ([assets count] > 0) {
+            PHAsset *firstAsset = assets[0];
+            [[PHImageManager defaultManager] requestImageForAsset:firstAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                
+                self.blockImageView.contentMode = UIViewContentModeScaleAspectFit;
+                self.blockImageView.image = [self imageByCroppingImage:result toSize:self.blockImageView.frame.size];
+            }];
+        } else {
+            //TODO: placeholder image
+        }
+    }
     if (self.tmpViewController) {
         [self.tmpViewController.view removeFromSuperview];
         self.tmpViewController = nil;

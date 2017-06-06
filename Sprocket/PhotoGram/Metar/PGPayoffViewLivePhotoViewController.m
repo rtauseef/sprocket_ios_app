@@ -44,10 +44,8 @@
             
             self.photoView.center = [self.view convertPoint:self.view.center fromView:self.view.superview];
             
-            [self.view addSubview:self.photoView];
-
-            
-            
+            [self.view.layer addSublayer:self.photoView.layer];
+  
             [_spinner stopAnimating];
             
             if (self.isViewLoaded && self.view.window) {
