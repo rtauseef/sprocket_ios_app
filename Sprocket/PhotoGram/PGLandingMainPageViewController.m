@@ -71,6 +71,9 @@ NSInteger const kMantaErrorCoverOpen = 6;
 
 @property (strong, nonatomic) UIAlertController *errorAlert;
 
+@property (assign, nonatomic) NSInteger currentQueueIdWithError;
+@property (strong, nonatomic) NSMutableArray<NSNumber *> *displayedErrors;
+
 @end
 
 @implementation PGLandingMainPageViewController
@@ -130,6 +133,9 @@ NSInteger const kMantaErrorCoverOpen = 6;
     [self addLongPressGesture];
 
     [MPBTPrintManager sharedInstance].delegate = self;
+    
+    self.currentQueueIdWithError = -1;
+    self.displayedErrors = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -482,13 +488,26 @@ NSInteger const kMantaErrorCoverOpen = 6;
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
-    if (self.errorAlert || errorCode == kMantaErrorNoError) {
+    if (self.errorAlert || errorCode == kMantaErrorNoError || errorCode == kMantaErrorBusy) {
         return;
     }
     
+    if (self.currentQueueIdWithError != printManager.queueId) {
+        self.currentQueueIdWithError = printManager.queueId;
+        [self.displayedErrors removeAllObjects];
+    }
+    
+    NSNumber *error = [NSNumber numberWithInteger:errorCode];
+    if ([self.displayedErrors containsObject:error]) {
+        return;
+    }
+    
+    [self.displayedErrors addObject:error];
+
+    BOOL shouldDisplayFullMessage = errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    
     NSString *errorMessage;
-    if (errorCode == kMantaErrorBusy || errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch) {
-        
+    if (shouldDisplayFullMessage) {
         NSString *printsInQueue;
         if (printManager.queueSize <= 0) {
             printsInQueue = NSLocalizedString(@"1 in progress", @"Message presented when some error occurred while printing an image");
@@ -506,7 +525,7 @@ NSInteger const kMantaErrorCoverOpen = 6;
                                                           message:errorMessage
                                                    preferredStyle:UIAlertControllerStyleAlert];
 
-    if (errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch) {
+    if (shouldDisplayFullMessage) {
         UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
