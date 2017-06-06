@@ -285,7 +285,7 @@ NSInteger const kMantaErrorBusy = 1;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
 
-        [[UAirship inAppMessaging] displayPendingMessage];
+        [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
     });
 }
 

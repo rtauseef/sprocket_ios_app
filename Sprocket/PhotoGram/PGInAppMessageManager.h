@@ -24,6 +24,8 @@ extern NSString * const kInAppMessageTypeValueFirmwareUpgrade;
 - (void)showBuyPaperMessage;
 - (void)showFirmwareUpgradeMessage;
 
+- (void)attemptToDisplayPendingMessage;
+
 @end
 
 @protocol PGInAppMessageHost <NSObject>

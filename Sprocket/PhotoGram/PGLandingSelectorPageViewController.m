@@ -17,7 +17,6 @@
 #import <HPPRSelectPhotoCollectionViewController.h>
 #import <HPPRSelectAlbumTableViewController.h>
 #import <HPPR.h>
-#import <AirshipKit.h>
 
 #import "PGLandingSelectorPageViewController.h"
 #import "PGInstagramLandingPageViewController.h"
@@ -35,6 +34,7 @@
 #import "PGFeatureFlag.h"
 #import "PGPhotoSelection.h"
 #import "PGAnalyticsManager.h"
+#import "PGInAppMessageManager.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -134,7 +134,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 
-    [[UAirship inAppMessaging] displayPendingMessage];
+    [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
 }
 
 
