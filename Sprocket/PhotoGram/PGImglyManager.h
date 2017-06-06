@@ -17,6 +17,8 @@
 
 @interface PGImglyManager : NSObject
 
+extern NSString * const kPGImglyManagerStickersChangedNotification;
+
 @property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
 
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager;

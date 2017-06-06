@@ -54,6 +54,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GPUImage (0.1.7)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.9):
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - Google/SignIn
   - GoogleAnalytics-iOS-SDK (= 3.12)
+  - GPUImage
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `master`)
   - iCarousel (= 1.8)
   - LivePaperSDK
@@ -111,6 +113,7 @@ SPEC CHECKSUMS:
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
@@ -121,6 +124,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 167c2a32af012bd9142eda4198244dbdd7896eec
 
-PODFILE CHECKSUM: cad0313086fdcfe66b57e86b7658d2d390e24197
+PODFILE CHECKSUM: 78d25de8385a94240d6746893bc2d006eee68ec0
 
 COCOAPODS: 1.2.1

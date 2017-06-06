@@ -28,9 +28,8 @@ end
 Then(/^I touch the option "(.*?)"$/) do |option|
     if option == "How to & Help"
         if ENV['LANGUAGE'] == "Italian"
-        
             #touch "UITableViewLabel index:2"
-            touch "UILabel index:4"
+            touch "UILabel index:5"
         else
             touch ("view marked:'#{$list_loc[option]}'")
             sleep(STEP_PAUSE)
@@ -64,9 +63,12 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                     puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                 end
             else
-				sleep(STEP_PAUSE)
-                touch ("view marked:'#{$list_loc[option]}'")
-                sleep(STEP_PAUSE)
+                if option == "Tweet Support" && ENV['LANGUAGE'] == "Italian"
+                    puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                else
+                    touch ("view marked:'#{$list_loc[option]}'")
+                    sleep(STEP_PAUSE)
+                end
             end
         end
     end
@@ -202,7 +204,7 @@ def check_options_exist item
                         if ENV['LANGUAGE'] == "Italian"
                         
                             #item1 = query("UITableViewLabel index:2", :text)[0]
-                            item1 = query("UILabel index:4", :text)[0]
+                            item1 = query("UILabel index:5", :text)[0]
                             raise "localization failed!" unless item1 == $list_loc[item]
                         end
                      else
@@ -229,7 +231,15 @@ def check_options_exist item
                                              puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                                          end
                                      else
-                                        check_element_exists "view marked:'#{$list_loc[item]}'"
+                                         if item == "Tweet Support"
+                                             if ENV['LANGUAGE'] == "Italian"
+                                                 puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                                             else
+                                                 check_element_exists "view marked:'#{$list_loc[item]}'"
+                                             end
+                                         else
+                                             check_element_exists "view marked:'#{$list_loc[item]}'"
+                                         end
                                      end
                                  end
                              end
@@ -261,13 +271,13 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
         end
         sleep(STEP_PAUSE)
     else
-        if element_exists("view marked:'#{$list_loc['auth']}' index:0")
-            sleep(WAIT_SCREENLOAD)
-            touch("view marked:'#{$list_loc['auth']}' index:0")
-            sleep(WAIT_SCREENLOAD)
-            touch @current_page.download
-            sleep(STEP_PAUSE)
-        end
+        #if element_exists("view marked:'#{$list_loc['auth']}' index:0")
+            #sleep(WAIT_SCREENLOAD)
+           # touch("view marked:'#{$list_loc['auth']}' index:0")
+           # sleep(WAIT_SCREENLOAD)
+           # touch @current_page.download
+           # sleep(STEP_PAUSE)
+       # end
         check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
         sleep(STEP_PAUSE)
     end
@@ -291,8 +301,11 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
             end
         end
     else
-       # check_element_exists "label marked:'No prints in Print Queue'"
-        check_element_exists "label marked:'Sprocket Printer Not Connected, 1 print added to the queue, 1 total'"
+        if button == "No Prints"
+             check_element_exists "label marked:'No prints in Print Queue'"
+         else
+			check_element_exists "view {text CONTAINS 'Sprocket Printer Not Connected, 1 print added to the queue'}"
+        end
     end
 end
 

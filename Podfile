@@ -6,7 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 project 'Sprocket/Sprocket.xcodeproj'
 
-install! 'cocoapods', :deduplicate_targets => false
+install! 'cocoapods', deduplicate_targets: false, deterministic_uuids: false
 
 def shared_pods
     pod 'LivePaperSDK'
@@ -18,6 +18,7 @@ def shared_pods
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
     pod 'Google/SignIn'
+    pod 'GPUImage'
 end
 
 target "Sprocket" do

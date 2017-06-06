@@ -587,6 +587,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     currentGesturesView.totalRotation = 0.0F;
     currentGesturesView.scrollView.zoomScale = currentGesturesView.minimumZoomScale;
 
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 
     self.didChangeProject = YES;
@@ -596,14 +597,21 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 }
 
 - (void)photoEditViewControllerDidCancel:(IMGLYPhotoEditViewController *)photoEditViewController {
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)photoEditViewControllerDidFailToGeneratePhoto:(IMGLYPhotoEditViewController *)photoEditViewController {
     MPLogError(@"photoEditViewControllerDidFailToGeneratePhoto:%@", photoEditViewController);
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)clearPhotoEditor
+{
+    self.photoEditViewController = nil;
+    self.imglyManager.photoEditViewController = nil;
+}
 
 #pragma mark - Camera Handlers
 

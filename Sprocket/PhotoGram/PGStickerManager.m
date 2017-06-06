@@ -13,6 +13,8 @@
 #import "PGStickerManager.h"
 #import "NSLocale+Additions.h"
 
+#import "PGCustomStickerManager.h"
+
 @interface PGStickerManager()
 
 @end
@@ -118,8 +120,27 @@
                                                                                imageURL:getWellStickers[1].thumbnailURL
                                                                                stickers:getWellStickers];
     getWellCategory.accessibilityLabel = @"Get Well";
-    
-    return @[fathersDayCategory, summerCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory];
+
+    NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"customSticker" withExtension:@"png"];
+    IMGLYStickerCategory *addCustomCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                 imageURL:addStickerIcon
+                                                                                 stickers:@[]];
+
+    addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
+
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, fathersDayCategory, summerCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
+
+    NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
+    if (customStickers.count > 0) {
+        IMGLYStickerCategory *customCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[customStickers firstObject].thumbnailURL
+                                                                                        stickers:customStickers];
+
+        customCategory.accessibilityLabel = @"Custom Stickers";
+        [categories insertObject:customCategory atIndex:1];
+    }
+
+    return categories;
 }
 
 
