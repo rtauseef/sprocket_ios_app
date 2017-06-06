@@ -77,6 +77,8 @@ typedef enum {
 @property (assign, nonatomic) tHPRMediaSocialProvider socialProvider;
 @property (nonatomic, strong) NSString *videoPlaybackUri;
 
+@property (strong, nonatomic) NSNumber *livePhoto;
+
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;
 - (void)requestPreviewImageWithCompletion:(void(^)(UIImage *image))completion;
