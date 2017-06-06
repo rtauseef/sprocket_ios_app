@@ -123,6 +123,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGAppDelegatePrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
+
+    [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
