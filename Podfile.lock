@@ -99,7 +99,7 @@ CHECKOUT OPTIONS:
     :commit: 2b44d527a700010c42492d37f9e724ae411981c6
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 25c227ab4c84aaeac585d3d0ec35a287ef300988
+    :commit: 96ca55fe21066475d93d45a6860b1b04b3a0de73
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -109,7 +109,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0

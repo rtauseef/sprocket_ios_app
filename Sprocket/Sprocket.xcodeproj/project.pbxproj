@@ -105,6 +105,7 @@
 		71f2dffb8966b2947e2dced6 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27419B648E500AAB884 /* SourceSansPro-Regular.ttf */; };
 		72f28ed86ea1cb1293a4f971 /* Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B62FFB19A50E5800CB80D7 /* Search@2x.png */; };
 		731333AC1ECF68BE00E957BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 731333AE1ECF68BE00E957BB /* Localizable.strings */; };
+		7397DE051EE7444A00F544C0 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80619A69E5700C72F1A /* Back@2x.png */; };
@@ -8791,6 +8792,7 @@
 				826BEB181E85BEAD000BE3FA /* KraftFrame_TN.png in Resources */,
 				821850FE1EAA9103000EDFD2 /* icecream_tub.png in Resources */,
 				82184F821EAA9040000EDFD2 /* cupcake.png in Resources */,
+				7397DE051EE7444A00F544C0 /* PGProgressView.xib in Resources */,
 				821850AE1EAA9102000EDFD2 /* cat.png in Resources */,
 				F2D44C3E1EDF66C300492DE5 /* football_fathersday_TN@2x.png in Resources */,
 				82184F941EAA9040000EDFD2 /* fist_TN@2x.png in Resources */,
