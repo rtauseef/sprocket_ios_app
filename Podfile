@@ -18,6 +18,7 @@ def shared_pods
     pod 'UrbanAirship-iOS-SDK'
     pod 'iCarousel', '1.8'
     pod 'Google/SignIn'
+    pod 'GPUImage'
 end
 
 target "Sprocket" do

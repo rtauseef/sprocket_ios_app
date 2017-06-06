@@ -14,6 +14,7 @@
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
 #import "UIColor+Style.h"
+#import "PGCustomStickerManager.h"
 #import <imglyKit/IMGLYAnalyticsConstants.h>
 
 static NSString * const kImglyMenuItemMagic = @"Magic";
@@ -33,10 +34,15 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricsManager;
 
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
+@property (strong, nonatomic) IMGLYStickerCategoryDataSource *stickerCategoryDataSource;
 
 @end
 
 @implementation PGImglyManager
+
+NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerStickersChangedNotification";
+
+int const kCustomButtonTag = 9999;
 
 - (instancetype)init {
     self = [super init];
@@ -47,6 +53,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             NSURL *licenseURL = [[NSBundle mainBundle] URLForResource:@"imgly_license" withExtension:@""];
             [PESDK unlockWithLicenseAt:licenseURL];
         });
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStickerChangedNotification:) name:kPGImglyManagerStickersChangedNotification object:nil];
     }
 
     return self;
@@ -330,6 +338,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-tool-apply-btn"];
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
+                self.stickerCategoryDataSource = dataSource;
                 dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
             };
 
@@ -338,10 +347,21 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
                 cell.accessibilityLabel = category.accessibilityLabel;
+                [self resetCustomSticker:cell];
+                if ([category.accessibilityLabel isEqualToString:@"Add Custom Sticker"]) {
+                    [self configureAddCustomStickerView:cell];
+                }
+                if ([category.accessibilityLabel isEqualToString:@"Custom Stickers"]) {
+                    [self configureCustomStickerCategoryView:cell];
+                }
             };
 
             toolBuilder.stickerButtonConfigurationClosure = ^(IMGLYIconCollectionViewCell * _Nonnull cell, IMGLYSticker * _Nonnull sticker) {
                 cell.accessibilityLabel = sticker.accessibilityLabel;
+                [self resetCustomSticker:cell];
+                if ([sticker.accessibilityLabel containsString:@"Custom Sticker"]) {
+                    [self configureCustomStickerView:cell];
+                }
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
@@ -469,6 +489,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
 - (void)setPhotoEditViewController:(IMGLYPhotoEditViewController *)photoEditViewController
 {
+    _photoEditViewController = photoEditViewController;
+    
     void (^ _Nullable selectionChangedHandler)(UIView * _Nullable, UIView * _Nullable) = photoEditViewController.overlayController.selectionChangedHandler;
     
     __weak PGImglyManager *weakSelf = self;
@@ -578,6 +600,86 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         
         [self.embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
     }
+}
+
+#pragma mark - Custom Sticker
+
+- (void)resetCustomSticker:(UICollectionViewCell *)cell
+{
+    UIView *customView = [cell.contentView viewWithTag:kCustomButtonTag];
+    if (customView) {
+        [customView removeFromSuperview];
+    }
+    
+    if (cell.contentView.gestureRecognizers.count > 1) {
+        [cell.contentView removeGestureRecognizer:cell.contentView.gestureRecognizers.lastObject];
+    }
+}
+
+- (void)configureAddCustomStickerView:(UICollectionViewCell *)cell
+{
+    UIView *addButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.contentView.bounds.size.width, cell.contentView.bounds.size.height)];
+    addButton.tag = kCustomButtonTag;
+    addButton.backgroundColor = [UIColor clearColor];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customAddTapped:)];
+    [addButton addGestureRecognizer:recognizer];
+
+    [cell.contentView addSubview:addButton];
+}
+
+- (void)configureCustomStickerCategoryView:(UICollectionViewCell *)cell
+{
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(stickerCategoryLongTapped:)];
+    [cell.contentView addGestureRecognizer:longPress];
+}
+
+- (void)configureCustomStickerView:(UICollectionViewCell *)cell
+{
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(stickerLongTapped:)];
+    [cell.contentView addGestureRecognizer:longPress];
+}
+
+- (void)stickerCategoryLongTapped:(UIGestureRecognizer *)recognizer
+{
+    if (UIGestureRecognizerStateBegan == recognizer.state) {
+        [[PGCustomStickerManager sharedInstance] deleteAllStickers:self.photoEditViewController];
+    }
+}
+
+- (void)stickerLongTapped:(UIGestureRecognizer *)recognizer
+{
+    if (UIGestureRecognizerStateBegan == recognizer.state) {
+        NSString *sticker = [recognizer.view.superview.accessibilityLabel stringByReplacingOccurrencesOfString:@"Custom Sticker " withString:@""];
+        [[PGCustomStickerManager sharedInstance] deleteSticker:sticker viewController:self.photoEditViewController];
+    }
+}
+
+- (void)customAddTapped:(UIGestureRecognizer *)recognizer
+{
+    [[PGCustomStickerManager sharedInstance] presentCameraFromViewController:self.photoEditViewController];
+}
+
+- (void)reloadStickers
+{
+    self.stickerCategoryDataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UICollectionView *collectionView = self.stickerCategoryDataSource.collectionView;
+        NSIndexPath *path = [NSIndexPath indexPathForItem:1 inSection:0];
+        [collectionView reloadData];
+        [collectionView selectItemAtIndexPath:path animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+        [collectionView.delegate collectionView:collectionView didSelectItemAtIndexPath:path];
+    });
+    
+    
+}
+
+
+#pragma mark - Notifications
+
+- (void)handleStickerChangedNotification:(NSNotification *)notfication
+{
+    [self reloadStickers];
 }
 
 @end

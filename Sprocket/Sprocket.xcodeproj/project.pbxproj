@@ -77,6 +77,10 @@
 		5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */; };
 		64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		64f7ddbfe96170e31fa74e42 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E39CE8D21AA7C05900A2A644 /* DBChooser.bundle */; };
+		656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */; };
+		656FC3A71EC673BF00433269 /* PGCustomStickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */; };
+		656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3AA1EC6744800433269 /* UIImage+Fixup.m */; };
+		656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */ = {isa = PBXBuildFile; fileRef = 656FC3AA1EC6744800433269 /* UIImage+Fixup.m */; };
 		65778BF51ED8E9D5007DA11B /* AirshipAppExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; };
 		65778BF71ED8E9E5007DA11B /* AirshipAppExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E7730E1E4104820047E610 /* AirshipAppExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65778C031ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
@@ -84,7 +88,11 @@
 		658DF9DF1EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
 		658DF9E01EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
+		65A0026E1ECFA9D1006500EA /* stickers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 65A0026D1ECFA9D1006500EA /* stickers.mp4 */; };
+		65A0026F1ECFA9D1006500EA /* stickers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 65A0026D1ECFA9D1006500EA /* stickers.mp4 */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
+		65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */; };
+		65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */; };
 		65E671E91A78267A009A12F3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E671E81A78267A009A12F3 /* Settings.bundle */; };
 		67f88fd94b9a7b0b100adb0b /* Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80719A69E5700C72F1A /* Share@2x.png */; };
 		696b4cf61c03206ef232189d /* HPLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385419BE57C5009C695F /* HPLogo@2x.png */; };
@@ -2253,6 +2261,9 @@
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
 		F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
 		F272AE631ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
+		F2B69A851EE6111A0082A504 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD41EE0D65700492DE5 /* customSticker.png */; };
+		F2B69A861EE6111A0082A504 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */; };
+		F2B69A871EE6111A0082A504 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };
 		F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC11ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC51ECD08F100C11BE9 /* PGImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEC41ECD08F100C11BE9 /* PGImageCache.m */; };
@@ -2523,6 +2534,9 @@
 		F2D44CCB1EE08B1600492DE5 /* fd_heart_banner_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC21EE089A200492DE5 /* fd_heart_banner_TN@2x.png */; };
 		F2D44CCC1EE08B1600492DE5 /* fd_heart_banner_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC31EE089A200492DE5 /* fd_heart_banner_TN@3x.png */; };
 		F2D44CCD1EE08B1600492DE5 /* fd_heart_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */; };
+		F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD41EE0D65700492DE5 /* customSticker.png */; };
+		F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */; };
+		F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */; };
 		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
 		F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */; };
 		F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */; };
@@ -2831,14 +2845,21 @@
 		56F8885310A92E2015CB6017 /* Pods-Sprocket-cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.debug.xcconfig"; sourceTree = "<group>"; };
 		59E81F315BA08BC6592152BD /* Pods-Sprocket-cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket-cal.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal.release.xcconfig"; sourceTree = "<group>"; };
 		652D62121DA4610100BF26C8 /* PhotoGram-Info-cal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhotoGram-Info-cal.plist"; sourceTree = "<group>"; };
+		656FC3A41EC673BF00433269 /* PGCustomStickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCustomStickerManager.h; sourceTree = "<group>"; };
+		656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCustomStickerManager.m; sourceTree = "<group>"; };
+		656FC3A91EC6744800433269 /* UIImage+Fixup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Fixup.h"; sourceTree = "<group>"; };
+		656FC3AA1EC6744800433269 /* UIImage+Fixup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Fixup.m"; sourceTree = "<group>"; };
 		65778BEF1ED8E742007DA11B /* GoogleService-Info_DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_DEV.plist"; sourceTree = "<group>"; };
 		65778BF01ED8E742007DA11B /* GoogleService-Info_REL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info_REL.plist"; sourceTree = "<group>"; };
 		65778C021ED8FE93007DA11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirshipConfig-PRODUCTION.plist"; sourceTree = "<group>"; };
 		658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirshipConfig-DEFAULT.plist"; sourceTree = "<group>"; };
 		658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		65A0026D1ECFA9D1006500EA /* stickers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = stickers.mp4; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
+		65E025231ECA26A000C88803 /* PGCustomStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCustomStickerViewController.h; sourceTree = "<group>"; };
+		65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCustomStickerViewController.m; sourceTree = "<group>"; };
 		65E671E81A78267A009A12F3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
 		65F7A8111DA875AA0023E21D /* Sprocket Print.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sprocket Print.entitlements"; sourceTree = "<group>"; };
 		731333A51ECF68B900E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/MainInterface.strings"; sourceTree = "<group>"; };
@@ -4322,6 +4343,9 @@
 		F2D44CC21EE089A200492DE5 /* fd_heart_banner_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fd_heart_banner_TN@2x.png"; sourceTree = "<group>"; };
 		F2D44CC31EE089A200492DE5 /* fd_heart_banner_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fd_heart_banner_TN@3x.png"; sourceTree = "<group>"; };
 		F2D44CC41EE089A200492DE5 /* fd_heart_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fd_heart_banner.png; sourceTree = "<group>"; };
+		F2D44CD41EE0D65700492DE5 /* customSticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customSticker.png; sourceTree = "<group>"; };
+		F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSticker@2x.png"; sourceTree = "<group>"; };
+		F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSticker@3x.png"; sourceTree = "<group>"; };
 		F2D5A3971EAEA5E8002F9DDC /* link-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-icon.png"; sourceTree = "<group>"; };
 		F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkReaderKit.framework; sourceTree = "<group>"; };
 		F2E785201DDA4E230074FFB7 /* PGSocialSourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSocialSourcesManager.h; sourceTree = "<group>"; };
@@ -4477,6 +4501,14 @@
 				2671D4C81E3EB64600F166E3 /* Info.plist */,
 			);
 			path = PushNotificationExtension;
+			sourceTree = "<group>";
+		};
+		65A0026B1ECFA9A1006500EA /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				65A0026D1ECFA9D1006500EA /* stickers.mp4 */,
+			);
+			name = Video;
 			sourceTree = "<group>";
 		};
 		8212B9C31EA929C5009E66EC /* Graduation */ = {
@@ -5010,6 +5042,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				F2D44CD11EE0CD7100492DE5 /* Custom */,
 				F2D44B071EDF3AC800492DE5 /* FathersDay */,
 				829A7AA21EBBC485005D4938 /* Cannes */,
 				829A79941EBB8E5A005D4938 /* Summer */,
@@ -5811,6 +5844,7 @@
 		E34D5096199AB945006D80E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65A0026B1ECFA9A1006500EA /* Video */,
 				E34D5097199AB96C006D80E0 /* Fonts */,
 				E34D5098199AB972006D80E0 /* Images */,
 				F27256FE1E96B2A6009E553D /* imgly_license */,
@@ -6118,6 +6152,8 @@
 		F27257001E983F97009E553D /* imgly */ = {
 			isa = PBXGroup;
 			children = (
+				656FC3A91EC6744800433269 /* UIImage+Fixup.h */,
+				656FC3AA1EC6744800433269 /* UIImage+Fixup.m */,
 				82362A161D59408E0019F024 /* PGFrameItem.h */,
 				82362A171D59408E0019F024 /* PGFrameItem.m */,
 				826BE9691E85B693000BE3FA /* PGFrameManager.h */,
@@ -6128,6 +6164,10 @@
 				82362A581D5959870019F024 /* PGStickerItem.m */,
 				82A1167E1E5FA57100E7F8FC /* PGStickerManager.h */,
 				82A1167F1E5FA57100E7F8FC /* PGStickerManager.m */,
+				656FC3A41EC673BF00433269 /* PGCustomStickerManager.h */,
+				656FC3A51EC673BF00433269 /* PGCustomStickerManager.m */,
+				65E025231ECA26A000C88803 /* PGCustomStickerViewController.h */,
+				65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */,
 			);
 			name = imgly;
 			sourceTree = "<group>";
@@ -6275,6 +6315,17 @@
 			);
 			name = FathersDay;
 			path = Resources/Images/Stickers/FathersDay;
+			sourceTree = "<group>";
+		};
+		F2D44CD11EE0CD7100492DE5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F2D44CD41EE0D65700492DE5 /* customSticker.png */,
+				F2D44CD51EE0D65700492DE5 /* customSticker@2x.png */,
+				F2D44CD61EE0D65700492DE5 /* customSticker@3x.png */,
+			);
+			name = Custom;
+			path = Resources/Images/Stickers/Custom;
 			sourceTree = "<group>";
 		};
 		F2E785281DDA78040074FFB7 /* SocialSources */ = {
@@ -6894,6 +6945,7 @@
 				8212BE531EA93616009E66EC /* heart_balloons_TN@3x.png in Resources */,
 				F2030C0D1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */,
 				82E3DB3A1E82EEEE0008F600 /* unicorn_float_TN@2x.png in Resources */,
+				65A0026E1ECFA9D1006500EA /* stickers.mp4 in Resources */,
 				E34D50B3199AB9FE006D80E0 /* HPSimplified_LtIt.ttf in Resources */,
 				8212BF9D1EA93616009E66EC /* star_yellow.png in Resources */,
 				82E3DB921E82F1920008F600 /* glasses_blossom_TN@2x.png in Resources */,
@@ -7173,6 +7225,7 @@
 				8212BE7F1EA93616009E66EC /* horn_TN.png in Resources */,
 				8212BE5F1EA93616009E66EC /* heart_wings_TN.png in Resources */,
 				8212BEB91EA93616009E66EC /* LOL_TN@2x.png in Resources */,
+				F2D44CD91EE0D65700492DE5 /* customSticker@3x.png in Resources */,
 				F2030C0A1EA5878600141855 /* imglyStickerCategory@2x.png in Resources */,
 				82A11D071E5FB93B00E7F8FC /* cat-fries.png in Resources */,
 				82E3D9E81E82EEED0008F600 /* glasses_1_TN.png in Resources */,
@@ -7190,6 +7243,7 @@
 				8212BE051EA93616009E66EC /* fist.png in Resources */,
 				82E3DACA1E82EEED0008F600 /* starhp_TN@2x.png in Resources */,
 				82E3DB101E82EEED0008F600 /* thought_bubble_TN.png in Resources */,
+				F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */,
 				8212BFA51EA93616009E66EC /* sun_hat.png in Resources */,
 				8212BBFA1EA92A26009E66EC /* g_owl_TN@3x.png in Resources */,
 				82A11D851E5FB93B00E7F8FC /* taco2_TN@3x.png in Resources */,
@@ -7481,6 +7535,7 @@
 				8212BEFB1EA93616009E66EC /* OMG_TN@3x.png in Resources */,
 				8212BF0B1EA93616009E66EC /* Owl_TN@3x.png in Resources */,
 				8212BC1C1EA92A26009E66EC /* ribbon.png in Resources */,
+				F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */,
 				F2D44B991EDF3AC900492DE5 /* bow_tie_TN.png in Resources */,
 				8212BC0E1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				82A11D351E5FB93B00E7F8FC /* fork_TN@3x.png in Resources */,
@@ -7892,6 +7947,7 @@
 				82184F511EAA9040000EDFD2 /* beachball-color_TN@3x.png in Resources */,
 				8212BB791EA92A25009E66EC /* book_stack_TN@2x.png in Resources */,
 				8218500A1EAA9040000EDFD2 /* Mushrooms-b_TN@3x.png in Resources */,
+				F2B69A871EE6111A0082A504 /* customSticker@3x.png in Resources */,
 				82184FA21EAA9040000EDFD2 /* Football.png in Resources */,
 				82E3DE781E831BD10008F600 /* doughnut_TN@3x.png in Resources */,
 				8218508E1EAA9102000EDFD2 /* balloons.png in Resources */,
@@ -8022,6 +8078,7 @@
 				a73ce2ed73fb4ce344b47988 /* HPSimplified_It.ttf in Resources */,
 				821850281EAA9040000EDFD2 /* Pie_TN@2x.png in Resources */,
 				91e320b9413994b3147af55e /* Buy_Paper_Print@3x.png in Resources */,
+				F2B69A861EE6111A0082A504 /* customSticker@2x.png in Resources */,
 				3c5e32682184b958db2c4972 /* HPSimplified_Lt.ttf in Resources */,
 				82E3DE851E831BD10008F600 /* ketchup-hotdog.png in Resources */,
 				821850CD1EAA9102000EDFD2 /* feather2_TN@3x.png in Resources */,
@@ -8512,6 +8569,7 @@
 				82184FAD1EAA9040000EDFD2 /* gift-dog_TN@3x.png in Resources */,
 				821851441EAA9103000EDFD2 /* tiara_TN@2x.png in Resources */,
 				82184F531EAA9040000EDFD2 /* Beard_TN.png in Resources */,
+				F2B69A851EE6111A0082A504 /* customSticker.png in Resources */,
 				8218515C1EAA9103000EDFD2 /* v_cupcake_TN@2x.png in Resources */,
 				82E3DE421E831BD10008F600 /* 3d-diamond-2_TN.png in Resources */,
 				821851461EAA9103000EDFD2 /* tiara.png in Resources */,
@@ -8834,6 +8892,7 @@
 				82E3DEAD1E831BD10008F600 /* word-cloud-grumble.png in Resources */,
 				F2D44C8D1EDF66C300492DE5 /* wrench_TN.png in Resources */,
 				826BEB2A1E85BEAD000BE3FA /* PinkTriangleFrame_TN@2x.png in Resources */,
+				65A0026F1ECFA9D1006500EA /* stickers.mp4 in Resources */,
 				82184F7B1EAA9040000EDFD2 /* Cocoa_TN.png in Resources */,
 				F2D44C461EDF66C300492DE5 /* glasses_2_TN@2x.png in Resources */,
 				821850CB1EAA9102000EDFD2 /* feather2_TN.png in Resources */,
@@ -9256,6 +9315,7 @@
 				F21C66611E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
 				4418fa35a759dbee8758b95d /* PGLandingMainPageViewController.m in Sources */,
 				3bafc46b9f4cb58b01413cb6 /* SWRevealViewController.m in Sources */,
+				656FC3A71EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
 				70dbfe6bae80bc96cda49075 /* UIColor+Style.m in Sources */,
 				825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				5089b6e4b798bd669905cc1d /* PGExperimentManager.m in Sources */,
@@ -9267,6 +9327,7 @@
 				49ad600baf4c001336afed6f /* PGTermsAttributedLabel.m in Sources */,
 				F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
+				65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
 				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
 				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
@@ -9297,6 +9358,7 @@
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
+				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
@@ -9391,11 +9453,14 @@
 				F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */,
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
+				65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
+				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
 				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
+				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
