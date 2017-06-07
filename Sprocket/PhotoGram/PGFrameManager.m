@@ -63,7 +63,7 @@
              [[PGFrameItem alloc] initWithName:@"Blue Watercolor" imageName:@"BlueWatercoloFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Floral Overlay" imageName:@"FloralOverlayFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Red" imageName:@"RedFrame" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"Gradient" imageName:@"GradientFrame" andPackageName:nil],
+//             [[PGFrameItem alloc] initWithName:@"Gradient" imageName:@"GradientFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Turquoise" imageName:@"TurquoiseFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Dots Overlay" imageName:@"DotsOverlayFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Kraft" imageName:@"KraftFrame" andPackageName:nil],

@@ -193,7 +193,7 @@
              [[PGStickerItem alloc] initWithName:@"Beach Umbrella" imageName:@"beach_umbrella" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Beachball" imageName:@"beachball" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Radio Doodle" imageName:@"radio_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Swim Fins" imageName:@"swim_fins" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+//             [[PGStickerItem alloc] initWithName:@"Swim Fins" imageName:@"swim_fins" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Scuba Mask" imageName:@"scuba_mask" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Water Bubbles" imageName:@"water_bubbles" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Bike Cruiser" imageName:@"bike_cruiser" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
