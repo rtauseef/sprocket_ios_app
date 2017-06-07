@@ -48,3 +48,7 @@ GoogleService-Info.plist
 
 # gets overwritten by DEFAULT or PRODUCTION version in build phase, no need to check in this file
 AirshipConfig.plist
+
+# Aurasma files - too big to add
+Sprocket/Aurasma/*.framework
+Sprocket/Aurasma/libs
