@@ -219,9 +219,9 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
   #split_sticker_tab = sticker_tab.split("_")
   #split_sticker_tab_id = split_sticker_tab[2].to_i
     if $sticker_tab == "Fathers Day Category"
-        tab = query("IMGLYIconBorderedCollectionViewCell index:0",:accessibilityLabel)[0]
+        tab = query("IMGLYIconBorderedCollectionViewCell index:1",:accessibilityLabel)[0]
         if tab == "Father's Day Category"
-            touch query "IMGLYIconBorderedCollectionViewCell index:0" 
+            touch query "IMGLYIconBorderedCollectionViewCell index:1" 
         else
             raise "Tab not found"
         end
