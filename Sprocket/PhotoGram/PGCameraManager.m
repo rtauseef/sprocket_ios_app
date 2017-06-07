@@ -345,6 +345,10 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     [self configFlash:self.isFlashOn forDevice:device];
 }
 
+- (void)resetPresetSize {
+    self.session.sessionPreset = AVCaptureSessionPresetHigh;
+}
+
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
 {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {

@@ -10,14 +10,19 @@
 // the license agreement.
 //
 
-#import "PGOverlayCameraViewController.h"
+#import <AurasmaSDK/AurasmaSDK.h>
 #import "PGCameraManager.h"
+#import "PGAurasmaTrackingViewDelegate.h"
+#import "PGAurasmaViewController.h"
 
-@interface PGOverlayCameraViewController ()
+#import "PGOverlayCameraViewController.h"
+
+@interface PGOverlayCameraViewController () <PGAurasmaTrackingViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *ARButton;
 
 @end
 
@@ -51,6 +56,12 @@
     [self setupButtons];
 }
 
+- (IBAction)ARTapped:(id)sender {
+    PGAurasmaViewController *aurasmaViewController = [[PGAurasmaViewController alloc] initWithNibName:@"PGAurasmaViewController" bundle:nil];
+    [aurasmaViewController setClosingDelegate:self];
+    [self presentViewController:aurasmaViewController animated:YES completion:nil];
+}
+
 - (void)setupButtons
 {
     NSArray<AVCaptureDevice *> *devices = [[PGCameraManager sharedInstance] availableDevices];
@@ -72,6 +83,28 @@
             [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOff"] forState:UIControlStateNormal];
         }
     }
+}
+
+#pragma mark PGAurasmaTrackingViewDelegate
+
+- (void)finishedTracking:(PGAurasmaViewController *)controller {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    /* Another AURTrackingController cannot be created until the previous one has finished releasing. */
+    self.ARButton.hidden = YES;
+    __block id <NSObject> observer;
+    
+    void (^notificationCallback)(NSNotification *) = ^(__unused NSNotification *notif) {
+        [[PGCameraManager sharedInstance] resetPresetSize];
+        self.ARButton.hidden = NO;
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        observer = nil; // Needed for iOS7
+    };
+    
+    observer = [[NSNotificationCenter defaultCenter] addObserverForName:AURDestroyTrackingControllerFinishedNotification
+                                                                 object:[AURTrackingController class]
+                                                                  queue:[NSOperationQueue mainQueue]
+                                                             usingBlock:notificationCallback];
 }
 
 @end
