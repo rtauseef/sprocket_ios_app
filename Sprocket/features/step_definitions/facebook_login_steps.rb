@@ -29,6 +29,7 @@ end
 
 Then(/^I should see the "(.*?)" Logo$/) do |photo_source|
     sleep(WAIT_SCREENLOAD)
+    $photo_source = photo_source
   if photo_source == "Facebook"
         value = "//UIAButton[@name='Facebook']"
     end
@@ -36,21 +37,27 @@ Then(/^I should see the "(.*?)" Logo$/) do |photo_source|
 end
 Then(/^I touch the "(.*?)" Logo$/) do |photo_source|
     
-  if photo_source == "Facebook"
+    if photo_source == "Facebook"
         value = "//UIAButton[@name='Facebook']"
+    else
+        if photo_source == "Photos"
+            value = "//XCUIElementTypeButton[@name='CameraRoll']"
+        end
     end
     selenium.find_element(:xpath,"#{value}").click
 end
 
 When(/^I touch signin button$/) do
-        sleep(WAIT_SCREENLOAD)
-        action = Appium::TouchAction.new
-        action.swipe start_x: 50,offset_x: 300,start_y: 100,offset_y: 100,duration: 1000
-        action.perform 
-        sleep(WAIT_SCREENLOAD)
-    sign_in_button="//UIAButton[@name='Sign In']"
-    if selenium.find_elements(:xpath,"#{sign_in_button}").size > 0
-        selenium.find_element(:xpath,"#{sign_in_button}").click
+    sleep(WAIT_SCREENLOAD)
+    action = Appium::TouchAction.new
+    action.swipe start_x: 50,offset_x: 300,start_y: 100,offset_y: 100,duration: 1000
+    action.perform 
+    sleep(WAIT_SCREENLOAD)
+    if $photo_source != "Photos"
+        sign_in_button="//UIAButton[@name='Sign In']"
+        if selenium.find_elements(:xpath,"#{sign_in_button}").size > 0
+            selenium.find_element(:xpath,"#{sign_in_button}").click
+        end
     end
 end
 
