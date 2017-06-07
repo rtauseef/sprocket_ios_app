@@ -161,6 +161,8 @@ Scenario Outline: Verify successful navigation for How to & Help options
  @TA17541
   Scenario: Signin to Facebook
     Given I am on the Landing screen
+    When I touch the "Photos" Logo
+    And I touch signin button
     When I touch hamburger button on navigation bar
     And I select "Buy Paper" option
     Then I verify the url
