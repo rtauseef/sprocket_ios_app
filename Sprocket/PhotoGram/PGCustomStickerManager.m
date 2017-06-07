@@ -25,7 +25,6 @@
 static NSString * const kPGCustomStickerManagerLastStickerNumberKey = @"com.hp.sprocket.imgly.last-sticker";
 static NSString * const kPGCustomStickerManagerDirectory = @"stickers";
 static NSString * const kCustomStickerManagerThumbnailSuffix = @"_TN";
-static NSString * const kPGCustomStickerManagerRawSuffix = @"_RAW";
 static int const kCustomStickerManagerPrefixLength = 8;
 
 + (instancetype)sharedInstance
@@ -136,7 +135,7 @@ static int const kCustomStickerManagerPrefixLength = 8;
             NSURL *thumb = [[[PGCustomStickerManager sharedInstance] stickerDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.png", base, kCustomStickerManagerThumbnailSuffix]];
             if ([[NSFileManager defaultManager] fileExistsAtPath:[thumb path]]) {
                 IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImageURL:url thumbnailURL:thumb tintMode:IMGLYStickerTintModeSolid]; // IMGLYStickerTintModeNone
-                sticker.accessibilityLabel = [NSString stringWithFormat:@"Custom Sticker %@", base];
+                sticker.accessibilityLabel = [NSString stringWithFormat:@"CS%@", [base substringWithRange:NSMakeRange(0, 8)]];
                 [stickers addObject:sticker];
             }
         }
