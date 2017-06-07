@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 
 @protocol HPPRSelectPhotoCollectionViewControllerDelegate;
 
-@interface HPPRSelectPhotoCollectionViewController : UIViewController
+@interface HPPRSelectPhotoCollectionViewController : UIViewController <UICollectionViewDelegate>
 
 @property (strong, nonatomic) HPPRSelectPhotoProvider *provider;
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewControllerDelegate> delegate;

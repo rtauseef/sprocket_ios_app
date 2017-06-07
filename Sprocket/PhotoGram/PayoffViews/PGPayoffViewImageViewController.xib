@@ -12,8 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGPayoffViewImageViewController">
             <connections>
                 <outlet property="activityIndicator" destination="GBS-xY-0vP" id="nNn-Zo-XvO"/>
-                <outlet property="blockImageView" destination="6hy-gR-JYL" id="TL9-9V-YU5"/>
+                <outlet property="blockImageButton" destination="VeA-7l-HCh" id="CjY-ST-S9y"/>
                 <outlet property="mainView" destination="Lbs-Qh-NHP" id="aYB-0K-6pd"/>
+                <outlet property="mapView" destination="WPd-ig-yjx" id="wPW-BM-Xle"/>
                 <outlet property="scrollView" destination="rIu-pf-RHQ" id="Jra-TP-vkb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,27 +30,36 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Li4-dY-zNA" userLabel="contentView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6hy-gR-JYL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="128" id="zhN-eu-6CL"/>
-                                    </constraints>
-                                </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbs-Qh-NHP" userLabel="mainView">
                                     <rect key="frame" x="0.0" y="136" width="375" height="531"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-ig-yjx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="VNQ-4p-Ai1"/>
+                                    </constraints>
+                                </mapView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeA-7l-HCh" userLabel="blockImageButton">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                    <connections>
+                                        <action selector="clickImageBlock:" destination="-1" eventType="touchUpInside" id="qRf-jg-UDJ"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="6hy-gR-JYL" secondAttribute="bottom" constant="8" id="JNp-pv-hqu"/>
-                                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="6hy-gR-JYL" secondAttribute="bottom" constant="8" id="Ozc-BL-ja5"/>
-                                <constraint firstAttribute="trailing" secondItem="6hy-gR-JYL" secondAttribute="trailing" id="Snh-tb-mfN"/>
+                                <constraint firstAttribute="trailing" secondItem="WPd-ig-yjx" secondAttribute="trailing" id="Hkc-Gp-mdm"/>
+                                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="WPd-ig-yjx" secondAttribute="bottom" constant="8" id="Lmo-Am-R6I"/>
+                                <constraint firstItem="VeA-7l-HCh" firstAttribute="top" secondItem="Li4-dY-zNA" secondAttribute="top" id="STY-OI-ls4"/>
+                                <constraint firstItem="Lbs-Qh-NHP" firstAttribute="top" secondItem="VeA-7l-HCh" secondAttribute="bottom" constant="8" id="TRa-Hl-6sz"/>
+                                <constraint firstAttribute="trailing" secondItem="VeA-7l-HCh" secondAttribute="trailing" id="Wab-fO-xbY"/>
+                                <constraint firstItem="VeA-7l-HCh" firstAttribute="leading" secondItem="Li4-dY-zNA" secondAttribute="leading" id="YGN-C6-HhS"/>
                                 <constraint firstAttribute="trailing" secondItem="Lbs-Qh-NHP" secondAttribute="trailing" id="bNH-Gn-2TS"/>
-                                <constraint firstItem="6hy-gR-JYL" firstAttribute="top" secondItem="Li4-dY-zNA" secondAttribute="top" id="dRX-jV-00q"/>
                                 <constraint firstAttribute="bottom" secondItem="Lbs-Qh-NHP" secondAttribute="bottom" id="eui-8P-gXm"/>
-                                <constraint firstItem="6hy-gR-JYL" firstAttribute="leading" secondItem="Li4-dY-zNA" secondAttribute="leading" id="hMw-ed-Qn9"/>
                                 <constraint firstItem="Lbs-Qh-NHP" firstAttribute="leading" secondItem="Li4-dY-zNA" secondAttribute="leading" id="kt5-h8-C8J"/>
+                                <constraint firstItem="WPd-ig-yjx" firstAttribute="top" secondItem="Li4-dY-zNA" secondAttribute="top" id="m8B-pK-IsE"/>
+                                <constraint firstItem="WPd-ig-yjx" firstAttribute="leading" secondItem="Li4-dY-zNA" secondAttribute="leading" id="rVF-4K-HPa"/>
                             </constraints>
                         </view>
                     </subviews>
