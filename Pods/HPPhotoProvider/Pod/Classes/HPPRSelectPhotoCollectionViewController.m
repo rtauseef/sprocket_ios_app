@@ -29,9 +29,7 @@
 NSString * const kPhotoSelectionScreenName = @"Photo Selection Screen";
 static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
-@interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
-
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@interface HPPRSelectPhotoCollectionViewController () <UICollectionViewDataSource, UIScrollViewDelegate, UIAlertViewDelegate, HPPRNoInternetConnectionRetryViewDelegate, HPPRSelectPhotoCollectionViewCellDelegate, HPPRSelectPhotoProviderDelegate>
 
 @property (strong, nonatomic) UIImage *selectedImage;
 @property (weak, nonatomic) IBOutlet UILabel *userAccountIsPrivateLabel;

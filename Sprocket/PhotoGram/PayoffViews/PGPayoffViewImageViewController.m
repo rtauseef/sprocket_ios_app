@@ -14,6 +14,8 @@
 #import "PGPhotoSelection.h"
 #import "PGPreviewViewController.h"
 #import "PGPayoffFullScreenTmpViewController.h"
+#import <MapKit/MapKit.h>
+#import "HPPRCameraRollMedia.h"
 
 @interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate>
 
@@ -25,9 +27,17 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 @property (strong, nonatomic) CLGeocoder *geocoder;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (assign, nonatomic) BOOL scrollViewNeedsUpdate;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *blockImageButton;
+@property (strong, nonatomic) PHAsset *localAsset;
+
+- (IBAction)clickImageBlock:(id)sender;
 
 @end
 
+#define kPayoffBottomMargin 20
 #define kPayoffViewInset 60
 #define kPGLocationDistance 1000 // 1km
 
@@ -39,6 +49,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
     
+    self.scrollViewNeedsUpdate = YES;
     self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
     self.photoCollectionViewController.delegate = self;
     self.provider = [[HPPRCameraRollPartialPhotoProvider alloc] init];
@@ -48,6 +59,9 @@
     self.viewTitle = [NSString string];
     [self.activityIndicator startAnimating];
     self.photoCollectionViewController.view.hidden = YES;
+    self.photoCollectionViewController.collectionView.scrollEnabled = NO;
+    self.mapView.hidden = YES;
+    self.blockImageButton.hidden = YES;
     
     if (self.filteringDate) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -100,7 +114,14 @@
             [self updateViewTitleLocally];
         }
     }
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTap:)];
+    [recognizer setNumberOfTapsRequired:1];
+    self.scrollView.userInteractionEnabled = YES;
+    [self.scrollView addGestureRecognizer:recognizer];
 }
+
+
 
 - (void) updateViewTitleLocally {
     if (self.metadata.location && self.metadata.location.venue.area != nil) {
@@ -116,19 +137,89 @@
 - (void) providerUpdateDone {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.photoCollectionViewController refresh];
-        
         [self.activityIndicator stopAnimating];
         self.photoCollectionViewController.view.hidden = NO;
         
+    
+        self.scrollViewNeedsUpdate = YES;
+        
+        if (self.view.window != nil) {
+            [self fixScrollViewSize];
+        }
     });
+}
+
+
+- (UIImage *)imageByCroppingImage:(UIImage *)image toSize:(CGSize)size
+{
+    double newCropWidth, newCropHeight;
+    
+    newCropWidth = image.size.width;
+    newCropHeight = image.size.width/size.width*size.height;
+    
+    
+    double x = image.size.width/2.0 - newCropWidth/2.0;
+    double y = image.size.height/2.0 - newCropHeight/2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, newCropWidth, newCropHeight);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return cropped;
+}
+
+- (void) fixScrollViewSize {
+    [self.photoCollectionViewController.collectionView reloadData];
+    [self.photoCollectionViewController.collectionView layoutIfNeeded];
+    CGSize calculatedSize = self.photoCollectionViewController.collectionView.contentSize;
+    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, calculatedSize.height);
+    CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, calculatedSize.height + self.mainView.frame.origin.y + kPayoffBottomMargin);
+    
+    self.scrollView.contentSize = totalScrollSize;
+    self.scrollViewNeedsUpdate = NO;
+    [self.photoCollectionViewController.view setFrame:frame];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, floorf(self.mainView.bounds.size.height));
-    [self.photoCollectionViewController.view setFrame:frame];
-    [self.photoCollectionViewController.view setNeedsDisplay];
+    if (self.scrollViewNeedsUpdate) {
+        [self fixScrollViewSize];
+    }
+    
+    if (self.blockImageButton.hidden && self.filteringDate != nil) {
+        NSString *localId = self.metadata.source.identifier;
+        PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
+        
+        if ([assets count] > 0) {
+            PHAsset *firstAsset = assets[0];
+            self.localAsset = firstAsset;
+            
+            [[PHImageManager defaultManager] requestImageForAsset:firstAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                
+                [self.blockImageButton setImage:[self imageByCroppingImage:result toSize:self.blockImageButton.frame.size] forState:UIControlStateNormal];
+                [self.blockImageButton setHidden:NO];
+            }];
+        } else {
+            //TODO: placeholder image
+        }
+    } else if (self.blockImageButton.hidden && self.filteringLocation != nil) {
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.metadata.location.geo.latitude longitude:self.metadata.location.geo.longitude];
+        
+        CLLocationCoordinate2D center = self.metadata.location.geo;
+        MKCoordinateRegion region = MKCoordinateRegionMake(center, MKCoordinateSpanMake(0.01, 0.01));
+        self.mapView.userInteractionEnabled = NO;
+        self.mapView.hidden = NO;
+    
+        [self.mapView setRegion:region animated:YES];
+        
+        MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
+        pin.coordinate = loc.coordinate;
+        [self.mapView addAnnotation:pin];
+        
+    }
     
     if (self.tmpViewController) {
         [self.tmpViewController.view removeFromSuperview];
@@ -184,5 +275,29 @@
     [self.tmpViewController.view removeFromSuperview];
     self.tmpViewController = nil;
 }
+
+- (IBAction)clickImageBlock:(id)sender {
+    if (self.localAsset) {
+        HPPRMedia *media = [[HPPRCameraRollMedia alloc] initWithAsset:self.localAsset];
+        [[PGPhotoSelection sharedInstance] selectMedia:media];
+        self.tmpViewController = [[PGPayoffFullScreenTmpViewController alloc] init];
+        self.tmpViewController.view.frame = self.view.bounds;
+        [self.mainView addSubview:_tmpViewController.view];
+        [PGPreviewViewController presentPreviewPhotoFrom:_tmpViewController andSource:@"1:n" animated:YES];
+        self.tmpViewController.delegate = self;
+    }
+}
+
+-(void)scrollViewTap:(UITapGestureRecognizer *) sender
+{
+    CGPoint touchLocation = [sender locationOfTouch:0 inView:self.photoCollectionViewController.collectionView];
+    NSIndexPath *indexPath = [self.photoCollectionViewController.collectionView indexPathForItemAtPoint:touchLocation];
+    
+    [self.photoCollectionViewController.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    
+    [self.photoCollectionViewController collectionView:self.photoCollectionViewController.collectionView didSelectItemAtIndexPath:indexPath];
+}
+
+
 
 @end

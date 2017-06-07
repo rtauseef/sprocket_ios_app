@@ -21,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *paginationView;
-@property (weak, nonatomic) IBOutlet PGPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (strong, nonatomic) NSMutableArray <UIViewController *> *arrayOfViewControllers;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
@@ -268,6 +268,14 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
         self.pageControl.currentPage = self.pendingIndex;
         
         PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pendingIndex];
+        
+        self.currentViewLabel.text = currentVc.viewTitle;
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{ self.currentViewLabel.alpha = 1;}
+                         completion:nil];
+    } else {
+        PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
         
         self.currentViewLabel.text = currentVc.viewTitle;
         
