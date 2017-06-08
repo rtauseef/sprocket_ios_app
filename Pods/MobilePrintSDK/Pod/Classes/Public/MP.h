@@ -628,6 +628,8 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  */
 - (void)headlessBluetoothPrintFromController:(UIViewController *)controller image:(UIImage *)image processor:(MPBTImageProcessor *)processor animated:(BOOL)animated printCompletion:(void(^)(void))completion;
 
+- (void)presentBluetoothDevicePickerWithCompletion:(void (^__nullable)(NSError *error))completion;
+
 /*!
  * @abstract Indicates whether a single sprocket is paired and needs to be updated
  * @discussion This call will result in a call to the delegate's didRefreshMantaInfo:error: function
