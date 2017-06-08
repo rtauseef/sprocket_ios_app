@@ -1,11 +1,13 @@
-Feature: Check Paper size and Paper type
+Feature: Check Print Queue functionality
     As a user
-    I want to Check and Verify Paper size and Paper type
+    I want to Check add, delete jobs to Print Queue and corresponding print metrics
 
 
-    @TA18116
+
     @reset
-    Scenario: Verify print metrics
+    @done
+    @regression
+    Scenario: Verify AddToQueue-Single, DeleteToQueue-Single and corresponding metrics
         Given I am on the "CameraRoll Preview" screen
         When I tap "Print" button
 		Then I wait for some seconds
@@ -45,9 +47,11 @@ Feature: Check Paper size and Paper type
         And I check the library version
         And I check the application type is "HP"
 
-  @TA18116
+
   @reset
-  Scenario: Verify image multi select from camera Roll
+  @done
+  @regression
+  Scenario: Verify AddToQueue-Multi, DeleteToQueue-Multi and corresponding metrics
     Given I am on the "CameraRoll Photo" screen
     And I touch "Select"
     Then I should see the multiselect option enabled
