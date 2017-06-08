@@ -56,6 +56,12 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [self updateCopyLabelAndButtons];
 }
 
+- (void) viewDidUnload
+{
+    [self.queueCountTimer invalidate];
+    self.queueCountTimer = nil;
+}
+
 - (void)setShowPrintQueue:(BOOL)showPrintQueue
 {
     _showPrintQueue = showPrintQueue;
