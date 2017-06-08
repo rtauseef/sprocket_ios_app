@@ -474,6 +474,10 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     }
 }
 
+- (void)presentBluetoothDevicePickerWithCompletion:(void (^)(NSError *))completion {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'HP sprocket'"];
+    [[EAAccessoryManager sharedAccessoryManager] showBluetoothAccessoryPickerWithNameFilter:predicate completion:completion];
+}
 
 #pragma mark - Setter methods
 
