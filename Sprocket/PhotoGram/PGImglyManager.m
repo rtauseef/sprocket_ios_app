@@ -24,6 +24,9 @@ static NSString * const kImglyMenuItemSticker = @"Sticker";
 static NSString * const kImglyMenuItemText = @"Text";
 static NSString * const kImglyMenuItemCrop = @"Crop";
 
+NSString * const kPGImglyManagerCustomStickerPrefix = @"CS";
+NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerStickersChangedNotification";
+
 @interface PGImglyManager() <IMGLYAnalyticsClient>
 
 @property (nonatomic, strong) NSDictionary *menuItems;
@@ -39,8 +42,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @end
 
 @implementation PGImglyManager
-
-NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerStickersChangedNotification";
 
 int const kCustomButtonTag = 9999;
 
@@ -365,8 +366,9 @@ int const kCustomButtonTag = 9999;
                 [self resetCustomSticker:cell];
 
                 NSError *error = NULL;
+                NSString *pattern = [NSString stringWithFormat:@"^%@[0-9]{%d}$", kPGImglyManagerCustomStickerPrefix, kCustomStickerManagerPrefixLength];
                 NSRegularExpression *regex = [NSRegularExpression
-                                              regularExpressionWithPattern:@"^CS[0-9]{8}$"
+                                              regularExpressionWithPattern:pattern
                                               options:NSRegularExpressionCaseInsensitive
                                               error:&error];
 
