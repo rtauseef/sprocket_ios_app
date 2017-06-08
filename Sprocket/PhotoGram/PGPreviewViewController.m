@@ -138,6 +138,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.drawer.showCopies = NO;
+        self.drawer.alwaysShowPrintQueue = YES;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
 
     } else {
@@ -474,6 +475,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
 {
+    if (self.drawer.isOpened || self.drawer.isPeeking) {
+        [self.drawer configureShowPrintQueue];
+    }
+
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
 
     if (animated) {
@@ -481,9 +486,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [self reloadCarouselItems];
         } completion:^(BOOL finished) {
             [self reloadCarouselItemsAndEditedImage];
+            if (!self.drawer.isOpened) {
+                [self.drawer configureShowPrintQueue];
+            }
         }];
     } else {
         [self reloadCarouselItemsAndEditedImage];
+        if (!self.drawer.isOpened) {
+            [self.drawer configureShowPrintQueue];
+        }
     }
 }
 
@@ -504,7 +515,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (!self.drawer.isOpened && !self.drawer.isPeeking) {
         return;
     }
-    
+
     self.drawer.isOpened = NO;
     self.drawer.isPeeking = NO;
     self.wasDrawerOpenedByUser = NO;
@@ -517,7 +528,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (self.drawer.isOpened) {
         return;
     }
-    
+
     self.drawer.isOpened = YES;
     self.drawer.isPeeking = NO;
 

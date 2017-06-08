@@ -25,6 +25,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfJobsLabel;
+@property (weak, nonatomic) IBOutlet UIView *printQueueView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *printQueueViewHeight;
 
 @property (strong, nonatomic) NSTimer *queueCountTimer;
 
@@ -39,6 +41,10 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.showCopies = YES;
     self.showTiling = NO;
     self.showPrintQueue = YES;
+    [self configureShowPrintQueue];
+    
+    self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
+
     self.numberOfCopies = 1;
     
     self.drawerButton.clipsToBounds = NO;
@@ -53,13 +59,15 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 - (void)setShowPrintQueue:(BOOL)showPrintQueue
 {
     _showPrintQueue = showPrintQueue;
+    if (self.alwaysShowPrintQueue) {
+        return;
+    }
 
-    [self.queueCountTimer invalidate];
-    self.queueCountTimer = nil;
-
+    self.printQueueView.hidden = !showPrintQueue;
     if (showPrintQueue) {
-        [self refreshQueueCount];
-        self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
+        self.printQueueViewHeight.constant = kPGPreviewDrawerRowHeight;
+    } else {
+        self.printQueueViewHeight.constant = 0;
     }
 }
 
@@ -95,7 +103,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 - (CGFloat)drawerHeightOpened
 {
     NSInteger numberOfRowsActive = 0;
-    if (self.showPrintQueue) {
+    if (self.showPrintQueue || self.alwaysShowPrintQueue) {
         numberOfRowsActive++;
     }
 
@@ -132,6 +140,20 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.minusButton.enabled = self.numberOfCopies != 1;
 }
 
+- (void)configureShowPrintQueue
+{
+    if (self.alwaysShowPrintQueue) {
+        return;
+    }
+
+    NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
+    if (count <= 0 && self.showPrintQueue ) {
+        self.showPrintQueue = NO;
+    } else if (count > 0 && !self.showPrintQueue) {
+        self.showPrintQueue = YES;
+    }
+}
+
 - (void)refreshQueueCount
 {
     NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
@@ -141,7 +163,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
             [self.delegate pgPreviewDrawerDidClearQueue:self];
         }
     }
-    
+
     self.numberOfJobsLabel.text = [NSString stringWithFormat:@"%li", (long)count];
 }
 
