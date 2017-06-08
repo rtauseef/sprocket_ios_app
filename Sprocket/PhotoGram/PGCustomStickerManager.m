@@ -20,12 +20,14 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 
-@implementation PGCustomStickerManager
-
 static NSString * const kPGCustomStickerManagerLastStickerNumberKey = @"com.hp.sprocket.imgly.last-sticker";
 static NSString * const kPGCustomStickerManagerDirectory = @"stickers";
 static NSString * const kCustomStickerManagerThumbnailSuffix = @"_TN";
-static int const kCustomStickerManagerPrefixLength = 8;
+static int const kCustomStickerManagerUniqueHashLength = 4;
+
+int const kCustomStickerManagerPrefixLength = 8;
+
+@implementation PGCustomStickerManager
 
 + (instancetype)sharedInstance
 {
@@ -134,9 +136,9 @@ static int const kCustomStickerManagerPrefixLength = 8;
         if (![base containsString:kCustomStickerManagerThumbnailSuffix]) {
             NSURL *thumb = [[[PGCustomStickerManager sharedInstance] stickerDirectoryURL] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.png", base, kCustomStickerManagerThumbnailSuffix]];
             if ([[NSFileManager defaultManager] fileExistsAtPath:[thumb path]]) {
-                IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImageURL:url thumbnailURL:thumb tintMode:IMGLYStickerTintModeSolid]; // IMGLYStickerTintModeNone
-                sticker.accessibilityLabel = [NSString stringWithFormat:@"CS%@", [base substringWithRange:NSMakeRange(0, 8)]];
-                sticker.accessibilityValue = [base substringWithRange:NSMakeRange(9, 4)];
+                IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImageURL:url thumbnailURL:thumb tintMode:IMGLYStickerTintModeSolid];
+                sticker.accessibilityLabel = [kPGImglyManagerCustomStickerPrefix stringByAppendingString:[base substringWithRange:NSMakeRange(0, kCustomStickerManagerPrefixLength)]];
+                sticker.accessibilityValue = [base substringWithRange:NSMakeRange(kCustomStickerManagerPrefixLength + 1, kCustomStickerManagerUniqueHashLength)];
                 [stickers addObject:sticker];
             }
         }
