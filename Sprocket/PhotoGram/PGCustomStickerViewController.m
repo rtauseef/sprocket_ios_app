@@ -49,6 +49,7 @@
 @property (strong, nonatomic) UIImage *thumbnailImage;
 
 @property (assign, nonatomic) BOOL saveMode;
+@property (assign, nonatomic) BOOL isCapturing;
 
 @property (weak, nonatomic) IBOutlet UILabel *captureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saveLabel;
@@ -157,22 +158,28 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 - (void)captureSticker
 {
-    if (![self hasCamera]) {
-        GPUImagePicture *picture = [[GPUImagePicture alloc] initWithImage:[[UIImage imageNamed:@"love"] normalize]];
-        [self setupFilters];
-        [self applyFilterChain:self.filters start:picture];
-        [picture processImageUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage) {
+    if (!self.isCapturing) {
+        self.isCapturing = YES;
+
+        if (![self hasCamera]) {
+            GPUImagePicture *picture = [[GPUImagePicture alloc] initWithImage:[[UIImage imageNamed:@"love"] normalize]];
+            [self setupFilters];
+            [self applyFilterChain:self.filters start:picture];
+            [picture processImageUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage) {
+                [self processResult:processedImage];
+                self.saveMode = YES;
+                self.isCapturing = NO;
+            }];
+            return;
+        }
+        
+        [self.camera capturePhotoAsImageProcessedUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage, NSError *error) {
+            self.resultData = nil;
             [self processResult:processedImage];
             self.saveMode = YES;
+            self.isCapturing = NO;
         }];
-        return;
     }
-    
-    [self.camera capturePhotoAsImageProcessedUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage, NSError *error) {
-        self.resultData = nil;
-        [self processResult:processedImage];
-        self.saveMode = YES;
-    }];
 }
 
 - (IBAction)touchedDownInButton:(id)sender {
