@@ -94,12 +94,12 @@ And /^I navigate back$/ do
     sleep(STEP_PAUSE)
 end
 When(/^I touch hamburger button on navigation bar$/) do
-  selenium.find_element(:xpath, "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click
+  selenium.find_element(:xpath, "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeNavigationBar[1]/XCUIElementTypeButton[1]").click
   sleep(SLEEP_SCREENLOAD)
 end
 
 When(/^I select "([^"]*)" option$/) do |arg1|
- selenium.find_element(:xpath, "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[3]/XCUIElementTypeStaticText[1]").click
+ selenium.find_element(:xpath, "//XCUIElementTypeStaticText[@name='Buy Paper']").click
   sleep(SLEEP_SCREENLOAD)
   sleep(10.0)
 end

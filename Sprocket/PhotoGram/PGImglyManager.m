@@ -24,6 +24,9 @@ static NSString * const kImglyMenuItemSticker = @"Sticker";
 static NSString * const kImglyMenuItemText = @"Text";
 static NSString * const kImglyMenuItemCrop = @"Crop";
 
+NSString * const kPGImglyManagerCustomStickerPrefix = @"CS";
+NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerStickersChangedNotification";
+
 @interface PGImglyManager() <IMGLYAnalyticsClient>
 
 @property (nonatomic, strong) NSDictionary *menuItems;
@@ -39,8 +42,6 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @end
 
 @implementation PGImglyManager
-
-NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerStickersChangedNotification";
 
 int const kCustomButtonTag = 9999;
 
@@ -340,6 +341,8 @@ int const kCustomButtonTag = 9999;
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
                 self.stickerCategoryDataSource = dataSource;
                 dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
+
+                [self reloadStickers];
             };
 
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
@@ -349,6 +352,7 @@ int const kCustomButtonTag = 9999;
                 cell.accessibilityLabel = category.accessibilityLabel;
                 [self resetCustomSticker:cell];
                 if ([category.accessibilityLabel isEqualToString:@"Add Custom Sticker"]) {
+                    cell.tintColor = [UIColor HPRowColor];
                     [self configureAddCustomStickerView:cell];
                 }
                 if ([category.accessibilityLabel isEqualToString:@"Custom Stickers"]) {
@@ -358,10 +362,22 @@ int const kCustomButtonTag = 9999;
 
             toolBuilder.stickerButtonConfigurationClosure = ^(IMGLYIconCollectionViewCell * _Nonnull cell, IMGLYSticker * _Nonnull sticker) {
                 cell.accessibilityLabel = sticker.accessibilityLabel;
+                cell.accessibilityValue = sticker.accessibilityValue;
                 [self resetCustomSticker:cell];
-                if ([sticker.accessibilityLabel containsString:@"Custom Sticker"]) {
+
+                NSError *error = NULL;
+                NSString *pattern = [NSString stringWithFormat:@"^%@[0-9]{%d}$", kPGImglyManagerCustomStickerPrefix, kCustomStickerManagerPrefixLength];
+                NSRegularExpression *regex = [NSRegularExpression
+                                              regularExpressionWithPattern:pattern
+                                              options:NSRegularExpressionCaseInsensitive
+                                              error:&error];
+
+                [regex enumerateMatchesInString:sticker.accessibilityLabel
+                                        options:0
+                                          range:NSMakeRange(0, [sticker.accessibilityLabel length])
+                                     usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
                     [self configureCustomStickerView:cell];
-                }
+                }];
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
@@ -650,8 +666,13 @@ int const kCustomButtonTag = 9999;
 - (void)stickerLongTapped:(UIGestureRecognizer *)recognizer
 {
     if (UIGestureRecognizerStateBegan == recognizer.state) {
-        NSString *sticker = [recognizer.view.superview.accessibilityLabel stringByReplacingOccurrencesOfString:@"Custom Sticker " withString:@""];
-        [[PGCustomStickerManager sharedInstance] deleteSticker:sticker viewController:self.photoEditViewController];
+        UIView *stickerView = recognizer.view.superview;
+
+        NSString *stickerId = [stickerView.accessibilityLabel stringByReplacingOccurrencesOfString:kPGImglyManagerCustomStickerPrefix withString:@""];
+        NSString *unique = stickerView.accessibilityValue;
+        NSString *filename = [NSString stringWithFormat:@"%@-%@", stickerId, unique];
+
+        [[PGCustomStickerManager sharedInstance] deleteSticker:filename viewController:self.photoEditViewController];
     }
 }
 

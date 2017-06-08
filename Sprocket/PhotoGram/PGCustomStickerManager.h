@@ -13,6 +13,8 @@
 #import <UIKit/UIKit.h>
 #import <imglyKit/imglyKit-Swift.h>
 
+extern int const kCustomStickerManagerPrefixLength;
+
 @interface PGCustomStickerManager : NSObject
 
 + (instancetype)sharedInstance;
