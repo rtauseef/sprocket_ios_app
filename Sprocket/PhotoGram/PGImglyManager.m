@@ -340,6 +340,8 @@ int const kCustomButtonTag = 9999;
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
                 self.stickerCategoryDataSource = dataSource;
                 dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
+
+                [self reloadStickers];
             };
 
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
@@ -349,6 +351,7 @@ int const kCustomButtonTag = 9999;
                 cell.accessibilityLabel = category.accessibilityLabel;
                 [self resetCustomSticker:cell];
                 if ([category.accessibilityLabel isEqualToString:@"Add Custom Sticker"]) {
+                    cell.tintColor = [UIColor HPRowColor];
                     [self configureAddCustomStickerView:cell];
                 }
                 if ([category.accessibilityLabel isEqualToString:@"Custom Stickers"]) {
