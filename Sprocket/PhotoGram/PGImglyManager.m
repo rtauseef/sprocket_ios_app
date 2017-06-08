@@ -501,7 +501,7 @@ int const kCustomButtonTag = 9999;
         selectionChangedHandler(view1, view2);
     };
     
-    photoEditViewController.undoController.isEnabled = NO;
+    photoEditViewController.undoController.isEnabled = YES;
 }
 
 - (void (^)(IMGLYButton * _Nonnull))applyButtonBlockWithAccessibilityLabel:(NSString *)label {
