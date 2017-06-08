@@ -16,11 +16,13 @@
 #import "UIColor+Style.h"
 #import "PGImglyManager.h"
 #import "UIFont+Style.h"
+#import "PGTermsAttributedLabel.h"
+#import "UIViewController+Trackable.h"
 
 #import <GPUImage/GPUImage.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface PGCustomStickerViewController ()
+@interface PGCustomStickerViewController () <TTTAttributedLabelDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelBarButtonItem;
@@ -52,6 +54,7 @@
 @property (assign, nonatomic) BOOL isCapturing;
 
 @property (weak, nonatomic) IBOutlet UILabel *captureLabel;
+@property (weak, nonatomic) IBOutlet PGTermsAttributedLabel *legalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saveLabel;
 @property (weak, nonatomic) IBOutlet UIButton *noButton;
 @property (weak, nonatomic) IBOutlet UIButton *yesButton;
@@ -327,6 +330,8 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 - (void)setupUI
 {
+    self.legalLabel.delegate = self;
+
     self.yesButton.layer.cornerRadius = 3.0;
     self.yesButton.layer.borderColor  = [UIColor whiteColor].CGColor;
     self.yesButton.layer.borderWidth = 1.0;
@@ -337,6 +342,20 @@ CGSize const kThumbnailSize = { 100, 100 };
     self.noButton.layer.borderWidth = 1.0;
     self.noButton.layer.masksToBounds = YES;
 }
+
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(__unused TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGTermsNavigationController"];
+
+    navigationController.topViewController.trackableScreenName = @"Terms of Service Screen";
+
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 
 #pragma mark - GPUImage
 
