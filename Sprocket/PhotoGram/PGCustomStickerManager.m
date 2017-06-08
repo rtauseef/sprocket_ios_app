@@ -136,6 +136,7 @@ static int const kCustomStickerManagerPrefixLength = 8;
             if ([[NSFileManager defaultManager] fileExistsAtPath:[thumb path]]) {
                 IMGLYSticker *sticker = [[IMGLYSticker alloc] initWithImageURL:url thumbnailURL:thumb tintMode:IMGLYStickerTintModeSolid]; // IMGLYStickerTintModeNone
                 sticker.accessibilityLabel = [NSString stringWithFormat:@"CS%@", [base substringWithRange:NSMakeRange(0, 8)]];
+                sticker.accessibilityValue = [base substringWithRange:NSMakeRange(9, 4)];
                 [stickers addObject:sticker];
             }
         }
