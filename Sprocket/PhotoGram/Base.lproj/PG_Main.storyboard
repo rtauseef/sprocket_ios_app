@@ -3672,7 +3672,7 @@ printer and app support.</string>
                                     <constraint firstAttribute="width" constant="100" id="IxY-w8-JI0"/>
                                     <constraint firstAttribute="height" constant="40" id="Zb5-RK-Ay0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="21"/>
                                 <state key="normal" title="Yes">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
