@@ -7,12 +7,16 @@
 //
 
 #import <AurasmaSDK/AurasmaSDK.h>
+#import <AVFoundation/AVCaptureDevice.h>
+#import <AVFoundation/AVMediaFormat.h>
 #import "PGAurasmaViewController.h"
 #import "PGAurasmaTrackingViewDelegate.h"
 
 #import "PGAurasmaGlobalContext.h"
 
 @interface PGAurasmaViewController () <AURTrackingControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *flashButton;
 
 @end
 
@@ -69,6 +73,31 @@
 - (IBAction)close:(id)sender {
     [_aurasmaTrackingController removeDelegate:self];
     [_closingDelegate finishedTracking:self];
+}
+
+
+- (IBAction)torchClicked:(id)sender {
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    if (device.hasTorch && [device isTorchModeSupported:AVCaptureTorchModeOn]) {
+        [device lockForConfiguration:nil];
+        device.torchMode = device.torchMode == AVCaptureTorchModeOff ? AVCaptureTorchModeOn : AVCaptureTorchModeOff;
+        [device unlockForConfiguration];
+    }
+    [self setupButtons];
+}
+
+- (void)setupButtons
+{
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (!device.hasTorch) {
+        self.flashButton.hidden = YES;
+    } else {
+        self.flashButton.hidden = NO;
+        
+        NSString *imageName = device.torchMode == AVCaptureTorchModeOff ? @"cameraFlashOff" : @"cameraFlashOn";
+        [self.flashButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    }
 }
 
 /*

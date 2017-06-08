@@ -6,11 +6,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGAurasmaViewController">
             <connections>
+                <outlet property="flashButton" destination="cWV-cP-Xcn" id="MSt-2t-PxB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,13 +21,24 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWV-cP-Xcn">
-                    <rect key="frame" x="328" y="10" width="37" height="30"/>
-                    <state key="normal" title="Flash"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWV-cP-Xcn" userLabel="Torch">
+                    <rect key="frame" x="347.5" y="9.5" width="27.5" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="27.5" id="5RM-i2-11T"/>
+                        <constraint firstAttribute="height" constant="28.25" id="Nil-Fa-STT"/>
+                    </constraints>
+                    <state key="normal" image="cameraFlashOff"/>
+                    <connections>
+                        <action selector="torchClicked:" destination="-1" eventType="touchUpInside" id="qed-Sg-bvq"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE9-xP-UGs">
-                    <rect key="frame" x="10" y="10" width="39" height="30"/>
-                    <state key="normal" title="Close"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE9-xP-UGs" userLabel="Close">
+                    <rect key="frame" x="0.0" y="0.0" width="38" height="46.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vE9-xP-UGs" secondAttribute="height" multiplier="9:11" id="L2V-DD-7OK"/>
+                        <constraint firstAttribute="width" constant="38" id="oJN-w5-bNb"/>
+                    </constraints>
+                    <state key="normal" image="cameraClose"/>
                     <connections>
                         <action selector="close:" destination="-1" eventType="touchUpInside" id="VZS-Qk-RSd"/>
                     </connections>
@@ -33,11 +46,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="cWV-cP-Xcn" secondAttribute="trailing" constant="10" id="7gd-bi-Y4q"/>
-                <constraint firstItem="vE9-xP-UGs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="bUi-EE-5bl"/>
-                <constraint firstItem="cWV-cP-Xcn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="lJv-DO-9Ms"/>
-                <constraint firstItem="vE9-xP-UGs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="y5g-7b-Dgh"/>
+                <constraint firstAttribute="trailing" secondItem="cWV-cP-Xcn" secondAttribute="trailing" id="7gd-bi-Y4q"/>
+                <constraint firstItem="cWV-cP-Xcn" firstAttribute="centerY" secondItem="vE9-xP-UGs" secondAttribute="centerY" id="D1Q-Rh-9BM"/>
+                <constraint firstItem="vE9-xP-UGs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bUi-EE-5bl"/>
+                <constraint firstItem="vE9-xP-UGs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y5g-7b-Dgh"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="cameraClose" width="23" height="23"/>
+        <image name="cameraFlashOff" width="36" height="37"/>
+    </resources>
 </document>
