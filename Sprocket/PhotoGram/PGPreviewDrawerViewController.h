@@ -22,12 +22,14 @@
 @property (nonatomic, assign) BOOL showCopies;
 @property (nonatomic, assign) BOOL showTiling;
 @property (nonatomic, assign) BOOL showPrintQueue;
+@property (nonatomic, assign) BOOL alwaysShowPrintQueue;
 @property (assign, nonatomic) NSInteger numberOfCopies;
 
 - (CGFloat)drawerHeight;
 - (CGFloat)drawerHeightOpened;
 - (CGFloat)drawerHeightPeeking;
 - (CGFloat)drawerHeightClosed;
+- (void)configureShowPrintQueue;
 
 @end
 
