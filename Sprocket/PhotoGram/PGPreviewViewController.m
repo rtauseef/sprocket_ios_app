@@ -445,13 +445,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *connectPrinterAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect Printer", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [[PGAnalyticsManager sharedManager] trackConnectPrinter];
         [self peekDrawerAnimated:YES];
-        [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
-            if (!error) {
-                [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
-            }
-        }];
+        [self showConnectPrinterAdvisoryAlert];
     }];
     
     [alert addAction:connectPrinterAction];
@@ -470,6 +465,26 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:completion];
+}
+
+- (void)showConnectPrinterAdvisoryAlert
+{
+    [[PGAnalyticsManager sharedManager] trackConnectPrinter];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Connect Printer", nil)
+                                                                   message:NSLocalizedString(@"Power on your printer, then select it from the Accessory list. Allow up to 30 seconds for printer to appear.", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
+            if (!error) {
+                [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+            }
+        }];
+    }];
+    
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Drawer Methods
