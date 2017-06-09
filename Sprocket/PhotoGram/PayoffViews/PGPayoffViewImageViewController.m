@@ -16,11 +16,20 @@
 #import "PGPayoffFullScreenTmpViewController.h"
 #import <MapKit/MapKit.h>
 #import "HPPRCameraRollMedia.h"
+#import "HPPRFacebookPhotoProvider.h"
+#import "UIButton+AFNetworking.h"
+#import "HPPRInstagramPhotoProvider.h"
 
-@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate>
+@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate, HPPRFacebookPhotoProviderDelegate, HPPRInstagramPhotoProviderDelegate>
 
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;
-@property (strong, nonatomic) HPPRCameraRollPartialPhotoProvider *provider;
+@property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *fbPhotoCollectionViewController;
+@property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *instagramPhotoCollectionViewController;
+
+@property (strong, nonatomic) HPPRCameraRollPartialPhotoProvider *cameraRollProvider;
+@property (strong, nonatomic) HPPRFacebookPhotoProvider *facebookProvider;
+@property (strong, nonatomic) HPPRInstagramPhotoProvider *instagramProvider;
+
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) NSDate* filteringDate;
 @property (strong, nonatomic) CLLocation* filteringLocation;
@@ -28,10 +37,11 @@
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (assign, nonatomic) BOOL scrollViewNeedsUpdate;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *blockImageButton;
 @property (strong, nonatomic) PHAsset *localAsset;
+@property (assign, nonatomic) BOOL hasFacebookContent;
+@property (assign, nonatomic) BOOL hasInstagramContent;
 
 - (IBAction)clickImageBlock:(id)sender;
 
@@ -40,6 +50,10 @@
 #define kPayoffBottomMargin 20
 #define kPayoffViewInset 60
 #define kPGLocationDistance 1000 // 1km
+#define kInstagramMaxImagesSearch 1000
+
+#define kPayoffFBLabelTag 101
+#define kPayoffInstagramLabelTag 102
 
 @implementation PGPayoffViewImageViewController
 
@@ -47,28 +61,57 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
+    self.hasFacebookContent = NO;
+    self.hasInstagramContent = NO;
     
-    self.scrollViewNeedsUpdate = YES;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
+
     self.photoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
     self.photoCollectionViewController.delegate = self;
-    self.provider = [[HPPRCameraRollPartialPhotoProvider alloc] init];
-    self.photoCollectionViewController.provider = self.provider;
+    self.cameraRollProvider = [[HPPRCameraRollPartialPhotoProvider alloc] init];
+    self.photoCollectionViewController.provider = self.cameraRollProvider;
     [self.photoCollectionViewController setEdgesForExtendedLayout:UIRectEdgeNone];
-    [self.mainView addSubview:self.photoCollectionViewController.view];
-    self.viewTitle = [NSString string];
-    [self.activityIndicator startAnimating];
     self.photoCollectionViewController.view.hidden = YES;
     self.photoCollectionViewController.collectionView.scrollEnabled = NO;
+    
+    self.fbPhotoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+    self.fbPhotoCollectionViewController.delegate = self;
+    [self.fbPhotoCollectionViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+    self.fbPhotoCollectionViewController.view.hidden = YES;
+    self.fbPhotoCollectionViewController.collectionView.scrollEnabled = NO;
+    
+    self.instagramPhotoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+    self.instagramPhotoCollectionViewController.delegate = self;
+    [self.instagramPhotoCollectionViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+    self.instagramPhotoCollectionViewController.view.hidden = YES;
+    self.instagramPhotoCollectionViewController.collectionView.scrollEnabled = NO;
+    
+    [self.mainView addSubview:self.photoCollectionViewController.view];
+    [self.mainView addSubview:self.fbPhotoCollectionViewController.view];
+    [self.mainView addSubview:self.instagramPhotoCollectionViewController.view];
+    
+    self.viewTitle = [NSString string];
+    [self.activityIndicator startAnimating];
+    
     self.mapView.hidden = YES;
     self.blockImageButton.hidden = YES;
     
     if (self.filteringDate) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.provider populateImagesForSameDayAsDate:self.filteringDate];
-            [self providerUpdateDone];
-        });
+        self.facebookProvider = [[HPPRFacebookPhotoProvider alloc] init];
+        self.facebookProvider.fbDelegate = self;
+        self.fbPhotoCollectionViewController.provider = self.facebookProvider;
+        [self.fbPhotoCollectionViewController refresh];
         
+        self.instagramProvider = [[HPPRInstagramPhotoProvider alloc] init];
+        self.instagramProvider.instagramDelegate = self;
+        self.instagramPhotoCollectionViewController.provider = self.instagramProvider;
+        [self.instagramPhotoCollectionViewController refresh];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.cameraRollProvider populateImagesForSameDayAsDate:self.filteringDate];
+            [self cameraRollProviderUpdateDone];
+        });
+         
         if (self.metadata && self.metadata.created) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setLocalizedDateFormatFromTemplate:@"MMM d, yyyy"];
@@ -78,8 +121,8 @@
         }
     } else if (self.filteringLocation) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.provider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
-            [self providerUpdateDone];
+            [self.cameraRollProvider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
+            [self cameraRollProviderUpdateDone];
         });
 
         if (self.metadata &&self.metadata.location && CLLocationCoordinate2DIsValid(self.metadata.location.geo)) {
@@ -134,14 +177,35 @@
     }
 }
 
-- (void) providerUpdateDone {
+- (void) facebookUpdateDone: (int) count {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (count > 0) {
+            self.hasFacebookContent = YES;
+            self.fbPhotoCollectionViewController.view.hidden = NO;
+            [self fixScrollViewSize];
+        } else {
+            // remove spinner, etc.
+        }
+    });
+}
+
+- (void) instagramUpdateDone: (int) count {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (count > 0) {
+            self.hasInstagramContent = YES;
+            self.instagramPhotoCollectionViewController.view.hidden = NO;
+            [self fixScrollViewSize];
+        } else {
+            // remove spinner, etc.
+        }
+    });
+}
+
+- (void) cameraRollProviderUpdateDone {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.photoCollectionViewController refresh];
         [self.activityIndicator stopAnimating];
         self.photoCollectionViewController.view.hidden = NO;
-        
-    
-        self.scrollViewNeedsUpdate = YES;
         
         if (self.view.window != nil) {
             [self fixScrollViewSize];
@@ -171,39 +235,100 @@
 }
 
 - (void) fixScrollViewSize {
+    // force content size calculation
     [self.photoCollectionViewController.collectionView reloadData];
     [self.photoCollectionViewController.collectionView layoutIfNeeded];
-    CGSize calculatedSize = self.photoCollectionViewController.collectionView.contentSize;
-    CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, calculatedSize.height);
-    CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, calculatedSize.height + self.mainView.frame.origin.y + kPayoffBottomMargin);
+    [self.fbPhotoCollectionViewController.collectionView reloadData];
+    [self.fbPhotoCollectionViewController.collectionView layoutIfNeeded];
+    [self.instagramPhotoCollectionViewController.collectionView reloadData];
+    [self.instagramPhotoCollectionViewController.collectionView layoutIfNeeded];
     
+    
+    CGSize instagramSize = self.instagramPhotoCollectionViewController.collectionView.contentSize;
+    CGSize fbSize = self.fbPhotoCollectionViewController.collectionView.contentSize;
+    CGSize photosSize = self.photoCollectionViewController.collectionView.contentSize;
+    CGSize calculatedSize = CGSizeMake(fbSize.width+photosSize.width, 0);
+
+    if (photosSize.height > 0) {
+        CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, photosSize.height);
+        [self.photoCollectionViewController.view setFrame:frame];
+        calculatedSize.height += photosSize.height;
+        calculatedSize.height += kPayoffBottomMargin;
+    }
+    
+    if (fbSize.height > 0 && self.hasFacebookContent) {
+        CGRect fbLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+        UILabel *facebookLabel = [[UILabel alloc] initWithFrame:fbLabelFrame];
+        [facebookLabel setTag:kPayoffFBLabelTag];
+        
+        [facebookLabel setText:@"Facebook Photos"];
+        [facebookLabel setTextColor:[UIColor whiteColor]];
+        
+        if (![self.mainView viewWithTag:kPayoffFBLabelTag]) {
+            [self.mainView addSubview:facebookLabel];
+        }
+        
+        calculatedSize.height += fbLabelFrame.size.height;
+        
+        CGRect fbFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, fbSize.height);
+        [self.fbPhotoCollectionViewController.view setFrame:fbFrame];
+        calculatedSize.height += fbSize.height;
+        calculatedSize.height += kPayoffBottomMargin;
+    }
+    
+    if (instagramSize.height > 0 && self.hasInstagramContent) {
+        CGRect instLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+        UILabel *instLabel = [[UILabel alloc] initWithFrame:instLabelFrame];
+        [instLabel setTag:kPayoffInstagramLabelTag];
+        
+        [instLabel setText:@"Instagram Photos"];
+        [instLabel setTextColor:[UIColor whiteColor]];
+        
+        if (![self.mainView viewWithTag:kPayoffInstagramLabelTag]) {
+            [self.mainView addSubview:instLabel];
+        }
+        
+        calculatedSize.height += instLabelFrame.size.height;
+        
+        CGRect instFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, instagramSize.height);
+        [self.instagramPhotoCollectionViewController.view setFrame:instFrame];
+        calculatedSize.height += instagramSize.height;
+        calculatedSize.height += kPayoffBottomMargin;
+    }
+    
+    CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, self.mainView.frame.origin.y + calculatedSize.height);
     self.scrollView.contentSize = totalScrollSize;
-    self.scrollViewNeedsUpdate = NO;
-    [self.photoCollectionViewController.view setFrame:frame];
+    
+    NSLog(@"Total scroll size now is %lf",totalScrollSize.height);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    if (self.scrollViewNeedsUpdate) {
-        [self fixScrollViewSize];
-    }
+    [self fixScrollViewSize];
     
     if (self.blockImageButton.hidden && self.filteringDate != nil) {
-        NSString *localId = self.metadata.source.identifier;
-        PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
         
-        if ([assets count] > 0) {
-            PHAsset *firstAsset = assets[0];
-            self.localAsset = firstAsset;
+        if (self.metadata.source.from == PGMetarSourceFromLocal) {
+            NSString *localId = self.metadata.source.identifier;
+            PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
             
-            [[PHImageManager defaultManager] requestImageForAsset:firstAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            if ([assets count] > 0) {
+                PHAsset *firstAsset = assets[0];
+                self.localAsset = firstAsset;
                 
-                [self.blockImageButton setImage:[self imageByCroppingImage:result toSize:self.blockImageButton.frame.size] forState:UIControlStateNormal];
+                [[PHImageManager defaultManager] requestImageForAsset:firstAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                    
+                    [self.blockImageButton setImage:[self imageByCroppingImage:result toSize:self.blockImageButton.frame.size] forState:UIControlStateNormal];
+                    [self.blockImageButton setHidden:NO];
+                }];
+            } else {
+                //TODO: placeholder image
                 [self.blockImageButton setHidden:NO];
-            }];
-        } else {
-            //TODO: placeholder image
+            }
+        } else if (self.metadata.source.from == PGMetarSourceFromSocial) {
+            //TODO: handle URI...
+            [self.blockImageButton setHidden:NO];
         }
     } else if (self.blockImageButton.hidden && self.filteringLocation != nil) {
         CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.metadata.location.geo.latitude longitude:self.metadata.location.geo.longitude];
@@ -291,13 +416,57 @@
 -(void)scrollViewTap:(UITapGestureRecognizer *) sender
 {
     CGPoint touchLocation = [sender locationOfTouch:0 inView:self.photoCollectionViewController.collectionView];
+    
     NSIndexPath *indexPath = [self.photoCollectionViewController.collectionView indexPathForItemAtPoint:touchLocation];
     
-    [self.photoCollectionViewController.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    if (indexPath != nil) {
+        [self.photoCollectionViewController.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     
-    [self.photoCollectionViewController collectionView:self.photoCollectionViewController.collectionView didSelectItemAtIndexPath:indexPath];
+        [self.photoCollectionViewController collectionView:self.photoCollectionViewController.collectionView didSelectItemAtIndexPath:indexPath];
+    } else {
+        
+        touchLocation = [sender locationOfTouch:0 inView:self.fbPhotoCollectionViewController.collectionView];
+        indexPath = [self.fbPhotoCollectionViewController.collectionView indexPathForItemAtPoint:touchLocation];
+    
+        if (indexPath != nil) {
+            [self.fbPhotoCollectionViewController.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            
+            [self.fbPhotoCollectionViewController collectionView:self.fbPhotoCollectionViewController.collectionView didSelectItemAtIndexPath:indexPath];
+        } else {
+            
+            touchLocation = [sender locationOfTouch:0 inView:self.instagramPhotoCollectionViewController.collectionView];
+            indexPath = [self.instagramPhotoCollectionViewController.collectionView indexPathForItemAtPoint:touchLocation];
+            
+            if (indexPath != nil) {
+                [self.instagramPhotoCollectionViewController.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+                [self.instagramPhotoCollectionViewController collectionView:self.instagramPhotoCollectionViewController.collectionView didSelectItemAtIndexPath:indexPath];
+            }
+        }
+    }
 }
 
+#pragma mark Facebook provider delegate
 
+- (NSDate *) fbFilterContentByDate {
+    return self.filteringDate;
+}
+
+- (void) fbRequestPhotoComplete:(int) count {
+    [self facebookUpdateDone:count];
+}
+
+#pragma mark Instagram provider delegate
+
+- (NSDate *) instagramFilterContentByDate {
+    return self.filteringDate;
+}
+
+- (void) instagramRequestPhotoComplete:(int) count {
+    [self instagramUpdateDone:count];
+}
+
+- (int)instagramMaxSearchDepth {
+    return kInstagramMaxImagesSearch;
+}
 
 @end

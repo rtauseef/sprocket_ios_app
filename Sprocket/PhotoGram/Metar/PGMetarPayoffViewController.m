@@ -56,7 +56,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [_pageViewController.view setFrame:self.paginationView.bounds];
+    //[_pageViewController.view setFrame:self.paginationView.bounds];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.pageViewController.view.frame = self.paginationView.bounds;
 }
 
 - (void) updateCurrentViewLabel: (NSString *) name forView: (PGPayoffViewBaseViewController *) view {

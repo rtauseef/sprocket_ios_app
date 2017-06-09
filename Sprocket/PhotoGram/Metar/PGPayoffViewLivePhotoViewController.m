@@ -25,29 +25,29 @@
     [super viewDidLoad];
   
     self.viewTitle = NSLocalizedString(@"Live Photo", nil);
+    self.photoView = [[PHLivePhotoView alloc]init];
+    self.photoView.hidden = YES;
+    [self.view addSubview:self.photoView];
+
     [_spinner startAnimating];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    if (self.photoView) {
+
+    if (self.photoView.livePhoto) {
         [self play];
     } else {
         [[PHImageManager defaultManager] requestLivePhotoForAsset:self.originalAsset targetSize:self.view.bounds.size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(PHLivePhoto * _Nullable livePhoto, NSDictionary * _Nullable info) {
             self.livePhoto = livePhoto;
             
-            self.photoView = [[PHLivePhotoView alloc]initWithFrame:self.view.bounds];
             self.photoView.contentMode = UIViewContentModeScaleAspectFit;
             self.photoView.livePhoto = self.livePhoto;
-
+            self.photoView.frame = self.view.bounds;
+            self.photoView.center = self.view.center;
             
-            self.photoView.center = [self.view convertPoint:self.view.center fromView:self.view.superview];
-            
-            [self.view addSubview:self.photoView];
-            //[self.view.layer addSublayer:self.photoView.layer];
-  
             [_spinner stopAnimating];
+            self.photoView.hidden = NO;
             
             if (self.isViewLoaded && self.view.window) {
                 [self play];
