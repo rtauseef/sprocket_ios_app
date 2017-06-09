@@ -13,6 +13,17 @@
 #import <UIKit/UIKit.h>
 #import "HPPRSelectPhotoProvider.h"
 
+@protocol HPPRInstagramPhotoProviderDelegate <NSObject>
+
+@optional
+- (NSDate *) instagramFilterContentByDate;
+- (void) instagramRequestPhotoComplete:(int) count;
+
+@required
+- (int) instagramMaxSearchDepth;
+
+@end
+
 @interface HPPRInstagramPhotoProvider : HPPRSelectPhotoProvider
 
 + (HPPRInstagramPhotoProvider *)sharedInstance;
@@ -20,5 +31,7 @@
 - (void)initForStandardDisplay;
 - (void)initWithHashtag:(NSString *)hashTag withNumPosts:(NSNumber *)numPosts;
 - (void)initWithUsername:(NSString *)displayName andUserId:(NSNumber *)userId andImage:(UIImage *)userImage;
+
+@property (weak, nonatomic) id<HPPRInstagramPhotoProviderDelegate> instagramDelegate;
 
 @end
