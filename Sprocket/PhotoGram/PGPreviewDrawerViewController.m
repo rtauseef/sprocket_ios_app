@@ -40,9 +40,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     
     self.showCopies = YES;
     self.showTiling = NO;
-    self.showPrintQueue = YES;
     [self configureShowPrintQueue];
-    
+
     self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
 
     self.numberOfCopies = 1;
@@ -64,10 +63,10 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 - (void)setShowPrintQueue:(BOOL)showPrintQueue
 {
-    _showPrintQueue = showPrintQueue;
-    if (self.alwaysShowPrintQueue) {
+    if (_showPrintQueue == showPrintQueue && self.printQueueView.isHidden == !showPrintQueue) {
         return;
     }
+    _showPrintQueue = showPrintQueue;
 
     self.printQueueView.hidden = !showPrintQueue;
     if (showPrintQueue) {
@@ -148,14 +147,17 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 - (void)configureShowPrintQueue
 {
-    if (self.alwaysShowPrintQueue) {
+    if (self.alwaysShowPrintQueue){
+        if (!self.showPrintQueue) {
+            self.showPrintQueue = YES;
+        }
         return;
     }
 
     NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
-    if (count <= 0 && self.showPrintQueue ) {
+    if (count <= 0) {
         self.showPrintQueue = NO;
-    } else if (count > 0 && !self.showPrintQueue) {
+    } else if (count > 0) {
         self.showPrintQueue = YES;
     }
 }
