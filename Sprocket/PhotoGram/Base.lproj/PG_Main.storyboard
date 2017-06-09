@@ -3666,9 +3666,9 @@ printer and app support.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This material may be protected by copyright law. By continuing, you agree to the Sprocket App &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avz-YY-2mv" userLabel="Legal Label" customClass="PGTermsAttributedLabel">
-                                <rect key="frame" x="36" y="608.5" width="303" height="28.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This material may be protected by copyright law. By continuing, you agree to the Sprocket App &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avz-YY-2mv" userLabel="Legal Label" customClass="PGTermsAttributedLabel">
+                                <rect key="frame" x="26" y="590" width="323" height="47"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3774,7 +3774,7 @@ printer and app support.</string>
                             <constraint firstItem="JWO-av-AJ9" firstAttribute="width" secondItem="qcx-Qo-v87" secondAttribute="width" id="1lN-Cm-qSb"/>
                             <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="Lbg-z7-W15" secondAttribute="bottom" id="2vo-ZJ-9OX"/>
                             <constraint firstItem="b7n-Cn-BSm" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="4cF-fu-jac"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="avz-YY-2mv" secondAttribute="trailing" constant="20" id="4gm-Yg-b2Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="avz-YY-2mv" secondAttribute="trailing" constant="10" id="4gm-Yg-b2Y"/>
                             <constraint firstItem="dkv-a2-8va" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" id="4mo-4a-JsJ"/>
                             <constraint firstItem="qcx-Qo-v87" firstAttribute="centerY" secondItem="fmJ-kE-8Mo" secondAttribute="centerY" constant="-50" id="83z-AE-EAh"/>
                             <constraint firstItem="Lbg-z7-W15" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="AKH-PW-E7e"/>
@@ -3796,7 +3796,7 @@ printer and app support.</string>
                             <constraint firstItem="qcx-Qo-v87" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" id="nua-RS-Dns"/>
                             <constraint firstItem="Uxk-oG-sDQ" firstAttribute="centerX" secondItem="qcx-Qo-v87" secondAttribute="centerX" id="qxm-hR-dZh"/>
                             <constraint firstItem="Uxk-oG-sDQ" firstAttribute="top" secondItem="qcx-Qo-v87" secondAttribute="bottom" constant="40" id="uBH-ap-1Uw"/>
-                            <constraint firstItem="avz-YY-2mv" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leadingMargin" constant="20" id="uUL-Om-R4q"/>
+                            <constraint firstItem="avz-YY-2mv" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leadingMargin" constant="10" id="uUL-Om-R4q"/>
                             <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="avz-YY-2mv" secondAttribute="bottom" constant="30" id="xrX-E9-aOl"/>
                         </constraints>
                     </view>
