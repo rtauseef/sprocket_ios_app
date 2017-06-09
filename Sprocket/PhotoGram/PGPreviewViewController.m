@@ -446,6 +446,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     UIAlertAction *connectPrinterAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect Printer", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[PGAnalyticsManager sharedManager] trackConnectPrinter];
+        [self peekDrawerAnimated:YES];
         [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
             if (!error) {
                 [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
