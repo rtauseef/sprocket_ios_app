@@ -65,6 +65,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *infoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *closeButton;
 
+@property (strong, nonatomic) UINavigationController *termsOfServiceViewController;
+
 @end
 
 @implementation PGCustomStickerViewController
@@ -103,8 +105,9 @@ CGSize const kThumbnailSize = { 100, 100 };
     [self setupPlayerUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.camera stopCameraCapture];
 }
 
 - (BOOL)hasCamera
@@ -348,12 +351,27 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 - (void)attributedLabel:(__unused TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    UINavigationController *navigationController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGTermsNavigationController"];
+    if (!self.termsOfServiceViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+        self.termsOfServiceViewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGTermsNavigationController"];
 
-    navigationController.topViewController.trackableScreenName = @"Terms of Service Screen";
+        UIViewController *viewController = self.termsOfServiceViewController.topViewController;
 
-    [self presentViewController:navigationController animated:YES completion:nil];
+        viewController.trackableScreenName = @"Terms of Service Screen";
+        viewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil)
+                                                                                            style:UIBarButtonItemStyleDone
+                                                                                           target:self
+                                                                                           action:@selector(termsDoneButtonTapped)];
+
+        [self presentViewController:self.termsOfServiceViewController animated:YES completion:nil];
+    }
+}
+
+- (void)termsDoneButtonTapped
+{
+    [self.termsOfServiceViewController dismissViewControllerAnimated:YES completion:^{
+        self.termsOfServiceViewController = nil;
+    }];
 }
 
 
