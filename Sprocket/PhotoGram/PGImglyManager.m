@@ -220,6 +220,7 @@ int const kCustomButtonTag = 9999;
         // Editor general configuration
 
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
+            photoEditorBuilder.allowedPhotoEditOverlayActionsAsNSNumbers = @[];
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPRowColor];
             photoEditorBuilder.allowsPreviewImageZoom = NO;
@@ -380,6 +381,7 @@ int const kCustomButtonTag = 9999;
         }];
 
         [builder configureStickerOptionsToolController:^(IMGLYStickerOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.allowedStickerOverlayActionsAsNSNumbers = @[[NSNumber numberWithInteger:StickerOverlayActionAdd], [NSNumber numberWithInteger:StickerOverlayActionDelete]];
             toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"sticker-options-tool-screen"];
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-options-tool-apply-btn"];
 
@@ -431,6 +433,7 @@ int const kCustomButtonTag = 9999;
         }];
 
         [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.allowedTextOverlayActionsAsNSNumbers = @[[NSNumber numberWithInteger:TextOverlayActionAdd], [NSNumber numberWithInteger:TextOverlayActionDelete]];
             toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"text-options-tool-screen"];
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-options-tool-apply-btn"];
 
@@ -501,7 +504,7 @@ int const kCustomButtonTag = 9999;
         selectionChangedHandler(view1, view2);
     };
     
-    photoEditViewController.undoController.isEnabled = YES;
+    photoEditViewController.undoController.isEnabled = NO;
 }
 
 - (void (^)(IMGLYButton * _Nonnull))applyButtonBlockWithAccessibilityLabel:(NSString *)label {
