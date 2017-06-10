@@ -197,21 +197,21 @@
         [self requestVideosWithCompletion:completion andReloadAll:reload];
     } else {
     
-        [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:^(NSDictionary *photoInfo, NSError *error) {
-        
+        void (^block)() = ^(NSDictionary *photoInfo, NSError *error) {
             NSArray *records = nil;
-        
+            NSArray * photos = nil;
+            
             if (!error) {
-                NSArray * photos = [photoInfo objectForKey:@"data"];
+                photos = [photoInfo objectForKey:@"data"];
                 NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
                 NSMutableArray *mutableRecords = [NSMutableArray array];
                 for (NSDictionary * photo in photos) {
                     __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
                     [mutableRecords addObject:media];
                 }
-            
+                
                 records = mutableRecords.copy;
-            
+                
                 if (self.maxPhotoID) {
                     [self updateImagesWithRecords:records];
                 } else {
@@ -222,11 +222,21 @@
                 NSLog(@"ALBUM PHOTOS ERROR\n%@", error);
                 [self lostAccess];
             }
-        
+            
             if (completion) {
                 completion(records);
             }
-        }];
+            
+            if ([self.fbDelegate respondsToSelector:@selector(fbRequestPhotoComplete:)]) {
+                [self.fbDelegate fbRequestPhotoComplete:photos == nil ? 0 : (int) [photos count]];
+            }
+        };
+        
+        if (self.fbDelegate && [self.fbDelegate respondsToSelector:@selector(fbFilterContentByDate)] && self.fbDelegate.fbFilterContentByDate != nil) {
+            [self photoForDayInDate:self.fbDelegate.fbFilterContentByDate  withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
+        } else {
+            [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
+        }
     }
 }
 
@@ -359,6 +369,21 @@
 {
     NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
     [self cachedGraphRequest:photoID parameters:fields refresh:refresh paging:nil completion:completion];
+}
+
+- (void)photoForDayInDate:(NSDate *) date withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion {
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay ) fromDate:date];
+    NSDate *startDate = [calendar dateFromComponents:components];
+    [components setDay:components.day+1];
+    NSDate *endDate = [calendar dateFromComponents:components];
+    
+    NSString *query = [NSString stringWithFormat:@"me/photos/uploaded?since=%.0lf&until=%.0lf",[startDate timeIntervalSince1970],[endDate timeIntervalSince1970]];
+    
+    NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
+    
+    [self cachedGraphRequest:query parameters:fields refresh:refresh paging:afterID completion:completion];
 }
 
 - (void)videosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *videoInfo, NSError *error))completion
