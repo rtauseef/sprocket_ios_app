@@ -929,6 +929,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                              }
                          }];
         } else {
+            gestureView.editedImage = [gestureView screenshotImage];
             block(gestureView.editedImage);
         }
     }
