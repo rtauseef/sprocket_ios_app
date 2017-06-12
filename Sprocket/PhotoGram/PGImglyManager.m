@@ -293,6 +293,9 @@ int const kCustomButtonTag = 9999;
         // Adjust configuration
         
         [builder configureAdjustToolController:^(IMGLYAdjustToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"adjust-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"adjust-tool-apply-btn"];
+            
             toolBuilder.allowedAdjustToolsAsNSNumbers = @[[NSNumber numberWithInteger:AdjustToolBrightness],
                                                           [NSNumber numberWithInteger:AdjustToolContrast],
                                                           [NSNumber numberWithInteger:AdjustToolSaturation]];
@@ -304,6 +307,21 @@ int const kCustomButtonTag = 9999;
             
             toolBuilder.adjustToolButtonConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum AdjustTool tool) {
                 cell.captionLabel.text = nil;
+            };
+            
+            toolBuilder.sliderChangedValueClosure = ^(IMGLYSlider * _Nonnull slider, enum AdjustTool tool) {
+                NSArray <NSString *> *names = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
+                
+                NSString *name = @"Unrecognized";
+                if (tool < names.count) {
+                    name = names[tool];
+                }
+                
+                PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
+                
+                if (![embellishmentMetricsManager hasEmbellishmentMetric:adjustMetric]) {
+                    [embellishmentMetricsManager addEmbellishmentMetric:adjustMetric];
+                }
             };
         }];
 
