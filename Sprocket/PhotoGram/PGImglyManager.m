@@ -629,12 +629,12 @@ int const kCustomButtonTag = 9999;
         if ([attributes[IMGLYAnalyticsEventAttributeNameFrame] isKindOfClass:[IMGLYFrame class]]) {
             self.selectedFrame = ((IMGLYFrame *)attributes[IMGLYAnalyticsEventAttributeNameFrame]).accessibilityLabel;
         } else {
-            self.selectedFrame = @"NoFrame";
+            self.selectedFrame = @"No Frame";
         }
     }
     
     if (event == IMGLYAnalyticsEventNameFrameDeselect) {
-        self.selectedFrame = @"NoFrame";
+        self.selectedFrame = @"No Frame";
     }
     
     if (event == IMGLYAnalyticsEventNameApplyChanges) {
