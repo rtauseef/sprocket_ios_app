@@ -634,7 +634,7 @@ int const kCustomButtonTag = 9999;
     }
     
     if (event == IMGLYAnalyticsEventNameFrameDeselect) {
-        self.selectedFrame = nil;
+        self.selectedFrame = @"NoFrame";
     }
     
     if (event == IMGLYAnalyticsEventNameApplyChanges) {
