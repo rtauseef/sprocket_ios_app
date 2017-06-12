@@ -122,182 +122,6 @@
 		82017ADE1D948AB600364F21 /* HPSimplified_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A4199AB9FE006D80E0 /* HPSimplified_Lt.ttf */; };
 		82017ADF1D948AB600364F21 /* HPSimplified_LtIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A5199AB9FE006D80E0 /* HPSimplified_LtIt.ttf */; };
 		82017AE01D948AB600364F21 /* HPSimplified_Rg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E34D50A6199AB9FE006D80E0 /* HPSimplified_Rg.ttf */; };
-		8212BB6E1EA92A25009E66EC /* g_balloons_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB161EA92A25009E66EC /* g_balloons_TN.png */; };
-		8212BB6F1EA92A25009E66EC /* g_balloons_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB161EA92A25009E66EC /* g_balloons_TN.png */; };
-		8212BB701EA92A25009E66EC /* g_balloons_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB171EA92A25009E66EC /* g_balloons_TN@2x.png */; };
-		8212BB711EA92A25009E66EC /* g_balloons_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB171EA92A25009E66EC /* g_balloons_TN@2x.png */; };
-		8212BB721EA92A25009E66EC /* g_balloons_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB181EA92A25009E66EC /* g_balloons_TN@3x.png */; };
-		8212BB731EA92A25009E66EC /* g_balloons_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB181EA92A25009E66EC /* g_balloons_TN@3x.png */; };
-		8212BB741EA92A25009E66EC /* g_balloons.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB191EA92A25009E66EC /* g_balloons.png */; };
-		8212BB751EA92A25009E66EC /* g_balloons.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB191EA92A25009E66EC /* g_balloons.png */; };
-		8212BB761EA92A25009E66EC /* book_stack_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1A1EA92A25009E66EC /* book_stack_TN.png */; };
-		8212BB771EA92A25009E66EC /* book_stack_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1A1EA92A25009E66EC /* book_stack_TN.png */; };
-		8212BB781EA92A25009E66EC /* book_stack_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1B1EA92A25009E66EC /* book_stack_TN@2x.png */; };
-		8212BB791EA92A25009E66EC /* book_stack_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1B1EA92A25009E66EC /* book_stack_TN@2x.png */; };
-		8212BB7A1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1C1EA92A25009E66EC /* book_stack_TN@3x.png */; };
-		8212BB7B1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1C1EA92A25009E66EC /* book_stack_TN@3x.png */; };
-		8212BB7C1EA92A25009E66EC /* book_stack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1D1EA92A25009E66EC /* book_stack.png */; };
-		8212BB7D1EA92A25009E66EC /* book_stack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1D1EA92A25009E66EC /* book_stack.png */; };
-		8212BB7E1EA92A25009E66EC /* books_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1E1EA92A25009E66EC /* books_TN.png */; };
-		8212BB7F1EA92A25009E66EC /* books_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1E1EA92A25009E66EC /* books_TN.png */; };
-		8212BB801EA92A25009E66EC /* books_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1F1EA92A25009E66EC /* books_TN@2x.png */; };
-		8212BB811EA92A25009E66EC /* books_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB1F1EA92A25009E66EC /* books_TN@2x.png */; };
-		8212BB821EA92A25009E66EC /* books_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB201EA92A25009E66EC /* books_TN@3x.png */; };
-		8212BB831EA92A25009E66EC /* books_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB201EA92A25009E66EC /* books_TN@3x.png */; };
-		8212BB841EA92A25009E66EC /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB211EA92A25009E66EC /* books.png */; };
-		8212BB851EA92A25009E66EC /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB211EA92A25009E66EC /* books.png */; };
-		8212BB861EA92A25009E66EC /* bowtie_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB221EA92A25009E66EC /* bowtie_graduation_TN.png */; };
-		8212BB871EA92A25009E66EC /* bowtie_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB221EA92A25009E66EC /* bowtie_graduation_TN.png */; };
-		8212BB881EA92A25009E66EC /* bowtie_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB231EA92A25009E66EC /* bowtie_graduation_TN@2x.png */; };
-		8212BB891EA92A25009E66EC /* bowtie_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB231EA92A25009E66EC /* bowtie_graduation_TN@2x.png */; };
-		8212BB8A1EA92A25009E66EC /* bowtie_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB241EA92A25009E66EC /* bowtie_graduation_TN@3x.png */; };
-		8212BB8B1EA92A25009E66EC /* bowtie_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB241EA92A25009E66EC /* bowtie_graduation_TN@3x.png */; };
-		8212BB8C1EA92A25009E66EC /* bowtie_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB251EA92A25009E66EC /* bowtie_graduation.png */; };
-		8212BB8D1EA92A25009E66EC /* bowtie_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB251EA92A25009E66EC /* bowtie_graduation.png */; };
-		8212BB8E1EA92A25009E66EC /* cap_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB261EA92A25009E66EC /* cap_graduation_TN.png */; };
-		8212BB8F1EA92A25009E66EC /* cap_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB261EA92A25009E66EC /* cap_graduation_TN.png */; };
-		8212BB901EA92A25009E66EC /* cap_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB271EA92A25009E66EC /* cap_graduation_TN@2x.png */; };
-		8212BB911EA92A25009E66EC /* cap_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB271EA92A25009E66EC /* cap_graduation_TN@2x.png */; };
-		8212BB921EA92A25009E66EC /* cap_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB281EA92A25009E66EC /* cap_graduation_TN@3x.png */; };
-		8212BB931EA92A25009E66EC /* cap_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB281EA92A25009E66EC /* cap_graduation_TN@3x.png */; };
-		8212BB941EA92A25009E66EC /* cap_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB291EA92A25009E66EC /* cap_graduation.png */; };
-		8212BB951EA92A25009E66EC /* cap_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB291EA92A25009E66EC /* cap_graduation.png */; };
-		8212BB961EA92A25009E66EC /* cap_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2A1EA92A25009E66EC /* cap_TN.png */; };
-		8212BB971EA92A25009E66EC /* cap_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2A1EA92A25009E66EC /* cap_TN.png */; };
-		8212BB981EA92A25009E66EC /* cap_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2B1EA92A25009E66EC /* cap_TN@2x.png */; };
-		8212BB991EA92A25009E66EC /* cap_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2B1EA92A25009E66EC /* cap_TN@2x.png */; };
-		8212BB9A1EA92A25009E66EC /* cap_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2C1EA92A25009E66EC /* cap_TN@3x.png */; };
-		8212BB9B1EA92A25009E66EC /* cap_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2C1EA92A25009E66EC /* cap_TN@3x.png */; };
-		8212BB9C1EA92A25009E66EC /* cap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2D1EA92A25009E66EC /* cap.png */; };
-		8212BB9D1EA92A25009E66EC /* cap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2D1EA92A25009E66EC /* cap.png */; };
-		8212BB9E1EA92A25009E66EC /* confetti_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2E1EA92A25009E66EC /* confetti_graduation_TN.png */; };
-		8212BB9F1EA92A25009E66EC /* confetti_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2E1EA92A25009E66EC /* confetti_graduation_TN.png */; };
-		8212BBA01EA92A25009E66EC /* confetti_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2F1EA92A25009E66EC /* confetti_graduation_TN@2x.png */; };
-		8212BBA11EA92A26009E66EC /* confetti_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB2F1EA92A25009E66EC /* confetti_graduation_TN@2x.png */; };
-		8212BBA21EA92A26009E66EC /* confetti_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB301EA92A25009E66EC /* confetti_graduation_TN@3x.png */; };
-		8212BBA31EA92A26009E66EC /* confetti_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB301EA92A25009E66EC /* confetti_graduation_TN@3x.png */; };
-		8212BBA41EA92A26009E66EC /* confetti_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB311EA92A25009E66EC /* confetti_graduation.png */; };
-		8212BBA51EA92A26009E66EC /* confetti_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB311EA92A25009E66EC /* confetti_graduation.png */; };
-		8212BBA61EA92A26009E66EC /* confetti_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB321EA92A25009E66EC /* confetti_TN.png */; };
-		8212BBA71EA92A26009E66EC /* confetti_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB321EA92A25009E66EC /* confetti_TN.png */; };
-		8212BBA81EA92A26009E66EC /* confetti_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB331EA92A25009E66EC /* confetti_TN@2x.png */; };
-		8212BBA91EA92A26009E66EC /* confetti_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB331EA92A25009E66EC /* confetti_TN@2x.png */; };
-		8212BBAA1EA92A26009E66EC /* confetti_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB341EA92A25009E66EC /* confetti_TN@3x.png */; };
-		8212BBAB1EA92A26009E66EC /* confetti_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB341EA92A25009E66EC /* confetti_TN@3x.png */; };
-		8212BBAC1EA92A26009E66EC /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB351EA92A25009E66EC /* confetti.png */; };
-		8212BBAD1EA92A26009E66EC /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB351EA92A25009E66EC /* confetti.png */; };
-		8212BBAE1EA92A26009E66EC /* diploma_doodle_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB361EA92A25009E66EC /* diploma_doodle_TN.png */; };
-		8212BBAF1EA92A26009E66EC /* diploma_doodle_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB361EA92A25009E66EC /* diploma_doodle_TN.png */; };
-		8212BBB01EA92A26009E66EC /* diploma_doodle_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB371EA92A25009E66EC /* diploma_doodle_TN@2x.png */; };
-		8212BBB11EA92A26009E66EC /* diploma_doodle_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB371EA92A25009E66EC /* diploma_doodle_TN@2x.png */; };
-		8212BBB21EA92A26009E66EC /* diploma_doodle_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB381EA92A25009E66EC /* diploma_doodle_TN@3x.png */; };
-		8212BBB31EA92A26009E66EC /* diploma_doodle_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB381EA92A25009E66EC /* diploma_doodle_TN@3x.png */; };
-		8212BBB41EA92A26009E66EC /* diploma_doodle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB391EA92A25009E66EC /* diploma_doodle.png */; };
-		8212BBB51EA92A26009E66EC /* diploma_doodle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB391EA92A25009E66EC /* diploma_doodle.png */; };
-		8212BBB61EA92A26009E66EC /* diploma_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3A1EA92A25009E66EC /* diploma_TN.png */; };
-		8212BBB71EA92A26009E66EC /* diploma_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3A1EA92A25009E66EC /* diploma_TN.png */; };
-		8212BBB81EA92A26009E66EC /* diploma_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3B1EA92A25009E66EC /* diploma_TN@2x.png */; };
-		8212BBB91EA92A26009E66EC /* diploma_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3B1EA92A25009E66EC /* diploma_TN@2x.png */; };
-		8212BBBA1EA92A26009E66EC /* diploma_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3C1EA92A25009E66EC /* diploma_TN@3x.png */; };
-		8212BBBB1EA92A26009E66EC /* diploma_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3C1EA92A25009E66EC /* diploma_TN@3x.png */; };
-		8212BBBC1EA92A26009E66EC /* diploma.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3D1EA92A25009E66EC /* diploma.png */; };
-		8212BBBD1EA92A26009E66EC /* diploma.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3D1EA92A25009E66EC /* diploma.png */; };
-		8212BBBE1EA92A26009E66EC /* flying_caps_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3E1EA92A25009E66EC /* flying_caps_graduation_TN.png */; };
-		8212BBBF1EA92A26009E66EC /* flying_caps_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3E1EA92A25009E66EC /* flying_caps_graduation_TN.png */; };
-		8212BBC01EA92A26009E66EC /* flying_caps_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3F1EA92A25009E66EC /* flying_caps_graduation_TN@2x.png */; };
-		8212BBC11EA92A26009E66EC /* flying_caps_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB3F1EA92A25009E66EC /* flying_caps_graduation_TN@2x.png */; };
-		8212BBC21EA92A26009E66EC /* flying_caps_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB401EA92A25009E66EC /* flying_caps_graduation_TN@3x.png */; };
-		8212BBC31EA92A26009E66EC /* flying_caps_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB401EA92A25009E66EC /* flying_caps_graduation_TN@3x.png */; };
-		8212BBC41EA92A26009E66EC /* flying_caps_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB411EA92A25009E66EC /* flying_caps_graduation.png */; };
-		8212BBC51EA92A26009E66EC /* flying_caps_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB411EA92A25009E66EC /* flying_caps_graduation.png */; };
-		8212BBC61EA92A26009E66EC /* g_glasses_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB421EA92A25009E66EC /* g_glasses_TN.png */; };
-		8212BBC71EA92A26009E66EC /* g_glasses_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB421EA92A25009E66EC /* g_glasses_TN.png */; };
-		8212BBC81EA92A26009E66EC /* g_glasses_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB431EA92A25009E66EC /* g_glasses_TN@2x.png */; };
-		8212BBC91EA92A26009E66EC /* g_glasses_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB431EA92A25009E66EC /* g_glasses_TN@2x.png */; };
-		8212BBCA1EA92A26009E66EC /* g_glasses_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB441EA92A25009E66EC /* g_glasses_TN@3x.png */; };
-		8212BBCB1EA92A26009E66EC /* g_glasses_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB441EA92A25009E66EC /* g_glasses_TN@3x.png */; };
-		8212BBCC1EA92A26009E66EC /* g_glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB451EA92A25009E66EC /* g_glasses.png */; };
-		8212BBCD1EA92A26009E66EC /* g_glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB451EA92A25009E66EC /* g_glasses.png */; };
-		8212BBCE1EA92A26009E66EC /* g_horn_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB461EA92A25009E66EC /* g_horn_TN.png */; };
-		8212BBCF1EA92A26009E66EC /* g_horn_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB461EA92A25009E66EC /* g_horn_TN.png */; };
-		8212BBD01EA92A26009E66EC /* g_horn_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB471EA92A25009E66EC /* g_horn_TN@2x.png */; };
-		8212BBD11EA92A26009E66EC /* g_horn_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB471EA92A25009E66EC /* g_horn_TN@2x.png */; };
-		8212BBD21EA92A26009E66EC /* g_horn_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB481EA92A25009E66EC /* g_horn_TN@3x.png */; };
-		8212BBD31EA92A26009E66EC /* g_horn_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB481EA92A25009E66EC /* g_horn_TN@3x.png */; };
-		8212BBD41EA92A26009E66EC /* g_horn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB491EA92A25009E66EC /* g_horn.png */; };
-		8212BBD51EA92A26009E66EC /* g_horn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB491EA92A25009E66EC /* g_horn.png */; };
-		8212BBD61EA92A26009E66EC /* medal_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4A1EA92A25009E66EC /* medal_graduation_TN.png */; };
-		8212BBD71EA92A26009E66EC /* medal_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4A1EA92A25009E66EC /* medal_graduation_TN.png */; };
-		8212BBD81EA92A26009E66EC /* medal_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4B1EA92A25009E66EC /* medal_graduation_TN@2x.png */; };
-		8212BBD91EA92A26009E66EC /* medal_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4B1EA92A25009E66EC /* medal_graduation_TN@2x.png */; };
-		8212BBDA1EA92A26009E66EC /* medal_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4C1EA92A25009E66EC /* medal_graduation_TN@3x.png */; };
-		8212BBDB1EA92A26009E66EC /* medal_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4C1EA92A25009E66EC /* medal_graduation_TN@3x.png */; };
-		8212BBDC1EA92A26009E66EC /* medal_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4D1EA92A25009E66EC /* medal_graduation.png */; };
-		8212BBDD1EA92A26009E66EC /* medal_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4D1EA92A25009E66EC /* medal_graduation.png */; };
-		8212BBDE1EA92A26009E66EC /* medal_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4E1EA92A25009E66EC /* medal_TN.png */; };
-		8212BBDF1EA92A26009E66EC /* medal_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4E1EA92A25009E66EC /* medal_TN.png */; };
-		8212BBE01EA92A26009E66EC /* medal_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4F1EA92A25009E66EC /* medal_TN@2x.png */; };
-		8212BBE11EA92A26009E66EC /* medal_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB4F1EA92A25009E66EC /* medal_TN@2x.png */; };
-		8212BBE21EA92A26009E66EC /* medal_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB501EA92A25009E66EC /* medal_TN@3x.png */; };
-		8212BBE31EA92A26009E66EC /* medal_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB501EA92A25009E66EC /* medal_TN@3x.png */; };
-		8212BBE41EA92A26009E66EC /* medal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB511EA92A25009E66EC /* medal.png */; };
-		8212BBE51EA92A26009E66EC /* medal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB511EA92A25009E66EC /* medal.png */; };
-		8212BBE61EA92A26009E66EC /* necktie_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB521EA92A25009E66EC /* necktie_graduation_TN.png */; };
-		8212BBE71EA92A26009E66EC /* necktie_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB521EA92A25009E66EC /* necktie_graduation_TN.png */; };
-		8212BBE81EA92A26009E66EC /* necktie_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB531EA92A25009E66EC /* necktie_graduation_TN@2x.png */; };
-		8212BBE91EA92A26009E66EC /* necktie_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB531EA92A25009E66EC /* necktie_graduation_TN@2x.png */; };
-		8212BBEA1EA92A26009E66EC /* necktie_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB541EA92A25009E66EC /* necktie_graduation_TN@3x.png */; };
-		8212BBEB1EA92A26009E66EC /* necktie_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB541EA92A25009E66EC /* necktie_graduation_TN@3x.png */; };
-		8212BBEC1EA92A26009E66EC /* necktie_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB551EA92A25009E66EC /* necktie_graduation.png */; };
-		8212BBED1EA92A26009E66EC /* necktie_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB551EA92A25009E66EC /* necktie_graduation.png */; };
-		8212BBEE1EA92A26009E66EC /* nerd_glasses_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB561EA92A25009E66EC /* nerd_glasses_TN.png */; };
-		8212BBEF1EA92A26009E66EC /* nerd_glasses_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB561EA92A25009E66EC /* nerd_glasses_TN.png */; };
-		8212BBF01EA92A26009E66EC /* nerd_glasses_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB571EA92A25009E66EC /* nerd_glasses_TN@2x.png */; };
-		8212BBF11EA92A26009E66EC /* nerd_glasses_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB571EA92A25009E66EC /* nerd_glasses_TN@2x.png */; };
-		8212BBF21EA92A26009E66EC /* nerd_glasses_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB581EA92A25009E66EC /* nerd_glasses_TN@3x.png */; };
-		8212BBF31EA92A26009E66EC /* nerd_glasses_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB581EA92A25009E66EC /* nerd_glasses_TN@3x.png */; };
-		8212BBF41EA92A26009E66EC /* nerd_glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB591EA92A25009E66EC /* nerd_glasses.png */; };
-		8212BBF51EA92A26009E66EC /* nerd_glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB591EA92A25009E66EC /* nerd_glasses.png */; };
-		8212BBF61EA92A26009E66EC /* g_owl_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5A1EA92A25009E66EC /* g_owl_TN.png */; };
-		8212BBF71EA92A26009E66EC /* g_owl_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5A1EA92A25009E66EC /* g_owl_TN.png */; };
-		8212BBF81EA92A26009E66EC /* g_owl_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5B1EA92A25009E66EC /* g_owl_TN@2x.png */; };
-		8212BBF91EA92A26009E66EC /* g_owl_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5B1EA92A25009E66EC /* g_owl_TN@2x.png */; };
-		8212BBFA1EA92A26009E66EC /* g_owl_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5C1EA92A25009E66EC /* g_owl_TN@3x.png */; };
-		8212BBFB1EA92A26009E66EC /* g_owl_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5C1EA92A25009E66EC /* g_owl_TN@3x.png */; };
-		8212BBFC1EA92A26009E66EC /* g_owl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5D1EA92A25009E66EC /* g_owl.png */; };
-		8212BBFD1EA92A26009E66EC /* g_owl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5D1EA92A25009E66EC /* g_owl.png */; };
-		8212BBFE1EA92A26009E66EC /* pencil_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5E1EA92A25009E66EC /* pencil_graduation_TN.png */; };
-		8212BBFF1EA92A26009E66EC /* pencil_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5E1EA92A25009E66EC /* pencil_graduation_TN.png */; };
-		8212BC001EA92A26009E66EC /* pencil_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5F1EA92A25009E66EC /* pencil_graduation_TN@2x.png */; };
-		8212BC011EA92A26009E66EC /* pencil_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB5F1EA92A25009E66EC /* pencil_graduation_TN@2x.png */; };
-		8212BC021EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB601EA92A25009E66EC /* pencil_graduation_TN@3x.png */; };
-		8212BC031EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB601EA92A25009E66EC /* pencil_graduation_TN@3x.png */; };
-		8212BC041EA92A26009E66EC /* pencil_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB611EA92A25009E66EC /* pencil_graduation.png */; };
-		8212BC051EA92A26009E66EC /* pencil_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB611EA92A25009E66EC /* pencil_graduation.png */; };
-		8212BC061EA92A26009E66EC /* pencil_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB621EA92A25009E66EC /* pencil_TN.png */; };
-		8212BC071EA92A26009E66EC /* pencil_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB621EA92A25009E66EC /* pencil_TN.png */; };
-		8212BC081EA92A26009E66EC /* pencil_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB631EA92A25009E66EC /* pencil_TN@2x.png */; };
-		8212BC091EA92A26009E66EC /* pencil_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB631EA92A25009E66EC /* pencil_TN@2x.png */; };
-		8212BC0A1EA92A26009E66EC /* pencil_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB641EA92A25009E66EC /* pencil_TN@3x.png */; };
-		8212BC0B1EA92A26009E66EC /* pencil_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB641EA92A25009E66EC /* pencil_TN@3x.png */; };
-		8212BC0C1EA92A26009E66EC /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB651EA92A25009E66EC /* pencil.png */; };
-		8212BC0D1EA92A26009E66EC /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB651EA92A25009E66EC /* pencil.png */; };
-		8212BC0E1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB661EA92A25009E66EC /* ribbon_graduation_TN.png */; };
-		8212BC0F1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB661EA92A25009E66EC /* ribbon_graduation_TN.png */; };
-		8212BC101EA92A26009E66EC /* ribbon_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB671EA92A25009E66EC /* ribbon_graduation_TN@2x.png */; };
-		8212BC111EA92A26009E66EC /* ribbon_graduation_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB671EA92A25009E66EC /* ribbon_graduation_TN@2x.png */; };
-		8212BC121EA92A26009E66EC /* ribbon_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB681EA92A25009E66EC /* ribbon_graduation_TN@3x.png */; };
-		8212BC131EA92A26009E66EC /* ribbon_graduation_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB681EA92A25009E66EC /* ribbon_graduation_TN@3x.png */; };
-		8212BC141EA92A26009E66EC /* ribbon_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB691EA92A25009E66EC /* ribbon_graduation.png */; };
-		8212BC151EA92A26009E66EC /* ribbon_graduation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB691EA92A25009E66EC /* ribbon_graduation.png */; };
-		8212BC161EA92A26009E66EC /* ribbon_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6A1EA92A25009E66EC /* ribbon_TN.png */; };
-		8212BC171EA92A26009E66EC /* ribbon_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6A1EA92A25009E66EC /* ribbon_TN.png */; };
-		8212BC181EA92A26009E66EC /* ribbon_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6B1EA92A25009E66EC /* ribbon_TN@2x.png */; };
-		8212BC191EA92A26009E66EC /* ribbon_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6B1EA92A25009E66EC /* ribbon_TN@2x.png */; };
-		8212BC1A1EA92A26009E66EC /* ribbon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6C1EA92A25009E66EC /* ribbon_TN@3x.png */; };
-		8212BC1B1EA92A26009E66EC /* ribbon_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6C1EA92A25009E66EC /* ribbon_TN@3x.png */; };
-		8212BC1C1EA92A26009E66EC /* ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6D1EA92A25009E66EC /* ribbon.png */; };
-		8212BC1D1EA92A26009E66EC /* ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BB6D1EA92A25009E66EC /* ribbon.png */; };
 		8212BD571EA93615009E66EC /* apple_angry_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BC1F1EA93614009E66EC /* apple_angry_TN.png */; };
 		8212BD591EA93615009E66EC /* apple_angry_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BC201EA93614009E66EC /* apple_angry_TN@2x.png */; };
 		8212BD5B1EA93615009E66EC /* apple_angry_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8212BC211EA93614009E66EC /* apple_angry_TN@3x.png */; };
@@ -3051,94 +2875,6 @@
 		82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGImglyManager.m; sourceTree = "<group>"; };
 		82017AD61D94684F00364F21 /* PGGesturesView+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PGGesturesView+Analytics.h"; sourceTree = "<group>"; };
 		82017AD71D94684F00364F21 /* PGGesturesView+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PGGesturesView+Analytics.m"; sourceTree = "<group>"; };
-		8212BB161EA92A25009E66EC /* g_balloons_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_balloons_TN.png; path = Resources/Images/Stickers/Graduation/g_balloons_TN.png; sourceTree = "<group>"; };
-		8212BB171EA92A25009E66EC /* g_balloons_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_balloons_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/g_balloons_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB181EA92A25009E66EC /* g_balloons_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_balloons_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/g_balloons_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB191EA92A25009E66EC /* g_balloons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_balloons.png; path = Resources/Images/Stickers/Graduation/g_balloons.png; sourceTree = "<group>"; };
-		8212BB1A1EA92A25009E66EC /* book_stack_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = book_stack_TN.png; path = Resources/Images/Stickers/Graduation/book_stack_TN.png; sourceTree = "<group>"; };
-		8212BB1B1EA92A25009E66EC /* book_stack_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "book_stack_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/book_stack_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB1C1EA92A25009E66EC /* book_stack_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "book_stack_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/book_stack_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB1D1EA92A25009E66EC /* book_stack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = book_stack.png; path = Resources/Images/Stickers/Graduation/book_stack.png; sourceTree = "<group>"; };
-		8212BB1E1EA92A25009E66EC /* books_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = books_TN.png; path = Resources/Images/Stickers/Graduation/books_TN.png; sourceTree = "<group>"; };
-		8212BB1F1EA92A25009E66EC /* books_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "books_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/books_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB201EA92A25009E66EC /* books_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "books_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/books_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB211EA92A25009E66EC /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = books.png; path = Resources/Images/Stickers/Graduation/books.png; sourceTree = "<group>"; };
-		8212BB221EA92A25009E66EC /* bowtie_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bowtie_graduation_TN.png; path = Resources/Images/Stickers/Graduation/bowtie_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB231EA92A25009E66EC /* bowtie_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowtie_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/bowtie_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB241EA92A25009E66EC /* bowtie_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bowtie_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/bowtie_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB251EA92A25009E66EC /* bowtie_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bowtie_graduation.png; path = Resources/Images/Stickers/Graduation/bowtie_graduation.png; sourceTree = "<group>"; };
-		8212BB261EA92A25009E66EC /* cap_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cap_graduation_TN.png; path = Resources/Images/Stickers/Graduation/cap_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB271EA92A25009E66EC /* cap_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cap_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/cap_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB281EA92A25009E66EC /* cap_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cap_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/cap_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB291EA92A25009E66EC /* cap_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cap_graduation.png; path = Resources/Images/Stickers/Graduation/cap_graduation.png; sourceTree = "<group>"; };
-		8212BB2A1EA92A25009E66EC /* cap_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cap_TN.png; path = Resources/Images/Stickers/Graduation/cap_TN.png; sourceTree = "<group>"; };
-		8212BB2B1EA92A25009E66EC /* cap_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cap_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/cap_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB2C1EA92A25009E66EC /* cap_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cap_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/cap_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB2D1EA92A25009E66EC /* cap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cap.png; path = Resources/Images/Stickers/Graduation/cap.png; sourceTree = "<group>"; };
-		8212BB2E1EA92A25009E66EC /* confetti_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = confetti_graduation_TN.png; path = Resources/Images/Stickers/Graduation/confetti_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB2F1EA92A25009E66EC /* confetti_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "confetti_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/confetti_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB301EA92A25009E66EC /* confetti_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "confetti_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/confetti_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB311EA92A25009E66EC /* confetti_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = confetti_graduation.png; path = Resources/Images/Stickers/Graduation/confetti_graduation.png; sourceTree = "<group>"; };
-		8212BB321EA92A25009E66EC /* confetti_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = confetti_TN.png; path = Resources/Images/Stickers/Graduation/confetti_TN.png; sourceTree = "<group>"; };
-		8212BB331EA92A25009E66EC /* confetti_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "confetti_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/confetti_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB341EA92A25009E66EC /* confetti_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "confetti_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/confetti_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB351EA92A25009E66EC /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = confetti.png; path = Resources/Images/Stickers/Graduation/confetti.png; sourceTree = "<group>"; };
-		8212BB361EA92A25009E66EC /* diploma_doodle_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diploma_doodle_TN.png; path = Resources/Images/Stickers/Graduation/diploma_doodle_TN.png; sourceTree = "<group>"; };
-		8212BB371EA92A25009E66EC /* diploma_doodle_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "diploma_doodle_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/diploma_doodle_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB381EA92A25009E66EC /* diploma_doodle_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "diploma_doodle_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/diploma_doodle_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB391EA92A25009E66EC /* diploma_doodle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diploma_doodle.png; path = Resources/Images/Stickers/Graduation/diploma_doodle.png; sourceTree = "<group>"; };
-		8212BB3A1EA92A25009E66EC /* diploma_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diploma_TN.png; path = Resources/Images/Stickers/Graduation/diploma_TN.png; sourceTree = "<group>"; };
-		8212BB3B1EA92A25009E66EC /* diploma_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "diploma_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/diploma_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB3C1EA92A25009E66EC /* diploma_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "diploma_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/diploma_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB3D1EA92A25009E66EC /* diploma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diploma.png; path = Resources/Images/Stickers/Graduation/diploma.png; sourceTree = "<group>"; };
-		8212BB3E1EA92A25009E66EC /* flying_caps_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flying_caps_graduation_TN.png; path = Resources/Images/Stickers/Graduation/flying_caps_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB3F1EA92A25009E66EC /* flying_caps_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flying_caps_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/flying_caps_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB401EA92A25009E66EC /* flying_caps_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flying_caps_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/flying_caps_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB411EA92A25009E66EC /* flying_caps_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flying_caps_graduation.png; path = Resources/Images/Stickers/Graduation/flying_caps_graduation.png; sourceTree = "<group>"; };
-		8212BB421EA92A25009E66EC /* g_glasses_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_glasses_TN.png; path = Resources/Images/Stickers/Graduation/g_glasses_TN.png; sourceTree = "<group>"; };
-		8212BB431EA92A25009E66EC /* g_glasses_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_glasses_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/g_glasses_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB441EA92A25009E66EC /* g_glasses_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_glasses_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/g_glasses_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB451EA92A25009E66EC /* g_glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_glasses.png; path = Resources/Images/Stickers/Graduation/g_glasses.png; sourceTree = "<group>"; };
-		8212BB461EA92A25009E66EC /* g_horn_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_horn_TN.png; path = Resources/Images/Stickers/Graduation/g_horn_TN.png; sourceTree = "<group>"; };
-		8212BB471EA92A25009E66EC /* g_horn_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_horn_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/g_horn_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB481EA92A25009E66EC /* g_horn_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_horn_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/g_horn_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB491EA92A25009E66EC /* g_horn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_horn.png; path = Resources/Images/Stickers/Graduation/g_horn.png; sourceTree = "<group>"; };
-		8212BB4A1EA92A25009E66EC /* medal_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal_graduation_TN.png; path = Resources/Images/Stickers/Graduation/medal_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB4B1EA92A25009E66EC /* medal_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/medal_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB4C1EA92A25009E66EC /* medal_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/medal_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB4D1EA92A25009E66EC /* medal_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal_graduation.png; path = Resources/Images/Stickers/Graduation/medal_graduation.png; sourceTree = "<group>"; };
-		8212BB4E1EA92A25009E66EC /* medal_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal_TN.png; path = Resources/Images/Stickers/Graduation/medal_TN.png; sourceTree = "<group>"; };
-		8212BB4F1EA92A25009E66EC /* medal_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/medal_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB501EA92A25009E66EC /* medal_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "medal_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/medal_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB511EA92A25009E66EC /* medal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal.png; path = Resources/Images/Stickers/Graduation/medal.png; sourceTree = "<group>"; };
-		8212BB521EA92A25009E66EC /* necktie_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = necktie_graduation_TN.png; path = Resources/Images/Stickers/Graduation/necktie_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB531EA92A25009E66EC /* necktie_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "necktie_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/necktie_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB541EA92A25009E66EC /* necktie_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "necktie_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/necktie_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB551EA92A25009E66EC /* necktie_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = necktie_graduation.png; path = Resources/Images/Stickers/Graduation/necktie_graduation.png; sourceTree = "<group>"; };
-		8212BB561EA92A25009E66EC /* nerd_glasses_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nerd_glasses_TN.png; path = Resources/Images/Stickers/Graduation/nerd_glasses_TN.png; sourceTree = "<group>"; };
-		8212BB571EA92A25009E66EC /* nerd_glasses_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nerd_glasses_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/nerd_glasses_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB581EA92A25009E66EC /* nerd_glasses_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nerd_glasses_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/nerd_glasses_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB591EA92A25009E66EC /* nerd_glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nerd_glasses.png; path = Resources/Images/Stickers/Graduation/nerd_glasses.png; sourceTree = "<group>"; };
-		8212BB5A1EA92A25009E66EC /* g_owl_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_owl_TN.png; path = Resources/Images/Stickers/Graduation/g_owl_TN.png; sourceTree = "<group>"; };
-		8212BB5B1EA92A25009E66EC /* g_owl_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_owl_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/g_owl_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB5C1EA92A25009E66EC /* g_owl_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "g_owl_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/g_owl_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB5D1EA92A25009E66EC /* g_owl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = g_owl.png; path = Resources/Images/Stickers/Graduation/g_owl.png; sourceTree = "<group>"; };
-		8212BB5E1EA92A25009E66EC /* pencil_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil_graduation_TN.png; path = Resources/Images/Stickers/Graduation/pencil_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB5F1EA92A25009E66EC /* pencil_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/pencil_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB601EA92A25009E66EC /* pencil_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/pencil_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB611EA92A25009E66EC /* pencil_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil_graduation.png; path = Resources/Images/Stickers/Graduation/pencil_graduation.png; sourceTree = "<group>"; };
-		8212BB621EA92A25009E66EC /* pencil_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil_TN.png; path = Resources/Images/Stickers/Graduation/pencil_TN.png; sourceTree = "<group>"; };
-		8212BB631EA92A25009E66EC /* pencil_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/pencil_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB641EA92A25009E66EC /* pencil_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/pencil_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB651EA92A25009E66EC /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = Resources/Images/Stickers/Graduation/pencil.png; sourceTree = "<group>"; };
-		8212BB661EA92A25009E66EC /* ribbon_graduation_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ribbon_graduation_TN.png; path = Resources/Images/Stickers/Graduation/ribbon_graduation_TN.png; sourceTree = "<group>"; };
-		8212BB671EA92A25009E66EC /* ribbon_graduation_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ribbon_graduation_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/ribbon_graduation_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB681EA92A25009E66EC /* ribbon_graduation_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ribbon_graduation_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/ribbon_graduation_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB691EA92A25009E66EC /* ribbon_graduation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ribbon_graduation.png; path = Resources/Images/Stickers/Graduation/ribbon_graduation.png; sourceTree = "<group>"; };
-		8212BB6A1EA92A25009E66EC /* ribbon_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ribbon_TN.png; path = Resources/Images/Stickers/Graduation/ribbon_TN.png; sourceTree = "<group>"; };
-		8212BB6B1EA92A25009E66EC /* ribbon_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ribbon_TN@2x.png"; path = "Resources/Images/Stickers/Graduation/ribbon_TN@2x.png"; sourceTree = "<group>"; };
-		8212BB6C1EA92A25009E66EC /* ribbon_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ribbon_TN@3x.png"; path = "Resources/Images/Stickers/Graduation/ribbon_TN@3x.png"; sourceTree = "<group>"; };
-		8212BB6D1EA92A25009E66EC /* ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ribbon.png; path = Resources/Images/Stickers/Graduation/ribbon.png; sourceTree = "<group>"; };
 		8212BC1F1EA93614009E66EC /* apple_angry_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = apple_angry_TN.png; path = Resources/Images/Stickers/NewTinyStickers/apple_angry_TN.png; sourceTree = "<group>"; };
 		8212BC201EA93614009E66EC /* apple_angry_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "apple_angry_TN@2x.png"; path = "Resources/Images/Stickers/NewTinyStickers/apple_angry_TN@2x.png"; sourceTree = "<group>"; };
 		8212BC211EA93614009E66EC /* apple_angry_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "apple_angry_TN@3x.png"; path = "Resources/Images/Stickers/NewTinyStickers/apple_angry_TN@3x.png"; sourceTree = "<group>"; };
@@ -4886,101 +4622,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8212B9C31EA929C5009E66EC /* Graduation */ = {
-			isa = PBXGroup;
-			children = (
-				8212BB161EA92A25009E66EC /* g_balloons_TN.png */,
-				8212BB171EA92A25009E66EC /* g_balloons_TN@2x.png */,
-				8212BB181EA92A25009E66EC /* g_balloons_TN@3x.png */,
-				8212BB191EA92A25009E66EC /* g_balloons.png */,
-				8212BB1A1EA92A25009E66EC /* book_stack_TN.png */,
-				8212BB1B1EA92A25009E66EC /* book_stack_TN@2x.png */,
-				8212BB1C1EA92A25009E66EC /* book_stack_TN@3x.png */,
-				8212BB1D1EA92A25009E66EC /* book_stack.png */,
-				8212BB1E1EA92A25009E66EC /* books_TN.png */,
-				8212BB1F1EA92A25009E66EC /* books_TN@2x.png */,
-				8212BB201EA92A25009E66EC /* books_TN@3x.png */,
-				8212BB211EA92A25009E66EC /* books.png */,
-				8212BB221EA92A25009E66EC /* bowtie_graduation_TN.png */,
-				8212BB231EA92A25009E66EC /* bowtie_graduation_TN@2x.png */,
-				8212BB241EA92A25009E66EC /* bowtie_graduation_TN@3x.png */,
-				8212BB251EA92A25009E66EC /* bowtie_graduation.png */,
-				8212BB261EA92A25009E66EC /* cap_graduation_TN.png */,
-				8212BB271EA92A25009E66EC /* cap_graduation_TN@2x.png */,
-				8212BB281EA92A25009E66EC /* cap_graduation_TN@3x.png */,
-				8212BB291EA92A25009E66EC /* cap_graduation.png */,
-				8212BB2A1EA92A25009E66EC /* cap_TN.png */,
-				8212BB2B1EA92A25009E66EC /* cap_TN@2x.png */,
-				8212BB2C1EA92A25009E66EC /* cap_TN@3x.png */,
-				8212BB2D1EA92A25009E66EC /* cap.png */,
-				8212BB2E1EA92A25009E66EC /* confetti_graduation_TN.png */,
-				8212BB2F1EA92A25009E66EC /* confetti_graduation_TN@2x.png */,
-				8212BB301EA92A25009E66EC /* confetti_graduation_TN@3x.png */,
-				8212BB311EA92A25009E66EC /* confetti_graduation.png */,
-				8212BB321EA92A25009E66EC /* confetti_TN.png */,
-				8212BB331EA92A25009E66EC /* confetti_TN@2x.png */,
-				8212BB341EA92A25009E66EC /* confetti_TN@3x.png */,
-				8212BB351EA92A25009E66EC /* confetti.png */,
-				8212BB361EA92A25009E66EC /* diploma_doodle_TN.png */,
-				8212BB371EA92A25009E66EC /* diploma_doodle_TN@2x.png */,
-				8212BB381EA92A25009E66EC /* diploma_doodle_TN@3x.png */,
-				8212BB391EA92A25009E66EC /* diploma_doodle.png */,
-				8212BB3A1EA92A25009E66EC /* diploma_TN.png */,
-				8212BB3B1EA92A25009E66EC /* diploma_TN@2x.png */,
-				8212BB3C1EA92A25009E66EC /* diploma_TN@3x.png */,
-				8212BB3D1EA92A25009E66EC /* diploma.png */,
-				8212BB3E1EA92A25009E66EC /* flying_caps_graduation_TN.png */,
-				8212BB3F1EA92A25009E66EC /* flying_caps_graduation_TN@2x.png */,
-				8212BB401EA92A25009E66EC /* flying_caps_graduation_TN@3x.png */,
-				8212BB411EA92A25009E66EC /* flying_caps_graduation.png */,
-				8212BB421EA92A25009E66EC /* g_glasses_TN.png */,
-				8212BB431EA92A25009E66EC /* g_glasses_TN@2x.png */,
-				8212BB441EA92A25009E66EC /* g_glasses_TN@3x.png */,
-				8212BB451EA92A25009E66EC /* g_glasses.png */,
-				8212BB461EA92A25009E66EC /* g_horn_TN.png */,
-				8212BB471EA92A25009E66EC /* g_horn_TN@2x.png */,
-				8212BB481EA92A25009E66EC /* g_horn_TN@3x.png */,
-				8212BB491EA92A25009E66EC /* g_horn.png */,
-				8212BB4A1EA92A25009E66EC /* medal_graduation_TN.png */,
-				8212BB4B1EA92A25009E66EC /* medal_graduation_TN@2x.png */,
-				8212BB4C1EA92A25009E66EC /* medal_graduation_TN@3x.png */,
-				8212BB4D1EA92A25009E66EC /* medal_graduation.png */,
-				8212BB4E1EA92A25009E66EC /* medal_TN.png */,
-				8212BB4F1EA92A25009E66EC /* medal_TN@2x.png */,
-				8212BB501EA92A25009E66EC /* medal_TN@3x.png */,
-				8212BB511EA92A25009E66EC /* medal.png */,
-				8212BB521EA92A25009E66EC /* necktie_graduation_TN.png */,
-				8212BB531EA92A25009E66EC /* necktie_graduation_TN@2x.png */,
-				8212BB541EA92A25009E66EC /* necktie_graduation_TN@3x.png */,
-				8212BB551EA92A25009E66EC /* necktie_graduation.png */,
-				8212BB561EA92A25009E66EC /* nerd_glasses_TN.png */,
-				8212BB571EA92A25009E66EC /* nerd_glasses_TN@2x.png */,
-				8212BB581EA92A25009E66EC /* nerd_glasses_TN@3x.png */,
-				8212BB591EA92A25009E66EC /* nerd_glasses.png */,
-				8212BB5A1EA92A25009E66EC /* g_owl_TN.png */,
-				8212BB5B1EA92A25009E66EC /* g_owl_TN@2x.png */,
-				8212BB5C1EA92A25009E66EC /* g_owl_TN@3x.png */,
-				8212BB5D1EA92A25009E66EC /* g_owl.png */,
-				8212BB5E1EA92A25009E66EC /* pencil_graduation_TN.png */,
-				8212BB5F1EA92A25009E66EC /* pencil_graduation_TN@2x.png */,
-				8212BB601EA92A25009E66EC /* pencil_graduation_TN@3x.png */,
-				8212BB611EA92A25009E66EC /* pencil_graduation.png */,
-				8212BB621EA92A25009E66EC /* pencil_TN.png */,
-				8212BB631EA92A25009E66EC /* pencil_TN@2x.png */,
-				8212BB641EA92A25009E66EC /* pencil_TN@3x.png */,
-				8212BB651EA92A25009E66EC /* pencil.png */,
-				8212BB661EA92A25009E66EC /* ribbon_graduation_TN.png */,
-				8212BB671EA92A25009E66EC /* ribbon_graduation_TN@2x.png */,
-				8212BB681EA92A25009E66EC /* ribbon_graduation_TN@3x.png */,
-				8212BB691EA92A25009E66EC /* ribbon_graduation.png */,
-				8212BB6A1EA92A25009E66EC /* ribbon_TN.png */,
-				8212BB6B1EA92A25009E66EC /* ribbon_TN@2x.png */,
-				8212BB6C1EA92A25009E66EC /* ribbon_TN@3x.png */,
-				8212BB6D1EA92A25009E66EC /* ribbon.png */,
-			);
-			name = Graduation;
-			sourceTree = "<group>";
-		};
 		8212BC1E1EA935F2009E66EC /* NewTinyStickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -5425,7 +5066,6 @@
 				82A11E421E5FB9D400E7F8FC /* StandardUS */,
 				924A6FD81DF5EB9A009A0FB1 /* Chinese */,
 				82A11C481E5FB91700E7F8FC /* Everyday */,
-				8212B9C31EA929C5009E66EC /* Graduation */,
 				8212BC1E1EA935F2009E66EC /* NewTinyStickers */,
 				F2030C041EA5878600141855 /* imglyStickerCategory.png */,
 				F2030C051EA5878600141855 /* imglyStickerCategory@2x.png */,
@@ -7210,7 +6850,6 @@
 				8212BD6B1EA93615009E66EC /* aviator-glasses-color_TN@3x.png in Resources */,
 				F2D44BDC1EDF3AC900492DE5 /* mask.png in Resources */,
 				929CD1B21EEF59FA00039377 /* july_uncle_sam_TN@2x.png in Resources */,
-				8212BBAE1EA92A26009E66EC /* diploma_doodle_TN.png in Resources */,
 				8212BDFD1EA93616009E66EC /* fireworks.png in Resources */,
 				82E3DA9E1E82EEED0008F600 /* palmtree.png in Resources */,
 				8212BE591EA93616009E66EC /* heart_bouquet_TN@2x.png in Resources */,
@@ -7219,7 +6858,6 @@
 				826BEAF71E85BEAD000BE3FA /* FloralOverlayFrame_TN.png in Resources */,
 				8212BDC31EA93616009E66EC /* cat_heart_eyes_TN@3x.png in Resources */,
 				8212BDF71EA93616009E66EC /* fireworks_TN.png in Resources */,
-				8212BBEC1EA92A26009E66EC /* necktie_graduation.png in Resources */,
 				8212BED11EA93616009E66EC /* medicine_TN@2x.png in Resources */,
 				8212BDD91EA93616009E66EC /* cupcake_TN@2x.png in Resources */,
 				826BEB751E85BEAD000BE3FA /* WhiteFullFrame.png in Resources */,
@@ -7229,7 +6867,6 @@
 				82E3DA1A1E82EEED0008F600 /* heart_banner_TN@2x.png in Resources */,
 				F2D44BC41EDF3AC900492DE5 /* golf_set_TN@3x.png in Resources */,
 				82A11CD51E5FB93B00E7F8FC /* bacon_egg_TN@3x.png in Resources */,
-				8212BB7A1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */,
 				F2D44BA21EDF3AC900492DE5 /* crown_1_TN@2x.png in Resources */,
 				82E3DB4A1E82EEEE0008F600 /* v_cupcake_TN@2x.png in Resources */,
 				826BEB371E85BEAD000BE3FA /* RainbowFrame_TN.png in Resources */,
@@ -7261,7 +6898,6 @@
 				F2D44BFB1EDF3AC900492DE5 /* super_dad_TN@3x.png in Resources */,
 				929CD10A1EEF59FA00039377 /* july_4th_of_July_doodle_TN@2x.png in Resources */,
 				8212BEEB1EA93616009E66EC /* Mustache-brown_TN.png in Resources */,
-				8212BBCC1EA92A26009E66EC /* g_glasses.png in Resources */,
 				82E3DA441E82EEED0008F600 /* heartExpress_TN@3x.png in Resources */,
 				9230AEA61D19DD3A0029A888 /* Get_Help_Print@3x.png in Resources */,
 				8212BDE51EA93616009E66EC /* Derby.png in Resources */,
@@ -7277,7 +6913,6 @@
 				929CD16B1EEF59FA00039377 /* july_liberty_crown_TN@3x.png in Resources */,
 				82A11D191E5FB93B00E7F8FC /* cloud_angry_TN.png in Resources */,
 				82E3DB661E82EEEE0008F600 /* v_xoxo.png in Resources */,
-				8212BB801EA92A25009E66EC /* books_TN@2x.png in Resources */,
 				82E3DA641E82EEED0008F600 /* leaf3_TN@3x.png in Resources */,
 				826BEAF91E85BEAD000BE3FA /* FloralOverlayFrame_TN@2x.png in Resources */,
 				82E3DA401E82EEED0008F600 /* heartExpress_TN.png in Resources */,
@@ -7288,7 +6923,6 @@
 				F2D44BB11EDF3AC900492DE5 /* fishing_fatherson_TN.png in Resources */,
 				8212BEB11EA93616009E66EC /* Lips_TN@2x.png in Resources */,
 				F2D44BB61EDF3AC900492DE5 /* football_fathersday_TN@2x.png in Resources */,
-				8212BBAC1EA92A26009E66EC /* confetti.png in Resources */,
 				826BEB1B1E85BEAD000BE3FA /* KraftFrame_TN@3x.png in Resources */,
 				929CD15C1EEF59FA00039377 /* july_hotdog_doodle.png in Resources */,
 				829A79E81EBB8E7E005D4938 /* dolphin_doodle_TN@2x.png in Resources */,
@@ -7316,7 +6950,6 @@
 				82E3D9841E82EEED0008F600 /* bow2_TN@3x.png in Resources */,
 				82A11D8D1E5FB93B00E7F8FC /* thumbs-up_TN@3x.png in Resources */,
 				829A7A621EBB8E7E005D4938 /* sand_castle_TN@3x.png in Resources */,
-				8212BBB41EA92A26009E66EC /* diploma_doodle.png in Resources */,
 				82E3DA2A1E82EEED0008F600 /* heart_crown_TN@2x.png in Resources */,
 				829A7A161EBB8E7E005D4938 /* kite_TN.png in Resources */,
 				82A11D5D1E5FB93B00E7F8FC /* pizza_TN@3x.png in Resources */,
@@ -7331,7 +6964,6 @@
 				929CD1AD1EEF59FA00039377 /* july_uncle_sam_hat_TN.png in Resources */,
 				82E3D9461E82EEEC0008F600 /* aviator_glasses.png in Resources */,
 				8212BD751EA93615009E66EC /* banner.png in Resources */,
-				8212BC181EA92A26009E66EC /* ribbon_TN@2x.png in Resources */,
 				82A11D231E5FB93B00E7F8FC /* cloud_sad_TN@2x.png in Resources */,
 				8212BF231EA93616009E66EC /* Pie_TN@3x.png in Resources */,
 				829A7AB71EBBC49E005D4938 /* ReinventMemories_sticker_TN.png in Resources */,
@@ -7341,7 +6973,6 @@
 				F2D44B921EDF3AC900492DE5 /* bbq_utensils_TN@2x.png in Resources */,
 				826BEB1F1E85BEAD000BE3FA /* PinkSpraypaintFrame_TN.png in Resources */,
 				82A11CEF1E5FB93B00E7F8FC /* cat_grumble.png in Resources */,
-				8212BBA81EA92A26009E66EC /* confetti_TN@2x.png in Resources */,
 				929CD1C41EEF59FA00039377 /* july_watermelon.png in Resources */,
 				8212BDEB1EA93616009E66EC /* devilhorns_TN@3x.png in Resources */,
 				F2D44BC31EDF3AC900492DE5 /* golf_set_TN@2x.png in Resources */,
@@ -7356,21 +6987,17 @@
 				929CD13C1EEF59FA00039377 /* july_fireworks.png in Resources */,
 				929CD1861EEF59FA00039377 /* july_patriotic_popsicle_melt_TN@2x.png in Resources */,
 				82E3D9E21E82EEED0008F600 /* feather2_TN@2x.png in Resources */,
-				8212BBE81EA92A26009E66EC /* necktie_graduation_TN@2x.png in Resources */,
 				82E3DAC41E82EEED0008F600 /* soda_straw_TN@3x.png in Resources */,
 				929CD1281EEF59FA00039377 /* july_cupcake.png in Resources */,
 				82A11D211E5FB93B00E7F8FC /* cloud_sad_TN.png in Resources */,
 				82E3D9E01E82EEED0008F600 /* feather2_TN.png in Resources */,
 				8212BD9F1EA93615009E66EC /* cake_TN.png in Resources */,
 				929CD18A1EEF59FA00039377 /* july_patriotic_popsicle_TN@2x.png in Resources */,
-				8212BB741EA92A25009E66EC /* g_balloons.png in Resources */,
 				F2D44C051EDF3AC900492DE5 /* wrench_TN.png in Resources */,
 				82A11CF71E5FB93B00E7F8FC /* cat-celebrate.png in Resources */,
 				82A11CFB1E5FB93B00E7F8FC /* cat-coffee_TN@2x.png in Resources */,
-				8212BC161EA92A26009E66EC /* ribbon_TN.png in Resources */,
 				929CD1061EEF59FA00039377 /* july_3_patriotic_stars_TN@2x.png in Resources */,
 				829A7A361EBB8E7E005D4938 /* mermaid_tail_water_TN@2x.png in Resources */,
-				8212BBE21EA92A26009E66EC /* medal_TN@3x.png in Resources */,
 				929CD1AA1EEF59FA00039377 /* july_uncle_sam_hat_doodle_TN@2x.png in Resources */,
 				F2D44BFE1EDF3AC900492DE5 /* talk_bubble_TN@2x.png in Resources */,
 				8212BDCF1EA93616009E66EC /* Cocoa_TN.png in Resources */,
@@ -7391,13 +7018,11 @@
 				829A7A121EBB8E7E005D4938 /* ice_cream_cone_TN@3x.png in Resources */,
 				F2D44BFF1EDF3AC900492DE5 /* talk_bubble_TN@3x.png in Resources */,
 				8212BF351EA93616009E66EC /* Pineapple.png in Resources */,
-				8212BBF01EA92A26009E66EC /* nerd_glasses_TN@2x.png in Resources */,
 				8212BF071EA93616009E66EC /* Owl_TN.png in Resources */,
 				8212BD811EA93615009E66EC /* Beard_TN@2x.png in Resources */,
 				82E3D9D81E82EEED0008F600 /* feather_TN.png in Resources */,
 				826BEAF11E85BEAD000BE3FA /* Floral2Frame_TN@2x.png in Resources */,
 				8212BEE31EA93616009E66EC /* Mushrooms-b_TN@2x.png in Resources */,
-				8212BC021EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */,
 				929CD19C1EEF59FA00039377 /* july_smiley.png in Resources */,
 				F2D5A3981EAEA5E8002F9DDC /* link-icon.png in Resources */,
 				8281ECAC1EA948D1003021DB /* xoxo_TN.png in Resources */,
@@ -7409,14 +7034,12 @@
 				8212BE0B1EA93616009E66EC /* Flowers_TN@3x.png in Resources */,
 				82E3DA081E82EEED0008F600 /* heart_2_TN.png in Resources */,
 				8212BF991EA93616009E66EC /* star_yellow_TN@2x.png in Resources */,
-				8212BBDE1EA92A26009E66EC /* medal_TN.png in Resources */,
 				929CD1BA1EEF59FA00039377 /* july_us_flag_doodle_TN@2x.png in Resources */,
 				8212BF971EA93616009E66EC /* star_yellow_TN.png in Resources */,
 				826BEB3F1E85BEAD000BE3FA /* RedFrame_TN.png in Resources */,
 				8212BDE31EA93616009E66EC /* Derby_TN@3x.png in Resources */,
 				82E3DA0C1E82EEED0008F600 /* heart_2_TN@3x.png in Resources */,
 				8212BDD31EA93616009E66EC /* Cocoa_TN@3x.png in Resources */,
-				8212BB881EA92A25009E66EC /* bowtie_graduation_TN@2x.png in Resources */,
 				82E3DB121E82EEED0008F600 /* thought_bubble_TN@2x.png in Resources */,
 				82E3DB3C1E82EEEE0008F600 /* unicorn_float_TN@3x.png in Resources */,
 				82A11D951E5FB93B00E7F8FC /* word-cloud-grumble_TN@3x.png in Resources */,
@@ -7454,7 +7077,6 @@
 				8212BD931EA93615009E66EC /* bird_TN@3x.png in Resources */,
 				82E3DADA1E82EEED0008F600 /* sun_face_TN@2x.png in Resources */,
 				829A7ABF1EBBC49E005D4938 /* Cannes_logo_white_TN.png in Resources */,
-				8212BC141EA92A26009E66EC /* ribbon_graduation.png in Resources */,
 				929CD13E1EEF59FA00039377 /* july_flag_TN@2x.png in Resources */,
 				E39EF27819B648E500AAB884 /* CoveredByYourGrace.ttf in Resources */,
 				82A11D811E5FB93B00E7F8FC /* taco2_TN.png in Resources */,
@@ -7473,7 +7095,6 @@
 				82A11CCB1E5FB93B00E7F8FC /* alarm-clock_TN@2x.png in Resources */,
 				929CD15F1EEF59FA00039377 /* july_ice_cream_conepx_TN@3x.png in Resources */,
 				E39EF27A19B648E500AAB884 /* Glegoo-Regular.ttf in Resources */,
-				8212BBF81EA92A26009E66EC /* g_owl_TN@2x.png in Resources */,
 				8212BF951EA93616009E66EC /* Spring_Break.png in Resources */,
 				E34D50AF199AB9FE006D80E0 /* HPSimplified_Bd.ttf in Resources */,
 				8212BD851EA93615009E66EC /* Beard.png in Resources */,
@@ -7491,9 +7112,7 @@
 				F2D44BB51EDF3AC900492DE5 /* football_fathersday_TN.png in Resources */,
 				8212BF3B1EA93616009E66EC /* plane_TN@3x.png in Resources */,
 				8212BF731EA93616009E66EC /* sloth_TN@3x.png in Resources */,
-				8212BBFC1EA92A26009E66EC /* g_owl.png in Resources */,
 				82A11D911E5FB93B00E7F8FC /* word-cloud-grumble_TN.png in Resources */,
-				8212BB961EA92A25009E66EC /* cap_TN.png in Resources */,
 				929CD11D1EEF59FA00039377 /* july_bbqpx_TN.png in Resources */,
 				8212BEC31EA93616009E66EC /* love_monster_TN@3x.png in Resources */,
 				8212BF4B1EA93616009E66EC /* rabbit_TN@3x.png in Resources */,
@@ -7546,7 +7165,6 @@
 				8212BDB11EA93616009E66EC /* cat_body_TN@2x.png in Resources */,
 				82A11D691E5FB93B00E7F8FC /* schoolbus_TN.png in Resources */,
 				8212BDBB1EA93616009E66EC /* cat_face_TN@3x.png in Resources */,
-				8212BBD41EA92A26009E66EC /* g_horn.png in Resources */,
 				826BEB5F1E85BEAD000BE3FA /* WhiteBarFrame_TN.png in Resources */,
 				829A79FC1EBB8E7E005D4938 /* flamingo.png in Resources */,
 				8212BEF71EA93616009E66EC /* OMG_TN.png in Resources */,
@@ -7562,7 +7180,6 @@
 				82A11D7B1E5FB93B00E7F8FC /* spoon_TN@2x.png in Resources */,
 				829A7A4C1EBB8E7E005D4938 /* popsicle.png in Resources */,
 				8212BFBD1EA93616009E66EC /* Unicorn.png in Resources */,
-				8212BB7E1EA92A25009E66EC /* books_TN.png in Resources */,
 				8212BE331EA93616009E66EC /* glasses_football_TN.png in Resources */,
 				8212BF191EA93616009E66EC /* Party-Hat_TN@2x.png in Resources */,
 				82E3DA381E82EEED0008F600 /* heart-garland_TN.png in Resources */,
@@ -7579,7 +7196,6 @@
 				929CD10C1EEF59FA00039377 /* july_4th_of_July_doodle.png in Resources */,
 				8212BF671EA93616009E66EC /* skull_TN.png in Resources */,
 				82E3DB2A1E82EEEE0008F600 /* travel_car_bug_TN@2x.png in Resources */,
-				8212BBD61EA92A26009E66EC /* medal_graduation_TN.png in Resources */,
 				8212BF851EA93616009E66EC /* soda.png in Resources */,
 				8212BEC51EA93616009E66EC /* love_monster.png in Resources */,
 				929CD1101EEF59FA00039377 /* july_4th_of_july.png in Resources */,
@@ -7633,7 +7249,6 @@
 				929CD11C1EEF59FA00039377 /* july_bbq.png in Resources */,
 				F2D44CAD1EE0862E00492DE5 /* fd_glasses_1_TN.png in Resources */,
 				82E3D9A01E82EEED0008F600 /* catears_TN.png in Resources */,
-				8212BBA21EA92A26009E66EC /* confetti_graduation_TN@3x.png in Resources */,
 				829A7A841EBB8E7E005D4938 /* water_bubbles.png in Resources */,
 				8212BF371EA93616009E66EC /* plane_TN.png in Resources */,
 				929CD12B1EEF59FA00039377 /* july_firework_explode_TN@3x.png in Resources */,
@@ -7648,7 +7263,6 @@
 				F2D44B881EDF3AC900492DE5 /* bacon.png in Resources */,
 				826BEB051E85BEAD000BE3FA /* GradientFrame.png in Resources */,
 				F2D44BF41EDF3AC900492DE5 /* strong_arm.png in Resources */,
-				8212BBF21EA92A26009E66EC /* nerd_glasses_TN@3x.png in Resources */,
 				82A11D371E5FB93B00E7F8FC /* fork.png in Resources */,
 				82E3D9BA1E82EEED0008F600 /* conversation_heart_TN@2x.png in Resources */,
 				F2D44BA61EDF3AC900492DE5 /* crown_2_TN@2x.png in Resources */,
@@ -7657,7 +7271,6 @@
 				82E3D9401E82EEEC0008F600 /* aviator_glasses_TN.png in Resources */,
 				82A4893D1EAFD06F0017B072 /* stars_bunch_TN@2x.png in Resources */,
 				8212BEDD1EA93616009E66EC /* moon.png in Resources */,
-				8212BBA41EA92A26009E66EC /* confetti_graduation.png in Resources */,
 				82E3DAF61E82EEED0008F600 /* sunglasses.png in Resources */,
 				82E3D9A61E82EEED0008F600 /* catears.png in Resources */,
 				929CD1111EEF59FA00039377 /* july_4th_star_glasses_TN.png in Resources */,
@@ -7668,8 +7281,6 @@
 				8212BD5B1EA93615009E66EC /* apple_angry_TN@3x.png in Resources */,
 				826BEAED1E85BEAD000BE3FA /* DotsOverlayFrame.png in Resources */,
 				8212BDF11EA93616009E66EC /* dog_TN@2x.png in Resources */,
-				8212BBEE1EA92A26009E66EC /* nerd_glasses_TN.png in Resources */,
-				8212BBE61EA92A26009E66EC /* necktie_graduation_TN.png in Resources */,
 				82E3D9C21E82EEED0008F600 /* crown_TN@2x.png in Resources */,
 				8212BF131EA93616009E66EC /* palm-tree-2_TN@3x.png in Resources */,
 				929CD15D1EEF59FA00039377 /* july_ice_cream_conepx_TN.png in Resources */,
@@ -7680,7 +7291,6 @@
 				F2D44BDD1EDF3AC900492DE5 /* mask_TN.png in Resources */,
 				929CD11E1EEF59FA00039377 /* july_bbqpx_TN@2x.png in Resources */,
 				8212BDA31EA93615009E66EC /* cake_TN@3x.png in Resources */,
-				8212BBDC1EA92A26009E66EC /* medal_graduation.png in Resources */,
 				82E3D9C01E82EEED0008F600 /* crown_TN.png in Resources */,
 				82E3D9F81E82EEED0008F600 /* hat_TN.png in Resources */,
 				82A11CBB1E5FB93B00E7F8FC /* 3d-diamond-1_TN@2x.png in Resources */,
@@ -7690,7 +7300,6 @@
 				F2D44BF51EDF3AC900492DE5 /* strong_arm_TN.png in Resources */,
 				8212BDD51EA93616009E66EC /* Cocoa.png in Resources */,
 				82E3DA9A1E82EEED0008F600 /* palmtree_TN@2x.png in Resources */,
-				8212BB781EA92A25009E66EC /* book_stack_TN@2x.png in Resources */,
 				826BEB6F1E85BEAD000BE3FA /* WhiteFullFrame_TN.png in Resources */,
 				82E3D9AC1E82EEED0008F600 /* catglasses_TN@3x.png in Resources */,
 				8281ECAD1EA948D1003021DB /* xoxo_TN@2x.png in Resources */,
@@ -7698,7 +7307,6 @@
 				E39EF28419B648E500AAB884 /* RockSalt.ttf in Resources */,
 				829A7A1C1EBB8E7E005D4938 /* kite.png in Resources */,
 				F1DCB8291B542D6500CA9AAD /* sanchez-regular.ttf in Resources */,
-				8212BBE01EA92A26009E66EC /* medal_TN@2x.png in Resources */,
 				929CD1921EEF59FA00039377 /* july_popsicle-2px_TN@2x.png in Resources */,
 				829A7A6E1EBB8E7E005D4938 /* sweat_3_TN.png in Resources */,
 				82A11CFD1E5FB93B00E7F8FC /* cat-coffee_TN@3x.png in Resources */,
@@ -7713,14 +7321,12 @@
 				8212BEFF1EA93616009E66EC /* oranges_TN.png in Resources */,
 				829A7A981EBBB009005D4938 /* floating_flowers_2_TN@2x.png in Resources */,
 				929CD1B01EEF59FA00039377 /* july_uncle_sam_hat.png in Resources */,
-				8212BBA61EA92A26009E66EC /* confetti_TN.png in Resources */,
 				8212BE731EA93616009E66EC /* hedgehog_TN@3x.png in Resources */,
 				929CD1A91EEF59FA00039377 /* july_uncle_sam_hat_doodle_TN.png in Resources */,
 				8212BF0D1EA93616009E66EC /* Owl.png in Resources */,
 				829A79F81EBB8E7E005D4938 /* flamingo_TN@2x.png in Resources */,
 				F2D44BFC1EDF3AC900492DE5 /* talk_bubble.png in Resources */,
 				829A7A6C1EBB8E7E005D4938 /* summer_sunglasses.png in Resources */,
-				8212BBEA1EA92A26009E66EC /* necktie_graduation_TN@3x.png in Resources */,
 				F2D44BDF1EDF3AC900492DE5 /* mask_TN@3x.png in Resources */,
 				82A11D2B1E5FB93B00E7F8FC /* doughnut_TN@2x.png in Resources */,
 				82A11CC11E5FB93B00E7F8FC /* 3d-diamond-2_TN.png in Resources */,
@@ -7735,7 +7341,6 @@
 				929CD16F1EEF59FA00039377 /* july_liberty_torch_TN@3x.png in Resources */,
 				F2D44C0D1EDF4DF100492DE5 /* fathers_day_2_TN.png in Resources */,
 				82E3DAEE1E82EEED0008F600 /* sunglasses_frogskin.png in Resources */,
-				8212BB841EA92A25009E66EC /* books.png in Resources */,
 				929CD1541EEF59FA00039377 /* july_happy_4th.png in Resources */,
 				E39EF28619B648E500AAB884 /* SourceSansPro-Regular.ttf in Resources */,
 				826BEB271E85BEAD000BE3FA /* PinkTriangleFrame_TN.png in Resources */,
@@ -7747,7 +7352,6 @@
 				826BEB0D1E85BEAD000BE3FA /* GreyShadowFrame.png in Resources */,
 				829A7A781EBB8E7E005D4938 /* visor_TN@2x.png in Resources */,
 				929CD1361EEF59FA00039377 /* july_fireworks_burst_TN@2x.png in Resources */,
-				8212BB8C1EA92A25009E66EC /* bowtie_graduation.png in Resources */,
 				82E3DAD81E82EEED0008F600 /* sun_face_TN.png in Resources */,
 				82E3DAFE1E82EEED0008F600 /* surfboard.png in Resources */,
 				8212BDF51EA93616009E66EC /* dog.png in Resources */,
@@ -7784,7 +7388,6 @@
 				F2D44BE41EDF3AC900492DE5 /* necktie_fathersday.png in Resources */,
 				82E3DAD21E82EEED0008F600 /* stars_TN@2x.png in Resources */,
 				829A7A2C1EBB8E7E005D4938 /* mermaid_girl.png in Resources */,
-				8212BB8E1EA92A25009E66EC /* cap_graduation_TN.png in Resources */,
 				929CD1091EEF59FA00039377 /* july_4th_of_July_doodle_TN.png in Resources */,
 				82A11D0B1E5FB93B00E7F8FC /* cat-on-head_TN@2x.png in Resources */,
 				8212BD871EA93615009E66EC /* bird_envelope_TN.png in Resources */,
@@ -7805,11 +7408,9 @@
 				F2D44BA41EDF3AC900492DE5 /* crown_2.png in Resources */,
 				F2D44BC91EDF3AC900492DE5 /* hammer_TN.png in Resources */,
 				929CD1121EEF59FA00039377 /* july_4th_star_glasses_TN@2x.png in Resources */,
-				8212BBB21EA92A26009E66EC /* diploma_doodle_TN@3x.png in Resources */,
 				8212BEFD1EA93616009E66EC /* OMG.png in Resources */,
 				82E3D9B21E82EEED0008F600 /* catwhiskers_TN@2x.png in Resources */,
 				826BEAF51E85BEAD000BE3FA /* Floral2Frame.png in Resources */,
-				8212BC061EA92A26009E66EC /* pencil_TN.png in Resources */,
 				826BEB311E85BEAD000BE3FA /* PolkadotsFrame_TN@2x.png in Resources */,
 				82E3D9501E82EEEC0008F600 /* bbq_TN.png in Resources */,
 				8212BDC91EA93616009E66EC /* cloud-sun_TN@2x.png in Resources */,
@@ -7852,21 +7453,17 @@
 				82A11D031E5FB93B00E7F8FC /* cat-fries_TN@2x.png in Resources */,
 				82A11D011E5FB93B00E7F8FC /* cat-fries_TN.png in Resources */,
 				8212BE0D1EA93616009E66EC /* Flowers.png in Resources */,
-				8212BC121EA92A26009E66EC /* ribbon_graduation_TN@3x.png in Resources */,
 				929CD1351EEF59FA00039377 /* july_fireworks_burst_TN.png in Resources */,
 				8212BDA11EA93615009E66EC /* cake_TN@2x.png in Resources */,
 				829A7A481EBB8E7E005D4938 /* popsicle-2_TN@2x.png in Resources */,
 				8212BE691EA93616009E66EC /* heartPixel_TN@2x.png in Resources */,
-				8212BB821EA92A25009E66EC /* books_TN@3x.png in Resources */,
 				829A7ADD1EBBC49E005D4938 /* HP_white-sticker.png in Resources */,
 				929CD1911EEF59FA00039377 /* july_popsicle-2px_TN.png in Resources */,
 				82E3DB721E82EEEE0008F600 /* wave_TN@2x.png in Resources */,
 				829A79EA1EBB8E7E005D4938 /* dolphin_doodle_TN@3x.png in Resources */,
 				929CD1941EEF59FA00039377 /* july_popsicle.png in Resources */,
-				8212BBBC1EA92A26009E66EC /* diploma.png in Resources */,
 				82E3D9321E82EEEC0008F600 /* airplane_TN@2x.png in Resources */,
 				82E3DB941E82F1920008F600 /* glasses_blossom_TN@3x.png in Resources */,
-				8212BB721EA92A25009E66EC /* g_balloons_TN@3x.png in Resources */,
 				F2D44CAF1EE0862E00492DE5 /* fd_glasses_1_TN@3x.png in Resources */,
 				826BEB3B1E85BEAD000BE3FA /* RainbowFrame_TN@3x.png in Resources */,
 				82A11CFF1E5FB93B00E7F8FC /* cat-coffee.png in Resources */,
@@ -7897,7 +7494,6 @@
 				82E3DB101E82EEED0008F600 /* thought_bubble_TN.png in Resources */,
 				F2D44CD81EE0D65700492DE5 /* customSticker@2x.png in Resources */,
 				8212BFA51EA93616009E66EC /* sun_hat.png in Resources */,
-				8212BBFA1EA92A26009E66EC /* g_owl_TN@3x.png in Resources */,
 				82A11D851E5FB93B00E7F8FC /* taco2_TN@3x.png in Resources */,
 				826BEB651E85BEAD000BE3FA /* WhiteBarFrame.png in Resources */,
 				829A7A441EBB8E7E005D4938 /* popsicle_TN@3x.png in Resources */,
@@ -7920,7 +7516,6 @@
 				8212BF5F1EA93616009E66EC /* scuba_TN.png in Resources */,
 				82E3DAE81E82EEED0008F600 /* sunglasses_frogskin_TN.png in Resources */,
 				826BEB011E85BEAD000BE3FA /* GradientFrame_TN@2x.png in Resources */,
-				8212BBC01EA92A26009E66EC /* flying_caps_graduation_TN@2x.png in Resources */,
 				F2D44B9E1EDF3AC900492DE5 /* coffee_1_TN@2x.png in Resources */,
 				829A7A641EBB8E7E005D4938 /* sand_castle.png in Resources */,
 				8212BEB31EA93616009E66EC /* Lips_TN@3x.png in Resources */,
@@ -7931,7 +7526,6 @@
 				929CD16D1EEF59FA00039377 /* july_liberty_torch_TN.png in Resources */,
 				929CD1931EEF59FA00039377 /* july_popsicle-2px_TN@3x.png in Resources */,
 				82E3DB1E1E82EEEE0008F600 /* tiara.png in Resources */,
-				8212BB6E1EA92A25009E66EC /* g_balloons_TN.png in Resources */,
 				826BEB7B1E85BEAD000BE3FA /* WhiteRoundedFrame_TN@3x.png in Resources */,
 				82E3DAEA1E82EEED0008F600 /* sunglasses_frogskin_TN@2x.png in Resources */,
 				8212BE4B1EA93616009E66EC /* heart_arrow_TN@3x.png in Resources */,
@@ -7941,7 +7535,6 @@
 				F2D44B911EDF3AC900492DE5 /* bbq_utensils_TN.png in Resources */,
 				F2D44BB01EDF3AC900492DE5 /* fishing_fatherson.png in Resources */,
 				CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */,
-				8212BB981EA92A25009E66EC /* cap_TN@2x.png in Resources */,
 				826BEB571E85BEAD000BE3FA /* TurquoiseFrame_TN.png in Resources */,
 				8212BE791EA93616009E66EC /* hibiscus_TN@2x.png in Resources */,
 				F2D44B8B1EDF3AC900492DE5 /* bacon_TN@3x.png in Resources */,
@@ -7954,7 +7547,6 @@
 				929CD1881EEF59FA00039377 /* july_patriotic_popsicle_melt.png in Resources */,
 				82E3DA0E1E82EEED0008F600 /* heart_2.png in Resources */,
 				82A11D511E5FB93B00E7F8FC /* peace_TN.png in Resources */,
-				8212BBF41EA92A26009E66EC /* nerd_glasses.png in Resources */,
 				8212BE0F1EA93616009E66EC /* Football_TN.png in Resources */,
 				F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */,
 				82A11CED1E5FB93B00E7F8FC /* cat_grumble_TN@3x.png in Resources */,
@@ -7978,7 +7570,6 @@
 				8212BE151EA93616009E66EC /* Football.png in Resources */,
 				8212BDBF1EA93616009E66EC /* cat_heart_eyes_TN.png in Resources */,
 				82E3DA481E82EEED0008F600 /* hearts_TN.png in Resources */,
-				8212BBE41EA92A26009E66EC /* medal.png in Resources */,
 				82E3DA501E82EEED0008F600 /* holding_hands_TN.png in Resources */,
 				826BEB131E85BEAD000BE3FA /* HeartsOverlayFrame_TN@3x.png in Resources */,
 				8212BE971EA93616009E66EC /* koala_TN.png in Resources */,
@@ -8004,7 +7595,6 @@
 				826BEB471E85BEAD000BE3FA /* SloppyFrame_TN.png in Resources */,
 				8212BEA91EA93616009E66EC /* letter_TN@2x.png in Resources */,
 				F2D44BC01EDF3AC900492DE5 /* golf.png in Resources */,
-				8212BBC21EA92A26009E66EC /* flying_caps_graduation_TN@3x.png in Resources */,
 				82A11CF51E5FB93B00E7F8FC /* cat-celebrate_TN@3x.png in Resources */,
 				F2D44BDE1EDF3AC900492DE5 /* mask_TN@2x.png in Resources */,
 				82A11D1D1E5FB93B00E7F8FC /* cloud_angry_TN@3x.png in Resources */,
@@ -8015,10 +7605,8 @@
 				8212BE211EA93616009E66EC /* gift_TN@2x.png in Resources */,
 				E3461FA719AF84A80042DF5E /* MeasurementArrowUp@2x.png in Resources */,
 				8212BEB71EA93616009E66EC /* LOL_TN.png in Resources */,
-				8212BB701EA92A25009E66EC /* g_balloons_TN@2x.png in Resources */,
 				82E3DB1A1E82EEEE0008F600 /* tiara_TN@2x.png in Resources */,
 				826BEB211E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@2x.png in Resources */,
-				8212BB9C1EA92A25009E66EC /* cap.png in Resources */,
 				929CD19B1EEF59FA00039377 /* july_smiley_TN@3x.png in Resources */,
 				929CD11B1EEF59FA00039377 /* july_bbq_utensilspx.png in Resources */,
 				929CD1901EEF59FA00039377 /* july_popsicle_TN@3x.png in Resources */,
@@ -8030,12 +7618,10 @@
 				82BFB00D1EAA6F9A00C579B8 /* rainbow_2_TN@2x.png in Resources */,
 				829A7A3C1EBB8E7E005D4938 /* mermaid_tail.png in Resources */,
 				829A79F61EBB8E7E005D4938 /* flamingo_TN.png in Resources */,
-				8212BBD81EA92A26009E66EC /* medal_graduation_TN@2x.png in Resources */,
 				82E3DA581E82EEED0008F600 /* icecream_tub_TN.png in Resources */,
 				826BEAE31E85BEAD000BE3FA /* BlueWatercoloFrame_TN@3x.png in Resources */,
 				82E3D9F01E82EEED0008F600 /* glasses_TN.png in Resources */,
 				82A11D111E5FB93B00E7F8FC /* cat-shock_TN.png in Resources */,
-				8212BBB01EA92A26009E66EC /* diploma_doodle_TN@2x.png in Resources */,
 				826BEB3D1E85BEAD000BE3FA /* RainbowFrame.png in Resources */,
 				929CD1531EEF59FA00039377 /* july_happy_4th_TN@3x.png in Resources */,
 				8212BDF91EA93616009E66EC /* fireworks_TN@2x.png in Resources */,
@@ -8055,20 +7641,16 @@
 				F2D44CB41EE0862E00492DE5 /* fd_hat.png in Resources */,
 				829A7AB91EBBC49E005D4938 /* ReinventMemories_sticker_TN@2x.png in Resources */,
 				82E3D9781E82EEEC0008F600 /* birthdayHat_TN.png in Resources */,
-				8212BC0A1EA92A26009E66EC /* pencil_TN@3x.png in Resources */,
 				82E3DB4E1E82EEEE0008F600 /* v_cupcake.png in Resources */,
 				82E3D97A1E82EEEC0008F600 /* birthdayHat_TN@2x.png in Resources */,
 				8212BF251EA93616009E66EC /* Pie.png in Resources */,
 				E375385F19BE57C5009C695F /* Privacy@2x.png in Resources */,
 				826BEB691E85BEAD000BE3FA /* WhiteFrame_TN@2x.png in Resources */,
 				E320F8B919C36A7A00BC2AE3 /* retry@2x.png in Resources */,
-				8212BB761EA92A25009E66EC /* book_stack_TN.png in Resources */,
 				82E3D9621E82EEEC0008F600 /* beachball_TN@2x.png in Resources */,
 				929CD1801EEF59FA00039377 /* july_patriotic_glasses.png in Resources */,
 				929CD1611EEF59FA00039377 /* july_ketchup-hotdogpx_TN.png in Resources */,
 				82E3DB481E82EEEE0008F600 /* v_cupcake_TN.png in Resources */,
-				8212BBFE1EA92A26009E66EC /* pencil_graduation_TN.png in Resources */,
-				8212BB7C1EA92A25009E66EC /* book_stack.png in Resources */,
 				8212BE671EA93616009E66EC /* heartPixel_TN.png in Resources */,
 				82E3D95E1E82EEEC0008F600 /* beach_umbrella.png in Resources */,
 				8212BF451EA93616009E66EC /* plum-blossom.png in Resources */,
@@ -8086,9 +7668,7 @@
 				929CD1701EEF59FA00039377 /* july_liberty_torch.png in Resources */,
 				826BEB451E85BEAD000BE3FA /* RedFrame.png in Resources */,
 				82A11D591E5FB93B00E7F8FC /* pizza_TN.png in Resources */,
-				8212BB9E1EA92A25009E66EC /* confetti_graduation_TN.png in Resources */,
 				929CD1161EEF59FA00039377 /* july_bbq_TN@2x.png in Resources */,
-				8212BBB81EA92A26009E66EC /* diploma_TN@2x.png in Resources */,
 				F2D44BF91EDF3AC900492DE5 /* super_dad_TN.png in Resources */,
 				8212BE6F1EA93616009E66EC /* hedgehog_TN.png in Resources */,
 				8212BF631EA93616009E66EC /* scuba_TN@3x.png in Resources */,
@@ -8097,14 +7677,11 @@
 				829A7AC51EBBC49E005D4938 /* Cannes_logo_white.png in Resources */,
 				82E3DA761E82EEED0008F600 /* lock.png in Resources */,
 				826BEB6B1E85BEAD000BE3FA /* WhiteFrame_TN@3x.png in Resources */,
-				8212BB921EA92A25009E66EC /* cap_graduation_TN@3x.png in Resources */,
-				8212BB861EA92A25009E66EC /* bowtie_graduation_TN.png in Resources */,
 				929CD1691EEF59FA00039377 /* july_liberty_crown_TN.png in Resources */,
 				8212BED31EA93616009E66EC /* medicine_TN@3x.png in Resources */,
 				F2D44BBD1EDF3AC900492DE5 /* glasses_2_TN.png in Resources */,
 				829A7A501EBB8E7E005D4938 /* radio_doodle_TN@2x.png in Resources */,
 				929CD1AF1EEF59FA00039377 /* july_uncle_sam_hat_TN@3x.png in Resources */,
-				8212BBC41EA92A26009E66EC /* flying_caps_graduation.png in Resources */,
 				929CD1341EEF59FA00039377 /* july_fireworks_burst_stars.png in Resources */,
 				F1ECD7451A609616004B512E /* RightSwipeButton@2x.png in Resources */,
 				929CD1B81EEF59FA00039377 /* july_us_banner_flags.png in Resources */,
@@ -8122,7 +7699,6 @@
 				8212BDDF1EA93616009E66EC /* Derby_TN.png in Resources */,
 				929CD1491EEF59FA00039377 /* july_hamburger_TN.png in Resources */,
 				82E3D9B61E82EEED0008F600 /* catwhiskers.png in Resources */,
-				8212BBD01EA92A26009E66EC /* g_horn_TN@2x.png in Resources */,
 				8212BF471EA93616009E66EC /* rabbit_TN.png in Resources */,
 				8212BE651EA93616009E66EC /* heart_wings.png in Resources */,
 				929CD1271EEF59FA00039377 /* july_cupcake_TN@3x.png in Resources */,
@@ -8181,19 +7757,16 @@
 				929CD1761EEF59FA00039377 /* july_merica_TN@2x.png in Resources */,
 				8212BD951EA93615009E66EC /* bird.png in Resources */,
 				826BEB351E85BEAD000BE3FA /* PolkadotsFrame.png in Resources */,
-				8212BBCA1EA92A26009E66EC /* g_glasses_TN@3x.png in Resources */,
 				8212BF411EA93616009E66EC /* plum-blossom_TN@2x.png in Resources */,
 				E375386119BE57C5009C695F /* SendFeedback@2x.png in Resources */,
 				929CD1181EEF59FA00039377 /* july_bbq_utensilspx_TN.png in Resources */,
 				929CD1A71EEF59FA00039377 /* july_stars_TN@3x.png in Resources */,
-				8212BBB61EA92A26009E66EC /* diploma_TN.png in Resources */,
 				82E3DB9E1E82F1920008F600 /* Panda.png in Resources */,
 				8212BF091EA93616009E66EC /* Owl_TN@2x.png in Resources */,
 				929CD1751EEF59FA00039377 /* july_merica_TN.png in Resources */,
 				8212BF331EA93616009E66EC /* Pineapple_TN@3x.png in Resources */,
 				8212BE371EA93616009E66EC /* glasses_football_TN@3x.png in Resources */,
 				82A11D531E5FB93B00E7F8FC /* peace_TN@2x.png in Resources */,
-				8212BC0C1EA92A26009E66EC /* pencil.png in Resources */,
 				826BEB7D1E85BEAD000BE3FA /* WhiteRoundedFrame.png in Resources */,
 				929CD14E1EEF59FA00039377 /* july_happy_4th_of_july_TN@2x.png in Resources */,
 				8212BFB71EA93616009E66EC /* Unicorn_TN.png in Resources */,
@@ -8223,7 +7796,6 @@
 				82A11D1F1E5FB93B00E7F8FC /* cloud_angry.png in Resources */,
 				826BEB331E85BEAD000BE3FA /* PolkadotsFrame_TN@3x.png in Resources */,
 				929CD1501EEF59FA00039377 /* july_happy_4th_of_july.png in Resources */,
-				8212BBDA1EA92A26009E66EC /* medal_graduation_TN@3x.png in Resources */,
 				826BEAF31E85BEAD000BE3FA /* Floral2Frame_TN@3x.png in Resources */,
 				929CD1231EEF59FA00039377 /* july_bunting_TN@3x.png in Resources */,
 				8212BDE11EA93616009E66EC /* Derby_TN@2x.png in Resources */,
@@ -8240,10 +7812,8 @@
 				8212BFB91EA93616009E66EC /* Unicorn_TN@2x.png in Resources */,
 				8212BEFB1EA93616009E66EC /* OMG_TN@3x.png in Resources */,
 				8212BF0B1EA93616009E66EC /* Owl_TN@3x.png in Resources */,
-				8212BC1C1EA92A26009E66EC /* ribbon.png in Resources */,
 				F2D44CD71EE0D65700492DE5 /* customSticker.png in Resources */,
 				F2D44B991EDF3AC900492DE5 /* bow_tie_TN.png in Resources */,
-				8212BC0E1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				82A11D351E5FB93B00E7F8FC /* fork_TN@3x.png in Resources */,
 				8212BF911EA93616009E66EC /* Spring_Break_TN@2x.png in Resources */,
 				F2D44B9B1EDF3AC900492DE5 /* bow_tie_TN@3x.png in Resources */,
@@ -8263,13 +7833,11 @@
 				8212BFA31EA93616009E66EC /* sun_hat_TN@3x.png in Resources */,
 				82A4893E1EAFD06F0017B072 /* stars_bunch_TN@3x.png in Resources */,
 				929CD1791EEF59FA00039377 /* july_mustache_TN.png in Resources */,
-				8212BB9A1EA92A25009E66EC /* cap_TN@3x.png in Resources */,
 				829A7A241EBB8E7E005D4938 /* lei.png in Resources */,
 				929CD1621EEF59FA00039377 /* july_ketchup-hotdogpx_TN@2x.png in Resources */,
 				F2D44BA01EDF3AC900492DE5 /* crown_1.png in Resources */,
 				8281ECAE1EA948D1003021DB /* xoxo_TN@3x.png in Resources */,
 				929CD1201EEF59FA00039377 /* july_bbqpx.png in Resources */,
-				8212BBC61EA92A26009E66EC /* g_glasses_TN.png in Resources */,
 				826BEB4F1E85BEAD000BE3FA /* StarsOverlayFrame_TN.png in Resources */,
 				929CD1891EEF59FA00039377 /* july_patriotic_popsicle_TN.png in Resources */,
 				829A7A7C1EBB8E7E005D4938 /* visor.png in Resources */,
@@ -8298,7 +7866,6 @@
 				929CD15E1EEF59FA00039377 /* july_ice_cream_conepx_TN@2x.png in Resources */,
 				F2D44CB31EE0862E00492DE5 /* fd_hat_TN@3x.png in Resources */,
 				82E3D96C1E82EEEC0008F600 /* bike_cruiser_TN@3x.png in Resources */,
-				8212BC001EA92A26009E66EC /* pencil_graduation_TN@2x.png in Resources */,
 				929CD10F1EEF59FA00039377 /* july_4th_of_july_TN@3x.png in Resources */,
 				8212BE411EA93616009E66EC /* Glasses-red_TN.png in Resources */,
 				82E3D9A81E82EEED0008F600 /* catglasses_TN.png in Resources */,
@@ -8309,7 +7876,6 @@
 				82E3D94A1E82EEEC0008F600 /* balloons_TN@2x.png in Resources */,
 				929CD1471EEF59FA00039377 /* july_glasses_TN@3x.png in Resources */,
 				826BEB0B1E85BEAD000BE3FA /* GreyShadowFrame_TN@3x.png in Resources */,
-				8212BB8A1EA92A25009E66EC /* bowtie_graduation_TN@3x.png in Resources */,
 				929CD1841EEF59FA00039377 /* july_patriotic_pinwheel.png in Resources */,
 				82E3D9BC1E82EEED0008F600 /* conversation_heart_TN@3x.png in Resources */,
 				82E3D9EE1E82EEED0008F600 /* glasses_1.png in Resources */,
@@ -8318,7 +7884,6 @@
 				82E3DA5C1E82EEED0008F600 /* icecream_tub_TN@3x.png in Resources */,
 				82E3D9EA1E82EEED0008F600 /* glasses_1_TN@2x.png in Resources */,
 				8212BE111EA93616009E66EC /* Football_TN@2x.png in Resources */,
-				8212BBA01EA92A25009E66EC /* confetti_graduation_TN@2x.png in Resources */,
 				82E3DA3E1E82EEED0008F600 /* heart-garland.png in Resources */,
 				82A11D6B1E5FB93B00E7F8FC /* schoolbus_TN@2x.png in Resources */,
 				82E3D9861E82EEED0008F600 /* bow2.png in Resources */,
@@ -8326,7 +7891,6 @@
 				8212BE5B1EA93616009E66EC /* heart_bouquet_TN@3x.png in Resources */,
 				8212BD5F1EA93615009E66EC /* arrow_TN.png in Resources */,
 				82E3D9F61E82EEED0008F600 /* glasses.png in Resources */,
-				8212BB941EA92A25009E66EC /* cap_graduation.png in Resources */,
 				82E3DA741E82EEED0008F600 /* lock_TN@3x.png in Resources */,
 				8212BDE91EA93616009E66EC /* devilhorns_TN@2x.png in Resources */,
 				826BEAE51E85BEAD000BE3FA /* BlueWatercoloFrame.png in Resources */,
@@ -8334,8 +7898,6 @@
 				82E3D9E41E82EEED0008F600 /* feather2_TN@3x.png in Resources */,
 				829A7A181EBB8E7E005D4938 /* kite_TN@2x.png in Resources */,
 				826BEB551E85BEAD000BE3FA /* StarsOverlayFrame.png in Resources */,
-				8212BC1A1EA92A26009E66EC /* ribbon_TN@3x.png in Resources */,
-				8212BC101EA92A26009E66EC /* ribbon_graduation_TN@2x.png in Resources */,
 				929CD1711EEF59FA00039377 /* july_merica_hat_TN.png in Resources */,
 				929CD1A21EEF59FA00039377 /* july_soda_straw_TN@2x.png in Resources */,
 				82A11D551E5FB93B00E7F8FC /* peace_TN@3x.png in Resources */,
@@ -8365,7 +7927,6 @@
 				F2D44B9A1EDF3AC900492DE5 /* bow_tie_TN@2x.png in Resources */,
 				82A11D6F1E5FB93B00E7F8FC /* schoolbus.png in Resources */,
 				929CD1721EEF59FA00039377 /* july_merica_hat_TN@2x.png in Resources */,
-				8212BC081EA92A26009E66EC /* pencil_TN@2x.png in Resources */,
 				8212BEE91EA93616009E66EC /* Mustache-dark.png in Resources */,
 				82E3DAF01E82EEED0008F600 /* sunglasses_TN.png in Resources */,
 				F2D44B961EDF3AC900492DE5 /* bear_TN@2x.png in Resources */,
@@ -8373,12 +7934,10 @@
 				829A7A721EBB8E7E005D4938 /* sweat_3_TN@3x.png in Resources */,
 				826BEB4B1E85BEAD000BE3FA /* SloppyFrame_TN@3x.png in Resources */,
 				929CD17F1EEF59FA00039377 /* july_patriotic_glasses_TN@3x.png in Resources */,
-				8212BB901EA92A25009E66EC /* cap_graduation_TN@2x.png in Resources */,
 				82A11D431E5FB93B00E7F8FC /* ketchup-hotdog_TN@2x.png in Resources */,
 				8212BF8D1EA93616009E66EC /* spider.png in Resources */,
 				8212BE631EA93616009E66EC /* heart_wings_TN@3x.png in Resources */,
 				82E3DA801E82EEED0008F600 /* monster_2_TN.png in Resources */,
-				8212BBC81EA92A26009E66EC /* g_glasses_TN@2x.png in Resources */,
 				829A7A021EBB8E7E005D4938 /* flip_flops2_TN@3x.png in Resources */,
 				8212BEE71EA93616009E66EC /* Mustache-brown.png in Resources */,
 				929CD1991EEF59FA00039377 /* july_smiley_TN.png in Resources */,
@@ -8393,7 +7952,6 @@
 				F2D44B951EDF3AC900492DE5 /* bear_TN.png in Resources */,
 				8212BE3D1EA93616009E66EC /* Glasses-blinds_TN@2x.png in Resources */,
 				82A11D311E5FB93B00E7F8FC /* fork_TN.png in Resources */,
-				8212BBF61EA92A26009E66EC /* g_owl_TN.png in Resources */,
 				82E3DB201E82EEEE0008F600 /* trailer_TN.png in Resources */,
 				829A7A961EBBB009005D4938 /* floating_flowers_2_TN.png in Resources */,
 				82E3DB0C1E82EEED0008F600 /* target_TN@3x.png in Resources */,
@@ -8401,7 +7959,6 @@
 				826BEB171E85BEAD000BE3FA /* KraftFrame_TN.png in Resources */,
 				829A7A281EBB8E7E005D4938 /* mermaid_girl_TN@2x.png in Resources */,
 				826BEB391E85BEAD000BE3FA /* RainbowFrame_TN@2x.png in Resources */,
-				8212BBBA1EA92A26009E66EC /* diploma_TN@3x.png in Resources */,
 				82E3DB361E82EEEE0008F600 /* travel_car_woody.png in Resources */,
 				F2D44BC81EDF3AC900492DE5 /* hammer.png in Resources */,
 				82A11CC51E5FB93B00E7F8FC /* 3d-diamond-2_TN@3x.png in Resources */,
@@ -8415,7 +7972,6 @@
 				E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */,
 				929CD18B1EEF59FA00039377 /* july_patriotic_popsicle_TN@3x.png in Resources */,
 				F1DCB83B1B54471E00CA9AAD /* PGSwipeCoachMarksView.xib in Resources */,
-				8212BBBE1EA92A26009E66EC /* flying_caps_graduation_TN.png in Resources */,
 				829A7A681EBB8E7E005D4938 /* summer_sunglasses_TN@2x.png in Resources */,
 				F2D44BE31EDF3AC900492DE5 /* mustache_TN@3x.png in Resources */,
 				929CD1331EEF59FA00039377 /* july_fireworks_burst_stars_TN@3x.png in Resources */,
@@ -8447,11 +8003,9 @@
 				82A11D671E5FB93B00E7F8FC /* rabbit-mask.png in Resources */,
 				8212BED51EA93616009E66EC /* medicine.png in Resources */,
 				8212BE2B1EA93616009E66EC /* gift-dog.png in Resources */,
-				8212BBAA1EA92A26009E66EC /* confetti_TN@3x.png in Resources */,
 				82E3D9E61E82EEED0008F600 /* feather2.png in Resources */,
 				82E3DAF41E82EEED0008F600 /* sunglasses_TN@3x.png in Resources */,
 				8212BF151EA93616009E66EC /* palm-tree-2.png in Resources */,
-				8212BBD21EA92A26009E66EC /* g_horn_TN@3x.png in Resources */,
 				82E3DB381E82EEEE0008F600 /* unicorn_float_TN.png in Resources */,
 				82E3DAEC1E82EEED0008F600 /* sunglasses_frogskin_TN@3x.png in Resources */,
 				8212BE2F1EA93616009E66EC /* Glasses-blinds.png in Resources */,
@@ -8466,7 +8020,6 @@
 				929CD19E1EEF59FA00039377 /* july_Soda_canpx_TN@2x.png in Resources */,
 				82A11CD71E5FB93B00E7F8FC /* bacon_egg.png in Resources */,
 				929CD16C1EEF59FA00039377 /* july_liberty_crown.png in Resources */,
-				8212BBCE1EA92A26009E66EC /* g_horn_TN.png in Resources */,
 				829A7AD71EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */,
 				82A11D731E5FB93B00E7F8FC /* skateboard_TN@2x.png in Resources */,
 				82E3DA001E82EEED0008F600 /* headband_TN.png in Resources */,
@@ -8500,7 +8053,6 @@
 				829A7A221EBB8E7E005D4938 /* lei_TN@3x.png in Resources */,
 				8212BF3D1EA93616009E66EC /* plane.png in Resources */,
 				929CD1771EEF59FA00039377 /* july_merica_TN@3x.png in Resources */,
-				8212BC041EA92A26009E66EC /* pencil_graduation.png in Resources */,
 				F2D44BA51EDF3AC900492DE5 /* crown_2_TN.png in Resources */,
 				82E3DB001E82EEED0008F600 /* swim_fins_TN.png in Resources */,
 				829A7AD91EBBC49E005D4938 /* HP_white-sticker_TN@2x.png in Resources */,
@@ -8537,12 +8089,9 @@
 				F2D44C381EDF66C300492DE5 /* fathers_day_2.png in Resources */,
 				829A7A1B1EBB8E7E005D4938 /* kite_TN@3x.png in Resources */,
 				821850721EAA9041000EDFD2 /* sun.png in Resources */,
-				8212BC051EA92A26009E66EC /* pencil_graduation.png in Resources */,
 				82E3DE961E831BD10008F600 /* schoolbus_TN.png in Resources */,
 				829A7A531EBB8E7E005D4938 /* radio_doodle_TN@3x.png in Resources */,
 				821850D31EAA9102000EDFD2 /* glasses_TN.png in Resources */,
-				8212BB911EA92A25009E66EC /* cap_graduation_TN@2x.png in Resources */,
-				8212BBE31EA92A26009E66EC /* medal_TN@3x.png in Resources */,
 				5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */,
 				82184FDB1EAA9040000EDFD2 /* icecreamcone_TN.png in Resources */,
 				826BEB2E1E85BEAD000BE3FA /* PinkTriangleFrame.png in Resources */,
@@ -8558,7 +8107,6 @@
 				829A7A971EBBB009005D4938 /* floating_flowers_2_TN.png in Resources */,
 				82184FC11EAA9040000EDFD2 /* heart_balloons_TN@3x.png in Resources */,
 				82E3DE951E831BD10008F600 /* rabbit-mask.png in Resources */,
-				8212BBB51EA92A26009E66EC /* diploma_doodle.png in Resources */,
 				82E3DEAC1E831BD10008F600 /* word-cloud-grumble_TN@3x.png in Resources */,
 				82184FFB1EAA9040000EDFD2 /* measles_TN.png in Resources */,
 				821850D11EAA9102000EDFD2 /* glasses_1_TN@3x.png in Resources */,
@@ -8579,7 +8127,6 @@
 				821850201EAA9040000EDFD2 /* palm-tree-2_TN@2x.png in Resources */,
 				82E3DE991E831BD10008F600 /* schoolbus.png in Resources */,
 				82184F7D1EAA9040000EDFD2 /* Cocoa_TN@3x.png in Resources */,
-				8212BB9F1EA92A25009E66EC /* confetti_graduation_TN.png in Resources */,
 				826BEB381E85BEAD000BE3FA /* RainbowFrame_TN.png in Resources */,
 				82A489411EAFD0960017B072 /* stars_bunch_TN.png in Resources */,
 				826BEAF01E85BEAD000BE3FA /* Floral2Frame_TN.png in Resources */,
@@ -8588,7 +8135,6 @@
 				82184F8A1EAA9040000EDFD2 /* devilhorns.png in Resources */,
 				8218504B1EAA9040000EDFD2 /* scuba_TN.png in Resources */,
 				829A7A7F1EBB8E7E005D4938 /* water_bubbles_TN.png in Resources */,
-				8212BBDD1EA92A26009E66EC /* medal_graduation.png in Resources */,
 				82184F541EAA9040000EDFD2 /* Beard_TN@2x.png in Resources */,
 				82184FD61EAA9040000EDFD2 /* hibiscus.png in Resources */,
 				821850BA1EAA9102000EDFD2 /* catwhiskers.png in Resources */,
@@ -8598,8 +8144,6 @@
 				82184FBD1EAA9040000EDFD2 /* heart_arrow_TN@3x.png in Resources */,
 				826BEB741E85BEAD000BE3FA /* WhiteFullFrame_TN@3x.png in Resources */,
 				821850121EAA9040000EDFD2 /* Mustache-dark.png in Resources */,
-				8212BBBD1EA92A26009E66EC /* diploma.png in Resources */,
-				8212BBF11EA92A26009E66EC /* nerd_glasses_TN@2x.png in Resources */,
 				82E3DE821E831BD10008F600 /* ketchup-hotdog_TN.png in Resources */,
 				82E3DE8D1E831BD10008F600 /* peace.png in Resources */,
 				821851311EAA9103000EDFD2 /* sunglasses_TN@3x.png in Resources */,
@@ -8621,7 +8165,6 @@
 				821850C31EAA9102000EDFD2 /* diamond_TN.png in Resources */,
 				826BEB1C1E85BEAD000BE3FA /* KraftFrame_TN@3x.png in Resources */,
 				F2D44C1E1EDF66C300492DE5 /* bear_TN@2x.png in Resources */,
-				8212BBDF1EA92A26009E66EC /* medal_TN.png in Resources */,
 				82184FDE1EAA9040000EDFD2 /* icecreamcone.png in Resources */,
 				821850A41EAA9102000EDFD2 /* bow2_TN@2x.png in Resources */,
 				82184FDD1EAA9040000EDFD2 /* icecreamcone_TN@3x.png in Resources */,
@@ -8669,7 +8212,6 @@
 				821850A01EAA9102000EDFD2 /* birthdayHat_TN@2x.png in Resources */,
 				F2D44C7A1EDF66C300492DE5 /* smoking_pipe_TN@2x.png in Resources */,
 				821850541EAA9040000EDFD2 /* sloth_TN@2x.png in Resources */,
-				8212BBD91EA92A26009E66EC /* medal_graduation_TN@2x.png in Resources */,
 				821850E91EAA9103000EDFD2 /* heart_crown_TN@3x.png in Resources */,
 				821850D21EAA9102000EDFD2 /* glasses_1.png in Resources */,
 				8218510F1EAA9103000EDFD2 /* scuba_mask_TN.png in Resources */,
@@ -8678,7 +8220,6 @@
 				821850AB1EAA9102000EDFD2 /* cat_TN.png in Resources */,
 				821850361EAA9040000EDFD2 /* plane.png in Resources */,
 				82E3DE8C1E831BD10008F600 /* peace_TN@3x.png in Resources */,
-				8212BC111EA92A26009E66EC /* ribbon_graduation_TN@2x.png in Resources */,
 				821850FB1EAA9103000EDFD2 /* icecream_tub_TN.png in Resources */,
 				F2D44C751EDF66C300492DE5 /* shoes_TN.png in Resources */,
 				821851421EAA9103000EDFD2 /* thought_bubble.png in Resources */,
@@ -8697,7 +8238,6 @@
 				82184FBA1EAA9040000EDFD2 /* Glasses-red.png in Resources */,
 				82E3DE4D1E831BD10008F600 /* bacon_egg.png in Resources */,
 				82184F511EAA9040000EDFD2 /* beachball-color_TN@3x.png in Resources */,
-				8212BB791EA92A25009E66EC /* book_stack_TN@2x.png in Resources */,
 				8218500A1EAA9040000EDFD2 /* Mushrooms-b_TN@3x.png in Resources */,
 				F2B69A871EE6111A0082A504 /* customSticker@3x.png in Resources */,
 				82184FA21EAA9040000EDFD2 /* Football.png in Resources */,
@@ -8707,13 +8247,11 @@
 				821850E51EAA9102000EDFD2 /* heart_banner_TN@3x.png in Resources */,
 				8218505F1EAA9040000EDFD2 /* spider_TN.png in Resources */,
 				82184FB61EAA9040000EDFD2 /* Glasses-blinds.png in Resources */,
-				8212BC151EA92A26009E66EC /* ribbon_graduation.png in Resources */,
 				82184FE11EAA9040000EDFD2 /* kleenex_TN@3x.png in Resources */,
 				F2D44C791EDF66C300492DE5 /* smoking_pipe_TN.png in Resources */,
 				82E3DE501E831BD10008F600 /* balloons2_TN@3x.png in Resources */,
 				829A7A291EBB8E7E005D4938 /* mermaid_girl_TN@2x.png in Resources */,
 				829A7A1F1EBB8E7E005D4938 /* lei_TN.png in Resources */,
-				8212BBD11EA92A26009E66EC /* g_horn_TN@2x.png in Resources */,
 				82184FA31EAA9040000EDFD2 /* Fox_TN.png in Resources */,
 				F2D44CBA1EE086CB00492DE5 /* fd_glasses_1_TN@2x.png in Resources */,
 				F2D44C321EDF66C300492DE5 /* dad_tattoo_TN@2x.png in Resources */,
@@ -8730,7 +8268,6 @@
 				82184FB01EAA9040000EDFD2 /* glasses_football_TN@2x.png in Resources */,
 				82184FF01EAA9040000EDFD2 /* Lips_TN@2x.png in Resources */,
 				821851361EAA9103000EDFD2 /* surfboard.png in Resources */,
-				8212BB851EA92A25009E66EC /* books.png in Resources */,
 				82E3DE621E831BD10008F600 /* cat-fries_TN.png in Resources */,
 				821851241EAA9103000EDFD2 /* sun_face_TN@2x.png in Resources */,
 				82184F6F1EAA9040000EDFD2 /* cat_face_TN.png in Resources */,
@@ -8752,7 +8289,6 @@
 				8218508C1EAA9102000EDFD2 /* balloons_TN@2x.png in Resources */,
 				82E3DE941E831BD10008F600 /* rabbit-mask_TN@3x.png in Resources */,
 				82E3DE9D1E831BD10008F600 /* skateboard.png in Resources */,
-				8212BBE71EA92A26009E66EC /* necktie_graduation_TN.png in Resources */,
 				82E3DE7D1E831BD10008F600 /* fork.png in Resources */,
 				0a2c4d2bfb8cece1f9d1a367 /* Bitter-Regular.ttf in Resources */,
 				821850D51EAA9102000EDFD2 /* glasses_TN@3x.png in Resources */,
@@ -8771,7 +8307,6 @@
 				F2D44C731EDF66C300492DE5 /* screwdriver_TN@3x.png in Resources */,
 				829A7A351EBB8E7E005D4938 /* mermaid_tail_water_TN.png in Resources */,
 				F2D44CB81EE086CB00492DE5 /* fd_bbq.png in Resources */,
-				8212BBFD1EA92A26009E66EC /* g_owl.png in Resources */,
 				82184F691EAA9040000EDFD2 /* candy_TN@3x.png in Resources */,
 				82184F5A1EAA9040000EDFD2 /* bird_envelope.png in Resources */,
 				826BEB621E85BEAD000BE3FA /* WhiteBarFrame_TN@2x.png in Resources */,
@@ -8794,7 +8329,6 @@
 				829A7AA01EBBB015005D4938 /* flower_glasses_TN@3x.png in Resources */,
 				8218504C1EAA9040000EDFD2 /* scuba_TN@2x.png in Resources */,
 				821851231EAA9103000EDFD2 /* sun_face_TN.png in Resources */,
-				8212BB9B1EA92A25009E66EC /* cap_TN@3x.png in Resources */,
 				8218506D1EAA9041000EDFD2 /* sun_hat_TN@3x.png in Resources */,
 				8218507C1EAA9041000EDFD2 /* watermelon_TN@2x.png in Resources */,
 				82E3DE871E831BD10008F600 /* panda-mask_TN@2x.png in Resources */,
@@ -8823,7 +8357,6 @@
 				8218509B1EAA9102000EDFD2 /* bike_cruiser_TN.png in Resources */,
 				82184F921EAA9040000EDFD2 /* fireworks.png in Resources */,
 				821850C51EAA9102000EDFD2 /* diamond_TN@3x.png in Resources */,
-				8212BC0B1EA92A26009E66EC /* pencil_TN@3x.png in Resources */,
 				821850991EAA9102000EDFD2 /* beachball_TN@3x.png in Resources */,
 				829A7A271EBB8E7E005D4938 /* mermaid_girl_TN.png in Resources */,
 				F2D44C6F1EDF66C300492DE5 /* necktie_fathersday_TN@3x.png in Resources */,
@@ -8840,7 +8373,6 @@
 				821850321EAA9040000EDFD2 /* Pineapple.png in Resources */,
 				F2D44C1D1EDF66C300492DE5 /* bear_TN.png in Resources */,
 				821851451EAA9103000EDFD2 /* tiara_TN@3x.png in Resources */,
-				8212BBA71EA92A26009E66EC /* confetti_TN.png in Resources */,
 				821850441EAA9040000EDFD2 /* rosebud_TN@2x.png in Resources */,
 				F2D44C3C1EDF66C300492DE5 /* fishing_fatherson.png in Resources */,
 				821850B11EAA9102000EDFD2 /* catears_TN@3x.png in Resources */,
@@ -8854,7 +8386,6 @@
 				821850B81EAA9102000EDFD2 /* catwhiskers_TN@2x.png in Resources */,
 				82E3DE7F1E831BD10008F600 /* Frappuccino_TN@2x.png in Resources */,
 				8218516B1EAA9103000EDFD2 /* volleyball_TN.png in Resources */,
-				8212BB871EA92A25009E66EC /* bowtie_graduation_TN.png in Resources */,
 				82184F9C1EAA9040000EDFD2 /* Flowers2_TN.png in Resources */,
 				829A7ADE1EBBC49E005D4938 /* HP_white-sticker.png in Resources */,
 				821850AA1EAA9102000EDFD2 /* bunny_ears_flowers.png in Resources */,
@@ -8872,7 +8403,6 @@
 				3f61a6f79eae18c8239267a5 /* HPSimplified_LtIt.ttf in Resources */,
 				821850551EAA9040000EDFD2 /* sloth_TN@3x.png in Resources */,
 				82184F881EAA9040000EDFD2 /* devilhorns_TN@2x.png in Resources */,
-				8212BB8D1EA92A25009E66EC /* bowtie_graduation.png in Resources */,
 				821851341EAA9103000EDFD2 /* surfboard_TN@2x.png in Resources */,
 				F2D44C371EDF66C300492DE5 /* fathers_day_2_TN@3x.png in Resources */,
 				82E3DE541E831BD10008F600 /* band-aid2_TN@2x.png in Resources */,
@@ -8903,7 +8433,6 @@
 				821850151EAA9040000EDFD2 /* OMG_TN@3x.png in Resources */,
 				82184FD11EAA9040000EDFD2 /* hedgehog_TN@3x.png in Resources */,
 				82E3DE5F1E831BD10008F600 /* cat-coffee_TN@2x.png in Resources */,
-				8212BC191EA92A26009E66EC /* ribbon_TN@2x.png in Resources */,
 				82184FA41EAA9040000EDFD2 /* Fox_TN@2x.png in Resources */,
 				821850D81EAA9102000EDFD2 /* hat_TN@2x.png in Resources */,
 				821850901EAA9102000EDFD2 /* bbq_TN@2x.png in Resources */,
@@ -8911,7 +8440,6 @@
 				829A7ADA1EBBC49E005D4938 /* HP_white-sticker_TN@2x.png in Resources */,
 				82184F471EAA9040000EDFD2 /* aviator-glasses-color_TN.png in Resources */,
 				829A7A3B1EBB8E7E005D4938 /* mermaid_tail_water.png in Resources */,
-				8212BB811EA92A25009E66EC /* books_TN@2x.png in Resources */,
 				F2D44C531EDF66C300492DE5 /* hammer_TN@3x.png in Resources */,
 				8218501F1EAA9040000EDFD2 /* palm-tree-2_TN.png in Resources */,
 				F2D44CB91EE086CB00492DE5 /* fd_glasses_1_TN.png in Resources */,
@@ -8951,10 +8479,8 @@
 				8218514D1EAA9103000EDFD2 /* travel_car_bug_TN@3x.png in Resources */,
 				829A7A091EBB8E7E005D4938 /* floating_sloth_TN@2x.png in Resources */,
 				829A7A5B1EBB8E7E005D4938 /* radio_TN@3x.png in Resources */,
-				8212BB831EA92A25009E66EC /* books_TN@3x.png in Resources */,
 				82184FF31EAA9040000EDFD2 /* LOL_TN.png in Resources */,
 				821850471EAA9040000EDFD2 /* scarycat_TN.png in Resources */,
-				8212BBF91EA92A26009E66EC /* g_owl_TN@2x.png in Resources */,
 				826BEB061E85BEAD000BE3FA /* GradientFrame.png in Resources */,
 				821850E71EAA9103000EDFD2 /* heart_crown_TN.png in Resources */,
 				821850491EAA9040000EDFD2 /* scarycat_TN@3x.png in Resources */,
@@ -8978,7 +8504,6 @@
 				826BEAEE1E85BEAD000BE3FA /* DotsOverlayFrame.png in Resources */,
 				821851761EAA9103000EDFD2 /* wave.png in Resources */,
 				F2030BEA1EA5420600141855 /* imgly_license in Resources */,
-				8212BB8F1EA92A25009E66EC /* cap_graduation_TN.png in Resources */,
 				a6c8a9eda54ca7d3639478d0 /* Pacifico.ttf in Resources */,
 				829A7A551EBB8E7E005D4938 /* radio_doodle.png in Resources */,
 				821850221EAA9040000EDFD2 /* palm-tree-2.png in Resources */,
@@ -8989,7 +8514,6 @@
 				82E3DE921E831BD10008F600 /* rabbit-mask_TN.png in Resources */,
 				6e2c2473ed2f0f1072995bbe /* RockSalt.ttf in Resources */,
 				82184F681EAA9040000EDFD2 /* candy_TN@2x.png in Resources */,
-				8212BBC31EA92A26009E66EC /* flying_caps_graduation_TN@3x.png in Resources */,
 				82184F6E1EAA9040000EDFD2 /* cat_body.png in Resources */,
 				829A7A131EBB8E7E005D4938 /* ice_cream_cone_TN@3x.png in Resources */,
 				e7da7e9d19075d85ceb82352 /* sanchez-regular.ttf in Resources */,
@@ -9008,9 +8532,7 @@
 				82E3DEA81E831BD10008F600 /* thumbs-up_TN@3x.png in Resources */,
 				829A79F31EBB8E7E005D4938 /* fan_TN@3x.png in Resources */,
 				826BEB281E85BEAD000BE3FA /* PinkTriangleFrame_TN.png in Resources */,
-				8212BBF71EA92A26009E66EC /* g_owl_TN.png in Resources */,
 				82184FEA1EAA9040000EDFD2 /* leaves.png in Resources */,
-				8212BBC51EA92A26009E66EC /* flying_caps_graduation.png in Resources */,
 				82184F651EAA9040000EDFD2 /* cake_TN@3x.png in Resources */,
 				82184FBC1EAA9040000EDFD2 /* heart_arrow_TN@2x.png in Resources */,
 				821850EC1EAA9103000EDFD2 /* heart-garland_TN@2x.png in Resources */,
@@ -9018,7 +8540,6 @@
 				826BEB0E1E85BEAD000BE3FA /* GreyShadowFrame.png in Resources */,
 				82184F6C1EAA9040000EDFD2 /* cat_body_TN@2x.png in Resources */,
 				821850A71EAA9102000EDFD2 /* bunny_ears_flowers_TN.png in Resources */,
-				8212BBDB1EA92A26009E66EC /* medal_graduation_TN@3x.png in Resources */,
 				82A489421EAFD0960017B072 /* stars_bunch_TN@2x.png in Resources */,
 				821851491EAA9103000EDFD2 /* trailer_TN@3x.png in Resources */,
 				F2D44C261EDF66C300492DE5 /* coffee_1_TN@2x.png in Resources */,
@@ -9043,11 +8564,9 @@
 				829A7A371EBB8E7E005D4938 /* mermaid_tail_water_TN@2x.png in Resources */,
 				ad69787d6bdf794e837f2b25 /* SpecialElite.ttf in Resources */,
 				826BEB1E1E85BEAD000BE3FA /* KraftFrame.png in Resources */,
-				8212BBF51EA92A26009E66EC /* nerd_glasses.png in Resources */,
 				82184FB51EAA9040000EDFD2 /* Glasses-blinds_TN@3x.png in Resources */,
 				826BEB541E85BEAD000BE3FA /* StarsOverlayFrame_TN@3x.png in Resources */,
 				821851731EAA9103000EDFD2 /* wave_TN.png in Resources */,
-				8212BC131EA92A26009E66EC /* ribbon_graduation_TN@3x.png in Resources */,
 				82184FA11EAA9040000EDFD2 /* Football_TN@3x.png in Resources */,
 				82184FF41EAA9040000EDFD2 /* LOL_TN@2x.png in Resources */,
 				82184FA81EAA9040000EDFD2 /* gift_TN@2x.png in Resources */,
@@ -9073,15 +8592,12 @@
 				525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */,
 				829A7A9B1EBBB009005D4938 /* floating_flowers_2_TN@3x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
-				8212BC171EA92A26009E66EC /* ribbon_TN.png in Resources */,
 				821850F61EAA9103000EDFD2 /* hearts.png in Resources */,
 				821850E01EAA9102000EDFD2 /* heart_2_TN@2x.png in Resources */,
 				F2D44C3A1EDF66C300492DE5 /* fishing_fatherson_TN@2x.png in Resources */,
 				821850071EAA9040000EDFD2 /* Mushrooms-b.png in Resources */,
 				F2D44C331EDF66C300492DE5 /* dad_tattoo_TN@3x.png in Resources */,
-				8212BBAD1EA92A26009E66EC /* confetti.png in Resources */,
 				821850251EAA9040000EDFD2 /* Party-Hat_TN@3x.png in Resources */,
-				8212BBC91EA92A26009E66EC /* g_glasses_TN@2x.png in Resources */,
 				826BEB421E85BEAD000BE3FA /* RedFrame_TN@2x.png in Resources */,
 				821851131EAA9103000EDFD2 /* smiley_TN.png in Resources */,
 				F2D44C891EDF66C300492DE5 /* tie_collar_TN.png in Resources */,
@@ -9112,13 +8628,11 @@
 				829A7A4B1EBB8E7E005D4938 /* popsicle-2_TN@3x.png in Resources */,
 				F2D44C651EDF66C300492DE5 /* mask_TN.png in Resources */,
 				826BEB241E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@3x.png in Resources */,
-				8212BC1D1EA92A26009E66EC /* ribbon.png in Resources */,
 				82E3DE381E831BC70008F600 /* glasses_blossom_TN@3x.png in Resources */,
 				82E3DE691E831BD10008F600 /* cat-on-head.png in Resources */,
 				8218500E1EAA9040000EDFD2 /* Mustache-brown.png in Resources */,
 				821851551EAA9103000EDFD2 /* unicorn_float_TN@3x.png in Resources */,
 				829A79F71EBB8E7E005D4938 /* flamingo_TN.png in Resources */,
-				8212BBAB1EA92A26009E66EC /* confetti_TN@3x.png in Resources */,
 				8218510E1EAA9103000EDFD2 /* palmtree.png in Resources */,
 				826BEB3C1E85BEAD000BE3FA /* RainbowFrame_TN@3x.png in Resources */,
 				821850451EAA9040000EDFD2 /* rosebud_TN@3x.png in Resources */,
@@ -9130,7 +8644,6 @@
 				821850001EAA9040000EDFD2 /* medicine_TN@2x.png in Resources */,
 				aff115244fa0165d3089bcb7 /* FacebookLogo@2x.png in Resources */,
 				829A7A471EBB8E7E005D4938 /* popsicle-2_TN.png in Resources */,
-				8212BB751EA92A25009E66EC /* g_balloons.png in Resources */,
 				821851201EAA9103000EDFD2 /* stars_TN@2x.png in Resources */,
 				821850691EAA9041000EDFD2 /* star_yellow_TN@3x.png in Resources */,
 				F2D44C741EDF66C300492DE5 /* screwdriver.png in Resources */,
@@ -9143,9 +8656,7 @@
 				82184FCC1EAA9040000EDFD2 /* heartPixel_TN@2x.png in Resources */,
 				5a59ecc59e7e438b8865cd21 /* FacebookNoPhotoAlbum@2x.png in Resources */,
 				F2D44C681EDF66C300492DE5 /* mask.png in Resources */,
-				8212BB7D1EA92A25009E66EC /* book_stack.png in Resources */,
 				82184F451EAA9040000EDFD2 /* arrow_TN@3x.png in Resources */,
-				8212BBD71EA92A26009E66EC /* medal_graduation_TN.png in Resources */,
 				F2D44C121EDF66C300492DE5 /* bacon_TN@2x.png in Resources */,
 				F2D44C701EDF66C300492DE5 /* necktie_fathersday.png in Resources */,
 				829A7A6B1EBB8E7E005D4938 /* summer_sunglasses_TN@3x.png in Resources */,
@@ -9166,9 +8677,7 @@
 				821850F51EAA9103000EDFD2 /* hearts_TN@3x.png in Resources */,
 				821851191EAA9103000EDFD2 /* soda_straw_TN@3x.png in Resources */,
 				826BEB021E85BEAD000BE3FA /* GradientFrame_TN@2x.png in Resources */,
-				8212BBFB1EA92A26009E66EC /* g_owl_TN@3x.png in Resources */,
 				821850931EAA9102000EDFD2 /* beach_umbrella_TN.png in Resources */,
-				8212BB9D1EA92A25009E66EC /* cap.png in Resources */,
 				696b4cf61c03206ef232189d /* HPLogo@2x.png in Resources */,
 				82184F401EAA9040000EDFD2 /* apple_angry_TN@2x.png in Resources */,
 				F2D44C3D1EDF66C300492DE5 /* football_fathersday_TN.png in Resources */,
@@ -9180,7 +8689,6 @@
 				82E3DEA31E831BD10008F600 /* taco2_TN@2x.png in Resources */,
 				826BEB101E85BEAD000BE3FA /* HeartsOverlayFrame_TN.png in Resources */,
 				F2D44C311EDF66C300492DE5 /* dad_tattoo_TN.png in Resources */,
-				8212BBEB1EA92A26009E66EC /* necktie_graduation_TN@3x.png in Resources */,
 				826BEB581E85BEAD000BE3FA /* TurquoiseFrame_TN.png in Resources */,
 				82E3DE711E831BD10008F600 /* cloud_angry.png in Resources */,
 				82184FAB1EAA9040000EDFD2 /* gift-dog_TN.png in Resources */,
@@ -9189,9 +8697,6 @@
 				F2D44C621EDF66C300492DE5 /* i_heart_dad_1_TN@2x.png in Resources */,
 				F2D44C691EDF66C300492DE5 /* mustache_TN.png in Resources */,
 				82E3DE701E831BD10008F600 /* cloud_angry_TN@3x.png in Resources */,
-				8212BBB11EA92A26009E66EC /* diploma_doodle_TN@2x.png in Resources */,
-				8212BBAF1EA92A26009E66EC /* diploma_doodle_TN.png in Resources */,
-				8212BBFF1EA92A26009E66EC /* pencil_graduation_TN.png in Resources */,
 				829A79E91EBB8E7E005D4938 /* dolphin_doodle_TN@2x.png in Resources */,
 				82E3DE551E831BD10008F600 /* band-aid2_TN@3x.png in Resources */,
 				8218507A1EAA9041000EDFD2 /* Unicorn.png in Resources */,
@@ -9206,18 +8711,15 @@
 				829A7A031EBB8E7E005D4938 /* flip_flops2_TN@3x.png in Resources */,
 				821851271EAA9103000EDFD2 /* sundae_TN.png in Resources */,
 				82184F591EAA9040000EDFD2 /* bird_envelope_TN@3x.png in Resources */,
-				8212BB731EA92A25009E66EC /* g_balloons_TN@3x.png in Resources */,
 				821850411EAA9040000EDFD2 /* rainbow_2_TN@2x.png in Resources */,
 				821850671EAA9041000EDFD2 /* star_yellow_TN.png in Resources */,
 				821851391EAA9103000EDFD2 /* swim_fins_TN@3x.png in Resources */,
-				8212BC0D1EA92A26009E66EC /* pencil.png in Resources */,
 				821850CC1EAA9102000EDFD2 /* feather2_TN@2x.png in Resources */,
 				829A7A251EBB8E7E005D4938 /* lei.png in Resources */,
 				821850FC1EAA9103000EDFD2 /* icecream_tub_TN@2x.png in Resources */,
 				821851111EAA9103000EDFD2 /* scuba_mask_TN@3x.png in Resources */,
 				82E3DE521E831BD10008F600 /* band-aid2.png in Resources */,
 				45ea131b33884838a8a5f8dc /* LeftSwipeButton@2x.png in Resources */,
-				8212BB931EA92A25009E66EC /* cap_graduation_TN@3x.png in Resources */,
 				F2D44C841EDF66C300492DE5 /* super_dad.png in Resources */,
 				821851071EAA9103000EDFD2 /* monster_2_TN.png in Resources */,
 				829A7A711EBB8E7E005D4938 /* sweat_3_TN@2x.png in Resources */,
@@ -9230,10 +8732,8 @@
 				82184FC61EAA9040000EDFD2 /* heart_bouquet.png in Resources */,
 				821850391EAA9040000EDFD2 /* plum-blossom_TN@3x.png in Resources */,
 				F2D44C721EDF66C300492DE5 /* screwdriver_TN@2x.png in Resources */,
-				8212BB951EA92A25009E66EC /* cap_graduation.png in Resources */,
 				821850591EAA9040000EDFD2 /* Soda_can_TN@3x.png in Resources */,
 				8218509E1EAA9102000EDFD2 /* bike_cruiser.png in Resources */,
-				8212BBA51EA92A26009E66EC /* confetti_graduation.png in Resources */,
 				82184FEC1EAA9040000EDFD2 /* letter_TN@2x.png in Resources */,
 				826BEB141E85BEAD000BE3FA /* HeartsOverlayFrame_TN@3x.png in Resources */,
 				829A7A851EBB8E7E005D4938 /* water_bubbles.png in Resources */,
@@ -9255,7 +8755,6 @@
 				821850051EAA9040000EDFD2 /* moon_TN@3x.png in Resources */,
 				829A7ABE1EBBC49E005D4938 /* ReinventMemories_sticker.png in Resources */,
 				829A7A071EBB8E7E005D4938 /* floating_sloth_TN.png in Resources */,
-				8212BBCF1EA92A26009E66EC /* g_horn_TN.png in Resources */,
 				8218516D1EAA9103000EDFD2 /* volleyball_TN@3x.png in Resources */,
 				82E3DE581E831BD10008F600 /* cat_grumble_TN@3x.png in Resources */,
 				82184FFC1EAA9040000EDFD2 /* measles_TN@2x.png in Resources */,
@@ -9278,13 +8777,11 @@
 				8218502E1EAA9040000EDFD2 /* pig.png in Resources */,
 				F2D44CCD1EE08B1600492DE5 /* fd_heart_banner.png in Resources */,
 				826BEB221E85BEAD000BE3FA /* PinkSpraypaintFrame_TN@2x.png in Resources */,
-				8212BBD51EA92A26009E66EC /* g_horn.png in Resources */,
 				82184FE31EAA9040000EDFD2 /* koala_TN.png in Resources */,
 				82E3DE7A1E831BD10008F600 /* fork_TN.png in Resources */,
 				82184FEE1EAA9040000EDFD2 /* letter.png in Resources */,
 				829A7A051EBB8E7E005D4938 /* flip_flops2.png in Resources */,
 				82184F8D1EAA9040000EDFD2 /* dog_TN@3x.png in Resources */,
-				8212BB8B1EA92A25009E66EC /* bowtie_graduation_TN@3x.png in Resources */,
 				F2D44C611EDF66C300492DE5 /* i_heart_dad_1_TN.png in Resources */,
 				829A7A211EBB8E7E005D4938 /* lei_TN@2x.png in Resources */,
 				821851021EAA9103000EDFD2 /* leaf3.png in Resources */,
@@ -9292,22 +8789,17 @@
 				82E3DE531E831BD10008F600 /* band-aid2_TN.png in Resources */,
 				F2D44C541EDF66C300492DE5 /* hammer.png in Resources */,
 				F2D44C141EDF66C300492DE5 /* bacon.png in Resources */,
-				8212BBE11EA92A26009E66EC /* medal_TN@2x.png in Resources */,
 				821850921EAA9102000EDFD2 /* bbq.png in Resources */,
 				8218509D1EAA9102000EDFD2 /* bike_cruiser_TN@3x.png in Resources */,
 				829A7A2B1EBB8E7E005D4938 /* mermaid_girl_TN@3x.png in Resources */,
 				8218509C1EAA9102000EDFD2 /* bike_cruiser_TN@2x.png in Resources */,
-				8212BBEF1EA92A26009E66EC /* nerd_glasses_TN.png in Resources */,
 				8218502D1EAA9040000EDFD2 /* pig_TN@3x.png in Resources */,
-				8212BBA11EA92A26009E66EC /* confetti_graduation_TN@2x.png in Resources */,
 				828F02151E7CBCF800902C8F /* PGGesturesView.xib in Resources */,
 				821851211EAA9103000EDFD2 /* stars_TN@3x.png in Resources */,
 				821851631EAA9103000EDFD2 /* v_hearts_TN.png in Resources */,
 				8218505B1EAA9040000EDFD2 /* soda_TN.png in Resources */,
 				826BEAE41E85BEAD000BE3FA /* BlueWatercoloFrame_TN@3x.png in Resources */,
 				821850C11EAA9102000EDFD2 /* crown_TN@3x.png in Resources */,
-				8212BC031EA92A26009E66EC /* pencil_graduation_TN@3x.png in Resources */,
-				8212BB6F1EA92A25009E66EC /* g_balloons_TN.png in Resources */,
 				829A7A651EBB8E7E005D4938 /* sand_castle.png in Resources */,
 				82E3DE881E831BD10008F600 /* panda-mask_TN@3x.png in Resources */,
 				264492ba532580b969db6b75 /* MeasurementArrowUp@2x.png in Resources */,
@@ -9337,7 +8829,6 @@
 				826BEB6A1E85BEAD000BE3FA /* WhiteFrame_TN@2x.png in Resources */,
 				8218513B1EAA9103000EDFD2 /* target_TN.png in Resources */,
 				821850A51EAA9102000EDFD2 /* bow2_TN@3x.png in Resources */,
-				8212BB7F1EA92A25009E66EC /* books_TN.png in Resources */,
 				F2D44C491EDF66C300492DE5 /* golf_set_TN.png in Resources */,
 				82E3DE901E831BD10008F600 /* pizza_TN@3x.png in Resources */,
 				14eed20c36a3bc4e0150fe31 /* retry@2x.png in Resources */,
@@ -9351,20 +8842,17 @@
 				8218515B1EAA9103000EDFD2 /* v_cupcake_TN.png in Resources */,
 				821850F91EAA9103000EDFD2 /* holding_hands_TN@3x.png in Resources */,
 				82184F701EAA9040000EDFD2 /* cat_face_TN@2x.png in Resources */,
-				8212BB711EA92A25009E66EC /* g_balloons_TN@2x.png in Resources */,
 				82E3DE721E831BD10008F600 /* cloud_sad_TN.png in Resources */,
 				82184FE81EAA9040000EDFD2 /* leaves_TN@2x.png in Resources */,
 				829A7A9F1EBBB015005D4938 /* flower_glasses_TN@2x.png in Resources */,
 				829A7ABC1EBBC49E005D4938 /* ReinventMemories_sticker_TN@3x.png in Resources */,
 				821850521EAA9040000EDFD2 /* skull.png in Resources */,
 				821851431EAA9103000EDFD2 /* tiara_TN.png in Resources */,
-				8212BBC71EA92A26009E66EC /* g_glasses_TN.png in Resources */,
 				826BEB461E85BEAD000BE3FA /* RedFrame.png in Resources */,
 				F2D44CCA1EE08B1600492DE5 /* fd_heart_banner_TN.png in Resources */,
 				82184F991EAA9040000EDFD2 /* Flowers_TN@2x.png in Resources */,
 				821850E41EAA9102000EDFD2 /* heart_banner_TN@2x.png in Resources */,
 				829A7A611EBB8E7E005D4938 /* sand_castle_TN@2x.png in Resources */,
-				8212BB891EA92A25009E66EC /* bowtie_graduation_TN@2x.png in Resources */,
 				F2D44C8C1EDF66C300492DE5 /* tie_collar.png in Resources */,
 				72f28ed86ea1cb1293a4f971 /* Search@2x.png in Resources */,
 				826BEB6C1E85BEAD000BE3FA /* WhiteFrame_TN@3x.png in Resources */,
@@ -9387,7 +8875,6 @@
 				F2D44C2E1EDF66C300492DE5 /* crown_2_TN@2x.png in Resources */,
 				82E3DE3B1E831BC70008F600 /* Panda_TN@2x.png in Resources */,
 				8218506C1EAA9041000EDFD2 /* sun_hat_TN@2x.png in Resources */,
-				8212BC091EA92A26009E66EC /* pencil_TN@2x.png in Resources */,
 				82184FC51EAA9040000EDFD2 /* heart_bouquet_TN@3x.png in Resources */,
 				829A7A431EBB8E7E005D4938 /* popsicle_TN@2x.png in Resources */,
 				9071a3d241aff08e6ee59523 /* SendFeedback@2x.png in Resources */,
@@ -9397,7 +8884,6 @@
 				826BEB2C1E85BEAD000BE3FA /* PinkTriangleFrame_TN@3x.png in Resources */,
 				821851721EAA9103000EDFD2 /* xoxo.png in Resources */,
 				821850A91EAA9102000EDFD2 /* bunny_ears_flowers_TN@3x.png in Resources */,
-				8212BBA31EA92A26009E66EC /* confetti_graduation_TN@3x.png in Resources */,
 				82E3DE7B1E831BD10008F600 /* fork_TN@2x.png in Resources */,
 				829A79F11EBB8E7E005D4938 /* fan_TN@2x.png in Resources */,
 				30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */,
@@ -9409,9 +8895,7 @@
 				82184FD21EAA9040000EDFD2 /* hedgehog.png in Resources */,
 				82184F971EAA9040000EDFD2 /* Flowers.png in Resources */,
 				82E3DE5B1E831BD10008F600 /* cat-celebrate_TN@2x.png in Resources */,
-				8212BC011EA92A26009E66EC /* pencil_graduation_TN@2x.png in Resources */,
 				F2D44C7D1EDF66C300492DE5 /* strong_arm_TN.png in Resources */,
-				8212BB971EA92A25009E66EC /* cap_TN.png in Resources */,
 				ace83614d375df76a2860aae /* Support_Printers.jpg in Resources */,
 				826BEB121E85BEAD000BE3FA /* HeartsOverlayFrame_TN@2x.png in Resources */,
 				821850F31EAA9103000EDFD2 /* hearts_TN.png in Resources */,
@@ -9421,14 +8905,12 @@
 				821850D71EAA9102000EDFD2 /* hat_TN.png in Resources */,
 				F2D44C1A1EDF66C300492DE5 /* bbq_utensils_TN@3x.png in Resources */,
 				821850E31EAA9102000EDFD2 /* heart_banner_TN.png in Resources */,
-				8212BBC11EA92A26009E66EC /* flying_caps_graduation_TN@2x.png in Resources */,
 				821850631EAA9041000EDFD2 /* Spring_Break_TN.png in Resources */,
 				821850851EAA9102000EDFD2 /* airplane_TN@3x.png in Resources */,
 				821850BE1EAA9102000EDFD2 /* conversation_heart.png in Resources */,
 				82E3DE631E831BD10008F600 /* cat-fries_TN@2x.png in Resources */,
 				F20CE2591EC2436400FD910D /* PGInAppMessageView.xib in Resources */,
 				F2D44C231EDF66C300492DE5 /* bow_tie_TN@3x.png in Resources */,
-				8212BC071EA92A26009E66EC /* pencil_TN.png in Resources */,
 				82E3DE3D1E831BC70008F600 /* Panda.png in Resources */,
 				fb18c75124e0aad8e105717a /* Images.xcassets in Resources */,
 				821851001EAA9103000EDFD2 /* leaf3_TN@2x.png in Resources */,
@@ -9437,16 +8919,13 @@
 				82184F441EAA9040000EDFD2 /* arrow_TN@2x.png in Resources */,
 				8218500B1EAA9040000EDFD2 /* Mustache-brown_TN.png in Resources */,
 				821851691EAA9103000EDFD2 /* v_xoxo_TN@3x.png in Resources */,
-				8212BBE51EA92A26009E66EC /* medal.png in Resources */,
 				82184FC71EAA9040000EDFD2 /* heart_wings_TN.png in Resources */,
 				826BEB7E1E85BEAD000BE3FA /* WhiteRoundedFrame.png in Resources */,
 				821850FA1EAA9103000EDFD2 /* holding_hands.png in Resources */,
 				821851181EAA9103000EDFD2 /* soda_straw_TN@2x.png in Resources */,
-				8212BC0F1EA92A26009E66EC /* ribbon_graduation_TN.png in Resources */,
 				8218509A1EAA9102000EDFD2 /* beachball.png in Resources */,
 				82184FEF1EAA9040000EDFD2 /* Lips_TN.png in Resources */,
 				82184FA01EAA9040000EDFD2 /* Football_TN@2x.png in Resources */,
-				8212BBD31EA92A26009E66EC /* g_horn_TN@3x.png in Resources */,
 				826BEAE81E85BEAD000BE3FA /* DotsOverlayFrame_TN.png in Resources */,
 				821850F81EAA9103000EDFD2 /* holding_hands_TN@2x.png in Resources */,
 				658DF9E01EDF907C00F0EBCB /* AirshipConfig.plist in Resources */,
@@ -9461,22 +8940,18 @@
 				821851401EAA9103000EDFD2 /* thought_bubble_TN@2x.png in Resources */,
 				F2D44C1B1EDF66C300492DE5 /* bbq_utensils.png in Resources */,
 				821850731EAA9041000EDFD2 /* Turkey-leg.png in Resources */,
-				8212BBBF1EA92A26009E66EC /* flying_caps_graduation_TN.png in Resources */,
 				82184FD71EAA9040000EDFD2 /* horn_TN.png in Resources */,
 				829A7A1D1EBB8E7E005D4938 /* kite.png in Resources */,
 				826BEB501E85BEAD000BE3FA /* StarsOverlayFrame_TN.png in Resources */,
 				821850791EAA9041000EDFD2 /* Unicorn_TN@3x.png in Resources */,
 				821850981EAA9102000EDFD2 /* beachball_TN@2x.png in Resources */,
-				8212BBCB1EA92A26009E66EC /* g_glasses_TN@3x.png in Resources */,
 				F2D44C521EDF66C300492DE5 /* hammer_TN@2x.png in Resources */,
 				8218502B1EAA9040000EDFD2 /* pig_TN.png in Resources */,
 				82184F7C1EAA9040000EDFD2 /* Cocoa_TN@2x.png in Resources */,
 				82E3DE981E831BD10008F600 /* schoolbus_TN@3x.png in Resources */,
-				8212BBBB1EA92A26009E66EC /* diploma_TN@3x.png in Resources */,
 				821851561EAA9103000EDFD2 /* unicorn_float.png in Resources */,
 				821851661EAA9103000EDFD2 /* v_hearts.png in Resources */,
 				F2D44C881EDF66C300492DE5 /* talk_bubble.png in Resources */,
-				8212BBED1EA92A26009E66EC /* necktie_graduation.png in Resources */,
 				821850911EAA9102000EDFD2 /* bbq_TN@3x.png in Resources */,
 				82E3DE6A1E831BD10008F600 /* cat-shock_TN.png in Resources */,
 				F2D44C631EDF66C300492DE5 /* i_heart_dad_1_TN@3x.png in Resources */,
@@ -9501,7 +8976,6 @@
 				82E3DEA71E831BD10008F600 /* thumbs-up_TN@2x.png in Resources */,
 				F2D44C341EDF66C300492DE5 /* dad_tattoo.png in Resources */,
 				82E3DE841E831BD10008F600 /* ketchup-hotdog_TN@3x.png in Resources */,
-				8212BB991EA92A25009E66EC /* cap_TN@2x.png in Resources */,
 				821850EF1EAA9103000EDFD2 /* heartExpress_TN.png in Resources */,
 				829A7A0D1EBB8E7E005D4938 /* floating_sloth.png in Resources */,
 				82E3DE681E831BD10008F600 /* cat-on-head_TN@3x.png in Resources */,
@@ -9517,7 +8991,6 @@
 				821851751EAA9103000EDFD2 /* wave_TN@3x.png in Resources */,
 				82E3DE641E831BD10008F600 /* cat-fries_TN@3x.png in Resources */,
 				F2D44C291EDF66C300492DE5 /* crown_1_TN.png in Resources */,
-				8212BBA91EA92A26009E66EC /* confetti_TN@2x.png in Resources */,
 				82184FF51EAA9040000EDFD2 /* LOL_TN@3x.png in Resources */,
 				82E3DE5D1E831BD10008F600 /* cat-celebrate.png in Resources */,
 				F2D44C781EDF66C300492DE5 /* shoes.png in Resources */,
@@ -9537,10 +9010,8 @@
 				82E3DEA11E831BD10008F600 /* spoon.png in Resources */,
 				82184FAC1EAA9040000EDFD2 /* gift-dog_TN@2x.png in Resources */,
 				821850871EAA9102000EDFD2 /* aviator_glasses_TN.png in Resources */,
-				8212BBB31EA92A26009E66EC /* diploma_doodle_TN@3x.png in Resources */,
 				82E3DE771E831BD10008F600 /* doughnut_TN@2x.png in Resources */,
 				829A79EB1EBB8E7E005D4938 /* dolphin_doodle_TN@3x.png in Resources */,
-				8212BBB91EA92A26009E66EC /* diploma_TN@2x.png in Resources */,
 				826BEB4C1E85BEAD000BE3FA /* SloppyFrame_TN@3x.png in Resources */,
 				82184FAA1EAA9040000EDFD2 /* gift.png in Resources */,
 				F2D44C711EDF66C300492DE5 /* screwdriver_TN.png in Resources */,
@@ -9598,12 +9069,10 @@
 				82184FF21EAA9040000EDFD2 /* Lips.png in Resources */,
 				82E3DE861E831BD10008F600 /* panda-mask_TN.png in Resources */,
 				821851321EAA9103000EDFD2 /* sunglasses.png in Resources */,
-				8212BBE91EA92A26009E66EC /* necktie_graduation_TN@2x.png in Resources */,
 				9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */,
 				82184FCE1EAA9040000EDFD2 /* heartPixel.png in Resources */,
 				821850B51EAA9102000EDFD2 /* catglasses_TN@3x.png in Resources */,
 				82E3DEA51E831BD10008F600 /* taco2.png in Resources */,
-				8212BB771EA92A25009E66EC /* book_stack_TN.png in Resources */,
 				cd41f7af2b6eb5a581671dd9 /* PGSwipeCoachMarksView.xib in Resources */,
 				821851011EAA9103000EDFD2 /* leaf3_TN@3x.png in Resources */,
 				829A7A491EBB8E7E005D4938 /* popsicle-2_TN@2x.png in Resources */,
@@ -9618,11 +9087,9 @@
 				829A7A4F1EBB8E7E005D4938 /* radio_doodle_TN.png in Resources */,
 				821851031EAA9103000EDFD2 /* lock_TN.png in Resources */,
 				821850061EAA9040000EDFD2 /* moon.png in Resources */,
-				8212BBF31EA92A26009E66EC /* nerd_glasses_TN@3x.png in Resources */,
 				F2D44C861EDF66C300492DE5 /* talk_bubble_TN@2x.png in Resources */,
 				829A7AD81EBBC49E005D4938 /* HP_white-sticker_TN.png in Resources */,
 				821850351EAA9040000EDFD2 /* plane_TN@3x.png in Resources */,
-				8212BB7B1EA92A25009E66EC /* book_stack_TN@3x.png in Resources */,
 				826BEB781E85BEAD000BE3FA /* WhiteRoundedFrame_TN.png in Resources */,
 				82184FFE1EAA9040000EDFD2 /* measles.png in Resources */,
 				821850291EAA9040000EDFD2 /* Pie_TN@3x.png in Resources */,
@@ -9658,7 +9125,6 @@
 				8218510A1EAA9103000EDFD2 /* monster_2.png in Resources */,
 				82184FF11EAA9040000EDFD2 /* Lips_TN@3x.png in Resources */,
 				F2D44C6A1EDF66C300492DE5 /* mustache_TN@2x.png in Resources */,
-				8212BBCD1EA92A26009E66EC /* g_glasses.png in Resources */,
 				82184F901EAA9040000EDFD2 /* fireworks_TN@2x.png in Resources */,
 				821850B71EAA9102000EDFD2 /* catwhiskers_TN.png in Resources */,
 				82184FB11EAA9040000EDFD2 /* glasses_football_TN@3x.png in Resources */,
@@ -9670,8 +9136,6 @@
 				826BEB161E85BEAD000BE3FA /* HeartsOverlayFrame.png in Resources */,
 				821850A81EAA9102000EDFD2 /* bunny_ears_flowers_TN@2x.png in Resources */,
 				82184F6B1EAA9040000EDFD2 /* cat_body_TN.png in Resources */,
-				8212BC1B1EA92A26009E66EC /* ribbon_TN@3x.png in Resources */,
-				8212BBB71EA92A26009E66EC /* diploma_TN.png in Resources */,
 				82E3DE651E831BD10008F600 /* cat-fries.png in Resources */,
 				829A79FB1EBB8E7E005D4938 /* flamingo_TN@3x.png in Resources */,
 				F2D44C5E1EDF66C300492DE5 /* hotrod_car_TN@2x.png in Resources */,
