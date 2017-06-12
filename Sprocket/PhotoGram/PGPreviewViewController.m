@@ -914,6 +914,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             dispatch_group_leave(watermarkGroup);
         };
         
+        gestureView.editedImage = [gestureView screenshotImage];
         if (processor) {
             NSLog(@"WATERMARK - WILL PROCESS IMAGE");
             
@@ -929,7 +930,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                              }
                          }];
         } else {
-            gestureView.editedImage = [gestureView screenshotImage];
             block(gestureView.editedImage);
         }
     }
