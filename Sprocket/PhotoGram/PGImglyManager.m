@@ -628,8 +628,6 @@ int const kCustomButtonTag = 9999;
     if (event == IMGLYAnalyticsEventNameFrameSelect) {
         if ([attributes[IMGLYAnalyticsEventAttributeNameFrame] isKindOfClass:[IMGLYFrame class]]) {
             self.selectedFrame = ((IMGLYFrame *)attributes[IMGLYAnalyticsEventAttributeNameFrame]).accessibilityLabel;
-        } else {
-            self.selectedFrame = @"No Frame";
         }
     }
     
