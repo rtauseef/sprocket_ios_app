@@ -5033,6 +5033,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				929CCE031EEF459F00039377 /* July4 */,
 				F2D44CD11EE0CD7100492DE5 /* Custom */,
 				F2D44B071EDF3AC800492DE5 /* FathersDay */,
 				829A7AA21EBBC485005D4938 /* Cannes */,
@@ -5601,6 +5602,13 @@
 				8263D7CF1E7867670036E903 /* PGSavePhotos.m */,
 			);
 			name = Preview;
+			sourceTree = "<group>";
+		};
+		929CCE031EEF459F00039377 /* July4 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = July4;
 			sourceTree = "<group>";
 		};
 		CCED9C5819F972E100ACC969 /* Web View */ = {
