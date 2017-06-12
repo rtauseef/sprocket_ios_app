@@ -18,6 +18,7 @@
 #import <imglyKit/IMGLYAnalyticsConstants.h>
 
 static NSString * const kImglyMenuItemMagic = @"Magic";
+static NSString * const kImglyMenuItemAdjust = @"Adjust";
 static NSString * const kImglyMenuItemFilter = @"Filter";
 static NSString * const kImglyMenuItemFrame = @"Frame";
 static NSString * const kImglyMenuItemSticker = @"Sticker";
@@ -71,6 +72,10 @@ int const kCustomButtonTag = 9999;
                                                                        }
                                                                         state:nil];
 
+    IMGLYBoxedMenuItem *adjustItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemAdjust
+                                                                          icon:[UIImage imageNamed:@"ic_adjust_48pt"]
+                                                                          tool:[[IMGLYAdjustToolController alloc] initWithConfiguration:configuration]];
+
     IMGLYBoxedMenuItem *filterItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFilter
                                                                           icon:[UIImage imageNamed:@"ic_filter_48pt"]
                                                                           tool:[[IMGLYFilterToolController alloc] initWithConfiguration:configuration]];
@@ -93,6 +98,7 @@ int const kCustomButtonTag = 9999;
 
     return @[
              magicItem,
+             adjustItem,
              filterItem,
              frameItem,
              stickerItem,
@@ -229,6 +235,11 @@ int const kCustomButtonTag = 9999;
             photoEditorBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"editor-tool-screen"];
 
             photoEditorBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"editor-tool-apply-btn"];
+            
+            photoEditorBuilder.discardConfirmationClosure = ^(IMGLYPhotoEditViewController * _Nonnull photoEditViewController, void (^ _Nonnull closure)(void)) {
+                [embellishmentMetricsManager clearAllEmbellishmentMetrics];
+                [photoEditViewController dismissViewControllerAnimated:YES completion:nil];
+            };
 
             PGEmbellishmentMetric *autofixMetric = [[PGEmbellishmentMetric alloc] initWithName:@"Auto-fix" andCategoryType:PGEmbellishmentCategoryTypeEdit];
 
@@ -248,6 +259,9 @@ int const kCustomButtonTag = 9999;
                         cell.imageView.highlighted = YES;
                     }
 
+                } else if ([item.title isEqualToString:kImglyMenuItemAdjust]) {
+                    cell.accessibilityIdentifier = @"editAdjust";
+                    
                 } else if ([item.title isEqualToString:kImglyMenuItemFilter]) {
                     cell.accessibilityIdentifier = @"editFilters";
 
@@ -277,6 +291,40 @@ int const kCustomButtonTag = 9999;
 
         }];
 
+        // Adjust configuration
+        
+        [builder configureAdjustToolController:^(IMGLYAdjustToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"adjust-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"adjust-tool-apply-btn"];
+            
+            toolBuilder.allowedAdjustToolsAsNSNumbers = @[[NSNumber numberWithInteger:AdjustToolBrightness],
+                                                          [NSNumber numberWithInteger:AdjustToolContrast],
+                                                          [NSNumber numberWithInteger:AdjustToolSaturation]];
+
+            toolBuilder.sliderConfigurationClosure = ^(IMGLYSlider * _Nonnull slider) {
+                slider.filledTrackColor = [UIColor HPBlueColor];
+                slider.thumbTintColor = [UIColor HPBlueColor];
+            };
+            
+            toolBuilder.adjustToolButtonConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum AdjustTool tool) {
+                cell.captionLabel.text = nil;
+            };
+            
+            toolBuilder.sliderChangedValueClosure = ^(IMGLYSlider * _Nonnull slider, enum AdjustTool tool) {
+                NSArray <NSString *> *names = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
+                
+                NSString *name = @"Unrecognized";
+                if (tool < names.count) {
+                    name = names[tool];
+                }
+                
+                PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
+                
+                if (![embellishmentMetricsManager hasEmbellishmentMetric:adjustMetric]) {
+                    [embellishmentMetricsManager addEmbellishmentMetric:adjustMetric];
+                }
+            };
+        }];
 
         // Filters configuration
 
@@ -385,7 +433,6 @@ int const kCustomButtonTag = 9999;
                 PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:sticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
                 [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
-
         }];
 
         [builder configureStickerColorToolController:^(IMGLYStickerColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
