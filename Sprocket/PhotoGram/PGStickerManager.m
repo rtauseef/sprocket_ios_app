@@ -53,6 +53,12 @@
     fathersDayCategory.accessibilityLabel = @"Father's Day Category";
 
 
+    NSArray<IMGLYSticker *> *julyStickers = [self July4Stickers];
+    IMGLYStickerCategory *julyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                            imageURL:julyStickers[1].thumbnailURL
+                                                                            stickers:julyStickers];
+    julyCategory.accessibilityLabel = @"July 4th Category";
+
     NSMutableArray<IMGLYSticker *> *summerStickers = [NSMutableArray arrayWithArray:[self summerCategoryStickers]];
     if ([NSLocale isChinese]) {
         //Removing plane sticker from chinese because it contains english words on it.
@@ -63,15 +69,6 @@
                                                                               imageURL:summerStickers[1].thumbnailURL
                                                                               stickers:summerStickers];
     summerCategory.accessibilityLabel = @"Summer Category";
-
-
-    NSArray<IMGLYSticker *> *graduationStickers = [self graduationCategoryStickers];
-
-    IMGLYStickerCategory *graduationCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                  imageURL:graduationStickers[1].thumbnailURL
-                                                                                  stickers:graduationStickers];
-    graduationCategory.accessibilityLabel = @"Graduation Category";
-
 
     NSArray<IMGLYSticker *> *faceStickers = [self faceCategoryStickers];
     IMGLYStickerCategory *faceCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
@@ -128,7 +125,7 @@
 
     addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
 
-    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, fathersDayCategory, summerCategory, graduationCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, fathersDayCategory, julyCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
 
     NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
     if (customStickers.count > 0) {
