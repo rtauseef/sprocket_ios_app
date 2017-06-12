@@ -106,7 +106,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         sharedInstance.interfaceOptions = [[MPInterfaceOptions alloc] init];
         sharedInstance.printPaperDelegate = nil;
         sharedInstance.uniqueDeviceIdPerApp = kMPDefaultUniqueDeviceIdPerApp;
-        sharedInstance.minimumSprocketBatteryLevelForUpgrade = 75;
+        sharedInstance.minimumSprocketBatteryLevelForUpgrade = 50;
     });
     
     return sharedInstance;
