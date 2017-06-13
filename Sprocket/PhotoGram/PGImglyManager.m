@@ -340,9 +340,18 @@ int const kCustomButtonTag = 9999;
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
                 self.stickerCategoryDataSource = dataSource;
-                dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
 
-                [self reloadStickers];
+                dataSource.stickerCategoriesChangedClosure = ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSIndexPath *path = [NSIndexPath indexPathForItem:1 inSection:0];
+
+                        UICollectionView *collectionView = self.stickerCategoryDataSource.collectionView;
+                        [collectionView selectItemAtIndexPath:path animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+                        [collectionView.delegate collectionView:collectionView didSelectItemAtIndexPath:path];
+                    });
+                };
+
+                dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
             };
 
             toolBuilder.stickerCategoryButtonConfigurationClosure = ^(IMGLYIconBorderedCollectionViewCell * _Nonnull cell, IMGLYStickerCategory * _Nonnull category) {
@@ -372,12 +381,14 @@ int const kCustomButtonTag = 9999;
                                               options:NSRegularExpressionCaseInsensitive
                                               error:&error];
 
-                [regex enumerateMatchesInString:sticker.accessibilityLabel
-                                        options:0
-                                          range:NSMakeRange(0, [sticker.accessibilityLabel length])
-                                     usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-                    [self configureCustomStickerView:cell];
-                }];
+                if (sticker.accessibilityLabel) {
+                    [regex enumerateMatchesInString:sticker.accessibilityLabel
+                                            options:0
+                                              range:NSMakeRange(0, [sticker.accessibilityLabel length])
+                                         usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+                        [self configureCustomStickerView:cell];
+                    }];
+                }
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
@@ -681,26 +692,12 @@ int const kCustomButtonTag = 9999;
     [[PGCustomStickerManager sharedInstance] presentCameraFromViewController:self.photoEditViewController];
 }
 
-- (void)reloadStickers
-{
-    self.stickerCategoryDataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UICollectionView *collectionView = self.stickerCategoryDataSource.collectionView;
-        NSIndexPath *path = [NSIndexPath indexPathForItem:1 inSection:0];
-        [collectionView reloadData];
-        [collectionView selectItemAtIndexPath:path animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-        [collectionView.delegate collectionView:collectionView didSelectItemAtIndexPath:path];
-    });
-    
-    
-}
-
 
 #pragma mark - Notifications
 
 - (void)handleStickerChangedNotification:(NSNotification *)notfication
 {
-    [self reloadStickers];
+    self.stickerCategoryDataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
 }
 
 @end
