@@ -56,9 +56,10 @@ int const kCustomButtonTag = 9999;
         dispatch_once(&onceToken, ^{
             NSURL *licenseURL = [[NSBundle mainBundle] URLForResource:@"imgly_license" withExtension:@""];
             [PESDK unlockWithLicenseAt:licenseURL];
-            _adjustNames = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
         });
         
+        self.adjustNames = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStickerChangedNotification:) name:kPGImglyManagerStickersChangedNotification object:nil];
     }
 
