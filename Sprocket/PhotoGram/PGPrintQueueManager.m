@@ -129,7 +129,12 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                                       preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *connectPrinterAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect Printer", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self showConnectPrinterAdvisoryAlert];
+        [[PGAnalyticsManager sharedManager] trackConnectPrinter];
+        [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
+            if (!error) {
+                [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+            }
+        }];
     }];
     
     [alertController addAction:connectPrinterAction];
@@ -146,27 +151,6 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                      handler:nil];
     [alertController addAction:okAction];
 
-    [self.viewController presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)showConnectPrinterAdvisoryAlert
-{
-    [[PGAnalyticsManager sharedManager] trackConnectPrinter];
-
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Connect Printer", nil)
-                                                                             message:NSLocalizedString(@"Power on your printer, then select it from the Accessory list. Allow up to 30 seconds for printer to appear.", nil)
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
-            if (!error) {
-                [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
-            }
-        }];
-    }];
-    
-    [alertController addAction:okAction];
-    
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
