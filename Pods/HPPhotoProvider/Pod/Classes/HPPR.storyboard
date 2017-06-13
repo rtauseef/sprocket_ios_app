@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KDP-Ka-xEI">
-                                <rect key="frame" x="0.0" y="5" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="5" width="375" height="642"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="5YY-vT-LSc">
                                     <size key="itemSize" width="98" height="98"/>
@@ -261,7 +261,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NaS-UR-KSc" id="Ilx-zy-FSg">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCx-vM-oe9" userLabel="Cover Photo Image View">
@@ -431,7 +431,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRFlickrLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="cLo-O4-i6G" userLabel="Flickr Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3g-kr-9iG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3g-kr-9iG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -505,7 +505,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRInstagramLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="d1M-ws-WX4" userLabel="Instagram Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PU6-hx-jyi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="PU6-hx-jyi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -635,7 +635,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRSelectAlbumTableViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NnT-dj-EWd" userLabel="Album Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GxV-vi-yaa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GxV-vi-yaa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -654,7 +654,7 @@
                 <navigationController storyboardIdentifier="HPPRSelectPhotoCollectionViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Esc-vT-OmA" userLabel="Select Photo Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cYo-OJ-2To"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hcp-yD-yrr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hcp-yD-yrr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -672,7 +672,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hwc-ES-QRS" userLabel="Google Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2QO-0F-x1I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2QO-0F-x1I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -696,6 +696,6 @@
         <image name="Loading_Image.png" width="13" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zTR-FW-LIN"/>
+        <segue reference="ti8-Zn-FSC"/>
     </inferredMetricsTieBreakers>
 </document>

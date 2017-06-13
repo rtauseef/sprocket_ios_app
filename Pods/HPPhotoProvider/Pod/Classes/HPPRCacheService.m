@@ -17,7 +17,11 @@ NSString * const kCacheServiceAssetPrefix = @"assets-library://";
 NSString * const kCacheServiceThumbnailSuffix = @"thumbnail";
 NSString * const kCacheServiceErrorDomain = @"HPPRCacheService";
 NSString * const kCacheServiceErrorURLKey = @"url";
-int const kCacheServiceErrorNoData = 100;
+
+typedef NS_ENUM(NSInteger, kCacheServiceError) {
+    kCacheServiceErrorNoData = 100,
+    kCacheServiceErrorInvalidParameters = 101
+};
 
 @interface HPPRCacheService()
 
@@ -56,6 +60,9 @@ int const kCacheServiceErrorNoData = 100;
 - (void)imageForUrl:(NSString *)url asThumbnail:(BOOL)thumbnail withCompletion:(void(^)(UIImage *image, NSString *url, NSError *error))completion
 {
     if (!url) {
+        if (completion) {
+            completion(nil, url, [NSError errorWithDomain:kCacheServiceErrorDomain code:kCacheServiceErrorInvalidParameters userInfo:nil]);
+        }
         return;
     }
     

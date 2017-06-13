@@ -56,9 +56,11 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                                                       options:requestOptions
                                                 resultHandler:^void(UIImage *image, NSDictionary *info) {
                                                     self.thumbnailImage = image;
-                                                    completion(self.thumbnailImage);
+                                                    if (completion) {
+                                                        completion(self.thumbnailImage);
+                                                    }
                                                 }];
-    } else {
+    } else if (completion) {
         completion(self.thumbnailImage);
     }
 }
@@ -81,10 +83,12 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                                                                               ![info[PHImageResultIsDegradedKey] boolValue] ) {
                                                                               self.lastImageRequestID = 0;
                                                                               self.previewImage = image;
-                                                                              completion(self.previewImage);
+                                                                              if (completion) {
+                                                                                  completion(self.previewImage);
+                                                                              }
                                                                           }
                                                                       }];
-    } else {
+    } else if (completion) {
         completion(self.previewImage);
     }
 }
@@ -103,8 +107,8 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                                                   contentMode:PHImageContentModeDefault
                                                       options:requestOptions
                                                 resultHandler:^void(UIImage *image, NSDictionary *info) {
-                                                    if (image) {
-                                                        self.image = image;
+                                                    self.image = image;
+                                                    if (completion) {
                                                         completion(self.image);
                                                     }
                                                 }];
@@ -122,7 +126,7 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
             // shutter speed formula: http://www.media.mit.edu/pia/Research/deepview/exif.html
             self.shutterSpeed = [NSString stringWithFormat:@"1/%.0f", pow(2,[shutterSpeed floatValue])];
         }];
-    } else {
+    } else if (completion) {
         completion(self.image);
     }
 }
