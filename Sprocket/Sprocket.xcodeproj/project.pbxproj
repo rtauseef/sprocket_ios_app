@@ -5058,6 +5058,7 @@
 		82362A1A1D5955450019F024 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				929CD1C51EF056A800039377 /* AnimalsBugs */,
 				929CCE031EEF459F00039377 /* July4 */,
 				F2D44CD11EE0CD7100492DE5 /* Custom */,
 				F2D44B071EDF3AC800492DE5 /* FathersDay */,
@@ -5825,6 +5826,13 @@
 				929CD1041EEF59FA00039377 /* july_watermelon.png */,
 			);
 			name = July4;
+			sourceTree = "<group>";
+		};
+		929CD1C51EF056A800039377 /* AnimalsBugs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AnimalsBugs;
 			sourceTree = "<group>";
 		};
 		CCED9C5819F972E100ACC969 /* Web View */ = {
