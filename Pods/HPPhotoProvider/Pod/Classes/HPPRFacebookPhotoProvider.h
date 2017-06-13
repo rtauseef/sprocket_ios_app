@@ -14,14 +14,6 @@
 #import <UIKit/UIKit.h>
 #import "HPPRSelectPhotoProvider.h"
 
-@protocol HPPRFacebookPhotoProviderDelegate <NSObject>
-
-@optional
-- (NSDate *) fbFilterContentByDate;
-- (void) fbRequestPhotoComplete:(int) count;
-
-@end
-
 @interface HPPRFacebookPhotoProvider : HPPRSelectPhotoProvider
 
 @property (strong, nonatomic) NSDictionary *user;
@@ -30,14 +22,13 @@
 
 - (void)photoByID:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion;
 - (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *userInfo, NSError *error))completion;
+- (void)photoForDayInDate:(NSDate *) date withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion;
 
 - (NSString *)urlForPhoto:(NSDictionary *)photoInfo withHeight:(NSUInteger)height;
 - (NSString *)urlForSmallestPhoto:(NSDictionary *)photoInfo;
 - (NSString *)urlForLargestPhoto:(NSDictionary *)photoInfo;
 - (NSString *)urlForVideoPhoto:(NSDictionary *)photoInfo;
 - (NSString *)urlForVideoThumbnail:(NSDictionary *)photoInfo;
-
-@property (weak, nonatomic) id<HPPRFacebookPhotoProviderDelegate> fbDelegate;
 
 @end
 

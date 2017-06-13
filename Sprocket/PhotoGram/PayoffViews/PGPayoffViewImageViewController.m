@@ -16,19 +16,21 @@
 #import "PGPayoffFullScreenTmpViewController.h"
 #import <MapKit/MapKit.h>
 #import "HPPRCameraRollMedia.h"
-#import "HPPRFacebookPhotoProvider.h"
+#import "HPPRFacebookFilteredPhotoProvider.h"
 #import "UIButton+AFNetworking.h"
-#import "HPPRInstagramPhotoProvider.h"
+#import "HPPRInstagramFilteredPhotoProvider.h"
+#import "HPPRFacebookLoginProvider.h"
+#import "HPPRInstagramLoginProvider.h"
 
-@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate, HPPRFacebookPhotoProviderDelegate, HPPRInstagramPhotoProviderDelegate>
+@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate, HPPRFacebookFilteredPhotoProviderDelegate, HPPRInstagramFilteredPhotoProviderDelegate>
 
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *fbPhotoCollectionViewController;
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *instagramPhotoCollectionViewController;
 
 @property (strong, nonatomic) HPPRCameraRollPartialPhotoProvider *cameraRollProvider;
-@property (strong, nonatomic) HPPRFacebookPhotoProvider *facebookProvider;
-@property (strong, nonatomic) HPPRInstagramPhotoProvider *instagramProvider;
+@property (strong, nonatomic) HPPRFacebookFilteredPhotoProvider *facebookProvider;
+@property (strong, nonatomic) HPPRInstagramFilteredPhotoProvider *instagramProvider;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) NSDate* filteringDate;
@@ -43,14 +45,16 @@
 @property (assign, nonatomic) BOOL hasFacebookContent;
 @property (assign, nonatomic) BOOL hasInstagramContent;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorSocial;
+
 - (IBAction)clickImageBlock:(id)sender;
 
 @end
 
 #define kPayoffBottomMargin 20
 #define kPayoffViewInset 60
-#define kPGLocationDistance 1000 // 1km
-#define kInstagramMaxImagesSearch 1000
+#define kPGLocationDistance 5000 // 5km
+#define kInstagramMaxImagesSearch 300
 
 #define kPayoffFBLabelTag 101
 #define kPayoffInstagramLabelTag 102
@@ -96,72 +100,15 @@
     self.mapView.hidden = YES;
     self.blockImageButton.hidden = YES;
     
-    if (self.filteringDate) {
-        self.facebookProvider = [[HPPRFacebookPhotoProvider alloc] init];
-        self.facebookProvider.fbDelegate = self;
-        self.fbPhotoCollectionViewController.provider = self.facebookProvider;
-        [self.fbPhotoCollectionViewController refresh];
-        
-        self.instagramProvider = [[HPPRInstagramPhotoProvider alloc] init];
-        self.instagramProvider.instagramDelegate = self;
-        self.instagramPhotoCollectionViewController.provider = self.instagramProvider;
-        [self.instagramPhotoCollectionViewController refresh];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.cameraRollProvider populateImagesForSameDayAsDate:self.filteringDate];
-            [self cameraRollProviderUpdateDone];
-        });
-         
-        if (self.metadata && self.metadata.created) {
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setLocalizedDateFormatFromTemplate:@"MMM d, yyyy"];
-            self.viewTitle = [NSString stringWithFormat:@"Photos from %@",[formatter stringFromDate:self.metadata.created]];
-        } else {
-            self.viewTitle = NSLocalizedString(@"Photos taken on the same day", nil);
-        }
-    } else if (self.filteringLocation) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.cameraRollProvider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
-            [self cameraRollProviderUpdateDone];
-        });
-
-        if (self.metadata &&self.metadata.location && CLLocationCoordinate2DIsValid(self.metadata.location.geo)) {
-            CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.metadata.location.geo.latitude longitude:self.metadata.location.geo.longitude];
-            
-            if (!self.geocoder)
-                self.geocoder = [[CLGeocoder alloc] init];
-            
-            [self.geocoder reverseGeocodeLocation:loc completionHandler:
-             ^(NSArray* placemarks, NSError* error){
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     if (!error && placemarks && [placemarks count] > 0)
-                     {
-                         CLPlacemark *_placemark = [placemarks firstObject];
-                         
-                         NSString *name = _placemark.name;
-                         if (_placemark.thoroughfare == nil) {
-                             self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
-                         } else if (_placemark.thoroughfare != nil && [name rangeOfString:_placemark.thoroughfare].location == NSNotFound) {
-                             self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
-                         } else {
-                             [self updateViewTitleLocally];
-                         }
-                     } else {
-                         [self updateViewTitleLocally];
-                     }
-                     
-                     [self.parentVc updateCurrentViewLabel:self.viewTitle forView:self];
-                 });
-             }];
-        } else {
-            [self updateViewTitleLocally];
-        }
-    }
-    
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTap:)];
     [recognizer setNumberOfTapsRequired:1];
     self.scrollView.userInteractionEnabled = YES;
     [self.scrollView addGestureRecognizer:recognizer];
+    
+    self.activityIndicatorSocial = [[UIActivityIndicatorView alloc] init];
+    [self.activityIndicatorSocial setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+    [self.activityIndicatorSocial setHidden:YES];
+    [self.mainView addSubview:self.activityIndicatorSocial];
 }
 
 
@@ -179,25 +126,29 @@
 
 - (void) facebookUpdateDone: (int) count {
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSLog(@"Payoff -- facebook: %d",count);
+        self.hasFacebookContent = YES;
+      
         if (count > 0) {
-            self.hasFacebookContent = YES;
             self.fbPhotoCollectionViewController.view.hidden = NO;
-            [self fixScrollViewSize];
-        } else {
-            // remove spinner, etc.
         }
+        
+        [self fixScrollViewSize];
     });
 }
 
 - (void) instagramUpdateDone: (int) count {
     dispatch_async(dispatch_get_main_queue(), ^{
+
+        NSLog(@"Payoff -- instagram: %d",count);
+        self.hasInstagramContent = YES;
+        
         if (count > 0) {
-            self.hasInstagramContent = YES;
             self.instagramPhotoCollectionViewController.view.hidden = NO;
-            [self fixScrollViewSize];
-        } else {
-            // remove spinner, etc.
         }
+        
+        [self fixScrollViewSize];
     });
 }
 
@@ -266,6 +217,9 @@
         
         if (![self.mainView viewWithTag:kPayoffFBLabelTag]) {
             [self.mainView addSubview:facebookLabel];
+        } else {
+            UILabel *label = [self.mainView viewWithTag:kPayoffFBLabelTag];
+            label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
         }
         
         calculatedSize.height += fbLabelFrame.size.height;
@@ -286,6 +240,9 @@
         
         if (![self.mainView viewWithTag:kPayoffInstagramLabelTag]) {
             [self.mainView addSubview:instLabel];
+        } else {
+            UILabel *label = [self.mainView viewWithTag:kPayoffInstagramLabelTag];
+            label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
         }
         
         calculatedSize.height += instLabelFrame.size.height;
@@ -296,16 +253,27 @@
         calculatedSize.height += kPayoffBottomMargin;
     }
     
+    if ((!_hasFacebookContent || !_hasInstagramContent) && self.photoCollectionViewController.view.hidden == NO) {
+        // add spinner
+        CGRect frame =  CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 20);
+        [self.activityIndicatorSocial setFrame:frame];
+        [self.activityIndicatorSocial startAnimating];
+        
+        calculatedSize.height += frame.size.height;
+        calculatedSize.height += kPayoffBottomMargin;
+        
+        self.activityIndicatorSocial.hidden = NO;
+    } else {
+        [self.activityIndicatorSocial stopAnimating];
+        self.activityIndicatorSocial.hidden = YES;
+    }
+    
     CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, self.mainView.frame.origin.y + calculatedSize.height);
     self.scrollView.contentSize = totalScrollSize;
-    
-    NSLog(@"Total scroll size now is %lf",totalScrollSize.height);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    [self fixScrollViewSize];
     
     if (self.blockImageButton.hidden && self.filteringDate != nil) {
         
@@ -330,7 +298,7 @@
             //TODO: handle URI...
             [self.blockImageButton setHidden:NO];
         }
-    } else if (self.blockImageButton.hidden && self.filteringLocation != nil) {
+    } else if (self.blockImageButton.hidden && self.filteringLocation != nil && self.mapView.hidden) {
         CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.metadata.location.geo.latitude longitude:self.metadata.location.geo.longitude];
         
         CLLocationCoordinate2D center = self.metadata.location.geo;
@@ -350,6 +318,101 @@
         [self.tmpViewController.view removeFromSuperview];
         self.tmpViewController = nil;
     }
+    
+    if (self.facebookProvider || self.instagramProvider) {
+        return;
+    }
+
+    [[HPPRFacebookLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            if (self.filteringDate) {
+                self.facebookProvider = [[HPPRFacebookFilteredPhotoProvider alloc] initWithMode:HPPRFacebookFilteredPhotoProviderModeDate];
+                self.facebookProvider.fbDelegate = self;
+                self.fbPhotoCollectionViewController.provider = self.facebookProvider;
+                [self.fbPhotoCollectionViewController refresh];
+            } else if (self.filteringLocation) {
+                self.facebookProvider = [[HPPRFacebookFilteredPhotoProvider alloc] initWithMode:HPPRFacebookFilteredPhotoProviderModeLocation];
+                self.facebookProvider.fbDelegate = self;
+                self.fbPhotoCollectionViewController.provider = self.facebookProvider;
+                [self.fbPhotoCollectionViewController refresh];
+            }
+        } else {
+            self.hasFacebookContent = YES;
+            [self fixScrollViewSize];
+        }
+    }];
+    
+    [[HPPRInstagramLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            if (self.filteringDate) {
+                self.instagramProvider = [[HPPRInstagramFilteredPhotoProvider alloc] initWithMode:HPPRInstagramFilteredPhotoProviderModeDate];
+                self.instagramProvider.instagramDelegate = self;
+                self.instagramPhotoCollectionViewController.provider = self.instagramProvider;
+                [self.instagramPhotoCollectionViewController refresh];
+            } else if (self.filteringLocation) {
+                self.instagramProvider = [[HPPRInstagramFilteredPhotoProvider alloc] initWithMode:HPPRInstagramFilteredPhotoProviderModeLocation];
+                self.instagramProvider.instagramDelegate = self;
+                self.instagramPhotoCollectionViewController.provider = self.instagramProvider;
+                [self.instagramPhotoCollectionViewController refresh];
+            }
+        } else {
+            self.hasInstagramContent = YES;
+            [self fixScrollViewSize];
+        }
+    }];
+    
+    if (self.filteringDate) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.cameraRollProvider populateImagesForSameDayAsDate:self.filteringDate];
+            [self cameraRollProviderUpdateDone];
+        });
+        
+        if (self.metadata && self.metadata.created) {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setLocalizedDateFormatFromTemplate:@"MMM d, yyyy"];
+            self.viewTitle = [NSString stringWithFormat:@"Photos from %@",[formatter stringFromDate:self.metadata.created]];
+        } else {
+            self.viewTitle = NSLocalizedString(@"Photos taken on the same day", nil);
+        }
+    } else if (self.filteringLocation) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.cameraRollProvider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
+            [self cameraRollProviderUpdateDone];
+        });
+        
+        if (self.metadata &&self.metadata.location && CLLocationCoordinate2DIsValid(self.metadata.location.geo)) {
+            CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.metadata.location.geo.latitude longitude:self.metadata.location.geo.longitude];
+            
+            if (!self.geocoder)
+                self.geocoder = [[CLGeocoder alloc] init];
+            
+            [self.geocoder reverseGeocodeLocation:loc completionHandler:
+             ^(NSArray* placemarks, NSError* error){
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (!error && placemarks && [placemarks count] > 0)
+                     {
+                         CLPlacemark *_placemark = [placemarks firstObject];
+                         
+                         NSString *name = _placemark.name;
+                         if (_placemark.thoroughfare == nil) {
+                             self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
+                         } else if (_placemark.thoroughfare != nil && [name rangeOfString:_placemark.thoroughfare].location == NSNotFound) {
+                             self.viewTitle = [NSString stringWithFormat:@"Photos near %@",name];
+                         } else {
+                             [self updateViewTitleLocally];
+                         }
+                     } else {
+                         [self updateViewTitleLocally];
+                     }
+                     
+                     [self.parentVc updateCurrentViewLabel:self.viewTitle forView:self];
+                 });
+             }];
+        } else {
+            [self updateViewTitleLocally];
+        }
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -455,6 +518,14 @@
     [self facebookUpdateDone:count];
 }
 
+- (CLLocation *)fbFilterContentByLocation {
+    return self.filteringLocation;
+}
+
+- (int)fbDistanceForLocationFilter {
+    return kPGLocationDistance;
+}
+
 #pragma mark Instagram provider delegate
 
 - (NSDate *) instagramFilterContentByDate {
@@ -468,5 +539,14 @@
 - (int)instagramMaxSearchDepth {
     return kInstagramMaxImagesSearch;
 }
+
+- (CLLocation *)instagramFilterContentByLocation {
+    return self.filteringLocation;
+}
+
+- (int)instagramDistanceForLocationFilter {
+    return kPGLocationDistance;
+}
+
 
 @end

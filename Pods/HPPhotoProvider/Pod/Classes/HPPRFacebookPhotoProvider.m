@@ -23,7 +23,6 @@
 #define FACEBOOK_ERROR_DOMAIN @"com.facebook.sdk"
 #define ALBUM_NOT_FOUND_ERROR_CODE 5
 
-
 @interface HPPRFacebookPhotoProvider() <HPPRLoginProviderDelegate>
 
 @property (strong, nonatomic) NSString *maxPhotoID;
@@ -196,7 +195,7 @@
     if (self.album.videoOnly) {
         [self requestVideosWithCompletion:completion andReloadAll:reload];
     } else {
-    
+        
         void (^block)() = ^(NSDictionary *photoInfo, NSError *error) {
             NSArray *records = nil;
             NSArray * photos = nil;
@@ -227,16 +226,10 @@
                 completion(records);
             }
             
-            if ([self.fbDelegate respondsToSelector:@selector(fbRequestPhotoComplete:)]) {
-                [self.fbDelegate fbRequestPhotoComplete:photos == nil ? 0 : (int) [photos count]];
-            }
+
         };
         
-        if (self.fbDelegate && [self.fbDelegate respondsToSelector:@selector(fbFilterContentByDate)] && self.fbDelegate.fbFilterContentByDate != nil) {
-            [self photoForDayInDate:self.fbDelegate.fbFilterContentByDate  withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
-        } else {
-            [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
-        }
+        [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
     }
 }
 

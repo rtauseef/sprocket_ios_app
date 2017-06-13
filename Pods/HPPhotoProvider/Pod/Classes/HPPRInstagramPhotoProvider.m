@@ -38,7 +38,6 @@ enum MCInstagramDisplayType {
 @property (strong, nonatomic) UIImage *userImage;
 @property enum MCInstagramDisplayType displayType;
 @property (strong, nonatomic) NSString *nextPageImagesMaxId;
-@property (assign, nonatomic) int totalRecordsCount;
 
 @end
 
@@ -65,7 +64,6 @@ enum MCInstagramDisplayType {
 {
     self = [super init];
     if (self) {
-        self.totalRecordsCount = 0;
         self.displayVideos = [[HPPR sharedInstance] showVideos]; // default to not show videos
     }
     return self;
@@ -250,28 +248,8 @@ enum MCInstagramDisplayType {
             records = instagramPage[@"records"];
             NSUInteger imageCount = records.count;
             
-            self.totalRecordsCount += (int) records.count;
-            
             if (records != nil) {
                 weakSelf.nextPageImagesMaxId = [instagramPage valueForKeyPath:@"pagination.next_max_id"];
-                
-                BOOL passedDate = NO;
-                
-                if ([self filterDateMode]) {
-                    NSDate *filterDate = self.instagramDelegate.instagramFilterContentByDate;
-                    
-                    HPPRMedia *lastRecord = [records lastObject];
-                    
-                    if (lastRecord) {
-                        if ([[lastRecord createdTime] earlierDate:filterDate] == [lastRecord createdTime]) {
-                            
-                            // already passed
-                            passedDate = YES;
-                        }
-                    }
-                    
-                    records = [self filterRecordsForDate:filterDate andRecords:records];
-                }
                 
                 if (reload) {
                     imageCount = [weakSelf replaceImagesWithRecords:records];
@@ -280,11 +258,7 @@ enum MCInstagramDisplayType {
                 }
                 
                 // Note: To make sure we have enough photos to fullfil the entire collection view for having scroll we need to recursevily call the request images until we get that number or there are no more pics in the account.
-                
-                if (([self filterDateMode] && self.totalRecordsCount > [self.instagramDelegate instagramMaxSearchDepth]) || passedDate) {
-                    [weakSelf clearRequestBusy];
-                    last = YES;
-                 } else if (imageCount < [weakSelf imagesPerScreen] && weakSelf.nextPageImagesMaxId != nil) {
+                if (imageCount < [weakSelf imagesPerScreen] && weakSelf.nextPageImagesMaxId != nil) {
                     [weakSelf clearRequestBusy];
                     last = NO;
                     [weakSelf requestImagesWithCompletion:completion andReloadAll:NO lastRequestOfTheChain:YES];
@@ -293,13 +267,7 @@ enum MCInstagramDisplayType {
         }
         
         if (last && completion) {
-            self.totalRecordsCount = 0;
-            
             completion(records);
-            
-            if ([self.instagramDelegate respondsToSelector:@selector(instagramRequestPhotoComplete:)]) {
-                [self.instagramDelegate instagramRequestPhotoComplete: (int) self.imageCount];
-            }
         }
         
         [weakSelf clearRequestBusy];
@@ -315,16 +283,26 @@ enum MCInstagramDisplayType {
     }
 }
 
-- (BOOL) filterDateMode {
-    return self.instagramDelegate && [self.instagramDelegate respondsToSelector:@selector(instagramFilterContentByDate)] && self.instagramDelegate.instagramFilterContentByDate != nil && [self.instagramDelegate respondsToSelector:@selector(instagramMaxSearchDepth)];
-}
-
 - (NSArray *) filterRecordsForDate:(NSDate *) filterDate andRecords:(NSArray *) records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
     for(HPPRMedia *instagramMedia in records) {
         if ([[NSCalendar currentCalendar] isDate:filterDate inSameDayAsDate:instagramMedia.createdTime]) {
             [updatedRecords addObject:instagramMedia];
+        }
+    }
+    
+    return updatedRecords;
+}
+
+- (NSArray *) filterRecordsForLocation:(CLLocation *) filterLocation distance: (int) distance andRecords:(NSArray *) records {
+    NSMutableArray *updatedRecords = [NSMutableArray array];
+    
+    for(HPPRMedia *instagramMedia in records) {
+        if (instagramMedia.location != nil) {
+            if ([instagramMedia.location distanceFromLocation:filterLocation] <= distance) {
+                [updatedRecords addObject:instagramMedia];
+            }
         }
     }
     
