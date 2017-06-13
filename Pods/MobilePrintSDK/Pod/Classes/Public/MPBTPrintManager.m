@@ -83,6 +83,9 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     
     if (self.queueSize > 0 && self.status == MPBTPrinterManagerStatusEmptyQueue) {
         self.status = MPBTPrinterManagerStatusIdle;
+        
+        [self.checkTimer invalidate];
+        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkPrinterStatus) userInfo:nil repeats:YES];
     }
 
     return YES;
