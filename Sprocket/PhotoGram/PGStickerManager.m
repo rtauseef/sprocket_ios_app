@@ -129,7 +129,7 @@
             [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
         }
 
-        categories = [NSMutableArray arrayWithArray:@[addCustomCategory, fathersDayCategory, julyCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
+        [categories insertObject:julyCategory atIndex:2];
     }
     
     NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
