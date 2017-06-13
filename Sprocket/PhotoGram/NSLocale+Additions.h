@@ -21,6 +21,7 @@
 + (BOOL)isEnglish;
 + (BOOL)isNorthAmerica;
 + (BOOL)isAustralia;
++ (BOOL)isUnitedStates;
 + (BOOL)isSurveyAvailable;
 + (BOOL)isTwitterSupportAvailable;
 + (BOOL)isFBMessengerSupportAvailable;
