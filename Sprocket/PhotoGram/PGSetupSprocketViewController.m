@@ -39,6 +39,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [PGSetupSprocketViewController setStepOneLabelText:self.step1LoadPaper];
     [PGSetupSprocketViewController setStepTwoLabelText:self.step2PowerUp];
     [PGSetupSprocketViewController setStepThreeLabelText:self.step3Connect];

@@ -41,12 +41,13 @@
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
-NSInteger const kMantaErrorNoError = 0;
-NSInteger const kMantaErrorBusy = 1;
-NSInteger const kMantaErrorPaperJam = 2;
-NSInteger const kMantaErrorPaperEmpty = 3;
-NSInteger const kMantaErrorPaperMismatch = 4;
-NSInteger const kMantaErrorCoverOpen = 6;
+NSInteger const kMantaErrorNoError          = 0x00;
+NSInteger const kMantaErrorBusy             = 0x01;
+NSInteger const kMantaErrorPaperJam         = 0x02;
+NSInteger const kMantaErrorPaperEmpty       = 0x03;
+NSInteger const kMantaErrorPaperMismatch    = 0x04;
+NSInteger const kMantaErrorCoverOpen        = 0x06;
+NSInteger const kMantaErrorNoSession        = 0xFF00;
 
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
@@ -503,17 +504,17 @@ NSInteger const kMantaErrorCoverOpen = 6;
     }
     
     [self.displayedErrors addObject:error];
-
-    BOOL shouldDisplayFullMessage = errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
     
     NSString *errorMessage;
-    if (shouldDisplayFullMessage) {
+    BOOL shouldShowQueueMessage = errorCode == kMantaErrorNoSession || errorCode == kMantaErrorBusy || errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    if (shouldShowQueueMessage) {
         NSString *printsInQueue;
-        if (printManager.queueSize <= 0) {
+        long queueSizeNotInProgress = printManager.queueSize - 1;
+        if (queueSizeNotInProgress <= 0) {
             printsInQueue = NSLocalizedString(@"1 in progress", @"Message presented when some error occurred while printing an image");
         } else {
             NSString *format = NSLocalizedString(@"1 in progress, %li in Print Queue", @"Message presented when some error occurred while printing an image and there are other images in the print queue");
-            printsInQueue = [NSString stringWithFormat:format, (long)printManager.queueSize];
+            printsInQueue = [NSString stringWithFormat:format, queueSizeNotInProgress];
         }
         
         errorMessage = [NSString stringWithFormat:@"%@\n\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
@@ -525,7 +526,8 @@ NSInteger const kMantaErrorCoverOpen = 6;
                                                           message:errorMessage
                                                    preferredStyle:UIAlertControllerStyleAlert];
 
-    if (shouldDisplayFullMessage) {
+    BOOL shouldShowPauseResumeButtons = errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    if (shouldShowPauseResumeButtons) {
         UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {

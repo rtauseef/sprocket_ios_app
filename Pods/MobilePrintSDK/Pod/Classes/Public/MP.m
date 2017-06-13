@@ -106,7 +106,7 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         sharedInstance.interfaceOptions = [[MPInterfaceOptions alloc] init];
         sharedInstance.printPaperDelegate = nil;
         sharedInstance.uniqueDeviceIdPerApp = kMPDefaultUniqueDeviceIdPerApp;
-        sharedInstance.minimumSprocketBatteryLevelForUpgrade = 75;
+        sharedInstance.minimumSprocketBatteryLevelForUpgrade = 50;
     });
     
     return sharedInstance;
@@ -474,6 +474,10 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     }
 }
 
+- (void)presentBluetoothDevicePickerWithCompletion:(void (^)(NSError *))completion {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'HP sprocket'"];
+    [[EAAccessoryManager sharedAccessoryManager] showBluetoothAccessoryPickerWithNameFilter:predicate completion:completion];
+}
 
 #pragma mark - Setter methods
 

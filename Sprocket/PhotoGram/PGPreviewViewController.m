@@ -138,6 +138,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.drawer.showCopies = NO;
+        self.drawer.alwaysShowPrintQueue = YES;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
 
     } else {
@@ -443,23 +444,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                                                                    message:NSLocalizedString(@"Your prints will start when the sprocket printer is on and bluetooth connected.", nil)
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
+    UIAlertAction *connectPrinterAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect Printer", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self peekDrawerAnimated:YES];
+        [self showConnectPrinterAdvisoryAlert];
+    }];
+    
+    [alert addAction:connectPrinterAction];
+    
     UIAlertAction *printQueueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Queue", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
         [self peekDrawerAnimated:YES];
     }];
     
     [alert addAction:printQueueAction];
-    
-    UIAlertAction *printHelpAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print Help", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self peekDrawerAnimated:YES];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-        PGSetupSprocketViewController *setupViewController = (PGSetupSprocketViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGSetupSprocketViewController"];
-        [setupViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [setupViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-        [self presentViewController:setupViewController animated:YES completion:nil];
-    }];
-    
-    [alert addAction:printHelpAction];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self peekDrawerAnimated:YES];
@@ -470,10 +467,34 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self presentViewController:alert animated:YES completion:completion];
 }
 
+- (void)showConnectPrinterAdvisoryAlert
+{
+    [[PGAnalyticsManager sharedManager] trackConnectPrinter];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Connect Printer", nil)
+                                                                   message:NSLocalizedString(@"Power on your printer, then select it from the Accessory list. Allow up to 30 seconds for printer to appear.", nil)
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
+            if (!error) {
+                [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+            }
+        }];
+    }];
+    
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
 {
+    if (self.drawer.isOpened || self.drawer.isPeeking) {
+        [self.drawer configureShowPrintQueue];
+    }
+
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
 
     if (animated) {
@@ -481,9 +502,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [self reloadCarouselItems];
         } completion:^(BOOL finished) {
             [self reloadCarouselItemsAndEditedImage];
+            if (!self.drawer.isOpened) {
+                [self.drawer configureShowPrintQueue];
+            }
         }];
     } else {
         [self reloadCarouselItemsAndEditedImage];
+        if (!self.drawer.isOpened) {
+            [self.drawer configureShowPrintQueue];
+        }
     }
 }
 
@@ -504,7 +531,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (!self.drawer.isOpened && !self.drawer.isPeeking) {
         return;
     }
-    
+
     self.drawer.isOpened = NO;
     self.drawer.isPeeking = NO;
     self.wasDrawerOpenedByUser = NO;
@@ -517,7 +544,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (self.drawer.isOpened) {
         return;
     }
-    
+
     self.drawer.isOpened = YES;
     self.drawer.isPeeking = NO;
 
@@ -887,6 +914,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             dispatch_group_leave(watermarkGroup);
         };
         
+        gestureView.editedImage = [gestureView screenshotImage];
         if (processor) {
             NSLog(@"WATERMARK - WILL PROCESS IMAGE");
             

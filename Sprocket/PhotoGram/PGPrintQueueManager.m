@@ -12,6 +12,7 @@
 
 #import "PGPrintQueueManager.h"
 #import "PGInAppMessageManager.h"
+#import "PGAnalyticsManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -127,18 +128,45 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    [alertController addAction:okAction];
-
+    UIAlertAction *connectPrinterAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Connect Printer", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self showConnectPrinterAdvisoryAlert];
+    }];
+    
+    [alertController addAction:connectPrinterAction];
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:nil];
+    [alertController addAction:okAction];
 
+    [self.viewController presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showConnectPrinterAdvisoryAlert
+{
+    [[PGAnalyticsManager sharedManager] trackConnectPrinter];
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Connect Printer", nil)
+                                                                             message:NSLocalizedString(@"Power on your printer, then select it from the Accessory list. Allow up to 30 seconds for printer to appear.", nil)
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [[MP sharedInstance] presentBluetoothDevicePickerWithCompletion:^(NSError *error) {
+            if (!error) {
+                [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+            }
+        }];
+    }];
+    
+    [alertController addAction:okAction];
+    
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -161,11 +189,13 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    [alertController addAction:okAction];
+    
+    UIAlertAction *printAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print", nil)
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * _Nonnull action) {
+                                                            [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+                                                        }];
+    [alertController addAction:printAction];
 
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
@@ -173,13 +203,11 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
-    UIAlertAction *printAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print", nil)
-                                                          style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * _Nonnull action) {
-                                                            [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
-                                                        }];
-    [alertController addAction:printAction];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:nil];
+    [alertController addAction:okAction];
 
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
@@ -190,17 +218,24 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    [alertController addAction:okAction];
-
+    UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", nil)
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * _Nonnull action) {
+                                                            [[MPBTPrintManager sharedInstance] pausePrintQueue];
+                                                        }];
+    [alertController addAction:pauseAction];
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:nil];
+    [alertController addAction:okAction];
 
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
