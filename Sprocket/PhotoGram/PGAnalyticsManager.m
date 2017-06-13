@@ -156,10 +156,6 @@ NSString * const kEventSideBarMenuBuyPaperAction    = @"Buy Paper";
 NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
 
-NSString * const kEventConnectPrinterCategory = @"Connect Printer";
-NSString * const kEventConnectPrinterLabel = @"Preview Screen";
-NSString * const kEventConnectPrinterAction = @"Connected";
-
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
 NSString * const kPhotoCollectionViewModeGrid = @"Grid";
@@ -346,11 +342,6 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackOpenBuyPaper
 {
     [self trackEvent:kEventSideBarMenuCategory action:kEventSideBarMenuBuyPaperAction label:nil value:nil];
-}
-
-- (void)trackConnectPrinter
-{
-    [self trackEvent:kEventConnectPrinterCategory action:kEventConnectPrinterAction label:kEventConnectPrinterLabel value:nil];
 }
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId
