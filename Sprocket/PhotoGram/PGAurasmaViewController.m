@@ -6,26 +6,44 @@
 //  Copyright © 2017 HP. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
 #import <AurasmaSDK/AurasmaSDK.h>
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
 #import "PGAurasmaViewController.h"
 #import "PGAurasmaTrackingViewDelegate.h"
+#import "PGAurasmaScreenshotViewController.h"
+#import "PGAurasmaRecordingViewController.h"
 
 #import "PGAurasmaGlobalContext.h"
 
-@interface PGAurasmaViewController () <AURTrackingControllerDelegate>
+#define MAX_RECODING_DURATION 10.0f
+
+@interface PGAurasmaViewController () <AURTrackingControllerDelegate,
+                                        PGAurasmaRecordingViewControllerDelegate,
+                                        PGAurasmaScreenshotViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 
 @end
 
 @implementation PGAurasmaViewController {
+    
+    __weak IBOutlet UIButton *_closeButton;
+    __weak IBOutlet UIButton *_torchButton;
+    __weak IBOutlet UIButton *_screenshotButton;
+    __weak IBOutlet UIButton *_stopButton;
+    __weak IBOutlet UIButton *_recordButton;
+    __weak IBOutlet UIProgressView *_progressBar;
+
+@private
     AURContext *_aurasmaContext;
+    AURSocialService *_socialService;
     AURTrackingController *_aurasmaTrackingController;
     id <PGAurasmaTrackingViewDelegate> _closingDelegate;
     AURView *_trackingView;
     NSString *_trackingAuraId; // id of the last aura to start tracking
+    NSTimer *_recordingTimer;
 }
 
 - (void)dealloc {
@@ -63,6 +81,7 @@
     
     [self.view insertSubview:_trackingView atIndex:0];
     
+    _socialService = [AURSocialService getServiceWithContext:_aurasmaContext];
 }
 
 - (void)setClosingDelegate:(id <PGAurasmaTrackingViewDelegate>)closingDelegate {
@@ -87,6 +106,111 @@
     [self setupButtons];
 }
 
+- (IBAction)screenshotButtonPressed:(id)sender {
+    _screenshotButton.userInteractionEnabled = NO;
+    
+    [_trackingView createScreenshotWithCallback:^(NSError *error, AURScreenshotImage *result) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                NSLog(@"Screenshot error: %@", error);
+                _screenshotButton.userInteractionEnabled = YES;
+            }
+            else {
+                PGAurasmaScreenshotViewController *aurasmaScreenshotViewController = [[PGAurasmaScreenshotViewController alloc] initWithNibName:@"PGAurasmaScreenshotViewController" bundle:nil];
+                aurasmaScreenshotViewController.image = result;
+                aurasmaScreenshotViewController.screenshotDelegate = self;
+                aurasmaScreenshotViewController.socialService = _socialService;
+                [self presentViewController:aurasmaScreenshotViewController animated:YES completion:nil];
+            }
+        });
+    }];
+}
+
+- (IBAction)recordButtonPressed:(id)sender {
+    
+    _progressBar.hidden = NO;
+    _progressBar.progress = 0.0f;
+    
+    _recordingTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                       target:self
+                                                     selector:@selector(updateRecordingProgress:)
+                                                     userInfo:nil
+                                                      repeats:YES];
+    
+    [self observeValueForKeyPath:@"state" ofObject:_aurasmaTrackingController change:nil context:NULL];
+    __weak id weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _screenshotButton.hidden = YES;
+        _recordButton.hidden = YES;
+        [_trackingView startRecordingWithCallback:^(NSError *error, NSURL *fileUrl) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf recordingDidFinishWithFile:(NSURL *)fileUrl andError:(NSError *)error];
+            });
+        }];
+        
+    });
+    
+    
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+}
+
+- (void)updateRecordingProgress:(NSTimer *)timer {
+    
+    _screenshotButton.hidden = YES;
+    _recordButton.hidden = YES;
+    
+    _stopButton.hidden = NO;
+    _progressBar.progress += 1.0f / MAX_RECODING_DURATION;
+    
+    if (_progressBar.progress >= 1.0f) {
+        [_trackingView stopRecording];
+    }
+    
+}
+- (IBAction)stopButtonPressed:(id)sender {
+    [_trackingView stopRecording];
+    self->_stopButton.hidden = YES;
+}
+
+
+
+- (void)recordingDidFinishWithFile:(NSURL *)fileUrl andError:(NSError *)error {
+    [_recordingTimer invalidate];
+    _recordingTimer = nil;
+    _screenshotButton.highlighted = NO;
+    _progressBar.hidden = YES;
+    [self observeValueForKeyPath:@"state" ofObject:_aurasmaTrackingController change:nil context:NULL];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    if (!error && !self.presentedViewController) {
+        PGAurasmaRecordingViewController *aurasmaRecordingViewController = [[PGAurasmaRecordingViewController alloc] initWithNibName:@"PGAurasmaRecordingViewController" bundle:nil];
+        aurasmaRecordingViewController.fileUrl = fileUrl;
+        aurasmaRecordingViewController.recordingDelegate = self;
+        [self presentViewController:aurasmaRecordingViewController animated:YES completion:nil];
+        return;
+    }
+    
+    if (error) {
+        NSLog(@"Failed to record Aura %@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:NSLocalizedString(@"Failed to record Aura", @"")
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    if (fileUrl) {
+        [[NSFileManager defaultManager] removeItemAtURL:fileUrl error:nil];
+    }
+    self->_stopButton.hidden = YES;
+}
+
+
 - (void)setupButtons
 {
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -98,6 +222,12 @@
         NSString *imageName = device.torchMode == AVCaptureTorchModeOff ? @"cameraFlashOff" : @"cameraFlashOn";
         [self.flashButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     }
+}
+
+- (void)setupRecordingButtons:(BOOL)recording {
+    _screenshotButton.hidden = recording;
+    _recordButton.hidden = recording;
+    [_trackingView setNeedsDisplay];
 }
 
 /*
@@ -117,47 +247,13 @@
 - (void)auraStarted:(NSString *)auraId {
     _trackingAuraId = auraId;
     
-    
-//    [_socialService auraLikesForId:auraId withOptions:nil andCallback:^(NSError *getLikesError, AURLikeInfo *result) {
-//        if (getLikesError) {
-//            return;
-//        }
-//        else {
-//            if (_aurasmaTrackingController.state != AURTrackingState_Tracking) {
-//                //stopped tracking
-//                return;
-//            }
-//            dispatch_async( dispatch_get_main_queue(), ^{
-//                _likeButton.selected = result.byUser;
-//                _likeButton.userInteractionEnabled = !result.byUser;
-//                _likeButton.hidden = NO;
-//            });
-//        }
-//    }];
-//    
-//    /* Get some more information about the Aura before logging */
-//    [_queryService auraWithId:auraId options:nil andCallback:^(NSError *error, AURAura *result) {
-//        if (error) {
-//            [_logConsole logMessage:[NSString stringWithFormat:@"auraStarted: %@\n", auraId]];
-//        }
-//        else {
-//            [_logConsole logMessage:[NSString stringWithFormat:@"auraStarted: %@ with name: %@\n", result.auraId, result.name]];
-//        }
-//    }];
+    NSLog(@"auraStarted: %@\n", auraId);
 }
 
 - (void)auraFinished:(NSString *)auraId {
     _trackingAuraId = nil;
     
-//    /* Get some more information about the Aura before logging */
-//    [_queryService auraWithId:auraId options:nil andCallback:^(NSError *error, AURAura *result) {
-//        if (error) {
-//            [_logConsole logMessage:[NSString stringWithFormat:@"auraFinished: %@\n", auraId]];
-//        }
-//        else {
-//            [_logConsole logMessage:[NSString stringWithFormat:@"auraFinished: %@ with name: %@\n", result.auraId, result.name]];
-//        }
-//    }];
+    NSLog(@"auraFinished: %@\n", auraId);
 }
 
 
@@ -178,28 +274,62 @@
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+    
+    
 }
 
 #pragma mark Helper functions
 
 - (void)respondToStateChange:(NSNumber *)stateValue {
+    
+    BOOL recording = _recordingTimer != nil;
     AURTrackingState state = (AURTrackingState) [stateValue unsignedIntValue];
     switch (state) {
         case AURTrackingState_Idle:
         case AURTrackingState_Detecting:
-//            _screenshotButton.hidden = YES;
-//            _likeButton.hidden = YES;
-//            _recordButton.hidden = YES;
+            _screenshotButton.hidden = YES;
+            _recordButton.hidden = YES;
+            _torchButton.hidden = NO;
+            _closeButton.hidden = NO;
+            _stopButton.hidden = YES;
+            
             break;
         case AURTrackingState_Tracking:
-        case AURTrackingState_Fullscreen:
         case AURTrackingState_Detached:
-//            _screenshotButton.hidden = NO;
-            // _likeButton waits until state is known
-//            _recordButton.hidden = NO;
+            [self setupRecordingButtons:recording];
+            _torchButton.hidden = YES;
+            _closeButton.hidden = recording;
+            _stopButton.hidden = YES;
+            
+            break;
+            
+        case AURTrackingState_Fullscreen:
+            
+            [self setupRecordingButtons:recording];
+            
+            _stopButton.hidden = YES;
+            _torchButton.hidden = YES;
+            _closeButton.hidden = YES;
+            
             break;
     }
 }
 
+#pragma mark PGAurasmaRecordingViewControllerDelegate
+
+- (void)closeRecordingViewController:(PGAurasmaRecordingViewController *)controller {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [_aurasmaTrackingController resume];
+    }];
+}
+
+#pragma mark PGAurasmaScreenshotViewControllerDelegate
+
+- (void)closeScreenshotViewController:(PGAurasmaScreenshotViewController *)controller {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [_aurasmaTrackingController resume];
+    }];
+    _screenshotButton.userInteractionEnabled = YES;
+}
 
 @end

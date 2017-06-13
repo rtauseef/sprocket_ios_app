@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGAurasmaScreenshotViewController">
+            <connections>
+                <outlet property="_activityIndicatorView" destination="izF-b3-Aek" id="hLI-4e-OGe"/>
+                <outlet property="_imageView" destination="OAI-3n-HED" id="P6O-iv-69g"/>
+                <outlet property="_popoverViewLocation" destination="i5M-Pr-FkT" id="jAZ-dQ-p1F"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-3n-HED">
+                    <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="izF-b3-Aek">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OAI-3n-HED" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4nQ-fG-kLj"/>
+                <constraint firstItem="OAI-3n-HED" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="7Hh-mm-PVX"/>
+                <constraint firstItem="OAI-3n-HED" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="I8h-1w-Sok"/>
+                <constraint firstItem="izF-b3-Aek" firstAttribute="centerY" secondItem="OAI-3n-HED" secondAttribute="centerY" id="OEf-rF-AJg"/>
+                <constraint firstItem="izF-b3-Aek" firstAttribute="centerX" secondItem="OAI-3n-HED" secondAttribute="centerX" id="Tqd-Ca-YC5"/>
+                <constraint firstItem="OAI-3n-HED" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="muc-ac-8Jn"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
