@@ -22,6 +22,7 @@ static NSString * const kImglyMenuItemAdjust = @"Adjust";
 static NSString * const kImglyMenuItemFilter = @"Filter";
 static NSString * const kImglyMenuItemFrame = @"Frame";
 static NSString * const kImglyMenuItemSticker = @"Sticker";
+static NSString * const kImglyMenuItemBrush = @"Brush";
 static NSString * const kImglyMenuItemText = @"Text";
 static NSString * const kImglyMenuItemCrop = @"Crop";
 
@@ -92,6 +93,10 @@ int const kCustomButtonTag = 9999;
                                                                            icon:[UIImage imageNamed:@"ic_sticker_48pt"]
                                                                            tool:[[IMGLYStickerToolController alloc] initWithConfiguration:configuration]];
 
+    IMGLYBoxedMenuItem *brushItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemBrush
+                                                                        icon:[UIImage imageNamed:@"ic_brush_48pt"]
+                                                                        tool:[[IMGLYBrushToolController alloc] initWithConfiguration:configuration]];
+
     IMGLYBoxedMenuItem *textItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemText
                                                                         icon:[UIImage imageNamed:@"ic_text_48pt"]
                                                                         tool:[[IMGLYTextToolController alloc] initWithConfiguration:configuration]];
@@ -106,6 +111,7 @@ int const kCustomButtonTag = 9999;
              filterItem,
              frameItem,
              stickerItem,
+             brushItem,
              textItem,
              cropItem
              ];
@@ -513,17 +519,11 @@ int const kCustomButtonTag = 9999;
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-options-tool-apply-btn"];
 
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum TextAction action) {
-                UIImage *image;
-
                 if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
                     IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
 
                     itemCell.captionLabel.text = nil;
-
-                    if (image) {
-                        itemCell.imageView.image = image;
-                    }
-
+                    
                 } else if ([cell isKindOfClass:[IMGLYLabelCaptionCollectionViewCell class]]) {
                     IMGLYLabelCaptionCollectionViewCell *itemCell = (IMGLYLabelCaptionCollectionViewCell *) cell;
 
@@ -535,6 +535,39 @@ int const kCustomButtonTag = 9999;
         }];
 
 
+        // Brush configuration
+        
+        [builder configureBrushToolController:^(IMGLYBrushToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"brush-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"brush-tool-apply-btn"];
+            
+            toolBuilder.sliderConfigurationClosure = ^(IMGLYSlider * _Nonnull slider) {
+                slider.filledTrackColor = [UIColor HPBlueColor];
+                slider.thumbTintColor = [UIColor HPBlueColor];
+            };
+            
+            toolBuilder.brushToolButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum BrushTool tool) {
+                IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
+                
+                itemCell.captionLabel.text = nil;
+                
+                if (BrushToolHardness == tool) {
+                    itemCell.imageView.image = [UIImage imageNamed:@"imgly_icon_option_hardness"];
+                    itemCell.imageView.highlightedImage = [UIImage imageNamed:@"imgly_icon_option_hardness_highlighted"];
+                }
+            };
+            
+            toolBuilder.allowedBrushOverlayActionsAsNSNumbers = @[[NSNumber numberWithInteger:BrushOverlayActionDelete]];
+        }];
+        
+        [builder configureBrushColorToolController:^(IMGLYBrushColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"brush-color-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"brush-color-tool-apply-btn"];
+            
+            toolBuilder.brushColorActionButtonConfigurationClosure = self.colorBlock;
+        }];
+
+        
         // Transform/Crop configuration
 
         [builder configureTransformToolController:^(IMGLYTransformToolControllerOptionsBuilder * _Nonnull toolBuilder) {
