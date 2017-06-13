@@ -40,6 +40,8 @@ NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerS
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 @property (strong, nonatomic) IMGLYStickerCategoryDataSource *stickerCategoryDataSource;
 
+@property (strong, nonatomic) NSArray <NSString *> *adjustNames;
+
 @end
 
 @implementation PGImglyManager
@@ -54,6 +56,7 @@ int const kCustomButtonTag = 9999;
         dispatch_once(&onceToken, ^{
             NSURL *licenseURL = [[NSBundle mainBundle] URLForResource:@"imgly_license" withExtension:@""];
             [PESDK unlockWithLicenseAt:licenseURL];
+            _adjustNames = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
         });
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStickerChangedNotification:) name:kPGImglyManagerStickersChangedNotification object:nil];
@@ -311,17 +314,14 @@ int const kCustomButtonTag = 9999;
             };
             
             toolBuilder.sliderChangedValueClosure = ^(IMGLYSlider * _Nonnull slider, enum AdjustTool tool) {
-                NSArray <NSString *> *names = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
-                
-                NSString *name = @"Unrecognized";
-                if (tool < names.count) {
-                    name = names[tool];
-                }
-                
-                PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
-                
-                if (![embellishmentMetricsManager hasEmbellishmentMetric:adjustMetric]) {
-                    [embellishmentMetricsManager addEmbellishmentMetric:adjustMetric];
+                if (tool < self.adjustNames.count) {
+                    NSString *name = self.adjustNames[tool];
+                    
+                    PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
+                    
+                    if (![embellishmentMetricsManager hasEmbellishmentMetric:adjustMetric]) {
+                        [embellishmentMetricsManager addEmbellishmentMetric:adjustMetric];
+                    }
                 }
             };
         }];
@@ -667,6 +667,11 @@ int const kCustomButtonTag = 9999;
             self.selectedFilter = nil;
         } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameFrame) {
             self.selectedFrame = nil;
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameAdjust) {
+            for (NSString *name in self.adjustNames) {
+                PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
+                [self.embellishmentMetricsManager removeEmbellishmentMetric:adjustMetric];
+            }
         }
     }
     
