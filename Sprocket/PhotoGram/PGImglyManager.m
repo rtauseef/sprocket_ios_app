@@ -664,6 +664,11 @@ int const kCustomButtonTag = 9999;
     self.currentScreenName = screenView;
 }
 
+- (PGEmbellishmentMetric *)brushMetric
+{
+    return [[PGEmbellishmentMetric alloc] initWithName:@"Brush" andCategoryType:PGEmbellishmentCategoryTypeEdit];
+}
+
 - (void)logEvent:(IMGLYAnalyticsEventName _Nonnull)event attributes:(NSDictionary<IMGLYAnalyticsEventAttributeName, id> * _Nullable)attributes
 {
     if (event == IMGLYAnalyticsEventNameFilterSelect) {
@@ -691,6 +696,8 @@ int const kCustomButtonTag = 9999;
             if (self.selectedFrame) {
                 [self.embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:self.selectedFrame andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             }
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameBrush) {
+            [self.embellishmentMetricsManager addEmbellishmentMetric:[self brushMetric]];
         }
     }
     
@@ -706,6 +713,8 @@ int const kCustomButtonTag = 9999;
                 PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
                 [self.embellishmentMetricsManager removeEmbellishmentMetric:adjustMetric];
             }
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameBrush) {
+            [self.embellishmentMetricsManager removeEmbellishmentMetric:[self brushMetric]];
         }
     }
     
