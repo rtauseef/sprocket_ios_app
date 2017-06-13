@@ -88,12 +88,14 @@ Scenario: Verify preview -Drawer
     Then I should see "PreviewBardots" button
     Then I tap "PreviewBardots" button
     Then I should see the preview-drawer "slides up"
-    And I should see "Print Queue" with "0" items and a right arrow
+    #requirement change
+    #And I should see "Print Queue" with "0" items and a right arrow
     And I should see "1 Copy" mark with "Increment" button enabled
-    Then I tap "Print Queue" mark
-    Then I verify the "content" of the popup message for "No Prints" 
-    And I should see the button "OK"
-    And I touch "OK"
+    #requirement change
+    #Then I tap "Print Queue" mark
+    #Then I verify the "content" of the popup message for "No Prints" 
+    #And I should see the button "OK"
+    #And I touch "OK"
     Then I tap "Increment" button
     Then I should see the number of copies "incremented"
     Then I tap "Decrement" button
