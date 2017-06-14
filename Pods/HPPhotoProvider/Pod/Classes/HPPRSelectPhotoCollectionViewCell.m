@@ -115,22 +115,34 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     self.contentView.frame = bounds;
 }
 
-- (void)showLoading
+- (void)showLoadingAnimated:(BOOL)animated
 {
-    [self.activityIndicator startAnimating];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
-    }];
+    if (!self.activityIndicator.isAnimating) {
+        [self.activityIndicator startAnimating];
+        if (animated) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
+            }];
+        } else {
+            self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
+        }
+    }
     
     self.userInteractionEnabled = NO;
 }
 
-- (void)hideLoading
+- (void)hideLoadingAnimated:(BOOL)animated
 {
-    [self.activityIndicator stopAnimating];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.overlayView.alpha = 0;
-    }];
+    if (self.activityIndicator.isAnimating) {
+        [self.activityIndicator stopAnimating];
+        if (animated) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.overlayView.alpha = 0;
+            }];
+        } else {
+            self.overlayView.alpha = 0;
+        }
+    }
     
     self.userInteractionEnabled = YES;
 }
