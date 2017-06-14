@@ -54,6 +54,10 @@
 
 
     NSMutableArray<IMGLYSticker *> *summerStickers = [NSMutableArray arrayWithArray:[self summerCategoryStickers]];
+    if ([NSLocale isChinese]) {
+        //Removing plane sticker from chinese because it contains english words on it.
+        [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
+    }
 
     IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                               imageURL:summerStickers[1].thumbnailURL
@@ -120,15 +124,10 @@
     if ([NSLocale isUnitedStates]) {
         NSArray<IMGLYSticker *> *julyStickers = [self July4Stickers];
         IMGLYStickerCategory *julyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                imageURL:julyStickers[6].thumbnailURL
+                                                                                imageURL:julyStickers[9].thumbnailURL
                                                                                 stickers:julyStickers];
         julyCategory.accessibilityLabel = @"July 4th Category";
         
-        if ([NSLocale isChinese]) {
-            //Removing plane sticker from chinese because it contains english words on it.
-            [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
-        }
-
         [categories insertObject:julyCategory atIndex:2];
     }
     
