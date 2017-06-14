@@ -54,6 +54,10 @@
 
 
     NSMutableArray<IMGLYSticker *> *summerStickers = [NSMutableArray arrayWithArray:[self summerCategoryStickers]];
+    if ([NSLocale isChinese]) {
+        //Removing plane sticker from chinese because it contains english words on it.
+        [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
+    }
 
     IMGLYStickerCategory *summerCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                               imageURL:summerStickers[1].thumbnailURL
@@ -120,15 +124,10 @@
     if ([NSLocale isUnitedStates]) {
         NSArray<IMGLYSticker *> *julyStickers = [self July4Stickers];
         IMGLYStickerCategory *julyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                imageURL:julyStickers[6].thumbnailURL
+                                                                                imageURL:julyStickers[9].thumbnailURL
                                                                                 stickers:julyStickers];
         julyCategory.accessibilityLabel = @"July 4th Category";
         
-        if ([NSLocale isChinese]) {
-            //Removing plane sticker from chinese because it contains english words on it.
-            [summerStickers removeObjectsAtIndexes:[NSIndexSet indexSetWithIndex:35]];
-        }
-
         [categories insertObject:julyCategory atIndex:2];
     }
     
@@ -487,12 +486,16 @@
     return @[
              [[PGStickerItem alloc] initWithName:@"July Uncle Sam Hat" imageName:@"july_uncle_sam_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Uncle Sam Doodle" imageName:@"july_uncle_sam_hat_doodle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"July Uncle Sam Hat AB" imageName:@"AB_test_UncleSam_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Crown" imageName:@"july_liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Crown Doodle" imageName:@"july_liberty_crown_doodle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"July Crown AB" imageName:@"AB_test_Liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Glasses" imageName:@"july_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Patriotic Glasses" imageName:@"july_patriotic_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"July Glasses AB" imageName:@"AB_test_PatrioticAviators" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Flag" imageName:@"july_flag" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Flag Doodle" imageName:@"july_us_flag_doodle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"July Flag AB" imageName:@"AB_test_AmericanFlag" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Uncle Sam" imageName:@"july_uncle_sam" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Torch" imageName:@"july_liberty_torch" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Star Glasses" imageName:@"july_glasses_more" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
