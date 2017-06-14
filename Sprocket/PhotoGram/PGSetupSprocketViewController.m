@@ -74,7 +74,7 @@
 + (void)setStepOneLabelText:(PGAttributedLabel *)label
 {
     NSString *stepOne = NSLocalizedString(@"Step 1", @"Setup step 1 title");
-    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Load Paper", @"Setup step 1 desc")];
+    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Slide Lid Back & Load Paper", @"Setup step 1 desc")];
 
     [PGSetupSprocketViewController setupStepLabel:label step:stepOne desc:stepOneDesc];
 }
