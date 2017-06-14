@@ -490,7 +490,7 @@
              [[PGStickerItem alloc] initWithName:@"July Uncle Sam Hat AB" imageName:@"AB_test_UncleSam_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Crown" imageName:@"july_liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Crown Doodle" imageName:@"july_liberty_crown_doodle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Crown AB" imageName:@"AB_test_liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"July Crown AB" imageName:@"AB_test_Liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Glasses" imageName:@"july_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Patriotic Glasses" imageName:@"july_patriotic_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Glasses AB" imageName:@"AB_test_PatrioticAviators" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
