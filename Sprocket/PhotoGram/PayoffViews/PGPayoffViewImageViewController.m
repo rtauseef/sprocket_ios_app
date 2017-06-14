@@ -47,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *blockImageButton;
 @property (strong, nonatomic) PHAsset *localAsset;
+@property (assign, nonatomic) BOOL hasLocalContent;
 @property (assign, nonatomic) BOOL hasFacebookContent;
 @property (assign, nonatomic) BOOL hasInstagramContent;
 @property (assign, nonatomic) BOOL hasGoogleContent;
@@ -75,6 +76,7 @@
     self.hasFacebookContent = NO;
     self.hasInstagramContent = NO;
     self.hasGoogleContent = NO;
+    self.hasLocalContent = NO;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
 
@@ -173,7 +175,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.photoCollectionViewController refresh];
         [self.activityIndicator stopAnimating];
-        self.photoCollectionViewController.view.hidden = NO;
+        
+        self.hasLocalContent = YES;
         
         if (self.view.window != nil) {
             [self fixScrollViewSize];
@@ -247,10 +250,12 @@
         [self.photoCollectionViewController.view setFrame:frame];
         calculatedSize.height += photosSize.height;
         calculatedSize.height += kPayoffBottomMargin;
+        
+        self.photoCollectionViewController.view.hidden = NO;
     }
     
     
-    if ((!_hasFacebookContent || !_hasInstagramContent || !_hasGoogleContent) && self.photoCollectionViewController.view.hidden == NO) {
+    if ((!_hasFacebookContent || !_hasInstagramContent || !_hasGoogleContent) && _hasLocalContent) {
         // add spinner
         CGRect frame =  CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 20);
         [self.activityIndicatorSocial setFrame:frame];
@@ -350,8 +355,9 @@
     
     if (self.blockImageButton.hidden && self.filteringDate != nil) {
         
-        if (self.metadata.source.from == PGMetarSourceFromLocal) {
-            NSString *localId = self.metadata.source.identifier;
+        NSString *localId = self.metadata.source.identifier;
+        
+        if (self.metadata.source.from == PGMetarSourceFromLocal && localId) {
             PHFetchResult * assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localId] options:nil];
             
             if ([assets count] > 0) {
