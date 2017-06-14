@@ -52,6 +52,10 @@
     return @[
              [[PGFrameItem alloc] initWithName:@"Hearts Overlay" imageName:@"HeartsOverlayFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Sloppy" imageName:@"SloppyFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"4th Stars Overlay" imageName:@"4thStarsOverlayFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Fireworks" imageName:@"FireworksFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Stripes RWB" imageName:@"StripesRWBFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Stripes RWB Pol" imageName:@"StripesRWBPolFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Rainbow" imageName:@"RainbowFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"White" imageName:@"WhiteFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Stars Overlay" imageName:@"StarsOverlayFrame" andPackageName:nil],
