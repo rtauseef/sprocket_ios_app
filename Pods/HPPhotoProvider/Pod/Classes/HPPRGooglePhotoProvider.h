@@ -16,6 +16,10 @@
 
 @interface HPPRGooglePhotoProvider : HPPRSelectPhotoProvider
 
+- (void)photosForAlbum:(NSString *)albumID withPaging:(NSString *)startIndex andCompletion:(void (^)(NSArray *items, NSError *error))completion;
+
 + (HPPRGooglePhotoProvider *)sharedInstance;
+
+@property (nonatomic, strong) NSMutableArray *currentItems;
 
 @end

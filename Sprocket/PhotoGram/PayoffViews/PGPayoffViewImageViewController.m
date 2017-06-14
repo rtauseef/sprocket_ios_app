@@ -21,16 +21,21 @@
 #import "HPPRInstagramFilteredPhotoProvider.h"
 #import "HPPRFacebookLoginProvider.h"
 #import "HPPRInstagramLoginProvider.h"
+#import "HPPRGoogleFilteredPhotoProvider.h"
+#import "HPPRGoogleLoginProvider.h"
+#import "AFImageDownloader.h"
 
-@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate, HPPRFacebookFilteredPhotoProviderDelegate, HPPRInstagramFilteredPhotoProviderDelegate>
+@interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate, HPPRFacebookFilteredPhotoProviderDelegate, HPPRInstagramFilteredPhotoProviderDelegate, HPPRGoogleFilteredPhotoProviderDelegate>
 
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *photoCollectionViewController;
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *fbPhotoCollectionViewController;
 @property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *instagramPhotoCollectionViewController;
+@property (strong, nonatomic) HPPRSelectPhotoCollectionViewController *googlePhotoCollectionViewController;
 
 @property (strong, nonatomic) HPPRCameraRollPartialPhotoProvider *cameraRollProvider;
 @property (strong, nonatomic) HPPRFacebookFilteredPhotoProvider *facebookProvider;
 @property (strong, nonatomic) HPPRInstagramFilteredPhotoProvider *instagramProvider;
+@property (strong, nonatomic) HPPRGoogleFilteredPhotoProvider *googleProvider;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) NSDate* filteringDate;
@@ -44,6 +49,7 @@
 @property (strong, nonatomic) PHAsset *localAsset;
 @property (assign, nonatomic) BOOL hasFacebookContent;
 @property (assign, nonatomic) BOOL hasInstagramContent;
+@property (assign, nonatomic) BOOL hasGoogleContent;
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorSocial;
 
@@ -58,6 +64,7 @@
 
 #define kPayoffFBLabelTag 101
 #define kPayoffInstagramLabelTag 102
+#define kPayoffGoogleLabelTag 103
 
 @implementation PGPayoffViewImageViewController
 
@@ -67,6 +74,7 @@
     
     self.hasFacebookContent = NO;
     self.hasInstagramContent = NO;
+    self.hasGoogleContent = NO;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HPPR" bundle:nil];
 
@@ -90,9 +98,16 @@
     self.instagramPhotoCollectionViewController.view.hidden = YES;
     self.instagramPhotoCollectionViewController.collectionView.scrollEnabled = NO;
     
+    self.googlePhotoCollectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HPPRSelectPhotoCollectionViewController"];
+    self.googlePhotoCollectionViewController.delegate = self;
+    [self.googlePhotoCollectionViewController setEdgesForExtendedLayout:UIRectEdgeNone];
+    self.googlePhotoCollectionViewController.view.hidden = YES;
+    self.googlePhotoCollectionViewController.collectionView.scrollEnabled = NO;
+    
     [self.mainView addSubview:self.photoCollectionViewController.view];
     [self.mainView addSubview:self.fbPhotoCollectionViewController.view];
     [self.mainView addSubview:self.instagramPhotoCollectionViewController.view];
+    [self.mainView addSubview:self.googlePhotoCollectionViewController.view];
     
     self.viewTitle = [NSString string];
     [self.activityIndicator startAnimating];
@@ -129,10 +144,6 @@
         
         NSLog(@"Payoff -- facebook: %d",count);
         self.hasFacebookContent = YES;
-      
-        if (count > 0) {
-            self.fbPhotoCollectionViewController.view.hidden = NO;
-        }
         
         [self fixScrollViewSize];
     });
@@ -144,9 +155,15 @@
         NSLog(@"Payoff -- instagram: %d",count);
         self.hasInstagramContent = YES;
         
-        if (count > 0) {
-            self.instagramPhotoCollectionViewController.view.hidden = NO;
-        }
+        [self fixScrollViewSize];
+    });
+}
+
+- (void) googleUpdateDone: (int) count {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        NSLog(@"Payoff -- google: %d",count);
+        self.hasGoogleContent = YES;
         
         [self fixScrollViewSize];
     });
@@ -169,17 +186,27 @@
 {
     double newCropWidth, newCropHeight;
     
-    newCropWidth = image.size.width;
-    newCropHeight = image.size.width/size.width*size.height;
+    float imageWidth = image.size.width * image.scale;
+    float imageHeight = image.size.height * image.scale;
     
+    newCropWidth = imageWidth;
+    newCropHeight = imageWidth/size.width*size.height;
     
-    double x = image.size.width/2.0 - newCropWidth/2.0;
-    double y = image.size.height/2.0 - newCropHeight/2.0;
+    double x = imageWidth/2.0 - newCropWidth/2.0;
+    double y = imageHeight/2.0 - newCropHeight/2.0;
     
     CGRect cropRect = CGRectMake(x, y, newCropWidth, newCropHeight);
     CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
     
     UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+    
+    if (cropped.size.width < size.width || cropped.size.height < size.height) {
+         UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        [cropped drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        cropped = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    
     CGImageRelease(imageRef);
     
     return cropped;
@@ -187,19 +214,34 @@
 
 - (void) fixScrollViewSize {
     // force content size calculation
-    [self.photoCollectionViewController.collectionView reloadData];
-    [self.photoCollectionViewController.collectionView layoutIfNeeded];
-    [self.fbPhotoCollectionViewController.collectionView reloadData];
-    [self.fbPhotoCollectionViewController.collectionView layoutIfNeeded];
-    [self.instagramPhotoCollectionViewController.collectionView reloadData];
-    [self.instagramPhotoCollectionViewController.collectionView layoutIfNeeded];
     
+    //if (self.photoCollectionViewController.view.hidden) {
+        [self.photoCollectionViewController.collectionView reloadData];
+        [self.photoCollectionViewController.collectionView layoutIfNeeded];
+    //}
+    
+    //if (self.fbPhotoCollectionViewController.view.hidden) {
+        [self.fbPhotoCollectionViewController.collectionView reloadData];
+        [self.fbPhotoCollectionViewController.collectionView layoutIfNeeded];
+    //}
+    
+    //if (self.instagramPhotoCollectionViewController.view.hidden) {
+        [self.instagramPhotoCollectionViewController.collectionView reloadData];
+        [self.instagramPhotoCollectionViewController.collectionView layoutIfNeeded];
+    //}
+    
+    //if (self.googlePhotoCollectionViewController.view.hidden) {
+        [self.googlePhotoCollectionViewController.collectionView reloadData];
+        [self.googlePhotoCollectionViewController.collectionView layoutIfNeeded];
+    //}
     
     CGSize instagramSize = self.instagramPhotoCollectionViewController.collectionView.contentSize;
     CGSize fbSize = self.fbPhotoCollectionViewController.collectionView.contentSize;
     CGSize photosSize = self.photoCollectionViewController.collectionView.contentSize;
-    CGSize calculatedSize = CGSizeMake(fbSize.width+photosSize.width, 0);
-
+    CGSize googleSize = self.googlePhotoCollectionViewController.collectionView.contentSize;
+ 
+    CGSize calculatedSize = CGSizeMake(photosSize.width, 0);
+    
     if (photosSize.height > 0) {
         CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, photosSize.height);
         [self.photoCollectionViewController.view setFrame:frame];
@@ -207,53 +249,8 @@
         calculatedSize.height += kPayoffBottomMargin;
     }
     
-    if (fbSize.height > 0 && self.hasFacebookContent) {
-        CGRect fbLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-        UILabel *facebookLabel = [[UILabel alloc] initWithFrame:fbLabelFrame];
-        [facebookLabel setTag:kPayoffFBLabelTag];
-        
-        [facebookLabel setText:@"Facebook Photos"];
-        [facebookLabel setTextColor:[UIColor whiteColor]];
-        
-        if (![self.mainView viewWithTag:kPayoffFBLabelTag]) {
-            [self.mainView addSubview:facebookLabel];
-        } else {
-            UILabel *label = [self.mainView viewWithTag:kPayoffFBLabelTag];
-            label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-        }
-        
-        calculatedSize.height += fbLabelFrame.size.height;
-        
-        CGRect fbFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, fbSize.height);
-        [self.fbPhotoCollectionViewController.view setFrame:fbFrame];
-        calculatedSize.height += fbSize.height;
-        calculatedSize.height += kPayoffBottomMargin;
-    }
     
-    if (instagramSize.height > 0 && self.hasInstagramContent) {
-        CGRect instLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-        UILabel *instLabel = [[UILabel alloc] initWithFrame:instLabelFrame];
-        [instLabel setTag:kPayoffInstagramLabelTag];
-        
-        [instLabel setText:@"Instagram Photos"];
-        [instLabel setTextColor:[UIColor whiteColor]];
-        
-        if (![self.mainView viewWithTag:kPayoffInstagramLabelTag]) {
-            [self.mainView addSubview:instLabel];
-        } else {
-            UILabel *label = [self.mainView viewWithTag:kPayoffInstagramLabelTag];
-            label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-        }
-        
-        calculatedSize.height += instLabelFrame.size.height;
-        
-        CGRect instFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, instagramSize.height);
-        [self.instagramPhotoCollectionViewController.view setFrame:instFrame];
-        calculatedSize.height += instagramSize.height;
-        calculatedSize.height += kPayoffBottomMargin;
-    }
-    
-    if ((!_hasFacebookContent || !_hasInstagramContent) && self.photoCollectionViewController.view.hidden == NO) {
+    if ((!_hasFacebookContent || !_hasInstagramContent || !_hasGoogleContent) && self.photoCollectionViewController.view.hidden == NO) {
         // add spinner
         CGRect frame =  CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 20);
         [self.activityIndicatorSocial setFrame:frame];
@@ -266,6 +263,82 @@
     } else {
         [self.activityIndicatorSocial stopAnimating];
         self.activityIndicatorSocial.hidden = YES;
+    
+    
+        if (fbSize.height > 0 && self.hasFacebookContent) {
+            CGRect fbLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+            UILabel *facebookLabel = [[UILabel alloc] initWithFrame:fbLabelFrame];
+            [facebookLabel setTag:kPayoffFBLabelTag];
+            
+            [facebookLabel setText:@"Facebook Photos"];
+            [facebookLabel setTextColor:[UIColor whiteColor]];
+            
+            if (![self.mainView viewWithTag:kPayoffFBLabelTag]) {
+                [self.mainView addSubview:facebookLabel];
+            } else {
+                UILabel *label = [self.mainView viewWithTag:kPayoffFBLabelTag];
+                label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+            }
+            
+            calculatedSize.height += fbLabelFrame.size.height;
+            
+            CGRect fbFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, fbSize.height);
+            [self.fbPhotoCollectionViewController.view setFrame:fbFrame];
+            calculatedSize.height += fbSize.height;
+            calculatedSize.height += kPayoffBottomMargin;
+            
+            self.fbPhotoCollectionViewController.view.hidden = NO;
+        }
+        
+        if (instagramSize.height > 0 && self.hasInstagramContent) {
+            CGRect instLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+            UILabel *instLabel = [[UILabel alloc] initWithFrame:instLabelFrame];
+            [instLabel setTag:kPayoffInstagramLabelTag];
+            
+            [instLabel setText:@"Instagram Photos"];
+            [instLabel setTextColor:[UIColor whiteColor]];
+            
+            if (![self.mainView viewWithTag:kPayoffInstagramLabelTag]) {
+                [self.mainView addSubview:instLabel];
+            } else {
+                UILabel *label = [self.mainView viewWithTag:kPayoffInstagramLabelTag];
+                label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+            }
+            
+            calculatedSize.height += instLabelFrame.size.height;
+            
+            CGRect instFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, instagramSize.height);
+            [self.instagramPhotoCollectionViewController.view setFrame:instFrame];
+            calculatedSize.height += instagramSize.height;
+            calculatedSize.height += kPayoffBottomMargin;
+            
+            self.instagramPhotoCollectionViewController.view.hidden = NO;
+        }
+        
+        if (googleSize.height > 0 && self.hasGoogleContent) {
+            CGRect googleLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+            UILabel *googleLabel = [[UILabel alloc] initWithFrame:googleLabelFrame];
+            [googleLabel setTag:kPayoffGoogleLabelTag];
+            
+            [googleLabel setText:@"Google Photos"];
+            [googleLabel setTextColor:[UIColor whiteColor]];
+            
+            if (![self.mainView viewWithTag:kPayoffGoogleLabelTag]) {
+                [self.mainView addSubview:googleLabel];
+            } else {
+                UILabel *label = [self.mainView viewWithTag:kPayoffGoogleLabelTag];
+                label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+            }
+            
+            calculatedSize.height += googleLabelFrame.size.height;
+            
+            CGRect googleFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, googleSize.height);
+            [self.googlePhotoCollectionViewController.view setFrame:googleFrame];
+            calculatedSize.height += googleSize.height;
+            calculatedSize.height += kPayoffBottomMargin;
+            
+            self.googlePhotoCollectionViewController.view.hidden = NO;
+        }
     }
     
     CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, self.mainView.frame.origin.y + calculatedSize.height);
@@ -295,7 +368,18 @@
                 [self.blockImageButton setHidden:NO];
             }
         } else if (self.metadata.source.from == PGMetarSourceFromSocial) {
-            //TODO: handle URI...
+            if (self.metadata.source.uri) {
+                AFImageDownloader *downloader = [[AFImageDownloader alloc] init];
+                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.metadata.source.uri]];
+                [downloader downloadImageForURLRequest:request success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull responseObject) {
+                    UIImage *renderImage = [self imageByCroppingImage:responseObject toSize:self.blockImageButton.frame.size];
+                    [self.blockImageButton setImage:renderImage forState:UIControlStateNormal];
+                } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+                    // TODO: placeholder image
+                }];
+
+            }
+            
             [self.blockImageButton setHidden:NO];
         }
     } else if (self.blockImageButton.hidden && self.filteringLocation != nil && self.mapView.hidden) {
@@ -357,6 +441,25 @@
             }
         } else {
             self.hasInstagramContent = YES;
+            [self fixScrollViewSize];
+        }
+    }];
+    
+    [[HPPRGoogleLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+        if (loggedIn) {
+            if (self.filteringDate) {
+                self.googleProvider = [[HPPRGoogleFilteredPhotoProvider alloc] initWithMode:HPPRGoogleFilteredPhotoProviderModeDate];
+                self.googleProvider.googleDelegate = self;
+                self.googlePhotoCollectionViewController.provider = self.googleProvider;
+                [self.googlePhotoCollectionViewController refresh];
+            } else if (self.filteringLocation) {
+                self.googleProvider = [[HPPRGoogleFilteredPhotoProvider alloc] initWithMode:HPPRGoogleFilteredPhotoProviderModeLocation];
+                self.googleProvider.googleDelegate = self;
+                self.googlePhotoCollectionViewController.provider = self.googleProvider;
+                [self.googlePhotoCollectionViewController refresh];
+            }
+        } else {
+            self.hasGoogleContent = YES;
             [self fixScrollViewSize];
         }
     }];
@@ -460,8 +563,9 @@
 //TODO: I don't like this, need to revisit - it's a hack because the preview controller is messing up with the current view controller frame
 
 -(void)tmpViewIsBack {
-    [self.tmpViewController.view removeFromSuperview];
-    self.tmpViewController = nil;
+    [self.tmpViewController dismissViewControllerAnimated:NO completion:^{
+        self.tmpViewController = nil;
+    }];
 }
 
 - (IBAction)clickImageBlock:(id)sender {
@@ -548,5 +652,26 @@
     return kPGLocationDistance;
 }
 
+#pragma mark Google provider delegate
+
+- (NSDate *) googleFilterContentByDate {
+    return self.filteringDate;
+}
+
+- (void) googleRequestPhotoComplete:(int) count {
+    [self googleUpdateDone:count];
+}
+
+- (int)googleMaxSearchDepth {
+    return kInstagramMaxImagesSearch;
+}
+
+- (CLLocation *)googleFilterContentByLocation {
+    return self.filteringLocation;
+}
+
+- (int)googleDistanceForLocationFilter {
+    return kPGLocationDistance;
+}
 
 @end

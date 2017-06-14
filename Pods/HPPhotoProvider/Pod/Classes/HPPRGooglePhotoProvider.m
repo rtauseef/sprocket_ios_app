@@ -28,7 +28,6 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
 @property (nonatomic, assign) NSInteger nextPhoto;
 @property (nonatomic, strong) NSString *numberOfAllPhotos;
 @property (nonatomic, strong) NSString *lastUserID;
-@property (nonatomic, strong) NSMutableArray *currentItems;
 @property (nonatomic, strong) NSString *userThumbnail;
 @property (nonatomic, strong) NSString *userName;
 @property (strong) NSString *latestRequest;

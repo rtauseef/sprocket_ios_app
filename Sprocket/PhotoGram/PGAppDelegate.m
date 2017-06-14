@@ -33,7 +33,7 @@
 #import "PGInAppMessageManager.h"
 #import "PGMetarOfflineTagManager.h"
 #import "PGInboxMessageManager.h"
-
+#import "PGLinkSettings.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -65,6 +65,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     
     [HPPR sharedInstance].qzoneAppId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryQZoneAppId];
     [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
+    
+    [HPPR sharedInstance].showVideos = [PGLinkSettings videoPrintEnabled];
     
     [self initializePrintPod];
     
