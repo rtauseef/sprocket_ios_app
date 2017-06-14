@@ -412,8 +412,9 @@ heightForFooterInSection:(NSInteger)section{
 //TODO: I don't like this, need to revisit - it's a hack because the preview controller is messing up with the current view controller frame
 
 -(void)tmpViewIsBack {
-    [self.tmpViewController.view removeFromSuperview];
-    self.tmpViewController = nil;
+    [self.tmpViewController dismissViewControllerAnimated:NO completion:^{
+        self.tmpViewController = nil;
+    }];
 }
 
 @end
