@@ -53,6 +53,9 @@ Then (/^I select "(.*?)"$/) do |option|
         touch @current_page.filter_1
     else 
         if option =="AutoFix"
+            if element_does_not_exist(@current_page.magic)
+                scroll("UICollectionView",:left)
+            end
             touch @current_page.magic
         else 
             if option == "2:3" || option == "3:2"
@@ -229,6 +232,12 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
         if (element_exists "view marked:'#{sticker_tab.to_s}'")
             touch query("view marked:'#{sticker_tab}'")
         else
+            while element_does_not_exist("view marked:'Add Custom Sticker'")
+                scroll("UICollectionView",:left)
+            end
+            if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                touch query("view marked:'#{sticker_tab}'")
+            end
             i = 0
             while i < 5 do      
                 scroll("UICollectionView",:right)
@@ -275,7 +284,9 @@ end
 Then(/^I should see the photo in the "Frame Editor" screen with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
     selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
-    raise "Wrong frame selected!" unless selected_frame_status == frame_value
+    selected_frame_status_updated = query("UIImageView",:accessibilityIdentifier)[14]
+   
+    raise "Wrong frame selected!" unless selected_frame_status == frame_value || selected_frame_status_updated == frame_value
 end
 
 Then(/^I should see the photo with the "(.*?)" font$/) do |font_id|
@@ -370,8 +381,9 @@ Then(/^I should see the "([^"]*)" with "([^"]*)" Color$/) do |type, color|
     flag = 0
     sticker_value=$sticker[sticker_tab][sticker_id]['value']
     $stic_arr = query("IMGLYStickerImageView",:accessibilityLabel)
-    $stic_arr.each do |test|
-        if test == sticker_value
+    
+    $stic_arr.each do |item|
+        if item == sticker_value
             flag = 1
             break
         end

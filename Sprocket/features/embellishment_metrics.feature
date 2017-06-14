@@ -27,7 +27,7 @@ Feature: Verify embellishment metrics
     Then I touch "Delete"
     Then I should see the "Edit" screen
     And I should see the photo with the "sticker_3" sticker from "Decorative Category" tab
-    And I should see the photo with the "sticker_7" sticker from "Nature Category" tab
+    And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
     And I should see the photo with the "sticker_11" sticker from "Face Category" tab
     Then I tap "Check" mark
     And I wait for some seconds
@@ -57,11 +57,12 @@ Feature: Verify embellishment metrics
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     And I tap "Frame" button
-    Then I select "frame_0" frame
-    Then I should see the photo in the "Frame Editor" screen with the "frame_0" frame
+    Then I select "frame_1" frame
+    Then I should see the photo in the "Frame Editor" screen with the "frame_1" frame
     Then I am on the "Frame Editor" screen
     Then I tap "Save" mark
     Then I am on the "Edit" screen
+    And I wait for some seconds
     Then I select "AutoFix"
     Then I wait for some seconds
     Then I tap "Check" mark

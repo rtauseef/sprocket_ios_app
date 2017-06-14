@@ -33,6 +33,12 @@ class EditScreen < Calabash::IBase
     def magic
         "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
     end
+    def adjustment
+        "IMGLYIconCaptionCollectionViewCell * id:'editAdjust'"
+    end
+    def brush
+        "* id:'ic_brush_48pt'"
+    end
     
     def close
         "UIButton marked:'Discard photo'"
