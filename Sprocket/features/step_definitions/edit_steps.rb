@@ -276,17 +276,17 @@ Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     if device_name.to_s != 'iPad'
         selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
     else
-        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[7]
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[12]
     end
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
 Then(/^I should see the photo in the "Frame Editor" screen with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
-    selected_frame_status_updated = query("UIImageView",:accessibilityIdentifier)[14]
-   
-    raise "Wrong frame selected!" unless selected_frame_status == frame_value || selected_frame_status_updated == frame_value
+    
+    selected_frame_status = query("* id:'#{frame_value}'")
+   raise "Wrong frame selected!" unless selected_frame_status.length > 0
+    
 end
 
 Then(/^I should see the photo with the "(.*?)" font$/) do |font_id|
