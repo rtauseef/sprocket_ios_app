@@ -32,6 +32,8 @@ Feature: Verify embellishment metrics
     Then I tap "Check" mark
     And I wait for some seconds
     And I wait for some seconds
+	And I wait for some seconds
+	And I wait for some seconds
     Then I am on the "CameraRoll Preview" screen
     When I tap "Download" button
 	Then I wait for some seconds
