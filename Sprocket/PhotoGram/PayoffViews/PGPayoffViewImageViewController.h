@@ -17,6 +17,4 @@
 - (void)showImageSameDayAsDate: (NSDate *) date;
 - (void)showImagesSameLocation: (CLLocation *) location;
 
-@property (strong, nonatomic) PGMetarPayoffViewController *parentVc;
-
 @end

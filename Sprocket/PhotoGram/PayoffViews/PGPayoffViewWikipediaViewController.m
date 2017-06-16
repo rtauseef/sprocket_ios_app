@@ -94,23 +94,24 @@
         [self.tmpViewController.view removeFromSuperview];
         self.tmpViewController = nil;
     }
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [self renderPageAtIndex:_currentIndex];
-        
-         [self.activityIndicator stopAnimating];
-         self.scrollView.hidden = NO;
+        [self.activityIndicator stopAnimating];
+        self.scrollView.hidden = NO;
     });
 
+    [self.parentVc setExternalLinkURL:[self getURLForIndex:self.currentIndex]];
 }
 
 - (void)handleLongPressWikipedia:(UILongPressGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.currentIndex++;
-        if (![self renderPageAtIndex:_currentIndex]) {
+        if (![self renderPageAtIndex:self.currentIndex]) {
             self.currentIndex = 0;
             [self renderPageAtIndex:self.currentIndex];
         }
+        [self.parentVc setExternalLinkURL:[self getURLForIndex:self.currentIndex]];
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
 
     }
@@ -130,6 +131,23 @@
     }
     
     return NO;
+}
+
+
+- (NSURL *) getURLForIndex: (int) index {
+    if (self.metadata != nil) {
+        NSArray *pages = self.metadata.location.content.wikipedia.pages;
+        
+        if (pages != nil && [pages objectAtIndex:index] != nil) {
+            PGMetarPage *page = pages[index];
+            
+            if (page.from) {
+                return [NSURL URLWithString:page.from];
+            }
+        }
+    }
+    
+    return nil;
 }
 
 - (BOOL) renderPageAtIndex: (int) index {

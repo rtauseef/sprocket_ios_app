@@ -73,7 +73,11 @@
     
     if ([PGLinkSettings linkEnabled]) {
         self.watermarkingEnabled = NO;
-        [[PGCameraManager sharedInstance] runAuthorization];
+        [[PGCameraManager sharedInstance] runAuthorization:^(BOOL success) {
+            if (success) {
+                self.watermarkingEnabled = YES;
+            }
+        }];
     }
     
 }
@@ -124,51 +128,58 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) enableLinkWatermarking {
-    self.watermarkingEnabled = YES;
-}
-
 - (void) handleLongPressScreen:(UILongPressGestureRecognizer *)recognizer {
+    
+    void (^adjustLongPress)() = ^(void) {
+        if (recognizer.state == UIGestureRecognizerStateBegan && !self.movieMode) {
+            
+            [self.scanView setAlpha:0];
+            [self.scanView setHidden:NO];
+            
+            self.closeButton.hidden = YES;
+            self.shutterButton.hidden = YES;
+            self.flashButton.hidden = YES;
+            self.switchCameraButton.hidden = YES;
+            
+            // fade in
+            [UIView animateWithDuration:1.0f animations:^{
+                self.scanView.alpha = 1;
+            } completion:^(BOOL finished) {
+                [[PGCameraManager sharedInstance] startScanning];
+            }];
+        }  else if (recognizer.state == UIGestureRecognizerStateEnded && !self.movieMode) {
+            
+            // fade out
+            [UIView animateWithDuration:1.0f animations:^{
+                self.scanView.alpha = 0;
+            } completion:^(BOOL finished) {
+                [[PGCameraManager sharedInstance] stopScanning];
+                [self stopScanning];
+            }];
+        }
+    };
+    
     if (!_watermarkingEnabled) {
         
-        if (recognizer.state == UIGestureRecognizerStateBegan) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-                                    message:NSLocalizedString(@"Image scanning is not available at this time. Please try again later.", @"Message shown when the user tries to scan an image and the scanning service is not available")
-                                   delegate:self
-                          cancelButtonTitle:NSLocalizedString(@"OK", @"Button caption")
-                          otherButtonTitles:nil] show];
-        
-        }
-        
-        return;
-    }
-    
-    if (recognizer.state == UIGestureRecognizerStateBegan && !self.movieMode) {
-        
-        [self.scanView setAlpha:0];
-        [self.scanView setHidden:NO];
-        
-        self.closeButton.hidden = YES;
-        self.shutterButton.hidden = YES;
-        self.flashButton.hidden = YES;
-        self.switchCameraButton.hidden = YES;
-        
-        // fade in
-        [UIView animateWithDuration:1.0f animations:^{
-            self.scanView.alpha = 1;
-        } completion:^(BOOL finished) {
-            [[PGCameraManager sharedInstance] startScanning];
+        [[PGCameraManager sharedInstance] runAuthorization:^(BOOL success) {
+            if (success) {
+                self.watermarkingEnabled = YES;
+                adjustLongPress();
+            } else {
+                if (recognizer.state == UIGestureRecognizerStateBegan) {
+                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                                message:NSLocalizedString(@"Image scanning is not available at this time. Please try again later.", @"Message shown when the user tries to scan an image and the scanning service is not available")
+                                               delegate:self
+                                      cancelButtonTitle:NSLocalizedString(@"OK", @"Button caption")
+                                      otherButtonTitles:nil] show];
+                    
+                }
+                
+                return;
+            }
         }];
-    }  else if (recognizer.state == UIGestureRecognizerStateEnded && !self.movieMode) {
-        
-        // fade out
-        [UIView animateWithDuration:1.0f animations:^{
-            self.scanView.alpha = 0;
-        } completion:^(BOOL finished) {
-            [[PGCameraManager sharedInstance] stopScanning];
-            [self stopScanning];
-        }];
-        
+    } else {
+        adjustLongPress();
     }
 }
 

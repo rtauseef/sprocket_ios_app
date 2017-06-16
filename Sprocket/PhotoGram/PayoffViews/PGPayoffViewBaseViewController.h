@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PGMetarMedia.h"
+#import "PGMetarpayoffViewController.h"
 
 @interface PGPayoffViewBaseViewController : UIViewController
 
 @property (strong, nonatomic) NSString *viewTitle;
 @property (strong, nonatomic) PGMetarMedia *metadata;
+@property (strong, nonatomic) NSString *externalLinkURL;
+@property (strong, nonatomic) PGMetarPayoffViewController* parentVc;
 
 @end

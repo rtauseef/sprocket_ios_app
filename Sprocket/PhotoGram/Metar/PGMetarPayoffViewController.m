@@ -13,9 +13,12 @@
 #import "PGPayoffViewErrorViewController.h"
 #import "PGPayoffViewWikipediaViewController.h"
 #import "PGPayoffViewLivePhotoViewController.h"
-
+#import "PGPayoffViewBaseViewController.h"
 #import "PGPageControl.h"
 #import "HPPR.h"
+#import "PGMetarPayoffFeedbackViewController.h"
+
+#define kPGReviewViewHeight 38
 
 @interface PGMetarPayoffViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -28,6 +31,20 @@
 
 @property (assign, nonatomic) NSUInteger pendingIndex;
 @property (weak, nonatomic) IBOutlet UILabel *currentViewLabel;
+@property (weak, nonatomic) IBOutlet UIButton *externalPageButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *thumbsUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *thumbsDownButton;
+@property (weak, nonatomic) IBOutlet UILabel *reviewLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewViewConstraint;
+@property (weak, nonatomic) IBOutlet UIView *reviewView;
+@property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
+
+
+- (IBAction)clickOpenExternalPageButton:(id)sender;
+- (IBAction)clickThumbsUp:(id)sender;
+- (IBAction)clickThumbsDown:(id)sender;
+- (IBAction)clickReviewButton:(id)sender;
 
 @end
 
@@ -51,16 +68,25 @@
     self.pageControl.hidesForSinglePage = YES;
  
     [self.paginationView addSubview:_pageViewController.view];
+    
+    self.reviewViewConstraint.constant = 0;
+    self.reviewView.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //[_pageViewController.view setFrame:self.paginationView.bounds];
+    self.reviewViewConstraint.constant = 0;
+    self.reviewView.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.pageViewController.view.frame = self.paginationView.bounds;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void) updateCurrentViewLabel: (NSString *) name forView: (PGPayoffViewBaseViewController *) view {
@@ -82,6 +108,8 @@
         
             if (metadata.source.social != nil && metadata.source.uri != nil) {
                 [viewVideoVc setVideoWithURL:metadata.source.uri];
+                [viewVideoVc setMetadata:metadata];
+                [viewVideoVc setParentVc:self];
                 [self.arrayOfViewControllers addObject:viewVideoVc];
             } else if (metadata.source.from == PGMetarSourceFromLocal) {
                 NSString *localId = metadata.source.identifier;
@@ -134,6 +162,7 @@
             
             PGPayoffViewWikipediaViewController *viewWikipedia  = [storyboard instantiateViewControllerWithIdentifier:@"wikipediaVc"];
             
+            [viewWikipedia setParentVc:self];
             [viewWikipedia setMetadata:metadata];
             
             if ([viewWikipedia metadataValidForCurrentLang]) {
@@ -221,6 +250,62 @@
     }];
 }
 
+- (IBAction)clickOpenExternalPageButton:(id)sender {
+    if (self.externalLinkURL) {
+        [[UIApplication sharedApplication] openURL:self.externalLinkURL];
+    }
+}
+
+- (IBAction)clickThumbsUp:(id)sender {
+    self.reviewLabel.text = NSLocalizedString(@"Thanks! Tell us what you liked!", nil);
+    self.reviewViewConstraint.constant = kPGReviewViewHeight;
+    CGRect frame = self.bubbleArrow.frame;
+    frame.origin.x = self.thumbsUpButton.frame.origin.x;
+    self.bubbleArrow.frame = frame;
+    
+    [self.thumbsUpButton setImage:[UIImage imageNamed:@"thumbsUpBlue"] forState:UIControlStateNormal];
+    [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownWhite"] forState:UIControlStateNormal];
+
+    self.reviewView.hidden = NO;
+}
+
+- (IBAction)clickThumbsDown:(id)sender {
+    self.reviewLabel.text = NSLocalizedString(@"Thanks! Could you tell us more?", nil);
+    self.reviewViewConstraint.constant = kPGReviewViewHeight;
+    CGRect frame = self.bubbleArrow.frame;
+    frame.origin.x = self.thumbsDownButton.frame.origin.x;
+    self.bubbleArrow.frame = frame;
+
+    [self.thumbsUpButton setImage:[UIImage imageNamed:@"thumbsUpWhite"] forState:UIControlStateNormal];
+    [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownBlue"] forState:UIControlStateNormal];
+    
+    self.reviewView.hidden = NO;
+}
+
+- (IBAction)clickReviewButton:(id)sender {
+    self.reviewViewConstraint.constant = 0;
+    self.reviewView.hidden = YES;
+    
+    PGMetarPayoffFeedbackViewController *feedback = [[PGMetarPayoffFeedbackViewController alloc] initWithNibName:@"PGMetarPayoffFeedbackViewController" bundle:nil];
+
+    CATransition *transition = [[CATransition alloc] init];
+    transition.duration = 0.3;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    [self.view.window.layer addAnimation:transition forKey:kCATransition];
+    [self presentViewController:feedback animated:NO completion:nil];
+}
+
+- (void) setExternalLinkURL: (NSURL *) url {
+    if (url != nil) {
+        _externalLinkURL = url;
+        self.externalPageButton.hidden = NO;
+    } else {
+        _externalLinkURL = nil;
+        self.externalPageButton.hidden = YES;
+    }
+}
+
 #pragma mark UIPageViewController data source
 
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -253,6 +338,7 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
 willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
+    self.externalPageButton.hidden = YES;
     
     // fade out
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
@@ -288,7 +374,5 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
                          completion:nil];
     }
 }
-
-
 
 @end

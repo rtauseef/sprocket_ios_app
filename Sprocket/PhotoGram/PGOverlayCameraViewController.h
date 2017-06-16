@@ -19,7 +19,6 @@
 @property (nonatomic, weak) UIImagePickerController *pickerReference;
 
 - (void) stopScanning;
-- (void) enableLinkWatermarking;
 - (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
 
 @end

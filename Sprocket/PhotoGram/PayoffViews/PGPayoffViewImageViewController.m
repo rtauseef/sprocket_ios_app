@@ -353,6 +353,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    if (self.metadata.source.from == PGMetarSourceFromSocial && self.metadata.source.uri) {
+        [self.parentVc setExternalLinkURL:[NSURL URLWithString:self.metadata.source.uri]];
+    }
+    
     if (self.blockImageButton.hidden && self.filteringDate != nil) {
         
         NSString *localId = self.metadata.source.identifier;
@@ -383,9 +387,8 @@
                 } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
                     // TODO: placeholder image
                 }];
-
             }
-            
+
             [self.blockImageButton setHidden:NO];
         }
     } else if (self.blockImageButton.hidden && self.filteringLocation != nil && self.mapView.hidden) {
