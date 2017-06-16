@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *ARButton;
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
 
 @end
 
@@ -59,7 +60,11 @@
 - (IBAction)ARTapped:(id)sender {
     PGAurasmaViewController *aurasmaViewController = [[PGAurasmaViewController alloc] initWithNibName:@"PGAurasmaViewController" bundle:nil];
     [aurasmaViewController setClosingDelegate:self];
-    [self presentViewController:aurasmaViewController animated:YES completion:nil];
+    _loadingView.hidden = NO;
+    [self.view setNeedsDisplay];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(50 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        [self presentViewController:aurasmaViewController animated:YES completion:nil];
+    });
 }
 
 - (void)setupButtons
@@ -97,6 +102,9 @@
     void (^notificationCallback)(NSNotification *) = ^(__unused NSNotification *notif) {
         [[PGCameraManager sharedInstance] resetPresetSize];
         self.ARButton.hidden = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            self.loadingView.hidden = YES;
+        });
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
         observer = nil; // Needed for iOS7
     };

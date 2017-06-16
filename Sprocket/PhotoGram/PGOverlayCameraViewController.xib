@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="ARButton" destination="uBq-22-Ehx" id="Bcz-K7-oww"/>
                 <outlet property="flashButton" destination="voU-GQ-VkJ" id="Fxa-PS-S40"/>
+                <outlet property="loadingView" destination="v1w-Kq-lMa" id="Sxr-2o-z9u"/>
                 <outlet property="switchCameraButton" destination="AKI-P8-ZbS" id="0qe-ve-Bwl"/>
                 <outlet property="transitionEffectView" destination="BJW-QH-UdF" id="qdZ-gP-WnO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -78,6 +79,23 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1w-Kq-lMa" userLabel="loadingView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADING......." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsH-lx-yuv">
+                            <rect key="frame" x="0.0" y="311.5" width="375" height="44.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="37"/>
+                            <color key="textColor" red="0.95321232975662695" green="1" blue="0.029682215670267964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.40000000000000002" green="0.3411764706" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="VsH-lx-yuv" firstAttribute="centerX" secondItem="v1w-Kq-lMa" secondAttribute="centerX" id="XY2-Xn-dYc"/>
+                        <constraint firstItem="VsH-lx-yuv" firstAttribute="width" secondItem="v1w-Kq-lMa" secondAttribute="width" id="fnY-iH-acX"/>
+                        <constraint firstItem="VsH-lx-yuv" firstAttribute="centerY" secondItem="v1w-Kq-lMa" secondAttribute="centerY" id="ocW-cR-h5l"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="16x-nJ-btJ"/>
@@ -89,6 +107,10 @@
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rwk-wz-iuu"/>
                 <constraint firstAttribute="trailing" secondItem="BJW-QH-UdF" secondAttribute="trailing" id="Ryg-Dp-a3C"/>
                 <constraint firstAttribute="bottom" secondItem="fg2-TL-pwq" secondAttribute="bottom" constant="57" id="VEm-cn-nxs"/>
+                <constraint firstItem="v1w-Kq-lMa" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="VR5-pD-0dr"/>
+                <constraint firstItem="v1w-Kq-lMa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="WAk-LJ-IhW"/>
+                <constraint firstItem="v1w-Kq-lMa" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Xi7-a2-olx"/>
+                <constraint firstItem="v1w-Kq-lMa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fjd-3d-tsD"/>
                 <constraint firstItem="uBq-22-Ehx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="iYz-K5-L9q"/>
                 <constraint firstItem="voU-GQ-VkJ" firstAttribute="centerY" secondItem="AKI-P8-ZbS" secondAttribute="centerY" id="ney-DO-SBS"/>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="leading" secondItem="voU-GQ-VkJ" secondAttribute="trailing" constant="10" id="pDP-dq-dNu"/>
