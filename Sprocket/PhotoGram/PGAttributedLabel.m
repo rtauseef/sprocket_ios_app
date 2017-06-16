@@ -25,4 +25,16 @@
     self.attributedText = attributedString;
 }
 
+// These two overrides are intended to fix storyboard design-time crashes
+// Adapted from https://stackoverflow.com/questions/28204108/ib-designables-failed-to-update-auto-layout-status-failed-to-load-designables
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    return [super initWithFrame:frame];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return [super initWithCoder:aDecoder];
+}
+
 @end
