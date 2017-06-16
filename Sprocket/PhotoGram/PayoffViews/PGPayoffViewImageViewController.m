@@ -38,8 +38,6 @@
 @property (strong, nonatomic) HPPRGoogleFilteredPhotoProvider *googleProvider;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (strong, nonatomic) NSDate* filteringDate;
-@property (strong, nonatomic) CLLocation* filteringLocation;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 @property (strong, nonatomic) CLGeocoder *geocoder;
@@ -218,25 +216,25 @@
 - (void) fixScrollViewSize {
     // force content size calculation
     
-    //if (self.photoCollectionViewController.view.hidden) {
+    if (self.photoCollectionViewController.view.hidden) {
         [self.photoCollectionViewController.collectionView reloadData];
         [self.photoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
-    //if (self.fbPhotoCollectionViewController.view.hidden) {
+    if (self.fbPhotoCollectionViewController.view.hidden) {
         [self.fbPhotoCollectionViewController.collectionView reloadData];
         [self.fbPhotoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
-    //if (self.instagramPhotoCollectionViewController.view.hidden) {
+    if (self.instagramPhotoCollectionViewController.view.hidden) {
         [self.instagramPhotoCollectionViewController.collectionView reloadData];
         [self.instagramPhotoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
-    //if (self.googlePhotoCollectionViewController.view.hidden) {
+    if (self.googlePhotoCollectionViewController.view.hidden) {
         [self.googlePhotoCollectionViewController.collectionView reloadData];
         [self.googlePhotoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
     CGSize instagramSize = self.instagramPhotoCollectionViewController.collectionView.contentSize;
     CGSize fbSize = self.fbPhotoCollectionViewController.collectionView.contentSize;
@@ -352,6 +350,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self fixScrollViewSize];
     
     if (self.metadata.source.from == PGMetarSourceFromSocial && self.metadata.source.uri) {
         [self.parentVc setExternalLinkURL:[NSURL URLWithString:self.metadata.source.uri]];
@@ -524,7 +524,6 @@
             [self updateViewTitleLocally];
         }
     }
-
 }
 
 - (void)didReceiveMemoryWarning {

@@ -17,4 +17,7 @@
 - (void)showImageSameDayAsDate: (NSDate *) date;
 - (void)showImagesSameLocation: (CLLocation *) location;
 
+@property (strong, nonatomic) NSDate* filteringDate;
+@property (strong, nonatomic) CLLocation* filteringLocation;
+
 @end

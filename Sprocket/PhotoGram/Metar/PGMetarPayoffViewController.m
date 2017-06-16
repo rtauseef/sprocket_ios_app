@@ -17,6 +17,7 @@
 #import "PGPageControl.h"
 #import "HPPR.h"
 #import "PGMetarPayoffFeedbackViewController.h"
+#import "PGPayoffFeedbackDatabase.h"
 
 #define kPGReviewViewHeight 38
 
@@ -39,7 +40,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewViewConstraint;
 @property (weak, nonatomic) IBOutlet UIView *reviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
-
+@property (strong, nonatomic) PGMetarMedia *metarMeta;
 
 - (IBAction)clickOpenExternalPageButton:(id)sender;
 - (IBAction)clickThumbsUp:(id)sender;
@@ -101,6 +102,8 @@
     self.arrayOfViewControllers = [NSMutableArray array];
     
     if (metadata != nil) {
+        
+        self.metarMeta = metadata;
         
         if (metadata.mediaType == PGMetarMediaTypeVideo) {
             PGPayoffViewVideoViewController *viewVideoVc = [[PGPayoffViewVideoViewController alloc]
@@ -200,6 +203,23 @@
                          animations:^{ weakSelf.currentViewLabel.alpha = 1;}
                          completion:nil];
     }];
+    
+    [self fixThumbsUpThumbsDown];
+}
+
+- (void) fixThumbsUpThumbsDown {
+    PGPayoffFeedbackDatabaseResult result = [[PGPayoffFeedbackDatabase sharedInstance] checkFeedbackForMedia:self.metarMeta andViewKind:[self getCurrentKind]];
+    
+    if (result == PGPayoffFeedbackDatabaseResultThumbsUp) {
+        [self.thumbsUpButton setImage:[UIImage imageNamed:@"thumbsUpBlue"] forState:UIControlStateNormal];
+        [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownWhite"] forState:UIControlStateNormal];
+    } else if (result == PGPayoffFeedbackDatabaseResultThumbsDown) {
+        [self.thumbsUpButton setImage:[UIImage imageNamed:@"thumbsUpWhite"] forState:UIControlStateNormal];
+        [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownBlue"] forState:UIControlStateNormal];
+    } else {
+        [self.thumbsUpButton setImage:[UIImage imageNamed:@"thumbsUpWhite"] forState:UIControlStateNormal];
+        [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownWhite"] forState:UIControlStateNormal];
+    }
 }
 
 - (void) getMetadataFromMetar {
@@ -256,6 +276,28 @@
     }
 }
 
+- (PGPayoffFeedbackDatabaseViewKind) getCurrentKind {
+    PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
+    
+    if ([currentVc isKindOfClass:[PGPayoffViewImageViewController class]]) {
+        PGPayoffViewImageViewController *vImageVc = (PGPayoffViewImageViewController *) currentVc;
+        
+        if (vImageVc.filteringDate) {
+            return PGPayoffFeedbackDatabaseViewKindImageByDate;
+        } else if (vImageVc.filteringLocation) {
+            return PGPayoffFeedbackDatabaseViewKindImageByLocation;
+        }
+    } else if ([currentVc isKindOfClass:[PGPayoffViewWikipediaViewController class]]) {
+        return PGPayoffFeedbackDatabaseViewKindWikipedia;
+    } else if ([currentVc isKindOfClass:[PGPayoffViewVideoViewController class]]) {
+        return PGPayoffFeedbackDatabaseViewKindVideo;
+    } else if ([currentVc isKindOfClass:[PGPayoffViewLivePhotoViewController class] ]) {
+        return PGPayoffFeedbackDatabaseViewKindLivePhoto;
+    }
+    
+    return PGPayoffFeedbackDatabaseViewKindUnknown;
+}
+
 - (IBAction)clickThumbsUp:(id)sender {
     self.reviewLabel.text = NSLocalizedString(@"Thanks! Tell us what you liked!", nil);
     self.reviewViewConstraint.constant = kPGReviewViewHeight;
@@ -267,6 +309,8 @@
     [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownWhite"] forState:UIControlStateNormal];
 
     self.reviewView.hidden = NO;
+    
+    [[PGPayoffFeedbackDatabase sharedInstance] saveFeedbackForMedia:self.metarMeta withViewKind:[self getCurrentKind] andFeedback:PGPayoffFeedbackDatabaseResultThumbsUp];
 }
 
 - (IBAction)clickThumbsDown:(id)sender {
@@ -280,6 +324,8 @@
     [self.thumbsDownButton setImage:[UIImage imageNamed:@"thumbsDownBlue"] forState:UIControlStateNormal];
     
     self.reviewView.hidden = NO;
+    
+    [[PGPayoffFeedbackDatabase sharedInstance] saveFeedbackForMedia:self.metarMeta withViewKind:[self getCurrentKind] andFeedback:PGPayoffFeedbackDatabaseResultThumbsDown];
 }
 
 - (IBAction)clickReviewButton:(id)sender {
@@ -364,6 +410,11 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
                          animations:^{ self.currentViewLabel.alpha = 1;}
                          completion:nil];
+        
+        self.reviewViewConstraint.constant = 0;
+        self.reviewView.hidden = YES;
+        
+        [self fixThumbsUpThumbsDown];
     } else {
         PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
         
