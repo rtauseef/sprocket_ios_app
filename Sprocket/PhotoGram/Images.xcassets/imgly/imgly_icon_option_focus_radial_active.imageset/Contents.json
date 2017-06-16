@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "imgly_icon_option_hardness.png",
+      "filename" : "imgly_icon_option_focus_radial_Active@.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "imgly_icon_option_hardness@2x.png",
+      "filename" : "imgly_icon_option_focus_radial_Active@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "imgly_icon_option_hardness@3x.png",
+      "filename" : "imgly_icon_option_hardness_Active@3x.png",
       "scale" : "3x"
     }
   ],
