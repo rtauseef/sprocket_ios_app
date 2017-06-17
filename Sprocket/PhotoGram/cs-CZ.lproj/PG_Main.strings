@@ -1,0 +1,261 @@
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
+"1Gm-FD-YRV.title" = "Hotovo";
+
+/* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
+"3FE-mc-FrD.text" = "Použitím aplikace Pitu současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
+"3PR-Lb-830.title" = "Návody a nápověda";
+
+/* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
+"3rx-Fp-iLE.text" = "Ověřením na zdrojích na sociálních sítích současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
+"3t6-KR-FbJ.text" = "Ověřením ve službě Instagram současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
+"4go-MT-3C1.text" = "Resetovat tiskárnu sprocket";
+
+/* Class = "UILabel"; text = "Join Support Forum"; ObjectID = "7Vs-BF-yHI"; */
+"7Vs-BF-yHI.text" = "Připojit se k fóru podpory";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "7fa-oG-gkS"; */
+"7fa-oG-gkS.text" = "Název";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "8WR-66-byL"; */
+"8WR-66-byL.title" = "Hotovo";
+
+/* Class = "UINavigationItem"; title = "Setup Sprocket Printer"; ObjectID = "9rP-Vf-tjP"; */
+"9rP-Vf-tjP.title" = "Nastavit tiskárnu sprocket";
+
+/* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
+"34K-Xv-dA8.text" = "Navštívit webovou stránku podpory";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "AXW-GE-wKa"; */
+"AXW-GE-wKa.title" = "";
+
+/* Class = "UILabel"; text = "© 2016 HP Development Company, L.P."; ObjectID = "BBT-a1-B1F"; */
+"BBT-a1-B1F.text" = "© 2016 HP Development Company, L.P.";
+
+/* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
+"BV3-xe-r0y.normalTitle" = "Další nápověda";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM"; */
+"BfZ-Hp-dCM.text" = "Název alba";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
+"DG2-Ok-pfm.normalTitle" = "Přihlášení";
+
+/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "DmV-M2-d4s"; */
+"DmV-M2-d4s.text" = "Vložte celý balík do zásobníku na papír čárovým kódem a logy HP směrem dolů.";
+
+/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "EN2-Sd-rVK"; */
+"EN2-Sd-rVK.text" = "Stiskněte a podržte tlačítko napájení, dokud se barva kontrolky LED nezmění na bílou.";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "EjE-om-e07"; */
+"EjE-om-e07.title" = "O aplikaci";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Fnc-S6-0NQ"; */
+"Fnc-S6-0NQ.text" = "Název";
+
+/* Class = "UILabel"; text = "HP Sprocket App Terms of Service"; ObjectID = "Gwf-K7-scA"; */
+"Gwf-K7-scA.text" = "Podmínky používání aplikace HP Sprocket";
+
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "HIh-6e-4FK"; */
+"HIh-6e-4FK.text" = "Pořídit nebo vybrat fotografii";
+
+/* Class = "UILabel"; text = "View User Guide"; ObjectID = "IFE-wR-WsV"; */
+"IFE-wR-WsV.text" = "Zobrazit uživatelskou příručku";
+
+/* Class = "UILabel"; text = "HP Development Company, L.P."; ObjectID = "IRp-QK-PAY"; */
+"IRp-QK-PAY.text" = "HP Development Company, L.P.";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "J8w-u5-UoD"; */
+"J8w-u5-UoD.normalTitle" = "Přihlášení";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "J10-Gj-77T"; */
+"J10-Gj-77T.title" = "Hotovo";
+
+/* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
+"JEt-SU-tLR.title" = "Camera Roll";
+
+/* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
+"JrW-zx-uoD.text" = "Stiskněte a podržte tlačítko napájení, dokud se barva kontrolky LED nezmění na bílou.";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "Kp8-0r-uKI"; */
+"Kp8-0r-uKI.normalTitle" = "Přihlášení";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "M1M-l0-DBL"; */
+"M1M-l0-DBL.title" = "";
+
+/* Class = "UILabel"; text = "Tap here to edit the description"; ObjectID = "MN9-s9-sQn"; */
+"MN9-s9-sQn.text" = "Klepnutím zde můžete upravit popis";
+
+/* Class = "UILabel"; text = "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer."; ObjectID = "Mau-Fg-w5P"; */
+"Mau-Fg-w5P.text" = "V nabídce nastavení Bluetooth klepněte na „HP Sprocket“ a proveďte spárování s tiskárnou.";
+
+/* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "MgL-Ve-2Gu"; */
+"MgL-Ve-2Gu.normalTitle" = "Přeskočit k aplikaci";
+
+/* Class = "UINavigationItem"; title = "Reset Sprocket Printer"; ObjectID = "OOG-XB-1r0"; */
+"OOG-XB-1r0.title" = "Resetovat tiskárnu sprocket";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "OWM-HV-MZn"; */
+"OWM-HV-MZn.title" = "";
+
+/* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
+"P9D-sI-bhx.text" = "Copyright (c) 2016";
+
+/* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
+"Pzx-yx-Rfc.text" = "Nová funkce!";
+
+/* Class = "UILabel"; text = "Messenger Support"; ObjectID = "QGa-kv-h0O"; */
+"QGa-kv-h0O.text" = "Podpora aplikace Messenger";
+
+/* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
+"QQK-QP-Amd.text" = "Ověřením ve službě Flickr současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
+"QeE-ya-uIL.text" = "Název";
+
+/* Class = "UIButton"; normalTitle = "Go to the App"; ObjectID = "Qfy-vN-Znw"; */
+"Qfy-vN-Znw.normalTitle" = "Přejít k aplikaci";
+
+/* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Qz4-e7-zDJ"; */
+"Qz4-e7-zDJ.normalTitle" = "Fotografie";
+
+/* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
+"R8u-lf-hRh.title" = "Facebook";
+
+/* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
+"TkY-hv-gvt.title" = "Instagram";
+
+/* Class = "UILabel"; text = "Version 1.0"; ObjectID = "U9F-p5-X9c"; */
+"U9F-p5-X9c.text" = "Verze 1.0";
+
+/* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
+"UGC-Wa-Xa2.text" = "Ověřením ve službě Facebook současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
+"VKP-mJ-ZZt.text" = "Podrobnosti";
+
+/* Class = "UILabel"; text = "From Bluetooth Settings, tap on  “HP sprocket” to pair with the printer."; ObjectID = "W7o-LK-mcs"; */
+"W7o-LK-mcs.text" = "V nabídce nastavení Bluetooth klepněte na „HP Sprocket“ a proveďte spárování s tiskárnou.";
+
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "WMv-7o-mbb"; */
+"WMv-7o-mbb.text" = "sprocket";
+
+/* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
+"XgH-Dx-oow.text" = "Saved to Camera Roll";
+
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
+"YEZ-Yd-vcV.text" = "Pořídit nebo vybrat fotografii";
+
+/* Class = "UINavigationItem"; title = "sprocket"; ObjectID = "Yx0-Cs-62a"; */
+"Yx0-Cs-62a.title" = "sprocket";
+
+/* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
+"Z1T-tw-tdj.text" = "By using Camera Roll, you also agree to the HP <Terms of Service>.";
+
+/* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
+"Zq3-aI-5TN.normalTitle" = "Fotografie";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
+"aja-HA-rCS.normalTitle" = "Přihlášení";
+
+/* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "bNM-1G-6tS"; */
+"bNM-1G-6tS.text" = "Vložte celý balík do zásobníku na papír čárovým kódem a logy HP směrem dolů.";
+
+/* Class = "UILabel"; text = "Print to your HP Sprocket Printer\nfrom your favorite creative Apps!"; ObjectID = "cFJ-6P-UAK"; */
+"cFJ-6P-UAK.text" = "Tiskněte na své tiskárně HP Sprocket
+z oblíbených aplikací pro tvorbu!";
+
+/* Class = "UIButton"; normalTitle = "Skip to the App"; ObjectID = "ciL-qk-y5Q"; */
+"ciL-qk-y5Q.normalTitle" = "Přeskočit k aplikaci";
+
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "d71-za-T7q"; */
+"d71-za-T7q.text" = "sprocket";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "dbH-gv-JrM"; */
+"dbH-gv-JrM.title" = "Hotovo";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
+"eVm-WV-iXE.normalTitle" = "Přihlášení";
+
+/* Class = "UILabel"; text = "Give Feedback"; ObjectID = "eit-2j-VKG"; */
+"eit-2j-VKG.text" = "Vaše hodnocení";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
+"fRU-DF-pcn.normalTitle" = "Upravit";
+
+/* Class = "UILabel"; text = "%@ Copy"; ObjectID = "g9Y-KF-FRi"; */
+"g9Y-KF-FRi.text" = "%@ kopie";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
+"ga4-if-IR4.normalTitle" = "Přihlášení";
+
+/* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
+"iiX-WR-2Je.title" = "Pitu";
+
+/* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
+"ipg-92-MP9.title" = "Vyberte šablonu";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iqE-FT-oz5"; */
+"iqE-FT-oz5.text" = "Popisek";
+
+/* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
+"krD-fF-9ON.text" = "Pořídit nebo vybrat fotografii";
+
+/* Class = "UILabel"; text = "Turn on the “Print to sprocket” feature\nin the “More” menu when sharing."; ObjectID = "lh1-7W-cpZ"; */
+"lh1-7W-cpZ.text" = "Během sdílení zapněte funkci „Tisk na tiskárnu sprocket“
+v nabídce „Další“.";
+
+/* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
+"mGd-CY-o6r.text" = "Tweetnout podpoře";
+
+/* Class = "UINavigationItem"; title = "QZone"; ObjectID = "mGd-Z2-qhD"; */
+"mGd-Z2-qhD.title" = "QZone";
+
+/* Class = "UILabel"; text = "New! Print later with our Print Queue"; ObjectID = "mh8-hT-PMS"; */
+"mh8-hT-PMS.text" = "Novinka! Tiskněte později pomocí Tiskové Fronty";
+
+/* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
+"nYV-cn-yZe.text" = "Nastavit tiskárnu sprocket";
+
+/* Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0"; */
+"ncN-EJ-cY0.text" = "Počítadlo fotografií";
+
+/* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
+"ncc-Qr-0mC.title" = "Flickr";
+
+/* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
+"ob1-ZF-jEd.text" = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>.";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
+"ofB-Rh-sga.text" = "Podrobnosti";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "pvd-qV-bLb"; */
+"pvd-qV-bLb.normalTitle" = "Zavřít";
+
+/* Class = "UILabel"; text = "Connected"; ObjectID = "qsf-b8-Lfu"; */
+"qsf-b8-Lfu.text" = "Připojeno";
+
+/* Class = "UILabel"; text = "sprocket"; ObjectID = "r8A-4l-TdM"; */
+"r8A-4l-TdM.text" = "sprocket";
+
+/* Class = "UILabel"; text = "Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer."; ObjectID = "sIS-tD-Si9"; */
+"sIS-tD-Si9.text" = "Najděte resetovací otvor vedle nabíjecího portu. Zasuňte rovný kolík do otvoru a zatlačte tlačítko dovnitř. Resetujte tiskárnu stisknutím a podržením tlačítka, dokud se barva kontrolky LED nezmění na bílou.";
+
+/* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
+"tmd-Ot-zoO.text" = "Nezapomeňte vytisknout a sdílet svůj návrh";
+
+/* Class = "UILabel"; text = "By authenticating with Google, you also agree with HP’s <Terms of Service>."; ObjectID = "w3A-HJ-eXe"; */
+"w3A-HJ-eXe.text" = "Ověřením ve službě Google současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
+"w68-hT-Ur3.text" = "Podpora funkce WeChat";
+
+/* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
+"znF-lh-wdy.text" = "Výběrem možnosti níže zobrazíte
+podporu tiskárny a aplikace sprocket.";
+

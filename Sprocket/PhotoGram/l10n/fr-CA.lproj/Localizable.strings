@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld de %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li impression dans la file d'impression";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li impression dans la file d'impression";
+
+/* No comment provided by engineer. */
 "About" = "À propos";
 
 /* Body of Camera Access Required dialog */
@@ -10,17 +19,14 @@
 /* No comment provided by engineer. */
 "App Settings" = "Paramètres de la page";
 
-/* No comment provided by engineer. */
-"Arrow Sticker" = "Autocollant de flèche";
-
 /* Settings for automatically saving photos */
 "Auto-Save Settings" = "Paramètres de l’enregistrement automatique";
 
 /* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Autocollant de chapeau d’anniversaire";
-
-/* No comment provided by engineer. */
 "Buy Paper" = "Acheter du papier";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "En vous authentifiant avec %@, vous acceptez également les <conditions d'utilisation> de HP.";
 
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Accès à appareil photo requis";
@@ -33,97 +39,22 @@
 "Cancel" = "Annuler";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Autocollant d’oreilles de chat";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Autocollant de lunettes de chat";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Autocollant de chat";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Autocollant de moustaches de chat";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Vérifier ma création sur HP Sprocket";
-
-/* No comment provided by engineer. */
-"Chinese Dragon Sticker" = "Autocollant de dragon chinois";
-
-/* No comment provided by engineer. */
-"Chinese Dui Lian Couplet Sticker" = "Autocollant de distique Dui Lian chinois";
-
-/* No comment provided by engineer. */
-"Chinese Fan Sticker" = "Autocollant d'admirateur chinois";
-
-/* No comment provided by engineer. */
-"Chinese Firecracker Sticker" = "Autocollant de pétard chinois";
-
-/* No comment provided by engineer. */
-"Chinese Fish Sticker" = "Autocollant de poisson chinois";
-
-/* No comment provided by engineer. */
-"Chinese Fu Good Luck Sticker" = "Autocollant de bonne chance Fu chinois";
-
-/* No comment provided by engineer. */
-"Chinese Glasses 2017 Sticker" = "Autocollant de lunettes chinoises 2017";
-
-/* No comment provided by engineer. */
-"Chinese Glasses Blossom Sticker" = "Autocollant de lunettes à fleurs chinoises";
-
-/* No comment provided by engineer. */
-"Chinese HCNY Sticker" = "Autocollant du HCNY chinois";
-
-/* No comment provided by engineer. */
-"Chinese Lantern Sticker" = "Autocollant de lanterne chinoise";
-
-/* No comment provided by engineer. */
-"Chinese Lion Mask Sticker" = "Autocollant de masque de lion chinois";
-
-/* No comment provided by engineer. */
-"Chinese Lucky Cat Sticker" = "Autocollant de chat de la chance chinois";
-
-/* No comment provided by engineer. */
-"Chinese Man Hat Sticker" = "Autocollant de chapeau d’homme chinois";
-
-/* No comment provided by engineer. */
-"Chinese Money Sticker" = "Autocollant d’argent chinois";
-
-/* No comment provided by engineer. */
-"Chinese Mustache Sticker" = "Autocollant de moustaches chinoises";
-
-/* No comment provided by engineer. */
-"Chinese Oranges Sticker" = "Autocollant d’oranges chinoises";
-
-/* No comment provided by engineer. */
-"Chinese Panda Sticker" = "Autocollant de pandas chinois";
-
-/* No comment provided by engineer. */
-"Chinese Plum Blossom Sticker" = "Autocollant de fleurs de prunier chinoises";
-
-/* No comment provided by engineer. */
-"Chinese Rooster Sticker" = "Autocollant de coqs chinois";
-
-/* No comment provided by engineer. */
-"Chinese Woman Hat 2 Sticker" = "Autocollant de chapeau de femme chinois 2";
-
-/* No comment provided by engineer. */
-"Chinese Woman Hat Sticker" = "Autocollant de chapeau de femme chinois";
-
-/* No comment provided by engineer. */
-"Chinese Yin Yang Sticker" = "Autocollant Yin Yang chinois";
 
 /* Setup step 3 desc */
 "Connect" = "Connecter";
 
-/* No comment provided by engineer. */
-"Crown Sticker" = "Autocollant de couronne";
+/* Number of Copies for printing */
+"Copies" = "Copies";
+
+/* Number of Copies for printing */
+"Copy" = "Copie";
 
 /* No comment provided by engineer. */
-"Cupcake Sticker" = "Autocollant de petit gâteau";
+"Delete All" = "Supprimer tout";
 
 /* No comment provided by engineer. */
-"Diamond Sticker" = "Autocollant de diamant";
+"Delete all prints from Print Queue?" = "Supprimer toutes les impressions de la file d’attente ?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Rejeter";
@@ -149,41 +80,17 @@
 /* Social source title for Facebook */
 "Facebook" = "Facebook";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "Autocollant de plume 2";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Autocollant de plume";
-
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "Commentaires sur sprocket pour iOS (localisation de dossier: %@)";
 
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Cadre floral 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Cadre floral";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Des paramètres Bluetooth, appuyer sur « HP Sprocket » pour jumeler avec l’imprimante.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Fournir des commentaires";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Cadre de gradient";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Cadre à l'aquarelle verte";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Autocollant d’expression du cœur";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Autocollant de cœurs";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Comment faire";
@@ -194,12 +101,6 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Cadre kraft";
-
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "Autocollant de feuille 3";
-
 /* Setup step 1 desc */
 "Load Paper" = "Charger papier";
 
@@ -207,7 +108,7 @@
 "Log file has been cleared." = "Le fichier journal a été effacé.";
 
 /* No comment provided by engineer. */
-"Moon Sticker" = "Autocollant de lune";
+"NO" = "NON";
 
 /* Dismisses dialog without taking action */
 "No" = "Non";
@@ -221,43 +122,56 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Aucune image de l’application QZone trouvée";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Aucune impression dans la file d'attente d'impression";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Non, conservez-les";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Non, merci";
 
-/* Allows user close dialog */
-"OK" = "OK";
-
 /* No comment provided by engineer. */
-"OMG Sticker" = "Autocollant OMG";
+"Not all images were downloaded. Do you want to continue?" = "Certaines images n'ont pas été téléchargées. Voulez-vous continuer?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
+"OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Oups !";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Cadre orange";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pause";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Cadre à peinture aérosol rose";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Les photos seront imprimées dans l’ordre de leur ajout à la file d’impression une fois l'imprimante sprocket allumée et le mode Bluetooth activé.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Les photos seront imprimées dans l’ordre de leur ajout à la file d’impression.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
 
 /* No comment provided by engineer. */
 "Please connect to a data source.
-You can also use your device photos." = "Veuillez communiquer avec une source de données.
+You can also use your device photos." = "Veuillez brancher une source de données.
 Vous pouvez aussi utiliser les photos de votre appareil.";
 
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Veuillez nous dire ce qui est formidable et ce qui pourrait être amélioré !";
-
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Cadre à pois";
 
 /* Setup step 2 desc */
 "Power Up" = "Mise sous tension";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Maintenir le bouton d’alimentation appuyé jusqu'à ce que la DEL devienne blanche.";
+
+/* No comment provided by engineer. */
+"Print" = "Imprimer";
+
+/* No comment provided by engineer. */
+"Print Queue" = "File d’attente d'impression";
 
 /* No comment provided by engineer. */
 "Printers" = "Imprimantes";
@@ -270,9 +184,6 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 
 /* Social source title for Qzone */
 "Qzone" = "QZone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Cadre rouge";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Me le rappeler plus tard";
@@ -298,6 +209,9 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Enregistrer dans la pellicule de l'appareil photo";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Envoi à l’imprimante sprocket";
+
 /* Button for opening the app settings */
 "Settings" = "Paramètres";
 
@@ -308,19 +222,13 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 "Sign Out" = "Déconnexion";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Cadre négligé";
-
-/* No comment provided by engineer. */
-"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Désolé, votre problème ne peut être traité pour le moment. Cela est probablement dû au fait qu’il n’y a aucun compte courriel associé dans les paramétrages de votre appareil mobile.";
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Désolé, il est impossible de signaler votre problème actuellement, probablement parce qu'aucun compte courriel n'est configuré sur votre appareil mobile.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Mise à niveau du micrologiciel de l’imprimante Sprocket disponible";
 
 /* No comment provided by engineer. */
-"Star Sticker" = "Autocollant d’étoile";
-
-/* No comment provided by engineer. */
-"Stars Sticker" = "Autocollant d’étoiles";
+"Sprocket not Connected" = "Sprocket non connectée";
 
 /* Setup step 1 title */
 "Step 1" = "Étape 1";
@@ -333,57 +241,6 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 
 /* No comment provided by engineer. */
 "Success" = "Réussite";
-
-/* No comment provided by engineer. */
-"Sunglasses Sticker" = "Autocollant de lunettes de soleil";
-
-/* No comment provided by engineer. */
-"SuperBowl Banner Sticker" = "Autocollant de banderole de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Eye Black Sticker" = "Autocollant d'œil noir de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Flag Sticker" = "Autocollant de drapeau de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Foam Finger Sticker" = "Autocollant de doigt en mousse de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Football Flames Sticker" = "Autocollant de flammes de football de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Game Time Sticker" = "Autocollant de temps de jeu de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Glasses Sticker" = "Autocollant de lunettes de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Glasses Two Sticker" = "Autocollant de lunettes de la SuperBowl 2";
-
-/* No comment provided by engineer. */
-"SuperBowl Goal Post Sticker" = "Autocollant de poteau de but de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Heart Football Sticker" = "Autocollant de cœur au football de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Heart Football Two Sticker" = "Autocollant de cœur au football de la SuperBowl 2";
-
-/* No comment provided by engineer. */
-"SuperBowl Helmet Sticker" = "Autocollant de casque de la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl I Heart Football Sticker" = "Autocollant de cœur au football de la SuperBowl 1";
-
-/* No comment provided by engineer. */
-"SuperBowl Love Sticker" = "Autocollant de passion pour la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Owl Sticker" = "Autocollant de hibou pour la SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Stars n Balls Sticker" = "Autocollant d’étoiles et de ballons de la SuperBowl";
 
 /* No comment provided by engineer. */
 "Take Survey" = "Répondre au sondage";
@@ -400,9 +257,6 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* No comment provided by engineer. */
 "Tell us what you think of sprocket" = "Dites-nous ce que vous pensez de sprocket";
 
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Conditions d'utilisation";
-
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Le fichier journal est joint à ce message.";
 
@@ -412,146 +266,20 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Pour mettre à niveau, charger l’imprimante sprocket à au moins 75 %, puis aller à « Sprocket ».";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Cadre turquoise";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Mise à niveau";
-
-/* No comment provided by engineer. */
-"Valentines Broken Heart Sticker" = "Autocollant de cœur brisé de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Butterfly Sticker" = "Autocollant de papillon de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Cat Sticker" = "Autocollant de chat de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Conversation Heart Sticker" = "Autocollant de cœurs en conversation de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Cupcake Sticker" = "Autocollant de petit gâteau de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Dancing Hearts Sticker" = "Autocollant de cœurs dansants de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Delivery Bird Sticker" = "Autocollant d’oiseau de livraison de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Flower Crown Sticker" = "Autocollant de couronne de fleurs de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Flying Heart Sticker" = "Autocollant de cœurs volants de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Hat Sticker" = "Autocollant de chapeau de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Antennae Sticker" = "Autocollant d’antennes de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Arrow Sticker" = "Autocollant de flèche de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Balloons Sticker" = "Autocollant de ballons de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Banner Sticker" = "Autocollant de bannière de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Bouquet Sticker" = "Autocollant de bouquet de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Bow Sticker" = "Autocollant d’arc de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Confetti Sticker" = "Autocollant de confettis de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Emoji Sticker" = "Autocollant d’émoji de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Frame Sticker" = "Autocollant de cadre de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Garland Sticker" = "Autocollant de guirlande de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Glasses Sticker" = "Autocollant de lunettes de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Glasses Two Sticker" = "Autocollant de lunettes de la Saint-Valentin 2";
-
-/* No comment provided by engineer. */
-"Valentines Heart Monster Sticker" = "Autocollant de monstre de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Thought Sticker" = "Autocollant de pensée de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Heart Tiara Sticker" = "Autocollant de diadème de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Cadre de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Cadre de cœurs se chevauchant de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Lock And Key Sticker" = "Autocollant de serrure et de clé de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Love Creature Sticker" = "Autocollant de créature d’amour de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Love Letter Sticker" = "Autocollant de lettre d’amour de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Pig Sticker" = "Autocollant de petit cochon de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Cadre à pois de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Cadre à l’aquarelle rose de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Cadre rouge de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Cadre à bandes rouges de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Rosebud Sticker" = "Autocollant de bouton de rose de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Target Heart Sticker" = "Autocollant de cible en forme de cœur de la Saint-Valentin";
-
-/* No comment provided by engineer. */
-"Valentines Xoxo Sticker" = "Autocollant de bisous de la Saint-Valentin";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Version %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Cadre à l’aquarelle bleue";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
-
-/* No comment provided by engineer. */
-"White Frame" = "Cadre blanc";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Cadre en bois";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Voulez-vous vous déconnecter de %@?";
 
 /* No comment provided by engineer. */
-"XOXO Sticker" = "Autocollant de bisous";
+"YES" = "OUI";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Oui";

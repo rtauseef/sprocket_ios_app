@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld no %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%Li izdruka drukas rindā";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li izdrukas drukas rindā";
+
+/* No comment provided by engineer. */
 "About" = "Par";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Pirkt papīru";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Autentificējoties pakalpojumā %@, jūs piekrītat arī HP <pakalpojumu sniegšanas noteikumiem>.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Nepieciešama piekļuve kamerai";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Izveidot savienojumu";
+
+/* Number of Copies for printing */
+"Copies" = "Kopijas";
+
+/* Number of Copies for printing */
+"Copy" = "Kopēt";
+
+/* No comment provided by engineer. */
+"Delete All" = "Dzēst visus";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Dzēst visas izdrukas no drukas rindas?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Vairs nerādīt";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "2. puķu rāmis";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Puķu rāmis";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Sadaļā Bluetooth iestatījumi pieskarieties vienumam HP Sprocket, lai izveidotu pāra savienojumu ar printeri.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Sniegt atsauksmes";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Gradienta rāmis";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Zaļas krāsas ūdens rāmis";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Norādījumi";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Ietinamā papīra rāmis";
-
 /* Setup step 1 desc */
 "Load Paper" = "Papīra ievietošana";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Žurnālfails ir notīrīts.";
+
+/* No comment provided by engineer. */
+"NO" = "NĒ";
 
 /* Dismisses dialog without taking action */
 "No" = "Nē";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Neatrada lietojumprogrammas Qzone attēlus.";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Drukas rindā nav drukas darbu";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Nē, paturēt tos";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Nē, paldies!";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Visi attēli netika lejupielādēti. Vai vēlaties turpināt?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "Labi";
 
 /* No comment provided by engineer. */
 "Oops!" = "Hmm...";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Oranžs rāmis";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pauzēt";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Sārtas krāsas aerosola rāmis";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Kad sprocket printeris ir ieslēgts un savienots ar Bluetooth, fotogrāfijas tiks izdrukātas tādā secībā, kādā tās tika pievienotas drukas rindai.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Fotogrāfijas tiks izdrukātas tādā secībā, kādā tās tika pievienotas drukas rindai.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Jūs varat izmantot arī savas ierīces fotogrāfijas.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Lūdzu, informējiet mūs par to, kas jūs sajūsmina un kas jāuzlabo.";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Punktains rāmis";
-
 /* Setup step 2 desc */
 "Power Up" = "Barošanas ieslēgšana";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Turiet nospiestu ieslēgšanas/izslēgšanas pogu, līdz gaismas diodes (LED) indikators sāks degt baltā krāsā.";
+
+/* No comment provided by engineer. */
+"Print" = "Drukāt";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Drukas rinda";
 
 /* No comment provided by engineer. */
 "Printers" = "Printeri";
@@ -156,9 +184,6 @@ Jūs varat izmantot arī savas ierīces fotogrāfijas.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Sarkans rāmis";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Atgādināt vēlāk";
@@ -184,6 +209,9 @@ Jūs varat izmantot arī savas ierīces fotogrāfijas.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Saglabāt mapē Fotoattēli no kameras";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Sūta uz Sprocket printeri";
+
 /* Button for opening the app settings */
 "Settings" = "Iestatījumi";
 
@@ -194,13 +222,13 @@ Jūs varat izmantot arī savas ierīces fotogrāfijas.";
 "Sign Out" = "Izrakstīties";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Netīrs rāmis";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Atvainojiet, par jūsu problēmu šobrīd nevar iesniegt ziņojumu. Iespējams, tas noticis tādēļ, ka jūsu mobilajā ierīcē nav iestatīts neviens pasta konts.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Pieejams Sprocket printera programmaparatūras jauninājums";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket nav pievienots";
 
 /* Setup step 1 title */
 "Step 1" = "1. darbība";
@@ -238,47 +266,20 @@ Jūs varat izmantot arī savas ierīces fotogrāfijas.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Lai jauninātu, uzlādējiet Sprocket printeri vismaz par 75 % un pēc tam izvēlnē atveriet sadaļu Sprocket.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Tirkīza rāmis";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Jaunināt";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Valentīndienas siržu rāmis";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Valentīndienas siržu pārklājuma rāmis";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Valentīndienas rozā punktains rāmis";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Valentīndienas rozā akvareļu rāmis";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Valentīndienas sarkans rāmis";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Valentīndienas sarkans svītrains rāmis";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versija %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Ūdens zils rāmis";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Balts rāmis";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Rāmis ar koka apakšdaļu";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Vai vēlaties izrakstīties no %@?";
+
+/* No comment provided by engineer. */
+"YES" = "JĀ";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Jā";

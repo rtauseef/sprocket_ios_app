@@ -1,0 +1,15 @@
+/* (No Commment) */
+"CFBundleDisplayName" = "Sprocket";
+
+/* (No Commment) */
+"CFBundleName" = "Sprocket";
+
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocket זקוקה לגישת Bluetooth כדי להתחבר למדפסת HP Sprocket.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "אפשר גישה לצילום ולהדפסת תמונות.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "אפשר גישה להדפסת ולשמירת התמונות שלך.";
+
