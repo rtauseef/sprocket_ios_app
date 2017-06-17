@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld / %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "Yazdırma Kuyruğunda %li baskı";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "Yazdırma Kuyruğunda %li baskı";
+
+/* No comment provided by engineer. */
 "About" = "Hakkında";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Kağıt Satın Al";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "%@ kimliğinizi doğruladığınızda, HP’nin <Hizmet Şartlarını> da kabul etmiş olursunuz.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Kameraya Erişim Gereklidir";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Bağlan";
+
+/* Number of Copies for printing */
+"Copies" = "Kopya";
+
+/* Number of Copies for printing */
+"Copy" = "Kopya";
+
+/* No comment provided by engineer. */
+"Delete All" = "Tümünü Sil";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Tüm baskılar Yazdırma Kuyruğundan silinsin mi?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Yoksay";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Çiçekli 2 Çerçeve";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Çiçekli Çerçeve";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Yazıcıyla eşleştirmek için Bluetooth Ayarlarından “HP sprocket” öğesine dokunun.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Geribildirimde Bulun";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Gradyan Çerçeve";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Su Yeşili Rengi Çerçeve";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Nasıl Yapılır?";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Kraft Çerçeve";
-
 /* Setup step 1 desc */
 "Load Paper" = "Kağıt Yerleştir";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Günlük dosyası temizlendi.";
+
+/* No comment provided by engineer. */
+"NO" = "HAYIR";
 
 /* Dismisses dialog without taking action */
 "No" = "Hayır";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Qzone uygulamasında hiç resim bulunamadı";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Yazdırma Kuyruğunda baskı yok";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Hayır, Bunları Sakla";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Hayır, teşekkürler";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Tüm görüntüler indirilmedi. Devam etmek istiyor musunuz?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "Tamam";
 
 /* No comment provided by engineer. */
 "Oops!" = "Aman!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Turuncu Çerçeve";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Duraklat";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Pembe Sprey Boyalı Çerçeve";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Fotoğraflar, sprocket yazıcı açıldıktan ve Bluetooth bağlandıktan sonra, Yazdırma Kuyruğuna eklendikleri sıraya göre basılacaktır.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Fotoğraflar Yazdırma Kuyruğuna eklendikleri sıraya göre basılacaktır.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Aygıtınızdaki fotoğrafları da kullanabilirsiniz.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Lütfen bize neyin mükemmel olduğunu ve nelerin daha iyi olabileceğini söyleyin!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Puanlı Çerçeve";
-
 /* Setup step 2 desc */
 "Power Up" = "Gücü Aç";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Güç düğmesine basın ve LED beyaza dönene kadar düğmeyi basılı tutun.";
+
+/* No comment provided by engineer. */
+"Print" = "Yazdır";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Yazdırma Kuyruğu";
 
 /* No comment provided by engineer. */
 "Printers" = "Yazıcılar";
@@ -156,9 +184,6 @@ Aygıtınızdaki fotoğrafları da kullanabilirsiniz.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Kırmızı Çerçeve";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Bana daha sonra hatırlat";
@@ -184,6 +209,9 @@ Aygıtınızdaki fotoğrafları da kullanabilirsiniz.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Film Rulosuna Kaydet";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Sprocket yazıcıya gönderiliyor";
+
 /* Button for opening the app settings */
 "Settings" = "Ayarlar";
 
@@ -194,13 +222,13 @@ Aygıtınızdaki fotoğrafları da kullanabilirsiniz.";
 "Sign Out" = "Oturumu Kapat";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Dalgalı Çerçeve";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Üzgünüz, sorununuz şu anda bildirilemiyor. Bu durumun nedeni mobil aygıtınızda herhangi bir e-posta hesabının kurulu olmaması olabilir.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Sprocket Yazıcı için Ürün Yazılımı Yükseltmesi Var";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket bağlı değil";
 
 /* Setup step 1 title */
 "Step 1" = "1. Adım";
@@ -238,47 +266,20 @@ Aygıtınızdaki fotoğrafları da kullanabilirsiniz.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Yükseltmek için sprocket yazıcıyı en az %75 oranında şarj ettikten sonra menüde 'sprocket' seçeneğine gidin.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Turkuaz Çerçeve";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Yükselt";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Sevgililer Günü Kalp Etiketi";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Sevgililer Günü Üst Üste Kalpler Etiketi";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Sevgililer Günü Pembe Puanlı Çerçeve";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Sevgililer Günü Pembe Suluboya Çerçeve";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Sevgililer Günü Kırmızı Çerçeve";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Sevgililer Günü Kırmızı Çizgili Çerçeve";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Sürüm %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Su Mavisi Çerçeve";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Beyaz Çerçeve";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Ahşap Çerçeve";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "%@? oturumunu kapatmak istiyor musunuz?";
+
+/* No comment provided by engineer. */
+"YES" = "EVET";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Evet";

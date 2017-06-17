@@ -1,9 +1,9 @@
 /* Class = "UIViewController"; title = "Image"; ObjectID = "ObA-dk-sSI"; */
-"ObA-dk-sSI.title" = "Bild";
+"ObA-dk-sSI.title" = "Obrázok";
 
 /* Class = "UIButton"; normalTitle = "Print to sprocket"; ObjectID = "XPD-kO-soS"; */
-"XPD-kO-soS.normalTitle" = "Skriv ut med sprocket";
+"XPD-kO-soS.normalTitle" = "Vytlačiť v tlačiarni sprocket";
 
 /* Class = "UILabel"; text = "Connected"; ObjectID = "nFm-89-OFW"; */
-"nFm-89-OFW.text" = "Ansluten";
+"nFm-89-OFW.text" = "Pripojené";
 
