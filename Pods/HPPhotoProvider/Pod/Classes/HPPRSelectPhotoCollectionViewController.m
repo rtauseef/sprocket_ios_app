@@ -57,6 +57,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 @property (strong, nonatomic) NSMutableArray<HPPRMedia *> *selectedPhotos;
 
+@property (assign, nonatomic, getter=isPortraitInterfaceOrientation) BOOL portraitInterfaceOrientation;
+
 @end
 
 @implementation HPPRSelectPhotoCollectionViewController {
@@ -109,6 +111,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
     self.provider.imageRequestsCancelled = NO;
 
     self.noInternetConnectionRetryView.delegate = self;
+    
+    self.portraitInterfaceOrientation = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
 
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
     [self.collectionView addGestureRecognizer:pinchRecognizer];
@@ -133,6 +137,9 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
     if  (self.allowsMultipleSelection) {
         [self beginMultiSelect];
+    } else if (self.isPortraitInterfaceOrientation != UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.portraitInterfaceOrientation = !self.isPortraitInterfaceOrientation;
+        [self.collectionView reloadData];
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
@@ -159,7 +166,10 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
 {
-    [self.collectionView reloadData];
+    if (self.isPortraitInterfaceOrientation != UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.portraitInterfaceOrientation = !self.isPortraitInterfaceOrientation;
+        [self.collectionView reloadData];
+    }
 }
 
 #pragma mark - Camera Collection View Methods

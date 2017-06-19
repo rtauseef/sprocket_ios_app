@@ -83,7 +83,7 @@
 "Settings" = "Configuración";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "La aplicación %@ utiliza fotografías de Instagram para crear imágenes asombrosas. Permita que %@ acceda a sus fotografías de Instagram para continuar.";
+"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "La aplicación %1$@ utiliza fotografías de Instagram para crear imágenes asombrosas. Permita que %2$@ acceda a sus fotografías de Instagram para continuar.";
 
 /* Indicates that a user's photo album was deleted */
 "The album was deleted" = "El álbum fue eliminado";

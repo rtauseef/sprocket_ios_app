@@ -83,7 +83,7 @@
 "Settings" = "Indstillinger";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "Appen %@ bruger Instagram-fotos til at lave nogle fantastiske snapshots. Giv %@ lov til at få adgang til dine Instagram-fotos for at fortsætte.";
+"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "Appen %1$@ bruger Instagram-fotos til at lave nogle fantastiske snapshots. Giv %2$@ lov til at få adgang til dine Instagram-fotos for at fortsætte.";
 
 /* Indicates that a user's photo album was deleted */
 "The album was deleted" = "Albummet var slettet";
