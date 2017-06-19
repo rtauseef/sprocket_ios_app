@@ -151,6 +151,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.drawer.showCopies = NO;
+        self.drawer.alwaysShowPrintQueue = YES;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
 
     } else {
@@ -491,6 +492,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
 {
+    if (self.drawer.isOpened || self.drawer.isPeeking) {
+        [self.drawer configureShowPrintQueue];
+    }
+
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
 
     if (animated) {
@@ -498,9 +503,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [self reloadCarouselItems];
         } completion:^(BOOL finished) {
             [self reloadCarouselItemsAndEditedImage];
+            if (!self.drawer.isOpened) {
+                [self.drawer configureShowPrintQueue];
+            }
         }];
     } else {
         [self reloadCarouselItemsAndEditedImage];
+        if (!self.drawer.isOpened) {
+            [self.drawer configureShowPrintQueue];
+        }
     }
 }
 
@@ -521,7 +532,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (!self.drawer.isOpened && !self.drawer.isPeeking) {
         return;
     }
-    
+
     self.drawer.isOpened = NO;
     self.drawer.isPeeking = NO;
     self.wasDrawerOpenedByUser = NO;
@@ -534,7 +545,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (self.drawer.isOpened) {
         return;
     }
-    
+
     self.drawer.isOpened = YES;
     self.drawer.isPeeking = NO;
 
@@ -604,6 +615,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     currentGesturesView.totalRotation = 0.0F;
     currentGesturesView.scrollView.zoomScale = currentGesturesView.minimumZoomScale;
 
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 
     self.didChangeProject = YES;
@@ -613,14 +625,21 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 }
 
 - (void)photoEditViewControllerDidCancel:(IMGLYPhotoEditViewController *)photoEditViewController {
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)photoEditViewControllerDidFailToGeneratePhoto:(IMGLYPhotoEditViewController *)photoEditViewController {
     MPLogError(@"photoEditViewControllerDidFailToGeneratePhoto:%@", photoEditViewController);
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)clearPhotoEditor
+{
+    self.photoEditViewController = nil;
+    self.imglyManager.photoEditViewController = nil;
+}
 
 #pragma mark - Camera Handlers
 
@@ -948,6 +967,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
         [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
         
+        gestureView.editedImage = [gestureView screenshotImage];
         if (processor) {
             NSLog(@"WATERMARK - WILL PROCESS IMAGE");
             

@@ -10,15 +10,14 @@ Feature: Verify Edit frame feature
 
       |Hearts Overlay Frame       |
       |Sloppy Frame               |
+      |4th Stars Overlay Frame    |
+      |Fireworks Frame            |
+      |Stripes RWB Frame          |
+      |Stripes RWB Pol Frame      |
       |Rainbow Frame              |
       |White Frame                |
       |Stars Overlay Frame        |
       |Polka Dots Frame           |
-     # |L\'Oreal iOS Frame        |
-      #|Nestle iOS Frame           |
-      #|San Pelegrino iOS Frame    |
-      #|ChainSmokers 1 Frame       |
-      #|ChainSmokers 2 Frame       |
       |Grey Shadow Frame          |
       |Pink Triangle Frame        |
       |White Rounded Frame        |

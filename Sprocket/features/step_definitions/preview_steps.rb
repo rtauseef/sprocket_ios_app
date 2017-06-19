@@ -126,13 +126,13 @@ Then(/^I should see the number of copies "(.*?)"$/) do |copies|
     if copies == "incremented"
         num_copies = $num.to_i
         incr_num = num_copies + 1
-        copies_incr = query("UILabel index:3", :text)[0].gsub(' Copy','').gsub(' Copies','')
+        copies_incr = query("UILabel index:1", :text)[0].gsub(' Copy','').gsub(' Copies','')
         $copies_incr = copies_incr.to_i
         raise "Copies not incremented" unless incr_num == $copies_incr
     else
         num_copies = $copies_incr
         incr_num = num_copies - 1
-        copies_incr = query("UILabel index:3", :text)[0].gsub(' Copy','').gsub(' Copies','')
+        copies_incr = query("UILabel index:1", :text)[0].gsub(' Copy','').gsub(' Copies','')
         copies_incr = copies_incr.to_i
         raise "Copies not incremented" unless incr_num == copies_incr
     end

@@ -131,14 +131,14 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                        style:UIAlertActionStyleCancel
                                                      handler:nil];
     [alertController addAction:okAction];
-
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
+    
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -161,7 +161,7 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
-
+    
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
                                                        style:UIAlertActionStyleCancel
                                                      handler:nil];
@@ -173,7 +173,7 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
+    
     UIAlertAction *printAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print", nil)
                                                           style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction * _Nonnull action) {
@@ -194,14 +194,14 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                        style:UIAlertActionStyleCancel
                                                      handler:nil];
     [alertController addAction:okAction];
-
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
+    
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 

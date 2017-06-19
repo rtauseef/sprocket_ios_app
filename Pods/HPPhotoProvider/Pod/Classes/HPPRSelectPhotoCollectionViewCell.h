@@ -23,8 +23,8 @@
 @property (weak, nonatomic) id<HPPRSelectPhotoCollectionViewCellDelegate> delegate;
 @property (assign, nonatomic) BOOL selectionEnabled;
 
-- (void)showLoading;
-- (void)hideLoading;
+- (void)showLoadingAnimated:(BOOL)animated;
+- (void)hideLoadingAnimated:(BOOL)animated;
 
 @end
 

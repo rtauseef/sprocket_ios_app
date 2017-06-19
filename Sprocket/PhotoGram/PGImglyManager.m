@@ -14,14 +14,20 @@
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
 #import "UIColor+Style.h"
+#import "PGCustomStickerManager.h"
 #import <imglyKit/IMGLYAnalyticsConstants.h>
 
 static NSString * const kImglyMenuItemMagic = @"Magic";
+static NSString * const kImglyMenuItemAdjust = @"Adjust";
 static NSString * const kImglyMenuItemFilter = @"Filter";
 static NSString * const kImglyMenuItemFrame = @"Frame";
 static NSString * const kImglyMenuItemSticker = @"Sticker";
+static NSString * const kImglyMenuItemBrush = @"Brush";
 static NSString * const kImglyMenuItemText = @"Text";
 static NSString * const kImglyMenuItemCrop = @"Crop";
+
+NSString * const kPGImglyManagerCustomStickerPrefix = @"CS";
+NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerStickersChangedNotification";
 
 @interface PGImglyManager() <IMGLYAnalyticsClient>
 
@@ -33,10 +39,15 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricsManager;
 
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
+@property (strong, nonatomic) IMGLYStickerCategoryDataSource *stickerCategoryDataSource;
+
+@property (strong, nonatomic) NSArray <NSString *> *adjustNames;
 
 @end
 
 @implementation PGImglyManager
+
+int const kCustomButtonTag = 9999;
 
 - (instancetype)init {
     self = [super init];
@@ -47,6 +58,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             NSURL *licenseURL = [[NSBundle mainBundle] URLForResource:@"imgly_license" withExtension:@""];
             [PESDK unlockWithLicenseAt:licenseURL];
         });
+        
+        self.adjustNames = @[@"Brightness", @"Contrast", @"Saturation", @"Highlights", @"Exposure", @"Clarity"];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStickerChangedNotification:) name:kPGImglyManagerStickersChangedNotification object:nil];
     }
 
     return self;
@@ -62,6 +77,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                                                                        }
                                                                         state:nil];
 
+    IMGLYBoxedMenuItem *adjustItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemAdjust
+                                                                          icon:[UIImage imageNamed:@"ic_adjust_48pt"]
+                                                                          tool:[[IMGLYAdjustToolController alloc] initWithConfiguration:configuration]];
+
     IMGLYBoxedMenuItem *filterItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFilter
                                                                           icon:[UIImage imageNamed:@"ic_filter_48pt"]
                                                                           tool:[[IMGLYFilterToolController alloc] initWithConfiguration:configuration]];
@@ -74,6 +93,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                                                                            icon:[UIImage imageNamed:@"ic_sticker_48pt"]
                                                                            tool:[[IMGLYStickerToolController alloc] initWithConfiguration:configuration]];
 
+    IMGLYBoxedMenuItem *brushItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemBrush
+                                                                        icon:[UIImage imageNamed:@"ic_brush_48pt"]
+                                                                        tool:[[IMGLYBrushToolController alloc] initWithConfiguration:configuration]];
+
     IMGLYBoxedMenuItem *textItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemText
                                                                         icon:[UIImage imageNamed:@"ic_text_48pt"]
                                                                         tool:[[IMGLYTextToolController alloc] initWithConfiguration:configuration]];
@@ -84,9 +107,11 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
     return @[
              magicItem,
+             adjustItem,
              filterItem,
              frameItem,
              stickerItem,
+             brushItem,
              textItem,
              cropItem
              ];
@@ -212,6 +237,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         // Editor general configuration
 
         [builder configurePhotoEditorViewController:^(IMGLYPhotoEditViewControllerOptionsBuilder * _Nonnull photoEditorBuilder) {
+            photoEditorBuilder.allowedPhotoEditOverlayActionsAsNSNumbers = @[];
             photoEditorBuilder.frameScaleMode = UIViewContentModeScaleToFill;
             photoEditorBuilder.backgroundColor = [UIColor HPRowColor];
             photoEditorBuilder.allowsPreviewImageZoom = NO;
@@ -219,6 +245,11 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             photoEditorBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"editor-tool-screen"];
 
             photoEditorBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"editor-tool-apply-btn"];
+            
+            photoEditorBuilder.discardConfirmationClosure = ^(IMGLYPhotoEditViewController * _Nonnull photoEditViewController, void (^ _Nonnull closure)(void)) {
+                [embellishmentMetricsManager clearAllEmbellishmentMetrics];
+                [photoEditViewController dismissViewControllerAnimated:YES completion:nil];
+            };
 
             PGEmbellishmentMetric *autofixMetric = [[PGEmbellishmentMetric alloc] initWithName:@"Auto-fix" andCategoryType:PGEmbellishmentCategoryTypeEdit];
 
@@ -238,6 +269,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                         cell.imageView.highlighted = YES;
                     }
 
+                } else if ([item.title isEqualToString:kImglyMenuItemAdjust]) {
+                    cell.accessibilityIdentifier = @"editAdjust";
+                    
                 } else if ([item.title isEqualToString:kImglyMenuItemFilter]) {
                     cell.accessibilityIdentifier = @"editFilters";
 
@@ -267,6 +301,48 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
         }];
 
+        // Adjust configuration
+        
+        [builder configureAdjustToolController:^(IMGLYAdjustToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"adjust-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"adjust-tool-apply-btn"];
+            
+            toolBuilder.allowedAdjustToolsAsNSNumbers = @[[NSNumber numberWithInteger:AdjustToolBrightness],
+                                                          [NSNumber numberWithInteger:AdjustToolContrast],
+                                                          [NSNumber numberWithInteger:AdjustToolSaturation]];
+
+            toolBuilder.sliderConfigurationClosure = ^(IMGLYSlider * _Nonnull slider) {
+                slider.filledTrackColor = [UIColor HPBlueColor];
+                slider.thumbTintColor = [UIColor HPBlueColor];
+            };
+            
+            toolBuilder.adjustToolButtonConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum AdjustTool tool) {
+                cell.captionLabel.text = nil;
+                
+                if (AdjustToolContrast == tool) {
+                    cell.imageView.image = [UIImage imageNamed:@"ic_contrast_48pt"];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_contrast_active_48pt"];
+                } else if (AdjustToolSaturation == tool) {
+                    cell.imageView.image = [UIImage imageNamed:@"ic_saturation_48pt"];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_saturation_active_48pt"];
+                } else if (AdjustToolBrightness == tool) {
+                    cell.imageView.image = [UIImage imageNamed:@"ic_brightness_48pt"];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_brightness_active_48pt"];
+                }
+            };
+            
+            toolBuilder.sliderChangedValueClosure = ^(IMGLYSlider * _Nonnull slider, enum AdjustTool tool) {
+                if (tool < self.adjustNames.count) {
+                    NSString *name = self.adjustNames[tool];
+                    
+                    PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
+                    
+                    if (![embellishmentMetricsManager hasEmbellishmentMetric:adjustMetric]) {
+                        [embellishmentMetricsManager addEmbellishmentMetric:adjustMetric];
+                    }
+                }
+            };
+        }];
 
         // Filters configuration
 
@@ -330,6 +406,18 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-tool-apply-btn"];
 
             toolBuilder.stickerCategoryDataSourceConfigurationClosure = ^(IMGLYStickerCategoryDataSource * _Nonnull dataSource) {
+                self.stickerCategoryDataSource = dataSource;
+
+                dataSource.stickerCategoriesChangedClosure = ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSIndexPath *path = [NSIndexPath indexPathForItem:1 inSection:0];
+
+                        UICollectionView *collectionView = self.stickerCategoryDataSource.collectionView;
+                        [collectionView selectItemAtIndexPath:path animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+                        [collectionView.delegate collectionView:collectionView didSelectItemAtIndexPath:path];
+                    });
+                };
+
                 dataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
             };
 
@@ -338,17 +426,42 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 cell.borderColor = [UIColor HPRowColor];
                 cell.contentView.backgroundColor = [UIColor HPRowColor];
                 cell.accessibilityLabel = category.accessibilityLabel;
+                [self resetCustomSticker:cell];
+                if ([category.accessibilityLabel isEqualToString:@"Add Custom Sticker"]) {
+                    cell.tintColor = [UIColor HPRowColor];
+                    [self configureAddCustomStickerView:cell];
+                }
+                if ([category.accessibilityLabel isEqualToString:@"Custom Stickers"]) {
+                    [self configureCustomStickerCategoryView:cell];
+                }
             };
 
             toolBuilder.stickerButtonConfigurationClosure = ^(IMGLYIconCollectionViewCell * _Nonnull cell, IMGLYSticker * _Nonnull sticker) {
                 cell.accessibilityLabel = sticker.accessibilityLabel;
+                cell.accessibilityValue = sticker.accessibilityValue;
+                [self resetCustomSticker:cell];
+
+                NSError *error = NULL;
+                NSString *pattern = [NSString stringWithFormat:@"^%@[0-9]{%d}$", kPGImglyManagerCustomStickerPrefix, kCustomStickerManagerPrefixLength];
+                NSRegularExpression *regex = [NSRegularExpression
+                                              regularExpressionWithPattern:pattern
+                                              options:NSRegularExpressionCaseInsensitive
+                                              error:&error];
+
+                if (sticker.accessibilityLabel) {
+                    [regex enumerateMatchesInString:sticker.accessibilityLabel
+                                            options:0
+                                              range:NSMakeRange(0, [sticker.accessibilityLabel length])
+                                         usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+                        [self configureCustomStickerView:cell];
+                    }];
+                }
             };
 
             toolBuilder.addedStickerClosure = ^(IMGLYSticker * _Nonnull sticker) {
                 PGEmbellishmentMetric *stickerMetric = [[PGEmbellishmentMetric alloc] initWithName:sticker.accessibilityLabel andCategoryType:PGEmbellishmentCategoryTypeSticker];
                 [embellishmentMetricsManager addEmbellishmentMetric:stickerMetric];
             };
-
         }];
 
         [builder configureStickerColorToolController:^(IMGLYStickerColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
@@ -360,6 +473,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
         [builder configureStickerOptionsToolController:^(IMGLYStickerOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.allowedStickerOverlayActionsAsNSNumbers = @[[NSNumber numberWithInteger:StickerOverlayActionAdd], [NSNumber numberWithInteger:StickerOverlayActionDelete]];
             toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"sticker-options-tool-screen"];
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"sticker-options-tool-apply-btn"];
 
@@ -411,21 +525,16 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
         [builder configureTextOptionsToolController:^(IMGLYTextOptionsToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.allowedTextOverlayActionsAsNSNumbers = @[[NSNumber numberWithInteger:TextOverlayActionAdd], [NSNumber numberWithInteger:TextOverlayActionDelete]];
             toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"text-options-tool-screen"];
             toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"text-options-tool-apply-btn"];
 
             toolBuilder.actionButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum TextAction action) {
-                UIImage *image;
-
                 if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
                     IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
 
                     itemCell.captionLabel.text = nil;
-
-                    if (image) {
-                        itemCell.imageView.image = image;
-                    }
-
+                    
                 } else if ([cell isKindOfClass:[IMGLYLabelCaptionCollectionViewCell class]]) {
                     IMGLYLabelCaptionCollectionViewCell *itemCell = (IMGLYLabelCaptionCollectionViewCell *) cell;
 
@@ -437,6 +546,49 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         }];
 
 
+        // Brush configuration
+        
+        [builder configureBrushToolController:^(IMGLYBrushToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"brush-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"brush-tool-apply-btn"];
+            
+            toolBuilder.sliderConfigurationClosure = ^(IMGLYSlider * _Nonnull slider) {
+                slider.filledTrackColor = [UIColor HPBlueColor];
+                slider.thumbTintColor = [UIColor HPBlueColor];
+            };
+            
+            toolBuilder.brushToolButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum BrushTool tool) {
+                
+                if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
+                    IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
+                    
+                    itemCell.captionLabel.text = nil;
+                    
+                    if (BrushToolHardness == tool) {
+                        itemCell.imageView.image = [UIImage imageNamed:@"imgly_icon_option_focus_radial"];
+                        itemCell.imageView.highlightedImage = [UIImage imageNamed:@"imgly_icon_option_focus_radial_active"];
+                    }
+                } else if ([cell isKindOfClass:[IMGLYLabelCaptionCollectionViewCell class]]) {
+                    IMGLYLabelCaptionCollectionViewCell *labelCell = (IMGLYLabelCaptionCollectionViewCell *)cell;
+                    labelCell.captionLabel.text = nil;
+                    
+                    if (BrushToolSize == tool) {
+                        labelCell.label.highlightedTextColor = [UIColor HPBlueColor];
+                    }
+                }
+            };
+            
+            toolBuilder.allowedBrushOverlayActionsAsNSNumbers = @[[NSNumber numberWithInteger:BrushOverlayActionDelete]];
+        }];
+        
+        [builder configureBrushColorToolController:^(IMGLYBrushColorToolControllerOptionsBuilder * _Nonnull toolBuilder) {
+            toolBuilder.titleViewConfigurationClosure = [self titleBlockWithAccessibilityLabel:@"brush-color-tool-screen"];
+            toolBuilder.applyButtonConfigurationClosure = [self applyButtonBlockWithAccessibilityLabel:@"brush-color-tool-apply-btn"];
+            
+            toolBuilder.brushColorActionButtonConfigurationClosure = self.colorBlock;
+        }];
+
+        
         // Transform/Crop configuration
 
         [builder configureTransformToolController:^(IMGLYTransformToolControllerOptionsBuilder * _Nonnull toolBuilder) {
@@ -469,6 +621,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 
 - (void)setPhotoEditViewController:(IMGLYPhotoEditViewController *)photoEditViewController
 {
+    _photoEditViewController = photoEditViewController;
+    
     void (^ _Nullable selectionChangedHandler)(UIView * _Nullable, UIView * _Nullable) = photoEditViewController.overlayController.selectionChangedHandler;
     
     __weak PGImglyManager *weakSelf = self;
@@ -531,6 +685,11 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     self.currentScreenName = screenView;
 }
 
+- (PGEmbellishmentMetric *)brushMetric
+{
+    return [[PGEmbellishmentMetric alloc] initWithName:@"Brush" andCategoryType:PGEmbellishmentCategoryTypeEdit];
+}
+
 - (void)logEvent:(IMGLYAnalyticsEventName _Nonnull)event attributes:(NSDictionary<IMGLYAnalyticsEventAttributeName, id> * _Nullable)attributes
 {
     if (event == IMGLYAnalyticsEventNameFilterSelect) {
@@ -540,13 +699,11 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     if (event == IMGLYAnalyticsEventNameFrameSelect) {
         if ([attributes[IMGLYAnalyticsEventAttributeNameFrame] isKindOfClass:[IMGLYFrame class]]) {
             self.selectedFrame = ((IMGLYFrame *)attributes[IMGLYAnalyticsEventAttributeNameFrame]).accessibilityLabel;
-        } else {
-            self.selectedFrame = @"NoFrame";
         }
     }
     
     if (event == IMGLYAnalyticsEventNameFrameDeselect) {
-        self.selectedFrame = nil;
+        self.selectedFrame = @"No Frame";
     }
     
     if (event == IMGLYAnalyticsEventNameApplyChanges) {
@@ -560,6 +717,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             if (self.selectedFrame) {
                 [self.embellishmentMetricsManager addEmbellishmentMetric:[[PGEmbellishmentMetric alloc] initWithName:self.selectedFrame andCategoryType:PGEmbellishmentCategoryTypeFrame]];
             }
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameBrush) {
+            [self.embellishmentMetricsManager addEmbellishmentMetric:[self brushMetric]];
         }
     }
     
@@ -570,6 +729,13 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             self.selectedFilter = nil;
         } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameFrame) {
             self.selectedFrame = nil;
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameAdjust) {
+            for (NSString *name in self.adjustNames) {
+                PGEmbellishmentMetric *adjustMetric = [[PGEmbellishmentMetric alloc] initWithName:name andCategoryType:PGEmbellishmentCategoryTypeEdit];
+                [self.embellishmentMetricsManager removeEmbellishmentMetric:adjustMetric];
+            }
+        } else if (self.currentScreenName == IMGLYAnalyticsScreenViewNameBrush) {
+            [self.embellishmentMetricsManager removeEmbellishmentMetric:[self brushMetric]];
         }
     }
     
@@ -578,6 +744,77 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
         
         [self.embellishmentMetricsManager removeEmbellishmentMetric:stickerMetric];
     }
+}
+
+#pragma mark - Custom Sticker
+
+- (void)resetCustomSticker:(UICollectionViewCell *)cell
+{
+    UIView *customView = [cell.contentView viewWithTag:kCustomButtonTag];
+    if (customView) {
+        [customView removeFromSuperview];
+    }
+    
+    if (cell.contentView.gestureRecognizers.count > 1) {
+        [cell.contentView removeGestureRecognizer:cell.contentView.gestureRecognizers.lastObject];
+    }
+}
+
+- (void)configureAddCustomStickerView:(UICollectionViewCell *)cell
+{
+    UIView *addButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.contentView.bounds.size.width, cell.contentView.bounds.size.height)];
+    addButton.tag = kCustomButtonTag;
+    addButton.backgroundColor = [UIColor clearColor];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customAddTapped:)];
+    [addButton addGestureRecognizer:recognizer];
+
+    [cell.contentView addSubview:addButton];
+}
+
+- (void)configureCustomStickerCategoryView:(UICollectionViewCell *)cell
+{
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(stickerCategoryLongTapped:)];
+    [cell.contentView addGestureRecognizer:longPress];
+}
+
+- (void)configureCustomStickerView:(UICollectionViewCell *)cell
+{
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(stickerLongTapped:)];
+    [cell.contentView addGestureRecognizer:longPress];
+}
+
+- (void)stickerCategoryLongTapped:(UIGestureRecognizer *)recognizer
+{
+    if (UIGestureRecognizerStateBegan == recognizer.state) {
+        [[PGCustomStickerManager sharedInstance] deleteAllStickers:self.photoEditViewController];
+    }
+}
+
+- (void)stickerLongTapped:(UIGestureRecognizer *)recognizer
+{
+    if (UIGestureRecognizerStateBegan == recognizer.state) {
+        UIView *stickerView = recognizer.view.superview;
+
+        NSString *stickerId = [stickerView.accessibilityLabel stringByReplacingOccurrencesOfString:kPGImglyManagerCustomStickerPrefix withString:@""];
+        NSString *unique = stickerView.accessibilityValue;
+        NSString *filename = [NSString stringWithFormat:@"%@-%@", stickerId, unique];
+
+        [[PGCustomStickerManager sharedInstance] deleteSticker:filename viewController:self.photoEditViewController];
+    }
+}
+
+- (void)customAddTapped:(UIGestureRecognizer *)recognizer
+{
+    [[PGCustomStickerManager sharedInstance] presentCameraFromViewController:self.photoEditViewController];
+}
+
+
+#pragma mark - Notifications
+
+- (void)handleStickerChangedNotification:(NSNotification *)notfication
+{
+    self.stickerCategoryDataSource.stickerCategories = [PGStickerManager sharedInstance].IMGLYStickersCategories;
 }
 
 @end
