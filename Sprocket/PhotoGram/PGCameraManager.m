@@ -690,10 +690,14 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 - (void)runAuthorization:(void (^)(BOOL success))complete {
     // 1. Pass your credentials to get authorized.
     [[LRManager sharedManager] authorizeWithClientID:[PGLinkCredentialsManager clientId] secret:[PGLinkCredentialsManager clientSecret] success:^{
-        complete(YES);
+        if (complete != nil) {
+            complete(YES);
+        }
     } failure:^(NSError *error) {
         // TODO: Authentication or Network Error
-        complete(NO);
+        if (complete != nil) {
+            complete(NO);
+        }
     }];
     
 }

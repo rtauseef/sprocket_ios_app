@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (assign, nonatomic) BOOL hintVisible;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-- (IBAction)clickBackArrow:(id)sender;
-- (IBAction)clickSubmitButton:(id)sender;
+- (IBAction)backButtonTapped:(id)sender;
+- (IBAction)submitButtonTapped:(id)sender;
 
 @end
 
@@ -45,7 +45,7 @@
     return YES;
 }
 
-- (IBAction)clickBackArrow:(id)sender {
+- (IBAction)backButtonTapped:(id)sender {
     CATransition *transition = [[CATransition alloc] init];
     transition.duration = 0.3;
     transition.type = kCATransitionPush;
@@ -57,10 +57,10 @@
     }];
 }
 
-- (IBAction)clickSubmitButton:(id)sender {
+- (IBAction)submitButtonTapped:(id)sender {
     [self.textView resignFirstResponder];
     
-    [self clickBackArrow:self];
+    [self backButtonTapped:self];
 }
 
 #pragma mark UITextViewDelegate

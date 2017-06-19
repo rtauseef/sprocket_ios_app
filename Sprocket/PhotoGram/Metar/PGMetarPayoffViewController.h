@@ -18,7 +18,7 @@
 @property (strong, nonatomic) PGPayoffMetadata *metadata;
 @property (strong, nonatomic) NSURL *externalLinkURL;
 
-- (IBAction)closeButtonClick:(id)sender;
+- (IBAction)closeButtonTapped:(id)sender;
 - (void) getMetadataFromMetar;
 - (void) updateCurrentViewLabel: (NSString *) name forView: (UIViewController *) view;
 

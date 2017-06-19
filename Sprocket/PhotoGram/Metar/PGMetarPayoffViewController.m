@@ -44,12 +44,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewViewConstraint;
 @property (weak, nonatomic) IBOutlet UIView *reviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
-@property (strong, nonatomic) PGMetarMedia *metarMeta;
+@property (strong, nonatomic) PGMetarMedia *metarMedia;
 
-- (IBAction)clickOpenExternalPageButton:(id)sender;
-- (IBAction)clickThumbsUp:(id)sender;
-- (IBAction)clickThumbsDown:(id)sender;
-- (IBAction)clickReviewButton:(id)sender;
+- (IBAction)openExternalButtonTapped:(id)sender;
+- (IBAction)thumbsUpButtonTapped:(id)sender;
+- (IBAction)thumbsDownButtonTapped:(id)sender;
+- (IBAction)reviewButtonTapped:(id)sender;
 
 @end
 
@@ -94,7 +94,7 @@
     return YES;
 }
 
-- (void) updateCurrentViewLabel: (NSString *) name forView: (PGPayoffViewBaseViewController *) view {
+- (void) updateCurrentViewLabel:(NSString *) name forView:(PGPayoffViewBaseViewController *) view {
     PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
     
     if (view == currentVc) {
@@ -107,7 +107,7 @@
     
     if (metadata != nil) {
         
-        self.metarMeta = metadata;
+        self.metarMedia = metadata;
         
         if (metadata.mediaType == PGMetarMediaTypeVideo) {
             PGPayoffViewVideoViewController *viewVideoVc = [[PGPayoffViewVideoViewController alloc]
@@ -212,7 +212,7 @@
 }
 
 - (void) fixThumbsUpThumbsDown {
-    PGPayoffFeedbackDatabaseResult result = [[PGPayoffFeedbackDatabase sharedInstance] checkFeedbackForMedia:self.metarMeta andViewKind:[self getCurrentKind]];
+    PGPayoffFeedbackDatabaseResult result = [[PGPayoffFeedbackDatabase sharedInstance] checkFeedbackForMedia:self.metarMedia andViewKind:[self getCurrentKind]];
     
     if (result == PGPayoffFeedbackDatabaseResultThumbsUp) {
         [self.thumbsUpButton setImage:[UIImage imageNamed:@"thumbsUpBlue"] forState:UIControlStateNormal];
@@ -268,13 +268,13 @@
 }
 */
 
-- (IBAction)closeButtonClick:(id)sender {
+- (IBAction)closeButtonTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
 }
 
-- (IBAction)clickOpenExternalPageButton:(id)sender {
+- (IBAction)openExternalButtonTapped:(id)sender {
     if (self.externalLinkURL) {
         [[UIApplication sharedApplication] openURL:self.externalLinkURL];
     }
@@ -302,7 +302,7 @@
     return PGPayoffFeedbackDatabaseViewKindUnknown;
 }
 
-- (IBAction)clickThumbsUp:(id)sender {
+- (IBAction)thumbsUpButtonTapped:(id)sender {
     self.reviewLabel.text = NSLocalizedString(@"Thanks! Tell us what you liked!", nil);
     self.reviewViewConstraint.constant = kPGReviewViewHeight;
     CGRect frame = self.bubbleArrow.frame;
@@ -314,10 +314,10 @@
 
     self.reviewView.hidden = NO;
     
-    [[PGPayoffFeedbackDatabase sharedInstance] saveFeedbackForMedia:self.metarMeta withViewKind:[self getCurrentKind] andFeedback:PGPayoffFeedbackDatabaseResultThumbsUp];
+    [[PGPayoffFeedbackDatabase sharedInstance] saveFeedbackForMedia:self.metarMedia withViewKind:[self getCurrentKind] andFeedback:PGPayoffFeedbackDatabaseResultThumbsUp];
 }
 
-- (IBAction)clickThumbsDown:(id)sender {
+- (IBAction)thumbsDownButtonTapped:(id)sender {
     self.reviewLabel.text = NSLocalizedString(@"Thanks! Could you tell us more?", nil);
     self.reviewViewConstraint.constant = kPGReviewViewHeight;
     CGRect frame = self.bubbleArrow.frame;
@@ -329,10 +329,10 @@
     
     self.reviewView.hidden = NO;
     
-    [[PGPayoffFeedbackDatabase sharedInstance] saveFeedbackForMedia:self.metarMeta withViewKind:[self getCurrentKind] andFeedback:PGPayoffFeedbackDatabaseResultThumbsDown];
+    [[PGPayoffFeedbackDatabase sharedInstance] saveFeedbackForMedia:self.metarMedia withViewKind:[self getCurrentKind] andFeedback:PGPayoffFeedbackDatabaseResultThumbsDown];
 }
 
-- (IBAction)clickReviewButton:(id)sender {
+- (IBAction)reviewButtonTapped:(id)sender {
     self.reviewViewConstraint.constant = 0;
     self.reviewView.hidden = YES;
     
@@ -346,7 +346,7 @@
     [self presentViewController:feedback animated:NO completion:nil];
 }
 
-- (void) setExternalLinkURL: (NSURL *) url {
+- (void) setExternalLinkURL:(NSURL *)url {
     if (url != nil) {
         _externalLinkURL = url;
         self.externalPageButton.hidden = NO;

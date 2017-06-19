@@ -42,7 +42,7 @@
                     </constraints>
                     <state key="normal" image="thumbsUpWhite"/>
                     <connections>
-                        <action selector="clickThumbsUp:" destination="-1" eventType="touchUpInside" id="sC0-11-OZh"/>
+                        <action selector="thumbsUpButtonTapped:" destination="-1" eventType="touchUpInside" id="pVi-DT-FKe"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vot-lh-dc2" userLabel="thumbsDown">
@@ -53,7 +53,7 @@
                     </constraints>
                     <state key="normal" image="thumbsDownWhite"/>
                     <connections>
-                        <action selector="clickThumbsDown:" destination="-1" eventType="touchUpInside" id="L9H-CT-Oid"/>
+                        <action selector="thumbsDownButtonTapped:" destination="-1" eventType="touchUpInside" id="zjR-dI-Dfi"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exe-W4-JMR" userLabel="bottomView">
@@ -70,7 +70,7 @@
                             </constraints>
                             <state key="normal" image="externalLink"/>
                             <connections>
-                                <action selector="clickOpenExternalPageButton:" destination="-1" eventType="touchUpInside" id="l8z-xI-bdU"/>
+                                <action selector="openExternalButtonTapped:" destination="-1" eventType="touchUpInside" id="ONm-cO-5HJ"/>
                             </connections>
                         </button>
                     </subviews>
@@ -94,7 +94,7 @@
                     </constraints>
                     <state key="normal" image="cameraClose"/>
                     <connections>
-                        <action selector="closeButtonClick:" destination="-1" eventType="touchUpInside" id="yCi-Id-4gQ"/>
+                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="c0j-qC-FnQ"/>
                     </connections>
                 </button>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0ii-bz-gO1">
@@ -129,7 +129,7 @@
                                     </constraints>
                                     <state key="normal" image="forward"/>
                                     <connections>
-                                        <action selector="clickReviewButton:" destination="-1" eventType="touchUpInside" id="1ZK-hP-n7M"/>
+                                        <action selector="reviewButtonTapped:" destination="-1" eventType="touchUpInside" id="JzN-nw-Uhx"/>
                                     </connections>
                                 </button>
                             </subviews>

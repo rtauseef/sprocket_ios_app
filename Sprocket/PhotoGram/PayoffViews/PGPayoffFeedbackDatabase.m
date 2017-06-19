@@ -25,7 +25,7 @@ static NSString * const kPayoffFeedbackDatabase = @"pg-payoff-feedback-db";
     return shared;
 }
 
-- (NSString *) guidForMedia: (PGMetarMedia *) media andKind: (PGPayoffFeedbackDatabaseViewKind) kind {
+- (NSString *) guidForMedia:(PGMetarMedia *)media andKind: (PGPayoffFeedbackDatabaseViewKind)kind {
     NSMutableString *guid = [NSMutableString string];
     
     if (media.source.identifier != nil) {
@@ -43,7 +43,7 @@ static NSString * const kPayoffFeedbackDatabase = @"pg-payoff-feedback-db";
     return guid;
 }
 
-- (PGPayoffFeedbackDatabaseResult) checkFeedbackForMedia: (PGMetarMedia *) media andViewKind: (PGPayoffFeedbackDatabaseViewKind) kind {
+- (PGPayoffFeedbackDatabaseResult) checkFeedbackForMedia:(PGMetarMedia *)media andViewKind:(PGPayoffFeedbackDatabaseViewKind)kind {
 
     NSString *guid = [self guidForMedia:media andKind:kind];
     
@@ -68,7 +68,7 @@ static NSString * const kPayoffFeedbackDatabase = @"pg-payoff-feedback-db";
     return PGPayoffFeedbackDatabaseResultEmpty;
 }
 
-- (void) saveFeedbackForMedia: (PGMetarMedia *) media withViewKind: (PGPayoffFeedbackDatabaseViewKind) kind andFeedback: (PGPayoffFeedbackDatabaseResult) feedback {
+- (void) saveFeedbackForMedia:(PGMetarMedia *)media withViewKind:(PGPayoffFeedbackDatabaseViewKind)kind andFeedback:(PGPayoffFeedbackDatabaseResult)feedback {
     
     NSMutableDictionary * data = [[[NSUserDefaults standardUserDefaults] objectForKey:kPayoffFeedbackDatabase] mutableCopy];
     
