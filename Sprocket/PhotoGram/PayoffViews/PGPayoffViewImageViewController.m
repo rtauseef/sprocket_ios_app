@@ -1,9 +1,13 @@
 //
-//  PGPayoffViewImageViewController.m
-//  Sprocket
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Fernando Caprio on 5/15/17.
-//  Copyright © 2017 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "PGPayoffViewImageViewController.h"
@@ -38,8 +42,6 @@
 @property (strong, nonatomic) HPPRGoogleFilteredPhotoProvider *googleProvider;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (strong, nonatomic) NSDate* filteringDate;
-@property (strong, nonatomic) CLLocation* filteringLocation;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 @property (strong, nonatomic) CLGeocoder *geocoder;
@@ -218,25 +220,25 @@
 - (void) fixScrollViewSize {
     // force content size calculation
     
-    //if (self.photoCollectionViewController.view.hidden) {
+    if (self.photoCollectionViewController.view.hidden) {
         [self.photoCollectionViewController.collectionView reloadData];
         [self.photoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
-    //if (self.fbPhotoCollectionViewController.view.hidden) {
+    if (self.fbPhotoCollectionViewController.view.hidden) {
         [self.fbPhotoCollectionViewController.collectionView reloadData];
         [self.fbPhotoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
-    //if (self.instagramPhotoCollectionViewController.view.hidden) {
+    if (self.instagramPhotoCollectionViewController.view.hidden) {
         [self.instagramPhotoCollectionViewController.collectionView reloadData];
         [self.instagramPhotoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
-    //if (self.googlePhotoCollectionViewController.view.hidden) {
+    if (self.googlePhotoCollectionViewController.view.hidden) {
         [self.googlePhotoCollectionViewController.collectionView reloadData];
         [self.googlePhotoCollectionViewController.collectionView layoutIfNeeded];
-    //}
+    }
     
     CGSize instagramSize = self.instagramPhotoCollectionViewController.collectionView.contentSize;
     CGSize fbSize = self.fbPhotoCollectionViewController.collectionView.contentSize;
@@ -353,6 +355,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [self fixScrollViewSize];
+    
+    if (self.metadata.source.from == PGMetarSourceFromSocial && self.metadata.source.uri) {
+        [self.parentVc setExternalLinkURL:[NSURL URLWithString:self.metadata.source.uri]];
+    }
+    
     if (self.blockImageButton.hidden && self.filteringDate != nil) {
         
         NSString *localId = self.metadata.source.identifier;
@@ -383,9 +391,8 @@
                 } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
                     // TODO: placeholder image
                 }];
-
             }
-            
+
             [self.blockImageButton setHidden:NO];
         }
     } else if (self.blockImageButton.hidden && self.filteringLocation != nil && self.mapView.hidden) {
@@ -521,7 +528,6 @@
             [self updateViewTitleLocally];
         }
     }
-
 }
 
 - (void)didReceiveMemoryWarning {

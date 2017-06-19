@@ -50,6 +50,6 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 
 - (void)startScanning;
 - (void)stopScanning;
-- (void)runAuthorization;
+- (void)runAuthorization:(void (^)(BOOL success))complete;
 
 @end
