@@ -166,3 +166,20 @@ Scenario Outline: Verify successful navigation for How to & Help options
     When I touch hamburger button on navigation bar
     And I select "Buy Paper" option
     Then I verify the url
+
+     @done11
+    Scenario Outline: Take screenshots of all the screens
+        Given  I am on the "<screen_name_sprocket>" screen
+        And I take screenshot of "<screen_name_sprocket>" screen
+    Examples:
+    |screen_name_sprocket| 
+    |Landing             | 
+    |Instagram Landing   |
+    |Instagram Signin    |
+    |Google Landing      |
+    |CameraRoll Albums   |
+    |CameraRoll Photo    | 
+    |Side Menu           |
+    |Instagram Preview   |
+    |Google Preview      |
+    |CameraRoll Preview  |
