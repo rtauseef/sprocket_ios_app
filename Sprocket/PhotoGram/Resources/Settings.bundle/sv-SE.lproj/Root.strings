@@ -1,0 +1,8 @@
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+
+"Group" = "Gruppera";
+"Name" = "Namn";
+"none given" = "inget angett";
+"Enabled" = "Aktiverad";
+"Save Camera Photos" = "Spara kamerafoton";
+"Show Navigation Help" = "Visa navigeringshjälp";
