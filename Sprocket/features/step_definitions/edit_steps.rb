@@ -135,6 +135,12 @@ Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
 				if screen_name =="FilterEditor"
 					macro %Q|I tap "Filter" button|
 					macro %Q|I should see the "FilterEditor" screen|
+                else
+                    if screen_name =="BrushEditor"
+                        macro %Q|I tap "Brush" button|
+                        macro %Q|I should see the "BrushEditor" screen|
+                    end
+                        
 				end
 			end
 		end
@@ -390,4 +396,20 @@ Then(/^I should see the "([^"]*)" with "([^"]*)" Color$/) do |type, color|
     end
     raise "Wrong sticker selected!" unless flag == 1
 end       
-    
+Then(/^I could see "([^"]*)" option$/) do |option|
+    method_name = option
+    check_element_exists @current_page.send(method_name)
+    sleep(STEP_PAUSE)
+end
+Given(/^I choose "([^"]*)" option$/) do |option|
+    method_name = option
+    touch @current_page.send(method_name)
+    sleep(STEP_PAUSE)
+end
+Then(/^I set the slider value to "([^"]*)"$/) do |value|
+  query("view:'imglyKit.TooltipSlider'",{setValue:value.to_i})
+end
+Then(/^I verify the slider value is set to "([^"]*)"$/) do |value|
+slider_value = query("view:'imglyKit.TooltipSlider'",:value)[0]
+  raise "Slider value not set correctly!" unless slider_value.to_i == value.to_i
+end
