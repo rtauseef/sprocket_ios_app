@@ -1,9 +1,13 @@
 //
-//  HPPRGoogleXmlParser.m
-//  Pods
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Susy Snowflake on 5/9/17.
-//
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "HPPRGoogleXmlParser.h"
@@ -57,10 +61,7 @@
             self.currentParsingItems = [[NSMutableArray alloc] init];
             
             self.rssParser = [[NSXMLParser alloc] initWithData:xmlData];
-            
-            //NSString *debugData = [[NSString alloc] initWithData:xmlData encoding:NSUTF8StringEncoding];
-            //NSLog(@"XML: \n\n %@\n\n",debugData);
-            
+
             [self.rssParser setDelegate:self];
             [self.rssParser setShouldProcessNamespaces:NO];
             [self.rssParser setShouldReportNamespacePrefixes:NO];
@@ -105,7 +106,7 @@
     }
 }
 
-- (NSDictionary *) removePlayItemFromDict: (NSDictionary *) attributeDict forKey: (NSString *) attributeName {
+- (NSDictionary *)removePlayItemFromDict:(NSDictionary *)attributeDict forKey:(NSString *)attributeName {
     NSMutableDictionary *mutDict = [NSMutableDictionary dictionaryWithDictionary:attributeDict];
     
     if (attributeDict != nil) {

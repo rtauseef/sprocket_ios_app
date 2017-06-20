@@ -88,10 +88,10 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
             self.loadingImage.hidden = YES;
         }
     } else {
-        dispatch_async(dispatch_get_main_queue(), ^ {
+        dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = image;
             self.loadingImage.hidden = YES;
-            if( _media.mediaType == kHPRMediaTypeVideo ) {
+            if (_media.mediaType == HPPRMediaTypeVideo) {
                 // display overlay
                 self.mediaTypeImageView.hidden = NO;
                 // TODO set overlay icon

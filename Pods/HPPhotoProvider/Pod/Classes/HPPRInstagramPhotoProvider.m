@@ -283,10 +283,10 @@ enum MCInstagramDisplayType {
     }
 }
 
-- (NSArray *) filterRecordsForDate:(NSDate *) filterDate andRecords:(NSArray *) records {
+- (NSArray *)filterRecordsForDate:(NSDate *)filterDate andRecords:(NSArray *)records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
-    for(HPPRMedia *instagramMedia in records) {
+    for (HPPRMedia *instagramMedia in records) {
         if ([[NSCalendar currentCalendar] isDate:filterDate inSameDayAsDate:instagramMedia.createdTime]) {
             [updatedRecords addObject:instagramMedia];
         }
@@ -295,10 +295,10 @@ enum MCInstagramDisplayType {
     return updatedRecords;
 }
 
-- (NSArray *) filterRecordsForLocation:(CLLocation *) filterLocation distance: (int) distance andRecords:(NSArray *) records {
+- (NSArray *)filterRecordsForLocation:(CLLocation *)filterLocation distance:(int)distance andRecords:(NSArray *)records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
-    for(HPPRMedia *instagramMedia in records) {
+    for (HPPRMedia *instagramMedia in records) {
         if (instagramMedia.location != nil) {
             if ([instagramMedia.location distanceFromLocation:filterLocation] <= distance) {
                 [updatedRecords addObject:instagramMedia];

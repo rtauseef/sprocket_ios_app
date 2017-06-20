@@ -1,9 +1,13 @@
 //
-//  HPPRGoogleFilteredPhotoProvider.m
-//  Pods
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Fernando Caprio on 6/13/17.
-//
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "HPPRGoogleFilteredPhotoProvider.h"
@@ -22,7 +26,7 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
 
 @implementation HPPRGoogleFilteredPhotoProvider
 
-- (instancetype) initWithMode: (HPPRGoogleFilteredPhotoProviderMode) filteringMode
+- (instancetype)initWithMode:(HPPRGoogleFilteredPhotoProviderMode)filteringMode
 {
     self = [super init];
     if (self) {
@@ -36,10 +40,10 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
     return self;
 }
 
-- (NSArray *) filterRecordsForDate:(NSDate *) filterDate andRecords:(NSArray *) records {
+- (NSArray *)filterRecordsForDate:(NSDate *)filterDate andRecords:(NSArray *)records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
-    for(HPPRMedia *googleMedia in records) {
+    for (HPPRMedia *googleMedia in records) {
         if ([[NSCalendar currentCalendar] isDate:filterDate inSameDayAsDate:googleMedia.createdTime]) {
             [updatedRecords addObject:googleMedia];
         }
@@ -48,10 +52,10 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
     return updatedRecords;
 }
 
-- (NSArray *) filterRecordsForLocation:(CLLocation *) filterLocation distance: (int) distance andRecords:(NSArray *) records {
+- (NSArray *)filterRecordsForLocation:(CLLocation *)filterLocation distance:(int)distance andRecords:(NSArray *)records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
-    for(HPPRMedia *googleMedia in records) {
+    for (HPPRMedia *googleMedia in records) {
         if (googleMedia.location != nil) {
             if ([googleMedia.location distanceFromLocation:filterLocation] <= distance) {
                 [updatedRecords addObject:googleMedia];

@@ -12,19 +12,18 @@
 
 #import "MPBTImagePreprocessorManager.h"
 
-
 @interface MPBTImagePreprocessorManager () <MPBTImageProcessorDelegate>
-@property NSUInteger currentIndex;
-@property tMPBTImagePreprocessorManagerBlock statusBlock;
-@property tMPBTImagePreprocessorManagerCompletionBlock completionBlock;
-@property UIImage* currentImage;
+
+@property (nonatomic, assign) NSUInteger currentIndex;
+@property (nonatomic, copy) tMPBTImagePreprocessorManagerBlock statusBlock;
+@property (nonatomic, copy) tMPBTImagePreprocessorManagerCompletionBlock completionBlock;
+@property (nonatomic, strong) UIImage *currentImage;
+
 @end
 
 @implementation MPBTImagePreprocessorManager
 
-
-
-- (instancetype)initWithProcessors:(NSArray *)processors options:(NSDictionary*) options {
+- (instancetype)initWithProcessors:(NSArray *)processors options:(NSDictionary *)options {
     self = [super init];
     if( self ) {
         self.processors = processors;
@@ -33,27 +32,20 @@
     return self;
 }
 
-+ (instancetype)new {
-    return [[MPBTImagePreprocessorManager  alloc] init];
-}
-
-+ (instancetype)createWithProcessors:(NSArray *)processors options:(NSDictionary*) options{
++ (instancetype)createWithProcessors:(NSArray *)processors options:(NSDictionary *)options{
     return [[MPBTImagePreprocessorManager alloc] initWithProcessors:processors options:options];
 }
 
-
-
--(void) processNext {
-    if( self.currentIndex >= self.processors.count ) {
+- (void)processNext {
+    if (self.currentIndex >= self.processors.count) {
         self.completionBlock(nil,self.currentImage);
     } else {
-        MPBTImageProcessor * processor = self.processors[(NSUInteger) self.currentIndex];
+        MPBTImageProcessor *processor = self.processors[(NSUInteger) self.currentIndex];
         processor.delegate = self;
         self.statusBlock(self.currentIndex,0);
         [processor processImage:self.currentImage withOptions:self.options];
     }
 }
-
 
 - (void)processImage:(UIImage *)image statusUpdate:(tMPBTImagePreprocessorManagerBlock)statusUpdate complete:(tMPBTImagePreprocessorManagerCompletionBlock)completion {
     self.currentIndex = 0;
@@ -63,12 +55,9 @@
     [self processNext];
 }
 
-
-
-
 - (void)didCompleteProcessing:(MPBTImageProcessor *)processor result:(UIImage *)image error:(NSError *)error {
-    if( error ) {
-        self.completionBlock(error,nil);
+    if (error) {
+        self.completionBlock(error, nil);
     } else {
         self.currentIndex++;
         self.currentImage = image;

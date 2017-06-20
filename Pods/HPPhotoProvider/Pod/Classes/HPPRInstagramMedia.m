@@ -40,7 +40,7 @@
     
     if (self) {
         self.objectID = [attributes valueForKey:@"id"];
-        self.socialProvider = tHPRMediaSocialProviderInstagram;
+        self.socialProvider = HPPRSocialMediaProviderInstagram;
 
         self.userName = [attributes valueForKeyPath:@"user.username"];
         self.userProfilePicture = [attributes valueForKeyPath:@"user.profile_picture"];
@@ -57,7 +57,7 @@
         self.createdTime = [NSDate dateWithTimeIntervalSince1970:createdTimeSince1970];
         
         if ([[attributes valueForKey:@"type"] isEqualToString:@"video"]) {
-            self.mediaType = kHPRMediaTypeVideo;
+            self.mediaType = HPPRMediaTypeVideo;
             
             NSString *videoURL = [attributes valueForKeyPath:@"videos.standard_resolution.url"];
             
@@ -66,7 +66,7 @@
                 self.videoPlaybackUri = videoURL;
             }
         } else { // TODO: handle image sequence
-            self.mediaType = kHPRMediaTypeImage;
+            self.mediaType = HPPRMediaTypeImage;
         }
         
         self.text = [attributes valueForKeyPath:@"caption.text"];

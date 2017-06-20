@@ -31,9 +31,9 @@
             NSString *type = [photo objectForKey:@"type"];
             
             if ([type isEqualToString:@"image/gif"]) {
-                self.mediaType = kHPRMediaTypeVideo;
+                self.mediaType = HPPRMediaTypeVideo;
             } else {
-                self.mediaType = kHPRMediaTypeImage;
+                self.mediaType = HPPRMediaTypeImage;
             }
         }
         
@@ -59,7 +59,7 @@
             
             if (medium && [medium isEqualToString:@"video"]) {
                 self.videoPlaybackUri = [content objectForKey:@"url"];
-                self.mediaType = kHPRMediaTypeVideo;
+                self.mediaType = HPPRMediaTypeVideo;
                 
                 NSError *error = nil;
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"/[^/]+/?$" options:NSRegularExpressionCaseInsensitive error:&error];
@@ -85,7 +85,7 @@
         
         self.objectID = self.standardUrl;
         
-        self.socialProvider = tHPRMediaSocialProviderGoogle;
+        self.socialProvider = HPPRSocialMediaProviderGoogle;
    
         self.isoSpeed = [attributes objectForKey:@"exif:iso"];
         
