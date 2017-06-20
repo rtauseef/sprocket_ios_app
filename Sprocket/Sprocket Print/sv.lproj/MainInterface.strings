@@ -2,7 +2,7 @@
 "ObA-dk-sSI.title" = "Bild";
 
 /* Class = "UIButton"; normalTitle = "Print to sprocket"; ObjectID = "XPD-kO-soS"; */
-"XPD-kO-soS.normalTitle" = "Skriv ut med Sprocket";
+"XPD-kO-soS.normalTitle" = "Skriv ut med sprocket";
 
 /* Class = "UILabel"; text = "Connected"; ObjectID = "nFm-89-OFW"; */
 "nFm-89-OFW.text" = "Ansluten";

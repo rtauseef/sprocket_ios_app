@@ -40,6 +40,9 @@
 /* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
 "BV3-xe-r0y.normalTitle" = "Bantuan Lainnya";
 
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM"; */
+"BfZ-Hp-dCM.text" = "Judul Album";
+
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
 "DG2-Ok-pfm.normalTitle" = "Masuk";
 
@@ -103,11 +106,11 @@
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Hak Cipta (c) 2016";
 
-/* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
-"Ptp-oP-RvF.text" = "Item Menu";
-
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Fitur Baru!";
+
+/* Class = "UILabel"; text = "Messenger Support"; ObjectID = "QGa-kv-h0O"; */
+"QGa-kv-h0O.text" = "Dukungan Pengirim Pesan";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
 "QQK-QP-Amd.text" = "Dengan mengesahkan melalui Flickr, Anda juga menyetujui <Ketentuan Layanan> HP.";
@@ -123,17 +126,6 @@
 
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
-
-/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "Saat menggunakan aplikasi ini, Anda dapat terhubung ke Internet dan menggunakan akun Instagram, Facebook, atau Flickr Anda untuk membuat dan mencetak konten pilihan Anda. 
-
-Penggunaan aplikasi ini mungkin memerlukan koneksi Internet. Performa nirkabel tergantung lingkungan fisik Anda dan jarak Anda dari titik akses. Paket data yang dibeli terpisah atau biaya pemakaian mungkin berlaku. Waktu mencetak dan kecepatan koneksi mungkin berbeda-beda.
-
-Untuk mencetak, Anda memerlukan Printer Foto HP Sprocket. Perangkat seluler Anda harus mengaktifkan Bluetooth, Printer Foto HP Sprocket harus dinyalakan, dan printer harus dipasangkan dengan perangkat seluler.
-
-Jika Anda menggunakan jaringan data sebagai koneksi Internet, biaya tambahan untuk pemakaian data mungkin akan timbul berdasarkan paket jaringan data Anda. 
-
-Untuk meningkatkan versi mendatang aplikasi ini dan Printer HP, secara berkala HP akan mengumpulkan data pemakaian dari aplikasi ini tanpa nama. ";
 
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
@@ -190,14 +182,26 @@ dari Aplikasi kreatif favorit Anda!";
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Masuk";
 
+/* Class = "UILabel"; text = "Give Feedback"; ObjectID = "eit-2j-VKG"; */
+"eit-2j-VKG.text" = "Berikan Umpan Balik";
+
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
 "fRU-DF-pcn.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "%@ Copy"; ObjectID = "g9Y-KF-FRi"; */
+"g9Y-KF-FRi.text" = "%@ Salinan";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
+"ga4-if-IR4.normalTitle" = "Masuk";
 
 /* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
 "iiX-WR-2Je.title" = "Pitu";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
-"ipg-92-MP9.title" = "Pilih Templat.";
+"ipg-92-MP9.title" = "Pilih Template";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iqE-FT-oz5"; */
+"iqE-FT-oz5.text" = "Label";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Ambil atau pilih foto";
@@ -213,10 +217,13 @@ di menu “Lainnya” saat berbagi.";
 "mGd-Z2-qhD.title" = "QZone";
 
 /* Class = "UILabel"; text = "New! Print later with our Print Queue"; ObjectID = "mh8-hT-PMS"; */
-"mh8-hT-PMS.text" = "Baru! Cetak nanti dengan Antrian Pencetakan kami";
+"mh8-hT-PMS.text" = "Baru! Cetak nanti dengan Antrean Pencetakan kami";
 
 /* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
 "nYV-cn-yZe.text" = "Atur Printer Sprocket";
+
+/* Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0"; */
+"ncN-EJ-cY0.text" = "Jumlah Foto";
 
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
@@ -241,6 +248,9 @@ di menu “Lainnya” saat berbagi.";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "Jangan lupa untuk Cetak & Bagi desain Anda";
+
+/* Class = "UILabel"; text = "By authenticating with Google, you also agree with HP’s <Terms of Service>."; ObjectID = "w3A-HJ-eXe"; */
+"w3A-HJ-eXe.text" = "Dengan mengesahkan melalui Google, Anda juga menyetujui <Ketentuan Layanan> HP.";
 
 /* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "Dukungan WeChat";

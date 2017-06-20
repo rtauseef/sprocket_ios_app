@@ -40,6 +40,9 @@
 /* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
 "BV3-xe-r0y.normalTitle" = "Vairāk palīdzības";
 
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM"; */
+"BfZ-Hp-dCM.text" = "Albuma nosaukums";
+
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
 "DG2-Ok-pfm.normalTitle" = "Pierakstīties";
 
@@ -103,11 +106,11 @@
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Autortiesības (c) 2016";
 
-/* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
-"Ptp-oP-RvF.text" = "Izvēlnes vienums";
-
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Jauna funkcija!";
+
+/* Class = "UILabel"; text = "Messenger Support"; ObjectID = "QGa-kv-h0O"; */
+"QGa-kv-h0O.text" = "Ziņneša pakalpojuma atbalsts";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
 "QQK-QP-Amd.text" = "Autentificējoties pakalpojumā Flickr, jūs piekrītat arī HP <pakalpojumu sniegšanas noteikumiem>.";
@@ -123,17 +126,6 @@
 
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
-
-/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "Izmantojot šo lietojumprogrammu, varēsiet izveidot savienojumu ar internetu un izmantot savu Instagram, Facebook vai Flickr kontu, lai izveidotu un drukātu saturu pēc savas izvēles. 
-
-Šīs lietojumprogrammas izmantošanai var būt nepieciešams interneta savienojums. Bezvadu veiktspēja ir atkarīga no fiziskās vides un attāluma līdz piekļuves punktam. Var tikt piemēroti atsevišķi iegādāti datu plāni vai izmantošanas maksa. Drukas ātrums un savienojuma ātrums var atšķirties.
-
-Lai drukātu, ir nepieciešams HP Sprocket fotoprinteris. Jūsu mobilajā ierīcē jābūt iespējotai Bluetooth funkcijai, HP Sprocket fotoprinterim jābūt ieslēgtam un printerim jābūt sapārotam ar mobilo ierīci.
-
-Ja izmantojat datu tīklu kā interneta savienojumu, jums var rasties papildu izmaksas par datu lietojumu saskaņā ar jūsu datu tīkla plānu. 
-
-Lai uzlabotu turpmākās šīs lietojumprogrammas versijas un HP printerus, uzņēmums HP periodiski vāks anonīmus lietojuma datus no šīs lietojumprogrammas. ";
 
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
@@ -163,7 +155,7 @@ Lai uzlabotu turpmākās šīs lietojumprogrammas versijas un HP printerus, uzņ
 "Yx0-Cs-62a.title" = "Sprocket";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "Izmantojot iespēju Fotoattēli no kameras, jūs piekrītat arī HP <pakalpojumu sniegšanas noteikumiem>.";
+"Z1T-tw-tdj.text" = "Izmantojot iespēju Fotoattēli no kameras, jūs piekrītat arī HP <pakalpojumu sniegšanas noteikumiem>.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Fotoattēli";
@@ -190,14 +182,26 @@ no jūsu iecienītākajām radošajām lietojumprogrammām!";
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Pierakstīties";
 
+/* Class = "UILabel"; text = "Give Feedback"; ObjectID = "eit-2j-VKG"; */
+"eit-2j-VKG.text" = "Sniegt atsauksmes";
+
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
 "fRU-DF-pcn.normalTitle" = "Rediģēt";
+
+/* Class = "UILabel"; text = "%@ Copy"; ObjectID = "g9Y-KF-FRi"; */
+"g9Y-KF-FRi.text" = "%@ kopija";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
+"ga4-if-IR4.normalTitle" = "Pierakstīties";
 
 /* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
 "iiX-WR-2Je.title" = "Pitu";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
 "ipg-92-MP9.title" = "Atlasīt veidni";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iqE-FT-oz5"; */
+"iqE-FT-oz5.text" = "Etiķete";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Uzņemt vai atlasīt fotoattēlu";
@@ -217,6 +221,9 @@ funkciju Drukāt Sprocket printerī.";
 
 /* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
 "nYV-cn-yZe.text" = "Iestatīt Sprocket printeri";
+
+/* Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0"; */
+"ncN-EJ-cY0.text" = "Fotoattēlu skaits";
 
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
@@ -241,6 +248,9 @@ funkciju Drukāt Sprocket printerī.";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "Neaizmirstiet izdrukāt un kopīgot savu dizainu";
+
+/* Class = "UILabel"; text = "By authenticating with Google, you also agree with HP’s <Terms of Service>."; ObjectID = "w3A-HJ-eXe"; */
+"w3A-HJ-eXe.text" = "Autentificējoties pakalpojumā Google, jūs piekrītat arī HP <pakalpojumu sniegšanas noteikumiem>.";
 
 /* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "WeChat Support (ASF atbalsts)";

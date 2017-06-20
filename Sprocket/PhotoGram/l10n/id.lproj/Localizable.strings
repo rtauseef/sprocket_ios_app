@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld dari %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li pencetakan dalam Antrean Pencetakan";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li pencetakan dalam Antrean Pencetakan";
+
+/* No comment provided by engineer. */
 "About" = "Tentang";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Beli Kertas";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Dengan mengesahkan melalui %@, Anda juga menyetujui <Ketentuan Layanan> HP.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Akses Kamera Diperlukan";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Hubungkan";
+
+/* Number of Copies for printing */
+"Copies" = "Salinan";
+
+/* Number of Copies for printing */
+"Copy" = "Salinan";
+
+/* No comment provided by engineer. */
+"Delete All" = "Hapus Semua";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Hapus semua pencetakan dari Antrean Pencetakan?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Hapus";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Bingkai Bunga 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Bingkai Bunga";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Dari Pengaturan Bluetooth, ketuk “HP sprocket” untuk dipasangkan dengan printer.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Berikan Umpan Balik";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Bingkai Gradien";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Bingkai Warna Air Hijau";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Caranya";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Bingkai Kraft";
-
 /* Setup step 1 desc */
 "Load Paper" = "Masukkan Kertas";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "File log telah dihapus.";
+
+/* No comment provided by engineer. */
+"NO" = "TIDAK";
 
 /* Dismisses dialog without taking action */
 "No" = "Tidak";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Gambar aplikasi Qzone tidak ditemukan";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Tidak ada pencetakan di Antrean Pencetakan";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Tidak, Simpan Saja";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Tidak, terima kasih";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Tidak semua gambar diunduh. Apakah Anda ingin melanjutkan?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"Oops!" = "Oops!";
+"Oops!" = "Ups!";
+
+/* Dismisses dialog and pauses printing */
+"Pause" = "Jeda";
 
 /* No comment provided by engineer. */
-"Orange Frame" = "Bingkai Oranye";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Foto akan dicetak sesuai urutan penambahannya ke Antrean Cetak, setelah printer sprocket menyala dan terhubung ke Bluetooth.";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Bingkai Cat Semprot Pink";
+"Photos will print in the order they were added to the Print Queue." = "Foto akan dicetak sesuai urutan penambahannya ke Antrean Pencetakan.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Anda juga dapat menggunakan foto perangkat Anda.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Harap beri tahu kami definisi menakjubkan dan apa yang dapat ditingkatkan!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Bingkai Polka Dot";
-
 /* Setup step 2 desc */
 "Power Up" = "Hidupkan";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Tekan terus tombol daya hingga LED berwarna putih.";
+
+/* No comment provided by engineer. */
+"Print" = "Cetak";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Antrean Pencetakan";
 
 /* No comment provided by engineer. */
 "Printers" = "Printer";
@@ -156,9 +184,6 @@ Anda juga dapat menggunakan foto perangkat Anda.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Bingkai Merah";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Ingatkan saya nanti";
@@ -184,6 +209,9 @@ Anda juga dapat menggunakan foto perangkat Anda.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Simpan di Camera Roll";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Mengirimkan ke printer sprocket";
+
 /* Button for opening the app settings */
 "Settings" = "Pengaturan";
 
@@ -194,13 +222,13 @@ Anda juga dapat menggunakan foto perangkat Anda.";
 "Sign Out" = "Keluar";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Bingkai Berantakan";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Maaf, masalah Anda tidak dapat dilaporkan sekarang. Kemungkinan besar karena tidak ada akun mail yang diatur di perangkat seluler Anda.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Peningkatan Firmware Printer Sprocket Sudah Tersedia";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket tidak Terhubung";
 
 /* Setup step 1 title */
 "Step 1" = "Langkah 1";
@@ -238,47 +266,20 @@ Anda juga dapat menggunakan foto perangkat Anda.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Untuk meningkatkan, isi daya printer sprocket setidaknya hingga 75%, lalu buka 'sprocket' di menu.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Bingkai Biru Kehijauan";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Tingkatkan";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Bingkai Hati Valentine";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Bingkai Tumpukan Hati Valentine";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Bingkai Polka Pink Valentine";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Bingkai Cat Air Pink Valentine";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Bingkai Merah Valentine";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Bingkai Garis Merah Valentine";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versi %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Bingkai Biru Air";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Bingkai Putih";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Bingkai Kayu";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Anda ingin keluar dari %@?";
+
+/* No comment provided by engineer. */
+"YES" = "YA";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Ya";

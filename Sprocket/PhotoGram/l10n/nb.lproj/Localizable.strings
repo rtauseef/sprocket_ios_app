@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld av %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li utskrift i utskriftskøen";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li utskrifter i utskriftskøen";
+
+/* No comment provided by engineer. */
 "About" = "Om";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Kjøp papir";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Ved å autentisere med %@, godtar du også HPs <vilkår for bruk>.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Kameratilgang påkrevd";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Koble til";
+
+/* Number of Copies for printing */
+"Copies" = "Kopier";
+
+/* Number of Copies for printing */
+"Copy" = "Kopier";
+
+/* No comment provided by engineer. */
+"Delete All" = "Slett alle";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Slett alle utskrifter fra utskriftskøen?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Avvis";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Blomster 2-ramme";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Blomsterramme";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Fra Bluetooth-innstillingene trykker du på «HP sprocket» for å koble til skriveren.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Gi tilbakemelding";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Hellende ramme";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Grønn vannfargeramme";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Hvordan";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Kunstramme";
-
 /* Setup step 1 desc */
 "Load Paper" = "Legge i papir";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Loggfilen er slettet.";
+
+/* No comment provided by engineer. */
+"NO" = "NEI";
 
 /* Dismisses dialog without taking action */
 "No" = "Nei";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Fant ingen bilder i Qzone-appen";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Ingen utskrifter i utskriftskø";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Nei, behold dem";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Nei takk";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Alle bildene ble ikke lastet ned. Vil du fortsette?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Ops!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Oransje ramme";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pause";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Rosa spraymalt ramme";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Bildene blir skrevet ut i den rekkefølgen de ble lagt til i utskriftskøen etter at skriveren er på, og Bluetooth er tilkoblet.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Bildene blir skrevet ut i den rekkefølgen de ble lagt til i utskriftskøen.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Du kan også bruke bilder fra enheten din.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Fortell oss hva som er utmerket, og hva som kunne vært bedre!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Polka dots-ramme";
-
 /* Setup step 2 desc */
 "Power Up" = "Slå på";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Trykk og hold strømbryteren til LED-lyset blir hvitt.";
+
+/* No comment provided by engineer. */
+"Print" = "Utskrift";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Utskriftskø";
 
 /* No comment provided by engineer. */
 "Printers" = "Skrivere";
@@ -156,9 +184,6 @@ Du kan også bruke bilder fra enheten din.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Rød ramme";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Minn meg på dette senere";
@@ -184,6 +209,9 @@ Du kan også bruke bilder fra enheten din.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Lagre i Kamerarull";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Sender til sprocket-skriver";
+
 /* Button for opening the app settings */
 "Settings" = "Innstillinger";
 
@@ -194,13 +222,13 @@ Du kan også bruke bilder fra enheten din.";
 "Sign Out" = "Logg av";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Slurvet ramme";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Beklager, men problemet ditt kan ikke rapporteres for øyeblikket. Dette skyldes sannsynligvis at det ikke er konfigurert noen e-postkonto på den mobile enheten din.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Oppgradering av firmware til sprocket-skriver tilgjengelig";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket ikke tilkoblet";
 
 /* Setup step 1 title */
 "Step 1" = "Trinn 1";
@@ -238,47 +266,20 @@ Du kan også bruke bilder fra enheten din.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "For å oppgradere, lade sprocket-skriveren til minst 75 %, og gå deretter til \"sprocket\" i menyen.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Turkis ramme";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Oppgrader";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Valentinsdag-ramme med hjerter";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Valentinsdag-ramme med overliggende hjerter";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Valentinsdag-ramme med rosa storprikket mønster";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Valentinsdag-ramme med rosa akvarell";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Valentinsdag-ramme rød";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Valentinsdag-ramme med røde striper";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versjon %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Vannblå ramme";
-
 /* Social source title for WeiBo */
 "WeiBo" = "Weibo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Hvit ramme";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Trebunnramme";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Vil du logge ut av %@?";
+
+/* No comment provided by engineer. */
+"YES" = "JA";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Ja";

@@ -1,0 +1,493 @@
+/* No comment provided by engineer. */
+"%d Print" = "%d výtlačok";
+
+/* No comment provided by engineer. */
+"%d Prints" = "Počet výtlačkov: %d";
+
+/* No comment provided by engineer. */
+"%d/%d Print" = "%1$d/%2$d výtlačok";
+
+/* No comment provided by engineer. */
+"%d/%d Prints" = "Počet výtlačkov: %1$d/%2$d";
+
+/* Number of copies */
+"%ld Copies" = "Počet kópií: %ld";
+
+/* page range label in job summary */
+"%ld of %ld Pages" = "%1$ld z %2$ld strán";
+
+/* No comment provided by engineer. */
+"1 Copy" = "1 kópia";
+
+/* The printer will shut off after 10 minutes */
+"10 minutes" = "10 minút";
+
+/* Option for paper size */
+"10x13cm" = "10 x 13 cm";
+
+/* Option for paper size */
+"10x15cm" = "10 x 15 cm";
+
+/* Option for paper size */
+"13x18cm" = "13 x 18 cm";
+
+/* Option for paper size */
+"2 x 3" = "2 x 3";
+
+/* The printer will shut off after 3 minutes */
+"3 minutes" = "3 minúty";
+
+/* Option for paper size */
+"4 x 5" = "4 x 5";
+
+/* Option for paper size */
+"4 x 6" = "4 x 6";
+
+/* The printer will shut off after 5 minutes */
+"5 minutes" = "5 minút";
+
+/* Option for paper size */
+"5 x 7" = "5 x 7";
+
+/* Option for paper size */
+"8.5 x 11" = "8,5 x 11";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"A battery error has occured. Restart Sprocket to continue printing." = "Vyskytla sa chyba batérie. Ak chcete pokračovať v tlači, reštartujte tlačiareň sprocket.";
+
+/* Option for paper size */
+"A4" = "A4";
+
+/* Option for paper size */
+"A5" = "A5";
+
+/* Option for paper size */
+"A6" = "A6";
+
+/* Add multipage pdf to print queue button label */
+"Add %ld Pages" = "Pridať strany (%ld)";
+
+/* Add single pdf doc to print queue button label */
+"Add 1 Page" = "Pridať 1 stranu";
+
+/* fotter text describing print queue */
+"Add a print to the Print Queue and receive a notification when you are near your printer.  Tap your notification or simply come back to this app to print your projects." = "Keď ste v blízkosti tlačiarne, môžete pridať výtlačok do tlačového frontu a dostať oznámenie.  Ak chcete vytlačiť projekty, ťuknite na oznámenie alebo sa jednoducho vráťte do tejto aplikácie.";
+
+/* Title of the Add Print to the Print Later Queue Screen */
+"Add Print" = "Pridať výtlačok";
+
+/* Add image to print queue button label */
+"Add to Print Queue" = "Pridať do tlačového frontu";
+
+/* Text used on a button that selects all pages for printing */
+"ALL" = "VŠETKY";
+
+/* No comment provided by engineer. */
+"All" = "Všetky";
+
+/* The printer will never shut off */
+"Always On" = "Vždy zapnuté";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete %d Prints?" = "Naozaj chcete teraz odstrániť tieto výtlačky (%d)?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete 1 Print?" = "Naozaj chcete teraz odstrániť 1 výtlačok?";
+
+/* Title of field displaying how many minutes the device is on before it automatically powers off */
+"Auto Off" = "Automaticky vypnúť";
+
+/* Let's the user know their job will be printed in black-and-white */
+"B&W" = "Čiernobielo";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"Battery Error" = "Chyba batérie";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Battery Low" = "Slabá batéria";
+
+/* Title of field displaying battery level */
+"Battery Status" = "Stav batérie";
+
+/* The color black */
+"Black" = "Čierna";
+
+/* No comment provided by engineer. */
+"Black & White mode" = "Čiernobiely režim";
+
+/* The color blue */
+"Blue" = "Modrá";
+
+/* The color brown */
+"Brown" = "Hnedá";
+
+/* Title */
+"California Rechargeable Battery Take-back Notice" = "Oznámenie štátu Kalifornia o spätnom zbere nabíjateľných batérií";
+
+/* button bar cancel button */
+"Cancel" = "Zrušiť";
+
+/* Title */
+"Chemical substances" = "Chemické látky";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Clear paper jam and restart the printer by pressing and holding the power button." = "Odstráňte zaseknutý papier a stlačením a podržaním tlačidla napájania reštartujte tlačiareň.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Close the cover to proceed." = "Ak chcete pokračovať, zatvorte kryt.";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Connect your sprocket to a power source to continue use." = "Pokračujte pripojením tlačiarne sprocket k zdroju napájania.";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Cooling Down..." = "Chladí sa…";
+
+/* copies label in job summary */
+"Copies" = "kóp.";
+
+/* copy label in job summary */
+"Copy" = "kópia";
+
+/* The cover is open */
+"Cover Open" = "Kryt je otvorený";
+
+/* No comment provided by engineer. */
+"Default printer not currently available" = "Predvolená tlačiareň momentálne nie je k dispozícii";
+
+/* No comment provided by engineer. */
+"Delete" = "Odstrániť";
+
+/* No comment provided by engineer. */
+"Delete Print from Print Queue" = "Odstrániť výtlačok z tlačového frontu";
+
+/* Title */
+"Disposal of waste equipment by users" = "Likvidácia vyradených zariadení používateľmi";
+
+/* Used on a button for closing the dialog */
+"Done" = "Hotovo";
+
+/* Title for firmware download error dialog */
+"Downloading Firmware Error" = "Chyba sťahovania firmvéru";
+
+/* Indicates that the firmware upgrade is being downloaded from the internet */
+"Downloading Firmware Upgrade" = "Sťahuje sa inovácia firmvéru";
+
+/* Message given when sprocket cannot print due to a system error */
+"Due to a system error, restart sprocket to continue printing." = "Vyskytla sa chyba systému. Ak chcete pokračovať v tlači, reštartujte tlačiareň sprocket.";
+
+/* Text used to give an example of how to enter a page range */
+"e.g. 1,3-5" = "napr. 1,3-5";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"Error" = "Chyba";
+
+/* Indicates that a firmware upgrade has started */
+"Finishing Firmware Upgrade" = "Dokončuje sa inovácia firmvéru";
+
+/* Title for dialog given after a successful firmware update */
+"Firmware Updated" = "Firmvér sa aktualizoval";
+
+/* Indicates that a firmware upgrade has completed */
+"Firmware Upgrade Complete" = "Inovácia firmvéru je dokončená";
+
+/* Message given when sprocket cannot be reached */
+"Firmware Upgrade Error" = "Chyba inovácie firmvéru";
+
+/* Indicates that a firmware update has failed */
+"Firmware Upgrade Failed" = "Inovácia firmvéru zlyhala";
+
+/* Title of field displaying the printer's firmware version */
+"Firmware Version" = "Verzia firmvéru";
+
+/* The color green */
+"Green" = "Zelená";
+
+/* The color grey */
+"Grey" = "Sivá";
+
+/* Title of field displaying the printer's hardware version */
+"Hardware Version" = "Verzia hardvéru";
+
+/* Description */
+"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "Spoločnosť HP odporúča svojim zákazníkom, aby recyklovali použité elektronické zariadenia, originálne tlačové kazety HP a nabíjateľné batérie. Ďalšie informácie o recyklačných programoch nájdete na stránke www.hp.com/recycle.";
+
+/* Description */
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "Spoločnosť HP sa zaväzuje poskytovať svojim zákazníkom informácie o chemických látkach vo svojich produktoch v súlade so zákonnými požiadavkami vyplývajúcimi napríklad z normy REACH (nariadenie ES č. 1907/2006 Európskeho parlamentu a Rady). Správu o chemickom zložení tohto produktu môžete nájsť na adrese: www.hp.com/go/reach";
+
+/* Description */
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "Spoločnosť HP ponúka v mnohých krajinách/regiónoch čoraz väčší počet programov spätného zberu a recyklácie produktov a spolupracuje s mnohými z najväčších centier na recykláciu elektronických zariadení po celom svete. Spoločnosť HP sa snaží o zachovanie zdrojov formou opätovného predaja niektorých zo svojich najobľúbenejších produktov. Informácie o recyklácii produktov spoločnosti HP nájdete na adrese: www.hp.com/recycle";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Incorrect Paper Type" = "Nesprávny typ papiera";
+
+/* Option of the push notification to send another push notification later */
+"Later" = "Neskôr";
+
+/* Message given when sprocket cannot print due to having no paper */
+"Load paper with the included Smartsheet to continue printing." = "Ak chcete pokračovať v tlači, vložte papier spolu s priloženým hárkom Smartsheet.";
+
+/* Title of field displaying the printer's mac address */
+"MAC Address" = "Adresa MAC";
+
+/* Message given when the printer can't be contacted. */
+"Make sure the sprocket printer is on and bluetooth connected." = "Overte, či je tlačiareň sprocket zapnutá a pripojená cez Bluetooth.";
+
+/* Body for firmware download error dialog */
+"Make sure you are connected to the internet and try again." = "Overte, či máte pripojenie na internet, a skúste znova.";
+
+/* Monitoring of regions (location) not available */
+"Monitoring not available" = "Monitorovanie nie je k dispozícii";
+
+/* job name label */
+"Name" = "Názov";
+
+/* Indicates that the device will never power off */
+"Never" = "Nikdy";
+
+/* No comment provided by engineer. */
+"Next" = "Ďalej";
+
+/* Indicates that no sprocket printers are connected */
+"No sprockets Connected" = "Nie sú pripojené žiadne tlačiarne sprocket";
+
+/* No comment provided by engineer. */
+"No Wi-Fi connection" = "Žiadne pripojenie Wi-Fi";
+
+/* Printer details not available */
+"Not Available" = "Nie je k dispozícii";
+
+/* Used to denote a page range.  IE: x 'of' y pages */
+"of" = "z";
+
+/* Dismisses dialog without taking action */
+"OK" = "OK";
+
+/* The color orange */
+"Orange" = "Oranžová";
+
+/* Table heading for list of all available printers, except for the most recently used printer */
+"Other Printers" = "Ďalšie tlačiarne";
+
+/* Message given when sprocket cannot print due to having no paper
+   The printer is out of paper */
+"Out of Paper" = "Chýba papier";
+
+/* Used to specify that a range of pages can be displayed */
+"Page Range" = "Rozsah strán";
+
+/* Title of the Page Settings Screen */
+"Page Settings" = "Nastavenia strany";
+
+/* Instructions for pairing a printer */
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Spárujte tlačiareň sprocket s rozhraním Bluetooth s týmto zariadením. Overte, či je tlačiareň sprocket zapnutá a pripojená cez Bluetooth.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Paper Cover Open" = "Kryt papiera je otvorený";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Paper has Jammed" = "Uviazol papier";
+
+/* There is a paper jam in the printer */
+"Paper Jam" = "Zaseknutý papier";
+
+/* Title of the Paper Size screen */
+"Paper Size" = "Veľkosť papiera";
+
+/* Title of the Paper Type screen */
+"Paper Type" = "Typ papiera";
+
+/* Default job name of the print send to the printer */
+"Photo" = "Fotografia";
+
+/* Option for paper type */
+"Photo Paper" = "Fotografický papier";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Photo Unsupported" = "Nepodporovaná fotografia";
+
+/* The color pink */
+"Pink" = "Ružová";
+
+/* Option for paper type */
+"Plain Paper" = "Obyčajný papier";
+
+/* Title of the Preview pane in any print or add-to-queue screen */
+"Preview" = "Ukážka";
+
+/* Print button label */
+"Print" = "Tlačiť";
+
+/* Print button label with multiple pages */
+"Print %ld Pages" = "Vytlačiť tento počet strán: %ld";
+
+/* Print button label single page */
+"Print 1 Page" = "Vytlačiť 1 stranu";
+
+/* Print button label for printing multiple jobs */
+"Print All" = "Vytlačiť všetko";
+
+/* Caption of the button for printing */
+"Print all %lu" = "Vytlačiť všetko (%lu)";
+
+/* Caption of the button for printing */
+"Print both" = "Vytlačiť obe";
+
+/* The print buffer is full */
+"Print Buffer Full" = "Medzipamäť tlačiarne je plná";
+
+/* Activity title of the print queue when the share button is tapped */
+"Print Queue" = "Tlačový front";
+
+/* No comment provided by engineer. */
+"Print queue is empty" = "Tlačový front je prázdny";
+
+/* Title of the print settings screen */
+"Print Settings" = "Nastavenia tlače";
+
+/* Bluetooth print button label */
+"Print to sprocket" = "Vytlačiť v tlačiarni sprocket";
+
+/* No comment provided by engineer. */
+"Printer" = "Tlačiareň";
+
+/* The printer is available and there are print later jobs in the print queue */
+"Printer nearby. Projects waiting to be printed..." = "Tlačiareň v blízkosti. Projekty čakajúce na tlač...";
+
+/* The printer is printing */
+"Printing" = "Tlač";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Tlač je deaktivovaná, kým sa nedosiahne vyššia teplota. Pred odoslaním ďalšej fotografie počkajte.";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Tlač je deaktivovaná, kým sa nedosiahne nižšia teplota. Pred odoslaním ďalšej fotografie počkajte.";
+
+/* No comment provided by engineer. */
+"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Tlač vyžaduje, aby mobilné zariadenie a tlačiareň boli v rovnakej sieti Wi-Fi. Skontrolujte nastavenia siete Wi-Fi.";
+
+/* The color purple */
+"Purple" = "Purpurová";
+
+/* Message given when sprocket has no known error
+   The printer is ready to print */
+"Ready" = "Pripravené";
+
+/* Table heading for the printer that has most recently been printed to */
+"Recent Printer" = "Naposledy použitá tlačiareň";
+
+/* No comment provided by engineer. */
+"Recent printer not currently available" = "Naposledy použitá tlačiareň momentálne nie je k dispozícii";
+
+/* Title */
+"Recycling program" = "Program recyklovania";
+
+/* The color red */
+"Red" = "Červená";
+
+/* Title */
+"Safety data sheets" = "Karty bezpečnostných údajov";
+
+/* Description */
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Karty bezpečnostných údajov, informácie o bezpečnosti produktu a informácie o vplyve na životné prostredie sú k dispozícii na adrese www.hp.com/go/ecodata alebo na požiadanie.";
+
+/* No comment provided by engineer. */
+"Select All" = "Vybrať všetko";
+
+/* Title for screen listing all available sprocket printers */
+"Select Printer" = "Vybrať tlačiareň";
+
+/* No comment provided by engineer. */
+"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Pri výbere tlačiarne sa vyžaduje, aby mobilné zariadenie a tlačiareň boli v rovnakej sieti Wi-Fi. Skontrolujte nastavenia siete Wi-Fi.";
+
+/* Indicates that the firmware upgrade is being sent to the printer */
+"Sending Firmware Upgrade\nto Sprocket Printer" = "Inovácia firmvéru sa odosiela\ndo tlačiarne sprocket";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Odosiela sa do tlačiarne sprocket";
+
+/* No comment provided by engineer. */
+"Settings" = "Nastavenia";
+
+/* Title for screen listing all available sprocket printers */
+"sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Sprocket is Cold" = "Tlačiareň sprocket je studená";
+
+/* Message given when sprocket has no known error */
+"Sprocket is ready to print." = "Tlačiareň sprocket je pripravená na tlač.";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Sprocket is Warm" = "Tlačiareň sprocket je teplá";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Tlačiareň sprocket sa pred tlačou ďalšej úlohy musí ochladiť. Pred odoslaním ďalšej fotografie počkajte.";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket Printer in Use" = "Používaná tlačiareň sprocket";
+
+/* Message given when sprocket cannot be reached */
+"Sprocket Printer Not Connected" = "Tlačiareň sprocket nie je pripojená";
+
+/* Title of field displaying latest errors */
+"Status" = "Stav";
+
+/* Title of a table section */
+"SUPPORT:" = "PODPORA:";
+
+/* Message given when sprocket cannot print due to a system error */
+"System Error Occured" = "Vyskytla sa chyba systému";
+
+/* Title of field for displaying the technical infomration
+   Title of table view cell used for displaying technical information
+   Title of Technical Information screen */
+"Technical Information" = "Technické informácie";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"The device is not recognized." = "Zariadenie nie je rozpoznané.";
+
+/* Message given when sprocket cannot print due to being in use. */
+"The sprocket printer is already processing a job. Please wait to resend photo." = "V tlačiarni sprocket už prebieha spracovanie úlohy. Pred opätovným odoslaním fotografie počkajte.";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Počas odosielania fotografie sa vyskytla chyba. Táto tlačiareň nemusí podporovať používanie tohto formátu fotografie. Vyberte iný obrázok. ";
+
+/* Description */
+"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Tento symbol znamená, že produkt sa nesmie likvidovať spoločne s bežným komunálnym odpadom. Je dôležité, aby ste chránili zdravie ľudí a životné prostredie a odovzdali vyradené zariadenia na určené zberné miesta na recykláciu odpadu z elektrických a elektronických zariadení. Ďalšie informácie vám poskytne oddelenie služieb likvidácie komunálneho odpadu alebo ich nájdete na adrese http://www.hp.com/recycle.";
+
+/* Body for firmware upgrade error where the reason for the error is unknown */
+"Unknown status" = "Neznámy stav";
+
+/* A color we don't recognize */
+"Unrecognized Color" = "Nerozpoznaná farba";
+
+/* Message given when sprocket has an unrecgonized error */
+"Unrecognized Error" = "Nerozpoznaná chyba";
+
+/* A status we don't recognize */
+"Unrecognized Status" = "Nerozpoznaný stav";
+
+/* No comment provided by engineer. */
+"Unselect All" = "Zrušiť výber všetkého";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Používajte značkový fotopapier HP ZINK. Vložte modrý hárok Smartsheet čiarovým kódom nadol a reštartujte tlačiareň. ";
+
+/* footer heading describing print queue */
+"What is Print Queue?" = "Čo je to tlačový front?";
+
+/* The color white */
+"White" = "Biela";
+
+/* No comment provided by engineer. */
+"Wi-Fi Required" = "Vyžaduje sa Wi-Fi";
+
+/* The color yellow */
+"Yellow" = "Žltá";
+
+/* No comment provided by engineer. */
+"Your device does not support the region monitoring, it is not possible to fire alarms base on position" = "Vaše zariadenie nepodporuje monitorovanie oblastí. Nie je možné aktivovať protipožiarne výstrahy na základe polohy.";
+
+/* Body of dialog giving instructions on how to proceed after a firmware upgrade */
+"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "Tlačiareň sprocket sa teraz vypne. Znova zapnite tlačiareň sprocket a pokračujte v zábave.";
+
