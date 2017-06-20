@@ -314,12 +314,13 @@ $sticker ={
         'sticker_5' => {'name' => 'Stars Sticker','value' =>'Stars Sticker'},
         'sticker_6' => {'name' => 'Birthday Hat Sticker','value' =>'Birthday Hat Sticker'},
         'sticker_7' => {'name' => 'Gift Sticker','value' =>'Gift Sticker'},
-        'sticker_8' => {'name' => 'Balloons Sticker','value' =>'Balloons Sticker'},
+        'sticker_8' => {'name' => 'Cat Celebrate Sticker','value' =>'Cat Celebrate Sticker'},
         'sticker_9' => {'name' => 'Cake Sticker','value' =>'Cake Sticker'},
         'sticker_10' => {'name' => 'Gift Dog Sticker','value' =>'Gift Dog Sticker'},
-        'sticker_11' => {'name' => 'Cat Celebrate Sticker','value' =>'Cat Celebrate Sticker'},
+        'sticker_11' => {'name' => 'Confetti Graduation Sticker','value' =>'Confetti Graduation Sticker'},
         'sticker_12' => {'name' => 'Crown Sticker','value' =>'Crown Sticker'},
-        'sticker_13' => {'name' => 'Horn Sticker','value' =>'Horn Sticker'}
+        'sticker_13' => {'name' => 'Horn Sticker','value' =>'Horn Sticker'},
+        'sticker_13' => {'name' => 'Confetti Sticker','value' =>'Confetti Sticker'}
     },
     'Animal Category' => {
         'sticker_0' => {'name' => 'Cat Face Sticker','value' =>'Cat Face Sticker'},
