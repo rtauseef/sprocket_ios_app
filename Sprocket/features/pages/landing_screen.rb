@@ -56,6 +56,10 @@ def technical_info
         "view marked:'How to & Help'" 
     end
     
+    def about
+        "view marked:'About'" 
+    end
+    
     def reset_sprocket_printer
         "view marked:'Reset Sprocket Printer'" 
     end
