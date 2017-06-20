@@ -20,12 +20,12 @@ Scenario: Verify 'Sticker' selection in sticker option editor screen
 @regression
 Scenario Outline: Verify 'Sticker' selection in edit screen
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
-    And I select "Graduation Category" tab
+    And I select "July 4th Category" tab
     Then I select "sticker_0" sticker
     Then I am on the "StickerOptionEditor" screen
     Then I tap "Save" mark
     Then I am on the "Edit" screen
-    And I should see the photo with the "sticker_0" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_0" sticker from "July 4th Category" tab
        
     Examples:
     | social_media_screen_name        |
@@ -36,17 +36,17 @@ Scenario Outline: Verify 'Sticker' selection in edit screen
 @regression
 Scenario: Verify Sticker edit options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
-    And I select "Graduation Category" tab
+    And I select "Decorative Category" tab
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_21" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_21" sticker from "Decorative Category" tab
     And I should see "Add" button
     And I should see "Delete" button
     And I should see "Color" button
     And I should see "Flip" button
     And I should see "Bring to front" button
-    And I should see "Undo" mark
-    And I should see "Redo" mark
+   # And I should see "Undo" mark
+    #And I should see "Redo" mark
     #And I should see "Flip horizontally" button
     
     
@@ -54,10 +54,10 @@ Scenario: Verify Sticker edit options
 @done
 Scenario Outline: Verify Sticker delete option    
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
-    And I select "Graduation Category" tab
+    And I select "July 4th Category" tab
     Then I select "sticker_0" sticker
     Then I should see the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_0" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_0" sticker from "July 4th Category" tab
     Then I touch "Delete"
     Then I should see the "Edit" screen
     And I should see the photo with no "sticker"
@@ -76,7 +76,7 @@ Scenario Outline: Verify sticker list
     | sticker_tab_name        |
     | Fathers Day Category    |
     | Summer Category         |
-    | Graduation Category     |
+    | July 4th Category       |
    # | Cannes Category        |
     | Face Category           |
     | Decorative Category     |
@@ -95,8 +95,8 @@ Scenario Outline: Verify all the stickers are applied for sticker editor screen
     Examples:
     | sticker_tab_name      |
     | Fathers Day Category |
+    | July 4th Category   |
     | Summer Category       |
-    | Graduation Category   |
    # | Cannes Category       |
     | Face Category         |
     | Decorative Category   |
@@ -112,17 +112,17 @@ Scenario Outline: Verify all the stickers are applied for sticker editor screen
 @done
 Scenario Outline: Verify sticker editor screen navigation
     Given I am on the "StickerEditor" screen for "<social_media_screen_name>"
-    And I select "Graduation Category" tab
+    And I select "July 4th Category" tab
     Then I select "sticker_1" sticker
     Then I should see the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_1" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_1" sticker from "July 4th Category" tab
     Then I touch "Delete"
     Then I should see the "Edit" screen
     Then I tap "Sticker" button
-    And I select "Graduation Category" tab
+    And I select "July 4th Category" tab
     Then I select "sticker_4" sticker
     Then I am on the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_4" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_4" sticker from "July 4th Category" tab
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     
@@ -152,7 +152,7 @@ Scenario: Verify Sticker add option
 @done
 Scenario: Verify Sticker color options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
-    And I select "Graduation Category" tab
+    And I select "Decorative Category" tab
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
     Then I touch "Color"  
@@ -178,7 +178,7 @@ Scenario: Verify Sticker color options
 @TA17968
 Scenario: Verify Sticker color selection
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
-    And I select "Graduation Category" tab
+    And I select "Decorative Category" tab
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
     Then I touch "Color"  
@@ -188,13 +188,13 @@ Scenario: Verify Sticker color selection
 @TA17968
 Scenario: Verify Sticker add/delete functionality
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
-    And I select "Graduation Category" tab
+    And I select "July 4th Category" tab
     Then I select "sticker_3" sticker
     Then I touch "Add"  
     And I select "Summer Category" tab
     Then I select "sticker_7" sticker
     Then I touch "Add"  
-    And I select "Cannes Category" tab
+    And I select "July 4th Category" tab
     Then I select "sticker_0" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
@@ -207,7 +207,7 @@ Scenario: Verify Sticker add/delete functionality
     Then I select "sticker_9" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    And I should see the photo with the "sticker_3" sticker from "Graduation Category" tab
+    And I should see the photo with the "sticker_3" sticker from "July 4th Category" tab
     And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
     And I should see the photo with the "sticker_11" sticker from "Face Category" tab
 

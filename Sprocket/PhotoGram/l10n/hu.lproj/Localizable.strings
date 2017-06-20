@@ -1,0 +1,295 @@
+/* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld / %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "A nyomtatási sorban %li nyomtatási feladat van";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "A nyomtatási sorban %li nyomtatási feladat van";
+
+/* No comment provided by engineer. */
+"About" = "Névjegy";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "A fényképek elkészítéséhez és nyomtatásához engedélyezze a hozzáférést a Beállítások menüpontban.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Hiba történt az elem mentésekor.";
+
+/* No comment provided by engineer. */
+"App Settings" = "Alkalmazás beállításai";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Auto-Save beállítások";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Tanulmány megvásárlása";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "A(z) %@ hitelesítésével egyben hozzájárul a HP <Terms of Service> feltételeihez is.";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Kamerához való hozzáférés szükséges";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Filmtekercs";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Mégse";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Saját HP Sprocket létrehozásának kivétele";
+
+/* Setup step 3 desc */
+"Connect" = "Csatlakozás";
+
+/* Number of Copies for printing */
+"Copies" = "Másolat";
+
+/* Number of Copies for printing */
+"Copy" = "Másolat";
+
+/* No comment provided by engineer. */
+"Delete All" = "Mindent töröl";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Minden nyomtatási feladatot töröl a nyomtatási sorból?";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Elutasítás";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Új kamerafényképeket szeretne készülékére menteni?";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Mentés mellőzése";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Szöveg bevitele";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Bevitel+szöveg";
+
+/* No comment provided by engineer. */
+"Error" = "Hiba";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Hiba a felhasználói adatok lehívásánál.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Visszajelzés a sprocket for iOS-ről (felvételkereső: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "A Bluetooth-beállítások menüpontban érintse meg a „HP Sprocket” lehetőséget a nyomtató párosításához.";
+
+/* Social source title for Google */
+"Google" = "Google";
+
+/* No comment provided by engineer. */
+"How To" = "Útmutató";
+
+/* No comment provided by engineer. */
+"How to & Help" = "Teendők és súgó";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* Setup step 1 desc */
+"Load Paper" = "Papír betöltése";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "A naplófájl törölve.";
+
+/* No comment provided by engineer. */
+"NO" = "NEM";
+
+/* Dismisses dialog without taking action */
+"No" = "Nem";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Nincs elérhető kapcsolat";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Nem találhatók Pitu képek";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Nem találhatók Qzone képek";
+
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "A nyomtatási sorban nincs nyomtatási feladat";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Nem, tartsa meg őket";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Nem, köszönöm";
+
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Nem sikerült letölteni az összes képet. Szeretné folytatni?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oops!" = "Hoppá!";
+
+/* Dismisses dialog and pauses printing */
+"Pause" = "Szünet";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "A fényképek nyomtatása a nyomtatási sorba való bekerülés sorrendjében történik, ha a sprocket nyomtatót már bekapcsolta, és a Bluetooth-kapcsolat is létrejött.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "A fényképek nyomtatása a nyomtatási sorba való bekerülés sorrendjében történik.";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Csatlakozzon egy adatforráshoz.
+Használhatja az eszköze fényképeit is.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Mondja el nekünk, mi tetszett igazán Önnek, és mi lehetne még jobb.";
+
+/* Setup step 2 desc */
+"Power Up" = "Bekapcsolás";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Tartsa lenyomva a tápellátás gombot, amíg a LED fehérre nem vált.";
+
+/* No comment provided by engineer. */
+"Print" = "Nyomtatás";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Nyomtatási sor";
+
+/* No comment provided by engineer. */
+"Printers" = "Nyomtatók";
+
+/* No comment provided by engineer. */
+"Privacy" = "Adatvédelem";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Helyezze a teljes csomagot a papírtálcára úgy, hogy a vonalkód és a HP-logók lefelé nézzenek.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Később emlékeztessen";
+
+/* No comment provided by engineer. */
+"Reset" = "Visszaállítás";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Alkalmazás visszaállítása";
+
+/* No comment provided by engineer. */
+"Retry" = "Újra";
+
+/* Title of a table view header */
+"SUPPORT:" = "TÁMOGATÁS:";
+
+/* No comment provided by engineer. */
+"Save" = "Mentés";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Menti az előnézetet, majd kilép?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Mentés a filmtekercshez";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Küldés a sprocket nyomtatóhoz";
+
+/* Button for opening the app settings */
+"Settings" = "Beállítások";
+
+/* No comment provided by engineer. */
+"Sign In" = "Bejelentkezés";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Kijelentkezés";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Sajnáljuk, a problémáját most nem tudja jelenteni. Ennek lehetséges oka az, hogy nincs levelezési fiók beállítva a mobileszközén.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "A sprocket nyomtató belső vezérlőprogramjának frissítése rendelkezésre áll";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "A sprocket nem csatlakozik";
+
+/* Setup step 1 title */
+"Step 1" = "1. lépés";
+
+/* Setup step 2 title */
+"Step 2" = "2. lépés";
+
+/* Setup step 3 title */
+"Step 3" = "3. lépés";
+
+/* No comment provided by engineer. */
+"Success" = "Sikeres";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Kérdőív kitöltése";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Részt veszek a felmérésen";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "A folytatáshoz érintse meg a Frissítés lehetőséget.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Mondja el nekünk véleményét a következőről: %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Mondja el nekünk véleményét a sprocketről";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "A naplófájl ehhez az üzenethez csatolva.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Ez törli az összes korábban mentett opciót.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "A frissítéshez töltse fel a sprocket nyomtatót legalább 75%-ra, majd a menüben lépjen a 'sprocket' lehetőségre.";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Frissítés";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Verzió: %1$@ (%2$@)";
+
+/* Social source title for WeiBo */
+"WeiBo" = "WeiBo";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Ki szeretne jelentkezni innen: %@?";
+
+/* No comment provided by engineer. */
+"YES" = "IGEN";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Igen";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Nincs beállítva fiók az e-mailek küldéséhez.";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "sprocket hibanapló";
+

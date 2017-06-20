@@ -5,7 +5,7 @@
 "CFBundleName" = "sprocket";
 
 /* (No Commment) */
-"NSBluetoothPeripheralUsageDescription" = "Sprocket uygulamasının HP Sprocket Yazıcıya bağlanmak için bluetooth erişimine ihtiyacı vardır.";
+"NSBluetoothPeripheralUsageDescription" = "Sprocket uygulamasının HP Sprocket Yazıcıya bağlanmak için Bluetooth erişimine ihtiyacı vardır.";
 
 /* (No Commment) */
 "NSCameraUsageDescription" = "Fotoğraf çekmek ve yazdırmak için erişime izin verin.";

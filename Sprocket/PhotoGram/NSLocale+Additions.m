@@ -92,6 +92,18 @@ static NSString * const kPGHPCareTwitterURLFormat = @"http://hp.care/HPCS%@TW";
     return retVal;
 }
 
++ (BOOL)isUnitedStates
+{
+    BOOL retVal = NO;
+    
+    NSString *currentCountryCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    if ([currentCountryCode caseInsensitiveCompare:@"us"] == NSOrderedSame) {
+        retVal = YES;
+    }
+    
+    return retVal;
+}
+
 + (NSString *)languageID
 {
     NSArray *supportedLanguages = [[self supportedLocales] allKeys];

@@ -1,0 +1,493 @@
+/* No comment provided by engineer. */
+"%d Print" = "%d 份打印件";
+
+/* No comment provided by engineer. */
+"%d Prints" = "%d 份打印件";
+
+/* No comment provided by engineer. */
+"%d/%d Print" = "%1$d/%2$d 打印件";
+
+/* No comment provided by engineer. */
+"%d/%d Prints" = "%1$d/%2$d 打印件";
+
+/* Number of copies */
+"%ld Copies" = "%ld 份";
+
+/* page range label in job summary */
+"%ld of %ld Pages" = "第 %1$ld 页，共 %2$ld 页";
+
+/* No comment provided by engineer. */
+"1 Copy" = "1 份";
+
+/* The printer will shut off after 10 minutes */
+"10 minutes" = "10 分钟";
+
+/* Option for paper size */
+"10x13cm" = "10 x 13 厘米";
+
+/* Option for paper size */
+"10x15cm" = "10 x 15 厘米";
+
+/* Option for paper size */
+"13x18cm" = "13 x 18 厘米";
+
+/* Option for paper size */
+"2 x 3" = "2 x 3";
+
+/* The printer will shut off after 3 minutes */
+"3 minutes" = "3 分钟";
+
+/* Option for paper size */
+"4 x 5" = "4 x 5";
+
+/* Option for paper size */
+"4 x 6" = "4 x 6";
+
+/* The printer will shut off after 5 minutes */
+"5 minutes" = "5 分钟";
+
+/* Option for paper size */
+"5 x 7" = "5 x 7";
+
+/* Option for paper size */
+"8.5 x 11" = "8.5 x 11";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"A battery error has occured. Restart Sprocket to continue printing." = "电池出现故障。 重启 Spocket 以继续打印。";
+
+/* Option for paper size */
+"A4" = "A4";
+
+/* Option for paper size */
+"A5" = "A5";
+
+/* Option for paper size */
+"A6" = "A6";
+
+/* Add multipage pdf to print queue button label */
+"Add %ld Pages" = "添加 %ld 页";
+
+/* Add single pdf doc to print queue button label */
+"Add 1 Page" = "添加 1 页";
+
+/* fotter text describing print queue */
+"Add a print to the Print Queue and receive a notification when you are near your printer.  Tap your notification or simply come back to this app to print your projects." = "当您位于打印机旁时，添加打印任务至打印队列并接收通知。  点击通知或直接回到此应用以打印项目。";
+
+/* Title of the Add Print to the Print Later Queue Screen */
+"Add Print" = "添加打印任务";
+
+/* Add image to print queue button label */
+"Add to Print Queue" = "添加至打印队列";
+
+/* Text used on a button that selects all pages for printing */
+"ALL" = "全部";
+
+/* No comment provided by engineer. */
+"All" = "全部";
+
+/* The printer will never shut off */
+"Always On" = "始终开启";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete %d Prints?" = "是否确定要删除 %d 份打印件？";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete 1 Print?" = "是否确定要删除 1 份打印件？";
+
+/* Title of field displaying how many minutes the device is on before it automatically powers off */
+"Auto Off" = "自动关闭";
+
+/* Let's the user know their job will be printed in black-and-white */
+"B&W" = "黑白";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"Battery Error" = "电池故障";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Battery Low" = "Battery Low";
+
+/* Title of field displaying battery level */
+"Battery Status" = "电池电量";
+
+/* The color black */
+"Black" = "黑色";
+
+/* No comment provided by engineer. */
+"Black & White mode" = "黑白模式";
+
+/* The color blue */
+"Blue" = "蓝色";
+
+/* The color brown */
+"Brown" = "棕色";
+
+/* Title */
+"California Rechargeable Battery Take-back Notice" = "加利福尼亚充电电池回收公告";
+
+/* button bar cancel button */
+"Cancel" = "取消";
+
+/* Title */
+"Chemical substances" = "Chemical substances";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Clear paper jam and restart the printer by pressing and holding the power button." = "清理卡纸，然后长按电源键以重启打印机。";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Close the cover to proceed." = "合上顶盖以继续。";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Connect your sprocket to a power source to continue use." = "Connect your sprocket to a power source to continue use.";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Cooling Down..." = "正在冷却...";
+
+/* copies label in job summary */
+"Copies" = "份数";
+
+/* copy label in job summary */
+"Copy" = "复印";
+
+/* The cover is open */
+"Cover Open" = "设备盖打开";
+
+/* No comment provided by engineer. */
+"Default printer not currently available" = "默认打印机当前不可用";
+
+/* No comment provided by engineer. */
+"Delete" = "删除";
+
+/* No comment provided by engineer. */
+"Delete Print from Print Queue" = "从打印队列中删除打印任务";
+
+/* Title */
+"Disposal of waste equipment by users" = "用户处理废弃设备";
+
+/* Used on a button for closing the dialog */
+"Done" = "完成";
+
+/* Title for firmware download error dialog */
+"Downloading Firmware Error" = "下载固件出错";
+
+/* Indicates that the firmware upgrade is being downloaded from the internet */
+"Downloading Firmware Upgrade" = "正在下载固件升级";
+
+/* Message given when sprocket cannot print due to a system error */
+"Due to a system error, restart sprocket to continue printing." = "由于系统错误，需要重启 sprocket 以继续打印。";
+
+/* Text used to give an example of how to enter a page range */
+"e.g. 1,3-5" = "例如， 1,3-5";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"Error" = "错误";
+
+/* Indicates that a firmware upgrade has started */
+"Finishing Firmware Upgrade" = "正在完成固件升级";
+
+/* Title for dialog given after a successful firmware update */
+"Firmware Updated" = "固件已更新";
+
+/* Indicates that a firmware upgrade has completed */
+"Firmware Upgrade Complete" = "固件升级完成";
+
+/* Message given when sprocket cannot be reached */
+"Firmware Upgrade Error" = "固件升级出错";
+
+/* Indicates that a firmware update has failed */
+"Firmware Upgrade Failed" = "固件升级失败";
+
+/* Title of field displaying the printer's firmware version */
+"Firmware Version" = "固件版本";
+
+/* The color green */
+"Green" = "绿色";
+
+/* The color grey */
+"Grey" = "灰色";
+
+/* Title of field displaying the printer's hardware version */
+"Hardware Version" = "硬件版本";
+
+/* Description */
+"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "HP 鼓励客户循环利用使用过的电子硬件、HP 原装打印墨盒和可充电电池。 For more information about recycling programs, go to www.hp.com/recycle.";
+
+/* Description */
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). 可从以下网站查找有关此产品的化学物质信息报告： www.hp.com/go/reach";
+
+/* Description */
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP 通过再次销售其某些受欢迎的产品来节约资源。 有关 HP 产品的详细回收信息，请访问： www.hp.com/recycle";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Incorrect Paper Type" = "纸张类型不正确";
+
+/* Option of the push notification to send another push notification later */
+"Later" = "稍后";
+
+/* Message given when sprocket cannot print due to having no paper */
+"Load paper with the included Smartsheet to continue printing." = "装入纸张及附带的 Smartsheet 以继续打印。";
+
+/* Title of field displaying the printer's mac address */
+"MAC Address" = "MAC 地址";
+
+/* Message given when the printer can't be contacted. */
+"Make sure the sprocket printer is on and bluetooth connected." = "Make sure the sprocket printer is on and bluetooth connected.";
+
+/* Body for firmware download error dialog */
+"Make sure you are connected to the internet and try again." = "确保已连接到互连网，然后重试。";
+
+/* Monitoring of regions (location) not available */
+"Monitoring not available" = "监控功能不可用";
+
+/* job name label */
+"Name" = "名称";
+
+/* Indicates that the device will never power off */
+"Never" = "从不";
+
+/* No comment provided by engineer. */
+"Next" = "下一页";
+
+/* Indicates that no sprocket printers are connected */
+"No sprockets Connected" = "No sprockets Connected";
+
+/* No comment provided by engineer. */
+"No Wi-Fi connection" = "无 Wi-Fi 连接";
+
+/* Printer details not available */
+"Not Available" = "不可用";
+
+/* Used to denote a page range.  IE: x 'of' y pages */
+"of" = "/";
+
+/* Dismisses dialog without taking action */
+"OK" = "确定";
+
+/* The color orange */
+"Orange" = "橙色";
+
+/* Table heading for list of all available printers, except for the most recently used printer */
+"Other Printers" = "其他打印机";
+
+/* Message given when sprocket cannot print due to having no paper
+   The printer is out of paper */
+"Out of Paper" = "纸张用完";
+
+/* Used to specify that a range of pages can be displayed */
+"Page Range" = "页面范围";
+
+/* Title of the Page Settings Screen */
+"Page Settings" = "页面设置";
+
+/* Instructions for pairing a printer */
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Paper Cover Open" = "纸张顶盖打开";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Paper has Jammed" = "发生卡纸";
+
+/* There is a paper jam in the printer */
+"Paper Jam" = "卡纸";
+
+/* Title of the Paper Size screen */
+"Paper Size" = "纸张尺寸";
+
+/* Title of the Paper Type screen */
+"Paper Type" = "纸张类型";
+
+/* Default job name of the print send to the printer */
+"Photo" = "照片";
+
+/* Option for paper type */
+"Photo Paper" = "相纸";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Photo Unsupported" = "不支持照片";
+
+/* The color pink */
+"Pink" = "粉色";
+
+/* Option for paper type */
+"Plain Paper" = "普通纸";
+
+/* Title of the Preview pane in any print or add-to-queue screen */
+"Preview" = "预览";
+
+/* Print button label */
+"Print" = "打印";
+
+/* Print button label with multiple pages */
+"Print %ld Pages" = "打印 %ld 页";
+
+/* Print button label single page */
+"Print 1 Page" = "打印 1 页";
+
+/* Print button label for printing multiple jobs */
+"Print All" = "打印全部";
+
+/* Caption of the button for printing */
+"Print all %lu" = "打印全部 %lu";
+
+/* Caption of the button for printing */
+"Print both" = "打印两者";
+
+/* The print buffer is full */
+"Print Buffer Full" = "打印缓冲区已满";
+
+/* Activity title of the print queue when the share button is tapped */
+"Print Queue" = "打印队列";
+
+/* No comment provided by engineer. */
+"Print queue is empty" = "打印队列为空";
+
+/* Title of the print settings screen */
+"Print Settings" = "打印设置";
+
+/* Bluetooth print button label */
+"Print to sprocket" = "打印到 Sprocket";
+
+/* No comment provided by engineer. */
+"Printer" = "打印机";
+
+/* The printer is available and there are print later jobs in the print queue */
+"Printer nearby. Projects waiting to be printed..." = "附近的打印机。 项目等待打印中...";
+
+/* The printer is printing */
+"Printing" = "打印";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "温度过低，打印功能不可用。 稍后再发送另一张照片。";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "温度过高，打印功能不可用。 稍后再发送另一张照片。";
+
+/* No comment provided by engineer. */
+"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "要进行打印，移动设备和打印机必须位于同一 Wi-Fi 网络中。 请检查您的 Wi-Fi 设置。";
+
+/* The color purple */
+"Purple" = "紫色";
+
+/* Message given when sprocket has no known error
+   The printer is ready to print */
+"Ready" = "就绪";
+
+/* Table heading for the printer that has most recently been printed to */
+"Recent Printer" = "近期使用的打印机";
+
+/* No comment provided by engineer. */
+"Recent printer not currently available" = "近期使用的打印机当前不可用";
+
+/* Title */
+"Recycling program" = "Recycling program";
+
+/* The color red */
+"Red" = "红色";
+
+/* Title */
+"Safety data sheets" = "Safety data sheets";
+
+/* Description */
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request.";
+
+/* No comment provided by engineer. */
+"Select All" = "全选";
+
+/* Title for screen listing all available sprocket printers */
+"Select Printer" = "选择打印机";
+
+/* No comment provided by engineer. */
+"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "要选择打印机，移动设备和打印机必须位于同一 Wi-Fi 网络中。 请检查您的 Wi-Fi 设置。";
+
+/* Indicates that the firmware upgrade is being sent to the printer */
+"Sending Firmware Upgrade\nto Sprocket Printer" = "正在发送固件升级\n至 Sprocket 打印机";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "正在发送至 sprocket 打印机";
+
+/* No comment provided by engineer. */
+"Settings" = "设置";
+
+/* Title for screen listing all available sprocket printers */
+"sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Sprocket is Cold" = "Sprocket 已冷却";
+
+/* Message given when sprocket has no known error */
+"Sprocket is ready to print." = "Sprocket 准备打印";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Sprocket is Warm" = "Sprocket 已完成暖机";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Sprocket needs to cool down before printing another job. Wait to send another photo." = "在进行下一次打印前，sprocket 需要冷却。 稍后再发送另一张照片。";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket Printer in Use" = "Sprocket 打印机正在使用";
+
+/* Message given when sprocket cannot be reached */
+"Sprocket Printer Not Connected" = "Sprocket Printer Not Connected";
+
+/* Title of field displaying latest errors */
+"Status" = "状态";
+
+/* Title of a table section */
+"SUPPORT:" = "支持：";
+
+/* Message given when sprocket cannot print due to a system error */
+"System Error Occured" = "出现系统错误";
+
+/* Title of field for displaying the technical infomration
+   Title of table view cell used for displaying technical information
+   Title of Technical Information screen */
+"Technical Information" = "Technical Information";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"The device is not recognized." = "设备未识别。";
+
+/* Message given when sprocket cannot print due to being in use. */
+"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket 打印机正在处理另一项任务。 请稍后再重新发送照片。";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "发送照片时出现错误。 打印机可能不支持该照片格式。 选择另一张图片。 ";
+
+/* Description */
+"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "此符号表示请不要将您的产品与其他生活垃圾一起处理。 相反，您应该保护人类健康和环境，将废弃设备移交到指定回收点对其进行处理，以便回收废弃的电子电机设备。 有关详细信息，请联系您的生活垃圾处理服务处，或访问 http://www.hp.com/recycle。";
+
+/* Body for firmware upgrade error where the reason for the error is unknown */
+"Unknown status" = "状态不明";
+
+/* A color we don't recognize */
+"Unrecognized Color" = "无法识别的颜色";
+
+/* Message given when sprocket has an unrecgonized error */
+"Unrecognized Error" = "无法识别的错误";
+
+/* A status we don't recognize */
+"Unrecognized Status" = "无法识别的状态";
+
+/* No comment provided by engineer. */
+"Unselect All" = "全部取消选择";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "使用 HP 旗下的 ZINK 相纸。 装入蓝色的 Smartsheet，条形码朝下，然后重启打印机。 ";
+
+/* footer heading describing print queue */
+"What is Print Queue?" = "什么是打印队列？";
+
+/* The color white */
+"White" = "白色";
+
+/* No comment provided by engineer. */
+"Wi-Fi Required" = "需要 Wi-Fi";
+
+/* The color yellow */
+"Yellow" = "黄色";
+
+/* No comment provided by engineer. */
+"Your device does not support the region monitoring, it is not possible to fire alarms base on position" = "设备不支持区域监控，无法根据位置发出火灾警报";
+
+/* Body of dialog giving instructions on how to proceed after a firmware upgrade */
+"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "您的 sprocket 打印机即将关闭。 重新打开您的 sprocket，让欢乐继续！";
+

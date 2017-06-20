@@ -1,0 +1,493 @@
+/* No comment provided by engineer. */
+"%d Print" = "%d הדפסה";
+
+/* No comment provided by engineer. */
+"%d Prints" = "%d הדפסות";
+
+/* No comment provided by engineer. */
+"%d/%d Print" = "%1$d/%2$d הדפסה";
+
+/* No comment provided by engineer. */
+"%d/%d Prints" = "%1$d/%2$d הדפסות";
+
+/* Number of copies */
+"%ld Copies" = "%ld עותקים";
+
+/* page range label in job summary */
+"%ld of %ld Pages" = "%1$ld מתוך %2$ld עמודים";
+
+/* No comment provided by engineer. */
+"1 Copy" = "עותק אחד";
+
+/* The printer will shut off after 10 minutes */
+"10 minutes" = "10 דקות";
+
+/* Option for paper size */
+"10x13cm" = "10‏x‏13 ס"מ";
+
+/* Option for paper size */
+"10x15cm" = "10‏x‏15 ס"מ";
+
+/* Option for paper size */
+"13x18cm" = "13‏x‏18 ס"מ";
+
+/* Option for paper size */
+"2 x 3" = "2 x‏ 3";
+
+/* The printer will shut off after 3 minutes */
+"3 minutes" = "3 דקות";
+
+/* Option for paper size */
+"4 x 5" = "4 x‏ 5";
+
+/* Option for paper size */
+"4 x 6" = "4 x‏ 6";
+
+/* The printer will shut off after 5 minutes */
+"5 minutes" = "5 דקות";
+
+/* Option for paper size */
+"5 x 7" = "5 x‏ 7";
+
+/* Option for paper size */
+"8.5 x 11" = "8.5 x‏ 11";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"A battery error has occured. Restart Sprocket to continue printing." = "אירעה שגיאת סוללה. הפעל מחדש את Sprocket כדי להמשיך בהדפסה.";
+
+/* Option for paper size */
+"A4" = "A4";
+
+/* Option for paper size */
+"A5" = "A5‏";
+
+/* Option for paper size */
+"A6" = "A6";
+
+/* Add multipage pdf to print queue button label */
+"Add %ld Pages" = "הוסף %ld עמודים";
+
+/* Add single pdf doc to print queue button label */
+"Add 1 Page" = "הוסף עמוד אחד";
+
+/* fotter text describing print queue */
+"Add a print to the Print Queue and receive a notification when you are near your printer.  Tap your notification or simply come back to this app to print your projects." = "הוסף הדפסה לתור ההדפסה וקבל התראה כאשר תהיה קרוב למדפסת.  הקש על ההודעה או פשוט חזור ליישום זה כדי להדפיס את הפרויקטים שלך.";
+
+/* Title of the Add Print to the Print Later Queue Screen */
+"Add Print" = "הוסף הדפסה";
+
+/* Add image to print queue button label */
+"Add to Print Queue" = "הוסף לתור ההדפסה";
+
+/* Text used on a button that selects all pages for printing */
+"ALL" = "הכל";
+
+/* No comment provided by engineer. */
+"All" = "הכל";
+
+/* The printer will never shut off */
+"Always On" = "מופעל תמיד";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete %d Prints?" = "האם אתה בטוח שברצונך למחוק %d הדפסות?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete 1 Print?" = "האם אתה בטוח שברצונך למחוק הדפסה אחת?";
+
+/* Title of field displaying how many minutes the device is on before it automatically powers off */
+"Auto Off" = "כיבוי אוטומטי";
+
+/* Let's the user know their job will be printed in black-and-white */
+"B&W" = "שחור-לבן";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"Battery Error" = "שגיאת סוללה";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Battery Low" = "סוללה חלשה";
+
+/* Title of field displaying battery level */
+"Battery Status" = "מצב הסוללה";
+
+/* The color black */
+"Black" = "שחור";
+
+/* No comment provided by engineer. */
+"Black & White mode" = "מצב שחור-לבן";
+
+/* The color blue */
+"Blue" = "כחול";
+
+/* The color brown */
+"Brown" = "חום";
+
+/* Title */
+"California Rechargeable Battery Take-back Notice" = "הודעה על החזרת סוללה נטענת בקליפורניה";
+
+/* button bar cancel button */
+"Cancel" = "ביטול";
+
+/* Title */
+"Chemical substances" = "חומרים כימיים";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Clear paper jam and restart the printer by pressing and holding the power button." = "שחרר את חסימת הנייר והפעל מחדש את מדפסת sprocket על-ידי לחיצה ואחיזה של לחצן ההפעלה.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Close the cover to proceed." = "סגור את המכסה כדי להמשיך.";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Connect your sprocket to a power source to continue use." = "חבר את מדפסת sprocket למקור חשמל כדי להמשיך בשימוש.";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Cooling Down..." = "מתקרר...";
+
+/* copies label in job summary */
+"Copies" = "עותקים";
+
+/* copy label in job summary */
+"Copy" = "העתקה";
+
+/* The cover is open */
+"Cover Open" = "המכסה פתוח";
+
+/* No comment provided by engineer. */
+"Default printer not currently available" = "מדפסת ברירת המחדל אינה זמינה כעת";
+
+/* No comment provided by engineer. */
+"Delete" = "מחיקה";
+
+/* No comment provided by engineer. */
+"Delete Print from Print Queue" = "מחק הדפסה מתור ההדפסה";
+
+/* Title */
+"Disposal of waste equipment by users" = "השלכת ציוד פסולת על-ידי משתמשים";
+
+/* Used on a button for closing the dialog */
+"Done" = "סיום";
+
+/* Title for firmware download error dialog */
+"Downloading Firmware Error" = "שגיאת הורדת קושחה";
+
+/* Indicates that the firmware upgrade is being downloaded from the internet */
+"Downloading Firmware Upgrade" = "מוריד שדרוג קושחה";
+
+/* Message given when sprocket cannot print due to a system error */
+"Due to a system error, restart sprocket to continue printing." = "בשל שגיאת מערכת, הפעל מחדש את sprocket כדי להמשיך בהדפסה.";
+
+/* Text used to give an example of how to enter a page range */
+"e.g. 1,3-5" = "לדוגמה 1‏,3-5";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"Error" = "שגיאה";
+
+/* Indicates that a firmware upgrade has started */
+"Finishing Firmware Upgrade" = "מסיים שדרוג קושחה";
+
+/* Title for dialog given after a successful firmware update */
+"Firmware Updated" = "הקושחה עודכנה";
+
+/* Indicates that a firmware upgrade has completed */
+"Firmware Upgrade Complete" = "שדרוג קושחה הסתיים";
+
+/* Message given when sprocket cannot be reached */
+"Firmware Upgrade Error" = "שגיאת שדרוג קושחה";
+
+/* Indicates that a firmware update has failed */
+"Firmware Upgrade Failed" = "שדרוג קושחה נכשל";
+
+/* Title of field displaying the printer's firmware version */
+"Firmware Version" = "גרסת קושחה";
+
+/* The color green */
+"Green" = "ירוק";
+
+/* The color grey */
+"Grey" = "אפור";
+
+/* Title of field displaying the printer's hardware version */
+"Hardware Version" = "גרסת חומרה";
+
+/* Description */
+"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "HP ממליצה ללקוחות למחזר חומרה אלקטרונית משומשת, מחסניות הדפסה מקוריות של HP וסוללות נטענות. לקבלת מידע נוסף אודות תוכניות מיחזור, עבור אל הכתובת www.hp.com/recycle.";
+
+/* Description */
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP מחויבת לספק ללקוחות מידע אודות כימיקלים הנמצאים במוצרים בהתאם לדרישות משפטיות כגון REACH (תקן Regulation EC No 1907/2006 של הפרלמנט והמועצה האירופים). דוח עם פרטי החומרים הכימיים עבור מוצר זה ניתן למצוא בכתובת: www.hp.com/go/reach";
+
+/* Description */
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP מציעה מספר הולך וגדל של תוכניות למיחזור והחזרה של חומרים במדינות/אזורים רבים, וכן שותפות עם כמה מהמרכזים הגדולים ביותר למיחזור חומרים אלקטרוניים ברחבי העולם. החברה פועלת לשימור משאבים על-ידי מכירה חוזרת של כמה ממוצריה הפופולריים ביותר. לקבלת מידע נוסף אודות מיחזור מוצרי HP‏, בקר בכתובת: www.hp.com/recycle";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Incorrect Paper Type" = "סוג נייר שגוי";
+
+/* Option of the push notification to send another push notification later */
+"Later" = "מאוחר יותר";
+
+/* Message given when sprocket cannot print due to having no paper */
+"Load paper with the included Smartsheet to continue printing." = "טען נייר עם הגיליון החכם המצורף כדי להמשיך בהדפסה.";
+
+/* Title of field displaying the printer's mac address */
+"MAC Address" = "כתובת MAC";
+
+/* Message given when the printer can't be contacted. */
+"Make sure the sprocket printer is on and bluetooth connected." = "ודא שמדפסת sprocket פועלת ושה- Bluetooth מחובר.";
+
+/* Body for firmware download error dialog */
+"Make sure you are connected to the internet and try again." = "ודא שאתה מחובר לאינטרנט ונסה שוב.";
+
+/* Monitoring of regions (location) not available */
+"Monitoring not available" = "ניטור לא זמין";
+
+/* job name label */
+"Name" = "שם";
+
+/* Indicates that the device will never power off */
+"Never" = "לעולם לא";
+
+/* No comment provided by engineer. */
+"Next" = "הבא";
+
+/* Indicates that no sprocket printers are connected */
+"No sprockets Connected" = "אין חיבור ל- sprockets";
+
+/* No comment provided by engineer. */
+"No Wi-Fi connection" = "אין חיבור Wi-Fi";
+
+/* Printer details not available */
+"Not Available" = "לא זמין";
+
+/* Used to denote a page range.  IE: x 'of' y pages */
+"of" = "מתוך";
+
+/* Dismisses dialog without taking action */
+"OK" = "אישור";
+
+/* The color orange */
+"Orange" = "כתום";
+
+/* Table heading for list of all available printers, except for the most recently used printer */
+"Other Printers" = "מדפסות אחרות";
+
+/* Message given when sprocket cannot print due to having no paper
+   The printer is out of paper */
+"Out of Paper" = "הנייר אזל";
+
+/* Used to specify that a range of pages can be displayed */
+"Page Range" = "טווח עמודים";
+
+/* Title of the Page Settings Screen */
+"Page Settings" = "הגדרות עמוד";
+
+/* Instructions for pairing a printer */
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "התאם את מדפסת sprocket עם התקן זה באמצעות Bluetooth. ודא שמדפסת sprocket פועלת ושה- Bluetooth מחובר.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Paper Cover Open" = "מכסה הנייר פתוח";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Paper has Jammed" = "נייר תקוע";
+
+/* There is a paper jam in the printer */
+"Paper Jam" = "חסימת נייר";
+
+/* Title of the Paper Size screen */
+"Paper Size" = "גודל נייר";
+
+/* Title of the Paper Type screen */
+"Paper Type" = "סוג נייר";
+
+/* Default job name of the print send to the printer */
+"Photo" = "צילום";
+
+/* Option for paper type */
+"Photo Paper" = "נייר צילום";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Photo Unsupported" = "צילום לא נתמך";
+
+/* The color pink */
+"Pink" = "ורוד";
+
+/* Option for paper type */
+"Plain Paper" = "נייר רגיל";
+
+/* Title of the Preview pane in any print or add-to-queue screen */
+"Preview" = "תצוגה מקדימה";
+
+/* Print button label */
+"Print" = "הדפסה";
+
+/* Print button label with multiple pages */
+"Print %ld Pages" = "הדפס %ld עמודים";
+
+/* Print button label single page */
+"Print 1 Page" = "הדפס עמוד אחד";
+
+/* Print button label for printing multiple jobs */
+"Print All" = "הדפס הכל";
+
+/* Caption of the button for printing */
+"Print all %lu" = "הדפס את כל %lu";
+
+/* Caption of the button for printing */
+"Print both" = "הדפס את שניהם";
+
+/* The print buffer is full */
+"Print Buffer Full" = "מאגר הדפסה מלא";
+
+/* Activity title of the print queue when the share button is tapped */
+"Print Queue" = "תור הדפסה";
+
+/* No comment provided by engineer. */
+"Print queue is empty" = "תור ההדפסה ריק";
+
+/* Title of the print settings screen */
+"Print Settings" = "הגדרות הדפסה";
+
+/* Bluetooth print button label */
+"Print to sprocket" = "הדפסה ל- sprocket";
+
+/* No comment provided by engineer. */
+"Printer" = "מדפסת";
+
+/* The printer is available and there are print later jobs in the print queue */
+"Printer nearby. Projects waiting to be printed..." = "מדפסת קרובה. פרויקטים הממתינים להדפסה...";
+
+/* The printer is printing */
+"Printing" = "הדפסה";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "ההדפסה מושבתת עד שתושג טמפרטורה גבוהה יותר. המתן לפני שליחת תמונה נוספת.";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "ההדפסה מושבתת עד שתושג טמפרטורה נמוכה יותר. המתן לפני שליחת תמונה נוספת.";
+
+/* No comment provided by engineer. */
+"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "הדפסה דורשת שהמכשיר הנייד שלך והמדפסת יהיו באותה רשת Wi-Fi. בדוק את הגדרות ה- Wi-Fi";
+
+/* The color purple */
+"Purple" = "סגול";
+
+/* Message given when sprocket has no known error
+   The printer is ready to print */
+"Ready" = "מוכן";
+
+/* Table heading for the printer that has most recently been printed to */
+"Recent Printer" = "מדפסת אחרונה";
+
+/* No comment provided by engineer. */
+"Recent printer not currently available" = "המדפסת האחרונה אינה זמינה כעת";
+
+/* Title */
+"Recycling program" = "תכנית מיחזור";
+
+/* The color red */
+"Red" = "אדום";
+
+/* Title */
+"Safety data sheets" = "גיליונות נתונים של בטיחות";
+
+/* Description */
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "גיליונות נתונים של בטיחות, מידע על בטיחות מוצר ומידע סביבתי זמינים בכתובת www.hp.com/go/ecodata או לפי בקשה.";
+
+/* No comment provided by engineer. */
+"Select All" = "בחירת הכל";
+
+/* Title for screen listing all available sprocket printers */
+"Select Printer" = "בחירת מדפסת";
+
+/* No comment provided by engineer. */
+"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "בחירת מדפסת דורשת שהמכשיר הנייד שלך והמדפסת יהיו באותה רשת Wi-Fi. בדוק את הגדרות ה- Wi-Fi";
+
+/* Indicates that the firmware upgrade is being sent to the printer */
+"Sending Firmware Upgrade\nto Sprocket Printer" = "שליחת שדרוג קושחה אל מדפסת Sprocket";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "שולח אל מדפסת sprocket";
+
+/* No comment provided by engineer. */
+"Settings" = "הגדרות";
+
+/* Title for screen listing all available sprocket printers */
+"sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Sprocket is Cold" = "Sprocket קרה";
+
+/* Message given when sprocket has no known error */
+"Sprocket is ready to print." = "Sprocket מוכנה להדפסה.";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Sprocket is Warm" = "Sprocket חמה";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Sprocket needs to cool down before printing another job. Wait to send another photo." = "מדפסת Sprocket צריכה להתקרר לפני שתדפיס עבודה נוספת. המתן לפני שליחת תמונה נוספת.";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket Printer in Use" = "מדפסת Sprocket בשימוש";
+
+/* Message given when sprocket cannot be reached */
+"Sprocket Printer Not Connected" = "מדפסת Sprocket אינה מחוברת";
+
+/* Title of field displaying latest errors */
+"Status" = "מצב";
+
+/* Title of a table section */
+"SUPPORT:" = "תמיכה:";
+
+/* Message given when sprocket cannot print due to a system error */
+"System Error Occured" = "אירעה שגיאת מערכת";
+
+/* Title of field for displaying the technical infomration
+   Title of table view cell used for displaying technical information
+   Title of Technical Information screen */
+"Technical Information" = "מידע טכני";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"The device is not recognized." = "ההתקן לא מזוהה.";
+
+/* Message given when sprocket cannot print due to being in use. */
+"The sprocket printer is already processing a job. Please wait to resend photo." = "מדפסת sprocket כבר מעבדת עבודה. המתן לפני שליחת התמונה מחדש.";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "אירעה שגיאה בעת שליחת התמונה. ייתכן שתבנית התמונה אינה נתמכת במדפסת זו. בחר תמונה אחרת. ";
+
+/* Description */
+"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "המשמעות של סמל זה היא שאין להשליך את המוצר ביחד עם הפסולת הביתית האחרת שלך. במקום זאת, עליך להגן על בריאות האנשים ועל הסביבה על-ידי מסירת ציוד הפסולת שלך לנקודת איסוף ייעודית לצורך מיחזור פסולת של ציוד אלקטרוני וחשמלי. לקבלת מידע נוסף, צור קשר עם השירות להשלכת פסולת ביתית, או עבור אל הכתובת http://www.hp.com/recycle.";
+
+/* Body for firmware upgrade error where the reason for the error is unknown */
+"Unknown status" = "מצב לא ידוע";
+
+/* A color we don't recognize */
+"Unrecognized Color" = "צבע לא מזוהה";
+
+/* Message given when sprocket has an unrecgonized error */
+"Unrecognized Error" = "שגיאה לא מזוהה";
+
+/* A status we don't recognize */
+"Unrecognized Status" = "מצב לא מזוהה";
+
+/* No comment provided by engineer. */
+"Unselect All" = "בטל את כל הבחירות";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "השתמש בנייר צילום ZINK של מותג HP. טען את הגיליון החכם הכחול, כשהברקוד למטה, והפעל מחדש את המדפסת. ";
+
+/* footer heading describing print queue */
+"What is Print Queue?" = "מהו תור הדפסה?";
+
+/* The color white */
+"White" = "לבן";
+
+/* No comment provided by engineer. */
+"Wi-Fi Required" = "נדרש Wi-Fi";
+
+/* The color yellow */
+"Yellow" = "צהוב";
+
+/* No comment provided by engineer. */
+"Your device does not support the region monitoring, it is not possible to fire alarms base on position" = "ההתקן שברשותך אינו תומך בניטור האזור. לא ניתן לחולל אזעקות על בסיס מיקום";
+
+/* Body of dialog giving instructions on how to proceed after a firmware upgrade */
+"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "מדפסת sprocket שלך תיכבה כעת. הפעל את מדפסת sprocket שלך והמשך בכיף!";
+

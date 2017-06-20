@@ -31,11 +31,12 @@ typedef NS_ENUM(NSInteger, PGHelpAndHowToRowIndexes) {
     PGHelpAndHowToRowIndexesGiveFeedback
 };
 
-NSString * const kViewUserGuideScreenName = @"View User Guide";
-NSString * const kVisitWebsiteScreenName = @"Visit Website";
-NSString * const kJoinForumScreenName = @"Join Forum Screen";
-NSString * const kWeChatSupportScreenName = @"WeChat Support";
-NSString * const kMessengerSupportScreenName = @"Messenger Support";
+NSString * const kHelpLinksActionViewUserGuide = @"View User Guide";
+NSString * const kHelpLinksActionJoinSupportForum = @"Join Support Forum";
+NSString * const kHelpLinksActionVisitSupportWebsite = @"Visit Support Website";
+NSString * const kHelpLinksActionMessengerSupport = @"Messenger Support";
+NSString * const kHelpLinksActionWeChatSupport = @"WeChat Support";
+NSString * const kHelpLinksActionTweetSupport = @"Tweet Support";
 
 static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.com/s/xpbdBP6DlevbVt6j_redWQ";
 
@@ -94,31 +95,32 @@ static NSString * const kPGHelpAndHowToWeChatSupportURL = @"http://mp.weixin.qq.
 {
     switch (indexPath.row) {
         case PGHelpAndHowToRowIndexesViewUserGuide:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kViewUserGuideScreenName];
+            [[PGAnalyticsManager sharedManager] trackHelpLinksActivity:kHelpLinksActionViewUserGuide];
             [[UIApplication sharedApplication] openURL:[NSLocale userGuideURL]];
             break;
             
         case PGHelpAndHowToRowIndexesMessengerSupport:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kMessengerSupportScreenName];
+            [[PGAnalyticsManager sharedManager] trackHelpLinksActivity:kHelpLinksActionMessengerSupport];
             [[UIApplication sharedApplication] openURL: [NSURL URLWithString:[NSLocale messengerSupportURL]]];
             break;
 
         case PGHelpAndHowToRowIndexesTweetSupport:
+            [[PGAnalyticsManager sharedManager] trackHelpLinksActivity:kHelpLinksActionTweetSupport];
             [self tweetSupportModal:indexPath];
             break;
 
         case PGHelpAndHowToRowIndexesWeChatSupport:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kWeChatSupportScreenName];
+            [[PGAnalyticsManager sharedManager] trackHelpLinksActivity:kHelpLinksActionWeChatSupport];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kPGHelpAndHowToWeChatSupportURL]];
             break;
 
         case PGHelpAndHowToRowIndexesJoinSupport:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kJoinForumScreenName];
+            [[PGAnalyticsManager sharedManager] trackHelpLinksActivity:kHelpLinksActionJoinSupportForum];
             [[UIApplication sharedApplication] openURL:[NSLocale supportForumURL]];
             break;
 
         case PGHelpAndHowToRowIndexesVisitSupport:
-            [[PGAnalyticsManager sharedManager] trackScreenViewEvent:kVisitWebsiteScreenName];
+            [[PGAnalyticsManager sharedManager] trackHelpLinksActivity:kHelpLinksActionVisitSupportWebsite];
             [[UIApplication sharedApplication] openURL:[NSLocale supportWebsiteURL]];
             break;
 

@@ -41,7 +41,13 @@
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
-NSInteger const kMantaErrorBusy = 1;
+NSInteger const kMantaErrorNoError          = 0x00;
+NSInteger const kMantaErrorBusy             = 0x01;
+NSInteger const kMantaErrorPaperJam         = 0x02;
+NSInteger const kMantaErrorPaperEmpty       = 0x03;
+NSInteger const kMantaErrorPaperMismatch    = 0x04;
+NSInteger const kMantaErrorCoverOpen        = 0x06;
+NSInteger const kMantaErrorNoSession        = 0xFF00;
 
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
@@ -65,6 +71,9 @@ NSInteger const kMantaErrorBusy = 1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelBottomConstraint;
 
 @property (strong, nonatomic) UIAlertController *errorAlert;
+
+@property (assign, nonatomic) NSInteger currentQueueIdWithError;
+@property (strong, nonatomic) NSMutableArray<NSNumber *> *displayedErrors;
 
 @end
 
@@ -103,6 +112,9 @@ NSInteger const kMantaErrorBusy = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLinkSettingsChanged:)  name:kPGLinkSettingsChangedNotification object:nil];
 
     [MPBTPrintManager sharedInstance].delegate = self;
+    
+    self.currentQueueIdWithError = -1;
+    self.displayedErrors = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -302,7 +314,7 @@ NSInteger const kMantaErrorBusy = 1;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
 
-        [[UAirship inAppMessaging] displayPendingMessage];
+        [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
     });
 }
 
@@ -505,46 +517,66 @@ NSInteger const kMantaErrorBusy = 1;
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
-    if (self.errorAlert || (errorCode == kMantaErrorBusy)) {
+    if (self.errorAlert || errorCode == kMantaErrorNoError || errorCode == kMantaErrorBusy) {
         return;
     }
-
-    NSString *format;
-    if (printManager.queueSize == 1) {
-        format = NSLocalizedString(@"%li print in Print Queue", @"Message presented when there is only one image in the print queue");
+    
+    if (self.currentQueueIdWithError != printManager.queueId) {
+        self.currentQueueIdWithError = printManager.queueId;
+        [self.displayedErrors removeAllObjects];
+    }
+    
+    NSNumber *error = [NSNumber numberWithInteger:errorCode];
+    if ([self.displayedErrors containsObject:error]) {
+        return;
+    }
+    
+    [self.displayedErrors addObject:error];
+    
+    NSString *errorMessage;
+    BOOL shouldShowQueueMessage = errorCode == kMantaErrorNoSession || errorCode == kMantaErrorBusy || errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    if (shouldShowQueueMessage) {
+        NSString *printsInQueue;
+        long queueSizeNotInProgress = printManager.queueSize - 1;
+        if (queueSizeNotInProgress <= 0) {
+            printsInQueue = NSLocalizedString(@"1 in progress", @"Message presented when some error occurred while printing an image");
+        } else {
+            NSString *format = NSLocalizedString(@"1 in progress, %li in Print Queue", @"Message presented when some error occurred while printing an image and there are other images in the print queue");
+            printsInQueue = [NSString stringWithFormat:format, queueSizeNotInProgress];
+        }
+        
+        errorMessage = [NSString stringWithFormat:@"%@\n\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
     } else {
-        format = NSLocalizedString(@"%li prints in Print Queue", @"Message presented when there more than one images in the print queue");
+        errorMessage = [NSString stringWithFormat:@"%@", [[MP sharedInstance] errorDescription:errorCode]];
     }
 
-    NSString *printsInQueue = [NSString stringWithFormat:format, (long)printManager.queueSize];
-    NSString *errorMessage = [NSString stringWithFormat:@"%@\n\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
-
     self.errorAlert = [UIAlertController alertControllerWithTitle:[[MP sharedInstance] errorTitle:errorCode]
-                                                                   message:errorMessage
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                          message:errorMessage
+                                                   preferredStyle:UIAlertControllerStyleAlert];
 
-    if (errorCode == kMantaErrorBusy) {
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
-                                                                 style:UIAlertActionStyleDefault
-                                                               handler:^(UIAlertAction * _Nonnull action) {
-                                                                   self.errorAlert = nil;
-                                                               }];
-        [self.errorAlert addAction:okAction];
-    } else {
+    BOOL shouldShowPauseResumeButtons = errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    if (shouldShowPauseResumeButtons) {
         UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                              style:UIAlertActionStyleCancel
+                                                              style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
                                                                 self.errorAlert = nil;
                                                                 [printManager pausePrintQueue];
                                                             }];
         [self.errorAlert addAction:pauseAction];
         
-        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Resume", @"Dismisses dialog without taking action")
                                                                  style:UIAlertActionStyleDefault
                                                                handler:^(UIAlertAction * _Nonnull action) {
                                                                    self.errorAlert = nil;
                                                                }];
         [self.errorAlert addAction:tryAgainAction];
+    } else {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:okAction];
     }
 
     UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];

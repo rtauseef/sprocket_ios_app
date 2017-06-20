@@ -54,6 +54,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GPUImage (0.1.7)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.9):
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - CocoaLumberjack (= 2.2.0)
   - Google/SignIn
   - GoogleAnalytics-iOS-SDK (= 3.12)
+  - GPUImage
   - HPPhotoProvider (from `https://github.com/IPGPTP/hp_photo_provider`, branch `innovation-master`)
   - iCarousel (= 1.8)
   - LivePaperSDK
@@ -94,10 +96,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: ef6606d5b0e1345d17c110c031c208fe563b63b7
+    :commit: 933d007169c61c297ad6300cec099fcfb8d94d5f
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 2b1a89fdefc5cec64bf99a95e0f314e846b342a8
+    :commit: 2de5c748240161f99bf75fa5ab6410a5f60bd994
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -111,6 +113,7 @@ SPEC CHECKSUMS:
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
@@ -121,6 +124,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 167c2a32af012bd9142eda4198244dbdd7896eec
 
-PODFILE CHECKSUM: 093a5715757288e8ef90a215bd7de3c4c49c4c77
+PODFILE CHECKSUM: 89a4d1e16d5afab2406adcaea112ab6e20fa3766
 
 COCOAPODS: 1.2.1

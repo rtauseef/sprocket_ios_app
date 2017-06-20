@@ -15,6 +15,9 @@
 #import "PGEmbellishmentMetric.h"
 #import "PGEmbellishmentMetricsManager.h"
 
+extern NSString * const kPGImglyManagerStickersChangedNotification;
+extern NSString * const kPGImglyManagerCustomStickerPrefix;
+
 @interface PGImglyManager : NSObject
 
 @property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;

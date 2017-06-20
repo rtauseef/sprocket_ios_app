@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld/%2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li tulostus tulostusjonossa";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li tulostusta tulostusjonossa";
+
+/* No comment provided by engineer. */
 "About" = "Tietoja";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Osta paperia";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "%@ -tunnuksin kautta tehty todentaminen tarkoittaa, että hyväksyt HP:n <palveluehdot>.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Kameran käyttöoikeus tarvitaan";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Yhdistä";
+
+/* Number of Copies for printing */
+"Copies" = "kopiota";
+
+/* Number of Copies for printing */
+"Copy" = "kopio";
+
+/* No comment provided by engineer. */
+"Delete All" = "Poista kaikki";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Poistetaanko kaikki tulosteet tulostusjonosta?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Hylkää";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Kukallinen kehys (2)";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Kukallinen kehys";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Yhdistä tulostimeen napauttamalla Bluetooth-asetuksissa vaihtoehtoa HP Sprocket.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Anna palautetta";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Liukuvärikehys";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Vihreä vesivärikehys";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Ohjeet";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Pahvikehys";
-
 /* Setup step 1 desc */
 "Load Paper" = "Lisää paperia";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Lokitiedosto on poistettu.";
+
+/* No comment provided by engineer. */
+"NO" = "EI";
 
 /* Dismisses dialog without taking action */
 "No" = "Ei";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Yhtään Qzone-sovelluksen kuvaa ei löytynyt";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Ei tulostuksia tulostusjonossa";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Ei, säilytä ne";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Ei kiitos";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Kaikkia kuvia ei ladattu. Haluatko jatkaa?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Hups!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Oranssi kehys";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Tauko";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Vaaleanpunainen ruiskumaalattu kehys";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Kun sprocket-tulostin on päällä ja Bluetooth on yhdistetty, valokuvat tulostetaan siinä järjestyksessä, jossa ne lisättiin tulostusjonoon.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Valokuvat tulostetaan siinä järjestyksessä, jossa ne lisättiin tulostusjonoon.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Voit käyttää myös laitteella olevia kuvia.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Kerro meille, mitkä ominaisuudet ovat mahtavia ja mitä muutoksia haluaisit!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Pilkullinen kehys";
-
 /* Setup step 2 desc */
 "Power Up" = "Käynnistä";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Paina virtapainiketta ja pidä sitä painettuna, kunnes LED-valo muuttuu valkoiseksi.";
+
+/* No comment provided by engineer. */
+"Print" = "Tulosta";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Tulostusjono";
 
 /* No comment provided by engineer. */
 "Printers" = "Tulostimet";
@@ -156,9 +184,6 @@ Voit käyttää myös laitteella olevia kuvia.";
 
 /* Social source title for Qzone */
 "Qzone" = "QZone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Punainen kehys";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Muistuta myöhemmin";
@@ -184,6 +209,9 @@ Voit käyttää myös laitteella olevia kuvia.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Tallenna Kameran kuviin";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Lähetetään sprocket-tulostimeen";
+
 /* Button for opening the app settings */
 "Settings" = "Asetukset";
 
@@ -194,13 +222,13 @@ Voit käyttää myös laitteella olevia kuvia.";
 "Sign Out" = "Kirjaudu ulos";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Suttuinen kehys";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Ongelmaa ei valitettavasti voida raportoida tällä hetkellä. Tämä johtuu luultavasti siitä, että mobiililaitteelle ei ole määritetty yhtään sähköpostitiliä.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Sprocket-tulostimen laiteohjelmistopäivitys saatavilla";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocketiia ei yhdistetty";
 
 /* Setup step 1 title */
 "Step 1" = "Vaihe 1";
@@ -238,47 +266,20 @@ Voit käyttää myös laitteella olevia kuvia.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Päivitä lataamalla sprocket vähintään 75 prosenttiin ja siirtymällä sitten valikon kohtaan sprocket.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Turkoosi kehys";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Päivitä";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Ystävänpäivä: sydänkehys";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Ystävänpäivä: sydänpeittokehys";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Ystävänpäivä: vaaleanpunainen pilkkukehys";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Ystävänpäivä: vaaleanpunainen vesivärikehys";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Ystävänpäivä: punainen kehys";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Ystävänpäivä: punainen raitakehys";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versio %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Vedensininen kehys";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Valkoinen kehys";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Puukehys (alaosa)";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Haluatko kirjautua ulos palvelusta %@?";
+
+/* No comment provided by engineer. */
+"YES" = "KYLLÄ";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Kyllä";

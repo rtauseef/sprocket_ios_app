@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld de %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li impresión en la Cola de Impresión";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li impresiones en la Cola de Impresión";
+
+/* No comment provided by engineer. */
 "About" = "Acerca de";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Comprar papel";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Si inicia sesión desde %@, también acepta los <Términos de servicio> de HP.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Se necesita de acceso a la cámara";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Conectar";
+
+/* Number of Copies for printing */
+"Copies" = "Copias";
+
+/* Number of Copies for printing */
+"Copy" = "Copia";
+
+/* No comment provided by engineer. */
+"Delete All" = "Eliminar todo";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "¿Eliminar todas las impresiones de la Cola de Impresión?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Ignorar";
@@ -65,6 +89,9 @@
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "En la configuración de virtud, tocar sobre “HP Sprocket” para vincular la impresora.";
 
+/* Social source title for Google */
+"Google" = "Google";
+
 /* No comment provided by engineer. */
 "How To" = "Cómo";
 
@@ -80,6 +107,9 @@
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Se eliminó el archivo de registros.";
 
+/* No comment provided by engineer. */
+"NO" = "NO";
+
 /* Dismisses dialog without taking action */
 "No" = "No";
 
@@ -92,8 +122,17 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "No se encontraron imágenes en la aplicación Qzone";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "No hay impresiones en la Cola de Impresión";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "No, conservarlas";
+
 /* No comment provided by engineer. */
 "No, thanks" = "No, gracias";
+
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "No se descargaron todas las imágenes. ¿Desea continuar?";
 
 /* Allows user close dialog
    Dismisses dialog without taking action */
@@ -101,6 +140,15 @@
 
 /* No comment provided by engineer. */
 "Oops!" = "¡Vaya!";
+
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pausa";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Las fotos se imprimirán en el orden en que se agregaron a la Cola de Impresión, después de que se encienda la impresora sprocket y se active la conexión Bluetooth.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Las fotos se imprimirán en el orden en que se agregaron a la Cola de Impresión.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -117,6 +165,12 @@ You can also use your device photos." = "Conéctese a una fuente de datos. Tambi
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Mantenga presionado el botón de encendido hasta que la luz LED se vuelva blanca.";
+
+/* No comment provided by engineer. */
+"Print" = "Imprimir";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Imprimir Cola";
 
 /* No comment provided by engineer. */
 "Printers" = "Impresora";
@@ -154,6 +208,9 @@ You can also use your device photos." = "Conéctese a una fuente de datos. Tambi
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Guardar en Rollo de cámara";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Enviando a la impresora sprocket";
+
 /* Button for opening the app settings */
 "Settings" = "Configuración";
 
@@ -168,6 +225,9 @@ You can also use your device photos." = "Conéctese a una fuente de datos. Tambi
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Hay disponible una actualización de Firmware para la impresora Sprocket";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket no está conectada";
 
 /* Setup step 1 title */
 "Step 1" = "Paso 1";
@@ -216,6 +276,9 @@ You can also use your device photos." = "Conéctese a una fuente de datos. Tambi
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "¿Desea salir de %@?";
+
+/* No comment provided by engineer. */
+"YES" = "SÍ";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Sí";

@@ -46,7 +46,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 @property (assign, nonatomic, getter = isReloadingImages) BOOL reloadingImages;
 @property (assign, nonatomic) BOOL allowsMultipleSelection;
 
-@property (strong, nonatomic) HPPRSelectPhotoCollectionViewCell *currentSelectedCell;
+@property (strong, nonatomic) HPPRMedia *currentSelectedPhoto;
 
 @property (assign, nonatomic) BOOL showGridView;
 
@@ -54,6 +54,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 @property (strong, nonatomic) NSTimer *startCameraTimer;
 
 @property (strong, nonatomic) NSMutableArray<HPPRMedia *> *selectedPhotos;
+
+@property (assign, nonatomic, getter=isPortraitInterfaceOrientation) BOOL portraitInterfaceOrientation;
 
 @end
 
@@ -107,6 +109,8 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
     self.provider.imageRequestsCancelled = NO;
 
     self.noInternetConnectionRetryView.delegate = self;
+    
+    self.portraitInterfaceOrientation = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
 
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchToZoom:)];
     [self.collectionView addGestureRecognizer:pinchRecognizer];
@@ -131,6 +135,9 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
     if  (self.allowsMultipleSelection) {
         [self beginMultiSelect];
+    } else if (self.isPortraitInterfaceOrientation != UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.portraitInterfaceOrientation = !self.isPortraitInterfaceOrientation;
+        [self.collectionView reloadData];
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_TRACKABLE_SCREEN_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%@ %@", self.provider.name, kPhotoSelectionScreenName] forKey:kHPPRTrackableScreenNameKey]];
@@ -157,7 +164,10 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration
 {
-    [self.collectionView reloadData];
+    if (self.isPortraitInterfaceOrientation != UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+        self.portraitInterfaceOrientation = !self.isPortraitInterfaceOrientation;
+        [self.collectionView reloadData];
+    }
 }
 
 #pragma mark - Camera Collection View Methods
@@ -341,16 +351,26 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
         return cell;
     } else {
+        HPPRMedia *media = [self.provider imageAtIndex:indexPath.row];
+
         HPPRSelectPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
         cell.delegate = self;
         cell.retrieveLowQuality = [self shouldRequestLowResolutionImage];
-        cell.media = [self.provider imageAtIndex:indexPath.row];
-
+        cell.media = media;
+        
         BOOL isSelected = [self isSelected:cell.media];
         cell.selectionEnabled = ([self isInMultiSelectMode] && [self shouldAllowAdditionalSelection]) || isSelected;
         if (isSelected) {
             [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
             cell.selected = YES;
+        }
+
+        if (![self isInMultiSelectMode]) {
+            if ([media isEqualToMedia:self.currentSelectedPhoto]) {
+                [cell showLoadingAnimated:NO];
+            } else {
+                [cell hideLoadingAnimated:NO];
+            }
         }
 
         return cell;
@@ -451,6 +471,18 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return (self.showGridView) ? GRID_COLLECTION_VIEW_SIZE : LIST_COLLECTION_VIEW_SIZE;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (![self isInMultiSelectMode]) {
+        HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        if ([cell.media isEqualToMedia:self.currentSelectedPhoto]) {
+            [cell showLoadingAnimated:NO];
+        } else {
+            [cell hideLoadingAnimated:NO];
+        }
+    }
 }
 
 #pragma mark - Button actions
@@ -558,7 +590,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    if ((targetContentOffset->y <= _contentOffsetStart.y || targetContentOffset->y <= 0) || !self.provider.hasMoreImages || self.currentSelectedCell != nil) {
+    if ((targetContentOffset->y <= _contentOffsetStart.y || targetContentOffset->y <= 0) || !self.provider.hasMoreImages || self.currentSelectedPhoto != nil) {
         return;
     }
     
@@ -667,15 +699,27 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
 - (void)openSingleImageForPreviewAtIndexPath:(NSIndexPath *)indexPath {
     HPPRSelectPhotoCollectionViewCell *cell = (HPPRSelectPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    self.currentSelectedCell = cell;
+    self.currentSelectedPhoto = cell.media;
     self.collectionView.allowsSelection = NO;
     [self.refreshControl removeFromSuperview];
-    [cell showLoading];
+    [cell showLoadingAnimated:YES];
     
     __weak HPPRSelectPhotoCollectionViewController *weakSelf = self;
     void (^restoreUIBlock)(void)  = ^ {
-        [cell hideLoading];
-        weakSelf.currentSelectedCell = nil;
+        __block HPPRSelectPhotoCollectionViewCell *restoreCell = nil;
+        if ([cell.media isEqualToMedia:self.currentSelectedPhoto]) {
+            restoreCell = cell;
+        } else {
+            [weakSelf.collectionView.visibleCells enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell *obj, NSUInteger idx, BOOL *stop) {
+                if ([[(HPPRSelectPhotoCollectionViewCell *)obj media] isEqualToMedia:weakSelf.currentSelectedPhoto]) {
+                    restoreCell = obj;
+                    *stop = YES;
+                }
+            }];
+        }
+        
+        [restoreCell hideLoadingAnimated:YES];
+        weakSelf.currentSelectedPhoto = nil;
         weakSelf.collectionView.allowsSelection = YES;
         if (weakSelf.refreshControl != nil) {
             [weakSelf.collectionView addSubview:weakSelf.refreshControl];
@@ -686,16 +730,13 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
         if (!self.provider.isImageRequestsCancelled) {
 
-            if (cell.media.asset) {
+            if (weakSelf.currentSelectedPhoto.asset) {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [self.spinner stopAnimating];
-
-                    [cell.media requestImageWithCompletion:^(UIImage *image) {
+                    [weakSelf.currentSelectedPhoto requestImageWithCompletion:^(UIImage *image) {
                         dispatch_async(dispatch_get_main_queue(), ^(void){
                             if (!weakSelf.provider.isImageRequestsCancelled) {
-                                [weakSelf selectImage:image andMedia:cell.media];
+                                [weakSelf selectImage:image andMedia:weakSelf.currentSelectedPhoto];
                             }
-                            [weakSelf.spinner stopAnimating];
 
                             restoreUIBlock();
                         });
@@ -706,19 +747,21 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
             }
 
             // We continue even if we don't get the extra info because of an error
-            [[HPPRCacheService sharedInstance] imageForUrl:cell.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                if (!weakSelf.provider.isImageRequestsCancelled) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.currentSelectedPhoto.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf selectImage:image andMedia:cell.media];
+                        if (!weakSelf.provider.isImageRequestsCancelled) {
+                            [weakSelf selectImage:image andMedia:weakSelf.currentSelectedPhoto];
+                        }
                         
                         restoreUIBlock();
                     });
-                } else {
-                    restoreUIBlock();
-                }
-            }];
+                }];
+            });
         } else {
-            restoreUIBlock();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                restoreUIBlock();
+            });
         }
     }];
 }
