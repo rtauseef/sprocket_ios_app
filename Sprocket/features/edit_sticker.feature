@@ -36,10 +36,10 @@ Scenario Outline: Verify 'Sticker' selection in edit screen
 @regression
 Scenario: Verify Sticker edit options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
-    And I select "July 4th Category" tab
-    Then I select "sticker_41" sticker
+    And I select "Decorative Category" tab
+    Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
-    And I should see the photo with the "sticker_41" sticker from "July 4th Category" tab
+    And I should see the photo with the "sticker_21" sticker from "Decorative Category" tab
     And I should see "Add" button
     And I should see "Delete" button
     And I should see "Color" button

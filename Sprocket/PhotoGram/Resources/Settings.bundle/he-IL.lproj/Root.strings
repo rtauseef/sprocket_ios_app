@@ -1,0 +1,8 @@
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+
+"Group" = "קבוצה";
+"Name" = "שם";
+"none given" = "לא נמסר";
+"Enabled" = "מופעל";
+"Save Camera Photos" = "שמור תמונות מצלמה";
+"Show Navigation Help" = "הצג עזרת ניווט";

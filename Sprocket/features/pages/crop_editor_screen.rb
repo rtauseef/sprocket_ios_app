@@ -26,6 +26,9 @@ class CropEditorScreen < Calabash::IBase
         unless current_page?
             edit_screen = go_to(EditScreen)
             sleep(WAIT_SCREENLOAD)
+            scroll "UICollectionView",:right
+            scroll "UICollectionView",:right
+            sleep(STEP_PAUSE)
             wait_for_elements_exist(edit_screen.crop, :timeout => MAX_TIMEOUT)
             touch edit_screen.crop
             sleep(WAIT_SCREENLOAD)    

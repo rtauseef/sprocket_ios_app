@@ -8,7 +8,7 @@
 "3PR-Lb-830.title" = "Nasıl Yapılır ve Yardım";
 
 /* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "Sosyal kaynaklarla kimliğinizi doğruladığınızda, HP’nin <Hizmet Şartlarını> da kabul etmiş olursunuz.";
+"3rx-Fp-iLE.text" = "Sosyal kaynaklarda kimliğinizi doğruladığınızda, HP’nin <Hizmet Şartlarını> da kabul etmiş olursunuz.";
 
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
 "3t6-KR-FbJ.text" = "Instagram kimliğinizi doğruladığınızda, HP’nin <Hizmet Şartlarını> da kabul etmiş olursunuz.";
@@ -39,6 +39,9 @@
 
 /* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
 "BV3-xe-r0y.normalTitle" = "Daha Fazla Yardım";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM"; */
+"BfZ-Hp-dCM.text" = "Albüm Başlığı";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
 "DG2-Ok-pfm.normalTitle" = "Oturum aç";
@@ -103,11 +106,11 @@
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Copyright (c) 2016";
 
-/* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
-"Ptp-oP-RvF.text" = "Menü Öğesi";
-
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Yeni Özellik!";
+
+/* Class = "UILabel"; text = "Messenger Support"; ObjectID = "QGa-kv-h0O"; */
+"QGa-kv-h0O.text" = "Messenger Desteği";
 
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
 "QQK-QP-Amd.text" = "Flickr kimliğinizi doğruladığınızda, HP’nin <Hizmet Şartlarını> da kabul etmiş olursunuz.";
@@ -123,17 +126,6 @@
 
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
-
-/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "Bu uygulamayı kullanırken, internete bağlanarak ve Instagram, Facebook ya da Flickr hesaplarınızı kullanarak istediğiniz içerikleri oluşturabilir ve yazdırabilirsiniz. 
-
-Bu uygulamanın kullanılması için internet bağlantısı gerekebilir. Kablosuz bağlantı performansı, fiziksel ortamınıza ve erişim noktasına olan uzaklığınıza bağlıdır. Ayrı satın alınan veri planları veya kullanım ücretleri geçerli olabilir. Baskı süreleri ve bağlantı hızları değişebilir.
-
-Baskı yapmak için bir HP Sprocket Fotoğraf Yazıcına ihtiyacınız olacaktır. Mobil aygıtınızın Bluetooth özelliği etkinleştirilmiş olmalıdır, HP Sprocket Fotoğraf Yazıcısı açık olmalıdır ve yazıcı mobil aygıtla eşleştirilmiş olmalıdır.
-
-İnternet bağlantısı olarak veri ağınızı kullanıyorsanız, veri ağı planınıza bağlı olarak ek veri kullanımı ücretlerine tabi olabilirsiniz. 
-
-HP, bu uygulamanın ve HP Yazıcılarının ilerideki sürümlerini iyileştirmek için bu uygulamayla ilişkili anonim kullanım verilerini düzenli olarak toplayacaktır. ";
 
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
@@ -190,14 +182,26 @@ HP Sprocket Yazıcınızda baskı yapın!";
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Oturum Aç";
 
+/* Class = "UILabel"; text = "Give Feedback"; ObjectID = "eit-2j-VKG"; */
+"eit-2j-VKG.text" = "Geribildirimde Bulun";
+
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
 "fRU-DF-pcn.normalTitle" = "Düzenle";
+
+/* Class = "UILabel"; text = "%@ Copy"; ObjectID = "g9Y-KF-FRi"; */
+"g9Y-KF-FRi.text" = "%@ Kopya";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
+"ga4-if-IR4.normalTitle" = "Oturum Aç";
 
 /* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
 "iiX-WR-2Je.title" = "Pitu";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
 "ipg-92-MP9.title" = "Şablon seçin";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iqE-FT-oz5"; */
+"iqE-FT-oz5.text" = "Etiket";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Bir fotoğraf çek veya seç";
@@ -217,6 +221,9 @@ HP Sprocket Yazıcınızda baskı yapın!";
 
 /* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
 "nYV-cn-yZe.text" = "Sprocket Yazıcıyı Kur";
+
+/* Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0"; */
+"ncN-EJ-cY0.text" = "Fotoğraf Sayısı";
 
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
@@ -241,6 +248,9 @@ HP Sprocket Yazıcınızda baskı yapın!";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "Tasarımınızı Basıp Paylaşmayı unutmayın";
+
+/* Class = "UILabel"; text = "By authenticating with Google, you also agree with HP’s <Terms of Service>."; ObjectID = "w3A-HJ-eXe"; */
+"w3A-HJ-eXe.text" = "Google kimliğinizi doğruladığınızda, HP’nin <Hizmet Şartlarını> da kabul etmiş olursunuz.";
 
 /* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "WeChat Desteği";

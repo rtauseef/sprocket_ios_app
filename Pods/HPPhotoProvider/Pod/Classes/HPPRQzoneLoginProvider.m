@@ -137,6 +137,9 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
     if (self.loginCompletion) {
         [self setAccessToken];
         [self.loginManager getUserInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION
+                                                            object:nil
+                                                          userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     }
 }
 
@@ -144,6 +147,9 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 {
     if (self.loginCompletion) {
         self.loginCompletion(NO, nil);
+        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION
+                                                            object:nil
+                                                          userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     }
 }
 
@@ -246,7 +252,6 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 {
     self.user = [response jsonResponse];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kQzoneProviderName]];
     self.loginCompletion([self isAccesTokenValid], nil);
 }
 

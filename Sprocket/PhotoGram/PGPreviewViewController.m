@@ -644,10 +644,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
-    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
-        [[PGPhotoSelection sharedInstance] endSelectionMode];
-    }
-    
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
     }];

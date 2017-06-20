@@ -1,0 +1,295 @@
+/* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld z %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "Počet výtisků v Tiskové Frontě: %li";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "Počet výtisků v Tiskové Frontě: %li";
+
+/* No comment provided by engineer. */
+"About" = "O aplikaci";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "V nastavení povolte přístup, aby bylo možné pořizovat a tisknout fotografie.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "Při sdílení položky došlo k chybě.";
+
+/* No comment provided by engineer. */
+"App Settings" = "Nastavení aplikace";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "Nastavení automatického ukládání";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "Koupit papír";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Ověřením ve službě %@ současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "Vyžadován přístup k fotoaparátu";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Camera Roll";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "Storno";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "Zobrazit můj výtvor HP Sprocket";
+
+/* Setup step 3 desc */
+"Connect" = "Připojit";
+
+/* Number of Copies for printing */
+"Copies" = "Kopie";
+
+/* Number of Copies for printing */
+"Copy" = "Kopie";
+
+/* No comment provided by engineer. */
+"Delete All" = "Odstranit vše";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Odstranit všechny výtisky z Tiskové Fronty?";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "Přeskočit";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "Chcete uložit nové fotografie z fotoaparátu do zařízení?";
+
+/* No comment provided by engineer. */
+"Don't Save" = "Neukládat";
+
+/* No comment provided by engineer. */
+"Enter Text" = "Zadejte text";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "Zadejte+text";
+
+/* No comment provided by engineer. */
+"Error" = "Chyba";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "Chyba při získávání uživatelských údajů.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Hodnocení aplikace sprocket pro iOS (distributor záznamu: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "V nabídce nastavení Bluetooth klepněte na „HP Sprocket“ a proveďte spárování s tiskárnou.";
+
+/* Social source title for Google */
+"Google" = "Google";
+
+/* No comment provided by engineer. */
+"How To" = "Návod";
+
+/* No comment provided by engineer. */
+"How to & Help" = "Návody a nápověda";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* Setup step 1 desc */
+"Load Paper" = "Vložit papír";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "Soubor protokolu byl vymazán.";
+
+/* No comment provided by engineer. */
+"NO" = "NE";
+
+/* Dismisses dialog without taking action */
+"No" = "Ne";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "Připojení není k dispozici";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "Nebyly nalezeny žádné obrázky aplikace Pitu";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "Nebyly nalezeny žádné obrázky aplikace QZone";
+
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Žádné výtisky v Tiskové Frontě";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Ne, zachovat je";
+
+/* No comment provided by engineer. */
+"No, thanks" = "Ne, děkuji";
+
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Nestáhly se všechny obrázky. Chcete pokračovat?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Oops!" = "Jejda!";
+
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pozastavit";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Fotografie budou po zapnutí tiskárny sprocket a připojení přes Bluetooth vytištěny v pořadí, ve kterém byly přidány do Tiskové Fronty.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Fotografie budou vytištěny v pořadí, ve kterém byly přidány do Tiskové Fronty.";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "Připojte se prosím ke zdroji dat.
+Můžete také použít fotografie v zařízení.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "Dejte nám vědět, co se povedlo a co by mohlo být lepší!";
+
+/* Setup step 2 desc */
+"Power Up" = "Zapnout";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "Stiskněte a podržte tlačítko napájení, dokud se barva kontrolky LED nezmění na bílou.";
+
+/* No comment provided by engineer. */
+"Print" = "Tisk";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Tisková Fronta";
+
+/* No comment provided by engineer. */
+"Printers" = "Tiskárny";
+
+/* No comment provided by engineer. */
+"Privacy" = "Soukromí";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "Vložte celý balík do zásobníku na papír čárovým kódem a logy HP směrem dolů.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Remind me later" = "Připomenout později";
+
+/* No comment provided by engineer. */
+"Reset" = "Resetovat";
+
+/* No comment provided by engineer. */
+"Reset Application" = "Resetovat aplikaci";
+
+/* No comment provided by engineer. */
+"Retry" = "Opakovat";
+
+/* Title of a table view header */
+"SUPPORT:" = "PODPORA:";
+
+/* No comment provided by engineer. */
+"Save" = "Uložit";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "Uložit a ukončit náhled?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "Save to Camera Roll";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Sending to sprocket printer";
+
+/* Button for opening the app settings */
+"Settings" = "Nastavení";
+
+/* No comment provided by engineer. */
+"Sign In" = "Přihlášení";
+
+/* Signing out of a social media site. */
+"Sign Out" = "Odhlásit se";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Váš problém teď bohužel není možné nahlásit. Je to pravděpodobně způsobeno tím, že na mobilním zařízení není nastaven žádný e-mailový účet.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "Upgrade firmwaru tiskárny sprocket k dispozici";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Tiskárna sprocket není připojena";
+
+/* Setup step 1 title */
+"Step 1" = "Krok 1";
+
+/* Setup step 2 title */
+"Step 2" = "Krok 2";
+
+/* Setup step 3 title */
+"Step 3" = "Krok 3";
+
+/* No comment provided by engineer. */
+"Success" = "Úspěch";
+
+/* No comment provided by engineer. */
+"Take Survey" = "Odpovědět na otázky";
+
+/* No comment provided by engineer. */
+"Take the survey" = "Odpovědět na otázky";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "Pokračujte klepnutím na možnost Upgrade.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "Co si myslíte o %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "Co si myslíte o tiskárně sprocket";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "K této zprávě je připojen soubor protokolu.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "Dojde k odstranění všech dříve uložených možností.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Chcete-li provést upgrade, nabijte tiskárnu sprocket alespoň na 75 % a poté přejděte k položce „sprocket“ v nabídce.";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "Upgrade";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "Verze %1$@ (%2$@)";
+
+/* Social source title for WeiBo */
+"WeiBo" = "WeiBo";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "Přejete si odhlásit se ze služby %@?";
+
+/* No comment provided by engineer. */
+"YES" = "ANO";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "Ano";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "Nemáte nastavený žádný účet pro odesílání e-mailů.";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "protokol chyb sprocket";
+

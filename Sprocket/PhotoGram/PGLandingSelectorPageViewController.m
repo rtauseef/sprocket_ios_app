@@ -98,16 +98,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
     [self showNavigationView];
 
-    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
-
-    if (index != NSNotFound) {
-        UINavigationController *viewController = navController.viewControllers.lastObject;
-
-        PGSocialSource *socialSource = self.socialSources[index];
-
-        [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
-    }
-
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
     for (UIView *v in self.view.subviews) {
@@ -118,6 +108,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
     
     self.isDraggingPage = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 - (void)dealloc
@@ -491,7 +488,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
-- (void)updateMediaNavigationForCurrentViewController {
+- (void)updateMediaNavigationForCurrentViewController
+{
     UINavigationController *navController = [self currentNavigationController];
     UIViewController *viewController = [navController.viewControllers lastObject];
 

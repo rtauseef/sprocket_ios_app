@@ -12,7 +12,6 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
 @interface PGAttributedLabel : UILabel
 
 @property (nonatomic, assign) IBInspectable CGFloat fontSize;
