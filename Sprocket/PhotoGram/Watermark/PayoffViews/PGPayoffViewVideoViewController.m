@@ -65,8 +65,8 @@
         [self.player play];
     }
     
-    if (self.metadata.source.from == PGMetarSourceFromSocial && self.metadata.source.uri) {
-         [self.parentVc setExternalLinkURL:[NSURL URLWithString:self.metadata.source.uri]];
+    if (self.metadata.source.from == PGMetarSourceFromSocial && self.metadata.source.social.uri) {
+        [self.parentVc setExternalLinkURL:[NSURL URLWithString:self.metadata.source.social.uri]];
     }
 }
 
