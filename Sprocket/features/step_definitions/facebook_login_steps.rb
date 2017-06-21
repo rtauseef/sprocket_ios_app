@@ -20,8 +20,10 @@ Given(/^I am on the Landing screen$/) do
         ios_locale = $language_locale["English-US"]['ios_locale_id']
     end
     $list_loc=$language_arr[ios_locale]
-    sleep(SLEEP_MIN)   
-    if selenium.find_elements(:name,"#{$list_loc['survey']}").size > 0  
+    sleep(SLEEP_MIN)
+    puts $list_loc['survey']
+    if selenium.find_elements(:name,"#{$list_loc['survey']}").size > 0
+        puts "greater"
         selenium.find_element(:name,"#{$list_loc['survey']}").click
     end
     if selenium.find_elements(:xpath,"//UIAButton[@name='#{$list_loc['skip_to_the_app']}']").size > 0
@@ -33,7 +35,7 @@ Given(/^I am on the Landing screen$/) do
         if selenium.find_elements(:xpath,"//UIAStaticText[@value='Sprocket']").size > 0
             $test = "Sprocket"
         else
-            $test = "„Sprocket“"
+            $test = "â€žSprocketâ€œ"
         end
     end
     camera_pop_up = "//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]"
