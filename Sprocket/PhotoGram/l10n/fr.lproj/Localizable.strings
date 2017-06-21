@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld sur %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li tâche dans la File d'attente d'impression";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li tâches dans la File d'attente d'impression";
+
+/* No comment provided by engineer. */
 "About" = "À propos";
 
 /* Body of Camera Access Required dialog */
@@ -10,17 +19,14 @@
 /* No comment provided by engineer. */
 "App Settings" = "Paramètres de l’application";
 
-/* No comment provided by engineer. */
-"Arrow Sticker" = "Vignette flèche";
-
 /* Settings for automatically saving photos */
 "Auto-Save Settings" = "Paramètres de sauvegarde automatique";
 
 /* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Vignette chapeau d'anniversaire";
-
-/* No comment provided by engineer. */
 "Buy Paper" = "Acheter du papier";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "En vous authentifiant sur %@, vous acceptez également les <Conditions de service> de HP.";
 
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Accès à l'appareil photo requis";
@@ -33,97 +39,22 @@
 "Cancel" = "Annuler";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Vignette oreilles de chat";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Vignette lunettes de chat";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Vignette chat";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Vignette moustaches de chat";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Vérifier ma création HP Sprocket";
-
-/* No comment provided by engineer. */
-"Chinese Dragon Sticker" = "Vignette chinoise dragon";
-
-/* No comment provided by engineer. */
-"Chinese Dui Lian Couplet Sticker" = "Vignette chinoise couplet Dui Lian";
-
-/* No comment provided by engineer. */
-"Chinese Fan Sticker" = "Vignette chinoise éventail";
-
-/* No comment provided by engineer. */
-"Chinese Firecracker Sticker" = "Vignette chinoise pétard";
-
-/* No comment provided by engineer. */
-"Chinese Fish Sticker" = "Vignette chinoise poisson";
-
-/* No comment provided by engineer. */
-"Chinese Fu Good Luck Sticker" = "Vignette chinoise porte-bonheur Fu";
-
-/* No comment provided by engineer. */
-"Chinese Glasses 2017 Sticker" = "Vignette chinoise lunettes 2017";
-
-/* No comment provided by engineer. */
-"Chinese Glasses Blossom Sticker" = "Vignette chinoise lunettes fleur";
-
-/* No comment provided by engineer. */
-"Chinese HCNY Sticker" = "Vignette chinoise nouvel an";
-
-/* No comment provided by engineer. */
-"Chinese Lantern Sticker" = "Vignette chinoise lampion";
-
-/* No comment provided by engineer. */
-"Chinese Lion Mask Sticker" = "Vignette chinoise masque de lion";
-
-/* No comment provided by engineer. */
-"Chinese Lucky Cat Sticker" = "Vignette chinoise chat porte-bonheur";
-
-/* No comment provided by engineer. */
-"Chinese Man Hat Sticker" = "Vignette chinoise chapeau homme";
-
-/* No comment provided by engineer. */
-"Chinese Money Sticker" = "Vignette chinoise argent";
-
-/* No comment provided by engineer. */
-"Chinese Mustache Sticker" = "Vignette chinoise moustache";
-
-/* No comment provided by engineer. */
-"Chinese Oranges Sticker" = "Vignette chinoise oranges";
-
-/* No comment provided by engineer. */
-"Chinese Panda Sticker" = "Vignette chinoise panda";
-
-/* No comment provided by engineer. */
-"Chinese Plum Blossom Sticker" = "Vignette chinoise fleur de prunier";
-
-/* No comment provided by engineer. */
-"Chinese Rooster Sticker" = "Vignette chinoise coq";
-
-/* No comment provided by engineer. */
-"Chinese Woman Hat 2 Sticker" = "Vignette chinoise chapeau femme 2";
-
-/* No comment provided by engineer. */
-"Chinese Woman Hat Sticker" = "Vignette chinoise chapeau femme";
-
-/* No comment provided by engineer. */
-"Chinese Yin Yang Sticker" = "Vignette chinoise yin yang";
 
 /* Setup step 3 desc */
 "Connect" = "Connectez-vous";
 
-/* No comment provided by engineer. */
-"Crown Sticker" = "Vignette couronne";
+/* Number of Copies for printing */
+"Copies" = "copies";
+
+/* Number of Copies for printing */
+"Copy" = "copie";
 
 /* No comment provided by engineer. */
-"Cupcake Sticker" = "Vignette cupcake";
+"Delete All" = "Tout supprimer";
 
 /* No comment provided by engineer. */
-"Diamond Sticker" = "Vignette diamant";
+"Delete all prints from Print Queue?" = "Supprimer toutes les tâches de la File d'attente d'impression ?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Ignorer";
@@ -149,41 +80,17 @@
 /* Social source title for Facebook */
 "Facebook" = "Facebook";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "Vignette plume 2 (série Automne)";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Vignette plume";
-
 /* Subject of the email send to technical support */
-"Feedback on sprocket for iOS (Record Locator: %@)" = "Commentaires sur Sprocket pour iOS (Code d'enregistrement : %@)";
+"Feedback on sprocket for iOS (Record Locator: %@)" = "Commentaires sur sprocket pour iOS (Code d'enregistrement : %@)";
 
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Cadre floral 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Cadre floral";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
-"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Dans les Paramètres Bluetooth, tapotez sur « HP Sprocket » pour appairer votre appareil mobile et l'imprimante.";
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Dans les Paramètres Bluetooth, tapotez sur « HP sprocket » pour appairer votre appareil mobile et l'imprimante.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Faites-nous part de vos suggestions";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Cadre dégradé";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Cadre couleur eau verte";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Vignette cœur brillant";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Vignette cœurs";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Tutoriel";
@@ -194,12 +101,6 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Cadre kraft";
-
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "Vignette feuille 3";
-
 /* Setup step 1 desc */
 "Load Paper" = "Chargement de papier";
 
@@ -207,7 +108,7 @@
 "Log file has been cleared." = "Fichier journal effacé !";
 
 /* No comment provided by engineer. */
-"Moon Sticker" = "Vignette lune";
+"NO" = "NON";
 
 /* Dismisses dialog without taking action */
 "No" = "Non";
@@ -221,23 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Aucune image Pitu trouvée";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Aucune tâche dans la File d'attente d'impression";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Non, je souhaite les conserver";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Non, merci";
 
-/* Allows user close dialog */
-"OK" = "OK";
-
 /* No comment provided by engineer. */
-"OMG Sticker" = "Vignette OMG";
+"Not all images were downloaded. Do you want to continue?" = "Toutes les images n'ont pas été téléchargées. Souhaitez-vous continuer ?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
+"OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Erreur !";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Cadre orange";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pause";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Cadre peinture en bombe rose";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Les photos seront imprimées dans l'ordre dans lequel elles ont été ajoutées à la File d'attente d'impression, une fois l'imprimante sprocket allumée et connectée via Bluetooth.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Les photos seront imprimées dans l'ordre dans lequel elles ont été ajoutées à la File d'attente d'impression.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -250,14 +161,17 @@ Vous pouvez également utiliser les photos de votre appareil.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Dites-nous ce que vous aimez et ce que nous pourrions améliorer !";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Cadre petits pois";
-
 /* Setup step 2 desc */
 "Power Up" = "Allumez";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Appuyez sur le bouton de mise sous tension jusqu'à ce que la LED s'illumine en blanc.";
+
+/* No comment provided by engineer. */
+"Print" = "Imprimer";
+
+/* No comment provided by engineer. */
+"Print Queue" = "File d'attente d'impression";
 
 /* No comment provided by engineer. */
 "Printers" = "Imprimantes";
@@ -270,9 +184,6 @@ Vous pouvez également utiliser les photos de votre appareil.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Cadre rouge";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Me le rappeler plus tard";
@@ -298,6 +209,9 @@ Vous pouvez également utiliser les photos de votre appareil.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Enregistrer sur la pellicule";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Envoi vers l'imprimante sprocket en cours";
+
 /* Button for opening the app settings */
 "Settings" = "Paramètres";
 
@@ -308,19 +222,13 @@ Vous pouvez également utiliser les photos de votre appareil.";
 "Sign Out" = "Déconnexion";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Cadre peu soigné";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Désolé, votre problème ne peut pas être transmis maintenant. Ceci est probablement dû au fait qu’aucun compte de messagerie n’est configuré sur votre appareil mobile.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
-"Sprocket Printer Firmware Upgrade Available" = "Une mise à niveau est disponible pour le microprogramme de l'imprimante Sprocket.";
+"Sprocket Printer Firmware Upgrade Available" = "Une mise à niveau est disponible pour le microprogramme de l'imprimante sprocket.";
 
 /* No comment provided by engineer. */
-"Star Sticker" = "Vignette étoile";
-
-/* No comment provided by engineer. */
-"Stars Sticker" = "Vignette étoiles";
+"Sprocket not Connected" = "Sprocket non connectée";
 
 /* Setup step 1 title */
 "Step 1" = "Étape 1";
@@ -335,57 +243,6 @@ Vous pouvez également utiliser les photos de votre appareil.";
 "Success" = "Opération réussie";
 
 /* No comment provided by engineer. */
-"Sunglasses Sticker" = "Vignette lunettes de soleil";
-
-/* No comment provided by engineer. */
-"SuperBowl Banner Sticker" = "Vignette bannière SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Eye Black Sticker" = "Vignette noire œil SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Flag Sticker" = "Vignette fanion SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Foam Finger Sticker" = "Vignette SuperBowl doigt mousse";
-
-/* No comment provided by engineer. */
-"SuperBowl Football Flames Sticker" = "Vignette ballon flammes SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Game Time Sticker" = "Vignette temps de jeu SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Glasses Sticker" = "Vignette lunettes SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Glasses Two Sticker" = "Vignette lunettes Deux SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Goal Post Sticker" = "Vignette poteau d’en-but SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Heart Football Sticker" = "Vignette ballon cœur SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Heart Football Two Sticker" = "Vignette ballon cœur Deux SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Helmet Sticker" = "Vignette casque SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl I Heart Football Sticker" = "Vignette ballon cœur I SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Love Sticker" = "Vignette Love SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Owl Sticker" = "Vignette hibou SuperBowl";
-
-/* No comment provided by engineer. */
-"SuperBowl Stars n Balls Sticker" = "Vignette Stars n Balls SuperBowl";
-
-/* No comment provided by engineer. */
 "Take Survey" = "Répondez à l'enquête !";
 
 /* No comment provided by engineer. */
@@ -398,10 +255,7 @@ Vous pouvez également utiliser les photos de votre appareil.";
 "Tell us what you think of %@" = "Faites-nous part de vos impressions sur %@";
 
 /* No comment provided by engineer. */
-"Tell us what you think of sprocket" = "Faites-nous part de vos impressions sur Sprocket";
-
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Conditions de service";
+"Tell us what you think of sprocket" = "Faites-nous part de vos impressions sur sprocket";
 
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Le fichier journal est joint à ce message.";
@@ -410,148 +264,22 @@ Vous pouvez également utiliser les photos de votre appareil.";
 "This will clear all previously saved options." = "Ceci effacera toutes les options précédemment enregistrées.";
 
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
-"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Avant la mise à niveau, chargez l'imprimante Sprocket à au moins 75 %, puis accédez à « sprocket » via le menu.";
-
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Cadre turquoise";
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Avant la mise à niveau, chargez l'imprimante sprocket à au moins 75 %, puis accédez à « sprocket » via le menu.";
 
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Mise à niveau";
 
-/* No comment provided by engineer. */
-"Valentines Broken Heart Sticker" = "Vignette St Valentin cœur brisé";
-
-/* No comment provided by engineer. */
-"Valentines Butterfly Sticker" = "Vignette St Valentin papillon";
-
-/* No comment provided by engineer. */
-"Valentines Cat Sticker" = "Vignette St Valentin chat";
-
-/* No comment provided by engineer. */
-"Valentines Conversation Heart Sticker" = "Vignette St Valentin cœur conversation";
-
-/* No comment provided by engineer. */
-"Valentines Cupcake Sticker" = "Vignette St Valentin cupcake";
-
-/* No comment provided by engineer. */
-"Valentines Dancing Hearts Sticker" = "Vignette St Valentin cœurs dansants";
-
-/* No comment provided by engineer. */
-"Valentines Delivery Bird Sticker" = "Vignette St Valentin oiseau postier";
-
-/* No comment provided by engineer. */
-"Valentines Flower Crown Sticker" = "Vignette St Valentin couronne de fleurs";
-
-/* No comment provided by engineer. */
-"Valentines Flying Heart Sticker" = "Vignette St Valentin cœur ailé";
-
-/* No comment provided by engineer. */
-"Valentines Hat Sticker" = "Vignette St Valentin chapeau";
-
-/* No comment provided by engineer. */
-"Valentines Heart Antennae Sticker" = "Vignette St Valentin cœur antennes";
-
-/* No comment provided by engineer. */
-"Valentines Heart Arrow Sticker" = "Vignette St Valentin cœur flèche";
-
-/* No comment provided by engineer. */
-"Valentines Heart Balloons Sticker" = "Vignette St Valentin cœur ballons";
-
-/* No comment provided by engineer. */
-"Valentines Heart Banner Sticker" = "Vignette St Valentin cœur bannière Sticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Bouquet Sticker" = "Vignette St Valentin cœur bouquet";
-
-/* No comment provided by engineer. */
-"Valentines Heart Bow Sticker" = "Vignette St Valentin cœur arc";
-
-/* No comment provided by engineer. */
-"Valentines Heart Confetti Sticker" = "Vignette St Valentin cœur confetti";
-
-/* No comment provided by engineer. */
-"Valentines Heart Emoji Sticker" = "Vignette St Valentin cœur emoji";
-
-/* No comment provided by engineer. */
-"Valentines Heart Frame Sticker" = "Vignette St Valentin cadre cœur";
-
-/* No comment provided by engineer. */
-"Valentines Heart Garland Sticker" = "Vignette St Valentin cœur guirlande";
-
-/* No comment provided by engineer. */
-"Valentines Heart Glasses Sticker" = "Vignette St Valentin cœur lunettes";
-
-/* No comment provided by engineer. */
-"Valentines Heart Glasses Two Sticker" = "Vignette St Valentin cœur lunettes deux";
-
-/* No comment provided by engineer. */
-"Valentines Heart Monster Sticker" = "Vignette St Valentin cœur monstre";
-
-/* No comment provided by engineer. */
-"Valentines Heart Thought Sticker" = "Vignette St Valentin cœur pensée";
-
-/* No comment provided by engineer. */
-"Valentines Heart Tiara Sticker" = "Vignette St Valentin cœur diadème";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Vignette St Valentin cadre cœurs";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Vignette St Valentin cœurs cadre superposé";
-
-/* No comment provided by engineer. */
-"Valentines Lock And Key Sticker" = "Vignette St Valentin cadenas et clé";
-
-/* No comment provided by engineer. */
-"Valentines Love Creature Sticker" = "Vignette St Valentin créature d’amour";
-
-/* No comment provided by engineer. */
-"Valentines Love Letter Sticker" = "Vignette St Valentin lettre d'amour";
-
-/* No comment provided by engineer. */
-"Valentines Pig Sticker" = "Vignette St Valentin cochon";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Vignette St Valentin cadre pois roses";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Vignette St Valentin  cadre aquarelle rose";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Vignette St Valentin cadre rouge";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Vignette St Valentin cadre rayures rouges";
-
-/* No comment provided by engineer. */
-"Valentines Rosebud Sticker" = "Vignette St Valentin pétale de rose";
-
-/* No comment provided by engineer. */
-"Valentines Target Heart Sticker" = "Vignette St Valentin cœur cible";
-
-/* No comment provided by engineer. */
-"Valentines Xoxo Sticker" = "Vignette St Valentin Xoxo";
-
 /* Version number and build of the app */
 "Version %@ (%@)" = "Version %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Cadre eau bleue";
-
 /* Social source title for WeiBo */
 "WeiBo" = "Weibo";
-
-/* No comment provided by engineer. */
-"White Frame" = "Cadre blanc";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Cadre bois (sur la partie inférieure)";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Voulez-vous vous déconnecter de %@ ?";
 
 /* No comment provided by engineer. */
-"XOXO Sticker" = "Vignette XOXO";
+"YES" = "OUI";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Oui";

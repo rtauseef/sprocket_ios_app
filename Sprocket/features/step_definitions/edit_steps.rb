@@ -53,6 +53,9 @@ Then (/^I select "(.*?)"$/) do |option|
         touch @current_page.filter_1
     else 
         if option =="AutoFix"
+            if element_does_not_exist(@current_page.magic)
+                scroll("UICollectionView",:left)
+            end
             touch @current_page.magic
         else 
             if option == "2:3" || option == "3:2"
@@ -132,6 +135,12 @@ Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
 				if screen_name =="FilterEditor"
 					macro %Q|I tap "Filter" button|
 					macro %Q|I should see the "FilterEditor" screen|
+                else
+                    if screen_name =="BrushEditor"
+                        macro %Q|I tap "Brush" button|
+                        macro %Q|I should see the "BrushEditor" screen|
+                    end
+                        
 				end
 			end
 		end
@@ -229,6 +238,12 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
         if (element_exists "view marked:'#{sticker_tab.to_s}'")
             touch query("view marked:'#{sticker_tab}'")
         else
+            while element_does_not_exist("view marked:'Add Custom Sticker'")
+                scroll("UICollectionView",:left)
+            end
+            if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                touch query("view marked:'#{sticker_tab}'")
+            end
             i = 0
             while i < 5 do      
                 scroll("UICollectionView",:right)
@@ -267,15 +282,17 @@ Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
     if device_name.to_s != 'iPad'
         selected_frame_status = query("UIImageView",:accessibilityIdentifier)[8]
     else
-        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[7]
+        selected_frame_status = query("UIImageView",:accessibilityIdentifier)[12]
     end
     raise "Wrong frame selected!" unless selected_frame_status == frame_value
 end
 
 Then(/^I should see the photo in the "Frame Editor" screen with the "(.*?)" frame$/) do |frame_id|
     frame_value=$frame[frame_id]['value']
-    selected_frame_status = query("UIImageView",:accessibilityIdentifier)[10]
-    raise "Wrong frame selected!" unless selected_frame_status == frame_value
+    
+    selected_frame_status = query("* id:'#{frame_value}'")
+   raise "Wrong frame selected!" unless selected_frame_status.length > 0
+    
 end
 
 Then(/^I should see the photo with the "(.*?)" font$/) do |font_id|
@@ -370,12 +387,29 @@ Then(/^I should see the "([^"]*)" with "([^"]*)" Color$/) do |type, color|
     flag = 0
     sticker_value=$sticker[sticker_tab][sticker_id]['value']
     $stic_arr = query("IMGLYStickerImageView",:accessibilityLabel)
-    $stic_arr.each do |test|
-        if test == sticker_value
+    
+    $stic_arr.each do |item|
+        if item == sticker_value
             flag = 1
             break
         end
     end
     raise "Wrong sticker selected!" unless flag == 1
 end       
-    
+Then(/^I could see "([^"]*)" option$/) do |option|
+    method_name = option
+    check_element_exists @current_page.send(method_name)
+    sleep(STEP_PAUSE)
+end
+Given(/^I choose "([^"]*)" option$/) do |option|
+    method_name = option
+    touch @current_page.send(method_name)
+    sleep(STEP_PAUSE)
+end
+Then(/^I set the slider value to "([^"]*)"$/) do |value|
+  query("view:'imglyKit.TooltipSlider'",{setValue:value.to_i})
+end
+Then(/^I verify the slider value is set to "([^"]*)"$/) do |value|
+slider_value = query("view:'imglyKit.TooltipSlider'",:value)[0]
+  raise "Slider value not set correctly!" unless slider_value.to_i == value.to_i
+end

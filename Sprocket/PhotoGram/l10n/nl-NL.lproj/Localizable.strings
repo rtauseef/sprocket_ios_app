@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld van %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li print in printwachtrij";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li prints in printwachtrij";
+
+/* No comment provided by engineer. */
 "About" = "Info over";
 
 /* Body of Camera Access Required dialog */
@@ -10,17 +19,14 @@
 /* No comment provided by engineer. */
 "App Settings" = "App-instellingen";
 
-/* No comment provided by engineer. */
-"Arrow Sticker" = "Pijlsticker";
-
 /* Settings for automatically saving photos */
 "Auto-Save Settings" = "Instellingen voor automatisch opslaan";
 
 /* No comment provided by engineer. */
-"Birthday Hat Sticker" = "Verjaardagsmutssticker";
-
-/* No comment provided by engineer. */
 "Buy Paper" = "Papier kopen";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Door aanmelding bij %@ ga je ook akkoord met de <gebruiksvoorwaarden> van HP.";
 
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Toegang tot camera is vereist";
@@ -33,97 +39,22 @@
 "Cancel" = "Annuleren";
 
 /* No comment provided by engineer. */
-"Cat Ears Sticker" = "Kattenorensticker";
-
-/* No comment provided by engineer. */
-"Cat Glasses Sticker" = "Kattenbrilsticker";
-
-/* No comment provided by engineer. */
-"Cat Sticker" = "Kattensticker";
-
-/* No comment provided by engineer. */
-"Cat Whiskers Sticker" = "Kattensnorsticker";
-
-/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Mijn HP Sprocket creatie bekijken";
-
-/* No comment provided by engineer. */
-"Chinese Dragon Sticker" = "Chinese draaksticker";
-
-/* No comment provided by engineer. */
-"Chinese Dui Lian Couplet Sticker" = "Chinese Dui Lian-coupletsticker";
-
-/* No comment provided by engineer. */
-"Chinese Fan Sticker" = "Chinese waaiersticker";
-
-/* No comment provided by engineer. */
-"Chinese Firecracker Sticker" = "Chinese voetzoekersticker";
-
-/* No comment provided by engineer. */
-"Chinese Fish Sticker" = "Chinese vissticker";
-
-/* No comment provided by engineer. */
-"Chinese Fu Good Luck Sticker" = "Chinese Fu gelukssticker";
-
-/* No comment provided by engineer. */
-"Chinese Glasses 2017 Sticker" = "Chinese bril 2017-sticker";
-
-/* No comment provided by engineer. */
-"Chinese Glasses Blossom Sticker" = "Chinese bril bloesemsticker";
-
-/* No comment provided by engineer. */
-"Chinese HCNY Sticker" = "Chinese Gelukkig Nieuwjaarsticker";
-
-/* No comment provided by engineer. */
-"Chinese Lantern Sticker" = "Chinese lantaarnsticker";
-
-/* No comment provided by engineer. */
-"Chinese Lion Mask Sticker" = "Chinese leeuwenmaskersticker";
-
-/* No comment provided by engineer. */
-"Chinese Lucky Cat Sticker" = "Chinese gelukskatsticker";
-
-/* No comment provided by engineer. */
-"Chinese Man Hat Sticker" = "Chinese herenhoedsticker";
-
-/* No comment provided by engineer. */
-"Chinese Money Sticker" = "Chinese geldsticker";
-
-/* No comment provided by engineer. */
-"Chinese Mustache Sticker" = "Chinese snorsticker";
-
-/* No comment provided by engineer. */
-"Chinese Oranges Sticker" = "Chinese sinaasappelssticker";
-
-/* No comment provided by engineer. */
-"Chinese Panda Sticker" = "Chinese pandasticker";
-
-/* No comment provided by engineer. */
-"Chinese Plum Blossom Sticker" = "Chinese pruimenbloesemsticker";
-
-/* No comment provided by engineer. */
-"Chinese Rooster Sticker" = "Chinese haansticker";
-
-/* No comment provided by engineer. */
-"Chinese Woman Hat 2 Sticker" = "Chinese vrouwenhoed sticker 2";
-
-/* No comment provided by engineer. */
-"Chinese Woman Hat Sticker" = "Chinese vrouwenhoed sticker";
-
-/* No comment provided by engineer. */
-"Chinese Yin Yang Sticker" = "Chinese Yin-Yang sticker";
 
 /* Setup step 3 desc */
 "Connect" = "Verbinden";
 
-/* No comment provided by engineer. */
-"Crown Sticker" = "Kroonsticker";
+/* Number of Copies for printing */
+"Copies" = "kopieën";
+
+/* Number of Copies for printing */
+"Copy" = "kopie";
 
 /* No comment provided by engineer. */
-"Cupcake Sticker" = "Cupcakesticker";
+"Delete All" = "Alles wissen";
 
 /* No comment provided by engineer. */
-"Diamond Sticker" = "Ruitsticker";
+"Delete all prints from Print Queue?" = "Alle prints uit printwachtrij verwijderen?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Annuleren";
@@ -149,41 +80,17 @@
 /* Social source title for Facebook */
 "Facebook" = "Facebook";
 
-/* No comment provided by engineer. */
-"Feather 2 Sticker" = "Veren 2 sticker";
-
-/* No comment provided by engineer. */
-"Feather Sticker" = "Verensticker";
-
 /* Subject of the email send to technical support */
 "Feedback on sprocket for iOS (Record Locator: %@)" = "Feedback over sprocket voor iOS (Record Locator: %@)";
 
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Bloemenkader 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Bloemenkader";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Tik in de Bluetooth-instellingen op 'HP sprocket' om te koppelen met de printer.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Feedback geven";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Verlopend kader";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Groene waterverfkader";
-
-/* No comment provided by engineer. */
-"Heart Express Sticker" = "Hart express-sticker";
-
-/* No comment provided by engineer. */
-"Hearts Sticker" = "Hartensticker";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Zo werkt het";
@@ -194,12 +101,6 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Bruin papierkader";
-
-/* No comment provided by engineer. */
-"Leaf 3 Sticker" = "Blad 3 sticker";
-
 /* Setup step 1 desc */
 "Load Paper" = "Plaats papier";
 
@@ -207,7 +108,7 @@
 "Log file has been cleared." = "Logbestand is gewist.";
 
 /* No comment provided by engineer. */
-"Moon Sticker" = "Maansticker";
+"NO" = "NEE";
 
 /* Dismisses dialog without taking action */
 "No" = "Nee";
@@ -221,23 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Geen Qzone-app afbeeldingen gevonden";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Geen prints in de printwachtrij";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Nee, niet verwijderen";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Nee, bedankt";
 
-/* Allows user close dialog */
-"OK" = "OK";
-
 /* No comment provided by engineer. */
-"OMG Sticker" = "OMG-sticker";
+"Not all images were downloaded. Do you want to continue?" = "Niet alle foto's zijn gedownload. Wil je doorgaan?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
+"OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Fout!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Oranje kader";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Onderbreken";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Roze spuitverfkader";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Foto's worden geprint in de volgorde waarin ze aan de wachtrij zijn toegevoegd, nadat  de sprocket printer ingeschakeld is en verbonden is via bluetooth.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Foto's worden geprint in de volgorde waarin ze aan de wachtrij zijn toegevoegd.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -250,14 +161,17 @@ Je kunt ook foto's van je device gebruiken.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Laat ons weten je leuk vindt en wat beter kan!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Stippelkader";
-
 /* Setup step 2 desc */
 "Power Up" = "Inschakelen";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Druk op de aan-uitknop en houd deze ingedrukt totdat het ledlampje wit wordt.";
+
+/* No comment provided by engineer. */
+"Print" = "Printen";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Printwachtrij";
 
 /* No comment provided by engineer. */
 "Printers" = "Printers";
@@ -270,9 +184,6 @@ Je kunt ook foto's van je device gebruiken.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Rood kader";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Later nogmaals herinneren";
@@ -298,6 +209,9 @@ Je kunt ook foto's van je device gebruiken.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Opslaan naar Filmrol";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Zenden naar sprocket printer";
+
 /* Button for opening the app settings */
 "Settings" = "Instellingen";
 
@@ -308,19 +222,13 @@ Je kunt ook foto's van je device gebruiken.";
 "Sign Out" = "Afmelden";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Slordig kader";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Sorry, het probleem kan nu niet worden gerapporteerd. Dat komt waarschijnlijk omdat op je mobiele device geen e-mailaccount is ingesteld.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
-"Sprocket Printer Firmware Upgrade Available" = "Firmware-upgrade voor Sprocket printer beschikbaar";
+"Sprocket Printer Firmware Upgrade Available" = "Firmware-upgrade voor sprocket printer beschikbaar";
 
 /* No comment provided by engineer. */
-"Star Sticker" = "Stersticker";
-
-/* No comment provided by engineer. */
-"Stars Sticker" = "Sterrensticker";
+"Sprocket not Connected" = "Sprocket heeft geen verbinding";
 
 /* Setup step 1 title */
 "Step 1" = "Stap 1";
@@ -333,57 +241,6 @@ Je kunt ook foto's van je device gebruiken.";
 
 /* No comment provided by engineer. */
 "Success" = "Geslaagd";
-
-/* No comment provided by engineer. */
-"Sunglasses Sticker" = "Zonnebrilsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Banner Sticker" = "SuperBowl bannersticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Eye Black Sticker" = "SuperBowl oogzwartsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Flag Sticker" = "SuperBowl vlagsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Foam Finger Sticker" = "SuperBowl foamvingersticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Football Flames Sticker" = "SuperBowl voetbalvlammensticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Game Time Sticker" = "SuperBowl speeltijdsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Glasses Sticker" = "SuperBowl brilsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Glasses Two Sticker" = "SuperBowl brilsticker twee";
-
-/* No comment provided by engineer. */
-"SuperBowl Goal Post Sticker" = "SuperBowl doelpaalsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Heart Football Sticker" = "SuperBowl hartvoetbalsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Heart Football Two Sticker" = "SuperBowl hartvoetbalsticker twee";
-
-/* No comment provided by engineer. */
-"SuperBowl Helmet Sticker" = "SuperBowl helmsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl I Heart Football Sticker" = "SuperBowl I hartvoetbalsticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Love Sticker" = "SuperBowl love-sticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Owl Sticker" = "SuperBowl uilensticker";
-
-/* No comment provided by engineer. */
-"SuperBowl Stars n Balls Sticker" = "SuperBowl sterren-en-ballensticker";
 
 /* No comment provided by engineer. */
 "Take Survey" = "Vul enquête in";
@@ -400,9 +257,6 @@ Je kunt ook foto's van je device gebruiken.";
 /* No comment provided by engineer. */
 "Tell us what you think of sprocket" = "Geef ons je mening over sprocket";
 
-/* Phrase to make link for terms of service of the landing page */
-"Terms of Service" = "Gebruiksvoorwaarden";
-
 /* No comment provided by engineer. */
 "The logfile is attached to this message." = "Het logbestand is aan dit bericht toegevoegd.";
 
@@ -412,146 +266,20 @@ Je kunt ook foto's van je device gebruiken.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Om te upgraden moet je de sprocket printer tot tenminste 75% opladen en dan naar 'sprocket' in het menu gaan.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Turquoise kader";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Upgrade";
-
-/* No comment provided by engineer. */
-"Valentines Broken Heart Sticker" = "Valentijn gebroken hartsticker";
-
-/* No comment provided by engineer. */
-"Valentines Butterfly Sticker" = "Valentijn vlindersticker";
-
-/* No comment provided by engineer. */
-"Valentines Cat Sticker" = "Valentijn kattensticker";
-
-/* No comment provided by engineer. */
-"Valentines Conversation Heart Sticker" = "Valentijn conversatie hartsticker";
-
-/* No comment provided by engineer. */
-"Valentines Cupcake Sticker" = "Valentijn cupcakesticker";
-
-/* No comment provided by engineer. */
-"Valentines Dancing Hearts Sticker" = "Valentijn dansende hartensticker";
-
-/* No comment provided by engineer. */
-"Valentines Delivery Bird Sticker" = "Valentijn postduifsticker";
-
-/* No comment provided by engineer. */
-"Valentines Flower Crown Sticker" = "Valentijn bloemenkroonsticker";
-
-/* No comment provided by engineer. */
-"Valentines Flying Heart Sticker" = "Valentijn vliegend hartsticker";
-
-/* No comment provided by engineer. */
-"Valentines Hat Sticker" = "Valentijnshoedsticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Antennae Sticker" = "Valentijnshart antennessticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Arrow Sticker" = "Valentijnshart pijlsticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Balloons Sticker" = "Valentijnshart ballonnensticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Banner Sticker" = "Valentijnshart bannersticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Bouquet Sticker" = "Valentijnshart boeketsticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Bow Sticker" = "Valentijnshart striksticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Confetti Sticker" = "Valentijnshart confettisticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Emoji Sticker" = "Valentijnshart emojisticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Frame Sticker" = "Valentijnshart kadersticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Garland Sticker" = "Valentijnshart guirlandesticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Glasses Sticker" = "Valentijnshart brilsticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Glasses Two Sticker" = "Valentijnshart brilsticker twee";
-
-/* No comment provided by engineer. */
-"Valentines Heart Monster Sticker" = "Valentijnshart monstersticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Thought Sticker" = "Valentijnshart gedachtensticker";
-
-/* No comment provided by engineer. */
-"Valentines Heart Tiara Sticker" = "Valentijnshart tiarasticker";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Valentijnshartenkader";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Valentijnsharten overlaykader";
-
-/* No comment provided by engineer. */
-"Valentines Lock And Key Sticker" = "Valentijnsslot- en sleutelsticker";
-
-/* No comment provided by engineer. */
-"Valentines Love Creature Sticker" = "Valentijn love-diersticker";
-
-/* No comment provided by engineer. */
-"Valentines Love Letter Sticker" = "Valentijnsliefdesbriefsticker";
-
-/* No comment provided by engineer. */
-"Valentines Pig Sticker" = "Valentijn varkensticker";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Valentijn roze stippenkader";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Valentijn roze aquarelkader";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Valentijn rood kader";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Valentijn rood strepenkader";
-
-/* No comment provided by engineer. */
-"Valentines Rosebud Sticker" = "Valentijn rozenknopsticker";
-
-/* No comment provided by engineer. */
-"Valentines Target Heart Sticker" = "Valentijnshart schietschijfsticker";
-
-/* No comment provided by engineer. */
-"Valentines Xoxo Sticker" = "Valentijn Xoxo-sticker";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versie %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Zeeblauw kader";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
-
-/* No comment provided by engineer. */
-"White Frame" = "Wit kader";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Houtbodemkader";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Wil je jezelf afmelden van %@?";
 
 /* No comment provided by engineer. */
-"XOXO Sticker" = "XOXO-sticker";
+"YES" = "JA";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Ja";

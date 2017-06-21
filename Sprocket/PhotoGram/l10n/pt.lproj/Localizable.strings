@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld de %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li arquivo na Fila de Impressão";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li arquivos na Fila de Impressão";
+
+/* No comment provided by engineer. */
 "About" = "Sobre";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Comprar papel";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Ao autenticar-se com o %@, você também concorda com os<termos de serviço> da HP.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Necessário o acesso à câmera";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Conectar";
+
+/* Number of Copies for printing */
+"Copies" = "Cópias";
+
+/* Number of Copies for printing */
+"Copy" = "Cópia";
+
+/* No comment provided by engineer. */
+"Delete All" = "Excluir tudo";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Excluir todos os arquivos da Fila de Impressão?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Ignorar";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Moldura floral 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Moldura floral";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "A partir das configurações de Bluetooth, toque em \"HP sprocket\" para emparelhar com a impressora.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Fornecer feedback";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Moldura gradiente";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Moldura de aquarela verde";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Orientação";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Moldura de Kraft";
-
 /* Setup step 1 desc */
 "Load Paper" = "Colocar papel";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "O arquivo de registro foi liberado.";
+
+/* No comment provided by engineer. */
+"NO" = "NENHUM";
 
 /* Dismisses dialog without taking action */
 "No" = "Nenhum";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Nenhuma imagem encontrada do aplicativo Qzone";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Nenhum arquivo na Fila de Impressão";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Não. Mantê-los";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Não, obrigado";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Nem todas as imagens foram baixadas. Deseja continuar?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Opa!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Moldura laranja";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pausar";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Moldura de tinta spray rosa";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "As fotos serão impressas na ordem em que foram adicionadas à Fila de Impressão, depois que a impressora de sprocket estiver ligada e o Bluetooth, conectado.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "As fotos serão impressas na ordem em que foram adicionadas à Fila de Impressão.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Você também pode usar as fotos do dispositivo.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Diga-nos o que está incrível e o que poderia ser melhor!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Moldura de bolinhas";
-
 /* Setup step 2 desc */
 "Power Up" = "Inicialização";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Pressione e segure o botão Liga/Desliga até que o LED fique branco.";
+
+/* No comment provided by engineer. */
+"Print" = "Imprimir";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Fila de Impressão";
 
 /* No comment provided by engineer. */
 "Printers" = "Impressoras";
@@ -156,9 +184,6 @@ Você também pode usar as fotos do dispositivo.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Moldura vermelha";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Lembre-me depois";
@@ -184,6 +209,9 @@ Você também pode usar as fotos do dispositivo.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Salvar no rolo da câmera";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Enviando para a impressora de sprocket.";
+
 /* Button for opening the app settings */
 "Settings" = "Configurações";
 
@@ -194,13 +222,13 @@ Você também pode usar as fotos do dispositivo.";
 "Sign Out" = "Fazer logoff";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Moldura provisória";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Desculpe, seu problema não pode ser relatado agora. Provavelmente, isso é porque nenhuma conta de e-mail foi configurada em seu dispositivo móvel.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Atualização disponível de firmware da impressora sprocket";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Impressora de sprocket não conectada";
 
 /* Setup step 1 title */
 "Step 1" = "Passo 1";
@@ -238,47 +266,20 @@ Você também pode usar as fotos do dispositivo.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Para atualizar, carregue a impressora de sprocket com, pelo menos, 75% e vá até 'sprocket' no menu.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Moldura turquesa";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Atualização";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Moldura de corações do dia dos namorados";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Moldura de corações sobrepostos do dia dos namorados";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Moldura de bolinhas rosa do dia dos namorados";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Moldura de aquarela rosa do dia dos namorados";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Moldura vermelha do dia dos namorados";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Moldura de listras vermelhas do dia dos namorados";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versão %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Moldura de água azul";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Moldura branca";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Moldura inferior de madeira";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Gostaria de fazer logoff de %@?";
+
+/* No comment provided by engineer. */
+"YES" = "SIM";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Sim";

@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld из %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li отпечаток в очереди печати";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li отпечатков в очереди печати";
+
+/* No comment provided by engineer. */
 "About" = "Сведения";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Приобрести бумагу";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Выполняя аутентификацию через %@, вы принимаете <условия обслуживания> HP.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Требуется доступ к камере";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Оставайтесь на связи";
+
+/* Number of Copies for printing */
+"Copies" = "копий";
+
+/* Number of Copies for printing */
+"Copy" = "копия";
+
+/* No comment provided by engineer. */
+"Delete All" = "Удалить все";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Удалить все отпечатки из очереди печати?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Закрыть";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Цветочная рамка 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Цветочная рамка";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "В настройках Bluetooth выберите HP sprocket, чтобы подключиться к принтеру.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Оставить отзыв";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Градиентная рамка";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Рамка зеленой акварелью";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Способ";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Крафтовая рамка";
-
 /* Setup step 1 desc */
 "Load Paper" = "Загрузка бумаги";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Файл журнала очищен.";
+
+/* No comment provided by engineer. */
+"NO" = "НЕТ";
 
 /* Dismisses dialog without taking action */
 "No" = "Нет";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Изображения приложения Qzone не найдены";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Нет отпечатков в очереди печати";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Нет, оставить их";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Нет, спасибо";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Не все изображения загружены. Продолжить?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "ОК";
 
 /* No comment provided by engineer. */
 "Oops!" = "Ой!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Оранжевая рамка";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Пауза";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Рамка розовой аэрозольной краской";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Фотографии будут напечатаны в том порядке, в котором они были добавлены в очередь печати после включения принтера sprocket и подключения Bluetooth.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Фотографии будут напечатаны в том порядке, в котором они были добавлены в очередь печати.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -135,14 +160,17 @@ You can also use your device photos." = "Выполните подключени
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Сообщите нам, что хорошо, а что могло быть лучше!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Рамка в горошек";
-
 /* Setup step 2 desc */
 "Power Up" = "Включение питания";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Нажмите и удерживайте кнопку питания, пока индикатор не загорится белым.";
+
+/* No comment provided by engineer. */
+"Print" = "Печать";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Очередь печати";
 
 /* No comment provided by engineer. */
 "Printers" = "Принтеры";
@@ -155,9 +183,6 @@ You can also use your device photos." = "Выполните подключени
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Красная рамка";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Напомнить позже";
@@ -183,6 +208,9 @@ You can also use your device photos." = "Выполните подключени
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Сохранить в каталог фотографий";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Отправка на принтер sprocket";
+
 /* Button for opening the app settings */
 "Settings" = "Параметры";
 
@@ -193,13 +221,13 @@ You can also use your device photos." = "Выполните подключени
 "Sign Out" = "Выход";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Небрежная рамка";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Извините, о вашей проблеме невозможно сообщить прямо сейчас. Вероятнее всего, это связано с тем, что на вашем мобильном устройстве не настроены учетные записи электронной почты.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Доступно обновление для микропрограммного обеспечения принтера Sprocket";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket не подключен";
 
 /* Setup step 1 title */
 "Step 1" = "Шаг 1";
@@ -237,47 +265,20 @@ You can also use your device photos." = "Выполните подключени
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Чтобы обновить, зарядите принтер sprocket как минимум на 75% и выберите sprocket в меню.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Бирюзовая рамка";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Обновление";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Валентинка - рамка из сердечек";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Валентинка - прозрачная рамка";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Валентинка в розовый горошек";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Валентинка - розовая акварельная рамка";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Валентинка - красная рамка";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Валентинка - рамка в красную полоску";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Версия %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Голубая рамка";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Белая рамка";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Деревянная рамка";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Выйти из %@?";
+
+/* No comment provided by engineer. */
+"YES" = "ДА";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Да";

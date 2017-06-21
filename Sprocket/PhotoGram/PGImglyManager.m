@@ -318,6 +318,17 @@ int const kCustomButtonTag = 9999;
             
             toolBuilder.adjustToolButtonConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell, enum AdjustTool tool) {
                 cell.captionLabel.text = nil;
+                
+                if (AdjustToolContrast == tool) {
+                    cell.imageView.image = [UIImage imageNamed:@"ic_contrast_48pt"];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_contrast_active_48pt"];
+                } else if (AdjustToolSaturation == tool) {
+                    cell.imageView.image = [UIImage imageNamed:@"ic_saturation_48pt"];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_saturation_active_48pt"];
+                } else if (AdjustToolBrightness == tool) {
+                    cell.imageView.image = [UIImage imageNamed:@"ic_brightness_48pt"];
+                    cell.imageView.highlightedImage = [UIImage imageNamed:@"ic_brightness_active_48pt"];
+                }
             };
             
             toolBuilder.sliderChangedValueClosure = ^(IMGLYSlider * _Nonnull slider, enum AdjustTool tool) {
@@ -547,13 +558,23 @@ int const kCustomButtonTag = 9999;
             };
             
             toolBuilder.brushToolButtonConfigurationClosure = ^(UICollectionViewCell * _Nonnull cell, enum BrushTool tool) {
-                IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
                 
-                itemCell.captionLabel.text = nil;
-                
-                if (BrushToolHardness == tool) {
-                    itemCell.imageView.image = [UIImage imageNamed:@"imgly_icon_option_hardness"];
-                    itemCell.imageView.highlightedImage = [UIImage imageNamed:@"imgly_icon_option_hardness_highlighted"];
+                if ([cell isKindOfClass:[IMGLYIconCaptionCollectionViewCell class]]) {
+                    IMGLYIconCaptionCollectionViewCell *itemCell = (IMGLYIconCaptionCollectionViewCell *) cell;
+                    
+                    itemCell.captionLabel.text = nil;
+                    
+                    if (BrushToolHardness == tool) {
+                        itemCell.imageView.image = [UIImage imageNamed:@"imgly_icon_option_focus_radial"];
+                        itemCell.imageView.highlightedImage = [UIImage imageNamed:@"imgly_icon_option_focus_radial_active"];
+                    }
+                } else if ([cell isKindOfClass:[IMGLYLabelCaptionCollectionViewCell class]]) {
+                    IMGLYLabelCaptionCollectionViewCell *labelCell = (IMGLYLabelCaptionCollectionViewCell *)cell;
+                    labelCell.captionLabel.text = nil;
+                    
+                    if (BrushToolSize == tool) {
+                        labelCell.label.highlightedTextColor = [UIColor HPBlueColor];
+                    }
                 }
             };
             

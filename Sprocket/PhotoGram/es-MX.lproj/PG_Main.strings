@@ -2,16 +2,16 @@
 "1Gm-FD-YRV.title" = "Listo";
 
 /* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "Al usar el Rollo de la cámara, acepta los <términos de servicio> de HP.";
+"3FE-mc-FrD.text" = "Al usar Pitu, acepta los <Términos de servicio> de HP.";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "Cómo contactarnos";
 
 /* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "Si inicia sesión desde Facebook, también acepta los <términos de servicio> de HP.";
+"3rx-Fp-iLE.text" = "Si inicia sesión desde medios sociales, también acepta los <Términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "Si inicia sesión desde Instagram, también acepta los <términos de servicio> de HP.";
+"3t6-KR-FbJ.text" = "Si inicia sesión desde Instagram, también acepta los <Términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
 "4go-MT-3C1.text" = "Reiniciar la impresora Sprocket";
@@ -39,6 +39,9 @@
 
 /* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
 "BV3-xe-r0y.normalTitle" = "Más ayuda";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM"; */
+"BfZ-Hp-dCM.text" = "Título del álbum";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
 "DG2-Ok-pfm.normalTitle" = "Inicie sesión";
@@ -106,8 +109,11 @@
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Recurso nuevo";
 
+/* Class = "UILabel"; text = "Messenger Support"; ObjectID = "QGa-kv-h0O"; */
+"QGa-kv-h0O.text" = "Soporte de Messenger";
+
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "Si inicia sesión desde Flickr, también acepta los <términos de servicio> de HP.";
+"QQK-QP-Amd.text" = "Si inicia sesión desde Flickr, también acepta los <Términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "Título";
@@ -121,17 +127,6 @@
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
 
-/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Google accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "Mientras utilice esta aplicación, será capaz de conectarse a Internet y utilizar sus cuentas de Instagram, Facebook o Flickr para crear e imprimir el contenido de su elección.
-
-Para el uso de esta aplicación, puede ser necesario utilizar una conexión a Internet. El funcionamiento de la conexión inalámbrica depende del entorno físico y de la distancia al punto de acceso. Pueden surgir cargos por la compra de paquetes de datos que se adquieran por separado o cargos por el uso, y el tiempo que tarden las impresiones y la velocidad de conexión pueden variar.
-
-Para imprimir, necesitará una impresora de fotos HP Sprocket. Su dispositivo móvil debe tener habilitada la conexión Bluetooth y la impresora de fotos HP Sprocket debe estar encendida y vinculada al dispositivo móvil.
-
-Si utiliza una red de datos como conexión a Internet, puede haber cargos adicionales por el uso de datos dependiendo del plan de datos con el que cuente.
-
- Para mejorar las versiones futuras de esta aplicación y de las impresoras de HP, HP recolectará periódicamente datos de uso anónimos de esta aplicación. ";
-
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
 
@@ -139,7 +134,7 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 "U9F-p5-X9c.text" = "Versión 1.0";
 
 /* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "Si inicia sesión desde Facebook, también acepta los <términos de servicio> de HP.";
+"UGC-Wa-Xa2.text" = "Si inicia sesión desde Facebook, también acepta los <Términos de servicio > de HP.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Detalle";
@@ -160,7 +155,7 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 "Yx0-Cs-62a.title" = "sprocket";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "Al usar el Rollo de la cámara, acepta los <términos de servicio> de HP.";
+"Z1T-tw-tdj.text" = "Al usar el Rollo de cámara, también acepta los <Términos de servicio> de HP.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Fotos";
@@ -186,14 +181,26 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Iniciar sesión";
 
+/* Class = "UILabel"; text = "Give Feedback"; ObjectID = "eit-2j-VKG"; */
+"eit-2j-VKG.text" = "Hacer comentarios";
+
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
 "fRU-DF-pcn.normalTitle" = "Editar";
+
+/* Class = "UILabel"; text = "%@ Copy"; ObjectID = "g9Y-KF-FRi"; */
+"g9Y-KF-FRi.text" = "%@ copias";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
+"ga4-if-IR4.normalTitle" = "Iniciar sesión";
 
 /* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
 "iiX-WR-2Je.title" = "Pitu";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
 "ipg-92-MP9.title" = "Seleccionar plantilla";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iqE-FT-oz5"; */
+"iqE-FT-oz5.text" = "Etiqueta";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Tomar o seleccionar una foto";
@@ -213,11 +220,14 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 /* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
 "nYV-cn-yZe.text" = "Configurar la impresora Sprocket";
 
+/* Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0"; */
+"ncN-EJ-cY0.text" = "Cantidad de fotos";
+
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
 /* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "Si inicia sesión desde Facebook, también acepta los <términos de servicio> de HP.";
+"ob1-ZF-jEd.text" = "Si inicia sesión desde Qzone, también acepta los <Términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
 "ofB-Rh-sga.text" = "Detalle";
@@ -236,6 +246,9 @@ Si utiliza una red de datos como conexión a Internet, puede haber cargos adicio
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "No olvide imprimir y compartir su diseño";
+
+/* Class = "UILabel"; text = "By authenticating with Google, you also agree with HP’s <Terms of Service>."; ObjectID = "w3A-HJ-eXe"; */
+"w3A-HJ-eXe.text" = "Si inicia sesión desde Google, también acepta los <Términos de servicio> de HP.";
 
 /* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "Soporte WeChat";

@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld iš %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "Spaudinys spausdinimo eilėje: %li";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "Spaudiniai spausdinimo eilėje: %li";
+
+/* No comment provided by engineer. */
 "About" = "Apie";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Pirkti popieriaus";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Autentifikuodamiesi „%@“ sutinkate ir su HP <paslaugos teikimo sąlygomis>.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Reikalinga fotoaparato prieiga";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Prisijungti";
+
+/* Number of Copies for printing */
+"Copies" = "Kopijos";
+
+/* Number of Copies for printing */
+"Copy" = "Kopija";
+
+/* No comment provided by engineer. */
+"Delete All" = "Naikinti viską";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Naikinti visus spaudinius iš spausdinimo eilės?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Atsisakyti";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "„Flickr“";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Gėlių rėmelis (2)";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Gėlių rėmelis";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
-"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "„Bluetooth“ nustatymuose bakstelėkite „HP sprocket“, kad susietumėte su spausdintuvu.";
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "„Bluetooth“ nustatymuose bakstelėkite „HP Sprocket“, kad susietumėte su spausdintuvu.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Pateikti atsiliepimą";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Pereinamų atspalvių rėmelis";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Žalias akvarelės rėmelis";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Mokomoji medžiaga";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "„Instagram“";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Ranku darbo rėmelis";
-
 /* Setup step 1 desc */
 "Load Paper" = "Įdėkite popieriaus";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Žurnalo failas buvo išvalytas.";
+
+/* No comment provided by engineer. */
+"NO" = "NE";
 
 /* Dismisses dialog without taking action */
 "No" = "Ne";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Programėlės „Qzone“ paveikslėlių nerasta";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Spaudinių spausdinimo eilėje nėra";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Ne, palikti";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Ne, ačiū";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Kai kurie vaizdai buvo neatsisiųsti. Ar norite tęsti?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "Gerai";
 
 /* No comment provided by engineer. */
 "Oops!" = "Oi!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Oranžinis rėmelis";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Pauzė";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Rožinis purškiamų dažų rėmelis";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Įjungus „Sprocket“ spausdintuvą ir „Bluetooth“ ryšį, nuotraukos bus spausdinamos tvarka, kuria jos buvo pridėtos į spausdinimo eilę.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Nuotraukos bus spausdinamos tvarka, kuria jos buvo pridėtos į spausdinimo eilę.";
 
 /* Social source title for Pitu */
 "Pitu" = "„Pitu“";
@@ -136,14 +161,17 @@ Taip pat galite naudoti įrenginio nuotraukas.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Pasakykite, kas yra puiku ir kas gali būti geriau!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Taškuotas rėmelis";
-
 /* Setup step 2 desc */
 "Power Up" = "Įjunkite";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Paspauskite ir palaikykite maitinimo mygtuką, kol šviesos diodas pradės šviesti baltai.";
+
+/* No comment provided by engineer. */
+"Print" = "Spausdinti";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Spausdinimo eilė";
 
 /* No comment provided by engineer. */
 "Printers" = "Spausdintuvai";
@@ -156,9 +184,6 @@ Taip pat galite naudoti įrenginio nuotraukas.";
 
 /* Social source title for Qzone */
 "Qzone" = "„QZone“";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Raudonas rėmelis";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Priminti man vėliau";
@@ -184,6 +209,9 @@ Taip pat galite naudoti įrenginio nuotraukas.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Įrašyti fotoaparato aplanke";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Siunčiama į „Sprocket“ spausdintuvą";
+
 /* Button for opening the app settings */
 "Settings" = "Nustatymai";
 
@@ -194,13 +222,13 @@ Taip pat galite naudoti įrenginio nuotraukas.";
 "Sign Out" = "Atsijungti";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Nusitrynęs rėmelis";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Atsiprašome, šiuo metu negalima pateikti ataskaitos apie jūsų problemą. Turbūt taip yra todėl, kad jūsų mobiliajame įrenginyje nėra nustatytų pašto paskyrų.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Yra „Sprocket“ spausdintuvo programinės aparatinės įrangos naujovinimas";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "„Sprocket“ spausdintuvas neprijungtas";
 
 /* Setup step 1 title */
 "Step 1" = "1 veiksmas";
@@ -238,47 +266,20 @@ Taip pat galite naudoti įrenginio nuotraukas.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Norėdami naujovinti, įkraukite „Sprocket“ spausdintuvą bent iki 75 % ir tada meniu pasirinkite „Sprocket“.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Žalsvai melsvas rėmelis";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Naujovinti";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Valentino dienos širdžių rėmelis";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Valentino dienos persidengiančių širdžių rėmelis";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Valentino dienos rožinis polkos rėmelis";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Valentino dienos rožinis akvarelės rėmelis";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Valentino dienos raudonas rėmelis";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Valentino dienos raudonų juostų rėmelis";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "%1$@ versija (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Vandens mėlynumo rėmelis";
-
 /* Social source title for WeiBo */
 "WeiBo" = "„WeiBo“";
 
-/* No comment provided by engineer. */
-"White Frame" = "Baltas rėmelis";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Medžio apatinės dalies rėmelis";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Ar norite atsijungti nuo %@?";
+
+/* No comment provided by engineer. */
+"YES" = "TAIP";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Taip";

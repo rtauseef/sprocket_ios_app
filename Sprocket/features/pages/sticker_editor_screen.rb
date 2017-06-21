@@ -27,8 +27,9 @@ class StickerEditorScreen < Calabash::IBase
         unless current_page?
             edit_screen = go_to(EditScreen)
             sleep(WAIT_SCREENLOAD)
-            wait_for_elements_exist(edit_screen.sticker, :timeout => MAX_TIMEOUT)
-            touch edit_screen.sticker
+            #wait_for_elements_exist(edit_screen.sticker, :timeout => MAX_TIMEOUT)
+            #touch edit_screen.sticker
+            touch "IMGLYIconCaptionCollectionViewCell * id:'editSticker'"
             sleep(WAIT_SCREENLOAD)    
         end
         await

@@ -110,4 +110,58 @@ When(/^I verify the url$/) do
    sleep(SLEEP_SCREENLOAD)
    raise "Incorrect url loaded!" unless selenium.find_element(:xpath,"#{xpath_buy_paper}").value == url_buy_paper.to_s
 end
+Given(/^I take screenshots of all the screens$/) do
+  puts $screen_names.length
+  i = 0
+  path =File.dirname(__FILE__)
+  path = File.join(path, "../screenshots/")
+  screenshots_folder = File.expand_path path
+  puts "not nil"
+  while i < $screen_names.length
+    macro %Q|I am on the "#{$screen_names[i]}" screen|
+    screen_name = $screen_names[i]
+    screen_neme = screen_name.gsub('  ','_')
+    puts "screen"
+    puts screen_name
+    Dir.chdir  screenshots_folder
+  screenshot_embed
+  sleep(5.0)
+  screenshot_name = "screenshot_" + "#{i}"
+  File.rename("#{screenshot_name}.png", "#{screen_name}.png")
+  i = i + 1
+  end
+  
+end
+Given(/^I take screenshot of "([^"]*)" screen$/) do |screen_name|
+  path =File.dirname(__FILE__)
+  path = File.join(path, "../screenshots/")
+  screenshots_folder = File.expand_path path
+  unless screenshots_folder.nil? or File.exists?(screenshots_folder)
+    FileUtils.mkdir_p(screenshots_folder)
+  end
+  Dir.chdir  screenshots_folder
+  screenshot_embed
+  sleep(SLEEP_SCREENLOAD)
+  Dir.open(screenshots_folder).each do |file_name|
+    name = File.basename(file_name, ".png")
+    if name.to_s.include? "screenshot"
+      File.rename(file_name, "#{screen_name}.png")
+    end
+  end
+=begin
+  if screen_name == "Landing"
+    directory = screenshots_folder
+    zipfile_name = "/Users/user/LokiProjects/suvarna/dailyrun/sprocket_ios_app/Sprocket/features/screen.zip"
+    puts "direct"
+    puts directory
+    puts zipfile_name
+
+    Zip::ZipFile.open(zipfile_name, Zip::ZipFile::CREATE) do |zipfile|
+    Dir[File.join(directory, '*')].each do |file|
+    zipfile.add(file.sub(directory, ''), file)
+    end
+    end
+  end
+=end 
+end
 

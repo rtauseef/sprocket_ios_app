@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld/%2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li printimistöö prindijärjekorras";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li printimistööd prindijärjekorras";
+
+/* No comment provided by engineer. */
 "About" = "Teave";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Osta paberit";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "%@’iga autentimisel nõustute ka HP <teenusetingimustega>.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Ligipääs kaamerale nõutud";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Ühenda";
+
+/* Number of Copies for printing */
+"Copies" = "Eksemplaride arv";
+
+/* Number of Copies for printing */
+"Copy" = "Eksemplar";
+
+/* No comment provided by engineer. */
+"Delete All" = "Kustuta kõik";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Kas kustutada printimine prindijärjekorrast?";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Loobu";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Lilleline raam 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Lilleline raam";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Puudutage printeriga sidumiseks Bluetoothi sätetes valikut HP sprocket.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Andke tagasisidet";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Astmikraam";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Roheline vesivärviga raam";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Kasutamise teave";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Krafti raam";
-
 /* Setup step 1 desc */
 "Load Paper" = "Asetage paber salve";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Logifail on kustutatud.";
+
+/* No comment provided by engineer. */
+"NO" = "EI";
 
 /* Dismisses dialog without taking action */
 "No" = "Ei";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Qzone’i rakenduse pilte ei leitud";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Prindijärjekorras pole ühtegi printimistööd";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Ei, hoia need alles";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Tänan, ei";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Kõiki pilte ei laaditud alla. Kas soovite jätkata?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Oih!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Oranž raam";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Paus";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Roosa spreivärviga raam";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Fotod prinditakse prindijärjekorda lisamise järjekorras pärast sprocketi printeri sisselülitamist ja Bluetoothi ühendamist.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Fotod prinditakse prindijärjekorda lisamise järjekorras.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ Saate kasutada ka seadme fotosid.";
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Andke meile teada, mis on lahe ja mis võiks olla parem!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Täpiline raam";
-
 /* Setup step 2 desc */
 "Power Up" = "Lülitage seade sisse";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Vajutage toitenuppu ja hoidke seda all kuni LED-tuli muutub valgeks.";
+
+/* No comment provided by engineer. */
+"Print" = "Prindi";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Prindijärjekord";
 
 /* No comment provided by engineer. */
 "Printers" = "Printerid";
@@ -156,9 +184,6 @@ Saate kasutada ka seadme fotosid.";
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Punane raam";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Tuleta hiljem meelde";
@@ -184,6 +209,9 @@ Saate kasutada ka seadme fotosid.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Salvesta filmilindile";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Sprocketi printerisse saatmine";
+
 /* Button for opening the app settings */
 "Settings" = "Sätted";
 
@@ -194,13 +222,13 @@ Saate kasutada ka seadme fotosid.";
 "Sign Out" = "Logi välja";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Lohakas raam";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Kahjuks ei saa teie probleemist praegu teatada. See on nii ilmselt sellepärast, et teie mobiilsideseadmel pole ühtegi meilikontot seadistatud.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Sprocketi printeri püsivara versioonitäiendus on saadaval";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket pole ühendatud";
 
 /* Setup step 1 title */
 "Step 1" = "Samm 1";
@@ -238,47 +266,20 @@ Saate kasutada ka seadme fotosid.";
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Täiendamiseks laadige sprocketi printerit vähemalt 75% ulatuses ja tehke seejärel menüüs valik sprocket.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Türkiisivärvi raam";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Täienda";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Valentinipäeva südamete raam";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Valentinipäeva südamete katteraam";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Valentinipäeva roosatäpiline raam";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Valentinipäeva roosa akvarellraam";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Valentinipäeva punane raam";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Valentinipäeva punaste triipude raam";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Versioon %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Veesinine raam";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Valge raam";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Puidust alusega raam";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Kas soovite rakendusest %@ välja logida?";
+
+/* No comment provided by engineer. */
+"YES" = "JAH";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Jah";
