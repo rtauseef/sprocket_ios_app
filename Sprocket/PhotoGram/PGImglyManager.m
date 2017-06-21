@@ -14,6 +14,7 @@
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
 #import "UIColor+Style.h"
+#import "UIFont+Style.h"
 #import "PGCustomStickerManager.h"
 #import <imglyKit/IMGLYAnalyticsConstants.h>
 
@@ -574,6 +575,7 @@ int const kCustomButtonTag = 9999;
                     
                     if (BrushToolSize == tool) {
                         labelCell.label.highlightedTextColor = [UIColor HPBlueColor];
+                        labelCell.label.font = [UIFont HPSimplifiedRegularFontWithSize:labelCell.label.font.pointSize];
                     }
                 }
             };
