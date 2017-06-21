@@ -103,6 +103,7 @@
     [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0096D6"] range:NSMakeRange(step.length, desc.length)];
     [attributedText addAttribute:NSFontAttributeName value:[UIFont fontWithName:label.fontFamily size:label.fontSize] range:NSMakeRange(0, attributedText.length)];
     label.attributedText = attributedText;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
 }
 
 
