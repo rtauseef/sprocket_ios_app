@@ -68,7 +68,7 @@ $language_arr =
         },
     "es_ES" => {
         "skip_to_the_app" => "Siga a la aplicación",
-        "return_to_sprocket" => "Volver a sprocket",
+        "return_to_sprocket" => "Volver a Sprocket",
         "privacy_url" => "www8.hp.com/es/es/privacy/privacy.html",
         "camera_access" => "El acceso a la cámara es obligatorio",
         "camera_access_content" => "Permita el acceso a sus Ajustes para tomar e imprimir fotos.",

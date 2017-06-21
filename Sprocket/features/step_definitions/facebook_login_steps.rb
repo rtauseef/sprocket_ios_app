@@ -21,9 +21,7 @@ Given(/^I am on the Landing screen$/) do
     end
     $list_loc=$language_arr[ios_locale]
     sleep(SLEEP_MIN)
-    puts $list_loc['survey']
     if selenium.find_elements(:name,"#{$list_loc['survey']}").size > 0
-        puts "greater"
         selenium.find_element(:name,"#{$list_loc['survey']}").click
     end
     if selenium.find_elements(:xpath,"//UIAButton[@name='#{$list_loc['skip_to_the_app']}']").size > 0

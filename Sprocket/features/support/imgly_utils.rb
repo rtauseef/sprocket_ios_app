@@ -320,7 +320,7 @@ $sticker ={
         'sticker_11' => {'name' => 'Confetti Graduation Sticker','value' =>'Confetti Graduation Sticker'},
         'sticker_12' => {'name' => 'Crown Sticker','value' =>'Crown Sticker'},
         'sticker_13' => {'name' => 'Horn Sticker','value' =>'Horn Sticker'},
-        'sticker_13' => {'name' => 'Confetti Sticker','value' =>'Confetti Sticker'}
+        'sticker_14' => {'name' => 'Confetti Sticker','value' =>'Confetti Sticker'}
     },
     'Animal Category' => {
         'sticker_0' => {'name' => 'Cat Face Sticker','value' =>'Cat Face Sticker'},

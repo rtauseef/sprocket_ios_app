@@ -272,7 +272,7 @@ Scenario: Navigate to Preview screen for cameraroll
       | Google        | Google Signin    | Google Landing    | Google Photos    | Google Preview    |
     
  @appium
- @TA17541
+ @TA18119
  @localization 
   Scenario: Signin to Facebook
     Given I am on the Landing screen
