@@ -271,8 +271,18 @@ Scenario: Navigate to Preview screen for cameraroll
       | Instagram     | Instagram Signin | Instagram Landing | Instagram Photos | Instagram Preview |
       | Google        | Google Signin    | Google Landing    | Google Photos    | Google Preview    |
     
-    
-    
-    
+ @appium
+ @TA18119
+ @localization 
+  Scenario: Signin to Facebook
+    Given I am on the Landing screen
+    #When I touch the "Photos" Logo
+    #And I touch signin button
+    When I touch hamburger button on navigation bar
+    And I select "Buy Paper" option
+    Then I verify "Buy Paper" url
+    Then I navigate to "sprocket"
+    And I select "Privacy" option
+    Then I verify "Privacy" url
     
     
