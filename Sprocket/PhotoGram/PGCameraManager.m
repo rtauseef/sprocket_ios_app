@@ -153,7 +153,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     // TODO: will use the EXIF data instead
     media.createdTime = [NSDate date];
-    media.mediaType = kHPRMediaTypeVideo;
+    media.mediaType = HPPRMediaTypeVideo;
     
     [[PGPhotoSelection sharedInstance] selectMedia:media];
     

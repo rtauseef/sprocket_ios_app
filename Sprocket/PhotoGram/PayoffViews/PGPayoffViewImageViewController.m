@@ -485,7 +485,7 @@
         }
     } else if (self.filteringLocation) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.cameraRollProvider populateIMagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
+            [self.cameraRollProvider populateImagesForSameLocation:self.filteringLocation andDistance:kPGLocationDistance];
             [self cameraRollProviderUpdateDone];
         });
         
