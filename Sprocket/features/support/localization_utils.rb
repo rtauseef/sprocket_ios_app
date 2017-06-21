@@ -599,7 +599,7 @@ $language_arr =
         },
     "et_EE" => {
         "skip_to_the_app" => "Jätka rakendusega",
-        "return_to_sprocket" => "Vend tilbage til sprocket",
+        "return_to_sprocket" => "Palaa ohjelmaan sprocket",
         "privacy_url" => "www8.hp.com/ee/et/privacy/privacy.html",
         "camera_access" => "Ligipääs kaamerale nõutud",
         "camera_access_content" => "Fotode pildistamiseks ja printimiseks lubage juurdepääs oma sätetele.",
@@ -666,7 +666,7 @@ $language_arr =
         },
     "lv_LV" => {
         "skip_to_the_app" => "Pāriet uz lietojumprogrammu",
-        "return_to_sprocket" => "Vend tilbage til sprocket",
+        "return_to_sprocket" => "Palaa ohjelmaan Sprocket",
         "privacy_url" => "www8.hp.com/lv/lv/privacy/privacy.html",
         "camera_access" => "Nepieciešama piekļuve kamerai",
         "camera_access_content" => "Atļaujiet piekļuvi iestatījumos, lai uzņemtu un drukātu fotoattēlus.",
@@ -733,7 +733,7 @@ $language_arr =
         },
     "lt_LT" => {
         "skip_to_the_app" => "Pereiti prie programos",
-        "return_to_sprocket" => "Return to „Sprocket“",
+        "return_to_sprocket" => "Palaa ohjelmaan „Sprocket“",
         "privacy_url" => "www8.hp.com/lt/lt/privacy/privacy.html",
         "camera_access" => "Reikalinga fotoaparato prieiga",
         "camera_access_content" => "Savo nustatymuose leiskite prieigą, kad galėtumėte fotografuoti ir spausdinti nuotraukas.",
