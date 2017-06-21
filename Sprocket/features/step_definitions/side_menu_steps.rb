@@ -93,23 +93,8 @@ And /^I navigate back$/ do
     touch @current_page.back_button
     sleep(STEP_PAUSE)
 end
-When(/^I touch hamburger button on navigation bar$/) do
-  selenium.find_element(:xpath, "//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeNavigationBar[1]/XCUIElementTypeButton[1]").click
-  sleep(SLEEP_SCREENLOAD)
-end
 
-When(/^I select "([^"]*)" option$/) do |arg1|
- selenium.find_element(:xpath, "//XCUIElementTypeStaticText[@name='Buy Paper']").click
-  sleep(SLEEP_SCREENLOAD)
-  sleep(10.0)
-end
-When(/^I verify the url$/) do
-  url_buy_paper= "www8.hp.com/us/en/printers/zink.html"
-  xpath_buy_paper ="//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTextField[1]"
-   selenium.find_element(:name,"Address").click
-   sleep(SLEEP_SCREENLOAD)
-   raise "Incorrect url loaded!" unless selenium.find_element(:xpath,"#{xpath_buy_paper}").value == url_buy_paper.to_s
-end
+
 Given(/^I take screenshots of all the screens$/) do
   puts $screen_names.length
   i = 0

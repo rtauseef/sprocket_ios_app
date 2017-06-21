@@ -3,6 +3,8 @@ $language_arr =
 {
     "en_US" => {
         "skip_to_the_app" => "Skip to the App",
+        "return_to_sprocket" => "Return to sprocket",
+        "privacy_url" => "www8.hp.com/us/en/privacy/privacy.html",
         "camera_access" => "Camera Access Required",
         "camera_access_content" => "Allow access in your Settings to take and print photos.",
         "Cancel" => "Cancel",
@@ -66,6 +68,8 @@ $language_arr =
         },
     "es_ES" => {
         "skip_to_the_app" => "Siga a la aplicación",
+        "return_to_sprocket" => "Volver a sprocket",
+        "privacy_url" => "www8.hp.com/es/es/privacy/privacy.html",
         "camera_access" => "El acceso a la cámara es obligatorio",
         "camera_access_content" => "Permita el acceso a sus Ajustes para tomar e imprimir fotos.",
         "Cancel" => "Cancelar",
@@ -128,6 +132,8 @@ $language_arr =
         },
     "zh_Hans" => {
         "skip_to_the_app" => "跳到应用程序",
+        "return_to_sprocket" => "返回“Sprocket”",
+        "privacy_url" => "www8.hp.com/cn/zh/privacy/privacy.html",
         "camera_access" => "需要访问相机",
         "camera_access_content" => "在“设置”中选择允许连接来拍照和打印照片。",
         "Cancel" => "取消",
@@ -192,6 +198,8 @@ $language_arr =
         },
     "de_DE" => {
         "skip_to_the_app" => "Zur App wechseln",
+        "return_to_sprocket" => "Zurück zu Sprocket",
+        "privacy_url" => "www8.hp.com/de/de/privacy/privacy.html",
         "camera_access" => "Kamerazugriff erforderlich",
         "camera_access_content" => "Gestatten Sie den Zugriff unter \"Einstellungen\", um Fotos aufzunehmen und zu drucken.",
         "Cancel" => "Abbrechen",
@@ -256,7 +264,9 @@ $language_arr =
         "screen_title_signin" => "Anmelden – Google Konten"
         },
     "fr_FR" => {
-        "skip_to_the_app" => "Basculez sur l",
+        "skip_to_the_app" => "Basculez sur l'application",
+        "return_to_sprocket" => "Revenir à sprocket",
+        "privacy_url" => "www8.hp.com/fr/fr/privacy/privacy.html",
         "camera_access" => "Accès à l'appareil photo requis",
         "camera_access_content" => "Autorisez cet accès dans les Paramètres pour prendre et imprimer des photos.",
         "Cancel" => "Annuler",
@@ -322,6 +332,8 @@ $language_arr =
         },
     "it_IT" => {
         "skip_to_the_app" => "Passare alla App.",
+        "return_to_sprocket" => "Torna a sprocket",
+        "privacy_url" => "www8.hp.com/it/it/privacy/privacy.html",
         "camera_access" => "Richiesto l'accesso alla fotocamera",
         "camera_access_content" => "Consentire l'accesso in Impostazioni per scattare e stampare foto.",
         "Cancel" => "Annulla",
@@ -387,6 +399,8 @@ $language_arr =
         },
     "nl_NL" => {
         "skip_to_the_app" => "Direct naar de app",
+        "return_to_sprocket" => "Terug naar sprocket",
+        "privacy_url" => "www8.hp.com/nl/nl/privacy/privacy.html",
         "camera_access" => "Toegang tot camera is vereist",
         "camera_access_content" => "Geef in je instellingen toegang om foto's te maken en te printen.",
         "Cancel" => "Annuleren",
@@ -451,6 +465,8 @@ $language_arr =
         },
     "da_DK" => {
         "skip_to_the_app" => "Spring til appen",
+        "return_to_sprocket" => "Vend tilbage til sprocket",
+        "privacy_url" => "www8.hp.com/dk/da/privacy/privacy.html",
         "camera_access" => "Kameraadgang er påkrævet",
         "camera_access_content" => "Giv mulighed for at tage og udskrive fotos i dine indstillinger.",
         "Cancel" => "Annuller",
@@ -516,6 +532,8 @@ $language_arr =
         },
     "fi_FI" => {
         "skip_to_the_app" => "Ohita ja siirry sovellukseen",
+        "return_to_sprocket" => "Palaa ohjelmaan sprocket",
+        "privacy_url" => "www8.hp.com/fi/fi/privacy/privacy.html",
         "camera_access" => "Kameran käyttöoikeus tarvitaan",
         "camera_access_content" => "Salli käyttö asetuksissa kuvien ottamista ja tulostusta varten.",
         "Cancel" => "Peruuta",
@@ -581,6 +599,8 @@ $language_arr =
         },
     "et_EE" => {
         "skip_to_the_app" => "Jätka rakendusega",
+        "return_to_sprocket" => "Vend tilbage til sprocket",
+        "privacy_url" => "www8.hp.com/ee/et/privacy/privacy.html",
         "camera_access" => "Ligipääs kaamerale nõutud",
         "camera_access_content" => "Fotode pildistamiseks ja printimiseks lubage juurdepääs oma sätetele.",
         "Cancel" => "Katkesta",
@@ -646,6 +666,8 @@ $language_arr =
         },
     "lv_LV" => {
         "skip_to_the_app" => "Pāriet uz lietojumprogrammu",
+        "return_to_sprocket" => "Vend tilbage til sprocket",
+        "privacy_url" => "www8.hp.com/lv/lv/privacy/privacy.html",
         "camera_access" => "Nepieciešama piekļuve kamerai",
         "camera_access_content" => "Atļaujiet piekļuvi iestatījumos, lai uzņemtu un drukātu fotoattēlus.",
         "Cancel" => "Atcelt",
@@ -711,6 +733,8 @@ $language_arr =
         },
     "lt_LT" => {
         "skip_to_the_app" => "Pereiti prie programos",
+        "return_to_sprocket" => "Return to „Sprocket“",
+        "privacy_url" => "www8.hp.com/lt/lt/privacy/privacy.html",
         "camera_access" => "Reikalinga fotoaparato prieiga",
         "camera_access_content" => "Savo nustatymuose leiskite prieigą, kad galėtumėte fotografuoti ir spausdinti nuotraukas.",
         "Cancel" => "Atšaukti",
@@ -776,6 +800,8 @@ $language_arr =
         },
     "nb_NO" => {
         "skip_to_the_app" => "Gå videre til Appen",
+        "return_to_sprocket" => "Tilbake til sprocket",
+        "privacy_url" => "www8.hp.com/no/no/privacy/privacy.html",
         "camera_access" => "Kameratilgang påkrevd",
         "camera_access_content" => "Tillat tilgang i Innstillinger for å ta og skrive ut bilder.",
         "Cancel" => "Avbryt",
@@ -842,6 +868,8 @@ $language_arr =
     "pt_PT" => {
         #"skip_to_the_app" => "Avançar para a aplicação",
         "skip_to_the_app" => "Pular para o aplicativo",
+        "return_to_sprocket" => "Voltar para sprocket",
+        "privacy_url" => "www8.hp.com/pt/pt/privacy/privacy.html",
         "camera_access" => "Necessário o acesso à câmera",
         "camera_access_content" => "Permita acesso em suas Configurações para capturar e imprimir fotos.",
         "Cancel" => "Cancelar",
@@ -907,6 +935,8 @@ $language_arr =
         },
     "sv_SE" => {
         "skip_to_the_app" => "Gå vidare till appen",
+        "return_to_sprocket" => "Tillbaka till sprocket",
+        "privacy_url" => "www8.hp.com/se/sv/privacy/privacy.html",
         "camera_access" => "Åtkomst krävs till kamera",
         "camera_access_content" => "Tillåt åtkomst i dina Inställningar för att ta och skriva ut foton.",
         "Cancel" => "Avbryt",
@@ -974,6 +1004,8 @@ $language_arr =
     
     "el_GR" => {
         "skip_to_the_app" => "Μετάβαση στην εφαρμογή",
+        "return_to_sprocket" => "Επιστροφή σε: sprocket",
+        "privacy_url" => "www8.hp.com/gr/el/privacy/privacy.html",
         "camera_access" => "Απαιτείται πρόσβαση στην κάμερα",
         "camera_access_content" => "Επιτρέψτε την πρόσβαση στις ρυθμίσεις σας για να μπορείτε να τραβάτε και να εκτυπώνετε φωτογραφίες.",
         "Cancel" => "Άκυρο",
@@ -1040,6 +1072,8 @@ $language_arr =
     
     "id_ID" => {
         "skip_to_the_app" => "Lewati Aplikasi",
+        "return_to_sprocket" => "Kembali ke sprocket",
+        "privacy_url" => "www8.hp.com/id/en/privacy/privacy.html",
         "camera_access" => "Akses Kamera Diperlukan",
         "camera_access_content" => "Izinkan akses di Pengaturan Anda untuk mengambil dan mencetak foto.",
         "Cancel" => "Batal",
@@ -1106,6 +1140,8 @@ $language_arr =
     
     "pt_BR" => {
         "skip_to_the_app" => "Pular para o aplicativo",
+        "return_to_sprocket" => "Voltar para sprocket",
+        "privacy_url" => "www8.hp.com/pt/pt/privacy/privacy.html",
         "camera_access" => "Necessário o acesso à câmera",
         "camera_access_content" => "Permita acesso em suas Configurações para capturar e imprimir fotos.",
         "Cancel" => "Cancelar",
@@ -1172,6 +1208,8 @@ $language_arr =
     
     "ru_RU" => {
         "skip_to_the_app" => "Перейти к приложению",
+        "return_to_sprocket" => "Назад к программе «sprocket»",
+        "privacy_url" => "www8.hp.com/ru/ru/privacy/privacy.html",
         "camera_access" => "Требуется доступ к камере",
         "camera_access_content" => "Разрешите доступ в настройках, чтобы делать и печатать фотографии.",
         "Cancel" => "Отмена",
@@ -1238,6 +1276,8 @@ $language_arr =
     
      "th_TH" => {
         "skip_to_the_app" => "ข้ามไปยังแอปพลิเคชัน",
+        "return_to_sprocket" => "กลับไปที่แอพ “sprocket”",
+        "privacy_url" => "www8.hp.com/th/en/privacy/privacy.html",
         "camera_access" => "จำเป็นต้องมีการเข้าถึงกล้องถ่ายรูป",
         "camera_access_content" => "ช่วยให้คุณเข้าสู่การตั้งค่าเพื่อถ่ายและพิมพ์รูปภาพได้",
         "Cancel" => "ยกเลิก",
@@ -1304,6 +1344,8 @@ $language_arr =
     
     "tr_TR" => {
         "skip_to_the_app" => "Uygulamaya Geç",
+        "return_to_sprocket" => "Git: sprocket",
+        "privacy_url" => "www8.hp.com/tr/tr/privacy/privacy.html",
         "camera_access" => "Kameraya Erişim Gereklidir",
         "camera_access_content" => "Fotoğraf çekmek ve yazdırmak için Ayarlar menünüzden erişime izin verin.",
         "Cancel" => "İptal",
@@ -1370,6 +1412,8 @@ $language_arr =
     
     "en_GB" => {
         "skip_to_the_app" => "Skip to the App",
+        "return_to_sprocket" => "Return to sprocket",
+        "privacy_url" => "www8.hp.com/us/en/privacy/privacy.html",
         "camera_access" => "Camera Access Required",
         "camera_access_content" => "Allow access in your Settings to take and print photos.",
         "Cancel" => "Cancel",
@@ -1433,6 +1477,8 @@ $language_arr =
     
     "zh_Hant" => {
         "skip_to_the_app" => "跳到应用程序",
+        "return_to_sprocket" => "返回“Sprocket”",
+        "privacy_url" => "www8.hp.com/cn/zh/privacy/privacy.html",
         "camera_access" => "需要访问相机",
         "camera_access_content" => "在“设置”中选择允许连接来拍照和打印照片。",
         "Cancel" => "取消",
@@ -1498,6 +1544,8 @@ $language_arr =
     
     "fr_CA" => {
         "skip_to_the_app" => "Basculez sur l",
+        "return_to_sprocket" => "Revenir à sprocket",
+        "privacy_url" => "www8.hp.com/fr/fr/privacy/privacy.html",
         "camera_access" => "Accès à l'appareil photo requis",
         "camera_access_content" => "Autorisez cet accès dans les Paramètres pour prendre et imprimer des photos.",
         "Cancel" => "Annuler",
@@ -1564,6 +1612,8 @@ $language_arr =
     
     "en_MX" => {
         "skip_to_the_app" => "Skip to the App",
+        "return_to_sprocket" => "Return to sprocket",
+        "privacy_url" => "www8.hp.com/us/en/privacy/privacy.html",
         "camera_access" => "Camera Access Required",
         "camera_access_content" => "Allow access in your Settings to take and print photos.",
         "Cancel" => "Cancel",
@@ -1627,6 +1677,8 @@ $language_arr =
         },
     "en_CA" => {
         "skip_to_the_app" => "Skip to the App",
+        "return_to_sprocket" => "Return to sprocket",
+        "privacy_url" => "www8.hp.com/us/en/privacy/privacy.html",
         "camera_access" => "Camera Access Required",
         "camera_access_content" => "Allow access in your Settings to take and print photos.",
         "Cancel" => "Cancel",
@@ -1691,6 +1743,8 @@ $language_arr =
     
     "en_AU" => {
         "skip_to_the_app" => "Skip to the App",
+        "return_to_sprocket" => "Return to sprocket",
+        "privacy_url" => "www8.hp.com/us/en/privacy/privacy.html",
         "camera_access" => "Camera Access Required",
         "camera_access_content" => "Allow access in your Settings to take and print photos.",
         "Cancel" => "Cancel",
