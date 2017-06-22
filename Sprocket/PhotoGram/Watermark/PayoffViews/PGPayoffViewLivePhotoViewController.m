@@ -33,7 +33,7 @@
     self.photoView.hidden = YES;
     [self.view addSubview:self.photoView];
 
-    [_spinner startAnimating];
+    [self.spinner startAnimating];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -50,7 +50,7 @@
             self.photoView.frame = self.view.bounds;
             self.photoView.center = self.view.center;
             
-            [_spinner stopAnimating];
+            [self.spinner stopAnimating];
             self.photoView.hidden = NO;
             
             if (self.isViewLoaded && self.view.window) {
@@ -58,11 +58,6 @@
             }
         }];
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) setLivePhotoAsset: (PHAsset *) asset {

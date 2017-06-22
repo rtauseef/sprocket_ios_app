@@ -28,16 +28,13 @@
 #import "HPPRCacheService.h"
 #import "PGSavePhotos.h"
 #import "PGWatermarkProcessor.h"
-#import "PGLinkSettings.h"
 #import "PGPayoffProcessor.h"
 #import "PGProgressView.h"
 #import "PGPreviewDrawerViewController.h"
 #import "PGPayoffManager.h"
-#import "PGWatermarkProcessor.h"
 #import "PGLinkSettings.h"
 #import "PGPrintQueueManager.h"
 #import "PGSetupSprocketViewController.h"
-
 #import <MP.h>
 #import <HPPR.h>
 #import <HPPRSelectPhotoProvider.h>
@@ -103,7 +100,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) PGProgressView *progressView;
 @property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
 
-@property (assign, atomic) int totalPrints;
+@property (assign, atomic) NSInteger totalPrints;
 
 @end
 

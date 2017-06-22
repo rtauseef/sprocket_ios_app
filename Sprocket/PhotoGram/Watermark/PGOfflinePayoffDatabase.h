@@ -20,6 +20,6 @@
 
 -(void) saveMetadata:(PGPayoffMetadata *) meta;
 
--(PGPayoffMetadata*) loadMetadata:(NSString*) id;
+-(PGPayoffMetadata*) loadMetadata:(NSString*) identifier;
 
 @end

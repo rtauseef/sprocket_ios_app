@@ -85,8 +85,8 @@
     if (self.mime)
         [dict setObject:self.mime forKey:@"mime"];
     
-    if ([self getMediaType])
-        [dict setObject:[self getMediaType] forKey:@"type"];
+    if ([self stringMediaType])
+        [dict setObject:[self stringMediaType] forKey:@"type"];
     
     if (self.size)
         [dict setObject:self.size forKey:@"size"];
@@ -165,7 +165,7 @@
     return dict;
 }
 
-- (NSString *) getMediaType {
+- (NSString *) stringMediaType {
     if (self.mediaType == PGMetarMediaTypeVideo) {
         return @"VIDEO";
     } else if (self.mediaType == PGMetarMediaTypeImage) {

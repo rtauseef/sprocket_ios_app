@@ -55,15 +55,14 @@
 
 @end
 
-#define kLongPressDurationForAlternative 0.6f
-#define kShortDescriptionFixedHeight 200.0
-#define kShowMoreButtonFixedHeight 30.0
-#define kImageGridSpacing 10.0
-#define kImageGridMargin 20.0
-#define kImageGridLineSpacing 10.0
-#define kNumberOfImagesPerRow 3
-#define kTableViewMargin 15
-#define kMinimumBlockSize 75
+static const CGFloat kLongPressDurationForAlternative = 0.6f;
+static const CGFloat kShortDescriptionFixedHeight = 200.0;
+static const CGFloat kShowMoreButtonFixedHeight = 30.0;
+static const CGFloat kImageGridSpacing = 10.0;
+static const CGFloat kImageGridMargin = 20.0;
+static const CGFloat kImageGridLineSpacing = 10.0;
+static const NSInteger kNumberOfImagesPerRow = 3;
+static const CGFloat kTableViewMargin = 15;
 
 @implementation PGPayoffViewWikipediaViewController
 
@@ -324,7 +323,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    int calcSize = [self getImageSize];
+    NSInteger calcSize = [self getImageSize];
     
     NSLog(@"Image size will be: %d",calcSize);
     

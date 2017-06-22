@@ -1,4 +1,4 @@
-    //
+//
 // Hewlett-Packard Company
 // All rights reserved.
 //
@@ -618,7 +618,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                       [PGSavePhotos saveVideo:asset completion:^(BOOL success, PHAsset *createdAsset) {
                                                                             [weakSelf.cameraOverlay playVideo:asset image:frameImage originalAsset: createdAsset];
                                                                       }];
-\
+
                                                                       [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                                                                   }];
                 [alert addAction:yesAction];
@@ -717,9 +717,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     if ([payoff isKindOfClass:[LRWebPayoff class]]) {
         NSString * surl  = [(LRWebPayoff*)payoff url];
         
-        // hack
-        //NSString *tmpURL = @"http://www.somacoding.com/metar/deep/c6f8b825855123519bd2375796a2f453f465595c8fd1db236fa07eaf1171d676";
-        
         NSURL * url = [NSURL URLWithString:surl];
         [[PGPayoffManager sharedInstance] resolvePayoffFromURL:url complete:^(NSError *error, PGPayoffMetadata *metadata) {
             if( error ) {
@@ -739,7 +736,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
 }
 
--(void) resolvePayoffFromMetadata:(PGPayoffMetadata *) meta completion:(void(^)(BOOL success)) handler {
+-(void) resolvePayoffFromMetadata:(PGPayoffMetadata *) meta completion:(void(^__nonnull)(BOOL success)) completion {
     if( meta.offline ) {
         if( meta.type == kPGPayoffVideo ) {
             PHAsset * asset = [meta fetchPHAsset];
@@ -754,30 +751,30 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                     
                     [player play];
                     [self.viewController presentViewController:ctrl animated:YES completion:^{
-                        handler(YES);
+                        completion(YES);
                     }];
                 }];
                 
                 
             } else {
-                handler(NO);
+                completion(NO);
             }
         } else {
-            handler(NO);
+            completion(NO);
         }
     } else if(meta.type == kPGPayoffURL && meta.URL) {
         [[UIApplication sharedApplication] openURL:meta.URL options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @(NO)} completionHandler:^(BOOL success) {
-            handler(success);
+            completion(success);
         }];
     } else if(meta.type == kPGPayoffURLMetar || meta.type == kPGPayoffURLBatata) {
         PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
         
         [metarViewController setMetadata:meta];
         [self.viewController presentViewController:metarViewController animated:YES completion:^{
-            handler(YES);
+            completion(YES);
         }];
     } else {
-        handler(NO);
+        completion(NO);
     }
     
 }
