@@ -10,15 +10,8 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import "PGWikipediaImageCollectionViewCell.h"
 
-@interface PGOverlayCameraViewController : UIViewController
-
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+@implementation PGWikipediaImageCollectionViewCell
 
 @end

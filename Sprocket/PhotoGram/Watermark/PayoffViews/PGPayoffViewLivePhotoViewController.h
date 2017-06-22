@@ -11,14 +11,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import "PGPayoffViewBaseViewController.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGPayoffViewLivePhotoViewController : PGPayoffViewBaseViewController
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+- (void) setLivePhotoAsset: (PHAsset *) asset;
 
 @end

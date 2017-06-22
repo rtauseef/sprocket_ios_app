@@ -10,15 +10,17 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import <Foundation/Foundation.h>
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGMetarUser : NSObject<NSCoding> {
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
+}
 
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+@property (strong, nonatomic) NSString *accessToken;
+@property (strong, nonatomic) NSString *secret;
+@property (strong, nonatomic) NSString *accountID;
+@property (strong, nonatomic) NSDate *expire;
+
+- (instancetype)initWithToken: (NSString *) accessToken secret:(NSString *) secret accountID:(NSString *) accountID expire: (NSString *) expire;
 
 @end

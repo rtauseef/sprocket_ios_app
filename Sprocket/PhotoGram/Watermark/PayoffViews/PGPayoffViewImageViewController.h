@@ -11,14 +11,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import <CoreLocation/CoreLocation.h>
+#import "PGMetarMedia.h"
+#import "PGPayoffViewBaseViewController.h"
+#import "PGMetarPayoffViewController.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGPayoffViewImageViewController : PGPayoffViewBaseViewController
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
+- (void)showImageSameDayAsDate: (NSDate *) date;
+- (void)showImagesSameLocation: (CLLocation *) location;
 
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+@property (strong, nonatomic) NSDate* filteringDate;
+@property (strong, nonatomic) CLLocation* filteringLocation;
 
 @end

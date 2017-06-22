@@ -11,14 +11,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import "UIImageView+AFNetworking.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGWikipediaImageCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

@@ -10,15 +10,19 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import "PGWikipediaTableViewCell.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@implementation PGWikipediaTableViewCell
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
 
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
 
 @end

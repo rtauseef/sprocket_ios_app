@@ -11,14 +11,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
 
-@interface PGOverlayCameraViewController : UIViewController
-
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
-
+@interface PGWikipediaTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *blockTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end

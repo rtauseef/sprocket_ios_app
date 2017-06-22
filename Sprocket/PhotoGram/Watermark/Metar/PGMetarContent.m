@@ -10,15 +10,20 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import "PGMetarContent.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@implementation PGMetarContent
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+- (instancetype)initWithDictionary: (NSDictionary *) dict {
+    self = [super init];
+    
+    if (self) {
+        if ([dict objectForKey:@"wikipedia"] != nil) {
+            self.wikipedia = [[PGMetarContentContainer alloc] initWithDictionary: [dict objectForKey:@"wikipedia"]];
+        }
+    }
+    
+    return self;
+}
 
 @end

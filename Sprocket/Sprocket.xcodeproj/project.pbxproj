@@ -2840,64 +2840,72 @@
 		E39EF28419B648E500AAB884 /* RockSalt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27319B648E500AAB884 /* RockSalt.ttf */; };
 		E39EF28619B648E500AAB884 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27419B648E500AAB884 /* SourceSansPro-Regular.ttf */; };
 		E39EF28819B648E500AAB884 /* SpecialElite.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27519B648E500AAB884 /* SpecialElite.ttf */; };
+		E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AA023B1AB22CFF002E554F /* PGSurveyManager.m */; };
 		E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B62FF719A412E900CB80D7 /* UIView+Animations.m */; };
 		E3B62FFE19A50E5800CB80D7 /* Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B62FFB19A50E5800CB80D7 /* Search@2x.png */; };
 		E3B6D7281A02E55B00548421 /* FacebookLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B6D7271A02E55B00548421 /* FacebookLogo@2x.png */; };
 		E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
+		E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810719A2B249000D45E0 /* PGSegmentedControlView.m */; };
 		E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810B19A2B2A6000D45E0 /* PGView.m */; };
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
 		E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
-		ED7F656C1ED3AC1E002A0912 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65691ED3AC1E002A0912 /* PGMetarAPI.m */; };
-		ED7F656D1ED3AC1E002A0912 /* PGMetarUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F656B1ED3AC1E002A0912 /* PGMetarUser.m */; };
-		ED7F658F1ED3AC2B002A0912 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F656F1ED3AC2B002A0912 /* PGMetarArtifact.m */; };
-		ED7F65901ED3AC2B002A0912 /* PGMetarArtifactEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65711ED3AC2B002A0912 /* PGMetarArtifactEmotion.m */; };
-		ED7F65911ED3AC2B002A0912 /* PGMetarContent.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65731ED3AC2B002A0912 /* PGMetarContent.m */; };
-		ED7F65921ED3AC2B002A0912 /* PGMetarContentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65751ED3AC2B002A0912 /* PGMetarContentContainer.m */; };
-		ED7F65931ED3AC2B002A0912 /* PGMetarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65771ED3AC2B002A0912 /* PGMetarImage.m */; };
-		ED7F65941ED3AC2B002A0912 /* PGMetarImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65791ED3AC2B002A0912 /* PGMetarImageItem.m */; };
-		ED7F65951ED3AC2B002A0912 /* PGMetarImageTag.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F657B1ED3AC2B002A0912 /* PGMetarImageTag.m */; };
-		ED7F65961ED3AC2B002A0912 /* PGMetarLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F657D1ED3AC2B002A0912 /* PGMetarLocation.m */; };
-		ED7F65971ED3AC2B002A0912 /* PGMetarLocationVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F657F1ED3AC2B002A0912 /* PGMetarLocationVenue.m */; };
-		ED7F65981ED3AC2B002A0912 /* PGMetarMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65811ED3AC2B002A0912 /* PGMetarMedia.m */; };
-		ED7F65991ED3AC2B002A0912 /* PGMetarPage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65831ED3AC2B002A0912 /* PGMetarPage.m */; };
-		ED7F659A1ED3AC2B002A0912 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65851ED3AC2B002A0912 /* PGMetarPayoffViewController.m */; };
-		ED7F659C1ED3AC2B002A0912 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65881ED3AC2B002A0912 /* PGMetarSocial.m */; };
-		ED7F659D1ED3AC2B002A0912 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F658A1ED3AC2B002A0912 /* PGMetarSocialActivity.m */; };
-		ED7F659E1ED3AC2B002A0912 /* PGMetarSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F658C1ED3AC2B002A0912 /* PGMetarSource.m */; };
-		ED7F659F1ED3AC2B002A0912 /* PGMetarVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F658E1ED3AC2B002A0912 /* PGMetarVideo.m */; };
-		ED7F65A41ED3AC6C002A0912 /* PGScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65A21ED3AC6C002A0912 /* PGScanViewController.m */; };
-		ED7F65AE1ED3AC8E002A0912 /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65A71ED3AC8E002A0912 /* PGOfflinePayoffDatabase.m */; };
-		ED7F65AF1ED3AC8E002A0912 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65A91ED3AC8E002A0912 /* PGPayoffManager.m */; };
-		ED7F65B01ED3AC8E002A0912 /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65AB1ED3AC8E002A0912 /* PGPayoffMetadata.m */; };
-		ED7F65B11ED3AC8E002A0912 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65AD1ED3AC8E002A0912 /* PGPayoffProcessor.m */; };
-		ED7F65B81ED3ACC0002A0912 /* PGWatermarkOperationData.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65B31ED3ACC0002A0912 /* PGWatermarkOperationData.m */; };
-		ED7F65B91ED3ACC0002A0912 /* PGWatermarkOperationHPLink.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65B51ED3ACC0002A0912 /* PGWatermarkOperationHPLink.m */; };
-		ED7F65BA1ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65B71ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.m */; };
-		ED7F65BD1ED3AD5F002A0912 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65BC1ED3AD5F002A0912 /* PGPageControl.m */; };
-		ED7F65C81ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C11ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.m */; };
-		ED7F65C91ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C31ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m */; };
-		ED7F65CA1ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C51ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m */; };
-		ED7F65CB1ED3AD97002A0912 /* PGWikipediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C71ED3AD97002A0912 /* PGWikipediaTableViewCell.m */; };
-		ED7F65DB1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65CE1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.m */; };
-		ED7F65DC1ED3ADA2002A0912 /* PGPayoffViewErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D01ED3ADA2002A0912 /* PGPayoffViewErrorViewController.m */; };
-		ED7F65DE1ED3ADA2002A0912 /* PGPayoffViewImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D31ED3ADA2002A0912 /* PGPayoffViewImageViewController.m */; };
-		ED7F65E01ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D61ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m */; };
-		ED7F65E21ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */; };
-		ED7F65FF1EE07F2F002A0912 /* PGMetarOfflineTagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */; };
-		EDFC68911EE617DE009FA37E /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
-		EDFC68921EE61843009FA37E /* PGSurveyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AA023B1AB22CFF002E554F /* PGSurveyManager.m */; };
-		EDFC68931EE61849009FA37E /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
-		EDFC68941EE618A3009FA37E /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
-		EDFC68951EE618AB009FA37E /* PGRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5434119C785B100460701 /* PGRevealViewController.m */; };
-		EDFC68961EE618B5009FA37E /* PGSegmentedControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6810719A2B249000D45E0 /* PGSegmentedControlView.m */; };
-		EDFC689A1EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */; };
+		EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */; };
+		EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */; };
+		EDD33F651EF9CE520028DBC8 /* PGMetarArtifactEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0C1EF9CE520028DBC8 /* PGMetarArtifactEmotion.m */; };
+		EDD33F661EF9CE520028DBC8 /* PGMetarContent.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0E1EF9CE520028DBC8 /* PGMetarContent.m */; };
+		EDD33F671EF9CE520028DBC8 /* PGMetarContentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F101EF9CE520028DBC8 /* PGMetarContentContainer.m */; };
+		EDD33F681EF9CE520028DBC8 /* PGMetarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F121EF9CE520028DBC8 /* PGMetarImage.m */; };
+		EDD33F691EF9CE520028DBC8 /* PGMetarImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F141EF9CE520028DBC8 /* PGMetarImageItem.m */; };
+		EDD33F6A1EF9CE520028DBC8 /* PGMetarImageTag.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F161EF9CE520028DBC8 /* PGMetarImageTag.m */; };
+		EDD33F6B1EF9CE520028DBC8 /* PGMetarLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F181EF9CE520028DBC8 /* PGMetarLocation.m */; };
+		EDD33F6C1EF9CE520028DBC8 /* PGMetarLocationVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F1A1EF9CE520028DBC8 /* PGMetarLocationVenue.m */; };
+		EDD33F6D1EF9CE520028DBC8 /* PGMetarMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F1C1EF9CE520028DBC8 /* PGMetarMedia.m */; };
+		EDD33F6E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F1E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m */; };
+		EDD33F6F1EF9CE520028DBC8 /* PGMetarPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F201EF9CE520028DBC8 /* PGMetarPage.m */; };
+		EDD33F701EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F221EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.m */; };
+		EDD33F711EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F231EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.xib */; };
+		EDD33F721EF9CE520028DBC8 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F251EF9CE520028DBC8 /* PGMetarPayoffViewController.m */; };
+		EDD33F731EF9CE520028DBC8 /* PGMetarPayoffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F261EF9CE520028DBC8 /* PGMetarPayoffViewController.xib */; };
+		EDD33F741EF9CE520028DBC8 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F281EF9CE520028DBC8 /* PGMetarSocial.m */; };
+		EDD33F751EF9CE520028DBC8 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F2A1EF9CE520028DBC8 /* PGMetarSocialActivity.m */; };
+		EDD33F761EF9CE520028DBC8 /* PGMetarSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F2C1EF9CE520028DBC8 /* PGMetarSource.m */; };
+		EDD33F771EF9CE520028DBC8 /* PGMetarUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F2E1EF9CE520028DBC8 /* PGMetarUser.m */; };
+		EDD33F781EF9CE520028DBC8 /* PGMetarVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F301EF9CE520028DBC8 /* PGMetarVideo.m */; };
+		EDD33F791EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F331EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m */; };
+		EDD33F7A1EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F351EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m */; };
+		EDD33F7B1EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F371EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.m */; };
+		EDD33F7C1EF9CE520028DBC8 /* PGPayoffView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F381EF9CE520028DBC8 /* PGPayoffView.storyboard */; };
+		EDD33F7D1EF9CE520028DBC8 /* PGPayoffViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F3A1EF9CE520028DBC8 /* PGPayoffViewBaseViewController.m */; };
+		EDD33F7E1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F3C1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m */; };
+		EDD33F7F1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F3D1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.xib */; };
+		EDD33F801EF9CE520028DBC8 /* PGPayoffViewImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F3F1EF9CE520028DBC8 /* PGPayoffViewImageViewController.m */; };
+		EDD33F811EF9CE520028DBC8 /* PGPayoffViewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F401EF9CE520028DBC8 /* PGPayoffViewImageViewController.xib */; };
+		EDD33F821EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F421EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m */; };
+		EDD33F831EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F431EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.xib */; };
+		EDD33F841EF9CE520028DBC8 /* PGPayoffViewVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F451EF9CE520028DBC8 /* PGPayoffViewVideoViewController.m */; };
+		EDD33F851EF9CE520028DBC8 /* PGPayoffViewVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F461EF9CE520028DBC8 /* PGPayoffViewVideoViewController.xib */; };
+		EDD33F861EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F481EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m */; };
+		EDD33F871EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F4A1EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m */; };
+		EDD33F881EF9CE520028DBC8 /* PGWikipediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F4C1EF9CE520028DBC8 /* PGWikipediaTableViewCell.m */; };
+		EDD33F891EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F4E1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m */; };
+		EDD33F8A1EF9CE520028DBC8 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F501EF9CE520028DBC8 /* PGPageControl.m */; };
+		EDD33F8B1EF9CE520028DBC8 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F521EF9CE520028DBC8 /* PGPayoffManager.m */; };
+		EDD33F8C1EF9CE520028DBC8 /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F541EF9CE520028DBC8 /* PGPayoffMetadata.m */; };
+		EDD33F8D1EF9CE520028DBC8 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F561EF9CE520028DBC8 /* PGPayoffProcessor.m */; };
+		EDD33F8E1EF9CE520028DBC8 /* PGScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F581EF9CE520028DBC8 /* PGScanViewController.m */; };
+		EDD33F8F1EF9CE520028DBC8 /* PGScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD33F591EF9CE520028DBC8 /* PGScanViewController.xib */; };
+		EDD33F901EF9CE520028DBC8 /* PGWatermarkOperationData.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F5C1EF9CE520028DBC8 /* PGWatermarkOperationData.m */; };
+		EDD33F911EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F5E1EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m */; };
+		EDD33F921EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F601EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m */; };
+		EDD33F931EF9CE520028DBC8 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F621EF9CE520028DBC8 /* PGWatermarkProcessor.m */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
 		F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F144B28F1A783D8D007CDBBD /* HPSMS_logo@2x.png */; };
 		F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F18C59251A702DB900DEF77C /* PGLandingMainPageViewController.m */; };
 		F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A3F9B01AD5EE2800EC0817 /* PGCrashlyticsLogger.m */; };
+		F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5434119C785B100460701 /* PGRevealViewController.m */; };
 		F1B9596A1DAECAF400EF6EB7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ed7ad5b645bd900ea20b6b9f /* CFNetwork.framework */; };
 		F1B9596B1DAECAF400EF6EB7 /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12b9951de3bbff11258bdeb9 /* calabash.framework */; };
 		F1DCB7EB1B5066B000CA9AAD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DCB7E91B5065E200CA9AAD /* libz.dylib */; };
@@ -2945,72 +2953,21 @@
 		F23051731ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F23051701ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m */; };
 		F236FAC71E8721F700FC31B5 /* PGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F236FAC51E8721F700FC31B5 /* PGProgressView.m */; };
 		F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
-		F23FF8F91EF9E3A10081EC03 /* PGScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65A31ED3AC6C002A0912 /* PGScanViewController.xib */; };
-		F23FF8FA1EF9E3A10081EC03 /* PGMetarPayoffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65861ED3AC2B002A0912 /* PGMetarPayoffViewController.xib */; };
-		F23FF8FC1EF9E3A30081EC03 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65BC1ED3AD5F002A0912 /* PGPageControl.m */; };
-		F23FF8FD1EF9E3A30081EC03 /* PGScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65A21ED3AC6C002A0912 /* PGScanViewController.m */; };
-		F23FF8FE1EF9E3A30081EC03 /* PGScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65A31ED3AC6C002A0912 /* PGScanViewController.xib */; };
-		F23FF8FF1EF9E3A30081EC03 /* PGWatermarkOperationData.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65B31ED3ACC0002A0912 /* PGWatermarkOperationData.m */; };
-		F23FF9001EF9E3A30081EC03 /* PGWatermarkOperationHPLink.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65B51ED3ACC0002A0912 /* PGWatermarkOperationHPLink.m */; };
-		F23FF9011EF9E3A30081EC03 /* PGWatermarkOperationHPMetar.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65B71ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.m */; };
-		F23FF9021EF9E3A30081EC03 /* PGMetarPayoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65851ED3AC2B002A0912 /* PGMetarPayoffViewController.m */; };
-		F23FF9031EF9E3A30081EC03 /* PGMetarPayoffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65861ED3AC2B002A0912 /* PGMetarPayoffViewController.xib */; };
-		F23FF9041EF9E3B80081EC03 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65691ED3AC1E002A0912 /* PGMetarAPI.m */; };
-		F23FF9051EF9E3B80081EC03 /* PGMetarUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F656B1ED3AC1E002A0912 /* PGMetarUser.m */; };
-		F23FF9061EF9E3B80081EC03 /* PGMetarOfflineTagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */; };
-		F23FF9071EF9E3D20081EC03 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F656F1ED3AC2B002A0912 /* PGMetarArtifact.m */; };
-		F23FF9081EF9E3D20081EC03 /* PGMetarArtifactEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65711ED3AC2B002A0912 /* PGMetarArtifactEmotion.m */; };
-		F23FF9091EF9E3D20081EC03 /* PGMetarContent.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65731ED3AC2B002A0912 /* PGMetarContent.m */; };
-		F23FF90A1EF9E3D20081EC03 /* PGMetarContentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65751ED3AC2B002A0912 /* PGMetarContentContainer.m */; };
-		F23FF90B1EF9E3D20081EC03 /* PGMetarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65771ED3AC2B002A0912 /* PGMetarImage.m */; };
-		F23FF90C1EF9E3D20081EC03 /* PGMetarImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65791ED3AC2B002A0912 /* PGMetarImageItem.m */; };
-		F23FF90D1EF9E3D20081EC03 /* PGMetarImageTag.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F657B1ED3AC2B002A0912 /* PGMetarImageTag.m */; };
-		F23FF90E1EF9E3D20081EC03 /* PGMetarLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F657D1ED3AC2B002A0912 /* PGMetarLocation.m */; };
-		F23FF90F1EF9E3D20081EC03 /* PGMetarLocationVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F657F1ED3AC2B002A0912 /* PGMetarLocationVenue.m */; };
-		F23FF9101EF9E3D20081EC03 /* PGMetarMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65811ED3AC2B002A0912 /* PGMetarMedia.m */; };
-		F23FF9111EF9E3D20081EC03 /* PGMetarPage.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65831ED3AC2B002A0912 /* PGMetarPage.m */; };
-		F23FF9121EF9E3D20081EC03 /* PGMetarSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65881ED3AC2B002A0912 /* PGMetarSocial.m */; };
-		F23FF9131EF9E3D20081EC03 /* PGMetarSocialActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F658A1ED3AC2B002A0912 /* PGMetarSocialActivity.m */; };
-		F23FF9141EF9E3D20081EC03 /* PGMetarSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F658C1ED3AC2B002A0912 /* PGMetarSource.m */; };
-		F23FF9151EF9E3D20081EC03 /* PGMetarVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F658E1ED3AC2B002A0912 /* PGMetarVideo.m */; };
-		F23FF9161EF9E3F20081EC03 /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65A71ED3AC8E002A0912 /* PGOfflinePayoffDatabase.m */; };
-		F23FF9171EF9E3F20081EC03 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65A91ED3AC8E002A0912 /* PGPayoffManager.m */; };
-		F23FF9181EF9E3F20081EC03 /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65AB1ED3AC8E002A0912 /* PGPayoffMetadata.m */; };
-		F23FF9191EF9E3F20081EC03 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65AD1ED3AC8E002A0912 /* PGPayoffProcessor.m */; };
-		F23FF91A1EF9E4120081EC03 /* PGPayoffView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65CC1ED3ADA2002A0912 /* PGPayoffView.storyboard */; };
-		F23FF91B1EF9E4120081EC03 /* PGPayoffViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65CE1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.m */; };
-		F23FF91C1EF9E4120081EC03 /* PGPayoffViewErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D01ED3ADA2002A0912 /* PGPayoffViewErrorViewController.m */; };
-		F23FF91D1EF9E4120081EC03 /* PGPayoffViewErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D11ED3ADA2002A0912 /* PGPayoffViewErrorViewController.xib */; };
-		F23FF91E1EF9E4120081EC03 /* PGPayoffViewImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D31ED3ADA2002A0912 /* PGPayoffViewImageViewController.m */; };
-		F23FF91F1EF9E4120081EC03 /* PGPayoffViewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D41ED3ADA2002A0912 /* PGPayoffViewImageViewController.xib */; };
-		F23FF9201EF9E4120081EC03 /* PGPayoffViewVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D61ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m */; };
-		F23FF9211EF9E4120081EC03 /* PGPayoffViewVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */; };
-		F23FF9221EF9E4120081EC03 /* PGPayoffViewWikipediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */; };
-		F23FF9231EF9E4120081EC03 /* PGPayoffViewLivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */; };
-		F23FF9241EF9E4120081EC03 /* PGPayoffViewLivePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */; };
-		F23FF9251EF9E4130081EC03 /* PGPayoffView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65CC1ED3ADA2002A0912 /* PGPayoffView.storyboard */; };
-		F23FF9261EF9E4130081EC03 /* PGPayoffViewErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D11ED3ADA2002A0912 /* PGPayoffViewErrorViewController.xib */; };
-		F23FF9271EF9E4130081EC03 /* PGPayoffViewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D41ED3ADA2002A0912 /* PGPayoffViewImageViewController.xib */; };
-		F23FF9281EF9E4130081EC03 /* PGPayoffViewVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */; };
-		F23FF9291EF9E4130081EC03 /* PGPayoffViewLivePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */; };
-		F23FF92A1EF9E4290081EC03 /* AVPlayerViewController+Fullscreen.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C11ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.m */; };
-		F23FF92B1EF9E4290081EC03 /* PGPayoffFullScreenTmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C31ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m */; };
-		F23FF92C1EF9E4290081EC03 /* PGWikipediaImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C51ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m */; };
-		F23FF92D1EF9E4290081EC03 /* PGWikipediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7F65C71ED3AD97002A0912 /* PGWikipediaTableViewCell.m */; };
-		F2415F1D1EF9E86900F1A3CF /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
+		F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
 		F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */; };
 		F24DA7CE1EAEA0F500C24AAB /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */; };
-		F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */; };
 		F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
 		F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */; };
 		F24DA7D51EAEA13800C24AAB /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */; };
-		F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */; };
+		F24DA7D71EAEA13800C24AAB /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F254DDE91EF9E7F600A0FE87 /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
-		F254DDEB1EF9E7FB00A0FE87 /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
 		F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
 		F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
 		F272AE631ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */; };
+		F2B3F59E1EFC422C00F1E6FB /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
+		F2B3F5A01EFC423700F1E6FB /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
+		F2B3F5A11EFC427200F1E6FB /* PGSocialSourcesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829E02861DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m */; };
 		F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC11ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEBF1ECD06AE00C11BE9 /* UIImageView+Cached.m */; };
 		F2C1EEC51ECD08F100C11BE9 /* PGImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C1EEC41ECD08F100C11BE9 /* PGImageCache.m */; };
@@ -3028,8 +2985,6 @@
 		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
 		F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */; };
 		F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */; };
-		F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperation.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C81EAEA0F500C24AAB /* PGWatermarkOperation.h */; };
-		F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */; };
 		F2D5A3981EAEA5E8002F9DDC /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D5A3971EAEA5E8002F9DDC /* link-icon.png */; };
 		F2D5A3A21EAFD502002F9DDC /* link-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D5A3971EAEA5E8002F9DDC /* link-icon.png */; };
 		F2D5A3AC1EB00611002F9DDC /* LinkReaderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D5A3AB1EB00611002F9DDC /* LinkReaderKit.framework */; };
@@ -5072,89 +5027,97 @@
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
 		E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
-		ED7F65681ED3AC1E002A0912 /* PGMetarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarAPI.h; path = Metar/PGMetarAPI.h; sourceTree = "<group>"; };
-		ED7F65691ED3AC1E002A0912 /* PGMetarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarAPI.m; path = Metar/PGMetarAPI.m; sourceTree = "<group>"; };
-		ED7F656A1ED3AC1E002A0912 /* PGMetarUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarUser.h; path = Metar/PGMetarUser.h; sourceTree = "<group>"; };
-		ED7F656B1ED3AC1E002A0912 /* PGMetarUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarUser.m; path = Metar/PGMetarUser.m; sourceTree = "<group>"; };
-		ED7F656E1ED3AC2B002A0912 /* PGMetarArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarArtifact.h; path = Metar/PGMetarArtifact.h; sourceTree = "<group>"; };
-		ED7F656F1ED3AC2B002A0912 /* PGMetarArtifact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarArtifact.m; path = Metar/PGMetarArtifact.m; sourceTree = "<group>"; };
-		ED7F65701ED3AC2B002A0912 /* PGMetarArtifactEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarArtifactEmotion.h; path = Metar/PGMetarArtifactEmotion.h; sourceTree = "<group>"; };
-		ED7F65711ED3AC2B002A0912 /* PGMetarArtifactEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarArtifactEmotion.m; path = Metar/PGMetarArtifactEmotion.m; sourceTree = "<group>"; };
-		ED7F65721ED3AC2B002A0912 /* PGMetarContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarContent.h; path = Metar/PGMetarContent.h; sourceTree = "<group>"; };
-		ED7F65731ED3AC2B002A0912 /* PGMetarContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarContent.m; path = Metar/PGMetarContent.m; sourceTree = "<group>"; };
-		ED7F65741ED3AC2B002A0912 /* PGMetarContentContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarContentContainer.h; path = Metar/PGMetarContentContainer.h; sourceTree = "<group>"; };
-		ED7F65751ED3AC2B002A0912 /* PGMetarContentContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarContentContainer.m; path = Metar/PGMetarContentContainer.m; sourceTree = "<group>"; };
-		ED7F65761ED3AC2B002A0912 /* PGMetarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarImage.h; path = Metar/PGMetarImage.h; sourceTree = "<group>"; };
-		ED7F65771ED3AC2B002A0912 /* PGMetarImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarImage.m; path = Metar/PGMetarImage.m; sourceTree = "<group>"; };
-		ED7F65781ED3AC2B002A0912 /* PGMetarImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarImageItem.h; path = Metar/PGMetarImageItem.h; sourceTree = "<group>"; };
-		ED7F65791ED3AC2B002A0912 /* PGMetarImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarImageItem.m; path = Metar/PGMetarImageItem.m; sourceTree = "<group>"; };
-		ED7F657A1ED3AC2B002A0912 /* PGMetarImageTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarImageTag.h; path = Metar/PGMetarImageTag.h; sourceTree = "<group>"; };
-		ED7F657B1ED3AC2B002A0912 /* PGMetarImageTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarImageTag.m; path = Metar/PGMetarImageTag.m; sourceTree = "<group>"; };
-		ED7F657C1ED3AC2B002A0912 /* PGMetarLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarLocation.h; path = Metar/PGMetarLocation.h; sourceTree = "<group>"; };
-		ED7F657D1ED3AC2B002A0912 /* PGMetarLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarLocation.m; path = Metar/PGMetarLocation.m; sourceTree = "<group>"; };
-		ED7F657E1ED3AC2B002A0912 /* PGMetarLocationVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarLocationVenue.h; path = Metar/PGMetarLocationVenue.h; sourceTree = "<group>"; };
-		ED7F657F1ED3AC2B002A0912 /* PGMetarLocationVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarLocationVenue.m; path = Metar/PGMetarLocationVenue.m; sourceTree = "<group>"; };
-		ED7F65801ED3AC2B002A0912 /* PGMetarMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarMedia.h; path = Metar/PGMetarMedia.h; sourceTree = "<group>"; };
-		ED7F65811ED3AC2B002A0912 /* PGMetarMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarMedia.m; path = Metar/PGMetarMedia.m; sourceTree = "<group>"; };
-		ED7F65821ED3AC2B002A0912 /* PGMetarPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarPage.h; path = Metar/PGMetarPage.h; sourceTree = "<group>"; };
-		ED7F65831ED3AC2B002A0912 /* PGMetarPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarPage.m; path = Metar/PGMetarPage.m; sourceTree = "<group>"; };
-		ED7F65841ED3AC2B002A0912 /* PGMetarPayoffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarPayoffViewController.h; path = Metar/PGMetarPayoffViewController.h; sourceTree = "<group>"; };
-		ED7F65851ED3AC2B002A0912 /* PGMetarPayoffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarPayoffViewController.m; path = Metar/PGMetarPayoffViewController.m; sourceTree = "<group>"; };
-		ED7F65861ED3AC2B002A0912 /* PGMetarPayoffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGMetarPayoffViewController.xib; path = Metar/PGMetarPayoffViewController.xib; sourceTree = "<group>"; };
-		ED7F65871ED3AC2B002A0912 /* PGMetarSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocial.h; path = Metar/PGMetarSocial.h; sourceTree = "<group>"; };
-		ED7F65881ED3AC2B002A0912 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocial.m; path = Metar/PGMetarSocial.m; sourceTree = "<group>"; };
-		ED7F65891ED3AC2B002A0912 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSocialActivity.h; path = Metar/PGMetarSocialActivity.h; sourceTree = "<group>"; };
-		ED7F658A1ED3AC2B002A0912 /* PGMetarSocialActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSocialActivity.m; path = Metar/PGMetarSocialActivity.m; sourceTree = "<group>"; };
-		ED7F658B1ED3AC2B002A0912 /* PGMetarSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarSource.h; path = Metar/PGMetarSource.h; sourceTree = "<group>"; };
-		ED7F658C1ED3AC2B002A0912 /* PGMetarSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarSource.m; path = Metar/PGMetarSource.m; sourceTree = "<group>"; };
-		ED7F658D1ED3AC2B002A0912 /* PGMetarVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarVideo.h; path = Metar/PGMetarVideo.h; sourceTree = "<group>"; };
-		ED7F658E1ED3AC2B002A0912 /* PGMetarVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarVideo.m; path = Metar/PGMetarVideo.m; sourceTree = "<group>"; };
-		ED7F65A11ED3AC6C002A0912 /* PGScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGScanViewController.h; sourceTree = "<group>"; };
-		ED7F65A21ED3AC6C002A0912 /* PGScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGScanViewController.m; sourceTree = "<group>"; };
-		ED7F65A31ED3AC6C002A0912 /* PGScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGScanViewController.xib; sourceTree = "<group>"; };
-		ED7F65A61ED3AC8E002A0912 /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
-		ED7F65A71ED3AC8E002A0912 /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
-		ED7F65A81ED3AC8E002A0912 /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffManager.h; sourceTree = "<group>"; };
-		ED7F65A91ED3AC8E002A0912 /* PGPayoffManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffManager.m; sourceTree = "<group>"; };
-		ED7F65AA1ED3AC8E002A0912 /* PGPayoffMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffMetadata.h; sourceTree = "<group>"; };
-		ED7F65AB1ED3AC8E002A0912 /* PGPayoffMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffMetadata.m; sourceTree = "<group>"; };
-		ED7F65AC1ED3AC8E002A0912 /* PGPayoffProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffProcessor.h; sourceTree = "<group>"; };
-		ED7F65AD1ED3AC8E002A0912 /* PGPayoffProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffProcessor.m; sourceTree = "<group>"; };
-		ED7F65B21ED3ACC0002A0912 /* PGWatermarkOperationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperationData.h; sourceTree = "<group>"; };
-		ED7F65B31ED3ACC0002A0912 /* PGWatermarkOperationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkOperationData.m; sourceTree = "<group>"; };
-		ED7F65B41ED3ACC0002A0912 /* PGWatermarkOperationHPLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperationHPLink.h; sourceTree = "<group>"; };
-		ED7F65B51ED3ACC0002A0912 /* PGWatermarkOperationHPLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkOperationHPLink.m; sourceTree = "<group>"; };
-		ED7F65B61ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperationHPMetar.h; sourceTree = "<group>"; };
-		ED7F65B71ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkOperationHPMetar.m; sourceTree = "<group>"; };
-		ED7F65BB1ED3AD5F002A0912 /* PGPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPageControl.h; sourceTree = "<group>"; };
-		ED7F65BC1ED3AD5F002A0912 /* PGPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPageControl.m; sourceTree = "<group>"; };
-		ED7F65C01ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AVPlayerViewController+Fullscreen.h"; path = "PayoffViews/AVPlayerViewController+Fullscreen.h"; sourceTree = "<group>"; };
-		ED7F65C11ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AVPlayerViewController+Fullscreen.m"; path = "PayoffViews/AVPlayerViewController+Fullscreen.m"; sourceTree = "<group>"; };
-		ED7F65C21ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffFullScreenTmpViewController.h; path = PayoffViews/PGPayoffFullScreenTmpViewController.h; sourceTree = "<group>"; };
-		ED7F65C31ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffFullScreenTmpViewController.m; path = PayoffViews/PGPayoffFullScreenTmpViewController.m; sourceTree = "<group>"; };
-		ED7F65C41ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWikipediaImageCollectionViewCell.h; path = PayoffViews/PGWikipediaImageCollectionViewCell.h; sourceTree = "<group>"; };
-		ED7F65C51ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWikipediaImageCollectionViewCell.m; path = PayoffViews/PGWikipediaImageCollectionViewCell.m; sourceTree = "<group>"; };
-		ED7F65C61ED3AD97002A0912 /* PGWikipediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWikipediaTableViewCell.h; path = PayoffViews/PGWikipediaTableViewCell.h; sourceTree = "<group>"; };
-		ED7F65C71ED3AD97002A0912 /* PGWikipediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWikipediaTableViewCell.m; path = PayoffViews/PGWikipediaTableViewCell.m; sourceTree = "<group>"; };
-		ED7F65CC1ED3ADA2002A0912 /* PGPayoffView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PGPayoffView.storyboard; path = PayoffViews/PGPayoffView.storyboard; sourceTree = "<group>"; };
-		ED7F65CD1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewBaseViewController.h; path = PayoffViews/PGPayoffViewBaseViewController.h; sourceTree = "<group>"; };
-		ED7F65CE1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewBaseViewController.m; path = PayoffViews/PGPayoffViewBaseViewController.m; sourceTree = "<group>"; };
-		ED7F65CF1ED3ADA2002A0912 /* PGPayoffViewErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewErrorViewController.h; path = PayoffViews/PGPayoffViewErrorViewController.h; sourceTree = "<group>"; };
-		ED7F65D01ED3ADA2002A0912 /* PGPayoffViewErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewErrorViewController.m; path = PayoffViews/PGPayoffViewErrorViewController.m; sourceTree = "<group>"; };
-		ED7F65D11ED3ADA2002A0912 /* PGPayoffViewErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewErrorViewController.xib; path = PayoffViews/PGPayoffViewErrorViewController.xib; sourceTree = "<group>"; };
-		ED7F65D21ED3ADA2002A0912 /* PGPayoffViewImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewImageViewController.h; path = PayoffViews/PGPayoffViewImageViewController.h; sourceTree = "<group>"; };
-		ED7F65D31ED3ADA2002A0912 /* PGPayoffViewImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewImageViewController.m; path = PayoffViews/PGPayoffViewImageViewController.m; sourceTree = "<group>"; };
-		ED7F65D41ED3ADA2002A0912 /* PGPayoffViewImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewImageViewController.xib; path = PayoffViews/PGPayoffViewImageViewController.xib; sourceTree = "<group>"; };
-		ED7F65D51ED3ADA2002A0912 /* PGPayoffViewVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewVideoViewController.h; path = PayoffViews/PGPayoffViewVideoViewController.h; sourceTree = "<group>"; };
-		ED7F65D61ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewVideoViewController.m; path = PayoffViews/PGPayoffViewVideoViewController.m; sourceTree = "<group>"; };
-		ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewVideoViewController.xib; path = PayoffViews/PGPayoffViewVideoViewController.xib; sourceTree = "<group>"; };
-		ED7F65D81ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewWikipediaViewController.h; path = PayoffViews/PGPayoffViewWikipediaViewController.h; sourceTree = "<group>"; };
-		ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewWikipediaViewController.m; path = PayoffViews/PGPayoffViewWikipediaViewController.m; sourceTree = "<group>"; };
-		ED7F65FD1EE07F2F002A0912 /* PGMetarOfflineTagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGMetarOfflineTagManager.h; path = Metar/PGMetarOfflineTagManager.h; sourceTree = "<group>"; };
-		ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGMetarOfflineTagManager.m; path = Metar/PGMetarOfflineTagManager.m; sourceTree = "<group>"; };
-		EDFC68981EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffViewLivePhotoViewController.h; path = Metar/PGPayoffViewLivePhotoViewController.h; sourceTree = "<group>"; };
-		EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffViewLivePhotoViewController.m; path = Metar/PGPayoffViewLivePhotoViewController.m; sourceTree = "<group>"; };
-		EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGPayoffViewLivePhotoViewController.xib; path = PayoffViews/PGPayoffViewLivePhotoViewController.xib; sourceTree = "<group>"; };
+		EDD33F071EF9CE520028DBC8 /* PGMetarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarAPI.h; sourceTree = "<group>"; };
+		EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarAPI.m; sourceTree = "<group>"; };
+		EDD33F091EF9CE520028DBC8 /* PGMetarArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarArtifact.h; sourceTree = "<group>"; };
+		EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarArtifact.m; sourceTree = "<group>"; };
+		EDD33F0B1EF9CE520028DBC8 /* PGMetarArtifactEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarArtifactEmotion.h; sourceTree = "<group>"; };
+		EDD33F0C1EF9CE520028DBC8 /* PGMetarArtifactEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarArtifactEmotion.m; sourceTree = "<group>"; };
+		EDD33F0D1EF9CE520028DBC8 /* PGMetarContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarContent.h; sourceTree = "<group>"; };
+		EDD33F0E1EF9CE520028DBC8 /* PGMetarContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarContent.m; sourceTree = "<group>"; };
+		EDD33F0F1EF9CE520028DBC8 /* PGMetarContentContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarContentContainer.h; sourceTree = "<group>"; };
+		EDD33F101EF9CE520028DBC8 /* PGMetarContentContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarContentContainer.m; sourceTree = "<group>"; };
+		EDD33F111EF9CE520028DBC8 /* PGMetarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarImage.h; sourceTree = "<group>"; };
+		EDD33F121EF9CE520028DBC8 /* PGMetarImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarImage.m; sourceTree = "<group>"; };
+		EDD33F131EF9CE520028DBC8 /* PGMetarImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarImageItem.h; sourceTree = "<group>"; };
+		EDD33F141EF9CE520028DBC8 /* PGMetarImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarImageItem.m; sourceTree = "<group>"; };
+		EDD33F151EF9CE520028DBC8 /* PGMetarImageTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarImageTag.h; sourceTree = "<group>"; };
+		EDD33F161EF9CE520028DBC8 /* PGMetarImageTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarImageTag.m; sourceTree = "<group>"; };
+		EDD33F171EF9CE520028DBC8 /* PGMetarLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarLocation.h; sourceTree = "<group>"; };
+		EDD33F181EF9CE520028DBC8 /* PGMetarLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarLocation.m; sourceTree = "<group>"; };
+		EDD33F191EF9CE520028DBC8 /* PGMetarLocationVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarLocationVenue.h; sourceTree = "<group>"; };
+		EDD33F1A1EF9CE520028DBC8 /* PGMetarLocationVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarLocationVenue.m; sourceTree = "<group>"; };
+		EDD33F1B1EF9CE520028DBC8 /* PGMetarMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarMedia.h; sourceTree = "<group>"; };
+		EDD33F1C1EF9CE520028DBC8 /* PGMetarMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarMedia.m; sourceTree = "<group>"; };
+		EDD33F1D1EF9CE520028DBC8 /* PGMetarOfflineTagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarOfflineTagManager.h; sourceTree = "<group>"; };
+		EDD33F1E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarOfflineTagManager.m; sourceTree = "<group>"; };
+		EDD33F1F1EF9CE520028DBC8 /* PGMetarPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarPage.h; sourceTree = "<group>"; };
+		EDD33F201EF9CE520028DBC8 /* PGMetarPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarPage.m; sourceTree = "<group>"; };
+		EDD33F211EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarPayoffFeedbackViewController.h; sourceTree = "<group>"; };
+		EDD33F221EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarPayoffFeedbackViewController.m; sourceTree = "<group>"; };
+		EDD33F231EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMetarPayoffFeedbackViewController.xib; sourceTree = "<group>"; };
+		EDD33F241EF9CE520028DBC8 /* PGMetarPayoffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarPayoffViewController.h; sourceTree = "<group>"; };
+		EDD33F251EF9CE520028DBC8 /* PGMetarPayoffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarPayoffViewController.m; sourceTree = "<group>"; };
+		EDD33F261EF9CE520028DBC8 /* PGMetarPayoffViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMetarPayoffViewController.xib; sourceTree = "<group>"; };
+		EDD33F271EF9CE520028DBC8 /* PGMetarSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarSocial.h; sourceTree = "<group>"; };
+		EDD33F281EF9CE520028DBC8 /* PGMetarSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarSocial.m; sourceTree = "<group>"; };
+		EDD33F291EF9CE520028DBC8 /* PGMetarSocialActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarSocialActivity.h; sourceTree = "<group>"; };
+		EDD33F2A1EF9CE520028DBC8 /* PGMetarSocialActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarSocialActivity.m; sourceTree = "<group>"; };
+		EDD33F2B1EF9CE520028DBC8 /* PGMetarSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarSource.h; sourceTree = "<group>"; };
+		EDD33F2C1EF9CE520028DBC8 /* PGMetarSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarSource.m; sourceTree = "<group>"; };
+		EDD33F2D1EF9CE520028DBC8 /* PGMetarUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarUser.h; sourceTree = "<group>"; };
+		EDD33F2E1EF9CE520028DBC8 /* PGMetarUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarUser.m; sourceTree = "<group>"; };
+		EDD33F2F1EF9CE520028DBC8 /* PGMetarVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarVideo.h; sourceTree = "<group>"; };
+		EDD33F301EF9CE520028DBC8 /* PGMetarVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarVideo.m; sourceTree = "<group>"; };
+		EDD33F321EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVPlayerViewController+Fullscreen.h"; sourceTree = "<group>"; };
+		EDD33F331EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVPlayerViewController+Fullscreen.m"; sourceTree = "<group>"; };
+		EDD33F341EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffFeedbackDatabase.h; sourceTree = "<group>"; };
+		EDD33F351EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffFeedbackDatabase.m; sourceTree = "<group>"; };
+		EDD33F361EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffFullScreenTmpViewController.h; sourceTree = "<group>"; };
+		EDD33F371EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffFullScreenTmpViewController.m; sourceTree = "<group>"; };
+		EDD33F381EF9CE520028DBC8 /* PGPayoffView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PGPayoffView.storyboard; sourceTree = "<group>"; };
+		EDD33F391EF9CE520028DBC8 /* PGPayoffViewBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewBaseViewController.h; sourceTree = "<group>"; };
+		EDD33F3A1EF9CE520028DBC8 /* PGPayoffViewBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewBaseViewController.m; sourceTree = "<group>"; };
+		EDD33F3B1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewErrorViewController.h; sourceTree = "<group>"; };
+		EDD33F3C1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewErrorViewController.m; sourceTree = "<group>"; };
+		EDD33F3D1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPayoffViewErrorViewController.xib; sourceTree = "<group>"; };
+		EDD33F3E1EF9CE520028DBC8 /* PGPayoffViewImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewImageViewController.h; sourceTree = "<group>"; };
+		EDD33F3F1EF9CE520028DBC8 /* PGPayoffViewImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewImageViewController.m; sourceTree = "<group>"; };
+		EDD33F401EF9CE520028DBC8 /* PGPayoffViewImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPayoffViewImageViewController.xib; sourceTree = "<group>"; };
+		EDD33F411EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewLivePhotoViewController.h; sourceTree = "<group>"; };
+		EDD33F421EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewLivePhotoViewController.m; sourceTree = "<group>"; };
+		EDD33F431EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPayoffViewLivePhotoViewController.xib; sourceTree = "<group>"; };
+		EDD33F441EF9CE520028DBC8 /* PGPayoffViewVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewVideoViewController.h; sourceTree = "<group>"; };
+		EDD33F451EF9CE520028DBC8 /* PGPayoffViewVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewVideoViewController.m; sourceTree = "<group>"; };
+		EDD33F461EF9CE520028DBC8 /* PGPayoffViewVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPayoffViewVideoViewController.xib; sourceTree = "<group>"; };
+		EDD33F471EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewWikipediaViewController.h; sourceTree = "<group>"; };
+		EDD33F481EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewWikipediaViewController.m; sourceTree = "<group>"; };
+		EDD33F491EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWikipediaImageCollectionViewCell.h; sourceTree = "<group>"; };
+		EDD33F4A1EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaImageCollectionViewCell.m; sourceTree = "<group>"; };
+		EDD33F4B1EF9CE520028DBC8 /* PGWikipediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWikipediaTableViewCell.h; sourceTree = "<group>"; };
+		EDD33F4C1EF9CE520028DBC8 /* PGWikipediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaTableViewCell.m; sourceTree = "<group>"; };
+		EDD33F4D1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGOfflinePayoffDatabase.h; path = Watermark/PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
+		EDD33F4E1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGOfflinePayoffDatabase.m; path = Watermark/PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
+		EDD33F4F1EF9CE520028DBC8 /* PGPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPageControl.h; path = Watermark/PGPageControl.h; sourceTree = "<group>"; };
+		EDD33F501EF9CE520028DBC8 /* PGPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPageControl.m; path = Watermark/PGPageControl.m; sourceTree = "<group>"; };
+		EDD33F511EF9CE520028DBC8 /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffManager.h; path = Watermark/PGPayoffManager.h; sourceTree = "<group>"; };
+		EDD33F521EF9CE520028DBC8 /* PGPayoffManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffManager.m; path = Watermark/PGPayoffManager.m; sourceTree = "<group>"; };
+		EDD33F531EF9CE520028DBC8 /* PGPayoffMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffMetadata.h; path = Watermark/PGPayoffMetadata.h; sourceTree = "<group>"; };
+		EDD33F541EF9CE520028DBC8 /* PGPayoffMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffMetadata.m; path = Watermark/PGPayoffMetadata.m; sourceTree = "<group>"; };
+		EDD33F551EF9CE520028DBC8 /* PGPayoffProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffProcessor.h; path = Watermark/PGPayoffProcessor.h; sourceTree = "<group>"; };
+		EDD33F561EF9CE520028DBC8 /* PGPayoffProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffProcessor.m; path = Watermark/PGPayoffProcessor.m; sourceTree = "<group>"; };
+		EDD33F571EF9CE520028DBC8 /* PGScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGScanViewController.h; path = Watermark/PGScanViewController.h; sourceTree = "<group>"; };
+		EDD33F581EF9CE520028DBC8 /* PGScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGScanViewController.m; path = Watermark/PGScanViewController.m; sourceTree = "<group>"; };
+		EDD33F591EF9CE520028DBC8 /* PGScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGScanViewController.xib; path = Watermark/PGScanViewController.xib; sourceTree = "<group>"; };
+		EDD33F5A1EF9CE520028DBC8 /* PGWatermarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWatermarkOperation.h; path = Watermark/PGWatermarkOperation.h; sourceTree = "<group>"; };
+		EDD33F5B1EF9CE520028DBC8 /* PGWatermarkOperationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWatermarkOperationData.h; path = Watermark/PGWatermarkOperationData.h; sourceTree = "<group>"; };
+		EDD33F5C1EF9CE520028DBC8 /* PGWatermarkOperationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWatermarkOperationData.m; path = Watermark/PGWatermarkOperationData.m; sourceTree = "<group>"; };
+		EDD33F5D1EF9CE520028DBC8 /* PGWatermarkOperationHPLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWatermarkOperationHPLink.h; path = Watermark/PGWatermarkOperationHPLink.h; sourceTree = "<group>"; };
+		EDD33F5E1EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWatermarkOperationHPLink.m; path = Watermark/PGWatermarkOperationHPLink.m; sourceTree = "<group>"; };
+		EDD33F5F1EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWatermarkOperationHPMetar.h; path = Watermark/PGWatermarkOperationHPMetar.h; sourceTree = "<group>"; };
+		EDD33F601EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWatermarkOperationHPMetar.m; path = Watermark/PGWatermarkOperationHPMetar.m; sourceTree = "<group>"; };
+		EDD33F611EF9CE520028DBC8 /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWatermarkProcessor.h; path = Watermark/PGWatermarkProcessor.h; sourceTree = "<group>"; };
+		EDD33F621EF9CE520028DBC8 /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWatermarkProcessor.m; path = Watermark/PGWatermarkProcessor.m; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
@@ -5212,9 +5175,6 @@
 		F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkReaderViewController.m; sourceTree = "<group>"; };
 		F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLinkSettings.h; sourceTree = "<group>"; };
 		F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLinkSettings.m; sourceTree = "<group>"; };
-		F24DA7C81EAEA0F500C24AAB /* PGWatermarkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkOperation.h; sourceTree = "<group>"; };
-		F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWatermarkProcessor.h; sourceTree = "<group>"; };
-		F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWatermarkProcessor.m; sourceTree = "<group>"; };
 		F27256FE1E96B2A6009E553D /* imgly_license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = imgly_license; sourceTree = SOURCE_ROOT; };
 		F272AE601ED3A9E800030ADE /* PGInboxMessagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInboxMessagePageViewController.h; sourceTree = "<group>"; };
 		F272AE611ED3A9E800030ADE /* PGInboxMessagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInboxMessagePageViewController.m; sourceTree = "<group>"; };
@@ -7329,110 +7289,89 @@
 			name = LandingPage;
 			sourceTree = "<group>";
 		};
-		ED7F65661ED3ABC7002A0912 /* Metar */ = {
+		EDD33F061EF9CE520028DBC8 /* Metar */ = {
 			isa = PBXGroup;
 			children = (
-				ED7F65671ED3ABE8002A0912 /* DataObjects */,
-				ED7F65681ED3AC1E002A0912 /* PGMetarAPI.h */,
-				ED7F65691ED3AC1E002A0912 /* PGMetarAPI.m */,
-				ED7F65FD1EE07F2F002A0912 /* PGMetarOfflineTagManager.h */,
-				ED7F65FE1EE07F2F002A0912 /* PGMetarOfflineTagManager.m */,
-				ED7F656A1ED3AC1E002A0912 /* PGMetarUser.h */,
-				ED7F656B1ED3AC1E002A0912 /* PGMetarUser.m */,
+				EDD33F071EF9CE520028DBC8 /* PGMetarAPI.h */,
+				EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */,
+				EDD33F091EF9CE520028DBC8 /* PGMetarArtifact.h */,
+				EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */,
+				EDD33F0B1EF9CE520028DBC8 /* PGMetarArtifactEmotion.h */,
+				EDD33F0C1EF9CE520028DBC8 /* PGMetarArtifactEmotion.m */,
+				EDD33F0D1EF9CE520028DBC8 /* PGMetarContent.h */,
+				EDD33F0E1EF9CE520028DBC8 /* PGMetarContent.m */,
+				EDD33F0F1EF9CE520028DBC8 /* PGMetarContentContainer.h */,
+				EDD33F101EF9CE520028DBC8 /* PGMetarContentContainer.m */,
+				EDD33F111EF9CE520028DBC8 /* PGMetarImage.h */,
+				EDD33F121EF9CE520028DBC8 /* PGMetarImage.m */,
+				EDD33F131EF9CE520028DBC8 /* PGMetarImageItem.h */,
+				EDD33F141EF9CE520028DBC8 /* PGMetarImageItem.m */,
+				EDD33F151EF9CE520028DBC8 /* PGMetarImageTag.h */,
+				EDD33F161EF9CE520028DBC8 /* PGMetarImageTag.m */,
+				EDD33F171EF9CE520028DBC8 /* PGMetarLocation.h */,
+				EDD33F181EF9CE520028DBC8 /* PGMetarLocation.m */,
+				EDD33F191EF9CE520028DBC8 /* PGMetarLocationVenue.h */,
+				EDD33F1A1EF9CE520028DBC8 /* PGMetarLocationVenue.m */,
+				EDD33F1B1EF9CE520028DBC8 /* PGMetarMedia.h */,
+				EDD33F1C1EF9CE520028DBC8 /* PGMetarMedia.m */,
+				EDD33F1D1EF9CE520028DBC8 /* PGMetarOfflineTagManager.h */,
+				EDD33F1E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m */,
+				EDD33F1F1EF9CE520028DBC8 /* PGMetarPage.h */,
+				EDD33F201EF9CE520028DBC8 /* PGMetarPage.m */,
+				EDD33F211EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.h */,
+				EDD33F221EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.m */,
+				EDD33F231EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.xib */,
+				EDD33F241EF9CE520028DBC8 /* PGMetarPayoffViewController.h */,
+				EDD33F251EF9CE520028DBC8 /* PGMetarPayoffViewController.m */,
+				EDD33F261EF9CE520028DBC8 /* PGMetarPayoffViewController.xib */,
+				EDD33F271EF9CE520028DBC8 /* PGMetarSocial.h */,
+				EDD33F281EF9CE520028DBC8 /* PGMetarSocial.m */,
+				EDD33F291EF9CE520028DBC8 /* PGMetarSocialActivity.h */,
+				EDD33F2A1EF9CE520028DBC8 /* PGMetarSocialActivity.m */,
+				EDD33F2B1EF9CE520028DBC8 /* PGMetarSource.h */,
+				EDD33F2C1EF9CE520028DBC8 /* PGMetarSource.m */,
+				EDD33F2D1EF9CE520028DBC8 /* PGMetarUser.h */,
+				EDD33F2E1EF9CE520028DBC8 /* PGMetarUser.m */,
+				EDD33F2F1EF9CE520028DBC8 /* PGMetarVideo.h */,
+				EDD33F301EF9CE520028DBC8 /* PGMetarVideo.m */,
 			);
 			name = Metar;
+			path = Watermark/Metar;
 			sourceTree = "<group>";
 		};
-		ED7F65671ED3ABE8002A0912 /* DataObjects */ = {
+		EDD33F311EF9CE520028DBC8 /* PayoffViews */ = {
 			isa = PBXGroup;
 			children = (
-				ED7F656E1ED3AC2B002A0912 /* PGMetarArtifact.h */,
-				ED7F656F1ED3AC2B002A0912 /* PGMetarArtifact.m */,
-				ED7F65701ED3AC2B002A0912 /* PGMetarArtifactEmotion.h */,
-				ED7F65711ED3AC2B002A0912 /* PGMetarArtifactEmotion.m */,
-				ED7F65721ED3AC2B002A0912 /* PGMetarContent.h */,
-				ED7F65731ED3AC2B002A0912 /* PGMetarContent.m */,
-				ED7F65741ED3AC2B002A0912 /* PGMetarContentContainer.h */,
-				ED7F65751ED3AC2B002A0912 /* PGMetarContentContainer.m */,
-				ED7F65761ED3AC2B002A0912 /* PGMetarImage.h */,
-				ED7F65771ED3AC2B002A0912 /* PGMetarImage.m */,
-				ED7F65781ED3AC2B002A0912 /* PGMetarImageItem.h */,
-				ED7F65791ED3AC2B002A0912 /* PGMetarImageItem.m */,
-				ED7F657A1ED3AC2B002A0912 /* PGMetarImageTag.h */,
-				ED7F657B1ED3AC2B002A0912 /* PGMetarImageTag.m */,
-				ED7F657C1ED3AC2B002A0912 /* PGMetarLocation.h */,
-				ED7F657D1ED3AC2B002A0912 /* PGMetarLocation.m */,
-				ED7F657E1ED3AC2B002A0912 /* PGMetarLocationVenue.h */,
-				ED7F657F1ED3AC2B002A0912 /* PGMetarLocationVenue.m */,
-				ED7F65801ED3AC2B002A0912 /* PGMetarMedia.h */,
-				ED7F65811ED3AC2B002A0912 /* PGMetarMedia.m */,
-				ED7F65821ED3AC2B002A0912 /* PGMetarPage.h */,
-				ED7F65831ED3AC2B002A0912 /* PGMetarPage.m */,
-				ED7F65871ED3AC2B002A0912 /* PGMetarSocial.h */,
-				ED7F65881ED3AC2B002A0912 /* PGMetarSocial.m */,
-				ED7F65891ED3AC2B002A0912 /* PGMetarSocialActivity.h */,
-				ED7F658A1ED3AC2B002A0912 /* PGMetarSocialActivity.m */,
-				ED7F658B1ED3AC2B002A0912 /* PGMetarSource.h */,
-				ED7F658C1ED3AC2B002A0912 /* PGMetarSource.m */,
-				ED7F658D1ED3AC2B002A0912 /* PGMetarVideo.h */,
-				ED7F658E1ED3AC2B002A0912 /* PGMetarVideo.m */,
-			);
-			name = DataObjects;
-			sourceTree = "<group>";
-		};
-		ED7F65A01ED3AC40002A0912 /* Payoff */ = {
-			isa = PBXGroup;
-			children = (
-				ED7F65A61ED3AC8E002A0912 /* PGOfflinePayoffDatabase.h */,
-				ED7F65A71ED3AC8E002A0912 /* PGOfflinePayoffDatabase.m */,
-				ED7F65A81ED3AC8E002A0912 /* PGPayoffManager.h */,
-				ED7F65A91ED3AC8E002A0912 /* PGPayoffManager.m */,
-				ED7F65AA1ED3AC8E002A0912 /* PGPayoffMetadata.h */,
-				ED7F65AB1ED3AC8E002A0912 /* PGPayoffMetadata.m */,
-				ED7F65AC1ED3AC8E002A0912 /* PGPayoffProcessor.h */,
-				ED7F65AD1ED3AC8E002A0912 /* PGPayoffProcessor.m */,
-			);
-			name = Payoff;
-			sourceTree = "<group>";
-		};
-		ED7F65BE1ED3AD6E002A0912 /* PayoffViews */ = {
-			isa = PBXGroup;
-			children = (
-				ED7F65BF1ED3AD7B002A0912 /* Accessories */,
-				ED7F65CC1ED3ADA2002A0912 /* PGPayoffView.storyboard */,
-				ED7F65CD1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.h */,
-				ED7F65CE1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.m */,
-				ED7F65CF1ED3ADA2002A0912 /* PGPayoffViewErrorViewController.h */,
-				ED7F65D01ED3ADA2002A0912 /* PGPayoffViewErrorViewController.m */,
-				ED7F65D11ED3ADA2002A0912 /* PGPayoffViewErrorViewController.xib */,
-				ED7F65D21ED3ADA2002A0912 /* PGPayoffViewImageViewController.h */,
-				ED7F65D31ED3ADA2002A0912 /* PGPayoffViewImageViewController.m */,
-				ED7F65D41ED3ADA2002A0912 /* PGPayoffViewImageViewController.xib */,
-				EDFC68981EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.h */,
-				EDFC68991EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m */,
-				EDFC689C1EE71C1A009FA37E /* PGPayoffViewLivePhotoViewController.xib */,
-				ED7F65D51ED3ADA2002A0912 /* PGPayoffViewVideoViewController.h */,
-				ED7F65D61ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m */,
-				ED7F65D71ED3ADA2002A0912 /* PGPayoffViewVideoViewController.xib */,
-				ED7F65D81ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.h */,
-				ED7F65D91ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m */,
+				EDD33F321EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.h */,
+				EDD33F331EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m */,
+				EDD33F341EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.h */,
+				EDD33F351EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m */,
+				EDD33F361EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.h */,
+				EDD33F371EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.m */,
+				EDD33F381EF9CE520028DBC8 /* PGPayoffView.storyboard */,
+				EDD33F391EF9CE520028DBC8 /* PGPayoffViewBaseViewController.h */,
+				EDD33F3A1EF9CE520028DBC8 /* PGPayoffViewBaseViewController.m */,
+				EDD33F3B1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.h */,
+				EDD33F3C1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m */,
+				EDD33F3D1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.xib */,
+				EDD33F3E1EF9CE520028DBC8 /* PGPayoffViewImageViewController.h */,
+				EDD33F3F1EF9CE520028DBC8 /* PGPayoffViewImageViewController.m */,
+				EDD33F401EF9CE520028DBC8 /* PGPayoffViewImageViewController.xib */,
+				EDD33F411EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.h */,
+				EDD33F421EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m */,
+				EDD33F431EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.xib */,
+				EDD33F441EF9CE520028DBC8 /* PGPayoffViewVideoViewController.h */,
+				EDD33F451EF9CE520028DBC8 /* PGPayoffViewVideoViewController.m */,
+				EDD33F461EF9CE520028DBC8 /* PGPayoffViewVideoViewController.xib */,
+				EDD33F471EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.h */,
+				EDD33F481EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m */,
+				EDD33F491EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.h */,
+				EDD33F4A1EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m */,
+				EDD33F4B1EF9CE520028DBC8 /* PGWikipediaTableViewCell.h */,
+				EDD33F4C1EF9CE520028DBC8 /* PGWikipediaTableViewCell.m */,
 			);
 			name = PayoffViews;
-			sourceTree = "<group>";
-		};
-		ED7F65BF1ED3AD7B002A0912 /* Accessories */ = {
-			isa = PBXGroup;
-			children = (
-				ED7F65C01ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.h */,
-				ED7F65C11ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.m */,
-				ED7F65C21ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.h */,
-				ED7F65C31ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m */,
-				ED7F65C41ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.h */,
-				ED7F65C51ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m */,
-				ED7F65C61ED3AD97002A0912 /* PGWikipediaTableViewCell.h */,
-				ED7F65C71ED3AD97002A0912 /* PGWikipediaTableViewCell.m */,
-			);
-			name = Accessories;
+			path = Watermark/PayoffViews;
 			sourceTree = "<group>";
 		};
 		F134BC2E1AC60517007D892B /* Logging */ = {
@@ -7510,32 +7449,36 @@
 		F24DA7D21EAEA10200C24AAB /* Watermark */ = {
 			isa = PBXGroup;
 			children = (
-				ED7F65661ED3ABC7002A0912 /* Metar */,
-				ED7F65A01ED3AC40002A0912 /* Payoff */,
-				ED7F65BE1ED3AD6E002A0912 /* PayoffViews */,
 				F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */,
 				F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */,
 				F24DA7C41EAEA0F500C24AAB /* PGLinkReaderViewController.h */,
 				F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */,
 				F24DA7C61EAEA0F500C24AAB /* PGLinkSettings.h */,
 				F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */,
-				ED7F65841ED3AC2B002A0912 /* PGMetarPayoffViewController.h */,
-				ED7F65851ED3AC2B002A0912 /* PGMetarPayoffViewController.m */,
-				ED7F65861ED3AC2B002A0912 /* PGMetarPayoffViewController.xib */,
-				ED7F65BB1ED3AD5F002A0912 /* PGPageControl.h */,
-				ED7F65BC1ED3AD5F002A0912 /* PGPageControl.m */,
-				ED7F65A11ED3AC6C002A0912 /* PGScanViewController.h */,
-				ED7F65A21ED3AC6C002A0912 /* PGScanViewController.m */,
-				ED7F65A31ED3AC6C002A0912 /* PGScanViewController.xib */,
-				F24DA7C81EAEA0F500C24AAB /* PGWatermarkOperation.h */,
-				ED7F65B21ED3ACC0002A0912 /* PGWatermarkOperationData.h */,
-				ED7F65B31ED3ACC0002A0912 /* PGWatermarkOperationData.m */,
-				ED7F65B41ED3ACC0002A0912 /* PGWatermarkOperationHPLink.h */,
-				ED7F65B51ED3ACC0002A0912 /* PGWatermarkOperationHPLink.m */,
-				ED7F65B61ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.h */,
-				ED7F65B71ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.m */,
-				F24DA7CA1EAEA0F500C24AAB /* PGWatermarkProcessor.h */,
-				F24DA7CB1EAEA0F500C24AAB /* PGWatermarkProcessor.m */,
+				EDD33F061EF9CE520028DBC8 /* Metar */,
+				EDD33F311EF9CE520028DBC8 /* PayoffViews */,
+				EDD33F4D1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.h */,
+				EDD33F4E1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m */,
+				EDD33F4F1EF9CE520028DBC8 /* PGPageControl.h */,
+				EDD33F501EF9CE520028DBC8 /* PGPageControl.m */,
+				EDD33F511EF9CE520028DBC8 /* PGPayoffManager.h */,
+				EDD33F521EF9CE520028DBC8 /* PGPayoffManager.m */,
+				EDD33F531EF9CE520028DBC8 /* PGPayoffMetadata.h */,
+				EDD33F541EF9CE520028DBC8 /* PGPayoffMetadata.m */,
+				EDD33F551EF9CE520028DBC8 /* PGPayoffProcessor.h */,
+				EDD33F561EF9CE520028DBC8 /* PGPayoffProcessor.m */,
+				EDD33F571EF9CE520028DBC8 /* PGScanViewController.h */,
+				EDD33F581EF9CE520028DBC8 /* PGScanViewController.m */,
+				EDD33F591EF9CE520028DBC8 /* PGScanViewController.xib */,
+				EDD33F5A1EF9CE520028DBC8 /* PGWatermarkOperation.h */,
+				EDD33F5B1EF9CE520028DBC8 /* PGWatermarkOperationData.h */,
+				EDD33F5C1EF9CE520028DBC8 /* PGWatermarkOperationData.m */,
+				EDD33F5D1EF9CE520028DBC8 /* PGWatermarkOperationHPLink.h */,
+				EDD33F5E1EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m */,
+				EDD33F5F1EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.h */,
+				EDD33F601EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m */,
+				EDD33F611EF9CE520028DBC8 /* PGWatermarkProcessor.h */,
+				EDD33F621EF9CE520028DBC8 /* PGWatermarkProcessor.m */,
 			);
 			name = Watermark;
 			sourceTree = "<group>";
@@ -7863,6 +7806,7 @@
 				929CE0C21EF075C700039377 /* Derby.png in Resources */,
 				929CE1721EF075C700039377 /* screwdriver.png in Resources */,
 				929CE5ED1EF1B81100039377 /* july_glasses_TN.png in Resources */,
+				EDD33F8F1EF9CE520028DBC8 /* PGScanViewController.xib in Resources */,
 				929CE5DC1EF1B81100039377 /* july_fireworks_burst_stars.png in Resources */,
 				929CE4741EF0792000039377 /* DotsOverlayFrame_TN@3x.png in Resources */,
 				929CE1521EF075C700039377 /* golf.png in Resources */,
@@ -7870,7 +7814,6 @@
 				929CE01B1EF075C600039377 /* glasses_blossom.png in Resources */,
 				929CE00B1EF075C600039377 /* gift-dog.png in Resources */,
 				929CE03C1EF075C600039377 /* Football_TN@2x.png in Resources */,
-				F23FF9281EF9E4130081EC03 /* PGPayoffViewVideoViewController.xib in Resources */,
 				929CE5EA1EF1B81100039377 /* july_glasses_more_TN@2x.png in Resources */,
 				929CE4821EF0792000039377 /* GradientFrame_TN.png in Resources */,
 				929CE1401EF075C700039377 /* fd_hat_TN@2x.png in Resources */,
@@ -7908,7 +7851,7 @@
 				929CE3A01EF075C800039377 /* flip_flops2_TN@2x.png in Resources */,
 				929CDFB91EF075C600039377 /* mother_giraffe_TN@2x.png in Resources */,
 				929CE2091EF075C700039377 /* letter_TN@3x.png in Resources */,
-				F23FF9261EF9E4130081EC03 /* PGPayoffViewErrorViewController.xib in Resources */,
+				EDD33F7F1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.xib in Resources */,
 				929CE1DC1EF075C700039377 /* pizza_TN@2x.png in Resources */,
 				929CE4041EF075C800039377 /* volleyball_TN@2x.png in Resources */,
 				929CE1D01EF075C700039377 /* oranges_TN@2x.png in Resources */,
@@ -7982,7 +7925,7 @@
 				929CE1D61EF075C700039377 /* Pineapple.png in Resources */,
 				929CE1EE1EF075C700039377 /* taco2.png in Resources */,
 				929CE4AB1EF0792000039377 /* StarsOverlayFrame_TN@2x.png in Resources */,
-				F23FF9251EF9E4130081EC03 /* PGPayoffView.storyboard in Resources */,
+				EDD33F7C1EF9CE520028DBC8 /* PGPayoffView.storyboard in Resources */,
 				929CE0891EF075C700039377 /* Unicorn_TN@3x.png in Resources */,
 				929CDFCE1EF075C600039377 /* rabbit_TN@3x.png in Resources */,
 				929CE5F91EF1B81100039377 /* july_happy_4th_TN.png in Resources */,
@@ -8167,7 +8110,6 @@
 				929CE5AA1EF1B81100039377 /* AB_test_UncleSam_hat_TN@2x.png in Resources */,
 				929CDFB21EF075C600039377 /* koala_TN@3x.png in Resources */,
 				929CE6071EF1B81100039377 /* july_ice_cream_conepx_TN@3x.png in Resources */,
-				F23FF9291EF9E4130081EC03 /* PGPayoffViewLivePhotoViewController.xib in Resources */,
 				929CDF7F1EF075C600039377 /* bunny_new.png in Resources */,
 				929CE0631EF075C700039377 /* OMG_TN.png in Resources */,
 				929CE07B1EF075C700039377 /* smiley_TN.png in Resources */,
@@ -8243,7 +8185,6 @@
 				929CE0911EF075C700039377 /* v_hearts_TN@3x.png in Resources */,
 				929CE3661EF075C800039377 /* sun.png in Resources */,
 				F2030C0D1EA5878600141855 /* imglyStickerCategory@3x.png in Resources */,
-				F23FF8F91EF9E3A10081EC03 /* PGScanViewController.xib in Resources */,
 				929CE0111EF075C600039377 /* gift_TN@2x.png in Resources */,
 				929CE0A61EF075C700039377 /* bunny_ears.png in Resources */,
 				929CE0AE1EF075C700039377 /* bunny_ears_polkadot_TN@3x.png in Resources */,
@@ -8341,6 +8282,7 @@
 				929CE13F1EF075C700039377 /* fd_hat_TN.png in Resources */,
 				929CE6081EF1B81100039377 /* july_ice_cream_conepx.png in Resources */,
 				929CE4AD1EF0792000039377 /* StarsOverlayFrame.png in Resources */,
+				EDD33F711EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.xib in Resources */,
 				929CE6141EF1B81100039377 /* july_liberty_crown.png in Resources */,
 				929CDF951EF075C600039377 /* cat_body_TN@2x.png in Resources */,
 				929CDF831EF075C600039377 /* butterfly.png in Resources */,
@@ -8575,6 +8517,7 @@
 				929CE5A61EF1B81100039377 /* AB_test_PatrioticAviators_TN@2x.png in Resources */,
 				929CE6481EF1B81100039377 /* july_Soda_canpx.png in Resources */,
 				929CE5DF1EF1B81100039377 /* july_fireworks_burst_TN@3x.png in Resources */,
+				EDD33F831EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.xib in Resources */,
 				929CE5A01EF1B81100039377 /* AB_test_AmericanFlag.png in Resources */,
 				929CE65C1EF1B81100039377 /* july_uncle_sam.png in Resources */,
 				929CE0B91EF075C700039377 /* catears_TN@3x.png in Resources */,
@@ -8751,7 +8694,7 @@
 				F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */,
 				929CE5A81EF1B81100039377 /* AB_test_PatrioticAviators.png in Resources */,
 				929CE1C31EF075C700039377 /* icecreamcone_TN.png in Resources */,
-				F23FF9271EF9E4130081EC03 /* PGPayoffViewImageViewController.xib in Resources */,
+				EDD33F811EF9CE520028DBC8 /* PGPayoffViewImageViewController.xib in Resources */,
 				929CE5B91EF1B81100039377 /* july_4th_star_glasses_TN.png in Resources */,
 				929CE3A41EF075C800039377 /* floating_sloth_TN@2x.png in Resources */,
 				929CE3D61EF075C800039377 /* scuba_mask.png in Resources */,
@@ -8962,7 +8905,7 @@
 				929CE4871EF0792000039377 /* GreyShadowFrame_TN@2x.png in Resources */,
 				929CE0D71EF075C700039377 /* glasses_1.png in Resources */,
 				929CE48F1EF0792000039377 /* KraftFrame_TN@2x.png in Resources */,
-				F23FF8FA1EF9E3A10081EC03 /* PGMetarPayoffViewController.xib in Resources */,
+				EDD33F731EF9CE520028DBC8 /* PGMetarPayoffViewController.xib in Resources */,
 				929CE0771EF075C700039377 /* skull_TN.png in Resources */,
 				929CE0D91EF075C700039377 /* glasses_1_TN@2x.png in Resources */,
 				929CDFDE1EF075C600039377 /* spider_TN@3x.png in Resources */,
@@ -9145,6 +9088,7 @@
 				929CE3D31EF075C800039377 /* sand_castle_TN.png in Resources */,
 				929CE0FB1EF075C700039377 /* pacifier-copy_TN.png in Resources */,
 				E3D6810419A2B193000D45E0 /* PGSegmentedControlView.xib in Resources */,
+				EDD33F851EF9CE520028DBC8 /* PGPayoffViewVideoViewController.xib in Resources */,
 				929CE2151EF075C700039377 /* medicine_TN@3x.png in Resources */,
 				929CE1541EF075C700039377 /* golf_set_TN.png in Resources */,
 				929CE1041EF075C700039377 /* rabbit-mask_TN@2x.png in Resources */,
@@ -9244,7 +9188,6 @@
 				264C20331EF1D1BA00B3BB98 /* fd_glasses_1_TN@3x.png in Resources */,
 				264C1F9E1EF1D1AA00B3BB98 /* apple_angry_TN@2x.png in Resources */,
 				264C1FFA1EF1D1AB00B3BB98 /* taco2_TN@2x.png in Resources */,
-				F23FF9211EF9E4120081EC03 /* PGPayoffViewVideoViewController.xib in Resources */,
 				264C211D1EF1D1D400B3BB98 /* heart_2_TN.png in Resources */,
 				264C21311EF1D1D400B3BB98 /* hearts_TN.png in Resources */,
 				264C20BD1EF1D1C700B3BB98 /* Glasses-blinds_TN.png in Resources */,
@@ -9282,7 +9225,6 @@
 				264C21D31EF1D1FA00B3BB98 /* cat-on-head.png in Resources */,
 				264C21FA1EF1D1FA00B3BB98 /* koala_TN@3x.png in Resources */,
 				264C1E891EF1D15700B3BB98 /* rosebud_TN.png in Resources */,
-				F23FF91D1EF9E4120081EC03 /* PGPayoffViewErrorViewController.xib in Resources */,
 				264C20871EF1D1BA00B3BB98 /* wrench_TN@3x.png in Resources */,
 				264C1F261EF1D17B00B3BB98 /* july_liberty_crown_doodle_TN@3x.png in Resources */,
 				264C1F281EF1D17B00B3BB98 /* july_liberty_crown_TN.png in Resources */,
@@ -9356,7 +9298,6 @@
 				264C1E0F1EF1D15700B3BB98 /* banner-copy_TN@3x.png in Resources */,
 				264C1DE91EF1D14900B3BB98 /* swim_fins_TN.png in Resources */,
 				264C201D1EF1D1BA00B3BB98 /* crown_1_TN.png in Resources */,
-				F23FF91A1EF9E4120081EC03 /* PGPayoffView.storyboard in Resources */,
 				0aefe6fad1e472ac8cdf97a8 /* CoveredByYourGrace.ttf in Resources */,
 				264C1D311EF1D13100B3BB98 /* Floral2Frame_TN@3x.png in Resources */,
 				264C20581EF1D1BA00B3BB98 /* i_heart_dad_1.png in Resources */,
@@ -9541,7 +9482,6 @@
 				264C1D7B1EF1D13100B3BB98 /* WhiteRoundedFrame_TN.png in Resources */,
 				264C1DA91EF1D14900B3BB98 /* kite_TN.png in Resources */,
 				264C21421EF1D1D400B3BB98 /* peace_TN@2x.png in Resources */,
-				F23FF9241EF9E4120081EC03 /* PGPayoffViewLivePhotoViewController.xib in Resources */,
 				264C1DFD1EF1D14900B3BB98 /* visor_TN.png in Resources */,
 				264C1E081EF1D15600B3BB98 /* aster_flower.png in Resources */,
 				264C1E221EF1D15700B3BB98 /* cloud_sad_TN@2x.png in Resources */,
@@ -9617,7 +9557,6 @@
 				264C21FC1EF1D1FA00B3BB98 /* Mom_child_cats_TN.png in Resources */,
 				264C1F051EF1D17B00B3BB98 /* july_glasses_TN@2x.png in Resources */,
 				264C21B01EF1D1ED00B3BB98 /* gift_TN.png in Resources */,
-				F23FF8FE1EF9E3A30081EC03 /* PGScanViewController.xib in Resources */,
 				264C1F0E1EF1D17B00B3BB98 /* july_happy_4th_of_july_TN@3x.png in Resources */,
 				264C1F461EF1D17B00B3BB98 /* july_patriotic_popsicle_melt_TN@3x.png in Resources */,
 				264C20381EF1D1BA00B3BB98 /* fd_heart_banner.png in Resources */,
@@ -10125,7 +10064,6 @@
 				264C1E451EF1D15700B3BB98 /* flowers_daisies.png in Resources */,
 				264C207D1EF1D1BA00B3BB98 /* talk_bubble_TN.png in Resources */,
 				264C1DD81EF1D14900B3BB98 /* soda_straw.png in Resources */,
-				F23FF91F1EF9E4120081EC03 /* PGPayoffViewImageViewController.xib in Resources */,
 				264C1E691EF1D15700B3BB98 /* moon_TN.png in Resources */,
 				264C21A31EF1D1ED00B3BB98 /* cupcake.png in Resources */,
 				264C1FC91EF1D1AA00B3BB98 /* icecream_tub_TN.png in Resources */,
@@ -10336,7 +10274,6 @@
 				264C1DAD1EF1D14900B3BB98 /* lei_TN.png in Resources */,
 				264C207F1EF1D1BA00B3BB98 /* talk_bubble_TN@3x.png in Resources */,
 				264C20121EF1D1BA00B3BB98 /* bear_TN@2x.png in Resources */,
-				F23FF9031EF9E3A30081EC03 /* PGMetarPayoffViewController.xib in Resources */,
 				264C1FCF1EF1D1AA00B3BB98 /* icecreamcone_TN@3x.png in Resources */,
 				264C204B1EF1D1BA00B3BB98 /* golf_set_TN@2x.png in Resources */,
 				264C1F541EF1D17B00B3BB98 /* july_popsiclepx_TN.png in Resources */,
@@ -10933,7 +10870,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F23FF91B1EF9E4120081EC03 /* PGPayoffViewBaseViewController.m in Sources */,
 				a4c085aca577f3bf459cbec2 /* PGImagePickerLandscapeSupportController.m in Sources */,
 				F24DA7D51EAEA13800C24AAB /* PGLinkSettings.m in Sources */,
 				a7818a6671c8c9a25b3cc654 /* PGAboutViewController.m in Sources */,
@@ -10944,39 +10880,26 @@
 				c2e153366dd0c752981c1913 /* PGStickerItem.m in Sources */,
 				1174168234d1a88405ac0c0b /* NSURLRequest+Helper.m in Sources */,
 				F22F123A1E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
-				F23FF91C1EF9E4120081EC03 /* PGPayoffViewErrorViewController.m in Sources */,
-				F23FF90A1EF9E3D20081EC03 /* PGMetarContentContainer.m in Sources */,
 				F20D4CA01E87392900A347B5 /* PGProgressView.m in Sources */,
-				F23FF9161EF9E3F20081EC03 /* PGOfflinePayoffDatabase.m in Sources */,
 				F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
 				8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */,
 				926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */,
-				F23FF9011EF9E3A30081EC03 /* PGWatermarkOperationHPMetar.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
-				F23FF9001EF9E3A30081EC03 /* PGWatermarkOperationHPLink.m in Sources */,
-				F23FF9051EF9E3B80081EC03 /* PGMetarUser.m in Sources */,
 				55aaf393a902377e8118627e /* PGFacebookLandingPageViewController.m in Sources */,
-				F23FF9121EF9E3D20081EC03 /* PGMetarSocial.m in Sources */,
 				a066e20082450f3d9be0eacf /* main.m in Sources */,
 				a5ddf8bbdfb873da46ef0132 /* UIColor+HexString.m in Sources */,
-				F23FF90C1EF9E3D20081EC03 /* PGMetarImageItem.m in Sources */,
 				8263D7B81E71DD330036E903 /* PGTextView.m in Sources */,
-				F2415F1D1EF9E86900F1A3CF /* PGSocialSourcesCircleView.m in Sources */,
 				924A708C1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
-				F23FF9141EF9E3D20081EC03 /* PGMetarSource.m in Sources */,
 				b7f4d03ea6ee15ea731634d1 /* PGLogFormatter.m in Sources */,
 				F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
 				926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */,
 				82EF7B021EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
-				F23FF9041EF9E3B80081EC03 /* PGMetarAPI.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
-				F23FF9111EF9E3D20081EC03 /* PGMetarPage.m in Sources */,
-				F23FF9201EF9E4120081EC03 /* PGPayoffViewVideoViewController.m in Sources */,
 				F20CE25E1EC243A400FD910D /* PGInAppMessageView.m in Sources */,
 				F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
@@ -10984,28 +10907,19 @@
 				25c6100084fde467d96622ff /* PGOverlayCameraViewController.m in Sources */,
 				82E3DEB51E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
 				F22F12261E522FF300753C5A /* PGFeatureFlag.m in Sources */,
-				F23FF9021EF9E3A30081EC03 /* PGMetarPayoffViewController.m in Sources */,
 				0d5e2bd60e8c18c05212cbcc /* PGSaveToCameraRollActivity.m in Sources */,
 				5bd4fb56c7ce2869164331e4 /* PGGesturesView+Analytics.m in Sources */,
-				F23FF9221EF9E4120081EC03 /* PGPayoffViewWikipediaViewController.m in Sources */,
-				F23FF8FF1EF9E3A30081EC03 /* PGWatermarkOperationData.m in Sources */,
-				F23FF92B1EF9E4290081EC03 /* PGPayoffFullScreenTmpViewController.m in Sources */,
 				1aceb1ccd8ed31fb57c6e23d /* PGCameraManager.m in Sources */,
 				82813D4D1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
-				F23FF9151EF9E3D20081EC03 /* PGMetarVideo.m in Sources */,
 				826B69D91DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				b38119a178e5e78951d50540 /* PGCrashlyticsLogger.m in Sources */,
 				82E3DEBB1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
 				2529d15d16aa46d869158238 /* PGWebViewerViewController.m in Sources */,
-				F23FF9061EF9E3B80081EC03 /* PGMetarOfflineTagManager.m in Sources */,
 				8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */,
 				141cc38c3e33f2c4363f6f0c /* UIImageView+MaskImage.m in Sources */,
-				F23FF8FC1EF9E3A30081EC03 /* PGPageControl.m in Sources */,
 				a87555cde15740ecf2522d3b /* PGInstagramLandingPageViewController.m in Sources */,
 				F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */,
-				F23FF9181EF9E3F20081EC03 /* PGPayoffMetadata.m in Sources */,
 				F2E785311DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
-				F23FF92C1EF9E4290081EC03 /* PGWikipediaImageCollectionViewCell.m in Sources */,
 				F2C1EEC11ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */,
 				F254DDE91EF9E7F600A0FE87 /* PGFrameItem.m in Sources */,
 				4594aa2a81c01c0db495be1d /* UIImage+ImageResize.m in Sources */,
@@ -11021,19 +10935,13 @@
 				c3bc4f151439ee3aad5ab499 /* UIView+Background.m in Sources */,
 				F2C1EEC61ECD08F100C11BE9 /* PGImageCache.m in Sources */,
 				ca33fc8bc9e996cd212214f3 /* PGHelpAndHowToViewController.m in Sources */,
-				F23FF9071EF9E3D20081EC03 /* PGMetarArtifact.m in Sources */,
 				49ad600baf4c001336afed6f /* PGTermsAttributedLabel.m in Sources */,
 				F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
-				F23FF90E1EF9E3D20081EC03 /* PGMetarLocation.m in Sources */,
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
 				65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
-				F23FF90B1EF9E3D20081EC03 /* PGMetarImage.m in Sources */,
-				F23FF90D1EF9E3D20081EC03 /* PGMetarImageTag.m in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
-				F23FF92A1EF9E4290081EC03 /* AVPlayerViewController+Fullscreen.m in Sources */,
 				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
 				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
-				F23FF92D1EF9E4290081EC03 /* PGWikipediaTableViewCell.m in Sources */,
 				e265c297713e9b6e3f04b533 /* PGView.m in Sources */,
 				7f8d860833dd0b905e33e418 /* PGPreviewViewController.m in Sources */,
 				24621f9ff6a174a391042307 /* UIView+Animations.m in Sources */,
@@ -11046,11 +10954,7 @@
 				a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */,
 				F23051691ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */,
 				82A116811E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
-				F23FF9081EF9E3D20081EC03 /* PGMetarArtifactEmotion.m in Sources */,
-				F23FF91E1EF9E4120081EC03 /* PGPayoffViewImageViewController.m in Sources */,
-				F23FF9131EF9E3D20081EC03 /* PGMetarSocialActivity.m in Sources */,
 				F230516E1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,
-				F23FF9171EF9E3F20081EC03 /* PGPayoffManager.m in Sources */,
 				F23051731ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m in Sources */,
 				F2C1EECD1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
 				410e5832482fe56a231852de /* NSString+Utils.m in Sources */,
@@ -11060,22 +10964,16 @@
 				1d083780537ed0fd761b7b5c /* UIViewController+Trackable.m in Sources */,
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
-				F23FF8FD1EF9E3A30081EC03 /* PGScanViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
-				F24DA7D71EAEA13800C24AAB /* PGWatermarkProcessor.m in Sources */,
-				F23FF90F1EF9E3D20081EC03 /* PGMetarLocationVenue.m in Sources */,
-				F23FF9231EF9E4120081EC03 /* PGPayoffViewLivePhotoViewController.m in Sources */,
+				F24DA7D71EAEA13800C24AAB /* (null) in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
-				F23FF9091EF9E3D20081EC03 /* PGMetarContent.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
-				F23FF9191EF9E3F20081EC03 /* PGPayoffProcessor.m in Sources */,
 				F272AE631ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */,
 				5bdaef2b736e0b67a0f52115 /* PGCameraRollLandingPageViewController.m in Sources */,
-				F23FF9101EF9E3D20081EC03 /* PGMetarMedia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11102,92 +11000,89 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDFC68961EE618B5009FA37E /* PGSegmentedControlView.m in Sources */,
-				EDFC68951EE618AB009FA37E /* PGRevealViewController.m in Sources */,
-				EDFC68941EE618A3009FA37E /* PGLinkCredentialsManager.m in Sources */,
-				EDFC68931EE61849009FA37E /* PGImglyManager.m in Sources */,
-				EDFC68921EE61843009FA37E /* PGSurveyManager.m in Sources */,
-				EDFC68911EE617DE009FA37E /* PGSocialSourcesMenuViewController.m in Sources */,
 				F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */,
+				EDD33F6F1EF9CE520028DBC8 /* PGMetarPage.m in Sources */,
 				F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */,
 				F21185BB1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */,
-				F2D5A3951EAEA4C7002F9DDC /* PGWatermarkOperation.h in Sources */,
-				F2D5A3961EAEA4C7002F9DDC /* PGWatermarkProcessor.h in Sources */,
-				ED7F65B01ED3AC8E002A0912 /* PGPayoffMetadata.m in Sources */,
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
-				ED7F659C1ED3AC2B002A0912 /* PGMetarSocial.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
+				EDD33F6D1EF9CE520028DBC8 /* PGMetarMedia.m in Sources */,
+				EDD33F8A1EF9CE520028DBC8 /* PGPageControl.m in Sources */,
+				EDD33F8B1EF9CE520028DBC8 /* PGPayoffManager.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
-				ED7F65BD1ED3AD5F002A0912 /* PGPageControl.m in Sources */,
+				EDD33F751EF9CE520028DBC8 /* PGMetarSocialActivity.m in Sources */,
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
-				ED7F65931ED3AC2B002A0912 /* PGMetarImage.m in Sources */,
+				F2B3F5A11EFC427200F1E6FB /* PGSocialSourcesMenuViewController.m in Sources */,
 				821851D41D60EC6F001288D9 /* PGSignInButton.m in Sources */,
 				F23051681ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */,
-				ED7F65C91ED3AD97002A0912 /* PGPayoffFullScreenTmpViewController.m in Sources */,
 				F2E785221DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
 				929B9B221EB7D8AC00A2CF0E /* PGSideBarMenuTableViewCell.m in Sources */,
-				ED7F65FF1EE07F2F002A0912 /* PGMetarOfflineTagManager.m in Sources */,
-				F254DDEB1EF9E7FB00A0FE87 /* PGFrameItem.m in Sources */,
-				ED7F65A41ED3AC6C002A0912 /* PGScanViewController.m in Sources */,
-				ED7F65981ED3AC2B002A0912 /* PGMetarMedia.m in Sources */,
-				ED7F65DE1ED3ADA2002A0912 /* PGPayoffViewImageViewController.m in Sources */,
-				ED7F659D1ED3AC2B002A0912 /* PGMetarSocialActivity.m in Sources */,
-				ED7F65CB1ED3AD97002A0912 /* PGWikipediaTableViewCell.m in Sources */,
+				EDD33F801EF9CE520028DBC8 /* PGPayoffViewImageViewController.m in Sources */,
 				F23051721ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m in Sources */,
+				EDD33F7B1EF9CE520028DBC8 /* PGPayoffFullScreenTmpViewController.m in Sources */,
+				EDD33F8E1EF9CE520028DBC8 /* PGScanViewController.m in Sources */,
+				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
+				EDD33F861EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m in Sources */,
+				EDD33F6E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m in Sources */,
+				EDD33F741EF9CE520028DBC8 /* PGMetarSocial.m in Sources */,
+				EDD33F7A1EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m in Sources */,
+				EDD33F881EF9CE520028DBC8 /* PGWikipediaTableViewCell.m in Sources */,
+				F24DA7CC1EAEA0F500C24AAB /* PGLinkCredentialsManager.m in Sources */,
+				F1B5434219C785B100460701 /* PGRevealViewController.m in Sources */,
 				82362A591D5959870019F024 /* PGStickerItem.m in Sources */,
 				E33F000019D21CD500D2FDAC /* NSURLRequest+Helper.m in Sources */,
-				ED7F65B11ED3AC8E002A0912 /* PGPayoffProcessor.m in Sources */,
-				ED7F65E01ED3ADA2002A0912 /* PGPayoffViewVideoViewController.m in Sources */,
-				ED7F658F1ED3AC2B002A0912 /* PGMetarArtifact.m in Sources */,
+				E3D6810819A2B249000D45E0 /* PGSegmentedControlView.m in Sources */,
 				F272AE621ED3A9E800030ADE /* PGInboxMessagePageViewController.m in Sources */,
+				EDD33F701EF9CE520028DBC8 /* PGMetarPayoffFeedbackViewController.m in Sources */,
 				82EF7B011EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
 				E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */,
-				EDFC689A1EE7179F009FA37E /* PGPayoffViewLivePhotoViewController.m in Sources */,
 				F21C66601E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.m in Sources */,
-				ED7F65CA1ED3AD97002A0912 /* PGWikipediaImageCollectionViewCell.m in Sources */,
+				EDD33F651EF9CE520028DBC8 /* PGMetarArtifactEmotion.m in Sources */,
+				EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */,
 				F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */,
 				E31BE41F19ED91E1006B78BB /* PGFacebookLandingPageViewController.m in Sources */,
 				F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */,
 				E34D5067199AB87B006D80E0 /* main.m in Sources */,
-				ED7F65941ED3AC2B002A0912 /* PGMetarImageItem.m in Sources */,
 				E3461F2619AE2F470042DF5E /* UIColor+HexString.m in Sources */,
 				F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */,
 				F236FAC71E8721F700FC31B5 /* PGProgressView.m in Sources */,
 				E33FFFF819D21C0E00D2FDAC /* PGAnalyticsManager.m in Sources */,
-				ED7F65921ED3AC2B002A0912 /* PGMetarContentContainer.m in Sources */,
-				ED7F65961ED3AC2B002A0912 /* PGMetarLocation.m in Sources */,
 				F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */,
+				EDD33F821EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m in Sources */,
+				F2B3F5A01EFC423700F1E6FB /* PGFrameItem.m in Sources */,
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
-				ED7F65991ED3AC2B002A0912 /* PGMetarPage.m in Sources */,
 				F230516D1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
+				EDD33F931EF9CE520028DBC8 /* PGWatermarkProcessor.m in Sources */,
+				EDD33F7D1EF9CE520028DBC8 /* PGPayoffViewBaseViewController.m in Sources */,
 				260DCF181D2E0ADD0057BD55 /* AlphaGradientView.m in Sources */,
+				EDD33F871EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m in Sources */,
 				F20CE25D1EC243A400FD910D /* PGInAppMessageView.m in Sources */,
+				EDD33F781EF9CE520028DBC8 /* PGMetarVideo.m in Sources */,
+				EDD33F791EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m in Sources */,
 				F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
+				EDD33F7E1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
+				EDD33F841EF9CE520028DBC8 /* PGPayoffViewVideoViewController.m in Sources */,
 				E3461F2A19AE2F870042DF5E /* UIView+Style.m in Sources */,
 				F2E785301DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
 				F2C1EEC51ECD08F100C11BE9 /* PGImageCache.m in Sources */,
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
-				ED7F65AF1ED3AC8E002A0912 /* PGPayoffManager.m in Sources */,
 				82E3DEBA1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
 				F2E7852B1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */,
-				ED7F65BA1ED3ACC0002A0912 /* PGWatermarkOperationHPMetar.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
+				EDD33F721EF9CE520028DBC8 /* PGMetarPayoffViewController.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
-				F24DA7D01EAEA0F500C24AAB /* PGWatermarkProcessor.m in Sources */,
-				ED7F65C81ED3AD97002A0912 /* AVPlayerViewController+Fullscreen.m in Sources */,
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
-				ED7F659E1ED3AC2B002A0912 /* PGMetarSource.m in Sources */,
 				65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
 				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
@@ -11195,14 +11090,13 @@
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
-				ED7F65B81ED3ACC0002A0912 /* PGWatermarkOperationData.m in Sources */,
-				ED7F656C1ED3AC1E002A0912 /* PGMetarAPI.m in Sources */,
-				ED7F659F1ED3AC2B002A0912 /* PGMetarVideo.m in Sources */,
-				ED7F65911ED3AC2B002A0912 /* PGMetarContent.m in Sources */,
 				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
+				EDD33F6C1EF9CE520028DBC8 /* PGMetarLocationVenue.m in Sources */,
+				EDD33F761EF9CE520028DBC8 /* PGMetarSource.m in Sources */,
+				EDD33F891EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m in Sources */,
 				F2C1EECC1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
 				F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				82813D4C1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
@@ -11214,39 +11108,43 @@
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
 				82A116801E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
 				E3461F8A19AE46B00042DF5E /* UIView+Background.m in Sources */,
-				ED7F65951ED3AC2B002A0912 /* PGMetarImageTag.m in Sources */,
 				F2E785261DDA55A30074FFB7 /* PGSocialSourcesCircleView.m in Sources */,
 				823FB33B1D77A4BE0022B132 /* PGHelpAndHowToViewController.m in Sources */,
 				821851D81D60EF4A001288D9 /* PGTermsAttributedLabel.m in Sources */,
 				F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */,
-				ED7F65B91ED3ACC0002A0912 /* PGWatermarkOperationHPLink.m in Sources */,
+				EDD33F661EF9CE520028DBC8 /* PGMetarContent.m in Sources */,
 				92D073871D25ACE8002611C0 /* PGMediaNavigation.m in Sources */,
-				ED7F65DC1ED3ADA2002A0912 /* PGPayoffViewErrorViewController.m in Sources */,
+				EDD33F771EF9CE520028DBC8 /* PGMetarUser.m in Sources */,
+				EDD33F6B1EF9CE520028DBC8 /* PGMetarLocation.m in Sources */,
+				EDD33F921EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m in Sources */,
+				EDD33F681EF9CE520028DBC8 /* PGMetarImage.m in Sources */,
 				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
-				ED7F65AE1ED3AC8E002A0912 /* PGOfflinePayoffDatabase.m in Sources */,
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,
 				E3D6810C19A2B2A6000D45E0 /* PGView.m in Sources */,
-				ED7F65901ED3AC2B002A0912 /* PGMetarArtifactEmotion.m in Sources */,
-				ED7F65971ED3AC2B002A0912 /* PGMetarLocationVenue.m in Sources */,
-				ED7F659A1ED3AC2B002A0912 /* PGMetarPayoffViewController.m in Sources */,
 				8263D7B61E71DD330036E903 /* PGTextView.m in Sources */,
 				9230AEA21D18B3A80029A888 /* PGPreviewViewController.m in Sources */,
-				ED7F65E21ED3ADA2002A0912 /* PGPayoffViewWikipediaViewController.m in Sources */,
+				EDD33F8D1EF9CE520028DBC8 /* PGPayoffProcessor.m in Sources */,
+				EDD33F911EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
+				EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */,
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,
+				EDD33F691EF9CE520028DBC8 /* PGMetarImageItem.m in Sources */,
+				EDD33F8C1EF9CE520028DBC8 /* PGPayoffMetadata.m in Sources */,
 				82E3DEB41E833C600008F600 /* PGEmbellishmentMetric.m in Sources */,
+				F2B3F59E1EFC422C00F1E6FB /* PGImglyManager.m in Sources */,
 				F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */,
 				E31BE41719EC6BB4006B78BB /* PGLandingSelectorPageViewController.m in Sources */,
-				ED7F65DB1ED3ADA2002A0912 /* PGPayoffViewBaseViewController.m in Sources */,
-				ED7F656D1ED3AC1E002A0912 /* PGMetarUser.m in Sources */,
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
+				EDD33F6A1EF9CE520028DBC8 /* PGMetarImageTag.m in Sources */,
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
+				EDD33F671EF9CE520028DBC8 /* PGMetarContentContainer.m in Sources */,
+				EDD33F901EF9CE520028DBC8 /* PGWatermarkOperationData.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
 				8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,

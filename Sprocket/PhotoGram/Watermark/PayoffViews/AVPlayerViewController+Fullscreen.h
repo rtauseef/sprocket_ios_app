@@ -10,15 +10,11 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import <Foundation/Foundation.h>
+#import <AVKit/AVKit.h>
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface AVPlayerViewController (Fullscreen)
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+-(void)goFullscreen;
 
 @end

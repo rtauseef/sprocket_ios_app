@@ -11,14 +11,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import "PGPayoffMetadata.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGMetarPayoffViewController : UIViewController
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
+@property (strong, nonatomic) PGPayoffMetadata *metadata;
+@property (strong, nonatomic) NSURL *externalLinkURL;
 
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+- (IBAction)closeButtonTapped:(id)sender;
+- (void) getMetadataFromMetar;
+- (void) updateCurrentViewLabel: (NSString *) name forView: (UIViewController *) view;
 
 @end

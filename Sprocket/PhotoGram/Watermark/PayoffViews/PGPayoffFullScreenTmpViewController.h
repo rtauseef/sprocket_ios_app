@@ -11,14 +11,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
 
-@interface PGOverlayCameraViewController : UIViewController
+@protocol PGPayoffFullScreenTmpViewControllerDelegate <NSObject>
+@optional
+- (void) tmpViewIsBack;
+@end
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
+@interface PGPayoffFullScreenTmpViewController : UIViewController
 
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
+@property (nonatomic, weak) id <PGPayoffFullScreenTmpViewControllerDelegate> delegate;
 
 @end

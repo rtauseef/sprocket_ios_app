@@ -10,15 +10,16 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
+#import <Foundation/Foundation.h>
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGMetarOfflineTagManager : NSObject
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
++ (PGMetarOfflineTagManager *_Nonnull)sharedInstance;
+- (void) checkTagDB: (nullable void (^)()) completion;
+- (NSDictionary *_Nullable) fetchLocalDatabase;
+- (void) saveLocalDatabase: (NSDictionary *_Nonnull) dic;
+- (NSDictionary *_Nullable) getTag;
+- (int) tagCount;
 
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
 
 @end
