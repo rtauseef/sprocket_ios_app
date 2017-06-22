@@ -117,12 +117,14 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = source;
     previewViewController.media = media;
-    
+
     [currentViewController presentViewController:previewViewController animated:animated completion:nil];
 }
 
 + (void)presentCameraFrom:(UIViewController *)currentViewController animated:(BOOL)animated
 {
+    [[PGPhotoSelection sharedInstance] clearSelection];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = [PGPreviewViewController cameraSource];
