@@ -34,18 +34,7 @@
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories
 {
     NSMutableArray<IMGLYSticker *> *fathersDayStickers = [NSMutableArray arrayWithArray:[self fathersDayCategoryStickers]];
-    NSInteger fathersDayThumbnailIndex = 0;
-    if ([NSLocale isChinese]) {
-        //Removing these stickers from chinese because they contain english words.
-        NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
-        [indexSet addIndex:8];
-        [indexSet addIndex:16];
-        [indexSet addIndex:21];
-
-        [fathersDayStickers removeObjectsAtIndexes:indexSet];
-
-        fathersDayThumbnailIndex = 3;
-    }
+    NSInteger fathersDayThumbnailIndex = 1;
 
     IMGLYStickerCategory *fathersDayCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                   imageURL:fathersDayStickers[fathersDayThumbnailIndex].thumbnailURL
@@ -119,7 +108,7 @@
 
     addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
 
-    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, fathersDayCategory, summerCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, summerCategory, fathersDayCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
 
     if ([NSLocale isUnitedStates]) {
         NSArray<IMGLYSticker *> *julyStickers = [self July4Stickers];
@@ -128,7 +117,7 @@
                                                                                 stickers:julyStickers];
         julyCategory.accessibilityLabel = @"July 4th Category";
         
-        [categories insertObject:julyCategory atIndex:2];
+        [categories insertObject:julyCategory atIndex:1];
     }
     
     NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
@@ -150,7 +139,6 @@
 - (NSArray<IMGLYSticker *> *)fathersDayCategoryStickers
 {
     return @[
-             [[PGStickerItem alloc] initWithName:@"Glasses 1" imageName:@"fd_glasses_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Glasses 2" imageName:@"glasses_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Mustache" imageName:@"mustache" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Crown 2" imageName:@"crown_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -158,7 +146,6 @@
              [[PGStickerItem alloc] initWithName:@"Tie Collar" imageName:@"tie_collar" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Mask" imageName:@"mask" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Super Dad" imageName:@"super_dad" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Fathers Day 2" imageName:@"fathers_day_2" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Bear" imageName:@"bear" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Bacon" imageName:@"bacon" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"BBQ" imageName:@"fd_bbq" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
@@ -166,12 +153,10 @@
              [[PGStickerItem alloc] initWithName:@"Coffee 1" imageName:@"coffee_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Bow Tie" imageName:@"bow_tie" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Hat" imageName:@"fd_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"I Heart Dad 1" imageName:@"i_heart_dad_1" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Heart Banner" imageName:@"fd_heart_banner" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Golf" imageName:@"golf" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Talk Bubble" imageName:@"talk_bubble" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Necktie Fathers Day" imageName:@"necktie_fathersday" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"Dad Tattoo" imageName:@"dad_tattoo" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Smoking Pipe" imageName:@"smoking_pipe" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"Fishing Father Son" imageName:@"fishing_fatherson" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"BBQ Utensils" imageName:@"bbq_utensils" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,

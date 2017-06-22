@@ -318,4 +318,31 @@ Then /^I verify the "(.*?)" button text$/ do |button|
         sleep(STEP_PAUSE)
     end
 end
- 
+When(/^I touch hamburger button on navigation bar$/) do
+  selenium.find_element(:name, "hamburger").click
+  sleep(SLEEP_SCREENLOAD)
+end
+
+When(/^I select "([^"]*)" option$/) do |option|
+    if option == "Privacy"
+        selenium.find_element(:xpath, "//XCUIElementTypeStaticText[@name='#{$list_loc['Privacy']}']").click
+    else
+        selenium.find_element(:xpath, "//XCUIElementTypeStaticText[@name='#{$list_loc['Buy Paper']}']").click
+    end
+    sleep(SLEEP_SCREENLOAD)
+end
+Then(/^I verify "([^"]*)" url$/) do |option|
+    if option == "Privacy"
+    url_expected = $list_loc['privacy_url']
+    else
+    url_expected = "www8.hp.com/us/en/printers/zink.html"
+    end
+    selenium.find_element(:name,"URL").click
+    sleep(SLEEP_MIN)
+    raise "Incorrect url loaded!" unless selenium.find_element(:name,"URL").value == url_expected.to_s
+end
+When(/^I navigate to "([^"]*)"$/) do |arg1|
+    selenium.find_element(:name, "#{$list_loc['return_to_sprocket']}").click
+    sleep(WAIT_SCREENLOAD)
+end
+
