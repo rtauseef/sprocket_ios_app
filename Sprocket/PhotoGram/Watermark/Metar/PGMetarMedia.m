@@ -291,7 +291,7 @@
         if (media.mediaType == kHPRMediaTypeVideo) {
             source.uri = media.videoPlaybackUri;
         } else if (media.mediaType == kHPRMediaTypeImage) {
-            source.uri = media.socialMediaImageUrl;
+            source.uri = media.standardUrl;
         }
         
         social.uri = media.socialMediaImageUrl;
