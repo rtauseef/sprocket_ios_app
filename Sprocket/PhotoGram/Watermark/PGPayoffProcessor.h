@@ -24,8 +24,4 @@
 - (instancetype)initWithMetadata:(PGMetarMedia *)metadata;
 + (instancetype)processorWithMetadata:(PGMetarMedia *)metadata;
 
-//- (instancetype)initWithMetadata:(PGPayoffMetadata *)metadata;
-//+ (instancetype)processorWithMetadata:(PGPayoffMetadata *)metadata;
-
-
 @end

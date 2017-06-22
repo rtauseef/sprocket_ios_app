@@ -93,11 +93,9 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
     
     // pre fetch offline tags
-    dispatch_async(dispatch_queue_create("OFFLINE_TAG_QUEUE", 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
         PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
-        [metaroffline checkTagDB:^{
-            
-        }];
+        [metaroffline checkTagDB:nil];
     });
     
     return YES;
