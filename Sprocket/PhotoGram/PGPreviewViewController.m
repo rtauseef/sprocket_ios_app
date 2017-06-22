@@ -948,10 +948,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     NSMutableArray *contentToPrint = [NSMutableArray array];
     
-    // ENTER GROUP
-    NSLog(@"WATERMARK - GROUP ENTER");
-    dispatch_group_enter(watermarkGroup);
-    
     for (PGGesturesView *gestureView in selectedViews) {
         MPBTImageProcessor *processor;
         
@@ -964,6 +960,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         gestureView.editedImage = [gestureView screenshotImage];
         if (processor) {
+            // ENTER GROUP
+            NSLog(@"WATERMARK - GROUP ENTER");
+            dispatch_group_enter(watermarkGroup);
+            
             NSLog(@"WATERMARK - WILL PROCESS IMAGE");
             
             MPBTImagePreprocessorManager * mg = [MPBTImagePreprocessorManager createWithProcessors:@[processor] options:@{
@@ -984,17 +984,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     self.totalPrints--;
                     
                     if (self.totalPrints == 0) {
-                        // LEAVE GROUP
                         [self dismissProgressView];
-                        NSLog(@"WATERMARK - GROUP LEAVE");
-                        dispatch_group_leave(watermarkGroup);
                     }
+
+                    // LEAVE GROUP
+                    NSLog(@"WATERMARK - GROUP LEAVE");
+                    dispatch_group_leave(watermarkGroup);
             }];
+
         } else {
             [contentToPrint addObject:[NSArray arrayWithObjects:gestureView.editedImage, extendedMetrics, nil]];
         }
     }
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // WAIT FOR GROUP
         NSLog(@"WATERMARK - GROUP WAIT");
