@@ -97,7 +97,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                 link_text = query("PGTermsAttributedLabel", :text)[0] 
                 raise "localization failed!" unless link_text == $list_loc['terms_of_service_cameraroll']
             else
-                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_cameraroll']}'")
+                terms_of_service_link=query("PGTermsAttributedLabel marked:'#{$list_loc['terms_of_service_cameraroll']}'")
                 raise "not found!" unless terms_of_service_link.length > 0
                 sleep(STEP_PAUSE)
             end
