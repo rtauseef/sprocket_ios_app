@@ -276,13 +276,23 @@ Scenario: Navigate to Preview screen for cameraroll
  @localization 
   Scenario: Signin to Facebook
     Given I am on the Landing screen
-    #When I touch the "Photos" Logo
-    #And I touch signin button
+    When I touch the "Photos" Logo
+    And I touch signin button
     When I touch hamburger button on navigation bar
     And I select "Buy Paper" option
     Then I verify "Buy Paper" url
     Then I navigate to "sprocket"
     And I select "Privacy" option
     Then I verify "Privacy" url
-    
+    Then I navigate to "sprocket"
+    And I select "How to & Help" option
+    And I select "View User Guide" option
+    Then I verify "View User Guide" url
+    Then I navigate to "sprocket"
+    And I select "Join Support Forum" option
+     Then I verify "Join Support Forum" url
+    Then I navigate to "sprocket"
+    And I select "Visit Support Website" option
+    Then I verify "Visit Support Website" url
+
     

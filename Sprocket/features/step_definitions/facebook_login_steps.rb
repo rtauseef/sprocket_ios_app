@@ -57,7 +57,11 @@ Then(/^I touch the "(.*?)" Logo$/) do |photo_source|
         value = "//UIAButton[@name='Facebook']"
     else
         if photo_source == "Photos"
-            value = "//XCUIElementTypeButton[@name='CameraRoll']"
+            name_value = "CameraRoll"
+            if ENV['LANGUAGE'] == "Chinese"
+                name_value = "Photos C"
+            end
+            value = "//XCUIElementTypeButton[@name='#{name_value}']"
         end
     end
     selenium.find_element(:xpath,"#{value}").click
@@ -65,9 +69,12 @@ end
 
 When(/^I touch signin button$/) do
     sleep(WAIT_SCREENLOAD)
-    action = Appium::TouchAction.new
-    action.swipe start_x: 50,offset_x: 300,start_y: 100,offset_y: 100,duration: 1000
-    action.perform 
+    if selenium.find_elements(:name,"LeftSwipeButton.png").size > 0   
+        puts "need to swipe"
+        action = Appium::TouchAction.new
+        action.swipe start_x: 50,offset_x: 300,start_y: 100,offset_y: 100,duration: 1000
+        action.perform 
+    end
     sleep(WAIT_SCREENLOAD)
     if $photo_source != "Photos"
         sign_in_button="//UIAButton[@name='Sign In']"
