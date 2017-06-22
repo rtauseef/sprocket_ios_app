@@ -155,7 +155,7 @@ static const NSUInteger kMaxRecordingTime = 20;
         }
     };
     
-    if (!_watermarkingEnabled) {
+    if (self.watermarkingEnabled) {
         
         [[PGCameraManager sharedInstance] runAuthorization:^(BOOL success) {
             if (success) {
@@ -213,7 +213,7 @@ static const NSUInteger kMaxRecordingTime = 20;
         self.playerViewController.showsPlaybackControls = NO;
         [self.view insertSubview:self.playerViewController.view atIndex:0];
         [self.player play];
-        });
+    });
 };
 
 - (void) playerItemDidReachEnd:(NSNotification *)notification {
@@ -232,9 +232,8 @@ static const NSUInteger kMaxRecordingTime = 20;
             self.movieMode = YES;
             
             [self.recordingProgressView setProgress:0.0];
-            //self.recordingContainerView.hidden = NO;
             self.recordingProgressView.hidden = NO;
-            _recordingProgressViewHeight.constant = 30.0f;
+            self.recordingProgressViewHeight.constant = 30.0f;
             
             [self.shutterButton setImage:[UIImage imageNamed:@"videoRecord"] forState:UIControlStateNormal];
             
@@ -250,7 +249,6 @@ static const NSUInteger kMaxRecordingTime = 20;
         
         self.recordingProgressViewHeight.constant = 0.0f;
         self.recordingProgressView.hidden = YES;
-        //self.recordingContainerView.hidden = YES;
         [self.recordingContainerView setNeedsLayout];
     }
 }

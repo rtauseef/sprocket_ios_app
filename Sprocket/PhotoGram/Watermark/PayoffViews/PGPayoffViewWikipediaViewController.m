@@ -395,14 +395,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     PGMetarBlock *currentBlock = [self.blockArray objectAtIndex:indexPath.row];
     
-    /*NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0]};
-
-    CGRect newSize = [currentBlock.text boundingRectWithSize:CGSizeMake(cell.textView.frame.size.width
-                                                                        , CGFLOAT_MAX)
-                                              options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                           attributes:attributes
-                                              context:nil];*/
-    
     UITextView *view=[[UITextView alloc] initWithFrame:CGRectMake(0, 0, cell.textView.frame.size.width, 10)];
     view.font = [UIFont systemFontOfSize:14.0];
     view.text=currentBlock.text;
@@ -410,8 +402,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
 
     float calcSize = ceil(size.height + cell.textView.frame.origin.y + kTableViewMargin);
-
-    //return calcSize > kMinimumBlockSize? calcSize : kMinimumBlockSize;
     
     return calcSize;
 }
