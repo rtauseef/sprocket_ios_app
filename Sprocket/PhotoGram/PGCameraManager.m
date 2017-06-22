@@ -427,7 +427,9 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             if ([PGSavePhotos savePhotos]) {
                 [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
                     if (success) {
-                        [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
+                        });
                         [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                     } else {
                         [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
