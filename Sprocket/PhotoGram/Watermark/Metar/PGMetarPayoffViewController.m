@@ -45,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UIView *reviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
 @property (strong, nonatomic) PGMetarMedia *metarMedia;
+@property (weak, nonatomic) IBOutlet UIImageView *wikipediaTitleImage;
 
 - (IBAction)openExternalButtonTapped:(id)sender;
 - (IBAction)thumbsUpButtonTapped:(id)sender;
@@ -98,7 +99,14 @@
     PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
     
     if (view == currentVc) {
-        self.currentViewLabel.text = name;
+        if ([view isKindOfClass:[PGPayoffViewWikipediaViewController class]]) {
+            self.currentViewLabel.hidden = YES;
+            self.wikipediaTitleImage.hidden = NO;
+        } else {
+            self.wikipediaTitleImage.hidden = YES;
+            self.currentViewLabel.text = name;
+            self.currentViewLabel.hidden = NO;
+        }
     }
 }
 
@@ -200,7 +208,9 @@
         [weakSelf.pageControl setHidden:NO];
         
         PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [weakSelf.arrayOfViewControllers objectAtIndex:0];
-        weakSelf.currentViewLabel.text = currentVc.viewTitle;
+        
+        [weakSelf updateCurrentViewLabel:currentVc.viewTitle forView:currentVc];
+        //weakSelf.currentViewLabel.text = currentVc.viewTitle;
         weakSelf.currentViewLabel.alpha = 0;
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
@@ -409,7 +419,8 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
         
         PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pendingIndex];
         
-        self.currentViewLabel.text = currentVc.viewTitle;
+        [self updateCurrentViewLabel:currentVc.viewTitle forView:currentVc];
+        //self.currentViewLabel.text = currentVc.viewTitle;
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
                          animations:^{ self.currentViewLabel.alpha = 1;}
@@ -422,7 +433,8 @@ willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewContro
     } else {
         PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
         
-        self.currentViewLabel.text = currentVc.viewTitle;
+        //self.currentViewLabel.text = currentVc.viewTitle;
+        [self updateCurrentViewLabel:currentVc.viewTitle forView:currentVc];
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseIn
                          animations:^{ self.currentViewLabel.alpha = 1;}

@@ -40,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *blocksTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *blocksTableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *scrollViewInnerView;
 
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 
@@ -249,6 +250,8 @@
     self.blocksTableViewHeightConstraint.constant = self.blocksTableView.contentSize.height;
 
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.endLabel.frame.origin.y);
+    
+    NSLog(@"Content size is %lf",self.endLabel.frame.origin.y);
 }
 
 - (IBAction)didClickShowMoreImagesButton:(id)sender {
