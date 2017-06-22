@@ -324,9 +324,7 @@ static const CGFloat kTableViewMargin = 15;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger calcSize = [self getImageSize];
-    
-    NSLog(@"Image size will be: %d",calcSize);
-    
+
     return CGSizeMake(calcSize,calcSize);
 }
 
