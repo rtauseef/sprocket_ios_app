@@ -97,7 +97,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                 link_text = query("PGTermsAttributedLabel", :text)[0] 
                 raise "localization failed!" unless link_text == $list_loc['terms_of_service_cameraroll']
             else
-                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_cameraroll']}'")
+                terms_of_service_link=query("PGTermsAttributedLabel marked:'#{$list_loc['terms_of_service_cameraroll']}'")
                 raise "not found!" unless terms_of_service_link.length > 0
                 sleep(STEP_PAUSE)
             end
@@ -324,18 +324,32 @@ When(/^I touch hamburger button on navigation bar$/) do
 end
 
 When(/^I select "([^"]*)" option$/) do |option|
-    if option == "Privacy"
-        selenium.find_element(:xpath, "//XCUIElementTypeStaticText[@name='#{$list_loc['Privacy']}']").click
-    else
-        selenium.find_element(:xpath, "//XCUIElementTypeStaticText[@name='#{$list_loc['Buy Paper']}']").click
-    end
+    sleep(STEP_PAUSE)
+    selenium.find_element(:name, "#{$list_loc[option]}").click
     sleep(SLEEP_SCREENLOAD)
 end
 Then(/^I verify "([^"]*)" url$/) do |option|
-    if option == "Privacy"
-    url_expected = $list_loc['privacy_url']
+    case 
+    when option == "Privacy"
+        url_expected = $list_loc['privacy_url']
+    when option == "Buy Paper"
+        url_expected = "www8.hp.com/us/en/printers/zink.html"
+    when option == "View User Guide"
+        url_expected = $list_loc['view_user_guide_url']
+    when option == "Join Support Forum"
+        if ENV['LANGUAGE'] == "Chinese"
+            url_expected = "https://h30471.www3.hp.com"
+        else
+            url_expected = "https://h30434.www3.hp.com/t5/sprocket/bd-p/sprocket"   
+        end
+    when option == "Visit Support Website"
+        if ENV['LANGUAGE'] == "Chinese"
+            url_expected = "https://h30471.www3.hp.com"
+        else
+           url_expected = "https://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221" 
+        end
     else
-    url_expected = "www8.hp.com/us/en/printers/zink.html"
+        puts "invalid option"
     end
     selenium.find_element(:name,"URL").click
     sleep(SLEEP_MIN)
