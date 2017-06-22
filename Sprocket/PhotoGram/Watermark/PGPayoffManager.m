@@ -14,7 +14,6 @@
 #import "PGPayoffMetadata.h"
 #import "PGOfflinePayoffDatabase.h"
 
-
 static NSString * const kOfflineIDUserDefaultsKey = @"pg-payoff-offline-id";
 static NSString * const kUniversalURLSchema = @"https";
 static NSString * const kUniversalURLHost = @"www.hpsprocket.com"; // TODO make this real
@@ -24,17 +23,13 @@ static NSString * const kUniversalURLLocalPath = @"local";
 
 static NSString * const kPGPayoffManagerDomain = @"com.hp.sprocket.payoffmanager";
 
-
-
 @interface PGPayoffManager()
 
 @property NSString * localPayoffFormat;
 
 @end
 
-
 @implementation PGPayoffManager
-
 
 - (instancetype)init
 {
@@ -57,9 +52,6 @@ static NSString * const kPGPayoffManagerDomain = @"com.hp.sprocket.payoffmanager
     return self;
 }
 
-
-
-
 + (instancetype)sharedInstance {
     static PGPayoffManager * shared = nil;
     static dispatch_once_t onceToken;
@@ -68,7 +60,6 @@ static NSString * const kPGPayoffManagerDomain = @"com.hp.sprocket.payoffmanager
     });
     return shared;
 }
-
 
 // we're resolving payoffs from URLs because that's what we get from link SDK. Ideally, we could get metadata directly
 - (void)resolvePayoffFromURL:(NSURL *)url complete:(void (^)(NSError *error, PGPayoffMetadata *metadata))complete {
@@ -109,7 +100,6 @@ static NSString * const kPGPayoffManagerDomain = @"com.hp.sprocket.payoffmanager
         complete(nil,[PGPayoffMetadata onlineURLPayoff:url]);
     }
 }
-
 
 - (NSURL *)createURLWithPayoff:(PGPayoffMetadata *)meta {
     if( meta.offline ) {

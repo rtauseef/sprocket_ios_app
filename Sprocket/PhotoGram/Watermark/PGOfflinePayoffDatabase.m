@@ -17,9 +17,6 @@ static NSString * const kOfflineMetadataUserDefaultsKey = @"pg-payoff-offline-me
 
 @implementation PGOfflinePayoffDatabase
 
-
-
-
 +(instancetype) sharedInstance {
     static PGOfflinePayoffDatabase * shared = nil;
     static dispatch_once_t onceToken;
@@ -42,10 +39,10 @@ static NSString * const kOfflineMetadataUserDefaultsKey = @"pg-payoff-offline-me
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (PGPayoffMetadata *)loadMetadata:(NSString *)id {
+- (PGPayoffMetadata *)loadMetadata:(NSString *)identifier {
     NSDictionary * data = [[NSUserDefaults standardUserDefaults] objectForKey:kOfflineMetadataUserDefaultsKey];
     if( data ) {
-        NSDictionary *  entry = data[id];
+        NSDictionary *  entry = data[identifier];
         if( entry ) {
             return [PGPayoffMetadata offlinePayoffFromDictionary:entry];
         }

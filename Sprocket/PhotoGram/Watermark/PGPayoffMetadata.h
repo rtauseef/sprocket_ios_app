@@ -32,10 +32,10 @@ typedef enum {
 
 // mega-object representing possible payoff metadata
 @interface PGPayoffMetadata : NSObject
-@property NSString * uuid;
-@property BOOL offline;
-@property tPGPayoffMetadataType type;
-@property NSDictionary* data;
+@property (strong, nonatomic) NSString * uuid;
+@property (assign, nonatomic) BOOL offline;
+@property (assign, nonatomic) tPGPayoffMetadataType type;
+@property (strong, nonatomic) NSDictionary* data;
 
 
 +(instancetype) metaFromHPPRMedia: (HPPRMedia *) media;

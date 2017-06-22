@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, PGMetarArtifactType) {
 };
 
 @property (assign, nonatomic) PGMetarArtifactType type;
-@property (assign, nonatomic) CGRect *bounds;
+@property (assign, nonatomic) CGRect bounds;
 @property (assign, nonatomic) int confidence;
 @property (strong, nonatomic) PGMetarArtifactEmotion *emotion;
 @property (strong, nonatomic) NSString* name;

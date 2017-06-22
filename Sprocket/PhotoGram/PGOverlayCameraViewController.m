@@ -15,11 +15,7 @@
 #import "PGLinkSettings.h"
 #import <AVKit/AVKit.h>
 
-#define kMaxRecordingTime (NSUInteger)20
-#define kScanningCircleRadius 180.0
-#define kScanningCircleBorder 3
-#define kLineDashPattern @[[NSNumber numberWithInt:20],[NSNumber numberWithInt:40]]
-#define kSpinnerCircleSpeed 2.0f
+static const NSUInteger kMaxRecordingTime = 20;
 
 @interface PGOverlayCameraViewController ()
 
@@ -27,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
-@property (assign) BOOL movieMode;
-@property (assign) float recordingTime;
+@property (assign, nonatomic) BOOL movieMode;
+@property (assign, nonatomic) float recordingTime;
 @property (strong, nonatomic) NSTimer *recordingTimer;
 
 
@@ -167,11 +163,12 @@
                 adjustLongPress();
             } else {
                 if (recognizer.state == UIGestureRecognizerStateBegan) {
-                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-                                                message:NSLocalizedString(@"Image scanning is not available at this time. Please try again later.", @"Message shown when the user tries to scan an image and the scanning service is not available")
-                                               delegate:self
-                                      cancelButtonTitle:NSLocalizedString(@"OK", @"Button caption")
-                                      otherButtonTitles:nil] show];
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Image scanning is not available at this time. Please try again later.", @"Message shown when the user tries to scan an image and the scanning service is not available") preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Button caption") style:UIAlertActionStyleDefault handler:nil];
+                    
+                    [alertController addAction:okAction];
+                    [self presentViewController:alertController animated:YES completion:nil];
                     
                 }
                 
@@ -291,50 +288,20 @@
         [self.player pause];
         [self.playerViewController.view removeFromSuperview];
 
-        [[PGCameraManager sharedInstance] loadPreviewViewControllerWithVideo:_playbackAsset andImage:_playbackImage andOriginalAsset: self.originalAsset andInfo:nil];
+        [[PGCameraManager sharedInstance] loadPreviewViewControllerWithVideo:self.playbackAsset andImage:self.playbackImage andOriginalAsset: self.originalAsset andInfo:nil];
     }
 }
 
 - (void) updateTimeDisplay {
-    _recordingTime += 0.2;
+    self.recordingTime += 0.2;
 
-    [self.recordingProgressView setProgress:_recordingTime/20];
+    [self.recordingProgressView setProgress:self.recordingTime/20];
     
-    if (_recordingTime >= kMaxRecordingTime) {
+    if (self.recordingTime >= kMaxRecordingTime) {
         [self.recordingTimer invalidate];
         [[PGCameraManager sharedInstance] stopRecording];
         return;
     }
-
-    /*int radius = (int) self.shutterButton.bounds.size.width / 2;
-    float startAngle = M_PI * -90 / 180;
-    float endAngle;
-    
-    if (![[PGCameraManager sharedInstance] isCapturingVideo]) {
-        [self.recordingTimer invalidate];
-        self.movieMode = NO;
-        endAngle = startAngle;
-    } else {
-        startAngle = M_PI * -90 / 180;
-        endAngle = _recordingTime * ((M_PI * 360 / 180) / 20) + startAngle;
-    }
-    
-    if (self.circle == nil) {
-        self.circle = [CAShapeLayer layer];
-        self.circle.position = CGPointMake(CGRectGetMidX(self.shutterButton.bounds)-radius,
-                                      CGRectGetMidY(self.shutterButton.bounds)-radius);
-        self.circle.fillColor = [UIColor clearColor].CGColor;
-        self.circle.lineCap=kCALineCapRound;
-        UIColor *strokeColor=[UIColor redColor];
-        self.circle.strokeColor = strokeColor.CGColor;
-        self.circle.lineWidth = 4;
-        
-        [self.shutterButton.layer addSublayer:self.circle];
-    }
-    
-    UIBezierPath *path=[UIBezierPath bezierPathWithArcCenter:CGPointMake(radius, radius) radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-    self.circle.path = [path CGPath];
-    [self.circle setNeedsDisplay];*/
 }
 
 - (IBAction)flashTapped:(id)sender {
@@ -363,11 +330,6 @@
             [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOff"] forState:UIControlStateNormal];
         }
     }
-}
-
-- (void)dealloc
-{
-    NSLog(@"PG overlay is being dealloced");
 }
 
 @end

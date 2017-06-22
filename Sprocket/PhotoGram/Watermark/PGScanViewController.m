@@ -17,12 +17,12 @@
 #import <AVKit/AVKit.h>
 
 
-static const int kAuthNetworkErrorAlert = 700;
-static const int kAuthErrorAlert = 701;
-static const int kScanningNetworkErrorAlert = 702;
-static const int kPayoffDetailsAlert = 800;
-static const int kPayoffDoneAlert = 801;
-static const int kPayoffErrorAlert = 802;
+static const NSInteger kAuthNetworkErrorAlert = 700;
+static const NSInteger kAuthErrorAlert = 701;
+static const NSInteger kScanningNetworkErrorAlert = 702;
+static const NSInteger kPayoffDetailsAlert = 800;
+static const NSInteger kPayoffDoneAlert = 801;
+static const NSInteger kPayoffErrorAlert = 802;
 
 @interface PGScanViewController () <LRCaptureDelegate, LRDetectionDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *scanningTarget;
@@ -37,8 +37,6 @@ static const int kPayoffErrorAlert = 802;
 + (instancetype) new {
     return [[PGScanViewController alloc] initWithNibName:@"PGScanViewController" bundle:nil];
 }
-
-
 
 -(void) runImageAnimation {
     [self runSpinAnimationOnView:self.scanningTarget duration:1.0 rotations:-1.0 repeat:HUGE_VALF];
@@ -156,12 +154,7 @@ static const int kPayoffErrorAlert = 802;
    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
+#pragma mark - UIAlertViewDelegate
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
@@ -210,7 +203,7 @@ static const int kPayoffErrorAlert = 802;
     return YES;
 }
 
--(void) resolvePayoffFromMetadata:(PGPayoffMetadata *) meta completion:(void(^)(BOOL success)) handler {
+-(void) resolvePayoffFromMetadata:(PGPayoffMetadata *) meta completion:(void(^__nonnull)(BOOL success)) completion {
     if( meta.offline ) {
         if( meta.type == kPGPayoffVideo ) {
             PHAsset * asset = [meta fetchPHAsset];
@@ -225,25 +218,25 @@ static const int kPayoffErrorAlert = 802;
 
                     [player play];
                     [self presentViewController:ctrl animated:YES completion:^{
-                        handler(YES);
+                        completion(YES);
                     }];
                 }];
 
 
             } else {
-                handler(NO);
+                completion(NO);
             }
 
 
         } else {
-            handler(NO);
+            completion(NO);
         }
     } else if(meta.type == kPGPayoffURL && meta.URL) {
         [[UIApplication sharedApplication] openURL:meta.URL options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @(NO)} completionHandler:^(BOOL success) {
-            handler(success);
+            completion(success);
         }];
     } else {
-        handler(NO);
+        completion(NO);
     }
     
 }
@@ -383,9 +376,6 @@ static const int kPayoffErrorAlert = 802;
     }
 }
 
-
-
-
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
@@ -416,15 +406,5 @@ static const int kPayoffErrorAlert = 802;
         }
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

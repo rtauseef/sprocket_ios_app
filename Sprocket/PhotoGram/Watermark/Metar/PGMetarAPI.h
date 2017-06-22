@@ -24,8 +24,8 @@ typedef NS_ENUM(NSInteger, PGMetarAPIError) {
     PGMetarAPIErrorFailedParsingPayload,
 };
 
-#define kBatataAPIURL @"http://www.somacoding.com/sprocket-link"
-#define kMetarAPIURL @"http://www.somacoding.com/metar"
+extern NSString * _Nonnull const kMetarAPIURL;
+extern NSString * _Nonnull const kBatataAPIURL;
 
 - (void) authenticate: (nullable void (^)(BOOL success)) completion;
 - (void) challenge: (nullable void (^)(NSError * _Nullable error)) completion;

@@ -2892,7 +2892,6 @@
 		EDD33F871EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F4A1EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m */; };
 		EDD33F881EF9CE520028DBC8 /* PGWikipediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F4C1EF9CE520028DBC8 /* PGWikipediaTableViewCell.m */; };
 		EDD33F891EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F4E1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m */; };
-		EDD33F8A1EF9CE520028DBC8 /* PGPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F501EF9CE520028DBC8 /* PGPageControl.m */; };
 		EDD33F8B1EF9CE520028DBC8 /* PGPayoffManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F521EF9CE520028DBC8 /* PGPayoffManager.m */; };
 		EDD33F8C1EF9CE520028DBC8 /* PGPayoffMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F541EF9CE520028DBC8 /* PGPayoffMetadata.m */; };
 		EDD33F8D1EF9CE520028DBC8 /* PGPayoffProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F561EF9CE520028DBC8 /* PGPayoffProcessor.m */; };
@@ -5098,8 +5097,6 @@
 		EDD33F4C1EF9CE520028DBC8 /* PGWikipediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaTableViewCell.m; sourceTree = "<group>"; };
 		EDD33F4D1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGOfflinePayoffDatabase.h; path = Watermark/PGOfflinePayoffDatabase.h; sourceTree = "<group>"; };
 		EDD33F4E1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGOfflinePayoffDatabase.m; path = Watermark/PGOfflinePayoffDatabase.m; sourceTree = "<group>"; };
-		EDD33F4F1EF9CE520028DBC8 /* PGPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPageControl.h; path = Watermark/PGPageControl.h; sourceTree = "<group>"; };
-		EDD33F501EF9CE520028DBC8 /* PGPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPageControl.m; path = Watermark/PGPageControl.m; sourceTree = "<group>"; };
 		EDD33F511EF9CE520028DBC8 /* PGPayoffManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffManager.h; path = Watermark/PGPayoffManager.h; sourceTree = "<group>"; };
 		EDD33F521EF9CE520028DBC8 /* PGPayoffManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGPayoffManager.m; path = Watermark/PGPayoffManager.m; sourceTree = "<group>"; };
 		EDD33F531EF9CE520028DBC8 /* PGPayoffMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGPayoffMetadata.h; path = Watermark/PGPayoffMetadata.h; sourceTree = "<group>"; };
@@ -7459,8 +7456,6 @@
 				EDD33F311EF9CE520028DBC8 /* PayoffViews */,
 				EDD33F4D1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.h */,
 				EDD33F4E1EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m */,
-				EDD33F4F1EF9CE520028DBC8 /* PGPageControl.h */,
-				EDD33F501EF9CE520028DBC8 /* PGPageControl.m */,
 				EDD33F511EF9CE520028DBC8 /* PGPayoffManager.h */,
 				EDD33F521EF9CE520028DBC8 /* PGPayoffManager.m */,
 				EDD33F531EF9CE520028DBC8 /* PGPayoffMetadata.h */,
@@ -11008,7 +11003,6 @@
 				E387468619F1B44700C8E00A /* PGImagePickerLandscapeSupportController.m in Sources */,
 				CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */,
 				EDD33F6D1EF9CE520028DBC8 /* PGMetarMedia.m in Sources */,
-				EDD33F8A1EF9CE520028DBC8 /* PGPageControl.m in Sources */,
 				EDD33F8B1EF9CE520028DBC8 /* PGPayoffManager.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
 				EDD33F751EF9CE520028DBC8 /* PGMetarSocialActivity.m in Sources */,

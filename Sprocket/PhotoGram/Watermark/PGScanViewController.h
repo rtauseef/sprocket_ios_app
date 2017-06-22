@@ -14,6 +14,4 @@
 
 @interface PGScanViewController : UIViewController
 
-+(instancetype) new;
-
 @end
