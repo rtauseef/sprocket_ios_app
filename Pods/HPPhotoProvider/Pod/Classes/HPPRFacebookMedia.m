@@ -21,11 +21,36 @@
 
 @implementation HPPRFacebookMedia
 
+- (id)initWithVideoAttributes:(NSDictionary *)attributes
+{
+    self = [self initWithAttributes:attributes];
+    
+    if (self) {
+        self.mediaType = HPPRMediaTypeVideo;
+        self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForVideoThumbnail:attributes];
+        self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForVideoPhoto:attributes];
+        
+        NSString *permalink = [attributes objectForKey:@"permalink_url"];
+        
+        if (permalink != nil) {
+            if (![permalink hasPrefix:@"http"])  {
+                permalink = [NSString stringWithFormat:@"%@%@",@"https://www.facebook.com",permalink];
+            }
+            self.socialMediaImageUrl = permalink;
+        }
+        
+        self.videoPlaybackUri = [attributes objectForKey:@"source"];
+    }
+    
+    return self;
+}
+
 - (id)initWithAttributes:(NSDictionary *)attributes
 {
     self = [super init];
     
     if (self) {
+        self.socialProvider = HPPRSocialMediaProviderFacebook;
         self.objectID = [attributes objectForKey:@"id"];
         self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:attributes];
         self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForLargestPhoto:attributes];
@@ -47,13 +72,32 @@
         
         self.text = [attributes objectForKey:@"name"];
         
-        id latitude = [[[attributes objectForKey:@"place"] objectForKey:@"location"] objectForKey:@"latitude"];
-        id longitude = [[[attributes objectForKey:@"place"] objectForKey:@"location"] objectForKey:@"longitude"];
-        if (latitude && longitude) {
-            self.location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+        NSDictionary *location = [[attributes objectForKey:@"place"] objectForKey:@"location"];
+        
+        if (location != nil) {
+            id latitude = [location objectForKey:@"latitude"];
+            id longitude = [location objectForKey:@"longitude"];
+            if (latitude && longitude) {
+                self.location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+            }
+            
+            self.city = [location objectForKey:@"city"];
+            self.country = [location objectForKey:@"country"];
+            self.state = [location objectForKey:@"state"];
+            self.street = [location objectForKey:@"street"];
+            self.zip = [location objectForKey:@"zip"];
         }
         
         self.placeName = [[attributes objectForKey:@"place"] objectForKey:@"name"];
+        self.mediaType = HPPRMediaTypeImage;
+        
+        NSNumber* likes = [[[attributes objectForKey:@"likes"] objectForKey:@"summary"] objectForKey:@"total_count"];
+        if (likes)
+            self.likes = [likes integerValue];
+        
+        NSNumber* comments = [[[attributes objectForKey:@"comments"] objectForKey:@"summary"] objectForKey:@"total_count"];
+        if (comments)
+            self.comments = [comments integerValue];
     }
     
     return self;

@@ -15,6 +15,18 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Photos/Photos.h>
 
+typedef NS_ENUM(NSUInteger, HPPRMediaType) {
+    HPPRMediaTypeImage,
+    HPPRMediaTypeVideo
+};
+
+typedef NS_ENUM(NSUInteger, HPPRSocialMediaProvider) {
+    HPPRSocialMediaProviderFacebook,
+    HPPRSocialMediaProviderInstagram,
+    HPPRSocialMediaProviderGoogle,
+    HPPRSocialMediaProviderFlickr
+};
+
 @class HPPRSelectPhotoProvider;
 
 @interface HPPRMedia : NSObject
@@ -26,8 +38,10 @@
 @property (nonatomic, strong) NSString *thumbnailUrl;
 @property (nonatomic, strong) NSString *standardUrl;
 @property (nonatomic, strong) NSString *socialMediaImageUrl;
+@property (assign, nonatomic) HPPRMediaType mediaType;
 
 @property (nonatomic, strong) PHAsset *asset;
+@property (strong, nonatomic) AVURLAsset *assetURL;
 @property (nonatomic, strong) UIImage *thumbnailImage;
 @property (nonatomic, strong) UIImage *previewImage;
 @property (nonatomic, strong) UIImage *image;
@@ -44,8 +58,26 @@
 @property (strong, nonatomic) NSString *locationName;
 @property (strong, nonatomic) NSArray *additionalLocations;
 
+@property (strong, nonatomic) NSString *city;
+@property (strong, nonatomic) NSString *country;
+@property (strong, nonatomic) NSString *state;
+@property (strong, nonatomic) NSString *street;
+@property (strong, nonatomic) NSString *zip;
+
 @property (nonatomic, strong) NSString *isoSpeed;
 @property (nonatomic, strong) NSString *shutterSpeed;
+@property (strong, nonatomic) NSNumber *exposureTime;
+@property (strong, nonatomic) NSNumber *aperture;
+@property (strong, nonatomic) NSNumber *flash;
+@property (strong, nonatomic) NSNumber *focalLength;
+@property (nonatomic, strong) NSString *cameraMake;
+@property (nonatomic, strong) NSString *cameraModel;
+
+@property (strong, nonatomic) NSNumber *videoDuration;
+@property (assign, nonatomic) HPPRSocialMediaProvider socialProvider;
+@property (nonatomic, strong) NSString *videoPlaybackUri;
+
+@property (strong, nonatomic) NSNumber *livePhoto;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion;

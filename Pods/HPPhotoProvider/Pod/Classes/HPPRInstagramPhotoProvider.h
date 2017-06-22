@@ -20,5 +20,7 @@
 - (void)initForStandardDisplay;
 - (void)initWithHashtag:(NSString *)hashTag withNumPosts:(NSNumber *)numPosts;
 - (void)initWithUsername:(NSString *)displayName andUserId:(NSNumber *)userId andImage:(UIImage *)userImage;
+- (NSArray *)filterRecordsForDate:(NSDate *)filterDate andRecords:(NSArray *)records;
+- (NSArray *)filterRecordsForLocation:(CLLocation *)filterLocation distance:(int)distance andRecords:(NSArray *)records;
 
 @end

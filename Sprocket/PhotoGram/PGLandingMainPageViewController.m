@@ -11,8 +11,6 @@
 //
 
 #import <HPPRFlickrPhotoProvider.h>
-#import <HPPRFacebookPhotoProvider.h>
-#import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 
 #import "PGLandingMainPageViewController.h"
@@ -27,6 +25,8 @@
 #import "PGAnalyticsManager.h"
 #import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
+#import "PGScanViewController.h"
+#import "PGLinkSettings.h"
 #import "PGSocialSourcesManager.h"
 #import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
@@ -98,30 +98,7 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 
     self.socialSourcesCircleView.delegate = self;
 
-    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
-    
-    self.socialSourcesVerticalContainer.hidden = YES;
-    if ([[PGSocialSourcesManager sharedInstance] enabledSocialSources].count > kSocialSourcesUISwitchThreshold) {
-        self.socialSourcesHorizontalContainer.hidden = YES;
-    } else {
-        self.socialSourcesCircularContainer.hidden = YES;
-    }
-    
-    // -> Begin temporary UI
-    /*
-    self.socialSourcesCircularContainer.hidden = YES;
-    if ([NSLocale isChinese]) {
-        self.socialSourcesHorizontalContainer.hidden = YES;
-
-        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
-            self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
-            self.titleLabelBottomConstraint.constant = 73.0;
-        }
-    } else {
-        self.socialSourcesVerticalContainer.hidden = YES;
-    }
-     */
-    // <- End temporary UI
+    [self setSocialSourcesLayout];
 
     BOOL openFromNotification = ((PGAppDelegate *)[UIApplication sharedApplication].delegate).openFromNotification;
     if (openFromNotification) {
@@ -132,6 +109,7 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     [self addLongPressGesture];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLinkSettingsChanged:)  name:kPGLinkSettingsChangedNotification object:nil];
 
     [MPBTPrintManager sharedInstance].delegate = self;
     
@@ -161,6 +139,8 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
         self.blurredView.alpha = 0;
         self.cameraBackgroundView.alpha = 0;
     }];
+
+    [self setSocialSourcesLayout];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -233,13 +213,14 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 
 - (void)addLongPressGesture {
     #ifndef APP_STORE_BUILD
-        
-        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-        lpgr.minimumPressDuration = 2.0f; //seconds
-        lpgr.delaysTouchesBegan = YES;
-        lpgr.delegate = self;
-        [self.view addGestureRecognizer:lpgr];
-        
+        // link uses this long press for integrated scanning
+        if (![PGLinkSettings linkEnabled]) {
+            UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+            lpgr.minimumPressDuration = 2.0f; //seconds
+            lpgr.delaysTouchesBegan = YES;
+            lpgr.delegate = self;
+            [self.view addGestureRecognizer:lpgr];
+        }
     #endif
 }
 
@@ -272,6 +253,42 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 }
 
 
+- (void)setSocialSourcesLayout
+{
+    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
+    
+    NSInteger sourceCount = [[PGSocialSourcesManager sharedInstance] enabledSocialSources].count;
+    
+    /*if ([PGLinkSettings linkEnabled]) {
+        sourceCount += 1;
+    }*/
+    
+    self.socialSourcesVerticalContainer.hidden = YES;
+    if (sourceCount > kSocialSourcesUISwitchThreshold) {
+        self.socialSourcesHorizontalContainer.hidden = YES;
+        self.socialSourcesCircularContainer.hidden = NO;
+    } else {
+        self.socialSourcesCircularContainer.hidden = YES;
+        self.socialSourcesHorizontalContainer.hidden = NO;
+    }
+    
+    // -> Begin temporary UI
+    /*
+     self.socialSourcesCircularContainer.hidden = YES;
+     if ([NSLocale isChinese]) {
+     self.socialSourcesHorizontalContainer.hidden = YES;
+     
+     if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
+     self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
+     self.titleLabelBottomConstraint.constant = 73.0;
+     }
+     } else {
+     self.socialSourcesVerticalContainer.hidden = YES;
+     }
+     */
+    // <- End temporary UI
+}
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -298,6 +315,12 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
 
         [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
+    });
+}
+
+- (void)handleLinkSettingsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setSocialSourcesLayout];
     });
 }
 
@@ -334,6 +357,11 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 - (IBAction)flickrTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
+}
+
+- (IBAction)linkScanTapped:(id)sender
+{
+    [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
 }
 
 - (IBAction)googleTapped:(id)sender
@@ -583,6 +611,11 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
 {
     [self cameraTapped:button];
+}
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnLinkButton:(UIButton *)button
+{
+    [self linkScanTapped:button];
 }
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource

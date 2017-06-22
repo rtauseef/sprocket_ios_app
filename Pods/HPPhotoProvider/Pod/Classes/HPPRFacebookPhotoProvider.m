@@ -17,11 +17,11 @@
 #import "HPPRFacebookAlbum.h"
 #import "NSBundle+HPPRLocalizable.h"
 #import "FBSDKCoreKit/FBSDKCoreKit.h"
+#import "HPPR.h"
 
 #define PAGING_ALL @"All"
 #define FACEBOOK_ERROR_DOMAIN @"com.facebook.sdk"
 #define ALBUM_NOT_FOUND_ERROR_CODE 5
-
 
 @interface HPPRFacebookPhotoProvider() <HPPRLoginProviderDelegate>
 
@@ -44,6 +44,15 @@
         sharedInstance.loginProvider.delegate = sharedInstance;
     });
     return sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.displayVideos = [[HPPR sharedInstance] showVideos];
+    }
+    return self;
 }
 
 - (void)applicationDidStart
@@ -107,53 +116,25 @@
 
 - (void)retrieveExtraMediaInfo:(HPPRMedia *)media withRefresh:(BOOL)refresh andCompletion:(void (^)(NSError *error))completion
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        [self likesCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalLikes, NSError *error) {
-            if (error) {
-                media.likes = 0;
-                media.comments = 0;
-                if (completion) {
-                    completion(error);
-                }
-            } else {
-                media.likes = [totalLikes integerValue];
-                [self commentsCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalComments, NSError *error) {
-                    if (error) {
-                        media.comments = 0;
-                        if (completion) {
-                            completion(error);
-                        }
-                    } else {
-                        media.comments = [totalComments integerValue];
-                        if (completion) {
-                            completion(nil);
-                        }
-                    }
+    // nothing to do here
 
-                }];
-            }
-        }];
-        
-    });
+    if (completion) {
+        completion(nil);
+    }
 }
 
-- (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
-{
-    if (reload) {
-        self.maxPhotoID = nil;
-    }
-    
-    [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:^(NSDictionary *photoInfo, NSError *error) {
+- (void)requestVideosWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload {
+    [self videosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:^(NSDictionary *videoInfo, NSError *error) {
         
         NSArray *records = nil;
         
         if (!error) {
-            NSArray * photos = [photoInfo objectForKey:@"data"];
-            NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
+            NSArray *videos = [videoInfo objectForKey:@"data"];
+            NSString *maxVideoID = [[[videoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
             NSMutableArray *mutableRecords = [NSMutableArray array];
-            for (NSDictionary * photo in photos) {
-                __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+            
+            for (NSDictionary *video in videos) {
+                HPPRFacebookMedia *media = [[HPPRFacebookMedia alloc] initWithVideoAttributes:video];
                 [mutableRecords addObject:media];
             }
             
@@ -164,9 +145,10 @@
             } else {
                 [self replaceImagesWithRecords:records];
             }
-            self.maxPhotoID = maxPhotoID;
+            
+            self.maxPhotoID = maxVideoID;
         } else {
-            NSLog(@"ALBUM PHOTOS ERROR\n%@", error);
+            NSLog(@"ALBUM VIDEOS ERROR\n%@", error);
             [self lostAccess];
         }
         
@@ -174,7 +156,51 @@
             completion(records);
         }
     }];
+}
+
+- (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
+{
+    if (reload) {
+        self.maxPhotoID = nil;
+    }
     
+    if (self.album.videoOnly) {
+        [self requestVideosWithCompletion:completion andReloadAll:reload];
+    } else {
+        
+        void (^block)() = ^(NSDictionary *photoInfo, NSError *error) {
+            NSArray *records = nil;
+            NSArray *photos = nil;
+            
+            if (!error) {
+                photos = [photoInfo objectForKey:@"data"];
+                NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
+                NSMutableArray *mutableRecords = [NSMutableArray array];
+                for (NSDictionary *photo in photos) {
+                    HPPRFacebookMedia *media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+                    [mutableRecords addObject:media];
+                }
+                
+                records = mutableRecords.copy;
+                
+                if (self.maxPhotoID) {
+                    [self updateImagesWithRecords:records];
+                } else {
+                    [self replaceImagesWithRecords:records];
+                }
+                self.maxPhotoID = maxPhotoID;
+            } else {
+                NSLog(@"ALBUM PHOTOS ERROR\n%@", error);
+                [self lostAccess];
+            }
+            
+            if (completion) {
+                completion(records);
+            }
+        };
+        
+        [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
+    }
 }
 
 - (BOOL)hasMoreImages
@@ -208,8 +234,39 @@
             allPhotos.coverPhotoID = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).coverPhotoID;
             allPhotos.provider = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).provider;
 
-            if (completion) {
-                completion([NSArray arrayWithArray:facebookAlbums], nil);
+            if (self.displayVideos) {
+                [self cachedGraphRequest:@"me/videos/uploaded" parameters:@{ @"fields":@"picture" } refresh:refresh paging:PAGING_ALL completion:^(id result, NSError *error) {
+                    if (error) {
+                        NSLog(@"FACEBOOK ERROR\n%@", error);
+                        [self lostAccess];
+                        if (completion) {
+                            completion(nil, error);
+                        }
+                    } else {
+                        HPPRFacebookAlbum *allVideos = [[HPPRFacebookAlbum alloc] init];
+                        allVideos.name = HPPRLocalizedString(@"Videos", @"Indicates that all videos will be displayed");
+                        allVideos.objectID = nil;
+                        allVideos.videoOnly = YES;
+                        allVideos.coverPhotoID = nil;
+                        allVideos.provider = ((HPPRFacebookAlbum *)(facebookAlbums[facebookAlbums.count - 1])).provider;
+                        
+                        for (NSDictionary *entry in result) { // there should be just one
+                            allVideos.coverPhotoURL = [entry objectForKey:@"picture"];
+                        }
+                        
+                        [facebookAlbums addObject:allVideos];
+                        
+                        if (completion) {
+                            completion([NSArray arrayWithArray:facebookAlbums], nil);
+                        }
+                    }
+                }];
+                
+            } else {
+                
+                if (completion) {
+                    completion([NSArray arrayWithArray:facebookAlbums], nil);
+                }
             }
         }
         
@@ -218,11 +275,24 @@
 
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {
-    NSString *request = @"me/photos/uploaded";
+    NSString *request = [NSMutableString string];
+    NSString *fields = [NSMutableString string];
+    
     if (nil != self.album.objectID) {
         request = [NSString stringWithFormat:@"%@", self.album.objectID];
+        fields = @"count,cover_photo,name";
+    } else {
+        if (self.album.videoOnly) {
+            request = @"me/videos/uploaded";
+            fields = @"created_time,thumbnails,place,picture";
+            
+        } else {
+            request = @"me/photos/uploaded";
+            fields = @"count,cover_photo,name";
+        }
     }
-    [self cachedGraphRequest:request parameters:@{ @"fields":@"count,cover_photo,name" } refresh:YES paging:nil completion:^(id result, NSError *error) {
+    
+    [self cachedGraphRequest:request parameters:@{ @"fields":fields } refresh:YES paging:nil completion:^(id result, NSError *error) {
         if (error) {
             if ([error.domain isEqualToString:FACEBOOK_ERROR_DOMAIN] && (error.code == ALBUM_NOT_FOUND_ERROR_CODE)) {
                 if (completion) {
@@ -236,7 +306,9 @@
                 }
             }
         } else {
-            [self.album setAttributes:result];
+            if (self.album.objectID != nil) {
+                [self.album setAttributes:result];
+            }
             
             if (completion) {
                 completion(nil);
@@ -248,7 +320,7 @@
 - (void)photosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion
 {
     NSString *query = [NSString stringWithFormat:@"%@/photos", albumID];
-    NSDictionary *fields = @{@"fields":@"name,created_time,images,place,link"};
+    NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
     if (nil == albumID) {
         query = @"me/photos/uploaded";
     }
@@ -258,8 +330,31 @@
 
 - (void)photoByID:(NSString *)photoID withRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *photoInfo, NSError *error))completion
 {
-    NSDictionary *fields = @{@"fields":@"name,place,created_time,images"};
+    NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
     [self cachedGraphRequest:photoID parameters:fields refresh:refresh paging:nil completion:completion];
+}
+
+- (void)photoForDayInDate:(NSDate *)date withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion {
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay ) fromDate:date];
+    NSDate *startDate = [calendar dateFromComponents:components];
+    [components setDay:components.day+1];
+    NSDate *endDate = [calendar dateFromComponents:components];
+    
+    NSString *query = [NSString stringWithFormat:@"me/photos/uploaded?since=%.0lf&until=%.0lf",[startDate timeIntervalSince1970],[endDate timeIntervalSince1970]];
+    
+    NSDictionary *fields = @{@"fields":@"id,from{name,picture},name,position,likes.summary(true),images,comments.summary(true),created_time,link,place"};
+    
+    [self cachedGraphRequest:query parameters:fields refresh:refresh paging:afterID completion:completion];
+}
+
+- (void)videosForAlbum:(NSString *)albumID withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *videoInfo, NSError *error))completion
+{
+    // me/videos/uploaded?fields=created_time,place,thumbnails
+    NSString *query = @"me/videos/uploaded";
+    
+    [self cachedGraphRequest:query parameters:@{@"fields":@"id,picture,thumbnails,place,from,created_time,source,permalink_url"} refresh:refresh paging:afterID completion:completion];
 }
 
 - (void)userInfoWithRefresh:(BOOL)refresh andCompletion:(void (^)(NSDictionary *userInfo, NSError *error))completion
@@ -285,30 +380,39 @@
 {
     HPPRFacebookAlbum *facebookAlbum = (HPPRFacebookAlbum *)album;
     
-    if (facebookAlbum.coverPhotoID == nil) {
+    if (facebookAlbum.coverPhotoID == nil && facebookAlbum.coverPhotoURL == nil) {
         if (completion) {
             completion(album, [UIImage imageNamed:@"HPPRFacebookNoPhotoAlbum"], nil);
         }
         return;
     }
     
-    [[HPPRFacebookPhotoProvider sharedInstance] photoByID:facebookAlbum.coverPhotoID withRefresh:refresh andCompletion:^(NSDictionary *photoInfo, NSError *error) {
-        if (error) {
-            NSLog(@"PHOTO ERROR\n%@", error);
-            [self lostAccess];
-            if (completion) {
-                completion(facebookAlbum, nil, error);
-            }
-        } else {
-            NSString *url = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:photoInfo];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:url];
+    if (facebookAlbum.coverPhotoID != nil) {
+        [[HPPRFacebookPhotoProvider sharedInstance] photoByID:facebookAlbum.coverPhotoID withRefresh:refresh andCompletion:^(NSDictionary *photoInfo, NSError *error) {
+            if (error) {
+                NSLog(@"PHOTO ERROR\n%@", error);
+                [self lostAccess];
                 if (completion) {
-                    completion(album, album.coverPhoto, nil);
+                    completion(facebookAlbum, nil, error);
                 }
-            });
-        }
-    }];
+            } else {
+                NSString *url = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:photoInfo];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:url];
+                    if (completion) {
+                        completion(album, album.coverPhoto, nil);
+                    }
+                });
+            }
+        }];
+    } else if (facebookAlbum.coverPhotoURL != nil) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            album.coverPhoto = [[HPPRCacheService sharedInstance] imageForUrl:facebookAlbum.coverPhotoURL];
+            if (completion) {
+                completion(album, album.coverPhoto, nil);
+            }
+        });
+    }
 }
 
 #pragma mark - Photo helpers
@@ -322,6 +426,24 @@
     }
     
     return nil;
+}
+
+- (NSString *)urlForVideoPhoto:(NSDictionary *)photoInfo {
+    NSDictionary *imageInfo = [photoInfo objectForKey:@"thumbnails"];
+    
+    if (imageInfo != nil) {
+        NSArray *imageList = [imageInfo objectForKey:@"data"];
+        if ([imageList count] > 0) {
+            NSString *photoURL =[imageList[0] objectForKey:@"uri"];
+            return photoURL;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)urlForVideoThumbnail:(NSDictionary *)photoInfo {
+    return [photoInfo objectForKey:@"picture"];
 }
 
 - (NSString *)urlForSmallestPhoto:(NSDictionary *)photoInfo

@@ -40,6 +40,13 @@ NSString * const kIncludeLoginKey = @"include-login";
     return self;
 }
 
+
+- (void)setDisplayVideos:(BOOL)displayVideos {
+    _displayVideos = displayVideos;
+
+    self.photoProvider.displayVideos = displayVideos;
+}
+
 - (void)setType:(PGSocialSourceType)type
 {
     _type = type;
@@ -138,7 +145,6 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.photoProvider = [HPPRPituPhotoProvider sharedInstance];
             self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
-
         default:
             break;
     }

@@ -35,6 +35,7 @@ static NSString * const kFacebookProviderName = @"Facebook";
         sharedInstance = [[HPPRFacebookLoginProvider alloc] init];
         sharedInstance.loginManager = [[FBSDKLoginManager alloc] init];
         sharedInstance.loginManager.loginBehavior = FBSDKLoginBehaviorSystemAccount;
+
     });
     return sharedInstance;
 }

@@ -118,7 +118,7 @@
 
 - (IBAction)secretMenuButtonTapped:(id)sender
 {
-    static int requiredNumberOfTaps       = 10;
+    static int requiredNumberOfTaps       = 5;
     static NSTimeInterval maxSecondsToTap = 5;
     static NSDate *tapStartTime           = nil;
     static int numTaps                    = 0;

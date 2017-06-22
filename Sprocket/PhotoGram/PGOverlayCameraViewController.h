@@ -11,9 +11,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <Photos/Photos.h>
 
 @interface PGOverlayCameraViewController : UIViewController
 
 @property (nonatomic, weak) UIImagePickerController *pickerReference;
+
+- (void) stopScanning;
+- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
 
 @end

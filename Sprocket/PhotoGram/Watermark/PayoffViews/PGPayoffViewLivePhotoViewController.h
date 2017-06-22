@@ -10,15 +10,11 @@
 // the license agreement.
 //
 
-#import <MPBTImageProcessor.h>
-#import "PGWatermarkOperation.h"
+#import <UIKit/UIKit.h>
+#import "PGPayoffViewBaseViewController.h"
 
-@interface PGWatermarkProcessor : MPBTImageProcessor
+@interface PGPayoffViewLivePhotoViewController : PGPayoffViewBaseViewController
 
-@property (strong, nonatomic) NSURL *watermarkURL;
-
-- (instancetype)initWithWatermarkURL:(NSURL *)url;
-
-- (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options completion:(nullable PGWatermarkEmbedderCompletionBlock)completion;
+- (void) setLivePhotoAsset: (PHAsset *) asset;
 
 @end

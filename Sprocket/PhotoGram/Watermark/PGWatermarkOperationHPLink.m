@@ -10,7 +10,7 @@
 // the license agreement.
 //
 
-#import "PGWatermarkOperation.h"
+#import "PGWatermarkOperationHPLink.h"
 #import "PGLinkCredentialsManager.h"
 
 // Used with alejandro.mendez@hp.com -- staging
@@ -23,12 +23,9 @@ static int const PGDefaultWpi = 100;
 static int const PGDefaultStrength = 10;
 static double const PGWatemarkTimeoutSeconds = 30.0;
 
-NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder";
+NSString * const PGWatermarkEmbedderDomainLink = @"com.hp.sprocket.watermarkembedder.link";
 
-@implementation PGWatermarkOperationData
-@end
-
-@interface PGWatermarkOperation ()
+@interface PGWatermarkOperationHPLink ()
 
 @property (nonatomic) BOOL watermarkingComplete;
 @property (nonatomic) NSString *projectId;
@@ -44,11 +41,10 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
 @end
 
 
-@implementation PGWatermarkOperation
-
+@implementation PGWatermarkOperationHPLink
 
 + (nullable instancetype)executeWithOperationData:(nonnull PGWatermarkOperationData *)operationData progress:(nullable void (^)(double progress))progress completion:(nullable PGWatermarkEmbedderCompletionBlock)completion {
-    PGWatermarkOperation *operation = [super executeWithData:operationData completion:completion];
+    PGWatermarkOperationHPLink *operation = [super executeWithData:operationData completion:completion];
     operation.progressCallback = progress;
     return operation;
 }
@@ -66,7 +62,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
     }
     if(self = [super initWithData:operationData completion:completion]){
         dispatch_queue_attr_t queueAttributes = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0);
-        _serialWatermarkingQueue = dispatch_queue_create([PGWatermarkEmbedderDomain UTF8String], queueAttributes);
+        _serialWatermarkingQueue = dispatch_queue_create([PGWatermarkEmbedderDomainLink UTF8String], queueAttributes);
         self.maxRetryCount = 0;
     }
     return self;
@@ -75,13 +71,13 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
 + (BOOL)invalidInputsErrorWithOperatonData:(nonnull PGWatermarkOperationData *)operationData completion:(nullable PGWatermarkEmbedderCompletionBlock)completion {
     NSError *error;
     if (!operationData || ![operationData isKindOfClass:[PGWatermarkOperationData class]]) {
-        error = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid operation data."}];
+        error = [NSError errorWithDomain:PGWatermarkEmbedderDomainLink code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid operation data."}];
     }
     if (!error && (!operationData.originalImage || ![operationData.originalImage isKindOfClass:[UIImage class]])) {
-        error = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid image argument."}];
+        error = [NSError errorWithDomain:PGWatermarkEmbedderDomainLink code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid image argument."}];
     }
     if (!error && (!operationData.printerIdentifier || ![operationData.printerIdentifier isKindOfClass:[NSString class]] || operationData.printerIdentifier.length == 0)) {
-        error = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid printer identifier argument"}];
+        error = [NSError errorWithDomain:PGWatermarkEmbedderDomainLink code:PGWatermarkEmbedderErrorInputsError userInfo:@{ NSLocalizedDescriptionKey: @"Invalid printer identifier argument"}];
     }
     if (error) {
         if (completion) {
@@ -112,7 +108,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
 #ifdef DEBUG
         NSLog(@"Will create project");
 #endif
-        __weak PGWatermarkOperation *weakSelf = self;
+        __weak PGWatermarkOperationHPLink *weakSelf = self;
         [LPProject createWithName:[[self baseOperationData] printerIdentifier] session:[[self class] sharedSession] completion:^(LPProject * _Nullable project, NSError * _Nullable error) {
             if (error) {
                 [weakSelf handleOperationError:error];
@@ -136,19 +132,19 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
 }
 
 - (void)setupTimeout {
-    __weak PGWatermarkOperation *weakSelf = self;
+    __weak PGWatermarkOperationHPLink *weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, [self timeoutSeconds] * NSEC_PER_SEC), self.serialWatermarkingQueue, ^{
         if (weakSelf && !weakSelf.watermarkingComplete && !weakSelf.finished) {
             [self cancel];
             NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"Watermarking took too long."};
-            NSError * error = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:PGWatermarkEmbedderWatermarkingTimeout userInfo:userInfo];
+            NSError * error = [NSError errorWithDomain:PGWatermarkEmbedderDomainLink code:PGWatermarkEmbedderWatermarkingTimeout userInfo:userInfo];
             [self finishOperationWithData:nil error:error];
         }
     });
 }
 
 - (void)updateProgress {
-    if (self.progressCallback) {
+    if (self.progressCallback && !self.finished) {
         NSLog(@"resource %f watermark %f",self.resourceCreationProgress, self.watermarkProgress);
         self.progressCallback(self.resourceCreationProgress * 0.3 + self.watermarkProgress * 0.7);
     }
@@ -161,7 +157,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
 #ifdef DEBUG
     NSLog(@"Watermarking image using project: %@", self.projectId);
 #endif
-    __weak PGWatermarkOperation *weakSelf = self;
+    __weak PGWatermarkOperationHPLink *weakSelf = self;
     
 #if REUSE_TRIGGER
     [LPTrigger get:@"GhFeMQlkQImcvqEIpLB_Nw" projectId:self.projectId session:[[self class] sharedSession] completion:^(LPTrigger *trigger, NSError *error) {
@@ -207,7 +203,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
          if(self.finished || !self.trigger || !self.payoff){
              return;
          }
-         __weak PGWatermarkOperation *weakSelf = self;
+         __weak PGWatermarkOperationHPLink *weakSelf = self;
          [LPLink createWithName:[[self baseOperationData] printerIdentifier] triggerId:self.trigger.identifier payoffId:self.payoff.identifier projectId:self.projectId session:[[self class] sharedSession] completion:^(LPLink *link, NSError *error) {
              if (error) {
                  [weakSelf handleOperationError:error];
@@ -233,7 +229,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
          int desiredImageHeight = PGImageDpi * PGPaperHeightInches;
          UIImage *resizedImage = [self imageWithImage:[[self baseOperationData] originalImage] scaledToSize:CGSizeMake(desiredImageWidth, desiredImageHeight)];
          NSData *imageData = UIImageJPEGRepresentation(resizedImage, 1.0);
-         __weak PGWatermarkOperation *weakSelf = self;
+         __weak PGWatermarkOperationHPLink *weakSelf = self;
          [trigger getWatermarkForImageData:imageData strength:PGDefaultStrength watermarkResolution:PGDefaultWpi imageResolution:PGImageDpi adjustImageLevels:YES progress:^(double progress) {
              NSLog(@"wm progress: %f",progress);
              self.watermarkProgress = progress;
@@ -291,7 +287,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
          }else{
              errorCode = PGWatermarkEmbedderErrorWatermarkingImage;
          }
-         NSError * operationError = [NSError errorWithDomain:PGWatermarkEmbedderDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+         NSError * operationError = [NSError errorWithDomain:PGWatermarkEmbedderDomainLink code:errorCode userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
          [self finishOperationWithData:nil error:operationError];
      }
      
@@ -305,7 +301,7 @@ NSString * const PGWatermarkEmbedderDomain = @"com.hp.sprocket.watermarkembedder
      }
      
      - (NSString *)savedProjectKey {
-         return [NSString stringWithFormat:@"%@:%@:%@:%@",PGWatermarkEmbedderDomain, [PGLinkCredentialsManager stackString], [PGLinkCredentialsManager clientId], [[self baseOperationData] printerIdentifier]];
+         return [NSString stringWithFormat:@"%@:%@:%@:%@",PGWatermarkEmbedderDomainLink, [PGLinkCredentialsManager stackString], [PGLinkCredentialsManager clientId], [[self baseOperationData] printerIdentifier]];
      }
      
      - (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {

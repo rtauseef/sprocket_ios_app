@@ -47,7 +47,7 @@
         NSDictionary *pagination = [responseObject objectForKey:@"pagination"];
         
         for (NSDictionary *obj in data) {
-            if ([HPPRInstagramMedia isImage:obj]) {
+            if ([HPPRInstagramMedia shouldPresent:obj]) {
                 HPPRInstagramMedia *media = [[HPPRInstagramMedia alloc] initWithAttributes:obj];
                 [mutableRecords addObject:media];
             }
@@ -85,7 +85,7 @@
         UIImage *image = nil;
         
         for (NSDictionary *obj in data) {
-            if ([HPPRInstagramMedia isImage:obj]) {
+            if ([HPPRInstagramMedia shouldPresent:obj]) {
                 HPPRInstagramMedia *media = [[HPPRInstagramMedia alloc] initWithAttributes:obj];
                 image = [[HPPRCacheService sharedInstance] imageForUrl:media.standardUrl];
                 break;

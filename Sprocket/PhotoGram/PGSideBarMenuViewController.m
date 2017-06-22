@@ -29,6 +29,8 @@
 #import "PGAppNavigation.h"
 #import "PGWebViewerViewController.h"
 #import "PGLinkSettings.h"
+#import "PGScanViewController.h"
+
 #import "PGLinkReaderViewController.h"
 #import "PGPrintQueueManager.h"
 
@@ -186,10 +188,10 @@ CGFloat const kPGSideBarMenuShortScreenSizeHeaderHeight = 52.0f;
             [self presentViewController:viewController animated:YES completion:nil];
             break;
         }
-        case PGSideBarMenuCellLinkReader: {
-            [self presentViewController:[PGLinkReaderViewController new] animated:YES completion:nil];
+        /*case PGSideBarMenuCellLinkReader: {
+            [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
             break;
-        }
+        }*/
         default:
             break;
     }

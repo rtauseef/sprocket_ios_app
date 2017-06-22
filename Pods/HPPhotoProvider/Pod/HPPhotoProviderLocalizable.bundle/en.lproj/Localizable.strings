@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu photos)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu videos)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 photo)";
+
+/* Single video available. */
+" (1 video)" = " (1 video)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ Access";
@@ -13,6 +19,9 @@
 /* Photos of the specified social network */
 "%@ Photos" = "%@ Photos";
 
+/* Videos of the specified social network */
+"%@ Videos" = "%@ Videos";
+
 /* Number of posts */
 "%@ posts" = "%@ posts";
 
@@ -22,9 +31,17 @@
 /* Number of photos */
 "%lu photos" = "%lu photos";
 
+/* Number of videos */
+"%lu videos" = "%lu videos";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 photo";
 
+/* Single video available. */
+"1 video" = "1 video";
+
+/* Button caption */
+"Authorize" = "Authorize";
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Album deleted";
 

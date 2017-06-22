@@ -186,7 +186,7 @@
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
     [[PGPhotoSelection sharedInstance] selectMedia:media];
-    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source animated:YES];
+    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source media:media animated:YES];
 
     HPPRInstagramPhotoProvider *provider = [HPPRInstagramPhotoProvider sharedInstance];
 

@@ -10,7 +10,9 @@
 // the license agreement.
 //
 
+#import "PGWatermarkOperationHPLink.h"
 #import "PGWatermarkProcessor.h"
+#import "PGWatermarkOperationHPMetar.h"
 
 @interface PGWatermarkProcessor()
 
@@ -43,26 +45,20 @@
     return self.finishedWatermarking;
 }
 
-- (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options {
-    [self processImage:image withOptions:options completion:nil];
-}
-
-- (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options completion:(nullable PGWatermarkEmbedderCompletionBlock)completion {
+- (void)processImage:(UIImage *)image withOptions:(NSDictionary *)options
+{
     PGWatermarkOperationData *operationData = [PGWatermarkOperationData new];
     operationData.originalImage = image;
+    operationData.localOperationIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.printerIdentifier = [options objectForKey:kMPBTImageProcessorPrinterSerialNumberKey];
     operationData.payoffURL = self.watermarkURL;
-    [PGWatermarkOperation executeWithOperationData:operationData progress:^(double progress) {
-        if ([self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {
+    [PGWatermarkOperationHPMetar executeWithOperationData:operationData progress:^(double progress) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didUpdateProgress:progress:)]) {
             [self.delegate didUpdateProgress:self progress:progress];
         }
     } completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
-        if (completion) {
-            completion(image, error);
-        }
-
         self.finishedWatermarking = YES;
-        if ([self.delegate respondsToSelector:@selector(didCompleteProcessing:result:error:)]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didCompleteProcessing:result:error:)]) {
             [self.delegate didCompleteProcessing:self result:image error:error];
         }
     }];

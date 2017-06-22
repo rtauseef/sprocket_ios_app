@@ -1,9 +1,13 @@
 //
-//  HPPRGoogleXmlParser.m
-//  Pods
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Susy Snowflake on 5/9/17.
-//
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "HPPRGoogleXmlParser.h"
@@ -55,7 +59,9 @@
             
         } else {
             self.currentParsingItems = [[NSMutableArray alloc] init];
+            
             self.rssParser = [[NSXMLParser alloc] initWithData:xmlData];
+
             [self.rssParser setDelegate:self];
             [self.rssParser setShouldProcessNamespaces:NO];
             [self.rssParser setShouldReportNamespacePrefixes:NO];
@@ -84,13 +90,39 @@
             thumbnails = [[NSMutableArray alloc] init];
         }
         
-        [thumbnails addObject:attributeDict];
+        [thumbnails addObject:[self removePlayItemFromDict:attributeDict forKey:@"url"]];
         [self.item setObject:thumbnails forKey:@"thumbnails"];
+    } else if ([elementName isEqualToString:@"media:content"]) {
+        NSMutableArray *contents = [self.item objectForKey:@"contents"];
+        
+        if (nil == contents) {
+            contents = [[NSMutableArray alloc] init];
+        }
+        
+        [contents addObject:[self removePlayItemFromDict:attributeDict forKey:@"url"]];
+        [self.item setObject:contents forKey:@"contents"];
     } else if ([elementName isEqualToString:@"content"]) {
-        [self.item setObject:attributeDict forKey:@"original"];
+        [self.item setObject:[self removePlayItemFromDict:attributeDict forKey:@"src"] forKey:@"original"];
     }
 }
+
+- (NSDictionary *)removePlayItemFromDict:(NSDictionary *)attributeDict forKey:(NSString *)attributeName {
+    NSMutableDictionary *mutDict = [NSMutableDictionary dictionaryWithDictionary:attributeDict];
     
+    if (attributeDict != nil) {
+        NSString *url = [attributeDict objectForKey:attributeName];
+        
+        if (url != nil) {
+            NSError *error = nil;
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"s([0-9]+)(\\-c)?/" options:NSRegularExpressionCaseInsensitive error:&error];
+            NSString *modifiedString = [regex stringByReplacingMatchesInString:url options:0 range:NSMakeRange(0, [url length]) withTemplate:@"s$1-c-no/"];
+            [mutDict setValue:modifiedString forKey:attributeName];
+        }
+    }
+    
+    return mutDict;
+}
+
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
     if ([elementName isEqualToString:@"entry"]) {

@@ -14,6 +14,9 @@
 
 NSString * const kPGLinkSettingsEnabled = @"kPGLinkSettingsEnabled";
 NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNotification";
+static NSString * const kPGLinkSettingsVideoPrintEnabled = @"kPGVideoPrintEnabled";
+static NSString * const kPGLinkSettingsFakePrintEnabled = @"kPGFakePrintEnabled";
+static NSString * const kPGLinkSettingsLocalWatermarkEnabled = @"kPGLocalWatermarkEnabled";
 
 @implementation PGLinkSettings
 
@@ -29,6 +32,39 @@ NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNo
 + (BOOL)linkEnabled {
     NSNumber *visible = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsEnabled];
     return visible ? visible.boolValue : NO;
+}
+
++ (void)setVideoPrintEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsVideoPrintEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsChangedNotification object:self];
+}
+
++ (BOOL)videoPrintEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsVideoPrintEnabled];
+    return enabled && enabled.boolValue;
+}
+
++ (void)setFakePrintEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsFakePrintEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsChangedNotification object:self];
+}
+
++ (BOOL)fakePrintEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsFakePrintEnabled];
+    return enabled && enabled.boolValue;
+}
+
++ (BOOL)localWatermarkEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsLocalWatermarkEnabled];
+    return enabled && enabled.boolValue;
+}
+
++ (void)setLocalWatermarkEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsLocalWatermarkEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsLocalWatermarkEnabled object:self];
 }
 
 @end

@@ -17,9 +17,9 @@
 
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, assign) IMGLYStickerTintMode tintMode;
-
 @property (nonatomic, strong, readonly) IMGLYSticker *imglySticker;
+
+@property (nonatomic, assign) IMGLYStickerTintMode tintMode;
 
 - (instancetype)initWithName:(NSString *)name imageName:(NSString *)imageName  tintMode:(IMGLYStickerTintMode)tintMode andPackageName:(NSString *)packageName;
 

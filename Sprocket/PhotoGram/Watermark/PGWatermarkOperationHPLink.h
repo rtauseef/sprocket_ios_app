@@ -13,35 +13,12 @@
 #import <Foundation/Foundation.h>
 #import <LivePaperSDK/LivePaperSDK.h>
 #import <HPLinkUtils/HPLinkUtils.h>
-
-extern NSString * _Nonnull const PGWatermarkEmbedderDomain;
-
-typedef NS_ENUM(NSInteger, PGWatermarkEmbedderError) {
-    PGWatermarkEmbedderErrorInputsError,
-    PGWatermarkEmbedderErrorWatermarkingImage,
-    PGWatermarkEmbedderErrorWatermarkingImageNoInternet,
-    PGWatermarkEmbedderWatermarkingTimeout
-};
-
-typedef void (^PGWatermarkEmbedderCompletionBlock)(UIImage * _Nullable image, NSError * _Nullable error);
-
-/**
- The data used to execute a 'PGWatermarkOperation' operation.
- */
-@interface PGWatermarkOperationData : NSObject
-// An image to be watemarked
-@property (nonatomic, nonnull) UIImage *originalImage;
-// The identifier of the device to which the watermark data will be associated to
-@property (nonatomic, nonnull) NSString *printerIdentifier;
-// The URL that will be shown when the image is scanned
-@property (nonatomic, nonnull) NSURL *payoffURL;
-@end
-
+#import "PGWatermarkOperation.h"
 
 /**
  The 'PGWatermarkOperation' is used to embed digital watermarks on images using Link Technology.
  */
-@interface PGWatermarkOperation : HPLinkBaseCompletionOperation
+@interface PGWatermarkOperationHPLink: HPLinkBaseCompletionOperation<PGWatermarkOperation>
 
 /**
  Executes the operation on a shared queue

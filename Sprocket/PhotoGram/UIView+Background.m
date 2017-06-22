@@ -58,24 +58,14 @@
 
 - (UIImage *)screenshotImage
 {
-    CGFloat originalScale = self.layer.contentsScale;
-    CGFloat scale = [self scaleFactorFor5x7];
-    
-    // This is a hack... we had a mysterious 1 pixel grey border on our image
-    //  Cutting off a pixel from the width and height fixes this.
+    CGFloat scale = [[UIScreen mainScreen] scale];
     CGSize size = self.bounds.size;
-    size.width -= 1;
-    size.height -= 1;
     
     UIGraphicsBeginImageContextWithOptions(size, self.opaque, scale);
     
-    self.layer.contentsScale = [UIScreen mainScreen].scale * scale;
     [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
-    
     UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-    
     UIGraphicsEndImageContext();
-    self.layer.contentsScale = originalScale;
     
     return img;
 }

@@ -198,7 +198,7 @@ NSString * const kFacebookUserIdKey = @"id";
 - (void)selectPhotoCollectionViewController:(HPPRSelectPhotoCollectionViewController *)selectPhotoCollectionViewController didSelectImage:(UIImage *)image source:(NSString *)source media:(HPPRMedia *)media
 {
     [[PGPhotoSelection sharedInstance] selectMedia:media];
-    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source animated:YES];
+    [PGPreviewViewController presentPreviewPhotoFrom:self andSource:source media:media animated:YES];
     
     HPPRFacebookPhotoProvider *provider = [HPPRFacebookPhotoProvider sharedInstance];
     [[PGAnalyticsManager sharedManager] switchSource:provider.name userName:[provider.user objectForKey:kFacebookUserNameKey] userId:[provider.user objectForKey:kFacebookUserIdKey]];
@@ -236,9 +236,9 @@ NSString * const kFacebookUserIdKey = @"id";
 
 - (void)selectAlbumDropDownController:(PGSelectAlbumDropDownViewController *)viewController didSelectAlbum:(HPPRAlbum *)album
 {
-    if ([album objectID] == nil) {
+    /*if ([album objectID] == nil) {
         album = nil;
-    }
+    }*/
 
     [super selectAlbumDropDownController:viewController didSelectAlbum:album];
 }
