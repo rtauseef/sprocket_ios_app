@@ -436,9 +436,12 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                         [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                     }
                 }];
+
+            } else {
+                [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
             }
         }
-        
+
         self.isCapturingStillImage = NO;
     }];
 }
