@@ -344,13 +344,13 @@ Then(/^I verify "([^"]*)" url$/) do |option|
     when option == "View User Guide"
         url_expected = $list_loc['view_user_guide_url']
     when option == "Join Support Forum"
-        if ENV['LANGUAGE'] == "Chinese"
+        if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
             url_expected = "https://h30471.www3.hp.com"
         else
             url_expected = "https://h30434.www3.hp.com/t5/sprocket/bd-p/sprocket"   
         end
     when option == "Visit Support Website"
-        if ENV['LANGUAGE'] == "Chinese"
+        if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
             url_expected = "https://h30471.www3.hp.com"
         else
            url_expected = "https://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221" 
