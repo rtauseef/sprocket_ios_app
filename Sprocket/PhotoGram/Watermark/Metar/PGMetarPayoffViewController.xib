@@ -180,7 +180,7 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="exe-W4-JMR" firstAttribute="top" secondItem="9zz-au-Tse" secondAttribute="bottom" id="0RZ-f6-FQw"/>
                 <constraint firstAttribute="bottom" secondItem="exe-W4-JMR" secondAttribute="bottom" id="1g4-us-iE7"/>

@@ -61,7 +61,6 @@
     
     if (self.metadata != nil && self.metadata.data != nil && [self.metadata.data objectForKey:kPGPayoffUUIDKey] != nil) {
         // resolve metadata
-        self.view.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
         [self getMetadataFromMetar];
     }
     

@@ -28,19 +28,17 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *showMoreButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *showMoreHeightConstraint;
-
-@property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *imagesShowMorebutton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageShowMoreButtonHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageCollectionViewHeightConstraint;
-
 @property (weak, nonatomic) IBOutlet UITableView *blocksTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *blocksTableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *scrollViewInnerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *galleryGradientView;
 
 @property (strong, nonatomic) PGPayoffFullScreenTmpViewController* tmpViewController;
 
@@ -49,7 +47,7 @@
 
 @property (assign, nonatomic) BOOL descriptionExpanded;
 @property (assign, nonatomic) BOOL imagesExpanded;
-@property (assign, nonatomic) int currentIndex;
+@property (assign, nonatomic) NSInteger currentIndex;
 @property (strong, nonatomic) NSArray *collectionImageArray;
 @property (strong, nonatomic) NSArray *blockArray;
 @property (strong, nonatomic) PGMetarPage *currentPage;
@@ -58,10 +56,10 @@
 
 static const CGFloat kLongPressDurationForAlternative = 0.6f;
 static const CGFloat kShortDescriptionFixedHeight = 200.0;
-static const CGFloat kShowMoreButtonFixedHeight = 30.0;
-static const CGFloat kImageGridSpacing = 10.0;
-static const CGFloat kImageGridMargin = 20.0;
-static const CGFloat kImageGridLineSpacing = 10.0;
+static const CGFloat kShowMoreButtonFixedHeight = 28.0;
+static const CGFloat kImageGridSpacing = 3.0;
+static const CGFloat kImageGridMargin = 3.0;
+static const CGFloat kImageGridLineSpacing = 3.0;
 static const NSInteger kNumberOfImagesPerRow = 3;
 static const CGFloat kTableViewMargin = 15;
 
@@ -94,6 +92,8 @@ static const CGFloat kTableViewMargin = 15;
     longPressWikipedia.minimumPressDuration = kLongPressDurationForAlternative;
     [self.view addGestureRecognizer:longPressWikipedia];
 
+    self.contentViewHeightConstraint.constant = self.view.frame.size.height;
+    
     if (self.tmpViewController) {
         [self.tmpViewController.view removeFromSuperview];
         self.tmpViewController = nil;
@@ -106,6 +106,11 @@ static const CGFloat kTableViewMargin = 15;
     });
 
     [self.parentVc setExternalLinkURL:[self getURLForIndex:self.currentIndex]];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.galleryGradientView.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id) [[UIColor blackColor] CGColor], nil];
+    [self.galleryGradientView.layer insertSublayer:gradient atIndex:0];
 }
 
 - (void)handleLongPressWikipedia:(UILongPressGestureRecognizer *)recognizer {
@@ -138,7 +143,7 @@ static const CGFloat kTableViewMargin = 15;
 }
 
 
-- (NSURL *) getURLForIndex: (int) index {
+- (NSURL *) getURLForIndex: (NSInteger) index {
     if (self.metadata != nil) {
         NSArray *pages = self.metadata.location.content.wikipedia.pages;
         
@@ -154,7 +159,7 @@ static const CGFloat kTableViewMargin = 15;
     return nil;
 }
 
-- (BOOL) renderPageAtIndex: (int) index {
+- (BOOL) renderPageAtIndex: (NSInteger) index {
     if (self.metadata != nil) {
         NSArray *pages = self.metadata.location.content.wikipedia.pages;
         
@@ -168,7 +173,6 @@ static const CGFloat kTableViewMargin = 15;
                 self.articleDescriptionTextView.text = page.text;
                 
                 // Article Description
-                [self.showMoreButton setTitle:NSLocalizedString(@"Show more",nil) forState:UIControlStateNormal];
                 self.descriptionExpanded = NO;
                 CGRect newFrame = self.articleDescriptionTextView.frame;
                 newFrame.size.height = kShortDescriptionFixedHeight;
@@ -177,11 +181,9 @@ static const CGFloat kTableViewMargin = 15;
                 CGSize newSize = [self.articleDescriptionTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
                 
                 if (newSize.height <= kShortDescriptionFixedHeight) {
-                    self.showMoreButton.hidden = YES;
                     self.showMoreHeightConstraint.constant = 0;
                     self.articleDescriptionHeightConstraint.constant = newSize.height;
                 } else {
-                    self.showMoreButton.hidden = NO;
                     self.showMoreHeightConstraint.constant = kShowMoreButtonFixedHeight;
                     self.articleDescriptionHeightConstraint.constant = kShortDescriptionFixedHeight;
                 }
@@ -195,21 +197,11 @@ static const CGFloat kTableViewMargin = 15;
                     self.collectionImageArray = page.images;
                     self.imagesCollectionView.hidden = NO;
                     self.imageCollectionViewHeightConstraint.constant = [self getImageSize] + kImageGridSpacing;
-                    
-                    int numberOfLines = ceil((float) [self.collectionImageArray count] / (float) kNumberOfImagesPerRow);
-                    if (numberOfLines > 1) {
-                        self.imagesShowMorebutton.hidden = NO;
-                        self.imageShowMoreButtonHeightConstraint.constant = kShowMoreButtonFixedHeight;
-                    } else {
-                        self.imageShowMoreButtonHeightConstraint.constant = 0;
-                        self.imagesShowMorebutton.hidden = YES;
-                    }
-                    
+                    [self compactImageGallery];
                     [self.imagesCollectionView reloadData];
                 } else {
                     self.imagesCollectionView.hidden = YES;
                     self.imageCollectionViewHeightConstraint.constant = 0;
-                    self.imagesShowMorebutton.hidden = YES;
                     self.imageShowMoreButtonHeightConstraint.constant = 0;
                 }
                 
@@ -225,7 +217,7 @@ static const CGFloat kTableViewMargin = 15;
                     self.blockArray = [NSArray array];
                     [self.blocksTableView reloadData];
                 }
-                
+
                 return YES;
             }
         }
@@ -234,9 +226,30 @@ static const CGFloat kTableViewMargin = 15;
     return NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)compactImageGallery {
+    int numberOfLines = ceil((float) [self.collectionImageArray count] / (float) kNumberOfImagesPerRow);
+    
+    if (numberOfLines >= 2) {
+        CGRect imageGalleryFrame = self.imagesCollectionView.frame;
+        float height = [self getImageSize] * 2 + (kImageGridLineSpacing);
+        imageGalleryFrame.size.height = height;
+        self.imagesCollectionView.frame = imageGalleryFrame;
+        
+        if (numberOfLines == 2) {
+            self.imageCollectionViewHeightConstraint.constant = 0;
+            self.galleryGradientView.hidden = YES;
+        } else {
+            self.imageCollectionViewHeightConstraint.constant = height;
+            self.galleryGradientView.hidden = NO;
+            self.imageShowMoreButtonHeightConstraint.constant = kShowMoreButtonFixedHeight;
+        }
+    } else if (numberOfLines == 1) {
+        self.imageShowMoreButtonHeightConstraint.constant = 0;
+        self.galleryGradientView.hidden = YES;
+    } else {
+        self.imageShowMoreButtonHeightConstraint.constant = 0;
+        self.galleryGradientView.hidden = YES;
+    }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -248,9 +261,10 @@ static const CGFloat kTableViewMargin = 15;
     
     self.blocksTableViewHeightConstraint.constant = self.blocksTableView.contentSize.height;
 
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.endLabel.frame.origin.y);
+    CGFloat endPos = self.blocksTableView.contentSize.height + self.blocksTableView.frame.origin.y + kTableViewMargin;
     
-    NSLog(@"Content size is %lf",self.endLabel.frame.origin.y);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, endPos);
+    self.contentViewHeightConstraint.constant = endPos;
 }
 
 - (IBAction)didClickShowMoreImagesButton:(id)sender {
@@ -258,18 +272,15 @@ static const CGFloat kTableViewMargin = 15;
     
     if (self.imagesExpanded) {
         self.imagesExpanded = NO;
-        [self.imagesShowMorebutton setTitle:NSLocalizedString(@"Show More",nil) forState:UIControlStateNormal];
-        newFrame.size.height = [self getImageSize] + kImageGridSpacing;
-        self.imagesCollectionView.frame = newFrame;
-        self.imageCollectionViewHeightConstraint.constant = [self getImageSize] + kImageGridSpacing;
+        [self compactImageGallery];
     } else {
-        [self.imagesShowMorebutton setTitle:NSLocalizedString(@"Show Less",nil) forState:UIControlStateNormal];
         self.imagesExpanded = YES;
         int numberOfLines = ceil((float) [self.collectionImageArray count] / (float) kNumberOfImagesPerRow);
         float height = [self getImageSize] * numberOfLines + (kImageGridLineSpacing * (numberOfLines - 1));
         newFrame.size.height = height;
         self.imagesCollectionView.frame = newFrame;
         self.imageCollectionViewHeightConstraint.constant = height;
+        self.galleryGradientView.hidden = YES;
     }
     
     [self.imagesCollectionView setNeedsLayout];
@@ -282,7 +293,6 @@ static const CGFloat kTableViewMargin = 15;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
 
     if (self.descriptionExpanded) {
-        [self.showMoreButton setTitle:NSLocalizedString(@"Show more",nil) forState:UIControlStateNormal];
         self.descriptionExpanded = NO;
         CGRect newFrame = self.articleDescriptionTextView.frame;
         newFrame.size.height = kShortDescriptionFixedHeight;
@@ -293,17 +303,18 @@ static const CGFloat kTableViewMargin = 15;
             self.articleDescriptionHeightConstraint.constant = kShortDescriptionFixedHeight;
         }
     } else {
-        [self.showMoreButton setTitle:NSLocalizedString(@"Show less",nil) forState:UIControlStateNormal];
         self.descriptionExpanded =  YES;
         self.articleDescriptionTextView.frame = newFrame;
         
         self.articleDescriptionHeightConstraint.constant = newSize.height;
     }
+    
     [self.articleDescriptionTextView setNeedsLayout];
 }
 
-- (int) getImageSize {
-    return floorf((self.imagesCollectionView.bounds.size.width - (kImageGridSpacing * (kNumberOfImagesPerRow - 1)) - (kImageGridMargin * 2))/kNumberOfImagesPerRow);
+- (CGFloat) getImageSize {
+    CGFloat imageSize = floorf((self.imagesCollectionView.bounds.size.width - (kImageGridSpacing * (kNumberOfImagesPerRow - 1)) - (kImageGridMargin * 2))/kNumberOfImagesPerRow);
+    return imageSize;
 }
 
 #pragma mark UICollectionView delegate and data source (image section)
@@ -326,7 +337,7 @@ static const CGFloat kTableViewMargin = 15;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger calcSize = [self getImageSize];
+    CGFloat calcSize = [self getImageSize];
 
     return CGSizeMake(calcSize,calcSize);
 }
@@ -336,6 +347,12 @@ static const CGFloat kTableViewMargin = 15;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return kImageGridLineSpacing;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return kImageGridLineSpacing;
 }
 
