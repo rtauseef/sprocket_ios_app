@@ -13,7 +13,6 @@
 #import "PGMetarOfflineTagManager.h"
 #import "PGMetarAPI.h"
 
-#define kOfflineTagSaveName @"OFFLINE_TAG_METAR_DB"
 
 @interface PGMetarOfflineTagManager()
 
@@ -22,6 +21,8 @@
 @end
 
 @implementation PGMetarOfflineTagManager
+
+NSString * const kOfflineTagSaveName = @"OFFLINE_TAG_METAR_DB";
 
 + (PGMetarOfflineTagManager *)sharedInstance
 {
@@ -87,7 +88,7 @@
     imageTag.media = [NSString stringWithFormat:@"/resource/tag/%@/media",tag];
     imageTag.resource = tag;
     
-    __block dispatch_group_t taggingGroup = dispatch_group_create();
+    dispatch_group_t taggingGroup = dispatch_group_create();
     
     __block UIImage *returnImage;
     
@@ -135,11 +136,11 @@
                         if (needsUpdate) {
                             [self updateDictWithDict:updatedDict];
                             [self saveLocalDatabase:self.availableTags];
-                            
-                            NSLog(@"Tag count updated: %lu",[self.availableTags count]);
                         }
                     }
-                    completion();
+                    if (completion) {
+                        completion();
+                    }
                 });
             }];
         }
@@ -179,7 +180,6 @@
         
         [self saveLocalDatabase:self.availableTags];
         
-        NSLog(@"Tag count: %lu",[self.availableTags count]);
         return tag;
     }
 }

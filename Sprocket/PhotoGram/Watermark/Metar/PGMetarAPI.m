@@ -22,6 +22,8 @@
 
 @implementation PGMetarAPI
 
+NSString * const kBatataAPIURL = @"http://www.somacoding.com/sprocket-link";
+NSString * const kMetarAPIURL = @"http://www.somacoding.com/metar";
 NSString * const PGMetarAPIDomain = @"com.hp.sprocket.metarapi";
 
 static NSString * const kMetarApplicationID = @"dm_ios";
@@ -174,7 +176,10 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
         
         [self challenge:^(NSError * _Nullable error) {
             self.authRetry = NO;
-            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailedAuth userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new challenge",(int) [response statusCode], XHPError]}]);
+            
+            if (completion) {
+                completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailedAuth userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new challenge",(int) [response statusCode], XHPError]}]);
+            }
         }];
     } else if ([response statusCode] == 403 && !self.authRetry) {
         // needs a new token
@@ -188,10 +193,15 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
             }
             
             self.authRetry = NO;
-            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailedAuth userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new token",(int) [response statusCode], XHPError]}]);
+            
+            if (completion) {
+                completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailedAuth userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@, did new token",(int) [response statusCode], XHPError]}]);
+            }
         }];
     } else {
-        completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@",(int) [response statusCode], XHPError]}]);
+        if (completion) {
+            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"API request failed, HTTP error: %d and X-HP-ERROR:%@",(int) [response statusCode], XHPError]}]);
+        }
     }
 }
 
@@ -204,13 +214,19 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
         // request new account
         [self challenge:^(NSError *error) {
             if (error) {
-                completion(NO);
+                if (completion) {
+                    completion(NO);
+                }
             } else {
-                completion(YES);
+                if (completion) {
+                    completion(YES);
+                }
             }
         }];
     } else {
-        completion(YES);
+        if (completion) {
+            completion(YES);
+        }
     }
 }
 
@@ -226,7 +242,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error);
+                                             if (completion) {
+                                                 completion(error);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
@@ -241,9 +259,14 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                  if (account && expire && secret && token) {
                                                      PGMetarUser *user =  [[PGMetarUser alloc] initWithToken:token secret:secret accountID:account expire:expire];
                                                      [self saveCredentialsToStorage:user];
-                                                     completion(nil);
+                                                     
+                                                     if (completion) {
+                                                         completion(nil);
+                                                     }
                                                  } else {
-                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, missing auth parameters"}]);
+                                                     if (completion) {
+                                                         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, missing auth parameters"}]);
+                                                     }
                                                  }
                                              } else {
                                                  [self handleError:httpResponse completion:completion];
@@ -264,7 +287,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error);
+                                             if (completion) {
+                                                 completion(error);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
@@ -279,9 +304,14 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                  if (account && expire && secret && token) {
                                                      PGMetarUser *user =  [[PGMetarUser alloc] initWithToken:token secret:secret accountID:account expire:expire];
                                                      [self saveCredentialsToStorage:user];
-                                                     completion(nil);
+                                                     
+                                                     if (completion) {
+                                                         completion(nil);
+                                                     }
                                                  } else {
-                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, missing auth parameters"}]);
+                                                     if (completion) {
+                                                         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API request failed, missing auth parameters"}]);
+                                                     }
                                                  }
                                              } else {
                                                   [self handleError:httpResponse completion:completion];
@@ -309,7 +339,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error, nil);
+                                             if (completion) {
+                                                 completion(error, nil);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
@@ -322,13 +354,18 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                      NSString *media = [dic objectForKey:@"media"];
                                                      
                                                      PGMetarImageTag *imageTag = [[PGMetarImageTag alloc] initWithDate:at andResource:resource andMedia:media];
-                                                     completion(nil, imageTag);
+                                                     
+                                                     if (completion) {
+                                                         completion(nil, imageTag);
+                                                     }
                                                  } else {
                                                      completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API failed to return image tag object"}],nil);
                                                  }
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
-                                                     completion(error, nil);
+                                                     if (completion) {
+                                                         completion(error, nil);
+                                                     }
                                                  }];
                                              }
                                          }
@@ -348,19 +385,28 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error, nil);
+                                             if (completion) {
+                                                 completion(error, nil);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
                                                  if ([data length] > 0) {
                                                      UIImage *image = [UIImage imageWithData:data];
-                                                     completion(nil, image);
+                                                     
+                                                     if (completion) {
+                                                         completion(nil, image);
+                                                     }
                                                  } else {
-                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API returned 0 bytes for watermarked image"}],nil);
+                                                     if (completion) {
+                                                         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorRequestFailed userInfo:@{ NSLocalizedDescriptionKey: @"API returned 0 bytes for watermarked image"}],nil);
+                                                     }
                                                  }
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
-                                                     completion(error, nil);
+                                                     if (completion) {
+                                                         completion(error, nil);
+                                                     }
                                                  }];
                                              }
                                          }
@@ -384,14 +430,15 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:to options:NSJSONWritingPrettyPrinted error:&jsonError];
     
     if (jsonError != nil) {
-        completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorCreatingJsonForMediaObject userInfo:@{ NSLocalizedDescriptionKey: @"Failed to create jSON from PGMetarMedia dictionary"}]);
+        
+        if (completion) {
+            completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorCreatingJsonForMediaObject userInfo:@{ NSLocalizedDescriptionKey: @"Failed to create jSON from PGMetarMedia dictionary"}]);
+        }
+        
         return;
     }
     
     NSString *jsonString =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    //TODO: remove me
-    NSLog(@"JSON: \n%@",jsonString);
-    NSLog(@"Metadata URL: \n%@",requestString);
     
     [request setHTTPBody:jsonData];
     
@@ -399,17 +446,27 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error);
+                                             if (completion) {
+                                                 completion(error);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
-                                                 completion(nil);
+                                                 
+                                                 if (completion) {
+                                                     completion(nil);
+                                                 }
                                              } else if ([httpResponse statusCode] == 206) {
                                                  //TODO: handle partially accepted
-                                                 completion(nil);
+                                                 
+                                                 if (completion) {
+                                                     completion(nil);
+                                                 }
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
-                                                     completion(error);
+                                                     if (completion) {
+                                                         completion(error);
+                                                     }
                                                  }];
                                              }
                                          }
@@ -434,7 +491,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error, nil);
+                                             if (completion) {
+                                                 completion(error, nil);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
@@ -460,15 +519,21 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                      }
                                                      
                                                      if (!payloadOk) {
-                                                         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorFailedParsingPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Failed to parse MEDIA payload"}],nil);
+                                                         if (completion) {
+                                                             completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorFailedParsingPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Failed to parse MEDIA payload"}],nil);
+                                                         }
                                                      }
                                                  } else {
-                                                     completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Empty data for image"}],nil);
+                                                     if (completion) {
+                                                         completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: Empty data for image"}],nil);
+                                                     }
                                                  }
                                                 
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
-                                                     completion(error, nil);
+                                                     if (completion) {
+                                                         completion(error, nil);
+                                                     }
                                                  }];
                                              }
                                          }
@@ -487,7 +552,9 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
       
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                          if (error) {
-                                             completion(error,nil);
+                                             if (completion) {
+                                                 completion(error,nil);
+                                             }
                                          } else {
                                              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                                              if ([httpResponse statusCode] == 200 || [httpResponse statusCode] == 201) {
@@ -500,16 +567,23 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
                                                          for (NSDictionary *resource in resources) {
                                                              [tagArray addObject:[resource objectForKey:@"resource"]];
                                                          }
-                                                              
-                                                        completion(nil,tagArray);
+                                                        
+                                                         if (completion) {
+                                                             completion(nil,tagArray);
+                                                         }
+                                                         
                                                         return;
                                                      }
                                                  }
                                                 
-                                                completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: failed to get offline tags"}],nil);
+                                                if (completion) {
+                                                    completion([NSError errorWithDomain:PGMetarAPIDomain code:PGMetarAPIErrorEmptyPayload userInfo:@{ NSLocalizedDescriptionKey: @"METAR: failed to get offline tags"}],nil);
+                                                }
                                              } else {
                                                  [self handleError:httpResponse completion:^(NSError *error) {
-                                                     completion(error, nil);
+                                                     if (completion) {
+                                                         completion(error, nil);
+                                                     }
                                                  }];
                                              }
                                          }

@@ -21,12 +21,12 @@
     if (self) {
         if ([dict objectForKey:@"imagelist"]) {
             
-            NSMutableArray *array = [NSMutableArray array];
+            NSMutableArray *tempArray = [NSMutableArray array];
             for (NSDictionary *innerDict in [dict objectForKey:@"imagelist"]) {
-                [array addObject:[[PGMetarImageItem alloc] initWithDictionary: innerDict]];
+                [tempArray addObject:[[PGMetarImageItem alloc] initWithDictionary: innerDict]];
             }
             
-            self.imagelist = array;
+            self.imagelist = tempArray;
         }
         
         NSString *updatedAt = [dict objectForKey:@"updatedAt"];

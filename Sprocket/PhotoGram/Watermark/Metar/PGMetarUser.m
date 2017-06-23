@@ -14,16 +14,6 @@
 
 @implementation PGMetarUser
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-    
-    }
-    
-    return self;
-}
-
 - (instancetype)initWithToken: (NSString *) accessToken secret:(NSString *) secret accountID:(NSString *) accountID expire: (NSString *) expire
 {
     self = [super init];

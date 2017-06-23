@@ -56,15 +56,14 @@
 
 @end
 
-#define kLongPressDurationForAlternative 0.6f
-#define kShortDescriptionFixedHeight 200.0
-#define kShowMoreButtonFixedHeight 30.0
-#define kImageGridSpacing 10.0
-#define kImageGridMargin 20.0
-#define kImageGridLineSpacing 10.0
-#define kNumberOfImagesPerRow 3
-#define kTableViewMargin 15
-#define kMinimumBlockSize 75
+static const CGFloat kLongPressDurationForAlternative = 0.6f;
+static const CGFloat kShortDescriptionFixedHeight = 200.0;
+static const CGFloat kShowMoreButtonFixedHeight = 30.0;
+static const CGFloat kImageGridSpacing = 10.0;
+static const CGFloat kImageGridMargin = 20.0;
+static const CGFloat kImageGridLineSpacing = 10.0;
+static const NSInteger kNumberOfImagesPerRow = 3;
+static const CGFloat kTableViewMargin = 15;
 
 @implementation PGPayoffViewWikipediaViewController
 
@@ -327,10 +326,8 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    int calcSize = [self getImageSize];
-    
-    NSLog(@"Image size will be: %d",calcSize);
-    
+    NSInteger calcSize = [self getImageSize];
+
     return CGSizeMake(calcSize,calcSize);
 }
 
@@ -401,14 +398,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     PGMetarBlock *currentBlock = [self.blockArray objectAtIndex:indexPath.row];
     
-    /*NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0]};
-
-    CGRect newSize = [currentBlock.text boundingRectWithSize:CGSizeMake(cell.textView.frame.size.width
-                                                                        , CGFLOAT_MAX)
-                                              options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                           attributes:attributes
-                                              context:nil];*/
-    
     UITextView *view=[[UITextView alloc] initWithFrame:CGRectMake(0, 0, cell.textView.frame.size.width, 10)];
     view.font = [UIFont systemFontOfSize:14.0];
     view.text=currentBlock.text;
@@ -416,8 +405,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
 
     float calcSize = ceil(size.height + cell.textView.frame.origin.y + kTableViewMargin);
-
-    //return calcSize > kMinimumBlockSize? calcSize : kMinimumBlockSize;
     
     return calcSize;
 }

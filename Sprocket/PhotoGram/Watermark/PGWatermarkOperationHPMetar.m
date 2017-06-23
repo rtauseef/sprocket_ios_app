@@ -15,30 +15,21 @@
 #import "PGMetarOfflineTagManager.h"
 #import "PGLinkSettings.h"
 
-NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkembedder.metar";
-#define kTotalAuthRetries 3
-#define kMiniumTagsInLocalDb 5
+static const NSString * PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkembedder.metar";
+static const NSInteger kTotalAuthRetries = 3;
+static const NSInteger kMiniumTagsInLocalDb = 5;
 
 @interface PGWatermarkOperationHPMetar ()
 
 @property (nonatomic, copy, nullable) void (^progressCallback)(double progress);
 @property (strong, nonatomic) PGWatermarkOperationData *operationData;
-@property (assign, nonatomic) int currentAuthRetry;
+@property (assign, nonatomic) NSInteger currentAuthRetry;
 
 @end
 
 @implementation PGWatermarkOperationHPMetar
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
-
-+ (nullable instancetype)executeWithOperationData:(nonnull PGWatermarkOperationData *)operationData progress:(nullable void (^)(double progress))progress completion:(nullable PGWatermarkEmbedderCompletionBlock)completion {
++ (instancetype)executeWithOperationData:(nonnull PGWatermarkOperationData *)operationData progress:(nullable void (^)(double progress))progress completion:(nullable PGWatermarkEmbedderCompletionBlock)completion {
     
     PGWatermarkOperationHPMetar *operation = [[self alloc] init];
     operation.operationData = operationData;
@@ -56,14 +47,22 @@ NSString * const PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkemb
 
 - (void) handleCallback: (nullable void (^) (UIImage *  image, NSError *  error)) completion image:(UIImage *) image error: (NSError *) error {
     dispatch_async(dispatch_get_main_queue(), ^{
-        _progressCallback(1);
-        completion(image,error);
+        
+        if (self.progressCallback) {
+            self.progressCallback(1);
+        }
+        
+        if (completion) {
+            completion(image,error);
+        }
     });
 }
 
 - (void) updateProgress: (double) value {
     dispatch_async(dispatch_get_main_queue(), ^{
-        _progressCallback(value);
+        if (self.progressCallback) {
+            self.progressCallback(value);
+        }
     });
 }
 

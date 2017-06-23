@@ -18,7 +18,6 @@
 #import "PGPayoffViewWikipediaViewController.h"
 #import "PGPayoffViewLivePhotoViewController.h"
 #import "PGPayoffViewBaseViewController.h"
-#import "PGPageControl.h"
 #import "HPPR.h"
 #import "PGMetarPayoffFeedbackViewController.h"
 #import "PGPayoffFeedbackDatabase.h"
@@ -199,7 +198,7 @@
     
     __weak __typeof__(self) weakSelf = self;
     
-    [_pageViewController setViewControllers:@[[self.arrayOfViewControllers objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+    [self.pageViewController setViewControllers:@[[self.arrayOfViewControllers objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         [weakSelf.activityIndicator stopAnimating];
         weakSelf.pageViewController.view.hidden = NO;
 
@@ -263,25 +262,8 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)closeButtonTapped:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)openExternalButtonTapped:(id)sender {
