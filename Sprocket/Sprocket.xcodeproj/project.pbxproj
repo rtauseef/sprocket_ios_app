@@ -1393,6 +1393,7 @@
 		731333AC1ECF68BE00E957BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 731333AE1ECF68BE00E957BB /* Localizable.strings */; };
 		7387003C1EF4BC9F004D321D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7387003E1EF4BC9F004D321D /* InfoPlist.strings */; };
 		7397DE051EE7444A00F544C0 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
+		73D294751EFD824D009BC2E1 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80619A69E5700C72F1A /* Back@2x.png */; };
@@ -10983,6 +10984,7 @@
 				1aceb1ccd8ed31fb57c6e23d /* PGCameraManager.m in Sources */,
 				82813D4D1DF7962F00F939E0 /* PGSprocketLandingPageViewController.m in Sources */,
 				826B69D91DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
+				73D294751EFD824D009BC2E1 /* PGSocialSourcesCircleView.m in Sources */,
 				b38119a178e5e78951d50540 /* PGCrashlyticsLogger.m in Sources */,
 				82E3DEBB1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
 				2529d15d16aa46d869158238 /* PGWebViewerViewController.m in Sources */,
