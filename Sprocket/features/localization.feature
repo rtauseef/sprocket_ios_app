@@ -55,13 +55,6 @@ Scenario: Verify camera roll authorization popup
     
         
 
-  @localization
-  Scenario: Verify camera roll screen titles
-    Given  I am on the "CameraRollLanding" screen
-    Then I open cameraroll	
-    Then I verify photos screen title
-    
-
  @localization
  Scenario: Verify side menu options
     Given  I am on the "Landing" screen
@@ -143,6 +136,14 @@ Scenario: Verify Social media screen titles and navigation
     Then I swipe to see "pitu" screen
     Then I wait for some time
     Then I swipe to see "facebook" screen
+    
+  
+  @localization
+  Scenario: Verify camera roll screen titles
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    Then I verify photos screen title
+    
     
     
 
@@ -241,6 +242,7 @@ Scenario: Navigate to Preview screen for cameraroll
     Then I verify the "Print to sprocket" button text
    
 @localization
+@reset
   Scenario Outline: Navigate to preview screen via instagram/Google
     Given  I am on the "Landing" screen  
     Then I should see "<social_media>" logo

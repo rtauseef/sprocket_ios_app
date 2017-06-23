@@ -58,7 +58,7 @@ Then(/^I touch the "(.*?)" Logo$/) do |photo_source|
     else
         if photo_source == "Photos"
             name_value = "CameraRoll"
-            if ENV['LANGUAGE'] == "Chinese"
+            if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                 name_value = "Photos C"
             end
             value = "//XCUIElementTypeButton[@name='#{name_value}']"
