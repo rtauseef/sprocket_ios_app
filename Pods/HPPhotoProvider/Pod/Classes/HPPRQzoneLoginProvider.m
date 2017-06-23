@@ -112,7 +112,7 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
 - (BOOL)isAccesTokenValid
 {
-    return ((self.loginManager.accessToken && 0) != self.loginManager.accessToken.length);
+    return (self.loginManager.accessToken  &&  (0 < self.loginManager.accessToken.length));
 }
 
 - (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion

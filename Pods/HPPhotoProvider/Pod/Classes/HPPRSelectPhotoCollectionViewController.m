@@ -747,17 +747,15 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
             }
 
             // We continue even if we don't get the extra info because of an error
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.currentSelectedPhoto.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (!weakSelf.provider.isImageRequestsCancelled) {
-                            [weakSelf selectImage:image andMedia:weakSelf.currentSelectedPhoto];
-                        }
-                        
-                        restoreUIBlock();
-                    });
-                }];
-            });
+            [[HPPRCacheService sharedInstance] imageForUrl:weakSelf.currentSelectedPhoto.standardUrl asThumbnail:NO highPriority:YES withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (!weakSelf.provider.isImageRequestsCancelled) {
+                        [weakSelf selectImage:image andMedia:weakSelf.currentSelectedPhoto];
+                    }
+                    
+                    restoreUIBlock();
+                });
+            }];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 restoreUIBlock();
