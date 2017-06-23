@@ -1,17 +1,18 @@
 require_relative '../support/gistfile'
 
 Then(/^I open cameraroll$/) do
-    #if ENV['LANGUAGE'] == "Dutch"
-       # if element_exists("UIButtonLabel")
-         #   touch query("UIButtonLabel")
-         #   sleep(STEP_PAUSE)
-       # end
-    #else
+    if ENV['LANGUAGE'] == "Dutch"
+        if element_exists("UIButtonLabel")
+            touch query("UIButtonLabel")
+            sleep(STEP_PAUSE)
+        end
+    end
+    
         if element_exists("button marked:'#{$list_loc['photos_button']}'")
             sleep(WAIT_SCREENLOAD)
             touch "button marked:'#{$list_loc['photos_button']}'"
         end
-    #end
+    
     if element_exists("view marked:'#{$list_loc['auth']}' index:0")
         sleep(WAIT_SCREENLOAD)
         touch("view marked:'#{$list_loc['auth']}' index:0")
@@ -63,9 +64,15 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                     puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                 end
             else
-                if option == "Tweet Support" && ENV['LANGUAGE'] == "Italian"
-                    puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                if option == "Tweet Support"
+                    if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
+                        touch ("view marked:'#{$list_loc[option]}'")
+                        sleep(STEP_PAUSE)
+                    else
+                        puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                    end
                 else
+                    sleep(STEP_PAUSE)
                     touch ("view marked:'#{$list_loc[option]}'")
                     sleep(STEP_PAUSE)
                 end
@@ -232,10 +239,10 @@ def check_options_exist item
                                          end
                                      else
                                          if item == "Tweet Support"
-                                             if ENV['LANGUAGE'] == "Italian"
-                                                 puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
-                                             else
+                                             if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
                                                  check_element_exists "view marked:'#{$list_loc[item]}'"
+                                             else
+                                                 puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                                              end
                                          else
                                              check_element_exists "view marked:'#{$list_loc[item]}'"
