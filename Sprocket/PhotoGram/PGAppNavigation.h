@@ -30,5 +30,6 @@ extern NSString * const kSurveyNotifyURL;
 + (UIViewController *)howToAndHelpViewController;
 + (void)sendEmail:(UIViewController *)launchingPoint;
 + (void)openSettings;
++ (void)goToLandingPage;
 
 @end

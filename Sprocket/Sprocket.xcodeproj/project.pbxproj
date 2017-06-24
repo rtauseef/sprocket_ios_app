@@ -1145,9 +1145,25 @@
 		65778C041ED8FE93007DA11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65778C021ED8FE93007DA11B /* GoogleService-Info.plist */; };
 		658DF9DF1EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
 		658DF9E01EDF907C00F0EBCB /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */; };
+		659AB3801F047D7B000E3039 /* PGPrintProcessingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 659AB37F1F047D7B000E3039 /* PGPrintProcessingInfo.m */; };
+		659AB3811F047D7B000E3039 /* PGPrintProcessingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 659AB37F1F047D7B000E3039 /* PGPrintProcessingInfo.m */; };
 		659D897E1ED7F99C0085DEFC /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2671D4C61E3EB64600F166E3 /* NotificationService.m */; };
 		65A0026E1ECFA9D1006500EA /* stickers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 65A0026D1ECFA9D1006500EA /* stickers.mp4 */; };
 		65A0026F1ECFA9D1006500EA /* stickers.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 65A0026D1ECFA9D1006500EA /* stickers.mp4 */; };
+		65CB1EBD1F0180A300B3D9B1 /* PGPartyAWSTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB01F0180A300B3D9B1 /* PGPartyAWSTransfer.m */; };
+		65CB1EBE1F0180A300B3D9B1 /* PGPartyAWSTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB01F0180A300B3D9B1 /* PGPartyAWSTransfer.m */; };
+		65CB1EBF1F0180A300B3D9B1 /* PGPartyFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB21F0180A300B3D9B1 /* PGPartyFileInfo.m */; };
+		65CB1EC01F0180A300B3D9B1 /* PGPartyFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB21F0180A300B3D9B1 /* PGPartyFileInfo.m */; };
+		65CB1EC11F0180A300B3D9B1 /* PGPartyGuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB41F0180A300B3D9B1 /* PGPartyGuestManager.m */; };
+		65CB1EC21F0180A300B3D9B1 /* PGPartyGuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB41F0180A300B3D9B1 /* PGPartyGuestManager.m */; };
+		65CB1EC31F0180A300B3D9B1 /* PGPartyHostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB61F0180A300B3D9B1 /* PGPartyHostManager.m */; };
+		65CB1EC41F0180A300B3D9B1 /* PGPartyHostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB61F0180A300B3D9B1 /* PGPartyHostManager.m */; };
+		65CB1EC51F0180A300B3D9B1 /* PGPartyLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB81F0180A300B3D9B1 /* PGPartyLandingPageViewController.m */; };
+		65CB1EC61F0180A300B3D9B1 /* PGPartyLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EB81F0180A300B3D9B1 /* PGPartyLandingPageViewController.m */; };
+		65CB1EC71F0180A300B3D9B1 /* PGPartyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EBA1F0180A300B3D9B1 /* PGPartyManager.m */; };
+		65CB1EC81F0180A300B3D9B1 /* PGPartyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EBA1F0180A300B3D9B1 /* PGPartyManager.m */; };
+		65CB1EC91F0180A300B3D9B1 /* PGPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EBC1F0180A300B3D9B1 /* PGPartyViewController.m */; };
+		65CB1ECA1F0180A300B3D9B1 /* PGPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB1EBC1F0180A300B3D9B1 /* PGPartyViewController.m */; };
 		65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */; };
 		65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E025241ECA26A000C88803 /* PGCustomStickerViewController.m */; };
@@ -2942,7 +2958,23 @@
 		658DF9D21EDF893D00F0EBCB /* AirshipConfig-PRODUCTION.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AirshipConfig-PRODUCTION.plist"; path = "../AirshipConfig-PRODUCTION.plist"; sourceTree = "<group>"; };
 		658DF9D51EDF894900F0EBCB /* AirshipConfig-DEFAULT.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AirshipConfig-DEFAULT.plist"; path = "../AirshipConfig-DEFAULT.plist"; sourceTree = "<group>"; };
 		658DF9DE1EDF907C00F0EBCB /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AirshipConfig.plist; path = ../AirshipConfig.plist; sourceTree = "<group>"; };
+		659AB37E1F047D7B000E3039 /* PGPrintProcessingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPrintProcessingInfo.h; sourceTree = "<group>"; };
+		659AB37F1F047D7B000E3039 /* PGPrintProcessingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPrintProcessingInfo.m; sourceTree = "<group>"; };
 		65A0026D1ECFA9D1006500EA /* stickers.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = stickers.mp4; sourceTree = "<group>"; };
+		65CB1EAF1F0180A300B3D9B1 /* PGPartyAWSTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyAWSTransfer.h; sourceTree = "<group>"; };
+		65CB1EB01F0180A300B3D9B1 /* PGPartyAWSTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyAWSTransfer.m; sourceTree = "<group>"; };
+		65CB1EB11F0180A300B3D9B1 /* PGPartyFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyFileInfo.h; sourceTree = "<group>"; };
+		65CB1EB21F0180A300B3D9B1 /* PGPartyFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyFileInfo.m; sourceTree = "<group>"; };
+		65CB1EB31F0180A300B3D9B1 /* PGPartyGuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyGuestManager.h; sourceTree = "<group>"; };
+		65CB1EB41F0180A300B3D9B1 /* PGPartyGuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyGuestManager.m; sourceTree = "<group>"; };
+		65CB1EB51F0180A300B3D9B1 /* PGPartyHostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyHostManager.h; sourceTree = "<group>"; };
+		65CB1EB61F0180A300B3D9B1 /* PGPartyHostManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyHostManager.m; sourceTree = "<group>"; };
+		65CB1EB71F0180A300B3D9B1 /* PGPartyLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyLandingPageViewController.h; sourceTree = "<group>"; };
+		65CB1EB81F0180A300B3D9B1 /* PGPartyLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyLandingPageViewController.m; sourceTree = "<group>"; };
+		65CB1EB91F0180A300B3D9B1 /* PGPartyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyManager.h; sourceTree = "<group>"; };
+		65CB1EBA1F0180A300B3D9B1 /* PGPartyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyManager.m; sourceTree = "<group>"; };
+		65CB1EBB1F0180A300B3D9B1 /* PGPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPartyViewController.h; sourceTree = "<group>"; };
+		65CB1EBC1F0180A300B3D9B1 /* PGPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPartyViewController.m; sourceTree = "<group>"; };
 		65DAD7661B8D3196006FAB3D /* PGExperimentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGExperimentManager.h; sourceTree = "<group>"; };
 		65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGExperimentManager.m; sourceTree = "<group>"; };
 		65E025231ECA26A000C88803 /* PGCustomStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCustomStickerViewController.h; sourceTree = "<group>"; };
@@ -4975,6 +5007,27 @@
 			name = Video;
 			sourceTree = "<group>";
 		};
+		65CB1EAD1F01803600B3D9B1 /* Party Mode */ = {
+			isa = PBXGroup;
+			children = (
+				65CB1EAF1F0180A300B3D9B1 /* PGPartyAWSTransfer.h */,
+				65CB1EB01F0180A300B3D9B1 /* PGPartyAWSTransfer.m */,
+				65CB1EB11F0180A300B3D9B1 /* PGPartyFileInfo.h */,
+				65CB1EB21F0180A300B3D9B1 /* PGPartyFileInfo.m */,
+				65CB1EB31F0180A300B3D9B1 /* PGPartyGuestManager.h */,
+				65CB1EB41F0180A300B3D9B1 /* PGPartyGuestManager.m */,
+				65CB1EB51F0180A300B3D9B1 /* PGPartyHostManager.h */,
+				65CB1EB61F0180A300B3D9B1 /* PGPartyHostManager.m */,
+				65CB1EB71F0180A300B3D9B1 /* PGPartyLandingPageViewController.h */,
+				65CB1EB81F0180A300B3D9B1 /* PGPartyLandingPageViewController.m */,
+				65CB1EB91F0180A300B3D9B1 /* PGPartyManager.h */,
+				65CB1EBA1F0180A300B3D9B1 /* PGPartyManager.m */,
+				65CB1EBB1F0180A300B3D9B1 /* PGPartyViewController.h */,
+				65CB1EBC1F0180A300B3D9B1 /* PGPartyViewController.m */,
+			);
+			name = "Party Mode";
+			sourceTree = "<group>";
+		};
 		65FE75E91EE62AE200BD789B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -5184,6 +5237,8 @@
 				9230AEA11D18B3A80029A888 /* PGPreviewViewController.m */,
 				8257D63D1E94559000EEC08F /* PGPreviewDrawerViewController.h */,
 				8257D63E1E94559000EEC08F /* PGPreviewDrawerViewController.m */,
+				659AB37E1F047D7B000E3039 /* PGPrintProcessingInfo.h */,
+				659AB37F1F047D7B000E3039 /* PGPrintProcessingInfo.m */,
 				924A70891DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.h */,
 				924A708A1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m */,
 				8263D7CE1E7867670036E903 /* PGSavePhotos.h */,
@@ -6384,6 +6439,7 @@
 			isa = PBXGroup;
 			children = (
 				F20630181F0328BB00A369EB /* CloudAssetClient */,
+				65CB1EAD1F01803600B3D9B1 /* Party Mode */,
 				F24DA7D21EAEA10200C24AAB /* Watermark */,
 				F22F12B41E78AC8E00753C5A /* Multi-Print */,
 				F22F127F1E6F387900753C5A /* Security */,
@@ -9628,7 +9684,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */ = {
@@ -9646,7 +9702,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		658DF9D81EDF898600F0EBCB /* Copy proper Urban Airship configuration */ = {
@@ -9731,7 +9787,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8271DCD81D46D07B00B21549 /* ShellScript */ = {
@@ -10153,12 +10209,14 @@
 				F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */,
 				1c5eacaa4d0d9b1830b6a7ed /* PGAnalyticsManager.m in Sources */,
 				0ea8e0735c97478d1347a8be /* AlphaGradientView.m in Sources */,
+				65CB1EC61F0180A300B3D9B1 /* PGPartyLandingPageViewController.m in Sources */,
 				926F9E2B1EB7FBFF00EDAB65 /* PGAppNavigation.m in Sources */,
 				82EF7B021EB8E9A40099026B /* PGHamburgerButton.m in Sources */,
 				27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */,
 				F2E85D361EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */,
 				F20CE25E1EC243A400FD910D /* PGInAppMessageView.m in Sources */,
+				659AB3811F047D7B000E3039 /* PGPrintProcessingInfo.m in Sources */,
 				F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */,
 				cb729017655ba096d356d01a /* UIView+Style.m in Sources */,
 				929B9A1B1EAFB41800A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
@@ -10177,6 +10235,7 @@
 				b38119a178e5e78951d50540 /* PGCrashlyticsLogger.m in Sources */,
 				82E3DEBB1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
 				2529d15d16aa46d869158238 /* PGWebViewerViewController.m in Sources */,
+				65CB1EBE1F0180A300B3D9B1 /* PGPartyAWSTransfer.m in Sources */,
 				8bdfa64fb5812b6502813c0e /* UIFont+Style.m in Sources */,
 				141cc38c3e33f2c4363f6f0c /* UIImageView+MaskImage.m in Sources */,
 				F2B3F5C71EFC5E9300F1E6FB /* PGMetarLocationVenue.m in Sources */,
@@ -10228,6 +10287,7 @@
 				F2B3F5B21EFC5E7600F1E6FB /* PGPayoffViewBaseViewController.m in Sources */,
 				a51149fdd16db14e5519b0c3 /* PGAppAppearance.m in Sources */,
 				b2b702ca62e7f093ce61c8e9 /* PGLogger.m in Sources */,
+				65CB1EC81F0180A300B3D9B1 /* PGPartyManager.m in Sources */,
 				F2B3F5B91EFC5E7700F1E6FB /* PGPayoffViewVideoViewController.m in Sources */,
 				F2B3F5A51EFC5E5A00F1E6FB /* PGPayoffManager.m in Sources */,
 				F2B3F5AF1EFC5E7600F1E6FB /* PGPayoffFeedbackDatabase.m in Sources */,
@@ -10235,6 +10295,8 @@
 				a25363ea5a0a73fb9705cae5 /* PGLandingSelectorPageViewController.m in Sources */,
 				F23051691ECB973E00E21B5A /* PGInboxMessageManager.m in Sources */,
 				82A116811E5FA57100E7F8FC /* PGStickerManager.m in Sources */,
+				65CB1ECA1F0180A300B3D9B1 /* PGPartyViewController.m in Sources */,
+				65CB1EC41F0180A300B3D9B1 /* PGPartyHostManager.m in Sources */,
 				F230516E1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,
 				F23051731ECCA42A00E21B5A /* PGInboxMessageCenterTableViewCell.m in Sources */,
 				F2C1EECD1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
@@ -10244,6 +10306,7 @@
 				F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				F206301D1F0328F600A369EB /* PGCloudAssetClient.m in Sources */,
 				1d083780537ed0fd761b7b5c /* UIViewController+Trackable.m in Sources */,
+				65CB1EC21F0180A300B3D9B1 /* PGPartyGuestManager.m in Sources */,
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				F2B3F5A81EFC5E5A00F1E6FB /* PGScanViewController.m in Sources */,
@@ -10251,6 +10314,7 @@
 				F2B3F5B51EFC5E7600F1E6FB /* PGPayoffViewImageViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
+				65CB1EC01F0180A300B3D9B1 /* PGPartyFileInfo.m in Sources */,
 				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* BuildFile in Sources */,
@@ -10288,6 +10352,7 @@
 			files = (
 				F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */,
 				EDD33F6F1EF9CE520028DBC8 /* PGMetarPage.m in Sources */,
+				65CB1EC91F0180A300B3D9B1 /* PGPartyViewController.m in Sources */,
 				F2D5A3931EAEA4C7002F9DDC /* PGLinkReaderViewController.h in Sources */,
 				F21185BB1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				F2D5A3941EAEA4C7002F9DDC /* PGLinkSettings.h in Sources */,
@@ -10341,8 +10406,10 @@
 				733BC1F81F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */,
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				EDE0EA931F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m in Sources */,
+				65CB1EC71F0180A300B3D9B1 /* PGPartyManager.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F230516D1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,
+				659AB3801F047D7B000E3039 /* PGPrintProcessingInfo.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
 				EDD33F931EF9CE520028DBC8 /* PGWatermarkProcessor.m in Sources */,
 				EDD33F7D1EF9CE520028DBC8 /* PGPayoffViewBaseViewController.m in Sources */,
@@ -10352,7 +10419,9 @@
 				EDD33F781EF9CE520028DBC8 /* PGMetarVideo.m in Sources */,
 				EDD33F791EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m in Sources */,
 				F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
+				65CB1EC11F0180A300B3D9B1 /* PGPartyGuestManager.m in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
+				65CB1EBD1F0180A300B3D9B1 /* PGPartyAWSTransfer.m in Sources */,
 				EDD33F7E1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
 				EDD33F841EF9CE520028DBC8 /* PGPayoffViewVideoViewController.m in Sources */,
@@ -10362,6 +10431,7 @@
 				822ED5341D19F8D000F4EE4B /* PGOverlayCameraViewController.m in Sources */,
 				E3461F0A19ACDD520042DF5E /* PGSaveToCameraRollActivity.m in Sources */,
 				82E3DEBA1E833F000008F600 /* PGEmbellishmentCategory.m in Sources */,
+				65CB1EBF1F0180A300B3D9B1 /* PGPartyFileInfo.m in Sources */,
 				F2E7852B1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				82017AD81D94684F00364F21 /* PGGesturesView+Analytics.m in Sources */,
 				829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
@@ -10385,6 +10455,7 @@
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
+				65CB1EC51F0180A300B3D9B1 /* PGPartyLandingPageViewController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				EDD33F6C1EF9CE520028DBC8 /* PGMetarLocationVenue.m in Sources */,
@@ -10436,6 +10507,7 @@
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
 				EDD33F6A1EF9CE520028DBC8 /* PGMetarImageTag.m in Sources */,
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
+				65CB1EC31F0180A300B3D9B1 /* PGPartyHostManager.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				EDD33F671EF9CE520028DBC8 /* PGMetarContentContainer.m in Sources */,

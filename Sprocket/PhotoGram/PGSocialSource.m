@@ -141,8 +141,18 @@ NSString * const kIncludeLoginKey = @"include-login";
             self.hasFolders = NO;
             self.title = NSLocalizedString(@"Pitu", @"Social source title for Pitu");
             self.needsSignIn = NO;
-            self.loginProvider = [HPPRPituLoginProvider sharedInstance];
+            self.loginProvider = [HPPRPituPhotoProvider sharedInstance].loginProvider;
             self.photoProvider = [HPPRPituPhotoProvider sharedInstance];
+            self.photoProvider.showCameraButtonInCollectionView = YES;
+            break;
+        case PGSocialSourceTypePartyFolder:
+            self.icon = [UIImage imageNamed:@"Party_C"];
+            self.menuIcon = self.icon;
+            self.hasFolders = NO;
+            self.title = NSLocalizedString(@"Party", @"Social source title for Party");
+            self.needsSignIn = NO;
+            self.loginProvider = [HPPRPartyFolderPhotoProvider sharedInstance].loginProvider;
+            self.photoProvider = [HPPRPartyFolderPhotoProvider sharedInstance];
             self.photoProvider.showCameraButtonInCollectionView = YES;
             break;
         default:

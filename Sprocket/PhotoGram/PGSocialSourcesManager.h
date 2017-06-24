@@ -22,5 +22,6 @@
 - (PGSocialSource *)socialSourceByType:(PGSocialSourceType)type;
 - (void)toggleExtraSocialSourcesEnabled;
 - (BOOL)isEnabledExtraSocialSources;
+- (void)setupSocialSources;
 
 @end

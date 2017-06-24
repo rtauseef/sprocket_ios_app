@@ -23,6 +23,7 @@ extern NSString * const kInAppMessageTypeValueFirmwareUpgrade;
 
 - (void)showBuyPaperMessage;
 - (void)showFirmwareUpgradeMessage;
+- (void)showPartyPhotoReceivedMessage;
 
 - (void)attemptToDisplayPendingMessage;
 

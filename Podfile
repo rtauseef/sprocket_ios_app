@@ -19,6 +19,8 @@ def shared_pods
     pod 'iCarousel', '1.8'
     pod 'Google/SignIn'
     pod 'GPUImage'
+    pod 'AWSCognito'
+    pod 'AWSS3'
 end
 
 target "Sprocket" do
@@ -31,7 +33,6 @@ end
 
 target "Sprocket Print" do
     pod 'GoogleAnalytics-iOS-SDK', '3.12'
-    pod 'TTTAttributedLabel', '1.10.1'
     pod 'TTTAttributedLabel', '1.10.1'
     pod 'MobilePrintSDK', git:'https://github.com/IPGPTP/ios-print-sdk.git', branch:'bluetooth'
 end

@@ -15,9 +15,13 @@
 
 @interface PGSavePhotos : NSObject
 
+extern NSString * const kPGSavePhotosSprocketAlbumn;
+extern NSString * const kPGSavePhotosSprocketPartyAlbumn;
+
 + (void)saveVideo:(AVURLAsset *)asset completion:(void (^)(BOOL, PHAsset*))completion;
 + (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL, PHAsset*))completion;
 + (void)saveImage:(UIImage *)image completion:(void (^)(BOOL, PHAsset*))completion;
++ (void)saveImage:(UIImage *)image album:(NSString *)albumTitle completion:(void (^)(BOOL, PHAsset*))completion;
 + (void)saveImageFake:(UIImage *)image completion:(void (^)(BOOL, PHAsset*))completion;
 
 + (BOOL)savePhotos;

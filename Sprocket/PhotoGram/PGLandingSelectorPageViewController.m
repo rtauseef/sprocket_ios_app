@@ -35,6 +35,7 @@
 #import "PGPhotoSelection.h"
 #import "PGAnalyticsManager.h"
 #import "PGInAppMessageManager.h"
+#import "PGPartyManager.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -119,6 +120,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
     
     self.isDraggingPage = NO;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -147,6 +150,12 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 
 #pragma mark - Social Sources
+
+- (void)handleSettingsChangedNotification:(NSNotification *)notification
+{
+    [[PGSocialSourcesManager sharedInstance] setupSocialSources];
+    [self setupSocialSources];
+}
 
 - (void)setupSocialSources
 {
@@ -208,6 +217,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             }
             case PGSocialSourceTypePitu: {
                 UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPituLandingPageViewNavigationController"];
+                viewController.delegate = self;
+                ((PGLandingPageViewController *) viewController.viewControllers.firstObject).delegate = self;
+                [viewControllers addObject:viewController];
+                break;
+            }
+            case PGSocialSourceTypePartyFolder: {
+                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPartyLandingPageNavigationController"];
                 viewController.delegate = self;
                 ((PGLandingPageViewController *) viewController.viewControllers.firstObject).delegate = self;
                 [viewControllers addObject:viewController];
@@ -531,7 +547,12 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
         HPPRSelectPhotoCollectionViewController *photoGalleryViewController = (HPPRSelectPhotoCollectionViewController *) viewController;
         photoGalleryViewController.allowMultiSelect = [PGFeatureFlag isMultiPrintEnabled];
-
+        if (nil != photoGalleryViewController.childViewController) {
+            [self.navigationView hideGradientBar];
+        } else {
+            [self.navigationView showGradientBar];
+        }
+        
         if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
             [self.navigationView beginSelectionMode];
 
@@ -554,6 +575,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             [self.navigationView hideAlbumsDropDownButton];
         }
     } else {
+        [self.navigationView showGradientBar];
         [self.navigationView showCameraButton];
         [self.navigationView hideAlbumsDropDownButton];
 

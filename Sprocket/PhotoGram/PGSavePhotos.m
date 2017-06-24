@@ -14,9 +14,12 @@
 #import "PGAnalyticsManager.h"
 #import <HPPRCameraRollLoginProvider.h>
 
-NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
-
 @implementation PGSavePhotos
+
+static NSString *kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
+
+NSString * const kPGSavePhotosSprocketAlbumn = @"sprocket";
+NSString * const kPGSavePhotosSprocketPartyAlbumn = @"sprocket-party";
 
 #pragma mark - Save Photos Methods
 
@@ -66,9 +69,13 @@ NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
 
 + (void)saveImage:(UIImage *)image completion:(void (^)(BOOL, PHAsset*))completion
 {
+    [self saveImage:image album:kPGSavePhotosSprocketAlbumn completion:completion];
+}
+
++ (void)saveImage:(UIImage *)image album:(NSString *)albumTitle completion:(void (^)(BOOL, PHAsset*))completion
+{
     [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
-            NSString *albumTitle = @"sprocket";
             
             PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
             fetchOptions.predicate = [NSPredicate predicateWithFormat:@"title = %@", albumTitle];

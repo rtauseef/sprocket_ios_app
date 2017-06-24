@@ -34,6 +34,7 @@
 #import "PGHamburgerButton.h"
 #import "PGInAppMessageManager.h"
 #import "PGPrintQueueManager.h"
+#import "PGPartyManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -109,7 +110,7 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     [self addLongPressGesture];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLinkSettingsChanged:)  name:kPGLinkSettingsChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
 
     [MPBTPrintManager sharedInstance].delegate = self;
     
@@ -203,8 +204,6 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
     [self hideCameraButtons];
     [[PGCameraManager sharedInstance] stopCamera];
 }
@@ -318,7 +317,8 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
     });
 }
 
-- (void)handleLinkSettingsChanged:(NSNotification *)notification {
+- (void)handleSettingsChangedNotification:(NSNotification *)notification {
+    [[PGSocialSourcesManager sharedInstance] setupSocialSources];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self setSocialSourcesLayout];
     });
@@ -342,6 +342,12 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 - (IBAction)pituTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypePitu includeLogin:NO];
+}
+
+
+- (IBAction)partyTapped:(id)sender
+{
+    [self showSocialNetwork:PGSocialSourceTypePartyFolder includeLogin:NO];
 }
 
 - (IBAction)facebookTapped:(id)sender
@@ -455,6 +461,9 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
         case PGSocialSourceTypePitu:
             [self pituTapped:button];
             break;
+        case PGSocialSourceTypePartyFolder:
+            [self partyTapped:button];
+            break;
     }
 }
 
@@ -502,6 +511,12 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
         offRamp = kMetricsOffRampQueuePrintTile;
     }
 
+    if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginParty]) {
+        queueAction = kEventPrintQueuePrintPartyAction;
+        jobAction = kEventPrintJobPrintPartyAction;
+        offRamp = kMetricsOffRampQueuePrintParty;
+    }
+    
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:queueAction
                                                       queueId:printManager.queueId];
 

@@ -23,6 +23,7 @@
 #import "PGFeatureFlag.h"
 #import "PGLinkSettings.h"
 #import "PGCloudAssetClient.h"
+#import "PGPartyManager.h"
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -52,7 +53,9 @@ enum {
     kForceUpgradeIndex,
     kUseExperimentalFirmwareIndex,
     kEnableCloudAssetsIndex,
-
+		kEnablePartyModeIndex,
+    kEnablePartySaveIndex,
+    kEnablePartyPrintIndex,
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
 
@@ -61,6 +64,7 @@ enum {
 
 NSString * const kFeatureCodeAll = @"hpway";
 NSString * const kFeatureCodeLink = @"link";
+NSString * const kFeatureCodePartyMode = @"fiesta";
 
 @interface PGLoggingSetttingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -77,7 +81,7 @@ NSString * const kFeatureCodeLink = @"link";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPickerCellID];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPickerCellID];
@@ -94,11 +98,11 @@ NSString * const kFeatureCodeLink = @"link";
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kLogLevelCellID];
     }
     cell.textLabel.text = title;
-    
+
     cell.detailTextLabel.text = logLevel;
-    
+
     return cell;
-    
+
 }
 
 - (UITableViewCell *)createPickerCell
@@ -107,11 +111,11 @@ NSString * const kFeatureCodeLink = @"link";
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPickerCellID];
     }
-    
+
     self.pickerView = (UIPickerView *)[cell.contentView subviews][0];
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
-    
+
     return cell;
 }
 
@@ -119,7 +123,7 @@ NSString * const kFeatureCodeLink = @"link";
 
 - (BOOL)levelPickerIsShown
 {
-    
+
     return self.pickerIndexPath != nil;
 }
 
@@ -127,7 +131,7 @@ NSString * const kFeatureCodeLink = @"link";
 {
     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.pickerIndexPath.row inSection:0]]
                           withRowAnimation:UITableViewRowAnimationFade];
-    
+
     self.pickerIndexPath = nil;
 }
 
@@ -135,24 +139,24 @@ NSString * const kFeatureCodeLink = @"link";
 - (NSIndexPath *)calculateIndexPathForNewPicker:(NSIndexPath *)selectedIndexPath
 {
     NSIndexPath *newIndexPath;
-    
+
     if (([self levelPickerIsShown]) && (self.pickerIndexPath.row < selectedIndexPath.row)){
-        
+
         newIndexPath = [NSIndexPath indexPathForRow:selectedIndexPath.row - 1 inSection:0];
-        
+
     }else {
-        
+
         newIndexPath = [NSIndexPath indexPathForRow:selectedIndexPath.row  inSection:0];
-        
+
     }
-    
+
     return newIndexPath;
 }
 
 - (void)showNewPickerAtIndex:(NSIndexPath *)indexPath
 {
     NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]];
-    
+
     [self.tableView insertRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationFade];
 }
@@ -162,17 +166,17 @@ NSString * const kFeatureCodeLink = @"link";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat rowHeight = self.tableView.rowHeight;
-    
+
     if ([self levelPickerIsShown] && (self.pickerIndexPath.row == indexPath.row)){
-        
+
         rowHeight = self.pickerCellRowHeight;
-        
+
     }
-    
+
     if (![self enableFeature:indexPath.row forCode:self.unlockCode]) {
         rowHeight = 0.0;
     }
-    
+
     return rowHeight;
 }
 
@@ -185,31 +189,31 @@ NSString * const kFeatureCodeLink = @"link";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfRows = kCellIndexMax;
-    
+
     if ([self levelPickerIsShown]){
-        
+
         numberOfRows++;
-        
+
     }
-    
+
     return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    
+
     if ([self levelPickerIsShown] && (self.pickerIndexPath.row == indexPath.row)){
-        
+
         cell = [self createPickerCell];
-        
+
     } else {
         NSUInteger selectedRow = indexPath.row;
         if ([self levelPickerIsShown] && selectedRow > self.pickerIndexPath.row) {
             selectedRow--;
         }
 
-        
+
         if( kPhotogramCellIndex == selectedRow ) {
             self.photogramCell = [self createLogLevelCell: @"Photogram" logLevel:[self stringForLogLevel:pgLogLevel]];
             cell = self.photogramCell;
@@ -283,14 +287,14 @@ NSString * const kFeatureCodeLink = @"link";
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"enablePushNotifications"];
             }
-            
+
             cell.textLabel.text = @"Enable push notifications";
         } else if (kDisplayNotificationMsgCenterIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"displayNotificationMsgCenter"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"displayNotificationMsgCenter"];
             }
-            
+
             cell.textLabel.text = @"Display Notification Message Center";
         } else if (kEnableWatermarkIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableWatermark"];
@@ -356,11 +360,38 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGFeatureFlag isCloudAssetsEnabled]];
-        }
+        } else if(kEnablePartyModeIndex == selectedRow) {
+						cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartyMode"];
+						if (!cell) {
+								cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartyMode"];
+						}
+						cell.textLabel.text = @"Enable Party Mode";
+						cell.textLabel.font = self.photogramCell.textLabel.font;
+						cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+						[self setBooleanDetailText:cell value:[PGPartyManager isPartyModeEnabled]];
+				} else if(kEnablePartySaveIndex == selectedRow) {
+						cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartySave"];
+						if (!cell) {
+								cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartySave"];
+						}
+						cell.textLabel.text = @"Save Incoming Party Photos";
+						cell.textLabel.font = self.photogramCell.textLabel.font;
+						cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+						[self setBooleanDetailText:cell value:[PGPartyManager isPartySaveEnabled]];
+				} else if(kEnablePartyPrintIndex == selectedRow) {
+						cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartyPrint"];
+						if (!cell) {
+								cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartyPrint"];
+						}
+						cell.textLabel.text = @"Print Incoming Party Photos";
+						cell.textLabel.font = self.photogramCell.textLabel.font;
+						cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+						[self setBooleanDetailText:cell value:[PGPartyManager isPartyPrintEnabled]];
+				}
 
-         cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
+        cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
     }
-    
+
     return cell;
 }
 
@@ -369,22 +400,22 @@ NSString * const kFeatureCodeLink = @"link";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView beginUpdates];
-    
+
     if ([self levelPickerIsShown] && (self.pickerIndexPath.row - 1 == indexPath.row)) {
         [self hideExistingPicker];
 
     } else {
         if ([self.tableView cellForRowAtIndexPath:indexPath] == self.photogramCell ||
             [self.tableView cellForRowAtIndexPath:indexPath] == self.svgCell) {
-            
+
             NSIndexPath *newPickerIndexPath = [self calculateIndexPathForNewPicker:indexPath];
-            
+
             if ([self levelPickerIsShown]) {
                 [self hideExistingPicker];
             }
-            
+
             [self showNewPickerAtIndex:newPickerIndexPath];
-            
+
             self.pickerIndexPath = [NSIndexPath indexPathForRow:newPickerIndexPath.row + 1 inSection:0];
         } else {
             NSInteger selectedRow = indexPath.row;
@@ -392,7 +423,7 @@ NSString * const kFeatureCodeLink = @"link";
                 selectedRow--;
                 [self hideExistingPicker];
             }
-            
+
             if (kMailLogsCellIndex == selectedRow) {
                 [self composeEmailWithDebugAttachment];
             } else if (kClearLogsCellIndex == selectedRow) {
@@ -446,14 +477,23 @@ NSString * const kFeatureCodeLink = @"link";
                     PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
                     [cac refreshAssetCatalog];
                 }
-            }
+            } else if (kEnablePartyModeIndex == selectedRow) {
+							[PGPartyManager setPartyModeEnabled:![PGPartyManager isPartyModeEnabled]];
+							[self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGPartyManager isPartyModeEnabled]];
+						} else if (kEnablePartySaveIndex == selectedRow) {
+								[PGPartyManager setPartySaveEnabled:![PGPartyManager isPartySaveEnabled]];
+								[self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGPartyManager isPartySaveEnabled]];
+						} else if (kEnablePartyPrintIndex == selectedRow) {
+								[PGPartyManager setPartyPrintEnabled:![PGPartyManager isPartyPrintEnabled]];
+								[self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGPartyManager isPartyPrintEnabled]];
+						}
         }
     }
-    
+
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     [self.tableView endUpdates];
-    
+
     // Make the correct selection in the picker view
     if( [self levelPickerIsShown] ) {
         if( [tableView cellForRowAtIndexPath:indexPath] == self.photogramCell ) {
@@ -492,7 +532,7 @@ NSString * const kFeatureCodeLink = @"link";
         [file truncateFileAtOffset:0];
         [file closeFile];
     }
-    
+
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success", nil)
                                                     message:NSLocalizedString(@"Log file has been cleared.", nil)
                                                    delegate:nil
@@ -505,11 +545,11 @@ NSString * const kFeatureCodeLink = @"link";
 {
     if ([MFMailComposeViewController canSendMail]) {
         PGLogger* logger = (PGLogger *)[PGLogger sharedInstance];
-        
+
         [logger cycleMailComposer];
         MFMailComposeViewController *mailViewController = [logger globalMailComposer];
         mailViewController.mailComposeDelegate = self;
-        
+
         NSMutableData *errorLogData = [NSMutableData data];
         for (NSData *errorLogFileData in [logger errorLogData]) {
             [errorLogData appendData:errorLogFileData];
@@ -517,11 +557,11 @@ NSString * const kFeatureCodeLink = @"link";
         [mailViewController addAttachmentData:errorLogData mimeType:@"text/plain" fileName:@"errorLog.txt"];
         [mailViewController setSubject:NSLocalizedString(@"sprocket error log", nil)];
         [mailViewController setMessageBody:NSLocalizedString(@"The logfile is attached to this message.", nil) isHTML:NO];
-        
+
         [self presentViewController:mailViewController animated:YES completion:nil];
-        
+
     }
-    
+
     else {
         NSString *message = NSLocalizedString(@"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device.", nil);
         [[[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil] show];
@@ -541,7 +581,7 @@ NSString * const kFeatureCodeLink = @"link";
     else {
         PGLogVerbose(@"Mail Composer closed gracefully with result: %ld, error: %@", (long)result, error);
     }
-    
+
     PGLogger* logger = (PGLogger *)[PGLogger sharedInstance];
     MFMailComposeViewController *mailViewController = [logger globalMailComposer];
     [mailViewController dismissViewControllerAnimated:YES completion:nil];
@@ -567,7 +607,7 @@ NSString * const kFeatureCodeLink = @"link";
             forComponent:(NSInteger)component
 {
     NSInteger logLevel = [self logLevelForRow:row];
-    
+
     return [self stringForLogLevel:logLevel];
 }
 
@@ -578,7 +618,7 @@ NSString * const kFeatureCodeLink = @"link";
 
     NSIndexPath *logTypeCellPath = [NSIndexPath indexPathForRow:self.pickerIndexPath.row - 1 inSection:0];
     UITableViewCell *logTypeCell = [self.tableView cellForRowAtIndexPath:logTypeCellPath];
-    
+
     if( logTypeCell == self.photogramCell ) {
         NSInteger logLevel = [self logLevelForRow:row];
         self.photogramCell.detailTextLabel.text = [self stringForLogLevel:logLevel];
@@ -588,7 +628,7 @@ NSString * const kFeatureCodeLink = @"link";
         self.svgCell.detailTextLabel.text = [self stringForLogLevel:logLevel];
         [[PGLogger sharedInstance]setDdLogLevel:(logLevel >> PG_LOG_SHIFT)];
     }
-    
+
     [self.tableView beginUpdates];
         [self hideExistingPicker];
     [self.tableView endUpdates];
@@ -597,28 +637,28 @@ NSString * const kFeatureCodeLink = @"link";
 - (NSInteger)logLevelForRow:(NSInteger)row
 {
     NSInteger logLevel;
-    
+
     switch (row) {
         case 0:
             logLevel = PGLogLevelError;
             break;
-            
+
         case 1:
             logLevel = PGLogLevelWarning;
             break;
-            
+
         case 2:
             logLevel = PGLogLevelInfo;
             break;
-            
+
         case 3:
             logLevel = PGLogLevelDebug;
             break;
-            
+
         case 4:
             logLevel = PGLogLevelVerbose;
             break;
-            
+
         default:
             break;
     }
@@ -629,44 +669,44 @@ NSString * const kFeatureCodeLink = @"link";
 - (NSInteger)rowForLogLevel:(NSInteger)logLevel
 {
     NSInteger row;
-    
+
     switch (logLevel) {
         case PGLogLevelError:
             row = 0;
             break;
-            
+
         case PGLogLevelWarning:
             row = 1;
             break;
-            
+
         case PGLogLevelInfo:
             row = 2;
             break;
-            
+
         case PGLogLevelDebug:
             row = 3;
             break;
-            
+
         case PGLogLevelVerbose:
             row = 4;
             break;
-            
+
         default:
             break;
     }
-    
+
     return row;
 }
 
 - (NSString*)stringForLogLevel:(NSInteger)logLevel
 {
     NSString *strLevel = @"Unknown";
-    
+
     switch (logLevel) {
         case PGLogLevelError:
             strLevel = kErrorString;
             break;
-            
+
         case PGLogLevelWarning:
             strLevel = kWarnString;
             break;
@@ -686,7 +726,7 @@ NSString * const kFeatureCodeLink = @"link";
         default:
             break;
     }
-    
+
     return strLevel;
 }
 
@@ -704,7 +744,7 @@ NSString * const kFeatureCodeLink = @"link";
 
 - (BOOL)validCode:(NSString *)code
 {
-    return [code isEqualToString:kFeatureCodeAll] || [code isEqualToString:kFeatureCodeLink];
+    return [code isEqualToString:kFeatureCodeAll] || [code isEqualToString:kFeatureCodeLink] || [code isEqualToString:kFeatureCodePartyMode];
 }
 
 - (BOOL)enableFeature:(NSInteger)index forCode:(NSString *)code
@@ -713,6 +753,8 @@ NSString * const kFeatureCodeLink = @"link";
     if ([code isEqualToString:kFeatureCodeAll]) {
         enabled = YES;
     } else if ([code isEqualToString:kFeatureCodeLink] && (kEnableWatermarkIndex == index || kEnableVideoPrintIndex == index || kEnableFakePrintIndex == index || kEnableLocalWatermarkIndex == index)) {
+        enabled = YES;
+    } else if ([code isEqualToString:kFeatureCodePartyMode] && (kEnablePartyModeIndex == index || kEnablePartySaveIndex == index || kEnablePartyPrintIndex == index)) {
         enabled = YES;
     }
     return enabled;

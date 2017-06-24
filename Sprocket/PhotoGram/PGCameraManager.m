@@ -20,7 +20,7 @@
 #import "PGOverlayCameraViewController.h"
 #import "PGPhotoSelection.h"
 #import "PGSavePhotos.h"
-#import "UIViewController+trackable.h"
+#import "UIViewController+Trackable.h"
 #import "PGAppNavigation.h"
 #import <Crashlytics/Crashlytics.h>
 #import "PGLinkCredentialsManager.h"

@@ -12,7 +12,7 @@
 
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
-#import "PGLinkSettings.h"
+#import "PGPartyManager.h"
 
 @interface PGSocialSourcesCircleView ()
 
@@ -27,7 +27,7 @@
     [super awakeFromNib];
 
     [self setupSocialSources];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupSocialSources) name:kPGLinkSettingsChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
 }
 
 - (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled
@@ -40,6 +40,12 @@
 }
 
 #pragma mark - Private
+
+- (void)handleSettingsChangedNotification:(NSNotification *)notification
+{
+    [[PGSocialSourcesManager sharedInstance] setupSocialSources];
+    [self setupSocialSources];
+}
 
 - (void)setupSocialSources
 {
@@ -63,16 +69,6 @@
     CGFloat numberOfCircles = self.socialSources.count;
     NSInteger extraIcons = 0;
     CGFloat stepDegrees = 360 / numberOfCircles;
-    if ([PGLinkSettings linkEnabled]) {
-        extraIcons = 1;
-        stepDegrees = 360 / (numberOfCircles + extraIcons);
-        UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *linkImage = [UIImage imageNamed:@"linkReaderScan"];
-        [linkButton setImage:linkImage forState:UIControlStateNormal];
-        linkButton.frame = [self frameForImage:linkImage step:stepDegrees center:cameraCenterXY radius:radius andIndex:0];
-        [linkButton addTarget:self action:@selector(linkButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:linkButton];
-    }
     
     for (int i = 0; i < numberOfCircles; i++) {
         PGSocialSource *socialSource = self.socialSources[i];
@@ -104,13 +100,6 @@
 {
     if ([self.delegate respondsToSelector:@selector(socialCircleView:didTapOnCameraButton:)]) {
         [self.delegate socialCircleView:self didTapOnCameraButton:sender];
-    }
-}
-
-- (void)linkButtonTapped:(UIButton *)sender
-{
-    if ([self.delegate respondsToSelector:@selector(socialCircleView:didTapOnLinkButton:)]) {
-        [self.delegate socialCircleView:self didTapOnLinkButton:sender];
     }
 }
 

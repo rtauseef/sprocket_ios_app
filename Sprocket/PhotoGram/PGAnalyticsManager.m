@@ -59,19 +59,24 @@ NSString * const kMetricsOriginSingle           = @"Single";
 NSString * const kMetricsOriginMulti            = @"MultiSelect";
 NSString * const kMetricsOriginCopies           = @"Copies";
 NSString * const kMetricsOriginTile             = @"Tile";
+NSString * const kMetricsOriginParty            = @"Party";
 
 NSString * const kMetricsOffRampQueueAddSingle  = @"AddToQueue-Single";
 NSString * const kMetricsOffRampQueueAddMulti   = @"AddToQueue-MultiSelect";
 NSString * const kMetricsOffRampQueueAddCopies  = @"AddToQueue-Copies";
 NSString * const kMetricsOffRampQueueAddTile    = @"AddToQueue-Tile";
+NSString * const kMetricsOffRampQueueAddParty   = @"AddToQueue-Party";
 
 NSString * const kMetricsOffRampQueuePrintSingle    = @"PrintFromQueue-Single";
 NSString * const kMetricsOffRampQueuePrintMulti     = @"PrintFromQueue-MultiSelect";
 NSString * const kMetricsOffRampQueuePrintCopies    = @"PrintFromQueue-Copies";
 NSString * const kMetricsOffRampQueuePrintTile      = @"PrintFromQueue-Tile";
+NSString * const kMetricsOffRampQueuePrintParty 		= @"PrintFromQueue-Party";
+
 NSString * const kMetricsOffRampQueueDeleteMulti    = @"DeleteFromQueue-MultiSelect";
 NSString * const kMetricsOffRampQueueDeleteCopies   = @"DeleteFromQueue-Copies";
 NSString * const kMetricsOffRampQueueDeleteTile     = @"DeleteFromQueue-Tile";
+NSString * const kMetricsOffRampQueueDeleteParty 		= @"DeleteFromQueue-Party";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
@@ -136,6 +141,7 @@ NSString * const kEventPrintJobPrintSingleAction    = @"Print";
 NSString * const kEventPrintJobPrintMultiAction     = @"Print-MultiSelect";
 NSString * const kEventPrintJobPrintCopiesAction    = @"Print-Copies";
 NSString * const kEventPrintJobPrintTileAction      = @"Print-Tile";
+NSString * const kEventPrintJobPrintPartyAction  	= @"Print-Party";
 NSString * const kEventPrintJobStartedAction        = @"Started";
 NSString * const kEventPrintJobCompletedAction      = @"Completed";
 
@@ -144,15 +150,18 @@ NSString * const kEventPrintQueueAddMultiAction     = @"Add-MultiSelect";
 NSString * const kEventPrintQueueAddSingleAction    = @"Add-Single";
 NSString * const kEventPrintQueueAddCopiesAction    = @"Add-Copies";
 NSString * const kEventPrintQueueAddTileAction      = @"Add-Tile";
+NSString * const kEventPrintQueueAddPartyAction     = @"Add-Party";
 
 NSString * const kEventPrintQueuePrintMultiAction   = @"Print-MultiSelect";
 NSString * const kEventPrintQueuePrintSingleAction  = @"Print-Single";
 NSString * const kEventPrintQueuePrintCopiesAction  = @"Print-Copies";
 NSString * const kEventPrintQueuePrintTileAction    = @"Print-Tile";
+NSString * const kEventPrintQueuePrintPartyAction   = @"Print-Party";
 
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 NSString * const kEventPrintQueueDeleteCopiesAction = @"Delete-Copies";
 NSString * const kEventPrintQueueDeleteTileAction = @"Delete-Tile";
+NSString * const kEventPrintQueueDeletePartyAction = @"Delete-Party";
 
 NSString * const kEventPrintQueueMenuCategory = @"Print Queue_Menu";
 NSString * const kEventPrintQueuePreviewCategory = @"Print Queue_Preview";
@@ -201,7 +210,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
         sharedManager = [[self alloc] init];
         [sharedManager setupSettings];
     });
-    
+
     return sharedManager;
 }
 
@@ -215,17 +224,17 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)setupSettings
 {
     [super setupSettings];
-    
+
     self.photoSource = kNoPhotoSelected;
     self.imageURL = kNoPhotoSelected;
     self.userName = kNoPhotoSelected;
     self.userId = kNoPhotoSelected;
-    
+
     [[MP sharedInstance] obfuscateMetric:kMetricsUserID];
     [[MP sharedInstance] obfuscateMetric:kMetricsUserName];
-    
+
     [self setupCrashlytics];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintQueueNotification:) name:kMPPrintQueueNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTrackableScreenNotification:) name:kMPTrackableScreenNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlePrintJobStartedNotification:) name:kMPBTPrintJobStartedNotification object:nil];
@@ -298,7 +307,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackDismissEditActivity:(NSString *)action source:(NSString *)source
 {
     [self trackEvent:kEventDismissEditCategory action:action label:source value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
-    
+
     if ([kEventDismissEditSaveAction isEqualToString:action]) {
         [self trackSaveProjectActivity:kEventSaveProjectDismiss];
     }
@@ -423,7 +432,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackCustomStickerConfirm:(BOOL)confirmed
 {
     NSString *action = confirmed ? kEventCustomStickerActionYes : kEventCustomStickerActionNo;
-    
+
     [self trackEvent:kEventCustomStickerCategory action:action label:nil value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
@@ -442,11 +451,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)fireTestException
 {
     [super fireTestException];
-    
+
     [[Crashlytics sharedInstance] throwException];
 }
 
-#pragma mark - Photo metrics 
+#pragma mark - Photo metrics
 
 - (NSDictionary *)photoSourceMetrics
 {
@@ -486,7 +495,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     self.socialNetwork = socialNetwork;
     self.userName = userName;
     self.userId = userId;
-    
+
     [[Crashlytics sharedInstance] setObjectValue:socialNetwork forKey:@"Photo Source"];
     [[Crashlytics sharedInstance] setObjectValue:userId forKey:@"User ID"];
     [[Crashlytics sharedInstance] setObjectValue:userName forKey:@"User Name"];
@@ -520,13 +529,13 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 }
 
 #pragma mark - Print handling
-    
+
 - (void)postMetricsWithOfframp:(NSString *)offramp objects:(NSDictionary *)objects extendedInfo:(NSDictionary *)extendedInfo
 {
     MPPrintItem *printItem = [objects objectForKey:kMPPrintQueuePrintItemKey];
     MPPrintLaterJob *job = [objects objectForKey:kMPPrintQueueJobKey];
     NSMutableDictionary *metrics = [self getMetrics:offramp printItem:printItem extendedInfo:extendedInfo];
-   
+
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:job forKey:kMPPrintQueueJobKey];
     [dictionary setObject:printItem forKey:kMPPrintQueuePrintItemKey];
@@ -537,7 +546,7 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)postMetrics:(NSString *)offramp object:(NSObject *)object metrics:(NSDictionary *)metrics
 {
     [super postMetrics:offramp object:object metrics:metrics];
-    
+
     [[Crashlytics sharedInstance] setObjectValue:offramp forKey:kCrashlyticsOfframpKey];
     [[Crashlytics sharedInstance] setObjectValue:[PGAnalyticsManager wifiName] forKey:kCrashlyticsWiFiShareKey];
     if ([MPPrintManager printingOfframp:offramp]) {
@@ -552,11 +561,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     NSString *action = [notification.object objectForKey:kMPPrintQueueActionKey];
     MPPrintLaterJob *job = [notification.object objectForKey:kMPPrintQueueJobKey];
     MPPrintItem *printItem = [notification.object objectForKey:kMPPrintQueuePrintItemKey];
-    
+
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setObject:job forKey:kMPPrintQueueJobKey];
     [dictionary setObject:printItem forKey:kMPPrintQueuePrintItemKey];
- 
+
     [self postMetricsWithOfframp:action objects:dictionary extendedInfo:job.extra];
 }
 
