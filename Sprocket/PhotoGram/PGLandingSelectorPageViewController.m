@@ -55,6 +55,18 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 @implementation PGLandingSelectorPageViewController
 
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+
+    if (self) {
+        [self setupSocialSources];
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -78,8 +90,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     self.delegate = self;
     
     self.view.accessibilityIdentifier = @"Landing Page View Controller";
-
-    [self setupSocialSources];
 
     UINavigationController *navController = [self viewControllerForSocialSourceType:self.socialSourceType];
     
