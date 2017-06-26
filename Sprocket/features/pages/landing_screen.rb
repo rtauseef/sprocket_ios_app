@@ -55,7 +55,9 @@ def technical_info
     def how_to_help
         "view marked:'How to & Help'" 
     end
-    
+     def take_survey
+        "view marked:'Take Survey'" 
+    end
     def about
         "view marked:'About'" 
     end
@@ -67,42 +69,13 @@ def technical_info
     def setup_sprocket_printer
         "view marked:'Setup Sprocket Printer'" 
     end
-=begin
-    def username_input= username
-    fill_input_field(username.to_s,0)
-    end
 
-
-  def password_input= password
-    fill_input_field(password.to_s,1)
-  end
-
-  def set_text_to_input_field (text,input_id)
-    touch("webView css:'input' index:#{input_id}")
-    sleep(STEP_PAUSE)
-    keyboard_enter_text text
-    sleep(STEP_PAUSE)
-  end
-
-  def fill_input_field(text,input_id)
-
-    set_text_to_input_field(text,input_id)
-
-  end
-
-  def instagram_login_button
-    "webView css:'input' index:2"
-  end
-  
-  def instagram_auth_button
-    "webView css:'input' index:1"
-  end
-
-=end
  def social_source_auth_text
    query("TTTAttributedLabel label",:text)[0]
  end
-
+def printers_option
+  "view marked:'Printers'"
+end
 def terms_of_service_link
 	 xcoord = query("TTTAttributedLabel").first["rect"]["center_x"]
   ycoord = query("TTTAttributedLabel").first["rect"]["center_y"]

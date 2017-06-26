@@ -31,7 +31,7 @@ class SprocketScreen < Calabash::IBase
          wait_for_elements_exist(landing_screen.hamburger_logo, :timeout => MAX_TIMEOUT)
         touch landing_screen.hamburger_logo
         sleep(STEP_PAUSE)
-        touch "view marked:'Sprocket'"
+        touch "view marked:'sprocket'"
         sleep(STEP_PAUSE)
     end
     await

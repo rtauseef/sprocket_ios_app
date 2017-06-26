@@ -35,6 +35,8 @@ class TechnicalInformationScreen < Calabash::IBase
         sleep(STEP_PAUSE)
         touch landing_screen.sprocket_option
         sleep(STEP_PAUSE)
+        touch landing_screen.printers_option
+        sleep(STEP_PAUSE)
         touch landing_screen.technical_info
     end
     await
