@@ -114,7 +114,7 @@ def terms_of_service_link
       if ENV['LANGUAGE'] == "Turkish"
         touch(nil, :offset => {:x => xcoord-30.to_i, :y => ycoord+10.to_i})
       else
-          if ENV['LANGUAGE'] == "Danish" || ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch" || ENV['LANGUAGE'] == "Estonian" || ENV['LANGUAGE'] == "Latvian" || ENV['LANGUAGE'] == "Norwegian"
+          if ENV['LANGUAGE'] == "Danish" || ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch" || ENV['LANGUAGE'] == "Estonian" || ENV['LANGUAGE'] == "Latvian" || ENV['LANGUAGE'] == "Norwegian" || ENV['LANGUAGE'] == "Portuguese" || ENV['LANGUAGE'] == "Swedish" || ENV['LANGUAGE'] == "Indonesian" || ENV['LANGUAGE'] == "Russian"
               touch(nil, :offset => {:x => xcoord+40.to_i, :y => ycoord+10.to_i})
           else
               if ENV['LANGUAGE'] == "Greek" || ENV['LANGUAGE'] == "Finnish"
