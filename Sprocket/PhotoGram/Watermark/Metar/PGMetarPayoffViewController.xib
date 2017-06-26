@@ -23,6 +23,7 @@
                 <outlet property="thumbsDownButton" destination="Vot-lh-dc2" id="LDp-hu-s07"/>
                 <outlet property="thumbsUpButton" destination="Kg0-SD-oef" id="tKu-TQ-RNh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wikipediaTitleImage" destination="5vO-Ae-fzO" id="MG2-0C-w4u"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -172,8 +173,14 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wikipediaName" translatesAutoresizingMaskIntoConstraints="NO" id="5vO-Ae-fzO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="htB-1d-Vcl"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="exe-W4-JMR" firstAttribute="top" secondItem="9zz-au-Tse" secondAttribute="bottom" id="0RZ-f6-FQw"/>
                 <constraint firstAttribute="bottom" secondItem="exe-W4-JMR" secondAttribute="bottom" id="1g4-us-iE7"/>
@@ -190,6 +197,9 @@
                 <constraint firstItem="exe-W4-JMR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aDQ-rv-Kdu"/>
                 <constraint firstItem="Y6h-K7-bSq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aRS-ew-ofX"/>
                 <constraint firstItem="Y6h-K7-bSq" firstAttribute="top" secondItem="Npd-oM-UQe" secondAttribute="bottom" constant="2" id="bCG-vw-sXJ"/>
+                <constraint firstItem="5vO-Ae-fzO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dF7-vz-Ia2"/>
+                <constraint firstItem="5vO-Ae-fzO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ens-rK-5kD"/>
+                <constraint firstAttribute="trailing" secondItem="5vO-Ae-fzO" secondAttribute="trailing" id="fpJ-ax-dMy"/>
                 <constraint firstAttribute="trailing" secondItem="exe-W4-JMR" secondAttribute="trailing" id="ggS-pK-oEO"/>
                 <constraint firstItem="Npd-oM-UQe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="jZ2-DW-VX6"/>
                 <constraint firstItem="9zz-au-Tse" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jgR-pH-C9q"/>
@@ -197,7 +207,7 @@
                 <constraint firstItem="Kg0-SD-oef" firstAttribute="leading" secondItem="8Q1-kc-Vxm" secondAttribute="trailing" constant="4" id="nVm-zn-Dql"/>
                 <constraint firstItem="Vot-lh-dc2" firstAttribute="leading" secondItem="Kg0-SD-oef" secondAttribute="trailing" id="sXB-WO-9X2"/>
             </constraints>
-            <point key="canvasLocation" x="21.5" y="43.5"/>
+            <point key="canvasLocation" x="-40.5" y="36.5"/>
         </view>
     </objects>
     <resources>
@@ -207,5 +217,6 @@
         <image name="forward" width="9" height="15"/>
         <image name="thumbsDownWhite" width="19" height="20"/>
         <image name="thumbsUpWhite" width="19" height="20"/>
+        <image name="wikipediaName" width="119" height="18"/>
     </resources>
 </document>
