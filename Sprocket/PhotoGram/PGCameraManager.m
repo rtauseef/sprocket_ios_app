@@ -34,7 +34,7 @@ NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 
-@interface PGCameraManager () <LRCaptureDelegate, LRDetectionDelegate>
+@interface PGCameraManager () <LRCaptureDelegate, LRDetectionDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
     @property (weak, nonatomic) UIViewController *viewController;
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
     @property (strong, nonatomic) AVCaptureSession *session;
@@ -284,10 +284,19 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         [self.stillImageOutput setOutputSettings:outputSettings];
         [self.session addOutput:self.stillImageOutput];
         
+        AVCaptureVideoDataOutput *videoDataOutput = [AVCaptureVideoDataOutput new];
+        NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
+                                       };
+        /*videoDataOutput.videoSettings = newSettings;
+        [videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+        dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+        [videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+        
+        if ([self.session canAddOutput:videoDataOutput]) {
+            [self.session addOutput:videoDataOutput];
+        }*/
+
         self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-        if ([self.session canAddOutput:self.movieFileOutput]) {
-            [self.session addOutput:self.movieFileOutput];
-        }
     }
 }
 
@@ -346,12 +355,17 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     }
     
     //Start recording
+    if ([self.session canAddOutput:self.movieFileOutput]) {
+        [self.session addOutput:self.movieFileOutput];
+    }
+
     self.isCapturingVideo = YES;
     [self.movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
 }
 
 - (void)stopRecording {
     [self.movieFileOutput stopRecording];
+    [self.session removeOutput:self.movieFileOutput];
 }
 
 - (void)takePicture
@@ -624,6 +638,8 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                                                                       [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
                                                                   }];
                 [alert addAction:yesAction];
+                
+                [self.viewController presentViewController:alert animated:YES completion:nil];
             }
 
         });
@@ -821,6 +837,22 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         default:
             break;
     }
+}
+
+#pragma mark AV... delegate
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    
+    CVImageBufferRef i = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(i, 0);
+    
+    
+    uint8_t * base = (uint8_t*)CVPixelBufferGetBaseAddress(i);
+    int w = (int)CVPixelBufferGetWidth(i);
+    int h = (int)CVPixelBufferGetHeight(i);
+    size_t stride = CVPixelBufferGetBytesPerRow(i);
+    
+    CVPixelBufferUnlockBaseAddress(i, 0);
 }
 
 @end
