@@ -212,6 +212,7 @@ enum MCInstagramDisplayType {
                     // When switching between my photos and my feed, the first thing the app do is canceling the current request. When this happens the AFNetworking protocol used for communicating with the instagram API returns "The operation couldn’t be completed"
                     break;
                 case INSTAGRAM_NO_INTERNET_CONNECTION:
+                case INSTAGRAM_TIME_OUT_ERROR:
                     [weakSelf lostConnection];
                     break;
                 case INSTAGRAM_TOKEN_IS_INVALID:
