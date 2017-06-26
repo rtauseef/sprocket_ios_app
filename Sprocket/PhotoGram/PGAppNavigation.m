@@ -139,8 +139,15 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
 
 + (PGRevealViewController *)revealController
 {
-    PGRevealViewController *revealController = (PGRevealViewController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    
+    PGRevealViewController *revealController;
+
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        if ([window.rootViewController isKindOfClass:[PGRevealViewController class]]) {
+            revealController = (PGRevealViewController *)window.rootViewController;
+            break;
+        }
+    }
+
     return revealController;
 }
 
