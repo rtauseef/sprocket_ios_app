@@ -16,6 +16,11 @@ end
 def sprocket_logo
     "* id:'aboutLogo'"
 end
+    
+def back_button
+    "view marked:'Back'"
+end
+    
   def navigate
     unless current_page?
       landing_screen = go_to(LandingScreen)
