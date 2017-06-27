@@ -474,7 +474,7 @@
 "Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Используйте фотобумагу ZINK марки HP. Загрузите бумагу Smartsheet штрихкодом вниз и перезапустите принтер. ";
 
 /* footer heading describing print queue */
-"What is Print Queue?" = "Что такое "очередь печати"?";
+"What is Print Queue?" = "Что такое \"очередь печати\"?";
 
 /* The color white */
 "White" = "Белый";
