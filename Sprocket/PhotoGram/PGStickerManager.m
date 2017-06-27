@@ -117,16 +117,6 @@
     addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
 
     NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, summerCategory, fathersDayCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory, disneyCategory]];
-
-    if ([NSLocale isUnitedStates]) {
-        NSArray<IMGLYSticker *> *julyStickers = [self July4Stickers];
-        IMGLYStickerCategory *julyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                imageURL:julyStickers[9].thumbnailURL
-                                                                                stickers:julyStickers];
-        julyCategory.accessibilityLabel = @"July 4th Category";
-        
-        [categories insertObject:julyCategory atIndex:1];
-    }
     
     NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
     if (customStickers.count > 0) {
@@ -469,64 +459,6 @@
               [[PGStickerItem alloc] initWithName:@"Letter" imageName:@"letter" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
               [[PGStickerItem alloc] initWithName:@"Bouquet" imageName:@"bouquet" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
               [[PGStickerItem alloc] initWithName:@"Rose" imageName:@"rose" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             ];
-}
-
-- (NSArray<IMGLYSticker *> *)July4Stickers
-{
-    return @[
-             [[PGStickerItem alloc] initWithName:@"July Uncle Sam Hat" imageName:@"july_uncle_sam_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Uncle Sam Doodle" imageName:@"july_uncle_sam_hat_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Uncle Sam Hat AB" imageName:@"AB_test_UncleSam_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Crown" imageName:@"july_liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Crown Doodle" imageName:@"july_liberty_crown_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Crown AB" imageName:@"AB_test_Liberty_crown" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Glasses" imageName:@"july_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Patriotic Glasses" imageName:@"july_patriotic_glasses" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Glasses AB" imageName:@"AB_test_PatrioticAviators" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Flag" imageName:@"july_flag" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Flag Doodle" imageName:@"july_us_flag_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Flag AB" imageName:@"AB_test_AmericanFlag" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Uncle Sam" imageName:@"july_uncle_sam" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Torch" imageName:@"july_liberty_torch" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Star Glasses" imageName:@"july_glasses_more" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Mustache" imageName:@"july_mustache" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Merica Hat" imageName:@"july_merica_hat" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Bunting" imageName:@"july_bunting" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Fireworks" imageName:@"july_fireworks" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Stars" imageName:@"july_stars" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July 4th of July" imageName:@"july_4th_of_july" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Popsicle" imageName:@"july_popsicle" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Cupcake" imageName:@"july_cupcake" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Heart" imageName:@"july_heart" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Smiley" imageName:@"july_smiley" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Watermelon" imageName:@"july_watermelon" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July BBQ" imageName:@"july_bbqpx" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Soda Can" imageName:@"july_Soda_canpx" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Ice Cream Cone" imageName:@"july_ice_cream_conepx" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Popsicle 2 PX" imageName:@"july_popsicle-2px" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Popsicle PX" imageName:@"july_popsiclepx" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Star Glasses" imageName:@"july_4th_star_glasses" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Half Circle Banner" imageName:@"july_us_halfcircle_banner" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Banner Flags" imageName:@"july_us_banner_flags" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Patriotic Pinwheel" imageName:@"july_patriotic_pinwheel" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July 3 Patriotic Stars" imageName:@"july_3_patriotic_stars" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Burst Stars" imageName:@"july_fireworks_burst_stars" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Firework Burst" imageName:@"july_fireworks_burst" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Firework Explode" imageName:@"july_firework_explode" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Firework Rocket" imageName:@"july_firework_rocket" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Doodle" imageName:@"july_4th_of_July_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Happy 4th Of July" imageName:@"july_happy_4th_of_july" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Happy 4th" imageName:@"july_happy_4th" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Merica" imageName:@"july_merica" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Patriotic Popsicle Melt" imageName:@"july_patriotic_popsicle_melt" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Patriotic Popsicle" imageName:@"july_patriotic_popsicle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July BBQ BW" imageName:@"july_bbq" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July BBQ Utensils" imageName:@"july_bbq_utensilspx" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Hamburger" imageName:@"july_hamburger" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Hotdog Doodle" imageName:@"july_hotdog_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Ketchup Hot Dog" imageName:@"july_ketchup-hotdogpx" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-             [[PGStickerItem alloc] initWithName:@"July Soda Straw" imageName:@"july_soda_straw" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              ];
 }
 
