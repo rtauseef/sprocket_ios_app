@@ -77,7 +77,6 @@ Scenario Outline: Verify sticker list
     | Fathers Day Category    |
     | Summer Category         |
     | July 4th Category       |
-   # | Cannes Category        |
     | Face Category           |
     | Decorative Category     |
     | Food Category           |
@@ -94,10 +93,9 @@ Scenario Outline: Verify all the stickers are applied for sticker editor screen
     Then I verify that all the "stickers" are applied successfully
     Examples:
     | sticker_tab_name      |
-    | Fathers Day Category |
-    | July 4th Category   |
+    | Fathers Day Category  |
+    | July 4th Category     |
     | Summer Category       |
-   # | Cannes Category       |
     | Face Category         |
     | Decorative Category   |
     | Food Category         |
@@ -127,9 +125,9 @@ Scenario Outline: Verify sticker editor screen navigation
     Then I should see the "Edit" screen
     
     Examples:
-    | social_media_screen_name       |
-    | Instagram Preview  |
-    | CameraRoll         |  
+    | social_media_screen_name|
+    | Instagram Preview       |
+    | CameraRoll              |  
 
 @done
 @TA17968
@@ -144,7 +142,7 @@ Scenario: Verify Sticker add option
     And I select "Decorative Category" tab
     Then I select "sticker_7" sticker
     Then I should see the "StickerOptionEditor" screen
-   And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
+    And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab

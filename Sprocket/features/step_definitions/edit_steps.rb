@@ -237,25 +237,27 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
     else
         if (element_exists "view marked:'#{sticker_tab.to_s}'")
             touch query("view marked:'#{sticker_tab}'")
+            sleep(STEP_PAUSE)
         else
             while element_does_not_exist("view marked:'Add Custom Sticker'")
                 scroll("UICollectionView",:left)
             end
             if (element_exists "view marked:'#{sticker_tab.to_s}'")
                 touch query("view marked:'#{sticker_tab}'")
-            end
-            i = 0
-            while i < 5 do      
-                scroll("UICollectionView",:right)
-                sleep(WAIT_SCREENLOAD)
-                i = i + 1
-                if i >= 5
-                    raise "Tab not found"
-                end
-                if (element_exists "view marked:'#{sticker_tab.to_s}'")
-                    touch query("view marked:'#{sticker_tab}'")
-                    sleep(STEP_PAUSE)
-                break
+            else
+                i = 0
+                while i < 5 do      
+                    scroll("UICollectionView",:right)
+                    sleep(WAIT_SCREENLOAD)
+                    i = i + 1
+                    if i >= 5
+                        raise "Tab not found"
+                    end
+                    if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                        touch query("view marked:'#{sticker_tab}'")
+                        sleep(STEP_PAUSE)
+                        break
+                     end
                 end
             end
         end
@@ -406,10 +408,14 @@ Given(/^I choose "([^"]*)" option$/) do |option|
     touch @current_page.send(method_name)
     sleep(STEP_PAUSE)
 end
-Then(/^I set the slider value to "([^"]*)"$/) do |value|
-  query("view:'imglyKit.TooltipSlider'",{setValue:value.to_i})
+
+Then(/^I set the value for "([^"]*)"$/) do |method_name|
+    $slider_val = @current_page.send(method_name)
+    query("view:'imglyKit.TooltipSlider'",{setValue:$slider_val.to_i})
+    sleep(STEP_PAUSE) 
 end
-Then(/^I verify the slider value is set to "([^"]*)"$/) do |value|
-slider_value = query("view:'imglyKit.TooltipSlider'",:value)[0]
-  raise "Slider value not set correctly!" unless slider_value.to_i == value.to_i
+
+Then(/^I verify the slider value$/) do 
+  value = query("view:'imglyKit.TooltipSlider'",:value)[0]
+  raise "Slider value not set correctly!" unless value.to_i == $slider_val.to_i
 end

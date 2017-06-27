@@ -46,7 +46,7 @@ class LandingScreen < Calabash::IBase
     end
     
 def technical_info
-    "label {text CONTAINS 'Technical Information'}"
+    "label {text CONTAINS '#{$list_loc['Technical Information']}'}"
   end
   def close
     "UIButton index:1"
@@ -87,7 +87,7 @@ def terms_of_service_link
       if ENV['LANGUAGE'] == "Turkish"
         touch(nil, :offset => {:x => xcoord-30.to_i, :y => ycoord+10.to_i})
       else
-          if ENV['LANGUAGE'] == "Danish" || ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch" || ENV['LANGUAGE'] == "Estonian" || ENV['LANGUAGE'] == "Latvian" || ENV['LANGUAGE'] == "Norwegian" || ENV['LANGUAGE'] == "Portuguese" || ENV['LANGUAGE'] == "Swedish" || ENV['LANGUAGE'] == "Indonesian" || ENV['LANGUAGE'] == "Russian"
+          if ENV['LANGUAGE'] == "Danish" || ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch" || ENV['LANGUAGE'] == "Estonian" || ENV['LANGUAGE'] == "Latvian" || ENV['LANGUAGE'] == "Norwegian" || ENV['LANGUAGE'] == "Portuguese" || ENV['LANGUAGE'] == "Swedish" || ENV['LANGUAGE'] == "Indonesian" || ENV['LANGUAGE'] == "Russian" || ENV['LANGUAGE'] == "Portuguese-Brazil"              
               touch(nil, :offset => {:x => xcoord+40.to_i, :y => ycoord+10.to_i})
           else
               if ENV['LANGUAGE'] == "Greek" || ENV['LANGUAGE'] == "Finnish"
@@ -96,7 +96,7 @@ def terms_of_service_link
                   if ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "French"
                       touch(nil, :offset => {:x => xcoord-20.to_i, :y => ycoord+20.to_i})
                   else
-                    touch(nil, :offset => {:x => xcoord+100.to_i, :y => ycoord+20.to_i})
+                    touch(nil, :offset => {:x => xcoord+50.to_i, :y => ycoord+20.to_i})
                   end
               end
           end

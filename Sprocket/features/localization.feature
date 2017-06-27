@@ -242,7 +242,6 @@ Scenario: Navigate to Preview screen for cameraroll
     Then I verify the "Print to sprocket" button text
    
 @localization
-@reset
   Scenario Outline: Navigate to preview screen via instagram/Google
     Given  I am on the "Landing" screen  
     Then I should see "<social_media>" logo
@@ -276,7 +275,7 @@ Scenario: Navigate to Preview screen for cameraroll
  @appium
  @TA18119
  @localization 
-  Scenario: Signin to Facebook
+  Scenario: Verify sidemenu urls
     Given I am on the Landing screen
     When I touch the "Photos" Logo
     And I touch signin button
