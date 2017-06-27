@@ -167,18 +167,6 @@ CGSize const kThumbnailSize = { 100, 100 };
     if (!self.isCapturing) {
         self.isCapturing = YES;
 
-        if (![self hasCamera]) {
-            GPUImagePicture *picture = [[GPUImagePicture alloc] initWithImage:[[UIImage imageNamed:@"love"] normalize]];
-            [self setupFilters];
-            [self applyFilterChain:self.filters start:picture];
-            [picture processImageUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage) {
-                [self processResult:processedImage];
-                self.saveMode = YES;
-                self.isCapturing = NO;
-            }];
-            return;
-        }
-        
         [self.camera capturePhotoAsImageProcessedUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage, NSError *error) {
             self.resultData = nil;
             [self processResult:processedImage];
@@ -399,15 +387,15 @@ CGSize const kThumbnailSize = { 100, 100 };
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.camera = [[GPUImageStillCamera alloc] init];
-        self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
-        
-        [self setupFilters];
-        
-        [self applyFilterChain:self.filters start:self.camera];
-        
-        [self.camera addTarget:self.gpuCleanImageView];
-        
-        [self.camera startCameraCapture];
+
+        if (self.camera) {
+            self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
+            [self setupFilters];
+            [self applyFilterChain:self.filters start:self.camera];
+            [self.camera addTarget:self.gpuCleanImageView];
+
+            [self.camera startCameraCapture];
+        }
     });
 }
 
