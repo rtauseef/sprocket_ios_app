@@ -18,7 +18,7 @@ Scenario: Verify Brush screen
     And I could see "save" option
     
     
-@done11
+@done
 @TA18377
 Scenario: Verify Edit screen
     Given I am on the "BrushEditor" screen for "CameraRoll"
@@ -26,11 +26,12 @@ Scenario: Verify Edit screen
     And I select "Blue" color
     Then I choose "color_apply" option
     Then I choose "size" option
-    And I set the slider value to "30"
-    And I verify the slider value is set to "30"
-    Then I choose "hardness" option
-    And I set the slider value to "0.5"
-    And I verify the slider value is set to "0.5"
+    And I set the value for "size_slider"
+    #And I set the slider value to "30"
+    And I verify the slider value
+    Then I choose "hardness" option   
+    And I set the value for "hardness_slider"
+    And I verify the slider value
     Then I choose "save" option
     Then I should see the "Edit" screen
     When I tap "Close" mark

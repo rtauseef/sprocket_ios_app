@@ -35,6 +35,14 @@ class BrushEditorScreen < Calabash::IBase
     def color_apply
         "all view marked:'brush-color-tool-apply-btn'"
     end
+    def size_slider
+        slider_val= Random.rand(5...90)
+        return slider_val
+    end
+    def hardness_slider
+        slider_val= Random.rand(0.1...1.0)
+        return slider_val
+    end
     def navigate
         unless current_page?
             edit_screen = go_to(EditScreen)
