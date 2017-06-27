@@ -101,6 +101,14 @@
                                                                                stickers:getWellStickers];
     getWellCategory.accessibilityLabel = @"Get Well";
 
+
+    NSArray<IMGLYSticker *> *disneyStickers = [self disneyCategoryStickers];
+    IMGLYStickerCategory *disneyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                               imageURL:disneyStickers[1].thumbnailURL
+                                                                               stickers:disneyStickers];
+    getWellCategory.accessibilityLabel = @"Disney";
+
+
     NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"customSticker" withExtension:@"png"];
     IMGLYStickerCategory *addCustomCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                  imageURL:addStickerIcon
@@ -108,7 +116,7 @@
 
     addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
 
-    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, summerCategory, fathersDayCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory]];
+    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, summerCategory, fathersDayCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory, disneyCategory]];
 
     if ([NSLocale isUnitedStates]) {
         NSArray<IMGLYSticker *> *julyStickers = [self July4Stickers];
@@ -519,6 +527,14 @@
              [[PGStickerItem alloc] initWithName:@"July Hotdog Doodle" imageName:@"july_hotdog_doodle" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Ketchup Hot Dog" imageName:@"july_ketchup-hotdogpx" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
              [[PGStickerItem alloc] initWithName:@"July Soda Straw" imageName:@"july_soda_straw" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+             ];
+}
+
+- (NSArray<IMGLYSticker *> *)disneyCategoryStickers
+{
+    return @[
+             [[PGStickerItem alloc] initWithName:@"Disney Headband D" imageName:@"disney_headband_d" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+             [[PGStickerItem alloc] initWithName:@"Disney Headband E" imageName:@"disney_headband_e" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker
              ];
 }
 
