@@ -2947,6 +2947,26 @@
 		F2062FFF1F01D9D400A369EB /* DisneyPolaroid2Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF31F01D9D400A369EB /* DisneyPolaroid2Frame_TN@2x.png */; };
 		F20630001F01D9D400A369EB /* DisneyPolaroid2Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF41F01D9D400A369EB /* DisneyPolaroid2Frame_TN@3x.png */; };
 		F20630011F01D9D400A369EB /* DisneyPolaroid2Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF51F01D9D400A369EB /* DisneyPolaroid2Frame.png */; };
+		F20630021F01DC6300A369EB /* DisneyLogoFrame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FEA1F01D9D300A369EB /* DisneyLogoFrame_TN.png */; };
+		F20630031F01DC6300A369EB /* DisneyLogoFrame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FEB1F01D9D400A369EB /* DisneyLogoFrame_TN@2x.png */; };
+		F20630041F01DC6300A369EB /* DisneyLogoFrame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FEC1F01D9D400A369EB /* DisneyLogoFrame_TN@3x.png */; };
+		F20630051F01DC6300A369EB /* DisneyLogoFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FED1F01D9D400A369EB /* DisneyLogoFrame.png */; };
+		F20630061F01DC6300A369EB /* DisneyPolaroid1Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FEE1F01D9D400A369EB /* DisneyPolaroid1Frame_TN.png */; };
+		F20630071F01DC6300A369EB /* DisneyPolaroid1Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FEF1F01D9D400A369EB /* DisneyPolaroid1Frame_TN@2x.png */; };
+		F20630081F01DC6300A369EB /* DisneyPolaroid1Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF01F01D9D400A369EB /* DisneyPolaroid1Frame_TN@3x.png */; };
+		F20630091F01DC6300A369EB /* DisneyPolaroid1Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF11F01D9D400A369EB /* DisneyPolaroid1Frame.png */; };
+		F206300A1F01DC6300A369EB /* DisneyPolaroid2Frame_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF21F01D9D400A369EB /* DisneyPolaroid2Frame_TN.png */; };
+		F206300B1F01DC6300A369EB /* DisneyPolaroid2Frame_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF31F01D9D400A369EB /* DisneyPolaroid2Frame_TN@2x.png */; };
+		F206300C1F01DC6300A369EB /* DisneyPolaroid2Frame_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF41F01D9D400A369EB /* DisneyPolaroid2Frame_TN@3x.png */; };
+		F206300D1F01DC6300A369EB /* DisneyPolaroid2Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FF51F01D9D400A369EB /* DisneyPolaroid2Frame.png */; };
+		F206300E1F01DC7500A369EB /* disney_headband_d.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FD91F01D48700A369EB /* disney_headband_d.png */; };
+		F206300F1F01DC7500A369EB /* disney_headband_d_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDA1F01D48700A369EB /* disney_headband_d_TN.png */; };
+		F20630101F01DC7500A369EB /* disney_headband_d_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDB1F01D48700A369EB /* disney_headband_d_TN@2x.png */; };
+		F20630111F01DC7500A369EB /* disney_headband_d_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDC1F01D48700A369EB /* disney_headband_d_TN@3x.png */; };
+		F20630121F01DC7500A369EB /* disney_headband_e.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDD1F01D48700A369EB /* disney_headband_e.png */; };
+		F20630131F01DC7500A369EB /* disney_headband_e_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDE1F01D48700A369EB /* disney_headband_e_TN.png */; };
+		F20630141F01DC7500A369EB /* disney_headband_e_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDF1F01D48700A369EB /* disney_headband_e_TN@2x.png */; };
+		F20630151F01DC7500A369EB /* disney_headband_e_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FE01F01D48700A369EB /* disney_headband_e_TN@3x.png */; };
 		F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */; };
@@ -9332,14 +9352,17 @@
 				5dc332b0cdc971a40571958d /* PGOverlayCameraViewController.xib in Resources */,
 				264C1EAF1EF1D15700B3BB98 /* tulips_TN@3x.png in Resources */,
 				264C1D9D1EF1D14900B3BB98 /* flip_flops2_TN.png in Resources */,
+				F206300C1F01DC6300A369EB /* DisneyPolaroid2Frame_TN@3x.png in Resources */,
 				264C1F2C1EF1D17B00B3BB98 /* july_liberty_torch_TN.png in Resources */,
 				264C20981EF1D1C700B3BB98 /* bunny_ears_flowers_TN@3x.png in Resources */,
 				264C1DAE1EF1D14900B3BB98 /* lei_TN@2x.png in Resources */,
 				264C1EE51EF1D17B00B3BB98 /* july_cupcake_TN@2x.png in Resources */,
+				F20630101F01DC7500A369EB /* disney_headband_d_TN@2x.png in Resources */,
 				264C21031EF1D1D400B3BB98 /* 3d-diamond-1_TN@3x.png in Resources */,
 				264C1FAB1EF1D1AA00B3BB98 /* candy_TN@3x.png in Resources */,
 				264C1D421EF1D13100B3BB98 /* HeartsOverlayFrame.png in Resources */,
 				264C1ECB1EF1D17B00B3BB98 /* july_4th_of_July_doodle.png in Resources */,
+				F20630021F01DC6300A369EB /* DisneyLogoFrame_TN.png in Resources */,
 				264C21BD1EF1D1FA00B3BB98 /* bird_envelope_TN.png in Resources */,
 				264C21861EF1D1ED00B3BB98 /* balloons_TN@3x.png in Resources */,
 				264C1D9B1EF1D14900B3BB98 /* flamingo_TN@3x.png in Resources */,
@@ -9482,11 +9505,14 @@
 				264C1F8D1EF1D19E00B3BB98 /* letter_TN.png in Resources */,
 				264C1DBE1EF1D14900B3BB98 /* plane_TN@2x.png in Resources */,
 				264C1D501EF1D13100B3BB98 /* PolkadotsFrame_TN@2x.png in Resources */,
+				F20630111F01DC7500A369EB /* disney_headband_d_TN@3x.png in Resources */,
 				264C21DB1EF1D1FA00B3BB98 /* cat_body.png in Resources */,
 				264C20E21EF1D1C700B3BB98 /* necktie_graduation_TN@2x.png in Resources */,
 				264C1F141EF1D17B00B3BB98 /* july_heart_TN.png in Resources */,
 				264C1F751EF1D17B00B3BB98 /* july_us_banner_flags_TN@2x.png in Resources */,
+				F20630121F01DC7500A369EB /* disney_headband_e.png in Resources */,
 				6a8094a8039774830aa1746a /* HPSimplified_Bd.ttf in Resources */,
+				F20630141F01DC7500A369EB /* disney_headband_e_TN@2x.png in Resources */,
 				264C1DFB1EF1D14900B3BB98 /* unicorn_float_TN@3x.png in Resources */,
 				264C1F321EF1D17B00B3BB98 /* july_merica_hat_TN@3x.png in Resources */,
 				264C1E681EF1D15700B3BB98 /* moon.png in Resources */,
@@ -9557,6 +9583,7 @@
 				264C21591EF1D1D400B3BB98 /* stars_bunch_TN.png in Resources */,
 				264C20E71EF1D1C700B3BB98 /* nerd_glasses_TN@3x.png in Resources */,
 				264C21A01EF1D1ED00B3BB98 /* crown_TN.png in Resources */,
+				F20630071F01DC6300A369EB /* DisneyPolaroid1Frame_TN@2x.png in Resources */,
 				264C1FD21EF1D1AA00B3BB98 /* jelly_beans_TN@2x.png in Resources */,
 				264C1EA31EF1D15700B3BB98 /* three_daisies_TN@3x.png in Resources */,
 				264C200E1EF1D1BA00B3BB98 /* bbq_utensils_TN@2x.png in Resources */,
@@ -9800,6 +9827,7 @@
 				264C20001EF1D1AB00B3BB98 /* v_cupcake.png in Resources */,
 				264C1E991EF1D15700B3BB98 /* sun_face.png in Resources */,
 				264C207C1EF1D1BA00B3BB98 /* talk_bubble.png in Resources */,
+				F20630031F01DC6300A369EB /* DisneyLogoFrame_TN@2x.png in Resources */,
 				264C219C1EF1D1ED00B3BB98 /* confetti_TN.png in Resources */,
 				264C1E551EF1D15700B3BB98 /* hanging_lillies_TN.png in Resources */,
 				264C1FD31EF1D1AA00B3BB98 /* jelly_beans_TN@3x.png in Resources */,
@@ -9831,6 +9859,7 @@
 				264C1E8C1EF1D15700B3BB98 /* star_yellow.png in Resources */,
 				264C21A61EF1D1ED00B3BB98 /* cupcake_TN@3x.png in Resources */,
 				264C1E0A1EF1D15600B3BB98 /* aster_flower_TN@2x.png in Resources */,
+				F206300F1F01DC7500A369EB /* disney_headband_d_TN.png in Resources */,
 				264C1EF51EF1D17B00B3BB98 /* july_fireworks_burst_TN@2x.png in Resources */,
 				264C1D781EF1D13100B3BB98 /* WhiteFullFrame_TN@2x.png in Resources */,
 				264C20F91EF1D1C700B3BB98 /* sunglasses_frogskin.png in Resources */,
@@ -9845,8 +9874,10 @@
 				264C1D901EF1D14900B3BB98 /* dolphin_doodle.png in Resources */,
 				264C1E8E1EF1D15700B3BB98 /* star_yellow_TN@2x.png in Resources */,
 				264C1DC91EF1D14900B3BB98 /* radio_doodle.png in Resources */,
+				F206300E1F01DC7500A369EB /* disney_headband_d.png in Resources */,
 				264C1FBB1EF1D1AA00B3BB98 /* Cocoa_TN@3x.png in Resources */,
 				7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */,
+				F20630061F01DC6300A369EB /* DisneyPolaroid1Frame_TN.png in Resources */,
 				264C1F631EF1D17B00B3BB98 /* july_soda_straw.png in Resources */,
 				264C205B1EF1D1BA00B3BB98 /* i_heart_dad_1_TN@3x.png in Resources */,
 				264C1E011EF1D14900B3BB98 /* volleyball_TN.png in Resources */,
@@ -9895,6 +9926,7 @@
 				264C1EB21EF1D15700B3BB98 /* wave_TN@2x.png in Resources */,
 				264C20C21EF1D1C700B3BB98 /* Glasses-red_TN@2x.png in Resources */,
 				a2cf52fbb6975b35f780eded /* FlickrLogo@2x.png in Resources */,
+				F20630151F01DC7500A369EB /* disney_headband_e_TN@3x.png in Resources */,
 				64c1d0068b5bd8e5f60d7df9 /* hp.logo.blue.png in Resources */,
 				264C1DC21EF1D14900B3BB98 /* popsicle-2_TN@2x.png in Resources */,
 				264C1FB51EF1D1AA00B3BB98 /* cat-coffee_TN.png in Resources */,
@@ -10130,12 +10162,14 @@
 				264C21711EF1D1D400B3BB98 /* xoxo_TN.png in Resources */,
 				264C1FC51EF1D1AA00B3BB98 /* Frappuccino_TN.png in Resources */,
 				264C1E741EF1D15700B3BB98 /* palmtree.png in Resources */,
+				F20630051F01DC6300A369EB /* DisneyLogoFrame.png in Resources */,
 				264C1F441EF1D17B00B3BB98 /* july_patriotic_popsicle_melt_TN.png in Resources */,
 				264C1D6C1EF1D13100B3BB98 /* TurquoiseFrame_TN@2x.png in Resources */,
 				264C1E301EF1D15700B3BB98 /* floating_flowers_2.png in Resources */,
 				264C21821EF1D1ED00B3BB98 /* balloons2_TN@2x.png in Resources */,
 				264C212D1EF1D1D400B3BB98 /* heartPixel_TN.png in Resources */,
 				264C21481EF1D1D400B3BB98 /* ribbon.png in Resources */,
+				F20630081F01DC6300A369EB /* DisneyPolaroid1Frame_TN@3x.png in Resources */,
 				264C20D51EF1D1C700B3BB98 /* medal_TN.png in Resources */,
 				264C1F621EF1D17B00B3BB98 /* july_soda_straw_TN@3x.png in Resources */,
 				264C216B1EF1D1D400B3BB98 /* v_hearts_TN@3x.png in Resources */,
@@ -10201,6 +10235,7 @@
 				264C21E91EF1D1FA00B3BB98 /* chicks_TN@2x.png in Resources */,
 				264C1E051EF1D14900B3BB98 /* water_bubbles_TN.png in Resources */,
 				264C1E451EF1D15700B3BB98 /* flowers_daisies.png in Resources */,
+				F206300D1F01DC6300A369EB /* DisneyPolaroid2Frame.png in Resources */,
 				264C207D1EF1D1BA00B3BB98 /* talk_bubble_TN.png in Resources */,
 				264C1DD81EF1D14900B3BB98 /* soda_straw.png in Resources */,
 				264C1E691EF1D15700B3BB98 /* moon_TN.png in Resources */,
@@ -10333,6 +10368,7 @@
 				264C21CE1EF1D1FA00B3BB98 /* butterfly_TN@3x.png in Resources */,
 				264C21F51EF1D1FA00B3BB98 /* hedgehog_TN@2x.png in Resources */,
 				264C1EF91EF1D17B00B3BB98 /* july_fireworks_TN@2x.png in Resources */,
+				F206300A1F01DC6300A369EB /* DisneyPolaroid2Frame_TN.png in Resources */,
 				264C1EBF1EF1D17B00B3BB98 /* AB_test_PatrioticAviators.png in Resources */,
 				264C218C1EF1D1ED00B3BB98 /* birthdayHat_TN.png in Resources */,
 				264C21331EF1D1D400B3BB98 /* hearts_TN@3x.png in Resources */,
@@ -10346,6 +10382,7 @@
 				264C213F1EF1D1D400B3BB98 /* OMG_TN@3x.png in Resources */,
 				264C1E121EF1D15700B3BB98 /* banner_2_TN@2x.png in Resources */,
 				264C20F31EF1D1C700B3BB98 /* rabbit-mask_TN@3x.png in Resources */,
+				F20630131F01DC7500A369EB /* disney_headband_e_TN.png in Resources */,
 				264C1E851EF1D15700B3BB98 /* rosebud_leaves.png in Resources */,
 				264C20C71EF1D1C700B3BB98 /* glasses_1_TN@2x.png in Resources */,
 				264C21981EF1D1ED00B3BB98 /* confetti_graduation.png in Resources */,
@@ -10458,6 +10495,7 @@
 				264C217F1EF1D1ED00B3BB98 /* balloons.png in Resources */,
 				264C1D411EF1D13100B3BB98 /* HeartsOverlayFrame_TN@3x.png in Resources */,
 				264C1D771EF1D13100B3BB98 /* WhiteFullFrame_TN.png in Resources */,
+				F206300B1F01DC6300A369EB /* DisneyPolaroid2Frame_TN@2x.png in Resources */,
 				264C21E81EF1D1FA00B3BB98 /* chicks_TN.png in Resources */,
 				264C1F5E1EF1D17B00B3BB98 /* july_Soda_canpx_TN@3x.png in Resources */,
 				264C1E5D1EF1D15700B3BB98 /* hibiscus_TN.png in Resources */,
@@ -10485,6 +10523,7 @@
 				264C20651EF1D1BA00B3BB98 /* necktie_fathersday_TN.png in Resources */,
 				264C21C01EF1D1FA00B3BB98 /* bird_TN.png in Resources */,
 				264C20E01EF1D1C700B3BB98 /* necktie_graduation.png in Resources */,
+				F20630091F01DC6300A369EB /* DisneyPolaroid1Frame.png in Resources */,
 				264C1FEE1EF1D1AB00B3BB98 /* soda_TN@2x.png in Resources */,
 				264C1D8A1EF1D14900B3BB98 /* beachball_TN@2x.png in Resources */,
 				264C1E141EF1D15700B3BB98 /* bouquet.png in Resources */,
@@ -10529,6 +10568,7 @@
 				264C1D6F1EF1D13100B3BB98 /* WhiteBarFrame_TN.png in Resources */,
 				264C21661EF1D1D400B3BB98 /* v_heart_TN@2x.png in Resources */,
 				264C1F9A1EF1D19E00B3BB98 /* medicine_TN@2x.png in Resources */,
+				F20630041F01DC6300A369EB /* DisneyLogoFrame_TN@3x.png in Resources */,
 				264C1F481EF1D17B00B3BB98 /* july_patriotic_popsicle_TN.png in Resources */,
 				3f79e1abbf2467695b7efca1 /* InfoPlist.strings in Resources */,
 				264C20421EF1D1BA00B3BB98 /* football_fathersday_TN@2x.png in Resources */,
