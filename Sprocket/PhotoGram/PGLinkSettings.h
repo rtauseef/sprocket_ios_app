@@ -28,4 +28,7 @@ extern NSString * const kPGLinkSettingsChangedNotification;
 + (BOOL)localWatermarkEnabled;
 + (void)setLocalWatermarkEnabled:(BOOL)enabled;
 
++ (BOOL)videoAREnabled;
++ (void)setVideoAREnabled:(BOOL)enabled;
+
 @end

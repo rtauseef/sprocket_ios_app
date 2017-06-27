@@ -330,4 +330,11 @@ static const NSUInteger kMaxRecordingTime = 20;
     }
 }
 
+- (PGARLiveProcessor *) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView {
+    PGARLiveProcessor *processor = [[PGARLiveProcessor alloc] initWithArtifact: artifact andVideoFieldOfView: fieldOfView];
+    
+    return processor;
+}
+
+
 @end

@@ -24,11 +24,13 @@
 #import "PGAppNavigation.h"
 #import <Crashlytics/Crashlytics.h>
 #import "PGLinkCredentialsManager.h"
+#import "PGARLiveProcessor.h"
 
 #import <AVKit/AVKit.h>
 #import <LinkReaderKit/LinkReaderKit.h>
 #import "PGPayoffManager.h"
 #import "PGMetarPayoffViewController.h"
+#import "PGMetarAPI.h"
 
 NSString * const kPGCameraManagerCameraClosed = @"PGCameraManagerClosed";
 NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
@@ -37,6 +39,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 @interface PGCameraManager () <LRCaptureDelegate, LRDetectionDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
     @property (weak, nonatomic) UIViewController *viewController;
     @property (strong, nonatomic) PGOverlayCameraViewController *cameraOverlay;
+    @property (strong, nonatomic) AVCaptureDevice *device;
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
     @property (strong, nonatomic) AVCaptureMovieFileOutput *movieFileOutput;
@@ -46,6 +49,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) AVCaptureVideoPreviewLayer *scanPreviewLayer;
     @property (strong, nonatomic) AVCaptureVideoPreviewLayer *defaultPreviewLayer;
     @property (strong, nonatomic) UIView* overlayView;
+    @property (strong, nonatomic) PGARLiveProcessor* arProcessor;
 @end
 
 @implementation PGCameraManager
@@ -266,11 +270,11 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.session = [[AVCaptureSession alloc] init];
     self.session.sessionPreset = AVCaptureSessionPresetHigh;
     
-    AVCaptureDevice *device = [self cameraWithPosition:self.lastDeviceCameraPosition];
-    [self configFlash:self.isFlashOn forDevice:device];
+    self.device = [self cameraWithPosition:self.lastDeviceCameraPosition];
+    [self configFlash:self.isFlashOn forDevice:self.device];
     
     NSError *error = nil;
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:&error];
     
     if (!input || error) {
         PGLogError(@"Error creating capture device input: %@", error.localizedDescription);
@@ -284,18 +288,6 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         [self.stillImageOutput setOutputSettings:outputSettings];
         [self.session addOutput:self.stillImageOutput];
         
-        AVCaptureVideoDataOutput *videoDataOutput = [AVCaptureVideoDataOutput new];
-        NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
-                                       };
-        /*videoDataOutput.videoSettings = newSettings;
-        [videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
-        dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-        [videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
-        
-        if ([self.session canAddOutput:videoDataOutput]) {
-            [self.session addOutput:videoDataOutput];
-        }*/
-
         self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
     }
 }
@@ -727,6 +719,24 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     [alertView show];
 }
 
+-(void) startARExp: (PGMetarArtifact *) artifact {
+    self.arProcessor = [self.cameraOverlay startARExperienceWithORB: artifact andVideoFieldOfView:self.device.activeFormat.videoFieldOfView];
+    
+    if (self.arProcessor) {
+        AVCaptureVideoDataOutput *videoDataOutput = [AVCaptureVideoDataOutput new];
+        NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
+                                       };
+        videoDataOutput.videoSettings = newSettings;
+        [videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+        dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+        [videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+         
+        if ([self.session canAddOutput:videoDataOutput]) {
+            [self.session addOutput:videoDataOutput];
+        }
+    }
+}
+
 #pragma mark Link Capture Delegates
 
 - (void)didFindPayoff:(id<LRPayoff>)payoff {
@@ -785,11 +795,40 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             completion(success);
         }];
     } else if(meta.type == kPGPayoffURLMetar || meta.type == kPGPayoffURLBatata) {
-        PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
         
-        [metarViewController setMetadata:meta];
-        [self.viewController presentViewController:metarViewController animated:YES completion:^{
-            completion(YES);
+        PGMetarAPI *api = [[PGMetarAPI alloc] init];
+        
+        [api authenticate:^(BOOL success) {
+            if (success) {
+                [api requestImageMetadataWithUUID:[meta.data objectForKey:kPGPayoffUUIDKey] completion:^(NSError * _Nullable error, PGMetarMedia * _Nullable metarMedia) {
+                    NSLog(@"Got metar media info...");
+
+                    PGMetarArtifact *arArtifact = nil;
+
+                    if (metarMedia.artifacts) {
+                        for (PGMetarArtifact *artifact in metarMedia.artifacts) {
+                            if (artifact.type == PGMetarArtifactTypeOrbFeature) {
+                                arArtifact = artifact;
+                            }
+                        }
+                        
+                        if (arArtifact != nil) {
+                            // AR EXP
+                            completion(YES);
+                            [self startARExp: arArtifact];
+                        } else {
+                            PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
+                            [metarViewController setMetadata:meta];
+                            [self.viewController presentViewController:metarViewController animated:YES completion:^{
+                                completion(YES);
+                            }];
+                        }
+                    }
+                }];
+            } else {
+                NSLog(@"METAR API Auth Error");
+
+            }
         }];
     } else {
         completion(NO);
@@ -842,17 +881,17 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 #pragma mark AV... delegate
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-    
-    CVImageBufferRef i = CMSampleBufferGetImageBuffer(sampleBuffer);
+    /*CVImageBufferRef i = CMSampleBufferGetImageBuffer(sampleBuffer);
     CVPixelBufferLockBaseAddress(i, 0);
-    
-    
     uint8_t * base = (uint8_t*)CVPixelBufferGetBaseAddress(i);
     int w = (int)CVPixelBufferGetWidth(i);
     int h = (int)CVPixelBufferGetHeight(i);
     size_t stride = CVPixelBufferGetBytesPerRow(i);
+    CVPixelBufferUnlockBaseAddress(i, 0);*/
     
-    CVPixelBufferUnlockBaseAddress(i, 0);
+    if (self.arProcessor) {
+        [self.arProcessor processSampleBuffer: sampleBuffer];
+    }
 }
 
 @end

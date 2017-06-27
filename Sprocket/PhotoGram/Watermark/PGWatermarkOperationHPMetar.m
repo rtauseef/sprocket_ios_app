@@ -14,6 +14,7 @@
 #import "PGMetarAPI.h"
 #import "PGMetarOfflineTagManager.h"
 #import "PGLinkSettings.h"
+#import "PGARImageProcessor.h"
 
 static const NSString * PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkembedder.metar";
 static const NSInteger kTotalAuthRetries = 3;
@@ -35,6 +36,27 @@ static const NSInteger kMiniumTagsInLocalDb = 5;
     operation.operationData = operationData;
     operation.progressCallback = progress;
     operation.currentAuthRetry = 0;
+    
+    if ([PGLinkSettings videoAREnabled]) {
+        PGARImageProcessor *arProcessor = [[PGARImageProcessor alloc] init];
+        PGMetarMedia *metadata = operationData.metadata;
+        
+        PGMetarArtifact *ORBArtifact;
+        ORBArtifact = [arProcessor createORBPatternArtifact:operationData.originalImage];
+        
+        if (ORBArtifact != nil) {
+            NSMutableArray *updatedArtifactArray = [NSMutableArray array];
+            
+            if (metadata.artifacts != nil && [metadata.artifacts count] > 0) {
+                [updatedArtifactArray addObjectsFromArray:metadata.artifacts];
+            }
+            
+            [updatedArtifactArray addObject:ORBArtifact];
+            
+            metadata.artifacts = updatedArtifactArray;
+            operation.operationData.metadata = metadata;
+        }
+    }
     
     if ([PGLinkSettings localWatermarkEnabled]) {
         [operation executeOffline:completion];
