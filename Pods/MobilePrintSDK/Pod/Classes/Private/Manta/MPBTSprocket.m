@@ -930,7 +930,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
             errString = MPLocalizedString(@"Load paper with the included Smartsheet to continue printing.", @"Message given when sprocket cannot print due to having no paper");
             break;
         case MantaErrorPaperMismatch:
-            errString = MPLocalizedString(@"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer.", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
+            errString = MPLocalizedString(@"Use HP branded ZINK Photo Paper. Load the Smartsheet, barcode down.", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
             break;
         case MantaErrorDataError:
             errString = MPLocalizedString(@"There was an error while sending your image to the printer.", @"Message given when sprocket cannot print due to an error with the image data.");
