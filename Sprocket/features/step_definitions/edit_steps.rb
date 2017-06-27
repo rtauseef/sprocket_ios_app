@@ -237,25 +237,27 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
     else
         if (element_exists "view marked:'#{sticker_tab.to_s}'")
             touch query("view marked:'#{sticker_tab}'")
+            sleep(STEP_PAUSE)
         else
             while element_does_not_exist("view marked:'Add Custom Sticker'")
                 scroll("UICollectionView",:left)
             end
             if (element_exists "view marked:'#{sticker_tab.to_s}'")
                 touch query("view marked:'#{sticker_tab}'")
-            end
-            i = 0
-            while i < 5 do      
-                scroll("UICollectionView",:right)
-                sleep(WAIT_SCREENLOAD)
-                i = i + 1
-                if i >= 5
-                    raise "Tab not found"
-                end
-                if (element_exists "view marked:'#{sticker_tab.to_s}'")
-                    touch query("view marked:'#{sticker_tab}'")
-                    sleep(STEP_PAUSE)
-                break
+            else
+                i = 0
+                while i < 5 do      
+                    scroll("UICollectionView",:right)
+                    sleep(WAIT_SCREENLOAD)
+                    i = i + 1
+                    if i >= 5
+                        raise "Tab not found"
+                    end
+                    if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                        touch query("view marked:'#{sticker_tab}'")
+                        sleep(STEP_PAUSE)
+                        break
+                     end
                 end
             end
         end
