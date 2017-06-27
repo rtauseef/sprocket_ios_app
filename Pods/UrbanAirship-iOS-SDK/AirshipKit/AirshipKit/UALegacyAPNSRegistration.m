@@ -3,18 +3,19 @@
 #import "UALegacyAPNSRegistration+Internal.h"
 #import "UANotificationCategory+Internal.h"
 
+@interface UALegacyAPNSRegistration ()
+
+@end
 
 @implementation UALegacyAPNSRegistration
 
-@synthesize registrationDelegate;
-
 -(void)getCurrentAuthorizationOptionsWithCompletionHandler:(void (^)(UANotificationOptions))completionHandler {
-    UIUserNotificationSettings *settings = [[UIApplication sharedApplication] currentUserNotificationSettings];
-    completionHandler((UANotificationOptions)settings.types);
+    completionHandler((UANotificationOptions)[[UIApplication sharedApplication] currentUserNotificationSettings].types);
 }
 
 -(void)updateRegistrationWithOptions:(UANotificationOptions)options
-                          categories:(NSSet<UANotificationCategory *> *)categories {
+                          categories:(NSSet<UANotificationCategory *> *)categories
+                   completionHandler:(void (^)())completionHandler {
 
     NSMutableSet *normalizedCategories;
 
@@ -28,13 +29,17 @@
 
     // Only allow alert, badge, and sound
     NSUInteger filteredOptions = options & (UANotificationOptionAlert | UANotificationOptionBadge | UANotificationOptionSound);
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:filteredOptions
-                                                                                                          categories:normalizedCategories]];
-}
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-    UANotificationOptions options = (UANotificationOptions)notificationSettings.types;
-    [self.registrationDelegate notificationRegistrationFinishedWithOptions:options];
+    if (filteredOptions == UIUserNotificationTypeNone && [[UIApplication sharedApplication] currentUserNotificationSettings].types == UIUserNotificationTypeNone) {
+        UA_LDEBUG(@"Already unregistered for user notification types.");
+        completionHandler();
+        return;
+    }
+
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:filteredOptions
+                                                                                                              categories:normalizedCategories]];
+    UA_LDEBUG(@"Registering for user notification types %ld.", (unsigned long)filteredOptions);
+    completionHandler(filteredOptions);
 }
 
 @end

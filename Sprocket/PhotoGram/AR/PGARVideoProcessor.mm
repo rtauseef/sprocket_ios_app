@@ -1,18 +1,21 @@
 //
-//  PGARVideoProcessor.m
-//  Sprocket
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Fernando Caprio on 6/26/17.
-//  Copyright © 2017 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "PGARVideoProcessor.h"
+#import <AVFoundation/AVFoundation.h>
+#import <SceneKit/SceneKit.h>
 #import <CoreImage/CoreImage.h>
 #import <opencv2/opencv.hpp>
 #import <opencv2/imgcodecs/ios.h>
-#import <AVFoundation/AVFoundation.h>
-#import <SceneKit/SceneKit.h>
-
 #import <vector>
 #include <cstring>
 #import <UIKit/UIKit.h>
@@ -26,6 +29,7 @@ using namespace std;
 @interface PGARVideoProcessor() {
     Mat _cvToGl;
     Mat _cameraIntrinsic;
+    Mat _descriptors;
     Ptr<Feature2D> _feature;
     Ptr<Feature2D> _featureSource;
     Ptr<Feature2D> _featureCompute;
@@ -36,22 +40,22 @@ using namespace std;
     int _frameCount;
     BOOL _enableFilter;
     GLKMatrix4 _filter[FILTER_LEN];
-    SCNMatrix4 _projection;
     
     vector<KeyPoint> _keyPoints;
-    Mat _descriptors;
+    vector<Point2f> _corners;
+    vector<Point3f> _planeCorners;
+    vector<Point3f> _axisPoints;
 }
 
 @end
 
 @implementation PGARVideoProcessor
 
-- (instancetype)initWithWidth:(float)width height:(float)height fieldOfView:(float)fieldOfView keyPoints:(NSData *)keyPoints descriptors:(NSData *)descriptors
+- (instancetype)initWithArtifactSize:(CGSize)artifactSize videoSize:(CGSize)dim fieldOfView:(float)fieldOfView keyPoints:(NSData *)keyPoints descriptors:(NSData *)descriptors
 {
     self = [super init];
     if (self) {
         _feature = _featureCompute = ORB::create(500, 1.2f, 8, 62, 0, 2,ORB::HARRIS_SCORE, 31,20);
-        _featureSource = _featureSourceCompute = ORB::create(500, 1.2f, 8, 31, 0, 2,ORB::HARRIS_SCORE, 31,20);
         _matcher = new FlannBasedMatcher(new flann::LshIndexParams(5,24,2));
         _loaded = NO;
         
@@ -68,8 +72,9 @@ using namespace std;
         _filterpos = 0;
         _frameCount = 0;
         
-        float w = height * VIDEO_SCALE;
-        float h = width * VIDEO_SCALE;
+        // Width and Height are flipped because video is portrait
+        float w = dim.height * VIDEO_SCALE;
+        float h = dim.width * VIDEO_SCALE;
         float cx = w / 2.0f;
         float cy = h / 2.0f;
         float VFOV = fieldOfView*2;
@@ -99,7 +104,7 @@ using namespace std;
         m4.m[14] = -2*zmax*zmin/(zmax-zmin);
         m4.m[15] = 0;
         
-        _projection = SCNMatrix4FromGLKMatrix4(m4);
+        self.projection = SCNMatrix4FromGLKMatrix4(m4);
         
         // update local keypoints and descriptors
         NSUInteger length = [keyPoints length];
@@ -155,9 +160,176 @@ using namespace std;
         _descriptors = Mat(rows,cols,type);
         
         memcpy(_descriptors.data,bytes,_descriptors.elemSize() * _descriptors.total());
+        
+        [self loadPatternWithCols:artifactSize.width andRows:artifactSize.height];
     }
     
     return self;
 }
+
+//TODO: double check this includes SCALE
+- (void) loadPatternWithCols:(float)cols andRows:(float)rows {
+    Point2f tl(0, 0);
+    Point2f tr(cols, 0);
+    Point2f bl(0, rows);
+    Point2f br(cols, rows);
+    Point2f c(cols/2,rows/2);
+    
+    _corners.push_back(tl);
+    _corners.push_back(tr);
+    _corners.push_back(br);
+    _corners.push_back(bl);
+    _corners.push_back(c);
+    
+    float W = 2.0f/2.0f;
+    float H = 3/2.0f;
+    
+    Point3f ptl(-W,H,0);
+    Point3f ptr(W, H,0);
+    Point3f pbl(-W,-H,0);
+    Point3f pbr(W,-H,0);
+    Point3f pc(0,0,0);
+    
+    _planeCorners.push_back(ptl);
+    _planeCorners.push_back(ptr);
+    _planeCorners.push_back(pbr);
+    _planeCorners.push_back(pbl);
+    _planeCorners.push_back(pc);
+    
+    
+    Point3f zero(0,0,0);
+    Point3f ax(1,0,0);
+    Point3f ay(0,1,0);
+    Point3f az(0,0,1);
+    _axisPoints.push_back(zero);
+    _axisPoints.push_back(ax);
+    _axisPoints.push_back(ay);
+    _axisPoints.push_back(az);
+    
+    _loaded = YES;
+}
+
+-(void) runTracker:(CMSampleBufferRef)sampleBuffer completion: (nullable void (^)(PGARVideoProcessorResult *res)) completion {
+    CVImageBufferRef i = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(i, 0);
+    
+    uint8_t * base = (uint8_t*)CVPixelBufferGetBaseAddress(i);
+    int w = (int)CVPixelBufferGetWidth(i);
+    int h = (int)CVPixelBufferGetHeight(i);
+    size_t stride = CVPixelBufferGetBytesPerRow(i);
+    
+    cv::Mat frameO(h,w,CV_8UC4,base,stride);
+    Mat frame(h*VIDEO_SCALE,w*VIDEO_SCALE,CV_8UC4);
+    resize(frameO,frame,frame.size(),0,0);
+    
+    PGARVideoProcessorResult *res = [[PGARVideoProcessorResult alloc] init];
+    
+    res.transAvailable = YES;;
+    
+    if( _loaded && _frameCount % 2 == 0 ) {
+        //        Mat ff;
+        vector<KeyPoint> kp;
+        _feature->detect(frame, kp);
+        Mat dd;
+        _featureCompute->compute(frame, kp, dd);
+        
+        
+        //        BFMatcher bf(NORM_HAMMING, true);
+        if( !dd.empty() ) {
+            vector<DMatch, allocator<DMatch> > matches;
+            
+            _matcher->match(dd, _descriptors, matches);
+            
+            vector<Point2f> pt;
+            vector<Point2f> ps;
+    
+            for (auto i = matches.begin(); i != matches.end();) {
+                //                d1 += i->distance;
+                if (i->distance > 64) {
+                    i = matches.erase(i);
+                } else {
+                    pt.push_back(_keyPoints.at((unsigned long) i->trainIdx).pt);
+                    ps.push_back(kp.at((unsigned long) i->queryIdx).pt);
+                    i++;
+                }
+            }
+            
+            if( pt.size() >= 10 ) {
+                Mat homo = findHomography(pt, ps, CV_RANSAC, 10);
+                if( !homo.empty() ) {
+                    
+                    
+                    vector<Point2f> tcorners1;
+                    perspectiveTransform(_corners, tcorners1, homo);
+                    
+                    Mat rvec;
+                    Mat tvec;
+                    Vec4f coeffs(0,0,0,0);
+                    solvePnP(_planeCorners, tcorners1, _cameraIntrinsic, coeffs, rvec, tvec);
+                    
+                    Mat rotation, viewMatrix(4,4,CV_64FC1);
+                    Rodrigues(rvec, rotation);
+                    
+                    for( unsigned int row = 0; row < 3 ; row++ ) {
+                        for( unsigned int col = 0 ; col < 3; col++ ) {
+                            viewMatrix.at<double>(row,col) = rotation.at<double>(row,col);
+                        }
+                        viewMatrix.at<double>(row,3) = tvec.at<double>(row,0);
+                    }
+                    
+                    viewMatrix.at<double>(3,3) = 1.0f;
+                    viewMatrix = _cvToGl * viewMatrix;
+     
+                    Mat glMatrix;
+                    transpose(viewMatrix,glMatrix);
+
+                    GLKMatrix4 m4;
+                    for( int i = 0 ; i < 16 ; i++ ) {
+                        m4.m[i] = glMatrix.at<double>(i);
+                    }
+                    
+                    if( self.enableFilter ) {
+                        _filter[_filterpos] = m4;
+                        GLKMatrix4 mm;
+                        memset(mm.m,0x00,sizeof(mm.m));
+                        int j = _filterpos;
+                        for( int i = 0 ; i < FILTER_LEN ; i++ ) {
+                            GLKMatrix4 * x = & _filter[j];
+                            for( int k = 0 ; k < 16 ; k++ ) {
+                                mm.m[k] += x->m[k];
+                            }
+                            j--;
+                            if( j < 0 ) {
+                                j += FILTER_LEN;
+                            }
+                        }
+                        for( int i = 0 ; i < 16 ; i++ ) {
+                            mm.m[i] /= FILTER_LEN;
+                        }
+                        
+                        res.trans = SCNMatrix4FromGLKMatrix4(mm);
+                        _filterpos = (_filterpos + 1 ) % FILTER_LEN;
+                    } else {
+                        res.trans = SCNMatrix4FromGLKMatrix4(m4);
+                    }
+                    
+                }
+            }
+        }
+        
+    } else {
+        res.transAvailable = NO;
+    }
+    
+    
+    res.videoFrame = [CIImage imageWithCVImageBuffer:i];
+    
+    CVPixelBufferUnlockBaseAddress(i, 0);
+    _frameCount++;
+    
+    completion(res);
+}
+
+
 
 @end

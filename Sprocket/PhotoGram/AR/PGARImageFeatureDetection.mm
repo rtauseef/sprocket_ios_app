@@ -1,25 +1,29 @@
 //
-//  PGARImageProcessor.m
-//  Sprocket
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Fernando Caprio on 6/26/17.
-//  Copyright © 2017 HP. All rights reserved.
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import <opencv2/opencv.hpp>
 
-#import "PGARImageProcessor.h"
+#import "PGARImageFeatureDetection.h"
 #import <CoreImage/CoreImage.h>
 
 using namespace cv;
 using namespace std;
 
-@interface PGARImageProcessor () {
+@interface PGARImageFeatureDetection () {
 }
 
 @end
 
-@implementation PGARImageProcessor
+@implementation PGARImageFeatureDetection
 
 +(Mat) createMatFromImage:(UIImage*) image {
     CGColorSpaceRef colorSpace = CGImageGetColorSpace([image CGImage]);
@@ -42,7 +46,7 @@ using namespace std;
     
     _featureSource = _featureSourceCompute = ORB::create(500, 1.2f, 8, 31, 0, 2,ORB::HARRIS_SCORE, 31,20);
     
-    _pattern = [PGARImageProcessor createMatFromImage:image];
+    _pattern = [PGARImageFeatureDetection createMatFromImage:image];
     
     // ORB on original image
     _featureSource->detect(_pattern, _keyPoints);

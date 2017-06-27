@@ -43,6 +43,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     @property (strong, nonatomic) AVCaptureSession *session;
     @property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
     @property (strong, nonatomic) AVCaptureMovieFileOutput *movieFileOutput;
+    @property (strong, nonatomic) AVCaptureVideoDataOutput *videoDataOutput;
     @property (assign, nonatomic) BOOL isCapturingStillImage;
     @property (weak, nonatomic) LRCaptureManager *lrCaptureManager;
     @property (strong, nonatomic) UIView *cameraView;
@@ -687,13 +688,15 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 }
 
 - (void) stopScanning {
-    [self.lrCaptureManager stopSession];
-    [self.scanPreviewLayer removeFromSuperlayer];
-    [self addCameraToView:self.cameraView presentedViewController:self.viewController];
+    if (self.lrCaptureManager) {
+        [self.lrCaptureManager stopSession];
+        [self.scanPreviewLayer removeFromSuperlayer];
+        [self addCameraToView:self.cameraView presentedViewController:self.viewController];
 
-    [[LRDetection sharedInstance] setDelegate:nil];
-    self.lrCaptureManager.delegate = nil;
-    self.lrCaptureManager = nil;
+        [[LRDetection sharedInstance] setDelegate:nil];
+        self.lrCaptureManager.delegate = nil;
+        self.lrCaptureManager = nil;
+    }
 }
 
 //complete:(void (^)(NSError *error, PGPayoffMetadata *metadata))complete
@@ -719,22 +722,36 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     [alertView show];
 }
 
--(void) startARExp: (PGMetarArtifact *) artifact {
-    self.arProcessor = [self.cameraOverlay startARExperienceWithORB: artifact andVideoFieldOfView:self.device.activeFormat.videoFieldOfView];
+-(void)startARExp: (PGMetarMedia *) media artifact: (PGMetarArtifact *) artifact {
     
-    if (self.arProcessor) {
-        AVCaptureVideoDataOutput *videoDataOutput = [AVCaptureVideoDataOutput new];
-        NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
-                                       };
-        videoDataOutput.videoSettings = newSettings;
-        [videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
-        dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-        [videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
-         
-        if ([self.session canAddOutput:videoDataOutput]) {
-            [self.session addOutput:videoDataOutput];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        AVCaptureDeviceFormat * format = self.device.activeFormat;
+        CMFormatDescriptionRef fDesc = format.formatDescription;
+        CGSize dim = CMVideoFormatDescriptionGetPresentationDimensions(fDesc, true, true);
+        
+        self.arProcessor = [self.cameraOverlay startARExperienceWithORB: artifact andVideoFieldOfView:format.videoFieldOfView andVideoSize:dim andMedia:media];
+        
+        if (self.arProcessor) {
+            self.videoDataOutput = [AVCaptureVideoDataOutput new];
+            NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
+                                           };
+            self.videoDataOutput.videoSettings = newSettings;
+            [self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+            dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+            [self.videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+            
+            if ([self.session canAddOutput:self.videoDataOutput]) {
+                [self.session addOutput:self.videoDataOutput];
+                [[self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:AVCaptureVideoOrientationPortrait];
+            }
         }
-    }
+    });
+}
+
+- (void)stopARExp {
+    [self.session removeOutput:self.videoDataOutput];
+    self.videoDataOutput = nil;
 }
 
 #pragma mark Link Capture Delegates
@@ -814,15 +831,29 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
                         
                         if (arArtifact != nil) {
                             // AR EXP
-                            completion(YES);
-                            [self startARExp: arArtifact];
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                completion(YES);
+                            });
+                            
+                            [self startARExp: metarMedia artifact: arArtifact];
                         } else {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
+                                [metarViewController setMetadata:meta];
+                                [self.viewController presentViewController:metarViewController animated:YES completion:^{
+                                    completion(YES);
+                                }];
+                            });
+                        }
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), ^{
                             PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
                             [metarViewController setMetadata:meta];
                             [self.viewController presentViewController:metarViewController animated:YES completion:^{
                                 completion(YES);
                             }];
-                        }
+                        });
                     }
                 }];
             } else {

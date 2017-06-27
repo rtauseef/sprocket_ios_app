@@ -11,6 +11,9 @@
 
 #pragma mark -
 #pragma mark Object Lifecycle
+- (void)dealloc {
+
+}
 
 - (instancetype)init {
     self = [super init];
@@ -25,6 +28,7 @@
         self.automaticSetupEnabled = YES;
         self.analyticsEnabled = YES;
         self.profilePath = [[NSBundle mainBundle] pathForResource:@"embedded" ofType:@"mobileprovision"];
+        usesProductionPushServer_ = NO;
         self.cacheDiskSizeInMB = 100;
         self.clearUserOnAppRestore = NO;
         self.whitelist = @[];
@@ -176,7 +180,7 @@
 }
 
 - (BOOL)isInProduction {
-    return self.detectProvisioningMode ? [self.usesProductionPushServer boolValue] : _inProduction;
+    return self.detectProvisioningMode ? [self usesProductionPushServer] : _inProduction;
 }
 
 - (void)setInProduction:(BOOL)inProduction {
@@ -288,23 +292,26 @@
 #pragma mark -
 #pragma Provisioning Profile Detection
 
-- (NSNumber *)usesProductionPushServer {
-    if (_usesProductionPushServer == nil) {
+- (BOOL)usesProductionPushServer {
+
+    // only test if a profile is available
+    // this is useful for testing/detecting simulator
+
+    dispatch_once(&usesProductionPred_, ^{
         if (self.profilePath) {
-            _usesProductionPushServer =  @([UAConfig isProductionProvisioningProfile:self.profilePath]);
+            self->usesProductionPushServer_ = [UAConfig isProductionProvisioningProfile:self.profilePath];
         } else if (!self.isSimulator) {
             // This appears to be the case for production apps distributed by the app store.
             // The embedded.mobileprovision is stripped during Apple's re-signing/deployment process.
             UA_LDEBUG(@"No profile found, but not a simulator: inProduction = YES");
-            _usesProductionPushServer =  @(YES);
+            self->usesProductionPushServer_ = YES;
         } else {
-            UA_LERR(@"No profile found. Unable to automatically detect provisioning mode in the simulator. Falling back to inProduction as set: %d", _inProduction);
-            _usesProductionPushServer =  @(_inProduction);
+            UA_LERR(@"No profile found. Unable to automatically detect provisioning mode in the simulator. Falling back to inProduction as set: %d", self->_inProduction);
+            self->usesProductionPushServer_ = self->_inProduction;
         }
-    }
+    });
 
-    return _usesProductionPushServer;
-
+    return usesProductionPushServer_;
 }
 
 + (BOOL)isProductionProvisioningProfile:(NSString *)profilePath {

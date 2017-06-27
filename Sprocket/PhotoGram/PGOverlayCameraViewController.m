@@ -14,6 +14,7 @@
 #import "PGCameraManager.h"
 #import "PGLinkSettings.h"
 #import <AVKit/AVKit.h>
+#import "PGARViewController.h"
 
 static const NSUInteger kMaxRecordingTime = 20;
 
@@ -330,8 +331,18 @@ static const NSUInteger kMaxRecordingTime = 20;
     }
 }
 
-- (PGARLiveProcessor *) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView {
-    PGARLiveProcessor *processor = [[PGARLiveProcessor alloc] initWithArtifact: artifact andVideoFieldOfView: fieldOfView];
+- (PGARLiveProcessor *) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andMedia: (PGMetarMedia *) media {
+    PGARLiveProcessor *processor = [[PGARLiveProcessor alloc] initWithArtifact: artifact andVideoFieldOfView: fieldOfView andVideoSize: dim];
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PGARViewController *vc = [[PGARViewController alloc] initWithNibName:@"PGARViewController" bundle:nil];
+        processor.delegate = vc;
+        vc.projection = [processor getProjection];
+        vc.media = media;
+        
+        [self presentViewController:vc animated:NO completion:nil];
+    });
     
     return processor;
 }

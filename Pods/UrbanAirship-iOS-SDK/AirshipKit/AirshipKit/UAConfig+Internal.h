@@ -7,7 +7,13 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  * SDK-private extensions to UAConfig
  */
-@interface UAConfig ()
+@interface UAConfig () {
+  @private
+    // the following ivars are for instance-scoped dispatch_once control when parsing
+    // provisioning xml files
+    dispatch_once_t usesProductionPred_;
+    BOOL usesProductionPushServer_;
+}
 
 ///---------------------------------------------------------------------------------------
 /// @name Config Internal Properties
@@ -34,17 +40,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL defaultDetectProvisioningMode;
 
+///---------------------------------------------------------------------------------------
+/// @name Config Internal Methods
+///---------------------------------------------------------------------------------------
+
 /**
  * Determines whether or not the app is currently configured to use the APNS production servers.
  * @return `YES` if using production servers, `NO` if development servers or if the app is not properly
  * configured for push.
  */
-@property (nonatomic, strong) NSNumber *usesProductionPushServer;
-
-///---------------------------------------------------------------------------------------
-/// @name Config Internal Methods
-///---------------------------------------------------------------------------------------
-
+- (BOOL)usesProductionPushServer;
 
 /**
  * Tests if the profile at a given path is set up for the production push environment.

@@ -5,41 +5,36 @@
 
 @implementation UAAPNSRegistration
 
-@synthesize registrationDelegate;
-
 -(void)getCurrentAuthorizationOptionsWithCompletionHandler:(void (^)(UANotificationOptions))completionHandler {
     [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
 
-        if (settings.authorizationStatus != UNAuthorizationStatusAuthorized) {
-            completionHandler(UANotificationOptionNone);
-            return;
+        UANotificationOptions mask = UANotificationOptionNone;
+
+        if (settings.authorizationStatus == UNAuthorizationStatusAuthorized) {
+            if (settings.alertSetting == UNNotificationSettingEnabled) {
+                mask |= UANotificationOptionAlert;
+            }
+
+            if (settings.soundSetting == UNNotificationSettingEnabled) {
+                mask |= UANotificationOptionSound;
+            }
+
+            if (settings.badgeSetting == UNNotificationSettingEnabled) {
+                mask |= UANotificationOptionBadge;
+            }
+
+            if (settings.carPlaySetting == UNNotificationSettingEnabled) {
+                mask |= UANotificationOptionCarPlay;
+            }
         }
 
-        UANotificationOptions options = UANotificationOptionNone;
-
-        if (settings.alertSetting == UNNotificationSettingEnabled) {
-            options |= UANotificationOptionAlert;
-        }
-
-        if (settings.soundSetting == UNNotificationSettingEnabled) {
-            options |= UANotificationOptionSound;
-        }
-
-        if (settings.badgeSetting == UNNotificationSettingEnabled) {
-            options |= UANotificationOptionBadge;
-        }
-
-        if (settings.carPlaySetting == UNNotificationSettingEnabled) {
-            options |= UANotificationOptionCarPlay;
-        }
-
-        completionHandler(options);
-
+        completionHandler(mask);
     }];
 }
 
 -(void)updateRegistrationWithOptions:(UANotificationOptions)options
-                          categories:(NSSet<UANotificationCategory *> *)categories {
+                          categories:(NSSet<UANotificationCategory *> *)categories
+                   completionHandler:(void (^)())completionHandler {
 
     NSMutableSet *normalizedCategories;
 
@@ -63,12 +58,30 @@
     UNAuthorizationOptions normalizedOptions = (UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionCarPlay);
     normalizedOptions &= options;
 
-    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:normalizedOptions
-                                                                        completionHandler:^(BOOL granted, NSError * _Nullable error) {
-                                                                            [self getCurrentAuthorizationOptionsWithCompletionHandler:^(UANotificationOptions authorizedOptions) {
-                                                                                [self.registrationDelegate notificationRegistrationFinishedWithOptions:authorizedOptions];
+
+    if (normalizedOptions != UNAuthorizationOptionNone) {
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:normalizedOptions
+                                                                            completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                                                                UA_LDEBUG(@"Registering for user notification options %ld.", (unsigned long)[UAirship push].notificationOptions);
+
+                                                                                [[UIApplication sharedApplication] registerForRemoteNotifications];
+                                                                                completionHandler();
                                                                             }];
-                                                                        }];
+    } else {
+        [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+            if (settings.authorizationStatus == UNAuthorizationStatusNotDetermined) {
+                // Return early so we dont trigger the user to accept notifications
+                completionHandler();
+                return;
+            }
+
+            [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionNone
+                                                                                completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                                                                    UA_LDEBUG(@"Unregistered for user notification options");
+                                                                                    completionHandler();
+                                                                                }];
+        }];
+    }
 }
 
 @end

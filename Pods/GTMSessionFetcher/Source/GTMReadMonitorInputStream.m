@@ -94,8 +94,6 @@
         // and invoke on the proper thread.
         SEL sel = @selector(invokeReadSelectorWithBuffer:);
         NSData *data = [NSData dataWithBytes:buffer length:(NSUInteger)numRead];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         if (_runLoopModes) {
           [self performSelector:sel
                        onThread:_thread
@@ -108,7 +106,6 @@
                      withObject:data
                   waitUntilDone:NO];
         }
-#pragma clang diagnostic pop
       }
     }
   }

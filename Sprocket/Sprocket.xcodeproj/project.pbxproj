@@ -2853,10 +2853,17 @@
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
 		E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
-		EDA212841F01B3A500B6AFE4 /* PGARImageProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDA212831F01B3A500B6AFE4 /* PGARImageProcessor.mm */; };
+		EDA212841F01B3A500B6AFE4 /* PGARImageFeatureDetection.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDA212831F01B3A500B6AFE4 /* PGARImageFeatureDetection.mm */; };
 		EDA212871F01CEBC00B6AFE4 /* PGARLiveProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA212861F01CEBC00B6AFE4 /* PGARLiveProcessor.m */; };
 		EDA2128A1F01D14900B6AFE4 /* PGARVideoProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EDA212891F01D14900B6AFE4 /* PGARVideoProcessor.mm */; };
 		EDA2128C1F01D43800B6AFE4 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA2128B1F01D43800B6AFE4 /* SceneKit.framework */; };
+		EDA212941F02C11900B6AFE4 /* PGARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA212921F02C11900B6AFE4 /* PGARViewController.m */; };
+		EDA212951F02C11900B6AFE4 /* PGARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA212931F02C11900B6AFE4 /* PGARViewController.xib */; };
+		EDA212991F02C34700B6AFE4 /* PGARVideoProcessorResult.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA212981F02C34700B6AFE4 /* PGARVideoProcessorResult.m */; };
+		EDA2129E1F02C9D400B6AFE4 /* dat_geo.obj in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129A1F02C9D400B6AFE4 /* dat_geo.obj */; };
+		EDA2129F1F02C9D400B6AFE4 /* myscene.scn in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129B1F02C9D400B6AFE4 /* myscene.scn */; };
+		EDA212A01F02C9D400B6AFE4 /* particles.scnp in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129C1F02C9D400B6AFE4 /* particles.scnp */; };
+		EDA212A11F02C9D400B6AFE4 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129D1F02C9D400B6AFE4 /* spark.png */; };
 		EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */; };
 		EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */; };
 		EDD33F651EF9CE520028DBC8 /* PGMetarArtifactEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0C1EF9CE520028DBC8 /* PGMetarArtifactEmotion.m */; };
@@ -5030,13 +5037,22 @@
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
 		E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
-		EDA212821F01B3A500B6AFE4 /* PGARImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGARImageProcessor.h; path = AR/PGARImageProcessor.h; sourceTree = "<group>"; };
-		EDA212831F01B3A500B6AFE4 /* PGARImageProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGARImageProcessor.mm; path = AR/PGARImageProcessor.mm; sourceTree = "<group>"; };
+		EDA212821F01B3A500B6AFE4 /* PGARImageFeatureDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGARImageFeatureDetection.h; path = AR/PGARImageFeatureDetection.h; sourceTree = "<group>"; };
+		EDA212831F01B3A500B6AFE4 /* PGARImageFeatureDetection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGARImageFeatureDetection.mm; path = AR/PGARImageFeatureDetection.mm; sourceTree = "<group>"; };
 		EDA212851F01CEBC00B6AFE4 /* PGARLiveProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGARLiveProcessor.h; path = AR/PGARLiveProcessor.h; sourceTree = "<group>"; };
 		EDA212861F01CEBC00B6AFE4 /* PGARLiveProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGARLiveProcessor.m; path = AR/PGARLiveProcessor.m; sourceTree = "<group>"; };
 		EDA212881F01D14900B6AFE4 /* PGARVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGARVideoProcessor.h; path = AR/PGARVideoProcessor.h; sourceTree = "<group>"; };
 		EDA212891F01D14900B6AFE4 /* PGARVideoProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGARVideoProcessor.mm; path = AR/PGARVideoProcessor.mm; sourceTree = "<group>"; };
 		EDA2128B1F01D43800B6AFE4 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		EDA212911F02C11900B6AFE4 /* PGARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGARViewController.h; path = AR/PGARViewController.h; sourceTree = "<group>"; };
+		EDA212921F02C11900B6AFE4 /* PGARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGARViewController.m; path = AR/PGARViewController.m; sourceTree = "<group>"; };
+		EDA212931F02C11900B6AFE4 /* PGARViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PGARViewController.xib; path = AR/PGARViewController.xib; sourceTree = "<group>"; };
+		EDA212971F02C34700B6AFE4 /* PGARVideoProcessorResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGARVideoProcessorResult.h; path = AR/PGARVideoProcessorResult.h; sourceTree = "<group>"; };
+		EDA212981F02C34700B6AFE4 /* PGARVideoProcessorResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGARVideoProcessorResult.m; path = AR/PGARVideoProcessorResult.m; sourceTree = "<group>"; };
+		EDA2129A1F02C9D400B6AFE4 /* dat_geo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dat_geo.obj; path = AR/dat_geo.obj; sourceTree = "<group>"; };
+		EDA2129B1F02C9D400B6AFE4 /* myscene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = myscene.scn; path = AR/myscene.scn; sourceTree = "<group>"; };
+		EDA2129C1F02C9D400B6AFE4 /* particles.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; name = particles.scnp; path = AR/particles.scnp; sourceTree = "<group>"; };
+		EDA2129D1F02C9D400B6AFE4 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = AR/spark.png; sourceTree = "<group>"; };
 		EDD33F071EF9CE520028DBC8 /* PGMetarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarAPI.h; sourceTree = "<group>"; };
 		EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarAPI.m; sourceTree = "<group>"; };
 		EDD33F091EF9CE520028DBC8 /* PGMetarArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarArtifact.h; sourceTree = "<group>"; };
@@ -7303,14 +7319,31 @@
 		EDA212801F01B38900B6AFE4 /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				EDA212821F01B3A500B6AFE4 /* PGARImageProcessor.h */,
-				EDA212831F01B3A500B6AFE4 /* PGARImageProcessor.mm */,
+				EDA212A21F02C9D800B6AFE4 /* Resources */,
+				EDA212821F01B3A500B6AFE4 /* PGARImageFeatureDetection.h */,
+				EDA212831F01B3A500B6AFE4 /* PGARImageFeatureDetection.mm */,
 				EDA212851F01CEBC00B6AFE4 /* PGARLiveProcessor.h */,
 				EDA212861F01CEBC00B6AFE4 /* PGARLiveProcessor.m */,
 				EDA212881F01D14900B6AFE4 /* PGARVideoProcessor.h */,
 				EDA212891F01D14900B6AFE4 /* PGARVideoProcessor.mm */,
+				EDA212911F02C11900B6AFE4 /* PGARViewController.h */,
+				EDA212921F02C11900B6AFE4 /* PGARViewController.m */,
+				EDA212931F02C11900B6AFE4 /* PGARViewController.xib */,
+				EDA212971F02C34700B6AFE4 /* PGARVideoProcessorResult.h */,
+				EDA212981F02C34700B6AFE4 /* PGARVideoProcessorResult.m */,
 			);
 			name = AR;
+			sourceTree = "<group>";
+		};
+		EDA212A21F02C9D800B6AFE4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EDA2129A1F02C9D400B6AFE4 /* dat_geo.obj */,
+				EDA2129B1F02C9D400B6AFE4 /* myscene.scn */,
+				EDA2129C1F02C9D400B6AFE4 /* particles.scnp */,
+				EDA2129D1F02C9D400B6AFE4 /* spark.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		EDD33F061EF9CE520028DBC8 /* Metar */ = {
@@ -8372,6 +8405,7 @@
 				929CE6491EF1B81100039377 /* july_soda_straw_TN.png in Resources */,
 				929CDFCC1EF075C600039377 /* rabbit_TN.png in Resources */,
 				929CE3061EF075C700039377 /* flower_leaves_element_TN@3x.png in Resources */,
+				EDA212951F02C11900B6AFE4 /* PGARViewController.xib in Resources */,
 				929CE18D1EF075C700039377 /* tie_collar_TN@3x.png in Resources */,
 				929CDFBF1EF075C600039377 /* Owl.png in Resources */,
 				E375385919BE57C5009C695F /* About@2x.png in Resources */,
@@ -8533,6 +8567,7 @@
 				929CE0501EF075C700039377 /* heartExpress_TN@2x.png in Resources */,
 				929CE1F31EF075C700039377 /* Turkey-leg_TN.png in Resources */,
 				929CE0081EF075C600039377 /* fireworks_TN.png in Resources */,
+				EDA2129F1F02C9D400B6AFE4 /* myscene.scn in Resources */,
 				929CE1E41EF075C700039377 /* soda_TN@2x.png in Resources */,
 				929CE1B11EF075C700039377 /* Cocoa_TN@3x.png in Resources */,
 				929CE3EE1EF075C800039377 /* trailer.png in Resources */,
@@ -8672,6 +8707,7 @@
 				929CE4071EF075C800039377 /* water_bubbles_TN.png in Resources */,
 				929CE5D71EF1B81100039377 /* july_firework_rocket_TN@3x.png in Resources */,
 				929CE0BB1EF075C700039377 /* catglasses_TN.png in Resources */,
+				EDA212A11F02C9D400B6AFE4 /* spark.png in Resources */,
 				929CE4A01EF0792000039377 /* RainbowFrame_TN@3x.png in Resources */,
 				929CE37A1EF075C800039377 /* tulips.png in Resources */,
 				929CE18E1EF075C700039377 /* wrench.png in Resources */,
@@ -8716,6 +8752,7 @@
 				F236FAC81E8721F700FC31B5 /* PGProgressView.xib in Resources */,
 				929CE5A81EF1B81100039377 /* AB_test_PatrioticAviators.png in Resources */,
 				929CE1C31EF075C700039377 /* icecreamcone_TN.png in Resources */,
+				EDA2129E1F02C9D400B6AFE4 /* dat_geo.obj in Resources */,
 				EDD33F811EF9CE520028DBC8 /* PGPayoffViewImageViewController.xib in Resources */,
 				929CE5B91EF1B81100039377 /* july_4th_star_glasses_TN.png in Resources */,
 				929CE3A41EF075C800039377 /* floating_sloth_TN@2x.png in Resources */,
@@ -8840,6 +8877,7 @@
 				929CE3C91EF075C800039377 /* popsicle_TN@3x.png in Resources */,
 				929CE0691EF075C700039377 /* peace_TN@3x.png in Resources */,
 				929CE4B51EF0792000039377 /* StripesRWBPolFrame.png in Resources */,
+				EDA212A01F02C9D400B6AFE4 /* particles.scnp in Resources */,
 				E320F8B919C36A7A00BC2AE3 /* retry@2x.png in Resources */,
 				929CE1EC1EF075C700039377 /* sundae_TN@2x.png in Resources */,
 				929CE5A71EF1B81100039377 /* AB_test_PatrioticAviators_TN@3x.png in Resources */,
@@ -11085,7 +11123,7 @@
 				EDD33F781EF9CE520028DBC8 /* PGMetarVideo.m in Sources */,
 				EDD33F791EF9CE520028DBC8 /* AVPlayerViewController+Fullscreen.m in Sources */,
 				F22F12391E560C2C00753C5A /* PGPhotoSelection.m in Sources */,
-				EDA212841F01B3A500B6AFE4 /* PGARImageProcessor.mm in Sources */,
+				EDA212841F01B3A500B6AFE4 /* PGARImageFeatureDetection.mm in Sources */,
 				F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */,
 				EDD33F7E1EF9CE520028DBC8 /* PGPayoffViewErrorViewController.m in Sources */,
 				E3461FB519AFD4610042DF5E /* UITableView+Header.m in Sources */,
@@ -11166,12 +11204,14 @@
 				EDD33F6A1EF9CE520028DBC8 /* PGMetarImageTag.m in Sources */,
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,
+				EDA212941F02C11900B6AFE4 /* PGARViewController.m in Sources */,
 				E3461F2E19AE2FBB0042DF5E /* UITextView+Additions.m in Sources */,
 				EDD33F671EF9CE520028DBC8 /* PGMetarContentContainer.m in Sources */,
 				EDD33F901EF9CE520028DBC8 /* PGWatermarkOperationData.m in Sources */,
 				F22F12831E6F539200753C5A /* PGSecretKeeper.m in Sources */,
 				E31BE42319ED91FA006B78BB /* PGCameraRollLandingPageViewController.m in Sources */,
 				8257D63F1E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
+				EDA212991F02C34700B6AFE4 /* PGARVideoProcessorResult.m in Sources */,
 				F24DA7CE1EAEA0F500C24AAB /* PGLinkSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

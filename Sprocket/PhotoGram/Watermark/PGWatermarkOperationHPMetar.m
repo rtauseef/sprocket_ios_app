@@ -14,7 +14,7 @@
 #import "PGMetarAPI.h"
 #import "PGMetarOfflineTagManager.h"
 #import "PGLinkSettings.h"
-#import "PGARImageProcessor.h"
+#import "PGARImageFeatureDetection.h"
 
 static const NSString * PGWatermarkEmbedderDomainMetar = @"com.hp.sprocket.watermarkembedder.metar";
 static const NSInteger kTotalAuthRetries = 3;
@@ -38,7 +38,7 @@ static const NSInteger kMiniumTagsInLocalDb = 5;
     operation.currentAuthRetry = 0;
     
     if ([PGLinkSettings videoAREnabled]) {
-        PGARImageProcessor *arProcessor = [[PGARImageProcessor alloc] init];
+        PGARImageFeatureDetection *arProcessor = [[PGARImageFeatureDetection alloc] init];
         PGMetarMedia *metadata = operationData.metadata;
         
         PGMetarArtifact *ORBArtifact;

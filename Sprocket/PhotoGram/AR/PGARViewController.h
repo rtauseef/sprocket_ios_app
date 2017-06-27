@@ -11,18 +11,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
 #import "PGARLiveProcessor.h"
-#import "PGMetarArtifact.h"
 #import "PGMetarMedia.h"
 
-@interface PGOverlayCameraViewController : UIViewController
+@interface PGARViewController : UIViewController <PGARLiveProcessorDelegate>
 
-@property (nonatomic, weak) UIImagePickerController *pickerReference;
-
-- (void) stopScanning;
-- (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
-- (PGARLiveProcessor *) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andMedia:(PGMetarMedia *)media;
+@property (assign, nonatomic) SCNMatrix4 projection;
+@property (strong, nonatomic) PGMetarMedia *media;
 
 @end

@@ -43,7 +43,8 @@
 }
 
 + (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-    [[UAirship push] application:application didRegisterUserNotificationSettings:notificationSettings];
+    [[UAirship push] updateAuthorizedNotificationTypes];
+    [application registerForRemoteNotifications];
 }
 
 + (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {

@@ -369,14 +369,6 @@ static GTMSessionFetcherTestBlock GTM_NULLABLE_TYPE gGlobalTestBlock;
   [self beginFetchMayDelay:YES mayAuthorize:YES];
 }
 
-// Begin fetching the URL for a retry fetch. The delegate and completion handler
-// are already provided, and do not need to be copied.
-- (void)beginFetchForRetry {
-  GTMSessionCheckNotSynchronized(self);
-
-  [self beginFetchMayDelay:YES mayAuthorize:YES];
-}
-
 - (GTMSessionFetcherCompletionHandler)completionHandlerWithTarget:(GTM_NULLABLE_TYPE id)target
                                                 didFinishSelector:(GTM_NULLABLE_TYPE SEL)finishedSelector {
   GTMSessionFetcherAssertValidSelector(target, finishedSelector, @encode(GTMSessionFetcher *),
@@ -1889,6 +1881,8 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
 - (void)retryFetch {
   [self stopFetchReleasingCallbacks:NO];
 
+  GTMSessionFetcherCompletionHandler completionHandler;
+
   // A retry will need a configuration with a fresh session identifier.
   @synchronized(self) {
     GTMSessionMonitorSynchronized(self);
@@ -1903,9 +1897,11 @@ NSData * GTM_NULLABLE_TYPE GTMDataFromInputStream(NSInputStream *inputStream, NS
       // the service's old one has become invalid.
       _session = nil;
     }
+
+    completionHandler = _completionHandler;
   }  // @synchronized(self)
 
-  [self beginFetchForRetry];
+  [self beginFetchWithCompletionHandler:completionHandler];
 }
 
 - (BOOL)waitForCompletionWithTimeout:(NSTimeInterval)timeoutInSeconds {
