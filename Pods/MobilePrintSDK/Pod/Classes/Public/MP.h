@@ -630,7 +630,7 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
 
 /*!
  * @abstract Indicates whether a single sprocket is paired and needs to be updated
- * @discussion This call will result in a call to the delegate's didRefreshMantaInfo:error: function
+ * @discussion This call will result in a call to the delegate's didRefreshSprocketInfo:error: function
  * @param delegate An object that implements the MPSprocketDelegate protocol.  It's didReceiveSprocketBatteryLevel: and didCompareSprocketWithLatestFirmwareVersion:batteryLevel:needsUpgrade: function will be called once the check has been completed.
  */
 - (void)checkSprocketForUpdates:(id<MPSprocketDelegate>)delegate;
@@ -640,6 +640,19 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
  * @param viewController The UIViewController to host the reflash progress view
  */
 - (void)reflashBluetoothDevice:(UIViewController *)viewController;
+
+/*!
+ * @abstract Causes the software to always show that devices need a firmware upgrade.
+ * @return YES if the software is configured to always show that a device needs a firmware upgrade, NO otherwise.
+ */
+- (BOOL)forceFirmwareUpdates;
+
+/*!
+ * @abstract Causes a reflash of the first paired sprocket.
+ * @param force If YES, causes the software to always show that devices need a firmware upgrade.
+ *   If NO, causes the software to accurately assess whether or not a device needs a firmware upgrade.
+ */
+- (void)setForceFirmwareUpdates:(BOOL)force;
 
 /*!
  * @abstract Causes a metric value to be obfuscated before it is posted to the server.

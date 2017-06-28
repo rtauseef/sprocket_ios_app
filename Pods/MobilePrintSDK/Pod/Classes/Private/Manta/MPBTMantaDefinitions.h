@@ -10,8 +10,10 @@
 // the license agreement.
 //
 
-#ifndef MPBTSprocketDefinitions_h
-#define MPBTSprocketDefinitions_h
+#ifndef MPBTMantaDefinitions_h
+#define MPBTMantaDefinitions_h
+
+#import "MPBTSprocketDefinitions.h"
 
 typedef enum {
     MantaAutoExposureOff = 0x00,
