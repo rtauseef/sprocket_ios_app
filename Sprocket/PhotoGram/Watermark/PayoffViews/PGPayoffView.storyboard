@@ -6,8 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HPSimplified_Rg.ttf">
+            <string>HPSimplified-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Payoff View Wikipedia View Controller-->
         <scene sceneID="kNU-qx-sul">
@@ -284,6 +290,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWQ-pj-JbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-165.21739130434784" y="-175.27173913043481"/>
+        </scene>
+        <!--Payoff View Wikipedia Dropdown View Controller-->
+        <scene sceneID="YDS-Wy-Aua">
+            <objects>
+                <viewController id="RSq-a7-27g" userLabel="Payoff View Wikipedia Dropdown View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pzX-8E-xm9"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Id-bq-3LB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LbJ-Cc-itZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="referenceBook" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-oM-3g2">
+                                <rect key="frame" x="176" y="19" width="62" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="I6C-HR-tXQ"/>
+                                    <constraint firstAttribute="height" constant="62" id="dUJ-t4-XHN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More from Wikipedia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsI-EL-OPD">
+                                <rect key="frame" x="102" y="93" width="211" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="211" id="bx1-5W-Yud"/>
+                                    <constraint firstAttribute="height" constant="21" id="exr-kE-Rkb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tsI-EL-OPD" firstAttribute="centerX" secondItem="LbJ-Cc-itZ" secondAttribute="centerX" id="6k0-g7-TVh"/>
+                            <constraint firstItem="jAv-oM-3g2" firstAttribute="centerX" secondItem="LbJ-Cc-itZ" secondAttribute="centerX" id="SIU-Ee-e5K"/>
+                            <constraint firstItem="jAv-oM-3g2" firstAttribute="top" secondItem="LbJ-Cc-itZ" secondAttribute="topMargin" constant="19" id="vuF-7U-Pt7"/>
+                            <constraint firstItem="tsI-EL-OPD" firstAttribute="top" secondItem="jAv-oM-3g2" secondAttribute="bottom" constant="12" id="web-ds-ekh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubz-eV-Ex8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556.52173913043487" y="-175.27173913043481"/>
         </scene>
     </scenes>
     <resources>

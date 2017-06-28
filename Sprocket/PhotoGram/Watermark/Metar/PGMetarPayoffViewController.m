@@ -44,7 +44,8 @@
 @property (weak, nonatomic) IBOutlet UIView *reviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
 @property (strong, nonatomic) PGMetarMedia *metarMedia;
-@property (weak, nonatomic) IBOutlet UIImageView *wikipediaTitleImage;
+@property (weak, nonatomic) IBOutlet UIView *wikipediaTitleView;
+
 
 - (IBAction)openExternalButtonTapped:(id)sender;
 - (IBAction)thumbsUpButtonTapped:(id)sender;
@@ -99,9 +100,9 @@
     if (view == currentVc) {
         if ([view isKindOfClass:[PGPayoffViewWikipediaViewController class]]) {
             self.currentViewLabel.hidden = YES;
-            self.wikipediaTitleImage.hidden = NO;
+            self.wikipediaTitleView.hidden = NO;
         } else {
-            self.wikipediaTitleImage.hidden = YES;
+            self.wikipediaTitleView.hidden = YES;
             self.currentViewLabel.text = name;
             self.currentViewLabel.hidden = NO;
         }
@@ -346,6 +347,37 @@
         self.externalPageButton.hidden = YES;
     }
 }
+
+- (IBAction)tapDropDownButton:(id)sender {
+    /*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+    self.albumsViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGSelectAlbumDropDownViewController"];
+    self.albumsViewController.delegate = self;
+    self.albumsViewController.provider = provider;
+    
+    CGRect bounds = self.view.bounds;
+    CGRect frameUp = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
+    CGRect frameDown = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+    
+    self.dropDownContainerView = [[UIView alloc] initWithFrame:frameUp];
+    self.dropDownContainerView.backgroundColor = [UIColor blackColor];
+    
+    [self.navigationController.topViewController addChildViewController:self.albumsViewController];
+    self.albumsViewController.view.frame = CGRectMake(0, 0, self.dropDownContainerView.bounds.size.width, self.dropDownContainerView.bounds.size.height - 2);
+    
+    [self.dropDownContainerView addSubview:self.albumsViewController.view];
+    [self.navigationController.topViewController.view addSubview:self.dropDownContainerView];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+         usingSpringWithDamping:1.0
+          initialSpringVelocity:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.dropDownContainerView.frame = frameDown;
+                     }
+                     completion:nil];*/
+}
+
 
 #pragma mark UIPageViewController data source
 
