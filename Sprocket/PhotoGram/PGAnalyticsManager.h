@@ -113,6 +113,7 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackOpenAppSettings;
 - (void)trackOpenPrivacy;
 - (void)trackOpenBuyPaper;
+- (void)trackCustomStickerConfirm:(BOOL)confirmed;
 - (void)trackHelpLinksActivity:(NSString * _Nonnull)action;
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId;

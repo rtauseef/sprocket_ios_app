@@ -18,6 +18,7 @@
 #import "UIFont+Style.h"
 #import "PGTermsAttributedLabel.h"
 #import "UIViewController+Trackable.h"
+#import "PGAnalyticsManager.h"
 
 #import <GPUImage/GPUImage.h>
 #import <AVFoundation/AVFoundation.h>
@@ -119,10 +120,12 @@ CGSize const kThumbnailSize = { 100, 100 };
 #pragma mark - Events
 
 - (IBAction)cancelButtonTapped:(id)sender {
+    [[PGAnalyticsManager sharedManager] trackCustomStickerConfirm:NO];
     self.saveMode = NO;
 }
 
 - (IBAction)saveButtonTapped:(id)sender {
+    [[PGAnalyticsManager sharedManager] trackCustomStickerConfirm:YES];
     [self saveSticker];
 }
 
@@ -150,6 +153,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 - (IBAction)infoButtonTapped:(id)sender
 {
+    [[PGAnalyticsManager sharedManager] trackScreenViewEvent:@"Custom Sticker Tutorial"];
     [self playVideo];
 }
 
