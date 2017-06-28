@@ -726,7 +726,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.imageSavedLabel.text = NSLocalizedString(@"Saved to Camera Roll", nil);
+                    self.imageSavedLabel.text = NSLocalizedString(@"Saved to sprocket folder", nil);
                     
                     [UIView animateWithDuration:0.5F animations:^{
                         [self showImageSavedView:YES];
