@@ -72,7 +72,7 @@
 
 @implementation PGCustomStickerViewController
 
-float const kPGCustomStickerVerticalOffset = 50;
+float const kPGCustomStickerVerticalOffset = 120;
 float const kPGCustomerStickerThreshold = 0.42;
 int const kPGCustomStickerClosingRadius = 1;
 int const kPGCustomStickerErosionRadius = 4;

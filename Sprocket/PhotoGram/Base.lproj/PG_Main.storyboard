@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1358,46 +1358,7 @@ in the “More” menu when sharing.</string>
                                                         <attributes>
                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <font key="NSFont" size="19" name="HelveticaNeue"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                <tabStops>
-                                                                    <textTab alignment="left" location="28">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="56">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="84">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="112">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="140">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="168">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="196">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="224">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="252">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="280">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="308">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="336">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                </tabStops>
-                                                            </paragraphStyle>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -3706,32 +3667,32 @@ printer and app support.</string>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcx-Qo-v87">
-                                <rect key="frame" x="60" y="156" width="255" height="255"/>
+                                <rect key="frame" x="60" y="90" width="255" height="255"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qcx-Qo-v87" secondAttribute="height" id="lLi-0F-qA1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the frame with your drawing and tap the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxk-oG-sDQ">
-                                <rect key="frame" x="60" y="451" width="255" height="47"/>
+                                <rect key="frame" x="60" y="385" width="255" height="47"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This material may be protected by copyright law. By continuing, you agree to the HP &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avz-YY-2mv" userLabel="Legal Label" customClass="PGTermsAttributedLabel">
-                                <rect key="frame" x="26" y="605.5" width="323" height="31.5"/>
+                                <rect key="frame" x="26" y="610.5" width="323" height="31.5"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWO-av-AJ9">
-                                <rect key="frame" x="60" y="451" width="255" height="0.0"/>
+                                <rect key="frame" x="60" y="380" width="255" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70q-mB-4xA" userLabel="Yes Button">
-                                <rect key="frame" x="207.5" y="471" width="100" height="40"/>
+                                <rect key="frame" x="207.5" y="400" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="IxY-w8-JI0"/>
                                     <constraint firstAttribute="height" constant="40" id="Zb5-RK-Ay0"/>
@@ -3751,7 +3712,7 @@ printer and app support.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-3h-2iw" userLabel="No Button">
-                                <rect key="frame" x="67.5" y="471" width="100" height="40"/>
+                                <rect key="frame" x="67.5" y="400" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="0h9-IO-vwG"/>
                                     <constraint firstAttribute="height" constant="40" id="GE0-Hz-FnA"/>
@@ -3828,28 +3789,31 @@ printer and app support.</string>
                             <constraint firstItem="b7n-Cn-BSm" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="4cF-fu-jac"/>
                             <constraint firstAttribute="trailingMargin" secondItem="avz-YY-2mv" secondAttribute="trailing" constant="10" id="4gm-Yg-b2Y"/>
                             <constraint firstItem="dkv-a2-8va" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" id="4mo-4a-JsJ"/>
-                            <constraint firstItem="qcx-Qo-v87" firstAttribute="centerY" secondItem="fmJ-kE-8Mo" secondAttribute="centerY" constant="-50" id="83z-AE-EAh"/>
+                            <constraint firstItem="qcx-Qo-v87" firstAttribute="centerY" relation="greaterThanOrEqual" secondItem="fmJ-kE-8Mo" secondAttribute="centerY" constant="-120" id="83z-AE-EAh"/>
                             <constraint firstItem="Lbg-z7-W15" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="AKH-PW-E7e"/>
                             <constraint firstItem="70q-mB-4xA" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" constant="70" id="ASM-58-UYq"/>
+                            <constraint firstItem="JWO-av-AJ9" firstAttribute="top" secondItem="qcx-Qo-v87" secondAttribute="bottom" constant="35" id="BPw-n3-8qX"/>
                             <constraint firstItem="nO2-Xg-Yx2" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="C94-l1-WKl"/>
-                            <constraint firstItem="2Lg-3h-2iw" firstAttribute="top" secondItem="JWO-av-AJ9" secondAttribute="bottom" constant="20" id="CRB-NB-cud"/>
-                            <constraint firstItem="70q-mB-4xA" firstAttribute="top" secondItem="JWO-av-AJ9" secondAttribute="bottom" constant="20" id="DV6-eb-Y4G"/>
                             <constraint firstAttribute="leading" secondItem="Lbg-z7-W15" secondAttribute="leading" id="Eo5-nh-KVF"/>
+                            <constraint firstItem="avz-YY-2mv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2Lg-3h-2iw" secondAttribute="bottom" priority="750" constant="30" id="F3f-NU-gJq"/>
                             <constraint firstAttribute="trailing" secondItem="nO2-Xg-Yx2" secondAttribute="trailing" id="NCn-Mw-jPu"/>
                             <constraint firstAttribute="trailing" secondItem="dkv-a2-8va" secondAttribute="trailing" id="PFD-QT-DdM"/>
+                            <constraint firstItem="qcx-Qo-v87" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" constant="70" id="PRG-vt-KcO"/>
                             <constraint firstItem="dkv-a2-8va" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="T6c-4W-joP"/>
-                            <constraint firstItem="JWO-av-AJ9" firstAttribute="top" secondItem="qcx-Qo-v87" secondAttribute="bottom" constant="40" id="TlQ-vc-ces"/>
+                            <constraint firstItem="avz-YY-2mv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="70q-mB-4xA" secondAttribute="bottom" priority="750" constant="30" id="dCO-fM-2Ns"/>
                             <constraint firstItem="qcx-Qo-v87" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" constant="60" id="fUT-bk-pX5"/>
                             <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="dkv-a2-8va" secondAttribute="bottom" id="fWD-Oz-vC2"/>
                             <constraint firstItem="b7n-Cn-BSm" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" id="gpi-qA-QeL"/>
                             <constraint firstItem="Uxk-oG-sDQ" firstAttribute="width" secondItem="qcx-Qo-v87" secondAttribute="width" id="hF2-Mh-abd"/>
+                            <constraint firstItem="70q-mB-4xA" firstAttribute="top" secondItem="JWO-av-AJ9" secondAttribute="bottom" constant="20" id="iEX-xG-qgm"/>
                             <constraint firstItem="2Lg-3h-2iw" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" constant="-70" id="imN-bU-2Nc"/>
                             <constraint firstAttribute="trailing" secondItem="Lbg-z7-W15" secondAttribute="trailing" id="kz4-WF-cY3"/>
                             <constraint firstItem="qcx-Qo-v87" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" id="nua-RS-Dns"/>
                             <constraint firstItem="Uxk-oG-sDQ" firstAttribute="centerX" secondItem="qcx-Qo-v87" secondAttribute="centerX" id="qxm-hR-dZh"/>
+                            <constraint firstItem="2Lg-3h-2iw" firstAttribute="top" secondItem="JWO-av-AJ9" secondAttribute="bottom" constant="20" id="rzu-kx-1IB"/>
                             <constraint firstItem="Uxk-oG-sDQ" firstAttribute="top" secondItem="qcx-Qo-v87" secondAttribute="bottom" constant="40" id="uBH-ap-1Uw"/>
                             <constraint firstItem="avz-YY-2mv" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leadingMargin" constant="10" id="uUL-Om-R4q"/>
-                            <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="avz-YY-2mv" secondAttribute="bottom" constant="30" id="xrX-E9-aOl"/>
+                            <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="avz-YY-2mv" secondAttribute="bottom" constant="25" id="xrX-E9-aOl"/>
                         </constraints>
                     </view>
                     <connections>
