@@ -23,5 +23,6 @@
 + (BOOL)savePhotos;
 + (void)setSavePhotos:(BOOL)save;
 + (BOOL)userPromptedToSavePhotos;
++ (void)promptToSavePhotos:(UIViewController *)viewController completion:(void(^)(BOOL savePhotos))completion;
 
 @end

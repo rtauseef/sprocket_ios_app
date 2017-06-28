@@ -18,7 +18,6 @@
 
 + (PGStickerManager *)sharedInstance;
 
-- (NSArray<IMGLYSticker *> *)imglyStickers;
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories;
 
 @end
