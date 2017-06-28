@@ -23,6 +23,7 @@
                 <outlet property="thumbsDownButton" destination="Vot-lh-dc2" id="LDp-hu-s07"/>
                 <outlet property="thumbsUpButton" destination="Kg0-SD-oef" id="tKu-TQ-RNh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wikipediaDropDownArrow" destination="MCI-jM-ElI" id="Q51-Lj-fcV"/>
                 <outlet property="wikipediaTitleView" destination="alm-if-fMp" id="Q19-BX-kyo"/>
             </connections>
         </placeholder>
@@ -183,11 +184,11 @@
                                 <constraint firstAttribute="height" constant="46" id="UnS-if-R7J"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-jM-ElI" userLabel="Wikipedia Drop Down Button">
-                            <rect key="frame" x="126" y="8" width="40" height="30"/>
+                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCI-jM-ElI" userLabel="Wikipedia Drop Down Button">
+                            <rect key="frame" x="126" y="8" width="20" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="0hT-0f-Gfo"/>
-                                <constraint firstAttribute="width" constant="40" id="mW5-bC-IuI"/>
+                                <constraint firstAttribute="width" constant="20" id="mW5-bC-IuI"/>
                             </constraints>
                             <state key="normal" image="menuDownArrow"/>
                             <connections>

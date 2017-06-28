@@ -21,8 +21,9 @@
 #import "HPPR.h"
 #import "PGMetarPayoffFeedbackViewController.h"
 #import "PGPayoffFeedbackDatabase.h"
+#import "PGWikipediaDropdownViewController.h"
 
-#define kPGReviewViewHeight 38
+static const NSUInteger kPGReviewViewHeight = 38;
 
 @interface PGMetarPayoffViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -45,6 +46,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
 @property (strong, nonatomic) PGMetarMedia *metarMedia;
 @property (weak, nonatomic) IBOutlet UIView *wikipediaTitleView;
+@property (strong, nonatomic) PGWikipediaDropdownViewController *dropDownViewController;
+@property (assign, nonatomic) BOOL wikipediaDropDownExpanded;
+@property (weak, nonatomic) IBOutlet UIButton *wikipediaDropDownArrow;
 
 
 - (IBAction)openExternalButtonTapped:(id)sender;
@@ -58,7 +62,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     if (self.metadata != nil && self.metadata.data != nil && [self.metadata.data objectForKey:kPGPayoffUUIDKey] != nil) {
         // resolve metadata
@@ -76,6 +79,7 @@
     
     self.reviewViewConstraint.constant = 0;
     self.reviewView.hidden = YES;
+    self.wikipediaDropDownExpanded = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -349,33 +353,75 @@
 }
 
 - (IBAction)tapDropDownButton:(id)sender {
-    /*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-    self.albumsViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGSelectAlbumDropDownViewController"];
-    self.albumsViewController.delegate = self;
-    self.albumsViewController.provider = provider;
-    
-    CGRect bounds = self.view.bounds;
-    CGRect frameUp = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
-    CGRect frameDown = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
-    
-    self.dropDownContainerView = [[UIView alloc] initWithFrame:frameUp];
-    self.dropDownContainerView.backgroundColor = [UIColor blackColor];
-    
-    [self.navigationController.topViewController addChildViewController:self.albumsViewController];
-    self.albumsViewController.view.frame = CGRectMake(0, 0, self.dropDownContainerView.bounds.size.width, self.dropDownContainerView.bounds.size.height - 2);
-    
-    [self.dropDownContainerView addSubview:self.albumsViewController.view];
-    [self.navigationController.topViewController.view addSubview:self.dropDownContainerView];
-    
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-         usingSpringWithDamping:1.0
-          initialSpringVelocity:0.0
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         self.dropDownContainerView.frame = frameDown;
-                     }
-                     completion:nil];*/
+    if (!self.wikipediaDropDownExpanded) {
+        
+        if (self.dropDownViewController == nil) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PGPayoffView" bundle:nil];
+            self.dropDownViewController = [storyboard instantiateViewControllerWithIdentifier:@"dropdownVc"];
+            
+            PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
+            if ([currentVc isKindOfClass:[PGPayoffViewWikipediaViewController class]]) {
+                PGPayoffViewWikipediaViewController *vcWiki = (PGPayoffViewWikipediaViewController *) currentVc;
+                [self.dropDownViewController setArticles:[vcWiki pageTitlesArray]];
+                self.dropDownViewController.delegate = vcWiki;
+                self.dropDownViewController.metarVc = self;
+            }
+        }
+        
+        CGRect bounds = self.paginationView.bounds;
+        CGRect frameUp = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
+        CGRect frameDown = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+        
+        self.dropDownViewController.view.frame = frameUp;
+        
+        [self.paginationView addSubview:self.dropDownViewController.view];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.wikipediaDropDownArrow.transform = CGAffineTransformMakeRotation(M_PI);
+        }];
+
+        [UIView animateWithDuration:0.5
+                              delay:0.0
+             usingSpringWithDamping:1.0
+              initialSpringVelocity:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.dropDownViewController.view.frame = frameDown;
+                         }
+                         completion:^(BOOL finished) {
+                             self.wikipediaDropDownExpanded = YES;
+                         }];
+    } else {
+        if (self.dropDownViewController) {
+            CGRect bounds = self.view.bounds;
+            CGRect frame = CGRectMake(0, 0 - bounds.size.height, bounds.size.width, bounds.size.height);
+   
+
+            [UIView animateWithDuration:0.5
+                                      delay:0.0
+                     usingSpringWithDamping:1.0
+                      initialSpringVelocity:0.0
+                                    options:UIViewAnimationOptionCurveEaseInOut
+                                 animations:^{
+                                     self.dropDownViewController.view.frame = frame;
+                                 } completion:^(BOOL finished) {
+                                     [self.dropDownViewController.view removeFromSuperview];
+                                     self.wikipediaDropDownExpanded = NO;
+                                 }];
+            
+            CGAffineTransform transform = CGAffineTransformIdentity;
+            
+            if (!CGAffineTransformIsIdentity(self.wikipediaDropDownArrow.transform)) {
+                transform = CGAffineTransformMakeRotation(-M_PI * 2);
+            }
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                self.wikipediaDropDownArrow.transform = transform;
+            } completion:^(BOOL finished) {
+                self.wikipediaDropDownArrow.transform = CGAffineTransformIdentity;
+            }];
+        }
+    }
 }
 
 

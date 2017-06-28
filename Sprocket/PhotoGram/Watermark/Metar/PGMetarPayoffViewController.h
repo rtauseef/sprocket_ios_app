@@ -21,5 +21,6 @@
 - (IBAction)closeButtonTapped:(id)sender;
 - (void) getMetadataFromMetar;
 - (void) updateCurrentViewLabel: (NSString *) name forView: (UIViewController *) view;
+- (IBAction)tapDropDownButton:(id)sender;
 
 @end

@@ -11,9 +11,11 @@
 //
 
 #import "PGPayoffViewBaseViewController.h"
+#import "PGWikipediaDropdownViewController.h"
 
-@interface PGPayoffViewWikipediaViewController : PGPayoffViewBaseViewController
+@interface PGPayoffViewWikipediaViewController : PGPayoffViewBaseViewController <PGWikipediaDropdownViewControllerDelegate>
 
 - (BOOL) metadataValidForCurrentLang;
-
+- (NSArray <NSString *>*)pageTitlesArray;
+   
 @end

@@ -159,6 +159,18 @@ static const CGFloat kTableViewMargin = 15;
     return nil;
 }
 
+- (NSArray <NSString *>*)pageTitlesArray {
+    NSMutableArray *titleArray = [NSMutableArray array];
+    
+    if (self.metadata != nil && self.metadata.location.content.wikipedia.pages) {
+        for (PGMetarPage *page in self.metadata.location.content.wikipedia.pages) {
+            [titleArray addObject:page.title];
+        }
+    }
+    
+    return titleArray;
+}
+
 - (BOOL) renderPageAtIndex: (NSInteger) index {
     if (self.metadata != nil) {
         NSArray *pages = self.metadata.location.content.wikipedia.pages;
@@ -444,6 +456,12 @@ heightForFooterInSection:(NSInteger)section{
     [self.tmpViewController dismissViewControllerAnimated:NO completion:^{
         self.tmpViewController = nil;
     }];
+}
+
+#pragma mark PGWikipediaDropdownViewControllerDelegate delegate
+
+- (void)didSelectArticle:(NSUInteger)pos {
+    [self renderPageAtIndex:pos];
 }
 
 @end
