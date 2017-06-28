@@ -23,6 +23,8 @@
 #import "PGFeatureFlag.h"
 #import "PGLinkSettings.h"
 
+NSString *kPGSettingsForceFirmwareUpgrade = @"kPGSettingsForceFirmwareUpgrade";
+
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
 
@@ -406,7 +408,12 @@ NSString * const kFeatureCodeLink = @"link";
                 [PGLinkSettings setLocalWatermarkEnabled:![PGLinkSettings localWatermarkEnabled]];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings localWatermarkEnabled]];
             } else if (kForceUpgradeIndex == selectedRow) {
-                [[MP sharedInstance] setForceFirmwareUpdates:![[MP sharedInstance] forceFirmwareUpdates]];
+                BOOL force = ![[MP sharedInstance] forceFirmwareUpdates];
+                
+                [[NSUserDefaults standardUserDefaults] setBool:force forKey:kPGSettingsForceFirmwareUpgrade];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+
+                [[MP sharedInstance] setForceFirmwareUpdates:force];
                 [self.tableView reloadData];
             }
         }
