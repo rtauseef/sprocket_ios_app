@@ -65,7 +65,6 @@ Feature: Check Paper size and Paper type
         And I check the os_type is "iOS"
         #And I check the device type is "x86_64"
         And I check the manufacturer is "Apple"
-        #And I check the os version
         #And I check the wifi ssid
         And I check the device brand is "Apple"
         And I check the product id is "com.hp.sprocket"
@@ -76,10 +75,13 @@ Feature: Check Paper size and Paper type
         And I check the printer_model is "HP sprocket"
         And I check the printer_name
         And I check the printer_id
+        And I check the os version
         And I check the number of copies is "1"
         And I check the content type is "Image" 
         And I check the user_paper_width_inches is "2"
         And I check the user_paper_height_inches is "3"
         And I check the language code is "en"
+        #And I check the print_queue_id is "null"
+        #And I check the custom data
         
         
