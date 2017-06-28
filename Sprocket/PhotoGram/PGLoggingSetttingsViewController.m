@@ -328,14 +328,12 @@ NSString * const kFeatureCodeLink = @"link";
         } else if (kForceUpgradeIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"forceUpgrade"];
             if (!cell) {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"forceUpgrade"];
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"forceUpgrade"];
             }
-            
-            if ([[MP sharedInstance] forceFirmwareUpdates]) {
-                cell.textLabel.text = @"DO NOT Force Firmware Upgrade";
-            } else {
-                cell.textLabel.text = @"Force Firmware Upgrade";
-            }
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.textLabel.text = @"Force Firmware Upgrade";
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[[MP sharedInstance] forceFirmwareUpdates]];
         }
         
          cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
