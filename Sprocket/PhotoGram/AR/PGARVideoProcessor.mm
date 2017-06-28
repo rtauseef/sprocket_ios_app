@@ -77,10 +77,14 @@ using namespace std;
         float h = dim.width * VIDEO_SCALE;
         float cx = w / 2.0f;
         float cy = h / 2.0f;
-        float VFOV = fieldOfView*2;
+        /*float VFOV = fieldOfView*2;
         float HFOV = ((VFOV)/cx)*cy;
         float fx = fabs(w/2.0 * tan(HFOV/180.0 * M_PI/2.0));
-        float fy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI/2.0));
+        float fy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI/2.0));*/
+        float VFOV = fieldOfView;
+        float HFOV = ((VFOV)/cx)*cy;
+        float fx = fabs(w/2.0 * tan(HFOV/180.0 * M_PI));
+        float fy = fx;
         
         _cameraIntrinsic = (Mat_<float>(3,3) << fx, 0, cx, 0, fy, cy, 0, 0, 1.0f);
         
