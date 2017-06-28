@@ -160,6 +160,10 @@ NSString * const kEventHelpLinksCategory        = @"Help Links";
 
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
 
+NSString * const kEventCustomStickerCategory  = @"Custom Sticker Confirm";
+NSString * const kEventCustomStickerActionYes = @"Yes";
+NSString * const kEventCustomStickerActionNo  = @"No";
+
 NSString * const kPhotoCollectionViewModeGrid = @"Grid";
 NSString * const kPhotoCollectionViewModeList = @"List";
 
@@ -367,6 +371,13 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
 {
     [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(1)];
+}
+
+- (void)trackCustomStickerConfirm:(BOOL)confirmed
+{
+    NSString *action = confirmed ? kEventCustomStickerActionYes : kEventCustomStickerActionNo;
+    
+    [self trackEvent:kEventCustomStickerCategory action:action label:nil value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
