@@ -12,10 +12,12 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * _Nonnull kPGSettingsForceFirmwareUpgrade;
+
 @interface PGLoggingSetttingsViewController : UITableViewController
 
-@property (strong, nonatomic) NSString *unlockCode;
+@property (strong, nonatomic) NSString * _Nullable unlockCode;
 
-- (BOOL)validCode:(NSString *)code;
+- (BOOL)validCode:(NSString *_Nullable)code;
 
 @end
