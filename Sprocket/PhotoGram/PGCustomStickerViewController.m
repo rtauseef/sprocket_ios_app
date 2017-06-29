@@ -72,7 +72,7 @@
 
 @implementation PGCustomStickerViewController
 
-float const kPGCustomStickerVerticalOffset = 50;
+const CGFloat kPGCustomStickerCameraCornerMargin = 8.0;
 float const kPGCustomerStickerThreshold = 0.42;
 int const kPGCustomStickerClosingRadius = 1;
 int const kPGCustomStickerErosionRadius = 4;
@@ -273,7 +273,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 {
     UIBezierPath *overlayPath = [UIBezierPath bezierPathWithRect:view.bounds];
     float width = view.bounds.size.width - 2.0 * kPGCustomStickerCameraInset;
-    float top = (view.bounds.size.height - width) / 2.0 - kPGCustomStickerVerticalOffset;
+    CGFloat top = self.resultImageView.frame.origin.y;
     UIBezierPath *transparentPath = [UIBezierPath bezierPathWithRect:CGRectMake(kPGCustomStickerCameraInset, top, width, width)];
     [overlayPath appendPath:transparentPath];
     [overlayPath setUsesEvenOddFillRule:YES];
@@ -289,7 +289,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 - (void)addCorners:(UIView *)view
 {
     float width = view.bounds.size.width - 2.0 * kPGCustomStickerCameraCornerInset;
-    float top = (view.bounds.size.height - width) / 2.0 - kPGCustomStickerVerticalOffset;
+    CGFloat top = self.resultImageView.frame.origin.y - kPGCustomStickerCameraCornerMargin;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     
@@ -482,13 +482,13 @@ CGSize const kThumbnailSize = { 100, 100 };
     if (cameraAspectRatio < viewAspectRatio) {
         float adjustedCameraHeight = containerWidth / cameraAspectRatio;
         x = kPGCustomStickerCameraInset / containerWidth;
-        y = ((adjustedCameraHeight - targetSize) / 2.0 - kPGCustomStickerVerticalOffset) / adjustedCameraHeight;
+        y = self.resultImageView.frame.origin.y / adjustedCameraHeight;
         width = targetSize / containerWidth;
         height = targetSize / adjustedCameraHeight;
     } else {
         float adjustedCameraWidth = containerHeight * cameraAspectRatio;
         x = (adjustedCameraWidth - targetSize) / 2.0 / adjustedCameraWidth;
-        y = ((containerHeight - targetSize) / 2.0 - kPGCustomStickerVerticalOffset) / containerHeight;
+        y = self.resultImageView.frame.origin.y / containerHeight;
         width = targetSize / adjustedCameraWidth;
         height = targetSize / containerHeight;
     }
