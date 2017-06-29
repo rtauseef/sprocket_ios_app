@@ -285,16 +285,13 @@ static const NSUInteger kMaxRecordingTime = 20;
     [self setupButtons];
 }
 
-- (IBAction)shutterTapped:(id)sender
-{
+- (IBAction)shutterTapped:(id)sender {
     if (!self.movieMode && !self.playbackMode) {
         if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateNone) {
             [[PGCameraManager sharedInstance] takePicture];
-        }
-        else if (self.shutterTimerRunning) {
+        } else if (self.shutterTimerRunning) {
             [self resetShutterButton];
-        }
-        else {
+        } else {
             [self triggerShutterTimer];
         }
     } else if (!self.movieMode && self.playbackMode) {
@@ -305,8 +302,8 @@ static const NSUInteger kMaxRecordingTime = 20;
     }
 }
 
-- (void) triggerShutterTimer {
-    [CATransaction begin]; {
+- (void)triggerShutterTimer {
+    [CATransaction begin];
         [CATransaction setCompletionBlock:^{
             if (self.shutterTimerRunning) {
                 [[PGCameraManager sharedInstance] takePicture];
@@ -324,7 +321,7 @@ static const NSUInteger kMaxRecordingTime = 20;
         rotationAnimation.repeatCount = 0;
         
         [self.shutterButton.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-    } [CATransaction commit];
+    [CATransaction commit];
 }
 
 - (void) updateTimeDisplay {
@@ -386,20 +383,14 @@ static const NSUInteger kMaxRecordingTime = 20;
     [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
 }
 
-- (void)configureShutterTimerButtonAndShutterButton
-{
-    if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateNone)
-    {
+- (void)configureShutterTimerButtonAndShutterButton {
+    if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateNone) {
         [self.timerButton setImage:[UIImage imageNamed:@"timer"] forState:UIControlStateNormal];
         [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
-    }
-    else if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateThree)
-    {
+    } else if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateThree) {
         [self.timerButton setImage:[UIImage imageNamed:@"timer3"] forState:UIControlStateNormal];
         [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
-    }
-    else if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateTen)
-    {
+    } else if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateTen) {
         [self.timerButton setImage:[UIImage imageNamed:@"timer10"] forState:UIControlStateNormal];
         [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
     }

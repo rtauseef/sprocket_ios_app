@@ -475,12 +475,16 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)toggleTimer
 {
-    if (self.shutterTimerDelayState == ShutterTimerDelayStateNone) {
-        self.shutterTimerDelayState = ShutterTimerDelayStateThree;
-    } else if (self.shutterTimerDelayState == ShutterTimerDelayStateThree) {
-        self.shutterTimerDelayState = ShutterTimerDelayStateTen;
-    } else if (self.shutterTimerDelayState == ShutterTimerDelayStateTen) {
-        self.shutterTimerDelayState = ShutterTimerDelayStateNone;
+    switch (self.shutterTimerDelayState) {
+        case ShutterTimerDelayStateNone:
+            self.shutterTimerDelayState = ShutterTimerDelayStateThree;
+            break;
+        case ShutterTimerDelayStateThree:
+            self.shutterTimerDelayState = ShutterTimerDelayStateTen;
+            break;
+        case ShutterTimerDelayStateTen:
+            self.shutterTimerDelayState = ShutterTimerDelayStateNone;
+            break;
     }
 }
 
