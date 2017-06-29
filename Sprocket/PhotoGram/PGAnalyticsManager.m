@@ -135,6 +135,11 @@ NSString * const kEventPrintQueuePrintCopiesAction = @"Print-Copies";
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 NSString * const kEventPrintQueueDeleteCopiesAction = @"Delete-Copies";
 
+NSString * const kEventPrintQueueMenuCategory = @"Print Queue_Menu";
+NSString * const kEventPrintQueuePreviewCategory = @"Print Queue_Preview";
+NSString * const kEventPrintQueueDeleteAllAction = @"Delete All";
+NSString * const kEventPrintQueuePrintAction = @"Print";
+
 NSString * const kEventPrintCategory    = @"Print";
 NSString * const kEventPrintAction      = @"Print";
 NSString * const kEventPrintButtonLabel = @"PrintButton";
@@ -366,6 +371,19 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     NSString *label = [NSString stringWithFormat:@"%@-%li", deviceId, (long)queueId];
 
     [self trackEvent:kEventPrintQueueCategory action:action label:label value:@(queueSize)];
+}
+
+- (void)trackPrintQueueModalAction:(NSString *)category queueId:(NSInteger)queueId numItemsDeleted:(NSUInteger)numItemsDeleted
+{
+    NSString *action = kEventPrintQueuePrintAction;
+    if (numItemsDeleted) {
+        action = kEventPrintQueueDeleteAllAction;
+    }
+
+    NSString *deviceId = [self userUniqueIdentifier];
+    NSString *label = [NSString stringWithFormat:@"%@-%li", deviceId, (long)queueId];
+
+    [self trackEvent:category action:action label:label value:[NSNumber numberWithUnsignedInteger:numItemsDeleted]];
 }
 
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
