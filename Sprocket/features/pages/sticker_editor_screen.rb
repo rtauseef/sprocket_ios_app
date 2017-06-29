@@ -21,7 +21,9 @@ class StickerEditorScreen < Calabash::IBase
     def selected_sticker
         "* id:'Fox_TN'"
     end
-    
+    def download    
+    "* id:'previewDownload'"
+    end
 
     def navigate
         unless current_page?

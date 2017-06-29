@@ -30,3 +30,9 @@ def remove_folder folder_name
   end
   sleep(WAIT_SCREENLOAD)
 end
+def select_rand_stic sticker_tab
+  stic_count=$sticker[sticker_tab].length
+  val= Random.rand(0...stic_count-1)
+  stic_id = "sticker_" + "#{val}"
+  return stic_id
+end    

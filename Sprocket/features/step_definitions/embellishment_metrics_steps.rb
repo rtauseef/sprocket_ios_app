@@ -42,3 +42,6 @@ Then(/^I verify "([^"]*)" of "([^"]*)" is "([^"]*)"$/) do |metrics_variable, met
     raise "Category verification failed!" unless compare == true
   end
 end
+Then(/^I verify "([^"]*)" of "([^"]*)"$/) do |metrics_variable, metrics_index|
+  macro %Q|I verify "#{metrics_variable}" of "#{metrics_index}" is "#{$stic_id}"|
+end

@@ -46,7 +46,7 @@ Feature: Check Paper size and Paper type
         Then I touch "Done"
         Then I touch "sprocket"
         And I touch "Printers"
-        Then I get the printer_id
+        Then I get the firmware version, printer_id and tmd_version
         Then I navigate back
         And I get the printer_name
         Then I touch "Done"
@@ -81,7 +81,11 @@ Feature: Check Paper size and Paper type
         And I check the user_paper_width_inches is "2"
         And I check the user_paper_height_inches is "3"
         And I check the language code is "en"
-        #And I check the print_queue_id is "null"
-        #And I check the custom data
+        And I check the print_queue_id is "null"
+        And I check the custom data
+        And I check the route taken is "print-metrics-test.twosmiles.com"
+        And I check the country code is "US"
+        And I check the card is "This column has been deprecated. Use the 'template_name' column instead."
+        And I check the category
         
         

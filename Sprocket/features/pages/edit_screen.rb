@@ -77,7 +77,9 @@ class EditScreen < Calabash::IBase
     def check
         "view marked:'editor-tool-apply-btn'"
     end
-
+def download    
+    "* id:'previewDownload'"
+    end
     def navigate
         unless current_page?
             preview_screen = go_to(GooglePreviewScreen)
