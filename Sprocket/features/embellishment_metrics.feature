@@ -33,8 +33,8 @@ Feature: Verify embellishment metrics
     And I wait for some seconds
     And I wait for some seconds
 	And I wait for some seconds
-	And I wait for some seconds
-    Then I am on the "CameraRoll Preview" screen
+	And I wait for some seconds   
+    #Then I am on the "CameraRoll Preview" screen
     When I tap "Download" button
 	Then I wait for some seconds
     Then Fetch metrics details
@@ -72,7 +72,7 @@ Feature: Verify embellishment metrics
     And I wait for some seconds
     And I wait for some seconds
     And I wait for some seconds
-    Then I am on the "CameraRoll Preview" screen
+    #Then I am on the "CameraRoll Preview" screen
     When I tap "Download" button
     Then I wait for some seconds
     Then Fetch metrics details

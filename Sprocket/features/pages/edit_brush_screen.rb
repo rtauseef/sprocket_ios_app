@@ -36,7 +36,7 @@ class BrushEditorScreen < Calabash::IBase
         "all view marked:'brush-color-tool-apply-btn'"
     end
     def size_slider
-        slider_val= Random.rand(5...90)
+        slider_val= Random.rand(5...85)
         return slider_val
     end
     def hardness_slider
