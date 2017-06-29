@@ -71,6 +71,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)setup
 {
+    self.shutterTimerDelayState = ShutterTimerDelayStateNone;
     self.isBackgroundCamera = NO;
     self.isFlashOn = NO;
     self.isCapturingStillImage = NO;
@@ -470,6 +471,17 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     [self configFlash:self.isFlashOn forDevice:device];
+}
+
+- (void)toggleTimer
+{
+    if (self.shutterTimerDelayState == ShutterTimerDelayStateNone) {
+        self.shutterTimerDelayState = ShutterTimerDelayStateThree;
+    } else if (self.shutterTimerDelayState == ShutterTimerDelayStateThree) {
+        self.shutterTimerDelayState = ShutterTimerDelayStateTen;
+    } else if (self.shutterTimerDelayState == ShutterTimerDelayStateTen) {
+        self.shutterTimerDelayState = ShutterTimerDelayStateNone;
+    }
 }
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure
