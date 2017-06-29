@@ -411,11 +411,24 @@ end
 
 Then(/^I set the value for "([^"]*)"$/) do |method_name|
     $slider_val = @current_page.send(method_name)
-    query("view:'imglyKit.TooltipSlider'",{setValue:$slider_val.to_i})
+    query("view:'imglyKit.TooltipSlider'",{setValue:$slider_val})
     sleep(STEP_PAUSE) 
 end
 
 Then(/^I verify the slider value$/) do 
   value = query("view:'imglyKit.TooltipSlider'",:value)[0]
-  raise "Slider value not set correctly!" unless value.to_i == $slider_val.to_i
+  puts "slide value:#{value}"
+  raise "Slider value not set correctly!" unless value.to_f == $slider_val.to_f
+end
+
+Then(/^I select a sticker from "([^"]*)"$/) do |sticker_tab|
+    $stic_id = select_rand_stic sticker_tab
+    macro %Q|I select "#{sticker_tab}" tab|
+    macro %Q|I select "#{$stic_id}" sticker|
+    macro %Q|I am on the "StickerOptionEditor" screen|
+end
+
+Then(/^I should see the photo with the sticker from "([^"]*)" tab$/) do |sticker_tab|
+    $sticker_tab = sticker_tab
+    macro %Q|I should see the photo with the "#{$stic_id}" sticker from "#{$sticker_tab}" tab|
 end

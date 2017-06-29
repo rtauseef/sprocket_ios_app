@@ -26,6 +26,7 @@ class StickerOptionEditorScreen < Calabash::IBase
     def redo
         "* id:'ic_redo_24pt'"
     end
+
     
     def navigate
         unless current_page?
