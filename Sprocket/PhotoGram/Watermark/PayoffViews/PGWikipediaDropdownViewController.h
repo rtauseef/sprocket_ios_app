@@ -11,16 +11,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PGPayoffMetadata.h"
+#import "PGMetarPayoffViewController.h"
 
-@interface PGMetarPayoffViewController : UIViewController
 
-@property (strong, nonatomic) PGPayoffMetadata *metadata;
-@property (strong, nonatomic) NSURL *externalLinkURL;
+@protocol PGWikipediaDropdownViewControllerDelegate <NSObject>
 
-- (IBAction)closeButtonTapped:(id)sender;
-- (void) getMetadataFromMetar;
-- (void) updateCurrentViewLabel: (NSString *) name forView: (UIViewController *) view;
-- (IBAction)tapDropDownButton:(id)sender;
+- (void) didSelectArticle: (NSUInteger) pos;
+
+@end
+
+@interface PGWikipediaDropdownViewController : UIViewController
+
+@property (strong, nonatomic) NSArray<NSString *> *articles;
+@property (weak, nonatomic) id<PGWikipediaDropdownViewControllerDelegate> delegate;
+@property (strong, nonatomic) PGMetarPayoffViewController* metarVc;
 
 @end

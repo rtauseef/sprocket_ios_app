@@ -10,12 +10,10 @@
 // the license agreement.
 //
 
-#import "PGPayoffViewBaseViewController.h"
-#import "PGWikipediaDropdownViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface PGPayoffViewWikipediaViewController : PGPayoffViewBaseViewController <PGWikipediaDropdownViewControllerDelegate>
+@interface PGWikipediaDropdownTableViewCell : UITableViewCell
 
-- (BOOL) metadataValidForCurrentLang;
-- (NSArray <NSString *>*)pageTitlesArray;
-   
+@property (weak, nonatomic) IBOutlet UILabel *articleNameLabel;
+
 @end

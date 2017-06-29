@@ -2864,6 +2864,7 @@
 		EDA2129F1F02C9D400B6AFE4 /* myscene.scn in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129B1F02C9D400B6AFE4 /* myscene.scn */; };
 		EDA212A01F02C9D400B6AFE4 /* particles.scnp in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129C1F02C9D400B6AFE4 /* particles.scnp */; };
 		EDA212A11F02C9D400B6AFE4 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129D1F02C9D400B6AFE4 /* spark.png */; };
+		EDB036131F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */; };
 		EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */; };
 		EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */; };
 		EDD33F651EF9CE520028DBC8 /* PGMetarArtifactEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0C1EF9CE520028DBC8 /* PGMetarArtifactEmotion.m */; };
@@ -2912,6 +2913,7 @@
 		EDD33F911EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F5E1EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m */; };
 		EDD33F921EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F601EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m */; };
 		EDD33F931EF9CE520028DBC8 /* PGWatermarkProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F621EF9CE520028DBC8 /* PGWatermarkProcessor.m */; };
+		EDE0EA931F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE0EA921F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m */; };
 		F134BC3D1AC6067A007D892B /* PGLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3A1AC6067A007D892B /* PGLogFormatter.m */; };
 		F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC3C1AC6067A007D892B /* PGLogger.m */; };
 		F134BC471ACAF9E5007D892B /* PGLoggingSetttingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F134BC461ACAF9E5007D892B /* PGLoggingSetttingsViewController.m */; };
@@ -5053,6 +5055,8 @@
 		EDA2129B1F02C9D400B6AFE4 /* myscene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = myscene.scn; path = AR/myscene.scn; sourceTree = "<group>"; };
 		EDA2129C1F02C9D400B6AFE4 /* particles.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; name = particles.scnp; path = AR/particles.scnp; sourceTree = "<group>"; };
 		EDA2129D1F02C9D400B6AFE4 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = AR/spark.png; sourceTree = "<group>"; };
+		EDB036111F0453BD004930FF /* PGWikipediaDropdownTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWikipediaDropdownTableViewCell.h; sourceTree = "<group>"; };
+		EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaDropdownTableViewCell.m; sourceTree = "<group>"; };
 		EDD33F071EF9CE520028DBC8 /* PGMetarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarAPI.h; sourceTree = "<group>"; };
 		EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMetarAPI.m; sourceTree = "<group>"; };
 		EDD33F091EF9CE520028DBC8 /* PGMetarArtifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarArtifact.h; sourceTree = "<group>"; };
@@ -5142,6 +5146,8 @@
 		EDD33F601EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWatermarkOperationHPMetar.m; path = Watermark/PGWatermarkOperationHPMetar.m; sourceTree = "<group>"; };
 		EDD33F611EF9CE520028DBC8 /* PGWatermarkProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGWatermarkProcessor.h; path = Watermark/PGWatermarkProcessor.h; sourceTree = "<group>"; };
 		EDD33F621EF9CE520028DBC8 /* PGWatermarkProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PGWatermarkProcessor.m; path = Watermark/PGWatermarkProcessor.m; sourceTree = "<group>"; };
+		EDE0EA911F041F7B00F1D0EC /* PGWikipediaDropdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWikipediaDropdownViewController.h; sourceTree = "<group>"; };
+		EDE0EA921F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaDropdownViewController.m; sourceTree = "<group>"; };
 		F121972C301E8D6B2E5E8CE0 /* Pods-Sprocket Print.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.testflight.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.testflight.xcconfig"; sourceTree = "<group>"; };
 		F129DE5719EF11EA00260D90 /* InstagramLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "InstagramLogo@2x.png"; path = "Resources/Images/Icons/InstagramLogo@2x.png"; sourceTree = "<group>"; };
 		F134BC381AC6067A007D892B /* PGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PGLog.h; path = Logging/PGLog.h; sourceTree = "<group>"; };
@@ -7426,6 +7432,10 @@
 				EDD33F4A1EF9CE520028DBC8 /* PGWikipediaImageCollectionViewCell.m */,
 				EDD33F4B1EF9CE520028DBC8 /* PGWikipediaTableViewCell.h */,
 				EDD33F4C1EF9CE520028DBC8 /* PGWikipediaTableViewCell.m */,
+				EDE0EA911F041F7B00F1D0EC /* PGWikipediaDropdownViewController.h */,
+				EDE0EA921F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m */,
+				EDB036111F0453BD004930FF /* PGWikipediaDropdownTableViewCell.h */,
+				EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */,
 			);
 			name = PayoffViews;
 			path = Watermark/PayoffViews;
@@ -11102,6 +11112,7 @@
 				EDD33F651EF9CE520028DBC8 /* PGMetarArtifactEmotion.m in Sources */,
 				EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */,
 				F24DA7CD1EAEA0F500C24AAB /* PGLinkReaderViewController.m in Sources */,
+				EDB036131F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m in Sources */,
 				E31BE41F19ED91E1006B78BB /* PGFacebookLandingPageViewController.m in Sources */,
 				F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */,
 				E34D5067199AB87B006D80E0 /* main.m in Sources */,
@@ -11112,6 +11123,7 @@
 				F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */,
 				EDD33F821EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m in Sources */,
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
+				EDE0EA931F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F230516D1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,
 				F22F12251E522FF300753C5A /* PGFeatureFlag.m in Sources */,
