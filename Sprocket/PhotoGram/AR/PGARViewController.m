@@ -15,6 +15,7 @@
 #import "PGARLiveProcessor.h"
 #import "PGCameraManager.h"
 #import "PGARVideoProcessor.h"
+#import "PGLinkSettings.h"
 
 @interface PGARViewController ()
 
@@ -66,7 +67,9 @@
     plane.geometry.firstMaterial.diffuse.contents = self.layer;
     particles.emitterShape = pgeo.geometry;
 
-    [[self.node childNodeWithName:@"geo_holder" recursively:YES] addParticleSystem:particles];
+    if ([PGLinkSettings videoARParticlesEnabled]) {
+        [[self.node childNodeWithName:@"geo_holder" recursively:YES] addParticleSystem:particles];
+    }
 }
 
 - (void) setVideoWithAsset: (PHAsset *) asset {

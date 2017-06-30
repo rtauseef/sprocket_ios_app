@@ -31,4 +31,7 @@ extern NSString * const kPGLinkSettingsChangedNotification;
 + (BOOL)videoAREnabled;
 + (void)setVideoAREnabled:(BOOL)enabled;
 
++ (BOOL)videoARParticlesEnabled;
++ (void)setVideoARParticlesEnabled:(BOOL)enabled;
+
 @end

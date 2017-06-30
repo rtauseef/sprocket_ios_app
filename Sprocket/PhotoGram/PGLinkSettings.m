@@ -18,6 +18,7 @@ static NSString * const kPGLinkSettingsVideoPrintEnabled = @"kPGVideoPrintEnable
 static NSString * const kPGLinkSettingsFakePrintEnabled = @"kPGFakePrintEnabled";
 static NSString * const kPGLinkSettingsLocalWatermarkEnabled = @"kPGLocalWatermarkEnabled";
 static NSString * const kPGLinkSettingsVideoAREnabled = @"kPGVideoAREnabled";
+static NSString * const kPGLinkSettingsVideoARParticlesEnabled = @"kPGVideoARParticlesEnabled";
 
 @implementation PGLinkSettings
 
@@ -77,6 +78,17 @@ static NSString * const kPGLinkSettingsVideoAREnabled = @"kPGVideoAREnabled";
     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsVideoAREnabled];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsVideoAREnabled object:self];
+}
+
++ (BOOL)videoARParticlesEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsVideoARParticlesEnabled];
+    return enabled && enabled.boolValue;
+}
+
++ (void)setVideoARParticlesEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsVideoARParticlesEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsVideoARParticlesEnabled object:self];
 }
 
 @end
