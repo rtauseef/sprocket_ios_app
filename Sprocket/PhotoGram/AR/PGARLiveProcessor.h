@@ -24,7 +24,7 @@
 
 @interface PGARLiveProcessor : NSObject
 
-- (instancetype) initWithArtifact: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim;
+- (instancetype) initWithArtifact: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andRenderViewSize: (CGSize) renderSize;
 - (void) processSampleBuffer:(CMSampleBufferRef) sampleBuffer;
 - (SCNMatrix4) getProjection;
 

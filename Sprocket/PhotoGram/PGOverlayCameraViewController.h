@@ -23,6 +23,6 @@
 
 - (void) stopScanning;
 - (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset;
-- (PGARLiveProcessor *) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andMedia:(PGMetarMedia *)media;
+- (void) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andMedia: (PGMetarMedia *) media completion:(void(^)(PGARLiveProcessor* processor)) completion;
 
 @end

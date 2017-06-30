@@ -20,7 +20,8 @@
 @property BOOL enableFilter;
 @property (assign, nonatomic) SCNMatrix4 projection;
 
-- (instancetype)initWithArtifactSize:(CGSize)artifactSize videoSize:(CGSize)dim fieldOfView:(float)fieldOfView keyPoints:(NSData *)keyPoints descriptors:(NSData *)descriptors;
+- (instancetype)initWithArtifactSize:(CGSize)artifactSize videoSize:(CGSize)dim renderSize:(CGSize) renderSize fieldOfView:(float)fieldOfView keyPoints:(NSData *)keyPoints descriptors:(NSData *)descriptors;
 - (void)runTracker:(CMSampleBufferRef)sampleBuffer completion:(nullable void (^)(PGARVideoProcessorResult *res)) completion;
++(CGRect) calcTargetVideoRect:(CGSize) videoSize inView:(CGSize) viewSize;
 
 @end

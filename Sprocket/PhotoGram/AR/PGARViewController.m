@@ -14,6 +14,7 @@
 #import <GLKit/GLKit.h>
 #import "PGARLiveProcessor.h"
 #import "PGCameraManager.h"
+#import "PGARVideoProcessor.h"
 
 @interface PGARViewController ()
 
@@ -163,13 +164,8 @@
         return;
     }
     
-    CGSize bounds = self.targetView.bounds.size;
-    
     CIImage * image = result.videoFrame;
-    CGRect extent = image.extent;
-    CGRect rect = AVMakeRectWithAspectRatioInsideRect(bounds, extent);
-    CIImage * f = [image imageByCroppingToRect:rect];
-    //f = [f imageByApplyingTransform:CGAffineTransformMakeTranslation(0, -f.extent.origin.y)];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         if(self.targetView.context != [EAGLContext currentContext] ) {
             [EAGLContext setCurrentContext:self.targetView.context];
@@ -178,9 +174,8 @@
         
         [self renderVideoFrame];
         
-        CGRect b = CGRectMake(0,0,self.targetView.drawableWidth,self.targetView.drawableHeight);
-        
-        [self.ciContext drawImage:f inRect:b fromRect:f.extent];
+        CGRect calc = [PGARVideoProcessor calcTargetVideoRect:image.extent.size inView:CGSizeMake(self.targetView.drawableWidth,self.targetView.drawableHeight)];
+        [self.ciContext drawImage:image inRect:calc fromRect:image.extent];
     
         [SCNTransaction begin];
         [SCNTransaction setDisableActions:YES];

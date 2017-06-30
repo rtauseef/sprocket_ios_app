@@ -730,22 +730,25 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         CMFormatDescriptionRef fDesc = format.formatDescription;
         CGSize dim = CMVideoFormatDescriptionGetPresentationDimensions(fDesc, true, true);
         
-        self.arProcessor = [self.cameraOverlay startARExperienceWithORB: artifact andVideoFieldOfView:format.videoFieldOfView andVideoSize:dim andMedia:media];
-        
-        if (self.arProcessor) {
-            self.videoDataOutput = [AVCaptureVideoDataOutput new];
-            NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
-                                           };
-            self.videoDataOutput.videoSettings = newSettings;
-            [self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
-            dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-            [self.videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+       [self.cameraOverlay startARExperienceWithORB: artifact andVideoFieldOfView:format.videoFieldOfView andVideoSize:dim andMedia:media completion:^(PGARLiveProcessor *processor) {
             
-            if ([self.session canAddOutput:self.videoDataOutput]) {
-                [self.session addOutput:self.videoDataOutput];
-                [[self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:AVCaptureVideoOrientationPortrait];
-            }
-        }
+           self.arProcessor = processor;
+
+           if (self.arProcessor) {
+               self.videoDataOutput = [AVCaptureVideoDataOutput new];
+               NSDictionary *newSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA),
+                                              };
+               self.videoDataOutput.videoSettings = newSettings;
+               [self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+               dispatch_queue_t videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+               [self.videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
+               
+               if ([self.session canAddOutput:self.videoDataOutput]) {
+                   [self.session addOutput:self.videoDataOutput];
+                   [[self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:AVCaptureVideoOrientationPortrait];
+               }
+           }
+        }];
     });
 }
 

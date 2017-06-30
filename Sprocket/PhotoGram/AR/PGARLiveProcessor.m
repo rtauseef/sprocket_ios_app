@@ -21,11 +21,11 @@
 
 @implementation PGARLiveProcessor
 
-- (instancetype)initWithArtifact: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim
+- (instancetype)initWithArtifact: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andRenderViewSize: (CGSize) renderSize
 {
     self = [super init];
     if (self) {
-        self.videoProcessor = [[PGARVideoProcessor alloc] initWithArtifactSize:artifact.bounds.size videoSize:dim fieldOfView:fieldOfView keyPoints:artifact.keypoints descriptors:artifact.descriptors];
+        self.videoProcessor = [[PGARVideoProcessor alloc] initWithArtifactSize:artifact.bounds.size videoSize:dim renderSize:renderSize fieldOfView:fieldOfView keyPoints:artifact.keypoints descriptors:artifact.descriptors];
     }
     return self;
 }

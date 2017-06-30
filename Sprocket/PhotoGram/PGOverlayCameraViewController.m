@@ -331,20 +331,25 @@ static const NSUInteger kMaxRecordingTime = 20;
     }
 }
 
-- (PGARLiveProcessor *) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andMedia: (PGMetarMedia *) media {
-    PGARLiveProcessor *processor = [[PGARLiveProcessor alloc] initWithArtifact: artifact andVideoFieldOfView: fieldOfView andVideoSize: dim];
+- (void) startARExperienceWithORB: (PGMetarArtifact *) artifact andVideoFieldOfView: (float) fieldOfView andVideoSize: (CGSize) dim andMedia: (PGMetarMedia *) media completion:(void(^)(PGARLiveProcessor* processor)) completion {
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
         PGARViewController *vc = [[PGARViewController alloc] initWithNibName:@"PGARViewController" bundle:nil];
-        processor.delegate = vc;
-        vc.projection = [processor getProjection];
         vc.media = media;
         
-        [self presentViewController:vc animated:NO completion:nil];
+        [self presentViewController:vc animated:NO completion:^{
+            CGSize renderSize = vc.view.bounds.size;
+            renderSize.width *= [[UIScreen mainScreen] scale];
+            renderSize.height *= [[UIScreen mainScreen] scale];
+            
+            PGARLiveProcessor *processor = [[PGARLiveProcessor alloc] initWithArtifact: artifact andVideoFieldOfView: fieldOfView andVideoSize: dim andRenderViewSize:renderSize];
+            processor.delegate = vc;
+            vc.projection = [processor getProjection];
+            completion(processor);
+        }];
     });
-    
-    return processor;
+
 }
 
 

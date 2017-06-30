@@ -53,7 +53,7 @@ static const float kFilterCoeffs[] = {1.0f,0.5f,0.25f};
 
 @implementation PGARVideoProcessor
 
-- (instancetype)initWithArtifactSize:(CGSize)artifactSize videoSize:(CGSize)dim fieldOfView:(float)fieldOfView keyPoints:(NSData *)keyPoints descriptors:(NSData *)descriptors
+- (instancetype)initWithArtifactSize:(CGSize)artifactSize videoSize:(CGSize)dim renderSize:(CGSize)renderSize fieldOfView:(float)fieldOfView keyPoints:(NSData *)keyPoints descriptors:(NSData *)descriptors
 {
     self = [super init];
     if (self) {
@@ -62,8 +62,8 @@ static const float kFilterCoeffs[] = {1.0f,0.5f,0.25f};
         for( int i = 0 ; i < FILTER_LEN; i++ ) {
             _filterWeight += kFilterCoeffs[i];
         }
-        
-        _feature = ORB::create(1000, 1.2f, 8, 31, 0, 2,ORB::HARRIS_SCORE, 31,20);
+    
+        _feature = ORB::create(500, 1.2f, 8, 31, 0, 2,ORB::HARRIS_SCORE, 31,20);
         //_matcher = new FlannBasedMatcher(new flann::LshIndexParams(5,24,2));
         _matcher = new BFMatcher(NORM_HAMMING,true);
         _loaded = NO;
@@ -86,26 +86,58 @@ static const float kFilterCoeffs[] = {1.0f,0.5f,0.25f};
         float h = dim.width * VIDEO_SCALE;
         float cx = w / 2.0f;
         float cy = h / 2.0f;
-        /*float VFOV = fieldOfView*2;
-        float HFOV = ((VFOV)/cx)*cy;
-        float fx = fabs(w/2.0 * tan(HFOV/180.0 * M_PI/2.0));
-        float fy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI/2.0));*/
         float VFOV = fieldOfView;
-        //float HFOV = ((VFOV)/cx)*cy;
-        float fy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI/2.0));
-        float fx = fy;
+        float HFOV = ((VFOV)/cx)*cy;
         
-        _cameraIntrinsic = (Mat_<float>(3,3) << fx, 0, cx, 0, fy, cy, 0, 0, 1.0f);
+        float ffx = fabs(w/2.0 * tan(HFOV/180.0 * M_PI));
+        float ffy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI));
+        float f;
+        if( h > w ) {
+            f = ffy;
+        } else {
+            f = ffx;
+        }
+        
+        _cameraIntrinsic = (Mat_<float>(3,3) << f, 0, cx, 0, f, cy, 0, 0, 1.0f);
         
         double zmax = 300;
         double zmin = 0.1;
+        
+        CGSize effectiveRenderSize;
+        CGSize sentVideoSize = CGSizeMake(w/VIDEO_SCALE,h/VIDEO_SCALE);
+        CGRect targetRect = [PGARVideoProcessor calcTargetVideoRect:sentVideoSize inView:renderSize];
+        CGFloat viewAspect = renderSize.height/renderSize.width;
+        
+        BOOL hx = targetRect.size.width == renderSize.width;
+        if( hx ) {
+            effectiveRenderSize.height = targetRect.size.height;
+            effectiveRenderSize.width = effectiveRenderSize.height /viewAspect;
+        } else {
+            effectiveRenderSize.width = targetRect.size.width;
+            effectiveRenderSize.height = effectiveRenderSize.width * viewAspect;
+        }
+        
+        CGFloat wprop = effectiveRenderSize.width/w;
+        CGFloat hprop = effectiveRenderSize.height/h;
+        
+        if( hx ) {
+            f *=  wprop;
+        } else {
+            f *= hprop;
+        }
+
+        w *= wprop;
+        h *= hprop;
+        cx *= wprop;
+        cy *= hprop;
+        
         GLKMatrix4 m4;
-        m4.m[0] = 2 * fx/w;
+        m4.m[0] = 2 * f/w;
         m4.m[1] = 0;
         m4.m[2] = 0,
         m4.m[3] = 0,
         m4.m[4] = 0;
-        m4.m[5] = 2 * fy/h;
+        m4.m[5] = 2 * f/h;
         m4.m[6] = 0;
         m4.m[7] = 0;
         m4.m[8] = 2 * (cx/w) - 1;
@@ -267,8 +299,17 @@ static const float kFilterCoeffs[] = {1.0f,0.5f,0.25f};
             }
             
             if( pt.size() >= 30 ) {
-                Mat homo = findHomography(pt, ps, CV_RANSAC, 10, noArray(), 5000, 0.999);
-                if( !homo.empty() ) {
+                Mat inliners;
+                
+                Mat homo = findHomography(pt, ps, CV_RANSAC, 10, inliners, 2000, 0.999);
+                
+                const uint8_t * ptr = inliners.data;
+                int ic = 0;
+                for( int i = 0 ; i < pt.size() ; i++ ) {
+                    ic += (*ptr++) & 0x01;
+                }
+                
+                if( (!homo.empty()) && ic > 30 ) {
                     
                     
                     vector<Point2f> tcorners1;
@@ -343,6 +384,20 @@ static const float kFilterCoeffs[] = {1.0f,0.5f,0.25f};
     completion(res);
 }
 
-
++(CGRect) calcTargetVideoRect:(CGSize) videoSize inView:(CGSize) viewSize {
+    CGFloat aview = viewSize.height/viewSize.width;
+    CGFloat aim = videoSize.height / videoSize.width;
+    CGRect tgt = CGRectZero;
+    if( aview < aim ) {
+        tgt.size.width = viewSize.width;
+        tgt.size.height = viewSize.width * aim;
+        tgt.origin.y = -(tgt.size.height - viewSize.height) / 2.0f;
+    } else {
+        tgt.size.height = viewSize.height;
+        tgt.size.width = viewSize.height / aim;
+        tgt.origin.x = -(tgt.size.width - viewSize.width) / 2.0f;
+    }
+    return tgt;
+}
 
 @end
