@@ -76,6 +76,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
@@ -321,12 +322,16 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)showImageSavedView:(BOOL)show
 {
+    NSUInteger buttonAlphaValue = show ? 0 : 1;
+    
     CGRect frame = self.topView.frame;
     if (!show) {
         frame.origin.y -= frame.size.height;
     }
     
     [UIView animateWithDuration:0.5F animations:^{
+        self.closeButton.alpha = buttonAlphaValue;
+        self.editButton.alpha = buttonAlphaValue;
         self.imageSavedView.frame = frame;
     }];
 }
