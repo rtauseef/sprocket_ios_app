@@ -318,8 +318,7 @@ typedef enum : NSUInteger {
         }
         
         if (nil != accessory) {
-            MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
-            sprocket.accessory = accessory;
+            [MPBTSprocket sharedInstance].accessory = accessory;
             
             if (self.completionBlock) {
                 if (nil == self.parentViewController) {
@@ -334,7 +333,7 @@ typedef enum : NSUInteger {
                 // show device info screen
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:[NSBundle bundleForClass:[MP class]]];
                 MPBTDeviceInfoTableViewController *settingsViewController = (MPBTDeviceInfoTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTDeviceInfoTableViewController"];
-                settingsViewController.device = sprocket.accessory;
+                settingsViewController.device = [MPBTSprocket sharedInstance].accessory;
                 
                 UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
                 
