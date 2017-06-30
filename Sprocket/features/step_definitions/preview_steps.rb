@@ -33,7 +33,19 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
                           if element_id == "PreviewBardots"
                               check_element_exists @current_page.preview_bar_dots
                           else
-                              check_element_exists "view marked:'#{element_id}'"
+                              if element_id == "Skip to the App"
+                                check_element_exists @current_page.skip
+                              else
+                                  if element_id == "Go to the App"
+                                    check_element_exists @current_page.go_to_app
+                                  else
+                                      if element_id == "More Help"
+                                          check_element_exists @current_page.more_help
+                                      else
+                                        check_element_exists "view marked:'#{element_id}'"
+                                      end
+                                  end
+                              end
                           end
                       end
                   end
