@@ -13,6 +13,8 @@
 #import <UIKit/UIKit.h>
 #import <HPPRMedia.h>
 
+extern NSString * const kPGPreviewViewClosed;
+
 @interface PGPreviewViewController : UIViewController
 
 @property (strong, nonatomic) UIImage *selectedPhoto;
