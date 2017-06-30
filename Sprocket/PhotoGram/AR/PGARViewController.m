@@ -163,12 +163,13 @@
         return;
     }
     
-    CGRect bounds = self.targetView.bounds;
+    CGSize bounds = self.targetView.bounds.size;
+    
     CIImage * image = result.videoFrame;
     CGRect extent = image.extent;
-    CGRect rect = AVMakeRectWithAspectRatioInsideRect(bounds.size, extent);
+    CGRect rect = AVMakeRectWithAspectRatioInsideRect(bounds, extent);
     CIImage * f = [image imageByCroppingToRect:rect];
-    f = [f imageByApplyingTransform:CGAffineTransformMakeTranslation(0, -f.extent.origin.y)];
+    //f = [f imageByApplyingTransform:CGAffineTransformMakeTranslation(0, -f.extent.origin.y)];
     dispatch_async(dispatch_get_main_queue(), ^{
         if(self.targetView.context != [EAGLContext currentContext] ) {
             [EAGLContext setCurrentContext:self.targetView.context];
@@ -177,19 +178,24 @@
         
         [self renderVideoFrame];
         
-        glClearColor(0.5, 0.5, 0.5, 1.0);
-        glClear(0x00004000);
-        glEnable(0x0BE2);
-        
-        glBlendFunc(1, 0x0303);
-        
         CGRect b = CGRectMake(0,0,self.targetView.drawableWidth,self.targetView.drawableHeight);
         
         [self.ciContext drawImage:f inRect:b fromRect:f.extent];
     
-        if( result.transAvailable ) {
-            self.node.transform = result.trans;
+        [SCNTransaction begin];
+        [SCNTransaction setDisableActions:YES];
+        
+        if( result.detected ) {
+            self.node.hidden = NO;
+            if( result.transAvailable ) {
+                self.node.transform = result.trans;
+                // [SCNTransaction setDisableActions:YES];
+            }
+        } else {
+            self.node.hidden = YES;
         }
+        
+        [SCNTransaction commit];
         
         self.camera.projectionTransform = self.projection;
         
@@ -198,10 +204,7 @@
             self.lastFrame = self.firstFrame;
         }
         
-        [self.renderer renderAtTime:-1*self.firstFrame.timeIntervalSinceNow];
-        
-        
-        
+        [self.renderer renderAtTime:[NSDate timeIntervalSinceReferenceDate]];
         [self.targetView display];
         
         //[self.delegate didUpdateFps: -1.0f/self.lastFrame.timeIntervalSinceNow];

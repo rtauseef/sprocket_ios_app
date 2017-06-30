@@ -12,6 +12,7 @@
 
 @interface PGARVideoProcessorResult : NSObject
 
+@property (assign, nonatomic) BOOL detected;
 @property (assign, nonatomic) BOOL transAvailable;
 @property (assign, nonatomic) SCNMatrix4 trans;
 @property (strong, nonatomic) CIImage *videoFrame;

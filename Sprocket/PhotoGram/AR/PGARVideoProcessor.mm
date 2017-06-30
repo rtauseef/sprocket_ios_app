@@ -23,7 +23,9 @@
 using namespace cv;
 using namespace std;
 
-#define FILTER_LEN (4)
+static const float kFilterCoeffs[] = {1.0f,0.5f,0.25f};
+
+#define FILTER_LEN (3)
 #define VIDEO_SCALE (0.5f)
 
 @interface PGARVideoProcessor() {
@@ -32,13 +34,13 @@ using namespace std;
     Mat _descriptors;
     Ptr<Feature2D> _feature;
     Ptr<Feature2D> _featureSource;
-    Ptr<Feature2D> _featureCompute;
     Ptr<Feature2D> _featureSourceCompute;
     Ptr<DescriptorMatcher> _matcher;
     BOOL _loaded;
     int _filterpos;
     int _frameCount;
     BOOL _enableFilter;
+    float _filterWeight;
     GLKMatrix4 _filter[FILTER_LEN];
     
     vector<KeyPoint> _keyPoints;
@@ -55,8 +57,15 @@ using namespace std;
 {
     self = [super init];
     if (self) {
-        _feature = _featureCompute = ORB::create(500, 1.2f, 8, 62, 0, 2,ORB::HARRIS_SCORE, 31,20);
-        _matcher = new FlannBasedMatcher(new flann::LshIndexParams(5,24,2));
+        
+        _filterWeight = 0;
+        for( int i = 0 ; i < FILTER_LEN; i++ ) {
+            _filterWeight += kFilterCoeffs[i];
+        }
+        
+        _feature = ORB::create(1000, 1.2f, 8, 31, 0, 2,ORB::HARRIS_SCORE, 31,20);
+        //_matcher = new FlannBasedMatcher(new flann::LshIndexParams(5,24,2));
+        _matcher = new BFMatcher(NORM_HAMMING,true);
         _loaded = NO;
         
         _cvToGl = Mat::zeros(4,4,CV_64FC1);
@@ -82,9 +91,9 @@ using namespace std;
         float fx = fabs(w/2.0 * tan(HFOV/180.0 * M_PI/2.0));
         float fy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI/2.0));*/
         float VFOV = fieldOfView;
-        float HFOV = ((VFOV)/cx)*cy;
-        float fx = fabs(w/2.0 * tan(HFOV/180.0 * M_PI));
-        float fy = fx;
+        //float HFOV = ((VFOV)/cx)*cy;
+        float fy = fabs(h/2.0 * tan(VFOV/180.0 * M_PI/2.0));
+        float fx = fy;
         
         _cameraIntrinsic = (Mat_<float>(3,3) << fx, 0, cx, 0, fy, cy, 0, 0, 1.0f);
         
@@ -228,15 +237,14 @@ using namespace std;
     
     PGARVideoProcessorResult *res = [[PGARVideoProcessorResult alloc] init];
     
-    res.transAvailable = YES;;
+    res.transAvailable = YES;
+    res.detected = NO;
     
-    if( _loaded && _frameCount % 2 == 0 ) {
+    if( _loaded ) {
         //        Mat ff;
         vector<KeyPoint> kp;
-        _feature->detect(frame, kp);
         Mat dd;
-        _featureCompute->compute(frame, kp, dd);
-        
+        _feature->detectAndCompute(frame, noArray(), kp, dd);
         
         //        BFMatcher bf(NORM_HAMMING, true);
         if( !dd.empty() ) {
@@ -258,8 +266,8 @@ using namespace std;
                 }
             }
             
-            if( pt.size() >= 10 ) {
-                Mat homo = findHomography(pt, ps, CV_RANSAC, 10);
+            if( pt.size() >= 30 ) {
+                Mat homo = findHomography(pt, ps, CV_RANSAC, 10, noArray(), 5000, 0.999);
                 if( !homo.empty() ) {
                     
                     
@@ -300,7 +308,7 @@ using namespace std;
                         for( int i = 0 ; i < FILTER_LEN ; i++ ) {
                             GLKMatrix4 * x = & _filter[j];
                             for( int k = 0 ; k < 16 ; k++ ) {
-                                mm.m[k] += x->m[k];
+                                mm.m[k] += x->m[k] * kFilterCoeffs[i];
                             }
                             j--;
                             if( j < 0 ) {
@@ -308,7 +316,7 @@ using namespace std;
                             }
                         }
                         for( int i = 0 ; i < 16 ; i++ ) {
-                            mm.m[i] /= FILTER_LEN;
+                            mm.m[i] /= _filterWeight;
                         }
                         
                         res.trans = SCNMatrix4FromGLKMatrix4(mm);
@@ -317,6 +325,7 @@ using namespace std;
                         res.trans = SCNMatrix4FromGLKMatrix4(m4);
                     }
                     
+                    res.detected = YES;
                 }
             }
         }
