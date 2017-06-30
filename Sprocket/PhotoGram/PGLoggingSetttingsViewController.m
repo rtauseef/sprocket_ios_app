@@ -339,7 +339,7 @@ NSString * const kFeatureCodeLink = @"link";
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableVideoARParticles"];
             }
-            cell.textLabel.text = @"Enable AR Particles System";
+            cell.textLabel.text = @"Enable AR Video Particles";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings videoARParticlesEnabled]];

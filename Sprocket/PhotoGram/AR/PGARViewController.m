@@ -58,8 +58,6 @@
     SCNNode * plane = [self.node childNodeWithName:@"plane" recursively:YES];
     plane.hidden = NO;
     
-    [self loadVideoIfAvailable];
-    
     CGSize sceneSize = CGSizeMake(1280,720);
     self.layer = [CALayer new];
     self.layer.frame = CGRectMake(0, 0, sceneSize.width, sceneSize.height);
@@ -67,9 +65,11 @@
     plane.geometry.firstMaterial.diffuse.contents = self.layer;
     particles.emitterShape = pgeo.geometry;
 
-    if ([PGLinkSettings videoARParticlesEnabled]) {
-        [[self.node childNodeWithName:@"geo_holder" recursively:YES] addParticleSystem:particles];
-    }
+    [self loadVideoIfAvailable:^(BOOL hasVideo) {
+        if ((hasVideo && [PGLinkSettings videoARParticlesEnabled]) || !hasVideo) {
+            [[self.node childNodeWithName:@"geo_holder" recursively:YES] addParticleSystem:particles];
+        }
+    }];
 }
 
 - (void) setVideoWithAsset: (PHAsset *) asset {
@@ -98,7 +98,7 @@
     }];
 }
 
-- (void) loadVideoIfAvailable {
+- (void) loadVideoIfAvailable: (void(^)(BOOL hasVideo)) completion {
     if (self.media.mediaType == PGMetarMediaTypeVideo) {
        if (self.media.source.from == PGMetarSourceFromLocal) {
             NSString *localId = self.media.source.identifier;
@@ -107,8 +107,15 @@
             if( assets.count ) {
                 PHAsset * firstAsset = assets[0];
                 [self setVideoWithAsset:firstAsset];
+                completion(YES);
+            } else {
+                completion(NO);
             }
-        }
+       } else {
+           completion(NO);
+       }
+    } else {
+        completion(NO);
     }
 }
 
