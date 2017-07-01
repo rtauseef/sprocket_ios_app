@@ -39,7 +39,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [super viewDidLoad];
     
     self.showCopies = YES;
-    self.showTiling = NO;
+    self.showTiling = YES;
     [self configureShowPrintQueue];
 
     self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];

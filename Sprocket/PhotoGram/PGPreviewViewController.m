@@ -153,6 +153,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.drawer.showCopies = NO;
+        self.drawer.showTiling = NO;
         self.drawer.alwaysShowPrintQueue = YES;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
 
