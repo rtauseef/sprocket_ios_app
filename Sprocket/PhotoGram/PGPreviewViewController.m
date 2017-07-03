@@ -602,6 +602,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
         drawer.isPeeking = NO;
         drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
+        self.wasDrawerOpenedByUser = drawer.isOpened;
 
         [self setDrawerHeightAnimated:NO];
     }
