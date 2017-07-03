@@ -920,8 +920,6 @@
 		264C21721EF1D1D400B3BB98 /* xoxo_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDBFA1EF075C500039377 /* xoxo_TN@2x.png */; };
 		264C21731EF1D1D400B3BB98 /* xoxo_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDBFB1EF075C500039377 /* xoxo_TN@3x.png */; };
 		264C21741EF1D1DD00B3BB98 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB841EF075C400039377 /* customSticker.png */; };
-		264C21751EF1D1DD00B3BB98 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB851EF075C400039377 /* customSticker@2x.png */; };
-		264C21761EF1D1DD00B3BB98 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB861EF075C400039377 /* customSticker@3x.png */; };
 		264C21771EF1D1E400B3BB98 /* glasses_blossom.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB7B1EF075C400039377 /* glasses_blossom.png */; };
 		264C21781EF1D1E400B3BB98 /* glasses_blossom_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB7C1EF075C400039377 /* glasses_blossom_TN.png */; };
 		264C21791EF1D1E400B3BB98 /* glasses_blossom_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB7D1EF075C400039377 /* glasses_blossom_TN@2x.png */; };
@@ -1430,8 +1428,6 @@
 		929CE0211EF075C600039377 /* Panda_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB811EF075C400039377 /* Panda_TN@2x.png */; };
 		929CE0221EF075C600039377 /* Panda_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB821EF075C400039377 /* Panda_TN@3x.png */; };
 		929CE0231EF075C600039377 /* customSticker.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB841EF075C400039377 /* customSticker.png */; };
-		929CE0241EF075C600039377 /* customSticker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB851EF075C400039377 /* customSticker@2x.png */; };
-		929CE0251EF075C600039377 /* customSticker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB861EF075C400039377 /* customSticker@3x.png */; };
 		929CE0261EF075C600039377 /* 3d-diamond-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB881EF075C400039377 /* 3d-diamond-1.png */; };
 		929CE0271EF075C600039377 /* 3d-diamond-1_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB891EF075C400039377 /* 3d-diamond-1_TN.png */; };
 		929CE0281EF075C600039377 /* 3d-diamond-1_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 929CDB8A1EF075C400039377 /* 3d-diamond-1_TN@2x.png */; };
@@ -3428,8 +3424,6 @@
 		929CDB811EF075C400039377 /* Panda_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Panda_TN@2x.png"; sourceTree = "<group>"; };
 		929CDB821EF075C400039377 /* Panda_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Panda_TN@3x.png"; sourceTree = "<group>"; };
 		929CDB841EF075C400039377 /* customSticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customSticker.png; sourceTree = "<group>"; };
-		929CDB851EF075C400039377 /* customSticker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSticker@2x.png"; sourceTree = "<group>"; };
-		929CDB861EF075C400039377 /* customSticker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customSticker@3x.png"; sourceTree = "<group>"; };
 		929CDB881EF075C400039377 /* 3d-diamond-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3d-diamond-1.png"; sourceTree = "<group>"; };
 		929CDB891EF075C400039377 /* 3d-diamond-1_TN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3d-diamond-1_TN.png"; sourceTree = "<group>"; };
 		929CDB8A1EF075C400039377 /* 3d-diamond-1_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3d-diamond-1_TN@2x.png"; sourceTree = "<group>"; };
@@ -5194,8 +5188,6 @@
 			isa = PBXGroup;
 			children = (
 				929CDB841EF075C400039377 /* customSticker.png */,
-				929CDB851EF075C400039377 /* customSticker@2x.png */,
-				929CDB861EF075C400039377 /* customSticker@3x.png */,
 			);
 			name = Custom;
 			path = Resources/Images/Stickers/Custom;
@@ -7172,7 +7164,6 @@
 				929CE0381EF075C600039377 /* fist_TN@2x.png in Resources */,
 				929CE33D1EF075C800039377 /* Mushrooms-b_TN@3x.png in Resources */,
 				929CDFE51EF075C600039377 /* balloons_TN@2x.png in Resources */,
-				929CE0251EF075C600039377 /* customSticker@3x.png in Resources */,
 				929CE1B71EF075C700039377 /* fork_TN.png in Resources */,
 				929CE33C1EF075C800039377 /* Mushrooms-b_TN@2x.png in Resources */,
 				929CE4801EF0792000039377 /* FloralOverlayFrame_TN@3x.png in Resources */,
@@ -7674,7 +7665,6 @@
 				929CE3491EF075C800039377 /* plum-blossom_TN@3x.png in Resources */,
 				929CE3CD1EF075C800039377 /* radio_doodle_TN@2x.png in Resources */,
 				929CE30C1EF075C700039377 /* flower_TN@2x.png in Resources */,
-				929CE0241EF075C600039377 /* customSticker@2x.png in Resources */,
 				F144B2901A783D8D007CDBBD /* HPSMS_logo@2x.png in Resources */,
 				F1ECD7491A60984F004B512E /* LeftSwipeButton@2x.png in Resources */,
 				929CE4861EF0792000039377 /* GreyShadowFrame_TN.png in Resources */,
@@ -9068,7 +9058,6 @@
 				264C20E11EF1D1C700B3BB98 /* necktie_graduation_TN.png in Resources */,
 				264C1DEA1EF1D14900B3BB98 /* swim_fins_TN@2x.png in Resources */,
 				264C20B81EF1D1C700B3BB98 /* flower_glasses.png in Resources */,
-				264C21751EF1D1DD00B3BB98 /* customSticker@2x.png in Resources */,
 				F20CE2591EC2436400FD910D /* PGInAppMessageView.xib in Resources */,
 				264C21171EF1D1D400B3BB98 /* Football_TN@3x.png in Resources */,
 				264C1E901EF1D15700B3BB98 /* starhp.png in Resources */,
@@ -9124,7 +9113,6 @@
 				264C21411EF1D1D400B3BB98 /* peace_TN.png in Resources */,
 				264C20801EF1D1BA00B3BB98 /* tie_collar.png in Resources */,
 				658DF9E01EDF907C00F0EBCB /* AirshipConfig.plist in Resources */,
-				264C21761EF1D1DD00B3BB98 /* customSticker@3x.png in Resources */,
 				264C20F21EF1D1C700B3BB98 /* rabbit-mask_TN@2x.png in Resources */,
 				264C1DB51EF1D14900B3BB98 /* mermaid_tail_@3x.png in Resources */,
 				264C205C1EF1D1BA00B3BB98 /* mask.png in Resources */,
