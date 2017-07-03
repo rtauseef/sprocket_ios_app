@@ -277,6 +277,7 @@ static const NSUInteger kMaxRecordingTime = 20;
         [self.player pause];
         [self.playerViewController.view removeFromSuperview];
     }
+    [self resetShutterTimerButtonAndShutterButton];
 }
 
 - (IBAction)cameraReverseTapped:(id)sender
@@ -307,8 +308,8 @@ static const NSUInteger kMaxRecordingTime = 20;
         [CATransaction setCompletionBlock:^{
             if (self.shutterTimerRunning) {
                 [[PGCameraManager sharedInstance] takePicture];
+                [self resetShutterButton];
             }
-            [self resetShutterButton];
         }];
         self.shutterTimerRunning = true;
         [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimerActive"] forState:UIControlStateNormal];

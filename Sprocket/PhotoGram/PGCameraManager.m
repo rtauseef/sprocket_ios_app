@@ -470,7 +470,14 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.isFlashOn = !self.isFlashOn;
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
     [self configFlash:self.isFlashOn forDevice:device];
+    
+    if (self.isFlashOn) {
+        [[PGAnalyticsManager sharedManager] trackCameraFlashActivity:kEventCameraFlashOnLabel];
+    } else {
+        [[PGAnalyticsManager sharedManager] trackCameraFlashActivity:kEventCameraFlashOffLabel];
+    }
 }
 
 - (void)toggleTimer
@@ -478,12 +485,15 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     switch (self.shutterTimerDelayState) {
         case ShutterTimerDelayStateNone:
             self.shutterTimerDelayState = ShutterTimerDelayStateThree;
+            [[PGAnalyticsManager sharedManager] trackCameraTimerActivity:kEventCameraTimer3sLabel];
             break;
         case ShutterTimerDelayStateThree:
             self.shutterTimerDelayState = ShutterTimerDelayStateTen;
+            [[PGAnalyticsManager sharedManager] trackCameraTimerActivity:kEventCameraTimer10sLabel];
             break;
         case ShutterTimerDelayStateTen:
             self.shutterTimerDelayState = ShutterTimerDelayStateNone;
+            [[PGAnalyticsManager sharedManager] trackCameraTimerActivity:kEventCameraTimerNoneLabel];
             break;
     }
 }

@@ -71,6 +71,13 @@ extern NSString * const kEventSocialSignInSuccessAction;
 extern NSString * const kEventCameraDirectionBackLabel;
 extern NSString * const kEventCameraDirectionSelfieLabel;
 
+extern NSString * const kEventCameraTimerNoneLabel;
+extern NSString * const kEventCameraTimer3sLabel;
+extern NSString * const kEventCameraTimer10sLabel;
+
+extern NSString * const kEventCameraFlashOnLabel;
+extern NSString * const kEventCameraFlashOffLabel;
+
 extern NSString * const kEventPrintButtonLabel;
 extern NSString * const kEventPrintShareLabel;
 
@@ -111,6 +118,8 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackSaveProjectActivity:(NSString *)source;
 - (void)trackMultiSaveProjectActivity:(NSString *)source numberOfPhotos:(NSUInteger)numberOfPhotos;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
+- (void)trackCameraTimerActivity:(NSString *)timer;
+- (void)trackCameraFlashActivity:(NSString *)flash;
 - (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
