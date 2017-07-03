@@ -104,7 +104,13 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 {
     static NSString *viewAccessibilityIdentifier = @"PGOverlayCameraView";
     
-    [view layoutIfNeeded];
+    if (![NSThread isMainThread]) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [view layoutIfNeeded];
+        });
+    } else {
+        [view layoutIfNeeded];
+    }
     
     if (self.cameraOverlay == nil) {
     
@@ -294,8 +300,14 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController
 {
-   
-    [view layoutIfNeeded];
+    if (![NSThread isMainThread]) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [view layoutIfNeeded];
+        });
+    } else {
+        [view layoutIfNeeded];
+    }
+
     self.cameraView = view;
     self.viewController = viewController;
     
