@@ -411,13 +411,14 @@ end
 
 Then(/^I set the value for "([^"]*)"$/) do |method_name|
     $slider_val = @current_page.send(method_name)
+    $slider_val = $slider_val.round(2)
     query("view:'imglyKit.TooltipSlider'",{setValue:$slider_val})
     sleep(STEP_PAUSE) 
 end
 
 Then(/^I verify the slider value$/) do 
   value = query("view:'imglyKit.TooltipSlider'",:value)[0]
-  puts "slide value:#{value}"
+    value = value.round(2)
   raise "Slider value not set correctly!" unless value.to_f == $slider_val.to_f
 end
 

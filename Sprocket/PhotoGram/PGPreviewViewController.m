@@ -52,9 +52,12 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AFNetworking.h>
 
+
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
 #define kPreviewRetryButtonTitle NSLocalizedString(@"Retry", nil)
+
+NSString * const kPGPreviewViewClosed = @"PGPreviewViewClosed";
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
@@ -76,6 +79,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
@@ -322,12 +326,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)showImageSavedView:(BOOL)show
 {
+    NSUInteger buttonAlphaValue = show ? 0 : 1;
+    NSUInteger multiSelectLabelAlphaValue = show ? 0 : [PGPhotoSelection sharedInstance].hasMultiplePhotos;
     CGRect frame = self.topView.frame;
     if (!show) {
         frame.origin.y -= frame.size.height;
     }
     
     [UIView animateWithDuration:0.5F animations:^{
+        self.closeButton.alpha = buttonAlphaValue;
+        self.editButton.alpha = buttonAlphaValue;
+        self.numberOfSelectedPhotos.alpha = multiSelectLabelAlphaValue;
         self.imageSavedView.frame = frame;
     }];
 }
@@ -649,6 +658,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGPreviewViewClosed object:nil];
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
     }];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1112,6 +1112,7 @@ The copyright law of the United States (Title 17, United States Code) governs th
                         <outlet property="bottomViewHeight" destination="BlW-aW-yWc" id="GeK-oc-grg"/>
                         <outlet property="cameraView" destination="pTc-Ba-zcw" id="JgV-RL-8bO"/>
                         <outlet property="carouselView" destination="j7T-DG-aYq" id="GOa-VA-czq"/>
+                        <outlet property="closeButton" destination="cG3-7c-npS" id="qAj-1Z-csi"/>
                         <outlet property="containerViewBottomConstraint" destination="wzg-ib-QVB" id="43U-1v-lvZ"/>
                         <outlet property="containerViewHeightConstraint" destination="9Bt-SA-WNZ" id="J6X-44-XKa"/>
                         <outlet property="downloadButton" destination="iMJ-5T-IcV" id="3Cf-Rt-m5Y"/>
