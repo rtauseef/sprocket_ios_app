@@ -326,7 +326,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)showImageSavedView:(BOOL)show
 {
     NSUInteger buttonAlphaValue = show ? 0 : 1;
-    
+    NSUInteger multiSelectLabelAlphaValue = show ? 0 : [PGPhotoSelection sharedInstance].hasMultiplePhotos;
     CGRect frame = self.topView.frame;
     if (!show) {
         frame.origin.y -= frame.size.height;
@@ -335,6 +335,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [UIView animateWithDuration:0.5F animations:^{
         self.closeButton.alpha = buttonAlphaValue;
         self.editButton.alpha = buttonAlphaValue;
+        self.numberOfSelectedPhotos.alpha = multiSelectLabelAlphaValue;
         self.imageSavedView.frame = frame;
     }];
 }
