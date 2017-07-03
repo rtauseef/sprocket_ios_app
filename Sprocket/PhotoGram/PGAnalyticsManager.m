@@ -99,6 +99,18 @@ NSString * const kEventCameraDirectionCategory     = @"CameraDirection";
 NSString * const kEventCameraDirectionSwitchAction = @"Switch";
 NSString * const kEventCameraDirectionBackLabel    = @"Back";
 NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
+
+NSString * const kEventCameraTimerCategory         = @"CameraTimer";
+NSString * const kEventCameraTimerSwitchAction     = @"Switch";
+NSString * const kEventCameraTimerNoneLabel        = @"None";
+NSString * const kEventCameraTimer3sLabel          = @"3s";
+NSString * const kEventCameraTimer10sLabel         = @"10s";
+
+NSString * const kEventCameraFlashCategory         = @"CameraFlash";
+NSString * const kEventCameraFlashSwitchAction     = @"Switch";
+NSString * const kEventCameraFlashOnLabel          = @"On";
+NSString * const kEventCameraFlashOffLabel         = @"Off";
+
 NSString * const kEventCameraGalleryCategory       = @"Gallery_Camera";
 NSString * const kEventCameraGallerySelectAction   = @"Select";
 
@@ -298,6 +310,16 @@ NSString * const kPhotoCollectionViewModeList = @"List";
 - (void)trackCameraDirectionActivity:(NSString *)direction
 {
     [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackCameraTimerActivity:(NSString *)timer
+{
+    [self trackEvent:kEventCameraTimerCategory action:kEventCameraTimerSwitchAction label:timer value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackCameraFlashActivity:(NSString *)flash
+{
+    [self trackEvent:kEventCameraFlashCategory action:kEventCameraFlashSwitchAction label:flash value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference
