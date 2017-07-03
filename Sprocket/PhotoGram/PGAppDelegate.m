@@ -48,6 +48,18 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 @implementation PGAppDelegate
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSLog(@"WILL FINISH");
+    return YES;
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
+{
+    [PGAppNavigation deepLink:@"camera"];
+    completionHandler(YES);
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.restrictRotation = YES;
