@@ -14,6 +14,12 @@
 
 @protocol PGPreviewDrawerViewControllerDelegate;
 
+typedef NS_ENUM(NSInteger, PGPreviewDrawerTiling) {
+    PGPreviewDrawerTilingSingle,
+    PGPreviewDrawerTiling2x2,
+    PGPreviewDrawerTiling3x3
+};
+
 @interface PGPreviewDrawerViewController : UIViewController
 
 @property (nonatomic, weak) id<PGPreviewDrawerViewControllerDelegate> delegate;
@@ -24,6 +30,7 @@
 @property (nonatomic, assign) BOOL showPrintQueue;
 @property (nonatomic, assign) BOOL alwaysShowPrintQueue;
 @property (assign, nonatomic) NSInteger numberOfCopies;
+@property (assign, nonatomic) PGPreviewDrawerTiling tilingOption;
 
 - (CGFloat)drawerHeight;
 - (CGFloat)drawerHeightOpened;
@@ -37,6 +44,7 @@
 
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button;
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture;
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGPreviewDrawerTiling)tilingOption;
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer;
 - (void)pgPreviewDrawerDidClearQueue:(PGPreviewDrawerViewController *)drawer;
 

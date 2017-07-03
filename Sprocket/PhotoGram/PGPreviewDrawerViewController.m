@@ -24,6 +24,9 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 @property (weak, nonatomic) IBOutlet UILabel *copiesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *tilingSingleButton;
+@property (weak, nonatomic) IBOutlet UIButton *tiling2x2Button;
+@property (weak, nonatomic) IBOutlet UIButton *tiling3x3Button;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfJobsLabel;
 @property (weak, nonatomic) IBOutlet UIView *printQueueView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *printQueueViewHeight;
@@ -45,6 +48,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
 
     self.numberOfCopies = 1;
+    self.tilingOption = PGPreviewDrawerTilingSingle;
     
     self.drawerButton.clipsToBounds = NO;
     self.drawerButton.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -193,6 +197,57 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     }
     
     [self updateCopyLabelAndButtons];
+}
+
+- (IBAction)tilingSingleTapped:(UIButton *)sender
+{
+    self.tilingOption = PGPreviewDrawerTilingSingle;
+    
+    if (sender.selected) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didChangeTillingOption:)]) {
+        [self.delegate pgPreviewDrawer:self didChangeTillingOption:self.tilingOption];
+    }
+    
+    sender.selected = YES;
+    self.tiling2x2Button.selected = NO;
+    self.tiling3x3Button.selected = NO;
+}
+
+- (IBAction)tiling2x2Tapped:(UIButton *)sender
+{
+    self.tilingOption = PGPreviewDrawerTiling2x2;
+    
+    if (sender.selected) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didChangeTillingOption:)]) {
+        [self.delegate pgPreviewDrawer:self didChangeTillingOption:self.tilingOption];
+    }
+    
+    sender.selected = YES;
+    self.tilingSingleButton.selected = NO;
+    self.tiling3x3Button.selected = NO;
+}
+
+- (IBAction)tiling3x3Tapped:(UIButton *)sender
+{
+    self.tilingOption = PGPreviewDrawerTiling3x3;
+    
+    if (sender.selected) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didChangeTillingOption:)]) {
+        [self.delegate pgPreviewDrawer:self didChangeTillingOption:self.tilingOption];
+    }
+    
+    sender.selected = YES;
+    self.tilingSingleButton.selected = NO;
+    self.tiling2x2Button.selected = NO;
 }
 
 #pragma mark - Gesture Recognizers

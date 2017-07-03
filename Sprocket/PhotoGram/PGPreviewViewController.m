@@ -607,6 +607,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGPreviewDrawerTiling)tilingOption
+{
+    //TODO handle tilingOption
+    NSLog(@"User selected another tiling option: %ld", (long)tilingOption);
+}
+
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
 {
     [[PGPrintQueueManager sharedInstance] showPrintQueueStatusFromViewController:self];
