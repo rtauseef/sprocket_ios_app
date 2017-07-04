@@ -2,7 +2,7 @@ Feature: Verify Welcome screen/Landing Page
   As a user
   I want to check elements displayed on landing page
   
-  
+  @reset
   @TA18418
   Scenario: Verify sprocket intro wizard
     Given  I am on the "Intro Wizard" screen

@@ -12,6 +12,7 @@ Then(/^I select "(.*?)" photos$/) do |number|
 end
 
 And(/^I should see the number of photos selected as "(.*?)"$/) do |number|
+    sleep(STEP_PAUSE)
     check_element_exists(@current_page.number_of_photos number)
     $number = number
     sleep(STEP_PAUSE)

@@ -9,9 +9,11 @@ Feature: Verify embellishment metrics
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Decorative Category" tab
     Then I select "sticker_3" sticker
+    Then I wait for some time
     Then I touch "Add"  
     And I select "Summer Category" tab
     Then I select "sticker_7" sticker
+    Then I wait for some time
     Then I touch "Add"  
     And I select "Nature Category" tab
     Then I select "sticker_0" sticker
@@ -20,6 +22,7 @@ Feature: Verify embellishment metrics
     Then I tap "Sticker" button
     And I select "Face Category" tab
     Then I select "sticker_11" sticker
+    Then I wait for some time
     #Then I should see the "StickerOptionEditor" screen
     Then I touch "Add"  
     And I select "Decorative Category" tab

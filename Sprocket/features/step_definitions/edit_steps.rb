@@ -426,6 +426,7 @@ Then(/^I select a sticker from "([^"]*)"$/) do |sticker_tab|
     $stic_id = select_rand_stic sticker_tab
     macro %Q|I select "#{sticker_tab}" tab|
     macro %Q|I select "#{$stic_id}" sticker|
+    sleep(STEP_PAUSE)
     macro %Q|I am on the "StickerOptionEditor" screen|
 end
 
