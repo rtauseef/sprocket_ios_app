@@ -14,13 +14,13 @@
 
 @interface PGTilingOverlay ()
 
-@property (strong, nonatomic) UIView *currentTiling;
+@property (weak, nonatomic) UIView *currentTiling;
 
 @end
 
 @implementation PGTilingOverlay
 
-- (void)showTilingOverlay:(PGTilingOverlayOption)tilingOption
+- (void)addTilingOverlay:(PGTilingOverlayOption)tilingOption toView:(UIView *)view
 {
     if (self.currentTiling) {
         [self.currentTiling removeFromSuperview];
@@ -35,8 +35,15 @@
     NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
     self.currentTiling = subviewArray.firstObject;
     if (self.currentTiling) {
-        [self addSubview:self.currentTiling];
-        self.currentTiling.frame = self.bounds;
+        [view addSubview:self.currentTiling];
+        self.currentTiling.frame = view.bounds;
+    }
+}
+
+- (void)removeOverlay {
+    if (self.currentTiling) {
+        [self.currentTiling removeFromSuperview];
+        self.currentTiling = nil;
     }
 }
 

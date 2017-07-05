@@ -91,8 +91,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (strong, nonatomic) IBOutlet iCarousel *carouselView;
-@property (weak, nonatomic) IBOutlet PGTilingOverlay *tilingOverlayContainer;
-
 
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
@@ -111,6 +109,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) NSOperationQueue *operationQueue;
 @property (assign, nonatomic) NSInteger viewNumber;
 @property (assign, nonatomic) NSInteger viewCount;
+
+@property (strong, nonatomic) PGTilingOverlay *tilingOverlay;
 
 @end
 
@@ -193,6 +193,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     self.operationQueue = [[NSOperationQueue alloc] init];
+    
+    self.tilingOverlay = [[PGTilingOverlay alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -505,24 +507,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self presentViewController:alert animated:YES completion:completion];
 }
 
-- (void)updateTilingOverlayIfNeeded
-{
-    if (self.tilingOverlayContainer.hidden) {
-        return;
-    }
-    
-    UIView *gestureView = self.gesturesViews.firstObject;
-    if (!gestureView) {
-        return;
-    }
-    
-    CGSize carouselSize = self.carouselView.frame.size;
-    CGSize gestureViewSize = gestureView.frame.size;
-    CGFloat overlayX = carouselSize.width/2 - gestureViewSize.width/2;
-    CGFloat overlayY = self.carouselView.frame.origin.y;
-    self.tilingOverlayContainer.frame = CGRectMake(overlayX, overlayY, gestureViewSize.width, gestureViewSize.height);
-}
-
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
@@ -632,13 +616,16 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGTilingOverlayOption)tilingOption
 {
     if (tilingOption == PGTilingOverlayOptionSingle) {
-        self.tilingOverlayContainer.hidden = YES;
+        [self.tilingOverlay removeOverlay];
         return;
     }
     
-    [self.tilingOverlayContainer showTilingOverlay:tilingOption];
-    self.tilingOverlayContainer.hidden = NO;
-    [self updateTilingOverlayIfNeeded];
+    UIView *gestureView = self.gesturesViews.firstObject;
+    if (!gestureView) {
+        return;
+    }
+    
+    [self.tilingOverlay addTilingOverlay:tilingOption toView:gestureView];
 }
 
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
@@ -1669,7 +1656,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
     [self.view layoutIfNeeded];
-    [self updateTilingOverlayIfNeeded];
     
     if (option == iCarouselOptionWrap) {
         return self.gesturesViews.count > 2;

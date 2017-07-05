@@ -10,6 +10,7 @@
 // the license agreement.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, PGTilingOverlayOption) {
@@ -18,8 +19,9 @@ typedef NS_ENUM(NSInteger, PGTilingOverlayOption) {
     PGTilingOverlayOption3x3
 };
 
-@interface PGTilingOverlay : UIView
+@interface PGTilingOverlay : NSObject
 
-- (void)showTilingOverlay:(PGTilingOverlayOption)tilingOption;
+- (void)addTilingOverlay:(PGTilingOverlayOption)tilingOption toView:(UIView *)view;
+- (void)removeOverlay;
 
 @end

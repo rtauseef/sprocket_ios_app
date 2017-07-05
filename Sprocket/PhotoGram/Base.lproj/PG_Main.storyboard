@@ -1068,11 +1068,6 @@ The copyright law of the United States (Title 17, United States Code) governs th
                                             <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="zhe-27-lat"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Elv-SQ-R4d" customClass="PGTilingOverlay">
-                                        <rect key="frame" x="-0.5" y="44" width="375" height="513"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
@@ -1129,7 +1124,6 @@ The copyright law of the United States (Title 17, United States Code) governs th
                         <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
                         <outlet property="printButton" destination="Afb-Xc-wRV" id="WjU-uC-IDb"/>
                         <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
-                        <outlet property="tilingOverlayContainer" destination="Elv-SQ-R4d" id="Q0H-pI-3ew"/>
                         <outlet property="topView" destination="BOE-OE-xsb" id="g1o-bp-Ach"/>
                         <outlet property="transitionEffectView" destination="kGR-q5-Apw" id="vNF-Rq-Cdh"/>
                     </connections>
