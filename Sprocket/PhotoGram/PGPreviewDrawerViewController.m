@@ -48,7 +48,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
 
     self.numberOfCopies = 1;
-    self.tilingOption = PGPreviewDrawerTilingSingle;
+    self.tilingOption = PGTilingOverlayOptionSingle;
     
     self.drawerButton.clipsToBounds = NO;
     self.drawerButton.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -201,7 +201,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 - (IBAction)tilingSingleTapped:(UIButton *)sender
 {
-    self.tilingOption = PGPreviewDrawerTilingSingle;
+    self.tilingOption = PGTilingOverlayOptionSingle;
     
     if (sender.selected) {
         return;
@@ -218,7 +218,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 - (IBAction)tiling2x2Tapped:(UIButton *)sender
 {
-    self.tilingOption = PGPreviewDrawerTiling2x2;
+    self.tilingOption = PGTilingOverlayOption2x2;
     
     if (sender.selected) {
         return;
@@ -235,7 +235,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 
 - (IBAction)tiling3x3Tapped:(UIButton *)sender
 {
-    self.tilingOption = PGPreviewDrawerTiling3x3;
+    self.tilingOption = PGTilingOverlayOption3x3;
     
     if (sender.selected) {
         return;

@@ -1068,6 +1068,10 @@ The copyright law of the United States (Title 17, United States Code) governs th
                                             <constraint firstItem="pAD-AA-Eej" firstAttribute="centerY" secondItem="Afb-Xc-wRV" secondAttribute="centerY" id="zhe-27-lat"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elv-SQ-R4d" customClass="PGTilingOverlay">
+                                        <rect key="frame" x="-0.5" y="44" width="375" height="513"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Swo-Sr-Qd8" secondAttribute="trailing" id="1Ip-Qf-IRl"/>
@@ -1077,13 +1081,17 @@ The copyright law of the United States (Title 17, United States Code) governs th
                                     <constraint firstItem="BOE-OE-xsb" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" id="NMA-wa-UqD"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="height" secondItem="BOE-OE-xsb" secondAttribute="height" id="PZB-5d-zf5"/>
                                     <constraint firstItem="j7T-DG-aYq" firstAttribute="centerX" secondItem="4H2-xg-aFm" secondAttribute="centerX" id="T0l-kQ-bIy"/>
+                                    <constraint firstItem="Elv-SQ-R4d" firstAttribute="height" secondItem="j7T-DG-aYq" secondAttribute="height" id="U9n-Sv-IVm"/>
+                                    <constraint firstItem="Elv-SQ-R4d" firstAttribute="width" secondItem="j7T-DG-aYq" secondAttribute="width" id="X9z-IW-TL3"/>
                                     <constraint firstItem="emz-NR-R5x" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="YZR-B3-dyN"/>
                                     <constraint firstItem="emz-NR-R5x" firstAttribute="top" secondItem="j7T-DG-aYq" secondAttribute="bottom" priority="750" constant="-40" id="dv4-6U-U3r"/>
                                     <constraint firstItem="fVw-VT-qaC" firstAttribute="top" secondItem="4H2-xg-aFm" secondAttribute="top" constant="-44" id="k2o-7D-moC"/>
                                     <constraint firstAttribute="trailing" secondItem="emz-NR-R5x" secondAttribute="trailing" id="ojm-rj-jdP"/>
+                                    <constraint firstItem="Elv-SQ-R4d" firstAttribute="centerX" secondItem="j7T-DG-aYq" secondAttribute="centerX" id="ote-Ht-ii8"/>
                                     <constraint firstAttribute="bottom" secondItem="Swo-Sr-Qd8" secondAttribute="bottom" id="pmc-DO-IIl"/>
                                     <constraint firstItem="Swo-Sr-Qd8" firstAttribute="leading" secondItem="4H2-xg-aFm" secondAttribute="leading" id="rjT-eS-1Do"/>
                                     <constraint firstItem="Swo-Sr-Qd8" firstAttribute="top" secondItem="emz-NR-R5x" secondAttribute="bottom" id="wzg-ib-QVB"/>
+                                    <constraint firstItem="Elv-SQ-R4d" firstAttribute="centerY" secondItem="j7T-DG-aYq" secondAttribute="centerY" id="yHJ-UK-duF"/>
                                     <constraint firstAttribute="trailing" secondItem="BOE-OE-xsb" secondAttribute="trailing" id="ykZ-rL-zJI"/>
                                 </constraints>
                             </view>
@@ -1124,6 +1132,7 @@ The copyright law of the United States (Title 17, United States Code) governs th
                         <outlet property="previewView" destination="4H2-xg-aFm" id="HMm-lr-Qui"/>
                         <outlet property="printButton" destination="Afb-Xc-wRV" id="WjU-uC-IDb"/>
                         <outlet property="shareButton" destination="pAD-AA-Eej" id="BbR-gL-YnT"/>
+                        <outlet property="tilingOverlayContainer" destination="Elv-SQ-R4d" id="Q0H-pI-3ew"/>
                         <outlet property="topView" destination="BOE-OE-xsb" id="g1o-bp-Ach"/>
                         <outlet property="transitionEffectView" destination="kGR-q5-Apw" id="vNF-Rq-Cdh"/>
                     </connections>

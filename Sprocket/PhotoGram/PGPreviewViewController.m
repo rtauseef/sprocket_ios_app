@@ -35,6 +35,7 @@
 #import "PGLinkSettings.h"
 #import "PGPrintQueueManager.h"
 #import "PGSetupSprocketViewController.h"
+#import "PGTilingOverlay.h"
 #import "PGLog.h"
 #import <MP.h>
 #import <HPPR.h>
@@ -90,6 +91,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (strong, nonatomic) IBOutlet iCarousel *carouselView;
+@property (weak, nonatomic) IBOutlet PGTilingOverlay *tilingOverlayContainer;
+
 
 @property (strong, nonatomic) PGGesturesView *imageView;
 @property (strong, nonatomic) UIPopoverController *popover;
@@ -608,10 +611,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGPreviewDrawerTiling)tilingOption
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGTilingOverlayOption)tilingOption
 {
-    //TODO handle tilingOption
-    NSLog(@"User selected another tiling option: %ld", (long)tilingOption);
+    if (tilingOption == PGTilingOverlayOptionSingle) {
+        self.tilingOverlayContainer.hidden = YES;
+        return;
+    }
+    
+    [self.tilingOverlayContainer showTilingOverlay:tilingOption];
+    self.tilingOverlayContainer.hidden = NO;
 }
 
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer

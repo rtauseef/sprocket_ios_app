@@ -10,15 +10,10 @@
 // the license agreement.
 //
 
+#import "PGTilingOverlay.h"
 #import <UIKit/UIKit.h>
 
 @protocol PGPreviewDrawerViewControllerDelegate;
-
-typedef NS_ENUM(NSInteger, PGPreviewDrawerTiling) {
-    PGPreviewDrawerTilingSingle,
-    PGPreviewDrawerTiling2x2,
-    PGPreviewDrawerTiling3x3
-};
 
 @interface PGPreviewDrawerViewController : UIViewController
 
@@ -30,7 +25,7 @@ typedef NS_ENUM(NSInteger, PGPreviewDrawerTiling) {
 @property (nonatomic, assign) BOOL showPrintQueue;
 @property (nonatomic, assign) BOOL alwaysShowPrintQueue;
 @property (assign, nonatomic) NSInteger numberOfCopies;
-@property (assign, nonatomic) PGPreviewDrawerTiling tilingOption;
+@property (assign, nonatomic) PGTilingOverlayOption tilingOption;
 
 - (CGFloat)drawerHeight;
 - (CGFloat)drawerHeightOpened;
@@ -44,7 +39,7 @@ typedef NS_ENUM(NSInteger, PGPreviewDrawerTiling) {
 
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button;
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture;
-- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGPreviewDrawerTiling)tilingOption;
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGTilingOverlayOption)tilingOption;
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer;
 - (void)pgPreviewDrawerDidClearQueue:(PGPreviewDrawerViewController *)drawer;
 

@@ -1171,6 +1171,8 @@
 		73CAA5C71F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */; };
 		73CAA5CA1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */; };
 		73CAA5CB1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */; };
+		73CAA5CE1F0C854200ACC13C /* PGTilingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */; };
+		73CAA5CF1F0C854200ACC13C /* PGTilingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */; };
 		73D294751EFD824D009BC2E1 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
@@ -3036,6 +3038,8 @@
 		738700D01EF4CCA3004D321D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlay2x2.xib; sourceTree = "<group>"; };
 		73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlay3x3.xib; sourceTree = "<group>"; };
+		73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTilingOverlay.h; sourceTree = "<group>"; };
+		73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTilingOverlay.m; sourceTree = "<group>"; };
 		73D0F3C31EF880E100BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		73D0F3C41EF880E300BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		73D0F3C51EF880E500BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -6464,6 +6468,8 @@
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
+				73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */,
+				73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */,
 				73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */,
 				73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */,
 			);
@@ -9710,6 +9716,7 @@
 				F2B3F5C41EFC5E9300F1E6FB /* PGMetarImageItem.m in Sources */,
 				7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */,
 				488f9841d6340d3e1b52e08c /* PGSurveyManager.m in Sources */,
+				73CAA5CF1F0C854200ACC13C /* PGTilingOverlay.m in Sources */,
 				12495e2dc332c51c9c9bb3da /* PGRevealViewController.m in Sources */,
 				c2e153366dd0c752981c1913 /* PGStickerItem.m in Sources */,
 				1174168234d1a88405ac0c0b /* NSURLRequest+Helper.m in Sources */,
@@ -9946,6 +9953,7 @@
 				829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
+				73CAA5CE1F0C854200ACC13C /* PGTilingOverlay.m in Sources */,
 				EDD33F721EF9CE520028DBC8 /* PGMetarPayoffViewController.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
