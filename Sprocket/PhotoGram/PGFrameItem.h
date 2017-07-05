@@ -25,4 +25,6 @@
 - (UIImage *)thumbnailImage;
 - (UIImage *)frameImage;
 
++ (NSString *)stickerNameWithName:(NSString *)name andPackageName:(NSString *)packageName;
+
 @end
