@@ -106,7 +106,7 @@
     IMGLYStickerCategory *disneyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
                                                                                imageURL:disneyStickers[1].thumbnailURL
                                                                                stickers:disneyStickers];
-    getWellCategory.accessibilityLabel = @"Disney";
+    disneyCategory.accessibilityLabel = @"Disney";
 
 
     NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"customSticker" withExtension:@"png"];
