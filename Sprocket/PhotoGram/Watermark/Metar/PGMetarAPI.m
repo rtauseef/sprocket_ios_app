@@ -23,7 +23,7 @@
 @implementation PGMetarAPI
 
 NSString * const kBatataAPIURL = @"http://www.somacoding.com/sprocket-link";
-NSString * const kMetarAPIURL = @"http://www.somacoding.com/metar";
+NSString * const kMetarAPIURL = @"https://dev.sprocket.api.hp.com/api/v1";
 NSString * const PGMetarAPIDomain = @"com.hp.sprocket.metarapi";
 
 static NSString * const kMetarApplicationID = @"dm_ios";
