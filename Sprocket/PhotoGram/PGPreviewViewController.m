@@ -505,6 +505,24 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self presentViewController:alert animated:YES completion:completion];
 }
 
+- (void)updateTilingOverlayIfNeeded
+{
+    if (self.tilingOverlayContainer.hidden) {
+        return;
+    }
+    
+    UIView *gestureView = self.gesturesViews.firstObject;
+    if (!gestureView) {
+        return;
+    }
+    
+    CGSize carouselSize = self.carouselView.frame.size;
+    CGSize gestureViewSize = gestureView.frame.size;
+    CGFloat overlayX = carouselSize.width/2 - gestureViewSize.width/2;
+    CGFloat overlayY = self.carouselView.frame.origin.y;
+    self.tilingOverlayContainer.frame = CGRectMake(overlayX, overlayY, gestureViewSize.width, gestureViewSize.height);
+}
+
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
@@ -620,6 +638,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     [self.tilingOverlayContainer showTilingOverlay:tilingOption];
     self.tilingOverlayContainer.hidden = NO;
+    [self updateTilingOverlayIfNeeded];
 }
 
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
@@ -1191,7 +1210,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         } else if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
             PGLogDebug(@"PRINT STATUS: RESUMING PRINT QUEUE");
         } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
-            PGLogDebug(@"PRINT STATUS: SENDING JOB: %lu%", progress);
+            PGLogDebug(@"PRINT STATUS: SENDING JOB: %lu%%", progress);
             [self showProgressView];
             [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
             [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
@@ -1650,6 +1669,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
     [self.view layoutIfNeeded];
+    [self updateTilingOverlayIfNeeded];
     
     if (option == iCarouselOptionWrap) {
         return self.gesturesViews.count > 2;

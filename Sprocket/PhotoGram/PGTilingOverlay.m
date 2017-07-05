@@ -36,6 +36,7 @@
     self.currentTiling = subviewArray.firstObject;
     if (self.currentTiling) {
         [self addSubview:self.currentTiling];
+        self.currentTiling.frame = self.bounds;
     }
 }
 
