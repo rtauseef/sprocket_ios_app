@@ -92,11 +92,13 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
     
-    // pre fetch offline tags
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
-        PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
-        [metaroffline checkTagDB:nil];
-    });
+    if ([PGLinkSettings localWatermarkEnabled]) {
+        // pre fetch offline tags
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
+            PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
+            [metaroffline checkTagDB:nil];
+        });
+    }
     
     return YES;
 }
