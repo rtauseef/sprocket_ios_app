@@ -214,6 +214,8 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     sender.selected = YES;
     self.tiling2x2Button.selected = NO;
     self.tiling3x3Button.selected = NO;
+    
+    [self updateCopyLabelAndButtons];
 }
 
 - (IBAction)tiling2x2Tapped:(UIButton *)sender
@@ -231,6 +233,11 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     sender.selected = YES;
     self.tilingSingleButton.selected = NO;
     self.tiling3x3Button.selected = NO;
+    
+    self.numberOfCopies = 1;
+    [self updateCopyLabelAndButtons];
+    self.plusButton.enabled = NO;
+    self.minusButton.enabled = NO;
 }
 
 - (IBAction)tiling3x3Tapped:(UIButton *)sender
@@ -248,6 +255,11 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     sender.selected = YES;
     self.tilingSingleButton.selected = NO;
     self.tiling2x2Button.selected = NO;
+    
+    self.numberOfCopies = 1;
+    [self updateCopyLabelAndButtons];
+    self.plusButton.enabled = NO;
+    self.minusButton.enabled = NO;
 }
 
 #pragma mark - Gesture Recognizers
