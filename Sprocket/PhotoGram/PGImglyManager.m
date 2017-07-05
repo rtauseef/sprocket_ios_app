@@ -178,6 +178,19 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     return fonts;
 }
 
+- (void)removeAurView {
+    __weak PGImglyManager *weakSelf = self;
+    if (_aurView) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            PGImglyManager *strongSelf = weakSelf;
+            if (strongSelf) {
+                [strongSelf->_aurView removeFromSuperview];
+                strongSelf->_aurView = nil;
+            }
+        });
+    }
+}
+
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
 {
     self.embellishmentMetricsManager = embellishmentMetricsManager;
@@ -333,37 +346,27 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 [cell.imageView updateConstraintsIfNeeded];
             };
 
-            toolBuilder.overlayButtonConfigurationClosure =^(IMGLYOverlayButton *button, enum FrameOverlayAction frameAction) {
-                if (_aurView) { // show menu frmae, magic frame, ....
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [_aurView removeFromSuperview];
-                        _aurView = nil;
-                    });
-                }
-            };
-            toolBuilder.frameOverlayActionSelectedClosure = ^(enum FrameOverlayAction frameAction) {
+            toolBuilder.discardButtonConfigurationClosure = ^(IMGLYButton *button) {
                 __weak PGImglyManager *weakSelf = self;
-                if (_aurView) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        PGImglyManager *strongSelf = weakSelf;
-                        if (strongSelf) {
-                            [strongSelf->_aurView removeFromSuperview];
-                            strongSelf->_aurView = nil;
-                        }
-                    });
-                }
+                [button setActionClosure:^(id action){
+                    PGImglyManager *strongSelf = weakSelf;
+                    if (strongSelf) {
+                        [strongSelf removeAurView];
+                    }
+                } for:UIControlEventTouchUpInside];
             };
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton *button) {
+                __weak PGImglyManager *weakSelf = self;
+                [button setActionClosure:^(id action){
+                    PGImglyManager *strongSelf = weakSelf;
+                    if (strongSelf) {
+                        [strongSelf removeAurView];
+                    }
+                } for:UIControlEventTouchUpInside];
+            };
+            
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
-                __weak PGImglyManager *weakSelf = self;
-                if (_aurView) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        PGImglyManager *strongSelf = weakSelf;
-                        if (strongSelf) {
-                            [strongSelf->_aurView removeFromSuperview];
-                            strongSelf->_aurView = nil;
-                        }
-                    });
-                }
+                [self removeAurView];
                 cell.captionLabel.text = nil;
 
                 [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
@@ -373,16 +376,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             };
             
             toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
+                [self removeAurView];
                 __weak PGImglyManager *weakSelf = self;
-                if (_aurView) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        PGImglyManager *strongSelf = weakSelf;
-                        if (strongSelf) {
-                            [strongSelf->_aurView removeFromSuperview];
-                            strongSelf->_aurView = nil;
-                        }
-                    });
-                }
                 if (frame) {
                     PGAurasmaMagicFrame *magicFrame = [PGMagicFrameManager magicFramesDictionary][frame.accessibilityLabel];
                     if (magicFrame) {
