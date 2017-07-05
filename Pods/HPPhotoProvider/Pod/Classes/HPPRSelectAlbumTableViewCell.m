@@ -30,7 +30,7 @@ const NSUInteger kHPPRAlbumThumbnailSize = 150;
 
 @implementation HPPRSelectAlbumTableViewCell
 
-- (void) fillVideoCount: (HPPRAlbum *) album {
+- (void)fillVideoCount:(HPPRAlbum *)album {
     if (album.videoCount > 0) {
         if (album.photoCount != 0) {
             self.photoCountLabelView.text = [NSString stringWithFormat:@"%@%@",self.photoCountLabelView.text, @"\n"];

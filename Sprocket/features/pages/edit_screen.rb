@@ -77,13 +77,15 @@ class EditScreen < Calabash::IBase
     def check
         "view marked:'editor-tool-apply-btn'"
     end
-
+def download    
+    "* id:'previewDownload'"
+    end
     def navigate
         unless current_page?
             preview_screen = go_to(GooglePreviewScreen)
             sleep(WAIT_SCREENLOAD)
             #wait_for_elements_exist(preview_screen.edit, :timeout => MAX_TIMEOUT)
-            touch query("view marked:'Edit")
+            touch query("view marked:'Edit'")
             sleep(WAIT_SCREENLOAD)    
             if element_exists("view marked:'Authorize' index:0")
                 touch("view marked:'Authorize' index:0")

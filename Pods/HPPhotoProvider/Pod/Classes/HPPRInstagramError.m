@@ -48,6 +48,10 @@
                 }
                 break;
                 
+            case THE_REQUEST_TIME_OUT_ERROR_CODE:
+                instagramError = INSTAGRAM_TIME_OUT_ERROR;
+                break;
+
             default:
                 [HPPRInstagramError printUnrecognizedData:error];
                 instagramError = INSTAGRAM_UNRECOGNIZED_ERROR;

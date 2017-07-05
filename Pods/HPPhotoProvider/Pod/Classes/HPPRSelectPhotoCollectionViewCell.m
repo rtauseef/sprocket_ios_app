@@ -62,21 +62,19 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
             return;
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^ {
-            if (self.retrieveLowQuality) {
-                [[HPPRCacheService sharedInstance] imageForUrl:self.media.thumbnailUrl asThumbnail:YES withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    if ([_media.thumbnailUrl isEqualToString:url]) {
-                        [self setImage:image];
-                    }
-                }];
-            } else {
-                [[HPPRCacheService sharedInstance] imageForUrl:self.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    if ([_media.standardUrl isEqualToString:url]) {
-                        [self setImage:image];
-                    }
-                }];
-            }
-        });
+        if (self.retrieveLowQuality) {
+            [[HPPRCacheService sharedInstance] imageForUrl:self.media.thumbnailUrl asThumbnail:YES highPriority:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if ([_media.thumbnailUrl isEqualToString:url]) {
+                    [self setImage:image];
+                }
+            }];
+        } else {
+            [[HPPRCacheService sharedInstance] imageForUrl:self.media.standardUrl asThumbnail:NO highPriority:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if ([_media.standardUrl isEqualToString:url]) {
+                    [self setImage:image];
+                }
+            }];
+        }
     }
 }
 
@@ -88,10 +86,10 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
             self.loadingImage.hidden = YES;
         }
     } else {
-        dispatch_async(dispatch_get_main_queue(), ^ {
+        dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = image;
             self.loadingImage.hidden = YES;
-            if( _media.mediaType == kHPRMediaTypeVideo ) {
+            if (_media.mediaType == HPPRMediaTypeVideo) {
                 // display overlay
                 self.mediaTypeImageView.hidden = NO;
                 // TODO set overlay icon

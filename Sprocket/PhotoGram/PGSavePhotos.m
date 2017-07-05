@@ -11,6 +11,7 @@
 //
 
 #import "PGSavePhotos.h"
+#import "PGAnalyticsManager.h"
 #import <HPPRCameraRollLoginProvider.h>
 
 NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
@@ -208,6 +209,8 @@ NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:save forKey:kSettingSaveCameraPhotos];
     [defaults synchronize];
+    
+    [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:(save ? @"On" : @"Off")];
 }
 
 + (BOOL)userPromptedToSavePhotos
@@ -218,6 +221,35 @@ NSString * const kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
         userPrompted = NO;
     }
     return userPrompted;
+}
+
++ (void)promptToSavePhotos:(UIViewController *)viewController completion:(void(^)(BOOL savePhotos))completion
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Auto-Save Settings", @"Settings for automatically saving photos")
+                                                                   message:NSLocalizedString(@"Do you want to save new camera photos to your device?", @"Asks the user if they want their photos saved")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"No", @"Dismisses dialog without taking action")
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         [PGSavePhotos setSavePhotos:NO];
+                                                         if (completion) {
+                                                             completion(NO);
+                                                         }
+                                                     }];
+    [alert addAction:noAction];
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", @"Dismisses dialog, and chooses to save photos")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                          
+                                                          [PGSavePhotos setSavePhotos:YES];
+                                                          if (completion) {
+                                                              completion(YES);
+                                                          }
+                                                      }];
+    [alert addAction:yesAction];
+    
+    [viewController presentViewController:alert animated:YES completion:nil];
 }
 
 @end

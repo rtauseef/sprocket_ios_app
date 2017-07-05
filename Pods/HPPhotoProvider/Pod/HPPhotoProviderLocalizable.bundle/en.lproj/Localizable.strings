@@ -40,6 +40,8 @@
 /* Single video available. */
 "1 video" = "1 video";
 
+/* Button caption */
+"Authorize" = "Authorize";
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Album deleted";
 

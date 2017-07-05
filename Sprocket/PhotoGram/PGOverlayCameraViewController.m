@@ -14,12 +14,15 @@
 #import "PGCameraManager.h"
 #import "PGLinkSettings.h"
 #import <AVKit/AVKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 static const NSUInteger kMaxRecordingTime = 20;
 
 @interface PGOverlayCameraViewController ()
 
+
 @property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
+@property (weak, nonatomic) IBOutlet UIButton *timerButton;
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UIButton *switchCameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *shutterButton;
@@ -37,6 +40,7 @@ static const NSUInteger kMaxRecordingTime = 20;
 
 @property (assign, nonatomic) BOOL playbackMode;
 @property (assign, nonatomic) BOOL watermarkingEnabled;
+@property (assign, nonatomic) BOOL shutterTimerRunning;
 
 @property (strong, nonatomic) AVURLAsset *playbackAsset;
 @property (strong, nonatomic) UIImage *playbackImage;
@@ -85,7 +89,7 @@ static const NSUInteger kMaxRecordingTime = 20;
     self.recordingProgressViewHeight.constant = 0.0f;
     self.recordingProgressView.hidden = YES;
     self.scanView.hidden = YES;
-    [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+    [self resetShutterTimerButtonAndShutterButton];
     
     if ([PGLinkSettings videoPrintEnabled]) {
         UILongPressGestureRecognizer *longPressGestureForShutter = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressShutterButton:)];
@@ -132,10 +136,8 @@ static const NSUInteger kMaxRecordingTime = 20;
             [self.scanView setAlpha:0];
             [self.scanView setHidden:NO];
             
-            self.closeButton.hidden = YES;
-            self.shutterButton.hidden = YES;
-            self.flashButton.hidden = YES;
-            self.switchCameraButton.hidden = YES;
+            [self setCameraSettingsHiddenState:YES];
+            
             
             // fade in
             [UIView animateWithDuration:1.0f animations:^{
@@ -182,10 +184,15 @@ static const NSUInteger kMaxRecordingTime = 20;
 
 - (void) stopScanning {
     self.scanView.hidden = YES;
-    self.closeButton.hidden = NO;
-    self.shutterButton.hidden = NO;
-    self.flashButton.hidden = NO;
-    self.switchCameraButton.hidden = NO;
+    [self setCameraSettingsHiddenState:NO];
+}
+
+- (void) setCameraSettingsHiddenState:(BOOL)hidden {
+    self.closeButton.hidden = hidden;
+    self.shutterButton.hidden = hidden;
+    self.flashButton.hidden = hidden;
+    self.switchCameraButton.hidden = hidden;
+    self.timerButton.hidden = hidden;
 }
 
 - (void) playVideo:(AVURLAsset *) asset image: (UIImage *) image originalAsset: (PHAsset *) originalAsset {
@@ -270,6 +277,7 @@ static const NSUInteger kMaxRecordingTime = 20;
         [self.player pause];
         [self.playerViewController.view removeFromSuperview];
     }
+    [self resetShutterTimerButtonAndShutterButton];
 }
 
 - (IBAction)cameraReverseTapped:(id)sender
@@ -278,16 +286,43 @@ static const NSUInteger kMaxRecordingTime = 20;
     [self setupButtons];
 }
 
-- (IBAction)shutterTapped:(id)sender
-{
+- (IBAction)shutterTapped:(id)sender {
     if (!self.movieMode && !self.playbackMode) {
-        [[PGCameraManager sharedInstance] takePicture];
+        if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateNone) {
+            [[PGCameraManager sharedInstance] takePicture];
+        } else if (self.shutterTimerRunning) {
+            [self resetShutterButton];
+        } else {
+            [self triggerShutterTimer];
+        }
     } else if (!self.movieMode && self.playbackMode) {
         [self.player pause];
         [self.playerViewController.view removeFromSuperview];
 
         [[PGCameraManager sharedInstance] loadPreviewViewControllerWithVideo:self.playbackAsset andImage:self.playbackImage andOriginalAsset: self.originalAsset andInfo:nil];
     }
+}
+
+- (void)triggerShutterTimer {
+    [CATransaction begin];
+        [CATransaction setCompletionBlock:^{
+            if (self.shutterTimerRunning) {
+                [[PGCameraManager sharedInstance] takePicture];
+                [self resetShutterButton];
+            }
+        }];
+        self.shutterTimerRunning = true;
+        [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimerActive"] forState:UIControlStateNormal];
+        CGFloat shutterDelay = (NSInteger)[[PGCameraManager sharedInstance] shutterTimerDelayState];
+        CABasicAnimation* rotationAnimation;
+        rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0];
+        rotationAnimation.duration = shutterDelay;
+        rotationAnimation.cumulative = YES;
+        rotationAnimation.repeatCount = 0;
+        
+        [self.shutterButton.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [CATransaction commit];
 }
 
 - (void) updateTimeDisplay {
@@ -300,6 +335,11 @@ static const NSUInteger kMaxRecordingTime = 20;
         [[PGCameraManager sharedInstance] stopRecording];
         return;
     }
+}
+- (IBAction)timerTapped:(id)sender {
+    [self resetShutterButton];
+    [[PGCameraManager sharedInstance] toggleTimer];
+    [self configureShutterTimerButtonAndShutterButton];
 }
 
 - (IBAction)flashTapped:(id)sender {
@@ -327,6 +367,33 @@ static const NSUInteger kMaxRecordingTime = 20;
         } else {
             [self.flashButton setImage:[UIImage imageNamed:@"cameraFlashOff"] forState:UIControlStateNormal];
         }
+    }
+}
+
+- (void)resetShutterTimerButtonAndShutterButton {
+    [PGCameraManager sharedInstance].shutterTimerDelayState = ShutterTimerDelayStateNone;
+    [self resetShutterButton];
+    [self.timerButton setImage:[UIImage imageNamed:@"timer"] forState:UIControlStateNormal];
+    [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+    
+}
+
+- (void)resetShutterButton {
+    self.shutterTimerRunning = NO; 
+    [self.shutterButton.layer removeAllAnimations];
+    [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
+}
+
+- (void)configureShutterTimerButtonAndShutterButton {
+    if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateNone) {
+        [self.timerButton setImage:[UIImage imageNamed:@"timer"] forState:UIControlStateNormal];
+        [self.shutterButton setImage:[UIImage imageNamed:@"cameraShutter"] forState:UIControlStateNormal];
+    } else if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateThree) {
+        [self.timerButton setImage:[UIImage imageNamed:@"timer3"] forState:UIControlStateNormal];
+        [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
+    } else if ([PGCameraManager sharedInstance].shutterTimerDelayState == ShutterTimerDelayStateTen) {
+        [self.timerButton setImage:[UIImage imageNamed:@"timer10"] forState:UIControlStateNormal];
+        [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
     }
 }
 

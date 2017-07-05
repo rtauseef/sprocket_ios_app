@@ -117,38 +117,10 @@
 - (void)retrieveExtraMediaInfo:(HPPRMedia *)media withRefresh:(BOOL)refresh andCompletion:(void (^)(NSError *error))completion
 {
     // nothing to do here
-    
-    completion(nil);
-    
-    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        [self likesCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalLikes, NSError *error) {
-            if (error) {
-                media.likes = 0;
-                media.comments = 0;
-                if (completion) {
-                    completion(error);
-                }
-            } else {
-                media.likes = [totalLikes integerValue];
-                [self commentsCountForPhoto:media.objectID withRefresh:refresh andCompletion:^(NSNumber *totalComments, NSError *error) {
-                    if (error) {
-                        media.comments = 0;
-                        if (completion) {
-                            completion(error);
-                        }
-                    } else {
-                        media.comments = [totalComments integerValue];
-                        if (completion) {
-                            completion(nil);
-                        }
-                    }
 
-                }];
-            }
-        }];
-        
-    });*/
+    if (completion) {
+        completion(nil);
+    }
 }
 
 - (void)requestVideosWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload {
@@ -157,12 +129,12 @@
         NSArray *records = nil;
         
         if (!error) {
-            NSArray * videos = [videoInfo objectForKey:@"data"];
+            NSArray *videos = [videoInfo objectForKey:@"data"];
             NSString *maxVideoID = [[[videoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
             NSMutableArray *mutableRecords = [NSMutableArray array];
             
-            for (NSDictionary * video in videos) {
-                __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithVideoAttributes:video];
+            for (NSDictionary *video in videos) {
+                HPPRFacebookMedia *media = [[HPPRFacebookMedia alloc] initWithVideoAttributes:video];
                 [mutableRecords addObject:media];
             }
             
@@ -198,14 +170,14 @@
         
         void (^block)() = ^(NSDictionary *photoInfo, NSError *error) {
             NSArray *records = nil;
-            NSArray * photos = nil;
+            NSArray *photos = nil;
             
             if (!error) {
                 photos = [photoInfo objectForKey:@"data"];
                 NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
                 NSMutableArray *mutableRecords = [NSMutableArray array];
-                for (NSDictionary * photo in photos) {
-                    __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+                for (NSDictionary *photo in photos) {
+                    HPPRFacebookMedia *media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
                     [mutableRecords addObject:media];
                 }
                 
@@ -225,8 +197,6 @@
             if (completion) {
                 completion(records);
             }
-            
-
         };
         
         [self photosForAlbum:self.album.objectID withRefresh:reload andPaging:self.maxPhotoID andCompletion:block];
@@ -364,7 +334,7 @@
     [self cachedGraphRequest:photoID parameters:fields refresh:refresh paging:nil completion:completion];
 }
 
-- (void)photoForDayInDate:(NSDate *) date withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion {
+- (void)photoForDayInDate:(NSDate *)date withRefresh:(BOOL)refresh andPaging:(NSString *)afterID andCompletion:(void (^)(NSDictionary *photos, NSError *error))completion {
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay ) fromDate:date];

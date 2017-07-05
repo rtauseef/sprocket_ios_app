@@ -74,7 +74,7 @@
 + (void)setStepOneLabelText:(PGAttributedLabel *)label
 {
     NSString *stepOne = NSLocalizedString(@"Step 1", @"Setup step 1 title");
-    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Load Paper", @"Setup step 1 desc")];
+    NSString *stepOneDesc = [NSString stringWithFormat:@" %@", NSLocalizedString(@"Slide Lid Back & Load Paper", @"Setup step 1 desc")];
 
     [PGSetupSprocketViewController setupStepLabel:label step:stepOne desc:stepOneDesc];
 }
@@ -103,6 +103,7 @@
     [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"0096D6"] range:NSMakeRange(step.length, desc.length)];
     [attributedText addAttribute:NSFontAttributeName value:[UIFont fontWithName:label.fontFamily size:label.fontSize] range:NSMakeRange(0, attributedText.length)];
     label.attributedText = attributedText;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
 }
 
 

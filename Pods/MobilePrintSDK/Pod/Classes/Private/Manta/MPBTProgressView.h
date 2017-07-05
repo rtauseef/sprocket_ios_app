@@ -24,7 +24,7 @@
 + (CGFloat)animationDuration;
 
 - (void)setProgress:(CGFloat)progress;
-- (void)setStatus:(MantaUpgradeStatus)status;
+- (void)setStatus:(SprocketUpgradeStatus)status;
 - (void)reflashDevice;
 - (void)printToDevice:(UIImage *)image refreshCompletion:(void(^)(void))completion;
 - (void)printToDevice:(UIImage *)image processor:(MPBTImageProcessor *)processor refreshCompletion:(void(^)(void))completion;

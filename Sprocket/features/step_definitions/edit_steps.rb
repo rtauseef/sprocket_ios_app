@@ -228,34 +228,36 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
   #split_sticker_tab = sticker_tab.split("_")
   #split_sticker_tab_id = split_sticker_tab[2].to_i
     if $sticker_tab == "Fathers Day Category"
-        tab = query("IMGLYIconBorderedCollectionViewCell index:1",:accessibilityLabel)[0]
+        tab = query("IMGLYIconBorderedCollectionViewCell index:2",:accessibilityLabel)[0]
         if tab == "Father's Day Category"
-            touch query "IMGLYIconBorderedCollectionViewCell index:1" 
+            touch query "IMGLYIconBorderedCollectionViewCell index:2" 
         else
             raise "Tab not found"
         end
     else
         if (element_exists "view marked:'#{sticker_tab.to_s}'")
             touch query("view marked:'#{sticker_tab}'")
+            sleep(STEP_PAUSE)
         else
             while element_does_not_exist("view marked:'Add Custom Sticker'")
                 scroll("UICollectionView",:left)
             end
             if (element_exists "view marked:'#{sticker_tab.to_s}'")
                 touch query("view marked:'#{sticker_tab}'")
-            end
-            i = 0
-            while i < 5 do      
-                scroll("UICollectionView",:right)
-                sleep(WAIT_SCREENLOAD)
-                i = i + 1
-                if i >= 5
-                    raise "Tab not found"
-                end
-                if (element_exists "view marked:'#{sticker_tab.to_s}'")
-                    touch query("view marked:'#{sticker_tab}'")
-                    sleep(STEP_PAUSE)
-                break
+            else
+                i = 0
+                while i < 5 do      
+                    scroll("UICollectionView",:right)
+                    sleep(WAIT_SCREENLOAD)
+                    i = i + 1
+                    if i >= 5
+                        raise "Tab not found"
+                    end
+                    if (element_exists "view marked:'#{sticker_tab.to_s}'")
+                        touch query("view marked:'#{sticker_tab}'")
+                        sleep(STEP_PAUSE)
+                        break
+                     end
                 end
             end
         end
@@ -406,10 +408,28 @@ Given(/^I choose "([^"]*)" option$/) do |option|
     touch @current_page.send(method_name)
     sleep(STEP_PAUSE)
 end
-Then(/^I set the slider value to "([^"]*)"$/) do |value|
-  query("view:'imglyKit.TooltipSlider'",{setValue:value.to_i})
+
+Then(/^I set the value for "([^"]*)"$/) do |method_name|
+    $slider_val = @current_page.send(method_name)
+    $slider_val = $slider_val.round(2)
+    query("view:'imglyKit.TooltipSlider'",{setValue:$slider_val})
+    sleep(STEP_PAUSE) 
 end
-Then(/^I verify the slider value is set to "([^"]*)"$/) do |value|
-slider_value = query("view:'imglyKit.TooltipSlider'",:value)[0]
-  raise "Slider value not set correctly!" unless slider_value.to_i == value.to_i
+
+Then(/^I verify the slider value$/) do 
+  value = query("view:'imglyKit.TooltipSlider'",:value)[0]
+    value = value.round(2)
+  raise "Slider value not set correctly!" unless value.to_f == $slider_val.to_f
+end
+
+Then(/^I select a sticker from "([^"]*)"$/) do |sticker_tab|
+    $stic_id = select_rand_stic sticker_tab
+    macro %Q|I select "#{sticker_tab}" tab|
+    macro %Q|I select "#{$stic_id}" sticker|
+    macro %Q|I am on the "StickerOptionEditor" screen|
+end
+
+Then(/^I should see the photo with the sticker from "([^"]*)" tab$/) do |sticker_tab|
+    $sticker_tab = sticker_tab
+    macro %Q|I should see the photo with the "#{$stic_id}" sticker from "#{$sticker_tab}" tab|
 end

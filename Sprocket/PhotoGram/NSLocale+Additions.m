@@ -145,7 +145,7 @@ static NSString * const kPGHPCareTwitterURLFormat = @"http://hp.care/HPCS%@TW";
 
 + (NSDictionary *)supportedLocales
 {
-    return @{@"en":@"us", @"de":@"de", @"es":@"es", @"fr":@"fr", @"it":@"it", @"nl":@"nl",  @"et":@"ee", @"fi":@"fi", @"lv":@"lv", @"lt":@"lt", @"nb":@"no", @"pt":@"pt", @"sv":@"se", @"zh":@"cn", @"da":@"dk", @"el":@"el", @"id":@"id", @"ru":@"ru", @"tr":@"tr", @"th":@"th"};
+    return @{@"cs":@"cz", @"da":@"dk", @"de":@"de", @"el":@"el", @"en":@"us", @"es":@"es", @"et":@"ee", @"fi":@"fi", @"fr":@"fr", @"he":@"il", @"hu":@"hu", @"id":@"id", @"it":@"it", @"lt":@"lt", @"lv":@"lv", @"nb":@"no", @"nl":@"nl", @"pl":@"pl", @"pt":@"pt", @"ru":@"ru", @"sk":@"sk", @"sv":@"se", @"th":@"th", @"tr":@"tr", @"zh":@"cn"};
 }
 
 + (NSDictionary *)twitterHPSupportLocales

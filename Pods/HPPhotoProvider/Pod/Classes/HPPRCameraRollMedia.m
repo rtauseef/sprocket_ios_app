@@ -45,11 +45,11 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
     return self;
 }
 
-+ (tHPRMediaType) mediaTypeForAsset:(PHAsset*) asset {
-    if( asset.mediaType == PHAssetMediaTypeVideo ) {
-        return kHPRMediaTypeVideo;
++ (HPPRMediaType)mediaTypeForAsset:(PHAsset*)asset {
+    if (asset.mediaType == PHAssetMediaTypeVideo) {
+        return HPPRMediaTypeVideo;
     } else {
-        return kHPRMediaTypeImage; // default to image if it's not video. audio possibility is "gracefully ignored" =)
+        return HPPRMediaTypeImage; // default to image if it's not video. audio possibility is "gracefully ignored" =)
     }
 }
 
@@ -130,7 +130,7 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
         
         [self.asset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
             
-            if (self.mediaType == kHPRMediaTypeImage)  {
+            if (self.mediaType == HPPRMediaTypeImage)  {
                 CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
                 
                 id isoInfo =  fullImage.properties[@"{Exif}"][@"ISOSpeedRatings"];
@@ -163,7 +163,7 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                 self.focalLength = fullImage.properties[@"{Exif}"][@"FocalLength"];
                 self.cameraMake = fullImage.properties[@"{TIFF}"][@"Make"];
                 self.cameraModel = fullImage.properties[@"{TIFF}"][@"Model"];
-            } else if (self.mediaType == kHPRMediaTypeVideo) {
+            } else if (self.mediaType == HPPRMediaTypeVideo) {
                 AVAsset *resolvedAsset = contentEditingInput.avAsset;
                 
                 CMTime duration = [resolvedAsset duration];

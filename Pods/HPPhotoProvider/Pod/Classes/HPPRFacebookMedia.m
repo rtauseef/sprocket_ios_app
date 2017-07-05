@@ -21,11 +21,12 @@
 
 @implementation HPPRFacebookMedia
 
-- (id)initWithVideoAttributes:(NSDictionary *)attributes {
+- (id)initWithVideoAttributes:(NSDictionary *)attributes
+{
     self = [self initWithAttributes:attributes];
     
     if (self) {
-        self.mediaType = kHPRMediaTypeVideo;
+        self.mediaType = HPPRMediaTypeVideo;
         self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForVideoThumbnail:attributes];
         self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForVideoPhoto:attributes];
         
@@ -49,7 +50,7 @@
     self = [super init];
     
     if (self) {
-        self.socialProvider = tHPRMediaSocialProviderFacebook;
+        self.socialProvider = HPPRSocialMediaProviderFacebook;
         self.objectID = [attributes objectForKey:@"id"];
         self.thumbnailUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForSmallestPhoto:attributes];
         self.standardUrl = [[HPPRFacebookPhotoProvider sharedInstance] urlForLargestPhoto:attributes];
@@ -88,7 +89,7 @@
         }
         
         self.placeName = [[attributes objectForKey:@"place"] objectForKey:@"name"];
-        self.mediaType = kHPRMediaTypeImage;
+        self.mediaType = HPPRMediaTypeImage;
         
         NSNumber* likes = [[[attributes objectForKey:@"likes"] objectForKey:@"summary"] objectForKey:@"total_count"];
         if (likes)

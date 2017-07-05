@@ -32,7 +32,7 @@
 "All Photos" = "Alle Fotos";
 
 /* Message of an alert when the user has denied the permission to access the Photos of the device */
-"Allow access in your Settings to print and save your photos." = "Gestatten Sie den Zugriff unter "Einstellungen", um Ihre Fotos zu drucken und zu speichern.";
+"Allow access in your Settings to print and save your photos." = "Gestatten Sie den Zugriff unter \"Einstellungen\", um Ihre Fotos zu drucken und zu speichern.";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
 "Authorization Required" = "Autorisierung erforderlich";

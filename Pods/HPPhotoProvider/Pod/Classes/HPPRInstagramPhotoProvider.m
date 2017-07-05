@@ -212,6 +212,7 @@ enum MCInstagramDisplayType {
                     // When switching between my photos and my feed, the first thing the app do is canceling the current request. When this happens the AFNetworking protocol used for communicating with the instagram API returns "The operation couldn’t be completed"
                     break;
                 case INSTAGRAM_NO_INTERNET_CONNECTION:
+                case INSTAGRAM_TIME_OUT_ERROR:
                     [weakSelf lostConnection];
                     break;
                 case INSTAGRAM_TOKEN_IS_INVALID:
@@ -283,10 +284,10 @@ enum MCInstagramDisplayType {
     }
 }
 
-- (NSArray *) filterRecordsForDate:(NSDate *) filterDate andRecords:(NSArray *) records {
+- (NSArray *)filterRecordsForDate:(NSDate *)filterDate andRecords:(NSArray *)records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
-    for(HPPRMedia *instagramMedia in records) {
+    for (HPPRMedia *instagramMedia in records) {
         if ([[NSCalendar currentCalendar] isDate:filterDate inSameDayAsDate:instagramMedia.createdTime]) {
             [updatedRecords addObject:instagramMedia];
         }
@@ -295,10 +296,10 @@ enum MCInstagramDisplayType {
     return updatedRecords;
 }
 
-- (NSArray *) filterRecordsForLocation:(CLLocation *) filterLocation distance: (int) distance andRecords:(NSArray *) records {
+- (NSArray *)filterRecordsForLocation:(CLLocation *)filterLocation distance:(int)distance andRecords:(NSArray *)records {
     NSMutableArray *updatedRecords = [NSMutableArray array];
     
-    for(HPPRMedia *instagramMedia in records) {
+    for (HPPRMedia *instagramMedia in records) {
         if (instagramMedia.location != nil) {
             if ([instagramMedia.location distanceFromLocation:filterLocation] <= distance) {
                 [updatedRecords addObject:instagramMedia];

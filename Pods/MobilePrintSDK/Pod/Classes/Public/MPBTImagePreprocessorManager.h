@@ -10,30 +10,20 @@
 // the license agreement.
 //
 
-
 #import <Foundation/Foundation.h>
-
 #import "MPBTImageProcessor.h"
 
-
-
-
-
 typedef void (^tMPBTImagePreprocessorManagerBlock)(NSUInteger processorIndex, double progress);
-typedef void (^tMPBTImagePreprocessorManagerCompletionBlock)(NSError* error, UIImage* image);
+typedef void (^tMPBTImagePreprocessorManagerCompletionBlock)(NSError *error, UIImage *image);
 
 @interface MPBTImagePreprocessorManager : NSObject
 
-@property (strong, nonatomic) NSArray* processors;
-@property (strong, nonatomic) NSDictionary * options;
+@property (strong, nonatomic) NSArray *processors;
+@property (strong, nonatomic) NSDictionary *options;
 
++ (instancetype)createWithProcessors:(NSArray *)processors options:(NSDictionary *)options;
 
-
--(instancetype) initWithProcessors:(NSArray*) processors options:(NSDictionary*) options;
-
-+(instancetype) new;
-+(instancetype) createWithProcessors:(NSArray*) processors options:(NSDictionary*) options;
-
--(void) processImage:(UIImage *) image statusUpdate:(tMPBTImagePreprocessorManagerBlock) statusUpdate complete:(tMPBTImagePreprocessorManagerCompletionBlock) completion;
+- (instancetype)initWithProcessors:(NSArray *)processors options:(NSDictionary *)options;
+- (void)processImage:(UIImage *)image statusUpdate:(tMPBTImagePreprocessorManagerBlock)statusUpdate complete:(tMPBTImagePreprocessorManagerCompletionBlock)completion;
 
 @end

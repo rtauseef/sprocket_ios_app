@@ -19,8 +19,6 @@
 
 #pragma mark - Initialization
 
-
-
 + (HPPRPituPhotoProvider *)sharedInstance
 {
     static dispatch_once_t once;
@@ -60,7 +58,9 @@
 {
     if (self.album) {
         NSArray *records = [self getThumbnailPhotosFromCameraRoll];
-        completion(@{ @"data":records });
+        if (completion) {
+            completion(records);
+        }
     } else {
         [self albumsWithRefresh:NO andCompletion:^(NSArray *albums, NSError *error) {
             NSArray *records = [[NSArray alloc] init];
@@ -69,7 +69,9 @@
                 records = [self getThumbnailPhotosFromCameraRoll];
             }
             
-            completion(@{ @"data":records });
+            if (completion) {
+                completion(records);
+            }
         }];
     }
 }

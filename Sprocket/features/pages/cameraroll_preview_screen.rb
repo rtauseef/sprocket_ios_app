@@ -67,6 +67,7 @@ end
 def close
     "button"
   end
+  
 def navigate
   unless current_page?
     select_photo_screen = go_to(CameraRollPhotoScreen)
