@@ -28,6 +28,7 @@
 #import "HPPRGoogleFilteredPhotoProvider.h"
 #import "HPPRGoogleLoginProvider.h"
 #import "AFImageDownloader.h"
+#import "UIFont+HPPRStyle.h"
 
 @interface PGPayoffViewImageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate, PGPayoffFullScreenTmpViewControllerDelegate, HPPRFacebookFilteredPhotoProviderDelegate, HPPRInstagramFilteredPhotoProviderDelegate, HPPRGoogleFilteredPhotoProviderDelegate>
 
@@ -60,14 +61,15 @@
 
 @end
 
-#define kPayoffBottomMargin 20
-#define kPayoffViewInset 60
-#define kPGLocationDistance 5000 // 5km
-#define kInstagramMaxImagesSearch 300
+static const NSInteger kPayoffBottomMargin = 10;
+static const NSInteger kPayoffViewInset = 60;
+static const NSInteger kPGLocationDistance = 5000; // 5km
+static const NSInteger kInstagramMaxImagesSearch = 300;
 
 #define kPayoffFBLabelTag 101
 #define kPayoffInstagramLabelTag 102
 #define kPayoffGoogleLabelTag 103
+#define kPayoffLocalLabelTag 104
 
 @implementation PGPayoffViewImageViewController
 
@@ -248,7 +250,21 @@
     CGSize calculatedSize = CGSizeMake(photosSize.width, 0);
     
     if (photosSize.height > 0) {
-        CGRect frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, photosSize.height);
+        UILabel *localPhotosLabel = [self createLabelWithText:NSLocalizedString(@"Local Photos",@"Local Photos") atPos:calculatedSize.height];
+        [localPhotosLabel setTag:kPayoffLocalLabelTag];
+        
+        if (![self.mainView viewWithTag:kPayoffLocalLabelTag]) {
+            [self.mainView addSubview:localPhotosLabel];
+        } else {
+            UILabel *label = [self.mainView viewWithTag:kPayoffLocalLabelTag];
+            CGRect updateFrame = label.frame;
+            updateFrame.origin.y = calculatedSize.height;
+            label.frame = updateFrame;
+        }
+
+        calculatedSize.height += localPhotosLabel.frame.size.height;
+        
+        CGRect frame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, photosSize.height);
         [self.photoCollectionViewController.view setFrame:frame];
         calculatedSize.height += photosSize.height;
         calculatedSize.height += kPayoffBottomMargin;
@@ -273,21 +289,19 @@
     
     
         if (fbSize.height > 0 && self.hasFacebookContent) {
-            CGRect fbLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-            UILabel *facebookLabel = [[UILabel alloc] initWithFrame:fbLabelFrame];
+            UILabel *facebookLabel = [self createLabelWithText:NSLocalizedString(@"Facebook Photos",@"Facebook Photos") atPos:calculatedSize.height];
             [facebookLabel setTag:kPayoffFBLabelTag];
-            
-            [facebookLabel setText:@"Facebook Photos"];
-            [facebookLabel setTextColor:[UIColor whiteColor]];
             
             if (![self.mainView viewWithTag:kPayoffFBLabelTag]) {
                 [self.mainView addSubview:facebookLabel];
             } else {
                 UILabel *label = [self.mainView viewWithTag:kPayoffFBLabelTag];
-                label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+                CGRect updateFrame = label.frame;
+                updateFrame.origin.y = calculatedSize.height;
+                label.frame = updateFrame;
             }
             
-            calculatedSize.height += fbLabelFrame.size.height;
+            calculatedSize.height += facebookLabel.frame.size.height;
             
             CGRect fbFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, fbSize.height);
             [self.fbPhotoCollectionViewController.view setFrame:fbFrame];
@@ -298,21 +312,19 @@
         }
         
         if (instagramSize.height > 0 && self.hasInstagramContent) {
-            CGRect instLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-            UILabel *instLabel = [[UILabel alloc] initWithFrame:instLabelFrame];
+            UILabel *instLabel = [self createLabelWithText:NSLocalizedString(@"Instagram Photos",@"Instagram Photos") atPos:calculatedSize.height];
             [instLabel setTag:kPayoffInstagramLabelTag];
-            
-            [instLabel setText:@"Instagram Photos"];
-            [instLabel setTextColor:[UIColor whiteColor]];
             
             if (![self.mainView viewWithTag:kPayoffInstagramLabelTag]) {
                 [self.mainView addSubview:instLabel];
             } else {
                 UILabel *label = [self.mainView viewWithTag:kPayoffInstagramLabelTag];
-                label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+                CGRect updateFrame = label.frame;
+                updateFrame.origin.y = calculatedSize.height;
+                label.frame = updateFrame;
             }
             
-            calculatedSize.height += instLabelFrame.size.height;
+            calculatedSize.height += instLabel.frame.size.height;
             
             CGRect instFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, instagramSize.height);
             [self.instagramPhotoCollectionViewController.view setFrame:instFrame];
@@ -323,21 +335,19 @@
         }
         
         if (googleSize.height > 0 && self.hasGoogleContent) {
-            CGRect googleLabelFrame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
-            UILabel *googleLabel = [[UILabel alloc] initWithFrame:googleLabelFrame];
+            UILabel *googleLabel = [self createLabelWithText:NSLocalizedString(@"Google Photos",@" Google Photos") atPos:calculatedSize.height];
             [googleLabel setTag:kPayoffGoogleLabelTag];
-            
-            [googleLabel setText:@"Google Photos"];
-            [googleLabel setTextColor:[UIColor whiteColor]];
             
             if (![self.mainView viewWithTag:kPayoffGoogleLabelTag]) {
                 [self.mainView addSubview:googleLabel];
             } else {
                 UILabel *label = [self.mainView viewWithTag:kPayoffGoogleLabelTag];
-                label.frame = CGRectMake(8, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width - 8, 21);
+                CGRect updateFrame = label.frame;
+                updateFrame.origin.y = calculatedSize.height;
+                label.frame = updateFrame;
             }
             
-            calculatedSize.height += googleLabelFrame.size.height;
+            calculatedSize.height += googleLabel.frame.size.height;
             
             CGRect googleFrame = CGRectMake(0, calculatedSize.height, [[UIScreen mainScreen] bounds].size.width, googleSize.height);
             [self.googlePhotoCollectionViewController.view setFrame:googleFrame];
@@ -350,6 +360,25 @@
     
     CGSize totalScrollSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, self.mainView.frame.origin.y + calculatedSize.height);
     self.scrollView.contentSize = totalScrollSize;
+}
+
+- (UILabel *)createLabelWithText:(NSString *)text  atPos:(CGFloat)pos {
+    
+    CGRect frame = CGRectMake(0, pos, [[UIScreen mainScreen] bounds].size.width, 29);
+    
+    NSMutableParagraphStyle *style =  [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.headIndent = 8.0f;
+    style.firstLineHeadIndent = 8.0f;
+    NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:text attributes:@{ NSParagraphStyleAttributeName : style}];
+
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    [label setAttributedText:attrText];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setFont:[UIFont HPPRSimplifiedLightFontWithSize:16.0]];
+    [label setBackgroundColor:[UIColor colorWithRed:42.0/255.0 green:42.0/255.0 blue:42.0/255.0 alpha:1.0]];
+    
+    return label;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -378,7 +407,6 @@
                     [self.blockImageButton setHidden:NO];
                 }];
             } else {
-                //TODO: placeholder image
                 [self.blockImageButton setHidden:NO];
             }
         } else if (self.metadata.source.from == PGMetarSourceFromSocial) {
@@ -389,7 +417,7 @@
                     UIImage *renderImage = [self imageByCroppingImage:responseObject toSize:self.blockImageButton.frame.size];
                     [self.blockImageButton setImage:renderImage forState:UIControlStateNormal];
                 } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-                    // TODO: placeholder image
+                    [self.blockImageButton setHidden:NO];
                 }];
             }
 
