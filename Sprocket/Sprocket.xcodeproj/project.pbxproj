@@ -1165,6 +1165,12 @@
 		71f2dffb8966b2947e2dced6 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27419B648E500AAB884 /* SourceSansPro-Regular.ttf */; };
 		72f28ed86ea1cb1293a4f971 /* Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B62FFB19A50E5800CB80D7 /* Search@2x.png */; };
 		731333AC1ECF68BE00E957BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 731333AE1ECF68BE00E957BB /* Localizable.strings */; };
+		733BC1ED1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */; };
+		733BC1EE1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */; };
+		733BC1F21F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */; };
+		733BC1F31F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */; };
+		733BC1F81F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */; };
+		733BC1F91F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */; };
 		7387003C1EF4BC9F004D321D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7387003E1EF4BC9F004D321D /* InfoPlist.strings */; };
 		7397DE051EE7444A00F544C0 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
 		73CAA5C61F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */; };
@@ -2939,6 +2945,11 @@
 		731333AF1ECF68BE00E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		731333B01ECF68BF00E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		731333B11ECF68C000E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlayTile.xib; sourceTree = "<group>"; };
+		733BC1F01F0D687F00CCA697 /* PGTilingOverlayTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTilingOverlayTile.h; sourceTree = "<group>"; };
+		733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTilingOverlayTile.m; sourceTree = "<group>"; };
+		733BC1F61F0D9E0E00CCA697 /* PGInteractionIgnorerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInteractionIgnorerView.h; sourceTree = "<group>"; };
+		733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInteractionIgnorerView.m; sourceTree = "<group>"; };
 		738700311EF4BC95004D321D /* cs-CZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "cs-CZ"; path = "cs-CZ.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		738700331EF4BC96004D321D /* cs-CZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "cs-CZ"; path = "cs-CZ.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		738700341EF4BC98004D321D /* cs-CZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "cs-CZ"; path = "cs-CZ.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
@@ -6466,12 +6477,17 @@
 				821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */,
 				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
+				733BC1F61F0D9E0E00CCA697 /* PGInteractionIgnorerView.h */,
+				733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
 				73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */,
 				73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */,
 				73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */,
 				73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */,
+				733BC1F01F0D687F00CCA697 /* PGTilingOverlayTile.h */,
+				733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */,
+				733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -7102,6 +7118,7 @@
 				929CE1B81EF075C700039377 /* fork_TN@2x.png in Resources */,
 				929CE4B71EF0792000039377 /* TurquoiseFrame_TN@2x.png in Resources */,
 				F2062FFD1F01D9D400A369EB /* DisneyPolaroid1Frame.png in Resources */,
+				733BC1ED1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */,
 				929CDFC71EF075C600039377 /* pig.png in Resources */,
 				929CE17C1EF075C700039377 /* smoking_pipe_TN@2x.png in Resources */,
 				929CE05A1EF075C700039377 /* HP_white-sticker.png in Resources */,
@@ -8273,6 +8290,7 @@
 				264C1FF71EF1D1AB00B3BB98 /* sundae_TN@3x.png in Resources */,
 				264C1FEC1EF1D1AB00B3BB98 /* Soda_can_TN@3x.png in Resources */,
 				264C1FA11EF1D1AA00B3BB98 /* bacon_egg_TN.png in Resources */,
+				733BC1EE1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */,
 				264C20A91EF1D1C700B3BB98 /* catglasses_TN.png in Resources */,
 				264C21C61EF1D1FA00B3BB98 /* birds_TN@3x.png in Resources */,
 				264C1D541EF1D13100B3BB98 /* RainbowFrame_TN@2x.png in Resources */,
@@ -9705,6 +9723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B3F5D31EFC5E9300F1E6FB /* PGMetarVideo.m in Sources */,
+				733BC1F91F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */,
 				F2B3F5BF1EFC5E9300F1E6FB /* PGMetarArtifact.m in Sources */,
 				F2B3F5D11EFC5E9300F1E6FB /* PGMetarSource.m in Sources */,
 				F2B3F5B71EFC5E7600F1E6FB /* PGPayoffViewLivePhotoViewController.m in Sources */,
@@ -9776,6 +9795,7 @@
 				F2B3F5C71EFC5E9300F1E6FB /* PGMetarLocationVenue.m in Sources */,
 				a87555cde15740ecf2522d3b /* PGInstagramLandingPageViewController.m in Sources */,
 				F2B3F5CF1EFC5E9300F1E6FB /* PGMetarSocial.m in Sources */,
+				733BC1F31F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */,
 				F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */,
 				F2B3F5A71EFC5E5A00F1E6FB /* PGPayoffProcessor.m in Sources */,
 				F2E785311DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
@@ -9900,6 +9920,7 @@
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				EDD33F861EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m in Sources */,
 				EDD33F6E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m in Sources */,
+				733BC1F21F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */,
 				EDD33F741EF9CE520028DBC8 /* PGMetarSocial.m in Sources */,
 				EDD33F7A1EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m in Sources */,
 				EDD33F881EF9CE520028DBC8 /* PGWikipediaTableViewCell.m in Sources */,
@@ -9926,6 +9947,7 @@
 				F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */,
 				EDD33F821EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m in Sources */,
 				F2B3F5A01EFC423700F1E6FB /* PGFrameItem.m in Sources */,
+				733BC1F81F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */,
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
 				F230516D1ECBB36E00E21B5A /* PGInboxMessageCenterListViewController.m in Sources */,

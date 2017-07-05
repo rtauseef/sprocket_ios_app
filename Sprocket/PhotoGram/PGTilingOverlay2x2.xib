@@ -6,23 +6,40 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12121"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PGInteractionIgnorerView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-R3-tJD">
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnQ-Kq-8Kd" customClass="PGTilingOverlayTile">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="333.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPL-pk-n9c" customClass="PGTilingOverlayTile">
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="333.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jI-u3-KRM" customClass="PGTilingOverlayTile">
+                    <rect key="frame" x="0.0" y="333.5" width="187.5" height="333.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gg-81-KTr" customClass="PGTilingOverlayTile">
+                    <rect key="frame" x="187.5" y="333.5" width="187.5" height="333.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-R3-tJD">
                     <rect key="frame" x="185.5" y="0.0" width="4" height="667"/>
                     <color key="backgroundColor" red="0.15294117647058825" green="0.14901960784313725" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="4" id="aB1-Q4-Q6T"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iL-HH-uxa">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iL-HH-uxa">
                     <rect key="frame" x="0.0" y="331.5" width="375" height="4"/>
                     <color key="backgroundColor" red="0.1529411765" green="0.14901960780000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -32,10 +49,26 @@
             </subviews>
             <constraints>
                 <constraint firstItem="NUp-R3-tJD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2d5-LW-9qF"/>
+                <constraint firstItem="VPL-pk-n9c" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="7Xg-qS-AMV"/>
+                <constraint firstItem="ZnQ-Kq-8Kd" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="8CX-8A-wPs"/>
+                <constraint firstItem="ZnQ-Kq-8Kd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="B52-mA-owH"/>
+                <constraint firstItem="5jI-u3-KRM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BiA-tr-GWy"/>
+                <constraint firstAttribute="bottom" secondItem="5jI-u3-KRM" secondAttribute="bottom" id="E9T-8r-Heh"/>
+                <constraint firstItem="4Gg-81-KTr" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="HUX-Cm-Tq0"/>
+                <constraint firstAttribute="trailing" secondItem="4Gg-81-KTr" secondAttribute="trailing" id="Liq-95-IvI"/>
+                <constraint firstItem="VPL-pk-n9c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SOH-gh-vGx"/>
                 <constraint firstAttribute="bottom" secondItem="NUp-R3-tJD" secondAttribute="bottom" id="VB4-dR-lBy"/>
+                <constraint firstItem="ZnQ-Kq-8Kd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="Voc-Zd-743"/>
+                <constraint firstItem="ZnQ-Kq-8Kd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XSf-la-eeP"/>
+                <constraint firstItem="VPL-pk-n9c" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="Zqp-9q-g6o"/>
+                <constraint firstItem="5jI-u3-KRM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="ce5-Bz-0Cj"/>
                 <constraint firstItem="3iL-HH-uxa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="g9K-km-kQD"/>
                 <constraint firstItem="3iL-HH-uxa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iNq-lo-h1j"/>
+                <constraint firstAttribute="trailing" secondItem="VPL-pk-n9c" secondAttribute="trailing" id="ivZ-mg-zXI"/>
+                <constraint firstItem="5jI-u3-KRM" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="lhr-Ws-PZh"/>
                 <constraint firstAttribute="trailing" secondItem="3iL-HH-uxa" secondAttribute="trailing" id="mJz-AT-Wa0"/>
+                <constraint firstAttribute="bottom" secondItem="4Gg-81-KTr" secondAttribute="bottom" id="r6I-Lq-NS9"/>
+                <constraint firstItem="4Gg-81-KTr" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="x9i-8B-CzX"/>
                 <constraint firstItem="NUp-R3-tJD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zzy-Ab-Lyp"/>
             </constraints>
         </view>

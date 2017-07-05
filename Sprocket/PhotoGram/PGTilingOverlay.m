@@ -40,7 +40,8 @@
     }
 }
 
-- (void)removeOverlay {
+- (void)removeOverlay
+{
     if (self.currentTiling) {
         [self.currentTiling removeFromSuperview];
         self.currentTiling = nil;
