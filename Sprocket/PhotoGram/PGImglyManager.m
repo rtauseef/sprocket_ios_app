@@ -366,13 +366,15 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             };
             
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
-                [self removeAurView];
                 cell.captionLabel.text = nil;
 
                 [NSLayoutConstraint deactivateConstraints:cell.imageView.constraints];
                 [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
                 [cell.imageView setNeedsUpdateConstraints];
                 [cell.imageView updateConstraintsIfNeeded];
+                [cell.imageView setUserInteractionEnabled:YES];
+                UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeAurView)];
+                [cell.imageView addGestureRecognizer:tapGesture];
             };
             
             toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
