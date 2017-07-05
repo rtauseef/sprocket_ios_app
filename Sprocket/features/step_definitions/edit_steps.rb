@@ -24,15 +24,16 @@ When(/^I tap "(.*?)" mark$/) do |mark|
     else
         if(mark == "Check")
             touch @current_page.check
+            sleep(15)
         else
             if(mark == "Save")
                 sleep(WAIT_SCREENLOAD)
                     touch @current_page.save
-                    #sleep(STEP_PAUSE)
+
             else
                 if(mark == "Add text")
                         touch @current_page.add_text
-                        #sleep(STEP_PAUSE)
+
                 else
                     if(mark == "Cancel")
                         touch @current_page.cancel
@@ -426,7 +427,6 @@ Then(/^I select a sticker from "([^"]*)"$/) do |sticker_tab|
     $stic_id = select_rand_stic sticker_tab
     macro %Q|I select "#{sticker_tab}" tab|
     macro %Q|I select "#{$stic_id}" sticker|
-    sleep(STEP_PAUSE)
     macro %Q|I am on the "StickerOptionEditor" screen|
 end
 

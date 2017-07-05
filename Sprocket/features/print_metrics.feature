@@ -6,7 +6,7 @@ Feature: Check Paper size and Paper type
     @done
     @smoke
     @regression
-    Scenario: Verify print metrics
+    Scenario: Verify print metrics - Save to Camera Roll
         Given I am on the "CameraRoll Photo" screen
         And  I touch menu button on navigation bar
         When I touch "About"
@@ -37,7 +37,7 @@ Feature: Check Paper size and Paper type
         
         
    @TA17934
-   Scenario: Verify print metrics - Print
+   Scenario: Verify print metrics - Single Print
         Given I am on the "CameraRoll Photo" screen
         And  I touch menu button on navigation bar
         When I touch "About"
@@ -89,7 +89,7 @@ Feature: Check Paper size and Paper type
         And I check the category
         
     @TA18198
-    Scenario: Verify print metrics - multiselect
+    Scenario: Verify print metrics - multiselect print
         Given I am on the "CameraRoll Photo" screen
         And  I touch menu button on navigation bar
         When I touch "About"
