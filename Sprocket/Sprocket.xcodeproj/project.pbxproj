@@ -1167,6 +1167,10 @@
 		731333AC1ECF68BE00E957BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 731333AE1ECF68BE00E957BB /* Localizable.strings */; };
 		7387003C1EF4BC9F004D321D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7387003E1EF4BC9F004D321D /* InfoPlist.strings */; };
 		7397DE051EE7444A00F544C0 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
+		73CAA5C61F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */; };
+		73CAA5C71F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */; };
+		73CAA5CA1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */; };
+		73CAA5CB1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */; };
 		73D294751EFD824D009BC2E1 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
@@ -3030,6 +3034,8 @@
 		738700CE1EF4CC63004D321D /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		738700CF1EF4CCA2004D321D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		738700D01EF4CCA3004D321D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlay2x2.xib; sourceTree = "<group>"; };
+		73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlay3x3.xib; sourceTree = "<group>"; };
 		73D0F3C31EF880E100BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		73D0F3C41EF880E300BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		73D0F3C51EF880E500BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -6458,6 +6464,8 @@
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
+				73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */,
+				73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -7295,6 +7303,7 @@
 				929CE10A1EF075C700039377 /* sunglasses.png in Resources */,
 				929CE4AA1EF0792000039377 /* StarsOverlayFrame_TN.png in Resources */,
 				929CE1491EF075C700039377 /* fishing_fatherson_TN@3x.png in Resources */,
+				73CAA5CA1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */,
 				929CE1E51EF075C700039377 /* soda_TN@3x.png in Resources */,
 				929CE0EE1EF075C700039377 /* Mustache-dark.png in Resources */,
 				929CDFB21EF075C600039377 /* koala_TN@3x.png in Resources */,
@@ -7916,6 +7925,7 @@
 				929CE3C11EF075C800039377 /* plane_TN@3x.png in Resources */,
 				929CDFF51EF075C600039377 /* cat-celebrate_TN@2x.png in Resources */,
 				929CE3381EF075C800039377 /* moon_TN@2x.png in Resources */,
+				73CAA5C61F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */,
 				929CE4BF1EF0792000039377 /* WhiteFrame_TN@2x.png in Resources */,
 				929CE05C1EF075C700039377 /* HP_white-sticker_TN@2x.png in Resources */,
 				929CDFA51EF075C600039377 /* dog_TN@2x.png in Resources */,
@@ -8464,6 +8474,7 @@
 				F2030BEA1EA5420600141855 /* imgly_license in Resources */,
 				264C20D01EF1D1C700B3BB98 /* Lips.png in Resources */,
 				264C1EB11EF1D15700B3BB98 /* wave_TN.png in Resources */,
+				73CAA5CB1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */,
 				264C1E0E1EF1D15700B3BB98 /* banner-copy_TN@2x.png in Resources */,
 				264C215E1EF1D1D400B3BB98 /* thumbs-up_TN@2x.png in Resources */,
 				264C20EC1EF1D1C700B3BB98 /* panda-mask.png in Resources */,
@@ -9085,6 +9096,7 @@
 				264C21981EF1D1ED00B3BB98 /* confetti_graduation.png in Resources */,
 				264C1FCB1EF1D1AA00B3BB98 /* icecream_tub_TN@3x.png in Resources */,
 				264C1D4F1EF1D13100B3BB98 /* PolkadotsFrame_TN.png in Resources */,
+				73CAA5C71F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */,
 				264C1E321EF1D15700B3BB98 /* floating_flowers_2_TN@2x.png in Resources */,
 				264C1D511EF1D13100B3BB98 /* PolkadotsFrame_TN@3x.png in Resources */,
 				264C21151EF1D1D400B3BB98 /* Football_TN.png in Resources */,
