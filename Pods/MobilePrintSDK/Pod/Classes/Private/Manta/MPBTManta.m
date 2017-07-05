@@ -146,12 +146,16 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
 
 - (void)reflash
 {
-    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
-        
-        NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
-        
-        [[httpSession downloadTaskWithURL:[NSURL URLWithString:fwPath]] resume];
-    }];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"HP_v114_TestFW_d170615" withExtension:@"rbn"];
+    self.upgradeData = [NSData dataWithContentsOfURL:url];
+    [self.session writeData:[self upgradeReadyRequest]];
+
+//    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
+//        
+//        NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
+//        
+//        [[httpSession downloadTaskWithURL:[NSURL URLWithString:fwPath]] resume];
+//    }];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -454,7 +458,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     self.totalPrintCount = printCount;
     self.batteryStatus = batteryStatus[0];
     self.macAddress = macAddressData;
-    self.firmwareVersion = firmwareVersion;
+    self.firmwareVersion = firmwareVersion-2;
     self.hardwareVersion = hardwareVersion;
     self.localPrintMode = printMode[0];
     _autoExposure = autoExposure[0]; // bypass setter
