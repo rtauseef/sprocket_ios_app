@@ -59,8 +59,6 @@ end
 
 When(/^I touch the Terms of Service link$/) do
   @current_page.terms_of_service_link
-
-
   sleep(WAIT_SCREENLOAD)
 end
 

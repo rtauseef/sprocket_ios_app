@@ -17,7 +17,7 @@ Feature: Check Paper size and Paper type
         Then I should see the "CameraRoll Photo" screen
         When I touch a photos in Camera Roll photos
         Then I should see the "CameraRoll Preview" screen
-        When I tap "Download" button
+        When I choose "download" option
 		Then I wait for some seconds
         Then Fetch metrics details
         And I check the photo_source is "Camera Roll"

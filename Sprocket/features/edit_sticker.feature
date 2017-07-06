@@ -5,15 +5,15 @@ Feature: Verify Edit sticker feature
 @done
 Scenario: Verify 'Sticker' selection in sticker option editor screen
     Given I am on the "CameraRoll Preview" screen
-    When I tap "Edit" button
+    When I choose "edit" option
     Then I should see the "Edit" screen
-    Then I tap "Sticker" button
+    Then I choose "sticker" option
     Then I should see the "Sticker Editor" screen
     And I select "Summer Category" tab
     Then I select "sticker_0" sticker
     Then I should see the "StickerOptionEditor" screen
     And I should see the photo with the "sticker_0" sticker from "Summer Category" tab
-    Then I tap "Close" mark
+    Then I choose "close" option
     Then I should see the "Edit" screen
     And I should see the photo with the "sticker_0" sticker from "Summer Category" tab
 
@@ -23,7 +23,7 @@ Scenario Outline: Verify 'Sticker' selection in edit screen
     And I select "Face Category" tab
     Then I select "sticker_0" sticker
     Then I am on the "StickerOptionEditor" screen
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I am on the "Edit" screen
     And I should see the photo with the "sticker_0" sticker from "Face Category" tab
        
@@ -40,14 +40,11 @@ Scenario: Verify Sticker edit options
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
     And I should see the photo with the "sticker_21" sticker from "Decorative Category" tab
-    And I should see "Add" button
-    And I should see "Delete" button
-    And I should see "Color" button
-    And I should see "Flip" button
-    And I should see "Bring to front" button
-   # And I should see "Undo" mark
-    #And I should see "Redo" mark
-    #And I should see "Flip horizontally" button
+    And I could see "Add" option
+    And I could see "Delete" option
+    And I could see "Color" option
+    And I could see "Flip" option
+    And I could see "Bring to front" option
     
     
 @regression
@@ -114,12 +111,12 @@ Scenario Outline: Verify sticker editor screen navigation
     And I should see the photo with the "sticker_1" sticker from "Animal Category" tab
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    Then I tap "Sticker" button
+    Then I choose "sticker" option
     And I select "Animal Category" tab
     Then I select "sticker_4" sticker
     Then I am on the "StickerOptionEditor" screen
     And I should see the photo with the "sticker_4" sticker from "Animal Category" tab
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I should see the "Edit" screen
     
     Examples:
@@ -141,7 +138,7 @@ Scenario: Verify Sticker add option
     Then I select "sticker_7" sticker
     Then I should see the "StickerOptionEditor" screen
     And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I should see the "Edit" screen
     And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
 
@@ -194,7 +191,7 @@ Scenario: Verify Sticker add/delete functionality
     Then I select "sticker_0" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    Then I tap "Sticker" button
+    Then I choose "sticker" option
     And I select "Face Category" tab
     Then I select "sticker_11" sticker
     #Then I should see the "StickerOptionEditor" screen

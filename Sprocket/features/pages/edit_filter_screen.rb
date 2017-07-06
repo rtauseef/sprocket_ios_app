@@ -15,7 +15,7 @@ class FilterEditorScreen < Calabash::IBase
         "UIButton marked:'Discard changes'"
     end
 
-    def filter_1
+    def first_filter
         "view marked:'Candy'"
     end
     def save

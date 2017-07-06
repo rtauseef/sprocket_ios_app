@@ -30,7 +30,7 @@ class EditScreen < Calabash::IBase
         "IMGLYIconCaptionCollectionViewCell * id:'editSticker'"
     end
     
-    def magic
+    def autofix
         "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
     end
     def adjustment
@@ -68,12 +68,6 @@ class EditScreen < Calabash::IBase
         "* id:'1_turquoise_frame'" 
     end
 
-     def undo
-        "* id:'ic_undo_24pt'"
-    end
-    def redo
-        "* id:'ic_redo_24pt'"
-    end
     def check
         "view marked:'editor-tool-apply-btn'"
     end

@@ -11,20 +11,20 @@ Feature: Verify preview screen from different social media
   @regression
   Scenario: Verify preview screen for instagram
     Given I am on the "Instagram Preview" screen
-    Then I should see "camera" button
-    And I should see "cancel" button
-    And I should see "Edit" button
-    Then I should see "Print" button
-    And I should see "Share" button
+    Then I could see "camera" option
+    And I could see "cancel" option
+    And I could see "edit" option
+    Then I could see "print" option
+    And I could see "share" option
 
   @regression
   Scenario: Verify preview screen for Google
     Given I am on the "Google Preview" screen
-    Then I should see "camera" button
-    And I should see "cancel" button
-    And I should see "Edit" button
-    Then I should see "Print" button
-    And I should see "Share" button
+    Then I could see "camera" option
+    And I could see "cancel" option
+    And I could see "edit" option
+    Then I could see "print" option
+    And I could see "share" option
 
   @done
   @smoke
@@ -33,12 +33,11 @@ Feature: Verify preview screen from different social media
     And I should see the camera roll photos
     When I touch a photos in Camera Roll photos
     Then I should see the "CameraRoll Preview" screen
-    And I close the camera pop up
-    And I should see "camera" button
-    And I should see "close" button
-    And I should see "Edit" button
-    And I should see "Print" button
-    And I should see "Share" button
+    Then I could see "camera" option
+    And I could see "cancel" option
+    And I could see "edit" option
+    Then I could see "print" option
+    And I could see "share" option
 
   @manual
   Scenario: Verify Double-tap add borders to image on preview screen_camera roll
@@ -85,8 +84,8 @@ Feature: Verify preview screen from different social media
   @regression
 Scenario: Verify preview -Drawer
     Given I am on the "CameraRoll Preview" screen
-    Then I should see "PreviewBardots" button
-    Then I tap "PreviewBardots" button
+    Then I could see "preview_bar_dots" option
+    Then I select "preview_bar_dots" 
     Then I should see the preview-drawer "slides up"
     #requirement change
     #And I should see "Print Queue" with "0" items and a right arrow
@@ -96,11 +95,11 @@ Scenario: Verify preview -Drawer
     #Then I verify the "content" of the popup message for "No Prints" 
     #And I should see the button "OK"
     #And I touch "OK"
-    Then I tap "Increment" button
+    Then I select "increment" 
     Then I should see the number of copies "incremented"
-    Then I tap "Decrement" button
+    Then I select "decrement" 
     Then I should see the number of copies "decremented"
-    Then I tap "PreviewBardots" button
+    Then I select "preview_bar_dots" 
     Then I should see the preview-drawer "closes"
     
 

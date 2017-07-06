@@ -52,7 +52,7 @@ end
        "* id:'PreviewBarDots'" 
     end
     
-    def print_queue
+    def printqueue
         "view marked:'Print Queue'" 
     end
     
