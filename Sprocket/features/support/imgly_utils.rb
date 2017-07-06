@@ -141,19 +141,16 @@ $sticker ={
         'sticker_35' => {'name' => 'Plane Sticker','value' => 'Plane Sticker'},
         'sticker_36' => {'name' => 'Mermaid Girl Sticker','value' => 'Mermaid Girl Sticker'},
         'sticker_37' => {'name' => 'Sundae Sticker','value' => 'Sundae Sticker'},
-        'sticker_38' => {'name' => 'Trailer Sticker','value' => 'Trailer Sticker'},
-        'sticker_39' => {'name' => 'Fan Summer Sticker','value' => 'Fan Summer Sticker'},
-        'sticker_40' => {'name' => 'Surfboard Sticker','value' => 'Surfboard Sticker'},
-        'sticker_41' => {'name' => 'Ice Cream Tub Sticker','value' => 'Ice Cream Tub Sticker'},
-        'sticker_42' => {'name' => 'Rainbow 2 Sticker','value' => 'Rainbow 2 Sticker'},
-        'sticker_43' => {'name' => 'Unicorn Float Sticker','value' => 'Unicorn Float Sticker'},
-        'sticker_44' => {'name' => 'Volleyball Sticker','value' => 'Volleyball Sticker'},
-        'sticker_45' => {'name' => 'Dolphin Doodle Sticker','value' => 'Dolphin Doodle Sticker'},
-        'sticker_46' => {'name' => 'Mermaid Tail Water Sticker','value' => 'Mermaid Tail Water Sticker'},
-        'sticker_47' => {'name' => 'Travel Car Bug Sticker','value' => 'Travel Car Bug Sticker'},
-        'sticker_48' => {'name' => 'Soda Straw Sticker','value' => 'Soda Straw Sticker'},
-        'sticker_49' => {'name' => 'BBQ Sticker','value' => 'BBQ Sticker'},
-        'sticker_50' => {'name' => 'Travel Car Woody Sticker','value' => 'Travel Car Woody Sticker'}
+        'sticker_38' => {'name' => 'Fan Summer Sticker','value' => 'Fan Summer Sticker'},
+        'sticker_39' => {'name' => 'Surfboard Sticker','value' => 'Surfboard Sticker'},
+        'sticker_40' => {'name' => 'Ice Cream Tub Sticker','value' => 'Ice Cream Tub Sticker'},
+        'sticker_41' => {'name' => 'Rainbow 2 Sticker','value' => 'Rainbow 2 Sticker'},
+        'sticker_42' => {'name' => 'Unicorn Float Sticker','value' => 'Unicorn Float Sticker'},
+        'sticker_43' => {'name' => 'Volleyball Sticker','value' => 'Volleyball Sticker'},
+        'sticker_44' => {'name' => 'Dolphin Doodle Sticker','value' => 'Dolphin Doodle Sticker'},
+        'sticker_45' => {'name' => 'Mermaid Tail Water Sticker','value' => 'Mermaid Tail Water Sticker'},
+        'sticker_46' => {'name' => 'Soda Straw Sticker','value' => 'Soda Straw Sticker'},
+        'sticker_47' => {'name' => 'BBQ Sticker','value' => 'BBQ Sticker'}
     },
     
     'Face Category' => {
@@ -215,7 +212,12 @@ $sticker ={
         'sticker_26' => {'name' => 'Heart Pixel Sticker','value' =>'Heart Pixel Sticker'},
         'sticker_27' => {'name' => 'Word Cloud Grumble Sticker','value' =>'Word Cloud Grumble Sticker'},
         'sticker_28' => {'name' => 'Reinvent Memories Sticker','value' => 'Reinvent Memories Sticker'},
-        'sticker_29' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'}
+        'sticker_29' => {'name' => 'HP White Sticker','value' => 'HP White Sticker'},
+        'sticker_30' => {'name' => 'Ribbon Graduation Sticker','value' => 'Ribbon Graduation Sticker'},
+        'sticker_31' => {'name' => 'Ribbon Sticker','value' => 'Ribbon Sticker'},
+        'sticker_32' => {'name' => 'Horn Sticker','value' => 'Horn Sticker'},
+        'sticker_33' => {'name' => 'Confetti Graduation Sticker','value' =>'Confetti Graduation Sticker'},
+        'sticker_34' => {'name' => 'Confetti Sticker','value' =>'Confetti Sticker'}
     },
     'Food Category' => {
         'sticker_0' => {'name' => 'Frappuccino Sticker','value' =>'Frappuccino Sticker'},
@@ -243,7 +245,10 @@ $sticker ={
         'sticker_22' => {'name' => 'Candy Sticker','value' =>'Candy Sticker'},
         'sticker_23' => {'name' => 'Cat Coffee Sticker','value' =>'Cat Coffee Sticker'},
         'sticker_24' => {'name' => 'Fork Sticker','value' =>'Fork Sticker'},
-        'sticker_25' => {'name' => 'Oranges Sticker','value' =>'Oranges Sticker'}
+        'sticker_25' => {'name' => 'Oranges Sticker','value' =>'Oranges Sticker'},
+        'sticker_26' => {'name' => 'Jelly Beans Sticker','value' =>'Jelly Beans Sticker'},
+        'sticker_27' => {'name' => 'Carrot 2 Sticker','value' =>'Carrot 2 Sticker'},
+        'sticker_28' => {'name' => 'Carrot Sticker','value' =>'Carrot Sticker'}
     },
     'Birthday Category' => {
         'sticker_0' => {'name' => 'Balloons 2 Sticker','value' =>'Balloons 2 Sticker'},
@@ -282,7 +287,15 @@ $sticker ={
         'sticker_16' => {'name' => 'Bird Sticker','value' =>'Bird Sticker'},
         'sticker_17' => {'name' => 'Koala Sticker','value' =>'Koala Sticker'},
         'sticker_18' => {'name' => 'Cat Grumble Sticker','value' =>'Cat Grumble Sticker'},
-        'sticker_19' => {'name' => 'Pig Sticker','value' =>'Pig Sticker'}
+        'sticker_19' => {'name' => 'Pig Sticker','value' =>'Pig Sticker'},
+        'sticker_20' => {'name' => 'Mom Child Cats Sticker','value' =>'Mom Child Cats Sticker'},
+        'sticker_21' => {'name' => 'Chicks Sticker','value' =>'Chicks Sticker'},
+        'sticker_22' => {'name' => 'Snails Sticker','value' =>'Snails Sticker'},
+        'sticker_23' => {'name' => 'New Bunny Sticker','value' =>'New Bunny Sticker'},
+        'sticker_24' => {'name' => 'Owl Scholar Sticker','value' =>'Owl Scholar Sticker'},
+        'sticker_25' => {'name' => 'Birds Sticker','value' =>'Birds Sticker'},
+        'sticker_26' => {'name' => 'Mother Turtle Sticker','value' =>'Mother Turtle Sticker'},
+        'sticker_27' => {'name' => 'Mother Giraffe Sticker','value' =>'Mother Giraffe Sticker'}
     },
     'Nature Category' => {
         'sticker_0' => {'name' => 'Feather Sticker','value' =>'Feather Sticker'},
@@ -307,15 +320,44 @@ $sticker ={
         'sticker_19' => {'name' => 'Palm Tree 2 Sticker','value' =>'Palm Tree 2 Sticker'},
         'sticker_20' => {'name' => 'Wave Sticker','value' =>'Wave Sticker'},
         'sticker_21' => {'name' => 'Star Yellow Sticker','value' =>'Star Yellow Sticker'},
-        'sticker_22' => {'name' => 'Cloud Sad Sticker','value' =>'Cloud Sad Sticker'}
+        'sticker_22' => {'name' => 'Cloud Sad Sticker','value' =>'Cloud Sad Sticker'},
+        'sticker_23' => {'name' => 'Three Rosebuds Sticker','value' =>'Three Rosebuds Sticker'},
+        'sticker_24' => {'name' => 'Hanging Lillies Sticker','value' =>'Hanging Lillies Sticker'},
+        'sticker_25' => {'name' => 'Flower Leaves Element Sticker','value' =>'Flower Leaves Element Sticker'},
+        'sticker_26' => {'name' => 'Aster Flower Sticker','value' =>'Aster Flower Sticker'},
+        'sticker_27' => {'name' => 'Three Flower Bunch Sticker','value' =>'Three Flower Bunch Sticker'},
+        'sticker_28' => {'name' => 'Flowers Right Sticker','value' =>'Flowers Right Sticker'},
+        'sticker_29' => {'name' => 'Three Daisies Sticker','value' =>'Three Daisies Sticker'},
+        'sticker_30' => {'name' => 'Flowers Left Sticker','value' =>'Flowers Left Sticker'},
+        'sticker_31' => {'name' => 'Feather Blue Sticker','value' =>'Feather Blue Sticker'},
+        'sticker_32' => {'name' => 'Flowers 2 Sticker','value' =>'Flowers 2 Sticker'},
+        'sticker_33' => {'name' => 'Rosebud Leaves Sticker','value' =>'Rosebud Leaves Sticker'},
+        'sticker_34' => {'name' => 'Flowers Daisies Sticker','value' =>'Flowers Daisies Sticker'},
+        'sticker_35' => {'name' => 'Bouquet Sticker','value' =>'Bouquet Sticker'},
+        'sticker_36' => {'name' => 'Rose Sticker','value' =>'Rose Sticker'},
+        'sticker_37' => {'name' => 'Flower Sticker','value' =>'Flower Sticker'},
+        'sticker_38' => {'name' => 'Banner Copy Sticker','value' =>'Banner Copy Sticker'},
+        'sticker_39' => {'name' => 'Tulips Sticker','value' =>'Tulips Sticker'},
+        'sticker_40' => {'name' => 'Lilly Sticker','value' =>'Lilly Sticker'},
+        'sticker_41' => {'name' => 'Flower Ring Sticker','value' =>'Flower Ring Sticker'},
+        'sticker_42' => {'name' => 'Banner 2 Sticker','value' =>'Banner 2 Sticker'}
     },
+    
     'Get Well' => {
         'sticker_0' => {'name' => 'Band aid 2 Sticker','value' =>'Band aid 2 Sticker'},
         'sticker_1' => {'name' => 'Letter Sticker','value' =>'Letter Sticker'},
         'sticker_2' => {'name' => 'Kleenex Sticker','value' =>'Kleenex Sticker'},
         'sticker_3' => {'name' => 'Measles Sticker','value' =>'Measles Sticker'},
         'sticker_4' => {'name' => 'Medicine Sticker','value' =>'Medicine Sticker'},
-        'sticker_5' => {'name' => 'Love Monster Sticker','value' =>'Love Monster Sticker'}
+        'sticker_5' => {'name' => 'Love Monster Sticker','value' =>'Love Monster Sticker'},
+        'sticker_6' => {'name' => 'Rose Sticker','value' =>'Rose Sticker'},
+        'sticker_7' => {'name' => 'Bouquet Sticker','value' =>'Bouquet Sticker'}
+    },
+    
+    'Disney' => {
+        'sticker_0' => {'name' => 'Disney Headband D Sticker','value' =>'Disney Headband D Sticker'},
+        'sticker_1' => {'name' => 'Disney Headband E Sticker','value' =>'Disney Headband E Sticker'}    
+        
     }
 
 }

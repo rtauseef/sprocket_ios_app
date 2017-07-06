@@ -80,6 +80,7 @@ Scenario Outline: Verify sticker list
     | Animal Category         |
     | Nature Category         |
     | Get Well                |
+    | Disney                  |
                     
                               
 @regression
@@ -98,7 +99,7 @@ Scenario Outline: Verify all the stickers are applied for sticker editor screen
     | Animal Category       |
     | Nature Category       |
     | Get Well              |
-
+    | Disney                |
 
     
 
