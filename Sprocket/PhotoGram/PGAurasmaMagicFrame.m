@@ -14,10 +14,6 @@
 
 @implementation PGAurasmaMagicFrame
 
-@synthesize auraId = _auraId;
-@synthesize name = _name;
-@synthesize imageName = _imageName;
-
 + (instancetype) magicFrameWithAuraId:(NSString *) auraId
                                  name:(NSString *) name
                             imageName:(NSString *) imageName {

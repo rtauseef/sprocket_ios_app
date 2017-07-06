@@ -80,12 +80,12 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     // If you make sure the view is created, in this case by calling on magicFrameController.view.tag, you are able to change the data.
     // This is not a great fix, but is in now to get this working as expected.
     // TODO : fix how the data is set on magicFrameController
-    _magicFrameController = [[IMGLYFrameToolController alloc] initWithConfiguration:configuration];
-    _magicFrameController.view.tag = 0;
-    _magicFrameController.frameDataSource.allFrames = [[PGMagicFrameManager sharedInstance] imglyFrames];
+    self.magicFrameController = [[IMGLYFrameToolController alloc] initWithConfiguration:configuration];
+    self.magicFrameController.view.tag = 0;
+    self.magicFrameController.frameDataSource.allFrames = [[PGMagicFrameManager sharedInstance] imglyFrames];
     IMGLYBoxedMenuItem *magicFrameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemMagicFrame
                                                                          icon:[UIImage imageNamed:@"ic_magicframe_48pt"]
-                                                                         tool:_magicFrameController];
+                                                                         tool:self.magicFrameController];
 
     IMGLYBoxedMenuItem *stickerItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemSticker
                                                                            icon:[UIImage imageNamed:@"ic_sticker_48pt"]
@@ -179,14 +179,10 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 }
 
 - (void)removeAurView {
-    __weak PGImglyManager *weakSelf = self;
     if (_aurView) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            PGImglyManager *strongSelf = weakSelf;
-            if (strongSelf) {
-                [strongSelf->_aurView removeFromSuperview];
-                strongSelf->_aurView = nil;
-            }
+            [self.aurView removeFromSuperview];
+            self.aurView = nil;
         });
     }
 }
@@ -347,21 +343,13 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             };
 
             toolBuilder.discardButtonConfigurationClosure = ^(IMGLYButton *button) {
-                __weak PGImglyManager *weakSelf = self;
                 [button setActionClosure:^(id action){
-                    PGImglyManager *strongSelf = weakSelf;
-                    if (strongSelf) {
-                        [strongSelf removeAurView];
-                    }
+                    [self removeAurView];
                 } for:UIControlEventTouchUpInside];
             };
             toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton *button) {
-                __weak PGImglyManager *weakSelf = self;
                 [button setActionClosure:^(id action){
-                    PGImglyManager *strongSelf = weakSelf;
-                    if (strongSelf) {
-                        [strongSelf removeAurView];
-                    }
+                    [self removeAurView];
                 } for:UIControlEventTouchUpInside];
             };
             
@@ -384,7 +372,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                     PGAurasmaMagicFrame *magicFrame = [PGMagicFrameManager magicFramesDictionary][frame.accessibilityLabel];
                     if (magicFrame) {
                         NSLog(@"frame uuid is %@ and name is %@", magicFrame.auraId, magicFrame.name);
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(50 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
                             
                             PGImglyManager *strongSelf = weakSelf;
                             if (!strongSelf) {
@@ -400,9 +388,9 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                                 NSLog(@"error getting preview controller: %@", error);
                                 return;
                             }
-                            strongSelf->_aurView = [AURView viewWithFrame:self.magicFrameController.workspaceView.frame andController:controller];
-                            strongSelf->_aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
-                            [strongSelf->_magicFrameController.workspaceView addSubview:strongSelf->_aurView];
+                            strongSelf.aurView = [AURView viewWithFrame:strongSelf.magicFrameController.workspaceView.frame andController:controller];
+                            strongSelf.aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
+                            [strongSelf.magicFrameController.workspaceView addSubview:strongSelf->_aurView];
                         });
                     }
                 }

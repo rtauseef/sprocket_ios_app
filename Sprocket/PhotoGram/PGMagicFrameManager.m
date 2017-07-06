@@ -81,8 +81,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSMutableDictionary *framesMutableDict = [NSMutableDictionary dictionary];
-        for (id magicFrame in [[self class] magicFramesArray]) {
-            framesMutableDict[[PGFrameItem stickerNameWithName:((PGAurasmaMagicFrame *)magicFrame).name andPackageName:nil]] = magicFrame;
+        for (PGAurasmaMagicFrame *magicFrame in [[self class] magicFramesArray]) {
+            framesMutableDict[[PGFrameItem stickerNameWithName:magicFrame.name andPackageName:nil]] = magicFrame;
         }
         _magicFramesDict = [NSDictionary dictionaryWithDictionary:framesMutableDict];
     });
@@ -92,8 +92,7 @@
 - (NSArray *)standardUSMagicFrames
 {
     NSMutableArray *frameItemsMutable = [[NSMutableArray alloc] init];
-    for (id item in [[self class] magicFramesArray]) {
-        PGAurasmaMagicFrame *magicFrame = (PGAurasmaMagicFrame *)item;
+    for (PGAurasmaMagicFrame *magicFrame in [[self class] magicFramesArray]) {
         [frameItemsMutable addObject:[[PGFrameItem alloc] initWithName:magicFrame.name imageName:magicFrame.imageName
                                                         andPackageName:nil]];
     }
