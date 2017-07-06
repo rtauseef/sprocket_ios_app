@@ -56,7 +56,12 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
-    [PGAppNavigation deepLink:@"camera"];
+    if ([shortcutItem.type isEqualToString:@"com.hp.sprocket.shortcut.item.type.camera"]) {
+        [PGAppNavigation deepLink:@"camera"];
+    } else if ([shortcutItem.type isEqualToString:@"com.hp.sprocket.shortcut.item.type.status"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"com.hp.sprocket.notification.unwind" object:self];
+    }
+    
     completionHandler(YES);
 }
 
@@ -114,7 +119,15 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         [metaroffline checkTagDB:nil];
     });
     
+    [self setupShortcuts];
+    
     return YES;
+}
+
+- (void)setupShortcuts
+{
+    UIApplicationShortcutItem *item = [[UIApplicationShortcutItem alloc] initWithType:@"com.hp.sprocket.shortcut.item.type.status" localizedTitle:@"Printer Status" localizedSubtitle:@"Check printer" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTask] userInfo:nil];
+    [UIApplication sharedApplication].shortcutItems = @[ item ];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

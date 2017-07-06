@@ -189,6 +189,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     self.operationQueue = [[NSOperationQueue alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSaveAndClose) name:@"com.hp.sprocket.notification.unwind" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -751,67 +753,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (IBAction)didTouchUpInsideCloseButton:(id)sender
 {
-    if (self.didChangeProject) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Save and exit preview?", nil)
-                                                                       message:@""
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
-                                                                  source:kEventDismissEditCloseLabel];
-        }];
-        [alert addAction:cancelAction];
-
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Don't Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self closePreviewAndCamera];
-            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
-                                                                  source:kEventDismissEditCloseLabel];
-        }];
-        [alert addAction:okAction];
-
-        __weak PGPreviewViewController *weakSelf = self;
-        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-
-            [self saveSelectedPhotosWithCompletion:^(BOOL success) {
-                if (success) {
-                    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
-                        [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
-                                                                              source:kEventDismissEditCloseLabel];
-                        
-                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
-                                                                         printItem:weakSelf.printItem
-                                                                       extendedInfo:[weakSelf extendedMetricsByGestureView:(PGGesturesView *)weakSelf.carouselView.currentItemView]];
-                    } else {
-                        NSUInteger selectedPhotosCount = 0;
-                        
-                        // Print Metric
-                        NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", NSStringFromClass([PGSaveToCameraRollActivity class])];
-                        for (PGGesturesView *gestureView in self.gesturesViews) {
-                            if (gestureView.isSelected) {
-                                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
-                                printItem.layout = [self layout];
-                                
-                                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
-                                                                                 printItem:printItem
-                                                                               extendedInfo:[weakSelf extendedMetricsByGestureView:gestureView]];
-                                selectedPhotosCount++;
-                            }
-                        }
-                        
-                        // Analytics Metric
-                        [[PGAnalyticsManager sharedManager] trackMultiSaveProjectActivity:[NSString stringWithFormat:@"%@-Multi", kEventSaveProjectDismiss] numberOfPhotos:selectedPhotosCount];
-                    }
-                    
-                    [self closePreviewAndCamera];
-                }
-            }];
-        }];
-        [alert addAction:saveAction];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    } else {
-        [self closePreviewAndCamera];
-    }
+    [self checkSaveAndClose];
 }
 
 - (IBAction)didTouchUpInsideEditButton:(id)sender
@@ -1645,6 +1587,73 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel
 {
     return 10.0f + (self.carouselView.bounds.size.height * kAspectRatio2by3);
+}
+
+#pragma mark - Unwind
+
+- (void)checkSaveAndClose
+{
+    if (self.didChangeProject) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Save and exit preview?", nil)
+                                                                       message:@""
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditCancelAction
+                                                                  source:kEventDismissEditCloseLabel];
+        }];
+        [alert addAction:cancelAction];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Don't Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self closePreviewAndCamera];
+            [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditOkAction
+                                                                  source:kEventDismissEditCloseLabel];
+        }];
+        [alert addAction:okAction];
+        
+        __weak PGPreviewViewController *weakSelf = self;
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+            [self saveSelectedPhotosWithCompletion:^(BOOL success) {
+                if (success) {
+                    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
+                        [[PGAnalyticsManager sharedManager] trackDismissEditActivity:kEventDismissEditSaveAction
+                                                                              source:kEventDismissEditCloseLabel];
+                        
+                        [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:NSStringFromClass([PGSaveToCameraRollActivity class])
+                                                                         printItem:weakSelf.printItem
+                                                                      extendedInfo:[weakSelf extendedMetricsByGestureView:(PGGesturesView *)weakSelf.carouselView.currentItemView]];
+                    } else {
+                        NSUInteger selectedPhotosCount = 0;
+                        
+                        // Print Metric
+                        NSString *offRampMetric = [NSString stringWithFormat:@"%@-Multi", NSStringFromClass([PGSaveToCameraRollActivity class])];
+                        for (PGGesturesView *gestureView in self.gesturesViews) {
+                            if (gestureView.isSelected) {
+                                MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:gestureView.editedImage];
+                                printItem.layout = [self layout];
+                                
+                                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRampMetric
+                                                                                 printItem:printItem
+                                                                              extendedInfo:[weakSelf extendedMetricsByGestureView:gestureView]];
+                                selectedPhotosCount++;
+                            }
+                        }
+                        
+                        // Analytics Metric
+                        [[PGAnalyticsManager sharedManager] trackMultiSaveProjectActivity:[NSString stringWithFormat:@"%@-Multi", kEventSaveProjectDismiss] numberOfPhotos:selectedPhotosCount];
+                    }
+                    
+                    [self closePreviewAndCamera];
+                }
+            }];
+        }];
+        [alert addAction:saveAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [self closePreviewAndCamera];
+    }
 }
 
 @end

@@ -145,6 +145,9 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
 }
 
+- (IBAction)unwindToLandingPageSelector:(UIStoryboardSegue *)segue {
+    // stuff
+}
 
 #pragma mark - Social Sources
 
