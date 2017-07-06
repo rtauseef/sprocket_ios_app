@@ -201,12 +201,7 @@
     
     if (error) {
         NSLog(@"Failed to record Aura %@", error);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                        message:NSLocalizedString(@"Failed to record Aura", @"")
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:nil, nil];
-        [alert show];
+        [self showSimpleError:NSLocalizedString(@"Failed to record Aura", @"")];
     }
     
     if (fileUrl) {
@@ -339,29 +334,29 @@
         return;
     }
     
+    __weak PGAurasmaViewController *weakSelf = self;
+    
     // set up callback function
     AURCachedContentServiceErrorHandler callback = ^(NSError *error){
         
-        __weak PGAurasmaViewController *weakSelf = self;
-        
-        if (!weakSelf) {
+        PGAurasmaViewController *strongSelfMain = weakSelf;
+        if (!strongSelfMain) {
             return;
-        }
-        
+        }        
+                
         if (error) {
-            [PGAurasmaViewController showSimpleError:@"Failed to get Aura, please check network connection"];            
+            [strongSelfMain showSimpleError:NSLocalizedString(@"Failed to get Aura, please check network connection", @"")];            
             return;
         }
         
-        if (_aurasmaTrackingController != nil){
+        if (strongSelfMain->_aurasmaTrackingController != nil){
             
             dispatch_async(dispatch_get_main_queue(), ^{      
                 
-                if ([_aurasmaTrackingController ableToDetachAura:auraId]) {
-                    [_aurasmaTrackingController startDetachedAura:auraId];
+                if ([strongSelfMain->_aurasmaTrackingController ableToDetachAura:auraId]) {
+                    [strongSelfMain->_aurasmaTrackingController startDetachedAura:auraId];
                 } else {
-                    [PGAurasmaViewController showSimpleError:@"Not able to play Aura, please check Aura set up"];
-                    return; 
+                    [strongSelfMain showSimpleError:NSLocalizedString(@"Not able to play Aura, please check Aura set up", @"")];
                 }
                 
             });
@@ -378,13 +373,17 @@
     }
 }
 
-+ (void)showSimpleError:(NSString *)message {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
-                                                    message:NSLocalizedString(message, @"")
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"OK", @"")
-                                          otherButtonTitles:nil, nil];
-    [alert show];    
+- (void)showSimpleError:(NSString *)message {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"")
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" 
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark PGAurasmaRecordingViewControllerDelegate
