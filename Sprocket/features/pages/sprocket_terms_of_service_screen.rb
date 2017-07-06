@@ -3,28 +3,26 @@ require_relative '../common/base_html_screen'
 class SprocketTermsOfServiceScreen < BaseHtmlScreen
 
   def trait
-    sprocket_title
-    sprocket_header
-      done_button
+        sprocket_header
   end
 
   def sprocket_title
-    "UIWebView css:'DIV' {textContent LIKE 'sprocket'}"
+    "view marked:'sprocket'"
   end
 
 
   def sprocket_header
-    "UIWebView css:'H3' {textContent LIKE 'sprocket Terms of Service'}"
+    "view marked:'HP Sprocket App Terms of Service'"
   end
   
   def done_button
-    "UINavigationButton"
+    "view marked:'Done'"
     end
 
   def navigate
     if not current_page?
       landing_screen = go_to(LandingScreen)
-      landing_screen.terms_of_service
+      landing_screen.terms_of_service_link
        sleep(WAIT_SCREENLOAD)
     end
     await

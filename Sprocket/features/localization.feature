@@ -55,13 +55,6 @@ Scenario: Verify camera roll authorization popup
     
         
 
-  @localization
-  Scenario: Verify camera roll screen titles
-    Given  I am on the "CameraRollLanding" screen
-    Then I open cameraroll	
-    Then I verify photos screen title
-    
-
  @localization
  Scenario: Verify side menu options
     Given  I am on the "Landing" screen
@@ -143,6 +136,14 @@ Scenario: Verify Social media screen titles and navigation
     Then I swipe to see "pitu" screen
     Then I wait for some time
     Then I swipe to see "facebook" screen
+    
+  
+  @localization
+  Scenario: Verify camera roll screen titles
+    Given  I am on the "CameraRollLanding" screen
+    Then I open cameraroll	
+    Then I verify photos screen title
+    
     
     
 
@@ -271,8 +272,28 @@ Scenario: Navigate to Preview screen for cameraroll
       | Instagram     | Instagram Signin | Instagram Landing | Instagram Photos | Instagram Preview |
       | Google        | Google Signin    | Google Landing    | Google Photos    | Google Preview    |
     
-    
-    
-    
-    
+ @appium
+ @TA18119
+ @localization 
+  Scenario: Verify sidemenu urls
+    Given I am on the Landing screen
+    When I touch the "Photos" Logo
+    And I touch signin button
+    When I touch hamburger button on navigation bar
+    And I select "Buy Paper" option
+    Then I verify "Buy Paper" url
+    Then I navigate to "sprocket"
+    And I select "Privacy" option
+    Then I verify "Privacy" url
+    Then I navigate to "sprocket"
+    And I select "How to & Help" option
+    And I select "View User Guide" option
+    Then I verify "View User Guide" url
+    Then I navigate to "sprocket"
+    And I select "Join Support Forum" option
+     Then I verify "Join Support Forum" url
+    Then I navigate to "sprocket"
+    And I select "Visit Support Website" option
+    Then I verify "Visit Support Website" url
+
     

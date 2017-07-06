@@ -84,7 +84,7 @@ int const kPhotosPerRequest = 50;
         if (1 == videoCount) {
             [text appendString:HPPRLocalizedString(@" (1 video)", nil)];
         } else {
-            [text appendFormat:HPPRLocalizedString(@" (%lu videos)", @"Number of videos"), (unsigned long)photoCount];
+            [text appendFormat:HPPRLocalizedString(@" (%lu videos)", @"Number of videos"), (unsigned long)videoCount];
         }
     }
     
@@ -96,7 +96,10 @@ int const kPhotosPerRequest = 50;
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
     NSArray *records = [self getThumbnailPhotosFromCameraRoll];
-    completion(@{ @"data":records });
+
+    if (completion) {
+        completion(records);
+    }
 }
 
 #pragma mark - Albums and photos
@@ -145,7 +148,7 @@ int const kPhotosPerRequest = 50;
     HPPRAlbum *album = [[HPPRAlbum alloc] init];
     album.assetCollection = collection;
     album.photoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
-    if( self.displayVideos ) {
+    if (self.displayVideos) {
         album.videoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
     }
     
@@ -154,8 +157,8 @@ int const kPhotosPerRequest = 50;
     }
 }
 
--(NSPredicate * ) mediaFetchPredicate {
-    if( self.displayVideos ) {
+- (NSPredicate *)mediaFetchPredicate {
+    if (self.displayVideos) {
         return [NSPredicate predicateWithFormat:@"mediaType = %d || mediaType = %d",PHAssetMediaTypeImage, PHAssetMediaTypeVideo];
     } else {
         return [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
@@ -169,7 +172,6 @@ int const kPhotosPerRequest = 50;
     allPhotosOptions.predicate = [self mediaFetchPredicate];
     PHFetchResult *result = nil;
 
-    
     if (self.album.assetCollection) {
         result = [PHAsset fetchAssetsInAssetCollection:self.album.assetCollection options:allPhotosOptions];
     } else {

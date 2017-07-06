@@ -99,6 +99,18 @@ NSString * const kEventCameraDirectionCategory     = @"CameraDirection";
 NSString * const kEventCameraDirectionSwitchAction = @"Switch";
 NSString * const kEventCameraDirectionBackLabel    = @"Back";
 NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
+
+NSString * const kEventCameraTimerCategory         = @"CameraTimer";
+NSString * const kEventCameraTimerSwitchAction     = @"Switch";
+NSString * const kEventCameraTimerNoneLabel        = @"None";
+NSString * const kEventCameraTimer3sLabel          = @"3s";
+NSString * const kEventCameraTimer10sLabel         = @"10s";
+
+NSString * const kEventCameraFlashCategory         = @"CameraFlash";
+NSString * const kEventCameraFlashSwitchAction     = @"Switch";
+NSString * const kEventCameraFlashOnLabel          = @"On";
+NSString * const kEventCameraFlashOffLabel         = @"Off";
+
 NSString * const kEventCameraGalleryCategory       = @"Gallery_Camera";
 NSString * const kEventCameraGallerySelectAction   = @"Select";
 
@@ -135,6 +147,11 @@ NSString * const kEventPrintQueuePrintCopiesAction = @"Print-Copies";
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 NSString * const kEventPrintQueueDeleteCopiesAction = @"Delete-Copies";
 
+NSString * const kEventPrintQueueMenuCategory = @"Print Queue_Menu";
+NSString * const kEventPrintQueuePreviewCategory = @"Print Queue_Preview";
+NSString * const kEventPrintQueueDeleteAllAction = @"Delete All";
+NSString * const kEventPrintQueuePrintAction = @"Print";
+
 NSString * const kEventPrintCategory    = @"Print";
 NSString * const kEventPrintAction      = @"Print";
 NSString * const kEventPrintButtonLabel = @"PrintButton";
@@ -159,6 +176,10 @@ NSString * const kEventPrinterNotConnectedAction = @"OK";
 NSString * const kEventHelpLinksCategory        = @"Help Links";
 
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
+
+NSString * const kEventCustomStickerCategory  = @"Custom Sticker Confirm";
+NSString * const kEventCustomStickerActionYes = @"Yes";
+NSString * const kEventCustomStickerActionNo  = @"No";
 
 NSString * const kPhotoCollectionViewModeGrid = @"Grid";
 NSString * const kPhotoCollectionViewModeList = @"List";
@@ -291,6 +312,16 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
+- (void)trackCameraTimerActivity:(NSString *)timer
+{
+    [self trackEvent:kEventCameraTimerCategory action:kEventCameraTimerSwitchAction label:timer value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackCameraFlashActivity:(NSString *)flash
+{
+    [self trackEvent:kEventCameraFlashCategory action:kEventCameraFlashSwitchAction label:flash value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
 - (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference
 {
     [self trackEvent:kEventPreferencesCategory action:kEventPreferencesCameraAutoSaveAction label:preference value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
@@ -364,9 +395,29 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventPrintQueueCategory action:action label:label value:@(queueSize)];
 }
 
+- (void)trackPrintQueueModalAction:(NSString *)category queueId:(NSInteger)queueId numItemsDeleted:(NSUInteger)numItemsDeleted
+{
+    NSString *action = kEventPrintQueuePrintAction;
+    if (numItemsDeleted) {
+        action = kEventPrintQueueDeleteAllAction;
+    }
+
+    NSString *deviceId = [self userUniqueIdentifier];
+    NSString *label = [NSString stringWithFormat:@"%@-%li", deviceId, (long)queueId];
+
+    [self trackEvent:category action:action label:label value:[NSNumber numberWithUnsignedInteger:numItemsDeleted]];
+}
+
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
 {
     [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(1)];
+}
+
+- (void)trackCustomStickerConfirm:(BOOL)confirmed
+{
+    NSString *action = confirmed ? kEventCustomStickerActionYes : kEventCustomStickerActionNo;
+    
+    [self trackEvent:kEventCustomStickerCategory action:action label:nil value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value

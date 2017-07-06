@@ -19,11 +19,18 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 
 @interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate, AVCaptureFileOutputRecordingDelegate>
 
+typedef NS_ENUM(NSInteger, ShutterTimerDelayState) {
+    ShutterTimerDelayStateNone         = 0,
+    ShutterTimerDelayStateThree        = 3,
+    ShutterTimerDelayStateTen          = 10
+};
+
 @property (assign, nonatomic) BOOL isBackgroundCamera;
 @property (strong, nonatomic) UIImage *currentSelectedPhoto;
 @property (strong, nonatomic) NSString *currentSource;
 @property (strong, nonatomic) HPPRMedia *currentMedia;
 @property (assign, nonatomic) BOOL isFlashOn;
+@property (assign, nonatomic) ShutterTimerDelayState shutterTimerDelayState;
 @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
 @property (assign, nonatomic) BOOL isCapturingVideo;
 
@@ -39,6 +46,7 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 - (void)stopRecording;
 - (void)switchCamera;
 - (void)toggleFlash;
+- (void)toggleTimer;
 
 - (void)startCamera;
 - (void)stopCamera;

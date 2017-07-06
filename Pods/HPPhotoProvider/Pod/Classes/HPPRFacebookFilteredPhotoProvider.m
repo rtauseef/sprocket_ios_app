@@ -1,15 +1,19 @@
 //
-//  HPPRFacebookFilteredPhotoProvider.m
-//  Pods
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Fernando Caprio on 6/13/17.
-//
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "HPPRFacebookFilteredPhotoProvider.h"
 #import "HPPRFacebookMedia.h"
 
-#define FACEBOOK_DEFAULT_LOCATION_DISTANCE 1000
+#define FACEBOOK_DEFAULT_LOCATION_DISTANCE_METERS 1000
 #define FACEBOOK_MAX_PHOTO_SEARCH 250
 
 @interface HPPRFacebookFilteredPhotoProvider()
@@ -22,7 +26,7 @@
 
 @implementation HPPRFacebookFilteredPhotoProvider
 
-- (instancetype) initWithMode: (HPPRFacebookFilteredPhotoProviderMode) filteringMode
+- (instancetype)initWithMode:(HPPRFacebookFilteredPhotoProviderMode)filteringMode
 {
     self = [super init];
     if (self) {
@@ -61,7 +65,7 @@
                             photos = [photoInfo objectForKey:@"data"];
                             NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
                             NSMutableArray *mutableRecords = [NSMutableArray array];
-                            for (NSDictionary * photo in photos) {
+                            for (NSDictionary *photo in photos) {
                                 
                                 NSDictionary *photoDictLocation = [[photo objectForKey:@"place"] objectForKey:@"location"];
                                 
@@ -72,12 +76,12 @@
                                         CLLocation *photoLocation = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
                                         CLLocation *centerLocation = self.fbDelegate.fbFilterContentByLocation;
                                         
-                                        int distanceMeters = [self.fbDelegate respondsToSelector:@selector(fbDistanceForLocationFilter)] ? [self.fbDelegate fbDistanceForLocationFilter] : FACEBOOK_DEFAULT_LOCATION_DISTANCE;
+                                        int distanceMeters = [self.fbDelegate respondsToSelector:@selector(fbDistanceForLocationFilter)] ? [self.fbDelegate fbDistanceForLocationFilter] : FACEBOOK_DEFAULT_LOCATION_DISTANCE_METERS;
                                         
                                         int currentDistance = [centerLocation distanceFromLocation:photoLocation];
                                         
                                         if (currentDistance <= distanceMeters) {
-                                            __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+                                            HPPRFacebookMedia *media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
                                             [mutableRecords addObject:media];
                                         }
                                     }
@@ -129,11 +133,11 @@
              NSArray *records = nil;
              
              if (!error) {
-                 NSArray * photos = [photoInfo objectForKey:@"data"];
+                 NSArray *photos = [photoInfo objectForKey:@"data"];
                  NSString *maxPhotoID = [[[photoInfo objectForKey:@"paging"] objectForKey:@"cursors"] objectForKey:@"after"];
                  NSMutableArray *mutableRecords = [NSMutableArray array];
-                 for (NSDictionary * photo in photos) {
-                     __block HPPRFacebookMedia * media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
+                 for (NSDictionary *photo in photos) {
+                     HPPRFacebookMedia *media = [[HPPRFacebookMedia alloc] initWithAttributes:photo];
                      [mutableRecords addObject:media];
                  }
                  

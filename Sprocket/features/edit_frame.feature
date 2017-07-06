@@ -10,10 +10,6 @@ Feature: Verify Edit frame feature
 
       |Hearts Overlay Frame       |
       |Sloppy Frame               |
-      |4th Stars Overlay Frame    |
-      |Fireworks Frame            |
-      |Stripes RWB Frame          |
-      |Stripes RWB Pol Frame      |
       |Rainbow Frame              |
       |White Frame                |
       |Stars Overlay Frame        |
@@ -32,6 +28,9 @@ Feature: Verify Edit frame feature
       |White Bar Frame            |
       |Pink Spray Paint Frame     |
       |White Full Frame           |
+      |Disney Logo Frame          | 
+      |Disney Polaroid 1 Frame    |
+      |Disney Polaroid 2 Frame    |
 
   
   @regression

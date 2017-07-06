@@ -20,5 +20,6 @@
 
 - (UIImage *)imageForUrl:(NSString *)url;
 - (void)imageForUrl:(NSString *)url asThumbnail:(BOOL)thumbnail withCompletion:(void(^)(UIImage *image, NSString *url, NSError *error))completion;
+- (void)imageForUrl:(NSString *)url asThumbnail:(BOOL)thumbnail highPriority:(BOOL)highPriority withCompletion:(void(^)(UIImage *image, NSString *url, NSError *error))completion;
 
 @end

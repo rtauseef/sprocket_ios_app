@@ -1,9 +1,13 @@
 //
-//  HPPRCameraRollPartialPhotoProvider.m
-//  Pods
+// Hewlett-Packard Company
+// All rights reserved.
 //
-//  Created by Fernando Caprio on 5/17/17.
-//
+// This file, its contents, concepts, methods, behavior, and operation
+// (collectively the "Software") are protected by trade secret, patent,
+// and copyright laws. The use of the Software is governed by a license
+// agreement. Disclosure of the Software to third parties, in any form,
+// in whole or in part, is expressly prohibited except as authorized by
+// the license agreement.
 //
 
 #import "HPPRCameraRollPartialPhotoProvider.h"
@@ -20,8 +24,6 @@
 @end
 
 @implementation HPPRCameraRollPartialPhotoProvider
-
-//int const kPhotosPerRequest = 50;
 
 #pragma mark - Initialization
 
@@ -74,27 +76,6 @@
 
 - (NSString *)headerText
 {
-    /*NSMutableString *text = [NSMutableString stringWithFormat:@"%@", self.album.name];
-    NSUInteger photoCount = self.album.photoCount;
-    
-    if (1 == photoCount) {
-        [text appendString:HPPRLocalizedString(@" (1 photo)", nil)];
-    } else {
-        [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)photoCount];
-    }
-    
-    if (self.displayVideos) {
-        NSUInteger videoCount = self.album.videoCount;
-        
-        if (1 == videoCount) {
-            [text appendString:HPPRLocalizedString(@" (1 video)", nil)];
-        } else {
-            [text appendFormat:HPPRLocalizedString(@" (%lu videos)", @"Number of videos"), (unsigned long)photoCount];
-        }
-    }
-    
-    return [NSString stringWithString:text];*/
-    
     return @"No name";
 }
 
@@ -102,10 +83,12 @@
 
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
-    completion(@{ @"data": self.internalImagesCollection });
+    if (completion) {
+        completion(self.internalImagesCollection);
+    }
 }
 
-- (void) populateIMagesForSameLocation: (CLLocation *) location andDistance: (float) distance {
+- (void)populateImagesForSameLocation:(CLLocation *)location andDistance:(double)distance {
     PHFetchResult *fetchResult = [PHAsset fetchAssetsWithOptions:nil];
     
     self.internalImagesCollection = [NSMutableArray array];
@@ -124,7 +107,8 @@
 
     [self replaceImagesWithRecords:self.internalImagesCollection];
 }
-- (void) populateImagesForSameDayAsDate: (NSDate *) date
+
+- (void)populateImagesForSameDayAsDate:(NSDate *)date
 {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
     

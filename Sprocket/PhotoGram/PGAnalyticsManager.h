@@ -46,6 +46,10 @@ extern NSString * const kMetricsOffRampQueuePrintSingle;
 extern NSString * const kMetricsOffRampQueuePrintMulti;
 extern NSString * const kMetricsOffRampQueuePrintCopies;
 extern NSString * const kMetricsOffRampQueueDeleteMulti;
+extern NSString * const kEventPrintQueueMenuCategory;
+extern NSString * const kEventPrintQueuePreviewCategory;
+extern NSString * const kEventPrintQueueDeleteAllAction;
+extern NSString * const kEventPrintQueuePrintAction;
 
 extern NSString * const kEventAuthRequestOkAction;
 extern NSString * const kEventAuthRequestDeniedAction;
@@ -66,6 +70,13 @@ extern NSString * const kEventSocialSignInSuccessAction;
 
 extern NSString * const kEventCameraDirectionBackLabel;
 extern NSString * const kEventCameraDirectionSelfieLabel;
+
+extern NSString * const kEventCameraTimerNoneLabel;
+extern NSString * const kEventCameraTimer3sLabel;
+extern NSString * const kEventCameraTimer10sLabel;
+
+extern NSString * const kEventCameraFlashOnLabel;
+extern NSString * const kEventCameraFlashOffLabel;
 
 extern NSString * const kEventPrintButtonLabel;
 extern NSString * const kEventPrintShareLabel;
@@ -91,6 +102,10 @@ extern NSString * const kEventMultiSelectCancel;
 extern NSString * const kEventMultiSelectEnable;
 extern NSString * const kEventMultiSelectPreview;
 
+extern NSString * const kEventCustomStickerCategory;
+extern NSString * const kEventCustomStickerActionYes;
+extern NSString * const kEventCustomStickerActionNo;
+
 extern NSString * const kPhotoCollectionViewModeGrid;
 extern NSString * const kPhotoCollectionViewModeList;
 
@@ -103,20 +118,22 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (void)trackSaveProjectActivity:(NSString *)source;
 - (void)trackMultiSaveProjectActivity:(NSString *)source numberOfPhotos:(NSUInteger)numberOfPhotos;
 - (void)trackCameraDirectionActivity:(NSString *)direction;
+- (void)trackCameraTimerActivity:(NSString *)timer;
+- (void)trackCameraFlashActivity:(NSString *)flash;
 - (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference;
 - (void)trackSocialSignInActivity:(NSString *)action provider:(NSString *)provider;
 - (void)trackSelectPhoto:(NSString *)source;
 - (void)trackPhotoCollectionViewMode:(NSString *)mode;
 - (void)trackPrintRequest:(NSString *)source;
 - (void)trackCameraGallerySelect;
-- (void)trackMultiSelect:(NSString *)action selectedPhotos:(NSNumber * _Nullable)selectedPhotos;
 - (void)trackOpenAppSettings;
 - (void)trackOpenPrivacy;
 - (void)trackOpenBuyPaper;
-- (void)trackHelpLinksActivity:(NSString * _Nonnull)action;
+- (void)trackCustomStickerConfirm:(BOOL)confirmed;
 
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId;
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId queueSize:(NSUInteger)queueSize;
+- (void)trackPrintQueueModalAction:(NSString *)category queueId:(NSInteger)queueId numItemsDeleted:(NSUInteger)numItemsDeleted;
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId;
 
 - (void)switchSource:(NSString *)socialNetwork userName:(NSString *)userName userId:(NSString *)userId;
@@ -124,5 +141,8 @@ extern NSString * const kPhotoCollectionViewModeList;
 - (NSDictionary *)photoPositionMetricsWithOffset:(CGPoint)offset zoom:(CGFloat)zoom angle:(CGFloat)angle;
 
 + (NSString *)wifiName;
+
+- (void)trackMultiSelect:(NSString *)action selectedPhotos:(NSNumber * _Nullable)selectedPhotos;
+- (void)trackHelpLinksActivity:(NSString * _Nonnull)action;
 
 @end

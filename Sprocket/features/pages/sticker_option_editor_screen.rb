@@ -26,13 +26,14 @@ class StickerOptionEditorScreen < Calabash::IBase
     def redo
         "* id:'ic_redo_24pt'"
     end
+
     
     def navigate
         unless current_page?
             edit_screen = go_to(StickerEditorScreen)
             sleep(WAIT_SCREENLOAD)
-           # wait_for_elements_exist(edit_screen.sticker, :timeout => MAX_TIMEOUT)
-           # touch edit_screen.sticker
+            wait_for_elements_exist(edit_screen.sticker, :timeout => MAX_TIMEOUT)
+            touch edit_screen.sticker
             sleep(WAIT_SCREENLOAD)    
         end
         await

@@ -18,6 +18,7 @@
 #import "UIFont+Style.h"
 #import "PGTermsAttributedLabel.h"
 #import "UIViewController+Trackable.h"
+#import "PGAnalyticsManager.h"
 
 #import <GPUImage/GPUImage.h>
 #import <AVFoundation/AVFoundation.h>
@@ -71,7 +72,7 @@
 
 @implementation PGCustomStickerViewController
 
-float const kPGCustomStickerVerticalOffset = 50;
+const CGFloat kPGCustomStickerCameraCornerMargin = 8.0;
 float const kPGCustomerStickerThreshold = 0.42;
 int const kPGCustomStickerClosingRadius = 1;
 int const kPGCustomStickerErosionRadius = 4;
@@ -119,10 +120,12 @@ CGSize const kThumbnailSize = { 100, 100 };
 #pragma mark - Events
 
 - (IBAction)cancelButtonTapped:(id)sender {
+    [[PGAnalyticsManager sharedManager] trackCustomStickerConfirm:NO];
     self.saveMode = NO;
 }
 
 - (IBAction)saveButtonTapped:(id)sender {
+    [[PGAnalyticsManager sharedManager] trackCustomStickerConfirm:YES];
     [self saveSticker];
 }
 
@@ -150,6 +153,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 
 - (IBAction)infoButtonTapped:(id)sender
 {
+    [[PGAnalyticsManager sharedManager] trackScreenViewEvent:@"Custom Sticker Tutorial"];
     [self playVideo];
 }
 
@@ -167,18 +171,6 @@ CGSize const kThumbnailSize = { 100, 100 };
     if (!self.isCapturing) {
         self.isCapturing = YES;
 
-        if (![self hasCamera]) {
-            GPUImagePicture *picture = [[GPUImagePicture alloc] initWithImage:[[UIImage imageNamed:@"love"] normalize]];
-            [self setupFilters];
-            [self applyFilterChain:self.filters start:picture];
-            [picture processImageUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage) {
-                [self processResult:processedImage];
-                self.saveMode = YES;
-                self.isCapturing = NO;
-            }];
-            return;
-        }
-        
         [self.camera capturePhotoAsImageProcessedUpToFilter:[self lastFilter] withCompletionHandler:^(UIImage *processedImage, NSError *error) {
             self.resultData = nil;
             [self processResult:processedImage];
@@ -281,7 +273,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 {
     UIBezierPath *overlayPath = [UIBezierPath bezierPathWithRect:view.bounds];
     float width = view.bounds.size.width - 2.0 * kPGCustomStickerCameraInset;
-    float top = (view.bounds.size.height - width) / 2.0 - kPGCustomStickerVerticalOffset;
+    CGFloat top = self.resultImageView.frame.origin.y;
     UIBezierPath *transparentPath = [UIBezierPath bezierPathWithRect:CGRectMake(kPGCustomStickerCameraInset, top, width, width)];
     [overlayPath appendPath:transparentPath];
     [overlayPath setUsesEvenOddFillRule:YES];
@@ -297,7 +289,7 @@ CGSize const kThumbnailSize = { 100, 100 };
 - (void)addCorners:(UIView *)view
 {
     float width = view.bounds.size.width - 2.0 * kPGCustomStickerCameraCornerInset;
-    float top = (view.bounds.size.height - width) / 2.0 - kPGCustomStickerVerticalOffset;
+    CGFloat top = self.resultImageView.frame.origin.y - kPGCustomStickerCameraCornerMargin;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     
@@ -399,15 +391,15 @@ CGSize const kThumbnailSize = { 100, 100 };
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.camera = [[GPUImageStillCamera alloc] init];
-        self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
-        
-        [self setupFilters];
-        
-        [self applyFilterChain:self.filters start:self.camera];
-        
-        [self.camera addTarget:self.gpuCleanImageView];
-        
-        [self.camera startCameraCapture];
+
+        if (self.camera) {
+            self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
+            [self setupFilters];
+            [self applyFilterChain:self.filters start:self.camera];
+            [self.camera addTarget:self.gpuCleanImageView];
+
+            [self.camera startCameraCapture];
+        }
     });
 }
 
@@ -490,13 +482,13 @@ CGSize const kThumbnailSize = { 100, 100 };
     if (cameraAspectRatio < viewAspectRatio) {
         float adjustedCameraHeight = containerWidth / cameraAspectRatio;
         x = kPGCustomStickerCameraInset / containerWidth;
-        y = ((adjustedCameraHeight - targetSize) / 2.0 - kPGCustomStickerVerticalOffset) / adjustedCameraHeight;
+        y = self.resultImageView.frame.origin.y / adjustedCameraHeight;
         width = targetSize / containerWidth;
         height = targetSize / adjustedCameraHeight;
     } else {
         float adjustedCameraWidth = containerHeight * cameraAspectRatio;
         x = (adjustedCameraWidth - targetSize) / 2.0 / adjustedCameraWidth;
-        y = ((containerHeight - targetSize) / 2.0 - kPGCustomStickerVerticalOffset) / containerHeight;
+        y = self.resultImageView.frame.origin.y / containerHeight;
         width = targetSize / adjustedCameraWidth;
         height = targetSize / containerHeight;
     }

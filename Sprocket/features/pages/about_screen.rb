@@ -16,14 +16,19 @@ end
 def sprocket_logo
     "* id:'aboutLogo'"
 end
+    
+def back_button
+    "view marked:'Back'"
+end
+    
   def navigate
     unless current_page?
-      home_screen = go_to(HomeScreen)
-      touch home_screen.hamburger
-      pause
-      touch home_screen.About
+      landing_screen = go_to(LandingScreen)
+      touch landing_screen.hamburger_logo
+      sleep(STEP_PAUSE)
+      touch landing_screen.about
+      sleep(STEP_PAUSE)
     end
-    await
   end
 
 

@@ -243,11 +243,11 @@
     PGMetarMedia *meta = [[self alloc] init];
     
     switch (media.mediaType) {
-        case kHPRMediaTypeImage:
+        case HPPRMediaTypeImage:
             meta.mediaType = PGMetarMediaTypeImage;
             meta.image = [meta getImageAttributesForMedia: media];
             break;
-        case kHPRMediaTypeVideo:
+        case HPPRMediaTypeVideo:
             meta.mediaType = PGMetarMediaTypeVideo;
             meta.video = [meta getVideoAttributesForMedia: media];
             break;
@@ -300,9 +300,9 @@
         PGMetarSource *source = [[PGMetarSource alloc] init];
         PGMetarSocial *social = [[PGMetarSocial alloc] init];
         
-        if (media.mediaType == kHPRMediaTypeVideo) {
+        if (media.mediaType == HPPRMediaTypeVideo) {
             source.uri = media.videoPlaybackUri;
-        } else if (media.mediaType == kHPRMediaTypeImage) {
+        } else if (media.mediaType == HPPRMediaTypeImage) {
             source.uri = media.standardUrl;
         }
         
@@ -310,15 +310,15 @@
         source.owner = media.userName;
         
         switch (media.socialProvider) {
-            case tHPRMediaSocialProviderInstagram:
+            case HPPRSocialMediaProviderInstagram:
                 source.from = PGMetarSourceFromSocial;
                 social.provider = PGMetarSocialProviderInstagram;
                 break;
-            case tHPRMediaSocialProviderFacebook:
+            case HPPRSocialMediaProviderFacebook:
                 source.from = PGMetarSourceFromSocial;
                 social.provider = PGMetarSocialProviderFacebook;
                 break;
-            case tHPRMediaSocialProviderGoogle:
+            case HPPRSocialMediaProviderGoogle:
                 source.from = PGMetarSourceFromSocial;
                 social.provider = PGMetarSocialProviderGoogle;
                 break;
