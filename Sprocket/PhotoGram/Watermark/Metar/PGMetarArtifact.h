@@ -19,7 +19,9 @@ typedef NS_ENUM(NSInteger, PGMetarArtifactType) {
     PGMetarArtifactTypeUnknown,
     PGMetarArtifactTypeFace,
     PGMetarArtifactTypeObject,
-    PGMetarArtifactTypeLogo
+    PGMetarArtifactTypeLogo,
+    PGMetarArtifactTypeOrbFeature,
+    PGMetarArtifactTypeAura,
 };
 
 @property (assign, nonatomic) PGMetarArtifactType type;
@@ -27,9 +29,11 @@ typedef NS_ENUM(NSInteger, PGMetarArtifactType) {
 @property (assign, nonatomic) int confidence;
 @property (strong, nonatomic) PGMetarArtifactEmotion *emotion;
 @property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* auraID;
 @property (assign, nonatomic) int kind;
 
 - (NSDictionary *) getDict;
+- (instancetype) initWithDictionary: (NSDictionary *) dict;
 
 @end
 
