@@ -1142,6 +1142,43 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return @[origin, offRamp];
 }
 
+-(NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView *) gestureView {
+    NSMutableArray<UIImage *> *tiles = [[NSMutableArray alloc] init];
+    NSInteger horizontal_tiles;
+    NSInteger vertical_tiles;
+    NSInteger scale;
+    if (self.drawer.tilingOption == PGTilingOverlayOption2x2) {
+        horizontal_tiles = 2;
+        vertical_tiles = 2;
+        scale = 2;
+    } else if (self.drawer.tilingOption == PGTilingOverlayOption3x3){
+        horizontal_tiles = 3;
+        vertical_tiles = 3;
+        scale = 3;
+    } else {
+        [tiles addObject:gestureView.editedImage];
+        return tiles;
+    }
+    CGFloat imgWidth = gestureView.editedImage.size.width/scale;
+    CGFloat imgheight = gestureView.editedImage.size.height/scale;
+    
+    for ( int x = 0; x < horizontal_tiles; x++) {
+        for ( int y = 0; y < vertical_tiles; y++) {
+            UIImage* tileImage;
+            CGRect imageRect = CGRectMake(x * imgWidth, y * imgheight, imgWidth, imgheight);
+            CGImageRef imageRef = CGImageCreateWithImageInRect(gestureView.editedImage.CGImage, imageRect);
+            if (vertical_tiles-1 == y) {
+                tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationDown];
+            } else {
+                tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
+            }
+            [tiles addObject:tileImage];
+            CGImageRelease(imageRef);
+        }
+    }
+    return tiles;
+}
+
 -(MPBTImageProcessor *) createPrintProcessorFromMedia:(HPPRMedia*)media {
     PGPayoffProcessor * processor = nil;
     if ([PGLinkSettings linkEnabled] && media ) {
