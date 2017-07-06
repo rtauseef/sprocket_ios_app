@@ -75,6 +75,18 @@
             PGMetarLocation *location = [[PGMetarLocation alloc] initWithDictionary:[dict objectForKey:@"location"]];
             self.location = location;
         }
+        
+        if ([dict objectForKey:@"artifacts"]) {
+            NSArray *artifacts = [dict objectForKey:@"artifacts"];
+            NSMutableArray *finalArtifacts = [NSMutableArray array];
+            
+           for (NSDictionary *artifactDict in artifacts) {
+               PGMetarArtifact *parsedArtifact = [[PGMetarArtifact alloc] initWithDictionary:artifactDict];
+               [finalArtifacts addObject:parsedArtifact];
+            }
+            
+            self.artifacts = finalArtifacts;
+        }
     }
     return self;
 }
