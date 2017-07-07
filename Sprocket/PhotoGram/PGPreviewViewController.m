@@ -1297,7 +1297,12 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 -(NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView*)gestureView {
     NSMutableArray<UIImage *> *tiles = [[NSMutableArray alloc] init];
+    self.tilingOverlay.isOverlayVisible = NO;
     UIImage* currentImage = [gestureView screenshotImage];
+    self.tilingOverlay.isOverlayVisible = YES;
+    
+    NSArray<NSNumber *> *selectedTiles = self.tilingOverlay.selectedTiles;
+    
     NSInteger horizontal_tiles;
     NSInteger vertical_tiles;
     NSInteger scale;
@@ -1318,8 +1323,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     CGFloat compensatedWidth = imgWidth * 1.012;
     CGFloat compensatedHeight = imgheight * 1.012;
     
-    for ( int x = 0; x < horizontal_tiles; x++) {
-        for ( int y = 0; y < vertical_tiles; y++) {
+    NSUInteger indexCount = 0;
+    for (int y = 0; y < vertical_tiles; y++) {
+        for (int x = 0; x < horizontal_tiles; x++) {
+            if (![selectedTiles containsObject:[NSNumber numberWithUnsignedInteger:indexCount++]]) {
+                continue;
+            }
+            
             UIImage* tileImage;
             CGFloat adjX = 0;
             CGFloat adjY = 0;
