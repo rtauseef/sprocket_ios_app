@@ -15,5 +15,6 @@
 @interface NSString (Utils)
 
 - (NSArray *)templatesForSource;
+- (NSString *)md5;
 
 @end

@@ -12,10 +12,28 @@
 
 #import "PGFeatureFlag.h"
 
+static NSString * const kEnableCloudAssetsKey = @"com.hp.hp-sprocket.enableCloudAssets";
+
 @implementation PGFeatureFlag
 
-+ (BOOL)isMultiPrintEnabled {
++ (BOOL)isMultiPrintEnabled
+{
     return YES;
+}
+
++ (void)setCloudAssetsEnabled:(BOOL)enabled
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+    [userDefaults setBool:enabled forKey:kEnableCloudAssetsKey];
+    [userDefaults synchronize];
+}
+
++ (BOOL)isCloudAssetsEnabled
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+    return [userDefaults boolForKey:kEnableCloudAssetsKey];
 }
 
 @end
