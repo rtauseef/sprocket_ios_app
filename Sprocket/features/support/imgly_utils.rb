@@ -180,7 +180,15 @@ $sticker ={
         'sticker_23' => {'name' => 'Aviator Glasses Sticker','value' =>'Aviator Glasses Sticker'},
         'sticker_24' => {'name' => 'Glasses Blossom Sticker','value' =>'Glasses Blossom Sticker'},
         'sticker_25' => {'name' => 'Cat on Head Sticker','value' =>'Cat on Head Sticker'},
-        'sticker_26' => {'name' => 'Mustache Dark Sticker','value' =>'Mustache Dark Sticker'}
+        'sticker_26' => {'name' => 'Mustache Dark Sticker','value' =>'Mustache Dark Sticker'},
+        'sticker_27' => {'name' => 'Pacifier Copy Sticker','value' =>'Pacifier Copy Sticker'},
+        'sticker_28' => {'name' => 'Bunny Face Bow Sticker','value' =>'Bunny Face Bow Sticker'},
+        'sticker_29' => {'name' => 'Nerd Glasses Sticker','value' =>'Nerd Glasses Sticker'},
+        'sticker_30' => {'name' => 'Bunny Ears Sticker','value' =>'Bunny Ears Sticker'},
+        'sticker_31' => {'name' => 'Necktie Graduation Sticker','value' =>'Necktie Graduation Sticker'},
+        'sticker_32' => {'name' => 'Bunny Ears Polkadot Sticker','value' =>'Bunny Ears Polkadot Sticker'},
+        'sticker_33' => {'name' => 'Medal Sticker','value' =>'Medal Sticker'},
+        'sticker_34' => {'name' => 'Flower Glasses Sticker','value' => 'Flower Glasses Sticker'}
     },
     'Decorative Category' => {
         'sticker_0' => {'name' => 'Heart Garland Sticker','value' =>'Heart Garland Sticker'},
