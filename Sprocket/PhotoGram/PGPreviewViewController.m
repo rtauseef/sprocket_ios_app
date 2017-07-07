@@ -890,6 +890,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     NSString *origin = offRampAndOrigin[0];
     NSString *offRamp = offRampAndOrigin[1];
     NSInteger numberOfCopies = self.drawer.numberOfCopies;
+    NSInteger numberOfTiles = 1;
     BOOL isPrintDirect = (selectedViews.count == 1) && (numberOfCopies == 1);
     NSOperation *lastOperation = nil;
 
@@ -904,304 +905,171 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     __block BOOL wasAddedToQueue = NO;
     __block NSUInteger numberOfPrintsAdded = 0;
-    
-    
+    BOOL printingTiles = NO;
+    int imagesToProcess = (int) selectedViews.count;
+
+    NSMutableArray<UIImage *> *tiles;
+    PGGesturesView *gestureView;
     if (self.drawer.tilingOption == PGTilingOverlayOption3x3 || self.drawer.tilingOption == PGTilingOverlayOption2x2) {
+        printingTiles = true;
         isPrintDirect = false;
-        PGGesturesView *gestureView = selectedViews[0];
-        NSMutableArray<UIImage *> *tiles = [self generateTiles:gestureView];
-        for (UIImage *tileImage in tiles) {
-            __block UIImage *imageToPrint = tileImage;
-            __block MPPrintItem *printItem = nil;
-            __block NSMutableDictionary *metrics = nil;
-            
-            NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
-            [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
-            
-            // PRE-PROCESSOR(S)
-            NSBlockOperation *preProcessStartOperation = [NSBlockOperation blockOperationWithBlock:^{
-                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) START");
-                self.viewNumber++;
-            }];
-            if (nil != lastOperation) {
-                [preProcessStartOperation addDependency:lastOperation];
-            }
-            [self.operationQueue addOperation:preProcessStartOperation];
-            
-            NSBlockOperation *preProcessCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
-                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) COMPLETE");
-            }];
-            [preProcessCompleteOperation addDependency:preProcessStartOperation];
-            
-            MPBTImageProcessor *processor = nil;
-            if ([PGLinkSettings linkEnabled]) {
-                processor = [self createPrintProcessorFromMedia:gestureView.media];
-                if (nil != processor) {
-                    [preProcessStartOperation addExecutionBlock:^{
-                        NSDictionary *options = @{ kMPBTImageProcessorLocalIdentifierKey : [[PGPayoffManager sharedInstance] offlineID] };
-                        MPBTImagePreprocessorManager * mg = [MPBTImagePreprocessorManager createWithProcessors:@[processor] options:options];
-                        [mg processImage:gestureView.editedImage statusUpdate:^(NSUInteger processorIndex, double progress) {
-                            [self handleProcessorStatus:mg.processors[processorIndex] progress:progress];
-                        } complete:^(NSError *error, UIImage *image) {
-                            if (nil == error) {
-                                imageToPrint = image;
-                            } else {
-                                PGLogDebug(@"PREVIEW CONTROLLER: PRE-PROCESSOR: ERROR: %@", error);
-                            }
-                            [self.operationQueue addOperation:preProcessCompleteOperation];
-                        }];
-                    }];
-                }
-            }
-            if (nil == processor) {
-                [self.operationQueue addOperation:preProcessCompleteOperation];
-            }
-            
-            // PREPARE TO PRINT
-            NSBlockOperation *prepareToPrintOperation = [NSBlockOperation blockOperationWithBlock:^{
-                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PREPARE TO PRINT");
-                printItem = [MPPrintItemFactory printItemWithAsset:imageToPrint];
-                metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
-                [metrics setObject:origin forKey:kMetricsOrigin];
-            }];
-            [prepareToPrintOperation addDependency:preProcessCompleteOperation];
-            [self.operationQueue addOperation:prepareToPrintOperation];
-            
-            // FAKE PRINT
-            if ([PGLinkSettings fakePrintEnabled]) {
-                
-                NSBlockOperation *fakePrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT START");
-                }];
-                [fakePrintStartOperation addDependency:prepareToPrintOperation];
-                [self.operationQueue addOperation:fakePrintStartOperation];
-                
-                NSBlockOperation *fakePrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT COMPLETE");
-                }];
-                [fakePrintCompleteOperation addDependency:fakePrintStartOperation];
-                lastOperation = fakePrintCompleteOperation;
-                
-                __weak __typeof(self)weakSelf = self;
-                void (^saveImage)() = ^{
-                    [PGSavePhotos saveImageFake:imageToPrint completion:^(BOOL success, PHAsset * asset) {
-                        PGLogDebug(@"FAKE PRINT: %@", success ? @"IMAGE SAVED" : @"SAVE FAILED");
-                        [weakSelf.operationQueue addOperation:fakePrintCompleteOperation];
-                    }];
-                };
-                
-                [fakePrintStartOperation addExecutionBlock:^{
-                    if ([PGSavePhotos savePhotos]) {
-                        saveImage();
-                    } else {
-                        [PGSavePhotos promptToSavePhotos:self completion:^(BOOL savePhotos) {
-                            if (savePhotos) {
-                                saveImage();
-                            } else {
-                                PGLogDebug(@"FAKE PRINT: SAVE SKIPPED");
-                                [self.operationQueue addOperation:fakePrintCompleteOperation];
-                            }
-                        }];
-                    }
-                }];
-                
-                // DIRECT PRINT
-            } else if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
-                
-                NSBlockOperation *directPrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT START");
-                }];
-                [directPrintStartOperation addDependency:prepareToPrintOperation];
-                [self.operationQueue addOperation:directPrintStartOperation];
-                
-                NSBlockOperation *directPrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT COMPLETE");
-                }];
-                [directPrintCompleteOperation addDependency:directPrintStartOperation];
-                lastOperation = directPrintCompleteOperation;
-                
-                [directPrintStartOperation addExecutionBlock:^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                            BOOL busy = [self handlePrintQueueStatus:status progress:progress printsAdded:0 error:errorCode];
-                            if (!busy) {
-                                [self.operationQueue addOperation:directPrintCompleteOperation];
-                            }
-                            return busy;
-                        }];
-                    });
-                }];
-                
-                // PRINT QUEUE
-            } else {
-                NSBlockOperation *queueOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: QUEUE");
-                    
-                    [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
-                    [metrics setObject:@(numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-                    [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
-                    [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
-                    
-                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
-                                                                     printItem:printItem
-                                                                  extendedInfo:metrics];
-                    wasAddedToQueue = YES;
-                    numberOfPrintsAdded++;
-                }];
-                [queueOperation addDependency:prepareToPrintOperation];
-                [self.operationQueue addOperation:queueOperation];
-                lastOperation = queueOperation;
-            }
-        }
-    } else {
-        for (PGGesturesView *gestureView in selectedViews) {
-            
-            gestureView.editedImage = [gestureView screenshotImage];
-            __block UIImage *imageToPrint = gestureView.editedImage;
-            __block MPPrintItem *printItem = nil;
-            __block NSMutableDictionary *metrics = nil;
-            
-            NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
-            [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
-            
-            // PRE-PROCESSOR(S)
-            NSBlockOperation *preProcessStartOperation = [NSBlockOperation blockOperationWithBlock:^{
-                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) START");
-                self.viewNumber++;
-            }];
-            if (nil != lastOperation) {
-                [preProcessStartOperation addDependency:lastOperation];
-            }
-            [self.operationQueue addOperation:preProcessStartOperation];
-            
-            NSBlockOperation *preProcessCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
-                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) COMPLETE");
-            }];
-            [preProcessCompleteOperation addDependency:preProcessStartOperation];
-            
-            MPBTImageProcessor *processor = nil;
-            if ([PGLinkSettings linkEnabled]) {
-                processor = [self createPrintProcessorFromMedia:gestureView.media];
-                if (nil != processor) {
-                    [preProcessStartOperation addExecutionBlock:^{
-                        NSDictionary *options = @{ kMPBTImageProcessorLocalIdentifierKey : [[PGPayoffManager sharedInstance] offlineID] };
-                        MPBTImagePreprocessorManager * mg = [MPBTImagePreprocessorManager createWithProcessors:@[processor] options:options];
-                        [mg processImage:gestureView.editedImage statusUpdate:^(NSUInteger processorIndex, double progress) {
-                            [self handleProcessorStatus:mg.processors[processorIndex] progress:progress];
-                        } complete:^(NSError *error, UIImage *image) {
-                            if (nil == error) {
-                                imageToPrint = image;
-                            } else {
-                                PGLogDebug(@"PREVIEW CONTROLLER: PRE-PROCESSOR: ERROR: %@", error);
-                            }
-                            [self.operationQueue addOperation:preProcessCompleteOperation];
-                        }];
-                    }];
-                }
-            }
-            if (nil == processor) {
-                [self.operationQueue addOperation:preProcessCompleteOperation];
-            }
-            
-            // PREPARE TO PRINT
-            NSBlockOperation *prepareToPrintOperation = [NSBlockOperation blockOperationWithBlock:^{
-                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PREPARE TO PRINT");
-                printItem = [MPPrintItemFactory printItemWithAsset:imageToPrint];
-                metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
-                [metrics setObject:origin forKey:kMetricsOrigin];
-            }];
-            [prepareToPrintOperation addDependency:preProcessCompleteOperation];
-            [self.operationQueue addOperation:prepareToPrintOperation];
-            
-            // FAKE PRINT
-            if ([PGLinkSettings fakePrintEnabled]) {
-                
-                NSBlockOperation *fakePrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT START");
-                }];
-                [fakePrintStartOperation addDependency:prepareToPrintOperation];
-                [self.operationQueue addOperation:fakePrintStartOperation];
-                
-                NSBlockOperation *fakePrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT COMPLETE");
-                }];
-                [fakePrintCompleteOperation addDependency:fakePrintStartOperation];
-                lastOperation = fakePrintCompleteOperation;
-                
-                __weak __typeof(self)weakSelf = self;
-                void (^saveImage)() = ^{
-                    [PGSavePhotos saveImageFake:imageToPrint completion:^(BOOL success, PHAsset * asset) {
-                        PGLogDebug(@"FAKE PRINT: %@", success ? @"IMAGE SAVED" : @"SAVE FAILED");
-                        [weakSelf.operationQueue addOperation:fakePrintCompleteOperation];
-                    }];
-                };
-                
-                [fakePrintStartOperation addExecutionBlock:^{
-                    if ([PGSavePhotos savePhotos]) {
-                        saveImage();
-                    } else {
-                        [PGSavePhotos promptToSavePhotos:self completion:^(BOOL savePhotos) {
-                            if (savePhotos) {
-                                saveImage();
-                            } else {
-                                PGLogDebug(@"FAKE PRINT: SAVE SKIPPED");
-                                [self.operationQueue addOperation:fakePrintCompleteOperation];
-                            }
-                        }];
-                    }
-                }];
-                
-                // DIRECT PRINT
-            } else if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
-                
-                NSBlockOperation *directPrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT START");
-                }];
-                [directPrintStartOperation addDependency:prepareToPrintOperation];
-                [self.operationQueue addOperation:directPrintStartOperation];
-                
-                NSBlockOperation *directPrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT COMPLETE");
-                }];
-                [directPrintCompleteOperation addDependency:directPrintStartOperation];
-                lastOperation = directPrintCompleteOperation;
-                
-                [directPrintStartOperation addExecutionBlock:^{
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                            BOOL busy = [self handlePrintQueueStatus:status progress:progress printsAdded:0 error:errorCode];
-                            if (!busy) {
-                                [self.operationQueue addOperation:directPrintCompleteOperation];
-                            }
-                            return busy;
-                        }];
-                    });
-                }];
-                
-                // PRINT QUEUE
-            } else {
-                NSBlockOperation *queueOperation = [NSBlockOperation blockOperationWithBlock:^{
-                    PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: QUEUE");
-                    
-                    [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
-                    [metrics setObject:@(numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-                    [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
-                    [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
-                    
-                    [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
-                                                                     printItem:printItem
-                                                                  extendedInfo:metrics];
-                    wasAddedToQueue = YES;
-                    numberOfPrintsAdded++;
-                }];
-                [queueOperation addDependency:prepareToPrintOperation];
-                [self.operationQueue addOperation:queueOperation];
-                lastOperation = queueOperation;
-            }
-        }
+        gestureView = selectedViews[0];
+        tiles = [self generateTiles:gestureView];
+        numberOfTiles = tiles.count;
+        imagesToProcess = (int) tiles.count;
     }
 
-    
+    for (int x = 0; x < imagesToProcess; x++) {
+        __block UIImage *imageToPrint;
+        if (printingTiles && tiles != nil) {
+            imageToPrint = tiles[x];
+        } else if (!printingTiles) {
+            gestureView = selectedViews[x];
+            gestureView.editedImage = [gestureView screenshotImage];
+            imageToPrint = gestureView.editedImage;
+        }
+        __block MPPrintItem *printItem = nil;
+        __block NSMutableDictionary *metrics = nil;
+        
+        NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
+        [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
+        
+        // PRE-PROCESSOR(S)
+        NSBlockOperation *preProcessStartOperation = [NSBlockOperation blockOperationWithBlock:^{
+            PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) START");
+            self.viewNumber++;
+        }];
+        if (nil != lastOperation) {
+            [preProcessStartOperation addDependency:lastOperation];
+        }
+        [self.operationQueue addOperation:preProcessStartOperation];
+        
+        NSBlockOperation *preProcessCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
+            PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) COMPLETE");
+        }];
+        [preProcessCompleteOperation addDependency:preProcessStartOperation];
+        
+        MPBTImageProcessor *processor = nil;
+        if ([PGLinkSettings linkEnabled]) {
+            processor = [self createPrintProcessorFromMedia:gestureView.media];
+            if (nil != processor) {
+                [preProcessStartOperation addExecutionBlock:^{
+                    NSDictionary *options = @{ kMPBTImageProcessorLocalIdentifierKey : [[PGPayoffManager sharedInstance] offlineID] };
+                    MPBTImagePreprocessorManager * mg = [MPBTImagePreprocessorManager createWithProcessors:@[processor] options:options];
+                    [mg processImage:gestureView.editedImage statusUpdate:^(NSUInteger processorIndex, double progress) {
+                        [self handleProcessorStatus:mg.processors[processorIndex] progress:progress];
+                    } complete:^(NSError *error, UIImage *image) {
+                        if (nil == error) {
+                            imageToPrint = image;
+                        } else {
+                            PGLogDebug(@"PREVIEW CONTROLLER: PRE-PROCESSOR: ERROR: %@", error);
+                        }
+                        [self.operationQueue addOperation:preProcessCompleteOperation];
+                    }];
+                }];
+            }
+        }
+        if (nil == processor) {
+            [self.operationQueue addOperation:preProcessCompleteOperation];
+        }
+        
+        // PREPARE TO PRINT
+        NSBlockOperation *prepareToPrintOperation = [NSBlockOperation blockOperationWithBlock:^{
+            PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PREPARE TO PRINT");
+            printItem = [MPPrintItemFactory printItemWithAsset:imageToPrint];
+            metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+            [metrics setObject:origin forKey:kMetricsOrigin];
+        }];
+        [prepareToPrintOperation addDependency:preProcessCompleteOperation];
+        [self.operationQueue addOperation:prepareToPrintOperation];
+        
+        // FAKE PRINT
+        if ([PGLinkSettings fakePrintEnabled]) {
+            
+            NSBlockOperation *fakePrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT START");
+            }];
+            [fakePrintStartOperation addDependency:prepareToPrintOperation];
+            [self.operationQueue addOperation:fakePrintStartOperation];
+            
+            NSBlockOperation *fakePrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT COMPLETE");
+            }];
+            [fakePrintCompleteOperation addDependency:fakePrintStartOperation];
+            lastOperation = fakePrintCompleteOperation;
+            
+            __weak __typeof(self)weakSelf = self;
+            void (^saveImage)() = ^{
+                [PGSavePhotos saveImageFake:imageToPrint completion:^(BOOL success, PHAsset * asset) {
+                    PGLogDebug(@"FAKE PRINT: %@", success ? @"IMAGE SAVED" : @"SAVE FAILED");
+                    [weakSelf.operationQueue addOperation:fakePrintCompleteOperation];
+                }];
+            };
+            
+            [fakePrintStartOperation addExecutionBlock:^{
+                if ([PGSavePhotos savePhotos]) {
+                    saveImage();
+                } else {
+                    [PGSavePhotos promptToSavePhotos:self completion:^(BOOL savePhotos) {
+                        if (savePhotos) {
+                            saveImage();
+                        } else {
+                            PGLogDebug(@"FAKE PRINT: SAVE SKIPPED");
+                            [self.operationQueue addOperation:fakePrintCompleteOperation];
+                        }
+                    }];
+                }
+            }];
+            
+            // DIRECT PRINT
+        } else if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
+            
+            NSBlockOperation *directPrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT START");
+            }];
+            [directPrintStartOperation addDependency:prepareToPrintOperation];
+            [self.operationQueue addOperation:directPrintStartOperation];
+            
+            NSBlockOperation *directPrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT COMPLETE");
+            }];
+            [directPrintCompleteOperation addDependency:directPrintStartOperation];
+            lastOperation = directPrintCompleteOperation;
+            
+            [directPrintStartOperation addExecutionBlock:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
+                        BOOL busy = [self handlePrintQueueStatus:status progress:progress printsAdded:0 error:errorCode];
+                        if (!busy) {
+                            [self.operationQueue addOperation:directPrintCompleteOperation];
+                        }
+                        return busy;
+                    }];
+                });
+            }];
+            
+            // PRINT QUEUE
+        } else {
+            NSBlockOperation *queueOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: QUEUE");
+                
+                [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
+                [metrics setObject:@(numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
+                [metrics setObject:@(numberOfTiles) forKey:kMetricsPrintQueueTilesKey];
+                [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
+                [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
+                
+                [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
+                                                                 printItem:printItem
+                                                              extendedInfo:metrics];
+                wasAddedToQueue = YES;
+                numberOfPrintsAdded++;
+            }];
+            [queueOperation addDependency:prepareToPrintOperation];
+            [self.operationQueue addOperation:queueOperation];
+            lastOperation = queueOperation;
+        }
+    }
     
     // FINISH PRINTING
     NSBlockOperation *finishPrinting = [NSBlockOperation blockOperationWithBlock:^{
