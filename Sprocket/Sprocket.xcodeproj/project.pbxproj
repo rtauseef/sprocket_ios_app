@@ -1180,6 +1180,8 @@
 		73CAA5CE1F0C854200ACC13C /* PGTilingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */; };
 		73CAA5CF1F0C854200ACC13C /* PGTilingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */; };
 		73D294751EFD824D009BC2E1 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
+		73F070611F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */; };
+		73F070621F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80619A69E5700C72F1A /* Back@2x.png */; };
@@ -3099,6 +3101,8 @@
 		73D0F4181EF8A0AA00BCCAF3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		73D0F4191EF8A0AB00BCCAF3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73D0F41A1EF8A0AC00BCCAF3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		73F0705F1F0EFB340071E580 /* PGTilingOverlayContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTilingOverlayContainer.h; sourceTree = "<group>"; };
+		73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTilingOverlayContainer.m; sourceTree = "<group>"; };
 		768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushNotificationExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
@@ -4814,6 +4818,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		73F0705D1F0EFAD10071E580 /* Tiling */ = {
+			isa = PBXGroup;
+			children = (
+				73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */,
+				73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */,
+				73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */,
+				73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */,
+				73F0705F1F0EFB340071E580 /* PGTilingOverlayContainer.h */,
+				73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */,
+				733BC1F01F0D687F00CCA697 /* PGTilingOverlayTile.h */,
+				733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */,
+				733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */,
+			);
+			name = Tiling;
+			sourceTree = "<group>";
+		};
 		821523271D82215600C0541C /* Sprocket Print */ = {
 			isa = PBXGroup;
 			children = (
@@ -6481,13 +6501,7 @@
 				733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
-				73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */,
-				73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */,
-				73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */,
-				73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */,
-				733BC1F01F0D687F00CCA697 /* PGTilingOverlayTile.h */,
-				733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */,
-				733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */,
+				73F0705D1F0EFAD10071E580 /* Tiling */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -9749,6 +9763,7 @@
 				F2B3F5CD1EFC5E9300F1E6FB /* PGMetarPayoffViewController.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
 				8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */,
+				73F070621F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */,
 				926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */,
 				F2B3F5AC1EFC5E5A00F1E6FB /* PGWatermarkOperationHPMetar.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
@@ -9984,6 +9999,7 @@
 				65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
 				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
+				73F070611F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */,
 				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,

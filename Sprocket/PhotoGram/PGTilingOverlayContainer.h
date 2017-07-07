@@ -10,12 +10,10 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
-#import "PGView.h"
+#import "PGInteractionIgnorerView.h"
 
-@interface PGTilingOverlayTile : PGView
+@interface PGTilingOverlayContainer : PGInteractionIgnorerView
 
-@property (strong, nonatomic) NSNumber *index;
-@property (assign, nonatomic, readonly) BOOL isChecked;
+@property (strong, nonatomic, readonly) NSArray<NSNumber *> *checkedTiles;
 
 @end

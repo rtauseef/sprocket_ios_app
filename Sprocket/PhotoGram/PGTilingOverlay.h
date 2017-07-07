@@ -21,6 +21,12 @@ typedef NS_ENUM(NSInteger, PGTilingOverlayOption) {
 
 @interface PGTilingOverlay : NSObject
 
+/*
+ * Tile indices that are currently checked
+ */
+@property (strong, nonatomic, readonly) NSArray<NSNumber *> *selectedTiles;
+@property (assign, nonatomic) BOOL isOverlayVisible;
+
 - (void)addTilingOverlay:(PGTilingOverlayOption)tilingOption toView:(UIView *)view;
 - (void)removeOverlay;
 
