@@ -1139,6 +1139,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         action = kEventPrintQueueAddCopiesAction;
     }
     
+    if (self.drawer.tilingOption != PGTilingOverlayOptionSingle) {
+        action = kEventPrintQueueAddTileAction;
+    }
+    
     if (wasDrawerOpened) {
         [self openDrawerAnimated:NO];
     }
@@ -1170,8 +1174,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 offRamp = kMetricsOffRampPrintNoUIMulti;
             }
         } else {
-            origin = kMetricsOriginSingle;
-            offRamp = kMetricsOffRampQueueAddSingle;
+            if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+                origin = kMetricsOriginSingle;
+                offRamp = kMetricsOffRampQueueAddSingle;
+            } else {
+                origin = kMetricsOriginTile;
+                offRamp = kMetricsOffRampQueueAddTile;
+            }
         }
     }
     
