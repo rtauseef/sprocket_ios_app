@@ -901,7 +901,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     NSString *origin = offRampAndOrigin[0];
     NSString *offRamp = offRampAndOrigin[1];
     NSInteger numberOfCopies = self.drawer.numberOfCopies;
-    NSInteger numberOfTiles = 1;
     BOOL isPrintDirect = (selectedViews.count == 1) && (numberOfCopies == 1);
     NSOperation *lastOperation = nil;
 
@@ -926,7 +925,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         gestureView = selectedViews[0];
         tiles = [self generateTiles:gestureView rotatingLastRow:YES];
         isPrintDirect &= tiles.count == 1;
-        numberOfTiles = tiles.count;
         imagesToProcess = tiles.count;
     }
     
@@ -1070,7 +1068,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 
                 [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
                 [metrics setObject:@(numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
-                [metrics setObject:@(numberOfTiles) forKey:kMetricsPrintQueueTilesKey];
                 [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
                 [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
                 
