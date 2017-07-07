@@ -893,24 +893,24 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [selectedViews addObject:selectedViews.firstObject];
         }
     }
+    
     self.viewNumber = 0;
     self.viewCount = selectedViews.count;
-    
     
     __block BOOL wasAddedToQueue = NO;
     __block NSUInteger numberOfPrintsAdded = 0;
     BOOL printingTiles = NO;
-    int imagesToProcess = (int) selectedViews.count;
+    NSUInteger imagesToProcess = selectedViews.count;
 
     NSMutableArray<UIImage *> *tiles;
     PGGesturesView *gestureView;
-    if (self.drawer.tilingOption == PGTilingOverlayOption3x3 || self.drawer.tilingOption == PGTilingOverlayOption2x2) {
-        printingTiles = true;
-        isPrintDirect = false;
+    if (self.drawer.tilingOption != PGTilingOverlayOptionSingle) {
+        printingTiles = YES;
         gestureView = selectedViews[0];
         tiles = [self generateTiles:gestureView rotatingLastRow:YES];
+        isPrintDirect &= tiles.count == 1;
         numberOfTiles = tiles.count;
-        imagesToProcess = (int) tiles.count;
+        imagesToProcess = tiles.count;
     }
     
     if (imagesToProcess == 0) {
@@ -1019,7 +1019,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }
             }];
             
-            // DIRECT PRINT
+        // DIRECT PRINT
         } else if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
             
             NSBlockOperation *directPrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
@@ -1046,7 +1046,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 });
             }];
             
-            // PRINT QUEUE
+        // PRINT QUEUE
         } else {
             NSBlockOperation *queueOperation = [NSBlockOperation blockOperationWithBlock:^{
                 PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: QUEUE");
