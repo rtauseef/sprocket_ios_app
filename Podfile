@@ -19,6 +19,9 @@ def shared_pods
     pod 'iCarousel', '1.8'
     pod 'Google/SignIn'
     pod 'GPUImage'
+    # Google Street View
+    pod 'GoogleMaps'
+    # pod 'GooglePlaces'
 end
 
 target "Sprocket" do

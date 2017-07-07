@@ -22,6 +22,7 @@
 #import "PGMetarPayoffFeedbackViewController.h"
 #import "PGPayoffFeedbackDatabase.h"
 #import "PGWikipediaDropdownViewController.h"
+#import "PGPayoffViewGoogleStreetViewController.h"
 
 static const NSUInteger kPGReviewViewHeight = 38;
 
@@ -173,6 +174,13 @@ static const NSUInteger kPGReviewViewHeight = 38;
             [viewImageVc setMetadata:metadata];
             [viewImageVc showImagesSameLocation:loc];
             [self.arrayOfViewControllers addObject:viewImageVc];
+            
+            
+            PGPayoffViewGoogleStreetViewController *googleVc = [[PGPayoffViewGoogleStreetViewController alloc] initWithNibName:@"PGPayoffViewGoogleStreetViewController" bundle:nil];
+            [googleVc setParentVc:self];
+            [googleVc setMetadata:metadata];	
+        
+            [self.arrayOfViewControllers addObject:googleVc];
         }
         
         if (metadata.location.content.wikipedia != nil) {

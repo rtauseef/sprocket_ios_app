@@ -35,6 +35,7 @@
 #import "PGInboxMessageManager.h"
 #import "PGLinkSettings.h"
 #import "PGLoggingSetttingsViewController.h"
+#import "GoogleMaps/GoogleMaps.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -102,6 +103,10 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
             PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
             [metaroffline checkTagDB:nil];
         });
+    }
+    
+    if ([PGLinkSettings linkEnabled]) {
+        [GMSServices provideAPIKey:@"AIzaSyA9gNKQ1XQA-jJVNcPc0Smv0Sml0EkGn-8"];
     }
     
     return YES;
