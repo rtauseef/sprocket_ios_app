@@ -11,10 +11,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGCloudAssetImage.h"
 
-@interface PGFeatureFlag : NSObject
+@interface PGCloudAssetDownloadWorker : NSObject
 
-+ (BOOL)isMultiPrintEnabled;
-+ (BOOL)isCloudAssetsEnabled;
++ (instancetype)sharedInstance;
+
+- (void)scheduleAssetDownload:(PGCloudAssetImage *)asset;
+
+- (void)start;
+- (void)pause;
+- (void)stop;
+
+- (NSInteger)queueSize;
 
 @end

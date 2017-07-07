@@ -12,8 +12,10 @@
 
 #import "PGStickerManager.h"
 #import "NSLocale+Additions.h"
-
+#import "PGCloudAssetClient.h"
+#import "PGCloudAssetStorage.h"
 #import "PGCustomStickerManager.h"
+#import "PGFeatureFlag.h"
 
 @interface PGStickerManager()
 
@@ -33,6 +35,64 @@
 
 - (NSArray<IMGLYStickerCategory *> *)IMGLYStickersCategories
 {
+    NSMutableArray *categories = [[NSMutableArray alloc] init];
+
+    // User Generated Stickers
+
+    NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"customSticker" withExtension:@"png"];
+    IMGLYStickerCategory *addCustomCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                 imageURL:addStickerIcon
+                                                                                 stickers:@[]];
+
+    addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
+
+    [categories addObject:addCustomCategory];
+
+    NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
+    if (customStickers.count > 0) {
+        IMGLYStickerCategory *customCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                        imageURL:[customStickers firstObject].thumbnailURL
+                                                                                        stickers:customStickers];
+
+        customCategory.accessibilityLabel = @"Custom Stickers";
+        [categories addObject:customCategory];
+    }
+
+
+    // Cloud Asset Stickers
+
+    if ([PGFeatureFlag isCloudAssetsEnabled]) {
+        PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
+        NSArray<PGCloudAssetCategory *> *catalog = [cac currentStickersCatalog];
+        PGCloudAssetStorage *storage = [[PGCloudAssetStorage alloc] init];
+
+        for (PGCloudAssetCategory *category in catalog) {
+            NSMutableArray<IMGLYSticker *> *imglyStickers = [[NSMutableArray alloc] init];
+
+            for (PGCloudAssetImage *sticker in category.imageAssets) {
+                NSURL *localURL = [NSURL fileURLWithPath:[storage localUrlForAsset:sticker]];
+                NSURL *localThumbnailURL = [NSURL fileURLWithPath:[storage localThumbnailUrlForAsset:sticker]];
+
+                IMGLYSticker *imglySticker = [[IMGLYSticker alloc] initWithImageURL:localURL
+                                                                       thumbnailURL:localThumbnailURL
+                                                                           tintMode:IMGLYStickerTintModeNone];
+                imglySticker.accessibilityLabel = [NSString stringWithFormat:@"%@-%li", sticker.name, sticker.version];
+
+                [imglyStickers addObject:imglySticker];
+            }
+
+            IMGLYStickerCategory *imglyCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
+                                                                                     imageURL:[NSURL URLWithString:category.thumbnailURL]
+                                                                                     stickers:imglyStickers];
+            imglyCategory.accessibilityLabel = category.analyticsId;
+            
+            [categories addObject:imglyCategory];
+        }
+    }
+
+    
+    // Default Stickers
+
     NSMutableArray<IMGLYSticker *> *fathersDayStickers = [NSMutableArray arrayWithArray:[self fathersDayCategoryStickers]];
     NSInteger fathersDayThumbnailIndex = 1;
 
@@ -108,25 +168,7 @@
                                                                                stickers:disneyStickers];
     disneyCategory.accessibilityLabel = @"Disney";
 
-
-    NSURL *addStickerIcon = [[NSBundle mainBundle] URLForResource:@"customSticker" withExtension:@"png"];
-    IMGLYStickerCategory *addCustomCategory = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                 imageURL:addStickerIcon
-                                                                                 stickers:@[]];
-
-    addCustomCategory.accessibilityLabel = @"Add Custom Sticker";
-
-    NSMutableArray *categories = [NSMutableArray arrayWithArray:@[addCustomCategory, summerCategory, fathersDayCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory, disneyCategory]];
-    
-    NSArray<IMGLYSticker *> *customStickers = [PGCustomStickerManager stickers];
-    if (customStickers.count > 0) {
-        IMGLYStickerCategory *customCategory       = [[IMGLYStickerCategory alloc] initWithTitle:@""
-                                                                                        imageURL:[customStickers firstObject].thumbnailURL
-                                                                                        stickers:customStickers];
-
-        customCategory.accessibilityLabel = @"Custom Stickers";
-        [categories insertObject:customCategory atIndex:1];
-    }
+    [categories addObjectsFromArray:@[summerCategory, fathersDayCategory, faceCategory, decorativeCategory, foodCategory, birthdayCategory, animalCategory, natureCategory, getWellCategory, disneyCategory]];
 
     return categories;
 }
