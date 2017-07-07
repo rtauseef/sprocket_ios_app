@@ -501,6 +501,23 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self presentViewController:alert animated:YES completion:completion];
 }
 
+- (NSMutableArray<UIImage *> *)editedImagesSelected
+{
+    NSMutableArray *editedImages = [NSMutableArray array];
+    if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+        for (PGGesturesView *gestureView in self.gesturesViews) {
+            if (gestureView.isSelected && gestureView.editedImage) {
+                [editedImages addObject:gestureView.editedImage];
+            }
+        }
+    } else {
+        PGGesturesView *gestureView = self.gesturesViews[0];
+        editedImages = [self generateTiles:gestureView rotatingLastRow:NO];
+    }
+    
+    return editedImages;
+}
+
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
@@ -1169,34 +1186,35 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     NSArray<NSNumber *> *selectedTiles = self.tilingOverlay.selectedTiles;
     
-    NSInteger horizontal_tiles;
-    NSInteger vertical_tiles;
+    NSInteger tilesColumnCount;
+    NSInteger tilesRowCount;
     NSInteger scale;
     if (self.drawer.tilingOption == PGTilingOverlayOption2x2) {
-        horizontal_tiles = 2;
-        vertical_tiles = 2;
+        tilesColumnCount = 2;
+        tilesRowCount = 2;
         scale = 2;
     } else if (self.drawer.tilingOption == PGTilingOverlayOption3x3){
-        horizontal_tiles = 3;
-        vertical_tiles = 3;
+        tilesColumnCount = 3;
+        tilesRowCount = 3;
         scale = 3;
     } else {
         [tiles addObject:currentImage];
         return tiles;
     }
+    
     CGFloat imgWidth = currentImage.size.width * currentImage.scale / scale;
     CGFloat imgheight = currentImage.size.height * currentImage.scale / scale;
     CGFloat compensatedWidth = imgWidth * 1.012;
     CGFloat compensatedHeight = imgheight * 1.012;
     
     NSUInteger indexCount = 0;
-    for (int y = 0; y < vertical_tiles; y++) {
-        for (int x = 0; x < horizontal_tiles; x++) {
+    for (int y = 0; y < tilesRowCount; y++) {
+        for (int x = 0; x < tilesColumnCount; x++) {
             if (![selectedTiles containsObject:[NSNumber numberWithUnsignedInteger:indexCount++]]) {
                 continue;
             }
             
-            UIImage* tileImage;
+            UIImage *tileImage;
             CGFloat adjX = 0;
             CGFloat adjY = 0;
             if (y > 0) {
@@ -1210,7 +1228,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             CGFloat startY = (y * imgheight) - adjY;
             CGRect imageRect = CGRectMake(startX, startY, compensatedWidth, compensatedHeight);
             CGImageRef imageRef = CGImageCreateWithImageInRect(currentImage.CGImage, imageRect);
-            if ((int)vertical_tiles-1 == y && shouldRotate) {
+            if (y == tilesRowCount-1 && shouldRotate) {
                 tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationDown];
             } else {
                 tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
@@ -1647,23 +1665,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     gesturesView.editedImage = [gesturesView screenshotImage];
     
     return gesturesView.editedImage;
-}
-
-- (NSMutableArray<UIImage *> *)editedImagesSelected
-{
-    NSMutableArray *editedImages = [NSMutableArray array];
-    if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
-        for (PGGesturesView *gestureView in self.gesturesViews) {
-            if (gestureView.isSelected && gestureView.editedImage) {
-                [editedImages addObject:gestureView.editedImage];
-            }
-        }
-    } else {
-        PGGesturesView *gestureView = self.gesturesViews[0];
-        editedImages = [self generateTiles:gestureView rotatingLastRow:NO];
-    }
-    
-    return editedImages;
 }
 
 - (NSMutableArray<PGGesturesView *> *)gestureViewsSelected
