@@ -55,20 +55,24 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 NSString * const kMetricsOffRampPrintNoUISingle   = @"PrintWithNoUI";
 NSString * const kMetricsOffRampPrintNoUIMulti    = @"PrintWithNoUI-MultiSelect";
 
-NSString * const kMetricsOrigin                   = @"Origin";
-NSString * const kMetricsOriginSingle             = @"Single";
-NSString * const kMetricsOriginMulti              = @"MultiSelect";
-NSString * const kMetricsOriginCopies             = @"Copies";
+NSString * const kMetricsOrigin                 = @"Origin";
+NSString * const kMetricsOriginSingle           = @"Single";
+NSString * const kMetricsOriginMulti            = @"MultiSelect";
+NSString * const kMetricsOriginCopies           = @"Copies";
+NSString * const kMetricsOriginTile             = @"Tile";
 
-NSString * const kMetricsOffRampQueueAddSingle   = @"AddToQueue-Single";
-NSString * const kMetricsOffRampQueueAddMulti    = @"AddToQueue-MultiSelect";
-NSString * const kMetricsOffRampQueueAddCopies   = @"AddToQueue-Copies";
+NSString * const kMetricsOffRampQueueAddSingle  = @"AddToQueue-Single";
+NSString * const kMetricsOffRampQueueAddMulti   = @"AddToQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueAddCopies  = @"AddToQueue-Copies";
+NSString * const kMetricsOffRampQueueAddTile    = @"AddToQueue-Tile";
 
-NSString * const kMetricsOffRampQueuePrintSingle = @"PrintFromQueue-Single";
-NSString * const kMetricsOffRampQueuePrintMulti  = @"PrintFromQueue-MultiSelect";
-NSString * const kMetricsOffRampQueuePrintCopies = @"PrintFromQueue-Copies";
-NSString * const kMetricsOffRampQueueDeleteMulti = @"DeleteFromQueue-MultiSelect";
-NSString * const kMetricsOffRampQueueDeleteCopies = @"DeleteFromQueue-Copies";
+NSString * const kMetricsOffRampQueuePrintSingle    = @"PrintFromQueue-Single";
+NSString * const kMetricsOffRampQueuePrintMulti     = @"PrintFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueuePrintCopies    = @"PrintFromQueue-Copies";
+NSString * const kMetricsOffRampQueuePrintTile      = @"PrintFromQueue-Tile";
+NSString * const kMetricsOffRampQueueDeleteMulti    = @"DeleteFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueDeleteCopies   = @"DeleteFromQueue-Copies";
+NSString * const kMetricsOffRampQueueDeleteTile     = @"DeleteFromQueue-Tile";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
@@ -127,25 +131,29 @@ NSString * const kEventPhotoSelectAction = @"Select";
 NSString * const kEventPhotoGalleryModeCategory  = @"PhotoGalleryMode";
 NSString * const kEventPhotoGalleryModeAction    = @"Switch";
 
-NSString * const kEventPrintJobCategory          = @"PrintJob";
-NSString * const kEventPrintJobErrorCategory     = @"PrintJobError";
-NSString * const kEventPrintJobPrintSingleAction = @"Print";
-NSString * const kEventPrintJobPrintMultiAction  = @"Print-MultiSelect";
-NSString * const kEventPrintJobPrintCopiesAction  = @"Print-Copies";
-NSString * const kEventPrintJobStartedAction     = @"Started";
-NSString * const kEventPrintJobCompletedAction   = @"Completed";
+NSString * const kEventPrintJobCategory             = @"PrintJob";
+NSString * const kEventPrintJobErrorCategory        = @"PrintJobError";
+NSString * const kEventPrintJobPrintSingleAction    = @"Print";
+NSString * const kEventPrintJobPrintMultiAction     = @"Print-MultiSelect";
+NSString * const kEventPrintJobPrintCopiesAction    = @"Print-Copies";
+NSString * const kEventPrintJobPrintTileAction      = @"Print-Tile";
+NSString * const kEventPrintJobStartedAction        = @"Started";
+NSString * const kEventPrintJobCompletedAction      = @"Completed";
 
-NSString * const kEventPrintQueueCategory          = @"Queue";
-NSString * const kEventPrintQueueAddMultiAction    = @"Add-MultiSelect";
-NSString * const kEventPrintQueueAddSingleAction   = @"Add-Single";
-NSString * const kEventPrintQueueAddCopiesAction   = @"Add-Copies";
+NSString * const kEventPrintQueueCategory           = @"Queue";
+NSString * const kEventPrintQueueAddMultiAction     = @"Add-MultiSelect";
+NSString * const kEventPrintQueueAddSingleAction    = @"Add-Single";
+NSString * const kEventPrintQueueAddCopiesAction    = @"Add-Copies";
+NSString * const kEventPrintQueueAddTileAction      = @"Add-Tile";
 
-NSString * const kEventPrintQueuePrintMultiAction  = @"Print-MultiSelect";
-NSString * const kEventPrintQueuePrintSingleAction = @"Print-Single";
-NSString * const kEventPrintQueuePrintCopiesAction = @"Print-Copies";
+NSString * const kEventPrintQueuePrintMultiAction   = @"Print-MultiSelect";
+NSString * const kEventPrintQueuePrintSingleAction  = @"Print-Single";
+NSString * const kEventPrintQueuePrintCopiesAction  = @"Print-Copies";
+NSString * const kEventPrintQueuePrintTileAction    = @"Print-Tile";
 
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 NSString * const kEventPrintQueueDeleteCopiesAction = @"Delete-Copies";
+NSString * const kEventPrintQueueDeleteTileAction = @"Delete-Tile";
 
 NSString * const kEventPrintQueueMenuCategory = @"Print Queue_Menu";
 NSString * const kEventPrintQueuePreviewCategory = @"Print Queue_Preview";
