@@ -30,6 +30,7 @@ Feature: Check Print Queue functionality
         And I check the application type is "HP"
         Then I select "printqueue" 
         And I touch "Delete All"
+        Then I wait for some seconds
         And I touch "Yes"
         Then I wait for some seconds
         Then Fetch metrics details
