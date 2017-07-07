@@ -24,15 +24,16 @@ When(/^I tap "(.*?)" mark$/) do |mark|
     else
         if(mark == "Check")
             touch @current_page.check
+            sleep(15)
         else
             if(mark == "Save")
                 sleep(WAIT_SCREENLOAD)
                     touch @current_page.save
-                    #sleep(STEP_PAUSE)
+
             else
                 if(mark == "Add text")
                         touch @current_page.add_text
-                        #sleep(STEP_PAUSE)
+
                 else
                     if(mark == "Cancel")
                         touch @current_page.cancel

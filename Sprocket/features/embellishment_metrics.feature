@@ -30,13 +30,8 @@ Feature: Verify embellishment metrics
     And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
     And I should see the photo with the "sticker_11" sticker from "Face Category" tab
     Then I tap "Check" mark
-    And I wait for some seconds
-    And I wait for some seconds
-	And I wait for some seconds
-	And I wait for some seconds   
     Then I am on the "CameraRoll Preview" screen
     When I tap "Download" button
-	Then I wait for some seconds
     Then Fetch metrics details
     Then I Fetch embellishment metrics details
     And I verify the "embellishment" metrics length is "3"
@@ -68,13 +63,8 @@ Feature: Verify embellishment metrics
     Then I select "AutoFix"
     Then I wait for some seconds
     Then I tap "Check" mark
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds
     Then I am on the "CameraRoll Preview" screen
     When I tap "Download" button
-    Then I wait for some seconds
     Then Fetch metrics details
     Then I Fetch embellishment metrics details
     And I verify the "embellishment" metrics length is "3"
@@ -96,15 +86,8 @@ Feature: Verify embellishment metrics
     Then I tap "Save" mark
     Then I should see the "Edit" screen
     Then I tap "Check" mark
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds  
-    And I wait for some seconds
-    And I wait for some seconds    
     Then I am on the "CameraRoll Preview" screen
     When I tap "Download" button
-    Then I wait for some seconds
     Then Fetch metrics details
     Then I Fetch embellishment metrics details
     And I verify the "embellishment" metrics length is "1"
