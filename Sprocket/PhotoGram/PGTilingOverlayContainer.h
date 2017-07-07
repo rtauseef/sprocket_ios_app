@@ -14,6 +14,10 @@
 
 @interface PGTilingOverlayContainer : PGInteractionIgnorerView
 
+/**
+ * Tile indices that are currently checked.
+ * Indices usually follow the order: top left, top right, bottom left, then bottom right.
+ */
 @property (strong, nonatomic, readonly) NSArray<NSNumber *> *checkedTiles;
 
 @end

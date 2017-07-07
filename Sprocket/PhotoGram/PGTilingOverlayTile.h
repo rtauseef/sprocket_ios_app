@@ -15,6 +15,10 @@
 
 @interface PGTilingOverlayTile : PGView
 
+/**
+ * Index used to identify this tile in a collection of tiles.
+ * This value is usually defined in xib files in the user defined runtime attributes section.
+ */
 @property (strong, nonatomic) NSNumber *index;
 @property (assign, nonatomic, readonly) BOOL isChecked;
 

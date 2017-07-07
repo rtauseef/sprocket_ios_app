@@ -5008,6 +5008,7 @@
 			isa = PBXGroup;
 			children = (
 				F27257001E983F97009E553D /* imgly */,
+				73F0705D1F0EFAD10071E580 /* Tiling */,
 				822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */,
 				822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */,
 				822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */,
@@ -6501,7 +6502,6 @@
 				733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
-				73F0705D1F0EFAD10071E580 /* Tiling */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
