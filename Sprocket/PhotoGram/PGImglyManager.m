@@ -11,9 +11,12 @@
 //
 
 #import "PGImglyManager.h"
+#import <AurasmaSDK/AurasmaSDK.h>
+#import "PGAurasmaGlobalContext.h"
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
 #import "PGMagicFrameManager.h"
+#import "PGAurasmaMagicFrame.h"
 #import "UIColor+Style.h"
 #import <imglyKit/IMGLYAnalyticsConstants.h>
 
@@ -33,6 +36,8 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
 @property (nonatomic, strong) NSString *selectedFilter;
 @property (nonatomic, strong) NSString *selectedFrame;
 @property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricsManager;
+@property (nonatomic, strong) IMGLYFrameToolController *magicFrameController;
+@property (nonatomic, strong) AURView *aurView;
 
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 
@@ -75,12 +80,12 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
     // If you make sure the view is created, in this case by calling on magicFrameController.view.tag, you are able to change the data.
     // This is not a great fix, but is in now to get this working as expected.
     // TODO : fix how the data is set on magicFrameController
-    IMGLYFrameToolController *magicFrameController = [[IMGLYFrameToolController alloc] initWithConfiguration:configuration];
-    magicFrameController.view.tag = 0;
-    magicFrameController.frameDataSource.allFrames = [[PGMagicFrameManager sharedInstance] imglyFrames];
+    self.magicFrameController = [[IMGLYFrameToolController alloc] initWithConfiguration:configuration];
+    self.magicFrameController.view.tag = 0;
+    self.magicFrameController.frameDataSource.allFrames = [[PGMagicFrameManager sharedInstance] imglyFrames];
     IMGLYBoxedMenuItem *magicFrameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemMagicFrame
                                                                          icon:[UIImage imageNamed:@"ic_magicframe_48pt"]
-                                                                         tool:magicFrameController];
+                                                                         tool:self.magicFrameController];
 
     IMGLYBoxedMenuItem *stickerItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemSticker
                                                                            icon:[UIImage imageNamed:@"ic_sticker_48pt"]
@@ -171,6 +176,15 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                                     ];
 
     return fonts;
+}
+
+- (void)removeAurView {
+    if (_aurView) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.aurView removeFromSuperview];
+            self.aurView = nil;
+        });
+    }
 }
 
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
@@ -272,7 +286,7 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
             };
 
             photoEditorBuilder.photoEditorActionSelectedBlock = ^(IMGLYBoxedMenuItem * _Nonnull item) {
-                if ([item.title isEqualToString:kImglyMenuItemMagic]) {
+                if ([item.title isEqualToString:kImglyMenuItemMagic]) { // show magic frame
                     if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
                         [embellishmentMetricsManager removeEmbellishmentMetric:autofixMetric];
                     } else {
@@ -328,6 +342,17 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 [cell.imageView updateConstraintsIfNeeded];
             };
 
+            toolBuilder.discardButtonConfigurationClosure = ^(IMGLYButton *button) {
+                [button setActionClosure:^(id action){
+                    [self removeAurView];
+                } for:UIControlEventTouchUpInside];
+            };
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton *button) {
+                [button setActionClosure:^(id action){
+                    [self removeAurView];
+                } for:UIControlEventTouchUpInside];
+            };
+            
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
                 cell.captionLabel.text = nil;
 
@@ -335,6 +360,40 @@ static NSString * const kImglyMenuItemCrop = @"Crop";
                 [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
                 [cell.imageView setNeedsUpdateConstraints];
                 [cell.imageView updateConstraintsIfNeeded];
+                [cell.imageView setUserInteractionEnabled:YES];
+                UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeAurView)];
+                [cell.imageView addGestureRecognizer:tapGesture];
+            };
+            
+            toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
+                [self removeAurView];
+                __weak PGImglyManager *weakSelf = self;
+                if (frame) {
+                    PGAurasmaMagicFrame *magicFrame = [PGMagicFrameManager magicFramesDictionary][frame.accessibilityLabel];
+                    if (magicFrame) {
+                        NSLog(@"frame uuid is %@ and name is %@", magicFrame.auraId, magicFrame.name);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            PGImglyManager *strongSelf = weakSelf;
+                            if (!strongSelf) {
+                                return;
+                            }
+                            CGSize triggerSize = CGSizeMake(600, 900);
+                            NSError *error = nil;
+                            AURAuraPreviewController *controller = [AURAuraPreviewController controllerWithContext:[PGAurasmaGlobalContext instance].context
+                                                                                                         andAuraId:magicFrame.auraId
+                                                                                                    andTriggerSize:triggerSize
+                                                                                                             error:&error];
+                            if (error) {
+                                NSLog(@"error getting preview controller: %@", error);
+                                return;
+                            }
+                            strongSelf.aurView = [AURView viewWithFrame:strongSelf.magicFrameController.workspaceView.frame andController:controller];
+                            strongSelf.aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
+                            [strongSelf.magicFrameController.workspaceView addSubview:strongSelf->_aurView];
+                        });
+                    }
+                }
             };
         }];
         

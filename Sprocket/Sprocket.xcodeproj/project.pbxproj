@@ -2103,6 +2103,7 @@
 		9aa0586c2e0902acbc06b826 /* PGSegmentedControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D6810319A2B193000D45E0 /* PGSegmentedControlView.xib */; };
 		9d7dc589e6a763793b4419cd /* Glegoo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF26E19B648E500AAB884 /* Glegoo-Regular.ttf */; };
 		9e5714be80e398b83ecf7322 /* MeasurementArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3461F9F19AF84A80042DF5E /* MeasurementArrowRight@2x.png */; };
+		A8A515031EF97BD900CC37F4 /* PGAurasmaMagicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A515021EF97BD900CC37F4 /* PGAurasmaMagicFrame.m */; };
 		A8C34ABB1EE6DC7C003ED831 /* PGAurasmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C34AB91EE6DC7C003ED831 /* PGAurasmaViewController.m */; };
 		A8C34ABC1EE6DC7C003ED831 /* PGAurasmaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C34ABA1EE6DC7C003ED831 /* PGAurasmaViewController.xib */; };
 		A8C34AC01EE7080A003ED831 /* PGAurasmaGlobalContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C34ABF1EE7080A003ED831 /* PGAurasmaGlobalContext.m */; };
@@ -4084,6 +4085,8 @@
 		92D073861D25ACE8002611C0 /* PGMediaNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMediaNavigation.m; sourceTree = "<group>"; };
 		92D073891D25AD02002611C0 /* PGMediaNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGMediaNavigation.xib; sourceTree = "<group>"; };
 		92E773081E4104810047E610 /* AirshipAppExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirshipAppExtensions.xcodeproj; path = AirshipAppExtensions/AirshipAppExtensions.xcodeproj; sourceTree = "<group>"; };
+		A8A515011EF97BD900CC37F4 /* PGAurasmaMagicFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAurasmaMagicFrame.h; sourceTree = "<group>"; };
+		A8A515021EF97BD900CC37F4 /* PGAurasmaMagicFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAurasmaMagicFrame.m; sourceTree = "<group>"; };
 		A8C34AB81EE6DC7C003ED831 /* PGAurasmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAurasmaViewController.h; sourceTree = "<group>"; };
 		A8C34AB91EE6DC7C003ED831 /* PGAurasmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAurasmaViewController.m; sourceTree = "<group>"; };
 		A8C34ABA1EE6DC7C003ED831 /* PGAurasmaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGAurasmaViewController.xib; sourceTree = "<group>"; };
@@ -6452,6 +6455,8 @@
 				82362A581D5959870019F024 /* PGStickerItem.m */,
 				82A1167E1E5FA57100E7F8FC /* PGStickerManager.h */,
 				82A1167F1E5FA57100E7F8FC /* PGStickerManager.m */,
+				A8A515011EF97BD900CC37F4 /* PGAurasmaMagicFrame.h */,
+				A8A515021EF97BD900CC37F4 /* PGAurasmaMagicFrame.m */,
 			);
 			name = imgly;
 			sourceTree = "<group>";
@@ -9830,6 +9835,7 @@
 				F134BC3F1AC6067A007D892B /* PGLogger.m in Sources */,
 				E31BE41719EC6BB4006B78BB /* PGLandingSelectorPageViewController.m in Sources */,
 				82362A181D59408E0019F024 /* PGFrameItem.m in Sources */,
+				A8A515031EF97BD900CC37F4 /* PGAurasmaMagicFrame.m in Sources */,
 				E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */,
 				E33FFFFC19D21C8500D2FDAC /* UIViewController+Trackable.m in Sources */,
 				E31BE41319E601F0006B78BB /* PGGesturesView.m in Sources */,

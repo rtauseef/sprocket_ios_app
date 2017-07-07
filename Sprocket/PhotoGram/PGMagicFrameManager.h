@@ -18,6 +18,8 @@
 
 + (PGMagicFrameManager *)sharedInstance;
 
++ (NSDictionary *)magicFramesDictionary;
+
 - (NSArray<IMGLYFrame *> *)imglyFrames;
 
 @end

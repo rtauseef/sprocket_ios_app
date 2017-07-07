@@ -11,9 +11,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
+@interface PGAurasmaMagicFrame : NSObject
 
-@interface PGAurasmaScreenshotTextProvider : NSObject <UIActivityItemSource>
-+ (PGAurasmaScreenshotTextProvider *)textProvider;
++ (instancetype) magicFrameWithAuraId:(NSString *) auraId
+                                 name:(NSString *) name
+                            imageName:(NSString *) imageName;
+
+@property (readonly, nonatomic) NSString *auraId;
+
+@property (readonly, nonatomic) NSString *name;
+
+@property (readonly, nonatomic) NSString *imageName;
+
 @end

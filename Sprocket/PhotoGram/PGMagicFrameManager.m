@@ -11,6 +11,8 @@
 //
 
 #import "PGMagicFrameManager.h"
+#import "PGAurasmaMagicFrame.h"
+#import "PGFrameItem.h"
 #import "NSLocale+Additions.h"
 
 @interface PGMagicFrameManager()
@@ -47,26 +49,55 @@
     [self.frames addObjectsFromArray:[self standardUSMagicFrames]];
 }
 
++ (NSArray *)magicFramesArray {
+    static NSArray *_frameArray;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _frameArray = @[
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"10dcae0f826b3890c991112a248d0538" name:@"BIRTHDAY Band" imageName:@"BIRTHDAY_Band"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"ba554181edfa094318c13bea0ae062fd" name:@"BIRTHDAY Bear Mail" imageName:@"BIRTHDAY_Bear_Mail"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"2ea77219f62018f32704346aa9441f5c" name:@"BIRTHDAY Dino" imageName:@"BIRTHDAY_Dino"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"d1561cef1bd5e35628c6df6faec7a04e" name:@"BIRTHDAY Multi" imageName:@"BIRTHDAY_Multi"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"6383f9d8b5572880b42d8fb4ec9fc980" name:@"BIRTHDAY Original Aurasma Band" imageName:@"BIRTHDAY_Original_Aurasma_Band"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"927813186ad9e7cff9c5531c3b3d870d" name:@"BIRTHDAY Selfie" imageName:@"BIRTHDAY_Selfie"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"a028f6b7a55b74972f3b237b9dc198e7" name:@"CHRISTMAS Aurasma Card" imageName:@"CHRISTMAS_Aurasma_Card"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"b868113193062f3acb9d673c192296c7" name:@"CHRISTMAS Fairy" imageName:@"CHRISTMAS_Fairy"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"2f0dce7fc022828ad2d4c1e322bc1239" name:@"CHRISTMAS Meerkats" imageName:@"CHRISTMAS_Meerkats"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"2d3a9c99bf9afb87fc490b65b6548656" name:@"CHRISTMAS Penguins" imageName:@"CHRISTMAS_Penguins"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"7bd54d0b1bb8f4dec97de2d460079e69" name:@"CHRISTMAS Rudolph" imageName:@"CHRISTMAS_Rudolph"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"340c0179c82096ed8b67425d63eaff61" name:@"CHRISTMAS Selfie" imageName:@"CHRISTMAS_Selfie"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"a048b06f2d30532e12b324aa940a9422" name:@"SUMMER Amazon" imageName:@"SUMMER_Amazon"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"3faa188ea23601827a359046cc686576" name:@"SUMMER BestWestern Selfie" imageName:@"SUMMER_BestWestern_Selfie"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"523d911b553847828de1df2ed3470ab4" name:@"SUMMER Soccer" imageName:@"SUMMER_Soccer"],
+                        [PGAurasmaMagicFrame magicFrameWithAuraId:@"42918a730b2ed4b4b23dc0f31a92fdc1" name:@"SUMMER Turtles" imageName:@"SUMMER_Turtles"],
+                        ];
+    });
+    return _frameArray;
+    
+}
+
++ (NSDictionary *)magicFramesDictionary {
+    static NSDictionary *_magicFramesDict;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableDictionary *framesMutableDict = [NSMutableDictionary dictionary];
+        for (PGAurasmaMagicFrame *magicFrame in [[self class] magicFramesArray]) {
+            framesMutableDict[[PGFrameItem stickerNameWithName:magicFrame.name andPackageName:nil]] = magicFrame;
+        }
+        _magicFramesDict = [NSDictionary dictionaryWithDictionary:framesMutableDict];
+    });
+    return _magicFramesDict;
+}
+
 - (NSArray *)standardUSMagicFrames
 {
-    return @[
-             [[PGFrameItem alloc] initWithName:@"BIRTHDAY Band" imageName:@"BIRTHDAY_Band" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"BIRTHDAY Bear Mail" imageName:@"BIRTHDAY_Bear_Mail" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"BIRTHDAY Dino" imageName:@"BIRTHDAY_Dino" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"BIRTHDAY Multi" imageName:@"BIRTHDAY_Multi" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"BIRTHDAY Original Aurasma Band" imageName:@"BIRTHDAY_Original_Aurasma_Band" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"BIRTHDAY Selfie" imageName:@"BIRTHDAY_Selfie" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"CHRISTMAS Aurasma Card" imageName:@"CHRISTMAS_Aurasma_Card" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"CHRISTMAS Fairy" imageName:@"CHRISTMAS_Fairy" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"CHRISTMAS Meerkats" imageName:@"CHRISTMAS_Meerkats" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"CHRISTMAS Penguins" imageName:@"CHRISTMAS_Penguins" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"CHRISTMAS Rudolph" imageName:@"CHRISTMAS_Rudolph" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"CHRISTMAS Selfie" imageName:@"CHRISTMAS_Selfie" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"SUMMER Amazon" imageName:@"SUMMER_Amazon" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"SUMMER BestWestern Selfie" imageName:@"SUMMER_BestWestern_Selfie" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"SUMMER Soccer" imageName:@"SUMMER_Soccer" andPackageName:nil],
-             [[PGFrameItem alloc] initWithName:@"SUMMER Turtles" imageName:@"SUMMER_Turtles" andPackageName:nil],
-             ];
+    NSMutableArray *frameItemsMutable = [[NSMutableArray alloc] init];
+    for (PGAurasmaMagicFrame *magicFrame in [[self class] magicFramesArray]) {
+        [frameItemsMutable addObject:[[PGFrameItem alloc] initWithName:magicFrame.name imageName:magicFrame.imageName
+                                                        andPackageName:nil]];
+    }
+    // immutable copy
+    return [frameItemsMutable copy];
 }
 
 - (NSArray<IMGLYFrame *> *)imglyFrames {
