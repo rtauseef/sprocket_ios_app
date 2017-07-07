@@ -35,6 +35,7 @@
 #import "PGLinkSettings.h"
 #import "PGPrintQueueManager.h"
 #import "PGSetupSprocketViewController.h"
+#import "PGTilingOverlay.h"
 #import "PGLog.h"
 #import <MP.h>
 #import <HPPR.h>
@@ -109,6 +110,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (assign, nonatomic) NSInteger viewNumber;
 @property (assign, nonatomic) NSInteger viewCount;
 
+@property (strong, nonatomic) PGTilingOverlay *tilingOverlay;
+
 @end
 
 @implementation PGPreviewViewController
@@ -157,6 +160,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.drawer.showCopies = NO;
+        self.drawer.showTiling = NO;
         self.drawer.alwaysShowPrintQueue = YES;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
 
@@ -189,6 +193,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     self.operationQueue = [[NSOperationQueue alloc] init];
+    
+    self.tilingOverlay = [[PGTilingOverlay alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -363,13 +369,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
-    NSMutableArray *images = [[NSMutableArray alloc] init];
-    for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected && gestureView.editedImage) {
-            [images addObject:gestureView.editedImage];
-        }
-    }
-
+    NSArray *images = [self editedImagesSelected];
     if (images.count > 0) {
         [self savePhoto:images index:0 withCompletion:completion];
     }
@@ -501,6 +501,23 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self presentViewController:alert animated:YES completion:completion];
 }
 
+- (NSMutableArray<UIImage *> *)editedImagesSelected
+{
+    NSMutableArray *editedImages = [NSMutableArray array];
+    if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+        for (PGGesturesView *gestureView in self.gesturesViews) {
+            if (gestureView.isSelected && gestureView.editedImage) {
+                [editedImages addObject:gestureView.editedImage];
+            }
+        }
+    } else {
+        PGGesturesView *gestureView = self.gesturesViews[0];
+        editedImages = [self generateTiles:gestureView rotatingLastRow:NO];
+    }
+    
+    return editedImages;
+}
+
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
@@ -601,9 +618,25 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
         drawer.isPeeking = NO;
         drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
+        self.wasDrawerOpenedByUser = drawer.isOpened;
 
         [self setDrawerHeightAnimated:NO];
     }
+}
+
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGTilingOverlayOption)tilingOption
+{
+    if (tilingOption == PGTilingOverlayOptionSingle) {
+        [self.tilingOverlay removeOverlay];
+        return;
+    }
+    
+    UIView *gestureView = self.gesturesViews.firstObject;
+    if (!gestureView) {
+        return;
+    }
+    
+    [self.tilingOverlay addTilingOverlay:tilingOption toView:gestureView];
 }
 
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
@@ -876,16 +909,38 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [selectedViews addObject:selectedViews.firstObject];
         }
     }
+    
     self.viewNumber = 0;
     self.viewCount = selectedViews.count;
     
     __block BOOL wasAddedToQueue = NO;
     __block NSUInteger numberOfPrintsAdded = 0;
+    BOOL printingTiles = NO;
+    NSUInteger imagesToProcess = selectedViews.count;
 
-    for (PGGesturesView *gestureView in selectedViews) {
+    NSMutableArray<UIImage *> *tiles;
+    PGGesturesView *gestureView;
+    if (self.drawer.tilingOption != PGTilingOverlayOptionSingle) {
+        printingTiles = YES;
+        gestureView = selectedViews[0];
+        tiles = [self generateTiles:gestureView rotatingLastRow:YES];
+        isPrintDirect &= tiles.count == 1;
+        imagesToProcess = tiles.count;
+    }
     
-        gestureView.editedImage = [gestureView screenshotImage];
-        __block UIImage *imageToPrint = gestureView.editedImage;
+    if (imagesToProcess == 0) {
+        return;
+    }
+
+    for (int x = 0; x < imagesToProcess; x++) {
+        __block UIImage *imageToPrint;
+        if (printingTiles && tiles != nil) {
+            imageToPrint = tiles[x];
+        } else if (!printingTiles) {
+            gestureView = selectedViews[x];
+            gestureView.editedImage = [gestureView screenshotImage];
+            imageToPrint = gestureView.editedImage;
+        }
         __block MPPrintItem *printItem = nil;
         __block NSMutableDictionary *metrics = nil;
         
@@ -906,7 +961,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) COMPLETE");
         }];
         [preProcessCompleteOperation addDependency:preProcessStartOperation];
-
+        
         MPBTImageProcessor *processor = nil;
         if ([PGLinkSettings linkEnabled]) {
             processor = [self createPrintProcessorFromMedia:gestureView.media];
@@ -978,7 +1033,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                     }];
                 }
             }];
-
+            
         // DIRECT PRINT
         } else if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
             
@@ -1081,6 +1136,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         action = kEventPrintQueueAddCopiesAction;
     }
     
+    if (self.drawer.tilingOption != PGTilingOverlayOptionSingle) {
+        action = kEventPrintQueueAddTileAction;
+    }
+    
     if (wasDrawerOpened) {
         [self openDrawerAnimated:NO];
     }
@@ -1112,12 +1171,79 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 offRamp = kMetricsOffRampPrintNoUIMulti;
             }
         } else {
-            origin = kMetricsOriginSingle;
-            offRamp = kMetricsOffRampQueueAddSingle;
+            if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+                origin = kMetricsOriginSingle;
+                offRamp = kMetricsOffRampQueueAddSingle;
+            } else {
+                origin = kMetricsOriginTile;
+                offRamp = kMetricsOffRampQueueAddTile;
+            }
         }
     }
     
     return @[origin, offRamp];
+}
+
+- (NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView*)gestureView rotatingLastRow:(BOOL)shouldRotate {
+    NSMutableArray<UIImage *> *tiles = [[NSMutableArray alloc] init];
+    self.tilingOverlay.isOverlayVisible = NO;
+    UIImage* currentImage = [gestureView screenshotImage];
+    self.tilingOverlay.isOverlayVisible = YES;
+    
+    NSArray<NSNumber *> *selectedTiles = self.tilingOverlay.selectedTiles;
+    
+    NSInteger tilesColumnCount;
+    NSInteger tilesRowCount;
+    NSInteger scale;
+    if (self.drawer.tilingOption == PGTilingOverlayOption2x2) {
+        tilesColumnCount = 2;
+        tilesRowCount = 2;
+        scale = 2;
+    } else if (self.drawer.tilingOption == PGTilingOverlayOption3x3){
+        tilesColumnCount = 3;
+        tilesRowCount = 3;
+        scale = 3;
+    } else {
+        [tiles addObject:currentImage];
+        return tiles;
+    }
+    
+    CGFloat imgWidth = currentImage.size.width * currentImage.scale / scale;
+    CGFloat imgheight = currentImage.size.height * currentImage.scale / scale;
+    CGFloat compensatedWidth = imgWidth * 1.012;
+    CGFloat compensatedHeight = imgheight * 1.012;
+    
+    NSUInteger indexCount = 0;
+    for (int y = 0; y < tilesRowCount; y++) {
+        for (int x = 0; x < tilesColumnCount; x++) {
+            if (![selectedTiles containsObject:[NSNumber numberWithUnsignedInteger:indexCount++]]) {
+                continue;
+            }
+            
+            UIImage *tileImage;
+            CGFloat adjX = 0;
+            CGFloat adjY = 0;
+            if (y > 0) {
+                adjY = compensatedHeight - imgheight;
+            }
+            if (x > 0) {
+                adjX = compensatedWidth - imgWidth;
+            }
+
+            CGFloat startX = (x * imgWidth) - adjX;
+            CGFloat startY = (y * imgheight) - adjY;
+            CGRect imageRect = CGRectMake(startX, startY, compensatedWidth, compensatedHeight);
+            CGImageRef imageRef = CGImageCreateWithImageInRect(currentImage.CGImage, imageRect);
+            if (y == tilesRowCount-1 && shouldRotate) {
+                tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationDown];
+            } else {
+                tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
+            }
+            [tiles addObject:tileImage];
+            CGImageRelease(imageRef);
+        }
+    }
+    return tiles;
 }
 
 -(MPBTImageProcessor *) createPrintProcessorFromMedia:(HPPRMedia*)media {
@@ -1175,7 +1301,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         } else if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
             PGLogDebug(@"PRINT STATUS: RESUMING PRINT QUEUE");
         } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
-            PGLogDebug(@"PRINT STATUS: SENDING JOB: %lu%", progress);
+            PGLogDebug(@"PRINT STATUS: SENDING JOB: %lu%%", progress);
             [self showProgressView];
             [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
             [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
@@ -1545,19 +1671,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     gesturesView.editedImage = [gesturesView screenshotImage];
     
     return gesturesView.editedImage;
-}
-
-- (NSMutableArray<UIImage *> *)editedImagesSelected
-{
-    NSMutableArray *editedImages = [NSMutableArray array];
-    
-    for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected) {
-            [editedImages addObject:gestureView.editedImage];
-        }
-    }
-    
-    return editedImages;
 }
 
 - (NSMutableArray<PGGesturesView *> *)gestureViewsSelected
