@@ -14,21 +14,73 @@
 
 @implementation PGMetarArtifact
 
+- (instancetype)initWithDictionary: (NSDictionary *) dict {
+    self = [super init];
+
+    if (self) {
+        NSString *artifactType = [dict objectForKey:@"type"];
+
+        if (artifactType != nil) {
+            if ([artifactType isEqualToString:@"AT_FACE"]) {
+                self.type = PGMetarArtifactTypeFace;
+            } else if ([artifactType isEqualToString:@"AT_LOGO"]) {
+                self.type = PGMetarArtifactTypeLogo;
+            } else if ([artifactType isEqualToString:@"AT_OBJECT"]) {
+                self.type = PGMetarArtifactTypeObject;
+            } else if ([artifactType isEqualToString:@"AT_ORBFEATURE"]) {
+                self.type = PGMetarArtifactTypeOrbFeature;
+            } else if ([artifactType isEqualToString:@"AT_AURA"]) {
+                self.type = PGMetarArtifactTypeAura;
+            }
+        }
+
+        NSDictionary *bounds = [dict objectForKey:@"bounds"];
+        
+        if (bounds) {
+            self.bounds = CGRectMake([[bounds objectForKey:@"left"] floatValue], [[bounds objectForKey:@"top"] floatValue], [[bounds objectForKey:@"width"] floatValue], [[bounds objectForKey:@"height"] floatValue]);
+        }
+        
+        self.auraID = [dict objectForKey:@"auraID"];
+    }
+
+    return self;
+}
+
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     switch (self.type) {
         case PGMetarArtifactTypeFace:
-            [dict setObject:@"face" forKey:@"type"];
+            [dict setObject:@"AT_FACE" forKey:@"type"];
             break;
         case PGMetarArtifactTypeLogo:
-            [dict setObject:@"logo" forKey:@"type"];
+            [dict setObject:@"AT_LOGO" forKey:@"type"];
             break;
         case PGMetarArtifactTypeObject:
-            [dict setObject:@"object" forKey:@"type"];
+            [dict setObject:@"AT_OBJECT" forKey:@"type"];
+            break;
+        case PGMetarArtifactTypeOrbFeature:
+            [dict setObject:@"AT_ORBFEATURE" forKey:@"type"];
+            break;
+        case PGMetarArtifactTypeAura:
+            [dict setObject:@"AT_AURA" forKey:@"type"];
             break;
         default:
             break;
+    }
+    
+    if (!CGRectIsEmpty(self.bounds)) {
+        NSMutableDictionary *imageBounds = [NSMutableDictionary dictionary];
+        [imageBounds setObject:[NSNumber numberWithFloat:self.bounds.origin.y] forKey:@"top"];
+        [imageBounds setObject:[NSNumber numberWithFloat:self.bounds.origin.x] forKey:@"left"];
+        [imageBounds setObject:[NSNumber numberWithFloat:self.bounds.size.height] forKey:@"height"];
+        [imageBounds setObject:[NSNumber numberWithFloat:self.bounds.size.width] forKey:@"width"];
+        
+        [dict setObject:imageBounds forKey:@"bounds"];
+    }
+    
+    if (self.auraID) {
+        [dict setObject:self.auraID forKey:@"auraID"];
     }
     
     return dict;
