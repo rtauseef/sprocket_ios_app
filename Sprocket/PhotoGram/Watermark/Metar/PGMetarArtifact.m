@@ -16,10 +16,8 @@
 
 - (instancetype)initWithDictionary: (NSDictionary *) dict {
     self = [super init];
-    
     if (self) {
         NSString *artifactType = [dict objectForKey:@"type"];
-        
         if (artifactType != nil) {
             if ([artifactType isEqualToString:@"AT_FACE"]) {
                 self.type = PGMetarArtifactTypeFace;
@@ -29,6 +27,8 @@
                 self.type = PGMetarArtifactTypeObject;
             } else if ([artifactType isEqualToString:@"AT_ORBFEATURE"]) {
                 self.type = PGMetarArtifactTypeOrbFeature;
+            } else if ([artifactType isEqualToString:@"AT_AURA"]) {
+                self.type = PGMetarArtifactTypeAura;
             }
         }
         
@@ -45,8 +45,9 @@
         if (bounds) {
             self.bounds = CGRectMake([[bounds objectForKey:@"left"] floatValue], [[bounds objectForKey:@"top"] floatValue], [[bounds objectForKey:@"width"] floatValue], [[bounds objectForKey:@"height"] floatValue]);
         }
+        
+        self.auraID = [dict objectForKey:@"auraID"];
     }
-    
     return self;
 }
 
@@ -65,6 +66,10 @@
             break;
         case PGMetarArtifactTypeOrbFeature:
             [dict setObject:@"AT_ORBFEATURE" forKey:@"type"];
+            break;
+        case PGMetarArtifactTypeAura:
+            [dict setObject:@"AT_AURA" forKey:@"type"];
+            break;
         default:
             break;
     }
@@ -83,6 +88,10 @@
         [imageBounds setObject:[NSNumber numberWithFloat:self.bounds.size.width] forKey:@"width"];
         
         [dict setObject:imageBounds forKey:@"bounds"];
+    }
+    
+    if (self.auraID) {
+        [dict setObject:self.auraID forKey:@"auraID"];
     }
     
     return dict;
