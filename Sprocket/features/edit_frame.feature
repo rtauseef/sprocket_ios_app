@@ -43,20 +43,21 @@ Feature: Verify Edit frame feature
   Scenario Outline: Verify Frame Save,Close functionality
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "frame_0" frame
-    Then I should see the photo in the "Frame Editor" screen with the "frame_0" frame
-    Then I tap "Close" mark
+    Then I should see the photo with the "frame_0" frame
+    Then I choose "close" option
     Then I should see the "Edit" screen
     And I should see the photo with no "frame"
-    Then I tap "Frame" button
+    Then I choose "frame" option
     Then I should see the "Frame Editor" screen
     Then I select "frame_1" frame
-    Then I should see the photo in the "Frame Editor" screen with the "frame_1" frame
-    Then I tap "Save" mark
+    Then I should see the photo with the "frame_1" frame
+    Then I choose "save" option
     Then I should see the "Edit" screen
-    And I should see the photo with the "frame_1" frame
+    Then I should see the photo with the "frame_1" frame
 
 
     Examples:
       | social_media_screen_name       |
       | Instagram Preview |
       | CameraRoll        |
+

@@ -12,7 +12,6 @@ Then (/^I Fetch embellishment metrics details$/) do
         hash = `curl -L "http://hpmobileprint:print1t@print-metrics-test.twosmiles.com/api/v1/sprocket_embellishments?mobile_app_metrics_id=#{$metrics_id.to_i}"`
         hash = JSON.parse(hash)
         $embellish_metrics_details = hash
-        
     end
 end
 

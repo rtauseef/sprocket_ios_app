@@ -12,7 +12,7 @@ Feature: Verify no printer added modal
     Then I should see the "Sprocket" screen
     Then I touch "Printers"
     Then I should see the message for No sprockets
-    Then I tap "Close" mark 
+    Then I choose "close" option 
     Then I should see the side menu
     
 @reset
@@ -34,7 +34,7 @@ Scenario: Printer Paired to device but not connected
 Scenario: Printer Paired to device and connected
     Given I am on the "Instagram Preview" screen
     When I tap "Print" button
-    Then I should see the "Preview" screen
+    Then I should see the "Instagram Preview" screen
     
 @reset
 @TA14384
