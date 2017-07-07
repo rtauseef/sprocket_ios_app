@@ -34,8 +34,24 @@
                                 <action selector="tapDismissButton:" destination="-1" eventType="touchUpInside" id="Ibc-h1-1iR"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zs7-8X-LpX">
+                            <rect key="frame" x="301" y="629" width="66" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="66" id="Xfs-js-qJs"/>
+                                <constraint firstAttribute="height" constant="30" id="n5g-Xx-q4m"/>
+                            </constraints>
+                            <state key="normal" title="See More">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tapSeeMoreButton:" destination="-1" eventType="touchUpInside" id="Z3W-Dl-Ozu"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Zs7-8X-LpX" secondAttribute="trailing" constant="8" id="39p-Wz-sgS"/>
+                        <constraint firstAttribute="bottom" secondItem="Zs7-8X-LpX" secondAttribute="bottom" constant="8" id="Hpm-h8-EJt"/>
                         <constraint firstItem="XSS-cM-MSs" firstAttribute="leading" secondItem="hUv-Eq-Kvi" secondAttribute="leading" constant="8" id="rne-4x-ulA"/>
                         <constraint firstItem="XSS-cM-MSs" firstAttribute="top" secondItem="hUv-Eq-Kvi" secondAttribute="top" constant="8" id="yUQ-rL-QbV"/>
                     </constraints>

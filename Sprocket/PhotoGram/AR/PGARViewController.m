@@ -16,6 +16,7 @@
 #import "PGCameraManager.h"
 #import "PGARVideoProcessor.h"
 #import "PGLinkSettings.h"
+#import "PGMetarPayoffViewController.h"
 
 @interface PGARViewController ()
 
@@ -237,6 +238,12 @@
 - (IBAction)tapDismissButton:(id)sender {
     [[PGCameraManager sharedInstance] stopARExp];
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (IBAction)tapSeeMoreButton:(id)sender {
+    PGMetarPayoffViewController *metarViewController = [[PGMetarPayoffViewController alloc] initWithNibName:@"PGMetarPayoffViewController" bundle:nil];
+    [metarViewController setMetarMedia:self.media];
+    [self presentViewController:metarViewController animated:YES completion:nil];
 }
 
 @end
