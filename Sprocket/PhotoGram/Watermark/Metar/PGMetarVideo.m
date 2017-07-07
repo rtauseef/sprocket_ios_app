@@ -29,7 +29,7 @@
 - (NSDictionary *) getDict {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
-    if (self.length)
+    if (self.length && !isnan([self.length doubleValue]))
         [dict setObject:self.length forKey:@"length"];
     
     if (self.encoding)

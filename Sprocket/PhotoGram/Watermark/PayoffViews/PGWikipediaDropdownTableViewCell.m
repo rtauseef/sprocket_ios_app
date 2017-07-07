@@ -10,12 +10,19 @@
 // the license agreement.
 //
 
-#import "PGPayoffViewBaseViewController.h"
-#import "PGWikipediaDropdownViewController.h"
+#import "PGWikipediaDropdownTableViewCell.h"
 
-@interface PGPayoffViewWikipediaViewController : PGPayoffViewBaseViewController <PGWikipediaDropdownViewControllerDelegate>
+@implementation PGWikipediaDropdownTableViewCell
 
-- (BOOL) metadataValidForCurrentLang;
-- (NSArray <NSString *>*)pageTitlesArray;
-   
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
 @end
