@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGTilingOverlayTile">
             <connections>
+                <outlet property="checkbox" destination="cEz-GA-hs2" id="ovv-ZF-Hgo"/>
                 <outlet property="mask" destination="NRs-YY-aeB" id="UMa-fU-2of"/>
             </connections>
         </placeholder>

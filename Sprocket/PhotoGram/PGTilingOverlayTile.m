@@ -15,10 +15,15 @@
 @interface PGTilingOverlayTile ()
 
 @property (weak, nonatomic) IBOutlet UIView *mask;
+@property (weak, nonatomic) IBOutlet UIButton *checkbox;
 
 @end
 
 @implementation PGTilingOverlayTile
+
+- (BOOL)isChecked {
+    return self.checkbox.isSelected;
+}
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {

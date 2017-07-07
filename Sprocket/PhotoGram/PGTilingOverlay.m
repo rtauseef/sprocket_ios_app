@@ -11,17 +11,29 @@
 //
 
 #import "PGTilingOverlay.h"
+#import "PGTilingOverlayContainer.h"
 
 @interface PGTilingOverlay ()
 
-@property (weak, nonatomic) UIView *currentTiling;
+@property (weak, nonatomic) PGTilingOverlayContainer *currentTiling;
 
 @end
 
 @implementation PGTilingOverlay
 
-- (void)addTilingOverlay:(PGTilingOverlayOption)tilingOption toView:(UIView *)view
+- (NSArray<NSNumber *> *)selectedTiles
 {
+    return self.currentTiling.checkedTiles;
+}
+
+- (void)setIsOverlayVisible:(BOOL)isOverlayVisible
+{
+    _isOverlayVisible = isOverlayVisible;
+    self.currentTiling.hidden = !isOverlayVisible;
+}
+
+- (void)addTilingOverlay:(PGTilingOverlayOption)tilingOption toView:(UIView *)view
+{   
     if (self.currentTiling) {
         [self.currentTiling removeFromSuperview];
         self.currentTiling = nil;
@@ -40,18 +52,18 @@
     }
 }
 
+- (NSString *)tilingOptionString:(PGTilingOverlayOption)tilingOption
+{
+    NSArray<NSString *> *tilingOptionArray = @[@"2x2", @"3x3"];
+    return [tilingOptionArray objectAtIndex:tilingOption-1];
+}
+
 - (void)removeOverlay
 {
     if (self.currentTiling) {
         [self.currentTiling removeFromSuperview];
         self.currentTiling = nil;
     }
-}
-
-- (NSString *)tilingOptionString:(PGTilingOverlayOption)tilingOption
-{
-    NSArray<NSString *> *tilingOptionArray = @[@"2x2", @"3x3"];
-    return [tilingOptionArray objectAtIndex:tilingOption-1];
 }
 
 @end
