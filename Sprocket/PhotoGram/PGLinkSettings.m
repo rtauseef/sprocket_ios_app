@@ -17,6 +17,7 @@ NSString * const kPGLinkSettingsChangedNotification = @"kPGLinkSettingsChangedNo
 static NSString * const kPGLinkSettingsVideoPrintEnabled = @"kPGVideoPrintEnabled";
 static NSString * const kPGLinkSettingsFakePrintEnabled = @"kPGFakePrintEnabled";
 static NSString * const kPGLinkSettingsLocalWatermarkEnabled = @"kPGLocalWatermarkEnabled";
+static NSString * const kPGLinkSettingsPhotoFixEnabled = @"kPGPHotoFixEnabled";
 
 @implementation PGLinkSettings
 
@@ -65,6 +66,17 @@ static NSString * const kPGLinkSettingsLocalWatermarkEnabled = @"kPGLocalWaterma
     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsLocalWatermarkEnabled];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kPGLinkSettingsLocalWatermarkEnabled object:self];
+}
+
+
++ (void)setPhotoFixEnabled:(BOOL)enabled {
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGLinkSettingsPhotoFixEnabled];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)photoFixEnabled {
+    NSNumber * enabled = [[NSUserDefaults standardUserDefaults] objectForKey:kPGLinkSettingsPhotoFixEnabled];
+    return enabled && enabled.boolValue;
 }
 
 @end

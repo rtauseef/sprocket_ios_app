@@ -1104,6 +1104,15 @@
 		26760A811DB0104C00F28176 /* PGBaseAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26760A7E1DB00FBF00F28176 /* PGBaseAnalyticsManager.m */; };
 		26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */; };
 		27429c37d77c6db31b76a533 /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = E3461FB419AFD4610042DF5E /* UITableView+Header.m */; };
+		2AC787301F0AEE6100ED1E58 /* libMatterhorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC7872E1F0AEE6000ED1E58 /* libMatterhorn.a */; };
+		2AC787311F0AEE6100ED1E58 /* libMatterhorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC7872E1F0AEE6000ED1E58 /* libMatterhorn.a */; };
+		2AC787321F0AEE6100ED1E58 /* libMatterhorn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC7872E1F0AEE6000ED1E58 /* libMatterhorn.a */; };
+		2AC7873E1F0CBEB600ED1E58 /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC7873D1F0CBEB600ED1E58 /* PGLandingNavigationController.m */; };
+		2AC7873F1F0CBEB600ED1E58 /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC7873D1F0CBEB600ED1E58 /* PGLandingNavigationController.m */; };
+		2AC787401F0CBEB600ED1E58 /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC7873D1F0CBEB600ED1E58 /* PGLandingNavigationController.m */; };
+		2AC787561F0DAF0200ED1E58 /* PFPhotoFix.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AC787551F0DAF0200ED1E58 /* PFPhotoFix.mm */; };
+		2AC787571F0DAF0200ED1E58 /* PFPhotoFix.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AC787551F0DAF0200ED1E58 /* PFPhotoFix.mm */; };
+		2AC787581F0DAF0200ED1E58 /* PFPhotoFix.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2AC787551F0DAF0200ED1E58 /* PFPhotoFix.mm */; };
 		2AF06EEF1DD5484F000FF091 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AF06EF11DD5484F000FF091 /* InfoPlist.strings */; };
 		30b2b7671c026192cb11247c /* TakeSurvey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385819BE57C5009C695F /* TakeSurvey@2x.png */; };
 		30ca0973712d098dc12f2fa7 /* Get_Help_Print@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9230AEA41D19DD3A0029A888 /* Get_Help_Print@3x.png */; };
@@ -2618,8 +2627,6 @@
 		F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C46E801DB6F21300604371 /* PGIntroWizardViewController.m */; };
 		F2CE0E8B1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
 		F2CE0E8C1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */; };
-		F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */; };
-		F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */; };
 		F2CE0E931DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
 		F2CE0E941DC3E36800AA2F6C /* PGAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */; };
 		F2D5A3921EAEA4C7002F9DDC /* PGLinkCredentialsManager.h in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C21EAEA0F500C24AAB /* PGLinkCredentialsManager.h */; };
@@ -2895,6 +2902,11 @@
 		26B434641E3F02310071EEFA /* Sprocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sprocket.entitlements; sourceTree = SOURCE_ROOT; };
 		26BEE7A11E92F8470055D5E4 /* PGAppNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAppNavigation.h; sourceTree = "<group>"; };
 		26BEE7A21E92F8470055D5E4 /* PGAppNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAppNavigation.m; sourceTree = "<group>"; };
+		2AC7872E1F0AEE6000ED1E58 /* libMatterhorn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMatterhorn.a; path = Libraries/PhotoFix/libMatterhorn.a; sourceTree = SOURCE_ROOT; };
+		2AC7872F1F0AEE6000ED1E58 /* TH_iOSWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TH_iOSWrapper.h; path = Libraries/PhotoFix/TH_iOSWrapper.h; sourceTree = SOURCE_ROOT; };
+		2AC7873D1F0CBEB600ED1E58 /* PGLandingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingNavigationController.m; sourceTree = "<group>"; };
+		2AC787541F0DAF0200ED1E58 /* PFPhotoFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFPhotoFix.h; path = Libraries/PhotoFix/PFPhotoFix.h; sourceTree = SOURCE_ROOT; };
+		2AC787551F0DAF0200ED1E58 /* PFPhotoFix.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PFPhotoFix.mm; path = Libraries/PhotoFix/PFPhotoFix.mm; sourceTree = SOURCE_ROOT; };
 		2AC79D0F1DFB812400D86609 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D101DFB817A00D86609 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		2AC79D131DFB82C100D86609 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = lt; path = lt.lproj/InfoPlist.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -4623,7 +4635,6 @@
 		F2CE0E891DC01A4C00AA2F6C /* PGSetupSprocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSetupSprocketViewController.h; sourceTree = "<group>"; };
 		F2CE0E8A1DC01A4C00AA2F6C /* PGSetupSprocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSetupSprocketViewController.m; sourceTree = "<group>"; };
 		F2CE0E8D1DC1848A00AA2F6C /* PGLandingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLandingNavigationController.h; sourceTree = "<group>"; };
-		F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLandingNavigationController.m; sourceTree = "<group>"; };
 		F2CE0E911DC3E36700AA2F6C /* PGAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGAttributedLabel.h; sourceTree = "<group>"; };
 		F2CE0E921DC3E36700AA2F6C /* PGAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAttributedLabel.m; sourceTree = "<group>"; };
 		F2D5A3971EAEA5E8002F9DDC /* link-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link-icon.png"; sourceTree = "<group>"; };
@@ -4722,6 +4733,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AC787301F0AEE6100ED1E58 /* libMatterhorn.a in Frameworks */,
 				8247843E1D77B3C300A693D0 /* Social.framework in Frameworks */,
 				F2D5A3AC1EB00611002F9DDC /* LinkReaderKit.framework in Frameworks */,
 				E39CE8D61AA7C05900A2A644 /* DBChooser.framework in Frameworks */,
@@ -4741,6 +4753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E34D507D199AB87B006D80E0 /* XCTest.framework in Frameworks */,
+				2AC787311F0AEE6100ED1E58 /* libMatterhorn.a in Frameworks */,
 				E34D507F199AB87B006D80E0 /* UIKit.framework in Frameworks */,
 				E34D507E199AB87B006D80E0 /* Foundation.framework in Frameworks */,
 			);
@@ -4758,6 +4771,7 @@
 				3830cd319541ff5fc26c2a81 /* Fabric.framework in Frameworks */,
 				a87ef3737b5e49822333f21d /* Crashlytics.framework in Frameworks */,
 				33c24d98e8d8680a7a1ba56f /* UIKit.framework in Frameworks */,
+				2AC787321F0AEE6100ED1E58 /* libMatterhorn.a in Frameworks */,
 				F2D5A3AF1EB00A17002F9DDC /* LinkReaderKit.framework in Frameworks */,
 				6d00548cf3b1aa84f3d56f23 /* Foundation.framework in Frameworks */,
 				7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */,
@@ -4780,6 +4794,17 @@
 				2671D4C81E3EB64600F166E3 /* Info.plist */,
 			);
 			path = PushNotificationExtension;
+			sourceTree = "<group>";
+		};
+		2AC787341F0AEE6B00ED1E58 /* PhotoFix */ = {
+			isa = PBXGroup;
+			children = (
+				2AC7872E1F0AEE6000ED1E58 /* libMatterhorn.a */,
+				2AC7872F1F0AEE6000ED1E58 /* TH_iOSWrapper.h */,
+				2AC787541F0DAF0200ED1E58 /* PFPhotoFix.h */,
+				2AC787551F0DAF0200ED1E58 /* PFPhotoFix.mm */,
+			);
+			name = PhotoFix;
 			sourceTree = "<group>";
 		};
 		65A0026B1ECFA9A1006500EA /* Video */ = {
@@ -6122,6 +6147,7 @@
 		E3461EC919AC01010042DF5E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2AC787341F0AEE6B00ED1E58 /* PhotoFix */,
 				E375384E19BE4D9A009C695F /* SWRevealViewController */,
 			);
 			name = Libraries;
@@ -6494,7 +6520,7 @@
 				F18C59241A702DB900DEF77C /* PGLandingMainPageViewController.h */,
 				F18C59251A702DB900DEF77C /* PGLandingMainPageViewController.m */,
 				F2CE0E8D1DC1848A00AA2F6C /* PGLandingNavigationController.h */,
-				F2CE0E8E1DC1848A00AA2F6C /* PGLandingNavigationController.m */,
+				2AC7873D1F0CBEB600ED1E58 /* PGLandingNavigationController.m */,
 				F2E7852E1DDD23B20074FFB7 /* PGQzoneLandingPageViewController.h */,
 				F2E7852F1DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m */,
 				F21C665E1E3AB1BA003D4E8B /* PGSelectAlbumDropDownViewController.h */,
@@ -9787,8 +9813,10 @@
 				70dbfe6bae80bc96cda49075 /* UIColor+Style.m in Sources */,
 				F2B3F5CA1EFC5E9300F1E6FB /* PGMetarPage.m in Sources */,
 				825E2A951DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
+				2AC787401F0CBEB600ED1E58 /* PGLandingNavigationController.m in Sources */,
 				5089b6e4b798bd669905cc1d /* PGExperimentManager.m in Sources */,
 				F2B3F5BB1EFC5E7700F1E6FB /* PGPayoffViewWikipediaViewController.m in Sources */,
+				2AC787581F0DAF0200ED1E58 /* PFPhotoFix.mm in Sources */,
 				F2B3F5AE1EFC5E7600F1E6FB /* AVPlayerViewController+Fullscreen.m in Sources */,
 				80b94713d5386721225c29f9 /* PGAppDelegate.m in Sources */,
 				a89aa84a0fd9ca5feb0e4a7b /* PGLandingPageViewController.m in Sources */,
@@ -9810,7 +9838,6 @@
 				26760A801DB0104B00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				a6bac47da8ea69b0d3dc4bcf /* UIImage+MaskImage.m in Sources */,
 				F2B3F5BD1EFC5E7700F1E6FB /* PGWikipediaTableViewCell.m in Sources */,
-				F2CE0E901DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F2B3F5B21EFC5E7600F1E6FB /* PGPayoffViewBaseViewController.m in Sources */,
 				a51149fdd16db14e5519b0c3 /* PGAppAppearance.m in Sources */,
 				b2b702ca62e7f093ce61c8e9 /* PGLogger.m in Sources */,
@@ -9956,10 +9983,10 @@
 				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
 				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
+				2AC7873E1F0CBEB600ED1E58 /* PGLandingNavigationController.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
-				F2CE0E8F1DC1848A00AA2F6C /* PGLandingNavigationController.m in Sources */,
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				EDD33F6C1EF9CE520028DBC8 /* PGMetarLocationVenue.m in Sources */,
@@ -9971,6 +9998,7 @@
 				E34D50CD199ABC29006D80E0 /* UIColor+Style.m in Sources */,
 				65DAD7681B8D3196006FAB3D /* PGExperimentManager.m in Sources */,
 				E34D506B199AB87B006D80E0 /* PGAppDelegate.m in Sources */,
+				2AC787561F0DAF0200ED1E58 /* PFPhotoFix.mm in Sources */,
 				26BEE7A31E92F8470055D5E4 /* PGAppNavigation.m in Sources */,
 				82E3DEBE1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				E31BE41B19ED8951006B78BB /* PGLandingPageViewController.m in Sources */,
@@ -10024,6 +10052,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AC787571F0DAF0200ED1E58 /* PFPhotoFix.mm in Sources */,
+				2AC7873F1F0CBEB600ED1E58 /* PGLandingNavigationController.m in Sources */,
 				E34D5089199AB87B006D80E0 /* PhotoGramTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10628,13 +10658,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -10670,6 +10704,7 @@
 				PROVISIONING_PROFILE = "c1e4a7cd-690e-4ba5-acd2-4ee5197c17fc";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket iOS App Store Distribution Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AppStore;
@@ -10687,6 +10722,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -10758,6 +10797,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -10883,13 +10923,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -10925,6 +10969,7 @@
 				PROVISIONING_PROFILE = "8d84c929-f85f-48c7-bee2-d2eca9f601c2";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket AdHoc Distrib Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;
@@ -10942,6 +10987,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -11013,6 +11062,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -11105,6 +11155,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -11332,13 +11383,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -11374,6 +11429,7 @@
 				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -11397,13 +11453,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				INFOPLIST_FILE = "PhotoGram/PhotoGram-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -11439,6 +11499,7 @@
 				PROVISIONING_PROFILE = "4e0b3ce9-8745-43de-877f-1ebeed4a5c36";
 				PROVISIONING_PROFILE_SPECIFIER = "HP Sprocket Development Provision";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -11461,6 +11522,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -11480,6 +11545,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGram/PhotoGram-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGramTests/en.lproj/PhotoGramTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -11513,6 +11582,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Libraries/PhotoFix",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

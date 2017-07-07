@@ -12,23 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PGLinkSettings : NSObject
+@interface PFPhotoFix : NSObject
 
-extern NSString * const kPGLinkSettingsChangedNotification;
-
-+ (void)setLinkEnabled:(BOOL)visible;
-+ (BOOL)linkEnabled;
-
-+(void) setVideoPrintEnabled:(BOOL) enabled;
-+(BOOL) videoPrintEnabled;
-
-+(void) setFakePrintEnabled:(BOOL) enabled;
-+(BOOL) fakePrintEnabled;
-
-+ (BOOL)localWatermarkEnabled;
-+ (void)setLocalWatermarkEnabled:(BOOL)enabled;
-
-+ (void)setPhotoFixEnabled:(BOOL)enabled;
-+ (BOOL)photoFixEnabled;
++(UIImage *)applyTo:(UIImage *)image;
 
 @end

@@ -51,6 +51,7 @@ enum {
     kEnableFakePrintIndex,
     kEnableLocalWatermarkIndex,
     kForceUpgradeIndex,
+    kEnablePhotoFix,
     
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
@@ -336,6 +337,15 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.text = @"Force Firmware Upgrade";
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[[MP sharedInstance] forceFirmwareUpdates]];
+        } else if (kEnablePhotoFix == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enablePhotoFix"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePhotoFix"];
+            }
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.textLabel.text = @"Enable PhotoFix";
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGLinkSettings photoFixEnabled]];
         }
         
          cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
@@ -415,6 +425,9 @@ NSString * const kFeatureCodeLink = @"link";
 
                 [[MP sharedInstance] setForceFirmwareUpdates:force];
                 [self.tableView reloadData];
+            } else if (kEnablePhotoFix == selectedRow) {
+                [PGLinkSettings setPhotoFixEnabled:![PGLinkSettings photoFixEnabled]];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings photoFixEnabled]];
             }
         }
     }

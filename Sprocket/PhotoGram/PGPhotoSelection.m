@@ -10,8 +10,10 @@
 // the license agreement.
 //
 
+#import "PFPhotoFix.h"
 #import "PGPhotoSelection.h"
 #import "PGMediaNavigation.h"
+#import "PGLinkSettings.h"
 
 static NSUInteger const kPhotoSelectionMaxSelected = 10;
 
@@ -81,6 +83,14 @@ static NSUInteger const kPhotoSelectionMaxSelected = 10;
     }
     
     if (![self isSelected:media] && ![self isMaxedOut]) {
+        
+        if ([PGLinkSettings photoFixEnabled]) {
+            UIImage *photoFixedImage = [PFPhotoFix applyTo:media.image];
+            if (photoFixedImage) {
+                media.image = photoFixedImage;
+            }
+        }
+        
         [self.selectedItems addObject:media];
     }
 }
