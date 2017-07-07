@@ -369,13 +369,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
-    NSMutableArray *images = [[NSMutableArray alloc] init];
-    for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected && gestureView.editedImage) {
-            [images addObject:gestureView.editedImage];
-        }
-    }
-
+    NSArray *images = [self editedImagesSelected];
     if (images.count > 0) {
         [self savePhoto:images index:0 withCompletion:completion];
     }
@@ -914,9 +908,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         printingTiles = true;
         isPrintDirect = false;
         gestureView = selectedViews[0];
-        tiles = [self generateTiles:gestureView];
+        tiles = [self generateTiles:gestureView rotatingLastRow:YES];
         numberOfTiles = tiles.count;
         imagesToProcess = (int) tiles.count;
+    }
+    
+    if (imagesToProcess == 0) {
+        return;
     }
 
     for (int x = 0; x < imagesToProcess; x++) {
@@ -1163,7 +1161,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return @[origin, offRamp];
 }
 
--(NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView*)gestureView {
+- (NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView*)gestureView rotatingLastRow:(BOOL)shouldRotate {
     NSMutableArray<UIImage *> *tiles = [[NSMutableArray alloc] init];
     self.tilingOverlay.isOverlayVisible = NO;
     UIImage* currentImage = [gestureView screenshotImage];
@@ -1212,7 +1210,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             CGFloat startY = (y * imgheight) - adjY;
             CGRect imageRect = CGRectMake(startX, startY, compensatedWidth, compensatedHeight);
             CGImageRef imageRef = CGImageCreateWithImageInRect(currentImage.CGImage, imageRect);
-            if ((int)vertical_tiles-1 == y) {
+            if ((int)vertical_tiles-1 == y && shouldRotate) {
                 tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationDown];
             } else {
                 tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
@@ -1654,11 +1652,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (NSMutableArray<UIImage *> *)editedImagesSelected
 {
     NSMutableArray *editedImages = [NSMutableArray array];
-    
-    for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected) {
-            [editedImages addObject:gestureView.editedImage];
+    if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+        for (PGGesturesView *gestureView in self.gesturesViews) {
+            if (gestureView.isSelected && gestureView.editedImage) {
+                [editedImages addObject:gestureView.editedImage];
+            }
         }
+    } else {
+        PGGesturesView *gestureView = self.gesturesViews[0];
+        editedImages = [self generateTiles:gestureView rotatingLastRow:NO];
     }
     
     return editedImages;
