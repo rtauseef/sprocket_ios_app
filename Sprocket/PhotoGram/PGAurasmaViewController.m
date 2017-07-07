@@ -43,11 +43,14 @@
 @private
     AURContext *_aurasmaContext;
     AURSocialService *_socialService;
+    AURCachedContentService *_cachedContentService;
+    
     AURTrackingController *_aurasmaTrackingController;
     id <PGAurasmaTrackingViewDelegate> _closingDelegate;
     AURView *_trackingView;
     NSString *_trackingAuraId; // id of the last aura to start tracking
     NSTimer *_recordingTimer;
+    AURTrackingState _lastTrackingState;
 }
 
 - (void)dealloc {
@@ -76,6 +79,7 @@
                                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial
                                     context:nil];
     
+    [_aurasmaTrackingController setDetachingAurasAvailability:YES];    
     CGRect frameRect = [UIScreen mainScreen].applicationFrame;
     /* Create a full-frame AURView */
     _trackingView = [AURView viewWithFrame:frameRect andController:_aurasmaTrackingController];
@@ -86,6 +90,8 @@
     [self.view insertSubview:_trackingView atIndex:0];
     
     _socialService = [AURSocialService getServiceWithContext:_aurasmaContext];
+    _cachedContentService = [AURCachedContentService getServiceWithContext:_aurasmaContext];
+    _lastTrackingState = AURTrackingState_Idle;    
 }
 
 - (void)setClosingDelegate:(id <PGAurasmaTrackingViewDelegate>)closingDelegate {
@@ -181,7 +187,6 @@
 }
 
 
-
 - (void)recordingDidFinishWithFile:(NSURL *)fileUrl andError:(NSError *)error {
     [_recordingTimer invalidate];
     _recordingTimer = nil;
@@ -200,12 +205,7 @@
     
     if (error) {
         NSLog(@"Failed to record Aura %@", error);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                        message:NSLocalizedString(@"Failed to record Aura", @"")
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:nil, nil];
-        [alert show];
+        [self showSimpleError:NSLocalizedString(@"Failed to record Aura", @"")];
     }
     
     if (fileUrl) {
@@ -261,6 +261,17 @@
 }
 
 
+// Placeholder code for cross-team collaboration - TODO: replace with MetaR function as follows
+// use Link ID to retreive magic frame ID; once fetched from MetaR, invoke cacheAndStartDetachedAura with magic frame ID 
+- (void)foundCode:(AVMetadataMachineReadableCodeObject *)code {
+    // QR code has an Magic Frame ID embedded in the text 
+    NSArray *qritems = [code.stringValue componentsSeparatedByString:@"::"];    
+    if ([qritems count] == 2) {
+        NSString* magicFrameId = (NSString*)[qritems lastObject];
+        [self cacheAndStartDetachedAura:magicFrameId];    
+    }
+}
+
 
 #pragma mark KVO
 
@@ -287,8 +298,8 @@
 - (void)respondToStateChange:(NSNumber *)stateValue {
     
     BOOL recording = _recordingTimer != nil;
-    AURTrackingState state = (AURTrackingState) [stateValue unsignedIntValue];
-    switch (state) {
+    _lastTrackingState = (AURTrackingState) [stateValue unsignedIntValue];
+    switch (_lastTrackingState) {
         case AURTrackingState_Idle:
         case AURTrackingState_Detecting:
             _screenshotButton.hidden = YES;
@@ -317,6 +328,66 @@
             
             break;
     }
+}
+
+- (void)cacheAndStartDetachedAura:(NSString *)auraId {
+    
+    // will not double trigger aura
+    if (_lastTrackingState != AURTrackingState_Idle && 
+        _lastTrackingState != AURTrackingState_Detecting) {
+        return;
+    }
+    
+    __weak PGAurasmaViewController *weakSelf = self;
+    
+    // set up callback function
+    AURCachedContentServiceErrorHandler callback = ^(NSError *error){
+        
+        PGAurasmaViewController *strongSelfMain = weakSelf;
+        if (!strongSelfMain) {
+            return;
+        }        
+                
+        if (error) {
+            [strongSelfMain showSimpleError:NSLocalizedString(@"Failed to get Aura, please check network connection", @"")];            
+            return;
+        }
+        
+        if (strongSelfMain->_aurasmaTrackingController != nil){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{      
+                
+                if ([strongSelfMain->_aurasmaTrackingController ableToDetachAura:auraId]) {
+                    [strongSelfMain->_aurasmaTrackingController startDetachedAura:auraId];
+                } else {
+                    [strongSelfMain showSimpleError:NSLocalizedString(@"Not able to play Aura, please check Aura set up", @"")];
+                }
+                
+            });
+        }
+    };
+    
+    // fetch aura 
+    if (_cachedContentService != nil) {
+        
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+            [_cachedContentService cacheAura:auraId withCallback:callback];
+        });
+        
+    }
+}
+
+- (void)showSimpleError:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"")
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"") 
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark PGAurasmaRecordingViewControllerDelegate
