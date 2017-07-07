@@ -12,11 +12,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PGPayoffMetadata.h"
+#import "PGMetarMedia.h"
 
 @interface PGMetarPayoffViewController : UIViewController
 
 @property (strong, nonatomic) PGPayoffMetadata *metadata;
 @property (strong, nonatomic) NSURL *externalLinkURL;
+@property (strong, nonatomic) PGMetarMedia *metarMedia;
 
 - (IBAction)closeButtonTapped:(id)sender;
 - (void) getMetadataFromMetar;

@@ -44,7 +44,6 @@ static const NSUInteger kPGReviewViewHeight = 38;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewViewConstraint;
 @property (weak, nonatomic) IBOutlet UIView *reviewView;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleArrow;
-@property (strong, nonatomic) PGMetarMedia *metarMedia;
 @property (weak, nonatomic) IBOutlet UIView *wikipediaTitleView;
 @property (strong, nonatomic) PGWikipediaDropdownViewController *dropDownViewController;
 @property (assign, nonatomic) BOOL wikipediaDropDownExpanded;
@@ -62,12 +61,6 @@ static const NSUInteger kPGReviewViewHeight = 38;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (self.metadata != nil && self.metadata.data != nil && [self.metadata.data objectForKey:kPGPayoffUUIDKey] != nil) {
-        // resolve metadata
-        [self getMetadataFromMetar];
-    }
-    
 
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
 
@@ -87,6 +80,13 @@ static const NSUInteger kPGReviewViewHeight = 38;
     
     self.reviewViewConstraint.constant = 0;
     self.reviewView.hidden = YES;
+    
+    if (self.metarMedia != nil) {
+        [self renderPagesWithMetadata:self.metarMedia];
+    } else if (self.metadata != nil && self.metadata.data != nil && [self.metadata.data objectForKey:kPGPayoffUUIDKey] != nil) {
+        // resolve metadata
+        [self getMetadataFromMetar];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
