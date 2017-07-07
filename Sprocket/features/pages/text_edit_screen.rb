@@ -34,8 +34,9 @@ class TextEditScreen < Calabash::IBase
             sleep(WAIT_SCREENLOAD)
             scroll "UICollectionView",:right
             sleep(STEP_PAUSE)
-            wait_for_elements_exist(edit_screen.text, :timeout => MAX_TIMEOUT)
-            touch edit_screen.text
+           # wait_for_elements_exist(edit_screen.text, :timeout => MAX_TIMEOUT)
+            #touch edit_screen.text
+            touch "IMGLYIconCaptionCollectionViewCell * id:'editText'"
             sleep(WAIT_SCREENLOAD)    
         end
         await
