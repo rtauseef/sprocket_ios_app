@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-/*
+/**
  * This view ignores all user interactions, bypassing them to whatever view is behind.
  * Unlike setting userInteractionEnabled to NO, this class allows any subviews to continue supporting user interactions.
  */
