@@ -99,7 +99,7 @@ CHECKOUT OPTIONS:
     :commit: 5ae5892d60acf57faf16c32a06d81850011acca0
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: ced6a9daba7bd8077a01f83084da369e4d46ed1b
+    :commit: d24ebfe364e9860ed560a3c91f55636644c8ae65
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -117,7 +117,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
-  HPPhotoProvider: 08358b88169d402942d7a48e86446188d7c5028e
+  HPPhotoProvider: '08358b88169d402942d7a48e86446188d7c5028e'
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a

@@ -10,636 +10,121 @@
 // the license agreement.
 //
 
-#import "MPBTSprocket.h"
-#import "MPBTSessionController.h"
-#import "MPPrintItemImage.h"
+#import "MPBTSprocket+Protected.h"
 #import "NSBundle+MPLocalizable.h"
-#import "MP.h"
+#import "MPBTMaui.h"
+#import "MPBTManta.h"
 
-const char MANTA_PACKET_LENGTH = 34;
-
-static const NSString *kPolaroidProtocol = @"com.polaroid.mobileprinter";
-static const NSString *kHpProtocol = @"com.hp.protocol";
-static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-updates-2/fw_release.json";
-
-static const NSString *kMPBTFirmwareVersionKey = @"fw_version";
-static const NSString *kMPBTTmdVersionKey = @"tmd_version";
-static const NSString *kMPBTModelNumberKey = @"model_number";
-static const NSString *kMPBTHardwareVersion = @"hw_version";
-
-// Common to all packets
-static const char START_CODE_BYTE_1    = 0x1B;
-static const char START_CODE_BYTE_2    = 0x2A;
-static const char POLAROID_CUSTOMER_CODE_BYTE_1 = 0x43;
-static const char POLAROID_CUSTOMER_CODE_BYTE_2 = 0x41;
-static const char HP_CUSTOMER_CODE_BYTE_1 = 0x48;
-static const char HP_CUSTOMER_CODE_BYTE_2 = 0x50;
-
-// Commands
-static const char CMD_PRINT_READY_CMD       = 0x00;
-static const char CMD_PRINT_READY_SUB_CMD   = 0x00;
-
-static const char CMD_GET_INFO_CMD          = 0x01;
-static const char CMD_GET_INFO_SUB_CMD      = 0x00;
-
-static const char CMD_SET_INFO_CMD          = 0x01;
-static const char CMD_SET_INFO_SUB_CMD      = 0x01;
-
-static const char CMD_UPGRADE_READY_CMD     = 0x03;
-static const char CMD_UPGRADE_READY_SUB_CMD = 0x00;
-
-// Responses
-static const char RESP_PRINT_START_CMD            = 0x00;
-static const char RESP_PRINT_START_SUB_CMD        = 0x02;
-
-static const char RESP_ACCESSORY_INFO_ACK_CMD     = 0x01;
-static const char RESP_ACCESSORY_INFO_ACK_SUB_CMD = 0x02;
-
-static const char RESP_START_OF_SEND_ACK_CMD      = 0x02;
-static const char RESP_START_OF_SEND_ACK_SUB_CMD  = 0x00;
-
-static const char RESP_END_OF_RECEIVE_ACK_CMD     = 0x02;
-static const char RESP_END_OF_RECEIVE_ACK_SUB_CMD = 0x01;
-
-static const char RESP_UPGRADE_ACK_CMD            = 0x03;
-static const char RESP_UPGRADE_ACK_SUB_CMD        = 0x02;
-
-static const char RESP_ERROR_MESSAGE_ACK_CMD      = 0x04;
-static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
-
-
-@import UIKit;
-
-@interface MPBTSprocket () <NSURLSessionDownloadDelegate>
-
-@property (strong, nonatomic) MPBTSessionController *session;
-@property (strong, nonatomic) NSData* imageData;
-@property (strong, nonatomic) NSData* upgradeData;
-@property (strong, nonatomic) NSArray *supportedProtocols;
-
-@end
+static MPBTSprocket *currentInstance = nil;
+static BOOL forceFirmwareUpdates = NO;
 
 @implementation MPBTSprocket
 
-#pragma mark - Public methods
-
 + (MPBTSprocket *)sharedInstance
 {
-    static MPBTSprocket *sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[MPBTSprocket alloc] init];
-    });
-    
-    return sharedInstance;
-}
-
-#pragma mark - Initialization
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-
-        self.supportedProtocols = @[kHpProtocol/*, kPolaroidProtocol, @"com.lge.pocketphoto"*/];
-        
-        // watch for received data from the accessory
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_sessionDataReceived:) name:MPBTSessionDataReceivedNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_sessionDataSent:) name:MPBTSessionDataSentNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_accessoryDidDisconnect:) name:MPBTSessionAccessoryDisconnectedNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_sessionStreamError:) name:MPBTSessionStreamErrorNotification object:nil];
-        [[EAAccessoryManager sharedAccessoryManager] registerForLocalNotifications];
+    if ( nil == currentInstance ) {
+        currentInstance = [[MPBTSprocket alloc] init];
     }
     
-    return self;
-}
-
-- (void)refreshInfo
-{
-    [self.session writeData:[self accessoryInfoRequest]];
-}
-
-- (void)printImage:(UIImage *)image numCopies:(NSInteger)numCopies
-{
-    UIImage *scaledImage = [self imageByScalingAndCroppingForSize:image targetSize:CGSizeMake(640,960)];
-    self.imageData = UIImageJPEGRepresentation(scaledImage, 0.9);
-    
-    [self.session writeData:[self printReadyRequest:numCopies]];
-}
-
-- (void)printItem:(MPPrintItem *)printItem numCopies:(NSInteger)numCopies
-{
-    UIImage *asset = ((NSArray*)printItem.printAsset)[0];
-    UIImage *image = [self imageByScalingAndCroppingForSize:asset targetSize:CGSizeMake(640,960)];
-    self.imageData = UIImageJPEGRepresentation(image, 0.9);
-    
-    [self.session writeData:[self printReadyRequest:numCopies]];
-}
-
-- (void)reflash
-{
-    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
-        
-        NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
-        
-        [[httpSession downloadTaskWithURL:[NSURL URLWithString:fwPath]] resume];
-    }];
-}
-
-#pragma mark - NSURLSessionDownloadDelegate
-
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
- didResumeAtOffset:(int64_t)fileOffset
-expectedTotalBytes:(int64_t)expectedTotalBytes
-{
-    MPLogDebug(@"Resuming firmware download");
-}
-
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
-      didWriteData:(int64_t)bytesWritten
- totalBytesWritten:(int64_t)totalBytesWritten
-totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-{
-    MPLogDebug(@"%lld of %lld bytes", totalBytesWritten, totalBytesExpectedToWrite);
-    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didDownloadDeviceUpgradeData:percentageComplete:)]) {
-        NSInteger percentageComplete = ((float)totalBytesWritten/(float)totalBytesExpectedToWrite) * 100;
-        [self.delegate didDownloadDeviceUpgradeData:self percentageComplete:percentageComplete];
-    }
-}
-
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
-{
-    MPLogInfo(@"Finished downloading firmware");
-    self.upgradeData = [NSData dataWithContentsOfURL:location];
-    [self.session writeData:[self upgradeReadyRequest]];
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-    if (nil != error) {
-        MPLogError(@"Error receiving firmware upgrade file: %@", error);
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
-            [self.delegate didChangeDeviceUpgradeStatus:self status:MantaUpgradeStatusDownloadFail];
-        }
-    }
-}
-
-#pragma mark - Getters/Setters
-
-- (MPBTSessionController *)session
-{
-    _session = nil;
-    
-    if (self.accessory) {
-        _session = [MPBTSessionController sharedController];
-        [_session setupControllerForAccessory:self.accessory
-                           withProtocolString:self.protocolString];
-        
-        BOOL success = [_session openSession];
-        if (!success) {
-            MPLogError(@"Failed to open session with device");
-            if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didReceiveError:error:)]) {
-                [self.delegate didReceiveError:self error:MantaErrorNoSession];
-            }
-        }
-    } else {
-        MPLogError(@"Can't open a session with a nil device / accessory");
-    }
-    
-    return _session;
+    return currentInstance;
 }
 
 - (void)setAccessory:(EAAccessory *)accessory
 {
-    _accessory = nil;
+    // need to bypass setter... avoids infinite loop within this function
+    currentInstance->_accessory = nil;
+    [currentInstance stopListeningToDeviceSession];
+    currentInstance = nil;
     
-    self.protocolString = [self supportedProtocolString:accessory];
+    if ([[MPBTMaui sharedInstance] supportedProtocolString:accessory]) {
+        currentInstance = [MPBTMaui sharedInstance];
+        currentInstance.protocolString = [[MPBTMaui sharedInstance] supportedProtocolString:accessory];
+    } else {
+        if ([[MPBTManta sharedInstance] supportedProtocolString:accessory]) {
+            currentInstance = [MPBTManta sharedInstance];
+            currentInstance.protocolString = [[MPBTManta sharedInstance] supportedProtocolString:accessory];
+        }
+    }
     
-    if( self.protocolString ) {
-        _accessory = accessory;
+    if( currentInstance ) {
+        // need to bypass setter... avoids infinite loop within this function
+        currentInstance->_accessory = accessory;
+        [currentInstance listenToDeviceSession];
     } else {
         MPLogError(@"Unsupported device");
     }
 }
 
-- (void)setPrintMode:(MantaPrintMode)printMode
+- (void)printImage:(UIImage *)image numCopies:(NSInteger)numCopies
 {
-    if (_printMode != printMode) {
-        _printMode = printMode;
-        [self.session writeData:[self setInfoRequest]];
-    }
+    NSAssert(FALSE, @"Need to implement printImage:numCopies:");
 }
 
-- (void)setPowerOffInterval:(MantaAutoPowerOffInterval)powerOffInterval
+- (void)printItem:(MPPrintItem *)printItem numCopies:(NSInteger)numCopies
 {
-    if (_powerOffInterval != powerOffInterval) {
-        _powerOffInterval = powerOffInterval;
-        [self.session writeData:[self setInfoRequest]];
-    }
+    NSAssert(FALSE, @"Need to implement printItem:numCopies:");
 }
 
-- (void)setAutoExposure:(MantaAutoExposure)autoExposure
+- (void)reflash
 {
-    if (_autoExposure != autoExposure) {
-        _autoExposure = autoExposure;
-        [self.session writeData:[self setInfoRequest]];
-    }
+    NSAssert(FALSE, @"Need to implement reflash");
 }
 
-- (NSString *)displayName
+- (void)refreshInfo
 {
-    return [MPBTSprocket displayNameForAccessory:self.accessory];
+    NSAssert(FALSE, @"Need to implement refreshInfo");
 }
 
-- (NSDictionary *)analytics
+- (void)listenToDeviceSession
 {
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    
-    [dictionary setValue:[MPBTSprocket macAddress:self.macAddress] forKey:kMPPrinterId];
-    [dictionary setValue:[MPBTSprocket displayNameForAccessory:self.accessory] forKey:kMPPrinterDisplayName];
-    [dictionary setValue:[NSString stringWithFormat:@"HP sprocket"] forKey:kMPPrinterMakeAndModel];
-    
-    NSString *fwVersion  = [MPBTSprocket version:self.firmwareVersion] ? [MPBTSprocket version:self.firmwareVersion] : @"";
-    NSString *tmdVersion = [MPBTSprocket version:self.hardwareVersion] ? [MPBTSprocket version:self.hardwareVersion] : @"";
-    NSString *modelNum   = self.accessory.modelNumber ? self.accessory.modelNumber : @"";
-    NSString *hwVersion  = self.accessory.hardwareRevision ? self.accessory.hardwareRevision : @"";
-    
-    NSDictionary *customData = @{ kMPBTFirmwareVersionKey : fwVersion,
-                                  kMPBTTmdVersionKey      : tmdVersion,
-                                  kMPBTModelNumberKey     : modelNum,
-                                  kMPBTHardwareVersion    : hwVersion };
-    [dictionary setValue:customData forKey:kMPCustomAnalyticsKey];
-    
-    return dictionary;
+    NSAssert(FALSE, @"Need to implement listenToDeviceSession");
 }
 
-#pragma mark - Util
-
-- (NSString *)supportedProtocolString:(EAAccessory *)accessory
+- (void)stopListeningToDeviceSession
 {
-    NSString *protocolString = nil;
-    if (accessory) {
-        
-        for (NSString *protocol in [accessory protocolStrings]) {
-            
-            for (NSString *supportedProtocol in self.supportedProtocols) {
-                if( [supportedProtocol isEqualToString:protocol] ) {
-                    protocolString = supportedProtocol;
-                }
-            }
-        }
-    }
-    
-    return protocolString;
+    // do nothing... do not assert
 }
 
-#pragma mark - Packet Creation
-
-- (void)setupPacket:(char[MANTA_PACKET_LENGTH])packet command:(char)command subcommand:(char)subcommand
++ (BOOL)forceFirmwareUpdates
 {
-    memset(packet, 0, MANTA_PACKET_LENGTH);
-
-    packet[0] = START_CODE_BYTE_1;
-    packet[1] = START_CODE_BYTE_2;
-    
-    if ([self.protocolString isEqualToString:[kPolaroidProtocol copy]]) {
-        packet[2] = POLAROID_CUSTOMER_CODE_BYTE_1;
-        packet[3] = POLAROID_CUSTOMER_CODE_BYTE_2;
-    } else if ([self.protocolString isEqualToString:[kHpProtocol copy]]){
-        packet[2] = HP_CUSTOMER_CODE_BYTE_1;
-        packet[3] = HP_CUSTOMER_CODE_BYTE_2;
-    } else {
-        MPLogError(@"Unexpected protocol string: %@, defaulting to HP customer code", self.protocolString);
-        packet[2] = HP_CUSTOMER_CODE_BYTE_1;
-        packet[3] = HP_CUSTOMER_CODE_BYTE_2;
-    }
-    
-    packet[6] = command;
-    packet[7] = subcommand;
+    return forceFirmwareUpdates;
 }
 
-- (NSData *)accessoryInfoRequest
++ (void)setForceFirmwareUpdates:(BOOL)force
 {
-    NSMutableData *data;
-    char byteArray[MANTA_PACKET_LENGTH];
-
-    [self setupPacket:byteArray command:CMD_GET_INFO_CMD subcommand:CMD_GET_INFO_SUB_CMD];
-
-    data = [NSMutableData dataWithBytes:byteArray length:MANTA_PACKET_LENGTH];
-
-    MPLogDebug(@"accessoryInfoRequest: %@", data);
-
-    return data;
+    forceFirmwareUpdates = force;
 }
 
-- (NSData *)printReadyRequest:(NSInteger)numCopies
+- (NSUInteger)firmwareVersion
 {
-    NSMutableData *data;
-    char byteArray[MANTA_PACKET_LENGTH];
-    
-    [self setupPacket:byteArray command:CMD_PRINT_READY_CMD subcommand:CMD_PRINT_READY_SUB_CMD];
-    
-    // imageSize
-    NSUInteger imageSize = self.imageData.length;
-    byteArray[8] = (0xFF0000 & imageSize) >> 16;
-    byteArray[9] = (0x00FF00 & imageSize) >>  8;
-    byteArray[10] = 0x0000FF & imageSize;
-    
-    // printCount
-    byteArray[11] = numCopies <= 4 ? numCopies : 4;
-    
-    // printMode
-    byteArray[15] = 0x00;
-    
-    data = [NSMutableData dataWithBytes:byteArray length:MANTA_PACKET_LENGTH];
-    
-    MPLogDebug(@"printReadyRequest: %@", data);
-    
-    return data;
-}
-
-- (NSData *)upgradeReadyRequest
-{
-    NSMutableData *data;
-    char byteArray[MANTA_PACKET_LENGTH];
-    
-    [self setupPacket:byteArray command:CMD_UPGRADE_READY_CMD subcommand:CMD_UPGRADE_READY_SUB_CMD];
-    
-    // imageSize
-    NSUInteger imageSize = self.upgradeData.length;
-    byteArray[8] = (0xFF0000 & imageSize) >> 16;
-    byteArray[9] = (0x00FF00 & imageSize) >>  8;
-    byteArray[10] = 0x0000FF & imageSize;
-    
-    // dataClassification
-    byteArray[11] = MantaDataClassFirmware;
-    
-    data = [NSMutableData dataWithBytes:byteArray length:MANTA_PACKET_LENGTH];
-    
-    MPLogDebug(@"upgradeReadyRequest: %@", data);
-
-    return data;
-}
-
-- (NSData *)setInfoRequest
-{
-    NSMutableData *data;
-    char byteArray[MANTA_PACKET_LENGTH];
-    
-    [self setupPacket:byteArray command:CMD_SET_INFO_CMD subcommand:CMD_SET_INFO_SUB_CMD];
-    
-    byteArray[8]  = self.autoExposure;
-    byteArray[9]  = self.powerOffInterval;
-    byteArray[10] = self.printMode;
-
-    data = [NSMutableData dataWithBytes:byteArray length:MANTA_PACKET_LENGTH];
-    
-    MPLogDebug(@"setInfoRequest: %@", data);
-
-    return data;
-}
-
-#pragma mark - Parsers
-
-- (void)parseAccessoryInfo:(NSData *)payload
-{
-    char errorCode[]       = {0};
-    char totalPrintCount[] = {0,0};
-    char printMode[]       = {0};
-    char batteryStatus[]   = {0};
-    char autoExposure[]    = {0};
-    char autoPowerOff[]    = {0};
-    char macAddress[]      = {0,0,0,0,0,0};
-    char fwVersion[]       = {0,0,0};
-    char hwVersion[]       = {0,0,0};
-    // Note: maxPayloadSize is only available on Android... not forgotten here
-    
-    [payload getBytes:errorCode       range:NSMakeRange( 0,1)];
-    [payload getBytes:totalPrintCount range:NSMakeRange( 1,2)];
-    [payload getBytes:printMode       range:NSMakeRange( 3,1)];
-    [payload getBytes:batteryStatus   range:NSMakeRange( 4,1)];
-    [payload getBytes:autoExposure    range:NSMakeRange( 5,1)];
-    [payload getBytes:autoPowerOff    range:NSMakeRange( 6,1)];
-    [payload getBytes:macAddress      range:NSMakeRange( 7,6)];
-    [payload getBytes:fwVersion       range:NSMakeRange(13,3)];
-    [payload getBytes:hwVersion       range:NSMakeRange(16,3)];
-    
-    NSData *macAddressData = [[NSData alloc] initWithBytes:macAddress length:6];
-    NSUInteger printCount = totalPrintCount[0] << 8 | totalPrintCount[1];
-    NSUInteger firmwareVersion = fwVersion[0] << 16 | fwVersion[1] << 8 | fwVersion[2];
-    NSUInteger hardwareVersion = hwVersion[0] << 16 | hwVersion[1] << 8 | hwVersion[2];
-    
-    MPLogDebug(@"\n\nAccessoryInfo:\n\terrorCode: %@  \n\ttotalPrintCount: 0x%04lx  \n\tprintMode: %@  \n\tbatteryStatus: 0x%x => %d percent  \n\tautoExposure: %@  \n\tautoPowerOff: %@  \n\tmacAddress: %@  \n\tfwVersion: 0x%06lx  \n\thwVersion: 0x%06lx",
-               [MPBTSprocket errorTitle:errorCode[0]],
-               (unsigned long)printCount,
-               [MPBTSprocket printModeString:printMode[0]],
-               batteryStatus[0], batteryStatus[0],
-               [MPBTSprocket autoExposureString:autoExposure[0]],
-               [MPBTSprocket autoPowerOffIntervalString:autoPowerOff[0]],
-               [MPBTSprocket macAddress:macAddressData],
-               (unsigned long)firmwareVersion,
-               (unsigned long)hardwareVersion);
-    
-    _totalPrintCount = printCount;
-    _batteryStatus = batteryStatus[0];
-    _macAddress = macAddressData;
-    _firmwareVersion = firmwareVersion;
-    _hardwareVersion = hardwareVersion;
-    
-    // purposely bypass the setters for these properties
-    _printMode = printMode[0];
-    _autoExposure = autoExposure[0];
-    _powerOffInterval = autoPowerOff[0];
-}
-
-- (void)parseMantaResponse:(NSData *)data
-{
-    char startCode[2]    = {0,0};
-    char customerCode[2] = {0,0};
-    char hostId[1]       = {0};
-    char productCode[1]  = {0};
-    char cmdId[1]        = {0};
-    char subCmdId[1]     = {0};
-    char payload[26];    memset(payload, 0, sizeof(*payload));
-           
-    [data getBytes:startCode range:NSMakeRange(0, 2)];
-    [data getBytes:customerCode range:NSMakeRange(2,2)];
-    [data getBytes:hostId range:NSMakeRange(4,1)];
-    [data getBytes:productCode range:NSMakeRange(5,1)];
-    [data getBytes:cmdId range:NSMakeRange(6,1)];
-    [data getBytes:subCmdId range:NSMakeRange(7,1)];
-    [data getBytes:payload range:NSMakeRange(8,26)];
-    
-    NSData *payloadData = [[NSData alloc] initWithBytes:payload length:26];
-    
-    if (RESP_START_OF_SEND_ACK_CMD     == cmdId[0]  &&
-        RESP_START_OF_SEND_ACK_SUB_CMD == subCmdId[0]) {
-        MPLogDebug(@"\n\nStartOfSendAck: %@", data);
-        MPLogDebug(@"\tPayload Classification: %@", [MPBTSprocket dataClassificationString:payload[0]]);
-        MPLogDebug(@"\tError: %@\n\n", [MPBTSprocket errorTitle:payload[1]]);
-        
-        if (MantaErrorNoError == payload[1]  ||
-            (MantaErrorBusy == payload[1]  &&  MantaDataClassFirmware == payload[0])) {
-            if (MantaDataClassImage == payload[0]) {
-                
-                NSAssert( nil != self.imageData, @"No image data");
-                MPBTSessionController *session = [MPBTSessionController sharedController];
-                [session writeData:self.imageData];
-                
-            } else if (MantaDataClassFirmware == payload[0]) {
-                if (nil == self.upgradeData) {
-                    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
-                        [self.delegate didChangeDeviceUpgradeStatus:self status:MantaUpgradeStatusDownloadFail];
-                    }
-                } else {
-                    MPBTSessionController *session = [MPBTSessionController sharedController];
-                    [session writeData:self.upgradeData];
-                }
-            }
-        } else {
-            MPLogDebug(@"Error returned in StartOfSendAck: %@", [MPBTSprocket errorTitle:payload[1]]);
-        }
-        
-        // let any callers know the process is finished
-        if (MantaDataClassImage == payload[0]) {
-            if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendPrintData:percentageComplete:error:)]) {
-                [self.delegate didSendPrintData:self percentageComplete:0 error:payload[1]];
-            }
-        } else if (MantaDataClassFirmware == payload[0]) {
-            if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendDeviceUpgradeData:percentageComplete:error:)]) {
-                [self.delegate didSendDeviceUpgradeData:self percentageComplete:0 error:payload[1]];
-            }
-        }
-    } else if (RESP_END_OF_RECEIVE_ACK_CMD == cmdId[0]  &&
-               RESP_END_OF_RECEIVE_ACK_SUB_CMD == subCmdId[0]) {
-        MPLogDebug(@"\n\nEndOfReceiveAck: %@", data);
-        MPLogDebug(@"\tPayload Classification: %@\n\n", [MPBTSprocket dataClassificationString:payload[0]]);
-        
-        // let any callers know the process is finished
-        if (MantaDataClassImage == payload[0]) {
-            if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didFinishSendingPrint:)]) {
-                [self.delegate didFinishSendingPrint:self];
-            }
-        } else if (MantaDataClassFirmware == payload[0]) {
-            if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didFinishSendingDeviceUpgrade:)]) {
-                [self.delegate didFinishSendingDeviceUpgrade:self];
-            }
-        }
-        
-    } else if (RESP_ACCESSORY_INFO_ACK_CMD == cmdId[0]  &&
-               RESP_ACCESSORY_INFO_ACK_SUB_CMD == subCmdId[0]) {
-        MPLogDebug(@"\n\nAccessoryInfoAck: %@\n\n", data);
-        [self parseAccessoryInfo:payloadData];
-        NSUInteger error = payload[0];
-        
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didRefreshMantaInfo:error:)]) {
-            [self.delegate didRefreshMantaInfo:self error:(MantaError)error];
-        }
-        
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didCompareWithLatestFirmwareVersion:needsUpgrade:)]) {
-            if (MantaErrorNoError == error) {
-                [MPBTSprocket latestFirmwareVersion:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSUInteger fwVersion) {
-                    BOOL needsUpgrade = NO;
-                    if (fwVersion > self.firmwareVersion) {
-                        needsUpgrade = YES;
-                    }
-                    // make sure the delegate is still around now that we're in the completion block...
-                    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didCompareWithLatestFirmwareVersion:needsUpgrade:)]) {
-                        [self.delegate didCompareWithLatestFirmwareVersion:self needsUpgrade:needsUpgrade];
-                    }
-                }];
-            } else {
-                [self.delegate didCompareWithLatestFirmwareVersion:self needsUpgrade:NO];
-            }
-        }
-    } else if (RESP_PRINT_START_CMD == cmdId[0]  &&
-               RESP_PRINT_START_SUB_CMD == subCmdId[0]) {
-        MPLogDebug(@"\n\nPrintStart: %@\n\n", data);
-
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didStartPrinting:)]) {
-            [self.delegate didStartPrinting:self];
-        }
-    } else if (RESP_ERROR_MESSAGE_ACK_CMD == cmdId[0]  &&
-               RESP_ERROR_MESSAGE_ACK_SUB_CMD == subCmdId[0]) {
-        MPLogDebug(@"\n\nErrorMessageAck %@", data);
-        MPLogDebug(@"\tError: %@\n\n", [MPBTSprocket errorTitle:payload[0]]);
-        
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didReceiveError:error:)]) {
-            [self.delegate didReceiveError:self error:payload[0]];
-        }
-    } else if (RESP_UPGRADE_ACK_CMD == cmdId[0]  &&
-               RESP_UPGRADE_ACK_SUB_CMD == subCmdId[0]) {
-        MPLogDebug(@"\n\nUpgradeAck %@", data);
-        MPLogDebug(@"\tUpgrade status: %@\n\n", [MPBTSprocket upgradeStatusString:payload[0]]);
-        
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
-            [self.delegate didChangeDeviceUpgradeStatus:self status:payload[0]];
-        }
-    } else {
-        MPLogDebug(@"\n\nUnrecognized response: %@\n\n", data);
-    }
-}
-
-#pragma mark - Accessory Data Listeners
-
-- (void)_sessionDataReceived:(NSNotification *)notification
-{
-    MPBTSessionController *sessionController = (MPBTSessionController *)[notification object];
-    NSArray *packets = [sessionController getPackets];
-    
-    for (NSData *packet in packets) {
-        [self parseMantaResponse:packet];
-    }
-}
-
-- (void)_sessionDataSent:(NSNotification *)notification
-{
-    long long totalBytesWritten = [[notification.userInfo objectForKey:MPBTSessionDataTotalBytesWritten] longLongValue];
-    long long totalBytes = self.imageData ? self.imageData.length : self.upgradeData.length;
-    NSInteger percentageComplete = ((float)totalBytesWritten/(float)totalBytes) * 100;
-    
-    if (self.imageData) {
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendPrintData:percentageComplete:error:)]) {
-            [self.delegate didSendPrintData:self percentageComplete:percentageComplete error:MantaErrorNoError];
-        }
-    } else if (self.upgradeData) {
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendDeviceUpgradeData:percentageComplete:error:)]) {
-            [self.delegate didSendDeviceUpgradeData:self percentageComplete:percentageComplete error:MantaErrorNoError];
-        }
-    }
-    
-    if (totalBytes - totalBytesWritten <= 0) {
-        self.upgradeData = nil;
-        self.imageData = nil;
-    }
-}
-
-#pragma mark - Accessory Event Listeners
-
-- (void)_sessionStreamError:(NSNotification *)notification {
-    if (self.imageData) {
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didSendPrintData:percentageComplete:error:)]) {
-            [self.delegate didSendPrintData:self percentageComplete:0 error:MantaErrorDataError];
-        }
-    } else if (self.upgradeData) {
-        if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didChangeDeviceUpgradeStatus:status:)]) {
-            [self.delegate didChangeDeviceUpgradeStatus:self status:MantaUpgradeStatusFail];
-        }
-    }
-    
-    self.imageData = nil;
-    self.upgradeData = nil;
-}
-
-- (void)_accessoryDidDisconnect:(NSNotification *)notification {
-    if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didReceiveError:error:)]) {
-        [self.delegate didReceiveError:self error:MantaErrorNoSession];
-    }
+    return [MPBTSprocket forceFirmwareUpdates] ? _firmwareVersion-1 : _firmwareVersion;
 }
 
 #pragma mark - Constant Helpers
+
++ (BOOL)supportedAccessory:(EAAccessory *)accessory
+{
+    NSString *protocolString = [[MPBTMaui sharedInstance] supportedProtocolString:accessory];
+    if (nil == protocolString) {
+        protocolString = [[MPBTManta sharedInstance] supportedProtocolString:accessory];
+    }
+    
+    return (nil != protocolString);
+}
+
++ (NSArray *)pairedSprockets
+{
+    NSArray *accs = [[EAAccessoryManager sharedAccessoryManager] connectedAccessories];
+    NSMutableArray *pairedDevices = [[NSMutableArray alloc] init];
+    
+    for (EAAccessory *accessory in accs) {
+        if ([MPBTSprocket supportedAccessory:accessory]) {
+            [pairedDevices addObject:accessory];
+        }
+    }
+    
+    return pairedDevices;
+}
 
 + (NSString *)macAddress:(NSData *)data
 {
@@ -659,19 +144,12 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 + (NSString *)version:(NSUInteger)version
 {
     NSUInteger fw1, fw2, fw3;
-
+    
     fw1 = (0xFF0000 & version) >> 16;
     fw2 = (0x00FF00 & version) >>  8;
     fw3 =  0x0000FF & version;
- 
+    
     return [NSString stringWithFormat:@"%lu.%lu.%lu", (unsigned long)fw1, (unsigned long)fw2, (unsigned long)fw3];
-}
-
-+ (BOOL)supportedAccessory:(EAAccessory *)accessory
-{
-    NSString *protocolString = [[MPBTSprocket sharedInstance] supportedProtocolString:accessory];
-
-    return (nil != protocolString);
 }
 
 + (NSString *)displayNameForAccessory:(EAAccessory *)accessory
@@ -683,41 +161,21 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     return [NSString stringWithFormat:@"%@ (%@)", name, accessory.serialNumber];
 }
 
-+ (NSString *)autoExposureString:(MantaAutoExposure)exp
-{
-    NSString *expString;
-    
-    switch (exp) {
-        case MantaAutoExposureOff:
-            expString = @"MantaAutoExposureOff";
-            break;
-        case MantaAutoExposureOn:
-            expString = @"MantaAutoExposureOn";
-            break;
-            
-        default:
-            expString = [NSString stringWithFormat:@"Unrecognized auto exposure: %d", exp];
-            break;
-    };
-    
-    return expString;
-}
-
-+ (NSString *)autoPowerOffIntervalString:(MantaAutoPowerOffInterval)interval
++ (NSString *)autoPowerOffIntervalString:(SprocketAutoPowerOffInterval)interval
 {
     NSString *intervalString;
     
     switch (interval) {
-        case MantaAutoOffThreeMin:
+        case SprocketAutoOffThreeMin:
             intervalString = MPLocalizedString(@"3 minutes", @"The printer will shut off after 3 minutes");
             break;
-        case MantaAutoOffFiveMin:
+        case SprocketAutoOffFiveMin:
             intervalString = MPLocalizedString(@"5 minutes", @"The printer will shut off after 5 minutes");
             break;
-        case MantaAutoOffTenMin:
+        case SprocketAutoOffTenMin:
             intervalString = MPLocalizedString(@"10 minutes", @"The printer will shut off after 10 minutes");
             break;
-        case MantaAutoOffAlwaysOn:
+        case SprocketAutoOffAlwaysOn:
             intervalString = MPLocalizedString(@"Always On", @"The printer will never shut off");
             break;
             
@@ -729,177 +187,111 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     return intervalString;
 }
 
-+ (NSString *)printModeString:(MantaPrintMode)mode
-{
-    NSString *modeString;
-    
-    switch (mode) {
-        case MantaPrintModePaperFull:
-            modeString = @"MantaPrintModePaperFull";
-            break;
-        case MantaPrintModeImageFull:
-            modeString = @"MantaPrintModeImageFull";
-            break;
-            
-        default:
-            modeString = [NSString stringWithFormat:@"Unrecognized print mode: %d", mode];
-            break;
-    };
-    
-    return modeString;
-}
-
-+ (NSString *)dataClassificationString:(MantaDataClassification)class
-{
-    NSString *classString;
-    
-    switch (class) {
-        case MantaDataClassImage:
-            classString = @" MantaDataClassImage";
-            break;
-        case MantaDataClassTMD:
-            classString = @"MantaDataClassTMD";
-            break;
-        case MantaDataClassFirmware:
-            classString = @"MantaDataClassFirmware";
-            break;
-            
-        default:
-            classString = [NSString stringWithFormat:@"Unrecognized classification: %d", class];
-            break;
-    };
-    
-    return classString;
-}
-
-+ (NSString *)upgradeStatusString:(MantaUpgradeStatus)status
-{
-    NSString *statusString;
-    
-    switch (status) {
-        case MantaUpgradeStatusStart:
-            statusString = @"MantaUpgradeStatusStart";
-            break;
-        case MantaUpgradeStatusFinish:
-            statusString = @"MantaUpgradeStatusFinish";
-            break;
-        case MantaUpgradeStatusFail:
-            statusString = @"MantaUpgradeStatusFail";
-            break;
-            
-        default:
-            statusString = [NSString stringWithFormat:@"Unrecognized status: %d", status];
-            break;
-    };
-    
-    return statusString;
-}
-
-+ (NSString *)errorTitleKey:(MantaError)error
++ (NSString *)errorTitleKey:(SprocketError)error
 {
     NSString *errString;
-
+    
     switch (error) {
-        case MantaErrorNoError:
+        case SprocketErrorNoError:
             errString = @"Ready";
             break;
-        case MantaErrorBusy:
+        case SprocketErrorBusy:
             errString = @"Sprocket Printer in Use";
             break;
-        case MantaErrorPaperJam:
+        case SprocketErrorPaperJam:
             errString = @"Paper has Jammed";
             break;
-        case MantaErrorPaperEmpty:
+        case SprocketErrorPaperEmpty:
             errString = @"Out of Paper";
             break;
-        case MantaErrorPaperMismatch:
+        case SprocketErrorPaperMismatch:
             errString = @"Incorrect Paper Type";
             break;
-        case MantaErrorDataError:
+        case SprocketErrorDataError:
             errString = @"Error Sending Image";
             break;
-        case MantaErrorCoverOpen:
+        case SprocketErrorCoverOpen:
             errString = @"Paper Cover Open";
             break;
-        case MantaErrorSystemError:
+        case SprocketErrorSystemError:
             errString = @"System Error Occured";
             break;
-        case MantaErrorBatteryLow:
+        case SprocketErrorBatteryLow:
             errString = @"Battery Low";
             break;
-        case MantaErrorBatteryFault:
+        case SprocketErrorBatteryFault:
             errString = @"Battery Error";
             break;
-        case MantaErrorHighTemperature:
+        case SprocketErrorHighTemperature:
             errString = @"Sprocket is Warm";
             break;
-        case MantaErrorLowTemperature:
+        case SprocketErrorLowTemperature:
             errString = @"Sprocket is Cold";
             break;
-        case MantaErrorCoolingMode:
+        case SprocketErrorCoolingMode:
             errString = @"Cooling Down...";
             break;
-        case MantaErrorWrongCustomer:
+        case SprocketErrorWrongCustomer:
             errString = @"Error";
             break;
-        case MantaErrorNoSession:
+        case SprocketErrorNoSession:
             errString = @"Sprocket Printer Not Connected";
             break;
-
+            
         default:
             errString = @"Unrecognized Error";
             break;
     };
-
+    
     return errString;
 }
 
-+ (NSString *)errorTitle:(MantaError)error
++ (NSString *)errorTitle:(SprocketError)error
 {
     NSString *errString;
     
     switch (error) {
-        case MantaErrorNoError:
+        case SprocketErrorNoError:
             errString = MPLocalizedString(@"Ready", @"Message given when sprocket has no known error");
             break;
-        case MantaErrorNoSession:
-        case MantaErrorBusy:
+        case SprocketErrorNoSession:
+        case SprocketErrorBusy:
             errString = MPLocalizedString(@"Sprocket Printer in Use", @"Message given when sprocket cannot print due to being in use.");
             break;
-        case MantaErrorPaperJam:
+        case SprocketErrorPaperJam:
             errString = MPLocalizedString(@"Paper has Jammed", @"Message given when sprocket cannot print due to having a paper jam");
             break;
-        case MantaErrorPaperEmpty:
+        case SprocketErrorPaperEmpty:
             errString = MPLocalizedString(@"Out of Paper", @"Message given when sprocket cannot print due to having no paper");
             break;
-        case MantaErrorPaperMismatch:
+        case SprocketErrorPaperMismatch:
             errString = MPLocalizedString(@"Incorrect Paper Type", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
             break;
-        case MantaErrorDataError:
+        case SprocketErrorDataError:
             errString = MPLocalizedString(@"Error Sending Image", @"Message given when sprocket cannot print due to an error with the image data.");
             break;
-        case MantaErrorCoverOpen:
+        case SprocketErrorCoverOpen:
             errString = MPLocalizedString(@"Paper Cover Open", @"Message given when sprocket cannot print due to the cover being open");
             break;
-        case MantaErrorSystemError:
+        case SprocketErrorSystemError:
             errString = MPLocalizedString(@"System Error Occured", @"Message given when sprocket cannot print due to a system error");
             break;
-        case MantaErrorBatteryLow:
+        case SprocketErrorBatteryLow:
             errString = MPLocalizedString(@"Battery Low", @"Message given when sprocket cannot print due to having a low battery");;
             break;
-        case MantaErrorBatteryFault:
+        case SprocketErrorBatteryFault:
             errString = MPLocalizedString(@"Battery Error", @"Message given when sprocket cannot print due to having an error related to the battery.");
             break;
-        case MantaErrorHighTemperature:
+        case SprocketErrorHighTemperature:
             errString = MPLocalizedString(@"Sprocket is Warm", @"Message given when sprocket cannot print due to being too hot");
             break;
-        case MantaErrorLowTemperature:
+        case SprocketErrorLowTemperature:
             errString = MPLocalizedString(@"Sprocket is Cold", @"Message given when sprocket cannot print due to being too cold");
             break;
-        case MantaErrorCoolingMode:
+        case SprocketErrorCoolingMode:
             errString = MPLocalizedString(@"Cooling Down...", @"Message given when sprocket cannot print due to bing in a cooling mode");
             break;
-        case MantaErrorWrongCustomer:
+        case SprocketErrorWrongCustomer:
             errString = MPLocalizedString(@"Error", @"Message given when sprocket cannot print due to not recognizing data from our app");
             break;
             
@@ -911,52 +303,52 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     return errString;
 }
 
-+ (NSString *)errorDescription:(MantaError)error
++ (NSString *)errorDescription:(SprocketError)error
 {
     NSString *errString;
     
     switch (error) {
-        case MantaErrorNoError:
+        case SprocketErrorNoError:
             errString = MPLocalizedString(@"Sprocket is ready to print.", @"Message given when sprocket has no known error");
             break;
-        case MantaErrorNoSession:
-        case MantaErrorBusy:
+        case SprocketErrorNoSession:
+        case SprocketErrorBusy:
             errString = MPLocalizedString(@"Sprocket is already processing an image. Please wait to send more.", @"Message given when sprocket cannot print due to being in use.");
             break;
-        case MantaErrorPaperJam:
+        case SprocketErrorPaperJam:
             errString = MPLocalizedString(@"Clear paper jam and restart the printer by pressing and holding the power button.", @"Message given when sprocket cannot print due to having a paper jam");
             break;
-        case MantaErrorPaperEmpty:
+        case SprocketErrorPaperEmpty:
             errString = MPLocalizedString(@"Load paper with the included Smartsheet to continue printing.", @"Message given when sprocket cannot print due to having no paper");
             break;
-        case MantaErrorPaperMismatch:
+        case SprocketErrorPaperMismatch:
             errString = MPLocalizedString(@"Use HP branded ZINK Photo Paper. Load the Smartsheet, barcode down.", @"Message given when sprocket cannot print due to being loaded with the wrong kind of paper");
             break;
-        case MantaErrorDataError:
+        case SprocketErrorDataError:
             errString = MPLocalizedString(@"There was an error while sending your image to the printer.", @"Message given when sprocket cannot print due to an error with the image data.");
             break;
-        case MantaErrorCoverOpen:
+        case SprocketErrorCoverOpen:
             errString = MPLocalizedString(@"Close the cover to proceed.", @"Message given when sprocket cannot print due to the cover being open");
             break;
-        case MantaErrorSystemError:
+        case SprocketErrorSystemError:
             errString = MPLocalizedString(@"Due to a system error, restart sprocket to continue printing.", @"Message given when sprocket cannot print due to a system error");
             break;
-        case MantaErrorBatteryLow:
+        case SprocketErrorBatteryLow:
             errString = MPLocalizedString(@"Connect your sprocket to a power source to continue use.", @"Message given when sprocket cannot print due to having a low battery");
             break;
-        case MantaErrorBatteryFault:
+        case SprocketErrorBatteryFault:
             errString = MPLocalizedString(@"A battery error has occured. Restart Sprocket to continue printing.", @"Message given when sprocket cannot print due to having an error related to the battery.");
             break;
-        case MantaErrorHighTemperature:
+        case SprocketErrorHighTemperature:
             errString = MPLocalizedString(@"Printing will resume after your Sprocket cools down.", @"Message given when sprocket cannot print due to being too hot");
             break;
-        case MantaErrorLowTemperature:
+        case SprocketErrorLowTemperature:
             errString = MPLocalizedString(@"Printing will resume after your Sprocket warms up.", @"Message given when sprocket cannot print due to being too cold");
             break;
-        case MantaErrorCoolingMode:
+        case SprocketErrorCoolingMode:
             errString = MPLocalizedString(@"Printing will resume after your Sprocket cools down.", @"Message given when sprocket cannot print due to bing in a cooling mode");
             break;
-        case MantaErrorWrongCustomer:
+        case SprocketErrorWrongCustomer:
             errString = MPLocalizedString(@"The device is not recognized.", @"Message given when sprocket cannot print due to not recognizing data from our app");
             break;
             
@@ -968,236 +360,4 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
     return errString;
 }
 
-+ (void)getFirmwareUpdateInfo:(void (^)(NSDictionary *fwUpdateInfo))completion
-{
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    config.URLCache = nil;
-    NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:config delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-    
-    [[httpSession dataTaskWithURL: [NSURL URLWithString:[kFirmwareUpdatePath copy]]
-                completionHandler:^(NSData *data, NSURLResponse *response,
-                                    NSError *error) {
-                    NSDictionary *fwUpdateInfo = nil;
-                    if (data  &&  !error) {
-                        NSError *error;
-                        NSDictionary *fwDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                        if (fwDictionary) {
-                            MPLogInfo(@"FW Update:  Result = %@", fwDictionary);
-                            fwUpdateInfo = [fwDictionary valueForKey:@"firmware"];
-                        } else {
-                            MPLogError(@"FW Update:  Parse Error = %@", error);
-                            NSString *returnString = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
-                            MPLogInfo(@"FW Update:  Return string = %@", returnString);
-                        }
-                    } else {
-                        MPLogError(@"FW Update Info failure: %@, data: %@", error, data);
-                    }
-                    
-                    if (completion) {
-                        completion(fwUpdateInfo);
-                    }
-                }] resume];
-}
-
-+ (NSUInteger)fwVersionFromString:(NSString *)strVersion
-{
-    NSUInteger fwVersion = 0;
-    
-    if (![strVersion isEqualToString:@"none"]) {
-        NSArray *bytes = [strVersion componentsSeparatedByString:@"."];
-        NSInteger topIdx = bytes.count-1;
-        for (NSInteger idx = topIdx; idx >= 0; idx--) {
-            NSString *strByte = bytes[idx];
-            NSInteger byte = [strByte integerValue];
-            
-            NSInteger shiftValue = topIdx-idx;
-            fwVersion += (byte << (8 * shiftValue));
-        }
-    }
-    
-    return fwVersion;
-}
-
-+ (NSDictionary *)getCorrectFirmwareVersion:(NSArray *)fwInfo forExistingVersion:(NSUInteger)existingFwVersion
-{
-    NSDictionary *correctFwVersionInfo = nil;
-    
-    if (nil != fwInfo) {
-        
-        // Create a dictionary for quick look-up of dependency versions
-        NSMutableDictionary *fwVersions = [[NSMutableDictionary alloc] init];
-        NSUInteger length = [fwInfo count];
-        NSString *strVersion = nil;
-        for (int idx=0; idx<length; ++idx) {
-            NSDictionary *fwVersionInfo = [fwInfo objectAtIndex:idx];
-            strVersion = [fwVersionInfo objectForKey:@"fw_ver"];
-            [fwVersions setObject:fwVersionInfo forKey:strVersion];
-        }
-        
-        // Start with the latest version. Install it, or any necessary dependency
-        BOOL keepChecking = YES;
-        while (keepChecking) {
-            NSDictionary *fwVersionInfo = [fwVersions objectForKey:strVersion];
-            strVersion = [fwVersionInfo objectForKey:@"fw_ver"];
-            NSUInteger fwVersion = [MPBTSprocket fwVersionFromString:strVersion];
-            
-            if (existingFwVersion < fwVersion) {
-                // check the dependency
-                NSString *dependencyStrVersion = [fwVersionInfo objectForKey:@"dependency"];
-                NSUInteger dependencyFwVersion = [MPBTSprocket fwVersionFromString:dependencyStrVersion];
-                if (existingFwVersion < dependencyFwVersion) {
-                    strVersion = dependencyStrVersion;
-                    keepChecking = YES;
-                } else {
-                    keepChecking = NO;
-                }
-            } else {
-                keepChecking = NO;
-            }
-        }
-        
-        correctFwVersionInfo = [fwVersions objectForKey:strVersion];
-    }
-    
-    return correctFwVersionInfo;
-}
-
-+ (void)latestFirmwareVersion:(NSString *)protocolString forExistingVersion:(NSUInteger)existingFwVersion completion:(void (^)(NSUInteger fwVersion))completion
-{
-    [MPBTSprocket getFirmwareUpdateInfo:^(NSDictionary *fwUpdateInfo){
-        NSUInteger fwVersion = 0;
-        NSDictionary *deviceUpdateInfo = nil;
-        
-        if (nil != fwUpdateInfo) {
-            if ([kPolaroidProtocol isEqualToString:protocolString]) {
-                deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
-            } else {
-                NSArray *info = [fwUpdateInfo objectForKey:@"HP"];
-                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:info forExistingVersion:existingFwVersion];
-            }
-            
-            if (deviceUpdateInfo) {
-                NSString *strVersion = [deviceUpdateInfo objectForKey:@"fw_ver"];
-                fwVersion = [MPBTSprocket fwVersionFromString:strVersion];
-            } else {
-                MPLogError(@"Unrecognized firmware update info: %@", fwUpdateInfo);
-            }
-            
-            if (completion) {
-                completion(fwVersion);
-            }
-        }
-    }];
-}
-
-+ (void)latestFirmwarePath:(NSString *)protocolString forExistingVersion:(NSUInteger)existingFwVersion completion:(void (^)(NSString *fwPath))completion
-{
-    [MPBTSprocket getFirmwareUpdateInfo:^(NSDictionary *fwUpdateInfo){
-        NSString *fwPath = nil;
-        NSDictionary *deviceUpdateInfo = nil;
-        
-        if (nil != fwUpdateInfo) {
-            if ([kPolaroidProtocol isEqualToString:protocolString]) {
-                deviceUpdateInfo = [fwUpdateInfo objectForKey:@"Polaroid"];
-            } else {
-                NSArray *info = [fwUpdateInfo objectForKey:@"HP"];
-                deviceUpdateInfo = [MPBTSprocket getCorrectFirmwareVersion:info forExistingVersion:existingFwVersion];
-            }
-            
-            if (deviceUpdateInfo) {
-                fwPath = [deviceUpdateInfo objectForKey:@"fw_url"];
-            } else {
-                MPLogError(@"Unrecognized firmware update info: %@", fwUpdateInfo);
-            }
-            
-            if (completion) {
-                completion(fwPath);
-            }
-        }
-    }];
-}
-
-+ (NSArray *)pairedSprockets
-{
-    NSArray *accs = [[EAAccessoryManager sharedAccessoryManager] connectedAccessories];
-    NSMutableArray *pairedDevices = [[NSMutableArray alloc] init];
-    
-    for (EAAccessory *accessory in accs) {
-        if ([MPBTSprocket supportedAccessory:accessory]) {
-            [pairedDevices addObject:accessory];
-        }
-    }
-    
-    return pairedDevices;
-}
-
-#pragma mark -
-#pragma mark Scale and crop image
-
-- (UIImage*)imageByScalingAndCroppingForSize:(UIImage *)image targetSize:(CGSize)targetSize
-{
-    UIImage *sourceImage = image;
-    UIImage *newImage = nil;
-    CGSize imageSize = sourceImage.size;
-    CGFloat width = imageSize.width;
-    CGFloat height = imageSize.height;
-    CGFloat targetWidth = targetSize.width;
-    CGFloat targetHeight = targetSize.height;
-    CGFloat scaleFactor = 0.0;
-    CGFloat scaledWidth = targetWidth;
-    CGFloat scaledHeight = targetHeight;
-    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-    
-    if (CGSizeEqualToSize(imageSize, targetSize) == NO)
-    {
-        CGFloat widthFactor = targetWidth / width;
-        CGFloat heightFactor = targetHeight / height;
-        
-        if (widthFactor > heightFactor)
-        {
-            scaleFactor = widthFactor; // scale to fit height
-        }
-        else
-        {
-            scaleFactor = heightFactor; // scale to fit width
-        }
-        
-        scaledWidth  = width * scaleFactor;
-        scaledHeight = height * scaleFactor;
-        
-        // center the image
-        if (widthFactor > heightFactor)
-        {
-            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
-        }
-        else
-        {
-            if (widthFactor < heightFactor)
-            {
-                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-            }
-        }
-    }
-    
-    UIGraphicsBeginImageContext(targetSize); // this will crop
-    
-    CGRect thumbnailRect = CGRectZero;
-    thumbnailRect.origin = thumbnailPoint;
-    thumbnailRect.size.width  = scaledWidth;
-    thumbnailRect.size.height = scaledHeight;
-    
-    [sourceImage drawInRect:thumbnailRect];
-    
-    newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    if(newImage == nil)
-    {
-        MPLogError(@"could not scale image");
-    }
-    
-    //pop the context to get back to the default
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
 @end

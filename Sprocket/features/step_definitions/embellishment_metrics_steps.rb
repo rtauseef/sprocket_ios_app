@@ -12,7 +12,6 @@ Then (/^I Fetch embellishment metrics details$/) do
         hash = `curl -L "http://hpmobileprint:print1t@print-metrics-test.twosmiles.com/api/v1/sprocket_embellishments?mobile_app_metrics_id=#{$metrics_id.to_i}"`
         hash = JSON.parse(hash)
         $embellish_metrics_details = hash
-        
     end
 end
 
@@ -41,4 +40,7 @@ Then(/^I verify "([^"]*)" of "([^"]*)" is "([^"]*)"$/) do |metrics_variable, met
     compare = ($embellish_metrics_details[metrics_index]['category'] == metrics_value.strip) ? true : false
     raise "Category verification failed!" unless compare == true
   end
+end
+Then(/^I verify "([^"]*)" of "([^"]*)"$/) do |metrics_variable, metrics_index|
+  macro %Q|I verify "#{metrics_variable}" of "#{metrics_index}" is "#{$stic_id}"|
 end

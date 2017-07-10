@@ -71,6 +71,7 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
 
 - (void)setup
 {
+    self.shutterTimerDelayState = ShutterTimerDelayStateNone;
     self.isBackgroundCamera = NO;
     self.isFlashOn = NO;
     self.isCapturingStillImage = NO;
@@ -394,11 +395,13 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             [PGSavePhotos promptToSavePhotos:weakSelf.viewController completion:^(BOOL savePhotos) {
                 if (savePhotos) {
                     [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
-                        if (success) {
-                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
-                        } else {
-                            [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
-                        }
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (success) {
+                                [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
+                            } else {
+                                [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                            }
+                        });
                     }];
                 } else {
                     [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
@@ -407,15 +410,15 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         } else {
             if ([PGSavePhotos savePhotos]) {
                 [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
-                    if (success) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
-                        });
-                        [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
-                    } else {
-                        [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
-                        [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
-                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (success) {
+                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];                            
+                        } else {
+                            [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                        }
+                    });
+                    [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+
                 }];
 
             } else {
@@ -469,7 +472,32 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
     self.isFlashOn = !self.isFlashOn;
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
     [self configFlash:self.isFlashOn forDevice:device];
+    
+    if (self.isFlashOn) {
+        [[PGAnalyticsManager sharedManager] trackCameraFlashActivity:kEventCameraFlashOnLabel];
+    } else {
+        [[PGAnalyticsManager sharedManager] trackCameraFlashActivity:kEventCameraFlashOffLabel];
+    }
+}
+
+- (void)toggleTimer
+{
+    switch (self.shutterTimerDelayState) {
+        case ShutterTimerDelayStateNone:
+            self.shutterTimerDelayState = ShutterTimerDelayStateThree;
+            [[PGAnalyticsManager sharedManager] trackCameraTimerActivity:kEventCameraTimer3sLabel];
+            break;
+        case ShutterTimerDelayStateThree:
+            self.shutterTimerDelayState = ShutterTimerDelayStateTen;
+            [[PGAnalyticsManager sharedManager] trackCameraTimerActivity:kEventCameraTimer10sLabel];
+            break;
+        case ShutterTimerDelayStateTen:
+            self.shutterTimerDelayState = ShutterTimerDelayStateNone;
+            [[PGAnalyticsManager sharedManager] trackCameraTimerActivity:kEventCameraTimerNoneLabel];
+            break;
+    }
 }
 
 - (void)checkCameraPermission:(void (^)())success andFailure:(void (^)())failure

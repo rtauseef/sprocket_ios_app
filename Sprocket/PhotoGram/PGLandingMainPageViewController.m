@@ -496,6 +496,10 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
         queueAction = kEventPrintQueuePrintCopiesAction;
         jobAction = kEventPrintJobPrintCopiesAction;
         offRamp = kMetricsOffRampQueuePrintCopies;
+    } else if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginTile]) {
+        queueAction = kEventPrintQueuePrintTileAction;
+        jobAction = kEventPrintJobPrintTileAction;
+        offRamp = kMetricsOffRampQueuePrintTile;
     }
 
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:queueAction
@@ -590,8 +594,11 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
     if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
         action = kEventPrintQueueDeleteCopiesAction;
         offRamp = kMetricsOffRampQueueDeleteCopies;
+    } else if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginTile]) {
+        action = kEventPrintQueueDeleteTileAction;
+        offRamp = kMetricsOffRampQueueDeleteTile;
     }
-
+ 
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
                                                       queueId:printManager.queueId];
     

@@ -340,7 +340,7 @@ Then(/^I verify "([^"]*)" url$/) do |option|
     when option == "Privacy"
         url_expected = $list_loc['privacy_url']
     when option == "Buy Paper"
-        url_expected = "www8.hp.com/us/en/printers/zink.html"
+        url_expected = "www8.hp.com/us/en/printers/zink.html?jumpid=va_t26vahe57s"
     when option == "View User Guide"
         url_expected = $list_loc['view_user_guide_url']
     when option == "Join Support Forum"

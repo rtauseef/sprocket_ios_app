@@ -297,14 +297,14 @@
             [[PGStickerItem alloc] initWithName:@"Mustache Dark" imageName:@"Mustache-dark" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
             [[PGStickerItem alloc] initWithName:@"Beard" imageName:@"Beard" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
             [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"glasses_football" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"bunny_ears_polkadot" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"bunny_ears" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"bunny_face_bow" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"flower_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"medal" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"necktie_graduation" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"nerd_glasses" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
-            [[PGStickerItem alloc] initWithName:@"Glasses Football" imageName:@"pacifier-copy" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Bunny Ears Polkadot" imageName:@"bunny_ears_polkadot" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Bunny Ears" imageName:@"bunny_ears" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Bunny Face Bow" imageName:@"bunny_face_bow" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Flower Glasses" imageName:@"flower_glasses" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Medal" imageName:@"medal" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Necktie Graduation" imageName:@"necktie_graduation" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Nerd Glasses" imageName:@"nerd_glasses" tintMode:IMGLYStickerTintModeSolid andPackageName:nil].imglySticker,
+            [[PGStickerItem alloc] initWithName:@"Pacifier Copy" imageName:@"pacifier-copy" tintMode:IMGLYStickerTintModeNone andPackageName:nil].imglySticker,
 ];
 }
 

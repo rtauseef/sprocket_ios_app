@@ -85,6 +85,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSwipeCoachMarks:) name:SHOW_SWIPE_COACH_MARKS_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSwipeCoachMarks:) name:HIDE_SWIPE_COACH_MARKS_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showStatusBar) name:kPGCameraManagerCameraClosed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelMultiSelectionMode) name:kPGPreviewViewClosed object:nil];
 
     self.dataSource = self;
     self.delegate = self;
@@ -436,7 +437,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
     [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectCancel selectedPhotos:nil];
+    [self cancelMultiSelectionMode];
+ }
 
+- (void)cancelMultiSelectionMode {
     [[PGPhotoSelection sharedInstance] endSelectionMode];
 
     PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
@@ -456,6 +460,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             }
         }
     });
+
 }
 
 - (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {

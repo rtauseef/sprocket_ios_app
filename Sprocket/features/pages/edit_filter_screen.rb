@@ -15,7 +15,7 @@ class FilterEditorScreen < Calabash::IBase
         "UIButton marked:'Discard changes'"
     end
 
-    def filter_1
+    def first_filter
         "view marked:'Candy'"
     end
     def save
@@ -25,8 +25,9 @@ class FilterEditorScreen < Calabash::IBase
         unless current_page?
             edit_screen = go_to(EditScreen)
             sleep(WAIT_SCREENLOAD)
-            wait_for_elements_exist(edit_screen.filter, :timeout => MAX_TIMEOUT)
-            touch edit_screen.filter
+            #wait_for_elements_exist(edit_screen.filter, :timeout => MAX_TIMEOUT)
+            #touch edit_screen.filter
+            touch "IMGLYIconCaptionCollectionViewCell * id:'editFilters'"
             sleep(WAIT_SCREENLOAD)    
         end
         await

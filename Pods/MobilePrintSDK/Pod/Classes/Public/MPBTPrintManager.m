@@ -61,7 +61,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 - (BOOL)printDirect:(MPPrintItem *)printItem metrics:(NSDictionary *)metrics statusUpdate:(BOOL (^)(MPBTPrinterManagerStatus, NSInteger, NSInteger))statusUpdate {
     if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
-        [self reportError:MantaErrorBusy isFinalError:NO];
+        [self reportError:SprocketErrorBusy isFinalError:NO];
         return NO;
     }
 
@@ -139,7 +139,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 - (void)pausePrintQueue {
     self.status = MPBTPrinterManagerStatusIdle;
 
-    [self sendStatusUpdate:0 error:MantaErrorNoError];
+    [self sendStatusUpdate:0 error:SprocketErrorNoError];
 
     [self.checkTimer invalidate];
     self.checkTimer = nil;
@@ -229,12 +229,10 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     EAAccessory *device = [self currentDevice];
     
     if (device) {
-        MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
+        [MPBTSprocket sharedInstance].accessory = device;
+        [MPBTSprocket sharedInstance].delegate = self;
         
-        sprocket.accessory = device;
-        sprocket.delegate = self;
-        
-        [sprocket refreshInfo];
+        [[MPBTSprocket sharedInstance] refreshInfo];
     }
 }
 
@@ -243,14 +241,12 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     
     if (device) {
         if (self.status != MPBTPrinterManagerStatusSendingPrintJob) {
-            MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
+            [MPBTSprocket sharedInstance].accessory = device;
+            [MPBTSprocket sharedInstance].delegate = self;
 
-            sprocket.accessory = device;
-            sprocket.delegate = self;
+            [self sendStatusUpdate:0 error:SprocketErrorNoError];
 
-            [self sendStatusUpdate:0 error:MantaErrorNoError];
-
-            [sprocket refreshInfo];
+            [[MPBTSprocket sharedInstance] refreshInfo];
 
         } else {
             NSLog(@"PRINT QUEUE - WAITING FOR JOB TO START (%@)", self.currentJob.id);
@@ -270,7 +266,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     }
 }
 
-- (void)sendStatusUpdate:(NSInteger)progress error:(MantaError)error {
+- (void)sendStatusUpdate:(NSInteger)progress error:(SprocketError)error {
     if (self.statusUpdateBlock) {
         BOOL shouldContinueUpdatingStatus = self.statusUpdateBlock(self.status, progress, error);
 
@@ -283,18 +279,18 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
 #pragma mark - MPBTSprocketDelegate
 
-- (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error {
+- (void)didRefreshSprocketInfo:(MPBTSprocket *)sprocket error:(SprocketError)error {
     if (self.finalCheckTimer) {
         NSLog(@"Handling final error");
         // We're waiting for the device to stop printing in order to gather the final error, if any
-        if (MantaErrorBusy != error) {
+        if (SprocketErrorBusy != error) {
             [self.finalCheckTimer invalidate];
             self.finalCheckTimer = nil;
-            if (MantaErrorNoError != error) {
+            if (SprocketErrorNoError != error) {
                 [self reportError:error isFinalError:YES];
             }
         }
-    } else if (error == MantaErrorNoError) {
+    } else if (error == SprocketErrorNoError) {
         self.status = MPBTPrinterManagerStatusSendingPrintJob;
 
         if (self.directJob) {
@@ -333,16 +329,16 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
 
         NSLog(@"PRINT QUEUE - NOT READY: %@", @(error));
 
-        if (error != MantaErrorBusy) {
+        if (error != SprocketErrorBusy) {
             [self reportError:error isFinalError:NO];
         }
     }
 }
 
-- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error {
+- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error {
     NSLog(@"PRINT QUEUE - SENDING DATA %li (%@)", (long)percentageComplete, self.currentJob.id);
 
-    [self sendStatusUpdate:percentageComplete error:MantaErrorNoError];
+    [self sendStatusUpdate:percentageComplete error:SprocketErrorNoError];
 
     if ([self.delegate respondsToSelector:@selector(btPrintManager:sendingPrintJob:progress:)]) {
         [self.delegate btPrintManager:self sendingPrintJob:self.currentJob progress:percentageComplete];
@@ -361,7 +357,7 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     NSLog(@"PRINT QUEUE - JOB STARTED PRINTING (%@)", self.currentJob.id);
 
     self.status = MPBTPrinterManagerStatusPrinting;
-    [self sendStatusUpdate:0 error:MantaErrorNoError];
+    [self sendStatusUpdate:0 error:SprocketErrorNoError];
 
     if (self.directJob) {
         self.directJob = nil;
@@ -389,21 +385,21 @@ static NSString * const kPrintManagerQueueIdKey = @"com.hp.mobile-print.bt.print
     self.currentJob = nil;
 }
 
-- (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error {
+- (void)didReceiveError:(MPBTSprocket *)sprocket error:(SprocketError)error {
     NSLog(@"PRINT QUEUE - ERROR (%@)", @(error));
 
     if (self.status != MPBTPrinterManagerStatusEmptyQueue) {
         self.status = MPBTPrinterManagerStatusWaitingForPrinter;
     }
 
-    if (error == MantaErrorNoSession) {
+    if (error == SprocketErrorNoSession) {
         sprocket.accessory = nil;
     }
 
     [self reportError:error isFinalError:NO];
 }
 
-- (void)reportError:(MantaError)error isFinalError:(BOOL)isFinalError {
+- (void)reportError:(SprocketError)error isFinalError:(BOOL)isFinalError {
     if (self.status == MPBTPrinterManagerStatusEmptyQueue  &&  !isFinalError) {
         return;
     }

@@ -34,6 +34,7 @@
 #import "PGMetarOfflineTagManager.h"
 #import "PGInboxMessageManager.h"
 #import "PGLinkSettings.h"
+#import "PGLoggingSetttingsViewController.h"
 #import "PGFeatureFlag.h"
 #import "PGCloudAssetClient.h"
 
@@ -72,6 +73,9 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     
     [self initializePrintPod];
     
+    BOOL forceFirmwareUpgrade = [[NSUserDefaults standardUserDefaults] boolForKey:kPGSettingsForceFirmwareUpgrade];
+    [[MP sharedInstance] setForceFirmwareUpdates:forceFirmwareUpgrade];
+
     [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application didFinishLaunchingWithOptions:launchOptions];
 
     // Check if the app was opened by local notification
@@ -94,17 +98,19 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
     [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
     
-    // pre fetch offline tags
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
-        PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
-        [metaroffline checkTagDB:nil];
-    });
-
+    if ([PGLinkSettings localWatermarkEnabled]) {
+        // pre fetch offline tags
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
+            PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
+            [metaroffline checkTagDB:nil];
+        });
+    }
+    
     if ([PGFeatureFlag isCloudAssetsEnabled]) {
         PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
         [cac refreshAssetCatalog];
     }
-    
+
     return YES;
 }
 

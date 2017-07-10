@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,6 +25,7 @@
                 <outlet property="scanView" destination="85K-3T-BoG" id="zHg-74-DQE"/>
                 <outlet property="shutterButton" destination="fg2-TL-pwq" id="aKL-YI-USR"/>
                 <outlet property="switchCameraButton" destination="AKI-P8-ZbS" id="0qe-ve-Bwl"/>
+                <outlet property="timerButton" destination="9Ek-Wd-nK5" id="9p7-qf-KLg"/>
                 <outlet property="transitionEffectView" destination="BJW-QH-UdF" id="qdZ-gP-WnO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -76,6 +77,17 @@
                     <state key="normal" image="cameraClose"/>
                     <connections>
                         <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="BzK-9g-8zX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ek-Wd-nK5" userLabel="Timer Button">
+                    <rect key="frame" x="222" y="37" width="54" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="caf-um-FkN"/>
+                        <constraint firstAttribute="width" constant="54" id="dty-Yr-G9R"/>
+                    </constraints>
+                    <state key="normal" image="timer"/>
+                    <connections>
+                        <action selector="timerTapped:" destination="-1" eventType="touchUpInside" id="owv-ez-zpG"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voU-GQ-VkJ">
@@ -136,6 +148,7 @@ you’ll be glad you did!</string>
                 <constraint firstAttribute="trailing" secondItem="AKI-P8-ZbS" secondAttribute="trailing" id="1g4-4S-DPE"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="top" secondItem="zcR-2M-2SD" secondAttribute="bottom" id="4Bc-Op-WW2"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CjH-fq-ear"/>
+                <constraint firstItem="9Ek-Wd-nK5" firstAttribute="trailing" secondItem="voU-GQ-VkJ" secondAttribute="leading" constant="-10" id="Hxx-bL-S1W"/>
                 <constraint firstAttribute="bottom" secondItem="85K-3T-BoG" secondAttribute="bottom" id="IJU-NY-EYf"/>
                 <constraint firstItem="85K-3T-BoG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IWE-Vr-MTi"/>
                 <constraint firstAttribute="trailing" secondItem="85K-3T-BoG" secondAttribute="trailing" id="IqT-o3-eZN"/>
@@ -151,6 +164,7 @@ you’ll be glad you did!</string>
                 <constraint firstItem="AKI-P8-ZbS" firstAttribute="centerY" secondItem="cUq-e2-jMp" secondAttribute="centerY" id="qj6-eR-b2j"/>
                 <constraint firstItem="zcR-2M-2SD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rwu-G9-hrA"/>
                 <constraint firstAttribute="trailing" secondItem="zcR-2M-2SD" secondAttribute="trailing" id="w7J-gH-ctp"/>
+                <constraint firstItem="9Ek-Wd-nK5" firstAttribute="centerY" secondItem="voU-GQ-VkJ" secondAttribute="centerY" id="yuY-qU-aCk"/>
             </constraints>
             <point key="canvasLocation" x="64" y="57"/>
         </view>
@@ -161,5 +175,6 @@ you’ll be glad you did!</string>
         <image name="cameraReverse" width="33" height="26"/>
         <image name="cameraShutter" width="67" height="67"/>
         <image name="scanLink" width="377" height="689"/>
+        <image name="timer" width="33" height="33"/>
     </resources>
 </document>

@@ -42,7 +42,8 @@
                                 </mapView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeA-7l-HCh" userLabel="blockImageButton">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal" image="sameDay"/>
                                     <connections>
                                         <action selector="clickImageBlock:" destination="-1" eventType="touchUpInside" id="qRf-jg-UDJ"/>
                                     </connections>
@@ -104,5 +105,6 @@
     </objects>
     <resources>
         <image name="dividerLine" width="375" height="11"/>
+        <image name="sameDay" width="83" height="83"/>
     </resources>
 </document>

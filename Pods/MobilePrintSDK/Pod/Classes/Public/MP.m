@@ -342,15 +342,15 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
 }
 
 - (NSString *)errorTitle:(NSInteger)errorCode {
-    return [MPBTSprocket errorTitle:(MantaError)errorCode];
+    return [MPBTSprocket errorTitle:(SprocketError)errorCode];
 }
 
 - (NSString *)errorDescription:(NSInteger)errorCode {
-    return [MPBTSprocket errorDescription:(MantaError)errorCode];
+    return [MPBTSprocket errorDescription:(SprocketError)errorCode];
 }
 
 
-- (void)didRefreshMantaInfo:(MPBTSprocket *)manta error:(MantaError)error
+- (void)didRefreshSprocketInfo:(MPBTSprocket *)manta error:(SprocketError)error
 {
     if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didReceiveSprocketBatteryLevel:)]) {
         [self.sprocketDelegate didReceiveSprocketBatteryLevel:manta.batteryStatus];
@@ -387,6 +387,16 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
         progressView.viewController = viewController;
         [progressView reflashDevice];
     }
+}
+
+- (BOOL)forceFirmwareUpdates
+{
+    return [MPBTSprocket forceFirmwareUpdates];
+}
+
+- (void)setForceFirmwareUpdates:(BOOL)force
+{
+    [MPBTSprocket setForceFirmwareUpdates:force];
 }
 
 - (void)obfuscateMetric:(NSString *)keyName

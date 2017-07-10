@@ -11,6 +11,7 @@
 //
 
 #import <Crashlytics/Crashlytics.h>
+#import <MP.h>
 #import "AirshipKit.h"
 #import "PGAppDelegate.h"
 #import "PGLoggingSetttingsViewController.h"
@@ -21,6 +22,8 @@
 #import "PGSocialSourcesManager.h"
 #import "PGFeatureFlag.h"
 #import "PGLinkSettings.h"
+
+NSString *kPGSettingsForceFirmwareUpgrade = @"kPGSettingsForceFirmwareUpgrade";
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -47,6 +50,7 @@ enum {
     kEnableVideoPrintIndex,
     kEnableFakePrintIndex,
     kEnableLocalWatermarkIndex,
+    kForceUpgradeIndex,
     
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
@@ -296,7 +300,7 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings linkEnabled]];
-        } else if(kEnableVideoPrintIndex == selectedRow) {
+        } else if (kEnableVideoPrintIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableVideoPrint"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableVideoPrint"];
@@ -305,7 +309,7 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings videoPrintEnabled]];
-        } else if(kEnableFakePrintIndex == selectedRow) {
+        } else if (kEnableFakePrintIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableFakePrint"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableFakePrint"];
@@ -314,7 +318,7 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings fakePrintEnabled]];
-        } else if(kEnableLocalWatermarkIndex == selectedRow) {
+        } else if (kEnableLocalWatermarkIndex == selectedRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"enableLocalWatermark"];
             if (!cell) {
                 cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableLocalWatermark"];
@@ -323,12 +327,19 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.font = self.photogramCell.textLabel.font;
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGLinkSettings localWatermarkEnabled]];
+        } else if (kForceUpgradeIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"forceUpgrade"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"forceUpgrade"];
+            }
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.textLabel.text = @"Force Firmware Upgrade";
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[[MP sharedInstance] forceFirmwareUpdates]];
         }
         
          cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
     }
-    
-   
     
     return cell;
 }
@@ -396,6 +407,14 @@ NSString * const kFeatureCodeLink = @"link";
             } else if( kEnableLocalWatermarkIndex == selectedRow) {
                 [PGLinkSettings setLocalWatermarkEnabled:![PGLinkSettings localWatermarkEnabled]];
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings localWatermarkEnabled]];
+            } else if (kForceUpgradeIndex == selectedRow) {
+                BOOL force = ![[MP sharedInstance] forceFirmwareUpdates];
+                
+                [[NSUserDefaults standardUserDefaults] setBool:force forKey:kPGSettingsForceFirmwareUpgrade];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+
+                [[MP sharedInstance] setForceFirmwareUpdates:force];
+                [self.tableView reloadData];
             }
         }
     }
