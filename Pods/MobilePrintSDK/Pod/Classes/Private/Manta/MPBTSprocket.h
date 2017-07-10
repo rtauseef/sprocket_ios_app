@@ -15,6 +15,9 @@
 #import "MPBTSprocketDefinitions.h"
 #import "MPPrintItem.h"
 
+extern NSString * kPGSettingsForceFirmwareUpgrade;
+extern NSString * kPGUseExperimentalFirmware;
+
 @protocol MPBTSprocketDelegate;
 
 @interface MPBTSprocket : NSObject
@@ -52,6 +55,8 @@
 + (NSString *)autoPowerOffIntervalString:(SprocketAutoPowerOffInterval)interval;
 + (BOOL) forceFirmwareUpdates;
 + (void) setForceFirmwareUpdates:(BOOL)force;
++ (BOOL) useExperimentalFirmware;
++ (void) setUseExperimentalFirmware:(BOOL)useExperimental;
 
 @end
 

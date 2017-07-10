@@ -146,7 +146,7 @@ static const char RESP_ERROR_MESSAGE_ACK_SUB_CMD  = 0x00;
 
 - (void)reflash
 {
-    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSString *fwPath) {
+    [MPBTSprocket latestFirmwarePath:self.protocolString forExistingVersion:[self adjustedFirmwareVersion] completion:^(NSString *fwPath) {
         
         NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue: [NSOperationQueue mainQueue]];
         
@@ -260,6 +260,12 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 - (NSString *)displayName
 {
     return [MPBTSprocket displayNameForAccessory:self.accessory];
+}
+
+- (NSUInteger) adjustedFirmwareVersion
+{
+    NSUInteger fwVer = [MPBTSprocket forceFirmwareUpdates] ? self.firmwareVersion-1 : self.firmwareVersion;
+    return fwVer;
 }
 
 - (NSDictionary *)analytics
@@ -547,9 +553,9 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         
         if (self.delegate  &&  [self.delegate respondsToSelector:@selector(didCompareWithLatestFirmwareVersion:needsUpgrade:)]) {
             if (MantaErrorNoError == error) {
-                [MPBTSprocket latestFirmwareVersion:self.protocolString forExistingVersion:self.firmwareVersion completion:^(NSUInteger fwVersion) {
+                [MPBTSprocket latestFirmwareVersion:self.protocolString forExistingVersion:[self adjustedFirmwareVersion] completion:^(NSUInteger fwVersion) {
                     BOOL needsUpgrade = NO;
-                    if (fwVersion > self.firmwareVersion) {
+                    if (fwVersion > [self adjustedFirmwareVersion]) {
                         needsUpgrade = YES;
                     }
                     // make sure the delegate is still around now that we're in the completion block...
