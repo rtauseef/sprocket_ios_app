@@ -238,7 +238,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     // Updating visible edited images with the correct contentMode after loading the screen;
     for (PGGesturesView *visibleGestureView in self.carouselView.visibleItemViews) {
+        self.tilingOverlay.isOverlayVisible = NO;
         visibleGestureView.editedImage = [visibleGestureView screenshotImage];
+        self.tilingOverlay.isOverlayVisible = YES;
     }
 
     if ([[MPBTPrintManager sharedInstance] queueSize] > 0 && self.carouselView.visibleItemViews.count > 0) {
@@ -1668,7 +1670,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (UIImage *)currentEditedImage
 {
     PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
+    self.tilingOverlay.isOverlayVisible = NO;
     gesturesView.editedImage = [gesturesView screenshotImage];
+    self.tilingOverlay.isOverlayVisible = YES;
     
     return gesturesView.editedImage;
 }
@@ -1708,7 +1712,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         BOOL isVisibleItem = [carousel.indexesForVisibleItems containsObject:[NSNumber numberWithInteger:index]];
         if (isVisibleItem) {
+            self.tilingOverlay.isOverlayVisible = NO;
             gestureView.editedImage = [gestureView screenshotImage];
+            self.tilingOverlay.isOverlayVisible = YES;
         }
 
         [carousel setNeedsLayout];
