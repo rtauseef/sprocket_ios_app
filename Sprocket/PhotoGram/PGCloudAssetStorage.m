@@ -11,7 +11,6 @@
 //
 
 #import "PGCloudAssetStorage.h"
-#import "PGCloudAssetDownloadWorker.h"
 #import "NSString+Utils.h"
 #import <AFNetworking/AFImageDownloader.h>
 

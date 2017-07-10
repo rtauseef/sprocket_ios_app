@@ -2539,8 +2539,6 @@
 		F20630251F03292900A369EB /* PGCloudAssetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630231F03292900A369EB /* PGCloudAssetImage.m */; };
 		F20630281F03294000A369EB /* PGCloudAssetStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630271F03294000A369EB /* PGCloudAssetStorage.m */; };
 		F20630291F03294000A369EB /* PGCloudAssetStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630271F03294000A369EB /* PGCloudAssetStorage.m */; };
-		F206302C1F03296700A369EB /* PGCloudAssetDownloadWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = F206302B1F03296700A369EB /* PGCloudAssetDownloadWorker.m */; };
-		F206302D1F03296700A369EB /* PGCloudAssetDownloadWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = F206302B1F03296700A369EB /* PGCloudAssetDownloadWorker.m */; };
 		F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */; };
@@ -4622,8 +4620,6 @@
 		F20630231F03292900A369EB /* PGCloudAssetImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetImage.m; sourceTree = "<group>"; };
 		F20630261F03294000A369EB /* PGCloudAssetStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetStorage.h; sourceTree = "<group>"; };
 		F20630271F03294000A369EB /* PGCloudAssetStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetStorage.m; sourceTree = "<group>"; };
-		F206302A1F03296700A369EB /* PGCloudAssetDownloadWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetDownloadWorker.h; sourceTree = "<group>"; };
-		F206302B1F03296700A369EB /* PGCloudAssetDownloadWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetDownloadWorker.m; sourceTree = "<group>"; };
 		F20CE24F1EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.h"; sourceTree = "<group>"; };
 		F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.m"; sourceTree = "<group>"; };
 		F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGInAppMessageView.xib; sourceTree = "<group>"; };
@@ -6714,8 +6710,6 @@
 				F20630231F03292900A369EB /* PGCloudAssetImage.m */,
 				F20630261F03294000A369EB /* PGCloudAssetStorage.h */,
 				F20630271F03294000A369EB /* PGCloudAssetStorage.m */,
-				F206302A1F03296700A369EB /* PGCloudAssetDownloadWorker.h */,
-				F206302B1F03296700A369EB /* PGCloudAssetDownloadWorker.m */,
 			);
 			name = CloudAssetClient;
 			sourceTree = "<group>";
@@ -9895,7 +9889,6 @@
 				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
 				e265c297713e9b6e3f04b533 /* PGView.m in Sources */,
 				7f8d860833dd0b905e33e418 /* PGPreviewViewController.m in Sources */,
-				F206302D1F03296700A369EB /* PGCloudAssetDownloadWorker.m in Sources */,
 				24621f9ff6a174a391042307 /* UIView+Animations.m in Sources */,
 				F2B3F5C01EFC5E9300F1E6FB /* PGMetarArtifactEmotion.m in Sources */,
 				F2B3F5B01EFC5E7600F1E6FB /* PGPayoffFullScreenTmpViewController.m in Sources */,
@@ -10104,7 +10097,6 @@
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */,
-				F206302C1F03296700A369EB /* PGCloudAssetDownloadWorker.m in Sources */,
 				E34D50D3199AC233006D80E0 /* PGAppAppearance.m in Sources */,
 				EDD33F691EF9CE520028DBC8 /* PGMetarImageItem.m in Sources */,
 				EDD33F8C1EF9CE520028DBC8 /* PGPayoffMetadata.m in Sources */,
