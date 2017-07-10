@@ -84,11 +84,9 @@ Scenario: Verify font
     Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I wait for some seconds
     Then I select "Font" 
     And I select "font_2" font
     Then I choose "save" option
-    Then I wait for some seconds
     Then I should see the photo with the "font_2" font
     
   
@@ -142,9 +140,7 @@ Scenario: Verify text color
     And I should see the photo with the "text"
     Then I select "Color" 
     And I select "Blue"
-    Then I wait for some seconds
     Then I choose "save" option
-    Then I wait for some seconds
     Then I should see the text with selected "Color"
       
 @regression
@@ -190,9 +186,7 @@ Scenario: Verify text background
     And I should see the photo with the "text"
     Then I select "Background color" 
     And I select "Gray"
-    Then I wait for some seconds
     Then I choose "save" option
-    Then I wait for some seconds
     Then I should see the text with selected "Background Color"
       
 @regression

@@ -107,7 +107,6 @@ Scenario Outline: Verify successful navigation for How to & Help options
         |HP Development Company, L.P.|
         |Copyright (c) 2016|
         When I touch "Done"
-        Then I wait for sometime
         Then I should see the side menu
     
     @regression

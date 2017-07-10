@@ -52,13 +52,13 @@ Feature: Verify Welcome screen/Landing Page
 	Given  I am on the "Landing" screen
 	Then I tap "<Social Source>"
 	Then I should see the "<Social Source>Landing" screen
-  Then I wait for sometime
-	Examples:
+	
+    Examples:
 	|Social Source	|
-	|Instagram		  |
-  |Google			    |
-  |Facebook		    |
-  |CameraRoll	    |
+	|Instagram	    |
+    |Google			|
+    |Facebook       |
+    |CameraRoll	    |
 
 
   @regression

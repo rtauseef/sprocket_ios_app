@@ -30,11 +30,7 @@ Feature: Verify embellishment metrics
     And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
     And I should see the photo with the "sticker_11" sticker from "Face Category" tab
     Then I choose "check" option
-    And I wait for some seconds
-    And I wait for some seconds
-	And I wait for some seconds
-	And I wait for some seconds   
-    Then I am on the "CameraRoll Preview" screen
+    Then I should see the "CameraRoll Preview" screen
     When I choose "download" option
 	Then I wait for some seconds
     Then Fetch metrics details
@@ -64,15 +60,9 @@ Feature: Verify embellishment metrics
     Then I am on the "Frame Editor" screen
     Then I choose "save" option
     Then I am on the "Edit" screen
-    And I wait for some seconds
     Then I select "autofix"
-    Then I wait for some seconds
     Then I choose "check" option
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds
-    Then I am on the "CameraRoll Preview" screen
+    Then I should see the "CameraRoll Preview" screen
     When I choose "download" option
     Then I wait for some seconds
     Then Fetch metrics details
@@ -95,14 +85,8 @@ Feature: Verify embellishment metrics
     And I should see the photo with the sticker from "Decorative Category" tab
     Then I choose "save" option
     Then I should see the "Edit" screen
-    Then I choose "check" option
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds
-    And I wait for some seconds  
-    And I wait for some seconds
-    And I wait for some seconds    
-    Then I am on the "CameraRoll Preview" screen
+    Then I choose "check" option    
+    Then I should see the "CameraRoll Preview" screen
     When I choose "download" option
     Then I wait for some seconds
     Then Fetch metrics details

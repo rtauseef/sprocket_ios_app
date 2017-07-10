@@ -48,7 +48,6 @@ Feature: Verify multiselect feature
     Then I select "3" photos
     And I should see the number of photos selected as "3" 
     Then I swipe to see "CameraRoll Photo" screen
-    Then I wait for some time
     Then I select "3" photos
     And I should see the number of photos selected as "6"
     Then I tap on the multi selected number  

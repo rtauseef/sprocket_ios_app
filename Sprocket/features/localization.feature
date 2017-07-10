@@ -25,16 +25,12 @@ Scenario: Verify Terms of Service link from social media landing screens
     And I verify the Terms of Service link for "Instagram"
     Then I swipe to see "Camera Roll" screen
     And I verify the Terms of Service link for "Camera Roll"
-    Then I wait for some time
     Then I swipe to see "Google" screen
     And I verify the Terms of Service link for "Google"
-    Then I wait for some time
     Then I swipe to see "QZone" screen
     And I verify the Terms of Service link for "QZone"
-    Then I wait for some time
     Then I swipe to see "pitu" screen
     And I verify the Terms of Service link for "pitu"
-    Then I wait for some time
     Then I swipe to see "facebook" screen
     And I verify the Terms of Service link for "facebook"
     
@@ -128,13 +124,9 @@ Scenario: Verify Social media screen titles and navigation
     Then I should see "Instagram" logo
     And I click on the "Instagram" logo 
     Then I swipe to see "Camera Roll" screen
-    Then I wait for some time
     Then I swipe to see "Google" screen
-    Then I wait for some time
     Then I swipe to see "QZone" screen
-    Then I wait for some time
     Then I swipe to see "pitu" screen
-    Then I wait for some time
     Then I swipe to see "facebook" screen
     
   
@@ -169,7 +161,6 @@ Scenario: Verify localization of Terms of Service link on Landing Screen
         |HP Development Company, L.P.|
         |Copyright (c) 2016|
         Then I touch "Done" option in the screen
-        Then I wait for sometime
         Then I should see the side menu
     
     
@@ -246,12 +237,10 @@ Scenario: Navigate to Preview screen for cameraroll
     Given  I am on the "Landing" screen  
     Then I should see "<social_media>" logo
     And I click on the "<social_media>" logo
-    Then I wait for some time
     And I tap the "Signin" button
     Then I should see the "<Sign in>" screen
     And I enter valid credentials
     And I touch login button
-    Then I wait for some time
     Then I should see the "<Photos>" screen
     When I touch second photo
     Then I should see the "<Preview>" screen
