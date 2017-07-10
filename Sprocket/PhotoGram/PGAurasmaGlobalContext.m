@@ -14,23 +14,20 @@
 #import "PGAurasmaGlobalContext.h"
 
 @interface PGAurasmaGlobalContext ()
+
+@property (readwrite) AURContext *context;
 @property (readwrite) NSString *guestName;
 @property (readwrite) BOOL syncing;
+
+@property (strong, nonatomic) AURAuthService *authService;
+@property (strong, nonatomic) AURSyncService *syncService;
+@property (atomic) BOOL currentlyProcessingLogin;
+@property (atomic) BOOL currentlyProcessingGuestCreation;
+
 @end
 
-@implementation PGAurasmaGlobalContext {
-    AURContext *_context;
-    AURAuthService *_authService;
-    AURSyncService *_syncService;
-    BOOL _currentlyProcessingLogin;
-    BOOL _currentlyProcessingGuestCreation;
-    NSString *_guestName;
-    BOOL _syncing;
-}
+@implementation PGAurasmaGlobalContext
 
-@synthesize context = _context;
-@synthesize guestName = _guestName;
-@synthesize syncing = _syncing;
 
 /* This is just for illustration. Your actual client secret should be as hidden as you are able. */
 static NSString *clientSecret = @"eY+y3KQwIkVTb4fYe/pDdg";
@@ -58,24 +55,24 @@ static AURGlobalOptions globalOptions = kNilOptions;
          Create an AURContext using your provided license key.
          The CFBundleName of this app must match the name given in your SDK app request.
          */
-        _context = [Aurasma createContextWithKey:[[NSBundle mainBundle] URLForResource:@"Sprocket" withExtension:@"key"]
+        self.context = [Aurasma createContextWithKey:[[NSBundle mainBundle] URLForResource:@"Sprocket" withExtension:@"key"]
                                     clientSecret:clientSecret
                                    globalOptions:globalOptions
                                            error:&error];
         
-        if (!_context) {
+        if (!self.context) {
             NSLog(@"%@", error);
             return nil;
         }
         
         /* Get all the services we're going to use. Alternatively you could call these only when you need them. */
-        _authService = [AURAuthService getServiceWithContext:_context];
-        _syncService = [AURSyncService getServiceWithContext:_context];
-        _guestName = [[NSUserDefaults standardUserDefaults] objectForKey:persistUsernameKey];
-        _syncing = _syncService.isRunning;
+        self.authService = [AURAuthService getServiceWithContext:self.context];
+        self.syncService = [AURSyncService getServiceWithContext:self.context];
+        self.guestName = [[NSUserDefaults standardUserDefaults] objectForKey:persistUsernameKey];
+        self.syncing = self.syncService.isRunning;
         
         /* Observe if we become logged out, and then log in again */
-        [_authService addObserver:self
+        [self.authService addObserver:self
                        forKeyPath:@"state"
                           options:NSKeyValueObservingOptionNew
                           context:nil];
@@ -85,7 +82,7 @@ static AURGlobalOptions globalOptions = kNilOptions;
 
 - (void)loginAndStartSync {
     AURAuthServiceHandler loginHandler = ^(NSError *error) {
-        _currentlyProcessingLogin = NO;
+        self.currentlyProcessingLogin = NO;
         if (error) {
             /*
              Depending on your application, you will need to handle this error in order to proceed.
@@ -95,12 +92,12 @@ static AURGlobalOptions globalOptions = kNilOptions;
             return;
         }
         
-        [_syncService start]; // Start sync immediatly after login.
-        self.syncing = _syncService.isRunning;
+        [self.syncService start]; // Start sync immediatly after login.
+        self.syncing = self.syncService.isRunning;
     };
     
     AURAuthServiceStringHandler guestCreationHandler = ^(NSError *error, NSString *result) {
-        _currentlyProcessingGuestCreation = NO;
+        self.currentlyProcessingGuestCreation = NO;
         if (error) {
             /* Depending on your application, you will need to handle this error in order to proceed. */
             NSLog(@"%@", error);
@@ -113,47 +110,47 @@ static AURGlobalOptions globalOptions = kNilOptions;
         [[NSUserDefaults standardUserDefaults] setObject:result forKey:persistUsernameKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        _currentlyProcessingLogin = YES;
+        self.currentlyProcessingLogin = YES;
         
         /* Immediatly login as the new guest user. */
-        [_authService loginGuest:result andCallback:loginHandler];
+        [self.authService loginGuest:result andCallback:loginHandler];
     };
     
-    if (!_guestName) {
+    if (!self.guestName) {
         /* If we have no record of a user for this app, we need to make one. */
-        if (_currentlyProcessingGuestCreation) {
+        if (self.currentlyProcessingGuestCreation) {
             return;
         }
-        _currentlyProcessingGuestCreation = YES;
+        self.currentlyProcessingGuestCreation = YES;
         
         /* Pass nil as we don't care what the name actually is. */
-        [_authService createGuest:nil withCallback:guestCreationHandler];
+        [self.authService createGuest:nil withCallback:guestCreationHandler];
     }
-    else if (_authService.state == AURAuthState_None) {
+    else if (self.authService.state == AURAuthState_None) {
         /* If we have a user already and they're not logged in, then log in. */
-        if (_currentlyProcessingLogin) {
+        if (self.currentlyProcessingLogin) {
             return;
         }
-        _currentlyProcessingLogin = YES;
+        self.currentlyProcessingLogin = YES;
         /* Login as the user. Guest accounts don't require a password, but cannot be used across applications. */
-        [_authService loginGuest:_guestName andCallback:loginHandler];
+        [self.authService loginGuest:self.guestName andCallback:loginHandler];
     }
     else {
         /* If we have a user and they're logged in, then start syncing. */
-        [_syncService start];
-        self.syncing = _syncService.isRunning;
+        [self.syncService start];
+        self.syncing = self.syncService.isRunning;
     }
 }
 
 - (void)stopSync {
-    [_syncService stop];
-    self.syncing = _syncService.isRunning;
+    [self.syncService stop];
+    self.syncing = self.syncService.isRunning;
 }
 
 - (void)startSync {
-    if (_authService.state != AURAuthState_None) {
-        [_syncService start];
-        self.syncing = _syncService.isRunning;
+    if (self.authService.state != AURAuthState_None) {
+        [self.syncService start];
+        self.syncing = self.syncService.isRunning;
     }
 }
 

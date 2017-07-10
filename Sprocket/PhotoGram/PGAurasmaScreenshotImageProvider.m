@@ -13,12 +13,17 @@
 #import <AurasmaSDK/AurasmaSDK.h>
 #import "PGAurasmaScreenshotImageProvider.h"
 
-@implementation PGAurasmaScreenshotImageProvider {
-    AURScreenshotImage *_image;
-    NSURL *_shareLink;
-    AURSocialService *_socialService;
-    UIActivityIndicatorView *_activityIndicatorView;
-}
+@interface PGAurasmaScreenshotImageProvider()
+
+@property (strong, nonatomic) AURSocialService *socialService;
+@property (strong, nonatomic) AURScreenshotImage *image;
+@property (strong, nonatomic) NSURL *shareLink;
+
+@property (weak, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+
+@end
+
+@implementation PGAurasmaScreenshotImageProvider
 
 + (PGAurasmaScreenshotImageProvider *)imageProviderWithImage:(AURScreenshotImage *)image
                                          socialService:(AURSocialService *)socialService
@@ -34,44 +39,44 @@
      andActivityIndicatorView:(UIActivityIndicatorView *)indicatorView {
     
     if ((self = [super initWithPlaceholderItem:image])) {
-        _image = image;
-        _socialService = socialService;
-        _activityIndicatorView = indicatorView;
+        [self setImage:image];
+        [self setSocialService:socialService];
+        [self setActivityIndicatorView:indicatorView];
     }
     return self;
 }
 
 - (id)item {
     if ([self.activityType isEqualToString:UIActivityTypeSaveToCameraRoll]) {
-        return _image;
+        return self.image;
     }
     
     [self getShareLink];
-    return _shareLink;
+    return self.shareLink;
 }
 
 - (void)getShareLink {
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    if (!_shareLink) {
+    if (!self.shareLink) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            _activityIndicatorView.hidden = NO;
-            [_activityIndicatorView startAnimating];
+            self.activityIndicatorView.hidden = NO;
+            [self.activityIndicatorView startAnimating];
         });
         
         void (^callback)(NSError *, NSURL *) = ^(NSError *error, NSURL *result) {
             if (!error) {
-                _shareLink = result;
+                self.shareLink = result;
             }
             
             dispatch_semaphore_signal(semaphore);
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_activityIndicatorView stopAnimating];
+                [self.activityIndicatorView stopAnimating];
             });
         };
         
-        [_socialService shareLinkForImage:_image andShouldWatermark:NO withCallback:callback];
+        [self.socialService shareLinkForImage:self.image andShouldWatermark:NO withCallback:callback];
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }
 }

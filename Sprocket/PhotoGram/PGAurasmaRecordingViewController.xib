@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGAurasmaRecordingViewController">
             <connections>
-                <outlet property="_pauseButton" destination="mN7-1I-mhj" id="89q-RQ-JWR"/>
-                <outlet property="_playButton" destination="FmT-Z0-wZL" id="8I5-Ui-RoM"/>
-                <outlet property="_toolbar" destination="URC-s7-eTd" id="adJ-GO-J7S"/>
+                <outlet property="pauseButton" destination="mN7-1I-mhj" id="ElB-x4-ceu"/>
+                <outlet property="playButton" destination="FmT-Z0-wZL" id="425-uP-co1"/>
+                <outlet property="toolbar" destination="URC-s7-eTd" id="pFr-PB-a7g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
