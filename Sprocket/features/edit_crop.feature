@@ -5,27 +5,27 @@ Feature: Verify Edit crop feature
 @regression
 Scenario Outline: Verify crop option
     Given I am on the "<social_media_screen_name>" screen
-    When I choose "edit" option
+    When I touch "Edit"
     Then I am on the "Edit" screen
     Then I choose "crop" option
     Then I should see the "Crop Editor" screen
-    And I could see "2:3" option
-    And I could see "3:2" option
+    And I should see "2:3" 
+    And I should see "3:2"
     And I select "2:3"
-    Then I choose "close" option
+    Then I touch "Discard changes"
     Then I should see the "Edit" screen
     And I should see the "uncropped" image
           
     Examples:
-    | social_media_screen_name|
-    | Instagram Preview  |
-    | CameraRoll Preview |
+    | social_media_screen_name  |
+    | Instagram Preview         |
+    | CameraRoll Preview        |
     
  
 @regression
 Scenario Outline: Verify image crop
-    Given I am on the "<social_media_screen_name>" screen
-    When I choose "edit" option
+    Given I am on the "CameraRoll Preview" screen
+    When I touch "Edit"
     Then I am on the "Edit" screen
     Then I choose "crop" option
     Then I should see the "Crop Editor" screen
@@ -34,7 +34,7 @@ Scenario Outline: Verify image crop
     Then I should see the "Edit" screen
     And I should see the "cropped" image
        
-    Examples:
+   Examples:
     | social_media_screen_name|
     | Instagram Preview  |
     | CameraRoll Preview |
@@ -43,7 +43,7 @@ Scenario Outline: Verify image crop
 @done
 Scenario Outline: Verify image crop for both options
     Given I am on the "CameraRoll Preview" screen
-    When I choose "edit" option
+    When I touch "Edit"
     Then I am on the "Edit" screen
     Then I choose "crop" option
     Then I should see the "Crop Editor" screen

@@ -5,7 +5,7 @@ Feature: Verify Text Edit screen
 @done
 Scenario Outline: Verify 'Text' option
     Given I am on the "<social_media_screen_name>" screen
-    When I choose "edit" option
+    When I touch "Edit"
     Then I should see the "Edit" screen
     Then I choose "text" option
     Then I should see the "TextEdit" screen
@@ -15,7 +15,7 @@ Scenario Outline: Verify 'Text' option
     And I choose "save" option
     Then I am on the "Edit" screen
     And I should see the photo with the "text"
-    Then I choose "check" option
+    Then I choose "save" option
     Then I should see the "<social_media_screen_name>" screen
    
     Examples:
@@ -38,11 +38,11 @@ Scenario Outline: Verify Text editor screen options
     Then I choose "add_text" option
     And I should see the photo with the "text"
     And I should not see the keyboard view
-    And I could see "Bring to front" option
-    And I could see "Delete" option
-    And I could see "Font" option
-    And I could see "Color" option
-    And I could see "Background color" option
+    And I should see "Bring to front" 
+    And I should see "Delete"
+    And I should see "Font"
+    And I should see "Color"
+    And I should see "Background color"
     
        
     Examples:
@@ -61,7 +61,7 @@ Scenario: Verify entered text cancellation
     Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I choose "close" option
+    Then I touch "Discard changes"
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
     
@@ -85,7 +85,7 @@ Scenario: Verify font
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I wait for some seconds
-    Then I select "Font" 
+    Then I touch "Font" 
     And I select "font_2" font
     Then I choose "save" option
     Then I wait for some seconds
@@ -98,7 +98,7 @@ Scenario: Verify font list
     And I enter unique text
     Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Font"
+    Then I touch "Font"
     Then I should see the following "Fonts" in the screen:
     
     | Aleo                | 
@@ -130,7 +130,7 @@ Scenario: Verify all the fonts are applied successfully
     And I enter unique text
     Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Font"
+    Then I touch "Font"
     Then I verify that all the "fonts" are applied successfully
 
 @done
@@ -140,8 +140,8 @@ Scenario: Verify text color
     Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I select "Color" 
-    And I select "Blue"
+    Then I touch "Color" 
+    And I touch "Blue"
     Then I wait for some seconds
     Then I choose "save" option
     Then I wait for some seconds
@@ -154,7 +154,7 @@ Scenario: Verify color list
     Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I select "Color" 
+    Then I touch "Color" 
     Then I should see the following "Colors" in the screen:
     | White      |
     | Gray       |
@@ -183,25 +183,28 @@ Scenario: Verify all the colors are applied successfully
     Then I verify that all the "colors" are applied successfully
 
 @done
+@111
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Background color" 
-    And I select "Gray"
+    Then I touch "Background color" 
+    Then I wait for some seconds
+    And I touch "Gray"
     Then I wait for some seconds
     Then I choose "save" option
     Then I wait for some seconds
     Then I should see the text with selected "Background Color"
       
 @regression
+@11
 Scenario: Verify background color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Background color"
+    Then I touch "Background color"
     Then I should see the following "Background Colors" in the screen:
     | White      |
     | Gray       |
@@ -226,7 +229,7 @@ Scenario: Verify all the background colors are applied successfully
     And I enter unique text
     Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Background color"
+    Then I touch "Background color"
     Then I verify that all the "Background colors" are applied successfully
 
     

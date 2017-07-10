@@ -5,15 +5,15 @@ Feature: Verify Edit sticker feature
 @done
 Scenario: Verify 'Sticker' selection in sticker option editor screen
     Given I am on the "CameraRoll Preview" screen
-    When I choose "edit" option
+    When I touch "Edit"
     Then I should see the "Edit" screen
-    Then I choose "sticker" option
+    Then I touch "Sticker"
     Then I should see the "Sticker Editor" screen
     And I select "Summer Category" tab
     Then I select "sticker_0" sticker
     Then I should see the "StickerOptionEditor" screen
     And I should see the photo with the "sticker_0" sticker from "Summer Category" tab
-    Then I choose "close" option
+    Then I touch "Discard changes"
     Then I should see the "Edit" screen
     And I should see the photo with the "sticker_0" sticker from "Summer Category" tab
 
@@ -40,11 +40,11 @@ Scenario: Verify Sticker edit options
     Then I select "sticker_21" sticker
     Then I am on the "StickerOptionEditor" screen
     And I should see the photo with the "sticker_21" sticker from "Decorative Category" tab
-    And I could see "Add" option
-    And I could see "Delete" option
-    And I could see "Color" option
-    And I could see "Flip" option
-    And I could see "Bring to front" option
+    And I should see "Add"
+    And I should see "Delete"
+    And I should see "Color"
+    And I should see "Flip"
+    And I should see "Bring to front"
     
     
 @regression
@@ -112,7 +112,7 @@ Scenario Outline: Verify sticker editor screen navigation
     And I should see the photo with the "sticker_1" sticker from "Animal Category" tab
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    Then I choose "sticker" option
+    Then I touch "Sticker"
     And I select "Animal Category" tab
     Then I select "sticker_4" sticker
     Then I am on the "StickerOptionEditor" screen
@@ -192,7 +192,7 @@ Scenario: Verify Sticker add/delete functionality
     Then I select "sticker_0" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    Then I choose "sticker" option
+    Then I touch "Sticker"
     And I select "Face Category" tab
     Then I select "sticker_11" sticker
     #Then I should see the "StickerOptionEditor" screen

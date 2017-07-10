@@ -11,25 +11,13 @@ class EditScreen < Calabash::IBase
     end
     
     def crop
-        "IMGLYIconCaptionCollectionViewCell * id:'editCrop'"
+       "view marked:'Crop'"
     end
     
     def text
-        "IMGLYIconCaptionCollectionViewCell * id:'editText'"
+        "view marked:'Text'"
     end
-    
-    def filter
-        "IMGLYIconCaptionCollectionViewCell * id:'editFilters'"
-    end
-    
-    def frame
-        "IMGLYIconCaptionCollectionViewCell * id:'editFrame'"
-    end
-    
-    def sticker
-        "IMGLYIconCaptionCollectionViewCell * id:'editSticker'"
-    end
-    
+   
     def autofix
         "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
     end
@@ -37,11 +25,7 @@ class EditScreen < Calabash::IBase
         "IMGLYIconCaptionCollectionViewCell * id:'editAdjust'"
     end
     def brush
-        "* id:'ic_brush_48pt'"
-    end
-    
-    def close
-        "UIButton marked:'Discard photo'"
+        "view marked:'Brush'"
     end
     
     def modal_title
@@ -68,7 +52,7 @@ class EditScreen < Calabash::IBase
         "* id:'1_turquoise_frame'" 
     end
 
-    def check
+    def save
         "view marked:'editor-tool-apply-btn'"
     end
 def download    
@@ -78,7 +62,6 @@ def download
         unless current_page?
             preview_screen = go_to(GooglePreviewScreen)
             sleep(WAIT_SCREENLOAD)
-            #wait_for_elements_exist(preview_screen.edit, :timeout => MAX_TIMEOUT)
             touch query("view marked:'Edit'")
             sleep(WAIT_SCREENLOAD)    
             if element_exists("view marked:'Authorize' index:0")

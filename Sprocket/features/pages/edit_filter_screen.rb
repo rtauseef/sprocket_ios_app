@@ -9,15 +9,6 @@ class FilterEditorScreen < Calabash::IBase
     def title
         "label marked:'filter-tool-screen'"
     end
-    
-    
-    def close
-        "UIButton marked:'Discard changes'"
-    end
-
-    def first_filter
-        "view marked:'Candy'"
-    end
     def save
        "UIButton marked:'filter-tool-apply-btn'"
     end
