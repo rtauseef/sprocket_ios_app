@@ -22,6 +22,7 @@
 #import "PGSocialSourcesManager.h"
 #import "PGFeatureFlag.h"
 #import "PGLinkSettings.h"
+#import "PGCloudAssetClient.h"
 
 NSString *kPGSettingsForceFirmwareUpgrade = @"kPGSettingsForceFirmwareUpgrade";
 
@@ -51,7 +52,8 @@ enum {
     kEnableFakePrintIndex,
     kEnableLocalWatermarkIndex,
     kForceUpgradeIndex,
-    
+    kEnableCloudAssetsIndex,
+
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
 
@@ -336,8 +338,18 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.text = @"Force Firmware Upgrade";
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[[MP sharedInstance] forceFirmwareUpdates]];
+
+        } else if (kEnableCloudAssetsIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableCloudAssets"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableCloudAssets"];
+            }
+            cell.textLabel.text = @"Enable Cloud Assets";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGFeatureFlag isCloudAssetsEnabled]];
         }
-        
+
          cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
     }
     
@@ -415,6 +427,17 @@ NSString * const kFeatureCodeLink = @"link";
 
                 [[MP sharedInstance] setForceFirmwareUpdates:force];
                 [self.tableView reloadData];
+
+            } else if (kEnableCloudAssetsIndex == selectedRow) {
+                BOOL enabled = ![PGFeatureFlag isCloudAssetsEnabled];
+
+                [PGFeatureFlag setCloudAssetsEnabled:enabled];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:enabled];
+
+                if (enabled) {
+                    PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
+                    [cac refreshAssetCatalog];
+                }
             }
         }
     }
