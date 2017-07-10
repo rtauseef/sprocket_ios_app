@@ -39,9 +39,13 @@ static NSString * const kPGCloudAssetCategoryPosition = @"kPGCloudAssetCategoryP
         [imageAssets addObject:[PGCloudAssetImage assetWithData:assetData]];
     }
 
-    // TODO: sort by position
+    NSArray<PGCloudAssetImage *> *sorted = [imageAssets sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        PGCloudAssetImage *first = (PGCloudAssetImage *)obj1;
+        PGCloudAssetImage *second = (PGCloudAssetImage *)obj2;
+        return [@(first.position) compare:@(second.position)];
+    }];
 
-    category.imageAssets = [imageAssets copy];
+    category.imageAssets = sorted;
 
     return category;
 }

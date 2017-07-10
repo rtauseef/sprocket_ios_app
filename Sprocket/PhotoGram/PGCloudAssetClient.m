@@ -40,13 +40,17 @@ static NSString * const kPGCloudAssetClientCatalogPath = @"/catalogs/get_current
                 [stickerCategories addObject:[PGCloudAssetCategory categoryWithData:categoryData]];
             }
 
-            // TODO: sort by position
+            NSArray<PGCloudAssetCategory *> *sorted = [stickerCategories sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                PGCloudAssetCategory *first = (PGCloudAssetCategory *)obj1;
+                PGCloudAssetCategory *second = (PGCloudAssetCategory *)obj2;
+                return [@(first.position) compare:@(second.position)];
+            }];
 
             PGCloudAssetStorage *storage = [[PGCloudAssetStorage alloc] init];
-            [storage storeStickerCatalog:stickerCategories];
+            [storage storeStickerCatalog:sorted];
 
             NSLog(@"Refreshing Cloud Assets Catalog... Done!");
-            NSLog(@"Downloading Cloud Assets Catalog...");
+            NSLog(@"Downloading New Cloud Assets...");
 
             [self downloadAssetsForCurrentCatalog];
         }
