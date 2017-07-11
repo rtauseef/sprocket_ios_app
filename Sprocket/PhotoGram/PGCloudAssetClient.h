@@ -11,12 +11,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGCloudAssetCategory.h"
 
-@interface PGFeatureFlag : NSObject
+@interface PGCloudAssetClient : NSObject
 
-+ (BOOL)isMultiPrintEnabled;
+- (void)refreshAssetCatalog;
 
-+ (void)setCloudAssetsEnabled:(BOOL)enabled;
-+ (BOOL)isCloudAssetsEnabled;
+- (NSArray<PGCloudAssetCategory *> *)currentStickersCatalog;
 
 @end

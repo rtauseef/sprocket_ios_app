@@ -2531,6 +2531,14 @@
 		F20630131F01DC7500A369EB /* disney_headband_e_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDE1F01D48700A369EB /* disney_headband_e_TN.png */; };
 		F20630141F01DC7500A369EB /* disney_headband_e_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDF1F01D48700A369EB /* disney_headband_e_TN@2x.png */; };
 		F20630151F01DC7500A369EB /* disney_headband_e_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FE01F01D48700A369EB /* disney_headband_e_TN@3x.png */; };
+		F206301C1F0328F600A369EB /* PGCloudAssetClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301B1F0328F600A369EB /* PGCloudAssetClient.m */; };
+		F206301D1F0328F600A369EB /* PGCloudAssetClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301B1F0328F600A369EB /* PGCloudAssetClient.m */; };
+		F20630201F03291A00A369EB /* PGCloudAssetCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */; };
+		F20630211F03291A00A369EB /* PGCloudAssetCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */; };
+		F20630241F03292900A369EB /* PGCloudAssetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630231F03292900A369EB /* PGCloudAssetImage.m */; };
+		F20630251F03292900A369EB /* PGCloudAssetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630231F03292900A369EB /* PGCloudAssetImage.m */; };
+		F20630281F03294000A369EB /* PGCloudAssetStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630271F03294000A369EB /* PGCloudAssetStorage.m */; };
+		F20630291F03294000A369EB /* PGCloudAssetStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630271F03294000A369EB /* PGCloudAssetStorage.m */; };
 		F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */; };
@@ -4604,6 +4612,14 @@
 		F2062FF31F01D9D400A369EB /* DisneyPolaroid2Frame_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DisneyPolaroid2Frame_TN@2x.png"; path = "Resources/Images/Frames/DisneyPolaroid2Frame_TN@2x.png"; sourceTree = "<group>"; };
 		F2062FF41F01D9D400A369EB /* DisneyPolaroid2Frame_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DisneyPolaroid2Frame_TN@3x.png"; path = "Resources/Images/Frames/DisneyPolaroid2Frame_TN@3x.png"; sourceTree = "<group>"; };
 		F2062FF51F01D9D400A369EB /* DisneyPolaroid2Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisneyPolaroid2Frame.png; path = Resources/Images/Frames/DisneyPolaroid2Frame.png; sourceTree = "<group>"; };
+		F206301A1F0328F600A369EB /* PGCloudAssetClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetClient.h; sourceTree = "<group>"; };
+		F206301B1F0328F600A369EB /* PGCloudAssetClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetClient.m; sourceTree = "<group>"; };
+		F206301E1F03291A00A369EB /* PGCloudAssetCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetCategory.h; sourceTree = "<group>"; };
+		F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetCategory.m; sourceTree = "<group>"; };
+		F20630221F03292900A369EB /* PGCloudAssetImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetImage.h; sourceTree = "<group>"; };
+		F20630231F03292900A369EB /* PGCloudAssetImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetImage.m; sourceTree = "<group>"; };
+		F20630261F03294000A369EB /* PGCloudAssetStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetStorage.h; sourceTree = "<group>"; };
+		F20630271F03294000A369EB /* PGCloudAssetStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetStorage.m; sourceTree = "<group>"; };
 		F20CE24F1EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.h"; sourceTree = "<group>"; };
 		F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.m"; sourceTree = "<group>"; };
 		F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGInAppMessageView.xib; sourceTree = "<group>"; };
@@ -6223,6 +6239,7 @@
 		E34D5060199AB87B006D80E0 /* Sprocket */ = {
 			isa = PBXGroup;
 			children = (
+				F20630181F0328BB00A369EB /* CloudAssetClient */,
 				F24DA7D21EAEA10200C24AAB /* Watermark */,
 				F22F12B41E78AC8E00753C5A /* Multi-Print */,
 				F22F127F1E6F387900753C5A /* Security */,
@@ -6680,6 +6697,21 @@
 			);
 			name = Disney;
 			path = Resources/Images/Stickers/Disney;
+			sourceTree = "<group>";
+		};
+		F20630181F0328BB00A369EB /* CloudAssetClient */ = {
+			isa = PBXGroup;
+			children = (
+				F206301A1F0328F600A369EB /* PGCloudAssetClient.h */,
+				F206301B1F0328F600A369EB /* PGCloudAssetClient.m */,
+				F206301E1F03291A00A369EB /* PGCloudAssetCategory.h */,
+				F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */,
+				F20630221F03292900A369EB /* PGCloudAssetImage.h */,
+				F20630231F03292900A369EB /* PGCloudAssetImage.m */,
+				F20630261F03294000A369EB /* PGCloudAssetStorage.h */,
+				F20630271F03294000A369EB /* PGCloudAssetStorage.m */,
+			);
+			name = CloudAssetClient;
 			sourceTree = "<group>";
 		};
 		F21185B71EBBD98500D8D073 /* Messaging */ = {
@@ -9776,6 +9808,7 @@
 				73F070621F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */,
 				926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */,
 				F2B3F5AC1EFC5E5A00F1E6FB /* PGWatermarkOperationHPMetar.m in Sources */,
+				F20630251F03292900A369EB /* PGCloudAssetImage.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
 				F2B3F5C91EFC5E9300F1E6FB /* PGMetarOfflineTagManager.m in Sources */,
 				F2B3F5AB1EFC5E5A00F1E6FB /* PGWatermarkOperationHPLink.m in Sources */,
@@ -9880,16 +9913,19 @@
 				82E3DEBF1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
 				F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */,
+				F206301D1F0328F600A369EB /* PGCloudAssetClient.m in Sources */,
 				1d083780537ed0fd761b7b5c /* UIViewController+Trackable.m in Sources */,
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				F2B3F5A81EFC5E5A00F1E6FB /* PGScanViewController.m in Sources */,
+				F20630291F03294000A369EB /* PGCloudAssetStorage.m in Sources */,
 				F2B3F5B51EFC5E7600F1E6FB /* PGPayoffViewImageViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* (null) in Sources */,
+				F20630211F03291A00A369EB /* PGCloudAssetCategory.m in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
@@ -10009,11 +10045,13 @@
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
+				F20630281F03294000A369EB /* PGCloudAssetStorage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
 				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
 				73F070611F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */,
 				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
+				F20630201F03291A00A369EB /* PGCloudAssetCategory.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
@@ -10021,6 +10059,7 @@
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				EDD33F6C1EF9CE520028DBC8 /* PGMetarLocationVenue.m in Sources */,
+				F20630241F03292900A369EB /* PGCloudAssetImage.m in Sources */,
 				EDD33F761EF9CE520028DBC8 /* PGMetarSource.m in Sources */,
 				EDD33F891EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m in Sources */,
 				F2C1EECC1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
@@ -10054,6 +10093,7 @@
 				EDD33F8D1EF9CE520028DBC8 /* PGPayoffProcessor.m in Sources */,
 				EDD33F911EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
+				F206301C1F0328F600A369EB /* PGCloudAssetClient.m in Sources */,
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */,

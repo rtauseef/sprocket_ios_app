@@ -1630,7 +1630,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (CGRect)carouselItemFrame
 {
-    return CGRectMake(0, 0, floorf(self.carouselView.bounds.size.height * kAspectRatio2by3), self.carouselView.bounds.size.height);;
+    return CGRectMake(0, 0, floorf(self.carouselView.bounds.size.height * kAspectRatio2by3), self.carouselView.bounds.size.height);
 }
 
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
