@@ -1108,10 +1108,16 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self dismissProgressView];
+            BOOL isResuming = isPrinterConnected && !isPrinting;
             if (wasAddedToQueue && !isPrinterConnected) {
                 [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
-            } else if (isPrinterConnected && !isPrinting) {
+            } else if (isResuming) {
                 [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
+            }
+            
+            if (wasAddedToQueue) {
+                NSUInteger queueSize = isResuming ? [MPBTPrintManager sharedInstance].originalQueueSize : numberOfPrintsAdded;
+                [self trackNumberOfPrintsAddedToQueue:queueSize];
             }
         });
     }];
@@ -1129,6 +1135,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         return [self handlePrintQueueStatus:status progress:progress printsAdded:numberOfPrintsAdded error:errorCode];
     }];
     
+    if (wasDrawerOpened) {
+        [self openDrawerAnimated:NO];
+    }
+}
+
+- (void)trackNumberOfPrintsAddedToQueue:(NSUInteger)queueSize
+{
     NSString *action = kEventPrintQueueAddSingleAction;
     if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
         action = kEventPrintQueueAddMultiAction;
@@ -1142,13 +1155,9 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         action = kEventPrintQueueAddTileAction;
     }
     
-    if (wasDrawerOpened) {
-        [self openDrawerAnimated:NO];
-    }
-    
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
                                                       queueId:[MPBTPrintManager sharedInstance].queueId
-                                                    queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
+                                                    queueSize:queueSize];
 }
 
 - (NSArray<NSString *> *)offrampAndOriginByPrinterConnectedStatus:(BOOL)isPrinterConnected
