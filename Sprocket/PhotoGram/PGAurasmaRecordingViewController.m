@@ -15,45 +15,43 @@
 #import "PGAurasmaRecordingViewController.h"
 
 @interface PGAurasmaRecordingViewController () <UIPopoverPresentationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *playButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *pauseButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@property (strong, nonatomic) AVAsset *video;
+@property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) AVPlayerLayer *layer;
+
 @end
 
-@implementation PGAurasmaRecordingViewController {
-    __weak IBOutlet UIBarButtonItem *_playButton;
-    __weak IBOutlet UIBarButtonItem *_pauseButton;
-    __weak IBOutlet UIToolbar *_toolbar;
-@private
-    AVAsset *_video;
-    AVPlayer *_player;
-    AVPlayerLayer *_layer;
-}
-
-@synthesize recordingDelegate = _recordingDelegate;
-@synthesize fileUrl = _fileUrl;
+@implementation PGAurasmaRecordingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _video = [AVAsset assetWithURL:_fileUrl];
+    self.video = [AVAsset assetWithURL:self.fileUrl];
     
-    AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:_video];
-    _player = [AVPlayer playerWithPlayerItem:item];
-    _player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
+    AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:self.video];
+    self.player = [AVPlayer playerWithPlayerItem:item];
+    self.player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
     
-    _layer = [AVPlayerLayer playerLayerWithPlayer:_player];
-    _layer.videoGravity = AVLayerVideoGravityResizeAspect;
-    [self.view.layer addSublayer:_layer];
+    self.layer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    self.layer.videoGravity = AVLayerVideoGravityResizeAspect;
+    [self.view.layer addSublayer:self.layer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerItemDidPlayToEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:_player.currentItem];
+                                               object:self.player.currentItem];
 }
 
 - (void)viewDidLayoutSubviews {
-    _layer.frame = CGRectMake(self.view.bounds.origin.x,
+    self.layer.frame = CGRectMake(self.view.bounds.origin.x,
                               self.view.bounds.origin.y,
                               self.view.bounds.size.width,
-                              self.view.bounds.size.height - _toolbar.frame.size.height);
+                              self.view.bounds.size.height - self.toolbar.frame.size.height);
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -65,38 +63,38 @@
 - (IBAction)cancelButtonPressed:(id)sender {
     NSError *error = nil;
     
-    if (![[NSFileManager defaultManager] removeItemAtURL:_fileUrl error:&error]) {
+    if (![[NSFileManager defaultManager] removeItemAtURL:self.fileUrl error:&error]) {
         NSLog(@"Failed to remove temporary file %@", error);
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:AVPlayerItemDidPlayToEndTimeNotification
-                                                  object:_player.currentItem];
+                                                  object:self.player.currentItem];
     
-    [self->_recordingDelegate closeRecordingViewController:self];
+    [self.recordingDelegate closeRecordingViewController:self];
 }
 
 - (IBAction)playButtonPressed:(id)sender {
-    [_player play];
-    _pauseButton.enabled = YES;
-    _playButton.enabled = NO;
+    [self.player play];
+    self.pauseButton.enabled = YES;
+    self.playButton.enabled = NO;
 }
 
 - (IBAction)pauseButtonPressed:(id)sender {
-    [_player pause];
-    _pauseButton.enabled = NO;
-    _playButton.enabled = YES;
+    [self.player pause];
+    self.pauseButton.enabled = NO;
+    self.playButton.enabled = YES;
 }
 
 - (IBAction)rewindButtonPressed:(id)sender {
-    [_player pause];
-    [_player seekToTime:kCMTimeZero];
-    _pauseButton.enabled = NO;
-    _playButton.enabled = YES;
+    [self.player pause];
+    [self.player seekToTime:kCMTimeZero];
+    self.pauseButton.enabled = NO;
+    self.playButton.enabled = YES;
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[_fileUrl, @""]
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.fileUrl, @""]
                                                                                          applicationActivities:nil];
     activityViewController.excludedActivityTypes = @[ UIActivityTypeMail, UIActivityTypeCopyToPasteboard ];
     
@@ -113,7 +111,7 @@
         
     };
     
-    activityViewController.popoverPresentationController.sourceView = _toolbar;
+    activityViewController.popoverPresentationController.sourceView = self.toolbar;
     activityViewController.popoverPresentationController.delegate = self;
     
     [PHPhotoLibrary requestAuthorization:^(__unused PHAuthorizationStatus status) { // fix AURASMA-8234
@@ -126,8 +124,8 @@
 #pragma mark notifications
 
 - (void)playerItemDidPlayToEnd:(__unused NSNotification *)notif {
-    _pauseButton.enabled = NO;
-    _playButton.enabled = NO;
+    self.pauseButton.enabled = NO;
+    self.playButton.enabled = NO;
 }
 
 #pragma mark UIPopoverPresentationControllerDelegate
