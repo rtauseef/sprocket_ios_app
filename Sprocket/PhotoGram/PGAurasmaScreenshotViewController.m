@@ -18,27 +18,20 @@
 #import "PGAurasmaScreenshotViewController.h"
 
 @interface PGAurasmaScreenshotViewController () <UIPopoverPresentationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UIView *popoverViewLocation;
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;;
+
 @end
 
-@implementation PGAurasmaScreenshotViewController {
-    
-@private
-    __unsafe_unretained IBOutlet UIImageView *_imageView;
-    __weak id <PGAurasmaScreenshotViewControllerDelegate> _delegate;
-    AURScreenshotImage *_image;
-    AURSocialService *_socialService;
-    __weak IBOutlet UIActivityIndicatorView *_activityIndicatorView;
-    __weak IBOutlet UIView *_popoverViewLocation;
-}
-
-@synthesize screenshotDelegate = _delegate;
-@synthesize image = _image;
-@synthesize socialService = _socialService;
+@implementation PGAurasmaScreenshotViewController
 
 #pragma mark UIViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    _imageView.image = _image;
+    self.imageView.image = self.image;
     [super viewWillAppear:animated];
 }
 
@@ -61,9 +54,9 @@
 - (void)showActivityViewController {
     NSArray *items = @[
                        [PGAurasmaScreenshotTextProvider textProvider],
-                       [PGAurasmaScreenshotImageProvider imageProviderWithImage:_image
-                                                            socialService:_socialService
-                                                 andActivityIndicatorView:_activityIndicatorView]
+                       [PGAurasmaScreenshotImageProvider imageProviderWithImage:self.image
+                                                            socialService:self.socialService
+                                                 andActivityIndicatorView:self.activityIndicatorView]
                        ];
     
     NSArray *customActivities = nil;
@@ -90,11 +83,11 @@
         
         // delay "fixes" AURASMA-6851
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(300 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
-            [self->_delegate closeScreenshotViewController:self];
+            [self.screenshotDelegate closeScreenshotViewController:self];
         });
     };
     
-    activityViewController.popoverPresentationController.sourceView = _popoverViewLocation;
+    activityViewController.popoverPresentationController.sourceView = self.popoverViewLocation;
     activityViewController.popoverPresentationController.delegate = self;
     
     [PHPhotoLibrary requestAuthorization:^(__unused PHAuthorizationStatus status) { // fix AURASMA-8234
