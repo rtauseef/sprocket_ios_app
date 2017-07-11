@@ -258,14 +258,14 @@
 
 - (BOOL)handleURL:(NSURL *)url {
     if ([@"sprocketprint" isEqualToString:[url scheme]]) {
-        [_trackingView createScreenshotWithCallback:^(NSError *error, AURScreenshotImage *result) {
+        [self.trackingView createScreenshotWithCallback:^(NSError *error, AURScreenshotImage *result) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (error) {
                     NSLog(@"sprocketprint error: %@", error);
                     return;
                 }
                 
-                HPPRAurasmaImageMedia *imageMedia = [[HPPRAurasmaImageMedia alloc] initWithImage:result andId:_trackingAuraId];
+                HPPRAurasmaImageMedia *imageMedia = [[HPPRAurasmaImageMedia alloc] initWithImage:result andId:self.trackingAuraId];
                 [[PGPhotoSelection sharedInstance] selectMedia:imageMedia];
                 [PGPreviewViewController presentPreviewPhotoFrom:self andSource:@"Aurasma" animated:YES];
             });
