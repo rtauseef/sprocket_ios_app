@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PGTilingOverlayTile">
+            <connections>
+                <outlet property="checkbox" destination="cEz-GA-hs2" id="ovv-ZF-Hgo"/>
+                <outlet property="mask" destination="NRs-YY-aeB" id="UMa-fU-2of"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PGInteractionIgnorerView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRs-YY-aeB">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEz-GA-hs2">
+                    <rect key="frame" x="330" y="622" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="Aq5-ib-bYH"/>
+                        <constraint firstAttribute="height" constant="35" id="ixe-hC-gJX"/>
+                    </constraints>
+                    <state key="normal" image="Check_Inactive1.png"/>
+                    <state key="selected" image="Check.png"/>
+                    <connections>
+                        <action selector="checkboxTapped:" destination="-1" eventType="touchUpInside" id="bDF-HE-FO0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cEz-GA-hs2" secondAttribute="bottom" constant="10" id="0Hd-xK-OSQ"/>
+                <constraint firstItem="NRs-YY-aeB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AXF-c5-g29"/>
+                <constraint firstAttribute="bottom" secondItem="NRs-YY-aeB" secondAttribute="bottom" id="EeV-St-3SU"/>
+                <constraint firstAttribute="trailing" secondItem="cEz-GA-hs2" secondAttribute="trailing" constant="10" id="NWC-bB-VyQ"/>
+                <constraint firstItem="NRs-YY-aeB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ks9-14-YDZ"/>
+                <constraint firstAttribute="trailing" secondItem="NRs-YY-aeB" secondAttribute="trailing" id="nuc-7t-fCD"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Check.png" width="37" height="37"/>
+        <image name="Check_Inactive1.png" width="35" height="35"/>
+    </resources>
+</document>
