@@ -80,7 +80,6 @@ def select_frame item
     i = 0
     while i < 10 do      
       scroll("UICollectionView",:right)
-      sleep(WAIT_SCREENLOAD)
       i = i + 1
         if i >= 7
             raise "Frame not found"
@@ -101,7 +100,7 @@ def select_sticker item
     i=0
     while i<2 do
       scroll("UICollectionView",:down)
-      sleep(WAIT_SCREENLOAD)
+        slee(STEP_PAUSE)
       i=i+1
 
       if (element_exists "view marked:'#{item.to_s}'")
@@ -122,7 +121,7 @@ def select_font item
     i = 0
     while i < 7 do      
       scroll("UICollectionView",:right)
-      sleep(WAIT_SCREENLOAD)
+        sleep(STEP_PAUSE)
       i = i + 1
         if i >= 7
             raise "Font not found"
@@ -143,14 +142,13 @@ def select_color item
     i = 0
     while i < 5 do      
       scroll("UICollectionView",:right)
-      sleep(WAIT_SCREENLOAD)
+        sleep(STEP_PAUSE)
       i = i + 1
         if i >= 7
             raise "color not found"
           end
       if (element_exists "IMGLYColorCollectionViewCell marked:'#{item.to_s}'")
         touch query("IMGLYColorCollectionViewCell marked:'#{item.to_s}'")
-        sleep(STEP_PAUSE)
         break
       end
     end

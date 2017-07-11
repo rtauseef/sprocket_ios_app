@@ -4,7 +4,6 @@ Feature: Verify Welcome screen/Landing Page
   
   @reset
   @TA18418
-  @reset
   Scenario: Verify sprocket intro wizard
     Given  I am on the "Intro Wizard" screen
     Then I verify the instructions to "load the paper"

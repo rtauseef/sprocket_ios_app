@@ -20,7 +20,6 @@ And(/^I should see the photo with the "(.*?)"$/) do |edit_item|
         check_element_exists(@current_page.selected_frame)
     else
         if edit_item == "text"
-            sleep(STEP_PAUSE)
             txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
             raise "Text not present!" unless txtTemplate = $template_text 
         end
@@ -74,7 +73,6 @@ Then(/^I verify the filter is selected$/) do
   end
 
 Then(/^I should not see the text$/) do
-    sleep(STEP_PAUSE)
     txtTemplate= query("IMGLYTextLabel",:text)[0].to_s
     raise "Text found!" unless txtTemplate == ""
 end
@@ -126,7 +124,6 @@ end
 
  
 Then(/^I select "(.*?)" frame$/) do |frame_id|
-    sleep(STEP_PAUSE)
     $frame_id = frame_id
     $frame_name=$frame[frame_id]['name']
     select_frame $frame_name
@@ -134,7 +131,6 @@ Then(/^I select "(.*?)" frame$/) do |frame_id|
 end
 
 Then(/^I select "(.*?)" sticker$/) do |sticker_id|
-    sleep(STEP_PAUSE)
     $sticker_id = sticker_id
     sticker_name=$sticker[$sticker_tab][sticker_id]['name']
     select_sticker sticker_name
@@ -145,10 +141,8 @@ Then(/^I select "(.*?)" font$/) do |font_id|
     $font_id = font_id
     font_name=$font[font_id]['name']
     select_font font_name
-    sleep(STEP_PAUSE)
 end
 Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
-    sleep(STEP_PAUSE)
     $sticker_tab = sticker_tab
     if $sticker_tab == "Fathers Day Category"
         tab = query("IMGLYIconBorderedCollectionViewCell index:2",:accessibilityLabel)[0]
@@ -160,7 +154,6 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
     else
         if (element_exists "view marked:'#{sticker_tab.to_s}'")
             touch query("view marked:'#{sticker_tab}'")
-            sleep(STEP_PAUSE)
         else
             while element_does_not_exist("view marked:'Add Custom Sticker'")
                 scroll("UICollectionView",:left)
@@ -171,14 +164,13 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
                 i = 0
                 while i < 5 do      
                     scroll("UICollectionView",:right)
-                    sleep(WAIT_SCREENLOAD)
+                    sleep(STEP_PAUSE)
                     i = i + 1
                     if i >= 5
                         raise "Tab not found"
                     end
                     if (element_exists "view marked:'#{sticker_tab.to_s}'")
                         touch query("view marked:'#{sticker_tab}'")
-                        sleep(STEP_PAUSE)
                         break
                      end
                 end
@@ -188,9 +180,7 @@ Then(/^I select "([^"]*)" tab$/) do |sticker_tab|
 end
 
 Then(/^I select "(.*?)" color$/) do |color_name|
-    sleep(STEP_PAUSE)
     select_color color_name
-    sleep(STEP_PAUSE)
 end
 
 Then(/^I should see the photo with the "(.*?)" frame$/) do |frame_id|
@@ -222,7 +212,6 @@ Then(/^I should see the photo with the "(.*?)" color$/) do |color_name|
 end
 
 Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
-   sleep(WAIT_SCREENLOAD)
     color_name=["White", "Gray", "Black", "Light blue", "Blue", "Purple", "Orchid", "Pink", "Red", "Orange", "Gold", "Yellow", "Olive", "Green", "Aquamarin"]
     i = 0
     if option == "frames"
@@ -235,7 +224,6 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
             macro %Q|I choose "frame" option|
             macro %Q|I should see the "FrameEditor" screen|
             i= i + 1
-            sleep(SLEEP_SCREENLOAD)
         end
     else
         if option == "fonts"
@@ -262,7 +250,6 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                 while i < stic_count
 		            sticker_id = "sticker_"+"#{i}"
                     macro %Q|I select "#{sticker_id}" sticker|
-                    sleep(STEP_PAUSE)
                     macro %Q|I am on the "StickerOptionEditor" screen|
                     macro %Q|I should see the photo with the "#{sticker_id}" sticker from "#{$sticker_tab}" tab|
                     macro %Q|I touch "Delete"|
@@ -270,7 +257,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     macro %Q|I choose "sticker" option|
                     macro %Q|I should see the "StickerEditor" screen|
                     i= i + 1
-                    sleep(SLEEP_SCREENLOAD)
+                    sleep(STEP_PAUSE)
                 end
             end
         end 
@@ -309,14 +296,12 @@ Then(/^I could see "([^"]*)" option$/) do |option|
             while element_does_not_exist(@current_page.send(method_name))
                 sleep(STEP_PAUSE)
                 scroll("UICollectionView",:right)
-                sleep(STEP_PAUSE)
                 i = i + 1 
                 break if i == 3
             end
         end
         check_element_exists @current_page.send(method_name)
     end
-    sleep(STEP_PAUSE)
 end
 Given(/^I choose "([^"]*)" option$/) do |option|
     i = 0
@@ -343,19 +328,18 @@ Then(/^I select "(.*?)"$/) do |option|
         touch query("view marked:'#{option}'")
     end
     if $crop_option == ""
+        sleep(STEP_PAUSE)
         if (element_exists "view marked:'#{method_name}'")
             touch query("view marked:'#{method_name}'")
         else
             touch @current_page.send(method_name)
         end
     end
-    sleep(STEP_PAUSE)
 end
 Then(/^I set the value for "([^"]*)"$/) do |method_name|
     $slider_val = @current_page.send(method_name)
     $slider_val = $slider_val.round(2)
     query("view:'imglyKit.TooltipSlider'",{setValue:$slider_val})
-    sleep(STEP_PAUSE) 
 end
 
 Then(/^I verify the slider value$/) do 
