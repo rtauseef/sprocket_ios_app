@@ -174,13 +174,6 @@ static const NSUInteger kPGReviewViewHeight = 38;
             [viewImageVc setMetadata:metadata];
             [viewImageVc showImagesSameLocation:loc];
             [self.arrayOfViewControllers addObject:viewImageVc];
-            
-            
-            PGPayoffViewGoogleStreetViewController *googleVc = [[PGPayoffViewGoogleStreetViewController alloc] initWithNibName:@"PGPayoffViewGoogleStreetViewController" bundle:nil];
-            [googleVc setParentVc:self];
-            [googleVc setMetadata:metadata];	
-        
-            [self.arrayOfViewControllers addObject:googleVc];
         }
         
         if (metadata.location.content.wikipedia != nil) {
@@ -195,7 +188,16 @@ static const NSUInteger kPGReviewViewHeight = 38;
                 [self.arrayOfViewControllers addObject:viewWikipedia];
             }
         }
-    } 
+        
+        if (metadata.location && CLLocationCoordinate2DIsValid(metadata.location.geo)) {
+            
+            PGPayoffViewGoogleStreetViewController *googleVc = [[PGPayoffViewGoogleStreetViewController alloc] initWithNibName:@"PGPayoffViewGoogleStreetViewController" bundle:nil];
+            [googleVc setParentVc:self];
+            [googleVc setMetadata:metadata];
+            
+            [self.arrayOfViewControllers addObject:googleVc];
+        }
+    }
 
     if ([self.arrayOfViewControllers count] == 0) {
         PGPayoffViewErrorViewController *viewErrorVc = [[PGPayoffViewErrorViewController alloc]
@@ -275,7 +277,25 @@ static const NSUInteger kPGReviewViewHeight = 38;
 }
 
 - (IBAction)closeButtonTapped:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
+    
+    PGPayoffViewBaseViewController *previousVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage - 1];
+    
+    __weak __typeof__(self) weakSelf = self;
+    
+    if ([currentVc isKindOfClass:[PGPayoffViewGoogleStreetViewController class]]) {
+        
+        
+        [self.pageViewController setViewControllers:@[previousVc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+                [weakSelf.pageControl setCurrentPage:self.pageControl.currentPage - 1];
+                [weakSelf updateCurrentViewLabel:currentVc.viewTitle forView:currentVc];
+            
+        }];
+    
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+
+    }
 }
 
 - (IBAction)openExternalButtonTapped:(id)sender {
