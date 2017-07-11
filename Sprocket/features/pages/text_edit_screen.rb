@@ -7,13 +7,10 @@ class TextEditScreen < Calabash::IBase
     end
 
     def title
-
-        #"label marked:'text-tool-apply-btn'"
         "view marked:'text-tool-apply-btn'"
     end
 
     def add_text
-        #"UIButton marked:'Add text'"
         "* id:'ic_approve_44pt'"
     end
     
@@ -23,6 +20,7 @@ class TextEditScreen < Calabash::IBase
     def save
        "view marked:'text-options-tool-apply-btn'"
     end
+   
     def navigate
         unless current_page?
             edit_screen = go_to(EditScreen)

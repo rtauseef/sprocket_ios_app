@@ -188,6 +188,7 @@ Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
     Then I choose "add_text" option
+    Then I should see the "Text Option Editor" screen
     And I should see the photo with the "text"
     Then I touch "Background color" 
     Then I wait for some seconds

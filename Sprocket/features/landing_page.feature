@@ -8,14 +8,14 @@ Feature: Verify Welcome screen/Landing Page
   Scenario: Verify sprocket intro wizard
     Given  I am on the "Intro Wizard" screen
     Then I verify the instructions to "load the paper"
-    And I could see "Skip to the App" option
+    And I should see "Skip to the App" 
     Then I swipe left
     Then I verify the instructions to "power up"
-    And I could see "Skip to the App" option
+    And I should see "Skip to the App" 
     Then I swipe left
     Then I verify the instructions to "connect"
-    And I could see "Go to the App" option
-    And I could see "More Help" option
+    And I should see "Go to the App" 
+    And I should see "More Help" 
     Then I touch "More Help"
     Then I should see "How to & Help" page
     Then I touch "Done"

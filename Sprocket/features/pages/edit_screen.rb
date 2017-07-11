@@ -19,10 +19,10 @@ class EditScreen < Calabash::IBase
     end
    
     def autofix
-        "IMGLYIconCaptionCollectionViewCell * id:'editMagic'"
+        "view marked:'Magic'"
     end
     def adjustment
-        "IMGLYIconCaptionCollectionViewCell * id:'editAdjust'"
+        "view marked:'Adjust'"
     end
     def brush
         "view marked:'Brush'"

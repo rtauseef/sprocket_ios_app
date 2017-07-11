@@ -13,7 +13,7 @@ Feature: Verify preview screen from different social media
     Given I am on the "Instagram Preview" screen
     Then I could see "camera" option
     And I could see "cancel" option
-    And I could see "edit" option
+    And I should see "edit" option
     Then I could see "print" option
     And I could see "share" option
 
@@ -22,7 +22,7 @@ Feature: Verify preview screen from different social media
     Given I am on the "Google Preview" screen
     Then I could see "camera" option
     And I could see "cancel" option
-    And I could see "edit" option
+    And I should see "edit" option
     Then I could see "print" option
     And I could see "share" option
 
@@ -35,7 +35,7 @@ Feature: Verify preview screen from different social media
     Then I should see the "CameraRoll Preview" screen
     Then I could see "camera" option
     And I could see "cancel" option
-    And I could see "edit" option
+    And I should see "Edit" 
     Then I could see "print" option
     And I could see "share" option
 
