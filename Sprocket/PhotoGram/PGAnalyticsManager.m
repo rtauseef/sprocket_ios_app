@@ -17,8 +17,7 @@
 #import <MP.h>
 #import <MPPrintManager.h>
 #import <HPPR.h>
-#import <CommonCrypto/CommonCrypto.h>
-
+#import "NSString+Utils.h"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -498,26 +497,10 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     NSString *identifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
     if ([MP sharedInstance].uniqueDeviceIdPerApp) {
         NSString *seed = [NSString stringWithFormat:@"%@%@", identifier, [[NSBundle mainBundle] bundleIdentifier]];
-        identifier = [self obfuscateValue:seed];
+        identifier = [seed md5];
     }
     return identifier;
 }
-
-- (NSString *)obfuscateValue:(NSString *)value
-{
-    const char *cstr = [value UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(cstr, (CC_LONG)strlen(cstr), result);
-
-    NSMutableString *md5String = [[NSMutableString alloc] initWithCapacity:CC_MD5_DIGEST_LENGTH];
-
-    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-        [md5String appendFormat:@"%02X", result[i]];
-    }
-
-    return md5String;
-}
-
 
 
 #pragma mark - WiFi SSID

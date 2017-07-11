@@ -34,7 +34,8 @@
 #import "PGMetarOfflineTagManager.h"
 #import "PGInboxMessageManager.h"
 #import "PGLinkSettings.h"
-#import "PGLoggingSetttingsViewController.h"
+#import "PGFeatureFlag.h"
+#import "PGCloudAssetClient.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -71,9 +72,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     
     [self initializePrintPod];
     
-    BOOL forceFirmwareUpgrade = [[NSUserDefaults standardUserDefaults] boolForKey:kPGSettingsForceFirmwareUpgrade];
-    [[MP sharedInstance] setForceFirmwareUpdates:forceFirmwareUpgrade];
-
     [[HPPRFacebookLoginProvider sharedInstance] handleApplication:application didFinishLaunchingWithOptions:launchOptions];
 
     // Check if the app was opened by local notification
@@ -104,6 +102,11 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         });
     }
     
+    if ([PGFeatureFlag isCloudAssetsEnabled]) {
+        PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
+        [cac refreshAssetCatalog];
+    }
+
     return YES;
 }
 

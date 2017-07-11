@@ -10,12 +10,18 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface PGLoggingSetttingsViewController : UITableViewController
+@interface PGCloudAssetImage : NSObject <NSSecureCoding>
 
-@property (strong, nonatomic) NSString * _Nullable unlockCode;
+@property (nonatomic, assign) NSInteger assetId;
+@property (nonatomic, assign) NSInteger version;
+@property (nonatomic, assign) NSInteger position;
 
-- (BOOL)validCode:(NSString *_Nullable)code;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *assetURL;
+@property (nonatomic, copy) NSString *thumbnailURL;
+
++ (instancetype)assetWithData:(NSDictionary *)data;
 
 @end

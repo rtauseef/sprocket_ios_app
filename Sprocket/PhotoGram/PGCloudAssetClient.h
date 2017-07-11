@@ -10,12 +10,13 @@
 // the license agreement.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "PGCloudAssetCategory.h"
 
-@interface PGLoggingSetttingsViewController : UITableViewController
+@interface PGCloudAssetClient : NSObject
 
-@property (strong, nonatomic) NSString * _Nullable unlockCode;
+- (void)refreshAssetCatalog;
 
-- (BOOL)validCode:(NSString *_Nullable)code;
+- (NSArray<PGCloudAssetCategory *> *)currentStickersCatalog;
 
 @end
