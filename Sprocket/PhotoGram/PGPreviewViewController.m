@@ -1167,7 +1167,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     } else if ((selectedViewsCount == 1) && (numberOfCopies == 1)) {
         if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected) {
             offRamp = kMetricsOffRampPrintNoUISingle;
-            origin = kMetricsOriginSingle;
+            if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+                origin = kMetricsOriginSingle;
+            } else {
+                origin = kMetricsOriginTile;
+            }
             
             if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
                 offRamp = kMetricsOffRampPrintNoUIMulti;
