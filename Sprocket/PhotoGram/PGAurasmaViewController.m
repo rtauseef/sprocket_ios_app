@@ -14,10 +14,16 @@
 #import <AurasmaSDK/AurasmaSDK.h>
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
+#import <MP.h>
+#import <MPPrintItemFactory.h>
+#import <MPBTPrintManager.h>
+#import "HPPRAurasmaImageMedia.h"
 #import "PGAurasmaViewController.h"
 #import "PGAurasmaTrackingViewDelegate.h"
 #import "PGAurasmaScreenshotViewController.h"
 #import "PGAurasmaRecordingViewController.h"
+#import "PGPhotoSelection.h"
+#import "PGPreviewViewController.h"
 
 #import "PGAurasmaGlobalContext.h"
 
@@ -248,6 +254,25 @@
     self.trackingAuraId = nil;
     
     NSLog(@"auraFinished: %@\n", auraId);
+}
+
+- (BOOL)handleURL:(NSURL *)url {
+    if ([@"sprocketprint" isEqualToString:[url scheme]]) {
+        [self.trackingView createScreenshotWithCallback:^(NSError *error, AURScreenshotImage *result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    NSLog(@"sprocketprint error: %@", error);
+                    return;
+                }
+                
+                HPPRAurasmaImageMedia *imageMedia = [[HPPRAurasmaImageMedia alloc] initWithImage:result andId:self.trackingAuraId];
+                [[PGPhotoSelection sharedInstance] selectMedia:imageMedia];
+                [PGPreviewViewController presentPreviewPhotoFrom:self andSource:@"Aurasma" animated:YES];
+            });
+        }];
+        return YES;
+    }
+    return NO;
 }
 
 
