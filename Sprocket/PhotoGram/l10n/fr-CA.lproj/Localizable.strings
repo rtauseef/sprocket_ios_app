@@ -1,14 +1,32 @@
 /* No comment provided by engineer. */
 "%ld of %ld" = "%1$ld de %2$ld";
 
+/* This will be formatted as '1 print added to the queue, 7 total' */
+"%ld print added to the queue, %ld total" = "%d impressions ajoutées à la file d’attente d’impression, %d au total";
+
+/* This will be formatted as '3 prints added to the queue, 7 total' */
+"%ld prints added to the queue, %ld total" = "%d impressions ajoutées à la file d’attente d’impression, %d au total";
+
+/* This will be formatted as '3 prints added to the queue, 1 in progress' */
+"%ld prints added to the queue, 1 in progress" = "%d impressions ajoutées à la file d’attente d’impression, %d au total";
+
 /* Message presented when there is only one image in the print queue */
 "%li print in Print Queue" = "%li impression dans la file d'impression";
 
 /* Message presented when there more than one images in the print queue */
 "%li prints in Print Queue" = "%li impression dans la file d'impression";
 
+/* Message presented when some error occurred while printing an image */
+"1 in progress" = "Synchronisation en cours";
+
+/* Message presented when some error occurred while printing an image and there are other images in the print queue */
+"1 in progress, %li in Print Queue" = "1 in progress, %li in Print Queue";
+
 /* No comment provided by engineer. */
 "About" = "À propos";
+
+/* No comment provided by engineer. */
+"Add to your sticker collection?" = "Add to your sticker collection?";
 
 /* Body of Camera Access Required dialog */
 "Allow access in your Settings to take and print photos." = "Permet l’accès dans vos paramètres pour prendre et imprimer des photos.";
@@ -18,6 +36,12 @@
 
 /* No comment provided by engineer. */
 "App Settings" = "Paramètres de la page";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete all stickers?" = "Êtes-vous certain de vouloir supprimer ?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this sticker?" = "Êtes-vous sûr de vouloir supprimer cet article ?";
 
 /* Settings for automatically saving photos */
 "Auto-Save Settings" = "Paramètres de l’enregistrement automatique";
@@ -39,7 +63,13 @@
 "Cancel" = "Annuler";
 
 /* No comment provided by engineer. */
+"Check back soon for cool sprocket tips, fun project ideas, and app updates!" = "Revenez bientôt pour des astuces sympas sur sprocket, des idées de projet amusantes et des mises à jour d’applications !";
+
+/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "Vérifier ma création sur HP Sprocket";
+
+/* No comment provided by engineer. */
+"Check out your custom sticker!" = "Check out your custom sticker!";
 
 /* Setup step 3 desc */
 "Connect" = "Connecter";
@@ -51,7 +81,16 @@
 "Copy" = "Copie";
 
 /* No comment provided by engineer. */
+"Delete" = "Supprimer";
+
+/* No comment provided by engineer. */
 "Delete All" = "Supprimer tout";
+
+/* No comment provided by engineer. */
+"Delete All Stickers" = "Supprimer l'adresse »";
+
+/* No comment provided by engineer. */
+"Delete Sticker" = "Supprimer »";
 
 /* No comment provided by engineer. */
 "Delete all prints from Print Queue?" = "Supprimer toutes les impressions de la file d’attente ?";
@@ -64,6 +103,9 @@
 
 /* No comment provided by engineer. */
 "Don't Save" = "Ne pas enregistrer";
+
+/* No comment provided by engineer. */
+"Done" = "Terminé";
 
 /* No comment provided by engineer. */
 "Enter Text" = "Saisir du texte";
@@ -89,8 +131,20 @@
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Des paramètres Bluetooth, appuyer sur « HP Sprocket » pour jumeler avec l’imprimante.";
 
+/* No comment provided by engineer. */
+"Get Firmware Upgrade" = "Obtenir une mise à niveau du micrologiciel";
+
+/* No comment provided by engineer. */
+"Get More" = "Pour en obtenir davantage";
+
 /* Social source title for Google */
 "Google" = "Google";
+
+/* No comment provided by engineer. */
+"Here’s what I think about this experience…" = "Here’s what I think about this experience…";
+
+/* Buy paper notification message */
+"Hi, do you need more HP ZINK Photo Paper?" = "Bonjour, avez-vous besoin de plus de papier photo HP ZINK?";
 
 /* No comment provided by engineer. */
 "How To" = "Comment faire";
@@ -98,17 +152,29 @@
 /* No comment provided by engineer. */
 "How to & Help" = "Comment faire et aide";
 
+/* Message shown when the user tries to scan an image and the scanning service is not available */
+"Image scanning is not available at this time. Please try again later." = "Image scanning is not available at this time. Please try again later.";
+
+/* No comment provided by engineer. */
+"Inbox" = "Boite de réception";
+
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* Setup step 1 desc */
-"Load Paper" = "Charger papier";
+/* No comment provided by engineer. */
+"Live Photo" = "1 photo";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Le fichier journal a été effacé.";
 
 /* No comment provided by engineer. */
+"Looks good." = "Looks good.";
+
+/* No comment provided by engineer. */
 "NO" = "NON";
+
+/* No comment provided by engineer. */
+"Nice drawing!" = "Nice drawing!";
 
 /* Dismisses dialog without taking action */
 "No" = "Non";
@@ -134,15 +200,34 @@
 /* No comment provided by engineer. */
 "Not all images were downloaded. Do you want to continue?" = "Certaines images n'ont pas été téléchargées. Voulez-vous continuer?";
 
+/* No comment provided by engineer. */
+"Not available" = "Non accessible";
+
 /* Allows user close dialog
+   Button caption
    Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
+"Ok" = "Ok";
+
+/* No comment provided by engineer. */
 "Oops!" = "Oups !";
+
+/* No comment provided by engineer. */
+"Original Video" = "• Vidéo";
 
 /* Dismisses dialog and pauses printing */
 "Pause" = "Pause";
+
+/* No comment provided by engineer. */
+"Perfect!" = "Perfect!";
+
+/* No comment provided by engineer. */
+"Photos taken near the same location" = "Photos taken near the same location";
+
+/* No comment provided by engineer. */
+"Photos taken on the same day" = "Photos taken on the same day";
 
 /* No comment provided by engineer. */
 "Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Les photos seront imprimées dans l’ordre de leur ajout à la file d’impression une fois l'imprimante sprocket allumée et le mode Bluetooth activé.";
@@ -171,6 +256,9 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 "Print" = "Imprimer";
 
 /* No comment provided by engineer. */
+"Print Help" = "Imprimer l'aide";
+
+/* No comment provided by engineer. */
 "Print Queue" = "File d’attente d'impression";
 
 /* No comment provided by engineer. */
@@ -194,6 +282,9 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* No comment provided by engineer. */
 "Reset Application" = "Réinitialiser l'application";
 
+/* Dismisses dialog without taking action */
+"Resume" = "Reprise";
+
 /* No comment provided by engineer. */
 "Retry" = "Réessayer";
 
@@ -209,6 +300,12 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Enregistrer dans la pellicule de l'appareil photo";
 
+/* No comment provided by engineer. */
+"Scan" = "Numériser";
+
+/* No comment provided by engineer. */
+"Scanning is not available at this time, please try again later." = "Scanning is not available at this time, please try again later.";
+
 /* Indicates that the phone is sending an image to the printer */
 "Sending to sprocket printer" = "Envoi à l’imprimante sprocket";
 
@@ -221,11 +318,20 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* Signing out of a social media site. */
 "Sign Out" = "Déconnexion";
 
+/* Setup step 1 desc */
+"Slide Lid Back & Load Paper" = "Poussez le cache à l’arrière et chargez du papier";
+
+/* No comment provided by engineer. */
+"Sorry, no information available about the scanned content." = "Sorry, no information available about the scanned content.";
+
 /* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Désolé, il est impossible de signaler votre problème actuellement, probablement parce qu'aucun compte courriel n'est configuré sur votre appareil mobile.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Mise à niveau du micrologiciel de l’imprimante Sprocket disponible";
+
+/* No comment provided by engineer. */
+"Sprocket Printer Not Connected, %@" = "Imprimante sprocket non connectée";
 
 /* No comment provided by engineer. */
 "Sprocket not Connected" = "Sprocket non connectée";
@@ -258,7 +364,16 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 "Tell us what you think of sprocket" = "Dites-nous ce que vous pensez de sprocket";
 
 /* No comment provided by engineer. */
+"Thanks! Could you tell us more?" = "Thanks! Could you tell us more?";
+
+/* No comment provided by engineer. */
+"Thanks! Tell us what you liked!" = "Thanks! Tell us what you liked!";
+
+/* No comment provided by engineer. */
 "The logfile is attached to this message." = "Le fichier journal est joint à ce message.";
+
+/* Firmware update notification message */
+"There is a firmware upgrade available for your sprocket printer." = "Une mise à jour est disponible pour le microgiciel de votre imprimante sprocket.";
 
 /* No comment provided by engineer. */
 "This will clear all previously saved options." = "Cette action effacera toutes les options précédemment enregistrées.";
@@ -272,8 +387,17 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 /* Version number and build of the app */
 "Version %@ (%@)" = "Version %1$@ (%2$@)";
 
+/* payoff processor watermark title */
+"Watermark" = "Watermark";
+
+/* payoff processor watermark description */
+"Watermarking image" = "2 images";
+
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "US Wikipedia";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Voulez-vous vous déconnecter de %@?";
@@ -286,6 +410,12 @@ Vous pouvez aussi utiliser les photos de votre appareil.";
 
 /* No comment provided by engineer. */
 "You don’t have any account configured to send emails." = "Vous ne disposez d’aucun compte configuré pour envoyer des courriels.";
+
+/* No comment provided by engineer. */
+"You must be an artist." = "You must be an artist.";
+
+/* No comment provided by engineer. */
+"Your prints will start when the sprocket printer is on and bluetooth connected." = "Your prints will start when the sprocket printer is on and bluetooth connected.";
 
 /* No comment provided by engineer. */
 "sprocket" = "sprocket";

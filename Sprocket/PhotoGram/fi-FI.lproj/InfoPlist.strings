@@ -1,0 +1,15 @@
+/* (No Commment) */
+"CFBundleDisplayName" = "sprocket";
+
+/* (No Commment) */
+"CFBundleName" = "sprocket";
+
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocketin yhdistäminen HP Sprocket -tulostimeen edellyttää Bluetooth-yhteyttä.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "Salli käyttö kuvien ottamista ja tulostusta varten.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "Salli käyttö kuvien tulostusta ja tallennusta varten.";
+

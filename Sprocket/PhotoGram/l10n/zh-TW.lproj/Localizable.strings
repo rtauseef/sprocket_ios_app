@@ -1,14 +1,32 @@
 /* No comment provided by engineer. */
 "%ld of %ld" = "第 %1$ld 張 (共 %2$ld 張)";
 
+/* This will be formatted as '1 print added to the queue, 7 total' */
+"%ld print added to the queue, %ld total" = "已將 %1$ld 個列印新增至佇列，共 %2$ld 個";
+
+/* This will be formatted as '3 prints added to the queue, 7 total' */
+"%ld prints added to the queue, %ld total" = "已將 %1$ld 個列印新增至佇列，共 %2$ld 個";
+
+/* This will be formatted as '3 prints added to the queue, 1 in progress' */
+"%ld prints added to the queue, 1 in progress" = "%ld 個列印已新增至佇列，1 個進行中";
+
 /* Message presented when there is only one image in the print queue */
 "%li print in Print Queue" = "列印佇列中有 %li 張待列印作品";
 
 /* Message presented when there more than one images in the print queue */
 "%li prints in Print Queue" = "列印佇列中有 %li 張待列印作品";
 
+/* Message presented when some error occurred while printing an image */
+"1 in progress" = "1 個進行中";
+
+/* Message presented when some error occurred while printing an image and there are other images in the print queue */
+"1 in progress, %li in Print Queue" = "1 個進行中，%li 個在列印佇列裡";
+
 /* No comment provided by engineer. */
 "About" = "關於";
+
+/* No comment provided by engineer. */
+"Add to your sticker collection?" = "新增貼紙集合？";
 
 /* Body of Camera Access Required dialog */
 "Allow access in your Settings to take and print photos." = "在設定中允許存取來拍攝和列印相片。";
@@ -18,6 +36,12 @@
 
 /* No comment provided by engineer. */
 "App Settings" = "應用程式設定";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete all stickers?" = "您確定要刪除全部的貼紙？";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this sticker?" = "您確定要刪除此貼紙？";
 
 /* Settings for automatically saving photos */
 "Auto-Save Settings" = "自動儲存設定";
@@ -39,7 +63,13 @@
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
+"Check back soon for cool sprocket tips, fun project ideas, and app updates!" = "請稍後再回來查看酷炫的 sprocket 妙招、有趣的專案創意以及應用程式更新資訊！";
+
+/* No comment provided by engineer. */
 "Check out my HP Sprocket creation" = "欣賞我的 HP Sprocket 創作";
+
+/* No comment provided by engineer. */
+"Check out your custom sticker!" = "檢查自訂貼紙！";
 
 /* Setup step 3 desc */
 "Connect" = "連線";
@@ -51,7 +81,16 @@
 "Copy" = "影印";
 
 /* No comment provided by engineer. */
+"Delete" = "刪除";
+
+/* No comment provided by engineer. */
 "Delete All" = "全部刪除";
+
+/* No comment provided by engineer. */
+"Delete All Stickers" = "刪除全部的貼紙";
+
+/* No comment provided by engineer. */
+"Delete Sticker" = "刪除貼紙";
 
 /* No comment provided by engineer. */
 "Delete all prints from Print Queue?" = "是否要刪除列印佇列中的所有待列印作品？";
@@ -64,6 +103,9 @@
 
 /* No comment provided by engineer. */
 "Don't Save" = "不儲存";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
 
 /* No comment provided by engineer. */
 "Enter Text" = "輸入文字";
@@ -89,8 +131,20 @@
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "從 Bluetooth 設定中，觸碰「HP Sprocket」與印表機配對。";
 
+/* No comment provided by engineer. */
+"Get Firmware Upgrade" = "取得韌體升級";
+
+/* No comment provided by engineer. */
+"Get More" = "了解更多資訊";
+
 /* Social source title for Google */
 "Google" = "Google";
+
+/* No comment provided by engineer. */
+"Here’s what I think about this experience…" = "以下是我使用後的個人感受…";
+
+/* Buy paper notification message */
+"Hi, do you need more HP ZINK Photo Paper?" = "您好，是否需要更多 HP ZINK 相紙？";
 
 /* No comment provided by engineer. */
 "How To" = "使用方式";
@@ -98,17 +152,29 @@
 /* No comment provided by engineer. */
 "How to & Help" = "使用方式與說明";
 
+/* Message shown when the user tries to scan an image and the scanning service is not available */
+"Image scanning is not available at this time. Please try again later." = "目前無法進行影像掃描。請稍後再試。";
+
+/* No comment provided by engineer. */
+"Inbox" = "收件匣";
+
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* Setup step 1 desc */
-"Load Paper" = "放入紙張";
+/* No comment provided by engineer. */
+"Live Photo" = "現場相片";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "已清除記錄檔。";
 
 /* No comment provided by engineer. */
+"Looks good." = "看起來很好。";
+
+/* No comment provided by engineer. */
 "NO" = "否";
+
+/* No comment provided by engineer. */
+"Nice drawing!" = "不錯的繪圖！";
 
 /* Dismisses dialog without taking action */
 "No" = "否";
@@ -134,15 +200,34 @@
 /* No comment provided by engineer. */
 "Not all images were downloaded. Do you want to continue?" = "尚未下載所有影像。是否要繼續？";
 
+/* No comment provided by engineer. */
+"Not available" = "不適用";
+
 /* Allows user close dialog
+   Button caption
    Dismisses dialog without taking action */
 "OK" = "確定";
 
 /* No comment provided by engineer. */
+"Ok" = "確定";
+
+/* No comment provided by engineer. */
 "Oops!" = "糟糕！";
+
+/* No comment provided by engineer. */
+"Original Video" = "原始視訊";
 
 /* Dismisses dialog and pauses printing */
 "Pause" = "暫停";
+
+/* No comment provided by engineer. */
+"Perfect!" = "非常好！";
+
+/* No comment provided by engineer. */
+"Photos taken near the same location" = "在同一個地點附近拍攝相片";
+
+/* No comment provided by engineer. */
+"Photos taken on the same day" = "在同一天拍攝相片";
 
 /* No comment provided by engineer. */
 "Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Sprocket 印表機開機並連上 Bluetooth 後，會按照將相片新增至列印佇列時的順序列印相片。";
@@ -171,6 +256,9 @@ You can also use your device photos." = "請連線至資料來源。
 "Print" = "列印";
 
 /* No comment provided by engineer. */
+"Print Help" = "列印說明";
+
+/* No comment provided by engineer. */
 "Print Queue" = "列印佇列";
 
 /* No comment provided by engineer. */
@@ -194,6 +282,9 @@ You can also use your device photos." = "請連線至資料來源。
 /* No comment provided by engineer. */
 "Reset Application" = "重設應用程式";
 
+/* Dismisses dialog without taking action */
+"Resume" = "重新開始";
+
 /* No comment provided by engineer. */
 "Retry" = "重試";
 
@@ -209,6 +300,12 @@ You can also use your device photos." = "請連線至資料來源。
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "儲存至手機相簿";
 
+/* No comment provided by engineer. */
+"Scan" = "掃描";
+
+/* No comment provided by engineer. */
+"Scanning is not available at this time, please try again later." = "目前無法進行掃描，請稍後再試。";
+
 /* Indicates that the phone is sending an image to the printer */
 "Sending to sprocket printer" = "正在傳送到 sprocket 印表機";
 
@@ -221,11 +318,20 @@ You can also use your device photos." = "請連線至資料來源。
 /* Signing out of a social media site. */
 "Sign Out" = "登出";
 
+/* Setup step 1 desc */
+"Slide Lid Back & Load Paper" = "將蓋板向後滑並放入紙張";
+
+/* No comment provided by engineer. */
+"Sorry, no information available about the scanned content." = "抱歉，沒有與掃描的內容有關的任何資訊。";
+
 /* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "抱歉，目前無法報告您的問題。這很可能是因為您並未在行動裝置上設定郵件帳戶。";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Sprocket 印表機韌體升級可供使用";
+
+/* No comment provided by engineer. */
+"Sprocket Printer Not Connected, %@" = "未連接 Sprocket 印表機，%@";
 
 /* No comment provided by engineer. */
 "Sprocket not Connected" = "Sprocket 未連線";
@@ -258,7 +364,16 @@ You can also use your device photos." = "請連線至資料來源。
 "Tell us what you think of sprocket" = "告訴我們您對於 sprocket 的想法";
 
 /* No comment provided by engineer. */
+"Thanks! Could you tell us more?" = "感謝！能否告訴我們更多？";
+
+/* No comment provided by engineer. */
+"Thanks! Tell us what you liked!" = "感謝！請告訴我們您喜歡什麼！";
+
+/* No comment provided by engineer. */
 "The logfile is attached to this message." = "記錄檔附加於此訊息。";
+
+/* Firmware update notification message */
+"There is a firmware upgrade available for your sprocket printer." = "您的 sprocket 印表機有韌體升級可以使用。";
 
 /* No comment provided by engineer. */
 "This will clear all previously saved options." = "這將清除先前儲存的全部選項。";
@@ -272,8 +387,17 @@ You can also use your device photos." = "請連線至資料來源。
 /* Version number and build of the app */
 "Version %@ (%@)" = "%1$@ 版 (%2$@)";
 
+/* payoff processor watermark title */
+"Watermark" = "浮水印";
+
+/* payoff processor watermark description */
+"Watermarking image" = "浮水印影像";
+
 /* Social source title for WeiBo */
 "WeiBo" = "微博";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "想要登出 %@？";
@@ -286,6 +410,12 @@ You can also use your device photos." = "請連線至資料來源。
 
 /* No comment provided by engineer. */
 "You don’t have any account configured to send emails." = "您並未設定發送電子郵件的任何帳戶。";
+
+/* No comment provided by engineer. */
+"You must be an artist." = "您一定是藝術家。";
+
+/* No comment provided by engineer. */
+"Your prints will start when the sprocket printer is on and bluetooth connected." = "Sprocket 印表機啟動而且 Bluetooth 完成連線後，印表機將啟動。";
 
 /* No comment provided by engineer. */
 "sprocket" = "sprocket";

@@ -1,6 +1,12 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "1Gm-FD-YRV"; */
 "1Gm-FD-YRV.title" = "Hotovo";
 
+/* Class = "UIButton"; normalTitle = "No"; ObjectID = "2Lg-3h-2iw"; */
+"2Lg-3h-2iw.normalTitle" = "Ne";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "2NA-qn-klK"; */
+"2NA-qn-klK.text" = "Název";
+
 /* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
 "3FE-mc-FrD.text" = "Použitím aplikace Pitu současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
 
@@ -25,17 +31,23 @@
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "8WR-66-byL"; */
 "8WR-66-byL.title" = "Hotovo";
 
+/* Class = "UILabel"; text = "0"; ObjectID = "9fe-Oa-byX"; */
+"9fe-Oa-byX.text" = "0";
+
 /* Class = "UINavigationItem"; title = "Setup Sprocket Printer"; ObjectID = "9rP-Vf-tjP"; */
 "9rP-Vf-tjP.title" = "Nastavit tiskárnu sprocket";
 
 /* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
 "34K-Xv-dA8.text" = "Navštívit webovou stránku podpory";
 
+/* Class = "UIButton"; normalTitle = "Yes"; ObjectID = "70q-mB-4xA"; */
+"70q-mB-4xA.normalTitle" = "Ano";
+
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "AXW-GE-wKa"; */
 "AXW-GE-wKa.title" = "";
 
 /* Class = "UILabel"; text = "© 2016 HP Development Company, L.P."; ObjectID = "BBT-a1-B1F"; */
-"BBT-a1-B1F.text" = "© 2016 HP Development Company, L.P.";
+"BBT-a1-B1F.text" = "© 2016 HP Development Company, L. P.";
 
 /* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
 "BV3-xe-r0y.normalTitle" = "Další nápověda";
@@ -48,6 +60,9 @@
 
 /* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "DmV-M2-d4s"; */
 "DmV-M2-d4s.text" = "Vložte celý balík do zásobníku na papír čárovým kódem a logy HP směrem dolů.";
+
+/* Class = "UILabel"; text = "Print Queue"; ObjectID = "EAx-zh-2yP"; */
+"EAx-zh-2yP.text" = "Tisková fronta";
 
 /* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "EN2-Sd-rVK"; */
 "EN2-Sd-rVK.text" = "Stiskněte a podržte tlačítko napájení, dokud se barva kontrolky LED nezmění na bílou.";
@@ -68,7 +83,7 @@
 "IFE-wR-WsV.text" = "Zobrazit uživatelskou příručku";
 
 /* Class = "UILabel"; text = "HP Development Company, L.P."; ObjectID = "IRp-QK-PAY"; */
-"IRp-QK-PAY.text" = "HP Development Company, L.P.";
+"IRp-QK-PAY.text" = "HP Development Company, L. P.";
 
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "J8w-u5-UoD"; */
 "J8w-u5-UoD.normalTitle" = "Přihlášení";
@@ -77,7 +92,7 @@
 "J10-Gj-77T.title" = "Hotovo";
 
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
-"JEt-SU-tLR.title" = "Camera Roll";
+"JEt-SU-tLR.title" = "Z fotoaparátu";
 
 /* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
 "JrW-zx-uoD.text" = "Stiskněte a podržte tlačítko napájení, dokud se barva kontrolky LED nezmění na bílou.";
@@ -127,6 +142,19 @@
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
 
+/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Google accounts to create and print content of your choice.\n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan.\n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. \n\nThe copyright law of the United States (Title 17, United States Code) governs the making of photocopies or other reproductions of copyrighted material. This app should not be used in such a manner that would involve violation of copyright law or infringement of intellectual-property rights; and the user of this app is responsible for any such violation or infringement. Any use of this app to copy or otherwise reproduce copyrighted material should be without any purpose of direct or indirect commercial advantage. If a user uses a photocopy or reproduction for purposes in excess of “fair use,” that user may be liable for copyright infringement, and HP shall have no liability in connection with same."; ObjectID = "TEb-3v-7vp"; */
+"TEb-3v-7vp.text" = "Během používání této aplikace se budete moci připojit k internetu a používat své účty Instagram, Facebook nebo Google k vytváření a tisku vámi zvoleného obsahu.
+
+Použití této aplikace může vyžadovat připojení k internetu. Výkon bezdrátového připojení závisí na fyzickém prostředí a vzdálenosti od přístupového bodu. Možná budete muset využít zvlášť zakoupený datový tarif nebo vám mohou být účtovány poplatky za využití. Doba tisku a rychlost připojení může kolísat.
+
+Pro tisk potřebujete tiskárnu HP Sprocket Photo Printer. Na mobilním zařízení musíte mít zapnuté Bluetooth připojení, tiskárna HP Sprocket Photo Printer musí být zapnutá a spárovaná s mobilním zařízením.
+
+Pokud k připojení k internetu využíváte datovou síť, v závislosti na vašem datovém tarifu vám mohou být účtovány další poplatky za použití.
+
+Společnost HP z této aplikace pravidelně shromažďuje anonymní data o využití za účelem vylepšování budoucích verzí této aplikace a tiskáren HP.
+
+Autorské právo Spojených států (hlava 17, zákoník Spojených států) upravuje podmínky vytváření fotokopií nebo jiných reprodukcí materiálů chráněných autorskými právy. Tuto aplikaci nelze používat takovým způsobem, který by zahrnoval porušení autorského práva nebo porušování práv duševního vlastnictví. Uživatel této aplikace je odpovědný za jakékoli takové porušení. Použití této aplikace ke kopírování nebo jiné reprodukci materiálů chráněných autorskými právy nesmí být vedeno k nabytí přímých či nepřímých obchodních výhod. Používá-li uživatel fotokopii nebo reprodukci pro účely přesahující „poctivé použití“, může být tento uživatel odpovědný za porušení autorských práv a společnost HP nenese žádnou odpovědnost ve vztahu k tomuto jednání.";
+
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
 
@@ -135,6 +163,9 @@
 
 /* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
 "UGC-Wa-Xa2.text" = "Ověřením ve službě Facebook současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
+
+/* Class = "UILabel"; text = "Fill the frame with your drawing and tap the screen."; ObjectID = "Uxk-oG-sDQ"; */
+"Uxk-oG-sDQ.text" = "Vložte do rámce svůj výtvor a klepněte na obrazovku.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Podrobnosti";
@@ -145,8 +176,8 @@
 /* Class = "UILabel"; text = "sprocket"; ObjectID = "WMv-7o-mbb"; */
 "WMv-7o-mbb.text" = "sprocket";
 
-/* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
-"XgH-Dx-oow.text" = "Saved to Camera Roll";
+/* Class = "UINavigationItem"; title = "Inbox"; ObjectID = "XZd-Vn-LS0"; */
+"XZd-Vn-LS0.title" = "Příchozí pošta";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
 "YEZ-Yd-vcV.text" = "Pořídit nebo vybrat fotografii";
@@ -155,13 +186,16 @@
 "Yx0-Cs-62a.title" = "sprocket";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "By using Camera Roll, you also agree to the HP <Terms of Service>.";
+"Z1T-tw-tdj.text" = "Použitím funkce Z fotoaparátu současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Fotografie";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "aja-HA-rCS"; */
 "aja-HA-rCS.normalTitle" = "Přihlášení";
+
+/* Class = "UILabel"; text = "This material may be protected by copyright law. By continuing, you agree to the HP <Terms of Service>."; ObjectID = "avz-YY-2mv"; */
+"avz-YY-2mv.text" = "Tento materiál je chráněn autorským zákonem. Pokud budete v používání pokračovat, vyjadřujete tím souhlas s podmínkami služby HP.";
 
 /* Class = "UILabel"; text = "Put the entire pack in the paper tray with barcode and HP logos facing down."; ObjectID = "bNM-1G-6tS"; */
 "bNM-1G-6tS.text" = "Vložte celý balík do zásobníku na papír čárovým kódem a logy HP směrem dolů.";
@@ -194,6 +228,9 @@ z oblíbených aplikací pro tvorbu!";
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
 "ga4-if-IR4.normalTitle" = "Přihlášení";
 
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "hSo-cH-Wi9"; */
+"hSo-cH-Wi9.text" = "Dílčí název";
+
 /* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
 "iiX-WR-2Je.title" = "Pitu";
 
@@ -209,6 +246,9 @@ z oblíbených aplikací pro tvorbu!";
 /* Class = "UILabel"; text = "Turn on the “Print to sprocket” feature\nin the “More” menu when sharing."; ObjectID = "lh1-7W-cpZ"; */
 "lh1-7W-cpZ.text" = "Během sdílení zapněte funkci „Tisk na tiskárnu sprocket“
 v nabídce „Další“.";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "ll9-g0-BUR"; */
+"ll9-g0-BUR.title" = "Hotovo";
 
 /* Class = "UILabel"; text = "Tweet Support"; ObjectID = "mGd-CY-o6r"; */
 "mGd-CY-o6r.text" = "Tweetnout podpoře";
@@ -229,7 +269,7 @@ v nabídce „Další“.";
 "ncc-Qr-0mC.title" = "Flickr";
 
 /* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>.";
+"ob1-ZF-jEd.text" = "Ověřením ve službě Qzone současně souhlasíte s podmínkami služby HP <Podmínky služby>.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
 "ofB-Rh-sga.text" = "Podrobnosti";
