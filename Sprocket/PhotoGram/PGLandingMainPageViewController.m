@@ -82,7 +82,7 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self.hamburgerButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     
     self.trackableScreenName = @"Main Landing Page";

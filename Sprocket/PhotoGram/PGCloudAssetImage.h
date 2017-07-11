@@ -12,11 +12,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PGFeatureFlag : NSObject
+@interface PGCloudAssetImage : NSObject <NSSecureCoding>
 
-+ (BOOL)isMultiPrintEnabled;
+@property (nonatomic, assign) NSInteger assetId;
+@property (nonatomic, assign) NSInteger version;
+@property (nonatomic, assign) NSInteger position;
 
-+ (void)setCloudAssetsEnabled:(BOOL)enabled;
-+ (BOOL)isCloudAssetsEnabled;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *assetURL;
+@property (nonatomic, copy) NSString *thumbnailURL;
+
++ (instancetype)assetWithData:(NSDictionary *)data;
 
 @end
