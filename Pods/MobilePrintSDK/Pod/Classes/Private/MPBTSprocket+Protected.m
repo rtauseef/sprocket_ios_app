@@ -13,6 +13,7 @@
 #import "MPBTSprocket+Protected.h"
 
 static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-updates-2/fw_release.json";
+static const NSString *kExperimentalFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.com/sprocket-fw-update-test/fw_release.json";
 
 @implementation MPBTSprocket (Protected)
 
@@ -124,7 +125,9 @@ static const NSString *kFirmwareUpdatePath = @"https://s3-us-west-2.amazonaws.co
     config.URLCache = nil;
     NSURLSession *httpSession = [NSURLSession sessionWithConfiguration:config delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     
-    [[httpSession dataTaskWithURL: [NSURL URLWithString:[kFirmwareUpdatePath copy]]
+    const NSString *fwInfoPath = [MPBTSprocket useExperimentalFirmware] ? kExperimentalFirmwareUpdatePath : kFirmwareUpdatePath;
+    
+    [[httpSession dataTaskWithURL: [NSURL URLWithString:[fwInfoPath copy]]
                 completionHandler:^(NSData *data, NSURLResponse *response,
                                     NSError *error) {
                     NSDictionary *fwUpdateInfo = nil;
