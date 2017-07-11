@@ -2399,6 +2399,8 @@
 		E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D6811E19A2DE22000D45E0 /* UIImage+ImageResize.m */; };
 		E3DB16D119F567CA00C0F42B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DB16D019F567CA00C0F42B /* NSString+Utils.m */; };
 		E3FB807B1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */; };
+		ED1CE6441F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1CE6421F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m */; };
+		ED1CE6451F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1CE6431F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib */; };
 		EDB036131F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */; };
 		EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */; };
 		EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */; };
@@ -4439,6 +4441,9 @@
 		E3FB807A1A12C90000A2E30C /* FacebookNoPhotoAlbum@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FacebookNoPhotoAlbum@2x.png"; path = "Resources/Images/FacebookNoPhotoAlbum@2x.png"; sourceTree = "<group>"; };
 		E87CF555C90D2C04A70B1ABD /* libPods-Sprocket Print.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sprocket Print.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB12AB165D9FB16E49EF09AD /* Pods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.appstore.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.appstore.xcconfig"; sourceTree = "<group>"; };
+		ED1CE6411F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewGoogleStreetViewController.h; sourceTree = "<group>"; };
+		ED1CE6421F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewGoogleStreetViewController.m; sourceTree = "<group>"; };
+		ED1CE6431F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPayoffViewGoogleStreetViewController.xib; sourceTree = "<group>"; };
 		EDB036111F0453BD004930FF /* PGWikipediaDropdownTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWikipediaDropdownTableViewCell.h; sourceTree = "<group>"; };
 		EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaDropdownTableViewCell.m; sourceTree = "<group>"; };
 		EDD33F071EF9CE520028DBC8 /* PGMetarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarAPI.h; sourceTree = "<group>"; };
@@ -6585,6 +6590,9 @@
 				EDE0EA921F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m */,
 				EDB036111F0453BD004930FF /* PGWikipediaDropdownTableViewCell.h */,
 				EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */,
+				ED1CE6411F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.h */,
+				ED1CE6421F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m */,
+				ED1CE6431F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib */,
 			);
 			name = PayoffViews;
 			path = Watermark/PayoffViews;
@@ -7718,6 +7726,7 @@
 				929CE0AF1EF075C700039377 /* bunny_ears_TN.png in Resources */,
 				E3461FA319AF84A80042DF5E /* MeasurementArrowLeft@2x.png in Resources */,
 				929CE02D1EF075C600039377 /* 3d-diamond-2_TN@3x.png in Resources */,
+				ED1CE6451F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib in Resources */,
 				929CE33B1EF075C800039377 /* Mushrooms-b_TN.png in Resources */,
 				929CDFD41EF075C600039377 /* sloth_TN.png in Resources */,
 				929CDFF81EF075C600039377 /* confetti_graduation.png in Resources */,
@@ -9877,6 +9886,7 @@
 				EDD33F6D1EF9CE520028DBC8 /* PGMetarMedia.m in Sources */,
 				EDD33F8B1EF9CE520028DBC8 /* PGPayoffManager.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
+				ED1CE6441F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m in Sources */,
 				EDD33F751EF9CE520028DBC8 /* PGMetarSocialActivity.m in Sources */,
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
 				F2B3F5A11EFC427200F1E6FB /* PGSocialSourcesMenuViewController.m in Sources */,
