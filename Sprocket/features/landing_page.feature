@@ -1,6 +1,27 @@
 Feature: Verify Welcome screen/Landing Page
   As a user
   I want to check elements displayed on landing page
+  
+  @reset
+  @TA18418
+  @reset
+  Scenario: Verify sprocket intro wizard
+    Given  I am on the "Intro Wizard" screen
+    Then I verify the instructions to "load the paper"
+    And I should see "Skip to the App" 
+    Then I swipe left
+    Then I verify the instructions to "power up"
+    And I should see "Skip to the App" 
+    Then I swipe left
+    Then I verify the instructions to "connect"
+    And I should see "Go to the App" 
+    And I should see "More Help" 
+    Then I touch "More Help"
+    Then I should see "How to & Help" page
+    Then I touch "Done"
+    And I touch "Go to the App"
+    Then I am on the "Landing" screen 
+    
 
   @done
   @smoke
@@ -27,17 +48,18 @@ Feature: Verify Welcome screen/Landing Page
   @reset
   @done
   @smoke
-Scenario Outline: Open Social Source from  Landing screen
+  Scenario Outline: Open Social Source from  Landing screen
 	Given  I am on the "Landing" screen
 	Then I tap "<Social Source>"
 	Then I should see the "<Social Source>Landing" screen
-    Then I wait for sometime
+  Then I wait for sometime
 	Examples:
 	|Social Source	|
-	|Instagram		|
-  |Google			|
-  |Facebook		|
+	|Instagram		  |
+  |Google			    |
+  |Facebook		    |
   |CameraRoll	    |
+
 
   @regression
 Scenario: Verify Side menu from Landing screen

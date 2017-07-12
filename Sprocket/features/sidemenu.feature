@@ -142,7 +142,7 @@ Scenario Outline: Verify successful navigation for How to & Help options
         Then I touch "Technical Information"
         And I should see the "Technical Information" screen
         And I tap back button
-        And I tap "Close" mark
+        And I choose "close" option
         And I touch "Done"
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
@@ -156,11 +156,5 @@ Scenario Outline: Verify successful navigation for How to & Help options
 	    And I click Sign Out button on popup
 		Then I should see Instagram "Sign In" button
 
- @reset
- @appium
- @TA17541
-  Scenario: Signin to Facebook
-    Given I am on the Landing screen
-    When I touch hamburger button on navigation bar
-    And I select "Buy Paper" option
-    Then I verify the url
+
+   

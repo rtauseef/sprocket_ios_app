@@ -10,10 +10,6 @@ class StickerOptionEditorScreen < Calabash::IBase
         "label marked:'sticker-options-tool-screen'"
     end
     
-    def close
-        "UIButton marked:'Discard changes'"
-    end
-
     def save
       "UIButton marked:'sticker-options-tool-apply-btn'"
     end
@@ -26,13 +22,16 @@ class StickerOptionEditorScreen < Calabash::IBase
     def redo
         "* id:'ic_redo_24pt'"
     end
+
     
     def navigate
         unless current_page?
             edit_screen = go_to(StickerEditorScreen)
             sleep(WAIT_SCREENLOAD)
-           # wait_for_elements_exist(edit_screen.sticker, :timeout => MAX_TIMEOUT)
-           # touch edit_screen.sticker
+            #wait_for_elements_exist(edit_screen.sticker, :timeout => MAX_TIMEOUT)
+            #touch edit_screen.sticker
+            sticker_name=$sticker["Summer Category"]["sticker_0"]['name']
+            select_sticker sticker_name
             sleep(WAIT_SCREENLOAD)    
         end
         await

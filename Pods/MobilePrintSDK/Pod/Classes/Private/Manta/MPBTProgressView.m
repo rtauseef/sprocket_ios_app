@@ -63,20 +63,20 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     self.progressBar.progress = progress;
 }
 
-- (void)setStatus:(MantaUpgradeStatus)status
+- (void)setStatus:(SprocketUpgradeStatus)status
 {
     switch (status) {
-        case MantaUpgradeStatusStart:
+        case SprocketUpgradeStatusStart:
             [self.label setText:MPLocalizedString(@"Finishing Firmware Upgrade", "Indicates that a firmware upgrade has started")];
             [self setProgress:0.9F];
             break;
             
-        case MantaUpgradeStatusFinish:
+        case SprocketUpgradeStatusFinish:
             [self.label setText:MPLocalizedString(@"Firmware Upgrade Complete", @"Indicates that a firmware upgrade has completed")];
             [self setProgress:1.0F];
             break;
             
-        case MantaUpgradeStatusFail:
+        case SprocketUpgradeStatusFail:
             [self.label setText:MPLocalizedString(@"Firmware Upgrade Failed", @"Indicates that a firmware update has failed")];
             break;
             
@@ -177,7 +177,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
 
 #pragma mark - SprocketDelegate
 
-- (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didRefreshSprocketInfo:(MPBTSprocket *)sprocket error:(SprocketError)error
 {
     NSMutableDictionary *lastOptionsUsed = [NSMutableDictionary dictionaryWithDictionary:[MP sharedInstance].lastOptionsUsed];
     [lastOptionsUsed addEntriesFromDictionary:[MPBTSprocket sharedInstance].analytics];
@@ -203,12 +203,12 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
         }];
     }
     
-    if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didRefreshMantaInfo:error:)]) {
-        [self.sprocketDelegate didRefreshMantaInfo:sprocket error:error];
+    if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didRefreshSprocketInfo:error:)]) {
+        [self.sprocketDelegate didRefreshSprocketInfo:sprocket error:error];
     }
 }
 
-- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
+- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error
 {
     if (self.imageProcessor && self.imageProcessor.completed) {
         [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.4F + 0.4];
@@ -216,7 +216,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
         [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.8F];
     }
     
-    if (MantaErrorNoError != error) {
+    if (SprocketErrorNoError != error) {
         [self didReceiveError:sprocket error:error];
     }
 
@@ -254,7 +254,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     [[NSNotificationCenter defaultCenter] postNotificationName:kMPBTPrintJobCompletedNotification object:nil userInfo:dictionary];
 }
 
-- (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didReceiveError:(MPBTSprocket *)sprocket error:(SprocketError)error
 {
     [self removeProgressView];
 
@@ -284,7 +284,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }
 }
 
-- (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(SprocketError)error
 {
     if (self.sprocketDelegate  &&  [self.sprocketDelegate respondsToSelector:@selector(didSetAccessoryInfo:error:)]) {
         [self.sprocketDelegate didSetAccessoryInfo:sprocket error:error];
@@ -302,7 +302,7 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }
 }
 
-- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
+- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error
 {
     self.performingFileDownload = NO;
     
@@ -313,9 +313,9 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
 
     [self setProgress:(((CGFloat)percentageComplete)/100.0F)*0.8F];
     
-    if (MantaErrorBusy == error) {
+    if (SprocketErrorBusy == error) {
         MPLogError(@"Covering up busy error due to bug in firmware...");
-    } else if (MantaErrorNoError != error) {
+    } else if (SprocketErrorNoError != error) {
         [self didReceiveError:manta error:error];
     }
     
@@ -331,23 +331,23 @@ static NSString * const kSettingShowFirmwareUpgrade    = @"SettingShowFirmwareUp
     }
 }
 
-- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(MantaUpgradeStatus)status
+- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(SprocketUpgradeStatus)status
 {
     [self setStatus:status];
     
-    if (MantaUpgradeStatusStart != status) {
+    if (SprocketUpgradeStatusStart != status) {
         [self removeProgressView];
     }
     
     if (self.viewController) {
-         if (MantaUpgradeStatusStart != status) {
-             if (MantaUpgradeStatusFinish == status) {
+         if (SprocketUpgradeStatusStart != status) {
+             if (SprocketUpgradeStatusFinish == status) {
                  self.alert.title = MPLocalizedString(@"Firmware Updated", @"Title for dialog given after a successful firmware update");
                  self.alert.message = MPLocalizedString(@"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!", @"Body of dialog giving instructions on how to proceed after a firmware upgrade");
-             } else if (MantaUpgradeStatusFail == status) {
+             } else if (SprocketUpgradeStatusFail == status) {
                 self.alert.title = MPLocalizedString(@"Sprocket Printer Not Connected", @"Message given when sprocket cannot be reached");
                 self.alert.message = MPLocalizedString(@"Make sure the sprocket printer is on and bluetooth connected.", @"Message given when the printer can't be contacted.");
-            } else if (MantaUpgradeStatusDownloadFail == status) {
+            } else if (SprocketUpgradeStatusDownloadFail == status) {
                 self.alert.title = MPLocalizedString(@"Downloading Firmware Error", @"Title for firmware download error dialog");
                 self.alert.message = MPLocalizedString(@"Make sure you are connected to the internet and try again.", @"Body for firmware download error dialog");
             } else {

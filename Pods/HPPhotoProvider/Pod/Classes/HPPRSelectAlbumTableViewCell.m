@@ -30,6 +30,24 @@ const NSUInteger kHPPRAlbumThumbnailSize = 150;
 
 @implementation HPPRSelectAlbumTableViewCell
 
+- (void)fillVideoCount:(HPPRAlbum *)album {
+    if (album.videoCount > 0) {
+        if (album.photoCount != 0) {
+            self.photoCountLabelView.text = [NSString stringWithFormat:@"%@%@",self.photoCountLabelView.text, @"\n"];
+            self.photoCountLabelView.numberOfLines = 2;
+            CGRect countFrame = self.photoCountLabelView.frame;
+            countFrame.size.height *= 2;
+            self.photoCountLabelView.frame = countFrame;
+        }
+        
+        if (1 == album.videoCount) {
+            self.photoCountLabelView.text = [NSString stringWithFormat:@"%@%@",self.photoCountLabelView.text, HPPRLocalizedString(@"1 video", nil)];
+        } else {
+            self.photoCountLabelView.text = [NSString stringWithFormat:@"%@%@",self.photoCountLabelView.text, [NSString stringWithFormat:HPPRLocalizedString(@"%lu videos", @"Number of videos"), (unsigned long)album.videoCount]];
+        }
+    }
+}
+
 - (void)setAlbum:(HPPRAlbum *)album
 {
     _album = album;
@@ -50,6 +68,8 @@ const NSUInteger kHPPRAlbumThumbnailSize = 150;
     } else {
         self.photoCountLabelView.text = [NSString stringWithFormat:HPPRLocalizedString(@"%lu photos", @"Number of photos"), (unsigned long)album.photoCount];
     }
+    
+    [self fillVideoCount: album];
     
     if (album.coverPhoto) {
         self.coverPhotoImageView.image = album.coverPhoto;
@@ -111,6 +131,8 @@ const NSUInteger kHPPRAlbumThumbnailSize = 150;
     } else {
         self.photoCountLabelView.text = [NSString stringWithFormat:HPPRLocalizedString(@"%li photos", @"Number of photos"), album.photoCount];
     }
+    
+    [self fillVideoCount:album];
 }
 
 @end

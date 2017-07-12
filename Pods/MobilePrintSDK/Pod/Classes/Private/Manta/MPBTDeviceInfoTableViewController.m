@@ -33,7 +33,6 @@ typedef enum
 
 @interface MPBTDeviceInfoTableViewController () <MPBTAutoOffTableViewControllerDelegate, MPBTSprocketDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) MPBTSprocket *sprocket;
 @property (strong, nonatomic) NSString *lastError;
 @property (assign, nonatomic) BOOL hideBackButton;
 @property (strong, nonatomic) UIView *originalHeaderView;
@@ -101,10 +100,9 @@ typedef enum
 
 - (void)setDevice:(EAAccessory *)device
 {
-    self.sprocket = [MPBTSprocket sharedInstance];
-    self.sprocket.accessory = device;
-    self.sprocket.delegate = self;
-    [self.sprocket refreshInfo];
+    [MPBTSprocket sharedInstance].accessory = device;
+    [MPBTSprocket sharedInstance].delegate = self;
+    [[MPBTSprocket sharedInstance] refreshInfo];
 }
 
 + (void)presentAnimated:(BOOL)animated device:(EAAccessory *)device usingController:(UIViewController *)hostController andCompletion:(void(^)(void))completion
@@ -116,7 +114,7 @@ typedef enum
     [hostController showViewController:vc sender:nil];
 }
 
-- (void)displayError:(MantaError)error
+- (void)displayError:(SprocketError)error
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:[MPBTSprocket errorTitle:error]
                                                                    message:[MPBTSprocket errorDescription:error]
@@ -159,9 +157,9 @@ typedef enum
 
 #pragma mark - MPBTAutoOffTableViewControllerDelegate
 
-- (void)didSelectAutoOffInterval:(MantaAutoPowerOffInterval)interval
+- (void)didSelectAutoOffInterval:(SprocketAutoPowerOffInterval)interval
 {
-    self.sprocket.powerOffInterval = interval;
+    [MPBTSprocket sharedInstance].powerOffInterval = interval;
 }
 
 #pragma mark - Table view delegate
@@ -171,7 +169,7 @@ typedef enum
     if (MPBTDeviceInfoOrderAutoOff == indexPath.row) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:nil];
         MPBTAutoOffTableViewController *vc = (MPBTAutoOffTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTAutoOffTableViewController"];
-        vc.currentAutoOffValue = self.sprocket.powerOffInterval;
+        vc.currentAutoOffValue = [MPBTSprocket sharedInstance].powerOffInterval;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (MPBTDeviceInfoOrderTechnicalInfo == indexPath.row) {
@@ -202,28 +200,28 @@ typedef enum
                 
             case MPBTDeviceInfoOrderBatteryStatus:
                 cell.textLabel.text = MPLocalizedString(@"Battery Status", @"Title of field displaying battery level");
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu%@", (unsigned long)self.sprocket.batteryStatus, @"%"];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu%@", (unsigned long)[MPBTSprocket sharedInstance].batteryStatus, @"%"];
                 break;
                 
             case MPBTDeviceInfoOrderAutoOff:
                 cell.textLabel.text = MPLocalizedString(@"Auto Off", @"Title of field displaying how many minutes the device is on before it automatically powers off");
-                cell.detailTextLabel.text = [MPBTSprocket autoPowerOffIntervalString:self.sprocket.powerOffInterval];
+                cell.detailTextLabel.text = [MPBTSprocket autoPowerOffIntervalString:[MPBTSprocket sharedInstance].powerOffInterval];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
                 
             case MPBTDeviceInfoOrderMacAddress:
                 cell.textLabel.text = MPLocalizedString(@"MAC Address", @"Title of field displaying the printer's mac address");
-                cell.detailTextLabel.text = [MPBTSprocket macAddress:self.sprocket.macAddress];
+                cell.detailTextLabel.text = [MPBTSprocket macAddress:[MPBTSprocket sharedInstance].macAddress];
                 break;
                 
             case MPBTDeviceInfoOrderFirmwareVersion:
                 cell.textLabel.text = MPLocalizedString(@"Firmware Version", @"Title of field displaying the printer's firmware version");
-                cell.detailTextLabel.text = [MPBTSprocket version:self.sprocket.firmwareVersion];
+                cell.detailTextLabel.text = [MPBTSprocket version:[MPBTSprocket sharedInstance].firmwareVersion];
                 break;
                 
             case MPBTDeviceInfoOrderHardwareVersion:
                 cell.textLabel.text = MPLocalizedString(@"Hardware Version", @"Title of field displaying the printer's hardware version");
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%lx", (unsigned long)self.sprocket.hardwareVersion];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%lx", (unsigned long)[MPBTSprocket sharedInstance].hardwareVersion];
                 break;
                 
             case MPBTDeviceInfoOrderTechnicalInfo:
@@ -252,7 +250,7 @@ typedef enum
 
 #pragma mark - SprocketDelegate
 
-- (void)didRefreshMantaInfo:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didRefreshSprocketInfo:(MPBTSprocket *)sprocket error:(SprocketError)error
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.lastError = [MPBTSprocket errorTitle:error];
@@ -276,7 +274,7 @@ typedef enum
     }
 }
 
-- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
+- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error
 {
     
 }
@@ -291,7 +289,7 @@ typedef enum
     
 }
 
-- (void)didReceiveError:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didReceiveError:(MPBTSprocket *)sprocket error:(SprocketError)error
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.fwUpgradeButton.enabled = NO;
@@ -303,16 +301,16 @@ typedef enum
     self.updating = NO;
 }
 
-- (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(MantaError)error
+- (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(SprocketError)error
 {
     
 }
 
-- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error
+- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error
 {
-    if (MantaErrorBusy == error) {
+    if (SprocketErrorBusy == error) {
         MPLogError(@"Covering up busy error due to bug in firmware...");
-    } else if (MantaErrorNoError != error) {
+    } else if (SprocketErrorNoError != error) {
         [self didReceiveError:manta error:error];
     }
 }
@@ -321,9 +319,9 @@ typedef enum
 {
 }
 
-- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(MantaUpgradeStatus)status
+- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(SprocketUpgradeStatus)status
 {
-    if (MantaUpgradeStatusStart != status) {
+    if (SprocketUpgradeStatusStart != status) {
         self.updating = NO;
     }
 }

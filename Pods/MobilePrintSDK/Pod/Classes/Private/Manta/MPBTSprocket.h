@@ -15,6 +15,9 @@
 #import "MPBTSprocketDefinitions.h"
 #import "MPPrintItem.h"
 
+extern NSString * kPGSettingsForceFirmwareUpgrade;
+extern NSString * kPGUseExperimentalFirmware;
+
 @protocol MPBTSprocketDelegate;
 
 @interface MPBTSprocket : NSObject
@@ -26,16 +29,15 @@
 @property (weak, nonatomic) id<MPBTSprocketDelegate> delegate;
 
 @property (strong, nonatomic) NSString *protocolString;
-@property (assign, nonatomic) MantaPrintMode printMode;
-@property (assign, nonatomic) MantaAutoExposure autoExposure;
-@property (assign, nonatomic) MantaAutoPowerOffInterval powerOffInterval;
-@property (assign, nonatomic, readonly) NSUInteger totalPrintCount;
-@property (assign, nonatomic, readonly) NSUInteger batteryStatus;
-@property (strong, nonatomic, readonly) NSData *macAddress;
-@property (assign, nonatomic, readonly) NSUInteger firmwareVersion;
-@property (assign, nonatomic, readonly) NSUInteger hardwareVersion;
-@property (strong, nonatomic, readonly) NSString *displayName;
-@property (strong, nonatomic, readonly) NSDictionary *analytics;
+@property (assign, nonatomic) SprocketAutoPowerOffInterval powerOffInterval;
+@property (assign, nonatomic) SprocketPrintMode printMode;
+@property (assign, nonatomic) NSUInteger totalPrintCount;
+@property (assign, nonatomic) NSUInteger batteryStatus;
+@property (strong, nonatomic) NSData *macAddress;
+@property (assign, nonatomic) NSUInteger firmwareVersion;
+@property (assign, nonatomic) NSUInteger hardwareVersion;
+@property (strong, nonatomic) NSString *displayName;
+@property (strong, nonatomic) NSDictionary *analytics;
 
 - (void)refreshInfo;
 - (void)printImage:(UIImage *)image numCopies:(NSInteger)numCopies;
@@ -47,26 +49,30 @@
 + (BOOL)supportedAccessory:(EAAccessory *)accessory;
 + (NSString *)macAddress:(NSData *)data;
 + (NSString *)version:(NSUInteger)version;
-+ (NSString *)errorTitleKey:(MantaError)error;
-+ (NSString *)errorTitle:(MantaError)error;
-+ (NSString *)errorDescription:(MantaError)error;
-+ (NSString *)autoPowerOffIntervalString:(MantaAutoPowerOffInterval)interval;
++ (NSString *)errorTitleKey:(SprocketError)error;
++ (NSString *)errorTitle:(SprocketError)error;
++ (NSString *)errorDescription:(SprocketError)error;
++ (NSString *)autoPowerOffIntervalString:(SprocketAutoPowerOffInterval)interval;
++ (BOOL) forceFirmwareUpdates;
++ (void) setForceFirmwareUpdates:(BOOL)force;
++ (BOOL) useExperimentalFirmware;
++ (void) setUseExperimentalFirmware:(BOOL)useExperimental;
 
 @end
 
 @protocol MPBTSprocketDelegate <NSObject>
 
 @optional
-- (void)didRefreshMantaInfo:(MPBTSprocket *)manta error:(MantaError)error;
-- (void)didSendPrintData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error;
-- (void)didFinishSendingPrint:(MPBTSprocket *)manta;
-- (void)didStartPrinting:(MPBTSprocket *)manta;
-- (void)didReceiveError:(MPBTSprocket *)manta error:(MantaError)error;
-- (void)didSetAccessoryInfo:(MPBTSprocket *)manta error:(MantaError)error;
-- (void)didDownloadDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete;
-- (void)didSendDeviceUpgradeData:(MPBTSprocket *)manta percentageComplete:(NSInteger)percentageComplete error:(MantaError)error;
-- (void)didFinishSendingDeviceUpgrade:(MPBTSprocket *)manta;
-- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)manta status:(MantaUpgradeStatus)status;
-- (void)didCompareWithLatestFirmwareVersion:(MPBTSprocket *)manta needsUpgrade:(BOOL)needsUpgrade;
+- (void)didRefreshSprocketInfo:(MPBTSprocket *)sprocket error:(SprocketError)error;
+- (void)didSendPrintData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error;
+- (void)didFinishSendingPrint:(MPBTSprocket *)sprocket;
+- (void)didStartPrinting:(MPBTSprocket *)sprocket;
+- (void)didReceiveError:(MPBTSprocket *)sprocket error:(SprocketError)error;
+- (void)didSetAccessoryInfo:(MPBTSprocket *)sprocket error:(SprocketError)error;
+- (void)didDownloadDeviceUpgradeData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete;
+- (void)didSendDeviceUpgradeData:(MPBTSprocket *)sprocket percentageComplete:(NSInteger)percentageComplete error:(SprocketError)error;
+- (void)didFinishSendingDeviceUpgrade:(MPBTSprocket *)sprocket;
+- (void)didChangeDeviceUpgradeStatus:(MPBTSprocket *)sprocket status:(SprocketUpgradeStatus)status;
+- (void)didCompareWithLatestFirmwareVersion:(MPBTSprocket *)sprocket needsUpgrade:(BOOL)needsUpgrade;
 
 @end

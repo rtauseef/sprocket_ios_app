@@ -20,12 +20,14 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 
 @protocol HPPRSelectPhotoCollectionViewControllerDelegate;
 
-@interface HPPRSelectPhotoCollectionViewController : UIViewController
+@interface HPPRSelectPhotoCollectionViewController : UIViewController <UICollectionViewDelegate>
 
 @property (strong, nonatomic) HPPRSelectPhotoProvider *provider;
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *customNoPhotosMessage;
 @property (assign, nonatomic) BOOL allowMultiSelect;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 - (void)refresh;
 - (void)beginMultiSelect;

@@ -5,19 +5,22 @@
 "%d Prints" = "Impressions %d";
 
 /* No comment provided by engineer. */
-"%d/%d Print" = "Impression %d / %d";
+"%d/%d Print" = "Impression %1$d / %2$d";
 
 /* No comment provided by engineer. */
-"%d/%d Prints" = "Impressions %d / %d";
+"%d/%d Prints" = "Impressions %1$d / %2$d";
 
 /* Number of copies */
 "%ld Copies" = "Copies %ld";
 
 /* page range label in job summary */
-"%ld of %ld Pages" = "%ld pages sur %ld";
+"%ld of %ld Pages" = "%1$ld pages sur %2$ld";
 
 /* No comment provided by engineer. */
 "1 Copy" = "1 copie";
+
+/* The printer will shut off after 10 minutes */
+"10 minutes" = "10 minutes";
 
 /* Option for paper size */
 "10x13cm" = "10 x 13 cm";
@@ -31,17 +34,26 @@
 /* Option for paper size */
 "2 x 3" = "2 x 3";
 
+/* The printer will shut off after 3 minutes */
+"3 minutes" = "3 minutes";
+
 /* Option for paper size */
 "4 x 5" = "4 x 5";
 
 /* Option for paper size */
 "4 x 6" = "4 x 6";
 
+/* The printer will shut off after 5 minutes */
+"5 minutes" = "5 minutes";
+
 /* Option for paper size */
 "5 x 7" = "5 x 7";
 
 /* Option for paper size */
 "8.5 x 11" = "8,5 x 11";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"A battery error has occured. Restart Sprocket to continue printing." = "Une erreur de batterie s'est produite. Redémarrez sprocket pour poursuivre l'impression.";
 
 /* Option for paper size */
 "A4" = "A4";
@@ -73,26 +85,71 @@
 /* No comment provided by engineer. */
 "All" = "Toutes";
 
+/* The printer will never shut off */
+"Always On" = "Toujours allumée";
+
 /* No comment provided by engineer. */
 "Are you sure you want to delete %d Prints?" = "Êtes-vous sûr de vouloir supprimer les impressions %d ?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete 1 Print?" = "Êtes-vous sûr de vouloir supprimer 1 impression ?";
 
+/* Title of field displaying how many minutes the device is on before it automatically powers off */
+"Auto Off" = "Arrêt auto";
+
 /* Let's the user know their job will be printed in black-and-white */
 "B&W" = "Noir et blanc";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"Battery Error" = "Erreur batterie";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Battery Low" = "Batterie faible";
+
+/* Title of field displaying battery level */
+"Battery Status" = "État de charge de la batterie";
+
+/* The color black */
+"Black" = "Noir";
 
 /* No comment provided by engineer. */
 "Black & White mode" = "Mode noir et blanc";
 
+/* The color blue */
+"Blue" = "Bleu";
+
+/* The color brown */
+"Brown" = "Marron";
+
+/* Title */
+"California Rechargeable Battery Take-back Notice" = "Note d'information concernant le recyclage des batteries rechargeables en Californie";
+
 /* button bar cancel button */
 "Cancel" = "Annuler";
+
+/* Title */
+"Chemical substances" = "Substances chimiques";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Clear paper jam and restart the printer by pressing and holding the power button." = "Éliminez le bourrage papier puis redémarrez l'imprimante. Pour redémarrer, appuyez et maintenez la pression sur le bouton d'alimentation.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Close the cover to proceed." = "Refermez le capot pour continuer.";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Connect your sprocket to a power source to continue use." = "Connectez votre imprimante sprocket à une source d'alimentation pour continuer à l'utiliser.";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Cooling Down..." = "Refroidissement en cours...";
 
 /* copies label in job summary */
 "Copies" = "Copies";
 
 /* copy label in job summary */
 "Copy" = "Copie";
+
+/* The cover is open */
+"Cover Open" = "Capot ouvert";
 
 /* No comment provided by engineer. */
 "Default printer not currently available" = "Imprimante par défaut non disponible actuellement";
@@ -103,14 +160,80 @@
 /* No comment provided by engineer. */
 "Delete Print from Print Queue" = "Supprimer l'impression de la file d'attente d'impression";
 
+/* Title */
+"Disposal of waste equipment by users" = "Traitement des équipements usagés par les utilisateurs";
+
 /* Used on a button for closing the dialog */
 "Done" = "Terminé";
+
+/* Title for firmware download error dialog */
+"Downloading Firmware Error" = "Une erreur s'est produite lors du téléchargement du microprogramme.";
+
+/* Indicates that the firmware upgrade is being downloaded from the internet */
+"Downloading Firmware Upgrade" = "Téléchargement de la mise à niveau du microprogramme en cours";
+
+/* Message given when sprocket cannot print due to a system error */
+"Due to a system error, restart sprocket to continue printing." = "Une erreur système s'est produite. Redémarrez sprocket pour poursuivre l'impression.";
 
 /* Text used to give an example of how to enter a page range */
 "e.g. 1,3-5" = "ex. 1,3-5";
 
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"Error" = "Erreur";
+
+/* Indicates that a firmware upgrade has started */
+"Finishing Firmware Upgrade" = "Mise à niveau du microprogramme en cours d'achèvement";
+
+/* Title for dialog given after a successful firmware update */
+"Firmware Updated" = "Microprogramme mis à jour";
+
+/* Indicates that a firmware upgrade has completed */
+"Firmware Upgrade Complete" = "Mise à niveau du microprogramme terminée";
+
+/* Message given when sprocket cannot be reached */
+"Firmware Upgrade Error" = "Échec de la mise à niveau du microprogramme";
+
+/* Indicates that a firmware update has failed */
+"Firmware Upgrade Failed" = "La mise à niveau du microprogramme a échoué";
+
+/* Title of field displaying the printer's firmware version */
+"Firmware Version" = "Version du microprogramme";
+
+/* The color green */
+"Green" = "Vert";
+
+/* The color grey */
+"Grey" = "Gris";
+
+/* Title of field displaying the printer's hardware version */
+"Hardware Version" = "Version matérielle";
+
+/* Description */
+"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "HP encourage ses clients à recycler le matériel électronique usagé, les cartouches d'impression HP authentiques et les batteries rechargeables. Pour plus d'informations sur les programmes de recyclage, consultez la page www.hp.com/recycle.";
+
+/* Description */
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP s'engage à informer ses clients sur les substances chimiques utilisées dans ses produits conformément aux obligations légales telles que REACH (Réglementation européenne EC No 1907/2006 sur les substances chimiques). Une note d'information chimique sur ce produit peut être consultée à l'adresse : www.hp.com/go/reach";
+
+/* Description */
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP offre un nombre toujours plus grand de programmes de retour produit et de recyclage dans de nombreux pays/nombreuses régions et est associé avec les plus grands centres de recyclage de produits électroniques au monde. HP préserve les ressources en revendant certains de ses produits les plus réputés. Pour plus d'informations sur le recyclage des produits HP, visitez le site : www.hp.com/recycle";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Incorrect Paper Type" = "Type de papier incorrect";
+
 /* Option of the push notification to send another push notification later */
 "Later" = "Plus tard";
+
+/* Message given when sprocket cannot print due to having no paper */
+"Load paper with the included Smartsheet to continue printing." = "Chargez le papier avec la Smartsheet (feuille intelligente) fournie pour continuer à imprimer.";
+
+/* Title of field displaying the printer's mac address */
+"MAC Address" = "Adresse MAC";
+
+/* Message given when the printer can't be contacted. */
+"Make sure the sprocket printer is on and bluetooth connected." = "Assurez-vous que l'imprimante sprocket est allumée et connectée via bluetooth.";
+
+/* Body for firmware download error dialog */
+"Make sure you are connected to the internet and try again." = "Vérifiez que vous êtes connecté(e) à Internet et essayez à nouveau.";
 
 /* Monitoring of regions (location) not available */
 "Monitoring not available" = "Surveillance non disponible";
@@ -118,8 +241,14 @@
 /* job name label */
 "Name" = "Nom";
 
+/* Indicates that the device will never power off */
+"Never" = "Jamais";
+
 /* No comment provided by engineer. */
 "Next" = "Suivant";
+
+/* Indicates that no sprocket printers are connected */
+"No sprockets Connected" = "Aucune sprocket connectée";
 
 /* No comment provided by engineer. */
 "No Wi-Fi connection" = "Pas de connexion Wi-Fi";
@@ -130,11 +259,36 @@
 /* Used to denote a page range.  IE: x 'of' y pages */
 "of" = "sur";
 
+/* Dismisses dialog without taking action */
+"OK" = "OK";
+
+/* The color orange */
+"Orange" = "Orange";
+
+/* Table heading for list of all available printers, except for the most recently used printer */
+"Other Printers" = "Autres imprimantes";
+
+/* Message given when sprocket cannot print due to having no paper
+   The printer is out of paper */
+"Out of Paper" = "Papier épuisé";
+
 /* Used to specify that a range of pages can be displayed */
 "Page Range" = "Plage de pages";
 
 /* Title of the Page Settings Screen */
 "Page Settings" = "Paramètres de la page";
+
+/* Instructions for pairing a printer */
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Appairez votre imprimante bluetooth sprocket avec cet appareil. Assurez-vous que l'imprimante sprocket est allumée et connectée via bluetooth.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Paper Cover Open" = "Capot papier ouvert";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Paper has Jammed" = "Il y a un bourrage papier dans l'appareil.";
+
+/* There is a paper jam in the printer */
+"Paper Jam" = "Bourrage papier";
 
 /* Title of the Paper Size screen */
 "Paper Size" = "Format du papier";
@@ -147,6 +301,12 @@
 
 /* Option for paper type */
 "Photo Paper" = "Papier photo";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Photo Unsupported" = "Photo non prise en charge";
+
+/* The color pink */
+"Pink" = "Rose";
 
 /* Option for paper type */
 "Plain Paper" = "Papier ordinaire";
@@ -172,6 +332,9 @@
 /* Caption of the button for printing */
 "Print both" = "Imprimer les deux";
 
+/* The print buffer is full */
+"Print Buffer Full" = "Tampon d'impression saturé";
+
 /* Activity title of the print queue when the share button is tapped */
 "Print Queue" = "File d'attente d'impression";
 
@@ -182,7 +345,7 @@
 "Print Settings" = "Paramètres d'impression";
 
 /* Bluetooth print button label */
-"Print to sprocket" = "Imprimer avec Sprocket";
+"Print to sprocket" = "Imprimer avec sprocket";
 
 /* No comment provided by engineer. */
 "Printer" = "Imprimante";
@@ -190,36 +353,141 @@
 /* The printer is available and there are print later jobs in the print queue */
 "Printer nearby. Projects waiting to be printed..." = "Imprimante à proximité. Projets en attente d'impression...";
 
+/* The printer is printing */
+"Printing" = "Impression";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "L'impression est désactivée jusqu'à ce qu'une température supérieure soit atteinte. Attendez avant d'envoyer une autre photo.";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "L'impression est désactivée jusqu'à ce qu'une température inférieure soit atteinte. Attendez avant d'envoyer une autre photo.";
+
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "L'impression nécessite que votre appareil mobile et l'imprimante soient connectés sur le même réseau Wi-Fi  Vérifiez vos paramètres Wi-Fi.";
+
+/* The color purple */
+"Purple" = "Violet";
+
+/* Message given when sprocket has no known error
+   The printer is ready to print */
+"Ready" = "Prête";
+
+/* Table heading for the printer that has most recently been printed to */
+"Recent Printer" = "Imprimante récente";
 
 /* No comment provided by engineer. */
 "Recent printer not currently available" = "Imprimante récente non disponible actuellement";
 
+/* Title */
+"Recycling program" = "Programme de recyclage";
+
+/* The color red */
+"Red" = "Rouge";
+
+/* Title */
+"Safety data sheets" = "Fiches techniques de sécurité";
+
+/* Description */
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Les fiches techniques de sécurité et des informations sur la sécurité du produit et les aspects environnementaux sont disponibles sur le site www.hp.com/go/ecodata ou sur simple demande.";
+
 /* No comment provided by engineer. */
 "Select All" = "Sélectionner tout";
 
-/* No comment provided by engineer. */
+/* Title for screen listing all available sprocket printers */
 "Select Printer" = "Sélectionner une imprimante";
 
 /* No comment provided by engineer. */
 "Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "La sélection d'une imprimante nécessite que votre appareil mobile et votre imprimante soient connectés sur le même réseau Wi-Fi. Vérifiez vos paramètres Wi-Fi.";
 
+/* Indicates that the firmware upgrade is being sent to the printer */
+"Sending Firmware Upgrade\nto Sprocket Printer" = "Envoi de la mise à jour du microprogramme\nvers l'imprimante sprocket en cours";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Envoi vers l'imprimante sprocket en cours";
+
 /* No comment provided by engineer. */
 "Settings" = "Paramètres";
+
+/* Title for screen listing all available sprocket printers */
+"sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Sprocket is Cold" = "Sprocket est froide";
+
+/* Message given when sprocket has no known error */
+"Sprocket is ready to print." = "Sprocket est prête pour l'impression";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Sprocket is Warm" = "Sprocket est trop chaude";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket a besoin de refroidir avant d'imprimer une autre image. Attendez avant d'envoyer une autre photo.";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket Printer in Use" = "Imprimante sprocket occupée";
+
+/* Message given when sprocket cannot be reached */
+"Sprocket Printer Not Connected" = "L'imprimante sprocket n'est pas connectée";
+
+/* Title of field displaying latest errors */
+"Status" = "État";
 
 /* Title of a table section */
 "SUPPORT:" = "SUPPORT :";
 
+/* Message given when sprocket cannot print due to a system error */
+"System Error Occured" = "Une erreur système s'est produite.";
+
+/* Title of field for displaying the technical infomration
+   Title of table view cell used for displaying technical information
+   Title of Technical Information screen */
+"Technical Information" = "Informations techniques";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"The device is not recognized." = "L'appareil n'est pas reconnu.";
+
+/* Message given when sprocket cannot print due to being in use. */
+"The sprocket printer is already processing a job. Please wait to resend photo." = "L'imprimante sprocket traite déjà une tâche d'impression. Attendez avant de renvoyer la photo.";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Une erreur est survenue lors de l'envoi de votre photo. Il est possible que le format de la photo ne soit pas pris en charge sur cette imprimante. Choisissez une autre image. ";
+
+/* Description */
+"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Ce symbole signifie que le produit ne doit pas être jeté avec les autres déchets ménagers. Au lieu de simplement vous débarrasser de vos équipements électriques et électroniques usagés, vous pouvez les apporter dans un point de collecte spécialisé où ils pourront être recyclés. Vous contribuerez ainsi à la protection des populations et de l'environnement. Pour plus d'informations, contactez le service local qui assure la collecte de vos déchets ménagers ou rendez-vous sur http://www.hp.com/recycle.";
+
+/* Body for firmware upgrade error where the reason for the error is unknown */
+"Unknown status" = "État inconnu";
+
+/* A color we don't recognize */
+"Unrecognized Color" = "Couleur non reconnue";
+
+/* Message given when sprocket has an unrecgonized error */
+"Unrecognized Error" = "Erreur non reconnue";
+
+/* A status we don't recognize */
+"Unrecognized Status" = "État non reconnu";
+
 /* No comment provided by engineer. */
 "Unselect All" = "Désélectionner tout";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Utilisez du papier photo ZINK de marque HP. Chargez la Smartsheet bleue (code-barre orienté vers le bas), puis redémarrez l'imprimante. ";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Qu'est-ce que la file d'attente d'impression ?";
 
+/* The color white */
+"White" = "Blanc";
+
 /* No comment provided by engineer. */
 "Wi-Fi Required" = "Wi-Fi Requis";
 
+/* The color yellow */
+"Yellow" = "Jaune";
+
 /* No comment provided by engineer. */
 "Your device does not support the region monitoring, it is not possible to fire alarms base on position" = "Votre appareil ne prend pas en charge la surveillance de zone. Il n'est pas possible de déclencher des alarmes en fonction de sa position";
+
+/* Body of dialog giving instructions on how to proceed after a firmware upgrade */
+"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "Votre imprimante sprocket va maintenant s'éteindre. Rallumez votre imprimante sprocket et continuez à vous amuser !";
 

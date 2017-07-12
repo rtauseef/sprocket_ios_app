@@ -2,19 +2,19 @@
 "1Gm-FD-YRV.title" = "Klar";
 
 /* Class = "UILabel"; text = "By using Pitu, you also agree to the HP <Terms of Service>."; ObjectID = "3FE-mc-FrD"; */
-"3FE-mc-FrD.text" = "När du använder Pitu godkänner du HPs <villkor för tjänsten>.";
+"3FE-mc-FrD.text" = "Genom att använda Pitu godkänner du även HPs <tjänstevillkor>.";
 
 /* Class = "UINavigationItem"; title = "How To & Help"; ObjectID = "3PR-Lb-830"; */
 "3PR-Lb-830.title" = "Instruktioner och hjälp";
 
 /* Class = "UILabel"; text = "By authenticating with social sources you also agree to HP <Terms of Service>."; ObjectID = "3rx-Fp-iLE"; */
-"3rx-Fp-iLE.text" = "När du loggar in med konton för sociala medier godkänner du HPs <villkor för tjänsten>.";
+"3rx-Fp-iLE.text" = "By authenticating with social sources you also agree to HP <Terms of Service>.";
 
 /* Class = "UILabel"; text = "By authenticating with Instagram, you also agree with HP’s <Terms of Service>."; ObjectID = "3t6-KR-FbJ"; */
-"3t6-KR-FbJ.text" = "När du loggar in med Instagram godkänner du HPs <villkor för tjänsten>.";
+"3t6-KR-FbJ.text" = "Genom att logga in med Instagram godkänner du även HPs <tjänstevillkor>.";
 
 /* Class = "UILabel"; text = "Reset Sprocket Printer"; ObjectID = "4go-MT-3C1"; */
-"4go-MT-3C1.text" = "Återställ Sprocket-fotoskrivare";
+"4go-MT-3C1.text" = "Återställ sprocket-fotoskrivare";
 
 /* Class = "UILabel"; text = "Join Support Forum"; ObjectID = "7Vs-BF-yHI"; */
 "7Vs-BF-yHI.text" = "Gå med i supportforum";
@@ -26,7 +26,7 @@
 "8WR-66-byL.title" = "Klar";
 
 /* Class = "UINavigationItem"; title = "Setup Sprocket Printer"; ObjectID = "9rP-Vf-tjP"; */
-"9rP-Vf-tjP.title" = "Installer Sprocket-fotoskrivare";
+"9rP-Vf-tjP.title" = "Installera sprocket-fotoskrivare";
 
 /* Class = "UILabel"; text = "Visit Support Website"; ObjectID = "34K-Xv-dA8"; */
 "34K-Xv-dA8.text" = "Besök webbplats för support";
@@ -39,6 +39,9 @@
 
 /* Class = "UIButton"; normalTitle = "More Help"; ObjectID = "BV3-xe-r0y"; */
 "BV3-xe-r0y.normalTitle" = "Mer hjälp";
+
+/* Class = "UILabel"; text = "Album Title"; ObjectID = "BfZ-Hp-dCM"; */
+"BfZ-Hp-dCM.text" = "Albumtitel";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "DG2-Ok-pfm"; */
 "DG2-Ok-pfm.normalTitle" = "Logga in";
@@ -74,7 +77,7 @@
 "J10-Gj-77T.title" = "Klar";
 
 /* Class = "UINavigationItem"; title = "Camera Roll"; ObjectID = "JEt-SU-tLR"; */
-"JEt-SU-tLR.title" = "Kamerarulle";
+"JEt-SU-tLR.title" = "Camera Roll";
 
 /* Class = "UILabel"; text = "Press and hold the power button until the LED turns white."; ObjectID = "JrW-zx-uoD"; */
 "JrW-zx-uoD.text" = "Tryck på och håll strömknappen intryckt tills LED-lampan blir vit.";
@@ -95,7 +98,7 @@
 "MgL-Ve-2Gu.normalTitle" = "Gå vidare till appen";
 
 /* Class = "UINavigationItem"; title = "Reset Sprocket Printer"; ObjectID = "OOG-XB-1r0"; */
-"OOG-XB-1r0.title" = "Återställ Sprocket-fotoskrivare";
+"OOG-XB-1r0.title" = "Återställ sprocket-fotoskrivare";
 
 /* Class = "UIBarButtonItem"; title = " "; ObjectID = "OWM-HV-MZn"; */
 "OWM-HV-MZn.title" = "";
@@ -103,14 +106,14 @@
 /* Class = "UILabel"; text = "Copyright (c) 2016"; ObjectID = "P9D-sI-bhx"; */
 "P9D-sI-bhx.text" = "Copyright (c) 2016";
 
-/* Class = "UILabel"; text = "Menu Item"; ObjectID = "Ptp-oP-RvF"; */
-"Ptp-oP-RvF.text" = "Meny-punkt";
-
 /* Class = "UILabel"; text = "New Feature!"; ObjectID = "Pzx-yx-Rfc"; */
 "Pzx-yx-Rfc.text" = "Ny funktion!";
 
+/* Class = "UILabel"; text = "Messenger Support"; ObjectID = "QGa-kv-h0O"; */
+"QGa-kv-h0O.text" = "Messenger-support";
+
 /* Class = "UILabel"; text = "By authenticating with Flickr, you also agree with HP’s <Terms of Service>."; ObjectID = "QQK-QP-Amd"; */
-"QQK-QP-Amd.text" = "När du loggar in med Flickr godkänner du HPs <villkor för tjänsten>.";
+"QQK-QP-Amd.text" = "Genom att logga in med Flickr godkänner du även HPs <tjänstevillkor>.";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "QeE-ya-uIL"; */
 "QeE-ya-uIL.text" = "Titel";
@@ -124,17 +127,6 @@
 /* Class = "UINavigationItem"; title = "Facebook"; ObjectID = "R8u-lf-hRh"; */
 "R8u-lf-hRh.title" = "Facebook";
 
-/* Class = "UITextView"; text = "While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Flickr accounts to create and print content of your choice. \n\nUse of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.\n\nTo print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.\n\nIf you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. \n\nTo improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. "; ObjectID = "TEb-3v-7vp"; */
-"TEb-3v-7vp.text" = "När du använder appen kan du ansluta till Internet och skapa och skriva ut önskat innehåll med ditt Instagram-, Facebook- eller Flickr-konto. 
-
-Användning av appen kan kräva Internet-anslutning. Trådlösa prestanda beror på den fysiska miljön och avståndet till en åtkomstpunkt. Dataabonnemang eller användningsavgifter som köps separat kan tillkomma. Utskriftstider och anslutningshastigheter kan variera.
-
-För att skriva ut behöver du en HP Sprocket fotoskrivare. Bluetooth måste vara aktiverat på den mobila enheten, HP Sprocket fotoskrivare måste vara påslagen och skrivaren måste vara hopparad med den mobila enheten.
-
-Om du använder ett datanätverk som Internet-anslutning kan det tillkomma ytterligare kostnader för dataanvändning beroende på datanätverksabonnemanget. 
-
-För att förbättra kommande versioner av appen och HPs skrivare samlar HP regelbundet in anonyma användningsdata från appen. ";
-
 /* Class = "UINavigationItem"; title = "Instagram"; ObjectID = "TkY-hv-gvt"; */
 "TkY-hv-gvt.title" = "Instagram";
 
@@ -142,7 +134,7 @@ För att förbättra kommande versioner av appen och HPs skrivare samlar HP rege
 "U9F-p5-X9c.text" = "Version 1.0";
 
 /* Class = "UILabel"; text = "By authenticating with Facebook, you also agree with HP’s <Terms of Service>."; ObjectID = "UGC-Wa-Xa2"; */
-"UGC-Wa-Xa2.text" = "Genom att logga in med Facebook godkänner du även HPs <villkor för tjänsten>.";
+"UGC-Wa-Xa2.text" = "Genom att logga in med Facebook godkänner du även HPs <tjänstevillkor>.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "VKP-mJ-ZZt"; */
 "VKP-mJ-ZZt.text" = "Information";
@@ -154,7 +146,7 @@ För att förbättra kommande versioner av appen och HPs skrivare samlar HP rege
 "WMv-7o-mbb.text" = "sprocket";
 
 /* Class = "UILabel"; text = "Saved to Camera Roll"; ObjectID = "XgH-Dx-oow"; */
-"XgH-Dx-oow.text" = "Sparad till kamerarulle";
+"XgH-Dx-oow.text" = "Saved to Camera Roll";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "YEZ-Yd-vcV"; */
 "YEZ-Yd-vcV.text" = "Ta eller välj ett foto";
@@ -163,7 +155,7 @@ För att förbättra kommande versioner av appen och HPs skrivare samlar HP rege
 "Yx0-Cs-62a.title" = "sprocket";
 
 /* Class = "UILabel"; text = "By using Camera Roll, you also agree to the HP <Terms of Service>."; ObjectID = "Z1T-tw-tdj"; */
-"Z1T-tw-tdj.text" = "När du använder kamerarullen godkänner du HPs <villkor för tjänsten>.";
+"Z1T-tw-tdj.text" = "By using Camera Roll, you also agree to the HP <Terms of Service>.";
 
 /* Class = "UIButton"; normalTitle = "Photos"; ObjectID = "Zq3-aI-5TN"; */
 "Zq3-aI-5TN.normalTitle" = "Foton";
@@ -190,14 +182,26 @@ från dina favoritappar för kreativitet!";
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "eVm-WV-iXE"; */
 "eVm-WV-iXE.normalTitle" = "Logga in";
 
+/* Class = "UILabel"; text = "Give Feedback"; ObjectID = "eit-2j-VKG"; */
+"eit-2j-VKG.text" = "Ge feedback";
+
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "fRU-DF-pcn"; */
 "fRU-DF-pcn.normalTitle" = "Redigera";
+
+/* Class = "UILabel"; text = "%@ Copy"; ObjectID = "g9Y-KF-FRi"; */
+"g9Y-KF-FRi.text" = "%@ Kopiera";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ga4-if-IR4"; */
+"ga4-if-IR4.normalTitle" = "Logga in";
 
 /* Class = "UINavigationItem"; title = "Pitu"; ObjectID = "iiX-WR-2Je"; */
 "iiX-WR-2Je.title" = "Pitu";
 
 /* Class = "UINavigationItem"; title = "Select Template"; ObjectID = "ipg-92-MP9"; */
 "ipg-92-MP9.title" = "Välj mall";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "iqE-FT-oz5"; */
+"iqE-FT-oz5.text" = "Etikett";
 
 /* Class = "UILabel"; text = "Take or select a photo"; ObjectID = "krD-fF-9ON"; */
 "krD-fF-9ON.text" = "Ta eller välj ett foto";
@@ -216,13 +220,16 @@ på menyn ”Mer” när du delar.";
 "mh8-hT-PMS.text" = "Nyhet! Skriv ut senare med vår utskriftskö";
 
 /* Class = "UILabel"; text = "Setup Sprocket Printer"; ObjectID = "nYV-cn-yZe"; */
-"nYV-cn-yZe.text" = "Installer Sprocket-fotoskrivare";
+"nYV-cn-yZe.text" = "Installera sprocket-fotoskrivare";
+
+/* Class = "UILabel"; text = "Photo Count"; ObjectID = "ncN-EJ-cY0"; */
+"ncN-EJ-cY0.text" = "Fotoantal";
 
 /* Class = "UINavigationItem"; title = "Flickr"; ObjectID = "ncc-Qr-0mC"; */
 "ncc-Qr-0mC.title" = "Flickr";
 
 /* Class = "UILabel"; text = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>."; ObjectID = "ob1-ZF-jEd"; */
-"ob1-ZF-jEd.text" = "När du loggar in med Qzone godkänner du även HPs <villkor för tjänsten>.";
+"ob1-ZF-jEd.text" = "By authenticating with Qzone, you also agree with HP’s <Terms of Service>.";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "ofB-Rh-sga"; */
 "ofB-Rh-sga.text" = "Information";
@@ -237,15 +244,18 @@ på menyn ”Mer” när du delar.";
 "r8A-4l-TdM.text" = "sprocket";
 
 /* Class = "UILabel"; text = "Locate the Reset pin-hole near the charging port. Insert a straight pin into the hole to press the button inside. Press the Power button until the LED indicator turns white to restart the printer."; ObjectID = "sIS-tD-Si9"; */
-"sIS-tD-Si9.text" = "Leta reda på återställningshålet nära laddningsporten. För in en rak nål i hålet och tryck på knappen inuti. Starta om skrivaren genom att trycka på strömknappen tills LED-indikatorn blir vit.";
+"sIS-tD-Si9.text" = "Leta upp återställningshålet nära laddningsporten. För in en rak nål i hålet och tryck på knappen inuti. Starta om skrivaren genom att trycka på strömknappen tills LED-indikatorn blir vit.";
 
 /* Class = "UILabel"; text = "Don’t forget to Print & Share your design"; ObjectID = "tmd-Ot-zoO"; */
 "tmd-Ot-zoO.text" = "Glöm inte att skriva ut och dela din design";
+
+/* Class = "UILabel"; text = "By authenticating with Google, you also agree with HP’s <Terms of Service>."; ObjectID = "w3A-HJ-eXe"; */
+"w3A-HJ-eXe.text" = "Genom att logga in med Google godkänner du även HPs <tjänstevillkor>.";
 
 /* Class = "UILabel"; text = "WeChat Support"; ObjectID = "w68-hT-Ur3"; */
 "w68-hT-Ur3.text" = "WeChat Support";
 
 /* Class = "UILabel"; text = "Select an option below for sprocket\nprinter and app support."; ObjectID = "znF-lh-wdy"; */
-"znF-lh-wdy.text" = "Välj ett alternativ nedan för support för sprocket
--skrivare och appen.";
+"znF-lh-wdy.text" = "Select an option below for sprocket
+printer and app support.";
 

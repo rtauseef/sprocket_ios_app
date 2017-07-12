@@ -21,6 +21,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
 @interface HPPRSelectPhotoCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mediaTypeImageView; // overlay for video or live photo icon
 @property (weak, nonatomic) IBOutlet UIImageView *loadingImage;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -36,6 +37,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     [super awakeFromNib];
     self.imageView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRLoadingCellBackgroundColor];
     self.loadingImage.hidden = NO;
+    self.mediaTypeImageView.hidden = YES;
     self.overlayView.alpha = 0;
     self.selectionView.hidden = !self.selectionEnabled;
 }
@@ -45,7 +47,7 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     if (media) {
         _media = media;
         self.imageView.image = nil;
-        
+        self.mediaTypeImageView.hidden = YES;
         if (media.asset) {
             if (self.retrieveLowQuality) {
                 [media requestThumbnailImageWithCompletion:^(UIImage *image) {
@@ -60,21 +62,19 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
             return;
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^ {
-            if (self.retrieveLowQuality) {
-                [[HPPRCacheService sharedInstance] imageForUrl:self.media.thumbnailUrl asThumbnail:YES withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    if ([_media.thumbnailUrl isEqualToString:url]) {
-                        [self setImage:image];
-                    }
-                }];
-            } else {
-                [[HPPRCacheService sharedInstance] imageForUrl:self.media.standardUrl asThumbnail:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
-                    if ([_media.standardUrl isEqualToString:url]) {
-                        [self setImage:image];
-                    }
-                }];
-            }
-        });
+        if (self.retrieveLowQuality) {
+            [[HPPRCacheService sharedInstance] imageForUrl:self.media.thumbnailUrl asThumbnail:YES highPriority:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if ([_media.thumbnailUrl isEqualToString:url]) {
+                    [self setImage:image];
+                }
+            }];
+        } else {
+            [[HPPRCacheService sharedInstance] imageForUrl:self.media.standardUrl asThumbnail:NO highPriority:NO withCompletion:^(UIImage *image, NSString *url, NSError *error) {
+                if ([_media.standardUrl isEqualToString:url]) {
+                    [self setImage:image];
+                }
+            }];
+        }
     }
 }
 
@@ -86,9 +86,16 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
             self.loadingImage.hidden = YES;
         }
     } else {
-        dispatch_async(dispatch_get_main_queue(), ^ {
+        dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = image;
             self.loadingImage.hidden = YES;
+            if (_media.mediaType == HPPRMediaTypeVideo) {
+                // display overlay
+                self.mediaTypeImageView.hidden = NO;
+                // TODO set overlay icon
+            } else {
+                self.mediaTypeImageView.hidden = YES;
+            }
             [self setNeedsLayout];
         });
     }
@@ -115,22 +122,34 @@ CGFloat const kHPPRSelectPhotoCollectionViewCellOverlayAlpha = 0.75;
     self.contentView.frame = bounds;
 }
 
-- (void)showLoading
+- (void)showLoadingAnimated:(BOOL)animated
 {
-    [self.activityIndicator startAnimating];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
-    }];
+    if (!self.activityIndicator.isAnimating) {
+        [self.activityIndicator startAnimating];
+        if (animated) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
+            }];
+        } else {
+            self.overlayView.alpha = kHPPRSelectPhotoCollectionViewCellOverlayAlpha;
+        }
+    }
     
     self.userInteractionEnabled = NO;
 }
 
-- (void)hideLoading
+- (void)hideLoadingAnimated:(BOOL)animated
 {
-    [self.activityIndicator stopAnimating];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.overlayView.alpha = 0;
-    }];
+    if (self.activityIndicator.isAnimating) {
+        [self.activityIndicator stopAnimating];
+        if (animated) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.overlayView.alpha = 0;
+            }];
+        } else {
+            self.overlayView.alpha = 0;
+        }
+    }
     
     self.userInteractionEnabled = YES;
 }

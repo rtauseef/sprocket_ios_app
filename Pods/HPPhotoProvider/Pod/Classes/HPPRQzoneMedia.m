@@ -26,6 +26,8 @@
 
         NSInteger createdTimeSince1970 = [[attributes valueForKey:@"uploaded_time"] integerValue];
         self.createdTime = [NSDate dateWithTimeIntervalSince1970:createdTimeSince1970];
+
+        self.mediaType = HPPRMediaTypeImage;
         
         self.text = [attributes objectForKey:@"desc"];
     }

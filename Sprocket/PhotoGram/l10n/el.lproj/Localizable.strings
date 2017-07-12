@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld από %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li εκτύπωση στην Ουρά εκτύπωσης";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li εκτυπώσεις στην Ουρά εκτύπωσης";
+
+/* No comment provided by engineer. */
 "About" = "Πληροφορίες";
 
 /* Body of Camera Access Required dialog */
@@ -16,6 +25,9 @@
 /* No comment provided by engineer. */
 "Buy Paper" = "Αγορά χαρτιού";
 
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "Εφόσον επιλέξετε να ολοκληρώσετε τη διαδικασία ελέγχου ταυτότητας μέσω του %@, συμφωνείτε και με τους <Όρους χρήσης> της ΗΡ.";
+
 /* We must be able to use the camera on the user's phone */
 "Camera Access Required" = "Απαιτείται πρόσβαση στην κάμερα";
 
@@ -31,6 +43,18 @@
 
 /* Setup step 3 desc */
 "Connect" = "Σύνδεση";
+
+/* Number of Copies for printing */
+"Copies" = "Αντίγραφα";
+
+/* Number of Copies for printing */
+"Copy" = "Αντίγραφο";
+
+/* No comment provided by engineer. */
+"Delete All" = "Διαγραφή όλων";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "Διαγραφή όλων των εκτυπώσεων από την Ουρά εκτύπωσης;";
 
 /* Allows user to decline firmware upgrade without taking any action */
 "Dismiss" = "Κλείσιμο";
@@ -62,23 +86,11 @@
 /* Social source title for Flickr */
 "Flickr" = "Flickr";
 
-/* No comment provided by engineer. */
-"Floral 2 Frame" = "Πλαίσιο λουλουδιών 2";
-
-/* No comment provided by engineer. */
-"Floral Frame" = "Πλαίσιο λουλουδιών";
-
 /* Instructions for connecting a phone to a printer via bluetooth */
 "From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "Στο μενού \"Ρυθμίσεις Bluetooth\", πατήστε \"HP Sprocket\" για να γίνει σύζευξη με τον εκτυπωτή.";
 
-/* No comment provided by engineer. */
-"Give Feedback" = "Αποστολή σχολίων";
-
-/* No comment provided by engineer. */
-"Gradient Frame" = "Ντεγκραντέ πλαίσιο";
-
-/* No comment provided by engineer. */
-"Green Water Color Frame" = "Πλαίσιο με πράσινη νερομπογιά";
+/* Social source title for Google */
+"Google" = "Google";
 
 /* No comment provided by engineer. */
 "How To" = "Οδηγίες";
@@ -89,14 +101,14 @@
 /* Social source title for Instagram */
 "Instagram" = "Instagram";
 
-/* No comment provided by engineer. */
-"Kraft Frame" = "Πλαίσιο Kraft";
-
 /* Setup step 1 desc */
 "Load Paper" = "Τοποθέτηση χαρτιού";
 
 /* No comment provided by engineer. */
 "Log file has been cleared." = "Το αρχείο καταγραφής έχει διαγραφεί.";
+
+/* No comment provided by engineer. */
+"NO" = "ΟΧΙ";
 
 /* Dismisses dialog without taking action */
 "No" = "Όχι";
@@ -110,20 +122,33 @@
 /* Message displayed when no images from the Qzone app can be found */
 "No Qzone app images found" = "Δεν βρέθηκαν εικόνες από την εφαρμογή Qzone";
 
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "Καμία εκτύπωση στην Ουρά εκτύπωσης";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "Όχι, να διατηρηθούν";
+
 /* No comment provided by engineer. */
 "No, thanks" = "Όχι, ευχαριστώ";
 
-/* Allows user close dialog */
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "Δεν έγινε λήψη όλων των εικόνων. Θέλετε να συνεχίσετε;";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
 "Oops!" = "Ουπς!";
 
-/* No comment provided by engineer. */
-"Orange Frame" = "Πορτοκαλί πλαίσιο";
+/* Dismisses dialog and pauses printing */
+"Pause" = "Παύση";
 
 /* No comment provided by engineer. */
-"Pink Spray Paint Frame" = "Πλαίσιο με ροζ σπρέι";
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "Οι φωτογραφίες θα εκτυπώνονται με τη σειρά που προστέθηκαν στην Ουρά εκτύπωσης, αφού ο εκτυπωτής sprocket ενεργοποιηθεί και συνδεθεί το Bluetooth.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "Οι φωτογραφίες θα εκτυπωθούν με την σειρά που προστέθηκαν στην Ουρά εκτύπωσης.";
 
 /* Social source title for Pitu */
 "Pitu" = "Pitu";
@@ -136,14 +161,17 @@ You can also use your device photos." = "Συνδεθείτε σε μια πηγ
 /* Ask the user to take a survey to say his opinion of the app */
 "Please tell us what is awesome and what could be better!" = "Πείτε μας τις σας ενθουσίασε και τι θα μπορούσαμε να βελτιώσουμε!";
 
-/* No comment provided by engineer. */
-"Polka Dots Frame" = "Πουά πλαίσιο";
-
 /* Setup step 2 desc */
 "Power Up" = "Ενεργοποίηση";
 
 /* Instructions for turning a printer on */
 "Press and hold the power button until the LED turns white." = "Πατήστε παρατεταμένα το κουμπί λειτουργίας, μέχρι η φωτεινή ένδειξη LED να γίνει λευκή.";
+
+/* No comment provided by engineer. */
+"Print" = "Εκτύπωση";
+
+/* No comment provided by engineer. */
+"Print Queue" = "Ουρά εκτύπωσης";
 
 /* No comment provided by engineer. */
 "Printers" = "Εκτυπωτές";
@@ -156,9 +184,6 @@ You can also use your device photos." = "Συνδεθείτε σε μια πηγ
 
 /* Social source title for Qzone */
 "Qzone" = "Qzone";
-
-/* No comment provided by engineer. */
-"Red Frame" = "Κόκκινο πλαίσιο";
 
 /* No comment provided by engineer. */
 "Remind me later" = "Υπενθύμιση αργότερα";
@@ -184,6 +209,9 @@ You can also use your device photos." = "Συνδεθείτε σε μια πηγ
 /* No comment provided by engineer. */
 "Save to Camera Roll" = "Αποθήκευση στο άλμπουμ της κάμερας";
 
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "Αποστολή στον εκτυπωτή sprocket σε εξέλιξη";
+
 /* Button for opening the app settings */
 "Settings" = "Ρυθμίσεις";
 
@@ -194,13 +222,13 @@ You can also use your device photos." = "Συνδεθείτε σε μια πηγ
 "Sign Out" = "Αποσύνδεση";
 
 /* No comment provided by engineer. */
-"Sloppy Frame" = "Πρόχειρο πλαίσιο";
-
-/* No comment provided by engineer. */
 "Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "Δυστυχώς, δεν είναι δυνατό να γίνει αναφορά του προβλήματος που αντιμετωπίζετε αυτή τη στιγμή. Πιθανότατα, αυτό οφείλεται στο γεγονός ότι δεν έχετε ορίσει κάποιον λογαριασμό email στη φορητή συσκευή σας.";
 
 /* Title for dialog that prompts user to ugrade device firmware */
 "Sprocket Printer Firmware Upgrade Available" = "Διαθέσιμη αναβάθμιση υλικολογισμικού για τον εκτυπωτή sprocket";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Ο εκτυπωτής sprocket δεν είναι συνδεδεμένος";
 
 /* Setup step 1 title */
 "Step 1" = "Βήμα 1";
@@ -238,47 +266,20 @@ You can also use your device photos." = "Συνδεθείτε σε μια πηγ
 /* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
 "To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "Για να κάνετε αναβάθμιση, φορτίστε τον εκτυπωτή sprocket σε ποσοστό τουλάχιστον 75% και έπειτα πηγαίνετε στην επιλογή \"sprocket\" στο μενού.";
 
-/* No comment provided by engineer. */
-"Turquoise Frame" = "Τιρκουάζ πλαίσιο";
-
 /* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
 "Upgrade" = "Αναβάθμιση";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Frame" = "Πλαίσιο με καρδιές για τον Άγιο Βαλεντίνο";
-
-/* No comment provided by engineer. */
-"Valentines Hearts Overlay Frame" = "Πλαίσιο επικάλυψης με καρδιές για τον Άγιο Βαλεντίνο";
-
-/* No comment provided by engineer. */
-"Valentines Pink Polka Frame" = "Ροζ πουά πλαίσιο για τον Άγιο Βαλεντίνο";
-
-/* No comment provided by engineer. */
-"Valentines Pink Watercolor Frame" = "Πλαίσιο με ροζ νερομπογιά για τον Άγιο Βαλεντίνο";
-
-/* No comment provided by engineer. */
-"Valentines Red Frame" = "Κόκκινο πλαίσιο για τον Άγιο Βαλεντίνο";
-
-/* No comment provided by engineer. */
-"Valentines Red Stripes Frame" = "Κόκκινο ριγέ πλαίσιο για τον Άγιο Βαλεντίνο";
 
 /* Version number and build of the app */
 "Version %@ (%@)" = "Έκδοση %1$@ (%2$@)";
 
-/* No comment provided by engineer. */
-"Water Blue Frame" = "Γαλάζιο πλαίσιο";
-
 /* Social source title for WeiBo */
 "WeiBo" = "WeiBo";
 
-/* No comment provided by engineer. */
-"White Frame" = "Λευκό πλαίσιο";
-
-/* No comment provided by engineer. */
-"Wood Bottom Frame" = "Ξύλινο κάτω πλαίσιο";
-
 /* Ask user if he/she wishes to sign out of a particular social media site. */
 "Would you like to sign out of %@?" = "Θέλετε να αποσυνδεθείτε από το %@;";
+
+/* No comment provided by engineer. */
+"YES" = "ΝΑΙ";
 
 /* Dismisses dialog, and chooses to save photos */
 "Yes" = "Ναι";

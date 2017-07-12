@@ -17,13 +17,13 @@
 
 @interface MPBTAutoOffTableViewController : UITableViewController
 
-@property (assign, nonatomic) MantaAutoPowerOffInterval currentAutoOffValue;
+@property (assign, nonatomic) SprocketAutoPowerOffInterval currentAutoOffValue;
 @property (weak, nonatomic) id<MPBTAutoOffTableViewControllerDelegate> delegate;
 
 @end
 
 @protocol MPBTAutoOffTableViewControllerDelegate <NSObject>
 
-- (void)didSelectAutoOffInterval:(MantaAutoPowerOffInterval)sprocket;
+- (void)didSelectAutoOffInterval:(SprocketAutoPowerOffInterval)sprocket;
 
 @end;

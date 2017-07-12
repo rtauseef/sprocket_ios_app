@@ -25,6 +25,7 @@
 - (BOOL)completed;
 
 extern NSString * const kMPBTImageProcessorPrinterSerialNumberKey;
+extern NSString * const kMPBTImageProcessorLocalIdentifierKey;
 
 @end
 

@@ -15,15 +15,18 @@
 
 @interface HPPRInstagramMedia()
 
-@property (strong, nonatomic) NSString *placeName;
-
 @end
 
 @implementation HPPRInstagramMedia
 
-+ (BOOL)isImage:(NSDictionary *)mediaDict
++ (BOOL)shouldPresent:(NSDictionary *)mediaDict
 {
     NSString *type = [mediaDict objectForKey:@"type"];
+    
+    if ([[HPPRInstagramPhotoProvider sharedInstance] displayVideos]) {
+        return YES;
+    }
+    
     if ([type isEqualToString:@"image"]) {
         return YES;
     } else {
@@ -37,6 +40,7 @@
     
     if (self) {
         self.objectID = [attributes valueForKey:@"id"];
+        self.socialProvider = HPPRSocialMediaProviderInstagram;
 
         self.userName = [attributes valueForKeyPath:@"user.username"];
         self.userProfilePicture = [attributes valueForKeyPath:@"user.profile_picture"];
@@ -52,6 +56,18 @@
         NSInteger createdTimeSince1970 = [[attributes valueForKey:@"created_time"] integerValue];
         self.createdTime = [NSDate dateWithTimeIntervalSince1970:createdTimeSince1970];
         
+        if ([[attributes valueForKey:@"type"] isEqualToString:@"video"]) {
+            self.mediaType = HPPRMediaTypeVideo;
+            
+            NSString *videoURL = [attributes valueForKeyPath:@"videos.standard_resolution.url"];
+            
+            if (videoURL != nil) {
+                self.assetURL = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoURL] options:nil];
+                self.videoPlaybackUri = videoURL;
+            }
+        } else { // TODO: handle image sequence
+            self.mediaType = HPPRMediaTypeImage;
+        }
         
         self.text = [attributes valueForKeyPath:@"caption.text"];
         
@@ -66,7 +82,7 @@
             if (latitude && longitude) {
                 self.location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
             }
-            self.placeName = [location objectForKey:@"name"];
+            self.locationName = [location objectForKey:@"name"];
         }
     }
     
@@ -76,8 +92,8 @@
 - (NSArray *)additionalLocations
 {
     NSMutableArray *locations = [NSMutableArray array];
-    if (self.placeName) {
-        [locations addObject:self.placeName];
+    if (self.locationName) {
+        [locations addObject:self.locationName];
     }
     return [NSArray arrayWithArray:locations];
 }

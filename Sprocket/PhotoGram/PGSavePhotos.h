@@ -15,11 +15,14 @@
 
 @interface PGSavePhotos : NSObject
 
-+ (void)saveImage:(UIImage *)image completion:(void (^)(BOOL))completion;
-+ (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL))completion;
++ (void)saveVideo:(AVURLAsset *)asset completion:(void (^)(BOOL, PHAsset*))completion;
++ (void)saveImage:(UIImage *)image toAssetCollection:(PHAssetCollection *)assetCollection completion:(void (^)(BOOL, PHAsset*))completion;
++ (void)saveImage:(UIImage *)image completion:(void (^)(BOOL, PHAsset*))completion;
++ (void)saveImageFake:(UIImage *)image completion:(void (^)(BOOL, PHAsset*))completion;
 
 + (BOOL)savePhotos;
 + (void)setSavePhotos:(BOOL)save;
 + (BOOL)userPromptedToSavePhotos;
++ (void)promptToSavePhotos:(UIViewController *)viewController completion:(void(^)(BOOL savePhotos))completion;
 
 @end

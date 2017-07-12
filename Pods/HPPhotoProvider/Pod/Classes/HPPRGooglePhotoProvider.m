@@ -28,7 +28,6 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
 @property (nonatomic, assign) NSInteger nextPhoto;
 @property (nonatomic, strong) NSString *numberOfAllPhotos;
 @property (nonatomic, strong) NSString *lastUserID;
-@property (nonatomic, strong) NSMutableArray *currentItems;
 @property (nonatomic, strong) NSString *userThumbnail;
 @property (nonatomic, strong) NSString *userName;
 @property (strong) NSString *latestRequest;
@@ -50,6 +49,15 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
         sharedInstance.nextPhoto = GOOGLE_FIRST_PHOTO_INDEX;
     });
     return sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.displayVideos = [[HPPR sharedInstance] showVideos]; // default to not show videos
+    }
+    return self;
 }
 
 - (void)applicationDidStart
@@ -149,6 +157,7 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
         if (nil == error) {
             photos = [self photosFromItems:records];
             
+            
             if (nil == self.album.objectID) {
                 self.album.photoCount = [photos count];
             }
@@ -224,15 +233,19 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
     
     // We need to sub the %5B and %5D for [ and ] in order to string compare
     //  on the query returned by our NSURLRequest...
-    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium!='video'%5D(title,content,media:group/media:content,media:group/media:thumbnail)";
+    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium%5D(gphoto:timestamp,title,content,media:group/media:content,media:group/media:thumbnail,georss:where,exif:tags)";
+    
+    if (!self.displayVideos) {
+        searchFields =  @"entry%5Bmedia:group/media:content/@medium!='video'%5D(title,content,media:group/media:content,media:group/media:thumbnail)";
+    }
     
     NSString *url = [NSString stringWithFormat:@"https://picasaweb.google.com/data/feed/api/user/default?kind=photo&fields=openSearch:totalResults,gphoto:thumbnail,gphoto:nickname,%@", searchFields];
 
     if (self.album.objectID) {
-        url = [NSString stringWithFormat:@"https://picasaweb.google.com/data/feed/api/user/default/albumid/%@?fields=openSearch:totalResults,%@", self.album.objectID, searchFields];
+        url = [NSString stringWithFormat:@"https://picasaweb.google.com/data/feed/api/user/default/albumid/%@?fields=openSearch:totalResults,gphoto:timestamp,%@", self.album.objectID, searchFields];
         url = [url stringByAppendingString:[NSString stringWithFormat:@"&start-index=%@&max-results=%ld", startIndex, GOOGLE_PAGE_SIZE]];
     }
-   
+    
     [self parseXMLFileAtURL:url completion:completion];
 }
 

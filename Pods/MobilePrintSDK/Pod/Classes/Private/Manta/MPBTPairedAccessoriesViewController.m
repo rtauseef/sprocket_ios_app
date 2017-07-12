@@ -19,6 +19,7 @@
 #import "MPBTProgressView.h"
 #import "MPBTTechnicalInformationViewController.h"
 #import "MPBTStatusChecker.h"
+#import "MPBTImageProcessor.h"
 
 #import <ExternalAccessory/ExternalAccessory.h>
 #import <CoreBluetooth/CBCentralManager.h>
@@ -50,6 +51,7 @@ typedef enum : NSUInteger {
 @property (assign, nonatomic) BOOL presentedNoDevicesModal;
 
 @property (assign, nonatomic) PairedAccessoriesViewControllerMode mode;
+@property (strong, nonatomic) MPBTImageProcessor *processor;
 
 @end
 
@@ -316,8 +318,7 @@ typedef enum : NSUInteger {
         }
         
         if (nil != accessory) {
-            MPBTSprocket *sprocket = [MPBTSprocket sharedInstance];
-            sprocket.accessory = accessory;
+            [MPBTSprocket sharedInstance].accessory = accessory;
             
             if (self.completionBlock) {
                 if (nil == self.parentViewController) {
@@ -332,7 +333,7 @@ typedef enum : NSUInteger {
                 // show device info screen
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MP" bundle:[NSBundle bundleForClass:[MP class]]];
                 MPBTDeviceInfoTableViewController *settingsViewController = (MPBTDeviceInfoTableViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MPBTDeviceInfoTableViewController"];
-                settingsViewController.device = sprocket.accessory;
+                settingsViewController.device = [MPBTSprocket sharedInstance].accessory;
                 
                 UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
                 

@@ -22,7 +22,7 @@
 #define HPPR_PHOTO_COLLECTION_BEGIN_REFRESH @"PhotoCollectionBeginRefresh"
 #define HPPR_PHOTO_COLLECTION_END_REFRESH @"PhotoCollectionEndRefresh"
 
-#define FACEBOOK_PERMISSIONS @[@"public_profile", @"user_photos"]
+#define FACEBOOK_PERMISSIONS @[@"public_profile", @"user_videos", @"user_photos"]
 
 #define FLICKR_MAX_PER_PAGE @"50"
 #define FLICKR_MAX_FAVORITES_PER_PAGE @"50"
@@ -80,6 +80,7 @@ extern NSString * const kHPPRProviderName;
 @property (nonatomic, strong) NSString *instagramRedirectURL;
 @property (nonatomic, assign) BOOL immediateLoginAlert;
 @property (nonatomic, assign) BOOL preventHideLoginAlert;
+@property (nonatomic, assign) BOOL showVideos;
 @property (nonatomic, strong) HPPRAppearance *appearance;
 
 @property (nonatomic, strong) NSString *qzoneAppId;

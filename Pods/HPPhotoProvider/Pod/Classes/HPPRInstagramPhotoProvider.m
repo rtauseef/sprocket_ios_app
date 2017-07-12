@@ -18,6 +18,7 @@
 #import "HPPRInstagramError.h"
 #import "UIView+HPPRAnimation.h"
 #import "NSBundle+HPPRLocalizable.h"
+#import "HPPR.h"
 
 #define PHOTO_SOURCE_SEGMENTED_CONTROL_MY_PHOTOS_INDEX 0
 #define PHOTO_SOURCE_SEGMENTED_CONTROL_MY_FEED_INDEX 1
@@ -55,7 +56,17 @@ enum MCInstagramDisplayType {
         sharedInstance = [[HPPRInstagramPhotoProvider alloc] init];
         sharedInstance.loginProvider = [HPPRInstagramLoginProvider sharedInstance];
     });
+    
     return sharedInstance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.displayVideos = [[HPPR sharedInstance] showVideos]; // default to not show videos
+    }
+    return self;
 }
 
 - (void)initForStandardDisplay
@@ -201,6 +212,7 @@ enum MCInstagramDisplayType {
                     // When switching between my photos and my feed, the first thing the app do is canceling the current request. When this happens the AFNetworking protocol used for communicating with the instagram API returns "The operation couldn’t be completed"
                     break;
                 case INSTAGRAM_NO_INTERNET_CONNECTION:
+                case INSTAGRAM_TIME_OUT_ERROR:
                     [weakSelf lostConnection];
                     break;
                 case INSTAGRAM_TOKEN_IS_INVALID:
@@ -238,7 +250,6 @@ enum MCInstagramDisplayType {
             NSUInteger imageCount = records.count;
             
             if (records != nil) {
-                
                 weakSelf.nextPageImagesMaxId = [instagramPage valueForKeyPath:@"pagination.next_max_id"];
                 
                 if (reload) {
@@ -253,7 +264,6 @@ enum MCInstagramDisplayType {
                     last = NO;
                     [weakSelf requestImagesWithCompletion:completion andReloadAll:NO lastRequestOfTheChain:YES];
                 }
-                
             }
         }
         
@@ -272,6 +282,32 @@ enum MCInstagramDisplayType {
     else {
         [HPPRInstagramUserMedia userMediaRecentWithId:@"self" nextMaxId:self.nextPageImagesMaxId completion:completionBlock];
     }
+}
+
+- (NSArray *)filterRecordsForDate:(NSDate *)filterDate andRecords:(NSArray *)records {
+    NSMutableArray *updatedRecords = [NSMutableArray array];
+    
+    for (HPPRMedia *instagramMedia in records) {
+        if ([[NSCalendar currentCalendar] isDate:filterDate inSameDayAsDate:instagramMedia.createdTime]) {
+            [updatedRecords addObject:instagramMedia];
+        }
+    }
+    
+    return updatedRecords;
+}
+
+- (NSArray *)filterRecordsForLocation:(CLLocation *)filterLocation distance:(int)distance andRecords:(NSArray *)records {
+    NSMutableArray *updatedRecords = [NSMutableArray array];
+    
+    for (HPPRMedia *instagramMedia in records) {
+        if (instagramMedia.location != nil) {
+            if ([instagramMedia.location distanceFromLocation:filterLocation] <= distance) {
+                [updatedRecords addObject:instagramMedia];
+            }
+        }
+    }
+    
+    return updatedRecords;
 }
 
 - (void)landingPagePhotoWithRefresh:(BOOL)refresh andCompletion:(void (^)(UIImage *photo, NSError *error))completion

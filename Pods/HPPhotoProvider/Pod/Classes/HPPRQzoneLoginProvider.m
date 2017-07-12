@@ -22,7 +22,7 @@ NSString * const kQzoneProviderName = @"Qzone";
 NSString * const kQzoneUserAccessTokenExpirationDateKey = @"kQzoneUserAccessTokenExpirationDateKey";
 NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
-@interface HPPRQzoneLoginProvider() <TencentLoginDelegate, TencentApiInterfaceDelegate, TencentWebViewDelegate>
+@interface HPPRQzoneLoginProvider() <TencentSessionDelegate>
 
 @property (nonatomic, strong) TencentOAuth *loginManager;
 @property (nonatomic, strong) void (^loginCompletion)(BOOL loggedIn, NSError *error);
@@ -112,7 +112,8 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 
 - (BOOL)isAccesTokenValid
 {
-    return ((self.loginManager.accessToken && 0) != self.loginManager.accessToken.length);
+    NSDate *today = [NSDate date];
+    return (self.loginManager.accessToken  &&  (0 < self.loginManager.accessToken.length) && self.loginManager.expirationDate && ([today earlierDate:self.loginManager.expirationDate] == today));
 }
 
 - (void)logoutWithCompletion:(void (^)(BOOL loggedOut, NSError *error))completion
@@ -137,6 +138,9 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
     if (self.loginCompletion) {
         [self setAccessToken];
         [self.loginManager getUserInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION
+                                                            object:nil
+                                                          userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     }
 }
 
@@ -144,6 +148,9 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 {
     if (self.loginCompletion) {
         self.loginCompletion(NO, nil);
+        [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_CANCEL_NOTIFICATION
+                                                            object:nil
+                                                          userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kHPPRProviderName]];
     }
 }
 
@@ -246,7 +253,6 @@ NSString * const kQzoneOpenIdKey = @"kQzoneOpenIdKey";
 {
     self.user = [response jsonResponse];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:HPPR_PROVIDER_LOGIN_SUCCESS_NOTIFICATION object:nil userInfo:[NSDictionary dictionaryWithObject:[self providerName] forKey:kQzoneProviderName]];
     self.loginCompletion([self isAccesTokenValid], nil);
 }
 

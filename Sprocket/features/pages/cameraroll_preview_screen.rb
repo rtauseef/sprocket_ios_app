@@ -16,10 +16,6 @@ class CameraRollPreviewScreen < Calabash::IBase
       
   end
 
-  def edit
-         "view marked:'Edit'"
-  end
-
   def print
           "* id:'printButton'"
   end
@@ -52,7 +48,7 @@ end
        "* id:'PreviewBarDots'" 
     end
     
-    def print_queue
+    def printqueue
         "view marked:'Print Queue'" 
     end
     
@@ -67,6 +63,7 @@ end
 def close
     "button"
   end
+  
 def navigate
   unless current_page?
     select_photo_screen = go_to(CameraRollPhotoScreen)

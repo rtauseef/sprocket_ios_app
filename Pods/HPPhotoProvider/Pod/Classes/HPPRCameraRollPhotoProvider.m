@@ -70,12 +70,22 @@ int const kPhotosPerRequest = 50;
 - (NSString *)headerText
 {
     NSMutableString *text = [NSMutableString stringWithFormat:@"%@", self.album.name];
-    NSUInteger count = self.album.photoCount;
+    NSUInteger photoCount = self.album.photoCount;
     
-    if (1 == count) {
+    if (1 == photoCount) {
         [text appendString:HPPRLocalizedString(@" (1 photo)", nil)];
     } else {
-        [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)count];
+        [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)photoCount];
+    }
+    
+    if (self.displayVideos) {
+        NSUInteger videoCount = self.album.videoCount;
+    
+        if (1 == videoCount) {
+            [text appendString:HPPRLocalizedString(@" (1 video)", nil)];
+        } else {
+            [text appendFormat:HPPRLocalizedString(@" (%lu videos)", @"Number of videos"), (unsigned long)videoCount];
+        }
     }
     
     return [NSString stringWithString:text];
@@ -86,7 +96,10 @@ int const kPhotosPerRequest = 50;
 - (void)requestImagesWithCompletion:(void (^)(NSArray *records))completion andReloadAll:(BOOL)reload
 {
     NSArray *records = [self getThumbnailPhotosFromCameraRoll];
-    completion(@{ @"data":records });
+
+    if (completion) {
+        completion(records);
+    }
 }
 
 #pragma mark - Albums and photos
@@ -135,9 +148,20 @@ int const kPhotosPerRequest = 50;
     HPPRAlbum *album = [[HPPRAlbum alloc] init];
     album.assetCollection = collection;
     album.photoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
+    if (self.displayVideos) {
+        album.videoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+    }
     
-    if (album.photoCount > 0) {
+    if (album.photoCount > 0 || album.videoCount > 0) {
         [albums addObject:album];
+    }
+}
+
+- (NSPredicate *)mediaFetchPredicate {
+    if (self.displayVideos) {
+        return [NSPredicate predicateWithFormat:@"mediaType = %d || mediaType = %d",PHAssetMediaTypeImage, PHAssetMediaTypeVideo];
+    } else {
+        return [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
     }
 }
 
@@ -145,12 +169,13 @@ int const kPhotosPerRequest = 50;
 {
     PHFetchOptions *allPhotosOptions = [PHFetchOptions new];
     allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    allPhotosOptions.predicate = [self mediaFetchPredicate];
     PHFetchResult *result = nil;
-    
+
     if (self.album.assetCollection) {
         result = [PHAsset fetchAssetsInAssetCollection:self.album.assetCollection options:allPhotosOptions];
     } else {
-        result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:allPhotosOptions];
+        result = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     }
     
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:result.count];

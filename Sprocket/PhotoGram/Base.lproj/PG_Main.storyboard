@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kdo-G8-qDR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -699,15 +699,17 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEb-3v-7vp" customClass="PGTextView">
                                 <rect key="frame" x="15" y="187" width="344" height="366"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Google accounts to create and print content of your choice. 
+                                <string key="text">While using this app, you will be able to connect to the Internet and use your Instagram, Facebook, or Google accounts to create and print content of your choice.
 
 Use of this app may require an Internet connecton. Wireless performance is dependent upon your physical environment and your distance from an access point. Separately purchased data plans or usage fees may apply. Print times and connection speeds may vary.
 
 To print, you’ll need an HP Sprocket Photo Printer. Your mobile device must have Bluetooth enabled, the HP Sprocket Photo Printer must be powered on, and the printer must be paired with the mobile device.
 
-If you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan. 
+If you are using a data network as your Internet connection, you many incur additional data usage costs based on your data network plan.
 
-To improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app. </string>
+To improve future versions of this app and HP Printers, HP will periodically collect annonymous usage data from this app.
+
+The copyright law of the United States (Title 17, United States Code) governs the making of photocopies or other reproductions of copyrighted material. This app should not be used in such a manner that would involve violation of copyright law or infringement of intellectual-property rights; and the user of this app is responsible for any such violation or infringement. Any use of this app to copy or otherwise reproduce copyrighted material should be without any purpose of direct or indirect commercial advantage. If a user uses a photocopy or reproduction for purposes in excess of “fair use,” that user may be liable for copyright infringement, and HP shall have no liability in connection with same.</string>
                                 <color key="textColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -949,7 +951,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-VT-qaC" userLabel="ImageSavedView">
                                         <rect key="frame" x="0.0" y="-44" width="375" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved to Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved to sprocket folder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgH-Dx-oow">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1010,7 +1012,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                             <constraint firstAttribute="height" constant="44" id="u1e-mB-xds"/>
                                         </constraints>
                                     </view>
-                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PGPreviewDrawerViewController" translatesAutoresizingMaskIntoConstraints="NO" id="emz-NR-R5x">
+                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PGPreviewDrawerViewController" translatesAutoresizingMaskIntoConstraints="NO" id="emz-NR-R5x" customClass="PGInteractionIgnorerView">
                                         <rect key="frame" x="0.0" y="517" width="375" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="9Bt-SA-WNZ"/>
@@ -1110,6 +1112,7 @@ To improve future versions of this app and HP Printers, HP will periodically col
                         <outlet property="bottomViewHeight" destination="BlW-aW-yWc" id="GeK-oc-grg"/>
                         <outlet property="cameraView" destination="pTc-Ba-zcw" id="JgV-RL-8bO"/>
                         <outlet property="carouselView" destination="j7T-DG-aYq" id="GOa-VA-czq"/>
+                        <outlet property="closeButton" destination="cG3-7c-npS" id="qAj-1Z-csi"/>
                         <outlet property="containerViewBottomConstraint" destination="wzg-ib-QVB" id="43U-1v-lvZ"/>
                         <outlet property="containerViewHeightConstraint" destination="9Bt-SA-WNZ" id="J6X-44-XKa"/>
                         <outlet property="downloadButton" destination="iMJ-5T-IcV" id="3Cf-Rt-m5Y"/>
@@ -1146,11 +1149,19 @@ To improve future versions of this app and HP Printers, HP will periodically col
                                 <subviews>
                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mH6-pf-AKH" userLabel="Gradient View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previewInterstitialEN" translatesAutoresizingMaskIntoConstraints="NO" id="rpw-Op-YWZ" userLabel="Image View">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="rpw-Op-YWZ" firstAttribute="width" secondItem="mH6-pf-AKH" secondAttribute="width" id="RpB-Xk-iXO"/>
+                                            <constraint firstItem="rpw-Op-YWZ" firstAttribute="centerX" secondItem="mH6-pf-AKH" secondAttribute="centerX" id="TdP-Yc-LxF"/>
+                                            <constraint firstItem="rpw-Op-YWZ" firstAttribute="height" secondItem="mH6-pf-AKH" secondAttribute="height" id="gHc-gb-BX9"/>
+                                            <constraint firstItem="rpw-Op-YWZ" firstAttribute="centerY" secondItem="mH6-pf-AKH" secondAttribute="centerY" id="lUk-9L-bUM"/>
+                                        </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previewInterstitialEN" translatesAutoresizingMaskIntoConstraints="NO" id="rpw-Op-YWZ" userLabel="Image View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvd-qV-bLb" userLabel="CloseButton">
                                         <rect key="frame" x="316" y="5" width="44" height="35"/>
                                         <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
@@ -1218,14 +1229,10 @@ in the “More” menu when sharing.</string>
                                     <constraint firstItem="tlk-tQ-4Gw" firstAttribute="width" secondItem="Xa2-Ub-Nuv" secondAttribute="width" id="3Fu-wX-jhp"/>
                                     <constraint firstItem="mH6-pf-AKH" firstAttribute="centerY" secondItem="Xa2-Ub-Nuv" secondAttribute="centerY" id="6Bx-NH-1pe"/>
                                     <constraint firstAttribute="trailing" secondItem="pvd-qV-bLb" secondAttribute="trailing" constant="15" id="AOg-vf-Uhi"/>
-                                    <constraint firstItem="rpw-Op-YWZ" firstAttribute="centerY" secondItem="Xa2-Ub-Nuv" secondAttribute="centerY" id="Hzq-sT-qX2"/>
                                     <constraint firstItem="mH6-pf-AKH" firstAttribute="centerX" secondItem="Xa2-Ub-Nuv" secondAttribute="centerX" id="QP0-5a-waZ"/>
                                     <constraint firstItem="pvd-qV-bLb" firstAttribute="top" secondItem="Xa2-Ub-Nuv" secondAttribute="top" constant="5" id="WBV-8P-4zh"/>
                                     <constraint firstItem="mH6-pf-AKH" firstAttribute="height" secondItem="Xa2-Ub-Nuv" secondAttribute="height" id="Wr9-90-jdP"/>
-                                    <constraint firstItem="rpw-Op-YWZ" firstAttribute="height" secondItem="Xa2-Ub-Nuv" secondAttribute="height" id="ZpZ-7W-94j"/>
                                     <constraint firstItem="tlk-tQ-4Gw" firstAttribute="top" secondItem="Xa2-Ub-Nuv" secondAttribute="top" constant="80" id="c9n-Aa-GBq"/>
-                                    <constraint firstItem="rpw-Op-YWZ" firstAttribute="centerX" secondItem="Xa2-Ub-Nuv" secondAttribute="centerX" id="koM-Cn-ez0"/>
-                                    <constraint firstItem="rpw-Op-YWZ" firstAttribute="width" secondItem="Xa2-Ub-Nuv" secondAttribute="width" id="s9V-Lb-Vp1"/>
                                     <constraint firstItem="mH6-pf-AKH" firstAttribute="width" secondItem="Xa2-Ub-Nuv" secondAttribute="width" id="u3R-13-Y9S"/>
                                     <constraint firstItem="tlk-tQ-4Gw" firstAttribute="centerX" secondItem="Xa2-Ub-Nuv" secondAttribute="centerX" id="zSs-vw-kjn"/>
                                 </constraints>
@@ -1337,7 +1344,7 @@ in the “More” menu when sharing.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26N-Ox-AW9" userLabel="Step 1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="448.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="1Xt-9D-F4w">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1345,27 +1352,27 @@ in the “More” menu when sharing.</string>
                                                     <constraint firstAttribute="width" secondItem="1Xt-9D-F4w" secondAttribute="height" multiplier="125:122" id="WHi-Zg-Iph"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOI-6f-ZOI" customClass="PGAttributedLabel">
-                                                <rect key="frame" x="33" y="366" width="309" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOI-6f-ZOI" customClass="PGAttributedLabel">
+                                                <rect key="frame" x="33" y="366" width="309" height="22.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="See source code">
                                                         <attributes>
-                                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" metaFont="system" size="25"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="19" name="HelveticaNeue"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                        <real key="value" value="25"/>
+                                                        <real key="value" value="19"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="fontFamily" value="HPSimplified-Regular"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DmV-M2-d4s">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="410.5" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1387,7 +1394,7 @@ in the “More” menu when sharing.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIm-XJ-JeQ" userLabel="Step 2">
-                                        <rect key="frame" x="0.0" y="458" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="448.5" width="375" height="448.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="WGB-yn-5rM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1396,12 +1403,12 @@ in the “More” menu when sharing.</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbX-BL-qKg" customClass="PGAttributedLabel">
-                                                <rect key="frame" x="33" y="366" width="309" height="30"/>
+                                                <rect key="frame" x="33" y="366" width="309" height="22.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="See source code">
                                                         <attributes>
                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" metaFont="system" size="25"/>
+                                                            <font key="NSFont" size="19" name=".SFNSDisplay"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -1409,13 +1416,13 @@ in the “More” menu when sharing.</string>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                        <real key="value" value="25"/>
+                                                        <integer key="value" value="19"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="fontFamily" value="HPSimplified-Regular"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold the power button until the LED turns white." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EN2-Sd-rVK">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="410.5" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1436,7 +1443,7 @@ in the “More” menu when sharing.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iZ-lr-LdT" userLabel="Step 3">
-                                        <rect key="frame" x="0.0" y="916" width="375" height="458"/>
+                                        <rect key="frame" x="0.0" y="897" width="375" height="448.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="t7A-xF-zJf">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -1445,12 +1452,12 @@ in the “More” menu when sharing.</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3A-gZ-CHP" customClass="PGAttributedLabel">
-                                                <rect key="frame" x="33" y="366" width="309" height="30"/>
+                                                <rect key="frame" x="33" y="366" width="309" height="22.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="See source code">
                                                         <attributes>
                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" metaFont="system" size="25"/>
+                                                            <font key="NSFont" size="19" name=".SFNSDisplay"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -1458,13 +1465,13 @@ in the “More” menu when sharing.</string>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                        <real key="value" value="25"/>
+                                                        <real key="value" value="19"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="fontFamily" value="HPSimplified-Regular"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-Fg-w5P">
-                                                <rect key="frame" x="33" y="418" width="309" height="40"/>
+                                                <rect key="frame" x="33" y="410.5" width="309" height="38"/>
                                                 <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="17"/>
                                                 <color key="textColor" red="0.45882352939999999" green="0.46274509800000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2380,10 +2387,10 @@ printer and app support.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWP-dm-kns" userLabel="Vertical Social Sources Container">
-                                        <rect key="frame" x="42" y="188" width="292" height="292"/>
+                                        <rect key="frame" x="41.5" y="187.5" width="293" height="293"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJR-7b-DiT" userLabel="CameraRollButton">
-                                                <rect key="frame" x="95" y="0.0" width="102" height="102"/>
+                                                <rect key="frame" x="95.5" y="0.0" width="102" height="102.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ZJR-7b-DiT" secondAttribute="height" multiplier="1:1" id="Dmv-Yr-mKf"/>
                                                 </constraints>
@@ -2395,7 +2402,7 @@ printer and app support.</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take or select a photo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEZ-Yd-vcV">
-                                                <rect key="frame" x="36" y="138" width="219" height="17"/>
+                                                <rect key="frame" x="36.5" y="138.5" width="219" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="219" id="gsg-JX-0wd"/>
                                                 </constraints>
@@ -2404,7 +2411,7 @@ printer and app support.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svl-41-C8O" userLabel="Camera">
-                                                <rect key="frame" x="95" y="190" width="102" height="102"/>
+                                                <rect key="frame" x="95.5" y="190.5" width="102" height="102.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="CameraButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="svl-41-C8O" secondAttribute="height" multiplier="1:1" id="al7-AP-VtG"/>
@@ -2658,19 +2665,19 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7X4-XZ-1Ef">
-                                <rect key="frame" x="16" y="536" width="343" height="60"/>
+                                <rect key="frame" x="16" y="547" width="343" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="lUz-af-77x">
-                                        <rect key="frame" x="165" y="24" width="13" height="13"/>
+                                        <rect key="frame" x="165" y="18" width="13" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="FHJ-JX-vQg"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="cdi-Eh-RxM">
-                                        <rect key="frame" x="191" y="24" width="13" height="13"/>
+                                        <rect key="frame" x="191" y="18" width="13" height="13"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Active_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="r4l-j7-hHy">
-                                        <rect key="frame" x="139" y="24" width="13" height="13"/>
+                                        <rect key="frame" x="139" y="18" width="13" height="13"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2679,7 +2686,7 @@ printer and app support.</string>
                                     <constraint firstItem="cdi-Eh-RxM" firstAttribute="leading" secondItem="lUz-af-77x" secondAttribute="trailing" constant="13" id="9Xr-Fu-nuI"/>
                                     <constraint firstItem="lUz-af-77x" firstAttribute="leading" secondItem="r4l-j7-hHy" secondAttribute="trailing" constant="13" id="JqB-to-NVk"/>
                                     <constraint firstItem="cdi-Eh-RxM" firstAttribute="centerY" secondItem="lUz-af-77x" secondAttribute="centerY" id="PY3-lr-PBr"/>
-                                    <constraint firstAttribute="height" constant="60" id="Tr4-py-iK2"/>
+                                    <constraint firstAttribute="height" constant="49" id="Tr4-py-iK2"/>
                                     <constraint firstItem="cdi-Eh-RxM" firstAttribute="height" secondItem="lUz-af-77x" secondAttribute="height" id="Zqb-oL-3v5"/>
                                     <constraint firstItem="r4l-j7-hHy" firstAttribute="centerY" secondItem="lUz-af-77x" secondAttribute="centerY" id="paH-2J-9U3"/>
                                     <constraint firstItem="r4l-j7-hHy" firstAttribute="height" secondItem="lUz-af-77x" secondAttribute="height" id="yD2-Wj-YDl"/>
@@ -2694,33 +2701,36 @@ printer and app support.</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wm-Mo-9ND">
-                                <rect key="frame" x="14" y="107" width="347" height="307"/>
+                                <rect key="frame" x="8" y="107" width="359.5" height="317.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="1fH-IJ-vLm"/>
                                     <constraint firstAttribute="width" secondItem="2Wm-Mo-9ND" secondAttribute="height" multiplier="69:61" id="pf0-8r-Jv6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E84-Ew-dV5" userLabel="Step 1 Load Paper" customClass="PGAttributedLabel">
-                                <rect key="frame" x="-13" y="414" width="401" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E84-Ew-dV5" userLabel="Step 1 Load Paper" customClass="PGAttributedLabel">
+                                <rect key="frame" x="15" y="424" width="345" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1L1-Ja-wkA"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="See PGIntroWizardViewController.m">
                                         <attributes>
                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" metaFont="system" size="25"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <font key="NSFont" size="25" name=".SFNSDisplay"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                        <real key="value" value="25"/>
+                                        <integer key="value" value="23"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="fontFamily" value="HPSimplified-Regular"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Put the entire pack in the paper tray with barcode and HP logos facing down." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="bNM-1G-6tS">
-                                <rect key="frame" x="15" y="466" width="345" height="70"/>
+                                <rect key="frame" x="15" y="502" width="345" height="45"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2744,7 +2754,7 @@ printer and app support.</string>
                             <constraint firstItem="7X4-XZ-1Ef" firstAttribute="leading" secondItem="Pif-lE-STb" secondAttribute="leadingMargin" id="L2d-Pa-0wO"/>
                             <constraint firstItem="MgL-Ve-2Gu" firstAttribute="leading" secondItem="Pif-lE-STb" secondAttribute="leading" id="LVF-Yh-4S8"/>
                             <constraint firstItem="E84-Ew-dV5" firstAttribute="centerX" secondItem="Pif-lE-STb" secondAttribute="centerX" id="MLA-RA-vj2"/>
-                            <constraint firstItem="bNM-1G-6tS" firstAttribute="top" secondItem="E84-Ew-dV5" secondAttribute="bottom" constant="22" id="g7F-ci-0Or"/>
+                            <constraint firstItem="bNM-1G-6tS" firstAttribute="top" secondItem="E84-Ew-dV5" secondAttribute="bottom" constant="18" id="g7F-ci-0Or"/>
                             <constraint firstItem="2Wm-Mo-9ND" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pif-lE-STb" secondAttribute="leading" priority="750" id="hBM-bs-HKI"/>
                             <constraint firstAttribute="trailing" secondItem="MgL-Ve-2Gu" secondAttribute="trailing" id="iGv-Os-jqP"/>
                             <constraint firstItem="7X4-XZ-1Ef" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bNM-1G-6tS" secondAttribute="bottom" id="ksm-Lo-sGQ"/>
@@ -2754,6 +2764,7 @@ printer and app support.</string>
                             <constraint firstItem="6kx-P1-KP7" firstAttribute="top" secondItem="7X4-XZ-1Ef" secondAttribute="bottom" id="ruR-Gl-w64"/>
                             <constraint firstItem="2Wm-Mo-9ND" firstAttribute="centerX" secondItem="Pif-lE-STb" secondAttribute="centerX" id="sRv-ro-wys"/>
                             <constraint firstItem="2Wm-Mo-9ND" firstAttribute="top" secondItem="ZK7-qo-tuB" secondAttribute="bottom" id="tKN-p9-mQr"/>
+                            <constraint firstItem="E84-Ew-dV5" firstAttribute="width" secondItem="bNM-1G-6tS" secondAttribute="width" id="wOe-Ro-4nI"/>
                             <constraint firstItem="E84-Ew-dV5" firstAttribute="top" secondItem="2Wm-Mo-9ND" secondAttribute="bottom" id="y8f-mK-Hd5"/>
                         </constraints>
                     </view>
@@ -2798,19 +2809,19 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wij-hu-1S5">
-                                <rect key="frame" x="16" y="536" width="343" height="60"/>
+                                <rect key="frame" x="16" y="547" width="343" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Active_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="yBa-Cn-FtK">
-                                        <rect key="frame" x="165" y="24" width="13" height="13"/>
+                                        <rect key="frame" x="165" y="18.5" width="13" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="U4g-PJ-hGo"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="Qw4-g5-F9L">
-                                        <rect key="frame" x="191" y="24" width="13" height="13"/>
+                                        <rect key="frame" x="191" y="18.5" width="13" height="13"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="w3q-yV-9GE">
-                                        <rect key="frame" x="139" y="24" width="13" height="13"/>
+                                        <rect key="frame" x="139" y="18.5" width="13" height="13"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2818,7 +2829,7 @@ printer and app support.</string>
                                     <constraint firstItem="Qw4-g5-F9L" firstAttribute="leading" secondItem="yBa-Cn-FtK" secondAttribute="trailing" constant="13" id="6fE-el-Muf"/>
                                     <constraint firstItem="yBa-Cn-FtK" firstAttribute="centerX" secondItem="wij-hu-1S5" secondAttribute="centerX" id="9JO-Gv-NKe"/>
                                     <constraint firstItem="w3q-yV-9GE" firstAttribute="height" secondItem="yBa-Cn-FtK" secondAttribute="height" id="A3l-pa-0Ye"/>
-                                    <constraint firstAttribute="height" constant="60" id="I4L-dj-tKs"/>
+                                    <constraint firstAttribute="height" constant="49" id="I4L-dj-tKs"/>
                                     <constraint firstItem="yBa-Cn-FtK" firstAttribute="leading" secondItem="w3q-yV-9GE" secondAttribute="trailing" constant="13" id="Ol7-TX-SeZ"/>
                                     <constraint firstItem="Qw4-g5-F9L" firstAttribute="height" secondItem="yBa-Cn-FtK" secondAttribute="height" id="VuT-iE-Cnr"/>
                                     <constraint firstItem="w3q-yV-9GE" firstAttribute="centerY" secondItem="yBa-Cn-FtK" secondAttribute="centerY" id="X52-7a-vE3"/>
@@ -2834,20 +2845,23 @@ printer and app support.</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard2" translatesAutoresizingMaskIntoConstraints="NO" id="bRh-Br-Dkm">
-                                <rect key="frame" x="0.5" y="107" width="374" height="330"/>
+                                <rect key="frame" x="8" y="107" width="359" height="317"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bRh-Br-Dkm" secondAttribute="height" multiplier="69:61" id="6a6-vM-yIg"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="X6r-nZ-Xdl"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysw-Oc-Yjw" userLabel="Step 2 Power Up" customClass="PGAttributedLabel">
-                                <rect key="frame" x="-13" y="437" width="401" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysw-Oc-Yjw" userLabel="Step 2 Power Up" customClass="PGAttributedLabel">
+                                <rect key="frame" x="15" y="424" width="345" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="JSV-CV-9pd"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="See PGIntroWizardViewController.m">
                                         <attributes>
                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="25" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -2860,7 +2874,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Press and hold the power button until the LED turns white." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="JrW-zx-uoD">
-                                <rect key="frame" x="15" y="489" width="345" height="47"/>
+                                <rect key="frame" x="15" y="502" width="345" height="45"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2880,12 +2894,13 @@ printer and app support.</string>
                             <constraint firstItem="bRh-Br-Dkm" firstAttribute="centerX" secondItem="Hqe-FJ-8sO" secondAttribute="centerX" id="IuJ-XH-7AH"/>
                             <constraint firstItem="EIO-MT-c9j" firstAttribute="top" secondItem="ciL-qk-y5Q" secondAttribute="bottom" id="JBf-Mw-5v5"/>
                             <constraint firstItem="bRh-Br-Dkm" firstAttribute="top" secondItem="PFu-gM-gaf" secondAttribute="bottom" id="KNa-st-guA"/>
-                            <constraint firstItem="JrW-zx-uoD" firstAttribute="top" secondItem="Ysw-Oc-Yjw" secondAttribute="bottom" constant="22" id="LRm-po-irO"/>
+                            <constraint firstItem="JrW-zx-uoD" firstAttribute="top" secondItem="Ysw-Oc-Yjw" secondAttribute="bottom" constant="18" id="LRm-po-irO"/>
                             <constraint firstAttribute="trailing" secondItem="8NB-5H-E8t" secondAttribute="trailing" id="V9p-lz-E1d"/>
                             <constraint firstItem="wij-hu-1S5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JrW-zx-uoD" secondAttribute="bottom" id="Vdv-He-1vn"/>
                             <constraint firstItem="bRh-Br-Dkm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hqe-FJ-8sO" secondAttribute="leading" priority="750" id="aWE-Av-As3"/>
                             <constraint firstItem="8NB-5H-E8t" firstAttribute="leading" secondItem="Hqe-FJ-8sO" secondAttribute="leading" id="bwD-4k-TM9"/>
                             <constraint firstAttribute="trailing" secondItem="ciL-qk-y5Q" secondAttribute="trailing" id="dE4-de-86b"/>
+                            <constraint firstItem="Ysw-Oc-Yjw" firstAttribute="width" secondItem="JrW-zx-uoD" secondAttribute="width" id="dGB-GR-BeA"/>
                             <constraint firstItem="Ysw-Oc-Yjw" firstAttribute="centerX" secondItem="Hqe-FJ-8sO" secondAttribute="centerX" id="eUe-Xk-3Zj"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bRh-Br-Dkm" secondAttribute="trailing" priority="750" id="gYo-Ni-K8D"/>
                             <constraint firstAttribute="trailing" secondItem="JrW-zx-uoD" secondAttribute="trailing" constant="15" id="mSI-WX-DfX"/>
@@ -2935,16 +2950,16 @@ printer and app support.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UvL-Ee-IM3">
-                                <rect key="frame" x="16" y="536" width="343" height="60"/>
+                                <rect key="frame" x="16" y="547" width="343" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="CAr-yU-ATQ">
-                                        <rect key="frame" x="165" y="24" width="13" height="12"/>
+                                        <rect key="frame" x="165" y="18" width="13" height="13"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Active_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="Wra-Sc-PB3">
-                                        <rect key="frame" x="191" y="24" width="13" height="12"/>
+                                        <rect key="frame" x="191" y="18" width="13" height="13"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inactive_Circle" translatesAutoresizingMaskIntoConstraints="NO" id="PeC-DB-s5Q">
-                                        <rect key="frame" x="139" y="24" width="13" height="12"/>
+                                        <rect key="frame" x="139" y="18" width="13" height="13"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2953,12 +2968,11 @@ printer and app support.</string>
                                     <constraint firstItem="PeC-DB-s5Q" firstAttribute="centerY" secondItem="CAr-yU-ATQ" secondAttribute="centerY" id="AOT-I6-aPO"/>
                                     <constraint firstItem="CAr-yU-ATQ" firstAttribute="leading" secondItem="PeC-DB-s5Q" secondAttribute="trailing" constant="13" id="CGK-l6-PBr"/>
                                     <constraint firstItem="Wra-Sc-PB3" firstAttribute="centerY" secondItem="CAr-yU-ATQ" secondAttribute="centerY" id="Pwi-FC-wVm"/>
-                                    <constraint firstItem="CAr-yU-ATQ" firstAttribute="height" secondItem="UvL-Ee-IM3" secondAttribute="height" multiplier="0.195" id="QJ1-QL-P1y"/>
                                     <constraint firstItem="Wra-Sc-PB3" firstAttribute="height" secondItem="CAr-yU-ATQ" secondAttribute="height" id="Sqd-X8-sSd"/>
                                     <constraint firstItem="Wra-Sc-PB3" firstAttribute="leading" secondItem="CAr-yU-ATQ" secondAttribute="trailing" constant="13" id="VNj-hz-og6"/>
                                     <constraint firstItem="PeC-DB-s5Q" firstAttribute="height" secondItem="CAr-yU-ATQ" secondAttribute="height" id="aLO-3f-6uX"/>
                                     <constraint firstItem="CAr-yU-ATQ" firstAttribute="centerX" secondItem="UvL-Ee-IM3" secondAttribute="centerX" id="afo-4A-kQ6"/>
-                                    <constraint firstAttribute="height" constant="60" id="zsC-0d-HA5"/>
+                                    <constraint firstAttribute="height" constant="49" id="zsC-0d-HA5"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard_Sprocket" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-2c-LAF">
@@ -2969,20 +2983,23 @@ printer and app support.</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wizard3" translatesAutoresizingMaskIntoConstraints="NO" id="xdH-qJ-0eT">
-                                <rect key="frame" x="1" y="107" width="373" height="330"/>
+                                <rect key="frame" x="8.5" y="107" width="358" height="317"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="414" id="6dn-xU-TlD"/>
                                     <constraint firstAttribute="width" secondItem="xdH-qJ-0eT" secondAttribute="height" multiplier="69:61" id="iGp-84-MJR"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-dc-PvW" userLabel="Step 3 Connect" customClass="PGAttributedLabel">
-                                <rect key="frame" x="-13" y="437" width="401" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-dc-PvW" userLabel="Step 3 Connect" customClass="PGAttributedLabel">
+                                <rect key="frame" x="15" y="424" width="345" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="UhQ-Vj-ElF"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="See PGIntroWizardViewController.m">
                                         <attributes>
                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="25" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -2995,7 +3012,7 @@ printer and app support.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="203" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="From Bluetooth Settings, tap on  “HP sprocket” to pair with the printer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="W7o-LK-mcs">
-                                <rect key="frame" x="15" y="489" width="345" height="47"/>
+                                <rect key="frame" x="15" y="502" width="345" height="45"/>
                                 <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3021,7 +3038,7 @@ printer and app support.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="W7o-LK-mcs" firstAttribute="top" secondItem="Oeh-dc-PvW" secondAttribute="bottom" constant="22" id="0n8-np-ocO"/>
+                            <constraint firstItem="W7o-LK-mcs" firstAttribute="top" secondItem="Oeh-dc-PvW" secondAttribute="bottom" constant="18" id="0n8-np-ocO"/>
                             <constraint firstItem="Qfy-vN-Znw" firstAttribute="leading" secondItem="BV3-xe-r0y" secondAttribute="trailing" id="23G-N1-WF5"/>
                             <constraint firstItem="GL3-2c-LAF" firstAttribute="top" secondItem="dbg-Rg-gMb" secondAttribute="bottom" constant="50" id="Aa0-kv-DiE"/>
                             <constraint firstItem="BV3-xe-r0y" firstAttribute="top" secondItem="Qjw-CA-MZh" secondAttribute="bottom" id="Ecb-hN-rAG"/>
@@ -3043,6 +3060,7 @@ printer and app support.</string>
                             <constraint firstItem="xdH-qJ-0eT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4i9-Bf-zuO" secondAttribute="leading" priority="750" id="g0o-hK-F5u"/>
                             <constraint firstAttribute="trailing" secondItem="Qjw-CA-MZh" secondAttribute="trailing" id="kQO-MI-JrC"/>
                             <constraint firstItem="Khp-xu-qtz" firstAttribute="top" secondItem="BV3-xe-r0y" secondAttribute="bottom" id="o8G-39-sMm"/>
+                            <constraint firstItem="Oeh-dc-PvW" firstAttribute="width" secondItem="W7o-LK-mcs" secondAttribute="width" id="oYl-6c-nUo"/>
                             <constraint firstItem="W7o-LK-mcs" firstAttribute="leading" secondItem="4i9-Bf-zuO" secondAttribute="leading" constant="15" id="pRb-y3-Gbz"/>
                             <constraint firstItem="Qjw-CA-MZh" firstAttribute="leading" secondItem="4i9-Bf-zuO" secondAttribute="leading" id="z9p-wJ-Hrh"/>
                             <constraint firstAttribute="bottom" secondItem="Qfy-vN-Znw" secondAttribute="bottom" id="zO6-Ko-hb9"/>
@@ -3470,7 +3488,7 @@ printer and app support.</string>
                         <viewControllerLayoutGuide type="top" id="nm2-LZ-TNo"/>
                         <viewControllerLayoutGuide type="bottom" id="eDR-Ib-0UX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PGl-Ny-PVI">
+                    <view key="view" contentMode="scaleToFill" id="PGl-Ny-PVI" customClass="PGInteractionIgnorerView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -3576,9 +3594,67 @@ printer and app support.</string>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-6n-Gfr" userLabel="Tiles Row">
                                 <rect key="frame" x="0.0" y="191" width="375" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJt-Nh-RF6">
+                                        <rect key="frame" x="37" y="17" width="37" height="23"/>
+                                        <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="20"/>
+                                        <color key="textColor" red="0.87450980389999999" green="0.87843137250000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb0-n4-7s8">
+                                        <rect key="frame" x="306" y="7" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Eq8-LB-mC7"/>
+                                            <constraint firstAttribute="width" constant="44" id="p2d-Z9-5XA"/>
+                                        </constraints>
+                                        <state key="normal" image="Tiles_3">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="Tiles_3_A"/>
+                                        <connections>
+                                            <action selector="tiling3x3Tapped:" destination="0AQ-C1-f9y" eventType="touchUpInside" id="Y3A-iz-7Vn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQt-7p-K0W">
+                                        <rect key="frame" x="237" y="7" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="ky9-qq-NFA"/>
+                                            <constraint firstAttribute="height" constant="44" id="zf1-Oo-9vh"/>
+                                        </constraints>
+                                        <state key="normal" image="Tiles_2">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="Tiles_2_A"/>
+                                        <connections>
+                                            <action selector="tiling2x2Tapped:" destination="0AQ-C1-f9y" eventType="touchUpInside" id="XpS-08-2Lv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAa-Yx-kbf">
+                                        <rect key="frame" x="168" y="7" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="h3Q-DE-Ia8"/>
+                                            <constraint firstAttribute="height" constant="44" id="yHr-Bo-szl"/>
+                                        </constraints>
+                                        <state key="normal" image="Tiles_1">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="Tiles_1_A"/>
+                                        <connections>
+                                            <action selector="tilingSingleTapped:" destination="0AQ-C1-f9y" eventType="touchUpInside" id="G94-WP-ndM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="fb0-n4-7s8" firstAttribute="centerY" secondItem="id5-6n-Gfr" secondAttribute="centerY" id="6Va-X3-vqH"/>
+                                    <constraint firstItem="pAa-Yx-kbf" firstAttribute="centerY" secondItem="id5-6n-Gfr" secondAttribute="centerY" id="CtN-WA-K9Q"/>
                                     <constraint firstAttribute="height" constant="58" id="Fdk-AE-lHF"/>
+                                    <constraint firstAttribute="trailing" secondItem="fb0-n4-7s8" secondAttribute="trailing" constant="25" id="GTa-w1-OO9"/>
+                                    <constraint firstItem="aQt-7p-K0W" firstAttribute="centerY" secondItem="id5-6n-Gfr" secondAttribute="centerY" id="KsV-Mh-KT8"/>
+                                    <constraint firstItem="WJt-Nh-RF6" firstAttribute="centerY" secondItem="id5-6n-Gfr" secondAttribute="centerY" id="QI3-5N-4bd"/>
+                                    <constraint firstItem="aQt-7p-K0W" firstAttribute="leading" secondItem="pAa-Yx-kbf" secondAttribute="trailing" constant="25" id="lxZ-RA-3aY"/>
+                                    <constraint firstItem="WJt-Nh-RF6" firstAttribute="leading" secondItem="id5-6n-Gfr" secondAttribute="leading" constant="37" id="mB9-Mi-Scb"/>
+                                    <constraint firstItem="fb0-n4-7s8" firstAttribute="leading" secondItem="aQt-7p-K0W" secondAttribute="trailing" constant="25" id="ygH-a5-wUy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3610,6 +3686,11 @@ printer and app support.</string>
                         <outlet property="minusButton" destination="0Eq-VN-Woc" id="vse-My-RDV"/>
                         <outlet property="numberOfJobsLabel" destination="9fe-Oa-byX" id="Upr-ZQ-M2u"/>
                         <outlet property="plusButton" destination="Ta4-Qc-4b4" id="qrf-hl-7CI"/>
+                        <outlet property="printQueueView" destination="S9P-1b-Xdy" id="1B2-xt-EK6"/>
+                        <outlet property="printQueueViewHeight" destination="6sU-5b-Mh8" id="FPs-xn-1py"/>
+                        <outlet property="tiling2x2Button" destination="aQt-7p-K0W" id="G06-qc-8Zi"/>
+                        <outlet property="tiling3x3Button" destination="fb0-n4-7s8" id="osY-Fw-l7P"/>
+                        <outlet property="tilingSingleButton" destination="pAa-Yx-kbf" id="QxG-GB-5d8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMx-Ig-NIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3630,6 +3711,199 @@ printer and app support.</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1432.8" y="1765.8170914542729"/>
+        </scene>
+        <!--Custom Sticker View Controller-->
+        <scene sceneID="BD5-ey-AoD">
+            <objects>
+                <viewController storyboardIdentifier="PGCustomStickerViewController" id="QhB-Fb-GBQ" customClass="PGCustomStickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="npd-Zu-jOa"/>
+                        <viewControllerLayoutGuide type="bottom" id="MHp-YX-iy1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fmJ-kE-8Mo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbg-z7-W15" customClass="GPUImageView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcx-Qo-v87">
+                                <rect key="frame" x="60" y="131.5" width="255" height="255"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qcx-Qo-v87" secondAttribute="height" id="lLi-0F-qA1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill the frame with your drawing and tap the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxk-oG-sDQ">
+                                <rect key="frame" x="60" y="426.5" width="255" height="47"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This material may be protected by copyright law. By continuing, you agree to the HP &lt;Terms of Service&gt;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avz-YY-2mv" userLabel="Legal Label" customClass="PGTermsAttributedLabel">
+                                <rect key="frame" x="26" y="610.5" width="323" height="31.5"/>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWO-av-AJ9">
+                                <rect key="frame" x="60" y="416.5" width="255" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="cJP-6D-jYv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70q-mB-4xA" userLabel="Yes Button">
+                                <rect key="frame" x="207.5" y="530.5" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="IxY-w8-JI0"/>
+                                    <constraint firstAttribute="height" constant="40" id="Zb5-RK-Ay0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HPSimplified-Regular" family="HP Simplified" pointSize="21"/>
+                                <state key="normal" title="Yes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="QhB-Fb-GBQ" eventType="primaryActionTriggered" id="0uo-3Z-hXd"/>
+                                    <action selector="touchedDownInButton:" destination="QhB-Fb-GBQ" eventType="touchDown" id="Jwp-OD-Q0u"/>
+                                    <action selector="touchedUpButton:" destination="QhB-Fb-GBQ" eventType="touchUpOutside" id="4lV-aj-YyK"/>
+                                    <action selector="touchedUpButton:" destination="QhB-Fb-GBQ" eventType="touchUpInside" id="eM4-wA-H93"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-3h-2iw" userLabel="No Button">
+                                <rect key="frame" x="67.5" y="530.5" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="0h9-IO-vwG"/>
+                                    <constraint firstAttribute="height" constant="40" id="GE0-Hz-FnA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HPSimplified-Light" family="HP Simplified" pointSize="21"/>
+                                <state key="normal" title="No">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="QhB-Fb-GBQ" eventType="primaryActionTriggered" id="IS1-Y4-7zV"/>
+                                    <action selector="touchedDownInButton:" destination="QhB-Fb-GBQ" eventType="touchDown" id="eD9-S9-5Sh"/>
+                                    <action selector="touchedUpButton:" destination="QhB-Fb-GBQ" eventType="touchUpInside" id="87M-ni-9al"/>
+                                    <action selector="touchedUpButton:" destination="QhB-Fb-GBQ" eventType="touchUpOutside" id="DUO-cF-zjZ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nO2-Xg-Yx2" userLabel="Info Button Tap Area">
+                                <rect key="frame" x="325" y="20" width="50" height="50"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="ZA1-lx-GeO" userLabel="Info Button">
+                                        <rect key="frame" x="6" y="11" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ZA1-lx-GeO" secondAttribute="height" id="KzN-y9-xGM"/>
+                                            <constraint firstAttribute="width" constant="30" id="qoO-Ln-kKp"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZA1-lx-GeO" secondAttribute="trailing" constant="14" id="KnX-it-SlT"/>
+                                    <constraint firstItem="ZA1-lx-GeO" firstAttribute="top" secondItem="nO2-Xg-Yx2" secondAttribute="top" constant="11" id="bhX-Km-qwW"/>
+                                    <constraint firstAttribute="height" constant="50" id="ucq-IW-mOe"/>
+                                    <constraint firstAttribute="width" constant="50" id="yIf-Cl-jvW"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Wib-rq-sYa" appends="YES" id="WHk-80-P0i"/>
+                                </connections>
+                            </view>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkv-a2-8va" userLabel="Video View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7n-Cn-BSm" userLabel="Close Button Tap Area">
+                                <rect key="frame" x="0.0" y="20" width="50" height="50"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraClose" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-Ya-Vhl" userLabel="Close Button">
+                                        <rect key="frame" x="14" y="14" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="33t-6W-FkN"/>
+                                            <constraint firstAttribute="width" secondItem="R6t-Ya-Vhl" secondAttribute="height" id="K1X-JH-bCW"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="R6t-Ya-Vhl" firstAttribute="leading" secondItem="b7n-Cn-BSm" secondAttribute="leading" constant="14" id="8Jp-PR-PIH"/>
+                                    <constraint firstAttribute="height" constant="50" id="H7d-Sm-1nn"/>
+                                    <constraint firstItem="R6t-Ya-Vhl" firstAttribute="top" secondItem="b7n-Cn-BSm" secondAttribute="top" constant="14" id="cll-o3-mnG"/>
+                                    <constraint firstAttribute="width" constant="50" id="rq6-xl-XfV"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YtF-UW-EVU" appends="YES" id="fBB-6q-Txn"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JWO-av-AJ9" firstAttribute="centerX" secondItem="qcx-Qo-v87" secondAttribute="centerX" id="14u-wz-h68"/>
+                            <constraint firstItem="JWO-av-AJ9" firstAttribute="width" secondItem="qcx-Qo-v87" secondAttribute="width" id="1lN-Cm-qSb"/>
+                            <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="Lbg-z7-W15" secondAttribute="bottom" id="2vo-ZJ-9OX"/>
+                            <constraint firstItem="b7n-Cn-BSm" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="4cF-fu-jac"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="avz-YY-2mv" secondAttribute="trailing" constant="10" id="4gm-Yg-b2Y"/>
+                            <constraint firstItem="dkv-a2-8va" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" id="4mo-4a-JsJ"/>
+                            <constraint firstItem="Lbg-z7-W15" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="AKH-PW-E7e"/>
+                            <constraint firstItem="70q-mB-4xA" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" constant="70" id="ASM-58-UYq"/>
+                            <constraint firstItem="JWO-av-AJ9" firstAttribute="top" secondItem="qcx-Qo-v87" secondAttribute="bottom" constant="30" id="Arr-g8-xXE"/>
+                            <constraint firstItem="nO2-Xg-Yx2" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="C94-l1-WKl"/>
+                            <constraint firstAttribute="leading" secondItem="Lbg-z7-W15" secondAttribute="leading" id="Eo5-nh-KVF"/>
+                            <constraint firstItem="avz-YY-2mv" firstAttribute="top" secondItem="70q-mB-4xA" secondAttribute="bottom" constant="40" id="J0G-7f-2yv"/>
+                            <constraint firstAttribute="trailing" secondItem="nO2-Xg-Yx2" secondAttribute="trailing" id="NCn-Mw-jPu"/>
+                            <constraint firstItem="70q-mB-4xA" firstAttribute="top" secondItem="JWO-av-AJ9" secondAttribute="bottom" constant="20" id="P7q-u4-BnO"/>
+                            <constraint firstAttribute="trailing" secondItem="dkv-a2-8va" secondAttribute="trailing" id="PFD-QT-DdM"/>
+                            <constraint firstItem="dkv-a2-8va" firstAttribute="top" secondItem="npd-Zu-jOa" secondAttribute="bottom" id="T6c-4W-joP"/>
+                            <constraint firstItem="2Lg-3h-2iw" firstAttribute="centerY" secondItem="70q-mB-4xA" secondAttribute="centerY" id="bsC-lR-NJ0"/>
+                            <constraint firstItem="qcx-Qo-v87" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" constant="60" id="fUT-bk-pX5"/>
+                            <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="dkv-a2-8va" secondAttribute="bottom" id="fWD-Oz-vC2"/>
+                            <constraint firstItem="b7n-Cn-BSm" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leading" id="gpi-qA-QeL"/>
+                            <constraint firstItem="Uxk-oG-sDQ" firstAttribute="width" secondItem="qcx-Qo-v87" secondAttribute="width" id="hF2-Mh-abd"/>
+                            <constraint firstItem="2Lg-3h-2iw" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" constant="-70" id="imN-bU-2Nc"/>
+                            <constraint firstAttribute="trailing" secondItem="Lbg-z7-W15" secondAttribute="trailing" id="kz4-WF-cY3"/>
+                            <constraint firstItem="qcx-Qo-v87" firstAttribute="centerX" secondItem="fmJ-kE-8Mo" secondAttribute="centerX" id="nua-RS-Dns"/>
+                            <constraint firstItem="Uxk-oG-sDQ" firstAttribute="centerX" secondItem="qcx-Qo-v87" secondAttribute="centerX" id="qxm-hR-dZh"/>
+                            <constraint firstItem="Uxk-oG-sDQ" firstAttribute="top" secondItem="qcx-Qo-v87" secondAttribute="bottom" constant="40" id="uBH-ap-1Uw"/>
+                            <constraint firstItem="avz-YY-2mv" firstAttribute="leading" secondItem="fmJ-kE-8Mo" secondAttribute="leadingMargin" constant="10" id="uUL-Om-R4q"/>
+                            <constraint firstItem="MHp-YX-iy1" firstAttribute="top" secondItem="avz-YY-2mv" secondAttribute="bottom" constant="25" id="xrX-E9-aOl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="captureLabel" destination="Uxk-oG-sDQ" id="5pJ-Bh-cWa"/>
+                        <outlet property="closeButton" destination="R6t-Ya-Vhl" id="Qrg-zV-U0W"/>
+                        <outlet property="gpuCleanImageView" destination="Lbg-z7-W15" id="VLq-H7-6RN"/>
+                        <outlet property="infoButton" destination="ZA1-lx-GeO" id="q0c-d2-3e7"/>
+                        <outlet property="legalLabel" destination="avz-YY-2mv" id="Ueq-qP-EdF"/>
+                        <outlet property="noButton" destination="2Lg-3h-2iw" id="kEv-ak-yDQ"/>
+                        <outlet property="resultImageView" destination="qcx-Qo-v87" id="HeC-bq-KDs"/>
+                        <outlet property="saveLabel" destination="JWO-av-AJ9" id="Ghs-Do-Et7"/>
+                        <outlet property="videoView" destination="dkv-a2-8va" id="IZP-hu-WUY"/>
+                        <outlet property="yesButton" destination="70q-mB-4xA" id="kVK-Ye-EKq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7GA-5U-oNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YtF-UW-EVU" userLabel="Close Button - Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="closeButtonTapped:" destination="QhB-Fb-GBQ" id="3Lt-cq-4oy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Wib-rq-sYa" userLabel="Info Button - Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="infoButtonTapped:" destination="QhB-Fb-GBQ" id="C6n-yR-f4v"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1511.2" y="2806.1469265367318"/>
         </scene>
         <!--Google NavController-->
         <scene sceneID="M1q-ih-JXC">
@@ -3712,8 +3986,14 @@ printer and app support.</string>
         <image name="Qzone_Login" width="25" height="25"/>
         <image name="Read_Message" width="11" height="11"/>
         <image name="Share.png" width="17" height="25"/>
+        <image name="Tiles_1" width="22" height="32"/>
+        <image name="Tiles_1_A" width="22" height="32"/>
+        <image name="Tiles_2" width="22" height="32"/>
+        <image name="Tiles_2_A" width="22" height="32"/>
+        <image name="Tiles_3" width="22" height="32"/>
+        <image name="Tiles_3_A" width="22" height="32"/>
         <image name="WeChat" width="20" height="17"/>
-        <image name="Wizard" width="414" height="366"/>
+        <image name="Wizard" width="413" height="365"/>
         <image name="Wizard2" width="413" height="365"/>
         <image name="Wizard3" width="413" height="365"/>
         <image name="Wizard_Sprocket" width="271" height="57"/>
@@ -3722,10 +4002,12 @@ printer and app support.</string>
         <image name="arrowMenu" width="10" height="18"/>
         <image name="backArrow" width="9" height="18"/>
         <image name="battery100" width="33" height="14"/>
+        <image name="cameraClose" width="23" height="23"/>
         <image name="cameraLanding" width="76" height="76"/>
         <image name="closeBlack" width="18" height="18"/>
         <image name="google_C" width="53" height="53"/>
         <image name="hamburger" width="37" height="35"/>
+        <image name="help" width="126" height="126"/>
         <image name="helpForum" width="16" height="15"/>
         <image name="helpTweetSupport" width="17" height="14"/>
         <image name="helpViewUserGuide" width="14" height="16"/>

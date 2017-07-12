@@ -21,7 +21,7 @@ class TextOptionEditorScreen < Calabash::IBase
     def delete
         "view marked:'Delete'"
     end
-    
+     
     def navigate
         unless current_page?
             edit_screen = go_to(TextEditScreen)

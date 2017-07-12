@@ -11,17 +11,24 @@
 //
 
 #import "HPPRCacheService.h"
+#import "AFImageDownloader.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 NSString * const kCacheServiceAssetPrefix = @"assets-library://";
 NSString * const kCacheServiceThumbnailSuffix = @"thumbnail";
 NSString * const kCacheServiceErrorDomain = @"HPPRCacheService";
 NSString * const kCacheServiceErrorURLKey = @"url";
-int const kCacheServiceErrorNoData = 100;
+
+typedef NS_ENUM(NSInteger, kCacheServiceError) {
+    kCacheServiceErrorNoData = 100,
+    kCacheServiceErrorInvalidParameters = 101
+};
 
 @interface HPPRCacheService()
 
 @property (strong, nonatomic) ALAssetsLibrary *library;
+@property (strong, nonatomic) AFImageDownloader *lowPriorityImageDownloader;
+@property (strong, nonatomic) AFImageDownloader *highPriorityImageDownloader;
 
 @end
 
@@ -33,9 +40,31 @@ int const kCacheServiceErrorNoData = 100;
     static HPPRCacheService *sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[HPPRCacheService alloc] init];
+
         sharedInstance.library = [[ALAssetsLibrary alloc] init];
+        
+        sharedInstance.lowPriorityImageDownloader = [self imageDownloader];
+        sharedInstance.highPriorityImageDownloader = [self imageDownloader];
     });
     return sharedInstance;
+}
+
++ (AFImageDownloader *)imageDownloader
+{
+    // Create image downloader with disabled cache as own cache is used
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    configuration.URLCache = nil;
+    
+    AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+    sessionManager.responseSerializer = [AFImageResponseSerializer serializer];
+    
+    AFImageDownloader *imageDownloader = [[AFImageDownloader alloc] initWithSessionManager:sessionManager
+                                                                    downloadPrioritization:AFImageDownloadPrioritizationFIFO
+                                                                    maximumActiveDownloads:10
+                                                                                imageCache:nil];
+    
+    return imageDownloader;
 }
 
 - (UIImage *)imageForUrl:(NSString *)url
@@ -55,7 +84,15 @@ int const kCacheServiceErrorNoData = 100;
 
 - (void)imageForUrl:(NSString *)url asThumbnail:(BOOL)thumbnail withCompletion:(void(^)(UIImage *image, NSString *url, NSError *error))completion
 {
+    [self imageForUrl:url asThumbnail:thumbnail highPriority:YES withCompletion:completion];
+}
+
+- (void)imageForUrl:(NSString *)url asThumbnail:(BOOL)thumbnail highPriority:(BOOL)highPriority withCompletion:(void(^)(UIImage *image, NSString *url, NSError *error))completion
+{
     if (!url) {
+        if (completion) {
+            completion(nil, url, [NSError errorWithDomain:kCacheServiceErrorDomain code:kCacheServiceErrorInvalidParameters userInfo:nil]);
+        }
         return;
     }
     
@@ -68,16 +105,11 @@ int const kCacheServiceErrorNoData = 100;
         }
     } else {
         if (NSNotFound == [url rangeOfString:kCacheServiceAssetPrefix].location) {
-            cacheImage = [self imageForUrl:url];
-            if (cacheImage) {
+            [self imageForUrl:url highPriority:highPriority withCompletion:^(UIImage *image) {
                 if (completion) {
-                    completion(cacheImage, url, nil);
+                    completion(image, url, image != nil ? nil : [NSError errorWithDomain:kCacheServiceErrorDomain code:kCacheServiceErrorNoData userInfo:@{ kCacheServiceErrorURLKey:url }]);
                 }
-            } else {
-                if (completion) {
-                    completion(nil, url, [NSError errorWithDomain:kCacheServiceErrorDomain code:kCacheServiceErrorNoData userInfo:@{ kCacheServiceErrorURLKey:url }]);
-                }
-            }
+            }];
         } else {
             [self.library assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
                 UIImage *image;
@@ -100,6 +132,27 @@ int const kCacheServiceErrorNoData = 100;
                 }
             }];
         }
+    }
+}
+
+- (void)imageForUrl:(NSString *)url highPriority:(BOOL)highPriority withCompletion:(void(^)(UIImage *image))completion
+{
+    UIImage *cacheImage = [self retrieveFromCacheWithKey:url];
+    
+    if (nil == cacheImage) {
+        AFImageDownloader *imageDownloader = highPriority ? self.highPriorityImageDownloader : self.lowPriorityImageDownloader;
+        [imageDownloader downloadImageForURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            [self saveToCache:image withKey:url];
+            if (completion) {
+                completion(image);
+            }
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            if (completion) {
+                completion(nil);
+            }
+        }];
+    } else if (completion) {
+        completion(cacheImage);
     }
 }
 

@@ -17,5 +17,6 @@
 @interface HPPRFacebookAlbum : HPPRAlbum
 
 @property (nonatomic, strong) NSString *coverPhotoID;
+@property (nonatomic, strong) NSString *coverPhotoURL;
 
 @end

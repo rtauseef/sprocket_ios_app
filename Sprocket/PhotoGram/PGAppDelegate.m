@@ -31,8 +31,11 @@
 #import "PGAppNavigation.h"
 #import "PGSecretKeeper.h"
 #import "PGInAppMessageManager.h"
+#import "PGMetarOfflineTagManager.h"
 #import "PGInboxMessageManager.h"
-
+#import "PGLinkSettings.h"
+#import "PGFeatureFlag.h"
+#import "PGCloudAssetClient.h"
 
 static const NSInteger connectionDefaultValue = -1;
 static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
@@ -48,6 +51,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.restrictRotation = YES;
+    
     // Force the initialization of the analytics manager to start tracking crashes
     [PGAnalyticsManager sharedManager];
 
@@ -62,6 +67,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     
     [HPPR sharedInstance].qzoneAppId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryQZoneAppId];
     [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
+    
+    [HPPR sharedInstance].showVideos = [PGLinkSettings videoPrintEnabled];
     
     [self initializePrintPod];
     
@@ -86,6 +93,19 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [self initializeUAirship];
 
     [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+    
+    if ([PGLinkSettings localWatermarkEnabled]) {
+        // pre fetch offline tags
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
+            PGMetarOfflineTagManager *metaroffline = [PGMetarOfflineTagManager sharedInstance];
+            [metaroffline checkTagDB:nil];
+        });
+    }
+    
+    if ([PGFeatureFlag isCloudAssetsEnabled]) {
+        PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
+        [cac refreshAssetCatalog];
+    }
 
     return YES;
 }
@@ -123,6 +143,8 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     [self checkSprocketPrinterConnectivity:nil];
     
     self.sprocketConnectivityTimer = [NSTimer scheduledTimerWithTimeInterval:kPGAppDelegatePrinterConnectivityCheckInterval target:self selector:@selector(checkSprocketPrinterConnectivity:) userInfo:nil repeats:YES];
+
+    [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -189,6 +211,13 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
 - (void)deepLink:(NSString *)location
 {
     [PGAppNavigation deepLink:location];
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    if(self.restrictRotation)
+        return UIInterfaceOrientationMaskPortrait;
+    else
+        return UIInterfaceOrientationMaskAll;
 }
 
 #pragma mark - MP object initialization

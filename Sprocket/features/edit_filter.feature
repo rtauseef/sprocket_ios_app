@@ -6,11 +6,11 @@ Feature: Verify Filter-edit screen
 @regression
 Scenario Outline: Verify 'Filter' option
     Given I am on the "<social_media_screen_name>" screen
-    When I tap "Edit" button
+    When I touch "Edit"
     Then I should see the "Edit" screen
-    When I tap "Filter" button
+    When I touch "Filter" 
     Then I should see the "FilterEditor" screen
-    Then I tap "Close" mark
+    And I touch "Discard changes" 
     Then I should see the "Edit" screen
     
    
@@ -20,11 +20,12 @@ Scenario Outline: Verify 'Filter' option
     | CameraRoll Preview |
 
 @done
+@regression
 Scenario Outline: Verify Filter selection option
     Given I am on the "FilterEditor" screen for "<social_media_screen_name>" 
-    Then I select "Filter"
+    Then I touch "Candy"
     And I verify the filter is selected
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I should see the "Edit" screen
     
    
@@ -37,7 +38,6 @@ Scenario Outline: Verify Filter selection option
 @regression
 Scenario: Verify filer list
     Given I am on the "FilterEditor" screen for "CameraRoll Preview" 
-    Then I select "Filter"
     Then I should see the following "filters" in the screen:
     | None      |
     | AD1920    |

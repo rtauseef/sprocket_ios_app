@@ -17,7 +17,6 @@
 #import <HPPRSelectPhotoCollectionViewController.h>
 #import <HPPRSelectAlbumTableViewController.h>
 #import <HPPR.h>
-#import <AirshipKit.h>
 
 #import "PGLandingSelectorPageViewController.h"
 #import "PGInstagramLandingPageViewController.h"
@@ -35,6 +34,7 @@
 #import "PGFeatureFlag.h"
 #import "PGPhotoSelection.h"
 #import "PGAnalyticsManager.h"
+#import "PGInAppMessageManager.h"
 
 #define INITIAL_LANDING_PAGE_SELECTED_INDEX 0
 
@@ -55,6 +55,18 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 @implementation PGLandingSelectorPageViewController
 
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+
+    if (self) {
+        [self setupSocialSources];
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -73,13 +85,12 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSwipeCoachMarks:) name:SHOW_SWIPE_COACH_MARKS_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideSwipeCoachMarks:) name:HIDE_SWIPE_COACH_MARKS_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showStatusBar) name:kPGCameraManagerCameraClosed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelMultiSelectionMode) name:kPGPreviewViewClosed object:nil];
 
     self.dataSource = self;
     self.delegate = self;
     
     self.view.accessibilityIdentifier = @"Landing Page View Controller";
-
-    [self setupSocialSources];
 
     UINavigationController *navController = [self viewControllerForSocialSourceType:self.socialSourceType];
     
@@ -98,16 +109,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
     [self showNavigationView];
 
-    NSUInteger index = [self.socialViewControllers indexOfObject:navController];
-
-    if (index != NSNotFound) {
-        UINavigationController *viewController = navController.viewControllers.lastObject;
-
-        PGSocialSource *socialSource = self.socialSources[index];
-
-        [self updateMediaNavigationForViewController:viewController socialSource:socialSource];
-    }
-
     [self.view addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
     
     for (UIView *v in self.view.subviews) {
@@ -118,6 +119,13 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
     
     self.isDraggingPage = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self updateMediaNavigationForCurrentViewController];
 }
 
 - (void)dealloc
@@ -134,7 +142,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 
-    [[UAirship inAppMessaging] displayPendingMessage];
+    [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
 }
 
 
@@ -429,7 +437,10 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
 
 - (void)mediaNavigationDidPressCancelButton:(PGMediaNavigation *)mediaNav {
     [[PGAnalyticsManager sharedManager] trackMultiSelect:kEventMultiSelectCancel selectedPhotos:nil];
+    [self cancelMultiSelectionMode];
+ }
 
+- (void)cancelMultiSelectionMode {
     [[PGPhotoSelection sharedInstance] endSelectionMode];
 
     PGLandingPageViewController *currentLanding = (PGLandingPageViewController *)(self.currentNavigationController.viewControllers.firstObject);
@@ -449,6 +460,7 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             }
         }
     });
+
 }
 
 - (void)mediaNavigationDidPressNextButton:(PGMediaNavigation *)mediaNav {
@@ -491,7 +503,8 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
     }
 }
 
-- (void)updateMediaNavigationForCurrentViewController {
+- (void)updateMediaNavigationForCurrentViewController
+{
     UINavigationController *navController = [self currentNavigationController];
     UIViewController *viewController = [navController.viewControllers lastObject];
 

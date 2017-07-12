@@ -32,6 +32,7 @@
 @property (strong, nonatomic) HPPRAlbum *album;
 @property (strong, nonatomic) HPPRLoginProvider * loginProvider;
 @property (assign, nonatomic, getter=isImageRequestsCancelled) BOOL imageRequestsCancelled;
+@property (assign, nonatomic) BOOL displayVideos;
 
 - (void)applicationDidStart;
 

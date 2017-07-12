@@ -24,7 +24,12 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 @property (weak, nonatomic) IBOutlet UILabel *copiesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *tilingSingleButton;
+@property (weak, nonatomic) IBOutlet UIButton *tiling2x2Button;
+@property (weak, nonatomic) IBOutlet UIButton *tiling3x3Button;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfJobsLabel;
+@property (weak, nonatomic) IBOutlet UIView *printQueueView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *printQueueViewHeight;
 
 @property (strong, nonatomic) NSTimer *queueCountTimer;
 
@@ -37,9 +42,13 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [super viewDidLoad];
     
     self.showCopies = YES;
-    self.showTiling = NO;
-    self.showPrintQueue = YES;
+    self.showTiling = YES;
+    [self configureShowPrintQueue];
+
+    self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
+
     self.numberOfCopies = 1;
+    self.tilingOption = PGTilingOverlayOptionSingle;
     
     self.drawerButton.clipsToBounds = NO;
     self.drawerButton.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -50,16 +59,24 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     [self updateCopyLabelAndButtons];
 }
 
-- (void)setShowPrintQueue:(BOOL)showPrintQueue
+- (void) viewDidUnload
 {
-    _showPrintQueue = showPrintQueue;
-
     [self.queueCountTimer invalidate];
     self.queueCountTimer = nil;
+}
 
+- (void)setShowPrintQueue:(BOOL)showPrintQueue
+{
+    if (_showPrintQueue == showPrintQueue && self.printQueueView.isHidden == !showPrintQueue) {
+        return;
+    }
+    _showPrintQueue = showPrintQueue;
+
+    self.printQueueView.hidden = !showPrintQueue;
     if (showPrintQueue) {
-        [self refreshQueueCount];
-        self.queueCountTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(refreshQueueCount) userInfo:nil repeats:YES];
+        self.printQueueViewHeight.constant = kPGPreviewDrawerRowHeight;
+    } else {
+        self.printQueueViewHeight.constant = 0;
     }
 }
 
@@ -95,7 +112,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
 - (CGFloat)drawerHeightOpened
 {
     NSInteger numberOfRowsActive = 0;
-    if (self.showPrintQueue) {
+    if (self.showPrintQueue || self.alwaysShowPrintQueue) {
         numberOfRowsActive++;
     }
 
@@ -132,6 +149,23 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     self.minusButton.enabled = self.numberOfCopies != 1;
 }
 
+- (void)configureShowPrintQueue
+{
+    if (self.alwaysShowPrintQueue){
+        if (!self.showPrintQueue) {
+            self.showPrintQueue = YES;
+        }
+        return;
+    }
+
+    NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
+    if (count <= 0) {
+        self.showPrintQueue = NO;
+    } else if (count > 0) {
+        self.showPrintQueue = YES;
+    }
+}
+
 - (void)refreshQueueCount
 {
     NSInteger count = [[MPBTPrintManager sharedInstance] queueSize];
@@ -141,7 +175,7 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
             [self.delegate pgPreviewDrawerDidClearQueue:self];
         }
     }
-    
+
     self.numberOfJobsLabel.text = [NSString stringWithFormat:@"%li", (long)count];
 }
 
@@ -163,6 +197,69 @@ static NSInteger const kPGPreviewDrawerRowHeight = 58;
     }
     
     [self updateCopyLabelAndButtons];
+}
+
+- (IBAction)tilingSingleTapped:(UIButton *)sender
+{
+    self.tilingOption = PGTilingOverlayOptionSingle;
+    
+    if (sender.selected) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didChangeTillingOption:)]) {
+        [self.delegate pgPreviewDrawer:self didChangeTillingOption:self.tilingOption];
+    }
+    
+    sender.selected = YES;
+    self.tiling2x2Button.selected = NO;
+    self.tiling3x3Button.selected = NO;
+    
+    [self updateCopyLabelAndButtons];
+}
+
+- (IBAction)tiling2x2Tapped:(UIButton *)sender
+{
+    self.tilingOption = PGTilingOverlayOption2x2;
+    
+    if (sender.selected) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didChangeTillingOption:)]) {
+        [self.delegate pgPreviewDrawer:self didChangeTillingOption:self.tilingOption];
+    }
+    
+    sender.selected = YES;
+    self.tilingSingleButton.selected = NO;
+    self.tiling3x3Button.selected = NO;
+    
+    self.numberOfCopies = 1;
+    [self updateCopyLabelAndButtons];
+    self.plusButton.enabled = NO;
+    self.minusButton.enabled = NO;
+}
+
+- (IBAction)tiling3x3Tapped:(UIButton *)sender
+{
+    self.tilingOption = PGTilingOverlayOption3x3;
+    
+    if (sender.selected) {
+        return;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pgPreviewDrawer:didChangeTillingOption:)]) {
+        [self.delegate pgPreviewDrawer:self didChangeTillingOption:self.tilingOption];
+    }
+    
+    sender.selected = YES;
+    self.tilingSingleButton.selected = NO;
+    self.tiling2x2Button.selected = NO;
+    
+    self.numberOfCopies = 1;
+    [self updateCopyLabelAndButtons];
+    self.plusButton.enabled = NO;
+    self.minusButton.enabled = NO;
 }
 
 #pragma mark - Gesture Recognizers

@@ -17,7 +17,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-
+    
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
     [attributedString addAttribute:NSFontAttributeName
                              value:[UIFont fontWithName:self.fontFamily size:self.fontSize]

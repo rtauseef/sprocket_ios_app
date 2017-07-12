@@ -12,11 +12,8 @@
 
 #import "PGLandingPageViewController.h"
 
-#import <HPPRSelectPhotoCollectionViewController.h>
-#import "PGWebViewerViewController.h"
 #import "SWRevealViewController.h"
 #import "UIColor+Style.h"
-#import "PGTermsAttributedLabel.h"
 #import "PGPreviewViewController.h"
 #import "PGCameraManager.h"
 #import "UIViewController+Trackable.h"

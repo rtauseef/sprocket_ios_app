@@ -59,7 +59,22 @@ end
 
 When(/^I touch the Terms of Service link$/) do
   @current_page.terms_of_service_link
-
-
   sleep(WAIT_SCREENLOAD)
+end
+
+Then(/^I verify the instructions to "(.*?)"$/) do |instruction|
+    if instruction == "load the paper"
+        check_element_exists(@current_page.load_paper)
+    else
+        if instruction == "connect"
+            check_element_exists(@current_page.connect)
+        else
+            check_element_exists(@current_page.power_up)
+        end
+    end
+end
+
+Then(/^I should see "(.*?)" page$/) do |page|
+    check_element_exists("label marked:'How To & Help'")
+    sleep(STEP_PAUSE)
 end

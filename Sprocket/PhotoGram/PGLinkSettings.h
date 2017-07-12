@@ -19,4 +19,13 @@ extern NSString * const kPGLinkSettingsChangedNotification;
 + (void)setLinkEnabled:(BOOL)visible;
 + (BOOL)linkEnabled;
 
++(void) setVideoPrintEnabled:(BOOL) enabled;
++(BOOL) videoPrintEnabled;
+
++(void) setFakePrintEnabled:(BOOL) enabled;
++(BOOL) fakePrintEnabled;
+
++ (BOOL)localWatermarkEnabled;
++ (void)setLocalWatermarkEnabled:(BOOL)enabled;
+
 @end

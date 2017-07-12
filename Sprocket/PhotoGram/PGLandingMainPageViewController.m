@@ -11,8 +11,6 @@
 //
 
 #import <HPPRFlickrPhotoProvider.h>
-#import <HPPRFacebookPhotoProvider.h>
-#import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 
 #import "PGLandingMainPageViewController.h"
@@ -27,6 +25,8 @@
 #import "PGAnalyticsManager.h"
 #import "PGSideBarMenuTableViewCell.h"
 #import "PGSocialSourcesCircleView.h"
+#import "PGScanViewController.h"
+#import "PGLinkSettings.h"
 #import "PGSocialSourcesManager.h"
 #import "PGAppNavigation.h"
 #import "NSLocale+Additions.h"
@@ -41,7 +41,13 @@
 #define IPHONE_5_HEIGHT 568 // pixels
 
 NSInteger const kSocialSourcesUISwitchThreshold = 4;
-NSInteger const kMantaErrorBusy = 1;
+NSInteger const kMantaErrorNoError          = 0x00;
+NSInteger const kMantaErrorBusy             = 0x01;
+NSInteger const kMantaErrorPaperJam         = 0x02;
+NSInteger const kMantaErrorPaperEmpty       = 0x03;
+NSInteger const kMantaErrorPaperMismatch    = 0x04;
+NSInteger const kMantaErrorCoverOpen        = 0x06;
+NSInteger const kMantaErrorNoSession        = 0xFF00;
 
 @interface PGLandingMainPageViewController () <PGSurveyManagerDelegate, PGWebViewerViewControllerDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, MPSprocketDelegate, PGSocialSourcesCircleViewDelegate, MPBTPrintManagerDelegate, PGInAppMessageHost>
 
@@ -66,6 +72,9 @@ NSInteger const kMantaErrorBusy = 1;
 
 @property (strong, nonatomic) UIAlertController *errorAlert;
 
+@property (assign, nonatomic) NSInteger currentQueueIdWithError;
+@property (strong, nonatomic) NSMutableArray<NSNumber *> *displayedErrors;
+
 @end
 
 @implementation PGLandingMainPageViewController
@@ -73,7 +82,7 @@ NSInteger const kMantaErrorBusy = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self.hamburgerButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     
     self.trackableScreenName = @"Main Landing Page";
@@ -89,30 +98,7 @@ NSInteger const kMantaErrorBusy = 1;
 
     self.socialSourcesCircleView.delegate = self;
 
-    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
-    
-    self.socialSourcesVerticalContainer.hidden = YES;
-    if ([[PGSocialSourcesManager sharedInstance] enabledSocialSources].count > kSocialSourcesUISwitchThreshold) {
-        self.socialSourcesHorizontalContainer.hidden = YES;
-    } else {
-        self.socialSourcesCircularContainer.hidden = YES;
-    }
-    
-    // -> Begin temporary UI
-    /*
-    self.socialSourcesCircularContainer.hidden = YES;
-    if ([NSLocale isChinese]) {
-        self.socialSourcesHorizontalContainer.hidden = YES;
-
-        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
-            self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
-            self.titleLabelBottomConstraint.constant = 73.0;
-        }
-    } else {
-        self.socialSourcesVerticalContainer.hidden = YES;
-    }
-     */
-    // <- End temporary UI
+    [self setSocialSourcesLayout];
 
     BOOL openFromNotification = ((PGAppDelegate *)[UIApplication sharedApplication].delegate).openFromNotification;
     if (openFromNotification) {
@@ -123,8 +109,12 @@ NSInteger const kMantaErrorBusy = 1;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     [self addLongPressGesture];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLinkSettingsChanged:)  name:kPGLinkSettingsChangedNotification object:nil];
 
     [MPBTPrintManager sharedInstance].delegate = self;
+    
+    self.currentQueueIdWithError = -1;
+    self.displayedErrors = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -149,6 +139,8 @@ NSInteger const kMantaErrorBusy = 1;
         self.blurredView.alpha = 0;
         self.cameraBackgroundView.alpha = 0;
     }];
+
+    [self setSocialSourcesLayout];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -221,13 +213,14 @@ NSInteger const kMantaErrorBusy = 1;
 
 - (void)addLongPressGesture {
     #ifndef APP_STORE_BUILD
-        
-        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
-        lpgr.minimumPressDuration = 2.0f; //seconds
-        lpgr.delaysTouchesBegan = YES;
-        lpgr.delegate = self;
-        [self.view addGestureRecognizer:lpgr];
-        
+        // link uses this long press for integrated scanning
+        if (![PGLinkSettings linkEnabled]) {
+            UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+            lpgr.minimumPressDuration = 2.0f; //seconds
+            lpgr.delaysTouchesBegan = YES;
+            lpgr.delegate = self;
+            [self.view addGestureRecognizer:lpgr];
+        }
     #endif
 }
 
@@ -260,6 +253,42 @@ NSInteger const kMantaErrorBusy = 1;
 }
 
 
+- (void)setSocialSourcesLayout
+{
+    // Holding the social sources circle while Qzone and Weibo are not ready for deployment
+    
+    NSInteger sourceCount = [[PGSocialSourcesManager sharedInstance] enabledSocialSources].count;
+    
+    /*if ([PGLinkSettings linkEnabled]) {
+        sourceCount += 1;
+    }*/
+    
+    self.socialSourcesVerticalContainer.hidden = YES;
+    if (sourceCount > kSocialSourcesUISwitchThreshold) {
+        self.socialSourcesHorizontalContainer.hidden = YES;
+        self.socialSourcesCircularContainer.hidden = NO;
+    } else {
+        self.socialSourcesCircularContainer.hidden = YES;
+        self.socialSourcesHorizontalContainer.hidden = NO;
+    }
+    
+    // -> Begin temporary UI
+    /*
+     self.socialSourcesCircularContainer.hidden = YES;
+     if ([NSLocale isChinese]) {
+     self.socialSourcesHorizontalContainer.hidden = YES;
+     
+     if (IS_IPHONE_6 || IS_IPHONE_6_PLUS) {
+     self.titleLabel.font = [UIFont HPSimplifiedLightFontWithSize:42.0];
+     self.titleLabelBottomConstraint.constant = 73.0;
+     }
+     } else {
+     self.socialSourcesVerticalContainer.hidden = YES;
+     }
+     */
+    // <- End temporary UI
+}
+
 #pragma mark - Notifications
 
 - (void)handleMenuOpenedNotification:(NSNotification *)notification
@@ -285,7 +314,13 @@ NSInteger const kMantaErrorBusy = 1;
         self.cameraRollButton.userInteractionEnabled = YES;
         self.socialSourcesCircleView.userInteractionEnabled = YES;
 
-        [[UAirship inAppMessaging] displayPendingMessage];
+        [[PGInAppMessageManager sharedInstance] attemptToDisplayPendingMessage];
+    });
+}
+
+- (void)handleLinkSettingsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setSocialSourcesLayout];
     });
 }
 
@@ -322,6 +357,11 @@ NSInteger const kMantaErrorBusy = 1;
 - (IBAction)flickrTapped:(id)sender
 {
     [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
+}
+
+- (IBAction)linkScanTapped:(id)sender
+{
+    [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
 }
 
 - (IBAction)googleTapped:(id)sender
@@ -456,6 +496,10 @@ NSInteger const kMantaErrorBusy = 1;
         queueAction = kEventPrintQueuePrintCopiesAction;
         jobAction = kEventPrintJobPrintCopiesAction;
         offRamp = kMetricsOffRampQueuePrintCopies;
+    } else if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginTile]) {
+        queueAction = kEventPrintQueuePrintTileAction;
+        jobAction = kEventPrintJobPrintTileAction;
+        offRamp = kMetricsOffRampQueuePrintTile;
     }
 
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:queueAction
@@ -477,46 +521,66 @@ NSInteger const kMantaErrorBusy = 1;
 }
 
 - (void)btPrintManager:(MPBTPrintManager *)printManager didReceiveError:(NSInteger)errorCode forPrintJob:(MPPrintLaterJob *)job {
-    if (self.errorAlert || (errorCode == kMantaErrorBusy)) {
+    if (self.errorAlert || errorCode == kMantaErrorNoError || errorCode == kMantaErrorBusy) {
         return;
     }
-
-    NSString *format;
-    if (printManager.queueSize == 1) {
-        format = NSLocalizedString(@"%li print in Print Queue", @"Message presented when there is only one image in the print queue");
+    
+    if (self.currentQueueIdWithError != printManager.queueId) {
+        self.currentQueueIdWithError = printManager.queueId;
+        [self.displayedErrors removeAllObjects];
+    }
+    
+    NSNumber *error = [NSNumber numberWithInteger:errorCode];
+    if ([self.displayedErrors containsObject:error]) {
+        return;
+    }
+    
+    [self.displayedErrors addObject:error];
+    
+    NSString *errorMessage;
+    BOOL shouldShowQueueMessage = errorCode == kMantaErrorNoSession || errorCode == kMantaErrorBusy || errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    if (shouldShowQueueMessage) {
+        NSString *printsInQueue;
+        long queueSizeNotInProgress = printManager.queueSize - 1;
+        if (queueSizeNotInProgress <= 0) {
+            printsInQueue = NSLocalizedString(@"1 in progress", @"Message presented when some error occurred while printing an image");
+        } else {
+            NSString *format = NSLocalizedString(@"1 in progress, %li in Print Queue", @"Message presented when some error occurred while printing an image and there are other images in the print queue");
+            printsInQueue = [NSString stringWithFormat:format, queueSizeNotInProgress];
+        }
+        
+        errorMessage = [NSString stringWithFormat:@"%@\n\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
     } else {
-        format = NSLocalizedString(@"%li prints in Print Queue", @"Message presented when there more than one images in the print queue");
+        errorMessage = [NSString stringWithFormat:@"%@", [[MP sharedInstance] errorDescription:errorCode]];
     }
 
-    NSString *printsInQueue = [NSString stringWithFormat:format, (long)printManager.queueSize];
-    NSString *errorMessage = [NSString stringWithFormat:@"%@\n\n%@.", [[MP sharedInstance] errorDescription:errorCode], printsInQueue];
-
     self.errorAlert = [UIAlertController alertControllerWithTitle:[[MP sharedInstance] errorTitle:errorCode]
-                                                                   message:errorMessage
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                          message:errorMessage
+                                                   preferredStyle:UIAlertControllerStyleAlert];
 
-    if (errorCode == kMantaErrorBusy) {
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
-                                                                 style:UIAlertActionStyleDefault
-                                                               handler:^(UIAlertAction * _Nonnull action) {
-                                                                   self.errorAlert = nil;
-                                                               }];
-        [self.errorAlert addAction:okAction];
-    } else {
+    BOOL shouldShowPauseResumeButtons = errorCode == kMantaErrorPaperJam || errorCode == kMantaErrorCoverOpen || errorCode == kMantaErrorPaperEmpty || errorCode == kMantaErrorPaperMismatch;
+    if (shouldShowPauseResumeButtons) {
         UIAlertAction *pauseAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Pause", @"Dismisses dialog and pauses printing")
-                                                              style:UIAlertActionStyleCancel
+                                                              style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * _Nonnull action) {
                                                                 self.errorAlert = nil;
                                                                 [printManager pausePrintQueue];
                                                             }];
         [self.errorAlert addAction:pauseAction];
         
-        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Try Again", @"Dismisses dialog without taking action")
+        UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Resume", @"Dismisses dialog without taking action")
                                                                  style:UIAlertActionStyleDefault
                                                                handler:^(UIAlertAction * _Nonnull action) {
                                                                    self.errorAlert = nil;
                                                                }];
         [self.errorAlert addAction:tryAgainAction];
+    } else {
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Dismisses dialog without taking action")
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   self.errorAlert = nil;
+                                                               }];
+        [self.errorAlert addAction:okAction];
     }
 
     UIViewController *topViewController = [[MP sharedInstance] keyWindowTopMostController];
@@ -530,8 +594,11 @@ NSInteger const kMantaErrorBusy = 1;
     if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginCopies]) {
         action = kEventPrintQueueDeleteCopiesAction;
         offRamp = kMetricsOffRampQueueDeleteCopies;
+    } else if ([job.extra[kMetricsOrigin] isEqualToString:kMetricsOriginTile]) {
+        action = kEventPrintQueueDeleteTileAction;
+        offRamp = kMetricsOffRampQueueDeleteTile;
     }
-
+ 
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
                                                       queueId:printManager.queueId];
     
@@ -551,6 +618,11 @@ NSInteger const kMantaErrorBusy = 1;
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnCameraButton:(UIButton *)button
 {
     [self cameraTapped:button];
+}
+
+- (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnLinkButton:(UIButton *)button
+{
+    [self linkScanTapped:button];
 }
 
 - (void)socialCircleView:(PGSocialSourcesCircleView *)view didTapOnSocialButton:(UIButton *)button withSocialSource:(PGSocialSource *)socialSource

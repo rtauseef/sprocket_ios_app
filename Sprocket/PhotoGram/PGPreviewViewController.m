@@ -27,13 +27,16 @@
 #import "PGPhotoSelection.h"
 #import "HPPRCacheService.h"
 #import "PGSavePhotos.h"
+#import "PGWatermarkProcessor.h"
+#import "PGPayoffProcessor.h"
 #import "PGProgressView.h"
 #import "PGPreviewDrawerViewController.h"
-#import "PGWatermarkProcessor.h"
+#import "PGPayoffManager.h"
 #import "PGLinkSettings.h"
 #import "PGPrintQueueManager.h"
 #import "PGSetupSprocketViewController.h"
-
+#import "PGTilingOverlay.h"
+#import "PGLog.h"
 #import <MP.h>
 #import <HPPR.h>
 #import <HPPRSelectPhotoProvider.h>
@@ -43,15 +46,19 @@
 #import <MPPrintItemFactory.h>
 #import <MPBTPrintActivity.h>
 #import <MPBTPrintManager.h>
+#import <MPBTImagePreprocessorManager.h>
 #import <HPPRCameraRollLoginProvider.h>
 #import <QuartzCore/QuartzCore.h>
 #import <Crashlytics/Crashlytics.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AFNetworking.h>
 
+
 #define kPreviewScreenshotErrorTitle NSLocalizedString(@"Oops!", nil)
 #define kPreviewScreenshotErrorMessage NSLocalizedString(@"An error occurred when sharing the item.", nil)
 #define kPreviewRetryButtonTitle NSLocalizedString(@"Retry", nil)
+
+NSString * const kPGPreviewViewClosed = @"PGPreviewViewClosed";
 
 static NSInteger const screenshotErrorAlertViewTag = 100;
 static NSUInteger const kPGPreviewViewControllerPrinterConnectivityCheckInterval = 1;
@@ -73,6 +80,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeight;
@@ -98,21 +106,35 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 @property (strong, nonatomic) PGProgressView *progressView;
 @property (strong, nonatomic) IMGLYPhotoEditViewController *photoEditViewController;
 
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
+@property (assign, nonatomic) NSInteger viewNumber;
+@property (assign, nonatomic) NSInteger viewCount;
+
+@property (strong, nonatomic) PGTilingOverlay *tilingOverlay;
+
 @end
 
 @implementation PGPreviewViewController
 
 + (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source animated:(BOOL)animated
 {
+    [self presentPreviewPhotoFrom:currentViewController andSource:source media:nil animated:animated];
+}
+
++ (void)presentPreviewPhotoFrom:(UIViewController *)currentViewController andSource:(NSString *)source media:(HPPRMedia *)media animated:(BOOL)animated
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = source;
+    previewViewController.media = media;
 
     [currentViewController presentViewController:previewViewController animated:animated completion:nil];
 }
 
 + (void)presentCameraFrom:(UIViewController *)currentViewController animated:(BOOL)animated
 {
+    [[PGPhotoSelection sharedInstance] clearSelection];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
     PGPreviewViewController *previewViewController = (PGPreviewViewController *)[storyboard instantiateViewControllerWithIdentifier:@"PGPreviewViewController"];
     previewViewController.source = [PGPreviewViewController cameraSource];
@@ -138,6 +160,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
     if ([PGPhotoSelection sharedInstance].hasMultiplePhotos) {
         self.drawer.showCopies = NO;
+        self.drawer.showTiling = NO;
+        self.drawer.alwaysShowPrintQueue = YES;
         self.bottomViewHeight.constant *= kPGPreviewViewControllerCarouselPhotoSizeMultiplier;
 
     } else {
@@ -167,6 +191,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    self.operationQueue = [[NSOperationQueue alloc] init];
+    
+    self.tilingOverlay = [[PGTilingOverlay alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -210,7 +238,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     // Updating visible edited images with the correct contentMode after loading the screen;
     for (PGGesturesView *visibleGestureView in self.carouselView.visibleItemViews) {
-        visibleGestureView.editedImage = [visibleGestureView screenshotImage];
+        visibleGestureView.editedImage = [self gestureViewScreenshot:visibleGestureView];
     }
 
     if ([[MPBTPrintManager sharedInstance] queueSize] > 0 && self.carouselView.visibleItemViews.count > 0) {
@@ -252,6 +280,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)checkSprocketPrinterConnectivity:(NSTimer *)timer
 {
+    if ([PGLinkSettings fakePrintEnabled]) {
+        [self.printButton setImage:[UIImage imageNamed:@"previewPrinterActive"] forState:UIControlStateNormal];
+        return;
+    }
     NSInteger numberOfPairedSprockets = [[MP sharedInstance] numberOfPairedSprockets];
     
     if (numberOfPairedSprockets > 0) {
@@ -299,12 +331,17 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)showImageSavedView:(BOOL)show
 {
+    NSUInteger buttonAlphaValue = show ? 0 : 1;
+    NSUInteger multiSelectLabelAlphaValue = show ? 0 : [PGPhotoSelection sharedInstance].hasMultiplePhotos;
     CGRect frame = self.topView.frame;
     if (!show) {
         frame.origin.y -= frame.size.height;
     }
     
     [UIView animateWithDuration:0.5F animations:^{
+        self.closeButton.alpha = buttonAlphaValue;
+        self.editButton.alpha = buttonAlphaValue;
+        self.numberOfSelectedPhotos.alpha = multiSelectLabelAlphaValue;
         self.imageSavedView.frame = frame;
     }];
 }
@@ -317,7 +354,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     UIImage *image = [savedImages objectAtIndex:idx++];
 
     if (image) {
-        [PGSavePhotos saveImage:image completion:^(BOOL success) {
+        [PGSavePhotos saveImage:image completion:^(BOOL success, PHAsset* asset) {
             if (success && [savedImages count] > idx) {
                 [self savePhoto:savedImages index:idx withCompletion:completion];
             } else if (completion) {
@@ -332,13 +369,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (void)saveSelectedPhotosWithCompletion:(void (^)(BOOL))completion
 {
-    NSMutableArray *images = [[NSMutableArray alloc] init];
-    for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected && gestureView.editedImage) {
-            [images addObject:gestureView.editedImage];
-        }
-    }
-
+    NSArray *images = [self editedImagesSelected];
     if (images.count > 0) {
         [self savePhoto:images index:0 withCompletion:completion];
     }
@@ -470,10 +501,39 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self presentViewController:alert animated:YES completion:completion];
 }
 
+- (NSMutableArray<UIImage *> *)editedImagesSelected
+{
+    NSMutableArray *editedImages = [NSMutableArray array];
+    if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+        for (PGGesturesView *gestureView in self.gesturesViews) {
+            if (gestureView.isSelected && gestureView.editedImage) {
+                [editedImages addObject:gestureView.editedImage];
+            }
+        }
+    } else {
+        PGGesturesView *gestureView = self.gesturesViews[0];
+        editedImages = [self generateTiles:gestureView rotatingLastRow:NO];
+    }
+    
+    return editedImages;
+}
+
+- (UIImage *)gestureViewScreenshot:(PGGesturesView *)gestureView
+{
+    self.tilingOverlay.isOverlayVisible = NO;
+    UIImage* image = [gestureView screenshotImage];
+    self.tilingOverlay.isOverlayVisible = YES;
+    return image;
+}
+
 #pragma mark - Drawer Methods
 
 - (void)setDrawerHeightAnimated:(BOOL)animated
 {
+    if (self.drawer.isOpened || self.drawer.isPeeking) {
+        [self.drawer configureShowPrintQueue];
+    }
+
     self.containerViewHeightConstraint.constant = [self.drawer drawerHeight];
 
     if (animated) {
@@ -481,9 +541,15 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             [self reloadCarouselItems];
         } completion:^(BOOL finished) {
             [self reloadCarouselItemsAndEditedImage];
+            if (!self.drawer.isOpened) {
+                [self.drawer configureShowPrintQueue];
+            }
         }];
     } else {
         [self reloadCarouselItemsAndEditedImage];
+        if (!self.drawer.isOpened) {
+            [self.drawer configureShowPrintQueue];
+        }
     }
 }
 
@@ -504,7 +570,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (!self.drawer.isOpened && !self.drawer.isPeeking) {
         return;
     }
-    
+
     self.drawer.isOpened = NO;
     self.drawer.isPeeking = NO;
     self.wasDrawerOpenedByUser = NO;
@@ -517,7 +583,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     if (self.drawer.isOpened) {
         return;
     }
-    
+
     self.drawer.isOpened = YES;
     self.drawer.isPeeking = NO;
 
@@ -560,9 +626,25 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
         drawer.isPeeking = NO;
         drawer.isOpened = self.containerViewHeightConstraint.constant > threshold;
+        self.wasDrawerOpenedByUser = drawer.isOpened;
 
         [self setDrawerHeightAnimated:NO];
     }
+}
+
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGTilingOverlayOption)tilingOption
+{
+    if (tilingOption == PGTilingOverlayOptionSingle) {
+        [self.tilingOverlay removeOverlay];
+        return;
+    }
+    
+    UIView *gestureView = self.gesturesViews.firstObject;
+    if (!gestureView) {
+        return;
+    }
+    
+    [self.tilingOverlay addTilingOverlay:tilingOption toView:gestureView];
 }
 
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer
@@ -587,6 +669,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     currentGesturesView.totalRotation = 0.0F;
     currentGesturesView.scrollView.zoomScale = currentGesturesView.minimumZoomScale;
 
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 
     self.didChangeProject = YES;
@@ -596,22 +679,26 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 }
 
 - (void)photoEditViewControllerDidCancel:(IMGLYPhotoEditViewController *)photoEditViewController {
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)photoEditViewControllerDidFailToGeneratePhoto:(IMGLYPhotoEditViewController *)photoEditViewController {
     MPLogError(@"photoEditViewControllerDidFailToGeneratePhoto:%@", photoEditViewController);
+    [self clearPhotoEditor];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)clearPhotoEditor
+{
+    self.photoEditViewController = nil;
+    self.imglyManager.photoEditViewController = nil;
+}
 
 #pragma mark - Camera Handlers
 
 - (void)closePreviewAndCamera {
-    if (![PGPhotoSelection sharedInstance].isInSelectionMode) {
-        [[PGPhotoSelection sharedInstance] endSelectionMode];
-    }
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPGPreviewViewClosed object:nil];
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kPGCameraManagerCameraClosed object:nil];
     }];
@@ -690,7 +777,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.imageSavedLabel.text = NSLocalizedString(@"Saved to Camera Roll", nil);
+                    self.imageSavedLabel.text = NSLocalizedString(@"Saved to sprocket folder", nil);
                     
                     [UIView animateWithDuration:0.5F animations:^{
                         [self showImageSavedView:YES];
@@ -805,132 +892,247 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }];
 }
 
+- (BOOL)isWatermarkingEnabledForMedia:(HPPRMedia *)media {
+    return ([PGLinkSettings linkEnabled] && [media socialMediaImageUrl]);
+}
 
 #pragma mark - Print preparation
 
+
 - (void)printWithDrawerOpened:(BOOL)wasDrawerOpened andPrinterConnectedStatus:(BOOL)isPrinterConnected
 {
-    NSMutableArray<PGGesturesView *> *selectedViews = [self gestureViewsSelected];
+    [self.operationQueue waitUntilAllOperationsAreFinished];
+    self.operationQueue.suspended = YES;
     
+    NSMutableArray<PGGesturesView *> *selectedViews = [self gestureViewsSelected];
     NSArray *offRampAndOrigin = [self offrampAndOriginByPrinterConnectedStatus:isPrinterConnected];
     NSString *origin = offRampAndOrigin[0];
     NSString *offRamp = offRampAndOrigin[1];
-    
-    if (self.drawer.numberOfCopies > 1) {
-        for (NSInteger i = 1; i < self.drawer.numberOfCopies; i++) {
+    NSInteger numberOfCopies = self.drawer.numberOfCopies;
+    BOOL isPrintDirect = (selectedViews.count == 1) && (numberOfCopies == 1);
+    NSOperation *lastOperation = nil;
+
+    if (numberOfCopies > 1) {
+        for (NSInteger i = 1; i < numberOfCopies; i++) {
             [selectedViews addObject:selectedViews.firstObject];
         }
     }
-
+    
+    self.viewNumber = 0;
+    self.viewCount = selectedViews.count;
+    
     __block BOOL wasAddedToQueue = NO;
     __block NSUInteger numberOfPrintsAdded = 0;
-    __block CGFloat watermarkedImages = 0.0;
+    BOOL printingTiles = NO;
+    NSUInteger imagesToProcess = selectedViews.count;
+
+    NSMutableArray<UIImage *> *tiles;
+    PGGesturesView *gestureView;
+    if (self.drawer.tilingOption != PGTilingOverlayOptionSingle) {
+        printingTiles = YES;
+        gestureView = selectedViews[0];
+        tiles = [self generateTiles:gestureView rotatingLastRow:YES];
+        isPrintDirect &= tiles.count == 1;
+        imagesToProcess = tiles.count;
+    }
     
-    // CREATE GROUP
-    dispatch_group_t watermarkGroup = dispatch_group_create();
-    for (PGGesturesView *gestureView in selectedViews) {
-        
-        PGWatermarkProcessor *processor;
-        if ([self isWatermarkingEnabledForMedia:gestureView.media]) {
-            processor = [[PGWatermarkProcessor alloc] initWithWatermarkURL:[NSURL URLWithString:gestureView.media.socialMediaImageUrl]];
-            
-            // SHOW PROGRESS VIEW
-            [self handleWatermarkingProgress:watermarkedImages / selectedViews.count];
+    if (imagesToProcess == 0) {
+        return;
+    }
+
+    for (int x = 0; x < imagesToProcess; x++) {
+        __block UIImage *imageToPrint;
+        if (printingTiles && tiles != nil) {
+            imageToPrint = tiles[x];
+        } else if (!printingTiles) {
+            gestureView = selectedViews[x];
+            gestureView.editedImage = [self gestureViewScreenshot:gestureView];
+            imageToPrint = gestureView.editedImage;
         }
-        
-        // ENTER GROUP
-        NSLog(@"WATERMARK - GROUP ENTER");
-        dispatch_group_enter(watermarkGroup);
+        __block MPPrintItem *printItem = nil;
+        __block NSMutableDictionary *metrics = nil;
         
         NSMutableDictionary *extendedMetrics = [[NSMutableDictionary alloc] init];
         [extendedMetrics addEntriesFromDictionary:[self extendedMetricsByGestureView:gestureView]];
-        BOOL isPrintDirect = (selectedViews.count == 1) && (self.drawer.numberOfCopies == 1);
         
-        void (^block)(UIImage *image) = ^(UIImage *image) {
-            MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
-            NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
-            
-            [metrics setObject:origin forKey:kMetricsOrigin];
-            
-            if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
-                [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
-                    return [self handlePrintQueueStatus:status progress:progress printsAdded:0 error:errorCode];
+        // PRE-PROCESSOR(S)
+        NSBlockOperation *preProcessStartOperation = [NSBlockOperation blockOperationWithBlock:^{
+            PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) START");
+            self.viewNumber++;
+        }];
+        if (nil != lastOperation) {
+            [preProcessStartOperation addDependency:lastOperation];
+        }
+        [self.operationQueue addOperation:preProcessStartOperation];
+        
+        NSBlockOperation *preProcessCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
+            PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PRE-PROCESSOR(S) COMPLETE");
+        }];
+        [preProcessCompleteOperation addDependency:preProcessStartOperation];
+        
+        MPBTImageProcessor *processor = nil;
+        if ([PGLinkSettings linkEnabled]) {
+            processor = [self createPrintProcessorFromMedia:gestureView.media];
+            if (nil != processor) {
+                [preProcessStartOperation addExecutionBlock:^{
+                    NSDictionary *options = @{ kMPBTImageProcessorLocalIdentifierKey : [[PGPayoffManager sharedInstance] offlineID] };
+                    MPBTImagePreprocessorManager * mg = [MPBTImagePreprocessorManager createWithProcessors:@[processor] options:options];
+                    [mg processImage:gestureView.editedImage statusUpdate:^(NSUInteger processorIndex, double progress) {
+                        [self handleProcessorStatus:mg.processors[processorIndex] progress:progress];
+                    } complete:^(NSError *error, UIImage *image) {
+                        if (nil == error) {
+                            imageToPrint = image;
+                        } else {
+                            PGLogDebug(@"PREVIEW CONTROLLER: PRE-PROCESSOR: ERROR: %@", error);
+                        }
+                        [self.operationQueue addOperation:preProcessCompleteOperation];
+                    }];
                 }];
-            } else {
+            }
+        }
+        if (nil == processor) {
+            [self.operationQueue addOperation:preProcessCompleteOperation];
+        }
+        
+        // PREPARE TO PRINT
+        NSBlockOperation *prepareToPrintOperation = [NSBlockOperation blockOperationWithBlock:^{
+            PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: PREPARE TO PRINT");
+            printItem = [MPPrintItemFactory printItemWithAsset:imageToPrint];
+            metrics = [[PGAnalyticsManager sharedManager] getMetrics:offRamp printItem:printItem extendedInfo:extendedMetrics];
+            [metrics setObject:origin forKey:kMetricsOrigin];
+        }];
+        [prepareToPrintOperation addDependency:preProcessCompleteOperation];
+        [self.operationQueue addOperation:prepareToPrintOperation];
+        
+        // FAKE PRINT
+        if ([PGLinkSettings fakePrintEnabled]) {
+            
+            NSBlockOperation *fakePrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT START");
+            }];
+            [fakePrintStartOperation addDependency:prepareToPrintOperation];
+            [self.operationQueue addOperation:fakePrintStartOperation];
+            
+            NSBlockOperation *fakePrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FAKE PRINT COMPLETE");
+            }];
+            [fakePrintCompleteOperation addDependency:fakePrintStartOperation];
+            lastOperation = fakePrintCompleteOperation;
+            
+            __weak __typeof(self)weakSelf = self;
+            void (^saveImage)() = ^{
+                [PGSavePhotos saveImageFake:imageToPrint completion:^(BOOL success, PHAsset * asset) {
+                    PGLogDebug(@"FAKE PRINT: %@", success ? @"IMAGE SAVED" : @"SAVE FAILED");
+                    [weakSelf.operationQueue addOperation:fakePrintCompleteOperation];
+                }];
+            };
+            
+            [fakePrintStartOperation addExecutionBlock:^{
+                if ([PGSavePhotos savePhotos]) {
+                    saveImage();
+                } else {
+                    [PGSavePhotos promptToSavePhotos:self completion:^(BOOL savePhotos) {
+                        if (savePhotos) {
+                            saveImage();
+                        } else {
+                            PGLogDebug(@"FAKE PRINT: SAVE SKIPPED");
+                            [self.operationQueue addOperation:fakePrintCompleteOperation];
+                        }
+                    }];
+                }
+            }];
+            
+        // DIRECT PRINT
+        } else if (isPrintDirect && ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected)) {
+            
+            NSBlockOperation *directPrintStartOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT START");
+            }];
+            [directPrintStartOperation addDependency:prepareToPrintOperation];
+            [self.operationQueue addOperation:directPrintStartOperation];
+            
+            NSBlockOperation *directPrintCompleteOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: DIRECT PRINT COMPLETE");
+            }];
+            [directPrintCompleteOperation addDependency:directPrintStartOperation];
+            lastOperation = directPrintCompleteOperation;
+            
+            [directPrintStartOperation addExecutionBlock:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[MPBTPrintManager sharedInstance] printDirect:printItem metrics:metrics statusUpdate:^BOOL(MPBTPrinterManagerStatus status, NSInteger progress, NSInteger errorCode) {
+                        BOOL busy = [self handlePrintQueueStatus:status progress:progress printsAdded:0 error:errorCode];
+                        if (!busy) {
+                            [self.operationQueue addOperation:directPrintCompleteOperation];
+                        }
+                        return busy;
+                    }];
+                });
+            }];
+            
+        // PRINT QUEUE
+        } else {
+            NSBlockOperation *queueOperation = [NSBlockOperation blockOperationWithBlock:^{
+                PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: QUEUE");
+                
                 [metrics setObject:@([MPBTPrintManager sharedInstance].queueId) forKey:kMetricsPrintQueueIdKey];
-                [metrics setObject:@(self.drawer.numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
+                [metrics setObject:@(numberOfCopies) forKey:kMetricsPrintQueueCopiesKey];
                 [metrics setObject:@{kMPBTPrinterConnected:[[NSNumber numberWithBool:isPrinterConnected] stringValue]} forKey:kMPCustomAnalyticsKey];
                 [[MPBTPrintManager sharedInstance] addPrintItemToQueue:printItem metrics:metrics];
                 
                 [[PGAnalyticsManager sharedManager] postMetricsWithOfframp:offRamp
                                                                  printItem:printItem
-                                                            extendedInfo:metrics];
+                                                              extendedInfo:metrics];
                 wasAddedToQueue = YES;
                 numberOfPrintsAdded++;
-            }
-            
-            watermarkedImages++;
-            if ([self isWatermarkingEnabledForMedia:gestureView.media]) {
-                [self handleWatermarkingProgress:watermarkedImages / (double)selectedViews.count];
-            }
-            
-            // LEAVE GROUP
-            NSLog(@"WATERMARK - GROUP LEAVE");
-            dispatch_group_leave(watermarkGroup);
-        };
-        
-        if (processor) {
-            NSLog(@"WATERMARK - WILL PROCESS IMAGE");
-            
-            [processor processImage:gestureView.editedImage
-                        withOptions:[[MPBTPrintManager sharedInstance] defaultOptionsForImageProcessor]
-                         completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
-                             if (!error) {
-                                 NSLog(@"WATERMARK - SUCCESSFULLY PROCESSED IMAGE");
-                                 block(image);
-                             } else {
-                                 NSLog(@"WATERMARK - ERROR PROCESSING IMAGE - %@", error);
-                                 block(gestureView.editedImage);
-                             }
-                         }];
-        } else {
-            block(gestureView.editedImage);
+            }];
+            [queueOperation addDependency:prepareToPrintOperation];
+            [self.operationQueue addOperation:queueOperation];
+            lastOperation = queueOperation;
         }
     }
     
-    MPBTPrinterManagerStatus printerStatus = [MPBTPrintManager sharedInstance].status;
-    BOOL isPrinting = printerStatus != MPBTPrinterManagerStatusEmptyQueue && printerStatus != MPBTPrinterManagerStatusIdle;
-    
-    if (isPrinterConnected && isPrinting && numberOfPrintsAdded > 0) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self peekDrawerAnimated:YES];
-            
-            self.imageSavedLabel.text = [self numberOfPrintsAddedAndInProgressString:numberOfPrintsAdded];
-            
-            [UIView animateWithDuration:0.5F animations:^{
-                [self showImageSavedView:YES];
-            } completion:^(BOOL finished) {
-                [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:2.0];
-            }];
-        });
-    }
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // WAIT FOR GROUP
-        NSLog(@"WATERMARK - GROUP WAIT");
+    // FINISH PRINTING
+    NSBlockOperation *finishPrinting = [NSBlockOperation blockOperationWithBlock:^{
+        PGLogDebug(@"PREVIEW CONTROLLER: OPERATION: FINISH PRINTING");
         
-        dispatch_group_wait(watermarkGroup, dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC));
+        MPBTPrinterManagerStatus printerStatus = [MPBTPrintManager sharedInstance].status;
+        BOOL isPrinting = printerStatus != MPBTPrinterManagerStatusEmptyQueue && printerStatus != MPBTPrinterManagerStatusIdle;
         
-        NSLog(@"WATERMARK - DONE WAITING");
+        if (isPrinterConnected && isPrinting && numberOfPrintsAdded > 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self peekDrawerAnimated:YES];
+                
+                self.imageSavedLabel.text = [self numberOfPrintsAddedAndInProgressString:numberOfPrintsAdded];
+                
+                [UIView animateWithDuration:0.5F animations:^{
+                    [self showImageSavedView:YES];
+                } completion:^(BOOL finished) {
+                    [self performSelector:@selector(hideSavedImageView:) withObject:nil afterDelay:2.0];
+                }];
+            });
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissProgressView];
+            BOOL isResuming = isPrinterConnected && !isPrinting;
             if (wasAddedToQueue && !isPrinterConnected) {
                 [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
-            } else if (isPrinterConnected && !isPrinting) {
+            } else if (isResuming) {
                 [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
             }
+            
+            if (wasAddedToQueue) {
+                NSUInteger queueSize = isResuming ? [MPBTPrintManager sharedInstance].originalQueueSize : numberOfPrintsAdded;
+                [self trackNumberOfPrintsAddedToQueue:queueSize];
+            }
         });
-    });
+    }];
+    
+    [finishPrinting addDependency:lastOperation];
+    [self.operationQueue addOperation:finishPrinting];
+    
+    self.operationQueue.suspended = NO;
+
 }
 
 - (void)resumePrintingWithDrawerOpened:(BOOL)wasDrawerOpened andNumberOfPrintsAddedToQueue:(NSInteger)numberOfPrintsAdded;
@@ -939,6 +1141,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         return [self handlePrintQueueStatus:status progress:progress printsAdded:numberOfPrintsAdded error:errorCode];
     }];
     
+    if (wasDrawerOpened) {
+        [self openDrawerAnimated:NO];
+    }
+}
+
+- (void)trackNumberOfPrintsAddedToQueue:(NSUInteger)queueSize
+{
     NSString *action = kEventPrintQueueAddSingleAction;
     if ([MPBTPrintManager sharedInstance].originalQueueSize > 1) {
         action = kEventPrintQueueAddMultiAction;
@@ -948,13 +1157,13 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         action = kEventPrintQueueAddCopiesAction;
     }
     
-    if (wasDrawerOpened) {
-        [self openDrawerAnimated:NO];
+    if (self.drawer.tilingOption != PGTilingOverlayOptionSingle) {
+        action = kEventPrintQueueAddTileAction;
     }
     
     [[PGAnalyticsManager sharedManager] trackPrintQueueAction:action
                                                       queueId:[MPBTPrintManager sharedInstance].queueId
-                                                    queueSize:[MPBTPrintManager sharedInstance].originalQueueSize];
+                                                    queueSize:queueSize];
 }
 
 - (NSArray<NSString *> *)offrampAndOriginByPrinterConnectedStatus:(BOOL)isPrinterConnected
@@ -973,22 +1182,98 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     } else if ((selectedViewsCount == 1) && (numberOfCopies == 1)) {
         if ([MPBTPrintManager sharedInstance].status == MPBTPrinterManagerStatusEmptyQueue && isPrinterConnected) {
             offRamp = kMetricsOffRampPrintNoUISingle;
-            origin = kMetricsOriginSingle;
+            if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+                origin = kMetricsOriginSingle;
+            } else {
+                origin = kMetricsOriginTile;
+            }
             
             if ([[PGPhotoSelection sharedInstance] isInSelectionMode]) {
                 offRamp = kMetricsOffRampPrintNoUIMulti;
             }
         } else {
-            origin = kMetricsOriginSingle;
-            offRamp = kMetricsOffRampQueueAddSingle;
+            if (self.drawer.tilingOption == PGTilingOverlayOptionSingle) {
+                origin = kMetricsOriginSingle;
+                offRamp = kMetricsOffRampQueueAddSingle;
+            } else {
+                origin = kMetricsOriginTile;
+                offRamp = kMetricsOffRampQueueAddTile;
+            }
         }
     }
     
     return @[origin, offRamp];
 }
 
-- (BOOL)isWatermarkingEnabledForMedia:(HPPRMedia *)media {
-    return ([PGLinkSettings linkEnabled] && [media socialMediaImageUrl]);
+- (NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView*)gestureView rotatingLastRow:(BOOL)shouldRotate {
+    NSMutableArray<UIImage *> *tiles = [[NSMutableArray alloc] init];
+    UIImage* currentImage = [self gestureViewScreenshot:gestureView];
+    NSArray<NSNumber *> *selectedTiles = self.tilingOverlay.selectedTiles;
+    
+    NSInteger tilesColumnCount;
+    NSInteger tilesRowCount;
+    NSInteger scale;
+    if (self.drawer.tilingOption == PGTilingOverlayOption2x2) {
+        tilesColumnCount = 2;
+        tilesRowCount = 2;
+        scale = 2;
+    } else if (self.drawer.tilingOption == PGTilingOverlayOption3x3){
+        tilesColumnCount = 3;
+        tilesRowCount = 3;
+        scale = 3;
+    } else {
+        [tiles addObject:currentImage];
+        return tiles;
+    }
+    
+    CGFloat imgWidth = currentImage.size.width * currentImage.scale / scale;
+    CGFloat imgheight = currentImage.size.height * currentImage.scale / scale;
+    CGFloat compensatedWidth = imgWidth * 1.012;
+    CGFloat compensatedHeight = imgheight * 1.012;
+    
+    NSUInteger indexCount = 0;
+    for (int y = 0; y < tilesRowCount; y++) {
+        for (int x = 0; x < tilesColumnCount; x++) {
+            if (![selectedTiles containsObject:[NSNumber numberWithUnsignedInteger:indexCount++]]) {
+                continue;
+            }
+            
+            UIImage *tileImage;
+            CGFloat adjX = 0;
+            CGFloat adjY = 0;
+            if (y > 0) {
+                adjY = compensatedHeight - imgheight;
+            }
+            if (x > 0) {
+                adjX = compensatedWidth - imgWidth;
+            }
+
+            CGFloat startX = (x * imgWidth) - adjX;
+            CGFloat startY = (y * imgheight) - adjY;
+            CGRect imageRect = CGRectMake(startX, startY, compensatedWidth, compensatedHeight);
+            CGImageRef imageRef = CGImageCreateWithImageInRect(currentImage.CGImage, imageRect);
+            if (y == tilesRowCount-1 && shouldRotate) {
+                tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationDown];
+            } else {
+                tileImage = [UIImage imageWithCGImage:imageRef scale:scale orientation:UIImageOrientationUp];
+            }
+            [tiles addObject:tileImage];
+            CGImageRelease(imageRef);
+        }
+    }
+    return tiles;
+}
+
+-(MPBTImageProcessor *) createPrintProcessorFromMedia:(HPPRMedia*)media {
+    PGPayoffProcessor * processor = nil;
+    if ([PGLinkSettings linkEnabled] && media ) {
+        PGMetarMedia * meta = [PGMetarMedia metaFromHPPRMedia:media];
+        // if we created payoff
+        if( meta ) {
+            processor = [PGPayoffProcessor processorWithMetadata:meta];
+        }
+    }
+    return processor;
 }
 
 - (void)showProgressView {
@@ -1006,20 +1291,25 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
 }
 
-- (void)handleWatermarkingProgress:(NSInteger)progress {
+-(void) handleProcessorStatus:(MPBTImageProcessor*) processor progress:(double)progress
+{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showProgressView];
-
-        [self.progressView setProgress:progress];
-        [self.progressView setText:NSLocalizedString(@"Watermarking images", @"Indicates that the phone is applying watermark to the images before sending to the printer")];
-        [self.progressView setSubText:nil];
+        [self.progressView setProgress:(CGFloat) progress];
+        [self.progressView setText:processor.progressText];
+        if (self.viewCount > 1) {
+            [self.progressView setSubText:[NSString stringWithFormat:@"%lu / %lu", self.viewNumber, self.viewCount]];
+        } else {
+            [self.progressView setSubText:nil];
+        }
     });
 }
 
 - (BOOL)handlePrintQueueStatus:(MPBTPrinterManagerStatus)status progress:(NSInteger)progress printsAdded:(NSInteger)numberOfPrintsAdded error:(NSInteger)errorCode {
     dispatch_async(dispatch_get_main_queue(), ^{
-
+        
         if (errorCode > 0) {
+            PGLogDebug(@"PRINT STATUS: ERROR: %lu", errorCode);
             [self dismissProgressView];
 
             if ([[MPBTPrintManager sharedInstance] queueSize] > 0) {
@@ -1027,24 +1317,24 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             }
 
         } else if (status == MPBTPrinterManagerStatusResumingPrintQueue) {
+            PGLogDebug(@"PRINT STATUS: RESUMING PRINT QUEUE");
+        } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
+            PGLogDebug(@"PRINT STATUS: SENDING JOB: %lu%%", progress);
             [self showProgressView];
-
-            [self.progressView setProgress:0.0];
+            [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
             [self.progressView setText:NSLocalizedString(@"Sending to sprocket printer", @"Indicates that the phone is sending an image to the printer")];
             if (numberOfPrintsAdded > 0) {
                 [self.progressView setSubText:[self numberOfPrintsAddedString:numberOfPrintsAdded]];
             } else {
                 [self.progressView setSubText:nil];
             }
-
-        } else if (status == MPBTPrinterManagerStatusSendingPrintJob) {
-            [self.progressView setProgress:(((CGFloat)progress) / 100.0F) * 0.9F];
-
         } else if (status == MPBTPrinterManagerStatusPrinting) {
+            PGLogDebug(@"PRINT STATUS: PRINTING");
             [self.progressView setProgress:1.0F];
             [self dismissProgressView];
 
         } else if (status == MPBTPrinterManagerStatusIdle) {
+            PGLogDebug(@"PRINT STATUS: IDLE");
             // User paused the print queue
             [self dismissProgressView];
         }
@@ -1254,7 +1544,8 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     }
     BOOL shouldSelect = !(self.gesturesViews[index].isSelected && (countSelected >= 2));
     self.gesturesViews[index].isSelected = shouldSelect;
-    
+
+    [self.carouselView reloadItemAtIndex:index animated:YES];
     [self configureActionButtons];
 }
 
@@ -1357,7 +1648,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (CGRect)carouselItemFrame
 {
-    return CGRectMake(0, 0, self.carouselView.bounds.size.height * kAspectRatio2by3, self.carouselView.bounds.size.height);;
+    return CGRectMake(0, 0, floorf(self.carouselView.bounds.size.height * kAspectRatio2by3), self.carouselView.bounds.size.height);
 }
 
 - (PGGesturesView *)createGestureViewWithMedia:(HPPRMedia *)media
@@ -1385,25 +1676,19 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return gestureView;
 }
 
+- (PGGesturesView *) currentGesturesView {
+    return  self.gesturesViews[self.carouselView.currentItemIndex];
+}
+
+-(HPPRMedia*) currentImageMedia {
+    return [self currentGesturesView].media;
+}
 - (UIImage *)currentEditedImage
 {
     PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
-    gesturesView.editedImage = [gesturesView screenshotImage];
+    gesturesView.editedImage = [self gestureViewScreenshot:gesturesView];
     
     return gesturesView.editedImage;
-}
-
-- (NSMutableArray<UIImage *> *)editedImagesSelected
-{
-    NSMutableArray *editedImages = [NSMutableArray array];
-    
-    for (PGGesturesView *gestureView in self.gesturesViews) {
-        if (gestureView.isSelected) {
-            [editedImages addObject:gestureView.editedImage];
-        }
-    }
-    
-    return editedImages;
 }
 
 - (NSMutableArray<PGGesturesView *> *)gestureViewsSelected
@@ -1441,7 +1726,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         BOOL isVisibleItem = [carousel.indexesForVisibleItems containsObject:[NSNumber numberWithInteger:index]];
         if (isVisibleItem) {
-            gestureView.editedImage = [gestureView screenshotImage];
+            gestureView.editedImage = [self gestureViewScreenshot:gestureView];
         }
 
         [carousel setNeedsLayout];

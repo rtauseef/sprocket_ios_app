@@ -17,8 +17,7 @@
 #import <MP.h>
 #import <MPPrintManager.h>
 #import <HPPR.h>
-#import <CommonCrypto/CommonCrypto.h>
-
+#import "NSString+Utils.h"
 
 NSString * const kNoPhotoSelected = @"No Photo";
 NSString * const kNoNetwork = @"NO-WIFI";
@@ -55,20 +54,24 @@ NSString * const kCrashlyticsWiFiShareKey = @"WiFi (share/print)";
 NSString * const kMetricsOffRampPrintNoUISingle   = @"PrintWithNoUI";
 NSString * const kMetricsOffRampPrintNoUIMulti    = @"PrintWithNoUI-MultiSelect";
 
-NSString * const kMetricsOrigin                   = @"Origin";
-NSString * const kMetricsOriginSingle             = @"Single";
-NSString * const kMetricsOriginMulti              = @"MultiSelect";
-NSString * const kMetricsOriginCopies             = @"Copies";
+NSString * const kMetricsOrigin                 = @"Origin";
+NSString * const kMetricsOriginSingle           = @"Single";
+NSString * const kMetricsOriginMulti            = @"MultiSelect";
+NSString * const kMetricsOriginCopies           = @"Copies";
+NSString * const kMetricsOriginTile             = @"Tile";
 
-NSString * const kMetricsOffRampQueueAddSingle   = @"AddToQueue-Single";
-NSString * const kMetricsOffRampQueueAddMulti    = @"AddToQueue-MultiSelect";
-NSString * const kMetricsOffRampQueueAddCopies   = @"AddToQueue-Copies";
+NSString * const kMetricsOffRampQueueAddSingle  = @"AddToQueue-Single";
+NSString * const kMetricsOffRampQueueAddMulti   = @"AddToQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueAddCopies  = @"AddToQueue-Copies";
+NSString * const kMetricsOffRampQueueAddTile    = @"AddToQueue-Tile";
 
-NSString * const kMetricsOffRampQueuePrintSingle = @"PrintFromQueue-Single";
-NSString * const kMetricsOffRampQueuePrintMulti  = @"PrintFromQueue-MultiSelect";
-NSString * const kMetricsOffRampQueuePrintCopies = @"PrintFromQueue-Copies";
-NSString * const kMetricsOffRampQueueDeleteMulti = @"DeleteFromQueue-MultiSelect";
-NSString * const kMetricsOffRampQueueDeleteCopies = @"DeleteFromQueue-Copies";
+NSString * const kMetricsOffRampQueuePrintSingle    = @"PrintFromQueue-Single";
+NSString * const kMetricsOffRampQueuePrintMulti     = @"PrintFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueuePrintCopies    = @"PrintFromQueue-Copies";
+NSString * const kMetricsOffRampQueuePrintTile      = @"PrintFromQueue-Tile";
+NSString * const kMetricsOffRampQueueDeleteMulti    = @"DeleteFromQueue-MultiSelect";
+NSString * const kMetricsOffRampQueueDeleteCopies   = @"DeleteFromQueue-Copies";
+NSString * const kMetricsOffRampQueueDeleteTile     = @"DeleteFromQueue-Tile";
 
 NSString * const kEventSelectTemplateCategory = @"Template";
 NSString * const kEventSelectTemplateAction = @"Select";
@@ -99,6 +102,18 @@ NSString * const kEventCameraDirectionCategory     = @"CameraDirection";
 NSString * const kEventCameraDirectionSwitchAction = @"Switch";
 NSString * const kEventCameraDirectionBackLabel    = @"Back";
 NSString * const kEventCameraDirectionSelfieLabel  = @"Selfie";
+
+NSString * const kEventCameraTimerCategory         = @"CameraTimer";
+NSString * const kEventCameraTimerSwitchAction     = @"Switch";
+NSString * const kEventCameraTimerNoneLabel        = @"None";
+NSString * const kEventCameraTimer3sLabel          = @"3s";
+NSString * const kEventCameraTimer10sLabel         = @"10s";
+
+NSString * const kEventCameraFlashCategory         = @"CameraFlash";
+NSString * const kEventCameraFlashSwitchAction     = @"Switch";
+NSString * const kEventCameraFlashOnLabel          = @"On";
+NSString * const kEventCameraFlashOffLabel         = @"Off";
+
 NSString * const kEventCameraGalleryCategory       = @"Gallery_Camera";
 NSString * const kEventCameraGallerySelectAction   = @"Select";
 
@@ -115,25 +130,34 @@ NSString * const kEventPhotoSelectAction = @"Select";
 NSString * const kEventPhotoGalleryModeCategory  = @"PhotoGalleryMode";
 NSString * const kEventPhotoGalleryModeAction    = @"Switch";
 
-NSString * const kEventPrintJobCategory          = @"PrintJob";
-NSString * const kEventPrintJobErrorCategory     = @"PrintJobError";
-NSString * const kEventPrintJobPrintSingleAction = @"Print";
-NSString * const kEventPrintJobPrintMultiAction  = @"Print-MultiSelect";
-NSString * const kEventPrintJobPrintCopiesAction  = @"Print-Copies";
-NSString * const kEventPrintJobStartedAction     = @"Started";
-NSString * const kEventPrintJobCompletedAction   = @"Completed";
+NSString * const kEventPrintJobCategory             = @"PrintJob";
+NSString * const kEventPrintJobErrorCategory        = @"PrintJobError";
+NSString * const kEventPrintJobPrintSingleAction    = @"Print";
+NSString * const kEventPrintJobPrintMultiAction     = @"Print-MultiSelect";
+NSString * const kEventPrintJobPrintCopiesAction    = @"Print-Copies";
+NSString * const kEventPrintJobPrintTileAction      = @"Print-Tile";
+NSString * const kEventPrintJobStartedAction        = @"Started";
+NSString * const kEventPrintJobCompletedAction      = @"Completed";
 
-NSString * const kEventPrintQueueCategory          = @"Queue";
-NSString * const kEventPrintQueueAddMultiAction    = @"Add-MultiSelect";
-NSString * const kEventPrintQueueAddSingleAction   = @"Add-Single";
-NSString * const kEventPrintQueueAddCopiesAction   = @"Add-Copies";
+NSString * const kEventPrintQueueCategory           = @"Queue";
+NSString * const kEventPrintQueueAddMultiAction     = @"Add-MultiSelect";
+NSString * const kEventPrintQueueAddSingleAction    = @"Add-Single";
+NSString * const kEventPrintQueueAddCopiesAction    = @"Add-Copies";
+NSString * const kEventPrintQueueAddTileAction      = @"Add-Tile";
 
-NSString * const kEventPrintQueuePrintMultiAction  = @"Print-MultiSelect";
-NSString * const kEventPrintQueuePrintSingleAction = @"Print-Single";
-NSString * const kEventPrintQueuePrintCopiesAction = @"Print-Copies";
+NSString * const kEventPrintQueuePrintMultiAction   = @"Print-MultiSelect";
+NSString * const kEventPrintQueuePrintSingleAction  = @"Print-Single";
+NSString * const kEventPrintQueuePrintCopiesAction  = @"Print-Copies";
+NSString * const kEventPrintQueuePrintTileAction    = @"Print-Tile";
 
 NSString * const kEventPrintQueueDeleteMultiAction = @"Delete-MultiSelect";
 NSString * const kEventPrintQueueDeleteCopiesAction = @"Delete-Copies";
+NSString * const kEventPrintQueueDeleteTileAction = @"Delete-Tile";
+
+NSString * const kEventPrintQueueMenuCategory = @"Print Queue_Menu";
+NSString * const kEventPrintQueuePreviewCategory = @"Print Queue_Preview";
+NSString * const kEventPrintQueueDeleteAllAction = @"Delete All";
+NSString * const kEventPrintQueuePrintAction = @"Print";
 
 NSString * const kEventPrintCategory    = @"Print";
 NSString * const kEventPrintAction      = @"Print";
@@ -156,7 +180,13 @@ NSString * const kEventSideBarMenuBuyPaperAction    = @"Buy Paper";
 NSString * const kEventPrinterNotConnectedCategory = @"PrinterNotConnected";
 NSString * const kEventPrinterNotConnectedAction = @"OK";
 
+NSString * const kEventHelpLinksCategory        = @"Help Links";
+
 NSString * const kMPMetricsEmbellishmentKey = @"sprocket_embellishments";
+
+NSString * const kEventCustomStickerCategory  = @"Custom Sticker Confirm";
+NSString * const kEventCustomStickerActionYes = @"Yes";
+NSString * const kEventCustomStickerActionNo  = @"No";
 
 NSString * const kPhotoCollectionViewModeGrid = @"Grid";
 NSString * const kPhotoCollectionViewModeList = @"List";
@@ -289,6 +319,16 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventCameraDirectionCategory action:kEventCameraDirectionSwitchAction label:direction value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
+- (void)trackCameraTimerActivity:(NSString *)timer
+{
+    [self trackEvent:kEventCameraTimerCategory action:kEventCameraTimerSwitchAction label:timer value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
+- (void)trackCameraFlashActivity:(NSString *)flash
+{
+    [self trackEvent:kEventCameraFlashCategory action:kEventCameraFlashSwitchAction label:flash value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
+}
+
 - (void)trackCameraAutoSavePreferenceActivity:(NSString *)preference
 {
     [self trackEvent:kEventPreferencesCategory action:kEventPreferencesCameraAutoSaveAction label:preference value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
@@ -344,6 +384,11 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventSideBarMenuCategory action:kEventSideBarMenuBuyPaperAction label:nil value:nil];
 }
 
+- (void)trackHelpLinksActivity:(NSString * _Nonnull)action
+{
+    [self trackEvent:kEventHelpLinksCategory action:action label:nil value:nil];
+}
+
 - (void)trackPrintQueueAction:(NSString *)action queueId:(NSInteger)queueId
 {
     [self trackPrintQueueAction:action queueId:queueId queueSize:1];
@@ -357,9 +402,29 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     [self trackEvent:kEventPrintQueueCategory action:action label:label value:@(queueSize)];
 }
 
+- (void)trackPrintQueueModalAction:(NSString *)category queueId:(NSInteger)queueId numItemsDeleted:(NSUInteger)numItemsDeleted
+{
+    NSString *action = kEventPrintQueuePrintAction;
+    if (numItemsDeleted) {
+        action = kEventPrintQueueDeleteAllAction;
+    }
+
+    NSString *deviceId = [self userUniqueIdentifier];
+    NSString *label = [NSString stringWithFormat:@"%@-%li", deviceId, (long)queueId];
+
+    [self trackEvent:category action:action label:label value:[NSNumber numberWithUnsignedInteger:numItemsDeleted]];
+}
+
 - (void)trackPrintJobAction:(NSString *)action printerId:(NSString *)printerId
 {
     [self trackEvent:kEventPrintJobCategory action:action label:printerId value:@(1)];
+}
+
+- (void)trackCustomStickerConfirm:(BOOL)confirmed
+{
+    NSString *action = confirmed ? kEventCustomStickerActionYes : kEventCustomStickerActionNo;
+    
+    [self trackEvent:kEventCustomStickerCategory action:action label:nil value:[NSNumber numberWithUnsignedInteger:kEventDefaultValue]];
 }
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value
@@ -432,26 +497,10 @@ NSString * const kPhotoCollectionViewModeList = @"List";
     NSString *identifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
     if ([MP sharedInstance].uniqueDeviceIdPerApp) {
         NSString *seed = [NSString stringWithFormat:@"%@%@", identifier, [[NSBundle mainBundle] bundleIdentifier]];
-        identifier = [self obfuscateValue:seed];
+        identifier = [seed md5];
     }
     return identifier;
 }
-
-- (NSString *)obfuscateValue:(NSString *)value
-{
-    const char *cstr = [value UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(cstr, (CC_LONG)strlen(cstr), result);
-
-    NSMutableString *md5String = [[NSMutableString alloc] initWithCapacity:CC_MD5_DIGEST_LENGTH];
-
-    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-        [md5String appendFormat:@"%02X", result[i]];
-    }
-
-    return md5String;
-}
-
 
 
 #pragma mark - WiFi SSID

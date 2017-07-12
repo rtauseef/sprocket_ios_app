@@ -12,6 +12,8 @@
 
 #import "PGPrintQueueManager.h"
 #import "PGInAppMessageManager.h"
+#import "PGPreviewViewController.h"
+#import "PGAnalyticsManager.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -98,6 +100,28 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
     return [NSString stringWithFormat:format, [MPBTPrintManager sharedInstance].queueSize];
 }
 
+- (void)trackPrintAnalytic
+{
+    [self trackAnalytic:NO];
+}
+
+- (void)trackDeleteAnalytic
+{
+    [self trackAnalytic:YES];
+}
+
+- (void)trackAnalytic:(BOOL)deleteAction
+{
+    NSString *category = kEventPrintQueueMenuCategory;
+    NSUInteger numItemsDeleted = deleteAction ? [MPBTPrintManager sharedInstance].queueSize : 0;
+    
+    if ( [self.viewController isKindOfClass:[PGPreviewViewController class]] ) {
+        category = kEventPrintQueuePreviewCategory;
+    }
+    
+    [[PGAnalyticsManager sharedManager] trackPrintQueueModalAction:category queueId:[MPBTPrintManager sharedInstance].queueId numItemsDeleted:numItemsDeleted];
+}
+
 - (void)deletePrintQueue
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Delete all prints from Print Queue?", nil)
@@ -107,6 +131,7 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Yes", nil)
                                                         style:UIAlertActionStyleDestructive
                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                          [self trackDeleteAnalytic];
                                                           [[MPBTPrintManager sharedInstance] cancelPrintQueue];
                                                       }];
     [alertController addAction:yesAction];
@@ -131,14 +156,14 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                        style:UIAlertActionStyleCancel
                                                      handler:nil];
     [alertController addAction:okAction];
-
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
+    
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -161,7 +186,7 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[self titleWithNumberOfPrints]
                                                                              message:NSLocalizedString(@"Photos will print in the order they were added to the Print Queue.", nil)
                                                                       preferredStyle:UIAlertControllerStyleAlert];
-
+    
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
                                                        style:UIAlertActionStyleCancel
                                                      handler:nil];
@@ -173,11 +198,12 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
+    
     UIAlertAction *printAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Print", nil)
                                                           style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction * _Nonnull action) {
                                                             [[MPBTPrintManager sharedInstance] resumePrintQueue:nil];
+                                                            [self trackPrintAnalytic];
                                                         }];
     [alertController addAction:printAction];
 
@@ -194,14 +220,14 @@ static NSInteger const kBuyPaperNotificationThresholdThirdTier  = 50;
                                                        style:UIAlertActionStyleCancel
                                                      handler:nil];
     [alertController addAction:okAction];
-
+    
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete All", nil)
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
                                                              [self deletePrintQueue];
                                                          }];
     [alertController addAction:deleteAction];
-
+    
     [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 

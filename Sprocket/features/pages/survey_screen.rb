@@ -3,26 +3,23 @@ require 'calabash-cucumber/ibase'
 class SurveyScreen < Calabash::IBase
 
   def trait
-    survey
+    survey_title
   end
 
-  def survey
+  def survey_title
     #"view marked:''"
-      "UIWebView css:'H1' {textContent CONTAINS 'HP Social Media Snapshots'}"
+      "view {text CONTAINS 'HP Sprocket'}"
   end
-
 
 
   def navigate
     unless current_page?
-      home_screen = go_to(HomeScreen)
-      touch home_screen.hamburger
-      pause
-      touch home_screen.take_survey
+      landing_screen = go_to(LandingScreen)
+      touch landing_screen.hamburger_logo
+      sleep(STEP_PAUSE)
+      touch landing_screen.take_survey
     end
     await
   end
-
-
 
 end

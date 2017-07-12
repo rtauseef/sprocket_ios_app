@@ -17,26 +17,37 @@
 extern NSString * const kPGCameraManagerCameraClosed;
 extern NSString * const kPGCameraManagerPhotoTaken;
 
-@interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PGCameraManager : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate, AVCaptureFileOutputRecordingDelegate>
+
+typedef NS_ENUM(NSInteger, ShutterTimerDelayState) {
+    ShutterTimerDelayStateNone         = 0,
+    ShutterTimerDelayStateThree        = 3,
+    ShutterTimerDelayStateTen          = 10
+};
 
 @property (assign, nonatomic) BOOL isBackgroundCamera;
 @property (strong, nonatomic) UIImage *currentSelectedPhoto;
 @property (strong, nonatomic) NSString *currentSource;
 @property (strong, nonatomic) HPPRMedia *currentMedia;
 @property (assign, nonatomic) BOOL isFlashOn;
+@property (assign, nonatomic) ShutterTimerDelayState shutterTimerDelayState;
 @property (assign, nonatomic) AVCaptureDevicePosition lastDeviceCameraPosition;
+@property (assign, nonatomic) BOOL isCapturingVideo;
 
 + (PGCameraManager *)sharedInstance;
-
+- (void)loadPreviewViewControllerWithVideo:(AVURLAsset *)assetURL andImage:(UIImage *) photo andOriginalAsset: (PHAsset *) originalAsset andInfo:(NSDictionary *)info;
 - (NSArray<AVCaptureDevice *> *)availableDevices;
 
 - (void)addCameraToView:(UIView *)view presentedViewController:(UIViewController *)viewController;
 - (void)addCameraButtonsOnView:(UIView *)view;
 
 - (void)takePicture;
+- (void)startRecording;
+- (void)stopRecording;
 - (void)switchCamera;
 - (void)toggleFlash;
 - (void)resetPresetSize;
+- (void)toggleTimer;
 
 - (void)startCamera;
 - (void)stopCamera;
@@ -45,5 +56,9 @@ extern NSString * const kPGCameraManagerPhotoTaken;
 - (void)showCameraPermissionFailedAlert;
 
 + (void)logMetrics;
+
+- (void)startScanning;
+- (void)stopScanning;
+- (void)runAuthorization:(void (^)(BOOL success))complete;
 
 @end

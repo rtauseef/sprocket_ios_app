@@ -10,6 +10,7 @@
 // the license agreement.
 //
 
+#import "PGTilingOverlay.h"
 #import <UIKit/UIKit.h>
 
 @protocol PGPreviewDrawerViewControllerDelegate;
@@ -22,12 +23,15 @@
 @property (nonatomic, assign) BOOL showCopies;
 @property (nonatomic, assign) BOOL showTiling;
 @property (nonatomic, assign) BOOL showPrintQueue;
+@property (nonatomic, assign) BOOL alwaysShowPrintQueue;
 @property (assign, nonatomic) NSInteger numberOfCopies;
+@property (assign, nonatomic) PGTilingOverlayOption tilingOption;
 
 - (CGFloat)drawerHeight;
 - (CGFloat)drawerHeightOpened;
 - (CGFloat)drawerHeightPeeking;
 - (CGFloat)drawerHeightClosed;
+- (void)configureShowPrintQueue;
 
 @end
 
@@ -35,6 +39,7 @@
 
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didTapButton:(UIButton *)button;
 - (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didDrag:(UIPanGestureRecognizer *)gesture;
+- (void)pgPreviewDrawer:(PGPreviewDrawerViewController *)drawer didChangeTillingOption:(PGTilingOverlayOption)tilingOption;
 - (void)pgPreviewDrawerDidTapPrintQueue:(PGPreviewDrawerViewController *)drawer;
 - (void)pgPreviewDrawerDidClearQueue:(PGPreviewDrawerViewController *)drawer;
 

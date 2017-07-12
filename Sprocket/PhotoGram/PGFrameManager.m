@@ -70,6 +70,9 @@
              [[PGFrameItem alloc] initWithName:@"White Bar" imageName:@"WhiteBarFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"Pink Spray Paint" imageName:@"PinkSpraypaintFrame" andPackageName:nil],
              [[PGFrameItem alloc] initWithName:@"White Full" imageName:@"WhiteFullFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Disney Logo" imageName:@"DisneyLogoFrame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Disney Polaroid 1" imageName:@"DisneyPolaroid1Frame" andPackageName:nil],
+             [[PGFrameItem alloc] initWithName:@"Disney Polaroid 2" imageName:@"DisneyPolaroid2Frame" andPackageName:nil]
              ];
 }
 

@@ -4,6 +4,7 @@ Feature: Verify Edit frame feature
 
   
   @done
+  @regression
   Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
@@ -14,11 +15,6 @@ Feature: Verify Edit frame feature
       |White Frame                |
       |Stars Overlay Frame        |
       |Polka Dots Frame           |
-     # |L\'Oreal iOS Frame        |
-      #|Nestle iOS Frame           |
-      #|San Pelegrino iOS Frame    |
-      #|ChainSmokers 1 Frame       |
-      #|ChainSmokers 2 Frame       |
       |Grey Shadow Frame          |
       |Pink Triangle Frame        |
       |White Rounded Frame        |
@@ -33,6 +29,9 @@ Feature: Verify Edit frame feature
       |White Bar Frame            |
       |Pink Spray Paint Frame     |
       |White Full Frame           |
+      |Disney Logo Frame          | 
+      |Disney Polaroid 1 Frame    |
+      |Disney Polaroid 2 Frame    |
 
   
   @regression
@@ -42,23 +41,25 @@ Feature: Verify Edit frame feature
 
   
   @done
+  @regression
   Scenario Outline: Verify Frame Save,Close functionality
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "frame_0" frame
-    Then I should see the photo in the "Frame Editor" screen with the "frame_0" frame
-    Then I tap "Close" mark
+    Then I should see the photo with the "frame_0" frame
+    Then I touch "Discard changes" 
     Then I should see the "Edit" screen
     And I should see the photo with no "frame"
-    Then I tap "Frame" button
+    Then I touch "Frame"
     Then I should see the "Frame Editor" screen
     Then I select "frame_1" frame
-    Then I should see the photo in the "Frame Editor" screen with the "frame_1" frame
-    Then I tap "Save" mark
+    Then I should see the photo with the "frame_1" frame
+    Then I choose "save" option
     Then I should see the "Edit" screen
-    And I should see the photo with the "frame_1" frame
+    Then I should see the photo with the "frame_1" frame
 
 
     Examples:
       | social_media_screen_name       |
       | Instagram Preview |
       | CameraRoll        |
+

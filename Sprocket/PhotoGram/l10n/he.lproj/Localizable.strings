@@ -1,0 +1,295 @@
+/* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld מתוך %2$ld";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "%li הדפסה בתור ההדפסה";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "%li הדפסות בתור ההדפסה";
+
+/* No comment provided by engineer. */
+"About" = "אודות";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "אפשר גישה בהגדרות שלך לצילום ולהדפסת תמונות.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "אירעה שגיאה בעת שיתוף הפריט.";
+
+/* No comment provided by engineer. */
+"App Settings" = "הגדרות יישום";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "שמירה אוטומטית של הגדרות";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "קנה נייר";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "על ידי אימות באמצעות %@, אתה מסכים גם ל- <תנאי השירות> של HP.";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "נדרשת גישה למצלמה";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "Camera Roll";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "ביטול";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "תראו את היצירה שלי עם HP Sprocket";
+
+/* Setup step 3 desc */
+"Connect" = "חיבור";
+
+/* Number of Copies for printing */
+"Copies" = "עותקים";
+
+/* Number of Copies for printing */
+"Copy" = "העתק";
+
+/* No comment provided by engineer. */
+"Delete All" = "מחק הכל";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "למחוק את כל ההדפסות מתור ההדפסה?";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "ביטול";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "האם ברצונך לשמור תמונות מצלמה חדשות בהתקן שלך?";
+
+/* No comment provided by engineer. */
+"Don't Save" = "אל תשמור";
+
+/* No comment provided by engineer. */
+"Enter Text" = "הזנת טקסט";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "הזנת+טקסט";
+
+/* No comment provided by engineer. */
+"Error" = "שגיאה";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "שגיאה בקבלת פרטי משתמש.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "משוב על sprocket עבור iOS‏ (מאתר רשומה: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "מתוך Bluetooth Settings (הגדרות Bluetooth), הקש על \"HP Sprocket\" כדי לבצע התאמה עם המדפסת.";
+
+/* Social source title for Google */
+"Google" = "Google";
+
+/* No comment provided by engineer. */
+"How To" = "כיצד לבצע";
+
+/* No comment provided by engineer. */
+"How to & Help" = "כיצד לבצע ועזרה";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* Setup step 1 desc */
+"Load Paper" = "טען נייר";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "קובץ היומן נמחק.";
+
+/* No comment provided by engineer. */
+"NO" = "לא";
+
+/* Dismisses dialog without taking action */
+"No" = "לא";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "אין חיבור זמין";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "לא נמצאו תמונות של יישום Pitu";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "לא נמצאו תמונות של יישום Qzone";
+
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "אין הדפסות בתור ההדפסה";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "לא, שמור אותן";
+
+/* No comment provided by engineer. */
+"No, thanks" = "לא, תודה";
+
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "לא כל התמונות הורדו. האם ברצונך להמשיך?";
+
+/* Allows user close dialog
+   Dismisses dialog without taking action */
+"OK" = "אישור";
+
+/* No comment provided by engineer. */
+"Oops!" = "אופס!";
+
+/* Dismisses dialog and pauses printing */
+"Pause" = "השהיה";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "התמונות יודפסו בסדר שבו הן נוספו לתור ההדפסה לאחר שמדפסת sprocket הופעלה וחיבור Bluetooth נוצר.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "התמונות יודפסו בסדר שבו הן נוספו לתור ההדפסה.";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "התחבר למקור נתונים. תוכל גם 
+להשתמש בתמונות מהמכשיר שלך.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "ספר לנו מה מדהים ומה יכול להיות אפילו טוב יותר!";
+
+/* Setup step 2 desc */
+"Power Up" = "הפעלה";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "לחץ והחזק את לחצן ההפעלה עד שנורית ה- LED תהפוך ללבנה.";
+
+/* No comment provided by engineer. */
+"Print" = "הדפסה";
+
+/* No comment provided by engineer. */
+"Print Queue" = "תור הדפסה";
+
+/* No comment provided by engineer. */
+"Printers" = "מדפסות";
+
+/* No comment provided by engineer. */
+"Privacy" = "פרטיות";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "הכנס את החבילה כולה למגש הנייר כשהברקוד וסמלי HP פונים כלפי מטה.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Remind me later" = "הזכר לי מאוחר יותר";
+
+/* No comment provided by engineer. */
+"Reset" = "איפוס";
+
+/* No comment provided by engineer. */
+"Reset Application" = "אפס יישום";
+
+/* No comment provided by engineer. */
+"Retry" = "נסה שוב";
+
+/* Title of a table view header */
+"SUPPORT:" = "תמיכה:";
+
+/* No comment provided by engineer. */
+"Save" = "שמירה";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "לשמור ולצאת מתצוגה מקדימה?";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "שמור ל- Camera Roll";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "שולח אל מדפסת sprocket";
+
+/* Button for opening the app settings */
+"Settings" = "הגדרות";
+
+/* No comment provided by engineer. */
+"Sign In" = "כניסה";
+
+/* Signing out of a social media site. */
+"Sign Out" = "התנתקות";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "מצטערים, לא ניתן לדווח על הבעיה שלך כרגע. סביר להניח שהדבר נובע מכך שלא הוגדרו חשבונות דואר במכשיר הנייד שלך.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "שדרוג קושחת מדפסת Sprocket זמין";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "Sprocket לא מחובר";
+
+/* Setup step 1 title */
+"Step 1" = "שלב 1‏";
+
+/* Setup step 2 title */
+"Step 2" = "שלב 2‏";
+
+/* Setup step 3 title */
+"Step 3" = "שלב 3‏";
+
+/* No comment provided by engineer. */
+"Success" = "הצלחה";
+
+/* No comment provided by engineer. */
+"Take Survey" = "השתתפות בסקר";
+
+/* No comment provided by engineer. */
+"Take the survey" = "השתתף בסקר";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "הקש על Upgrade (שדרוג) כדי להמשיך.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "ספר לנו מה דעתך על %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "ספר לנו מה דעתך על sprocket";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "קובץ היומן מצורף להודעה זו.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "פעולה זו תמחק את כל האפשרויות שנשמרו בעבר.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "כדי לשדרג, טען את מדפסת sprocket לכדי 75% לפחות והמשך אל 'sprocket' בתפריט.";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "שדרוג";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "גרסה %1$@ (%2$@)";
+
+/* Social source title for WeiBo */
+"WeiBo" = "WeiBo";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "האם ברצונך לצאת מ- %@?";
+
+/* No comment provided by engineer. */
+"YES" = "כן";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "כן";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "אין לך חשבון מוגדר לשליחת דואר אלקטרוני.";
+
+/* No comment provided by engineer. */
+"sprocket" = "Sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "יומן שגיאות sprocket";
+

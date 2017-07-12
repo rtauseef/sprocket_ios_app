@@ -1,17 +1,18 @@
 require_relative '../support/gistfile'
 
 Then(/^I open cameraroll$/) do
-    #if ENV['LANGUAGE'] == "Dutch"
-       # if element_exists("UIButtonLabel")
-         #   touch query("UIButtonLabel")
-         #   sleep(STEP_PAUSE)
-       # end
-    #else
+    if ENV['LANGUAGE'] == "Dutch"
+        if element_exists("UIButtonLabel")
+            touch query("UIButtonLabel")
+            sleep(STEP_PAUSE)
+        end
+    end
+    
         if element_exists("button marked:'#{$list_loc['photos_button']}'")
             sleep(WAIT_SCREENLOAD)
             touch "button marked:'#{$list_loc['photos_button']}'"
         end
-    #end
+    
     if element_exists("view marked:'#{$list_loc['auth']}' index:0")
         sleep(WAIT_SCREENLOAD)
         touch("view marked:'#{$list_loc['auth']}' index:0")
@@ -63,9 +64,15 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                     puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                 end
             else
-                if option == "Tweet Support" && ENV['LANGUAGE'] == "Italian"
-                    puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                if option == "Tweet Support"
+                    if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
+                        touch ("view marked:'#{$list_loc[option]}'")
+                        sleep(STEP_PAUSE)
+                    else
+                        puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                    end
                 else
+                    sleep(STEP_PAUSE)
                     touch ("view marked:'#{$list_loc[option]}'")
                     sleep(STEP_PAUSE)
                 end
@@ -97,7 +104,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                 link_text = query("PGTermsAttributedLabel", :text)[0] 
                 raise "localization failed!" unless link_text == $list_loc['terms_of_service_cameraroll']
             else
-                terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_cameraroll']}'")
+                terms_of_service_link=query("PGTermsAttributedLabel marked:'#{$list_loc['terms_of_service_cameraroll']}'")
                 raise "not found!" unless terms_of_service_link.length > 0
                 sleep(STEP_PAUSE)
             end
@@ -232,10 +239,10 @@ def check_options_exist item
                                          end
                                      else
                                          if item == "Tweet Support"
-                                             if ENV['LANGUAGE'] == "Italian"
-                                                 puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
-                                             else
+                                             if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
                                                  check_element_exists "view marked:'#{$list_loc[item]}'"
+                                             else
+                                                 puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                                              end
                                          else
                                              check_element_exists "view marked:'#{$list_loc[item]}'"
@@ -318,4 +325,45 @@ Then /^I verify the "(.*?)" button text$/ do |button|
         sleep(STEP_PAUSE)
     end
 end
- 
+When(/^I touch hamburger button on navigation bar$/) do
+  selenium.find_element(:name, "hamburger").click
+  sleep(SLEEP_SCREENLOAD)
+end
+
+When(/^I select "([^"]*)" option$/) do |option|
+    sleep(STEP_PAUSE)
+    selenium.find_element(:name, "#{$list_loc[option]}").click
+    sleep(SLEEP_SCREENLOAD)
+end
+Then(/^I verify "([^"]*)" url$/) do |option|
+    case 
+    when option == "Privacy"
+        url_expected = $list_loc['privacy_url']
+    when option == "Buy Paper"
+        url_expected = "www8.hp.com/us/en/printers/zink.html?jumpid=va_t26vahe57s"
+    when option == "View User Guide"
+        url_expected = $list_loc['view_user_guide_url']
+    when option == "Join Support Forum"
+        if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
+            url_expected = "https://h30471.www3.hp.com"
+        else
+            url_expected = "https://h30434.www3.hp.com/t5/sprocket/bd-p/sprocket"   
+        end
+    when option == "Visit Support Website"
+        if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
+            url_expected = "https://h30471.www3.hp.com"
+        else
+           url_expected = "https://support.hp.com/us-en/product/HP-Sprocket-Photo-Printer/12635221" 
+        end
+    else
+        puts "invalid option"
+    end
+    selenium.find_element(:name,"URL").click
+    sleep(SLEEP_MIN)
+    raise "Incorrect url loaded!" unless selenium.find_element(:name,"URL").value == url_expected.to_s
+end
+When(/^I navigate to "([^"]*)"$/) do |arg1|
+    selenium.find_element(:name, "#{$list_loc['return_to_sprocket']}").click
+    sleep(WAIT_SCREENLOAD)
+end
+

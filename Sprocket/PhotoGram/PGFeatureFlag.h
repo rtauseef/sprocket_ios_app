@@ -16,4 +16,7 @@
 
 + (BOOL)isMultiPrintEnabled;
 
++ (void)setCloudAssetsEnabled:(BOOL)enabled;
++ (BOOL)isCloudAssetsEnabled;
+
 @end

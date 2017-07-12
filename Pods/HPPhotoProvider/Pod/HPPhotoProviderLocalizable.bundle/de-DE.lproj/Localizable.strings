@@ -32,7 +32,7 @@
 "All Photos" = "Alle Fotos";
 
 /* Message of an alert when the user has denied the permission to access the Photos of the device */
-"Allow access in your Settings to print and save your photos." = "Gestatten Sie den Zugriff unter "Einstellungen", um Ihre Fotos zu drucken und zu speichern.";
+"Allow access in your Settings to print and save your photos." = "Gestatten Sie den Zugriff unter \"Einstellungen\", um Ihre Fotos zu drucken und zu speichern.";
 
 /* Title of an alert requesting authorization to access the Instagram photos */
 "Authorization Required" = "Autorisierung erforderlich";
@@ -83,7 +83,7 @@
 "Settings" = "Einstellungen";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "Die App %@ verwendet Instagram Fotos für die Erstellung fantastischer Schnappschüsse. Bitte gestatten Sie %@ den Zugriff auf Ihre Instagram Fotos, um fortzufahren.";
+"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "Die App %1$@ verwendet Instagram Fotos für die Erstellung fantastischer Schnappschüsse. Bitte gestatten Sie %2$@ den Zugriff auf Ihre Instagram Fotos, um fortzufahren.";
 
 /* Indicates that a user's photo album was deleted */
 "The album was deleted" = "Das Album wurde gelöscht";

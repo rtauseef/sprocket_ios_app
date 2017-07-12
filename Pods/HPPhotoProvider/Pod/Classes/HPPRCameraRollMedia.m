@@ -11,11 +11,7 @@
 //
 
 #import "HPPRCameraRollMedia.h"
-#import "HPPRCameraRollLoginProvider.h"
 #import "HPPRCameraRollPhotoProvider.h"
-#import <CoreLocation/CoreLocation.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import <ImageIO/ImageIO.h>
 
 const NSUInteger kHPPRCameraRollMediaThumbnailSize = 150;
 const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
@@ -36,9 +32,25 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
         self.asset = asset;
         self.location = asset.location;
         self.createdTime = asset.creationDate;
+        self.mediaType = [HPPRCameraRollMedia mediaTypeForAsset:asset];
+        self.objectID = [self.asset localIdentifier];
+        
+        if (self.asset.mediaSubtypes & PHAssetMediaSubtypePhotoLive) {
+            self.livePhoto = [NSNumber numberWithBool:YES];
+        } else {
+            self.livePhoto = [NSNumber numberWithBool:NO];
+        }
     }
 
     return self;
+}
+
++ (HPPRMediaType)mediaTypeForAsset:(PHAsset*)asset {
+    if (asset.mediaType == PHAssetMediaTypeVideo) {
+        return HPPRMediaTypeVideo;
+    } else {
+        return HPPRMediaTypeImage; // default to image if it's not video. audio possibility is "gracefully ignored" =)
+    }
 }
 
 - (void)requestThumbnailImageWithCompletion:(void(^)(UIImage *image))completion
@@ -56,9 +68,11 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                                                       options:requestOptions
                                                 resultHandler:^void(UIImage *image, NSDictionary *info) {
                                                     self.thumbnailImage = image;
-                                                    completion(self.thumbnailImage);
+                                                    if (completion) {
+                                                        completion(self.thumbnailImage);
+                                                    }
                                                 }];
-    } else {
+    } else if (completion) {
         completion(self.thumbnailImage);
     }
 }
@@ -81,10 +95,12 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                                                                               ![info[PHImageResultIsDegradedKey] boolValue] ) {
                                                                               self.lastImageRequestID = 0;
                                                                               self.previewImage = image;
-                                                                              completion(self.previewImage);
+                                                                              if (completion) {
+                                                                                  completion(self.previewImage);
+                                                                              }
                                                                           }
                                                                       }];
-    } else {
+    } else if (completion) {
         completion(self.previewImage);
     }
 }
@@ -103,8 +119,8 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
                                                   contentMode:PHImageContentModeDefault
                                                       options:requestOptions
                                                 resultHandler:^void(UIImage *image, NSDictionary *info) {
-                                                    if (image) {
-                                                        self.image = image;
+                                                    self.image = image;
+                                                    if (completion) {
                                                         completion(self.image);
                                                     }
                                                 }];
@@ -113,16 +129,49 @@ const NSUInteger kHPPRCameraRollMediaPreviewSize = 500;
         options.networkAccessAllowed = YES;
         
         [self.asset requestContentEditingInputWithOptions:options completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
-            CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
             
-            self.isoSpeed = fullImage.properties[@"{Exif}"][@"ISOSpeedRatings"];
-            
-            NSString *shutterSpeed = fullImage.properties[@"{Exif}"][@"ShutterSpeedValue"];
-            
-            // shutter speed formula: http://www.media.mit.edu/pia/Research/deepview/exif.html
-            self.shutterSpeed = [NSString stringWithFormat:@"1/%.0f", pow(2,[shutterSpeed floatValue])];
+            if (self.mediaType == HPPRMediaTypeImage)  {
+                CIImage *fullImage = [CIImage imageWithContentsOfURL:contentEditingInput.fullSizeImageURL];
+                
+                id isoInfo =  fullImage.properties[@"{Exif}"][@"ISOSpeedRatings"];
+                
+                if ([isoInfo isKindOfClass:[NSArray class]]) {
+                    self.isoSpeed = [(NSArray *) isoInfo firstObject];
+                } else if ([isoInfo isKindOfClass:[NSString class]]) {
+                    self.isoSpeed = isoInfo;
+                }
+                
+                NSString *shutterSpeed = fullImage.properties[@"{Exif}"][@"ShutterSpeedValue"];
+                
+                // shutter speed formula: http://www.media.mit.edu/pia/Research/deepview/exif.html
+                self.shutterSpeed = [NSString stringWithFormat:@"1/%.0f", pow(2,[shutterSpeed floatValue])];
+                
+                self.exposureTime = fullImage.properties[@"{Exif}"][@"ExposureTime"];
+                self.aperture = fullImage.properties[@"{Exif}"][@"ApertureValue"];
+                
+                NSNumber *flashDetails = fullImage.properties[@"{Exif}"][@"Flash"];
+                if (flashDetails != nil) {
+                    
+                    int flash = [flashDetails intValue];
+                    if (flash != 0 && flash != 16 && flash != 24 && flash != 32) {
+                        self.flash = [NSNumber numberWithBool:YES];
+                    } else {
+                        self.flash = [NSNumber numberWithBool:NO];
+                    }
+                }
+
+                self.focalLength = fullImage.properties[@"{Exif}"][@"FocalLength"];
+                self.cameraMake = fullImage.properties[@"{TIFF}"][@"Make"];
+                self.cameraModel = fullImage.properties[@"{TIFF}"][@"Model"];
+            } else if (self.mediaType == HPPRMediaTypeVideo) {
+                AVAsset *resolvedAsset = contentEditingInput.avAsset;
+                
+                CMTime duration = [resolvedAsset duration];
+                Float64 time = CMTimeGetSeconds(duration);
+                self.videoDuration = [NSNumber numberWithFloat:time];
+            }
         }];
-    } else {
+    } else if (completion) {
         completion(self.image);
     }
 }

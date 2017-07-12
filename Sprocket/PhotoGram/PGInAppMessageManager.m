@@ -63,6 +63,13 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
     [UAirship inAppMessaging].pendingMessage = message;
 }
 
+- (void)attemptToDisplayPendingMessage
+{
+    if ([self shouldDisplayMessage]) {
+        [[UAirship inAppMessaging] displayPendingMessage];
+    }
+}
+
 
 #pragma mark - Private
 
@@ -82,6 +89,8 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
     if ([topViewController respondsToSelector:@selector(allowsInAppMessages)]) {
         allowsInAppMessages = [(id<PGInAppMessageHost>)topViewController allowsInAppMessages];
     }
+
+    allowsInAppMessages = allowsInAppMessages && ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive);
 
     return allowsInAppMessages;
 }

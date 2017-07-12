@@ -27,6 +27,7 @@
 {
     self = [super init];
     if (self) {
+        self.displayVideos = [[HPPR sharedInstance] showVideos]; // default to not show videos
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidStart) name:PROVIDER_STARTUP_NOTIFICATION object:nil];
     }
     return self;
