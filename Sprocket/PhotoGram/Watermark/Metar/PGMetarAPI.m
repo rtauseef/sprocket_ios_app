@@ -438,8 +438,8 @@ static NSString * const kMetarAPICredentialsKey = @"pg-metar-credentials";
         return;
     }
     
-    //NSString *jsonString =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    //NSLog(@"Metadata:\n%@\n",jsonString);
+    NSString *jsonString =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"Metadata:\n%@\n",jsonString);
     
     [request setHTTPBody:jsonData];
     

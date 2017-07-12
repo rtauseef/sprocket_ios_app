@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, ShutterTimerDelayState) {
 - (void)stopRecording;
 - (void)switchCamera;
 - (void)toggleFlash;
+- (void)resetPresetSize;
 - (void)toggleTimer;
 
 - (void)startCamera;

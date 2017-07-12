@@ -17,6 +17,7 @@
 #import "PGMetarArtifact.h"
 #import "PGMetarLocation.h"
 #import "HPPRMedia.h"
+#import "PGEmbellishmentMetricsManager.h"
 
 typedef NS_ENUM(NSInteger, PGMetarMediaType) {
     PGMetarMediaTypeUnknown,
@@ -51,5 +52,6 @@ typedef NS_ENUM(NSInteger, PGMetarMediaOrientation) {
 - (instancetype)initWithDictionary: (NSDictionary *) dict;
 - (NSDictionary *) getDict;
 + (instancetype)metaFromHPPRMedia: (HPPRMedia *) media;
++ (instancetype)metaFromHPPRMedia: (HPPRMedia *) media andEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentManager;
 
 @end

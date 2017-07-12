@@ -972,7 +972,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         MPBTImageProcessor *processor = nil;
         if ([PGLinkSettings linkEnabled]) {
-            processor = [self createPrintProcessorFromMedia:gestureView.media];
+            processor = [self createPrintProcessorFromMedia:gestureView.media embellishment:gestureView.embellishmentMetricManager];
             if (nil != processor) {
                 [preProcessStartOperation addExecutionBlock:^{
                     NSDictionary *options = @{ kMPBTImageProcessorLocalIdentifierKey : [[PGPayoffManager sharedInstance] offlineID] };
@@ -1264,10 +1264,10 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     return tiles;
 }
 
--(MPBTImageProcessor *) createPrintProcessorFromMedia:(HPPRMedia*)media {
+-(MPBTImageProcessor *) createPrintProcessorFromMedia:(HPPRMedia*)media embellishment:(PGEmbellishmentMetricsManager *)embellishmentMgr{
     PGPayoffProcessor * processor = nil;
     if ([PGLinkSettings linkEnabled] && media ) {
-        PGMetarMedia * meta = [PGMetarMedia metaFromHPPRMedia:media];
+        PGMetarMedia * meta = [PGMetarMedia metaFromHPPRMedia:media andEmbellishmentManager:embellishmentMgr];
         // if we created payoff
         if( meta ) {
             processor = [PGPayoffProcessor processorWithMetadata:meta];

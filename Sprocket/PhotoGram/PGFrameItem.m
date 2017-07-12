@@ -23,18 +23,24 @@
 {
     self = [super init];
     if (self) {
-        NSString *stickerName = nil;
-        if (packageName) {
-            stickerName = [NSString stringWithFormat:@"%@ %@ Frame", packageName, name];
-        } else {
-            stickerName = [NSString stringWithFormat:@"%@ Frame", name];
-        }
+        NSString *stickerName = [PGFrameItem stickerNameWithName:name andPackageName:packageName];
         
         self.name = stickerName;
         self.accessibilityText = stickerName;
         self.imageName = imageName;
     }
     return self;
+}
+
++ (NSString *)stickerNameWithName:(NSString *)name andPackageName:(NSString *)packageName
+{
+    NSString *stickerName = nil;
+    if (packageName) {
+        stickerName = [NSString stringWithFormat:@"%@ %@ Frame", packageName, name];
+    } else {
+        stickerName = [NSString stringWithFormat:@"%@ Frame", name];
+    }
+    return stickerName;
 }
 
 - (UIImage *)thumbnailImage

@@ -184,7 +184,7 @@ typedef NS_ENUM(NSInteger, LRTriggerType){
  When a QRcode or Watermark has been detected, the delegate will be provided with the type of payload read.
  
  
- @param payloadType    type of mark read.
+ @param triggerType    type of mark read.
  
  @since 2.0.0
  */

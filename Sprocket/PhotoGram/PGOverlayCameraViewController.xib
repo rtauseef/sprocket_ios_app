@@ -142,11 +142,23 @@ you’ll be glad you did!</string>
                         <constraint firstItem="fTA-qb-2Sw" firstAttribute="leading" secondItem="85K-3T-BoG" secondAttribute="leading" id="r4e-PY-aMh"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dA-Tz-fqK">
+                    <rect key="frame" x="5" y="632" width="42" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="EAe-H1-vRB"/>
+                        <constraint firstAttribute="height" constant="30" id="ha4-eU-9kU"/>
+                    </constraints>
+                    <state key="normal" title="AR"/>
+                    <connections>
+                        <action selector="tapARButton:" destination="-1" eventType="touchUpInside" id="2AS-Gr-Y46"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="BJW-QH-UdF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="16x-nJ-btJ"/>
                 <constraint firstAttribute="trailing" secondItem="AKI-P8-ZbS" secondAttribute="trailing" id="1g4-4S-DPE"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="top" secondItem="zcR-2M-2SD" secondAttribute="bottom" id="4Bc-Op-WW2"/>
+                <constraint firstAttribute="bottom" secondItem="8dA-Tz-fqK" secondAttribute="bottom" constant="5" id="9WZ-IS-z40"/>
                 <constraint firstItem="cUq-e2-jMp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CjH-fq-ear"/>
                 <constraint firstItem="9Ek-Wd-nK5" firstAttribute="trailing" secondItem="voU-GQ-VkJ" secondAttribute="leading" constant="-10" id="Hxx-bL-S1W"/>
                 <constraint firstAttribute="bottom" secondItem="85K-3T-BoG" secondAttribute="bottom" id="IJU-NY-EYf"/>
@@ -165,8 +177,9 @@ you’ll be glad you did!</string>
                 <constraint firstItem="zcR-2M-2SD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rwu-G9-hrA"/>
                 <constraint firstAttribute="trailing" secondItem="zcR-2M-2SD" secondAttribute="trailing" id="w7J-gH-ctp"/>
                 <constraint firstItem="9Ek-Wd-nK5" firstAttribute="centerY" secondItem="voU-GQ-VkJ" secondAttribute="centerY" id="yuY-qU-aCk"/>
+                <constraint firstItem="8dA-Tz-fqK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="zSi-ee-xaT"/>
             </constraints>
-            <point key="canvasLocation" x="64" y="57"/>
+            <point key="canvasLocation" x="63.5" y="56.5"/>
         </view>
     </objects>
     <resources>

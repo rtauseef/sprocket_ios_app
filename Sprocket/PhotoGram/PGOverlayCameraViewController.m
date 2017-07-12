@@ -16,10 +16,13 @@
 #import <AVKit/AVKit.h>
 #import "PGARViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PGAurasmaViewController.h"
+#import "PGAurasmaTrackingViewDelegate.h"
+#import <AurasmaSDK/AurasmaSDK.h>
 
 static const NSUInteger kMaxRecordingTime = 20;
 
-@interface PGOverlayCameraViewController ()
+@interface PGOverlayCameraViewController () <PGAurasmaTrackingViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIView *transitionEffectView;
@@ -417,6 +420,33 @@ static const NSUInteger kMaxRecordingTime = 20;
         [self.timerButton setImage:[UIImage imageNamed:@"timer10"] forState:UIControlStateNormal];
         [self.shutterButton setImage:[UIImage imageNamed:@"shutterTimer"] forState:UIControlStateNormal];
     }
+}
+
+- (IBAction)tapARButton:(id)sender {
+    PGAurasmaViewController *arViewController = [[PGAurasmaViewController alloc] initWithNibName:@"PGAurasmaViewController" bundle:nil];
+    
+    [arViewController setClosingDelegate:self];
+    [self presentViewController:arViewController animated:YES completion:nil];
+}
+
+#pragma mark Aurasma Closing Delegate
+
+- (void)finishedTracking:(PGAurasmaViewController *)controller {
+    
+    __block id <NSObject> observer;
+    
+    void (^notificationCallback)(NSNotification *) = ^(__unused NSNotification *notif) {
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        observer = nil; // Needed for iOS7
+        
+        [[PGCameraManager sharedInstance] resetPresetSize];
+    };
+    
+    observer = [[NSNotificationCenter defaultCenter] addObserverForName:AURDestroyTrackingControllerFinishedNotification
+                                                                 object:[AURTrackingController class]
+                                                                  queue:[NSOperationQueue mainQueue]
+                                                             usingBlock:notificationCallback];
+    
 }
 
 @end

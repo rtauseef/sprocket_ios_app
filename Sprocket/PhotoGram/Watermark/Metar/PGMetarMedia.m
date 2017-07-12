@@ -11,6 +11,9 @@
 //
 
 #import "PGMetarMedia.h"
+#import "PGMagicFrameManager.h"
+#import "PGFrameItem.h"
+#import "PGAurasmaMagicFrame.h"
 
 @implementation PGMetarMedia
 
@@ -237,6 +240,36 @@
     video.length = media.videoDuration;
     
     return video;
+}
+
++ (instancetype)metaFromHPPRMedia: (HPPRMedia *) media andEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentManager {
+    PGMetarMedia *meta = [PGMetarMedia metaFromHPPRMedia:media];
+    
+    NSArray *metricsArray = [embellishmentManager getMetricsArray];
+    
+    if (embellishmentManager) {
+        NSDictionary *aurasmaFramesDict = [PGMagicFrameManager magicFramesDictionary];
+        
+        for (PGEmbellishmentMetric *metric in metricsArray) {
+            NSString *finalName = metric.name;
+        
+            PGAurasmaMagicFrame *magicFrame = [aurasmaFramesDict objectForKey:finalName];
+            if (magicFrame != nil) {
+                PGMetarArtifact *aurasmaArtifact = [[PGMetarArtifact alloc] init];
+                aurasmaArtifact.auraID = magicFrame.auraId;
+                aurasmaArtifact.type = PGMetarArtifactTypeAura;
+                
+                if (meta.artifacts == nil) {
+                    meta.artifacts = @[aurasmaArtifact];
+                } else {
+                    meta.artifacts = [meta.artifacts arrayByAddingObject:aurasmaArtifact];
+                }
+            }
+        }
+    }
+    
+    
+    return meta;
 }
 
 +(instancetype)metaFromHPPRMedia: (HPPRMedia *) media {

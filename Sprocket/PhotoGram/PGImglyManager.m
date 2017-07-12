@@ -11,8 +11,12 @@
 //
 
 #import "PGImglyManager.h"
+#import <AurasmaSDK/AurasmaSDK.h>
+#import "PGAurasmaGlobalContext.h"
 #import "PGStickerManager.h"
 #import "PGFrameManager.h"
+#import "PGMagicFrameManager.h"
+#import "PGAurasmaMagicFrame.h"
 #import "UIColor+Style.h"
 #import "UIFont+Style.h"
 #import "PGCustomStickerManager.h"
@@ -22,6 +26,7 @@ static NSString * const kImglyMenuItemMagic = @"Magic";
 static NSString * const kImglyMenuItemAdjust = @"Adjust";
 static NSString * const kImglyMenuItemFilter = @"Filter";
 static NSString * const kImglyMenuItemFrame = @"Frame";
+static NSString * const kImglyMenuItemMagicFrame = @"MagicFrame";
 static NSString * const kImglyMenuItemSticker = @"Sticker";
 static NSString * const kImglyMenuItemBrush = @"Brush";
 static NSString * const kImglyMenuItemText = @"Text";
@@ -38,6 +43,8 @@ NSString * const kPGImglyManagerStickersChangedNotification = @"kPGImglyManagerS
 @property (nonatomic, strong) NSString *selectedFilter;
 @property (nonatomic, strong) NSString *selectedFrame;
 @property (nonatomic, strong) PGEmbellishmentMetricsManager *embellishmentMetricsManager;
+@property (nonatomic, strong) IMGLYFrameToolController *magicFrameController;
+@property (nonatomic, strong) AURView *aurView;
 
 @property (nonatomic, copy) void (^colorBlock)(IMGLYColorCollectionViewCell * _Nonnull cell, UIColor * _Nonnull color, NSString * _Nonnull colorName);
 @property (strong, nonatomic) IMGLYStickerCategoryDataSource *stickerCategoryDataSource;
@@ -89,6 +96,16 @@ int const kCustomButtonTag = 9999;
     IMGLYBoxedMenuItem *frameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemFrame
                                                                          icon:[UIImage imageNamed:@"ic_frame_48pt"]
                                                                          tool:[[IMGLYFrameToolController alloc] initWithConfiguration:configuration]];
+    
+    // If you make sure the view is created, in this case by calling on magicFrameController.view.tag, you are able to change the data.
+    // This is not a great fix, but is in now to get this working as expected.
+    // TODO : fix how the data is set on magicFrameController
+    self.magicFrameController = [[IMGLYFrameToolController alloc] initWithConfiguration:configuration];
+    self.magicFrameController.view.tag = 0;
+    self.magicFrameController.frameDataSource.allFrames = [[PGMagicFrameManager sharedInstance] imglyFrames];
+    IMGLYBoxedMenuItem *magicFrameItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemMagicFrame
+                                                                         icon:[UIImage imageNamed:@"ic_magicframe_48pt"]
+                                                                         tool:self.magicFrameController];
 
     IMGLYBoxedMenuItem *stickerItem = [[IMGLYBoxedMenuItem alloc] initWithTitle:kImglyMenuItemSticker
                                                                            icon:[UIImage imageNamed:@"ic_sticker_48pt"]
@@ -111,6 +128,7 @@ int const kCustomButtonTag = 9999;
              adjustItem,
              filterItem,
              frameItem,
+             magicFrameItem,
              stickerItem,
              brushItem,
              textItem,
@@ -184,6 +202,15 @@ int const kCustomButtonTag = 9999;
                                     ];
 
     return fonts;
+}
+
+- (void)removeAurView {
+    if (_aurView) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.aurView removeFromSuperview];
+            self.aurView = nil;
+        });
+    }
 }
 
 - (IMGLYConfiguration *)imglyConfigurationWithEmbellishmentManager:(PGEmbellishmentMetricsManager *)embellishmentMetricsManager
@@ -279,6 +306,9 @@ int const kCustomButtonTag = 9999;
                 } else if ([item.title isEqualToString:kImglyMenuItemFrame]) {
                     cell.accessibilityIdentifier = @"editFrame";
 
+                } else if ([item.title isEqualToString:kImglyMenuItemMagicFrame]) {
+                    cell.accessibilityIdentifier = @"editMagicFrame";
+                    
                 } else if ([item.title isEqualToString:kImglyMenuItemSticker]) {
                     cell.accessibilityIdentifier = @"editSticker";
 
@@ -291,7 +321,7 @@ int const kCustomButtonTag = 9999;
             };
 
             photoEditorBuilder.photoEditorActionSelectedBlock = ^(IMGLYBoxedMenuItem * _Nonnull item) {
-                if ([item.title isEqualToString:kImglyMenuItemMagic]) {
+                if ([item.title isEqualToString:kImglyMenuItemMagic]) { // show magic frame
                     if ([embellishmentMetricsManager hasEmbellishmentMetric:autofixMetric]) {
                         [embellishmentMetricsManager removeEmbellishmentMetric:autofixMetric];
                     } else {
@@ -389,6 +419,17 @@ int const kCustomButtonTag = 9999;
                 [cell.imageView updateConstraintsIfNeeded];
             };
 
+            toolBuilder.discardButtonConfigurationClosure = ^(IMGLYButton *button) {
+                [button setActionClosure:^(id action){
+                    [self removeAurView];
+                } for:UIControlEventTouchUpInside];
+            };
+            toolBuilder.applyButtonConfigurationClosure = ^(IMGLYButton *button) {
+                [button setActionClosure:^(id action){
+                    [self removeAurView];
+                } for:UIControlEventTouchUpInside];
+            };
+            
             toolBuilder.noFrameCellConfigurationClosure = ^(IMGLYIconCaptionCollectionViewCell * _Nonnull cell) {
                 cell.captionLabel.text = nil;
 
@@ -396,9 +437,43 @@ int const kCustomButtonTag = 9999;
                 [cell.imageView addConstraints:[self thumbnailSizeConstraintsFor:cell.imageView width:50.0 height:50.0]];
                 [cell.imageView setNeedsUpdateConstraints];
                 [cell.imageView updateConstraintsIfNeeded];
+                [cell.imageView setUserInteractionEnabled:YES];
+                UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeAurView)];
+                [cell.imageView addGestureRecognizer:tapGesture];
+            };
+            
+            toolBuilder.selectedFrameClosure = ^(IMGLYFrame * _Nullable frame) {
+                [self removeAurView];
+                __weak PGImglyManager *weakSelf = self;
+                if (frame) {
+                    PGAurasmaMagicFrame *magicFrame = [PGMagicFrameManager magicFramesDictionary][frame.accessibilityLabel];
+                    if (magicFrame) {
+                        NSLog(@"frame uuid is %@ and name is %@", magicFrame.auraId, magicFrame.name);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            PGImglyManager *strongSelf = weakSelf;
+                            if (!strongSelf) {
+                                return;
+                            }
+                            CGSize triggerSize = CGSizeMake(600, 900);
+                            NSError *error = nil;
+                            AURAuraPreviewController *controller = [AURAuraPreviewController controllerWithContext:[PGAurasmaGlobalContext instance].context
+                                                                                                         andAuraId:magicFrame.auraId
+                                                                                                    andTriggerSize:triggerSize
+                                                                                                             error:&error];
+                            if (error) {
+                                NSLog(@"error getting preview controller: %@", error);
+                                return;
+                            }
+                            strongSelf.aurView = [AURView viewWithFrame:strongSelf.magicFrameController.workspaceView.frame andController:controller];
+                            strongSelf.aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
+                            [strongSelf.magicFrameController.workspaceView addSubview:strongSelf->_aurView];
+                        });
+                    }
+                }
             };
         }];
-
+        
 
         // Stickers configuration
 

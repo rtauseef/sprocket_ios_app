@@ -23,5 +23,6 @@
 - (void)removeEmbellishmentMetric:(PGEmbellishmentMetric *)metric;
 - (void)clearEmbellishmentMetricForCategory:(PGEmbellishmentCategoryType)type;
 - (void)clearAllEmbellishmentMetrics;
+- (NSArray *)getMetricsArray;
 
 @end

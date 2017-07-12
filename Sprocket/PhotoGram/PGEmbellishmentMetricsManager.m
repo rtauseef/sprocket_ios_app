@@ -40,6 +40,10 @@
     return embellishmentMetricsString;
 }
 
+- (NSArray *)getMetricsArray {
+    return self.metrics;
+}
+
 - (BOOL)hasEmbellishmentMetric:(PGEmbellishmentMetric *)metricWanted
 {
     for (PGEmbellishmentMetric *metric in self.metrics) {
