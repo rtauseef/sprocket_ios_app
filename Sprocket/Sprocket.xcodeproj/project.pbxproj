@@ -2410,6 +2410,8 @@
 		EDA2129F1F02C9D400B6AFE4 /* myscene.scn in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129B1F02C9D400B6AFE4 /* myscene.scn */; };
 		EDA212A01F02C9D400B6AFE4 /* particles.scnp in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129C1F02C9D400B6AFE4 /* particles.scnp */; };
 		EDA212A11F02C9D400B6AFE4 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA2129D1F02C9D400B6AFE4 /* spark.png */; };
+		ED1CE6441F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1CE6421F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m */; };
+		ED1CE6451F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1CE6431F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib */; };
 		EDB036131F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */; };
 		EDD33F631EF9CE520028DBC8 /* PGMetarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F081EF9CE520028DBC8 /* PGMetarAPI.m */; };
 		EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD33F0A1EF9CE520028DBC8 /* PGMetarArtifact.m */; };
@@ -4466,6 +4468,9 @@
 		EDA2129B1F02C9D400B6AFE4 /* myscene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = myscene.scn; path = AR/myscene.scn; sourceTree = "<group>"; };
 		EDA2129C1F02C9D400B6AFE4 /* particles.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; name = particles.scnp; path = AR/particles.scnp; sourceTree = "<group>"; };
 		EDA2129D1F02C9D400B6AFE4 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = AR/spark.png; sourceTree = "<group>"; };
+		ED1CE6411F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPayoffViewGoogleStreetViewController.h; sourceTree = "<group>"; };
+		ED1CE6421F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPayoffViewGoogleStreetViewController.m; sourceTree = "<group>"; };
+		ED1CE6431F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPayoffViewGoogleStreetViewController.xib; sourceTree = "<group>"; };
 		EDB036111F0453BD004930FF /* PGWikipediaDropdownTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWikipediaDropdownTableViewCell.h; sourceTree = "<group>"; };
 		EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWikipediaDropdownTableViewCell.m; sourceTree = "<group>"; };
 		EDD33F071EF9CE520028DBC8 /* PGMetarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMetarAPI.h; sourceTree = "<group>"; };
@@ -6645,6 +6650,9 @@
 				EDE0EA921F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m */,
 				EDB036111F0453BD004930FF /* PGWikipediaDropdownTableViewCell.h */,
 				EDB036121F0453BD004930FF /* PGWikipediaDropdownTableViewCell.m */,
+				ED1CE6411F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.h */,
+				ED1CE6421F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m */,
+				ED1CE6431F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib */,
 			);
 			name = PayoffViews;
 			path = Watermark/PayoffViews;
@@ -7780,6 +7788,7 @@
 				929CE0AF1EF075C700039377 /* bunny_ears_TN.png in Resources */,
 				E3461FA319AF84A80042DF5E /* MeasurementArrowLeft@2x.png in Resources */,
 				929CE02D1EF075C600039377 /* 3d-diamond-2_TN@3x.png in Resources */,
+				ED1CE6451F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.xib in Resources */,
 				929CE33B1EF075C800039377 /* Mushrooms-b_TN.png in Resources */,
 				929CDFD41EF075C600039377 /* sloth_TN.png in Resources */,
 				929CDFF81EF075C600039377 /* confetti_graduation.png in Resources */,
@@ -9949,6 +9958,7 @@
 				EDD33F6D1EF9CE520028DBC8 /* PGMetarMedia.m in Sources */,
 				EDD33F8B1EF9CE520028DBC8 /* PGPayoffManager.m in Sources */,
 				8263D7D01E7867670036E903 /* PGSavePhotos.m in Sources */,
+				ED1CE6441F1046E9006EEC64 /* PGPayoffViewGoogleStreetViewController.m in Sources */,
 				EDD33F751EF9CE520028DBC8 /* PGMetarSocialActivity.m in Sources */,
 				F1ECD7411A608297004B512E /* PGSwipeCoachMarksView.m in Sources */,
 				F2B3F5A11EFC427200F1E6FB /* PGSocialSourcesMenuViewController.m in Sources */,

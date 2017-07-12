@@ -550,6 +550,10 @@ Copyright 2016 Google Inc.
 
 Copyright 2009 - 2015 Google, Inc. All rights reserved.
 
+## GoogleMaps
+
+Copyright 2017 Google
+
 ## GoogleSignIn
 
 Copyright 2017 Google

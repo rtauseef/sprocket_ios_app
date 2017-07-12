@@ -20,6 +20,9 @@ def shared_pods
     pod 'Google/SignIn'
     pod 'GPUImage'
     pod 'OpenCV'
+    # Google Street View
+    pod 'GoogleMaps'
+    # pod 'GooglePlaces'
 end
 
 target "Sprocket" do
