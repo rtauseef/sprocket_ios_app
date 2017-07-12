@@ -1,0 +1,425 @@
+/* No comment provided by engineer. */
+"%ld of %ld" = "%1$ld من %2$ld";
+
+/* This will be formatted as '1 print added to the queue, 7 total' */
+"%ld print added to the queue, %ld total" = "تمت إضافة %1$ld مطبوعًا إلى قائمة الانتظار ليكون الإجمالي %2$ld";
+
+/* This will be formatted as '3 prints added to the queue, 7 total' */
+"%ld prints added to the queue, %ld total" = "تمت إضافة %1$ld من المطبوعات إلى قائمة الانتظار ليكون الإجمالي %2$ld";
+
+/* This will be formatted as '3 prints added to the queue, 1 in progress' */
+"%ld prints added to the queue, 1 in progress" = "تمت إضافة %ld من المطبوعات إلى قائمة الانتظار، وهناك مطبوع قيد التقدم";
+
+/* Message presented when there is only one image in the print queue */
+"%li print in Print Queue" = "يوجد %li مطبوعًا في \"قائمة الانتظار\"";
+
+/* Message presented when there more than one images in the print queue */
+"%li prints in Print Queue" = "يوجد %li من المطبوعات في \"قائمة الانتظار\"";
+
+/* Message presented when some error occurred while printing an image */
+"1 in progress" = "مطبوع واحد قيد التقدم";
+
+/* Message presented when some error occurred while printing an image and there are other images in the print queue */
+"1 in progress, %li in Print Queue" = "مطبوع واحد قيد التقدم، وهناك %li في \"قائمة انتظار الطباعة\"";
+
+/* No comment provided by engineer. */
+"About" = "نبذة";
+
+/* No comment provided by engineer. */
+"Add to your sticker collection?" = "إضافة إلى مجموعة الملصقات لديك؟";
+
+/* Body of Camera Access Required dialog */
+"Allow access in your Settings to take and print photos." = "اسمح بالوصول إلى \"الإعدادات\" لالتقاط الصور الفوتوغرافية وطباعتها.";
+
+/* No comment provided by engineer. */
+"An error occurred when sharing the item." = "حدث خطأ عن مشاركة العنصر.";
+
+/* No comment provided by engineer. */
+"App Settings" = "إعدادات التطبيق";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete all stickers?" = "هل تريد بالتأكيد حذف جميع الملصقات؟";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete this sticker?" = "هل تريد بالتأكيد حذف هذا الملصق؟";
+
+/* Settings for automatically saving photos */
+"Auto-Save Settings" = "إعدادات الحفظ التلقائي";
+
+/* No comment provided by engineer. */
+"Buy Paper" = "شراء ورق";
+
+/* Terms of Service String. PS: Don't remove %@ nor < and > */
+"By authenticating with %@, you also agree with HP’s <Terms of Service>." = "بالمصادقة باستخدام %@، فإنك توافق أيضًا على \"<شروط خدمات> HP\".";
+
+/* We must be able to use the camera on the user's phone */
+"Camera Access Required" = "يلزم الوصول إلى الكاميرا";
+
+/* Social source title for Camera Roll */
+"Camera Roll" = "ألبوم الكاميرا";
+
+/* Button for dismissing dialog
+   Generic Cancel from an action. */
+"Cancel" = "إلغاء الأمر";
+
+/* No comment provided by engineer. */
+"Check back soon for cool sprocket tips, fun project ideas, and app updates!" = "تحقق مرة أخرى قريبًا للاطلاع على تلميحات sprocket الرائعة وأفكار المشروعات الممتعة وتحديثات التطبيقات!";
+
+/* No comment provided by engineer. */
+"Check out my HP Sprocket creation" = "تحقق من عمليات الإنشاء في HP Sprocket";
+
+/* No comment provided by engineer. */
+"Check out your custom sticker!" = "تحقق من ملصق العميل الخاص بك!";
+
+/* Setup step 3 desc */
+"Connect" = "اتصال";
+
+/* Number of Copies for printing */
+"Copies" = "نُسخ";
+
+/* Number of Copies for printing */
+"Copy" = "نسخ";
+
+/* No comment provided by engineer. */
+"Delete" = "حذف";
+
+/* No comment provided by engineer. */
+"Delete All" = "حذف الكل";
+
+/* No comment provided by engineer. */
+"Delete All Stickers" = "حذف جميع الملصقات";
+
+/* No comment provided by engineer. */
+"Delete Sticker" = "حذف الملصق";
+
+/* No comment provided by engineer. */
+"Delete all prints from Print Queue?" = "حذف جميع المطبوعات من \"قائمة انتظار الطباعة\"؟";
+
+/* Allows user to decline firmware upgrade without taking any action */
+"Dismiss" = "تجاهل";
+
+/* Asks the user if they want their photos saved */
+"Do you want to save new camera photos to your device?" = "هل تريد حفظ صور الكاميرا الجديدة إلى جهازك؟";
+
+/* No comment provided by engineer. */
+"Don't Save" = "عدم الحفظ";
+
+/* No comment provided by engineer. */
+"Done" = "تم";
+
+/* No comment provided by engineer. */
+"Enter Text" = "إدخال نص";
+
+/* No comment provided by engineer. */
+"Enter+Text" = "إدخال + نص";
+
+/* No comment provided by engineer. */
+"Error" = "خطأ";
+
+/* Error retrieving the facebook user information */
+"Error retrieving user information." = "خطأ في استرجاع معلومات المستخدم.";
+
+/* Social source title for Facebook */
+"Facebook" = "Facebook";
+
+/* Subject of the email send to technical support */
+"Feedback on sprocket for iOS (Record Locator: %@)" = "ملاحظات على sprocket لأنظمة iOS (محدد موقع السجل: %@)";
+
+/* Social source title for Flickr */
+"Flickr" = "Flickr";
+
+/* Instructions for connecting a phone to a printer via bluetooth */
+"From Bluetooth Settings, tap on “HP sprocket” to pair with the printer." = "من \"إعدادات Bluetooth\"، انقر فوق \"HP sprocket\" للإقران بالطابعة.";
+
+/* No comment provided by engineer. */
+"Get Firmware Upgrade" = "الحصول على ترقية البرنامج الثابت";
+
+/* No comment provided by engineer. */
+"Get More" = "احصل على المزيد";
+
+/* Social source title for Google */
+"Google" = "Google";
+
+/* No comment provided by engineer. */
+"Here’s what I think about this experience…" = "إليك ما أعتقده بشأن هذه التجربة…";
+
+/* Buy paper notification message */
+"Hi, do you need more HP ZINK Photo Paper?" = "مرحبًا! هل أنت بحاجة إلى ورق الصور الفوتوغرافية HP ZINK؟";
+
+/* No comment provided by engineer. */
+"How To" = "الكيفية";
+
+/* No comment provided by engineer. */
+"How to & Help" = "الكيفية والتعليمات";
+
+/* Message shown when the user tries to scan an image and the scanning service is not available */
+"Image scanning is not available at this time. Please try again later." = "لا تتوفر إمكانية المسح الضوئي للصور في هذا الوقت. يُرجى المحاولة مرة أخرى لاحقًا.";
+
+/* No comment provided by engineer. */
+"Inbox" = "الفهرس";
+
+/* Social source title for Instagram */
+"Instagram" = "Instagram";
+
+/* No comment provided by engineer. */
+"Live Photo" = "صورة مباشرة";
+
+/* No comment provided by engineer. */
+"Log file has been cleared." = "تم مسح ملف السجل.";
+
+/* No comment provided by engineer. */
+"Looks good." = "يبدو جيدًا.";
+
+/* No comment provided by engineer. */
+"NO" = "لا";
+
+/* No comment provided by engineer. */
+"Nice drawing!" = "رسم رائع!";
+
+/* Dismisses dialog without taking action */
+"No" = "لا";
+
+/* No comment provided by engineer. */
+"No Connection Available" = "لا يتوفر اتصال";
+
+/* Message displayed when no images from the Pitu app can be found */
+"No Pitu app images found" = "لم يتم العثور على صور لتطبيق Pitu";
+
+/* Message displayed when no images from the Qzone app can be found */
+"No Qzone app images found" = "لم يتم العثور على صور لتطبيق Qzone";
+
+/* Message title for when the print queue is empty */
+"No prints in Print Queue" = "لم يتم العثور على مطبوعات في \"قائمة الانتظار\"";
+
+/* No comment provided by engineer. */
+"No, Keep Them" = "لا، احتفظ بهم";
+
+/* No comment provided by engineer. */
+"No, thanks" = "لا، شكرًا";
+
+/* No comment provided by engineer. */
+"Not all images were downloaded. Do you want to continue?" = "لم يتم تنزيل جميع الصور. هل تريد المتابعة؟";
+
+/* No comment provided by engineer. */
+"Not available" = "غير متوفر";
+
+/* Allows user close dialog
+   Button caption
+   Dismisses dialog without taking action */
+"OK" = "موافق";
+
+/* No comment provided by engineer. */
+"Ok" = "موافق";
+
+/* No comment provided by engineer. */
+"Oops!" = "يا إلهي!";
+
+/* No comment provided by engineer. */
+"Original Video" = "فيديو أصلي";
+
+/* Dismisses dialog and pauses printing */
+"Pause" = "إيقاف مؤقت";
+
+/* No comment provided by engineer. */
+"Perfect!" = "رائع!";
+
+/* No comment provided by engineer. */
+"Photos taken near the same location" = "صور تم التقاطها بالقرب من الموقع نفسه";
+
+/* No comment provided by engineer. */
+"Photos taken on the same day" = "صور تم التقاطها في اليوم نفسه";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue, after the sprocket printer is on and Bluetooth is connected." = "ستتم طباعة الصور بترتيب إضافتها إلى \"قائمة انتظار الطباعة\"، وذلك بعد تشغيل طابعة sprocket والاتصال بتقنية Bluetooth.";
+
+/* No comment provided by engineer. */
+"Photos will print in the order they were added to the Print Queue." = "ستتم طباعة الصور الفوتوغرافية بالترتيب الذي تمت إضافتها به إلى \"قائمة انتظار الطباعة\".";
+
+/* Social source title for Pitu */
+"Pitu" = "Pitu";
+
+/* No comment provided by engineer. */
+"Please connect to a data source.
+You can also use your device photos." = "يُرجى الاتصال بمصدر بيانات.
+يمكنك أيضًا استخدام صورك الفوتوغرافية على الجهاز.";
+
+/* Ask the user to take a survey to say his opinion of the app */
+"Please tell us what is awesome and what could be better!" = "يُرجى إخبارنا بما هو رائع وما هو أفضل!";
+
+/* Setup step 2 desc */
+"Power Up" = "التشغيل";
+
+/* Instructions for turning a printer on */
+"Press and hold the power button until the LED turns white." = "اضغط مع الاستمرار على زر الطاقة حتى يتحول مؤشر LED إلى اللون الأبيض.";
+
+/* No comment provided by engineer. */
+"Print" = "طباعة";
+
+/* No comment provided by engineer. */
+"Print Help" = "تعليمات الطباعة";
+
+/* No comment provided by engineer. */
+"Print Queue" = "قائمة انتظار الطباعة";
+
+/* No comment provided by engineer. */
+"Printers" = "طابعات";
+
+/* No comment provided by engineer. */
+"Privacy" = "الخصوصية";
+
+/* Instructions for loading paper */
+"Put the entire pack in the paper tray with barcode and HP logos facing down." = "ضع الحزمة بكاملها في درج الورق بحيث يكون الرمز الشريطي وشعارات HP متجهة لأسفل.";
+
+/* Social source title for Qzone */
+"Qzone" = "Qzone";
+
+/* No comment provided by engineer. */
+"Remind me later" = "ذكرني لاحقًا";
+
+/* No comment provided by engineer. */
+"Reset" = "إعادة الضبط";
+
+/* No comment provided by engineer. */
+"Reset Application" = "إعادة ضبط التطبيق";
+
+/* Dismisses dialog without taking action */
+"Resume" = "استئناف";
+
+/* No comment provided by engineer. */
+"Retry" = "إعادة المحاولة";
+
+/* Title of a table view header */
+"SUPPORT:" = "الدعم:";
+
+/* No comment provided by engineer. */
+"Save" = "حفظ";
+
+/* No comment provided by engineer. */
+"Save and exit preview?" = "حفظ والخروج من المعاينة؟";
+
+/* No comment provided by engineer. */
+"Save to Camera Roll" = "حفظ إلى ألبوم الكاميرا";
+
+/* No comment provided by engineer. */
+"Scan" = "مسح ضوئي";
+
+/* No comment provided by engineer. */
+"Scanning is not available at this time, please try again later." = "لا تتوفر إمكانية المسح الضوئي في هذا الوقت، يُرجى المحاولة مرة أخرى لاحقًا.";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "إرسال إلى طابعة sprocket";
+
+/* Button for opening the app settings */
+"Settings" = "الإعدادات";
+
+/* No comment provided by engineer. */
+"Sign In" = "تسجيل الدخول";
+
+/* Signing out of a social media site. */
+"Sign Out" = "تسجيل الخروج";
+
+/* Setup step 1 desc */
+"Slide Lid Back & Load Paper" = "تحريك الغطاء للخلف وتحميل الورق";
+
+/* No comment provided by engineer. */
+"Sorry, no information available about the scanned content." = "عذرًا، لا تتوفر أي معلومات حول المحتوى الذي تم مسحه ضوئيًا.";
+
+/* No comment provided by engineer. */
+"Sorry, your issue can’t be reported right now. This is most likely because no mail accounts are set up on your mobile device." = "عذرًا، يتعذر إعداد تقرير بمشكلتك الآن. يرجع ذلك على الأرجح إلى عدم إعداد حسابات بريد على جهازك المحمول.";
+
+/* Title for dialog that prompts user to ugrade device firmware */
+"Sprocket Printer Firmware Upgrade Available" = "تتوفر ترقية للبرنامج الثابت لطابعة Sprocket";
+
+/* No comment provided by engineer. */
+"Sprocket Printer Not Connected, %@" = "طابعة Sprocket طراز %@ غير متصلة";
+
+/* No comment provided by engineer. */
+"Sprocket not Connected" = "طابعة Sprocket غير متصلة";
+
+/* Setup step 1 title */
+"Step 1" = "الخطوة 1";
+
+/* Setup step 2 title */
+"Step 2" = "الخطوة 2";
+
+/* Setup step 3 title */
+"Step 3" = "الخطوة 3";
+
+/* No comment provided by engineer. */
+"Success" = "نجاح";
+
+/* No comment provided by engineer. */
+"Take Survey" = "إجراء استطلاع";
+
+/* No comment provided by engineer. */
+"Take the survey" = "المشاركة في الاستبيان";
+
+/* Body for dialog that prompts user to ugrade device firmware */
+"Tap Upgrade to continue." = "انقر فوق \"ترقية\" للمتابعة.";
+
+/* No comment provided by engineer. */
+"Tell us what you think of %@" = "أخبرنا بما تعتقده بشأن %@";
+
+/* No comment provided by engineer. */
+"Tell us what you think of sprocket" = "أخبرنا بما تعتقده بشأن sprocket";
+
+/* No comment provided by engineer. */
+"Thanks! Could you tell us more?" = "شكرًا! هل تخبرنا بالمزيد؟";
+
+/* No comment provided by engineer. */
+"Thanks! Tell us what you liked!" = "شكرًا! أخبرنا بما أحببته!";
+
+/* No comment provided by engineer. */
+"The logfile is attached to this message." = "تم إرفاق ملف السجل بهذه الرسالة.";
+
+/* Firmware update notification message */
+"There is a firmware upgrade available for your sprocket printer." = "تتوفر ترقية للبرنامج الثابت لطابعة sprocket الخاصة بك.";
+
+/* No comment provided by engineer. */
+"This will clear all previously saved options." = "سيؤدي هذا إلى مسح جميع خيارات المحفوظة سابقًا.";
+
+/* Body for dialog that prompts user to charge their battery and then upgrade their firmware. */
+"To upgrade, charge sprocket printer to at least 75% and then go to 'sprocket' in the menu." = "للترقية، اشحن طابعة sprocket إلى 75% على الأقل وانتقل إلى \"sprocket\" من القائمة.";
+
+/* If pressed (on firmware upgrade dialog), firmware upgrade will begin */
+"Upgrade" = "ترقية";
+
+/* Version number and build of the app */
+"Version %@ (%@)" = "الإصدار %1$@ (%2$@)";
+
+/* payoff processor watermark title */
+"Watermark" = "العلامة المائية";
+
+/* payoff processor watermark description */
+"Watermarking image" = "صورة العلامة المائية";
+
+/* Social source title for WeiBo */
+"WeiBo" = "WeiBo";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "ويكيبيديا";
+
+/* Ask user if he/she wishes to sign out of a particular social media site. */
+"Would you like to sign out of %@?" = "هل تريد تسجيل الخروج من %@؟";
+
+/* No comment provided by engineer. */
+"YES" = "نعم";
+
+/* Dismisses dialog, and chooses to save photos */
+"Yes" = "نعم";
+
+/* No comment provided by engineer. */
+"You don’t have any account configured to send emails." = "ليس لديك أي حساب تم تكوينه لإرسال رسائل البريد الإلكتروني.";
+
+/* No comment provided by engineer. */
+"You must be an artist." = "يتعين عليك أن تكون فنانًا.";
+
+/* No comment provided by engineer. */
+"Your prints will start when the sprocket printer is on and bluetooth connected." = "ستبدأ مطبوعاتك عندما يتم تشغيل طابعة sprocket لديك وتوصيل تقنية bluetooth.";
+
+/* No comment provided by engineer. */
+"sprocket" = "sprocket";
+
+/* No comment provided by engineer. */
+"sprocket error log" = "سجل أخطاء sprocket";
+

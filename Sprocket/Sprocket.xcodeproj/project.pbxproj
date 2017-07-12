@@ -4680,6 +4680,14 @@
 		F2E85D331EB7A00000569AE9 /* PGPrintQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPrintQueueManager.h; sourceTree = "<group>"; };
 		F2E85D341EB7A00000569AE9 /* PGPrintQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPrintQueueManager.m; sourceTree = "<group>"; };
 		FD14B27F8A37C9892657AB48 /* Pods-Sprocket Print.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket Print.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3A60C31F15A05A009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		FF3A60C51F15A05B009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF3A60C61F15A05C009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FF3A60C71F15A05E009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/PGSwipeCoachMarksView.strings; sourceTree = "<group>"; };
+		FF3A60C81F15A05E009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/PG_Main.strings; sourceTree = "<group>"; };
+		FF3A60C91F15A060009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF3A60CA1F15A062009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FF3A60CB1F15A062009EAD4F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF40F8461E70E15500113A58 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF40F8481E70E18100113A58 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF40F8491E70E1F800113A58 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -10222,6 +10230,7 @@
 				73D0F3EC1EF8914200BCCAF3 /* cs */,
 				73D0F40C1EF8A08B00BCCAF3 /* zh-Hans */,
 				73D0F4141EF8A0A700BCCAF3 /* zh-Hant */,
+				FF3A60C51F15A05B009EAD4F /* ar */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -10270,6 +10279,7 @@
 				73D0F3F11EF8914700BCCAF3 /* cs */,
 				73D0F4111EF8A09100BCCAF3 /* zh-Hans */,
 				73D0F4191EF8A0AB00BCCAF3 /* zh-Hant */,
+				FF3A60CA1F15A062009EAD4F /* ar */,
 			);
 			name = Localizable.strings;
 			path = l10n;
@@ -10318,6 +10328,7 @@
 				73D0F3EF1EF8914500BCCAF3 /* cs */,
 				73D0F40F1EF8A08F00BCCAF3 /* zh-Hans */,
 				73D0F4171EF8A0A900BCCAF3 /* zh-Hant */,
+				FF3A60C91F15A060009EAD4F /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -10365,6 +10376,7 @@
 				73D0F3F21EF8914800BCCAF3 /* cs */,
 				73D0F4121EF8A09100BCCAF3 /* zh-Hans */,
 				73D0F41A1EF8A0AC00BCCAF3 /* zh-Hant */,
+				FF3A60CB1F15A062009EAD4F /* ar */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -10413,6 +10425,7 @@
 				73D0F3EB1EF8914100BCCAF3 /* cs */,
 				73D0F40B1EF8A08A00BCCAF3 /* zh-Hans */,
 				73D0F4131EF8A0A600BCCAF3 /* zh-Hant */,
+				FF3A60C31F15A05A009EAD4F /* ar */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -10495,6 +10508,7 @@
 				73D0F3ED1EF8914300BCCAF3 /* cs */,
 				73D0F40D1EF8A08C00BCCAF3 /* zh-Hans */,
 				73D0F4151EF8A0A800BCCAF3 /* zh-Hant */,
+				FF3A60C61F15A05C009EAD4F /* ar */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -10543,6 +10557,7 @@
 				73D0F3F01EF8914600BCCAF3 /* cs */,
 				73D0F4101EF8A09000BCCAF3 /* zh-Hans */,
 				73D0F4181EF8A0AA00BCCAF3 /* zh-Hant */,
+				FF3A60C81F15A05E009EAD4F /* ar */,
 			);
 			name = PG_Main.storyboard;
 			sourceTree = "<group>";
@@ -10615,6 +10630,7 @@
 				73D0F3EE1EF8914400BCCAF3 /* cs */,
 				73D0F40E1EF8A08E00BCCAF3 /* zh-Hans */,
 				73D0F4161EF8A0A800BCCAF3 /* zh-Hant */,
+				FF3A60C71F15A05E009EAD4F /* ar */,
 			);
 			name = PGSwipeCoachMarksView.xib;
 			sourceTree = "<group>";
