@@ -44,7 +44,6 @@
  @discussion This must be implemented by the subclass.
  @param   payoffObject is the raw payoff
  @param   completion is the callback function called on completion
- @return  void
  
  @since 1.0
  */
