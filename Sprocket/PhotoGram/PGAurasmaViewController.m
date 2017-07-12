@@ -277,7 +277,11 @@
 
 
 - (void)foundLinkReaderWatermarkPayoff:(id<LRPayoff>)payoff {
+    // Note: this is just example code for now
     NSLog(@"linkreader, we have a payoff");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.aurasmaTrackingController restartLinkReader];
+    });
 }
 
 // Placeholder code for cross-team collaboration - TODO: replace with MetaR function as follows
