@@ -12,6 +12,7 @@
 
 #import <AurasmaSDK/AurasmaSDK.h>
 #import "PGAurasmaGlobalContext.h"
+#import "PGLinkCredentialsManager.h"
 
 @interface PGAurasmaGlobalContext ()
 
@@ -51,14 +52,20 @@ static AURGlobalOptions globalOptions = kNilOptions;
 - (instancetype)init {
     if ((self = [super init])) {
         NSError *error;
+        
+        // Add in LinkReader credentials and turn on LinkReader in global options
+        AURLinkCredentials *linkCredentials = [AURLinkCredentials createLinkCredentialsWithClientId:[PGLinkCredentialsManager clientId] clientSecret:[PGLinkCredentialsManager clientSecret] ];
+        globalOptions |= AURGlobalOptionsLinkReaderEnabled;
+        
         /*
          Create an AURContext using your provided license key.
          The CFBundleName of this app must match the name given in your SDK app request.
          */
         self.context = [Aurasma createContextWithKey:[[NSBundle mainBundle] URLForResource:@"Sprocket" withExtension:@"key"]
-                                    clientSecret:clientSecret
-                                   globalOptions:globalOptions
-                                           error:&error];
+                                        clientSecret:clientSecret
+                                       globalOptions:globalOptions
+                                     linkCredentials:linkCredentials
+                                               error:&error];
         
         if (!self.context) {
             NSLog(@"%@", error);

@@ -276,6 +276,10 @@
 }
 
 
+- (void)foundLinkReaderWatermarkPayoff:(id<LRPayoff>)payoff {
+    NSLog(@"linkreader, we have a payoff");
+}
+
 // Placeholder code for cross-team collaboration - TODO: replace with MetaR function as follows
 // use Link ID to retreive magic frame ID; once fetched from MetaR, invoke cacheAndStartDetachedAura with magic frame ID 
 - (void)foundCode:(AVMetadataMachineReadableCodeObject *)code {
