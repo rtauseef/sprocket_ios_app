@@ -23,7 +23,8 @@ Scenario Outline: Verify crop option
     
  
 @regression
-Scenario Outline: Verify image crop
+@done
+Scenario: Verify image crop
     Given I am on the "CameraRoll Preview" screen
     When I touch "Edit"
     Then I am on the "Edit" screen
@@ -33,14 +34,11 @@ Scenario Outline: Verify image crop
     Then I choose "save" option
     Then I should see the "Edit" screen
     And I should see the "cropped" image
-       
-   Examples:
-    | social_media_screen_name|
-    | Instagram Preview  |
-    | CameraRoll Preview |
-    
 
-@done
+
+
+    #2:3 crop not reflected on verification
+@block
 Scenario Outline: Verify image crop for both options
     Given I am on the "CameraRoll Preview" screen
     When I touch "Edit"

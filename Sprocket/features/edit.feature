@@ -4,6 +4,7 @@ Feature: Verify Edit screen
 
 @smoke
 @done
+@regression
 Scenario: Verify Edit screen
     Given I am on the "CameraRoll Preview " screen
     When I touch "Edit" 

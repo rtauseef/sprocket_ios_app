@@ -2,7 +2,7 @@ Feature: Verify Brush option in Edit screen
   As a user
   I want to verify Brush option.
 
-@TA18377
+@regression
 Scenario: Verify Brush screen
     Given I am on the "CameraRoll Preview" screen
     When I touch "Edit"
@@ -20,7 +20,7 @@ Scenario: Verify Brush screen
     
     
 @done
-@TA18377
+@regression
 Scenario: Verify Edit screen
     Given I am on the "BrushEditor" screen for "CameraRoll"
     And I touch "Color"

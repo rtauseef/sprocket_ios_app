@@ -4,6 +4,7 @@ Feature: Verify Edit frame feature
 
   
   @done
+  @regression
   Scenario: Verify frame list
     Given I am on the "FrameEditor" screen for "CameraRoll"
     Then I should see the following "Frames" in the screen:
@@ -40,6 +41,7 @@ Feature: Verify Edit frame feature
 
   
   @done
+  @regression
   Scenario Outline: Verify Frame Save,Close functionality
     Given I am on the "FrameEditor" screen for "<social_media_screen_name>"
     Then I select "frame_0" frame

@@ -126,7 +126,7 @@ Scenario Outline: Verify sticker editor screen navigation
     | CameraRoll              |  
 
 @done
-@TA17968
+@regression
 Scenario: Verify Sticker add option
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Face Category" tab
@@ -144,6 +144,7 @@ Scenario: Verify Sticker add option
     And I should see the photo with the "sticker_7" sticker from "Decorative Category" tab
 
 @done
+@regression
 Scenario: Verify Sticker color options
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Decorative Category" tab
@@ -169,7 +170,7 @@ Scenario: Verify Sticker color options
     | Aquamarin  |
     
 @done
-@TA17968
+@regression
 Scenario: Verify Sticker color selection
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Decorative Category" tab
@@ -177,9 +178,9 @@ Scenario: Verify Sticker color selection
     Then I am on the "StickerOptionEditor" screen
     Then I touch "Color"  
     Then I verify that all the "colors" are applied successfully
-    
 
-@TA17968
+
+@regression
 Scenario: Verify Sticker add/delete functionality
     Given I am on the "StickerEditor" screen for "CameraRoll Preview"
     And I select "Decorative Category" tab

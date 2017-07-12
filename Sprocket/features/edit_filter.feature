@@ -20,6 +20,7 @@ Scenario Outline: Verify 'Filter' option
     | CameraRoll Preview |
 
 @done
+@regression
 Scenario Outline: Verify Filter selection option
     Given I am on the "FilterEditor" screen for "<social_media_screen_name>" 
     Then I touch "Candy"
