@@ -17,3 +17,4 @@
 #import <LinkReaderKit/LRWebPayoff.h>
 #import <LinkReaderKit/LRLocationPayoff.h>
 #import <LinkReaderKit/LREnhancedWebPayoff.h>
+#import <LinkReaderKit/LRCustomDataPayoff.h>

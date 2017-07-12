@@ -6,29 +6,19 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		9dDZg7Vmvbs65U2o8wUkOHQZSJk=
+		9cyOv1EDLhUjcStw3NHbMZSkOAs=
 		</data>
 		<key>Base.lproj/HPResolvingOverlay.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1x4lnj8kcV5082jdGNdAK6Gb+qI=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
+		<data>
+		Y3ABew5/tQEsjZBVmVCztx9aGBM=
+		</data>
 		<key>Base.lproj/LRLoginViewController.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Nam3OffEDxXbsqKnfUfZy8xllV8=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
+		<data>
+		8otjykTx3JHtVBkpxwxISzi4QQA=
+		</data>
 		<key>EasyReadingViewController.nib</key>
 		<data>
-		xPfcwR7yETVnaMj14scqWlWpkEU=
+		g2zcepPeX+seVVgMu/TbLc9J8vk=
 		</data>
 		<key>Frameworks/DMSDK.framework/Assets.car</key>
 		<data>
@@ -40,7 +30,7 @@
 		</data>
 		<key>Frameworks/DMSDK.framework/DMSDK</key>
 		<data>
-		NehAINkl8IkbLXEWDLsoKOWOZv0=
+		205CVIV/n9sUKegoIw5bT6k1iFU=
 		</data>
 		<key>Frameworks/DMSDK.framework/Info.plist</key>
 		<data>
@@ -48,19 +38,19 @@
 		</data>
 		<key>Frameworks/DMSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		VQByaFzXrGlkhvPgax1SLRLoYs8=
+		aFkNaMn4JIwFszGo4qWUL+ma+68=
 		</data>
 		<key>HPFlexibleLayoutViewController.nib</key>
 		<data>
-		sUt7EuD43MsNxcClfN59xOA7BSM=
+		HCcmRdMbBCgtokarFv+XQFaSBEM=
 		</data>
 		<key>HPWebPayoffViewController.nib</key>
 		<data>
-		YO7DOkI2KlcTGRz/t1XqYF9HzX4=
+		2K1xmvqgnI9K3KmDJ7F4GuVj4vA=
 		</data>
 		<key>HPWebPreviewController.nib</key>
 		<data>
-		dBqFXlr5pqA87/CeJ3YSbX3fOAI=
+		+wmOR64X4NAqMbv0Xl3alYcloO4=
 		</data>
 		<key>Headers/EasyReadingViewController.h</key>
 		<data>
@@ -82,9 +72,13 @@
 		<data>
 		LAVvQlniB9EKymJK5PE3LTt36AY=
 		</data>
+		<key>Headers/LRCustomDataPayoff.h</key>
+		<data>
+		GgIZZA+ATIObf+8QbNZRw/IUfDw=
+		</data>
 		<key>Headers/LRDetection.h</key>
 		<data>
-		RlZ0i4QpTtLY3iVsOhP07LJoeNs=
+		tDaep0wIueZrldJ8dZSB1Mm0qj8=
 		</data>
 		<key>Headers/LREmailPayoff.h</key>
 		<data>
@@ -120,15 +114,15 @@
 		</data>
 		<key>Headers/LRPayoff.h</key>
 		<data>
-		jeTDN4v56CnF5jdP0GbUCYCT4Uk=
+		bxapzNpZUHN6U8lUALCvIdIXeBY=
 		</data>
 		<key>Headers/LRPayoffPresenter.h</key>
 		<data>
-		bSTymIoB6z+DRwrKPlEF4ic1uT0=
+		iIpJrRsDLzJy/+rkeFmv5aTiVeA=
 		</data>
 		<key>Headers/LRPayoffTypes.h</key>
 		<data>
-		TwxfElkeD4YLHIHlc0SuoK2iBAE=
+		tG3FEahHwGIlS4LR9FA+WCekPcM=
 		</data>
 		<key>Headers/LRPhoneCallPayoff.h</key>
 		<data>
@@ -156,11 +150,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		fo1YUr8wi6MOdp7YAmJSMrBi3P8=
+		YWkM21RGvOA/3ph5ygZssExps98=
 		</data>
 		<key>LRCropMarkView.nib</key>
 		<data>
-		+7VCM072CjPNXwfGVGaNyBiMx7g=
+		nCst+1ZkWVbaqQydbNnrgTCqPss=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -188,7 +182,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			g1ZOimTvE1/GmkOrt36qUofwn8g=
+			/mPviSsS1Ndk4vFHwRlMJRU/kRA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -215,7 +209,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			H6brt3PZGE8uoW3fM60mIGf99a4=
+			jWmAQ5yZdMJymF/tkxPxDgXgtp4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -242,7 +236,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cE8woGYOcc+xvZcReTq9KwQ15is=
+			q07CHeKb3fuU0ofDY5Fk6EJb5Ug=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -269,7 +263,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rSICsHGdbtJqD07KPDYd9PN437s=
+			BOoizrjC24Vn2QXTN9vYQE+9VPM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -296,7 +290,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WMa3LE5fmBgFu66LxxRAcY8ffJg=
+			7RGEuLTL/81VboSCJtOCqTzeEjU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -323,7 +317,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			N7Sn93ytdvLrfBPcTnv4dBAcRLU=
+			AM7YVgSYRO4TRYoFzyweETkuymo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -350,7 +344,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7Hume1cS60gewOoj6nt0k9Ivv94=
+			hnfL2ORXi+MGgCdhBDMVJ5HNO6Y=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -377,7 +371,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			K6nLm+H97jo+wxiTDMqrqTk8sCs=
+			Ogx3OItL54NmE05opIc+518zOp4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -404,7 +398,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qiM3RJkGMuNeKYy9fSPqfevXVpc=
+			n6YWzMLgKbLaerm0kY3stpnDkKM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -431,14 +425,14 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ybU+qEa12LAHrtAFbnFBAo+S3C8=
+			um8jAYV6jBhJg+ldUsoKHmaHa48=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>release_strip_archs.sh</key>
 		<data>
-		rUxA2ubGq8Jg0RGYpGwgofDOAFo=
+		RVg3+q51wN5BfnZlotxpNIW5NXE=
 		</data>
 		<key>youtube-player.html</key>
 		<data>
@@ -451,48 +445,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9dDZg7Vmvbs65U2o8wUkOHQZSJk=
+			9cyOv1EDLhUjcStw3NHbMZSkOAs=
 			</data>
 			<key>hash2</key>
 			<data>
-			lEa452B6aWSaY0SgzxJLN+OG1DH+o7S6jVRHS3wnUMk=
+			59wlIH2mVhHOnPneeg1WcXsHhdYLSMDoW7q9U66fkVc=
 			</data>
 		</dict>
 		<key>Base.lproj/HPResolvingOverlay.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1x4lnj8kcV5082jdGNdAK6Gb+qI=
+			Y3ABew5/tQEsjZBVmVCztx9aGBM=
 			</data>
 			<key>hash2</key>
 			<data>
-			8iYM/1p5X1I7EMv3B9cAbJyk/CdR/ONJhJCvDORlyOc=
+			OH4hgatPqUuz5CKmy0zYlRRX7fKvg0rt0lHvpmAPZnA=
 			</data>
-			<key>optional</key>
-			<true/>
 		</dict>
 		<key>Base.lproj/LRLoginViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Nam3OffEDxXbsqKnfUfZy8xllV8=
+			8otjykTx3JHtVBkpxwxISzi4QQA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ulyNDoLwkZ+w/SgRn5QGHYytsBL1hFG6lXrpCGsNGLw=
+			GjwyMbbK4BTra4+aK+47szP0Az1XSfLGIlNllGw4f6Y=
 			</data>
-			<key>optional</key>
-			<true/>
 		</dict>
 		<key>EasyReadingViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xPfcwR7yETVnaMj14scqWlWpkEU=
+			g2zcepPeX+seVVgMu/TbLc9J8vk=
 			</data>
 			<key>hash2</key>
 			<data>
-			StAEh7TnWcxE0155t2U7GS0bbiFvjUS0NzR44574X7c=
+			A/lSeUpnKo1nUKI3oH1UPcBS7wQ9p+GoCocuMHEci84=
 			</data>
 		</dict>
 		<key>Frameworks/DMSDK.framework/Assets.car</key>
@@ -521,11 +511,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NehAINkl8IkbLXEWDLsoKOWOZv0=
+			205CVIV/n9sUKegoIw5bT6k1iFU=
 			</data>
 			<key>hash2</key>
 			<data>
-			pg7UF+ECa63VxqPOr6rpqfNSz6xl1KJIZZHxfnZl0c0=
+			Nu1+gXPigWYSEK3uj1FfIP1z9oB0xlIicgCSbOktNx4=
 			</data>
 		</dict>
 		<key>Frameworks/DMSDK.framework/Info.plist</key>
@@ -543,44 +533,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VQByaFzXrGlkhvPgax1SLRLoYs8=
+			aFkNaMn4JIwFszGo4qWUL+ma+68=
 			</data>
 			<key>hash2</key>
 			<data>
-			dauSGYJ/cN5JSZ6VVazwjgILwCOxKCm1UFrrj0jzFLQ=
+			tGDuBsLWJatCRZ6oPyKF/X2mfzltod1VV0euvbvuWC8=
 			</data>
 		</dict>
 		<key>HPFlexibleLayoutViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sUt7EuD43MsNxcClfN59xOA7BSM=
+			HCcmRdMbBCgtokarFv+XQFaSBEM=
 			</data>
 			<key>hash2</key>
 			<data>
-			pnqH60wlqh+xvQHNqka/c3DGAvBk27Td+4Hk3Iw6jnc=
+			LsvtptT39U6NDIAaz5DXNEOOc7iMeJTTY0lg2Y0emuE=
 			</data>
 		</dict>
 		<key>HPWebPayoffViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YO7DOkI2KlcTGRz/t1XqYF9HzX4=
+			2K1xmvqgnI9K3KmDJ7F4GuVj4vA=
 			</data>
 			<key>hash2</key>
 			<data>
-			/iFWI7dQ1tIl0GHHQySV0DAzBc2OlTHCxKpXgIaG9u4=
+			4kS/dwFGp5SiCN7BYf9Z5wWjA1EqtcpJ1yEiB+EiylA=
 			</data>
 		</dict>
 		<key>HPWebPreviewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dBqFXlr5pqA87/CeJ3YSbX3fOAI=
+			+wmOR64X4NAqMbv0Xl3alYcloO4=
 			</data>
 			<key>hash2</key>
 			<data>
-			RRVjVVoKzDfk3gnETQugsk2nAU1DjFnVEC+3V61R3AY=
+			78QzT6aHagK1ycF/a8+evXdV5n3zFkLUIoQPdVc9Om4=
 			</data>
 		</dict>
 		<key>Headers/EasyReadingViewController.h</key>
@@ -638,15 +628,26 @@
 			P7w5r1yDRaCPtS3vx2Vzxwon7jcG6P4hi0/2HHz5avk=
 			</data>
 		</dict>
+		<key>Headers/LRCustomDataPayoff.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GgIZZA+ATIObf+8QbNZRw/IUfDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			zsW3VmM6ppqUszPiZ9LgHfSLUTRNbtigVzkmr8nnZAo=
+			</data>
+		</dict>
 		<key>Headers/LRDetection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RlZ0i4QpTtLY3iVsOhP07LJoeNs=
+			tDaep0wIueZrldJ8dZSB1Mm0qj8=
 			</data>
 			<key>hash2</key>
 			<data>
-			n3NSKlEHENSNKWJPxXKmxMv0YhwgVRcFPg15BM0rPtQ=
+			qzct+7sIolvN0mDI2VqGvu8WDjOLnU6JhdUUGvPTwo0=
 			</data>
 		</dict>
 		<key>Headers/LREmailPayoff.h</key>
@@ -741,33 +742,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jeTDN4v56CnF5jdP0GbUCYCT4Uk=
+			bxapzNpZUHN6U8lUALCvIdIXeBY=
 			</data>
 			<key>hash2</key>
 			<data>
-			AUfRc3D0hzv/zv6N/5w8vRhvs9VyY9Q/2AIK3WA4neI=
+			mFp+PClgoP1W2X0uv+7rZgr8/YhfWHPiPdvCWF/TVwg=
 			</data>
 		</dict>
 		<key>Headers/LRPayoffPresenter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bSTymIoB6z+DRwrKPlEF4ic1uT0=
+			iIpJrRsDLzJy/+rkeFmv5aTiVeA=
 			</data>
 			<key>hash2</key>
 			<data>
-			3JNj351O0p9MbSxi8dAu8dQMb87l4Vz6DOJaLwg2MOU=
+			WPtDuwwuqk8/kw+GZ0eOiGcEvR8zFEZa/9ba38eUkOs=
 			</data>
 		</dict>
 		<key>Headers/LRPayoffTypes.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TwxfElkeD4YLHIHlc0SuoK2iBAE=
+			tG3FEahHwGIlS4LR9FA+WCekPcM=
 			</data>
 			<key>hash2</key>
 			<data>
-			DQQihg3qPw6qt8loqLfH2qlAvhuXXwYTwVdlBGPMW24=
+			SLQYO0HFyFygSEO/RHE1x227c9ZNNUNtNB2rG03Iuz0=
 			</data>
 		</dict>
 		<key>Headers/LRPhoneCallPayoff.h</key>
@@ -840,11 +841,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+7VCM072CjPNXwfGVGaNyBiMx7g=
+			nCst+1ZkWVbaqQydbNnrgTCqPss=
 			</data>
 			<key>hash2</key>
 			<data>
-			WmL7TSO1MbaSlTeQFbgOoWk81Y4T/q5peRZpPCYGgqs=
+			OyPMXmhq+OiJR8sHbvSBT2ujo7ONIhIn3kiV2g5f8ng=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -888,11 +889,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			g1ZOimTvE1/GmkOrt36qUofwn8g=
+			/mPviSsS1Ndk4vFHwRlMJRU/kRA=
 			</data>
 			<key>hash2</key>
 			<data>
-			k/LtA5HiwWMtxWIsvdr6hMJpWYWvFDC/CR3yBMHT31I=
+			O9JwopkRq49RxQp3qrCOergA6ufovVbLZnxnOGy4R8I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -927,11 +928,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			H6brt3PZGE8uoW3fM60mIGf99a4=
+			jWmAQ5yZdMJymF/tkxPxDgXgtp4=
 			</data>
 			<key>hash2</key>
 			<data>
-			gQWQwilLR5s98mSFlE9YPaESSOc+MtS6fFLh8GCCFd8=
+			uzsgwla5a/XNZOMQqr5mjP620Gi8uHk55fQ59/CZCYg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -966,11 +967,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cE8woGYOcc+xvZcReTq9KwQ15is=
+			q07CHeKb3fuU0ofDY5Fk6EJb5Ug=
 			</data>
 			<key>hash2</key>
 			<data>
-			qvZiRSUmg/niAKOsIWadVrn0DZ2cM9smidsoyV1WLGM=
+			VjVv6J1lD9QvoDcKJyvUwTNmqpLi0l7X/Q3t1iD6M5s=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1005,11 +1006,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rSICsHGdbtJqD07KPDYd9PN437s=
+			BOoizrjC24Vn2QXTN9vYQE+9VPM=
 			</data>
 			<key>hash2</key>
 			<data>
-			7SpLKOAw2/PuA6/th/fpQcWSFkrq0dCxtlkbJw9XUkQ=
+			fS5LXMZQ5aRPju7+Hll3aRYLStagOtUUMZFaConCdi8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1044,11 +1045,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WMa3LE5fmBgFu66LxxRAcY8ffJg=
+			7RGEuLTL/81VboSCJtOCqTzeEjU=
 			</data>
 			<key>hash2</key>
 			<data>
-			GFnzlUnVa4OCu5qVpE3sVIrHwm6dO6bbr4p3dLftD2k=
+			SvZYLTKoZfUPYuhLNrqc9CGWH5pT3FPgqPec2Bffiqg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1083,11 +1084,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			N7Sn93ytdvLrfBPcTnv4dBAcRLU=
+			AM7YVgSYRO4TRYoFzyweETkuymo=
 			</data>
 			<key>hash2</key>
 			<data>
-			uQB4oJd3fXkuYGqEadGBSJ8BZIT/wBXwRgYh6upVhkA=
+			kyzYoEnExfV0lPbrudGrI2PNIq93/JkNSWWE/3te1Z0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1122,11 +1123,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7Hume1cS60gewOoj6nt0k9Ivv94=
+			hnfL2ORXi+MGgCdhBDMVJ5HNO6Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			RoZyUXZwmACX9ZzRobP/CZOxF6bbxmeRcZ31nQgVBiY=
+			DweHc8qVf3MdWe6HD3VlmS4lck32cCRcWb08ES6CADY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1161,11 +1162,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			K6nLm+H97jo+wxiTDMqrqTk8sCs=
+			Ogx3OItL54NmE05opIc+518zOp4=
 			</data>
 			<key>hash2</key>
 			<data>
-			IMm/RjO5pPdXjc+qBfgGct+2/oZP2kV9vdramTgK7+k=
+			lgQ0hOmx4bybtxXbbNz4ljLRr0ctokkf+Yg4meu5sbI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1200,11 +1201,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qiM3RJkGMuNeKYy9fSPqfevXVpc=
+			n6YWzMLgKbLaerm0kY3stpnDkKM=
 			</data>
 			<key>hash2</key>
 			<data>
-			7gBeNw78jU7viPmF4pc4HOfk8rBcHDeZ3NWigPJZTWg=
+			wHA+py3zC3Ox6OIHFx02A/DuMLdz/+h5rMlyiWQxaps=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1239,11 +1240,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ybU+qEa12LAHrtAFbnFBAo+S3C8=
+			um8jAYV6jBhJg+ldUsoKHmaHa48=
 			</data>
 			<key>hash2</key>
 			<data>
-			sVoP2JUjKdf2pr2XQs05iM8s73lEm5I42TsaokWsG/M=
+			KfnQK/sapc2JDEni1LPgbeK9vRUSk5Gt7aUmD+RgrUI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1252,11 +1253,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rUxA2ubGq8Jg0RGYpGwgofDOAFo=
+			RVg3+q51wN5BfnZlotxpNIW5NXE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Yqjsa1jcZHlZOo5ovrzS3AjPtk4bEevIdtEvI1TRLzw=
+			PlBYsy9GF+H7EFGjKFOb7xGt6Ibi7j2eEzeMma6IFb8=
 			</data>
 		</dict>
 		<key>youtube-player.html</key>
@@ -1288,6 +1289,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -1333,6 +1339,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^Info\.plist$</key>
 		<dict>

@@ -70,7 +70,7 @@
  
  @since 1.0
  */
-- (BOOL)canPresentPayoff:(id<LRPayoff> )payoff;
++ (BOOL)canPresentPayoff:(id<LRPayoff> )payoff;
 
 /**
  Notifies the delegate that the payoff presenter will get dismissed
