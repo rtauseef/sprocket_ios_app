@@ -1,0 +1,15 @@
+/* (No Commment) */
+"CFBundleDisplayName" = "„Sprocket“";
+
+/* (No Commment) */
+"CFBundleName" = "„Sprocket“";
+
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Reikalinga „Bluetooth“ prieiga, kad „Sprocket“ prisijungtų prie „HP Sprocket“ spausdintuvo.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "Suteikite prieigos teises fotografuoti ir spausdinti nuotraukas.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "Suteikite prieigos teises spausdinti ir įrašyti nuotraukas.";
+
