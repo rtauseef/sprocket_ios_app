@@ -22,8 +22,7 @@
 #import "PGSocialSourcesManager.h"
 #import "PGFeatureFlag.h"
 #import "PGLinkSettings.h"
-
-NSString *kPGSettingsForceFirmwareUpgrade = @"kPGSettingsForceFirmwareUpgrade";
+#import "PGCloudAssetClient.h"
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -51,7 +50,9 @@ enum {
     kEnableFakePrintIndex,
     kEnableLocalWatermarkIndex,
     kForceUpgradeIndex,
-    
+    kUseExperimentalFirmwareIndex,
+    kEnableCloudAssetsIndex,
+
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
 
@@ -336,8 +337,27 @@ NSString * const kFeatureCodeLink = @"link";
             cell.textLabel.text = @"Force Firmware Upgrade";
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[[MP sharedInstance] forceFirmwareUpdates]];
+        } else if (kUseExperimentalFirmwareIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"useExperimentalFirmware"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"useExperimentalFirmware"];
+            }
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.textLabel.text = @"Use Experimental Firmware";
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[[MP sharedInstance] useExperimentalFirmware]];
+
+        } else if (kEnableCloudAssetsIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enableCloudAssets"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enableCloudAssets"];
+            }
+            cell.textLabel.text = @"Enable Cloud Assets";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGFeatureFlag isCloudAssetsEnabled]];
         }
-        
+
          cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
     }
     
@@ -409,12 +429,23 @@ NSString * const kFeatureCodeLink = @"link";
                 [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGLinkSettings localWatermarkEnabled]];
             } else if (kForceUpgradeIndex == selectedRow) {
                 BOOL force = ![[MP sharedInstance] forceFirmwareUpdates];
-                
-                [[NSUserDefaults standardUserDefaults] setBool:force forKey:kPGSettingsForceFirmwareUpgrade];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-
                 [[MP sharedInstance] setForceFirmwareUpdates:force];
                 [self.tableView reloadData];
+            } else if (kUseExperimentalFirmwareIndex == selectedRow) {
+                BOOL useExperimental = ![[MP sharedInstance] useExperimentalFirmware];
+                [[MP sharedInstance] setUseExperimentalFirmware:useExperimental];
+                [self.tableView reloadData];
+
+            } else if (kEnableCloudAssetsIndex == selectedRow) {
+                BOOL enabled = ![PGFeatureFlag isCloudAssetsEnabled];
+
+                [PGFeatureFlag setCloudAssetsEnabled:enabled];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:enabled];
+
+                if (enabled) {
+                    PGCloudAssetClient *cac = [[PGCloudAssetClient alloc] init];
+                    [cac refreshAssetCatalog];
+                }
             }
         }
     }

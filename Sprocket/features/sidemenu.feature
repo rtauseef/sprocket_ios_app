@@ -142,7 +142,7 @@ Scenario Outline: Verify successful navigation for How to & Help options
         Then I touch "Technical Information"
         And I should see the "Technical Information" screen
         And I tap back button
-        And I tap "Close" mark
+        And I choose "close" option
         And I touch "Done"
         When I touch menu button on navigation bar
         Then I should see the "Landing" screen 
@@ -156,53 +156,5 @@ Scenario Outline: Verify successful navigation for How to & Help options
 	    And I click Sign Out button on popup
 		Then I should see Instagram "Sign In" button
 
- @reset
- @appium
- @TA17541
-  Scenario: Signin to Facebook
-    Given I am on the Landing screen
-    When I touch the "Photos" Logo
-    And I touch signin button
-    When I touch hamburger button on navigation bar
-    And I select "Buy Paper" option
-    Then I verify the url
 
-    @TA18215
-    @screenshot
-    Scenario Outline: Take screenshots of all the screens
-        Given  I am on the "<screen_name_sprocket>" screen
-        And I take screenshot of "<screen_name_sprocket>" screen
-        Examples:
-        |screen_name_sprocket  | 
-        |Landing               | 
-        |Instagram Landing     |
-        |Instagram Signin      |
-        |Google Landing        |
-        |CameraRoll Albums     |
-        |CameraRoll Photo      | 
-        |Side Menu             |
-        |Instagram Preview     |
-        |Google Preview        |
-        |CameraRoll Preview    |
-        |Edit                  |
-        |Share                 |
-        |Filter Editor         |
-        |Crop Editor           |
-        |Frame Editor          |
-        |Sticker Editor        |
-        |Text Edit             |
-        |About                 |
-        |Facebook Landing      |
-        |Reset Sprocket Printer|
-        |Setup Sprocket Printer|
-        |Sprocket              |
-        |Sticker Option Editor |
-        |Survey                |
-        |Technical Information |
-        |Text Option Editor    |
-
-     @TA18215
-     @screenshot
-    Scenario: Take screenshots of all the screens
-        Given  I am on the "Landing" screen
-        Then I zip the "screenshot" folder
+   

@@ -1,58 +1,18 @@
 Then(/^I should see "(.*?)" button$/) do |element_id|
-    sleep(MIN_TIMEOUT)
-  if element_id == "camera"
-    check_element_exists @current_page.camera
+  sleep(MIN_TIMEOUT)
+  if element_id == "Grid mode"
+    check_element_exists @current_page.grid_mode_check_button
   else
-    if element_id == "cancel"
-      check_element_exists @current_page.cancel
+    if element_id == "List mode"
+      check_element_exists @current_page.list_mode_button
     else
-      if element_id == "Edit"
-        check_element_exists @current_page.edit
+      if element_id == "Folder"
+        check_element_exists @current_page.arrow_down
       else
-        if element_id == "Print"
-          check_element_exists @current_page.print
+        if element_id == "close"
+          check_element_exists @current_page.close
         else
-          if element_id == "Grid mode"
-            check_element_exists @current_page.grid_mode_check_button
-          else
-            if element_id == "List mode"
-              check_element_exists @current_page.list_mode_button
-            else
-              if element_id == "Folder"
-                check_element_exists @current_page.arrow_down
-              else
-                if element_id == "Share"
-                  check_element_exists @current_page.share
-                else
-                  if element_id == "close"
-                    check_element_exists @current_page.close
-                  else
-                      if element_id == "Download"
-                          check_element_exists @current_page.download
-                      else
-                          if element_id == "PreviewBardots"
-                              check_element_exists @current_page.preview_bar_dots
-                          else
-                              if element_id == "Skip to the App"
-                                check_element_exists @current_page.skip
-                              else
-                                  if element_id == "Go to the App"
-                                    check_element_exists @current_page.go_to_app
-                                  else
-                                      if element_id == "More Help"
-                                          check_element_exists @current_page.more_help
-                                      else
-                                        check_element_exists "view marked:'#{element_id}'"
-                                      end
-                                  end
-                              end
-                          end
-                      end
-                  end
-                end
-              end
-            end
-          end
+          raise "Invalid Option!"
         end
       end
     end
@@ -119,7 +79,7 @@ Then(/^I should see the preview-drawer "(.*?)"$/) do |drawer_move|
 end
 
 And(/^I should see "(.*?)" with "(.*?)" items and a right arrow$/) do |print_queue, number|
-    check_element_exists(@current_page.print_queue)
+    check_element_exists(@current_page.printqueue)
     check_element_exists("view marked:'#{number}'")
     check_element_exists("* id:'Arrow_Right'")
     sleep(STEP_PAUSE)

@@ -15,8 +15,10 @@
 #import "MPBTMaui.h"
 #import "MPBTManta.h"
 
+NSString *kPGSettingsForceFirmwareUpgrade = @"kPGSettingsForceFirmwareUpgrade";
+NSString *kPGUseExperimentalFirmware = @"kPGUseExperimentalFirmware";
+
 static MPBTSprocket *currentInstance = nil;
-static BOOL forceFirmwareUpdates = NO;
 
 @implementation MPBTSprocket
 
@@ -87,17 +89,24 @@ static BOOL forceFirmwareUpdates = NO;
 
 + (BOOL)forceFirmwareUpdates
 {
-    return forceFirmwareUpdates;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kPGSettingsForceFirmwareUpgrade];
 }
 
 + (void)setForceFirmwareUpdates:(BOOL)force
 {
-    forceFirmwareUpdates = force;
+    [[NSUserDefaults standardUserDefaults] setBool:force forKey:kPGSettingsForceFirmwareUpgrade];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSUInteger)firmwareVersion
++ (BOOL) useExperimentalFirmware
 {
-    return [MPBTSprocket forceFirmwareUpdates] ? _firmwareVersion-1 : _firmwareVersion;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kPGUseExperimentalFirmware];
+}
+
++ (void) setUseExperimentalFirmware:(BOOL)useExperimental
+{
+    [[NSUserDefaults standardUserDefaults] setBool:useExperimental forKey:kPGUseExperimentalFirmware];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Constant Helpers

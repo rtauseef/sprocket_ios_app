@@ -11,6 +11,7 @@
 //
 
 #import "NSString+Utils.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 @implementation NSString (Utils)
 
@@ -24,6 +25,21 @@
     NSArray *result = [root objectForKey:self];
     
     return result;
+}
+
+- (NSString *)md5
+{
+    const char *cstr = [self UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cstr, (CC_LONG)strlen(cstr), result);
+
+    NSMutableString *md5String = [[NSMutableString alloc] initWithCapacity:CC_MD5_DIGEST_LENGTH];
+
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [md5String appendFormat:@"%02X", result[i]];
+    }
+
+    return md5String;
 }
 
 @end

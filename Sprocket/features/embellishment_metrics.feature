@@ -17,7 +17,7 @@ Feature: Verify embellishment metrics
     Then I select "sticker_0" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    Then I tap "Sticker" button
+    Then I touch "Sticker"
     And I select "Face Category" tab
     Then I select "sticker_11" sticker
     #Then I should see the "StickerOptionEditor" screen
@@ -29,13 +29,12 @@ Feature: Verify embellishment metrics
     And I should see the photo with the "sticker_3" sticker from "Decorative Category" tab
     And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
     And I should see the photo with the "sticker_11" sticker from "Face Category" tab
-    Then I tap "Check" mark
-    And I wait for some seconds
+    Then I choose "save" option
     And I wait for some seconds
 	And I wait for some seconds
 	And I wait for some seconds   
     Then I am on the "CameraRoll Preview" screen
-    When I tap "Download" button
+    When I choose "download" option
 	Then I wait for some seconds
     Then Fetch metrics details
     Then I Fetch embellishment metrics details
@@ -56,24 +55,24 @@ Feature: Verify embellishment metrics
     Then I select "sticker_0" sticker
     And I should see the photo with the "sticker_0" sticker from "Decorative Category" tab
     Then I am on the "StickerOptionEditor" screen
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I should see the "Edit" screen
-    And I tap "Frame" button
+    And I touch "Frame"
     Then I select "frame_1" frame
-    Then I should see the photo in the "Frame Editor" screen with the "frame_1" frame
+    Then I should see the photo with the "frame_1" frame
     Then I am on the "Frame Editor" screen
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I am on the "Edit" screen
     And I wait for some seconds
-    Then I select "AutoFix"
+    Then I select "autofix"
     Then I wait for some seconds
-    Then I tap "Check" mark
+    Then I choose "save" option
     And I wait for some seconds
     And I wait for some seconds
     And I wait for some seconds
     And I wait for some seconds
     Then I am on the "CameraRoll Preview" screen
-    When I tap "Download" button
+    When I choose "download" option
     Then I wait for some seconds
     Then Fetch metrics details
     Then I Fetch embellishment metrics details
@@ -93,17 +92,15 @@ Feature: Verify embellishment metrics
     Then I select a sticker from "Decorative Category"
     Then I should see the "StickerOptionEditor" screen
     And I should see the photo with the sticker from "Decorative Category" tab
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I should see the "Edit" screen
-    Then I tap "Check" mark
-    And I wait for some seconds
-    And I wait for some seconds
+    Then I choose "save" option
     And I wait for some seconds
     And I wait for some seconds  
     And I wait for some seconds
     And I wait for some seconds    
     Then I am on the "CameraRoll Preview" screen
-    When I tap "Download" button
+    When I choose "download" option
     Then I wait for some seconds
     Then Fetch metrics details
     Then I Fetch embellishment metrics details

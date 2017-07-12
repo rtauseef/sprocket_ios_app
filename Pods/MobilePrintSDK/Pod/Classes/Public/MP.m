@@ -399,6 +399,16 @@ BOOL const kMPDefaultUniqueDeviceIdPerApp = YES;
     [MPBTSprocket setForceFirmwareUpdates:force];
 }
 
+- (BOOL)useExperimentalFirmware
+{
+    return [MPBTSprocket useExperimentalFirmware];
+}
+
+- (void)setUseExperimentalFirmware:(BOOL)useExperimental
+{
+    [MPBTSprocket setUseExperimentalFirmware:useExperimental];
+}
+
 - (void)obfuscateMetric:(NSString *)keyName
 {
     [[MPAnalyticsManager sharedManager] obfuscateMetric:keyName];

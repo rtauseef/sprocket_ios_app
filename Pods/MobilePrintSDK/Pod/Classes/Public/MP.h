@@ -655,6 +655,19 @@ extern NSString * const kMPPrinterPaperAreaYPoints;
 - (void)setForceFirmwareUpdates:(BOOL)force;
 
 /*!
+ * @abstract Causes the software to always show that devices need a firmware upgrade.
+ * @return YES if experimental firmware is being used, NO if released firmware is being used.
+ */
+- (BOOL)useExperimentalFirmware;
+
+/*!
+ * @abstract Causes a reflash of the first paired sprocket.
+ * @param useExperimental If YES, causes the software to use experimental firmware.
+ *   If NO, causes the software to use released firmware.
+ */
+- (void)setUseExperimentalFirmware:(BOOL)useExperimental;
+
+/*!
  * @abstract Causes a metric value to be obfuscated before it is posted to the server.
  * @param keyName The key of the value that is to be obfuscated.  Any metric identified by this key will be obfuscated.
  */

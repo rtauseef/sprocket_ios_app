@@ -230,7 +230,7 @@ Scenario: Navigate to Preview screen for cameraroll
     When I touch second photo
     Then I should see the "CameraRoll Preview" screen
     Then I verify the "Edit" button text
-    Then I tap "Download" button
+    Then I choose "download" option
     Then I should see the popup message for the "Download"
     Then I tap "Print" button
     Then I verify the "title" of the popup message for "PrintButton"
@@ -256,7 +256,7 @@ Scenario: Navigate to Preview screen for cameraroll
     When I touch second photo
     Then I should see the "<Preview>" screen
     Then I verify the "Edit" button text
-    Then I tap "Download" button
+    Then I choose "download" option
     Then I should see the popup message for the "Download"
     Then I tap "Print" button
     Then I verify the "title" of the popup message for "PrintButton"
@@ -268,9 +268,9 @@ Scenario: Navigate to Preview screen for cameraroll
     Then I verify the "Print to sprocket" button text
         
     Examples:
-      | social_media  | Sign in          | welcome           | Photos           | Preview           |
-      | Instagram     | Instagram Signin | Instagram Landing | Instagram Photos | Instagram Preview |
-      | Google        | Google Signin    | Google Landing    | Google Photos    | Google Preview    |
+      | social_media  | Sign in          |  Photos           | Preview           |
+      | Instagram     | Instagram Signin |  Instagram Photos | Instagram Preview |
+      | Google        | Google Signin    |  Google Photos    | Google Preview    |
     
  @appium
  @TA18119
