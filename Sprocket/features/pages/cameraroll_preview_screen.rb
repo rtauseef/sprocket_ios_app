@@ -19,50 +19,48 @@ class CameraRollPreviewScreen < Calabash::IBase
   def print
           "* id:'printButton'"
   end
-    
-    def check
-        "view marked:'editor-tool-apply-btn'"
-    end
-
+   
   def share
          "* id:'shareButton'"
   end
     
-def download    
+  def download    
     "* id:'previewDownload'"
-end
+  end
+  def edit
+    "view marked:'Edit'"
+  end
+  def ok
+      "UILabel marked:'#{$list_loc['ok']}'" 
+  end
     
-    def ok
-        "UILabel marked:'#{$list_loc['ok']}'" 
-    end
-    
-    def checkmark
-        "* id:'Check_Inactive1.png'" 
-    end
-    
+   # def checkmark
+    #    "* id:'Check_Inactive1.png'" 
+    #end
+=begin 
     def more    
         "UILabel marked:'#{$list_loc['More']}' index:1"
-end
+end   
+=end 
+  def preview_bar_dots
+      "* id:'PreviewBarDots'" 
+   end
+
+   def printqueue
+       "view marked:'Print Queue'" 
+   end
+=begin 
+   def increment
+       "* id:'+ButtonEnabled'"
+   end
     
-    def preview_bar_dots
-       "* id:'PreviewBarDots'" 
-    end
-    
-    def printqueue
-        "view marked:'Print Queue'" 
-    end
-    
-    def increment
-        "* id:'+ButtonEnabled'"
-    end
-    
-    def decrement
-        "* id:'-ButtonEnabled'"
-    end
-    
-def close
-    "button"
-  end
+   def decrement
+       "* id:'-ButtonEnabled'"
+   end
+=end
+#def close
+ #   "button"
+  #end
   
 def navigate
   unless current_page?

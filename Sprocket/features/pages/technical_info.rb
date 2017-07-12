@@ -20,11 +20,11 @@ class TechnicalInformationScreen < Calabash::IBase
     def back_button
        "view marked:'#{$list_loc['Back']}'"
     end
-    
+=begin
     def close
     "UIButton index:1"
   end
-
+=end
 
 
   def navigate

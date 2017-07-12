@@ -14,8 +14,24 @@ class CropEditorScreen < Calabash::IBase
        "UIButton marked:'transform-tool-apply-btn'"
     end
     
-    def selected_frame
-        "* id:'blue_frame'" 
+    #def selected_frame
+     #   "* id:'blue_frame'" 
+    #end
+
+    def cancel
+        "view marked:'Discard changes'" 
+    end
+    def two_to_three
+        "view marked:'2:3'"
+    end
+     def three_to_two
+        "view marked:'3:2'"
+    end
+    def rotate
+        "view marked:'ic rotateLeft 48pt'"
+    end
+    def flip_horizontal
+        "view marked:'ic rotateLeft 48pt'"
     end
 
     def navigate
@@ -37,3 +53,4 @@ class CropEditorScreen < Calabash::IBase
 
 
 end
+

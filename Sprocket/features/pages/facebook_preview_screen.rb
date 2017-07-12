@@ -27,6 +27,19 @@ class FacebookPreviewScreen < Calabash::IBase
   def share
          "* id:'shareButton'"
   end
+
+    def download    
+    "* id:'previewDownload'"
+end
+
+    def ok
+        "UILabel marked:'#{$list_loc['ok']}'" 
+    end
+=begin 
+    def more    
+        "UILabel marked:'#{$list_loc['More']}' index:1"
+end
+=end
  def navigate
     unless current_page?
       select_photo_screen = go_to(FacebookPhotoScreen)

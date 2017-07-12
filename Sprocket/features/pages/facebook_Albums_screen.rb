@@ -12,9 +12,9 @@ class FacebookAlbumsScreen < Calabash::IBase
       "label marked:'Facebook'"
   end
     
-    def cameraroll_logo
-    "view marked:'LoginCameraRoll.png'"
-  end
+    #def cameraroll_logo
+    #{}"view marked:'LoginCameraRoll.png'"
+  #end
     
     def arrow_down
     "* id:'arrowDown'"
@@ -23,10 +23,12 @@ class FacebookAlbumsScreen < Calabash::IBase
  def first_album
     "HPPRSelectAlbumTableViewCell index:1"
   end
-    def second_photo
-    "collectionViewCell index:1"
-  end
- 
+    #def second_photo
+    #{}"collectionViewCell index:1"
+  #end
+ def select_button
+  "button marked:'Select'"
+ end
 
  def navigate
    if not current_page?

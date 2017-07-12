@@ -16,15 +16,14 @@ class FacebookPhotoScreen < Calabash::IBase
         "* id:'arrowDown'"
     end
 
-  def all_visible_photos
-    query "all collectionViewCell"
-  end
+  #def all_visible_photos
+   # query "all collectionViewCell"
+  #end
 
-  def fully_visible_photos
-    query("collectionViewCell")
-  end
-
-
+  #def fully_visible_photos
+   # query("collectionViewCell")
+  #end
+=begin
  def photo_width
     photos = fully_visible_photos
     raise "No cards found" unless photos.count > 0
@@ -60,10 +59,11 @@ class FacebookPhotoScreen < Calabash::IBase
      count = first_from query "collectionView", numberOfItemsInSection:0
      count.to_i
   end
-
+=end
   def second_photo
-    "UIImageView index:4"
+    "UIImageView index:2"
   end
+=begin
 def list_mode_check_button
     "* id:'listViewOnIcon'"
   end
@@ -77,6 +77,10 @@ def list_mode_check_button
 def grid_mode_button
     "* id:'gridViewOffIcon'"
   end
+=end
+def select_button
+  "button marked:'Select'"
+ end
   def navigate
 
     if not current_page?

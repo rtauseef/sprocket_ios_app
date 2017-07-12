@@ -13,6 +13,9 @@ class FrameEditorScreen < Calabash::IBase
     def save
        "UIButton marked:'frame-tool-apply-btn'"
     end
+    def cancel
+        "view marked:'Discard changes'" 
+    end
     
     def navigate
         unless current_page?

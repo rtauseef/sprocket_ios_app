@@ -11,7 +11,7 @@ class InstagramPreviewScreen < Calabash::IBase
   end
 
   def cancel
-    "button"
+    "button marked:'previewX'"
       
   end
 
@@ -38,19 +38,21 @@ class InstagramPreviewScreen < Calabash::IBase
     def download    
     "* id:'previewDownload'"
 end
-    
+=begin   
     def more    
         "UILabel marked:'#{$list_loc['More']}' index:1"
 end
-    
+=end    
     
  def ok
         "UILabel marked:'#{$list_loc['ok']}'" 
     end
+=begin
     
   def close
     "* id:'closeButton'"
   end
+=end
   def navigate
     unless current_page?
       select_photo_screen = go_to(InstagramPhotosScreen)

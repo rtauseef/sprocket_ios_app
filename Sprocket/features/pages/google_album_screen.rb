@@ -17,6 +17,7 @@ class GoogleAlbumScreen < Calabash::IBase
     "HPPRSelectAlbumTableViewCell index:0"
   end
 
+=begin
   def hamburger
     "navigationItemButtonView first"
   end
@@ -44,6 +45,7 @@ class GoogleAlbumScreen < Calabash::IBase
   def search
     "view marked:'Search'"
   end
+=end
 
     def arrow_down
     "* id:'arrowDown'"
@@ -51,6 +53,9 @@ class GoogleAlbumScreen < Calabash::IBase
     def image_cell
     "HPPRSelectAlbumTableViewCell"
   end
+  def select_button
+  "button marked:'Select'"
+ end
   def navigate
 
     device_name = get_device_name  

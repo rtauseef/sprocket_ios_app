@@ -24,10 +24,11 @@ class LandingScreen < Calabash::IBase
     #"UIImageView id:'CameraRoll'"
       "UIImageView id:'#{$list_loc['cameraroll_logo']}'"
   end
-    
+=begin
     def cameraroll_logo_sidemenu
         "view marked:'Camera Roll'"
     end
+=end
 
   def facebook_logo
     "UIImageView id:'Facebook'"
@@ -35,7 +36,7 @@ class LandingScreen < Calabash::IBase
     def google_logo
     "UIImageView marked:'google_C'"
   end
-  
+=begin
     
   def modal_content
     "label {text CONTAINS 'Make sure the printer is turned on and check the Bluetooth connection.'}"
@@ -76,6 +77,7 @@ def technical_info
 def printers_option
   "view marked:'Printers'"
 end
+=end
 def terms_of_service_link
 	 xcoord = query("TTTAttributedLabel").first["rect"]["center_x"]
   ycoord = query("TTTAttributedLabel").first["rect"]["center_y"]

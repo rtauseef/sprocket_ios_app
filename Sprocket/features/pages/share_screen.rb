@@ -12,7 +12,7 @@ class ShareScreen < Calabash::IBase
     def icloud_photo_sharing
         "view marked:'iCloud Photo Sharing'"
     end
-
+=begin 
   def mail
   "view marked:'Mail'"
   end
@@ -25,7 +25,6 @@ class ShareScreen < Calabash::IBase
     "view marked:'Save to Camera Roll'"
   end
 
-=begin
   def share_icon
     "view marked:'Share.png'"
   end

@@ -17,8 +17,8 @@ def sprocket_logo
     "* id:'aboutLogo'"
 end
     
-def back_button
-    "view marked:'Back'"
+def done
+    "view marked:'Done'"
 end
     
   def navigate

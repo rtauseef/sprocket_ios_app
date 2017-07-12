@@ -9,7 +9,7 @@ class FacebookSigninScreen < Calabash::IBase
 	end
 
     def window_title
-    uia_query :view, marked:'facebook'
+    device_agent.query({marked: "facebook"})
       end
     
   def navigate

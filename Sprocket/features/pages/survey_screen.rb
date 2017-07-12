@@ -10,6 +10,9 @@ class SurveyScreen < Calabash::IBase
     #"view marked:''"
       "view {text CONTAINS 'HP Sprocket'}"
   end
+  def done
+    "view marked:'Done'"
+  end
 
 
   def navigate

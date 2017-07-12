@@ -10,20 +10,21 @@ class StickerEditorScreen < Calabash::IBase
         "label marked:'sticker-tool-screen'"
     end
     
-    def close
-        "UIButton marked:'Discard changes'"
+    def cancel
+        "view marked:'Discard changes'" 
     end
 
     def save
        "UIButton marked:'sticker-tool-apply-btn'"
     end
-    
+=begin
     def selected_sticker
         "* id:'Fox_TN'"
     end
     def download    
     "* id:'previewDownload'"
     end
+=end
 
     def navigate
         unless current_page?

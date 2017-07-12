@@ -13,13 +13,17 @@ class TextOptionEditorScreen < Calabash::IBase
     def close
         "UIButton marked:'Discard changes'"
     end
+=begin
 
     def save
         "* id:'ic_approve_44pt'"
     end
-    
+=end
     def delete
         "view marked:'Delete'"
+    end
+    def save
+       "view marked:'text-options-tool-apply-btn'"
     end
      
     def navigate

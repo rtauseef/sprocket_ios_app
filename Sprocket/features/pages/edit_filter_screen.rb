@@ -12,6 +12,9 @@ class FilterEditorScreen < Calabash::IBase
     def save
        "UIButton marked:'filter-tool-apply-btn'"
     end
+    def cancel
+        "view marked:'Discard changes'" 
+    end
     def navigate
         unless current_page?
             edit_screen = go_to(EditScreen)

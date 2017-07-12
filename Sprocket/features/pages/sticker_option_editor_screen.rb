@@ -16,13 +16,17 @@ class StickerOptionEditorScreen < Calabash::IBase
     def delete
         "view marked:'Delete'"
     end
+=begin
     def undo
         "* id:'ic_undo_24pt'"
     end
     def redo
         "* id:'ic_redo_24pt'"
     end
-
+=end
+    def cancel
+        "view marked:'Discard changes'" 
+    end
     
     def navigate
         unless current_page?

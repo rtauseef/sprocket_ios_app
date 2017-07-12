@@ -14,14 +14,17 @@ class SprocketScreen < Calabash::IBase
     #"label {text CONTAINS 'Printer not connected to device'}"
       "label {text CONTAINS 'No sprockets Connected'}"
   end
-    
+=begin
     def close
     "UIButton index:1"
   end
-    
+=end
     def technical_info
     #"label {text CONTAINS 'Technical Information'}"
         "label {text CONTAINS '#{$list_loc['Technical Information']}'}"
+  end
+  def done
+    "view marked:'Done'"
   end
     
 

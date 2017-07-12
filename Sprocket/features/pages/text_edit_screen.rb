@@ -17,9 +17,11 @@ class TextEditScreen < Calabash::IBase
     def cancel
         "* id:'ic_cancel_44pt'"
     end
+=begin
     def save
        "view marked:'text-options-tool-apply-btn'"
     end
+=end
    
     def navigate
         unless current_page?

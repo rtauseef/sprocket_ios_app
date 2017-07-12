@@ -12,6 +12,11 @@ class GooglePhotosScreen < Calabash::IBase
      "view {text CONTAINS 'Google'}"
   end
 
+    def arrow_down
+        "* id:'arrowDown'"
+    end
+=begin
+
     def all_visible_photos
     query "all collectionViewCell"
   end
@@ -56,11 +61,13 @@ class GooglePhotosScreen < Calabash::IBase
      count = first_from query "collectionView", numberOfItemsInSection:0
      count.to_i
   end
-
+=end
   def second_photo
     "collectionViewCell index:1"
   end
-
+def select_button
+  "button marked:'Select'"
+ end
 
   def navigate
 sleep(5.0)

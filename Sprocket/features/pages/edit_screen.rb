@@ -9,54 +9,64 @@ class EditScreen < Calabash::IBase
     def title
         "label marked:'editor-tool-screen'"
     end
-    
-    def crop
-       "view marked:'Crop'"
-    end
-    
-    def text
-        "view marked:'Text'"
-    end
-   
     def autofix
         "view marked:'Magic'"
     end
     def adjustment
         "view marked:'Adjust'"
     end
+    def filter
+        "view marked:'Filter"
+    end
+    def frame
+        "view marked:'Frame"
+    end
+    def sticker
+        "view marked:'Sticker"
+    end
     def brush
         "view marked:'Brush'"
     end
-    
-    def modal_title
-       "UILabel text:'Alert'" 
+    def text
+        "view marked:'Text'"
     end
-    
-    def modal_content
-      "label {text CONTAINS 'Do you want to return to preview and dismiss your edits?'}" 
+   
+    def crop
+       "view marked:'Crop'"
     end
+        
+    #def modal_title
+     #  "UILabel text:'Alert'" 
+    #end
     
-    def yes
-        "UILabel text:'Yes'"
-    end
+    #def modal_content
+     # "label {text CONTAINS 'Do you want to return to preview and dismiss your edits?'}" 
+    #end
     
-    def no
-        "UILabel text:'No'"
-    end
+    #def yes
+     #   "UILabel text:'Yes'"
+    #end
     
-    def add_text
-        "UIButton marked:'Add text'"
-    end
+    #def no
+    #    "UILabel text:'No'"
+    #end
+    
+    #def add_text
+     #   "UIButton marked:'Add text'"
+    #end
        
-    def selected_frame
-        "* id:'1_turquoise_frame'" 
-    end
+    #def selected_frame
+     #   "* id:'1_turquoise_frame'" 
+    #end
 
     def save
         "view marked:'editor-tool-apply-btn'"
     end
-def download    
-    "* id:'previewDownload'"
+#def download    
+ #   "* id:'previewDownload'"
+  #  end
+  def cancel
+       "view marked:'Discard photo'" 
     end
     def navigate
         unless current_page?

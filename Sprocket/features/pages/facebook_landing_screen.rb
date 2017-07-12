@@ -12,11 +12,11 @@ class FacebookLandingScreen < Calabash::IBase
         "label marked:'Facebook'"
     end
 
- def facebook_logo
-  "UIButtonLabel marked:'Facebook'"
-  end
+ #def facebook_logo
+  #{}"UIButtonLabel marked:'Facebook'"
+  #end
 def sign_in_button
-  "button marked:'Sign in'"
+  "button marked:'Sign In'"
 end
 
 
