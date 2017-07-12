@@ -409,6 +409,7 @@ static const NSUInteger kMaxRecordingTime = 20;
                                                                  object:[AURTrackingController class]
                                                                   queue:[NSOperationQueue mainQueue]
                                                              usingBlock:notificationCallback];
+}
 
 - (void)resetShutterTimerButtonAndShutterButton {
     [PGCameraManager sharedInstance].shutterTimerDelayState = ShutterTimerDelayStateNone;
