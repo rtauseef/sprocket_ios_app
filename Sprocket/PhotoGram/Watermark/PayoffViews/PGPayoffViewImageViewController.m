@@ -384,7 +384,7 @@ static const NSInteger kInstagramMaxImagesSearch = 300;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self fixScrollViewSize];
+    //[self fixScrollViewSize];
     
     if (self.metadata.source.from == PGMetarSourceFromSocial && self.metadata.source.social.uri) {
         [self.parentVc setExternalLinkURL:[NSURL URLWithString:self.metadata.source.social.uri]];
@@ -444,7 +444,7 @@ static const NSInteger kInstagramMaxImagesSearch = 300;
         self.tmpViewController = nil;
     }
     
-    if (self.facebookProvider || self.instagramProvider) {
+    if (self.hasFacebookContent || self.hasGoogleContent || self.hasInstagramContent) {
         return;
     }
 
@@ -463,7 +463,7 @@ static const NSInteger kInstagramMaxImagesSearch = 300;
             }
         } else {
             self.hasFacebookContent = YES;
-            [self fixScrollViewSize];
+            //[self fixScrollViewSize];
         }
     }];
     
@@ -482,7 +482,7 @@ static const NSInteger kInstagramMaxImagesSearch = 300;
             }
         } else {
             self.hasInstagramContent = YES;
-            [self fixScrollViewSize];
+            //[self fixScrollViewSize];
         }
     }];
     
@@ -501,7 +501,7 @@ static const NSInteger kInstagramMaxImagesSearch = 300;
             }
         } else {
             self.hasGoogleContent = YES;
-            [self fixScrollViewSize];
+            //[self fixScrollViewSize];
         }
     }];
     

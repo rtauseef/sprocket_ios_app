@@ -279,22 +279,26 @@ static const NSUInteger kPGReviewViewHeight = 38;
 - (IBAction)closeButtonTapped:(id)sender {
     PGPayoffViewBaseViewController *currentVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage];
     
-    PGPayoffViewBaseViewController *previousVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage - 1];
     
-    __weak __typeof__(self) weakSelf = self;
-    
-    if ([currentVc isKindOfClass:[PGPayoffViewGoogleStreetViewController class]]) {
+    if (self.pageControl.currentPage > 0) {
+        PGPayoffViewBaseViewController *previousVc = (PGPayoffViewBaseViewController *) [self.arrayOfViewControllers objectAtIndex:self.pageControl.currentPage - 1];
         
+        __weak __typeof__(self) weakSelf = self;
         
-        [self.pageViewController setViewControllers:@[previousVc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
-                [weakSelf.pageControl setCurrentPage:self.pageControl.currentPage - 1];
-                [weakSelf updateCurrentViewLabel:currentVc.viewTitle forView:currentVc];
+        if ([currentVc isKindOfClass:[PGPayoffViewGoogleStreetViewController class]]) {
             
-        }];
-    
+            
+            [self.pageViewController setViewControllers:@[previousVc] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+                    [weakSelf.pageControl setCurrentPage:self.pageControl.currentPage - 1];
+                    [weakSelf updateCurrentViewLabel:previousVc.viewTitle forView:previousVc];
+                
+            }];
+        
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
-
     }
 }
 
